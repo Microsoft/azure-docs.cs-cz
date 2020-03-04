@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206652"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254910"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -32,7 +32,7 @@ Následující tabulka popisuje funkce trezorů Recovery Services:
 --- | ---
 **Trezory v předplatném** | V jednom předplatném je až 500 Recovery Services trezory.
 **Počítače v trezoru** | Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> V jednom trezoru se dají zaregistrovat až 50 serverů MABS.
-**Zdroje dat v úložišti trezoru** | Maximální 54 400 GB. Zálohování virtuálních počítačů Azure není nijak omezené.
+**Zdroje dat** | Maximální velikost jednotlivého [zdroje dat](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) je 54 400 GB. Toto omezení se nevztahuje na zálohy virtuálních počítačů Azure. Na celkové množství dat, která můžete zálohovat do trezoru, neplatí žádná omezení.
 **Zálohy do trezoru** | **Virtuální počítače Azure:** Jednou denně.<br/><br/>**Počítače chráněné aplikací DPM/MABS:** Dvakrát denně.<br/><br/> **Počítače zálohované přímo pomocí agenta Mars:** Třikrát denně.
 **Zálohy mezi trezory** | Zálohování je v rámci jedné oblasti.<br/><br/> Potřebujete trezor v každé oblasti Azure, která obsahuje virtuální počítače, které chcete zálohovat. Nemůžete zálohovat do jiné oblasti.
 **Přesunout trezory** | [Trezory můžete přesouvat](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném. Přesun trezorů mezi oblastmi se ale nepodporuje.
@@ -155,8 +155,6 @@ Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost
 | Agent MARS/místní | Ne                                                           | neuvedeno               |
 | SQL/SAP HANA          | Ne                                                           | neuvedeno               |
 | BUŇK                    | Ne                                                           | neuvedeno               |
-
-
 
 ## <a name="next-steps"></a>Další kroky
 

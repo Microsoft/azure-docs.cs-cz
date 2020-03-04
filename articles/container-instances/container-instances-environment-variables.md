@@ -3,12 +3,12 @@ title: Nastavení proměnných prostředí v instanci kontejneru
 description: Naučte se, jak nastavit proměnné prostředí v kontejnerech, které spouštíte v Azure Container Instances
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: d12d3204740f2971216636f9f5dd6403b17ecbff
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483193"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252201"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Nastavení proměnných prostředí v instancích kontejnerů
 
@@ -58,8 +58,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 Výstup kontejnerů ukazuje, jak jste upravili chování skriptu druhého kontejneru nastavením proměnných prostředí.
 
-```console
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer1
+**mycontainer1**
+```output
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -70,8 +70,10 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
  ('my', 441),
  ('in', 399),
  ('HAMLET', 386)]
+```
 
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer2
+**mujkontejner2**
+```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),

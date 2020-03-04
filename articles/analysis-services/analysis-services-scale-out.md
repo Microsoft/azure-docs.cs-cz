@@ -4,15 +4,15 @@ description: Replikace Azure Analysis Services serverů s možností horizontál
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310182"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247994"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
@@ -74,19 +74,23 @@ Pro maximální výkon operací zpracování a dotazování se můžete rozhodno
 
 ## <a name="monitor-qpu-usage"></a>Monitorování využití QPU
 
-Pokud chcete zjistit, jestli je na serveru potřeba horizontální navýšení kapacity, monitorujte svůj server v Azure Portal pomocí metrik. Pokud se vaše QPU pravidelně navyšuje, znamená to, že počet dotazů na vaše modely přesahuje limit QPU pro váš plán. Metrika délky fronty úloh fondu dotazů se zvyšuje také v případě, že počet dotazů ve frontě fondu vláken dotazu překročí dostupné QPU. 
+Pokud chcete zjistit, jestli je na serveru potřeba horizontální navýšení kapacity, [monitorujte svůj server](analysis-services-monitor.md) v Azure Portal pomocí metrik. Pokud se vaše QPU pravidelně navyšuje, znamená to, že počet dotazů na vaše modely přesahuje limit QPU pro váš plán. Metrika délky fronty úloh fondu dotazů se zvyšuje také v případě, že počet dotazů ve frontě fondu vláken dotazu překročí dostupné QPU. 
 
 Další užitečnou metrikou ke sledování je průměrná QPUa podle ServerResourceType. Tato metrika porovnává průměrnou QPU primárního serveru s fondem dotazů. 
 
 ![Metriky horizontálního navýšení kapacity dotazu](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>Konfigurace QPU pomocí ServerResourceType
+**Konfigurace QPU pomocí ServerResourceType**
+
 1. V spojnicovém grafu metriky klikněte na **Přidat metriku**. 
 2. V **prostředku**vyberte váš server, potom v **oboru názvů metriky**vyberte **Analysis Services standardní metriky**, potom v **Metrikě**vyberte **QPU**a potom v **agregaci**vyberte **AVG**. 
 3. Klikněte na **použít rozdělení**. 
 4. V **hodnoty**vyberte **ServerResourceType**.  
 
-Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md).
+### <a name="detailed-diagnostic-logging"></a>Podrobné protokolování diagnostiky
+
+Podrobnější diagnostiku prostředků serveru s horizontálním navýšení kapacity použijte Azure Monitor protokoly. Pomocí protokolů můžete pomocí Log Analyticsch dotazů přerušit QPU a paměť podle serveru a repliky. Další informace najdete v tématu Příklady dotazů v [protokolování diagnostiky Analysis Services](analysis-services-logging.md#example-queries).
+
 
 ## <a name="configure-scale-out"></a>Konfigurace škálování na více instancí
 
@@ -102,7 +106,7 @@ Další informace najdete v tématu [Monitorování metrik serveru](analysis-ser
 
 Při prvním nastavování horizontálního škálování serveru se modely na primárním serveru automaticky synchronizují s replikami ve fondu dotazů. Automatická synchronizace nastane jenom jednou, když nakonfigurujete horizontální navýšení kapacity na jednu nebo víc replik. Následné změny počtu replik na stejném serveru nebudou *aktivovat další automatickou synchronizaci*. Automatická synchronizace se znovu neprojeví, i když nastavíte server na nulové repliky a pak znovu nasadíte na libovolný počet replik. 
 
-## <a name="synchronize"></a>Synchronize 
+## <a name="synchronize"></a>Synchronizace 
 
 Operace synchronizace se musí provádět ručně nebo pomocí REST API.
 
@@ -112,7 +116,7 @@ V **přehledu** > model > **synchronizovat model**.
 
 ![Posuvník horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Použijte operaci **synchronizace** .
 
@@ -127,13 +131,13 @@ Použijte operaci **synchronizace** .
 Vrátit stavové kódy:
 
 
-|kód  |Popis  |
+|Kód  |Popis  |
 |---------|---------|
 |-1     |  Neplatný       |
 |0     | Replikaci        |
-|1\. místo     |  Dosazování dat       |
+|1     |  Dosazování dat       |
 |2     |   Dokončeno       |
-|3     |   Selhalo      |
+|3     |   Neúspěch      |
 |4     |    Dokončuje     |
 |||
 

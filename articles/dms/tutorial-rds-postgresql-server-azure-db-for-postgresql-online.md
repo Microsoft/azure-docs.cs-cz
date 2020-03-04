@@ -3,8 +3,8 @@ title: 'Kurz: migrace RDS PostgreSQL online na Azure Database for PostgreSQL'
 titleSuffix: Azure Database Migration Service
 description: Naučte se provádět online migraci z RDS PostgreSQL do Azure Database for PostgreSQL pomocí Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: 1bc3f3d8c0f8992927acc3247e94a984e1653deb
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 33d39be071591071d88bb5a95c3cfcbb458d85a8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471051"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255712"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Kurz: migrace programu RDS PostgreSQL do služby Azure DB pro PostgreSQL online pomocí DMS
 
@@ -100,7 +100,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Například:
+    Příklad:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql

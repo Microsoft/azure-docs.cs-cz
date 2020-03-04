@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: c166811bbfd27691f9a01a944d304d06560b0232
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445182"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250390"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB monitorování
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování generovaná databázemi Azure Cosmos a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -36,6 +36,38 @@ Následující části jsou uvedené v tomto článku, které popisují konkrét
 
 ![Azure Monitor pro Cosmos DB](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
+1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
+
+   ![Podokno metrik v Azure Monitor](./media/monitor-cosmos-db/monitor-metrics-blade.png)
+
+1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné**a **skupinu prostředků**. Jako **typ prostředku**vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
+
+   ![Vyberte účet Cosmos DB, pro který chcete zobrazit metriky.](./media/monitor-cosmos-db/select-cosmosdb-account.png)
+
+1. Dále můžete vybrat metriku ze seznamu dostupných metrik. Můžete vybrat metriky specifické pro jednotky žádosti, úložiště, latenci, dostupnost, Cassandra a další. Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [metriky podle kategorií](monitor-cosmos-db-reference.md) . V tomto příkladu vybereme **jednotky žádosti** a jako hodnotu agregace určíte **průměr** .
+
+   Kromě těchto podrobností můžete také vybrat **časový rozsah** a **časovou členitost** metrik. V poli Max (maximum) si můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se v závislosti na vašem filtru zobrazí graf. Pro vybrané období můžete zobrazit průměrný počet spotřebovaných jednotek žádostí za minutu.  
+
+   ![Vyberte metriku z Azure Portal](./media/monitor-cosmos-db/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>Přidání filtrů do metrik
+
+Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName**, **DatabaseName**, **typem operace OperationType**, **region**a **StatusCode**. Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **typem operace OperationType** , a vyberte hodnotu, jako je například **dotaz**. V grafu se pak zobrazí jednotky žádosti spotřebované pro operaci dotazování pro vybrané období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
+
+![Přidejte filtr pro výběr členitosti metriky.](./media/monitor-cosmos-db/add-metrics-filter.png)
+
+Metriky můžete seskupit pomocí možnosti **použít rozdělení** . Například můžete seskupit jednotky žádostí na typ operace a zobrazit graf pro všechny operace najednou, jak je znázorněno na následujícím obrázku:
+
+![Přidat použít dělicí filtr](./media/monitor-cosmos-db/apply-metrics-splitting.png)
+
+Tady je další příklad zobrazení metrik latence na straně serveru pro určitou databázi, kontejner nebo operaci:
+
+![Metriky latence na straně serveru](./media/monitor-cosmos-db/serverside-latency-metric.png)
+
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Monitorování dat shromážděných z Azure Cosmos DB
 
 Azure Cosmos DB shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Cosmos DB najdete v tématu [referenční informace k datům monitorování Azure Cosmos DB](monitor-cosmos-db-reference.md) .
@@ -53,14 +85,14 @@ Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb
 - collectionName
 - DatabaseName
 - OperationType
-- Region (Oblast)
+- Oblast
 - StatusCode
 
 
 ## <a name="analyzing-log-data"></a>Analýza dat protokolu
 Data v Azure Monitor protokoly se ukládají v tabulkách, ve kterých každá tabulka má vlastní sadu jedinečných vlastností. Azure Cosmos DB ukládá data v následujících tabulkách.
 
-| Table | Popis |
+| Tabulka | Popis |
 |:---|:---|
 | AzureDiagnostics | Společná tabulka používaná více službami k ukládání protokolů prostředků. Protokoly prostředků z Azure Cosmos DB lze identifikovat pomocí `MICROSOFT.DOCUMENTDB`.   |
 | AzureActivity    | Společná tabulka, která ukládá všechny záznamy z protokolu aktivit. 
@@ -71,7 +103,7 @@ Data v Azure Monitor protokoly se ukládají v tabulkách, ve kterých každá t
 
 ### <a name="azure-cosmos-db-log-analytics-queries-in-azure-monitor"></a>Azure Cosmos DB Log Analytics dotazy v Azure Monitor
 
-Tady jsou některé dotazy, které můžete zadat do panelu hledání v **protokolu** , abyste mohli monitorovat kontejnery Cosmos Azure. Tyto dotazy pracovat [nový jazyk](../log-analytics/log-analytics-log-search-upgrade.md).
+Tady jsou některé dotazy, které můžete zadat do panelu hledání v **protokolu** , abyste mohli monitorovat kontejnery Cosmos Azure. Tyto dotazy fungují s [novým jazykem](../log-analytics/log-analytics-log-search-upgrade.md).
 
 Níže jsou uvedené dotazy, které vám pomůžou monitorovat databáze Azure Cosmos.
 
@@ -167,10 +199,10 @@ Níže jsou uvedené dotazy, které vám pomůžou monitorovat databáze Azure C
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Programové monitorování služby Azure Cosmos DB
 Účtu metriky na úrovni k dispozici na portálu, jako je například využití a celkový počet požadavků na účet úložiště, nejsou k dispozici prostřednictvím rozhraní SQL API. Však můžete načíst data o využití na úrovni kolekce pomocí rozhraní SQL API. K načtení dat na úrovni kolekce, postupujte takto:
 
-* Použití rozhraní REST API [provádět GET na kolekci](https://msdn.microsoft.com/library/mt489073.aspx). V záhlaví x-ms-resource-quota a x-ms-resource využití v odpovědi se vrátí informace kvótu a využití pro kolekci.
-* Použití sady .NET SDK, použijte [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) metoda, která vrátí [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) , která obsahuje počet použití vlastnosti jako  **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**a provádění dalších akcí.
+* Chcete-li použít REST API, [proveďte operaci get pro kolekci](https://msdn.microsoft.com/library/mt489073.aspx). V záhlaví x-ms-resource-quota a x-ms-resource využití v odpovědi se vrátí informace kvótu a využití pro kolekci.
+* Chcete-li použít sadu .NET SDK, použijte metodu [DocumentClient. ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) , která vrátí [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) obsahující řadu vlastností použití jako **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**a další.
 
-Chcete-li přistupovat k dalším metrikám, použijte [SDK služby Azure Monitor](https://www.nuget.org/packages/Microsoft.Azure.Insights). Dostupné definice metrik může být načten voláním:
+Pro přístup k dalším metrikám použijte [sadu Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights). Dostupné definice metrik může být načten voláním:
 
     https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
 

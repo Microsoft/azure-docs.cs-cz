@@ -3,8 +3,8 @@ title: 'Kurz: migrace MySQL online na Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Naučte se provádět online migraci z místního MySQL do Azure Database for MySQL pomocí Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 77887f440da73436a995e0916c529f9df76e7d6f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e0a2c9f4dd229353ef3d4dc06f7bb965d15814d9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746969"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255561"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
 > * Migrace ukázkového schématu pomocí nástroje mysqldump
-> * Vytvořte instanci služby Azure Database Migration Service.
+> * Vytvořte instanci Azure Database Migration Service.
 > * Vytvořte projekt migrace pomocí Azure Database Migration Service.
 > * Spuštění migrace
 > * Monitorování migrace
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Pro optimální prostředí migrace doporučuje Microsoft vytvořit instanci Azure Database Migration Service ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

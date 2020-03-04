@@ -3,12 +3,12 @@ title: Nasazení prostředků pomocí Azure CLI a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 242b9f2a4bc39f8aa083d9c89d3dd7ed850b3489
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154291"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250663"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
@@ -63,7 +63,7 @@ az group deployment create \
 
 Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva, která obsahuje výsledek:
 
-```azurecli
+```output
 "provisioningState": "Succeeded",
 ```
 
@@ -150,7 +150,7 @@ az group deployment create \
 
 ## <a name="handle-extended-json-format"></a>Zpracovat rozšířený formát JSON
 
-Chcete-li nasadit šablonu s víceřádkovými řetězci nebo komentáři, je nutné použít přepínač `--handle-extended-json-format`.  Například:
+Chcete-li nasadit šablonu s víceřádkovými řetězci nebo komentáři, je nutné použít přepínač `--handle-extended-json-format`.  Příklad:
 
 ```json
 {
@@ -183,7 +183,7 @@ az group deployment validate \
 
 Pokud nejsou zjištěny žádné chyby, příkaz vrátí informace o testovacím nasazení. Konkrétně si všimněte, že hodnota **chyby** je null.
 
-```azurecli
+```output
 {
   "error": null,
   "properties": {
@@ -192,7 +192,7 @@ Pokud nejsou zjištěny žádné chyby, příkaz vrátí informace o testovacím
 
 Pokud se zjistí chyba, vrátí příkaz chybovou zprávu. Například předáním nesprávné hodnoty SKU účtu úložiště vrátí následující chybu:
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",
@@ -208,7 +208,7 @@ Pokud se zjistí chyba, vrátí příkaz chybovou zprávu. Například předán�
 
 Pokud má vaše šablona syntaktickou chybu, příkaz vrátí chybu oznamující, že nešlo analyzovat šablonu. Zpráva indikuje číslo řádku a umístění chyby analýzy.
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",

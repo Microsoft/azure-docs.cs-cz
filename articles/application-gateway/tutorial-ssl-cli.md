@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3f98aabb9459e4895243eec7f3d759d5a2ee88c6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047327"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246616"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením SSL pomocí Azure CLI
 
@@ -39,13 +39,13 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. V tomto článku vytvoříte certifikát podepsaný svým držitelem a soubor PFX pomocí příkazu OpenSSL.
 
-```azurecli-interactive
+```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
 Zadejte požadované hodnoty certifikátu. Můžete také použít výchozí hodnoty.
 
-```azurecli-interactive
+```console
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
@@ -153,7 +153,7 @@ az vmss extension set \
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip).
 
@@ -171,7 +171,7 @@ Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého pr
 
 Pokud chcete přijímat upozornění zabezpečení v případě použití certifikátu podepsaného svým držitelem (self-signed certificate), vyberte **Podrobnosti** a potom **Pokračovat na web**. Následně se zobrazí váš zabezpečený web NGINX, jak je znázorněno v následujícím příkladu:
 
-![Testování základní adresy URL v aplikační bráně](./media/tutorial-ssl-cli/application-gateway-nginx.png)
+![Otestování základní adresy URL v aplikační bráně](./media/tutorial-ssl-cli/application-gateway-nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

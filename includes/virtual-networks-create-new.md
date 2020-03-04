@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
-ms.openlocfilehash: 43ede7f3340f190f9eb37ca90fb74f2215db9062
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227386"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244990"
 ---
 ## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -27,7 +27,7 @@ V této části vytvoříte virtuální síť a podsíť.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Výběr vašeho předplatného Azure                                  |
-    | Skupina prostředků   | Vyberte **vytvořit nový**, zadejte **\<resource-group-name >** a pak vyberte OK. |
+    | Skupina prostředků   | Vyberte **vytvořit nový**, zadejte **\<resource-group-name >** , vyberte OK nebo vyberte existující **\<resource-group-name >** na základě parametrů. |
     | **Podrobnosti instance** |                                                                 |
     | Název             | Zadejte **\<název virtuální sítě – název >**                                    |
     | Oblast           | Vyberte **\<oblast – název >** |
@@ -38,7 +38,7 @@ V této části vytvoříte virtuální síť a podsíť.
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
-    | Adresní prostor IPv4 | Zadejte **\<adresní prostor IPv4 >** |
+    | Adresní prostor IPv4 | Zadejte **\<IPv4-address-space >** |
 
 5. V části **název podsítě**vyberte slovo **výchozí**.
 

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024071"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249837"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
 > Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
      
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, dokončete tyto úkoly:
 
@@ -65,7 +65,7 @@ Než začnete s tímto kurzem, dokončete tyto úkoly:
 
    * Při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a tajné hodnoty do textového souboru. Budete je potřebovat brzy.
 
-* Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Shromážděte informace, které potřebujete.
 
@@ -106,7 +106,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
-    |**Umístění**     | Vyberte **Západní USA 2**.  Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).      |
+    |**Umístění**     | Vyberte **USA – západ 2**.  Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).      |
     |**Cenová úroveň**     |  Vyberte **Standard**.     |
 
 3. Vytvoření účtu trvá několik minut. Chcete-li monitorovat stav operace, zobrazte indikátor průběhu v horní části.
@@ -227,7 +227,7 @@ V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
     ```
    Zobrazí se výstup, který bude podobný následujícímu fragmentu kódu:
 
-   ```bash
+   ```output
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
    |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
@@ -253,7 +253,7 @@ Nezpracovaná ukázková data **small_radio_json. JSON** zachytí cílovou skupi
 
    Zobrazí se výstup, jak je znázorněno v následujícím fragmentu kódu:
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----+
    |firstname|  lastname|gender|            location|level|
    +---------+----------+------+--------------------+-----+
@@ -289,7 +289,7 @@ Nezpracovaná ukázková data **small_radio_json. JSON** zachytí cílovou skupi
 
    Zobrazí se výstup, jak je znázorněno v následujícím fragmentu kódu.
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----------------+
    |firstname|  lastname|gender|            location|subscription_type|
    +---------+----------+------+--------------------+-----------------+
@@ -343,7 +343,7 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiš
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Je nutné, abyste vytvořili datový sklad SQL jako předpoklad. Použijte plně kvalifikovaný název serveru pro **dwServer**. Například, `<servername>.database.windows.net`.
+4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Je nutné, abyste vytvořili datový sklad SQL jako předpoklad. Použijte plně kvalifikovaný název serveru pro **dwServer**. například `<servername>.database.windows.net`.
 
    ```scala
    //SQL Data Warehouse related settings

@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: aa9cd3f642e3d8047e8b64afb023fffb7bd2c4f6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 43d2a56757948f6005420d2b44f9bea963613d17
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484906"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252179"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené kodéry živého streamování
 
@@ -97,55 +97,9 @@ Aby bylo možné přehrávat obsah, musí být k dispozici zvukový a obrazový 
 - Změna konfigurace kodéru po zahájení práce má na událost negativní vliv. Změny konfigurace můžou způsobit, že dojde k nestabilitě události. 
 - Ujistěte se, že máte k nastavení události dostatek času. Pro vysoce škálovatelné události doporučujeme spustit nastavení hodinu před událostí.
 
-## <a name="becoming-an-on-premises-encoder-partner"></a>Stane se místní partner kodéru.
+## <a name="see-also"></a>Viz také
 
-Jako Azure Media Services on-premises Encoder partner Media Services propaguje váš produkt tím, že doporučí kodér zákazníkům pro podniky. Pokud se chcete stát místním partnerem kodéru, musíte ověřit kompatibilitu místního kodéru s Media Services. Provedete to tak, že provedete následující ověření.
-
-### <a name="pass-through-live-event-verification"></a>Předávací ověření události za provozu
-
-1. Ujistěte se, že je v účtu Media Services spuštěný **koncový bod streamování** . 
-2. Vytvořte a spusťte **předávací** živou událost. <br/> Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
-3. Získejte adresy URL pro příjem a nakonfigurujte místní kodér tak, aby používal adresu URL k odeslání živého datového proudu s více přenosovými rychlostmi do Media Services.
-4. Získejte adresu URL náhledu a použijte ji k ověření, že vstup z kodéru je skutečně přijatý.
-5. Vytvoří nový objekt **assetu** .
-6. Vytvořte **živý výstup** a použijte název assetu, který jste vytvořili.
-7. Vytvořte **Lokátor streamování** s integrovanými typy **zásad streamování** .
-8. Vypište cesty na **lokátoru streamování** a vraťte tak adresy URL, které se mají použít.
-9. Získejte název hostitele **koncového bodu streamování** , ze kterého chcete streamovat datový proud.
-10. Kombinací adresy URL z kroku 8 s názvem hostitele v kroku 9 získáte úplnou adresu URL.
-11. Spusťte živý kodér po dobu přibližně 10 minut.
-12. Zastaví živou událost. 
-13. Pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte archivovaný Asset a ujistěte se, že přehrávání nemá žádné viditelné histogramu na všech úrovních kvality. Nebo sledujte a ověřte pomocí adresy URL náhledu během živé relace.
-14. Poznamenejte si ID assetu, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi používanou z kodéru Live Encoder.
-15. Po vytvoření každého vzorku resetujte stav živé události.
-16. Opakujte kroky 5 až 15 pro všechny konfigurace, které kodér podporuje (s signalizací a bez něj, popisky nebo jiné rychlosti kódování).
-
-### <a name="live-encoding-live-event-verification"></a>Live Encoding – ověření události Live
-
-1. Ujistěte se, že je v účtu Media Services spuštěný **koncový bod streamování** . 
-2. Vytvořte a spusťte živou událost **živého kódování** . <br/> Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
-3. Získejte adresy URL pro příjem a nakonfigurujte kodér tak, aby do Media Services načetl živý datový proud s jednou přenosovou rychlostí.
-4. Získejte adresu URL náhledu a použijte ji k ověření, že vstup z kodéru je skutečně přijatý.
-5. Vytvoří nový objekt **assetu** .
-6. Vytvořte **živý výstup** a použijte název assetu, který jste vytvořili.
-7. Vytvořte **Lokátor streamování** s integrovanými typy **zásad streamování** .
-8. Vypište cesty na **lokátoru streamování** a vraťte tak adresy URL, které se mají použít.
-9. Získejte název hostitele **koncového bodu streamování** , ze kterého chcete streamovat datový proud.
-10. Kombinací adresy URL z kroku 8 s názvem hostitele v kroku 9 získáte úplnou adresu URL.
-11. Spusťte živý kodér po dobu přibližně 10 minut.
-12. Zastaví živou událost.
-13. Pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte archivovaný Asset a ujistěte se, že přehrávání nemá žádné viditelné histogramu pro všechny úrovně kvality. Nebo sledujte a ověřte pomocí adresy URL náhledu během živé relace.
-14. Poznamenejte si ID assetu, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi používanou z kodéru Live Encoder.
-15. Po vytvoření každého vzorku resetujte stav živé události.
-16. Opakujte kroky 5 až 15 pro všechny konfigurace, které kodér podporuje (s signalizací a bez něj, popisky nebo jiné rychlosti kódování).
-
-### <a name="longevity-verification"></a>Longevity ověřování
-
-Použijte stejný postup jako v rámci [předávacího ověřování pro živé události](#pass-through-live-event-verification) s výjimkou kroku 11. <br/>Místo 10 minut spusťte živý kodér po dobu jednoho týdne nebo déle. Pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte živé streamování v čase (nebo archivovaný Asset), abyste zajistili, že přehrávání nemá žádné viditelné histogramu.
-
-### <a name="email-your-recorded-settings"></a>Poslat zaznamenaná nastavení e-mailem
-
-Nakonec odešlete e-mailem zaznamenaná nastavení a parametry živého archivu do Azure Media Services v amshelp@microsoft.com jako oznámení, že prošly všechny kontroly pro vlastní ověření. Také zahrňte kontaktní informace pro jakékoliv následné zprávy. Můžete se obrátit na tým Azure Media Services s případnými dotazy týkajícími se tohoto procesu.
+[Stát se místním partnerem kodéru](become-on-premises-encoder-partner.md)
 
 ## <a name="next-steps"></a>Další kroky
 

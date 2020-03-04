@@ -1,26 +1,18 @@
 ---
 title: 'Kurz: dávkové testování pro vyhledání problémů – LUIS'
-titleSuffix: Azure Cognitive Services
-description: Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
+description: Tento kurz ukazuje, jak pomocí dávkového testování ověřit kvalitu vaší aplikace Language Understanding (LUIS).
 ms.topic: tutorial
-ms.date: 12/19/2019
-ms.author: diberry
-ms.openlocfilehash: 54beb26554fd823c46f961b4cc7057f347ad343c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447985"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250449"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Kurz: dávkové test sady dat
 
-Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.
+Tento kurz ukazuje, jak pomocí dávkového testování ověřit kvalitu vaší aplikace Language Understanding (LUIS).
 
 Testování služby batch vám pomůže ověřit aktivní, Trénink modelu stavu se známou sadou s popiskem projevy a entit. V souboru ve formátu JSON služby batch přidejte projevy a nastavte popisky entity, které potřebujete předpovědět uvnitř utterance.
 
@@ -28,13 +20,11 @@ Požadavky pro testování služby batch:
 
 * Maximálně 1000 projevy na test.
 * Žádné duplicity.
-* Povolené typy entit: jenom ty počítače, které se naučily jednoduché a složené. Testování služby batch je užitečná pouze pro obrobeny zjistili záměry a entity.
+* Povolené typy entit: jenom uživatelsky proučené entity.
 
-Při používání aplikace než v tomto kurzu, proveďte *není* pomocí příkladu projevy již byla přidána do záměru.
+Pokud používáte jinou aplikaci než tento kurz, *nepoužívejte ukázkový* projevy již přidaný do vaší aplikace.
 
-
-
-**V tomto kurzu se naučíte:**
+**Co se v tomto kurzu naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -42,201 +32,118 @@ Při používání aplikace než v tomto kurzu, proveďte *není* pomocí přík
 > * Vytvořte dávkový soubor testu
 > * Spuštění testu služby batch
 > * Kontrola výsledků testu
-> * Opravit chyby
-> * Opětovné testování služby batch
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 
-Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu.
+Naimportujte aplikaci, která bude mít Pizza pořadí, jako je například `1 pepperoni pizza on thin crust`.
 
-Použijte k tomu následující postup:
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) a uložte si ho.
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json?raw=true) a uložte si ho.
+1. Pomocí [portálu Luis ve verzi Preview](https://preview.luis.ai/)importujte JSON do nové aplikace a pojmenujte aplikaci `Pizza app`.
 
+1. Vyberte **vlak** v pravém horním rohu navigace a prohlaste aplikaci.
 
-2. Naimportujte soubor JSON do nové aplikace.
+## <a name="what-should-the-batch-file-utterances-include"></a>Jak by měl dávkový soubor projevy zahrnovat
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `batchtest`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+Dávkový soubor by měl obsahovat projevy s entitami učenými na nejvyšší úrovni, které jsou označené jako počáteční a koncová pozice. Projevy by neměl být součástí příkladů, které už jsou v aplikaci. Měly by být projevy, že chcete pozitivní předpověď záměru a entit.
 
-4. Trénujte aplikaci.
+Testy můžete oddělit podle záměru nebo entity nebo mít všechny testy (až 1000 projevy) ve stejném souboru.
 
 ## <a name="batch-file"></a>Dávkový soubor
 
-1. Vytvoření `HumanResources-jobs-batch.json` v textovém editoru nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json?raw=true) ho.
+Příklad JSON obsahuje jeden utterance s označenou entitou pro ilustraci toho, co soubor testu vypadá. Ve vašich vlastních testech byste měli mít mnoho projevy se správným záměrem a entitou učenou pro počítač.
 
-2. V souboru ve formátu JSON batch přidání projevů s **záměr** chcete předpokládané v testu.
+1. Vytvořte `pizza-with-machine-learned-entity-test.json` v textovém editoru nebo [si ho stáhněte](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) .
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+2. V dávkovém souboru ve formátu JSON přidejte utterance s **záměrem** , který chcete odhadnout v testu.
+
+   [!code-json[Add the intents to the batch test file](~/samples-cognitive-services-data-files/luis/batch-tests/pizza-with-machine-learned-entity-test.json "Add the intent to the batch test file")]
 
 ## <a name="run-the-batch"></a>Spusťte dávku
 
-1. Vyberte **Test** v horním navigačním panelu.
+1. V horním navigačním panelu vyberte **test** .
 
-2. Vyberte **Batch testování panel** na pravé straně panelu.
+2. Na panelu na pravé straně vyberte **panel dávkové testování** .
 
-    [![Aplikace LUIS snímek obrazovky s panelem test Batch zvýrazněnou](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
-
-3. Vyberte **datové sady importu**.
+3. Vyberte **importovat datovou sadu**.
 
     > [!div class="mx-imgBorder"]
-    > ![snímek aplikace LUIS s zvýrazněnou importovanou datovou sadou](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)
+    > ![snímek aplikace LUIS s zvýrazněnou importovanou datovou sadou](./media/luis-tutorial-batch-testing/import-dataset-button.png)
 
-4. Zvolit umístění souboru `HumanResources-jobs-batch.json` souboru.
+4. Vyberte umístění souboru `pizza-with-machine-learned-entity-test.json`.
 
-5. Zadejte název datové sady `intents only` a vyberte **provádí**.
+5. Pojmenujte datovou sadu `pizza test` a vyberte **Hotovo**.
 
-    ![Výběr souboru](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
+    > [!div class="mx-imgBorder"]
+    > ![vyberte soubor](./media/luis-tutorial-batch-testing/import-dataset-modal.png)
 
 6. Vyberte tlačítko **Spustit**.
 
-7. Vyberte **zobrazit výsledky**.
+7. Vyberte **Zobrazit výsledky**.
 
 8. Zkontrolujte výsledky v grafu a legend.
 
-    [![Snímek obrazovky LUIS aplikace s výsledky testů služby batch](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
+## <a name="review-batch-results-for-intents"></a>Kontrola výsledků dávky pro záměry
 
-## <a name="review-batch-results"></a>Zkontrolujte výsledky služby batch
+Výsledky testu ukazují, jak byl projevy testů předpovězený proti aktivní verzi.
 
-Batch graf zobrazuje čtyři kvadrantech výsledky. Napravo od grafu je filtr. Filtr obsahuje záměry a entity. Když vyberete [části grafu](luis-concept-batch-test.md#batch-test-results) nebo bodu v rámci tohoto grafu, přidružené utterance(s) zobrazení pod grafem.
+Batch graf zobrazuje čtyři kvadrantech výsledky. Napravo od grafu je filtr. Filtr obsahuje záměry a entity. Když vyberete [část grafu](luis-concept-batch-test.md#batch-test-results) nebo bod v rámci grafu, zobrazí se v grafu odpovídající utterance (y).
 
 Když najede myší na graf, kolečko myši můžete zvětšit nebo zmenšit zobrazení v grafu. To je užitečné, když existuje mnoho bodů v grafu úzce společně v clusteru.
 
-Graf je v čtyři kvadrantech dva oddíly zobrazí červeně. **Toto jsou oddíly pro zaměření na**.
+Graf je v čtyři kvadrantech dva oddíly zobrazí červeně.
 
-### <a name="getjobinformation-test-results"></a>Výsledky testu GetJobInformation
+1. V seznamu filtru vyberte záměr **ModifyOrder** .
 
-**GetJobInformation** zobrazit výsledky testů zobrazené ve filtru, že byla úspěšná 2 čtyři předpovědí. V levém dolním rohu vyberte název **false (negativní** ), aby se projevy pod grafem.
+    > [!div class="mx-imgBorder"]
+    > ![vybrat záměr ModifyOrder ze seznamu filtru](./media/luis-tutorial-batch-testing/select-intent-from-filter-list.png)
 
-Pomocí klávesnice CTRL + E přepnete zobrazení popisku, abyste zobrazili přesný text uživatele utterance.
+    Utterance je předpovězen jako **skutečný pozitivní** význam, který utterance úspěšně shodoval s jeho pozitivním předpověďm uvedeným v dávkovém souboru.
 
-`Is there a database position open in Los Colinas?` utterance je označena jako _GetJobInformation_ , ale aktuální model utterance jako _ApplyForJob_.
+    > [!div class="mx-imgBorder"]
+    > ![utterance úspěšně odpovídala jeho kladné předpovědi](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
 
-Existují skoro třikrát tolik příkladů pro **ApplyForJob** než **GetJobInformation**. Tato nestejnoměrnost příkladu projevy se váží ve prospěch záměru **ApplyForJob** , což způsobuje nesprávnou předpověď.
+    Zelené zaškrtnutí v seznamu filtry také označují úspěšnost testu pro každý záměr. Všechny ostatní záměry jsou uvedeny s 1/1 kladným skóre, protože utterance byl testován proti každému záměru, jako negativní test pro všechny záměry, které nejsou uvedeny v dávkovém testu.
 
-Všimněte si, že oba záměry mají stejný počet chyb. Nesprávný predikce v jedné záměr má vliv na ostatní záměr také. Oba obsahuje chyby, protože projevy byly správně předpovědět pro jeden záměr a také nesprávně ne pro jiné záměr předpovědět.
+1. Vyberte **potvrzující** záměr. Tento záměr není uvedený v dávkovém testu, takže se jedná o negativní test utterance, který je uvedený v dávkovém testu.
 
-<a name="fix-the-app"></a>
+    > [!div class="mx-imgBorder"]
+    > ![utterance úspěšně předpovězena negativní pro neuvedené záměr v dávkovém souboru](./media/luis-tutorial-batch-testing/true-negative-intent.png)
 
-## <a name="how-to-fix-the-app"></a>Jak opravit aplikaci
+    Negativní test byl úspěšný, jak bylo uvedeno u zeleného textu ve filtru a v mřížce.
 
-Cílem této části je, aby všechny projevy správně předpovědět pro **GetJobInformation** po opravě aplikace.
+## <a name="review-batch-test-results-for-entities"></a>Kontrola výsledků dávkových testů pro entity
 
-Přidání projevů soubor tyto služby batch na správné záměr je zdánlivě rychlé opravy. To není to, co chcete udělat. Chcete, aby služba LUIS správně předpovědět těchto projevů bez nutnosti přidávat jako příklady.
+Entita ModifyOrder jako entita počítače s podentitami obsahuje informace o tom, jestli se entita nejvyšší úrovně shodovala s tím, jak jsou dílčí entity předpovězeny.
 
-Může vás také zajímat o odebrání projevy z **ApplyForJob** dokud množství utterance je stejný jako **GetJobInformation**. Který lze pravděpodobně vyřešit výsledky testů, ale bude bránit LUIS z přesně předpovídat tohoto záměru příště.
+1. V seznamu filtrovat vyberte entitu **ModifyOrder** a pak vyberte kruh v mřížce.
 
-Opravou je přidání dalších projevy k **GetJobInformation**. Nezapomeňte změnit délku utterance, volbu slov a uspořádání slov, zatímco stále cílíte na záměr najít informace o úloze, a _nemusíte_ je použít pro úlohu.
+1. Předpověď entity se zobrazí pod grafem. Zobrazení obsahuje plné čáry pro předpovědi, které odpovídají očekávanému a tečkovanému řádku pro předpovědi, které neodpovídají očekávání.
 
-### <a name="add-more-utterances"></a>Přidání další projevů
+    > [!div class="mx-imgBorder"]
+    > Nadřazená položka ![entit byla úspěšně dokončena v dávkovém souboru](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
 
-1. Zavřít panel dávky testů tak, že vyberete **testování** tlačítko v horním navigačním panelu.
+## <a name="finding-errors-with-a-batch-test"></a>Hledání chyb pomocí dávkového testu
 
-2. Vyberte **GetJobInformation** ze seznamu záměry.
+V tomto kurzu jste si ukázali, jak spustit test a interpretovat výsledky. Nedostalo se do testovacího filozofie nebo na reakci na neúspěšné testy.
 
-3. Přidat další projevy, které jsou různé délky, volba slov a uspořádání slova, nezapomeňte zahrnout podmínky `resume`, `c.v.`, a `apply`:
-
-    |Příklad projevy pro **GetJobInformation** záměr|
-    |--|
-    |Vyžaduje novou úlohu v datovém skladu pro stocker můžu použít s životopis?|
-    |Kde se dnes střešní úlohy?|
-    |Jsem slyšela, že došlo lékařské kódovací úlohu, která vyžaduje životopis.|
-    |Chci dostávat úlohu pomáhá zápis jejich c.v.s. děti škole |
-    |Tady je Moje pokračování hledání nového příspěvku na komunitní škole pomocí počítače se.|
-    |Jaké pozice jsou k dispozici v podřízené domény a domovské péče?|
-    |Je k dispozici učně helpdesku na novinových?|
-    |Moje C.v. ukazuje, že jsem vhodný pro analýzu zajišťování rozpočtů a ke ztrátě peníze. Je cokoli, co je pro tento typ práce?|
-    |Kde jsou země procházení úlohy nyní?|
-    |Jsem pracovala 8 let jako ovladač EMS. Žádné nové úlohy?|
-    |Nové úlohy zpracování potravin vyžadují aplikace?|
-    |Kolik nové yard pracovní úlohy jsou k dispozici?|
-    |Existuje nový příspěvek HR pro práci s vývojáři a vyjednávání?|
-    |Mám k dispozici nadřízených serverů knihovny a archivní řízení. Všechny nové pozice?|
-    |Existují jakékoli babysitting úlohy pro 13 olds rok ve městě dnes?|
-
-    Neoznačuje popiskem **úlohy** entity v projevy. V této části kurzu se zaměřuje na pouze záměru předpovědi.
-
-4. Trénování aplikace tak, že vyberete **Train** v pravém horním navigačním panelu.
-
-## <a name="verify-the-new-model"></a>Ověřte nový model
-
-Pokud chcete ověřit, že jsou správně předpovědět projevy v testu služby batch, znovu spusťte test služby batch.
-
-1. Vyberte **Test** v horním navigačním panelu. Pokud výsledky batch jsou stále otevřen, vyberte **zpět do seznamu**.
-
-1. Klikněte na tlačítko se třemi tečkami (***...***) napravo od názvu dávky a vyberte **Spustit**. Počkejte, dokud se provádí test služby batch. Všimněte si, že **zobrazit výsledky** je nyní zelené tlačítko. To znamená, že celý batch proběhla úspěšně.
-
-1. Vyberte **zobrazit výsledky**. Příkazů by měly mít zelené ikony nalevo od názvu záměru.
-
-## <a name="create-batch-file-with-entities"></a>Vytvořte dávkový soubor s entitami
-
-Aby bylo možné ověřit entity v rámci služby batch testu, entity muset označeny v dávkovém souboru JSON.
-
-Změnu entity pro celkový počet slov ([token](luis-glossary.md#token)) počet může mít vliv na kvalitu předpovědi. Zajistěte, aby trénovacích dat zadané na záměr s s popiskem projevy zahrnuje celou řadu délky entity.
-
-Při prvním psaní a testování dávkové soubory, je nejlepší začít s několika projevy a entity, které znáte pracovat, a také pár, který jste domníváte se může správně předpovědět. Díky tomu umožní věnovat v problémových oblastí rychle. Po otestování **GetJobInformation** a **ApplyForJob** záměry pomocí několika různých úloh názvy, které nebyly předpovědět, zobrazíte, pokud dojde k problému předpovědi byl vyvinut tento dávkový soubor testu s určitými hodnotami pro **úlohy** entity.
-
-Hodnota **úlohy** entita, součástí projevy testu je obvykle jedno nebo dvě slova s pár příkladů se další slova. Pokud _vlastní_ lidských zdrojů, aplikace obvykle obsahuje názvy úlohy řada výrazů, příklad projevy označené **úlohy** entity v této aplikaci nebude fungovat správně.
-
-1. Vytvoření `HumanResources-entities-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/) nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json?raw=true) ho.
-
-2. V souboru ve formátu JSON služby batch, přidejte pole objektů, které zahrnují projevy s **záměr** chcete předpokládané v testu, stejně jako umístění všech entit v utterance. Entita je založená na tokenech, ujistěte se, že ke spouštění a zastavování Každá entita na znak. Začínat nebo končit utterance v prostoru. To způsobí chybu při importu souboru služby batch.
-
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
-
-
-## <a name="run-the-batch-with-entities"></a>Spusťte dávku s entitami
-
-1. Vyberte **Test** v horním navigačním panelu.
-
-2. Vyberte **Batch testování panel** na pravé straně panelu.
-
-3. Vyberte **datové sady importu**.
-
-4. Vyberte umístění systému souboru `HumanResources-entities-batch.json` souboru.
-
-5. Zadejte název datové sady `entities` a vyberte **provádí**.
-
-6. Vyberte tlačítko **Spustit**. Počkejte, dokud se provádí test.
-
-7. Vyberte **zobrazit výsledky**.
-
-## <a name="review-entity-batch-results"></a>Zkontrolujte výsledky entit služby batch
-
-Grafu se otevře s všechny záměry správně předpovědět. Posuňte se dolů na filtr na pravé straně, abyste našli předpovědi entit s chybami.
-
-1. Vyberte **úlohy** entity ve filtru.
-
-    ![Předpovědi entit chyb ve filtru](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
-
-    Graf se změny zobrazily predikcí entity.
-
-2. Vyberte **falešně negativní** v nižší, zůstane kvadrantu grafu. Pak pomocí klávesnice kombinaci CTRL + E přepněte do zobrazení tokenu.
-
-    [![Token zobrazení entity predikcí](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
-
-    Recenzování projevy pod grafem odhalí konzistentní chyba, pokud název úlohy obsahuje `SQL`. Kontrola příklad projevy a seznam úloh frázi, SQL je jen jednou a pouze jako součást názvu větší úlohy `sql/oracle database administrator`.
-
-## <a name="fix-the-app-based-on-entity-batch-results"></a>Oprava aplikace na základě výsledků entity batch
-
-Oprava aplikace vyžaduje LUIS správně určit variant úloh SQL. Pro opravu několika způsoby.
-
-* Explicitně přidáte další příklad projevy, které používají SQL a označovat pomocí popisků těchto slov jako entita úlohy.
-* Explicitně přidáte do seznamu slovní spojení více úloh SQL
-
-Tyto úlohy jsou ponechána musíte udělat.
-
-Přidávání [vzor](luis-concept-patterns.md) před entity je správně předpovědět, nebude tento problém vyřešit. Je to proto, že vzor nebudou odpovídat, dokud se zjistí všechny entity ve vzoru.
+* Ujistěte se, že v testu pokryjete pozitivní i negativní projevy, včetně projevy, které mohou být předpovězeny pro jiný, ale související záměr.
+* V případě selhání projevy proveďte následující úlohy a spusťte testy znovu:
+    * Projděte si aktuální příklady pro záměry a entity, ověřte, že je v příkladu projevy aktivní verze správná jak pro záměr, tak pro označování entit.
+    * Přidat funkce, které pomůžou prediktivním záměrům a entitám vaší aplikace
+    * Přidat další pozitivní příklad projevy
+    * Kontrola bilance příkladu projevy napříč záměry
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](./includes/cleanup-resources-preview-portal.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-step"></a>Další krok
 
-Tento kurz používá testovací služby batch k najít problémy s aktuální model. Model bylo opraveno a podrobeny novému testování s dávkový soubor, pokud chcete ověřit že správné provedení změny.
+Kurz pro ověření aktuálního modelu použil dávkový test.
 
 > [!div class="nextstepaction"]
-> [Další informace o vzorech](luis-tutorial-pattern.md)
+> [Přečtěte si o vzorcích](luis-tutorial-pattern.md)
 

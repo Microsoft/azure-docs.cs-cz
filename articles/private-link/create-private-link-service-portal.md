@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191104"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252550"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure Portal
 
@@ -29,21 +29,22 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Nejdřív vytvořte virtuální síť. Dále vytvořte interní nástroj pro vyrovnávání zatížení, který bude použit ve službě privátního propojení.
 
-### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
 V této části vytvoříte virtuální síť. Také vytvoříte podsíť pro hostování nástroje pro vyrovnávání zatížení, který přistupuje ke službě privátního propojení.
 
-1. V levé horní části portálu vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+V této části budete muset v krocích níže nahradit následující parametry:
 
-1. V podokně **vytvořit virtuální síť** zadejte nebo vyberte tyto hodnoty:
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroupLB |
+| **\<název virtuální sítě >** | myVNet          |
+| **\<název oblasti >**          | USA – východ 2      |
+| **\<IPv4-Address-Space >**   | 10.3.0.0 \ 16          |
+| **\<název podsítě >**          | myBackendSubnet        |
+| **\<> rozsahu adres** | 10.3.0.0 \ 24          |
 
-   - **Název**: zadejte **myVNet**.
-   - **Zdroj dat**: vyberte **vytvořit novou**, zadejte **myResourceGroupLB**a vyberte **OK**.
-   - **Název** > **podsítě** : zadejte **myBackendSubnet**.
-
-1. Vyberte **Create** (Vytvořit).
-
-   ![Vytvoření virtuální sítě](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>Vytvoření standardního nástroje pro vyrovnávání zatížení
 
@@ -58,7 +59,7 @@ Pomocí portálu vytvořte standardní interní nástroj pro vyrovnávání zat�
     | **Předplatné**               | Vyberte své předplatné.    |
     | **Skupina prostředků**         | V poli vyberte **myResourceGroupLB** .|
     | **Název**                   | Zadejte **myLoadBalancer**.                                   |
-    | **Oblast**         | Vyberte **Východní USA 2**.                                        |
+    | **Oblast**         | Vyberte **USA – východ 2**.                                        |
     | **Typ**          | Vyberte **interní**.                                        |
     | **SKU**           | Vyberte **Standard**.                          |
     | **Virtuální síť**           | Vyberte **myVNet**.                          |
@@ -147,7 +148,7 @@ V této části vytvoříte službu privátního propojení za standardním nás
     | **Skupina prostředků**    | Vyberte **myResourceGroupLB**.                                                    |
     | Podrobnosti instance: |                                                                              |
     | **Název**              | Zadejte **myPrivateLinkService**. |
-    | **Oblast**            | Vyberte **Východní USA 2**.                                                        |
+    | **Oblast**            | Vyberte **USA – východ 2**.                                                        |
 
 1. Vyberte **Další: odchozí nastavení**.
 

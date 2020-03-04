@@ -1,14 +1,14 @@
 ---
 title: Odpovědi na časté dotazy
-description: 'Odpovědi na běžné dotazy týkající se těchto témat: funkce služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
+description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c8449ef27ca73cd6e0c2908ce4cbebea2c513dbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450097"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255027"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -104,7 +104,7 @@ Platí tato omezení velikosti:
 OS/počítač | Omezení velikosti zdroje dat
 --- | ---
 Windows 8 nebo novější | 54 400 GB
-Windows 7 |1700 GB
+Windows 7 |1700 GB
 Windows Server 2012 nebo novější | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Virtuální počítač Azure | 16 datových disků<br/> Pokud se chcete zaregistrovat k privátní verzi Preview virtuálních počítačů s víc než 16 disky (až 32 disků), napište nám na AskAzureBackupTeam@microsoft.com. <br><br> Datový disk až 32 TB
@@ -118,12 +118,12 @@ Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdroj
 Svazek |Množství dat zálohovaných z jednoho svazku virtuálního počítače
 Databáze SQL Serveru |Velikost jedné zálohované databáze SQL
 SharePoint | Součet databází obsahu a konfiguračních databází v rámci zálohované farmy služby SharePoint
-Výměna |Součet všech databází systému Exchange na zálohovaném serveru Exchange
+Exchange |Součet všech databází systému Exchange na zálohovaném serveru Exchange
 BMR a stav systému |Každá jednotlivá kopie BMR nebo stavu systému zálohovaného počítače
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Existuje nějaké omezení množství dat zálohovaných s využitím trezoru služby Recovery Services?
 
-Pro množství dat zálohovaných s využitím trezoru služby Recovery Services neexistuje žádné omezení.
+Celkové množství dat, které můžete zálohovat pomocí trezoru Recovery Services, není nijak omezené. Jednotlivé zdroje dat (kromě virtuálních počítačů Azure) můžou mít velikost maximálně 54 400 GB. Další informace o omezeních najdete [v části omezení trezoru v matici podpory](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Proč je velikost dat přenášených do trezoru služby Recovery Services menší než velikost dat vybraných k zálohování?
 

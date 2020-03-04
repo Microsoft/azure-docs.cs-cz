@@ -4,25 +4,19 @@ description: Přečtěte si, jak migrovat virtuální zařízení řady StorSimp
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/14/2020
+ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 815fda861748f1011eab22ef75fa7e933ca64c55
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209477"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252658"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrace StorSimple 1200 na Azure File Sync
 
-Série StorSimple 1200 je virtuální zařízení, které běží v místním datovém centru.
-Po ohlášené skončení životnosti produktové řady StorSimple od prosince 31 2022 se cloudová služba, ke které je toto virtuální zařízení připojila, přestane pracovat.
-
-Je nezbytné migrovat jakékoli zařízení StorSimple s využitím dostatečné doby na náhradní.
-Azure File Sync je technologie přirozeného následníka s více funkcemi a větší flexibilitou než StorSimple nabídky.
-
-Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync.
+Série StorSimple 1200 je virtuální zařízení, které běží v místním datovém centru. Je možné migrovat data z tohoto zařízení do Azure File Syncho prostředí. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync.
 
 ## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
@@ -183,7 +177,7 @@ Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, aby
 
 Zásada pro volné místo svazku ve vrstvách cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se zachovávat 99% volného místa na disku, takže místní mezipaměť nefunguje, protože byste mohli očekávat. Pokud se nejedná o váš cíl jenom pro svazek, který obsahuje jenom zřídka používané, archivní data.
 
-## <a name="troubleshoot"></a>Řešení problémů
+## <a name="troubleshoot"></a>Řešení potíží
 
 Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s *názvem "svazek je plný"* . Pokud se jedná o tento případ, bude vaše rychlost stahování nejspíš lepší než rychlost nahrávání. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje.
 

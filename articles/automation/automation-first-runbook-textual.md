@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c816ade5ae6b416ba716433f385b75e1b32eb92
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 16b6a0cf3e43b172667f55b1ac95e8a278769f9d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226502"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246390"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Můj první runbook pracovního postupu PowerShellu
 
@@ -26,7 +26,7 @@ V tomto kurzu se seznámíte s vytvořením [runbooku pracovního postupu PowerS
 >[!NOTE]
 >Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -206,7 +206,7 @@ Runbook aktuálně spouští virtuální počítač, který jste pevně zakódov
 6. Kliknutím na **Spustit** spustíte runbook. 
 7. Zadejte hodnoty pro **VMName** a **RESOURCEGROUPNAME** pro virtuální počítač, který se chystáte spustit.
 
-   ![Spustit runbook](media/automation-first-runbook-textual/automation-pass-params.png)
+   ![Spuštění runbooku](media/automation-first-runbook-textual/automation-pass-params.png)
 
 8. Po dokončení sady Runbook ověřte, zda byl virtuální počítač spuštěn.
 

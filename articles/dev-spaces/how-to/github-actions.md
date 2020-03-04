@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Revize a testování změn z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHubu a Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196548"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252383"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
 
@@ -39,7 +39,7 @@ V tomto průvodci se naučíte:
 
 Vytvořit Azure Container Registry (ACR):
 
-```cmd
+```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
@@ -52,7 +52,7 @@ Uložte hodnotu *loginServer* z výstupu, protože se používá v pozdějším 
 
 K vytvoření instančního objektu použijte [příkaz AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Příklad:
 
-```cmd
+```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
@@ -60,19 +60,19 @@ Výstup JSON uložte, protože se používá v pozdějším kroku.
 
 K zobrazení *ID* clusteru AKS použijte [AZ AKS show][az-aks-show] :
 
-```cmd
+```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
 K zobrazení *ID* ACR použijte [AZ ACR show][az-acr-show] :
 
-```cmd
+```azurecli
 az acr show --name <acrName> --query id
 ```
 
 Pomocí [AZ role Assignment Create][az-role-assignment-create] můžete dát *přispěvateli* přístup ke clusteru AKS a *AcrPush* přístup k vašemu ACR.
 
-```cmd
+```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
 az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
@@ -158,7 +158,7 @@ Pokud vaše změny sloučíte do *Hlavní* větve ve svém rozvětvení, spustí
 
 ## <a name="clean-up-your-azure-resources"></a>Vyčištění prostředků Azure
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Vyhledejte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 964fa9ec4948bf178c310af8e35913fda5f70c0f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934185"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255731"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Nejčastější dotazy týkající se Azure Dev Spaces
 
@@ -64,6 +64,14 @@ Ano, můžete použít Azure Dev Spaces u clusterů AKS s povolenými [rozsahy I
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Můžu použít Azure Dev Spaces u clusterů AKS s omezeným provozem odchozích dat pro uzly clusteru?
 
 Ano, v případě, že jsou povolené správné plně kvalifikované názvy domén, můžete použít Azure Dev Spaces v clusterech AKS s [omezeným přenosem dat pro uzly clusteru][aks-restrict-egress-traffic] povolené. Další informace o použití AKS clusterů s omezeným přenosem dat pro uzly clusteru s povoleným Azure Dev Spaces je k dispozici [zde](configure-networking.md#ingress-and-egress-network-traffic-requirements).
+
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Můžu použít Azure Dev Spaces u clusterů AKS s podporou RBAC?
+
+Ano, můžete použít Azure Dev Spaces v clusterech AKS s povolenou RBAC nebo bez ní.
+
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Co se stane, když povolím příchozí přenos dat pro projekt v aplikaci Visual Studio?
+
+Při použití sady Visual Studio k přípravě projektu máte možnost Povolit pro vaši službu příchozí přenos dat. Když příchozí připojení povolíte, vytvoří se pro přístup ke službě při spuštění v clusteru AKS veřejný koncový bod, který je nepovinný. Pokud příchozí příchozí přenosy nepovolíte, bude služba dostupná jenom z vašeho clusteru AKS.
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled

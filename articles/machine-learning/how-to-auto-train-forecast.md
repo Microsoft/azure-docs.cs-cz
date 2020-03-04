@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905716"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251846"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,7 +57,7 @@ V rámci automatizovaného ML jsou také k dispozici informace o nativních čas
 
 Autoregresivní Integrated klouzavý průměr (ARIMA) je oblíbená statistická metoda pro prognózování časových řad. Tato technika prognózy se běžně používá ve scénářích krátkodobého předpovědi, kde data zobrazují důkazy o trendech, jako jsou cykly, což může být nepředvídatelné a obtížné model nebo předpověď. Automatické ARIMA transformuje data do stacionárních dat, aby se přijímaly konzistentní a spolehlivé výsledky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
 * Tento článek předpokládá základní znalost s nastavením automatizovaného experimentu strojového učení. Pomocí [kurzu](tutorial-auto-train-models.md) nebo [postupu](how-to-configure-auto-train.md) si můžete prohlédnout základní modely návrhu experimentů pro strojové učení.
@@ -178,13 +178,14 @@ Podrobné příklady kódu pro pokročilou konfiguraci prognózování najdete v
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Konfigurace experimentu s DNN povolení prognózování
 
 > [!NOTE]
-> Podpora DNN pro prognózování v automatizovaných Machine Learning je ve verzi Preview.
+> Podpora DNN pro prognózování v automatizovaných Machine Learning je ve verzi Preview a není podporovaná pro místní běhy.
 
 Aby bylo možné využít hluboké pro prognózování, budete muset nastavit parametr `enable_dnn` v poli AutoMLConfig na hodnotu true. 
 
-Aby bylo možné používat hluboké, doporučujeme použít výpočetní cluster AML s SKU GPU a alespoň dva uzly jako cíl výpočtů. Další informace najdete v dokumentaci ke službě [AML COMPUTE](how-to-set-up-training-targets.md#amlcompute). Další informace o velikostech virtuálních počítačů, které zahrnují GPU, najdete v tématu [velikosti virtuálních počítačů optimalizovaných pro procesory GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) .
+Doporučujeme použít výpočetní cluster AML s SKU GPU a alespoň dva uzly jako cíl výpočtů. Aby bylo umožněno dostatek času na dokončení školení DNN, doporučujeme nastavit časový limit experimentu na minimálně několik hodin.
+Další informace o AML výpočetních a virtuálních počítačích, které zahrnují GPU, najdete v dokumentaci ke [výpočetním dokumentům AML](how-to-set-up-training-targets.md#amlcompute) a na [velikost virtuálních počítačů optimalizovaných pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
-Aby bylo umožněno dostatek času na dokončení školení DNN, doporučujeme nastavit časový limit experimentu alespoň na několik hodin.
+Podrobný příklad kódu, který využívá hluboké, najdete v [poznámkovém bloku pro vytváření předpovědí pro produkci nápojů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) .
 
 ### <a name="view-feature-engineering-summary"></a>Zobrazit souhrn metodologie funkcí
 

@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 85b59c6549a62f7d9945f5739d1d0fde8c0fa3b8
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158906"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252648"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Použití privátních koncových bodů pro Azure Storage (Preview)
 
@@ -52,7 +52,7 @@ Při vytváření privátního koncového bodu musíte zadat účet úložiště
 
 Pro přístup pro čtení do sekundární oblasti s účtem úložiště nakonfigurovaným pro geograficky redundantní úložiště musíte oddělit soukromé koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání**. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci. Další informace o možnostech redundance úložiště najdete v tématu [Azure Storage redundance](storage-redundancy.md).
 
-#### <a name="resources"></a>Prostředky
+#### <a name="resources"></a>Zdroje
 
 Podrobnější informace o vytvoření privátního koncového bodu pro účet úložiště najdete v následujících článcích:
 
@@ -111,7 +111,7 @@ Doporučené názvy zón DNS pro privátní koncové body služby Storage jsou:
 | Table Service          | `privatelink.table.core.windows.net` |
 | Statické weby        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>Prostředky
+#### <a name="resources"></a>Zdroje
 
 Další informace o konfiguraci vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
 
@@ -136,4 +136,4 @@ Toto omezení je výsledkem změn DNS provedených při vytváření privátníh
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Pravidla skupiny zabezpečení sítě pro podsítě s privátními koncovými body
 
-V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) pro podsítě s privátními koncovými body. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.
+V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) a trasy definované uživatelem pro privátní koncové body. Pravidla NSG použitá pro podsíť hostující soukromý koncový bod se aplikují na soukromý koncový bod. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 3f18537b4b038844c9aa824593e354c23c792370
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026780"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252337"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Monitorování připojení zařízení s využitím Azure CLI
 
@@ -23,7 +23,7 @@ Pomocí rozšíření Azure CLI IoT můžete zobrazit zprávy, které vaše zař
 
 [Další podrobnosti najdete v referenčních informacích k rozšířením Azure CLI.](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/central)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Rozhraní příkazového řádku Azure je nainstalované a má verzi 2.0.7 nebo vyšší. Verzi Azure CLI zjistíte spuštěním `az --version`. Informace o tom, jak nainstalovat a aktualizovat z [dokumentů Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 + Pracovní nebo školní účet v Azure, který se přidal jako uživatel do aplikace IoT Central.
@@ -33,23 +33,26 @@ Pomocí rozšíření Azure CLI IoT můžete zobrazit zprávy, které vaše zař
 Spusťte následující příkaz z příkazového řádku pro instalaci:
 
 ```cmd/sh
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-Ověřte verzi rozšíření spuštěním 
+Ověřte verzi rozšíření spuštěním:
+
 ```cmd/sh
 az --version
 ```
-Mělo by se zobrazit rozšíření Azure-CLI-IoT-EXT 0.8.1 nebo vyšší. Pokud není, spusťte
+
+Měli byste vidět, že rozšíření Azure-IoT je 0.8.1 nebo novější. Pokud tomu tak není, spusťte příkaz:
+
 ```cmd/sh
-az extension update --name azure-cli-iot-ext
+az extension update --name azure-iot
 ```
 
 ## <a name="using-the-extension"></a>Použití rozšíření
 
 Následující části popisují běžné příkazy a možnosti, které můžete použít při spuštění `az iot central`. Chcete-li zobrazit úplnou sadu příkazů a možností, předejte `--help` do `az iot central` nebo kteréhokoli jeho dílčích příkazů.
 
-### <a name="login"></a>Přihlášení
+### <a name="login"></a>Přihlásit
 
 Začněte přihlášením k rozhraní příkazového řádku Azure CLI. 
 

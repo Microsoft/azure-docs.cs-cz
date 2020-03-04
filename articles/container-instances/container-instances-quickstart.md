@@ -7,12 +7,12 @@ ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: ab079c7ad5d741d5a569e042ae8939cbeeff203b
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533583"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252189"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure
 
@@ -40,9 +40,9 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru pomocí Azure CLI, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do příkazu [AZ Container Create][az-container-create] . V tomto rychlém startu použijete obrázek veřejné `mcr.microsoft.com/azuredocs/aci-helloworld`. Tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML.
+Teď když máte skupinu prostředků, můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru pomocí Azure CLI, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do příkazu [AZ Container Create][az-container-create] . V tomto rychlém startu použijete obrázek veřejné `mcr.microsoft.com/azuredocs/aci-helloworld`. Tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML.
 
-Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s označením názvu DNS, aby byla webová aplikace veřejně dosažitelná.
+Kontejnery můžete zveřejnit na Internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s označením názvu DNS, aby byla webová aplikace veřejně dosažitelná.
 
 Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte hodnotu `--dns-name-label` jedinečnou v rámci oblasti Azure, ve které vytvoříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
@@ -58,8 +58,7 @@ az container show --resource-group myResourceGroup --name mycontainer --query "{
 
 Po spuštění příkazu se zobrazí plně kvalifikovaný název domény kontejneru a stav jeho zřizování.
 
-```console
-$ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+```output
 FQDN                               ProvisioningState
 ---------------------------------  -------------------
 aci-demo.eastus.azurecontainer.io  Succeeded
@@ -83,8 +82,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 Ve výstupu se zobrazí protokoly kontejneru a měly by se zobrazit i požadavky HTTP GET, které se vygenerovaly, když jste aplikaci zobrazili v prohlížeči.
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```output
 listening on port 80
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:43:53 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:44:36 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
@@ -103,8 +101,7 @@ az container attach --resource-group myResourceGroup --name mycontainer
 
 Po připojení několikrát aktualizujte svůj prohlížeč, aby se vygeneroval další výstup. Když jste hotovi, odpojte konzolu stisknutím `Control+C`. Zobrazený výstup by měl vypadat přibližně takto:
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```output
 Container 'mycontainer' is in state 'Running'...
 (count: 1) (last timestamp: 2019-03-21 17:27:20+00:00) pulling image "mcr.microsoft.com/azuredocs/aci-helloworld"
 (count: 1) (last timestamp: 2019-03-21 17:27:24+00:00) Successfully pulled image "mcr.microsoft.com/azuredocs/aci-helloworld"
@@ -145,7 +142,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili službu Azure Container instance pomocí veřejné image Microsoft. Pokud si chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
+V tomto rychlém startu jste vytvořili službu Azure Container instance pomocí veřejné image Microsoft. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)

@@ -3,12 +3,12 @@ title: Automatizace Azure Application Insights s využitím PowerShellu | Micros
 description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669790"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250785"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -128,7 +128,7 @@ Vytvoření nového souboru. JSON – Pojďme ho v tomto příkladu volat `templ
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -320,16 +320,30 @@ Chcete-li získat vlastnosti denního limitu, použijte rutinu [set-AzApplicatio
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-Chcete-li nastavit vlastnosti denního limitu, použijte stejnou rutinu. Chcete-li například nastavit limit na 300 GB za den, 
+Chcete-li nastavit vlastnosti denního limitu, použijte stejnou rutinu. Chcete-li například nastavit limit na 300 GB za den,
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
+[ARMClient](https://github.com/projectkudu/ARMClient) můžete použít také k získání a nastavení parametrů denního Cap.  Chcete-li získat aktuální hodnoty, použijte:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>Nastavení času pro obnovení denního limitu
+
+Chcete-li nastavit denní čas obnovení, můžete použít [ARMClient](https://github.com/projectkudu/ARMClient). Tady je příklad použití `ARMClient`k nastavení času resetování na novou hodinu (v tomto příkladu 12:00 UTC):
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
+
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>Nastavení cenového plánu 
 
-K získání aktuálního cenového plánu použijte rutinu [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) : 
+K získání aktuálního cenového plánu použijte rutinu [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) :
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -350,14 +364,31 @@ Cenové tarify pro existující Application Insights prostředek můžete také 
                -appName myApp
 ```
 
+`priceCode` je definován jako:
+
 |priceCode|Rozhraní|
 |---|---|
 |1|Za GB (dříve označované jako základní plán)|
 |2|Za uzel (dříve název plánu v podniku)|
 
+Nakonec můžete pomocí [ARMClient](https://github.com/projectkudu/ARMClient) získat a nastavit cenové plány a parametry denního Cap.  Chcete-li získat aktuální hodnoty, použijte:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+A všechny tyto parametry můžete nastavit pomocí:
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+Tím nastavíte denní limit na 200 GB za den, nakonfigurujete denní dobu resetování na 12:00 UTC, odešlete e-maily, když je dosaženo limitu a dojde k dosažení úrovně upozornění, a nastavíte prahovou hodnotu pro upozornění na 90% limitu.  
+
 ## <a name="add-a-metric-alert"></a>Přidat upozornění metriky
 
-Postup při automatizaci vytváření výstrah metriky najdete v [článku o šabloně upozornění metrik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert) .
+Pokud chcete automatizovat vytváření výstrah metrik, Projděte si [článek šablona výstrahy metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert) .
 
 
 ## <a name="add-an-availability-test"></a>Přidat test dostupnosti

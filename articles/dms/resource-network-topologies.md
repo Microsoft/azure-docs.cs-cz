@@ -3,8 +3,8 @@ title: Síťové topologie pro migrace spravované instance SQL
 titleSuffix: Azure Database Migration Service
 description: Seznamte se se zdrojovými a cílovými konfiguracemi pro Azure SQL Database migrace spravované instance pomocí Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9a313ea798519273ce57961544ec5b37c4d9c5ca
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 48485b7ba0f846afa737454b092a6c1ee986b737
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749265"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254961"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>Síťové topologie pro migrace spravované instance služby Azure SQL DB pomocí Azure Database Migration Service
 
@@ -75,13 +75,13 @@ Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje je
 
 ## <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
-| **Jméno**   | **PORT** | **PROTOCOL** | **ZDROJ** | **TABULKA** | **KROKY** |
+| **Jméno**   | **PŘÍSTAVNÍ** | **PROTOKOL** | **Zdrojová** | **TABULKA** | **KROKY** |
 |------------|----------|--------------|------------|-----------------|------------|
 | DMS_subnet | Všechny      | Všechny          | PODSÍŤ DMS | Všechny             | Povolit      |
 
 ## <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
 
-| **Jméno**                  | **PORT**                                              | **PROTOCOL** | **ZDROJ** | **TABULKA**           | **KROKY** | **Důvod pravidla**                                                                                                                                                                              |
+| **Jméno**                  | **PŘÍSTAVNÍ**                                              | **PROTOKOL** | **Zdrojová** | **TABULKA**           | **KROKY** | **Důvod pravidla**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | správa                | 443, 9354                                              | TCP          | Všechny        | Všechny                       | Povolit      | Komunikace roviny správy prostřednictvím Service Bus a úložiště objektů BLOB v Azure. <br/>(Pokud je povolen partnerský vztah Microsoftu, možná toto pravidlo nebudete potřebovat.)                                                             |
 | Diagnostika               | 12000                                                 | TCP          | Všechny        | Všechny                       | Povolit      | DMS pomocí tohoto pravidla shromažďuje diagnostické informace pro účely řešení potíží.                                                                                                                      |
@@ -90,7 +90,7 @@ Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje je
 | Sdílená složka SMB                 | 445                                                   | TCP          | Všechny        | Adresní prostor místního prostředí | Povolit      | Síťová sdílená složka SMB pro DMS pro ukládání záložních souborů databáze pro migrace do Azure SQL Database MI a SQL serverů na virtuálním počítači Azure <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.) |
 | DMS_subnet                | Všechny                                                   | Všechny          | Všechny        | DMS_Subnet                | Povolit      |                                                                                                                                                                                                  |
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Migrace SQL Server do Azure SQL Database spravované instance](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
 - [Přehled požadavků pro použití Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)

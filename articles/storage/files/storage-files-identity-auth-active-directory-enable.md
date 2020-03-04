@@ -4,14 +4,14 @@ description: Naučte se, jak povolit ověřování na základě identity přes S
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/23/2020
+ms.date: 03/03/2020
 ms.author: rogarana
-ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921551"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256062"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Povolení ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure
 
@@ -62,13 +62,13 @@ Než povolíte ověřování AD pro sdílené složky Azure, ujistěte se, že j
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Ověřování Azure Files AD (Preview) je dostupné ve [většině veřejných oblastí](https://azure.microsoft.com/global-infrastructure/regions/) s výjimkou:
+Ověřování Azure Files AD (Preview) je dostupné ve [většině veřejných oblastí](https://azure.microsoft.com/global-infrastructure/regions/).
 
+Ověřování služby Azure soubory AD není k dispozici v nástroji:
 - USA – západ
 - USA – západ 2
 - USA – východ
 - USA – východ 2
-- USA – středojih
 - Západní Evropa
 - Severní Evropa
 

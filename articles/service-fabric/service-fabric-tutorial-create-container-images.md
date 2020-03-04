@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465434"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252790"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric s Linuxem
 
-Tento kurz je součástí série kurzů, která demonstruje používání kontejnerů v clusteru Service Fabric s Linuxem. V tomto kurzu je pro použití s prostředkem Service Fabric připravena vícekontejnerová aplikace. V následujících kurzech jsou tyto image použity jako součást aplikace Service Fabric. Co se v tomto kurzu naučíte:
+Tento kurz je součástí série kurzů, která demonstruje používání kontejnerů v clusteru Service Fabric s Linuxem. V tomto kurzu je pro použití s prostředkem Service Fabric připravena vícekontejnerová aplikace. V následujících kurzech jsou tyto image použity jako součást aplikace Service Fabric. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Klonovat zdroj aplikace z GitHubu
@@ -27,11 +27,11 @@ Tento kurz je součástí série kurzů, která demonstruje používání kontej
 V této sérii kurzů se naučíte:
 
 > [!div class="checklist"]
-> * Vytvářet image kontejneru pro Service Fabric
+> * Vytváření imagí kontejneru pro Service Fabric
 > * [Sestavit a spustit aplikaci Service Fabric s kontejnery](service-fabric-tutorial-package-containers.md)
 > * [Jak se zpracovává převzetí služeb při selhání a škálování v prostředku Service Fabric](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojové prostředí Linux nastavené pro Service Fabric. Při nastavování prostředí Linux postupujte podle pokynů [zde](service-fabric-get-started-linux.md).
 * Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
@@ -80,13 +80,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Nejprve spuštěním příkazu **AZ Login** Přihlaste se ke svému účtu Azure.
 
-```bash
+```azurecli
 az login
 ```
 
 Pak pomocí příkazu **az account** zvolte předplatné pro vytvoření registru kontejneru Azure. Místo parametru <subscription_id> je třeba zadat ID předplatného Azure.
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
@@ -94,13 +94,13 @@ Pokud chcete nasadit službu Azure Container Registry, nejprve potřebujete skup
 
 Vytvořte skupinu prostředků pomocí příkazu **az group create**. V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *westus*.
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 Pomocí příkazu **az acr create** vytvořte registr kontejneru Azure. Nahraďte parametr \<acrName> názvem registru kontejneru, který chcete v rámci svého předplatného vytvořit. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný.
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
@@ -110,7 +110,7 @@ V celé zbývající části tohoto kurzu používáme položku „acrName“ ja
 
 Před nahráním imagí do instance ACR se přihlaste. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -136,13 +136,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Pokud chcete zjistit název loginServer, spusťte následující příkaz:
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 Výstupem je tabulka s následujícími výsledky. Výsledek se použije pro označení vaší image **azure-vote-front** před jejím nahráním do registru kontejneru v dalším kroku.
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
@@ -158,7 +158,7 @@ Po označení operaci ověřte spuštěním příkazu docker images.
 
 Výstup:
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -178,17 +178,17 @@ docker push <acrName>.azurecr.io/azure-vote-front:v1
 
 Dokončení příkazů docker push trvá několik minut.
 
-## <a name="list-images-in-registry"></a>Výpis imagí v registru
+## <a name="list-images-in-registry"></a>Vypsání imagí v registru
 
 Pokud chcete vrátit seznam imagí, které byly nahrány do vašeho registru kontejneru Azure, použijte příkaz [az acr repository list](/cli/azure/acr/repository). Aktualizujte příkaz s použitím názvu instance služby ACR.
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 Výstup:
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

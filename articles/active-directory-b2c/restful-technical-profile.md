@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b24a08ee0367cc3dbb1c845854a0fbc91e0f1d2c
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4638b5bfc3ff31d0d2149e7ee227c46d3360a306
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227090"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254994"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Vaše zásada může odesílat vstupní deklarace do vašeho REST API. REST API 
 - **Technický profil ověření** – technický profil ověření volá službu RESTful. Technický profil ověření ověřuje uživatelem poskytnutá data před pokračováním cesty uživatele. S technickým profilem ověření se zobrazí chybová zpráva na stránce s vlastním kontrolním jménem a vrátí se do výstupních deklarací.
 - **Výměna deklarací identity** – volání služby RESTful prostřednictvím kroku orchestrace se provede. V tomto scénáři není k dispozici uživatelské rozhraní pro vykreslení chybové zprávy. Pokud REST API vrátí chybu, bude uživatel přesměrován zpět do aplikace předávající strany s chybovou zprávou.
 
-## <a name="protocol"></a>Protokol
+## <a name="protocol"></a>Protocol (Protokol)
 
 Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
@@ -121,13 +121,13 @@ Technický profil také vrací deklarace identity, které nejsou vraceny zprost�
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | ServiceUrl | Ano | Adresa URL koncového bodu REST API. |
 | AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None`, `Basic`, `Bearer`nebo `ClientCertificate`. Hodnota `None` označuje, že REST API není anonymní. Hodnota `Basic` označuje, že REST API je zabezpečeno pomocí základního ověřování HTTP. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. Hodnota `ClientCertificate` (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. Hodnota `Bearer` označuje, že REST API omezuje přístup pomocí OAuth2 nosného tokenu klienta. |
 | AllowInsecureAuthInProduction| Ne| Určuje, jestli `AuthenticationType` může být nastavená na `none` v produkčním prostředí (`DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) je nastavená na `Production`nebo není zadaná). Možné hodnoty: true nebo false (výchozí). |
 | SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je vstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
-| ClaimsFormat | Ne | Určuje formát pro výstupní deklarace identity. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je výstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je výstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je výstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je výstupní deklarace, která je odeslána v řetězci dotazu požadavku. |
+| ClaimsFormat | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 | ClaimUsedForRequestPayload| Ne | Název deklarace identity řetězce, která obsahuje datovou část, která se má odeslat do REST API. |
 | DebugMode | Ne | Spustí technický profil v režimu ladění. Možné hodnoty: `true`nebo `false` (výchozí). V režimu ladění může REST API vrátit více informací. Přečtěte si část [vracení chybové zprávy](#returning-error-message) . |
 | IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
@@ -151,7 +151,7 @@ Pokud je typ ověřování nastaven na `None`, nepoužije se element **Cryptogra
 
 Pokud je typ ověřování nastaven na `Basic`, element **CryptographicKeys** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | Ano | Uživatelské jméno, které se používá k ověření. |
 | BasicAuthenticationPassword | Ano | Heslo, které se používá k ověření. |
@@ -176,7 +176,7 @@ Následující příklad ukazuje technický profil se základním ověřováním
 
 Pokud je typ ověřování nastaven na `ClientCertificate`, element **CryptographicKeys** obsahuje následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | ClientCertificate | Ano | Certifikát x509 (sada klíčů RSA), která se má použít k ověření. |
 
@@ -197,7 +197,7 @@ Pokud je typ ověřování nastaven na `ClientCertificate`, element **Cryptograp
 
 Pokud je typ ověřování nastaven na `Bearer`, element **CryptographicKeys** obsahuje následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | Ne | Nosný token OAuth 2,0. |
 
@@ -220,10 +220,10 @@ Pokud je typ ověřování nastaven na `Bearer`, element **CryptographicKeys** o
 
 Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživatel nebyl nalezen v systému CRM '. Pokud dojde k chybě, REST API by měla vracet chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt) s následujícími atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Verze nástroje | Ano | 1.0.0 |
-| stav | Ano | 409 |
+| version | Ano | 1.0.0 |
+| status | Ano | 409 |
 | code | Ne | Kód chyby od poskytovatele koncového bodu RESTful, který se zobrazí, když je povolená `DebugMode`. |
 | Identifikátor | Ne | Identifikátor požadavku od poskytovatele koncového bodu RESTful, který se zobrazí, když je povolená `DebugMode`. |
 | userMessage | Ano | Chybová zpráva, která se zobrazí uživateli. |

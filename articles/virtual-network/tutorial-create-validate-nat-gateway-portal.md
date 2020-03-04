@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587001"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250809"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal a testování služby NAT
 
@@ -30,33 +30,30 @@ V tomto kurzu vytvoříte bránu NAT, která poskytuje odchozí připojení k vi
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Příprava zdroje na odchozí provoz
 
 Provedeme vás konfigurací úplného testovacího prostředí a provedením testů v dalších krocích. Začneme se zdrojem, který bude používat prostředek brány NAT, který vytvoříme v pozdějších krocích.
 
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
 Než nasadíte virtuální počítač a můžete použít bránu NAT, musíme vytvořit skupinu prostředků a virtuální síť.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**nebo vyhledejte **Virtual Network** v hledání na webu Marketplace.
+V této části budete muset v krocích níže nahradit následující parametry:
 
-2. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroupNAT |
+| **\<název virtuální sítě >** | myVNetsource          |
+| **\<název oblasti >**          | USA – východ 2      |
+| **\<IPv4-Address-Space >**   | 192.168.0.0 \ 16          |
+| **\<název podsítě >**          | mySubnetsource        |
+| **\<> rozsahu adres** | 192.168.0.0 \ 24          |
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Název | Zadejte **myVNetsource**. |
-    | Adresní prostor | Zadejte **192.168.0.0/16**. |
-    | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte vytvořit New- **myResourceGroupNAT**. |
-    | Umístění | Vyberte **USA – východ 2**.|
-    | Název podsítě | Zadejte **mySubnetsource**. |
-    | Podsíť – Rozsah adres | Zadejte **192.168.0.0/24**. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Ponechte zbytek výchozích hodnot a vyberte **vytvořit**.
-
-### <a name="create-source-virtual-machine"></a>Vytvořit zdrojový virtuální počítač
+## <a name="create-source-virtual-machine"></a>Vytvořit zdrojový virtuální počítač
 
 Nyní vytvoříme virtuální počítač pro použití služby NAT. Tento virtuální počítač má veřejnou IP adresu, která se používá jako veřejná IP adresa na úrovni instance, která umožňuje přístup k virtuálnímu počítači. Služba NAT má na vědomí směr toku a nahradí výchozí internetový cíl ve vaší podsíti. Veřejná IP adresa virtuálního počítače se nebude používat pro odchozí připojení.
 
@@ -107,7 +104,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Verze IP | Vyberte **IPv4**.
-    | Skladová položka | Vyberte **Standard**.
+    | Skladová jednotka (SKU) | Vyberte **Standard**.
     | Název | Zadejte **myPublicIPsource**. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **myResourceGroupNAT**. |
@@ -161,25 +158,25 @@ Veškerý odchozí provoz do internetových cílů teď používá službu přek
 
 Nyní vytvoříme cíl pro odchozí přenosy přeložené službou překladu adres (NAT), abyste je mohli otestovat.
 
-### <a name="configure-virtual-network-for-destination"></a>Konfigurace virtuální sítě pro cíl
+
+## <a name="virtual-network-and-parameters-for-destination"></a>Virtuální síť a parametry pro cíl
 
 Před nasazením virtuálního počítače pro cíl musíme vytvořit virtuální síť, ve které se může umístit cílový virtuální počítač. Níže jsou uvedené stejné kroky jako u zdrojového virtuálního počítače s některými malými změnami k vystavení cílového koncového bodu.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+V této části budete muset v krocích níže nahradit následující parametry:
 
-2. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroupNAT |
+| **\<název virtuální sítě >** | myVNetdestination          |
+| **\<název oblasti >**          | USA – východ 2      |
+| **\<IPv4-Address-Space >**   | 192.168.0.0 \ 16          |
+| **\<název podsítě >**          | mySubnetdestination        |
+| **\<> rozsahu adres** | 192.168.0.0 \ 24          |
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Název | Zadejte **myVNetdestination**. |
-    | Adresní prostor | Zadejte **192.168.0.0/16**. |
-    | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte vytvořit New- **myResourceGroupNAT**. |
-    | Umístění | Vyberte **USA – východ 2**.|
-    | Název podsítě | Zadejte **mySubnetdestination**. |
-    | Podsíť – Rozsah adres | Zadejte **192.168.0.0/24**. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-destination-virtual-machine"></a>Vytvořit cílový virtuální počítač
+## <a name="create-destination-virtual-machine"></a>Vytvořit cílový virtuální počítač
 
 1. V levé horní části portálu vyberte **vytvořit prostředek** > **COMPUTE** > **Ubuntu Server 18,04 LTS**, nebo vyhledejte **Ubuntu Server 18,04 LTS** v hledání na webu Marketplace.
 

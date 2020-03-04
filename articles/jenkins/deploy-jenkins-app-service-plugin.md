@@ -4,12 +4,12 @@ description: Zjistěte, jak pomocí modulu plug-in Jenkinse pro Azure App Servic
 keywords: jenkins, azure, devops, app service
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158511"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251462"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do Azure App Service s využitím modulu plug-in Jenkinse 
 
@@ -67,7 +67,7 @@ Pokud chcete projekt nasadit do Web Apps, můžete nahráním souborů nahrát a
 Před nastavením úlohy v Jenkinsu potřebujete plán služby Azure App Service a webovou aplikaci, ve kterých se aplikace v Javě spustí.
 
 
-1. Pomocí **příkazu Azure CLI** `az appservice plan create` vytvořte plán služby App Service s cenovou úrovní [FREE](/cli/azure/appservice/plan#az-appservice-plan-create). Plán služby App Service definuje fyzické prostředky používané k hostování vašich aplikací. Tyto prostředky sdílí všechny aplikace přiřazené k plánu služby App Service. Sdílené prostředky pomáhají šetřit náklady při hostování více aplikací.
+1. Pomocí [příkazu `az appservice plan create` Azure CLI](/cli/azure/appservice/plan#az-appservice-plan-create)vytvořte plán Azure App Service s **bezplatnou** cenovou úrovní. Plán služby App Service definuje fyzické prostředky používané k hostování vašich aplikací. Tyto prostředky sdílí všechny aplikace přiřazené k plánu služby App Service. Sdílené prostředky pomáhají šetřit náklady při hostování více aplikací.
 2. Vytvořte webovou aplikaci. Můžete použít [Azure Portal](/azure/app-service/configure-common) nebo následující příkaz Azure CLI `az`:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -207,10 +207,13 @@ Jako hodnotu **Docker registry URL** (Adresa URL registru Dockeru) zadejte adres
 ### <a name="for-azure-app-service-on-linux"></a>Azure App Service v Linuxu
 
 1. Pokud chcete ověřit svou webovou aplikaci, spusťte v Azure CLI následující příkaz:
-    ```CLI
+    
+    ```azurecli
     az acr repository list -n <myRegistry> -o json
     ```
+    
     Zobrazí se následující zpráva:
+    
     ```CLI
     ["calculator"]
     ```

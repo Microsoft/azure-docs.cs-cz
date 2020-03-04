@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906593"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252688"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
@@ -50,7 +50,7 @@ Pomocí kteréhokoli z těchto nástrojů můžete nahrát obsah do kontejneru *
 
 Uživatelé mohou zobrazit obsah webu z prohlížeče pomocí veřejné adresy URL webu. Adresu URL můžete najít pomocí Azure Portal, Azure CLI nebo PowerShellu. Tuto tabulku použijte jako vodítko.
 
-|Nástroj| Pokyny |
+|Nástroj| Doprovodné materiály |
 |----|----|
 |**Azure Portal** | [Vyhledejte adresu URL webu pomocí Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [Vyhledání adresy URL webu pomocí rozhraní příkazového řádku Azure](storage-blob-static-website-how-to.md#cli-find-url) |
@@ -91,6 +91,12 @@ Pokud je účet úložiště nakonfigurovaný tak, aby [vyžadoval zabezpečený
 
 > [!TIP]
 > Zvažte hostování vaší domény v Azure. Další informace najdete v tématu [hostování vaší domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+
+## <a name="adding-http-headers"></a>Přidávání hlaviček protokolu HTTP
+
+V rámci funkce statického webu neexistuje žádný způsob, jak konfigurovat hlavičky. Můžete však použít Azure CDN k přidání hlaviček a k přidávání (nebo přepisování) hodnot hlaviček. Přečtěte si [referenční informace k modulu Standard rules pro Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
+
+Pokud chcete použít hlavičky k řízení ukládání do mezipaměti, přečtěte si téma [řízení Azure CDN chování při ukládání do mezipaměti s pravidly pro ukládání do](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)mezipaměti.
 
 ## <a name="pricing"></a>Ceny
 

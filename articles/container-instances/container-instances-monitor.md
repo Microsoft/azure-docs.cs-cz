@@ -3,12 +3,12 @@ title: Monitorovat instance kontejnerů
 description: Jak monitorovat spotřebu výpočetních prostředků, jako je CPU a paměť, v kontejnerech v Azure Container Instances.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: bd86161bc7840be599eb5ee9a20f6dbf143f5f22
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533653"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250034"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorování prostředků kontejneru ve službě Azure Container Instances
 
@@ -57,9 +57,11 @@ CONTAINER_GROUP=$(az container show --resource-group <resource-group> --name <co
 
 Pro získání metriky využití **procesoru** použijte následující příkaz.
 
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output table
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output table
+```
 
+```output
 Timestamp            Name       Average
 -------------------  ---------  ---------
 2019-04-23 22:59:00  CPU Usage
@@ -78,9 +80,11 @@ Timestamp            Name       Average
 
 Chcete-li získat další [podporované metriky][supported-metrics], změňte hodnotu parametru `--metric` v příkazu. Pomocí následujícího příkazu můžete například získat metriky využití **paměti** . 
 
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
+```
 
+```output
 Timestamp            Name          Average
 -------------------  ------------  ----------
 2019-04-23 22:59:00  Memory Usage
@@ -99,9 +103,11 @@ Timestamp            Name          Average
 
 Pro skupinu s více kontejnery je možné přidat dimenzi `containerName` pro návrat metrik na kontejner.
 
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
+```
 
+```output
 Timestamp            Name          Containername             Average
 -------------------  ------------  --------------------  -----------
 2019-04-23 22:59:00  Memory Usage  aci-tutorial-app

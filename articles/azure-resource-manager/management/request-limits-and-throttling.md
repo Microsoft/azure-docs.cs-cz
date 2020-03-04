@@ -1,15 +1,15 @@
 ---
-title: Omezení požadavků a omezení
+title: Limity požadavků a omezování
 description: Popisuje způsob použití omezení požadavků Azure Resource Manageru a pokud bylo dosaženo omezení předplatného.
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129ca3ba32d48345bde931c6bd2084c3da79be39
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43ccf4f2e8098f6577f18943c4ab4132884b66f2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659368"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251341"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
@@ -25,13 +25,13 @@ Každá operace na úrovni předplatného a tenanta na úrovni klienta podléhá
 
 V následující tabulce jsou uvedeny výchozí limity omezení za hodinu.
 
-| Rozsah | Operations | škálování |
+| Rozsah | Operace | Omezení |
 | ----- | ---------- | ------- |
-| Předplatné | operace | 12000 |
+| Předplatné | Operace | 12000 |
 | Předplatné | odstraníte | 15 000 |
-| Předplatné | pisoval | 1200 |
-| Tenant | operace | 12000 |
-| Tenant | pisoval | 1200 |
+| Předplatné | Pisoval | 1200 |
+| Tenant | Operace | 12000 |
+| Tenant | Pisoval | 1200 |
 
 Tyto limity se vztahují na objekt zabezpečení (uživatele nebo aplikaci), který zadává požadavky, a na ID předplatného nebo ID tenanta. Pokud vaše požadavky pocházejí z více objektů zabezpečení, bude váš limit v rámci daného předplatného nebo tenanta větší než 12 000 a 1 200 za hodinu.
 
@@ -51,7 +51,7 @@ Tato část popisuje omezení omezení některých široce používaných poskyt
 
 Poskytovatel prostředků Microsoft. Network používá následující omezení omezení:
 
-| Operace | škálování |
+| Operace | Omezení |
 | --------- | ----- |
 | zapsat/odstranit (PUT) | 1000 za 5 minut |
 | čtení (GET) | 10000 za 5 minut |
@@ -72,7 +72,7 @@ V některých případech je možné zvýšit omezení omezení. Pokud chcete zj
 
 ## <a name="error-code"></a>Kód chyby
 
-Pokud limit překročíte, obdržíte kód stavu HTTP **429 příliš mnoho požadavků**. Odpověď obsahuje hodnotu opakovat, která určuje počet sekund, **po** jejichž uplynutí má aplikace čekat (nebo přejít do režimu spánku) před odesláním dalšího požadavku. Pokud odešlete žádost o před uplynutí hodnota pro opakovaný pokus, váš požadavek není zpracován a vrátí se nová hodnota pro opakovaný pokus.
+Pokud dosáhnete limitu, obdržíte stavový kód HTTP **429 příliš mnoho požadavků**. Odpověď obsahuje hodnotu opakovat, která určuje počet sekund, **po** jejichž uplynutí má aplikace čekat (nebo přejít do režimu spánku) před odesláním dalšího požadavku. Pokud odešlete žádost o před uplynutí hodnota pro opakovaný pokus, váš požadavek není zpracován a vrátí se nová hodnota pro opakovaný pokus.
 
 Po uplynutí určité doby můžete také zavřít a znovu otevřít připojení k Azure. Resetováním tohoto připojení se můžete připojit k jiné instanci Azure Resource Manager.
 
@@ -101,22 +101,22 @@ Poskytovatel prostředků může také vracet hlavičky odpovědí s informacemi
 
 Načítají se tyto hodnoty hlavičky v kódu nebo skriptu se nijak neliší od načítání libovolnou hodnotu hlavičky. 
 
-Například v **jazyka C#** , načíst hodnota hlavičky ze **HttpWebResponse** objekt s názvem **odpovědi** následujícím kódem:
+Například v aplikaci **C#** načtete hodnotu hlavičky z objektu **HttpWebResponse** s názvem **Response** s následujícím kódem:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-V **Powershellu**, načíst hodnotu hlavičky z operace Invoke-WebRequest.
+V **PowerShellu**načtete hodnotu hlavičky z operace Invoke-WebRequest.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Kompletní příklad Powershellu najdete v části [zkontrolujte omezení Resource Manageru a předplatné](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+Úplný příklad prostředí PowerShell najdete v tématu [Check správce prostředků Limits pro předplatné](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
 
-Pokud chcete zobrazit zbývající požadavky pro ladění, můžete zadat **– ladění** parametr na vaši **Powershellu** rutiny.
+Pokud chcete zobrazit zbývající požadavky na ladění, můžete zadat parametr **-Debug** v rutině **prostředí PowerShell** .
 
 ```powershell
 Get-AzResourceGroup -Debug
@@ -154,7 +154,7 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-V **rozhraní příkazového řádku Azure**, načtete pomocí možnosti podrobnější hodnotu hlavičky.
+V rozhraní příkazového **řádku Azure CLI**načtěte hodnotu hlavičky pomocí možnosti Podrobnější informace.
 
 ```azurecli
 az group list --verbose --debug
@@ -162,7 +162,7 @@ az group list --verbose --debug
 
 Který vrátí více hodnot, včetně následujících hodnot:
 
-```azurecli
+```output
 msrest.http_logger : Response status: 200
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -182,7 +182,7 @@ az group create -n myresourcegroup --location westus --verbose --debug
 
 Který vrátí více hodnot, včetně následujících hodnot:
 
-```azurecli
+```output
 msrest.http_logger : Response status: 201
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -195,6 +195,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>Další kroky
 
-* Kompletní příklad Powershellu najdete v části [zkontrolujte omezení Resource Manageru a předplatné](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
-* Další informace o omezení a kvóty najdete v tématu [předplatného Azure a limity, kvóty a omezení](../../azure-resource-manager/management/azure-subscription-service-limits.md).
-* Další informace o zpracování asynchronního požadavky REST, naleznete v tématu [sledování asynchronních operací Azure](async-operations.md).
+* Úplný příklad prostředí PowerShell najdete v tématu [Check správce prostředků Limits pro předplatné](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+* Další informace o omezeních a kvótách najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Další informace o zpracování asynchronních žádostí REST najdete v tématu [sledování asynchronních operací Azure](async-operations.md).

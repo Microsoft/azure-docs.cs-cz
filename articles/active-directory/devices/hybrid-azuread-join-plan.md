@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591604"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255003"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -79,6 +79,8 @@ Jako první krok plánování byste měli zkontrolovat prostředí a určit, jes
 - Služba připojení k hybridní službě Azure AD není podporovaná pro Windows Server, na kterém běží role řadič domény (DC).
 
 - Připojení k hybridní službě Azure AD není podporované v zařízeních Windows nižší úrovně při použití roamingu přihlašovacích údajů nebo cestovního profilu uživatele nebo povinného profilu.
+
+- Operační systém jádra serveru nepodporuje žádný typ registrace zařízení.
 
 ### <a name="os-imaging-considerations"></a>Požadavky na vytváření bitových kopií operačního systému
 - Pokud se spoléháte na nástroj pro přípravu systému (Sysprep) a pokud pro instalaci používáte image **starší než Windows 10 1809** , ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojení k hybridní službě Azure AD.

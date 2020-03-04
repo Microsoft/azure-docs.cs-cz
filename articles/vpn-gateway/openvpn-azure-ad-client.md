@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134517"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251619"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN: ověřování Azure AD
 
@@ -168,9 +168,26 @@ Můžete upravit stažený soubor XML profilu a přidat **\<dnssuffixes >\<dnssu
 </azvpnprofile>
 ```
 
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Návody do klienta VPN přidat vlastní servery DNS?
+
+Můžete upravit stažený soubor XML profilu a přidat **\<dnsservers >\<serveru dns > \</dnsserver >\</dnsservers >** značky
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Návody přidat vlastní trasy k klientovi VPN?
 
-Můžete upravit stažený soubor XML profilu a přidat **\<trasy >\<includeroutes >\<cílový >\<maska > \</route >\</includeroutes >\</destination >\</mask >** značky
+Můžete upravit stažený soubor XML profilu a přidat **\<includeroutes >\<trasy >\<cíl >\<maska > \</destination >\</mask >\</route >\</includeroutes >** značky
 
 ```
 <azvpnprofile>
@@ -181,6 +198,24 @@ Můžete upravit stažený soubor XML profilu a přidat **\<trasy >\<includerout
             <destination>x.x.x.x</destination><mask>24</mask>
         </route>
     </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>Návody (vyloučit) trasy blokování z klienta VPN?
+
+Můžete upravit stažený soubor XML profilu a přidat **\<excluderoutes >\<trasy >\<cíl >\<maska > \</destination >\</mask >\</route >\</excluderoutes >** značky
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

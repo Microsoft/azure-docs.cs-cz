@@ -3,12 +3,12 @@ title: Konfigurace vlastního kontejneru Linux
 description: Přečtěte si, jak nakonfigurovat vlastní kontejner Linux v Azure App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: d9d6311e69ba4e3893da81a16b06c8baed78cdcd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671870"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255871"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru Linux pro Azure App Service
 
@@ -18,7 +18,7 @@ Tato příručka poskytuje klíčové koncepty a pokyny pro kontejnerování apl
 
 ## <a name="configure-port-number"></a>Konfigurace čísla portu
 
-Webový server ve vlastní imagi může používat jiný port než 80. Azure o portu, který používá vlastní kontejner, sdělíte pomocí nastavení aplikace `WEBSITES_PORT`. Stránka GitHubu pro [ukázku Pythonu v tomto kurzu](https://github.com/Azure-Samples/docker-django-webapp-linux) ukazuje, že je potřeba nastavit `WEBSITES_PORT` na _8000_. Můžete ji nastavit spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Například:
+Webový server ve vlastní imagi může používat jiný port než 80. Azure o portu, který používá vlastní kontejner, sdělíte pomocí nastavení aplikace `WEBSITES_PORT`. Stránka GitHubu pro [ukázku Pythonu v tomto kurzu](https://github.com/Azure-Samples/docker-django-webapp-linux) ukazuje, že je potřeba nastavit `WEBSITES_PORT` na _8000_. Můžete ji nastavit spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -26,7 +26,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
-Vlastní kontejner může používat proměnné prostředí, které je třeba zadat externě. Můžete je předat spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Například:
+Vlastní kontejner může používat proměnné prostředí, které je třeba zadat externě. Můžete je předat spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
@@ -40,7 +40,7 @@ Pomocí adresáře */Home* v systému souborů vaší aplikace můžete uchováv
 
 Pokud je trvalé úložiště zakázané, pak se zápisy do adresáře `/home` neukládají mezi restarty aplikace nebo mezi několika instancemi. Jedinou výjimkou je adresář `/home/LogFiles`, který se používá k ukládání protokolů Docker a kontejner. Když je povolené trvalé úložiště, všechny zápisy do adresáře `/home` jsou trvalé a můžou k němu mít pøístup všechny instance aplikace s možností horizontálního rozšíření kapacity.
 
-Ve výchozím nastavení je trvalé úložiště *povolené* a nastavení se v nastavení aplikace nezveřejňuje. Pokud ho chcete zakázat, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Například:
+Ve výchozím nastavení je trvalé úložiště *povolené* a nastavení se v nastavení aplikace nezveřejňuje. Pokud ho chcete zakázat, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
@@ -112,7 +112,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 V souboru *Docker-Compose. yml* namapujte možnost `volumes` na `${WEBAPP_STORAGE_HOME}`. 
 
-`WEBAPP_STORAGE_HOME` je proměnná prostředí ve službě App Service, která je namapovaná na trvalé úložiště vaší aplikace. Například:
+`WEBAPP_STORAGE_HOME` je proměnná prostředí ve službě App Service, která je namapovaná na trvalé úložiště vaší aplikace. Příklad:
 
 ```yaml
 wordpress:
@@ -142,7 +142,7 @@ Následující seznamy obsahují podporované a nepodporované možnosti konfigu
 - image
 - ports
 - restart
-- Služby
+- services
 - volumes
 
 #### <a name="unsupported-options"></a>Nepodporované možnosti
@@ -159,6 +159,8 @@ Následující seznamy obsahují podporované a nepodporované možnosti konfigu
 ## <a name="configure-vnet-integration"></a>Konfigurace integrace virtuální sítě
 
 Použití vlastního kontejneru s integrací virtuální sítě může vyžadovat další konfiguraci kontejneru. Viz [integrace aplikace s Virtual Network Azure](../web-sites-integrate-with-vnet.md).
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585981"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248852"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -69,7 +69,7 @@ Jednou z běžných metod pro zlepšení ochrany pro všechny uživatele je vyž
 
 Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure AD podporuje nejrůznější ověřovací protokoly, včetně starší verze ověřování. *Starší verze ověřování* je termín, který odkazuje na žádost o ověření, kterou provedla:
 
-- Starší klienti Office, kteří nepoužívají moderní ověřování (například klienta Office 2010).
+- Klienti, kteří nepoužívají moderní ověřování (například klienta Office 2010).
 - Každý klient používající starší e-mailové protokoly, jako jsou IMAP, SMTP nebo POP3.
 
 V současné době většina neúspěšných pokusů o přihlášení pocházela ze staršího ověřování. Starší verze ověřování nepodporuje Multi-Factor Authentication. I v případě, že máte ve svém adresáři povolené zásady Multi-Factor Authentication, útočník se může ověřit pomocí staršího protokolu a Multi-Factor Authentication obcházení. 

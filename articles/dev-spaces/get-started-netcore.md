@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: bcdae06af8c3f6314e94ba35f748a0b4352339ca
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: e23685d410b2d663efde8c530be01adaab637bf8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605354"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252426"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code a .NET Core s Azure Dev Spaces
 
@@ -29,7 +29,7 @@ Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Větš
 ### <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
 Přihlaste se k Azure. V okně terminálu zadejte následující příkaz:
 
-```cmd
+```azurecli
 az login
 ```
 
@@ -39,14 +39,14 @@ az login
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Pokud máte více předplatných Azure...
 Svoje předplatná můžete zobrazit spuštěním tohoto příkazu: 
 
-```cmd
+```azurecli
 az account list --output table
 ```
 
 Vyhledejte předplatné, které má *hodnotu true* pro *výchozí nastavení*.
 Pokud se nejedná o předplatné, které chcete použít, můžete výchozí předplatné změnit:
 
-```cmd
+```azurecli
 az account set --subscription <subscription ID>
 ```
 
@@ -54,13 +54,13 @@ az account set --subscription <subscription ID>
 
 V příkazovém řádku vytvořte skupinu prostředků v [oblasti, která podporuje Azure dev Spaces][supported-regions].
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location <region>
 ```
 
 Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
-```cmd
+```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
@@ -70,7 +70,7 @@ Vytvoření clusteru bude trvat několik minut.
 
 Zadejte následující příkaz Azure CLI se skupinou prostředků, která obsahuje váš cluster AKS, a názvem clusteru AKS. Příkaz nakonfiguruje cluster, aby podporoval Azure Dev Spaces.
 
-   ```cmd
+   ```azurecli
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
    

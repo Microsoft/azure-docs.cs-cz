@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 17ef8dd121c987c2771d274c8f0e6f9f199e386c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 6167774171affda7e5469d5852a79657a6da700d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938128"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262665"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-Recovery Services trezor je entita, která ukládá zálohy a body obnovení vytvořené v průběhu času. Trezor Recovery Services obsahuje také zásady zálohování, které jsou přidruženy k chráněným virtuálním počítačům.
+Recovery Services trezor je entita úložiště, která ukládá body obnovení vytvořené v průběhu času. Obsahuje také zásady zálohování, které jsou přidruženy k chráněným položkám.
 
 Pokud chcete vytvořit trezor Recovery Services, postupujte podle těchto kroků.
 
@@ -26,7 +26,7 @@ Pokud chcete vytvořit trezor Recovery Services, postupujte podle těchto kroků
 
 1. V nabídce vlevo vyberte **všechny služby**.
 
-    ![vybrat všechny služby](./media/backup-create-rs-vault/click-all-services.png)
+    ![Vybrat všechny služby](./media/backup-create-rs-vault/click-all-services.png)
 
 1. V dialogovém okně **všechny služby** zadejte *Recovery Services*. Seznam prostředků se filtruje podle vašeho zadání. V seznamu prostředků vyberte **Recovery Services trezory**.
 

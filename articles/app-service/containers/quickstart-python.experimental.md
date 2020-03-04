@@ -10,12 +10,12 @@ ms.author: msangapu
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9a45353d3223844d828ffc4a8ac248a0ff68f781
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 68dc36ce96737fe8395280c3a833e359084d2fee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030044"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246859"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -23,7 +23,7 @@ V tomto rychlém startu nasadíte webovou aplikaci v Pythonu, která se [App Ser
 
 Pokud dáváte přednost nasazení aplikací prostřednictvím integrovaného vývojového prostředí (IDE), přečtěte si téma [nasazení aplikací Python pro App Service z Visual Studio Code](/azure/python/tutorial-deploy-app-service-on-linux-01).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (podporuje se taky Python 3,6)
@@ -52,7 +52,7 @@ Azure CLI poskytuje mnoho pohodlných příkazů, které můžete použít z mí
 
 Pokud chcete spustit příkazy Azure v rozhraní příkazového řádku Azure CLI, musíte se nejdřív přihlásit pomocí příkazu `az login`. Tento příkaz otevře prohlížeč pro shromáždění vašich přihlašovacích údajů.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -63,7 +63,7 @@ Příkaz [`az webapp up`](/cli/azure/webapp#az-webapp-up) vytvoří webovou apli
 Ve složce *Python-docs-Hello-World* obsahující vzorový kód spusťte následující příkaz `az webapp up`. Nahraďte `<app-name>` globálně jedinečným názvem aplikace (*platné znaky jsou `a-z`, `0-9`a `-`* ). Nahraďte `<location-name>` také oblastí Azure, například **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**a tak dále. (Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním příkazu [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) .)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -110,7 +110,7 @@ Vzorový kód Pythonu spouští kontejner Linux v App Service pomocí integrovan
 
 V okně terminálu použijte následující příkazy (podle toho, jak je to vhodné pro váš operační systém) k instalaci požadovaných závislostí a spuštění integrovaného vývojového serveru. 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python3 -m venv venv
@@ -120,7 +120,7 @@ FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -130,7 +130,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-# <a name="cmdtabcmd"></a>[Přepsat](#tab/cmd)
+# <a name="cmd"></a>[Přepsat](#tab/cmd)
 
 ```cmd
 py -3 -m venv env
@@ -161,7 +161,7 @@ Uložte změny a ukončete Editor.
 
 Znovu nasaďte aplikaci pomocí následujícího příkazu `az webapp up` pomocí stejného příkazu, který jste použili k nasazení aplikace poprvé, a nahraďte `<app-name>` a `<location-name>` se stejnými názvy, které jste použili dříve. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -178,13 +178,13 @@ Můžete přistupovat k protokolům konzoly generovaným zevnitř aplikace a kon
 
 Nejdřív zapněte protokolování kontejneru spuštěním následujícího příkazu v terminálu a nahraďte `<app-name>` názvem vaší aplikace a `<resource-group-name>` názvem skupiny prostředků, kterou jste použili ve výstupu `az webapp up` příkazu (například "appsvc_rg_Linux_centralus"):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Jakmile je protokolování kontejneru zapnuté, spusťte následující příkaz, který zobrazí datový proud protokolu:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -221,7 +221,7 @@ V předchozích krocích jste vytvořili prostředky Azure ve skupině prostřed
 
 Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků spuštěním následujícího příkazu, který nahradí `<resource-group-name>` skupinou prostředků, která se zobrazuje ve výstupu příkazu `az webapp up`, například "appsvc_rg_Linux_centralus". Dokončení příkazu může trvat několik minut.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

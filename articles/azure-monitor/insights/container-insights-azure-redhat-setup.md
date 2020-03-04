@@ -3,12 +3,12 @@ title: Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitor for C
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift.
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190079"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250702"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitor for Containers
 
@@ -113,7 +113,7 @@ Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní 
 
     Výstup se podobá následujícímu:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -123,7 +123,7 @@ Provedením následujících kroků povolíte monitorování clusteru Azure Red 
 
 ### <a name="from-the-azure-portal"></a>Pomocí webu Azure Portal
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V nabídce Azure Portal nebo na domovské stránce vyberte možnost **Azure monitor**. V části **přehledy** vyberte **kontejnery**.
 
@@ -197,7 +197,7 @@ Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní 
 
     Výstup se podobá následujícímu:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 

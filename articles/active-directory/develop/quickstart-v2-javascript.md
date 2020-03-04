@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.openlocfilehash: 9fc77b876474c89014998ce789f91f098fb3735c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 9077d5c471911c9967c327c457d683b06856b920
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161045"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249071"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -26,8 +26,9 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 ## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* [Node.js](https://nodejs.org/en/download/).
+* [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) (pro úpravy souborů projektu)
+
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Registrace a stažení aplikace pro rychlý Start
@@ -71,38 +72,39 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 
-Vyberte možnost, která je vhodná pro vaše vývojové prostředí:
+> [!div renderon="docs"]
+> Chcete-li spustit projekt s webovým serverem pomocí Node. js, [Stáhněte si základní soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 
-* Chcete-li spustit projekt s webovým serverem pomocí Node. js, [Stáhněte si základní soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip). K otevření souborů použijte editor, například [Visual Studio Code](https://code.visualstudio.com/).
+> [!div renderon="portal"]
+> Spustit projekt s webovým serverem pomocí Node. js
 
-#### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace JavaScriptu
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Stažení ukázky kódu]()
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace JavaScriptu
+>
 > Ve složce *JavaScriptSPA* upravte *authConfig. js*a nastavte `clientID` a `authority` hodnoty v části `msalConfig`.
+> ```javascript
+>
+>  // Config object to be passed to Msal on creation
+>  const msalConfig = {
+>    auth: {
+>      clientId: "Enter_the_Application_Id_Here",
+>      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+>      redirectUri: "Enter_the_Redirect_Uri_Here",
+>    },
+>    cache: {
+>      cacheLocation: "sessionStorage", // This configures where your cache will be stored
+>      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+>      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
+>    }
+>  };  
+> ```
 
-> [!div class="sxs-lookup" renderon="portal"]
-> Ve složce *JavaScriptSPA* upravte *authConfig. js*a nahraďte `msalConfig` následujícím kódem:
-
-```javascript
-
-  // Config object to be passed to Msal on creation
-  const msalConfig = {
-    auth: {
-      clientId: "Enter_the_Application_Id_Here",
-      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
-      redirectUri: "Enter_the_Redirect_Uri_Here",
-    },
-    cache: {
-      cacheLocation: "sessionStorage", // This configures where your cache will be stored
-      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
-    }
-  };  
-
-```
 > [!div renderon="portal"]
 > > [!NOTE]
-> > Tento rychlý Start podporuje Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 >
@@ -117,19 +119,22 @@ Vyberte možnost, která je vhodná pro vaše vývojové prostředí:
 > > [!TIP]
 > > Hodnoty **ID aplikace (klienta)** , **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
 >
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
+> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace. 
 
-#### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu
 
-Pokud používáte [Node. js](https://nodejs.org/en/download/):
+Spusťte projekt s webovým serverem pomocí [Node. js](https://nodejs.org/en/download/):
 
 1. Chcete-li spustit server, spusťte následující příkaz z adresáře projektu:
-
-   ```batch
-   npm install
-   npm start
-   ```
-
+    ```batch
+    npm install
+    npm start
+    ```
 1. Otevřete webový prohlížeč a přejdete na `http://localhost:3000/`.
+
 1. Vyberte **Přihlásit** se a spusťte přihlášení a pak zavolejte Microsoft Graph API.
 
 Poté, co prohlížeč načte aplikaci, vyberte možnost **Přihlásit**se. Při prvním přihlášení se zobrazí výzva k zadání vašeho souhlasu, který aplikaci umožní přístup k vašemu profilu a přihlášení. Po úspěšném přihlášení by se na stránce měly zobrazit informace o vašem profilu uživatele.

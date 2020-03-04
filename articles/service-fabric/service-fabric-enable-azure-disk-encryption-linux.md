@@ -3,12 +3,12 @@ title: Povolení šifrování disku pro clustery se systémem Linux
 description: Tento článek popisuje, jak povolit šifrování disku pro uzly clusteru Azure Service Fabric v systému Linux pomocí Azure Resource Manager a Azure Key Vault.
 ms.topic: article
 ms.date: 03/22/2019
-ms.openlocfilehash: d990cfdee9a497135c67d99431807a85f8105b3b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609889"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252814"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Povolení šifrování disku pro uzly clusteru Azure Service Fabric v systému Linux 
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Průvodce obsahuje následující témata:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
  **Samoobslužná registrace**
 
@@ -86,7 +86,7 @@ Set-AzContext -SubscriptionId <guid>
 
 ```
 
-```CLI
+```azurecli
 
 azure login
 az account set --subscription $subscriptionId

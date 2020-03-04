@@ -3,14 +3,14 @@ title: Funkce Hybrid Runbook Worker služby Azure Automation v Linuxu
 description: Tento článek poskytuje informace o instalaci Hybrid Runbook Worker Azure Automation, takže můžete spouštět Runbooky v počítačích se systémem Linux v místním datovém centru nebo v cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/28/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421923"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246292"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -27,7 +27,7 @@ Funkce Hybrid Runbook Worker podporuje následující distribuce:
 * Oracle Linux 5, 6 a 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5, 6 a 7 (x86/x64)
 * Debian GNU/Linux 6, 7 a 8 (x86/x64)
-* Ubuntu 12,04 LTS, 14,04 LTS a 16,04 LTS (x86/x64)
+* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS a 18,04 (x86/x64)
 * SUSE Linux Enterprise Server 11 a 12 (x86/x64)
 
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>Instalace Hybrid Runbook Worker pro Linux
@@ -37,7 +37,7 @@ Chcete-li nainstalovat a nakonfigurovat Hybrid Runbook Worker v počítači se s
 Minimální požadavky pro Hybrid Runbook Worker pro Linux jsou:
 
 * Dvě jádra
-* 4 GB RAM paměti
+* 4 GB paměti RAM
 * Port 443 (odchozí)
 
 ### <a name="package-requirements"></a>Požadavky na balíčky
@@ -45,10 +45,10 @@ Minimální požadavky pro Hybrid Runbook Worker pro Linux jsou:
 | **Požadovaný balíček** | **Popis** | **Minimální verze**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |Knihovna GNU C| 2.5-12 |
-|Openssl| Knihovny OpenSSL | 1,0 (podpora TLS 1,1 a TLS 1,2|
+|OpenSSL| Knihovny OpenSSL | 1,0 (podpora TLS 1,1 a TLS 1,2|
 |Curl | Webový klient s kudrlinkou | 7.15.5|
 |Python – ctypes | Python 2. x je povinný. |
-|PAM | Pluggable Authentication Modules|
+|MODULU | Moduly připojitelné k ověřování|
 | **Volitelný balíček** | **Popis** | **Minimální verze**|
 | PowerShell Core | Pokud chcete spustit PowerShellové Runbooky, je potřeba nainstalovat PowerShell, viz [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) , kde se dozvíte, jak ho nainstalovat.  | 6.0.0 |
 

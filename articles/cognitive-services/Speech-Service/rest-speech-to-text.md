@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 03/03/2020
 ms.author: erhopf
-ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168319"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255670"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -52,8 +52,9 @@ Tyto parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
 | Parametr | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
 | `language` | Identifikuje mluvený jazyk, který je právě rozpoznán. Viz [podporované jazyky](language-support.md#speech-to-text). | Požaduje se |
-| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed`. Jednoduché výsledky zahrnují `RecognitionStatus`, `DisplayText`, `Offset`a `Duration`. Podrobné odpovědi zahrnout více výsledků s jistotou hodnotami a čtyři různé reprezentace. Výchozí nastavení je `simple`. | Volitelné |
-| `profanity` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `masked`, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku nebo `raw`, což zahrnuje vulgární výrazy ve výsledku. Výchozí nastavení je `masked`. | Volitelné |
+| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed`. Jednoduché výsledky zahrnují `RecognitionStatus`, `DisplayText`, `Offset`a `Duration`. Podrobné odpovědi zahrnout více výsledků s jistotou hodnotami a čtyři různé reprezentace. Výchozí nastavení je `simple`. | Nepovinné |
+| `profanity` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `masked`, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku nebo `raw`, což zahrnuje vulgární výrazy ve výsledku. Výchozí nastavení je `masked`. | Nepovinné |
+| `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu `cid` použijte **ID koncového bodu** . | Nepovinné |
 
 ## <a name="request-headers"></a>Hlavičky požadavku
 
@@ -64,7 +65,7 @@ Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod ř
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Tato hlavička nebo `Authorization` je povinná. |
 | `Authorization` | Autorizační token předchází `Bearer`m slovem. Další informace najdete v tématu [Ověřování](#authentication). | Tato hlavička nebo `Ocp-Apim-Subscription-Key` je povinná. |
 | `Content-type` | Popisuje formátu a kodek zadaná zvuková data. Přijaté hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus`. | Požaduje se |
-| `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Volitelné |
+| `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Nepovinné |
 | `Expect` | Pokud používáte přenos přes blok dat, pošlete `Expect: 100-continue`. Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Požadováno při odesílání bloku zvuková data. |
 | `Accept` | Je-li tento příkaz zadán, musí být `application/json`. Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept`. | Volitelné, ale doporučené. |
 
@@ -72,10 +73,10 @@ Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod ř
 
 V těle požadavku HTTP `POST` se pošle zvuk. Musí být v jednom z formátů, v této tabulce:
 
-| Formát | Kodek | S přenosovou rychlostí | Vzorkovací frekvence |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16 bitů | 16 kHz, mono |
-| OGG | DÍLE | 16 bitů | 16 kHz, mono |
+| Formát | Kodek | S přenosovou rychlostí | Vzorkovací frekvence  |
+|--------|-------|---------|--------------|
+| WAV    | PCM   | 16 bitů  | 16 kHz, mono |
+| OGG    | DÍLE  | 16 bitů  | 16 kHz, mono |
 
 >[!NOTE]
 >Výše uvedené formáty jsou podporovány prostřednictvím REST API a WebSocket ve službě Speech. [Sada Speech SDK](speech-sdk.md) aktuálně podporuje formát WAV pomocí kodeku PCM i [dalších formátů](how-to-use-codec-compressed-audio-input-streams.md).
@@ -100,50 +101,43 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
 | Stavový kód HTTP | Popis | Možný důvod |
 |------------------|-------------|-----------------|
-| 100 | Pokračovat | Byla přijata v prvotní žádosti. Pokračujte v odesílání zbývajícími daty. (Používá se s bloku.) |
-| 200 | OK | Žádost byla úspěšná. text odpovědi je objekt JSON. |
-| 400 | Nesprávná žádost | Kód jazyka není k dispozici, nejedná se o podporovaný jazyk, neplatný zvukový soubor atd. |
-| 401 | Neautorizováno | Klíč předplatného nebo autorizační token je neplatný. v zadané oblasti nebo neplatný koncový bod. |
-| 403 | Forbidden | Chybí klíč předplatného nebo autorizační token. |
+| `100` | Pokračovat | Byla přijata v prvotní žádosti. Pokračujte v odesílání zbývajícími daty. (Používá se s přenosem v bloku) |
+| `200` | OK | Žádost byla úspěšná. text odpovědi je objekt JSON. |
+| `400` | Nesprávná žádost | Kód jazyka není k dispozici, nejedná se o podporovaný jazyk, neplatný zvukový soubor atd. |
+| `401` | Neautorizováno | Klíč předplatného nebo autorizační token je neplatný. v zadané oblasti nebo neplatný koncový bod. |
+| `403` | Forbidden | Chybí klíč předplatného nebo autorizační token. |
 
 ## <a name="chunked-transfer"></a>Bloku
 
 Přenos v bloku dat (`Transfer-Encoding: chunked`) může pomáhat snižovat latenci při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. Rozhraní REST API neposkytuje výsledky částečné nebo dočasné.
 
-Tento vzorový kód ukazuje, jak posílat zvuk v blocích. Zvukový soubor záhlaví by měl obsahovat pouze u prvního bloku. `request` je objekt HTTPWebRequest připojený k příslušnému koncovému bodu REST. `audioFile` je cesta ke zvukovému souboru na disku.
+Tento vzorový kód ukazuje, jak posílat zvuk v blocích. Zvukový soubor záhlaví by měl obsahovat pouze u prvního bloku. `request` je objekt `HttpWebRequest` připojený k příslušnému koncovému bodu REST. `audioFile` je cesta ke zvukovému souboru na disku.
 
 ```csharp
+var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+request.SendChunked = true;
+request.Accept = @"application/json;text/xml";
+request.Method = "POST";
+request.ProtocolVersion = HttpVersion.Version11;
+request.Host = host;
+request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
+request.Headers["Ocp-Apim-Subscription-Key"] = "YOUR_SUBSCRIPTION_KEY";
+request.AllowWriteStreamBuffering = false;
 
-    HttpWebRequest request = null;
-    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
-    request.SendChunked = true;
-    request.Accept = @"application/json;text/xml";
-    request.Method = "POST";
-    request.ProtocolVersion = HttpVersion.Version11;
-    request.Host = host;
-    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
-    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
-    request.AllowWriteStreamBuffering = false;
-
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
+    // Open a request stream and write 1024 byte chunks in the stream one at a time.
     byte[] buffer = null;
     int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
+    using (var requestStream = request.GetRequestStream())
     {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
+        // Read 1024 raw bytes from the input audio file.
         buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
         while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
         {
             requestStream.Write(buffer, 0, bytesRead);
         }
 
-        // Flush
         requestStream.Flush();
     }
 }

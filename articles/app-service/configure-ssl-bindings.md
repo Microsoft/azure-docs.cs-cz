@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849747"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255178"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou SSL v Azure App Service
 
@@ -131,7 +131,7 @@ V levém navigačním panelu na stránce aplikace vyberte **Nastavení SSL**. Pa
 
 ![Vynucení HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
-Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Například:
+Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Příklad:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -147,6 +147,12 @@ V levém navigačním panelu na stránce aplikace vyberte **Nastavení SSL**. Pa
 
 Po dokončení operace bude vaše aplikace odmítat všechna připojení využívající nižší verze protokolu TLS.
 
+## <a name="handle-ssl-termination"></a>Zpracování ukončení SSL
+
+V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zkontrolovat, jestli jsou požadavky uživatele zašifrované, nebo ne, zkontrolujte `X-Forwarded-Proto` záhlaví.
+
+Konfigurační příručky specifické pro jazyk, jako je například Průvodce [konfigurací Node. js pro Linux](containers/configure-language-nodejs.md#detect-https-session) , ukazují, jak detekovat relaci HTTPS v kódu aplikace.
+
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -157,7 +163,7 @@ Po dokončení operace bude vaše aplikace odmítat všechna připojení využí
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Další zdroje
+## <a name="more-resources"></a>Další zdroje informací
 
 * [Použití certifikátu SSL v kódu aplikace](configure-ssl-certificate-in-code.md)
 * [Nejčastější dotazy: App Service certifikátů](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

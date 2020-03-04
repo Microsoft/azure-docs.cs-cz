@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5e4f9853a68b7b4d8b97cc76032cfa88708c097
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842678"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255465"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Dostupnost SAP HANA v rámci jedné oblasti Azure
 Tento článek popisuje několik scénářů dostupnosti v rámci jedné oblasti Azure. Azure má spoustu oblastí a šíří se po celém světě. Seznam oblastí Azure najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/). Pro nasazení SAP HANA na virtuálních počítačích v rámci jedné oblasti Azure nabízí Microsoft nasazení jednoho virtuálního počítače s instancí HANA. Pro zvýšení dostupnosti můžete nasadit dva virtuální počítače se dvěma instancemi HANA v rámci [skupiny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) , která pro dostupnost používá replikaci systému Hana. 
@@ -108,7 +108,7 @@ V tomto scénáři se data, která se replikují do instance HANA ve druhém vir
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>Replikace systému SAP HANA s automatickým převzetím služeb při selhání
 
-Ve standardních a nejběžnějších konfiguracích dostupnosti v rámci jedné oblasti Azure mají dva virtuální počítače Azure se systémem SLES Linux definovaný cluster s podporou převzetí služeb při selhání. Cluster SLES Linux je založený na rozhraní [Pacemaker](http://www.linux-ha.org/wiki/Pacemaker) v kombinaci se zařízením [STONITH](http://www.linux-ha.org/wiki/STONITH) . 
+Ve standardních a nejběžnějších konfiguracích dostupnosti v rámci jedné oblasti Azure mají dva virtuální počítače Azure se systémem SLES Linux definovaný cluster s podporou převzetí služeb při selhání. Cluster SLES Linux je založený na rozhraní [Pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) v kombinaci se zařízením [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) . 
 
 Z SAP HANA perspektivy se použije synchronizovaný režim replikace a nakonfiguruje se automatické převzetí služeb při selhání. Ve druhém virtuálním počítači funguje SAP HANA instance jako aktivní pohotovostní uzel. Pohotovostní uzel přijímá synchronní datový proud záznamů změn z primární instance SAP HANA. Vzhledem k tomu, že aplikace potvrdí transakce v primárním uzlu HANA, vyčká primární uzel HANA o potvrzení potvrzení do aplikace, dokud sekundární SAP HANA uzel nepotvrdí, že přijal záznam pro zápis. SAP HANA nabízí dva synchronní režimy replikace. Podrobnosti a popis rozdílů mezi těmito dvěma synchronními režimy replikace najdete v článku režimy replikace článků SAP [pro replikaci SAP HANA systému](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html).
 

@@ -3,7 +3,7 @@ title: Aktualizace agenta Azure Linux z GitHubu
 description: Informace o tom, jak aktualizovat agenta Azure Linux pro virtuální počítač Linux v Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 86ddda8537a4b61c5432072077c183ded2556624
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e4489f7c810799ca8e89565fe698f398f942b089
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973154"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251707"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Postup aktualizace agenta Azure Linux na virtuálním počítači
 

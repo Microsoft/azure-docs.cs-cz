@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio k vývoji týmu v aplikaci .NET Core ve službě Azure Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: f88a0b146a53a5b14ab17ae0d959e9b8a5567302
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438179"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245053"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Vývoj pro týmovou práci pomocí .NET Core a sady Visual Studio s Azure Dev Spaces
 
@@ -92,7 +92,7 @@ K vytvoření nového prostoru použijte následující postup:
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. V dialogovém okně **Přidat prostor** nastavte nadřazený prostor na **dev**a zadejte název nového prostoru. Můžete pro nový prostor použít svoje jméno (například „scott“), aby bylo vašim kolegům jasné, že se jedná o prostor, ve kterém pracujete vy. Klikněte na **OK**.
+6. V dialogovém okně **Přidat prostor** nastavte nadřazený prostor na **dev**a zadejte název nového prostoru. Můžete pro nový prostor použít svoje jméno (například „scott“), aby bylo vašim kolegům jasné, že se jedná o prostor, ve kterém pracujete vy. Klikněte na tlačítko **OK**.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 
@@ -146,6 +146,9 @@ Pokud chcete z clusteru úplně odstranit instanci Azure Dev Spaces včetně vš
 Následující příklad vypíše kontrolery Azure Dev Spaces v aktivním předplatném a pak odstraní kontroler Azure Dev Spaces přidružený ke clusteru AKS myaks ve skupině prostředků myaks-rg.
 
 ```cmd
-    azds controller list
-    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+azds controller list
+```
+
+```azurecli
+az aks remove-dev-spaces --name myaks --resource-group myaks-rg
 ```

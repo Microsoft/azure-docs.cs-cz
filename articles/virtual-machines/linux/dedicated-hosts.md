@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 940f27612b26c5baace7a19d2212fa6d8899e6e5
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ddd08f87fb7847a81b28b18c1dedc1c4f0a7a169
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834916"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246230"
 ---
 # <a name="azure-dedicated-hosts"></a>Vyhrazení hostitelé Azure
 
@@ -32,3 +32,5 @@ Vyhrazený hostitel Azure je služba, která poskytuje fyzické servery – scho
 - Další informace najdete v tématu Přehled [vyhrazených hostitelů](dedicated-hosts.md) .
 
 - [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
+
+- Můžete také ušetřit náklady pomocí [rezervované instance vyhrazených hostitelů Azure](../prepay-dedicated-hosts-reserved-instances.md).

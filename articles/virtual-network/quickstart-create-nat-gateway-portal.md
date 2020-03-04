@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 231c5f1bc6fd76f4f9e89d2d53639e9abe6cde0e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228330"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246019"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Rychlý Start: Vytvoření brány NAT pomocí Azure Portal
 
@@ -42,8 +42,8 @@ V této části budete muset v krocích níže nahradit následující parametry
 |-----------------------------|----------------------|
 | **\<Resource-Group-Name >**  | myResourceGroupNAT |
 | **\<název virtuální sítě >** | myVNet          |
-| **\<název oblasti >**          | Východní USA 2      |
-| **\<adresní prostor IPv4 >**   | 192.168.0.0 \ 16          |
+| **\<název oblasti >**          | USA – východ 2      |
+| **\<IPv4-Address-Space >**   | 192.168.0.0 \ 16          |
 | **\<název podsítě >**          | mySubnet        |
 | **\<> rozsahu adres** | 192.168.0.0 \ 24          |
 
@@ -96,7 +96,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Verze IP | Vyberte **IPv4**.
-    | Skladová položka | Vyberte **Standard**.
+    | Skladová jednotka (SKU) | Vyberte **Standard**.
     | Název | Zadejte **myPublicIP**. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **myResourceGroupNAT**. |

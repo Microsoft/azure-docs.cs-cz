@@ -12,19 +12,15 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c11f7daf68585d63d19fca282ef2f4a306303ac7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 72c363c34a3e7e01cb32917dd87237e4bbfc9490
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160725"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249152"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
-
-V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET Core přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z jakékoli instance Azure Active Directory (Azure AD).
-
-![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
-
+V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z jakékoli instance Azure Active Directory (Azure AD). (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
 > Aplikaci pro rychlý start můžete spustit dvěma způsoby:
@@ -66,22 +62,32 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET Core p�
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: stažení projektu ASP.NET Core
 
-- [Stažení řešení pro Visual Studio 2019](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
-
-#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
-
-1. Extrahujte soubor zip do místní složky v kořenové složce, například **C:\Azure-Samples**
-1. Pokud používáte Visual Studio 2019, otevřete řešení v aplikaci Visual Studio (volitelné).
-1. Upravte soubor **appSettings. JSON** . Vyhledejte `ClientId` a aktualizujte hodnotu `ClientId` s hodnotou **ID aplikace (klienta)** , kterou jste zaregistrovali. 
-
-    ```json
-    "ClientId": "Enter_the_Application_Id_here"
-    "TenantId": "Enter_the_Tenant_Info_Here"
-    ```
+> [!div renderon="docs"]
+> [Stažení řešení pro Visual Studio 2019](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
+> Spusťte projekt pomocí sady Visual Studio 2019.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Stažení ukázky kódu]()
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
+> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace a je připraven ke spuštění. 
+> [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Tento rychlý Start podporuje Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
+> [!div renderon="docs"]
+> #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3: spuštění projektu sady Visual Studio
+> 1. Extrahujte soubor zip do místní složky v kořenové složce, například **C:\Azure-Samples**
+> 1. Otevřete řešení v aplikaci Visual Studio 
+> 1. Upravte soubor **appSettings. JSON** . Vyhledejte `ClientId` a aktualizujte hodnotu `ClientId` s hodnotou **ID aplikace (klienta)** , kterou jste zaregistrovali. 
+>
+>    ```json
+>    "ClientId": "Enter_the_Application_Id_here"
+>    "TenantId": "Enter_the_Tenant_Info_Here"
+>    ```
+
+
 
 > [!div renderon="docs"]
 > Kde:
@@ -97,6 +103,9 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET Core p�
 ## <a name="more-information"></a>Další informace
 
 V této části najdete přehled kódu potřebného k přihlášení uživatelů. Tento přehled může být užitečný pro pochopení, jak kód funguje, hlavní argumenty a také, pokud chcete přidat přihlášení do existující aplikace ASP.NET Core.
+
+### <a name="how-the-sample-works"></a>Jak ukázka funguje
+![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>Spouštěcí třída
 

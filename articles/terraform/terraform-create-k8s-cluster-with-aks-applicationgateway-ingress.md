@@ -3,12 +3,12 @@ title: Kurz – vytvoření kontroleru Application Gateway příchozího přenos
 description: Kurz ilustrující postup vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Application Gateway jako řadiče pro příchozí přenosy
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472260"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251761"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Kurz: vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * K vytvoření clusteru Kubernetes použijte Terraformu a AKS.
 > * K otestování dostupnosti clusteru Kubernetes použijte nástroj kubectl.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
@@ -765,7 +765,7 @@ Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku
 
 Zástupný text nahraďte příslušnou hodnotou. Odstraní se všechny prostředky v zadané skupině prostředků.
 
-```bash
+```azurecli
 az group delete -n <resource-group>
 ```
 

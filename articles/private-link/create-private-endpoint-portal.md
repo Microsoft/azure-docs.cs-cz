@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 485eb14938fc7e490ea2d68c9090cdfdbf01cc8f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028894"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252566"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure Portal
 
-Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač na Azure Virtual Network, SQL Database Server s privátním koncovým bodem Azure pomocí webu Azure Portal. Pak můžete z virtuálního počítače bezpečně přistupovat k serveru SQL Database.
+Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač v Virtual Network Azure, SQL Database Server s privátním koncovým bodem Azure pomocí Azure Portal. Pak můžete z virtuálního počítače bezpečně přistupovat k serveru SQL Database.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -28,26 +28,22 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který se používá pro přístup k prostředku privátního propojení (SQL Server v Azure v tomto příkladu).
 
-### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
-
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
 V této části vytvoříte Virtual Network a podsíť, která bude hostovat virtuální počítač, který se používá pro přístup k prostředku privátního propojení.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+V této části budete muset v krocích níže nahradit následující parametry:
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Name (Název) | Zadejte *MyVirtualNetwork*. |
-    | Adresní prostor | Zadejte *10.1.0.0/16*. |
-    | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
-    | Umístění | Vyberte **WestCentralUS**.|
-    | Název podsítě | Zadejte *mySubnet*. |
-    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
-    |||
-1. Ponechte REST jako výchozí a vyberte **vytvořit**.
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroup |
+| **\<název virtuální sítě >** | myVirtualNetwork          |
+| **\<název oblasti >**          | USA – středozápad    |
+| **\<IPv4-Address-Space >**   | 10.1.0.0 \ 16          |
+| **\<název podsítě >**          | mySubnet        |
+| **\<> rozsahu adres** | 10.1.0.0 \ 24          |
 
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
@@ -62,9 +58,9 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Oblast | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
+    | Image | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
@@ -141,8 +137,8 @@ V této části vytvoříte SQL Server a přidáte do něj privátní koncový b
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
-    | Name (Název) | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
-    |Region (Oblast)|Vyberte **WestCentralUS**.|
+    | Název | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
+    |Oblast|Vyberte **WestCentralUS**.|
     |||
 5. Vyberte **Další: prostředek**.
 6. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
@@ -180,7 +176,7 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
 1. Otevřete *stažený soubor. RDP* .
 
@@ -222,7 +218,7 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
     | Název serveru| Vybrat *MyServer.Database.Windows.NET* |
     | Uživatelské jméno | Jako username@servername zadejte uživatelské jméno, které se poskytuje během vytváření SQL serveru. |
     |Heslo |Zadejte heslo, které jste zadali během vytváření SQL serveru. |
-    |Remember password|Vyberte **Ano**.|
+    |Zapamatovat heslo|Vyberte **Ano**.|
     |||
 1. Vyberte **Connect** (Připojit).
 2. Procházet databáze z levé nabídky

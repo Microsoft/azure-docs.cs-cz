@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78208244"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246213"
 ---
 ## <a name="limitations"></a>Omezení
 
@@ -79,7 +79,7 @@ Infrastruktura, která podporuje vaše virtuální počítače, se občas může
 
 Po zřízení vyhrazeného hostitele ho Azure přiřadí k fyzickému serveru. Tím se zajistí dostupnost kapacity v případě, že potřebujete zřídit virtuální počítač. Azure používá celou kapacitu v oblasti (nebo zóně) k výběru fyzického serveru pro hostitele. Také to znamená, že zákazníci můžou očekávat, že budou moci rozšiřovat své vyhrazené hostitele, aniž by to mělo za následek nedostatku místa v clusteru.
 
-## <a name="quotas"></a>kvóty,
+## <a name="quotas"></a>Kvóty
 
 Pro vyhrazené hostitele je k dispozici výchozí limit kvóty 3000 vCPU pro jednotlivé oblasti. Počet hostitelů, které můžete nasadit, je taky omezený kvótou pro rodinu velikosti virtuálního počítače, která se používá pro hostitele. Například předplatné s průběžnými **platbami** může mít k dispozici pouze kvótu 10 vCPU pro řadu velikostí Dsv3 v oblasti východní USA. V takovém případě musíte požádat o zvýšení kvóty alespoň na 64 vCPU, než budete moct nasadit vyhrazeného hostitele. V případě potřeby vyberte v pravém horním rohu tlačítko **zvýšení žádosti** , aby se zažádal požadavek.
 
@@ -99,7 +99,7 @@ Licencování softwaru, úložiště a využití sítě se účtují odděleně 
 
 Další informace najdete v tématu [ceny za vyhrazené hostitele Azure](https://aka.ms/ADHPricing).
 
-Můžete také ušetřit náklady s [rezervovanou instancí vyhrazených hostitelů Azure] (.. /articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
+Můžete také ušetřit náklady pomocí [rezervované instance vyhrazených hostitelů Azure](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
 ## <a name="vm-families-and-hardware-generations"></a>Rodiny virtuálních počítačů a generování hardwaru
 

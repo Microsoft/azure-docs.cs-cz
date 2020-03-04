@@ -4,12 +4,12 @@ description: V tomto kurzu zjistíte, jak sestavit image kontejneru Dockeru v Az
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8a45cf3a72ed8f38f6f28a2f0225d0913f906da
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456052"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252102"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úloh
 
@@ -32,7 +32,7 @@ V následujících kurzech se naučíte použít ACR Tasks k automatizovanému s
 
 Pokud chcete rozhraní příkazového řádku Azure používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější a přihlášeni pomocí [AZ Login][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI][azure-cli].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="github-account"></a>Účet GitHub
 
@@ -52,13 +52,13 @@ Po vytvoření forku úložiště fork naklonujte a zadejte adresář obsahujíc
 
 Úložiště naklonujte pomocí příkazu `git`, **\<your-github-username\>** nahraďte svým uživatelským jménem pro GitHub:
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 Zadejte adresář obsahující zdrojový kód:
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -72,7 +72,9 @@ Když teď máte zdrojový kód ve svém počítači, postupujte podle těchto k
 
 Aby bylo spouštění ukázkových souborů jednodušší, používají kurzy v této sérii proměnné prostředí shell. Spuštěním následujícího příkazu nastavte proměnnou `ACR_NAME`. **\<registry-name\>** nahraďte jedinečným názvem nového registru kontejneru. Název registru musí být v rámci Azure jedinečný, obsahovat pouze malá písmena a musí obsahovat 5-50 alfanumerických znaků. Další prostředky, které v tomto kurzu vytvoříte, jsou založené na tomto názvu. Proto byste měli změnit jenom tuto první proměnnou.
 
-```azurecli-interactive
+[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 

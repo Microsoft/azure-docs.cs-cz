@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e850984bd03f4b1e630db5beceed36e122340ead
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ec8944ea0b4cf44c05efe92d350ae0db66d338b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500441"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247813"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
@@ -48,7 +48,9 @@ V následujícím příkladu nahraďte <app_name > jedinečným názvem aplikace
 
 ```bash
 cd html-docs-hello-world
+```
 
+```azurecli
 az webapp up --location westeurope --name <app_name> --html
 ```
 
@@ -100,7 +102,7 @@ Uložte změny a editor nano zavřete. K uložení použijte příkaz `^O` a k z
 
 Teď aplikaci znovu nasadíte pomocí stejného příkazu `az webapp up`.
 
-```bash
+```azurecli
 az webapp up --location westeurope --name <app_name> --html
 ```
 
@@ -128,7 +130,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud předpokládáte, že už tyto prostředky nebudete potřebovat, odstraňte skupinu prostředků spuštěním následujícího příkazu ve službě Cloud Shell: Mějte na paměti, že název skupiny prostředků se pro vás automaticky vygeneroval v kroku [Vytvoření webové aplikace](#create-a-web-app).
 
-```bash
+```azurecli
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 

@@ -3,8 +3,8 @@ title: 'Rychlý Start: vytvoření instance pomocí Azure Portal'
 titleSuffix: Azure Database Migration Service
 description: K vytvoření instance Azure Database Migration Service použijte Azure Portal.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 42638af9f51770a9a5738cd92f91c28439af273a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: efbf7d9db91b8c23151ca4337bd4d58f814a7096
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750098"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254980"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rychlý start: Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal
 
 V tomto rychlém startu použijete Azure Portal k vytvoření instance Azure Database Migration Service.  Po vytvoření služby ji můžete použít k migraci dat z SQL Server místně do Azure SQL Database.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: rochakm
-ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 32d826f3c27cea3d0993c47e8562360315b7bd2e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902559"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256047"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
 
-Tento článek popisuje, jak řešit běžné chyby v Azure Site Recovery během replikace a obnovení virtuálních počítačů Azure z jedné oblasti do druhé. Další informace o podporovaných konfiguracích najdete v tématu [matice podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
+Tento článek popisuje, jak řešit běžné chyby v Azure Site Recovery během replikace a obnovení virtuálních počítačů Azure z jedné oblasti do druhé. Další informace o podporovaných konfiguracích najdete v [matrici podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Problémy s kvótou prostředků Azure (kód chyby 150097)
 
@@ -80,7 +80,7 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Pokud se certifikát kořenové certifikační autority Symantec nenajde, spusťte následující příkaz a Stáhněte soubor. Vyhledejte případné chyby a proveďte doporučené akce při selhání sítě.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://docs.broadcom.com/docs-and-downloads/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Ověřte, jestli je přítomný certifikát kořenové certifikační autority Baltimore:
 
@@ -88,7 +88,7 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Pokud se nenalezne certifikát kořenové certifikační autority Baltimore, spusťte tento příkaz a Stáhněte certifikát:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
 
 1. Ověřte, zda je k dispozici DigiCert_Global_Root_CA certifikát:
 
@@ -106,7 +106,7 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Spusťte tyto příkazy a ověřte, zda byly pro certifikáty vytvořeny hodnoty hash předmětu jako symbolických odkazů:
 
-    - Příkaz:
+    - Systému
 
         **# ls-l | Baltimore grep**
 
@@ -116,7 +116,7 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Příkaz:
+    - Systému
 
         **# ls-l | VeriSign_Class_3_Public_Primary_Certification_Authority_G5 grep**
 
@@ -126,7 +126,7 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Příkaz:
+    - Systému
 
         **# ls-l | DigiCert_Global_Root grep**
 
@@ -150,7 +150,7 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Ověřte, zda jsou soubory k dispozici:
 
-    - Příkaz:
+    - Systému
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 
@@ -381,14 +381,14 @@ Postup řešení potíží ve [stavu zřizování virtuálního počítače nen�
 Aby bylo možné povolit replikaci na virtuálním počítači, musí být jeho stav zřizování **úspěšný**. Chcete-li zjistit stav zřizování, postupujte podle následujících kroků:
 
 1. V Azure Portal vyberte **Průzkumník prostředků** ze **všech služeb**.
-1. Rozbalte **předplatná** seznam a vyberte své předplatné.
-1. Rozbalte **ResourceGroups** seznam a vyberte skupinu prostředků virtuálního počítače.
+1. Rozbalte seznam **předplatných** a vyberte své předplatné.
+1. Rozbalte seznam **ResourceGroups** a vyberte skupinu prostředků virtuálního počítače.
 1. Rozbalte seznam **prostředky** a vyberte svůj virtuální počítač.
 1. Zkontrolujte pole **provisioningState** v zobrazení instance na pravé straně.
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 
-- Pokud **provisioningState** je **neúspěšné**, obraťte se na podporu s podrobnostmi řešení.
+- Pokud se ProvisioningState **nezdařil**, obraťte se na podporu s podrobnostmi o řešení potíží.
 - Pokud se provisioningState **aktualizuje**, může se nasadit další rozšíření. Zkontrolujte, jestli virtuální počítač neobsahuje nějaké probíhající operace, počkejte, až se dokončí, a pak zkuste neúspěšnou Site Recovery úlohy povolit replikaci.
 
 ## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Nejde vybrat cílový virtuální počítač (karta výběr sítě není k dispozici).

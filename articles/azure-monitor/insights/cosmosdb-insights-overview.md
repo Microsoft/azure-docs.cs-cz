@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: d28db9907094a651835078f4459a985b9d15e589
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657380"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250683"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Prozkoumat Azure Monitor pro Azure Cosmos DB (Preview)
 
@@ -34,39 +34,11 @@ Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. Tyto Azur
 >[!NOTE]
 >Pro přístup k této funkci se neplatí žádné poplatky a účtují se vám jenom Azure Monitor základní funkce, které nakonfigurujete nebo povolíte, jak je popsáno na stránce [Azure monitor s podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/monitor/) .
 
-## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
-
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
-
-1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
-
-   ![Podokno metrik v Azure Monitor](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
-
-1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné**a **skupinu prostředků**. Jako **typ prostředku**vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
-
-   ![Vyberte účet Cosmos DB, pro který chcete zobrazit metriky.](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
-
-1. Dále můžete vybrat metriku ze seznamu dostupných metrik. Můžete vybrat metriky specifické pro jednotky žádosti, úložiště, latenci, dostupnost, Cassandra a další. Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [metriky podle kategorií](../../cosmos-db/monitor-cosmos-db-reference.md) . V tomto příkladu vybereme **jednotky žádosti** a jako hodnotu agregace určíte **průměr** .
-
-   Kromě těchto podrobností můžete také vybrat **časový rozsah** a **časovou členitost** metrik. V poli Max (maximum) si můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se v závislosti na vašem filtru zobrazí graf. Pro vybrané období můžete zobrazit průměrný počet spotřebovaných jednotek žádostí za minutu.  
-
-   ![Vyberte metriku z Azure Portal](./media/cosmosdb-insights-overview/metric-types.png)
-
-### <a name="add-filters-to-metrics"></a>Přidání filtrů do metrik
-
-Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName**, **DatabaseName**, **typem operace OperationType**, **region**a **StatusCode**. Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **typem operace OperationType** , a vyberte hodnotu, jako je například **dotaz**. V grafu se pak zobrazí jednotky žádosti spotřebované pro operaci dotazování pro vybrané období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
-
-![Přidejte filtr pro výběr členitosti metriky.](./media/cosmosdb-insights-overview/add-metrics-filter.png)
-
-Metriky můžete seskupit pomocí možnosti **použít rozdělení** . Například můžete seskupit jednotky žádostí na typ operace a zobrazit graf pro všechny operace najednou, jak je znázorněno na následujícím obrázku:
-
-![Přidat použít dělicí filtr](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
-
 ## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Zobrazit metriky využití a výkonu pro Azure Cosmos DB
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **monitorování** a vyberte **monitor**.
 

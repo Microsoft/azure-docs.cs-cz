@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863593"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252033"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge technické specifikace
 
@@ -23,17 +23,17 @@ Hardwarové součásti Microsoft Azure Data Box Edge zařízení vyhovují techn
 
 Data Box Edge zařízení má následující specifikace pro výpočetní výkon a paměť:
 
-| Specifikace           | Hodnota                  |
+| Upřesněn           | Hodnota                  |
 |-------------------------|----------------------------|
 | Procesor    | PROCESOR 2 X 10 Core                     |
-| Paměť              | 128 GB RAM                  |
+| Memory (Paměť)              | 128 GB RAM                  |
 
 
 ## <a name="fpga-specifications"></a>Specifikace FPGA
 
 Pole programovatelné brány (FPGA) je součástí každé Data Box Edge zařízení, které umožňuje použití scénářů Machine Learning (ML). 
 
-| Specifikace           | Hodnota                  |
+| Upřesněn           | Hodnota                  |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
@@ -42,7 +42,7 @@ Pole programovatelné brány (FPGA) je součástí každé Data Box Edge zaříz
 
 Zařízení Data Box Edge má dvě 100-240 V jednotkách napájení (PSUs) s ventilátory s vysokým výkonem. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
 
-| Specifikace           | 750 W PSU                  |
+| Upřesněn           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximální výstupní výkon    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
@@ -53,11 +53,19 @@ Zařízení Data Box Edge má dvě 100-240 V jednotkách napájení (PSUs) s ven
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
+## <a name="network-interface-specifications"></a>Specifikace síťového rozhraní
+
+Data Box Edge zařízení má 6 síťových rozhraní PORT1-PORT6.
+
+| Upřesněn           | Popis                 |
+|-------------------------|----------------------------|
+|  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
+
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
 Zařízení Data Box Edge mají 9 X 2,5 "NVMe SSD, každé s kapacitou 1,6 TB. Z těchto SSD je 1 disk operačního systému a ostatní 8 jsou datové disky. Celková použitelná kapacita pro zařízení je zhruba 12,5 TB. Následující tabulka obsahuje podrobné informace o kapacitě úložiště zařízení.
 
-|     Specifikace                          |     Hodnota             |
+|     Upřesněn                          |     Hodnota             |
 |--------------------------------------------|-----------------------|
 |    Počet jednotek SSD (Solid-State Drive) (SSD)     |    8                  |
 |    Jedna kapacita SSD                     |    1,6 TB             |
@@ -74,18 +82,18 @@ V následujících tabulkách jsou uvedeny různé specifikace velikosti skřín
 
 V následující tabulce jsou uvedeny rozměry skříně v milimetrech a palcích.
 
-|     Skříně     |     Milimetrech     |     Cm     |
+|     Skříně     |     Milimetrech     |     cm     |
 |-------------------|---------------------|----------------|
 |    Výška         |    44,45            |    1,75 "          |
-|    Šířka          |    434,1           |    17,09 "          |
+|    impulzu          |    434,1           |    17,09 "          |
 |    Délka          |    740,4           |    29,15 "          |
 
 V následující tabulce jsou uvedeny rozměry balíčku pro expedici v milimetrech a palcích.
 
-|     Balíček     |     Milimetrech     |     Cm     |
+|     Balíček     |     Milimetrech     |     cm     |
 |-------------------|---------------------|----------------|
 |    Výška         |    311,2            |    12,25 "          |
-|    Šířka          |    642,8          |    25,31 "          |
+|    impulzu          |    642,8          |    25,31 "          |
 |    Délka          |   1 051,1          |    41,38 "          |
 
 ### <a name="enclosure-weight"></a>Váha skříně

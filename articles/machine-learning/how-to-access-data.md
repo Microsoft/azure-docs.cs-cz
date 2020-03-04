@@ -11,12 +11,12 @@ author: likebupt
 ms.reviewer: nibaccam
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1db3679053edbbc2874c456b1c8db4a4f8e0dabd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 5527d58f140074279d6b9feac13803f29eb0bda5
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164864"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255775"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Budete potřebovat:
 
 - Pracovní prostor služby Azure Machine Learning.
   
-  Buď [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) nebo použijte existující pomocí sady Python SDK:
+  Buď [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) nebo použijte existující sadu pomocí sady Python SDK. Importujte třídu `Workspace` a `Datastore` a načtěte informace o předplatném ze souboru `config.json` pomocí `from_config()`funkce. Ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete také zadat parametr cesty, který bude odkazovat na soubor pomocí `from_config(path="your/file/path")`.
 
    ```Python
    import azureml.core

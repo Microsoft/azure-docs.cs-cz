@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0accf502df3616a686a34fc6c96cb2cfc47e6db1
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 03963f60cc364dd36ad55c0a28e92e3b585bb38d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667826"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255078"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-c"></a>Vytvoření datového připojení Event Grid pro Azure Průzkumník dat pomocíC#
 
@@ -79,13 +79,13 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 
 |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
 |---|---|---|
-| TenantId | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | Vaše ID tenanta. Označuje se také jako ID adresáře.|
+| tenantId | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | Vaše ID tenanta. Označuje se také jako ID adresáře.|
 | subscriptionId | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | ID předplatného, které používáte pro vytváření prostředků.|
 | clientId | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | ID klienta aplikace, která má přístup k prostředkům ve vašem tenantovi.|
 | clientSecret | *xxxxxxxxxxxxxx* | Tajný klíč klienta aplikace, který má přístup k prostředkům ve vašem tenantovi. |
 | resourceGroupName | *testrg* | Název skupiny prostředků, která obsahuje váš cluster.|
 | clusterName | *mykustocluster* | Název vašeho clusteru.|
-| Databáze | *mykustodatabase* | Název cílové databáze v clusteru.|
+| databaseName | *mykustodatabase* | Název cílové databáze v clusteru.|
 | Připojení k dataconnectionname | *myeventhubconnect* | Požadovaný název datového připojení.|
 | tableName | *StormEvents* | Název cílové tabulky v cílové databázi.|
 | mappingRuleName | *StormEvents_CSV_Mapping* | Název mapování sloupce souvisejícího s cílovou tabulkou.|
@@ -94,5 +94,37 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | storageAccountResourceId | *ID prostředku* | ID prostředku účtu úložiště, který obsahuje data pro ingestování. |
 | Klientská organizace | *$Default* | Skupina uživatelů centra událostí.|
 | location | *Střed USA* | Umístění prostředku datového připojení.|
+
+## <a name="generate-sample-data"></a>Generování ukázkových dat
+
+Teď, když je služba Azure Průzkumník dat a účet úložiště připojené, můžete vytvořit ukázková data a nahrát je do úložiště objektů BLOB.
+
+Tento skript vytvoří nový kontejner v účtu úložiště, nahraje do tohoto kontejneru existující soubor (jako objekt BLOB) a pak zobrazí seznam objektů BLOB v kontejneru.
+
+```csharp
+var azureStorageAccountConnectionString=<storage_account_connection_string>;
+
+var containerName=<container_name>;
+var blobName=<blob_name>;
+var localFileName=<file_to_upload>;
+
+// Creating the container
+var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
+var blobClient = azureStorageAccount.CreateCloudBlobClient();
+var container = blobClient.GetContainerReference(containerName);
+container.CreateIfNotExists();
+
+// Set metadata and upload file to blob
+var blob = container.GetBlockBlobReference(blobName);
+blob.Metadata.Add("rawSizeBytes", "4096‬"); // the uncompressed size is 4096 bytes
+blob.Metadata.Add("kustoIngestionMappingReference", "mapping_v2‬");
+blob.UploadFromFile(localFileName);
+
+// List blobs
+var blobs = container.ListBlobs();
+```
+
+> [!NOTE]
+> Azure Průzkumník dat neodstraní objekty blob po ingestování. Po dobu tří až pěti dnů si můžete zachovat objekty BLOB pomocí [životního cyklu služby Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) ke správě odstranění objektů BLOB.
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

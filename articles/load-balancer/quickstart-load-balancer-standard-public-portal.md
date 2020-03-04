@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470186"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251862"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -110,21 +110,20 @@ Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do v
 
 V této části vytvoříte virtuální síť, vytvoříte tři virtuální počítače pro back-end fond Load Balancer a pak na virtuální počítače nainstalujete službu IIS, která vám pomůžou otestovat Load Balancer.
 
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+V této části budete muset v krocích níže nahradit následující parametry:
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Název | Zadejte *myVNet*. |
-    | Adresní prostor | Zadejte *10.1.0.0/16*. |
-    | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte existující prostředek – *myResourceGroupSLB*. |
-    | Umístění | Vyberte **Západní Evropa**.|
-    | Název podsítě | Zadejte *myBackendSubnet*. |
-    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
-1. Ponechte zbytek výchozích hodnot a vyberte **vytvořit**.
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroupSLB |
+| **\<název virtuální sítě >** | myVNet          |
+| **\<název oblasti >**          | Západní Evropa      |
+| **\<IPv4-Address-Space >**   | 10.1.0.0 \ 16          |
+| **\<název podsítě >**          | myBackendSubnet        |
+| **\<> rozsahu adres** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 SKU veřejných IP adres a Load Balancer SKU se musí shodovat. V případě Standard Load Balancer použijte virtuální počítače se standardními IP adresami ve fondu back-end. V této části vytvoříte tři virtuální počítače (*myVM1*, *myVM2* a *MYVM3*) se standardní veřejnou IP adresou ve třech různých zónách (*zóna 1*, *zóna 2*a *zóna 3*), které jsou později přidané do fondu back-end Load Balancer, který jste vytvořili dříve. Pokud jste vybrali základní, použijte virtuální počítače se základními IP adresami.

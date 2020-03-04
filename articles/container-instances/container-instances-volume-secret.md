@@ -3,12 +3,12 @@ title: Připojit tajný svazek ke skupině kontejnerů
 description: Naučte se připojit tajný svazek pro ukládání citlivých informací pro přístup k vašim instancím kontejnerů.
 ms.topic: article
 ms.date: 07/19/2018
-ms.openlocfilehash: 7f212a5090923a7d7bf00fc8ac78299f2edcc9c1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533189"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249941"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Připojit tajný svazek v Azure Container Instances
 
@@ -34,8 +34,11 @@ az container create \
 
 Následující příkaz [AZ Container exec][az-container-exec] Output zobrazuje otevření prostředí v běžícím kontejneru, výpis souborů v rámci tajného svazku a zobrazování jejich obsahu:
 
-```console
-$ az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+```azurecli
+az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+```
+
+```output
 /usr/src/app # ls -1 /mnt/secrets
 mysecret1
 mysecret2

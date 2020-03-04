@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589364"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250865"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -71,6 +71,11 @@ Registrované modely se identifikují prostřednictvím názvu a verze. Vždy, k
 Registrovaný model, který se používá v aktivním nasazení, se nedá odstranit.
 Další informace naleznete v části model registru v tématu [nasazení modelů](how-to-deploy-and-where.md#registermodel).
 
+### <a name="profile-models"></a>Modely profilů
+
+Azure Machine Learning vám může pomáhat pochopit požadavky na procesor a paměť služby, která se vytvoří při nasazení modelu. Profilace testuje službu, která spouští váš model, a vrací informace, jako je využití CPU, využití paměti a latence odezvy. Poskytuje taky doporučení pro procesor a paměť na základě využití prostředků.
+Další informace najdete v části profilace v tématu [nasazení modelů](how-to-deploy-and-where.md#profilemodel).
+
 ### <a name="package-and-debug-models"></a>Modely balíčků a ladění
 
 Než model nasadíte do produkčního prostředí, je zabalen do image Docker. Ve většině případů probíhá vytváření obrázků automaticky na pozadí během nasazování. Bitovou kopii můžete zadat ručně.
@@ -78,10 +83,6 @@ Než model nasadíte do produkčního prostředí, je zabalen do image Docker. V
 Pokud narazíte na problémy s nasazením, můžete nasadit v místním vývojovém prostředí pro řešení potíží a ladění.
 
 Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.md#registermodel) a [řešení potíží s nasazeními](how-to-troubleshoot-deployment.md).
-
-### <a name="validate-and-profile-models"></a>Ověřování modelů a profilace
-
-Azure Machine Learning dá profilaci použít k určení ideálního nastavení procesoru a paměti, které se má použít při nasazení modelu. Ověřování modelu probíhá jako součást tohoto procesu pomocí dat, která zadáte pro proces profilace.
 
 ### <a name="convert-and-optimize-models"></a>Převod a optimalizace modelů
 

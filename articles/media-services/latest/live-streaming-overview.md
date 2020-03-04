@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 93005b181075ac671af6c8d73a3f2a06ed9eb0d8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b366262ce7849658eb84444d873956c25ab38804
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977739"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244664"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -52,7 +52,7 @@ Dynamické filtrování se používá k řízení počtu běhů, formátů, pře
 
 ## <a name="live-event-types"></a>Typy živých událostí
 
-[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Živá událost může být jeden ze dvou typů: průchozí a živé kódování. Podrobnosti o živém streamování v Media Services V3 najdete v tématu [živé události a živé výstupy](live-events-outputs-concept.md).
+[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Živá událost může být nastavená na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi) nebo *živé kódování* (místní kodér Live Encoder posílá datový proud s jednou přenosovou rychlostí). Podrobnosti o živém streamování v Media Services V3 najdete v tématu [živé události a živé výstupy](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Průchod
 
@@ -103,7 +103,7 @@ Abyste pochopili pracovní postup živého streamování v Media Services V3, mu
 12. Pokud jste dokončili streamování událostí a chcete dříve zřízené prostředky vyčistit, postupujte podle následujícího návodu.
 
     * Zastavte odesílání datového proudu z kodéru.
-    * Zastaví živou událost. Jakmile se živá událost zastaví, neúčtují se žádné poplatky. Když bude potřeba kanál znovu spustit, bude mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
+    * Zastaví živou událost. Jakmile se živá událost zastaví, neúčtují se žádné poplatky. Když ho budete potřebovat znovu spustit, budete mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
     * Pokud nechcete pokračovat v poskytování archivu živé události ve formě datového proudu na vyžádání, můžete koncový bod streamování zastavit. Pokud je živá událost v zastaveném stavu, neúčtují se žádné poplatky.
 
 Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení. 
@@ -114,7 +114,7 @@ Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na v
 ## <a name="other-important-articles"></a>Další důležité články
 
 - [Doporučené živé kodéry](recommended-on-premises-live-encoders.md)
-- [Použití cloudového DVR](live-event-cloud-dvr.md)
+- [Použití cloudového videorekordéru](live-event-cloud-dvr.md)
 - [Porovnání funkcí typů živých událostí](live-event-types-comparison.md)
 - [Stavy a fakturace](live-event-states-billing.md)
 - [Latence](live-event-latency.md)

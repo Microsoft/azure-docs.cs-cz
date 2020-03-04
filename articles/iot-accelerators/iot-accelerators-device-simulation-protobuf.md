@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982148"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250212"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
 
@@ -32,7 +32,7 @@ Postup v tomto návodu vám ukáže, jak:
 1. Generovat třídy Protobuf
 1. Test lokálně
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle kroků v tomto průvodci, budete potřebovat:
 
@@ -231,7 +231,7 @@ Následující skript předpokládá, že název vašeho centra IoT je typu **za
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test

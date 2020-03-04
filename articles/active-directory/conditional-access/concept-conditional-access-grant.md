@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656309"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249105"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -67,35 +67,7 @@ Organizace se můžou rozhodnout používat identitu zařízení jako součást 
 
 Organizace můžou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím nastavil ze schválené klientské aplikace. Tyto schválené klientské aplikace podporují [Zásady ochrany aplikací Intune](/intune/app-protection-policy) nezávisle na řešení správy mobilních zařízení (MDM).
 
-Toto nastavení platí pro následující klientské aplikace:
-
-- Microsoft Azure Information Protection
-- Rezervace Microsoftu
-- Microsoft Cortana
-- Microsoft Dynamics 365
-- Microsoft Edge
-- Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
-- Microsoft fakturace
-- Microsoft Kaizala
-- Spouštěcí program společnosti Microsoft
-- Microsoft OneDrive
-- Microsoft OneNote
-- Microsoft Outlook
-- Aplikace Microsoft Planner
-- Microsoft PowerApps
-- Microsoft Power BI
-- Microsoft PowerPoint
-- Microsoft SharePoint
-- Microsoft Skype pro firmy
-- Microsoft StaffHub
-- Microsoft Stream
-- Microsoft Teams
-- Microsoft To-Do
-- Microsoft Visio
-- Microsoft Word
-- Microsoft Yammer
+Podporované aplikace můžete najít v článku [Microsoft Intune chráněných aplikacích](/intune/apps/apps-supported-intune-apps).
 
 **Poznámky**
 
@@ -108,12 +80,7 @@ Toto nastavení platí pro následující klientské aplikace:
 
 V rámci zásad podmíněného přístupu můžete vyžadovat, aby v klientské aplikaci existovaly [Zásady ochrany aplikací Intune](/intune/app-protection-policy) , aby byl přístup k vybraným cloudovým aplikacím dostupný. 
 
-Toto nastavení platí pro následující klientské aplikace:
-
-- Microsoft Cortana
-- Microsoft OneDrive
-- Microsoft Outlook
-- Aplikace Microsoft Planner
+Podporované aplikace můžete najít v článku [Microsoft Intune chráněných aplikacích](/intune/apps/apps-supported-intune-apps).
 
 **Poznámky**
 

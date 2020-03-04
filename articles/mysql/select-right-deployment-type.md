@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935467"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255535"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Volba pravého serveru MySQL v Azure
 
@@ -41,7 +41,7 @@ Hlavní rozdíly mezi těmito možnostmi jsou uvedené v následující tabulce:
 | Hybridní scénáře | Pomocí [replikace vstupních dat](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)můžete synchronizovat data z externího serveru MySQL do služby Azure Database for MySQL. Externí server může být místní, virtuální počítače nebo databázová služba, jejímž hostitelem jsou jiní poskytovatelé cloudu.<br/><br/> Pomocí funkce [pro čtení repliky](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) můžete replikovat data z hlavního serveru Azure Database for MySQL do pěti serverů repliky jen pro čtení. Repliky jsou buď ve stejné oblasti Azure, nebo v různých oblastech. Repliky jen pro čtení se asynchronně aktualizují pomocí technologie replikace binlog.| Spravováno zákazníky
 | Zálohování a obnovení | Automaticky vytvoří [zálohy serveru](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) a uloží je v uživatelsky nakonfigurovaném úložišti, které je buď místně redundantní, nebo geograficky redundantní. Služba používá zálohy úplného, rozdílového a transakčního protokolu. | Spravováno zákazníky |
 | Monitorování operací databáze | Nabízí zákazníkům možnost [nastavit výstrahy](https://docs.microsoft.com/azure/mysql/concepts-monitoring) pro databázovou operaci a působit při dosažení prahových hodnot. | Spravováno zákazníky |
-| Advanced Threat Protection | Poskytuje [rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal). Tato ochrana detekuje aktivity neobvyklé, které naznačují neobvyklé a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. | Zákazníci musí tuto ochranu sami sestavit.
+| Rozšířená ochrana před internetovými útoky | Poskytuje [rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal). Tato ochrana detekuje aktivity neobvyklé, které naznačují neobvyklé a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. | Zákazníci musí tuto ochranu sami sestavit.
 | Zotavení po havárii | Ukládá automatizované zálohy v uživatelsky nakonfigurovaném [místně redundantním nebo geograficky redundantním úložišti](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal). Zálohování může také obnovit server k určitému bodu v čase. Doba uchovávání dat je odkudkoli 7 až 35 dní. Obnovení je provedeno pomocí Azure Portal. | Plně spravovaná zákazníky. Mezi odpovědnosti patří mimo jiné plánování, testování, archivace, ukládání a uchovávání dat. Další možností je použití trezoru služby Azure Recovery Services k zálohování virtuálních počítačů a databází Azure na virtuálních počítačích. Tato možnost je ve verzi Preview. |
 | Doporučení k výkonu | Poskytuje zákazníkům doporučení týkající se [výkonu](https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) na základě systémem generovaných souborů protokolu využití. Doporučení umožňují optimalizovat úlohy. | Spravováno zákazníky |
 
@@ -53,7 +53,7 @@ Existuje několik faktorů, které mohou mít vliv na rozhodnutí zvolit PaaS ne
 
 Omezené financování je často primárním aspektem, který určuje nejlepší řešení pro hostování databází. To platí bez ohledu na to, jestli se jedná o spuštění s malým hotovostem nebo týmem v zřízené společnosti, která funguje s přísnými rozpočtovými omezeními. Tato část popisuje základy fakturace a licencování v Azure, které se vztahují na Azure Database for MySQL a MySQL na virtuálních počítačích Azure.
 
-#### <a name="billing"></a>Vyúčtování
+#### <a name="billing"></a>Fakturace
 
 Azure Database for MySQL je v tuto chvíli k dispozici jako služba na několika úrovních s různými cenami za prostředky. Všechny prostředky se účtují po hodinách za pevnou sazbu. Nejnovější informace o aktuálně podporovaných úrovních služby, velikostech výpočtů a částkách úložiště najdete v článku o [nákupu modelu založeném na Vcore](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers). Úrovně služeb a výpočetní velikosti můžete dynamicky upravovat tak, aby odpovídaly různým požadavkům na propustnost vaší aplikace. Účtuje se vám odchozí přenos přes Internet za běžné [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/).
 
@@ -102,4 +102,4 @@ Následující seznam popisuje požadavky na správu pro jednotlivé možnosti:
 ## <a name="next-steps"></a>Další kroky
 
 * Viz [ceny Azure Database for MySQL](https://azure.microsoft.com/pricing/details/MySQL/).
-* Začněte [vytvořením prvního serveru](https://review.docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal).
+* Začněte [vytvořením prvního serveru](https://docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal).

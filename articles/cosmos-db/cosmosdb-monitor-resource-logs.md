@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
-ms.openlocfilehash: 670797eb833b0a145a18e20c6bba711ca11609bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 184fc65dae57292243be9abdca71a129512b3d0b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483281"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252057"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování Azure Cosmos DB dat pomocí nastavení diagnostiky v Azure
 
@@ -20,13 +20,13 @@ Nastavení diagnostiky v Azure slouží ke shromažďování protokolů prostře
 
 Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímco je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků nebo jejich přeposílání mimo Azure Monitor. Nastavení diagnostiky pro účty Azure Cosmos můžete zapnout pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 
 1. Přejděte k účtu Azure Cosmos. Otevřete podokno **nastavení diagnostiky** a pak vyberte **Přidat možnost nastavení diagnostiky** .
 
 1. V podokně **nastavení diagnostiky** vyplňte formulář následujícími podrobnostmi: 
 
-    * **Název**: Zadejte název pro protokoly a vytvořit.
+    * **Název**: zadejte název protokolů, které chcete vytvořit.
 
     * Protokoly můžete ukládat k **archivaci do účtu úložiště**, **streamovat do centra událostí** nebo je **Odeslat do Log Analytics**
 
@@ -99,7 +99,7 @@ Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Po
    | summarize count = count()  by OperationName, requestResourceType_s, bin(TimeGenerated, 1h) 
    ```
 
-1. Jaká je maximální propustnost, kterou oddíl poskytuje?
+1. Jaká je maximální propustnost, kterou oddíl spotřeboval?
 
    ```Kusto
    AzureDiagnostics

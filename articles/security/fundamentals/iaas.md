@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0a4daf61d6b791a01f5bfb18e6cfca8118b2f421
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749861"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255942"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -67,8 +67,8 @@ Pokud váš virtuální počítač spouští kritické aplikace, které potřebu
 
 Skupina dostupnosti je logické seskupení, které můžete v Azure použít k zajištění toho, že prostředky virtuálních počítačů, které do nich umístíte, jsou při jejich nasazení v datacentru Azure izolované od sebe. Azure zajišťuje, aby virtuální počítače, které umístíte do skupiny dostupnosti, běžely na několika fyzických serverech, výpočetních skříních, jednotkách úložiště a síťových přepínačích. Pokud dojde k selhání hardwaru nebo softwaru Azure, ovlivní to jenom podmnožinu vašich virtuálních počítačů a vaše celková aplikace bude dál k dispozici pro vaše zákazníky. Skupiny dostupnosti jsou zásadní funkcí, pokud chcete vytvářet spolehlivé cloudová řešení.
 
-## <a name="protect-against-malware"></a>Chraňte se před malwarem
-Měli byste nainstalovat ochranu proti malwaru, která vám usnadní identifikaci a odstraňování virů, spywaru a dalšího škodlivého softwaru. Můžete nainstalovat [Microsoft Antimalware](antimalware.md) nebo řešení ochrany koncového bodu Microsoftu ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)a [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
+## <a name="protect-against-malware"></a>Ochrana proti malwaru
+Měli byste nainstalovat ochranu proti malwaru, která vám usnadní identifikaci a odstraňování virů, spywaru a dalšího škodlivého softwaru. Můžete nainstalovat [Microsoft Antimalware](antimalware.md) nebo řešení ochrany koncového bodu Microsoftu ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)a [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
 Microsoft Antimalware obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pro prostředí, která jsou hostovaná nezávisle na produkčním prostředí, můžete použít antimalwarové rozšíření, které vám pomůžou ochránit vaše virtuální počítače a cloudové služby.
 
@@ -81,7 +81,7 @@ Pomocí [Azure Security Center](../../security-center/index.yml) můžete integr
 **Podrobnosti**: [Správa potíží s ochranou endpoint Protection pomocí Security Center](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>Správa aktualizací virtuálních počítačů
-Virtuální počítače Azure, jako jsou všechny místní virtuální počítače, se považují za spravované uživatelem. Azure v nich nenabízí instalaci aktualizací Windows. Musíte spravovat aktualizace virtuálních počítačů.
+Virtuální počítače Azure, jako jsou všechny místní virtuální počítače, se považují za spravované uživatelem. Azure do nich nevloží aktualizace Windows. Musíte spravovat aktualizace virtuálních počítačů.
 
 **Osvědčený postup**: Udržujte své virtuální počítače aktuální.   
 **Podrobnosti**: pomocí řešení [Update Management](../../automation/automation-update-management.md) v Azure Automation můžete spravovat aktualizace operačního systému pro počítače s Windows a Linux, které jsou nasazené v Azure, v místních prostředích nebo v jiných poskytovatelích cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
@@ -152,13 +152,13 @@ Doporučujeme, abyste zašifroval virtuální pevné disky (VHD), které vám po
 Níže jsou uvedené osvědčené postupy pro používání Azure Disk Encryption:
 
 **Osvědčený postup**: povolení šifrování na virtuálních počítačích.   
-**Podrobnosti**: Azure Disk Encryption generuje a zapisuje šifrovací klíče do trezoru klíčů. Správa šifrovacích klíčů v trezoru klíčů se vyžaduje ověřování Azure AD. Vytvořte aplikaci Azure AD pro tento účel. Pro účely ověřování, můžete použít buď ověřování na základě tajný kód klienta nebo [ověřování klienta na základě certifikátů Azure AD](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+**Podrobnosti**: Azure Disk Encryption generuje a zapisuje šifrovací klíče do trezoru klíčů. Správa šifrovacích klíčů v trezoru klíčů se vyžaduje ověřování Azure AD. Vytvořte aplikaci Azure AD pro tento účel. Pro účely ověřování můžete použít buď ověřování na základě tajného klíče klienta, nebo [ověřování Azure AD založené na certifikátech klienta](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 **Osvědčený postup**: použijte klíč šifrování klíče (KEK) pro další vrstvu zabezpečení šifrovacích klíčů. Přidejte KEK do trezoru klíčů.   
 **Podrobnosti**: pomocí rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) vytvořte šifrovací klíč klíče v trezoru klíčů. KEK můžete také importovat z místního modulu hardwarového zabezpečení (HSM) pro správu klíčů. Další informace najdete v dokumentaci k [Key Vault](../../key-vault/key-vault-hsm-protected-keys.md). Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault. Udržování v úschově kopie tohoto klíče v modulu HSM místní správy klíčů nabízí další ochranu před náhodným odstraněním klíčů.
 
 **Osvědčený postup**: před zašifrováním disků si pořídit [snímek](../../virtual-machines/windows/snapshot-copy-managed-disk.md) a/nebo zálohu. Pokud během šifrování dojde k neočekávané chybě, zálohování poskytuje možnost obnovení.   
-**Podrobnosti**: virtuální počítače se spravovanými disky vyžadují zálohování před tím, než dojde k šifrování. Po provedení zálohy můžete použít rutinu **set-AzVMDiskEncryptionExtension** k šifrování spravovaných disků zadáním parametru *-skipVmBackup* . Další informace o tom, jak zálohování a obnovení šifrovaných virtuálních počítačů najdete v tématu [Azure Backup](../../backup/backup-azure-vms-encryption.md) článku.
+**Podrobnosti**: virtuální počítače se spravovanými disky vyžadují zálohování před tím, než dojde k šifrování. Po provedení zálohy můžete použít rutinu **set-AzVMDiskEncryptionExtension** k šifrování spravovaných disků zadáním parametru *-skipVmBackup* . Další informace o zálohování a obnovení šifrovaných virtuálních počítačů najdete v článku o [Azure Backup](../../backup/backup-azure-vms-encryption.md) .
 
 **Osvědčený postup**: aby se zajistilo, že šifrovací tajná klíč nepřekračuje regionální hranice, Azure Disk Encryption potřebuje Trezor klíčů a virtuální počítače umístěné ve stejné oblasti.   
 **Podrobnosti**: Vytvořte a použijte Trezor klíčů, který je ve stejné oblasti jako virtuální počítač, který chcete zašifrovat.

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 6cdca78d09c9ca128119a58cb4feaf66bad111bd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165033"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256034"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Známé problémy/omezení migrace s migracemi z MongoDB Azure Cosmos DB do rozhraní API pro MongoDB
 
@@ -40,6 +40,8 @@ Známé problémy a omezení související s migrací z MongoDB Cosmos DB do roz
 | V připojovacím řetězci účtu úložiště chybí informace o SAS, takže se nedá ověřit. | V Průzkumník služby Storage vytvořte SAS pro kontejner objektů BLOB a použijte adresu URL s informacemi o SAS kontejneru jako zdrojový připojovací řetězec.<br><br> |
 
 ## <a name="using-an-unsupported-version-of-the-database"></a>Používání nepodporované verze databáze
+
+* **Příznak**: migrace se nezdařila.
 
 | Příčina         | Řešení |
 | ------------- | ------------- |

@@ -1,18 +1,16 @@
 ---
 title: Správa vlastních kontejnerů Linux pomocí rozhraní příkazového řádku
 description: Naučte se spravovat vlastní kontejnery Linux v Azure App Service z příkazového řádku. Automatizace zřizování a údržby aplikací.
-keywords: Azure App Service, Web App, CLI, Linux, OSS
-author: ahmedelnably
+keywords: azure app service, web app, cli, linux, oss
 ms.topic: article
 ms.date: 08/22/2017
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 773c8036a345383162013f9f7103164b0f382f12
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5ca5322467402af710df68c82d747f8f8d65e142
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689064"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255930"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Správa Web App for Containers pomocí rozhraní příkazového řádku Azure
 

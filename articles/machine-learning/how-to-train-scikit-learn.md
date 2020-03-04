@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e4a916b3765007a130c6ae84b317c2c7b700f2e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: d61e33568297e6f72aca0ab736f8a14f1758ffa1
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834884"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255134"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Sestavujte modely scikit s využitím škálování pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ V ukázkových skriptech v tomto článku se používají ke klasifikaci imagí 
 
 Bez ohledu na to, jestli provedete výukový model Machine Learning scikit z provozu nebo do cloudu převedete existující model, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pomocí elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat verzi a monitorovat modely produkčního prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Spusťte tento kód v jednom z těchto prostředí:
  - Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
@@ -74,7 +74,7 @@ Vytvořte objekt pracovního prostoru ze souboru `config.json` vytvořeného v [
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-machine-learning-experiment"></a>Vytvoření experimentu se strojovým učením
+### <a name="create-a-machine-learning-experiment"></a>Vytvoření experimentu ve strojovém učení
 
 Vytvořte experiment a složku, do které se budou ukládat skripty pro školení. V tomto příkladu vytvořte experiment nazvaný "skriptu sklearn-Iris".
 
@@ -187,7 +187,7 @@ from azureml.core import Model
 from azureml.core.resource_configuration import ResourceConfiguration
 
 model = run.register_model(model_name='sklearn-iris', 
-                           model_path='model.joblib',
+                           model_path='outputs/model.joblib',
                            model_framework=Model.Framework.SCIKITLEARN,
                            model_framework_version='0.19.1',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
@@ -221,6 +221,6 @@ Poznámka: tyto závislosti jsou součástí předem připraveného kontejneru s
 
 V tomto článku jste si naučili a zaregistrovali model scikit-učení a seznámili jste se s možnostmi nasazení. Další informace o Azure Machine Learning najdete v těchto článcích.
 
-* [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
-* [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
+* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
+* [Ladit parametry](how-to-tune-hyperparameters.md)
 * [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

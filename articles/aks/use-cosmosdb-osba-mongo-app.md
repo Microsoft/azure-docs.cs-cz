@@ -8,12 +8,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, otevřete Service Broker a otevřete Service Broker pro Azure.
-ms.openlocfilehash: 3d0ab0b27d77e45d779227d30c5a8e4f824ba62a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ddaa3b9aa198bc142e1bcbcab6b7b1e028eff2aa
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277706"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247923"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrace existující aplikace v MongoDB s rozhraním API služby Azure Cosmos DB pro MongoDB a otevření Service Broker pro Azure (OSBA)
 
@@ -21,7 +21,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba pro více mode
 
 V tomto článku převezmete existující aplikaci Java, která používá databázi MongoDB, a aktualizujete ji tak, aby používala databázi Cosmos DB s využitím Open Service Broker pro Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct pokračovat, musíte:
     
@@ -79,7 +79,7 @@ Spusťte aplikaci a požádejte ji, aby používala profil *MongoDB* :
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Přejděte na `http://localhost:8080` v prohlížeči.
+V prohlížeči přejděte na `http://localhost:8080`.
 
 ![Aplikace pružinové hudby s výchozími daty](media/music-app.png)
 
@@ -182,7 +182,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 Všimněte si, že vaše aplikace pořád používá profil *MongoDB* a identifikátor URI, který začíná *MongoDB://* pro připojení k databázi Cosmos DB. Tato kompatibilita zajišťuje [rozhraní Azure Cosmos DB API pro MongoDB](../cosmos-db/mongodb-introduction.md) . Umožňuje vaší aplikaci pokračovat v práci, jako kdyby používala databázi MongoDB, ale ve skutečnosti používá Cosmos DB.
 
-Přejděte na `http://localhost:8080` v prohlížeči. Všimněte si, že se obnovila výchozí data. S ním budete pracovat odstraněním několika stávajících alb a vytvořením několika nových. Můžete ověřit, že vaše změny jsou trvalé, zastavením aplikace, restartováním a přechodem zpět do IT v prohlížeči. Všimněte si, že změny, které jste provedli, jsou pořád tam. Změny se uloží do Cosmos DB, který jste vytvořili pomocí programu Open Service Broker for Azure.
+V prohlížeči přejděte na `http://localhost:8080`. Všimněte si, že se obnovila výchozí data. S ním budete pracovat odstraněním několika stávajících alb a vytvořením několika nových. Můžete ověřit, že vaše změny jsou trvalé, zastavením aplikace, restartováním a přechodem zpět do IT v prohlížeči. Všimněte si, že změny, které jste provedli, jsou pořád tam. Změny se uloží do Cosmos DB, který jste vytvořili pomocí programu Open Service Broker for Azure.
 
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Spuštění aplikace v clusteru AKS
@@ -191,7 +191,7 @@ K nasazení aplikace do clusteru AKS můžete použít [Azure dev Spaces](../dev
 
 Povolení Azure Dev Spaces v clusteru AKS:
 
-```cmd
+```azurecli
 az aks enable-addons --addons http_application_routing -g MyResourceGroup -n MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
@@ -206,7 +206,7 @@ Tento příkaz vygeneruje několik artefaktů, včetně *grafů nebo* složky, k
 
 Vytvořte soubor v kořenu projektu s názvem *souboru Dockerfile* s tímto obsahem:
 
-```Dockerfile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 WORKDIR /app

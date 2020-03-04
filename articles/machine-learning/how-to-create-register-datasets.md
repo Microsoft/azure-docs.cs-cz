@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 6b6d63d956f46587d89edf1b080f1bb9bd3ca67e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 003924c42a1a7e428a3a11f21a4cfe782c12e859
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649086"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255795"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření Azure Machine Learning datových sad
 
@@ -57,7 +57,7 @@ Další informace o nadcházejících změnách rozhraní API najdete v tématu 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Vzhledem k tomu, že data zůstanou ve svém stávajícím umístění, nebudete mít žádné dodatečné náklady na úložiště. Datové sady `TabularDataset` i `FileDataset` můžete vytvořit pomocí sady Python SDK nebo cílové stránky pracovního prostoru (Preview).
+Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Vzhledem k tomu, že data zůstanou ve svém stávajícím umístění, nebudete mít žádné dodatečné náklady na úložiště. Sady dat `TabularDataset` i `FileDataset` můžete vytvořit pomocí sady Python SDK nebo https://ml.azure.com.
 
 Aby data mohla být přístupná pomocí Azure Machine Learning, musí být datové sady vytvořené z cest v [Azure datastores](how-to-access-data.md) nebo adres URL veřejných webů.
 
@@ -73,8 +73,6 @@ Vytvoření datových sad z [úložiště Azure DataStore](how-to-access-data.md
 
 
 #### <a name="create-a-tabulardataset"></a>Vytvoření TabularDataset
-
-TabularDatasets můžete vytvořit prostřednictvím sady SDK nebo pomocí nástroje Azure Machine Learning Studio. 
 
 Pomocí metody [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) třídy `TabularDatasetFactory` můžete číst soubory ve formátu CSV nebo TSV a vytvořit neregistrované TabularDataset. Pokud načítáte z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění. 
 
@@ -96,10 +94,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-Ve výchozím nastavení se při vytváření TabularDataset automaticky odvozuje datové typy sloupců. Pokud odvozené typy neodpovídají vašim očekáváním, můžete určit typy sloupců pomocí následujícího kódu. Pokud je vaše úložiště za virtuální sítí nebo bránou firewall, zahrňte parametry `validate=False` a `infer_column_types=False` v metodě `from_delimited_files()`. Tím se obchází prvotní kontrola ověření a je zajištěno, že z těchto zabezpečených souborů můžete vytvořit datovou sadu. Můžete si taky [přečíst další informace o podporovaných datových typech](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py).
+Ve výchozím nastavení se při vytváření TabularDataset automaticky odvozuje datové typy sloupců. Pokud odvozené typy neodpovídají vašim očekáváním, můžete určit typy sloupců pomocí následujícího kódu. Parametr `infer_column_type` lze použít pouze pro datové sady vytvořené z oddělených souborů. Můžete si taky [přečíst další informace o podporovaných datových typech](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py).
 
-> [!NOTE] 
->Parametr `infer_column_type` lze použít pouze pro datové sady vytvořené z oddělených souborů. 
+> [!IMPORTANT] 
+> Pokud je vaše úložiště za virtuální sítí nebo bránou firewall, podporuje se jenom vytváření datových sad prostřednictvím sady SDK. Chcete-li vytvořit datovou sadu, nezapomeňte zahrnout parametry `validate=False` a `infer_column_types=False` v metodě `from_delimited_files()`. Tím se obchází prvotní kontrola ověření a je zajištěno, že z těchto zabezpečených souborů můžete vytvořit datovou sadu. 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -117,6 +115,32 @@ titanic_ds.take(3).to_pandas_dataframe()
 0|1|False|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
 1|2|True|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
 2|3|True|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
+
+
+Chcete-li vytvořit datovou sadu z datového rámce v PANDAS paměti, zapište data do místního souboru, třeba do sdíleného svazku clusteru, a vytvořte datovou sadu z tohoto souboru. Následující kód demonstruje tento pracovní postup.
+
+```python
+local_path = 'data/prepared.csv'
+dataframe.to_csv(local_path)
+upload the local file to a datastore on the cloud
+# azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Dataset
+
+subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
+resource_group = 'xxxxxx'
+workspace_name = 'xxxxxxxxxxxxxxxx'
+
+workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+# get the datastore to upload prepared data
+datastore = workspace.get_default_datastore()
+
+# upload the local file from src_dir to the target_path in datastore
+datastore.upload(src_dir='data', target_path='data')
+create a dataset referencing the cloud location
+dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
+```
 
 Pro čtení z Azure SQL Database použijte metodu [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) třídy `TabularDatasetFactory`.
 

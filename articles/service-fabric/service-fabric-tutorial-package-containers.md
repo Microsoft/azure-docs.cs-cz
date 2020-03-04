@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614022"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252752"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
 
-Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na generování šablon vygenerována definice aplikace Service Fabricu. Tuto aplikaci je pak možné použít k nasazení kontejnerů do Service Fabricu. Co se v tomto kurzu naučíte:
+Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na generování šablon vygenerována definice aplikace Service Fabricu. Tuto aplikaci je pak možné použít k nasazení kontejnerů do Service Fabricu. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nainstalovat Yeoman
@@ -25,7 +25,7 @@ Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na
 > * Nasadit a spustit aplikaci
 > * Vyčistit aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Použijeme image kontejneru odeslané do služby Azure Container Registry, které jsme vytvořili v [části 1](service-fabric-tutorial-create-container-images.md) tohoto kurzu.
 * Musí být [nastavené](service-fabric-tutorial-create-container-images.md) linuxové vývojové prostředí.
@@ -114,7 +114,7 @@ Aby mohla služba Service Fabric načítat image kontejneru z Azure Container Re
 
 Přihlaste se k instanci ACR. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -122,7 +122,7 @@ Příkaz po dokončení vrátí zprávu **Login Succeeded** (Přihlášení prob
 
 Pak spuštěním následujícího příkazu získejte heslo vašeho registru kontejneru. Pomocí tohoto hesla ověřuje ACR službu Service Fabric při načítání imagí kontejneru.
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -199,7 +199,7 @@ Aby mohla služba Service Fabric tento název DNS přiřadit back-endové služb
 
 Front-endová služba získává název DNS instance Redis přečtením proměnné prostředí. Tato proměnná prostředí už je definovaná v souboru Dockerfile, který byl použit k vygenerování image Dockeru, není tedy potřeba provádět žádnou akci.
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 

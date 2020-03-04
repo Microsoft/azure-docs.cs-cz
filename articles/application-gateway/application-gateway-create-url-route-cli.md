@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 7198e68530a51e6c2002b3beb08f14615a5c70fb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5f75ae1104297c461584e061f5a94aecd987caad
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012326"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246792"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Vytvoření aplikační brány s pravidly směrování na základě cesty URL pomocí Azure CLI
 
@@ -21,7 +21,7 @@ Při vytváření [aplikační brány](application-gateway-url-route-overview.md
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Nastavit síť
+> * Nastavení sítě
 > * Vytvoření aplikační brány s mapou URL
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
 
@@ -94,7 +94,7 @@ az network application-gateway create \
 - *rule1* – výchozí pravidlo směrování přidružené k naslouchacímu procesu *appGatewayHttpListener*.
 
 
-### <a name="add-image-and-video-backend-pools-and-port"></a>Přidání back-endových fondů a portu pro obrázky a video
+### <a name="add-image-and-video-backend-pools-and-port"></a>Přidání back-endových fondů a portu pro obrázky a videa
 
 K aplikační bráně můžete přidat back-endové fondy s názvem *imagesBackendPool* a *videoBackendPool* pomocí [AZ Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create). Přidejte front-endový port fondů příkazem [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create). 
 
@@ -215,11 +215,11 @@ for i in `seq 1 3`; do
 done
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`nebo `http://40.121.222.19:8080/video/test.htm`.
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -227,7 +227,7 @@ az network public-ip show \
   --output tsv
 ```
 
-![Testování základní adresy URL v aplikační bráně](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
+![Otestování základní adresy URL v aplikační bráně](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
 Změňte adresu URL tak, aby `http://<ip-address>:8080/video/test.html` na konec základní adresy URL a měla by se zobrazit něco jako v následujícím příkladu:
 
@@ -242,7 +242,7 @@ Změňte adresu URL na `http://<ip-address>:8080/video/test.html` a měla by se 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Nastavit síť
+> * Nastavení sítě
 > * Vytvoření aplikační brány s mapou URL
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
 

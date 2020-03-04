@@ -3,12 +3,12 @@ title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft 
 description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
 ms.topic: conceptual
 ms.date: 09/29/2019
-ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669654"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254878"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -171,6 +171,12 @@ Ve výchozím nastavení se `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` použ
 
 `appInsights-node` předpony složky lze přepsat změnou hodnoty za běhu statické proměnné `Sender.TEMPDIR_PREFIX` nalezené v [sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
 
+### <a name="javascript-browser"></a>JavaScript (prohlížeč)
+
+[Úložiště relací HTML5](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) slouží k uchovávání dat. Používají se dvě samostatné vyrovnávací paměti: `AI_buffer` a `AI_sent_buffer`. Telemetrie, která je v dávce a čeká na odeslání, je uložená v `AI_buffer`. Telemetrii, která byla právě odeslána, je umístěna v `AI_sent_buffer`, dokud server pro příjem dat neodpoví, že byl úspěšně přijat. Po úspěšném přijetí telemetrie se odebere ze všech vyrovnávacích pamětí. Při přechodných chybách (například uživatel ztratí připojení k síti), telemetrie zůstane v `AI_buffer`, dokud se neúspěšně nepřijme, nebo server pro příjem dat přestane reagovat, protože telemetrie není platná (například špatné schéma nebo je příliš staré).
+
+Vyrovnávací paměti telemetrie je možné zakázat nastavením [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) na `false`. Když je úložiště relace vypnuté, místo toho se použije místní pole jako trvalé úložiště. Vzhledem k tomu, že sada JavaScript SDK běží na klientském zařízení, má uživatel k tomuto umístění úložiště přístup prostřednictvím vývojářských nástrojů prohlížeče.
+
 ### <a name="opencensus-python"></a>OpenCensus Python
 
 Ve výchozím nastavení OpenCensus Python SDK používá aktuální složku uživatele `%username%/.opencensus/.azure/`. Oprávnění pro přístup k této složce jsou omezená na aktuálního uživatele a správce. (Viz [implementace](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) tady.) Složka s trvalými daty bude pojmenována po souboru Python, který vygeneroval telemetrii.
@@ -207,7 +213,7 @@ Nedoporučujeme explicitně nastavovat aplikaci tak, aby používala TLS 1,2, po
 | Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není ve výchozím nastavení povolená. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
 | Windows Server 2008 SP2 | Podpora protokolu TLS 1.2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
-|Windows Vista | Nepodporuje se. | NEUŽÍVÁ SE.
+|Windows Vista | Nepodporuje se. | neuvedeno
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
 
@@ -241,7 +247,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 
 | Vaše akce | Shromážděné datové třídy (viz další tabulka) |
 | --- | --- |
-| [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelé |
+| [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Žádosti<br/>**Výjimky**<br/>Relace<br/>uživatelé |
 | [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
 | [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
 | [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Jazyka |
@@ -268,7 +274,7 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 | PageViews |Adresa URL a název stránky nebo název obrazovky |
 | Výkon klienta |Adresa URL/název stránky, čas načtení prohlížeče |
 | Jazyka |Volání HTTP z webové stránky na server |
-| Požadavky |Adresa URL, doba trvání, kód odpovědi |
+| Žádosti |Adresa URL, doba trvání, kód odpovědi |
 | Závislosti |Typ (SQL, HTTP,...), připojovací řetězec nebo identifikátor URI, Sync/Async, Duration, úspěch, příkaz SQL (s Monitorování stavu) |
 | **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojový soubor, číslo řádku, `thread id` |
 | Chybě |`Process id`, `parent process id``crash thread id`; Oprava aplikace, `id`, Build;  Typ výjimky, adresa, důvod; zakódováné symboly a registry, binární počáteční a koncové adresy, binární název a cesta, typ procesoru |

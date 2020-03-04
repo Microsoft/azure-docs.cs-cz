@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028867"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252533"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
@@ -29,24 +29,22 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který se používá pro přístup k prostředku privátního propojení (účet úložiště v tomto příkladu).
 
-### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
 V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který se používá pro přístup k prostředku privátního propojení.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+V této části budete muset v krocích níže nahradit následující parametry:
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Name (Název) | Zadejte *MyVirtualNetwork*. |
-    | Adresní prostor | Zadejte *10.1.0.0/16*. |
-    | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
-    | Umístění | Vyberte **WestCentralUS**.|
-    | Název podsítě | Zadejte *mySubnet*. |
-    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
-    |||
-1. Ponechte REST jako výchozí a vyberte **vytvořit**.
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroup |
+| **\<název virtuální sítě >** | myVirtualNetwork          |
+| **\<název oblasti >**          | USA – středozápad      |
+| **\<IPv4-Address-Space >**   | 10.1.0.0 \ 16          |
+| **\<název podsítě >**          | mySubnet        |
+| **\<> rozsahu adres** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
@@ -62,9 +60,9 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Oblast | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
+    | Image | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
@@ -110,7 +108,7 @@ V této části vytvoříte privátním koncovým bodem privátního účtu úlo
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
     | Název účtu úložiště  | Zadejte *mystorageaccount*. Pokud se tento název povede, vytvořte jedinečný název. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Oblast | Vyberte **WestCentralUS**. |
     | Výkon| Ponechte výchozí **Standard**. |
     | Account kind (Druh účtu) | Ponechte výchozí **úložiště (pro obecné účely v2)** . |
     | Replikace | Vyberte **geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)** . |
@@ -127,7 +125,7 @@ V této části vytvoříte privátním koncovým bodem privátního účtu úlo
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     |Umístění|Vyberte **WestCentralUS**.|
-    |Name (Název)|Zadejte *myPrivateEndpoint*.  |
+    |Název|Zadejte *myPrivateEndpoint*.  |
     |Dílčí prostředek úložiště|Ponechte výchozí **objekt BLOB**. |
     | **SÍTĚ** |  |
     | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
@@ -151,7 +149,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
 1. Otevřete *stažený soubor. RDP* .
 
@@ -186,9 +184,9 @@ V této části se soukromě připojíte k účtu úložiště pomocí privátn�
 4. Vyberte **účty úložiště** kliknutím pravým tlačítkem myši.
 5. Vyberte **připojit k úložišti Azure**.
 6. Vyberte **Použít připojovací řetězec**.
-7. Vyberte **Next** (Další).
+7. Vyberte **Další**.
 8. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
-9. Vyberte **Next** (Další).
+9. Vyberte **Další**.
 10. Vyberte **Connect** (Připojit).
 11. Procházení kontejnerů objektů BLOB z mystorageaccount 
 12. Volitelně Vytvořte složky nebo nahrajte soubory do *mystorageaccount*. 

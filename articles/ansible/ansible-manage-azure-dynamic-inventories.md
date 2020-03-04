@@ -4,12 +4,12 @@ description: Naučte se používat Ansible ke správě dynamických inventářů
 keywords: Ansible, Azure, DevOps, bash, cloudshellu, dynamický soupis
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd225dcf8a0c307d49e985817b71c491559edb14
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193595"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247855"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Kurz: Konfigurace dynamického inventáře vašich prostředků Azure pomocí Ansible
 
@@ -24,7 +24,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 > * Instalace Nginx na označené virtuální počítače
 > * Konfigurace dynamického inventáře, který obsahuje nakonfigurované prostředky Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -32,7 +32,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 
 ## <a name="create-the-test-vms"></a>Vytvoření testovacích virtuálních počítačů
 
-1. Přihlaste se k webu [Portál Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -91,25 +91,25 @@ Ansible poskytuje skript Pythonu s názvem [azure_rm. py](https://github.com/ans
 
 1. K načtení skriptu `azure_rm.py` použijte příkaz `wget` GNU:
 
-    ```azurecli-interactive
+    ```python
     wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
     ```
 
 1. Pomocí příkazu `chmod` Změňte přístupová oprávnění ke skriptu `azure_rm.py`. Následující příkaz používá parametr `+x`, který umožňuje spuštění (spuštění) zadaného souboru (`azure_rm.py`):
 
-    ```azurecli-interactive
+    ```python
     chmod +x azure_rm.py
     ```
 
 1. Pomocí [příkazu Ansible](https://docs.ansible.com/ansible/2.4/ansible.html) se připojte ke své skupině prostředků: 
 
-    ```azurecli-interactive
+    ```python
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping 
     ```
 
 1. Po připojení uvidíte výsledky podobné následujícímu výstupu:
 
-    ```Output
+    ```output
     ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -147,7 +147,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
 
 1. Při spuštění předchozího příkazu se může zobrazit následující chyba:
 
-    ```Output
+    ```output
     Failed to connect to the host via ssh: Host key verification failed.
     ```
     
@@ -159,7 +159,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
 
 1. Při spuštění PlayBook se zobrazí výsledky podobné následujícímu výstupu:
   
-    ```Output
+    ```output
     ansible-inventory-test-vm1_0324 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ansible-inventory-test-vm2_8971 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ```
@@ -170,7 +170,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
 
 - Po nastavení značky musíte tuto značku "Povolit". Jedním ze způsobů, jak povolit značku, je exportovat značku do proměnné prostředí `AZURE_TAGS` prostřednictvím příkazu `export`:
 
-    ```azurecli-interactive
+    ```console
     export AZURE_TAGS=nginx
     ```
     
@@ -182,7 +182,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
     
     Teď vidíte jenom jeden virtuální počítač (jehož značka odpovídá hodnotě exportované do proměnné prostředí `AZURE_TAGS`):
 
-    ```Output
+    ```output
        ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -194,7 +194,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
 
 - Spusťte `ansible-inventory -i myazure_rm.yml --graph` příkazu, abyste získali následující výstup:
 
-    ```Output
+    ```output
         @all:
           |--@tag_Ansible_nginx:
           |  |--ansible-inventory-test-vm1_9e2f
@@ -215,7 +215,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
 
 1. Vytvořte soubor s názvem `nginx.yml`:
 
-   ```azurecli-interactive
+   ```console
    code nginx.yml
    ```
 
@@ -255,7 +255,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
 
 1. Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
 
-    ```Output
+    ```output
     PLAY [Install and start Nginx on an Azure virtual machine] 
 
     TASK [Gathering Facts] 
@@ -285,13 +285,13 @@ Tato část ukazuje jednu z postupů testování, že Nginx je na vašem virtuá
 
 1. Když jste připojení k virtuálnímu počítači `ansible-inventory-test-vm1`, spusťte příkaz [Nginx-v](https://nginx.org/en/docs/switches.html) , abyste zjistili, jestli je nainstalovaná Nginx.
 
-    ```azurecli-interactive
+    ```console
     nginx -v
     ```
 
 1. Po spuštění příkazu `nginx -v` se zobrazí verze Nginx (druhý řádek), která indikuje, že je Nginx nainstalovaný.
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm1:~$ nginx -v
 
     nginx version: nginx/1.10.3 (Ubuntu)
@@ -303,7 +303,7 @@ Tato část ukazuje jednu z postupů testování, že Nginx je na vašem virtuá
 
 1. Provedením předchozích kroků pro `ansible-inventory-test-vm2` virtuální počítač se zobrazí informační zpráva s oznámením, kde můžete získat Nginx (což znamená, že v tomto okamžiku není nainstalován):
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm2:~$ nginx -v
     The program 'nginx' can be found in the following packages:
     * nginx-core

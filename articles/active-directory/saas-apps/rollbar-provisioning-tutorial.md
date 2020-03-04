@@ -14,45 +14,42 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: d9720ca769eab8cf0e4ee763c720f6ba12ebb1d9
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.author: Zhchia
+ms.openlocfilehash: 27a26a0c8378f34794afd87cf11b6bb878f7b53c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063284"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248441"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Kurz: Konfigurace Rollbar pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v Rollbar a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Rollbar.
+Tento kurz popisuje kroky, které je třeba provést v Rollbar i Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, které se [Rollbar](https://rollbar.com/pricing/) pomocí služby zřizování Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md). 
 
-> [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
->
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="capabilities-supported"></a>Podporované funkce
+> [!div class="checklist"]
+> * Vytváření uživatelů v Rollbar
+> * Odebrat uživatele v Rollbar, když už nevyžadují přístup
+> * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Rollbar
+> * Zřizování skupin a členství ve skupinách v Rollbar
+> * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/rollbar-tutorial) k Rollbar (doporučeno)
+
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* Tenanta Azure AD.
+* [Tenant Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
 * [Tenant Rollbar](https://rollbar.com/pricing/) , který má plán Enterprise.
 * Uživatelský účet v Rollbar s oprávněními správce.
 
-## <a name="assigning-users-to-rollbar"></a>Přiřazování uživatelů k Rollbar
+## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
+1. Přečtěte si [, jak služba zřizování funguje](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Určete, kdo bude v [oboru pro zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Určete, jaká data se mají [mapovat mezi Azure AD a Rollbar](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
-
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Rollbar. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Rollbar podle pokynů uvedených tady:
-* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-rollbar"></a>Důležité tipy pro přiřazení uživatelů k Rollbar
-
-* Doporučuje se, aby se k Rollbar k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
-
-* Při přiřazování uživatele k Rollbar musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
-
-## <a name="setup-rollbar-for-provisioning"></a>Nastavení Rollbar pro zřizování
+## <a name="step-2-configure-rollbar-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Rollbar pro podporu zřizování pomocí Azure AD
 
 Před konfigurací Rollbar pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit SCIM zřizování na Rollbar.
 
@@ -60,42 +57,31 @@ Před konfigurací Rollbar pro Automatické zřizování uživatelů pomocí Azu
 
     ![Konzola pro správu Rollbar](media/rollbar-provisioning-tutorial/image00.png)
 
-2. Přejděte na **název tenanta Rollbar > přístupové tokeny účtu**.
+2. Přejděte na **název tenanta Rollbar > zprostředkovatele identity**.
 
-    ![Konzola pro správu Rollbar](media/rollbar-provisioning-tutorial/account.png)
+    ![Poskytovatel identity Rollbar](media/rollbar-provisioning-tutorial/idp.png)
 
-3. Zkopírujte hodnotu **SCIM**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace Rollbar ve Azure Portal.
+3. Přejděte dolů k **Možnosti zřizování**. Zkopírujte přístupový token. Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Rollbar ve Azure Portal. Zaškrtněte políčko **Povolit uživatele a zřizování týmu** a klikněte na **Uložit**.
 
-    ![Konzola pro správu Rollbar](media/rollbar-provisioning-tutorial/scim.png)
+    ![Přístupový token Rollbar](media/rollbar-provisioning-tutorial/token.png)
 
-## <a name="add-rollbar-from-the-gallery"></a>Přidání Rollbar z Galerie
 
-Pokud chcete nakonfigurovat Rollbar pro Automatické zřizování uživatelů pomocí Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Rollbar galerii aplikací Azure AD.
+## <a name="step-3-add-rollbar-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání Rollbar z Galerie aplikací Azure AD
 
-**Pokud chcete přidat Rollbar z Galerie aplikací Azure AD, proveďte následující kroky:**
+Přidejte Rollbar z Galerie aplikací Azure AD a začněte spravovat zřizování pro Rollbar. Pokud jste dříve nastavili Rollbar pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4. Definujte, kdo bude v oboru pro zřizování. 
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Služba zřizování Azure AD umožňuje obor, který se zřídí na základě přiřazení do aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se zřídí pro vaši aplikaci na základě přiřazení, můžete k přiřazení uživatelů a skupin k aplikaci použít následující [postup](../manage-apps/assign-user-or-group-access-portal.md) . Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, můžete použít filtr oboru, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+* Při přiřazování uživatelů a skupin k Rollbar je nutné vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu se z zřizování vylučují a v protokolech zřizování se označí jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat další role. 
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+* Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-rollbar"></a>Krok 5. Konfigurace automatického zřizování uživatelů na Rollbar 
 
-4. Do vyhledávacího pole zadejte **Rollbar**, na panelu výsledků vyberte **Rollbar** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
-
-    ![Rollbar v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-rollbar"></a>Konfigurace automatického zřizování uživatelů na Rollbar 
-
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Rollbar na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
-
-> [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Rollbar podle pokynů uvedených v [kurzu Rollbar jednotného přihlašování](rollbar-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v TestApp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-rollbar-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Rollbar ve službě Azure AD:
 
@@ -115,33 +101,40 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte hodnotu **přístupového tokenu účtu** načtenou dříve do **tajného tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Rollbar. Pokud se připojení nepovede, ujistěte se, že má váš účet Rollbar oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte hodnotu přístupového tokenu, která byla dříve načtena v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Rollbar. Pokud se připojení nepovede, ujistěte se, že má váš účet Rollbar oprávnění správce, a zkuste to znovu.
 
-    ![Konzola pro správu Rollbar](media/rollbar-provisioning-tutorial/admin.png)
+    ![Zřizování](./media/rollbar-provisioning-tutorial/admin.png)
 
-6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě** .
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-7. Klikněte na **Uložit**.
+7. Vyberte **Save** (Uložit).
 
 8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Rollbar**.
 
-    ![Mapování uživatelů Rollbar](media/rollbar-provisioning-tutorial/usermapping.png)
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Rollbar v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Rollbar pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), budete muset zajistit, aby rozhraní Rollbar API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Rollbar v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Rollbar pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
-
-    ![Atributy uživatele Rollbar](media/rollbar-provisioning-tutorial/userattribute.png)
+   |Atribut|Typ|
+   |---|---|
+   |userName|Řetězec|
+   |externalId|Řetězec|
+   |aktivní|Logická hodnota|
+   |name.familyName|Řetězec|
+   |name.givenName|Řetězec|
+   |e-maily [typ EQ "Work"]|Řetězec|
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Rollbar**.
 
-    ![Mapování skupin Rollbar](media/rollbar-provisioning-tutorial/groupmapping.png)
-
 11. Zkontrolujte atributy skupiny synchronizované z Azure AD do Rollbar v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Rollbar pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Rollbar – atributy skupiny](media/rollbar-provisioning-tutorial/groupattribute.png)
+      |Atribut|Typ|
+      |---|---|
+      |displayName|Řetězec|
+      |externalId|Řetězec|
+      |členové|Referenční informace|
 
-12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 13. Pokud chcete povolit službu Azure AD Provisioning pro Rollbar, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -155,15 +148,20 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-    Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Rollbar.
+Tato operace spustí počáteční cyklus synchronizace všech uživatelů a skupin definovaných v **oboru** v části **Nastavení** . Počáteční cyklus trvá déle než u dalších cyklů, ke kterým dojde přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
 
-    Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md) .
-    
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
+Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto prostředky:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně nastavili.
+2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
+3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+
+## <a name="additional-resources"></a>Další zdroje
+
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)

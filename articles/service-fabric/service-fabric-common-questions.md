@@ -4,12 +4,12 @@ description: Nejčastější dotazy týkající se Service Fabric, včetně mož
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293517"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254887"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy ke službě Service Fabric
 
@@ -22,7 +22,7 @@ Existuje mnoho nejčastějších otázek, které Service Fabric můžou dělat a
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Návody vrátit Service Fabric certifikát clusteru?
 
-Vrácení jakéhokoli upgradu do vaší aplikace vyžaduje detekci selhání stavu před tím, než vaše Service Fabric kvorum clusteru tuto změnu provedla. potvrzené změny lze provést pouze posunutím. Pokud byla zavedena nemonitorovaná změna nemonitorovaného certifikátu, může být nutné obnovit váš cluster prostřednictvím služeb podpory pro eskalace prostřednictvím služeb zákaznické podpory.  [Upgrade aplikace Service Fabric](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) aplikuje [parametry upgradu aplikace](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)a poskytuje příslib upgradu s žádným výpadkem.  Po doporučeném monitorovaném režimu upgradu aplikace je automatický průběh prostřednictvím aktualizačních domén založený na kontrolách stavu, které se provedou, pokud dojde k chybě při aktualizaci výchozí služby.
+Vrácení jakéhokoli upgradu do vaší aplikace vyžaduje detekci selhání stavu před tím, než vaše Service Fabric kvorum clusteru tuto změnu provedla. potvrzené změny lze provést pouze posunutím. Pokud byla zavedena nemonitorovaná změna nemonitorovaného certifikátu, může být nutné obnovit váš cluster prostřednictvím služeb podpory pro eskalace prostřednictvím služeb zákaznické podpory.  [Upgrade aplikace Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) aplikuje [parametry upgradu aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)a poskytuje příslib upgradu s žádným výpadkem.  Po doporučeném monitorovaném režimu upgradu aplikace je automatický průběh prostřednictvím aktualizačních domén založený na kontrolách stavu, které se provedou, pokud dojde k chybě při aktualizaci výchozí služby.
  
 Pokud váš cluster stále využívá vlastnost s klasickým kryptografickým otiskem certifikátu v šabloně Správce prostředků, doporučujeme [změnit cluster z kryptografického otisku certifikátu na běžný název](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), abyste využili moderní funkce pro správu tajných kódů.
 
@@ -34,7 +34,7 @@ Technologie clusteringu na základní Service Fabric se dá použít ke kombinov
 
 Pokud vás zajímá tento scénář, doporučujeme vám, abyste se dostali v kontaktu buď prostřednictvím [seznamu problémů s Service Fabric GitHubem](https://github.com/azure/service-fabric-issues) , nebo prostřednictvím zástupce podpory, abyste získali další doprovodné materiály. Tým Service Fabric pracuje na poskytnutí dodatečné jasnosti, pokynů a doporučení pro tento scénář. 
 
-Pár věcí k uvážení: 
+Zvažte několik věcí, které je potřeba vzít v úvahu: 
 
 1. Prostředek clusteru Service Fabric v Azure je dnes regionální, jako je služba Virtual Machine Scale Sets, na které je cluster integrovaný. To znamená, že v případě regionálního selhání může dojít ke ztrátě schopnosti spravovat cluster prostřednictvím Azure Resource Manager nebo Azure Portal. K tomu může dojít i v případě, že cluster zůstává spuštěný a vy budete moct s ním pracovat přímo. Kromě toho Azure ještě nenabízí možnost mít jednu virtuální síť, která je použitelná v různých oblastech. To znamená, že cluster s více oblastmi v Azure vyžaduje buď [veřejné IP adresy pro každý virtuální počítač ve VM Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) nebo [bráně Azure VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto možnosti sítě mají různé dopady na náklady, výkon a určitý návrh aplikace, takže je nutné provést pečlivou analýzu a plánování před tím, než takové prostředí sestaví.
 2. Údržba, Správa a monitorování těchto počítačů se můžou stát složitě, _zejména v případě_ , že jsou rozložená mezi různými poskytovateli cloudu nebo mezi místními prostředky a Azure. Před spuštěním produkčních úloh v takovém prostředí je třeba dbát na to, aby se zajistilo, že upgrady, monitorování, Správa a diagnostika jsou srozumitelné pro cluster i aplikace. Pokud již máte zkušenosti s řešením těchto problémů v Azure nebo v rámci vašich vlastních Datacenter, je pravděpodobně vhodné použít stejná řešení při sestavování nebo spouštění clusteru Service Fabric. 
@@ -101,13 +101,13 @@ Ne. Virtuální počítače s nízkou prioritou se nepodporují.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Jaké jsou adresáře a procesy, které je potřeba vyloučit při spuštění antivirového programu v mém clusteru?
 
-| **Antivirové Vyloučené adresáře** |
+| **Vyloučené adresáře antivirové ochrany** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (od konfigurace clusteru) |
 | FabricLogRoot (od konfigurace clusteru) |
 
-| **Antivirové vyloučené procesy** |
+| **Vyloučené procesy antivirové ochrany** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |

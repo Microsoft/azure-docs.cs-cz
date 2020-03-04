@@ -3,12 +3,12 @@ title: Nasazení prostředků mezi předplatnými & skupiny prostředků
 description: Ukazuje, jak během nasazení cílit více než jedno předplatné Azure a skupinu prostředků.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 8f5fbd51456003059f6a32fc32b32194a936434a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154206"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250608"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků
 
@@ -119,7 +119,7 @@ Pokud jste nastavili `resourceGroup` na název skupiny prostředků, která neex
 
 K otestování předchozí šablony a zobrazení výsledků použijte PowerShell nebo Azure CLI.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud chcete nasadit dva účty úložiště do dvou skupin prostředků ve **stejném předplatném**, použijte:
 
@@ -162,7 +162,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete nasadit dva účty úložiště do dvou skupin prostředků ve **stejném předplatném**, použijte:
 
@@ -209,11 +209,11 @@ Funkce [Resource ()](template-functions-resource.md#resourcegroup) a [Subscripti
 
 Následující tabulka ukazuje, jestli se funkce překládají na nadřazenou nebo integrovanou skupinu prostředků a předplatné.
 
-| Typ šablony | Rozsah | Rozlišení |
+| Typ šablony | Rozsah | Řešení |
 | ------------- | ----- | ---------- |
 | vnořené        | vnější (výchozí) | Nadřazená skupina prostředků |
 | vnořené        | vnitřní | Dílčí skupina prostředků |
-| Spojeného        | Nevztahuje se   | Dílčí skupina prostředků |
+| Spojeného        | neuvedeno   | Dílčí skupina prostředků |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) ukazuje:
 
@@ -317,7 +317,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 K otestování předchozí šablony a zobrazení výsledků použijte PowerShell nebo Azure CLI.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -340,7 +340,7 @@ Výstup z předchozího příkladu:
  linkedRG         String                     Linked resource group is linkedgroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -355,7 +355,7 @@ az group deployment create \
 
 Výstup z předchozího příkladu:
 
-```azurecli
+```output
 "outputs": {
   "defaultScopeRG": {
     "type": "String",

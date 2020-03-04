@@ -1,9 +1,9 @@
 ---
-title: Linuxové distribuce schválené pro Azure
+title: Distribuce systému Linux schválená v Azure
 description: Přečtěte si informace o systému Linux v distribucích schválených Azure, včetně pokynů pro Ubuntu, CentOS, Oracle a SUSE.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: mimckitt
-ms.openlocfilehash: 8f12224f6ea2b9b4cecce79809389419e0159217
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7318095dce77856087ad7dd949e91e0eb7936294
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748056"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251642"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
 Partneři poskytují image Linux v Azure Marketplace. Pracujeme s různými komunitami Linux pro přidání ještě více typů do schváleného distribučního seznamu. U distribucí, které nejsou k dispozici na webu Marketplace, můžete kdykoli využít vlastní Linux podle pokynů v části [Vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -39,7 +39,7 @@ Agent Azure Linux je už předinstalovaný na Azure Marketplace imagí a je typi
 | Debian |Debian 7.9 +, 8.2 +, 9, 10 |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7 +, 7.1 +, 8.0 + |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES pro SAP<br>11 SP4<br>12 SP1+<br>15|V jádru |Package:<p> 11 v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools)<br>pro 12 zahrnuté v modulu "veřejný cloud" v části "Python-Azure-Agent"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| SUSE Linux Enterprise |SLES/SLES pro SAP<br>11 SP4<br>12 SP1+<br>15|V jádru |Balíček:<p> 11 v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools)<br>pro 12 zahrnuté v modulu "veřejný cloud" v části "Python-Azure-Agent"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE přestupné 42.2 + |V jádru |Balíček: v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools) v části Python – Azure-Agent <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |V jádru |Balíček: v úložišti v části "walinuxagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
@@ -81,7 +81,7 @@ Credativ je nezávislá společnost pro poradenské a služby, která se special
 ### <a name="oracle"></a>Oracle
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Pomocí strategie Oracle můžete nabízet široké portfolio řešení pro veřejné a privátní cloudy. Strategie nabízí zákazníkům možnost volby a flexibilitu při nasazování softwaru Oracle v cloudech Oracle a dalších cloudech. Partnerství Oraclu s Microsoftem umožňuje zákazníkům nasadit software Oracle ve veřejných a privátních cloudech Microsoftu s jistotou certifikace a podpory od Oraclu.  Závazek Oracle a investice do řešení veřejného a privátního cloudu Oracle se nemění.
+Pomocí strategie Oracle můžete nabízet široké portfolio řešení pro veřejné a privátní cloudy. Strategie nabízí zákazníkům možnost volby a flexibilitu při nasazování softwaru Oracle v cloudech Oracle a dalších cloudech. Partnerství Oracle s Microsoftem umožňuje zákazníkům nasadit software Oracle ve veřejných a privátních cloudech Microsoftu s jistotou certifikace a podpory od Oracle.  Závazek Oracle a investice do řešení veřejného a privátního cloudu Oracle se nemění.
 
 ### <a name="red-hat"></a>Red Hat
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)

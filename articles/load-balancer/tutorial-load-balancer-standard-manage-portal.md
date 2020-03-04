@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5b39186a39fbd2398fb4045ba62797e321fc3284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225183"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249857"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení internetového provozu do virtuálních počítačů pomocí Azure Portal
 
@@ -54,7 +54,7 @@ V této části vytvoříte Standard Load Balancer, která pomáhá vyrovnávat 
     | Název                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte možnost **veřejné**.                                        |
-    | SKU           | Vyberte **Standard**.                          |
+    | Skladová jednotka (SKU)           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
     |Zóna dostupnosti| Vyberte **zóna redundantní**.    |
@@ -95,7 +95,7 @@ Pokud chcete Load Balancer, aby mohl monitorovat stav vaší aplikace, použijte
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla Load Balanceru
 
-Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo Load Balancer *myLoadBalancerRuleWeb* pro naslouchání na portu 80 ve front-endu *FrontendLoadBalancer* a odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres *myBackEndPool* také pomocí portu 80.
+Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do virtuálních počítačů. Definujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo Load Balancer *myLoadBalancerRuleWeb* pro naslouchání na portu 80 ve front-endu *FrontendLoadBalancer* a odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres *myBackEndPool* také pomocí portu 80.
 
 1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků klikněte na **myLoadBalancer** .
 2. V části **Nastavení** klikněte na **Pravidla vyrovnávání zatížení** a pak klikněte na **Přidat**.
@@ -106,8 +106,8 @@ Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do v
     | Název | Zadejte *myHTTPRule*. |
     | Protocol (Protokol) | Vyberte **TCP**. |
     | Port | Zadejte *80*.|
-    | Port back-endu | Zadejte *80*. |
-    | Back-end fond | Vyberte *myBackendPool*.|
+    | Back-endový port | Zadejte *80*. |
+    | Back-endový fond | Vyberte *myBackendPool*.|
     | Sonda stavu | Vyberte *myHealthProbe*. |
     
 4. Pro ostatní nastavení nechte zvolené výchozí hodnoty a vyberte **OK**.
@@ -116,22 +116,20 @@ Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do v
 
 V této části vytvoříte virtuální síť, vytvoříte tři virtuální počítače pro back-end fond Load Balancer a pak na virtuální počítače nainstalujete službu IIS, která vám pomůžou otestovat Load Balancer.
 
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
-2. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+V této části budete muset v krocích níže nahradit následující parametry:
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Název | Zadejte *myVNet*. |
-    | Adresní prostor | Zadejte *10.1.0.0/16*. |
-    | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte existující prostředek – *myResourceGroupSLB*. |
-    | Umístění | Vyberte **Západní Evropa**.|
-    | Název podsítě | Zadejte *myBackendSubnet*. |
-    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
-    
-3. Ponechte zbytek výchozích hodnot a vyberte **vytvořit**.
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroupSLB (vyberte existující skupinu prostředků) |
+| **\<název virtuální sítě >** | myVNet          |
+| **\<název oblasti >**          | Západní Evropa      |
+| **\<IPv4-Address-Space >**   | 10.1.0.0 \ 16          |
+| **\<název podsítě >**          | mySubnet        |
+| **\<> rozsahu adres** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 

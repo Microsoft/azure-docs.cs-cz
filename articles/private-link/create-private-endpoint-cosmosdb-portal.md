@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028590"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252606"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Připojení soukromě k účtu Azure Cosmos pomocí privátního odkazu Azure
 
@@ -25,26 +25,22 @@ Přihlaste se k [Azure Portal.](https://portal.azure.com)
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
 V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který se používá pro přístup k prostředku privátního propojení (v tomto příkladu účet Azure Cosmos).
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+V této části budete muset v krocích níže nahradit následující parametry:
 
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroup|
+| **\<název virtuální sítě >** | myVirtualNetwork         |
+| **\<název oblasti >**          | USA – středozápad     |
+| **\<IPv4-Address-Space >**   | 10.1.0.0 \ 16          |
+| **\<název podsítě >**          | mySubnet        |
+| **\<> rozsahu adres** | 10.1.0.0 \ 24          |
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Name (Název) | Zadejte *MyVirtualNetwork*. |
-    | Adresní prostor | Zadejte *10.1.0.0/16*. |
-    | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
-    | Umístění | Vyberte **WestCentralUS**.|
-    | Název podsítě | Zadejte *mySubnet*. |
-    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
-    |||
-
-1. Ponechte REST jako výchozí a vyberte **vytvořit**.
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -59,9 +55,9 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Oblast | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
+    | Image | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno podle vašeho výběru. |
@@ -109,7 +105,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
 1. Otevřete stažený soubor *. RDP* .
 
@@ -151,7 +147,7 @@ V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátn�
 
 1. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 
 1. Vyberte **Connect** (Připojit).
 

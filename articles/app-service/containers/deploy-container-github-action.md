@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: f32ea2ae0be66259ff153c24bfd10e179fddbbe5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d5f175d887cec1d5b5e567d3f716e6492f4516dd
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559024"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246972"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -25,7 +25,7 @@ Pracovní postup je definovaný souborem YAML (. yml) v cestě `/.github/workflo
 
 Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 
-|Část  |Úlohy  |
+|Sekce  |Úlohy  |
 |---------|---------|
 |**Ověřování** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
 |**Budování** | 1. Nastavte prostředí. <br /> 2. Sestavte image kontejneru. |
@@ -40,12 +40,12 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
                             --sdk-auth
                             
-  # Replace {subscription-id}, {resource-group} with the subscription, resource group details of the WebApp
+# Replace {subscription-id}, {resource-group} with the subscription, resource group details of the WebApp
 ```
 
 Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které poskytují přístup k vaší App Service aplikaci, která je podobná níže. Zkopírujte tento objekt JSON pro ověřování z GitHubu.
 
- ```azurecli 
+ ```output 
   {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",

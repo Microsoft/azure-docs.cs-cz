@@ -4,12 +4,12 @@ description: Zjistěte, jak provést nasazení do služby Azure Kubernetes Servi
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, blue green deployment, continuous delivery, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158552"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251482"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení
 
@@ -26,7 +26,7 @@ V tomto kurzu zjistíte, jak provést následující úlohy:
 > * Ruční konfigurace clusteru Kubernetes
 > * Vytvoření a spuštění úlohy Jenkinse
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - [Účet GitHub:](https://github.com) Účet GitHub potřebujete k naklonování ukázkového úložiště.
 - [Azure CLI 2.0:](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Pomocí Azure CLI 2.0 vytvoříte cluster Kubernetes.
 - [Chocolatey:](https://chocolatey.org) Správce balíčků, pomocí kterého nainstalujete kubectl.
@@ -84,19 +84,19 @@ Pokud chcete vytvořit spravovaný cluster Kubernetes pomocí [Azure CLI 2.0](ht
 
 1. Přihlaste se ke svému účtu Azure. Po zadání následujícího příkazu se zobrazí pokyny vysvětlující, jak přihlášení dokončit. 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. Po spuštění příkazu `az login` v předchozím kroku se zobrazí seznam všech vašich předplatných Azure (společně s jejich ID předplatného). V tomto kroku nastavíte výchozí předplatné Azure. Zástupný text &lt;your-subscription-id> nahraďte za ID požadovaného předplatného Azure. 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. Vytvořte skupinu prostředků. Zástupný text &lt;your-resource-group-name> nahraďte názvem vaší nové skupiny prostředků a zástupný text &lt;your-location> nahraďte umístěním. Příkaz `az account list-locations` zobrazí všechna umístění Azure. V AKS verze Preview nejsou k dispozici všechna umístění. Pokud zadáte umístění, které aktuálně není platné, zobrazí se chybová zpráva se seznamem dostupných umístění.
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -129,7 +129,7 @@ Modré/zelené nasazení můžete v AKS nastavit ručně nebo pomocí instalačn
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>Ruční nastavení clusteru Kubernetes 
 1. Do složky svého profilu si stáhněte konfiguraci Kubernetes.
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ Modré/zelené nasazení můžete v AKS nastavit ručně nebo pomocí instalačn
     
     Pomocí následujícího příkazu aktualizujte název DNS pro odpovídající IP adresu:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     Zopakujte volání `todoapp-test-blue` a `todoapp-test-green`:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ Modré/zelené nasazení můžete v AKS nastavit ručně nebo pomocí instalačn
 
 1. Spuštěním příkazu `az acr create` vytvořte instanci služby Container Registry. V další části pak můžete použít `login server` jako adresu URL registru Dockeru.
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. Spuštěním příkazu `az acr credential` zobrazte své přihlašovací údaje ke službě Container Registry. Poznamenejte si uživatelské jméno a heslo k registru Dockeru, protože je budete potřebovat v další části.
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -276,7 +276,7 @@ Další informace o nasazení bez výpadků najdete v této [šabloně pro rychl
 
 Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, můžete je odstranit.
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 

@@ -3,8 +3,8 @@ title: 'Kurz: migrace služby RDS SQL Server Online na SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Naučte se provádět online migraci ze služby RDS SQL Server Azure SQL Database izolovanou databázi nebo spravované instanci pomocí Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 52a6ee282e12f0ece5f16c1fa67c38f07f9d86e7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751289"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255527"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server RDS do Azure SQL Database nebo Azure SQL Database spravované instance online pomocí DMS
 Azure Database Migration Service můžete použít k migraci databází z instance služby RDS SQL Server do [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) nebo [spravované instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) s minimálními prostoji. V tomto kurzu migrujete databázi **Adventureworks2012** obnovenou do instance služby RDS SQL Server SQL Server 2012 (nebo novější) na Azure SQL Database nebo Azure SQL Database spravovanou instanci pomocí Azure Database Migration Service.
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje online migraci ze služby RDS SQL Server do Azure SQL Database nebo Azure SQL Database spravované instance.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
 * Vytvořte [databázi služby RDS SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html).
@@ -206,7 +206,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     > [!NOTE]
     > Alternativně můžete zvolit **vytvořit projekt pouze** k vytvoření projektu migrace a provést migraci později.
 
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 7. Vyberte **Vytvořit a spustit aktivitu** a vytvořte projekt a spusťte aktivitu migrace.
 

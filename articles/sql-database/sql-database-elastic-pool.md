@@ -11,16 +11,16 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901174"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252704"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy vám pomůžou se správou a škálováním více databází Azure SQL.
 
-Elastické fondy SQL Database je jednoduché a cenově výhodné řešení pro správu a škálování více databází s proměnlivými a nepředvídatelnými požadavky na využití. Databáze v elastickém fondu se nachází na jednom serveru Azure SQL Database a sdílí stanovený počet prostředků za stanovenou cenu. Elastické fondy v Azure SQL Database umožňují vývojářům SaaS optimalizovat poměr cena/výkon pro skupinu databází v rámci předem daného rozpočtu a pro všechny databáze přitom zajistit elasticitu výkonu.
+Elastické fondy SQL Database je jednoduché a cenově výhodné řešení pro správu a škálování více databází s proměnlivými a nepředvídatelnými požadavky na využití. Databáze v elastickém fondu jsou na jednom Azure SQL Databaseovém serveru a sdílejí nastavený počet prostředků za stanovenou cenu. Elastické fondy v Azure SQL Database umožňují vývojářům SaaS optimalizovat poměr cena/výkon pro skupinu databází v rámci předem daného rozpočtu a pro všechny databáze přitom zajistit elasticitu výkonu.
 
 ## <a name="what-are-sql-elastic-pools"></a>Co jsou elastické fondy SQL
 
@@ -222,6 +222,7 @@ Další informace najdete v tématu [vytvoření výstrah SQL Database v Azure P
 
 ## <a name="next-steps"></a>Další kroky
 
+- Informace o cenách najdete v tématu [ceny elastického fondu](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Pokud chcete škálovat elastické fondy, přečtěte si téma [škálování elastických fondů](sql-database-elastic-pool-scale.md) a [škálování elastického fondu – vzorový kód](scripts/sql-database-monitor-and-scale-pool-powershell.md) .
 - Video najdete v tématu [Microsoft Virtual Academy video kurz o Azure SQL Database elastické možnosti](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).

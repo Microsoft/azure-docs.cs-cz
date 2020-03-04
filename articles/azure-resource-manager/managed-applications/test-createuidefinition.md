@@ -5,22 +5,22 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: fe6fbb2c27dcc18cca114e6d10cd382d376a27e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651303"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250181"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Otestování rozhraní portálu pro Azure Managed Applications
 
 Po [Vytvoření souboru createUiDefinition. JSON](create-uidefinition-overview.md) pro spravovanou aplikaci je nutné otestovat činnost koncového uživatele. Pro zjednodušení testování použijte prostředí izolovaného prostoru (sandbox), které načte váš soubor na portálu. Nemusíte ve skutečnosti nasazovat spravovanou aplikaci. Sandbox prezentuje vaše uživatelské rozhraní v aktuálním, samoobslužném portálu pro celou obrazovku. Nebo můžete použít skript pro otestování rozhraní. Oba přístupy jsou uvedené v tomto článku. Izolovaný prostor (sandbox) je doporučený způsob, jak zobrazit náhled rozhraní.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Soubor **createUiDefinition. JSON** . Pokud tento soubor nemáte, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="use-sandbox"></a>Použít izolovaný prostor
 
@@ -68,7 +68,7 @@ Pokud používáte PowerShell, použijte:
 
 Pokud používáte Azure CLI, použijte:
 
-```azurecli
+```bash
 ./sideload-createuidef.sh \
   -l southcentralus \
   -a .\100-Marketplace-Sample
@@ -84,7 +84,7 @@ Pokud používáte PowerShell, použijte:
 
 Pokud používáte Azure CLI, použijte:
 
-```azurecli
+```bash
 ./sideload-createuidef.sh
 ```
 

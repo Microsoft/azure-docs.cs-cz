@@ -4,12 +4,12 @@ description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner PHP
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913867"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255834"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux PHP pro Azure App Service
 
@@ -204,15 +204,7 @@ Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje c
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.
 - Spusťte aplikaci v App Service v režimu ladění. Například v [Laravel](https://meanjs.org/)můžete nakonfigurovat aplikaci tak, aby vyladěna zprávy ladění v produkčním prostředí, nastavením [nastavení aplikace `APP_DEBUG` na `true`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
-### <a name="robots933456"></a>robots933456
-
-V protokolech kontejneru se může zobrazit následující zpráva:
-
-```
-2019-04-08T14:07:56.641002476Z "-" - - [08/Apr/2019:14:07:56 +0000] "GET /robots933456.txt HTTP/1.1" 404 415 "-" "-"
-```
-
-Tuto zprávu můžete bez obav ignorovat. `/robots933456.txt` je fiktivní cesta URL, kterou App Service používá ke kontrole, zda kontejner podporuje požadavky. Odpověď 404 jednoduše indikuje, že cesta neexistuje, ale umožňuje App Service víte, že je kontejner v pořádku a je připravený na reakci na požadavky.
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

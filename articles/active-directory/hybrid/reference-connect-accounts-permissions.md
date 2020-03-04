@@ -17,12 +17,12 @@ ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960233"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248772"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: účty a oprávnění
 
@@ -55,11 +55,10 @@ Kromě těchto tří účtů, které se používají ke spouštění Azure AD Co
 > [!NOTE]
 > Správa účtů pro správu používaných v Azure AD Connect se podporuje z doménové struktury pro správu zvýšeným zabezpečením (taky se jedná o "červenou doménovou strukturu").
 > Vyhrazené doménové struktury pro správu umožňují organizacím hostovat účty pro správu, pracovní stanice a skupiny v prostředí, které má přísnější ovládací prvky zabezpečení než produkční prostředí.
-> Další informace o vyhrazených doménových strukturách pro správu najdete v tématu [přístup k návrhu doménové struktury zvýšeným zabezpečením](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) .
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> Další informace o vyhrazených doménových strukturách pro správu najdete v tématu [zvýšeným zabezpečením administrativního přístupu k návrhu doménové struktury](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
 
 > [!NOTE]
-> Role globálního správce se po počátečním nastavení nevyžaduje a jediným požadovaným účtem bude účet role **synchronizace adresářů** . To nenecssarily znamená, že budete chtít jenom odebrat účet s rolí globálního správce. Je lepší roli změnit na méně efektivní roli, protože zcela odebrání tohoto účtu může způsobit problémy, pokud budete někdy muset průvodce znovu znovu spustit. Omezením oprávnění role můžete oprávněními kdykoliv znovu zvýšit úroveň, pokud je potřeba znovu použít Průvodce Azure AD Connect. 
+> Role globálního správce se po počátečním nastavení nevyžaduje a jediným požadovaným účtem bude účet role **synchronizace adresářů** . To nemusí nutně znamenat, že budete chtít jenom odebrat účet s rolí globálního správce. Je lepší roli změnit na méně efektivní roli, protože zcela odebrání tohoto účtu může způsobit problémy, pokud budete někdy muset průvodce znovu znovu spustit. Omezením oprávnění role můžete kdykoli znovu zvýšit úroveň oprávnění, pokud budete muset znovu využít průvodce Azure AD Connect. 
 
 ## <a name="installing-azure-ad-connect"></a>Instalace Azure AD Connect
 Průvodce instalací Azure AD Connect nabízí dvě různé cesty:
@@ -93,7 +92,7 @@ Tyto přihlašovací údaje se používají jenom během instalace a po dokonče
 | Číst a zapisovat všechny vlastnosti iNetOrgPerson |Import a Exchange Hybrid |
 | Čtení a zápis – skupina všech vlastností |Import a Exchange Hybrid |
 | Kontakt pro čtení a zápis všech vlastností |Import a Exchange Hybrid |
-| Resetovat heslo |Příprava pro povolení zpětného zápisu hesla |
+| Resetování hesla |Příprava pro povolení zpětného zápisu hesla |
 
 ### <a name="express-installation-wizard-summary"></a>Souhrn Průvodce instalací Express
 
@@ -190,7 +189,7 @@ Použijete-li příkaz připojit se sestavou z 2017. března nebo staršího, ne
 
 Toto je tabulka výchozích, doporučených a podporovaných možností pro účet synchronizační služby.
 
-Popisek
+Legenda:
 
 - **Tučné** označuje výchozí možnost a ve většině případů doporučenou možnost.
 - *Kurzíva* označuje doporučenou možnost, pokud není výchozí možností.
@@ -203,8 +202,8 @@ Popisek
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Vlastní | Remote SQL</br>Vlastní |
 | --- | --- | --- | --- |
-| **počítač pro samostatnou/pracovní skupinu** | Nepodporuje se | **VSA**</br>Místní účet (2008)</br>Místní účet |  Nepodporuje se |
-| **počítač připojený k doméně** | **VSA**</br>Místní účet (2008) | **VSA**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA, gMSA | **gMSA**</br>Účet domény |
+| **počítač pro samostatnou/pracovní skupinu** | Nepodporuje se | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet |  Nepodporuje se |
+| **počítač připojený k doméně** | **ATRIBUT**</br>Místní účet (2008) | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA, gMSA | **gMSA**</br>Účet domény |
 | **Řadič domény** | **Doménový účet** | *gMSA*</br>**Doménový účet**</br>sMSA| *gMSA*</br>**Doménový účet**|
 
 #### <a name="virtual-service-account"></a>Účet virtuální služby
@@ -220,7 +219,7 @@ Tato funkce vyžaduje systém Windows Server 2008 R2 nebo novější. Pokud nain
 Pokud používáte vzdálený SQL Server, doporučujeme použít **skupinový účet spravované služby**. Další informace o tom, jak připravit službu Active Directory pro skupinový účet spravované služby, najdete v tématu [Přehled skupinových účtů spravované služby](https://technet.microsoft.com/library/hh831782.aspx).
 
 Chcete-li použít tuto možnost, vyberte na stránce [instalovat požadované součásti](how-to-connect-install-custom.md#install-required-components) možnost **použít existující účet služby**a vyberte možnost **účet spravované služby**.  
-![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
+![atributy VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 Také se podporuje použití [samostatného účtu spravované služby](https://technet.microsoft.com/library/dd548356.aspx). Ty se ale dají použít jenom na místním počítači a pro jejich použití přes výchozí účet virtuální služby se nevyužívají výhody.
 
 Tato funkce vyžaduje systém Windows Server 2012 nebo novější. Pokud potřebujete použít starší operační systém a použít vzdálený SQL, musíte použít [uživatelský účet](#user-account).

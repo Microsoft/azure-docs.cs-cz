@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 42f11ecb8e7c7ae47b5a5ab5ff4f946833945aa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7069ff363cf274ba855efc9b598d8d01e64e18d1
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472615"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250112"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Kurz: Zabezpečení artefaktů v nasazení šablon Azure Resource Manageru
 
@@ -29,17 +29,17 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasaďte šablonu.
 > * Ověření nasazení.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
 * Visual Studio Code s rozšířením nástrojů Správce prostředků. Pokud [chcete vytvořit Azure Resource Manager šablony](./use-vs-code-to-create-template.md), přečtěte si téma použití Visual Studio Code.
-* Kontrola [kurz: soubory SQL Import souboru BACPAC s šablonami Azure Resource Manageru](./template-tutorial-deploy-sql-extensions-bacpac.md). Šablona použitá v tomto kurzu je vyvinutý v tomto kurzu. Odkaz ke stažení dokončené šablony je uvedené v tomto článku.
+* [Kurz recenze: Import souborů SQL BacPac pomocí šablon Azure Resource Manager](./template-tutorial-deploy-sql-extensions-bacpac.md). Šablona použitá v tomto kurzu je vyvinutý v tomto kurzu. Odkaz ke stažení dokončené šablony je uvedené v tomto článku.
 * Pro zlepšení zabezpečení použijte pro účet správce SQL Serveru vygenerované heslo. Tady je ukázka, kterou můžete použít k vygenerování hesla:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 

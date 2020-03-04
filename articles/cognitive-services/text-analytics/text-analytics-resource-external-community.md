@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558815"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251311"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Obsah komunitního externího & pro službu pro rozpoznávání Analýza textu
 
@@ -33,7 +33,11 @@ ms.locfileid: "68558815"
 
 + [Analýza mínění pomocí Dynamics 365 CRM Online (blog MSDN)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ Blog PowerBI: Extrakce klíčových frází z facebookových zpráv: [Část 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) a [část 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Power BI blog: extrakce klíčových frází z Facebooku zpráv: [část 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) a [2. část](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
+
++ [Identifikace mínění komentářů ve skupině Yammeru pomocí MS flow (technická komunita Microsoftu)](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
+
+
 
 ## <a name="videos"></a>Videa
 
@@ -43,11 +47,11 @@ ms.locfileid: "68558815"
 
 + [Analýza textu extrahuje klíčové fráze pomocí Power BI a Microsoft Cognitive Services](https://www.youtube.com/watch?v=R_-1TB2BF14)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Hledáte informace o funkci nebo případu použití, které nepokrýváme? V [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics)si můžete vyžádat nebo hlasovat. 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
- [StackOverflow rozhraní API pro analýzu textu Azure](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Azure rozhraní API pro analýzu textu](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

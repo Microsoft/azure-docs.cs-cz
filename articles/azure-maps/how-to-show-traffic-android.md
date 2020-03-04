@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 73f490ec069ff44929ca70f4ecf2ab3aca52934d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 37de55d671bb19cfcd9fd494c2e76f658fc7db21
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209347"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249499"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Zobrazit data o přenosech na mapě pomocí Azure Maps Android SDK
 
-Data toku a data incidentů jsou dva typy dat přenosů, které lze zobrazit na mapě. V této příručce se dozvíte, jak zobrazit obě tato data přenosů. Data incidentů se skládají z bodových a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody. Data toku zobrazují metriky týkající se toku provozu na cestách.
+Data toku a data incidentů jsou dva typy dat přenosů, které lze zobrazit na mapě. V této příručce se dozvíte, jak zobrazit oba typy dat přenosů. Data incidentů se skládají z bodových a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody. Data toku zobrazují metriky týkající se toku provozu na cestách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než budete moci zobrazit provoz na mapě, je třeba nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) a načíst mapu.
+Než budete moci zobrazit provoz na mapě, je třeba [vytvořit účet Azure](quick-demo-map-app.md#create-an-account-with-azure-maps)a [získat klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account). Pak je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) a načíst mapu.
 
 ## <a name="incidents-traffic-data"></a>Data o provozu incidentů 
 
@@ -38,7 +38,7 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mapControl.getMapAsync(map - > {
         map.setTraffic(incidents(true));
-}
+    }
 }
 ```
 
@@ -63,8 +63,9 @@ Pomocí následujícího fragmentu kódu nastavte data toku provozu. Podobně ja
 ```java
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map -> 
+    mapControl.getMapAsync(map -> {
         map.setTraffic(flow(TrafficFlow.RELATIVE)));
+    }
 }
 ```
 

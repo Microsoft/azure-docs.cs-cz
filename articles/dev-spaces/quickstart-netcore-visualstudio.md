@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: de830d07010037793eaf7471fc1147a42081b09c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770590"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245039"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio & .NET Core – Azure Dev Spaces
 
@@ -28,7 +28,7 @@ Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
 - [Node. js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio Code](quickstart-netcore.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - Visual Studio 2019 ve Windows s nainstalovanou úlohou vývoj pro Azure Můžete také použít Visual Studio 2017 ve Windows s úlohou vývoje webu a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) nainstalovanou. Pokud nemáte nainstalované Visual Studio, Stáhněte si ho [tady](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -44,7 +44,7 @@ Cluster AKS musíte vytvořit v [podporované oblasti][supported-regions]. Vytvo
     ![Vytvoření AKS v Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Klikněte na *Zkontrolovat a vytvořit*.
-1. Klikněte na *Vytvořit*.
+1. Klikněte na možnost *Vytvořit*.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
 
@@ -60,7 +60,7 @@ V Azure Portal přejděte na svůj cluster AKS a klikněte na *vývojové prosto
 1. Pojmenujte svůj projekt *webendu* a klikněte na *vytvořit*.
 1. Po zobrazení výzvy vyberte možnost *Webová aplikace (model-zobrazení-kontroler)* pro šablonu.
 1. V horní části vyberte *.NET Core* a *ASP.NET Core 2,1* .
-1. Klikněte na *Vytvořit*.
+1. Klikněte na možnost *Vytvořit*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Připojte svůj projekt k prostoru pro vývoj
 
@@ -68,11 +68,11 @@ V projektu vyberte v rozevíracím seznamu nastavení spuštění možnost **Azu
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-V dialogovém okně Azure Dev Spaces vyberte své *předplatné* a *cluster Azure Kubernetes*. Ponechte nastavenou možnost *výchozí* a povolte zaškrtávací políčko *veřejně přístupné* . Klikněte na *OK*.
+V dialogovém okně Azure Dev Spaces vyberte své *předplatné* a *cluster Azure Kubernetes*. Ponechte nastavenou možnost *výchozí* a povolte zaškrtávací políčko *veřejně přístupné* . Klikněte na tlačítko *OK*.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Tento proces nasadí vaši službu do *výchozího* vývojového prostoru s veřejně přístupným URL. Pokud zvolíte cluster, který není nakonfigurovaný pro práci s Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat. Klikněte na *OK*.
+Tento proces nasadí vaši službu do *výchozího* vývojového prostoru s veřejně přístupným URL. Pokud zvolíte cluster, který není nakonfigurovaný pro práci s Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat. Klikněte na tlačítko *OK*.
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
@@ -124,7 +124,7 @@ Odstraňte zarážku tak, že umístíte kurzor na řádek 20 v `Controllers/Hom
 
 Přejděte do skupiny prostředků v Azure Portal a klikněte na *Odstranit skupinu prostředků*. Případně můžete použít příkaz [AZ AKS Delete](/cli/azure/aks#az-aks-delete) :
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 02/26/2020
+ms.date: 03/02/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1528087ced54ddcab2e3dd44b65fb3411cae3004
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621783"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251491"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: filtrování příchozího internetového provozu pomocí Azure Firewall DNAT pomocí Azure Portal
 
@@ -38,11 +38,11 @@ V tomto kurzu vytvoříte dvě partnerské virtuální sítě:
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. Na domovské stránce webu Azure Portal klikněte na **Skupiny prostředků** a potom klikněte na **Přidat**.
+2. Na domovské stránce Azure Portal vyberte **skupiny prostředků**a pak vyberte **Přidat**.
 3. Jako **Název skupiny prostředků** zadejte **RG-DNAT-Test**.
 4. V části **Předplatné** vyberte své předplatné.
 5. V části **Umístění skupiny prostředků** vyberte umístění. Všechny další prostředky, které vytvoříte, musí být ve stejném umístění.
-6. Klikněte na možnost **Vytvořit**.
+6. Vyberte **Vytvořit**.
 
 ## <a name="set-up-the-network-environment"></a>Nastavení síťového prostředí
 
@@ -50,9 +50,9 @@ Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah
 
 ### <a name="create-the-hub-vnet"></a>Vytvoření virtuální sítě centra
 
-1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
-2. V části **Sítě** klikněte na **Virtuální sítě**.
-3. Klikněte na **Přidat**.
+1. Na domovské stránce Azure Portal vyberte **všechny služby**.
+2. V části **síť**vyberte **virtuální sítě**.
+3. Vyberte **Přidat**.
 4. Jako **Název** zadejte **VN-Hub**.
 5. V části **Adresní prostor** zadejte **10.0.0.0/16**.
 6. V části **Předplatné** vyberte své předplatné.
@@ -65,13 +65,13 @@ Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah
      > Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 10. Pro **Rozsah adres**zadejte **10.0.1.0/26**.
-11. Ostatní výchozí nastavení ponechte a potom klikněte na **Vytvořit**.
+11. Použijte další výchozí nastavení a pak vyberte **vytvořit**.
 
 ### <a name="create-a-spoke-vnet"></a>Vytvoření virtuální sítě paprsku
 
-1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
-2. V části **Sítě** klikněte na **Virtuální sítě**.
-3. Klikněte na **Přidat**.
+1. Na domovské stránce Azure Portal vyberte **všechny služby**.
+2. V části **síť**vyberte **virtuální sítě**.
+3. Vyberte **Přidat**.
 4. Jako **Název** zadejte **VN-Spoke**.
 5. Jako **Adresní prostor** zadejte **192.168.0.0/16**.
 6. V části **Předplatné** vyberte své předplatné.
@@ -81,72 +81,64 @@ Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah
 
     V této podsíti bude server.
 10. Jako **Rozsah adres** zadejte **192.168.1.0/24**.
-11. Ostatní výchozí nastavení ponechte a potom klikněte na **Vytvořit**.
+11. Použijte další výchozí nastavení a pak vyberte **vytvořit**.
 
 ### <a name="peer-the-vnets"></a>Vytvoření partnerského vztahu virtuálních sítí
 
 Teď mezi dvěma virtuálními sítěmi vytvořte partnerský vztah.
 
-#### <a name="hub-to-spoke"></a>Od centra k paprsku
-
-1. Klikněte na virtuální síť **VN-Hub**.
-2. V části **Nastavení** klikněte na **Partnerské vztahy**.
-3. Klikněte na **Přidat**.
-4. Jako název zadejte **Peer-HubSpoke**.
+1. Vyberte virtuální síť **centra vn** .
+2. V části **Nastavení**vyberte **partnerské vztahy**.
+3. Vyberte **Přidat**.
+4. Zadejte **peer-HubSpoke** pro **název partnerského vztahu od vn-hub do vn-paprsek**.
 5. Jako virtuální síť vyberte **VN-Spoke**.
-6. Klikněte na tlačítko **OK**.
-
-#### <a name="spoke-to-hub"></a>Od paprsku k centru
-
-1. Klikněte na virtuální síť **VN-Spoke**.
-2. V části **Nastavení** klikněte na **Partnerské vztahy**.
-3. Klikněte na **Přidat**.
-4. Jako název zadejte **Peer-SpokeHub**.
-5. Jako virtuální síť vyberte **VN-Hub**.
-6. Klikněte na **Povolit přesměrovaný provoz**.
-7. Klikněte na tlačítko **OK**.
+6. Zadejte **peer-SpokeHub** pro **název partnerského vztahu z VN-paprsek do vn-hub**.
+7. Pro **Povolení přesměrovaného provozu z VN-paprsek na vn – výběr rozbočovače** **povolen**.
+8. Vyberte **OK**.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 Vytvořte virtuální počítač úloh a umístěte ho do podsítě **SN-Workload**.
 
-1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
-2. V části **Compute** klikněte na **Virtuální počítače**.
-3. Klikněte na **Přidat**, potom na **Windows Server**, dále na **Windows Server 2016 Datacenter** a nakonec klikněte na **Vytvořit**.
+1. V nabídce Azure Portal vyberte **vytvořit prostředek**.
+2. V části **Oblíbené**vyberte **Windows Server 2016 Datacenter**.
 
 **Základy**
 
-1. Jako **Název** zadejte **Srv-Workload**.
-5. Zadejte uživatelské jméno a heslo.
-6. V části **Předplatné** vyberte své předplatné.
-7. V části **Skupina prostředků** klikněte na **Použít existující** a pak vyberte **RG-DNAT-Test**.
-8. V části **Umístění** vyberte dříve použité umístění.
-9. Klikněte na tlačítko **OK**.
+1. V části **Předplatné** vyberte své předplatné.
+1. V části **Skupina prostředků** vyberte **Použít existující** a pak vyberte **RG-DNAT-Test**.
+1. Jako **název virtuálního počítače**zadejte **SRV-úlohy**.
+1. V poli **oblast**vyberte stejné umístění, které jste použili dříve.
+1. Zadejte uživatelské jméno a heslo.
+1. Vyberte **Další: disky**.
 
-**Velikost**
+**Disky**
+1. Vyberte **Další: sítě**.
 
-1. Zvolte vhodnou velikost pro testovací virtuální počítač s Windows Serverem. Například **B2ms** (8 GB paměti RAM, 16 GB úložiště).
-2. Klikněte na **Vybrat**.
+**Networking**
 
-**Nastavení**
-
-1. V části **Síť** jako **Virtuální síť** vyberte **VN-Spoke**.
+1. Pro **virtuální síť**vyberte **vn-paprsek**.
 2. Jako **Podsíť** vyberte **SN-Workload**.
-3. Klikněte na **Veřejná IP adresa** a pak na **Žádná**.
-4. V části **Vyberte veřejné příchozí porty** vyberte **Žádné veřejné příchozí porty**. 
-2. Ostatní výchozí nastavení ponechte a klikněte na **OK**.
+3. Pro **veřejnou IP adresu** vyberte **žádné**.
+4. U **veřejných příchozích portů**vyberte **None (žádné**). 
+2. Ponechte ostatní výchozí nastavení a vyberte **Další: Správa**.
 
-**Souhrn**
+**Správu**
 
-Zkontrolujte souhrn a potom klikněte na **Vytvořit**. Dokončení tohoto procesu může několik minut trvat.
+1. V případě **diagnostiky spouštění**vyberte **vypnuto**.
+1. Vyberte **zkontrolovat + vytvořit**.
 
-Po dokončení nasazení si poznamenejte privátní IP adresu virtuálního počítače. Použijete ji později při konfiguraci brány firewall. Klikněte na název virtuálního počítače, v části **Nastavení** klikněte na **Sítě** a vyhledejte privátní IP adresu.
+**Zkontrolovat a vytvořit**
+
+Zkontrolujte souhrn a pak vyberte **vytvořit**. Dokončení tohoto procesu může několik minut trvat.
+
+Po dokončení nasazení si poznamenejte privátní IP adresu virtuálního počítače. Použijete ji později při konfiguraci brány firewall. Vyberte název virtuálního počítače a v části **Nastavení**vyberte **sítě** , abyste našli privátní IP adresu.
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 
-1. Na domovské stránce webu Azure Portal klikněte na **Vytvořit prostředek**.
-2. Klikněte na **Sítě** a vedle **Doporučené** klikněte na **Zobrazit vše**.
-3. Klikněte na bránu **Firewall** a potom vyberte **Vytvořit**. 
+1. Na domovské stránce portálu vyberte **vytvořit prostředek**.
+2. Vyberte **sítě**a po výběru **Doporučené**vyberte **Zobrazit vše**.
+3. Vyberte **firewall**a pak vyberte **vytvořit**. 
 4. Na stránce **Vytvoření brány firewall** nakonfigurujte bránu firewall podle následující tabulky:
 
    |Nastavení  |Hodnota  |
@@ -158,44 +150,44 @@ Po dokončení nasazení si poznamenejte privátní IP adresu virtuálního poč
    |Volba virtuální sítě     |**Použít existující:** VN-Hub|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 
-5. Klikněte na **Zkontrolovat a vytvořit**.
-6. Zkontrolujte souhrn a potom kliknutím na **Vytvořit** vytvořte bránu firewall.
+5. Vyberte **Zkontrolovat a vytvořit**.
+6. Zkontrolujte souhrn a pak vyberte **vytvořit** a vytvořte bránu firewall.
 
    Nasazení může několik minut trvat.
-7. Po dokončení nasazení přejděte do skupiny prostředků **RG-DNAT-Test** a klikněte na bránu firewall **FW-DNAT-test**.
+7. Po dokončení nasazení přejdete do skupiny prostředků **RG-DNAT-test** a vyberete bránu firewall **FW-DNAT-test** .
 8. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
 
 ## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
 
 U podsítě **SN-Workload** nakonfigurujete výchozí trasu v odchozím směru, která půjde přes bránu firewall.
 
-1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
-2. V části **Sítě** klikněte na **Směrovací tabulky**.
-3. Klikněte na **Přidat**.
+1. Na domovské stránce Azure Portal vyberte **všechny služby**.
+2. V části **sítě**vyberte **směrovací tabulky**.
+3. Vyberte **Přidat**.
 4. Jako **Název** zadejte **RT-FWroute**.
 5. V části **Předplatné** vyberte své předplatné.
 6. V části **Skupina prostředků** vyberte **Použít existující** a pak vyberte **RG-DNAT-Test**.
 7. V části **Umístění** vyberte dříve použité umístění.
-8. Klikněte na možnost **Vytvořit**.
-9. Klikněte na **Aktualizovat** a pak klikněte na směrovací tabulku **RT-FWroute**.
-10. Klikněte na **Podsítě** a pak na **Přidružit**.
-11. Klikněte na **Virtuální síť** a pak vyberte **VN-Spoke**.
-12. V části **Podsíť** klikněte na **SN-Workload**.
-13. Klikněte na tlačítko **OK**.
-14. Klikněte na **Trasy** a pak na **Přidat**.
+8. Vyberte **Vytvořit**.
+9. Vyberte **aktualizovat**a potom vyberte tabulku směrování **RT-FWroute** .
+10. Vyberte **podsítě**a pak vyberte **přidružit**.
+11. Vyberte **virtuální síť**a potom vyberte **vn-paprsek**.
+12. Jako **Podsíť** vyberte **SN-Workload**.
+13. Vyberte **OK**.
+14. Vyberte **trasy**a pak vyberte **Přidat**.
 15. Jako **Název trasy** zadejte **FW-DG**.
 16. V části **Předpona IP adresy** zadejte **0.0.0.0/0**.
 17. V části **Typ dalšího směrování** vyberte **Virtuální zařízení**.
 
     Brána Azure Firewall je ve skutečnosti spravovaná služba, ale v tomto případě bude virtuální zařízení fungovat.
 18. V části **Adresa dalšího směrování** zadejte dříve poznamenanou privátní IP adresu brány firewall.
-19. Klikněte na tlačítko **OK**.
+19. Vyberte **OK**.
 
 ## <a name="configure-a-nat-rule"></a>Konfigurace pravidla překladu adres (NAT)
 
-1. Otevřete skupinu prostředků **RG-DNAT-Test** a klikněte na bránu firewall **FW-DNAT-test**. 
-2. Na stránce **FW-DNAT-test** v části **Nastavení** klikněte na **Pravidla**. 
-3. Klikněte na **přidat kolekci pravidel NAT**. 
+1. Otevřete **RG-DNAT-test**a vyberte bránu firewall **FW-DNAT-test** . 
+2. Na stránce **FW-DNAT-test** vyberte v části **Nastavení**možnost **pravidla**. 
+3. Vyberte **přidat kolekci pravidel NAT**. 
 4. Jako **Název** zadejte **RC-DNAT-01**. 
 5. V části **Priorita** zadejte **200**. 
 6. V části **Pravidla** jako **Název** zadejte **RL-01**.
@@ -205,7 +197,7 @@ U podsítě **SN-Workload** nakonfigurujete výchozí trasu v odchozím směru, 
 10. Do pole **Cílové porty** zadejte **3389**. 
 11. Do pole **Přeložená adresa** zadejte privátní IP adresu virtuálního počítače Srv-Workload. 
 12. Do pole **Přeložený port** zadejte **3389**. 
-13. Klikněte na **Přidat**. 
+13. Vyberte **Přidat**. 
 
 ## <a name="test-the-firewall"></a>Testovat bránu firewall
 

@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: 9985997ff4bef727676232705297379ccfc179c5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928565"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250270"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
 
@@ -33,14 +33,14 @@ V toku ovládacích prvků jsou k dispozici následující funkce:
 
 ## <a name="capabilities"></a>Možnosti
 
-Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace o metadatech jako výstup. V současné době jsou podporovány následující konektory a odpovídající metadata k dispozici. Maximální velikost vrácených metadat je 1 MB.
+Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace o metadatech jako výstup. V současné době jsou podporovány následující konektory a odpovídající metadata k dispozici. Maximální velikost vrácených metadat je 2 MB.
 
 >[!NOTE]
 >Pokud spustíte aktivitu získat metadata v místním prostředí Integration runtime, jsou nejnovější funkce podporované ve verzi 3,6 nebo novější.
 
 ### <a name="supported-connectors"></a>Podporované konektory
 
-**File Storage**
+**Úložiště souborů**
 
 | Konektory/metadata | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | size<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | structure<br/>souborů | Sloupců<br>souborů | neexistuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -109,7 +109,7 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 }
 ```
 
-**Dataset**
+**Integrován**
 
 ```json
 {

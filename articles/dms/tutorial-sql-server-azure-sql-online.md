@@ -3,8 +3,8 @@ title: 'Kurz: migrace SQL Server Online do databáze SQL Single'
 titleSuffix: Azure Database Migration Service
 description: Naučte se provádět online migraci z SQL Server místně do izolované databáze nebo databáze ve fondu v Azure SQL Database pomocí Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 012e6eca13c2b1afe00343da98dd58ca1f683dd5
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4fb8fbc0a0880d2e73839c4de3e1993dc86bd815
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315095"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255277"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Kurz: migrace SQL Server do izolované databáze nebo ve fondu databáze v Azure SQL Database online pomocí DMS
 
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje online migraci z SQL Server do jedné databáze nebo ve fondu databáze v Azure SQL Database. Informace o offline migraci najdete v tématu [Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS](tutorial-sql-server-to-azure-sql.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

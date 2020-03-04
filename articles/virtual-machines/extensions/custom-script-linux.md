@@ -3,7 +3,7 @@ title: Spouštění vlastních skriptů na virtuálních počítačích se syst�
 description: Automatizace úloh konfigurace virtuálních počítačů se systémem Linux pomocí rozšíření vlastních skriptů v2
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 22346501444694675d92d9a37497f9304c76e13d
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156552"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246148"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s virtuálními počítači se systémem Linux
 Rozšíření vlastních skriptů verze 2 stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakoukoli jinou úlohu konfigurace nebo správy. Můžete stáhnout skripty z Azure Storage nebo jiného přístupného internetového umístění, nebo je můžete poskytnout modulu runtime rozšíření. 
@@ -49,7 +49,7 @@ Pokud potřebujete stáhnout skript externě, jako je GitHub nebo Azure Storage,
 
 Pokud je váš skript na místním serveru, můžete přesto potřebovat další porty skupiny zabezpečení brány firewall/sítě.
 
-### <a name="tips-and-tricks"></a>Tipy a triky
+### <a name="tips-and-tricks"></a>Tipy a triky
 * Selhání tohoto rozšíření nejčastěji způsobují chyby syntaxe ve skriptu. Otestujte, že se skript spustí bez chyb, a implementujte do skriptu dodatečné protokolování, které vám pomůže snadněji zjistit, kde došlo k selhání.
 * Pište skripty, které jsou idempotentní, takže když se omylem spustí více než jednou, nezpůsobí to změny systému.
 * Zajistěte, aby skripty při spuštění nevyžadovaly vstup uživatele.
@@ -110,19 +110,19 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota / příklad | Typ dat | 
+| Název | Hodnota / příklad | Typ dat | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft. Compute. Extensions | string |
-| type | CustomScript | string |
+| publisher | Microsoft. Compute. Extensions | řetězec |
+| type | CustomScript | řetězec |
 | typeHandlerVersion | 2.1 | int |
 | fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | pole |
-| commandToExecute (např.) | MyPythonScript.py Pythonu \<moje-param1 > | string |
-| . | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
-| skipDos2Unix (např.) | false | Boolean |
+| commandToExecute (např.) | MyPythonScript.py Pythonu \<moje-param1 > | řetězec |
+| . | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | řetězec |
+| skipDos2Unix (např.) | false (nepravda) | Boolean |
 | timestamp (např.) | 123456789 | 32-bitové celé číslo |
-| storageAccountName (např.) | examplestorageacct | string |
-| storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (např.) | examplestorageacct | řetězec |
+| storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | řetězec |
 | managedIdentity (např.) | {} nebo {"clientId": "31b403aa-C364-4240-a7ff-d85fb6cd7232"} nebo {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | objekt JSON |
 
 ### <a name="property-value-details"></a>Podrobnosti hodnoty vlastnosti
@@ -305,7 +305,7 @@ az vm extension set \
   --protected-settings '{"fileUris": ["https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"],"commandToExecute": "./config-music.sh"}'
 ```
 
-### <a name="azure-cli-examples"></a>Příklady rozhraní příkazového řádku Azure
+### <a name="azure-cli-examples"></a>Příklady Azure CLI
 
 #### <a name="public-configuration-with-script-file"></a>Veřejná konfigurace se souborem skriptu
 

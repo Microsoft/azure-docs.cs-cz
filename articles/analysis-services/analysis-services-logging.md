@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 05ba1d97d4eba92f492289375f85425f8920510b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0f13f297facedceb50920c0f6afca63fe1df0b48
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749763"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248052"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
-Důležitou součástí řešení služby Analysis Services je monitorování, jaký výkon vaše servery. Pomocí [protokolů diagnostiky prostředků Azure](../azure-monitor/platform/platform-logs-overview.md)můžete sledovat a odesílat protokoly do [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolů Azure monitor](../azure-monitor/azure-monitor-log-hub.md).
+Důležitou součástí řešení služby Analysis Services je monitorování, jaký výkon vaše servery. Pomocí [protokolů prostředků Azure](../azure-monitor/platform/platform-logs-overview.md)můžete monitorovat a odesílat protokoly do [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolů Azure monitor](../azure-monitor/azure-monitor-log-hub.md).
 
 ![Protokolování diagnostiky do protokolů úložiště, Event Hubs nebo Azure Monitor](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -24,11 +24,11 @@ Důležitou součástí řešení služby Analysis Services je monitorování, j
 
 ## <a name="whats-logged"></a>Co je protokolováno?
 
-Můžete vybrat **modul**, **služby**, a **metriky** kategorií.
+Můžete vybrat kategorie **modul**, **služby**a **metriky** .
 
 ### <a name="engine"></a>Modul
 
-Výběr **modul** všechny protokoly [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events). Nelze vybrat jednotlivé události. 
+Výběr **modulu** protokoluje všechny [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events). Nelze vybrat jednotlivé události. 
 
 |Událost XEvent s kategorií |Název události  |
 |---------|---------|
@@ -43,9 +43,9 @@ Výběr **modul** všechny protokoly [xEvents](https://docs.microsoft.com/analys
 |Příkazy     |  Příkaz Begin       |
 |Příkazy     |  Příkaz End       |
 |Chyby a upozornění     |   Chyba      |
-|Identifikace     |   Objevte koncové      |
+|Informace     |   Objevte koncové      |
 |Oznámení     |    Oznámení     |
-|Session     |  Inicializace relace       |
+|Relace     |  Inicializace relace       |
 |Zámky    |  Vzájemné zablokování       |
 |Zpracování dotazů     |   VertiPaq SE Query Begin      |
 |Zpracování dotazů     |   VertiPaq SE Query End      |
@@ -70,27 +70,27 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
 ## <a name="setup-diagnostics-logging"></a>Nastavení protokolování diagnostiky
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
-1. V [webu Azure portal](https://portal.azure.com) > server, klikněte na tlačítko **diagnostické protokoly** v levém navigačním panelu a pak klikněte na tlačítko **zapnout diagnostiku**.
+1. V [Azure Portal](https://portal.azure.com) > serveru klikněte v levém navigačním panelu na **diagnostické protokoly** a pak klikněte na **zapnout diagnostiku**.
 
     ![Zapnutí protokolování diagnostiky pro Azure Cosmos DB na webu Azure Portal](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
-2. V **nastavení diagnostiky**, určete následující možnosti: 
+2. V okně **nastavení diagnostiky**zadejte následující možnosti: 
 
     * **Název**. Zadejte název pro protokoly a vytvořit.
 
-    * **Archivovat do účtu úložiště**. Pokud chcete použít tuto možnost, musíte se připojit k existující účet úložiště. Zobrazit [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md). Postupujte podle pokynů k vytvoření správce prostředků, účet pro obecné účely, pak vyberte svůj účet úložiště tak, že vrací na tuto stránku na portálu. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
-    * **Stream do centra událostí**. Pokud chcete použít tuto možnost, budete potřebovat existující centrum událostí oboru názvů a Centrum událostí pro připojení k. Další informace najdete v tématu [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md). Pak se vraťte na tuto stránku na portálu vyberte název oboru názvů a zásad centra událostí.
+    * **Archivujte do účtu úložiště**. Pokud chcete použít tuto možnost, musíte se připojit k existující účet úložiště. Viz [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md). Postupujte podle pokynů k vytvoření správce prostředků, účet pro obecné účely, pak vyberte svůj účet úložiště tak, že vrací na tuto stránku na portálu. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
+    * **Streamování do centra událostí**. Pokud chcete použít tuto možnost, budete potřebovat existující centrum událostí oboru názvů a Centrum událostí pro připojení k. Další informace najdete v tématu [Vytvoření oboru názvů Event Hubs a centra událostí pomocí Azure Portal](../event-hubs/event-hubs-create.md). Pak se vraťte na tuto stránku na portálu vyberte název oboru názvů a zásad centra událostí.
     * **Odeslat do Azure monitor (pracovní prostor Log Analytics)** . Pokud chcete tuto možnost použít, buď použijte existující pracovní prostor, nebo na portálu [vytvořte nový prostředek pracovního prostoru](../azure-monitor/learn/quick-create-workspace.md) . Další informace o zobrazení protokolů najdete v části [zobrazení protokolů v Log Analytics pracovním prostoru](#view-logs-in-log-analytics-workspace) v tomto článku.
 
     * **Modul**. Tato možnost protokolování xEvents. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou autodeleted po vypršení platnosti doby uchování.
     * **Služba**. Tuto možnost, do protokolu událostí na úrovni služby. Pokud jsou archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou autodeleted po vypršení platnosti doby uchování.
-    * **Metriky**. Tuto možnost použijte k ukládání podrobné údaje v [metriky](analysis-services-monitor.md#server-metrics). Pokud jsou archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou autodeleted po vypršení platnosti doby uchování.
+    * **Metriky**. Tuto možnost vyberte, pokud chcete ukládat podrobná data do [metrik](analysis-services-monitor.md#server-metrics). Pokud jsou archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou autodeleted po vypršení platnosti doby uchování.
 
-3. Klikněte na možnost **Uložit**.
+3. Klikněte na **Uložit**.
 
-    Pokud se zobrazí chybová zpráva "nepovedlo se aktualizovat diagnostiku pro \<název pracovního prostoru >. Předplatné \<id předplatného > není zaregistrované k používání microsoft.insights. " postupujte podle [Poradce při potížích s Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) pokyny k registraci účtu, a poté opakujte tento postup.
+    Pokud se zobrazí chyba oznamující, že se nepovedlo aktualizovat diagnostiku pro \<název pracovního prostoru >. Předplatné \<ID předplatného > není zaregistrované pro používání Microsoft. Insights. " pomocí pokynů [Azure Diagnostics Poradce při potížích](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) zaregistrujte účet a potom tento postup opakujte.
 
     Pokud chcete změnit, jak diagnostické protokoly jsou uloženy v libovolném okamžiku v budoucnu, můžete vrátit na tuto stránku a upravit nastavení.
 
@@ -134,13 +134,13 @@ Chcete-li povolit protokolování pomocí prostředí PowerShell Diagnostika a m
 
 Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
-Zjistěte, jak [změnit nastavení diagnostiky pomocí REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/). 
+Naučte se, jak [změnit nastavení diagnostiky pomocí REST API Azure monitor](https://docs.microsoft.com/rest/api/monitor/). 
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Zjistěte, jak [povolení nastavení diagnostiky při vytváření prostředků pomocí šablony Resource Manageru](../azure-monitor/platform/diagnostic-settings-template.md). 
+Naučte se, jak [Povolit nastavení diagnostiky při vytváření prostředků pomocí šablony Správce prostředků](../azure-monitor/platform/diagnostic-settings-template.md). 
 
 ## <a name="manage-your-logs"></a>Správa protokolů
 
@@ -158,7 +158,7 @@ Pokud chcete zobrazit diagnostická data, v Log Analytics pracovním prostoru ot
 
 ![Možnosti protokolu hledání na webu Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-V Tvůrci dotazů rozbalte **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zahrnuje události stroj a služby. Všimněte si, že je dotaz vytvořen průběžně. EventClass\_s pole obsahuje událost xEvent s názvy, které může vypadat povědomě, pokud jste použili xEvents pro místní protokolování. Klikněte na **EventClass\_s** nebo na jeden z názvů událostí a Log Analytics pracovní prostor bude pokračovat v vytváření dotazu. Nezapomeňte uložit své dotazy pro pozdější použití.
+V Tvůrci dotazů rozbalte **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zahrnuje události stroj a služby. Všimněte si, že je dotaz vytvořen průběžně. Pole EventClass\_s obsahuje názvy xEvent, které můžou vypadat dobře, pokud jste použili xEvents pro místní protokolování. Klikněte na **EventClass\_s** nebo na jeden z názvů událostí a Log Analytics pracovní prostor bude pokračovat v vytváření dotazu. Nezapomeňte uložit své dotazy pro pozdější použití.
 
 ### <a name="example-queries"></a>Příklady dotazů
 
@@ -215,12 +215,12 @@ Existují stovky dotazy, které můžete použít. Další informace o dotazech 
 
 V tomto rychlém kurzu vytvoříte účet úložiště ve stejném předplatném a skupině prostředků jako váš server Analysis Service. Pak pomocí Set-AzDiagnosticSetting zapněte protokolování diagnostiky a odešlete výstup do nového účtu úložiště.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto kurzu musíte mít následující prostředky:
 
-* Stávající server Azure Analysis Services. Pokyny k vytvoření prostředku serveru, najdete v článku [vytvoření serveru na webu Azure portal](analysis-services-create-server.md), nebo [vytvoření serveru Azure Analysis Services pomocí prostředí PowerShell](analysis-services-create-powershell.md).
+* Stávající server Azure Analysis Services. Pokyny k vytvoření prostředku serveru najdete v tématu [vytvoření serveru v Azure Portal](analysis-services-create-server.md)nebo [Vytvoření Azure Analysis Servicesho serveru pomocí PowerShellu](analysis-services-create-powershell.md).
 
-### <a name="aconnect-to-your-subscriptions"></a></a>Připojení k předplatným
+### <a name="aconnect-to-your-subscriptions"></a></a>se připojit k předplatným
 
 Spusťte relaci Azure PowerShellu a přihlaste se k účtu Azure pomocí následujícího příkazu:  
 
@@ -249,9 +249,9 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 ### <a name="create-a-new-storage-account-for-your-logs"></a>Vytvořit pro svoje protokoly nový účet úložiště
 
-Pro svoje protokoly můžete použít existující účet úložiště, pokud je ve stejném předplatném jako váš server. V tomto kurzu vytvoříte nový účet úložiště vyhrazený pro Analysis Services protokoly. Abyste usnadnili snadnou, ukládáte podrobnosti o účtu úložiště do proměnné s názvem **sa**.
+Pro svoje protokoly můžete použít existující účet úložiště, pokud je ve stejném předplatném jako váš server. V tomto kurzu vytvoříte nový účet úložiště vyhrazený pro Analysis Services protokoly. Pokud chcete usnadnit ukládání podrobností účtu úložiště do proměnné s názvem **SA**.
 
-Rovněž použijte stejnou skupinu prostředků jako ten, který obsahuje váš server Analysis Services. Nahraďte hodnoty `awsales_resgroup`, `awsaleslogs`, a `West Central US` vlastními hodnotami:
+Rovněž použijte stejnou skupinu prostředků jako ten, který obsahuje váš server Analysis Services. Nahraďte hodnoty pro `awsales_resgroup`, `awsaleslogs`a `West Central US` vlastními hodnotami:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
@@ -260,7 +260,7 @@ $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
 
 ### <a name="identify-the-server-account-for-your-logs"></a>Identifikovat účet, který server pro svoje protokoly
 
-Nastavte název účtu do proměnné s názvem **účet**, kde ResourceName je název účtu.
+Nastavte název účtu na proměnnou s názvem **account**, kde resourceName je název účtu.
 
 ```powershell
 $account = Get-AzResource -ResourceGroupName awsales_resgroup `
@@ -269,7 +269,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>Povolte protokolování
 
-Pokud chcete povolit protokolování, použijte rutinu Set-AzDiagnosticSetting spolu s proměnnými pro nový účet úložiště, účet serveru a kategorii. Spuštěním následujícího příkazu nastavení **-povoleno** příznak **$true**:
+Pokud chcete povolit protokolování, použijte rutinu Set-AzDiagnosticSetting spolu s proměnnými pro nový účet úložiště, účet serveru a kategorii. Spusťte následující příkaz, nastavením příznaku **-Enabled** na **$true**:
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
@@ -316,7 +316,7 @@ Tags                        :
 
 Tento výstup potvrdí, že protokolování je teď pro server povolené, a ukládá informace do účtu úložiště.
 
-Můžete také nastavit zásady uchovávání informací pro svoje protokoly, tak starší protokoly automaticky odstraněny. Například nastavení zásad uchovávání informací pomocí **- RetentionEnabled** příznak **$true**a nastavte **- RetentionInDays** parametr **90**. Protokoly starší než 90 dnů automaticky odstraněny.
+Můžete také nastavit zásady uchovávání informací pro svoje protokoly, tak starší protokoly automaticky odstraněny. Například nastavte zásady uchovávání informací pomocí příznaku **-RetentionEnabled** na **$true**a nastavte parametr **-RetentionInDays** na **90**. Protokoly starší než 90 dnů automaticky odstraněny.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
@@ -326,6 +326,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [protokolování diagnostiky prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
+Přečtěte si další informace o [protokolování diagnostiky prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 Viz rutina [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) v nápovědě PowerShellu.

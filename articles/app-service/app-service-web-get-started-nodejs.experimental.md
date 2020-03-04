@@ -7,12 +7,12 @@ ms.date: 08/23/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671406"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247617"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
 
@@ -34,7 +34,7 @@ Tento postup můžete použít v případě počítačů se systémem Mac, Windo
 
 Ve službě Cloud Shell vytvořte adresář rychlého startu a přejděte do něj.
 
-```azurecli-interactive
+```console
 mkdir quickstart
 
 cd $HOME/quickstart
@@ -42,13 +42,13 @@ cd $HOME/quickstart
 
 Potom spusťte následující příkaz, pomocí kterého do tohoto adresáře naklonujete úložiště ukázkové aplikace.
 
-```azurecli-interactive
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 Při spuštění příkaz zobrazí podobné informace jako v následujícím příkladu:
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -64,9 +64,9 @@ Checking connectivity... done.
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)]
 
-## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte v plánu služby App Service `myAppServicePlan` webovou aplikaci.
+Ve službě Cloud Shell pomocí příkazu `myAppServicePlan`[`az webapp create` vytvořte v plánu služby App Service ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) webovou aplikaci.
 
 V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`).
 
@@ -102,7 +102,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 Přejděte do vaší nově vytvořené webové aplikace. Nahraďte `<app_name>` jedinečným názvem aplikace.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -112,7 +112,7 @@ Vaše nová webová aplikace by měla vypadat takto: ![prázdnou stránku webov�
 
 V Cloud Shell přejděte do kořenového adresáře vaší aplikace, vytvořte nový soubor ZIP pro ukázkový projekt.
 
-```azurecli-interactive
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -130,7 +130,7 @@ Tento příkaz nasadí soubory a adresáře ze souboru ZIP do vaší výchozí s
 
 V prohlížeči zadejte adresu nasazené aplikace.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 

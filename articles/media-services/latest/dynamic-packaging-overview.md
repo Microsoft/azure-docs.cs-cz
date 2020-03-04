@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719666"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251380"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -93,7 +93,7 @@ Podívejte se na seznam [formátů Media Encoder Standard a kodeků](media-encod
 
 ## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
 
-Živá událost může být jeden ze dvou typů: průchozí nebo živé kódování. 
+Živá událost může být nastavená na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi) nebo *živé kódování* (místní kodér Live Encoder posílá datový proud s jednou přenosovou rychlostí). 
 
 Tady je běžný pracovní postup pro živé streamování s dynamickým balením:
 

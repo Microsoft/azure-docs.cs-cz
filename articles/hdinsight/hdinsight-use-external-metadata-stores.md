@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 14b36a391778649e96694f1cb1d3a1b4e7ee89ba
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 03/02/2020
+ms.openlocfilehash: edb2d256d3e5d98c52dbdff1162e0e030ebe2be3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327368"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251056"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat ve službě Azure HDInsight
 
@@ -54,6 +54,8 @@ HDInsight podporuje také vlastní metaúložiště, které se doporučují pro 
 * Platíte za náklady na metastore (Azure SQL DB) podle úrovně výkonu, kterou si zvolíte.
 
 * Metastore můžete škálovat podle potřeby.
+
+* Cluster a externí metastore musí být hostované ve stejné oblasti.
 
 ![Případ použití úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 594f0ed55b5ce5c31e87fd2011f3bc1522a12380
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511871"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249040"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
@@ -38,15 +38,15 @@ Pokud chcete v Azure AD získat zařízení, máte několik možností:
 
 - **Registrace Azure AD**
    - Zařízení, která jsou registrovaná v Azure AD, jsou obvykle osobně vlastněná nebo mobilní zařízení a jsou přihlášená pomocí osobního účet Microsoft nebo jiného místního účtu.
-      - Windows 10
+      - Windows 10
       - iOS
       - Android
       - MacOS
 - **Připojeno k Azure AD**
-   - Zařízení, která jsou připojená k Azure AD, jsou vlastněna organizací a přihlásili jste se k účtu Azure AD patřícímu do této organizace. Existují jenom v cloudu.
-      - Windows 10 
+   - Zařízení, která jsou připojená k Azure AD, jsou vlastněna organizací a jsou přihlášená pomocí účtu Azure AD patřícího do této organizace. Existují jenom v cloudu.
+      - Windows 10 
 - **k hybridní službě Azure AD**.
-   - Zařízení, která jsou připojená k hybridní službě Azure AD, jsou vlastněna organizací a přihlásili jste se k účtu Azure AD patřícímu do této organizace. Existují v cloudu i v místním prostředí.
+   - Zařízení, která jsou připojená k hybridní službě Azure AD, jsou vlastněna organizací a jsou přihlášená pomocí účtu Azure AD patřícího do této organizace. Existují v cloudu i v místním prostředí.
       - Windows 7, 8,1 nebo 10
       - Windows Server 2008 nebo novější
 

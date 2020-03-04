@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 153df77c030180402b1e30bc456d681c232c390b
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226524"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246279"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Zpracování chyb v Azure Automation grafické Runbooky
+# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Zpracování chyb v grafických runboocích Azure Automation
 
 Klíčovým návrhem, který je třeba zvážit pro Azure Automation Grafická sada Runbook, je identifikace problémů, které může sada Runbook způsobit během provádění. Tyto problémy mohou zahrnovat úspěch, očekávané chybové stavy a neočekávané chybové podmínky.
 
@@ -54,7 +54,7 @@ Toto chování můžete také zobecnit pro použití v mnoha sadách Runbook tí
 
 ## <a name="how-to-use-error-handling"></a>Jak použít zpracování chyb
 
-Každá aktivita v sadě Runbook má nastavení konfigurace, které zapíná výjimky na neukončující chyby. Ve výchozím nastavení je náhodné zpoždění vypnuto. Toto nastavení doporučujeme povolit u všech aktivit, kde sada Runbook zpracovává chyby. Toto nastavení zajišťuje, že sada Runbook zpracovává ukončovací i neukončující chyby v aktivitě jako neukončující chyby pomocí odkazu na chybu.  
+Každá aktivita v sadě Runbook má nastavení konfigurace, které zapíná výjimky na neukončující chyby. Standardně je toto nastavení zakázáno. Toto nastavení doporučujeme povolit u všech aktivit, kde sada Runbook zpracovává chyby. Toto nastavení zajišťuje, že sada Runbook zpracovává ukončovací i neukončující chyby v aktivitě jako neukončující chyby pomocí odkazu na chybu.  
 
 Po povolení nastavení konfigurace budou mít vaše sada Runbook vytvořenou aktivitu, která zpracovává chybu. Pokud aktivita vyvolá jakoukoli chybu, následují odchozí odkazy na chyby. Nejsou následovány běžné odkazy, a to ani v případě, že aktivita vytváří i pravidelný výstup.<br><br> ![Příklad chybového propojení v runbooku Automation](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
@@ -66,6 +66,6 @@ Chyby odkazují z těchto aktivit na jednu aktivitu kódu **správy chyb** . Tat
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o odkazech a typech vazeb v grafických sadách Runbook najdete [v tématu vytváření grafických sestav v Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
+* Další informace o propojeních a typech propojení v grafických runboocích najdete v tématu [Grafické vytváření obsahu v Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
 
 * Další informace o spuštění sady Runbook, monitorování úloh runbooků a další technické podrobnosti najdete [v tématu Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).

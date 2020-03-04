@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: c5418f8c5e759ad0e5c388e0925fa724fe148797
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368528"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251532"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs
 Azure Event Hubs podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md). Spravované identity pro prostředky Azure můžou autorizovat přístup k Event Hubs prostředkům pomocí přihlašovacích údajů Azure AD z aplikací běžících ve službě Azure Virtual Machines (VM), aplikací Function App, Virtual Machine Scale Sets a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.
@@ -79,10 +79,13 @@ Po přiřazení role bude mít webová aplikace přístup k prostředkům Event 
 4. Přiřaďte tuto identitu k roli **Event Hubs data Owner** na úrovni oboru názvů nebo centra událostí. 
 5. Spusťte webovou aplikaci, zadejte název oboru názvů a název centra událostí, zprávu a vyberte **Odeslat**. Pokud chcete událost přijmout, vyberte **přijmout**. 
 
-#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure. Messaging. EventHubs (nejnovější)](#tab/latest)
+#### <a name="azuremessagingeventhubs-latest"></a>[Azure. Messaging. EventHubs (nejnovější)](#tab/latest)
 Nyní můžete spustit webovou aplikaci a nasměrovat prohlížeč na vzorovou stránku ASPX. Můžete najít ukázkovou webovou aplikaci, která odesílá a přijímá data z Event Hubsch prostředků v [úložišti GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp).
 
-Nainstalujte si nejnovější balíček ze sady [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)a začněte odesílat události pro Event Hubs pomocí **EventHubProducerClient** a příjem událostí pomocí **EventHubConsumerClient**.  
+Nainstalujte si nejnovější balíček ze sady [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)a začněte odesílat události pro Event Hubs pomocí **EventHubProducerClient** a příjem událostí pomocí **EventHubConsumerClient**. 
+
+> [!NOTE]
+> Vzorek Java, který používá spravovanou identitu k publikování událostí do centra událostí, najdete v tématu věnovaném [publikování událostí s Azure identity Sample na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs).
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)
@@ -127,7 +130,7 @@ protected async void btnReceive_Click(object sender, EventArgs e)
 }
 ```
 
-#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft. Azure. EventHubs (starší verze)](#tab/old)
+#### <a name="microsoftazureeventhubs-legacy"></a>[Microsoft. Azure. EventHubs (starší verze)](#tab/old)
 Nyní můžete spustit webovou aplikaci a nasměrovat prohlížeč na vzorovou stránku ASPX. Můžete najít ukázkovou webovou aplikaci, která odesílá a přijímá data z Event Hubsch prostředků v [úložišti GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp).
 
 Nainstalujte si nejnovější balíček z [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)a začněte odesílat a přijímat data z Center událostí pomocí EventHubClient, jak je znázorněno v následujícím kódu: 
@@ -141,11 +144,12 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 Pomocí Apache Kafka aplikací můžete odesílat a přijímat zprávy z Azure Event Hubs pomocí spravované identity OAuth. Podívejte se na následující ukázku na GitHubu: [Event Hubs pro posílání a přijímání zpráv pomocí spravované identity OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity).
 
 ## <a name="samples"></a>Ukázky
+- Ukázky pro **Azure. Messaging. EventHubs**
+    - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [Ukázky Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 
     
     Tyto ukázky používají starou knihovnu **Microsoft. Azure. EventHubs** , ale můžete ji snadno aktualizovat tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** . Postup přesunutí ukázky z použití staré knihovny do nové verze najdete v [Průvodci migrací z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
-- [Ukázky pro Azure. Messaging. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
-
     Tato ukázka se aktualizovala tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** .
 - [Event Hubs pro Kafka – posílání a přijímání zpráv pomocí spravované identity OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 

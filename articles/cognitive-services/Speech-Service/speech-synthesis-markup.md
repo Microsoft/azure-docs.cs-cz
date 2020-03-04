@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228067"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254787"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -57,9 +57,9 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| `version` | Určuje verzi specifikace SSML, která se používá k interpretaci značek dokumentu. Aktuální verze je 1,0. | Požadováno |
-| `xml:lang` | Určuje jazyk kořenového dokumentu. Hodnota může obsahovat malá a velká písmena, kód jazyka se dvěma písmeny (například `en`) nebo kód jazyka a zemi/oblast (například `en-US`). | Požadováno |
-| `xmlns` | Určuje identifikátor URI dokumentu, který definuje slovník značek (typy prvků a názvy atributů) dokumentu SSML. Aktuální identifikátor URI je https://www.w3.org/2001/10/synthesis. | Požadováno |
+| `version` | Určuje verzi specifikace SSML, která se používá k interpretaci značek dokumentu. Aktuální verze je 1,0. | Požaduje se |
+| `xml:lang` | Určuje jazyk kořenového dokumentu. Hodnota může obsahovat malá a velká písmena, kód jazyka se dvěma písmeny (například `en`) nebo kód jazyka a zemi/oblast (například `en-US`). | Požaduje se |
+| `xmlns` | Určuje identifikátor URI dokumentu, který definuje slovník značek (typy prvků a názvy atributů) dokumentu SSML. Aktuální identifikátor URI je https://www.w3.org/2001/10/synthesis. | Požaduje se |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Volba hlasu pro převod textu na řeč
 
@@ -77,7 +77,7 @@ Element `voice` je povinný. Slouží k určení hlasu, který se používá pro
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Požadováno |
+| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Požaduje se |
 
 **Příklad**
 
@@ -100,7 +100,7 @@ V rámci prvku `speak` můžete zadat více hlasů pro výstup textu na řeč. T
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Požadováno |
+| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Požaduje se |
 
 > [!IMPORTANT]
 > Více hlasů je nekompatibilních s funkcí hranice slova. Aby bylo možné použít více hlasů, je třeba zakázat funkci hranice slova.
@@ -195,6 +195,7 @@ Ve výchozím nastavení služba pro převod textu na řeč syntetizuje text pom
 
 V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
 * `en-US-JessaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 
 Změny se aplikují na úrovni věty a styl se liší podle hlasu. Pokud styl není podporován, služba vrátí řeč ve výchozím stylu neutrálního mluveného slova.
@@ -220,6 +221,7 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 | | `type="chat"` | Mluvte do nepříležitostného a odlehčeného tónu |
 | | `type="newscast"` | Vyjadřuje formální tón, podobně jako zprávy všesměrového vysílání. |
 | | `type="customerservice"` | Přihlaste se jako uživatelsky přívětivé služby a způsoby pacienty |
+| `pt-BR-FranciscaNeural` | `type="cheerful"` | Vyjadřuje, že emoce jsou pozitivní a veselé |
 | `zh-CN-XiaoxiaoNeural` | `type="newscast"` | Vyjadřuje formální tón, podobně jako zprávy všesměrového vysílání. |
 | | `type="sentiment"` | Předává zprávu o doteku nebo příběh. |
 
@@ -256,8 +258,8 @@ Pomocí elementu `break` vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>Žádná</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silné</li><li>x – silné</li></ul> | Volitelné |
-| `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a `500` | Volitelné |
+| `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>Žádná</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silné</li><li>x – silné</li></ul> | Nepovinné |
+| `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a `500` | Nepovinné |
 
 | Obsahem | Popis |
 |----------|-------------|
@@ -327,7 +329,7 @@ Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, č�
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| `alphabet` | Určuje fonetickou abecedu, která se použije při syntetizování výslovnosti řetězce v atributu `ph`. Řetězec určující abecedu musí být zadán malými písmeny. Níže jsou uvedené možné abecedy, které můžete zadat.<ul><li>IPA &ndash; mezinárodní fonetická abecedou</li><li>Telefonická sada rozhraní SAPI &ndash; Speech API</li><li>UPS &ndash; univerzální telefonní sada</li></ul>Abeceda se vztahuje pouze na foném v elementu. Další informace najdete v referenčních informacích o [fonetické abecedě](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | Volitelné |
+| `alphabet` | Určuje fonetickou abecedu, která se použije při syntetizování výslovnosti řetězce v atributu `ph`. Řetězec určující abecedu musí být zadán malými písmeny. Níže jsou uvedené možné abecedy, které můžete zadat.<ul><li>IPA &ndash; mezinárodní fonetická abecedou</li><li>Telefonická sada rozhraní SAPI &ndash; Speech API</li><li>UPS &ndash; univerzální telefonní sada</li></ul>Abeceda se vztahuje pouze na foném v elementu. Další informace najdete v referenčních informacích o [fonetické abecedě](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | Nepovinné |
 | `ph` | Řetězec obsahující telefony, které určují výslovnost slova v prvku `phoneme`. Pokud zadaný řetězec obsahuje nerozpoznané telefony, služba převod textu na mluvené slovo (TTS) odmítne celý dokument SSML a vytvoří žádný z výstupů řeči zadaného v dokumentu. | Vyžaduje se, pokud používáte fonémy. |
 
 **Příklady**
@@ -461,12 +463,12 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600 Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80 Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>úrovně</li><li>maximální</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | Volitelné |
-| `contour` | Pro hlasy neuronové se nepodporuje obrys. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch`). | Volitelné |
-| `range` | Hodnota, která představuje rozsah roztečí textu. `range` můžete vyjádřit pomocí stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch`. | Volitelné |
-| `rate` | Určuje míru projevení textu. `rate` můžete vyjádřit jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Výsledkem hodnoty *0,5* je poloviční sazba. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>úrovně</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | Volitelné |
-| `duration` | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | Volitelné |
-| `volume` | Určuje úroveň hlasitosti mluveného hlasu. Svazek můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo v rozsahu od 0,0 do 100,0, od *tichého* po *nahlasu*. Například 75. Výchozí hodnota je 100,0.</li><li>Relativní hodnota vyjádřená jako číslo začínající znakem "+" nebo "-", která určuje velikost pro změnu svazku. Například + 10 nebo-5,5.</li><li>Konstantní hodnota:<ul><li>tich</li><li>× – měkké</li><li>Pohyblivý</li><li>úrovně</li><li>rovnává</li><li>x-nahlas</li><li>default</li></ul></li></ul> | Volitelné |
+| `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600 Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80 Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>úrovně</li><li>maximální</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | Nepovinné |
+| `contour` | Pro hlasy neuronové se nepodporuje obrys. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch`). | Nepovinné |
+| `range` | Hodnota, která představuje rozsah roztečí textu. `range` můžete vyjádřit pomocí stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch`. | Nepovinné |
+| `rate` | Určuje míru projevení textu. `rate` můžete vyjádřit jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Výsledkem hodnoty *0,5* je poloviční sazba. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>úrovně</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | Nepovinné |
+| `duration` | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | Nepovinné |
+| `volume` | Určuje úroveň hlasitosti mluveného hlasu. Svazek můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo v rozsahu od 0,0 do 100,0, od *tichého* po *nahlasu*. Například 75. Výchozí hodnota je 100,0.</li><li>Relativní hodnota vyjádřená jako číslo začínající znakem "+" nebo "-", která určuje velikost pro změnu svazku. Například + 10 nebo-5,5.</li><li>Konstantní hodnota:<ul><li>tich</li><li>× – měkké</li><li>Pohyblivý</li><li>úrovně</li><li>rovnává</li><li>x-nahlas</li><li>default</li></ul></li></ul> | Nepovinné |
 
 ### <a name="change-speaking-rate"></a>Mluvy frekvence změny
 
@@ -544,9 +546,9 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| `interpret-as` | Určuje typ obsahu textu elementu. Seznam typů naleznete v následující tabulce. | Požadováno |
-| `format` | Poskytuje další informace o přesném formátování textu elementu pro typy obsahu, které mohou mít dvojznačné formáty. SSML definuje formáty pro typy obsahu, které je používají (viz tabulka níže). | Volitelné |
-| `detail` | Určuje úroveň podrobností, které se mají vymluvené. Tento atribut například může vyžadovat, aby se v modulu Shrnutí řeči vyhodnotily interpunkční znaménka. Pro `detail`nejsou definovány žádné standardní hodnoty. | Volitelné |
+| `interpret-as` | Určuje typ obsahu textu elementu. Seznam typů naleznete v následující tabulce. | Požaduje se |
+| `format` | Poskytuje další informace o přesném formátování textu elementu pro typy obsahu, které mohou mít dvojznačné formáty. SSML definuje formáty pro typy obsahu, které je používají (viz tabulka níže). | Nepovinné |
+| `detail` | Určuje úroveň podrobností, které se mají vymluvené. Tento atribut například může vyžadovat, aby se v modulu Shrnutí řeči vyhodnotily interpunkční znaménka. Pro `detail`nejsou definovány žádné standardní hodnoty. | Nepovinné |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
@@ -643,9 +645,9 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. V rámci ele
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
 | `src` | Určuje umístění nebo adresu URL zvukového souboru na pozadí. | Vyžaduje se, pokud v dokumentu SSML používáte zvuk na pozadí. |
-| `volume` | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty**: `0` pro `100` včetně. Výchozí hodnota je `1`. | Volitelné |
-| `fadein` | Určuje dobu, po kterou se bude zvuk na pozadí zobrazovat jako milisekundy. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` pro `10000` včetně.  | Volitelné |
-| `fadeout` | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` pro `10000` včetně.  | Volitelné |
+| `volume` | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty**: `0` pro `100` včetně. Výchozí hodnota je `1`. | Nepovinné |
+| `fadein` | Určuje dobu, po kterou se bude zvuk na pozadí zobrazovat jako milisekundy. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` pro `10000` včetně.  | Nepovinné |
+| `fadeout` | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` pro `10000` včetně.  | Nepovinné |
 
 **Příklad**
 

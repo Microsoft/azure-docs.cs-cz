@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Naučte se, jak nainstalovat Azure Dev Spaces do clusteru AKS a nainstalovat nástroje na straně klienta.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770624"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252011"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Instalace Azure Dev Spaces v AKS a nástrojích na straně klienta
 
@@ -25,15 +25,13 @@ Než budete moct nainstalovat vývojové prostory pomocí rozhraní příkazové
 
 Pomocí příkazu `use-dev-spaces` povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů.
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
 Výše uvedený příkaz povolí v clusteru *myAKSCluster* ve skupině *myResourceGroup* vývojářské prostory a vytvoří *výchozí* prostor pro vývoj.
 
-```cmd
-$ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
-
+```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
 
 Creating and selecting Azure Dev Spaces Controller 'myAKSCluster' in resource group 'myResourceGroup' that targets resource 'myAKSCluster' in resource group 'myResourceGroup'...2m 24s
@@ -58,7 +56,7 @@ Než budete moct nainstalovat vývojářské prostory pomocí Azure Portal, bude
 * [Cluster AKS][create-aks-portal] v [podporované oblasti][supported-regions].
 
 Instalace Azure Dev Spaces pomocí Azure Portal:
-1. Přihlaste se na web [Azure Portal][az-portal].
+1. Přihlaste se k webu [Azure Portal][az-portal].
 1. Přejděte do clusteru AKS.
 1. Klikněte na možnost *vývojové prostory*.
 1. Změňte *Povolit vývojové prostory* na *Ano* a klikněte na *Uložit*.

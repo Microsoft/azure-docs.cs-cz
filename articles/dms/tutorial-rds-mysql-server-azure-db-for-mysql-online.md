@@ -3,8 +3,8 @@ title: 'Kurz: migrace služby RDS MySQL online na Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Naučte se provádět online migraci ze služby RDS MySQL do Azure Database for MySQL pomocí Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 27002d1fc861d49e083fc294bcfbc7f51f7c1a12
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751300"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255168"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: migrace služby RDS MySQL do Azure Database for MySQL online pomocí DMS
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
 > * Pomocí nástrojů mysqldump a MySQL migrujte ukázkové schéma.
-> * Vytvořte instanci služby Azure Database Migration Service.
+> * Vytvořte instanci Azure Database Migration Service.
 > * Vytvořte projekt migrace pomocí Azure Database Migration Service.
 > * Spuštění migrace
 > * Monitorování migrace
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje, jak provést online migraci z instance služby RDS MySQL do Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -197,7 +197,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     > [!NOTE]
     > Alternativně můžete zvolit **vytvořit projekt pouze** k vytvoření projektu migrace a provést migraci později.
 
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 7. Vyberte **Vytvořit a spustit aktivitu** a vytvořte projekt a spusťte aktivitu migrace.
 

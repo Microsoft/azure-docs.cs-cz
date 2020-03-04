@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193080"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250974"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -159,12 +159,6 @@ Další informace o práci s modely poučenými mimo Azure Machine Learning najd
 
 <a name="target"></a>
 
-## <a name="choose-a-compute-target"></a>Zvolit cíl výpočetní technologie
-
-K hostování nasazení webové služby můžete použít následující výpočetní cíle nebo výpočetní prostředky:
-
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
 ## <a name="single-versus-multi-model-endpoints"></a>Jednoduché koncové body versus více modelů
 Azure ML podporuje nasazení jednoho nebo více modelů za jediným koncovým bodem.
 
@@ -172,9 +166,9 @@ Koncové body s více modely používají sdílený kontejner pro hostování v�
 
 E2E příklad, který ukazuje použití více modelů za jedním kontejnerovým koncovým bodem, najdete v [tomto příkladu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model) .
 
-## <a name="prepare-deployment-artifacts"></a>Příprava artefaktů nasazení
+## <a name="prepare-to-deploy"></a>Příprava nasazení
 
-K nasazení modelu budete potřebovat následující:
+K nasazení modelu jako služby potřebujete následující komponenty:
 
 * **Vstupní skript & závislosti zdrojového kódu**. Tento skript přijímá požadavky, zarovnává požadavky pomocí modelu a vrátí výsledky.
 
@@ -187,11 +181,9 @@ K nasazení modelu budete potřebovat následující:
     >
     >   Alternativou, která může být pro váš scénář fungovat, je [předpověď dávky](how-to-use-parallel-run-step.md), která poskytuje přístup k úložištím dat během bodování.
 
-* **Odvození prostředí**. Základní image s nainstalovanými závislostmi balíčků, které jsou potřebné ke spuštění modelu.
+* **Konfigurace odvození**. Odvozená konfigurace určuje konfiguraci prostředí, vstupní skript a další součásti potřebné ke spuštění modelu jako služby.
 
-* **Konfigurace nasazení** pro výpočetní cíl, který je hostitelem nasazeného modelu. Tato konfigurace popisuje například požadavky na paměť a procesor potřebný ke spuštění modelu.
-
-Tyto položky jsou zapouzdřeny do *Konfigurace odvození* a *Konfigurace nasazení*. Konfigurace odvození odkazuje na skript vstupu a další závislosti. Tyto konfigurace můžete definovat programově při použití sady SDK k provedení nasazení. Můžete je definovat v souborech JSON při použití rozhraní příkazového řádku.
+Jakmile budete mít potřebné komponenty, můžete profilovat službu, která bude vytvořena v důsledku nasazení modelu za účelem pochopení požadavků na procesor a paměť.
 
 ### <a id="script"></a>1. definice vstupního skriptu a závislostí
 
@@ -267,33 +259,7 @@ Tyto typy jsou aktuálně podporovány:
 * `pyspark`
 * Standardní objekt Pythonu
 
-Chcete-li použít generování schématu, zahrňte balíček `inference-schema` do souboru prostředí conda. Další informace o tomto balíčku najdete v tématu [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema).
-
-##### <a name="example-dependencies-file"></a>Příklad souboru závislostí
-
-Následující YAML je příkladem souboru závislostí conda pro odvození. Všimněte si, že je třeba zadat hodnotu AzureML-Defaults s verze > = 1.0.45 jako závislostí PIP, protože obsahuje funkce potřebné pro hostování modelu jako webové služby.
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> Pokud je vaše závislost k dispozici prostřednictvím conda i PIP (z PyPi), společnost Microsoft doporučuje používat verzi Conda, protože balíčky conda obvykle obsahují předem připravené binární soubory, které zajistí spolehlivější instalaci.
->
-> Další informace najdete v tématu [Principy conda a PIP](https://www.anaconda.com/understanding-conda-and-pip/).
->
-> Pokud chcete zjistit, jestli je vaše závislost k dispozici prostřednictvím Conda, použijte příkaz `conda search <package-name>`, nebo použijte indexy balíčků v [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) a [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
-
-Pokud chcete použít automatické generování schématu, váš vstupní skript musí importovat balíčky `inference-schema`.
-
-Definujte vstupní a výstupní formáty vzorku v proměnných `input_sample` a `output_sample`, které reprezentují formáty požadavků a odpovědí pro webovou službu. Tyto ukázky použijte ve funkci vstupu a výstupu dekoratéry ve funkci `run()`. Následující scikit příklad používá generování schématu.
+Chcete-li použít generování schématu, zahrňte balíček `inference-schema` do souboru závislosti. Další informace o tomto balíčku najdete v tématu [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema). Definujte vstupní a výstupní formáty vzorku v proměnných `input_sample` a `output_sample`, které reprezentují formáty požadavků a odpovědí pro webovou službu. Tyto ukázky použijte ve funkci vstupu a výstupu dekoratéry ve funkci `run()`. Následující scikit příklad používá generování schématu.
 
 ##### <a name="example-entry-script"></a>Ukázkový skript vstupu
 
@@ -485,24 +451,52 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inference-environment"></a>2. definice prostředí pro odvození
+### <a name="2-define-your-inference-configuration"></a>2. Definujte konfiguraci odvození.
 
-Konfigurace odvození popisuje, jak nakonfigurovat model pro vytvoření předpovědi. Tato konfigurace není součástí vašeho skriptu pro zadávání. Odkazuje na váš vstupní skript a používá se k vyhledání všech prostředků vyžadovaných nasazením. Používá se později při nasazení modelu.
+Konfigurace odvození popisuje, jak nastavit webovou službu, která obsahuje váš model. Nejedná se o součást skriptu pro zadávání. Odkazuje na váš vstupní skript a používá se k vyhledání všech prostředků vyžadovaných nasazením. Používá se později při nasazení modelu.
 
-Odvozená konfigurace používá Azure Machine Learning prostředí k definování závislostí softwaru potřebných pro vaše nasazení. Prostředí umožňují vytvářet, spravovat a opakovaně používat závislosti softwaru vyžadované pro školení a nasazení. Následující příklad ukazuje načtení prostředí z pracovního prostoru a jeho následné použití s konfigurací odvození:
+Odvozená konfigurace používá Azure Machine Learning prostředí k definování závislostí softwaru potřebných pro vaše nasazení. Prostředí umožňují vytvářet, spravovat a opakovaně používat závislosti softwaru vyžadované pro školení a nasazení. Můžete vytvořit prostředí z vlastních souborů závislosti nebo použít jedno z Azure Machine Learning prostředí. Následující YAML je příkladem souboru závislostí conda pro odvození. Všimněte si, že je třeba zadat hodnotu AzureML-Defaults s verze > = 1.0.45 jako závislostí PIP, protože obsahuje funkce potřebné pro hostování modelu jako webové služby. Pokud chcete použít automatické generování schématu, váš vstupní skript musí také naimportovat `inference-schema` balíčky.
+
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> Pokud je vaše závislost k dispozici prostřednictvím conda i PIP (z PyPi), společnost Microsoft doporučuje používat verzi Conda, protože balíčky conda obvykle obsahují předem připravené binární soubory, které zajistí spolehlivější instalaci.
+>
+> Další informace najdete v tématu [Principy conda a PIP](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Pokud chcete zjistit, jestli je vaše závislost k dispozici prostřednictvím Conda, použijte příkaz `conda search <package-name>`, nebo použijte indexy balíčků v [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) a [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
+
+Pomocí souboru závislostí můžete vytvořit objekt prostředí a uložit ho do svého pracovního prostoru pro budoucí použití:
+
+```python
+from azureml.core.environment import Environment
+
+
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+Následující příklad ukazuje načtení prostředí z pracovního prostoru a jeho následné použití s konfigurací odvození:
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-myenv = Environment.get(workspace=ws, name="myenv", version="1")
-inference_config = InferenceConfig(entry_script="x/y/score.py",
+
+myenv = Environment.get(workspace=ws, name='myenv', version='1')
+inference_config = InferenceConfig(entry_script='path-to-score.py',
                                    environment=myenv)
 ```
-
-Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
-
-Závislosti můžete zadat také přímo bez použití prostředí. Následující příklad ukazuje, jak vytvořit konfiguraci odvození, která načte závislosti softwaru ze souboru conda:
 
 Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
 
@@ -510,7 +504,7 @@ Další informace o konfiguraci odvození naleznete v dokumentaci třídy [Infer
 
 Informace o použití vlastní image Docker s odvozenou konfigurací najdete v tématu [nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md).
 
-### <a name="cli-example-of-inferenceconfig"></a>Příklad rozhraní příkazového řádku InferenceConfig
+#### <a name="cli-example-of-inferenceconfig"></a>Příklad rozhraní příkazového řádku InferenceConfig
 
 [!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
 
@@ -528,7 +522,93 @@ V tomto příkladu konfigurace určuje následující nastavení:
 
 Informace o použití vlastní image Docker s odvozenou konfigurací najdete v tématu [nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md).
 
-### <a name="3-define-your-deployment-configuration"></a>3. Definujte konfiguraci nasazení.
+### <a id="profilemodel"></a>3. profilujte svůj model, abyste zjistili využití prostředků.
+
+Po zaregistrování modelu a přípravě dalších komponent nezbytných pro příslušné nasazení můžete určit procesor a paměť, které bude nasazená služba potřebovat. Profilace testuje službu, která spouští váš model, a vrací informace, jako je využití CPU, využití paměti a latence odezvy. Poskytuje taky doporučení pro procesor a paměť na základě využití prostředků.
+
+Aby bylo možné profilovat váš model, budete potřebovat:
+* Registrovaný model.
+* Odvozená konfigurace založená na vstupním skriptu a definici prostředí pro odvození.
+* Tabulková datová sada s jedním sloupcem, kde každý řádek obsahuje řetězec reprezentující ukázková data požadavku.
+
+> [!IMPORTANT]
+> V tuto chvíli podporujeme profilaci služeb, které očekávají, že data požadavku jsou řetězcem, například: řetězec serializovaného JSON, text, String serializovaná image atd. Obsah každého řádku datové sady (řetězce) bude vložen do těla požadavku HTTP a odeslán do služby zapouzdřující model pro účely bodování.
+
+Níže je uveden příklad, jak můžete vytvořit vstupní datovou sadu pro profilaci služby, která očekává, že data příchozího požadavku obsahují serializované JSON. V tomto případě jsme vytvořili instance 100 na základě datové sady, která má stejný obsah dat požadavku. V reálných scénářích doporučujeme používat větší datové sady obsahující různé vstupy, zejména v případě, že využití prostředků modelu/chování je závislé na vstupu.
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+Jakmile budete mít datovou sadu obsahující ukázková data požadavku připravené, vytvořte odvozenou konfiguraci. Odvozená konfigurace je založena na score.py a definici prostředí. Následující příklad ukazuje, jak vytvořit konfiguraci odvození a spustit profilaci:
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+Následující příkaz ukazuje, jak profilovat model pomocí rozhraní příkazového řádku:
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
+## <a name="deploy-to-target"></a>Nasadit do cíle
+
+Nasazení používá k nasazení modelů konfiguraci nasazení nasazení konfigurace. Proces nasazení je podobný bez ohledu na cíl výpočtů. Nasazení na AKS se mírně liší, protože musíte zadat odkaz na cluster AKS.
+
+### <a name="choose-a-compute-target"></a>Zvolit cíl výpočetní technologie
+
+K hostování nasazení webové služby můžete použít následující výpočetní cíle nebo výpočetní prostředky:
+
+[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+### <a name="define-your-deployment-configuration"></a>Definování konfigurace nasazení
 
 Před nasazením modelu je nutné definovat konfiguraci nasazení. *Konfigurace nasazení je specifická pro výpočetní cíl, který bude hostitelem webové služby.* Pokud například nasadíte model místně, je nutné zadat port, kam služba přijímá požadavky. Konfigurace nasazení není součástí vašeho skriptu pro vložení. Slouží k definování charakteristik výpočetního cíle, který bude hostovat model a vstupní skript.
 
@@ -547,10 +627,6 @@ Třídy pro webové služby místní, Azure Container Instances a AKS lze import
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-## <a name="deploy-to-target"></a>Nasadit do cíle
-
-Nasazení používá k nasazení modelů konfiguraci nasazení nasazení konfigurace. Proces nasazení je podobný bez ohledu na cíl výpočtů. Nasazení na AKS se mírně liší, protože musíte zadat odkaz na cluster AKS.
 
 ### <a name="securing-deployments-with-ssl"></a>Zabezpečení nasazení pomocí SSL
 
@@ -1076,7 +1152,7 @@ Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Zabezpečené Azure Machine Learning webové služby pomocí protokolu SSL](how-to-secure-web-service.md)
-* [Využití modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)
+* [Využívání modelu služby Azure Machine Learning nasazeného jako webová služba](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 

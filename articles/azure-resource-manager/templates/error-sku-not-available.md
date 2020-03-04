@@ -3,14 +3,14 @@ title: Chyby SKU nejsou k dispozici
 description: Popisuje, jak vyřešit chybu SKU, která není k dispozici při nasazování prostředků pomocí Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: be341a5ed5321fe71b0e3b34ba5f6cc823958c8b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5d055540b4c0d8f2900d2ede6735662801be5974
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462288"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250644"
 ---
-# <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb pro SKU není k dispozici
+# <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb kvůli nedostupné skladové položce
 
 Tento článek popisuje, jak vyřešit chybu **SkuNotAvailable** . Pokud nemůžete najít vhodnou skladovou jednotku v této oblasti nebo zóně nebo v alternativní oblasti nebo zóně, která vyhovuje vašim obchodním potřebám, odešlete [požadavek na SKU](https://aka.ms/skurestriction) do podpory Azure.
 
@@ -70,7 +70,7 @@ az vm list-skus --location southcentralus --size Standard_F --output table
 
 Příkaz vrátí výsledky jako:
 
-```azurecli
+```output
 ResourceType     Locations       Name              Zones    Capabilities    Restrictions
 ---------------  --------------  ----------------  -------  --------------  --------------
 virtualMachines  southcentralus  Standard_F1                ...             None

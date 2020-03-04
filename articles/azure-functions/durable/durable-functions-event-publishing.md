@@ -3,12 +3,12 @@ title: Durable Functions publikování do Azure Event Grid (Preview)
 description: Naučte se konfigurovat automatické publikování Azure Event Grid pro Durable Functions.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ee60dadc90af5a9b941ba890bddb9b96de3f35d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562156"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249765"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do Azure Event Grid (Preview)
 
@@ -22,7 +22,7 @@ Tato funkce je užitečná v následujících situacích:
 
 * **Dlouhodobě běžící aktivita na pozadí**: Pokud použijete Durable Functions pro dlouhou běžící aktivitu na pozadí, tato funkce vám pomůže seznámit se s aktuálním stavem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Do projektu Durable Functions nainstalujte [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) .
 * Nainstalujte [emulátor Azure Storage](../../storage/common/storage-use-emulator.md) (jenom Windows) nebo použijte existující účet Azure Storage.
@@ -32,11 +32,11 @@ Tato funkce je užitečná v následujících situacích:
 
 Vytvoří Event Grid téma pro odesílání událostí z Durable Functions. Následující pokyny ukazují, jak vytvořit téma pomocí Azure CLI. Můžete to provést také pomocí [PowerShellu](../../event-grid/custom-event-quickstart-powershell.md) nebo [pomocí Azure Portal](../../event-grid/custom-event-quickstart-portal.md).
 
-### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Pomocí příkazu `az group create` vytvořte skupinu prostředků. V současné době Azure Event Grid nepodporuje všechny oblasti. Informace o podporovaných oblastech najdete v tématu [přehled Azure Event Grid](../../event-grid/overview.md).
 
-```bash
+```azurecli
 az group create --name eventResourceGroup --location westus2
 ```
 
@@ -44,7 +44,7 @@ az group create --name eventResourceGroup --location westus2
 
 Event Grid téma poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte událost. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože se jedná o položku DNS.
 
-```bash
+```azurecli
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
@@ -52,13 +52,13 @@ az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 
 Získejte koncový bod tématu. Nahraďte `<topic_name>` názvem, který jste zvolili.
 
-```bash
+```azurecli
 az eventgrid topic show --name <topic_name> -g eventResourceGroup --query "endpoint" --output tsv
 ```
 
 Získejte klíč tématu. Nahraďte `<topic_name>` názvem, který jste zvolili.
 
-```bash
+```azurecli
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
 ```
 

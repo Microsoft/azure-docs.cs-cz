@@ -10,18 +10,56 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462169"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249745"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
+
+## <a name="2020-03-02"></a>2020-03-02
+
+### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Azure Machine Learning SDK pro Python v 1.1.2 RC0
+
++ **Opravy chyb a vylepšení**
+  + **AzureML-automl – jádro**
+    + Povolený odvození dávkového režimu (vícenásobné řádky jednou) pro automl ONNX modely
+    + Vylepšili jsme detekci četnosti datových sad, postrádáte data nebo obsahují nepravidelné datové body.
+    + Přidání možnosti odebrat datové body, které nejsou v souladu s dominantním frequrncyem.
+  + **AzureML-automl-runtime**
+    + Opravili jsme problém, pokud došlo k chybě, pokud se v sadě testů objevila zrna, která nebyla přítomna v sadě školení.
+    + Při bodování služby prognózování se odebral požadavek y_query.
+  + **AzureML-contrib-Mir**
+    + Přidá do třídy MirWebservice funkce pro získání přístupového tokenu.
+  + **AzureML-Core**
+    + Nasazené WebServices služby AzureML teď budou `INFO` protokolování do výchozího nastavení. To se dá řídit nastavením proměnné prostředí `AZUREML_LOG_LEVEL` v nasazené službě.
+    + Opravte iteraci `Dataset.get_all`, aby se vracely všechny datové sady zaregistrované v pracovním prostoru.
+    + Vylepšit chybovou zprávu, pokud je předán neplatný typ do `path` argumentu rozhraní API pro vytváření datových sad.
+    + Python SDK používá službu zjišťování k použití koncového bodu API namísto kanálů.
+    + Přepnout na nové trasy ve všech voláních sady SDK
+    + Změní směrování volání do ModelManagementService do nové sjednocené struktury.
+      + Nastavila se veřejně dostupná metoda aktualizace pracovního prostoru.
+      + Přidání parametru image_build_compute v metodě aktualizace pracovního prostoru pro povolení aktualizace výpočtů pro sestavení imagí uživatelem
+    +  Do starého pracovního postupu profilace se přidaly zprávy o zastaralosti. Pevné profilace omezení procesoru a paměti
+  + **AzureML-interpretace**
+    + aktualizovat AzureML-interpretovat na interpretaci Community 0,6. *
+  + **AzureML-mlflow**
+    + Přidání podpory pro cloudy svrchovan do AzureML. mlflow
+  + **AzureML-Pipeline – kroky**
+    + `AutoMLStep` přesunuli do `azureml-pipeline-steps package`. Zastaralá `AutoMLStep` v rámci `azureml-train-automl-runtime`.
+  + **AzureML-vlak-automl-Client**
+    + Opravili jsme problém, kdy se některé balíčky můžou na vzdáleném spuštění nainstalovat na nesprávnou verzi.
+  + **AzureML-vlak-automl-runtime**
+    + Opravili jsme problém s detekcí četnosti ve vzdálených spuštěních.
+    + `AutoMLStep` přesunuli do `azureml-pipeline-steps package`. Zastaralá `AutoMLStep` v rámci `azureml-train-automl-runtime`.
+  + **AzureML-vlak – jádro**
+    + `AutoMLStep` přesunuli do `azureml-pipeline-steps package`. Zastaralá `AutoMLStep` v rámci `azureml-train-automl-runtime`.
 
 ## <a name="2020-02-18"></a>2020-02-18
 

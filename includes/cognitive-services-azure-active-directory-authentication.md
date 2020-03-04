@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: b08ffa79e012344cad6cf72df98a0f1ba5240ce0
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 8754504655cdd08c9bf9f89311cb6c5d1057f0e6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76508539"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262446"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
@@ -27,13 +27,13 @@ Prvním krokem je vytvoření vlastní subdomény. Pokud chcete použít existuj
 
 1. Začněte otevřením Azure Cloud Shell. Pak [Vyberte předplatné](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
 
-   ```azurecli-interactive
+   ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
 2. Dále [vytvořte prostředek Cognitive Services](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) s vlastní subdoménou. Název subdomény musí být globálně jedinečný a nesmí obsahovat speciální znaky, například: ".", "!", ",".
 
-   ```azurecli-interactive
+   ```powershell-interactive
    New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
    ```
 
@@ -49,7 +49,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
 
 1. Nejdřív si zaregistrujeme [aplikaci AAD](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
 
-   ```azurecli-interactive
+   ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
 
    New-AzADApplication -DisplayName <APP_DISPLAY_NAME> -IdentifierUris <APP_URIS> -Password $SecureStringPassword
@@ -59,7 +59,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
 
 2. Dále musíte [vytvořit instanční objekt](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) pro aplikaci AAD.
 
-   ```azurecli-interactive
+   ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
    ```
 
@@ -80,13 +80,13 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
 V této ukázce se k ověření instančního objektu používá heslo. Poskytnutý token se pak použije k volání rozhraní API pro počítačové zpracování obrazu.
 
 1. Získejte **TenantId**:
-   ```azurecli-interactive
+   ```powershell-interactive
    $context=Get-AzContext
    $context.Tenant.Id
    ```
 
 2. Získání tokenu:
-   ```azurecli-interactive
+   ```powershell-interactive
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
    $secureSecretObject = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.SecureClientSecret" -ArgumentList $SecureStringPassword   
    $clientCredential = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential" -ArgumentList $app.ApplicationId, $secureSecretObject
@@ -94,7 +94,7 @@ V této ukázce se k ověření instančního objektu používá heslo. Poskytnu
    $token
    ```
 3. Zavolejte rozhraní API pro počítačové zpracování obrazu:
-   ```azurecli-interactive
+   ```powershell-interactive
    $url = $account.Endpoint+"vision/v1.0/models"
    $result = Invoke-RestMethod -Uri $url  -Method Get -Headers @{"Authorization"=$token.CreateAuthorizationHeader()} -Verbose
    $result | ConvertTo-Json

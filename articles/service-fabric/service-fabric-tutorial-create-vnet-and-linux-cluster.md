@@ -4,18 +4,18 @@ description: Naučte se nasadit cluster Service Fabric s Linuxem do existující
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 059f0f4b1eac9546f1adc05bf1f2799affc0dd8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465409"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251790"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru se systémem Linux Service Fabric do virtuální sítě Azure
 
 V tomto článku se dozvíte, jak nasadit cluster se systémem Linux Service Fabric do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) pomocí rozhraní příkazového řádku Azure a šablony. Po dokončení budete mít v cloudu spuštěný cluster, do kterého budete moct nasazovat aplikace. Pokud chcete pomocí PowerShellu vytvořit cluster s Windows, přečtěte si článek [Vytvoření zabezpečeného clusteru s Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete:
 
@@ -72,7 +72,7 @@ Pokud jsou potřebné další porty aplikací, je třeba upravit prostředek Mic
 
 Soubor parametrů [AzureDeploy. Parameters][parameters] deklaruje mnoho hodnot, které se používají k nasazení clusteru a přidružených prostředků. Některé parametry, které možná budete muset upravit pro své nasazení:
 
-|Parametr|Příklad hodnoty|Poznámky|
+|Parametr|Příklad hodnoty|Poznámky:|
 |---|---||
 |adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. |
 |adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru.|
@@ -129,21 +129,25 @@ VaultName="linuxclusterkeyvault"
 VaultGroupName="linuxclusterkeyvaultgroup"
 CertPath="C:\MyCertificates"
 
-az sf cluster create --resource-group $ResourceGroupName --location $Location --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.azure.com --vault-name $VaultName --vault-resource-group $ResourceGroupName
+az sf cluster create --resource-group $ResourceGroupName --location $Location \
+   --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json \
+   --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password \
+   --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.azure.com \
+   --vault-name $VaultName --vault-resource-group $ResourceGroupName
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
 Připojte se ke clusteru pomocí příkazu rozhraní příkazového řádku Service Fabric `sfctl cluster select` a svého klíče.  Volbu **--no-verify** použijte pouze v případě certifikátu podepsaného svým držitelem.
 
-```azurecli
+```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
 Pomocí příkazu `sfctl cluster health` zkontrolujte, že jste připojeni a cluster je v pořádku.
 
-```azurecli
+```console
 sfctl cluster health
 ```
 

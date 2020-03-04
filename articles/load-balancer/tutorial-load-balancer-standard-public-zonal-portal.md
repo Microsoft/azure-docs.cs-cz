@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225165"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251898"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí Standard Load Balanceru na webu Azure Portal
 
@@ -57,24 +57,30 @@ Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když p�
     | Název                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte možnost **veřejné**.                                        |
-    | SKU           | Vyberte **Standard**.                          |
+    | Skladová jednotka (SKU)           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
     |Zóna dostupnosti| Vyberte **1**.    |
 3. Na kartě **Revize + vytvořit** klikněte na **vytvořit**.   
 
-   ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V této části vytvoříte virtuální síť. Vytvoříte také dva virtuální počítače ve stejné zóně (konkrétně v zóně 1) oblasti a přidáte je do back-endového fondu nástroje pro vyrovnávání zatížení. Potom na virtuální počítače nainstalujete službu IIS, abyste mohli zónově redundantní nástroj pro vyrovnávání zatížení otestovat. Pokud jeden virtuální počítač selže, ohlásí chybu i sonda stavu virtuálního počítače ve stejné zóně. K zajištění provozu se použijí další virtuální počítače ve stejné zóně.
 
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.  Zadejte tyto hodnoty virtuální sítě:
-    - **myVNet** – název virtuální sítě.
-    - **myResourceGroupZLB** – název existující skupiny prostředků.
-    - **myBackendSubnet** – název podsítě.
-2. Volbou **Vytvořit** vytvořte virtuální síť.
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
-    ![Vytvoření virtuální sítě](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+V této části budete muset v krocích níže nahradit následující parametry:
+
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroupZLB (vyberte existující skupinu prostředků) |
+| **\<název virtuální sítě >** | myVNet          |
+| **\<název oblasti >**          | Západní Evropa      |
+| **\<IPv4-Address-Space >**   | 10.0.0.0 \ 16          |
+| **\<název podsítě >**          | myBackendSubnet        |
+| **\<> rozsahu adres** | 10.0.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
@@ -193,7 +199,7 @@ Sonda stavu slouží monitorování stavu vaší aplikace nástrojem pro vyrovn�
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distribuuje do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo nástroje pro vyrovnávání zatížení **myLoadBalancerRuleWeb**, které naslouchá portu 80 front-endu **FrontendLoadBalancer**. Toto pravidlo posílá vyrovnaný síťový provoz fondu back-endových adres **myBackEndPool**. Používá k tomu také port 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distribuuje do virtuálních počítačů. Definujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo nástroje pro vyrovnávání zatížení **myLoadBalancerRuleWeb**, které naslouchá portu 80 front-endu **FrontendLoadBalancer**. Toto pravidlo posílá vyrovnaný síťový provoz fondu back-endových adres **myBackEndPool**. Používá k tomu také port 80. 
 
 1. V nabídce úplně vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myLoadBalancer**.
 2. V části **Nastavení** vyberte **Pravidla vyrovnávání zatížení**. Pak vyberte **Přidat**.

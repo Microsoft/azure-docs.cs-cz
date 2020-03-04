@@ -2,13 +2,13 @@
 title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
-ms.date: 02/05/2020
-ms.openlocfilehash: 0950c93c09c89ad92fc4f77f9f82937deb9e489e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 03/02/2020
+ms.openlocfilehash: ea2dcc3da2f59aa00b12aedd181dc27df00e9d58
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064848"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252711"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -49,7 +49,7 @@ Následující tabulka uvádí podporované operační systémy pro podporované
 | Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
-| Windows Server. 2019 | 6.4.654.9590 |
+| Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
 
 ## <a name="supported-version-names"></a>Podporované názvy verzí
@@ -102,3 +102,4 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 | 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |
 | 7,0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7,0 CU3 | 7.0.466.9590 | 7.0.465.1 |
+| 7,0 CU4 | 7.0.470.9590 | 7.0.469.1 |

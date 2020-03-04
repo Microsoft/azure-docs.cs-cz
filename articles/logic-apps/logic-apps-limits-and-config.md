@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/20/2020
-ms.openlocfilehash: 7157d9c0b96dbb31a158f599efd5489e8059f6ba
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 02/28/2020
+ms.openlocfilehash: 4912b07c60ecc8a2db65d3b8ffb339cf83909396
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163433"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250854"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -139,7 +139,7 @@ Azure Logic Apps podporuje přes bránu operace zápisu včetně vkládání a a
 
 Tady jsou omezení pro jedno odchozí nebo příchozí volání HTTP:
 
-#### <a name="timeout"></a>Časový limit
+#### <a name="timeout"></a>časový limit
 
 Některé operace konektoru provádějí asynchronní volání nebo naslouchání požadavkům Webhooku, takže časový limit těchto operací může být delší než tato omezení. Další informace najdete v technických podrobnostech ke konkrétnímu konektoru a také [triggery a akce pracovních postupů](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
@@ -195,7 +195,7 @@ Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových r
 | Název | Omezení |
 |------|-------|
 | Spravované identity na aplikaci logiky | Buď identita přiřazená systémem, nebo 1 uživatelem přiřazená identita |
-| Počet aplikací logiky, které mají spravovanou identitu v předplatném Azure pro jednotlivé oblasti | 100 |
+| Počet aplikací logiky, které mají spravovanou identitu v předplatném Azure pro jednotlivé oblasti | 250 |
 |||
 
 <a name="integration-account-limits"></a>

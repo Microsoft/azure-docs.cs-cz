@@ -5,14 +5,14 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708304"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252063"
 ---
-# <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy ke službě Azure Container Registry
+# <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
 Tento článek popisuje Nejčastější dotazy a známé problémy týkající se Azure Container Registry.
 
@@ -114,13 +114,13 @@ ACR podporuje HTTP API v2 v registru Docker. Rozhraní API jsou k dispozici na a
 
 Pokud jste na bash:
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 Pro PowerShell:
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 Měli byste mít možnost vidět, že využití úložiště se v Azure Portal zvýšilo, nebo můžete využít dotaz na použití rozhraní příkazového řádku.
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 Odstraňte Image pomocí Azure CLI nebo portálu a za pár minut si Projděte aktualizované využití.
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -188,7 +188,7 @@ Povolte TLS 1,2 pomocí libovolného nedávného klienta Docker (verze 18.03.0 a
 > [!IMPORTANT]
 > Od 13. ledna 2020 bude Azure Container Registry vyžadovat, aby všechna zabezpečená připojení ze serverů a aplikací používala protokol TLS 1,2. Bude vyřazena podpora TLS 1,0 a 1,1.
 
-### <a name="does-azure-container-registry-support-content-trust"></a>Podporuje služba Azure Container Registry důvěryhodnost obsahu?
+### <a name="does-azure-container-registry-support-content-trust"></a>Podporuje Azure Container Registry důvěryhodnost obsahu?
 
 Ano, v Azure Container Registry můžete použít důvěryhodné image, protože je [Docker notář](https://docs.docker.com/notary/getting_started/) integrovaný a dá se povolit. Podrobnosti najdete v tématu [vztah důvěryhodnosti obsahu v Azure Container Registry](container-registry-content-trust.md).
 
@@ -216,12 +216,12 @@ ACR podporuje [vlastní role](container-registry-roles.md) , které poskytují r
   Potom můžete uživateli přiřadit roli `AcrPull` nebo `AcrPush` (Následující příklad používá `AcrPull`):
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   Nebo přiřaďte roli k principu služby, který identifikuje jeho ID aplikace:
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ Nabyvatel pak může ověřit image v registru a získat k nim přístup.
   az acr repository list -n myRegistry
   ```
 
- Postup načtení obrázku:
-    
-  ```azurecli
+* Postup načtení obrázku:
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ Pokud chcete řešit běžné problémy s prostředím a registrací, přečtět
  - Pokud `docker pull` selžou nepřetržitě, může se jednat o problém s démonem Docker. Problém se může obecně zmírnit restartováním démona Docker. 
  - Pokud se tento problém bude i nadále zobrazovat po restartování procesu Docker, může dojít k potížím s připojením k síti v počítači. Pokud chcete zkontrolovat, jestli je obecná síť v počítači v pořádku, spusťte následující příkaz, který otestuje připojení ke koncovému bodu. Minimální verze `az acr`, která obsahuje tento příkaz kontroly připojení, je 2.2.9. Pokud používáte starší verzi, upgradujte rozhraní příkazového řádku Azure.
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - Vždy byste měli mít mechanismus opakování u všech operací klienta Docker.
 
 ### <a name="docker-pull-is-slow"></a>Vyžádané čtení Docker je pomalé.
@@ -437,7 +438,7 @@ Tady je několik scénářů, kdy je možné, že operace nejsou povolené:
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Povolit dešifrování HTTPS v Fiddler: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -491,14 +492,14 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
 |---|---|---|---|
-| GitHubu | https://github.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ano |
+| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ano |
 | Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Ano | Ano |
 | GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ne |
 | BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Ano | Ne |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 
-| Chybová zpráva | Průvodce řešením potíží |
+| Chybová zpráva | Průvodce odstraňováním potíží |
 |---|---|
 |Pro virtuální počítač se nenakonfiguroval přístup, proto se nenašly žádné odběry.|K tomu může dojít, pokud v ACR úloze používáte `az login --identity`. Jedná se o přechodnou chybu a nastane, když se přiřazení role spravované identity nerozšíří. Počkejte několik sekund, než se znovu pokusí pracovat.|
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185539"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248689"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí Azure Proxy aplikací služby AD
 
@@ -130,9 +130,9 @@ Neexistuje žádné omezení metod podpisu certifikátu. Podporuje se typ ECC (C
 
 Můžete použít certifikáty se zástupnými znaky, pokud se zástupný znak shoduje s externí adresou URL. Pro [aplikace se zástupnými znaky](application-proxy-wildcard.md)musíte použít certifikáty se zástupnými znaky. Chcete-li použít certifikát k přístupu k subdoménám, je nutné přidat zástupné znaky subdomény jako alternativní názvy předmětu do stejného certifikátu. Například certifikát pro *\*. Adventure-Works.com* nebude fungovat pro *\*. Apps.Adventure-Works.com* , pokud nepřidáte *\*. Apps.Adventure-Works.com* jako alternativní název subjektu. 
 
-Pokud je v klientských zařízeních nainstalovaný řetěz certifikátů, můžete použít certifikáty vydané vlastní infrastrukturou veřejných klíčů (PKI). Intune může tyto certifikáty nasadit na spravovaná zařízení. U nespravovaných zařízení musíte tyto certifikáty nainstalovat ručně.
+Pokud je v klientských zařízeních nainstalovaný řetěz certifikátů, můžete použít certifikáty vydané vlastní infrastrukturou veřejných klíčů (PKI). Intune může tyto certifikáty nasadit na spravovaná zařízení. U nespravovaných zařízení musíte tyto certifikáty nainstalovat ručně. 
 
-Není vhodné používat privátní kořenovou certifikační autoritu. Privátní kořenová certifikační autorita by taky musela být vložená do klientských počítačů, což představuje mnoho výzev. 
+Nedoporučujeme používat privátní kořenovou certifikační autoritu, protože privátní kořenová certifikační autorita by taky musela být vložená do klientských počítačů, což může vést k mnoha problémům.
 
 ### <a name="certificate-management"></a>Správa certifikátů
 

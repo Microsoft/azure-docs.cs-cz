@@ -11,27 +11,24 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 59c2b3b910a9585362643bfcf7cdf9fa2df977bc
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3bfcc1ef8c58f71811af604fbc07736a13102e83
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611998"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249085"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
 V tomto rychlém startu se dozvíte, jak integrovat webovou aplikaci Java s platformou Microsoft identity. Vaše aplikace se přihlásí k uživateli, získá přístupový token pro volání rozhraní API Microsoft Graph a vytvoří požadavek na rozhraní Microsoft Graph API.
 
-Po dokončení tohoto rychlého startu bude vaše aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
+Po dokončení tohoto rychlého startu bude vaše aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 
-![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-java-webapp/java-quickstart.svg)
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení této ukázky budete potřebovat:
 
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 nebo vyšší a [Maven](https://maven.apache.org/).
-- Tenant Azure Active Directory (Azure AD). Další informace o tom, jak získat tenanta Azure AD, najdete v tématu [Jak získat tenanta Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
@@ -73,7 +70,7 @@ K provedení této ukázky budete potřebovat:
 >
 > Ukázku kódu pro tento rychlý Start, který funguje, je třeba:
 >
-> 1. Přidejte adresy URL odpovědi jako `https://localhost:8080/msal4jsamples/secure/aad` a `https://localhost:8080/msal4jsamples/graph/me`.
+> 1. Přidejte adresy URL odpovědi jako `https://localhost:8080/msal4jsample/secure/aad` a `https://localhost:8080/msal4jsample/graph/me`.
 > 1. Vytvořte tajný klíč klienta.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
@@ -82,46 +79,65 @@ K provedení této ukázky budete potřebovat:
 > > ![Už nakonfigurované](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-the-code-sample"></a>Krok 2: stažení ukázky kódu
+> [!div renderon="docs"]
+> [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
- [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> Stáhněte si projekt a extrahujte soubor zip do místní složky blíže ke kořenové složce – například **C:\Azure-Samples**
+> 
+> Pokud chcete použít protokol HTTPS s localhost, vyplňte vlastnosti Server. SSL. Key. Chcete-li vygenerovat certifikát podepsaný svým držitelem, použijte nástroj pro nástroj (obsažený v JRE).
+>
+>  ```
+>   Example:
+>   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+>
+>   server.ssl.key-store-type=PKCS12  
+>   server.ssl.key-store=classpath:keystore.p12  
+>   server.ssl.key-store-password=password  
+>   server.ssl.key-alias=testCert
+>   ```
+>   Vygenerovaný soubor úložiště klíčů vložte do složky Resources (prostředky).
+   
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Stažení ukázky kódu]()
 
-#### <a name="step-3-configure-the-code-sample"></a>Krok 3: Konfigurace ukázky kódu
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-the-code-sample"></a>Krok 3: Konfigurace ukázky kódu
+> 1. Extrahujte soubor zip do místní složky.
+> 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
+> 1. Otevřete soubor Application. Properties, který se nachází ve složce src/Main/Resources/Folder a nahraďte hodnotu polí *AAD. ClientID*, *AAD. Authority* a *AAD. SecretKey* s příslušnými hodnotami **ID aplikace**, **ID tenanta** a **tajného klíče klienta** následujícím způsobem:
+>
+>    ```file
+>    aad.clientId=Enter_the_Application_Id_here
+>    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
+>    aad.secretKey=Enter_the_Client_Secret_Here
+>    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.msGraphEndpointHost="https://graph.microsoft.com/"
+>    ```
+> Kde:
+>
+> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Client_Secret_Here` – je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro zaregistrovanou aplikaci.
+> - `Enter_the_Tenant_Info_Here` – hodnota **ID adresáře (tenant)** aplikace, kterou jste zaregistrovali.
+> 1. Pokud chcete použít protokol HTTPS s localhost, vyplňte vlastnosti Server. SSL. Key. Chcete-li vygenerovat certifikát podepsaný svým držitelem, použijte nástroj pro nástroj (obsažený v JRE).
+>
+>  ```
+>   Example:
+>   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+>
+>   server.ssl.key-store-type=PKCS12  
+>   server.ssl.key-store=classpath:keystore.p12  
+>   server.ssl.key-store-password=password  
+>   server.ssl.key-alias=testCert
+>   ```
+>   Vygenerovaný soubor úložiště klíčů vložte do složky Resources (prostředky).
 
- 1. Extrahujte soubor zip do místní složky.
- 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
- 1. Otevřete soubor Application. Properties, který se nachází ve složce src/Main/Resources/Folder a nahraďte hodnotu polí *AAD. ClientID*, *AAD. Authority* a *AAD. SecretKey* s příslušnými hodnotami **ID aplikace**, **ID tenanta** a **tajného klíče klienta** následujícím způsobem:
 
-    ```file
-    aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
-    aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
-    aad.msGraphEndpointHost="https://graph.microsoft.com/"
-    ```
-
-    > [!div renderon="docs"]
-    > Kde:
-    >
-    > - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
-    > - `Enter_the_Client_Secret_Here` – je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro zaregistrovanou aplikaci.
-    > - `Enter_the_Tenant_Info_Here` – hodnota **ID adresáře (tenant)** aplikace, kterou jste zaregistrovali.
-
- 1. Pokud chcete použít protokol HTTPS s localhost, vyplňte vlastnosti Server. SSL. Key. Chcete-li vygenerovat certifikát podepsaný svým držitelem, použijte nástroj pro nástroj (obsažený v JRE).
-
-   ```
-   Example:
-   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
-
-   server.ssl.key-store-type=PKCS12  
-   server.ssl.key-store=classpath:keystore.p12  
-   server.ssl.key-store-password=password  
-   server.ssl.key-alias=testCert
-   ```
-
-   Vygenerovaný soubor úložiště klíčů vložte do složky Resources (prostředky).
-
-#### <a name="step-4-run-the-code-sample"></a>Krok 4: spuštění ukázky kódu
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-run-the-code-sample"></a>Krok 3: spuštění ukázky kódu
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-code-sample"></a>Krok 4: spuštění ukázky kódu
 
 Chcete-li spustit projekt, můžete provést jednu z těchto akcí:
 
@@ -137,10 +153,15 @@ Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak 
     - *Odhlášení*: podepíše aktuálního uživatele z aplikace a přesměruje je na domovskou stránku.
     - *Zobrazit informace o uživateli*: Získá token pro Microsoft Graph a zavolá Microsoft Graph s požadavkem, který obsahuje token, který vrátí základní informace o přihlášeném uživateli.
 
+
+   
 > [!IMPORTANT]
 > Tato aplikace rychlý Start používá k identifikaci jako důvěrného klienta tajný klíč klienta. Vzhledem k tomu, že se tajný klíč klienta přidá do souborů projektu jako prostý text, doporučuje se z bezpečnostních důvodů použít certifikát místo tajného klíče klienta před zvážením aplikace jako produkční aplikace. Další informace o použití certifikátu najdete v tématu [přihlašovací údaje certifikátu pro ověřování aplikací](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
 
 ## <a name="more-information"></a>Další informace
+
+### <a name="how-the-sample-works"></a>Jak ukázka funguje
+![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
 ### <a name="getting-msal"></a>Získání MSAL
 

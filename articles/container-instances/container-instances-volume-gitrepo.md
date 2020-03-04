@@ -3,12 +3,12 @@ title: Připojit svazek Gitrepo nepodporují ke skupině kontejnerů
 description: Naučte se připojit svazek Gitrepo nepodporují, abyste mohli klonovat úložiště Git do svých instancí kontejnerů.
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533220"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252091"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojení svazku Gitrepo nepodporují v Azure Container Instances
 
@@ -48,8 +48,11 @@ az container create \
 
 Pokud chcete ověřit, že se svazek Gitrepo nepodporují připojil, spusťte prostředí v kontejneru pomocí [AZ Container exec][az-container-exec] a uveďte adresář:
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -82,13 +85,13 @@ Pokud chcete připojit svazek Gitrepo nepodporují pro privátní úložiště G
 
 Například parametr Azure CLI `--gitrepo-url` pro soukromé úložiště GitHub by vypadal podobně jako v následujícím příkladu (kde "gituser" je uživatelské jméno GitHubu a "abcdef1234fdsa4321abcdef" je osobní přístupový token uživatele):
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 V případě Azure Repos úložiště Git zadejte libovolné uživatelské jméno (jako v následujícím příkladu můžete použít "azurereposuser") v kombinaci s platnou PAT:
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 

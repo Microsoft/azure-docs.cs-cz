@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 03/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 17d391a7e6b8ef0558fb73afe363cd96deb60a7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989484"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262592"
 ---
 ### <a name="regions"></a>Které oblasti jsou k dispozici?
 
@@ -29,15 +29,18 @@ V současné době se nepodporuje protokol IPv6. Azure bastionu podporuje jenom 
 
 ### <a name="rdpssh"></a>Potřebuji klienta RDP nebo SSH?
 
-K využití připojení RDP/SSH k virtuálnímu počítači Azure na webu Azure Portal nepotřebujete klienta SSH ani RDP. Pomocí [Azure Portal](https://portal.azure.com) můžete získat přístup RDP/SSH k virtuálnímu počítači přímo v prohlížeči.
+Pro přístup k RDP/SSH ke svému virtuálnímu počítači Azure ve vašem Azure Portal nepotřebujete klienta RDP nebo SSH. Pomocí [Azure Portal](https://portal.azure.com) můžete získat přístup RDP/SSH k virtuálnímu počítači přímo v prohlížeči.
+
+### <a name="rdscal"></a>Vyžaduje Azure bastionu licenci VP CAL pro účely správy na virtuálních počítačích hostovaných v Azure?
+Ne, přístup k virtuálním počítačům s Windows serverem pomocí Azure bastionu nevyžaduje oprávnění [VP CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , pokud se používá výhradně pro účely správy.
 
 ### <a name="agent"></a>Potřebuji na virtuálním počítači Azure agenta, který je spuštěný?
 
-V prohlížeči nebo na virtuálním počítači Azure nemusíte instalovat agenta ani žádný software. Služba Bastion je bez agentů a pro RDP/SSH nevyžaduje žádný další software.
+V prohlížeči nebo na virtuálním počítači Azure nemusíte instalovat agenta ani žádný software. Služba bastionu je bez agentů a nevyžaduje žádný další software pro RDP/SSH.
 
 ### <a name="browsers"></a>Které prohlížeče se podporují?
 
-Použijte prohlížeč Microsoft Edge nebo Google Chrome ve Windows. Na počítačích Apple Mac používejte prohlížeč Google Chrome. V systému Windows i Mac se také podporuje Microsoft Edge Chromium.
+Použijte prohlížeč Microsoft Edge nebo Google Chrome ve Windows. Pro Apple Mac použijte prohlížeč Google Chrome. Microsoft Edge chrom se podporuje i v obou oknech i v počítačích Mac.
 
 ### <a name="roles"></a>Vyžadují se pro přístup k virtuálnímu počítači nějaké role?
 

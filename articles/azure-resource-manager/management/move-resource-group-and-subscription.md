@@ -2,13 +2,13 @@
 title: Přesunutí prostředků do nového předplatného nebo skupiny prostředků
 description: Použití Azure Resource Manageru k přesunutí prostředků do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: c91081ee25a3b98fa25b8b9b9047da186b22181b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/02/2020
+ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891355"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250170"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -20,7 +20,7 @@ Přesunutím prostředku dojde pouze k jeho přesunu do nové skupiny prostředk
 
 ## <a name="checklist-before-moving-resources"></a>Kontrolní seznam před přesunutím prostředků
 
-Před přesunutím prostředku je třeba provést několik důležitých kroků. Ověřením těchto podmínek se můžete vyhnout chybám.
+Před přesunem prostředků je potřeba provést několik důležitých kroků. Ověřením těchto podmínek se můžete vyhnout chybám.
 
 1. Prostředky, které chcete přesunout, musí podporovat operaci přesunu. Seznam prostředků, které podporují přesun, najdete v tématu [Podpora operací přesunutí pro prostředky](move-support-resources.md).
 
@@ -33,9 +33,9 @@ Před přesunutím prostředku je třeba provést několik důležitých kroků.
    * [Pokyny pro přesunutí Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Pokyny pro přesunutí Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
 
-1. Zdrojové a cílové odběry musí být aktivní. Pokud máte potíže s povolením zakázaného účtu, [vytvořte žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Vyberte **správy předplatných** typ problému.
+1. Zdrojové a cílové odběry musí být aktivní. Pokud máte potíže s povolením zakázaného účtu, [vytvořte žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Jako typ problému vyberte **Správa předplatného** .
 
-1. Zdrojové a cílové předplatné musí existovat v rámci stejného [tenanta Azure Active Directory](../../active-directory/develop/quickstart-create-new-tenant.md). Pokud chcete zkontrolovat, že oba odběry obsahují stejné ID tenanta, pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
+1. Zdrojové a cílové odběry musí existovat v rámci stejného [Azure Active Directory tenanta](../../active-directory/develop/quickstart-create-new-tenant.md). Pokud chcete zkontrolovat, že oba odběry obsahují stejné ID tenanta, pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
 
    Pro prostředí Azure PowerShell použijte:
 
@@ -56,7 +56,7 @@ Před přesunutím prostředku je třeba provést několik důležitých kroků.
    * [Přenos vlastnictví předplatného služby Azure na jiný účet](../../billing/billing-subscription-transfer.md)
    * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. Tato chyba se může zobrazit při přesunu prostředku do nového předplatného, ale toto předplatné se pro tento typ prostředku nikdy nepoužilo.
+1. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. V takovém případě se zobrazí chyba s oznámením, že **předplatné není zaregistrované pro typ prostředku**. Tato chyba se může zobrazit při přesunu prostředku do nového předplatného, ale toto předplatné se pro tento typ prostředku nikdy nepoužilo.
 
    Pokud používáte PowerShell, použijte následující příkazy získat stav registrace:
 
@@ -86,10 +86,10 @@ Před přesunutím prostředku je třeba provést několik důležitých kroků.
 
 1. Účet přesunutí prostředků musí mít alespoň následující oprávnění:
 
-   * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** na zdrojovou skupinu prostředků.
-   * **Microsoft.Resources/subscriptions/resourceGroups/write** na cílová skupina prostředků.
+   * **Microsoft. Resources/Subscriptions/resourceGroups/moveResources/Action** ve zdrojové skupině prostředků.
+   * **Microsoft. Resources/Subscriptions/resourceGroups/Write** v cílové skupině prostředků.
 
-1. Před přesunutím prostředků, zkontrolujte kvóty předplatného pro předplatné, které přesouváte prostředky, které. Přesunutí prostředků znamená, že předplatné překročí maximum, budete muset zkontrolovat, jestli můžete požádat o zvýšení kvóty. Seznam omezení a tom, jak požádat o zvýšení najdete v tématu [předplatného Azure a limity, kvóty a omezení](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+1. Před přesunutím prostředků, zkontrolujte kvóty předplatného pro předplatné, které přesouváte prostředky, které. Přesunutí prostředků znamená, že předplatné překročí maximum, budete muset zkontrolovat, jestli můžete požádat o zvýšení kvóty. Seznam omezení a informace o tom, jak požádat o zvýšení, najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 1. **Pro přesun mezi předplatnými musí být prostředek a jeho závislé prostředky umístěny ve stejné skupině prostředků a musí být přesunuty dohromady.** Například virtuální počítač se spravovanými disky by vyžadoval, aby se virtuální počítač a spravované disky přesunuly společně s dalšími závislými prostředky.
 
@@ -111,7 +111,7 @@ Pro ilustraci máme jenom jeden závislý prostředek.
 
 ## <a name="validate-move"></a>Ověří přesun
 
-[Ověření operace přesunu](/rest/api/resources/resources/validatemoveresources) umožňuje testovat váš scénář přesunu bez skutečně přesouvání prostředků. Pomocí této operace zkontrolujete, zda se přesun nezdaří. Ověřování je automaticky voláno při odeslání žádosti o přesunutí. Tuto operaci použijte pouze v případě, že potřebujete předem určit výsledky. K provedení této operace, je nutné:
+[Operace ověřit přesunutí](/rest/api/resources/resources/validatemoveresources) vám umožní otestovat scénář přesunutí bez skutečného přesunu prostředků. Pomocí této operace zkontrolujete, zda se přesun nezdaří. Ověřování je automaticky voláno při odeslání žádosti o přesunutí. Tuto operaci použijte pouze v případě, že potřebujete předem určit výsledky. K provedení této operace, je nutné:
 
 * Název zdrojové skupiny prostředků
 * ID prostředku cílová skupina prostředků
@@ -147,7 +147,7 @@ retry-after: 15
 ...
 ```
 
-202 stavový kód označuje byla přijata žádost o ověření, ale ještě nebyl určen, pokud bude úspěšné operaci přesunutí. `location` Hodnota obsahuje adresu URL, kterou lze použít ke kontrole stavu dlouhotrvající operace.  
+202 stavový kód označuje byla přijata žádost o ověření, ale ještě nebyl určen, pokud bude úspěšné operaci přesunutí. Hodnota `location` obsahuje adresu URL, která slouží ke kontrole stavu dlouhotrvající operace.  
 
 Pokud chcete zkontrolovat stav, odešlete požadavek na následující:
 
@@ -156,7 +156,7 @@ GET <location-url>
 Authorization: Bearer <access-token>
 ```
 
-Během operace je stále spuštěna, můžete nadále přijímat 202 stavový kód. Počkejte, počet sekund, které jsou uvedené v `retry-after` hodnotu než to zkusíte znovu. Pokud operace přesunu ověří úspěšně, obdržíte 204 stavový kód. Pokud selže ověření přesunu, obdržíte chybovou zprávu, jako například:
+Během operace je stále spuštěna, můžete nadále přijímat 202 stavový kód. Než budete zkoušet znovu, počkejte počet sekund uvedených v hodnotě `retry-after`. Pokud operace přesunu ověří úspěšně, obdržíte 204 stavový kód. Pokud selže ověření přesunu, obdržíte chybovou zprávu, jako například:
 
 ```json
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
@@ -170,11 +170,11 @@ Chcete-li přesunout prostředky, vyberte skupinu prostředků s těmito prostř
 
 Vyberte, jestli přesouváte prostředky do nové skupiny prostředků nebo si nové předplatné.
 
-Vyberte prostředky k přesunutí a cílová skupina prostředků. Potvrďte, že je potřeba aktualizovat skripty pro tyto prostředky a vyberte **OK**. Pokud vyberete ikonu pro úpravy odběru v předchozím kroku, musíte také vybrat cílové předplatné.
+Vyberte prostředky k přesunutí a cílová skupina prostředků. Potvrďte, že potřebujete aktualizovat skripty pro tyto prostředky a vyberte **OK**. Pokud vyberete ikonu pro úpravy odběru v předchozím kroku, musíte také vybrat cílové předplatné.
 
 ![Vyberte cíl](./media/move-resource-group-and-subscription/select-destination.png)
 
-V **oznámení**, uvidíte, že je spuštěná operace přesunutí.
+V části **oznámení**vidíte, že operace přesunutí je spuštěná.
 
 ![Zobrazit stav přesunu](./media/move-resource-group-and-subscription/show-status.png)
 
@@ -184,7 +184,7 @@ Po jeho dokončení budete informováni o výsledek.
 
 Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
-## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
 Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [Move-AzResource](/powershell/module/az.resources/move-azresource) . Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků.
 
@@ -194,13 +194,13 @@ $plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
-Chcete-li přesunout do nového předplatného, zahrnout hodnotu pro `DestinationSubscriptionId` parametru.
+Pokud chcete přejít k novému předplatnému, zahrňte hodnotu parametru `DestinationSubscriptionId`.
 
 Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
 
-Chcete-li stávající prostředky přesunout do jiné skupiny prostředků nebo předplatného, použijte [přesunutí prostředku az](/cli/azure/resource?view=azure-cli-latest#az-resource-move) příkaz. Zadejte ID prostředků pro přesun prostředků. Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků. V `--ids` parametr, zadejte místo oddělený seznam ID pro přesun prostředků.
+Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [AZ Resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) . Zadejte ID prostředků pro přesun prostředků. Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků. V parametru `--ids` zadejte mezerami oddělený seznam ID prostředků, který chcete přesunout.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -208,7 +208,7 @@ plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/s
 az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
-Pokud chcete přesunout do nového předplatného, zadejte `--destination-subscription-id` parametru.
+Pokud chcete přejít k novému předplatnému, zadejte parametr `--destination-subscription-id`.
 
 Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 

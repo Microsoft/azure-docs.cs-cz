@@ -3,14 +3,14 @@ title: Nastavení vývojového prostředí pro Windows
 description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení této instalace a nastavení budete moci sestavovat aplikace ve Windows.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 03/02/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6768f45e61880370295ce7725e553828e66f3d39
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f08c6b0675475b4e15ce6db3a9dbe0e2863b9ddb
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062111"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252768"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 
@@ -23,7 +23,7 @@ ms.locfileid: "77062111"
 
 Pokud chcete vytvářet a spouštět [aplikace Service Fabric Azure][1] na vývojovém počítači s Windows, nainstalujte Service Fabric runtime, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
 
@@ -68,8 +68,8 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 
 Aktuální verze jsou:
 
-* 4\.0.466 SDK a nástroje pro Service Fabric
-* Service Fabric modulu runtime 7.0.466
+* 4\.0.470 SDK a nástroje pro Service Fabric
+* Service Fabric modulu runtime 7.0.470
 
 Seznam podporovaných verzí najdete v tématu [Service Fabric verze](service-fabric-versions.md) .
 

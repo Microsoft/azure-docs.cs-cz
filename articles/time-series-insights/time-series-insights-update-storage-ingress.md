@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559840"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246188"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Ukládání dat a příchozí přenosy v Azure Time Series Insights ve verzi Preview
 
@@ -159,10 +159,10 @@ Další informace o optimalizaci propustnosti a oddílů centra najdete v násle
 
 Když vytvoříte prostředí Time Series Insights Preview s průběžnými *platbami* (PAYG), vytvoříte dva prostředky Azure:
 
-* Prostředí Azure Time Series Insights ve verzi Preview, které se dá nakonfigurovat pro teplé úložiště.
+* Prostředí Azure Time Series Insights ve verzi Preview, které se dá nakonfigurovat pro úložiště teplého data.
 * Účet blob Azure Storage pro obecné účely V1 pro úložiště studených dat.
 
-Data v teplém úložišti jsou k dispozici pouze v [dotazech Time Series](./time-series-insights-update-tsq.md) a v [Průzkumníku služby Azure Time Series Insights Preview](./time-series-insights-update-explorer.md). 
+Data v teplém úložišti jsou k dispozici pouze v [dotazech Time Series](./time-series-insights-update-tsq.md) a v [Průzkumníku služby Azure Time Series Insights Preview](./time-series-insights-update-explorer.md). Vaše teplé úložiště bude obsahovat poslední data v rámci [doby uchování](./time-series-insights-update-plan.md#the-preview-environment) vybrané při vytváření prostředí Time Series Insights.
 
 Time Series Insights Preview uloží data z chladírny do úložiště objektů BLOB v Azure ve [formátu souboru Parquet](#parquet-file-format-and-folder-structure). Time Series Insights Preview spravuje tato data studeného úložiště výhradně, ale je k dispozici pro čtení přímo jako standardních souborů Parquet.
 
@@ -186,12 +186,7 @@ Podrobný popis úložiště objektů BLOB v Azure najdete v [úvodu do objektů
 
 Když Azure Time Series Insights vytvoříte PAYG prostředí ve verzi Preview, vytvoří se účet blob Azure Storage pro obecné účely v1 jako váš dlouhodobý chladírenský sklad.  
 
-Azure Time Series Insights Preview publikuje až dvě kopie každé události v účtu Azure Storage. Počáteční kopie má události seřazené podle času ingestování. Toto pořadí událostí je **vždy zachované** , takže ostatní služby budou mít přístup k událostem bez problémů sekvencování. 
-
-> [!NOTE]
-> Pro zpracování nezpracovaných souborů Parquet můžete také použít Spark, Hadoop a další známé nástroje. 
-
-Time Series Insights Preview také přerozdělení souborů Parquet na optimalizaci pro Time Series Insights dotaz. Tato kopie dat se také ukládá do oddílů. 
+Azure Time Series Insights Preview uchovává až dvě kopie každé události v účtu Azure Storage. Jedna kopie ukládá události seřazené podle času příjmu, vždy umožňuje přístup k událostem v posloupnosti seřazené podle času. V průběhu času Time Series Insights Preview také vytvoří znovu rozdělenou kopii dat, která se optimalizují pro provádění Time Series Insights dotazů. 
 
 Během veřejné verze Preview jsou data ve vašem účtu Azure Storage ukládána po neomezenou dobu.
 
@@ -199,15 +194,11 @@ Během veřejné verze Preview jsou data ve vašem účtu Azure Storage ukládá
 
 Aby se zajistil výkon dotazů a dostupnost dat, neupravujte ani neodstraňujte žádné objekty blob, které Time Series Insights vytváření Preview.
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Přístup k datům z Time Series Insights Preview a jejich export
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Přístup k datům z chladírenského úložiště v Time Series Insights Preview 
 
-Můžete chtít získat přístup k datům zobrazeným v Průzkumníkovi služby Time Series Insights Preview pro použití ve spojení s jinými službami. Data můžete například použít k sestavení sestavy v Power BI nebo ke školení modelu strojového učení pomocí Azure Machine Learning Studio. Nebo můžete data použít k transformaci, vizualizaci a modelování v Jupyter poznámkových blocích.
+Kromě přístupu k datům z [průzkumníka Time Series Insights Preview](./time-series-insights-update-explorer.md) a [dotazu časové řady](./time-series-insights-update-tsq.md)můžete také chtít získat přístup k datům přímo ze souborů Parquet uložených v chladírenských skladech. Můžete například číst, transformovat a čistit data v Jupyter poznámkovém bloku a pak je použít ke školení modelu Azure Machine Learning ve stejném pracovním postupu Spark.
 
-K datům můžete získat přístup třemi obecnými způsoby:
-
-* Z Průzkumníka služby Time Series Insights Preview. Data můžete z Průzkumníka exportovat jako soubor CSV. Další informace najdete v tématu [Time Series Insights Exploreru pro náhled](./time-series-insights-update-explorer.md).
-* Z rozhraní API pro náhled Time Series Insights použijte dotaz načíst události. Pokud chcete získat další informace o tomto rozhraní API, dotaz pro čtení [časové řady](./time-series-insights-update-tsq.md).
-* Přímo z účtu Azure Storage. Potřebujete přístup pro čtení k libovolnému účtu, který používáte pro přístup k datům ve verzi Preview Time Series Insights. Další informace najdete v článku [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
+Pokud chcete získat přístup k datům přímo z účtu Azure Storage, potřebujete přístup pro čtení k účtu, který se používá k ukládání dat ve verzi Preview Time Series Insights. Pak si můžete přečíst vybraná data na základě času vytvoření souboru Parquet, který se nachází ve složce `PT=Time` popsané níže v části [Formát souboru Parquet](#parquet-file-format-and-folder-structure) .  Další informace o povolení přístupu pro čtení k vašemu účtu úložiště najdete v tématu [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
 
 #### <a name="data-deletion"></a>Odstranění dat
 
@@ -215,21 +206,21 @@ Neodstraňujte soubory ve verzi Preview Time Series Insights. Spravujte souvisej
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Formát souboru a struktura složek Parquet
 
-Parquet je open source formát sloupcového souboru, který byl navržen pro efektivní úložiště a výkon. Time Series Insights Preview v těchto případech používá Parquet. Rozdělí data podle ID časové řady pro výkon dotazů ve velkém měřítku.  
+Parquet je open source formát sloupcového souboru navržený pro efektivní úložiště a výkon. Time Series Insights Preview používá Parquet k povolení škálovatelného výkonu dotazů založených na ID časové řady.  
 
 Další informace o typu souboru Parquet najdete v [dokumentaci k Parquet](https://parquet.apache.org/documentation/latest/).
 
 Time Series Insights Preview ukládá kopie vašich dat následujícím způsobem:
 
-* První, počáteční kopie je dělená časem ingestování a ukládá data přibližně v pořadí doručení. Data se nachází ve složce `PT=Time`:
+* První, počáteční kopie je dělená časem ingestování a ukládá data přibližně v pořadí doručení. Tato data se nachází ve složce `PT=Time`:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* Druhá, znovu rozdělená kopie je rozdělená na oddíly s ID časových řad a nachází se ve složce `PT=TsId`:
+* Druhá, znovu rozdělená kopie je seskupená podle ID časových řad a nachází se ve složce `PT=TsId`:
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-V obou případech časové hodnoty odpovídají času vytvoření objektu BLOB. Data ve složce `PT=Time` jsou zachována. Data ve složce `PT=TsId` budou optimalizována pro dotazy v průběhu času a nebudou zůstat statická.
+V obou případech vlastnost Time souboru Parquet odpovídá času vytvoření objektu BLOB. Data ve složce `PT=Time` jsou zachována bez jakýchkoli změn, jakmile je zapsána do souboru. Data ve složce `PT=TsId` budou optimalizována pro dotazy v průběhu času a nejsou statická.
 
 > [!NOTE]
 > * `<YYYY>` se mapuje na vyjádření čtyřmístného roku.
@@ -239,10 +230,10 @@ V obou případech časové hodnoty odpovídají času vytvoření objektu BLOB.
 Události ve verzi Preview Time Series Insights jsou namapovány na obsah souboru Parquet následujícím způsobem:
 
 * Každá událost je mapována na jeden řádek.
-* Každý řádek obsahuje sloupec **časového razítka** s časovým razítkem události. Vlastnost časového razítka není nikdy null. Ve výchozím nastavení je to čas zařazený do **fronty** , pokud není ve zdroji událostí zadána vlastnost časového razítka. Časové razítko je vždy v UTC.
-* Každý řádek obsahuje sloupce s ID časové řady, jak jsou definovány při vytváření Time Series Insights prostředí. Název vlastnosti zahrnuje příponu `_string`.
+* Každý řádek obsahuje sloupec **časového razítka** s časovým razítkem události. Vlastnost časového razítka není nikdy null. Ve výchozím nastavení je čas zařazený do **fronty události** , pokud ve zdroji událostí není zadaná vlastnost časového razítka. Uložené časové razítko je vždy ve formátu UTC.
+* Každý řádek obsahuje sloupce s ID časové řady (TSID), jak je definováno při vytváření prostředí Time Series Insights. Název vlastnosti TSID zahrnuje příponu `_string`.
 * Všechny ostatní vlastnosti odeslané jako data telemetrie jsou namapovány na názvy sloupců, které končí na `_string` (String), `_bool` (Boolean), `_datetime` (DateTime) nebo `_double` (Double) v závislosti na typu vlastnosti.
-* Toto schéma mapování platí pro první verzi formátu souboru, na kterou se odkazuje jako **V = 1**. Jak se tato funkce vyvíjí, může se tento název zvýšit.
+* Toto mapování schématu se vztahuje na první verzi formátu souboru, na kterou odkazuje **v = 1** a je uloženo v základní složce se stejným názvem. Vzhledem k tomu, že se tato funkce vyvíjí, může se toto mapování schématu změnit a zvýší se název odkazu.
 
 ## <a name="next-steps"></a>Další kroky
 

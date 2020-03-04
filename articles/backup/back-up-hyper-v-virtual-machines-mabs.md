@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí M
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586508"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255065"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 
@@ -171,7 +171,7 @@ Po dokončení kroků v předchozích částech a dokončení úlohy MABS Summar
 
 1. Otevřete SQL Server Management Studio a připojte se k instanci, která je hostitelem databáze MABS.
 
-2. Spusťte následující dotaz: `select * from tbl_SCH_ScheduleDefinition where JobDefinitionID='9B30D213-B836-4B9E-97C2-DB03C3EB39D7'`. Tento dotaz vrátí **hodnotu ScheduleID**. Poznamenejte si toto ID, protože ho budete používat v dalším kroku.
+2. Spusťte následující dotaz: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. Tento dotaz vrátí **hodnotu ScheduleID**. Poznamenejte si toto ID, protože ho budete používat v dalším kroku.
 
 3. V SQL Server Management Studio rozbalte položku **Agent SQL Server**a potom rozbalte položku **úlohy**. Klikněte pravým tlačítkem na **hodnotu ScheduleID** , které jste si poznamenali, a **v kroku vyberte spustit úlohu**.
 

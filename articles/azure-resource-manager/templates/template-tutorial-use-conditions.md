@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 895d82eb79e4674ca95b9052d2384a257b296bf5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 189d54454a1259d08400e3762b3fbf1c633474bd
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980662"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250054"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Kurz: Používání podmínek v šablonách Azure Resource Manageru
 
@@ -28,23 +28,23 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení šablony
 > * Vyčištění prostředků
 
-Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace:
+Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace naleznete v tématu:
 
 * [Struktura souboru šablony: podmínka](conditional-resource-deployment.md)
 * [Podmíněně nasaďte prostředek do šablony Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Funkce šablony: if](./template-functions-logical.md#if).
 * [Funkce porovnání pro šablony Azure Resource Manager](./template-functions-comparison.md)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
 * Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Pokud [chcete vytvořit Azure Resource Manager šablony](use-vs-code-to-create-template.md), přečtěte si téma použití Visual Studio Code.
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 

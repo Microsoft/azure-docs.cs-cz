@@ -3,12 +3,12 @@ title: Postup zastavení monitorování clusteru Azure Red Hat OpenShift | Micro
 description: Tento článek popisuje, jak můžete zastavit monitorování clusteru Azure Red Hat OpenShift pomocí Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 97ca333f724dc4914dabda2912c4512a40520253
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eff5203aeedd3c7ad283b55ba12f0e45a556460d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977768"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250722"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Postup zastavení monitorování clusteru Azure Red Hat OpenShift pomocí Azure Monitor for Containers
 
@@ -20,9 +20,9 @@ Zadaná jsou dvě šablony Azure Resource Manageru pro podporu odebrání prost�
 
 Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.65 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.65 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Vytvoření šablony
 
@@ -65,7 +65,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     }
     ```
 
-2. Uložte soubor jako **OptOutTemplate.json** do místní složky.
+2. Uložte tento soubor jako **OptOutTemplate. JSON** do místní složky.
 
 3. Vložte následující syntaxi JSON do souboru:
 
@@ -88,7 +88,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 
     ![Stránka vlastnosti kontejneru](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Uložte soubor jako **OptOutParam.json** do místní složky.
+5. Uložte tento soubor jako **OptOutParam. JSON** do místní složky.
 
 6. Jste připraveni k nasazení této šablony.
 
@@ -104,7 +104,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 Změna konfigurace může trvat několik minut. Když se dokončí, je vrácena zpráva podobná následující, který obsahuje výsledek:
 
-```azurecli
+```output
 ProvisioningState       : Succeeded
 ```
 
@@ -122,7 +122,7 @@ New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupNam
 
 Změna konfigurace může trvat několik minut. Když se dokončí, je vrácena zpráva podobná následující, který obsahuje výsledek:
 
-```powershell
+```output
 ProvisioningState       : Succeeded
 ```
 

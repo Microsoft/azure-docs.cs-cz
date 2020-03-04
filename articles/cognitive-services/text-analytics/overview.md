@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827318"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251329"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
-Rozhraní API pro analýzu textu je cloudová služba, která poskytuje pokročilé zpracování přirozeného jazyka nad nezpracovaným textem a zahrnuje čtyři hlavní funkce: analýzu míněníí, extrakci klíčových frází, rozpoznávání jazyka a rozpoznávání entit.
+Rozhraní API pro analýzu textu je cloudová služba, která poskytuje pokročilé zpracování přirozeného jazyka nad nezpracovaným textem a zahrnuje čtyři hlavní funkce: analýzu míněníí, extrakci klíčových frází, detekci jazyka a rozpoznávání pojmenovaných entit.
 
 Rozhraní API je součástí služby [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty.
 
@@ -51,7 +51,7 @@ Pracovní postup je jednoduchý: odešlete data pro analýzu a obdržíte výstu
 
 2. [Zformulujte požadavek](how-tos/text-analytics-how-to-call-api.md#json-schema) obsahující vaše data ve formě nezpracovaného nestrukturovaného textu ve formátu JSON.
 
-3. Odešlete požadavek na koncový bod vytvořený během registrace a připojte požadovaný prostředek: analýzu mínění, extrakci klíčových frází, rozpoznávání jazyka nebo identifikaci entit.
+3. Odešlete požadavek do koncového bodu vytvořeného během registrace a připojením požadovaného prostředku: analýza mínění, extrakce klíčových frází, rozpoznávání jazyka nebo rozpoznávání pojmenovaných entit.
 
 4. Streamujte nebo ukládejte odpověď místně. V závislosti na požadavku jsou výsledky ve formě skóre mínění, kolekce extrahovaných klíčových frází nebo kódu jazyka.
 

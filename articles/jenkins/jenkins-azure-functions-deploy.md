@@ -4,18 +4,18 @@ description: Naučte se, jak nasadit Azure Functions pomocí modulu plug-in Azur
 keywords: Jenkinse, Azure, DevOps, Java, Azure Functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470662"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250907"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Nasazení do Azure Functions pomocí modulu plug-in pro Azure Functions Jenkinse
 
 [Azure Functions](/azure/azure-functions/) je služba COMPUTE bez serveru. Pomocí Azure Functions můžete spustit kód na vyžádání bez zřízení nebo správy infrastruktury. V tomto kurzu se dozvíte, jak nasadit funkci Java, která Azure Functions pomocí modulu plug-in Azure Functions.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 - **Server Jenkinse**: Pokud nemáte nainstalovaný server Jenkinse, přečtěte si článek [vytvoření serveru Jenkinse v Azure](./install-jenkins-solution-template.md).
@@ -31,19 +31,19 @@ Následující kroky ukazují, jak vytvořit funkci Java pomocí rozhraní pří
 
 1. Vytvořte skupinu prostředků a nahraďte > zástupný text názvem skupiny prostředků **resource_group&lt;** .
 
-    ```cli
+    ```azurecli
     az group create --name <resource_group> --location eastus
     ```
 
 1. Vytvořte účet úložiště Azure a nahraďte zástupné symboly příslušnými hodnotami.
  
-    ```cli
+    ```azurecli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
 1. Vytvořte aplikaci funkcí testu a nahraďte zástupné symboly příslušnými hodnotami.
 
-    ```cli
+    ```azurecli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
 
@@ -148,7 +148,7 @@ Teď je čas spustit úlohu Jenkinse.
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte prostředky, které jste vytvořili, pomocí následujícího kroku:
 
-```cli
+```azurecli
 az group delete -y --no-wait -n <resource_group>
 ```
 

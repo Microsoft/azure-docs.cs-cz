@@ -3,14 +3,14 @@ title: Postup upgradu Azure Dev Spacesch nástrojů
 services: azure-dev-spaces
 ms.date: 07/03/2018
 ms.topic: conceptual
-description: Přečtěte si, jak upgradovat nástroje příkazového řádku Azure Dev Spaces, rozšíření kódu Visual Studo a rozšíření sady Visual Studio.
+description: Informace o upgradu Azure Dev Spaces nástrojů příkazového řádku, Visual Studio Code rozšíření a rozšíření sady Visual Studio
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 07d55689ac94a865527f4b595765d67b28ddb97a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 748ed4699591a21a5a09da924e093011b0813b46
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438417"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252366"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Postup upgradu Azure Dev Spacesch nástrojů
 
@@ -27,7 +27,7 @@ Nemusíte odinstalovat předchozí verzi, stačí najít příslušné soubory k
 
 Spusťte následující příkaz:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group> --update
 ```
 

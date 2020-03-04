@@ -1,19 +1,17 @@
 ---
 title: Obnovení aplikace ze snímku
 description: Přečtěte si, jak obnovit aplikaci ze snímku. Obnovte z neočekávané ztráty dat na úrovni Premium pomocí automatických stínových kopií.
-author: ahmedelnably
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 ms.date: 04/04/2018
-ms.author: aelnably
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: e5b48e05d6bd9a310b4527300126464c4b755c8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671139"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255153"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Obnovení aplikace v Azure ze snímku
 V tomto článku se dozvíte, jak obnovit aplikaci v [Azure App Service](../app-service/overview.md) ze snímku. Můžete obnovit aplikaci do předchozího stavu, a to na základě jedné z snímků vaší aplikace. Není nutné povolit zálohování snímků, platforma automaticky uloží snímek všech aplikací pro účely obnovení dat.
@@ -65,4 +63,4 @@ Obnovení ze snímků je k dispozici pro aplikace běžící na úrovni **Premiu
    
     ![](./media/app-service-web-restore-snapshots/4.png)
 
-5. Klikněte na **OK**.
+5. Klikněte na tlačítko **OK**.

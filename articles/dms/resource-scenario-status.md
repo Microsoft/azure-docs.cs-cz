@@ -3,8 +3,8 @@ title: Stav scénáře migrace databází
 titleSuffix: Azure Database Migration Service
 description: Přečtěte si o stavu scénářů migrace podporovaných nástrojem Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437674"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254920"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migračních scénářů, které podporuje Azure Database Migration Service
 
@@ -45,18 +45,18 @@ Následující tabulky ukazují, které scénáře migrace jsou podporované př
 
 Následující tabulka ukazuje podporu offline migrací Azure Database Migration Service.
 
-| Výběr cílového umístění  | Zdroj | Podpora | Stav |
+| Cíl  | Zdroj | Podpora | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | GA |
+| **DATABÁZE SQL Azure** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Azure SQL VM** | SQL Server | ✔ | GA |
+| **Virtuální počítač Azure SQL** | SQL Server | ✔ | GA |
 |   | Oracle |   |   |
-| **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL |   |   |
+| **Databáze Azure Cosmos** | MongoDB | ✔ | GA |
+| **Azure DB pro MySQL** | MySQL |   |   |
 |   | RDS MySQL |   |   |
 | **Azure DB pro PostgreSQL** | PostgreSQL |  |
 |  | RDS PostgreSQL |   |   |
@@ -65,18 +65,18 @@ Následující tabulka ukazuje podporu offline migrací Azure Database Migration
 
 Následující tabulka uvádí Azure Database Migration Service podporu pro online migrace.
 
-| Výběr cílového umístění  | Zdroj | Podpora | Stav |
+| Cíl  | Zdroj | Podpora | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | GA |
+| **DATABÁZE SQL Azure** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
 |   | Oracle |  |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
 |   | Oracle | ✔ | Privátní verze Preview |
-| **Azure SQL VM** | SQL Server |   |   |
+| **Virtuální počítač Azure SQL** | SQL Server |   |   |
 |   | Oracle  |  |  |
-| **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL | ✔ | GA |
+| **Databáze Azure Cosmos** | MongoDB | ✔ | GA |
+| **Azure DB pro MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
 | **Azure DB pro PostgreSQL** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |

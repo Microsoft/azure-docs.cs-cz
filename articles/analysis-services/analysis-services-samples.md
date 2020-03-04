@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572309"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247846"
 ---
 # <a name="azure-analysis-services-samples"></a>Ukázky Azure Analysis Services
 
@@ -26,6 +26,9 @@ Následující ukázkové materiály vám pomůžou naučit se a testovat Analys
 
 [Adventure Works pro Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) na GitHubu je nejčastěji používaný ukázkový projekt tabelárního modelu. Můžete si stáhnout projekt VS nebo dokončenou ukázkovou databázi modelu.
 
+## <a name="sample-database-on-azure"></a>Ukázková databáze v Azure
+
+Azure synapse Analytics (SQL Data Warehouse) poskytuje ukázkovou databázi AdventureWorksDW, kterou je možné zahrnout do zřízeného prostředku. Další informace najdete v tématu [rychlý Start: vytvoření a dotazování fondu SQL Azure synapse Analytics](/azure/sql-data-warehouse/create-data-warehouse-portal).
 
 ## <a name="sample-databases-on-github"></a>Ukázkové databáze na GitHubu
 

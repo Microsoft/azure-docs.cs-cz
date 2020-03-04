@@ -1,6 +1,6 @@
 ---
-title: Použít sdílenou složku Azure s Azure Storage | Microsoft Docs
-description: Zjistěte, jak používat sdílenou složku Azure s Windows a Windows Serverem.
+title: Jak obnovit odstraněný účet úložiště
+description: Přečtěte si, jak obnovit odstraněný účet úložiště.
 author: todmccoy
 manager: dcscontentpm
 ms.service: storage
@@ -10,12 +10,12 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: e1e581134b4e3821659c43bb7f55003239594bd9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 05465d4a03335ac607ba8981116c66fd6dac9416
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233789"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252635"
 ---
 # <a name="how-to-recover-a-deleted-storage-account"></a>Jak obnovit odstraněný účet úložiště
 

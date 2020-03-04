@@ -4,12 +4,12 @@ description: Naučte se konfigurovat předem sestavený kontejner Node. js pro v
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920021"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255854"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Node. js pro Azure App Service
 
@@ -271,6 +271,8 @@ Pokud se funkční aplikace Node. js chová odlišně v App Service nebo obsahuj
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.
 - Spusťte aplikaci v App Service v režimu pro vývoj. Například ve střední části [. js](https://meanjs.org/)můžete nastavit aplikaci do vývojového režimu v modulu runtime nastavením [nastavení aplikace `NODE_ENV`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

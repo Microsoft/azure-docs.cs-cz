@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: b00f9c9e7de9568a29d2b7a7f4ef84c022ef5679
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588157"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252517"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Připojení dat z protokolů Office 365
 
@@ -33,9 +33,9 @@ Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin
 ## <a name="prerequisites"></a>Předpoklady
 
 - Musíte být globálním správcem nebo správcem zabezpečení vašeho tenanta.
-- Pokud váš tenant nemá licenci Office 365 E3 nebo Office 365 E5, musíte ve svém tenantovi povolit jednotné auditování pomocí jednoho z těchto procesů:
+- Váš tenant musí mít povolený jednotný audit. Klienti s licencemi Office 365 E3 nebo E5 mají ve výchozím nastavení povolené jednotné auditování. <br>Pokud váš tenant nemá jednu z těchto licencí, je nutné ve svém tenantovi povolit jednotné auditování pomocí jedné z těchto metod:
     - [Pomocí rutiny Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) a povolte parametr "UnifiedAuditLogIngestionEnabled").
-    - [Nebo pomocí uživatelského rozhraní Centrum zabezpečení a dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+    - [Pomocí uživatelského rozhraní Centrum zabezpečení a dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
 ## <a name="connect-to-office-365"></a>Připojení k Office 365
 

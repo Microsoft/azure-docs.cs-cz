@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 354f7db2a634ae2adee2f2fa0e2a6055c1c20613
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465279"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252804"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace v Javě do clusteru Service Fabric v Azure
 
@@ -32,7 +32,7 @@ V této sérii kurzů se naučíte:
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -53,13 +53,13 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
 2. Přihlášení k účtu Azure
 
-    ```bash
+    ```azurecli
     az login
     ```
 
 3. Nastavte své předplatné Azure, které chcete použít k vytvoření prostředků.
 
-    ```bash
+    ```azurecli
     az account set --subscription [SUBSCRIPTION-ID]
     ```
 
@@ -73,7 +73,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
     Předchozí příkaz vrátí následující informace, které byste si měli poznamenat pro pozdější použití.
 
-    ```
+    ```output
     Source Vault Resource Id: /subscriptions/<subscription_id>/resourceGroups/testkeyvaultrg/providers/Microsoft.KeyVault/vaults/<name>
     Certificate URL: https://<name>.vault.azure.net/secrets/<cluster-dns-name-for-certificate>/<guid>
     Certificate Thumbprint: <THUMBPRINT>
@@ -81,7 +81,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
 5. Vytvořte skupinu prostředků pro účet úložiště, ve kterém se ukládají vaše protokoly.
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name teststorageaccountrg
@@ -89,7 +89,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
 6. Vytvořte účet úložiště, který se použije k ukládání vygenerovaných protokolů.
 
-    ```bash
+    ```azurecli
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
 
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
@@ -101,13 +101,13 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
 8. Zkopírujte adresu URL SAS účtu a někam si ji uložte pro použití při vytváření clusteru Service Fabric. Vypadá podobně jako následující adresa URL:
 
-    ```
+    ```output
     ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. Vytvořte skupinu prostředků, která obsahuje prostředky centra událostí. Služba Event Hubs slouží k odesílání zpráv ze Service Fabric na server, na kterém jsou spuštěné prostředky ELK.
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name testeventhubsrg
@@ -115,7 +115,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
 10. Pomocí následujícího příkazu vytvořte prostředek služby Event Hubs. Postupujte podle zobrazených výzev a zadejte podrobnosti pro hodnoty namespaceName (název oboru názvů), eventHubName (název centra událostí), consumerGroupName (název skupiny příjemců), sendAuthorizationRuleName (název autorizačního pravidla pro odesílání) a receiveAuthorizationRuleName (název autorizačního pravidla pro příjem).
 
-    ```bash
+    ```azurecli
     az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
@@ -158,7 +158,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
     Zkopírujte hodnotu pole **sr** ve vráceném kódu JSON. Hodnota pole **sr** je token SAS pro službu Event Hubs. Následující adresa URL je příkladem pole **sr**:
 
-    ```bash
+    ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
@@ -185,7 +185,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
 14. Spuštěním následujícího příkazu vytvořte cluster Service Fabric.
 
-    ```bash
+    ```azurecli
     az sf cluster create --location 'westus' --resource-group 'testlinux' --template-file sfdeploy.json --parameter-file sfdeploy.parameters.json --secret-identifier <certificate_url_from_step4>
     ```
 

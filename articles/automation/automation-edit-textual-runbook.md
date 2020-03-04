@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42ff98c8dc77ee421791c3e9f22b57a4518ae80b
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500171"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246410"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Úpravy textových runbooků v Azure Automation
 

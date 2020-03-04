@@ -4,12 +4,12 @@ ms.author: baanders
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/24/2019
-ms.openlocfilehash: 7a0ea2330e682e1e60eca6540151b0f5f620571c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f3e7c54ec59c42ed102da682fc9aa077709ef3f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453724"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262024"
 ---
 ## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
 
@@ -25,7 +25,7 @@ Pokud používáte Azure CLI místně, `az` verze by měla být **2.0.73** nebo 
 Spuštěním následujícího příkazu přidejte do své instance Microsoft Azure rozšíření IoT pro Azure CLI:
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
 Spuštěním následujícího příkazu vytvořte identitu zařízení ve službě IoT Hub. Zástupné symboly **YourIoTHubName** a **YourDeviceID** nahraďte vlastním _názvem IoT Hub_ a _ID zařízení_ podle vašeho výběru.

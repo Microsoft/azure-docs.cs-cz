@@ -4,12 +4,12 @@ description: Ověřování požadavků a použití REST API Azure Monitor k nač
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: bdf867d6ae21eda4f9e9f4283542e422cf4d2d94
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 42a7034c586f4e01066e989dcb2b9fae4eebfa85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659029"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250831"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Návod k Azure Monitoring REST API
 
@@ -116,7 +116,7 @@ Invoke-RestMethod -Uri $request `
 
 Výsledný text odpovědi JSON by byl podobný následujícímu příkladu: (Všimněte si, že druhá metrika má rozměry)
 
-```JSON
+```json
 {
     "value": [
         {
@@ -254,7 +254,7 @@ Invoke-RestMethod -Uri $request `
 
 Výsledný text odpovědi JSON by byl podobný následujícímu příkladu:
 
-```JSON
+```json
 {
   "timespan": "2018-03-01T00:00:00Z/2018-03-02T00:00:00Z",
   "value": [
@@ -327,7 +327,7 @@ Invoke-RestMethod -Uri $request `
 
 Výsledný text odpovědi JSON by byl podobný následujícímu příkladu:
 
-```JSON
+```json
 {
   "cost": 0,
   "timespan": "2018-03-01T02:00:00Z/2018-03-01T02:05:00Z",
@@ -411,7 +411,7 @@ Invoke-RestMethod -Uri $request `
 
 Výsledný text odpovědi JSON by byl podobný následujícímu příkladu:
 
-```JSON
+```json
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions",
   "value": [
@@ -479,7 +479,7 @@ Invoke-RestMethod -Uri $request `
 
 Výsledný text odpovědi JSON by byl podobný následujícímu příkladu:
 
-```JSON
+```json
 {
   "value": [
     {
@@ -527,7 +527,7 @@ Invoke-RestMethod -Uri $request `
 
 Výsledný text odpovědi JSON by byl podobný následujícímu příkladu:
 
-```JSON
+```json
 {
   "value": [
     {
@@ -587,7 +587,7 @@ Dalším řešením je použití [ARMClient](https://github.com/projectkudu/armc
 
 Chcete-li například načíst definice metrik pro konkrétní aplikaci logiky, vydejte následující příkaz:
 
-```
+```console
 armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01
 ```
 
@@ -623,7 +623,7 @@ ID prostředku se taky dá získat z Azure Portal. Provedete to tak, že přejde
 
 ![ALT "ID prostředku zobrazené v okně Vlastnosti v Azure Portal"](./media/rest-api-walkthrough/resourceid_azure_portal.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Azure Powershell
 
 ID prostředku se dá načíst taky pomocí rutin Azure PowerShell. Pokud například chcete získat ID prostředku pro aplikaci logiky Azure, spusťte rutinu Get-AzureLogicApp, jako v následujícím příkladu:
 
@@ -633,7 +633,7 @@ Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 
 Výsledek by měl být podobný následujícímu příkladu:
 
-```
+```output
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
 Type           : Microsoft.Logic/workflows
@@ -655,13 +655,13 @@ Version        : 08586982649483762729
 
 Pokud chcete načíst ID prostředku pro účet Azure Storage pomocí rozhraní příkazového řádku Azure, spusťte příkaz `az storage account show`, jak je znázorněno v následujícím příkladu:
 
-```
+```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 ```
 
 Výsledek by měl být podobný následujícímu příkladu:
 
-```JSON
+```json
 {
   "accessTier": null,
   "creationTime": "2017-08-18T19:58:41.840552+00:00",

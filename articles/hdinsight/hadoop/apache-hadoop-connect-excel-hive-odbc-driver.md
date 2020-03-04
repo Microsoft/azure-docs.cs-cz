@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/11/2019
-ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435818"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251071"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení Excelu k Apache Hadoop v Azure HDInsight pomocí ovladače Microsoft podregistr ODBC Driver
 
@@ -23,7 +23,7 @@ ms.locfileid: "75435818"
 
 Také je možné připojit data přidružená k clusteru HDInsight a dalším zdrojům dat, včetně jiných clusterů Hadoop (mimo HDInsight), z Excelu pomocí doplňku Microsoft Power Query pro Excel. Informace o instalaci a použití Power Query najdete v tématu [připojení Excelu k HDInsight pomocí Power Query](../hdinsight-connect-excel-power-query.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento článek, musíte mít následující položky:
 
@@ -51,7 +51,7 @@ Následující kroky ukazují, jak vytvořit zdroj dat pro podregistr ODBC.
    | Vlastnost | Popis |
    | --- | --- |
    |  Název zdroje dat |Zadejte název zdroje dat. |
-   |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. Například, `myHDICluster.azurehdinsight.net`. Poznámka: `HDInsightClusterName-int.azurehdinsight.net` se podporuje, pokud je klientský virtuální počítač v partnerském vztahu ke stejné virtuální síti. |
+   |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. například `myHDICluster.azurehdinsight.net`. Poznámka: `HDInsightClusterName-int.azurehdinsight.net` se podporuje, pokud je klientský virtuální počítač v partnerském vztahu ke stejné virtuální síti. |
    |  Port |Použijte **443**. (Tento port se změnil z 563 na 443.) |
    |  databáze |Použijte **výchozí nastavení**. |
    |  Mechanismus |Výběr **služby Windows Azure HDInsight** |
