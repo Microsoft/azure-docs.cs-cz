@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4094ace5772b99c646a31d6a4722bbb080fbfff7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589880"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273549"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Základní hodnoty zabezpečení Azure pro Batch
 
@@ -59,7 +59,7 @@ Pochopení zabezpečení sítě, které poskytuje Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -271,7 +271,7 @@ Jak se vzdáleně připojit k uzlům Azure Batch fondu:
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -323,7 +323,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Pokyny**: použijte Windows Defender na jednotlivých uzlech služby Batch v případě operačních systémů Windows nebo Poskytněte vlastní antimalwarové řešení, pokud používáte Linux.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -466,7 +466,7 @@ Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Cent
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -511,7 +511,7 @@ Jak používat kontroly přístupu Azure identity:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -524,7 +524,7 @@ Jak integrovat protokoly aktivit Azure do Azure Monitor:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -551,7 +551,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Zodpovědnost**: zákazník
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3,13: <div>Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.<br></div>
 
 **Doprovodné**materiály: není k dispozici; Customer Lockbox ještě není pro Azure Batch podporované. Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
@@ -614,9 +614,9 @@ Postup zabezpečení Azure Storage účtů:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: sdílená
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
@@ -654,7 +654,7 @@ Postup zabezpečení Azure Storage účtů:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
 **Odpovědnost**: sdílená
 
@@ -690,7 +690,7 @@ Pochopení ochrany zákaznických dat v Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
 **Odpovědnost**: sdílená
 
@@ -704,7 +704,7 @@ Správa šifrovacích klíčů pro účty Azure Storage:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -728,7 +728,7 @@ Jak povolit další protokolování/auditování pro účet Azure Storage:
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -751,7 +751,7 @@ Volitelně, pokud máte Rapid7, Qualys nebo jakékoli jiné předplatné platfor
 
 **Pokyny**: Společnost Microsoft zachovává a aktualizuje obrázky uzlů základních Azure Batch fondů. Zajistěte, aby operační systém uzlů Azure Batchového fondu zůstal opravený po dobu životnosti clusteru, což může vyžadovat povolení automatických aktualizací, monitorování uzlů nebo provádění pravidelných restartování.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Odpovědnost**: sdílená
 
@@ -788,7 +788,7 @@ Volitelně, pokud máte Rapid7, Qualys nebo jakékoli jiné předplatné platfor
 **Pokyny**: pomocí grafu prostředků Azure můžete v rámci vašich předplatných dotazovat nebo zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť atd.). Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
 
 
-I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
+I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager (ARM), které budou předány dál.
 
 
 Jak vytvářet dotazy pomocí Azure graphu:
@@ -863,9 +863,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Nepovolené typy prostředků
 - Povolené typy prostředků
 
+
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
+
 Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -901,16 +904,15 @@ Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/gov
 
 **Doprovodné**materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
 
+
 - Nepovolené typy prostředků
 - Povolené typy prostředků
 
-Jak nakonfigurovat a spravovat Azure Policy:
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak odepřít konkrétní typ prostředku s Azure Policy:
 
-https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak odepřít konkrétní typ prostředku pomocí Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -924,14 +926,12 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 **Zodpovědnost**: zákazník
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6,11: Omezte schopnost uživatelů pracovat s Azure Resource Manager prostřednictvím skriptů
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6,11: <div>Omezení schopnosti uživatelů pracovat s Azure Resource Manager prostřednictvím skriptů</div>
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -949,9 +949,7 @@ Neplatí to Azure Batch, protože uživatelé (bez správců) fondů Azure Batch
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné**materiály: není k dispozici,
-
-Srovnávací test je určený pro webové aplikace běžící na instancích Azure App Service nebo IaaS.
+**Doprovodné**materiály: nejde použít, srovnávací test je určený pro webové aplikace běžící na Azure App Service nebo IaaS instancích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -966,10 +964,14 @@ Srovnávací test je určený pro webové aplikace běžící na instancích Azu
 **Doprovodné**materiály: použijte aliasy Azure Policy v oboru názvů Microsoft. Batch k vytvoření vlastních zásad pro auditování nebo vystavování konfigurace Azure Batch účtů a fondů.
 
 
-Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy Azure Policy:
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -991,7 +993,9 @@ Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/go
 - Microsoft.Storage
 - Microsoft.Network
 
+
 Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Pochopení Azure Policych dopadů: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -1009,11 +1013,17 @@ Pochopení Azure Policych dopadů: https://docs.microsoft.com/azure/governance/p
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Pokyny**: Pokud používáte vlastní definice zásad Azure pro Azure Batch účty, fondy nebo související prostředky, využijte Azure DevOps/úložišť k bezpečnému ukládání a správě kódu.
+**Pokyny**: Pokud používáte vlastní definice zásad Azure pro Azure Batch účty, fondy nebo související prostředky, používejte Azure Repos k bezpečnému ukládání a správě kódu.
 
-Jak ukládat kód v Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Jak ukládat kód v Azure DevOps:
+
+https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+
+
+Azure Repos dokumentaci:
+
+https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1024,9 +1034,14 @@ Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?vie
 **Pokyny**: Pokud používáte pro fondy Azure Batch vlastní image, použijte řízení přístupu na základě role (RBAC), abyste zajistili, že k imagí budou mít přístup jenom autorizovaní uživatelé.
 
 
-Princip RBAC v Azure: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+Princip RBAC v Azure:
 
-Jak nakonfigurovat RBAC v Azure: https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
+https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+
+
+Jak nakonfigurovat RBAC v Azure:
+
+https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1058,8 +1073,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. Batch k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace vaší instance Azure Batch. Můžete použít také všechny předdefinované zásady vytvořené speciálně pro Azure Batch nebo prostředky používané Azure Batch, například:
 
-- Podsítě by měly být přidružené ke skupině zabezpečení sítě.
-- Účty úložiště by měly používat koncový bod služby virtuální sítě.
+- Podsítě by měly být přidružené ke skupině zabezpečení sítě – účty úložiště by měly používat koncový bod služby virtuální sítě.
 - V účtech Batch by měly být povolené diagnostické protokoly.
 
 Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
@@ -1098,7 +1112,7 @@ Jak zajistit Key Vault ověřování pomocí spravované identity:
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -1187,7 +1201,7 @@ Postup zálohování klíčů trezoru klíčů v Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -1205,7 +1219,7 @@ Postup obnovení klíče spravovaného zákazníkem pomocí PowerShellu:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
@@ -1218,7 +1232,7 @@ Jak povolit obnovitelné odstranění v Azure Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -1324,3 +1338,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Odpovědnost**: sdílená
 
+## <a name="next-steps"></a>Další kroky
+
+- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

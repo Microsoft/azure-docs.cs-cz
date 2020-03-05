@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: peterlu
-author: peterclu
+ms.author: larryfr
+author: blackmist
 ms.date: 11/12/2019
-ms.openlocfilehash: 621188b3901bdea1a7ae50ac49c0e6f625a3e79a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 34aba3c00ac0026abebbdfc93143aa5e7f788e8b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915771"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268483"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961794"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270805"
 ---
 # <a name="application-settings"></a>Nastavení aplikace
 
@@ -24,17 +24,17 @@ Tato nastavení aplikace jsou uložená v [exportované](https://westus.dev.cogn
 
 |Nastavení|Výchozí hodnota|Poznámky:|
 |--|--|--|
-|NormalizePunctuation|Pravda|Odebere interpunkci.|
-|NormalizeDiacritics|Pravda|Odebere diakritická znaménka.|
+|NormalizePunctuation|True|Odebere interpunkci.|
+|NormalizeDiacritics|True|Odebere diakritická znaménka.|
 
-## <a name="diacritics-normalization"></a>Normalizace diakritiky 
+## <a name="diacritics-normalization"></a>Normalizace diakritiky
 
 V parametru `settings` zapněte normalizaci utterance pro diakritická znaménka na váš soubor aplikace LUIS JSON.
 
 ```JSON
 "settings": [
     {"name": "NormalizeDiacritics", "value": "true"}
-] 
+]
 ```
 
 Následující projevy ukazuje, jakým způsobem normalizace diakritiky ovlivňuje projevy:
@@ -61,7 +61,7 @@ Následující projevy ukazuje, jakým způsobem normalizace diakritiky ovlivňu
 |`ó`|`o`|
 |`ô`|`o`|
 |`õ`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |||
 
 #### <a name="dutch-nl-nl-diacritics"></a>Nizozemská `nl-nl` diakritika
@@ -77,7 +77,7 @@ Následující projevy ukazuje, jakým způsobem normalizace diakritiky ovlivňu
 |`í`|`i`|
 |`ó`|`o`|
 |`ö`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |`ü`|`u`|
 |||
 
@@ -91,24 +91,24 @@ To zahrnuje francouzské i kanadské jazykové kultury.
 |`à`|`a`|
 |`è`|`e`|
 |`ù`|`u`|
-|`â`|`a`| 
-|`ê`|`e`| 
-|`î`|`i`| 
-|`ô`|`o`| 
-|`û`|`u`| 
-|`ç`|`c`| 
-|`ë`|`e`| 
-|`ï`|`i`| 
-|`ü`|`u`| 
-|`ÿ`|`y`| 
+|`â`|`a`|
+|`ê`|`e`|
+|`î`|`i`|
+|`ô`|`o`|
+|`û`|`u`|
+|`ç`|`c`|
+|`ë`|`e`|
+|`ï`|`i`|
+|`ü`|`u`|
+|`ÿ`|`y`|
 
 #### <a name="german-de-de-diacritics"></a>Německé `de-de` diakritiky
 
 |Diakritická znaménka nastavena na hodnotu false|Diakritická znaménka nastavená na true|
 |--|--|
 |`ä`|`a`|
-|`ö`|`o`| 
-|`ü`|`u`| 
+|`ö`|`o`|
+|`ü`|`u`|
 
 #### <a name="italian-it-it-diacritics"></a>`it-it` diakritiky pro italštinu
 
@@ -117,11 +117,11 @@ To zahrnuje francouzské i kanadské jazykové kultury.
 |`à`|`a`|
 |`è`|`e`|
 |`é`|`e`|
-|`ì`|`i`| 
-|`í`|`i`| 
-|`î`|`i`| 
-|`ò`|`o`| 
-|`ó`|`o`| 
+|`ì`|`i`|
+|`í`|`i`|
+|`î`|`i`|
+|`ò`|`o`|
+|`ó`|`o`|
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -133,8 +133,8 @@ To zahrnuje jak španělštinu, tak i kanadskou mexický.
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
-|`í`|`i`| 
-|`ó`|`o`| 
+|`í`|`i`|
+|`ó`|`o`|
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|
@@ -147,7 +147,7 @@ Zapněte normalizaci utterance pro interpunkci do souboru aplikace LUIS JSON v p
 ```JSON
 "settings": [
     {"name": "NormalizePunctuation", "value": "true"}
-] 
+]
 ```
 
 Následující projevy ukazuje, jak interpunkce má vliv na projevy:
@@ -163,8 +163,8 @@ Následující interpunkční znaménko se odebere s `NormalizePunctuation` je n
 
 |Interpunkce|
 |--|
-|`-`| 
-|`.`| 
+|`-`|
+|`.`|
 |`'`|
 |`"`|
 |`\`|

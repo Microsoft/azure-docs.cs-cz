@@ -2,33 +2,31 @@
 title: Předpoklady pro poskytování služeb pro konzultace s Azure a Dynamics 365 | Azure Marketplace
 description: Požadavky na nabídku služby Azure nebo Dynamics 365 pro konzultace v portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 371e7be0795ec93bfdb7b43deb38613cec6a664b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 88a317fde3d8e3490741b87d6015556fde593ecd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818120"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268285"
 ---
 # <a name="consulting-service-prerequisites"></a>Požadavky na konzultační služby
 
 Přečtěte si popis a požadavky pro tento typ nabídky ve [konzultačních službách pro Azure Marketplace a AppSource](../../consulting-services.md).  Následující konkrétní typy konzultačních služeb mají další požadavky:
 
-|     Typ nabídky   |    Požadavek   |
-|     ----------   |    -----------   |
-| Microsoft Azure | Partneři musí pro [kompetenci cloudové platformy](https://partner.microsoft.com/membership/cloud-platform-competency)mít certifikaci stříbrné nebo Gold. |
-| Dynamics 365 for Customer Engagement | Partneři musí mít certifikaci stříbrného nebo Gold pro [kompetenci správy vztahů se zákazníky v cloudu](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency). |
-| Dynamics 365 pro finanční operace & | Partneři musí pro [kompetenci plánování podnikových prostředků](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)mít certifikaci stříbrné nebo Gold. Partneři také musí mít minimálně $25 000 v cloudových operacích za posledních 12 měsíců. |
-| Dynamics 365 Business Central | Partneři musí mít k dispozici jako poskytovatele Cloud Solution Provider (CSP) nebo Digital partner záznamu (partnera DPOR) alespoň pro jednoho zákazníka. <br/> Informace o tom, jak se stát CSP, najdete v tématu [Začínáme jako CSP](https://partner.microsoft.com/cloud-solution-provider/get-started). <br/> Požadavky na partnera DPOR najdete v tématu [Přehled partnera DPOR](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1). |
-|  Power BI  | Seznamte se s Power BI prezentující partnerům. Další informace najdete v tématu [kritéria pro partnery řešení](https://powerbi.microsoft.com/become-a-partner). |
-|  PowerApps       | Partneři musí mít řešení publikované v rámci předvedení [partnerských řešení](https://powerapps.microsoft.com/partner-showcase). |
-|  |  |
-
+| Typ nabídky | Požadavek |
+|---------|---------|
+| Dynamics 365 Sales <br> Dynamics 365 marketing <br> Zákaznická služba Dynamics 365 <br> Služba pole Dynamics 365 <br> Lidské zdroje pro Dynamics 365 |   Pro možnost zapojení do služby [Cloud Business Applications kompetence](https://partner.microsoft.com/membership/cloud-business-applications-competency) for Customer Engagement se musí jednat o Gold nebo stříbrné certifikaci.    | 
+| Dynamics 365 – finance <br> Správa dodavatelských řetězců Dynamics 365 <br> Dynamics 365 – obchod <br> Lidské zdroje pro Dynamics 365 <br> Automatizace služby projektu Dynamics 365 |  Pro možnost sjednocení operací se musí jednat o Gold nebo stříbrné certifikaci v [Cloud Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) .       |
+| Dynamics 365 Customer Insights | Musí mít alespoň 1 úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) s nejméně 5 mírami a 5 segmenty. |
+| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v [rámci kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) a musí se jednat o poskytovatele Cloud Solution Provider aspoň 3 obchodní centrální zákazníky. <br> <br> NEBO <br> <br> Musí mít [v AppSource publikovanou aplikaci Business Central](https://appsource.microsoft.com/) . |
+| Power BI | Musí být uvedený na [Power BI prezentující Partnerská](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
+|Power Apps | Musí mít nárok na pokročilé výhody v [programu pro partnerství PowerApps](https://aka.ms/PowerAppsPartner). |
 
 ## <a name="next-steps"></a>Další kroky
 

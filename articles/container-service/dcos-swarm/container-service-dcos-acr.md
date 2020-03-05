@@ -1,5 +1,5 @@
 ---
-title: (NEPOUŽÍVANÉ) Použití služby ACR s clusterem Azure DC/OS
+title: ZASTARALÉ Použití ACR s clusterem DC/OS Azure
 description: Použití služby Azure Container Registry s clusterem DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1dccc42301cf73fb215d99636dfee9eef9bc59e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148936"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274162"
 ---
-# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(NEPOUŽÍVANÉ) Použití služby ACR s clusterem DC/OS k nasazení aplikace
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>ZASTARALÉ Nasazení aplikace pomocí ACR s clusterem DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -30,7 +30,7 @@ V tomto článku se podíváme na to, jak používat službu Azure Container Reg
 
 K provedení kroků v tomto kurzu potřebujete cluster DC/OS ACS. V případě potřeby si ho můžete nechat vytvořit pomocí [tohoto ukázkového skriptu](./../kubernetes/scripts/container-service-cli-deploy-dcos.md).
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -46,7 +46,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM
 
 Po vytvoření registru rozhraní Azure CLI vytvoří výstup, který obsahuje zhruba následující data. Poznamenejte si položky `name` a `loginServer`, ty se totiž používají v dalších krocích.
 
-```azurecli
+```output
 {
   "adminUserEnabled": false,
   "creationDate": "2017-06-06T03:40:56.511597+00:00",
@@ -93,7 +93,7 @@ FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.f
 
 Vytvořte připojení SSH k této předloze (nebo první předloze) clusteru založeného na DC/OS. Pokud se při vytváření clusteru použila jiná než výchozí hodnota, aktualizujte uživatelské jméno.
 
-```azurecli-interactive
+```console
 ssh azureuser@$FQDN
 ```
 
@@ -107,13 +107,13 @@ docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --passw
 
 Vytvořte komprimovaný soubor, který obsahuje hodnoty ověřování registru kontejneru.
 
-```azurecli-interactive
+```console
 tar czf docker.tar.gz .docker
 ```
 
 Zkopírujte tento soubor do sdíleného úložiště v clusteru. Tímto krokem soubor zpřístupníte ve všech uzlech v clusteru DC/OS.
 
-```azurecli-interactive
+```console
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
@@ -123,25 +123,25 @@ Teď na vývojářském počítači nebo v jakémkoli jiném systému s nainstal
 
 Vytvořte kontejner z image Ubuntu.
 
-```azurecli-interactive
+```console
 docker run ubuntu --name base-image
 ```
 
-Potom kontejner zachyťte do nové image. Název image musí obsahovat název `loginServer` registru kontejneru ve formátu `loginServer/imageName`.
+Potom kontejner zachyťte do nové image. Název bitové kopie musí zahrnovat `loginServer` název registru kontejneru s formátem `loginServer/imageName`.
 
-```azurecli-interactive
+```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
 Přihlášení do služby Azure Container Registry Nahraďte název názvem serveru loginServer, položku --username názvem registru kontejneru a položku --password jedním ze zadaných hesel.
 
-```azurecli-interactive
+```console
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
 Nakonec odešlete image do registru služby ACR. Tento příklad odešle image s názvem dcos-demo.
 
-```azurecli-interactive
+```console
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
@@ -189,11 +189,11 @@ Pokud chcete použít některou image z registru služby ACR, vytvořte soubor s
 
 Nasaďte aplikaci pomocí rozhraní CLI DC/OS.
 
-```azurecli-interactive
+```console
 dcos marathon app add acrDemo.json
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nakonfigurovali DC/OS pro použití služby Azure Container Registry a provedli následující kroky:
 

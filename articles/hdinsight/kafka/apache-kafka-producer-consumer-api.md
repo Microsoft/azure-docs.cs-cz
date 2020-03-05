@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186819"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271887"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
@@ -24,14 +24,14 @@ Rozhraní Kafka Producer API umožňuje aplikacím odesílat datové proudy do c
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Vysvětlení kódu
 > * Sestavení a nasazení aplikace
 > * Spuštění aplikace v clusteru
 
 Další informace o rozhraních API najdete v dokumentaci k rozhraní [Producer API](https://kafka.apache.org/documentation/#producerapi) a [Consumer API](https://kafka.apache.org/documentation/#consumerapi) na webu Apache.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Apache Kafka v clusteru HDInsight. Informace o tom, jak vytvořit cluster, najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 * [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
@@ -218,5 +218,5 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 V tomto dokumentu jste zjistili, jak používat Apache Kafkaho výrobce a zákaznického rozhraní API s Kafka ve službě HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
 
-> [!div class="nextstepaction"]
-> [Analyzovat protokoly Apache Kafka](apache-kafka-log-analytics-operations-management.md)
+* [Použití proxy serveru REST Kafka](rest-proxy.md)
+* [Analyzovat protokoly Apache Kafka](apache-kafka-log-analytics-operations-management.md)

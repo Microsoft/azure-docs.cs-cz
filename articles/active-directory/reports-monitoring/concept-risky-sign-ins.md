@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008343"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273844"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -44,7 +44,7 @@ Sestavy rizikových přihlášení jsou k dispozici uživatelům v následujíc�
 
 - Správce zabezpečení
 - Globální správce
-- Čtecí modul zabezpečení
+- Čtenář zabezpečení
 
 Další informace o přiřazování rolí pro správu uživateli v Azure Active Directory najdete v tématu [zobrazení a přiřazení rolí správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
 
@@ -52,15 +52,15 @@ Další informace o přiřazování rolí pro správu uživateli v Azure Active 
 
 Všechny edice služby Azure AD poskytují zprávy o rizikových přihlášeních. Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
 
-- V **edicích Azure Active Directory Free a Basic**získáte seznam rizikových přihlášení. 
+- V **edici Azure Active Directory Free**získáte seznam rizikových přihlášení. 
 
 - Kromě toho edice **Azure Active Directory Premium 1** umožňuje prozkoumávat některé z základních detekcí rizik zjištěných pro jednotlivé sestavy. 
 
 - Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o všech základních detekcích rizik a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Sestava rizikových přihlášení pro edici Azure AD Free a Basic
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Sestava rizikových přihlášení pro edici Azure AD Free
 
-Edice Free a Basic služby Azure AD poskytují seznam rizikových přihlášení zjištěných pro vaše uživatele. Každý záznam obsahuje následující atributy:
+Edice Free služby Azure AD poskytuje seznam rizikových přihlášení zjištěných pro vaše uživatele. Každý záznam obsahuje následující atributy:
 
 - **Uživatel** – jméno uživatele, které bylo použito během operace přihlášení.
 - **IP** – IP adresa zařízení, které se použilo k připojení k Azure Active Directory.

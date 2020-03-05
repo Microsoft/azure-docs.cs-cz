@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256003"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272972"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření v Azure Automation
 
@@ -84,7 +84,7 @@ Když zadáte hodnotu parametru, vyberete zdroj dat, abyste určili, jak je hodn
 | Prostředek certifikátu |Jako vstup vyberte certifikát Automation. |
 | Prostředek připojení |Jako vstup vyberte připojení Automation. |
 | Powershellový výraz |Zadejte jednoduchý [powershellový výraz](#powershell-expressions). Výraz je vyhodnocen před aktivitou a výsledek je použit pro hodnotu parametru. Proměnné můžete použít k odkazování na výstup aktivity nebo vstupní parametr Runbooku. |
-| Nenakonfigurováno |Vymažte všechny dříve nakonfigurované hodnoty. |
+| Nenakonfigurované |Vymažte všechny dříve nakonfigurované hodnoty. |
 
 #### <a name="optional-additional-parameters"></a>Nepovinné další parametry
 
@@ -380,7 +380,7 @@ Následující příklad používá výstup z aktivity s názvem **získat přip
 
 ## <a name="authenticating-to-azure-resources"></a>Ověřování v prostředcích Azure
 
-Sady Runbook v Azure Automation, které spravují prostředky Azure, vyžadují ověřování do Azure. [Účet Spustit jako](automation-create-runas-account.md), označovaný také jako instanční objekt, je výchozím mechanismem, který Runbook služby Automation používá pro přístup k Azure Resource Manager prostředkům ve vašem předplatném. Tuto funkci můžete přidat do grafického Runbooku přidáním prostředku připojení **AzureRunAsConnection** , který na plátně používá rutinu PowerShellu [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) . Můžete také přidat rutinu [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) . Tento scénář je znázorněn v následujícím příkladu.
+Sady Runbook v Azure Automation, které spravují prostředky Azure, vyžadují ověřování do Azure. [Účet Spustit jako](automation-create-runas-account.md), označovaný také jako instanční objekt, je výchozím mechanismem, který Runbook služby Automation používá pro přístup k Azure Resource Manager prostředkům ve vašem předplatném. Tuto funkci můžete přidat do grafického Runbooku přidáním prostředku připojení **AzureRunAsConnection** , který na plátně používá rutinu PowerShellu [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) . Můžete také přidat rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Tento scénář je znázorněn v následujícím příkladu.
 
 ![Aktivity ověřování spustit jako](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

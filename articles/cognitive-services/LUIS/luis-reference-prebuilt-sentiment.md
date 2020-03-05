@@ -1,32 +1,32 @@
 ---
 title: Analýza mínění – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pokud je nakonfigurovaná analýza mínění, odpověď LUIS JSON zahrnuje analýzu mínění.
+description: Pokud je nakonfigurovaná analýza mínění, LUIS odpověď json zahrnuje analýzu subjektivního hodnocení.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/22/2019
 ms.author: diberry
-ms.openlocfilehash: a91246e4a4b3dc98bf11d2b014478fd40252f14b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508020"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270425"
 ---
-# <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
-Pokud je nakonfigurovaná analýza mínění, odpověď LUIS JSON zahrnuje analýzu mínění. Další informace o analýze mínění najdete v dokumentaci k [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
+# <a name="sentiment-analysis"></a>Analýza mínění
+Pokud je nakonfigurovaná analýza mínění, LUIS odpověď json zahrnuje analýzu subjektivního hodnocení. Další informace o analýze mínění najdete v dokumentaci k [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
 
 
 ## <a name="resolution-for-sentiment"></a>Řešení pro mínění
 
-Mínění data jsou skóre mezi 1 a 0 značící kladné (blíže k 1) nebo záporné (navýšení na 0) mínění dat.
+Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data.
 
-#### <a name="english-languagetabenglish"></a>[Anglický jazyk](#tab/english)
+#### <a name="english-language"></a>[Anglický jazyk](#tab/english)
 
 Když je jazyková verze `en-us`, odpověď je:
 
@@ -37,16 +37,16 @@ Když je jazyková verze `en-us`, odpověď je:
 }
 ```
 
-#### <a name="other-languagestabother-languages"></a>[Jiné jazyky](#tab/other-languages)
+#### <a name="other-languages"></a>[Jiné jazyky](#tab/other-languages)
 
-Pro všechny ostatní jazykové verze je odpověď:
+Pro všechny jiné jazykové verze odpověď je:
 
 ```JSON
 "sentimentAnalysis": {
   "score": 0.9163064
 }
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Další kroky
 

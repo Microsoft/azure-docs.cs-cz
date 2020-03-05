@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196650"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269067"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -63,7 +63,7 @@ Některé příkazy a funkce dotazu jsou v jejich spotřebě procesoru těžké.
 
 Tyto funkce spotřebovávají procesor v poměru k počtu zpracovávaných řádků. Nejúčinnější optimalizací je přidání podmínek WHERE do začátku dotazu, který může vyfiltrovat co nejvíc záznamů, než se spustí funkce náročné na procesor.
 
-Například následující dotazy vydávají přesně stejný výsledek, ale druhá z nich je mnohem nejúčinnější jako podmínka [WHERE]() před analýzou vyloučení mnoha záznamů:
+Například následující dotazy vydávají přesně stejný výsledek, ale druhá z nich je mnohem nejúčinnější jako podmínka [WHERE](/azure/kusto/query/whereoperator) před analýzou vyloučení mnoha záznamů:
 
 ```Kusto
 //less efficient

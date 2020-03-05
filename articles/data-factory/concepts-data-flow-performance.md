@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587579"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273221"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -59,6 +59,9 @@ Při zapnutí ladění se ve výchozím nastavení použije výchozí prostřed�
 
 ![Zdrojová část](media/data-flow/sourcepart3.png "Zdrojová část")
 
+> [!NOTE]
+> Dobrá příručka, která vám pomůže vybrat počet oddílů pro zdroj, je založený na počtu jader, které jste nastavili pro svůj Azure Integration Runtime a vynásobit ho číslem pěti. Pokud například transformuje řadu souborů ve složkách adls a budete používat 32 Azure IR Core, počet oddílů, které by se měly cílit, je 32 x 5 = 160 oddílů.
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>Velikost, vstup a úroveň izolace zdrojové dávky
 
 V části **Možnosti zdroje** ve zdrojové transformaci můžou mít následující nastavení vliv na výkon:
@@ -100,7 +103,7 @@ Pokud chcete do datové sady DW vyhnout vkládání řádků, zaškrtněte v nas
 
 V každé transformaci můžete nastavit schéma dělení, které má Datová továrna použít na kartě optimalizace. Je vhodné nejdřív otestovat jímky založené na souborech, které zachovají výchozí dělení a optimalizace.
 
-* V případě menších souborů můžete najít, že výběr *jednoho oddílu* může někdy fungovat lépe a rychleji než vyžádat Spark, aby rozdělil vaše malé soubory.
+* U menších souborů se můžete setkat s tím, že zvolíte méně oddílů, někdy je lepší a rychlejší než při vytváření oddílů malých souborů v Sparku.
 * Pokud nemáte dostatek informací o zdrojových datech, vyberte možnost *kruhové dotazování* na oddíly a nastavte počet oddílů.
 * Pokud vaše data obsahují sloupce, které mohou být vhodnými klíči hash, vyberte možnost *dělení hodnoty hash*.
 

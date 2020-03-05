@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 03/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65f5b9bc09bb74ccbc63a457ba8e5681de8eefab
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e470ea65085bf71f0052567d5bf367661852d1cb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189937"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268018"
 ---
 # <a name="boolean-claims-transformations"></a>Logické transformace deklarací identity
 
@@ -116,7 +116,7 @@ Technický profil s vlastním uplatněním volá ověřovací **přihlášení �
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-Kontroluje, zda je logická hodnota deklarace identity rovna `true` nebo `false`a vrátí výsledek komprese.
+Kontroluje, zda je logická hodnota deklarace identity rovna hodnotě `true` nebo `false`a vrátí výsledek komprese.
 
 | Položka | TransformationClaimType  | Typ dat  | Poznámky: |
 | ---- | ------------------------ | ---------- | ----- |

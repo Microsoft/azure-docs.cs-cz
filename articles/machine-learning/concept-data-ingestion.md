@@ -10,19 +10,19 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 3370fc72b45720e2aae5731623843a1bc498911c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
-ms.translationtype: MT
+ms.openlocfilehash: 35c133a4d9d95dc6e942d5b8c3e8d21debb9493b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652071"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268552"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Přijímání dat v Azure Machine Learning
 
 V tomto článku se seznámíte s odborníky a nevýhody následujících možností ingestování dat, které jsou dostupné v Azure Machine Learning. 
 
 1. [Azure Data Factory](#use-azure-data-factory) kanály
-2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
+2. [Sada Azure Machine Learning Python SDK](#use-the-python-sdk)
 
 Přijímání dat je proces, při kterém se nestrukturovaná data extrahují z jednoho nebo několika zdrojů a pak se připravují pro školení modelů strojového učení. Také je časově náročná, zejména pokud je to možné, a pokud máte velké množství dat z více zdrojů. Automatizace tohoto úsilí uvolní prostředky a zajišťuje, aby vaše modely používaly nejnovější a použitelné údaje.
 
@@ -55,7 +55,7 @@ Tyto kroky a následující diagram znázorňují pracovní postup pro přijím�
 
 ## <a name="use-the-python-sdk"></a>Použití sady Python SDK 
 
-Pomocí [sady Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)můžete do kroku [Azure Machine Learningého kanálu](how-to-create-your-first-pipeline.md) začlenit úkoly přijímání dat.
+Pomocí [sady Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml)můžete do kroku [Azure Machine Learningého kanálu](how-to-create-your-first-pipeline.md) začlenit úkoly přijímání dat.
 
 Následující tabulka shrnuje profesionály a con pro použití sady SDK a postupu kanálu ML pro úlohy přijímání dat.
 

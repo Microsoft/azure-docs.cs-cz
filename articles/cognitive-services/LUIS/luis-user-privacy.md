@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 061f019fe36e4d5495a41fc81e56d9673ad595fc
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4e3e0d04b0086905b80e26fb4f838c36b5b5545e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953462"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273368"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportovat a odstraňovat vaše zákaznická data v Language Understanding (LUIS) ve službě Cognitive Services
 
-Odstraňte zákaznická data a zajistěte tak ochranu osobních údajů a dodržování předpisů. 
+Odstraňte zákaznická data a zajistěte tak ochranu osobních údajů a dodržování předpisů.
 
 ## <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 Zachová obsah zákazníka pro provoz služby Language Understanding Intelligent Service (LUIS), ale má plnou kontrolu nad zobrazení, exportu a odstranění jejich dat uživatel LUIS. To se dá udělat prostřednictvím webového [portálu](luis-reference-regions.md) Luis nebo pomocí [rozhraní API pro vytváření Luis (označovaných také jako programové)](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -32,12 +32,12 @@ Zákazník obsah je uložen zašifrovaný ve službě Microsoft Azure storage m�
 - Uživatelský účet obsah shromážděné při registraci
 - Školicí data potřebná k sestavení modelů
 - Přihlášené uživatelské dotazy používané [aktivním učením](luis-concept-review-endpoint-utterances.md) k lepšímu zlepšení modelu
-  - Uživatele můžete vypnout protokolování dotazu přidáním `&log=false` požadavku, podrobností [zde](troubleshooting.md#how-can-i-disable-the-logging-of-utterances)
+  - Uživatelé můžou vypnout protokolování dotazů připojením `&log=false` k žádosti, podrobnosti [tady](troubleshooting.md#how-can-i-disable-the-logging-of-utterances)
 
 ## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
 LUIS uživatelé mají plnou kontrolu nad tím, že budou odstraňovat obsahy uživatelů, a to buď prostřednictvím webového portálu LUIS, nebo pomocí rozhraní API pro vytváření LUIS (označovaných také jako program). Pomoc s oběma odkazy v následující tabulce:
 
-| | **Uživatelský účet** | **Aplikace** | **Příklad utterance** | **Dotazy koncových uživatelů** |
+| | **Uživatelský účet** | **Použití** | **Příklad utterance** | **Dotazy pro koncové uživatele** |
 | --- | --- | --- | --- | --- |
 | **Azure Portal** | [Odkaz](luis-concept-data-storage.md#delete-an-account) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-concept-data-storage.md#utterances-in-an-intent) | [Projevy Active Learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Protokol projevy](luis-concept-data-storage.md#disable-logging-utterances) |
 | **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
@@ -46,7 +46,7 @@ LUIS uživatelé mají plnou kontrolu nad tím, že budou odstraňovat obsahy u�
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
 LUIS uživatelé mají úplné řízení pro zobrazení dat na portálu, ale musí se exportovat prostřednictvím rozhraní API vytváření LUIS (označovaných také jako programové). V následující tabulce jsou uvedeny odkazy, které pomáhají s exporty dat prostřednictvím rozhraní API pro vytváření LUIS (označovaných také jako programové):
 
-| | **Uživatelský účet** | **Aplikace** | **Utterance(s)** | **Dotazy koncových uživatelů** |
+| | **Uživatelský účet** | **Použití** | **Utterance (celkem)** | **Dotazy pro koncové uživatele** |
 | --- | --- | --- | --- | --- |
 | **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
@@ -58,7 +58,7 @@ Aby bylo možné povolit [aktivní učení](luis-how-to-review-endpoint-utteranc
 * [Austrálie](#australia)
 * [USA](#united-states)
 
-S výjimkou aktivních výukových dat (popsaných níže) se LUIS řídí [postupy pro ukládání dat pro regionální služby](https://azuredatacentermap.azurewebsites.net/). 
+S výjimkou aktivních výukových dat (popsaných níže) se LUIS řídí [postupy pro ukládání dat pro regionální služby](https://azuredatacentermap.azurewebsites.net/).
 
 ### <a name="europe"></a>Evropa
 
@@ -68,7 +68,7 @@ Portál [EU.Luis.AI](https://eu.luis.ai) a vytváření v Evropě (označované 
 * Francie
 * Spojené království
 
-Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v geografických oblastech Evropy Azure pro aktivní učení. Aktivní učení můžete zakázat. Přečtěte si téma [zakázání aktivního učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Pokud chcete spravovat uložené projevy, přečtěte si téma [Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance). 
+Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v geografických oblastech Evropy Azure pro aktivní učení. Aktivní učení můžete zakázat. Přečtěte si téma [zakázání aktivního učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Pokud chcete spravovat uložené projevy, přečtěte si téma [Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance).
 
 ### <a name="australia"></a>Austrálie
 
@@ -76,7 +76,7 @@ Portál [au.Luis.AI](https://au.luis.ai) a vytváření Austrálie (označované
 
 * Austrálie
 
-Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v geografických oblastech Austrálie Azure pro aktivní učení. Aktivní učení můžete zakázat. Přečtěte si téma [zakázání aktivního učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Pokud chcete spravovat uložené projevy, přečtěte si téma [Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance). 
+Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v geografických oblastech Austrálie Azure pro aktivní učení. Aktivní učení můžete zakázat. Přečtěte si téma [zakázání aktivního učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Pokud chcete spravovat uložené projevy, přečtěte si téma [Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance).
 
 ### <a name="united-states"></a>Spojené státy
 
@@ -84,10 +84,10 @@ Portál [Luis.AI](https://www.luis.ai) a vytváření USA (označované také ja
 
 * Geografické oblasti Azure, které nepodporují oblasti tvorby Evropy nebo Austrálie
 
-Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v oblasti Azure USA geografie pro aktivní učení. Aktivní učení můžete zakázat. Přečtěte si téma [zakázání aktivního učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Pokud chcete spravovat uložené projevy, přečtěte si téma [Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance). 
+Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v oblasti Azure USA geografie pro aktivní učení. Aktivní učení můžete zakázat. Přečtěte si téma [zakázání aktivního učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Pokud chcete spravovat uložené projevy, přečtěte si téma [Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance).
 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Služba LUIS oblastech odkaz](./luis-reference-regions.md)
+> [Referenční dokumentace oblastí LUIS](./luis-reference-regions.md)

@@ -4,12 +4,12 @@ description: Přečtěte si, jak Azure App Service aktualizovat operační syst�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846245"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273626"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního systému a modulu runtime v Azure App Service
 
@@ -51,7 +51,7 @@ Aktualizace a zastaralosti za běhu jsou oznámeny zde:
 
 ### <a name="new-patch-updates"></a>Nové aktualizace oprav
 
-Aktualizace aktualizací .NET, PHP, Java SDK nebo verze Tomcat/Jetty se aplikují automaticky přepsáním stávající instalace novou verzí. Aktualizace pro Node. js se instalují souběžně se stávajícími verzemi (podobně jako hlavní a dílčí verze v další části). Nové verze oprav Pythonu se dají nainstalovat ručně přes [rozšíření lokality](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)) vedle sebe s integrovanými instalacemi v Pythonu.
+Aktualizace aktualizací .NET, PHP, Java SDK nebo verze Tomcat/Jetty se aplikují automaticky přepsáním stávající instalace novou verzí. Aktualizace pro Node. js se instalují souběžně se stávajícími verzemi (podobně jako hlavní a dílčí verze v další části). Nové verze oprav Pythonu se dají nainstalovat ručně prostřednictvím [rozšíření lokality](https://azure.microsoft.com/blog/azure-web-sites-extensions/)vedle sebe s integrovanými instalacemi v Pythonu.
 
 ### <a name="new-major-and-minor-versions"></a>Nové hlavní a dílčí verze
 
@@ -83,14 +83,14 @@ Následující tabulka ukazuje, jak verze Windows, tak jazykového modulu runtim
 | Verze PHP | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
 | Výchozí verze Node. js | V [Cloud Shell](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Verze Pythonu | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
-| Verze Java | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `java -version` |  
+| Verze Javy | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `java -version` |  
 
 > [!NOTE]  
 > Přístup k umístění registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, kde jsou uložené informace o [opravách KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.
 >
 >
 
-## <a name="more-resources"></a>Další zdroje
+## <a name="more-resources"></a>Další zdroje informací
 
 [Centrum zabezpečení: zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
 [64 bitová ASP.NET Core na Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

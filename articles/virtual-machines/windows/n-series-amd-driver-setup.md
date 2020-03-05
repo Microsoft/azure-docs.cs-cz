@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228347"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269435"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů AMD GPU pro virtuální počítače řady N-Series s Windows
 
@@ -29,7 +29,7 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 
 ## <a name="supported-operating-systems-and-drivers"></a>Podporované operační systémy a ovladače
 
-| OS | Ovladač |
+| Operační systém | Ovladač |
 | -------- |------------- |
 | Windows 10 EVD-Build 1903 <br/><br/>Windows 10 – Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
 
@@ -43,6 +43,8 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 3. Spusťte virtuální počítač a potom odinstalujte ovladač verze Preview spuštěním souboru "amdcleanuputility-x64. exe" umístěného ve složce ". ..\AMDCleanUninstallUtility". Přesná cesta se bude lišit v závislosti na tom, kde jsou předchozí instalační soubory ovladačů.  
 
 4. Stáhněte si a nainstalujte nejnovější ovladač.
+
+5. Restartujte virtuální počítač.
 
 ## <a name="verify-driver-installation"></a>Ověřit instalaci ovladače
 

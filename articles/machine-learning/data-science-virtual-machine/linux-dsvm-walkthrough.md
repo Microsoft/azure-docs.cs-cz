@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428390"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268659"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datové vědy s Data Science Virtual Machine pro Linux v Azure
 
@@ -24,7 +24,7 @@ V tomto návodu se dozvíte, jak dokončit několik běžných úloh pro datové
 
 V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase je sada e-mailů, které jsou označené buď spam, nebo HAM (nikoli spam). Spambase také obsahuje statistiku o obsahu e-mailů. V tomto návodu budeme mluvit o statistice později.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
 
@@ -60,10 +60,10 @@ Datová sada obsahuje několik typů statistik pro každý e-mail:
 
 * Sloupce jako **word\_frekvence\__Word_**  označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **word\_frekvence\_** **1**, pak *se vytvořilo*1% všech slov v e-mailu.
 * Sloupce jako **char\_frekvence\__char_**  označují procento všech znaků v e-mailu, které jsou typu *char*.
-* **velké\_spustit\_délka\_nejdelší** představuje nejdelší doba posloupnost velká písmena.
-* **velké\_spustit\_délka\_průměrné** je průměrná délka všech pořadí velká písmena.
-* **velké\_spustit\_délka\_celkový** je celková délka všech pořadí velká písmena.
-* **spam** označuje, jestli e-mailu byla považována za spam nebo ne (1 = nevyžádané pošty, 0 = nevyžádanou).
+* **velká\_spustit\_délku\_nejdelší** je nejdelší délka posloupnosti velkých písmen.
+* **kapitálový\_run\_délka\_průměr** je průměrná délka všech velkých písmen.
+* **kapitálový\_spustit\_délku\_celková** délka všech sekvencí velkých písmen.
+* **spam** označuje, zda byl e-mail považován za spam nebo ne (1 = spam, 0 = Nevyžádaná pošta).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>Prozkoumat datovou sadu pomocí jazyka R Open
 
@@ -90,7 +90,7 @@ Pro jiné zobrazení dat:
 
 Toto zobrazení ukazuje typ každé proměnné a prvních několik hodnot v datové sadě.
 
-**Nevyžádané pošty** sloupec byl načten jako celé číslo, ale je ve skutečnosti kategorií proměnné (nebo faktor). Nastavte její typ:
+Sloupec **spam** byl přečten jako celé číslo, ale ve skutečnosti se jedná o kategorií proměnnou (nebo faktor). Nastavte její typ:
 
     data$spam <- as.factor(data$spam)
 
@@ -187,6 +187,8 @@ Pokud chcete nasadit kód rozhodovacího stromu z předchozí části, přihlast
    ![Primární autorizační token Azure Machine Learning Studio (Classic)](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. Načtěte balíček **AzureML** a pak nastavte hodnoty proměnných pomocí tokenu a ID pracovního prostoru v relaci jazyka R na DSVM:
 
+        if(!require("devtools")) install.packages("devtools")
+        devtools::install_github("RevolutionAnalytics/AzureML")
         if(!require("AzureML")) install.packages("AzureML")
         require(AzureML)
         wsAuth = "<authorization-token>"
@@ -206,9 +208,23 @@ Pokud chcete nasadit kód rozhodovacího stromu z předchozí části, přihlast
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
+1. Vytvořte soubor Settings. JSON pro tento pracovní prostor:
+
+        vim ~/.azureml/settings.json
+
+1. Zajistěte, aby byly do nastavení. JSON vloženy následující obsah:
+
+         {"workspace":{
+           "id": "<workspace-id>",
+           "authorization_token": "<authorization-token>",
+           "api_endpoint": "https://studioapi.azureml.net",
+           "management_endpoint": "https://management.azureml.net"
+         }
+
 
 1. Publikujte funkci **predictSpam** do AzureML pomocí funkce **publishWebService** :
 
+        ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
 1. Tato funkce přijímá funkci **predictSpam** , vytvoří webovou službu s názvem **spamWebService** , která má definované vstupy a výstupy, a potom vrátí informace o novém koncovém bodu.
@@ -370,11 +386,11 @@ Načíst a nakonfigurovat datové sady:
 1. Chcete-li načíst soubor, vyberte kartu **data** .
 1. Zvolte selektor vedle **filename**a pak vyberte **spambaseHeaders. data**.
 1. Načíst soubor. Vyberte **provést**. Měl by se zobrazit shrnutí každého sloupce, včetně jeho identifikovaného datového typu. bez ohledu na to, zda se jedná o vstup, cíl nebo jiný typ proměnné; a počet jedinečných hodnot.
-1. Rattle správně zjistila **nevyžádané pošty** sloupce jako cíl. Vyberte sloupec **spam** a pak nastavte **cílový datový typ** na **Categoric**.
+1. Rattle správně identifikovala sloupec **spam** jako cíl. Vyberte sloupec **spam** a pak nastavte **cílový datový typ** na **Categoric**.
 
 K prozkoumání dat:
 
-1. Vyberte **prozkoumat** kartu.
+1. Vyberte kartu **prozkoumat** .
 1. Chcete-li zobrazit informace o typech proměnných a některých souhrnných statistik, vyberte možnost **souhrn** > **provést**.
 1. Chcete-li zobrazit další typy statistik o jednotlivých proměnných, vyberte další možnosti, například **Popis** nebo **základy**.
 
@@ -388,7 +404,7 @@ Tato **korelace** je také zajímavá. Vytvoření grafu:
 
 1. Jako **typ**vyberte **korelace**.
 1. Vyberte **Provést**.
-1. Rattle vás upozorní, doporučuje se maximálně 40 proměnné. Vyberte **Ano** k vykreslení zobrazení.
+1. Rattle vás upozorní, doporučuje se maximálně 40 proměnné. Vyberte **Ano** pro zobrazení grafu.
 
 Existují některé zajímavé korelace, které se přidávají: _technologie_ se silně korelují se _HP_ a _Labs_, například. Také se silně koreluje s _650_ , protože kód oblasti dárce datové sady je 650.
 
@@ -413,10 +429,10 @@ Vraťte se na kartu **cluster** . Vyberte **KMeans**a pak nastavte **počet clus
 
 Postup sestavení základního modelu Machine Learning pro rozhodovací strom:
 
-1. Vyberte **modelu** kartě
+1. Vyberte kartu **model** .
 1. Pro **typ**vyberte **strom**.
-1. Vyberte **Execute** k zobrazení stromu v textové podobě, v okně výstup.
-1. Vyberte **nakreslit** tlačítko Zobrazit grafické verze. Rozhodovací strom vypadá podobně jako strom, který jsme dříve získali pomocí rpart.
+1. Vyberte **Spustit** pro zobrazení stromu v textovém formuláři v okně výstup.
+1. Vyberte tlačítko **Kreslení** pro zobrazení grafické verze. Rozhodovací strom vypadá podobně jako strom, který jsme dříve získali pomocí rpart.
 
 Užitečnou funkcí Rattle je schopnost spustit několik metod strojového učení a rychle je vyhodnotit. Tady je postup:
 
@@ -425,7 +441,7 @@ Užitečnou funkcí Rattle je schopnost spustit několik metod strojového učen
 1. Po dokončení běhu Rattle můžete vybrat libovolnou hodnotu **typu** , jako je **SVM**, a zobrazit výsledky.
 1. Můžete také porovnat výkon modelů v sadě ověřování pomocí karty **vyhodnocení** . Například výběr **matice chyb** ukazuje záměnu, celkovou chybu a průměrnou chybu třídy pro každý model v sadě ověřování. Můžete také kreslit křivky ROC, spustit analýzu citlivosti a provádět další typy vyhodnocení modelu.
 
-Po dokončení vytváření modelů vyberte kartu **protokol** . zobrazí se kód R, který byl spuštěn Rattle během vaší relace. Můžete vybrat **exportovat** tlačítko a uložte ho.
+Po dokončení vytváření modelů vyberte kartu **protokol** . zobrazí se kód R, který byl spuštěn Rattle během vaší relace. Můžete vybrat tlačítko **exportovat** a uložit ho.
 
 > [!NOTE]
 > Aktuální verze Rattle obsahuje chybu. Chcete-li změnit skript nebo ho použít k opakování kroků později, je nutné před *exportem tohoto protokolu* vložit **#** znak... v textu protokolu.
@@ -495,19 +511,19 @@ Nastavit připojení k místnímu serveru:
 1. Vyberte **Windows** > **Zobrazit aliasy.**
 1. Kliknutím na tlačítko **+** vytvořte nový alias. Jako název nového aliasu zadejte **Nevyžádaná databáze**. 
 1. V případě **ovladače**vyberte **PostgreSQL**.
-1. Nastavení adresy URL **jdbc:postgresql://localhost/spam**.
+1. Nastavte adresu URL na **JDBC: PostgreSQL://localhost/spam**.
 1. Zadejte své uživatelské jméno a heslo.
 1. Vyberte **OK**.
-1. Otevřete **připojení** okna, dvakrát klikněte **nevyžádané pošty databáze** alias.
+1. Okno **připojení** otevřete dvojitým kliknutím na alias **databáze spamu** .
 1. Vyberte **Connect** (Připojit).
 
 Pokud chcete spustit některé dotazy:
 
-1. Vyberte **SQL** kartu.
+1. Vyberte kartu **SQL** .
 1. Do pole dotaz v horní části karty **SQL** zadejte základní dotaz, například `SELECT * from data;`.
 1. Spusťte dotaz stisknutím kombinace kláves CTRL + ENTER. Ve výchozím nastavení vrátí SQuirreL SQL prvních 100 řádků z dotazu.
 
-Existuje mnoho dalších dotazů, které můžete použít k prozkoumání těchto dat. Příklad, jak funguje frekvence slovo *zkontrolujte* se liší mezi nevyžádané pošty se šunkou?
+Existuje mnoho dalších dotazů, které můžete použít k prozkoumání těchto dat. Například způsob, jakým *se frekvence slova liší* mezi nevyžádanou poštou a Ham?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 

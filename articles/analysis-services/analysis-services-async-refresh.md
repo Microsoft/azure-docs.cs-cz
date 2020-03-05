@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029871"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273724"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
 Pomocí libovolného programovacího jazyka, který podporuje volání REST, můžete provádět asynchronní operace aktualizace dat na vašich Azure Analysis Services tabelárních modelech. To zahrnuje synchronizaci replik jen pro čtení pro horizontální navýšení kapacity dotazů. 
 
-Operace aktualizace dat můžou určitou dobu trvat v závislosti na řadě faktorů, včetně objemu dat, úrovně optimalizace pomocí oddílů atd. Tyto operace byly tradičně vyvolány s existujícími metodami, jako je [například použití modelu](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (tabelární objektový model), rutin [prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) nebo [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (skriptovací jazyk tabelárního modelu). Tyto metody ale můžou vyžadovat často nespolehlivá, dlouhodobě běžící připojení HTTP.
+Operace aktualizace dat můžou určitou dobu trvat v závislosti na řadě faktorů, včetně objemu dat, úrovně optimalizace pomocí oddílů atd. Tyto operace byly tradičně vyvolány s existujícími metodami, jako je [například použití modelu](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (tabelární objektový model), rutin [prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) nebo [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (skriptovací jazyk tabelárního modelu). Tyto metody ale můžou vyžadovat často nespolehlivá, dlouhodobě běžící připojení HTTP.
 
 REST API pro Azure Analysis Services umožňuje asynchronní provádění operací aktualizace dat. Když použijete REST API, dlouhotrvající připojení HTTP z klientských aplikací není nutné. K dispozici jsou také další integrované funkce pro spolehlivost, například automatické opakování a dávková potvrzení.
 
@@ -56,7 +56,7 @@ Můžete například použít příkaz POST v kolekci reaktuálnosti k proveden�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2) v autorizační hlavičce a musí splňovat následující požadavky:
 
@@ -97,11 +97,11 @@ Tělo může vypadat takto:
 
 Určení parametrů není vyžadováno. Použije se výchozí hodnota.
 
-| Name (Název)             | Typ  | Popis  |Výchozí  |
+| Název             | Typ  | Popis  |Výchozí  |
 |------------------|-------|--------------|---------|
-| `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   automaticky      |
+| `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   Automatické      |
 | `CommitMode`     | Výčet  | Určuje, zda budou objekty potvrzeny v dávkách nebo pouze v případě, že jsou dokončeny. Mezi režimy patří: Default, Transaction, partialBatch.  |  doručen       |
-| `MaxParallelism` | Int   | Tato hodnota určuje maximální počet vláken, ve kterých se paralelně spouští příkazy zpracování. Tato hodnota je zarovnána s vlastností MaxParallelism, kterou lze nastavit v [příkazu TMSL Sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) nebo pomocí jiných metod.       | 10        |
+| `MaxParallelism` | Int   | Tato hodnota určuje maximální počet vláken, ve kterých se paralelně spouští příkazy zpracování. Tato hodnota je zarovnána s vlastností MaxParallelism, kterou lze nastavit v [příkazu TMSL Sequence](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) nebo pomocí jiných metod.       | 10        |
 | `RetryCount`     | Int   | Určuje počet pokusů, kolikrát operace proběhne znovu, než dojde k selhání.      |     0    |
 | `Objects`        | Pole | Pole objektů, které mají být zpracovány. Každý objekt obsahuje: "Table" při zpracovávání celé tabulky nebo tabulky "a" partition "při zpracování oddílu. Nejsou-li zadány žádné objekty, je obnoven celý model. |   Zpracování celého modelu      |
 
@@ -222,7 +222,7 @@ Další informace o tom, jak nastavit instanční objekt a přiřadit potřebná
 3.  Spusťte ukázku.
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 [Ukázky](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

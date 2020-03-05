@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ddd4f45e88c0bcc63fb62cc816fae4dbad255841
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 602f5a794f90e52ac80ea71ea2ed3656a7e0e5e7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157580"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269461"
 ---
 # <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
@@ -78,7 +78,7 @@ Služba front Azure se využívá k ukládání a načítání zpráv. Fronty zp
 
 Další informace o službě Fronty Azure najdete v tématu o [seznámení s Frontami](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Table Storage
+## <a name="table-storage"></a>Úložiště Table
 
 Azure Table Storage je teď součástí služby Azure Cosmos DB. Dokumentaci ke službě Azure Table Storage najdete v tématu [Přehled služby Azure Table Storage](../tables/table-storage-overview.md). Kromě existující služby Azure Table Storage je k dispozici také nabídka nového rozhraní API tabulky Azure Cosmos DB, které poskytuje tabulky s optimalizovanou propustností, globální distribuci a automatické sekundární indexy. Další informace a možnost vyzkoušet si nové prostředí úrovně Premium najdete na stránce [Rozhraní API tabulky Azure Cosmos DB](https://aka.ms/premiumtables).
 
@@ -141,7 +141,7 @@ Prostředky Azure Storage jsou dostupné přes jakýkoli jazyk, který umí vytv
 - [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [Klientská knihovna Azure Storage pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Klientská knihovna Azure Storage pro Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage klientskou knihovnu pro Node. js](https://docs.microsoft.com/javascript/api/overview/azure/storage)
+- [Azure Storage klientskou knihovnu pro Node. js](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [Klientská knihovna Azure Storage pro Python](https://github.com/Azure/azure-storage-python)
 - [Klientská knihovna Azure Storage pro PHP](https://github.com/Azure/azure-storage-php)
 - [Klientská knihovna Azure Storage pro Ruby](https://github.com/Azure/azure-storage-ruby)

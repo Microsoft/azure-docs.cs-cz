@@ -1,5 +1,5 @@
 ---
-title: Azure Relay metriky v Azure Monitor (Preview) | Microsoft Docs
+title: Azure Relay metriky v Azure Monitor | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak můžete pomocí Azure Monitor monitorovat stav Azure Relay.
 services: service-bus-relay
 documentationcenter: .NET
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 159249e2c997e4c414127992b08a83b488281e46
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514931"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273114"
 ---
-# <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Relay metriky v Azure Monitor (Preview)
+# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Relay metriky v Azure Monitor 
 Azure Relay metriky poskytují stav prostředků ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posoudit celkový stav svých prostředků přenosu, nejen na úrovni oboru názvů, ale také na úrovni entity. Tyto statistiky můžou být důležité, protože vám pomohou monitorovat stav Azure Relay. Metriky může také pomoct potíží hlavní příčinu, aniž byste museli kontaktovat podporu Azure.
 
-Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování napříč různými službami Azure. Další informace najdete v tématu [monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) a [metriky načíst Azure Monitor s využitím .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) ukázka na Githubu.
+Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování napříč různými službami Azure. Další informace najdete v tématu [monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) a na webu GitHub [s ukázkou načítání Azure monitor metriky s rozhraním .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) Sample.
 
 > [!IMPORTANT]
 > Tento článek se vztahuje pouze na funkci Hybrid Connections Azure Relay, nikoli na WCF Relay. 
 
 ## <a name="access-metrics"></a>Metriky přístup
 
-Azure Monitor poskytuje několik způsobů přístupu metriky. Můžete buď metriky přístup prostřednictvím [webu Azure portal](https://portal.azure.com), nebo pomocí rozhraní API služby Azure Monitor (REST a .NET) a řešení pro analýzu, jako je například Operations Management Suite a Služba Event Hubs. Další informace najdete v tématu [monitorování dat shromážděných službou Azure Monitor](../azure-monitor/platform/data-platform.md).
+Azure Monitor poskytuje několik způsobů přístupu metriky. Můžete buď přistupovat ke metrikám prostřednictvím [Azure Portal](https://portal.azure.com), nebo použít rozhraní API Azure monitor (Rest a .NET) a analytická řešení, jako je Operations Management Suite a Event Hubs. Další informace najdete v tématu [monitorování dat shromažďovaných pomocí Azure monitor](../azure-monitor/platform/data-platform.md).
 
-Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) ve službě Azure Monitor.
+Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Tato možnost je nakonfigurována v [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) v Azure monitor.
 
 ## <a name="access-metrics-in-the-portal"></a>Přístup metrik na portálu
 
-Metriky můžete sledovat v čase [webu Azure portal](https://portal.azure.com). Následující příklad ukazuje, jak zobrazit úspěšné požadavky a příchozí žádosti na úrovni účtu:
+Metriky můžete monitorovat v průběhu času v [Azure Portal](https://portal.azure.com). Následující příklad ukazuje, jak zobrazit úspěšné požadavky a příchozí žádosti na úrovni účtu:
 
 ![][1]
 
-Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Provedete to tak, že vyberete svůj obor názvů a kliknete na **metriky (Preview)** . 
+Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Provedete to tak, že vyberete svůj obor názvů a potom kliknete na * * metriky * *. 
 
 Pro metriky podporující dimenze je nutné filtrovat pomocí požadované hodnoty dimenze.
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
 Použití metrik ve službě Azure Monitor je aktuálně zdarma ve verzi preview. Ale pokud používáte další řešení, která ingestovat data metrik, vám může účtovat podle těchto řešení. Například jste se účtují po Azure Storage při archivaci dat metrik do účtu služby Azure Storage. Pokud streamuje data metriky do protokolů Azure Monitor pro pokročilou analýzu, budou se vám účtovat i protokoly Azure Monitor.
 
@@ -60,24 +60,24 @@ Všechny hodnoty metriky se posílají do Azure monitoru každou minutu. Časov�
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| ListenerConnections – úspěch (Preview) | Počet úspěšných připojení naslouchacího procesu provedených k Azure Relay v zadaném období. <br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|ListenerConnections-ClientError (Preview)|Počet chyb klienta na připojeních naslouchacího procesu v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|ListenerConnections-ServerError (Preview)|Počet chyb serveru v připojeních naslouchacího procesu v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|SenderConnections – úspěch (Preview)|Počet úspěšných připojení odesílatele provedených v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|SenderConnections-ClientError (Preview)|Počet chyb klienta v připojeních odesílatelů v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|SenderConnections-ServerError (Preview)|Počet chyb serveru v připojeních odesílatele v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|ListenerConnections-TotalRequests (Preview)|Celkový počet připojení naslouchacího procesu v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|SenderConnections-TotalRequests (Preview)|Žádosti o připojení provedené odesílateli v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|ActiveConnections (preview)|Počet aktivních připojení v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|ActiveListeners (Preview)|Počet aktivních naslouchací procesů v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|ListenerDisconnects (Preview)|Počet odpojených naslouchacího procesu v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|SenderDisconnects (Preview)|Počet odpojených odesílatelů v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+| ListenerConnections – úspěch  | Počet úspěšných připojení naslouchacího procesu provedených k Azure Relay v zadaném období. <br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|ListenerConnections-ClientError |Počet chyb klienta na připojeních naslouchacího procesu v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|ListenerConnections-ServerError |Počet chyb serveru v připojeních naslouchacího procesu v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|SenderConnections – úspěch |Počet úspěšných připojení odesílatele provedených v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|SenderConnections – ClientError |Počet chyb klienta v připojeních odesílatelů v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|SenderConnections-ServerError |Počet chyb serveru v připojeních odesílatele v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|ListenerConnections-TotalRequests |Celkový počet připojení naslouchacího procesu v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|SenderConnections-TotalRequests |Žádosti o připojení provedené odesílateli v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|ActiveConnections |Počet aktivních připojení. Tato hodnota je hodnota k určitému bodu v čase.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|ActiveListeners |Počet aktivních naslouchací proces. Tato hodnota je hodnota k určitému bodu v čase.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|ListenerDisconnects |Počet odpojených naslouchacího procesu v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|SenderDisconnects |Počet odpojených odesílatelů v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Metriky využití paměti
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|BytesTransferred (Preview)|Počet bajtů přenesených v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|BytesTransferred |Počet bajtů přenesených v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 
 ## <a name="metrics-dimensions"></a>Dimenze metriky
 
@@ -89,7 +89,7 @@ Azure Relay podporuje následující dimenze pro metriky v Azure Monitor. Přid�
 
 ## <a name="next-steps"></a>Další kroky
 
-Zobrazit [Přehled monitorování Azure](../monitoring-and-diagnostics/monitoring-overview.md).
+Podívejte se na téma [Přehled monitorování Azure](../monitoring-and-diagnostics/monitoring-overview.md).
 
 [1]: ./media/relay-metrics-azure-monitor/relay-monitor1.png
 

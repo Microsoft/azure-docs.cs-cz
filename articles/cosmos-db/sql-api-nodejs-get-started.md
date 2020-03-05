@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 5204c7cf80a5b52b0c30b3165d522aa2648cd95c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 67f0d79c6b074a822917829eee94c5fd3f6a1ef2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587426"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274040"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření konzolové aplikace Node. js pomocí sady JavaScript SDK pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -27,7 +27,7 @@ ms.locfileid: "77587426"
 
 Jako vývojář můžete mít aplikace, které používají data dokumentů NoSQL. K ukládání a přístupu k datům v dokumentu můžete použít účet rozhraní SQL API v Azure Cosmos DB. V tomto kurzu se dozvíte, jak vytvořit konzolovou aplikaci Node. js pro vytváření Azure Cosmos DBch prostředků a dotazování na ně.
 
-V tomto kurzu se naučíte:
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Vytvořte účet Azure Cosmos DB a připojte se k němu.
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > * Přidejte položky do kontejneru.
 > * Provede základní operace s položkami, kontejnerem a databází.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Ujistěte se, že máte následující prostředky:
 
@@ -438,7 +438,7 @@ Azure Cosmos DB podporuje formátované dotazy na dokumenty JSON uložené v ka�
         ]
     };
 
-    const { resources } = await client.database(databaseId).container(containerId).items.query(querySpec, {enableCrossPartitionQuery:true}).fetchAll();
+    const { resources } = await client.database(databaseId).container(containerId).items.query(querySpec).fetchAll();
     for (var queryResult of resources) {
         let resultString = JSON.stringify(queryResult);
         console.log(`\tQuery returned ${resultString}\n`);

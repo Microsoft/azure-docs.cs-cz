@@ -1,20 +1,19 @@
 ---
 title: Vizualizace Apache Hive dat pomocí Power BI – Azure HDInsight
 description: Naučte se používat Microsoft Power BI k vizualizaci dat podregistru zpracovávaných službou Azure HDInsight.
-keywords: HDInsight, Hadoop, podregistr, interaktivní dotaz, interaktivní podregistr, LLAP, ODBC
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 9b99e24d00441f0caab4b55a46e5ccc8be9cdd64
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/02/2020
+ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529530"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267804"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace Apache Hivech dat s využitím Microsoft Power BI pomocí rozhraní ODBC ve službě Azure HDInsight
 
@@ -33,9 +32,9 @@ Tyto informace platí také pro nový typ clusteru [interaktivních dotazů](../
 
 Před provedením tohoto článku musíte mít následující položky:
 
-* **Cluster HDInsight**. Cluster může být buď cluster HDInsight s podregistrem, nebo nově vydaným clusterem interaktivních dotazů. Informace o vytváření clusterů najdete v tématu [Vytvoření clusteru](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* Cluster HDInsight. Cluster může být buď cluster HDInsight s podregistrem, nebo nově vydaným clusterem interaktivních dotazů. Informace o vytváření clusterů najdete v tématu [Vytvoření clusteru](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Kopii si můžete stáhnout z webu [Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=45331).
+* [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/). Kopii si můžete stáhnout z webu [Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="create-hive-odbc-data-source"></a>Vytvoření zdroje dat Hive ODBC
 
@@ -47,7 +46,7 @@ Tabulka podregistru **hivesampletable** se dodává se všemi clustery HDInsight
 
 1. Spusťte Power BI Desktop.
 
-1. V horní nabídce přejděte na **domovskou**  > **získat data**  > **Další...** .
+1. V horní nabídce přejděte na **domovskou** > **získat data** > **Další...** .
 
     ![Aplikace Power BI v HDInsight – otevřít data](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 

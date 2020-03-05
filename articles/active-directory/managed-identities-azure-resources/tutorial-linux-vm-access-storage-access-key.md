@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Storage-Linux-Azure AD
+title: Kurz`:` použití spravované identity pro přístup k Azure Storage pomocí přístupového klíče-Linux – Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35c31fbf8c7c1aa37134a1808cd3f54a559833c1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183420"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273823"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage prostřednictvím přístupového klíče
 
@@ -32,11 +32,11 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Udělit virtuálnímu počítači přístup k přístupovým klíčům účtu úložiště v Resource Manageru. 
 > * Získat přístupový token pomocí identity virtuálního počítače a použít ho k načtení přístupových klíčů k úložišti z Resource Manageru.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
 
 Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok také můžete přeskočit a udělit spravované identitě přiřazené systémem virtuálního počítače přístup ke klíčům stávajícího účtu úložiště. 
 
@@ -45,7 +45,7 @@ Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok tak
 3. Zadejte **název** tohoto účtu úložiště, který použijete později.  
 4. V polích **Model nasazení** a **Druh účtu** nastavte Resource manager a Pro obecné účely (v uvedeném pořadí). 
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
-6. Klikněte na **Vytvořit**.
+6. Klikněte na možnost **Vytvořit**.
 
     ![Vytvoření nového účtu úložiště](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -53,7 +53,7 @@ Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok tak
 
 Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vyžadují úložiště objektů blob. Proto potřebujeme vytvořit kontejner objektů blob, do kterého soubor uložíme.
 
-1. Přejděte zpět k nově vytvořenému účtu úložiště.
+1. Vraťte se k nově vytvořenému účtu úložiště.
 2. Nalevo pod položkou „Blob service“ klikněte na odkaz **Kontejnery**.
 3. Když nahoře na stránce kliknete na **+ Kontejner**, vysune se panel Nový kontejner.
 4. Pojmenujte kontejner, vyberte úroveň přístupu a klikněte na **OK**. Zadaný název použijeme v další části tohoto kurzu. 
@@ -64,7 +64,7 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 
 V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači přístup ke klíčům k vašemu účtu úložiště.   
 
-1. Přejděte zpět k nově vytvořenému účtu úložiště.
+1. Vraťte se k nově vytvořenému účtu úložiště.
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)** .  
 3. Kliknutím na **+ Přidat přiřazení role** v horní části stránky přidejte nové přiřazení role pro virtuální počítač.
 4. Na pravé straně stránky nastavte položku **Role** na Role služby Operátor klíčů účtů úložiště. 
@@ -107,7 +107,7 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
     
 ## <a name="get-storage-account-access-keys-from-azure-resource-manager-to-make-storage-calls"></a>Získání přístupových klíčů k účtu úložiště z Azure Resource Manageru kvůli volání úložiště  
 
-Teď použijte CURL k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k úložišti. Jakmile máte přístupový klíč k úložišti, můžete volat operace nahrávání do úložiště nebo stahování z úložiště. Nezapomeňte nahradit parametry `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<STORAGE ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem:
+Teď použijte CURL k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k úložišti. Jakmile máte přístupový klíč k úložišti, můžete volat operace nahrávání do úložiště nebo stahování z úložiště. Nezapomeňte nahradit hodnoty parametrů `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<STORAGE ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem:
 
 ```bash 
 curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listKeys?api-version=2016-12-01 --request POST -d "" -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -121,7 +121,7 @@ V odpovědi CURL získáte seznam klíčů:
 ```bash 
 {"keys":[{"keyName":"key1","permissions":"Full","value":"iqDPNt..."},{"keyName":"key2","permissions":"Full","value":"U+uI0B..."}]} 
 ```
-Vytvořte ukázkový soubor objektů blob, který nahrajete do kontejneru úložiště objektů blob. Na linuxovém virtuálním počítači k tomu použijte následující příkaz: 
+Vytvořte ukázkový soubor objektu blob, který nahrajete do kontejneru úložiště objektů blob. Na virtuálním počítači s Linuxem k tomu použijte následující příkaz. 
 
 ```bash
 echo "This is a test file." > test.txt

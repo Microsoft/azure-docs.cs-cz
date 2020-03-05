@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9e42ff0ec5b44dca743d2ec1470c2eef655b9436
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368850"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273101"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -25,7 +25,7 @@ Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Window
 - Odeslat zprávu aktivním uživatelům na konkrétním hostiteli relace.
 - Odhlaste uživatele z hostitele relace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj, je nutné vytvořit registraci aplikace Azure Active Directory a pracovní prostor Log Analytics. Vy nebo správce k tomu potřebují tato oprávnění:
 
@@ -128,10 +128,9 @@ Než budete pokračovat v nasazování diagnostického nástroje, doporučujeme,
 Chcete-li zajistit, aby registrace aplikace měla oprávnění rozhraní API:
 
 1. Otevřete prohlížeč a připojte se k [Azure Portal](https://portal.azure.com/) s účtem správce.
-2. Přejít na **Registrace aplikací** a vyhledat vaši registraci aplikace Azure AD.
-
-      ![Stránka oprávnění rozhraní API.](media/api-permissions-page.png)
-
+2. Přejít na **Azure Active Directory**.
+3. Přejít na **Registrace aplikací** a vyberte **všechny aplikace**.
+4. Vyhledejte registraci aplikace Azure AD se stejným názvem aplikace, který jste zadali v kroku 5 [Vytvoření registrace aplikace Azure Active Directory](deploy-diagnostics.md#create-an-azure-active-directory-app-registration).
 
 ### <a name="review-your-log-analytics-workspace"></a>Kontrola pracovního prostoru Log Analytics
 

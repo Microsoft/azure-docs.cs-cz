@@ -8,12 +8,12 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a222f72e705184c5a7ba6701cfda41073c7eba57
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 58294c7afdf31ddd29611351d6442db1c4966157
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548743"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269034"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
@@ -69,7 +69,7 @@ Vzhledem k tomu, že jsou výrobní a provozní procesy oddělené, zvažte nás
 
 * S jakýkoli proces na základě certifikátů certifikát kořenové certifikační Autority a všechny zprostředkující certifikáty certifikační Autority by měly budou zabezpečené a monitorované během celého procesu zavádění zařízení IoT Edge. Výrobce zařízení IoT Edge by měl mít silné procesy správné úložiště a používání jejich zprostředkující certifikáty. Kromě toho je třeba zařízení certifikát certifikační Autority uchovávat v jako zabezpečené úložiště jako na samotných zařízeních nejlépe modulu hardwarového zabezpečení.
 
-* Certifikát serveru IoT Edge hub je prezentován IoT Edgem rozbočovačem a připojenými klientskými zařízeními a moduly. Běžný název (CN) certifikátu certifikační autority zařízení **nesmí být** stejný jako název hostitele, který se použije v souboru config. yaml na zařízení IoT Edge. Název používaný klienty pro připojení k IoT Edge (například prostřednictvím parametru GatewayHostName připojovacího řetězce nebo příkazu připojit v MQTT) **nemůže být** stejný jako běžný název, který se používá v certifikátu certifikační autority zařízení. Toto omezení je způsobeno tím, že centrum IoT Edge prezentuje celý řetěz certifikátů pro ověřování klienty. Pokud má certifikát serveru IoT Edge hub a certifikát certifikační autority pro zařízení stejný CN, dostanete se do ověřovací smyčky a certifikát se zruší.
+* Certifikát serveru IoT Edge hub je prezentován IoT Edgem rozbočovačem a připojenými klientskými zařízeními a moduly. Běžný název (CN) certifikátu certifikační autority zařízení **nesmí být** stejný jako název hostitele, který se použije v souboru config. yaml na zařízení IoT Edge. Název používaný klienty pro připojení k IoT Edge (například prostřednictvím parametru GatewayHostName připojovacího řetězce nebo příkazu připojit v MQTT) **nemůže být** stejný jako běžný název použitý v certifikátu certifikační autority zařízení. Toto omezení je způsobeno tím, že centrum IoT Edge prezentuje celý řetěz certifikátů pro ověřování klienty. Pokud má certifikát serveru IoT Edge hub a certifikát certifikační autority pro zařízení stejný CN, dostanete se do ověřovací smyčky a certifikát se zruší.
 
 * Vzhledem k tomu, že je certifikát CA zařízení používán démonem zabezpečení IoT Edge k vygenerování konečných certifikátů IoT Edge, musí se jednat o podpisový certifikát, což znamená, že má funkce podepisování certifikátů. Použití certifikační autority V3 Basic Constraints: true pro certifikát certifikační autority zařízení automaticky nastaví požadované vlastnosti použití klíče.
 
@@ -78,7 +78,7 @@ Vzhledem k tomu, že jsou výrobní a provozní procesy oddělené, zvažte nás
 
 ## <a name="devtest-implications"></a>Důsledky pro vývoj/testování
 
-Pro vývoj a testování scénářů, společnost Microsoft poskytuje sadu [pohodlí skripty](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) pro generování-li se o neprodukční certifikátů vhodných pro IoT Edge ve scénáři transparentní brány. Příklady fungování skriptů najdete v tématu [Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení](how-to-create-test-certificates.md).
+Pro usnadnění vývojových a testovacích scénářů poskytuje společnost Microsoft sadu [praktických skriptů](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) pro generování neprodukčních certifikátů vhodných pro IoT Edge ve scénáři transparentní brány. Příklady fungování skriptů najdete v tématu [Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení](how-to-create-test-certificates.md).
 
 >[!Tip]
 > Připojit zařízení IoT "typu list" zařízení a aplikací, které používají naše sada SDK zařízení IoT pomocí IoT Edge, je nutné přidat volitelný parametr GatewayHostName ke konci připojovací řetězec zařízení. Při generování certifikátu serveru Edge Hub je založen na verzi nižší malými a velkými písmeny názvu hostitele z config.yaml, proto pro názvy shody a ověřovací certifikát TLS proběhla úspěšně, měli byste zadat parametr GatewayHostName malými písmeny.
@@ -100,6 +100,6 @@ Zobrazí se hierarchie certifikátů hloubky reprezentované na snímku obrazovk
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md)
+[Principy Azure IoT Edgech modulů](iot-edge-modules.md)
 
 [Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána](how-to-create-transparent-gateway.md)

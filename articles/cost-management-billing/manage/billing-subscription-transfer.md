@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188392"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245392"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -45,7 +45,7 @@ Pokud jste zákazníkem se smlouvou Enterprise (EA), můžou správci vaší org
 
     > [!IMPORTANT]
     >
-    > Pokud se rozhodnete přesunout předplatné do tenanta Azure AD nového účtu, všechna přiřazení [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) pro správu prostředků v předplatném se trvale odstraní. Přístup ke správě prostředků v předplatném bude mít pouze uživatel v novém účtu, který přijme žádost o převod. Další informace najdete v tématu [Převod předplatného na uživatele v jiném tenantovi Azure AD](../../cognitive-services/acoustics/known-issues.md). Případně můžete zrušit zaškrtnutí políčka u tenanta Azure AD předplatného, abyste vlastnictví fakturace převedli bez přesunu předplatného do tenanta nového účtu. Pokud to uděláte, zachovají se stávající oprávnění RBAC pro správu prostředků Azure.
+    > Pokud se rozhodnete přesunout předplatné do tenanta Azure AD nového účtu, všechna přiřazení [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) pro správu prostředků v předplatném se trvale odstraní. Přístup ke správě prostředků v předplatném bude mít pouze uživatel v novém účtu, který přijme žádost o převod. Další informace najdete v tématu [Převod předplatného na uživatele v jiném tenantovi Azure AD](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories). Případně můžete zrušit zaškrtnutí políčka u tenanta Azure AD předplatného, abyste vlastnictví fakturace převedli bez přesunu předplatného do tenanta nového účtu. Pokud to uděláte, zachovají se stávající oprávnění RBAC pro správu prostředků Azure.
 
     ![Stránka odeslání žádosti o převod](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522029"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269353"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
 
@@ -31,17 +31,17 @@ Tento dokument se zaměřuje na povolení ověřování bez hesla založeného n
 
 | Typ zařízení | Připojené k Azure AD | Připojené k hybridní službě Azure AD |
 | --- | --- | --- |
-| [Multi-Factor Authentication Azure](howto-mfa-getstarted.md) | X | X |
-| [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | X | X |
-| Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší. | X | X |
-| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1809 nebo vyšší. | X |   |
-| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 Insider Build 18945 nebo vyšší. |   | X |
-| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | X |
-| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | X |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (volitelné) | X | X |
-| Zřizovací balíček (volitelné) | X | X |
-| Zásady skupiny (volitelné) |   | X |
+| [Multi-Factor Authentication Azure](howto-mfa-getstarted.md) | × | × |
+| [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | × | × |
+| Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | × | × |
+| Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší. | × | × |
+| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1903 nebo vyšší. | × |   |
+| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 Insider Build 18945 nebo vyšší. |   | × |
+| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | × |
+| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | × |
+| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (volitelné) | × | × |
+| Zřizovací balíček (volitelné) | × | × |
+| Zásady skupiny (volitelné) |   | × |
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -54,6 +54,7 @@ Následující scénáře nejsou podporovány:
 - Přihlaste se k serveru pomocí bezpečnostního klíče.
 - Pokud jste svůj bezpečnostní klíč nepoužili k přihlášení k zařízení v online režimu, nemůžete ho použít k přihlášení nebo odemknutí offline.
 - Přihlášení nebo odemknutí zařízení s Windows 10 klíčem zabezpečení, který obsahuje několik účtů Azure AD. Tento scénář využívá Poslední účet přidaný do klíče zabezpečení. Operace WebAuthN umožňuje uživatelům zvolit účet, který chtějí použít.
+- Odemkněte zařízení s Windows 10 verze 1809. Pro dosažení optimálního prostředí použijte Windows 10 verze 1903 nebo vyšší.
 
 ## <a name="prepare-devices-for-preview"></a>Příprava zařízení pro verzi Preview
 
@@ -79,7 +80,7 @@ Organizace se můžou rozhodnout použít jednu nebo více následujících meto
 
 Pokud chcete povolit použití klíčů zabezpečení pomocí Intune, proveďte následující kroky:
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune** > **registrace zařízení** > **vlastnosti** **registrace** zařízení > **Windows Hello pro firmy** > .
 1. V části **Nastavení**nastavte **možnost použít klíče zabezpečení pro přihlášení** a **Povolit**.
 
@@ -89,7 +90,7 @@ Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci 
 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune:
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune** > **Konfigurace zařízení** > **profily** > **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením:
    - Název: bezpečnostní klíče pro přihlášení k Windows

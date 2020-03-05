@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 827c76610162d74c5283177fef4989204321f44b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152121"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268707"
 ---
 # <a name="partition-and-sample-module"></a>Oddíl a vzorový modul
 
@@ -154,9 +154,9 @@ Tato možnost se používá, pokud jste rozdělili datovou sadu do několika odd
 
 5. Pokud pracujete s více oddíly, je nutné přidat další instance **oddílu a vzorový** modul pro zpracování jednotlivých oddílů.
 
-    Řekněme například, že dříve dělené pacienty do čtyř přeložení pomocí stáří. Chcete-li pracovat s jednotlivými skládáními, potřebujete čtyři kopie **oddílu a vzorového** modulu a v každém z nich vyberete jiné skládání, jak je uvedeno níže. Není správné použít přímo výstup **pro přiřazení k skládání** .  
+    Například **oddíl a vzorový** modul ve druhém řádku je nastaven na hodnotu **přiřadit k skládání**a moduly ve třetím řádku jsou nastaveny na **skládání výběru**.   
 
-    [![oddíl a ukázka](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    ![Rozdělení a vzorky](./media/module/partition-and-sample.png)
 
 5. Spuštění kanálu
 

@@ -1,5 +1,6 @@
 ---
-title: Microsoft Threat Modeling Tool verze 7/2/2019 – Azure
+title: Microsoft Threat Modeling Tool verze 7/2/2019
+titleSuffix: Azure
 description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
 author: jegeib
 ms.author: jegeib
@@ -7,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: d26ff015156f5d050a74733ff82c811ff5f1700a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: d4a97a10b8055af4401dbe163723b1fb38a5d12f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75548770"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269672"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool vydání aktualizace 7.1.60702.1-7/2/2019
 
@@ -30,7 +31,7 @@ Komunita Open Source vytvořila sadu vzorníků pro vytváření modelovacích z
 
 ![Možnost ověření modelu](./media/threat-modeling-tool-releases-71607021/tmt-template-selection.png)
 
-## <a name="system-requirements"></a>Požadavky na systém
+## <a name="system-requirements"></a>Systémové požadavky
 
 - Podporované operační systémy
   - [Microsoft Windows 10 – aktualizace pro výročí](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) nebo novější

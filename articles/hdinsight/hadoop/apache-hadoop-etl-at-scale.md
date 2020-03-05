@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/27/2020
-ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/03/2020
+ms.openlocfilehash: 8a4205002a98a5b9670839b0de7b53d81e0221a6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846013"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271934"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -67,7 +67,7 @@ Data se obvykle ingestují do Azure Storage s využitím PowerShellu, Azure Stor
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-Azure Data Lake Storage (ADLS) je spravované úložiště s škálovatelným škálováním pro analytická data, která jsou kompatibilní se službou HDFS.  ADLS používá paradigma návrhu, který je podobný HDFS, a nabízí neomezenou škálovatelnost z pohledu celkové kapacity a velikosti jednotlivých souborů. ADLS je velmi dobré při práci s velkými soubory, protože velký soubor může být uložený v několika uzlech.  Dělení dat v ADLS se provádí na pozadí.  Získáte mimořádně velkou propustnost pro spouštění analytických úloh s tisíci souběžnými vykonavateli, kteří efektivně čtou a zapisují stovky terabajtů dat.
+Azure Data Lake Storage (ADLS) je spravované úložiště s škálovatelným škálováním pro analytická data, která jsou kompatibilní se službou HDFS.  ADLS používá paradigma návrhu, který je podobný HDFS, a nabízí neomezenou škálovatelnost z pohledu celkové kapacity a velikosti jednotlivých souborů. ADLS je velmi dobré při práci s velkými soubory, protože velký soubor může být uložený v několika uzlech.  Dělení dat v ADLS se provádí na pozadí.  Získáte obrovské propustnost pro spouštění analytických úloh s tisíci souběžnými prováděcími moduly, které efektivně čtou a zapisují stovky terabajtů dat.
 
 Data se obvykle ingestují do ADLS s využitím Azure Data Factory, ADLS sad SDK, AdlCopy služby, Apache DistCp nebo Apache Sqoop.  Které z těchto služeb se mají využít převážně, záleží na tom, kde jsou data.  Pokud jsou data aktuálně v existujícím clusteru Hadoop, můžete použít službu Apache DistCp, AdlCopy Service nebo Azure Data Factory.  Pokud je v Azure Blob Storage, můžete použít sadu Azure Data Lake Storage .NET SDK, Azure PowerShell nebo Azure Data Factory.
 

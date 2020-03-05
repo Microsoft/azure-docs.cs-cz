@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 3aba570bd7f80eab205fe52a731a1be933067012
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493199"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273569"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Aktivační událost Azure Service Bus pro Azure Functions
 
@@ -369,9 +369,6 @@ Aktivační událost Service Bus poskytuje několik [vlastností metadat](./func
 |`To`|`string`|Odeslání na adresu.|
 |`Label`|`string`|Popisek specifický pro aplikaci.|
 |`CorrelationId`|`string`|ID korelace.|
-
-> [!NOTE]
-> V současné době je Service Bus aktivační událost, která funguje s frontami s povolenou relací a odběry ve verzi Preview. Sledujte prosím [tuto položku](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) pro všechny další aktualizace, které se týkají tohoto. 
 
 Podívejte se na [Příklady kódu](#example) , které používají tyto vlastnosti dříve v tomto článku.
 

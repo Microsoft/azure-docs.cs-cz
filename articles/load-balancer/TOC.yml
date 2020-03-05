@@ -6,15 +6,15 @@
       href: load-balancer-overview.md
 - name: Rychlý start
   items:
-    - name: Portál
+    - name: Vytvoření nástroje pro vyrovnávání zatížení – portál
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Azure CLI
+    - name: Vytvoření nástroje pro vyrovnávání zatížení – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Azure PowerShell
+    - name: Vytvoření nástroje pro vyrovnávání zatížení – PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Šablona Azure Resource Manageru
+    - name: Vytvoření nástroje pro vyrovnávání zatížení – šablona
       href: quickstart-load-balancer-standard-public-template.md
-      displayName: ARM
+  expanded: true
 - name: Kurzy
   items:
     - name: Vyrovnávání zatížení internetového provozu do virtuálních počítačů

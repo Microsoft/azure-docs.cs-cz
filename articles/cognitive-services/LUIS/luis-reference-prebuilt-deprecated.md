@@ -8,25 +8,25 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933627"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270682"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Zastaralé předem připravené entity v aplikaci LUIS
 Následující předem připravených entit se považují za zastaralé a nelze přidat do nové aplikace LUIS.
 
-* **Datum a čas**: Stávající aplikace LUIS, které používají **DateTime** , by se měly migrovat na **datetimeV2**, i když entita DateTime dál funguje v existujících aplikacích, které ji používají.
-* **Zeměpisná**oblast: Stávající aplikace LUIS, které používají geografickou oblast, jsou podporovány do prosince 2018.
-* **Encyklopedie**: Stávající aplikace LUIS, které používají encyklopedii, se podporují do prosince 2018.
+* **DateTime**: existující aplikace Luis, které používají **DateTime** , by měly být migrovány do **datetimeV2**, i když entita DateTime nadále funguje v existujících aplikacích, které ji používají.
+* **Geografie**: stávající aplikace Luis, které používají **geografickou** podporu, jsou podporované do prosince 2018.
+* **Encyklopedie**: stávající aplikace Luis, které používají **encyklopedii** , se podporují do prosince 2018.
 
 ## <a name="geography-culture"></a>Zeměpisné oblasti jazykovou verzi
-**Zeměpisné oblasti** je k dispozici pouze v `en-us` národní prostředí.
+Oblast **geografie** je k dispozici pouze v `en-us` národním prostředí.
 
 #### <a name="3-geography-subtypes"></a>3 podtypy zeměpisné oblasti
 
@@ -40,10 +40,10 @@ Předem připravených entit   |   Ukázková promluva   |   JSON
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
 ## <a name="encyclopedia-culture"></a>Encyklopedie jazykovou verzi
-**Encyklopedie** je k dispozici pouze v `en-US` národní prostředí.
+**Encyklopedie** je k dispozici pouze v `en-US` národním prostředí.
 
 #### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedie
-Integrovaná entita encyklopedie obsahuje více než 100 dílčích typů v následující tabulce: Kromě toho se entity encyklopedie často mapují na více typů. Například dotaz Ronald Reagan poskytuje: 
+Integrované entity encyklopedie obsahuje více než 100 podtypy v následující tabulce: encyklopedie entity se navíc často mapují na víc typů. Například dotaz Ronald Reagan poskytuje:
 
 ```json
 {
@@ -161,7 +161,7 @@ Předem připravených entit   |   Předem připravených entit (podtypy)   |   
 `builtin.encyclopedia.finance.stock_exchange`| `builtin.encyclopedia.finance.stock_exchange`| `tokyo stock exchange`|
 `builtin.encyclopedia.film.festival`| `builtin.encyclopedia.film.festival`| `berlin international film festival`|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [dimenze](luis-reference-prebuilt-dimension.md), [e-mailu](luis-reference-prebuilt-email.md) entity, a [číslo](luis-reference-prebuilt-number.md). 
+Přečtěte si informace o [dimenzích](luis-reference-prebuilt-dimension.md), [e-mailových](luis-reference-prebuilt-email.md) entitách a [číslech](luis-reference-prebuilt-number.md).
 

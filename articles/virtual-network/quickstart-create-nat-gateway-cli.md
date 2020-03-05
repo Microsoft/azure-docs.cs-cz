@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 1317ea6526a28c5d71dce1a3c25b2fd05f5e446b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588854"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271310"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Rychlý Start: Vytvoření brány NAT pomocí Azure CLI
 
@@ -34,7 +34,7 @@ Tento kurz můžete dokončit pomocí Azure Cloud Shell nebo místně spustit p�
 Pokud se rozhodnete tyto příkazy spustit lokálně, musíte nainstalovat rozhraní příkazového řádku.  Tento kurz vyžaduje, abyste spustili verzi Azure CLI verze 2.0.71 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 
-## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
@@ -61,7 +61,7 @@ Pro přístup k veřejnému Internetu potřebujete pro bránu NAT jednu nebo ví
 
 ### <a name="create-a-public-ip-prefix"></a>Vytvoření předpony veřejné IP adresy
 
-Pomocí brány NAT můžete použít jeden nebo více prostředků veřejné IP adresy, předpony veřejných IP adres nebo obojí. V tomto scénáři přidáme prostředek s předponou veřejné IP adresy, abychom mohli Ukázat.   Pomocí [AZ Network Public-IP prefix Create](https://docs.microsoft.com/cli/azure/network/public-ip-prefix) vytvořte prostředek předpony veřejné IP adresy s názvem **myPublicIPprefix** v **myResourceGroupNAT**.
+Pomocí brány NAT můžete použít jeden nebo více prostředků veřejné IP adresy, předpony veřejných IP adres nebo obojí. V tomto scénáři přidáme prostředek s předponou veřejné IP adresy, abychom mohli Ukázat.   Pomocí [AZ Network Public-IP prefix Create](https://docs.microsoft.com/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) vytvořte prostředek předpony veřejné IP adresy s názvem **myPublicIPprefix** v **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip prefix create \
@@ -175,7 +175,7 @@ Vytvořte síťové rozhraní pomocí [AZ Network nic Create](/cli/azure/network
     --network-security-group myNSG
 ```
 
-### <a name="create-vm"></a>Vytvořit virtuální počítač
+### <a name="create-vm"></a>Vytvoření virtuálního počítače
 
 Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-create).  Vygenerujeme klíče SSH pro tento virtuální počítač a uložíte privátní klíč pro pozdější použití.
 

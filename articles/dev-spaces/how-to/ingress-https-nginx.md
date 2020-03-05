@@ -5,25 +5,25 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Naučte se nakonfigurovat Azure Dev Spaces k použití vlastního kontroleru NGINX příchozího přenosu dat a konfiguraci HTTPS pomocí tohoto kontroleru příchozího přenosu dat.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 2debe6daf409200059f28aef52202223193e8f0c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486198"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270051"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Použití vlastního kontroleru NGINX příchozího přenosu dat a konfigurace HTTPS
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure Dev Spaces, aby používaly vlastní kontroler příchozího přenosu dat (NGINX). Tento článek také ukazuje, jak nakonfigurovat tento vlastní kontroler příchozích dat na používání protokolu HTTPS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet][azure-account-create].
 * [Nainstalované rozhraní Azure CLI][az-cli]
 * [Cluster služby Azure Kubernetes (AKS) s povoleným Azure dev Spaces][qs-cli].
 * [kubectl][kubectl] je nainstalovaný.
 * Je [nainstalovaná Helm 3][helm-installed].
-* [Vlastní doména][custom-domain] s [zónou DNS][dns-zone] ve stejné skupině prostředků jako cluster AKS.
+* [Vlastní doména][custom-domain] se [zónou DNS][dns-zone].  Tento článek předpokládá, že vlastní doména a zóna DNS jsou ve stejné skupině prostředků jako cluster AKS, ale je možné použít vlastní doménu a zónu DNS v jiné skupině prostředků.
 
 ## <a name="configure-a-custom-nginx-ingress-controller"></a>Konfigurace vlastního kontroleru NGINX příchozího přenosu dat
 
@@ -96,7 +96,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Otevřete [hodnoty. yaml][values-yaml] a nahraďte všechny výskyty *< REPLACE_ME_WITH_HOST_SUFFIX >* *Nginx. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN*. Také nahraďte *Kubernetes.IO/Ingress.Class: Nginx-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: Nginx # Custom*příchozí příchozí přenos dat. Níže je uveden příklad aktualizovaného souboru `values.yaml`:
+Otevřete [hodnoty. yaml][values-yaml] a proveďte následující aktualizace:
+* Nahradí všechny výskyty *< REPLACE_ME_WITH_HOST_SUFFIX >* pomocí *Nginx. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN*. 
+* Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: Nginx # Custom*příchozí příchozí přenos dat. 
+
+Níže je uveden příklad aktualizovaného souboru `values.yaml`:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -149,6 +153,9 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
 Přejděte do služby *bikesharingweb* otevřením veřejné adresy URL z příkazu `azds list-uris`. Ve výše uvedeném příkladu je veřejná adresa URL pro službu *bikesharingweb* `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`.
+
+> [!NOTE]
+> Pokud se místo služby *bikesharingweb* zobrazí chybová stránka, ověřte **, že jste aktualizovali** poznámku *Kubernetes.IO/Ingress.Class* a hostitele v souboru *Values. yaml* .
 
 Pomocí příkazu `azds space select` Vytvořte podřízený prostor v rámci *vývoje* a seznam adres URL pro přístup k podřízenému vývojovému prostoru.
 

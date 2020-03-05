@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921092"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270146"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
@@ -37,7 +37,7 @@ Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se 
  
     ![přijímání příjmu streamování](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. V [uživatelském rozhraní Web](https://dataexplorer.azure.com/)definujte [zásady přijímání streamování](/azure/kusto/concepts/streamingingestionpolicy) pro tabulky nebo databáze, které budou přijímat streamovaná data. 
+1. V [uživatelském rozhraní Web](https://dataexplorer.azure.com/)definujte [zásady přijímání streamování](/azure/kusto/management/streamingingestionpolicy) pro tabulky nebo databáze, které budou přijímat streamovaná data. 
 
     > [!NOTE]
     > * Pokud je zásada definovaná na úrovni databáze, všechny tabulky v databázi mají povolený příjem dat do streamování.
@@ -63,7 +63,7 @@ Existují dva podporované typy přijímání streamování:
 > [!WARNING]
 > Zakazování příjmu streamování může trvat několik hodin.
 
-1. Přetáhněte [zásadu přijímání streamování](/azure/kusto/concepts/streamingingestionpolicy) ze všech relevantních tabulek a databází. Odebrání zásady přijímání do streamování spustí přenos dat příjmu streamování z počátečního úložiště do trvalého úložiště v úložišti sloupců (rozsahy nebo horizontálních oddílů). Pohyb dat může trvat během několika sekund po několik hodin, v závislosti na množství dat v počátečním úložišti a způsobu, jakým cluster používá a paměť.
+1. Přetáhněte [zásadu přijímání streamování](/azure/kusto/management/streamingingestionpolicy) ze všech relevantních tabulek a databází. Odebrání zásady přijímání do streamování spustí přenos dat příjmu streamování z počátečního úložiště do trvalého úložiště v úložišti sloupců (rozsahy nebo horizontálních oddílů). Pohyb dat může trvat během několika sekund po několik hodin, v závislosti na množství dat v počátečním úložišti a způsobu, jakým cluster používá a paměť.
 1. V Azure Portal přejdete do svého clusteru Azure Průzkumník dat. V **Nastavení**vyberte **Konfigurace**. 
 1. V podokně **Konfigurace** vyberte **vypnuto** a zakažte příjem **vysílání datového proudu**.
 1. Vyberte **Save** (Uložit).

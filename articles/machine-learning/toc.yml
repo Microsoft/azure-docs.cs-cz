@@ -208,6 +208,9 @@
         - name: Vytváření datových sad s popisky
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: Příjem dat s využitím Azure Data Factory
+          displayName: 'data, ingestion, adf'
+          href: how-to-data-ingest-adf.md
         - name: DevOps pro příjem dat
           displayName: 'data, ingestion, devops'
           href: how-to-cicd-data-ingestion.md
