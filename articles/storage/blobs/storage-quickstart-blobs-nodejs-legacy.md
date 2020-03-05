@@ -7,18 +7,18 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906470"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269500"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node. js
 
 V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Node. js. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Můžete nahrávat, stahovat, vypisovat a odstraňovat objekty BLOB a vy budete spravovat kontejnery.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvoření účtu úložiště](../common/storage-account-create.md)
@@ -256,7 +256,7 @@ async function showContainerNames(aborter, serviceURL) {
 
 Při vrácení odpovědi se pomocí iterace *containerItems* vypíše název do konzoly. 
 
-### <a name="upload-text"></a>Nahrání textu
+### <a name="upload-text"></a>Nahrání textového řetězce
 
 K nahrání textu do objektu blob se používá metoda *upload*.
 
@@ -401,7 +401,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci vzorku kódu. 
+Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci této ukázky kódu. 
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -409,4 +409,4 @@ Tento rychlý start ukazuje, jak spravovat objekty blob a kontejnery v úložiš
 
 > [!div class="nextstepaction"]
 > [Azure Storage v10 za účelem SDK pro
-> úložiště v jazyce javascript](https://github.com/Azure/azure-storage-js) [Azure Storage Reference k rozhraní JavaScript API](/javascript/api/overview/azure/storage?view=azure-node-legacy)
+> úložiště v jazyce javascript](https://github.com/Azure/azure-storage-js) [Azure Storage Reference k rozhraní JavaScript API](/javascript/api/overview/azure/storage-overview)

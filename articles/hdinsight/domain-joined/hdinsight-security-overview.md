@@ -1,22 +1,22 @@
 ---
 title: Přehled podnikového zabezpečení ve službě Azure HDInsight
 description: Seznamte se s různými metodami, abyste zajistili podnikové zabezpečení ve službě Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/23/2019
-ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/03/2020
+ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122105"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267709"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
 
-Azure HDInsight nabízí řadu metod pro řešení vašich potřeb podnikového zabezpečení. Většina těchto řešení se ve výchozím nastavení neaktivuje. Tato flexibilita vám umožní zvolit funkce zabezpečení, které jsou pro vás nejdůležitější, a pomůže vám vyhnout se placení funkcí, které nechcete. To také znamená, že je vaší zodpovědností zajistit, aby byla pro vaše nastavení a prostředí povolena správná řešení.
+Azure HDInsight nabízí řadu metod pro řešení vašich potřeb podnikového zabezpečení. Většina těchto řešení není ve výchozím nastavení aktivována. Tato flexibilita vám umožní zvolit funkce zabezpečení, které jsou pro vás nejdůležitější, a pomůže vám vyhnout se placení funkcí, které nechcete. To také znamená, že je vaší zodpovědností zajistit, aby byla pro vaše nastavení a prostředí povolena správná řešení.
 
 Tento článek popisuje řešení zabezpečení, a to dělením řešení zabezpečení na řádcích čtyř tradičních pilířů zabezpečení: zabezpečení, ověřování, autorizace a šifrování.
 
@@ -36,13 +36,13 @@ Všechny clustery nasazené ve virtuální síti budou mít taky privátní konc
 
 [Balíček zabezpečení podniku](apache-domain-joined-architecture.md) ze služby HDInsight poskytuje ověřování založené na službě Active Directory, podporu více uživatelů a řízení přístupu na základě rolí. Integrace služby Active Directory se dosahuje pomocí [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). S těmito možnostmi můžete vytvořit cluster HDInsight, který je připojený ke spravované doméně služby Active Directory. Pak můžete nakonfigurovat seznam zaměstnanců z podnikového, který se může ověřit a přihlásit ke clusteru.
 
-V rámci této instalace se zaměstnanci v podniku můžou přihlašovat k uzlům clusteru pomocí svých přihlašovacích údajů do domény. Můžou taky pomocí svých přihlašovacích údajů do domény ověřit pomocí dalších schválených koncových bodů, jako jsou zobrazení Apache Ambari, ODBC, JDBC, PowerShell a rozhraní REST API pro interakci s clusterem. 
+V rámci této instalace se zaměstnanci v podniku můžou přihlašovat k uzlům clusteru pomocí svých přihlašovacích údajů do domény. Můžou taky pomocí svých přihlašovacích údajů do domény ověřit pomocí dalších schválených koncových bodů, jako jsou zobrazení Apache Ambari, ODBC, JDBC, PowerShell a rozhraní REST API pro interakci s clusterem.
 
 ### <a name="authorization"></a>Autorizace
 
 Osvědčeným postupem, který používá většina podniků, je zajistit, že ne každý zaměstnanec má přístup ke všem podnikovým prostředkům. Správce může podobně definovat zásady řízení přístupu na základě rolí pro prostředky clusteru. To je dostupné jenom v clusterech ESP.
 
-Správce Hadoop může nakonfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení [podregistru](apache-domain-joined-run-hive.md)Apache, [HBA](apache-domain-joined-run-hbase.md) a [Kafka](apache-domain-joined-run-kafka.md) pomocí těchto modulů plug-in v Apache Ranger. Konfigurace zásad RBAC vám umožní přidružit oprávnění k roli v organizaci. Tato vrstva abstrakce usnadňuje zajištění, že lidé mají pouze oprávnění potřebná k provádění jejich pracovních odpovědností. Ranger také umožňuje auditovat přístup k datům zaměstnanců a jakékoli změny provedené v zásadách řízení přístupu.
+Správce Hadoop může nakonfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení [podregistru](apache-domain-joined-run-hive.md)Apache, [HBA](apache-domain-joined-run-hbase.md)a [Kafka](apache-domain-joined-run-kafka.md) pomocí těchto modulů plug-in v Apache Ranger. Konfigurace zásad RBAC vám umožní přidružit oprávnění k roli v organizaci. Tato vrstva abstrakce usnadňuje zajištění, že lidé mají pouze oprávnění potřebná k provádění jejich pracovních odpovědností. Ranger také umožňuje auditovat přístup k datům zaměstnanců a jakékoli změny provedené v zásadách řízení přístupu.
 
 Správce může například nakonfigurovat [Apache Ranger](https://ranger.apache.org/), aby nastavil zásady řízení přístupu pro Hive. Tato funkce zajišťuje filtrování na úrovni řádků a sloupců (maskování dat) a filtruje citlivá data proti neautorizovaným uživatelům.
 
@@ -50,9 +50,9 @@ Správce může například nakonfigurovat [Apache Ranger](https://ranger.apache
 
 Auditování veškerého přístupu k prostředkům clusteru a datům je nezbytné ke sledování neoprávněného nebo neúmyslného přístupu k prostředkům. Je to důležité jako ochrana prostředků clusteru HDInsight před neautorizovanými uživateli a zabezpečení dat.
 
-Správce může zobrazit a ohlásit veškerý přístup k prostředkům a datům clusteru HDInsight. Správce může také zobrazit a ohlásit všechny změny v zásadách řízení přístupu, které jsou vytvořeny v rámci podporovaných koncových bodů Apache Ranger. 
+Správce může zobrazit a ohlásit veškerý přístup k prostředkům a datům clusteru HDInsight. Správce může také zobrazit a ohlásit všechny změny v zásadách řízení přístupu, které jsou vytvořeny v rámci podporovaných koncových bodů Apache Ranger.
 
-Pro přístup k protokolům auditu Apache Ranger a Ambari a také k protokolům přístupu SSH [povolte Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) a zobrazte tabulky, které poskytují záznamy auditování.
+Pro přístup k protokolům auditu Apache Ranger a Ambari a k protokolům přístupu SSH [povolte Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) a zobrazte tabulky, které poskytují záznamy auditování.
 
 ### <a name="encryption"></a>Šifrování
 
@@ -62,7 +62,7 @@ Ochrana dat je důležitá pro splnění požadavků organizace na zabezpečení
 
 ### <a name="compliance"></a>Dodržování předpisů
 
-Nabídky dodržování předpisů Azure vycházejí z různých typů ujištění, včetně formálních certifikací, atestů, ověření, autorizací a hodnocení vyprodukovaných nezávislými společnostmi auditování třetích stran, jakož i smluvních změn. samoobslužné posouzení a dokumenty s pokyny pro zákazníky, které vytvořil Microsoft. Informace o kompatibilitě HDInsight najdete na [webu Microsoft Trust Center](https://www.microsoft.com/trust-center) a v tématu [přehled dodržování předpisů Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
+Nabídky dodržování předpisů Azure vycházejí z různých typů ujištění, včetně formálních certifikací, atestů, ověření, autorizací a hodnocení vytvořených nezávislými společnostmi auditů třetích stran, smluvními změnami. samoobslužné posouzení a dokumenty s pokyny pro zákazníky, které vytvořil Microsoft. Informace o kompatibilitě HDInsight najdete na [webu Microsoft Trust Center](https://www.microsoft.com/trust-center) a v tématu [přehled dodržování předpisů Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
 
 ## <a name="shared-responsibility-model"></a>Sdílený model odpovědnosti
 
@@ -88,8 +88,8 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 | Zabezpečení sítě | Konfigurace [virtuální sítě](../hdinsight-plan-virtual-network-deployment.md) |
 |  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Zákazník |
 |  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall | Zákazník |
-| Virtualizovaná infrastruktura | NEUŽÍVÁ SE. | HDInsight (poskytovatel cloudu) |
-| Zabezpečení fyzické infrastruktury | NEUŽÍVÁ SE. | HDInsight (poskytovatel cloudu) |
+| Virtualizovaná infrastruktura | neuvedeno | HDInsight (poskytovatel cloudu) |
+| Zabezpečení fyzické infrastruktury | neuvedeno | HDInsight (poskytovatel cloudu) |
 
 ## <a name="next-steps"></a>Další kroky
 

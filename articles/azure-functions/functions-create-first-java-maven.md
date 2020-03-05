@@ -1,20 +1,22 @@
 ---
-title: Publikování funkce do Azure pomocí Java a Maven
-description: Vytvoření a publikování funkce aktivované protokolem HTTP do Azure pomocí jazyků Java a Maven
-author: rloutlaw
+title: Použití jazyků Java a Maven/Gradle k publikování funkce do Azure
+description: Vytvoření a publikování funkce aktivované protokolem HTTP do Azure pomocí jazyků Java a Maven nebo Gradle.
+author: KarlErickson
+ms.author: karler
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249599"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272733"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Rychlý Start: použití Java a Maven k vytvoření a publikování funkce v Azure
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Rychlý Start: použití jazyků Java a Maven/Gradle k vytvoření a publikování funkce v Azure
 
-V tomto článku se dozvíte, jak sestavit a publikovat funkci jazyka Java pro Azure Functions pomocí nástroje příkazového řádku Maven. Jakmile budete hotovi, váš kód funkce se spustí v Azure v [plánu hostování bez serveru](functions-scale.md#consumption-plan) a spustí se požadavkem http.
+V tomto článku se dozvíte, jak sestavit a publikovat funkci Java pro Azure Functions pomocí nástroje příkazového řádku Maven/Gradle. Jakmile budete hotovi, váš kód funkce se spustí v Azure v [plánu hostování bez serveru](functions-scale.md#consumption-plan) a spustí se požadavkem http.
 
 <!--
 > [!NOTE] 
@@ -26,9 +28,15 @@ V tomto článku se dozvíte, jak sestavit a publikovat funkci jazyka Java pro A
 K vývoji funkcí pomocí Javy musíte mít nainstalovaný následující software:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks) verze 8
-- [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší
+::: zone pivot="java-build-tools-maven" 
+- [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+- [Gradle](https://gradle.org/)verze 4,10 a vyšší
+::: zone-end 
 
 Budete také potřebovat aktivní předplatné Azure. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,34 +44,20 @@ Budete také potřebovat aktivní předplatné Azure. [!INCLUDE [quickstarts-fre
 > [!IMPORTANT]
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
 
-## <a name="generate-a-new-functions-project"></a>Vygenerování nového projektu Functions
+## <a name="prepare-a-functions-project"></a>Příprava projektu Functions
 
+::: zone pivot="java-build-tools-maven" 
 Spuštěním následujícího příkazu v prázdné složce vygenerujte projekt Functions z [archetypu Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
-### <a name="linuxmacos"></a>Linux/macOS
-
 ```bash
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
 > [!NOTE]
+> Pokud používáte PowerShell, nezapomeňte přidat "" kolem parametrů.
+
+> [!NOTE]
 > Pokud máte problémy se spuštěním příkazu, podívejte se na to, co se používá `maven-archetype-plugin` verze. Vzhledem k tomu, že příkaz spouštíte v prázdném adresáři bez `.pom` souboru, může se pokusit použít modul plug-in starší verze z `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin`, pokud jste Maven upgradovali ze starší verze. Pokud ano, zkuste odstranit adresář `maven-archetype-plugin` a znovu spustit příkaz.
-
-### <a name="windows"></a>Windows
-
-```powershell
-mvn archetype:generate `
-    "-DarchetypeGroupId=com.microsoft.azure" `
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
-
-```cmd
-mvn archetype:generate ^
-    "-DarchetypeGroupId=com.microsoft.azure" ^
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
 
 Maven vás vyzve k zadání hodnot potřebných k dokončení generování projektu při nasazení. Po zobrazení výzvy zadejte následující hodnoty:
 
@@ -79,7 +73,35 @@ Maven vás vyzve k zadání hodnot potřebných k dokončení generování proje
 
 Zadejte `Y` nebo stiskněte klávesu ENTER a potvrďte ji.
 
-Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který v tomto příkladu je `fabrikam-functions`. 
+Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který v tomto příkladu je `fabrikam-functions`. Spuštěním následujícího příkazu změňte adresář na složku vytvořeného projektu.
+```bash
+cd fabrikam-function
+```
+
+::: zone-end 
+::: zone pivot="java-build-tools-gradle"
+Pomocí následujícího příkazu naklonujte vzorový projekt:
+
+```bash
+git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
+cd azure-functions-samples-java/
+```
+
+Otevřete `build.gradle` a změňte `appName` v následující části na jedinečný název, aby nedocházelo ke konfliktu názvů domén při nasazování do Azure. 
+
+```gradle
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample-demo'
+    pricingTier = 'Consumption'
+    region = 'westus'
+    runtime {
+      os = 'windows'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+```
+::: zone-end
 
 Otevřete nový soubor Function. Java z cesty *Src/Main/Java* v textovém editoru a zkontrolujte generovaný kód. Tento kód je funkce [aktivovaná protokolem HTTP](functions-bindings-http-webhook.md) , která vypisuje tělo žádosti. 
 
@@ -88,15 +110,23 @@ Otevřete nový soubor Function. Java z cesty *Src/Main/Java* v textovém editor
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Spusťte následující příkaz, který změní adresář na nově vytvořenou složku projektu a poté sestaví a spustí projekt funkce:
+Spuštěním následujícího příkazu Sestavte a spusťte projekt funkce:
 
-```console
-cd fabrikam-function
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end 
 
-Výstup se zobrazí jako následující z Azure Functions Core Tools při místním spuštění projektu:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end 
+
+Při místním spuštění projektu se zobrazí výstup podobný následujícímu: Azure Functions Core Tools:
 
 ```output
 ...
@@ -112,7 +142,7 @@ Http Functions:
 
 Aktivujte funkci z příkazového řádku pomocí funkce kudrlinkou v novém okně terminálu:
 
-```CMD
+```bash
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
@@ -135,13 +165,22 @@ az login
 > [!TIP]
 > Pokud má váš účet přístup k několika předplatným, použijte příkaz [AZ Account set](/cli/azure/account#az-account-set) k nastavení výchozího předplatného pro tuto relaci. 
 
-K nasazení projektu do nové aplikace Function App použijte následující příkaz Maven. 
+K nasazení projektu do nové aplikace Function App použijte následující příkaz. 
 
-```console
+
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end 
 
-Tento `azure-functions:deploy` cíl Maven v Azure vytvoří následující prostředky:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
+
+Tím se v Azure vytvoří následující prostředky:
 
 + Skupina prostředků. Pojmenovaná se _zdrojem_ prostředků, kterou jste zadali.
 + Účet úložiště. Požadováno funkcemi. Název se vygeneruje náhodně na základě požadavků na název účtu úložiště.

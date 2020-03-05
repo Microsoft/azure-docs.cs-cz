@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci z příkazového řádku a pak publikov
 ms.date: 01/28/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8648a0bdfaeeb8a89ea24b0f49610e5bf5c0491
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2a02e1481d975f877508bde02948bc65561b9f13
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190832"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272751"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce v Azure, která reaguje na požadavky HTTP
 
@@ -364,7 +364,7 @@ Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání**a připojen
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud budete pokračovat k dalšímu kroku, [přidejte výstupní vazbu fronty Azure Storage](functions-add-output-binding-storage-queue-python.md), zachovejte všechny prostředky na místě, jak budete vytvářet informace o tom, co jste už provedli.
+Pokud budete pokračovat k dalšímu kroku, [přidejte výstupní vazbu fronty Azure Storage](functions-add-output-binding-storage-queue-cli.md), zachovejte všechny prostředky na místě, jak budete vytvářet informace o tom, co jste už provedli.
 
 Jinak pomocí následujícího příkazu odstraňte skupinu prostředků a všechny její obsažené prostředky, abyste se vyhnuli vzniku dalších nákladů.
 
