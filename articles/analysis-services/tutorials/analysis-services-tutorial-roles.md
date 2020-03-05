@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572378"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273684"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
 
@@ -27,7 +27,7 @@ ms.locfileid: "73572378"
 
 Další informace o zabezpečení uživatelů ve službě Azure Analysis Services najdete v článku o [ověřování a oprávněních uživatelů](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ve vašem předplatném je služba Azure Active Directory.
 - Ve vašem předplatném je vytvořený [server Azure Analysis Services](../analysis-services-create-server.md).
@@ -52,7 +52,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 1. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
 
-    ![Připojení](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Připojit](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. Do pole **Název serveru** v dialogovém okně **Připojit k serveru** vložte název serveru zkopírovaný z portálu. V poli **Ověřování** zvolte **Active Directory Universal s podporou vícefaktorového ověřování**, zadejte svůj uživatelský účet a klikněte na **Připojit**.
    
@@ -82,7 +82,7 @@ V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo sku
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Přidání uživatele do role správce modelové databáze
 
-V rámci tohoto úkolu přidáte do role Internet Sales Administrator, která už v modelu existuje, uživatelský nebo skupinový účet. Tato role má oprávnění k úplnému řízení (správce) ukázkové modelové databáze adventureworks. V tomto úkolu se používá příkaz [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) jazyka TMSL ve skriptu, který je pro vás vytvořený.
+V rámci tohoto úkolu přidáte do role Internet Sales Administrator, která už v modelu existuje, uživatelský nebo skupinový účet. Tato role má oprávnění k úplnému řízení (správce) ukázkové modelové databáze adventureworks. V tomto úkolu se používá příkaz [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) jazyka TMSL ve skriptu, který je pro vás vytvořený.
 
 1. V **Průzkumníku objektů** rozbalte **Databáze** > **adventureworks** > **Role**. 
 2. Klikněte pravým tlačítkem na **Internet Sales Administrator**, pak klikněte na **Skriptovat roli jako** > **VYTVOŘIT NEBO NAHRADIT pro** > **Nové okno editoru dotazů**.
@@ -98,7 +98,7 @@ V rámci tohoto úkolu přidáte do role Internet Sales Administrator, která u�
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Přidání nové role modelové databáze a přidání uživatele nebo skupiny
 
-V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) ve skriptu TMSL k vytvoření nové role Internet Sales Global, určíte této roli oprávnění ke *čtení* a přidáte uživatelský nebo skupinový účet ze služby Azure AD.
+V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) ve skriptu TMSL k vytvoření nové role Internet Sales Global, určíte této roli oprávnění ke *čtení* a přidáte uživatelský nebo skupinový účet ze služby Azure AD.
 
 1. V **Průzkumníku objektů** klikněte pravým tlačítkem na **adventureworks** a pak klikněte na **Nový dotaz** > **XMLA**. 
 2. Zkopírujte a vložte do editoru dotazů následující skript TMSL:

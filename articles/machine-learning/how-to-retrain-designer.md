@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8e7874ec2a0ea160d29f8755ca8680c4dfbeec1d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921588"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268503"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Přeučení modelů pomocí návrháře Azure Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -119,7 +119,7 @@ Pomocí následujících kroků můžete odeslat koncový bod kanálu z návrhá
 
 1. Vyberte kanál, který chcete spustit.
 
-1. Vyberte **Run** (Spustit).
+1. Vyberte **Odeslat**.
 
 1. V dialogovém okně nastavení můžete zadat novou hodnotu cesty vstupních dat, která odkazuje na novou datovou sadu.
 
@@ -127,7 +127,9 @@ Pomocí následujících kroků můžete odeslat koncový bod kanálu z návrhá
 
 ### <a name="submit-runs-with-code"></a>Odeslat běh s kódem
 
-Existuje několik způsobů, jak získat přístup ke koncovému bodu REST programově v závislosti na vašem vývojovém prostředí. Ukázky kódu, které ukazují, jak odeslat spuštění kanálu s parametry na kartě **využití** vašeho kanálu, najdete v tématu.
+Koncový bod REST publikovaného kanálu můžete najít na panelu přehled. Zavoláním koncového bodu můžete publikovaný kanál přesměrovat.
+
+Chcete-li provést volání REST, budete potřebovat hlavičku ověřování typu Bearer (OAuth 2,0). Další informace o nastavení ověřování pro váš pracovní prostor a o tom, jak se provádí parametrizované volání REST, najdete v následující [části kurzu](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: ff1017c8a6bc3c2806da6ea2a53b931aaf28644f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 5ce10cf37b61b0269e6c8f2279b8814d9dc4a4f9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092096"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271207"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>Ukázky v Azure CLI pro virtuální síť
 
@@ -34,3 +34,4 @@ Následující tabulka obsahuje odkazy na skripty Bash s příkazy Azure CLI:
 | [Filtrování příchozího a odchozího síťového provozu virtuálního počítače](./scripts/virtual-network-cli-sample-filter-network-traffic.md) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do front-endové podsítě je omezený na HTTP, HTTPS a SSH. Odchozí provoz do internetu z back-endové podsítě není povolený. |
 |[Konfigurace virtuální sítě s duálním zásobníkem IPv4 a IPv6 se základními Load Balancer](./scripts/virtual-network-cli-sample-ipv6-dual-stack.md)|Nasadí virtuální síť s duálním zásobníkem (IPv4 + IPv6) se dvěma virtuálními počítači a Load Balancer Azure Basic s IP adresami IPv4 a IPv6. |
 |[Nakonfigurujte virtuální síť s duálním zásobníkem IPv4 a IPv6 pomocí Standard Load Balancer](./scripts/virtual-network-cli-sample-ipv6-dual-stack-standard-load-balancer.md)|Nasadí virtuální síť s duálním zásobníkem (IPv4 + IPv6) se dvěma virtuálními počítači a Standard Load Balancer Azure pomocí veřejných IP adres IPv4 a IPv6. |
+|[Kurz: vytvoření a otestování brány NAT – Azure CLI](../virtual-network/tutorial-create-validate-nat-gateway-cli.md)|Vytvoření a ověření brány NAT pomocí zdrojového a cílového virtuálního počítače. |

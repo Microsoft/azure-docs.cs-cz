@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: e0a2c9f4dd229353ef3d4dc06f7bb965d15814d9
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 50787a5bbfdc9baddfa4307247e8b505be6e3003
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255561"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273246"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
 
@@ -224,6 +224,8 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     Pokud cílová databáze obsahuje stejný název databáze jako zdrojová databáze, Azure Database Migration Service ve výchozím nastavení vybere cílovou databázi.
 
     ![Mapování na cílové databáze](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
+   > [!NOTE] 
+   > I když v tomto kroku můžete vybrat více databází, každá instance Azure Database Migration Service podporuje až čtyři databáze pro souběžnou migraci. V předplatném je také omezení dvou instancí Azure Database Migration Service na oblast. Například pokud máte databáze 40, které se mají migrovat, můžete migrovat jenom osm z nich současně a jenom v případě, že jste vytvořili dvě instance Azure Database Migration Service.
 
 3. Vyberte **Uložit**, na obrazovce **Shrnutí migrace** do textového pole **Název aktivity** zadejte název aktivity migrace a pak zkontrolujte souhrnné informace a ujistěte se, že podrobnosti zdroje a cíle odpovídají dříve zadaným informacím.
 

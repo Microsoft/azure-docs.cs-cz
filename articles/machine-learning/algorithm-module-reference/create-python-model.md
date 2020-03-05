@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: e26ae7ded47a235ecf1829946c1cc79af9a0fb8c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 26bcd855dbe2ea85df9fb6aca74f8b52e8ce8e46
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152393"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268926"
 ---
 # <a name="create-python-model"></a>Vytvoření modelu Pythonu
 
@@ -35,7 +35,7 @@ Použití tohoto modulu vyžaduje mezilehlé nebo odborné znalosti Pythonu. Mod
 
 V tomto článku se dozvíte, jak pomocí jednoduchého kanálu **vytvořit model Pythonu** . Níže je uveden graf kanálu.
 
-![create-python-model](./media/module/aml-create-python-model.png)
+![create-python-model](./media/module/create-python-model.png)
 
 1.  Klikněte na **vytvořit model Pythonu**, upravte skript pro implementaci modelování nebo procesu správy dat. Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí Azure Machine Learning.
 

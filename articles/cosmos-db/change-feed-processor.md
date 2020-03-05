@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f8ae85ffc16bd953f04f1c3d7790231939c1f2cf
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588903"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273311"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 
@@ -41,13 +41,14 @@ Abychom lépe porozuměli tomu, jak tyto čtyři prvky procesoru Change feed fun
 
 Bod vstupu je vždy monitorovaný kontejner, od `Container` instance, kterou voláte `GetChangeFeedProcessorBuilder`:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="DefineProcessor":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
 Kde první parametr je jedinečný název, který popisuje cíl tohoto procesoru a druhý název je implementace delegáta, která bude zpracovávat změny. 
 
 Příkladem delegáta může být:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="Delegate":::
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
 Nakonec definujete název této instance procesoru pomocí `WithInstanceName`, což je kontejner pro udržení stavu zapůjčení s `WithLeaseContainer`.
 

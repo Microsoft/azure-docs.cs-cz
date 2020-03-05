@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ddb08f774bbb8aa3bc4b10bcd0dd213c8583465e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249801"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273649"
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -148,19 +148,19 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
 * **Rutiny Azure Resource Manager:** Můžete spustit Runbook služby Automation, který se vytvořil ve skupině prostředků, pomocí [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
 ).
 
-```powershell
-  $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
   
-  Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
-```
+     Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
+   ```
 
 * **Rutiny modelu nasazení Azure Classic:** Můžete spustit Runbook služby Automation, který byl vytvořen ve výchozí skupině prostředků pomocí [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
   
-```powershell
-  $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
   
-  Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
-```
+     Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
+   ```
 
 > [!NOTE]
 > Když spustíte Runbook pomocí rutin PowerShellu, vytvoří se výchozí parametr *MicrosoftApplicationManagementStartedBy*s hodnotou **PowerShellu**. Tento parametr můžete zobrazit v podokně podrobností úlohy.  
@@ -169,7 +169,7 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
 
 * **Azure Resource Manager metoda:** Sadu Runbook můžete spustit pomocí sady SDK programovacího jazyka. Níže je fragment C# kódu pro spuštění sady Runbook ve vašem účtu Automation. Veškerý kód můžete zobrazit v našem [úložišti GitHubu](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
 
-  ```csharp
+   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -185,11 +185,11 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
          });
       return response.Job;
       }
-  ```
+   ```
 
 * **Metoda modelu nasazení Azure Classic:** Sadu Runbook můžete spustit pomocí sady SDK programovacího jazyka. Níže je fragment C# kódu pro spuštění sady Runbook ve vašem účtu Automation. Veškerý kód můžete zobrazit v našem [úložišti GitHubu](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
 
-  ```csharp
+   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -205,20 +205,20 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
        });
       return response.Job;
     }
-  ```
+   ```
 
-  Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů Runbooku *VMName* a *resourceGroupName* a jejich hodnoty. Poté spusťte sadu Runbook. Níže je fragment C# kódu pro volání metody, která je definována výše.
+   Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů Runbooku *VMName* a *resourceGroupName* a jejich hodnoty. Poté spusťte sadu Runbook. Níže je fragment C# kódu pro volání metody, která je definována výše.
 
-  ```csharp
-  IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
+   ```csharp
+   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
-  // Add parameters to the dictionary.
+   // Add parameters to the dictionary.
   RunbookParameters.Add("VMName", "WSVMClassic");
-  RunbookParameters.Add("resourceGroupName", "WSSC1");
+   RunbookParameters.Add("resourceGroupName", "WSSC1");
   
-  //Call the StartRunbook method with parameters
-  StartRunbook("Get-AzureVMGraphical", RunbookParameters);
-  ```
+   //Call the StartRunbook method with parameters
+   StartRunbook("Get-AzureVMGraphical", RunbookParameters);
+   ```
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Spuštění Runbooku pomocí REST API a přiřazení parametrů
 
@@ -238,7 +238,7 @@ Chcete-li předat parametry do úlohy Runbooku, použijte text žádosti. Vybír
 
 Pokud chcete spustit sadu Runbook **Get-AzureVMTextual** vytvořenou dříve s *VMName* a *resourceGroupName* jako parametry, pro tělo žádosti použijte následující formát JSON.
 
-   ```json
+```json
     {
       "properties":{
         "runbook":{
@@ -248,7 +248,7 @@ Pokud chcete spustit sadu Runbook **Get-AzureVMTextual** vytvořenou dříve s *
          "resourceGroupName":"ContosoSales"}
         }
     }
-   ```
+```
 
 Při úspěšném vytvoření úlohy se vrátí stavový kód HTTP 201. Další informace o hlavičkách odpovědí a textu odpovědi najdete v tématu [Vytvoření úlohy Runbooku pomocí REST API](/rest/api/automation/job/create).
 
@@ -330,7 +330,7 @@ Nyní můžete sadu Runbook volat z místního počítače pomocí Azure PowerSh
     >[!NOTE]
     >Pro Runbooky PowerShellu jsou rutiny **Add-AzAccount** a **Add-AzureRMAccount** aliasy pro **Connect-AzAccount**. Všimněte si, že tyto aliasy nejsou k dispozici pro grafické Runbooky. Grafický Runbook může použít pouze samotný **příkaz Connect-AzAccount** .
 
-2. Získá obsah uloženého souboru JSON a převede ho na řetězec. `JsonPath` je cesta, kam jste uložili soubor JSON.
+1. Získá obsah uloženého souboru JSON a převede ho na řetězec. `JsonPath` je cesta, kam jste uložili soubor JSON.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -354,7 +354,7 @@ Nyní můžete sadu Runbook volat z místního počítače pomocí Azure PowerSh
    ```
 
    Všimněte si, že nastavujete hodnotu *parametrů* pro objekt prostředí PowerShell, který obsahuje hodnoty ze souboru JSON.
-1. Spuštění runbooku
+1. Spusťte Runbook.
 
    ```powershell
    $job = Start-AzAutomationRunbook @RBParams

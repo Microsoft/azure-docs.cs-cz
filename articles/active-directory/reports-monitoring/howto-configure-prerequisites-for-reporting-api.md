@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/30/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9559f85e31a38c50034d6aacc8f65e4d68aec2
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014436"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273802"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory
 
@@ -41,7 +41,7 @@ K přípravě přístupu k rozhraní API pro vytváření sestav potřebujete:
 
 Chcete-li získat přístup k datům sestav prostřednictvím rozhraní API, je nutné mít přiřazenou jednu z následujících rolí:
 
-- Čtecí modul zabezpečení
+- Čtenář zabezpečení
 
 - Správce zabezpečení
 
@@ -91,7 +91,7 @@ V závislosti na rozhraní API, ke kterému chcete získat přístup, musíte ap
 
 | Rozhraní API | Oprávnění |
 | --- | --- |
-| Azure Active Directory Windows | Čtení dat z adresáře |
+| Microsoft Azure Active Directory | Číst data z adresáře |
 | Microsoft Graph | Číst všechna data protokolu auditu |
 
 
@@ -183,25 +183,22 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro vytv
 
     b. Po **vypršení platnosti**vyberte **2 roky**.
 
-    c. Klikněte na možnost **Uložit**.
+    c. Klikněte na **Uložit**.
 
-    d. Zkopírujte hodnotu klíče.
+    d. Hodnotu klíče si zkopírujte.
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>Řešení chyb v rozhraní API pro vytváření sestav
 
-V této části jsou uvedené běžné chybové zprávy, se kterými se můžete setkat při přístupu k sestavám aktivit pomocí MS Graph API a kroků pro jejich řešení.
+V této části jsou uvedené běžné chybové zprávy, se kterými se můžete setkat při přístupu k sestavám aktivit pomocí rozhraní Microsoft Graph API a postupu pro jejich řešení.
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 interní chyba serveru HTTP při přístupu ke koncovému bodu Microsoft Graph v2
 
-Momentálně nepodporujeme koncový bod Microsoft Graph v2 – zajistěte přístup k protokolům aktivit pomocí koncového bodu Microsoft Graph v1.
-
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Chyba: nepovedlo se získat role uživatele z AD graphu.
+### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Chyba: Nepodařilo se získat role uživatele z Microsoft Graph
 
  Přihlaste se k účtu pomocí přihlašovacích tlačítek v uživatelském rozhraní Průzkumníka graphu, abyste se vyhnuli zobrazování chyby při pokusu o přihlášení pomocí Graph Exploreru. 
 
 ![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Chyba: nepovedlo se provést kontrolu licence Premium ze služby AD Graph. 
+### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Chyba: nepovedlo se provést kontrolu licence Premium z Microsoft Graph 
 
 Pokud při pokusu o přístup k přihlašování pomocí Graph Exploreru spustíte tuto chybovou zprávu, zvolte možnost **změnit oprávnění** pod vaším účtem na levém navigačním panelu a vyberte **Tasks.** **pročíst a adresář. Read. All**. 
 
@@ -218,7 +215,7 @@ Přístup k sestavám přihlášení vyžaduje licenci Azure Active Directory Pr
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Chyba: aplikace postrádá oprávnění pro čtení dat adresáře služby AAD 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Chyba: aplikace postrádá oprávnění MSGraph API ' číst všechna data protokolu auditu. '
+### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Chyba: v aplikaci chybí oprávnění pro čtení všech dat protokolu Microsoft API.
 
 Postupujte podle kroků v části [požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md) , abyste zajistili, že vaše aplikace běží se správnou sadou oprávnění. 
 

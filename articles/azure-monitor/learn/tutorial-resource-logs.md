@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 9f88a69e8d24cfa8654ac2bea3344c9adf81c16a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670402"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269194"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure
 
@@ -46,7 +46,7 @@ Pracovní prostor Log Analytics v Azure Monitor shromažďuje a indexuje data pr
    - **Předplatné**: vyberte předplatné, do kterého chcete uložit pracovní prostor. Nemusí se jednat o stejné předplatné jako monitorovaný prostředek.
    - **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou kliknutím na **vytvořit novou** . Nemusí se jednat o stejnou skupinu prostředků, která je stejná jako monitorovaný prostředek.
    - **Umístění**: Vyberte oblast Azure nebo vytvořte novou. To nemusí být stejné jako stejné umístění jako monitorovaný prostředek.
-   - **Cenová úroveň**: vyberte *Free* , která bude uchovávat 7 dní dat. Tuto cenovou úroveň můžete později změnit. Kliknutím na odkaz **Log Analytics ceny** získáte další informace o různých cenových úrovních.
+   - **Cenová úroveň**: jako cenová úroveň vyberte průběžné *platby* . Tuto cenovou úroveň můžete později změnit. Kliknutím na odkaz **Log Analytics ceny** získáte další informace o různých cenových úrovních.
 
     ![Nový pracovní prostor](media/tutorial-resource-logs/new-workspace.png)
 

@@ -1,5 +1,6 @@
 ---
-title: Microsoft Threat Modeling Tool verze 9/12/2018 – Azure
+title: Microsoft Threat Modeling Tool verze 9/12/2018
+titleSuffix: Azure
 description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
 author: jegeib
 ms.author: jegeib
@@ -7,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: ad489d6de222380e85a962c7b50c63a5c2122c72
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: a921310f14f0d48922165a46d750366e170ee374
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75548798"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269919"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA Release 7.1.50911.2-9/12/2018
 
@@ -78,7 +79,7 @@ Ano, můžete! [Sada vzorníků Azure je dostupná na GitHubu](https://github.co
 
 ![Aktualizace vzorníku Azure v klientovi 2016](./media/threat-modeling-tool-releases-71509112/tmt_azure_stencils-300x212.png)
 
-## <a name="system-requirements"></a>Požadavky na systém
+## <a name="system-requirements"></a>Systémové požadavky
 
 - Podporované operační systémy
   - Microsoft Windows 10

@@ -3,16 +3,16 @@ title: Správa portálu Azure EA
 description: V tomto článku jsou vysvětlené nejčastější úkoly, které provádí správce portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/24/2020
+ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 1da26b3a1c028a49655b9089ac0119e3274e37a4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3006450fe530d3e6271ad624c6f246213cab6569
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598387"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272461"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 

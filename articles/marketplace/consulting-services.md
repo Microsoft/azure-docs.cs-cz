@@ -2,18 +2,19 @@
 title: Azure Marketplace a AppSource konzultační služby
 description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování pro nové konzultační nabídky – služby v Azure Marketplace.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: pabutler
-ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191133"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268240"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytují partnerům Microsoftu cíle připojení zákazníků k službám pro podporu a rozšiřování jejich používání v Azure a obchodních cílech. 
@@ -33,7 +34,7 @@ Prodejní místa na webu Marketplace jsou zarovnané na cílové skupiny a cloud
 |V prostředí produktu      |Portál pro správu Azure|Dynamics 365, Office 365, klientské aplikace Office| 
 |Ostatní      |Místní publikování prostřednictvím Azure Stack konzultační služby pro Azure, spravované služby pro Azure|Konzultační služby pro Dynamics a Power BI|
 
-Nabídky konzultačních služeb, které jsou založené na Microsoft Dynamics 365 a Power BI mají nárok na seznam Microsoft AppSource. Další informace najdete v tématu [Microsoft AppSource pokynů pro výpis konzultačních služeb](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+Nabídky konzultačních služeb, které jsou založené na Microsoft Dynamics 365, jsou pro Power Apps a Power BI způsobilé k uvedení na Microsoft AppSource. Další informace najdete v tématu [Microsoft AppSource pokynů pro výpis konzultačních služeb](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
 
 Konzultační služby a nabídky spravovaných služeb, které jsou založené na Microsoft Azure, jsou způsobilé pro Azure Marketplace. Další informace najdete v článcích o [publikování konzultační služby Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) a [publikování nabídky spravované služby na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
@@ -61,24 +62,30 @@ Partneři musí mít v příslušné oblasti pro svou službu **stříbrné nebo
 
 |Primární produkt |Požadavek na způsobilost |
 |---------|---------|
-| Dynamics 365 for Customer Engagement    |   Kompetence [pro správu vztahů se zákazníky v cloudu](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) stříbra nebo Gold    | 
-|Dynamics 365 pro finance a provoz, Enterprise Edition  |  Stříbrné nebo zlaté kompetence pro [plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) a minimální tržby za $25K v cloudových operacích po dobu 12 měsíců.       |
-|Dynamics 365 pro finance a provoz, Business Edition  |  Slouží jako [poskytovatel cloudových služeb (CSP)](https://partner.microsoft.com/cloud-solution-provider) nebo [Digital partner záznamu (partnera DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record) alespoň pro jednoho zákazníka.      |
-|Power BI, Power BI vlastní vizuály | Splňovat [kritéria pro partnery řešení](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
-|PowerApps | Mít publikované řešení pro prezentaci [partnerů](https://appsource.microsoft.com/partners)
+| Dynamics 365 Sales <br> Dynamics 365 marketing <br> Zákaznická služba Dynamics 365 <br> Služba pole Dynamics 365 <br> Lidské zdroje pro Dynamics 365 |   Pro možnost zapojení do služby [Cloud Business Applications kompetence](https://partner.microsoft.com/membership/cloud-business-applications-competency) for Customer Engagement se musí jednat o Gold nebo stříbrné certifikaci.    | 
+| Dynamics 365 – finance <br> Správa dodavatelských řetězců Dynamics 365 <br> Dynamics 365 – obchod <br> Lidské zdroje pro Dynamics 365 <br> Automatizace služby projektu Dynamics 365 |  Pro možnost sjednocení operací se musí jednat o Gold nebo stříbrné certifikaci v [Cloud Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) .       |
+| Dynamics 365 Customer Insights | Musí mít alespoň 1 úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) s nejméně 5 mírami a 5 segmenty. |
+| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v [rámci kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) a musí se jednat o poskytovatele Cloud Solution Provider aspoň 3 obchodní centrální zákazníky. <br> <br> NEBO <br> <br> Musí mít [v AppSource publikovanou aplikaci Business Central](https://appsource.microsoft.com/) . |
+| Power BI | Musí být uvedený na [Power BI prezentující Partnerská](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
+|Power Apps | Musí mít nárok na pokročilé výhody v [programu pro partnerství PowerApps](https://aka.ms/PowerAppsPartner). |
+
+Další zdroje informací a podpora:
+
+1. [Oddělení pro povolení Microsoft Cloud](https://aka.ms/CEDnominate) <br> Formulář nominálního prostředí průvodce povolením cloudu na základě zkušeností s asistencí je poskytnout specialistům na cloudový program pro vyjadřujíí výhod programu MPN a sloužit jako průvodce pro dosažení kompetence.  
+2. Jak získat seznam Power BI? <br> Začněte tím, že odešlete žádost, která se zobrazí jako [partner](https://powerbi.microsoft.com/become-a-partner/).
 
 <b>Další informace najdete v tématu [kompetence prostřednictvím Microsoft Partner Network](https://partner.microsoft.com/membership/competencies).</b>
- 
 
-**Partneři SI můžou poslat poradenské nabídky – v následujících 18 zemích nebo oblastech.**
+**Partneři SI můžou odeslat konzultační nabídky – služby na následujících 21 zemí nebo oblastí.**
 
-|Oprávněné země/oblasti |   |   |   |
+|   |   |   |   |
 |---------|----------|----------|----------|
-|Austrálie |Francie  |     Mexiko          |Španělsko       |
-|Belgie   |Německo |     Nizozemsko     |Švédsko       |
-|Kanada    |Indie   |     Nový Zéland     |Spojené království  |
-|Dánsko   |Itálie   |     Norsko          |Spojené státy |
-|Finsko   |Japonsko   |     Polsko          
+| Austrálie | Belgie | Kanada | Dánsko |
+| Finsko  | Francie | Německo  | Indie   |
+| Itálie    | Japonsko  |  Mexiko  |  Nizozemsko  |
+|  Nový Zéland  |  Norsko  |  Polsko  | Jižní Afrika |
+|  Španělsko  | Švédsko  | Švýcarsko  |  Spojené státy  |
+| Spojené království  |
 
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Postup registrace pro konzultační služby v Azure Marketplace a AppSource

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/03/2020
 ms.author: jgao
-ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3129d4c664ec487f2def6cc0d2668b7493f4c988
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616304"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272651"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -40,7 +40,7 @@ Výhody skriptu nasazení:
 > [!IMPORTANT]
 > Dva prostředky skriptu nasazení, účet úložiště a instance kontejneru, se vytvoří ve stejné skupině prostředků ke spuštění skriptu a odstraňování potíží. Tyto prostředky obvykle odstraní služba skriptu, když se spuštění skriptu nasazení dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Další informace najdete v tématu [vyčištění prostředků skriptů nasazení](#clean-up-deployment-script-resources).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Spravovaná identita přiřazená uživatelem s rolí přispěvatele do cílové skupiny prostředků**. Tato identita se používá ke spouštění skriptů nasazení. K provedení operací mimo skupinu prostředků je potřeba udělit další oprávnění. Například pokud chcete vytvořit novou skupinu prostředků, přiřaďte identitu k úrovni předplatného.
 
@@ -222,10 +222,16 @@ Výstupy skriptu nasazení musí být uloženy v umístění AZ_SCRIPTS_OUTPUT_P
 
 [JQ](https://stedolan.github.io/jq/) se používá v předchozí ukázce. Dodává se s imagemi kontejneru. Viz [Konfigurace vývojového prostředí](#configure-development-environment).
 
-## <a name="handle-non-terminating-errors"></a>Zpracování neukončujících chyb
+## <a name="develop-deployment-scripts"></a>Vývoj skriptů nasazení
+
+### <a name="handle-non-terminating-errors"></a>Zpracování neukončujících chyb
 
 Pomocí proměnné [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
 ) ve skriptu pro nasazení můžete řídit, jak PowerShell odpoví na neukončující chyby. Skriptovací stroj nasazení nenastavuje nebo nemění hodnotu.  Navzdory hodnotě nastavené pro $ErrorActionPreference skript nasazení nastaví stav zřizování prostředků na *neúspěšné* , když skript narazí na chybu.
+
+### <a name="pass-secured-strings-to-deployment-script"></a>Předání zabezpečených řetězců skriptu nasazení
+
+Nastavení proměnných prostředí ve vašich kontejnerových instancích vám umožní poskytnout dynamickou konfiguraci aplikace nebo skriptu spouštěného kontejnerem. Skript nasazení zpracovává nezabezpečené a zabezpečené proměnné prostředí stejným způsobem jako instance kontejneru Azure. Další informace najdete v tématu [nastavení proměnných prostředí v instancích kontejnerů](../../container-instances/container-instances-environment-variables.md#secure-values).
 
 ## <a name="debug-deployment-scripts"></a>Ladit skripty nasazení
 

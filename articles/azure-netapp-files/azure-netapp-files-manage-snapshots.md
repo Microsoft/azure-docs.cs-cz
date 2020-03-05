@@ -1,6 +1,6 @@
 ---
-title: Správa snímků pomocí souborů NetApp Azure | Dokumentace Microsoftu
-description: Popisuje, jak vytvářet snímky pro svazek nebo obnovení ze snímku na nový svazek pomocí NetApp soubory Azure.
+title: Správa snímků pomocí Azure NetApp Files | Microsoft Docs
+description: Popisuje postup vytvoření snímků pro svazek nebo obnovení ze snímku na nový svazek pomocí Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,53 +12,53 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086806"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267905"
 ---
-# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Spravovat snímky pomocí NetApp soubory Azure
+# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků pomocí Azure NetApp Files
 
-Soubory NetApp Azure můžete použít k vytvoření snímku na vyžádání pro svazek nebo obnovit ze snímku do nového svazku.
+Můžete použít Azure NetApp Files k ručnímu vytvoření snímku na vyžádání pro svazek nebo obnovení ze snímku na nový svazek. Služba Azure NetApp Files nevytváří automaticky snímky svazků.  
 
-## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Vytvořit snímek na vyžádání pro svazek
+## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Vytvoření snímku na vyžádání pro svazek
 
-Snímky můžete vytvořit pouze na vyžádání. Zásady snímku se momentálně nepodporují.
+Snímky můžete vytvářet pouze na vyžádání. Zásady snímků se momentálně nepodporují.
 
-1.  V okně svazku klikněte na tlačítko **snímky**.
+1.  V okně svazek klikněte na **snímky**.
 
-    ![Přejděte na snímky](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
+    ![Přejít na snímky](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
-2.  Klikněte na tlačítko **+ přidat snímek** se vytvořit snímek na vyžádání pro svazek.
+2.  Kliknutím na **+ Přidat snímek** vytvoříte snímek na vyžádání pro svazek.
 
     ![Přidat snímek](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
 
-3.  V okně Nový snímek zadejte název pro nový snímek, který vytváříte.   
+3.  V okně Nový snímek zadejte název nového snímku, který vytváříte.   
 
     ![Nový snímek](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. Klikněte na **OK**. 
+4. Klikněte na tlačítko **OK**. 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Obnovení snímku na nový svazek
 
-V současné době můžete obnovit snímek pouze do nového svazku. 
-1. Přejděte **spravovat snímky** okna v okně svazek k zobrazení seznamu snímků. 
+V současné době můžete snímek obnovit pouze na nový svazek. 
+1. V okně Volume ( **Spravovat snímky** ) v okně hlasitosti zobrazte seznam snímků. 
 2. Vyberte snímek, který chcete obnovit.  
-3. Klikněte pravým tlačítkem na název snímku a vyberte **obnovit na nový svazek** z nabídky.  
+3. Klikněte pravým tlačítkem myši na název snímku a z možnosti nabídky vyberte **obnovit do nového svazku** .  
 
-    ![Obnovení snímku do nového svazku](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
+    ![Obnovit snímek na nový svazek](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
-4. V okně Nový svazek zadejte informace pro nový svazek:  
+4. V okně Nový svazek zadejte informace o novém svazku:  
     * **Název**   
         Zadejte název svazku, který vytváříte.  
         
-        Název musí být v rámci skupiny prostředků jedinečný. Musí být alespoň tři znaky.  Může používat libovolné alfanumerické znaky.
+        Název musí být v rámci skupiny prostředků jedinečný. Musí mít aspoň tři znaky dlouhé.  Může používat libovolné alfanumerické znaky.
 
-    * **Cesta k souboru**     
+    *     **cesta k souboru**  
         Zadejte cestu k souboru, která se použije k vytvoření cesty pro export nového svazku. Cesta pro export slouží pro připojení svazku a přístup k němu.   
         
         Cíl připojení je koncový bod IP adresy služby NFS. Generuje se automaticky.   
@@ -72,18 +72,18 @@ V současné době můžete obnovit snímek pouze do nového svazku.
 
     *   **Virtuální síť**  
         Zadejte virtuální síť Azure (Vnet), ze které chcete ke svazku přistupovat.  
-        Virtuální síť, kterou zadáte, musí mít podsíť delegovat do služby soubory Azure NetApp. Soubory Azure NetApp můžete přistupovat pouze z stejné virtuální síti nebo virtuální síti, která je ve stejné oblasti jako svazek prostřednictvím partnerského vztahu virtuální sítě. Přístup ke svazku z vaší místní sítě prostřednictvím Expressroute. 
+        Virtuální síť, kterou zadáte, musí mít přidělenou podsíť Azure NetApp Files. K Azure NetApp Files můžete přistupovat jenom ze stejné virtuální sítě nebo z virtuální sítě, která se nachází ve stejné oblasti jako svazek prostřednictvím partnerského vztahu virtuálních sítí. Ke svazku z místní sítě můžete přistupovat prostřednictvím expresní trasy. 
 
     * **Podsíť**  
-        Zadejte podsíť, kterou chcete použít pro daný svazek.  
-        Podsítě, které jste zadali, je potřeba delegovat do služby soubory Azure NetApp. Můžete vytvořit novou podsíť tak, že vyberete **vytvořit nový** pod polem podsítě.  
+        Zadejte podsíť, kterou chcete použít pro svazek.  
+        Podsíť, kterou zadáte, musí být delegovaná na službu Azure NetApp Files. Novou podsíť můžete vytvořit tak, že vyberete **vytvořit novou** v poli podsíť.  
    <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
-5. Klikněte na **OK**.   
-    Nový svazek, ke kterému je obnovení snímku se zobrazí v okně svazky.
+5. Klikněte na tlačítko **OK**.   
+    Nový svazek, ke kterému se snímek obnoví, se zobrazí v okně svazky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Vysvětlení hierarchii úložiště souborů Azure NetApp](azure-netapp-files-understand-storage-hierarchy.md)
+[Pochopení hierarchie úložiště Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)

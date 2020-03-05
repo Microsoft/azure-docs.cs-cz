@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589971"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271853"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Základní hodnoty zabezpečení Azure pro HDInsight
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Doprovodné**materiály: není k dispozici; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
+**Doprovodné**materiály: nepoužitelné; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -125,7 +125,7 @@ IP adresy správy HDInsight: https://docs.microsoft.com/azure/hdinsight/hdinsigh
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Doprovodné**materiály: není k dispozici; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
+**Doprovodné**materiály: nepoužitelné; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -331,7 +331,7 @@ Jak upozornit na data protokolu Log Analytics:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -491,7 +491,7 @@ Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Cent
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: sdílená
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
@@ -779,7 +779,7 @@ Volitelně, pokud máte Rapid7, Qualys nebo jakékoli jiné předplatné platfor
 
 Ruční instalace agenta Rapid7:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 Ruční instalace agenta Qualys:
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Nepovolené typy prostředků
 - Povolené typy prostředků
 
-Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných.  Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
+Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
 Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - Nepovolené typy prostředků
 - Povolené typy prostředků
 
+
 Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Jak odepřít konkrétní typ prostředku pomocí Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ Jak odepřít konkrétní typ prostředku pomocí Azure Policy: https://docs.mic
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
 
-**Doprovodné**materiály: není k dispozici; Neplatí to pro Azure HDInsight, protože uživatelé (kteří nejsou správci) clusteru nepotřebují přístup k jednotlivým uzlům ke spouštění úloh. Správce clusteru má kořenový přístup ke všem uzlům clusteru.
+**Doprovodné**materiály: nepoužitelné; Neplatí to pro Azure HDInsight, protože uživatelé (kteří nejsou správci) clusteru nepotřebují přístup k jednotlivým uzlům ke spouštění úloh. Správce clusteru má kořenový přístup ke všem uzlům clusteru.
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné**materiály: není k dispozici; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
+**Doprovodné**materiály: nepoužitelné; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: není k dispozici; vlastní image neplatí pro Azure HDInsight.
+**Doprovodné**materiály: nepoužitelné; vlastní image neplatí pro Azure HDInsight.
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Pokyny**: Security Center přiřadí závažnosti výstrahám, které vám pomůžou určit prioritu pořadí, ve kterém se zúčastníte jednotlivých výstrah, takže pokud dojde k ohrožení určitého prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -1421,3 +1422,7 @@ Další informace o strategii a provádění testování na základě červenéh
 
 **Odpovědnost**: sdílená
 
+## <a name="next-steps"></a>Další kroky
+
+- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -4,12 +4,12 @@ description: Naučte se používat Azure CLI k vytvoření a Azure Active Direct
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d17ae12beecf9d83ef6d688af799787c5ccf322b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596602"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273771"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI
 
@@ -27,9 +27,11 @@ Platí následující omezení:
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
+Cloud Shell v prohlížeči otevřete tak, že přejdete na [https://shell.azure.com](https://shell.azure.com) .
+
 Pro zajištění konzistence a ke spuštění příkazů v tomto článku Vytvořte proměnnou pro požadovaný název clusteru AKS. Následující příklad používá název *myakscluster*:
 
-```azurecli-interactive
+```console
 aksname="myakscluster"
 ```
 
@@ -209,8 +211,10 @@ kubectl get pods --all-namespaces
 Zobrazí se výzva pro přihlášení k ověření pomocí přihlašovacích údajů Azure AD pomocí webového prohlížeče. Po úspěšném ověření bude příkaz `kubectl` zobrazovat lusky v clusteru AKS, jak je znázorněno v následujícím příkladu výstupu:
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -229,7 +233,7 @@ Ověřovací token přijatý pro `kubectl` je uložený v mezipaměti. Znovu se 
 
 Pokud se zobrazí chybová zpráva autorizace po úspěšném přihlášení pomocí webového prohlížeče jako v následujícím příkladu výstupu, podívejte se na následující možné problémy:
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 

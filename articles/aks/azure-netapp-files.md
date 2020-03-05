@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596636"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273755"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrace Azure NetApp Files se službou Azure Kubernetes
 
@@ -42,7 +42,7 @@ Při použití Azure NetApp Files platí následující omezení:
 
 Zaregistrujte poskytovatele prostředků *Microsoft. NetApp* :
 
-```azure-cli
+```azurecli
 az provider register --namespace Microsoft.NetApp --wait
 ```
 
@@ -52,14 +52,16 @@ az provider register --namespace Microsoft.NetApp --wait
 Když vytvoříte účet Azure NetApp pro použití s AKS, musíte vytvořit účet ve skupině prostředků **uzlu** . Nejprve Získejte název skupiny prostředků pomocí příkazu [AZ AKS show][az-aks-show] a přidejte parametr dotazu `--query nodeResourceGroup`. Následující příklad načte skupinu prostředků uzlu pro cluster AKS s názvem *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
 ```azurecli-interactive
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
 
+```output
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Vytvořte účet Azure NetApp Files v rámci skupiny prostředků **uzlu** a stejnou oblast jako cluster AKS pomocí [AZ netappfiles Account Create][az-netappfiles-account-create]. Následující příklad vytvoří účet s názvem *myaccount1* ve skupině prostředků *MC_myResourceGroup_myAKSCluster_eastus* a v oblasti *eastus* :
 
-```azure-cli
+```azurecli
 az netappfiles account create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --location eastus \
@@ -68,7 +70,7 @@ az netappfiles account create \
 
 Vytvořte nový fond kapacit pomocí funkce [AZ netappfiles Pool Create][az-netappfiles-pool-create]. Následující příklad vytvoří nový fond kapacit s názvem *mypool1* s velikostí 4 TB na úrovni služby *Premium* :
 
-```azure-cli
+```azurecli
 az netappfiles pool create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --location eastus \
@@ -80,7 +82,7 @@ az netappfiles pool create \
 
 Vytvořte podsíť pro [delegování pro Azure NetApp Files][anf-delegate-subnet] pomocí [AZ Network VNet Subnet Create][az-network-vnet-subnet-create]. *Tato podsíť musí být ve stejné virtuální síti jako cluster AKS.*
 
-```azure-cli
+```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
 VNET_NAME=$(az network vnet list --resource-group $RESOURCE_GROUP --query [].name -o tsv)
 VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -95,7 +97,7 @@ az network vnet subnet create \
 
 Pomocí [AZ netappfiles Volume Create][az-netappfiles-volume-create]vytvořte svazek.
 
-```azure-cli
+```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
 LOCATION=eastus
 ANF_ACCOUNT_NAME=myaccount1
@@ -125,9 +127,12 @@ az netappfiles volume create \
 ## <a name="create-the-persistentvolume"></a>Vytvoření PersistentVolume
 
 Seznam podrobností o svazku pomocí [AZ netappfiles Volume show][az-netappfiles-volume-show]
-```azure-cli
-$ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
 
+```azurecli
+az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
+```
+
+```output
 {
   ...
   "creationToken": "myfilepath2",
@@ -245,7 +250,9 @@ Ověřte, že je svazek připojený k síti pod pomocí [kubectl exec][kubectl-e
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash
+```
 
+```output
 root@nginx-nfs:/# df -h
 Filesystem             Size  Used Avail Use% Mounted on
 ...

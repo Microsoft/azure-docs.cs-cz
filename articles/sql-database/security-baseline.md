@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e1323467db875968f45557c6a7c0afdfee5e4221
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: dd9b82cbb2984386059988496c550123a8e67a3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589932"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273085"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Základní hodnoty zabezpečení Azure pro Azure SQL Database
 
@@ -122,12 +122,9 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Doprovodné**materiály: povolení rozšířené ochrany před internetovými útoky (ATP) pro Azure SQL Database.  Uživatelům se zobrazí výstraha o podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení a útocích prostřednictvím injektáže SQL a také o vzorcích dotazů neobvyklé Database. Rozšířená ochrana před internetovými útoky také integruje výstrahy s Azure Security Center.
+**Pokyny**: povolení rozšířené ochrany před internetovými útoky (ATP) pro Azure SQL Database.  Uživatelům se zobrazí výstraha o podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení a útocích prostřednictvím injektáže SQL a také o vzorcích dotazů neobvyklé Database. Rozšířená ochrana před internetovými útoky také integruje výstrahy s Azure Security Center.
 
-
-Pochopení a použití rozšířené ochrany před internetovými útoky pro Azure SQL Database:
-
-https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+Pochopení a použití rozšířené ochrany před internetovými útoky pro Azure SQL Database: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Monitorování Azure Security Center**: Ano
 
@@ -165,10 +162,13 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
 **Pokyny**: definování a implementace konfigurací zabezpečení sítě pro instance Azure SQL Database serveru pomocí Azure Policy. Pomocí oboru názvů "Microsoft. SQL" můžete definovat vlastní definice zásad nebo použít kteroukoli z vestavěných definic zásad, které jsou navržené pro Azure SQL Database ochranu sítě serveru. Příkladem příslušných integrovaných zásad zabezpečení sítě pro Azure SQL Database Server by byl: "SQL Server by měl používat koncový bod služby virtuální sítě".
+ 
 
 Pomocí Azure modrotisky můžete zjednodušit rozsáhlá nasazení Azure tím, že zabalíte artefakty klíčových prostředí, jako jsou šablony pro správu prostředků Azure, řízení přístupu na základě role (RBAC) a zásady, v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
+
 Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Vytvoření Azure Blueprint: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -457,13 +457,27 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Doprovodné**materiály: použití sestav zabezpečení Azure Active Directory pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě.
 
+
+
 Pomocí rozšířené ochrany před internetovými útoky pro Azure SQL Database můžete detekovat aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-Postup sledování aktivity identity a přístupu uživatelů v Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Kontrola rozšířené ochrany před internetovými útoky a potenciálních výstrah: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
+Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity:
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+
+
+
+Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Center:
+
+https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
+
+
+Kontrola rozšířené ochrany před internetovými útoky a potenciálních výstrah:
+
+https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
 
 
 **Monitorování Azure Security Center**: Ano
@@ -473,6 +487,7 @@ Kontrola rozšířené ochrany před internetovými útoky a potenciálních vý
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolte přístup k portálu a správě prostředků Azure jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
+
 
 Postup konfigurace pojmenovaných umístění v Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -714,7 +729,7 @@ Vytváření upozornění pro události protokolu aktivit Azure:
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -774,7 +789,7 @@ Export sestavy posouzení ohrožení zabezpečení v Azure Security Center:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
@@ -796,11 +811,15 @@ Pochopení Azure Security Center zabezpečeného skóre: https://docs.microsoft.
 
 **Pokyny**: pomocí Azure Resource graphu se můžete dotazovat a zjišťovat všechny prostředky (včetně instancí Azure SQL Server) v rámci vašich předplatných.  Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
 
+
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
+
 
 Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 Jak zobrazit předplatná Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
 
 Vysvětlení Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -812,7 +831,11 @@ Vysvětlení Azure RBAC: https://docs.microsoft.com/azure/role-based-access-cont
 
 **Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
+
+Vytváření a používání značek:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -822,11 +845,23 @@ Vytváření a používání značek: https://docs.microsoft.com/azure/azure-res
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-Jak vytvořit další předplatná Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Postup vytvoření Skupiny pro správu: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Jak vytvořit další předplatná Azure:
+
+https://docs.microsoft.com/azure/billing/billing-create-subscription
+
+
+
+Postup vytvoření Skupiny pro správu:
+
+https://docs.microsoft.com/azure/governance/management-groups/create
+
+
+
+Vytváření a používání značek:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -894,6 +929,7 @@ Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/go
 
 Jak odepřít konkrétní typ prostředku pomocí Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
@@ -911,9 +947,7 @@ Jak odepřít konkrétní typ prostředku pomocí Azure Policy: https://docs.mic
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1152,7 +1186,7 @@ Principy zálohování a provozní kontinuity pomocí Azure SQL Server:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Ano
 
 **Odpovědnost**: sdílená
 
@@ -1204,7 +1238,7 @@ Jak povolit obnovitelné odstranění v Key Vault:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
@@ -1292,7 +1326,7 @@ Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
 **Zodpovědnost**: zákazník
 
@@ -1314,3 +1348,7 @@ Další informace o strategii a provádění testování na základě červenéh
 
 **Odpovědnost**: sdílená
 
+## <a name="next-steps"></a>Další kroky
+
+- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

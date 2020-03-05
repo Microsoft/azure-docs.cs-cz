@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 0080b64e16b979b32aa5a91f9ee497e5f9ec47fb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c81d4db5798c15327e06471f1cb0da4841bd61b2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485365"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268514"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění a řešení potíží s kanály strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -88,7 +88,7 @@ Následující tabulka obsahuje běžné problémy při vývoji kanálů s poten
 
 Následující tabulka poskytuje informace o různých možnostech ladění pro kanály. Nejedná se o vyčerpávající seznam, protože další možnosti existují kromě pouze Azure Machine Learning, Pythonu a OpenCensus, které jsou zde uvedeny.
 
-| Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Prostředky                                                                                                                                                                                                                                                                                                                    |
+| Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Zdroje                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Sada Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Uživatelské rozhraní portálu Azure Machine Learning             | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br>[AzureML. Core. Run – třída](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
 | Tisk/protokolování v Pythonu    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, Návrhář Azure Machine Learning | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Protokolování Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
@@ -158,7 +158,7 @@ Další informace o použití knihovny Pythonu OpenCensus tímto způsobem najde
 
 V některých případech možná budete muset interaktivně ladit kód Pythonu, který se používá v kanálu ML. Pomocí Visual Studio Code (VS Code) a Python Tools for Visual Studio (PTVSD) se můžete připojit ke kódu při jeho spuštění ve školicím prostředí.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * __Azure Machine Learning pracovní prostor__ , který je nakonfigurován pro použití __Virtual Network Azure__.
 * __Kanál Azure Machine Learning__ , který jako součást postupu kanálu používá skripty Pythonu. Například PythonScriptStep.
@@ -283,7 +283,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>Konfigurovat kanál ML
 
-Aby bylo možné poskytnout balíčky Pythonu potřebné ke spuštění PTVSD a získat kontext spuštění, vytvořte [prostředí]() a nastavte `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`. Změňte verzi sady SDK tak, aby odpovídala hodnotě, kterou používáte. Následující fragment kódu ukazuje, jak vytvořit prostředí:
+Aby bylo možné poskytnout balíčky Pythonu potřebné ke spuštění PTVSD a získat kontext spuštění, vytvořte prostředí a nastavte `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`. Změňte verzi sady SDK tak, aby odpovídala hodnotě, kterou používáte. Následující fragment kódu ukazuje, jak vytvořit prostředí:
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.

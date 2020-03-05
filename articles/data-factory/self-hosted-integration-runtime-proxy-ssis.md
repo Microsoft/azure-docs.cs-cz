@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 02/28/2020
-ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: e2d1a1c6e924e879e05af80e2e36a38e8a5cde66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78160807"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273958"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace prostředí IR v místním prostředí jako proxy serveru pro Azure-SSIS IR v Azure Data Factory
 
@@ -167,6 +167,7 @@ Druhé pracovní úkoly, které běží na vašem Azure-SSIS IR, se neúčtují 
 
 - V současné době jsou podporovány pouze úlohy toku dat s podporou rozhraní ODBC (Open Database Connectivity), OLEDB nebo Flat File Connection Managers a ODBC, OLEDB nebo ploché Souborové zdroje. 
 - V současné době jsou podporovány pouze propojené služby Azure Blob Storage, které jsou konfigurovány pomocí *klíče účtu*, *identifikátoru URI sdíleného přístupového podpisu (SAS)* nebo ověřování *instančního objektu* .
+- *ParameterMapping* ve zdroji OLEDB ještě není podporovaný. Jako alternativní řešení prosím použijte *příkaz SQL z proměnné* jako *AccessMode* a použijte *výraz* pro vložení proměnných/parametrů do příkazu SQL. Pro ilustraci můžete najít ukázkový balíček *(ParameterMappingSample. dtsx)* ve složce *SelfhostedIrProxy/omezení* našeho kontejneru Public Preview zadáním následujícího identifikátoru URI SAS na [Průzkumník služby Azure Storage](https://storageexplorer.com/): *https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c* .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d889cd3325784f564d03e5d75dde1ec760c66804
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153736"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268538"
 ---
 # <a name="split-data-module"></a>Modul rozdělení dat
 
@@ -84,34 +84,74 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
 
     Na základě regulárního výrazu, který zadáte, je datová sada rozdělena do dvou sad řádků: řádků s hodnotami, které odpovídají výrazu a všem zbývajícím řádkům. 
 
+Následující příklady ukazují, jak rozdělit datovou sadu pomocí možnosti **regulárního výrazu** . 
+
+### <a name="single-whole-word"></a>Jedno celé slovo 
+
+Tento příklad vloží do první datové sady všechny řádky, které obsahují text `Gryphon` ve sloupci `Text`a vloží další řádky do druhého výstupu **rozdělených dat**:
+
+```text
+    \"Text" Gryphon  
+```
+
+### <a name="substring"></a>Podřetězec
+
+Tento příklad vyhledá zadaný řetězec v libovolné pozici v druhém sloupci datové sady, označený zde hodnotou indexu 1. Porovnávání rozlišuje velká a malá písmena.
+
+```text
+(\1) ^[a-f]
+```
+
+První výsledná datová sada obsahuje všechny řádky, ve kterých sloupec index začíná jedním z těchto znaků: `a`, `b`, `c`, `d`, `e`, `f`. Všechny ostatní řádky jsou směrovány na druhý výstup.
+
 ## <a name="relative-expression-split"></a>Rozdělení relativního výrazu
 
 1. Přidejte do svého kanálu modul [rozdělení dat](./split-data.md) a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.
   
 2. V případě **rozdělení režimu**vyberte **relativní rozdělení výrazu**.
   
-3. Do textového pole **relační výraz** zadejte výraz, který provádí operaci porovnání, v jednom sloupci:
+3. Do textového pole **relační výraz** zadejte výraz, který provede operaci porovnání v jednom sloupci:
 
-
- - Číselný sloupec:
-    - Sloupec obsahuje čísla libovolného číselného datového typu, včetně datových typů data a času.
-
-    - Výraz může odkazovat maximálně na jeden název sloupce.
-
-    - Použijte znak ampersand (&) pro operaci AND a použijte pro operaci nebo znak svislé čáry (|).
-
-    - Podporovány jsou následující operátory: `<`, `>`, `<=`, `>=`, `==`, `!=`
-
-    - Operace nelze seskupit pomocí `(` a `)`.
-
- - Sloupec řetězce: 
-    - Podporovány jsou následující operátory: `==`, `!=`
-
-
+   Pro **číselný sloupec**:
+   - Sloupec obsahuje čísla libovolného číselného datového typu, včetně datových typů data a času.
+   - Výraz může odkazovat maximálně na jeden název sloupce.
+   - Pro operaci AND použijte `&` znaku ampersandu. Pro operaci nebo použijte znak kanálu `|`.
+   - Podporovány jsou následující operátory: `<`, `>`, `<=`, `>=`, `==`, `!=`.
+   - Operace nelze seskupit pomocí `(` a `)`.
+   
+   Pro **sloupec řetězec**:
+   - Podporovány jsou následující operátory: `==`, `!=`.
 
 4. Spuštění kanálu
 
     Výraz rozdělí datovou sadu do dvou sad řádků: řádky s hodnotami, které splňují podmínku, a všechny zbývající řádky.
+
+Následující příklady ukazují, jak dělit datovou sadu pomocí možnosti **relativního výrazu** v modulu **Split data** :  
+
+### <a name="using-calendar-year"></a>Použití kalendářního roku
+
+Běžným scénářem je rozdělit datovou sadu o roky. Následující výraz vybere všechny řádky, ve kterých jsou hodnoty ve sloupci `Year` větší než `2010`.
+
+```text
+\"Year" > 2010
+```
+
+Výraz data musí mít účet pro všechny části kalendářních dat zahrnuté do sloupce data a formát dat ve sloupci data musí být konzistentní. 
+
+Například ve sloupci datum pomocí `mmddyyyy`formátu by měl výraz vypadat přibližně takto:
+
+```text
+\"Date" > 1/1/2010
+```
+
+### <a name="using-column-indices"></a>Použití indexů sloupců
+
+Následující výraz ukazuje, jak můžete použít index sloupce pro výběr všech řádků v prvním sloupci datové sady, které obsahují hodnoty menší než nebo rovny 30, ale nerovnají se 20.
+
+```text
+(\0)<=30 & !=20
+```
+
 
 ## <a name="next-steps"></a>Další kroky
 

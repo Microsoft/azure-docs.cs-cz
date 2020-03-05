@@ -3,12 +3,12 @@ title: Jak pracovat se skupinami pro správu – zásady správného řízení A
 description: Naučte se zobrazovat, udržovat, aktualizovat a odstraňovat hierarchii skupin pro správu.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751227"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267941"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa prostředků pomocí skupin pro správu
 
@@ -17,6 +17,12 @@ Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způ
 Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.  Další informace o skupinách pro správu najdete v tématu [uspořádání prostředků pomocí skupin pro správu Azure](overview.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+>[!IMPORTANT]
+>Azure Resource Manager tokeny uživatelů a mezipaměť skupiny pro správu potrvají po dobu 30 minut, než se dokončí jejich vynucení aktualizace.  Po provedení jakékoli akce, jako je přesunutí skupiny pro správu nebo předplatného, může trvat až 30 minut, než se zobrazí.  
+>Pokud si chcete prohlédnout aktualizace dřív, potřebujete aktualizovat svůj token tím, že aktualizujete prohlížeč, přihlásíte se k němu nebo vyžádáte nový token.  
+
+
 
 ## <a name="change-the-name-of-a-management-group"></a>Změna názvu skupiny pro správu
 
@@ -40,7 +46,7 @@ Název skupiny pro správu můžete změnit pomocí portálu, PowerShellu nebo r
 
    ![Přejmenovat skupinu pro správu přejmenováním podokna skupiny](./media/rename_context.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ### <a name="change-the-name-in-powershell"></a>Změna názvu v PowerShellu
 
@@ -214,7 +220,7 @@ Pokud je role vlastníka v předplatném zděděná z aktuální skupiny pro spr
 Chcete-li zjistit, jaká oprávnění máte v Azure Portal, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [Správa přístupu a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).
 
 
-## <a name="move-subscriptions"></a>Přesunout předplatná 
+## <a name="move-subscriptions"></a>Přesun předplatných 
 
 #### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Přidání existujícího předplatného do skupiny pro správu na portálu
 
@@ -250,7 +256,7 @@ Chcete-li zjistit, jaká oprávnění máte v Azure Portal, vyberte skupinu pro 
 
    ![Přesune podokno pro změnu nadřazené skupiny.](./media/move_small_context.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ### <a name="move-subscriptions-in-powershell"></a>Přesunout předplatná v PowerShellu
 
@@ -299,7 +305,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
    ![Přesunout skupinu pro správu do nové nebo existující skupiny](./media/add_context_MG.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ### <a name="move-management-groups-in-powershell"></a>Přesunutí skupin pro správu v PowerShellu
 

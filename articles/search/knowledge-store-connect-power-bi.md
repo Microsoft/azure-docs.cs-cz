@@ -6,25 +6,25 @@ author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: dec792dfd3a2640fa08ebccd9077c081ba9737bb
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563288"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270032"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Připojit znalostní bázi Knowledge Store s Power BI
 
 > [!IMPORTANT] 
-> znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
+> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 V tomto článku se dozvíte, jak se připojit k znalostnímu obchodu a prozkoumat ho pomocí Power Query v aplikaci Power BI Desktop. Můžete začít rychleji pracovat se šablonami nebo si vytvořit vlastní řídicí panel úplně od začátku.
 
 + Postupujte podle kroků v [části vytvoření znalostní báze ve Azure Portal](knowledge-store-create-portal.md) nebo [vytvořte službu Azure kognitivní hledání Knowledge Store pomocí REST](knowledge-store-create-rest.md) a vytvořte ukázkové úložiště Knowledge Store použité v tomto návodu. Také budete potřebovat název účtu Azure Storage, který jste použili k vytvoření obchodu Knowledge Store, a jeho přístupová klávesa z Azure Portal.
 
-+ [Nainstalovaný Power BI Desktop](https://powerbi.microsoft.com/downloads/)
++ [Nainstalovat Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Ukázka Power BI šablony – pouze Azure Portal
 
@@ -55,7 +55,7 @@ Kliknutím na **získat Power BI šablonu** na stránce **Přidat dovednosti pro
    
    + Pro návod REST jsou názvy tabulek *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases*a *hotelReviewsSentiment*.
 
-1. Klikněte na **Načíst**.
+1. Klikněte na **načíst**.
 
 1. Na horním pásu karet kliknutím na **Upravit dotazy** otevřete **Editor Power Query**.
 
@@ -108,7 +108,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků – tím odstraníte celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné na konci projektu zjistit, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

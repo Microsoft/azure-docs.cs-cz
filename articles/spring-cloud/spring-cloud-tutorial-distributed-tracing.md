@@ -6,26 +6,26 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: e4d3a7fbdb938071b754a16179bcd021985383cc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277493"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273215"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Použití distribuovaného trasování u jarního cloudu Azure
 
-Pomocí nástrojů pro distribuované trasování v Azure jarním cloudu můžete snadno ladit a monitorovat složité problémy. Jarní cloud Azure integruje [Azure jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Tato integrace poskytuje výkonnou schopnost distribuované vektorizace z Azure Portal.
+Pomocí nástrojů pro distribuované trasování v Azure jarním cloudu můžete snadno ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Tato integrace poskytuje výkonnou schopnost distribuované vektorizace z Azure Portal.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Povolit distribuované trasování v Azure Portal.
-> * Přidejte do své aplikace Sleuth cloudové cloudy Azure.
+> * Přidejte do své aplikace jarní cloudový Sleuth.
 > * Zobrazte mapy závislostí pro vaše aplikace mikroslužeb.
 > * Vyhledávejte data trasování pomocí různých filtrů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete [rychlý Start při nasazení aplikace přes Azure CLI](spring-cloud-quickstart-launch-app-cli.md) a zřiďte a spusťte cloudovou službu Azure na jaře.
     
@@ -39,7 +39,7 @@ K dokončení tohoto kurzu potřebujete službu pružinové cloudové služby Az
 
    Po této změně může odesílatel Zipkin odeslat na web.
 
-1. Tento krok přeskočte, pokud jste postupovali [podle našeho průvodce pro přípravu aplikace Azure jaře Cloud](spring-cloud-tutorial-prepare-app-deployment.md). V opačném případě přejdete do svého místního vývojového prostředí a upravíte soubor pom. XML tak, aby zahrnoval následující závislost Azure jarního cloudu Sleuth:
+1. Tento krok přeskočte, pokud jste postupovali [podle našeho průvodce pro přípravu aplikace Azure jaře Cloud](spring-cloud-tutorial-prepare-app-deployment.md). V opačném případě přejdete do svého místního vývojového prostředí a upravíte soubor pom. XML tak, aby zahrnoval následující Sleuth závislost pružinového cloudu:
 
     ```xml
     <dependencyManagement>
@@ -86,7 +86,7 @@ Pokud jste už sestavili a nasadili aplikaci, můžete upravit vzorkovací frekv
 
 Vraťte se na stránku **distribuované trasování** a vyberte **Zobrazit mapu aplikací**. Zkontrolujte vizuální znázornění nastavení aplikace a monitorování. Informace o použití mapy aplikace najdete v tématu [Mapa aplikace: třídění distribuovaných aplikací](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="use-search"></a>Použití vyhledávání
+## <a name="use-search"></a>Použít hledání
 
 Použijte funkci Search k dotazování na jiné konkrétní položky telemetrie. Na stránce **distribuované trasování** vyberte **Hledat**. Další informace o tom, jak používat funkci hledání, najdete v tématu [Použití vyhledávání v Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 

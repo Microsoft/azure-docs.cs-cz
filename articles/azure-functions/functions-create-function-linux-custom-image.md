@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 29b0719670529a486222ef5fad21dd803ea6f195
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.openlocfilehash: c7c9e66e302c2c4181e6249555a7eaaafcc0a960
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190802"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272700"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce na platformě Linux pomocí vlastního kontejneru
 

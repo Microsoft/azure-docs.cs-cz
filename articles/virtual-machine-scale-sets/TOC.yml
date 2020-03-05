@@ -247,6 +247,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Automatické upgrady operačního systému
           href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Automatické opravy instancí (Preview)
+          href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Ochrana instancí
           href: virtual-machine-scale-sets-instance-protection.md
         - name: Zásady horizontálního snižování kapacity

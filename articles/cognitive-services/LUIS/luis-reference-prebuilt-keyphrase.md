@@ -1,33 +1,33 @@
 ---
 title: Keyphrase předem vytvořená entita – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje keyphrase předem připravené informace o entitách v Language Understanding (LUIS).
+description: Tento článek obsahuje keyphrase informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 51d1bd515651824545d486207ad4a74476aa7092
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491273"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270535"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase předem vytvořenou entitu pro aplikaci LUIS
-Entita keyPhrase extrahuje různé klíčové fráze z utterance. Do aplikace nemusíte přidávat příklad projevy obsahující keyPhrase. Entita keyPhrase je v [mnoha jazykových verzích](luis-language-support.md#languages-supported) podporována jako součást funkcí pro [analýzu textu](../text-analytics/overview.md) . 
+Entita keyPhrase extrahuje různé klíčové fráze z utterance. Do aplikace nemusíte přidávat příklad projevy obsahující keyPhrase. Entita keyPhrase je v [mnoha jazykových verzích](luis-language-support.md#languages-supported) podporována jako součást funkcí pro [analýzu textu](../text-analytics/overview.md) .
 
-## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Řešení pro předem vytvořenou entitu keyPhrase
+## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Řešení pro keyPhrase předem připravených entit
 
 Pro dotaz se vrátí následující objekty entity:
 
 `where is the educational requirements form for the development and engineering group`
 
-#### <a name="v3-responsetabv3"></a>[Odpověď V3](#tab/V3)
+#### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
 Následující JSON je s parametrem `verbose` nastaveným na `false`:
 
@@ -39,7 +39,7 @@ Následující JSON je s parametrem `verbose` nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
 Následující JSON je s parametrem `verbose` nastaveným na `true`:
 
 ```json
@@ -76,7 +76,7 @@ Následující JSON je s parametrem `verbose` nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[Odpověď v2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
 
 Následující příklad ukazuje řešení entity **Builtin. keyPhrase** .
 
@@ -96,7 +96,7 @@ Následující příklad ukazuje řešení entity **Builtin. keyPhrase** .
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,6 @@
 ---
-title: Verze Threat Modeling Tool – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Poznámky k verzi Microsoft Threat Modeling Tool
+titleSuffix: Azure
 description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 12db1a0b0b5a9677d0490f8eff229bbb524a91ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1a3687edaed012f255af915886917c3ac188896
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224781"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269628"
 ---
 # <a name="threat-modeling-tool-releases"></a>Verze Threat Modeling Tool
 
@@ -37,6 +38,7 @@ Microsoft Threat Modeling Tool je aktuálně vydaný jako bezplatná aplikace [n
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+- [Verze Microsoft Threat MODELING Tool GA verze 7.3.00206.1](threat-modeling-tool-releases-73002061.md) – únor 11 2020
 - [Microsoft Threat Modeling Tool verze GA verze 7.1.61015.1](threat-modeling-tool-releases-71610151.md) – Říjen 16 2019
 - [Verze Microsoft Threat MODELING Tool GA verze 7.1.60702.1](threat-modeling-tool-releases-71607021.md) – Červenec 2 2019
 - [Verze Microsoft Threat MODELING Tool GA verze 7.1.60408.1](threat-modeling-tool-releases-71604081.md) – duben 9 2019
