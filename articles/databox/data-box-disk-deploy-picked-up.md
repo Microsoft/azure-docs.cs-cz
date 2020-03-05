@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845483"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273175"
 ---
 ::: zone target="chromeless"
 
@@ -51,7 +51,7 @@ Než začnete, ujistěte se, že jste dokončili [Kurz: Kopírování dat na Azu
 
 Další kroky závisí na tom, kam zařízení vracíte. Pokyny se liší pro USA a Kanadu, Evropskou unii (EU), Austrálii nebo země v Asii.
 
-### <a name="in-us-or-canadatabin-us-or-canada"></a>[V USA a Kanadě](#tab/in-us-or-canada)
+### <a name="in-us-or-canada"></a>[V USA a Kanadě](#tab/in-us-or-canada)
 
 Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
 
@@ -67,7 +67,7 @@ Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
     - Pokud sledovací číslo neuvedete, bude společnost UPS vyžadovat, abyste při vyzvednutí zaplatili dodatečné poplatky.
     - Místo naplánování vyzvednutí můžete také Data Box Disk dovézt na nejbližší sběrné místo.
 
-### <a name="in-europetabin-europe"></a>[V Evropě](#tab/in-europe)
+### <a name="in-europe"></a>[V Evropě](#tab/in-europe)
 
 Při vrácení zařízení v Evropě proveďte následující kroky.
 
@@ -80,7 +80,7 @@ Při vrácení zařízení v Evropě proveďte následující kroky.
 4. Přejděte na web DHL Express pro vaši zemi/oblast a zvolte **Naplánovat vyzvednutí pro zpáteční zásilku**.    
 3. Zadejte číslo nákladového listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.
 
-### <a name="in-australiatabin-australia"></a>[V Austrálii](#tab/in-australia)
+### <a name="in-australia"></a>[V Austrálii](#tab/in-australia)
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při vyzvednutí v Austrálii proveďte následující kroky.
 
@@ -88,7 +88,7 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 3. Připevněte štítek na krabici. 
 4. Zarezervujte si vyzvednutí online pomocí odkazu https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-### <a name="in-japantabin-japan"></a>[V Japonsku](#tab/in-japan)
+### <a name="in-japan"></a>[V Japonsku](#tab/in-japan)
 
 1. Vyplňte název vaší společnosti a adresu do nákladního listu do části informací o odesílateli.
 2. Odešlete e-mail společnosti Quantium Solutions pomocí následující e-mailové šablony.
@@ -115,7 +115,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 - E-mailem：Customerservice.JP@quantiumsolutions.com 
 - Telefonicky: 03-5755-0150 
 
-### <a name="in-koreatabin-korea"></a>[V Koreji](#tab/in-korea)
+### <a name="in-korea"></a>[V Koreji](#tab/in-korea)
 
 1. Nezapomeňte zahrnout zpáteční nákladní list.
 2. Pokud je nákladní list k dispozici, vyžádejte si vyzvednutí takto:
@@ -130,7 +130,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
     4. V případě, že požadavek provádíte telefonicky, dostane se vám ústního potvrzení.
 
 
-### <a name="in-singaporetabin-singapore"></a>[V Singapuru](#tab/in-singapore)
+### <a name="in-singapore"></a>[V Singapuru](#tab/in-singapore)
 
 1. Vytiskněte expediční štítek a připevněte ho na krabici. Pokud je popisek poškozený nebo se ztratil:
     - Přejděte na **Přehled > Stáhnout expediční štítek** a získejte zpáteční expediční štítek.
@@ -157,7 +157,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
 3. Předejte zásilku kurýrovi.
 
-### <a name="in-self-managedtabin-selfmanaged"></a>[V případě svépomoci](#tab/in-selfmanaged)
+### <a name="in-self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
 Pokud používáte Data Box Disk v Japonsku, Singapuru, Koreji a Západní Evropě a při vytváření objednávky jste vybrali možnost Expedice řízená svépomocí, postupujte podle těchto pokynů. 
 
@@ -175,8 +175,6 @@ Pokud používáte Data Box Disk v Japonsku, Singapuru, Koreji a Západní Evrop
 3. Provozní tým služby Azure Data Box se s vámi spojí a domluví předání v datacentru Azure.
 
 ::: zone target="docs"
-
----
 
 ## <a name="next-steps"></a>Další kroky
 

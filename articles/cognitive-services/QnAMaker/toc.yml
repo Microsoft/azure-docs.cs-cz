@@ -16,19 +16,14 @@
           href: Quickstarts/add-question-metadata-portal.md
         - name: 3. Získání odpovědí s využitím nástroje Postman nebo cURL
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: Testování s využitím dávkového souboru
-      href: Quickstarts/batch-testing.md
     - name: S využitím rozhraní REST
       href: Quickstarts/quickstart-rest-curl.md
     - name: S využitím sady SDK
       href: Quickstarts/quickstart-sdk.md
 - name: Kurzy
   items:
-    - name: Vytvoření a odpovědi z KB
-      displayName: 'curl, publish, chit-chat, chit chat'
-      href: Tutorials/create-publish-query-in-portal.md
-    - name: Vytvoření robota služby QnA Maker
-      href: Tutorials/create-qna-bot.md
+    - name: Testování s využitím dávkového souboru
+      href: Quickstarts/batch-testing.md
 - name: Koncepty
   items:
     - name: Prostředky Azure
@@ -77,9 +72,6 @@
           href: How-To/business-continuity-plan.md
     - name: Správa znalostní báze
       items:
-        - name: Vytvoření a publikování znalostní báze
-          href: Quickstarts/create-publish-knowledge-base.md
-          displayName: 'create bot, bot, publish to bot, test, edit'
         - name: Vytvoření robota s využitím QnA Makeru a LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Výběr jazyka
@@ -109,8 +101,6 @@
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: Použití s klientskou aplikací
       items:
-        - name: Architektura robotů
-          href: Tutorials/create-qna-bot.md
         - name: LUIS a QnA Maker
           href: Tutorials/integrate-qnamaker-luis.md
     - name: Analýzy a telemetrie

@@ -3,16 +3,16 @@ title: Smlouvy k Azure EA a jejich změny
 description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny ovlivňují vaše používání portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 727f3cb25d2f95ec4db9f12080005d464b69d6ad
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272410"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301416"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 
@@ -25,10 +25,6 @@ Veškeré změny u zákazníků Azure musí projít přes jejich partnera nebo t
 ## <a name="enrollment-provisioning-status"></a>Stav zřízení registrace
 
 Počáteční datum nového peněžního závazku vyplývá z data, kdy ho regionální operační centrum zpracovalo. Vzhledem k tomu, že objednávky peněžních závazků prostřednictvím webu Azure EA Portal se zpracovávají v časovém pásmu UTC, může dojít ke zpoždění v případě, že nákupní objednávka peněžního závazku byla zpracována v jiné oblasti. Začátek peněžního závazku uvádí počáteční datum pokrytí v nákupní objednávce na webu https://www.explore.ms. Počáteční datum pokrytí představuje den, kdy se peněžní závazek zobrazí na portálu Azure EA.
-
-## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>Změny zvláštních cen a slev u závazku využívání služeb Azure
-
-Pokud požadujete změny zvláštních cen a slev ACD (sleva u závazku v Azure), musíte to probrat s týmem, který se stará o váš účet. Tým Azure Ops může slevu ACD uplatnit potom, co změnu zpracuje oddělení Business Desk a tým Azure Ops si ji vyžádá. Sleva ACD se vztahuje jenom na aktuální měsíc. Všechny předchozí měsíce se kompenzují prostřednictvím antedatovaného kreditu. 
 
 ## <a name="support-offer-not-provisioned"></a>Nezřízení nabídky podpory
 

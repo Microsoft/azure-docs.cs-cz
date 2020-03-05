@@ -356,6 +356,34 @@
           href: move-across-regions-publicip-portal.md
         - name: Veřejné IP adresy – PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s partnerskými vztahy virtuálních sítí
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: Konfigurace a ověření připojení VPN nebo virtuální sítě
+          href: virtual-network-configure-vnet-connections.md
+        - name: Skupiny zabezpečení sítě
+          href: diagnose-network-traffic-filter-problem.md
+        - name: Trasy
+          href: diagnose-network-routing-problem.md
+        - name: Testování propustnosti
+          href: virtual-network-bandwidth-testing.md
+        - name: Test latence sítě virtuálních počítačů
+          href: virtual-network-test-latency.md
+        - name: Nelze odstranit virtuální sítě
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: Problémy s propojením virtuálních počítačů
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: Konfigurace PTR pro kontrolu bannerů protokolu SMTP
+          href: create-ptr-for-smtp-service.md
+        - name: Kontrolní seznam pro řešení potíží pro virtuální zařízení
+          href: virtual-network-troubleshoot-nva.md
+        - name: Řešení potíží s odchozím připojením SMTP
+          href: troubleshoot-outbound-smtp-connectivity.md
+        - name: IP adresa 168.63.129.16
+          href: what-is-ip-address-168-63-129-16.md
+        - name: Řešení potíží s připojením k virtuálnímu počítači Azure
+          href: troubleshoot-vm-connectivity.md
     - name: Klasické nasazení
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Referenční informace
