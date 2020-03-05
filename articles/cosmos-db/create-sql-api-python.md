@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: d73d85471269bafb6f6d2e080a68f0cab10e3962
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 113955b0404b951360b670ee75789d0a74ffa534
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585964"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274086"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
@@ -129,29 +129,29 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *cosmos_get_s
 
 * Inicializuje se CosmosClient. Nezapomeňte aktualizovat hodnoty "Endpoint" a "Key", jak je popsáno v části [aktualizace připojovacího řetězce](#update-your-connection-string) . 
 
-    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_cosmos_client":::
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_cosmos_client)]
 
 * Vytvoří se nová databáze.
 
-    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_database_if_not_exists":::
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_database_if_not_exists)]
 
 * Vytvoří se nový kontejner s 400 RU/s [zřízené propustností](request-units.md). Jako [klíč oddílu](partitioning-overview.md#choose-partitionkey)zvolíme `lastName`, což nám umožní provádět efektivní dotazy, které tuto vlastnost filtrují. 
 
-    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_container_if_not_exists":::
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_container_if_not_exists)]
 
 * Do kontejneru se přidá několik položek. Kontejnery jsou kolekce položek (dokumenty JSON), které mohou mít různé schéma. Pomocné metody ```get_[name]_family_item``` vracet reprezentace řady, které jsou uloženy v Azure Cosmos DB jako dokumenty JSON.
 
-    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_item":::
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_item)]
 
 * Čtení bodů (klíčová vyhledávání hodnot) se provádí pomocí metody `read_item`. Vytiskněte [poplatek](request-units.md) za každou operaci.
 
-    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="read_item":::
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
 
 * Dotaz se provádí pomocí syntaxe dotazu SQL. Vzhledem k tomu, že používáme v klauzuli WHERE hodnoty klíče oddílu ```lastName```, Azure Cosmos DB efektivně směrovat tento dotaz na relevantní oddíly a zlepší výkon.
 
-    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="query_items":::
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 
 1. V aplikaci Visual Studio Code vyberte **Zobrazení** > **Paleta příkazů**. 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 5a2d6bfe2c58d382aea14b6ca8d4151acb9adfbf
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 34f0fb57b4432a8153f2cbaa8cb60edbb9a6f494
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78160857"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271086"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
@@ -97,7 +97,7 @@ K provedení této ukázky budete potřebovat:
 > [!div class="sxs-lookup" renderon="portal"]
 > Stáhněte si projekt a extrahujte soubor zip do místní složky blíže ke kořenové složce – například **C:\Azure-Samples**
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [Stažení ukázky kódu]()
+> [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>Krok 3: Konfigurace aplikace

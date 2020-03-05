@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f3621feb688b3b257cd4f685a9be306d75700f4a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443818"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273617"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -40,15 +40,15 @@ Application Gateway podporuje ukončení protokolu SSL/TLS v bráně, po kterém
 
 ## <a name="autoscaling"></a>Automatické škálování
 
-Application Gateway nebo WAF nasazení v rámci Standard_v2 nebo WAF_v2 SKU podporuje automatické škálování a může se škálovat nahoru nebo dolů na základě změny schémat zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Další informace o funkcích Application Gateway Standard_v2 a WAF_v2 najdete v tématu Automatické [škálování v2 SKU](application-gateway-autoscaling-zone-redundant.md).
+Application Gateway Standard_v2 podporuje automatické škálování a umožňuje horizontální navýšení nebo snížení kapacity na základě změn schémat zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Další informace o funkcích Application Gateway Standard_v2 najdete v tématu Automatické [škálování v2 SKU](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Redundance zóny
 
-Nasazení Application Gateway nebo WAF v rámci Standard_v2 nebo WAF_v2 SKU může zahrnovat několik Zóny dostupnosti, což nabízí lepší odolnost proti chybám a odstraňuje nutnost zřídit samostatné aplikační brány v každé zóně.
+Standard_v2 Application Gateway může zahrnovat více Zóny dostupnosti, což nabízí lepší odolnost proti chybám a odstraňuje nutnost zřídit samostatné aplikační brány v každé zóně.
 
 ## <a name="static-vip"></a>Statická virtuální IP adresa
 
-Virtuální IP adresa služby Application Gateway v Standard_v2 WAF_v2 nebo SKU podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění ani po dobu života Application Gateway.
+SKU služby Application Gateway Standard_v2 podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění ani po dobu života Application Gateway.
 
 ## <a name="web-application-firewall"></a>Brána firewall webových aplikací
 
@@ -75,9 +75,9 @@ Další informace najdete v tématu [směrování na základě adresy URL s Appl
 
 ## <a name="multiple-site-hosting"></a>Hostování několika webů
 
-Hostování několika webů umožňuje konfigurovat více než jeden web ve stejné instanci aplikační brány. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jednoho Application Gateway nebo 40 pro WAF (pro zajištění optimálního výkonu). Každý web se dá přesměrovat na vlastní fond. Aplikační brána může například obsluhovat provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů serverů s názvem ContosoServerPool a FabrikamServerPool.
+Hostování několika webů umožňuje konfigurovat více než jeden web ve stejné instanci aplikační brány. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné Application Gateway (pro zajištění optimálního výkonu). Každý web se dá přesměrovat na vlastní fond. Aplikační brána může například obsluhovat provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů serverů s názvem ContosoServerPool a FabrikamServerPool.
 
-Žádosti na adresu `http://contoso.com` se směrují na ContosoServerPool a žádosti na adresu `http://fabrikam.com` na FabrikamServerPool.
+Požadavky na adresu `http://contoso.com` se směrují na ContosoServerPool a požadavky na adresu `http://fabrikam.com` na FabrikamServerPool.
 
 Podobně je možné ve stejném nasazení aplikační brány hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy `http://blog.contoso.com` a `http://app.contoso.com` hostované v jednom nasazení aplikační brány.
 
@@ -135,9 +135,9 @@ Další informace najdete v tématu [přepis hlaviček protokolu HTTP](rewrite-h
 
 ## <a name="sizing"></a>Velikosti
 
-Application Gateway Standard_v2 a WAF_v2 SKU je možné nakonfigurovat pro nasazení s automatickým škálováním nebo pevnou velikostí. Tyto SKU nenabízejí různé velikosti instancí. Další informace o výkonu a cenách v2 najdete v tématu Automatické [škálování v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
+Pro nasazení automatického škálování nebo pevné velikosti se dá nakonfigurovat Application Gateway Standard_v2. Tato SKU nenabízí různé velikosti instancí. Další informace o výkonu a cenách v2 najdete v tématu Automatické [škálování v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
-Application Gateway Standard a SKU WAF se momentálně nabízí ve třech velikostech: **malá**, **střední**a **Velká**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
+Application Gateway Standard se nabízí ve třech velikostech: **malá**, **střední**a **Velká**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
 
 Úplný seznam omezení služby Application Gateway najdete na stránce [Omezení služby Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 

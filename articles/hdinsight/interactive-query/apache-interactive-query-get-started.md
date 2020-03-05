@@ -1,19 +1,19 @@
 ---
 title: Co je interaktivní dotaz ve službě Azure HDInsight?
 description: Úvod do interaktivního dotazu, označovaného taky Apache Hive LLAP, ve službě Azure HDInsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/17/2019
-ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198918"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271953"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co je interaktivní dotaz ve službě Azure HDInsight
 
@@ -36,35 +36,19 @@ Informace o vytvoření clusteru HDInsight najdete v tématu věnovaném [vytvá
 
 K provedení dotazů na podregistr máte následující možnosti:
 
-* Použití Microsoft Power BI
-
-    Viz [vizualizace interaktivních dotazů Apache Hive dat pomocí Power BI ve službě Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) najdete v tématu [vizualizace velkých objemů dat pomocí Power BI ve službě Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-
-* Použití sady Visual Studio
-
-    Přečtěte si téma [připojení ke službě Azure HDInsight a spuštění dotazů Apache Hive pomocí data Lakech nástrojů pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
-
-* Použití editoru Visual Studio Code
-
-    Viz [použití Visual Studio Code pro Apache Hive, LLAP nebo pySpark](../hdinsight-for-vscode.md).
-* Pomocí zobrazení podregistru Apache Ambari spusťte Apache Hive.
-  
-    Viz [použití Apache Hive zobrazení pomocí Apache Hadoop ve službě Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md).
-
-* Spusťte Apache Hive pomocí Beeline.
-  
-    Viz [použití Apache Hive s Apache Hadoop ve službě HDInsight s Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
-  
-    Beeline můžete použít buď z hlavního uzlu, nebo z prázdného hraničního uzlu. Doporučujeme používat Beeline z prázdného hraničního uzlu. Informace o vytvoření clusteru HDInsight pomocí prázdného hraničního uzlu najdete v tématu [použití prázdných hraničních uzlů v HDInsight](../hdinsight-apps-use-edge-node.md).
-* Spusťte Apache Hive pomocí rozhraní ODBC pro podregistr.
-  
-    V tématu [připojení aplikace Excel k Apache Hadoop s ovladačem Microsoft PODREGISTR ODBC Driver](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+|Metoda |Popis |
+|---|---|
+|Microsoft Power BI|Podívejte se, jak [vizualizovat interaktivní dotazy Apache Hive data pomocí Power BI ve službě Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md)a [vizualizovat velké objemy dat pomocí Power BI ve službě Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).|
+|Visual Studio|Přečtěte si téma [připojení ke službě Azure HDInsight a spuštění dotazů Apache Hive pomocí data Lakech nástrojů pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).|
+|Visual Studio Code|Viz [použití Visual Studio Code pro Apache Hive, LLAP nebo pySpark](../hdinsight-for-vscode.md).|
+|Zobrazení podregistru Apache Ambari|Viz [použití Apache Hive zobrazení pomocí Apache Hadoop ve službě Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md). Zobrazení podregistru není pro HDInsight 4,0 dostupné.|
+|Apache Beeline|Viz [použití Apache Hive s Apache Hadoop ve službě HDInsight s Beeline](../hadoop/apache-hadoop-use-hive-beeline.md). Beeline můžete použít buď z hlavního uzlu, nebo z prázdného hraničního uzlu. Doporučujeme používat Beeline z prázdného hraničního uzlu. Informace o vytvoření clusteru HDInsight pomocí prázdného hraničního uzlu najdete v tématu [použití prázdných hraničních uzlů v HDInsight](../hdinsight-apps-use-edge-node.md).|
+|Rozhraní ODBC pro podregistr|V tématu [připojení aplikace Excel k Apache Hadoop s ovladačem Microsoft PODREGISTR ODBC Driver](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).|
 
 Vyhledání připojovacího řetězce připojení k databázi Java (JDBC):
 
-1. Přihlaste se k Apache Ambari pomocí následující adresy URL: `https://<cluster name>.AzureHDInsight.net`.
-2. V nabídce vlevo vyberte **podregistr**.
-3. Pokud chcete zkopírovat adresu URL, vyberte ikonu schránky:
+1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Pokud chcete zkopírovat adresu URL, vyberte ikonu schránky:
 
    ![Interaktivní dotaz Hadoop pro HDInsight LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 

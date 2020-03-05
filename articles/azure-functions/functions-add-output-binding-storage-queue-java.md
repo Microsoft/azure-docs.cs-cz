@@ -1,14 +1,17 @@
 ---
 title: Připojte funkci jazyka Java k Azure Storage
 description: Naučte se připojit funkci Java aktivovanou protokolem HTTP, která se Azure Storage pomocí výstupní vazby úložiště fronty.
+author: KarlErickson
+ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198543"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272809"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Připojte funkci jazyka Java k Azure Storage
 
@@ -112,10 +115,19 @@ Nyní jste připraveni vyzkoušet novou výstupní vazbu místně.
 
 Stejně jako dřív použijte následující příkaz pro sestavení projektu a místní spuštění Functions Runtime:
 
+::: zone pivot="java-build-tools-maven"  
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end
 
 > [!NOTE]  
 > Vzhledem k tomu, že jste povolili sady rozšíření v Host. JSON, [rozšíření pro vytváření vazeb úložiště](functions-bindings-storage-blob.md#add-to-your-functions-app) se během spouštění stáhlo a nainstalovalo společně s dalšími rozšířeními vazby Microsoftu.
@@ -138,9 +150,17 @@ Dále pomocí Azure CLI zobrazíte novou frontu a ověříte, že se přidala zp
 
 Pokud chcete aktualizovat publikovanou aplikaci, spusťte následující příkaz znovu:  
 
-```azurecli
+::: zone pivot="java-build-tools-maven"  
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
 
 Znovu můžete použít oblé k otestování nasazené funkce. Stejně jako dřív předejte hodnotu `AzureFunctions` v těle požadavku POST na adresu URL, jako v tomto příkladu:
 
