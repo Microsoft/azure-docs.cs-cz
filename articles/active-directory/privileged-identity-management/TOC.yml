@@ -83,7 +83,7 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: Konfigurace upozornění
           href: pim-resource-roles-configure-alerts.md
-        - name: Zobrazení historie auditu a aktivit
+        - name: Zobrazení historie auditů
           href: azure-pim-resource-rbac.md
         - name: Použití vlastních rolí
           href: pim-resource-roles-custom-role-policy.md
