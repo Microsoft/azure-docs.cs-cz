@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672114"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382593"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Core v Azure
 
@@ -45,7 +45,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci ASP.NET Core:
 
    ![Konfigurace projektu webové aplikace](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. Pro tento rychlý Start vyberte šablonu **webové aplikace** . Ujistěte se, že je ověřování nastaveno na **bez ověřování** a není vybrána žádná jiná možnost. Vyberte **Create** (Vytvořit).
+1. Pro tento rychlý Start vyberte šablonu **webové aplikace** . Ujistěte se, že je ověřování nastaveno na **bez ověřování** a není vybrána žádná jiná možnost. Vyberte **Vytvořit**.
 
    ![Pro tento kurz vyberte ASP.NET Core Razor Pages](./media/app-service-web-get-started-dotnet/aspnet-razor-pages-app.png)
 
@@ -87,7 +87,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci ASP.NET Core:
    |-|-|-|
    |Plán služby App Service| myAppServicePlan | Název plánu služby App Service. |
    | Umístění | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
-   | Velikost | Zadarmo | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
+   | Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
 
    ![Vytvoření plánu služby App Service](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 

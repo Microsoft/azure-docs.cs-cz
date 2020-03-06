@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915618"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370827"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště tabulek Azure pro Azure Functions
 
@@ -556,8 +556,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | musí být nastavené na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
-|**direction** | neuvedeno | musí být nastavené na `in`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
+|**type** | neuvedeno | Musí být nastavené na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
+|**direction** | neuvedeno | Musí být nastavené na `in`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje tabulku nebo entitu v kódu funkce. | 
 |**Tabulky** | **Tabulky** | Název tabulky.| 
 |**partitionKey** | **PartitionKey** |Volitelné. Klíč oddílu entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
@@ -943,8 +943,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | musí být nastavené na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
-|**direction** | neuvedeno | musí být nastavené na `out`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
+|**type** | neuvedeno | Musí být nastavené na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
+|**direction** | neuvedeno | Musí být nastavené na `out`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje tabulku nebo entitu. Nastavte na `$return` pro odkaz na návratovou hodnotu funkce.| 
 |**Tabulky** |**Tabulky** | Název tabulky.| 
 |**partitionKey** |**PartitionKey** | Klíč oddílu entity tabulky, která se má zapsat Návod, jak tuto vlastnost používat, najdete v [části věnované používání](#output---usage) .| 

@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
 ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804040"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358776"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování Azure
 
 Tento článek poskytuje přehled o tom, jak se šifrování používá v Microsoft Azure. Pokrývá hlavní oblasti šifrování, včetně šifrování v klidovém umístění, šifrování v letu a správy klíčů pomocí Azure Key Vault. Každá část obsahuje odkazy na podrobnější informace.
 
-## <a name="encryption-of-data-at-rest"></a>Šifrování neaktivních uložených dat
+## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 
 Uložená data obsahují informace, které se nacházejí v trvalém úložišti na fyzických médiích v libovolném digitálním formátu. Médium může zahrnovat soubory na magnetických nebo optických médiích, Archivovaná data a zálohy dat. Microsoft Azure nabízí nejrůznější řešení pro ukládání dat, která vyhovují různým potřebám, včetně souborů, disků, objektů BLOB a tabulkového úložiště. Microsoft taky poskytuje šifrování pro ochranu [Azure SQL Database](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)a Azure Data Lake.
 
@@ -105,7 +105,7 @@ CLE má integrované funkce, které můžete použít k šifrování dat pomocí
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB šifrování databáze
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) je globálně distribuovaná databáze Microsoftu pro více modelů. Uživatelská data uložená v Cosmos DB v nestálém úložišti (jednotky SSD) se standardně šifrují. Neexistují žádné ovládací prvky, které by bylo možné zapnout nebo vypnout. Šifrování v klidovém stavu se implementuje pomocí řady bezpečnostních technologií, včetně zabezpečených systémů úložiště klíčů, šifrovaných sítí a kryptografických rozhraní API. Šifrovací klíče spravuje Microsoft a jsou otočené podle interních pokynů Microsoftu.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) je globálně distribuovaná databáze Microsoftu pro více modelů. Uživatelská data uložená v Cosmos DB v nestálém úložišti (jednotky SSD) se standardně šifrují. Neexistují žádné ovládací prvky, které by bylo možné zapnout nebo vypnout. Šifrování v klidovém stavu je implementovaný s využitím řadu bezpečnostních technologií, včetně systémů zabezpečené úložiště klíčů, šifrované sítě a rozhraní API kryptografických. Šifrovací klíče spravuje Microsoft a jsou otočené podle interních pokynů Microsoftu.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Šifrování neaktivních umístění v Data Lake
 
@@ -181,7 +181,7 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace:
+Další informace naleznete v tématu:
 
 [Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

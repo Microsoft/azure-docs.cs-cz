@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516792"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365679"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>Nasazení virtuálního pole StorSimple – zřizování v Hyper-V
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -40,7 +40,7 @@ Tady najdete předpoklady pro zřízení virtuálního pole v hostitelském syst
 Než začnete, ujistěte se, že:
 
 * Dokončili jste všechny kroky v části [Příprava portálu pro virtuální pole StorSimple](storsimple-virtual-array-deploy1-portal-prep.md).
-* Stáhli jste image virtuálního pole pro Hyper-V z Azure Portal. Další informace najdete v **kroku 3: Stáhněte si image** virtuálního pole a [Připravte portál pro StorSimple Virtual Array Guide](storsimple-virtual-array-deploy1-portal-prep.md).
+* Stáhli jste image virtuálního pole pro Hyper-V z Azure Portal. Další informace najdete v části **Krok 3: stažení image virtuálního pole** pro [přípravu portálu pro virtuální pole StorSimple](storsimple-virtual-array-deploy1-portal-prep.md).
 
   > [!IMPORTANT]
   > Software spuštěný ve virtuálním poli StorSimple se dá použít jenom u služby StorSimple Device Manager.
@@ -83,7 +83,7 @@ Ujistěte se, že základní hardware (hostitelský systém), na kterém vytvá�
 * Jedno síťové rozhraní
 * Virtuální disk 500 GB pro systémová data.
 
-## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>Krok 2: Zřízení virtuálního pole v hypervisoru
+## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>Krok 2: zřízení virtuálního pole v hypervisoru
 Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
 
 #### <a name="to-provision-a-virtual-array"></a>Zřízení virtuálního pole
@@ -121,7 +121,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
 11. Ke splnění minimálních požadavků potřebujete 4 jádra. Pokud chcete přidat 4 virtuální procesory, v okně **Správce technologie Hyper-V** vyberte váš hostitelský systém. V pravém podokně v seznamu **Virtuální počítače** vyhledejte virtuální počítač, který jste právě vytvořili. Vyberte název počítače, klikněte na něj pravým tlačítkem a vyberte **Nastavení**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. Na stránce **Nastavení** klikněte v levém podokně na **Procesor**. V pravém podokně nastavte **počet virtuálních procesorů** na 4 (nebo více). Klikněte na tlačítko **Použít**.
+12. Na stránce **Nastavení** klikněte v levém podokně na **Procesor**. V pravém podokně nastavte **počet virtuálních procesorů** na 4 (nebo více). Klikněte na **Použít**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
 13. Aby bylo možné splnit minimální požadavky, je nutné přidat virtuální datový disk 500 GB. Na stránce **Nastavení**:
@@ -153,7 +153,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
-## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>Krok 3: Spustit virtuální pole a získat IP adresu
+## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>Krok 3: spuštění virtuálního pole a získání IP adresy
 Provedením následujících kroků spustíte virtuální pole a připojíte se k němu.
 
 #### <a name="to-start-the-virtual-array"></a>Spuštění virtuálního pole
@@ -163,7 +163,7 @@ Provedením následujících kroků spustíte virtuální pole a připojíte se 
 2. Jakmile bude zařízení spuštěné, vyberte ho, klikněte na něj pravým tlačítkem a vyberte **Připojit**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. Možná budete muset počkat 5-10 minut, než bude zařízení připravené. V konzole se zobrazí zpráva o stavu značící průběh. Jakmile bude zařízení připravené, přejděte do části **Akce**. Stisknutím `Ctrl + Alt + Delete` klávesy se přihlaste k virtuálnímu poli. Výchozí uživatel je *StorSimpleAdmin* a výchozí heslo je *Heslo1*.
+3. Možná budete muset počkat 5-10 minut, než bude zařízení připravené. V konzole se zobrazí zpráva o stavu značící průběh. Jakmile bude zařízení připravené, přejděte do části **Akce**. Stisknutím `Ctrl + Alt + Delete` se přihlaste k virtuálnímu poli. Výchozí uživatel je *StorSimpleAdmin* a výchozí heslo je *Heslo1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Z bezpečnostních důvodů platnost hesla správce zařízení vyprší po prvním přihlášení. Zobrazí se výzva ke změně hesla.
@@ -185,7 +185,7 @@ Provedením následujících kroků spustíte virtuální pole a připojíte se 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image28m.png)
 
     Dále nakonfigurujte síť.
-7. `Get-HcsIpAddress` Pomocí příkazu můžete zobrazit seznam síťových rozhraní povolených ve virtuálním poli. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
+7. Pomocí příkazu `Get-HcsIpAddress` můžete zobrazit seznam síťových rozhraní povolených ve virtuálním poli. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
 8. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Prohlédněte si následující příklad:
@@ -217,6 +217,6 @@ Pokud se při počáteční konfiguraci s použitím místního webového uživa
 * Spusťte diagnostické testy pro [řešení potíží s instalací webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Generování souboru protokolu a zobrazení souborů protokolu](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nastavení virtuálního pole StorSimple jako souborového serveru](storsimple-virtual-array-deploy3-fs-setup.md)
 * [Nastavení StorSimple virtuálního pole jako serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md)

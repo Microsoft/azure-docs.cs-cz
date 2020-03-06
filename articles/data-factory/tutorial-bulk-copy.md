@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 4ab467c0dc5014ec6c8a543fe7e8ecc136dfa02d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439508"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388694"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 
@@ -29,7 +29,7 @@ Tento kurz zahrnuje následující základní kroky:
 > * Vytvoření propojených služeb Azure SQL Database, Azure SQL Data Warehouse a Azure Storage
 > * Vytvoření datových sad Azure SQL Database a Azure SQL Data Warehouse
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
-> * Zahajte spuštění kanálu.
+> * Zahájení spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
 Tento kurz používá prostředí Azure PowerShell. Další informace o vytvoření datové továrny pomocí jiných nástrojů nebo sad SDK najdete v tématu [Šablony Rychlý start](quickstart-create-data-factory-dot-net.md). 
@@ -37,14 +37,14 @@ Tento kurz používá prostředí Azure PowerShell. Další informace o vytvoře
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
 V tomto scénáři máme několik tabulek v Azure SQL Database, které chceme zkopírovat do služby SQL Data Warehouse. Tady je logická posloupnost kroků tohoto pracovního postupu, které se provádějí v kanálech:
 
-![Pracovní postupy](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
+![Pracovní postup](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * První kanál vyhledá seznam tabulek, které je potřeba zkopírovat do úložišť dat jímky.  Další možností je udržovat tabulku metadat se seznamem všech tabulek, které je potřeba zkopírovat do úložišť dat jímky. Kanál potom aktivuje jiný kanál, který postupně prochází všechny tabulky v databázi a provádí operaci kopírování dat.
 * Tento druhý kanál provádí vlastní kopírování. Jako parametr používá seznam tabulek. Každá tabulka v tomto seznamu se zkopíruje z Azure SQL Database do příslušné tabulky ve službě SQL Data Warehouse pomocí [fázovaného kopírování prostřednictvím Blob Storage a PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) pro zajištění nejlepšího výkonu. V tomto příkladu první kanál předá seznam tabulek jako hodnotu parametru. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -192,7 +192,7 @@ V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, aby
 1. Ve složce **C:\ADFv2TutorialBulkCopy** vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** s následujícím obsahem:
 
     > [!IMPORTANT]
-    > Než soubor uložíte, položky &lt;accountName&gt; a &lt;accountKey&gt; nahraďte názvem svého účtu Azure Storage a jeho klíčem.
+    > Než soubor uložíte, položky &lt;accountName&gt; a &lt;accountKey&gt; nahraďte názvem svého účtu úložiště Azure a jeho klíčem.
 
     ```json
     {
@@ -505,7 +505,7 @@ Tento kanál provádí dva kroky:
     $result
     ```
 
-    Zde je výstup tohoto ukázkového spuštění:
+    Tady je výstup tohoto ukázkového spuštění:
 
     ```json
     Pipeline run details:
@@ -558,7 +558,7 @@ Tento kanál provádí dva kroky:
     ($result | Where-Object {$_.ActivityName -eq "TriggerCopy"}).Output.ToString()
     ```
 
-    Zde je výstup tohoto ukázkového spuštění:
+    Tady je výstup tohoto ukázkového spuštění:
 
     ```json
     {
@@ -581,7 +581,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb Azure SQL Database, Azure SQL Data Warehouse a Azure Storage
 > * Vytvoření datových sad Azure SQL Database a Azure SQL Data Warehouse
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
-> * Zahajte spuštění kanálu.
+> * Zahájení spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
 Pokud se chcete dozvědět víc o přírůstkovém kopírování ze zdroje do cíle, přejděte k následujícímu kurzu:

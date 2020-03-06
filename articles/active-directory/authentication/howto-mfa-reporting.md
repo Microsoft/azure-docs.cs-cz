@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425292"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378073"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
 
 Azure Multi-Factor Authentication poskytuje několik sestav, které můžete používat vy a vaše organizace přístupné prostřednictvím Azure Portal. V následující tabulce jsou uvedeny dostupné sestavy:
 
-| Zpráva | Umístění | Popis |
+| Sestava | Umístění | Popis |
 |:--- |:--- |:--- |
 | Historie blokování uživatelů | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
 | Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
@@ -32,7 +32,7 @@ Azure Multi-Factor Authentication poskytuje několik sestav, které můžete pou
 
 ## <a name="view-mfa-reports"></a>Zobrazit sestavy MFA
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **Security** > **MFA**.
 3. Vyberte sestavu, kterou chcete zobrazit.
 

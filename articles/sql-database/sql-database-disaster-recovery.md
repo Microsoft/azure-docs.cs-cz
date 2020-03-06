@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826587"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359167"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení Azure SQL Database nebo převzetí služeb při selhání sekundárním
 
@@ -89,7 +89,7 @@ Pokud výpadek vaší aplikace nevede k obchodním zodpovědnostem, můžete pou
 
 Pokud k zotavení z výpadku používáte geografické obnovení, musíte zajistit, aby připojení k novým databázím bylo správně nakonfigurováno, aby bylo možné obnovit normální funkci aplikace. Toto je kontrolní seznam úkolů pro přípravu obnovené databáze.
 
-### <a name="update-connection-strings"></a>Aktualizace připojovacích řetězců
+### <a name="update-connection-strings"></a>Aktualizovat připojovací řetězce
 
 Vzhledem k tomu, že se obnovená databáze nachází na jiném serveru, musíte aktualizovat připojovací řetězec aplikace tak, aby odkazoval na tento server.
 

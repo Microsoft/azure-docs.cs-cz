@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793556"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379732"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Jak funguje úplné hledání textu v Azure Kognitivní hledání
 
-Tento článek je určen pro vývojáře, kteří potřebují hlubší přehled o tom, jak funkce Lucene fulltextového vyhledávání funguje v Azure Kognitivní hledání. V případě textových dotazů bude Azure Kognitivní hledání bez problémů doručovat očekávané výsledky ve většině scénářů, ale občas se může stát, že se zobrazí výsledek "vypnuto". V těchto situacích vám může pomáhat v čtyřech fázích provádění dotazů Lucene (analýza dotazů, lexikální analýza, shoda dokumentů a bodování), které vám pomůžou identifikovat konkrétní změny parametrů dotazů nebo konfigurace indexu, které budou poskytovat požadované zaznamenaný. 
+Tento článek je určen pro vývojáře, kteří potřebují hlubší přehled o tom, jak funkce Lucene fulltextového vyhledávání funguje v Azure Kognitivní hledání. V případě textových dotazů Azure Cognitive Search ve většině scénářů bezproblémově doručí očekávané výsledky, ale občas se může zobrazit výsledek, který se zdá být nějakým způsobem „mimo“. V takových situacích vám čtyři fáze provádění dotazů Lucene (parsování dotazu, lexikální analýza, porovnávání dokumentů, hodnocení) na pozadí můžou pomoct s identifikací konkrétních změn parametrů dotazu nebo konfigurace indexu, které zajistí požadovaný výsledek. 
 
 > [!Note] 
 > Azure Kognitivní hledání používá Lucene pro fulltextové vyhledávání, ale integrace Lucene není vyčerpávající. Selektivně zpřístupníme a rozšíříme funkce Lucene, aby byly povolené scénáře důležité pro Azure Kognitivní hledání. 
@@ -251,9 +251,9 @@ To je běžné, ale nevyžadují se pro použití stejných analyzátorů pro op
 
 Návrat do našeho příkladu pro pole **title** má obrácený index vypadat takto:
 
-| Doba účinnosti | Seznam dokumentů |
+| Období | Seznam dokumentů |
 |------|---------------|
-| atman | 1\. místo |
+| atman | 1 |
 | míčů | 2 |
 | pokoji | 1, 3 |
 | spadající | 4  |
@@ -265,31 +265,31 @@ V poli title se pouze *Hotel* zobrazuje ve dvou dokumentech: 1, 3.
 
 Pro pole **Popis** je index následující:
 
-| Doba účinnosti | Seznam dokumentů |
+| Období | Seznam dokumentů |
 |------|---------------|
 | letové | 3
 | a | 4
-| míčů | 1\. místo
+| míčů | 1
 | podmíněné | 3
 | pohodlí | 3
-| délku | 1\. místo
+| vzdálenost | 1
 | ostrov | 2
 | Kaua ʻ i | 2
 | uložené | 2
 | severu | 2
 | spadající | 1, 2, 3
-| z | 2
-| pnete |2
+| of | 2
+| na |2
 | quiet | 4
 | pokoje  | 1, 3
 | secluded | 4
 | pozemní | 2
-| spacious | 1\. místo
+| spacious | 1
 | prostředek | 1, 2
-| na | 1\. místo
-| zobrazit | 1, 2, 3
-| procházení | 1\. místo
-| Řetězce | 3
+| na | 1
+| zobrazení | 1, 2, 3
+| procházení | 1
+| následující adresou: | 3
 
 
 **Vyhovující výrazy dotazu proti indexovaným podmínkám**
@@ -360,7 +360,7 @@ V tomto příkladu je znázorněna tato záležitost. Hledání pomocí zástupn
 Existují dva způsoby, jak ve službě Azure Kognitivní hledání naladit hodnocení relevance:
 
 1. **Profily vyhodnocování** podporují dokumenty v seřazeném seznamu výsledků na základě sady pravidel. V našem příkladu můžeme zvážit, že se dokumenty, které odpovídají poli title, považují za relevantnější než dokumenty, které odpovídají poli Popis. Pokud má náš index pro každý Hotel pole s cenami, můžeme zvýšit úroveň dokumentů s nižší cenou. Přečtěte si další informace o tom, jak [Přidat profily vyhodnocování do indexu vyhledávání.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Zvyšování termínů** (k dispozici pouze v úplné syntaxi dotazů Lucene) poskytuje operátor zvyšování `^`, který lze použít na jakoukoli část stromu dotazu. V našem příkladu se místo hledání předpony\**Air* může vyhledat jedna podmínka *vzduchu* nebo předpona, ale dokumenty, které se shodují s přesným termínem, jsou seřazené výše, a to tak, že se zvýší na termínový dotaz: * klimatizační podmínka ^ 2 | | | klimatizační znak * *. Přečtěte si další informace o [zvyšování podmínek](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. **Zvyšování termínů** (k dispozici pouze v úplné syntaxi dotazů Lucene) poskytuje operátor zvyšování `^`, který lze použít na jakoukoli část stromu dotazu. V našem příkladu se místo hledání předpony\**Air* může vyhledat jedna podmínka *vzduchu* nebo předpona, ale dokumenty, které se shodují s přesným termínem, jsou seřazené výše, a to použitím zvýšení termínu na dotaz: * klimatizační podmínka ^ 2 | | klimatizační znak * *. Přečtěte si další informace o [zvyšování podmínek](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Bodování v distribuovaném indexu
@@ -391,9 +391,9 @@ Tento článek prozkoumal fulltextové vyhledávání v kontextu Azure Kognitivn
 
 + [Nakonfigurujte vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo specializované zpracování konkrétních polí.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-[Hledat dokumenty REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[Rozhraní API pro vyhledávání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
 [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 

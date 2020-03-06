@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082439"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357652"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database – přehled vývoje aplikací
 
@@ -32,7 +32,7 @@ K připojení a dotazování Azure SQL Database můžete použít různé [progr
 
 Můžete využít Open Source nástroje, jako je [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Můžete také využít Azure Portal, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Přístup k Azure SQL Database je chráněný pomocí přihlašovacích údajů a bran firewall. Azure SQL Database podporuje i uživatele ověřování SQL Server a [Azure Active Directory (AAD)](sql-database-aad-authentication.md) a přihlašovací údaje. Přihlášení AAD jsou k dispozici pouze ve spravované instanci. 
 
@@ -52,7 +52,7 @@ Azure SQL Database je cloudová služba, ve které byste mohli očekávat přech
 
 Další informace o přípravě na plánované události údržby ve službě Azure SQL Database najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](sql-database-planned-maintenance.md).
 
-## <a name="network-considerations"></a>Síťové požadavky
+## <a name="network-considerations"></a>Informace k síti
 
 - Na počítači, který hostuje klientský program, zajistěte, aby brána firewall umožňovala odchozí komunikaci TCP na portu 1433.  Další informace: [Konfigurace brány Azure SQL Database firewall](sql-database-configure-firewall-settings.md).
 - Pokud se klientský program připojí k SQL Database v době, kdy klient běží na virtuálním počítači Azure, musíte na VIRTUÁLNÍm počítači otevřít určité rozsahy portů. Další informace: [porty přesahující 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).

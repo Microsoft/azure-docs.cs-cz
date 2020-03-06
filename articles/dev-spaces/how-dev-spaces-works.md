@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Popisuje procesy, které Azure Dev Spaces a způsob jejich konfigurace v konfiguračním souboru azds. yaml.
 keywords: azds. yaml, Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
 ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771134"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375228"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev Spaces fungují a jsou nakonfigurované
 
@@ -205,7 +205,7 @@ Příkaz `up` nahraje zdrojové soubory vaší aplikace a další artefakty, kte
 1. Vytvoří kontejner pro vaši aplikaci.
 1. Nasadí aplikaci do vývojového prostoru.
 1. Vytvoří veřejně přístupný název DNS pro koncový bod aplikace, pokud je nakonfigurován.
-1. K poskytnutí přístupu ke koncovému bodu aplikace pomocí http://localhost používá *předávaný port* .
+1. K poskytnutí přístupu ke koncovému bodu aplikace pomocí http://localhostpoužívá *předávaný port* .
 1. Přepošle stdout a stderr do nástrojů na straně klienta.
 
 

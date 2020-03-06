@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510256"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396756"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí webu Azure portal
 
@@ -24,7 +24,7 @@ Další informace najdete v tématu [vysvětlení IoT Edge automatického nasaze
 
 ## <a name="identify-devices-using-tags"></a>Identifikace zařízení pomocí značek
 
-Před vytvořením nasazení, budete muset mít k určení zařízení, která chcete ovlivnit. Azure IoT Edge identifikuje zařízení pomocí **značky** ve dvojčeti zařízení. Každé zařízení může mít několik značek, které můžete definovat jakýmkoli způsobem, který dává smysl pro vaše řešení.
+Před vytvořením nasazení, budete muset mít k určení zařízení, která chcete ovlivnit. Azure IoT Edge identifikuje zařízení pomocí **značek** v zařízení s dvojitou signalizací. Každé zařízení může mít několik značek, které můžete definovat jakýmkoli způsobem, který dává smysl pro vaše řešení.
 
 Pokud například spravujete areály inteligentních budov, můžete přidat umístění, typ místnosti a značky prostředí do zařízení:
 
@@ -39,7 +39,7 @@ Pokud například spravujete areály inteligentních budov, můžete přidat um�
 }
 ```
 
-Další informace o značky a dvojčata zařízení, najdete v části [principy a použití dvojčat zařízení ve službě IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Další informace o tom, jaké jsou vlákna a značky zařízení, najdete [v tématu pochopení a používání nevláken zařízení v IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Vytvoření nasazení
 
@@ -55,7 +55,7 @@ Existuje pět kroků pro vytvoření nasazení. V následujících částech se 
 
 ### <a name="step-1-name-and-label"></a>Krok 1: název a popisek
 
-1. Zadejte jedinečný název, který je malá písmena až 128 vašeho nasazení. Vyhněte se mezery a následující neplatné znaky: `& ^ [ ] { } \ | " < > /`.
+1. Zadejte jedinečný název, který je malá písmena až 128 vašeho nasazení. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`.
 1. Můžete přidat popisky jako páry klíč-hodnota, které vám pomůžou sledovat vaše nasazení. Například **HostPlatform** , **Linux**nebo **Version** a **3.0.1**.
 1. Vyberte **Další: moduly** , které se mají přesunout na krok 2.
 
@@ -79,16 +79,16 @@ Chcete-li přidat vlastní kód jako modul, nebo chcete-li ručně přidat modul
 1. V části **IoT Edge moduly** na stránce klikněte na **Přidat**.
 1. V rozevírací nabídce vyberte **modul IoT Edge** .
 1. Dejte modulu **IoT Edge název modulu**.
-1. Pro **identifikátor URI Image** zadejte image kontejneru pro modul.
-1. Pomocí rozevírací nabídky vyberte **zásady restartování**. Vybírat můžete z těchto možností:
+1. Do pole **identifikátor URI image** zadejte image kontejneru pro váš modul.
+1. Pomocí rozevírací nabídky vyberte **zásadu restartování**. Zvolte jednu z následujících možností:
    * **Always** – modul se vždy restartuje, pokud se z nějakého důvodu vypíná.
    * **nikdy** – modul se nikdy nerestartuje, pokud se z nějakého důvodu vypíná.
    * **při selhání** – modul se restartuje, pokud dojde k chybě, ale ne v případě, že se vypíná čistě.
    * stav není **v pořádku** – modul se restartuje, pokud dojde k chybě, nebo vrátí stav není v pořádku. Záleží jen na každý modul implementovat funkci zdravotní stav.
-1. Pomocí rozevírací nabídky vyberte **požadovaného stavu** pro modul. Vybírat můžete z těchto možností:
+1. Pomocí rozevírací nabídky vyberte **požadovaný stav** pro modul. Zvolte jednu z následujících možností:
    * **spuštění** je výchozí možnost. V modulu začne okamžitě po nasazení spustí.
    * **Zastaveno** – po nasazení přestane modul zůstat nečinný, dokud se nespustí a nezačne vámi nebo jiným modulem.
-1. Zadejte libovolné **možnosti vytvoření kontejneru** , který by měly být předány kontejneru. Další informace najdete v tématu [vytvořit docker](https://docs.docker.com/engine/reference/commandline/create/).
+1. Zadejte všechny **možnosti vytvoření kontejneru** , které by měly být předány do kontejneru. Další informace najdete v tématu [Docker Create](https://docs.docker.com/engine/reference/commandline/create/).
 1. Pokud chcete přidat značky nebo jiné vlastnosti do modulu s dvojitou výjimkou, vyberte možnost **Nastavení vláken modulu** .
 1. Zadejte **proměnné prostředí** pro tento modul. Proměnné prostředí poskytují informace o konfiguraci modulu.
 1. Vyberte **Přidat** a přidejte do nasazení modul.
@@ -109,7 +109,7 @@ Přidat modul z Azure Stream Analytics, postupujte podle těchto kroků:
 1. V rozevírací nabídce vyberte **modul Azure Stream Analytics** .
 1. V pravém podokně vyberte své **předplatné**.
 1. Vyberte svoji **úlohu IoT Edge**.
-1. Vyberte **Uložit** přidáte modul pro nasazení.
+1. Vyberte **Uložit** a přidejte do nasazení modul.
 
 #### <a name="configure-module-settings"></a>Konfigurovat nastavení modulu
 
@@ -127,7 +127,7 @@ Jakmile budete mít nakonfigurované všechny moduly pro nasazení, vyberte **Da
 
 Trasy definovat, jak moduly navzájem komunikují v rámci nasazení. Ve výchozím nastavení vám průvodce poskytne trasu s **názvem** **/messages/\* do $upstream**, což znamená, že všechny zprávy ve službě IoT Hub budou odesílány do výstupů.  
 
-Přidat nebo aktualizovat trasy s informacemi z [trasy deklarovat](module-composition.md#declare-routes)a pak vyberte **Další** pokračujte k části revize.
+Přidejte nebo aktualizujte trasy s informacemi z [deklarace směrování](module-composition.md#declare-routes)a pak výběrem **Další** pokračujte do části přezkoumání.
 
 Vyberte **Další: metriky**.
 
@@ -139,7 +139,7 @@ Metriky poskytují souhrnné počty různých stavů, které může zařízení 
 
 1. Zadejte dotaz na **kritéria metriky**. Dotaz vychází z IoT Edge [nahlášených vlastností](module-edgeagent-edgehub.md#edgehub-reported-properties)modulu centra rozbočovače. Metrika představuje počet řádků vrácených dotazem.
 
-   Například:
+   Příklad:
 
    ```sql
    SELECT deviceId FROM devices
@@ -158,8 +158,8 @@ Pokud je pro stejné zařízení cíleno více nasazení, bude použito pouze je
 
 Všechna vrstvená nasazení, která cílí na zařízení, musí mít vyšší prioritu než základní nasazení, aby se daly použít.
 
-1. Zadejte kladné celé číslo pro nasazení **Priority**.
-1. Zadejte **cílová podmínka** k určení zařízení, která budou cílem s tímto nasazením. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`.
+1. Zadejte kladné celé číslo pro **prioritu**nasazení.
+1. Zadejte **cílovou podmínku** pro určení, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`.
 
 Vyberte **Další: zkontrolovat + vytvořit** a přejděte k poslednímu kroku.
 
@@ -181,8 +181,8 @@ Chcete-li zobrazit podrobnosti o nasazení a monitorování zařízení, na kter
    * **ID** – název nasazení.
    * **Typ** – **typ nasazení, nasazení nebo nasazení** v **vrstveném**prostředí.
    * **Podmínka cíle** – značka používaná k definování cílových zařízení.
-   * **Priorita** -priority číslo přidružené k nasazení.
-   * **Systémové metriky** - **cílové** určuje počet dvojčat zařízení ve službě IoT Hub, která splňují cílovou podmínku a **použito** určuje počet zařízení, která mají použili obsahu nasazení do jejich dvojčaty modulů ve službě IoT Hub.
+   * **Priorita** – číslo priority přiřazené k nasazení.
+   * **Systémové metriky** - **cíle** určují počet nepodmíněných zařízení v IoT Hub, které odpovídají podmínce cíle, a **použije** se hodnota určuje počet zařízení, u kterých byl obsah nasazení použit v případě, že je v modulu IoT Hub.
    * **Metriky zařízení** – počet IoT Edge zařízení v průběhu generování sestav o úspěchu nebo chybách z IoT Edge modulu runtime klienta.
    * **Vlastní metriky** – počet IoT Edgech zařízení v datech generování sestav nasazení pro jakékoli metriky, které jste definovali pro nasazení.
    * **Čas vytvoření** – časové razítko z doby, kdy bylo vytvořeno nasazení. Tímto časovým razítkem se používá pro přerušení vazby, pokud mají dvě nasazení stejnou prioritu.
@@ -212,12 +212,12 @@ Pokud chcete upravit nasazení, postupujte následovně:
    * **Cílová podmínka**
    * **Metriky** – můžete upravit nebo odstranit metriky, které jste definovali, nebo přidat nové.
    * **Popisky**
-   * **Moduly**
-   * **Trasy**
+   * **Aktualizuj**
+   * **Tras**
    * **Nasazení**
 
 1. Vyberte **Save** (Uložit).
-1. Postupujte podle kroků v [monitorování nasazení](#monitor-a-deployment) sledovat změny zavádět.
+1. Pokud chcete sledovat změny, postupujte podle kroků v části [monitorování nasazení](#monitor-a-deployment) .
 
 ## <a name="delete-a-deployment"></a>Odstranit nasazení
 

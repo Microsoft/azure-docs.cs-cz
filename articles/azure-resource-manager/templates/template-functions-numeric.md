@@ -4,11 +4,11 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 11/08/2017
 ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380664"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Číselné funkce pro šablony Azure Resource Manager
 
@@ -109,7 +109,7 @@ Vrátí index iterační smyčky.
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| opakovat | Ne | řetězec | Název smyčky pro získání iterace. |
+| opakovat | Ne | string | Název smyčky pro získání iterace. |
 | offset |Ne |int |Číslo, které se má přidat do hodnoty iterace založené na nule |
 
 ### <a name="remarks"></a>Poznámky

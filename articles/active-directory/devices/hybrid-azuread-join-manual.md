@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882847"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377060"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -35,7 +35,7 @@ Pokud máte místní prostředí Active Directory a chcete připojit svá zaří
 > * Ověření připojených zařízení
 > * Řešení potíží s implementací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste obeznámeni s:
 
@@ -527,7 +527,7 @@ V AD FS musíte přidat pravidlo transformace vystavování, které projde metod
 1. Klikněte pravým tlačítkem na objekt důvěryhodnosti přijímající strany služby Microsoft Office 365 Identity Platform a pak vyberte **Upravit pravidla deklarace identity**.
 1. Na kartě **Pravidla transformace vystavování** vyberte **Přidat pravidlo**.
 1. V seznamu šablon **Pravidlo deklarace identity** vyberte **Odesílat deklarace pomocí vlastního pravidla**.
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. Do pole **název pravidla deklarace identity** zadejte **pravidlo deklarace identity metody ověřování**.
 1. Do pole **pravidlo deklarace identity** zadejte následující pravidlo:
 

@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155644"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395846"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Řešení potíží s přidělením při nasazení Cloud Services v Azure
 ## <a name="summary"></a>Souhrn
@@ -28,7 +28,7 @@ Když nasadíte instance do cloudové služby nebo přidáte nové instance webo
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ### <a name="background--how-allocation-works"></a>Pozadí – jak funguje přidělování
-Servery v datových centrech Azure jsou rozdělené do clusterů. V několika clusterech se zkouší nový požadavek na přidělení cloudové služby. Při nasazení první instance do cloudové služby (v přípravné nebo produkční) se tato cloudová služba připnula ke clusteru. Všechna další nasazení pro cloudovou službu budou provedena ve stejném clusteru. V tomto článku odkazujeme na to, že je "připnuté do clusteru". Obrázek 1 níže znázorňuje případ normálního přidělení, které se pokouší o více clusterů. Diagram 2 znázorňuje případ přidělení připnuté ke clusteru 2, protože to je místo, kde se hostuje stávající cloudová služba CS_1.
+Servery v datových centrech Azure jsou rozdělené do clusterů. V několika clusterech se zkouší nový požadavek na přidělení cloudové služby. Při nasazení první instance do cloudové služby (v přípravné nebo produkční) se tato cloudová služba připnula ke clusteru. Všechna další nasazení pro cloudovou službu budou provedena ve stejném clusteru. V tomto článku odkazujeme na to, že je "připnuté do clusteru". Obrázek 1 níže znázorňuje případ normálního přidělení, které se pokouší o více clusterů. Diagram 2 znázorňuje případ přidělení připnuté ke clusteru 2, protože to je místo, kde je stávající cloudová služba CS_1 hostovaná.
 
 ![Diagram přidělení](./media/cloud-services-allocation-failure/Allocation1.png)
 

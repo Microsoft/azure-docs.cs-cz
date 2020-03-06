@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685237"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363490"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal
 
@@ -42,7 +42,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. V **části Podrobnosti o instanci**zadejte *MyVM* pro **název virtuálního počítače** a zvolte *východní USA* pro vaši **oblast**a pak zvolte *Windows Server 2019 Datacenter* pro **bitovou kopii**. Zbytek ponechte ve výchozím nastavení.
 
-    ![Část podrobnosti o instancích](./media/quick-create-portal/instance-details.png)
+    ![Část podrobností o instancích](./media/quick-create-portal/instance-details.png)
 
 1. V **Účtu správce** zadejte uživatelské jméno, například *azureuser*, a heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
@@ -52,7 +52,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     ![Otevřené porty pro protokoly RDP a HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
-1. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
+1. Zbytek ponechte ve výchozím nastavení a pak v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
 
     ![Zkontrolovat a vytvořit](./media/quick-create-portal/review-create.png)
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 1/23/2020
 ms.author: sutalasi
 ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759819"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362593"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -60,7 +60,7 @@ Pokud k řízení odchozího připojení používáte NSG, musí být tyto znač
 - Všechny rozsahy IP adres, které odpovídají účtům úložiště ve zdrojové oblasti
     - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/security-overview.md#service-tags) pro zdrojovou oblast.
     - Povolte tyto adresy, aby bylo možné do účtu úložiště mezipaměti zapsat data z virtuálního počítače.
-- Vytvoření [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na základě pravidel skupiny zabezpečení sítě umožňující přístup ke všem IP adresám v odpovídající službě AAD
+- Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
 - Vytvořte pravidlo NSG na základě značky služby EventsHub pro cílovou oblast a umožněte přístup Site Recovery monitorování.
 - Vytvořte pravidlo NSG na základě značky služby AzureSiteRecovery, které umožní přístup k Site Recovery službě v libovolné oblasti.
 - Doporučujeme, abyste vytvořili požadovaná pravidla NSG na NSG testu a ověřili, že neexistují žádné problémy předtím, než vytvoříte pravidla na produkčním NSG.
@@ -115,7 +115,7 @@ V rámci virtuální sítě můžete vytvořit koncový bod síťové služby pr
 >[!NOTE]
 >Neomezovat přístup k virtuální síti pro účty úložiště používané pro ASR. Měli byste mít povolený přístup ze všech sítí.
 
-### <a name="forced-tunneling"></a>Vynucené tunelové propojení
+### <a name="forced-tunneling"></a>Vynucené tunelování
 
 Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 můžete přepsat [vlastní trasou](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrováním provozu virtuálního počítače do místního síťového virtuálního zařízení (síťové virtuální zařízení), ale tato konfigurace se nedoporučuje pro Site Recovery replikaci. Pokud používáte vlastní trasy, měli byste ve virtuální síti [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) pro úložiště, aby provoz replikace neopouští hranice Azure.
 

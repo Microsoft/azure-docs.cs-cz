@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888664"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376146"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
@@ -115,7 +115,7 @@ Prohlížeč standardně automaticky vypočítá správnou zónu, buď Internet,
 
 Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
-| Možnost | Aspekt správce | Z pohledu uživatele |
+| Možnost | Aspekt správce | Činnost koncového uživatele |
 | --- | --- | --- |
 | Zásady skupiny | Správce uzamkne úpravy nastavení zóny intranetu. | Uživatelé nemůžou upravovat svoje vlastní nastavení. |
 | Preference zásad skupiny |  Správce umožňuje úpravy nastavení zóny intranetu. | Uživatelé můžou změnit svoje vlastní nastavení. |
@@ -140,7 +140,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
    > Pokud chcete, aby někteří uživatelé nepoužívali bezproblémové přihlašování (například pokud se tito uživatelé přihlásí ke sdíleným terminálům), nastavte předchozí hodnoty na **4**. Tato akce přidá adresu URL služby Azure AD do zóny s omezeným přístupem a pokaždé neumožní bezproblémové jednotné přihlašování.
    >
 
-5. Vyberte **OK** a potom znovu vyberte **OK**.
+5. Vyberte **OK**a pak znovu vyberte **OK** .
 
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso7.png)
 

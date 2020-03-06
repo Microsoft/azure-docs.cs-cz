@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545615"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381447"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integrace Azure Active Directory pro Azure Red Hat OpenShift
 
@@ -30,7 +30,7 @@ Vytvořte nového Azure Active Directory uživatele globálního správce pro p�
 1. Otevřete okno [Uživatelé – všichni uživatelé](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) .
 2. Kliknutím na **+ Nový uživatel** otevřete podokno **uživatel** .
 3. Zadejte **jméno** pro tohoto uživatele.
-4. Vytvořte **uživatelské jméno** na základě názvu vytvořeného tenanta s `.onmicrosoft.com` připojením na konci. Například, `yourUserName@yourTenantName.onmicrosoft.com`. Zapište si toto uživatelské jméno. Budete ho potřebovat k přihlášení ke clusteru.
+4. Vytvořte **uživatelské jméno** na základě názvu vytvořeného tenanta s `.onmicrosoft.com` připojením na konci. například `yourUserName@yourTenantName.onmicrosoft.com`. Zapište si toto uživatelské jméno. Budete ho potřebovat k přihlášení ke clusteru.
 5. Kliknutím na **role adresáře** otevřete podokno role adresáře a vyberte **globální správce** a pak klikněte na **OK** v dolní části podokna.
 6. V podokně **uživatel** klikněte na možnost **Zobrazit heslo** a poznamenejte si dočasné heslo. Po prvním přihlášení se zobrazí výzva k jejímu resetování.
 7. V dolní části podokna klikněte na **vytvořit** a vytvořte uživatele.
@@ -107,7 +107,7 @@ Podrobnosti o vytvoření nové aplikace Azure AD najdete v tématu [Registrace 
 
 Podrobnosti o správě správců a dalších rolí najdete v tématu [Přidání nebo změna správců předplatného Azure](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
 
-## <a name="resources"></a>Materiály
+## <a name="resources"></a>Zdroje
 
 * [Aplikace a instanční objekty služby v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 * [Rychlý Start: registrace aplikace pomocí koncového bodu Azure Active Directory v 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
