@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
 ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938818"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386912"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -172,7 +172,7 @@ Můžete zadat maximální počet koncových bodů, které mají být vráceny, 
 
 Nemůžeme zaručit, že se v každém dotazu vrátí stejná sada koncových bodů. To je ovlivněno i tím, že některé koncové body můžou být v nesprávném stavu, v jakém okamžiku nebudou zahrnuty do odpovědi.
 
-## <a name="real-user-measurements"></a>Real User Measurements
+## <a name="real-user-measurements"></a>Měření reálných uživatelů
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jaké jsou výhody použití Měření reálných uživatelů?
 
@@ -252,7 +252,7 @@ Ne, nemusíte hostovat žádnou komponentu na straně serveru v Azure, aby mohla
 
 Jak je uvedeno v předchozí odpovědi, komponenty na straně serveru služby Měření reálných uživatelů jsou vlastněné a spravované pomocí Azure. To znamená, že využití šířky pásma Azure se nezvýší, protože používáte Měření reálných uživatelů. Nezahrnuje použití šířky pásma mimo jiné poplatky za Azure. Šířku pásma, kterou používáme, minimalizujete tak, že stáhnete jenom jeden obrázek v pixelech, abyste zjistili latenci v oblasti Azure. 
 
-## <a name="traffic-view"></a>Traffic View
+## <a name="traffic-view"></a>Zobrazení přenosů
 
 ### <a name="what-does-traffic-view-do"></a>Co Zobrazení přenosů udělat?
 
@@ -406,7 +406,7 @@ Pro profily s metodou směrování nastavenou na hodnotu vícehodnotové:
 
 Ano, můžete s výjimkou, že profil s hodnotou typu vícehodnotové nemůže být nadřazeným profilem ve vnořené sadě profilů.
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Ukončil (a) jsem koncový bod webové aplikace v profilu Traffic Manager, ale nepřijímám žádný provoz ani po jeho restartování. Jak mohu tuto situaci opravit?
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Ukončil (a) jsem koncový bod webové aplikace v profilu Traffic Manager, ale nepřijímám žádný provoz ani po jeho restartování. Jak to mohu napravit?
 
 Když je koncový bod webové aplikace Azure zastavený, Traffic Manager zastaví kontrolu jeho stavu a restartuje kontroly stavu až po zjištění, že byl koncový bod restartován. Chcete-li zabránit této prodlevě, zakažte a znovu povolte tento koncový bod v profilu Traffic Manager po restartování koncového bodu.
 
@@ -497,9 +497,9 @@ Nadřazený profil neprovádí kontroly stavu přímo u podřízeného objektu. 
 
 Následující tabulka popisuje chování Traffic Managerch kontrol stavu pro vnořený koncový bod.
 
-| Stav monitoru pro podřízený profil | Stav monitorování nadřazeného koncového bodu | Poznámky |
+| Stav monitoru pro podřízený profil | Stav monitorování nadřazeného koncového bodu | Poznámky: |
 | --- | --- | --- |
-| Zabezpečen. Podřízený profil byl zakázán. |Zastaveno |Stav nadřazeného koncového bodu je zastaven, není zakázán. Zakázaný stav je rezervovaný pro indikaci, že jste v nadřazeném profilu zakázali koncový bod. |
+| Disabled. Podřízený profil byl zakázán. |Zastaveno |Stav nadřazeného koncového bodu je zastaven, není zakázán. Zakázaný stav je rezervovaný pro indikaci, že jste v nadřazeném profilu zakázali koncový bod. |
 | Degradovaný. Nejméně jeden koncový bod podřízeného profilu je v neomezeném stavu. |Online: počet online koncových bodů v podřízeném profilu je aspoň hodnota MinChildEndpoints.<BR>CheckingEndpoint: počet koncových bodů online plus CheckingEndpoint v podřízeném profilu je alespoň hodnota MinChildEndpoints.<BR>Snížený výkon: jinak. |Provoz se směruje na koncový bod stavového CheckingEndpoint. Pokud je nastavení MinChildEndpoints příliš vysoké, koncový bod je vždy snížený. |
 | Online. Nejméně jeden koncový bod podřízeného profilu je online stav. V neomezeném stavu není žádný koncový bod. |Viz výše. | |
 | CheckingEndpoints. Aspoň jeden podřízený koncový bod profilu je "CheckingEndpoint". Žádné koncové body nejsou online nebo jsou degradovány. |Stejné jako výše. | |

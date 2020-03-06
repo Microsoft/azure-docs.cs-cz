@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173483"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390480"
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání sad Runbook Azure Automation do plánů obnovení
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
 
 Tento článek popisuje, jak integrovat Azure Automation Runbooky pro rozšiřování plánů obnovení [Azure Site Recovery](site-recovery-overview.md) . Ukážeme vám, jak automatizovat základní úlohy, které by jinak vyžadovaly ruční zásah, a jak převést obnovení z více kroků na akci jedním kliknutím.
 
@@ -112,7 +112,7 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 ## <a name="customize-the-recovery-plan"></a>Přizpůsobení plánu obnovení
 
 1. V trezoru vyberte **plány obnovení (Site Recovery)** .
-2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Další informace](site-recovery-create-recovery-plans.md) Pokud již máte plán obnovení, vyberte jej a otevřete ho.
+2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Další informace](site-recovery-create-recovery-plans.md). Pokud již máte plán obnovení, vyberte jej a otevřete ho.
 3. Na stránce plán obnovení klikněte na **přizpůsobit**.
 
     ![Klikněte na tlačítko přizpůsobit.](media/site-recovery-runbook-automation-new/custom-rp.png)
@@ -189,7 +189,7 @@ Pro každý plán obnovení vytvořte nezávislé proměnné, abyste mohli znovu
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Pro ukládání dalších informací použijte komplexní proměnnou.
 
-V některých případech možná nebudete moci vytvořit samostatné proměnné pro každý plán obnovení. Vezměte v úvahu scénář, ve kterém chcete, aby jeden skript přiřadil veřejnou IP adresu na konkrétní virtuální počítače. V jiném scénáři možná budete chtít použít různé skupin zabezpečení sítě na různých virtuálních počítačích (ne na všech virtuálních počítačích). Všimněte si, že:
+V některých případech možná nebudete moci vytvořit samostatné proměnné pro každý plán obnovení. Vezměte v úvahu scénář, ve kterém chcete, aby jeden skript přiřadil veřejnou IP adresu na konkrétní virtuální počítače. V jiném scénáři možná budete chtít použít různé skupin zabezpečení sítě na různých virtuálních počítačích (ne na všech virtuálních počítačích). Poznámky:
 
 - Můžete vytvořit skript, který bude opakovaně použitelný pro libovolný plán obnovení.
 - Každý plán obnovení může mít proměnný počet virtuálních počítačů.

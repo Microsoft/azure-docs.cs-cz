@@ -1,6 +1,6 @@
 ---
-title: Konektory v Uživatelském rozhraní služby Azure AD Synchronization Service Manager | Dokumentace Microsoftu
-description: Vysvětlení kartou konektorů v Synchronization Service Manager pro Azure AD Connect.
+title: Konektory v uživatelském rozhraní Synchronization Service Manager Azure AD | Microsoft Docs
+description: Pochopte kartu konektory v Synchronization Service Manager pro Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,82 +18,82 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60384105"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376346"
 ---
-# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect Sync Service Manager
+# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect synchronizace Service Manager
 
-![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
-Na kartě konektory slouží ke správě všech systémů, který synchronizační modul je připojen k.
+Karta konektory slouží ke správě všech systémů, ke kterým je synchronizační modul připojen.
 
-## <a name="connector-actions"></a>Akce konektorů
-| Akce | Komentář |
+## <a name="connector-actions"></a>Akce konektoru
+| Akce | Poznámka |
 | --- | --- |
-| Vytvořit |Nepoužívejte. Pro připojení k další doménové struktury AD, použijte Průvodce instalací. |
-| Vlastnosti |Používá pro domény a filtrování podle organizačních jednotek. |
-| [Odstranění](#delete) |Použít můžete buď odstranit data v prostoru konektoru nebo odstranit připojení k doménové struktuře. |
-| [Konfigurace profilů spuštění](#configure-run-profiles) |S výjimkou domény filtrování, nic ke konfiguraci sem. Tato akce můžete zobrazit už nakonfigurované profilů spuštění. |
-| Spusťte |Používá ke spuštění jednorázové spuštění profilu. |
-| Zastavit |Zastaví konektor profil, který aktuálně běží. |
-| Export konektoru |Nepoužívejte. |
-| Konektor pro import |Nepoužívejte. |
-| Aktualizovat konektor |Nepoužívejte. |
-| Aktualizovat schéma |Aktualizuje v mezipaměti schématu. Je upřednostňována před místo toho použijte možnost v Průvodci instalací od, který také aktualizace synchronizovat pravidla. |
-| [Hledání prostoru konektoru](#search-connector-space) |Používá k nalezení objektů a postupujte podle objektu a jeho data prostřednictvím systému. |
+| Vytvoření |Nepoužívat. Pro připojení k dalším doménovým strukturám služby AD použijte Průvodce instalací nástroje. |
+| Vlastnosti |Používá se pro filtrování domén a organizačních jednotek. |
+| [Odstranění](#delete) |Slouží k odstranění dat v prostoru konektoru nebo k odstranění připojení k doménové struktuře. |
+| [Konfigurovat profily spuštění](#configure-run-profiles) |S výjimkou filtrování domén není tady nic konfigurovat. Tuto akci můžete použít k zobrazení již nakonfigurovaných profilů spuštění. |
+| Spusťte |Slouží ke spuštění jednorázového spuštění profilu. |
+| Zastavit |Zastaví konektor, který aktuálně používá profil. |
+| Exportovat konektor |Nepoužívat. |
+| Import konektoru |Nepoužívat. |
+| Aktualizovat konektor |Nepoužívat. |
+| Aktualizovat schéma |Aktualizuje schéma v mezipaměti. Místo toho je vhodnější použít možnost v Průvodci instalací, protože tato aktualizace také aktualizuje pravidla synchronizace. |
+| [Hledat místo v konektoru](#search-connector-space) |Slouží k hledání objektů a ke sledování objektu a jeho dat prostřednictvím systému. |
 
-### <a name="delete"></a>Odstranění
-Pro dvě různé věci se nepoužije akce odstranění.  
-![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+### <a name="delete"></a>Odstranit
+Akce Odstranit se používá pro dvě různé věci.  
+![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
-Možnost **odstranit pouze prostoru konektoru** odeberete všechna data, ale zachovat konfiguraci.
+Možnost **Odstranit místo konektoru odebere jenom** všechna data, ale ponechá konfiguraci.
 
-Možnost **konektor odstranit a konektoru místo** odebere data a konfiguraci. Tato možnost se používá, pokud nechcete připojit k doménové struktuře už.
+Možnost **Odstranit spojnici a spojovací prostor** odstraní data a konfiguraci. Tato možnost se používá, když se už nechcete připojit k doménové struktuře.
 
-Obě možnosti synchronizovat všechny objekty a aktualizace objektů úložiště metaverse. Tato akce je dlouho běžící operace.
+Obě možnosti synchronizují všechny objekty a aktualizují objekty Metaverse. Tato akce je dlouhodobě spuštěná operace.
 
-### <a name="configure-run-profiles"></a>Konfigurace profilů spuštění
-Tato možnost umožňuje zobrazit profilů spuštění pro konektor nakonfigurovali.
+### <a name="configure-run-profiles"></a>Configure Run Profiles
+Tato možnost umožňuje zobrazit profily spuštění nakonfigurované pro konektor.
 
-![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
-### <a name="search-connector-space"></a>Hledání prostoru konektoru
-Akce hledání konektoru místo je užitečná k nalezení objektů a řešení potíží s data.
+### <a name="search-connector-space"></a>Hledat místo v konektoru
+Akce místa konektoru hledání je užitečná pro hledání objektů a řešení problémů s daty.
 
-![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
-Začněte výběrem **oboru**. Můžete vyhledávat na základě dat (relativní rozlišující název domény, ukotvení Podstromě), nebo stavu objektu (všechny ostatní možnosti).  
-![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-Pokud například provedete hledání podstromu, získáte všechny objekty v jedné organizační jednotce.  
-![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
-Z této tabulky můžete vybrat objekt, vyberte **vlastnosti**, a [na něho](tshoot-connect-object-not-syncing.md) z prostoru konektoru zdroje do úložiště metaverse a cíl prostoru konektoru.
+Začněte výběrem **oboru**. Můžete vyhledávat na základě dat (RDN, DN, kotvy, podstromy) nebo stavu objektu (všechny ostatní možnosti).  
+![synchronizace Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+Pokud například provedete dílčí stromové hledání, získáte všechny objekty v jedné organizační jednotce.  
+![synchronizace Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+Z této mřížky můžete vybrat objekt, vybrat **vlastnosti**a [sledovat ho](tshoot-connect-object-not-syncing.md) z prostoru zdrojového konektoru, do úložiště metaverse a do cílového prostoru konektoru.
 
-### <a name="changing-the-ad-ds-account-password"></a>Změna hesla účtu služby AD DS
-Pokud změníte heslo účtu, synchronizační služba již nebude moci importovat/exportovat změny do místní AD.   Situace může vypadat takto:
+### <a name="changing-the-ad-ds-account-password"></a>Mění se heslo účtu služba AD DS.
+Pokud změníte heslo účtu, synchronizační služba už nebude moct importovat a exportovat změny v místní službě AD.   Situace může vypadat takto:
 
-- V kroku import/export pro službu AD connector selže s chybou "bez zahájení pověření".
-- V prohlížeči událostí pro Windows protokolu událostí aplikace obsahuje chybu 6000 ID události, zpráva "agenta pro správu"contoso.com"se nepodařilo spustit, protože pověření je neplatné."
+- V kroku import/export pro konektor AD dojde k chybě s chybou "bez spuštění-přihlašovacích údajů".
+- V části Windows Prohlížeč událostí obsahuje protokol událostí aplikace chybu s ID události 6000 a zprávou "Agent pro správu" contoso.com "se nepodařilo spustit, protože přihlašovací údaje byly neplatné."
 
-Chcete-li vyřešit tento problém, aktualizujte uživatelský účet služby AD DS, následujícím způsobem:
+Chcete-li tento problém vyřešit, aktualizujte služba AD DS uživatelský účet pomocí následujících kroků:
 
 
-1. Spusťte Synchronization Service Manager (Služba synchronizace → START).
-</br>![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
-2. Přejděte **konektory** kartu.
-3. Vyberte konektor AD, který je konfigurován pro použití účtu služby AD DS.
-4. V části Akce, vyberte **vlastnosti**.
+1. Spusťte Synchronization Service Manager (spusťte synchronizační službu →).
+</br>![synchronizace Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
+2. Přejít na kartu **konektory** .
+3. Vyberte konektor služby AD, který je nakonfigurovaný tak, aby používal účet služba AD DS.
+4. V části Akce vyberte **vlastnosti**.
 5. V místním dialogovém okně vyberte připojit k doménové struktuře služby Active Directory:
-6. Název doménové struktury označuje odpovídající místní AD.
-7. Uživatelské jméno označuje účet služby AD DS, který je používán k synchronizaci.
-8. Zadejte nové heslo účtu služby AD DS do textového pole hesla ![Azure AD Connect Sync šifrování klíč nástroje](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
-9. Kliknutím na tlačítko OK uložte nové heslo a restartujte synchronizační službu pro odebrání předchozího hesla z mezipaměti.
+6. Název doménové struktury označuje odpovídající místní službu AD.
+7. Uživatelské jméno indikuje služba AD DS účet, který se používá k synchronizaci.
+8. Zadejte nové heslo účtu služba AD DS do textového pole heslo ![nástroj Azure AD Connect synchronizace šifrovacího klíče](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
+9. Kliknutím na tlačítko OK uložte nové heslo a restartujte synchronizační službu, aby se odebralo staré heslo z mezipaměti paměti.
 
 
 
-## <a name="next-steps"></a>Další postup
-Další informace o [synchronizace Azure AD Connect](how-to-connect-sync-whatis.md) konfigurace.
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612625"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390620"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Nástroje pro ingestování dat data Science virtuálního počítače
 
@@ -69,7 +69,7 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 | Odkazy na ukázky      | [Importovat data CosmosDB](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | Související nástroje na DSVM      | AzCopy AdlCopy      |
 
-## <a name="azure-storage-explorer"></a>Průzkumník služby Azure Storage
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 |    |           |
 | ------------- | ------------- |
@@ -98,6 +98,6 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 | Co je to?   | Nástroj pro připojení kontejneru úložiště objektů BLOB v Azure v systému souborů Linux      |
 | Podporované verze DSVM      | Linux      |
 | Typické použití      | Čtení a zápis do objektů BLOB v kontejneru.      |
-|  Jak ji použít a spustit?    |   Spustit _blobfuse_ v terminálu.    |
-| Odkazy na ukázky      | [blobfuse na Githubu](https://github.com/Azure/azure-storage-fuse)      |
+|  Jak ji použít a spustit?    |   Spusťte _blobfuse_ na terminálu.    |
+| Odkazy na ukázky      | [blobfuse na GitHubu](https://github.com/Azure/azure-storage-fuse)      |
 | Související nástroje na DSVM      | Azure CLI      |

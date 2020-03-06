@@ -10,11 +10,11 @@ ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: d116ba81b0c8940687663c17a4ed403e86dd6c22
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380285"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně p
 
 ::: zone-end
 
-## <a name="in-us-canada-europetabin-us-canada-europe"></a>[V USA, Kanadě a Evropě](#tab/in-us-canada-europe)
+## <a name="in-us-canada-europe"></a>[V USA, Kanadě a Evropě](#tab/in-us-canada-europe)
 
 Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující kroky.
 
@@ -114,7 +114,7 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 ::: zone-end
 
 
-## <a name="in-australiatabin-australia"></a>[V Austrálii](#tab/in-australia)
+## <a name="in-australia"></a>[V Austrálii](#tab/in-australia)
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při odesílání v Austrálii proveďte následující kroky.
 
@@ -143,7 +143,7 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone-end
 
-## <a name="in-japantabin-japan"></a>[V Japonsku](#tab/in-japan) 
+## <a name="in-japan"></a>[V Japonsku](#tab/in-japan) 
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
 2. Vypněte zařízení a odpojte kabely.
@@ -191,7 +191,7 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone-end
 
-## <a name="in-singaporetabin-singapore"></a>[V Singapuru](#tab/in-singapore) 
+## <a name="in-singapore"></a>[V Singapuru](#tab/in-singapore) 
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
 2. Poznamenejte si sledovací číslo (je uvedené jako referenční číslo na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu). Je k dispozici po úspěšném dokončení přípravy k odeslání. Stáhněte si expediční štítek z této stránky a nalepte ho na obal. 
@@ -273,7 +273,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managedtabin-selfmanaged"></a>[V případě svépomoci](#tab/in-selfmanaged) 
+## <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged) 
 
 Pokud používáte Data Box v Japonsku, Singapuru, Koreji a Západní Evropě a při vytváření objednávky jste vybrali možnost Expedice řízená svépomocí, postupujte podle těchto pokynů. 
 

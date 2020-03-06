@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665064"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373390"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Volání Webhooku s klasickou výstrahou metriky v Azure Monitor
 
@@ -70,11 +70,11 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 
 | Pole | Povinné | Opravená sada hodnot | Poznámky: |
 |:--- |:--- |:--- |:--- |
-| stav |Ano |Aktivované, vyřešené |Stav výstrahy na základě podmínek, které jste nastavili. |
+| status |Ano |Aktivované, vyřešené |Stav výstrahy na základě podmínek, které jste nastavili. |
 | context |Ano | |Kontext výstrahy. |
 | časové razítko |Ano | |Čas, kdy byla výstraha aktivována. |
 | id |Ano | |Každé pravidlo výstrahy má jedinečné ID. |
-| name |Ano | |Název výstrahy |
+| jméno |Ano | |Název výstrahy |
 | description |Ano | |Popis výstrahy |
 | conditionType |Ano |Metrika, událost |Podporují se dva typy výstrah: metrika a událost. Výstrahy metriky jsou založené na podmínce metriky. Výstrahy událostí jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li ověřit, zda je výstraha založena na metrikě nebo události. |
 | condition |Ano | |Konkrétní pole, která se mají kontrolovat v závislosti na hodnotě **conditionType** |
@@ -92,7 +92,7 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 | resourceId |Ano | |ID prostředku ovlivněného prostředku. |
 | resourceRegion |Ano | |Oblast nebo umístění ovlivněného prostředku. |
 | portalLink |Ano | |Přímý odkaz na stránku souhrnu prostředků na portálu. |
-| vlastnosti |N |Volitelné |Sada párů klíč/hodnota, která obsahuje podrobnosti o události. například `Dictionary<String, String>`. Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky mohou uživatelé zadat páry klíč/hodnota, které lze předat prostřednictvím datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky Webhooku, je prostřednictvím samotného identifikátoru URI Webhooku (jako parametr dotazů). |
+| properties |Ne |Nepovinné |Sada párů klíč/hodnota, která obsahuje podrobnosti o události. například `Dictionary<String, String>`. Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky mohou uživatelé zadat páry klíč/hodnota, které lze předat prostřednictvím datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky Webhooku, je prostřednictvím samotného identifikátoru URI Webhooku (jako parametr dotazů). |
 
 > [!NOTE]
 > Pole **vlastnosti** můžete nastavit jenom pomocí [Azure monitor rozhraní REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx).

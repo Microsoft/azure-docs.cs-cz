@@ -8,11 +8,11 @@ ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662533"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395610"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytvoření souboru řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -63,7 +63,7 @@ Následující tabulka popisuje atributy parametru.
 
 | Atribut | Popis |
 |:--- |:--- |
-| typ |Datový typ pro parametr Ovládací prvek vstupu zobrazený pro uživatele závisí na datovém typu.<br><br>logická hodnota – rozevírací seznam<br>řetězec – textové pole<br>int – textové pole<br>SecureString – pole hesla<br> |
+| type |Datový typ pro parametr Ovládací prvek vstupu zobrazený pro uživatele závisí na datovém typu.<br><br>logická hodnota – rozevírací seznam<br>řetězec – textové pole<br>int – textové pole<br>SecureString – pole hesla<br> |
 | category |Volitelná kategorie pro parametr  Parametry ve stejné kategorii jsou seskupeny dohromady. |
 | control |Další funkce pro řetězcové parametry.<br><br>zobrazí se ovládací prvek DateTime-DateTime.<br>identifikátor GUID – hodnota GUID je vygenerována automaticky a parametr není zobrazen. |
 | description |Volitelný popis parametru  Zobrazuje se v informační bublině vedle parametru. |
@@ -78,12 +78,12 @@ V následující tabulce jsou uvedeny standardní parametry pro všechna řešen
 
 | Parametr | Typ | Popis |
 |:--- |:--- |:--- |
-| accountName |string |Azure Automation název účtu. |
-| pricingTier |string |Cenová úroveň obou Log Analytics pracovní prostor a účet Azure Automation. |
-| regionId |string |Oblast účtu Azure Automation. |
-| solutionName |string |Název řešení.  Pokud nasazujete své řešení prostřednictvím šablon pro rychlý Start, pak byste měli definovat parametr pro řešení jako parametr, abyste mohli definovat řetězec místo toho, aby uživatel mohl zadat jeden. |
-| workspaceName |string |Log Analytics název pracovního prostoru. |
-| workspaceRegionId |string |Oblast pracovního prostoru Log Analytics. |
+| accountName |řetězec |Azure Automation název účtu. |
+| pricingTier |řetězec |Cenová úroveň obou Log Analytics pracovní prostor a účet Azure Automation. |
+| regionId |řetězec |Oblast účtu Azure Automation. |
+| solutionName |řetězec |Název řešení.  Pokud nasazujete své řešení prostřednictvím šablon pro rychlý Start, pak byste měli definovat parametr pro řešení jako parametr, abyste mohli definovat řetězec místo toho, aby uživatel mohl zadat jeden. |
+| workspaceName |řetězec |Log Analytics název pracovního prostoru. |
+| workspaceRegionId |řetězec |Oblast pracovního prostoru Log Analytics. |
 
 
 Následuje struktura standardních parametrů, které můžete zkopírovat a vložit do souboru řešení.  
@@ -153,7 +153,7 @@ Můžete také definovat komplexní proměnné, které mají více sad hodnot.  
 
 V takovém případě odkazujete na proměnné hodnoty prostřednictvím řešení pomocí **proměnných syntaxe (' název proměnné '). Property**.  Například pro přístup k proměnné názvu řešení byste měli použít **proměnné (Solution). Název**.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 [Prostředky](../../azure-resource-manager/templates/template-syntax.md#resources) definují různé prostředky, které vaše řešení pro správu budou instalovat a konfigurovat.  Toto bude největší a nejsložitější část šablony.  Můžete získat strukturu a úplný popis prvků prostředků při [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md#resources).  Různé prostředky, které obvykle definujete, jsou podrobně popsané v dalších článcích v této dokumentaci. 
 
 
@@ -217,8 +217,8 @@ Entita **plánu** prostředku řešení má vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| name |Název řešení. |
-| Verze nástroje |Verze řešení určená autorem. |
+| jméno |Název řešení. |
+| version |Verze řešení určená autorem. |
 | product |Jedinečný řetězec pro identifikaci řešení |
 | publisher |Vydavatel řešení. |
 

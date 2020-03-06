@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767733"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344116"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub dotazovací jazyk pro vlákna, úlohy a směrování zpráv v zařízeních a modulech
 
@@ -328,7 +328,7 @@ SELECT <select_list>
 
 Klauzule **from < from_specification >** může předpokládat jenom tři hodnoty: **ze zařízení** , aby se dotazoval na vlákna zařízení, **ze zařízení. moduly** na vlákna dotazů v modulu, nebo **z Devices.Jobs** k dotazování na podrobnosti o jednotlivých zařízeních.
 
-## <a name="where-clause"></a>Klauzule WHERE
+## <a name="where-clause"></a>WHERE – klauzule
 
 Klauzule **where < filter_condition >** je volitelná. Určuje jednu nebo více podmínek, které musí dokumenty JSON v kolekci FROM splňovat, aby byly součástí výsledku. Každý dokument JSON musí vyhodnotit zadané podmínky na hodnotu "pravda", které mají být zahrnuty do výsledku.
 
@@ -453,7 +453,7 @@ Podporovány jsou následující operátory:
 | Logické |A, NEBO NE |
 | Porovnání |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 
 Při dotazování na vlákna a úlohy je jedinou podporovanou funkcí:
 

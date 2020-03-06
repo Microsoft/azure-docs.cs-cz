@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825164"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382350"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 

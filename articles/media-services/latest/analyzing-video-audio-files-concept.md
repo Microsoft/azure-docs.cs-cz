@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988341"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359468"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analýza videosouborů a zvukových souborů pomocí Azure Media Services
 
@@ -65,9 +65,9 @@ Přednastavení umožňuje extrahovat z videosouboru více zvukových a vizuáln
 
 Výstup obsahuje soubor JSON (Insights. JSON) se všemi přehledy, které najdete ve videu nebo ve zvukovém souboru. JSON může obsahovat následující prvky:
 
-### <a name="transcript"></a>záznamy
+### <a name="transcript"></a>Záznamy
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
@@ -105,7 +105,7 @@ Příklad:
 
 ### <a name="ocr"></a>OCR
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID řádku OCR|
 |text|Text OCR|
@@ -148,7 +148,7 @@ Příklad:
 
 ### <a name="faces"></a>emotikon
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID obličeje|
 |jméno|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
@@ -158,7 +158,7 @@ Příklad:
 |knownPersonId|Interní ID (Pokud se jedná o známého uživatele).|
 |referenceId|ID Bingu (Pokud se jedná o celebrit Bingu).|
 |referenceType|Aktuálně pouze Bing.|
-|název|Název (Pokud se jedná o celebrit, například "generální ředitel společnosti Microsoft").|
+|Název|Název (Pokud se jedná o celebrit, například "generální ředitel společnosti Microsoft").|
 |imageUrl|Adresa URL obrázku, pokud se jedná o celebrit.|
 |instance|Instance, u kterých se v zadaném časovém rozsahu objevila plocha Každá instance má také thumbnailsId. |
 
@@ -193,7 +193,7 @@ Příklad:
 
 ### <a name="shots"></a>řizování
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID snímku|
 |Klíčové snímky|Seznam klíčových snímků v rámci tohoto snímku (každý má ID a seznam časových rozsahů instancí). Instance klíčových snímků mají pole thumbnailId s ID miniatury klíčového snímku.|
@@ -250,7 +250,7 @@ Příklad:
 
 ### <a name="statistics"></a>týkají
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |CorrespondenceCount|Počet korespondencí ve videu.|
 |WordCount|Počet slov na mluvčí.|
@@ -263,7 +263,7 @@ Příklad:
 
 Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální/záporné). Například 0-0,1, 0,1-0,2.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID mínění|
 |averageScore |Průměr všech skóre všech instancí tohoto typu mínění-kladný/neutrální/záporný|
@@ -298,7 +298,7 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 
 ### <a name="labels"></a>popisky
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID popisku|
 |jméno|Název popisku (například "Computer", "TV").|
@@ -356,7 +356,7 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 
 ### <a name="keywords"></a>klíčová slova
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID klíčového slova.|
 |text|Text klíčového slova|
@@ -407,7 +407,7 @@ Blok visualContentModeration obsahuje časové rozsahy, které Video Indexer nal
 
 K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikantní, a to pouze pro privátní zobrazení. Uživatelé mohou odeslat žádost o revizi obsahu. v takovém případě atribut `IsAdult` bude obsahovat výsledek lidské recenze.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID moderování vizuálního obsahu.|
 |adultScore|Skóre dospělého (od moderátora obsahu).|

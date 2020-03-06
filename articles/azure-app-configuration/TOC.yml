@@ -21,8 +21,9 @@
           href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
-        - name: Šablona Azure Resource Manageru
+        - name: Šablona ARM
           href: quickstart-resource-manager.md
+          displayName: 'ARM, azure resource manager template'
     - name: Správa funkcí
       items:
         - name: Jádro ASP.NET

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 365c228edd97ffcd02b86508deff4272365447f6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 99083cd08db98a6d6ac56d4cf55aaf9d0e64e2b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672136"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362083"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)a [Azure Automation](../../automation/automation-intro.md).
@@ -101,7 +101,7 @@ Tato část obsahuje podrobnosti o podporovaných distribucích systému Linux.
 Počínaje verzí vydanou po. srpna 2018, provádíme následující změny k náš model podpory:  
 
 * Pouze server, které jsou podporovány verze, ne klienta.  
-* Nové verze [Azure Linux schválené distribuce](../../virtual-machines/linux/endorsed-distros.md) se vždycky podporují.  
+* Zaměřte se na podporu kteréhokoli [distribuce schváleného pro Azure Linux](../../virtual-machines/linux/endorsed-distros.md). Všimněte si, že může dojít k prodlevě mezi novou distribuce/verzí, kterou systém Azure Linux schválil, a podporuje se pro agenta Log Analytics Linux.
 * Všechny dílčí verze se podporují pro všechny hlavní verze uvedené.
 * Verze, které uplynuly od výrobce datum ukončení podpory nejsou podporovány.  
 * Nová verze AMI nejsou podporovány.  
@@ -172,11 +172,11 @@ V případě agenta pro Linux je proxy server zadáno během instalace nebo [po 
 
 |Vlastnost| Popis |
 |--------|-------------|
-|Protokol | https |
+|Protocol (Protokol) | HTTPS |
 |uživatel | Volitelné uživatelské jméno pro ověřování proxy serveru |
 |heslo | Volitelné heslo pro ověření proxy serverem |
 |proxyhost | Adresa nebo plně kvalifikovaný název domény proxy serveru/Log Analytics gateway |
-|Port | Volitelné nastavení portu brány proxy serveru/Log Analytics |
+|port | Volitelné nastavení portu brány proxy serveru/Log Analytics |
 
 Příklad: `https://user01:password@proxy01.contoso.com:30443`
 

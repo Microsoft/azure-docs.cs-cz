@@ -4,11 +4,11 @@ description: Oblast zadaná v Azure Portal je stejná, kde budete publikovat apl
 ms.topic: reference
 ms.date: 11/19/2019
 ms.openlocfilehash: 097f3078b54b014dc646d144f3532e20236a9e4f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273411"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393803"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Vytváření a publikování oblastí a přidružených klíčů
 

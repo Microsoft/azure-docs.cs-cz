@@ -1,6 +1,6 @@
 ---
-title: Plány nasazení – Azure Active Directory | Microsoft Docs
-description: Kompletní pokyny, jak nasadit mnoho možností Azure Active Directory.
+title: Plány nasazení – Azure Active Directory | Dokumentace Microsoftu
+description: Začátku do konce pokyny o tom, jak nasadit řadu funkcí Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,11 +13,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17e6708225262349d56c6e261895882e9c31677f
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558535"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378204"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny k nasazení funkcí Azure Active Directory (Azure AD)? Plány nasazení Azure AD vás seznámí s obchodní hodnotou, požadavky na plánování a provozními postupy potřebnými k úspěšnému nasazení běžných funkcí služby Azure AD.
@@ -71,7 +71,7 @@ Rozšiřování zavedení na větší skupiny uživatelů by mělo být proveden
 | Schopnost | Popis|
 | -| - |
 | [Jednotné přihlašování](https://aka.ms/deploymentplans/sso)| Jednotné přihlašování pomáhá uživatelům přistupovat k aplikacím a prostředkům, které potřebují k podnikání, a současně se přihlašuje. Až se přihlásí, můžou přejít z systém Microsoft Office do služby SalesForce do interních aplikací, aniž by se museli zadávat přihlašovací údaje podruhé. |
-| [Přístupový panel](https://aka.ms/deploymentplans/accesspanel)| Poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů. |
+| [Přístupový panel](https://aka.ms/deploymentplans/accesspanel)| Nabízejí uživatelům jednoduchý hub ke zjištění a přístupu k aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Nasazení hybridních scénářů

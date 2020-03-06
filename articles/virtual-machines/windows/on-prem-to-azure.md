@@ -16,11 +16,11 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033053"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388645"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na Managed Disks v Azure
 
@@ -63,7 +63,7 @@ Vyberte umístění, kde jsou k dispozici Azure Managed Disks. Pokud migrujete n
 Pokud migrujete na Premium Managed Disks, je nutné aktualizovat velikost virtuálního počítače na Premium Storage dostupné velikosti v oblasti, kde se nachází virtuální počítač. Zkontrolujte velikosti virtuálních počítačů, které jsou Premium Storage podporuje. Specifikace velikosti virtuálního počítače Azure jsou uvedené v části [velikosti pro virtuální počítače](sizes.md).
 Přečtěte si výkonnostní charakteristiky virtuálních počítačů, které pracují se Premium Storage a vyberte nejvhodnější velikost virtuálního počítače, která nejlépe vyhovuje vašim úlohám. Ujistěte se, že je ve vašem VIRTUÁLNÍm počítači k dispozici dostatečná šířka pásma, aby bylo možné disk provozovat.
 
-### <a name="disk-sizes"></a>Velikost disků
+### <a name="disk-sizes"></a>Velikosti disků
 
 **Managed Disks úrovně Premium**
 
@@ -71,9 +71,9 @@ K virtuálnímu počítači se dá použít sedm typů disků úrovně Premium, 
 
 | Typ disků úrovně Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Velikost disku           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
-| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 125 MB za sekundu |150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu |
+| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu. | 125 MB za sekundu |150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu |
 
 **Standardní Managed Disks**
 
@@ -81,7 +81,7 @@ Existuje sedm typů standardních spravovaných disků, které se dají použív
 
 | Disk typu Standard  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
-| Velikost disku           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
+| Velikost disku           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
 | Vstupně-výstupní operace za sekundu / disk       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
 | Propustnost / disk | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu |60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775113"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393776"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Postup zlepšení aplikace LUIS kontrolou Endpoint projevy
 
@@ -46,7 +46,7 @@ Pomocí portálu LUIS vytvořte správný dotaz na koncový bod.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>Správný předpovědi záměru pro zarovnání projevy
 
-Každý utterance má navrhované záměr zobrazí v **zarovnané záměr** sloupce.
+Každý utterance má navrhovaný záměr zobrazený ve sloupci **zarovnaný záměr** .
 
 > [!div class="mx-imgBorder"]
 > [![projevy Endpoint na kontrolu, že LUIS si nejste jisti](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
@@ -68,4 +68,4 @@ Pokud chcete zakázat aktivní učení, Neprotokolujte uživatelské dotazy. Toh
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete otestovat, jak vylepšuje výkon po popisek navrhované projevy, dostanete testovací konzole tak, že vyberete **testování** v horním panelu. Pokyny o tom, jak testovat svou aplikaci pomocí testovací konzole najdete v tématu [trénování a testování vaší aplikace](luis-interactive-test.md).
+Chcete-li otestovat, jak se zvyšuje výkon po označení navrhovaných projevy, můžete získat přístup ke konzole test výběrem možnosti **test** na horním panelu. Pokyny k otestování aplikace pomocí testovací konzoly najdete v tématu [výuka a testování vaší aplikace](luis-interactive-test.md).

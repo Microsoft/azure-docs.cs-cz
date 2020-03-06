@@ -8,11 +8,11 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789931"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395906"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Použití vzorů sloupců v mapování toku dat
 
@@ -35,7 +35,7 @@ Dvě pole výrazu pod podmínkou shody určují nové názvy a hodnoty ovlivněn
 
 ![vzory sloupců](media/data-flow/columnpattern2.png "Vzory sloupců")
 
-Výše uvedený vzor sloupce odpovídá každému sloupci typu Double a vytvoří jeden agregovaný sloupec na základě shody. Název nového sloupce se shoduje s názvem sloupce, který je zřetězený s příponou _Total. Hodnota nového sloupce je zaokrouhlená, agregovaná suma existující hodnoty typu Double.
+Výše uvedený vzor sloupce odpovídá každému sloupci typu Double a vytvoří jeden agregovaný sloupec na základě shody. Název nového sloupce se shoduje s názvem sloupce, který je zřetězený s _total. Hodnota nového sloupce je zaokrouhlená, agregovaná suma existující hodnoty typu Double.
 
 Pokud chcete ověřit, jestli je vaše shoda podmínky správná, můžete ověřit výstupní schéma definovaných sloupců na kartě **zkontrolovat** nebo získat snímek dat na kartě **Náhled dat** . 
 
@@ -67,7 +67,7 @@ Pokud vaše pravidlo vede k více identickým mapováním, povolte **Přeskočit
 * `name` představuje název každého příchozího sloupce.
 * `type` představuje datový typ každého příchozího sloupce.
 * `stream` představuje název spojený s každým datovým proudem nebo transformaci v toku.
-* `position` je pořadové místo sloupců v toku dat
+* `position` je ordinální pozice sloupců v toku dat.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [jazyku výrazu](data-flow-expression-functions.md) mapování dat pro transformaci dat

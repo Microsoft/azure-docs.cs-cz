@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
 ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368787"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383465"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows
 

@@ -15,11 +15,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 40db6e9f429569bc19641aa5f0f371f287db7b18
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158022"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357764"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-zotavení po havárii 
 
@@ -57,10 +57,10 @@ Podporovány jsou následující kombinace primárních a sekundárních oborů 
 
 | Primární obor názvů | Sekundární obor názvů | Podporuje se | 
 | ----------------- | -------------------- | ---------- |
-| Standardní | Standardní | Ano | 
-| Standardní | Vyhrazená | Ano | 
-| Vyhrazená | Vyhrazená | Ano | 
-| Vyhrazená | Standardní | Ne | 
+| Standard | Standard | Ano | 
+| Standard | Vyhrazené | Ano | 
+| Vyhrazené | Vyhrazené | Ano | 
+| Vyhrazené | Standard | Ne | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 

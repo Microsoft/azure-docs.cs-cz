@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148328"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392111"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Přehled konfigurací partnerských zařízení sítě VPN
 Tento článek poskytuje přehled konfigurace místních zařízení VPN pro připojení ke službě Azure VPN Gateway. Ukázková instalace Azure Virtual Network a brány VPN se používá k zobrazení způsobu připojení k různým konfiguracím místních zařízení VPN pomocí stejných parametrů.

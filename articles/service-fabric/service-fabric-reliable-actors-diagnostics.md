@@ -1,16 +1,16 @@
 ---
-title: Monitorování a diagnostika objektů Actor
+title: Diagnostika a monitorování objektů actor
 description: Tento článek popisuje funkce monitorování diagnostiky a výkonu v prostředí Service Fabric Reliable Actors runtime, včetně událostí a čítačů výkonu, které vysílá.
 author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75376728"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389596"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostika a sledování výkonu služby Reliable Actors
 Modul runtime Reliable Actors generuje události [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) a [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto informace poskytují přehled o tom, jak modul runtime pracuje a který umožňuje řešení potíží a monitorování výkonu.
@@ -132,7 +132,7 @@ Modul runtime Reliable Actors emituje následující události související s [
 
 | Název události | ID události | Úroveň | Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ReplicaChangeRoleToPrimary |1\. místo |Informační |0x1 |Replika objektu actor změnila roli na primární. To znamená, že objekty Actors pro tento oddíl budou vytvořeny v rámci této repliky. |
+| ReplicaChangeRoleToPrimary |1 |Informační |0x1 |Replika objektu actor změnila roli na primární. To znamená, že objekty Actors pro tento oddíl budou vytvořeny v rámci této repliky. |
 | ReplicaChangeRoleFromPrimary |2 |Informační |0x1 |Replika objektu actor změnila roli na jinou než primární. To znamená, že objekty Actors pro tento oddíl již nebudou v rámci této repliky vytvořeny. Do aktérů již vytvořených v rámci této repliky nebudou doručeny žádné nové žádosti. Objekty actor budou po dokončení všech probíhajících žádostí zničeny. |
 
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Události aktivace a deaktivace objektu actor a čítače výkonu
