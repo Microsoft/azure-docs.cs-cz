@@ -28,11 +28,7 @@
             - name: Java
               href: service-bus-java-how-to-use-queues.md
             - name: Node.js
-              items:
-                - name: Balíček Azure/service-bus
-                  href: service-bus-nodejs-how-to-use-queues-new-package.md
-                - name: Balíček azure-sb
-                  href: service-bus-nodejs-how-to-use-queues.md
+              href: service-bus-nodejs-how-to-use-queues-new-package.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
             - name: Python
@@ -54,11 +50,7 @@
             - name: Java
               href: service-bus-java-how-to-use-topics-subscriptions.md
             - name: Node.js
-              items:
-                - name: Balíček Azure/service-bus
-                  href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
-                - name: Balíček azure-sb
-                  href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+              href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
             - name: Python
@@ -184,6 +176,10 @@
           href: service-bus-end-to-end-tracing.md
         - name: Sestavení vícevrstvé aplikace Service Bus
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+        - name: Odesílání a příjem zpráv z front (starší verze azure-sb)
+          href: service-bus-nodejs-how-to-use-queues.md
+        - name: Publikování a přihlášení k odběru zpráv(starší verze azure-sb)
+          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: Spravovat
       items:
         - name: Použití Azure PowerShellu ke zřizování entit

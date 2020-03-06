@@ -8,20 +8,20 @@
       href: what-is-ml-studio.md
     - name: Porovnání našich produktů ML
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- name: Kurzy
+- name: Rychlé starty
   items:
     - name: Vytvoření prvního experimentu
       displayName: quickstart
       href: create-experiment.md
-    - name: Vytvoření prediktivního řešení
-      items:
-        - name: 1. Vytvoření experimentu
-          href: tutorial-part1-credit-risk.md
-        - name: 2. Trénování a vyhodnocení
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3. Nasazení webové služby
-          href: tutorial-part3-credit-risk-deploy.md
-- name: Ukázky
+- name: Kurzy
+  items:
+    - name: 1. Vytvoření prediktivního experimentu
+      href: tutorial-part1-credit-risk.md
+    - name: 2. Trénování a vyhodnocení řešení
+      href: tutorial-part2-credit-risk-train.md
+    - name: 3. Nasazení webové služby
+      href: tutorial-part3-credit-risk-deploy.md
+- name: ukázky
   items:
     - name: Dostupné datové sady
       href: use-sample-datasets.md

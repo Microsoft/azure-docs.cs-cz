@@ -48,6 +48,8 @@
   href: code-samples.md
 - name: Koncepty
   items:
+    - name: Osvědčené postupy Azure AD B2C
+      href: best-practices.md
     - name: Typy aplikací
       href: application-types.md
     - name: Protokoly pro ověřování

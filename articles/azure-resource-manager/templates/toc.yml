@@ -1,8 +1,8 @@
-- name: Dokumentace k šablonám Azure Resource Manageru
+- name: Dokumentace k šablonám ARM
   href: index.yml
 - name: Přehled
   items:
-    - name: Co jsou šablony Azure Resource Manageru?
+    - name: Co je šablona ARM?
       href: overview.md
 - name: Rychlé starty
   items:

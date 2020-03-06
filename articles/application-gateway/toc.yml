@@ -39,6 +39,8 @@
   items:
     - name: Základy
       items:
+        - name: Funkce Application Gateway
+          href: features.md
         - name: Jak funguje Application Gateway
           href: how-application-gateway-works.md
         - name: Komponenty Application Gateway

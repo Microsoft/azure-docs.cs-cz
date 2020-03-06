@@ -12,7 +12,8 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Vytvoření nástroje pro vyrovnávání zatížení – PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Vytvoření nástroje pro vyrovnávání zatížení – šablona
+    - name: Vytvoření nástroje pro vyrovnávání zatížení – šablona ARM
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
 - name: Kurzy
