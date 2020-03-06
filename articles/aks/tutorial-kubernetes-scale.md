@@ -14,7 +14,7 @@ ms.locfileid: "77621098"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
-Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes v AKS a nasadili jste ukázkovou hlasovací aplikaci Azure. V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Získáte informace o těchto tématech:
+Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes v AKS a nasadili jste ukázkovou hlasovací aplikaci Azure. V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci na více instancí a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Škálování uzlů Kubernetes

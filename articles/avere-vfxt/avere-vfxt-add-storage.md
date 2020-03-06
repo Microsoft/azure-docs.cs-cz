@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153985"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372194"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -49,7 +49,7 @@ Pomocí těchto kroků přidejte souborového pro NAS Core:
 
 1. Klikněte na **Core souborového** > na levé straně **spravovat základní filers** .
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
    ![Snímek obrazovky se stránkou přidat novou základní souborového s ukazatelem na tlačítku pro vytvoření](media/avere-vfxt-add-core-filer-start.png)
 
@@ -133,7 +133,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
    | Předplatné | subscription ID |
    | Přístupový klíč k úložišti | Klíč účtu úložiště Azure (zkopírovaný v předchozím kroku) |
 
-   Klikněte na **Submit** (Odeslat).
+   Klikněte na **Odeslat**.
 
    ![Dokončený formulář přihlašovacích údajů cloudu v Ovládacích panelech avere](media/avere-vfxt-new-credential-submit.png)
 
@@ -151,7 +151,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
    * Nastavit **obsah intervalu** jako **prázdný**
    * Změnit **ověření certifikátu** na **zakázáno**
    * Změnit **režim komprese** na **žádný**
-   * Klikněte na **Další**.
+   * Klikněte na **Další**.
    * Na čtvrté stránce zadejte název kontejneru do pole **název** sady jako *storage_account_name*/*container_name*.
    * Volitelně můžete nastavit **typ šifrování** na **žádný**.  Azure Storage je ve výchozím nastavení šifrovaný.
    * Klikněte na **přidat souborového**.
@@ -176,7 +176,7 @@ V rozhraní ovládacího panelu avere postupujte podle těchto kroků:
 * Zadejte cestu k oboru názvů začínající znakem/(lomítko), například ``/vfxt/data``.
 * Vyberte si základní souborového.
 * Vyberte základní export souborového.
-* Klikněte na **Další**.
+* Klikněte na **Další**.
 
   ![Snímek obrazovky se stránkou přidat nový odkaz s poli dokončenými pro spojení, Core souborového a export](media/avere-vfxt-add-junction.png)
 

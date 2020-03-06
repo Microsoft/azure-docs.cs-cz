@@ -78,7 +78,7 @@ Pomocí Service Fabric můžete:
 * Během několika sekund nasazovat aplikace s vysokou hustotou stovek nebo tisíců aplikací nebo kontejnerů na počítač.
 * Nasazovat různé verze stejné aplikace vedle sebe a upgradovat jednotlivé aplikace nezávisle na ostatních.
 * Spravovat životní cyklus vašich aplikací bez jakýchkoli prostojů, včetně zásadních i méně zásadních upgradů.
-* Horizontálně navýšit nebo snížit kapacitu počtu uzlů v clusteru. Při škálování uzlů se automaticky škálují i vaše aplikace.
+* Škálování uzlů v clusteru na více instancí nebo na méně instancí. Při škálování uzlů se automaticky škálují i vaše aplikace.
 * Monitorovat a diagnostikovat stav vašich aplikací a nastavit zásady pro provádění automatických oprav.
 * Sledovat, jak nástroj pro vyrovnávání prostředků orchestruje přerozdělování aplikací napříč clusterem. Service Fabric se v případě selhání zotaví a optimalizuje distribuci zatížení na základě dostupných prostředků.
 

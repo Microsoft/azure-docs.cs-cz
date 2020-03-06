@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: damendo
 ms.openlocfilehash: e405a91b1ea541b4ed3328fdb3bf80ca82731c93
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842848"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390226"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Řešení potíží s připojením k Azure Network Watcher pomocí Azure Portal
 
@@ -29,7 +29,7 @@ ms.locfileid: "76842848"
 
 Naučte se používat řešení potíží s připojením k ověření, jestli je možné navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto článku se předpokládá, že máte následující zdroje:
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931633"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365920"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Zobrazení a správa svazků pomocí Snapshot Manager StorSimple
 ## <a name="overview"></a>Přehled
@@ -93,7 +93,7 @@ K zobrazení informací o místních a StorSimple svazcích Azure použijte nás
    
    | Sloupec výsledků | Popis |
    |:--- |:--- |
-   |  Name (Název) |Sloupec **název** obsahuje písmeno jednotky přiřazené ke každému zjištěnému svazku. |
+   |  Název |Sloupec **název** obsahuje písmeno jednotky přiřazené ke každému zjištěnému svazku. |
    |  Zařízení |Sloupec **zařízení** obsahuje IP adresu zařízení, které je připojené k hostitelskému počítači. |
    |  Název svazku zařízení |Sloupec **název svazku zařízení** obsahuje název svazku zařízení, ke kterému patří vybraný svazek. Toto je název svazku definovaný v Azure Portal pro tento konkrétní svazek. |
    |  Přístup k cestám |Sloupec **přístupové cesty** zobrazuje cestu přístupu ke svazku. Toto je písmeno jednotky nebo přípojný bod, ve kterém je svazek přístupný na hostitelském počítači. |
@@ -130,7 +130,7 @@ K opětovnému prohledání svazků připojených k StorSimple Snapshot Manager 
 ## <a name="configure-and-back-up-a-basic-volume"></a>Konfigurace a zálohování základního svazku
 Pomocí následujícího postupu můžete nakonfigurovat zálohu základního svazku a potom buď spustit zálohování okamžitě, nebo vytvořit zásadu pro naplánované zálohování.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete:
 
 * Ujistěte se, že zařízení StorSimple a hostitelský počítač jsou správně nakonfigurované. Další informace najdete [v poznámkách k nasazení místního zařízení StorSimple](storsimple-deployment-walkthrough-u2.md).
@@ -149,7 +149,7 @@ Než začnete:
 8. Pravým tlačítkem myši klikněte na název skupiny svazků.
    
    * Pokud chcete spustit interaktivní úlohu zálohování (na vyžádání), klikněte na **vytvořit zálohu**. 
-   * Pokud chcete naplánovat automatické zálohování, klikněte na **vytvořit zásadu zálohování**. Na stránce **Obecné** vyberte ze seznamu skupinu svazků. Na stránce **plán** zadejte podrobnosti plánu. Jakmile budete hotovi, klikněte na **Uložit**. 
+   * Pokud chcete naplánovat automatické zálohování, klikněte na **vytvořit zásadu zálohování**. Na stránce **Obecné** vyberte ze seznamu skupinu svazků. Na stránce **plán** zadejte podrobnosti plánu. Až skončíte, klikněte na **OK**. 
 9. Chcete-li ověřit, zda byla úloha zálohování zahájena, rozbalte uzel **úlohy** v podokně **obor** a poté klikněte na **běžící** uzel. V podokně **výsledků** se zobrazí seznam aktuálně spuštěných úloh. 
 
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Konfigurace a zálohování dynamického zrcadleného svazku
@@ -158,7 +158,7 @@ Provedením následujících kroků nakonfigurujte zálohování dynamického zr
 * Krok 1: pomocí nástroje Správa disků vytvořte dynamický zrcadlený svazek. 
 * Krok 2: ke konfiguraci zálohování použijte Snapshot Manager StorSimple.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete:
 
 * Ujistěte se, že zařízení StorSimple a hostitelský počítač jsou správně nakonfigurované. Další informace najdete [v poznámkách k nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
@@ -202,7 +202,7 @@ Pomocí následujícího postupu nakonfigurujte dynamický zrcadlený svazek a p
 6. Pravým tlačítkem myši klikněte na název skupiny svazků. 
    
    * Pokud chcete spustit interaktivní úlohu zálohování (na vyžádání), klikněte na **vytvořit zálohu**. 
-   * Pokud chcete naplánovat automatické zálohování, klikněte na **vytvořit zásadu zálohování**. Na stránce **Obecné** vyberte ze seznamu skupinu svazků. Na stránce **plán** zadejte podrobnosti plánu. Jakmile budete hotovi, klikněte na **Uložit**. 
+   * Pokud chcete naplánovat automatické zálohování, klikněte na **vytvořit zásadu zálohování**. Na stránce **Obecné** vyberte ze seznamu skupinu svazků. Na stránce **plán** zadejte podrobnosti plánu. Až skončíte, klikněte na **OK**. 
 7. Úlohu zálohování můžete monitorovat při spuštění. V podokně **Rozsah** rozbalte uzel **úlohy** a potom klikněte na možnost **spuštěno**. v podokně **výsledků** se zobrazí podrobnosti o úloze. Po dokončení úlohy zálohování se podrobnosti přenesou na seznam úloh **posledních 24** hodin. 
 
 ## <a name="next-steps"></a>Další kroky

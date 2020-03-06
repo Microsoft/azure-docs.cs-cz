@@ -23,7 +23,7 @@ ms.locfileid: "78273992"
 
 Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes ve službě Azure Container Service a nasadili jste aplikaci Azure Vote. 
 
-V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů agentů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Mezi dokončené úlohy patří:
+V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci na více instancí a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů agentů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Mezi dokončené úlohy patří:
 
 > [!div class="checklist"]
 > * Ruční škálování podů Kubernetes

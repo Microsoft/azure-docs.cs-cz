@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612548"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383680"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services s pokročilými možnostmi konfigurace
 
@@ -139,7 +139,7 @@ Vyplňte pole v okně *síť* následujícím způsobem:
 
 Pro správu domény Azure služba AD DS se používá speciální skupina pro správu s názvem *AAD DC Administrators* . Členům této skupiny se udělují oprávnění správce na virtuálních počítačích, které jsou připojené k doméně spravované domény. V případě virtuálních počítačů připojených k doméně se tato skupina přidá do místní skupiny Administrators. Členové této skupiny se taky můžou pomocí vzdálené plochy vzdáleně připojit k virtuálním počítačům připojeným k doméně.
 
-Nemáte oprávnění *správce domény* nebo *správce podniku* ve spravované doméně pomocí Azure služba AD DS. Tato oprávnění jsou vyhrazena službou a nejsou zpřístupněna uživatelům v rámci tenanta. Místo toho vám skupina *správců řadiče domény AAD* umožňuje provádět některé privilegované operace. Mezi tyto operace patří připojení počítačů k doméně, patřící do skupiny pro správu na virtuálních počítačích připojených k doméně a konfigurace Zásady skupiny.
+Nemáte oprávnění *správce domény* nebo *správce podniku* ve spravované doméně pomocí Azure služba AD DS. Tato oprávnění jsou vyhrazena službou a nejsou zpřístupněna uživatelům v rámci tenanta. Místo toho vám skupina *správců řadiče domény AAD* umožňuje provádět některé privilegované operace. Mezi tyto operace patří patřící do skupiny pro správu na virtuálních počítačích připojených k doméně a konfigurace Zásady skupiny.
 
 Průvodce automaticky vytvoří skupinu *AAD DC Administrators* v adresáři Azure AD. Pokud máte ve svém adresáři služby Azure AD existující skupinu s tímto názvem, průvodce tuto skupinu vybere. Volitelně můžete zvolit přidání dalších uživatelů do této skupiny *Správci AAD DC* během procesu nasazení. Tyto kroky můžete provést později.
 

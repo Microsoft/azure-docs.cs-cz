@@ -4,11 +4,11 @@ description: Přečtěte si o odebrání a nasazení aplikací v Azure Service F
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614498"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379993"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Nasazení a odebrání aplikací pomocí PowerShellu
 
@@ -132,7 +132,7 @@ Zde je například statistika komprese pro některé balíčky, které ukazují 
 |100|100|00:00:03.3547592|60|
 |512|100|00:00:16.3850303|307|
 |1024|500|00:00:32.5907950|615|
-|2 048|1 000|00:01:04.3775554|1231|
+|2048|1 000|00:01:04.3775554|1231|
 |5012|100|00:02:45.2951288|3074|
 
 Jakmile je balíček komprimovaný, dá se v případě potřeby nahrát do jednoho nebo víc Service Fabric clusterů. Mechanismus nasazení je stejný pro komprimované a nekomprimované balíčky. Komprimované balíčky se ukládají jako v úložišti imagí clusteru. Před spuštěním aplikace jsou balíčky na uzlu nekomprimovány.
@@ -312,7 +312,7 @@ Chcete-li zrušit registraci konkrétního typu aplikace, spusťte příkaz [Unr
 Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage žádá o ImageStoreConnectionString
 

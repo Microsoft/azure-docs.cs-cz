@@ -71,7 +71,7 @@ Pro toto pravidlo se používají následující parametry:
 | *timeWindow*      | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 5 minut       |
 | *operator*        | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než    |
 | *threshold*       | Hodnota, která způsobí aktivaci akce pravidlem automatického škálování.                                                      | 70 %             |
-| *direction*       | Definuje, jestli se má po použití pravidla kapacita škálovací sady horizontálně snížit nebo zvýšit.                                              | Zvýšit        |
+| *direction*       | Definuje, jestli se má po použití pravidla kapacita škálovací sady škálovat na méně nebo více instancí.                                              | Zvýšit        |
 | *type*            | Určuje, že se má počet instancí virtuálních počítačů změnit o určitou hodnotu.                                    | Počet změn    |
 | *value*           | Počet instancí virtuálních počítačů, jejichž kapacita se má po použití pravidla horizontálně snížit nebo zvýšit.                                             | 3               |
 | *cooldown*        | Doba, po kterou se má počkat před opětovným použitím pravidla, aby akce automatického škálování měly dostatek času se projevit. | 5 minut       |
@@ -107,7 +107,7 @@ Následující pravidlo se přidá do části profilu poskytovatele prostředků
 ## <a name="define-a-rule-to-autoscale-in"></a>Definice pravidla automatického horizontálního snížení kapacity
 Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud je toto snížené zatížení po určitou dobu konzistentní, můžete nakonfigurovat pravidla automatického škálování pro snížení počtu instancí virtuálních počítačů ve škálovací sadě. Tato akce horizontálního snížení kapacity sníží náklady na provoz škálovací sady, protože budete spouštět pouze takový počet instancí, který je potřeba ke zpracování aktuálních požadavků.
 
-Následující příklad definuje pravidlo, které horizontálně sníží kapacitu počtu instancí virtuálních počítačů o jeden, pokud se průměrné zatížení CPU sníží pod 30 % po dobu 5 minut. Toto pravidlo se přidá do profilu automatického škálování za předchozí pravidlo horizontálního navýšení kapacity:
+Následující příklad definuje pravidlo, které škáluje počet instancí virtuálních počítačů na méně instancí o jeden, pokud se průměrné zatížení CPU sníží pod 30 % po dobu 5 minut. Toto pravidlo se přidá do profilu automatického škálování za předchozí pravidlo škálování na více instancí:
 
 ```json
 {
@@ -154,7 +154,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 
 
 ## <a name="generate-cpu-load-on-scale-set"></a>Generování zatížení CPU ve škálovací sadě
-Pokud chcete pravidla automatického škálování otestovat, vygenerujte nějaké zatížení CPU instancí virtuálních počítačů ve škálovací sadě. Toto simulované zatížení CPU způsobí, že pravidla automatického škálování provedou horizontální navýšení kapacity a zvýší počet instancí virtuálních počítačů. S následným snížením zatížení CPU pravidla automatického škálování provedou horizontální snížení kapacity a sníží počet instancí virtuálních počítačů.
+Pokud chcete pravidla automatického škálování otestovat, vygenerujte nějaké zatížení CPU instancí virtuálních počítačů ve škálovací sadě. Toto simulované zatížení CPU způsobí, že pravidla automatického škálování provedou škálování na více instancí a zvýší počet instancí virtuálních počítačů. S následným snížením zatížení CPU pravidla automatického škálování provedou škálování počtu instancí virtuálních počítačů na méně instancí.
 
 Nejprve vypište adresu a porty pro připojení k instancím virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss list-instance-connection-info](/cli/azure/vmss):
 
@@ -246,13 +246,13 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  eastus      myScaleSet_6  Creating             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-Jakmile se nástroj **stress** na původních instancích virtuálních počítačů zastaví, průměrné zatížení CPU se vrátí do normálu. Po dalších 5 minutách pak pravidla automatického škálování horizontálně sníží kapacitu počtu instancí virtuálních počítačů. Akce horizontálního snížení kapacity odeberou nejprve instance virtuálních počítačů s nejvyšším ID. Když škálovací sada používá skupiny nebo zóny dostupnosti, akce pro horizontální snížení kapacity se mezi tyto instance virtuálních počítačů rovnoměrně rozloží. Následující příklad výstupu ukazuje jednu instanci virtuálního počítače odstraněnou při automatickém horizontálním snížení kapacity škálovací sady:
+Jakmile se nástroj **stress** na původních instancích virtuálních počítačů zastaví, průměrné zatížení CPU se vrátí do normálu. Po dalších 5 minutách pak pravidla automatického škálování škálují počet instancí virtuálních počítačů na méně instancí. Akce horizontálního snížení kapacity odeberou nejprve instance virtuálních počítačů s nejvyšším ID. Když škálovací sada používá skupiny nebo zóny dostupnosti, akce pro horizontální snížení kapacity se mezi tyto instance virtuálních počítačů rovnoměrně rozloží. Následující příklad výstupu ukazuje jednu instanci virtuálního počítače odstraněnou při automatickém horizontálním snížení kapacity škálovací sady:
 
 ```bash
            6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-Stisknutím `Ctrl-c` ukončete nástroj *watch*. Kapacita škálovací sady se nadále bude každých 5 minut horizontálně snižovat odebráním jedné instance virtuálního počítače, dokud se nedosáhne minimálního počtu 2 instancí.
+Stisknutím `Ctrl-c` ukončete nástroj *watch*. Škálovací sada se nadále bude každých 5 minut škálovat na méně instancí odebráním jedné instance virtuálního počítače, dokud se nedosáhne minimálního počtu 2 instancí.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -264,7 +264,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak automaticky horizontálně snižovat nebo zvyšovat kapacitu škálovací sady pomocí Azure CLI:
+V tomto kurzu jste zjistili, jak automaticky škálovat škálovací sady na méně nebo více instancí pomocí Azure CLI:
 
 > [!div class="checklist"]
 > * Použití automatického škálování u škálovací sady

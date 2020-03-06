@@ -6,14 +6,14 @@ ms.date: 05/09/2019
 ms.author: glenga
 ms.openlocfilehash: 4643bb7f95e4fd1249d3ab6699c1f835c77f18fe
 ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2020
 ms.locfileid: "77198339"
 ---
 | Prostředek | [Plán spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service plán](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
-| Horizontální navýšení kapacity | Řízená událostmi | Řízená událostmi | [Ruční nebo automatické škálování](../articles/app-service/manage-scale-up.md) | 
+| Škálování na více instancí | Řízená událostmi | Řízená událostmi | [Ruční nebo automatické škálování](../articles/app-service/manage-scale-up.md) | 
 | Maximální počet instancí | 200 | 100 | 10-20 |
 |Výchozí [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>2</sup> |
 |Maximální [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | bez vazby<sup>8</sup> | neohraničené<sup>3</sup> |

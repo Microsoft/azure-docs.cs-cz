@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438829"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385347"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -42,7 +42,7 @@ Následující návod poskytuje podrobné pokyny k vytvoření vlastní aktivity
 > - Pro přístup k místním zdrojům dat není možné použít bránu Správa dat z vlastní aktivity. V současné době [Správa dat brána](data-factory-data-management-gateway.md) podporuje pouze aktivitu kopírovat aktivitu a uloženou proceduru v Data Factory.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Návod: Vytvoření vlastní aktivity
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 * Visual Studio 2012/2013/2015/2017
 * Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/) a nainstalujte ji.
 
@@ -70,7 +70,7 @@ V tomto kurzu vytvořte účet Azure Batch s fondem virtuálních počítačů. 
    5. Kliknutím na tlačítko **OK** vytvořte fond.
    6. Poznamenejte si **ID** fondu.
 
-### <a name="high-level-steps"></a>Základní kroky
+### <a name="high-level-steps"></a>Kroky vysoké úrovně
 Tady jsou dva kroky vysoké úrovně, které provedete v rámci tohoto návodu:
 
 1. Vytvořte vlastní aktivitu, která obsahuje jednoduchou logiku transformace a zpracování dat.
@@ -105,7 +105,7 @@ Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit sp
      <li>V seznamu typů projektů napravo vyberte <b>Knihovna tříd</b> . V aplikaci Visual Studio vyberte možnost <b>Knihovna tříd (.NET Framework)</b> </li>
      <li>Jako <b>název</b>zadejte <b>MyDotNetActivity</b> .</li>
      <li>Jako <b>umístění</b>vyberte <b>C:\ADFGetStarted</b> .</li>
-     <li>Klikněte na <b>OK</b>, tím vytvoříte projekt.</li>
+     <li>Projekt vytvoříte kliknutím na <b>OK</b>.</li>
    </ol>
 
 2. Klikněte na **Nástroje**, přejděte na **Správce balíčků NuGet** a klikněte na **Konzola Správce balíčků**.
@@ -549,7 +549,7 @@ V tomto kroku vytvoříte datové sady, které reprezentují vstupní a výstupn
 
    | Průřez | Čas spuštění | Výstupní soubor |
    |:--- |:--- |:--- |
-   | 1\. místo |2016-11-16T00:00:00 |2016-11-16-00.txt |
+   | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
    | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |

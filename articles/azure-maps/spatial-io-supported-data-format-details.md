@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cbeb1ccaed6ec2c62aaa731e88fcefbe84d1df02
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370879"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402739"
 ---
 # <a name="supported-data-format-details"></a>Podrobnosti o podporovaném formátu dat
 
@@ -391,39 +391,39 @@ První řádek dat bude prohledáván pro řetězce, které jsou ve známém for
 
 Při kontrole řádku záhlaví budou všechny informace o typu, které jsou v názvu sloupce, extrahovány a použity k přetypování buněk v daném sloupci. Tady je příklad názvu sloupce, který má hodnotu typu: ColumnName (typeName). Podporují se následující názvy typů bez rozlišení velkých a malých písmen:
 
-**Hodnoty**
+#### <a name="numbers"></a>Čísla
 
-    - EDM. Int64
-    - int
-    - long
-    - EDM. Double
-    - float
-    - double
-    - číslo
+- EDM. Int64
+- int
+- long
+- EDM. Double
+- float
+- double
+- číslo
 
-**Logické hodnoty**
+#### <a name="booleans"></a>logické hodnoty
 
-    - EDM. Boolean
-    - logick
-    - Boolean
+- EDM. Boolean
+- logick
+- Boolean
 
-**Datech**
+#### <a name="dates"></a>Kalendářní data
 
-    - EDM. DateTime
-    - date
-    - datetime
+- EDM. DateTime
+- date
+- datetime
 
-**Zeměpisné oblasti**
+#### <a name="geography"></a>Geografické
 
-    - EDM. geografie
-    - Geografické
+- EDM. geografie
+- Geografické
 
-**Zobrazen**
+#### <a name="strings"></a>Řetězce
 
-    - EDM. String
-    - varchar
-    - text
-    - řetězec Case
+- EDM. String
+- varchar
+- text
+- řetězec Case
 
 Pokud nelze extrahovat žádné informace o typu z hlavičky a možnost dynamického zápisu je povolena při čtení, pak se každá buňka jednotlivě analyzuje a určí, jaký datový typ je nejvhodnější k přetypování.
 

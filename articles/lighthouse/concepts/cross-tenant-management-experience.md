@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 02/14/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb484ea936bbb64b3ca3d7fcf648de0d0ef73c66
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
-ms.translationtype: HT
+ms.openlocfilehash: 42368bcbc9f15f9ff5ef957b4c88f15bf070f25b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328676"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402081"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -37,7 +37,14 @@ Pomocí delegované správy prostředků Azure se oprávnění uživatelé můž
 
 Úlohy správy můžete u delegovaných prostředků provádět buď přímo na portálu, nebo pomocí rozhraní API a nástrojů pro správu (například Azure CLI a Azure PowerShell). Všechna existující rozhraní API se dají použít při práci s delegovanými prostředky, pokud je tato funkce podporovaná pro správu mezi klienty a uživatel má příslušná oprávnění.
 
-Poskytujeme také rozhraní API k provádění úloh správy delegovaných prostředků Azure. Další informace najdete v části **reference** .
+[Rutina Azure PowerShell Get-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) zobrazuje **tenantID** pro každé předplatné a umožňuje určit, jestli vrácené předplatné patří do vašeho tenanta poskytovatele služeb nebo do spravovaného tenanta zákazníka.
+
+Podobně příkazy rozhraní příkazového řádku Azure, jako [AZ Account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) , zobrazují atributy **homeTenantId** a **managedByTenants** .
+
+> [!TIP]
+> Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vymazat mezipaměť spuštěním `az account clear` následovaných `az login --identity`.
+
+Poskytujeme také rozhraní API, která jsou specifická pro provádění úloh správy delegovaných prostředků Azure. Další informace najdete v části **reference** .
 
 ## <a name="enhanced-services-and-scenarios"></a>Rozšířené služby a scénáře
 

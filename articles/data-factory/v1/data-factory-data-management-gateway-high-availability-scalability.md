@@ -227,7 +227,7 @@ Azure Portal poskytuje prostředí monitorování kanálu s podrobnými podrobno
 
 ## <a name="scale-considerations"></a>Požadavky na škálování
 
-### <a name="scale-out"></a>Horizontální navýšení kapacity
+### <a name="scale-out"></a>Škálování na více instancí
 Když **je dostupná paměť nízká** a **využití CPU je vysoké**, přidání nového uzlu pomáhá škálovat zatížení napříč počítači. Pokud dojde k selhání aktivit z důvodu vypršení časového limitu nebo uzlu brány v režimu offline, pomůže vám to, když do brány přidáte uzel.
  
 ### <a name="scale-up"></a>Vertikální navýšení kapacity

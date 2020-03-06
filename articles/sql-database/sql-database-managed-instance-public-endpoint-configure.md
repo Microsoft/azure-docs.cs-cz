@@ -11,11 +11,11 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
 ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227986"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360436"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Konfigurace veřejného koncového bodu v Azure SQL Database Managed instance
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurujte oznámení a e-mailové šablony.
+title: Konfigurace oznámení a e-mailových šablon
 titleSuffix: Azure API Management
 description: Naučte se konfigurovat oznámení a e-mailové šablony v Azure API Management.
 services: api-management
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902488"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375094"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurace oznámení a e-mailových šablon ve službě Azure API Management
 
 API Management poskytuje možnost konfigurovat oznámení pro konkrétní události a konfigurovat e-mailové šablony, které se používají ke komunikaci se správci a vývojáři instance API Management. Tento článek ukazuje, jak nakonfigurovat oznámení pro dostupné události a poskytuje přehled konfigurace e-mailových šablon používaných pro tyto události.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud nemáte instanci služby API Management, dokončete následující rychlý Start: [vytvoření instance Azure API Management](get-started-create-service-instance.md).
 

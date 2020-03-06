@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: škálování výpočetních Azure Portal '
-description: Škálování výpočetní kapacity ve fondu SQL ve Azure Portal. Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+description: Škálování výpočetní kapacity ve fondu SQL ve Azure Portal. Výpočetní prostředky můžete škálovat na více instancí, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg

@@ -5,11 +5,11 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156382"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363706"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Pro správu Azure Backup bodů obnovení použít Access Control na základě rolí
 
@@ -33,26 +33,26 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající mi
 | Operace správy | Vyžaduje se minimální role RBAC. | Požadován rozsah |
 | --- | --- | --- |
 | Vytvoření trezoru služby Recovery Services | Přispěvatel zálohování | Skupina prostředků obsahující trezor |
-| Povolení zálohování virtuálních počítačů Azure | Operátor zálohování | Skupina prostředků obsahující trezor |
-| | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
-| Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Trezor služby Recovery Services |
-| Obnovit virtuální počítač | Operátor zálohování | Trezor služby Recovery Services |
+| Povolení zálohování virtuálních počítačů Azure | Operátor záloh | Skupina prostředků obsahující trezor |
+| | Přispěvatel virtuálního počítače | Prostředek virtuálního počítače |
+| Zálohování virtuálního počítače na vyžádání | Operátor záloh | Trezor služby Recovery Services |
+| Obnovit virtuální počítač | Operátor záloh | Trezor služby Recovery Services |
 | | Přispěvatel | Skupina prostředků, do které se virtuální počítač nasadí |
-| | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |
-| Obnovení zálohy virtuálního počítače nespravovaných disků | Operátor zálohování | Trezor služby Recovery Services |
-| | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |
+| | Přispěvatel virtuálního počítače | Zdrojový virtuální počítač, který se zálohoval |
+| Obnovení zálohy virtuálního počítače nespravovaných disků | Operátor záloh | Trezor služby Recovery Services |
+| | Přispěvatel virtuálního počítače | Zdrojový virtuální počítač, který se zálohoval |
 | | Přispěvatel účtu úložiště | Prostředek účtu úložiště, kde se budou disky obnovovat |
-| Obnovení spravovaných disků ze zálohy virtuálního počítače | Operátor zálohování | Trezor služby Recovery Services |
-| | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |
+| Obnovení spravovaných disků ze zálohy virtuálního počítače | Operátor záloh | Trezor služby Recovery Services |
+| | Přispěvatel virtuálního počítače | Zdrojový virtuální počítač, který se zálohoval |
 | | Přispěvatel účtu úložiště | V rámci obnovení je vybraný dočasný účet úložiště, který bude obsahovat data z trezoru před jejich převodem na spravované disky. |
 | | Přispěvatel | Skupina prostředků, do které budou obnoveny spravované disky |
-| Obnovení jednotlivých souborů ze zálohy virtuálního počítače | Operátor zálohování | Trezor služby Recovery Services |
-| | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |
+| Obnovení jednotlivých souborů ze zálohy virtuálního počítače | Operátor záloh | Trezor služby Recovery Services |
+| | Přispěvatel virtuálního počítače | Zdrojový virtuální počítač, který se zálohoval |
 | Vytvoření zásady zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Trezor služby Recovery Services |
 | Úprava zásad zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Trezor služby Recovery Services |
 | Odstranit zásady zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Trezor služby Recovery Services |
 | Zastavit zálohování (se zachováním dat nebo odstraněním dat) v zálohování virtuálního počítače | Přispěvatel zálohování | Trezor služby Recovery Services |
-| Registrace místního Windows serveru/klienta/SCDPM nebo Azure Backup Server | Operátor zálohování | Trezor služby Recovery Services |
+| Registrace místního Windows serveru/klienta/SCDPM nebo Azure Backup Server | Operátor záloh | Trezor služby Recovery Services |
 | Odstranit registrovaný místní Windows Server/klienta/SCDPM nebo Azure Backup Server | Přispěvatel zálohování | Trezor služby Recovery Services |
 
 > [!IMPORTANT]
@@ -62,14 +62,14 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající mi
 
 Následující tabulka zachycuje akce správy zálohování a odpovídající roli nutnou k provedení operace Azure File Share.
 
-| Operace správy | Je vyžadována role. | Materiály |
+| Operace správy | Je vyžadována role. | Zdroje |
 | --- | --- | --- |
 | Povolení zálohování sdílených složek Azure | Přispěvatel zálohování |Trezor služby Recovery Services |
 | |Účet úložiště | Prostředek účtu úložiště pro přispěvatele |
-| Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Trezor služby Recovery Services |
-| Obnovit sdílenou složku | Operátor zálohování | Trezor služby Recovery Services |
+| Zálohování virtuálního počítače na vyžádání | Operátor záloh | Trezor služby Recovery Services |
+| Obnovit sdílenou složku | Operátor záloh | Trezor služby Recovery Services |
 | | Přispěvatel účtu úložiště | Prostředky účtu úložiště, ve kterých jsou přítomné obnovení zdrojových a cílových souborů sdílené složky |
-| Obnovení jednotlivých souborů | Operátor zálohování | Trezor služby Recovery Services |
+| Obnovení jednotlivých souborů | Operátor záloh | Trezor služby Recovery Services |
 | |Přispěvatel účtu úložiště|Prostředky účtu úložiště, ve kterých jsou přítomné obnovení zdrojových a cílových souborů sdílené složky |
 | Zastavení ochrany |Přispěvatel zálohování | Trezor služby Recovery Services |
 | Zrušení registrace účtu úložiště z trezoru |Přispěvatel zálohování | Trezor služby Recovery Services |

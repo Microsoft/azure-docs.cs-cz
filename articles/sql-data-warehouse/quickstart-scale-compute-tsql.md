@@ -1,6 +1,6 @@
 ---
 title: Škálování výpočetních prostředků ve službě Azure synapse Analytics – T-SQL
-description: Škálujte výpočetní prostředky ve službě Azure synapse Analytics pomocí T-SQL a SQL Server Management Studio (SSMS). Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+description: Škálujte výpočetní prostředky ve službě Azure synapse Analytics pomocí T-SQL a SQL Server Management Studio (SSMS). Výpočetní prostředky můžete škálovat na více instancí, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg

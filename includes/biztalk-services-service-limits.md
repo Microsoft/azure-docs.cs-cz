@@ -10,7 +10,7 @@ ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 2697a7d14141682ee8208d8cbe954e6e1679e3b5
 ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/18/2019
 ms.locfileid: "67175385"

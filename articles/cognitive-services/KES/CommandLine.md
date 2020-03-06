@@ -1,7 +1,7 @@
 ---
 title: Rozhraní příkazového řádku – Knowledge Exploration Service API
 titlesuffix: Azure Cognitive Services
-description: Sestavení indexu a gramatiky souborů z strukturovaných dat pomocí rozhraní příkazového řádku a potom je můžete nasadit jako webové služby.
+description: Použijte rozhraní příkazového řádku k sestavení indexů a gramatických souborů ze strukturovaných dat a pak je nasaďte jako webové služby.
 services: cognitive-services
 author: bojunehsu
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60815139"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385630"
 ---
-# <a name="command-line-interface"></a>Command Line Interface
+# <a name="command-line-interface"></a>Rozhraní příkazového řádku
 
-Rozhraní příkazového řádku Knowledge Exploration Service (KES) poskytuje možnost vytvářet index a gramatiky soubory ze strukturovaných dat a jejich nasazení jako webové služby.  Používá Obecná syntaxe: `kes.exe <command> <required_args> [<optional_args>]`.  Můžete spustit `kes.exe` bez argumentů, chcete-li zobrazit seznam příkazů, nebo `kes.exe <command>` zobrazíte seznam argumentů, která je k dispozici pro zadaný příkaz.  Níže je seznam dostupných příkazů:
+Rozhraní příkazového řádku Knowledge Exploration Service (KES) poskytuje možnost vytvářet index a gramatické soubory ze strukturovaných dat a nasazovat je jako webové služby.  Používá obecnou syntaxi: `kes.exe <command> <required_args> [<optional_args>]`.  Můžete spustit `kes.exe` bez argumentů pro zobrazení seznamu příkazů, nebo `kes.exe <command>` k zobrazení seznamu argumentů dostupných pro zadaný příkaz.  Níže je uveden seznam dostupných příkazů:
 
 * build_index
 * build_grammar
@@ -30,107 +30,107 @@ Rozhraní příkazového řádku Knowledge Exploration Service (KES) poskytuje m
 
 <a name="build_index-command"></a>
 
-## <a name="buildindex-command"></a>build_index příkazu
+## <a name="build_index-command"></a>build_index – příkaz
 
-**Build_index** příkaz sestaví binárního indexového souboru z definičního souboru schématu a soubor dat objektů, které chcete-li indexovat.  Výsledný soubor indexu je možné vyhodnotit výrazy strukturovaných dotazů nebo ke generování interpretace dotazy v přirozeném jazyce ve spojení se souborem kompilované gramatiky.
+Příkaz **build_index** vytvoří binární indexový soubor ze souboru definice schématu a datového souboru objektů, které mají být indexovány.  Výsledný indexový soubor lze použít k vyhodnocení strukturovaných výrazů dotazu nebo k vygenerování interpretace dotazů v přirozeném jazyce ve spojení s zkompilovaným gramatickým souborem.
 
 `kes.exe build_index <schemaFile> <dataFile> <indexFile> [options]`
 
 | Parametr      | Popis               |
 |----------------|---------------------------|
-| `<schemaFile>` | Cesta vstupního schématu |
-| `<dataFile>`   | Cesta vstupních dat   |
-| `<indexFile>`  | Výstupní cesta indexu |
-| `--description <description>` | Řetězec s popisem |
+| `<schemaFile>` | Cesta ke vstupnímu schématu |
+| `<dataFile>`   | Cesta k vstupním datům   |
+| `<indexFile>`  | Cesta k výstupnímu indexu |
+| `--description <description>` | Řetězec popisu |
 | `--remote <vmSize>`           | Velikost virtuálního počítače pro vzdálené sestavení |
 
-Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL pro objekty BLOB Azure.  Soubor schématu popisuje strukturu objektů indexování a také operací, které mají být podporovány (viz [formát schématu](SchemaFormat.md)).  Objekty a hodnoty atributů indexovaných vytvoří výčet datový soubor (viz [formát dat](DataFormat.md)).  Po úspěšném sestavení obsahuje výstupní soubor indexu komprimované reprezentaci vstupní data, která podporuje požadované operace.  
+Tyto soubory můžou být zadané pomocí místních cest souborů nebo cest URL k objektům blob Azure.  Soubor schématu popisuje strukturu indexovaných objektů a operace, které mají být podporovány (viz [Formát schématu](SchemaFormat.md)).  Datový soubor vytvoří výčet objektů a hodnot atributů, které mají být indexovány (viz [Formát dat](DataFormat.md)).  Po úspěšném sestavení obsahuje výstupní soubor indexu komprimovaná reprezentace vstupních dat, která podporují požadované operace.  
 
-Řetězec s popisem je případně možné zadat následně identifikovat binárního indexového pomocí **describe_index** příkazu.  
+Řetězec popisu může být volitelně zadán k následné identifikaci binárního indexu pomocí příkazu **describe_index** .  
 
-Ve výchozím nastavení je index založený na místním počítači.  Mimo prostředí Azure místní sestavení jsou omezené na datové soubory, které obsahují až 10 000 objektů.  Když--vzdálené označen příznakem, index bude založená na dočasně vytvořeného virtuálního počítače Azure o zadané velikosti.  Díky tomu velké indexy, které se efektivně použití virtuálních počítačů Azure s více paměti.  Aby se zabránilo stránkování, což může zpomalit proces sestavení, doporučujeme používat virtuální počítač s 3krát velikost paměti RAM jako velikost souboru vstupní data.  Seznam dostupných velikostí virtuálních počítačů najdete v článku [Velikosti virtuálních počítačů](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Ve výchozím nastavení je index založený na místním počítači.  Mimo prostředí Azure jsou místní buildy omezené na datové soubory, které obsahují až 10 000 objektů.  Když je zadaný příznak--Remote, index se vytvoří na dočasně vytvořeném virtuálním počítači Azure zadané velikosti.  Díky tomu můžou být velké indexy vybudovány efektivně pomocí virtuálních počítačů Azure s větší pamětí.  Aby se zabránilo stránkování, které zpomaluje proces sestavení, doporučujeme použít virtuální počítač se 3 časy velikosti paměti RAM jako velikost vstupního datového souboru.  Seznam dostupných velikostí virtuálních počítačů najdete v článku [Velikosti virtuálních počítačů](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
 > [!TIP] 
-> Rychlejší sestavování presort snížením pravděpodobnost objekty v datovém souboru služby.
+> Pro rychlejší sestavení předřaďte objekty v datovém souboru zmenšením pravděpodobnosti.
 
 <a name="build_grammar-command"></a>
 
-## <a name="buildgrammar-command"></a>build_grammar příkazu
+## <a name="build_grammar-command"></a>build_grammar – příkaz
 
-**Build_grammar** příkaz zkompiluje gramatiky zadanému v souboru XML do souboru binární gramatika.  Výsledný soubor gramatiky umožňuje ve spojení s indexový soubor generovat interpretace dotazy v přirozeném jazyce.
+Příkaz **build_grammar** zkompiluje gramatiku ZADANOU v XML do binárního gramatického souboru.  Výsledný gramatický soubor lze použít ve spojení s indexovým souborem pro generování interpretace dotazů v přirozeném jazyce.
 
 `kes.exe build_grammar <xmlFile> <grammarFile>`
 
 | Parametr       | Popis               |
 |-----------------|---------------------------|
-| `<xmlFile>`     | Vstupní cesta specifikace gramatika XML |
-| `<grammarFile>` | Výstupní cesta kompilované gramatiky         |
+| `<xmlFile>`     | Vstupní cesta specifikace gramatiky XML |
+| `<grammarFile>` | Neznámá gramatická cesta k výstupu         |
 
-Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL pro objekty BLOB Azure.  Specifikace gramatiky popisuje sadu výrazů vážený přirozeného jazyka a jejich sémantická interpretace (viz [formát gramatiky](GrammarFormat.md)).  Po úspěšném sestavení obsahuje výstupní soubor gramatiky binární vyjádření této specifikaci gramatiky umožňující rychlé dekódování.
+Tyto soubory můžou být zadané pomocí místních cest souborů nebo cest URL k objektům blob Azure.  Specifikace gramatiky popisuje sadu vážených výrazů přirozeného jazyka a jejich sémantické výklady (viz [gramatický formát](GrammarFormat.md)).  Po úspěšném sestavení obsahuje výstupní soubor gramatiky binární reprezentaci gramatické specifikace, která umožňuje rychlé dekódování.
 
 <a name="host_service-command"/>
 
-## <a name="hostservice-command"></a>host_service Command
+## <a name="host_service-command"></a>host_service – příkaz
 
-**Host_service** příkaz je hostitelem instance služby KES v místním počítači.
+Příkaz **host_service** hostuje instanci služby KES na místním počítači.
 
 `kes.exe host_service <grammarFile> <indexFile> [options]`
 
 | Parametr       | Popis                |
 |-----------------|----------------------------|
-| `<grammarFile>` | Binární gramatika je vstupní cesta         |
-| `<indexFile>`   | Vstupní binárního indexového cesta           |
-| `--port <port>` | Číslo místního portu.  Výchozí hodnota: 8000 |
+| `<grammarFile>` | Vstupní binární gramatická cesta         |
+| `<indexFile>`   | Cesta ke vstupnímu binárnímu indexu           |
+| `--port <port>` | Číslo místního portu  Výchozí: 8000 |
 
-Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL pro objekty BLOB Azure.  Webová služba bude dostupný http://localhost:&lt ; port&gt; /.  Zobrazit [webová rozhraní API](WebAPI.md) pro seznam podporovaných operací.
+Tyto soubory můžou být zadané pomocí místních cest souborů nebo cest URL k objektům blob Azure.  Webová služba bude hostována na http://localhost:&lt;pí&gt;/.  Seznam podporovaných operací najdete v tématu [webová rozhraní API](WebAPI.md) .
 
-Prostředí, místně hostované služby, které jsou omezené na index mimo Azure soubory velikost 10 požadavků za sekundu a 1 000 volání celkem až 1 MB.  Chcete-li omezenému, spusťte **host_service** uvnitř virtuálního počítače Azure, nebo nasadit do cloudu Azure pomocí služby **deploy_service**.
+Mimo prostředí Azure jsou místně hostované služby omezené na indexování souborů o velikosti až 1 MB, 10 požadavků za sekundu a všech voláních (1000).  Pokud chcete tato omezení překonat, spusťte **host_service** ve virtuálním počítači Azure nebo nasaďte do cloudové služby azure pomocí **deploy_service**.
 
 <a name="deploy_service-command"/>
 
-## <a name="deployservice-command"></a>deploy_service příkazu
+## <a name="deploy_service-command"></a>deploy_service – příkaz
 
-**Deploy_service** příkaz nasadí instance KES služby do cloudové služby Azure.
+Příkaz **deploy_service** nasadí instanci služby KES do cloudové služby Azure.
 
 `kes.exe deploy_service <grammarFile> <indexFile> <serviceName> <vmSize>[options]`
 
 | Parametr       | Popis                  |
 |-----------------|------------------------------|
-| `<grammarFile>` | Binární gramatika je vstupní cesta           |
-| `<indexFile>`   | Vstupní binárního indexového cesta             |
+| `<grammarFile>` | Vstupní binární gramatická cesta           |
+| `<indexFile>`   | Cesta ke vstupnímu binárnímu indexu             |
 | `<serviceName>` | Název cílové cloudové služby |
 | `<vmSize>`      | Velikost virtuálního počítače cloudové služby     |
-| `--slot <slot>` | Slot cloudové služby: "pracovní" (výchozí), "produkční" |
+| `--slot <slot>` | Slot pro cloudovou službu: "fázování" (výchozí), "produkční" |
 
-Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL pro objekty BLOB Azure.  Určuje název služby předkonfigurované Azure cloud service (viz [jak vytvořit a nasadit Cloudovou službu](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md)).  Příkaz bude služba KES automaticky nasadit do Azure zadaná Cloudová služba, pomocí virtuálních počítačů zadané velikosti.  Aby se zabránilo stránkování, což významně snižuje výkon, doporučujeme pomocí virtuálního počítače s 1 GB víc paměti RAM než velikost souboru vstupní indexu.  Seznam dostupných velikostí virtuálních počítačů najdete v tématu [velikosti pro Cloud Services](../../../articles/cloud-services/cloud-services-sizes-specs.md).
+Tyto soubory můžou být zadané pomocí místních cest souborů nebo cest URL k objektům blob Azure.  Název služby určuje předem nakonfigurovanou cloudovou službu Azure (viz [Vytvoření a nasazení cloudové služby](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md)).  Příkaz automaticky nasadí službu KES do zadané cloudové služby Azure pomocí virtuálních počítačů zadané velikosti.  Abyste se vyhnuli stránkování, které významně snižuje výkon, doporučujeme použít virtuální počítač s 1 GB paměti RAM, než je velikost vstupního souboru indexu.  Seznam dostupných velikostí virtuálních počítačů najdete v tématu [velikosti pro Cloud Services](../../../articles/cloud-services/cloud-services-sizes-specs.md).
 
-Ve výchozím nasazení služby do přípravného prostředí, volitelně přepsané pomocí parametru--slot.  Zobrazit [webová rozhraní API](WebAPI.md) pro seznam podporovaných operací.
+Ve výchozím nastavení je služba nasazena do přípravného prostředí, volitelně přepsána prostřednictvím parametru--slot.  Seznam podporovaných operací najdete v tématu [webová rozhraní API](WebAPI.md) .
 
 <a name="describe_index-command"/>
 
-## <a name="describeindex-command"></a>příkaz describe_index
+## <a name="describe_index-command"></a>describe_index – příkaz
 
-**Describe_index** příkaz vypíše informace o soubor indexu, včetně schéma a popis.
+Příkaz **describe_index** vypíše informace o souboru indexu, včetně schématu a popisu.
 
 `kes.exe describe_index <indexFile>`
 
 | Parametr     | Popis      |
 |---------------|------------------|
-| `<indexFile>` | Index vstupní cesta |
+| `<indexFile>` | Cesta ke vstupnímu indexu |
 
-Tento soubor může být určeno místní cesta k souboru nebo adresu URL do objektu blob Azure.  Výstupní řetězec popis lze zadat pomocí parametru--popis **build_index** příkazu.
+Tento soubor může být určený cestou k místnímu souboru nebo cestou k adrese URL objektu blob Azure.  Výstupní řetězec s popisem lze zadat pomocí parametru--Description příkazu **build_index** .
 
 <a name="describe_grammar-command"/>
 
-## <a name="describegrammar-command"></a>příkaz describe_grammar
+## <a name="describe_grammar-command"></a>describe_grammar – příkaz
 
-**Describe_grammar** příkaz vypíše původní gramatiky specifikace sloužící k sestavení binární gramatika.
+Příkaz **describe_grammar** vypíše původní gramatickou specifikaci použitou k sestavení binární gramatiky.
 
 `kes.exe describe_grammar <grammarFile>`
 
 | Parametr       | Popis      |
 |-----------------|------------------|
-| `<grammarFile>` | Gramatika vstupní cesta |
+| `<grammarFile>` | Vstupní gramatická cesta |
 
-Tento soubor může být určeno místní cesta k souboru nebo adresu URL do objektu blob Azure.
+Tento soubor může být určený cestou k místnímu souboru nebo cestou k adrese URL objektu blob Azure.
 

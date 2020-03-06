@@ -55,7 +55,7 @@ Pracovní procesy jsou role, které jsou hostiteli zákaznických aplikací. Pra
 * Dva virtuální procesory / 7 GB paměti RAM
 * Čtyři virtuální procesory / 14 GB paměti RAM
 
-Zákazníci nemusí spravovat front-endy ani pracovní procesy. Veškerá infrastruktura se přidává automaticky s tím, jak zákazníci horizontálně navyšují kapacitu svých plánů služby App Service. Při vytváření nebo škálování plánů služby App Service ve službě ASE se podle potřeby přidává nebo odebírá nutná infrastruktura.
+Zákazníci nemusí spravovat front-endy ani pracovní procesy. Veškerá infrastruktura se přidává automaticky s tím, jak zákazníci škálují své plány služby App Service na více instancí. Při vytváření nebo škálování plánů služby App Service ve službě ASE se podle potřeby přidává nebo odebírá nutná infrastruktura.
 
 Za službu ASE se účtuje pevný měsíční poplatek za infrastrukturu, který se nemění podle velikosti služby ASE. Kromě toho se účtuje poplatek za každý virtuální procesor v plánu služby App Service. Všechny aplikace hostované ve službě ASE jsou ve skladové položce s izolovanou cenou. Informace o cenách pro pomocného mechanismu pro čtení najdete na stránce s [cenami App Service][Pricing] a Projděte si dostupné možnosti pro služby ase.
 
@@ -77,7 +77,7 @@ Další informace o tom, jak služby ASE pracuje s virtuálními sítěmi a mís
 
 Služba App Service Environment má dvě verze: ASEv1 a ASEv2. Předchozí informace se týkaly verze ASEv2. V této části jsou uvedené rozdíly mezi verzemi ASEv1 a ASEv2. 
 
-Ve verzi ASEv1 je potřeba spravovat všechny prostředky ručně. To se týká front-endů, pracovních procesů a IP adres používaných pro zabezpečení SSL na základě protokolu IP. Před horizontálním navýšením kapacity vašeho plánu služby App Service je potřeba nejdřív horizontálně navýšit kapacitu fondu pracovních procesů, který má být jeho hostitelem.
+Ve verzi ASEv1 je potřeba spravovat všechny prostředky ručně. To se týká front-endů, pracovních procesů a IP adres používaných pro zabezpečení SSL na základě protokolu IP. Před škálováním vašeho plánu služby App Service na více instancí je potřeba nejdřív horizontálně navýšit kapacitu fondu pracovních procesů, který má být jeho hostitelem.
 
 Verze ASEv1 používá jiný cenový model než verze ASEv2. Ve verzi ASEv1 se platí za každý přidělený virtuální procesor. To zahrnuje i virtuální procesory používané pro front-endy nebo pracovní procesy, které nejsou hostiteli žádných úloh. Ve verzi ASEv1 je výchozí maximální velikost služby ASE celkem 55 hostitelů. To zahrnuje pracovní procesy i front-endy. Jedna z výhod verze ASEv1 spočívá v tom, že se dá nasadit do klasické virtuální sítě i do virtuální sítě Resource Manager. Další informace o ASEv1 najdete v tématu [App Service Environment v1 Úvod][ASEv1Intro].
 

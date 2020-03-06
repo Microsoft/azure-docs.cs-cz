@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768008"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387021"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databázemi, kontejnery a položkami v Azure Cosmos DB
 
-Po vytvoření [účtu služby Azure Cosmos DB](account-overview.md) v rámci vašeho předplatného Azure můžete spravovat data ve vašem účtu tak, že vytvoříte databází, kontejnerů a položek. Tento článek popisuje každou z těchto entit. 
+Po vytvoření [účtu Azure Cosmos DB](account-overview.md) v rámci předplatného Azure můžete spravovat data v účtu vytvořením databází, kontejnerů a položek. Tento článek popisuje každou z těchto entit. 
 
 Následující obrázek znázorňuje hierarchii různých entit v účtu Azure Cosmos DB:
 
@@ -26,9 +26,9 @@ Následující obrázek znázorňuje hierarchii různých entit v účtu Azure C
 
 V rámci svého účtu můžete vytvořit jednu nebo víc databází Azure Cosmos. Databáze je obdobná jako obor názvů. Databáze je jednotka správy pro sadu Cosmos kontejnerů Azure. Následující tabulka ukazuje, jak databáze Azure Cosmos je namapována na různé entity specifické pro rozhraní API:
 
-| Entita Azure Cosmos | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
+| Entita Azure Cosmos | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Databáze Azure Cosmos | databáze | Prostor klíčů | databáze | databáze | není k dispozici |
+|Databáze Azure Cosmos | databáze | Prostor klíčů | databáze | databáze | Není k dispozici |
 
 > [!NOTE]
 > Při vytváření první tabulky pomocí rozhraní API pro tabulky účty se ve vašem účtu Azure Cosmos automaticky vytvoří výchozí databáze.
@@ -37,12 +37,12 @@ V rámci svého účtu můžete vytvořit jednu nebo víc databází Azure Cosmo
 
 S Azure Cosmos Database můžete pracovat s Azure Cosmos API, jak je popsáno v následující tabulce:
 
-| Operace | Azure CLI | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
+| Operace | Azure CLI | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-|Vytvořit výčet všech databází| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | není k dispozici | není k dispozici |
-|Databáze pro čtení| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | není k dispozici | není k dispozici |
-|Vytvořit novou databázi| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | není k dispozici | není k dispozici |
-|Aktualizace databáze| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | není k dispozici | není k dispozici |
+|Vytvořit výčet všech databází| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | Není k dispozici | Není k dispozici |
+|Databáze pro čtení| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | Není k dispozici | Není k dispozici |
+|Vytvořit novou databázi| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | Není k dispozici | Není k dispozici |
+|Aktualizace databáze| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | Není k dispozici | Není k dispozici |
 
 
 ## <a name="azure-cosmos-containers"></a>Kontejnery Azure Cosmos DB
@@ -68,19 +68,19 @@ Můžete použít možnost [změnit kanál](change-feed.md) k přihlášení k o
 
 Můžete registrovat [uložené procedury, triggery, uživatelsky definované funkce (UDF)](stored-procedures-triggers-udfs.md)a [postupy sloučení](how-to-manage-conflicts.md) pro váš kontejner Azure Cosmos. 
 
-V kontejneru Azure Cosmos můžete zadat [jedinečné omezení klíčů](unique-keys.md) . Vytvořením zásady jedinečného klíče zajistíte jedinečnost jedné nebo více hodnot za klíč logického oddílu. Pokud vytvoříte kontejner pomocí jedinečné zásady klíčů, je možné vytvořit nové nebo aktualizované položky s hodnotami, které duplikují hodnoty zadané pomocí omezení jedinečného klíče. Další informace najdete v tématu [omezení jedinečných klíčů](unique-keys.md).
+V kontejneru Azure Cosmos můžete zadat [jedinečné omezení klíčů](unique-keys.md) . Vytvořením zásady jedinečného klíče zajistíte jedinečnost jedné nebo více hodnot za klíč logického oddílu. Pokud vytvoříte kontejner pomocí jedinečné zásady klíčů, je možné vytvořit nové nebo aktualizované položky s hodnotami, které duplikují hodnoty zadané pomocí omezení jedinečného klíče. Další informace najdete v tématu [omezení jedinečnosti klíčů](unique-keys.md).
 
 Kontejner Azure Cosmos je specializovaný na entity specifické pro rozhraní API, jak je znázorněno v následující tabulce:
 
-| Entita Azure Cosmos | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
+| Entita Azure Cosmos | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Kontejner Azure Cosmos | Kontejner | Table | Kolekce | Grafová databáze | Table |
+|Kontejner Azure Cosmos | Kontejner | Tabulka | Kolekce | Graph | Tabulka |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Vlastnosti kontejneru Azure Cosmos
 
 Kontejner Azure Cosmos obsahuje sadu vlastností definovaných systémem. V závislosti na tom, jaké rozhraní API používáte, nemusí být některé vlastnosti přímo vystavené. Následující tabulka popisuje seznam vlastností definovaných systémem:
 
-| Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné | Účel | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
+| Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné | Účel | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |identifikátor RID \_ | Generované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
 |\_ETag | Generované systémem | Značka entity používá pro optimistického řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
@@ -96,27 +96,27 @@ Kontejner Azure Cosmos obsahuje sadu vlastností definovaných systémem. V záv
 
 Kontejner Azure Cosmos podporuje následující operace při použití kterékoli z rozhraní API Azure Cosmos:
 
-| Operace | Azure CLI | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
+| Operace | Azure CLI | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Zobrazení výčtu kontejnery v databázi | Ano | Ano | Ano | Ano | není k dispozici | není k dispozici |
-| Přečtěte si kontejneru | Ano | Ano | Ano | Ano | není k dispozici | není k dispozici |
-| Vytvořit nový kontejner | Ano | Ano | Ano | Ano | není k dispozici | není k dispozici |
-| Aktualizace kontejneru | Ano | Ano | Ano | Ano | není k dispozici | není k dispozici |
-| Odstranění kontejneru | Ano | Ano | Ano | Ano | není k dispozici | není k dispozici |
+| Zobrazení výčtu kontejnery v databázi | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Přečtěte si kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Vytvořit nový kontejner | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Aktualizace kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Odstranění kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos položky
 
 V závislosti na tom, jaké rozhraní API používáte, může položka Azure Cosmos představovat buď dokument v kolekci, řádek v tabulce nebo uzel nebo okraj v grafu. Následující tabulka ukazuje mapování entit specifických pro rozhraní API na položku Azure Cosmos:
 
-| Cosmos – entita | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
+| Cosmos – entita | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos položky | Databáze dokumentů | Řádek | Databáze dokumentů | Uzel nebo hrana | Položka |
+|Azure Cosmos položky | Dokument | Řádek | Dokument | Uzel nebo hrana | Položka |
 
 ### <a name="properties-of-an-item"></a>Vlastnosti položky
 
 Každá položka Azure Cosmos má následující vlastnosti definované systémem. V závislosti na tom, jaké rozhraní API používáte, nemusí být některé z nich přímo vystavené.
 
-| Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné| Účel | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
+| Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné| Účel | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |identifikátor RID \_ | Generované systémem | Jedinečný identifikátor položky | Ano | Ne | Ne | Ne | Ne |
 |\_ETag | Generované systémem | Značka entity používá pro optimistického řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
@@ -132,7 +132,7 @@ Každá položka Azure Cosmos má následující vlastnosti definované systéme
 
 Položky Azure Cosmos podporují následující operace. K provedení operací můžete použít kterékoli rozhraní API Azure Cosmos.
 
-| Operace | Azure CLI | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
+| Operace | Azure CLI | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- |
 | Vložit, nahradí, odstranit, Upsert, přečtěte si | Ne | Ano | Ano | Ano | Ano | Ano |
 

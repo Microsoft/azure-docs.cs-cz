@@ -16,7 +16,7 @@ ms.locfileid: "75442160"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny hromadného prováděcího modulu Azure Cosmos DB
  
-Azure Cosmos DB je rychlá, flexibilní a globálně distribuovaná databázová služba navržená tak, aby elasticky horizontálně rozšiřovala svou kapacitu za účelem podpory následujících scénářů: 
+Azure Cosmos DB je rychlá, flexibilní a globálně distribuovaná databázová služba navržená tak, aby elasticky škálovala na více instancí za účelem podpory následujících scénářů: 
 
 * Velká propustnost čtení a zápisu (miliony operací za sekundu)  
 * Ukládání velkých objemů (stovky terabajtů nebo ještě více) transakčních a provozních dat s předvídatelnou latencí v řádu milisekund  

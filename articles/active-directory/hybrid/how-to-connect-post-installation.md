@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Další kroky a jak spravovat Azure AD Connect | Dokumentace Microsoftu'
-description: Zjistěte, jak rozšířit výchozí konfigurace a provozní úlohy pro Azure AD Connect.
+title: 'Azure AD Connect: další kroky a Správa Azure AD Connect | Microsoft Docs'
+description: Naučte se, jak můžete roztáhnout výchozí konfiguraci a provozní úlohy pro Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,72 +17,72 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571304"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377117"
 ---
-# <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a jak spravovat Azure AD Connect
-Přizpůsobení služby Azure Active Directory (Azure AD) Connect pro splnění potřeb vaší organizace a požadavky pomocí provozní postupy v tomto článku.  
+# <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a Správa Azure AD Connect
+Použijte provozní postupy v tomto článku k přizpůsobení služby Azure Active Directory (Azure AD) k tomu, aby splňovaly potřeby a požadavky vaší organizace.  
 
-## <a name="add-additional-sync-admins"></a>Přidat další synchronizace správce
-Ve výchozím nastavení budou moct spravovat nainstalované synchronizační modul jenom uživatel, který nebyl instalace a místní správci. Pro další uživatele, bude moct používat a spravovat synchronizační modul vyhledejte skupinu s názvem ADSyncAdmins na místním serveru a přidat je do této skupiny.
+## <a name="add-additional-sync-admins"></a>Přidat další Správce synchronizace
+Ve výchozím nastavení můžou nainstalovaná synchronizační modul spravovat jenom uživatel, který měl instalaci a místní správci. Aby mohli uživatelé získat přístup k synchronizačnímu modulu a spravovat ho, vyhledejte skupinu s názvem ADSyncAdmins na místním serveru a přidejte je do této skupiny.
 
-## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Přiřazení licencí uživatelům Azure AD Premium a Enterprise Mobility Suite
-Teď, když uživatelé byly synchronizovány do cloudu, budete muset přiřaďte jim licence, takže můžete začít využívat cloudové aplikace, jako je Office 365.
+## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Přiřazení licencí k Azure AD Premium a uživatelům sady Enterprise Mobility Suite
+Teď, když byli vaši uživatelé synchronizováni do cloudu, musíte jim přiřadit licenci, aby se mohli dostat k cloudovým aplikacím, jako je například Office 365.
 
-### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Přiřadit k Azure AD Premium nebo Enterprise Mobility Suite licence
+### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Přiřazení licence Azure AD Premium nebo sady Enterprise Mobility Suite
 
-1. Přihlaste se k webu Azure portal jako správce.
+1. Přihlaste se k Azure Portal jako správce.
 2. Vlevo vyberte možnost **Active Directory**.
-3. Na **služby Active Directory** stránce, poklikejte na adresář, který obsahuje uživatele, kterou chcete nastavit.
+3. Na stránce **služby Active Directory** dvakrát klikněte na adresář, který obsahuje uživatele, které chcete nastavit.
 4. V horní části stránky adresáře vyberte možnost **Licence**.
-5. Na **licence** stránce **Active Directory Premium** nebo **Enterprise Mobility Suite**a potom klikněte na tlačítko **přiřadit**.
+5. Na stránce **licence** vyberte **Active Directory Premium** nebo **Enterprise Mobility Suite**a pak klikněte na **přiřadit**.
 6. V dialogovém okně vyberte uživatele, kterým chcete přiřadit licence, a potom změny uložte kliknutím na ikonu zaškrtnutí.
 
-## <a name="verify-the-scheduled-synchronization-task"></a>Ověření úlohy naplánované synchronizace
-Pomocí webu Azure portal a zkontrolujte stav synchronizace.
+## <a name="verify-the-scheduled-synchronization-task"></a>Ověřte naplánovanou úlohu synchronizace.
+Ke kontrole stavu synchronizace použijte Azure Portal.
 
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>Ověření úlohy naplánované synchronizace
-1. Přihlaste se k webu Azure portal jako správce.
+1. Přihlaste se k Azure Portal jako správce.
 2. Vlevo vyberte možnost **Active Directory**.
 3. Na levé straně vyberte **Azure AD Connect**
-4. V horní části stránky mějte na paměti poslední synchronizace.
+4. V horní části stránky si všimněte poslední synchronizace.
 
-![Čas synchronizace adresáře](./media/how-to-connect-post-installation/verify2.png)
+![Čas synchronizace adresářů](./media/how-to-connect-post-installation/verify2.png)
 
-## <a name="start-a-scheduled-synchronization-task"></a>Spuštění úlohy naplánované synchronizace
-Pokud je potřeba spustit úlohu synchronizace, můžete to provést:
+## <a name="start-a-scheduled-synchronization-task"></a>Spustí naplánovanou úlohu synchronizace.
+Pokud potřebujete spustit úlohu synchronizace, můžete to udělat takto:
 
-1. Dvakrát klikněte na zástupce na ploše Azure AD Connect spusťte průvodce.
+1. Spusťte Průvodce dvojitým kliknutím na zástupce Azure AD Connect Desktop.
 2. Klikněte na **Konfigurovat**.
-3. Na obrazovce úlohy, vyberte **přizpůsobit možnosti synchronizace** a klikněte na tlačítko **další**
+3. Na obrazovce úlohy vyberte **Možnosti přizpůsobení synchronizace** a klikněte na **Další** .
 4. Zadejte svoje přihlašovací údaje služby Azure AD.
 5. Klikněte na **Další**. Klikněte na **Další**.  Klikněte na **Další**.
-5.  Na **připravení konfigurovat** obrazovky, ujistěte se, že **po dokončení konfigurace spustit proces synchronizace** je zaškrtnuté políčko.
+5.  Na obrazovce **připraveno ke konfiguraci** zajistěte, aby bylo zaškrtnuto políčko **spustit proces synchronizace po dokončení konfigurace** .
 6.  Klikněte na **Konfigurovat**.
 
-Další informace o Plánovač synchronizace Azure AD Connect najdete v tématu [Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
+Další informace o plánovači Azure AD Connect Sync najdete v tématu [Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
 
-## <a name="additional-tasks-available-in-azure-ad-connect"></a>Další úkoly, které jsou k dispozici ve službě Azure AD Connect
-Po počáteční instalaci sady Azure AD Connect můžete vždy spustíte průvodce znovu z místní služby Azure AD Connect úvodní stránky nebo plochy.  Můžete si všimnout, že průvodce znovu projít poskytuje několik nových možností ve formě další úkoly.  
+## <a name="additional-tasks-available-in-azure-ad-connect"></a>Další úlohy, které jsou k dispozici v Azure AD Connect
+Po počáteční instalaci Azure AD Connect můžete Průvodce kdykoli znovu spustit z Azure AD Connect úvodní stránky nebo na ploše.  Všimnete si, že průvodce bude znovu poskytovat některé nové možnosti ve formě dalších úloh.  
 
-Následující tabulka obsahuje souhrn těchto úloh a stručný popis jednotlivých úkolů.
+Následující tabulka poskytuje souhrn těchto úkolů a stručný popis jednotlivých úloh.
 
 ![Seznam dalších úloh](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Další úlohy | Popis |
+| Další úloha | Popis |
 | --- | --- |
-|**Nastavení ochrany osobních údajů**|Zobrazte, jaké telemetrická data se sdílí s Microsoftem.|
-|**Zobrazit aktuální konfiguraci**|Zobrazení vašeho aktuálního řešení Azure AD Connect.  To zahrnuje obecných nastavení, synchronizaci adresářů a nastavení synchronizace. |
-| **Přizpůsobit možnosti synchronizace** |Změňte aktuální konfiguraci, jako je přidání další doménové struktury služby Active Directory ke konfiguraci nebo povolení možnosti synchronizace, jako je například uživatel, skupina, zařízení nebo zpětný zápis hesla. |
-|**Konfigurovat možnosti zařízení**|Možnosti zařízení, které jsou k dispozici pro synchronizaci|
-|**Aktualizovat schéma adresáře**|Umožňuje přidat nové objekty v místním adresáři pro synchronizaci|
-|**Konfigurovat pracovní režim** |Informace o fázi, který není synchronizován okamžitě a nelze exportovat do služby Azure AD nebo místní služby Active Directory.  Pomocí této funkce můžete zobrazit náhled synchronizace předtím, než k nim dojde. |
-|**Změnit přihlášení uživatele**|Změnit metodu ověřování, které uživatelé používají k přihlašování|
-|**Správa federace**|Správa infrastruktury služby AD FS, prodloužit platnost certifikátů a přidání serverů služby AD FS|
-|**Řešení potíží**|Pomoci při řešení potíží s Azure AD Connect|
+|**Nastavení ochrany osobních údajů**|Podívejte se, jaká data telemetrie se s Microsoftem sdílí.|
+|**Zobrazit aktuální konfiguraci**|Podívejte se na vaše aktuální řešení Azure AD Connect.  To zahrnuje obecná nastavení, synchronizované adresáře a nastavení synchronizace. |
+| **Přizpůsobení možností synchronizace** |Změňte aktuální konfiguraci, třeba přidání dalších doménových struktur služby Active Directory do konfigurace, nebo povolení možností synchronizace, jako je například uživatel, skupina, zařízení nebo zápis hesla. |
+|**Konfigurace možností zařízení**|Možnosti zařízení, které jsou k dispozici pro synchronizaci|
+|**Aktualizovat schéma adresáře**|Umožňuje přidat nové místní adresářové objekty pro synchronizaci.|
+|**Konfigurovat pracovní režim** |Informace o fázi, která není hned synchronizována a není exportována do služby Azure AD ani do místní služby Active Directory.  Pomocí této funkce můžete zobrazit náhled synchronizací dřív, než k nim dojde. |
+|**Změna přihlášení uživatele**|Změna metody ověřování, kterou uživatelé používají k přihlášení|
+|**Správa federace**|Správa infrastruktury AD FS, obnovení certifikátů a přidání serverů AD FS|
+|**Řešení problémů**|Pomoc s řešením problémů s Azure AD Connect|
 
-## <a name="next-steps"></a>Další postup
-Další informace o [integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [integraci místních identit s Azure Active Directory](whatis-hybrid-identity.md).

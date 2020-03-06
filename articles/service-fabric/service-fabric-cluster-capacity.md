@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
 ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463303"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379980"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 Pro jakékoli provozní nasazení je plánování kapacity důležitým krokem. Tady je několik položek, které je třeba vzít v úvahu jako součást tohoto procesu.
@@ -68,7 +68,7 @@ V clusteru s více typy uzlů je jeden primární typ uzlu a zbytek není primá
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Gold             | 5                              | SKU na plný uzel vyhrazené pro jednoho zákazníka (například L32s úrovně, GS5, G5, DS15_v2 D15_v2) | Může se zpozdit až po schválení clusterem Service Fabric. | Dá se pozastavit na 2 hodiny na UD, aby se repliky obnovily z předchozích selhání. |
 | Silver           | 5                              | Virtuální počítače s jedním jádrem nebo novějším s minimálně 50 GB místní jednotky SSD                      | Může se zpozdit až po schválení clusterem Service Fabric. | Nelze zpozdit na jakékoli významné časové období.                                                    |
-| Bronzová           | 1\. místo                              | Virtuální počítače s minimálně 50 GB místní jednotky SSD                                              | Nebude zpožděný Service Fabricým clusterem.           | Nelze zpozdit na jakékoli významné časové období.                                                    |
+| Bronzová           | 1                              | Virtuální počítače s minimálně 50 GB místní jednotky SSD                                              | Nebude zpožděný Service Fabricým clusterem.           | Nelze zpozdit na jakékoli významné časové období.                                                    |
 
 > [!WARNING]
 > Typy uzlů běžící s bronzovou trvanlivostí nezískají _žádná oprávnění_. To znamená, že úlohy infrastruktury, které mají vliv na stavové úlohy, nebudou zastaveny ani zpožděny, což může mít vliv na vaše úlohy. Používejte pouze bronzové typy uzlů, které spouštějí pouze bezstavové úlohy. Pro produkční úlohy se doporučuje používat stříbro nebo vyšší. 
@@ -131,7 +131,7 @@ Tady je doporučení pro výběr úrovně spolehlivosti.  Počet počátečních
 
 | **Počet uzlů clusteru** | **Úroveň spolehlivosti** |
 | --- | --- |
-| 1\. místo |Nezadávejte parametr úrovně spolehlivosti, systém ho vypočítá. |
+| 1 |Nezadávejte parametr úrovně spolehlivosti, systém ho vypočítá. |
 | 3 |Bronzová |
 | 5 nebo 6|Silver |
 | 7 nebo 8 |Gold |

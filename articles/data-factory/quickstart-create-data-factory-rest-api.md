@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
 ms.openlocfilehash: fbfd3e2577655e8cfccd84fffe2971ff509bd2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977458"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356073"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlý Start: vytvoření datové továrny Azure a kanálu pomocí REST API
 
@@ -30,9 +30,9 @@ Azure Data Factory je cloudová služba pro integraci dat umožňující vytvá�
 
 Tento rychlý start popisuje použití rozhraní REST API k vytvoření datové továrny Azure. Kanál v této datové továrně kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 * **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** a **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), můžete použít k připojení k úložišti objektů blob v Azure, k vytvoření kontejneru objektů blob, nahrání vstupního souboru a ověření výstupního souboru.
 * Nainstalujte **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps). Tento rychlý start využívá PowerShell k vyvolání volání rozhraní REST API.
-* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
+* **V Azure Active Directory vytvořte aplikaci** s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
 
 ## <a name="set-global-variables"></a>Nastavení globálních proměnných
 
@@ -508,4 +508,4 @@ Remove-AzDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<Name
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

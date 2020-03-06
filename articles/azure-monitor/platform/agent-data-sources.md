@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668770"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393584"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Zdroje dat agenta v Azure Monitor
 Data, která Azure Monitor shromažďuje z agentů, jsou definována zdroji dat, které nakonfigurujete.  Data z agentů jsou ukládána jako [data protokolu](data-platform-logs.md) se sadou záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
@@ -22,7 +22,7 @@ Data, která Azure Monitor shromažďuje z agentů, jsou definována zdroji dat,
 V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně k dispozici v Azure Monitor.  Každá z nich má odkaz na samostatný článek, který poskytuje podrobnosti pro tento zdroj dat.   Poskytuje také informace o jejich metodě a četnosti shromažďování. 
 
 
-| Zdroj dat | Platforma | Agent Log Analytics | Agent Operations Manageru | Úložiště Azure | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
+| Zdroj dat | Platforma | Agent Log Analytics | Agent Operations Manageru | Azure Storage | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Vlastní protokoly](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | při doručení |
 | [Vlastní protokoly](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | při doručení |

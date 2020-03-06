@@ -7,11 +7,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 1bf8f8e198f6c4a4a0af308262cd830685698a80
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77458915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374208"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Jak používat klientskou knihovnu iOS pro Azure Mobile Apps
 

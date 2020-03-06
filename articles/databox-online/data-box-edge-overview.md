@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 98ea00eb4d45ad045e1da3c4c5680f44e6705432
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
-ms.translationtype: HT
+ms.openlocfilehash: f463e8883efd5e2dfc4d7fff80912c193665b850
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300974"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399802"
 ---
-# <a name="what-is-azure-stack-edge"></a>Co je Azure Stack Edge? 
+# <a name="what-is-azure-stack-edge"></a>Co je Azure Stack Edge?
 
 [!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
 
-Azure Stack Edge je hraniční výpočetní zařízení s podporou AI a možnosti přenosu dat v síti. Tento článek vám poskytne přehled o řešení Azure Stack Edge, výhodách, klíčových funkcích a scénářích, kde můžete nasadit toto zařízení. 
+Azure Stack Edge je hraniční výpočetní zařízení s podporou AI a možnosti přenosu dat v síti. Tento článek vám poskytne přehled o řešení Azure Stack Edge, výhodách, klíčových funkcích a scénářích, kde můžete nasadit toto zařízení.
 
-Azure Stack Edge je řešení typu hardware jako služba. Microsoft dodá zařízení spravované v cloudu s vestavěným polem programovatelné brány (FPGA), které umožňuje akcelerované AI-Inferencing a má všechny možnosti brány síťového úložiště. 
+Azure Stack Edge je řešení typu hardware jako služba. Microsoft dodá zařízení spravované v cloudu s vestavěným polem programovatelné brány (FPGA), které umožňuje akcelerované AI-Inferencing a má všechny možnosti brány síťového úložiště.
 
 ## <a name="use-cases"></a>Případy použití
 
@@ -38,7 +38,6 @@ Tady jsou různé scénáře, kdy je možné Azure Stack Edge použít pro rychl
 
 - **Přenos dat přes síť do Azure** – pomocí Azure Stack Edge můžete snadno a rychle přenášet data do Azure a umožnit tak další výpočty a analýzu nebo pro účely archivace. 
 
-
 ## <a name="key-capabilities"></a>Klíčové funkce
 
 Azure Stack Edge má následující možnosti:
@@ -51,17 +50,17 @@ Azure Stack Edge má následující možnosti:
 |Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
 |Spravované v cloudu     |Zařízení a služba se spravují prostřednictvím Azure Portal.  |
 |Nahrání offline     | Odpojený režim podporuje scénáře nahrání v režimu offline.|
-|Podporované protokoly     | Podpora standardních protokolů SMB a NFS pro příjem dat. <br> Další informace o podporovaných verzích najdete v [Azure Stack požadavcích na systém Edge](data-box-edge-system-requirements.md).|
+|Podporované protokoly     | Podpora standardních protokolů SMB a NFS pro příjem dat. <br> Další informace o podporovaných verzích najdete v tématu [požadavky na systém Azure Stack Edge](data-box-edge-system-requirements.md).|
 |Aktualizace dat     | Možnost aktualizovat místní soubory pomocí nejnovějších souborů z cloudu.|
 |Šifrování    | BitLocker podporuje místní šifrování dat a bezpečný přenos dat do cloudu přes protokol *https*.|
 |Omezení šířky pásma| Omezí omezení využití šířky pásma během špičky.|
-
+|ExpressRoute | Bylo přidáno zabezpečení prostřednictvím ExpressRoute. Použijte konfiguraci partnerského vztahu, při které se provoz z místních zařízení do koncových bodů cloudového úložiště přenáší přes ExpressRoute. Další informace najdete v tématu [ExpressRoute Overview](../expressroute/expressroute-introduction.md).
 
 ## <a name="components"></a>Komponenty
 
 Azure Stack hraniční řešení se skládá z prostředků Azure Stack Edge, Azure Stack hraniční fyzické zařízení a místního webového uživatelského rozhraní.
 
-* **Fyzické zařízení Azure Stack Edge** – 1U server připojený k racku dodávaný Microsoftem, který se dá nakonfigurovat tak, aby odesílal data do Azure. 
+* **Fyzické zařízení Azure Stack Edge** – 1U server připojený k racku dodávaný Microsoftem, který se dá nakonfigurovat tak, aby odesílal data do Azure.
     
 * **Prostředek Azure Stack Edge** – prostředek v Azure Portal, který umožňuje spravovat Azure Stack hraniční zařízení z webového rozhraní, ke kterému můžete přistupovat z různých geografických umístění. Pomocí Azure Stackho hraničního prostředku můžete vytvářet a spravovat prostředky, zobrazovat a spravovat zařízení a výstrahy a spravovat sdílené složky.  
 
@@ -75,22 +74,16 @@ Azure Stack hraniční řešení se skládá z prostředků Azure Stack Edge, Az
 
     Informace o používání webového uživatelského rozhraní najdete v [části použití webového uživatelského rozhraní pro správu Azure Stackho okraje](data-box-edge-manage-access-power-connectivity-mode.md).
 
-
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
 Fyzické zařízení Azure Stack Edge, prostředek Azure a cílový účet úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
 
 - **Dostupnost prostředků** – seznam všech oblastí, ve kterých je dostupný Azure Stack hraniční prostředek, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge je taky možné nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
     
-- **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých jsou uloženy účty úložiště Azure Stack hraniční data, by měly být umístěny blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon. 
-
+- **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých jsou uloženy účty úložiště Azure Stack hraniční data, by měly být umístěny blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Projděte si [požadavky na systém Azure Stack Edge](data-box-edge-system-requirements.md).
 - Seznamte se s [limity Azure Stack hran](data-box-edge-limits.md).
 - Nasaďte [Azure Azure Stack Edge](data-box-edge-deploy-prep.md) do Azure Portal.
-
-
-
-

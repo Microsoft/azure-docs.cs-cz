@@ -486,7 +486,7 @@ WordPress se připojí k serveru Redis. Na stejné stránce se zobrazí **stav**
 
 ![WordPress se připojí k serveru Redis. Na stejné stránce se zobrazí **stav** připojení.][6]
 
-**Blahopřejeme**, připojili jste WordPress k Redis. Aplikace připravená do produkce teď používá službu **Azure Database for MySQL, trvalé úložiště a Redis**. Kapacitu plánu služby App Service teď můžete horizontálně navýšit na více instancí.
+**Blahopřejeme**, připojili jste WordPress k Redis. Aplikace připravená do produkce teď používá službu **Azure Database for MySQL, trvalé úložiště a Redis**. Plán služby App Service teď škálovat na více instancí.
 
 ## <a name="find-docker-container-logs"></a>Nalezení protokolů kontejneru Dockeru
 

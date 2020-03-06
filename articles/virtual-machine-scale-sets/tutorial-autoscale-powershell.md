@@ -130,7 +130,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
 
 
 ## <a name="apply-autoscale-profile-to-a-scale-set"></a>Použít profil automatického škálování na sadu škálování
-Posledním krokem je použít profil automatického škálování na vaši škálovací sadu. Vaše škálovací sada pak bude moct horizontálně snížit nebo zvýšit svou kapacitu na základě požadavků na aplikaci. Následujícím způsobem použijte profil automatického škálování pomocí rutiny [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting):
+Posledním krokem je použít profil automatického škálování na vaši škálovací sadu. Vaše škálovací sada pak bude moct škálovat na méně instancí nebo více instancí na základě požadavků na aplikaci. Následujícím způsobem použijte profil automatického škálování pomocí rutiny [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting):
 
 ```azurepowershell-interactive
 Add-AzureRmAutoscaleSetting `
@@ -143,7 +143,7 @@ Add-AzureRmAutoscaleSetting `
 
 
 ## <a name="generate-cpu-load-on-scale-set"></a>Generování zatížení CPU ve škálovací sadě
-Pokud chcete pravidla automatického škálování otestovat, vygenerujte nějaké zatížení CPU instancí virtuálních počítačů ve škálovací sadě. Toto simulované zatížení CPU způsobí, že pravidla automatického škálování provedou horizontální navýšení kapacity a zvýší počet instancí virtuálních počítačů. S následným snížením zatížení CPU pravidla automatického škálování provedou horizontální snížení kapacity a sníží počet instancí virtuálních počítačů.
+Pokud chcete pravidla automatického škálování otestovat, vygenerujte nějaké zatížení CPU instancí virtuálních počítačů ve škálovací sadě. Toto simulované zatížení CPU způsobí, že pravidla automatického škálování provedou škálování na více instancí a zvýší počet instancí virtuálních počítačů. S následným snížením zatížení CPU pravidla automatického škálování provedou škálování počtu instancí virtuálních počítačů na méně instancí.
 
 Pokud chcete vypsat porty překladu adres pro připojení k instancím virtuálních počítačů ve škálovací sadě, získejte nejprve objekt nástroje pro vyrovnávání zatížení pomocí rutiny [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer). Pak zobrazte pravidla příchozího překladu adres pomocí rutiny [Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig):
 
@@ -229,13 +229,13 @@ MYRESOURCEGROUP   myScaleSet_5   eastus Standard_DS2                   5        
 MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6          Creating
 ```
 
-V relacích připojení ke vzdálené ploše obou instancí virtuálních počítačů ukončete nástroj **CPU Stress**. Průměrné zatížení CPU ve škálovací sadě se vrátí do normálu. Po dalších 5 minutách pak pravidla automatického škálování horizontálně sníží kapacitu počtu instancí virtuálních počítačů. Akce horizontálního snížení kapacity odeberou nejprve instance virtuálních počítačů s nejvyšším ID. Když škálovací sada používá skupiny nebo zóny dostupnosti, akce pro horizontální snížení kapacity se mezi tyto instance virtuálních počítačů rovnoměrně rozloží. Následující příklad výstupu ukazuje jednu instanci virtuálního počítače odstraněnou při automatickém horizontálním snížení kapacity škálovací sady:
+V relacích připojení ke vzdálené ploše obou instancí virtuálních počítačů ukončete nástroj **CPU Stress**. Průměrné zatížení CPU ve škálovací sadě se vrátí do normálu. Po dalších 5 minutách pak pravidla automatického škálování škálují počet instancí virtuálních počítačů na méně instancí. Akce horizontálního snížení kapacity odeberou nejprve instance virtuálních počítačů s nejvyšším ID. Když škálovací sada používá skupiny nebo zóny dostupnosti, akce pro horizontální snížení kapacity se mezi tyto instance virtuálních počítačů rovnoměrně rozloží. Následující příklad výstupu ukazuje jednu instanci virtuálního počítače odstraněnou při automatickém horizontálním snížení kapacity škálovací sady:
 
 ```powershell
 MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6          Deleting
 ```
 
-Stisknutím `Ctrl-c` ukončete *while*. Kapacita škálovací sady se nadále bude každých 5 minut horizontálně snižovat odebráním jedné instance virtuálního počítače, dokud se nedosáhne minimálního počtu 2 instancí.
+Stisknutím `Ctrl-c` ukončete *while*. Škálovací sada se nadále bude každých 5 minut škálovat na méně instancí odebráním jedné instance virtuálního počítače, dokud se nedosáhne minimálního počtu 2 instancí.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -247,7 +247,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak automaticky horizontálně snižovat nebo zvyšovat kapacitu škálovací sady pomocí Azure PowerShellu:
+V tomto kurzu jste zjistili, jak automaticky škálovat škálovací sady na méně nebo více instancí pomocí Azure PowerShellu:
 
 > [!div class="checklist"]
 > * Použití automatického škálování u škálovací sady

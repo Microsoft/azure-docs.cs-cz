@@ -15,13 +15,13 @@ ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
 ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906778"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362731"
 ---
-# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava virtuálního pevného disku (VHD) nebo VHDX systému Windows pro nahrání do Azure
+# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
 Než nahrajete virtuální počítač s Windows z místního počítače do Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje virtuální počítače generace 1 i generace 2, které jsou ve formátu souboru VHD a mají disk s pevnou velikostí. Maximální velikost povolená pro virtuální pevný disk je 1 023 GB. 
 
@@ -235,13 +235,13 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 9. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady, abyste se ujistili, že předchozí nastavení nebudou obnovená. 
     
-    | Cíl                                     | Zásady                                                                                                                                                       | Hodnota                                                                                    |
+    | Cíl                                     | Zásada                                                                                                                                                       | Hodnota                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Protokol RDP je povolený.                           | Computer cestě konfigurace Settings\Administrative Templates\Components\Remote Desktop – pracovní relace, Host\Connections         | Umožňuje uživatelům vzdálené připojení pomocí vzdálené plochy.                                  |
     | NLA – zásady skupiny                         | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
     | Nastavení Keep-Alive                      | Computer cestě konfigurace Settings\Administrative pro správu \ součásti systému \ pracovní plocha – relace – Host\Connections | Konfigurace intervalu připojení Keep-Alive                                                 |
     | Znovu připojit nastavení                       | Computer cestě konfigurace Settings\Administrative pro správu \ součásti systému \ pracovní plocha – relace – Host\Connections | Znovu připojit automaticky                                                                   |
-    | Omezený počet nastavení připojení | Computer cestě konfigurace Settings\Administrative pro správu \ součásti systému \ pracovní plocha – relace – Host\Connections | Omezení počtu připojení                                                              |
+    | Omezený počet nastavení připojení | Computer cestě konfigurace Settings\Administrative pro správu \ součásti systému \ pracovní plocha – relace – Host\Connections | Omezit počet připojení                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>Konfigurace pravidel brány Windows Firewall
 1. Zapnout bránu Windows Firewall na třech profilech (doména, Standard a veřejné):
@@ -269,7 +269,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
    ``` 
 5. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady služby Azure AD a ujistěte se, že předchozí nastavení nejsou obnovená. 
 
-    | Cíl                                 | Zásady                                                                                                                                                  | Hodnota                                   |
+    | Cíl                                 | Zásada                                                                                                                                                  | Hodnota                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Povolit profily brány Windows Firewall | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Chránit všechna síťová připojení         |
     | Povolit protokol RDP                           | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Povolit příchozí výjimky vzdálené plochy |
@@ -364,7 +364,7 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 
    - Operátoři zálohování
 
-   - Všemi
+   - Everyone
 
    - Uživatelé
 
@@ -377,9 +377,9 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 ### <a name="install-windows-updates"></a>Nainstalovat aktualizace Windows
 V ideálním případě byste měli udržovat počítač aktualizovaný na *úrovni opravy*. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace. Chcete-li získat nejnovější aktualizace, přečtěte si stránky historie Windows Update: [Windows 10 a Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1 a Windows Server 2012 R2](https://support.microsoft.com/help/4009470) a [Windows 7 SP1 a Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
 
-| Součást               | Binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Komponenta               | Binární hodnota         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
-| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
+| Úložiště                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
 |                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
@@ -394,7 +394,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 |                         | vmstorfl.sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
 |                         | Fveapi.dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | Fveapibase.dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
-| Network (Síť)                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
+| Síť                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
 |                         | mrxsmb10.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb20.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb.sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |

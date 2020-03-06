@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c184972789c412406f264f725f8b94e1f7f162ce
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547043"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358666"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení runtime Azure IoT Edge a jeho architektura
 
@@ -91,7 +91,7 @@ Každá položka v manifestu nasazení obsahuje konkrétní informace o modulu, 
   * Stahuje se
   * Spuštěno
   * Není v pořádku
-  * Selhalo
+  * Neúspěch
   * Zastaveno
 
 * **restartPolicy** – způsob, jakým agent IoT Edge restartuje modul. Možné hodnoty:
@@ -125,4 +125,4 @@ Další informace o rozhraní Azure IoT Edge Security Framework najdete v člán
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md)
+[Principy Azure IoT Edgech modulů](iot-edge-modules.md)

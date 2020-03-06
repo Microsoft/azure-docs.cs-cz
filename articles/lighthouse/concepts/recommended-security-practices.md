@@ -4,17 +4,17 @@ description: Při použití správy delegovaných prostředků Azure je důleži
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456883"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394046"
 ---
 # <a name="recommended-security-practices"></a>Doporučené postupy zabezpečení
 
 Při použití správy delegovaných prostředků Azure je důležité vzít v úvahu zabezpečení a řízení přístupu. Uživatelé ve vašem tenantovi budou mít přímý přístup k předplatným zákazníků a skupinám prostředků, takže budete chtít udělat kroky, abyste zachovali zabezpečení tenanta. Budete taky chtít mít jistotu, že povolíte jenom přístup, který potřebujete k efektivní správě prostředků vašich zákazníků. V tomto tématu najdete doporučení, která vám pomůžou.
 
-## <a name="require-azure-multi-factor-authentication"></a>Vyžadovat Azure Multi-Factor Authentication
+## <a name="require-azure-multi-factor-authentication"></a>Vyžadování služby Azure Multi-Factor Authentication
 
 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (označované také jako dvoustupňové ověřování) pomáhá zabránit útočníkům v získání přístupu k účtu tím, že vyžaduje více kroků ověřování. Měli byste vyžadovat Multi-Factor Authentication pro všechny uživatele v tenantovi poskytovatele služeb, včetně všech uživatelů, kteří budou mít přístup k zákaznickým prostředkům.
 
@@ -28,11 +28,11 @@ Při vytváření struktury oprávnění nezapomeňte postupovat podle principu 
 
 Například můžete chtít použít strukturu, jako je tato:
 
-|název skupiny  |Typ  |principalId  |Definice role  |ID definice role  |
+|Název skupiny  |Typ  |principalId  |Definice role  |ID definice role  |
 |---------|---------|---------|---------|---------|
-|Architekti     |Uživatelská skupina         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Posouzení     |Uživatelská skupina         |\<principalId\>         |Čtenář         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|Specialisty virtuálních počítačů     |Uživatelská skupina         |\<principalId\>         |Přispěvatel virtuálních počítačů         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Architekty     |Skupina uživatelů         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Posouzení     |Skupina uživatelů         |\<principalId\>         |Čtenář         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|Specialisty virtuálních počítačů     |Skupina uživatelů         |\<principalId\>         |Přispěvatel virtuálních počítačů         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
 |Automation     |Hlavní název služby (SPN)         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Po vytvoření těchto skupin můžete uživatele podle potřeby přiřadit. Přidejte pouze uživatele, kteří skutečně potřebují mít přístup. Nezapomeňte pravidelně kontrolovat členství ve skupinách a odebrat všechny uživatele, kteří už nejsou vhodné nebo které je potřeba zahrnout.

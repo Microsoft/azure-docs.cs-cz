@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím Azure Resource Health | 
 description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5d1c720d3cbafafc81276a968abf2003bbd46ce
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717069"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373461"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
 Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -28,7 +28,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |---|
 |<ul><li>Je účet Batch zapnutý a spuštěný?</li><li>Překročila se kvóta fondu pro tento účet Batch?</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |Provedené kontroly|
 |---|
 |<ul><li>Jsou všechny uzly mezipaměti v provozu a jsou spuštěné?</li><li>Je možné dosáhnout mezipaměti v datovém centru?</li><li>Dosáhla by mezipaměť maximálního počtu připojení?</li><li> Vyčerpala mezipaměť dostupnou paměť? </li><li>Dochází v mezipaměti k velkému počtu chyb stránek?</li><li>Je mezipaměť v případě velkého zatížení?</li></ul>|

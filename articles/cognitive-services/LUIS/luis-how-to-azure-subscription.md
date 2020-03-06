@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225559"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390130"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Použití klíčů prostředků pro vytváření obsahu a modulu runtime
 
@@ -108,7 +108,7 @@ Můžete přiřadit prostředek pro vytváření obsahu pro jednu aplikaci nebo 
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai).
 1. V horním navigačním panelu úplně vpravo vyberte svůj uživatelský účet a pak vyberte **Nastavení**.
-1. Na stránce **nastavení uživatele** vyberte **Přidat prostředek pro vytváření** a pak vyberte existující prostředek pro vytváření. Vyberte **Uložit**. 
+1. Na stránce **nastavení uživatele** vyberte **Přidat prostředek pro vytváření** a pak vyberte existující prostředek pro vytváření. Vyberte **Save** (Uložit). 
 
 ## <a name="assign-a-resource-to-an-app"></a>Přiřazení prostředku k aplikaci
 
@@ -134,7 +134,7 @@ Pro účely automatizace, jako je například kanál CI/CD, možná budete chtí
 
     Toto rozhraní API příspěvku vyžaduje následující nastavení:
 
-    |Záhlaví|Hodnota|
+    |Hlavička|Hodnota|
     |--|--|
     |`Authorization`|Hodnota `Authorization` je `Bearer {token}`. Všimněte si, že před hodnotou tokenu musí být slovo `Bearer` a mezera.| 
     |`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
@@ -147,9 +147,9 @@ Pro účely automatizace, jako je například kanál CI/CD, možná budete chtí
 
     |Typ|Nastavení|Hodnota|
     |--|--|--|
-    |Záhlaví|`Authorization`|Hodnota `Authorization` je `Bearer {token}`. Všimněte si, že před hodnotou tokenu musí být slovo `Bearer` a mezera.|
-    |Záhlaví|`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
-    |Záhlaví|`Content-type`|`application/json`|
+    |Hlavička|`Authorization`|Hodnota `Authorization` je `Bearer {token}`. Všimněte si, že před hodnotou tokenu musí být slovo `Bearer` a mezera.|
+    |Hlavička|`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
+    |Hlavička|`Content-type`|`application/json`|
     |Řetězec dotazu|`appid`|ID aplikace LUIS. 
     |Tělo||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e"<br>"ResourceGroup": "resourcegroup-2"<br>"AccountName": "luis-uswest-S0-2"}|
 
