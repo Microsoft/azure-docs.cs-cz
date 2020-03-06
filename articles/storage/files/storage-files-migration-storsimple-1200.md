@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 4a32251b60066d6a85595e4d1b6c002f8587c01d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252658"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330936"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrace StorSimple 1200 na Azure File Sync
 
 Série StorSimple 1200 je virtuální zařízení, které běží v místním datovém centru. Je možné migrovat data z tohoto zařízení do Azure File Syncho prostředí. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync.
+
+## <a name="storsimple"></a>StorSimple
+
+StorSimple je ukončený produkt společnosti Microsoft. Rozšířená podpora pro tento produkt a jeho cloudová služba vyprší od prosince 31 2022. Je důležité zahájit plánování migrace z StorSimpleu hned.
+
+Azure File Sync je výchozí a strategická dlouhodobá služba Azure, na kterou je možné StorSimple zařízení migrovat.
+
+> [!IMPORTANT]
+> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFilesMigration@microsoft. com pro vlastní plán migrace a také pomoc při migraci.
 
 ## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 

@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 6bb647273467a07786413ff4ea30cda836b7cb1b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467633"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383874"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro Linux.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="system-requirements"></a>Požadavky na systém
+## <a name="system-requirements"></a>Systémové požadavky
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)
+Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu budete potřebovat:
 
@@ -46,6 +46,17 @@ K dokončení tohoto rychlého startu budete potřebovat:
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
+
+   * V RHEL/CentOS 8:
+
+     ```sh
+     sudo yum update
+     sudo yum groupinstall "Development tools"
+     sudo yum install alsa-lib openssl wget
+     ```
+
+> [!NOTE]
+> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ## <a name="install-speech-sdk"></a>Instalace sady Speech SDK
 

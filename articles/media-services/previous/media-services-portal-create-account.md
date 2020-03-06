@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 234c8be8c696ca7381b8860680d072e84820d424
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431978"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331481"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Vytvoření účtu Media Services pomocí Azure Portal
 
@@ -37,22 +37,18 @@ V tomto článku se dozvíte, jak vytvořit účet Media Services pomocí Azure 
 > [!NOTE]
 > Informace o dostupnosti funkcí služby Azure Media Services v různých oblastech najdete v tématu popisujícím [dostupnost funkcí AMS v datových centrech](scenarios-and-availability.md#availability).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="create-an-ams-account"></a>Vytvoření účtu AMS
 
 Postup v této části ukazuje, jak vytvořit účet AMS.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Klikněte na **+Nové** > **Web + mobilní zařízení** > **Media Services**.
-   
-    ![Media Services – vytvoření](./media/media-services-create-account/media-services-new1.png)
+2. Klikněte na **+ vytvořit prostředek** > **Media** > **Media Services**.
 3. V okně **VYTVOŘIT ÚČET MEDIA SERVICES** zadejte požadované hodnoty.
-   
-    ![Media Services – vytvoření](./media/media-services-create-account/media-services-new3.png)
-   
+
    1. Do pole **Název účtu** zadejte název nového účtu AMS. Název účtu Media Services musí obsahovat jenom malá písmena a číslice, nesmí obsahovat mezery a musí mít délku 3 až 24 znaků.
    2. V poli Předplatné si vyberte z různých předplatných Azure, ke kterým máte přístup.
    3. V poli **Skupina prostředků** vyberte nový nebo existující prostředek.  Skupina prostředků je kolekce prostředků, které sdílejí životní cyklus, oprávnění a zásady. Další informace najdete [tady](../../azure-resource-manager/management/overview.md#resource-groups).
@@ -72,16 +68,15 @@ Postup v této části ukazuje, jak vytvořit účet AMS.
 
 Pokud chcete spravovat svůj účet AMS (například připojit se prostřednictvím kódu programu k rozhraní API pro AMS, nahrát videa, kódovat prostředky, konfigurovat ochranu obsahu nebo monitorovat průběh úloh), vyberte **Nastavení** na levé straně portálu. V **Nastavení** přejděte do některého z dostupných oken (například: **Přístup k rozhraní API**, **Prostředky**, **Úlohy** nebo **Ochrana obsahu**).
 
-
 ## <a name="next-steps"></a>Další kroky
 
 Soubory teď můžete nahrát do účtu AMS. Další informace najdete v tématu [Nahrání souborů](media-services-portal-upload-files.md).
 
 Pokud plánujete přistupovat k rozhraní API pro AMS prostřednictvím kódu programu, přečtěte si téma [Přístup k rozhraní API pro službu Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

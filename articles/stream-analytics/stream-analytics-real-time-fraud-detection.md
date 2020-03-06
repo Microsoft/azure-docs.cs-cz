@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b7ca4677507f73467dddac09050f250ae34342a9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064380"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329456"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: zjišťování podvodů v reálném čase
 
@@ -31,7 +31,7 @@ V tomto kurzu se používá příklad zjišťování podvodů v reálném čase 
 
 Telekomunikační společnost má velký objem dat pro příchozí hovory. Společnost chce detekovat podvodné hovory v reálném čase, aby mohli informovat zákazníky nebo ukončit službu pro konkrétní číslo. Jeden z typů podvodů na kartě SIM zahrnuje několik volání ze stejné identity kolem stejné doby, ale v geograficky různých umístěních. Aby bylo možné zjistit tento typ podvodů, společnost potřebuje prošetřit příchozí telefonní záznamy a vyhledat konkrétní vzory – v tomto případě pro volání v různých zemích nebo oblastech v rámci stejné doby. Všechny záznamy telefonů, které spadají do této kategorie, jsou zapsány do úložiště pro následnou analýzu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu simulujete data telefonního hovoru pomocí klientské aplikace, která generuje ukázková metadata telefonního hovoru. Některé záznamy, které aplikace vytváří, vypadají jako podvodné hovory. 
 
@@ -94,7 +94,7 @@ Předtím, než může proces odesílat data do centra událostí, musí mít ce
     >[!NOTE]
     >Ujistěte se, že pracujete s centrem událostí, nikoli s oborem názvů centra událostí.
 
-3.  Přidejte zásadu nazvanou `sa-policy-manage-demo` a pro **deklaraci identity**vyberte **Spravovat**.
+3.  Přidejte zásadu nazvanou `asa-policy-manage-demo` a pro **deklaraci identity**vyberte **Spravovat**.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/05/2020
+ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845740"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399097"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorování
 
@@ -30,7 +30,7 @@ Tento článek popisuje data monitorování vygenerovaná nástrojem Azure Machi
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Machine Learning protokoluje data monitorování pomocí Azure Monitor, což je plná služba monitorování zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků Azure. Může také monitorovat prostředky v jiných cloudech i v místním prostředí.
+Azure Machine Learning protokoluje data monitorování pomocí Azure Monitoru, což je služba monitorování kompletního zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků Azure. Může také monitorovat prostředky v jiných cloudech i v místním prostředí.
 
 Začněte s článkem [Azure monitor přehled](/azure/azure-monitor/overview), který poskytuje přehled možností monitorování. Následující části obsahují informace o těchto informacích, které poskytují konkrétní použití Azure Monitor s Azure Machine Learning.
 
@@ -38,7 +38,7 @@ Pokud chcete pochopit náklady spojené s Azure Monitor, přečtěte si téma [v
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Monitorování dat z Azure Machine Learning
 
-Azure Machine Learning shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Machine Learning najdete v tématu [referenční informace k datům monitorování Azure Machine Learning](monitor-resource-reference.md) .
+Azure Machine Learning shromažďuje stejné druhy monitorovaných dat jako jiné prostředky Azure, popsané v článku [Monitorování dat z prostředků Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Machine Learning najdete v tématu [referenční informace k datům monitorování Azure Machine Learning](monitor-resource-reference.md) .
 
 ## <a name="analyzing-metric-data"></a>Analýza dat metriky
 
@@ -100,7 +100,7 @@ Použití Azure Monitor Log Analytics vyžaduje, abyste vytvořili konfiguraci d
 
 Data v Azure Monitor protokoly se ukládají v tabulkách, přičemž každá tabulka má vlastní sadu jedinečných vlastností. Azure Machine Learning ukládá data v následujících tabulkách:
 
-| Table | Popis |
+| Tabulka | Popis |
 |:---|:---|
 | AmlComputeClusterEvent | Události z Azure Machine Learning výpočetních clusterů. |
 | AmlComputeClusterNodeEvent | Události z uzlů v rámci Azure Machine Learning výpočetního clusteru. |

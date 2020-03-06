@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459298"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300549"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu (Preview)
 
@@ -28,7 +28,7 @@ Microsoft a Oracle mají partnerství, aby poskytovaly nízkou latenci a vysokou
 Pomocí tohoto připojení mezi cloudy můžete rozdělit vícevrstvou aplikaci tak, aby běžela vaše databázová vrstva na platformě Oracle Cloud Infrastructure (OCI), a na Microsoft Azure aplikace a další vrstvy. Prostředí je podobné jako spuštění celého zásobníku řešení v jednom cloudu. 
 
 > [!IMPORTANT]
-> Tato funkce mezi cloudy je aktuálně ve verzi Preview a [platí pro ně omezení](#preview-limitations). Aby bylo možné vytvořit připojení s nízkou latencí mezi Azure a OCI, musí být vaše předplatné Azure nejdřív pro tuto funkci povolené. K provedení tohoto krátkého [formuláře průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)se musíte zaregistrovat ve verzi Preview. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Přístup k funkci verze Preview podléhá dostupnosti a omezení Microsoftu, a to pouze podle svého uvážení. Dokončení průzkumu nezaručuje přístup. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Tato funkce mezi cloudy je aktuálně ve verzi Preview a [platí pro ně omezení](#region-availability). Aby bylo možné vytvořit připojení s nízkou latencí mezi Azure a OCI, musí být vaše předplatné Azure nejdřív pro tuto funkci povolené. K provedení tohoto krátkého [formuláře průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)se musíte zaregistrovat ve verzi Preview. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Přístup k funkci verze Preview podléhá dostupnosti a omezení Microsoftu, a to pouze podle svého uvážení. Dokončení průzkumu nezaručuje přístup. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 Pokud vás zajímá nasazení řešení Oracle výhradně do infrastruktury Azure, přečtěte si téma [image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure](oracle-vm-solutions.md).
 
@@ -48,9 +48,13 @@ Následující diagram představuje podrobný přehled připojeného řešení. 
 
 ![Přehled řešení Azure OCI](media/oracle-oci-overview/crosscloud.png)
 
-## <a name="preview-limitations"></a>Omezení verze Preview
+## <a name="region-availability"></a>Dostupnost oblasti 
 
-* Připojení mezi cloudy ve verzi Preview je omezené na oblasti Azure Východní USA (eastus), Velká Británie – jih (uksouth), canadacentral (Kanada – střed) a (USA – východ), Londýn (Velká Británie – jih) a Toronto (Kanada – jihovýchod). Pro Velká Británie – jih použijte prosím doménu dostupnosti 1 (AD 1) v rozhraní OCI při nasazení připojení pro nižší latenci.
+Připojení mezi cloudy je omezené na tyto oblasti:
+* Azure Východní USA (eastus) & OCI Ashburn (USA – východ)
+* Azure Velká Británie – jih (uksouth) & OCI Londýn (Velká Británie – jih)
+* Azure Canada Central (canadacentral) & OCI Toronto (Kanada – jihovýchod)
+* Azure Západní Evropa (westeurope) & OCI Amsterdam (Nizozemsko – severozápadní)
 
 ## <a name="networking"></a>Sítě
 

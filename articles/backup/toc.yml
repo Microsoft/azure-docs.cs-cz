@@ -160,6 +160,8 @@
       items:
         - name: Pomocí webu Azure Portal
           items:
+            - name: Přehled
+              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: Obnovení

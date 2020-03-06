@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 03/05/2020
+ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767633"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328607"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Tahákový list algoritmu Machine Learning pro návrháře Azure Machine Learning
 
@@ -44,11 +44,11 @@ Další informace o algoritmech v Azure Machine Learning najdete v [referenční
 
 Existují tři hlavní kategorie strojového učení: *dohled nad dohledem*, *vzdělávání bez dohledu*a *posílení učení*.
 
-### <a name="supervised-learning"></a>Učení pod dohledem
+### <a name="supervised-learning"></a>Vzdělávání pod dohledem
 
 V dohledovém učení je každý datový bod označený nebo přidružený ke kategorii nebo hodnotě, které vás zajímají. Příkladem popisku kategorií je přiřazení obrázku jako "Cat" nebo "pes". Příkladem popisku hodnoty je prodejní cena spojená s použitým automobilem. Cílem učení pod dohledem je prozkoumat mnoho příkladů s označením, jako jsou tyto, a pak předpovědi o budoucích datových bodech. Můžete například identifikovat nové fotografie se správným zvířetem nebo přiřadit přesné prodejní ceny jiným využitým automobily. Toto je oblíbený a užitečný typ strojového učení.
 
-### <a name="unsupervised-learning"></a>Učení bez dohledu
+### <a name="unsupervised-learning"></a>Vzdělávání bez dohledu
 
 V bezdohledovém učení se k datovým bodům nevztahují žádné popisky. Místo toho je cílem nesledovaného výukového algoritmu způsob, jak uspořádat data nějakým způsobem nebo popsat její strukturu. Data studijních skupin, která nejsou v režimu pod dohledem, jsou v clusterech, stejně jako to znamená, nebo naleznou různé způsoby prohlížení složitých dat tak, aby se zjednodušilo.
 

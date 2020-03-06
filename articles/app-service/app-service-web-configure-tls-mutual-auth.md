@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44bf98ea0bd82bd261fa565fa068382ecc2a0ba7
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681136"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300995"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro Azure App Service
 
@@ -19,6 +19,8 @@ Přístup k aplikaci Azure App Service můžete omezit povolením různých typ�
 > [!NOTE]
 > Pokud k webu přistupujete přes HTTP a ne HTTPS, nebudete dostávat žádné klientské certifikáty. Takže pokud vaše aplikace vyžaduje klientské certifikáty, neměli byste žádosti do vaší aplikace povolovat přes HTTP.
 >
+
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 ## <a name="enable-client-certificates"></a>Povolit klientské certifikáty
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 510a2c3f04cc4c307acad18ee3012d9407155f9f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766448"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303524"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Rychlý Start: vytvoření vlastních výstrah
 
@@ -41,7 +41,7 @@ Tyto skupiny můžou představovat zařízení s konkrétním hardwarem, zaříz
 
 Skupiny zabezpečení jsou definovány pomocí vlastnosti značky zařízení s názvem **Security**. Ve výchozím nastavení má každé řešení IoT na IoT Hub jednu skupinu zabezpečení s názvem **Default**. Změňte hodnotu vlastnosti **securitycollection** , aby se změnila skupina zabezpečení zařízení.
  
-Například:
+Příklad:
 
 ```
 {
@@ -80,7 +80,6 @@ Skupiny zabezpečení použijte k seskupení zařízení do logických kategori�
 ## <a name="alerts-available-for-customization"></a>Výstrahy k dispozici pro přizpůsobení
 
 Azure Security Center pro IoT nabízí velký počet výstrah, které je možné přizpůsobit podle vašich konkrétních potřeb. V [tabulce přizpůsobitelné výstrahy](concept-customizable-security-alerts.md) můžete zobrazit Závažnost výstrahy, zdroj dat, popis a naše doporučené kroky k nápravě, pokud a kdy se jednotlivé výstrahy přijaly. 
-|
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -2,15 +2,15 @@
 title: Zprovoznění řešení Update Management, Change Tracking a inventáře z virtuálního počítače Azure
 description: Naučte se, jak připojit virtuální počítač Azure pomocí Update Management, Change Tracking a řešení inventáře, která jsou součástí Azure Automation.
 services: automation
-ms.date: 03/20/2019
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421826"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299518"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Zprovoznění řešení Update Management, Change Tracking a inventáře z virtuálního počítače Azure
 
@@ -22,13 +22,17 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>Povolit řešení
 
-Přejít na existující virtuální počítač. V části **operace**vyberte **Správa aktualizací**, **inventář**nebo **sledování změn**. Virtuální počítač může existovat v libovolné oblasti bez ohledu na umístění vašeho účtu Automation. Při připojování řešení z virtuálního počítače musíte mít oprávnění `Microsoft.OperationalInsights/workspaces/read`, abyste zjistili, jestli se virtuální počítač připojil k pracovnímu prostoru. Další informace o dalších oprávněních, která jsou obecně potřebná, najdete v tématu [oprávnění potřebná k připojování počítačů](automation-role-based-access-control.md#onboarding).
+Nejdřív na svém VIRTUÁLNÍm počítači povolte jedno nebo všechna tři řešení:
 
-Pokud chcete řešení povolit jenom pro virtuální počítač, ujistěte se, že je vybraná **možnost Povolit pro tento virtuální počítač** . Pokud chcete připojit více počítačů k řešení, vyberte **Povolit pro virtuální počítače v tomto předplatném**a potom vyberte **kliknutím vyberte počítače, které chcete povolit**. Informace o tom, jak připojit více počítačů najednou, najdete v článku připojení [řešení Update Management, Change Tracking a inventáře](automation-onboard-solutions-from-automation-account.md).
+1. V [Azure Portal](https://portal.azure.com)v levém podokně vyberte **virtuální počítače** nebo vyhledejte a vyberte **virtuální počítače** z **domovské** stránky.
+2. Vyberte virtuální počítač, pro který chcete povolit řešení.
+3. Na stránce virtuální počítač v části **operace**vyberte **Správa aktualizací**, **inventarizace**nebo **sledování změn**. Virtuální počítač může existovat v libovolné oblasti bez ohledu na umístění vašeho účtu Automation. Při připojování řešení z virtuálního počítače musíte mít oprávnění `Microsoft.OperationalInsights/workspaces/read`, abyste zjistili, jestli se virtuální počítač připojil k pracovnímu prostoru. Další informace o dalších požadovaných oprávněních najdete v tématu [oprávnění potřebná k připojování počítačů](automation-role-based-access-control.md#onboarding).
+
+Informace o tom, jak připojit více počítačů najednou, najdete v článku připojení [řešení Update Management, Change Tracking a inventáře](automation-onboard-solutions-from-automation-account.md).
 
 Vyberte pracovní prostor Azure Log Analytics a účet Automation a pak výběrem **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
-![Připojení Update Managementho řešení](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Připojení Update Managementho řešení](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
 Přejít na další řešení a pak vyberte **Povolit**. Rozevírací seznamy Log Analytics pracovní prostor a účet Automation jsou zakázané, protože tato řešení používají stejný pracovní prostor a účet Automation jako dříve povolené řešení.
 
@@ -41,9 +45,9 @@ Každé řešení používá v pracovním prostoru konfiguraci oboru pro cílen�
 
 Pokud vybraný pracovní prostor ještě nemá Update Management nebo Change Tracking řešení, vytvoří se následující konfigurace oboru:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig – sledování změn ve**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig – aktualizace**
 
 Pokud vybraný pracovní prostor už toto řešení obsahuje, řešení se znovu nenasazením a konfigurace oboru se nepřidá.
 
@@ -55,7 +59,7 @@ Když se počítač přidá do řešení Update Management, Change Tracking nebo
 
 Přejděte do svého pracovního prostoru. V části **Obecné**vyberte možnost **uložená hledání**. Dvě uložená hledání, která jsou používána těmito řešeními, jsou uvedena v následující tabulce:
 
-|Name (Název)     |Kategorie  |Alias  |
+|Název     |Kategorie  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
@@ -115,5 +119,7 @@ Odebrání virtuálního počítače z Update Management:
 Pokud se chcete dozvědět, jak je používat, přejděte k kurzům pro řešení:
 
 * [Kurz – Správa aktualizací pro virtuální počítač](automation-tutorial-update-management.md)
+
 * [Kurz – určení softwaru na virtuálním počítači](automation-tutorial-installed-software.md)
+
 * [Kurz – řešení potíží se změnami na virtuálním počítači](automation-tutorial-troubleshoot-changes.md)

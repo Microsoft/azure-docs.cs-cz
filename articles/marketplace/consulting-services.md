@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: evansma
-ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268240"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296147"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytují partnerům Microsoftu cíle připojení zákazníků k službám pro podporu a rozšiřování jejich používání v Azure a obchodních cílech. 
@@ -39,7 +39,7 @@ Nabídky konzultačních služeb, které jsou založené na Microsoft Dynamics 3
 Konzultační služby a nabídky spravovaných služeb, které jsou založené na Microsoft Azure, jsou způsobilé pro Azure Marketplace. Další informace najdete v článcích o [publikování konzultační služby Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) a [publikování nabídky spravované služby na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
 > [!Note]
-> Konzultační služby v Azure Marketplace by měly využít nabídky zaměřené na * * technickou cílovou skupinu se zaměřením na *technická řešení a služby Azure.* \* * Konzultační služby v AppSource by měly využít nabídky zaměřené na jejich odbornost při doručování kvalitních řešení pro Dynamics 365, Power BI nebo PowerApps, aby využívaly nabídky konzultačních služeb na AppSource.
+> Konzultační služby v Azure Marketplace by měly využít nabídky zaměřené na * * technickou cílovou skupinu se zaměřením na *technická řešení a služby Azure.* \* * Konzultační služby v AppSource by měly využít nabídky zaměřené na jejich odbornost při doručování kvalitních řešení pro Dynamics 365, Power BI nebo Power Apps, aby vypisovat nabídky konzultačních služeb na AppSource.
 > 
 > 
 > [!TIP]
@@ -67,7 +67,7 @@ Partneři musí mít v příslušné oblasti pro svou službu **stříbrné nebo
 | Dynamics 365 Customer Insights | Musí mít alespoň 1 úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) s nejméně 5 mírami a 5 segmenty. |
 | Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v [rámci kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) a musí se jednat o poskytovatele Cloud Solution Provider aspoň 3 obchodní centrální zákazníky. <br> <br> NEBO <br> <br> Musí mít [v AppSource publikovanou aplikaci Business Central](https://appsource.microsoft.com/) . |
 | Power BI | Musí být uvedený na [Power BI prezentující Partnerská](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
-|Power Apps | Musí mít nárok na pokročilé výhody v [programu pro partnerství PowerApps](https://aka.ms/PowerAppsPartner). |
+|Power Apps | Musí mít nárok na pokročilé výhody v [programu pro partnerství Power Apps](https://aka.ms/PowerAppsPartner). |
 
 Další zdroje informací a podpora:
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center pro příručku IoT pro konfiguraci s konfigurací Azure Sentinel (Preview) | Microsoft Docs
-description: Tato příručka vysvětluje, jak nakonfigurovat Azure Sentinel pro příjem dat z Azure Security Center pro řešení IoT.
+description: Vysvětluje, jak nakonfigurovat Azure Sentinel pro příjem dat z Azure Security Center pro řešení IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: f6e7eddd6ddbcec61c3d8d173891cbc9abaaf08f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 082b33332051fee9da2aebe63b0c41edb300afaf
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303541"
 ---
 > [!IMPORTANT]
 > Azure Security Center pro datový konektor IoT v Azure Sentinel je aktuálně ve verzi Public Preview.
@@ -48,10 +48,10 @@ Připojte výstrahy z Azure Security Center pro IoT a Streamujte je přímo do A
 ## <a name="connect-to-azure-security-center-for-iot"></a>Připojení k Azure Security Center pro IoT
 
 1. V Azure Sentinel vyberte **datové konektory** a potom klikněte na dlaždici **Azure Security Center pro IoT** .
-1. V pravém dolním podokně klikněte na možnost **otevřít stránku konektoru**. 
+1. V dolní části pravého podokna klikněte na tlačítko **otevřít stránku konektoru**. 
 1. Klikněte na **připojit**a vedle každého předplatného IoT Hub, jejichž výstrahy a výstrahy zařízení chcete streamovat do Azure Sentinel. 
-    - Pokud v tomto centru není povolená Azure Security Center pro IoT, zobrazí se vám zpráva s upozorněním na povolení. Kliknutím na odkaz **Enable (Povolit** ) spusťte službu. 
-1. Můžete rozhodnout, jestli chcete, aby upozornění z Azure Security Center pro IoT automaticky generovala incidenty v Azure Sentinel. V části **vytvořit incidenty**vyberte **Povolit** , pokud chcete výchozí pravidlo pro analýzu povolit automatické vytváření incidentů z výstrah vygenerovaných v připojené službě zabezpečení. Toto pravidlo se dá změnit nebo upravit v části **analýza** > **aktivní** pravidla.
+    - Pokud Azure Security Center pro IoT v tomto centru není povolená, zobrazí se zpráva s upozorněním na povolení. Kliknutím na odkaz **Povolit** spusťte službu a povolte ji. 
+1. Můžete rozhodnout, jestli chcete, aby upozornění z Azure Security Center pro IoT automaticky generovala incidenty v Azure Sentinel. V části **vytvořit incidenty**vyberte **Povolit** , pokud chcete, aby pravidlo automaticky vytvořilo incidenty z generovaných výstrah.  Toto pravidlo se dá změnit nebo upravit v části **analýza** > **aktivní** pravidla.
 
 > [!NOTE]
 >Po provedení změn připojení může aktualizace seznamu centra trvat 10 sekund nebo déle. 

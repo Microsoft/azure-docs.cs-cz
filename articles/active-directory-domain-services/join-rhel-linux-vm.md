@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 93cb200751c1c107ae844ffd274d83dd997293de
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: d12dd0c79f2e9c1d2b0cc17956a0bb8d8fa35865
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712595"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299138"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Připojení virtuálního počítače se systémem Red Hat Enterprise Linux k spravované doméně služby Azure AD Domain Services
 
@@ -34,7 +34,7 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
     * V případě potřeby se v prvním kurzu [vytvoří a nakonfiguruje instance Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+* Uživatelský účet, který je součástí spravované domény Azure služba AD DS.
 
 ## <a name="create-and-connect-to-a-rhel-linux-vm"></a>Vytvoření virtuálního počítače se systémem RHEL Linux a připojení k němu
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 V souboru *hosts* aktualizujte adresu *localhost* . V následujícím příkladu:
 
-* *aadds.contoso.com* je název domény DNS vaší spravované domény Azure služba AD DS.
+* *aaddscontoso.com* je název domény DNS vaší spravované domény Azure služba AD DS.
 * *RHEL* je název hostitele vašeho virtuálního počítače s RHEL, ke kterému se připojujete do spravované domény.
 
 Aktualizujte tyto názvy vlastními hodnotami:
 
 ```console
-127.0.0.1 rhel rhel.aadds.contoso.com
+127.0.0.1 rhel rhel.aaddscontoso.com
 ```
 
 Po dokončení uložte a zavřete soubor *hosts* pomocí příkazu `:wq` editoru.
@@ -96,30 +96,30 @@ Teď, když jsou na virtuálním počítači nainstalované požadované balíč
 
 ### <a name="rhel-7"></a>RHEL 7
 
-1. Pomocí příkazu `realm discover` můžete zjistit spravovanou doménu Azure služba AD DS. Následující příklad zjistí sféru *AADDS. CONTOSO.COM*. Zadejte vlastní název spravované domény Azure služba AD DS, a to velkými PÍSMENy:
+1. Pomocí příkazu `realm discover` můžete zjistit spravovanou doménu Azure služba AD DS. Následující příklad zjistí sféru *AADDSCONTOSO.com*. Zadejte vlastní název spravované domény Azure služba AD DS, a to velkými PÍSMENy:
 
     ```console
-    sudo realm discover AADDS.CONTOSO.COM
+    sudo realm discover AADDSCONTOSO.COM
     ```
 
    Pokud příkaz `realm discover` nemůže najít spravovanou doménu služba AD DS Azure, přečtěte si následující postup řešení potíží:
 
-    * Ujistěte se, že je doména dosažitelná z virtuálního počítače. Zkuste `ping aadds.contoso.com`, abyste viděli, jestli se vrátí kladná odpověď.
+    * Ujistěte se, že je doména dosažitelná z virtuálního počítače. Zkuste `ping aaddscontoso.com`, abyste viděli, jestli se vrátí kladná odpověď.
     * Ověřte, že je virtuální počítač nasazený do stejné nebo partnerské virtuální sítě, ve které je dostupná doména spravovaná v Azure služba AD DS.
     * Ověřte, že se nastavení serveru DNS pro virtuální síť aktualizovala tak, aby odkazovala na řadiče domény spravované domény Azure služba AD DS.
 
-1. Nyní můžete inicializovat protokol Kerberos pomocí příkazu `kinit`. Zadejte uživatele, který patří do skupiny *Správci řadičů domény AAD* . V případě potřeby [přidejte uživatelský účet do skupiny v Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Nyní můžete inicializovat protokol Kerberos pomocí příkazu `kinit`. Zadejte uživatele, který je součástí spravované domény Azure služba AD DS. V případě potřeby [přidejte uživatelský účet do skupiny v Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Znovu, název spravované domény Azure služba AD DS musí být zadaný velkými PÍSMENy. V následujícím příkladu se k inicializaci protokolu Kerberos používá účet s názvem `contosoadmin@aadds.contoso.com`. Zadejte vlastní uživatelský účet, který je členem skupiny *AAD DC Administrators* :
+    Znovu, název spravované domény Azure služba AD DS musí být zadaný velkými PÍSMENy. V následujícím příkladu se k inicializaci protokolu Kerberos používá účet s názvem `contosoadmin@aaddscontoso.com`. Zadejte svůj vlastní uživatelský účet, který je součástí spravované domény Azure služba AD DS:
 
     ```console
-    kinit contosoadmin@AADDS.CONTOSO.COM
+    kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Nakonec připojte počítač k spravované doméně Azure služba AD DS pomocí příkazu `realm join`. Použijte stejný uživatelský účet, který je členem skupiny *správců AAD řadiče domény* , kterou jste zadali v předchozím příkazu `kinit`, například `contosoadmin@AADDS.CONTOSO.COM`:
+1. Nakonec připojte počítač k spravované doméně Azure služba AD DS pomocí příkazu `realm join`. Použijte stejný uživatelský účet, který je součástí spravované domény Azure služba AD DS, kterou jste zadali v předchozím příkazu `kinit`, jako je například `contosoadmin@AADDSCONTOSO.COM`:
 
     ```console
-    sudo realm join --verbose AADDS.CONTOSO.COM -U 'contosoadmin@AADDS.CONTOSO.COM'
+    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
     ```
 
 Připojení virtuálního počítače k spravované doméně služby Azure služba AD DS vyžaduje chvíli. Následující příklad výstupu ukazuje, že se virtuální počítač úspěšně připojil ke spravované doméně Azure služba AD DS:
@@ -130,26 +130,26 @@ Successfully enrolled machine in realm
 
 ### <a name="rhel-6"></a>RHEL 6
 
-1. Pomocí příkazu `adcli info` můžete zjistit spravovanou doménu Azure služba AD DS. Následující příklad zjistí sféru *ADDDS. CONTOSO.COM*. Zadejte vlastní název spravované domény Azure služba AD DS, a to velkými PÍSMENy:
+1. Pomocí příkazu `adcli info` můžete zjistit spravovanou doménu Azure služba AD DS. Následující příklad zjistí sféru *ADDDSCONTOSO.com*. Zadejte vlastní název spravované domény Azure služba AD DS, a to velkými PÍSMENy:
 
     ```console
-    sudo adcli info aadds.contoso.com
+    sudo adcli info aaddscontoso.com
     ```
 
    Pokud příkaz `adcli info` nemůže najít spravovanou doménu služba AD DS Azure, přečtěte si následující postup řešení potíží:
 
-    * Ujistěte se, že je doména dosažitelná z virtuálního počítače. Zkuste `ping aadds.contoso.com`, abyste viděli, jestli se vrátí kladná odpověď.
+    * Ujistěte se, že je doména dosažitelná z virtuálního počítače. Zkuste `ping aaddscontoso.com`, abyste viděli, jestli se vrátí kladná odpověď.
     * Ověřte, že je virtuální počítač nasazený do stejné nebo partnerské virtuální sítě, ve které je dostupná doména spravovaná v Azure služba AD DS.
     * Ověřte, že se nastavení serveru DNS pro virtuální síť aktualizovala tak, aby odkazovala na řadiče domény spravované domény Azure služba AD DS.
 
-1. Nejprve se připojte k doméně pomocí příkazu `adcli join`, tento příkaz také vytvoří keytab k ověření počítače. Použijte uživatelský účet, který je členem skupiny *AAD DC Administrators* .
+1. Nejprve se připojte k doméně pomocí příkazu `adcli join`, tento příkaz také vytvoří keytab k ověření počítače. Použijte uživatelský účet, který je součástí spravované domény Azure služba AD DS.
 
     ```console
-    sudo adcli join aadds.contoso.com -U contosoadmin
+    sudo adcli join aaddscontoso.com -U contosoadmin
     ```
 
-1. Nyní nakonfigurujte `/ect/krb5.conf` a vytvořte `/etc/sssd/sssd.conf` soubory pro použití `aadds.contoso.com` doméně služby Active Directory.
-   Ujistěte se, že `AADDS.CONTOSO.COM` nahrazuje název vaší domény:
+1. Nyní nakonfigurujte `/ect/krb5.conf` a vytvořte `/etc/sssd/sssd.conf` soubory pro použití `aaddscontoso.com` doméně služby Active Directory.
+   Ujistěte se, že `AADDSCONTOSO.COM` nahrazuje název vaší domény:
 
     Otevřete `/ect/krb5.conf` soubor pomocí editoru:
 
@@ -166,7 +166,7 @@ Successfully enrolled machine in realm
      admin_server = FILE:/var/log/kadmind.log
     
     [libdefaults]
-     default_realm = AADDS.CONTOSO.COM
+     default_realm = AADDSCONTOSO.COM
      dns_lookup_realm = true
      dns_lookup_kdc = true
      ticket_lifetime = 24h
@@ -174,14 +174,14 @@ Successfully enrolled machine in realm
      forwardable = true
     
     [realms]
-     AADDS.CONTOSO.COM = {
-     kdc = AADDS.CONTOSO.COM
-     admin_server = AADDS.CONTOSO.COM
+     AADDSCONTOSO.COM = {
+     kdc = AADDSCONTOSO.COM
+     admin_server = AADDSCONTOSO.COM
      }
     
     [domain_realm]
-     .CONTOSO.COM = AADDS.CONTOSO.COM
-     CONTOSO.COM = AADDS.CONTOSO.COM
+     .AADDSCONTOSO.COM = AADDSCONTOSO.COM
+     AADDSCONTOSO.COM = AADDSCONTOSO.COM
     ```
     
    Vytvořte soubor `/etc/sssd/sssd.conf`:
@@ -196,9 +196,9 @@ Successfully enrolled machine in realm
     [sssd]
      services = nss, pam, ssh, autofs
      config_file_version = 2
-     domains = AADDS.CONTOSO.COM
+     domains = AADDSCONTOSO.COM
     
-    [domain/AADDS.CONTOSO.COM]
+    [domain/AADDSCONTOSO.COM]
     
      id_provider = ad
     ```
@@ -273,11 +273,11 @@ Pokud chcete členům skupiny *AAD DC Administrators* udělit na virtuálním po
     sudo visudo
     ```
 
-1. Přidejte následující položku na konec souboru */etc/sudoers* . Skupina *AAD DC Administrators* obsahuje v názvu prázdné znaky, takže v názvu skupiny zahrňte řídicí znak zpětného lomítka. Přidejte vlastní název domény, například *aadds.contoso.com*:
+1. Přidejte následující položku na konec souboru */etc/sudoers* . Skupina *AAD DC Administrators* obsahuje v názvu prázdné znaky, takže v názvu skupiny zahrňte řídicí znak zpětného lomítka. Přidejte vlastní název domény, například *aaddscontoso.com*:
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
-    %AAD\ DC\ Administrators@aadds.contoso.com ALL=(ALL) NOPASSWD:ALL
+    %AAD\ DC\ Administrators@aaddscontoso.com ALL=(ALL) NOPASSWD:ALL
     ```
 
     Po dokončení uložte a ukončete Editor pomocí příkazu `:wq` editoru.
@@ -286,10 +286,10 @@ Pokud chcete členům skupiny *AAD DC Administrators* udělit na virtuálním po
 
 Pokud chcete ověřit, jestli se virtuální počítač úspěšně připojil ke spravované doméně Azure služba AD DS, spusťte nové připojení SSH pomocí účtu uživatele domény. Potvrďte, že byl vytvořen domovský adresář a že je použito členství ve skupině z domény.
 
-1. Vytvořte nové připojení SSH z konzoly. Pomocí příkazu `ssh -l`, jako je třeba `contosoadmin@aadds.contoso.com`, zadejte účet domény, který patří do spravované domény, a pak zadejte adresu vašeho virtuálního počítače, třeba *RHEL.aadds.contoso.com*. Pokud používáte Azure Cloud Shell, použijte veřejnou IP adresu virtuálního počítače místo interního názvu DNS.
+1. Vytvořte nové připojení SSH z konzoly. Pomocí příkazu `ssh -l`, jako je třeba `contosoadmin@aaddscontoso.com`, zadejte účet domény, který patří do spravované domény, a pak zadejte adresu vašeho virtuálního počítače, třeba *RHEL.aaddscontoso.com*. Pokud používáte Azure Cloud Shell, použijte veřejnou IP adresu virtuálního počítače místo interního názvu DNS.
 
     ```console
-    ssh -l contosoadmin@AADDS.CONTOSO.com rhel.contoso.com
+    ssh -l contosoadmin@AADDSCONTOSO.com rhel.aaddscontoso.com
     ```
 
 1. Po úspěšném připojení k virtuálnímu počítači ověřte, zda byl domovský adresář správně inicializován:

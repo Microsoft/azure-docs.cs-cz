@@ -4,15 +4,15 @@ description: Přečtěte si o funkci systému SQL UPPER v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9809a138a5e28eb069d545d39cfda815c915bd78
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5129b4fffafb6918f655263cac2f5564635acf36
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728884"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303966"
 ---
 # <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
  Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena.  
@@ -47,6 +47,10 @@ SELECT UPPER("Abc") AS upper
 ```json
 [{"upper": "ABC"}]  
 ```
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

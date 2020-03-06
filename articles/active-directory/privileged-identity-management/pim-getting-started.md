@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 733743f4680f3197a1754d87b4672641b2321907
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756312"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399334"
 ---
 # <a name="start-using-privileged-identity-management"></a>Zahájení využití technologie Privileged Identity Management
 
@@ -62,7 +62,7 @@ Pokud chcete ve svém adresáři začít používat Privileged Identity Manageme
 
     ![Vyberte okno účtu a ověřte svoji identitu.](./media/pim-getting-started/pick-account.png)
 
-1. Pokud se k ověření požaduje více informací, provedete vás procesem. Další informace najdete v tématu [získání pomoc s dvoustupňové ověřováním](https://go.microsoft.com/fwlink/p/?LinkId=708614).
+1. Pokud se k ověření požaduje více informací, provedete vás procesem. Další informace najdete v tématu [získání pomoc s dvoustupňové ověřováním](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
 
     ![Pokud vaše organizace potřebuje další informace, požádejte o další informace požadované okno.](./media/pim-getting-started/more-information-required.png)
 
@@ -115,7 +115,7 @@ Jakmile Privileged Identity Management nastavíte, můžete začít s úlohami s
 
 Aby bylo snazší otevřít Privileged Identity Management, měli byste do řídicího panelu Azure Portal přidat dlaždici Privileged Identity Management.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Klikněte na **všechny služby** a vyhledejte službu **Azure AD Privileged Identity Management** .
 

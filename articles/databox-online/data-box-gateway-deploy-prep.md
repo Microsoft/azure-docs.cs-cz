@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438646"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303201"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Kurz: Příprava na nasazení Azure Data Box Gateway
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stažení image virtuálního zařízení
 > * Získání aktivačního klíče
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 Pokud chcete nasadit službu Data Box Gateway, postupujte podle následujících kurzů v uvedeném pořadí.
 
@@ -42,7 +42,7 @@ Pokud chcete nasadit službu Data Box Gateway, postupujte podle následujících
 
 Teď můžete začít nastavovat Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady najdete požadavky na konfiguraci prostředku Data Box Gateway, zařízení Data Box Gateway a sítě datacentra.
 
@@ -94,7 +94,7 @@ Chcete-li vytvořit prostředek Data Box Gateway, proveďte následující kroky
     - Nebo Azure Government portál na této adrese URL: [https://portal.azure.us](https://portal.azure.us). Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte **data box Edge/data box Gateway**. Vyberte Data Box Edge/Data Box Gateway. Vyberte **Vytvořit**.
-3. Vyberte předplatné, které chcete použít pro Data Box Gateway zařízení. Vyberte oblast, do které chcete nasadit prostředek Data Box Gateway. V této verzi jsou k dispozici Východní USA, Jižní Východní Asie a Západní Evropa. Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V možnosti **data box Gateway** vyberte **vytvořit**.
+3. Vyberte předplatné, které chcete použít pro Data Box Gateway zařízení. Vyberte oblast, do které chcete nasadit prostředek Data Box Gateway. Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V možnosti **data box Gateway** vyberte **vytvořit**.
 
     ![Vyhledání služby Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
@@ -109,8 +109,8 @@ Chcete-li vytvořit prostředek Data Box Gateway, proveďte následující kroky
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Name (Název)   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |   
-    |Region (Oblast)     |V této verzi jsou k dispozici Východní USA, Jižní Východní Asie a Západní Evropa k nasazení prostředku. Pro Azure Government jsou k dispozici všechny oblasti státní správy uvedené v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/) . <br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
+    |Název   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |   
+    |Oblast     |Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pro Azure Government jsou k dispozici všechny oblasti státní správy uvedené v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/) . <br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
     
     ![Vytvoření prostředku Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

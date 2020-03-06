@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 93695b407762766b0bdd40c9d99a0bf4965f59a8
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251846"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328775"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ Pro úlohy předpovědi používá automatizované strojové učení kroky před
 
 Objekt [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) definuje nastavení a data potřebná pro úlohu automatizovaného strojového učení. Podobně jako u regresního problému definujete standardní parametry školení, jako je typ úkolu, počet iterací, školicích dat a počet křížových ověření. Pro úlohy prognózy existují další parametry, které musí být nastaveny, které mají vliv na experiment. Následující tabulka vysvětluje jednotlivé parametry a jejich použití.
 
-| Param | Popis | Požaduje se |
+| Název&nbsp;parametru | Popis | Požaduje se |
 |-------|-------|-------|
 |`time_column_name`|Slouží k zadání sloupce data a času ve vstupních datech použitých k vytvoření časové řady a odvození frekvence.|✓|
 |`grain_column_names`|Názvy definující jednotlivé skupiny řad ve vstupních datech. Pokud není sada zrn definována, předpokládá se, že datová sada bude jedna časová řada.||

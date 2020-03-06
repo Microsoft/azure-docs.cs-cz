@@ -7,24 +7,24 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278502"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399226"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>ZASTARALÉ Nasazení clusteru DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý start podrobně popisuje základní kroky nezbytné k nasazení clusteru DC/OS a spuštění základní úlohy.
+DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý Start podrobně popisuje základní kroky potřebné k nasazení clusteru DC/OS a spuštění základní úlohy.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure. 
+## <a name="log-in-to-azure"></a>Přihlášení k Azure 
 
 Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login) a postupujte podle pokynů na obrazovce.
 
@@ -128,19 +128,19 @@ Výchozím plánovacím mechanismem pro cluster DC/OS je Marathon. Marathon slou
 
 Spuštěním následujícího příkazu v aplikaci naplánujte spouštění v clusteru DC/OS.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Pokud chcete zobrazit stav nasazení aplikace, spusťte následující příkaz.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Až se hodnota ve sloupci **WAITING** (ČEKÁNÍ) změní z *True* na *False*, nasazení aplikace je dokončené.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili cluster DC/OS a spustili v něm jednoduchý kontejner Dockeru. Další informace o službě Azure Container Service najdete v kurzech služby ACS.
+V tomto rychlém startu jste nasadili cluster DC/OS a spustili v clusteru jednoduchý kontejner Docker. Další informace o službě Azure Container Service najdete v kurzech služby ACS.
 
 > [!div class="nextstepaction"]
 > [Správa clusteru ACS DC/OS](container-service-dcos-manage-tutorial.md)

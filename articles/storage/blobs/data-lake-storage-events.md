@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71326995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303303"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Kurz: implementace vzoru Data Lake Capture pro aktualizaci rozdílové tabulky datacihly
 
@@ -42,7 +42,7 @@ Toto řešení sestavíme v obráceném pořadí, počínaje Azure Databricks pr
 
   K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
 
-  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
 
   > [!IMPORTANT]
   > Ujistěte se, že roli přiřadíte v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
@@ -127,13 +127,13 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 
     ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-events/new-databricks-notebook.png "Vytvoření poznámkového bloku v datacihlech")
 
-    Vyberte **Create** (Vytvořit).
+    Vyberte **Vytvořit**.
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Vytvoření a naplnění tabulky Delta datacihly
 
 1. V poznámkovém bloku, který jste vytvořili, zkopírujte a vložte následující blok kódu do první buňky, ale tento kód ještě nespustíte.  
 
-   Nahraďte hodnoty `appId`, `password` `tenant` zástupné hodnoty v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu.
+   Nahraďte hodnoty `appId`, `password``tenant` zástupné hodnoty v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu.
 
     ```Python
     dbutils.widgets.text('source_file', "", "Source File")
@@ -152,7 +152,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
     Tento kód vytvoří pomůcku s názvem **source_file**. Později vytvoříte funkci Azure, která tento kód volá a předá do této pomůcky cestu k souboru.  Tento kód také ověřuje váš instanční objekt s účtem úložiště a vytváří některé proměnné, které budete používat v jiných buňkách.
 
     > [!NOTE]
-    > V nastavení produkčního prostředí zvažte uložení ověřovacího klíče v Azure Databricks. Pak místo ověřovacího klíče přidejte do bloku kódu vyhledávací klíč. <br><br>Například namísto použití tohoto řádku kódu: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` použijte následující řádek kódu: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Po dokončení tohoto kurzu si přečtěte článek [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks a podívejte se na příklady tohoto přístupu.
+    > V nastavení produkčního prostředí zvažte uložení ověřovacího klíče v Azure Databricks. Pak místo ověřovacího klíče přidejte do bloku kódu vyhledávací klíč. <br><br>Například namísto použití tohoto řádku kódu: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`použijte následující řádek kódu: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Po dokončení tohoto kurzu si přečtěte článek [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks a podívejte se na příklady tohoto přístupu.
 
 2. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 
@@ -336,7 +336,7 @@ Vytvořte funkci Azure, která úlohu spustí.
     }
     ```
 
-   Tento kód analyzuje informace o aktivované události úložiště a následně vytvoří zprávu požadavku s adresou URL souboru, který událost aktivoval. V rámci zprávy funkce předá widgetu **source_file** , kterou jste vytvořili dříve. kód funkce odešle zprávu do úlohy datacihly a použije token, který jste dříve získali jako ověřování.
+   Tento kód analyzuje informace o aktivované události úložiště a následně vytvoří zprávu požadavku s adresou URL souboru, který událost aktivoval. V rámci zprávy funkce předává hodnotu widgetu **source_file** , kterou jste vytvořili dříve. kód funkce odešle zprávu do úlohy datacihly a použije token, který jste dříve získali jako ověřování.
 
 ## <a name="create-an-event-grid-subscription"></a>Vytvoření odběru Event Gridu
 

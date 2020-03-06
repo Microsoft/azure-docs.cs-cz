@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
-ms.openlocfilehash: 4785356963e7df1d7b175ac21ceebc921f851ffb
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ab0d2b8d95b4cb5996dd93fa0bb24085c9de26d5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913646"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331532"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>Vylepšení syntézy pomocí vytváření zvukového obsahu
 
@@ -43,7 +43,7 @@ Tento diagram znázorňuje kroky potřebné k vyladění a exportu přizpůsoben
 
 Pomocí těchto kroků vytvořte prostředek pro rozpoznávání řeči a připojte ho ke službě Speech Studio.
 
-1. Podle těchto pokynů si můžete [zaregistrovat účet Azure](get-started.md#new-resource) a [vytvořit prostředek pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Ujistěte se, že vaše cenová úroveň je nastavená na **S0**. Pokud používáte některý z hlasů neuronové, ujistěte se, že jste vytvořili prostředek v [podporované oblasti](regions.md#standard-and-neural-voices).
+1. Podle těchto pokynů si můžete [zaregistrovat účet Azure](get-started.md#new-resource) a [vytvořit prostředek pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource). Ujistěte se, že vaše cenová úroveň je nastavená na **S0**. Pokud používáte některý z hlasů neuronové, ujistěte se, že jste vytvořili prostředek v [podporované oblasti](regions.md#standard-and-neural-voices).
 2. Přihlaste se k [vytváření zvukového obsahu](https://aka.ms/audiocontentcreation).
 3. Vyberte existující projekt nebo klikněte na **vytvořit nový**.
 4. Předplatné můžete kdykoli upravit pomocí možnosti **Nastavení** , která se nachází v horním navigačním panelu.

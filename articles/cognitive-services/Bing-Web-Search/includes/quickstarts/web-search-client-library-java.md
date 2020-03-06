@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: f1dc7c5b6e86df3b7b2ecc308e204e4ecb959735
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 38557b31521943147227f7e54617e4730203a5f3
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652146"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402605"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
@@ -27,7 +27,7 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
 * [Apache Maven](https://maven.apache.org/download.cgi) nebo jiný oblíbený nástroj na automatické sestavení
 * Klíč předplatného
 
-[!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Vytvoření projektu a nastavení souboru POM
 

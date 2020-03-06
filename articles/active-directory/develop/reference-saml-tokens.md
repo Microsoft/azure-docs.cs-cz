@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2eb279d8f5871a0c6738ecc89fb7d01730187564
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e4fcb7835c6315e8a67103883e1635f0ddab1098
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160300"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299750"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Reference k tokenu SAML v Azure AD
 
@@ -156,7 +156,7 @@ Toto je ukázka typického tokenu SAML.
 
 ## <a name="related-content"></a>Související obsah
 
-* Další informace o správě zásad životnosti tokenů prostřednictvím Graph API Azure AD najdete v tématu [operace zásad](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) Azure AD graphu a [entitu zásady](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity).
+* Další informace o správě zásad životností tokenů pomocí rozhraní Microsoft Graph API najdete v tématu [prostředek zásad](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta).
 * Další informace a ukázky správy zásad pomocí rutin PowerShellu, včetně ukázek, najdete v tématu [konfigurovatelné životnosti tokenů ve službě Azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). 
 * Přidejte [vlastní a volitelné deklarace](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) do tokenů pro vaši aplikaci.
 * Použijte [jednotné přihlašování (SSO) s SAML](single-sign-on-saml-protocol.md).

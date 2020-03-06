@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2bca7034780c4bfbbadd97558bf4b4891c7d6ec5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3fb18b6afb2fc32ba8cc07c46a9a4f5a026d07e2
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251105"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402293"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -106,7 +106,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Londýn** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | Velká Británie – jih | 10G, 100G | V & T NetBond, British Telecom, Colt, Equinix, euNetworks, spolucloudu, Internet Solutions – Cloud Connect, Interxion, JISC, Level 3 Communications, Megaport, MTN, NTT Communications, pomeranče, PCCW s globálním omezením, Tata Communications, House-KDDI, Telenor, Telia dopravce, Verizon, Vodafone, Zayo |
 | **London2** | [Pokojová USA – 2](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | Velká Británie – jih | 10G, 100G | CenturyLink Cloud Connect, Colt, IX dosáhnou, Equinix, Megaport, House-KDDI |
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | neuvedeno | neuvedeno | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Transtelco, Zayo |
-| **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Francie – jih | neuvedeno | DE-CIX, GEANT, Interxion, Jaguar síť |
+| **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Francie – jih | neuvedeno | DE-CIX, GEANT, Interxion, Jaguar Network, Ooredoo Cloud Connect |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Austrálie – jihovýchod | 10G, 100G | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | neuvedeno | 10G | C3ntro, Equinix, Megaport, Neutrona sítě |
 | **Milán** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | neuvedeno | 10G | |

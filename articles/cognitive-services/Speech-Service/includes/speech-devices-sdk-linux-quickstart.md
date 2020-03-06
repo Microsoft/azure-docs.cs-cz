@@ -5,26 +5,26 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 87aa9f8201b924c1719f3ac805f79fb82631ecfd
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 81c77b2f6ae0c4f8497716c168a937657ceb57dd
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563203"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384054"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Linux vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) . V současné době je podporována pouze služba [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) .
 
-Aplikace je sestavena pomocí balíčku sady Speech SDK a Java IDE v 64 (v4) na-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+Aplikace je sestavená pomocí balíčku sady Speech SDK a Java IDE na 64 (v4) na. Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
 Tato příručka vyžaduje účet [Azure Cognitive Services](../get-started.md) s prostředkem služby Speech. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 Zdrojový kód [ukázkové aplikace](https://aka.ms/sdsdk-download-JRE) je součástí sady Speech Devices SDK. Je také [k dispozici na GitHubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
-* Operační systém: 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)
+* Operační systém: 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Java IDE zatmění](https://www.eclipse.org/downloads/)
 * Jenom [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
@@ -48,6 +48,16 @@ Před spuštěním zatmění se ujistěte, že jsou tyto závislosti nainstalova
   sudo apt-get update
   sudo apt-get install libssl1.0.2 libasound2
   ```
+
+V RHEL/CentOS 8:
+
+  ```sh
+  sudo yum update
+  sudo yum install alsa-lib openssl
+  ```
+
+> [!NOTE]
+> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 Přepis konverzace je v současné době dostupný pouze pro "en-US" a "zh-CN" v oblastech "centralus" a "eastasia". Pokud chcete použít přepis konverzace, musíte mít v jedné z těchto oblastí klíč řeči.
 
@@ -89,7 +99,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.9.0</version>
+             <version>1.10.0</version>
         </dependency>
     </dependencies>
    ```

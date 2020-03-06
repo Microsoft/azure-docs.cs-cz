@@ -10,27 +10,27 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e4174ba19d518b4b1dfef9921fe39b0c76f6d1e3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 8d1349c096b6a6c9bffef38a8b8b3c7ea6bbd432
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169276"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301807"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje aC#
 
 V tomto rychlém startu použijete Azure Face REST API s C# k detekci lidských plošek v obraze.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Klíč předplatného pro vytvoření obličeje. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč.
+- Klíč předplatného pro vytvoření obličeje. K získání bezplatné zkušební verze předplatného můžete [použít Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč.
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. V aplikaci Visual Studio vytvořte nový projekt **konzolové aplikace (.NET Framework)** a pojmenujte ho **FaceDetection**. 
+1. V aplikaci Visual Studio vytvořte nový projekt **konzolové aplikace (.NET Framework)** a pojmenujte ho **FaceDetection**.
 1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
 
 ## <a name="add-face-detection-code"></a>Přidat kód pro detekci obličeje
@@ -39,11 +39,12 @@ Otevřete soubor *program.cs* nového projektu. Zde přidáte kód potřebný k 
 
 ### <a name="include-namespaces"></a>Zahrnutí oborů názvů
 
-Na začátek souboru *Program.cs* přidejte následující příkazy `using`.
+Na začátek souboru `using`Program.cs*přidejte následující příkazy*.
 
 ```csharp
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -63,7 +64,7 @@ namespace DetectFace
 
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
-        
+
         // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
             "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
@@ -76,6 +77,10 @@ Do metody **Main** třídy **program** přidejte následující kód. Tento kód
 ```csharp
         static void Main(string[] args)
         {
+
+            // Explicitly set TLS 1.2.
+            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
+                SecurityProtocolType.Tls12;
 
             // Get the path and filename to process from the user.
             Console.WriteLine("Detect faces:");
@@ -244,7 +249,7 @@ Do třídy **Program** přidejte následující metodu. Tato metoda formátuje v
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-Úspěšná odpověď zobrazí tvářená data ve formátu JSON, který bude snadno čitelný. Například:
+Úspěšná odpověď zobrazí tvářená data ve formátu JSON, který bude snadno čitelný. Příklad:
 
 ```json
 [

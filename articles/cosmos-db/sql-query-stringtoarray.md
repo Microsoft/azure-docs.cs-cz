@@ -4,15 +4,15 @@ description: Přečtěte si o StringToArray funkcí SQL systému v Azure Cosmos 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2d1f90da50950ac6ff4f87ffe96ebad9f3d811cc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349278"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302912"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Vrátí výraz přeložený do pole. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
@@ -37,7 +37,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToArray` se chová v různých typech. 
+  Následující příklad ukazuje, jak se `StringToArray` chová napříč různými typy. 
   
  Níže jsou uvedeny příklady s platným vstupem.
 
@@ -50,7 +50,7 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
-Tady je sada výsledků.
+Zde je sada výsledků.
 
 ```json
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
@@ -59,14 +59,14 @@ Tady je sada výsledků.
 Následuje příklad neplatného vstupu. 
    
  Jednoduché uvozovky v rámci pole nejsou platné JSON.
-I když jsou v rámci dotazu platné, nebudou analyzovány na platná pole. Řetězce v řetězci pole musí být buď uvozeny řídicím znakem "[\\" \\ "]", nebo okolní uvozovka musí být jeden znak "[" "]".
+I když jsou v rámci dotazu platné, nebudou analyzovány na platná pole. Řetězce v řetězci pole musí být buď uvozeny řídicím znakem "[\\"\\"]", nebo okolní uvozovka musí být jeden znak "[" "]".
 
 ```sql
 SELECT
     StringToArray("['5','6','7']")
 ```
 
-Tady je sada výsledků.
+Zde je sada výsledků.
 
 ```json
 [{}]
@@ -85,11 +85,15 @@ SELECT
     StringToArray(undefined)
 ```
 
-Tady je sada výsledků.
+Zde je sada výsledků.
 
 ```json
 [{}]
 ```
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

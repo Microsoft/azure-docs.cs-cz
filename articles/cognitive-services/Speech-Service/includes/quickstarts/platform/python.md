@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 218d0dca43d126c1318c273603a4980697c465af
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9c398c755db78583b93cbba5bdef6c3cf01eb9e5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752011"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383904"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro Python.
 
@@ -26,9 +26,9 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
 - Balíček python Speech SDK je k dispozici pro tyto operační systémy:
   - Windows: x64 a x86
   - Mac: macOS X verze 10,12 nebo novější
-  - Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 na platformě x64
+  - Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8 na platformě x64
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Podporované platformy Linux budou vyžadovat, aby byly nainstalovány určité knihovny (`libssl` pro podporu technologie Secure Sockets Layer a `libasound2` pro podporu zvuku). Pro příkazy potřebné k instalaci správných verzí těchto knihoven použijte níže uvedenou distribuci.
 
@@ -46,12 +46,22 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
+  - Na RHEL/CentOS 8 spusťte následující příkazy, abyste nainstalovali požadované balíčky:
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib openssl python3
+        ```
+
+> [!NOTE]
+> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+
 - V systému Windows budete potřebovat [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu. Mějte na paměti, že pokud tuto instalaci nainstalujete poprvé, může před pokračováním v této příručce vyžadovat restartování systému Windows.
-- A nakonec budete potřebovat [Python 3,5, 3,6 nebo 3,7](https://www.python.org/downloads/). Chcete-li ověřit instalaci, otevřete příkazový řádek a zadejte příkaz `python --version` a podívejte se na výsledek. Pokud je správně nainstalovaná, dostanete odpověď "Python 3.5.1" nebo podobnou.
+- A nakonec budete potřebovat [Python 3,5 až 3,8](https://www.python.org/downloads/). Chcete-li ověřit instalaci, otevřete příkazový řádek a zadejte příkaz `python --version` a podívejte se na výsledek. Pokud je správně nainstalovaná, dostanete odpověď "Python 3.5.1" nebo podobnou.
 
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Instalace sady Speech SDK pomocí Visual Studio Code
 
-1. Stáhněte a nainstalujte nejnovější podporovanou verzi [Pythonu](https://www.python.org/downloads/) pro vaši platformu, 3,5 nebo novější.
+1. Stáhněte a nainstalujte nejnovější podporovanou verzi [Pythonu](https://www.python.org/downloads/) pro vaši platformu, 3,5 až 3,8.
    - Uživatelé systému Windows při instalaci nezapomeňte v procesu instalace vybrat přidat Python do vaší cesty.
 1. Stáhněte a nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. Z nabídky vyberte **soubor** > **Předvolby** > **rozšíření** . Vyhledejte **Python** a klikněte na **nainstalovat**.

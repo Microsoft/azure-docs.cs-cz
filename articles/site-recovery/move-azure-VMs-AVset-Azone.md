@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5728ce7125695b191de4f91d5bd9003384f428a7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693180"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298301"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesun virtuálních počítačů Azure do Zóny dostupnosti
-Zóny dostupnosti v Azure vám pomůžou chránit vaše aplikace a data při selhání datacentra. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti pomáhá chránit aplikace a data při selhání datacentra. V Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99% po dobu provozu virtuálních počítačů. Zóny dostupnosti jsou podporované ve vybraných oblastech, jak je uvedeno v [zóny dostupnosti v Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region).
+Zóny dostupnosti v Azure vám pomůžou chránit vaše aplikace a data při selhání datacentra. Každá zóna dostupnosti se skládá z jednoho nebo více datových center vybavených nezávislými napájením, chlazením a sítěmi. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti pomáhá chránit aplikace a data při selhání datacentra. V Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99% po dobu provozu virtuálních počítačů. Zóny dostupnosti jsou podporované ve vybraných oblastech, jak je uvedeno v [zóny dostupnosti v Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region).
 
 V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instance* do konkrétní oblasti a chcete zlepšit dostupnost tím, že tyto virtuální počítače přesunete do zóny dostupnosti, můžete to udělat pomocí Azure Site Recovery. Tuto akci je dále možné rozdělit do kategorií:
 
@@ -70,7 +70,7 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
     - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer)
     - [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md)
     
-   Další síťové součásti najdete v [dokumentaci](https://docs.microsoft.com/azure/#pivot=products&panel=network)k síti.
+   Další síťové součásti najdete v [dokumentaci](https://docs.microsoft.com/azure/?pivot=products&panel=network)k síti.
 
     > [!IMPORTANT]
     > Ujistěte se, že v cíli používáte redundantní Nástroj pro vyrovnávání zatížení v zóně. Další informace najdete na [Standard Load Balancer a zóny dostupnosti](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
@@ -115,7 +115,7 @@ Po dokončení úlohy replikace můžete zkontrolovat stav replikace, upravit na
 3. V části **testovací převzetí služeb při selhání**vyberte bod obnovení, který chcete použít pro převzetí služeb při selhání:
 
    - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Časové razítko je vidět. U této možnosti nedochází k prodlevě při zpracování dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-   - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost vrátí všechny virtuální počítače k nejnovějšímu konzistentnímu bodu obnovení vzhledem k aplikacím. Časové razítko je vidět.
+   - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost vrátí všechny virtuální počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím. Časové razítko je vidět.
    - **Vlastní:** Vyberete si libovolný bod obnovení.
 
 3. Vyberte testovací cílovou virtuální síť Azure, ke které chcete přesunout virtuální počítače Azure, abyste mohli otestovat konfiguraci. 
@@ -124,7 +124,7 @@ Po dokončení úlohy replikace můžete zkontrolovat stav replikace, upravit na
     > Doporučujeme použít pro selhání testu samostatnou síť virtuálních počítačů Azure, nikoli produkční síť v cílové oblasti, do které chcete virtuální počítače přesunout.
 
 4. Chcete-li zahájit testování přesunu, vyberte **OK**. Pokud chcete sledovat průběh, vyberte virtuální počítač a otevřete jeho vlastnosti. Nebo můžete vybrat úlohu **testovací převzetí služeb při selhání** v názvu trezoru > **nastavení** > **úlohy** > **úlohy Site Recovery**.
-5. Po dokončení převzetí služeb při selhání se na portálu Azure Portal v části **Virtuální počítače** objeví replika virtuálního počítače Azure. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.
+5. Po dokončení převzetí služeb při selhání se replika virtuálního počítače Azure zobrazí na webu Azure Portal v části **Virtuální počítače**. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.
 6. Pokud chcete virtuální počítač vytvořený jako součást testování přesunu odstranit, vyberte v replikované položce možnost **vyčistit testovací převzetí služeb při selhání** . V části **poznámky**si zaznamenejte a uložte všechny poznámky spojené s testem.
 
 ## <a name="move-to-the-target-region-and-confirm"></a>Přejděte do cílové oblasti a potvrďte

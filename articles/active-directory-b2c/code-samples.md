@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: fc37e594984aa4c13fc9e770129a0423ba512737
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ed593cb3f53878ceb1d4913a9244369ff4600371
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189680"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397568"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
 
@@ -46,5 +46,4 @@ Následující tabulka obsahuje odkazy na ukázky pro aplikace, včetně ukázek
 
 | Ukázka | Popis |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Jednostránková aplikace (SPA) volající webové rozhraní API. Ověřování provádí Azure AD B2C s využitím MSAL.js. |
-| [javascript-hellojs-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp) | Jednostránková aplikace s implementovaným back-endem webového rozhraní API ASP.NET, která registruje a přihlašuje uživatele pomocí Azure AD B2C a volá webové rozhraní API s použitím přístupových tokenů OAuth 2.0. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Jednostránková aplikace (SPA) volající webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL. js. |

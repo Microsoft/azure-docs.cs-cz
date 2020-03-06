@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697332"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300005"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Postupy: Konfigurace podmínek služby a prohlášení o zásadách ochrany osobních údajů pro aplikaci
 
@@ -53,12 +53,12 @@ Po přípravě podmínek služby a prohlášení o zásadách ochrany osobních 
 
 * [Prostřednictvím Azure Portal](#azure-portal)
 * [Použití JSON objektu aplikace](#app-object-json)
-* [Použití MSGraph beta REST API](#msgraph-beta-rest-api)
+* [Používání rozhraní Microsoft Graph API](#msgraph-rest-api)
 
 ### <a name="azure-portal"></a>Použití Azure Portal
 Postupujte podle následujících kroků v Azure Portal.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte do části **Registrace aplikací** a vyberte svou aplikaci.
 3. Otevřete podokno **branding** .
 4. Vyplňte pole **Adresa URL podmínek služby** a **Adresa URL prohlášení o zásadách ochrany osobních údajů** .
@@ -77,12 +77,12 @@ Pokud upřednostňujete úpravu JSON objektu aplikace přímo, můžete použít
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>Použití MSGraph beta REST API
+### <a name="msgraph-rest-api"></a>Používání rozhraní Microsoft Graph API
 
-Pokud chcete programově aktualizovat všechny vaše aplikace, můžete pomocí REST API beta verze MSGraph aktualizovat všechny své aplikace tak, aby zahrnovaly odkazy na dokumenty k podmínkám služby a prohlášení o zásadách ochrany osobních údajů.
+Pokud chcete programově aktualizovat všechny vaše aplikace, můžete pomocí rozhraní Microsoft Graph API aktualizovat všechny své aplikace tak, aby obsahovaly odkazy na dokumenty o licenčních službách a prohlášení o zásadách ochrany osobních údajů.
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * Dejte pozor, abyste nepřepsali všechny dříve existující hodnoty, které jste přiřadili k některým z těchto polí: `supportUrl`, `marketingUrl`a `logoUrl`
-> * REST API beta verze MSGraph budou fungovat, jenom když se přihlásíte pomocí účtu Azure AD. Osobní účty Microsoft se nepodporují.
+> * Rozhraní API pro Microsoft Graph funguje, jenom když se přihlašujete pomocí účtu Azure AD. Osobní účty Microsoft se nepodporují.

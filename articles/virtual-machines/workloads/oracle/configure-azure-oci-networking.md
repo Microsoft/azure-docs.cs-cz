@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802214"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302045"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
 
@@ -35,7 +35,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
 
 * K navázání připojení mezi Azure a OCI musíte mít aktivní předplatné Azure a aktivní nájem architektury OCI.
 
-* Možnost připojení je možná jenom v případě, že umístění partnerského vztahu Azure ExpressRoute je v blízkosti nebo ve stejném umístění partnerského vztahu jako rozhraní OCI FastConnect. Viz [omezení verze Preview](oracle-oci-overview.md#preview-limitations).
+* Možnost připojení je možná jenom v případě, že umístění partnerského vztahu Azure ExpressRoute je v blízkosti nebo ve stejném umístění partnerského vztahu jako rozhraní OCI FastConnect. Podívejte se na téma [dostupnost oblasti](oracle-oci-overview.md#region-availability).
 
 * Pro tuto funkci Preview musí být povolené vaše předplatné Azure.
 
@@ -63,7 +63,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
     * Do pole **klíč služby poskytovatele**vložte klíč služby ExpressRoute.
     * Použijte první/30 privátního prostoru IP adres Carved v předchozím kroku pro **primární IP adresu protokolu BGP** a druhý/30 privátní adresní prostor IP adres pro **sekundární IP adresu protokolu BGP** .
         * Přiřaďte první IP adresu dvou rozsahů pro IP adresu protokolu BGP Oracle (primární a sekundární) a druhou adresu IP adrese protokolu BGP zákazníka (z perspektivy FastConnect). První dostupná IP adresa je druhá IP adresa v adresním prostoru/30 (první IP adresa je vyhrazená Microsoftem).
-    * Klikněte na **Vytvořit**.
+    * Klikněte na možnost **Vytvořit**.
 1. Dokončete propojení FastConnect s virtuální cloudovou sítí v rámci vašeho tenanta Oracle přes bránu dynamického směrování pomocí směrovací tabulky.
 1. Přejděte do Azure a ujistěte se, že se **stav poskytovatele** pro váš okruh ExpressRoute změnil na **zřízený** a že se zřídil partnerský vztah typu **Private Azure** . Tento postup je nezbytný pro následující kroky.
 
@@ -85,7 +85,7 @@ Společnost Microsoft vytvořila skripty Terraformu, které umožňují automati
 
 V tomto [úložišti GitHubu](https://aka.ms/azureociinterconnecttf)najdete skripty terraformu a související dokumentace k nasazení připojení mezi lokalitami.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Instalace agentů v cloudech vám umožní využít Azure [Network Performance Monitor (npm)](../../../expressroute/how-to-npm.md) a monitorovat výkon komplexní sítě. NPM pomáhá snadno identifikovat problémy se sítí a pomáhá je eliminovat.
 

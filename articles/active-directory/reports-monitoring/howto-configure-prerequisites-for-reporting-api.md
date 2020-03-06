@@ -17,16 +17,16 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273802"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399298"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory
 
-[Rozhraní API pro generování sestav v Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z programovacích jazyků a nástrojů.
+[Rozhraní API pro generování sestav v Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z programovacích jazyků a nástrojů.
 
 Rozhraní API pro vytváření sestav používá protokol [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) k autorizaci přístupu k webovým rozhraním API.
 
@@ -191,7 +191,6 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro vytv
 
 V této části jsou uvedené běžné chybové zprávy, se kterými se můžete setkat při přístupu k sestavám aktivit pomocí rozhraní Microsoft Graph API a postupu pro jejich řešení.
 
-
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Chyba: Nepodařilo se získat role uživatele z Microsoft Graph
 
  Přihlaste se k účtu pomocí přihlašovacích tlačítek v uživatelském rozhraní Průzkumníka graphu, abyste se vyhnuli zobrazování chyby při pokusu o přihlášení pomocí Graph Exploreru. 
@@ -204,7 +203,6 @@ Pokud při pokusu o přístup k přihlašování pomocí Graph Exploreru spustí
 
 ![Upravit uživatelské rozhraní oprávnění](./media/troubleshoot-graph-api/modify-permissions.png)
 
-
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Chyba: tenant není B2C nebo tenant nemá licenci Premium.
 
 Přístup k sestavám přihlášení vyžaduje licenci Azure Active Directory Premium 1 (P1). Pokud se zobrazí tato chybová zpráva při přístupu k přihlašování, ujistěte se, že je váš tenant licencován pomocí licence Azure AD P1.
@@ -215,7 +213,7 @@ Přístup k sestavám přihlášení vyžaduje licenci Azure Active Directory Pr
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Chyba: aplikace postrádá oprávnění pro čtení dat adresáře služby AAD 
 
-### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Chyba: v aplikaci chybí oprávnění pro čtení všech dat protokolu Microsoft API.
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Chyba: v aplikaci chybí oprávnění Microsoft Graph rozhraní API pro čtení všech dat protokolu auditu.
 
 Postupujte podle kroků v části [požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md) , abyste zajistili, že vaše aplikace běží se správnou sadou oprávnění. 
 

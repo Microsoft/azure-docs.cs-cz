@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585845"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300064"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD
 
@@ -122,7 +122,7 @@ Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby za
 ## <a name="configuring-optional-claims"></a>Konfigurace volitelných deklarací identity
 
 > [!IMPORTANT]
-> Přístupové tokeny jsou **vždy** generovány pomocí manifestu prostředku, nikoli klienta.  Takže v žádosti `...scope=https://graph.microsoft.com/user.read...` prostředek je graf.  Proto je přístupový token vytvořen pomocí manifestu grafu, nikoli manifestu klienta.  Změna manifestu aplikace nikdy nezpůsobí, že tokeny pro graf budou vypadat jinak.  Aby se ověřilo, že se změny `accessToken` projeví, požádejte o token pro vaši aplikaci, ne jinou aplikaci.  
+> Přístupové tokeny jsou **vždy** generovány pomocí manifestu prostředku, nikoli klienta.  Takže v žádosti `...scope=https://graph.microsoft.com/user.read...` prostředek je Microsoft Graph API.  Proto je přístupový token vytvořený pomocí manifestu Microsoft Graph API, nikoli manifestu klienta.  Změna manifestu aplikace nikdy nezpůsobí, že tokeny pro rozhraní API pro Microsoft Graph se budou lišit.  Aby se ověřilo, že se změny `accessToken` projeví, požádejte o token pro vaši aplikaci, ne jinou aplikaci.  
 
 Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednictvím uživatelského rozhraní nebo manifestu aplikace.
 
@@ -349,7 +349,7 @@ V této části si můžete projít scénářem, abyste viděli, jak můžete po
 K dispozici je několik možností aktualizace vlastností konfigurace identity aplikace, aby bylo možné povolit a nakonfigurovat volitelné deklarace identity:
 -    Můžete použít uživatelské rozhraní **Konfigurace tokenu (Preview)** (viz příklad níže).
 -    Můžete použít **manifest** (viz příklad níže). Přečtěte si [dokument s manifestem aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) nejprve pro Úvod k manifestu.
--   Je také možné napsat aplikaci, která používá [Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) k aktualizaci aplikace. Typ [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) v referenční příručce Graph API vám pomůže nakonfigurovat volitelné deklarace identity.
+-   Je také možné napsat aplikaci, která používá [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0) k aktualizaci aplikace. Typ [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) v referenční příručce rozhraní API pro Microsoft Graph vám může pomáhat s konfigurací volitelných deklarací identity.
 
 **Příklad:** V následujícím příkladu použijete uživatelské rozhraní **Konfigurace tokenu (Preview)** a **manifest** , abyste přidali volitelné deklarace identity pro přístup, ID a tokeny SAML, které jsou určené pro vaši aplikaci. Do každého typu tokenu, který může aplikace získat, se přidají různé volitelné deklarace:
 -    Tokeny ID teď budou obsahovat hlavní název uživatele (UPN) pro federované uživatele v úplném formátu (`<upn>_<homedomain>#EXT#@<resourcedomain>`).
@@ -381,7 +381,7 @@ K dispozici je několik možností aktualizace vlastností konfigurace identity 
     [![ukazuje, jak nakonfigurovat volitelné deklarace identity pomocí uživatelského rozhraní.](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Konfigurace manifestu:**
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a klikněte na ni.

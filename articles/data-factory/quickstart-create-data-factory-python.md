@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 1f799c8f2e2b209e9939845047c61d50bc1a244d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3b8edd249b19a61f8c80eb5b8c9df25754d4f070
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898529"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399515"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí Pythonu
 
@@ -32,7 +32,7 @@ Azure Data Factory je cloudová služba pro integraci dat, která umožňuje vyt
 
 Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracovávají nebo transformují data pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning. Kanály publikují výstupní data do úložišť dat, jako jsou Azure SQL Data Warehouse pro aplikace business intelligence (BI).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -180,7 +180,7 @@ V této části vytvoříte dvě datové sady, jednu pro zdroj a druhou pro jím
 
 Do metody Main přidejte následující kód, který vytvoří datovou sadu objektů blob Azure. Informace o vlastnostech datové sady objektů blob Azure najdete v článku [Konektor Azure Blob](connector-azure-blob-storage.md#dataset-properties).
 
-Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
+Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
 
 ```python
     # Create an Azure blob dataset (input)
@@ -193,11 +193,11 @@ Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azu
     print_item(ds)
 ```
 
-### <a name="create-a-dataset-for-sink-azure-blob"></a>Vytvoření datové sady pro Azure Blob jímky
+### <a name="create-a-dataset-for-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
 
 Do metody Main přidejte následující kód, který vytvoří datovou sadu objektů blob Azure. Informace o vlastnostech datové sady objektů blob Azure najdete v článku [Konektor Azure Blob](connector-azure-blob-storage.md#dataset-properties).
 
-Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
+Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
 
 ```python
     # Create an Azure blob dataset (output)
@@ -379,9 +379,9 @@ def main():
     act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
-    dsin_ref = DatasetReference(ds_name)
-    dsOut_ref = DatasetReference(dsOut_name)
-    copy_activity = CopyActivity(act_name, inputs=[dsin_ref], outputs=[
+    dsin_ref = DatasetReference(reference_name=ds_name)
+    dsOut_ref = DatasetReference(reference_name=dsOut_name)
+    copy_activity = CopyActivity(name=act_name, inputs=[dsin_ref], outputs=[
                                  dsOut_ref], source=blob_source, sink=blob_sink)
 
     # Create a pipeline with the copy activity
@@ -459,4 +459,4 @@ adf_client.factories.delete(rg_name, df_name)
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

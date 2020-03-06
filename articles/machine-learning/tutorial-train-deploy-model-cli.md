@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 70fa17e3e6f91bf393865cc979a8e47e4bf8687b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245137"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393344"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -375,7 +375,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 ```
 
 > [!NOTE]
-> Může se zobrazit upozornění týkající se selhání kontroly existence LocalWebservice. Tuto možnost můžete bez obav ignorovat, protože neprovádíte nasazení místní webové služby.
+> Může se zobrazit upozornění týkající se selhání při kontrole existence LocalWebservice nebo vytvoření klienta Docker. Tuto možnost můžete bez obav ignorovat, protože neprovádíte nasazení místní webové služby.
 
 Tento příkaz nasadí novou službu s názvem `myservice`s použitím verze 1 modelu, který jste předtím zaregistrovali.
 

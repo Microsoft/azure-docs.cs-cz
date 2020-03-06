@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6a967f328a4fbe17f2c451d35f413bd7fdcbc24a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246466"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331464"
 ---
 # <a name="my-first-graphical-runbook"></a>Můj první grafický runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "78246466"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-V tomto kurzu se seznámíte s vytvořením [grafického runbooku](automation-runbook-types.md#graphical-runbooks) ve službě Azure Automation. Začněte pomocí jednoduchého Runbooku, který provede testy a publikování, a Naučte se sledovat stav úlohy Runbooku. Pak upravte Runbook tak, aby skutečně spravoval prostředky Azure. v tomto případě se spustí virtuální počítač Azure. Dokončete kurz, aby se Runbook lépe robustní přidáním parametrů Runbooku a podmíněných propojení.
+V tomto kurzu se seznámíte s vytvořením [grafického runbooku](automation-runbook-types.md#graphical-runbooks) ve službě Azure Automation. Začněte s jednoduchým runbookm, který můžete testovat a publikovat, a Naučte se sledovat stav úlohy Runbooku. Pak upravte Runbook tak, aby skutečně spravoval prostředky Azure. v tomto případě se spustí virtuální počítač Azure. Dokončete kurz, aby se Runbook lépe robustní přidáním parametrů Runbooku a podmíněných propojení.
 
 >[!NOTE]
 >Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
@@ -37,7 +37,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="step-1---create-runbook"></a>Krok 1 – vytvoření runbooku
 
-Začněte vytvořením jednoduchého Runbooku, který vypíše text "Hello World".
+Začnete vytvořením jednoduchého runbooku, který zobrazí text **Hello World**.
 
 1. Na webu Azure Portal otevřete účet Automation. 
 
@@ -78,7 +78,7 @@ Před publikováním Runbooku, aby byl dostupný v produkčním prostředí, bys
 
    Stav úlohy se spustí jako **zařazený do fronty**, což značí, že úloha čeká na zpřístupnění pracovního procesu Runbooku v cloudu. Stav se změní na **zahájeno** , když pracovní proces tuto úlohu vystaví. Nakonec se stav spustí, **když se** Runbook skutečně začne spouštět.
 
-1. Po dokončení úlohy Runbooku zobrazí stránka Test svůj výstup. V tomto případě se zobrazí **Hello World**.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
+1. Po dokončení úlohy Runbooku zobrazí podokno test svůj výstup. V tomto případě se zobrazí **Hello World**.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 1. Zavřete testovací podokno a vraťte se na plátno.
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>Krok 4 – publikování a spuštění runbooku

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 03b2312b554743d83eff268876be1f20be595290
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 7c15786e9a5d2fe65c20a26606087cee994ab54b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267524"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302844"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Základní hodnoty zabezpečení Azure pro Key Vault
 
@@ -131,7 +131,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure Policy ukázky:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#networ
+https://docs.microsoft.com/azure/governance/policy/samples
 
 Rychlý Start: definování a přiřazení podrobného plánu na portálu:
 

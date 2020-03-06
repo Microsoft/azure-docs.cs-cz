@@ -3,12 +3,12 @@ title: Publikování nabídky spravovaných služeb pro Azure Marketplace
 description: Naučte se publikovat nabídku spravované služby, která zákazníkům zařadí správu delegovaných prostředků Azure.
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 6ae93759073be6b05d118ccf46f6b6367fff5fc6
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155243"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328938"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikování nabídky spravovaných služeb pro Azure Marketplace
 
@@ -155,9 +155,6 @@ Jakmile zákazník vaši nabídku přidá, bude moct [delegovat jedno nebo něko
 > Delegování musí provést účet bez hosta v tenantovi zákazníka, který má [předdefinovanou roli](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Po tom, co zákazník deleguje předplatné (nebo jednu nebo více skupin prostředků v rámci předplatného), bude pro toto předplatné zaregistrovaný poskytovatel prostředků **Microsoft. ManagedServices** a uživatelé ve vašem tenantovi budou mít přístup k delegovaným prostředkům v závislosti na autorizacích vaší nabídky.
-
-> [!NOTE]
-> V tuto chvíli není možné delegovat předplatná (nebo skupiny prostředků v rámci předplatného), pokud předplatné používá Azure Databricks. Podobně platí, že pokud už bylo delegované předplatné (nebo skupiny prostředků v rámci předplatného), v současné době není možné v tomto předplatném vytvořit pracovní prostory datacihly.
 
 ## <a name="next-steps"></a>Další kroky
 

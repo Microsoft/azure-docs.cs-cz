@@ -10,18 +10,18 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838698"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388478"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Přeučení a nasazení webové služby klasického studia (Classic)
 
 Přeškolení modelů strojového učení je jedním ze způsobů, jak zajistit, aby byly přesné a na základě nejdůležitějších dostupných dat. V tomto článku se dozvíte, jak přeškolit webovou službu klasického studia (Classic). Návod, jak přeškolit novou webovou službu studia (Classic), najdete v [tomto článku s postupem.](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že už máte experiment s přeškolením i prediktivní experiment. Tyto kroky jsou vysvětleny v tématu [přeučení a nasazení modelu strojového učení.](/azure/machine-learning/studio/retrain-machine-learning-model) Místo toho, abyste model strojového učení nasadili jako novou webovou službu, můžete prediktivní experiment nasadit jako klasickou webovou službu.
      
@@ -47,24 +47,11 @@ Můžete přidat koncové body bodování pomocí ukázkového kódu, který je 
 1. V Machine Learning Studio (Classic) v levém navigačním sloupci klikněte na webové služby.
 1. V dolní části řídicího panelu webové služby klikněte na možnost **Spravovat koncové body verze Preview**.
 1. Klikněte na **Přidat**.
-1. Zadejte název a popis nového koncového bodu. Vyberte úroveň protokolování a jestli jsou povolená ukázková data. Další informace o protokolování najdete v tématu [Povolení protokolování pro Machine Learning webové služby](web-services-logging.md).
+1. Zadejte název a popis pro nový koncový bod. Vyberte úroveň protokolování a povolení ukázková data. Další informace o protokolování najdete v tématu [Povolení protokolování pro Machine Learning webové služby](web-services-logging.md).
 
 ## <a name="update-the-added-endpoints-trained-model"></a>Aktualizace proučeného modelu přidaného koncového bodu
 
 ### <a name="retrieve-patch-url"></a>Načíst adresu URL opravy
-
-### <a name="option-1-programmatically"></a>Možnost 1: programově
-
-Správnou adresu URL opravy získáte pomocí následujících kroků:
-
-1. Spusťte vzorový kód [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) .
-1. Z výstupu AddEndpoint Najděte hodnotu *HelpLocation* a zkopírujte adresu URL.
-
-   ![HelpLocation ve výstupu ukázky addEndpoint.](./media/retrain-classic/addEndpoint-output.png)
-1. Vložte adresu URL do prohlížeče a přejděte na stránku, která poskytuje odkazy na nápovědu pro webovou službu.
-1. Kliknutím na odkaz **aktualizovat prostředek** otevřete stránku s popisem opravy.
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>Možnost 2: použití portálu Azure Machine Learning Web Services
 
 Použijte následující postup, chcete-li získat správnou adresu URL opravy pomocí webového portálu:
 
@@ -101,8 +88,8 @@ Následující vzorový kód ukazuje, jak pomocí adresy URL *BaseLocation*, *Re
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }

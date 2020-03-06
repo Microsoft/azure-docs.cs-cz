@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539599"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330391"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -57,7 +57,7 @@ Prvním krokem je konfigurace vašeho účtu úložiště hostovat statický web
 1. Vyberte **povoleno** , pokud chcete povolit statické hostování webů pro účet úložiště.
 1. V poli **název dokumentu indexu** zadejte výchozí indexovou stránku *index. html*. Když uživatel přejde do kořenového adresáře váš statický web, zobrazí se výchozí index stránky.  
 1. V poli **cesta k chybovému dokumentu** zadejte výchozí chybovou stránku *404. html*. Když se uživatel pokusí přejít na stránku, která neexistuje v váš statický web, se zobrazí výchozí chybová stránka.
-1. Klikněte na možnost **Uložit**. Na webu Azure portal se teď zobrazují váš koncový bod statického webu. 
+1. Klikněte na **Uložit**. Na webu Azure portal se teď zobrazují váš koncový bod statického webu. 
 
     ![Povolení hostování statického webu pro účet úložiště](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -93,9 +93,7 @@ V dalším kroku vytvořit webovou stránku Hello World pomocí Visual Studio Co
 
 Visual Studio Code se nyní odeslání souborů do vašeho koncového bodu webové a zobrazit stavový řádek úspěch. Spuštění webu můžete prohlížet v Azure.
 
-![Zobrazení nasazení statického webu v Azure](media/storage-blob-static-website-host/view-static-website-endpoint.png)
-
-Úspěšně jste dokončili kurz a statického webu nasadit do Azure.
+Úspěšně jste dokončili kurz a nasadili jste statický web do Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

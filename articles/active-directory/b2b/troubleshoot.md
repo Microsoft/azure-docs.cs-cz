@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d970bbc5619bc25a1cf5d6abbdcf41fb4a0ae196
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c7c0a4567da11b10b9a0571656103ef2f17c7da4
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195517"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399056"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
@@ -102,7 +102,6 @@ Od 18. listopadu 2019 se zablokují uživatelům typu Host v adresáři (definov
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>V tenantovi Azure pro státní správu USA nemůžu pozvat uživatele typu Host pro spolupráci B2B.
 
 V cloudu pro státní správu Azure USA je spolupráce B2B v současnosti podporovaná jenom mezi klienty, kteří jsou v cloudu Azure USA a kteří podporují spolupráci B2B. Pokud uživatele v tenantovi, který není součástí cloudu pro státní správu Azure USA nebo který ještě nepodporuje spolupráci B2B, se zobrazí chyba. Podrobnosti a omezení najdete v tématu [variace Azure Active Directory Premium P1 a P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
-
 
 ## <a name="next-steps"></a>Další kroky
 

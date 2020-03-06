@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2b530da06b02091ce66ff7c116f3e17ddcc22497
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805820"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331106"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Použití komprimovaného zvukového vstupu pomocí kodeku se sadou Speech SDK
 
 Rozhraní API pro **komprimovaný zvuk vstupního streamu** sady Speech SDK poskytuje způsob, jak streamovat komprimovaný zvuk do služby pro rozpoznávání řeči pomocí PullStream nebo PushStream.
 
 > [!IMPORTANT]
-> V současné době se pro C++jazyky, C#a Java v systému Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) aktuálně podporují streamování komprimovaných zvuků. Podporuje se taky pro [Java v Androidu](how-to-use-codec-compressed-audio-input-streams-android.md) a [v cíli C na platformě iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
-> Je vyžadována sada Speech SDK verze 1.7.0 nebo vyšší.
+> Streamování komprimovaného vstupu se v současné C++době C#podporuje pro systémy, a Java v systému Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Podporuje se taky pro [Java v Androidu](how-to-use-codec-compressed-audio-input-streams-android.md) a [v cíli C na platformě iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
+> Vyžaduje se sada Speech SDK verze 1.7.0 nebo vyšší (verze 1.10.0 nebo vyšší pro RHEL 8, CentOS 8).
 
 Informace o WAV/PCM najdete v dokumentaci k hlavní Speech.  Mimo zvuk WAV/PCM jsou podporovány následující formáty komprimované vstupní hodnoty kodeku:
 
@@ -40,6 +40,15 @@ Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https:
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
+
+V RHEL/CentOS 8:
+
+```sh
+sudo yum install gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
+
+> [!NOTE]
+> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
 

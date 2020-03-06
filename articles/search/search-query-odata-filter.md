@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113197"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390335"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Syntaxe $filter OData v Azure Kognitivní hledání
 
@@ -78,7 +78,7 @@ Pokud napíšete výraz filtru bez závorek kolem jeho dílčích výrazů, Azur
 | Skupina | Operátor (y) |
 | --- | --- |
 | Logické operátory | `not` |
-| Operátory porovnání | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
+| Operátory porovnání | `eq`, `ne`, `gt`, `lt`, `ge``le` |
 | Logické operátory | `and` |
 | Logické operátory | `or` |
 

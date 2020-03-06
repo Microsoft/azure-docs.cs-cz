@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873280"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302504"
 ---
 # <a name="log-azure-cosmos-db"></a>PROTOKOL (Azure Cosmos DB)
  Vrátí přirozený logaritmus zadaného číselný výraz.  
@@ -28,7 +28,7 @@ LOG (<numeric_expr> [, <base>])
 *numeric_expr*  
    Je číselný výraz.  
   
-*base*  
+*základ*  
    Volitelné číselný argument, který nastaví základ logaritmu.  
   
 ## <a name="return-types"></a>Návratové typy
@@ -39,7 +39,7 @@ LOG (<numeric_expr> [, <base>])
   
   Ve výchozím nastavení LOG() vrátí přirozený logaritmus. Základ logaritmu na jinou hodnotu můžete změnit pomocí volitelného parametru základní.  
   
-  Přirozený logaritmus se logaritmus o základu **e**, kde **e** rovná nenormální – konstanta přibližně 2.718281828.  
+  Přirozený logaritmus je logaritmus základu **e**, kde **e** je Irrational konstanta, která je přibližně rovna hodnotě 2,718281828.  
   
   Přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (n).) = n. A exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (n).) = n.  
   
@@ -51,7 +51,7 @@ LOG (<numeric_expr> [, <base>])
 SELECT LOG(10) AS log  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{log: 2.3025850929940459}]  
@@ -63,11 +63,15 @@ SELECT LOG(10) AS log
 SELECT EXP(LOG(10)) AS expLog  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{expLog: 10.000000000000002}]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

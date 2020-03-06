@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: dapine
-ms.openlocfilehash: 04546883e6742086fa05fc450920b1026702bd08
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331089"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
@@ -31,7 +31,7 @@ Obecný přehled možností a podporovaných platforem najdete na [stránce](htt
 
 ## <a name="get-the-sdk"></a>Získání sady SDK
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
 > Sada Speech SDK podporuje Windows 10 nebo novější verze. Starší verze systému Windows nejsou **podporovány**.
@@ -42,12 +42,12 @@ Pro Windows Podporujeme následující jazyky:
 
 * Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček, který podporuje pouze Windows x64. V projektu Maven přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` na odkaz jako závislost.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
-> V současné době podporujeme jenom Ubuntu 16,04, Ubuntu 18,04 a Debian 9 u těchto cílových architektur:
-> - x86, x64 a ARM64 pro C++ vývoj
-> - x64 a ARM64 pro jazyk Java
+> V současné době podporujeme pro následující cílové architektury jenom Ubuntu 16,04, Ubuntu 18,04, Debian 9, Red Hat Enterprise Linux (RHEL) 8 a CentOS 8:
+> - x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) a ARM64 (Debian/Ubuntu) pro C++ vývoj
+> - x64, ARM32 (Debian/Ubuntu) a ARM64 (Debian/Ubuntu) pro Java
 > - x64 pro .NET Core a Python
 
 Ujistěte se, že máte nainstalované požadované knihovny spuštěním následujících příkazů prostředí:
@@ -65,6 +65,16 @@ V Debian 9:
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
+
+V RHEL/CentOS 8:
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 * C#: Můžete odkazovat a používat nejnovější verzi naší balíček NuGet sady SDK pro řeč. K odkazování sadu SDK, přidejte následující odkaz na balíček do projektu:
 
@@ -86,7 +96,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   Vytvoření aplikace, zkopírovat nebo přesunout do požadované binární soubory (a knihoven) do svého vývojového prostředí. Zahrnutí podle potřeby v procesu sestavení.
 
-# <a name="androidtabandroid"></a>[Android](#tab/android)
+# <a name="android"></a>[Android](#tab/android)
 
 Java SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android. Hostuje se v úložišti Maven ve `https://csspeechstorage.blob.core.windows.net/maven/` jako `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`balíčku.
 

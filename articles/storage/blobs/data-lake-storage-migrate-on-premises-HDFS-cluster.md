@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c0c6a8637223727a9b0c88245d939605f6a8530e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368675"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301996"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrace z úložiště Prem HDFS do Azure Storage s využitím Azure Data Box
 
@@ -27,7 +27,7 @@ Tento článek vám pomůže dokončit tyto úlohy:
 > * Dodejte zařízení zpět společnosti Microsoft.
 > * Použít přístupová oprávnění k souborům a adresářům (jenom Data Lake Storage Gen2)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení migrace potřebujete tyto věci.
 
@@ -186,7 +186,7 @@ Data už máte ve svém účtu Azure Storage. Teď budete používat přístupov
 
 Chcete-li vytvořit instanční objekt, přečtěte si téma [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-* Při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+* Při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
 
 * Při provádění kroků v části [získat hodnoty pro podepsání v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku, uložte ID aplikace a hodnoty tajného klíče klienta do textového souboru. Budete je potřebovat brzy.
 

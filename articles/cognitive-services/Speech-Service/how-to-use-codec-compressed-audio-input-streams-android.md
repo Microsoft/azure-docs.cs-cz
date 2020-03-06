@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 1539ca9aa18892f617f278e67c8b6141f5f6d880
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805837"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331123"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Postupy: použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v Androidu
 
 Rozhraní API pro **komprimovaný zvuk vstupního streamu** sady Speech SDK poskytuje způsob, jak streamovat komprimovaný zvuk do služby pro rozpoznávání řeči pomocí PullStream nebo PushStream.
 
 > [!IMPORTANT]
-> V současné době se pro [ C++jazyky, C#a Java v systému Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md)aktuálně podporují streamování komprimovaných zvuků. Podporuje se taky pro Java v Androidu a [v cíli C na platformě iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
+> Streamování komprimovaného vstupu se v současné době podporuje pro [ C++systémy, C#a Java v systému Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)](how-to-use-codec-compressed-audio-input-streams.md). Podporuje se taky pro Java v Androidu a [v cíli C na platformě iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
 > Je vyžadována sada Speech SDK verze 1.7.0 nebo vyšší.
 
 Informace o WAV/PCM najdete v dokumentaci k hlavní Speech. Mimo zvuk WAV/PCM jsou podporovány následující formáty komprimované vstupní hodnoty kodeku:
@@ -37,7 +37,7 @@ Informace o WAV/PCM najdete v dokumentaci k hlavní Speech. Mimo zvuk WAV/PCM js
 
 Komprimovaný zvuk kodeku je implementován pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány se sadou SDK. Budete muset použít předem připravené binární soubory pro Android. Pokud si chcete stáhnout předem připravené knihovny, přečtěte si téma [instalace pro vývoj pro Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-`libgstreamer_android.so` je povinné. Ujistěte se, že jsou moduly plug-in GStreamer propojené v `libgstreamer_android.so`.
+`libgstreamer_android.so` se vyžaduje. Ujistěte se, že jsou moduly plug-in GStreamer propojené v `libgstreamer_android.so`.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac

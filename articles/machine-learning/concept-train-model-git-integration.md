@@ -9,20 +9,35 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: b83eb1556ed3f4a41409faf70f6ba9d8cd28322d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
-ms.translationtype: MT
+ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732174"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301654"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
-[Git](https://git-scm.com/) je oblíbený systém pro správu verzí, který umožňuje sdílení a spolupráci s projekty. Při odeslání školicí úlohy do Azure Machine Learning, pokud jsou školicí soubory uložené v místním úložišti Git, informace o úložišti se sledují jako součást procesu školení.
+[Git](https://git-scm.com/) je oblíbený systém pro správu verzí, který umožňuje sdílení a spolupráci na vašich projektech. 
+
+Azure Machine Learning plně podporuje úložiště Git pro sledování práce – úložiště můžete klonovat přímo do sdíleného systému souborů pracovních prostorů, použít Git na místní pracovní stanici nebo použít git z kanálu CI/CD.
+
+Při odesílání úlohy do Azure Machine Learning, pokud jsou zdrojové soubory uložené v místním úložišti Git, informace o úložišti se sledují jako součást procesu školení.
 
 Vzhledem k tomu, že Azure Machine Learning sleduje informace z místního úložiště Git, není svázán s žádným konkrétním centrálním úložištěm. Vaše úložiště je možné klonovat z GitHubu, GitLab, BitBucket, Azure DevOps nebo jakékoli jiné služby kompatibilní s Git.
 
-## <a name="how-does-git-integration-work"></a>Jak funguje integrace Gitu?
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klonovat úložiště Git do systému souborů pracovního prostoru
+Azure Machine Learning poskytuje sdílený systém souborů pro všechny uživatele v pracovním prostoru.
+K naklonování úložiště Git do této sdílené složky doporučujeme vytvořit výpočetní instanci & otevřete terminál.
+Po otevření terminálu máte přístup k plnému klientovi Git a budete moct pomocí prostředí Git CLI klonovat a pracovat s ním.
+
+Doporučujeme, abyste naklonoval úložiště do adresáře uživatelů, aby ostatní nedošlo k kolizím přímo ve vaší pracovní větvi.
+
+Můžete klonovat jakékoli úložiště Git, na které můžete ověřovat (GitHub, Azure Repos, BitBucket atd.).
+
+Návod, jak používat rozhraní příkazového řádku Git, [si můžete přečíst zde.](https://guides.github.com/introduction/git-handbook/)
+
+## <a name="track-code-that-comes-from-git-repositories"></a>Sledovat kód, který pochází z úložišť Git
 
 Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud je k dispozici příkaz `git` ve vašem vývojovém prostředí, proces nahrávání je používá ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
 
@@ -53,7 +68,7 @@ Pokud vaše školicí soubory nejsou umístěny v úložišti Git ve vývojovém
 
 Informace Git se ukládají do vlastností pro školicí běh. Tyto informace můžete zobrazit pomocí Azure Portal, sady Python SDK a rozhraní příkazového řádku. 
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor.
 1. Vyberte __experimenty__a pak vyberte jeden z experimentů.

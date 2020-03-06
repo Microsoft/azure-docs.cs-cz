@@ -4,12 +4,12 @@ description: Vytvoření funkce PowerShellu bez serveru aktivovaného protokolem
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196531"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331021"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: použití funkce Azure aktivované protokolem HTTP k vytvoření skupiny kontejnerů
 
@@ -42,7 +42,7 @@ V tomto článku se předpokládá, že publikujete projekt pomocí názvu *myfu
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Povolení identity spravované v Azure v aplikaci Function App
 
-Teď ve vaší aplikaci Function App povolte [spravovanou identitu](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#adding-a-system-assigned-identity) přiřazenou systémem. Hostitel PowerShellu, na kterém běží aplikace, se může automaticky ověřit pomocí této identity a povolit funkce pro provádění akcí se službami Azure, ke kterým má identita udělený přístup. V tomto kurzu udělíte oprávnění spravovaných identit k vytváření prostředků ve skupině prostředků aplikace Function App. 
+Teď ve vaší aplikaci Function App povolte [spravovanou identitu](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) přiřazenou systémem. Hostitel PowerShellu, na kterém běží aplikace, se může automaticky ověřit pomocí této identity a povolit funkce pro provádění akcí se službami Azure, ke kterým má identita udělený přístup. V tomto kurzu udělíte oprávnění spravovaných identit k vytváření prostředků ve skupině prostředků aplikace Function App. 
 
 Nejprve pomocí příkazu [AZ Group show][az-group-show] Získejte ID skupiny prostředků aplikace Function App a uložte ji do proměnné prostředí. V tomto příkladu se předpokládá, že spustíte příkaz v prostředí bash.
 

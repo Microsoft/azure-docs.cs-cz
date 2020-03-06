@@ -1,18 +1,18 @@
 ---
-title: IS_DEFINED v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o IS_DEFINED funkcí SQL systému v Azure Cosmos DB.
+title: IS_DEFINED v dotazovacím jazyce Azure Cosmos DB
+description: Přečtěte si o funkcích systému SQL IS_DEFINED v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2c3193262a41b3c6772d4fe29c78a132bc51bbd8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a5fcaf52d8e9e6b942a95f0b0c43f3f654c5d5d2
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349869"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303847"
 ---
 # <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED (Azure Cosmos DB)
  Vrátí logickou hodnotu označující, pokud vlastnost byla přiřazena hodnota.  
@@ -40,11 +40,15 @@ IS_DEFINED(<expr>)
 SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isDefined2 
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"isDefined1":true,"isDefined2":false}]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

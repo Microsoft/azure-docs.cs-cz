@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Regi
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7d84770f1b945ff47cb4e9118d9c342e67118722
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249908"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402299"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Kurz: spuštění víceúrovňového pracovního postupu kontejneru v cloudu při potvrzení zdrojového kódu
 
@@ -92,7 +92,7 @@ Tato úloha určuje, že každý kód času je potvrzen do *Hlavní* větve v ú
 
 Výstup úspěšného příkazu [AZ ACR Task Create][az-acr-task-create] je podobný následujícímu:
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -157,7 +157,7 @@ az acr task run --registry $ACR_NAME --name example1
 
 Příkaz `az acr task run` ve výchozím nastavení při spuštění příkazu streamuje výstup protokolu do vaší konzoly. Výstup zobrazuje průběh spuštění jednotlivých kroků úkolu. Výstup níže je zúžený, aby se zobrazily klíčové kroky.
 
-```console
+```output
 Queued a run with ID: cf19
 Waiting for an agent...
 2019/05/03 03:03:31 Downloading source code...
@@ -234,8 +234,7 @@ git push origin master
 
 Při spuštění příkazu `git push` můžete být vyzváni k zadání přihlašovacích údajů pro GitHub. Zadejte svoje uživatelské jméno pro GitHub a zadejte token PAT, který jste dříve vytvořili pro heslo.
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -248,8 +247,7 @@ az acr task logs --registry $ACR_NAME
 
 Výstup je podobný následujícímu a zobrazuje aktuálně spuštěnou (nebo naposledy spuštěnou) úlohu:
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: cf1d
 
@@ -268,9 +266,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 Výstup příkazu by měl vypadat podobně jako ten následující. Zobrazí se spuštění provedená službou ACR Tasks a ve sloupci označujícím způsob aktivace se u nejnovější úlohy zobrazí „Git Commit“:
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK       PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  ---------  ----------  ---------  ---------  --------------------  ----------
 cf1d      example1   linux       Succeeded  Commit     2019-05-03T04:16:44Z  00:00:37
@@ -362,7 +358,7 @@ Příkaz `az acr task run` ve výchozím nastavení při spuštění příkazu s
 
 Výstup:
 
-```console
+```output
 Queued a run with ID: cf1g
 Waiting for an agent...
 2019/05/03 04:33:39 Downloading source code...

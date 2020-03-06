@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.openlocfilehash: 9077d5c471911c9967c327c457d683b06856b920
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 40f5935c7d653ce90aa56bc5ee2bb15711bb9dd8
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249071"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399261"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -82,9 +82,11 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > [Stažení ukázky kódu]()
 
 > [!div renderon="docs"]
+
 > #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace JavaScriptu
 >
-> Ve složce *JavaScriptSPA* upravte *authConfig. js*a nastavte `clientID` a `authority` hodnoty v části `msalConfig`.
+> Ve složce *JavaScriptSPA* upravte *authConfig. js*a nastavte `clientID`hodnoty `authority` a `redirectUri` v části `msalConfig`.
+>
 > ```javascript
 >
 >  // Config object to be passed to Msal on creation
@@ -97,10 +99,10 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 >    cache: {
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
->      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
 >    }
 >  };  
-> ```
+>
+>```
 
 > [!div renderon="portal"]
 > > [!NOTE]
@@ -124,6 +126,27 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace. 
 
 > [!div renderon="docs"]
+> 
+> Potom stále ve stejné složce upravte soubor *graphConfig. js* a nastavte `graphMeEndpoint` a `graphMeEndpoint` objektu `apiConfig`.
+> ```javascript
+>   // Add here the endpoints for MS Graph API services you would like to use.
+>   const graphConfig = {
+>     graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
+>     graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+>   };
+>
+>   // Add here scopes for access token to be used at MS Graph API endpoints.
+>   const tokenRequest = {
+>       scopes: ["Mail.Read"]
+>   };
+> ```
+>
+
+> [!div renderon="docs"]
+>
+> Kde:
+> - *\<Enter_the_Graph_Endpoint_Here >* je koncový bod, proti kterému se volání rozhraní API budou provádět. V případě hlavní nebo globální služby Microsoft Graph API zadejte jenom `https://graph.microsoft.com`. Další informace najdete v tématu věnovaném [národním cloudovým nasazením](https://docs.microsoft.com/graph/deployments) .
+>
 > #### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu
 
 Spusťte projekt s webovým serverem pomocí [Node. js](https://nodejs.org/en/download/):
@@ -155,7 +178,6 @@ Knihovna MSAL se přihlásí uživatelům a požádá o tokeny, které se použ�
 > [!TIP]
 > Předchozí verzi můžete nahradit nejnovější vydanou verzí ve [verzích MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
 
-
 Případně, pokud máte nainstalován Node. js, si můžete stáhnout nejnovější verzi prostřednictvím Správce balíčků Node. js (npm):
 
 ```batch
@@ -177,7 +199,6 @@ Kód pro rychlý Start také ukazuje, jak inicializovat knihovnu MSAL:
     cache: {
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
     }
   };  
 
@@ -228,7 +249,7 @@ MSAL používá tři metody k získání tokenů: `acquireTokenRedirect`, `acqui
 Metoda `acquireTokenSilent` zpracovává získání a obnovení tokenu bez zásahu uživatele. Po prvním spuštění metody `loginRedirect` nebo `loginPopup` je `acquireTokenSilent` metoda, která se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům pro následná volání. Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.
 
 ```javascript
-// Add scopes for the access token to be used at Microsoft Graph API endpoints.
+
 const tokenRequest = {
     scopes: ["Mail.Read"]
 };

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f187dba4eace61695a72e4b7b08731e65ff0d7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703660"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299104"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Řešení potíží s připojením k doméně pomocí spravované domény Azure AD Domain Services
 
@@ -32,7 +32,7 @@ Pokud virtuální počítač nemůže najít spravovanou doménu Azure služba A
 
 1. Ujistěte se, že je virtuální počítač připojený ke stejné nebo partnerské virtuální síti, která je povolená pro Azure služba AD DS. V takovém případě se virtuální počítač nemůže k doméně najít a připojit se, aby se mohl připojit.
     * Pokud virtuální počítač není připojený ke stejné virtuální síti, zkontrolujte, jestli je *aktivní* nebo *připojené* připojení VPN peering nebo VPN, aby se mohl správně Flow provozovat.
-1. Zkuste použít příkaz k otestování domény pomocí názvu domény spravované domény Azure služba AD DS, například `ping aadds.contoso.com`.
+1. Zkuste použít příkaz k otestování domény pomocí názvu domény spravované domény Azure služba AD DS, například `ping aaddscontoso.com`.
     * Pokud se odpověď na příkaz k odeslání nezdařila, zkuste provést příkaz k otestování adresy IP pro doménu zobrazenou na stránce Přehled na portálu spravované domény Azure služba AD DS, například `ping 10.0.0.4`.
     * Pokud můžete úspěšně odeslat příkaz k otestování IP adresy, ale ne k doméně, je možné, že je služba DNS nesprávně nakonfigurovaná. Ujistěte se, že jste nakonfigurovali servery DNS spravované domény Azure služba AD DS pro virtuální síť.
 1. Zkuste vyprázdnit mezipaměť překladače DNS na virtuálním počítači, například `ipconfig /flushdns`.
@@ -53,9 +53,9 @@ Pokud se zobrazí dialogové okno s výzvou k zadání přihlašovacích údajů
 
 Pokud chcete řešit problémy související s přihlašovacími údaji, přečtěte si následující postup pro řešení potíží:
 
-1. Zkuste zadat přihlašovací údaje, jako je například `dee@contoso.onmicrosoft.com`, pomocí formátu UPN. Ujistěte se, že je tento hlavní název uživatele ve službě Azure AD správně nakonfigurovaný.
+1. Zkuste zadat přihlašovací údaje, jako je například `dee@aaddscontoso.onmicrosoft.com`, pomocí formátu UPN. Ujistěte se, že je tento hlavní název uživatele ve službě Azure AD správně nakonfigurovaný.
     * Pokud má váš tenant více uživatelů se stejnou předponou hlavního názvu uživatele (UPN), nebo pokud je předpona hlavního názvu uživatele delší, je možné, že se *sAMAccountName* pro váš účet vygeneruje automaticky. Proto se formát *sAMAccountName* pro váš účet může lišit od toho, co očekáváte nebo používáte ve vaší místní doméně.
-1. Zkuste použít přihlašovací údaje pro uživatelský účet, který patří do skupiny Domain *Administrators služby AAD* pro připojení virtuálních počítačů k spravované doméně Azure služba AD DS.
+1. Zkuste použít přihlašovací údaje pro uživatelský účet, který je součástí spravované domény Azure služba AD DS k připojení virtuálních počítačů ke spravované doméně.
 1. Ujistěte se, že jste [povolili synchronizaci hesel][enable-password-sync] a pro dokončení počáteční synchronizace hesla čekaly dostatečně dlouho.
 
 ## <a name="next-steps"></a>Další kroky

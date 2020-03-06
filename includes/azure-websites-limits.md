@@ -2,14 +2,14 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 08/09/2019
+ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 83bf357fff8fd3cfb8c0e69af92b36710287898f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 505e2d8eec20853fba3743b40cbe289585d14d61
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586716"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304997"
 ---
 | Prostředek | Free | Sdílené | Basic | Standard | Premium (v2) | Izolován </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -36,7 +36,7 @@ ms.locfileid: "77586716"
 | [Automatické škálování](../articles/app-service/manage-scale-up.md) | | | |× |× |× |
 | Webové [úlohy](../articles/app-service/webjobs-create.md)<sup>11</sup> |× |× |× |× |× |× |
 | [Monitorování koncových bodů](../articles/app-service/web-sites-monitor.md) | | |× |× |× |× |
-| [Pracovní sloty](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
+| [Pracovní sloty](../articles/app-service/deploy-staging-slots.md) na aplikaci| | | |5 |20 |20 |
 | SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
 
 <sup>1</sup> Pokud není uvedeno jinak, jsou aplikace a kvóty úložiště podle App Serviceho plánu.  

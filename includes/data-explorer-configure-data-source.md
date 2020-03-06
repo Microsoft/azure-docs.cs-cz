@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581997"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304919"
 ---
 ## <a name="configure-the-data-source"></a>Konfigurace zdroje dat
 
@@ -25,11 +25,11 @@ Provedením následujících kroků nakonfigurujete Azure Průzkumník dat jako 
 
 Instanční objekt můžete vytvořit v [Azure Portal](#azure-portal) nebo pomocí prostředí příkazového řádku [Azure CLI](#azure-cli) . Bez ohledu na to, kterou metodu použijete, po vytvoření získáte hodnoty pro čtyři vlastnosti připojení, které budete používat v pozdějších krocích.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Chcete-li vytvořit instanční objekt, postupujte podle pokynů v [dokumentaci k Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal).
 
-    1. V části [přiřazení aplikace k roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) přiřaďte k vašemu clusteru Azure Průzkumník dat typ role **Čtenář** .
+    1. V části [přiřazení aplikace k roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) přiřaďte k vašemu clusteru Azure Průzkumník dat typ role **Čtenář** .
 
     1. V části [získat hodnoty pro přihlášení](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) zkopírujte tři hodnoty vlastností, které jsou pokryté v postupech: **ID adresáře** (ID tenanta), **ID aplikace**a **heslo**.
 
@@ -81,7 +81,7 @@ Teď, když máte instanční objekt, přidáte ho do role *Návštěvníci* v d
 
 1. V části **Přehled** vyberte databázi s ukázkovými daty StormEvents.
 
-    ![vybrat databázi](media/data-explorer-configure-data-source/select-database.png)
+    ![Vybrat databázi](media/data-explorer-configure-data-source/select-database.png)
 
 1. Vyberte **oprávnění** a pak **Přidat**.
 
@@ -95,7 +95,7 @@ Teď, když máte instanční objekt, přidáte ho do role *Návštěvníci* v d
 
     ![Správa oprávnění v Azure Portal](media/data-explorer-configure-data-source/new-principals.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
     ![Správa oprávnění v Azure Portal](media/data-explorer-configure-data-source/save-permission.png)
 

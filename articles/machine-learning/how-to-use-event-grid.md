@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
-ms.date: 11/04/2019
-ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/05/2020
+ms.openlocfilehash: 8a9dc92baf47242af502862edebffe686263dd5d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904278"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399662"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Vytváření pracovních postupů strojového učení řízených událostmi (Preview)
 
@@ -25,15 +25,15 @@ Další informace najdete v tématu [Azure Machine Learning integrace s Event Gr
 
 Pomocí Event Grid můžete povolit běžné scénáře, jako například:
 
-* Aktivují se kanály pro přeškolení.
+* Odeslat e-maily při dokončení běhu
+* Použití funkce Azure Function po registraci modelu
 * Streamování událostí z Azure Machine Learning do různých koncových bodů
+* Aktivace kanálu ML při zjištění posunu
 
-## <a name="prerequisites"></a>Požadavky
-
+## <a name="prerequisites"></a>Předpoklady
 * Přístup přispěvatele nebo vlastníka k pracovnímu prostoru Azure Machine Learning, pro který budete vytvářet události.
-* Vyberte koncový bod obslužné rutiny události, například Webhook nebo centrum událostí. Další informace naleznete v tématu [obslužné rutiny událostí](https://docs.microsoft.com/azure/event-grid/event-handlers). 
 
-## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Konfigurace událostí strojového učení pomocí Azure Portal
+### <a name="configure-eventgrid-using-the-azure-portal"></a>Konfigurace EventGrid pomocí Azure Portal
 
 1. Otevřete [Azure Portal](https://portal.azure.com) a přejít do pracovního prostoru Azure Machine Learning.
 
@@ -51,7 +51,7 @@ Pomocí Event Grid můžete povolit běžné scénáře, jako například:
 
 Po potvrzení výběru klikněte na __vytvořit__. Po dokončení konfigurace budou tyto události vloženy do koncového bodu.
 
-## <a name="set-up-azure-event-grid-using-cli"></a>Nastavení Azure Event Grid pomocí rozhraní příkazového řádku
+### <a name="configure-eventgrid-using-the-cli"></a>Konfigurace EventGrid pomocí rozhraní příkazového řádku
 
 Můžete buď nainstalovat nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo použít Azure Cloud Shell poskytované jako součást předplatného Azure.
 
@@ -61,7 +61,7 @@ Pokud chcete nainstalovat rozšíření Event Grid, použijte z rozhraní přík
 az add extension --name eventgrid
 ```
 
-Následující příklad ukazuje, jak vybrat předplatné Azure a pak vytvořit nové odběry událostí pro Azure Machine Learning:
+Následující příklad ukazuje, jak vybrat předplatné Azure a vytvořit nový odběr události pro Azure Machine Learning:
 
 ```azurecli-interactive
 # Select the Azure subscription that contains the workspace
@@ -77,6 +77,12 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="sample-scenarios"></a>Ukázkové scénáře
+
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Použití Azure Functions k nasazení modelu na základě značek
+
+Objekt Azure Machine Learning modelu obsahuje parametry, na jejichž základě můžete nasazovat nasazení, jako je název modelu, verze, značka a vlastnost. Událost registrace modelu může aktivovat koncový bod a pomocí funkce Azure můžete nasadit model založený na hodnotě těchto parametrů.
+
+Příklad naleznete v části úložiště [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) a postupujte podle pokynů v souboru **Readme** .
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>Použití aplikace logiky k posílání e-mailových upozornění
 
@@ -158,12 +164,6 @@ Kanál Data Factory se teď aktivuje, když dojde k posunu. Zobrazte si podrobno
 
 ![zobrazení v pracovním prostoru](./media/how-to-use-event-grid/view-in-workspace.png)
 
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Použití Azure Functions k nasazení modelu na základě značek
-
-Objekt Azure Machine Learning modelu obsahuje parametry, na jejichž základě můžete nasazovat nasazení, jako je název modelu, verze, značka a vlastnost. Událost registrace modelu může aktivovat koncový bod a pomocí funkce Azure můžete nasadit model založený na hodnotě těchto parametrů.
-
-Příklad naleznete v části úložiště [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) a postupujte podle pokynů v souboru **Readme** .
 
 ## <a name="next-steps"></a>Další kroky
 

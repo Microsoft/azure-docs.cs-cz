@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 02/07/2020
+ms.date: 02/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: f5d68be1226a026f8fdfd7595cb2812ce51dfdb6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.openlocfilehash: cb484ea936bbb64b3ca3d7fcf648de0d0ef73c66
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122040"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328676"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -131,7 +131,7 @@ U všech scénářů Prosím mějte na paměti následující stávající omeze
 
 - Požadavky, které jsou zpracovávány Azure Resource Manager, lze provádět pomocí delegované správy prostředků Azure. Identifikátory URI operace pro tyto požadavky začínají na `https://management.azure.com`. Nicméně požadavky, které jsou zpracovávány instancí typu prostředku (například přístup k tajným klíčům klíčů nebo přístup k datům úložiště), se nepodporují se správou delegovaných prostředků Azure. Operace s identifikátory URI pro tyto požadavky obvykle začínají adresou, která je pro vaši instanci jedinečná, například `https://myaccount.blob.core.windows.net` nebo `https://mykeyvault.vault.azure.net/`. Druhá z nich také obvykle slouží k operacím s daty a nikoli k operacím správy. 
 - Přiřazení rolí musí používat [předdefinované role](../../role-based-access-control/built-in-roles.md)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka nebo jakýchkoli integrovaných rolí s oprávněním pro [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) . Role správce přístupu uživatelů je podporovaná jenom pro omezené použití při [přiřazování rolí ke spravovaným identitám](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
-- V současné době nemůžete připojit předplatné (nebo skupinu prostředků v rámci předplatného) pro správu delegovaných prostředků Azure, pokud předplatné používá Azure Databricks. Podobně platí, že pokud bylo předplatné zaregistrované pro registraci u poskytovatele prostředků **Microsoft. ManagedServices** , nebudete moct v tomto okamžiku vytvořit pracovní prostor datacihly pro toto předplatné.
+- I když můžete připojit odběry, které používají Azure Databricks, uživatelé v tenantovi pro správu nemůžou v současné době spouštět Azure Databricks pracovní prostory na delegovaném předplatném.
 - I když můžete připojit odběry a skupiny prostředků pro správu delegovaných prostředků Azure, které mají zámky prostředků, nebudou tyto zámky bránit provádění akcí uživatelům ve správě tenanta. [Zakažte přiřazení](../../role-based-access-control/deny-assignments.md) , která chrání systémem spravované prostředky, jako jsou ty, které vytvořily spravované aplikace Azure nebo plány Azure (přiřazení zamítnutí přiřazení systémem), zabrání uživatelům ve správě tenanta na těchto prostředcích. Nicméně v tomto okamžiku nemohou uživatelé v tenantovi zákazníka vytvořit vlastní přiřazení odepřít (přiřazení odepřít uživateli).
 
 ## <a name="next-steps"></a>Další kroky

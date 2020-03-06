@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/07/2019
+ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251329"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395718"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -64,6 +64,7 @@ Data se neukládají ve vašem účtu. Operace prováděné prostřednictvím ro
 Můžete začít používat rozhraní API pro analýzu textu v procesech, a to i v případě, že při programování nemáte hodně zkušeností. Pomocí těchto kurzů se dozvíte, jak můžete použít rozhraní API k analýze textu různými způsoby, aby odpovídaly vaší úrovni prostředí. 
 
 * Vyžaduje se minimální programování:
+    * [Extrakce informací v Excelu pomocí Analýza textu a automatizace](tutorials/extract-excel-information.md)
     * [Použití rozhraní API pro analýzu textu a MS Flow k identifikaci mínění komentářů ve skupině Yammeru](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
     * [Integrace Power BI s rozhraní API pro analýzu textu k analýze názoru zákazníků](tutorials/tutorial-power-bi-key-phrases.md)
 * Doporučené programovací prostředí:

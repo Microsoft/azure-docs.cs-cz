@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 361ee5179b20d9488bb477a4e3c9fc0f0e6f266e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190653"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301433"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -492,7 +492,6 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 ### <a name="tooling-support-for-file-storage"></a>Podpora nástrojů pro úložiště File
 
 * [Začínáme s AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [Použití Azure CLI s Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Řešení potíží se službou Azure Files ve Windows](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Referenční informace

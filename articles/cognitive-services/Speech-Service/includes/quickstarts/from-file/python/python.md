@@ -9,14 +9,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/30/2020
 ms.author: dapine
-ms.openlocfilehash: f3a6ffeede05c1a2e9a883d40df19819e6a4bb3b
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 4e8d100000e7191c77c09a1b2e4c28088e247d8f
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445274"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384061"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -93,7 +93,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a použití sady Speech SDK s Visual Studio Code
 
-1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 nebo novější.
+1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 až 3,8.
 1. Stáhněte a nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. Z nabídky vyberte **soubor** > **Předvolby** > **rozšíření** . Vyhledejte **Python**.
 

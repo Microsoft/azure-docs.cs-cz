@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd77c77abc8fe60eb18febde6fcc5bdffe6d7871
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538095"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402713"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co jsou pole – programovatelné pole brány (FPGA) a jak nasadit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Tento článek obsahuje úvod do polí s programovatelné branou (FPGA) a ukazuje, jak nasadit vaše modely pomocí Azure Machine Learning do Azure FPGA. 
 
-Pole FPGA obsahují pole programovatelných bloků logiky a hierarchii propojení, jejichž konfigurace se dá měnit. Propojení umožňují, aby tyto bloky byly po výrobě nakonfigurované různými způsoby. V porovnání s jinými čipy FPGA poskytuje kombinaci programovatelnosti a výkonu.
+FPGA obsahují pole programovatelných logických bloků a hierarchii, kterou lze znovu nakonfigurovat. Propojení umožňují, aby tyto bloky byly po výrobě nakonfigurované různými způsoby. V porovnání s jinými čipy FPGA poskytuje kombinaci programovatelnosti a výkonu.
 
 ## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA vs. CPU, GPU a ASIC
 
@@ -79,7 +79,7 @@ Azure FPGA jsou integrované s Azure Machine Learning. Microsoft používá FPGA
 Následující scénáře používají FPGA:
 + [Automatizovaný systém optické kontroly](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
 
-+ [Mapování titulní pozemního](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
++ [Mapování pozemkového pokrytí](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
 
 
@@ -88,7 +88,7 @@ Následující scénáře používají FPGA:
 Model můžete nasadit jako webovou službu v FPGA s využitím Azure Machine Learning Modely s hardwarovou akcelerací. Použití FPGA poskytuje odvození nízké latence, a to i s jednou velikostí dávky. Odvození modelu nebo Bodové hodnocení je fáze, ve které se nasazený model používá pro předpověď, nejčastěji pro produkční data.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure.  Pokud ho ještě nemáte, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -191,7 +191,7 @@ classifier_output = model_graph.get_default_classifier(feature_tensor)
 print(classifier_output)
 ```
 
-### <a name="save-the-model"></a>Uložení modelu
+### <a name="save-the-model"></a>Uložit model
 
 Nyní, když byl načten preprocesor, ResNet 50 featurizer a klasifikátor, uložte graf a přidružené proměnné jako model.
 
@@ -325,7 +325,7 @@ Nasazení modelu jako produkční vysoce škálovatelnou webovou službu, použi
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2”. If no value is specified, the default is "eastus".
+# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2". If no value is specified, the default is "eastus".
 prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
                                                     agent_count = 1,
                                                     location = "eastus")
@@ -436,6 +436,6 @@ Podívejte se na tyto poznámkové bloky, videa a blogy:
 
 + [Hardware s škálovatelným škálováním: ML na škále nad Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
-+ [Uvnitř Microsoft FPGA cloudu založenému na FPGA (video)](https://channel9.msdn.com/Events/Build/2017/B8063)
++ [V rámci konfigurovatelného cloudu založeného na Microsoft FPGA (video)](https://channel9.msdn.com/Events/Build/2017/B8063)
 
-+ [Microsoft Office Project Brainwave pro AI v reálném čase: domovské stránce projektu](https://www.microsoft.com/research/project/project-brainwave/)
++ [Projekt Brainwave pro AI v reálném čase: Domovská stránka projektu](https://www.microsoft.com/research/project/project-brainwave/)

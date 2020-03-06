@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: e22a9ae2888187dc877876ee5d4d4ec4ecb7c6e5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602591"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329438"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Kurz: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play (Preview) a jeho připojení k aplikaci IoT Central
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Spusťte kód zařízení ve Windows a podívejte se, jak se připojí k vaší IoT Central aplikaci.
 > * Podívejte se na simulovanou telemetrii, kterou zařízení odesílá.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) pro vytvoření IoT Central aplikace pomocí vlastní šablony **aplikace > vlastní** .
 
@@ -169,10 +169,10 @@ Pomocí sady SDK pro zařízení sestavíte nevygenerovanou zástupné kódy za�
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. Po úspěšném dokončení sestavení ve stejném příkazovém řádku spusťte aplikaci. Nahraďte `<scopeid>` a `<primarykey>` hodnotami, které jste si poznamenali dříve:
+1. Po úspěšném dokončení sestavení ve stejném příkazovém řádku spusťte aplikaci. Nahraďte `<scopeid>` a `<devicekey>` hodnotami, které jste si poznamenali dříve:
 
     ```cmd
-    .\Release\devkit_device.exe mxchip-001 <scopeid> <primarykey>
+    .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
     ```
 
 1. Aplikace zařízení spouští odesílání dat do IoT Hub. Někdy se při prvním spuštění předchozího příkazu zobrazí chyba `Error registering device for DPS`. Pokud se zobrazí tato chyba, zkuste příkaz zopakovat.

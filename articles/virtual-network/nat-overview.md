@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669535"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359260"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Co je Virtual Network NAT (Public Preview)?
 
@@ -154,7 +154,7 @@ Aby bylo možné zúčastnit se Public Preview, musí být odběry registrovány
       az provider register --namespace Microsoft.Network
     ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Azure Powershell
 
 1. registrace předplatného pro Public Preview
 
@@ -186,19 +186,19 @@ Ve verzi Public Preview se ceny uvažují 50%.
 
 Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
 
-## <a name="feedback"></a>Názor
+## <a name="feedback"></a>Váš názor
 
 Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
 ## <a name="limitations"></a>Omezení
 
-- Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
-- Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.
-- Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
-- Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
+* Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
+* Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.  Překlad adres (NAT) nejde nasadit v podsíti s předponou IPv6.
+* Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
+* Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [prostředku brány NAT](./nat-gateway-resource.md).
-- [Řekněte nám, co se má sestavit dál ve službě UserVoice](https://aka.ms/natuservoice).
-- [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).
+* Přečtěte si o [prostředku brány NAT](./nat-gateway-resource.md).
+* [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
+* [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).

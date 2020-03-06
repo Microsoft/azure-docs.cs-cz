@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6ba6aab1a1b4a78af1a991cbf74083a41f0c0306
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: dedab3ca330651f892a7dbd42a0201d8145256a8
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652174"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402587"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do vaší C# aplikace. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
@@ -28,7 +28,7 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
   * [Správce balíčků NuGet](https://github.com/jmrog/vscode-nuget-package-manager)
 * [Sada .NET Core SDK](https://www.microsoft.com/net/download)
 
-[!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Vytvoření projektu a instalace závislostí
 
@@ -422,3 +422,4 @@ Až projekt dokončíte, nezapomeňte z kódu aplikace odebrat klíč předplatn
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+                                    

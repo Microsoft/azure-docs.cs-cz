@@ -1,6 +1,6 @@
 ---
-title: Identita synchronizace a odolnost duplicitních atributů | Dokumentace Microsoftu
-description: Nové chování, jak zpracovat objekty s hlavní název uživatele nebo ProxyAddress konflikty během synchronizace adresářů přes Azure AD Connect.
+title: Synchronizace identity a duplicitní odolnost atributů | Microsoft Docs
+description: Nové chování při zpracování objektů pomocí hlavního názvu uživatele (UPN) nebo ProxyAddress koliduje během synchronizace adresářů pomocí Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,85 +16,88 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348764"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298339"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
-Odolnost duplicitních atributů je funkce v Azure Active Directory, ke které dojde k odstranění řešit zádrhele spojené s způsobené **UserPrincipalName** a **ProxyAddress** je v konfliktu při spuštění jedné od Microsoftu Nástroje pro synchronizaci.
+Odolnost duplicitních atributů je funkce v Azure Active Directory, která eliminuje tření způsobené ProxyAddress **a konflikty** protokolu SMTP při spuštění některého z nástrojů pro synchronizaci od společnosti Microsoft.
 
-Tyto dva atributy se obvykle musí být jedinečný mezi všemi **uživatele**, **skupiny**, nebo **kontakt** objekty v daném tenantu Azure Active Directory.
+Tyto dva atributy se obecně vyžadují jako jedinečné v rámci všech objektů **uživatele**, **skupiny**nebo **kontaktu** v daném klientovi Azure Active Directory.
 
 > [!NOTE]
-> Jenom uživatelé mají UPN.
+> UPN můžou mít jenom uživatelé.
 > 
 > 
 
-Nové chování, která umožňuje tato funkce je v cloudové části kanálu synchronizace, a proto je klient nezávislá a jsou relevantní pro libovolný produkt synchronizace společnosti Microsoft, včetně služby Azure AD Connect, nástroje DirSync a MIM + konektoru. Obecný pojem "synchronizačního klienta" je v tomto dokumentu používá k reprezentování některou z těchto produktů.
+Nové chování, které tato funkce umožňuje, je v cloudové části synchronizačního kanálu, proto je nezávislá klienta a relevantní pro libovolný produkt pro synchronizaci Microsoftu, včetně Azure AD Connect, DirSync a konektoru MIM +. V tomto dokumentu se používá obecný pojem "synchronizace klienta", který představuje některý z těchto produktů.
 
 ## <a name="current-behavior"></a>Aktuální chování
-Při pokusu o zřízení nového objektu s hodnotou hlavní název uživatele nebo ProxyAddress, který porušuje tato omezení jedinečnosti blokuje služby Azure Active Directory tohoto objektu bránit vytváření. Podobně pokud objekt je aktualizován nejedinečné hlavní název uživatele nebo ProxyAddress, aktualizace se nezdaří. Pokus o zajišťování nebo aktualizace proběhne při každém cyklu export klientem synchronizace a i nadále fungovat, dokud bude konflikt vyřešen. Chyba sestavy e-mailu je generována při každém pokusu o a je zaznamenána chyba klientem synchronizace.
+Pokud dojde k pokusu o zřízení nového objektu s hodnotou hlavního názvu uživatele (UPN) nebo ProxyAddress, která porušuje toto omezení jedinečnosti, Azure Active Directory blokuje vytvoření objektu. Podobně, pokud je objekt aktualizován pomocí nejedinečného hlavního názvu uživatele (UPN) nebo ProxyAddress, aktualizace se nezdařila. Pokus o zřízení nebo aktualizace se zopakuje u synchronizačního klienta na každém cyklu exportu a pokračuje v selhání, dokud konflikt nebude vyřešen. Při každém pokusu se vygeneruje e-mail s oznámením o chybách a synchronizační klient se zaprotokoluje chyba.
 
-## <a name="behavior-with-duplicate-attribute-resiliency"></a>Chování s odolnost duplicitních atributů
-Místo úplně neúspěšné ke zřízení nebo aktualizaci objektu s duplicitní atribut, Azure Active Directory "umístí do karantény" duplicitní atribut, který by mohla narušit omezení jedinečnosti. Pokud tento atribut je vyžadován pro zřizování, jako jsou UserPrincipalName, služba přiřadí hodnotu zástupného symbolu. Formát tyto dočasné hodnoty  
-"***\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >. onmicrosoft.com***".  
-Pokud atribut není vyžadována, třeba **ProxyAddress**, Azure Active Directory jednoduše umístí do karantény atribut konflikt a pokračuje v objektu vytvoření nebo aktualizace.
+## <a name="behavior-with-duplicate-attribute-resiliency"></a>Chování s odolností duplicitních atributů
+Místo úplného selhání při zřizování nebo aktualizaci objektu s duplicitním atributem Azure Active Directory "karanténa" duplicitní atribut, který by narušil omezení jedinečnosti. Pokud je tento atribut vyžadován pro zřizování, jako je UserPrincipalName, služba přiřadí zástupnou hodnotu. Formát těchto dočasných hodnot je  
+_**\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >. The Microsoft. com**_ .
 
-Při umístění do karantény atribut, odesílají informace o konflikt stejné chybě sestav e-mailu používat staré chování. Ale tyto informace se zobrazí jenom v chybové zprávě jednou, když se stane o karanténě, ho nepokračuje má být zaznamenána v budoucích e-mailů. Navíc protože úspěšném exportu pro tento objekt synchronizačního klienta neprotokoluje chybu a neopakuje vytvořit nebo aktualizovat operace při následné synchronizaci cykly.
+Proces odolnosti atributů zpracovává pouze hodnoty hlavního názvu uživatele (UPN) a SMTP **ProxyAddress** .
 
-Podporující toto chování byl přidán nový atribut k objektu třídy uživatelů, skupin a kontaktů:  
+Pokud atribut není vyžadován, jako je například **ProxyAddress**, Azure Active Directory jednoduše umístí do karantény atribut konflikt a pokračuje v vytvoření nebo aktualizaci objektu.
+
+Po umístění atributu do karantény se informace o konfliktu odesílají do stejného e-mailu s hlášením o chybách, který se používá ve starém chování. Tyto informace se však v hlášení o chybách zobrazí pouze jednou, když dojde k umístění karantény, není nadále přihlášena k budoucím e-mailům. Vzhledem k tomu, že export pro tento objekt byl úspěšný, synchronizační klient neprotokoluje chybu a při dalších synchronizačních cyklech neopakuje operaci vytvoření/aktualizace.
+
+Pro podporu tohoto chování byl do třídy objektu uživatel, skupina a kontakt přidán nový atribut:  
 **DirSyncProvisioningErrors**
 
-To je více Vážíme si toho atribut, který se používá k ukládání konfliktní atributy, které by mohla narušit omezení jedinečnosti se přidaly normálně. Úlohy na pozadí časovač je povolen v Azure Active Directory, která se spouští každou hodinu hledat duplicitní atribut je v konfliktu, které byly vyřešeny a automaticky odstraní dotyčný atributy z karantény.
+Jedná se o vícehodnotový atribut, který se používá k uložení konfliktních atributů, které by porušily omezení jedinečnosti, pokud by se měly přidat normálně. Úloha časovače na pozadí byla povolena v Azure Active Directory, která se spouští každou hodinu pro hledání duplicitních konfliktů atributů, které byly vyřešeny, a automaticky odstraňuje atributy z karantény.
 
-### <a name="enabling-duplicate-attribute-resiliency"></a>Povolení odolnost duplicitních atributů
-Odolnost duplicitních atributů bude toto nové chování u všech tenantů Azure Active Directory. Bude na ve výchozím nastavení pro všechny tenanty, které povolena synchronizace poprvé 22. srpna 2016 nebo novější. Klienty, kteří povolili synchronizaci před tímto datem bude mít zapnutou v dávkách. Zavedení této opravy bude zahájeno v září 2016 a e-mailové oznámení se odešlou na každého tenanta technická oznámení kontaktu s konkrétní datum, kdy bude povolena funkce.
+### <a name="enabling-duplicate-attribute-resiliency"></a>Povoluje se odolnost duplicitních atributů.
+Odolnost duplicitních atributů bude novým výchozím chováním ve všech Azure Active Directorych klientech. Ve výchozím nastavení bude pro všechny klienty s povolenou synchronizací poprvé 22 2016 nebo novější. Klienti, kteří mají povolenou synchronizaci před tímto datem, budou mít povolenou funkci v dávkách. Toto zavedení začne v září 2016 a pošle se e-mailové oznámení každému klientovi s technickým oznámením s konkrétním datem, kdy bude funkce povolená.
 
 > [!NOTE]
-> Jakmile bylo zapnuto odolnost proti chybám duplicitní atribut nejde zakázat.
+> Když je zapnutá odolnost duplicitního atributu, nejde zakázat.
 
-Pokud chcete zkontrolovat, pokud je funkce pro vašeho tenanta, můžete tak učinit stažení nejnovější verze modulu Azure Active Directory PowerShell a spuštěním:
+Pokud chcete zjistit, jestli je funkce pro vašeho tenanta povolená, můžete to udělat stažením nejnovější verze modulu Azure Active Directory PowerShellu a spuštěním:
 
 `Get-MsolDirSyncFeatures -Feature DuplicateUPNResiliency`
 
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> Rutina Set-MsolDirSyncFeature už můžete aktivně povolit funkci duplicitní atribut odolnost předtím, než je zapnutý pro vašeho tenanta. Aby bylo možné otestovat funkci, musíte vytvořit nového tenanta Azure Active Directory.
+> Rutinu Set-MsolDirSyncFeature už nemůžete použít k proaktivní aktivaci funkce odolnosti duplicitních atributů předtím, než je pro vašeho tenanta zapnutá. Aby bylo možné funkci otestovat, budete muset vytvořit nového tenanta Azure Active Directory.
 
-## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Identifikaci objektů s DirSyncProvisioningErrors
-Nyní existují dvě metody k identifikaci objektů, které mají tyto chyby z důvodu duplicitní vlastnost je v konfliktu, Azure Active Directory PowerShell a [centra pro správu služeb Microsoft 365](https://admin.microsoft.com). Existují plány můžete rozšířit do další portálu závislosti vytváření sestav v budoucnu.
+## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Identifikace objektů pomocí DirSyncProvisioningErrors
+V současné době existují dvě metody identifikace objektů, které mají tyto chyby kvůli konfliktům duplicitních vlastností, Azure Active Directory PowerShellu a [centru pro správu Microsoft 365](https://admin.microsoft.com). Existují plány pro další vytváření sestav na základě portálu v budoucnu.
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
-Pro rutiny Powershellu v tomto tématu platí následující:
+Pro rutiny PowerShellu v tomto tématu platí následující:
 
-* Všechny tyto rutiny jsou malá a velká písmena.
-* **– ErrorCategory PropertyConflict** musí být zahrnut. Aktuálně nejsou žádné jiné typy **ErrorCategory**, ale to může v budoucnu rozšířit.
+* U všech následujících rutin se rozlišují velká a malá písmena.
+* **– ErrorCategory PropertyConflict** musí být zahrnuto vždy. V tuto chvíli neexistují žádné jiné typy **ErrorCategory**, ale to může být v budoucnu prodloužené.
 
-Nejprve Začínáme spuštěním **Connect-MsolService** a zadání přihlašovacích údajů správce tenanta.
+Nejdřív Začněte spuštěním **Connect-MsolService** a zadáním přihlašovacích údajů pro správce tenanta.
 
-Potom použijte následující rutiny a operátory k zobrazení chyb různými způsoby:
+Pak použijte následující rutiny a operátory k zobrazení chyb různými způsoby:
 
 1. [Zobrazit vše](#see-all)
 2. [Podle typu vlastnosti](#by-property-type)
 3. [Konfliktní hodnota](#by-conflicting-value)
-4. [Hledání řetězce](#using-a-string-search)
-5. Řazení
-6. [V omezené množství nebo vše](#in-a-limited-quantity-or-all)
+4. [Použití vyhledávání řetězců](#using-a-string-search)
+5. Standard
+6. [V omezeném množství nebo všech](#in-a-limited-quantity-or-all)
 
-#### <a name="see-all"></a>Zobrazit všechno
-Jakmile budete připojeni, zobrazíte seznam obecné zřizování atribut chyby v tenantovi spusťte:
+#### <a name="see-all"></a>Zobrazit vše
+Po připojení zobrazíte obecný seznam chyb při zřizování atributů ve spuštění tenanta:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
-To vytváří výsledek podobný tomuto:  
+Výsledkem je například následující:  
  ![Get-MsolDirSyncProvisioningError](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")  
 
 #### <a name="by-property-type"></a>Podle typu vlastnosti
-Chcete-li zobrazit chyby podle typu vlastnosti, přidejte **- PropertyName** s příznakem **UserPrincipalName** nebo **ProxyAddresses** argument:
+Chcete-li zobrazit chyby podle typu vlastnosti, přidejte příznak **-PropertyName** s argumentem **userPrincipalName** nebo **proxyAddresses** :
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
@@ -103,76 +106,76 @@ Nebo
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
 #### <a name="by-conflicting-value"></a>Konfliktní hodnota
-Pokud chcete zobrazit chyby týkající se určité vlastnosti přidat **- PropertyValue** příznak ( **- PropertyName** musí také možné používat při přidávání tohoto příznaku):
+Pokud chcete zobrazit chyby související s konkrétní vlastností, přidejte příznak **-PropertyValue** ( **-PropertyName** se musí použít zároveň při přidávání tohoto příznaku):
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 
-#### <a name="using-a-string-search"></a>Hledání řetězce
-Postup použití vyhledávání široký řetězec **- SearchString:** příznak. To je možné nezávisle na sobě ze všech výše uvedených příznaky, s výjimkou produktů **- ErrorCategory PropertyConflict**, což je vždy vyžaduje:
+#### <a name="using-a-string-search"></a>Použití vyhledávání řetězců
+K provedení širokého vyhledávání řetězců použijte příznak **-SearchString** . Dá se použít nezávisle na všech výše uvedených příznakech, s výjimkou **-ErrorCategory PropertyConflict**, který je vždycky povinný:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
-#### <a name="in-a-limited-quantity-or-all"></a>V omezené množství nebo vše
-1. **MaxResults \<Int >** slouží k omezení dotazu na konkrétní počet hodnot.
-2. **Všechny** slouží k zajištění všechny výsledky jsou načteny v případě, že existuje velký počet chyb.
+#### <a name="in-a-limited-quantity-or-all"></a>V omezeném množství nebo všech
+1. **MaxResults \<Int >** lze použít k omezení dotazu na určitý počet hodnot.
+2. **Vše** lze použít k zajištění toho, aby všechny výsledky byly načteny v případě, že existuje velký počet chyb.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="microsoft-365-admin-center"></a>Centrum pro správu služeb Microsoft 365
-Chyby synchronizace adresáře můžete zobrazit v Centru pro správu Microsoftu 365. Sestavy v Microsoft 365 admin center zobrazí se jenom **uživatele** objekty, které mají tyto chyby. Nezobrazuje se informace o konfliktech mezi **skupiny** a **kontakty**.
+## <a name="microsoft-365-admin-center"></a>Centrum pro správu Microsoft 365
+Chyby synchronizace adresářů můžete zobrazit v centru pro správu Microsoft 365. Sestava v centru pro správu Microsoft 365 zobrazuje pouze **uživatelské** objekty, které obsahují tyto chyby. Nezobrazuje informace o konfliktech mezi **skupinami** a **Kontakty**.
 
-![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "aktivních uživatelů")
+![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktivní uživatelé")
 
-Pokyny o tom, jak zobrazit chyby synchronizace adresáře v Centru pro správu služeb Microsoft 365 najdete v tématu [identifikaci chyb synchronizace adresáře v Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Pokyny k zobrazení chyb synchronizace adresářů v centru pro správu Microsoft 365 najdete v tématu [Identifikace chyb synchronizace adresářů v sadě Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
-### <a name="identity-synchronization-error-report"></a>Sestava chyb synchronizace identit
-Když se zpracovává objekt s konfliktem duplicitní atribut kontaktovat toto nové chování oznámení je součástí standardní e-mailovou zprávu o chybách synchronizace identit, odeslaný technická oznámení tenanta. Je však důležité změny v rámci tohoto chování. V minulosti informace o duplicitní atribut konfliktu by být součástí každé následné chybách dokud konflikt se vyřešil. S toto nové chování oznamování chyb pro danou konflikt být použito pouze jednou – v době, kdy je v karanténě konfliktním atributem.
+### <a name="identity-synchronization-error-report"></a>Zpráva o chybě Synchronizace identity
+Když se při tomto novém chování zpracuje objekt s duplicitním atributem, do e-mailové zprávy o chybě synchronizace identity, který se pošle na kontaktní zprávu s technickým oznámením, se pošle oznámení. V tomto chování však existuje důležitá změna. V minulosti byly informace o konfliktu duplicitních atributů zahrnuty do každé následné zprávy o chybách, dokud konflikt nebude vyřešen. S tímto novým chováním se oznámení o chybách daného konfliktu zobrazí jenom jednou – v okamžiku, kdy je konfliktní atribut v karanténě.
 
-Tady je příklad vypadá e-mailové oznámení pro ProxyAddress konflikt:  
-    ![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "aktivních uživatelů")  
+Tady je příklad, jak e-mailové oznámení vypadá jako u ProxyAddress konfliktu:  
+    ![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktivní uživatelé")  
 
 ## <a name="resolving-conflicts"></a>Řešení konfliktů
-Řešení potíží s taktika strategie a řešení pro tyto chyby by neměl lišit od způsob zpracovávaly chyby duplicitních atributů v minulosti. Jediným rozdílem je, že úlohy časovače přesune prostřednictvím klienta na straně služby automaticky přidat atribut dotyčný správný objekt po vyřešení konfliktu.
+Strategie řešení potíží a řešení taktiku pro tyto chyby by se neměly lišit od způsobu zpracování duplicitních chyb atributů v minulosti. Jediným rozdílem je, že úloha časovače se v rámci tenanta na straně služby po vyřešení konfliktu automaticky přidá k příslušnému objektu.
 
-Následující článek popisuje různé strategie jejich řešení: [Duplicitní nebo neplatný atributů, které brání synchronizace adresářů v Office 365](https://support.microsoft.com/kb/2647098).
+Následující článek popisuje různé strategie řešení potíží a řešení: [duplicitní nebo neplatné atributy brání synchronizaci adresářů v sadě Office 365](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Známé problémy
-Žádná z těchto známých problémů způsobí, že snížení dat ke ztrátě nebo služby. Některé z nich jsou aesthetic, ostatní způsobit standard "*předběžné odolnost proti chybám*" chyby duplicitních atributů, která je vyvolána namísto umístění do karantény atribut konflikt a druhý způsobí, že některé chyby tak, aby vyžadovala velmi ruční opravit.
+Žádné z těchto známých problémů nezpůsobí ztrátu dat nebo snížení úrovně služeb. Některé z nich jsou estetické, jiné způsobují standardní "*odolnost proti*chybám duplicitních atributů namísto umístění do karantény atributu konflikt a další způsobí, že některé chyby budou vyžadovat další ruční opravy.
 
 **Základní chování:**
 
-1. Objekty s konkrétním atributem konfigurace dál dostávat chyby export na rozdíl od duplicitní atributy, které se umístí do karantény.  
+1. Objekty s konkrétními konfiguracemi atributů nadále obdrží chyby exportu, a to na rozdíl od duplicitních atributů, které jsou v karanténě.  
    Příklad:
    
-    a. Vytvoření nového uživatele ve službě AD s název UPN **Joe\@contoso.com** a ProxyAddress **smtp:Joe\@contoso.com**
+    a. Ve službě AD se vytvoří nový uživatel s hlavním názvem uživatele (UPN) **jana\@contoso.com** a ProxyAddress **smtp: Jana\@contoso.com**
    
-    b. Vlastnosti tohoto objektu jsou v konfliktu s existující skupinu, ve kterém je ProxyAddress **SMTP:Joe\@contoso.com**.
+    b. Vlastnosti tohoto objektu jsou v konfliktu s existující skupinou, kde ProxyAddress je **SMTP: jan\@contoso.com**.
    
-    c. Při exportu **ProxyAddress konflikt** nemuseli konfliktní atributy umístí do karantény, je vržena chyba. Operace je opakována při každém cyklu následná synchronizace, jako by byl předtím, než byla povolena funkce odolnosti proti chybám.
-2. Pokud v místním se stejnou adresou SMTP se vytvoří dvě skupiny, jeden selže zřizování při prvním pokusu se standardní duplicitní **ProxyAddress** chyby. Ale duplicitní hodnota je správně umístit do karantény na další cyklus synchronizace.
+    c. Při exportu je vyvolána chyba **konfliktu ProxyAddress** namísto výskytu atributů konfliktu v karanténě. Operace se u každého následného synchronizačního cyklu opakuje, protože by to bylo předtím, než byla povolená funkce odolnosti proti chybám.
+2. Pokud se dvě skupiny vytvoří místně se stejnou adresou SMTP, jedna se nepovede zřídit při prvním pokusu se standardní duplicitní chybou **ProxyAddress** . Duplicitní hodnota je ale v rámci dalšího synchronizačního cyklu správně umístěná do karantény.
 
-**Sestavy portálu Office**:
+**Sestava portálu Office**:
 
-1. Podrobná chybová zpráva pro dva objekty v sadě konflikt (UPN) je stejný. To znamená, že oba měly jejich hlavní název uživatele změnit / umístit do karantény, když ve skutečnosti pouze jeden z nich měl jakékoli změny dat.
-2. Podrobná chybová zpráva pro hlavní název uživatele konflikt zobrazuje nesprávný displayName pro uživatele, který má určitá jejich hlavní název uživatele změnit/umístit do karantény. Příklad:
+1. Podrobná chybová zpráva pro dva objekty v sadě konfliktů hlavního názvu uživatele (UPN) je stejná. To značí, že se změnil hlavní název uživatele (UPN) i v karanténě, pokud ve skutečnosti pouze jeden z nich změnil data.
+2. Podrobná chybová zpráva pro konflikt hlavního názvu uživatele (UPN) zobrazuje špatný parametr DisplayName pro uživatele, který měl své hlavní název uživatele změněn nebo v karanténě. Příklad:
    
-    a. **Uživatel A** synchronizuje se první z nich s **UPN = uživatel\@contoso.com**.
+    a. **Uživatel A** nejprve synchronizuje s hlavním názvem uživatele **(UPN) = User\@contoso.com**.
    
-    b. **Uživatel B** se pokusil synchronizovat do další s **UPN = uživatel\@contoso.com**.
+    b. **Uživatel B** se pokusil o synchronizaci s hlavním názvem uživatele **(UPN) = User\@contoso.com**.
    
-    c. **Uživatel B** UPN se změní na **User1234\@contoso.onmicrosoft.com** a **uživatele\@contoso.com** se přidá do **DirSyncProvisioningErrors** .
+    c. **Uživatel B** Hlavní název uživatele (UPN) se změní na **User1234\@contoso.onmicrosoft.com** a do **DirSyncProvisioningErrors**se přidá **uživatel\@contoso.com** .
    
-    d. Chybová zpráva pro **uživateli B** , která by měla zobrazovat **uživatel A** už má **uživatele\@contoso.com** podle UPN, ale zobrazuje **uživatele B** vlastní displayName.
+    d. Chybová zpráva pro **uživatele B** by měla indikovat, **že uživatel A** už má **\@contoso.com** jako hlavní název uživatele (UPN), ale zobrazuje vlastní zobrazovaný název **uživatele b** .
 
-**Sestava chyb synchronizace identit**:
+**Zpráva o chybě synchronizace identity**:
 
-Odkaz pro *pokyny k vyřešení tohoto problému* není správná:  
-    ![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "aktivních uživatelů")  
+Odkaz na *postup, jak tento problém vyřešit* , je nesprávný:  
+    ![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktivní uživatelé")  
 
-Mělo by odkazovat [ https://aka.ms/duplicateattributeresiliency ](https://aka.ms/duplicateattributeresiliency).
+Měl by odkazovat na [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 * [Synchronizace služby Azure AD Connect](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
-* [Identifikace chyb synchronizace adresáře v Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Identifikace chyb synchronizace adresářů v sadě Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

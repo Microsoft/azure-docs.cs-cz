@@ -17,11 +17,11 @@ ms.date: 03/24/2017
 ms.author: kumud
 ms.reviewer: annahar
 ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647318"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381045"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřazení více IP adres k virtuálním počítačům pomocí PowerShellu
 
@@ -295,7 +295,7 @@ K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy 
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-   Zobrazí se podobný výstup viz následující:
+   Zobrazí se výstup podobný následujícímu:
 
    ```
    Name       PrivateIpAddress PublicIpAddress                                           Primary

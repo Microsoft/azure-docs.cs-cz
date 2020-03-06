@@ -4,15 +4,15 @@ description: Přečtěte si o StringToBoolean funkcí SQL systému v Azure Cosmo
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8719857dca16585a045f8174dbac8df455f38f38
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349269"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296537"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
  Vrátí výraz přeložený na logickou hodnotu. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
@@ -34,7 +34,7 @@ StringToBoolean(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToBoolean` se chová v různých typech. 
+  Následující příklad ukazuje, jak se `StringToBoolean` chová napříč různými typy. 
  
  Níže jsou uvedeny příklady s platným vstupem.
 
@@ -47,7 +47,7 @@ SELECT
     StringToBoolean("false    ") AS b3
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"b1": true, "b2": false, "b3": false}]
@@ -63,7 +63,7 @@ SELECT
     StringToBoolean("False")
 ```  
 
-Tady je sada výsledků.  
+Zde je sada výsledků.  
   
 ```json
 [{}]
@@ -80,11 +80,15 @@ SELECT
     StringToBoolean(true)
 ```  
 
-Tady je sada výsledků.  
+Zde je sada výsledků.  
   
 ```json
 [{}]
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

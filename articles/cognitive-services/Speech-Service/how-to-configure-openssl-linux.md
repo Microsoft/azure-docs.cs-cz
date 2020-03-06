@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: ff8772f7c3c3213c010b0bdbd0d0aa8897404bac
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119994"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331140"
 ---
 # <a name="configure-openssl-for-linux"></a>Konfigurace OpenSSL pro Linux
 
@@ -42,13 +42,13 @@ Ověřte, zda je v OPENSSLDIR podadresář `certs`. V příkladu výše by byl `
 - OPENSSLDIR je `/opt/ssl`. Existuje `certs` podadresář s mnoha soubory `.crt` nebo `.pem`.
 Nastavte proměnnou prostředí `SSL_CERT_DIR`, aby odkazovala na `/opt/ssl/certs` před spuštěním programu, který používá sadu Speech SDK. Příklad:
 ```bash
-SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- OPENSSLDIR je `/etc/pki/tls`. Existuje soubor sady certifikátů, například `ca-bundle.pem` nebo `ca-bundle.crt`.
-Nastavte proměnnou prostředí `SSL_CERT_FILE`, aby odkazovala na `/etc/pki/tls/ca-bundle.pem` před spuštěním programu, který používá sadu Speech SDK. Příklad:
+- OPENSSLDIR je `/etc/pki/tls` (například v systémech založených na RHEL/CentOS). `certs` podadresář se souborem sady certifikátů, například `ca-bundle.crt`.
+Nastavte proměnnou prostředí `SSL_CERT_FILE`, aby odkazovala na tento soubor před spuštěním programu, který používá sadu Speech SDK. Příklad:
 ```bash
-SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
 ## <a name="next-steps"></a>Další kroky

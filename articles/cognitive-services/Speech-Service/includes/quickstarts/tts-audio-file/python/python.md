@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 4af31b281f4b2e7cdd7ed217753df55ce8009fa9
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446313"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383917"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](~/articles/cognitive-services/Speech-Service/get-started.md).
-* [Python 3,5 nebo novější](https://www.python.org/downloads/).
+* [Python 3,5 až 3,8](https://www.python.org/downloads/).
 * Balíček python Speech SDK je k dispozici pro tyto operační systémy:
     * Windows: x64 a x86.
     * Mac: macOS X verze 10,12 nebo novější.
-    * Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 na platformě x64.
+    * Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8 na platformě x64.
 * V systému Linux spuštěním těchto příkazů nainstalujte požadované balíčky:
 
   * V Ubuntu:
@@ -40,6 +40,16 @@ ms.locfileid: "77446313"
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
+
+  * V RHEL/CentOS 8:
+
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib openssl python3
+    ```
+
+> [!NOTE]
+> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 * V systému Windows budete potřebovat [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu.
 
@@ -110,7 +120,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a použití sady Speech SDK s Visual Studio Code
 
-1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 nebo novější.
+1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 až 3,8.
 1. Stáhněte a nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. Z nabídky vyberte **soubor** > **Předvolby** > **rozšíření** . Vyhledejte **Python**.
 

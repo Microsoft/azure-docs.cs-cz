@@ -3,12 +3,12 @@ title: Prostředky pro vývojáře – Language Understanding
 description: Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace Language Understanding (LUIS) ve vašem programovacím jazyce. Spravujte své prostředky Azure a LUIS předpovědi.
 ms.topic: reference
 ms.date: 02/11/2020
-ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f9d531f800ba0729a1f679c0bf3b11c8958c78ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152682"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391941"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Materiály pro vývojáře sady SDK, REST a CLI pro Language Understanding (LUIS)
 
@@ -109,7 +109,7 @@ Robot Framework nabízí [několik nástrojů](https://github.com/microsoft/botb
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o běžných [kódech chyb HTTP](luis-reference-response-codes.md)
-* [Referenční dokumentace](https://docs.microsoft.com/azure/index#pivot=sdkstools) pro všechna rozhraní API a sady SDK
+* [Referenční dokumentace](https://docs.microsoft.com/azure/index) pro všechna rozhraní API a sady SDK
 * [Rozhraní bot Framework](https://github.com/Microsoft/botbuilder-dotnet) a [Azure bot Service](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [Rozpoznávání kontejnerů](../cognitive-services-container-support.md)

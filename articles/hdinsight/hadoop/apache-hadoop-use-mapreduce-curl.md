@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 607020f1d540e83a4d049b96b9ab9a4ebcd385f0
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157249"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302708"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spouštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí REST
 
@@ -22,11 +22,11 @@ Naučte se používat REST API Apache Hive WebHCat ke spouštění úloh MapRedu
 > [!NOTE]  
 > Pokud jste již obeznámeni s používáním serverů Hadoop se systémem Linux, ale jste novinkou ke službě HDInsight, Projděte si informace [o tom, co potřebujete vědět o Apache Hadoop pro Linux v dokumentu HDInsight](../hdinsight-hadoop-linux-information.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-Buď:
+Buď
   * Prostředí Windows PowerShell nebo
   * [Otočení](https://curl.haxx.se/) pomocí [JQ](https://stedolan.github.io/jq/)
 
@@ -171,7 +171,7 @@ Buď:
 
 1. Až se stav úlohy změní na `SUCCEEDED`, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. Parametr `statusdir`, který je předán s dotazem, obsahuje umístění výstupního souboru. V tomto příkladu je umístění `/example/curl`. Tato adresa ukládá výstup úlohy do výchozího úložiště v clusterech na `/example/curl`.
 
-Tyto soubory můžete zobrazit a stáhnout pomocí rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Další informace o práci s objekty BLOB z Azure CLI najdete v článku [použití Azure CLI s Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) dokumentem.
+Tyto soubory můžete zobrazit a stáhnout pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Další informace o použití rozhraní příkazového řádku Azure pro práci s úložištěm objektů BLOB v Azure najdete v tématu [rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI](../../storage/blobs/storage-quickstart-blobs-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 

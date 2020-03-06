@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: af0466299d1f972fe9334beb5f31c886c1928a1c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273549"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328995"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Základní hodnoty zabezpečení Azure pro Batch
 
@@ -628,7 +628,7 @@ Ujistěte se, že se pro přístup k účtu úložiště obsahujícímu data Azu
 
 Principy šifrování Azure Storage účtu při přenosu:
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Monitorování Azure Security Center**: Ano
 

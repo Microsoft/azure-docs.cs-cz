@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484532"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299325"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Pochopení schématu Azure AD
 Objekt v Azure Active Directory (Azure AD), podobně jako jakýkoli adresář, je programovou datovou konstrukcí vysoké úrovně, která představuje takové věci jako uživatelé, skupiny a kontakty. Když vytvoříte nového uživatele nebo kontakt ve službě Azure AD, vytváříte novou instanci tohoto objektu. Tyto instance se můžou odlišit na základě jejich vlastností.
@@ -58,13 +58,13 @@ V následující tabulce jsou uvedeny běžné atributy a jejich synchronizace d
 
 |Místní služby Active Directory|Typ mapování|Azure AD|
 |-----|-----|-----|
-|CN|Přímé|commonName
-|countryCode|Přímé|countryCode|
-|displayName|Přímé|displayName|
+|CN|Direct|commonName
+|countryCode|Direct|countryCode|
+|displayName|Direct|displayName|
 |givenName|Výraz|givenName|
-|objectGUID|Přímé|sourceAnchorBinary|  
-|userprincipalName|Přímé|userPrincipalName (Hlavní název uživatele)|
-|ProxyAdress|Přímé|ProxyAddress|
+|objectGUID|Direct|sourceAnchorBinary|  
+|userprincipalName|Direct|userPrincipalName (Hlavní název uživatele)|
+|ProxyAdress|Direct|ProxyAddress|
 
 ## <a name="view-the-schema"></a>Zobrazit schéma
 > [!WARNING]
@@ -75,7 +75,7 @@ Chcete-li zobrazit schéma a ověřit jej, postupujte podle těchto kroků.
 1.  Přejít na [Průzkumník grafů](https://developer.microsoft.com/graph/graph-explorer).
 1.  Přihlaste se pomocí účtu globálního správce.
 1.  Na levé straně vyberte změnit oprávnění a zajistěte, aby byl adresář. **nepřístupný** **. všechno** se *poslalo*.
-1.  Spusťte dotaz https://graph.microsoft.com/beta/serviceprincipals/?$filter = StartsWith (DisplayName, ' Active '). Tento dotaz vrátí seznam objektů služby, které jsou vyfiltrovány.
+1.  Spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`. Tento dotaz vrátí seznam objektů služby, které jsou vyfiltrovány.
 1.  Vyhledejte `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` a poznamenejte si hodnotu `"id"`.
     ```
     "value": [

@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Regi
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6882cb683e0bd8b76bb1207e628e43f24c7b5987
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252120"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402845"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu
 
@@ -69,7 +69,7 @@ Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného 
 
 Výstup úspěšného příkazu [AZ ACR Task Create][az-acr-task-create] je podobný následujícímu:
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -136,9 +136,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 Příkaz `az acr task run` ve výchozím nastavení při spuštění příkazu streamuje výstup protokolu do vaší konzoly.
 
-```console
-$ az acr task run --registry $ACR_NAME --name taskhelloworld
-
+```output
 2018/09/17 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
 2018/09/17 22:51:00 Setting up Docker configuration...
 2018/09/17 22:51:02 Successfully set up Docker configuration
@@ -225,8 +223,7 @@ git push origin master
 
 Při spuštění příkazu `git push` můžete být vyzváni k zadání přihlašovacích údajů pro GitHub. Zadejte svoje uživatelské jméno pro GitHub a zadejte token PAT, který jste dříve vytvořili pro heslo.
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -239,8 +236,7 @@ az acr task logs --registry $ACR_NAME
 
 Výstup je podobný následujícímu a zobrazuje aktuálně spuštěnou (nebo naposledy spuštěnou) úlohu:
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: da4
 
@@ -259,9 +255,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 Výstup příkazu by měl vypadat podobně jako ten následující. Zobrazí se spuštění provedená službou ACR Tasks a ve sloupci označujícím způsob aktivace se u nejnovější úlohy zobrazí „Git Commit“:
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK             PLATFORM    STATUS     TRIGGER     STARTED               DURATION
 --------  --------------  ----------  ---------  ----------  --------------------  ----------
 da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44

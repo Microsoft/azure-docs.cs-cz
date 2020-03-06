@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182194"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304952"
 ---
 ## <a name="rootcert"></a>Vytvoření kořenového certifikátu podepsaného svým držitelem
 
@@ -28,6 +28,7 @@ K vytvoření kořenového certifikátu podepsaného svým držitelem použijte 
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
+ 3. Konzolu PowerShellu otevřete, pokud chcete vytvořit certifikát klienta hned po vytvoření tohoto kořenového certifikátu.
 
 ## <a name="clientcert"></a>Vygenerování klientského certifikátu
 
@@ -37,7 +38,7 @@ Následující kroky vás provedou vytvořením klientského certifikátu z koř
 
 V příkladech se pomocí rutiny New-SelfSignedCertificate vygenerují klientský certifikát, jehož platnost vyprší po dobu jednoho roku. Další informace o parametrech, jako je například nastavení jiné hodnoty vypršení platnosti pro klientský certifikát, naleznete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-### <a name="example-1"></a>Příklad 1
+### <a name="example-1---powershell-console-session-still-open"></a>Příklad 1 – relace konzoly PowerShellu je pořád otevřená
 
 Tento příklad použijte v případě, že jste po vytvoření kořenového certifikátu podepsaného svým držitelem nezavřeli konzolu PowerShellu. Tento příklad pokračuje z předchozí části a používá deklaraci deklarované ' $cert '. Pokud jste konzolu PowerShell zavřeli po vytvoření kořenového certifikátu podepsaného svým držitelem nebo vytváříte další klientské certifikáty v nové relaci konzoly PowerShellu, použijte postup uvedený v [příkladu 2](#ex2).
 
@@ -51,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>Příklad 2
+### <a name="ex2"></a>Příklad 2 – nová relace konzoly PowerShellu
 
 Pokud vytváříte další klientské certifikáty nebo nepoužíváte stejnou relaci prostředí PowerShell, kterou jste použili k vytvoření kořenového certifikátu podepsaného svým držitelem, použijte následující postup:
 

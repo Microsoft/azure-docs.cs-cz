@@ -1,0 +1,148 @@
+---
+title: Základní vstupně-výstupní operace | Mapy Microsoft Azure
+description: Naučte se efektivně číst a zapisovat XML a data s oddělovači pomocí základních knihoven z modulu prostorového vstupu/výstupu.
+author: farah-alyasari
+ms.author: v-faalya
+ms.date: 03/03/2020
+ms.topic: conceptual
+ms.service: azure-maps
+services: azure-maps
+manager: philmea
+ms.openlocfilehash: d2a82fd5d9ba958fd6490a83ecbbe0a4bdf820a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370931"
+---
+# <a name="core-io-operations"></a>Základní vstupně-výstupní operace
+
+Kromě poskytování nástrojů pro čtení prostorových datových souborů zpřístupňuje modul pro prostorové vstupně-výstupní operace základní knihovny pro čtení a zápis XML a data s oddělovači rychleji a efektivně.
+
+Obor názvů `atlas.io.core` obsahuje dvě třídy nízké úrovně, které můžou rychle číst a zapisovat data CSV a XML. Tyto základní třídy elektricky doplní čtečky prostorových dat a zapisovače v modulu prostorového vstupu/výstupu. Můžete je používat k přidání další podpory pro čtení a zápis souborů CSV nebo XML.
+ 
+## <a name="read-delimited-files"></a>Čtení souborů s oddělovači
+
+Třída `atlas.io.core.CsvReader` čte řetězce, které obsahují s oddělenými datovými sadami. Tato třída poskytuje dvě metody pro čtení dat:
+
+- Funkce `read` načte celou datovou sadu a vrátí dvojrozměrné pole řetězců reprezentující všechny buňky sady dat s oddělovači.
+- Funkce `getNextRow` přečte jednotlivé řádky textu v sadě dat s oddělovači a vrátí pole řetězců reprezentující všechny buňky v daném řádku sady dat. Uživatel může tento řádek zpracovat a uvolnit z tohoto řádku veškerou nepotřebnou paměť před zpracováním dalšího řádku. Funkce je tedy mnohem efektivnější.
+
+Ve výchozím nastavení čtečka použije jako oddělovač znak čárky. Oddělovač je však možné změnit na libovolný jeden znak nebo nastavit na `'auto'`. Když nastavíte `'auto'`, čtecí modul analyzuje první řádek textu v řetězci. Pak se v následující tabulce vybere nejběžnější znak, který použijete jako oddělovač.
+
+| | |
+| :-- | :-- |
+| Tečkou | `,` |
+| Tabulátor | `\t` |
+| Příkazem | `|` |
+
+Tento čtenář také podporuje kvalifikátory textu, které se používají ke zpracování buněk obsahujících znak oddělovače. Znak uvozovky (`'"'`) je výchozí kvalifikátor textu, ale může být změněn na libovolný jeden znak.
+
+## <a name="write-delimited-files"></a>Zapisovat soubory s oddělovači
+
+`atlas.io.core.CsvWriter` zapisuje pole objektů jako oddělený řetězec. Libovolný jeden znak lze použít jako oddělovač nebo textový kvalifikátor. Výchozí oddělovač je čárka (`','`) a výchozí kvalifikátor textu je znak uvozovky (`'"'`).
+
+Chcete-li použít tuto třídu, postupujte podle následujících kroků:
+
+- Vytvořte instanci třídy a volitelně nastavte vlastní oddělovač nebo kvalifikátor textu.
+- Zapište do třídy data pomocí funkce `write` nebo funkce `writeRow`. Pro funkci `write` předejte dvojrozměrné pole objektů reprezentujících více řádků a buněk. Chcete-li použít funkci `writeRow`, předejte pole objektů reprezentujících řádek dat s více sloupci.
+- Voláním funkce `toString` načtete řetězec s oddělovači. 
+- V případě potřeby zavolejte metodu `clear`, aby modul pro zápis znovu natlačil a snížil jeho přidělení prostředků, nebo volejte metodu `delete`, aby bylo možné uvolnit instanci zapisovače.
+
+> [!Note]
+> Počet zapsaných sloupců bude omezen na počet buněk v prvním řádku dat předaných do zapisovače.
+
+## <a name="read-xml-files"></a>Čtení souborů XML
+
+Třída `atlas.io.core.SimpleXmlReader` je rychlejší při analýze souborů XML než `DOMParser`. Třída `atlas.io.core.SimpleXmlReader` ale vyžaduje, aby soubory XML byly ve správném formátu. Soubory XML, které nejsou ve správném formátu, například chybějící ukončovací značky, budou nejspíš způsobit chybu.
+
+Následující kód ukazuje, jak použít třídu `SimpleXmlReader` k analýze řetězce XML do objektu JSON a jeho serializaci do požadovaného formátu.
+
+```javascript
+//Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
+var xmlDoc = new atlas.io.core.SimpleXmlReader().parse(xmlStringToParse);
+
+//Verify that the root XML tag name of the document is the file type your code is designed to parse.
+if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Your desired root XML tag name>') {
+
+    var node = xmlDoc.root;
+
+    //Loop through the child node tree to navigate through the parsed XML object.
+    for (var i = 0, len = node.childNodes.length; i < len; i++) {
+        childNode = node.childNodes[i];
+
+        switch (childNode.tagName) {
+            //Look for tag names, parse and serialized as desired.
+        }
+    }
+}
+```
+
+## <a name="write-xml-files"></a>Zápis souborů XML
+
+Třída `atlas.io.core.SimpleXmlWriter` zapisuje ve správném formátu XML do paměti efektivní způsob.
+
+Následující kód ukazuje, jak použít třídu `SimpleXmlWriter` k vygenerování dobře formátovaného řetězce XML.
+
+```javascript
+//Create an instance of the SimpleXmlWriter class.
+var writer = new atlas.io.core.SimpleXmlWriter();
+
+//Start writing the document. All write functions return a reference to the writer, making it easy to chain the function calls to reduce the code size.
+writer.writeStartDocument(true)
+    //Specify the root XML tag name, in this case 'root'
+    .writeStartElement('root', {
+        //Attributes to add to the root XML tag.
+        'version': '1.0',
+        'xmlns': 'http://www.example.com',
+         //Example of a namespace.
+        'xmlns:abc': 'http://www.example.com/abc'
+    });
+
+//Start writing an element that has the namespace abc and add other XML elements as children.
+writer.writeStartElement('abc:parent');
+
+//Write a simple XML element like <title>Azure Maps is awesome!</title>
+writer.writeElement('title', 'Azure Maps is awesome!');
+
+//Close the element that we have been writing children to.
+writer.writeEndElement();
+
+//Finish writing the document by closing the root tag and the document.
+writer.writeEndElement().writeEndDocument();
+
+//Get the generated XML string from the writer.
+var xmlString = writer.toString();
+```
+
+Vygenerovaný kód XML z výše uvedeného kódu by vypadal jako následující.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<root version="1.0" xmlns="http://www.example.com" xmlns:abc="http://www.example.com/abc">
+    <abc:parent>
+        <title>Azure Maps is awesome!</title>
+    </abc:parent>
+</root>
+```
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o třídách a metodách, které se používají v tomto článku:
+
+> [!div class="nextstepaction"]
+> [CsvReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
+
+> [!div class="nextstepaction"]
+> [CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
+
+> [!div class="nextstepaction"]
+> [SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
+
+> [!div class="nextstepaction"]
+> [SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
+
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
+
+> [!div class="nextstepaction"]
+> [Podrobnosti o podporovaném formátu dat](spatial-io-supported-data-format-details.md)

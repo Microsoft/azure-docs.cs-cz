@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 19/14/2020
 ms.author: dapine
-ms.openlocfilehash: 7be9037ddfd19d82263b37fe0b824e3c2b3f5078
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c626d794b60a129eb800085804a468dfad060d8a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76037806"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384012"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -52,7 +52,7 @@ Nebo si můžete tento kurz rychlý Start stáhnout jako [Jupyter](https://jupyt
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a použití sady Speech SDK s Visual Studio Code
 
-1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 nebo novější.
+1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 až 3,8.
 1. Stáhněte a nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. Z nabídky vyberte **soubor** > **Předvolby** > **rozšíření** . Vyhledejte **Python**.
 
@@ -85,7 +85,7 @@ Pokud máte problémy podle těchto pokynů, přečtěte si podrobný [kurz Visu
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

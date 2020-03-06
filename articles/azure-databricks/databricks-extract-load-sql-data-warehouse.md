@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249837"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301688"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -59,7 +59,7 @@ Než začnete s tímto kurzem, dokončete tyto úkoly:
 
    K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
 
-   * Při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku je třeba přiřadit roli **Přispěvatel dat objektů BLOB úložiště** k instančnímu objektu v rozsahu Data Lake Storage Gen2 účtu. Pokud přiřadíte roli nadřazené skupině prostředků nebo předplatnému, obdržíte chyby související s oprávněními, dokud tato přiřazení role nerozšíříte do účtu úložiště.
+   * Při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) v článku je třeba přiřadit roli **Přispěvatel dat objektů BLOB úložiště** k instančnímu objektu v rozsahu Data Lake Storage Gen2 účtu. Pokud přiřadíte roli nadřazené skupině prostředků nebo předplatnému, obdržíte chyby související s oprávněními, dokud tato přiřazení role nerozšíříte do účtu úložiště.
 
       Pokud byste chtěli použít seznam řízení přístupu (ACL) k přidružení instančního objektu ke konkrétnímu souboru nebo adresáři, referenční [řízení přístupu v Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 

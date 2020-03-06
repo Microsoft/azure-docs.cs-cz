@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 474f2634e6f7ddc1840548c39ae86cb54c3bf08e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596694"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299665"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Řešení potíží s Privileged Identity Management
 
@@ -34,9 +34,9 @@ Jako aktivní vlastník nebo správce přístupu uživatelů pro prostředek Azu
 
 K tomuto problému může dojít, pokud byla role správce přístupu uživatele pro instanční objekt PIM omylem odebrána z předplatného. Aby služba Privileged Identity Management mohla získat přístup k prostředkům Azure, musí být vždy přiřazena [role správce přístupu k uživateli](../../role-based-access-control/built-in-roles.md#user-access-administrator) v rámci předplatného služby Azure.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
-Přiřaďte roli správce přístupu uživatele k hlavnímu názvu služby Privileged Identity Management (MS-PIM) na úrovni předplatného. Toto přiřazení by mělo službě Privileged Identity Management umožňovat přístup k prostředkům Azure. Role se dá přiřadit na úrovni skupiny pro správu nebo na úrovni předplatného v závislosti na vašich požadavcích. Další informace o instančních objektech najdete v tématu [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role).
+Přiřaďte roli správce přístupu uživatele k hlavnímu názvu služby Privileged Identity Management (MS-PIM) na úrovni předplatného. Toto přiřazení by mělo službě Privileged Identity Management umožňovat přístup k prostředkům Azure. Role se dá přiřadit na úrovni skupiny pro správu nebo na úrovni předplatného v závislosti na vašich požadavcích. Další informace o instančních objektech najdete v tématu [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,179 +3,152 @@ title: 'Rychlý Start: Vytvoření webové aplikace v Node. js'
 description: Nasaďte první Hello World Node. js do Azure App Service v řádu minut. Nasadíte pomocí Visual Studio Code, což je jedním z mnoha způsobů, jak nasadit do App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
-ms.date: 09/30/2019
+ms.date: 03/04/2020
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 3fcc4d9d33637cd61f5621cc95788e9de8ffaec6
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1f105792a95115580d52444a617b3fc1678843ca
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500117"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374084"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure 
 
-Azure App Service poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak nasadit aplikaci Node. js do Azure App Service.
+Začněte s Azure App Service vytvořením aplikace Node. js/Express místně pomocí Visual Studio Code a pak nasazením aplikace do cloudu. Vzhledem k tomu, že používáte bezplatnou App Service úroveň, nebudete mít k dokončení tohoto rychlého startu žádné náklady.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Pokud nemáte účet Azure, [Zaregistrujte si ještě dnes](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) bezplatný účet s $200 v kreditech Azure, abyste si vyzkoušeli libovolnou kombinaci služeb.
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
+- [Node.js a npm](https://nodejs.org) Spusťte `node --version` příkazu, abyste ověřili, že je Node. js nainstalovaný.
+- [Visual Studio Code](https://code.visualstudio.com/).
+- [Azure App Service rozšíření](vscode:extension/ms-azuretools.vscode-azureappservice) pro Visual Studio Code.
 
-Potřebujete [Visual Studio Code](https://code.visualstudio.com/) nainstalovat spolu s [Node. js a npm](https://nodejs.org/en/download), správce balíčků Node. js.
+## <a name="clone-and-run-a-local-nodejs-application"></a>Klonování a spuštění místní aplikace Node. js
 
-Budete taky muset nainstalovat [rozšíření Azure App Service](vscode:extension/ms-azuretools.vscode-azureappservice), které můžete použít k vytvoření, správě a nasazení Web Apps pro Linux na platformě Azure jako službu (PaaS).
+1. V místním počítači otevřete terminál a naklonujte ukázkové úložiště:
 
-### <a name="sign-in"></a>Přihlášení
+    ```bash
+    git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
+    ```
 
-Po instalaci rozšíření se přihlaste ke svému účtu Azure. V řádku aktivity vyberte na logo Azure, kde se zobrazí Průzkumník **služby Azure App Service** . Vyberte **Přihlásit se k Azure...** a postupujte podle pokynů.
+1. Přejděte do složky nová aplikace:
 
-![Přihlaste se k Azure](containers/media/quickstart-nodejs/sign-in.png)
+    ```bash
+    cd nodejs-docs-hello-world
+    ```
 
-### <a name="troubleshooting"></a>Řešení potíží
+1. Spusťte aplikaci, abyste ji místně otestovali:
 
-Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. Nakonfigurujte `HTTP_PROXY` a `HTTPS_PROXY` proměnné prostředí pomocí informací o proxy serveru v terminálu pomocí `export`.
+    ```bash
+    npm start
+    ```
+    
+1. Otevřete prohlížeč a přejděte na [http://localhost:1337](http://localhost:1337). V prohlížeči by se měl zobrazit Hello World!.
 
-```sh
-export HTTPS_PROXY=https://username:password@proxy:8080
-export HTTP_PROXY=http://username:password@proxy:8080
-```
-
-Pokud nastavení proměnných prostředí problém nevyřeší, kontaktujte nás tak, že vyberete níže uvedené tlačítko **problému** .
-
-### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
-
-Než budete pokračovat, ujistěte se, že máte nainstalované a nakonfigurované všechny požadavky.
-
-V VS Code byste měli na stavovém řádku a v rámci vašeho předplatného v Průzkumníkovi **služby Azure App Service** vidět vaši e-mailovou adresu Azure.
-
-> [!div class="nextstepaction"]
-> [Narazili jsme na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
-
-## <a name="create-your-nodejs-application"></a>Vytvoření aplikace Node. js
-
-Dále vytvořte aplikaci Node. js, která může být nasazena do cloudu. V tomto rychlém startu se používá generátor aplikace k rychlému vytvoření uživatelského rozhraní aplikace z terminálu.
-
-> [!TIP]
-> Pokud jste už dokončili [kurz k Node. js](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial), můžete přeskočit k části [nasazení do Azure](#deploy-to-azure).
-
-### <a name="scaffold-a-new-application-with-the-express-generator"></a>Generování nové aplikace pomocí generátoru Express
-
-[Express](https://www.expressjs.com) je oblíbená architektura pro sestavování a spouštění aplikací v Node. js. Pomocí nástroje [expresního generátoru](https://expressjs.com/en/starter/generator.html) můžete vytvořit novou aplikaci Express. Generátor Express se dodává jako modul npm a dá se spustit přímo (bez instalace) pomocí nástroje příkazového řádku npm `npx`.
-
-```bash
-npx express-generator myExpressApp --view pug --git
-```
-
-Parametry `--view pug --git` informují generátoru, aby používal modul šablon [Pug](https://pugjs.org/api/getting-started.html) (dříve označovaný jako `jade`) a vytvořil soubor `.gitignore`.
-
-Chcete-li nainstalovat všechny závislosti aplikace, otevřete složku nová a spusťte `npm install`.
-
-```bash
-cd myExpressApp
-npm install
-```
-
-### <a name="run-the-application"></a>Spuštění aplikace
-
-Dále zkontrolujte, zda je aplikace spuštěna. Z terminálu spusťte aplikaci pomocí příkazu `npm start` a spusťte server.
-
-```bash
-npm start
-```
-
-Nyní otevřete prohlížeč a přejděte na [http://localhost:3000](http://localhost:3000), kde by se měla zobrazit něco podobného:
-
-![Spuštění expresní aplikace](containers/media/quickstart-nodejs/express.png)
+1. Stisknutím **kombinace kláves Ctrl**+**C** v terminálu zastavte Server.
 
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-to-azure"></a>Nasazení do Azure
+## <a name="deploy-the-app-to-azure"></a>Nasadit aplikaci do Azure
 
-V této části nasadíte aplikaci Node. js pomocí VS Code a rozšíření Azure App Service. V tomto rychlém startu se používá základní model nasazení, ve kterém je vaše aplikace zip a nasazená do Azure Web App on Linux.
+V této části nasadíte aplikaci Node. js do Azure pomocí VS Code a rozšíření Azure App Service.
 
-### <a name="deploy-using-azure-app-service"></a>Nasazení pomocí Azure App Service
+1. V terminálu se ujistěte, že jste ve složce *NodeJS-docs-Hello-World* , a pak spusťte Visual Studio Code s následujícím příkazem:
 
-Nejprve otevřete složku aplikace v VS Code.
+    ```bash
+    code .
+    ```
 
-```bash
-code .
-```
+1. Na řádku VS Code aktivity vyberte logo Azure, kde se zobrazí Průzkumník **služby Azure App Service** . Vyberte **Přihlásit se k Azure...** a postupujte podle pokynů. (Další informace najdete v tématu [řešení potíží s přihlášením do Azure](#troubleshooting-azure-sign-in) , pokud narazíte na chyby.) Po přihlášení by měl Průzkumník Zobrazit název vašeho předplatného Azure.
 
-V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasaďte aplikaci do Azure.
+    ![Přihlášení k Azure](containers/media/quickstart-nodejs/sign-in.png)
 
-![Nasazení do webové aplikace](containers/media/quickstart-nodejs/deploy.png)
+1. V VS Code Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasaďte aplikaci do Azure. (Můžete také vyvolat stejný příkaz z **palety příkazů** (**Ctrl**+**SHIFT**+**P**) tak, že zadáte ' nasadit do webové aplikace ' a zvolíte **Azure App Service: nasadit do webové aplikace**).
 
-> [!TIP]
-> Z **palety příkazů** (CTRL + SHIFT + P) se dá nasadit taky tak, že zadáte ' nasadit do webové aplikace ' a spustíte příkaz **Azure App Service: nasadit do webové aplikace** .
-
-1. Vyberte adresář, který máte v současnosti otevřený `myExpressApp`.
+    ![Nasazení do webové aplikace](containers/media/quickstart-nodejs/deploy.png)
+        
+1. Vyberte složku *NodeJS-docs-Hello-World* .
 
 1. Vyberte možnost vytvoření v závislosti na operačním systému, do kterého chcete nasadit:
 
-    - Linux: vyberte **vytvořit novou webovou aplikaci**.
-    - Windows: zvolte **vytvořit novou webovou aplikaci** a vyberte možnost **Upřesnit** .
+    - Linux: vyberte **vytvořit novou webovou aplikaci** .
+    - Windows: vyberte **vytvořit novou webovou aplikaci... Rozšířené možnosti**
 
-1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu ENTER. Platnými znaky pro název aplikace jsou "a-z", "0-9" a "-".
+1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER**. Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
 
 1. Pokud se zaměřujete na Linux, po zobrazení výzvy vyberte verzi Node. js. Doporučuje se verze **LTS** .
 
-1. Pokud cílíte na systém Windows pomocí možnosti **Upřesnit** , postupujte podle dalších pokynů:
-    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků.
+1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
+    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg`.
     1. Pro operační systém vyberte **systém Windows** .
-    1. Vyberte existující plán App Service nebo vytvořte nový. Při vytváření nového plánu můžete vybrat cenovou úroveň.
+    1. Vyberte **vytvořit nový plán App Service**a pak zadejte název plánu (například `AppServiceQS-plan`) a pro cenovou úroveň vyberte **F1 Free** .
     1. Po zobrazení výzvy k Application Insights **Nyní vyberte Přeskočit** .
     1. Vyberte oblast poblíž nebo poblíž zdrojů, ke kterým chcete získat přístup.
 
-1. Až odpovíte na všechny výzvy, kanál oznámení zobrazuje prostředky Azure, které se vytvářejí pro vaši aplikaci.
+1. Po reakci na všechny výzvy VS Code v místní nabídce oznámení zobrazit prostředky Azure, které jsou vytvářeny pro vaši aplikaci.
 
-1. Po zobrazení výzvy k aktualizaci konfigurace pro spuštění `npm install` na cílovém serveru vyberte **Ano** . Vaše aplikace se pak nasadí.
+    Když nasazujete na Linux, při zobrazení výzvy k aktualizaci konfigurace pro spuštění `npm install` na cílovém serveru Linux vyberte **Ano** .
 
-    ![Nakonfigurované nasazení](containers/media/quickstart-nodejs/server-build.png)
+    ![Výzva k aktualizaci konfigurace na cílovém serveru se systémem Linux](containers/media/quickstart-nodejs/server-build.png)
 
-1. Po zahájení nasazení se zobrazí výzva, abyste aktualizovali pracovní prostor tak, aby se později v nasazeních automaticky nacílena na stejnou App Service webovou aplikaci. Pokud chcete zajistit, aby se vaše změny nasadily do správné aplikace, klikněte na **Ano** .
+1. Po zobrazení výzvy vyberte **Ano** , pokud **Chcete vždycky nasadit pracovní prostor "NodeJS-docs-Hello-World" do (App Name) "** . Když vyberete **Ano** , vs Code se automaticky cílit na stejnou App Service webovou aplikaci s následnými nasazeními.
 
-    ![Nakonfigurované nasazení](containers/media/quickstart-nodejs/save-configuration.png)
+1. Pokud nasazujete na Linux, vyberte **Procházet web** v příkazovém řádku a po dokončení nasazení si můžete hned nasazenou webovou aplikaci zobrazit. V prohlížeči by se měl zobrazit Hello World!
 
-> [!TIP]
-> Ujistěte se, že aplikace naslouchá na portu poskytnutém proměnnou prostředí portu: `process.env.PORT`.
+1. Pokud nasazujete do systému Windows, musíte nejprve nastavit číslo verze Node. js pro webovou aplikaci:
 
-### <a name="browse-the-app-in-azure"></a>Procházení aplikace v Azure
+    1. V VS Code rozbalte uzel pro novou službu App Service, klikněte pravým tlačítkem myši na **nastavení aplikace**a vyberte **Přidat nové nastavení...** :
 
-Až se nasazení dokončí, vyberte **Procházet web** v příkazovém řádku a zobrazte svou čerstvou nasazenou webovou aplikaci.
+        ![Přidat nastavení aplikace – příkaz](containers/media/quickstart-nodejs/add-setting.png)
 
-### <a name="troubleshooting"></a>Řešení potíží
+    1. Jako klíč nastavení zadejte `WEBSITE_NODE_DEFAULT_VERSION`.
+    1. Jako hodnotu nastavení zadejte `10.15.2`.
+    1. Klikněte pravým tlačítkem na uzel služby App Service a vyberte **restartovat** .
 
-Pokud se zobrazí chyba **"nemáte oprávnění k zobrazení tohoto adresáře nebo stránky."** , aplikace se pravděpodobně nespustila správně. Přejděte k další části a podívejte se na výstup protokolu, který vyhledá a opraví chybu. Pokud ji nemůžete opravit, kontaktujte nás tak, že vyberete níže uvedené tlačítko **problému** . Rádi vám pomůžeme!
+        ![Příkaz restartovat službu App Service](containers/media/quickstart-nodejs/restart.png)
+
+    1. Klikněte pravým tlačítkem na uzel pro službu App Service a vyberte **Procházet web**.
 
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
 
+### <a name="troubleshooting-azure-sign-in"></a>Řešení potíží s přihlášením do Azure
+
+Pokud se vám při přihlašování k Azure zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraním API Azure. Nakonfigurujte `HTTP_PROXY` a `HTTPS_PROXY` proměnné prostředí pomocí informací o proxy serveru v terminálu pomocí `export`.
+
+```bash
+export HTTPS_PROXY=https://username:password@proxy:8080
+export HTTP_PROXY=http://username:password@proxy:8080
+```
+
+Pokud se při nastavení proměnných prostředí problém nevyřeší, kontaktujte nás tak, že vyberete tlačítko pro **vydání problému** výše.
+
 ### <a name="update-the-app"></a>Aktualizace aplikace
 
-Změny v této aplikaci můžete nasadit pomocí stejného procesu a volbou existující aplikace namísto vytváření nového.
+Změny v této aplikaci můžete nasadit provedením úprav v VS Code, uložením souborů a následným použitím stejného procesu jako předtím, než vytvoříte nový.
 
 ## <a name="viewing-logs"></a>Zobrazení protokolů
 
-V této části se dozvíte, jak zobrazit (neboli "koncová") protokoly z běžící aplikace App Service. Všechna volání `console.log` v aplikaci se zobrazí v okně výstup v Visual Studio Code.
+Z aplikace můžete zobrazit výstup protokolu (volání do `console.log`) přímo v okně VS Code výstupu.
 
-Najděte aplikaci v Průzkumníkovi **služby Azure App Service** , klikněte pravým tlačítkem na aplikaci a vyberte **Zobrazit protokoly streamování**.
+1. V Průzkumníku **služby Azure App Service** klikněte pravým tlačítkem myši na uzel aplikace a vyberte **Spustit protokoly streamování**.
 
-Po zobrazení výzvy vyberte možnost povolit protokolování a restartovat aplikaci. Po restartování aplikace se otevře okno VS Code výstup s připojením k datovému proudu protokolu.
+    ![Spustit streamování protokolů](containers/media/quickstart-nodejs/view-logs.png)
 
-![Zobrazit protokoly streamování](containers/media/quickstart-nodejs/view-logs.png)
+1. Po zobrazení výzvy vyberte možnost povolit protokolování a restartovat aplikaci. Po restartování aplikace se otevře okno VS Code výstup s připojením k datovému proudu protokolu. 
 
-![Povolit protokolování a restartování](containers/media/quickstart-nodejs/enable-restart.png)
+    ![Povolit protokolování a restartování](containers/media/quickstart-nodejs/enable-restart.png)
 
-Po několika sekundách se zobrazí zpráva oznamující, že jste připojeni ke službě streamování protokolů. Několikrát aktualizujte stránku, aby se zobrazila více aktivit.
+1. Po několika sekundách se v okně výstup zobrazí zpráva oznamující, že jste připojeni ke službě streamování protokolů. Další výstupní aktivitu můžete vygenerovat tak, že aktualizujete stránku v prohlížeči.
 
-    ```bash
-    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
-    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
-    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
-    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
-    ```
+    <pre>
+    Connecting to log stream...
+    2020-03-04T19:29:44  Welcome, you are now connected to log-streaming service. The default timeout is 2 hours.
+    Change the timeout with the App Setting SCM_LOGSTREAM_TIMEOUT (in seconds).    
+    </pre>
 
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)

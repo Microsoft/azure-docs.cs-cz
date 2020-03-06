@@ -4,12 +4,12 @@ description: Přečtěte si o známých omezeních při spouštění fondů uzl�
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 6d951652e3522b7ff926b72a3916bffe97575054
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592489"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298168"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -51,9 +51,9 @@ Hlavní uzly (Řídicí rovina) v clusteru AKS jsou hostované AKS služby, nebu
 
 Clustery AKS s fondy uzlů Windows musí používat síťový model Azure CNI (rozšířené). Kubenet (základní) sítě se nepodporují. Další informace o rozdílech v síťových modelech najdete v tématu [Koncepty sítě pro aplikace v AKS][azure-network-models]. – Model sítě Azure CNI vyžaduje další plánování a předpoklady pro správu IP adres. Další informace o plánování a implementaci Azure CNI najdete v tématu [Konfigurace sítě Azure CNI v AKS][configure-azure-cni].
 
-## <a name="can-i-change-the-min--of-pods-per-node"></a>Můžu změnit min. # lusků na uzel?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit maximum. počet lusků na uzel?
 
-V současné době je potřeba nastavit minimálně 30 lusků, aby se zajistila spolehlivost vašich clusterů.
+V současné době je potřeba nastavit hodnotu na maximálně 30 lusků, aby se zajistila spolehlivost vašich clusterů.
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Jak mám opravit uzly Windows?
 
@@ -69,7 +69,7 @@ Ve verzi Preview fondy uzlů Windows nepodporují otočení instančního objekt
 
 ## <a name="how-many-node-pools-can-i-create"></a>Kolik fondů uzlů lze vytvořit?
 
-Cluster AKS může mít maximálně osm (8) fondů uzlů. V těchto fondech uzlů můžete mít maximálně 400 uzlů. [Omezení fondu uzlů][nodepool-limitations].
+Cluster AKS může mít maximálně 10 fondů uzlů. V těchto fondech uzlů můžete mít maximálně 1000 uzlů. [Omezení fondu uzlů][nodepool-limitations].
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Jak můžu pojmenovat fondy uzlů Windows?
 

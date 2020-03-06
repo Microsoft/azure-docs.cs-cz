@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915703"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329012"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislosti v rozhraní .NET Azure Functions
 
@@ -21,7 +21,7 @@ Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což j
 
 - Podpora vkládání závislostí začíná Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 
@@ -132,6 +132,52 @@ Pokud potřebujete vlastního zprostředkovatele protokolování, zaregistrujte 
 > - Nepřidávat `AddApplicationInsightsTelemetry()` do kolekce Services, protože registruje služby, které jsou v konfliktu se službami poskytovanými prostředím.
 > - Pokud používáte integrované Application Insights funkce, neregistrujte vlastní `TelemetryConfiguration` ani `TelemetryClient`. Pokud potřebujete nakonfigurovat vlastní instanci `TelemetryClient`, vytvořte ji pomocí vložených `TelemetryConfiguration`, jak je znázorněno v [Azure Functions monitorování](./functions-monitoring.md#version-2x-and-later-2).
 
+### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> a ILoggerFactory
+
+Hostitel vloží `ILogger<T>` a `ILoggerFactory` služby do konstruktorů.  Ve výchozím nastavení se ale tyto nové filtry protokolování odfiltrují z protokolů funkcí.  Budete muset upravit soubor `host.json`, aby se mohl vyjádřit další filtry a kategorie.  Následující příklad ukazuje přidání `ILogger<HttpTrigger>` s protokoly, které bude zveřejněno hostitelem.
+
+```csharp
+namespace MyNamespace
+{
+    public class HttpTrigger
+    {
+        private readonly ILogger<HttpTrigger> _log;
+
+        public HttpTrigger(ILogger<HttpTrigger> log)
+        {
+            _log = log;
+        }
+
+        [FunctionName("HttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        {
+            _log.LogInformation("C# HTTP trigger function processed a request.");
+
+            // ...
+    }
+}
+```
+
+A `host.json` soubor, který přidá filtr protokolu.
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingExcludedTypes": "Request",
+            "samplingSettings": {
+                "isEnabled": true
+            }
+        },
+        "logLevel": {
+            "MyNamespace.HttpTrigger": "Information"
+        }
+    }
+}
+```
+
 ## <a name="function-app-provided-services"></a>Poskytnuté služby Function App
 
 Hostitel funkce registruje mnoho služeb. V rámci vaší aplikace je možné v aplikaci provést zabezpečení těchto služeb:
@@ -208,7 +254,7 @@ Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor m
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace naleznete v následujících zdrojích:
 
 - [Jak monitorovat aplikaci Function App](functions-monitoring.md)
 - [Osvědčené postupy pro funkce](functions-best-practices.md)

@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962114"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399022"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform
 
@@ -55,7 +55,7 @@ Podpis se počítá s použitím certifikátu, jak je popsáno ve [specifikaci J
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>Příklad dekódového kontrolního výrazu JWT
 
-```
+```JSON
 {
   "alg": "RS256",
   "typ": "JWT",
@@ -67,12 +67,11 @@ Podpis se počítá s použitím certifikátu, jak je popsáno ve [specifikaci J
   "exp": 1484593341,
   "iss": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05",
   "jti": "22b3bb26-e046-42df-9c96-65dbd72c1c81",
-  "nbf": 1484592741,  
+  "nbf": 1484592741,
   "sub": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05"
 }
 .
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
-
 ```
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>Příklad kódovaného kontrolního výrazu JWT
@@ -94,10 +93,10 @@ Přihlašovací údaje certifikátu můžete přidružit k klientské aplikaci n
 ### <a name="uploading-the-certificate-file"></a>Nahrává se soubor certifikátu.
 
 V registraci aplikace Azure pro klientskou aplikaci:
-1. Vyberte **certifikáty & tajných**kódů. 
+1. Vyberte **certifikáty & tajných**kódů.
 2. Klikněte na **nahrát certifikát** a vyberte soubor certifikátu, který se má nahrát.
-3. Klikněte na tlačítko **Add** (Přidat).
-  Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti. 
+3. Klikněte na **Přidat**.
+  Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
 
 ### <a name="updating-the-application-manifest"></a>Aktualizace manifestu aplikace
 
@@ -112,7 +111,7 @@ V registraci aplikace Azure pro klientskou aplikaci:
 1. Vyberte **manifest** pro otevření manifestu aplikace.
 2. Nahraďte vlastnost *přihlašovací údaje* pomocí nových informací o certifikátu pomocí následujícího schématu.
 
-   ```
+   ```JSON
    "keyCredentials": [
        {
            "customKeyIdentifier": "$base64Thumbprint",
@@ -123,13 +122,13 @@ V registraci aplikace Azure pro klientskou aplikaci:
        }
    ]
    ```
-3. Uložte úpravy manifestu aplikace a pak nahrajte manifest na platformu Microsoft identity. 
+3. Uložte úpravy manifestu aplikace a pak nahrajte manifest na platformu Microsoft identity.
 
    Vlastnost `keyCredentials` je vícehodnotový, takže můžete nahrát více certifikátů pro bohatší správu klíčů.
-   
+
 ## <a name="code-sample"></a>Ukázka kódu
 
 > [!NOTE]
-> Hlavičku X5T musíte vypočítat tak, že ji převedete na základní řetězec 64 pomocí hodnoty hash certifikátu. Kód, který se má provést C# v nástroji, je: `System.Convert.ToBase64String(cert.GetCertHash());`
+> Hlavičku X5T musíte vypočítat tak, že ji převedete na základní řetězec 64 pomocí hodnoty hash certifikátu. Kód, který se má provést C# v, je `System.Convert.ToBase64String(cert.GetCertHash());`.
 
-Ukázka kódu při [ověřování na platformě Microsoft identity v aplikacích démon pomocí certifikátů](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) ukazuje, jak aplikace používá vlastní přihlašovací údaje pro ověřování. Také ukazuje, jak můžete [vytvořit certifikát podepsaný svým držitelem](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) pomocí příkazu `New-SelfSignedCertificate` PowerShellu. Můžete také využít a použít [skripty pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) k vytvoření certifikátů, výpočtů kryptografických otisků a tak dále.
+Ukázková [aplikace konzoly .NET Core daemon s použitím platformy Microsoft Identity](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) ukazuje, jak aplikace používá vlastní přihlašovací údaje pro ověřování. Také ukazuje, jak můžete [vytvořit certifikát podepsaný svým držitelem](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) pomocí příkazu `New-SelfSignedCertificate` PowerShellu. Můžete také využít a použít [skripty pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) k vytvoření certifikátů, výpočtů kryptografických otisků a tak dále.

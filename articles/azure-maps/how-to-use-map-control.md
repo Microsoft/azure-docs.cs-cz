@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9bcb0fd26710b5f44ca9e3e3715c40cb32b3c40d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 535707191557142054e493d0216b713312f53953
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368647"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
 
@@ -27,23 +27,23 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 
 2. Načtěte v sadě Azure Maps Web SDK. Můžete zvolit jednu ze dvou možností:
 
-   1. Pomocí globálně hostované verze CDN rozhraní Azure Maps Web SDK přidejte koncové body adresy URL do šablony stylů a odkazy na skripty v elementu `<head>` souboru:
+    * Pomocí globálně hostované verze CDN sady Azure Maps Web SDK přidejte odkazy na JavaScript a šablonu stylů v elementu `<head>` souboru HTML:
 
-      ```HTML
-       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-      ```
+        ```HTML
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+        ```
 
-   1. Načtěte zdrojový kód Azure Maps Web SDK místně pomocí balíčku [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) npm a hostovat ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
+    * Načtěte zdrojový kód Azure Maps Web SDK místně pomocí balíčku [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) npm a hostovat ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
 
-      > **NPM instalace Azure-Maps-Control**
+        > **NPM instalace Azure-Maps-Control**
 
-   Pak přidejte odkazy na Azure Maps šablon stylů a odkazů na zdrojový odkaz na element `<head>` souboru:
+       Pak přidejte odkazy na Azure Maps šablon stylů a odkazů na zdrojový odkaz na element `<head>` souboru:
 
-      ```HTML
-       <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-       <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-      ```
+        ```HTML
+        <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+        <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
+        ```
 
     > [!Note]
     > Definice TypeScript lze do aplikace importovat přidáním následujícího kódu:

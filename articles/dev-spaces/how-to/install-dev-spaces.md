@@ -1,24 +1,24 @@
 ---
-title: Instalace Azure Dev Spaces na AKS & nástrojů na straně klienta
+title: Povolení Azure Dev Spaces v AKS & instalaci nástrojů na straně klienta
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Naučte se, jak nainstalovat Azure Dev Spaces do clusteru AKS a nainstalovat nástroje na straně klienta.
+description: Naučte se, jak povolit Azure Dev Spaces v clusteru AKS a nainstalovat nástroje na straně klienta.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 0b7f6cb4a801c84df59bd5157d8c2a1a15eaaf7e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252011"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302895"
 ---
-# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Instalace Azure Dev Spaces v AKS a nástrojích na straně klienta
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Povolení Azure Dev Spaces v clusteru AKS a instalace nástrojů na straně klienta
 
-Tento článek ukazuje několik způsobů, jak nainstalovat Azure Dev Spaces do clusteru AKS a jak nainstalovat nástroje na straně klienta.
+Tento článek ukazuje několik způsobů povolení Azure Dev Spaces v clusteru AKS a instalaci nástrojů na straně klienta.
 
-## <a name="install-azure-dev-spaces-using-the-cli"></a>Instalace Azure Dev Spaces pomocí rozhraní příkazového řádku
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>Povolení Azure Dev Spaces pomocí rozhraní příkazového řádku
 
-Než budete moct nainstalovat vývojové prostory pomocí rozhraní příkazového řádku, budete potřebovat:
+Než budete moci povolit vývojové prostory pomocí rozhraní příkazového řádku, budete potřebovat:
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][az-portal-create-account].
 * [Rozhraní příkazového řádku Azure je nainstalované][install-cli].
 * [Cluster AKS][create-aks-cli] v [podporované oblasti][supported-regions].
@@ -49,25 +49,25 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 Příkaz `use-dev-spaces` také nainstaluje Azure Dev Spaces CLI.
 
-## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Instalace Azure Dev Spaces pomocí Azure Portal
+## <a name="enable-azure-dev-spaces-using-the-azure-portal"></a>Povolení Azure Dev Spaces pomocí Azure Portal
 
-Než budete moct nainstalovat vývojářské prostory pomocí Azure Portal, budete potřebovat:
+Než budete moci povolit vývojářské prostory pomocí Azure Portal, budete potřebovat:
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][az-portal-create-account].
 * [Cluster AKS][create-aks-portal] v [podporované oblasti][supported-regions].
 
-Instalace Azure Dev Spaces pomocí Azure Portal:
+Povolení Azure Dev Spaces pomocí Azure Portal:
 1. Přihlaste se k webu [Azure Portal][az-portal].
 1. Přejděte do clusteru AKS.
-1. Klikněte na možnost *vývojové prostory*.
+1. Vyberte položku nabídky *vývojové prostory* .
 1. Změňte *Povolit vývojové prostory* na *Ano* a klikněte na *Uložit*.
 
 ![Povolit vývojové prostory v Azure Portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-**Instalace Azure dev Spaces pomocí Azure Portal nenainstaluje** žádné nástroje na straně klienta pro Azure dev Spaces.
+Povolením Azure Dev Spaces **používání Azure Portal** nenainstalujete žádné nástroje na straně klienta pro Azure dev Spaces.
 
-## <a name="install-the-client-side-tooling"></a>Instalace nástrojů na straně klienta
+## <a name="install-the-client-side-tools"></a>Instalace nástrojů na straně klienta
 
-Pomocí Azure Dev Spaces nástrojů na straně klienta můžete komunikovat s vývojovým prostorem v clusteru AKS z místního počítače. Existuje několik způsobů, jak nainstalovat nástroje na straně klienta:
+Pomocí Azure Dev Spaces nástrojů na straně klienta můžete pracovat s vývojovým prostorem v clusteru AKS z místního počítače. K dispozici je několik způsobů, jak nainstalovat nástroje na straně klienta:
 
 * V [Visual Studio Code][vscode]nainstalujte [Azure dev Spaces rozšíření][vscode-extension].
 * V [aplikaci Visual Studio 2019][visual-studio]nainstalujte úlohu vývoj pro Azure.

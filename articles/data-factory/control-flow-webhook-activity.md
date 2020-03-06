@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110000"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78400001"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Aktivita Webhooku v Azure Data Factory
 Aktivitu Webhooku můžete použít k řízení provádění kanálů pomocí vlastního kódu. Pomocí aktivity Webhooku můžou zákazníci zavolat koncový bod a předat URL zpětného volání. Běh kanálu čeká na vyvolání zpětného volání před pokračováním na další aktivitu.
@@ -85,7 +85,7 @@ Zadejte uživatelské jméno a heslo, které chcete použít se základním ově
 }
 ```
 
-### <a name="client-certificate"></a>certifikát klienta
+### <a name="client-certificate"></a>Certifikát klienta
 
 Zadejte obsah souboru PFX a hesla zakódovaného ve formátu base64.
 
@@ -116,6 +116,10 @@ Zadejte identifikátor URI prostředku, pro který bude přístupový token vyž
 Azure Data Factory předáte další vlastnost "callBackUri" v těle koncového bodu adresy URL a očekává, že tento identifikátor URI bude vyvolán před zadanou hodnotou časového limitu. Pokud identifikátor URI není vyvolán, aktivita se nezdaří se stavem "vypršela platnost".
 
 Aktivita Webhooku se nezdařila, pokud volání vlastního koncového bodu neproběhne úspěšně. Do textu zpětného volání lze přidat jakoukoli chybovou zprávu a použít ji v následné aktivitě.
+
+Pro každé REST API volání bude klient v případě, že koncový bod neodpoví za 1 min, vyprší časový limit. Jedná se o standardní osvědčené postupy protokolu HTTP. Pokud chcete tento problém vyřešit, musíte v takovém případě implementovat vzor 202, kde koncový bod vrátí hodnotu 202 (přijato) a klient se dotazuje.
+
+1 min. časový limit žádosti neobsahuje žádné aktivity s časovým limitem aktivity. Který bude použit k čekání na callbackUri.
 
 Tělo předané zpět do identifikátoru URI zpětného volání by mělo mít platný formát JSON. Je nutné nastavit hlavičku Content-Type na `application/json`.
 

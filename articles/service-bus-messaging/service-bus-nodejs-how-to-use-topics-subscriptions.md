@@ -14,21 +14,20 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: e6ac3c74a0a8346ad8a6820c676224bfcba0e8b4
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c85b63b4a56e74b0fef9a122ec995b4106496cbe
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264437"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330442"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: jak používat Service Bus témata a odběry s využitím Node. js a balíčku Azure-Sb
-> [!div class="op_multi_selector" title1="Programovací jazyk" title2="Manageru balíček s Node. js"]
-> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
-
 V tomto kurzu se naučíte vytvářet aplikace v Node. js pro posílání zpráv do Service Bus tématu a příjem zpráv z Service Bus předplatného pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky jsou napsané v JavaScriptu a používají [modul Azure](https://www.npmjs.com/package/azure) Node. js, který interně používá balíček `azure-sb`.
 
-Balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používá [Service Bus rozhraní REST runtime API](/rest/api/servicebus/service-bus-runtime-rest). Pomocí nového balíčku [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) , který používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md), můžete získat rychlejší prostředí. Další informace o novém balíčku najdete v tématu [Jak používat Service Bus témata a odběry s Node. js a @azure/service-bus balíčkem](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package). v opačném případě pokračujte ve čtení a zjistěte, jak používat balíček [Azure](https://www.npmjs.com/package/azure) .
+> [!IMPORTANT]
+> Balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používá [Service Bus rozhraní REST runtime API](/rest/api/servicebus/service-bus-runtime-rest). Pomocí nového balíčku [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) , který používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md), můžete získat rychlejší prostředí. 
+> 
+> Další informace o novém balíčku najdete v tématu [Jak používat Service Bus témata a odběry s Node. js a @azure/service-bus balíčkem](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package). v opačném případě pokračujte ve čtení a zjistěte, jak používat balíček [Azure](https://www.npmjs.com/package/azure) .
 
 Zde uvedené scénáře zahrnují:
 
@@ -40,7 +39,7 @@ Zde uvedené scénáře zahrnují:
 
 Další informace o tématech a předplatných najdete v části [Další kroky](#next-steps) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Postupujte podle kroků v [rychlém startu: použijte Azure Portal k vytvoření Service Bus tématu a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření **oboru názvů** Service Bus a získání **připojovacího řetězce**.
 
@@ -144,7 +143,7 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
 ```
 
-## <a name="create-subscriptions"></a>Vytvořit odběry
+## <a name="create-subscriptions"></a>Vytvoření předplatných
 Odběry témat jsou také vytvořeny s objektem **ServiceBusService** . Odběry jsou pojmenovány a mohou mít volitelný filtr, který omezuje sadu zpráv dodaných do virtuální fronty odběru.
 
 > [!NOTE]

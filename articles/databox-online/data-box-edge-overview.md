@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
-ms.translationtype: MT
+ms.openlocfilehash: 98ea00eb4d45ad045e1da3c4c5680f44e6705432
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863627"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300974"
 ---
 # <a name="what-is-azure-stack-edge"></a>Co je Azure Stack Edge? 
 
@@ -76,11 +76,11 @@ Azure Stack hraniční řešení se skládá z prostředků Azure Stack Edge, Az
     Informace o používání webového uživatelského rozhraní najdete v [části použití webového uživatelského rozhraní pro správu Azure Stackho okraje](data-box-edge-manage-access-power-connectivity-mode.md).
 
 
-## <a name="region-availability"></a>Regionální dostupnost
+## <a name="region-availability"></a>Dostupnost v oblastech
 
 Fyzické zařízení Azure Stack Edge, prostředek Azure a cílový účet úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
 
-- **Dostupnost prostředků** – seznam všech oblastí, ve kterých je prostředek Azure Stack Edge dostupný, najdete v části [produkty Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge je taky možné nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Dostupnost prostředků** – seznam všech oblastí, ve kterých je dostupný Azure Stack hraniční prostředek, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge je taky možné nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
     
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých jsou uloženy účty úložiště Azure Stack hraniční data, by měly být umístěny blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon. 
 

@@ -4,12 +4,12 @@ description: Seznam z nejčastějších dotazů týkajících se QnA Maker služ
 ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 37aae8e67ccc84a6e22be8ce8a304fc4884ead52
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273389"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296095"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -224,7 +224,7 @@ Pokud máte obsah z více jazyků, nezapomeňte vytvořit samostatné služby pr
 <details>
 <summary><b>Jak můžu vytvořit nový robot s QnA Maker?</b></summary>
 
-**Odpověď**: podle pokynů v [této](./Tutorials/create-qna-bot.md) dokumentaci vytvořte robota s Azure bot Service.
+**Odpověď**: podle pokynů v [této](./Quickstarts/create-publish-knowledge-base.md) dokumentaci vytvořte robota s Azure bot Service.
 
 </details>
 
@@ -255,7 +255,7 @@ Klíč koncového bodu znalostní báze je označený `QnAAuthkey` ve službě A
 
 **Odpověď**: postupujte podle těchto kroků a vložte QnA maker službu jako ovládací prvek webové konverzace na svém webu:
 
-1. Pomocí pokynů [zde můžete](./Tutorials/create-qna-bot.md)vytvořit robotská okna s nejčastějšími dotazy.
+1. Pomocí pokynů [zde můžete](./Quickstarts/create-publish-knowledge-base.md)vytvořit robotská okna s nejčastějšími dotazy.
 2. Povolte webový chat podle kroků uvedených [tady](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) .
 
 </details>

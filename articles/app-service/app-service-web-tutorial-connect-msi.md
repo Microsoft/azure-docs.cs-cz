@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b57ee458b857db5692f34e51f388ca8374a3c03b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524372"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330868"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -41,7 +41,7 @@ Co se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
 
@@ -227,7 +227,7 @@ Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy a přidejte skupinu Azure AD a udělte jim oprávnění, která vaše aplikace potřebuje. Například 
+V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy a přidejte skupinu Azure AD a udělte jim oprávnění, která vaše aplikace potřebuje. Například: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -240,6 +240,9 @@ GO
 *\<identity-name >* je název spravované identity ve službě Azure AD. Vzhledem k tomu, že je přiřazen systém, je vždycky stejný jako název vaší aplikace App Service. Pokud chcete udělit oprávnění pro skupinu Azure AD, použijte místo toho zobrazované jméno skupiny (například *myAzureSQLDBAccessGroup*).
 
 Zadáním `EXIT` se vraťte do příkazového řádku služby Cloud Shell.
+
+> [!NOTE]
+> Back-endové služby spravovaných identit také [uchovávají mezipaměť tokenů](overview-managed-identity.md#obtain-tokens-for-azure-resources) , která aktualizuje token pro cílový prostředek pouze v případě, že jeho platnost vyprší. Pokud uděláte omylem konfiguraci oprávnění SQL Database a pokusíte se změnit oprávnění *po* pokusu o získání tokenu s vaší aplikací, nezískáte ve skutečnosti nový token s aktualizovanými oprávněními, dokud nevyprší platnost tokenu v mezipaměti.
 
 ### <a name="modify-connection-string"></a>Úprava připojovacího řetězce
 

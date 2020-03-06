@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b0b9cffe0b69545a6d0219941b48ac9eb0f399b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194576"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300583"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Načtení dat z Azure Data Lake Storage pro analýzu SQL
 Tato příručka popisuje, jak použít základní externí tabulky k načtení dat z Azure Data Lake Storage. I když můžete spouštět dotazy v režimu ad hoc na data uložená v Data Lake Storage, doporučujeme data importovat pro nejlepší výkon. 
@@ -46,6 +46,8 @@ Tuto část můžete přeskočit a při ověřování pomocí předávacího pro
 Pokud chcete získat přístup k účtu Data Lake Storage, budete muset vytvořit hlavní klíč databáze pro šifrování přihlašovacích údajů. Pak vytvoříte databázi s rozsahem pověření pro uložení tajného kódu. Při ověřování pomocí instančních objektů (uživatel Azure Directory Application) ukládá přihlašovací údaje v oboru databáze nastavené přihlašovací údaje instančního objektu v AAD. K uložení klíče účtu úložiště pro Gen2 můžete použít taky pověření s rozsahem databáze.
 
 Pokud se chcete připojit k Data Lake Storage pomocí instančních objektů, musíte **nejdřív** vytvořit aplikaci Azure Active Directory, vytvořit přístupový klíč a udělit aplikaci přístup k účtu Data Lake Storage. Pokyny najdete v tématu [ověření pro Azure Data Lake Storage pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+
+Přihlaste se ke svému fondu SQL s uživatelem, který má oprávnění na úrovni ovládacího prvku a spusťte následující příkazy SQL pro vaši databázi:
 
 ```sql
 -- A: Create a Database Master Key.

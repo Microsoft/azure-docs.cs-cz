@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551977"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330953"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
 Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíže. ExpressRoute rozšiřuje místní síť do cloudu Microsoftu přes soukromé připojení, které běžně usnadňuje poskytovatel připojení. Připojení ExpressRoute tradičně zahrnuje tři odlišné síťové zóny, a to takto:
@@ -275,7 +275,7 @@ Následující příklad ukazuje odpověď příkazu pro partnerský vztah, kter
 ## <a name="confirm-the-traffic-flow"></a>Potvrzení toku přenosů
 Pokud chcete získat kombinovanou statistiku přenosu primárních a sekundárních cest – bajty v a mimo kontext partnerského vztahu, použijte následující příkaz:
 
-    Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
+    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 
 Vzorový výstup příkazu je:
 

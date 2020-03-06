@@ -5,14 +5,14 @@ author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807421"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303592"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Pochopení a použití vláken v modulech v IoT Hub
 
@@ -113,7 +113,7 @@ V předchozím příkladu modul obsahuje ne`batteryLevel`ou vlastnost, která je
 
 ### <a name="desired-property-example"></a>Požadovaný příklad vlastnosti
 
-V předchozím příkladu modul `telemetryConfig` neplní požadované a hlášené vlastnosti, které jsou používány back-end řešení a aplikace modulu k synchronizaci konfigurace telemetrie pro tento modul. Například:
+V předchozím příkladu modul `telemetryConfig` neplní požadované a hlášené vlastnosti, které jsou používány back-end řešení a aplikace modulu k synchronizaci konfigurace telemetrie pro tento modul. Příklad:
 
 1. Back-end řešení nastaví požadovanou vlastnost s požadovanou konfigurační hodnotou. Tady je část dokumentu s požadovanou sadou vlastností:
 
@@ -176,7 +176,7 @@ Back-end řešení funguje v modulu s dvojím použitím následujících atomic
 
   - Vlastnosti
 
-    | Name (Název) | Hodnota |
+    | Název | Hodnota |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  Čas odeslání oznámení |
@@ -236,11 +236,15 @@ Sady [SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md) usnadňují použ
 
 Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s následujícími omezeními:
 
-* Všechny klíče v objektech JSON jsou v bajtech UNICODE-8 s rozlišením velkých a malých písmen 64. Povolené znaky vyloučí řídicí znaky UNICODE (segmenty C0 a C1) a `.`, SP a `$`.
+* **Keys**: všechny klíče v objektech JSON mají pro řetězce Unicode UTF-8 s rozlišením velkých a malých písmen 64. Povolené znaky vyloučí řídicí znaky UNICODE (segmenty C0 a C1) a `.`, SP a `$`.
 
-* Všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole nejsou povolena. Maximální hodnota pro celá čísla je 4503599627370495 a minimální hodnota pro celá čísla je-4503599627370496.
+* **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole nejsou povolena.
 
-* Všechny objekty JSON ve značkách, požadované a hlášené vlastnosti mohou mít maximální hloubku 5. Například následující objekt je platný:
+    * Celá čísla můžou mít minimální hodnotu-4503599627370496 a maximální hodnotu 4503599627370495.
+
+    * Řetězcové hodnoty mají kódování UTF-8 a můžou mít maximální délku 512 bajtů.
+
+* **Hloubka**: všechny objekty JSON ve značkách, požadované a hlášené vlastnosti můžou mít maximální hloubku 5. Například následující objekt je platný:
 
     ```json
     {
@@ -262,20 +266,28 @@ Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s ná
     }
     ```
 
-* Všechny řetězcové hodnoty můžou být dlouhé maximálně 512 bajtů.
-
 ## <a name="module-twin-size"></a>Velikost vlákna modulu
 
-IoT Hub vynutila omezení velikosti 8 KB pro hodnotu `tags`a omezení velikosti 32 KB každou na hodnotu `properties/desired` a `properties/reported`. Tyto součty jsou výhradně prvky jen pro čtení.
+IoT Hub vynutila omezení velikosti 8 KB pro hodnotu `tags`a omezení velikosti 32 KB každou na hodnotu `properties/desired` a `properties/reported`. Tyto součty jsou výhradně prvky jen pro čtení, například `$etag`, `$version`a `$metadata/$lastUpdated`.
 
-Velikost je vypočítána napočítáním všech znaků, kromě řídicích znaků UNICODE (segmenty C0 a C1) a mezer, které jsou mimo řetězcové konstanty.
+Velikost vlákna je vypočítána následujícím způsobem:
+
+* Pro každou vlastnost v dokumentu JSON IoT Hub kumulativně COMPUTE a přidá délku klíče a hodnoty vlastnosti.
+
+* Klíče vlastností se považují za řetězce kódované pomocí UTF8.
+
+* Jednoduché hodnoty vlastností se považují za řetězce kódované v kódování UTF8, číselné hodnoty (8 bajtů) nebo logické hodnoty (4 bajty).
+
+* Velikost řetězců zakódovaných v kódování UTF8 se vypočítává pomocí počítání všech znaků, kromě řídicích znaků UNICODE (segmenty C0 a C1).
+
+* Hodnoty komplexních vlastností (vnořené objekty) se vypočítávají na základě agregované velikosti klíčů vlastností a hodnot vlastností, které obsahují.
 
 IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost těchto dokumentů nad rámec limitu.
 
 ## <a name="module-twin-metadata"></a>Moduly s dvojitou metadaty
 
 IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v modulu, který má požadovanou a nahlášené vlastnosti. Časová razítka jsou v UTC a kódovaná ve formátu [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) `YYYY-MM-DDTHH:MM:SS.mmmZ`.
-Například:
+Příklad:
 
 ```json
 {

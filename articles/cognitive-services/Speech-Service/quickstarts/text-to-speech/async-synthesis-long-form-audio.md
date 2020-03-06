@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919341"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331072"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rychlý Start: asynchronní Shrnutí pro dlouhý formát zvuku v Pythonu (Preview)
 
@@ -30,7 +30,7 @@ K tomuto rychlému startu potřebujete:
 
 * Python 2.7. x nebo 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)nebo váš oblíbený textový editor.
-* Předplatné Azure a klíč předplatného služby Speech. [Vytvořte účet Azure](../../get-started.md#new-resource) a [vytvořte prostředek pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) , abyste získali klíč. Při vytváření prostředku řeči se ujistěte, že je cenová úroveň nastavená na **S0**a umístění je nastavené na [podporovanou oblast](../../regions.md#standard-and-neural-voices).
+* Předplatné Azure a klíč předplatného služby Speech. [Vytvořte účet Azure](../../get-started.md#new-resource) a [vytvořte prostředek pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) , abyste získali klíč. Při vytváření prostředku řeči se ujistěte, že je cenová úroveň nastavená na **S0**a umístění je nastavené na [podporovanou oblast](../../regions.md#standard-and-neural-voices).
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 

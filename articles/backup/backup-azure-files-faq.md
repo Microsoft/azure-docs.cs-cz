@@ -3,16 +3,16 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293993"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302538"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
-V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Dotazy k Azure Backup také můžete pokládat v [diskuzním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 K rychlému procházení částmi tohoto článku použijte odkazy vpravo v části **V tomto článku**.
 
@@ -83,7 +83,7 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 - NWW (Norsko – západ)
 - SZN (Švýcarsko – sever)
 
-Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
+Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com).
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Kolik sdílených složek Azure můžu chránit v jednom trezoru?
 

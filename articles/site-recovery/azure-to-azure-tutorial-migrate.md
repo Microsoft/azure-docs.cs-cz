@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954108"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303932"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující:
 > [!NOTE]
 > V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure z jedné oblasti do jiné, jak je to. Pokud potřebujete zlepšit dostupnost tím, že přesunete virtuální počítače ve skupině dostupnosti na virtuální počítače připojené k zóně v jiné oblasti, přečtěte si [kurz přesunutí virtuálních počítačů Azure do zóny dostupnosti](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že virtuální počítače Azure jsou v oblasti Azure, ze které chcete přejít.
 - Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)oblasti, a proveďte odpovídající rozhodnutí o cílové oblasti.
@@ -73,7 +73,7 @@ V tomto kurzu provedete následující:
     - [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer)
     -  [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md)
-    - Další síťové součásti najdete v [dokumentaci k síti](https://docs.microsoft.com/azure/#pivot=products&panel=network).
+    - Další síťové součásti najdete v [dokumentaci k síti](https://docs.microsoft.com/azure/?pivot=products&panel=network).
 
 
 
@@ -89,7 +89,7 @@ Následující postup ukazuje, jak připravit virtuální počítač pro přesun
 1. Zadejte oblast Azure. Pokud chcete zjistit podporované oblasti, přečtěte si článek geografická dostupnost v [Azure Site Recovery podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
 1. V **Recovery Services trezory**vyberte **přehled** > **ContosoVMVault** >  **+ replikovat**.
 1. V rozevíracím seznamu **Zdroj** vyberte **Azure**.
-1. V rozevíracím seznamu **Umístění zdroje** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
+1. Jako **Zdrojové umístění** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
 1. Vyberte model nasazení Resource Manager. Pak vyberte **zdrojové předplatné** a **skupinu prostředků zdroje**.
 1. Kliknutím na **OK** uložte nastavení.
 
@@ -115,7 +115,7 @@ Následující postup ukazuje, jak provést přesun do cílové oblasti.
 4. Po dokončení úlohy ověřte, že se virtuální počítač zobrazuje v cílové oblasti Azure podle očekávání.
 
 
-## <a name="discard"></a>Odstraňovat 
+## <a name="discard"></a>Zahodit 
 
 Pokud jste si přepnuli přesunutý virtuální počítač a potřebujete ho změnit na bod převzetí služeb při selhání nebo se chcete vrátit k předchozímu bodu, v **replikovaných položkách**klikněte pravým tlačítkem myši na položku virtuální počítač > **změnit bod obnovení**. Tento krok poskytuje možnost zadat jiný bod obnovení a převzetí služeb při selhání. 
 

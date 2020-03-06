@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: a7ce6bc2b6fa272c8dd3c4bf95bc06a37d1fe28f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 270a8316ee7c23ebb54c7d0633fb9159ef33acbd
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119743"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384105"
 ---
 1. Spusťte Android Studio a v **uvítacím** okně vyberte **spustit nový projekt Android Studio** .
 
@@ -27,7 +27,7 @@ Android Studiu chvíli trvá, než nový projekt pro Android připraví. Dále n
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je 1.9.0.
+Aktuální verze sady Cognitive Services Speech SDK je 1.10.0.
 
 Sada Speech SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android.
 Hostuje se v úložišti Maven na adrese https:\//csspeechstorage.blob.core.windows.net/maven/.
@@ -42,7 +42,7 @@ Nastavte projekt tak, aby používal sadu Speech SDK. Otevřete okno **struktura
 
    ![Snímek obrazovky se závislostí knihovny](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. V zobrazeném okně zadejte název a verzi sady Speech SDK pro Android, *com. Microsoft. cognitiveservices Account. Speech: Client-SDK: 1.9.0*. Pak vyberte **OK**.
+1. V zobrazeném okně zadejte název a verzi sady Speech SDK pro Android, *com. Microsoft. cognitiveservices Account. Speech: Client-SDK: 1.10.0*. Pak vyberte **OK**.
    Sada Speech SDK by teď měla být přidána do seznamu závislostí, jak je znázorněno níže:
 
    ![Snímek obrazovky sady Speech SDK v seznamu závislostí](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

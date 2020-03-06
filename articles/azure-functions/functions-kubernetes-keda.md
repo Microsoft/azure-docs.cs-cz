@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549032"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301671"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions v Kubernetes s KEDA
 
@@ -20,7 +20,7 @@ Azure Functions runtime poskytuje flexibilitu při hostování tam, kde a jak ch
 
 Služba Azure Functions se skládá ze dvou klíčových součástí: modulu runtime a řadiče škálování.  Modul runtime Functions spustí a spustí váš kód.  Modul runtime obsahuje logiku, jak aktivovat, protokolovat a spravovat provádění funkcí.  Modul runtime Azure Functions může běžet *kdekoli*.  Druhá součást je kontroler škálování.  Kontroler škálování monitoruje míru událostí, které cílí na vaši funkci, a proaktivně škáluje počet instancí, na kterých běží vaše aplikace.  Další informace najdete v tématu [škálování Azure functions a hostování](functions-scale.md).
 
-Funkce založené na Kubernetes poskytují modul runtime funkcí v [kontejneru Docker](functions-create-function-linux-custom-image.md) s škálováním řízeným událostmi prostřednictvím keda.  KEDA může škálovat dolů na 0 instancí (Pokud k žádné události nedochází) a až *n* instancí. Vystavuje vlastní metriky pro Kubernetes AutoScale (vodorovně pod autoscaleer).  Pomocí kontejnerů Functions s KEDA je možné replikovat funkce bez serveru v jakémkoli clusteru Kubernetes.  Tyto funkce se dají nasadit taky pomocí funkce [virtuálních uzlů Azure Kubernetes Services (AKS)](../aks/virtual-nodes-cli.md) pro infrastrukturu bez serveru.
+Funkce založené na Kubernetes poskytují modul runtime funkcí v [kontejneru Docker](functions-create-function-linux-custom-image.md) s škálováním řízeným událostmi prostřednictvím keda.  KEDA se může škálovat na 0 instancí (když k žádné události nedochází) a na *n* instancích. Vystavuje vlastní metriky pro Kubernetes AutoScale (vodorovně pod autoscaleer).  Pomocí kontejnerů Functions s KEDA je možné replikovat funkce bez serveru v jakémkoli clusteru Kubernetes.  Tyto funkce se dají nasadit taky pomocí funkce [virtuálních uzlů Azure Kubernetes Services (AKS)](../aks/virtual-nodes-cli.md) pro infrastrukturu bez serveru.
 
 ## <a name="managing-keda-and-functions-in-kubernetes"></a>Správa KEDA a funkcí v Kubernetes
 
@@ -84,7 +84,7 @@ KEDA podporuje následující aktivační události Azure Functions:
 Můžete použít Azure Functions, který zveřejňuje aktivační události HTTP, ale KEDA je přímo nespravuje.  Aktivační událost KEDA Prometheus můžete využít ke [škálování Azure FUNCTIONS http od 1 do *n* instancí](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
 * [Vytvoření funkce s použitím vlastní image](functions-create-function-linux-custom-image.md)
 * [Místní psaní kódu a testování funkcí Azure Functions](functions-develop-local.md)

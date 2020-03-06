@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929691"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359563"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Sledujte stav služby Azure IoT Hub a rychle Diagnostikujte problémy
 
@@ -66,7 +66,7 @@ Kategorie připojení sleduje události připojení zařízení a odpojení od s
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Příkazy z cloudu na zařízení
+#### <a name="cloud-to-device-commands"></a>Příkazy z cloudu do zařízení
 
 Kategorie příkazy Cloud-zařízení sleduje chyby, ke kterým dochází ve službě IoT Hub a které souvisejí s kanálem zpráv z cloudu na zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází:
 
@@ -345,7 +345,7 @@ V tomto případě se `durationMs` nepočítá, protože hodiny IoT Hub nemusí 
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Integer | Velikost zprávy typu zařízení-Cloud v bajtech |
+| **messageSize** | Celé číslo | Velikost zprávy typu zařízení-Cloud v bajtech |
 | **deviceId** | Řetězec alfanumerických alfanumerických znaků ASCII | Identita zařízení |
 | **callerLocalTimeUtc** | Časové razítko UTC | Čas vytvoření zprávy, jak je uvedeno v místních hodinách zařízení |
 | **calleeLocalTimeUtc** | Časové razítko UTC | Čas doručení zprávy na bránu IoT Hub, jak je uvedeno v IoT Hub hodiny na straně služby |
@@ -379,8 +379,8 @@ V části `properties` tento protokol obsahuje další informace o příchozím 
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | Řetězec | Hodnota true nebo false označuje, zda je v IoT Hub povoleno směrování zpráv. |
-| **parentSpanId** | Řetězec | [Identifikátor rozsahu](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který by byl trasováním zpráv D2C v tomto případě |
+| **isRoutingEnabled** | String | Hodnota true nebo false označuje, zda je v IoT Hub povoleno směrování zpráv. |
+| **parentSpanId** | String | [Identifikátor rozsahu](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který by byl trasováním zpráv D2C v tomto případě |
 
 ##### <a name="iot-hub-egress-logs"></a>Protokoly odchozího IoT Hub
 
@@ -411,9 +411,9 @@ V části `properties` tento protokol obsahuje další informace o příchozím 
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **koncový bod** | Řetězec | Název koncového bodu směrování |
-| **endpointType** | Řetězec | Typ koncového bodu směrování |
-| **parentSpanId** | Řetězec | [Identifikátor ID](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který bude v tomto případě IoT Hub trasování zprávy příchozího přenosu dat |
+| **koncový bod** | String | Název koncového bodu směrování |
+| **endpointType** | String | Typ koncového bodu směrování |
+| **parentSpanId** | String | [Identifikátor ID](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který bude v tomto případě IoT Hub trasování zprávy příchozího přenosu dat |
 
 #### <a name="configurations"></a>Konfigurace
 
@@ -540,7 +540,7 @@ Azure IoT Hub indikuje stav na regionální úrovni. Pokud oblastní výpadek ov
 
 Pokud chcete zjistit stav vašich Center IoT, postupujte takto:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Přejděte na **Service Health** > **Resource Health**.
 

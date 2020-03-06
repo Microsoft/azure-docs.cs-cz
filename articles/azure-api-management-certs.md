@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 5ce96796cbfdcefbaf5568ff199cba6a87f65e05
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329115"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Nahrajte certifikát pro správu služeb Azure.
 Certifikáty pro správu umožňují ověřování pomocí modelu nasazení Classic, který poskytuje Azure. Mnoho programů a nástrojů (například sadu Visual Studio nebo Azure SDK) tyto certifikáty používá k automatizaci konfigurace a nasazení různých služeb Azure. 
@@ -35,7 +35,7 @@ Můžete také použít [Azure Active Directory](https://azure.microsoft.com/ser
 Po vytvoření certifikátu pro správu (soubor. cer jenom s veřejným klíčem) ho můžete nahrát na portál. Když je certifikát k dispozici na portálu, může se kdokoli, kdo má odpovídající certifikát (soukromý klíč), připojit prostřednictvím rozhraní API pro správu a získat přístup k prostředkům přidruženého předplatného.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Klikněte na **všechny služby** v dolním seznamu služeb Azure a pak  vyberte předplatná ve skupině _Obecné_ služby.
+2. Klikněte na **všechny služby** v dolním seznamu služeb Azure a pak vyberte **předplatná** ve skupině _Obecné_ služby.
 
     ![Nabídka odběr](./media/azure-api-management-certs/subscriptions_menu.png)
 
@@ -51,5 +51,5 @@ Po vytvoření certifikátu pro správu (soubor. cer jenom s veřejným klíčem
 
     ![Nastavení](./media/azure-api-management-certs/certificate_details.png)
 
-## <a name="next-steps"></a>Další postup
-Teď, když máte certifikát pro správu, který je přidružený k předplatnému, můžete (po instalaci odpovídajícího certifikátu místně) připojit se k [modelu nasazení classic REST API](/azure/#pivot=sdkstools) a automatizovat různé prostředky Azure. které jsou také přidruženy k tomuto předplatnému.
+## <a name="next-steps"></a>Další kroky
+Teď, když máte certifikát pro správu, který je přidružený k předplatnému, můžete (po instalaci odpovídajícího certifikátu lokálně) připojit se k [modelu nasazení classic REST API](/azure/?pivot=sdkstools) a automatizovat různé prostředky Azure, které jsou taky přidružené k tomuto předplatnému.

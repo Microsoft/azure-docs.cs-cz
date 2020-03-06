@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 17be351d4af3d277242af70ea96e8735a5f68bc9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273649"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329081"
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -270,7 +270,7 @@ Pro Runbook můžete vytvořit [Webhook](automation-webhooks.md) a nakonfigurova
 
 ![Vytvoření Webhooku a přiřazení parametrů](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-Při spuštění sady Runbook pomocí Webhooku se pošle předdefinovaný vstupní parametr *[WebhookData](automation-webhooks.md#details-of-a-webhook)* spolu se vstupními parametry, které definujete. 
+Při spuštění sady Runbook pomocí Webhooku se pošle předdefinovaný vstupní parametr *[WebhookData](automation-webhooks.md)* spolu se vstupními parametry, které definujete. 
 
 ![Parametr WebhookData](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 

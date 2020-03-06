@@ -13,21 +13,17 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c2e24e9dea2c8463294c85f04c9e4d7d2da17261
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774573"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330647"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Rychlý Start: jak používat Service Bus fronty pomocí Node. js a balíčku Azure/Service-Bus
-> [!div class="op_multi_selector" title1="Programovací jazyk" title2="Manageru balíček s Node. js"]
-> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
-
 V tomto kurzu se naučíte psát program NodeJS, který odesílá zprávy do fronty Service Bus a přijímá je pomocí nového balíčku [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Tento balíček používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md) , zatímco starší balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používaný [Service Bus rozhraní API pro běh REST](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsány v jazyce JavaScript.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) . Poznamenejte si připojovací řetězec pro vaši instanci Service Bus a název fronty, kterou jste vytvořili. Tyto hodnoty použijeme v ukázkách.
 
@@ -138,5 +134,5 @@ Metoda [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/servi
 Další informace najdete v následujících zdrojích informací.
 - [Fronty, témata a odběry](service-bus-queues-topics-subscriptions.md)
 - Rezervace dalších [ukázek NodeJS pro Service Bus na GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
-- [Středisko pro vývojáře Node.js](https://azure.microsoft.com/develop/nodejs/)
+- [Středisku pro vývojáře Node.js](https://azure.microsoft.com/develop/nodejs/)
 

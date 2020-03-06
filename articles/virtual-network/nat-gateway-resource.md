@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669552"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359093"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT (Public Preview)
 
@@ -54,7 +54,7 @@ Trasy definované uživatelem nejsou nutné.
 
 Prostředek je navržený tak, aby byl jednoduchý, jak můžete vidět v následujícím příkladu Azure Resource Manager ve formátu podobném šabloně.  Tento formát podobný tomuto: slouží k znázornění konceptů a struktury.  Upravte příklad podle svých potřeb.  Tento dokument není určený jako kurz.
 
-Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revidovat 
+Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revize 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network objektového modelu NAT">
@@ -335,7 +335,7 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 ## <a name="limitations"></a>Omezení
 
 - Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
-- Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.
+- Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.  Překlad adres (NAT) nejde nasadit v podsíti s předponou IPv6.
 - Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
 - Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
@@ -343,27 +343,31 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 
 Podle [pokynů povolte své předplatné](nat-overview.md#public-preview-participation).
 
-## <a name="feedback"></a>Názor
+## <a name="feedback"></a>Váš názor
 
 Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [překladu adres (NAT) pro virtuální sítě](nat-overview.md)
-- Kurz pro ověření brány NAT
-  * Rozhraní příkazového [řádku Azure](tutorial-create-validate-nat-gateway-cli.md)
-  * [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
-  * [Azure Portal](tutorial-create-validate-nat-gateway-cli.md)
-- Rychlý Start pro nasazení prostředku brány NAT
-  * Rozhraní příkazového [řádku Azure](./quickstart-create-nat-gateway-cli.md)
-  * [PowerShell](./quickstart-create-nat-gateway-powershell.md),
-  * [Portál](./quickstart-create-nat-gateway-portal.md).
-- Přečtěte si další informace o [zónách dostupnosti](../availability-zones/az-overview.md).
-- Přečtěte si další informace o [službě Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md).
-- Přečtěte si další informace o [zónách dostupnosti a standardním nástroji pro vyrovnávání zatížení](../load-balancer/load-balancer-standard-availability-zones.md).
-- Další informace o rozhraní API prostředků brány NAT
-  * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [Řekněte nám, co se má sestavit dál ve službě UserVoice](https://aka.ms/natuservoice).
-- [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).
+* Přečtěte si o službě [NAT pro virtuální sítě](nat-overview.md).
+* Seznamte [se s metrikami a upozorněními pro prostředky brány NAT](nat-metrics.md).
+* Přečtěte si informace o [řešení potíží s prostředky brány NAT](troubleshoot-nat.md).
+* [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
+* [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).
+* Kurz pro ověření brány NAT
+  - Rozhraní příkazového [řádku Azure](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Azure Portal](tutorial-create-validate-nat-gateway-cli.md)
+* Rychlý Start pro nasazení prostředku brány NAT
+  - Rozhraní příkazového [řádku Azure](./quickstart-create-nat-gateway-cli.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md),
+  - [Portál](./quickstart-create-nat-gateway-portal.md).
+* Další informace o rozhraní API prostředků brány NAT
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
+  - Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+* Přečtěte si o [zónách dostupnosti](../availability-zones/az-overview.md).
+* Přečtěte si o [službě Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md).
+* Seznamte [se se zónami dostupnosti a standardním nástrojem pro vyrovnávání zatížení](../load-balancer/load-balancer-standard-availability-zones.md).
+
+

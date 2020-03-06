@@ -1,18 +1,18 @@
 ---
-title: ST_INTERSECTS v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o ST_INTERSECTS funkcí SQL systému v Azure Cosmos DB.
+title: ST_INTERSECTS v dotazovacím jazyce Azure Cosmos DB
+description: Přečtěte si o funkcích systému SQL ST_INTERSECTS v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 549c6b69e9112a491060478e859338c14e977612
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349380"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303133"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
  Vrací výraz Boolean určující, zda objekt GeoJSON (bodu, mnohoúhelník nebo LineString) zadané v prvním argumentu protíná GeoJSON (bodu, mnohoúhelník nebo LineString) v druhý argument.  
@@ -45,11 +45,15 @@ WHERE ST_INTERSECTS(a.location, {
 })  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{ "id": "IntersectingPolygon" }]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude využívat [geoprostorové rejstřík](index-policy.md#spatial-indexes).
 
 ## <a name="next-steps"></a>Další kroky
 

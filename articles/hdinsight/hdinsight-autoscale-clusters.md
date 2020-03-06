@@ -7,18 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/11/2020
-ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 03/05/2020
+ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484838"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399718"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
 > [!Important]
-> Funkce automatického škálování funguje jenom pro clustery Apache Spark, ApacheHive, LLAP a Apache HBA, které se vytvořily až do 8. května 2019. Automatické škálování pro LLAP a HBA je ve verzi Preview.
+> Funkce automatického škálování Azure HDInsight byla vydaná pro všeobecnou dostupnost od 7. listopadu 2019 pro clustery Spark a Hadoop a zahrnutá vylepšení nejsou ve verzi Preview této funkce k dispozici. Pokud jste vytvořili cluster Spark starší než 7. listopadu 2019 a chcete ve svém clusteru používat funkci automatického škálování, doporučuje se cesta vytvořit nový cluster a povolit automatické škálování v novém clusteru.
+>
+> Automatické škálování pro interaktivní dotazy (LLAP) a clustery HBA jsou stále ve verzi Preview. Automatické škálování je dostupné jenom v clusterech Spark, Hadoop, Interactive Query a HBA.
 
 Funkce automatického škálování clusteru Azure HDInsight automaticky škáluje počet pracovních uzlů v clusteru směrem nahoru a dolů. V tuto chvíli nejde škálovat jiné typy uzlů v clusteru.  Během vytváření nového clusteru HDInsight je možné nastavit minimální a maximální počet pracovních uzlů. Automatické škálování pak monitoruje požadavky na prostředky analytického zatížení a škáluje počet uzlů pracovních procesů nahoru nebo dolů. Pro tuto funkci se neúčtují žádné další poplatky.
 
@@ -26,7 +28,7 @@ Funkce automatického škálování clusteru Azure HDInsight automaticky škálu
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
-| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Verze | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
 | HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
@@ -56,23 +58,18 @@ Automatické škálování průběžně monitoruje cluster a shromažďuje násl
 
 Výše uvedené metriky se kontrolují každých 60 sekund. Automatické škálování provádí rozhodování na úrovni horizontálního škálování a horizontálního škálování na základě těchto metrik.
 
-### <a name="load-based-cluster-scale-up"></a>Škálování clusteru založené na zatížení
+### <a name="load-based-scale-conditions"></a>Podmínky škálování založené na zatížení
 
-Při zjištění následujících podmínek bude automatické škálování vydávat požadavek na škálování na více míst:
+Při zjištění následujících podmínek bude automatické škálování vydávat požadavek na škálování:
 
-* Celkový počet vyřízených PROCESORů je větší než 3 minuty, ale celkový počet volných PROCESORů.
-* Celkový počet nevyřízených paměti je větší než celková volná paměť po dobu více než 3 minut.
+|Vertikální navýšení kapacity|Horizontální navýšení kapacity|
+|---|---|
+|Celkový počet vyřízených PROCESORů je větší než 3 minuty, ale celkový počet volných PROCESORů.|Celkový počet nevyřízených PROCESORů je menší než celkový bezplatný procesor po dobu více než 10 minut.|
+|Celkový počet nevyřízených paměti je větší než celková volná paměť po dobu více než 3 minut.|Celková paměť, která čeká na vyřízení, je menší než celková volná paměť po dobu více než 10 minut.|
 
-Služba HDInsight počítá, kolik nových pracovních uzlů je potřebných pro splnění aktuálních požadavků na procesor a paměť, a pak vydá požadavek na horizontální navýšení kapacity k přidání požadovaného počtu uzlů.
+Pro horizontální navýšení kapacity služba HDInsight počítá, kolik nových pracovních uzlů je potřebných pro splnění aktuálních požadavků na procesor a paměť, a pak vydá požadavek na horizontální navýšení kapacity k přidání požadovaného počtu uzlů.
 
-### <a name="load-based-cluster-scale-down"></a>Škálování clusteru založené na zatížení – dolů
-
-Při zjištění následujících podmínek bude automatické škálování vydávat požadavek na horizontální navýšení kapacity:
-
-* Celkový počet nevyřízených PROCESORů je menší než celkový bezplatný procesor po dobu více než 10 minut.
-* Celková paměť, která čeká na vyřízení, je menší než celková volná paměť po dobu více než 10 minut.
-
-V závislosti na počtu kontejnerů AM na uzel a aktuálních požadavcích na procesor a paměť vystaví automatické škálování požadavek na odebrání určitého počtu uzlů. Služba také detekuje, které uzly jsou kandidáty na odebrání na základě aktuálního spuštění úlohy. Operace horizontálního snížení kapacity nejprve vyřadí uzly z provozu a pak je z clusteru odebere.
+Pro horizontální navýšení kapacity na základě počtu kontejnerů AM na uzel a aktuálních požadavků na procesor a paměť vystaví automatické škálování požadavek na odebrání určitého počtu uzlů. Služba také detekuje, které uzly jsou kandidáty na odebrání na základě aktuálního spuštění úlohy. Operace horizontálního snížení kapacity nejprve vyřadí uzly z provozu a pak je z clusteru odebere.
 
 ## <a name="get-started"></a>Začínáme
 

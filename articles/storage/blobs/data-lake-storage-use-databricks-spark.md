@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471869"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303235"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -28,7 +28,7 @@ V tomto kurzu provedete následující:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte účet Azure Data Lake Storage Gen2.
 
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
   K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
 
-  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
 
   > [!IMPORTANT]
   > Ujistěte se, že roli přiřadíte v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
@@ -75,7 +75,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.  |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
+    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
     |**Umístění**     | Vyberte **USA – západ 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).       |
     |**Cenová úroveň**     |  Vyberte **Standard**.     |
 
@@ -143,7 +143,7 @@ V této části vytvoříte kontejner a složku ve svém účtu úložiště.
 
 3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Jako jazyk vyberte **Python** a pak vyberte cluster Spark, který jste vytvořili dříve.
 
-4. Vyberte **Create** (Vytvořit).
+4. Vyberte **Vytvořit**.
 
 5. Zkopírujte následující blok kódu a vložte ho do první buňky, ale tento kód ještě nespouštějte.
 

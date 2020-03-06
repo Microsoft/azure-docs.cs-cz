@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d8242731466df9b80a6a6c3f0e340d6deb76e7d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193556"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304034"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Kurz: načtení dat do fondu SQL ve službě Azure synapse Analytics
 
@@ -41,7 +41,7 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Vytvoření prázdného datového skladu ve fondu SQL
 

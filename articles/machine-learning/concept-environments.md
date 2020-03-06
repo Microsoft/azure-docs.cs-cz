@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: 8906299cc9e2c000dab2ac9d2a345d9aaf238260
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 036efa27fb8d22c32f2f6bce1efe9dea300a3972
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045857"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302762"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co jsou Azure Machine Learning prostředí?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning prostředí určují balíčky Pythonu, proměnné prostředí a nastavení softwaru kolem vašich školicích a vyhodnocovacích skriptů. Určují také časy spuštění (Python, Spark nebo Docker). Jsou spravované a se správou verzí v rámci vašeho pracovního prostoru Machine Learning umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
+Azure Machine Learning prostředí určují balíčky Pythonu, proměnné prostředí a nastavení softwaru kolem vašich školicích a vyhodnocovacích skriptů. Určují také časy spuštění (Python, Spark nebo Docker). Prostředí jsou spravovaná a entitami se správou verzí v rámci vašeho Machine Learning pracovního prostoru, které umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
 
 Objekt `Environment` v místním výpočetním prostředí můžete použít k těmto akcím:
 * Vytvořte školicí skript.
@@ -57,6 +57,45 @@ Konkrétní ukázky kódu najdete v části Vytvoření prostředí v tématu [o
 * Image Docker můžete vytvářet automaticky z prostředí.
 
 Ukázky kódu najdete v části "Správa prostředí" v tématu [opakované použití prostředí pro účely školení a nasazení](how-to-use-environments.md#manage-environments).
+
+## <a name="environment-building-caching-and-reuse"></a>Sestavení, ukládání do mezipaměti a opakované použití prostředí
+
+Služba Azure Machine Learning sestaví definice prostředí do prostředí Docker images a conda. Také ukládá do mezipaměti prostředí, aby je bylo možné znovu použít v následných školicích běhůch a nasazeních koncových bodů služby.
+
+### <a name="building-environments-as-docker-images"></a>Sestavování prostředí jako imagí Docker
+
+Při prvním odeslání běhu pomocí prostředí služba Azure Machine Learning vyvolá [úlohu sestavení ACR](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) na Azure Container Registry (ACR), která je přidružena k pracovnímu prostoru. Vytvořená image Docker se pak uloží do mezipaměti v pracovním prostoru ACR. Na začátku spuštění spuštění je image načtena cílem výpočtů.
+
+Sestavení image se skládá ze dvou kroků:
+
+ 1. Stažení základní image a provedení všech kroků Docker
+ 2. Vytvoření prostředí conda podle závislostí conda zadaných v definici prostředí.
+
+Druhý krok se vynechá, pokud zadáte [závislosti spravované uživatelem](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py). V tomto případě zodpovídáte za instalaci jakýchkoli balíčků Pythonu, zahrnutím do základní Image nebo zadáním vlastních kroků Docker v prvním kroku. Zodpovídáte také za určení správného umístění spustitelného souboru Pythonu.
+
+### <a name="image-caching-and-reuse"></a>Ukládání obrázků do mezipaměti a opakované použití
+
+Použijete-li stejnou definici prostředí pro jiný běh, služba Azure Machine Learning znovu použije obrázek uložený v mezipaměti z pracovního prostoru ACR. 
+
+Chcete-li zobrazit podrobnosti obrázku v mezipaměti, použijte metodu [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-) .
+
+Aby bylo možné určit, zda znovu použít bitovou kopii v mezipaměti nebo vytvořit novou, služba vypočítá [hodnotu hash](https://en.wikipedia.org/wiki/Hash_table) z definice prostředí a porovná ji s hodnotami hash stávajících prostředí. Hodnota hash je založena na:
+ 
+ * Základní hodnota vlastnosti Image
+ * Hodnota vlastnosti vlastní kroky Docker
+ * Seznam balíčků Pythonu v definici conda
+ * Seznam balíčků v definici Sparku 
+
+Hodnota hash není závislá na názvu prostředí nebo verzi. Změny definice prostředí, jako je například přidání nebo odebrání balíčku Pythonu nebo změna verze balíčku, způsobí, že hodnota hash se změní a spustí opětovné sestavení bitové kopie. Pokud však jednoduše přejmenujete prostředí nebo vytvoříte nové prostředí s přesnou vlastností a balíčky existující instance, hodnota hash zůstane stejná a použije se obrázek uložený v mezipaměti.
+
+Podívejte se na následující diagram, který obsahuje tři definice prostředí. Dva z nich mají odlišný název a verzi, ale stejný základní image a balíčky Pythonu. Mají stejnou hodnotu hash, a proto odpovídají stejné imagi uložené v mezipaměti. Třetí prostředí má různé balíčky a verze Pythonu a proto odpovídá jinému obrázku v mezipaměti.
+
+![Diagram ukládání do mezipaměti prostředí jako imagí Docker](./media/concept-environments/environment-caching.png)
+
+Pokud vytvoříte prostředí s nepřipojenou závislostí balíčku, například ```numpy```, bude toto prostředí dál používat verzi balíčku nainstalovanou v době vytváření prostředí. I jakékoli budoucí prostředí s vyhovující definicí bude dál používat starou verzi. Chcete-li aktualizovat balíček, zadejte číslo verze pro vynucení opětovného sestavení obrázku, například ```numpy==1.18.1```. Všimněte si, že se nainstalují nové závislosti včetně vnořených objektů, které by mohly poškodit předchozí pracovní scénář.
+
+> [!WARNING]
+>  Metoda [prostředí. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace-) znovu sestaví bitovou kopii v mezipaměti s případným vedlejším účinkem aktualizace nepřipnutých balíčků a zásadní reprodukovatelnosti pro všechny definice prostředí odpovídající tomuto obrázku v mezipaměti.
 
 ## <a name="next-steps"></a>Další kroky
 

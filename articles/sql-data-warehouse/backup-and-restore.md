@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/21/2019
+ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ecaf9e007d93b3a99a7609ebf36307f3a6dad15c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b689588bcbca640dd55b25c52c462ad1a363da5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199950"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296333"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Zálohování a obnovení ve fondu SQL Azure synapse
 
@@ -58,7 +58,7 @@ Následující seznam obsahuje podrobné informace o obdobích uchování bodu o
 2. Snímky se neprovádí při pozastavení fondu SQL.
 3. Stáří bodu obnovení se měří v rámci absolutních kalendářních dnů od doby, kdy se provede bod obnovení, včetně okamžiku pozastavení fondu SQL.
 4. V jakémkoli okamžiku je zaručeno, že fond SQL bude moci ukládat až 42 uživatelem definovaných bodů obnovení a 42 bodů obnovení, pokud tyto body obnovení nedosáhly retenčního období 7 dní.
-5. Pokud se snímek povede, pak se fond SQL pozastaví po dobu delší než 7 dní a pak se obnoví, aby bylo možné zachovat bod obnovení, dokud nebude mít 42 celkový počet bodů obnovení (včetně uživatelsky definovaného i automatického).
+5. Pokud se snímek povede, pak se fond SQL pozastaví na více než 7 dní a pak se obnoví, dokud nebude mít 42 celkový počet bodů obnovení (včetně uživatelsky definovaného a automatického).
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>Uchování snímku při vyřazení fondu SQL
 

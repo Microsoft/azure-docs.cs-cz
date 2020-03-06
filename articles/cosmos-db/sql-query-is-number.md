@@ -1,18 +1,18 @@
 ---
-title: IS_NUMBER v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o IS_NUMBER funkcí SQL systému v Azure Cosmos DB.
+title: IS_NUMBER v dotazovacím jazyce Azure Cosmos DB
+description: Přečtěte si o funkcích systému SQL IS_NUMBER v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 624f5c91a9d2a0eb4744d310120050d0d5ccef4e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: c019424241bc07d5a5d2cc19a64685c476f94548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349841"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303813"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER (Azure Cosmos DB)
  Vrátí logickou hodnotu označující, pokud typ z určeného výrazu je číslo.  
@@ -47,11 +47,15 @@ SELECT
     IS_NUMBER({prop: "value"}.prop2) AS isNum7  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"isNum1":false,"isNum2":true,"isNum3":false,"isNum4":false,"isNum5":false,"isNum6":false,"isNum7":false}]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

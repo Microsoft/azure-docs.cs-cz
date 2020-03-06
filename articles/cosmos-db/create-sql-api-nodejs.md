@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 2e1f0313b6e611eac6968c17cececd382a6d45fe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 117d4a5c1c4ac00e6d6a561f7dc4254a15a24f9c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330681"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rychlý Start: použití Node. js k připojení a dotazování dat z Azure Cosmos DB účtu rozhraní SQL API
 
@@ -27,15 +27,23 @@ ms.locfileid: "77664065"
 
 V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhraní SQL API z Azure Portal a pomocí aplikace Node. js naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčovým `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
 - [Node. js 6.0.0 +](https://nodejs.org/).
 - [Git](https://www.git-scm.com/downloads)
 
-## <a name="create-a-database"></a>Vytvoření databáze
+## <a name="create-an-azure-cosmos-account"></a>Vytvoření účtu Azure Cosmos
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+Pro účely tohoto rychlého startu můžete pomocí možnosti [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) vytvořit účet Azure Cosmos.
+
+1. Přejděte na stránku [vyzkoušet Azure Cosmos DB pro bezplatnou](https://azure.microsoft.com/try/cosmosdb/) stránku.
+
+1. Zvolte účet rozhraní **SQL** API a vyberte **vytvořit**. Přihlaste se pomocí účet Microsoft, jako je například Outlook.
+
+1. Po úspěšném přihlášení by měl být váš účet Azure Cosmos připravený. Vyberte **otevřít v Azure Portal** pro otevření nově vytvořeného účtu.
+
+Možnost "vyzkoušet Azure Cosmos DB zdarma" nevyžaduje předplatné Azure a nabízí vám účet Azure Cosmos po dobu delší než 30 dnů. Pokud chcete účet Azure Cosmos použít po delší dobu, měli byste [účet vytvořit](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) v rámci předplatného Azure.
 
 ## <a name="add-a-container"></a>Přidat kontejner
 
@@ -51,7 +59,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
 
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|Tasks|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`ani mezeru. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`ani mezeru. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
     |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . ID kontejnerů mají stejné požadavky na znaky jako názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
@@ -80,7 +88,7 @@ Teď naklonujte aplikaci Node. js z GitHubu, nastavíme připojovací řetězec 
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je nepovinný. Pokud vás zajímá, jak se v kódu vytvářejí prostředky databáze Azure Cosmos, můžete zkontrolovat následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace připojovacího řetězce](#update-your-connection-string).
+Tento krok je volitelný. Pokud vás zajímá, jak se v kódu vytvářejí prostředky databáze Azure Cosmos, můžete zkontrolovat následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace připojovacího řetězce](#update-your-connection-string).
 
 Pokud jste obeznámeni s předchozí verzí sady SQL JavaScript SDK, můžete použít k zobrazení _kolekce_ a _dokumentu_. Vzhledem k tomu, že Azure Cosmos DB podporuje [více modelů rozhraní API](introduction.md), [verze 2.0 + sady JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) používá obecný _kontejner_, což může být kolekce, graf nebo tabulka a _položka_ pro popis obsahu kontejneru.
 
@@ -145,7 +153,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru _app.js_.
   ```
 
 > [!NOTE]
-> V metodách "Update" i "Delete" musí být položka vybrána z databáze voláním `conatiner.item()`. Dva předané parametry jsou ID položky a klíč oddílu položky. V tomto případě je klíč parition hodnotou pole kategorie.
+> V metodách "Update" i "Delete" musí být položka vybrána z databáze voláním `container.item()`. Dva předané parametry jsou ID položky a klíč oddílu položky. V tomto případě je klíč parition hodnotou pole kategorie.
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
@@ -165,7 +173,7 @@ Teď se vraťte na Azure Portal a Získejte podrobnosti o připojovacím řetěz
 
    `key: "<Your Azure Cosmos account key>"`
 
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 
 1. Spusťte v terminálu `npm install`, aby se nainstalovaly požadované moduly NPM.
 
@@ -176,10 +184,6 @@ Nyní se můžete vrátit do Průzkumník dat, upravit a pracovat s těmito nov�
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

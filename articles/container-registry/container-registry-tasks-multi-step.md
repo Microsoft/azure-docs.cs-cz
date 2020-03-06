@@ -3,12 +3,12 @@ title: Úloha s více kroky pro sestavení, test & opravu obrázku
 description: Seznámení s více kroky – funkce ACR úloh v Azure Container Registry, které poskytují pracovní postupy založené na úlohách pro vytváření, testování a opravy imagí kontejnerů v cloudu.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: cf5f90263c75aeb96220967142d28995209f2d86
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945671"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399696"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Spouštění úloh s více kroky sestavení, testování a oprav v úlohách ACR
 
@@ -95,8 +95,11 @@ az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.co
 
 Při spuštění úlohy by měl výstup zobrazit průběh každého kroku definovaného v souboru YAML. V následujícím výstupu se kroky zobrazí jako `acb_step_0` a `acb_step_1`.
 
-```console
-$ az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```azurecli
+az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```
+
+```output
 Sending context to registry: myregistry...
 Queued a run with ID: yd14
 Waiting for an agent...

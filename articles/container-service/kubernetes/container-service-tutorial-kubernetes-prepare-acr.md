@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274133"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399782"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>ZASTARALÉ Nasazení a použití Azure Container Registry
 
@@ -74,7 +74,7 @@ docker images
 
 Výstup:
 
-```bash
+```output
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
 redis                        latest              a1b99da73d05        7 days ago          106MB
@@ -103,7 +103,7 @@ docker images
 
 Výstup:
 
-```bash
+```output
 REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                                     latest              eaf2b9c57e5e        8 minutes ago       716 MB
 mycontainerregistry082.azurecr.io/azure-vote-front   v1            eaf2b9c57e5e        8 minutes ago       716 MB
@@ -123,7 +123,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 Tato akce trvá několik minut.
 
-## <a name="list-images-in-registry"></a>Výpis imagí v registru
+## <a name="list-images-in-registry"></a>Vypsání imagí v registru
 
 Pokud chcete vrátit seznam imagí, které byly nahrány do vašeho registru kontejneru Azure, použijte příkaz [az acr repository list](/cli/azure/acr/repository#az-acr-repository-list). Aktualizujte příkaz s použitím názvu instance služby ACR.
 
@@ -133,7 +133,7 @@ az acr repository list --name <acrName> --output table
 
 Výstup:
 
-```azurecli
+```output
 Result
 ----------------
 azure-vote-front
@@ -147,7 +147,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 Výstup:
 
-```azurecli
+```output
 Result
 --------
 v1

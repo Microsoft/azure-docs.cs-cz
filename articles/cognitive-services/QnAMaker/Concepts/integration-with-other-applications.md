@@ -3,12 +3,12 @@ title: Integrace s jinými aplikacemi – QnA Maker
 description: QnA Maker se integruje do klientských aplikací, jako jsou roboty chatu, stejně jako jiné služby pro zpracování v přirozeném jazyce, jako je například Language Understanding (LUIS).
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: f75ee92f2ecd14f5c3e017aeee2340cff0c92561
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843385"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300515"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Návrh znalostní báze pro klientské aplikace
 
@@ -20,7 +20,7 @@ QnA Maker se integruje s klientskými aplikacemi v konverzaci, jako je [Microsof
 
 ## <a name="create-a-bot-without-writing-any-code"></a>Vytvoření robota bez psaní kódu
 
-Po publikování znalostní báze vytvořte robota ze stránky **publikování** tak, že vyberete tlačítko **vytvořit robot** . Pomocí [kurzu robota](../tutorials/create-qna-bot.md) se dozvíte, co se stane po výběru tlačítka.
+Po publikování znalostní báze vytvořte robota ze stránky **publikování** tak, že vyberete tlačítko **vytvořit robot** . Pomocí [kurzu robota](../Quickstarts/create-publish-knowledge-base.md) se dozvíte, co se stane po výběru tlačítka.
 
 ## <a name="providing-multi-turn-conversations"></a>Zajištění vícenásobného zapínání konverzací
 

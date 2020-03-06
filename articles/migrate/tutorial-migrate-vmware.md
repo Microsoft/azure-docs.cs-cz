@@ -4,12 +4,12 @@ description: Naučte se spouštět migraci virtuálních počítačů VMware bez
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989361"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304204"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -41,7 +41,7 @@ Pokud chcete rozhodnout, jestli chcete použít migraci bez agenta nebo agenta, 
 - [Přečtěte si, jak](server-migrate-overview.md) funguje migrace bez agentů, a [Porovnejte metody migrace](server-migrate-overview.md#compare-migration-methods).
 - Pokud chcete použít metodu založenou na agentech, [Přečtěte si tento článek](tutorial-migrate-vmware-agent.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
@@ -66,7 +66,7 @@ Pokud jste postupovali s druhým kurzem a již máte nastaven Azure Migrate proj
 
 3. V okně **Nástroje pro migraci**vyberte **kliknutím sem přidáte Nástroj pro migraci, který jste připraveni migrovat**.
 
-    ![Výběr nástroje](./media/tutorial-migrate-vmware/select-migration-tool.png)
+    ![Vybrat nástroj](./media/tutorial-migrate-vmware/select-migration-tool.png)
 
 4. V seznamu Nástroje vyberte **Azure Migrate: Serverová migrace** > **Přidat nástroj** .
 
@@ -246,9 +246,9 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 4. Pro virtuální počítač se spustí úloha migrace. Tuto úlohu můžete sledovat pomocí oznámení Azure.
 5. Po dokončení úlohy můžete virtuální počítač zobrazit a spravovat na stránce **Virtuální počítače**.
 
-## <a name="complete-the-migration"></a>Dokončení migrace
+## <a name="complete-the-migration"></a>Dokončete migraci
 
-1. Po dokončení migrace klikněte pravým tlačítkem na virtuální počítač > **zastavit migraci**. Tím se zastaví replikace místního počítače a vyčistí se informace o stavu replikace pro virtuální počítač.
+1. Po dokončení migrace klikněte pravým tlačítkem na virtuální počítač > **zastavit replikaci**. Tím se zastaví replikace místního počítače a vyčistí se informace o stavu replikace pro virtuální počítač.
 2. Na migrované počítače nainstalujte agenta Azure VM pro [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) .
 3. Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
 4. U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.

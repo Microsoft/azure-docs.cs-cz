@@ -4,15 +4,15 @@ description: Přečtěte si o StringToNull funkcí SQL systému v Azure Cosmos D
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c7ea3ca82cadb1351d8581f3d652ce060d67969b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349243"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296435"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
  Vrátí výraz, který je přeložen na hodnotu null. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
@@ -34,7 +34,7 @@ StringToNull(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToNull` se chová v různých typech. 
+  Následující příklad ukazuje, jak se `StringToNull` chová napříč různými typy. 
 
 Níže jsou uvedeny příklady s platným vstupem.
 
@@ -47,7 +47,7 @@ SELECT
     IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"n1": null, "n2": null, "n3": true}]
@@ -63,7 +63,7 @@ SELECT
     StringToNull("Null")
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{}]
@@ -79,11 +79,15 @@ SELECT
     StringToNull(NaN) 
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{}]
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

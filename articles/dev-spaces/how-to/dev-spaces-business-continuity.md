@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k zajištění kontinuity podnikových aplikací a příprava na zotavení po havárii.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252389"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295823"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces
 
@@ -27,11 +27,9 @@ Povolením vývojových prostorů v clusterech AKS v různých oblastech můžet
 
 Obecné informace o nasazeních AKS ve více oblastech najdete v tématu [Plánování nasazení ve více oblastech](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) .
 
-Informace o nasazení clusteru AKS, který je kompatibilní s Azure Dev Spaces, najdete v tématu [Vytvoření clusteru Kubernetes pomocí Azure Cloud Shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
-
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>Povolit vývojářské prostory prostřednictvím Azure Portal
 
-V Azure Portal klikněte na navigační položku **prostory pro vývoj** ve vlastnostech každého clusteru. Pak zvolte možnost Povolit vývojové prostory.
+Vyberte položku nabídky **vývojové prostory** v části nastavení každého clusteru v Azure Portal. Pak zvolte možnost Povolit vývojové prostory a uložit.
 
 ![Povolení vývojových prostorů prostřednictvím Azure Portal](../media/common/enable-dev-spaces.jpg)
 
@@ -53,7 +51,7 @@ Nejnovější verze sady služeb můžete nasadit do clusterů ve více oblastec
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Vyberte správný cluster AKS, který se má použít pro vývojové prostory.
 
-Po správném nakonfigurování záložního clusteru se směrným plánem vašeho týmu můžete kdykoli rychle přejít na záložní cluster. Pak můžete znovu spustit jednotlivé služby, na kterých pracujete ve vývojových prostorech.
+Po správném nakonfigurování záložního clusteru se směrným plánem vašeho týmu můžete kdykoli rychle přejít na záložní cluster. Pak můžete znovu spustit jednotlivé služby, na kterých pracujete v podřízených vývojových prostorech.
 
 Vyberte jiný cluster s následujícím příkazem CLI:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 115667c93bbb832926a7939cf250a02b6fef8baa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 47fe20888aa546e414b268b30c2e03580750a040
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873484"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303473"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
 Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Můžete kontrolovat částečnou nebo úplnou shodu objektu pomocí logického výrazu v rámci příkazu. 
@@ -48,7 +48,7 @@ SELECT
            ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "mangoes") AS b2  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"b1": true, "b2": false}]  
@@ -63,16 +63,19 @@ SELECT
     ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) AS b3 
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{
   "b1": true,
   "b2": false,
   "b3": false
-}] 
-```  
-  
+}]
+```
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

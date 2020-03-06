@@ -1,18 +1,18 @@
 ---
-title: IS_BOOL v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o IS_BOOL funkcí SQL systému v Azure Cosmos DB.
+title: IS_BOOL v dotazovacím jazyce Azure Cosmos DB
+description: Přečtěte si o funkcích systému SQL IS_BOOL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: cb928558483a703a554d3eb6eb049af544f72eb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b7f1cfb09121309e246b314d57a5e4e475bd0983
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349893"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303864"
 ---
 # <a name="is_bool-azure-cosmos-db"></a>IS_BOOL (Azure Cosmos DB)
  Vrátí logickou hodnotu označující, pokud typ z určeného výrazu je logická hodnota.  
@@ -47,11 +47,15 @@ SELECT
     IS_BOOL({prop: "value"}.prop2) AS isBool7  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"isBool1":true,"isBool2":false,"isBool3":false,"isBool4":false,"isBool5":false,"isBool6":false,"isBool7":false}]
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

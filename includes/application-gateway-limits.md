@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 6/5/2019
+ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: MT
+ms.openlocfilehash: 48f4c7497583e872c89e4d8cd92dab52ab4f9239
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054946"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305037"
 ---
 | Prostředek | Výchozí/maximální limit | Poznámka |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ ms.locfileid: "77054946"
 | Porty front-endu |100<sup>1</sup> | |
 | Fondy back-endové adresy |100<sup>1</sup> | |
 | Back-endové servery na fond |1,200 | |
-| Naslouchací procesy HTTP |100<sup>1</sup> | |
+| Naslouchací procesy HTTP |200<sup>1</sup> |Omezeno na 100 aktivních naslouchací procesy, které směrují provoz. Aktivní naslouchací procesy = celkový počet naslouchacího procesu – naslouchací procesy nejsou aktivní.<br>Pokud je výchozí konfigurace v pravidle směrování nastavená na směrování provozu (například má naslouchací proces, fond back-end a nastavení HTTP), pak se také počítá jako naslouchací proces.|
 | Pravidla vyrovnávání zatížení HTTP |100<sup>1</sup> | |
 | Nastavení HTTP back-endu |100<sup>1</sup> | |
 | Instance na jednu bránu |V1 SKU-32<br>V2 SKU – 125 | |

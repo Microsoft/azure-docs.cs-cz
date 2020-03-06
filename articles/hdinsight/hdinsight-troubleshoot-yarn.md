@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895257"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395169"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop NITĚmi pomocí Azure HDInsight
 
@@ -24,24 +24,24 @@ Další informace o nejčastější problémy a jejich řešení při práci s d
 
 Pomocí následujícího postupu Ambari vytvořit novou frontu YARN a potom vyrovnávat přidělení kapacity mezi všechny fronty.
 
-V tomto příkladu dvě existující fronty (**výchozí** a **thriftsvr**) jsou změněny z 50 % kapacity ke kapacitě 25 %, která poskytuje novou kapacitu 50 % fronty (spark).
+V tomto příkladu se obě existující fronty (**výchozí** a **thriftsvr**) změnily z 50% kapacity na 25% kapacity, což dává novou kapacitu queue (Spark) 50%.
 
 | Fronta | Kapacita | Maximální kapacita |
 | --- | --- | --- |
-| default | 25 % | 50 % |
-| thrftsvr | 25 % | 50 % |
-| Spark | 50 % | 50 % |
+| default | 25% | 50% |
+| thrftsvr | 25% | 50% |
+| Spark | 50% | 50% |
 
-1. Vyberte **zobrazení Ambari** ikonu a pak vyberte vzor mřížky. V dalším kroku vyberte **správce fronty YARN**.
+1. Vyberte ikonu **zobrazení Ambari** a pak vyberte vzor mřížky. V dalším kroku vyberte možnost **správce front příz**.
 
     ![Správce fronty PŘÍZe na řídicím panelu Apache Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
-2. Vyberte **výchozí** fronty.
+2. Vyberte **výchozí** frontu.
 
     ![Apache Ambari nitě vybrat výchozí frontu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. Pro **výchozí** fronty, změnit **kapacity** z 50 %, 25 %. Pro **thriftsvr** fronty, změnit **kapacity** 25 %.
+3. U **výchozí** fronty změňte **kapacitu** z 50% na 25%. V případě fronty **thriftsvr** změňte **kapacitu** na 25%.
 
     ![Změňte kapacitu na 25 % pro výchozí web a thriftsvr fronty](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Chcete-li vytvořit novou frontu, vyberte **přidat frontu**.
+4. Pokud chcete vytvořit novou frontu, vyberte **Přidat frontu**.
 
     ![Přidat frontu pro Apache Ambari nitě řídicí panel](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -49,10 +49,10 @@ V tomto příkladu dvě existující fronty (**výchozí** a **thriftsvr**) jsou
 
     ![Fronta názvů Ambari PŘÍZového řídicího panelu Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Nechte **kapacity** hodnoty na 50 % a pak vyberte **akce** tlačítko.
+6. Hodnoty **kapacity** ponechte na 50% a pak vyberte tlačítko **Akce** .
 
     ![Akce výběru nitě Apache Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Vyberte **uložte a aktualizujte stránku fronty**.
+7. Vyberte **Uložit a aktualizovat fronty**.
 
     ![Vyberte Uložit a aktualizovat fronty](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -66,7 +66,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Připojení ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [další čtení](#additional-reading-2).
+1. Připojení ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [Další](#additional-reading-2)informace o čtení.
 
 1. Chcete-li vypsat všechna ID aplikace, které jsou aktuálně spuštěné aplikace YARN, spusťte následující příkaz:
 
@@ -74,7 +74,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
     yarn top
     ```
 
-    ID jsou uvedeny v **APPLICATIONID** sloupce. Umožňuje stažení protokolů z **APPLICATIONID** sloupce.
+    ID jsou uvedena ve sloupci **APPLICATIONID** . Můžete stáhnout protokoly ze sloupce **APPLICATIONID** .
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -132,7 +132,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 ### <a name="additional-reading-2"></a>Další čtení
 
 - [Připojení k HDInsight (Apache Hadoop) pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [Apache Hadoop YARN koncepty a aplikace](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
+- [Apache Hadoop koncepce a aplikace PŘÍZe](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>Další kroky
 

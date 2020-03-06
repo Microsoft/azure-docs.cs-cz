@@ -3,12 +3,12 @@ title: Uložení Helm grafů
 description: Naučte se ukládat Helm grafy pro aplikace Kubernetes pomocí úložišť v Azure Container Registry
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: 26588bb4dc3cf50656103b50d5d0559908a1ccb7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7969efe37558fffb26b983131c56ae11f3ef9368
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524627"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398975"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Vložení a vyžádání Helm grafů do služby Azure Container Registry
 
@@ -36,7 +36,7 @@ Pro hostování Helm grafů v Azure Container Registry můžete použít buď He
 
 ## <a name="use-the-helm-3-client"></a>Použití klienta Helm 3
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - **Registr kontejnerů Azure** ve vašem předplatném Azure. V případě potřeby vytvořte registr pomocí [Azure Portal](container-registry-get-started-portal.md) nebo [Azure CLI](container-registry-get-started-azure-cli.md).
 - **Helm Client verze 3.0.0 nebo novější** – spusťte `helm version`, abyste našli aktuální verzi. Další informace o tom, jak nainstalovat a upgradovat Helm, najdete v tématu [instalace Helm][helm-install].
@@ -118,7 +118,7 @@ helm chart push mycontainerregistry.azurecr.io/helm/wordpress:latest
 
 Po úspěšném vložení se výstup podobá:
 
-```console
+```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/wordpress]
 ref:     mycontainerregistry.azurecr.io/helm/wordpress:latest
 digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
@@ -141,7 +141,7 @@ az acr repository show \
 
 Výstup se podobá tomuto:
 
-```console
+```output
 {
   "changeableAttributes": {
     "deleteEnabled": true,
@@ -168,7 +168,7 @@ az acr repository show-manifests \
 
 Výstup, zkrácený v tomto příkladu, zobrazuje `configMediaType` `application/vnd.cncf.helm.config.v1+json`:
 
-```console
+```output
 [
   {
     [...]
@@ -216,7 +216,7 @@ helm inspect chart wordpress
 
 Pokud není k dispozici žádné číslo verze, použije se *nejnovější* verze. Helm vrátí podrobné informace o grafu, jak je znázorněno v následujícím zhuštěném výstupu:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 dependencies:
@@ -256,7 +256,7 @@ helm install wordpress --generate-name
 
 Jak instalace pokračuje, postupujte podle pokynů ve výstupu příkazu a zobrazte si adresy URL a přihlašovací údaje WorPress. Můžete také spustit příkaz `kubectl get pods` pro zobrazení prostředků Kubernetes nasazených pomocí grafu Helm:
 
-```console
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
@@ -273,7 +273,7 @@ az acr repository delete --name mycontainerregistry --image helm/wordpress:lates
 
 ## <a name="use-the-helm-2-client"></a>Použití klienta Helm 2
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - **Registr kontejnerů Azure** ve vašem předplatném Azure. V případě potřeby vytvořte registr pomocí [Azure Portal](container-registry-get-started-portal.md) nebo [Azure CLI](container-registry-get-started-azure-cli.md).
 - **Helm Client verze 2.11.0 (ne verze RC) nebo novější** – spusťte `helm version`, abyste našli aktuální verzi. Také budete potřebovat server Helm (do pokladny) inicializovaný v rámci clusteru Kubernetes. V případě potřeby vytvořte [cluster služby Azure Kubernetes][aks-quickstart]. Další informace o tom, jak nainstalovat a upgradovat Helm, najdete v tématu [instalace Helm][helm-install-v2].
@@ -311,7 +311,7 @@ helm fetch stable/wordpress
 
 Zadejte `ls` pro výpis staženého grafu a poznamenejte si verzi WordPress obsaženou v názvu souboru. Příkaz `helm fetch stable/wordpress` nezadal konkrétní verzi, takže se načetla *nejnovější* verze. V následujícím příkladu výstupu je graf WordPress verze *8.1.0*:
 
-```
+```output
 wordpress-8.1.0.tgz
 ```
 
@@ -323,7 +323,7 @@ az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 
 Po chvíli Azure CLI hlásí, že je váš graf uložený, jak je znázorněno v následujícím příkladu výstupu:
 
-```
+```output
 {
   "saved": true
 }
@@ -345,7 +345,7 @@ helm search mycontainerregistry
 
 V seznamu je uveden graf WordPress nabízený v předchozím kroku, jak je znázorněno v následujícím příkladu výstupu:
 
-```
+```output
 NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  8.1.0           5.3.2       Web publishing platform for building blogs and websites.
 ```
@@ -366,7 +366,7 @@ helm inspect mycontainerregistry/wordpress
 
 Pokud není k dispozici žádné číslo verze, použije se *nejnovější* verze. Helm vrátí podrobné informace o grafu, jak je znázorněno v následujícím zhuštěném příkladu výstupu:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 description: Web publishing platform for building blogs and websites.
@@ -416,7 +416,7 @@ Během procesu instalace se dokončí tyto kroky:
 
 Jak instalace pokračuje, postupujte podle pokynů ve výstupu příkazu a zobrazte si adresy URL a přihlašovací údaje WorPress. Můžete také spustit příkaz `kubectl get pods` pro zobrazení prostředků Kubernetes nasazených pomocí grafu Helm:
 
-```
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s

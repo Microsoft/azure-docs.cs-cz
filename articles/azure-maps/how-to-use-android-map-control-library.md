@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1858b221418e6cc59c6441e0653299710b5c7e72
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: ca4051e56f7d51ac7ac5fbe534cb8fc536d64a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208640"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368681"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
 Azure Maps Android SDK je knihovna vektorových map pro Android. Tento článek vás provede procesy instalace Azure Maps Android SDK a načtení mapy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
@@ -127,10 +127,8 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
     ```java
     package com.example.myapplication;
 
-    //For older versions use: import android.support.v7.app.AppCompatActivity;
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
     import androidx.appcompat.app.AppCompatActivity;
-
-    import android.os.Bundle;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;

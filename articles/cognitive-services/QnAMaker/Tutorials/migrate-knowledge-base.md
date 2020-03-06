@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b441eb1e6531030a998fe628ae833b29a5d9fe5a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 942932c229ace82a0bf66da7a5421f936b028088
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902048"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302555"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu importu
 
 Migrace znalostní báze vyžaduje export z jedné znalostní báze a pak se importuje do jiného.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Vytvoření [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
+* Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * Nastavení nové [služby QnA maker](../How-To/set-up-qnamaker-service-azure.md)
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Migrace znalostní báze z QnA Maker
@@ -46,13 +46,9 @@ Migrace znalostní báze vyžaduje export z jedné znalostní báze a pak se imp
    > [!div class="mx-imgBorder"]
    > [![importovat znalostní bázi Knowledge Base](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
-1. **Test** nové znalostní báze pomocí panelu Test. Zjistěte, jak [testování znalostní báze](../How-To/test-knowledge-base.md).
-1. **Publikování** znalostní báze. Zjistěte, jak [publikovat znalostní báze](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
-1. Použijte koncový bod v kódu aplikace nebo bot. Zde uvedený postup [vytváření robotů QnA](../Tutorials/create-qna-bot.md).
+1. **Otestujte** novou znalostní bázi pomocí panelu Test. Naučte se [testovat znalostní bázi](../How-To/test-knowledge-base.md).
 
-    ![Nástroj QnA Maker hodnoty](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
-
-    V tomto okamžiku všechny znalostní báze obsah – otázky a odpovědi metadat, společně s názvy zdrojových souborů a adresy URL, importují do nové znalostní báze.
+1. **Publikujte** znalostní bázi a vytvořte robota chatu. Naučte se [publikovat znalostní bázi](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
 ## <a name="chat-logs-and-alterations"></a>Protokoly a změny chatu
 Změny bez rozlišení velkých a malých písmen (synonym) se neimportují automaticky. Použijte [rozhraní v4 API](https://go.microsoft.com/fwlink/?linkid=2092179) pro přesun změn v nové znalostní bázi.

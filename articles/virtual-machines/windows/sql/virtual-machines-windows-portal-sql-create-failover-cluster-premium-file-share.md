@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651357"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303218"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na virtuálních počítačích Azure
 
@@ -53,7 +53,7 @@ Zkontrolujte aktivitu IOPS vašeho prostředí a ověřte, že sdílené složky
 
 Řada úloh má v/v vstupně-výstupní operace, takže je dobré kontrolovat během těžkých období využití a poznamenat si maximální počet vstupně-výstupních operací a průměrných vstupně-výstupních operací. Soubory úrovně Premium poskytují IOPS na základě velikosti sdílené složky. Prémiové sdílené složky také poskytují bezplatné rozpínání, které vám umožní navýšit nárůst počtu vstupně-výstupních operací na trojnásobek základní částky po dobu až jedné hodiny.
 
-Další informace o výkonu sdílené složky Premium najdete v tématu [úrovně výkonu sdílení souborů](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers).
+Další informace o výkonu sdílené složky Premium najdete v tématu [úrovně výkonu sdílení souborů](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers).
 
 ### <a name="licensing-and-pricing"></a>Licencování a ceny
 

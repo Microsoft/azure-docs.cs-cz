@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971141"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301348"
 ---
 # <a name="application-gateway-components"></a>Komponenty aplikační brány
 
@@ -53,11 +53,11 @@ Application Gateway podporuje čtyři protokoly: HTTP, HTTPS, HTTP/2 a WebSocket
 >Podpora protokolu HTTP/2 je dostupná pro klienty připojující se pouze ke službě Application Gateway Listeners. Komunikace s fondy back-end serveru je vždycky přes HTTP/1.1. Ve výchozím nastavení je podpora HTTP/2 zakázaná. Můžete ji povolit.
 
 - Zadejte mezi protokoly HTTP a HTTPS v konfiguraci naslouchacího procesu.
-- Podpora [protokolů WebSockets a HTTP/2](overview.md#websocket-and-http2-traffic) je poskytována nativně a [Podpora protokolu WebSocket](application-gateway-websocket.md) je ve výchozím nastavení povolena. Neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket. Použijte objekty WebSockets s naslouchacími procesy HTTP i HTTPS.
+- Podpora [protokolů WebSockets a HTTP/2](features.md#websocket-and-http2-traffic) je poskytována nativně a [Podpora protokolu WebSocket](application-gateway-websocket.md) je ve výchozím nastavení povolena. Neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket. Použijte objekty WebSockets s naslouchacími procesy HTTP i HTTPS.
 
 Pro ukončení SSL použijte naslouchací proces HTTPS. Naslouchací proces HTTPS přesměruje šifrování a dešifrovací práci do vaší aplikační brány, takže vaše webové servery nebudou režie zatíženy.
 
-### <a name="custom-error-pages"></a>Stránky vlastních chyb
+### <a name="custom-error-pages"></a>Vlastní chybové stránky
 
 Application Gateway umožňuje vytvářet vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení. Pokud se žádost nemůže připojit k back-endu, Application Gateway zobrazí vlastní chybovou stránku.
 
@@ -115,9 +115,9 @@ Port a protokol, který se používá v nastavení HTTP, určuje, jestli je pře
 
 Tato součást se používá také k těmto akcím:
 
-- Určete, jestli má být uživatelská relace na stejném serveru zachovaná pomocí [přidružení relace na základě souborů cookie](overview.md#session-affinity).
+- Určete, jestli má být uživatelská relace na stejném serveru zachovaná pomocí [přidružení relace na základě souborů cookie](features.md#session-affinity).
 
-- Řádně odeberte členy back-end fondu pomocí [vyprazdňování připojení](overview.md#connection-draining).
+- Řádně odeberte členy back-end fondu pomocí [vyprazdňování připojení](features.md#connection-draining).
 
 - Přidružte vlastní test, který monitoruje stav back-endu, nastavte interval časového limitu požadavku, přepište název hostitele a cestu v žádosti a poskytněte možnosti snadného kliknutí, abyste určili nastavení pro App Service back-endu.
 
@@ -129,7 +129,7 @@ Back-end fond směruje požadavky na back-endové servery, které slouží k ž�
 - Škálovací sady virtuálních počítačů
 - Veřejné IP adresy
 - Interní IP adresy
-- PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY
+- Plně kvalifikovaný název domény
 - Back-endy víceklientské architektury (například App Service)
 
 Application Gateway členové fondu back-endu nejsou vázáni na skupinu dostupnosti. Aplikační brána může komunikovat s instancemi mimo virtuální síť, ve které je. Výsledkem je, že členové fondů back-endu můžou být napříč clustery, v datových centrech nebo mimo Azure, pokud se jedná o připojení IP.

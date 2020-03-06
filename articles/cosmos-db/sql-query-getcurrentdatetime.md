@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8a2c3dcd3c8ca6dc9d751e50a7862fe98e6de510
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351019"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303898"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  Vrátí aktuální čas UTC (koordinovaný světový čas) datum a čas jako řetězec ISO 8601.
@@ -25,7 +25,7 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí aktuální hodnotu řetězce standardu UTC data a času 8601 ve formátu `YYYY-MM-DDThh:mm:ss.sssZ`, kde:
+  Vrátí aktuální hodnotu řetězce data a času standardu UTC 8601 ve formátu `YYYY-MM-DDThh:mm:ss.fffffffZ`, kde:
   
   |||
   |-|-|
@@ -33,10 +33,10 @@ GetCurrentDateTime ()
   |MM|dvoumístný měsíc (01 = leden atd.)|
   |DD|dvoumístné číslo dne v měsíci (01 až 31)|
   |T|označuje, že se mají na začátku prvky času.|
-  |HH|dvě číslice – hodina (00 až 23)|
-  |mm|dvě číslice minuty (00 až 59)|
+  |hh|dvoumístný čas (00 až 23)|
+  |mm|dvoumístné minuty (00 až 59)|
   |ss|dvě číslice sekund (00 až 59)|
-  |.sss|tři číslice desetinné zlomky sekundy|
+  |. fffffff|dvoumístný zlomek v sekundách|
   |Z|Označení UTC (koordinovaný světový čas)||
   
   Další informace o formátu ISO 8601 naleznete v tématu [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -46,6 +46,8 @@ GetCurrentDateTime ()
   GetCurrentDateTime () je nedeterministické funkce. 
   
   Vrácený výsledek je UTC.
+
+  Přesnost je 7 číslic a přesnost 100 nanosekund.
 
 ## <a name="examples"></a>Příklady
   
@@ -59,7 +61,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
   
 ```json
 [{
-  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
 }]  
 ```  
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838382"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328825"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření účtu Video Indexer připojeného k Azure
 
@@ -23,7 +23,7 @@ Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkuše
 
 Tento článek ukazuje, jak vytvořit účet Video Indexer propojený s předplatným Azure a účtem Azure Media Services. Téma popisuje kroky pro připojení k Azure pomocí automatického (výchozího) toku. Také ukazuje, jak se připojit k Azure ručně (rozšířené).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure.
 
@@ -45,7 +45,7 @@ Uživatel a člen v doméně služby Azure AD. Tento člen budete používat př
 
 Tento uživatel by měl být členem v předplatném Azure pomocí role **vlastníka** nebo role **Správce přístupu** **přispěvatele** i uživatele. Uživatel může být přidán dvakrát s 2 rolemi. Jednou s přispěvatelem a jednou u správce přístupu uživatele.
 
-![Řízení přístupu](./media/create-account/access-control-iam.png)
+![řízení přístupu](./media/create-account/access-control-iam.png)
 
 ### <a name="additional-prerequisites-for-manual-flow"></a>Další požadavky na ruční tok
 
@@ -124,8 +124,8 @@ Pokud se připojení k Azure nepovedlo, můžete se pokusit problém vyřešit r
 4. Aby bylo možné Video Indexer ověřit pomocí rozhraní Media Services API, je nutné vytvořit aplikaci služby Active Directory. Následující kroky vás provedou procesem ověřování Azure AD popsaným v tématu [Začínáme s ověřováním Azure AD pomocí Azure Portal](../previous/media-services-portal-get-started-with-aad.md):
 
     1. V novém Media Services účtu vyberte přístup přes **rozhraní API**.
-    2. Vyberte [metodu ověřování instančního objektu](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).
-    3. Získejte ID klienta a tajný klíč klienta, jak je popsáno v části [získání ID klienta a tajného klíče klienta](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret) .
+    2. Vyberte [metodu ověřování instančního objektu](../previous/media-services-portal-get-started-with-aad.md).
+    3. Získat ID klienta a tajný klíč klienta
 
         Po vybrání **Možnosti nastavení**->**klíče**, přidat **Popis**, stiskněte **Uložit**, hodnota klíče se naplní.
 
@@ -165,7 +165,7 @@ Platí následující Azure Media Services související s požadavky:
 
 * Pokud se připojíte k novému účtu Media Services, Video Indexer automaticky spustí výchozí **koncový bod streamování** :
 
-    ![Koncový bod streamování Media Services](./media/create-account/ams-streaming-endpoint.png)
+    ![Koncový bod streamování služby Media Services](./media/create-account/ams-streaming-endpoint.png)
 
     Koncové body streamování mají značný čas spuštění. Proto může trvat několik minut od okamžiku, kdy jste svůj účet připojili k Azure, dokud vaše videa nebude možné streamovat a sledovat ve webové aplikaci Video Indexer.
 

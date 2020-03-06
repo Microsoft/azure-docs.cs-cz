@@ -8,41 +8,45 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.date: 03/05/2020
+ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137579"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395265"
 ---
 # <a name="apply-transformation-module"></a>Použít modul transformace
 
 Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Pomocí tohoto modulu můžete upravit vstupní datovou sadu založenou na dříve vypočítané transformaci.  
-  
+Pomocí tohoto modulu můžete upravit vstupní datovou sadu založenou na dříve vypočítané transformaci.
+
 Pokud jste například použili z skóre k normalizování školicích dat pomocí modulu **normalizing data** Module, měli byste použít hodnotu z-skóre, která byla vypočítána pro školení v rámci fáze bodování. V Azure Machine Learning můžete metodu normalizace Uložit jako transformaci a pak pomocí **použít transformaci** použít pro vstupní data skóre před vyhodnocením.
-  
-Azure Machine Learning poskytuje podporu pro vytváření a následné použití mnoha různých druhů vlastních transformací. Můžete například chtít uložit a pak znovu použít transformace na:  
-  
-- Odebrání nebo nahrazení chybějících hodnot pomocí **Vyčištění chybějících dat**
-- Normalizovat data pomocí **normalizovat** data
-  
+
+## <a name="how-to-save-transformations"></a>Uložení transformací
+
+Návrhář umožňuje uložit transformace dat jako datové **sady** , abyste je mohli použít v jiných kanálech.
+
+1. Vyberte modul transformace dat, který byl úspěšně spuštěn.
+
+1. Vyberte kartu **výstupy + protokoly** .
+
+1. Kliknutím na **ikonu Uložit** uložte **transformaci výsledků**.
 
 ## <a name="how-to-use-apply-transformation"></a>Použití funkce použít transformaci  
   
-1. Přidejte do svého kanálu modul **použít transformaci** . Tento modul najdete v kategorii **vyhodnocení & modelu** hodnocení. 
+1. Přidejte do svého kanálu modul **použít transformaci** . Tento modul najdete v části **model bodování & vyhodnocení** v paletě modulu. 
   
-2. Vyhledejte existující transformaci, která se použije jako vstup. Dříve uložené transformace lze nalézt ve skupině **Moje datové sady** **v části datové sady v** levém stromu modulu.  
+1. V paletě modulu vyhledejte uloženou transformaci, kterou chcete **použít v** **datových sadách** > .
+
+1. Připojte výstup uložené transformace k levému vstupnímu portu modulu **použít transformaci** .
+
+    Datová sada musí mít přesně stejné schéma (počet sloupců, názvy sloupců, datové typy) jako datovou sadu, pro kterou byla transformace poprvé navržena.  
   
-   
+1. Připojte výstup objektu požadovaného modulu ke správnému vstupnímu portu modulu **použít transformaci** .
   
-3. Připojte datovou sadu, kterou chcete transformovat. Datová sada musí mít přesně stejné schéma (počet sloupců, názvy sloupců, datové typy) jako datovou sadu, pro kterou byla transformace poprvé navržena.  
-  
-4. Není nutné nastavovat žádné další parametry, protože při definování transformace je provedeno veškeré vlastní nastavení.  
-  
-5. Chcete-li použít transformaci na novou datovou sadu, spusťte kanál.  
+1. Chcete-li použít transformaci na novou datovou sadu, spusťte kanál.  
 
 ## <a name="next-steps"></a>Další kroky
 

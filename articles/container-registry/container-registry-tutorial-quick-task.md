@@ -4,12 +4,12 @@ description: V tomto kurzu zjistíte, jak sestavit image kontejneru Dockeru v Az
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252102"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398510"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úloh
 
@@ -95,8 +95,7 @@ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 
 Výstup z příkazu [AZ ACR Build][az-acr-build] je podobný následujícímu. Můžete si zobrazit nahrání zdrojového kódu („obsahu“) do Azure a podrobnosti operace `docker build`, kterou úloha ACR spouští v cloudu. Vzhledem k tomu, že úlohy ACR používají k sestavení imagí `docker build`, můžete začít okamžitě používat ACR Tasks, aniž by se vyžadovaly změny souborů Dockerfile.
 
-```console
-$ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
+```output
 Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
@@ -244,17 +243,7 @@ az container create \
 
 Hodnota `--dns-name-label` musí být v Azure jedinečná, proto předchozí příkaz připojí název registru kontejneru k popisku názvu DNS kontejneru. Výstup příkazu zobrazí plně kvalifikovaný název domény kontejneru, například:
 
-```console
-$ az container create \
->     --resource-group $RES_GROUP \
->     --name acr-tasks \
->     --image $ACR_NAME.azurecr.io/helloacrtasks:v1 \
->     --registry-login-server $ACR_NAME.azurecr.io \
->     --registry-username $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-usr --query value -o tsv) \
->     --registry-password $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-pwd --query value -o tsv) \
->     --dns-name-label acr-tasks-$ACR_NAME \
->     --query "{FQDN:ipAddress.fqdn}" \
->     --output table
+```output
 FQDN
 ----------------------------------------------
 acr-tasks-myregistry.eastus.azurecontainer.io
@@ -272,8 +261,7 @@ az container attach --resource-group $RES_GROUP --name acr-tasks
 
 Výstup příkazu `az container attach` nejdřív zobrazí stav kontejneru, protože načte image a spustí se, potom sváže STDOUT a STDERR místní konzoly s STDOUT a STDEER kontejneru.
 
-```console
-$ az container attach --resource-group $RES_GROUP --name acr-tasks
+```output
 Container 'acr-tasks' is in state 'Running'...
 (count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
 (count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"

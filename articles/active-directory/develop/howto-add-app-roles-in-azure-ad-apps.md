@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834242"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399089"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -35,7 +35,7 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarace rolí aplikace pomocí Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** .
 1. V seznamu **Oblíbené** nebo **všechny adresáře** vyberte tenanta služby Active Directory, do kterého chcete aplikaci zaregistrovat.
 1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
@@ -44,10 +44,10 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 1. Upravte manifest aplikace tak, že vyhledáte nastavení `appRoles` a přidáte všechny své aplikační role.
 
      > [!NOTE]
-     > Každá definice role aplikace v tomto manifestu musí mít v kontextu manifestu pro vlastnost `id` jiný platný identifikátor GUID.    
-     > 
+     > Každá definice role aplikace v tomto manifestu musí mít v kontextu manifestu pro vlastnost `id` jiný platný identifikátor GUID.
+     >
      > Vlastnost `value` každé definice role aplikace by měla přesně odpovídat řetězcům, které jsou používány v kódu v aplikaci. Vlastnost `value` nesmí obsahovat mezery. Pokud k tomu dojde, při ukládání manifestu dojde k chybě.
-     
+
 1. Uložte manifest.
 
 ### <a name="examples"></a>Příklady
@@ -122,7 +122,7 @@ Po přidání rolí aplikace do aplikace můžete těmto rolím přiřadit uživ
 
 ## <a name="more-information"></a>Další informace
 
-- [Autorizace ve webové aplikaci s využitím aplikačních rolí Azure AD &amp; deklaracích rolí (ukázka)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [Přidejte autorizaci pomocí rolí aplikace & role deklarace identity do webové aplikace ASP.NET Core.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Používání skupin zabezpečení a rolí aplikací v aplikacích (video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory nyní s deklaracemi skupin a aplikačními rolemi](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

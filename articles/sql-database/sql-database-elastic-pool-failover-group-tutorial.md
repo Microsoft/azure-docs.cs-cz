@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380024"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
 
-Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azure SQL Database a testovací převzetí služeb při selhání pomocí Azure Portal.  V tomto kurzu se naučíte:
+Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azure SQL Database a testovací převzetí služeb při selhání pomocí Azure Portal.  V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > - Vytvořte Azure SQL Database izolovanou databázi.
@@ -28,7 +28,7 @@ Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azur
 > - Vytvořte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) pro dva elastické fondy mezi dvěma logickými servery SQL.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 
 
@@ -43,7 +43,7 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 V tomto kroku vytvoříte elastický fond a přidáte do něj jednu databázi. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte elastický fond pomocí Azure Portal. 
 
@@ -71,7 +71,7 @@ Vytvořte elastický fond pomocí Azure Portal.
 1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení elastického fondu a potom vyberte **vytvořit** a vytvořte tak elastický fond. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Vytvořte své elastické fondy a sekundární server pomocí PowerShellu. 
 
    ```powershell-interactive
@@ -118,7 +118,7 @@ Vytvořte své elastické fondy a sekundární server pomocí PowerShellu.
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří fond elastické databáze pro Azure SQL Database.| 
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Nastaví vlastnosti pro databázi nebo přesune existující databázi do elastického fondu. | 
@@ -129,7 +129,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 V tomto kroku vytvoříte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) mezi existujícím serverem SQL Azure a novým serverem SQL Azure v jiné oblasti. Pak přidejte elastický fond do skupiny převzetí služeb při selhání. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal. 
 
@@ -163,7 +163,7 @@ Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal.
 1. Vyberte **možnost vyberte** , pokud chcete nastavení elastického fondu použít pro skupinu převzetí služeb při selhání, a pak vyberte **vytvořit** a vytvořte skupinu převzetí služeb při selhání. Přidáním elastického fondu do skupiny převzetí služeb při selhání se automaticky spustí proces geografické replikace.
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte skupinu převzetí služeb při selhání pomocí PowerShellu. 
 
@@ -236,7 +236,7 @@ Vytvořte skupinu převzetí služeb při selhání pomocí PowerShellu.
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
@@ -252,7 +252,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 V tomto kroku dojde k selhání skupiny převzetí služeb při selhání pro sekundární server a následnému navrácení služeb po obnovení pomocí Azure Portal. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal. 
 
@@ -276,7 +276,7 @@ Otestujte převzetí služeb při selhání ve skupině převzetí služeb při 
 1. Znovu vyberte **převzetí služeb při** selhání, abyste skupinu převzetí služeb při selhání mohli obnovit původní nastavení. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Testovací převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí PowerShellu 
 
@@ -344,10 +344,10 @@ Převzetí služeb při selhání pro skupinu převezmete do sekundárního serv
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
+| [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
 
 
 ---
@@ -357,7 +357,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 Vyčistěte prostředky odstraněním skupiny prostředků. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 
 1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com).
@@ -365,7 +365,7 @@ Vyčistěte prostředky odstraněním skupiny prostředků.
 1. Do textového pole zadejte název skupiny prostředků, `myResourceGroup`, a pak výběrem **Odstranit** odstraňte skupinu prostředků. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vyčistěte prostředky pomocí PowerShellu. 
 
@@ -381,7 +381,7 @@ Vyčistěte prostředky pomocí PowerShellu.
 
 Tato část kurzu používá následující rutinu PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. | 
 
@@ -392,13 +392,13 @@ Tato část kurzu používá následující rutinu PowerShellu:
 
 ## <a name="full-script"></a>Celý skript
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
@@ -410,11 +410,11 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Získá jednu nebo více databází SQL. |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází SQL Azure do skupiny převzetí služeb při selhání. |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
+| [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. | 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Pro Azure Portal nejsou k dispozici žádné skripty.
 
 ---

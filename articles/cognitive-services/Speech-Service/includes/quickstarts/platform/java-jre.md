@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f6b994bce1d38872cffb1e6e389136742be6d48
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4970f115ee3eee78d7268e3e955e20048b74df0d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467948"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383879"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro 64 JRE Java 8.
 
@@ -29,9 +29,9 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
 - Balíček Java Speech SDK je k dispozici pro tyto operační systémy:
   - Windows: jenom 64 bitů
   - Mac: macOS X verze 10,13 nebo novější
-  - Linux: 64-bit pouze v Ubuntu 16,04, Ubuntu 18,04 nebo Debian 9
+  - Linux: 64-bit pouze v Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
@@ -51,6 +51,16 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
+
+  - Na RHEL/CentOS 8 spusťte následující příkazy, abyste nainstalovali požadované balíčky:
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl
+        ```
+
+> [!NOTE]
+> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 - V systému Windows budete potřebovat [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu. Mějte na paměti, že pokud tuto instalaci nainstalujete poprvé, může před pokračováním v této příručce vyžadovat restartování systému Windows.
 

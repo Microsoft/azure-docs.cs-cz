@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
-ms.custom: mvc
-ms.openlocfilehash: e5b9b989ed8111e2bf36194ae2c8a333db7e66b4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: 1f681a9a8d8547589873cff055d9f59973c27355
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650791"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295781"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Rychlý Start: vytvoření Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí šablony Azure Resource Manager
 
@@ -91,7 +91,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 

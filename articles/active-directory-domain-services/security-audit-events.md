@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: b2138818a9092999dd54b14664f7146f087c4fed
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132255"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328642"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
@@ -84,7 +84,7 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 > Audity zabezpečení Azure služba AD DS nejsou zpětně. Nemůžete načíst nebo přehrát události z minulosti. Azure služba AD DS může posílat jenom události, ke kterým dojde po povolení auditů zabezpečení.
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, například *aadds.contoso.com*.
+1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, například *aaddscontoso.com*.
 1. V okně Azure služba AD DS vyberte **nastavení diagnostiky** na levé straně.
 1. Ve výchozím nastavení nejsou nakonfigurované žádné diagnostiky. Začněte tím, že vyberete **Přidat nastavení diagnostiky**.
 
@@ -193,7 +193,7 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Vzorový dotaz 2
 
-Zobrazit všechny události uzamčení účtu (*4740*) mezi 3. února 2020 v 9:00 a 10. února 2019 o půlnoci seřazený vzestupně podle data a času:
+Zobrazit všechny události uzamčení účtu (*4740*) mezi 3. února 2020 v 9:00 a 10. února 2020 o půlnoci seřazený vzestupně podle data a času:
 
 ```Kusto
 AADDomainServicesAccountManagement

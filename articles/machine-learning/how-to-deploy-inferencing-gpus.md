@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/05/2020
+ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122521"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398344"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 > [!NOTE]
 > Informace v tomto článku jsou založeny na informacích v článku [Jak nasadit do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md) . V tomto článku se obecně zabývá nasazením na AKS. Tento článek popisuje nasazení specifické pro grafické procesory.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -47,7 +47,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 
 * Obecné informace o [tom, jak a kde nasadit modely](how-to-deploy-and-where.md).
 
-## <a name="connect-to-your-workspace"></a>Připojení k pracovnímu prostoru
+## <a name="connect-to-your-workspace"></a>Připojení k vašemu pracovnímu prostoru
 
 Pokud se chcete připojit k existujícímu pracovnímu prostoru, použijte následující kód:
 

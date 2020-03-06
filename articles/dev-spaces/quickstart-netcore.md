@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f3e91ec11e054e0a069eb97a3700b051476be0a1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7c97c42448700fdf1f69cbbef68a407716aabfd2
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251985"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399489"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio Code a .NET Core – Azure Dev Spaces
 
@@ -110,6 +110,9 @@ Tento příkaz vytvoří a spustí vaši službu v Azure Dev Spaces v režimu la
 > Pokud nevidíte žádné příkazy Azure Dev Spaces v *paletě příkazů*, ujistěte se, že máte nainstalovanou [příponu Visual Studio Code pro Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Ověřte také, že jste v Visual Studio Code otevřeli adresář *dev-Spaces/Samples/dotnetcore/Začínáme/webendu* .
 
 Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL.
+
+> [!Note]
+> Na začátku se může u veřejné adresy URL zobrazit *chybná chyba brány* . Počkejte několik sekund, než se webová stránka aktualizuje, a měli byste vidět, že je vaše služba spuštěná.
 
 Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil.
 

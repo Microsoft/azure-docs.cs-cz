@@ -12,11 +12,11 @@ ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 02/10/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462577"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360032"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 

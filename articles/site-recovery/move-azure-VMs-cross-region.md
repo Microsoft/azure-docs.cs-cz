@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092188"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303915"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -32,7 +32,7 @@ Možná budete chtít přesunout virtuální počítače infrastruktury Azure ja
 > [!IMPORTANT]
 > Tento článek popisuje, jak přesunout virtuální počítače Azure z jedné oblasti do jiné *, jak je*to. Pokud je vaším cílem zlepšit dostupnost infrastruktury přesunutím virtuálních počítačů do zón dostupnosti, přečtěte si téma [přesunutí virtuálních počítačů Azure do zóny dostupnosti](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že máte virtuální počítače Azure ve zdrojové oblasti Azure, *ze*které chcete přejít.
 - Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)oblasti a pečlivě vyberte cílovou oblast.
@@ -70,7 +70,7 @@ Možná budete chtít přesunout virtuální počítače infrastruktury Azure ja
    - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer)
    - [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md)
     
-   Další síťové součásti najdete v [dokumentaci k síti Azure](https://docs.microsoft.com/azure/#pivot=products&panel=network). 
+   Další síťové součásti najdete v [dokumentaci k síti Azure](https://docs.microsoft.com/azure/?pivot=products&panel=network). 
 
 4. Chcete-li před provedením přesunutí otestovat konfiguraci, [vytvořte ručně neprodukční síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) v cílové oblasti. Testování instalačního programu vytváří minimální interference s produkčním prostředím a doporučujeme ho.
     
@@ -110,8 +110,8 @@ Site Recovery načte seznam virtuálních počítačů, které jsou přidružen�
 1. Přejít do trezoru. V **nastavení** > **replikované položky**vyberte virtuální počítač, který chcete přesunout do cílové oblasti. Pak vyberte **Test převzetí služeb při selhání**.
 2. V části **testovací převzetí služeb při selhání**vyberte bod obnovení, který chcete použít pro převzetí služeb při selhání:
 
-   - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. Žádná doba nestrávila zpracováním dat, takže tato možnost poskytuje cíl s nízkou dobou obnovení (RTO).
-   - **Nejnovější konzistentní vzhledem k aplikacím**: převzetí služeb při selhání všemi virtuálními počítači na nejnovější bod obnovení konzistentní vzhledem k aplikacím. Zobrazí se časové razítko.
+   - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Časové razítko je vidět. Žádná doba nestrávila zpracováním dat, takže tato možnost poskytuje cíl s nízkou dobou obnovení (RTO).
+   - **Nejnovější konzistentní vzhledem k aplikacím**: převzetí služeb při selhání všemi virtuálními počítači na nejnovější bod obnovení konzistentní vzhledem k aplikacím. Časové razítko je vidět.
    - **Vlastní:** Vyberete si libovolný bod obnovení.
 
 3. Vyberte cílovou virtuální síť Azure, do které chcete virtuální počítače Azure přesunout a otestovat konfiguraci.

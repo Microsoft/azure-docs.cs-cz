@@ -1,6 +1,6 @@
 ---
-title: Vytvoření slovníku chyb clusteru
-description: Naučte se vytvářet slovník chyb clusteru.
+title: Azure HDInsight – vytvoření clusteru – chybový slovník
+description: Naučte se řešit chyby, ke kterým dochází při vytváření clusterů Azure HDInsight.
 author: karkrish
 ms.author: v-todmc
 ms.reviewer: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905480"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302725"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Chyby při vytváření clusteru
 
@@ -36,7 +36,7 @@ Tento článek popisuje řešení chyb, ke kterým může dojít při vytvářen
 
 Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali v rámci žádosti o vytvoření clusteru. Služba obdrží předchozí chybovou zprávu, když se pokusí o přístup k akci skriptu.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 - V případě adresy URL protokolu HTTP nebo HTTPS Ověřte adresu URL tak, že se pokusíte přejít z okna prohlížeče anonymním.
 - V případě adresy URL WASB se ujistěte, že tento skript existuje v účtu úložiště, který v žádosti udělíte. Ujistěte se také, že klíč úložiště pro tento účet úložiště je správný.
@@ -58,7 +58,7 @@ Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali 
 
 Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali v rámci žádosti o vytvoření clusteru. Služba obdrží předchozí chybovou zprávu, když se pokusí o přístup k akci skriptu.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Přidejte odpovídající Azure Data Lake Storage účet 1. generace do clusteru. Přidejte taky instanční objekt, který přistupuje k Data Lake Storage účtu 1. generace ke clusteru.
 
@@ -74,7 +74,7 @@ Hodnota "VM Size"\<CUSTOMER_SPECIFIED_VM_SIZE\>zadaná v požadavku je neplatná
 
 Velikost virtuálního počítače, kterou jste zadali, není pro tuto roli povolená. K této chybě může dojít, protože hodnota velikosti virtuálního počítače nefunguje podle očekávání nebo není vhodná pro roli počítače.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Chybová zpráva obsahuje seznam platných hodnot pro velikost virtuálního počítače. Vyberte jednu z těchto hodnot a opakujte požadavek na vytvoření clusteru.
 
@@ -90,7 +90,7 @@ Chybová zpráva obsahuje seznam platných hodnot pro velikost virtuálního po�
 
 Hodnota **VirtualNetworkId** , kterou jste zadali během vytváření clusteru, nemá správný formát.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Ujistěte se, že hodnoty **VirtualNetworkId** a Subnet jsou ve správném formátu. Pokud chcete získat hodnotu **VirtualNetworkId** :
 
@@ -114,7 +114,7 @@ Nasazení clusteru se nepovedlo kvůli chybě v akci vlastního skriptu. Neúsp�
 
 Vlastní skript, který jste zadali během žádosti o vytvoření clusteru, se spustí po úspěšném nasazení clusteru. Tento kód chyby označuje, že došlo k chybě při provádění vlastního skriptu s názvem \<SCRIPT_NAME\>.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Vzhledem k tomu, že skript je váš vlastní skript, doporučujeme, abyste problém vyřešíte a v případě potřeby znovu spustíte skript. Pokud chcete řešit potíže s selháním skriptu, Projděte si protokoly ve složce/var/lib/Ambari-agent/*. Nebo otevřete stránku **operace** v uživatelském rozhraní Ambari a potom vyberte operaci **run_customscriptaction** pro zobrazení podrobností o chybě.
 
@@ -124,13 +124,13 @@ Vzhledem k tomu, že skript je váš vlastní skript, doporučujeme, abyste prob
 
 ### <a name="error"></a>Chyba
 
-Verze schématu \<META_STORE_TYPE\> metastore \<METASTORE_MAJOR_VERSION\> v databázi \<database_name není kompatibilní s verzí clusteru\> \<
+Verze schématu \<META_STORE_TYPE\> metastore \<METASTORE_MAJOR_VERSION\> v databázi \<database_name není kompatibilní s verzí clusteru\> \<\>
 
 ### <a name="cause"></a>Příčina
 
 Vlastní metastore je nekompatibilní s vybranou verzí clusteru HDInsight. V současné době clustery HDInsight 4,0 podporují jenom metastore verze 3,0 a novější, zatímco clustery HDInsight 3,6 nepodporují metastore verze 3,0 a novější.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Používejte jenom metastore verze, které podporuje vaše verze clusteru HDInsight. Pokud nezadáte vlastní metastore, HDInsight interně vytvoří metastore a pak ho odstraní po odstranění clusteru.
 
@@ -146,7 +146,7 @@ Nepovedlo se připojit ke koncovému bodu správy clusteru, aby se provedla oper
 
 Pravidlo brány firewall ve skupině zabezpečení sítě (NSG) blokuje komunikaci clusteru s důležitými službami stavu a správy Azure.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového provozu, před instalací HDInsight proveďte následující akce:
 
@@ -167,12 +167,12 @@ Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového p
 
 Nezadali jste oprávnění potřebná ke správě identity. Spravovaná identita přiřazená uživatelem nemá v účtu úložiště Azure Data Lake Storage Gen2 roli Přispěvatel Blob Storage.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 1. Otevřete web Azure Portal.
 1. Přejít na účet úložiště.
 1. Podívejte se na **Access Control (IAM)** .
-1. Ujistěte se, že role Přispěvatel dat objektu BLOB úložiště nebo role vlastníka dat objektu BLOB úložiště má přiřazený přístup k spravované identitě přiřazené uživateli pro dané předplatné.
+1. Ujistěte se, že má uživatel přiřazenou roli Přispěvatel dat objektu BLOB úložiště nebo přiřazenou roli vlastníka dat objektu BLOB úložiště.
 
 Další informace najdete v tématu [Nastavení oprávnění pro spravovanou identitu na účtu Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
@@ -188,7 +188,7 @@ Další informace najdete v tématu [Nastavení oprávnění pro spravovanou ide
 
 Pokud skupiny zabezpečení sítě nebo trasy definované uživatelem (udr) řídí příchozí provoz do clusteru HDInsight, ujistěte se, že váš cluster může komunikovat s důležitými službami Azure Health a Management.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového provozu, před instalací HDInsight proveďte následující akce:
 
@@ -208,7 +208,7 @@ Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového p
 
 Tato chyba se obvykle generuje, když dojde k přechodnému problému nebo výpadku Azure.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Podívejte se na stránku [stav Azure](https://status.azure.com) pro všechny výpadky Azure, které můžou mít vliv na nasazení clusteru. Pokud nedošlo k výpadkům, zkuste cluster nasadit znovu.
 

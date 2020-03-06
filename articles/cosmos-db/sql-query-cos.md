@@ -4,15 +4,15 @@ description: Přečtěte si, jak funkce kosinus (COS) SQL System v Azure Cosmos 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 05546ef531059e05a1426a288a48446d63d8e5df
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 40d277ff38691e2cb74bd4d5d78a666c304acfcd
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873399"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304017"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
  Vrátí trigonometrických kosinus úhlu určeného v radiánech v zadaným výrazem.  
@@ -40,11 +40,15 @@ COS(<numeric_expr>)
 SELECT COS(14.78) AS cos  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"cos": -0.59946542619465426}]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

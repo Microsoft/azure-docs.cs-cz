@@ -13,12 +13,12 @@ ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 74747e1bc5247e2a95a180b7361eafe8ca795bc2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ffd47d886a9d74c637f4f7ff634b3fd4c4a77574
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160702"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390750"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Rychlý Start: nastavení tenanta
 
@@ -74,4 +74,4 @@ Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociáln
 
 * Vyzkoušejte rychlý start zaměřený na psaní kódu a začněte s ověřováním uživatelů. 
 * Podrobnější vzorové kódy najdete v dokumentaci v části **Kurzy**.
-* Chcete svou aplikaci nasadit do cloudu? Přečtěte si o [nasazování kontejnerů do Azure](https://docs.microsoft.com/azure/index#pivot=products&panel=containers). 
+* Chcete svou aplikaci nasadit do cloudu? Přečtěte si o [nasazování kontejnerů do Azure](https://docs.microsoft.com/azure/index?pivot=products&panel=containers).

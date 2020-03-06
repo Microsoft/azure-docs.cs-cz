@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 08/22/2019
-ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/05/2020
+ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086930"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396162"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,14 +41,14 @@ Tento dokument je rozdělen do dvou částí:
 * Vytvoření vlastní základní Image: poskytuje informace správcům a DevOpsům při vytváření vlastní image a konfiguraci ověřování pro Azure Container Registry pomocí rozhraní příkazového řádku Azure CLI a Machine Learning CLI.
 * Nasazení modelu pomocí vlastní základní Image: poskytuje informace pro odborníky na data a inženýry DevOps/ML na používání vlastních imagí při nasazení vyučeného modelu ze sady Python SDK nebo ML CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní skupina Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
 * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * [Azure Container Registry](/azure/container-registry) nebo jiný registr Docker, který je přístupný na internetu.
-* Kroky v tomto dokumentu předpokládají, že máte zkušenosti s vytvářením a používáním objektu __Konfigurace odvození__ jako součást nasazení modelu. Další informace najdete v části Příprava na nasazení v tématu [nasazení a jak](how-to-deploy-and-where.md#prepare-deployment-artifacts).
+* Kroky v tomto dokumentu předpokládají, že máte zkušenosti s vytvářením a používáním objektu __Konfigurace odvození__ jako součást nasazení modelu. Další informace najdete v části Příprava na nasazení v tématu [nasazení a jak](how-to-deploy-and-where.md#prepare-to-deploy).
 
 ## <a name="create-a-custom-base-image"></a>Vytvoření vlastní základní image
 

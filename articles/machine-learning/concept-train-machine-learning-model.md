@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/05/2020
+ms.openlocfilehash: 68b7dfbf61f5d353f394bfbc034e00fddd262cd1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721111"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344041"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trénování modelů Azure Machine Learning
 
@@ -28,6 +28,8 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
     | [Automatizované Machine Learning](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
     | [Odhady](#estimators) | Třídy Estimator usnadňují **výukové modely založené na oblíbených architekturách strojového učení**. K dispozici jsou třídy Estimator pro **Scikit-učit**, **PyTorch**, **TensorFlow**a **chainer**. K dispozici je také obecná Estimator, která může být použita s architekturami, které ještě nemají vyhrazenou třídu Estimator. Při použití odhady se nemusíte starat o definování konfigurace spuštění. |
     | [Kanál strojového učení](#machine-learning-pipeline) | Kanály nejsou jinou výukovou metodou, ale **způsob definování pracovního postupu pomocí modulárních a opakovaně použitelných kroků**, které můžou zahrnovat školení jako součást pracovního postupu. Kanály strojového učení podporují pomocí automatizovaného strojového učení, odhady a konfigurace spouštění pro výukové modely. Vzhledem k tomu, že se kanály nezaměřují konkrétně na školení, jsou důvody pro použití kanálu různorodější než jiné metody školení. Obecně platí, že můžete použít kanál v těchto případech:<br>* Chcete **naplánovat bezobslužné procesy** , jako je například dlouho běžící školicí úlohy nebo Příprava dat.<br>* Použijte **více kroků** , které jsou koordinovány napříč heterogenními výpočetními prostředky a umístěními úložiště.<br>* Kanál použijte jako **opakovaně použitelnou šablonu** pro konkrétní scénáře, jako je například přeškolení nebo dávkové vyhodnocování.<br>* **sledování a verze zdrojů dat, vstupů a výstupů** pro váš pracovní postup.<br>* Pracovní postup je **implementován různými týmy, které pracují podle konkrétních kroků nezávisle**. Kroky je pak možné spojit společně v kanálu pro implementaci pracovního postupu. |
+
++ [Azure Machine Learning SDK pro Python](#r-sdk): sada SDK používá balíček reticulate k vytvoření vazby na sadu SDK Azure Machine Learning Pythonu. To umožňuje přístup k základním objektům a metodám implementovaným v sadě Python SDK z jakéhokoli prostředí jazyka R.
 
 + **Návrhář**: Azure Machine Learning Designer (Preview) poskytuje snadný vstupní bod do strojového učení pro vytváření důkazů konceptů nebo pro uživatele s malým prostředím kódování. Umožňuje naučit modely pomocí webového uživatelského rozhraní přetažení. V rámci návrhu můžete použít kód Pythonu nebo modely výuky bez psaní kódu.
 
@@ -88,6 +90,15 @@ Kanály strojového učení můžou používat dřív zmíněné metody školen�
 * [Příklady: příklady Jupyter Notebook pro kanály strojového učení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Příklady: kanál s automatickým strojovým učením](https://aka.ms/pl-automl)
 * [Příklady: kanál s odhady](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+Sada R SDK umožňuje používat jazyk R s Azure Machine Learning. Sada SDK používá balíček reticulate k navázání Azure Machine Learning Python SDK. To umožňuje přístup k základním objektům a metodám implementovaným v sadě Python SDK z jakéhokoli prostředí jazyka R.
+
+Další informace najdete v následujících článcích:
+
+* [Kurz: vytvoření modelu logistické regrese](tutorial-1st-r-experiment.md)
+* [Referenční informace o Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Návrhář Azure Machine Learning
 

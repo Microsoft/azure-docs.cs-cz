@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008360"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399328"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s rozhraním API pro vytváření sestav Azure Active Directory
 
@@ -34,7 +34,7 @@ Tento článek obsahuje přehled rozhraní API pro vytváření sestav, včetně
 
 Pokud narazíte na problémy, přečtěte si téma [Jak získat podporu pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup k rozhraní API pro vytváření sestav s zásahem uživatele nebo bez něj, musíte:
 
@@ -50,13 +50,10 @@ Podrobné pokyny najdete v tématu [požadavky pro přístup k rozhraní API pro
 Koncovým bodem rozhraní Microsoft Graph API pro protokoly auditu je `https://graph.microsoft.com/beta/auditLogs/directoryAudits` a Microsoft Graph koncový bod rozhraní API pro přihlášení `https://graph.microsoft.com/beta/auditLogs/signIns`. Další informace najdete v referenční příručce rozhraní API pro [audit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) a Reference k [rozhraní API pro přihlašování](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 Kromě toho můžete pomocí [rozhraní API detekce rizik ochrany identity](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) získat programový přístup k detekcím zabezpečení pomocí Microsoft Graph. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/graph-get-started.md). 
-
-> [!NOTE]
->  **Protokol https:\/\/graph.windows.net\/\<název tenanta\>\/sestav\/** koncový bod je zastaralý. K programovému přístupu k aktivitám a sestavám zabezpečení použijte nové koncové body rozhraní API, které jsou popsané výše.
   
-## <a name="apis-with-graph-explorer"></a>Rozhraní API pomocí Graph Exploreru
+## <a name="apis-with-microsoft-graph-explorer"></a>Rozhraní API s Microsoft Graph Explorer
 
-K ověření přihlašovacích údajů a auditování dat rozhraní API můžete použít [Průzkumníka MSGraph](https://developer.microsoft.com/graph/graph-explorer) . Přihlaste se ke svému účtu pomocí obou přihlašovacích tlačítek v uživatelském rozhraní Průzkumníka graphu a nastavte **AuditLog. Read. All** a **Directory. Read. All** oprávnění pro vašeho tenanta, jak je znázorněno na následujícím obrázku.   
+K ověření přihlašovacích údajů a auditování dat rozhraní API můžete použít [průzkumníka Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) . Přihlaste se ke svému účtu pomocí obou přihlašovacích tlačítek v uživatelském rozhraní Průzkumníka graphu a nastavte **AuditLog. Read. All** a **Directory. Read. All** oprávnění pro vašeho tenanta, jak je znázorněno na následujícím obrázku.   
 
 ![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
 

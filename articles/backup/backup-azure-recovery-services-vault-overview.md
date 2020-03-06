@@ -3,12 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled a porovnání mezi trezory Recovery Services a trezory Azure Backup.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 886c63856d3be78c241289caf5abbe73ebeda63f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172837"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397048"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů Recovery Services
 
@@ -30,7 +30,7 @@ Trezory Recovery Services jsou založené na modelu Azure Resource Manager Azure
 
 - **Chraňte všechny konfigurace Azure Virtual Machines**: Recovery Services trezory chrání správce prostředků virtuálních počítačů, včetně prémiových disků, Managed disks a šifrovaných virtuálních počítačů. Upgrade trezoru služby Backup na Recovery Services trezor vám dává možnost upgradovat vaše virtuální počítače založené na Service Manager na Správce prostředků virtuální počítače na bázi. Během upgradu trezoru můžete zachovat body obnovení virtuálních počítačů s Service Manager a nakonfigurovat ochranu pro upgradované virtuální počítače s podporou Správce prostředků. [Další informace](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Okamžité obnovení pro virtuální počítače s IaaS**: pomocí trezorů Recovery Services můžete obnovit soubory a složky z virtuálního počítače s IaaS bez obnovení celého virtuálního počítače, který umožňuje rychlejší obnovení. Pro virtuální počítače s Windows i Linuxem je k dispozici okamžité obnovení pro virtuální počítače s IaaS. [Další informace](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Okamžité obnovení pro virtuální počítače s IaaS**: pomocí trezorů Recovery Services můžete obnovit soubory a složky z virtuálního počítače s IaaS bez obnovení celého virtuálního počítače, který umožňuje rychlejší obnovení. Pro virtuální počítače s Windows i Linuxem je k dispozici okamžité obnovení pro virtuální počítače s IaaS. [Další informace](backup-instant-restore-capability.md)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Správa trezorů Recovery Services na portálu
 

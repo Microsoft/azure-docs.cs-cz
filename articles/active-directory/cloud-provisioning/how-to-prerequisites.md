@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909036"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298645"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Předpoklady pro zřizování cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -26,7 +26,7 @@ Tento článek poskytuje pokyny k výběru a používání Azure Active Director
 ## <a name="cloud-provisioning-agent-requirements"></a>Požadavky na agenta zřizování cloudu
 Pro použití Azure AD Connectho zřizování cloudu potřebujete následující:
     
-- Účet globálního správce pro vašeho tenanta Azure AD.
+- Účet globálního správce pro vašeho tenanta Azure AD, který není uživatelem typu Host.
 - Místní server pro zřizovacího agenta se systémem Windows 2012 R2 nebo novějším.
 - Místní konfigurace brány firewall.
 
@@ -39,6 +39,10 @@ Ve zbývající části dokumentu najdete podrobné pokyny pro tyto požadavky.
 
 1. Vytvořte v tenantovi Azure AD jenom cloudový účet globálního správce. Tímto způsobem můžete spravovat konfiguraci tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Přečtěte si, jak [Přidat účet globálního správce jenom pro Cloud](../active-directory-users-create-azure-portal.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
 1. Přidejte jeden nebo více [vlastních názvů domén](../active-directory-domains-add-azure-portal.md) do svého tenanta služby Azure AD. Uživatelé se můžou přihlásit pomocí některého z těchto názvů domén.
+
+### <a name="in-your-directory-in-active-directory"></a>Ve vašem adresáři ve službě Active Directory
+
+Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) .
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 

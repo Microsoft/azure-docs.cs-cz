@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 7b009a6e2f540dc076340a6803679a541e60adc7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165342"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377911"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -68,13 +68,13 @@ Podle kroků v této části zjistíte, které z vašich aplikací budou ovlivn�
 ### <a name="download-and-install-acs-powershell"></a>Stažení a instalace služby ACS PowerShell
 
 1. Přejít na Galerie prostředí PowerShell a stáhnout službu [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
-1. Nainstalujte modul spuštěním
+2. Nainstalujte modul spuštěním
 
     ```powershell
     Install-Module -Name Acs.Namespaces
     ```
 
-1. Získání seznamu všech možných příkazů spuštěním
+3. Získání seznamu všech možných příkazů spuštěním
 
     ```powershell
     Get-Command -Module Acs.Namespaces
@@ -94,8 +94,8 @@ Podle kroků v této části zjistíte, které z vašich aplikací budou ovlivn�
   
     Abyste mohli příkazy spustit, možná budete muset spustit `Set-ExecutionPolicy -ExecutionPolicy Bypass`, abyste mohli provést příkazy a správce těchto předplatných.
 
-1. Seznam dostupných předplatných Azure získáte pomocí rutiny **Get-AcsSubscription** .
-1. Uveďte obory názvů služby ACS pomocí rutiny **Get-AcsNamespace** .
+2. Seznam dostupných předplatných Azure získáte pomocí rutiny **Get-AcsSubscription** .
+3. Uveďte obory názvů služby ACS pomocí rutiny **Get-AcsNamespace** .
 
 ### <a name="check-which-applications-will-be-impacted"></a>Ověřte, které aplikace budou ovlivněny.
 
@@ -103,8 +103,8 @@ Podle kroků v této části zjistíte, které z vašich aplikací budou ovlivn�
 
     Například pokud je jeden z oborů názvů contoso-test, přejít na `https://contoso-test.accesscontrol.windows.net`
 
-1. V části **vztahy důvěryhodnosti**vyberte **aplikace předávající strany** , kde se zobrazí seznam aplikací, které budou ovlivněny vyřazením služby ACS.
-1. Opakujte kroky 1-2 pro všechny další obory názvů ACS.
+2. V části **vztahy důvěryhodnosti**vyberte **aplikace předávající strany** , kde se zobrazí seznam aplikací, které budou ovlivněny vyřazením služby ACS.
+3. Opakujte kroky 1-2 pro všechny další obory názvů ACS.
 
 ## <a name="retirement-schedule"></a>Plán vyřazení
 
@@ -127,7 +127,7 @@ V následujících částech jsou popsána doporučení vysoké úrovně pro mig
 
 Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Control nyní podporuje alespoň jednu alternativní formu ověřování. Správný ověřovací mechanismus se u každé služby liší. Doporučujeme, abyste si pro každou službu poodkazovali na konkrétní dokumentaci pro oficiální pokyny. Pro usnadnění práce je k dispozici každá sada dokumentace:
 
-| Služba | Doprovodné materiály |
+| Service | Doprovodné materiály |
 | ------- | -------- |
 | Azure Service Bus | [Migrace na sdílené přístupové podpisy](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Migrace na sdílené přístupové podpisy](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
@@ -210,7 +210,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | Nahrávat vlastní podpisové certifikáty tokenů | Podporuje se | Podporuje se |
 | Přizpůsobení deklarací identity v tokenech |-Předávací deklarace vstupu od zprostředkovatelů identity<br />– Získat přístupový token od zprostředkovatele identity jako deklaraci identity<br />– Vydávání deklarací výstupních dat na základě hodnot vstupních deklarací identity<br />– Vydávání deklarací výstupů s konstantními hodnotami |-Nelze předat deklarace identity od zprostředkovatelů federovaných identit.<br />– Nejde získat přístupový token od zprostředkovatele identity jako deklaraci identity.<br />-Nelze vystavit deklarace výstupů na základě hodnot vstupních deklarací identity.<br />– Může vydávat deklarace výstupů s konstantními hodnotami.<br />– Může vystavovat deklarace identity na základě vlastností uživatelů synchronizovaných do Azure AD. |
 | **Automation** | | |
-| Automatizace úloh konfigurace a správy | Podporováno prostřednictvím služby správy Access Control | Podporováno prostřednictvím Microsoft Graph a služby Azure AD Graph API |
+| Automatizace úloh konfigurace a správy | Podporováno prostřednictvím služby správy Access Control | Podporováno pomocí rozhraní Microsoft Graph API |
 
 Pokud se rozhodnete, že Azure AD je nejlepší migrační cestou k vašim aplikacím a službám, měli byste si být vědomi dvou způsobů integrace aplikace s Azure AD.
 
@@ -261,7 +261,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | Nahrávat vlastní podpisové certifikáty tokenů | Podporuje se | Vlastní podpisové klíče, nikoli certifikáty, podporované prostřednictvím vlastních zásad |
 | Přizpůsobení deklarací identity v tokenech |-Předávací deklarace vstupu od zprostředkovatelů identity<br />– Získat přístupový token od zprostředkovatele identity jako deklaraci identity<br />– Vydávání deklarací výstupních dat na základě hodnot vstupních deklarací identity<br />– Vydávání deklarací výstupů s konstantními hodnotami |– Může předávat deklarace identity od zprostředkovatelů identity; vlastní zásady vyžadované pro některé deklarace identity<br />– Nejde získat přístupový token od zprostředkovatele identity jako deklaraci identity.<br />– Může vydávat deklarace výstupů na základě hodnot vstupních deklarací prostřednictvím vlastních zásad.<br />– Může vystavovat deklarace výstupů s konstantními hodnotami prostřednictvím vlastních zásad. |
 | **Automation** | | |
-| Automatizace úloh konfigurace a správy | Podporováno prostřednictvím služby správy Access Control |– Vytváření uživatelů povolených prostřednictvím služby Azure AD Graph API<br />-Nelze vytvořit klienty B2C, aplikace nebo zásady prostřednictvím kódu programu. |
+| Automatizace úloh konfigurace a správy | Podporováno prostřednictvím služby správy Access Control |-Vytváření uživatelů s povoleným použitím rozhraní Microsoft Graph API<br />-Nelze vytvořit klienty B2C, aplikace nebo zásady prostřednictvím kódu programu. |
 
 Pokud se rozhodnete, že Azure AD B2C je nejlepší cestou migrace pro vaše aplikace a služby, začněte s následujícími prostředky:
 
@@ -325,7 +325,7 @@ Službu Azure AD můžete použít také k ověřování typu Server-Server pomo
 | Metody ověřování klientů |– Jednoduché heslo<br />-Podepsaná SWT<br />– Token SAML od federovaného zprostředkovatele identity |– Jednoduché heslo<br />– Podepsaný token JWT |
 | Formáty tokenů |- JWT<br />– SAML 1,1<br />– SAML 2,0<br />- SWT<br /> | Pouze JWT |
 | Transformace tokenů |-Přidat vlastní deklarace identity<br />-Jednoduchá deklarace IF-pak nárok vystavení | Přidat vlastní deklarace identity | 
-| Automatizace úloh konfigurace a správy | Podporováno prostřednictvím služby správy Access Control | Podporováno prostřednictvím Microsoft Graph a služby Azure AD Graph API |
+| Automatizace úloh konfigurace a správy | Podporováno prostřednictvím služby správy Access Control | Podporováno pomocí rozhraní Microsoft Graph API |
 
 Pokyny k implementaci scénářů serveru na server najdete v následujících zdrojích informací:
 

@@ -3,14 +3,14 @@ title: Nastavení přípravného prostředí
 description: Naučte se nasazovat aplikace do neprodukčního slotu a autoswap do produkčního prostředí. Zvyšte spolehlivost a Eliminujte výpadky aplikací z nasazení.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 03/04/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666447"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300839"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravného prostředí v Azure App Service
 <a name="Overview"></a>
@@ -23,7 +23,7 @@ Nasazení aplikace do neprodukčního slotu má následující výhody:
 * Když nasadíte aplikaci do slotu a zaměníte ji do produkčního prostředí, zajistíte, aby se všechny instance slotu před jejich přepnutím do produkčního prostředí zahodily. Tím se eliminuje prostoje při nasazení aplikace. Přesměrování provozu je bezproblémové a žádné požadavky nejsou vyřazeny z důvodu operací prohození. Tento celý pracovní postup můžete automatizovat konfigurací [automatického prohození](#Auto-Swap) , pokud není nutné ověření předem.
 * Po prohození teď má slot s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neočekávají, můžete stejnou záměnu provést hned a získat tak svůj "poslední známý dobrý web" zpátky.
 
-Každá úroveň plánu App Service podporuje jiný počet slotů nasazení. Za použití slotů nasazení se neúčtují žádné další poplatky. Pokud chcete zjistit počet slotů, které podporuje vrstva vaší aplikace, přečtěte si téma [omezení App Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits). 
+Každá úroveň plánu App Service podporuje jiný počet slotů nasazení. Za použití slotů nasazení se neúčtují žádné další poplatky. Pokud chcete zjistit počet slotů, které podporuje vrstva vaší aplikace, přečtěte si téma [omezení App Service](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits). 
 
 Pokud chcete aplikaci škálovat na jinou úroveň, ujistěte se, že cílová vrstva podporuje počet slotů, které už vaše aplikace používá. Pokud má vaše aplikace například více než pět slotů, nemůžete ji škálovat na úroveň **Standard** , protože úroveň **Standard** podporuje jenom pět slotů nasazení. 
 
@@ -40,7 +40,7 @@ Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná
 
 2. V levém podokně vyberte **nasazovací sloty** > **Přidat slot**.
    
-    ![Přidání nového slotu nasazení](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Přidat nový slot nasazení](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > Pokud aplikace ještě není v úrovni **Standard**, **Premium**nebo **izolovaná** , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
@@ -170,7 +170,7 @@ Pokud dojde k nějakým chybám v cílové patici (například k produkčnímu s
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Konfigurace automatického prohození
+## <a name="configure-auto-swap"></a>Konfigurovat automatické prohození
 
 > [!NOTE]
 > Automatické prohození není podporováno ve webových aplikacích v systému Linux.
@@ -236,7 +236,7 @@ Postup automatického směrování provozních přenosů:
 
 1. Přejít na stránku prostředků vaší aplikace a vyberte **sloty nasazení**.
 
-2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Uložit**.
+2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Save** (Uložit).
 
     ![Nastavení procenta provozu](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -289,7 +289,7 @@ Azure PowerShell je modul, který poskytuje rutiny pro správu Azure prostředni
 Informace o instalaci a konfiguraci Azure PowerShell a o ověřování Azure PowerShell pomocí předplatného Azure najdete v tématu [Jak nainstalovat a nakonfigurovat Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
-### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
@@ -303,7 +303,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Zahájit prohození s náhledem (vícenásobná swap) a použít konfiguraci cílového slotu na zdrojový slot
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -316,7 +316,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>Prohození slotů nasazení
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 

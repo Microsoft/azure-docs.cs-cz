@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900390"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303082"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Zvolit řešení Azure pro přenos dat
 
@@ -42,7 +42,7 @@ Následující vizuál znázorňuje pokyny pro výběr různých nástrojů pro 
 
 ![Nástroje pro přenos dat Azure](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-**Horní meze zařízení offline přenosu – Data Box Disk, Data Box a Data Box Heavy se dají rozšířit tak, že se do něj umístí víc objednávek typu zařízení.*
+**horní meze zařízení pro přenos v režimu offline, data box disk, data box a data box Heavy, se dají rozšířit tak, že se do něj umístí víc objednávek typu zařízení.*
 
 ## <a name="selecting-a-data-transfer-solution"></a>Výběr řešení pro přenos dat
 
@@ -50,31 +50,30 @@ Odpovězte na následující otázky, které vám pomůžou vybrat řešení pro
 
 - Je dostupná šířka pásma sítě, která je omezená nebo neexistující, a chcete přenést velké datové sady?
   
-    Pokud ano, přečtěte si: [Scénář 1: Přenos velkých datových sad bez nebo nízké šířky pásma](storage-solution-large-dataset-low-network.md)sítě.
+    Pokud ano, přečtěte si téma: [scénář 1: přenos velkých datových sad bez nebo nízké šířky pásma sítě](storage-solution-large-dataset-low-network.md).
 - Chcete přenášet velké datové sady přes síť a máte střední až velkou šířku pásma sítě?
 
-    Pokud ano, přečtěte si: [Scénář 2: Přenos velkých datových sad se střední a vysokou šířkou](storage-solution-large-dataset-moderate-high-network.md)pásma sítě.
+    Pokud ano, přečtěte si téma: [scénář 2: přenos velkých datových sad se střední a vysokou šířkou pásma sítě](storage-solution-large-dataset-moderate-high-network.md).
 - Chcete občas přenést jenom několik souborů přes síť?
 
-    Pokud ano, podívejte [se na scénář 3: Přenos malých datových sad s omezenou na střední šířku pásma](storage-solution-small-dataset-low-moderate-network.md)sítě.
+    Pokud ano, podívejte se [na scénář 3: přenos malých datových sad s omezením na střední šířku pásma sítě](storage-solution-small-dataset-low-moderate-network.md).
 - Hledáte v pravidelných intervalech přenos dat k bodu v čase?
 
-    Pokud ano, použijte skriptované/programové možnosti popsané ve [scénáři 4: Periodické datové přenosy](storage-solution-periodic-data-transfer.md).
+    Pokud ano, použijte skriptované/programové možnosti popsané v části [scénář 4: periodické datové přenosy](storage-solution-periodic-data-transfer.md).
 - Hledáte průběžný přenos dat?
 
-    Pokud ano, použijte možnosti ve [scénáři 4: Periodické datové přenosy](storage-solution-periodic-data-transfer.md).
- 
+    Pokud ano, použijte možnosti ve [scénáři 4: periodické datové přenosy](storage-solution-periodic-data-transfer.md).
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Funkce přenosu dat v Azure Portal
 
 Můžete také přejít na účet Azure Storage v Azure Portal a vybrat funkci pro **přenos dat** . Zadejte šířku pásma sítě ve vašem prostředí, velikost dat, která chcete přenést, a četnost přenosu dat. Budou se vám zobrazovat optimální řešení pro přenos dat, která odpovídají zadaným informacím. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Seznámení [se Průzkumník služby Azure Storage](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [Přečtěte si přehled AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
 - [Použití Azure PowerShell s Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [Použití Azure CLI s Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
+- [Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 - Další informace:
 
     - [Azure Data box, Azure Data box disk a Azure Data box Heavy pro offline přenosy](https://docs.microsoft.com/azure/databox/).

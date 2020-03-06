@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4811f24fb942689bddcc9d9d1bcb8c33d147c1af
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 934e804b60312a32300c4b884ea8fd15e2195870
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256005"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302028"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Poznámky k verzi služby Azure synapse Analytics
 
@@ -38,6 +38,13 @@ Použijte identifikovanou verzi a potvrďte, která verze se použila pro váš 
 > ```
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="february-2020"></a>Únor 2020
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+|**Úroveň kompatibility databáze (Preview)**| V této verzi teď uživatelé můžou nastavit úroveň kompatibility databáze a získat tak chování jazyka Transact-SQL a zpracování dotazů konkrétní verze analytického stroje SQL. Další informace najdete v tématu věnovaném konfiguraci oboru [Sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?view=azure-sqldw-latest&branch=pr-en-us-13797) a [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?view=sql-server-ver15).|
+|**Sp_describe_undeclared_parameters**| Umožňuje uživatelům zobrazit metadata o nedeklarovaných parametrech v dávce Transact-SQL. Další informace najdete v tématu [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?view=sql-server-ver15).|
 
 ## <a name="january-2020"></a>Leden 2020
 

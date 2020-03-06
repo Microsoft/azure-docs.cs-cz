@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912562"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383959"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Jaký je čas potřebný k migraci?
 
@@ -22,6 +22,14 @@ Plánování a provádění migrace značně závisí na složitosti architektur
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Jaká je definice nového zákazníka na virtuálních počítačích s IaaS (Classic)?
 
 Zákazníci, kteří v předplatném neIaaSi virtuální počítače (Classic) v měsíci Febrauary 2020 (měsíc před vyřazením), se považují za nové zákazníky. 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Jaká je definice stávajícího zákazníka v IaaS Virtual Machines (Classic)?
+
+Zákazník, který ve svém předplatném v měsíci února 2020 aktivní nebo zastavený, ale přidělené virtuální počítače IaaS (Classic), se považuje za stávajícího zákazníka. Až do 1. března 2023 se k migraci svých virtuálních počítačů z Azure Service Manager do Azure Resource Manager dostanou jenom tito zákazníci. 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Proč se mi zobrazuje chyba s oznámením "NewClassicVMCreationNotAllowedForSubscription"?
+
+V rámci procesu vyřazení již nejsou virtuální počítače IaaS (Classic) k dispozici pro nové zákazníky. Identifikovali jsme vás jako noví zákazníci, takže vaše operace nebyla autorizována. Důrazně doporučujeme používat službu [Azure Virtual Machines s využitím ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Pokud nemůžete použít virtuální počítače Azure s využitím ARM, obraťte se prosím na podporu povoleného předplatného.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Má tento plán migrace vliv na některé stávající služby nebo aplikace spuštěné na virtuálních počítačích Azure? 
 

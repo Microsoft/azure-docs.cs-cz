@@ -4,15 +4,15 @@ description: Přečtěte si o replikaci funkce systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5e0b7f29c503daa8a95dcc46238e60728c0cec50
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302181"
 ---
 # <a name="replicate-azure-cosmos-db"></a>REPLIKovat (Azure Cosmos DB)
  Opakuje hodnotu řetězce zadaného počtu opakování.
@@ -29,7 +29,7 @@ REPLICATE(<str_expr>, <num_expr>)
    Je řetězcový výraz.
   
 *num_expr*  
-   Je číselný výraz. Pokud je *num_expr* negativní nebo nekonečný, výsledek není definován.
+   Je číselný výraz. Pokud je *num_expr* záporné nebo nekonečno, výsledek není definován.
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -46,11 +46,15 @@ REPLICATE(<str_expr>, <num_expr>)
 SELECT REPLICATE("a", 3) AS replicate
 ```  
   
- Tady je sada výsledků.
+ Zde je sada výsledků.
   
 ```json
 [{"replicate": "aaa"}]
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

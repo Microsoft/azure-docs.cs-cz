@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4d4e47808355833ff7ecfb66db13ee86dc4a6402
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: db17e24c91e82bd9efac659175554788c4627fa2
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251030"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399760"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -132,6 +132,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Podporuje se |Podporuje se |Amsterdam, Hongkong – zvláštní správní oblast, Londýn, Los Angeles, Ósaka, Singapur, Sydney, Tokio, Washington DC |
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |Podporuje se |Podporuje se |Tokio |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |Podporuje se |Podporuje se |Ósaka |
+| **[Cloudové připojení Ooredoo](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |Podporuje se |Podporuje se |Marseille |
 | **[Optus](https://www.optus.com.au/enterprise/)** |Podporuje se |Podporuje se |Melbourne, Sydney |
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Podporuje se |Podporuje se |Amsterdam, Amsterdam2, Dubai2, Frankfurt, Hongkong – zvláštní správní oblast, Johannesburg, Londýn, Paříž, Svatý Paulo, Silicon sedl, Singapur, Sydney, Tokio, Washington DC |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | Podporuje se | Podporuje se | Dubai2 |

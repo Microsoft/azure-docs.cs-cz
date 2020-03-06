@@ -4,15 +4,15 @@ description: Přečtěte si, jak absolutní (ABS) systémová funkce SQL v Azure
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 70648dcf28d760c3a81c0cb426cd9b2d3ce96fff
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6d173827f2695cc20fa208d390731acf0edb3848
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871852"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301093"
 ---
 # <a name="abs-azure-cosmos-db"></a>ABS (Azure Cosmos DB)
  Vrátí absolutní hodnotu (pozitivní) zadaný číselný výraz.  
@@ -40,12 +40,15 @@ ABS (<numeric_expr>)
 SELECT ABS(-1) AS abs1, ABS(0) AS abs2, ABS(1) AS abs3 
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{abs1: 1, abs2: 0, abs3: 1}]  
-```  
-  
+```
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

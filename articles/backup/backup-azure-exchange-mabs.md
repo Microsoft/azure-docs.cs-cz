@@ -4,12 +4,12 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 051e33e9340a5ee788011254bb2cf88029ba1505
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583839"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295840"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
 
@@ -23,8 +23,8 @@ Než budete pokračovat, ujistěte se, že jsou [nainstalované a připravené](
 
 Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte podle následujících kroků:
 
-1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
-2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > nainstalovat** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) .
+1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > nainstalovat** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
 

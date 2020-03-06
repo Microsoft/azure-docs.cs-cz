@@ -3,12 +3,12 @@ title: Dodržování předpisů pomocí Azure Policy
 description: Přiřazení předdefinovaných zásad v Azure Policy pro audit dodržování předpisů ve službě Azure Container Registry
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 331fcfaf72b1ad2022aa3edeefefa597e5bcfe17
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925667"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330732"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Audit dodržování předpisů pro služby Azure Container Registry pomocí Azure Policy
 
@@ -68,14 +68,14 @@ Name                                                                            
 [Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-Pak spusťte příkaz [AZ Policy list](/cli/azure/policy/state#az-policy-assignment-list) a vraťte stav dodržování předpisů ve formátu JSON pro všechny prostředky v rámci konkrétního ID zásad:
+Pak spusťte příkaz [AZ Policy list](/cli/azure/policy/state#az-policy-state-list) a vraťte stav dodržování předpisů ve formátu JSON pro všechny prostředky v rámci konkrétního ID zásad:
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-Nebo spusťte [AZ Policy list](/cli/azure/policy/state#az-policy-assignment-list) a vraťte stav dodržování předpisů ve formátu JSON určitého prostředku registru, jako je například *myregistry*:
+Nebo spusťte [AZ Policy list](/cli/azure/policy/state#az-policy-state-list) a vraťte stav dodržování předpisů ve formátu JSON určitého prostředku registru, jako je například *myregistry*:
 
 ```azurecli
 az policy state list \

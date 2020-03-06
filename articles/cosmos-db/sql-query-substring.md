@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bf14bda9bd1acc62820bf07f83ac074a8d1b691c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349201"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303694"
 ---
 # <a name="substring-azure-cosmos-db"></a>Podřetězec (Azure Cosmos DB)
  Vrátí část řetězcového výrazu počínaje pozice s nulovým základem zadaný znak a pokračuje na určenou délku nebo na konci řetězce.  
@@ -46,11 +46,15 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
 SELECT SUBSTRING("abc", 1, 1) AS substring  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"substring": "b"}]  
-```  
+```
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude těžit z [indexu rozsahu](index-policy.md#includeexclude-strategy) , pokud je počáteční pozice `0`.
 
 ## <a name="next-steps"></a>Další kroky
 

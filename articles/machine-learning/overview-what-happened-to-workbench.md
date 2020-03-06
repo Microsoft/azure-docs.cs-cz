@@ -9,14 +9,13 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 11/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 21c6972b73f15a3f128b4a26222e478a5e2a245a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/05/2020
+ms.openlocfilehash: 5a8d31157023cf75076bfef7df09e65a066ceaa5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533920"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328608"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -48,7 +47,7 @@ I když v aktuální verzi existují nové vylepšené klienty rozhraní CLI a s
 
 ## <a name="support-timeline"></a>Časový plán podpory
 
-9\. ledna 2019 podpora pro Machine Learning Workbench, účty Experimentování ve službě Azure Machine Learning a Správa modelů a jejich přidružená sada SDK a rozhraní příkazového řádku skončila.
+9\. ledna 2019 podpora pro Machine Learning Workbench, účty Experimentování ve službě Azure Machine Learning a Správa modelů a jejich přidružená sada SDK a rozhraní příkazového řádku se ukončila.
 
 Všechny nejnovější možnosti jsou k dispozici pomocí této <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">sady SDK</a>, rozhraní příkazového [řádku](reference-azure-machine-learning-cli.md)a [portálu](how-to-manage-workspace.md).
 

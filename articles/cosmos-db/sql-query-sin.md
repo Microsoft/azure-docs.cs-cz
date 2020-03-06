@@ -4,15 +4,15 @@ description: Přečtěte si o funkci systému SQL SIN v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b4450ea9dd50f8093fa9569d7f82fe124022c3a1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 25e7cf66fdd55a0b641c35443e38b0a67cbe365d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349463"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303099"
 ---
 # <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB)
  Vrátí trigonometrických sinus úhlu určeného v radiánech v zadaným výrazem.  
@@ -40,11 +40,15 @@ SIN(<numeric_expr>)
 SELECT SIN(45.175643) AS sin  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"sin": 0.929607286611012}]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

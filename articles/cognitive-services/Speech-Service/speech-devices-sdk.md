@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 854e7beb2afd8ae838455f77ff448f13d8b3fbea
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 43d08b466076672587e7f6545193e326283c0031
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188982"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330783"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Sada Speech Devices SDK
 
@@ -47,7 +47,7 @@ Aplikace je sestavená pomocí balíčku sady Speech SDK a Java IDE v 64 (v4) na
 ### <a name="linux"></a>Linux
 
 Pro Linux je ukázková aplikace poskytována jako aplikace Java pro různé platformy. Stáhněte si nejnovější verzi [sady JRE Speech pro zařízení](https://aka.ms/sdsdk-download-JRE).
-Aplikace je sestavena pomocí balíčku sady Speech SDK a Java IDE v 64 (v4) na-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+Aplikace je sestavená pomocí balíčku sady Speech SDK a Java IDE na 64 (v4) na. Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
 K dispozici jsou další binární soubory pro podporu nadcházejících zařízení, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)a [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter).
 

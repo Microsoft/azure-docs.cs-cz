@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: df1602fe82b4a625dd5f01de2bd7236816fbb0ac
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 873db6315841b585aa0ba6bcb843bfe05567836f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164657"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299257"
 ---
 # <a name="azure-media-services-v3-overview"></a>Přehled Azure Media Services V3
 
@@ -51,8 +51,8 @@ Media Services umožňuje vytvářet různé pracovní postupy pro média v clou
 * Analyzovat zaznamenaný videoobsah a zvukový obsah. Pro větší komfort při sledování může například organizace u svého obsahu převést řeč na text nebo vytvořit index vyhledávání a řídicí panel. Může také analyzovat nejčastější témata stížností, jejich zdroje a další související data.
 * Vytvořit službu odběru videa a streamovat obsah chráněný technologií DRM, pokud zákazník (například filmové studio) potřebuje omezit přístup a pracuje s díly chráněnými autorským zákonem.
 * Poskytovat offline obsah pro přehrávání v letadlech, vlacích a automobilech. Zákazník si může obsah stáhnout do svého telefonu nebo tabletu pro pozdější přehrání, pokud očekává nedostupnost sítě.
-* Implementujte výukovou platformu pro vzdělávací e-Learning s využitím Azure Media Services a [Azure rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) pro titulkování na text, překladu na více jazyků a tak dále.
-* Pomocí Azure Media Services společně se službou [Azure rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) můžete přidat titulky a titulky do videí do služby stravování pro širší cílovou skupinu (například lidem s postižením sluchu nebo lidem, kteří chtějí načítat v jiném jazyce).
+* Implementujte výukovou platformu pro vzdělávací e-Learning s využitím Azure Media Services a [Azure rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) pro titulkování na text, překladu na více jazyků a tak dále.
+* Pomocí Azure Media Services společně se službou [Azure rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) můžete přidat titulky a titulky do videí do služby stravování pro širší cílovou skupinu (například lidem s postižením sluchu nebo lidem, kteří chtějí načítat v jiném jazyce).
 * Umožněte Azure CDN dosáhnout velkého měřítka, aby bylo možné lépe zvládnout okamžité vysoké zátěže (například začátek události spuštění produktu).
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3? 

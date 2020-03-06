@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 1c3f2009dc71df1a5496d585bdcba986a79ac0d0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768451"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300994"
 ---
 ## <a name="prepare-your-web-app"></a>Příprava webové aplikace
 
-Pokud chcete vytvořit vazbu vlastního certifikátu SSL (certifikát třetí strany nebo certifikát App Service) ke své webové aplikaci, váš [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být na úrovni **Basic**, **Standard**, **Premium** nebo **Isolated**. V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
+Pokud chcete vytvořit vlastní vazby zabezpečení nebo povolit klientské certifikáty pro aplikaci App Service, musí být [plán App Service](https://azure.microsoft.com/pricing/details/app-service/) na úrovni **Basic**, **Standard**, **Premium**nebo **Isolated** . V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -51,7 +51,7 @@ Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete verti
 
 Vyberte některou z placených úrovní (**B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti se zobrazí po kliknutí na odkaz **Zobrazit další možnosti**.
 
-Klikněte na tlačítko **Použít**.
+Klikněte na **Použít**.
 
 ![Výběr cenové úrovně](./media/app-service-ssl-prepare-app/choose-pricing-tier.png)
 

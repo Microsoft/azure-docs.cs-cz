@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654716"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399205"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí webu Azure portal
 
@@ -75,16 +75,16 @@ Tento článek ukazuje, jak propojit virtuální sítě s použitím typu připo
 
 - **Nastavení virtuální sítě**
     - **Název**: VNet1
-    - **Adresní prostor**: 10.11.0.0/16
+    - **Adresní prostor**: 10.1.0.0/16
     - **Předplatné**: vyberte předplatné, které chcete použít.
     - **Skupina prostředků**: TestRG1
     - **Umístění**: východní USA
     - **Podsíť**
         - **Název**: front-end
-        - **Rozsah adres**: 10.11.0.0/24
+        - **Rozsah adres**: 10.1.0.0/24
     - **Podsíť brány**:
         - **Název**: *GatewaySubnet* je vyplněný.
-        - **Rozsah adres**: 10.11.255.0/27
+        - **Rozsah adres**: 10.1.255.0/27
 
 - **Nastavení brány virtuální sítě**
     - **Název**: VNet1GW
@@ -126,11 +126,6 @@ Pokud již máte virtuální síť vytvořenou, ověřte, zda jsou nastavení ko
 
 ### <a name="to-create-a-virtual-network"></a>Chcete-li vytvořit virtuální síť
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
-
-## <a name="add-additional-address-space-and-create-subnets"></a>Přidání dalšího adresního prostoru a vytvoření podsítí
-Po vytvoření virtuální sítě můžete přidat další adresní prostor a vytvořit podsítě.
-
-[!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="create-a-virtual-network-gateway"></a>Vytvoření brány virtuální sítě
 V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány. Pokud vytváříte tuto konfiguraci jako cvičení, přečtěte si [Příklad nastavení](#example-settings).

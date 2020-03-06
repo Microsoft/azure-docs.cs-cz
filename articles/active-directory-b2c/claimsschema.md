@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189920"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397810"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -56,8 +56,11 @@ Element **ClaimType** obsahuje následující prvky:
 | Zrušit | 0:1 | Volitelné řetězce maskování znaků, které lze použít při zobrazení deklarace identity. Například telefonní číslo 324-232-4343 lze maskovat jako XXX-XXX-4343. |
 | UserHelpText | 0:1 | Popis typu deklarace, který může být užitečný pro uživatele, aby porozuměl jeho účelu. Hodnota může být [lokalizována](localization.md). |
 | UserInputType | 0:1 | Typ vstupního ovládacího prvku, který má být uživateli k dispozici, když ručně zadáte data deklarace pro daný typ deklarace identity. Podívejte se na typy vstupu uživatele definované dále na této stránce. |
+| AdminHelpText | 0:1 | Popis typu deklarace, který může být užitečný pro správce, aby porozuměl jeho účelu. |
 | Omezení | 0:1 | Omezení hodnoty pro tuto deklaraci identity, například regulární výraz (Regex) nebo seznam přijatelných hodnot. Hodnota může být [lokalizována](localization.md). |
 PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput** . Prvky **PredicateValidationReference** umožňují provést proces ověření, aby bylo zajištěno, že budou zadána pouze správně vytvořená data. Další informace najdete v tématu [predikáty](predicates.md). |
+
+
 
 ### <a name="datatype"></a>DataType
 

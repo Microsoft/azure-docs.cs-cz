@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448906"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402671"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: detekce anomálií pro streamovaná data pomocí Azure Databricks
 
@@ -40,14 +40,12 @@ Tento kurz se zabývá následujícími úkony:
 > * Spustit detekci anomálií na tweety
 
 > [!Note]
-> Tento kurz zavádí přístup k implementaci doporučené [architektury řešení](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) pro rozhraní API detektoru anomálií.
+> * Tento kurz zavádí přístup k implementaci doporučené [architektury řešení](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) pro rozhraní API detektoru anomálií.
+> * Tento kurz nejde dokončit s bezplatnou zkušební verzí rozhraní API detektoru anomálií nebo Azure Databricks. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte [předplatné Azure](https://azure.microsoft.com/free/) , vytvořte ho.
 
-> [!Note]
-> Tento kurz nejde dokončit s bezplatným zkušebním klíčem pro rozhraní API detektoru anomálií. Pokud chcete k vytvoření clusteru Azure Databricks použít bezplatný účet, přejděte na svůj profil a změňte své předplatné na **Průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/).
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Obor názvů a centrum událostí pro [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) .
 
@@ -153,7 +151,7 @@ Na stránce Knihovna vyberte cluster, ve kterém chcete použít knihovnu, a pak
 
 V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive Services](../overview.md) ke spouštění detekce anomálií na streamu tweety téměř v reálném čase. Než použijete rozhraní API, musíte v Azure vytvořit prostředek detektoru anomálií a načíst přístupový klíč pro použití rozhraní API detektoru anomálií.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **+ Vytvořit prostředek**.
 
@@ -165,7 +163,7 @@ V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive
 
     |Hodnota |Popis  |
     |---------|---------|
-    |Name (Název)     | Název prostředku detektoru anomálií.        |
+    |Název     | Název prostředku detektoru anomálií.        |
     |Předplatné     | Předplatné Azure, ke kterému bude prostředek přidružen.        |
     |Umístění     | Umístění Azure.        |
     |Cenová úroveň     | Cenová úroveň služby. Další informace o cenách detektoru anomálií najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
@@ -203,7 +201,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 ## <a name="send-tweets-to-event-hubs"></a>Odeslání tweetů do služby Event Hubs
 
-V **SendTweetsToEventHub** Poznámkový blok, vložte následující kód a nahraďte zástupné hodnoty pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento Poznámkový blok extrahuje čas vytvoření a číslo "Like" s z tweety s klíčovým slovem "Azure" a streamuje je jako události do Event Hubs v reálném čase.
+Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupný text hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento Poznámkový blok extrahuje čas vytvoření a číslo "Like" s z tweety s klíčovým slovem "Azure" a streamuje je jako události do Event Hubs v reálném čase.
 
 ```scala
 //

@@ -4,15 +4,15 @@ description: Přečtěte si o funkci SQL System Function TAN v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 70636dbc00307ced8ad0cf84f41fe025c759997e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9d7187ba116067445e835769fc33aa70677ef80b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349156"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301977"
 ---
 # <a name="tan-azure-cosmos-db"></a>TAN (Azure Cosmos DB)
  Vrátí tangens úhlu určeného v radiánech v zadaným výrazem.  
@@ -40,11 +40,15 @@ TAN (<numeric_expr>)
 SELECT TAN(PI()/2) AS tan 
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"tan": 16331239353195370 }]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

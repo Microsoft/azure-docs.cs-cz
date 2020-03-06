@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945802"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399681"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
@@ -34,13 +34,13 @@ Doporučený a nejaktuálnější přístup k nasazení modelu je prostřednictv
 
 3. Nasaďte model do služby Azure Container instance (ACI) nebo do služby Azure Kubernetes Service (AKS).
 
-Další informace o tomto procesu v [Správa modelů ve službě](concept-model-management-and-deployment.md) úvod.
+Další informace o tomto procesu najdete v úvodu [Správa modelů](concept-model-management-and-deployment.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* **Předplatného Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
+* **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Chcete-li ladit místně, je nutné mít v místním systému funkční instalaci Docker.
 
@@ -183,7 +183,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="service-launch-fails"></a>Selhání spuštění služby
 
-Po úspěšném vytvoření image se systém pokusí spustit kontejner pomocí konfigurace nasazení. Jako součást procesu spouštění kontejneru `init()` vyvolání funkce v hodnoticí skript v systému. Pokud existují nezachycených výjimek `init()` fungovat, může se zobrazit **CrashLoopBackOff** chyby v chybové zprávě.
+Po úspěšném vytvoření image se systém pokusí spustit kontejner pomocí konfigurace nasazení. V rámci procesu spuštění kontejneru je funkce `init()` ve vašem skriptu bodování vyvolána systémem. Pokud se ve funkci `init()` nezachycené výjimky, může se v chybové zprávě zobrazit chyba **CrashLoopBackOff** .
 
 Použijte informace v části Kontrola [protokolu Docker](#dockerlog) pro kontrolu protokolů.
 
@@ -204,7 +204,7 @@ Nastavení úrovně protokolování na ladění může způsobit, že budou prot
 
 ## <a name="function-fails-runinput_data"></a>Selže funkce: run(input_data)
 
-Pokud úspěšně nasazení služby, ale jeho dojde k chybě při odesílání dat na bodovací koncový bod, můžete přidat chyby zachytávání příkaz v vaše `run(input_data)` fungovat tak, že místo toho vrátí podrobnou chybovou zprávu. Příklad:
+Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce `run(input_data)` přidat příkaz pro zachycení chyb, aby se místo toho vrátila podrobná chybová zpráva. Příklad:
 
 ```python
 def run(input_data):
@@ -219,7 +219,11 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Poznámka:** : vrácení chybových zpráv ze `run(input_data)` volání by mělo být provedeno pro ladění pouze pro účely. Z bezpečnostních důvodů byste neměli vracet chybové zprávy tímto způsobem v produkčním prostředí.
+**Poznámka**: vrácení chybových zpráv z `run(input_data)` volání by mělo být provedeno pouze pro účely ladění. Z bezpečnostních důvodů byste neměli vracet chybové zprávy tímto způsobem v produkčním prostředí.
+
+## <a name="http-status-code-502"></a>Stavový kód HTTP 502
+
+Stavový kód 502 označuje, že služba vyvolala výjimku nebo došlo k chybě v metodě `run()` souboru score.py. K ladění souboru použijte informace v tomto článku.
 
 ## <a name="http-status-code-503"></a>Stavový kód HTTP 503
 
@@ -261,6 +265,12 @@ K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 5
     > Pokud obdržíte špičky žádostí větší, než jsou nové minimální repliky schopné zpracovat, můžete se 503s znovu dostat. Například při zvyšování provozu na službu možná budete muset zvětšit minimální repliky.
 
 Další informace o nastavení `autoscale_target_utilization`, `autoscale_max_replicas`a `autoscale_min_replicas` pro najdete v tématu Reference k modulu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
+
+## <a name="http-status-code-504"></a>Stavový kód HTTP 504
+
+Stavový kód 504 označuje, že vypršel časový limit žádosti. Výchozí časový limit je 1 minuta.
+
+Časový limit můžete zvýšit nebo se pokusit o urychlení služby úpravou score.py pro odebrání nepotřebných volání. Pokud tyto akce problém nevyřeší, použijte informace v tomto článku k ladění souboru score.py. Kód může být ve stavu neodpovídá nebo nekonečné smyčce.
 
 ## <a name="advanced-debugging"></a>Pokročilé ladění
 
@@ -439,4 +449,4 @@ docker stop debug
 Další informace o nasazení:
 
 * [Jak nasadit a kde](how-to-deploy-and-where.md)
-* [Kurz: Trénování a nasazení modelů](tutorial-train-models-with-aml.md)
+* [Kurz: výuka & nasazení modelů](tutorial-train-models-with-aml.md)

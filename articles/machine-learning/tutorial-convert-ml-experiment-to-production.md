@@ -7,26 +7,27 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 7f5e24261fd5d006004a51186e22f6bfe1b8ab32
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301841"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Kurz: převod experimentálního kódu ML na produkční kód
 
-Projekt strojového učení vyžaduje experimentování, kde se hypotéza testuje pomocí agilních nástrojů, jako je Jupyter Notebook pomocí reálných datových sad. Jakmile je model připravený k produkci, kód modelu by měl být umístěn v provozním úložišti kódu. V některých případech je nutné kód modelu převést na skripty v jazyce Python, aby byly umístěny do úložiště kódu v produkčním prostředí. Tento kurz se zabývá doporučeným přístupem k exportu kódu experimentování do skriptů Pythonu.  
+Projekt strojového učení vyžaduje experimentování, kde se hypotéza testuje pomocí agilních nástrojů, jako je Jupyter Notebook pomocí reálných datových sad. Jakmile je model připravený k produkci, kód modelu by měl být umístěn v provozním úložišti kódu. V některých případech je nutné kód modelu převést na skripty v jazyce Python, aby byly umístěny do úložiště kódu v produkčním prostředí. Tento kurz se zabývá doporučeným přístupem k exportu kódu experimentování do skriptů Pythonu.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+>
 > * Vyčistit nenezbytný kód
 > * Refaktoring Jupyter Notebook kódu do funkcí
 > * Vytvoření skriptů v jazyce Python pro související úlohy
 > * Vytvořit testy jednotek
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vygenerujte [šablonu MLOpsPython](https://github.com/microsoft/MLOpsPython/generate) a použijte poznámkové bloky `experimentation/Diabetes Ridge Regression Training.ipynb` a `experimentation/Diabetes Ridge Regression Scoring.ipynb`. Tyto poznámkové bloky se používají jako příklad převodu z experimentování do produkčního prostředí.
 - Nainstalujte nbconvert. Postupujte podle pokynů k instalaci v části __instalace nbconvert__ na stránce [instalace](https://nbconvert.readthedocs.io/en/latest/install.html) .
@@ -41,7 +42,7 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import joblib
- 
+
 X, y = load_diabetes(return_X_y=True)
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -64,13 +65,15 @@ joblib.dump(value=reg, filename=model_name)
 ## <a name="refactor-code-into-functions"></a>Refaktoring kódu do funkcí
 
 Za druhé, kód Jupyter je potřeba Refaktorovat do funkcí. Refaktoring kódu do funkcí usnadňuje testování jednotek a způsobuje, že kód je udržovatelnější. V této části se refaktoruje:
+
 - Školicí notebook diabetes Ridge regrese (`experimentation/Diabetes Ridge Regression Training.ipynb`)
 - Poznámkový blok pro bodování diabetes Ridge regrese (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
 ### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Refaktoring diabetes Ridge regrese školicí Poznámkový blok do funkcí
+
 V `experimentation/Diabetes Ridge Regression Training.ipynb`proveďte následující kroky:
 
-1. Vytvořte funkci s názvem `train_model`, která převezme parametry `data` a `alpha` a vrátí model. 
+1. Vytvořte funkci s názvem `train_model`, která převezme parametry `data` a `alpha` a vrátí model.
 1. Zkopírujte kód pod nadpisy "model výuky v sadě školení" a "ověřit model při ověření sady" do funkce `train_model`.
 
 Funkce `train_model` by měla vypadat jako v následujícím kódu:
@@ -106,7 +109,7 @@ def main():
 
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -147,7 +150,7 @@ def main():
 
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -163,6 +166,7 @@ main()
 ```
 
 ### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Refaktoring Poznámkový blok diabetes Ridge regrese do funkcí
+
 V `experimentation/Diabetes Ridge Regression Scoring.ipynb`proveďte následující kroky:
 
 1. Vytvořte novou funkci nazvanou `init`, která nepřijímá žádné parametry a nevrátí žádnou hodnotu.
@@ -212,6 +216,7 @@ request_header = {}
 prediction = run(raw_data, request_header)
 print("Test result: ", prediction)
 ```
+
 Předchozí sady kódu proměnné `raw_data` a `request_header`zavolá funkci `run` s `raw_data` a `request_header`a vytiskne předpovědi.
 
 Po refaktoringu by `experimentation/Diabetes Ridge Regression Scoring.ipynb` měla vypadat jako následující kód bez Markdownu:
@@ -242,11 +247,14 @@ print("Test result: ", prediction)
 ```
 
 ## <a name="combine-related-functions-in-python-files"></a>Kombinování souvisejících funkcí v souborech Pythonu
+
 Třetí, související funkce musí být sloučeny do souborů Pythonu, aby lépe usnadnily opakované použití kódu. V této části budete vytvářet soubory Pythonu pro následující poznámkové bloky:
+
 - Školicí notebook diabetes Ridge regrese (`experimentation/Diabetes Ridge Regression Training.ipynb`)
 - Poznámkový blok pro bodování diabetes Ridge regrese (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Vytvořit soubor Pythonu pro školicí Poznámkový blok diabetes Ridge regrese
+
 Převeďte svůj Poznámkový blok na spustitelný skript spuštěním následujícího příkazu v příkazovém řádku, který používá balíček nbconvert a cestu `experimentation/Diabetes Ridge Regression Training.ipynb`:
 
 ```
@@ -274,7 +282,7 @@ def train_model(data, alpha):
 def main():
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -292,6 +300,7 @@ main()
 `train.py` soubor, který se nachází v adresáři `diabetes_regression/training` v úložišti MLOpsPython, podporuje argumenty příkazového řádku (konkrétně `build_id`, `model_name`a `alpha`). Podporu argumentů příkazového řádku lze přidat do souboru `train.py` pro podporu názvů dynamických modelů a hodnot `alpha`, ale není nutné, aby byl kód úspěšně spuštěn.
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Vytvořit soubor Pythonu pro vyhodnocovací Poznámkový blok diabetes Ridge regrese
+
 Přetajně Poznámkový blok na spustitelný skript spuštěním následujícího příkazu na příkazovém řádku, který používá balíček nbconvert a cestu `experimentation/Diabetes Ridge Regression Scoring.ipynb`:
 
 ```
@@ -344,11 +353,13 @@ def init():
 ```
 
 ## <a name="create-unit-tests-for-each-python-file"></a>Vytvořit testy jednotek pro každý soubor Pythonu
+
 Čtvrté testy jednotek je potřeba vytvořit pro každý soubor Pythonu, což zjednodušuje správu a údržbu kódu. V této části vytvoříte testování částí pro jednu z funkcí v `train.py`.
 
-`train.py` obsahuje dvě funkce: `train_model` a `main`. Každá funkce potřebuje test jednotek, ale v tomto kurzu vytvoříme jenom jeden test jednotky pro funkci `train_model` pomocí rozhraní Pytest Framework.  Pytest není jedinou architekturou testování jednotek Pythonu, ale je to jedna z nejčastěji používaných. Další informace najdete na webu [Pytest](https://pytest.org).
+`train.py` obsahuje dvě funkce: `train_model` a `main`. Každá funkce potřebuje test jednotek, ale v tomto kurzu vytvoříme jenom jeden test jednotky pro funkci `train_model` pomocí rozhraní Pytest Framework. Pytest není jedinou architekturou testování jednotek Pythonu, ale je to jedna z nejčastěji používaných. Další informace najdete na webu [Pytest](https://pytest.org).
 
 Test jednotek obvykle obsahuje tři hlavní akce:
+
 - Uspořádat objekt – vytváření a nastavování nezbytných objektů
 - Pracovat na objektu
 - Vyhodnocení očekávání
@@ -379,29 +390,40 @@ class TestTrain:
 ```
 
 ## <a name="use-your-own-model-with-mlopspython-code-template"></a>Použití vlastního modelu se šablonou MLOpsPython kódu
-Pokud jste pomohli postupovat podle kroků v tomto průvodci, budete mít sadu skriptů, které se budou připojovat ke skriptům vlak/skore/test, které jsou dostupné v úložišti MLOpsPython.  Podle struktury zmíněné výše vás následující kroky provedou, co je potřeba k použití těchto souborů pro vlastní projekt Machine Learning:  
 
-1.  Dodržujte Průvodce Začínáme
-2.  Výměna kódu školení
-3.  Nahraďte kód skóre.
-4.  Aktualizovat zkušební kód
+Pokud jste pomohli postupovat podle kroků v tomto průvodci, budete mít sadu skriptů, které se budou připojovat ke skriptům vlak/skore/test, které jsou dostupné v úložišti MLOpsPython.  Podle struktury zmíněné výše vás následující kroky provedou, co je potřeba k použití těchto souborů pro vlastní projekt Machine Learning:
+
+1. Postupujte podle příručky MLOpsPython [Začínáme](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md)
+2. Při vytváření počátečního bodu projektu postupujte podle [pokynů MLOpsPython Bootstrap](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) .
+3. Výměna kódu školení
+4. Nahraďte kód skóre.
+5. Aktualizovat zkušební kód
 
 ### <a name="follow-the-getting-started-guide"></a>Dodržujte Průvodce Začínáme
-Po provedení Úvodní příručky je potřeba, aby se podpora infrastruktury a kanálů spustila MLOpsPython.  Před vložením vlastního kódu doporučujeme nasazovat kód MLOpsPython, aby se zajistilo správné fungování struktury a kanálu.  Je také vhodné se seznámit se strukturou kódu úložiště.
+Po [Začínáme](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) průvodci je potřeba, aby mohla podpůrná infrastruktura a kanály spustit MLOpsPython.
+
+### <a name="follow-the-bootstrap-instructions"></a>Postupujte podle pokynů k zavedení
+
+Příručka [bootstrap z úložiště MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) vám pomůže rychle připravit úložiště pro váš projekt.
+
+**Poznámka:** Vzhledem k tomu, že spouštěcí skript přejmenuje složku diabetes_regression na název projektu dle vašeho výběru, odkazujeme na váš projekt jako `[project name]`, když jsou cesty zapojeny.
 
 ### <a name="replace-training-code"></a>Výměna kódu školení
-Nahrazení kódu, který se používá pro výuku modelu a odebrání nebo nahrazení odpovídajících testů jednotek, je nutné, aby řešení fungovalo s vlastním kódem.  Proveďte tyto kroky konkrétně:
 
-1. Nahraďte `diabetes_regression\training\train.py`. Tento skript nahlásí model místně nebo na výpočetní úrovni Azure ML.
-1. Odebrat nebo nahradit testy školicích jednotek nalezené v `tests/unit/code_test.py`
+Nahrazení kódu, který se používá pro výuku modelu a odebrání nebo nahrazení odpovídajících testů jednotek, je nutné, aby řešení fungovalo s vlastním kódem. Proveďte tyto kroky konkrétně:
+
+1. Nahraďte `[project name]/training/train.py`. Tento skript nahlásí model místně nebo na výpočetní úrovni Azure ML.
+1. Odebrat nebo nahradit testy školicích jednotek nalezené v `[project name]/training/test_train.py`
 
 ### <a name="replace-score-code"></a>Nahradit kód skóre
-Aby model poskytoval možnosti odvození v reálném čase, je nutné nahradit kód skóre. Šablona MLOpsPython používá kód skóre k nasazení modelu za účelem bodování v reálném čase na ACI, AKS nebo Web Apps.  Pokud chcete zachovat bodování, nahraďte `diabetes_regression/scoring/score.py`.
+
+Aby model poskytoval možnosti odvození v reálném čase, je nutné nahradit kód skóre. Šablona MLOpsPython používá kód skóre k nasazení modelu za účelem bodování v reálném čase na ACI, AKS nebo Web Apps. Pokud chcete zachovat bodování, nahraďte `[project name]/scoring/score.py`.
 
 ### <a name="update-evaluation-code"></a>Aktualizovat zkušební kód
-Šablona MLOpsPython používá skript evaluate_model k porovnání výkonu nově vyučeného modelu a aktuálního výrobního modelu založeného na střednímu čtverci chyby. Pokud je výkon nově vyučeného modelu lepší než aktuální produkční model, kanály budou pokračovat. V opačném případě se kanály zastaví. Pokud chcete zachovat vyhodnocení, nahraďte všechny instance `mse` v `diabetes_regression/evaluate/evaluate_model.py` požadovanou metrikou. 
 
-Pokud se chcete zbavit vyhodnocení, nastavte proměnnou kanálu DevOps `RUN_EVALUATION` v `.pipelines\diabetes_regression-variables` na `false`.
+Šablona MLOpsPython používá skript evaluate_model k porovnání výkonu nově vyučeného modelu a aktuálního výrobního modelu založeného na střednímu čtverci chyby. Pokud je výkon nově vyučeného modelu lepší než aktuální produkční model, kanály budou pokračovat. V opačném případě se kanály zruší. Pokud chcete zachovat vyhodnocení, nahraďte všechny instance `mse` v `[project name]/evaluate/evaluate_model.py` požadovanou metrikou.
+
+Pokud se chcete zbavit vyhodnocení, nastavte proměnnou kanálu DevOps `RUN_EVALUATION` v `.pipelines/[project name]-variables-template.yml` na `false`.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930150"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78401784"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Rychlý Start: Klientská knihovna pro tvář pro .NET
 
@@ -28,9 +28,9 @@ Pomocí klientské knihovny obličeje pro .NET:
 * [Identifikace obličeje](#identify-a-face)
 * [Pořídit snímek migrace dat](#take-a-snapshot-for-data-migration)
 
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [Ukázka](https://docs.microsoft.com/samples/browse/?products=azure&term=face) | [ukázka zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [Ukázka | ukázek](https://docs.microsoft.com/samples/browse/?products=azure&term=face) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -64,7 +64,7 @@ dotnet build
 
 Výstup sestavení by neměl obsahovat žádná upozornění ani chyby. 
 
-```console
+```output
 ...
 Build succeeded.
  0 Warning(s)
@@ -94,7 +94,7 @@ Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio,
 
 Následující třídy a rozhraní zpracovávají některé z hlavních funkcí sady Face .NET SDK:
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
 |[FaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
@@ -317,4 +317,4 @@ V tomto rychlém startu jste zjistili, jak používat knihovnu obličeje pro .NE
 > [Odkaz na Face API (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
 * [Co je služba obličeje?](../overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs).

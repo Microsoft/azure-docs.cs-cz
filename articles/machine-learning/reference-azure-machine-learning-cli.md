@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 11/05/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe9cee44970da94c346caffc0d5fe76ffebf4a0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845154"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402493"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Pro Azure Machine Learning použít rozšíření CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Rozhraní příkazového řádku Azure Machine Learning je rozšíření [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), multiplatformního rozhraní příkazového řádku pro platformu Azure. Toto rozšíření poskytuje příkazy pro práci s Azure Machine Learning. Umožňuje automatizovat aktivity machine learningu. Následující seznam uvádí některé ukázkové akce, které můžete provést s rozšířením CLI:
+Azure Machine Learning CLI je rozšíření [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), rozhraní příkazového řádku pro více platforem pro platformu Azure. Toto rozšíření poskytuje příkazy pro práci s Azure Machine Learning. Umožňuje automatizovat aktivity machine learningu. Následující seznam uvádí některé ukázkové akce, které můžete provést s rozšířením CLI:
 
 + Spustit vytváření modelů strojového učení
 
@@ -31,11 +31,11 @@ Rozhraní příkazového řádku Azure Machine Learning je rozšíření [rozhra
 
 Rozhraní příkazového řádku, není to náhrada pro sadu SDK Azure Machine Learning. Jedná se o doplňkový nástroj, který je optimalizovaný pro zpracování vysoce parametrizovaných úloh, které se dobře hodí pro automatizaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud chcete používat rozhraní příkazového řádku, musíte mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
 ## <a name="full-reference-docs"></a>Úplné referenční dokumentace
 
@@ -52,7 +52,7 @@ az extension add -n azure-cli-ml
 > [!TIP]
 > Příklady souborů, které můžete použít s níže uvedenými příkazy, najdete [tady](https://aka.ms/azml-deploy-cloud).
 
-Po zobrazení výzvy vyberte `y` nainstalovat rozšíření.
+Po zobrazení výzvy vyberte `y` pro instalaci rozšíření.
 
 Pokud chcete ověřit, jestli je nainstalovaná rozšíření, použijte následující příkaz k zobrazení seznamu podpříkazů specifické pro ML:
 

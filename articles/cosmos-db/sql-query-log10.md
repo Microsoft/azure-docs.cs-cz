@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5950a2a40a78716a76e49fcdaeb3129948b6a0e1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871053"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302487"
 ---
 # <a name="log10-azure-cosmos-db"></a>Log10 – (Azure Cosmos DB)
  Vrátí logaritmus o základu base 10 zadaný číselný výraz.  
@@ -44,11 +44,15 @@ LOG10 (<numeric_expr>)
 SELECT LOG10(100) AS log10 
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{log10: 2}]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

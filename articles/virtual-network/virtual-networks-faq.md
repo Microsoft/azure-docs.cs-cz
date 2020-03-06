@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
 ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121802"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358888"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 
@@ -309,7 +309,7 @@ Ano. K agregaci zrcadleného provozu z monitorovaných síťových rozhraní v p
 
 Klepnutí na virtuální síť je ve verzi Preview. Během období Preview není k dispozici žádná smlouva o úrovni služeb. Možnost by se neměla používat pro produkční úlohy. Když je v případě, že je síťové rozhraní virtuálního počítače povolené v případě konfigurace klepnutím, k provedení funkce zrcadlení a k odesílání zrcadlených paketů slouží stejné prostředky hostitele Azure, které jsou přiděleny k virtuálnímu počítači pro odeslání produkčního provozu. Vyberte správnou velikost virtuálního počítače se [systémem Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , aby bylo zajištěno, že pro virtuální počítač jsou k dispozici dostatečné prostředky pro odeslání provozního provozu a zrcadleného provozu.
 
-### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Podporuje síť pro [Linux](create-vm-accelerated-networking-cli.md) nebo [Windows](create-vm-accelerated-networking-powershell.md) urychlené používání virtuální sítě?
+### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>Podporuje síť pro [Linux](create-vm-accelerated-networking-cli.md) nebo [Windows](create-vm-accelerated-networking-powershell.md) urychlené používání virtuální sítě?
 
 Do síťového rozhraní připojeného k virtuálnímu počítači, který je povolený pomocí akcelerovaných sítí, budete moct přidat konfiguraci klepnutím. Ale výkon a latence na virtuálním počítači se projeví tak, že se přidá konfigurace klepnutím, protože snižování zátěže pro přenos zrcadlení v současné době nepodporují urychlené síťové služby Azure.
 

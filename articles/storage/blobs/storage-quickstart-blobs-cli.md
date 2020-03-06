@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: b0fe0cf0d477d1360d3789f74f30565e15cfd42e
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 58532c6eb6e01a993bce7d6e22a7b5274a465963
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206911"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298130"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI
 
@@ -153,7 +153,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už v rámci skupiny prostředků nepotřebujete žádné prostředky, včetně účtu úložiště, který jste vytvořili v tomto rychlém startu, odstraňte skupinu prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group) . Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
+Pokud chcete odstranit prostředky, které jste vytvořili v rámci tohoto rychlého startu, včetně účtu úložiště, odstraňte skupinu prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group) . Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
 ```azurecli
 az group delete \

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 3e7742e7035f3c4f4827a2edae1ad5a705aa221f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 67507dc571b3fab93e61e70c1e8282ee5c0a4630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693415"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301382"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencování sady Microsoft® Smooth Streaming klientských portů 
 ## <a name="overview"></a>Přehled
-Sada Microsoft Smooth Streaming Client porting kit (**SSPK** pro krátké) je Smooth Streaming implementace klienta optimalizovaná tak, aby pomáhala integrovaným výrobcům zařízení, kabelovým a mobilním operátorům, poskytovatelům služeb obsahu a výrobcům na sluchátkech. nezávislí výrobci softwaru (ISV) a poskytovatelé řešení k vytváření produktů a služeb pro streamování adaptivního obsahu ve formátu Smooth Streaming. SSPK je implementace klienta Smooth Streaming nezávislá na platformě, kterou může licence přenést na jakékoli zařízení a platformu. 
+Sada Microsoft Smooth Streaming Client porting kit (**SSPK** pro krátké) je Smooth Streaming implementace klienta optimalizovaná tak, aby pomáhala vestavěným výrobcům zařízení, kabelovým a mobilním operátorům, poskytovatelům služeb obsahu, výrobcům na sluchátkách, nezávislým výrobcům softwaru (ISV) a poskytovatelům řešení vytvářet produkty a služby pro adaptivní obsah streamování ve formátu Smooth Streaming. SSPK je implementace klienta Smooth Streaming nezávislá na platformě, kterou může licence přenést na jakékoli zařízení a platformu. 
 
 Níže je uveden seznam architektury vysoké úrovně a služba IIS Smooth Streaminging Kit je Smooth Streamingá implementace klienta poskytovaná Microsoftem a zahrnuje všechny základní logiky pro přehrávání Smooth Streaming obsahu. Tento obsah pak partneři přenášejí pro konkrétní zařízení nebo platformu implementací vhodných rozhraní. 
 
@@ -84,14 +84,14 @@ Průběžné a konečné licence SSPK mohou odesílat technické dotazy [smoothp
 * Kablosuz Iletism Sanayive dis Ticaret neúčinné látky
 * Albis Technologies Ltd.
 * Alticast Corporation
-* Služba Amazon Digital Services, Inc.
+* Amazon Digital Services, Inc.
 * Arion Technology, Inc.
-* AVC Multimedia software co., Ltd.
+* AVC Multimedia Software Co., Ltd.
 * Cavium, Inc.
 * EchoStar koupit společnost
 * Enseo, Inc.
 * Fluendo S.A.
-* HANDAN BroadInfoCom co., Ltd.
+* HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
 * iWEDIA S.A. 
@@ -101,13 +101,12 @@ Průběžné a konečné licence SSPK mohou odesílat technické dotazy [smoothp
 * Nintendo Co., Ltd.
 * OpenTV, Inc.
 * Saffron s digitálním omezením
-* Iština Changhong elektrických co., Ltd
+* Sichuan Changhong Electric Co., Ltd
 * SoftAtHome
 * Sony Corporation
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) co., Ltd.
 * Hlavní investice do Victory, Ltd.
-* Vestel Elektronik Sanayi ve Ticaret neúčinné
+* Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
 * ZTE Corporation
 
@@ -115,44 +114,43 @@ Průběžné a konečné licence SSPK mohou odesílat technické dotazy [smoothp
 * Rozšířené digitální vysílání SA
 * Kablosuz Iletism Sanayive dis Ticaret neúčinné látky
 * Albis Technologies Ltd.
-* Služba Amazon Digital Services, Inc.
+* Amazon Digital Services, Inc.
 * AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
 * Arion Technology, Inc.
-* ATMACA ELEKTRONIK SAN. VE TIC. A. Ş
-* Britské přenosové nebe – omezené
+* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
+* British Sky Broadcasting Limited
 * CastPal Technology Inc., Shenzhen
-* Kompatibilní s elektronikou, Inc.
+* Compal Electronics, Inc.
 * Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar koupit společnost
 * Enseo, Inc.
 * FilmFlex filmy omezené
 * Fluendo S.A.
-* FUNAI ELEKTROINSTALACE CO., LTD
-* Gibson inovace s omezením
+* FUNAI ELECTRIC CO., LTD
+* Gibson Innovations Limited
 * Haier informace žadatele S. R. L
-* HANDAN BroadInfoCom co., Ltd.
-* Hisense International co., Ltd. 
+* HANDAN BroadInfoCom Co., Ltd.
+* Hisense International Co., Ltd. 
 * Homecast co., Ltd
 * Hon Hai Precision Industry Co., Ltd.
 * Infomir GMBH
-* Kaonmedia co., Ltd.
+* Kaonmedia Co., Ltd.
 * KDDI Corporation
 * Nintendo Co., Ltd.
 * Oranžová SA
 * Saffron s digitálním omezením
 * Sagemcom Broadband SAS
 * Shenzhen Chuangwei – RGB Electronics Co., Ltd.
-* Shenzhenická elektronika CO., LTD
+* Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou elektrických co., Ltd
 * Digitální technologie Shenzhen Skyworth co., Ltd
-* Iština Changhong elektrických co., Ltd.
+* Sichuan Changhong Electric Co., Ltd.
 * Skardin průmyslová Corp.
-* Nebeská Deutschlanda Fernsehen GmbH & Co. KG
+* Sky Deutschland Fernsehen GmbH & Co. KG
 * SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
-* TCLský marketing (Macao – zvláštní komerční pobřežní obchod) omezený
 * Technologie Technicolor Delivery, SAS
 * Tongfang Global Ltd.
 * Hlavní investice do Victory, Ltd.
@@ -165,6 +163,6 @@ Průběžné a konečné licence SSPK mohou odesílat technické dotazy [smoothp
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

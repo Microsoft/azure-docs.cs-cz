@@ -14,11 +14,11 @@ ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: 0cf171da5f473a0d78fc5f37139c94b0e519bcfb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660168"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372521"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Rychlý Start: shromáždění dat z počítače se systémem Linux v hybridním prostředí pomocí Azure Monitor
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
-## <a name="create-a-workspace"></a>Vytvořit pracovní prostor
+## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
 1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 

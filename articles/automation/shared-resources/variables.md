@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7495c6b114e232a9aad0075e173abebcb3c92cd0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273604"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303048"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variabilní prostředky v Azure Automation
 
@@ -33,9 +33,6 @@ Vzhledem k tomu, že proměnné automatizace jsou trvalé, jsou k dispozici i v 
 Při vytváření proměnné můžete zadat její šifrování a úložiště Azure Automation jako zabezpečený prostředek. K dalším zabezpečeným prostředkům patří přihlašovací údaje, certifikáty a připojení. Azure Automation tyto prostředky šifruje a ukládá je pomocí jedinečného klíče, který se generuje pro každý účet Automation. Klíč je uložený v systému spravovaném Key Vault. Před uložením zabezpečeného prostředku Azure Automation načte klíč z Key Vault a pak ho použije k zašifrování assetu. 
 
 Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Její hodnotu nejde načíst pomocí rutiny [Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) , která se dodává jako součást modulu Azure PowerShell. Jediným způsobem, jak načíst šifrovanou hodnotu, je použití aktivity **Get-AutomationVariable** v sadě Runbook nebo v konfiguraci DSC.
-
->[!NOTE]
->Chcete-li odebrat šifrování pro proměnnou, je nutné odstranit proměnnou a znovu ji vytvořit jako nezašifrovanou.
 
 >[!NOTE]
 >Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
@@ -96,6 +93,9 @@ Funkce v následující tabulce se používají pro přístup k proměnným v sa
 1. V účtu Automation klikněte na dlaždici **assety** a potom v okně **Assety (prostředky** ) vyberte **proměnné**.
 2. Na dlaždici **proměnné** vyberte **přidat proměnnou**.
 3. V okně **Nová proměnná** dokončete možnosti a potom kliknutím na **vytvořit** uložte novou proměnnou.
+
+>[!NOTE]
+>Chcete-li odebrat šifrování pro proměnnou, je nutné odstranit proměnnou a znovu ji vytvořit jako nezašifrovanou.
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>Vytvoření nové proměnné pomocí prostředí Windows PowerShell
 

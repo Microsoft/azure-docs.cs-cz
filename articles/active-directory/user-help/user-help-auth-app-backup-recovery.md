@@ -1,5 +1,5 @@
 ---
-title: Zálohování a obnovení účtů v aplikaci Microsoft Authenticator App – Azure AD
+title: Zálohování a obnovení účtů pomocí aplikace Microsoft Authenticator – Azure AD
 description: Přečtěte si, jak zálohovat a obnovit přihlašovací údaje zálohovaného účtu pomocí aplikace Microsoft Authenticator.
 services: active-directory
 author: curtand
@@ -8,17 +8,17 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d1b28000a14ec0825435742efe238e713f116ba7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2ac761355fc528fe3e4b4b5f05ee0a6e317ff99a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063930"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297960"
 ---
-# <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů k účtu pomocí aplikace Microsoft Authenticator
+# <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů k účtu pomocí aplikace Microsoft Authenticator
 
 **Platí pro:**
 
@@ -81,23 +81,41 @@ U osobních účtů Microsoft můžete svou identitu prokázat zadáním hesla s
 
 ### <a name="to-provide-additional-verification-for-personal-accounts"></a>Poskytnutí dodatečného ověření pro osobní účty
 
-1. Na obrazovce **účty** aplikace Microsoft Authenticator vyberte šipku rozevíracího seznamu vedle účtu, který chcete obnovit.
+1. Na obrazovce **účty** aplikace Microsoft Authenticator vyberte účet, který chcete obnovit. Na zařízení s Androidem vyberte šipku vedle účtu, který chcete obnovit.
 
     ![Aplikace Microsoft Authenticator, kde se zobrazují dostupné účty s příslušnými šipkami rozevíracího seznamu](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
 
-2. Vyberte **Přihlásit se a obnovte**, zadejte heslo a potvrďte svou e-mailovou adresu nebo telefonní číslo jako další ověření.
+    V zařízení se systémem iOS klepnutím na účet, který chcete obnovit, otevřete celé zobrazení účtu.
 
-    ![Microsoft Authenticator aplikaci, která vám umožní zadat přihlašovací údaje](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+    ![Aplikace Microsoft Authenticator, kde se zobrazují dostupné účty s příslušnými šipkami rozevíracího seznamu](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+
+2. Přihlaste se a obnovte účet. Na zařízení s Androidem vyberte **Přihlásit se a obnovte**.
+
+    ![Microsoft Authenticator aplikaci pro zadání přihlašovacích údajů v Androidu](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+
+    Na zařízení se systémem iOS klepněte na dlaždici účtu, kterou chcete obnovit, a potom klepněte na možnost přihlášení a obnovení. Pak zadejte své heslo a potvrďte svou e-mailovou adresu nebo telefonní číslo jako další ověření. et.
+
+    ![Microsoft Authenticator aplikaci pro zadání přihlašovacích údajů v iOS](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
 
 ### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>Poskytnutí dodatečného ověření pro pracovní nebo školní účty
 
-1. Na obrazovce **účty** aplikace Microsoft Authenticator vyberte šipku rozevíracího seznamu vedle účtu, který chcete obnovit.
+1. Přihlaste se a obnovte účet. Na zařízení s Androidem vyberte **Přihlásit se a obnovte**.
 
-    ![Aplikace Microsoft Authenticator, kde se zobrazují dostupné účty s příslušnými šipkami rozevíracího seznamu](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
+    ![Microsoft Authenticator aplikaci obnovit pracovní nebo školní účet v Androidu](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
 
-2. Vyberte možnost **skenovat kód QR pro obnovení**a pak NASKENUJTE kód QR.
+    Na zařízení se systémem iOS klepněte na účet, který chcete obnovit, a otevřete zobrazení celé obrazovky tohoto účtu.
 
-    ![Microsoft Authenticator aplikaci, která vám umožní kontrolovat kód QR](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+    ![Microsoft Authenticator aplikaci obnovit pracovní nebo školní účet v iOS](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
+
+2. K obnovení účtu můžete použít kód QR. Vyberte možnost **skenovat kód QR pro obnovení**a pak NASKENUJTE kód QR.
+
+    V Androidu:
+
+    ![Microsoft Authenticator aplikaci v Androidu, která vám umožní naskenovat kód QR](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+
+    V systému iOS:
+
+    ![Microsoft Authenticator aplikaci v iOS, která vám umožní kontrolovat kód QR](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
 
     >[!NOTE]
     >Další informace o kódech QR a o tom, jak ho získat, najdete v tématu Začínáme [s aplikací Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) nebo [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)na základě toho, jestli váš správce zapnul bezpečnostní údaje.
@@ -106,19 +124,19 @@ U osobních účtů Microsoft můžete svou identitu prokázat zadáním hesla s
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>Řešení problémů se zálohováním a obnovením
 
-K dispozici je několik důvodů, proč vaše zálohování nemusí být k dispozici:
+K dispozici je několik důvodů, proč vaše zálohování nemusí být k dispozici.
 
-- **Mění se operační systémy.** Vaše záloha je uložená v iCloud pro iOS a v poskytovateli cloudového úložiště Microsoftu pro Android. To znamená, že zálohování není k dispozici, Pokud přepínáte mezi zařízeními s Androidem a iOS. Pokud tento přepínač provedete, musíte ručně znovu vytvořit účty v rámci aplikace Microsoft Authenticator.
+- **Změna operačních systémů**: vaše záloha je uložená v iCloud pro iOS a v poskytovateli cloudového úložiště Microsoftu pro Android. To znamená, že zálohování není k dispozici, Pokud přepínáte mezi zařízeními s Androidem a iOS. Pokud tento přepínač provedete, musíte ručně znovu vytvořit účty v rámci aplikace Microsoft Authenticator.
 
-- **Problémy se sítí.** Pokud se setkáváte s problémy souvisejícími se sítí, ujistěte se, že jste připojení k síti a správně jste přihlášení k vašemu účtu.
+- **Problémy se sítí**: Pokud máte problémy související se sítí, ujistěte se, že jste připojení k síti a že jste se k účtu přihlásili správně.
 
-- **Problémy s účtem.** Pokud se setkáváte s problémy související s účtem, ujistěte se, že jste správně přihlášeni ke svému účtu. Pro iOS to znamená, že musíte být přihlášeni k iCloud pomocí stejného účtu AppleID jako iPhone.
+- **Problémy s účty**: Pokud dochází k problémům souvisejícím s účtem, ujistěte se, že jste se k účtu přihlásili správně. Pro iOS to znamená, že musíte být přihlášeni k iCloud pomocí stejného účtu AppleID jako iPhone.
 
-- **Náhodné odstranění.** Je možné, že jste odstranili účet zálohování z předchozího zařízení nebo spravujete svůj účet cloudového úložiště. V této situaci musíte účet ručně znovu vytvořit v rámci aplikace.
+- **Náhodné odstranění**: je možné, že jste odstranili účet pro zálohování z předchozího zařízení nebo při správě účtu cloudového úložiště. V této situaci musíte účet ručně znovu vytvořit v rámci aplikace.
 
-- **Existující účty Microsoft Authenticator.** Pokud jste už v aplikaci Microsoft Authenticator nastavili účty, aplikace nebude moct obnovit vaše zálohované účty. Prevence obnovení pomáhá zajistit, aby se podrobnosti o účtu nepsaly aktuálními informacemi. V této situaci musíte před obnovením zálohy z existujících účtů, které jste nastavili v ověřovací aplikaci, odebrat všechny informace o stávajícím účtu.
+- **Existující účty Microsoft Authenticator**: Pokud jste už v aplikaci Microsoft Authenticator nastavili účty, aplikace nebude moct obnovit vaše zálohované účty. Prevence obnovení pomáhá zajistit, aby se podrobnosti o účtu nepsaly aktuálními informacemi. V této situaci musíte před obnovením zálohy z existujících účtů, které jste nastavili v ověřovací aplikaci, odebrat všechny informace o stávajícím účtu.
 
-- **Záloha je zastaralá.** Pokud jsou informace o zálohování zastaralé, může být požádáno o aktualizaci informací opětovným přihlášením k účtu Microsoft Recovery. Váš účet pro obnovení je osobní účet Microsoft původně jste použili k uložení zálohy. Pokud se vyžaduje přihlášení, zobrazí se v nabídce nebo na panelu akcí červená tečka. Po výběru červené tečky se zobrazí výzva, abyste se znovu přihlásili a aktualizovali vaše informace.
+- **Záloha je zastaralá**: Pokud jsou informace o zálohování zastaralé, možná budete požádáni o aktualizaci informací opětovným přihlášením k účtu Microsoft Recovery. Váš účet pro obnovení je osobní účet Microsoft původně jste použili k uložení zálohy. Pokud se vyžaduje přihlášení, zobrazí se v nabídce nebo na panelu akcí červená tečka nebo se zobrazí výzva, abyste se přihlásili k dokončení obnovení ze zálohy. Po výběru ikony se zobrazí výzva, abyste se znovu přihlásili a aktualizovali vaše informace.
 
 ## <a name="next-steps"></a>Další kroky
 

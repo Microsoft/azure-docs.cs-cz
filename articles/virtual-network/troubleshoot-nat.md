@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/02/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 185556e3045cb1a879bc256f4f2932549de71cd8
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: d56cd3b3d286d69a51d8cc14eb8020343cf7295a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274939"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302980"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Řešení potíží s připojením služby Azure Virtual Network NAT
 
@@ -44,7 +44,7 @@ Jeden [prostředek brány NAT](nat-gateway-resource.md) podporuje 64 000 až 1 0
 #### <a name="steps"></a>Kroky:
 
 1. Prozkoumejte, jak vaše aplikace vytváří odchozí připojení (například revize kódu nebo zachycení paketů). 
-2. Určete, zda má tato aktivita očekávané chování nebo zda se aplikace nechová.  Využijte metriky v Azure Monitor k odůvodnění vašich zjištění.
+2. Určete, zda má tato aktivita očekávané chování nebo zda se aplikace nechová.  Využijte [metriky](nat-metrics.md) v Azure monitor k odůvodnění vašich zjištění.
 3. Vyhodnotí, zda jsou následovány příslušné vzory.
 4. Vyhodnoťte, jestli se má vyčerpání portů SNAT zmírnit pomocí dalších IP adres přiřazených k prostředku brány NAT.
 
@@ -83,3 +83,4 @@ Následující tabulka slouží jako výchozí bod, ve kterém se nástroje pou�
 
 - Informace o [Virtual Network NAT](nat-overview.md)
 - Další informace o [prostředku brány NAT](nat-gateway-resource.md)
+- Seznamte [se s metrikami a upozorněními pro prostředky brány NAT](nat-metrics.md).

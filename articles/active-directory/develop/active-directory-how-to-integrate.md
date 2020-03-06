@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161218"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300108"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 
@@ -38,13 +38,13 @@ Existuje několik způsobů, jak se vaše aplikace integruje s Azure AD. Využij
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Vyhledat uživatele, spravovat zřizování uživatelů a řídit přístup k vaší aplikaci
 
-**Vyhledejte uživatele v adresáři.**  Pomocí Graph API můžete uživatelům pomáhat při hledání a vyhledávání dalších uživatelů v jejich organizaci při pozvání k ostatním uživatelům nebo pro udělení přístupu a nemusíte jim zadávat e-mailové adresy. Uživatelé můžou procházet pomocí známého rozhraní stylu adresáře, včetně zobrazení podrobností o organizační hierarchii. Přečtěte si další informace o [Graph API](active-directory-graph-api.md).
+**Vyhledejte uživatele v adresáři.**  Pomocí rozhraní Microsoft Graph API můžete uživatelům pomáhat vyhledávat a vyhledávat ostatní lidi v jejich organizaci při pozvání k ostatním uživatelům nebo pro udělení přístupu a nemusíte jim zadávat e-mailové adresy. Uživatelé můžou procházet pomocí známého rozhraní stylu adresáře, včetně zobrazení podrobností o organizační hierarchii. Přečtěte si další informace o [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/overview).
 
-**Opětovné použití skupin a distribučních seznamů služby Active Directory, které už váš zákazník spravuje**  Azure AD obsahuje skupiny, které váš zákazník už používá k distribuci e-mailů a správě přístupu. Pomocí Graph API znovu použijte tyto skupiny a nemusíte zákazníka vytvářet a spravovat samostatnou sadu skupin ve vaší aplikaci. Do své aplikace můžete také odeslat informace o skupině v tokenech přihlašování. Přečtěte si další informace o [Graph API](active-directory-graph-api.md).
+**Opětovné použití skupin a distribučních seznamů služby Active Directory, které už váš zákazník spravuje**  Azure AD obsahuje skupiny, které váš zákazník už používá k distribuci e-mailů a správě přístupu. Pomocí rozhraní Microsoft Graph API znovu použijte tyto skupiny a nemusíte od zákazníka vytvářet a spravovat samostatnou sadu skupin ve vaší aplikaci. Do své aplikace můžete také odeslat informace o skupině v tokenech přihlašování. Přečtěte si další informace o [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/overview).
 
-**Pomocí Azure AD můžete řídit, kdo má přístup k vaší aplikaci.**  Správci a vlastníci aplikací v Azure AD můžou přiřazovat přístup k aplikacím pro konkrétní uživatele a skupiny. Pomocí Graph API můžete tento seznam přečíst a použít ho k řízení zřizování a rušení zřizování prostředků a přístupu v rámci aplikace.
+**Pomocí Azure AD můžete řídit, kdo má přístup k vaší aplikaci.**  Správci a vlastníci aplikací v Azure AD můžou přiřazovat přístup k aplikacím pro konkrétní uživatele a skupiny. Pomocí rozhraní Microsoft Graph API si můžete tento seznam přečíst a použít ho k řízení zřizování a rušení zřizování prostředků a přístupu v rámci aplikace.
 
-**Použijte Azure AD pro role založené Access Control.**  Správci a vlastníci aplikací můžou přiřadit uživatele a skupiny rolím, které definujete při registraci aplikace ve službě Azure AD. Informace o roli se odesílají do vaší aplikace v tokenech přihlášení a dají se také číst pomocí Graph API. Přečtěte si další informace o [použití Azure AD k autorizaci](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
+**Použijte Azure AD pro role založené Access Control.**  Správci a vlastníci aplikací můžou přiřadit uživatele a skupiny rolím, které definujete při registraci aplikace ve službě Azure AD. Informace o roli se odesílají do vaší aplikace v tokenech přihlášení a dají se také číst pomocí rozhraní Microsoft Graph API. Přečtěte si další informace o [použití Azure AD k autorizaci](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Získání přístupu k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším datům
 

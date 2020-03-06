@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122003"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300481"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Node. js
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace Node. js, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [node_redis](https://github.com/mranney/node_redis), kterou můžete nainstalovat pomocí příkazového `npm install redis`. 
@@ -55,7 +55,7 @@ Nevytvářejte nová připojení pro každou operaci v kódu. Raději co nejvíc
 
 ## <a name="create-a-new-nodejs-app"></a>Vytvoření nové aplikace Node.js
 
-Vytvořte nový soubor skriptu s názvem *redistest.js*.
+Vytvořte nový soubor skriptu s názvem *redistest.js*. Pro instalaci požadovaných balíčků použijte `npm install redis bluebird` příkazu.
 
 Přidejte následující příklad JavaScriptu do souboru. Tento kód ukazuje, jak se připojit k instanci služby Azure cache for Redis pomocí názvu hostitele mezipaměti a proměnných prostředí klíče. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. Pro další příklady použití Redis pomocí klienta [node_redis](https://github.com/mranney/node_redis) se podívejte na [https://redis.js.org/](https://redis.js.org/).
 
@@ -63,6 +63,7 @@ Přidejte následující příklad JavaScriptu do souboru. Tento kód ukazuje, j
 var redis = require("redis");
 var bluebird = require("bluebird");
 
+// Convert Redis client API to use promises, to make it usable with async/await syntax
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 

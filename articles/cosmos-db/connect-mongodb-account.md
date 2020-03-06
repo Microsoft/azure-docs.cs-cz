@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872158"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373856"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB k Azure Cosmos DB
-Naučte se připojit aplikaci MongoDB k Azure Cosmos DB pomocí připojovacího řetězce MongoDB. Pak můžete použít databázi Azure Cosmos jako úložiště dat vaší aplikace MongoDB. 
+Zjistěte, jak připojit aplikaci MongoDB ke službě Azure Cosmos DB pomocí připojovacího řetězce MongoDB. Pak můžete jako úložiště dat pro aplikaci MongoDB použít databázi Azure Cosmos DB. 
 
-V tomto kurzu najdete dva způsoby, jak načíst informace o připojovacím řetězci:
+Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetězci:
 
 - [Metoda rychlý Start](#QuickstartConnection)pro použití s ovladači .NET, Node. js, MongoDB Shell, Java a Python
 - [Metoda vlastního připojovacího řetězce](#GetCustomConnection)pro použití s jinými ovladači

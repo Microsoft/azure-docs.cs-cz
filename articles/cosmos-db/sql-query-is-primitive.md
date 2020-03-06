@@ -1,18 +1,18 @@
 ---
-title: IS_PRIMITIVE v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o IS_PRIMITIVE funkcí SQL systému v Azure Cosmos DB.
+title: IS_PRIMITIVE v dotazovacím jazyce Azure Cosmos DB
+description: Přečtěte si o funkcích systému SQL IS_PRIMITIVE v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 960c6cbe6b60ad477f630b14ce0953601e71c34e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 04c8e41f1a431b329f2093851e4430e69ab6aee3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349805"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303779"
 ---
 # <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE (Azure Cosmos DB)
  Vrátí logickou hodnotu označující, zda je typ z určeného výrazu jednoduchého typu (string, Boolean, číselné nebo null).  
@@ -47,11 +47,15 @@ SELECT
            IS_PRIMITIVE({prop: "value"}.prop2) AS isPrim7  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"isPrim1": true, "isPrim2": true, "isPrim3": true, "isPrim4": true, "isPrim5": false, "isPrim6": false, "isPrim7": false}]  
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

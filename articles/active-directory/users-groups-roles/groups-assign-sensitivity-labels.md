@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656938"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329728"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Přiřazení popisků citlivosti skupinám Office 365 v Azure Active Directory (Preview)
 
-Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Office 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Tato funkce je aktuálně ve verzi Public Preview. Další informace o podpoře aplikací Office 365 najdete v článku [Podpora sady office 365 pro popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
+Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Office 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Tato funkce je aktuálně ve verzi Public Preview. Další informace o podpoře aplikací Office 365 najdete v článku [Podpora sady office 365 pro popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Pokud chcete tuto funkci nakonfigurovat, musí být ve vaší organizaci Azure AD aspoň jedna licence Active Azure Active Directory Premium P1.

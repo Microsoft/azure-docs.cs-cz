@@ -8,21 +8,18 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212504"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298084"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
  Aby bylo možné automatizovat bezobslužné úlohy PowerShellu, instanční objekt musí mít oprávnění **Správce serveru** na spravovaném serveru Analysis Services. Tento článek popisuje, jak přidat instanční objekt do role Správci serveru na serveru Azure jako. Můžete to provést pomocí SQL Server Management Studio nebo šablony Správce prostředků.
- 
-> [!NOTE]
-> U operací se serverem, které používají rutiny Azure PowerShell, musí instanční objekt taky patřit do role **vlastníka** pro prostředek v [Access Control na základě rolí Azure (RBAC)](../role-based-access-control/overview.md). 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Před dokončením této úlohy musíte mít v Azure Active Directory zaregistrovaný instanční objekt.
 
 [Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
@@ -42,7 +39,7 @@ Správce serveru můžete nakonfigurovat pomocí SQL Server Management Studio (S
     
     ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
-## <a name="using-a-resource-manager-template"></a>Použití šablony Správce prostředků
+## <a name="using-a-resource-manager-template"></a>Použití šablony Resource Manageru
 
 Správce serveru můžete také nakonfigurovat tak, že nasadíte Analysis Services Server pomocí šablony Azure Resource Manager. Identita, která spouští nasazení, musí patřit do role **přispěvatele** pro prostředek v [Access Control na základě rolí Azure (RBAC)](../role-based-access-control/overview.md).
 
@@ -96,6 +93,24 @@ Následující Správce prostředků šablona nasadí Server Analysis Services s
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>Použití spravovaných identit
+
+Spravovaná identita se dá přidat taky do seznamu Analysis Services Admins. Můžete mít například [aplikaci logiky se spravovanou identitou přiřazenou systémem](../logic-apps/create-managed-service-identity.md)a chcete dát IT možnost spravovat Server Analysis Services.
+
+Ve většině částí Azure Portal a rozhraní API se spravované identity identifikují pomocí jejich ID instančního objektu. Analysis Services ale vyžaduje, aby se identifikovali pomocí svého ID klienta. Pokud chcete získat ID klienta pro instanční objekt, můžete použít rozhraní příkazového řádku Azure:
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+Případně můžete použít PowerShell:
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+Pak můžete pomocí tohoto ID klienta v kombinaci s ID tenanta přidat spravovanou identitu do seznamu Analysis Services Admins, jak je popsáno výše.
 
 ## <a name="related-information"></a>Související informace
 

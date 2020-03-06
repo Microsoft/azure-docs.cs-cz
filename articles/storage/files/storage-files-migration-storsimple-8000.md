@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250949"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330306"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
-Série StorSimple 8000 představuje dvě samostatné SKU a je možné migrovat data z jedné z těchto SKU do Azure File Syncho prostředí. Tento článek popisuje migraci obou zařízení do Azure File Sync a poskytuje nezbytné kroky pro znalosti a migrace na pozadí, aby vaše migrace Azure File Sync úspěch.
+Série StorSimple 8000 je představována buď na úrovni 8100, 8600 nebo na místním zařízení a na součásti cloudové služby. Data z některého z těchto zařízení je možné migrovat do Azure File Syncho prostředí. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync.
+
+## <a name="storsimple"></a>StorSimple
+
+StorSimple je ukončený produkt společnosti Microsoft. Rozšířená podpora pro tento produkt a jeho cloudová služba vyprší od prosince 31 2022. Je důležité zahájit plánování migrace z StorSimpleu hned.
+
+Azure File Sync je výchozí a strategická dlouhodobá služba Azure, na kterou je možné StorSimple zařízení migrovat.
+
+> [!IMPORTANT]
+> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFilesMigration@microsoft. com pro vlastní plán migrace a také pomoc při migraci.
 
 ## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 

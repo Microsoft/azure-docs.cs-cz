@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978471"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331038"
 ---
 # <a name="what-is-the-translator-text-api"></a>Co je Translator Text API?
 
 Službu Translator Text API můžete snadno integrovat do svých aplikací, webů, nástrojů a služeb. Umožní vám přidat vícejazyčná uživatelská prostředí ve [více než 60 jazycích](languages.md) a můžete ji použít k překladu jazyka z textu do textu na jakékoli hardwarové platformě s jakýmkoli operačním systémem.
 
-Translator Text API je součástí kolekce [rozhraní API služeb Azure Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) obsahující algoritmy strojového učení a umělé inteligence v cloudu a je připravená k použití ve vašich vývojových projektech.
+Translator Text API je součástí kolekce [rozhraní API služeb Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) obsahující algoritmy strojového učení a umělé inteligence v cloudu a je připravená k použití ve vašich vývojových projektech.
 
 ## <a name="about-microsoft-translator"></a>Informace o službě Microsoft Translator
 

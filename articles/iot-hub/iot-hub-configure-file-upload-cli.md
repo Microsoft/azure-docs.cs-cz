@@ -1,6 +1,6 @@
 ---
-title: Konfigurace odesílání souborů do IoT Hubu pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Jak nakonfigurovat soubor nahraje do služby Azure IoT Hub pomocí Azure CLI pro různé platformy.
+title: Konfigurace nahrávání souborů pro IoT Hub pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Jak nakonfigurovat nahrávání souborů do Azure IoT Hub pomocí Azure CLI pro různé platformy.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,34 +8,34 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: fe6ce23b9e87235521739b7808712a9d541dabf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734911"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302521"
 ---
-# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurace centra IoT nahrávání souborů pomocí Azure CLI
+# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurace nahrávání souborů IoT Hub pomocí Azure CLI
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-K [nahrávání souborů ze zařízení](iot-hub-devguide-file-upload.md), je třeba nejprve přidružit účet Azure Storage pomocí služby IoT hub. Můžete použít existující účet úložiště nebo vytvořte novou.
+Pokud chcete [nahrávat soubory ze zařízení](iot-hub-devguide-file-upload.md), musíte nejdřív přidružit účet Azure Storage ke službě IoT Hub. Můžete použít existující účet úložiště nebo vytvořit nový.
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.
+* Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
 
-* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* Služby Azure IoT hub. Pokud nemáte k dispozici služby IoT hub, můžete použít [ `az iot hub create` příkaz](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) nějaké nebo [vytvoření IoT hubu pomocí portálu](iot-hub-create-through-portal.md).
+* Azure IoT Hub. Pokud Centrum IoT nemáte, můžete použít [příkaz`az iot hub create`](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) a vytvořit si ho nebo [vytvořit centrum IoT pomocí portálu](iot-hub-create-through-portal.md).
 
-* Účet služby Azure Storage. Pokud nemáte účet Azure Storage, můžete použít [Azure CLI – Správa účtů úložiště](../storage/common/storage-azure-cli.md#manage-storage-accounts) a vytvořte si ho pomocí portálu [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md).
+* Účet služby Azure Storage. Pokud účet Azure Storage nemáte, můžete ho vytvořit pomocí rozhraní příkazového řádku Azure. Další informace najdete v článku o [vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md).
 
-## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a v nastavení účtu Azure
+## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a nastavte svůj účet Azure.
 
 Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
-1. Na příkazovém řádku, spusťte [přihlašovací příkaz](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
+1. Na příkazovém řádku spusťte [příkaz pro přihlášení](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
 
     ```azurecli
     az login
@@ -43,40 +43,40 @@ Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
     Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému účtu Azure ve webovém prohlížeči.
 
-2. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujících [příkazu zobrazte výpis účtů Azure](https://docs.microsoft.com/cli/azure/account) k dispozici pro použití:
+2. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího [příkazu můžete zobrazit seznam účtů Azure](https://docs.microsoft.com/cli/azure/account) , které jsou k dispozici pro použití:
 
     ```azurecli
     az account list
     ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření služby IoT hub. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
+    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření centra IoT. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
     ```
 
-## <a name="retrieve-your-storage-account-details"></a>Načíst podrobnosti o vašem účtu úložiště
+## <a name="retrieve-your-storage-account-details"></a>Načtení podrobností účtu úložiště
 
-Následující postup předpokládá, že jste vytvořili pomocí účtu úložiště **Resource Manageru** model nasazení a ne **Classic** modelu nasazení.
+Následující postup předpokládá, že jste vytvořili účet úložiště pomocí modelu nasazení **Správce prostředků** , a ne modelu nasazení **Classic** .
 
-Pokud chcete nakonfigurovat nahrávání souborů ze zařízení, potřebujete připojovací řetězec pro účet úložiště Azure. Účet úložiště musí být ve stejném předplatném jako služby IoT hub. Potřebujete také název kontejneru objektů blob v účtu úložiště. Použijte následující příkaz k načtení klíčů účtů úložiště:
+Ke konfiguraci nahrávání souborů z vašich zařízení potřebujete připojovací řetězec pro účet úložiště Azure. Účet úložiště musí být ve stejném předplatném jako služba IoT Hub. Také potřebujete název kontejneru objektů BLOB v účtu úložiště. Pomocí následujícího příkazu načtěte klíče účtu úložiště:
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} \
   --resource-group {your storage account resource group}
 ```
 
-Poznamenejte si, **connectionString** hodnotu. Budete ho potřebovat v následujících krocích.
+Poznamenejte si hodnotu **připojovacího řetězce** . Budete ho potřebovat v následujících krocích.
 
-Můžete použít existující kontejner objektů blob pro vaše nahrávání souborů, nebo vytvořte nové:
+Můžete použít existující kontejner objektů BLOB pro nahrání souboru nebo vytvořit nový.
 
-* Pro zobrazení seznamu existující kontejnery objektů blob v účtu úložiště, použijte následující příkaz:
+* Pokud chcete zobrazit seznam existujících kontejnerů objektů BLOB v účtu úložiště, použijte následující příkaz:
 
     ```azurecli
     az storage container list --connection-string "{your storage account connection string}"
     ```
 
-* Chcete-li vytvořit kontejner objektů blob v účtu úložiště, použijte následující příkaz:
+* Pokud chcete ve svém účtu úložiště vytvořit kontejner objektů blob, použijte následující příkaz:
 
     ```azurecli
     az storage container create --name {container name} \
@@ -85,21 +85,21 @@ Můžete použít existující kontejner objektů blob pro vaše nahrávání so
 
 ## <a name="file-upload"></a>Nahrání souboru
 
-Teď můžete nakonfigurovat službu IoT hub povolit možnost [nahrání souborů do služby IoT hub](iot-hub-devguide-file-upload.md) pomocí podrobnosti o vašem účtu úložiště.
+Teď můžete nakonfigurovat centrum IoT, aby bylo možné [nahrávat soubory do služby IoT Hub](iot-hub-devguide-file-upload.md) s využitím podrobností účtu úložiště.
 
-Následující konfigurace vyžaduje následující hodnoty:
+Konfigurace vyžaduje následující hodnoty:
 
-* **Kontejner úložiště**: Kontejner objektů blob v účtu služby Azure storage v aktuálním předplatném Azure pro přidružení k službě IoT hub. Který jste získali informace o účtu úložiště potřebné v předchozí části. IoT Hub automaticky generuje identifikátorů URI SAS s oprávněním pro zápis do tohoto kontejneru objektů blob pro zařízení se má použít při jejich nahrávání souborů.
+* **Kontejner úložiště**: kontejner objektů BLOB v účtu služby Azure Storage v aktuálním předplatném Azure, který chcete přidružit ke službě IoT Hub. V předchozí části jste načetli potřebné informace o účtu úložiště. IoT Hub automaticky generuje identifikátory URI SAS s oprávněním k zápisu do tohoto kontejneru objektů blob, aby bylo možné zařízení použít při nahrávání souborů.
 
-* **Přijímat oznámení o nahraných souborech**: Povolí nebo zakáže oznámení o nahrávání souborů.
+* **Dostávat oznámení pro nahrané soubory**: povolení nebo zakázání oznámení o nahrávání souborů
 
-* **HODNOTA TTL SAS**: Toto nastavení je, time-to-live identifikátorů URI SAS, které vrátí zařízení služby IoT Hub. Ve výchozím nastavení jedna hodina.
+* **SAS TTL**: Toto nastavení představuje čas do živého vysílání identifikátorů URI SAS vrácených do zařízení IoT Hub. Ve výchozím nastavení nastavte na jednu hodinu.
 
-* **Soubor oznámení, nastavení výchozí hodnota TTL**: Oznámení time-to-live souboru nahrát, než vyprší jejich platnost. Ve výchozím nastavení má jeden den.
+* **Nastavení oznámení o souboru výchozí hodnota TTL**: čas do živého oznámení o nahrání souboru před vypršením jeho platnosti. Ve výchozím nastavení nastaveno na jeden den.
 
-* **Soubor oznámení maximální počet doručení**: Počet, kolikrát se IoT Hub pokusí doručit do souboru odeslat oznámení. Ve výchozím nastavení má 10.
+* **Maximální počet doručení oznámení souborů**: počet, kolikrát se IoT Hub pokusí doručovat oznámení o nahrání souboru. Ve výchozím nastavení nastavte na hodnotu 10.
 
-Pomocí následujících příkazů Azure CLI ke konfiguraci nastavení nahrávání souborů ve službě IoT hub:
+Pomocí následujících příkazů rozhraní příkazového řádku Azure nakonfigurujte nastavení nahrávání souborů ve službě IoT Hub:
 
 <!--Robinsh this is out of date, add cloud powershell -->
 
@@ -125,24 +125,24 @@ az iot hub update --name {your iot hub name} \
   --set properties.messagingEndpoints.fileNotifications.ttlAsIso8601=PT1H0M0S
 ```
 
-Konfigurace odesílání souborů můžete zkontrolovat ve službě IoT hub pomocí následujícího příkazu:
+Konfiguraci nahrávání souborů ve službě IoT Hub můžete zkontrolovat pomocí tohoto příkazu:
 
 ```azurecli
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech nahrávání souborů služby IoT Hub najdete v tématu [nahrávání souborů ze zařízení](iot-hub-devguide-file-upload.md).
+Další informace o možnostech nahrávání souborů IoT Hub najdete v tématu [nahrání souborů ze zařízení](iot-hub-devguide-file-upload.md).
 
-Další informace o správě služby Azure IoT Hub na následujících odkazech:
+Pokud chcete získat další informace o správě IoT Hub Azure, postupujte podle těchto odkazů:
 
 * [Hromadná správa zařízení IoT](iot-hub-bulk-identity-mgmt.md)
-* [Metriky služby IoT Hub](iot-hub-metrics.md)
+* [IoT Hub metriky](iot-hub-metrics.md)
 * [Monitorování operací](iot-hub-operations-monitoring.md)
 
-Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
+Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md)
-* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
-* [Zabezpečení řešení IoT od základů nahoru](../iot-fundamentals/iot-security-ground-up.md)
+* [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
+* [Nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Zabezpečení řešení IoT od základů](../iot-fundamentals/iot-security-ground-up.md)

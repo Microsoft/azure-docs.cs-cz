@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c745a37805862b77e7893788d9d089c8447ae465
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819885"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302861"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Přisuzování využití ze strany zákazníků partnerům Azure
 
@@ -87,7 +87,7 @@ Prostředek se musí přidat jenom v souboru **mainTemplate. JSON** nebo **azure
 
 ## <a name="use-the-resource-manager-apis"></a>Použití rozhraní API pro Správce prostředků
 
-V některých případech můžete chtít volat přímo proti Správce prostředků rozhraní REST API pro nasazení služeb Azure. [Azure podporuje několik sad SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) , aby tato volání mohla povolit. Můžete použít jednu ze sad SDK nebo volat rozhraní REST API přímo k nasazení prostředků.
+V některých případech můžete chtít volat přímo proti Správce prostředků rozhraní REST API pro nasazení služeb Azure. [Azure podporuje několik sad SDK](https://docs.microsoft.com/azure/?pivot=sdkstools) , aby tato volání mohla povolit. Můžete použít jednu ze sad SDK nebo volat rozhraní REST API přímo k nasazení prostředků.
 
 Pokud používáte šablonu Správce prostředků, měli byste označit své řešení podle pokynů popsaných výše. Pokud nepoužíváte šablonu Správce prostředků a provádíte Přímá volání rozhraní API, můžete si i nadále označit nasazení, aby bylo možné přidružit využití prostředků Azure.
 
@@ -187,7 +187,7 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
 
 1. Pokud chcete zaregistrovat více než jeden identifikátor GUID, vyberte znovu **Přidat identifikátor GUID sledování** . Na stránce se zobrazí další pole.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 
 ## <a name="verify-the-guid-deployment"></a>Ověření nasazení identifikátoru GUID
@@ -296,7 +296,7 @@ Můžete také získat technické pokyny od Microsoft Partner Technical konzulta
     * Dokončete/zkontrolujte kontaktní údaje.
     * Informace o konzultacích můžou být předem vyplněné nebo si můžete vybrat z rozevíracích seznamu.
     * Zadejte název a popis problému (uveďte co nejvíc podrobností).
-1. Klikněte na Odeslat.
+1. Klikněte na Submit (Odeslat).
 
 Zobrazte si podrobné pokyny s snímky obrazovky na [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
 

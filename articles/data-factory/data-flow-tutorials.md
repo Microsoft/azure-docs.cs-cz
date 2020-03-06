@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/16/2020
-ms.openlocfilehash: 1d0264a0b7ac4e97d9a2811ba61ab64fcedd6fb9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/04/2020
+ms.openlocfilehash: e87e5ec14f4475218cff4338a37d6bd6fb7fbb3a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587545"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403049"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -19,7 +19,7 @@ Níže je uveden seznam videí s daty o kurzu mapování toku dat vytvořených 
 
 Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce v aktuálním Azure Data Factory uživatelského prostředí přidané nebo jiné funkce.
 
-## <a name="getting-started"></a>Začínáme
+## <a name="getting-started"></a>začínáme
 
 [Začínáme s mapováním toků dat v Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
 
@@ -144,3 +144,5 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Výrazy pro datum a čas](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
 
 [Rozdělení polí a příkazů Case](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
+
+[Zábava s interpolací řetězců a parametry](https://youtu.be/hb3-cn2CMgM)

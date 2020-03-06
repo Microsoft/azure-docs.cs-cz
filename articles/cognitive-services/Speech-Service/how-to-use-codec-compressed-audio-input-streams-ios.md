@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5d65ac83fc8a41008971108c5b370c1d0416113b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805854"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331515"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Postupy: použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v iOS
 
 Rozhraní API pro **komprimovaný zvuk vstupního streamu** sady Speech SDK poskytuje způsob, jak streamovat komprimovaný zvuk do služby pro rozpoznávání řeči pomocí datového proudu Pull nebo push.
 
 > [!IMPORTANT]
-> Pro streamování komprimovaného zvuku v iOS se vyžaduje sada Speech SDK verze 1.7.0 nebo novější. Podporuje se také pro [ C++systémy, C#a Java v systémech Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md) a [Java v Androidu.](how-to-use-codec-compressed-audio-input-streams-android.md)
+> Pro streamování komprimovaného zvuku v iOS se vyžaduje sada Speech SDK verze 1.7.0 nebo novější. Podporuje se také pro [ C++systémy, C#a Java v systémech Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)](how-to-use-codec-compressed-audio-input-streams.md) a [Java v Androidu.](how-to-use-codec-compressed-audio-input-streams-android.md)
 
 Informace o WAV/PCM najdete v dokumentaci k hlavní Speech. Mimo zvuk WAV/PCM jsou podporovány následující formáty komprimované vstupní hodnoty kodeku:
 
@@ -50,7 +50,7 @@ Použijte následující nastavení v projektu Xcode k tomuto účelu:
 1. Upravte cesty k architekturám v _nastavení projektu_.
    1. Na kartě **Obecné** pod hlavičkou **vložená binární soubory** přidejte knihovnu SDK jako rozhraní: **přidejte vložené binární soubory** > **Přidat další...** > přejděte do adresáře, který jste zvolili, a vyberte obě architektury.
    1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
-1. Do části _Framework Search Paths_ (Cesty pro hledání rozhraní) pod nadpisem **Search Paths** (Cesty pro hledání) přidejte adresář `$(SRCROOT)/..`.
+1. Do části `$(SRCROOT)/..`Framework Search Paths _(Cesty pro hledání rozhraní) pod nadpisem_Search Paths **(Cesty pro hledání) přidejte adresář**.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
 

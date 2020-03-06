@@ -4,15 +4,15 @@ description: Přečtěte si, jak funkce systému SQL délka pole v Azure Cosmos 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9a8bf33befdd842a2979151fef3d54679ee03de1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871767"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303983"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
  Vrátí počet prvků výrazu určeném poli.  
@@ -40,12 +40,15 @@ ARRAY_LENGTH(<arr_expr>)
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"len": 3}]  
 ```  
   
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: d2f8603b659fe44f83b725a92fb7b73cfe34cf37
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 11d2f9788f41e259058af50a728b8b82eeb10131
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563210"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383887"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Windows vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) . Pro konverzaci s přepisem se podporuje jenom [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) . Pro jiný hlas použijte lineární pole Mic, která poskytují geometrii pole mikrofonu.
 
@@ -20,7 +20,7 @@ Tato příručka vyžaduje účet [Azure Cognitive Services](../get-started.md) 
 
 Zdrojový kód [ukázkové aplikace](https://aka.ms/sdsdk-download-JRE) je součástí sady Speech Devices SDK. Je také [k dispozici na GitHubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
@@ -74,7 +74,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.9.0</version>
+             <version>1.10.0</version>
         </dependency>
     </dependencies>
    ```

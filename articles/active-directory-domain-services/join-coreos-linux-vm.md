@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: ddf6c9238cabedfbdeeb8056864072edc543c342
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b97b542d11e405bab00519c68d2365dada6b6c7f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712615"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298866"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Připojení virtuálního počítače s CoreOS k spravované doméně Azure AD Domain Services
 
@@ -34,7 +34,7 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
     * V případě potřeby se v prvním kurzu [vytvoří a nakonfiguruje instance Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+* Uživatelský účet, který je součástí spravované domény Azure služba AD DS.
 
 ## <a name="create-and-connect-to-a-coreos-linux-vm"></a>Vytvoření virtuálního počítače se systémem CoreOS Linux a připojení k němu
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 V souboru *hosts* aktualizujte adresu *localhost* . V následujícím příkladu:
 
-* *aadds.contoso.com* je název domény DNS vaší spravované domény Azure služba AD DS.
+* *aaddscontoso.com* je název domény DNS vaší spravované domény Azure služba AD DS.
 * *CoreOS* je název hostitele vašeho virtuálního počítače s CoreOS, ke kterému se připojujete do spravované domény.
 
 Aktualizujte tyto názvy vlastními hodnotami:
 
 ```console
-127.0.0.1 coreos coreos.aadds.contoso.com
+127.0.0.1 coreos coreos.aaddscontoso.com
 ```
 
 Po dokončení uložte a zavřete soubor *hosts* pomocí příkazu `:wq` editoru.
@@ -95,15 +95,15 @@ Zadejte vlastní název spravované domény Azure služba AD DS pro následujíc
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = AADDS.CONTOSO.COM
+domains = AADDSCONTOSO.COM
 
-[domain/AADDS.CONTOSO.COM]
+[domain/AADDSCONTOSO.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
 
-ldap_uri = ldap://aadds.contoso.com
-ldap_search_base = dc=aadds.contoso,dc=com
+ldap_uri = ldap://aaddscontoso.com
+ldap_search_base = dc=aaddscontoso,dc=com
 ldap_schema = rfc2307bis
 ldap_sasl_mech = GSSAPI
 ldap_user_object_class = user
@@ -114,32 +114,32 @@ ldap_account_expire_policy = ad
 ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
-krb5_server = aadds.contoso.com
-krb5_realm = AADDS.CONTOSO.COM
+krb5_server = aaddscontoso.com
+krb5_realm = AADDSCONTOSO.COM
 ```
 
 ## <a name="join-the-vm-to-the-managed-domain"></a>Připojte virtuální počítač k spravované doméně.
 
 Po aktualizaci konfiguračního souboru SSSD se teď připojte k virtuálnímu počítači ke spravované doméně.
 
-1. Nejprve pomocí příkazu `adcli info` ověřte, zda se vám zobrazí informace o spravované doméně Azure služba AD DS. Následující příklad načte informace pro doménu *AADDS. CONTOSO.COM*. Zadejte vlastní název spravované domény Azure služba AD DS, a to velkými PÍSMENy:
+1. Nejprve pomocí příkazu `adcli info` ověřte, zda se vám zobrazí informace o spravované doméně Azure služba AD DS. Následující příklad načte informace pro doménu *AADDSCONTOSO.com*. Zadejte vlastní název spravované domény Azure služba AD DS, a to velkými PÍSMENy:
 
     ```console
-    sudo adcli info AADDS.CONTOSO.COM
+    sudo adcli info AADDSCONTOSO.COM
     ```
 
    Pokud příkaz `adcli info` nemůže najít spravovanou doménu služba AD DS Azure, přečtěte si následující postup řešení potíží:
 
-    * Ujistěte se, že je doména dosažitelná z virtuálního počítače. Zkuste `ping aadds.contoso.com`, abyste viděli, jestli se vrátí kladná odpověď.
+    * Ujistěte se, že je doména dosažitelná z virtuálního počítače. Zkuste `ping aaddscontoso.com`, abyste viděli, jestli se vrátí kladná odpověď.
     * Ověřte, že je virtuální počítač nasazený do stejné nebo partnerské virtuální sítě, ve které je dostupná doména spravovaná v Azure služba AD DS.
     * Ověřte, že se nastavení serveru DNS pro virtuální síť aktualizovala tak, aby odkazovala na řadiče domény spravované domény Azure služba AD DS.
 
-1. Nyní připojte virtuální počítač k spravované doméně Azure služba AD DS pomocí příkazu `adcli join`. Zadejte uživatele, který patří do skupiny *Správci řadičů domény AAD* . V případě potřeby [přidejte uživatelský účet do skupiny v Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Nyní připojte virtuální počítač k spravované doméně Azure služba AD DS pomocí příkazu `adcli join`. Zadejte uživatele, který je součástí spravované domény Azure služba AD DS. V případě potřeby [přidejte uživatelský účet do skupiny v Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Znovu, název spravované domény Azure služba AD DS musí být zadaný velkými PÍSMENy. V následujícím příkladu se k inicializaci protokolu Kerberos používá účet s názvem `contosoadmin@aadds.contoso.com`. Zadejte vlastní uživatelský účet, který je členem skupiny *AAD DC Administrators* .
+    Znovu, název spravované domény Azure služba AD DS musí být zadaný velkými PÍSMENy. V následujícím příkladu se k inicializaci protokolu Kerberos používá účet s názvem `contosoadmin@aaddscontoso.com`. Zadejte svůj vlastní uživatelský účet, který je součástí spravované domény Azure služba AD DS.
 
     ```console
-    sudo adcli join -D AADDS.CONTOSO.COM -U contosoadmin@AADDS.CONTOSO.COM -K /etc/krb5.keytab -H coreos.aadds.contoso.com -N coreos
+    sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos
     ```
 
     Příkaz `adcli join` nevrátí žádné informace, pokud se virtuální počítač úspěšně připojil ke spravované doméně Azure služba AD DS.
@@ -154,10 +154,10 @@ Po aktualizaci konfiguračního souboru SSSD se teď připojte k virtuálnímu p
 
 Pokud chcete ověřit, jestli se virtuální počítač úspěšně připojil ke spravované doméně Azure služba AD DS, spusťte nové připojení SSH pomocí účtu uživatele domény. Potvrďte, že byl vytvořen domovský adresář a že je použito členství ve skupině z domény.
 
-1. Vytvořte nové připojení SSH z konzoly. Pomocí příkazu `ssh -l`, jako je třeba `contosoadmin@aadds.contoso.com`, zadejte účet domény, který patří do spravované domény, a pak zadejte adresu vašeho virtuálního počítače, třeba *CoreOS.aadds.contoso.com*. Pokud používáte Azure Cloud Shell, použijte veřejnou IP adresu virtuálního počítače místo interního názvu DNS.
+1. Vytvořte nové připojení SSH z konzoly. Pomocí příkazu `ssh -l`, jako je třeba `contosoadmin@aaddscontoso.com`, zadejte účet domény, který patří do spravované domény, a pak zadejte adresu vašeho virtuálního počítače, třeba *CoreOS.aaddscontoso.com*. Pokud používáte Azure Cloud Shell, použijte veřejnou IP adresu virtuálního počítače místo interního názvu DNS.
 
     ```console
-    ssh -l contosoadmin@AADDS.CONTOSO.com coreos.aadds.contoso.com
+    ssh -l contosoadmin@AADDSCONTOSO.com coreos.aaddscontoso.com
     ```
 
 1. Nyní ověřte, zda jsou členství ve skupině správně řešena:

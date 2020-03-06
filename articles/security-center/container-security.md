@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 45ce8a808efc5b882c90f99875fdde661e292774
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205972"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303252"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpečení kontejneru v Security Center
 
@@ -37,6 +37,8 @@ Pokyny k použití těchto funkcí najdete v tématu [monitorování zabezpečen
 Pokud chcete monitorovat Azure Container Registry na bázi ARM, ujistěte se, že jste na úrovni Standard Security Center (viz [ceny](/azure/security-center/security-center-pricing)). Pak povolte volitelnou sadu registrů kontejnerů. Když se doručí nový obrázek, Security Center zkontroluje Image pomocí skeneru z špičkového dodavatele kontroly ohrožení zabezpečení, Qualys.
 
 Po nalezení problémů – podle Qualys nebo Security Center – na řídicím panelu Security Center se zobrazí oznámení. U každé chyby zabezpečení Security Center poskytuje užitečná doporučení spolu se klasifikací závažnosti a pokyny, jak problém vyřešit. Podrobnosti o doporučeních Security Center pro kontejnery najdete v [referenčním seznamu doporučení](recommendations-reference.md#recs-containers).
+
+Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v pořádku, Security Center ho označí jako takový. Security Center generuje doporučení zabezpečení pouze pro image, které mají problémy, které mají být vyřešeny. Tím, že se upozorní jenom na problémy, Security Center snižuje potenciální informativní výstrahy.
 
 ## <a name="environment-hardening"></a>Posílení zabezpečení prostředí
 
@@ -61,11 +63,11 @@ AKS poskytuje bezpečnostní mechanismy a přehled o stavech zabezpečení vaši
 
 Podrobnosti o relevantních doporučeních Security Center, která se můžou zobrazit pro tuto funkci, najdete v [části Container](recommendations-reference.md#recs-containers) referenční tabulky doporučení.
 
-## <a name="run-time-protection---real-time-threat-protection"></a>Ochrana za běhu – ochrana před hrozbami v reálném čase
+## <a name="run-time-protection---real-time-threat-detection"></a>Ochrana v době běhu – detekce hrozeb v reálném čase
 
-Security Center poskytuje ochranu před internetovými útoky v reálném čase pro vaše kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
+Security Center poskytuje detekci hrozeb v reálném čase pro vaše kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
 
-Zjistili jsme hrozby na úrovni hostitele a AKS clusteru. Úplné podrobnosti najdete v tématu [Ochrana před hrozbami pro kontejnery Azure](threat-protection.md#azure-containers).
+Zjistili jsme hrozby na úrovni hostitele a AKS clusteru. Úplné podrobnosti najdete v tématu [detekce hrozeb pro kontejnery Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
 
 
 ## <a name="container-security-faq"></a>Nejčastější dotazy týkající se zabezpečení kontejneru
@@ -73,16 +75,18 @@ Zjistili jsme hrozby na úrovni hostitele a AKS clusteru. Úplné podrobnosti na
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Jaké typy imagí mohou Azure Security Center prohledávat?
 Security Center prohledává image založené na operačním systému Linux, které poskytují přístup k prostředí. 
 
-Qualys skener nepodporuje image Super minimalist, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) , nebo Image Distroless, které obsahují jenom vaši aplikaci a její závislosti za běhu (bez správce balíčků, prostředí nebo operačního systému).
+Qualys skener nepodporuje image Super minimalist, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) , nebo Image Distroless, které obsahují jenom vaši aplikaci a její závislosti za běhu bez správce balíčků, prostředí nebo operačního systému.
 
-### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Jak Prohledávám Azure Security Center naskenováním obrázku?
-Bitová kopie se extrahuje z registru. Pak se spustí v izolovaném izolovaném prostoru (sandbox) se skenerem Qualys, který extrahuje seznam známých chyb zabezpečení.
+### <a name="how-does-azure-security-center-scan-an-image"></a>Jak Azure Security Center naskenovat obrázek?
+Bitová kopie je načítána z registru. Pak se spustí v izolovaném izolovaném prostoru (sandbox) se skenerem Qualys, který extrahuje seznam známých chyb zabezpečení.
+
+Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v pořádku, Security Center ho označí jako takový. Security Center generuje doporučení zabezpečení pouze pro image, které mají problémy, které mají být vyřešeny. Tím, že se upozorní jenom na problémy, Security Center snižuje potenciální informativní výstrahy.
 
 ### <a name="how-often-does-azure-security-center-scan-my-images"></a>Jak často Azure Security Center kontrolovat obrázky?
 Při každém nabízení se spouštějí kontroly imagí.
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Můžu získat výsledky kontroly prostřednictvím REST API?
-Ano. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API](/rest/api/securitycenter/subassessments/list/). Kromě toho můžete použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
+Ano. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
  
 
 ## <a name="next-steps"></a>Další kroky

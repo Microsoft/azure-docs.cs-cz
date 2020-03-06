@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442118"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298815"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -31,7 +31,7 @@ Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 3. Zajistěte, aby objekty v pilotním oboru měly naplněné služby MS-DS-consistencyGUID, aby zřízení cloudu neodpovídalo objektům. 
 
    > [!NOTE]
-   > Azure AD Connect Sync neplní ve výchozím nastavení pro objekty skupin skupinu *MS-DS-consistencyGUID* . Postupujte podle kroků popsaných v [tomto blogovém příspěvku](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/) , abyste naplnili *MS-DS-consistencyGUID* pro skupinové objekty.
+   > Azure AD Connect Sync neplní ve výchozím nastavení pro objekty skupin skupinu *MS-DS-consistencyGUID* .
 
 4. Toto je pokročilý scénář. Ujistěte se, že postup je přesně popsaný v tomto kurzu.
 
@@ -119,7 +119,7 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Instalace agenta pro zřizování Azure AD Connect
 1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.  Pokud používáte [Základní kurz prostředí AD a prostředí Azure](tutorial-basic-ad-azure.md) , bude CP1.
-2. Stáhněte [si Azure AD Connect agenta zřizování](https://go.microsoft.com/fwlink/?linkid=2109037)cloudu.
+2. Stáhněte si tohoto Azure AD Connectho agenta zřizování cloudu pomocí kroků uvedených [tady](how-to-install.md#install-the-agent).
 3. Spuštění zřizování cloudu Azure AD Connect (AADConnectProvisioningAgent. Installer)
 3. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
 ![Obrazovka Vítejte](media/how-to-install/install1.png)</br>

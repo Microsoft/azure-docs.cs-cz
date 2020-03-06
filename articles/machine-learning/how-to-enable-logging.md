@@ -8,13 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 07/12/2019
-ms.openlocfilehash: 65db6cfa64658edc4e604a009e672ba3aa5e86f3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/05/2020
+ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893982"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396141"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Povolit přihlašování Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Můžete také protokolovat vlastní trasování zásobníku webové služby tí
 service.update(enable_app_insights=True)
 ```
 
-Další informace o tom, jak pracovat s Application Insights v Azure Machine Learning studiu, najdete v tématu [How to](how-to-enable-app-insights.md) .
+Další informace najdete v tématu [monitorování a shromažďování dat z koncových bodů webové služby ml](how-to-enable-app-insights.md).
 
 ## <a name="python-native-logging-settings"></a>Nastavení nativního protokolování Pythonu
 
@@ -111,3 +111,7 @@ Některé protokoly v sadě SDK mohou obsahovat chybu, která dává pokyn k nas
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
+
+## <a name="next-steps"></a>Další kroky
+
+* [Monitorování a shromažďování dat z koncových bodů webové služby ML](how-to-enable-app-insights.md)

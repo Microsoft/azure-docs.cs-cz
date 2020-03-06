@@ -1,18 +1,18 @@
 ---
-title: IS_ARRAY v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o IS_ARRAY funkcí SQL systému v Azure Cosmos DB.
+title: IS_ARRAY v dotazovacím jazyce Azure Cosmos DB
+description: Přečtěte si o funkcích systému SQL IS_ARRAY v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11ff29dcae7bf5c2e532eee658ee39d39b964e35
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f5867850db6eb3d6552bc129cca3708ef7747072
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350977"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303881"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY (Azure Cosmos DB)
  Vrátí logickou hodnotu označující, zda je typ z určeného výrazu pole.  
@@ -47,11 +47,15 @@ SELECT
  IS_ARRAY({prop: "value"}.prop2) AS isArray7  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"isArray1":false,"isArray2":false,"isArray3":false,"isArray4":false,"isArray5":false,"isArray6":true,"isArray7":false}]
 ```  
+
+## <a name="remarks"></a>Poznámky
+
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

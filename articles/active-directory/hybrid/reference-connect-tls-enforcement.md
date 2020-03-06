@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Vynucení protokolu TLS 1.2 pro Azure Active Directory Connect | Dokumentace Microsoftu'
-description: Tento článek obsahuje seznam všech vydaných verzích služby Azure AD Connect a služby Azure AD Sync
+title: 'Azure AD Connect: vynucení TLS 1,2 pro Azure Active Directory Connect | Microsoft Docs'
+description: V tomto článku jsou uvedené všechny verze Azure AD Connect a Azure AD Sync
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,34 +15,42 @@ ms.date: 10/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff4e170f8f5d8e30004b94bbcfdb0ca3e8c3e04d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ff5c75785622b43e66b808009c4674d4b2f2b50
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386257"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300844"
 ---
-# <a name="tls-12-enforcement-for-azure-ad-connect"></a>Vynucení protokolu TLS 1.2 pro Azure AD Connect
+# <a name="tls-12-enforcement-for-azure-ad-connect"></a>Vynucení TLS 1,2 pro Azure AD Connect
 
-Přenos verze protokolu Layer Security (TLS) 1.2 je kryptografie protokol, který je navrženo pro zajištění zabezpečené komunikace.  Protokol TLS, zaměřuje především k poskytování ochrany osobních údajů a integrity dat.  Protokol TLS přešel přes více iterací verze 1.2, jsou popsány v [dokument RFC 5246](https://tools.ietf.org/html/rfc5246).  Verze Azure Active Directory Connect 1.2.65.0 a novějším teď úplnou podporu používání pouze protokolu TLS 1.2 pro komunikaci se službou Azure.  Tento dokument bude obsahovat informace o tom, jak vynutit serveru služby Azure AD Connect na použití jenom TLS 1.2.
+Protokol TLS (Transport Layer Security) verze 1,2 je kryptografický protokol, který je navržený tak, aby poskytoval zabezpečenou komunikaci.  Protokol TLS se zaměřuje především na zajištění ochrany osobních údajů a integrity dat.  Protokol TLS projde mnoha iteracemi, které jsou ve verzi 1,2 definované v [dokumentu RFC 5246](https://tools.ietf.org/html/rfc5246).  Azure Active Directory Connect verze 1.2.65.0 a novější nyní plně podporují pouze protokol TLS 1,2 pro komunikaci s Azure.  Tento dokument obsahuje informace o tom, jak vynutit, aby server Azure AD Connect používal pouze protokol TLS 1,2.
 
 ## <a name="update-the-registry"></a>Aktualizace registru
-Pokud chcete vynutit server Azure AD Connect k používat jenom TLS 1.2 registru systému Windows server je nutné aktualizovat.  Nastavte následující klíče registru na serveru služby Azure AD Connect.
+Chcete-li vynutit, aby server Azure AD Connect používal pouze protokol TLS 1,2, je nutné aktualizovat registr systému Windows Server.  Na Azure AD Connect serveru nastavte následující klíče registru.
 
 >[!IMPORTANT]
->Po aktualizaci registru, je nutné restartovat server Windows změny se projeví.
+>Po aktualizaci registru je nutné restartovat systém Windows Server, aby se změny projevily.
 
 
-### <a name="enable-tls-12"></a>Povolení protokolu TLS 1.2
-- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:0000001
-- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "Enabled"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault" = dword: 00000000 
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "Enabled"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault" = dword: 00000000
+### <a name="enable-tls-12"></a>Povolit TLS 1,2
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions" = DWORD: 00000001
+  - "Do schusestrongcrypto" = DWORD: 0000001
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\. NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions" = DWORD: 00000001
+  - "SchUseStrongCrypto"=dword:00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
+  - "Enabled" = DWORD: 00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
+  - "DisabledByDefault" = DWORD: 00000000 
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient]
+  - "Enabled" = DWORD: 00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient]
+  - "DisabledByDefault" = DWORD: 00000000
 
-### <a name="powershell-script-to-enable-tls-12"></a>Skript Powershellu pro protokol TLS 1.2
-Následující skript prostředí PowerShell můžete použít k povolení protokolu TLS 1.2 na serveru služby Azure AD Connect.
+### <a name="powershell-script-to-enable-tls-12"></a>Skript PowerShellu pro povolení TLS 1,2
+K povolení TLS 1,2 na vašem Azure AD Connectovém serveru můžete použít následující skript prostředí PowerShell.
 
 ```powershell
     New-Item 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319' -Force | Out-Null
@@ -71,16 +79,24 @@ Následující skript prostředí PowerShell můžete použít k povolení proto
     Write-Host 'TLS 1.2 has been enabled.'
 ```
 
-### <a name="disable-tls-12"></a>Zakázat protokol TLS 1.2
-- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000000 "SchUseStrongCrypto"=dword:0000000
-- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000000 "SchUseStrongCrypto"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "Povoleno" = dword: 00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault" = dword: 00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "Enabled"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000001 
+### <a name="disable-tls-12"></a>Zakázat TLS 1,2
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions" = DWORD: 00000000
+  - "Do schusestrongcrypto" = DWORD: 0000000
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\. NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions" = DWORD: 00000000
+  - "Do schusestrongcrypto" = DWORD: 00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
+  - "Enabled" = DWORD: 00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
+  - "DisabledByDefault" = DWORD: 00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient]
+  - "Enabled" = DWORD: 00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient]
+  - "DisabledByDefault" = DWORD: 00000001 
 
-### <a name="powershell-script-to-disable-tls-12"></a>Skript Powershellu pro zákaz protokolu TLS 1.2
-Můžete použít následující skript prostředí PowerShell pro zákaz protokolu TLS 1.2 na serveru služby Azure AD Connect. \
+### <a name="powershell-script-to-disable-tls-12"></a>Skript PowerShellu pro zakázání TLS 1,2
+K zakázání TLS 1,2 na vašem Azure AD Connectovém serveru můžete použít následující skript prostředí PowerShell. \
 
 ```powershell
     New-Item 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319' -Force | Out-Null
@@ -109,5 +125,5 @@ Můžete použít následující skript prostředí PowerShell pro zákaz protok
     Write-Host 'TLS 1.2 has been disabled.'
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

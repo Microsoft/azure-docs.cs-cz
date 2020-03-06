@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bc7d8d4aaec6ebe27a0f8d2ecc11ca408266f7ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 261c12e63f8f348e1673dbc46c89c614caf3283b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453244"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296350"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Přidání ověřování a Správa identit uživatelů v mobilních aplikacích
 
@@ -20,8 +20,8 @@ Zobrazení uživatele a jejich chování v rámci vaší aplikace umožňuje vý
 
 Pomocí následujících služeb můžete v mobilních aplikacích povolit ověřování uživatelů.
 
-## <a name="visual-studio-app-center"></a>Centrum aplikací Visual Studio
-[App Center auth](/appcenter/auth/) je cloudová služba pro správu identit, kterou můžou vývojáři použít k ověřování uživatelů a správě identit uživatelů. App Center ověřování se taky integruje s jinými částmi Visual Studio App Center. Vývojáři mohou pomocí identity uživatele [zobrazovat uživatelská data](/appcenter/data/index) v jiných službách a dokonce i [odesílat nabízená oznámení uživatelům, nikoli jednotlivým zařízením](/appcenter/push/push-to-user#app-center-auth-set-identity). 
+## <a name="visual-studio-app-center"></a>Visual Studio App Center
+[App Center auth](/appcenter/auth/) je cloudová služba pro správu identit, kterou můžou vývojáři použít k ověřování uživatelů a správě identit uživatelů. App Center ověřování se taky integruje s jinými částmi Visual Studio App Center. Vývojáři mohou pomocí identity uživatele [zobrazovat uživatelská data](/appcenter/data/index) v jiných službách a dokonce i [odesílat nabízená oznámení uživatelům, nikoli jednotlivým zařízením](/appcenter/push/push-to-user#setting-user-identity). 
 
 **Klíčové funkce**
 - Používá se Azure Active Directory B2C (Azure AD B2C). 

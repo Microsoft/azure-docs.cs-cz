@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 68bb1fea88ab7ba30e0ba07839f2d962840b7818
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303609"
 ---
 # <a name="assets-in-azure-media-services"></a>Prostředky v Azure Media Services
 
@@ -75,6 +75,6 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 
 [Správa prostředků v Media Services](manage-asset-concept.md)
 
-## <a name="also-see"></a>Viz také
+## <a name="see-also"></a>Viz také
 
 [Rozdíly mezi Media Services V2 a V3](migrate-from-v2-to-v3.md)

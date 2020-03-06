@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 1d203fd0c6777eee96311f45f4d5dfb8728ff431
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 48935dc74d6d22bcafa31afebbdfcb829e122815
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210597"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399241"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -72,6 +72,7 @@ Klíče spravované zákazníkem teď mají následující omezení:
 - Všechny prostředky, které souvisejí s vašimi klíči spravovanými zákazníky (trezory klíčů Azure, sady šifrování disků, virtuální počítače, disky a snímky), musí být ve stejném předplatném a oblasti.
 - Disky, snímky a image šifrované pomocí klíčů spravovaných zákazníkem se nedají přesunout do jiného předplatného.
 - Pokud k vytvoření sady pro šifrování disků použijete Azure Portal, nemůžete teď snímky použít.
+- Spravované disky šifrované pomocí klíčů spravovaných zákazníkem se nedají taky šifrovat pomocí Azure Disk Encryption.
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Nastavení Azure Key Vault a DiskEncryptionSet

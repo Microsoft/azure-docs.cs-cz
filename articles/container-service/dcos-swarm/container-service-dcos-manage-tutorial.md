@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278340"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402807"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>ZASTARALÉ Kurz Azure Container Service – Správa DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý start podrobně popisuje základní kroky nezbytné k nasazení clusteru DC/OS a spuštění základní úlohy.
+DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý Start podrobně popisuje základní kroky potřebné k nasazení clusteru DC/OS a spuštění základní úlohy.
 
 > [!div class="checklist"]
 > * Vytvoření clusteru ACS DC/OS
@@ -30,7 +30,7 @@ DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejner
 > * Základní správa DC/OS
 > * Odstranění clusteru DC/OS
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-dcos-cluster"></a>Vytvoření clusteru DC/OS
 
@@ -66,7 +66,7 @@ ip=$(az network public-ip list --resource-group myResourceGroup --query "[?conta
 
 Pokud chcete vytvořit tunel SSH, spusťte následující příkaz a postupujte podle pokynů na obrazovce. Pokud se už používá port 80, příkaz selže. Aktualizujte port tunelu na nějaký, který se nepoužívá, například `85:localhost:80`. 
 
-```azurecli
+```console
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
@@ -80,7 +80,7 @@ az acs dcos install-cli
 
 Než bude možné používat rozhraní příkazového řádku s clusterem, musí se nakonfigurovat pro použití tunelu SSH. To provedete spuštěním následujícího příkazu, ve kterém podle potřeby upravte port.
 
-```azurecli
+```console
 dcos config set core.dcos_url http://localhost
 ```
 
@@ -116,19 +116,19 @@ Výchozím plánovacím mechanismem pro cluster DC/OS je Marathon. Marathon slou
 
 Spuštěním následujícího příkazu v aplikaci naplánujte spouštění v clusteru DC/OS.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Pokud chcete zobrazit stav nasazení aplikace, spusťte následující příkaz.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Až se hodnota ve sloupci **TASKS** (ÚKOLY) změní z *0/1* na *1/1*, nasazení aplikace je dokončené.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     0/1    ---       ---      False      DOCKER   None
 ```
@@ -165,19 +165,19 @@ V předchozím příkladu se vytvořila jedna instance aplikace. Pokud chcete to
 
 Aktualizujte aplikaci pomocí příkazu `dcos marathon app update`.
 
-```azurecli
+```console
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
 Pokud chcete zobrazit stav nasazení aplikace, spusťte následující příkaz.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Až se hodnota ve sloupci **TASKS** (ÚKOLY) změní z *1/3* na *3/1*, nasazení aplikace je dokončené.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/3    ---       ---      False      DOCKER   None
 ```
@@ -222,13 +222,13 @@ Vytvořte soubor s názvem **nginx-public.json** a zkopírujte do něj následuj
 
 Spuštěním následujícího příkazu v aplikaci naplánujte spouštění v clusteru DC/OS.
 
-```azurecli 
+```console
 dcos marathon app add nginx-public.json
 ```
 
 Získejte veřejnou IP adresu agentů veřejného clusteru DC/OS.
 
-```azurecli 
+```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
@@ -256,7 +256,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, clusteru DC/OS a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az-group-delete).
 
-```azurecli 
+```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 
