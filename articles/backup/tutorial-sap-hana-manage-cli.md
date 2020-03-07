@@ -4,11 +4,11 @@ description: V tomto kurzu se naučíte Spravovat zálohované SAP HANA databáz
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.openlocfilehash: 2c088c27a678a4541cbba3c4c43c9cd830c60ff0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472342"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393912"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: Správa databází SAP HANA ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -69,7 +69,7 @@ az backup item set policy --resource-group saphanaResourceGroup \
     --name saphanadatabase;hxe;hxe \
 ```
 
-Výstup by měl vypadat nějak takto:
+Výstup by měl vypadat takto:
 
 ```output
 Name                                  Resource Group
@@ -137,7 +137,7 @@ az backup protection disable --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Výstup by měl vypadat nějak takto:
+Výstup by měl vypadat takto:
 
 ```output
 Name                                  ResourceGroup
@@ -161,7 +161,7 @@ az backup protection disable --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Výstup by měl vypadat nějak takto:
+Výstup by měl vypadat takto:
 
 ```output
 Name                                  ResourceGroup
@@ -185,7 +185,7 @@ az backup protection resume --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Výstup by měl vypadat nějak takto:
+Výstup by měl vypadat takto:
 
 ```output
 Name                                  ResourceGroup

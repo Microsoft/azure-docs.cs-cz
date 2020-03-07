@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak zálohovat soubory Azure pomocí 
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120519"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382515"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Zálohování souborů Azure pomocí PowerShellu
 

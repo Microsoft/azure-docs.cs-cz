@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985930"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358216"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -59,11 +59,11 @@ Vyberte **úroveň**nebo úroveň podrobností, které se mají protokolovat. V 
 
 | Úroveň | Zahrnuté kategorie |
 |-|-|
-|**Disabled** (Zakázáno) | Žádné |
+|**Disabled** (Zakázáno) | Žádná |
 |**Chyba** | Chyba, kritická |
 |**Upozornění** | Upozornění, chyba, kritická|
-|**Informace o** | Informace, varování, chyba, kritické|
-|**Verbose** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
+|**Informace** | Informace, varování, chyba, kritické|
+|**Podrobné** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
 
 Po dokončení vyberte **Uložit**.
 
@@ -184,12 +184,12 @@ Následující tabulka uvádí podporované typy a popisy protokolů:
 
 | Typ protokolu | Podpora Windows | Podpora pro Linux (Docker) | Popis |
 |-|-|-|
-| AppServiceConsoleLogs | přidáme | Ano | Standardní výstup a standardní chyba |
+| AppServiceConsoleLogs | TBA | Ano | Standardní výstup a standardní chyba |
 | AppServiceHTTPLogs | Ano | Ano | Protokoly webového serveru |
 | AppServiceEnvironmentPlatformLogs | Ano | Ano | App Service Environment: škálování, změny konfigurace a protokoly stavu|
 | AppServiceAuditLogs | Ano | Ano | Přihlašovací aktivita prostřednictvím FTP a Kudu |
-| AppServiceFileAuditLogs | přidáme | Ano | Změny souborů prostřednictvím FTP a Kudu |
-| AppServiceAppLogs | přidáme | Java SE & Tomcat | Protokoly aplikací |
+| AppServiceFileAuditLogs | TBA | Ano | Změny souborů prostřednictvím FTP a Kudu |
+| AppServiceAppLogs | TBA | Java SE & Tomcat | Protokoly aplikací |
 
 ## <a name="nextsteps"></a> Další kroky
 * [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

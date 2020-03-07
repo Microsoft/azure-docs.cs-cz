@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870917"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386999"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Práce s poli a objekty v Azure Cosmos DB
 
 Klíčovou funkcí rozhraní API pro Azure Cosmos DB SQL je vytvoření pole a objektu.
 
-## <a name="arrays"></a>Pole
+## <a name="arrays"></a>Řadách
 
 Můžete vytvořit pole, jak je znázorněno v následujícím příkladu:
 
@@ -26,7 +26,7 @@ Můžete vytvořit pole, jak je znázorněno v následujícím příkladu:
     FROM Families f
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [
@@ -52,7 +52,7 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
-## <a id="Iteration"></a>Iterace
+## <a id="Iteration"></a>Interakc
 
 Rozhraní SQL API poskytuje podporu pro iteraci přes pole JSON s novou konstrukcí přidanou prostřednictvím [klíčového slova in](sql-query-keywords.md#in) ve zdroji from. V následujícím příkladu:
 
@@ -61,7 +61,7 @@ Rozhraní SQL API poskytuje podporu pro iteraci přes pole JSON s novou konstruk
     FROM Families.children
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [
@@ -97,7 +97,7 @@ Další dotaz provede v kontejneru `Families` iteraci nad `children`. Výstupní
     FROM c IN Families.children
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [
@@ -130,7 +130,7 @@ Můžete filtrovat dále pro každou jednotlivou položku pole, jak je znázorn�
     WHERE c.grade = 8
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [{
@@ -145,7 +145,7 @@ Můžete také agregovat výsledek iterace pole. Například následující dota
     FROM child IN Families.children
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [
@@ -158,5 +158,5 @@ Výsledky jsou následující:
 ## <a name="next-steps"></a>Další kroky
 
 - [Začínáme](sql-query-getting-started.md)
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Ukázky Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Starat](sql-query-join.md)

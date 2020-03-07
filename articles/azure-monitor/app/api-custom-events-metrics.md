@@ -4,11 +4,11 @@ description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.openlocfilehash: 74736966013581296483d1444f4ab2b8a35bbd98
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666492"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362018"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights rozhraní API pro vlastní události a metriky
 
@@ -1193,7 +1193,7 @@ Informace o tom, jak dlouho se data uchovávají, najdete v tématu [uchováván
 
 * *Jaké výjimky mohou Track_ () volání throw?*
 
-    Žádné. Nemusíte je zabalit do klauzulí try-catch. Pokud sada SDK zjistí problémy, protokoluje zprávy ve výstupu konzoly ladění a--pokud se zprávy objeví v diagnostickém vyhledávání.
+    Žádné Nemusíte je zabalit do klauzulí try-catch. Pokud sada SDK zjistí problémy, protokoluje zprávy ve výstupu konzoly ladění a--pokud se zprávy objeví v diagnostickém vyhledávání.
 * *Existuje REST API získat data z portálu?*
 
     Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Mezi další způsoby, jak extrahovat data, patří [Export z analýzy do Power BI](../../azure-monitor/app/export-power-bi.md ) a [průběžný export](../../azure-monitor/app/export-telemetry.md).

@@ -6,11 +6,11 @@ ms.subservice: update-management
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226270"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373252"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Konfigurace nastavení web Windows Update pro Update Management
 

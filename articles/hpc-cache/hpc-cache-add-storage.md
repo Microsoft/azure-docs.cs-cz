@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
 ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990602"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388223"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -148,9 +148,9 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 
 | Model využití | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
 | ---- | ---- | ---- | ---- |
-| Čtení těžkých, nečastých zápisů | Čtení | Nikdy | Žádné |
+| Čtení těžkých, nečastých zápisů | Čtení | Nikdy | Žádná |
 | Více než 15% zápisů | Čtení a zápis | Nikdy | 1 hodina |
-| Klienti obcházejí mezipaměť | Čtení | 30 sekund | Žádné |
+| Klienti obcházejí mezipaměť | Čtení | 30 sekund | Žádná |
 
 ## <a name="next-steps"></a>Další kroky
 

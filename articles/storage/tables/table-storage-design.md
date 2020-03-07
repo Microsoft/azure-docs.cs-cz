@@ -1,5 +1,5 @@
 ---
-title: Navrhněte škálovatelné a výkonné tabulky ve službě Azure Table Storage. | Dokumentace Microsoftu
+title: Navrhněte škálovatelné a výkonné tabulky ve službě Azure Table Storage. | Dokumenty Microsoft
 description: Navrhněte škálovatelné a výkonné tabulky ve službě Azure Table Storage.
 services: storage
 author: SnehaGunda
@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351185"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387127"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Návrh škálovatelných a výkonných tabulek
 
@@ -47,10 +47,10 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Nepřipojovat</td>
@@ -67,10 +67,10 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Čer</td>
@@ -98,16 +98,16 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 </td>
 </tr>
 <tr>
-<td>Sales</td>
+<td>Prodej</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -121,18 +121,18 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 </table>
 
 
-Zatím se tato data zobrazují podobně jako tabulka v relační databázi s klíčovými rozdíly, které jsou povinnými sloupci, a možnost ukládat více typů entit do stejné tabulky. Každá z uživatelsky definovaných vlastností, jako je například **FirstName** nebo **věk** , má datový typ, jako je třeba celé číslo nebo řetězec, stejně jako sloupec v relační databázi. I když na rozdíl od v relační databázi, bez schématu povaha služby Table service znamená, že vlastnost nemusí mít stejný datový typ. u každé entity. Pokud chcete uložit komplexních datových typů v jedné vlastnosti, musíte použít serializovaný formát jako je JSON nebo XML. Další informace o tabulce služby, například podporované datové typy, podporovaných rozsahů, pravidla pojmenování a omezením způsobeným velikostí najdete v tématu [Principy datového modelu služby Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Zatím se tato data zobrazují podobně jako tabulka v relační databázi s klíčovými rozdíly, které jsou povinnými sloupci, a možnost ukládat více typů entit do stejné tabulky. Každá z uživatelsky definovaných vlastností, jako je například **FirstName** nebo **věk** , má datový typ, jako je třeba celé číslo nebo řetězec, stejně jako sloupec v relační databázi. I když na rozdíl od v relační databázi, bez schématu povaha služby Table service znamená, že vlastnost nemusí mít stejný datový typ. u každé entity. Pokud chcete uložit komplexních datových typů v jedné vlastnosti, musíte použít serializovaný formát jako je JSON nebo XML. Další informace o službě Table Service, jako jsou podporované datové typy, podporované rozsahy dat, pravidla pojmenování a omezení velikosti, najdete v článku [Principy datového modelu služby Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Vaše volba **PartitionKey** a **RowKey** je zásadní pro dobrý návrh tabulek. Každá entita uložena v tabulce musí mít jedinečnou kombinaci **PartitionKey** a **RowKey**. Stejně jako u klíčů v tabulce relační databáze jsou hodnoty **PartitionKey** a **RowKey** indexovány pro vytvoření clusterovaného indexu, který umožňuje rychlé hledání. Table service ale nevytvoří žádné sekundární indexy, takže jsou **PartitionKey** a **RowKey** jedinými indexovanými vlastnostmi. Některé ze vzorů popsaných v tématu [vzory návrhu tabulky](table-storage-design-patterns.md) ukazují, jak toto zjevné omezení obejít.  
+Vaše volba **PartitionKey** a **RowKey** je zásadní pro dobrý návrh tabulek. Každá entita uložená v tabulce musí mít jedinečnou kombinaci hodnot **PartitionKey** a **RowKey**. Stejně jako u klíčů v tabulce relační databáze jsou hodnoty **PartitionKey** a **RowKey** indexovány pro vytvoření clusterovaného indexu, který umožňuje rychlé hledání. Table service ale nevytvoří žádné sekundární indexy, takže jsou **PartitionKey** a **RowKey** jedinými indexovanými vlastnostmi. Některé ze vzorů popsaných v tématu [vzory návrhu tabulky](table-storage-design-patterns.md) ukazují, jak toto zjevné omezení obejít.  
 
 Tabulka sestává z jednoho nebo více oddílů a mnohé z rozhodnutí o návrhu budou kolem výběru vhodné **PartitionKey** a **RowKey** k optimalizaci vašeho řešení. Řešení se může skládat z jedné tabulky, která obsahuje všechny vaše entity uspořádané do oddílů, ale obvykle má řešení více tabulek. Tabulky umožňují logicky uspořádat entity, vám pomůžou spravovat přístup k datům pomocí seznamů řízení přístupu a můžete vložit pomocí operace s jediným úložištěm celou tabulku.  
 
 ## <a name="table-partitions"></a>Oddíly tabulky
-Název účtu, název tabulky a **PartitionKey** společně identifikovat oddílu v rámci služby úložiště, kde služby table service obsahuje entitu. A také se zapojil schéma adresování pro entity, oddíly definovat rozsah transakce (viz [transakcí skupin entit](#entity-group-transactions) níže), a tvoří základ jak škálování služby table service. Další informace o oddílech najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek](storage-performance-checklist.md).  
+Název účtu, název tabulky a **PartitionKey** společně identifikují oddíl v rámci služby úložiště, kde služba Table Service ukládá entitu. Stejně jako součást schématu adresování pro entity, oddíly definují obor pro transakce (viz [transakce skupiny entit](#entity-group-transactions) níže) a tvoří základ způsobu, jakým služba tableing Service škáluje. Další informace o oddílech najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek](storage-performance-checklist.md).  
 
-V Table service jednotlivé uzly Services jeden nebo několik úplných oddílů a služba se škáluje podle dynamicky vyrovnávání zatížení oddílů mezi uzly. Pokud uzel je zatížení, můžete služby table service *rozdělit* rozsahem oddílů obsluhovány pomocí tohoto uzlu na různých uzlech; při provozu poklesne, můžete službu *sloučení* rozsahů oddílů z quiet uzlů zpět na jeden uzel.  
+V Table service jednotlivé uzly Services jeden nebo několik úplných oddílů a služba se škáluje podle dynamicky vyrovnávání zatížení oddílů mezi uzly. Pokud je uzel v zatížení, může služba Table Service *rozdělit* rozsah oddílů, které služba obsluhuje, do různých uzlů. Když se provoz nacházejí, může služba *Sloučit* rozsahy oddílů z tichých uzlů zpátky do jednoho uzlu.  
 
-Další informace o interní informace služby Table service, zejména způsob, jakým služba spravuje oddíly, najdete v dokumentu paper [Microsoft Azure Storage: A vysoce dostupné služby cloudového úložiště se silnou konzistencí](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Další informace o interních podrobnostech Table service a zejména o tom, jak služba spravuje oddíly, najdete v dokumentu [Microsoft Azure Storage: vysoce dostupná služba cloudového úložiště s silnou konzistencí](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ## <a name="entity-group-transactions"></a>Transakcí skupin entit
 Ve službě Table service transakcí skupin entit (EGTs) jsou pouze předdefinovaný mechanismus pro provádění atomické aktualizace napříč více entit. EGTs se někdy také označují jako *transakce Batch*. EGTs může pracovat pouze s entitami uloženými ve stejném oddílu (tj. sdílet stejný klíč oddílu v dané tabulce). Takže kdykoli budete potřebovat atomické transakční chování napříč několika entitami, musíte zajistit, aby tyto entity byly ve stejném oddílu. To je často důvod pro udržování několik typů entit ve stejné tabulce (a oddílu) a bez použití více tabulek pro typy jiné entity. Jeden EGT může pracovat na maximálně 100 entit.  Pokud odešlete více souběžných EGTs ke zpracování, je důležité zajistit, aby tyto EGTs nepracovaly s entitami, které jsou společné napříč EGTs. v opačném případě může dojít ke zpoždění zpracování.
@@ -147,7 +147,7 @@ Následující tabulka popisuje některé klíčové hodnoty, které je třeba z
 | Počet tabulek v účtu služby Azure storage |Omezeno pouze kapacity účtu úložiště |
 | Počet oddílů v tabulce |Omezeno pouze kapacity účtu úložiště |
 | Počet entit v oddílu |Omezeno pouze kapacity účtu úložiště |
-| Velikost jednotlivých entit |Až 1 MB s délkou maximálně 255 vlastnosti (včetně **PartitionKey**, **RowKey**, a **časové razítko**) |
+| Velikost jednotlivých entit |Až 1 MB s maximálním počtem 255 vlastností (včetně **PartitionKey**, **RowKey**a **časového razítka**) |
 | Velikost **PartitionKey** |Řetězec, velikost až 1 KB |
 | Velikost **RowKey** |Řetězec, velikost až 1 KB |
 | Velikost transakce skupin entit |Transakce může obsahovat maximálně 100 entit a datová část musí být menší než 4 MB. EGT lze aktualizovat pouze entity jednou. |
@@ -155,7 +155,7 @@ Následující tabulka popisuje některé klíčové hodnoty, které je třeba z
 Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ## <a name="cost-considerations"></a>Důležité informace o nákladech
-Tabulka úložiště je poměrně nákladná, ale měli byste zahrnout odhadované náklady na využití kapacity a množství transakcí v rámci vyhodnocení jakéhokoli Table service řešení. V mnoha scénářích ale ukládání denormalizovaných nebo duplicitních dat, aby se zlepšil výkon nebo škálovatelnost vašeho řešení, je platný přístup. Další informace o cenách najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Tabulka úložiště je poměrně nákladná, ale měli byste zahrnout odhadované náklady na využití kapacity a množství transakcí v rámci vyhodnocení jakéhokoli Table service řešení. V mnoha scénářích ale ukládání denormalizovaných nebo duplicitních dat, aby se zlepšil výkon nebo škálovatelnost vašeho řešení, je platný přístup. Další informace o cenách najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="next-steps"></a>Další kroky
 

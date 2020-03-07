@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálo
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152863"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392054"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -137,7 +137,7 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 | Úložiště dat. operace se soubory na nízké úrovni                          | Globální. Správa vlastních atributů                           | Úložiště dat. AllocateSpace                     |
 | Cluster úložiště dat. Konfigurace clusteru datatstore             | Global. set – vlastní atribut                               | VirtualMachine.Config.ChangeTracking        |
 | Metody Global. disable                                       | Host. Local – operace. Vytvořit virtuální počítač              | VirtualMachine. State. RemoveSnapshot         |
-| Metody Global. Enable                                        | Síť. Přiřadit síť                                   | VirtualMachine.State.CreateSnapshot         |
+| Metody Global. Enable                                        | Sítě. Přiřadit síť                                   | VirtualMachine.State.CreateSnapshot         |
 | Globální. licence                                              | Partner. Přiřadit virtuální počítač k fondu zdrojů         | VirtualMachine.Provisioning.DiskRandomRead  |
 | Global. log – událost                                             | Virtuální počítač. Konfigurace. Přidat nový disk                | VirtualMachine.Interact.PowerOff            |
 | Globální. Správa vlastních atributů                              | Virtuální počítač. Konfigurace. rozšířené                    | VirtualMachine.Inventory.Create             |
@@ -281,7 +281,7 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
 1. Na stránce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany a nastavení ochrany. Pokud chcete zálohovat do Azure, nastavte krátkodobou ochranu na **disk** a povolte online ochranu. Pak klikněte na tlačítko **Další**.
 
-    ![Výběr způsobu ochrany dat](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Vyberte způsob ochrany dat](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. V **nastavení zadat krátkodobé cíle**určete, jak dlouho chcete uchovávat data zálohovaná na disk.
    - V **oblasti uchovávání**zadejte počet dní, po které mají být udržovány body obnovení disku.

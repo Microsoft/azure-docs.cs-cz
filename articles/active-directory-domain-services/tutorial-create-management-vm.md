@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612210"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376576"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Vytvoření virtuálního počítače pro správu pro konfiguraci a správu spravované domény Azure Active Directory Domain Services
 
@@ -59,7 +59,6 @@ Azure služba AD DS poskytuje spravované domény pro vaše uživatele, aplikace
 
 Členům skupiny *Správci AAD DC* se udělují oprávnění na spravované doméně Azure služba AD DS, která umožňuje provádět následující úlohy:
 
-* Připojte počítače ke spravované doméně.
 * Nakonfigurujte integrovaný objekt zásad skupiny (GPO) pro *AADDC počítače* a kontejnery *AADDC uživatelů* ve spravované doméně.
 * Správa DNS ve spravované doméně.
 * Vytvořte a spravujte vlastní organizační jednotky (OU) ve spravované doméně.

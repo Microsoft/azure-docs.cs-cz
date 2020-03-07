@@ -12,11 +12,11 @@ author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541059"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396224"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX a Azure Machine Learning: vytváření a zrychlení modelů ML
 
@@ -38,13 +38,13 @@ Můžete získat modely ONNX několika způsoby:
 + Výuka nového modelu ONNX v Azure Machine Learning (podívejte se na příklady na konci tohoto článku)
 + Převést existující model z jiného formátu na ONNX (viz [kurzy](https://github.com/onnx/tutorials)) 
 + Získejte předem vyškolený model ONNX z [modelu ONNX](https://github.com/onnx/models) (viz příklady v dolní části tohoto článku).
-+ Generovat přizpůsobené modelu ONNX ze [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Generování přizpůsobeného modelu ONNX ze [služby Azure Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
 
 Mnoho modelů, včetně klasifikace obrázků, detekce objektů a zpracování textu, lze znázornit jako ONNX modely. Některé modely ale nemusí být možné úspěšně převést. Pokud narazíte na tuto situaci, uveďte problém na GitHubu příslušného převaděče, který jste použili. Existující model formátu můžete dál používat, dokud se problém nevyřeší.
 
 ## <a name="deploy-onnx-models-in-azure"></a>Nasadit modely ONNX v Azure
 
-Pomocí Azure Machine Learning můžete nasazovat, spravovat a monitorovat modely ONNX. Pomocí standardní [pracovní postup nasazení](concept-model-management-and-deployment.md) a ONNX Runtime můžete vytvořit koncový bod REST hostované v cloudu. Další informace najdete v části Jupyter poznámkové bloky na konci tohoto článku. 
+Pomocí Azure Machine Learning můžete nasazovat, spravovat a monitorovat modely ONNX. Pomocí standardního [pracovního postupu nasazení](concept-model-management-and-deployment.md) a modulu runtime ONNX můžete vytvořit koncový bod REST, který je hostovaný v cloudu. Další informace najdete v části Jupyter poznámkové bloky na konci tohoto článku. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>Instalace a použití modulu runtime ONNX v Pythonu
 
@@ -62,33 +62,33 @@ import onnxruntime
 session = onnxruntime.InferenceSession("path to model")
 ```
 
-Dokumentaci modelu obvykle zjistíte, vstupy a výstupy pro použití modelu. Můžete také použít vizualizačního nástroje jako [Netron](https://github.com/lutzroeder/Netron) zobrazíte modelu. Modul Runtime ONNX také umožňuje dotazování metadat modelu, vstupy a výstupy:    
+Dokumentaci modelu obvykle zjistíte, vstupy a výstupy pro použití modelu. K zobrazení modelu můžete použít také nástroj pro vizualizaci, jako je [Netron](https://github.com/lutzroeder/Netron) . Modul Runtime ONNX také umožňuje dotazování metadat modelu, vstupy a výstupy:    
 ```python
 session.get_modelmeta()
 first_input_name = session.get_inputs()[0].name
 first_output_name = session.get_outputs()[0].name
 ```
 
-K odvození váš model, použijte `run` a předejte mu seznam výstupy požadujete vrátil (ponechte prázdné Pokud chcete všechny z nich) a mapu vstupních hodnot. Výsledkem je seznam výstupy.  
+Chcete-li odvozovat model, použijte `run` a předejte seznam výstupů, které chcete vrátit (nechejte prázdné, pokud chcete všechny) a mapu vstupních hodnot. Výsledkem je seznam výstupy.  
 ```python
 results = session.run(["output1", "output2"], {
                       "input1": indata1, "input2": indata2})
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-Úplné referenční rozhraní Python API najdete v článku [ONNX Runtime referenční dokumenty](https://aka.ms/onnxruntime-python).    
+Kompletní referenční informace k rozhraní Python API najdete v [referenčních dokumentech ONNX za běhu](https://aka.ms/onnxruntime-python).    
 
 ## <a name="examples"></a>Příklady
 
-Zobrazit [postupy-k-použití azureml/nasazení/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) například poznámkových bloků, které vytvářet a nasazovat modely ONNX.
+Příklady poznámkových bloků, které vytvářejí a nasazují modely ONNX, najdete v tématu [How to-use-AzureML/Deployment/Onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) .
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="more-info"></a>Další informace
 
 Další informace o ONNX nebo přispět k projektu:
-+ [ONNX projekt webu](https://onnx.ai)
-+ [ONNX kódu na Githubu](https://github.com/onnx/onnx)
++ [Web projektu ONNX](https://onnx.ai)
++ [ONNX kód na GitHubu](https://github.com/onnx/onnx)
 
 Další informace o modulu Runtime ONNX nebo přispět k projektu:
 + [Úložiště GitHub pro ONNX runtime](https://github.com/Microsoft/onnxruntime)

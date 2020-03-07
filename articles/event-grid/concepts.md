@@ -1,6 +1,6 @@
 ---
-title: Koncepty služby Azure Event Grid
-description: Popisuje Azure Event Grid a jeho koncepty. Definuje několika klíčovými komponentami služby Event Grid.
+title: Azure Event Grid koncepty
+description: Popisuje Azure Event Grid a jeho koncepty. Definuje několik klíčových součástí Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,84 +8,84 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
 ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305258"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359446"
 ---
-# <a name="concepts-in-azure-event-grid"></a>Koncepty ve službě Azure Event Grid
+# <a name="concepts-in-azure-event-grid"></a>Koncepty v Azure Event Grid
 
-Tento článek popisuje hlavní koncepty ve službě Azure Event Grid.
+Tento článek popisuje hlavní koncepty v Azure Event Grid.
 
-## <a name="events"></a>Duration
+## <a name="events"></a>Události
 
-Událost je nejmenší velikost informace popisující plně něco, ke které došlo v systému. Každé události je běžné informace, například: Zdroj události, čas události trvalo místo a jedinečný identifikátor. Každou událost má také určité informace, které jsou pouze relevantní pro konkrétní typ události. Třeba událost o nový soubor, který vytváří ve službě Azure Storage obsahuje podrobnosti o souboru, například `lastTimeModified` hodnotu. Nebo událost Event Hubs má adresu URL zachytávací soubor. 
+Událost je nejmenší množství informací, které plně popisuje něco, co se stalo v systému. Každá událost má běžné informace, jako je zdroj události, čas, kdy došlo k události, a jedinečný identifikátor. Každá událost má také konkrétní informace, které jsou relevantní pouze pro konkrétní typ události. Například událost týkající se nového souboru vytvořeného v Azure Storage obsahuje podrobnosti o souboru, jako je například hodnota `lastTimeModified`. Nebo událost Event Hubs má adresu URL sběrného souboru. 
 
-Událost o velikosti až 64 KB se věnujeme v obecné dostupnosti (GA) služeb úroveň smlouvy (SLA). Podpora pro událost o velikosti až 1 MB je aktuálně ve verzi preview. Události více než 64 KB se účtují v přírůstcích po 64 KB. 
+K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. 
 
 
-Vlastnosti, které se odesílají v události, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Vlastnosti, které se odesílají v události, najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
 
 ## <a name="publishers"></a>Vydavatelé
 
-Vydavatel je uživatel nebo organizace, která určuje, k odesílání událostí do služby Event Grid. Společnost Microsoft publikuje události pro několik služeb Azure. Publikovat události z vaší aplikace. Organizace, které hostují služby mimo Azure, můžete publikovat události prostřednictvím služby Event Grid.
+Vydavatel je uživatel nebo organizace, které se rozhodly Odeslat události do Event Grid. Microsoft zveřejňuje události pro několik služeb Azure. Události můžete publikovat z vlastní aplikace. Organizace, které hostují služby mimo Azure, můžou publikovat události prostřednictvím Event Grid.
 
 ## <a name="event-sources"></a>Zdroje událostí
 
-Zdroj událostí je, kde k události dojde. Každý zdroj události se vztahuje na jeden nebo více typů událostí. Zdroj události pro události vytvoření objektu blob je například Azure Storage. IoT Hub je zdroj události pro zařízení se vytvořilo události. Aplikace je zdroj události pro vlastní události, které definujete. Za odesílání událostí do služby Event Grid jsou zdroje událostí.
+Zdroj události je místo, kde dojde k události. Každý zdroj události souvisí s jedním nebo více typy událostí. Například Azure Storage je zdrojem událostí pro události objektů blob, které se vytvořily. IoT Hub je zdroj události pro události vytvořené zařízením. Vaše aplikace je zdrojem událostí pro vlastní události, které definujete. Zdroje událostí jsou zodpovědné za odesílání událostí do Event Grid.
 
-Informace o implementaci některý z podporovaných zdrojů služby Event Grid najdete v tématu [zdroje událostí ve službě Azure Event Grid](event-sources.md).
+Informace o implementaci některého z podporovaných zdrojů Event Grid najdete v tématu [zdroje událostí v Azure Event Grid](event-sources.md).
 
 ## <a name="topics"></a>Témata
 
-Téma event gridu poskytuje koncový bod kam zdroji odesílá události. Vydavatel vytvoří téma event gridu a rozhodne, zda musí téma jeden nebo více než jeden zdroj událostí. Téma se používá pro kolekci souvisejících událostí. Reakce na určitých typech událostí, rozhodněte, předplatitelé témata pro přihlášení k odběru.
+Téma Event Grid poskytuje koncový bod, ve kterém zdroj odesílá události. Vydavatel vytvoří téma Event Grid a rozhodne, zda zdroj události potřebuje jedno téma nebo více než jedno téma. Téma se používá pro kolekci souvisejících událostí. Pro reakci na určité typy událostí předplatitelé rozhodují, která témata se přihlásí k odběru.
 
-Systém témata jsou předdefinované témata poskytované službami Azure. Nevidíte témata systém ve vašem předplatném Azure, vydavatele vlastní témata, protože k jejich odběru. K přihlášení k odběru zadáte informace o prostředku, který chcete přijímat události z. Za předpokladu, máte přístup k prostředku, můžete k jeho události odběru.
+Systémová témata jsou integrovaná témata poskytovaná službami Azure. V rámci vašeho předplatného Azure se nezobrazí systémová témata, protože Vydavatel je vlastníkem témat, ale můžete se k němu přihlásit. Chcete-li se přihlásit k odběru, zadejte informace o prostředku, ze kterého chcete přijímat události. Pokud máte přístup k prostředku, můžete se přihlásit k odběru jeho událostí.
 
-Vlastní témata jsou aplikace a témata třetích stran. Při vytváření nebo přístupem k vlastní téma, zobrazí se v rámci předplatného tohoto vlastního tématu.
+Vlastní témata jsou témata aplikací a třetích stran. Když vytvoříte nebo máte přiřazený přístup k vlastnímu tématu, uvidíte, že ve vašem předplatném je vlastní téma.
 
-Při návrhu aplikace, máte flexibilitu při rozhodování o tom, kolik témata k vytvoření. Pro velká řešení vytvoříte vlastní téma pro každou kategorii související události. Zvažte například aplikaci, která zasílá události související s úpravou uživatelských účtů a zpracování objednávek. Není pravděpodobné, že obslužná rutina události chce, aby se obě kategorie události. Vytvořte dvě vlastní témata a nechat předplatit ten, který je zajímá obslužných rutin událostí. Pro malé řešení budete pravděpodobně chtít odeslat všechny události pro jedno téma. Typy událostí, který jim vyhovuje. můžete vyfiltrovat odběratelů událostí.
+Při navrhování aplikace máte flexibilitu při rozhodování, kolik témat se má vytvořit. Pro velká řešení vytvořte vlastní téma pro každou kategorii souvisejících událostí. Zvažte například aplikaci, která odesílá události související s úpravou uživatelských účtů a objednávek zpracování. Je nepravděpodobné, že žádná obslužná rutina události chce obě kategorie událostí. Vytvořte dvě vlastní témata a umožněte, aby obslužné rutiny událostí přihlásily k odběru ty, které je zajímají. Pro malá řešení můžete chtít odeslat všechny události do jednoho tématu. Předplatitelé události mohou filtrovat typy událostí, které chtějí.
 
 ## <a name="event-subscriptions"></a>Odběry událostí
 
-Předplatné říká služby Event Grid, které události tématu máte zájem přijímají. Při vytváření odběru zadáte koncový bod pro zpracování událostí. Můžete filtrovat události, které se odesílají do koncového bodu. Můžete filtrovat podle typu události nebo vzor předmět. Další informace najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+Předplatné oznamuje Event Grid, které události v tématu vás zajímá. Při vytváření odběru zadáte koncový bod pro zpracování události. Můžete filtrovat události, které se odesílají do koncového bodu. Můžete filtrovat podle typu události nebo podle vzoru předmětu. Další informace najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).
 
-Příklady vytváření předplatných najdete v tématu:
+Příklady vytváření předplatných najdete v tématech:
 
 * [Ukázky v Azure CLI pro Event Grid](cli-samples.md)
-* [Ukázky Azure Powershellu pro Event Grid](powershell-samples.md)
-* [Šablony Azure Resource Manageru pro Event Grid](template-samples.md)
+* [Ukázky Azure PowerShell pro Event Grid](powershell-samples.md)
+* [Šablony Azure Resource Manager pro Event Grid](template-samples.md)
 
-Informace o tom, jak aktuální event grid předplatných najdete v tématu [dotazování odběrů Event gridu](query-event-subscriptions.md).
+Informace o získání aktuálních odběrů služby Event Grid najdete v tématu věnovaném [dotazům Event Grid odběry](query-event-subscriptions.md).
 
-## <a name="event-subscription-expiration"></a>Události vypršení platnosti předplatného
-Po tomto datu automaticky vyprší platnost odběru událostí. Nastavit dobu platnosti pro odběry událostí, které jsou vyžadovány pouze po omezenou dobu a nechcete, aby se starat o vyčištění těchto předplatných. Při vytváření odběru událostí pro scénář testování, můžete chtít nastavit vypršení. 
+## <a name="event-subscription-expiration"></a>Vypršení platnosti odběru události
+Po tomto datu automaticky vyprší platnost odběru událostí. Nastavte vypršení platnosti pro odběry událostí, které jsou potřeba jenom po omezenou dobu, a nechcete se starat o vyčištění těchto předplatných. Například při vytváření odběru události pro otestování scénáře můžete chtít nastavit vypršení platnosti. 
 
-Příkladem vypršení nastavení, najdete v části [přihlásit k odběru s rozšířené filtry](how-to-filter-events.md#subscribe-with-advanced-filters).
+Příklad nastavení vypršení platnosti najdete v tématu [přihlášení k odběru s rozšířenými filtry](how-to-filter-events.md#subscribe-with-advanced-filters).
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
-Obslužná rutina události z hlediska služby Event Grid, je místo, kde událost je odeslána. Obslužná rutina provede některé další akci zpracovat událost. Event Grid podporuje několik typů obslužné rutiny. Podporované služby Azure nebo vašeho vlastního webhooku můžete použít jako obslužná rutina. V závislosti na typu obslužné rutiny se řídí různé mechanismy zaručit doručování událostí služby Event Grid. Pro obslužné rutiny události webhooku HTTP, je událost opakovat, dokud obslužná rutina vrátí stavový kód `200 – OK`. Pro fronty Azure Storage jsou události opakovat, dokud služba front úspěšně zpracuje nabízených zpráv do fronty.
+Z Event Grid perspektivy je obslužná rutina události místem, kde je událost odeslána. Obslužná rutina provede několik dalších akcí zpracování události. Event Grid podporuje několik typů obslužných rutin. Jako obslužnou rutinu můžete použít podporovanou službu Azure nebo vlastní Webhook. V závislosti na typu obslužné rutiny Event Grid podle různých mechanismů Zabezpečte doručení události. Pro obslužné rutiny událostí Webhooku protokolu HTTP se událost opakuje, dokud obslužná rutina nevrátí stavový kód `200 – OK`. V případě Azure Storage fronty se události zopakují, dokud Služba front úspěšně nezpracuje nabízenou zprávu do fronty.
 
-Informace o implementaci některý z podporovaných obslužné rutiny služby Event Grid najdete v tématu [obslužných rutin událostí ve službě Azure Event Grid](event-handlers.md).
+Informace o implementaci kterékoli z podporovaných obslužných rutin Event Grid naleznete [v tématu obslužné rutiny událostí v Azure Event Grid](event-handlers.md).
 
 ## <a name="security"></a>Zabezpečení
 
-Event gridu poskytuje zabezpečení registrace k odběru témat a témat publikování. Při přihlášení k odběru, musí mít odpovídající oprávnění k danému tématu mřížky prostředku nebo události. Při publikování, musí mít SAS token nebo ověřování pomocí klíče tématu. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](security-authentication.md).
+Event Grid poskytuje zabezpečení pro přihlášení k odběru témat a témata týkající se publikování. Při přihlášení k odběru musíte mít odpovídající oprávnění v tématu prostředek nebo Event Grid. Při publikování musíte mít v tématu token SAS nebo ověřování klíčů. Další informace najdete v tématu [Event Grid zabezpečení a ověřování](security-authentication.md).
 
-## <a name="event-delivery"></a>Doručování událostí
+## <a name="event-delivery"></a>Doručení událostí
 
-Pokud služby Event Grid nelze potvrdit, že koncový bod odběratele obdržel událost, redelivers události. Další informace najdete v tématu [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
+Pokud Event Grid nedokáže potvrdit, že koncový bod předplatitele událost přijal, znovu doručí událost. Další informace najdete v tématu [doručování zpráv Event Grid a opakování](delivery-and-retry.md).
 
 ## <a name="batching"></a>Dávkování
 
-Pokud používáte vlastní téma, události musí být vždy publikovány v poli. Může to být batch jednoho pro scénáře s nízkou propustností, ale pro vysoké objemy případy použití, se doporučuje batch několik událostí společně za publikování na dosáhnout vyšší efektivity. Dávky může být až 1 MB. Každé události by neměly být stále větší než 64 KB (obecná dostupnost) nebo 1 MB (preview).
+Při použití vlastního tématu musí být události vždy publikovány v poli. Může se jednat o dávku jednoho pro scénáře s nízkou propustností, ale pro případy vysokého využití se doporučuje vytvořit dávku několika událostí v rámci publikování, abyste dosáhli vyšší efektivity. Dávky mohou být až 1 MB. Každá událost by neměla být větší než 64 KB (Obecná dostupnost) nebo 1 MB (Preview).
 
 > [!NOTE]
-> Událost o velikosti až 64 KB se věnujeme v obecné dostupnosti (GA) služeb úroveň smlouvy (SLA). Podpora pro událost o velikosti až 1 MB je aktuálně ve verzi preview. Události více než 64 KB se účtují v přírůstcích po 64 KB. 
+> K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 KB. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
-* Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).
+* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).

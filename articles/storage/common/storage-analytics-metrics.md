@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514776"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360966"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metriky Azure Storage Analytics (klasické)
 
@@ -55,9 +55,9 @@ Analýza úložiště může ukládat metriky, které zahrnují agregovanou stat
 |-------------------|-----------------|----------------------------|  
 |Hodinové metriky, primární umístění|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-$MetricsTransactionsQueue|Jenom verze starší než 2013-08-15. I když jsou tyto názvy stále podporovány, doporučujeme přepnout na použití níže uvedených tabulek.|  
 |Hodinové metriky, primární umístění|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|Všechny verze. Podpora pro metriky souborové služby je k dispozici pouze ve verzi 2015-04-05 a novější.|  
-|Minutové metriky, primární umístění|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-$MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Všechny verze. Podpora pro metriky souborové služby je k dispozici pouze ve verzi 2015-04-05 a novější.|  
-|Hodinové metriky, sekundární umístění|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-$MetricsHourSecondaryTransactionsQueue|Všechny verze. Musí být povolená geograficky redundantní replikace s přístupem pro čtení.|  
-|Minutové metriky, sekundární umístění|-$MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-$MetricsMinuteSecondaryTransactionsQueue|Všechny verze. Musí být povolená geograficky redundantní replikace s přístupem pro čtení.|  
+|Minutové metriky, primární umístění|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Všechny verze. Podpora pro metriky souborové služby je k dispozici pouze ve verzi 2015-04-05 a novější.|  
+|Hodinové metriky, sekundární umístění|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|Všechny verze. Musí být povolená geograficky redundantní replikace s přístupem pro čtení.|  
+|Minutové metriky, sekundární umístění|-   $MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Všechny verze. Musí být povolená geograficky redundantní replikace s přístupem pro čtení.|  
 |Kapacita (jenom Blob service)|$MetricsCapacityBlob|Všechny verze.|  
 
  Tyto tabulky se automaticky vytvoří, když je povolený Analýza úložiště pro koncový bod služby úložiště. Jsou dostupné přes obor názvů účtu úložiště, například: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Tabulky metrik se nezobrazí v operaci výpisu a je nutné k ní získat přímý odkaz pomocí názvu tabulky.  
@@ -75,7 +75,7 @@ Pomocí těchto kroků povolíte metriky v [Azure Portal](https://portal.azure.c
 [Azure Portal](https://portal.azure.com) v současné době neumožňuje nakonfigurovat minuty metrik v účtu úložiště. minutové metriky je nutné povolit pomocí prostředí PowerShell nebo prostřednictvím kódu programu.
 
 ## <a name="enable-storage-metrics-using-powershell"></a>Povolení metrik úložiště pomocí prostředí PowerShell  
-Pomocí PowerShellu na místním počítači můžete nakonfigurovat metriky úložiště ve vašem účtu úložiště pomocí rutiny Azure PowerShell **Get-AzStorageServiceMetricsProperty** pro načtení aktuálních nastavení a rutiny **. Set-AzStorageServiceMetricsProperty** pro změnu aktuálního nastavení.  
+Pomocí PowerShellu na místním počítači můžete nakonfigurovat metriky úložiště ve vašem účtu úložiště pomocí rutiny Azure PowerShell **Get-AzStorageServiceMetricsProperty** pro načtení aktuálních nastavení a rutinou **set-AzStorageServiceMetricsProperty** pro změnu aktuálního nastavení.  
 
 Rutiny, které řídí metriky úložiště, používají následující parametry:  
 
@@ -99,7 +99,7 @@ Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -Metri
 
 * Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
         
-* Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
+* Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
 
 
 
@@ -114,7 +114,7 @@ Informace o tom, jak nakonfigurovat rutiny Azure PowerShell pro práci s předpl
 ## <a name="enable-storage-metrics-programmatically"></a>Povolení metrik úložiště prostřednictvím kódu programu  
 Kromě použití Azure Portal nebo rutin Azure PowerShell k řízení metrik úložiště můžete použít také jedno z rozhraní API pro Azure Storage. Pokud například používáte jazyk .NET, můžete použít knihovnu klienta úložiště.  
 
-Třídy **CloudBlobClient**, **CloudQueueClient**, **cloudtableclient vám**a **CloudFileClient** mají metody jako **SetServiceProperties** a **SetServicePropertiesAsync** , které přebírají  **ServiceProperties** objekt jako parametr. Pomocí objektu **ServiceProperties** můžete nakonfigurovat metriky úložiště. Například následující C# fragment kódu ukazuje, jak změnit úroveň metrik a dny uchování pro hodinové metriky fronty:  
+Třídy **CloudBlobClient**, **CloudQueueClient**, **cloudtableclient vám**a **CloudFileClient** mají metody jako **SetServiceProperties** a **SetServicePropertiesAsync** , které přijímají objekt **ServiceProperties** jako parametr. Pomocí objektu **ServiceProperties** můžete nakonfigurovat metriky úložiště. Například následující C# fragment kódu ukazuje, jak změnit úroveň metrik a dny uchování pro hodinové metriky fronty:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -155,10 +155,10 @@ Všechny podrobnosti o schématech pro tyto tabulky najdete [Analýza úložišt
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
 |**PartitionKey**|**RowKey**|**Časové razítko**|**TotalRequests**|**TotalBillableRequests**|**Totalbillablerequests**|**TotalEgress**|**Dostupnost**|**Hodnotu averagee2elatency**|**Hodnotu averageserverlatency**|**PercentSuccess**|  
-|20140522T1100|uživatelský Všem|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
-|20140522T1100|uživatelský QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
-|20140522T1100|uživatelský QueryEntity|2014-05-22T11:01:16.7650250 Z|1\. místo|1\. místo|538|633|100|3|3|100|  
-|20140522T1100|uživatelský UpdateEntity|2014-05-22T11:01:16.7650250 Z|1\. místo|1\. místo|771|217|100|9|6|100|  
+|20140522T1100|uživatelský Všem|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
+|20140522T1100|uživatelský QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
+|20140522T1100|uživatelský QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|uživatelský UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
 V tomto příkladu data metriky, klíč oddílu používá dobu v minutách. Klíč řádku identifikuje typ informací, které jsou uloženy na řádku a skládá se ze dvou částí informací, typu přístupu a typu požadavku:  
 
@@ -166,7 +166,7 @@ V tomto příkladu data metriky, klíč oddílu používá dobu v minutách. Kl�
 
 -   Typ žádosti **je buď v** takovém případě se jedná o souhrnný řádek, nebo identifikuje konkrétní rozhraní API, jako je například **QueryEntity** nebo **UpdateEntity**.  
 
-Výše uvedená ukázková data zobrazí všechny záznamy za jednu minutu (počínaje 11.10:00), takže počet požadavků **QueryEntities** plus počet požadavků **QueryEntity** plus počet požadavků **UpdateEntity** přidaných do sedmi, což je celkem zobrazené na **uživateli: všechny** řádky Podobně můžete odvodit průměrnou koncovou latenci 104,4286 u **uživatele: všechny** řádky vypočítané ((143,8 * 5) + 3 + 9)/7.  
+Výše uvedená ukázková data zobrazí všechny záznamy za jednu minutu (počínaje 11.10:00), takže počet požadavků **QueryEntities** plus počet požadavků **QueryEntity** plus počet požadavků **UpdateEntity** přidaných na hodnotu 7, což je celková hodnota zobrazená na **uživateli: všechny** řádky. Podobně můžete odvodit průměrnou koncovou latenci 104,4286 u **uživatele: všechny** řádky vypočítané ((143,8 * 5) + 3 + 9)/7.  
 
 ## <a name="metrics-alerts"></a>Výstrahy metrik
 Měli byste zvážit nastavení výstrah v [Azure Portal](https://portal.azure.com) , takže budete automaticky upozorňováni na důležité změny v chování vašich služeb úložiště. Použijete-li nástroj Průzkumník úložišť ke stažení dat metrik ve formátu s oddělovači, můžete data analyzovat pomocí aplikace Microsoft Excel. Seznam dostupných nástrojů pro Průzkumník úložišť najdete v tématu [Azure Storage klientských nástrojů](/azure/storage/storage-explorers) . Výstrahy můžete nakonfigurovat v okně **Výstraha (klasické)** , které je dostupné v části **monitorování (Classic)** v okně nabídky účtu úložiště.

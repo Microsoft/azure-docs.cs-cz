@@ -9,11 +9,11 @@ ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77558892"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359241"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 > * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
 > * Testovat bránu firewall
 
-Pokud chcete, můžete tento kurz absolvovat v [Azure PowerShellu](deploy-ps.md).
+Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](deploy-ps.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -52,7 +52,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Nejprve vytvořte skupinu prostředků obsahující prostředky potřebné k nasazení brány firewall. Potom vytvořte virtuální síť, podsítě a testovací servery.
 
-### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Skupina prostředků obsahuje všechny prostředky pro tento kurz.
 

@@ -7,11 +7,11 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087174"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386876"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -63,7 +63,7 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. Vyberte **Přidat přiřazení role**.
 1. V části *role*vyberte roli v tabulce přiřazení role výše (například pro účet úložiště vyberte možnost *čtečka dat objektů BLOB úložiště*).
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
-1. Klikněte na možnost *Uložit*.
+1. Klikněte na *Uložit*.
 
 Pro zdroje založené na SQL se kromě výše uvedených kroků musí uživatel SQL vytvořit z externího poskytovatele v databázi SQL se stejným názvem, jako je prostředek sdílené složky Azure. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení vašich dat](share-your-data.md) . 
 
@@ -81,7 +81,7 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. Vyberte **Přidat přiřazení role**.
 1. V části *role*vyberte roli v tabulce přiřazení role výše (například pro účet úložiště vyberte možnost *čtečka dat objektů BLOB úložiště*).
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
-1. Klikněte na možnost *Uložit*.
+1. Klikněte na *Uložit*.
 
 V případě cíle založeného na jazyce SQL musí být kromě výše uvedeného postupu vytvořen uživatel SQL z externího poskytovatele v databázi SQL se stejným názvem, jaký má prostředek sdílené složky Azure. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení založené na SQL najdete v kurzu [přijetí a přijetí dat](subscribe-to-data-share.md) . 
 

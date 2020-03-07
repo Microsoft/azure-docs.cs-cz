@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457021"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382031"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X. 509 ve službě Azure IoT Hub
 
 V tomto kurzu se dozvíte o krocích, které potřebujete k zabezpečení služby Azure IoT Hub pomocí *ověřování certifikátu X. 509*. Pro účely ilustrace používáme open source nástroj OpenSSL k vytváření certifikátů místně na vašem počítači s Windows. Doporučujeme použít tento kurz pouze pro účely testování. V produkčním prostředí byste měli koupit certifikáty od kořenové certifikační *autority (CA)* .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz vyžaduje, abyste měli připraveny tyto prostředky:
 
@@ -83,7 +83,7 @@ Abyste mohli ověřit zařízení X. 509, musíte nejdřív podepsat zařízení
 
 V dalším kroku vám ukážeme, jak vytvořit C# aplikaci, která simuluje zařízení X. 509 zaregistrované ve službě IoT Hub. Hodnoty teploty a vlhkosti se z simulovaného zařízení pošle do vašeho středu. V tomto kurzu vytvoříme jenom aplikaci zařízení. K vytvoření aplikace IoT Hub služby, která odešle odpověď na události odesílané simulovaným zařízením, je ponecháno cvičení pro čtenáře. C# Aplikace předpokládá, že jste postupovali podle kroků v části [Správa certifikátů testovací CA pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
-1. Otevřete Visual Studio, vyberte **vytvořit nový projekt**a pak zvolte šablonu projektu **Konzolová aplikace (.NET Framework)** . Vyberte **Next** (Další).
+1. Otevřete Visual Studio, vyberte **vytvořit nový projekt**a pak zvolte šablonu projektu **Konzolová aplikace (.NET Framework)** . Vyberte **Další**.
 
 1. V části **Konfigurovat nový projekt**pojmenujte projekt *SimulateX509Device*a pak vyberte **vytvořit**.
 
@@ -97,7 +97,7 @@ V dalším kroku vám ukážeme, jak vytvořit C# aplikaci, která simuluje zař
 
     Tento krok stáhne a nainstaluje balíček NuGet sady SDK pro zařízení Azure IoT a jeho závislosti a přidá se na něj odkaz.
 
-1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

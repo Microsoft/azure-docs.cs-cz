@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Podporované topologie | Microsoft Docs'
+title: 'Azure AD Connect: podporované topologie | Microsoft Docs'
 description: Toto téma podrobně popisuje podporované a nepodporované topologie pro Azure AD Connect
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275220"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376059"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají Azure AD Connect synchronizaci jako klíčové řešení pro integraci. Tento článek zahrnuje podporované i nepodporované konfigurace.
@@ -42,7 +42,7 @@ Tady je legenda k obrázkům v článku:
 
 
 > [!IMPORTANT]
-> Společnost Microsoft nepodporuje úpravu ani provozní Azure AD Connect synchronizaci mimo konfigurace nebo akce, které jsou zdokumentovány formálně. Kterákoli z těchto konfigurací nebo akcí může způsobit nekonzistentní nebo nepodporovaný stav Azure AD Connect synchronizace. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
+> Společnost Microsoft nepodporuje úpravu ani provozní Azure AD Connect synchronizaci mimo konfigurace nebo akce, které jsou zdokumentovány formálně. Kterákoli z těchto konfigurací nebo akcí může způsobit nekonzistentní nebo nepodporovaný stav Azure AD Connect synchronizace. V důsledku toho společnost Microsoft nemůže poskytnout technickou podporu pro taková nasazení.
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Jedna doménová struktura, jeden tenant Azure AD

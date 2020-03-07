@@ -4,11 +4,11 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 11/27/2019
 ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207277"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355038"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkce nasazení pro šablony Azure Resource Manager 
 
@@ -21,7 +21,7 @@ Správce prostředků poskytuje následující funkce pro získání hodnot vzta
 
 Pokud chcete získat hodnoty z prostředků, skupin prostředků nebo předplatných, přečtěte si téma [funkce prostředků](template-functions-resource.md).
 
-## <a name="deployment"></a>deployment
+## <a name="deployment"></a>nasazení
 
 `deployment()`
 
@@ -239,7 +239,7 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
@@ -344,7 +344,7 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v od
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 

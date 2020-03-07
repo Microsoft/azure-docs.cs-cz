@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014464"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376388"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory detekce rizik
 
@@ -69,7 +69,7 @@ Průběžné investice společnosti Microsoft do procesu zjišťování vedou k 
 
 Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. To se obvykle provádí publikováním veřejně na tmavém webu nebo vložením webů nebo obchodováním nebo prodejem přihlašovacích údajů na černém trhu. Služba nevrácených přihlašovacích údajů Microsoftu získává páry uživatelského jména a hesla, protože sleduje veřejné a tmavé weby a pracuje s těmito službami:
 
-- Výzkumní pracovníci
+- Odborníky ze
 - Vynucování zákonů
 - Týmy zabezpečení v Microsoftu
 - Jiné důvěryhodné zdroje 

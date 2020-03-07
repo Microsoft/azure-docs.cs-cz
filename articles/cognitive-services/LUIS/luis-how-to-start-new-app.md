@@ -1,7 +1,7 @@
 ---
 title: Vytvoření nové aplikace – LUIS
 titleSuffix: Azure Cognitive Services
-description: Vytvářejte a spravujte své aplikace na webové stránce Language Understanding (LUIS).
+description: Vytvářet a spravovat vaše aplikace na webové stránce Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904284"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390084"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu LUIS
 Existuje několik způsobů, jak vytvořit aplikaci LUIS. Aplikaci LUIS můžete vytvořit na portálu LUIS nebo prostřednictvím [rozhraní API](developer-reference-resource.md)pro vytváření Luis.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="using-the-luis-portal"></a>Používání portálu LUIS
+## <a name="using-the-luis-portal"></a>Na portálu služby LUIS
 
 Novou aplikaci můžete vytvořit na portálu Preview několika způsoby:
 
-* Začněte s prázdnou aplikací a vytvořte záměry, projevy a entity.
+* Začít s prázdnou aplikaci a vytvořit záměrů, projevy a entity.
 * Začněte s prázdnou aplikací a přidejte [předem vytvořenou doménu](luis-how-to-use-prebuilt-domains.md).
 * Importujte aplikaci LUIS z `.lu` nebo `.json` souboru, který už obsahuje záměry, projevy a entity.
 
-## <a name="using-the-authoring-apis"></a>Použití rozhraní API pro vytváření obsahu
-Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit několika způsoby:
+## <a name="using-the-authoring-apis"></a>Pomocí rozhraní API pro vytváření obsahu
+Vytvořit novou aplikaci s rozhraním API pro vytváření obsahu v několika způsoby:
 
 * [Přidat aplikaci](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) – začněte s prázdnou aplikací a vytvořte záměry, projevy a entity.
 * [Přidejte předem vytvořenou aplikaci](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) – začněte s předem vytvořenou doménou, včetně záměrů, projevyů a entit.  
@@ -54,7 +54,7 @@ Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit něk
 
 1. Do dialogového okna zadejte název vaší aplikace, například `Pizza Tutorial`.
 
-    ![Dialogové okno vytvořit novou aplikaci](./media/create-pizza-tutorial-app-in-portal.png)
+    ![Vytvoření nového dialogového okna aplikace](./media/create-pizza-tutorial-app-in-portal.png)
 
 1. Zvolte jazykovou verzi vaší aplikace a potom vyberte **Hotovo**. Popis a předpověď prostředku jsou v tuto chvíli volitelné. V části **Spravovat** portálu můžete kdykoli nastavit.
 

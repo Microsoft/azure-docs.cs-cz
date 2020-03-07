@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
 ms.openlocfilehash: fe8ea4dfb4de45a1e09648ac51fe8d74f93a6b9e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979606"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356656"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změna nebo odstranění směrovací tabulky
 
@@ -30,7 +30,7 @@ Azure automaticky směruje provoz mezi podsítěmi Azure, virtuálními sítěmi
 Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 
 * Pokud ještě nemáte účet Azure, zaregistrujte si [bezplatný zkušební účet](https://azure.microsoft.com/free).<br>
-* Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.<br>
+* Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.<br>
 * Pokud k dokončení úkolů v tomto článku používáte příkazy prostředí PowerShell, buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.<br>
 * Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, je také potřeba spustit `az login` a vytvořit připojení k Azure.
 
@@ -123,7 +123,7 @@ Pokud je směrovací tabulka přidružená k některým podsítím, nelze ji ods
 
 1. Do vyhledávacího pole v horní části portálu zadejte do vyhledávacího pole *směrovací tabulky* . Pokud se ve výsledcích hledání zobrazí **směrovací tabulky** , vyberte ji.
 1. Na pravé straně směrovací tabulky, kterou chcete odstranit, vyberte **...**
-1. Vyberte **Odstranit** a potom vyberte **Ano**.
+1. Vyberte **Odstranit**a pak vyberte **Ano**.
 
 ### <a name="delete-a-route-table---commands"></a>Odstranění směrovací tabulky – příkazy
 
@@ -236,7 +236,7 @@ Můžete určit typ dalšího segmentu směrování mezi virtuálním počítač
 
 Aby bylo možné provádět úlohy s směrovacími tabulkami a trasami, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                                          |   Name (Název)                                                  |
+| Akce                                                          |   Název                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Čtení směrovací tabulky                                    |
 | Microsoft. Network/routeTables/Write                             |   Vytvoří nebo aktualizuje směrovací tabulku.                        |
