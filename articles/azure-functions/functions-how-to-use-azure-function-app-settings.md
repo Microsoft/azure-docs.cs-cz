@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230579"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355902"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak nakonfigurovat a spravovat aplikace Function App.
 > [!TIP]  
 > Řadu možností konfigurace je možné spravovat taky pomocí [Azure CLI]. 
 
-## <a name="get-started-in-the-azure-portal"></a>Začínáme na webu Azure Portal
+## <a name="get-started-in-the-azure-portal"></a>Začínáme v Azure Portal
 
 Začněte tím, že přejdete na [Azure Portal] a přihlásíte se k účtu Azure. Na panelu hledání v horní části portálu zadejte název vaší aplikace Function App a vyberte ji ze seznamu. Po výběru aplikace Function App se zobrazí následující stránka:
 
@@ -79,7 +79,7 @@ Aplikace Function App běží na a jsou udržované Azure App Service platformou
 Zbývající část tohoto článku se zaměřuje na následující funkce App Service v Azure Portal, které jsou užitečné pro funkce:
 
 + [Editor App Service](#editor)
-+ [Console](#console)
++ [Konzola](#console)
 + [Rozšířené nástroje (Kudu)](#kudu)
 + [Možnosti nasazení](#deployment)
 + [CORS](#cors)

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/07/2020
 ms.author: barclayn
 ms.openlocfilehash: 682f0b66f7632bce16ae134e71ea27c4df976f43
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087092"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389961"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -241,7 +241,7 @@ Služba Microsoft Azure Services každý podporuje jedno nebo více šifrování
 
 Každý zákazník, který používá funkce infrastruktury jako služby (IaaS) Azure, může pro své virtuální počítače s IaaS a disky prostřednictvím Azure Disk Encryption dosáhnout šifrování v klidovém provozu. Další informace o službě Azure Disk Encryption najdete v [dokumentaci k Azure Disk Encryption](../azure-security-disk-encryption-overview.md).
 
-#### <a name="azure-storage"></a>Úložiště Azure
+#### <a name="azure-storage"></a>Azure Storage
 
 Všechny Azure Storage služby (úložiště objektů blob, úložiště front, úložiště tabulek a soubory Azure) podporují šifrování na straně serveru v klidovém umístění. Některé služby dále podporují klíče spravované zákazníkem a šifrování na straně klienta. 
 
@@ -269,9 +269,9 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | **Analýzy**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
 | Event Hubs                       | Ano                | Ano, všechny délky RSA. | -                  |
-| Funkce                        | Ano                | Ano, všechny délky RSA. | -                  |
+| Functions                        | Ano                | Ano, všechny délky RSA. | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
-| Katalog dat Azure               | Ano                | -                  | -                  |
+| Azure Data Catalog               | Ano                | -                  | -                  |
 | Apache Kafka ve službě Azure HDInsight  | Ano                | Všechny délky RSA.   | -                  |
 | Azure Monitor Application Insights | Ano                | Ano                | -                  |
 | Azure Monitor Log Analytics | Ano                | Ano                | -                  |
@@ -302,7 +302,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Azure Synapse Analytics          | Ano                | Ano, RSA 2048-bit  | Ano                |
 | SQL Server Stretch Database      | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Table Storage                    | Ano                | Ano                | Ano                |
-| Azure Cosmos DB                  | Ano                | Ano                | -                  |
+| Databáze Azure Cosmos                  | Ano                | Ano                | -                  |
 | Azure Databricks                 | Ano                | Ano                | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | Ano                | -                  | Ano                |
@@ -320,7 +320,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Azure Site Recovery              | Ano                | -                  | -                  |
 | **Média**                        |                    |                    |                    |
 | Media Services                   | Ano                | -                  | Ano                |
-| **Úložiště**                      |                    |                    |                    |
+| **Storage**                      |                    |                    |                    |
 | Blob Storage                     | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Disk Storage                     | Ano                | Ano                | -                  |
 | Spravované Disk Storage             | Ano                | Ano                | -                  |

@@ -4,11 +4,11 @@ description: Azure Monitor pro kontejnery shromažďuje metriky a data protokol�
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: dcd1656673e549b583de26bca897d0055f389d0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362021"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
 
@@ -18,7 +18,7 @@ Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a 
 
 Příklady záznamů, které byly shromážděny sadou monitorování Azure pro kontejnery a datové typy, které se zobrazí ve výsledcích hledání protokolů, které jsou zobrazeny v následující tabulce:
 
-| Data type | Datový typ v prohledávání protokolu | Fields (Pole) |
+| Typ dat | Datový typ v prohledávání protokolu | Fields (Pole) |
 | --- | --- | --- |
 | Výkon pro hostitele a kontejnery | `Perf` | Počítače, název_objektu, CounterName &#40;% času procesoru, disku přečte MB, zapíše MB, MB využití paměti, disku sítě přijatých bajtů, síť posílat bajtů, procesor doby využití, sítě&#41;, CounterValue TimeGenerated, Cesta_k_čítači, SourceSystem |
 | Kontejner inventáře | `ContainerInventory` | TimeGenerated, počítače, název kontejneru, ContainerHostname, Image, ImageTag, ContainerState, ukončovací kód, EnvironmentVar, příkaz, čas vytvoření, StartedTime, FinishedTime, SourceSystem, identifikátor ContainerID, ID obrázku |
@@ -42,7 +42,7 @@ Příklady záznamů, které byly shromážděny sadou monitorování Azure pro 
 
 Protokoly Azure Monitor vám můžou pomáhat při hledání trendů, diagnostikování slabých míst, předpovědi nebo korelují dat, která vám pomůžou určit, jestli aktuální konfigurace clusteru funguje optimálně. Prohledávání protokolů předem definovaných jsou k dispozici pro vás okamžitě začít využívat nebo přizpůsobit vrátit informace způsobem, jaký požadujete.
 
-Interaktivní analýzu dat v pracovním prostoru můžete provádět tak, že v rozevíracím seznamu **Zobrazit v analýze** vyberete možnost **Zobrazit protokoly událostí Kubernetes** nebo **Zobrazit protokoly kontejnerů** v podokně náhledu. **Prohledávání protokolů** pravé části stránky Azure portal, který jste byli, zobrazí se stránka.
+Interaktivní analýzu dat v pracovním prostoru můžete provádět tak, že v rozevíracím seznamu **Zobrazit v analýze** vyberete možnost **Zobrazit protokoly událostí Kubernetes** nebo **Zobrazit protokoly kontejnerů** v podokně náhledu. Stránka pro **prohledávání protokolu** se zobrazí napravo od Azure Portal stránky, na které jste byli.
 
 ![Analýza dat v Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -57,8 +57,8 @@ Výstup protokolu kontejnerů, který se předává do vašeho pracovního prost
 | ContainerInventory<br> &#124;Projekt počítače, jméno, obrázek, ImageTag, ContainerState, čas vytvoření, StartedTime, FinishedTime<br> &#124;vykreslit tabulku | Seznam všech informací o životním cyklu kontejneru| 
 | KubeEvents_CL<br> &#124;kde not(isempty(Namespace_s))<br> &#124;Seřadit podle TimeGenerated desc<br> &#124;vykreslit tabulku | Události Kubernetes|
 | ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by bitové kopie, ImageTag, spuštění | Inventář imagí | 
-| **Vyberte možnosti spojnicový graf zobrazení**:<br> Výkonu<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "cpuUsageNanoCores" &#124; shrnout AvgCPUUsageNanoCores = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Procesoru kontejneru | 
-| **Vyberte možnosti spojnicový graf zobrazení**:<br> Výkonu<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "memoryRssBytes" &#124; shrnout AvgUsedRssMemoryBytes = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Paměť kontejneru |
+| **Vyberte možnost zobrazení spojnicového grafu**:<br> Výkon<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "cpuUsageNanoCores" &#124; shrnout AvgCPUUsageNanoCores = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Procesoru kontejneru | 
+| **Vyberte možnost zobrazení spojnicového grafu**:<br> Výkon<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "memoryRssBytes" &#124; shrnout AvgUsedRssMemoryBytes = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Paměti kontejneru |
 | InsightsMetrics<br> &#124;kde name = = "requests_count"<br> &#124;Shrnutí: Val = any (Val) by TimeGenerated = bin (TimeGenerated, 1m)<br> &#124;Seřadit podle TimeGenerated ASC<br> &#124;Project RequestsPerMinute = Val-předchozí (Val), TimeGenerated <br> &#124;BarChart vykreslování  | Žádosti za minutu s vlastními metrikami |
 
 ## <a name="query-prometheus-metrics-data"></a>Data metrik Prometheus dotazů

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901514"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392941"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Přehled kodérů médií na vyžádání v Azure 
 
@@ -48,10 +48,10 @@ Ve výchozím nastavení každý účet Media Services může mít současně je
 ### <a name="how-to-use"></a>Způsob použití
 [Postup při kódování pomocí Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-### <a name="formats"></a>Formáty
+### <a name="formats"></a>Formulářů
 [Formáty a kodeky](media-services-media-encoder-standard-formats.md)
 
-### <a name="presets"></a>Presets
+### <a name="presets"></a>Žádném
 Media Encoder Standard se konfiguruje pomocí některého z přednastavených kodérů popsaných [tady](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Vstupní a výstupní metadata
@@ -68,7 +68,7 @@ Informace najdete v tématu [Postup při stříhání videí pomocí Media Encod
 ### <a name="create-overlays"></a>Vytvořit překryvy
 Informace najdete v tématu [jak vytvořit překryvy pomocí Media Encoder Standard](media-services-advanced-encoding-with-mes.md#overlay).
 
-### <a name="see-also"></a>Další informace najdete v tématech
+### <a name="see-also"></a>Viz také
 [Blog Media Services](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>Pracovní postup kodéru Media Encoder Premium
@@ -86,7 +86,7 @@ Pokud vstupní video neobsahuje skryté titulky, bude výstupní Asset stále ob
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články

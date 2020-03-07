@@ -12,11 +12,11 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/18/2019
 ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928512"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358509"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace prostředí Integration runtime v místním prostředí
 
@@ -112,7 +112,7 @@ Zde jsou uvedeny podrobnosti o parametrech a vlastnostech aplikace:
 | **Klíč** "`<AuthenticationKey>`"                                 | Přepsat nebo aktualizovat předchozí ověřovací klíč Tuto akci buďte opatrní. Váš předchozí místně hostovaný uzel IR může přejít do režimu offline, pokud klíč je nového prostředí Integration runtime. | Ne       |
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Vygeneruje záložní soubor pro aktuální uzel. Záložní soubor zahrnuje přihlašovací údaje klíče uzlu a datového úložiště. | Ne       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | Obnovte uzel ze záložního souboru.                          | Ne       |
-| **Restartovat**                                                     | Restartujte hostitelskou službu Integration runtime v místním prostředí.   | Ne       |
+| **Službu**                                                     | Restartujte hostitelskou službu Integration runtime v místním prostředí.   | Ne       |
 | **Start**                                                       | Spusťte hostovanou hostitelskou službu Integration runtime.     | Ne       |
 | **Stop**                                                        | Zastavte hostitelskou službu Integration runtime v místním prostředí.        | Ne       |
 | **StartUpgradeService**                                         | Spusťte službu upgradu místního prostředí Integration runtime.       | Ne       |
@@ -153,7 +153,7 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
 - Podporované verze Windows jsou:
   + Windows 7 Service Pack 1
   + Windows 8.1
-  + Windows 10
+  + Windows 10
   + Windows Server 2008 R2 SP1
   + Windows Server 2012
   + Windows Server 2012 R2
@@ -170,7 +170,7 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
     - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) Balíček (x64)
     - Běhový modul Java (JRE) verze 8 od poskytovatele JRE, jako je třeba [přijmout OpenJDK](https://adoptopenjdk.net/). Zajistěte, aby byla nastavená proměnná prostředí `JAVA_HOME`.
 
-## <a name="installation-best-practices"></a>Osvědčené postupy instalace
+## <a name="installation-best-practices"></a>Osvědčené postupy pro instalaci
 
 Místní prostředí Integration runtime můžete nainstalovat stažením instalačního balíčku MSI z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Podrobné pokyny najdete v článku [přesunutí dat mezi místním prostředím a cloudem](tutorial-hybrid-copy-powershell.md) .
 
@@ -267,7 +267,7 @@ Pokud chcete zobrazit Úvod a ukázku této funkce, podívejte se na následují
 
 Chcete-li sdílet prostředí Integration runtime v místním prostředí s více datovými továrnami, přečtěte si téma [Vytvoření sdíleného místního prostředí Integration runtime](create-shared-self-hosted-integration-runtime-powershell.md) pro další informace.
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 #### <a name="shared-ir"></a>Sdílený IR
 
@@ -355,7 +355,7 @@ Po uložení aktualizovaných nastavení proxy serveru se služba Host prostřed
 Pokud chcete zobrazit nebo aktualizovat nastavení proxy serveru, můžete po registraci místního prostředí Integration runtime použít Microsoft Integration Runtime Configuration Manager.
 
 1. Otevřete **Microsoft Integration Runtime Configuration Manager**.
-1. Vyberte **nastavení** kartu.
+1. Vyberte kartu **Nastavení** .
 1. V části **proxy server http**vyberte odkaz **změnit** a otevřete dialogové okno **nastavit proxy server http** .
 1. Vyberte **Další**. Zobrazí se upozornění s dotazem na vaše oprávnění k uložení nastavení proxy serveru a opětovném spuštění hostitelské služby modulu runtime integrace.
 

@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749230"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393216"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
@@ -36,13 +36,13 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Sítě |[Má zařízení na straně klienta vysoce kvalitní síťový odkaz?](#link-quality) |
 | &nbsp; |Sítě |[Je klientská aplikace ve stejné oblasti jako účet úložiště?](#location) |
 | &nbsp; |Přímý přístup klienta |[Používáte k tomu přímý přístup k Azure Storage pomocí sdílených přístupových podpisů (SAS) a sdílení prostředků mezi zdroji (CORS)?](#sas-and-cors) |
-| &nbsp; |Mezipaměť |[Ukládá vaše aplikace data, ke kterým dochází často a zřídka se mění?](#reading-data) |
-| &nbsp; |Mezipaměť |[Provádí vaše aplikace dávkové aktualizace jejich ukládáním do mezipaměti v klientovi a jejich nahráním do větších sad?](#uploading-data-in-batches) |
+| &nbsp; |Ukládání do mezipaměti |[Ukládá vaše aplikace data, ke kterým dochází často a zřídka se mění?](#reading-data) |
+| &nbsp; |Ukládání do mezipaměti |[Provádí vaše aplikace dávkové aktualizace jejich ukládáním do mezipaměti v klientovi a jejich nahráním do větších sad?](#uploading-data-in-batches) |
 | &nbsp; |Konfigurace .NET |[Používáte pro optimální výkon .NET Core 2,1 nebo novější?](#use-net-core) |
 | &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
 | &nbsp; |Paralelismu |[Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
 | &nbsp; |Kopírování objektů BLOB |[Kopírujete objekty blob nejúčinnějším způsobem?](#blob-copy-apis) |
@@ -52,7 +52,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Použití metadat |[Ukládáte často používaná metadata o objektech blob v jejich metadatech?](#use-metadata) |
 | &nbsp; |Rychlé nahrávání |[Při rychlém nahrání jednoho objektu BLOB se bloky nahrávají paralelně?](#upload-one-large-blob-quickly) |
 | &nbsp; |Rychlé nahrávání |[Při rychlém nahrávání mnoha objektů BLOB se nahrávají objekty blob paralelně?](#upload-many-blobs-quickly) |
-| &nbsp; |Typ objektu blob |[Používáte objekty blob stránky nebo objekty blob bloku, pokud je to vhodné?](#choose-the-correct-type-of-blob) |
+| &nbsp; |Typ objektu BLOB |[Používáte objekty blob stránky nebo objekty blob bloku, pokud je to vhodné?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Cíle škálovatelnosti
 
@@ -151,7 +151,7 @@ Předpokládejme například, že webová aplikace spuštěná v Azure vytvoří
   
 SAS i CORS vám můžou přispět k tomu, abyste se vyhnuli zbytečnému zatížení vaší webové aplikace.  
 
-## <a name="caching"></a>Mezipaměť
+## <a name="caching"></a>Ukládání do mezipaměti
 
 Ukládání do mezipaměti hraje důležitou roli ve výkonu. Následující části popisují osvědčené postupy pro ukládání do mezipaměti.
 

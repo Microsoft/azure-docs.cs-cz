@@ -9,15 +9,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626226"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396545"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informace o cenách služby Azure IoT Hub
 
-[Ceny centra IoT Azure](https://azure.microsoft.com/pricing/details/iot-hub) obsahuje obecné informace o různých SKU a cenách pro službu IoT Hub. Tento článek obsahuje další podrobnosti o tom, jak se měří různým funkcím služby IoT Hub jako zprávy ve službě IoT Hub.
+[Ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub) poskytují obecné informace o různých SKU a cenách pro IoT Hub. Tento článek obsahuje další podrobnosti o tom, jak se měří různým funkcím služby IoT Hub jako zprávy ve službě IoT Hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -28,8 +28,8 @@ ms.locfileid: "60626226"
 | Operace registru identit <br/> (vytvoření, načtení, výpis, aktualizace nebo odstranění) | Není placený. |
 | Zprávy typu zařízení-cloud | Úspěšně odeslané zprávy se účtují po 4 KB na příchozí přenos dat do služby IoT Hub. Například zpráva 6 KB se účtuje 2 zprávy. |
 | Zprávy typu cloud zařízení | Úspěšně odeslané zprávy se účtují po 4 KB, třeba zprávu 6 KB se účtuje 2 zprávy. |
-| Nahrání souborů | Přenos souborů do služby Azure Storage se měří ve službě IoT Hub. Soubor přenos zahájení a ukončení zprávy se účtují podle messaged Účtovaná podle objemu dat v přírůstcích po 4 KB. Třeba přenesení 10 MB soubor se účtuje jako dvě zprávy navíc náklady na úložiště Azure. |
-| Přímé metody | Úspěšná metoda žádosti se účtují po 4 KB, a odpovědi se účtují po 4 KB jako další zprávy. Požadavky na odpojená zařízení se účtují jako zprávy v 4 KB blocích. Například metody s tělem 4 KB, jehož výsledkem odpověď se žádný text ze zařízení se účtuje jako dvě zprávy. Metody s tělem 6 KB, jehož výsledkem 1 KB odpověď od zařízení, se účtuje jako dvě zprávy požadavku a další zprávu pro odpověď. |
+| Nahrání souborů | Přenos souborů do služby Azure Storage se měří ve službě IoT Hub. Soubor přenos zahájení a ukončení zprávy se účtují podle messaged Účtovaná podle objemu dat v přírůstcích po 4 KB. Například přenos souboru o velikosti 10 MB se účtuje jako dvě zprávy kromě Azure Storagech nákladů. |
+| Přímé metody | Úspěšné požadavky na metodu se účtují v blocích po 4 KB a odpovědi se účtují jako další zprávy v blocích po 4 KB. Požadavky na odpojená zařízení se účtují jako zprávy v 4 KB blocích. Například metoda se základním textem 4 KB, který má za následek odpověď bez těla ze zařízení, se účtuje jako dvě zprávy. Metody s tělem 6 KB, jehož výsledkem 1 KB odpověď od zařízení, se účtuje jako dvě zprávy požadavku a další zprávu pro odpověď. |
 | Čtení dvojčat zařízení a modul | Čtení dvojčat zařízení nebo modulu a z řešení zpět end se účtují jako zpráv do bloků velikosti 512 bajtů. Například čtení 6-KB dvojčete se účtuje jako 12 zprávy. |
 | Dvojče zařízení a modul aktualizací (značek a vlastnosti) | Aktualizace dvojčat zařízení nebo modulu a z back-end řešení se účtují jako zpráv do bloků velikosti 512 bajtů. Například čtení 6-KB dvojčete se účtuje jako 12 zprávy. |
 | Dotazů na dvojčata zařízení a modul | Dotazy se účtují jako zprávy v závislosti na velikosti výsledek v blocích o velikosti 512 bajtů. |
@@ -38,11 +38,11 @@ ms.locfileid: "60626226"
 | Zprávy keep-alive | Při použití přes protokol AMQP nebo protokol MQTT, neúčtují se vyměňují k navázání připojení a při vyjednávání, které si vyměňují zprávy. |
 
 > [!NOTE]
-> Všechny velikosti se vypočítávají vzhledem k tomu, velikost datové části v bajtech (protokol rámce se ignoruje). Pro zprávy, které mají vlastnosti a text, velikost je vypočítán způsobem bez ohledu na protokol. Další informace najdete v tématu [formát zprávy služby IoT Hub](iot-hub-devguide-messages-construct.md).
+> Všechny velikosti se vypočítávají vzhledem k tomu, velikost datové části v bajtech (protokol rámce se ignoruje). Pro zprávy, které mají vlastnosti a text, velikost je vypočítán způsobem bez ohledu na protokol. Další informace najdete v tématu [IoT Hub formátu zprávy](iot-hub-devguide-messages-construct.md).
 
 ## <a name="example-1"></a>Příklad #1
 
-Zařízení odesílá do služby IoT Hub, který je pak přečte Azure Stream Analytics jednu zprávu typu zařízení cloud 1 KB za minutu. Back-end řešení volá metodu (s datovou částí 512 bajtů) na zařízení každých 10 minut pro aktivaci určité akce. Zařízení jsou reaguje na metodu s výsledkem 200 bajtů.
+Zařízení odesílá do služby IoT Hub, který je pak přečte Azure Stream Analytics jednu zprávu typu zařízení cloud 1 KB za minutu. Back-end řešení vyvolá metodu (s 512 bajtovou částí) na zařízení každých 10 minut, aby aktivoval určitou akci. Zařízení jsou reaguje na metodu s výsledkem 200 bajtů.
 
 Zařízení využívá:
 

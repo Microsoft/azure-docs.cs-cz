@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483216"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358471"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Podporované formáty souborů a kompresní kodeky v Azure Data Factory (starší verze)
 
@@ -28,19 +28,19 @@ ms.locfileid: "75483216"
 >[!NOTE]
 >Naučte se nový model z článku [oddělený text format](format-delimited-text.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
-Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru, nastavte `type` vlastnost `format` části datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
+Pokud chcete číst z textového souboru nebo zapisovat do textového souboru, nastavte vlastnost `type` v části `format` datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete zvážit použití výjimečných málo častého netisknutelného znaku, který nemusí existovat ve vašich datech. Zadejte například "\u0001", který představuje Start začátek hlavičky (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)** . <br/><br/>Použijte znakovou sadu Unicode, najdete v tématu [znaky znakové sady Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) získat pro ni odpovídající kód. |Ne |
+| columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete zvážit použití výjimečných málo častého netisknutelného znaku, který nemusí existovat ve vašich datech. Zadejte například "\u0001", který představuje Start začátek hlavičky (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)** . <br/><br/>Chcete-li použít znak Unicode, přečtěte si text [znaků Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) a získejte pro něj odpovídající kód. |Ne |
 | rowDelimiter |Znak, který slouží k oddělení řádků v souboru. |Je povolený jenom jeden znak. **Výchozí** hodnotou pro čtení může být libovolná z těchto hodnot: **[\r\n, \r, \n]** a pro zápis hodnota **\r\n**. |Ne |
 | escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: Hello, world), můžete jako řídicí znak definovat $ a použít ve zdroji řetězec Hello$, world. |Ne |
 | quoteChar |Znak, který slouží k uvození textového řetězce. Oddělovače sloupců a řádků uvnitř znaků uvozovek budou považované za součást hodnoty příslušného řetězce. Tato vlastnost se vztahuje na vstupní i výstupní datové sady.<br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: <Hello, world>), můžete jako znak uvozovek definovat " (dvojité uvozovky) a použít ve zdroji řetězec "Hello$, world". |Ne |
 | nullValue |Jeden nebo několik znaků, které se používají jako reprezentace hodnoty Null. |Jeden nebo několik znaků. **Výchozí** hodnoty jsou **\N a NULL** pro čtení a **\N** pro zápis. |Ne |
 | encodingName |Zadejte název kódování. |Platný název kódování. Další informace najdete v tématu [Vlastnost Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |Ne |
-| firstRowAsHeader |Určuje, jestli se má první řádek považovat za záhlaví. U vstupní datové sady Data Factory načítá první řádek jako záhlaví. U výstupní datové sady Data Factory zapisuje první řádek jako záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Pravda<br/><b>False (výchozí)</b> |Ne |
-| skipLineCount |Označuje počet **neprázdný** řádků, které mají přeskočit při čtení dat ze vstupních souborů. Pokud je zadaný parametr skipLineCount i firstRowAsHeader, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Integer |Ne |
-| treatEmptyAsNull |Určuje, jestli se při čtení dat ze vstupního souboru má prázdný řetězec nebo řetězec s hodnotou null považovat za hodnotu null. |**True (výchozí)**<br/>Nepravda |Ne |
+| firstRowAsHeader |Určuje, jestli se má první řádek považovat za záhlaví. U vstupní datové sady Data Factory načítá první řádek jako záhlaví. U výstupní datové sady Data Factory zapisuje první řádek jako záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (výchozí)</b> |Ne |
+| skipLineCount |Označuje počet **neprázdných** řádků, které se mají přeskočit při čtení dat ze vstupních souborů. Pokud je zadaný parametr skipLineCount i firstRowAsHeader, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Integer |Ne |
+| treatEmptyAsNull |Určuje, jestli se při čtení dat ze vstupního souboru má prázdný řetězec nebo řetězec s hodnotou null považovat za hodnotu null. |**True (výchozí)**<br/>False |Ne |
 
 ### <a name="textformat-example"></a>Příklad typu TextFormat
 
@@ -65,7 +65,7 @@ V následující definici JSON pro datovou sadu jsou uvedeny některé vlastnost
 },
 ```
 
-Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quoteChar` touto hodnotou escapeChar:
+Pokud chcete místo `escapeChar` použít `quoteChar`, nahraďte řádek s `quoteChar` touto hodnotou escapeChar:
 
 ```json
 "escapeChar": "$",
@@ -82,9 +82,9 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 >[!NOTE]
 >Přečtěte si článek o novém modelu z [formátu JSON](format-json.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
-K **Importovat/exportovat soubor JSON jako – je do nebo ze služby Azure Cosmos DB**, naleznete v části dokumentů JSON importu a exportu v [přesun dat do a ze služby Azure Cosmos DB](connector-azure-cosmos-db.md) článku.
+Pokud chcete **Importovat/exportovat soubor JSON tak, jak je do nebo z Azure Cosmos DB**, přečtěte si část import/export dokumentů JSON v článku [přesun dat do a z Azure Cosmos DB](connector-azure-cosmos-db.md) .
 
-Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nastavte `type` vlastnost `format` části **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
+Chcete-li analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nastavte vlastnost `type` v části `format` na **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -226,10 +226,10 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
-Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A to konkrétně:
+Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít `array[x].property` a extrahovat hodnotu dané vlastnosti z `xth` objektu, nebo můžete použít `array[*].property` k nalezení hodnoty z libovolného objektu, který obsahuje tuto vlastnost.
+- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové sloupce datové sady](copy-activity-schema-and-type-mapping.md).
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít `array[x].property` k extrakci hodnoty dané vlastnosti z objektu `xth` nebo můžete použít `array[*].property` k vyhledání hodnoty z libovolného objektu, který tuto vlastnost obsahuje.
 
 ```json
 "properties": {
@@ -301,11 +301,11 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 | 01 | 20170122 | P3 | 231 | `[{"sanmateo":"No 1"}]` |
 
 
-Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A to konkrétně:
+Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
-- `jsonNodeReference` Označuje, iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** `orderlines`.
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu `ordernumber`, `orderdate`, a `city` v kořenovém objektu s JSON cesta začínající `$.`, zatímco `order_pd` a `order_price` jsou definované pomocí cesty odvozené z elementu pole bez řetězce `$.` .
+- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové sloupce datové sady](copy-activity-schema-and-type-mapping.md).
+- `jsonNodeReference` označuje, že se má iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** `orderlines`.
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu jsou `ordernumber`, `orderdate`a `city` pod kořenovým objektem s cestou JSON začínající `$.`, zatímco `order_pd` a `order_price` jsou definovány s cestou odvozenou z prvku Array bez `$.`.
 
 ```json
 "properties": {
@@ -356,7 +356,7 @@ Pokud máte ve službě SQL Database v následující tabulce:
 
 | ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
-| 1\. místo | 20170119 | 2000 | David |
+| 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
@@ -373,7 +373,7 @@ a pro každý záznam očekáváte, že k zápisu do objektu JSON v následujíc
 }
 ```
 
-Výstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). Přesněji řečeno `structure` oddíl definuje vlastní názvy vlastností v cílovém souboru a `nestingSeparator` (výchozí hodnota je ".") se používají k určení vrstvy vnoření od názvu. Pokud nechcete měnit název vlastnosti v porovnání se zdrojovým názvem sloupce nebo vnořit některé z vlastností, je tento oddíl **nepovinný**.
+Výstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). Konkrétně `structure` oddíl definuje názvy přizpůsobených vlastností v cílovém souboru, `nestingSeparator` (výchozí je ".") slouží k identifikaci vnořování vrstev z názvu. Pokud nechcete měnit název vlastnosti v porovnání se zdrojovým názvem sloupce nebo vnořit některé z vlastností, je tento oddíl **nepovinný**.
 
 ```json
 "properties": {
@@ -409,7 +409,7 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 >[!NOTE]
 >Seznamte se s novým modelem z článku [Parquet Format](format-parquet.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
-Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet, nastavte vlastnost `format` `type` na hodnotu **Format**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
+Chcete-li analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet, nastavte vlastnost `format` `type` na hodnotu **ParquetFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
 
 ```json
 "format":
@@ -443,33 +443,33 @@ Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. P�
 
 | Data factory dočasné datový typ | Primitivní typ parquet | Parquet původního typu (deserializovat) | Parquet původního typu (serializuje) |
 |:--- |:--- |:--- |:--- |
-| Logická hodnota | Logická hodnota | Nevztahuje se | Nevztahuje se |
+| Logická hodnota | Logická hodnota | neuvedeno | neuvedeno |
 | SByte – | Datový typ Int32 | Int8 | Int8 |
-| Bajtů | Datový typ Int32 | UInt8 | Int16 |
+| Bajt | Datový typ Int32 | UInt8 | Int16 |
 | Int16 | Datový typ Int32 | Int16 | Int16 |
 | UInt16 | Datový typ Int32 | UInt16 | Datový typ Int32 |
 | Datový typ Int32 | Datový typ Int32 | Datový typ Int32 | Datový typ Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/binární soubor | UInt64 | Decimal |
-| Jednoduchá | Float | Nevztahuje se | Nevztahuje se |
-| Double | Double | Nevztahuje se | Nevztahuje se |
-| Decimal | Binary | Decimal | Decimal |
-| Řetězec | Binary | Utf8 | Utf8 |
-| Datum a čas | Int96 | Nevztahuje se | Nevztahuje se |
-| TimeSpan | Int96 | Nevztahuje se | Nevztahuje se |
-| DateTimeOffset | Int96 | Nevztahuje se | Nevztahuje se |
-| ByteArray | Binary | Nevztahuje se | Nevztahuje se |
-| Guid | Binary | Utf8 | Utf8 |
-| char | Binary | Utf8 | Utf8 |
-| CharArray | Nepodporováno | Nevztahuje se | Nevztahuje se |
+| Jednoduchá | Float | neuvedeno | neuvedeno |
+| Double | Double | neuvedeno | neuvedeno |
+| Decimal | Binární hodnota | Decimal | Decimal |
+| Řetězec | Binární hodnota | Utf8 | Utf8 |
+| DateTime | Int96 | neuvedeno | neuvedeno |
+| TimeSpan | Int96 | neuvedeno | neuvedeno |
+| DateTimeOffset | Int96 | neuvedeno | neuvedeno |
+| ByteArray | Binární hodnota | neuvedeno | neuvedeno |
+| identifikátor GUID | Binární hodnota | Utf8 | Utf8 |
+| Char | Binární hodnota | Utf8 | Utf8 |
+| CharArray | Nepodporuje se | neuvedeno | neuvedeno |
 
 ## <a name="orc-format"></a>Formát ORC (starší verze)
 
 >[!NOTE]
 >Seznamte se s novým modelem z článku [ORC Format](format-orc.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
-Pokud chcete analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavte vlastnost `format` `type` na hodnotu **OrcFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
+Chcete-li analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavte vlastnost `format` `type` na hodnotu **OrcFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
 
 ```json
 "format":
@@ -497,8 +497,8 @@ Pro kopírování běžící v místním prostředí IR s ORC serializací/deser
 | Data factory dočasné datový typ | Typy ORC |
 |:--- |:--- |
 | Logická hodnota | Logická hodnota |
-| SByte – | Bajtů |
-| Bajtů | Krátké |
+| SByte – | Bajt |
+| Bajt | Krátké |
 | Int16 | Krátké |
 | UInt16 | Int |
 | Datový typ Int32 | Int |
@@ -509,19 +509,19 @@ Pro kopírování běžící v místním prostředí IR s ORC serializací/deser
 | Double | Double |
 | Decimal | Decimal |
 | Řetězec | Řetězec |
-| Datum a čas | Časové razítko |
+| DateTime | Časové razítko |
 | DateTimeOffset | Časové razítko |
 | TimeSpan | Časové razítko |
-| ByteArray | Binary |
-| Guid | Řetězec |
-| char | Char(1) |
+| ByteArray | Binární hodnota |
+| identifikátor GUID | Řetězec |
+| Char | Char(1) |
 
 ## <a name="avro-format"></a>Formát AVRO (starší verze)
 
 >[!NOTE]
 >Seznamte se s novým modelem z článku [Avro Format](format-avro.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
-Pokud chcete analyzovat soubory Avro nebo zapisovat data ve formátu Avro, nastavte vlastnost `format` `type` na hodnotu **AvroFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
+Chcete-li analyzovat soubory Avro nebo zapisovat data ve formátu Avro, nastavte vlastnost `format` `type` na hodnotu **AvroFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
 
 ```json
 "format":
@@ -534,18 +534,18 @@ Pokud chcete formát Avro použít v tabulce Hive, najdete potřebné informace 
 
 Je třeba počítat s následujícím:
 
-* [Komplexní datové typy](https://avro.apache.org/docs/current/spec.html#schema_complex) se nepodporují (záznamy, výčty, pole, mapy, sjednocení a oprava).
+* [Komplexní datové typy](https://avro.apache.org/docs/current/spec.html#schema_complex) se nepodporují (záznamy, výčty, pole, mapy, sjednocení a pevná).
 
 ## <a name="compression-support"></a>Podpora komprese (starší verze)
 
-Azure Data Factory podporuje komprese nebo dekomprese dat během kopírování. Pokud zadáte `compression` vlastnost ve vstupní datovou sadu aktivita kopírování čtení komprimovaných dat ze zdrojové a dekomprimovat; a při zadání vlastnosti ve výstupní datovou sadu aktivita kopírování komprimovat a zapisovat data do jímky. Tady je několik ukázkových scénářů:
+Azure Data Factory podporuje komprese nebo dekomprese dat během kopírování. Když ve vstupní datové sadě zadáte vlastnost `compression`, aktivita kopírování načte komprimovaná data ze zdroje a dekomprimuje je. a když zadáte vlastnost do výstupní datové sady, komprimace aktivity kopírování pak zapíše data do jímky. Tady je několik ukázkových scénářů:
 
-* Čtení GZIP komprimovaná data z objektu blob Azure by jej dekomprimovat a zápis Výsledná data do služby Azure SQL database. Definujte vstupní datové sady objektů Blob v Azure se `compression` `type` vlastnost jako GZIP.
-* Čtení dat ze souboru prostého textu v místním systému souborů, je ve formátu GZip komprimovat a zapíše komprimovaných dat do objektu blob Azure. Definujte výstupní datovou sadu objektů Blob v Azure se `compression` `type` vlastnost jako GZip.
-* Soubor ZIP ke čtení ze serveru FTP, jsou dekomprimace ho k získání souborů uvnitř a tyto soubory přímo do Azure Data Lake Store. Definujte vstupní datová sada FTP se `compression` `type` vlastnost jako ZipDeflate.
-* Čtení GZIP komprimovaných dat z objektu blob Azure, by jej dekomprimovat, je pomocí BZIP2 komprimovat a zápis Výsledná data do objektu blob Azure. Definujte vstupní datové sady objektů Blob v Azure s `compression` `type` nastavena na GZIP a výstupní datovou sadu s `compression` `type` nastavena na BZIP2.
+* Čtení GZIP komprimovaná data z objektu blob Azure by jej dekomprimovat a zápis Výsledná data do služby Azure SQL database. Můžete definovat vstupní datovou sadu Azure Blob s vlastností `compression` `type` jako GZIP.
+* Čtení dat ze souboru prostého textu v místním systému souborů, je ve formátu GZip komprimovat a zapíše komprimovaných dat do objektu blob Azure. Nadefinujete výstupní datovou sadu Azure Blob s vlastností `compression` `type` jako GZip.
+* Soubor ZIP ke čtení ze serveru FTP, jsou dekomprimace ho k získání souborů uvnitř a tyto soubory přímo do Azure Data Lake Store. Nadefinujete vstupní datovou sadu FTP s vlastností `compression` `type` jako ZipDeflate.
+* Čtení GZIP komprimovaných dat z objektu blob Azure, by jej dekomprimovat, je pomocí BZIP2 komprimovat a zápis Výsledná data do objektu blob Azure. Nadefinujete vstupní datovou sadu Azure Blob s `compression` `type` nastavenou na GZIP a výstupní datovou sadu s `compression` `type` nastavenou na BZIP2.
 
-Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v datové sadě JSON jako v následujícím příkladu:
+Chcete-li určit kompresi pro datovou sadu, použijte vlastnost **Compression** v datové sadě JSON jako v následujícím příkladu:
 
 ```json
 {
@@ -571,18 +571,18 @@ Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v dat
 }
 ```
 
-**Komprese** oddíl má dvě vlastnosti:
+Oddíl **Compression** má dvě vlastnosti:
 
-* **Typ:** kompresní kodek, který může být **GZIP**, **Deflate**, **BZIP2**, nebo **ZipDeflate**. Poznámka: při použití aktivity kopírování k dekompresi souborů ZipDeflate a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/`.
-* **Úroveň:** kompresní poměr, který může být **Optimal** nebo **nejrychlejší**.
+* **Typ:** Kompresní kodek, který může být **gzip**, **Deflate**, **bzip2**nebo **ZipDeflate**. Poznámka: při použití aktivity kopírování k dekompresi souborů ZipDeflate a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/`.
+* **Level (úroveň):** kompresní poměr, který může být **optimální** nebo **nejrychlejší**.
 
-  * **Nejrychlejší:** komprese operace by se měla dokončit co nejrychleji, i v případě, že výsledný soubor není komprimována optimálně.
-  * **Optimální**: Operace komprese by měl být optimálně v komprimovaném tvaru i v případě, že operace trvá delší dobu pro dokončení.
+  * **Nejrychlejší:** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.
+  * **Optimální**: komprese by měla být optimálně komprimována i v případě, že dokončení operace trvá delší dobu.
 
-    Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tématu.
+    Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) .
 
 > [!NOTE]
-> Nastavení komprese nejsou podporovány pro data ve službě **AvroFormat**, **OrcFormat**, nebo **ParquetFormat**. Při čtení souborů v těchto formátů, Data Factory zjistí a využívá kompresní kodek v metadatech. Při zápisu do souborů v těchto formátů, Data Factory využívá možnost kompresní kodek výchozí pro daný formát. Například pro OrcFormat ZLIB a SNAPPY pro ParquetFormat.
+> Nastavení komprese nejsou podporována pro data v **AvroFormat**, **OrcFormat**nebo **ParquetFormat**. Při čtení souborů v těchto formátů, Data Factory zjistí a využívá kompresní kodek v metadatech. Při zápisu do souborů v těchto formátů, Data Factory využívá možnost kompresní kodek výchozí pro daný formát. Například pro OrcFormat ZLIB a SNAPPY pro ParquetFormat.
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>Nepodporované typy souborů a formáty komprese
 

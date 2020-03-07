@@ -4,13 +4,13 @@ description: Popis prostředků koncového bodu v manifestu služby, včetně po
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464184"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382849"
 ---
-# <a name="specify-resources-in-a-service-manifest"></a>Zadání prostředků v manifestu služby
+# <a name="specify-resources-in-a-service-manifest"></a>Určení prostředků v manifestu služby
 ## <a name="overview"></a>Přehled
 Manifest služby umožňuje deklaraci a změnu prostředků používaných službou bez změny zkompilovaného kódu. Azure Service Fabric podporuje konfiguraci prostředků koncového bodu pro službu. Přístup k prostředkům, které jsou zadány v manifestu služby, lze ovládat prostřednictvím služby zabezpečení v manifestu aplikace. Deklarace prostředků umožňuje změnit tyto prostředky v době nasazení, což znamená, že služba nemusí zavést nový konfigurační mechanismus. Definice schématu pro soubor ServiceManifest. XML je nainstalovaná s Service Fabric SDK a nástroji do složky *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 

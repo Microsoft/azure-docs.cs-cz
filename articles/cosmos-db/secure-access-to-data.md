@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756415"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395490"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům v Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Tento článek poskytuje přehled zabezpečení přístupu k datům uloženým v
 
 Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a poskytování přístupu k jeho datům a prostředkům. 
 
-|Typ klíče|Materiály|
+|Typ klíče|Zdroje|
 |---|---|
 |[Hlavní klíče](#master-keys) |Používá se pro prostředky pro správu: databázové účty, databáze, uživatele a oprávnění.|
 |[Tokeny prostředků](#resource-tokens)|Používá se pro prostředky aplikace: kontejnery, dokumenty, přílohy, uložené procedury, triggery a UDF.|
@@ -155,7 +155,7 @@ Chcete-li přidat ke svému uživatelskému účtu přístup ke čtečce účtu 
 4. V **poli přiřadit přístup k**vyberte možnost **uživatel, skupina nebo aplikace služby Azure AD**.
 5. V adresáři vyberte uživatele, skupinu nebo aplikaci, ke kterým chcete udělit přístup.  Můžete hledat v adresáři podle zobrazovaného jména, e-mailové adresy nebo identifikátorů objektů.
     Vybraný uživatel, skupina nebo aplikace se zobrazí v seznamu vybrané členy.
-6. Klikněte na možnost **Uložit**.
+6. Klikněte na **Uložit**.
 
 Entita může nyní číst prostředky Azure Cosmos DB.
 

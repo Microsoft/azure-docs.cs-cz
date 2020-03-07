@@ -12,11 +12,11 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997271"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359858"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do SQL Database jedné a sdružené databáze
 
@@ -106,7 +106,7 @@ Pro Azure SQL Database odběry nejsou podporovány následující možnosti:
 
 ## <a name="examples"></a>Příklady
 
-Vytvořte publikaci a nabízený odběr. Další informace:
+Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématu:
   
 - [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Database jako předplatitele (například **N'azuresqldbdns. Database. Windows. NET**) a názvu databáze SQL Azure jako cílové databáze (například **AdventureWorks**).  

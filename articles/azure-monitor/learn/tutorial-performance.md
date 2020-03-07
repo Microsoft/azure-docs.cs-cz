@@ -8,11 +8,11 @@ ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
 ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661562"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367677"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -101,7 +101,7 @@ Stejně jako data shromážděná pro výkon serveru Application Insights zpří
 
 2. Protokoly se otevře s dotazem pro každé zobrazení na panelu. První dotaz zobrazí dobu trvání různých zobrazení stránek v průběhu času.
 
-    ![Dotaz na protokoly](media/tutorial-performance/10-page-view-logs.png)
+    ![dotaz na protokoly](media/tutorial-performance/10-page-view-logs.png)
 
 3.  Inteligentní Diagnostika je funkce protokolů, které určují jedinečné vzory v datech. Když kliknete na tečku inteligentní diagnostiky ve spojnicovém grafu, spustí se stejný dotaz bez záznamů, které anomálii způsobily. Podrobnosti o těchto záznamech se zobrazí v části dotazu s komentáři, takže můžete identifikovat vlastnosti zobrazení stránek, které způsobují nadměrnou dobu trvání.
 

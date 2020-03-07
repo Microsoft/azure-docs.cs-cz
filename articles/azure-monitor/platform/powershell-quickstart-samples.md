@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659273"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373409"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Ukázky Azure Monitor PowerShellu pro rychlý Start
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -146,14 +146,14 @@ Můžete vytvořit vlastnosti e-mailu a Webhooku pomocí `New-AzAlertRuleEmail` 
 
 Následující tabulka popisuje parametry a hodnoty používané k vytvoření výstrahy pomocí metriky.
 
-| Ukazatele | value |
+| Ukazatele | hodnota |
 | --- | --- |
 | Název |simpletestdiskwrite |
-| Umístění tohoto pravidla výstrahy |Východní USA |
+| Umístění tohoto pravidla výstrahy |USA – východ |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | Metrika vytvořeného upozornění |\PhysicalDisk (_Total) \ zápisu za sekundu. Informace o tom, jak načíst přesné názvy metrik, najdete v rutině `Get-MetricDefinitions`. |
-| operátor |GreaterThan |
+| operator |GreaterThan |
 | Prahová hodnota (počet/s) pro tuto metriku |1 |
 | WindowSize (hh: mm: SS formát) |00:05:00 |
 | Agregátor (statistika metriky, která v tomto případě používá průměrný počet) |Průměr |

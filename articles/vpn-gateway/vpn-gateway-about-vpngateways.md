@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972408"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357369"
 ---
 # <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
 
@@ -25,7 +25,7 @@ Brána virtuální sítě se skládá ze dvou nebo více virtuálních počíta�
 
 Jedním z nastavení, které nakonfigurujete pro bránu virtuální sítě, je typ brány. Typ brány určuje, jak se bude používat Brána virtuální sítě, a akce, které brána používá. Typ brány VPN určuje, že typ brány virtuální sítě, kterou jste vytvořili, je brána sítě VPN, nikoli brána ExpressRoute. Virtuální síť může mít dvě brány virtuální sítě. Jedna Brána VPN a jedna brána ExpressRoute – stejně jako v případě [současných](#coexisting) konfigurací připojení. Další informace najdete v části [Typy bran](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 
-Brány VPN se dají nasadit v Zóny dostupnosti Azure. To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny. viz [o branách redundantní virtuální sítě v zóně v zóny dostupnosti Azure](about-zone-redundant-vnet-gateways.md)
+Brány VPN se dají nasadit v Zóny dostupnosti Azure. Tím se zvýší odolnost, škálovatelnost a vyšší dostupnost bran virtuální sítě. Nasazování bran v Zóny dostupnosti Azure fyzicky a logicky odděluje brány v rámci určité oblasti a zároveň chrání vaše místní síťové připojení k Azure ze selhání na úrovni zóny. viz [o branách redundantní virtuální sítě v zóně v zóny dostupnosti Azure](about-zone-redundant-vnet-gateways.md)
 
 Vytvoření vytváření brány virtuální sítě může trvat až 45 minut. Při vytvoření brány virtuální sítě se virtuální počítače brány nasadí do podsítě brány a nakonfigurují s použitím nastavení, která zadáte. Po vytvoření brány VPN můžete vytvořit tunelové propojení IPsec/IKE mezi touto bránou VPN a jinou bránou VPN (VNet-to-VNet) nebo tunelové propojení IPsec/IKE mezi místními sítěmi mezi bránou VPN a místním zařízením VPN (Site-to-Site). Můžete také vytvořit připojení VPN typu Point-to-Site (VPN přes OpenVPN, IKEv2 nebo SSTP), které vám umožní připojit se k virtuální síti ze vzdáleného umístění, například z konference nebo z domova.
 
@@ -118,7 +118,7 @@ Virtuální sítě, které propojujete, můžou být:
 
 Azure v současné době nabízí dva modely nasazení: Classic a Resource Manager. Pokud již Azure nějakou dobu používáte, pravděpodobně vaše virtuální počítače a role instancí Azure fungují ve virtuální síti Classic. Vaše novější virtuální počítače a role instancí však mohou používat virtuální síť vytvořenou v nástroji Resource Manager. Můžete vytvořit připojení mezi virtuálními sítěmi umožňující prostředkům v jedné virtuální síti přímo komunikovat s prostředky v jiné.
 
-### <a name="vnet-peering"></a>VNet Peering
+### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
 Pokud virtuální síť splňuje určité požadavky, je možné k vytvoření připojení využít metodu VNet peering. VNet peering nepoužívá bránu virtuální sítě. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 

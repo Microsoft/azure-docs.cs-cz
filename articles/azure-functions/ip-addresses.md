@@ -4,11 +4,11 @@ description: Přečtěte si, jak najít příchozí a odchozí IP adresy pro apl
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612883"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358076"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP adresy v Azure Functions
 
@@ -25,9 +25,9 @@ IP adresy jsou spojené s aplikacemi Function App, ne s jednotlivými funkcemi. 
 
 Každá aplikace Function App má jednu příchozí IP adresu. Zjištění této IP adresy:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
-3. Vyberte **Funkce platformy**.
+3. Vyberte **funkce platformy**.
 4. Vyberte **vlastnosti**a v části **virtuální IP adresa**se zobrazí příchozí IP adresa.
 
 ## <a name="find-outbound-ip-addresses"></a>Odchozí IP adresy aplikace Function App
@@ -105,7 +105,7 @@ K úmyslnému vynucení změny odchozí IP adresy:
 2. Počkejte 10 minut.
 3. Škálujte zpátky na místo, kde jste začali.
 
-## <a name="ip-address-restrictions"></a>omezení IP adresy
+## <a name="ip-address-restrictions"></a>Omezení podle IP adresy
 
 Můžete nakonfigurovat seznam IP adres, u kterých chcete povolit nebo odepřít přístup k aplikaci Function App. Další informace najdete v tématu [Azure App Service omezení statických IP adres](../app-service/app-service-ip-restrictions.md).
 
@@ -115,9 +115,9 @@ Pokud potřebujete statické a vyhrazené IP adresy, doporučujeme [App Service 
 
 Pokud chcete zjistit, jestli vaše aplikace Function App běží na App Service Environment:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
-3. Vyberte kartu **Přehled**.
+3. Vyberte kartu **Přehled** .
 4. Úroveň plánu App Service se zobrazí v části **App Service plán/cenová úroveň**. Cenová úroveň App Service Environment je **izolovaná**.
  
 Alternativně můžete použít [Cloud Shell](../cloud-shell/quickstart.md):

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768176"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376272"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete určit, které objekty se zobrazí v Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přebírá všechny objekty ve všech doménách v konfigurovaných doménových strukturách. Obecně platí, že se jedná o doporučenou konfiguraci. Uživatelé, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, můžou využít kompletní globální seznam adres, aby mohli posílat e-maily a volat všechny. S výchozí konfigurací by měly stejné prostředí jako při místní implementaci Exchange nebo Lyncu.
@@ -140,7 +140,7 @@ Pokud jste aktualizovali svůj doménový filtr, budete také muset aktualizovat
     * Úplná synchronizace
     * Rozdílový import
     * Rozdílová synchronizace
-    * Exportovat
+    * Export
 3. Pro každý profil upravte **přidané** a **odebrané** domény.
     1. Pro každý z pěti profilů proveďte následující kroky pro každou **přidanou** doménu:
         1. Vyberte profil spuštění a klikněte na **Nový krok**.
@@ -279,7 +279,7 @@ V tomto příkladu změníte filtrování tak, aby byly synchronizovány pouze u
 5. V automaticky otevíraném okně odpovězte **Ano** a vytvořte kopii pravidla.
 6. Na stránce **Popis** změňte **prioritu** na nepoužitou hodnotu, například 50.
 7. V levém navigačním panelu klikněte na **Filtr oboru** a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **Pošta**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte **\@contoso.com**a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **userPrincipalName**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte **\@contoso.com**.
-8. Klikněte na možnost **Uložit**.
+8. Klikněte na **Uložit**.
 9. Chcete-li dokončit konfiguraci, je nutné spustit **úplnou synchronizaci**. Pokračujte v čtení části [použití a ověření změn](#apply-and-verify-changes).
 
 ## <a name="apply-and-verify-changes"></a>Použít a ověřit změny

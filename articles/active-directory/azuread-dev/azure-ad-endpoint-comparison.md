@@ -12,14 +12,14 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 56a5221504a3905855fa5dc713707f34ae357aea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: MT
+ms.openlocfilehash: d910a76397a40a14d960b59f60561cbee470f5c4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165134"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356281"
 ---
-# <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč se má aktualizovat platforma Microsoft Identity Platform (v 2.0)?
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč aktualizovat na Microsoft Identity Platform (v2.0)?
 
 Při vývoji nové aplikace je důležité znát rozdíly mezi koncovými body Microsoft Identity Platform (v 2.0) a Azure Active Directory (v 1.0). Tento článek popisuje hlavní rozdíly mezi koncovými body a některými stávajícími omezeními pro platformu Microsoft Identity Platform.
 
@@ -34,7 +34,7 @@ Při vývoji nové aplikace je důležité znát rozdíly mezi koncovými body M
 * Koncový bod platformy Microsoft Identity umožňuje pracovní a školní účty z Azure AD a osobních účtů Microsoft (MSA), jako je hotmail.com, outlook.com a msn.com, pro přihlášení.
 * Oba koncové body také přijímají přihlášení *[uživatelů typu Host](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* v adresáři Azure AD pro aplikace nakonfigurované jako *[jeden tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* nebo pro *víceklientské* aplikace nakonfigurované tak, aby odkazovaly na koncový bod pro konkrétního klienta (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
-Koncový bod platformy Microsoft Identity umožňuje psát aplikace, které přijímají přihlášení z osobních účtů Microsoft a pracovních a školních účtů. Díky tomu máte možnost napsat si aplikaci kompletně s účtem – nezávislá. Například pokud vaše aplikace volá [Microsoft Graph](https://graph.microsoft.io), budou k dispozici některé další funkce a data pro pracovní účty, jako jsou například weby služby SharePoint nebo data adresáře. Ale u mnoha akcí, jako je [čtení e-mailů uživatele](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages), může stejný kód přistupovat k e-mailu pro osobní i pracovní a školní účty.
+Koncový bod platformy Microsoft Identity umožňuje psát aplikace, které přijímají přihlášení z osobních účtů Microsoft a pracovních a školních účtů. Díky tomu máte možnost napsat si aplikaci kompletně s účtem – nezávislá. Například pokud vaše aplikace volá [Microsoft Graph](https://graph.microsoft.io), budou k dispozici některé další funkce a data pro pracovní účty, jako jsou například weby služby SharePoint nebo data adresáře. Ale u mnoha akcí, jako je [čtení e-mailů uživatele](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0), může stejný kód přistupovat k e-mailu pro osobní i pracovní a školní účty.
 
 V případě koncového bodu Microsoft Identity Platform můžete k získání přístupu k podnikovému světůu pro spotřebitele, vzdělávání a Enterprise použít Microsoft Authentication Library (MSAL). Koncový bod Azure AD v 1.0 přijímá přihlášení jenom z pracovních a školních účtů.
 
@@ -70,7 +70,7 @@ V případě koncového bodu v 1.0 může být ve službě Azure AD vyhledána �
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&resource=https://graph.windows.net/
+&resource=https://graph.microsoft.com/
 ...
 ```
 
@@ -81,7 +81,7 @@ U aplikací, které používají koncový bod Microsoft Identity Platform, vypad
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&scope=https://graph.windows.net/directory.read%20https://graph.windows.net/directory.write
+&scope=https://graph.microsoft.com/directory.read%20https://graph.microsoft.com/directory.write
 ...
 ```
 

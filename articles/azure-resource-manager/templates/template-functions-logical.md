@@ -4,11 +4,11 @@ description: Popisuje funkce, které lze použít v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207209"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357360"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manager
 
@@ -28,11 +28,11 @@ Kontroluje, zda jsou všechny hodnoty parametrů pravdivé.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Datový typ Boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Ano |Datový typ Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |Ne |Datový typ Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Ano |Boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -80,7 +80,7 @@ Převede parametr na logickou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
 
@@ -134,9 +134,9 @@ Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| condition |Ano |Datový typ Boolean |Hodnota, která ověří, zda je true nebo false. |
+| condition |Ano |Boolean |Hodnota, která ověří, zda je true nebo false. |
 | trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
 | falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
@@ -239,9 +239,9 @@ Převede logickou hodnotu na její opačnou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Datový typ Boolean |Hodnota, která má být převedena |
+| arg1 |Ano |Boolean |Hodnota, která má být převedena |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -303,7 +303,7 @@ Výstup z předchozího příkladu:
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
-## <a name="or"></a>or
+## <a name="or"></a>nebo
 
 `or(arg1, arg2, ...)`
 
@@ -311,11 +311,11 @@ Kontroluje, zda je hodnota parametru pravdivá.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Datový typ Boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Ano |Datový typ Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |Ne |Datový typ Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Ano |Boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Návratová hodnota
 

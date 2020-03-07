@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383694"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393848"
 ---
 # <a name="add-entities-to-extract-data"></a>Přidat entity pro extrakci dat 
 
@@ -48,7 +48,7 @@ Následující tabulka vám pomůže pochopit, které entity chcete do aplikace 
 |Strojově naučená entita|Podrobnosti o entitách nebo záměrech|
 |Entita seznamu|Podrobnosti o entitách nebo záměrech|
 |Entiay regulárního výrazu|Entity|
-|Pattern.Any entity|Entity|
+|Entita Pattern.any|Entity|
 |Předem připravených entit|Entity|
 |Předem sestavená doménová entita|Entity|
 
@@ -90,7 +90,7 @@ Následující seznam znázorňuje kanonický název a synonyma.
 |--|--|
 |Červená|Crimson, krev, Apple, hasicí stroj|
 |Modrá|nebe, Azure, kobalt|
-|Zelená|Kelly, vápno|
+|Šetrn|Kelly, vápno|
 
 Pomocí postupu vytvořte entitu seznamu. Po vytvoření entity seznamu nemusíte v záměru popsat vzorový projevy. Položky seznamu a synonyma se shodují pomocí přesného textu. 
 

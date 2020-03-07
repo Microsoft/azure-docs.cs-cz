@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754459"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356299"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -138,7 +138,7 @@ Následující šablona aktivity kopírování obsahuje úplný seznam podporova
 | enableStaging<br/>stagingSettings | Určete, jestli se mají připravit dočasná data v úložišti objektů BLOB místo přímého kopírování dat ze zdroje do jímky.<br/>Informace o užitečných scénářích a podrobnostech konfigurace najdete v tématu [Příprava kopírování](copy-activity-performance.md#staged-copy). | Ne |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Vyberte, jak se má při kopírování dat ze zdroje do jímky zpracovat nekompatibilní řádky.<br/>Další informace najdete v tématu odolnost [proti chybám](copy-activity-fault-tolerance.md). | Ne |
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Běh aktivity kopírování můžete monitorovat v uživatelském rozhraní Azure Data Factory **Author & monitorovat** nebo programově.
 

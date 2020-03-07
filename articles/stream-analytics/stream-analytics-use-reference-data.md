@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
 ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392376"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 
@@ -38,7 +38,7 @@ Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, kte
 |Formát data [nepovinné]   | Pokud jste {Date} použili v rámci zadaného vzoru cesty, můžete vybrat formát data, ve kterém jsou objekty blob seřazené z rozevírací nabídky podporovaných formátů.<BR>Příklad: RRRR/MM/DD, MM/DD/RRRR atd.   |
 |Formát času [nepovinné]   | Pokud jste v rámci zadaného vzoru cesty použili {Time}, můžete vybrat formát času, ve kterém jsou objekty blob seřazené z rozevírací nabídky podporovaných formátů.<BR>Příklad: HH, HH/mm nebo HH-mm.  |
 |Formát serializace události   | Chcete-li zajistit, aby dotazy fungovaly podle očekávání, Stream Analytics musí znát, který formát serializace používáte pro příchozí datové proudy. V případě referenčních dat jsou podporované formáty CSV a JSON.  |
-|Encoding   | V tuto chvíli je jediným podporovaným formátem kódování UTF-8.  |
+|Kódování   | V tuto chvíli je jediným podporovaným formátem kódování UTF-8.  |
 
 ### <a name="static-reference-data"></a>Statická referenční data
 
@@ -59,7 +59,7 @@ Azure Stream Analytics automaticky hledá aktualizované objekty blob referenčn
 > 
 > Výjimkou je to, že úloha potřebuje znovu zpracovat data zpět v čase nebo při prvním spuštění úlohy. V okamžiku spuštění úlohy hledá nejaktuálnější objekt BLOB vytvořený před zadaným počátečním časem úlohy. K tomu je potřeba zajistit, aby při spuštění úlohy byla nastavena **neprázdná** referenční datová sada. Pokud ho nejde najít, úloha zobrazí následující diagnostiku: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) lze použít k orchestraci úlohy vytváření aktualizovaných objektů BLOB vyžadovaných Stream Analytics k aktualizaci definic referenčních dat. Data Factory je cloudová integrační služba, která organizuje a automatizuje pohyb a transformaci dat. Data Factory podporuje [připojení k velkému počtu cloudových a místních úložišť dat](../data-factory/copy-activity-overview.md) a snadné přesouvání dat podle pravidelného plánu, který zadáte. Další informace a podrobné pokyny k nastavení kanálu Data Factory pro generování referenčních dat pro Stream Analytics, která se aktualizují podle předem definovaného plánu, najdete v této [ukázce GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) lze použít k orchestraci úlohy vytváření aktualizovaných objektů BLOB vyžadovaných Stream Analytics k aktualizaci definic referenčních dat. Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Data Factory podporuje [připojení k velkému počtu cloudových a místních úložišť dat](../data-factory/copy-activity-overview.md) a snadné přesouvání dat podle pravidelného plánu, který zadáte. Další informace a podrobné pokyny k nastavení kanálu Data Factory pro generování referenčních dat pro Stream Analytics, která se aktualizují podle předem definovaného plánu, najdete v této [ukázce GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Tipy pro aktualizaci referenčních dat objektů BLOB
 
@@ -71,7 +71,7 @@ Azure Stream Analytics automaticky hledá aktualizované objekty blob referenčn
 3. Referenční datové objekty blob **se** neúčtují podle času poslední změny objektu blob, ale jenom podle času a data zadaného v názvu objektu BLOB pomocí nahrazení {Date} a {Time}.
 3. Abyste se vyhnuli nutnosti vypsat velký počet objektů blob, zvažte odstranění velmi starých objektů blob, pro které se zpracování už nedokončí. Upozorňujeme, že ASA můžou v některých scénářích, jako je restartování, potřebovat znovu zpracovat malou část.
 
-## <a name="azure-sql-database"></a>Databáze SQL Azure
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database referenční data jsou načítána úlohou Stream Analytics a jsou ukládána jako snímek v paměti ke zpracování. Snímek referenčních dat je uložený také v kontejneru v účtu úložiště, který zadáte v nastavení konfigurace. Kontejner se vytvoří automaticky při spuštění úlohy. Pokud se úloha zastaví nebo vstoupí do stavu selhání, automaticky vytvořené kontejnery se odstraní při restartování úlohy.  
 
@@ -90,7 +90,7 @@ Chcete-li nakonfigurovat referenční data SQL Database, musíte nejprve vytvoř
 |**Název vlastnosti**|**Popis**  |
 |---------|---------|
 |Alias vstupu|Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.|
-|Předplatné|Zvolte vaše předplatné.|
+|Předplatné|Vaše předplatné|
 |databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro Azure SQL Database Managed instance je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
 |Uživatelské jméno|Uživatelské jméno přidružené k vašemu Azure SQL Database.|
 |Heslo|Heslo přidružené k vašemu Azure SQL Database.|
@@ -104,7 +104,7 @@ Stream Analytics podporuje referenční data s **maximální velikostí 300 MB**
 
 |**Počet jednotek streamování**  |**Přibližně podporovaná maximální velikost (v MB)**  |
 |---------|---------|
-|1\. místo   |50   |
+|1   |50   |
 |3   |150   |
 |6 a více   |300   |
 
@@ -114,7 +114,7 @@ Podpora pro kompresi není k dispozici pro referenční data.
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure portal](stream-analytics-quick-create-portal.md)
+> [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure Portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

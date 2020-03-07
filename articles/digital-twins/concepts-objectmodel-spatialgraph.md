@@ -1,6 +1,6 @@
 ---
 title: Principy modelů objektů a prostorových informací v grafu – digitální vlákna Azure | Microsoft Docs
-description: Využijte novou službu Azure Digital Twins k modelování vztahů mezi lidmi, místy a zařízeními
+description: Použití digitálních vláken Azure k modelování vztahů mezi lidmi, místy a zařízeními
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,11 +9,11 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562591"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382272"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Informace o objektových modelech a grafu prostorové Intelligence pro digitální vlákna
 
@@ -78,7 +78,7 @@ Po nasazení digitálních vláken z [Azure Portal](https://portal.azure.com)se 
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name (Název) | Nahradit hodnotou |
+| Název | Nahradit hodnotou |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Název instance digitální dvojče |
 | YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |

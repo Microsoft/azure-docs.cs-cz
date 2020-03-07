@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891307"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357028"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme s Průzkumníkem služby Storage
 
@@ -23,9 +23,9 @@ Průzkumník služby Microsoft Azure Storage je samostatná aplikace, která usn
 
 ![Microsoft Azure Storage Explorer][0]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Průzkumník služby Storage podporují následující verze Windows:
 
@@ -35,13 +35,13 @@ Průzkumník služby Storage podporují následující verze Windows:
 
 Pro všechny verze Windows Průzkumník služby Storage vyžaduje .NET Framework 4.6.2 nebo novější.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 Průzkumník služby Storage podporují následující verze nástroje macOS:
 
 * macOS 10,12 Sierra a novějších verzí
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Průzkumník služby Storage je k dispozici v [úložišti přichycení](https://snapcraft.io/storage-explorer) pro většinu běžných distribucí systému Linux. Pro tuto instalaci doporučujeme úložiště pro modul snap-in. Průzkumník služby Storage modul snap nainstaluje všechny jeho závislosti a aktualizace, když jsou nové verze publikovány do obchodu s modulem snap-in.
 
@@ -123,7 +123,7 @@ Existuje několik způsobů, jak se připojit k prostředku v Průzkumník služ
 
 1. Vyberte **Přidat prostředek prostřednictvím Azure Active Directory (Azure AD)** a pak vyberte **Další**.
 
-1. Vyberte účet Azure a tenanta. Tyto hodnoty musí mít přístup k prostředku úložiště, ke kterému se chcete připojit. Vyberte **Next** (Další).
+1. Vyberte účet Azure a tenanta. Tyto hodnoty musí mít přístup k prostředku úložiště, ke kterému se chcete připojit. Vyberte **Další**.
 
 1. Vyberte typ prostředku, který chcete připojit. Zadejte informace potřebné k připojení. 
 
@@ -155,7 +155,7 @@ Po úspěšném přidání připojení strom prostředků přejde na uzel, kter�
 
 1. Vyberte **použít identifikátor URI sdíleného přístupového podpisu (SAS)** a pak vyberte **Další**.
 
-1. Vyberte zobrazovaný název vašeho připojení a zadejte identifikátor URI sdíleného přístupového podpisu. Koncový bod služby pro typ prostředku, který připojujete, by měl automatické vyplňování. Pokud používáte vlastní koncový bod, možná to není. Vyberte **Next** (Další).
+1. Vyberte zobrazovaný název vašeho připojení a zadejte identifikátor URI sdíleného přístupového podpisu. Koncový bod služby pro typ prostředku, který připojujete, by měl automatické vyplňování. Pokud používáte vlastní koncový bod, možná to není. Vyberte **Další**.
 
 1. Zkontrolujte **Souhrn připojení** a ujistěte se, že jsou všechny informace správné. Pokud je, vyberte **připojit**. V opačném případě vyberte **zpět** a vraťte se na předchozí stránky a opravte případné nesprávné informace.
 

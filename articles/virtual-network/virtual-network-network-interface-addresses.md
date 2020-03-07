@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356641"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
 
@@ -35,7 +35,7 @@ Pokud potřebujete vytvořit, změnit nebo odstranit síťové rozhraní, přeč
 Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy prostředí PowerShell, buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, je také potřeba spustit `az login` a vytvořit připojení k Azure.
 
@@ -53,13 +53,13 @@ K síťovému rozhraní můžete podle potřeby přidat tolik [privátních](#pr
 
    |Nastavení|Povinné?|Podrobnosti|
    |---|---|---|
-   |Name (Název)|Ano|Musí být pro síťové rozhraní jedinečné.|
+   |Název|Ano|Musí být pro síťové rozhraní jedinečné.|
    |Typ|Ano|Vzhledem k tomu, že přidáváte konfiguraci IP adres do stávajícího síťového rozhraní a každé síťové rozhraní musí mít konfiguraci [primárního](#primary) protokolu IP, je vaše jediná možnost **sekundární**.|
    |Metoda přiřazování privátních IP adres|Ano|[**Dynamické**](#dynamic): Azure přiřadí další dostupnou adresu pro rozsah adres podsítě, ve kterém je síťové rozhraní nasazené. [**Statické**](#static): přiřadíte nepoužitou adresu rozsahu adres podsítě, ve kterém je síťové rozhraní nasazeno.|
    |Veřejná IP adresa|Ne|**Zakázáno:** K této konfiguraci protokolu IP není aktuálně přidružen žádný prostředek veřejné IP adresy. **Povoleno:** Vyberte existující veřejnou IP adresu IPv4 nebo vytvořte novou. Pokud se chcete dozvědět, jak vytvořit veřejnou IP adresu, přečtěte si článek o [veřejných IP adresách](virtual-network-public-ip-address.md#create-a-public-ip-address) .|
 6. Ručním přidáním sekundárních privátních IP adres do operačního systému virtuálního počítače dokončete pokyny v článku [přiřazení více IP adres k operačním systémům virtuálních počítačů](virtual-network-multiple-ip-addresses-portal.md#os-config) . Zvláštní informace najdete v tématu [soukromé](#private) IP adresy, které se týkají ručního přidávání IP adres do operačního systému virtuálního počítače. Do operačního systému virtuálního počítače nepřidávejte žádné veřejné IP adresy.
 
-**Příkazy**
+**Příkaz**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -80,7 +80,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 >[!NOTE]
 >Pokud má primární síťové rozhraní více konfigurací protokolu IP a měníte privátní IP adresu primární konfigurace IP adresy, musíte primární a sekundární IP adresu ručně znovu přiřadit síťovému rozhraní v systému Windows (není vyžadováno pro Linux). . Postup ručního přiřazení IP adres k síťovému rozhraní v rámci operačního systému najdete v tématu [přiřazení více IP adres k virtuálním počítačům](virtual-network-multiple-ip-addresses-portal.md#os-config). Speciální informace před ručním přidáním IP adres do operačního systému virtuálního počítače najdete v tématu [privátní](#private) IP adresy. Do operačního systému virtuálního počítače nepřidávejte žádné veřejné IP adresy.
 
-**Příkazy**
+**Příkaz**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -96,7 +96,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 3. V části **Nastavení**vyberte **Konfigurace protokolu IP**.
 4. Klikněte pravým tlačítkem na konfiguraci [sekundární](#secondary) IP adresy ( [primární](#primary) konfiguraci nemůžete odstranit), vyberte **Odstranit**a pak vyberte **Ano**a potvrďte odstranění. Pokud má konfigurace přiřazen prostředek veřejné IP adresy, prostředek se zrušení přidružení z konfigurace protokolu IP, ale prostředek se neodstraní.
 
-**Příkazy**
+**Příkaz**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -129,7 +129,7 @@ Kromě konfigurace primárního protokolu IP může být k síťovému rozhraní
 
 [Konfiguraci protokolu IP](#ip-configurations)můžete přiřadit následující typy IP adres:
 
-### <a name="private"></a>Privátní
+### <a name="private"></a>Private
 
 Privátní adresy [IPv4](#ipv4) nebo IPv6 umožňují virtuálnímu počítači komunikovat s ostatními prostředky ve virtuální síti nebo v jiných propojených sítích. 
 
@@ -150,7 +150,7 @@ Pomocí předchozích kroků zůstane privátní IP adresa přiřazená síťov�
 
 Kromě toho, že virtuální počítač může komunikovat s jinými prostředky v rámci stejné nebo připojené virtuální sítě, privátní IP adresa taky umožňuje virtuálnímu počítači komunikovat odchozí připojení k Internetu. Odchozí připojení jsou zdrojová síťová adresa přeložená v Azure na nepředvídatelné veřejné IP adresy. Další informace o odchozím připojení k Internetu pro Azure najdete v článku věnovaném [odchozímu připojení k Internetu Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Příchozí připojení k privátní IP adrese virtuálního počítače nemůžete z Internetu komunikovat. Pokud vaše odchozí připojení vyžadují předvídatelné veřejné IP adresy, přidružte prostředek veřejné IP adresy k síťovému rozhraní.
 
-### <a name="public"></a>Veřejné
+### <a name="public"></a>Public
 
 Veřejné IP adresy přiřazené prostřednictvím prostředku veřejné IP adresy umožňují příchozí připojení k virtuálnímu počítači z Internetu. Odchozí připojení k Internetu používají předvídatelné IP adresy. Podrobnosti najdete [v tématu Principy odchozích připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Veřejnou IP adresu můžete přiřadit konfiguraci protokolu IP, ale není to nutné. Pokud nepřiřazujete veřejnou IP adresu k virtuálnímu počítači tím, že přidružíte prostředek veřejné IP adresy, může virtuální počítač nadále komunikovat odchozí připojení k Internetu. V takovém případě je privátní IP adresa Zdrojová síťová adresa přeložená Azure na nepředvídatelné veřejné IP adresy. Další informace o prostředcích veřejných IP adres najdete v tématu [prostředek veřejné IP adresy](virtual-network-public-ip-address.md).
 
@@ -163,14 +163,14 @@ Existují omezení pro počet privátních a veřejných IP adres, které může
 
 Veřejné a privátní IP adresy se přiřazují pomocí jedné z následujících metod přiřazení:
 
-### <a name="dynamic"></a>Dynamický
+### <a name="dynamic"></a>Dynamická
 
 Ve výchozím nastavení jsou přiřazovány dynamické privátní adresy IPv4 a IPv6 (volitelně).
 
 - **Pouze veřejný**: Azure přiřadí adresu z rozsahu, který je jedinečný pro každou oblast Azure. Informace o tom, které rozsahy jsou přiřazeny ke každé oblasti, najdete v tématu [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653). Adresa se může změnit, když je virtuální počítač zastavený (přidělení zrušeno), a pak se znovu spustí. Veřejné adrese IPv6 nelze přiřadit ke konfiguraci protokolu IP pomocí metody přiřazení.
 - **Pouze soukromý**: Azure si vyhrazuje první čtyři adresy v každém rozsahu adres podsítě a adresy nepřiřazují. Azure přiřadí prostředku další dostupnou adresu z rozsahu adres podsítě. Pokud je například rozsah adres podsítě 10.0.0.0/16 a adresy 10.0.0.0.4–10.0.0.14 už jsou přiřazené (.0–.3 jsou vyhrazené), Azure prostředku přiřadí adresu 10.0.0.15. Dynamická metoda přidělování je výchozí metoda. Jakmile jsou dynamické IP adresy přiřazené, uvolní se pouze v případě odstranění síťového rozhraní, jeho přiřazení k jiné podsíti ve stejné virtuální síti nebo změně metody přidělování na statickou a zadání jiné IP adresy. Když změníte metodu přidělování z dynamické na statickou, Azure ve výchozím nastavení jako statickou IP adresu přiřadí dříve dynamicky přiřazenou adresu. 
 
-### <a name="static"></a>Statický
+### <a name="static"></a>Statická
 
 K konfiguraci protokolu IP můžete (volitelně) přiřadit veřejnou nebo soukromou statickou adresu IPv4 nebo IPv6. Další informace o tom, jak Azure přiřazuje statické veřejné adresy IPv4, najdete v tématu [veřejné IP adresy](virtual-network-public-ip-address.md).
 

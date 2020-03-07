@@ -9,11 +9,11 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623418"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397333"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 
@@ -43,9 +43,9 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typ
 
 * ascii  
 * bigint  
-* objekt blob  
+* blob  
 * Boolean  
-* čítač  
+* counter  
 * date  
 * decimal  
 * double  
@@ -62,7 +62,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typ
 * timeuuid  
 * tinyint  
 * tuple  
-* uuid  
+* Uuid  
 * varchar  
 * varint  
 * tuples  
@@ -147,9 +147,9 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 * CREATE TABLE 
 * ALTER TABLE 
 * USE 
-* VLOŽIT 
-* VYBRAT 
-* AKTUALIZOVAT 
+* INSERT 
+* SELECT 
+* UPDATE 
 * BATCH – podporují se jen neprotokolované příkazy. 
 * DELETE
 

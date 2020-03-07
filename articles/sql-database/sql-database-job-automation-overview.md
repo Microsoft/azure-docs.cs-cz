@@ -11,11 +11,11 @@ ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 02/07/2020
 ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083117"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382334"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 
@@ -50,7 +50,7 @@ Je potřeba si vymezit několik rozdílů mezi agentem SQL (dostupnými místně
 
 |  |Elastické úlohy  |Agent SQL |
 |---------|---------|---------|
-|Scope     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
+|Rozsah     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
 |Podporovaná rozhraní API a nástroje     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent Jobs
@@ -214,7 +214,7 @@ Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky
 
 |Název role  |Oprávnění ke schématu jobs  |Oprávnění ke schématu jobs_internal  |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Žádný     |
+|**jobs_reader**     |    SELECT     |    Žádná     |
 
 > [!IMPORTANT]
 > Jako správce databáze zvažte před udělením přístupu k *databázi úloh* všechny bezpečnostní důsledky. Uživatel se zlými úmysly s oprávněními k vytváření nebo úpravě úloh by mohl vytvořit nebo upravit úlohu, která se pomocí uložených přihlašovacích údajů připojí k databázi pod jeho kontrolou a uživatel se zlými úmysly by tak mohl zjistit přihlašovací heslo.

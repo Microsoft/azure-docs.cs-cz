@@ -4,11 +4,11 @@ description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Ma
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477470"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384985"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
 
@@ -115,7 +115,7 @@ Můžete exportovat šablonu, která byla použita k nasazení existujících pr
 
 1. Vyberte **šablonu**. Zobrazí se Šablona použitá pro toto nasazení a je k dispozici ke stažení.
 
-   ![Vyberte šablonu](./media/export-template-portal/show-template-from-history.png)
+   ![Vybrat šablonu](./media/export-template-portal/show-template-from-history.png)
 
 ## <a name="next-steps"></a>Další kroky
 

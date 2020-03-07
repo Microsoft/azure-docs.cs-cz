@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045819"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388773"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Kurz: Konfigurace skupiny dostupnosti na Azure SQL Server VM ručně
 
@@ -32,7 +32,7 @@ Diagram znázorňuje, co sestavíte v tomto kurzu.
 
 ![Skupina dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá základní znalost skupin dostupnosti Always On SQL Server. Pokud potřebujete další informace, přečtěte si téma [Přehled skupin dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
@@ -116,7 +116,7 @@ Přidejte ostatní SQL Server do clusteru.
 
 1. Klikněte na **Další**.
 
-1. Klikněte na **Dokončit**.
+1. Klikněte na **Finish** (Dokončit).
 
    Správce clusteru s podporou převzetí služeb při selhání ukazuje, že váš cluster má nový uzel a zobrazí ho v kontejneru **uzly** .
 
@@ -150,7 +150,7 @@ V tomto příkladu používá cluster Windows ke sdílení souborů sdílenou sl
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/50-filesharepermissions.png)
 
-1. Klikněte na **OK**.
+1. Klikněte na tlačítko **OK**.
 
 1. V **oprávněních ke sdílené složce**klikněte na **Dokončit**. Znovu klikněte na tlačítko **Dokončit** .  
 
@@ -179,7 +179,7 @@ V dalším kroku nastavte kvorum clusteru.
 
 1. Ověřte nastavení při **potvrzení**. Klikněte na **Další**.
 
-1. Klikněte na **Dokončit**.
+1. Klikněte na **Finish** (Dokončit).
 
 Základní prostředky clusteru jsou nakonfigurovány s určující sdílenou složkou.
 
@@ -193,7 +193,7 @@ Potom povolte funkci **skupiny dostupnosti AlwaysOn** . Proveďte tyto kroky na 
 
     ![Povolit Skupiny dostupnosti AlwaysOn](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
 
-4. Klikněte na tlačítko **Použít**. V automaticky otevíraném okně klikněte na **OK** .
+4. Klikněte na **Použít**. V automaticky otevíraném okně klikněte na **OK** .
 
 5. Restartujte službu SQL Server.
 
@@ -252,7 +252,7 @@ Repeat these steps on the second SQL Server.
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/68-backupsharepermission.png)
 
-1. Klikněte na **OK**.
+1. Klikněte na tlačítko **OK**.
 
 1. V **oprávněních ke sdílené složce**klikněte na **Dokončit**. Znovu klikněte na tlačítko **Dokončit** .  
 
@@ -318,7 +318,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti pomocí následující
 10. Na stránce **Souhrn** klikněte na **Dokončit**a potom počkejte, než průvodce nakonfiguruje novou skupinu dostupnosti. Na stránce **průběh** můžete kliknutím na **Další podrobnosti** zobrazit podrobný průběh. Po dokončení průvodce Zkontrolujte stránku **výsledků** a ověřte, jestli je skupina dostupnosti úspěšně vytvořená.
 
      ![Průvodce novým AG, výsledky](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/74-results.png)
-11. Průvodce ukončíte kliknutím na **Zavřít** .
+11. Kliknutím na **Zavřít** průvodce ukončíte.
 
 ### <a name="check-the-availability-group"></a>Ověřit skupinu dostupnosti
 
@@ -355,7 +355,7 @@ Azure Load Balancer může být buď Standard Load Balancer, nebo základní Loa
 
    ![AG v Správce clusteru s podporou převzetí služeb při selhání](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 1. Pro nástroj pro vyrovnávání zatížení nakonfigurujte následující parametry.
 
    | Nastavení | Pole |
@@ -364,7 +364,7 @@ Azure Load Balancer může být buď Standard Load Balancer, nebo základní Loa
    | **Typ** |Interní |
    | **Virtuální síť** |Použijte název virtuální sítě Azure. |
    | **Podsíť** |Použijte název podsítě, ve které se nachází virtuální počítač.  |
-   | **Přiřazení IP adresy** |Statický |
+   | **Přiřazení IP adresy** |Statická |
    | **IP adresa** |Použijte dostupnou adresu z podsítě. Tuto adresu použijte pro naslouchací proces skupiny dostupnosti. Všimněte si, že se liší od IP adresy vašeho clusteru.  |
    | **Předplatné** |Použijte stejné předplatné jako virtuální počítač. |
    | **Umístění** |Použijte stejné umístění jako virtuální počítač. |
@@ -402,13 +402,13 @@ Pokud chcete nakonfigurovat nástroj pro vyrovnávání zatížení, musíte vyt
 
 1. Nastavte sondu stavu naslouchacího procesu následujícím způsobem:
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokol** | Zvolit TCP | TCP |
    | **Port** | Libovolný nepoužitý port | 59999 |
    | **Interval**  | Doba mezi pokusy o sondu v sekundách |5 |
-   | **Prahová hodnota pro poškozený stav** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
+   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
 
 1. Kliknutím na **OK** nastavte sondu stavu.
 
@@ -418,7 +418,7 @@ Pokud chcete nakonfigurovat nástroj pro vyrovnávání zatížení, musíte vyt
 
 1. Nastavte pravidla vyrovnávání zatížení naslouchacího procesu následujícím způsobem.
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointListener |
    | **IP adresa front-endu** | Zvolit adresu |Použijte adresu, kterou jste vytvořili při vytváření nástroje pro vyrovnávání zatížení. |
@@ -426,7 +426,7 @@ Pokud chcete nakonfigurovat nástroj pro vyrovnávání zatížení, musíte vyt
    | **Port** | Použijte port pro naslouchací proces skupiny dostupnosti. | 1433 |
    | **Port back-endu** | Toto pole se nepoužívá, je-li pro přímé vrácení serveru nastavená plovoucí IP adresa. | 1433 |
    | **Testu** |Název, který jste zadali pro test paměti | SQLAlwaysOnEndPointProbe |
-   | **Trvalost relace** | Rozevírací seznam | **Žádné** |
+   | **Trvalost relace** | Rozevírací seznam | **NTato** |
    | **Časový limit nečinnosti** | Počet minut, po který se má připojení TCP nechat otevřené | 4 |
    | **Plovoucí IP adresa (přímá návrat ze serveru)** | |Povoleno |
 
@@ -445,13 +445,13 @@ IP adresa služby WSFC také musí být v nástroji pro vyrovnávání zatížen
 
 1. Následujícím způsobem nastavte test stavu hlavní IP adresy clusteru služby WSFC:
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | WSFCEndPointProbe |
    | **Protokol** | Zvolit TCP | TCP |
    | **Port** | Libovolný nepoužitý port | 58888 |
    | **Interval**  | Doba mezi pokusy o sondu v sekundách |5 |
-   | **Prahová hodnota pro poškozený stav** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
+   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
 
 1. Kliknutím na **OK** nastavte sondu stavu.
 
@@ -459,7 +459,7 @@ IP adresa služby WSFC také musí být v nástroji pro vyrovnávání zatížen
 
 1. Následujícím způsobem nastavte pravidla vyrovnávání zatížení základních IP adres clusteru.
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | WSFCEndPoint |
    | **IP adresa front-endu** | Zvolit adresu |Použijte adresu, kterou jste vytvořili při konfiguraci IP adresy služby WSFC. To se liší od IP adresy naslouchacího procesu. |
@@ -467,7 +467,7 @@ IP adresa služby WSFC také musí být v nástroji pro vyrovnávání zatížen
    | **Port** | Použijte port pro IP adresu clusteru. Toto je dostupný port, který se nepoužívá pro port testu naslouchacího procesu. | 58888 |
    | **Port back-endu** | Toto pole se nepoužívá, je-li pro přímé vrácení serveru nastavená plovoucí IP adresa. | 58888 |
    | **Testu** |Název, který jste zadali pro test paměti | WSFCEndPointProbe |
-   | **Trvalost relace** | Rozevírací seznam | **Žádné** |
+   | **Trvalost relace** | Rozevírací seznam | **NTato** |
    | **Časový limit nečinnosti** | Počet minut, po který se má připojení TCP nechat otevřené | 4 |
    | **Plovoucí IP adresa (přímá návrat ze serveru)** | |Povoleno |
 
