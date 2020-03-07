@@ -9,11 +9,11 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484889"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360967"
 ---
 # <a name="azure-storage-analytics-logging"></a>Protokolování analýzy Azure Storage
 

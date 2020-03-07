@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410225"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357899"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -36,7 +36,7 @@ Při psaní funkcí Orchestrator v skriptovacích jazycích (například JavaScr
 
 Interně se tato triggerová vazba dotazuje řady front ve výchozím účtu úložiště pro aplikaci Function App. Tyto fronty jsou podrobnosti o interní implementaci tohoto rozšíření, což znamená, proč nejsou explicitně nakonfigurované ve vlastnostech vazby.
 
-### <a name="trigger-behavior"></a>Chování aktivační události
+### <a name="trigger-behavior"></a>Chování triggeru
 
 Tady jsou některé poznámky k triggeru orchestrace:
 
@@ -143,7 +143,7 @@ Pokud používáte VS Code nebo Azure Portal pro vývoj, aktivační událost ak
 
 Interně se tato triggerová vazba dotazuje fronty ve výchozím účtu úložiště pro aplikaci Function App. Tato fronta představuje interní podrobnosti implementace rozšíření, což je důvod, proč není explicitně nakonfigurován ve vlastnostech vazby.
 
-### <a name="trigger-behavior"></a>Chování aktivační události
+### <a name="trigger-behavior"></a>Chování triggeru
 
 Zde jsou některé poznámky týkající se triggeru aktivity:
 
@@ -372,7 +372,7 @@ Když použijete nástroje sady Visual Studio pro Azure Functions, je aktivačn�
 
 Interně se tato triggerová vazba dotazuje řady front ve výchozím účtu úložiště pro aplikaci Function App. Tyto fronty jsou podrobnosti o interní implementaci tohoto rozšíření, což znamená, proč nejsou explicitně nakonfigurované ve vlastnostech vazby.
 
-### <a name="trigger-behavior"></a>Chování aktivační události
+### <a name="trigger-behavior"></a>Chování triggeru
 
 Tady jsou některé poznámky k triggeru entit:
 
@@ -464,7 +464,7 @@ Třídy entit mají zvláštní mechanismy pro interakci s vazbami a vkládání
 
 Následující kód je příkladem jednoduché entity *čítače* implementované jako trvalá funkce napsaná v JavaScriptu. Tato funkce definuje tři operace, `add`, `reset`a `get`, z nichž každá funguje v celočíselném stavu.
 
-**function.json**
+**Function. JSON**
 ```json
 {
   "bindings": [
@@ -478,7 +478,7 @@ Následující kód je příkladem jednoduché entity *čítače* implementovan�
 }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -602,7 +602,7 @@ Konkrétně není vhodné signalizovat operaci `Get`, protože není vrácena ž
 
 Tady je příklad funkce aktivované frontou, která signalizuje entitu "čítač" v JavaScriptu.
 
-**function.json**
+**Function. JSON**
 ```json
 {
     "bindings": [
@@ -622,7 +622,7 @@ Tady je příklad funkce aktivované frontou, která signalizuje entitu "číta�
   }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 

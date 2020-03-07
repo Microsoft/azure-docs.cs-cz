@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022269"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375872"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Přihlášení a spouštění aplikací z portálu moje aplikace
 
@@ -97,7 +97,7 @@ Pokud máte oprávnění pro přístup k cloudovým aplikacím vaší organizace
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu na svém počítači.
 
-2. V podporovaném webovém prohlížeči otevřete a přejdete na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací, pokud vás přesměruje na přizpůsobenou stránku, jako je například `https://myapps.microsoft.com/contoso.com`.
+2. V podporovaném webovém prohlížeči otevřete a přejdete na https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací, pokud vás přesměruje na přizpůsobenou stránku, jako je například `https://myapps.microsoft.com/contoso.com`.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací, které máte k dispozici pro použití.
 
@@ -111,7 +111,7 @@ Umožňuje zobrazit a používat aplikace vaší organizace z Intune Managed Bro
 
 1. Na mobilním zařízení Stáhněte a nainstalujte aplikaci Intune Managed Browser z [Apple App Storu](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) a [obchod Google Play](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Otevřete aplikaci Intune Managed Browser, pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací, pokud vás přesměrují na přizpůsobenou stránku, jako je například https://myapps.microsoft.com/contoso.com.
+2. Otevřete aplikaci Intune Managed Browser, pokračujte na https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací, pokud vás přesměrují na přizpůsobenou stránku, jako je například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -125,7 +125,7 @@ Zobrazení a použití portálu **Moje aplikace** ze zařízení iPhone nebo iPa
 
 1. Na mobilním zařízení spusťte aplikaci webového prohlížeče, například Safari.
 
-2. Pokud vás přesměrují na přizpůsobenou stránku, můžete přejít na https://myapps.microsoft.com nebo použít odkaz poskytnutý vaší organizací, například https://myapps.microsoft.com/contoso.com.
+2. Pokud vás přesměrují na přizpůsobenou stránku, můžete přejít na https://myapps.microsoft.comnebo použít odkaz poskytnutý vaší organizací, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací, které máte k dispozici pro použití.
 
@@ -139,7 +139,7 @@ Zobrazení a použití portálu **Moje aplikace** na zařízení s Androidem
 
 1. Na mobilním zařízení spusťte aplikaci webového prohlížeče, například Google Chrome.
 
-2. Pokud vás přesměrují na přizpůsobenou stránku, můžete přejít na https://myapps.microsoft.com nebo použít odkaz poskytnutý vaší organizací, například https://myapps.microsoft.com/contoso.com.
+2. Pokud vás přesměrují na přizpůsobenou stránku, můžete přejít na https://myapps.microsoft.comnebo použít odkaz poskytnutý vaší organizací, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 

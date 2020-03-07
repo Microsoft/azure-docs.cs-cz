@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386316"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
 Clustery Azure HDInsight poskytují Apache Hadoop v známém prostředí pro Linux běžící v cloudu Azure. Pro většinu věcí by měla fungovat přesně stejně jako všechny ostatní instalace systému Hadoop-Linux. Tento dokument volá konkrétní rozdíly, o kterých byste měli vědět.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Mnohé z kroků v tomto dokumentu používají následující nástroje, které může být potřeba nainstalovat do systému.
 
@@ -203,7 +203,7 @@ Pokud používáte __Azure Data Lake Storage__, přečtěte si následující od
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Azure CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
-* [Data Lake Tools pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
+* [Data Lake nástroje pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)

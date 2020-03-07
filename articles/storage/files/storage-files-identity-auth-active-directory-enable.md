@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: rogarana
 ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256062"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361889"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Povolení ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
 ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386586"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky pomocí sady Visual Studio
 
@@ -23,7 +23,7 @@ I když můžete vytvářet, upravovat, spravovat a nasazovat Logic Apps v [Azur
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -75,7 +75,7 @@ V aplikaci Visual Studio můžete najít všechny aplikace logiky, které jsou p
 
 <a name="open-designer"></a>
 
-## <a name="open-in-visual-studio"></a>Otevřít ve Visual Studiu
+## <a name="open-in-visual-studio"></a>Otevřít v sadě Visual Studio
 
 V aplikaci Visual Studio můžete otevřít aplikace logiky, které byly dříve vytvořeny a nasazeny přímo prostřednictvím Azure Portal nebo jako projekty skupiny prostředků Azure pomocí sady Visual Studio.
 

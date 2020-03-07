@@ -508,11 +508,13 @@
     - name: Monitorování virtuálních počítačů
       items:
         - name: Azure Monitor pro virtuální počítače
-          href: ../../azure-monitor/insights/vminsights-overview.md
+          href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Vytvoření upozornění metrik
-          href: ../../azure-monitor/platform/alerts-metric.md
+          href: ../../azure-monitor/platform/alerts-metric.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Vytvoření upozornění protokolu
-          href: ../../azure-monitor/platform/alerts-log.md
+          href: ../../azure-monitor/platform/alerts-log.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Získat metriky využití s rozhraním REST
+          href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Použití imagí
       items:
         - name: Sdílené image

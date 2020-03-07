@@ -13,11 +13,11 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
 ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647675"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360278"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
 
@@ -79,7 +79,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Austrálie – východ       | 13.75.149.87, 40.79.161.1 |
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
 | Brazílie – jih         | 104.41.11.5, 191.233.200.14 |
-| Střední Kanada       | 40.85.224.249      |
+| Kanada – střed       | 40.85.224.249      |
 | Východní Kanada          | 40.86.226.166      |
 | USA – střed           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Čína – východ           | 139.219.130.35     |
@@ -97,8 +97,8 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Indie – západ           | 104.211.160.80     |
 | Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
-| Korea – střed        | 52.231.32.42       |
-| Korea – jih          | 52.231.200.86      |
+| Jižní Korea – střed        | 52.231.32.42       |
+| Jižní Korea – jih          | 52.231.200.86      |
 | USA – středosever     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Severní Evropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Jižní Afrika – sever   | 102.133.152.0      |
@@ -106,9 +106,9 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | USA – středojih     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Jihovýchodní Asie      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Spojené arabské emiráty – střed          | 20.37.72.64        |
-| Spojené arabské emiráty – sever            | 65.52.248.0        |
-| Spojené království – jih             | 51.140.184.11      |
-| Velká Británie – západ              | 51.141.8.11        |
+| Spojené arabské emiráty sever            | 65.52.248.0        |
+| Velká Británie – jih             | 51.140.184.11      |
+| Spojené království – západ              | 51.141.8.11        |
 | USA – středozápad      | 13.78.145.25       |
 | Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | USA – západ              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |

@@ -12,11 +12,11 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/12/2020
 ms.openlocfilehash: a29466ad5b261e1e2ce818d7b4a18260e35caaec
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192740"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360343"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
 

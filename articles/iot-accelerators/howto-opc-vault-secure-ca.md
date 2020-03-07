@@ -9,11 +9,11 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200083"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381126"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Bezpečně spusťte službu Správa certifikátů trezoru OPC.
 
@@ -32,15 +32,15 @@ Mikroslužba trezoru OPC umožňuje jedinečným rolím přístup k různým č�
 
 Mikroslužba trezoru OPC definuje následující role:
 
-- **Čtecí modul**: Ve výchozím nastavení má každý ověřený uživatel v tenantovi oprávnění ke čtení. 
+- **Čtecí zařízení**: ve výchozím nastavení má každý ověřený uživatel v tenantovi oprávnění ke čtení. 
   - Přístup pro čtení aplikací a žádostí o certifikát. Může vypsat a dotazovat se na aplikace a žádosti o certifikát. K dispozici jsou také informace o zjišťování zařízení a veřejné certifikáty s přístupem pro čtení.
-- **Zapisovač**: Role zapisovače je přiřazena uživateli, aby pro určité úlohy přidala oprávnění k zápisu. 
+- **Zapisovač**: role zapisovače je přiřazena uživateli, aby pro určité úlohy přidala oprávnění k zápisu. 
   - Přístup pro čtení a zápis pro aplikace a žádosti o certifikát. Může registrovat, aktualizovat a rušit registraci aplikací. Může vytvářet žádosti o certifikát a získávat schválené privátní klíče a certifikáty. Může také odstranit privátní klíče.
-- **Schvalovatel**: Role schvalovatele je přiřazena uživateli ke schválení nebo zamítnutí žádostí o certifikát. Role neobsahuje žádné další role.
+- **Schvalovatel**: role schvalovatele je přiřazena uživateli ke schválení nebo zamítnutí žádostí o certifikát. Role neobsahuje žádné další role.
   - Kromě role schvalovatele pro přístup k rozhraní API mikroslužeb OPC trezor musí mít uživatel také oprávnění k podepsání klíče v Azure Key Vault, aby mohli certifikáty podepisovat.
   - Role zapisovače a schvalovatele by se měla přiřadit různým uživatelům.
   - Hlavní rolí schvalovatele je schválení generování a zamítnutí žádostí o certifikát.
-- **Správce**: Role správce je přiřazena uživateli ke správě skupin certifikátů. Tato role nepodporuje roli schvalovatele, ale obsahuje roli zapisovače.
+- **Správce**: role správce je přiřazena uživateli ke správě skupin certifikátů. Tato role nepodporuje roli schvalovatele, ale obsahuje roli zapisovače.
   - Správce může spravovat skupiny certifikátů, měnit konfiguraci a odvolávat certifikáty aplikací vyvoláním nového seznamu odvolaných certifikátů (CRL).
   - V ideálním případě jsou role zapisovače, schvalovatele a správce přiřazovány různým uživatelům. Pro zvýšení zabezpečení potřebuje uživatel s rolí schvalovatele nebo správce taky oprávnění pro podepisování klíčů v Key Vault, k vydávání certifikátů nebo obnovení certifikátu certifikační autority vystavitele.
   - Kromě role správy mikroslužeb tato role zahrnuje, ale není omezená na:
@@ -110,19 +110,19 @@ Udržujte inventář assetů pro všechny provozní hostitele (včetně trvalýc
 #### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Inventář výchozího nasazení mikroslužeb Azure OPC trezoru 
 
 V Azure:
-- **App Service plán**: Plán služby App Service pro hostitele služeb. Výchozí S1.
-- **App Service** pro mikroslužbu: Hostitel služby úložiště OPC
-- **App Service** pro ukázkovou aplikaci: Hostitel ukázkové aplikace OPC trezoru.
-- **Key Vault Standard**: Uložení tajných kódů a Azure Cosmos DB klíčů pro webové služby.
-- **Key Vault Premium**: Pro hostování klíčů certifikační autority vystavitele, pro podpisovou službu a pro konfiguraci trezoru a ukládání privátních klíčů aplikace.
-- **Azure Cosmos DB**: Databáze pro žádosti o aplikace a certifikáty. 
+- **App Service plán**: plán služby App Service pro hostitele služeb. Výchozí S1.
+- **App Service** pro mikroslužbu: hostitel služby trezoru OPC.
+- **App Service** pro ukázkovou aplikaci: hostitel ukázkové aplikace trezoru OPC.
+- **Key Vault Standard**: ukládání tajných klíčů a Azure Cosmos DB klíčů pro webové služby.
+- **Key Vault Premium**: k hostování klíčů certifikační autority vystavitele, pro podpisovou službu a pro konfiguraci trezoru a ukládání privátních klíčů aplikace.
+- **Azure Cosmos DB**: databáze pro žádosti aplikací a certifikátů. 
 - **Application Insights**: (volitelné) řešení monitorování pro webovou službu a aplikaci.
-- **Registrace aplikace Azure AD**: Registrace pro ukázkovou aplikaci, službu a modul Edge.
+- **Registrace aplikace Azure AD**: registrace pro ukázkovou aplikaci, službu a modul Edge.
 
 Pro cloudové služby by se měly zdokumentovat všechny názvy hostitelů, skupiny prostředků, názvy prostředků, ID předplatných a ID klientů použitá k nasazení služby. 
 
 V Azure IoT Edge nebo místní server IoT Edge:
-- **Modul IoT Edge trezoru OPC**: Pro podporu globálního zjišťování serveru OPC UA (Factory Network). 
+- **Modul IoT Edge trezoru OPC**: pro podporu serveru pro vytváření globálních serverů OPC UA. 
 
 U IoT Edgech zařízení by se měly názvy hostitelů a IP adresy zdokumentovat. 
 
@@ -174,8 +174,8 @@ Služba OPC trezor je online certifikační autorita, která zákazníkům dáv�
   - Klíče kořenové certifikační autority RSA s typickou životností větší nebo rovnou 20 let musí být 4096 bitů nebo větší.
   - Klíče certifikační autority vystavitele RSA musí mít aspoň 2048 bitů. Pokud je datum vypršení platnosti certifikátu certifikační autority pozdější než 2030, musí být klíč certifikační autority 4096 bitů nebo větší.
 - Životnost certifikátu
-  - Certifikáty kořenové certifikační autority: Maximální doba platnosti certifikátu pro kořenové certifikační autority nesmí přesáhnout 25 let.
-  - Certifikáty certifikační autority pro podřízenou certifikační autoritu nebo online vydavatele: Maximální doba platnosti certifikátu pro certifikační autority, které jsou online a mají stav pouze certifikáty odběratele, nesmí překročit 6 let. U těchto certifikačních autorit se nesmí použít související privátní podpisový klíč delší než 3 roky k vydávání nových certifikátů.<br>
+  - Certifikáty kořenové certifikační autority: maximální doba platnosti certifikátu pro kořenové certifikační autority nesmí přesáhnout 25 let.
+  - Podcertifikační autorita nebo certifikáty certifikační autority online vystavitele: maximální doba platnosti certifikátu pro certifikační autority, které jsou online a mají stav pouze certifikáty odběratele, nesmí překročit 6 let. U těchto certifikačních autorit se nesmí použít související privátní podpisový klíč delší než 3 roky k vydávání nových certifikátů.<br>
     > [!IMPORTANT]
     > Certifikát vystavitele, jak je vygenerovaný ve výchozí mikroslužbě trezoru OPC bez externí kořenové certifikační autority, se považuje za online podca s příslušnými požadavky a životností. Výchozí doba života je nastavená na 5 let s délkou klíče větší nebo rovnou 2048.
   - Všechny asymetrické klíče musí mít maximální dobu platnosti 5 let a doporučenou dobu 1 roku.<br>
@@ -190,8 +190,8 @@ Služba OPC trezor je online certifikační autorita, která zákazníkům dáv�
 
 ### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>Klíče a certifikáty certifikační autority musí splňovat minimální požadavky.
 
-- **Privátní klíče**: Klíče RSA musí mít minimálně 2048 bitů. Pokud je datum vypršení platnosti certifikátu certifikační autority pozdější než 2030, musí být klíč certifikační autority 4096 bitů nebo větší.
-- **Doba života**: Maximální doba platnosti certifikátu pro certifikační autority, které jsou online a mají stav pouze certifikáty odběratele, nesmí překročit 6 let. U těchto certifikačních autorit se nesmí použít související privátní podpisový klíč delší než 3 roky k vydávání nových certifikátů.
+- **Privátní klíče**: klíče RSA musí mít minimálně 2048 bitů. Pokud je datum vypršení platnosti certifikátu certifikační autority pozdější než 2030, musí být klíč certifikační autority 4096 bitů nebo větší.
+- **Doba**platnosti: maximální doba platnosti certifikátu pro certifikační autority, které jsou online a mají stav pouze certifikáty odběratele, nesmí překročit 6 let. U těchto certifikačních autorit se nesmí použít související privátní podpisový klíč delší než 3 roky k vydávání nových certifikátů.
 
 ### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>Klíče certifikační autority jsou chráněné pomocí modulů hardwarového zabezpečení.
 
@@ -208,7 +208,7 @@ Zdokumentujte a udržujte standardní provozní postupy (shody) pro způsob, jak
 - Způsob zpracování a ověření žádosti o certifikát (Pokud je k dispozici) včetně toho, jak se zpracovávají žádosti o obnovení certifikátu a opětovné použití klíčů. 
 - Způsob distribuce vydaných certifikátů odběratelům. 
 
-Mikroslužba OPC trezor autority je popsaná v tématu [Architektura OPC trezoru](overview-opc-vault-architecture.md) a [spravuje službu certifikátů úložiště OPC](howto-opc-vault-manage.md). Postupy následují jako OPC Unified Architecture Specification Part 12: Zjišťování a globální služby. "
+Mikroslužba OPC trezor autority je popsaná v tématu [Architektura OPC trezoru](overview-opc-vault-architecture.md) a [spravuje službu certifikátů úložiště OPC](howto-opc-vault-manage.md). Postupy následují jako OPC Unified Architecture Specification, část 12: zjišťování a globální služby.
 
 
 ### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>Zdokumentujte a udržujte standardní provozní postupy infrastruktury veřejných klíčů pro odvolání certifikátů.

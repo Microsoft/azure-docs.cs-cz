@@ -14,11 +14,11 @@ ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9b3a1175b5e22b787c62365d3b113e02ec1d1326
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206992"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361900"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager operace poskytovatele prostředků
 

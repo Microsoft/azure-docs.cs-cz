@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1b82d43a58a25dc1c475180a4780106220e1ceeb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 8e29061becd9eb82dd04f3ed0db787542b29cbc7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597316"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363715"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -125,7 +125,7 @@ Pokud se v adresáři **MachineKeys** nacházejí oprávnění, která se liší
    * Oprávnění ke čtení
 2. Odstraňte všechny certifikáty, které jsou **vydané pro** , model nasazení Classic nebo **generátor certifikátů Windows Azure CRP**:
 
-   * [Otevřete certifikáty v konzole místního počítače](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
+   * [Otevřete certifikáty v konzole místního počítače](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
    * V části **osobní** > **certifikáty**odstraňte všechny certifikáty, které jsou **vydané pro** , model nasazení Classic nebo **generátor certifikátů Windows Azure CRP**.
 3. Spustí úlohu zálohování virtuálního počítače.
 

@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023408"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375199"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Koupit vlastní název domény pro Azure App Service
 
@@ -18,9 +18,9 @@ App Service domény jsou domény nejvyšší úrovně, které se spravují pří
 
 Informace o virtuálním počítači nebo Azure Storage Azure najdete v tématu [přiřazení App Service domény k virtuálnímu počítači Azure nebo Azure Storage](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Vytvořit plán služby App Service](/azure/app-service/) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 * [Odeberte limit útraty ve vašem předplatném](../cost-management-billing/manage/spending-limit.md#remove). Nemůžete nakupovat App Service domén s kredity bezplatného předplatného.
@@ -59,7 +59,7 @@ Pokud App Service plán není ve vrstvě **F1** , zavřete stránku **horizontá
 
 Vyberte některou z placených úrovní (**D1**, **B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti se zobrazí po kliknutí na odkaz **Zobrazit další možnosti**.
 
-Klikněte na tlačítko **Použít**.
+Klikněte na **Použít**.
 
 ![Kontrola cenové úrovně](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -171,7 +171,7 @@ Vyberte **Přidat název hostitele**.
 V dialogovém okně **Přidat název hostitele** zadejte plně kvalifikovaný název domény vaší App Service domény nebo jakékoli subdomény. Příklad:
 
 - kontoso.net
-- www\.kontoso.net
+- Webová\.kontoso.net
 - abc.kontoso.net
 
 Po dokončení vyberte **ověřit**. Typ záznamu názvu hostitele je automaticky vybrán.

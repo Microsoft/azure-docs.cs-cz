@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919511"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372906"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agent Log Analytics také kopíruje soubory s výpisem stavu systému do vašeho pracovního prostoru.
@@ -72,7 +72,7 @@ Výběr pracovního prostoru vytvořených službou Security Center:
 1. V části **výchozí konfigurace pracovního prostoru**vyberte použít pracovní prostory vytvořené službou Security Center.
    ![výběru cenové úrovně][10] 
 
-1. Klikněte na možnost **Uložit**.<br>
+1. Klikněte na **Uložit**.<br>
     Security Center vytvoří nový prostředek skupiny a výchozí pracovní prostor v této informace o zeměpisné poloze a agent se připojí k tomuto pracovnímu prostoru. Zásady vytváření názvů pracovní prostor a skupiny prostředků je:<br>
    **Pracovní prostor: DefaultWorkspace-[ID předplatného]-[Geo]<br> skupina prostředků: DefaultResourceGroup-[geografické]**
 

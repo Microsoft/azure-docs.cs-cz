@@ -12,23 +12,23 @@ manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
 ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293840"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360353"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Rozšířené zabezpečení dat pro Azure SQL Database
 
-Rozšířené zabezpečení dat je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, odhalování a omezování možných ohrožení zabezpečení databáze a detekci neobvyklých aktivit, které by pro vaši databázi mohly znamenat hrozbu. Poskytuje centrální místo pro povolování a správu těchto možností.
+Rozšířené zabezpečení dat je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, zpřístupněníí a zmírnění potenciálních ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly znamenat hrozbu pro vaši databázi. Poskytuje centrální místo pro povolování a správu těchto možností.
 
 ## <a name="overview"></a>Přehled
 
 Služba ADS (Advanced Data Security) poskytuje sadu pokročilých funkcí zabezpečení SQL, včetně klasifikace dat & klasifikace, posouzení ohrožení zabezpečení a rozšířené ochrany před internetovými útoky.
 
 - [Klasifikace & Discovery dat](sql-database-data-discovery-and-classification.md) poskytuje možnosti integrované do Azure SQL Database pro zjišťování, klasifikaci a označování & ochrany citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
-- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovatelná služba, která může zjišťovat, sledovat a pomáhat opravovat potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
-- [Advanced Threat Protection](sql-database-threat-detection-overview.md) zjišťuje nezvyklé aktivity, které mohou ukazovat na neobvyklé a potenciálně škodlivé pokusy o přístup k vaší databázi nebo jejímu zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Upozornění služby Advanced Threat Protection obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
+- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je jednoduchá konfigurace služby, která může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
+- [Rozšířená ochrana před internetovými útoky](sql-database-threat-detection-overview.md) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázi nebo jejím zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Výstrahy rozšířené ochrany před internetovými útoky poskytují podrobné informace o podezřelé aktivitě a doporučuje akci, jak tuto hrozbu prozkoumat a zmírnit.
 
 Pokud chcete povolit všechny tyto zahrnuté funkce, povolte reklamu SQL. Pomocí jednoho kliknutí můžete reklamu povolit pro všechny databáze na serveru SQL Database nebo spravované instanci. Povolení nebo Správa nastavení reklam vyžaduje, aby patřila do role [Správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) , role správce SQL Database nebo role správce systému SQL Server. 
 

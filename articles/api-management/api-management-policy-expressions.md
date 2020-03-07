@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845273"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374332"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
 Tento článek popisuje syntaxi výrazů zásad ve C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené [podmnožině](api-management-policy-expressions.md#CLRTypes) typů .NET Framework.
 
-Další informace:
+Další informace najdete tady:
 
 - Podívejte se, jak do back-endu poskytovat informace o kontextu. K poskytnutí těchto informací použijte [parametr nastavení řetězce dotazu](api-management-transformation-policies.md#SetQueryStringParameter) a [nastavte zásady hlaviček protokolu HTTP](api-management-transformation-policies.md#SetHTTPheader) .
 - Podívejte se, jak použít zásadu [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) k předběžné autorizaci přístupu k operacím na základě deklarací identity tokenu.
@@ -76,134 +76,134 @@ Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou 
 
 |Typ|Podporovaní členové|
 |--------------|-----------------------|
-|Newtonsoft. JSON. Formatting|Všechno|
+|Newtonsoft. JSON. Formatting|Vše|
 |Newtonsoft. JSON. JsonConvert|Funkce SerializeObject, DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|Všechno|
-|Newtonsoft.Json.Linq.JArray|Všechno|
-|Newtonsoft.Json.Linq.JConstructor|Všechno|
-|Newtonsoft.Json.Linq.JContainer|Všechno|
-|Newtonsoft.Json.Linq.JObject|Všechno|
-|Newtonsoft.Json.Linq.JProperty|Všechno|
-|Newtonsoft.Json.Linq.JRaw|Všechno|
-|Newtonsoft.Json.Linq.JToken|Všechno|
-|Newtonsoft.Json.Linq.JTokenType|Všechno|
-|Newtonsoft.Json.Linq.JValue|Všechno|
-|System. Array|Všechno|
-|System. BitConverter|Všechno|
-|System. Boolean|Všechno|
-|System.Byte|Všechno|
-|System.Char|Všechno|
-|System.Collections.Generic.Dictionary<TKey, TValue>|Všechno|
-|System. Collections. Generic. HashSet –\<T >|Všechno|
-|System.Collections.Generic.ICollection\<T>|Všechno|
-|System.Collections.Generic.IDictionary<TKey, TValue>|Všechno|
-|System. Collections. Generic. IEnumerable\<T >|Všechno|
-|System. Collections. Generic. IEnumerator\<T >|Všechno|
-|System. Collections. Generic. IList\<T >|Všechno|
-|System.Collections.Generic.IReadOnlyCollection\<T>|Všechno|
-|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Všechno|
-|System.Collections.Generic.ISet\<T>|Všechno|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|Všechno|
-|System. Collections. Generic. list\<T >|Všechno|
-|System.Collections.Generic.Queue\<T>|Všechno|
-|System.Collections.Generic.Stack\<T>|Všechno|
-|System.Convert|Všechno|
+|Newtonsoft.Json.Linq.Extensions|Vše|
+|Newtonsoft.Json.Linq.JArray|Vše|
+|Newtonsoft.Json.Linq.JConstructor|Vše|
+|Newtonsoft.Json.Linq.JContainer|Vše|
+|Newtonsoft.Json.Linq.JObject|Vše|
+|Newtonsoft.Json.Linq.JProperty|Vše|
+|Newtonsoft.Json.Linq.JRaw|Vše|
+|Newtonsoft.Json.Linq.JToken|Vše|
+|Newtonsoft.Json.Linq.JTokenType|Vše|
+|Newtonsoft.Json.Linq.JValue|Vše|
+|System. Array|Vše|
+|System. BitConverter|Vše|
+|System. Boolean|Vše|
+|System.Byte|Vše|
+|System.Char|Vše|
+|System.Collections.Generic.Dictionary<TKey, TValue>|Vše|
+|System. Collections. Generic. HashSet –\<T >|Vše|
+|System. Collections. Generic. ICollection\<T >|Vše|
+|System.Collections.Generic.IDictionary<TKey, TValue>|Vše|
+|System. Collections. Generic. IEnumerable\<T >|Vše|
+|System. Collections. Generic. IEnumerator\<T >|Vše|
+|System. Collections. Generic. IList\<T >|Vše|
+|System. Collections. Generic. IReadOnlyCollection\<T >|Vše|
+|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Vše|
+|System. Collections. Generic. ISet\<T >|Vše|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|Vše|
+|System. Collections. Generic. list\<T >|Vše|
+|System. Collections. Generic. Queue\<T >|Vše|
+|System. Collections. Generic. Stack\<T >|Vše|
+|System.Convert|Vše|
 |System.DateTime|(Konstruktor), Add, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, datum, den, DayOfWeek, DayOfYear, DaysInMonth, hodina, IsDaylightSavingTime, IsLeapYear, MaxValue, milisekunda, Minute, MinValue, month, Now , Analyze, Second, odečíst, takty, TimeOfDay, Today, ToString, UtcNow, Year|
 |System.DateTimeKind|UTC|
-|System.DateTimeOffset|Všechno|
-|System.Decimal|Všechno|
-|System.Double|Všechno|
-|System. Exception|Všechno|
-|System.Guid|Všechno|
-|System.Int16|Všechno|
-|System.Int32|Všechno|
-|System.Int64|Všechno|
-|System.IO.StringReader|Všechno|
-|System. IO. StringWriter|Všechno|
-|System. Linq. vyčíslitelné|Všechno|
-|System.Math|Všechno|
-|System. MidpointRounding|Všechno|
-|System.Net.WebUtility|Všechno|
-|System.Nullable|Všechno|
-|System.Random|Všechno|
-|System.SByte|Všechno|
-|System.Security.Cryptography.AsymmetricAlgorithm|Všechno|
-|System.Security.Cryptography.CipherMode|Všechno|
-|System.Security.Cryptography.HashAlgorithm|Všechno|
-|System.Security.Cryptography.HashAlgorithmName|Všechno|
-|System.Security.Cryptography.HMAC|Všechno|
-|System.Security.Cryptography.HMACMD5|Všechno|
-|System.Security.Cryptography.HMACSHA1|Všechno|
-|System.Security.Cryptography.HMACSHA256|Všechno|
-|System.Security.Cryptography.HMACSHA384|Všechno|
-|System.Security.Cryptography.HMACSHA512|Všechno|
-|System.Security.Cryptography.KeyedHashAlgorithm|Všechno|
-|System.Security.Cryptography.MD5|Všechno|
-|System.Security.Cryptography.Oid|Všechno|
-|System.Security.Cryptography.PaddingMode|Všechno|
-|System.Security.Cryptography.RNGCryptoServiceProvider|Všechno|
-|System.Security.Cryptography.RSA|Všechno|
-|System.Security.Cryptography.RSAEncryptionPadding|Všechno|
-|System.Security.Cryptography.RSASignaturePadding|Všechno|
-|System.Security.Cryptography.SHA1|Všechno|
-|System.Security.Cryptography.SHA1Managed|Všechno|
-|System.Security.Cryptography.SHA256|Všechno|
-|System.Security.Cryptography.SHA256Managed|Všechno|
-|System.Security.Cryptography.SHA384|Všechno|
-|System.Security.Cryptography.SHA384Managed|Všechno|
-|System.Security.Cryptography.SHA512|Všechno|
-|System.Security.Cryptography.SHA512Managed|Všechno|
-|System.Security.Cryptography.SymmetricAlgorithm|Všechno|
-|System.Security.Cryptography.X509Certificates.PublicKey|Všechno|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Všechno|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name (Název)|
-|System.Security.Cryptography.X509Certificates.X509Certificate|Všechno|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|Všechno|
-|System.Security.Cryptography.X509Certificates.X509ContentType|Všechno|
-|System.Security.Cryptography.X509Certificates.X509NameType|Všechno|
-|System. Single|Všechno|
-|System. String|Všechno|
-|System.StringComparer|Všechno|
-|System.StringComparison|Všechno|
-|System.StringSplitOptions|Všechno|
-|System.Text.Encoding|Všechno|
+|System.DateTimeOffset|Vše|
+|System.Decimal|Vše|
+|System.Double|Vše|
+|System. Exception|Vše|
+|System.Guid|Vše|
+|System.Int16|Vše|
+|System.Int32|Vše|
+|System.Int64|Vše|
+|System.IO.StringReader|Vše|
+|System. IO. StringWriter|Vše|
+|System. Linq. vyčíslitelné|Vše|
+|System.Math|Vše|
+|System. MidpointRounding|Vše|
+|System.Net.WebUtility|Vše|
+|System.Nullable|Vše|
+|System.Random|Vše|
+|System.SByte|Vše|
+|System.Security.Cryptography.AsymmetricAlgorithm|Vše|
+|System.Security.Cryptography.CipherMode|Vše|
+|System.Security.Cryptography.HashAlgorithm|Vše|
+|System.Security.Cryptography.HashAlgorithmName|Vše|
+|System.Security.Cryptography.HMAC|Vše|
+|System.Security.Cryptography.HMACMD5|Vše|
+|System.Security.Cryptography.HMACSHA1|Vše|
+|System.Security.Cryptography.HMACSHA256|Vše|
+|System.Security.Cryptography.HMACSHA384|Vše|
+|System.Security.Cryptography.HMACSHA512|Vše|
+|System.Security.Cryptography.KeyedHashAlgorithm|Vše|
+|System.Security.Cryptography.MD5|Vše|
+|System.Security.Cryptography.Oid|Vše|
+|System.Security.Cryptography.PaddingMode|Vše|
+|System.Security.Cryptography.RNGCryptoServiceProvider|Vše|
+|System.Security.Cryptography.RSA|Vše|
+|System.Security.Cryptography.RSAEncryptionPadding|Vše|
+|System.Security.Cryptography.RSASignaturePadding|Vše|
+|System.Security.Cryptography.SHA1|Vše|
+|System.Security.Cryptography.SHA1Managed|Vše|
+|System.Security.Cryptography.SHA256|Vše|
+|System.Security.Cryptography.SHA256Managed|Vše|
+|System.Security.Cryptography.SHA384|Vše|
+|System.Security.Cryptography.SHA384Managed|Vše|
+|System.Security.Cryptography.SHA512|Vše|
+|System.Security.Cryptography.SHA512Managed|Vše|
+|System.Security.Cryptography.SymmetricAlgorithm|Vše|
+|System.Security.Cryptography.X509Certificates.PublicKey|Vše|
+|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Vše|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Název|
+|System.Security.Cryptography.X509Certificates.X509Certificate|Vše|
+|System.Security.Cryptography.X509Certificates.X509Certificate2|Vše|
+|System.Security.Cryptography.X509Certificates.X509ContentType|Vše|
+|System.Security.Cryptography.X509Certificates.X509NameType|Vše|
+|System. Single|Vše|
+|System. String|Vše|
+|System.StringComparer|Vše|
+|System.StringComparison|Vše|
+|System.StringSplitOptions|Vše|
+|System.Text.Encoding|Vše|
 |System.Text.RegularExpressions.Capture|Index, délka, hodnota|
 |System.Text.RegularExpressions.CaptureCollection|Počet, položka|
 |System.Text.RegularExpressions.Group|Zachycení, úspěch|
 |System.Text.RegularExpressions.GroupCollection|Počet, položka|
 |System.Text.RegularExpressions.Match|Prázdné, skupiny, výsledek|
 |System.Text.RegularExpressions.Regex|(Konstruktor), neshoda, shoda, shoda, nahradit, zrušit řídicí, rozdělit|
-|System.Text.RegularExpressions.RegexOptions|Všechno|
-|System.Text.StringBuilder|Všechno|
-|System. TimeSpan|Všechno|
-|System.TimeZone|Všechno|
-|System.TimeZoneInfo.AdjustmentRule|Všechno|
-|System.TimeZoneInfo.TransitionTime|Všechno|
-|System.TimeZoneInfo|Všechno|
-|System.Tuple|Všechno|
-|System.UInt16|Všechno|
-|System.UInt32|Všechno|
-|System.UInt64|Všechno|
-|System.Uri|Všechno|
-|System. UriPartial|Všechno|
-|System.Xml.Linq.Extensions|Všechno|
-|System.Xml.Linq.XAttribute|Všechno|
-|System.Xml.Linq.XCData|Všechno|
-|System.Xml.Linq.XComment|Všechno|
-|System.Xml.Linq.XContainer|Všechno|
-|System.Xml.Linq.XDeclaration|Všechno|
+|System.Text.RegularExpressions.RegexOptions|Vše|
+|System.Text.StringBuilder|Vše|
+|System. TimeSpan|Vše|
+|System.TimeZone|Vše|
+|System.TimeZoneInfo.AdjustmentRule|Vše|
+|System.TimeZoneInfo.TransitionTime|Vše|
+|System.TimeZoneInfo|Vše|
+|System.Tuple|Vše|
+|System.UInt16|Vše|
+|System.UInt32|Vše|
+|System.UInt64|Vše|
+|System.Uri|Vše|
+|System. UriPartial|Vše|
+|System.Xml.Linq.Extensions|Vše|
+|System.Xml.Linq.XAttribute|Vše|
+|System.Xml.Linq.XCData|Vše|
+|System.Xml.Linq.XComment|Vše|
+|System.Xml.Linq.XContainer|Vše|
+|System.Xml.Linq.XDeclaration|Vše|
 |System.Xml.Linq.XDocument|Vše, s výjimkou: Load|
-|System.Xml.Linq.XDocumentType|Všechno|
-|System.Xml.Linq.XElement|Všechno|
-|System.Xml.Linq.XName|Všechno|
-|System.Xml.Linq.XNamespace|Všechno|
-|System.Xml.Linq.XNode|Všechno|
-|System.Xml.Linq.XNodeDocumentOrderComparer|Všechno|
-|System.Xml.Linq.XNodeEqualityComparer|Všechno|
-|System.Xml.Linq.XObject|Všechno|
-|System.Xml.Linq.XProcessingInstruction|Všechno|
-|System.Xml.Linq.XText|Všechno|
-|System.Xml.XmlNodeType|Všechno|
+|System.Xml.Linq.XDocumentType|Vše|
+|System.Xml.Linq.XElement|Vše|
+|System.Xml.Linq.XName|Vše|
+|System.Xml.Linq.XNamespace|Vše|
+|System.Xml.Linq.XNode|Vše|
+|System.Xml.Linq.XNodeDocumentOrderComparer|Vše|
+|System.Xml.Linq.XNodeEqualityComparer|Vše|
+|System.Xml.Linq.XObject|Vše|
+|System.Xml.Linq.XProcessingInstruction|Vše|
+|System.Xml.Linq.XText|Vše|
+|System.Xml.XmlNodeType|Vše|
 
 ## <a name="ContextVariables"></a>Kontextová proměnná
 Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](api-management-policy-expressions.md#Syntax)zásad. Její členové poskytují informace, které se vztahují k `\request`. Všechny členy `context` jsou jen pro čtení.
@@ -211,17 +211,17 @@ Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](ap
 |Kontextová proměnná|Povolené metody, vlastnosti a hodnoty parametrů|
 |----------------------|-------------------------------------------------------|
 |context|[Rozhraní API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Nasazení](#ref-context-deployment)<br /><br /> Uplynulý: časový interval časového intervalu mezi hodnotou časového razítka a aktuálním časem<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operace](#ref-context-operation)<br /><br /> [Produktu](#ref-context-product)<br /><br /> [Požadavek](#ref-context-request)<br /><br /> RequestId: GUID – jedinečný identifikátor žádosti<br /><br /> [Odpověď](#ref-context-response)<br /><br /> [Předplatné](#ref-context-subscription)<br /><br /> Časové razítko: hodnota DateTime – bod v čase, kdy byla přijata žádost<br /><br /> Trasování: bool – určuje, zda je trasování zapnuto nebo vypnuto <br /><br /> [Uživatelský](#ref-context-user)<br /><br /> [Proměnné](#ref-context-variables): IReadOnlyDictionary < řetězec, > objektů<br /><br /> void trace (zpráva: String)|
-|<a id="ref-context-api"></a>context.Api|ID: řetězec<br /><br /> IsCurrentRevision: bool<br /><br />  Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Revize: řetězec<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Verze: řetězec |
+|<a id="ref-context-api"></a>souvislost. API|ID: řetězec<br /><br /> IsCurrentRevision: bool<br /><br />  Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Revize: řetězec<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Verze: řetězec |
 |<a id="ref-context-deployment"></a>souvislost. Prostředí|Oblast: řetězec<br /><br /> ServiceName: řetězec<br /><br /> Certifikáty: IReadOnlyDictionary < řetězec, X509Certificate2 >|
 |<a id="ref-context-lasterror"></a>souvislost. LastError|Zdroj: řetězec<br /><br /> Důvod: řetězec<br /><br /> Zpráva: řetězec<br /><br /> Obor: řetězec<br /><br /> Oddíl: řetězec<br /><br /> Cesta: řetězec<br /><br /> PolicyId: řetězec<br /><br /> Pro další informace o kontextu. Poslední chyba najdete v tématu [zpracování chyb](api-management-error-handling-policies.md).|
-|<a id="ref-context-operation"></a>context.Operation|ID: řetězec<br /><br /> Metoda: String<br /><br /> Název: řetězec<br /><br /> UrlTemplate: řetězec|
-|<a id="ref-context-product"></a>context.Product|Rozhraní API: IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Skupiny: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Název: řetězec<br /><br /> Stav: enum ProductState {NotPublished, Publikováno}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
+|<a id="ref-context-operation"></a>souvislost. NázevOperace|ID: řetězec<br /><br /> Metoda: String<br /><br /> Název: řetězec<br /><br /> UrlTemplate: řetězec|
+|<a id="ref-context-product"></a>souvislost. Produktu|Rozhraní API: IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Skupiny: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Název: řetězec<br /><br /> Stav: enum ProductState {NotPublished, Publikováno}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
 |<a id="ref-context-request"></a>souvislost. Request|Tělo: [IMessageBody](#ref-imessagebody) nebo `null`, pokud žádost neobsahuje tělo.<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Headers](#ref-context-request-headers): IReadOnlyDictionary < String, String [] ><br /><br /> IpAddress: řetězec<br /><br /> MatchedParameters: IReadOnlyDictionary < řetězec, řetězec ><br /><br /> Metoda: String<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adresa URL: [IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>kontext řetězce. Request. Headers. GetValueOrDefault (Header: řetězec, defaultValue: String)|záhlaví: řetězec<br /><br /> VýchozíHodnota: řetězec<br /><br /> Vrátí hodnoty hlaviček požadavku oddělené čárkou nebo `defaultValue`, pokud záhlaví není nalezeno.|
 |<a id="ref-context-response"></a>souvislost. Základě|Tělo: [IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers): IReadOnlyDictionary < String, String [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: řetězec|
 |<a id="ref-context-response-headers"></a>kontext řetězce. Response. Headers. GetValueOrDefault (Header: řetězec, defaultValue: String)|záhlaví: řetězec<br /><br /> VýchozíHodnota: řetězec<br /><br /> Vrátí hodnoty záhlaví odpovědi oddělené čárkou nebo `defaultValue`, pokud záhlaví není nalezeno.|
 |<a id="ref-context-subscription"></a>souvislost. Formě|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> ID: řetězec<br /><br /> Klíč: řetězec<br /><br /> Název: řetězec<br /><br /> PrimaryKey: řetězec<br /><br /> SecondaryKey: řetězec<br /><br /> StartDate: DateTime?|
-|<a id="ref-context-user"></a>context.User|E-mail: řetězec<br /><br /> FirstName: řetězec<br /><br /> Skupiny: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Identity: IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: String<br /><br /> Poznámka: řetězec<br /><br /> RegistrationDate: DateTime|
+|<a id="ref-context-user"></a>souvislost. Uživatelský|E-mail: řetězec<br /><br /> FirstName: řetězec<br /><br /> Skupiny: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Identity: IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: String<br /><br /> Poznámka: řetězec<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>IApi|ID: řetězec<br /><br /> Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Protokoly: IEnumerable < řetězec\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|ID: řetězec<br /><br /> Název: řetězec|
 |<a id="ref-imessagebody"></a>IMessageBody|Jako < T\>(preserveContent: bool = false): kde T: String, Byte [], JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Metody `context.Request.Body.As<T>` a `context.Response.Body.As<T>` slouží ke čtení textu zprávy žádosti a odpovědi v zadaném typu `T`. Ve výchozím nastavení používá metoda původní datový proud zprávy a vykresluje jej po jeho vrácení k dispozici. Chcete-li zabránit tomu, aby metoda pracovala na kopii toku textu, nastavte parametr `preserveContent` na hodnotu `true`. Pokud si chcete prohlédnout příklad, přejděte [sem](api-management-transformation-policies.md#SetBody) .|
