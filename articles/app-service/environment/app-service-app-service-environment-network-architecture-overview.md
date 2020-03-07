@@ -8,13 +8,13 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687350"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374167"
 ---
-# <a name="network-architecture-overview-of-app-service-environments"></a>Přehled síťové architektury ve službě App Service Environment
+# <a name="network-architecture-overview-of-app-service-environments"></a>Přehled architektury sítě App Service prostředí
 App Service prostředí se vždycky vytvářejí v rámci podsítě [virtuální sítě][virtualnetwork] – aplikace běžící v App Service Environment můžou komunikovat s privátními koncovými body umístěnými ve stejné topologii virtuální sítě.  Vzhledem k tomu, že zákazníci můžou uzamknout části své infrastruktury virtuální sítě, je důležité pochopit typy toků síťové komunikace, ke kterým dochází s App Service Environment.
 
 ## <a name="general-network-flow"></a>Obecný tok sítě
@@ -29,7 +29,7 @@ Následující diagram ukazuje přehled různých příchozích a odchozích sí
 App Service Environment může komunikovat s nejrůznějšími koncovými body privátního zákazníka.  Například aplikace spuštěné v App Service Environment se můžou připojit k databázovým serverům běžícím na virtuálních počítačích s IaaS ve stejné topologii virtuální sítě.
 
 > [!IMPORTANT]
-> V diagramu sítě jsou "jiné výpočetní prostředky" nasazeny v jiné podsíti než App Service Environment. Nasazení prostředků ve stejné podsíti s pomocným mechanismem pomocného programu zablokuje připojení z pomocného mechanismu pro tyto prostředky (s výjimkou konkrétního směrování uvnitř-služby Místo toho se nasaďte do jiné podsítě (ve stejné virtuální síti). App Service Environment se pak budou moci připojit. Není nutná žádná další konfigurace.
+> V diagramu sítě jsou "jiné výpočetní prostředky" nasazeny v jiné podsíti než App Service Environment. Nasazení prostředků ve stejné podsíti s pomocným mechanismem pomocného programu zablokuje připojení z pomocného mechanismu pro tyto prostředky (s výjimkou konkrétního směrování uvnitř-služby Místo toho se nasaďte do jiné podsítě (ve stejné virtuální síti). App Service Environment se pak budou moci připojit. Není vyžadována další konfigurace.
 > 
 > 
 

@@ -7,18 +7,18 @@ ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75352461"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397256"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Seznámení s modelem Service Fabric prostředků
 
 Model prostředků Service Fabric popisuje jednoduchý přístup k definování prostředků, které tvoří Service Fabric mřížkovou aplikaci. Jednotlivé prostředky lze nasadit do libovolného Service Fabricho prostředí.  Model prostředků Service Fabric je také kompatibilní s modelem Azure Resource Manager. V tomto modelu se aktuálně podporují následující typy prostředků:
 
 - Aplikace a služby
-- Networks
+- Sítě
 - Brány
 - Tajné kódy a tajné klíče/hodnoty
 - Svazky
@@ -29,7 +29,7 @@ Jednotlivé prostředky jsou popsány deklarativně v souboru prostředků, což
 
 Prostředek aplikace je jednotka nasazení, správy verzí a životnosti aplikace sítě. Skládá se z jednoho nebo více prostředků služby, které reprezentují mikroslužby. Každý prostředek služby se pak skládá z jednoho nebo více balíčků kódu, které popisují vše potřebné ke spuštění image kontejneru přidružené k balíčku kódu.
 
-![Aplikace a služby][Image1]
+![Aplikace a služby][Image1]
 
 Prostředek služby deklaruje následující:
 
@@ -44,7 +44,7 @@ Pokud se aplikace sítě skládá z více než jedné služby, není zaručena, 
 
 Jako zmiňovali dříve se dá životní cyklus jednotlivých instancí aplikace spravovat nezávisle. Například jedna instance aplikace může být upgradována nezávisle na ostatních instancích aplikace. Obvykle zachováte počet služeb v aplikaci poměrně malý, jako další služby, které do aplikace zadáte, tím obtížnější je spravovat každou službu nezávisle.
 
-## <a name="networks"></a>Networks
+## <a name="networks"></a>Sítě
 
 Síťový prostředek je samostatně nasaditelné prostředky nezávisle na prostředku aplikace nebo služby, který se na něj může odkazovat jako na jejich závislosti. Slouží k vytvoření sítě pro vaše aplikace. Několik služeb z různých aplikací může být součástí stejné sítě.  Další informace najdete v článku o [sítích v Service Fabricch aplikacích sítě](service-fabric-mesh-networks-and-gateways.md).
 

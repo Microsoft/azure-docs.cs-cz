@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842865"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396962"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Úvod k řešení potíží s připojením v Azure Network Watcher
 
@@ -46,7 +46,7 @@ V následující tabulce jsou uvedeny vlastnosti vrácené při dokončení ře�
 |Směrování []. Chyba | Kolekce problémů, které byly zjištěny během kontroly tohoto směrování. Pokud nebyly zjištěny žádné problémy, hodnota je prázdná.|
 |Směrování []. Problémy []. Zdroji | U aktuálního směrování, kde došlo k problému. Možné hodnoty:<br/> **Příchozí** – problém je na odkazu z předchozího směrování na aktuální segment směrování.<br/>**Odchozí** – problém je na propojení od aktuálního směrování k dalšímu segmentu směrování.<br/>**Místní** problém je na aktuálním směrování.|
 |Směrování []. Problémy []. Závažnost | Závažnost problému byla zjištěna. Možné hodnoty jsou **Error** a **Warning**. |
-|Směrování []. Problémy []. Textový |Typ problému byl nalezen. Možné hodnoty: <br/>**CPU**<br/>**Paměť**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Směrování []. Problémy []. Textový |Typ problému byl nalezen. Možné hodnoty: <br/>**VČETNĚ**<br/>**Rezident**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Směrování []. Problémy []. Souvislost |Podrobnosti o zjištěném problému.|
 |Směrování []. Problémy []. Context []. klíč |Klíč vrácené dvojice klíč-hodnota|
 |Směrování []. Problémy []. Context []. hodnota |Hodnota dvojice klíč hodnota, která se vrátila|
@@ -75,7 +75,7 @@ Následuje příklad problému nalezeného na směrování.
 |Typ  |Popis  |
 |---------|---------|
 |Procesor     | Vysoké využití procesoru.       |
-|Paměť     | Vysoké využití paměti.       |
+|Memory (Paměť)     | Vysoké využití paměti.       |
 |GuestFirewall     | Provoz je zablokovaný kvůli konfiguraci brány firewall virtuálního počítače.        |
 |DNSResolution     | Překlad DNS pro cílovou adresu se nezdařil.        |
 |NetworkSecurityRule    | Provoz je blokován pravidlem NSG (pravidlo se vrátí).        |

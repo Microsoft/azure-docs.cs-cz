@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169615"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396596"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření centra IoT pomocí Azure Portal
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak vytvořit a spravovat centra IoT pomocí [Azure Por
 
 Pokud chcete použít kroky v tomto kurzu, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -112,7 +112,7 @@ Tady jsou dva způsoby, jak v předplatném najít konkrétní centrum IoT:
 
 1. Pokud znáte skupinu prostředků, do které Centrum IoT patří, klikněte na **skupiny prostředků**a pak v seznamu vyberte skupinu prostředků. Na obrazovce skupina prostředků se zobrazí všechny prostředky v této skupině, včetně centra IoT. Klikněte na centrum, pro které hledáte.
 
-2. Klikněte na **Všechny prostředky**. V podokně **všechny prostředky** je rozevírací seznam, který je ve výchozím nastavení `All types`. Klikněte na rozevírací seznam, zrušte `Select all`. Vyhledejte `IoT Hub` a ověřte ji. Kliknutím na rozevírací seznam ho zavřete a položky se vyfiltrují, aby se zobrazily jenom vaše centra IoT.
+2. Klikněte na **všechny prostředky**. V podokně **všechny prostředky** je rozevírací seznam, který je ve výchozím nastavení `All types`. Klikněte na rozevírací seznam, zrušte `Select all`. Vyhledejte `IoT Hub` a ověřte ji. Kliknutím na rozevírací seznam ho zavřete a položky se vyfiltrují, aby se zobrazily jenom vaše centra IoT.
 
 ## <a name="delete-the-iot-hub"></a>Odstranit centrum IoT
 

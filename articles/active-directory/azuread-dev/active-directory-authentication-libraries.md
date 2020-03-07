@@ -14,11 +14,11 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: fd880c98878f1f778047cd2d60b115b857ad0809
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251647"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377459"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory knihovny ověřování
 
@@ -37,7 +37,7 @@ Knihovna Azure Active Directory Authentication Library (ADAL) v 1.0 umožňuje v
 
 ## <a name="microsoft-supported-client-libraries"></a>Klientské knihovny podporované Microsoftem
 
-| Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Odkaz
+| Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Referenční informace
 | --- | --- | --- | --- | --- | --- |
 | Klient .NET, Windows Store, UWP, Xamarin iOS a Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Desktopová aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Referenční informace](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) |
 | JavaScript |ADAL.js |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[Jednostránková aplikace](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
@@ -49,7 +49,7 @@ Knihovna Azure Active Directory Authentication Library (ADAL) v 1.0 umožňuje v
 
 ## <a name="microsoft-supported-server-libraries"></a>Knihovny serverů podporované Microsoftem
 
-| Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Odkaz
+| Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Referenční informace
 | --- | --- | --- | --- | --- | --- |
 | .NET |OWIN pro AzureAD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[Aplikace MVC](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
 | .NET |OWIN pro OpenIDConnect |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.OpenIdConnect) |[Webová aplikace](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |

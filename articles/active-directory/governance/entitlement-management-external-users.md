@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185579"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376738"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
@@ -143,7 +143,7 @@ Můžete vybrat, co se stane, když externí uživatel, který byl pozván do va
 
 1. Pokud chcete odebrat uživatelský účet hosta v tomto adresáři, můžete nastavit počet dní, než se odebere. Pokud chcete odebrat uživatelský účet hosta, jakmile ztratí poslední přiřazení na všechny balíčky pro přístup, nastavte **počet dní před odebráním externího uživatele z tohoto adresáře** na **hodnotu 0**.
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

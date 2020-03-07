@@ -4,11 +4,11 @@ description: K nasazení prostředků do Azure můžete použít šablonu Azure 
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: d30e685c35f33b6fc5d3872b9287e45190ad5713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484282"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397151"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token"></a>Nasazení privátní šablony Resource Manageru s tokenem SAS
 
@@ -18,7 +18,7 @@ Když se vaše šablona nachází v účtu úložiště, můžete omezit příst
 
 Následující skript vytvoří účet úložiště a kontejner s povoleným veřejným přístupem.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -37,7 +37,7 @@ New-AzStorageContainer `
   -Permission Off
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create \
@@ -65,7 +65,7 @@ az storage container create \
 
 Nyní jste připraveni odeslat šablonu do účtu úložiště. Zadejte cestu k šabloně, kterou chcete použít.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -73,7 +73,7 @@ Set-AzStorageBlobContent `
   -File c:\Templates\azuredeploy.json
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az storage blob upload \
@@ -93,7 +93,7 @@ Pokud chcete v účtu úložiště nasadit soukromou šablonu, vygenerujte token
 > Objekt BLOB obsahující šablonu je přístupný pouze pro vlastníka účtu. Pokud však vytvoříte token SAS pro objekt blob, je objekt BLOB přístupný komukoli s tímto identifikátorem URI. Pokud identifikátor URI zachytí jiný uživatel, bude mít tento uživatel k šabloně přístup. Token SAS je dobrým způsobem, jak omezit přístup k vašim šablonám, neměli byste ale obsahovat citlivá data, jako jsou hesla přímo v šabloně.
 >
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri $templateuri
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

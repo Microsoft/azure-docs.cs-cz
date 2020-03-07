@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385382"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurace SSL pro aplikaci v Azure
 
-Šifrování SSL (Secure Socket Layer) představuje nejčastěji používanou metodu zabezpečení dat posílaných přes internet. Článek o tomto běžném postupu probírá, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL pro zabezpečení aplikace.
+Šifrování SSL (Secure Socket Layer) představuje nejčastěji používanou metodu zabezpečení dat posílaných přes Internet. Tento společný úkol popisuje, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL pro zabezpečení aplikace.
 
 > [!NOTE]
 > Postupy v této úloze se vztahují na Azure Cloud Services; App Services najdete v [tomto](../app-service/configure-ssl-bindings.md)tématu.
@@ -41,7 +41,7 @@ Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a p
 
 Dále musíte do definice služby a konfiguračních souborů služby zahrnout informace o certifikátu.
 
-<a name="modify"></a>
+<a name="modify"> </a>
 
 ## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2: Úprava definice služby a konfiguračních souborů
 Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a musí být přidán koncový bod HTTPS. V důsledku toho je potřeba aktualizovat definice služby a konfigurační soubory služby.

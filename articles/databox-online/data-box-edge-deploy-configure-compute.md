@@ -10,13 +10,13 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277157"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397321"
 ---
-# <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Kurz: Transformace dat pomocí Azure Data Box Edge
+# <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Kurz: transformace dat pomocí Azure Data Box Edge
 
 V tomto kurzu se dozvíte, jak na zařízení Azure Data Box Edge nakonfigurovat výpočetní roli. Po nakonfigurování výpočetní role Data Box Edge může data před odesláním do Azure transformovat.
 
@@ -25,20 +25,20 @@ Dokončení této procedury může trvat přibližně 10 až 15 minut.
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Konfigurace výpočtů
+> * Konfigurace COMPUTE
 > * Přidat sdílené složky
 > * Přidání výpočetního modulu
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nastavením výpočetní role na zařízení Data Box Edge se ujistěte, že:
 
 - Aktivovali jste zařízení Data Box Edge, jak je popsáno v tématu [připojení, nastavení a aktivace Azure Data box Edge](data-box-edge-deploy-connect-setup-activate.md).
 
 
-## <a name="configure-compute"></a>Konfigurace výpočtů
+## <a name="configure-compute"></a>Konfigurace COMPUTE
 
 Pokud chcete na svém Data Box Edge nakonfigurovat výpočetní prostředky, vytvoříte prostředek IoT Hub.
 
@@ -50,10 +50,10 @@ Pokud chcete na svém Data Box Edge nakonfigurovat výpočetní prostředky, vyt
 3. V okně **Konfigurace hraničních výpočtů** zadejte následující:
 
    
-    |Pole  |Value  |
+    |Pole  |Hodnota  |
     |---------|---------|
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytvoření prostředku IoT používá standardní vrstva (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Data Box Edge.     |
-    |Name     |Zadejte název prostředku IoT Hub.         |
+    |Název     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme se službou COMPUTE](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -111,13 +111,13 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
     
     |Pole  |Hodnota  |
     |---------|---------|
-    |Name     | Jedinečný název modulu. Tento modul je kontejner Docker, který můžete nasadit do zařízení IoT Edge, které je přidružené k vašemu Data Box Edge.        |
+    |Název     | Jedinečný název modulu. Tento modul je kontejner Docker, který můžete nasadit do zařízení IoT Edge, které je přidružené k vašemu Data Box Edge.        |
     |Identifikátor URI image     | Identifikátor URI image pro odpovídající image kontejneru pro modul        |
-    |Vyžadují se přihlašovací údaje.     | Pokud je zaškrtnuto, uživatelské jméno a heslo slouží k načtení modulů s porovnávací adresou URL.        |
+    |Požadovány přihlašovací údaje     | Pokud je zaškrtnuto, uživatelské jméno a heslo slouží k načtení modulů s porovnávací adresou URL.        |
     |Vstupní sdílená složka     | Vyberte vstupní sdílenou složku. V tomto případě je v tomto případě vstupní sdílená složka Edge v místním prostředí. Pomocí tohoto modulu se přesunuly soubory z místní sdílené složky Edge do hraniční sdílené složky, kam se nahrají do cloudu.        |
     |Výstupní sdílená složka     | Vyberte výstupní sdílenou složku. Sdílená složka Edge je v tomto případě výstupní sdílenou složkou.        |
-    |Typ aktivační události     | Vyberte ze **souboru** nebo **plánu**. Aktivační událost se aktivuje vždy, když dojde k události souboru, jako je například soubor, který je zapsán do vstupní sdílené složky. Naplánovaná aktivační událost se aktivuje na základě vámi definovaného plánu.         |
-    |Název triggeru     | Jedinečný název aktivační události.         |
+    |Typ triggeru     | Vyberte ze **souboru** nebo **plánu**. Aktivační událost se aktivuje vždy, když dojde k události souboru, jako je například soubor, který je zapsán do vstupní sdílené složky. Naplánovaná aktivační událost se aktivuje na základě vámi definovaného plánu.         |
+    |Název aktivační události     | Jedinečný název aktivační události.         |
     |Proměnné prostředí| Volitelné informace, které vám pomůžou definovat prostředí, ve kterém se modul spustí   |
 
     ![Přidat a nakonfigurovat modul](./media/data-box-edge-deploy-configure-compute/add-module-1.png)
@@ -155,12 +155,12 @@ Pokud chcete ověřit, že je modul spuštěný, udělejte toto:
 Dokončili jste proces ověření.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Konfigurace výpočtů
+> * Konfigurace COMPUTE
 > * Přidat sdílené složky
 > * Přidání výpočetního modulu
 > * Ověření transformace dat a jejich přenos

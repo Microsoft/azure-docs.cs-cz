@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048166"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356746"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -33,7 +33,7 @@ Ke konfiguraci partnerských vztahů můžete použít buď soukromé IP adresy,
 * Pro rozhraní směrování musíte rezervovat podsíť /29 nebo dvě podsítě /30.
 * Podsítě pro směrování mohou obsahovat buď soukromé IP adresy, nebo veřejné IP adresy.
 * Podsítě nesmí být v konfliktu s rozsahem vyhrazeným zákazníkem pro použití v cloudu Microsoftu.
-* Pokud se použije podsíť /29, rozdělí se na dvě podsítě /30. 
+* Pokud se používá podsíť /29, rozdělí se na dvě podsítě /30. 
   * První podsíť /30 se používá pro primární propojení a druhá podsíť /30 se používá pro sekundární propojení.
   * Pro každou z těchto podsítí /30 musíte ve směrovači použít první IP adresu podsítě /30. Microsoft používá druhou IP adresu podsítě /30 k nastavení relace protokolu BGP.
   * Musíte nastavit obě relace protokolu BGP, aby naše [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/) byla platná.  
@@ -55,7 +55,7 @@ Pro nastavení relací protokolu BGP musíte použít veřejné IP adresy, kter�
 
 * IP adresy uvedené na portálu jako inzerované veřejné předpony pro partnerský vztah Microsoftu vytvoří pro hlavní směrovače Microsoftu seznamy ACL, které povolí příchozí provoz z těchto IP adres. 
 * K nastavení partnerského vztahu BGP pro každý partnerský vztah pro každý okruh ExpressRoute (pokud jich používáte víc než jeden) musíte použít jedinečnou podsíť /29 (protokol IPv4) nebo /125 (protokol IPv6) nebo dvě podsítě /30 (protokol IPv4) nebo /126 (protokol IPv6).
-* Pokud se použije podsíť /29, rozdělí se na dvě podsítě /30.
+* Pokud se používá podsíť /29, rozdělí se na dvě podsítě /30.
 * První podsíť /30 se použije pro primární propojení a druhá podsíť /30 se použije pro sekundární propojení.
 * Pro každou z těchto podsítí /30 musíte ve směrovači použít první IP adresu podsítě /30. Microsoft používá druhou IP adresu podsítě /30 k nastavení relace protokolu BGP.
 * Pokud se použije podsíť /125, rozdělí se na dvě podsítě /126.
@@ -72,7 +72,7 @@ Pro nastavení relací protokolu BGP musíte použít veřejné IP adresy, kter�
 Pro nastavení relací protokolu BGP musíte použít veřejné IP adresy, které vlastníte. Microsoft musí být schopný ověřit vlastnictví IPv4 adres v registrech RIR a IRR. 
 
 * K nastavení partnerského vztahu BGP pro každý partnerský vztah pro každý okruh ExpressRoute (pokud jich používáte víc než jeden) musíte použít jedinečnou podsíť /29 nebo dvě podsítě /30. 
-* Pokud se použije podsíť /29, rozdělí se na dvě podsítě /30. 
+* Pokud se používá podsíť /29, rozdělí se na dvě podsítě /30. 
   * První podsíť /30 se používá pro primární propojení a druhá podsíť /30 se používá pro sekundární propojení.
   * Pro každou z těchto podsítí /30 musíte ve směrovači použít první IP adresu podsítě /30. Microsoft používá druhou IP adresu podsítě /30 k nastavení relace protokolu BGP.
   * Musíte nastavit obě relace protokolu BGP, aby naše [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/) byla platná.
@@ -160,12 +160,12 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | USA – východ 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
 | USA – západ | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
 | USA – západ 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
-| Západní střed USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
-| Střed USA – sever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| Střed USA – jih | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
-| Střed USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| USA – středozápad | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| USA – středosever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| USA – středojih | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| USA – střed | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
 | Kanada – střed | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
-| Kanada – východ | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
+| Východní Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Jižní Amerika** | |
 | Brazílie – jih | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Evropa** | |

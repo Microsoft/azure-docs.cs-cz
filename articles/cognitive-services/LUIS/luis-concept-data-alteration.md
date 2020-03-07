@@ -4,11 +4,11 @@ description: Zjistěte, jak lze změnit data před predikce v Language Understan
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148262"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361094"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Příkaz ALTER utterance dat před nebo během predikcí
 Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Mezi ně patří [Oprava pravopisu](luis-tutorial-bing-spellcheck.md)a řešení problémů s pásmem pro předem sestavené [datetimeV2](luis-reference-prebuilt-datetimev2.md).
@@ -35,7 +35,7 @@ Koncový bod vyžaduje dva parametry pro opravy pravopisu pracovat:
 
 Když [rozhraní API Bingu pro kontrolu pravopisu v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) detekuje chybu, původní utterance a opravené utterance se vrátí společně s předpovědi z koncového bodu.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 {
@@ -49,7 +49,7 @@ Když [rozhraní API Bingu pro kontrolu pravopisu v7](https://azure.microsoft.co
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 ```JSON
 {
@@ -85,7 +85,7 @@ Když aplikace LUIS používá předem vytvořenou entitu [datetimeV2](luis-refe
 ### <a name="daylight-savings-example"></a>Příklad úspory letního času
 Pokud potřebujete vrátit předem sestavené datetimeV2 pro úpravu pro letní čas, měli byste použít parametr `timezoneOffset` QueryString s hodnotou +/-v minutách pro dotaz na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) .
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[Hodnota koncového bodu předpovědi v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[Hodnota koncového bodu předpovědi v2](#tab/V2)
 
 Přidáte 60 minut:
 
@@ -95,7 +95,7 @@ Odebrání 60 minut:
 
 https://{region}. API. vnímání. Microsoft. com/Luis/v 2.0/Apps/{appId}? q = zapnout světla? **timezoneOffset =-60**& verbose = {boolean} & kontrola pravopisu = {boolean} & fázování = {boolean} & Bing-check-check-Subscription-Key = {string} & log = {Boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[Požadavek na koncový bod verze V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[Požadavek na koncový bod verze V3](#tab/V3)
 
 Přidáte 60 minut:
 

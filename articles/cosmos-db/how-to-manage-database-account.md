@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873671"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357644"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
 
-Tento článek popisuje, jak spravovat různé úlohy v účtu Azure Cosmos pomocí Azure Portal, Azure PowerShell, Azure CLI a šablon Azure Resource Manager.
+Tento článek popisuje, jak spravovat různé úlohy účtu služby Azure Cosmos DB pomocí webu Azure Portal, Azure PowerShellu, Azure CLI a šablon Azure Resource Manageru.
 
 ## <a name="create-an-account"></a>Vytvoření účtu
 
@@ -51,9 +51,9 @@ Tato šablona Azure Resource Manager vytvoří účet Azure Cosmos pro rozhraní
 
    ![Nabídka Přidat nebo odebrat oblasti](./media/how-to-manage-database-account/add-region.png)
 
-V režimu zápisu s jednou oblastí nemůžete odebrat oblast zápisu. Než budete moct odstranit aktuální oblast pro zápis, musíte převzít služby při selhání do jiné oblasti.
+V režimu zápisu do jedné oblasti není možné odebrat oblast zápisu. Před odstraněním aktuální oblasti zápisu je potřeba provést převzetí služeb při selhání do jiné oblasti.
 
-V režimu zápisu ve více oblastech můžete přidat nebo odebrat libovolnou oblast, pokud máte aspoň jednu oblast.
+V režimu zápisu do více oblastí můžete přidat nebo odebrat libovolnou oblast, pokud máte alespoň jednu oblast.
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 
@@ -165,7 +165,7 @@ Viz [Povolení automatického převzetí služeb při selhání pomocí Azure CL
 
 Viz [Povolení automatického převzetí služeb při selhání pomocí PowerShellu](manage-with-powershell.md#enable-automatic-failover)
 
-## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Nastavte priority převzetí služeb při selhání pro účet Azure Cosmos.
+## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Nastavení priorit převzetí služeb při selhání u účtu služby Azure Cosmos DB
 
 Po nakonfigurování účtu Cosmos pro automatické převzetí služeb při selhání je možné změnit prioritu převzetí služeb při selhání pro oblasti.
 

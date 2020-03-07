@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: f0c95e495e222cc72f0a6fc432404fcbaa47df65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434681"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396711"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Rychlé zprovoznění: Zřízení simulovaného zařízení X.509 s využitím sady Azure IoT C SDK
 
@@ -32,7 +32,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
@@ -119,7 +119,7 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
 
 3. Na panelu **Přidat registraci** zadejte následující informace a pak stiskněte tlačítko **Uložit** .
 
-    * **Mechanismus:** Jako *Mechanismus* ověření identity vyberte **X.509**.
+    * **Mechanismus:** Jako **Mechanismus** ověření identity vyberte *X.509*.
     * **Primární soubor certifikátu. pem nebo. CER:** Zvolte **Vybrat soubor** a vyberte soubor certifikátu X509testcert. pem, který jste vytvořili dříve.
     * **ID zařízení centra IoT Hub:** Jako ID zařízení zadejte **test-docs-cert-device**.
 
@@ -129,7 +129,7 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
 
 ## <a name="simulate-first-boot-sequence-for-the-device"></a>Simulace první spouštěcí sekvence pro zařízení
 
-V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekvenci zařízení do instance služby Device Provisioning Service. Toto spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí službě IoT Hub propojené s instancí služby Device Provisioning.
+V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekvenci zařízení do instance služby Device Provisioning Service. Tato spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí službě IoT Hub propojené s instancí služby Device Provisioning Service.
 
 1. V Azure Portal vyberte kartu **Přehled** vaší služby Device Provisioning a poznamenejte si hodnotu **_Rozsah ID_** .
 

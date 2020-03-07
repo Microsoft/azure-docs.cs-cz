@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443722"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391195"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -67,7 +67,7 @@ Tuto tabulku použijte jako vodítko:
 |--|--|
 |**Blob Storage** | & SAS pro Azure AD |
 |**Úložiště objektů BLOB (hierarchický obor názvů)** | & SAS pro Azure AD |
-|**File Storage** | Pouze SAS |
+|**Úložiště souborů** | Pouze SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Možnost 1: použití Azure Active Directory
 

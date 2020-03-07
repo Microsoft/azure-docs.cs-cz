@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264691"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370475"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí Service Bus zasílání zpráv
 
@@ -29,7 +29,7 @@ Tyto části představují několik konceptů, které Service Bus používá ke 
 
 Service Bus umožňuje klientům odesílat a přijímat zprávy prostřednictvím jednoho ze tří protokolů:
 
-1. Rozšířený protokol řízení front zpráv (AMQP)
+1. Rozšířený protokol řízení front zpráv (AMQP) (AMQP)
 2. Protokol SBMP (Service Bus Messaging Protocol)
 3. HTTP
 
@@ -84,7 +84,7 @@ Dávkování na straně klienta umožňuje klientovi nebo tématu klienta zpozdi
 
 Ve výchozím nastavení klient používá interval dávky 20 MS. Interval dávky můžete změnit nastavením vlastnosti [BatchFlushInterval][BatchFlushInterval] před vytvořením objektu pro vytváření zpráv. Toto nastavení má vliv na všechny klienty vytvořené touto továrnou.
 
-Chcete-li zakázat dávkování, nastavte vlastnost [BatchFlushInterval][BatchFlushInterval] na **hodnotu TimeSpan. Zero**. Například:
+Chcete-li zakázat dávkování, nastavte vlastnost [BatchFlushInterval][BatchFlushInterval] na **hodnotu TimeSpan. Zero**. Příklad:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -113,7 +113,7 @@ Pokud chcete zvýšit propustnost fronty, tématu nebo předplatného, Service B
 
 Další operace úložiště, ke kterým dojde během tohoto intervalu, se přidají do dávky. Přístup k dávkovému úložišti má vliv jenom na operace **Send** a **Complete** . operace Receive nejsou ovlivněny. Přístup k Batch Storu je vlastnost v entitě. Dávkování probíhá napříč všemi entitami, které umožňují přístup k dávce v dávkovém úložišti.
 
-Při vytváření nové fronty, tématu nebo předplatného je ve výchozím nastavení povolený přístup k Batch Storu. Chcete-li zakázat přístup k dávce, nastavte před vytvořením entity vlastnost [EnableBatchedOperations][EnableBatchedOperations] na **hodnotu false** . Například:
+Při vytváření nové fronty, tématu nebo předplatného je ve výchozím nastavení povolený přístup k Batch Storu. Chcete-li zakázat přístup k dávce, nastavte před vytvořením entity vlastnost [EnableBatchedOperations][EnableBatchedOperations] na **hodnotu false** . Příklad:
 
 ```csharp
 QueueDescription qd = new QueueDescription();

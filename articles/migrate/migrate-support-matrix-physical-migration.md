@@ -4,11 +4,11 @@ description: Přečtěte si o podpoře migrace fyzického serveru v Azure Migrat
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030234"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389011"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Matice podpory pro migraci fyzických serverů
 
@@ -60,7 +60,7 @@ Tabulka shrnuje podporu pro fyzické servery, které chcete migrovat pomocí mig
 
 
 
-## <a name="replication-appliance-requirements"></a>Požadavky na zařízení replikace
+## <a name="replication-appliance-requirements"></a>Požadavky zařízení replikace
 
 Pokud se zařízení replikace nastavuje ručně na fyzickém serveru, ujistěte se, že splňuje požadavky shrnuté v tabulce. Když nastavíte zařízení pro replikaci Azure Migrate jako virtuální počítač VMware pomocí šablony pro VAJÍČKy poskytované v centru Azure Migrate, zařízení se nastaví s Windows serverem 2016 a splňuje požadavky na podporu. 
 
@@ -77,7 +77,7 @@ Všechny místní virtuální počítače replikované do Azure musí splňovat 
 Hostovaný operační systém | Ověřuje podporované operační systémy.<br/> Můžete migrovat libovolné úlohy běžící v podporovaném operačním systému. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost disku operačního systému | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Počet disků operačního systému | 1\. místo | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |

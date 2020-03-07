@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 541fcdd966ec1e0443fa6211d894bab3ed965f93
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870322"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387097"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
 

@@ -5,15 +5,15 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226476"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381425"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
 
-Pomocí služby Azure Backup můžete chránit svůj Windows Server před poškozením, útoky a haváriemi. Azure Backup poskytuje odlehčený nástroj označovaný jako agent služby Microsoft Azure Recovery Services (MARS). Agent MARS se instaluje na Windows Server za účelem ochrany souborů, složek a informací o konfiguraci serveru prostřednictvím stavu systému Windows Server. Tento kurz vysvětluje, jak pomocí agenta MARS zálohovat Windows Server do Azure. Co se v tomto kurzu naučíte:
+Pomocí služby Azure Backup můžete chránit svůj Windows Server před poškozením, útoky a haváriemi. Azure Backup poskytuje odlehčený nástroj označovaný jako agent služby Microsoft Azure Recovery Services (MARS). Agent MARS se instaluje na Windows Server za účelem ochrany souborů, složek a informací o konfiguraci serveru prostřednictvím stavu systému Windows Server. Tento kurz vysvětluje, jak pomocí agenta MARS zálohovat Windows Server do Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -90,7 +90,7 @@ Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení m
 
 4. Po zobrazení výzvy zadejte šifrovací heslo pro šifrování záloh z Windows Serveru. Toto heslo uložte na bezpečném místě, protože ho Microsoft v případě ztráty nemůže obnovit.
 
-5. Klikněte na **Dokončit**.
+5. Klikněte na **Finish** (Dokončit).
 
 ## <a name="configure-backup-and-retention"></a>Konfigurace zálohování a uchovávání
 

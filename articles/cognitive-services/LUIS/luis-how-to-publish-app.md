@@ -1,7 +1,7 @@
 ---
 title: Publikování aplikace – LUIS
 titleSuffix: Azure Cognitive Services
-description: Až dokončíte sestavování a testování vaší aktivní aplikace LUIS, zpřístupněte ji klientské aplikaci tím, že ji publikujete do koncového bodu.
+description: Po dokončení vytváření a testování aplikace LUIS aktivní, zpřístupní ji pro klientské aplikace ji publikujete do koncového bodu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554846"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361092"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikujte svou aktivní, školenou aplikaci do pracovního nebo produkčního koncového bodu.
 
@@ -38,7 +38,7 @@ Po dokončení sestavování, školení a testování vaší aktivní aplikace L
 
 Po zobrazení automaticky otevíraného okna vyberte správný slot: 
 
-* Staging
+* Přednastavení
 * Výroba 
 
 Pomocí obou slotů pro publikování vám to umožňuje mít v publikovaných koncových bodech k dispozici dvě různé verze aplikace nebo stejnou verzi ve dvou různých koncových bodech. 
@@ -57,7 +57,7 @@ Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud
 
 Po výběru slotu nakonfigurujte nastavení publikování pro:
 
-* Analýza subjektivního hodnocení
+* Analýza mínění
 * Oprava pravopisu – pouze koncový bod verze V2 – předpověď
 * Neprojevení řeči 
 
@@ -67,17 +67,17 @@ Po publikování jsou tato nastavení dostupná ke kontrole na stránce **Správ
 
 Po úspěšném publikování vaší aplikace se v horní části prohlížeče zobrazí oznámení o úspěchu. Oznámení také obsahuje odkaz na koncové body. 
 
-Pokud potřebujete adresu URL koncového bodu, vyberte odkaz. K adresám URL koncových bodů se můžete dostat taky tak, že v horní nabídce vyberete **Spravovat** a v nabídce vlevo vyberete **prostředky Azure** . 
+Pokud budete potřebovat adresu URL koncového bodu, vyberte odkaz. K adresám URL koncových bodů se můžete dostat taky tak, že v horní nabídce vyberete **Spravovat** a v nabídce vlevo vyberete **prostředky Azure** . 
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 
 <a name="enable-sentiment-analysis"></a>
 
 Analýza mínění umožňuje integraci LUIS s [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) , aby poskytovala mínění a analýzu klíčových frází. 
 
-Nemusíte zadávat Analýza textu klíč a za tuto službu se neúčtují žádné poplatky za váš účet Azure. 
+Není potřeba zadat klíč pro analýzu textu a nic neplatíte fakturace pro tuto službu ke svému účtu Azure. 
 
-Mínění data jsou skóre mezi 1 a 0 značící kladné (blíže k 1) nebo záporné (navýšení na 0) mínění dat. Popisek mínění `positive`, `neutral`a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina. 
+Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data. Popisek mínění `positive`, `neutral`a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina. 
 
 Další informace o odpovědích koncových bodů JSON s analýzou mínění najdete v tématu [Analýza mínění](luis-concept-data-extraction.md#sentiment-analysis) .
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153297"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372132"
 ---
 # <a name="get-help-with-your-system"></a>Získejte pomoc s vaším systémem.
 
@@ -43,7 +43,7 @@ Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený pro
 
     ![snímek obrazovky s novou žádostí o podporu v Azure Portal. Je vybrána karta základy. Položky obrazovky zahrnují typ problému, předplatné, službu, souhrn a typ problému.](media/ticket-basics.png)
 
-   Pokračujte kliknutím na tlačítko **Další** .
+   Pokračujte kliknutím na **Další**.
 
 1. Druhá stránka formuláře podpory obsahuje návrhy pro vyřešení problému na základě vašeho souhrnného popisu. Pokud stále potřebujete vytvořit lístek podpory, klikněte na tlačítko **Další** v dolní části.
 
