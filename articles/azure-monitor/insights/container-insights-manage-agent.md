@@ -4,11 +4,11 @@ description: Tento článek popisuje správu většiny běžných úloh údržby
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843952"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385462"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Jak spravovat Azure Monitor pro kontejnery agenta
 
@@ -18,11 +18,11 @@ Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Ana
 
 Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Analytics pro Linux. Po vydání nové verze agenta se agent automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS) a Azure Red Hat OpenShift. Pro [hybridní cluster Kubernetes](container-insights-hybrid-setup.md) se agent nespravuje a potřebujete ručně upgradovat agenta.
 
-Pokud se upgrade agenta pro cluster hostovaný v AKS nepovede, Tento článek popisuje také Postup ručního upgradu agenta. Postupujte podle vydané verze, najdete v článku [oznámení verzi agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
+Pokud se upgrade agenta pro cluster hostovaný v AKS nepovede, Tento článek popisuje také Postup ručního upgradu agenta. Pokud chcete postupovat podle vydaných verzí, přečtěte si téma [oznámení o vydáních](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)
 
 ### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>Upgrade agenta na monitorovaném clusteru Kubernetes
 
-Proces upgradu agenta v clusterech (kromě Azure Red Hat OpenShift) se skládá ze dvou přímých kroků. Prvním krokem je vypnout monitorování pro kontejnery pomocí Azure CLI s Azure Monitor. Postupujte podle kroků popsaných v [zakázat monitorování](container-insights-optout.md?#azure-cli) článku. Pomocí Azure CLI umožňuje odebrat agenta z uzlů v clusteru bez dopadu na řešení a odpovídajících dat, která je uložena v pracovním prostoru. 
+Proces upgradu agenta v clusterech (kromě Azure Red Hat OpenShift) se skládá ze dvou přímých kroků. Prvním krokem je vypnout monitorování pro kontejnery pomocí Azure CLI s Azure Monitor. Postupujte podle kroků popsaných v článku [zakázání monitorování](container-insights-optout.md?#azure-cli) . Pomocí Azure CLI umožňuje odebrat agenta z uzlů v clusteru bez dopadu na řešení a odpovídajících dat, která je uložena v pracovním prostoru. 
 
 >[!NOTE]
 >Při provádění této aktivity údržby, uzly v clusteru nejsou předávání shromážděných dat a zobrazení výkonu nebudou zobrazovat data mezi časem odebrat agenta a nainstalujte novou verzi. 
@@ -30,9 +30,9 @@ Proces upgradu agenta v clusterech (kromě Azure Red Hat OpenShift) se skládá 
 
 Chcete-li nainstalovat novou verzi agenta, postupujte podle kroků popsaných v tématu [povolení monitorování pomocí rozhraní příkazového řádku Azure CLI](container-insights-enable-new-cluster.md#enable-using-azure-cli)k dokončení tohoto procesu.  
 
-Po opětovném povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit aktualizované metriky stavu pro cluster. K ověření agenta úspěšně upgradován, spusťte příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
+Po opětovném povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit aktualizované metriky stavu pro cluster. Pokud chcete ověřit, jestli se agent úspěšně Upgradoval, spusťte příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
 
-Stav by měl vypadat následovně, kde hodnota *omi* a *omsagent* by měl odpovídat zadaná v nejnovější verzi [historie verzí agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
+Stav by měl vypadat podobně jako v následujícím příkladu, kde hodnota pro *OMI* a *omsagent* by měla odpovídat nejnovější verzi zadané v [historii vydání verze agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
 
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
     :
@@ -78,7 +78,7 @@ $ helm upgrade --name myrelease-1 \
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Jak zakázat kolekci proměnných prostředí v kontejneru
 
-Azure Monitor pro kontejnery shromažďuje z kontejnery spuštěné v podu proměnné prostředí a zobrazí v podokně vlastností vybraného kontejneru v **kontejnery** zobrazení. Toto chování můžete řídit tak, že zakážete shromažďování pro konkrétní kontejner během nasazování clusteru Kubernetes nebo po nastavení proměnné prostředí *AZMON_COLLECT_ENV*. Tato funkce je k dispozici od verze agenta – ciprod11292018 a vyšší.  
+Azure Monitor for Containers shromažďuje proměnné prostředí z kontejnerů spuštěných v poli pod a prezentuje je v podokně vlastností vybraného kontejneru v zobrazení **kontejnerů** . Toto chování můžete řídit tak, že zakážete shromažďování pro konkrétní kontejner během nasazování clusteru Kubernetes nebo po nastavení proměnné prostředí *AZMON_COLLECT_ENV*. Tato funkce je k dispozici od verze agenta – ciprod11292018 a vyšší.  
 
 Chcete-li zakázat shromažďování proměnných prostředí v novém nebo existujícím kontejneru, nastavte proměnnou **AZMON_COLLECT_ENV** s hodnotou **false** v konfiguračním souboru YAML nasazení Kubernetes. 
 
@@ -106,4 +106,4 @@ Chcete-li znovu povolit zjišťování proměnných prostředí, použijte stejn
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte problémy při upgradu agenta, zkontrolujte [Průvodce odstraňováním potíží](container-insights-troubleshoot.md) pro podporu.
+Pokud při upgradu agenta dochází k potížím, přečtěte si [příručku pro řešení potíží](container-insights-troubleshoot.md) pro podporu.

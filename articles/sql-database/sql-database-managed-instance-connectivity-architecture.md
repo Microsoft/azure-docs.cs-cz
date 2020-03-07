@@ -12,11 +12,11 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
 ms.openlocfilehash: ec1430e7dd79378473cce9dbb77bedecd14600c8
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228273"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356623"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci v Azure SQL Database
 
@@ -103,20 +103,20 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná příchozí pravidla zabezpečení s konfigurací podsítě s podporou služby 
 
-| Název       |Port                        |Protokol|Zdroj           |Cíl|Akce|
+| Název       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |správa  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |PODSÍŤ MI  |Povolit |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |PODSÍŤ MI  |Povolit |
 |            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16, 94.245.87.0/24|PODSÍŤ MI  |Povolit |
-|mi_subnet   |Vše                         |Vše     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
-|health_probe|Vše                         |Vše     |AzureLoadBalancer|PODSÍŤ MI  |Povolit |
+|mi_subnet   |Všechny                         |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
+|health_probe|Všechny                         |Všechny     |AzureLoadBalancer|PODSÍŤ MI  |Povolit |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná odchozí pravidla zabezpečení s konfigurací podsítě s podporou služby 
 
-| Název       |Port          |Protokol|Zdroj           |Cíl|Akce|
+| Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
-|mi_subnet   |Vše           |Vše     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
+|mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Uživatelem definované trasy s konfigurací podsítě s podporou služby 
 
@@ -298,18 +298,18 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 ### <a name="mandatory-inbound-security-rules"></a>Povinná příchozí pravidla zabezpečení
 
-| Název       |Port                        |Protokol|Zdroj           |Cíl|Akce|
+| Název       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|správa  |9000, 9003, 1438, 1440, 1452|TCP     |Vše              |PODSÍŤ MI  |Povolit |
-|mi_subnet   |Vše                         |Vše     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
-|health_probe|Vše                         |Vše     |AzureLoadBalancer|PODSÍŤ MI  |Povolit |
+|správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |PODSÍŤ MI  |Povolit |
+|mi_subnet   |Všechny                         |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
+|health_probe|Všechny                         |Všechny     |AzureLoadBalancer|PODSÍŤ MI  |Povolit |
 
 ### <a name="mandatory-outbound-security-rules"></a>Povinná odchozí pravidla zabezpečení
 
-| Název       |Port          |Protokol|Zdroj           |Cíl|Akce|
+| Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
-|mi_subnet   |Vše           |Vše     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
+|mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 
 > [!IMPORTANT]
 > Zajistěte, aby existovalo pouze jedno příchozí pravidlo pro porty 9000, 9003, 1438, 1440, 1452 a jedno odchozí pravidlo pro porty 443, 12000. Zřizování spravovaných instancí prostřednictvím Azure Resource Manager nasazení se nezdaří, pokud jsou příchozí a odchozí pravidla konfigurovaná samostatně pro každý port. Pokud jsou tyto porty v samostatných pravidlech, nasazení se nezdaří s kódem chyby `VnetSubnetConflictWithIntendedPolicy`

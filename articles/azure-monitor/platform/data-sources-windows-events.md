@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670504"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394398"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí systému Windows v Azure Monitor
 Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
@@ -42,11 +42,11 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Computer |Název počítače, ze kterého byla událost shromážděna. |
+| Počítač |Název počítače, ze kterého byla událost shromážděna. |
 | EventCategory |Kategorie události |
 | EventData |Všechna data události v nezpracovaném formátu. |
 | ID události |Číslo události |
-| eventLevel |Závažnost události v číselném tvaru. |
+| EventLevel |Závažnost události v číselném tvaru. |
 | EventLevelName |Závažnost události v textovém formátu. |
 | EventLog |Název protokolu událostí, ze kterého byla událost shromážděna. |
 | ParameterXml |Hodnoty parametrů událostí ve formátu XML. |

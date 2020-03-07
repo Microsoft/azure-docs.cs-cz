@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710495"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393415"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scénáře pro pokročilé analýzy ve službě Azure Machine Learning
 Tento článek popisuje řadu ukázkových zdrojů dat a cílových scénářů, které lze zpracovat v rámci [vědeckého zpracování týmových dat (TDSP)](overview.md). TDSP nabízí systematický přístup pro týmy spolupracovat na sestavování inteligentních aplikací. Scénáře uvedené tady ukazují možnosti dostupné v pracovním postupu zpracování dat, které se liší podle vlastností dat, zdrojová umístění a cíl úložiště v Azure.
@@ -29,7 +29,7 @@ Každá z těchto částí představuje vzorový scénář. Pro každý scéná�
 > **U všech následujících scénářů potřebujete:**
 > <br/>
 > 
-> * [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md)
+> * [vytvořit účet úložiště](../../storage/common/storage-account-create.md)
 >   <br/>
 > * [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md)
 > 

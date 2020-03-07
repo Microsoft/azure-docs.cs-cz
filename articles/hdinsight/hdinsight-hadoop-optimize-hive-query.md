@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030950"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382154"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace Apache Hive dotazů ve službě Azure HDInsight
 
@@ -122,7 +122,7 @@ Další informace najdete v tématu [dělené tabulky](https://cwiki.apache.org/
 
 ## <a name="use-the-orcfile-format"></a>Použití formátu ORCFile
 
-Podregistr podporuje různé formáty souborů. Například:
+Podregistr podporuje různé formáty souborů. Příklad:
 
 * **Text**: výchozí formát souboru a funguje ve většině scénářů.
 * **Avro**: funguje dobře pro scénáře interoperability.
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-V dalším kroku vložíte data do tabulky ORC z pracovní tabulky. Například:
+V dalším kroku vložíte data do tabulky ORC z pracovní tabulky. Příklad:
 
 ```sql
 INSERT INTO TABLE lineitem_orc

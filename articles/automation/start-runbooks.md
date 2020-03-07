@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 71dd83db02537ed12dc2e711127e32d90603af6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416942"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373118"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Spuštění Runbooku v Azure Automation
 
@@ -19,9 +19,9 @@ Následující tabulka vám pomůže určit metodu spuštění sady Runbook v Az
 | **Metoda** | **Svých** |
 | --- | --- |
 | [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Nejjednodušší metoda s interaktivním uživatelským rozhraním.<br> <li>Formulář pro zadání jednoduchých hodnot parametrů.<br> <li>Snadno Sledujte stav úlohy.<br> <li>Přístup k ověřeným přihlášením pomocí Azure |
-| [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Volání z příkazového řádku pomocí rutin prostředí Windows PowerShell.<br> <li>Dá se zahrnout do automatizovaného řešení s několika kroky.<br> <li>Požadavek se ověřuje pomocí certifikátu nebo hlavního objektu zabezpečení nebo instančního objektu OAuth.<br> <li>Zadejte jednoduché a komplexní hodnoty parametrů.<br> <li>Sledovat stav úlohy.<br> <li>Klient je nutný k podpoře rutin PowerShellu. |
+| [Prostředí Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Volání z příkazového řádku pomocí rutin prostředí Windows PowerShell.<br> <li>Dá se zahrnout do automatizovaného řešení s několika kroky.<br> <li>Požadavek se ověřuje pomocí certifikátu nebo hlavního objektu zabezpečení nebo instančního objektu OAuth.<br> <li>Zadejte jednoduché a komplexní hodnoty parametrů.<br> <li>Sledovat stav úlohy.<br> <li>Klient je nutný k podpoře rutin PowerShellu. |
 | [Rozhraní API pro Azure Automation](/rest/api/automation/) |<li>Nejpružnější metoda, ale také nejvíc složitá.<br> <li>Volání z libovolného vlastního kódu, který může vytvářet požadavky HTTP.<br> <li>Žádost se ověří pomocí certifikátu nebo objektu zabezpečení nebo hlavního objektu OAuth uživatele.<br> <li>Zadejte jednoduché a komplexní hodnoty parametrů. *Pokud voláte sadu Runbook v Pythonu pomocí rozhraní API, je nutné serializovat datovou část JSON.*<br> <li>Sledovat stav úlohy. |
-| [Webhooks](automation-webhooks.md) |<li>Spustit Runbook z jednoho požadavku HTTP.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL.<br> <li>Klient nemůže přepsat hodnoty parametrů zadané při vytvoření Webhooku. Sada Runbook může definovat jeden parametr, který je vyplněn podrobnostmi požadavku HTTP.<br> <li>Není možné sledovat stav úlohy prostřednictvím adresy URL Webhooku. |
+| [Webhooky](automation-webhooks.md) |<li>Spustit Runbook z jednoho požadavku HTTP.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL.<br> <li>Klient nemůže přepsat hodnoty parametrů zadané při vytvoření Webhooku. Sada Runbook může definovat jeden parametr, který je vyplněn podrobnostmi požadavku HTTP.<br> <li>Není možné sledovat stav úlohy prostřednictvím adresy URL Webhooku. |
 | [Reakce na upozornění Azure](../log-analytics/log-analytics-alerts.md) |<li>Spuštění Runbooku v reakci na upozornění Azure<br> <li>Nakonfigurujte Webhook pro Runbook a odkaz na upozornění.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL. |
 | [Plán](automation-schedules.md) |<li>Automaticky spustit sadu Runbook podle hodinových, denních, týdenních nebo měsíčního plánu.<br> <li>Manipulace s plánem prostřednictvím Azure Portal, rutin prostředí PowerShell nebo rozhraní Azure API.<br> <li>Zadejte hodnoty parametrů, které se mají použít s plánem. |
 | [Z jiné sady Runbook](automation-child-runbooks.md) |<li>Použití Runbooku jako aktivity v jiné sadě Runbook.<br> <li>Užitečné pro funkce používané více sadami Runbook.<br> <li>Zadejte hodnoty parametrů pro podřízený Runbook a použijte výstup v nadřazeném Runbooku. |
@@ -40,13 +40,13 @@ Následující obrázek znázorňuje podrobný proces v životním cyklu Runbook
 
 ## <a name="start-a-runbook-with-powershell"></a>Spuštění Runbooku pomocí PowerShellu
 
-K spuštění Runbooku pomocí Windows PowerShellu můžete použít rutinu [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) . Následující ukázkový kód spustí Runbook s názvem Test-Runbook.
+K spuštění Runbooku pomocí Windows PowerShellu můžete použít rutinu [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) . Následující vzorový kód spustí Runbook s názvem test-Runbook.
 
 ```azurepowershell-interactive
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-Start-AzureRmAutomationRunbook vrátí objekt úlohy, který můžete použít ke sledování jeho stavu po spuštění sady Runbook. Pak můžete použít tento objekt úlohy s příkazem [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) k určení stavu úlohy a [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) k získání jejího výstupu. Následující vzorový kód spustí Runbook s názvem Test-Runbook, počká na jeho dokončení a potom zobrazí jeho výstup.
+Start-AzureRmAutomationRunbook vrátí objekt úlohy, který můžete použít ke sledování jeho stavu po spuštění sady Runbook. Pak můžete použít tento objekt úlohy s příkazem [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) k určení stavu úlohy a [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) k získání jejího výstupu. Následující vzorový kód spustí Runbook s názvem test-Runbook, počká na jeho dokončení a potom zobrazí jeho výstup.
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"
@@ -65,7 +65,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Pokud sada Runbook vyžaduje parametry, je nutné je zadat jako [zatřiďovací tabulku](https://technet.microsoft.com/library/hh847780.aspx). Klíč zatřiďovací tabulky musí odpovídat názvu parametru a hodnota je hodnota parametru. Následující příklad ukazuje spuštění Runbooku se dvěma řetězcovými parametry s názvy FirstName a LastName, celočíselným parametrem s názvem RepeatCount a logickým parametrem s názvem Show. Další informace o parametrech najdete v tématu [parametry Runbooku](#runbook-parameters) .
+Pokud sada Runbook vyžaduje parametry, je nutné je zadat jako [zatřiďovací tabulku](https://technet.microsoft.com/library/hh847780.aspx). Klíč zatřiďovací tabulky musí odpovídat názvu parametru a hodnota je hodnota parametru. Následující příklad ukazuje, jak spustit sadu Runbook se dvěma řetězcovými parametry s názvy FirstName a LastName, Integer s názvem RepeatCount a logickým parametrem s názvem show. Další informace o parametrech najdete v tématu [parametry Runbooku](#runbook-parameters) .
 
 ```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
@@ -100,7 +100,7 @@ Workflow Test-Parameters
 }
 ```
 
-Pro tento parametr můžete použít následující text.
+Pro parametr uživatele lze použít následující text.
 
 ```json
 {FirstName:'Joe',LastName:'Smith',RepeatCount:'2',Show:'True'}
@@ -115,11 +115,11 @@ Joe
 Smith
 ```
 
-### <a name="arrays"></a>Pole
+### <a name="arrays"></a>Řadách
 
 Pokud je parametr pole, jako třeba [Array] nebo [String []], můžete k odeslání seznamu hodnot použít následující formát JSON: *[Hodnota1, hodnota2, hodnota3]* . Tyto hodnoty musí být jednoduché typy.
 
-Zkuste použít následující testovací Runbook, který přijme parametr s názvem *user*.
+Vezměte v úvahu následující testovací Runbook, který přijme parametr s názvem *User*.
 
 ```powershell
 Workflow Test-Parameters
@@ -136,7 +136,7 @@ Workflow Test-Parameters
 }
 ```
 
-Pro tento parametr můžete použít následující text.
+Pro parametr uživatele lze použít následující text.
 
 ```input
 ["Joe","Smith",2,true]
