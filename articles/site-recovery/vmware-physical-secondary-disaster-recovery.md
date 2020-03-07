@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620519"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362680"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii místních virtuálních počítačů VMware nebo fyzických serverů do sekundární lokality
 
@@ -54,10 +54,10 @@ v případě fyzických počítačů postupujte podle tohoto [kurzu](./physical-
 **Cluster sdíleného disku** |Nepodporuje se|Podporuje se
 **Omezení četnosti změn dat (průměr)** |10 MB/s dat na disk<br> data 25 MB JAVASCRIPTOVÉHO/s na virtuální počítač<br> [Další informace](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s dat na disk  <br> > dat o velikosti 25 MB/s na virtuální počítač
 **Monitorování** |Z Azure Portal|Z CX (konfigurační server)
-**Matice podpory** | [Podrobnosti zobrazíte kliknutím sem](./vmware-physical-azure-support-matrix.md).|[Stáhnout matrici kompatibilní s funkcí ASR Scout](https://aka.ms/asr-scout-cm)
+**Matice podpory** | [Kliknutím sem zobrazíte podrobnosti.](./vmware-physical-azure-support-matrix.md)|[Stáhnout matrici kompatibilní s funkcí ASR Scout](https://aka.ms/asr-scout-cm)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K provedení kroků v tomto kurzu je potřeba:
 
 - [Zkontrolujte](vmware-physical-secondary-support-matrix.md) požadavky na podporu pro všechny komponenty.
@@ -81,51 +81,51 @@ Aktualizace nainstalujte následujícím způsobem:
 >Všechny součásti Scout Components v souboru Update. zip nemusejí být stejné. Starší verze značí, že od předchozí aktualizace k této aktualizaci se nezměnila součást.
 
 Stáhněte soubor [Update](https://aka.ms/asr-scout-update7) . zip a konfigurační soubory pro [upgrade MySQL a php](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) . Soubor Update. zip obsahuje všechny základní binární soubory a binární soubory kumulativního upgradu následujících součástí: 
-- InMage_ScoutCloud_RX_ 8.0.1.0 _RHEL6-64_GA_02Mar2015. tar. gz
-- RX_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. tar. gz
-- InMage_CX_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
-- InMage_CX_TP_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
-- CX_Windows_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. exe
-- InMage_PI_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
-- InMage_Scout_vContinuum_MT_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
-- InMage_UA_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
-- InMage_UA_ 8.0.7.0 _OL5-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _OL5-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _OL6-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _OL6-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL5-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL5-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL6-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL6-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL7-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP1-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP1-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP2-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP2-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP3-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP3-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP4-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP4-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-64_GA_04Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP1-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP1-64_GA_04Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP2-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP2-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP3-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP3-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP4-64_GA_03Dec2018_release. tar. gz
+- InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
+- RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
+- InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
+- InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
+- CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
+- InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
+- InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
+- InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
+- InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
   1. Extrahujte soubory. zip.
-  2. **Server pro příjem**: Zkopírujte **rx_ 8.0.7.0 _ga_update_7_2965621_28dec18. tar. gz** na server pro příjem a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
-  3. **Konfigurační server a procesový Server**: Zkopírujte **cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18. exe** na konfigurační server a procesový Server. Dvojím kliknutím ji spusťte.<br>
-  4. **Hlavní cílový server Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na server **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** . Dvakrát klikněte na ni a spusťte ji. Stejný soubor lze také použít pro novou instalaci. Stejná aktualizace sjednoceného agenta se vztahuje také na zdrojový server.
-  Aktualizace nemusí platit pro hlavní cíl připravený pomocí nástroje **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
-  5. **Server vContinuum**: Zkopírujte **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na server.  Ujistěte se, že jste Průvodce vContinuum zavřeli. Dvakrát klikněte na soubor a spusťte ho.
-  6. **Server pro Linux Master Target**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** na hlavní cílový server Linux a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
-  7. **Zdrojový server Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na zdrojový server **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** . Dvakrát klikněte na soubor a spusťte ho. 
-  8. **Zdrojový server Linux**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte odpovídající verzi souboru sjednoceného agenta na server Linux a rozbalte ji. V extrahované složce spusťte příkaz **/install**.  Příklad: pro RHEL 6,7 64-bit Server zkopírujte **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** na server a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
+  2. **Server pro příjem**: Zkopírujte **RX_8.0,7.0_GA_Update_7_2965621_28Dec18. tar. gz** na server pro příjem a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
+  3. **Konfigurační server a procesový Server**: Zkopírujte **CX_Windows_8.0,7.0_GA_Update_7_2965621_28Dec18. exe** na konfigurační server a procesový Server. Dvojím kliknutím ji spusťte.<br>
+  4. **Hlavní cílový server Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na server **InMage_UA_8.0,7.0_Windows_GA_27Dec2018_release. exe** . Dvakrát klikněte na ni a spusťte ji. Stejný soubor lze také použít pro novou instalaci. Stejná aktualizace sjednoceného agenta se vztahuje také na zdrojový server.
+  Aktualizace nemusí platit pro hlavní cíl připravený s **InMage_Scout_vContinuum_MT_8.0,7.0_Windows_GA_27Dec2018_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
+  5. **vContinuum Server**: Zkopírujte na server **InMage_Scout_vContinuum_MT_8.0,7.0_Windows_GA_27Dec2018_release. exe** .  Ujistěte se, že jste Průvodce vContinuum zavřeli. Dvakrát klikněte na soubor a spusťte ho.
+  6. **Server pro Linux Master Target**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte **InMage_UA_8.0,7.0_RHEL6-64_GA_03Dec2018_release. tar. gz** na hlavní cílový server Linux a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
+  7. **Zdrojový server Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na zdrojový server **InMage_UA_8.0,7.0_Windows_GA_27Dec2018_release. exe** . Dvakrát klikněte na soubor a spusťte ho. 
+  8. **Zdrojový server Linux**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte odpovídající verzi souboru sjednoceného agenta na server Linux a rozbalte ji. V extrahované složce spusťte příkaz **/install**.  Příklad: pro RHEL 6,7 64-bit Server zkopírujte **InMage_UA_8.0,7.0_RHEL6-64_GA_03Dec2018_release. tar. gz** na server a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
   9. Po upgradu konfiguračního serveru, procesového serveru a serveru pro příjem s výše uvedenými instalačními programy je potřeba upgradovat ručně knihovny PHP a MySQL pomocí kroků uvedených v části 7,4 příručky pro [rychlé instalace](https://aka.ms/asr-scout-quick-install-guide).
 
 ## <a name="enable-replication"></a>Povolení replikace
@@ -172,7 +172,7 @@ Scout Update 6 je kumulativní aktualizace. Obsahuje všechny opravy z aktualiza
 * Přidala se podpora pro zdrojový Windows Server 2016.
 * Přidala se podpora pro následující operační systémy Linux:
     - Red Hat Enterprise Linux (RHEL) 6,9
-    - CentOS 6,9
+    - CentOS 6.9
     - Oracle Linux 5,11
     - Oracle Linux 6,8
 * Pro VMware Center 6,5 se přidala podpora.
@@ -183,28 +183,28 @@ Aktualizace nainstalujte následujícím způsobem:
 >Všechny součásti Scout Components v souboru Update. zip nemusejí být stejné. Starší verze značí, že od předchozí aktualizace k této aktualizaci se nezměnila součást.
 
 Stáhněte si soubor [Update](https://aka.ms/asr-scout-update6) . zip. Soubor obsahuje následující součásti: 
-- RX_ 8.0.4.0 _GA_Update_4_8725872_16Sep16. tar. gz
-- CX_Windows_ 8.0.6.0 _GA_Update_6_13746667_18Sep17. exe
-- UA_Windows_ 8.0.5.0 _GA_Update_5_11525802_20Apr17. exe
-- UA_RHEL6-64_ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
-- vCon_Windows_ 8.0.6.0 _GA_Update_6_11525767_21Sep17. exe
-- UA Update4 bitů pro RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS > _ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
+- RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
+- CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
+- UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
+- UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+- vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
+- UA Update4 bitů pro RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS > _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz
   1. Extrahujte soubory. zip.
-  2. **Server pro příjem**: Zkopírujte **rx_ 8.0.4.0 _ga_update_4_8725872_16sep16. tar. gz** na server pro příjem a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
-  3. **Konfigurační server a procesový Server**: Zkopírujte **cx_windows_ 8.0.6.0 _ga_update_6_13746667_18sep17. exe** na konfigurační server a procesový Server. Dvojím kliknutím ji spusťte.<br>
-  4. **Hlavní cílový server Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na server **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** . Dvakrát klikněte na ni a spusťte ji. Stejná aktualizace sjednoceného agenta se vztahuje také na zdrojový server. Pokud se zdroj neaktualizoval na Update 4, měli byste aktualizovat sjednoceného agenta.
-  Aktualizace nemusí platit pro hlavní cíl připravený pomocí nástroje **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
-  5. **Server vContinuum**: Zkopírujte **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe** na server.  Ujistěte se, že jste Průvodce vContinuum zavřeli. Dvakrát klikněte na soubor a spusťte ho.
-  Aktualizace nemusí platit pro hlavní cíl připravený pomocí nástroje **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
-  6. **Server pro Linux Master Target**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** na hlavní cílový server a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
-  7. **Zdrojový server Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na zdrojový server **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** . Dvakrát klikněte na soubor a spusťte ho. 
-  Nemusíte instalovat agenta Update 5 na zdrojovém serveru, pokud už je aktualizovaný na verzi Update 4 nebo když je zdrojový agent nainstalovaný pomocí nejnovějšího základního instalačního programu **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe**.
-  8. **Zdrojový server Linux**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte odpovídající verzi souboru sjednoceného agenta na server Linux a rozbalte ji. V extrahované složce spusťte příkaz **/install**.  Příklad: pro RHEL 6,7 64-bit Server zkopírujte **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** na server a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
+  2. **Server pro příjem**: Zkopírujte **RX_8.0.4.0_GA_Update_4_8725872_16Sep16. tar. gz** na server pro příjem a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
+  3. **Konfigurační server a procesový Server**: Zkopírujte **CX_Windows_8.0,6.0_GA_Update_6_13746667_18Sep17. exe** na konfigurační server a procesový Server. Dvojím kliknutím ji spusťte.<br>
+  4. **Hlavní cílový server Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na server **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17. exe** . Dvakrát klikněte na ni a spusťte ji. Stejná aktualizace sjednoceného agenta se vztahuje také na zdrojový server. Pokud se zdroj neaktualizoval na Update 4, měli byste aktualizovat sjednoceného agenta.
+  Aktualizace nemusí platit pro hlavní cíl připravený s **InMage_Scout_vContinuum_MT_8.0,1.0_Windows_GA_10Oct2017_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
+  5. **Server vContinuum**: Zkopírujte **vCon_Windows_8.0,6.0_GA_Update_6_11525767_21Sep17. exe** na server.  Ujistěte se, že jste Průvodce vContinuum zavřeli. Dvakrát klikněte na soubor a spusťte ho.
+  Aktualizace nemusí platit pro hlavní cíl připravený s **InMage_Scout_vContinuum_MT_8.0,1.0_Windows_GA_10Oct2017_release. exe** , protože se jedná o nový instalační program GA se všemi nejnovějšími změnami.
+  6. **Server pro Linux Master Target**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte **UA_RHEL6 -64 _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** na hlavní cílový server a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
+  7. **Zdrojový server Windows**: Pokud chcete aktualizovat sjednoceného agenta, zkopírujte na zdrojový server **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17. exe** . Dvakrát klikněte na soubor a spusťte ho. 
+  Nemusíte instalovat agenta Update 5 na zdrojový server, pokud už byl aktualizovaný na verzi Update 4 nebo zdrojový agent nainstalovaný s nejnovějším základním instalačním programem **InMage_UA_8.0,1.0_Windows_GA_28Sep2017_release. exe**.
+  8. **Zdrojový server Linux**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte odpovídající verzi souboru sjednoceného agenta na server Linux a rozbalte ji. V extrahované složce spusťte příkaz **/install**.  Příklad: pro RHEL 6,7 64-bit Server zkopírujte **UA_RHEL6 -64 _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** na server a extrahujte ho. V extrahované složce spusťte příkaz **/install**.
 
 
 > [!NOTE]
-> * Instalace instalačního programu jednotného agenta (UA) pro systém Windows byla aktualizována tak, aby podporovala Windows Server 2016. Nový instalační program **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe** je zabalený pomocí základního balíčku Scout GA (**inmage_scout_standard_ 8.0.1 GA-Oct17. zip**). Stejný instalační program bude použit pro všechny podporované verze systému Windows. 
-> * Základní instalační program Windows vContinuum & Master byl aktualizován tak, aby podporoval systém Windows Server 2016. Nový instalační program **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** je zabalený pomocí základního balíčku Scout GA (**inmage_scout_standard_ 8.0.1 GA-Oct17. zip**). Stejný instalační program bude použit k nasazení hlavního cíle Windows 2016 a serveru Windows 2012R2 Master Target.
+> * Instalace instalačního programu jednotného agenta (UA) pro systém Windows byla aktualizována tak, aby podporovala Windows Server 2016. Nový instalační program **InMage_UA_8.0,1.0_Windows_GA_28Sep2017_release. exe** je zabalený pomocí základního balíčku Scout GA (**InMage_Scout_Standard_8.0,1 GA-Oct17. zip**). Stejný instalační program bude použit pro všechny podporované verze systému Windows. 
+> * Základní instalační program Windows vContinuum & Master byl aktualizován tak, aby podporoval systém Windows Server 2016. Nový instalační program **InMage_Scout_vContinuum_MT_8.0,1.0_Windows_GA_10Oct2017_release. exe** je zabalený pomocí základního balíčku Scout GA (**InMage_Scout_Standard_8.0,1 GA-Oct17. zip**). Stejný instalační program bude použit k nasazení hlavního cíle Windows 2016 a serveru Windows 2012R2 Master Target.
 > * Systém Windows Server 2016 na fyzickém serveru není podporován ASR Scout. Podporuje jenom virtuální počítač VMware s Windows serverem 2016. 
 >
 
@@ -218,7 +218,7 @@ Scout Update 5 je kumulativní aktualizace. Obsahuje všechny opravy z aktualiza
 
 #### <a name="new-platform-support"></a>Podpora nové platformy
 * SUSE Linux Enterprise Server 11 Service Pack 4 (SP4)
-* SLES 11 SP4 64 bit **inmage_ua_ 8.0.1.0 _sles11-SP4-64_ga_13apr2017_release. tar. gz** je zabalený pomocí základního balíčku Scout GA (**inmage_scout_standard_ 8.0.1 GA. zip**). Stáhněte si balíček GA z portálu, jak je popsáno v tématu Vytvoření trezoru.
+* SLES 11 SP4 64 bitová **InMage_UA_8.0,1.0_SLES11-SP4-64_GA_13Apr2017_release. tar. gz** je zabaleno pomocí základního balíčku Scout GA (**INMAGE_SCOUT_STANDARD_8.0,1 GA. zip**). Stáhněte si balíček GA z portálu, jak je popsáno v tématu Vytvoření trezoru.
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
@@ -249,10 +249,10 @@ Scout Update 4 je kumulativní aktualizace. Zahrnuje všechny opravy od aktualiz
   * Red Hat Enterprise Linux (RHEL) 7,0, 7,1 a 7,2
   * CentOS 7,0, 7,1 a 7,2
   * Red Hat Enterprise Linux (RHEL) 6,8
-  * CentOS 6,8
+  * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 bit **inmage_ua_ 8.0.1.0 _rhel7-64_ga_06oct2016_release. tar. gz** je zabalený pomocí základního balíčku Scout GA **inmage_scout_standard_ 8.0.1 GA. zip**. Stáhněte si balíček Scout GA z portálu, jak je popsáno v části Vytvoření trezoru.
+> RHEL/CentOS 7 64 bitová **InMage_UA_8.0,1.0_RHEL7-64_GA_06Oct2016_release. tar. gz** je zabaleno pomocí základního balíčku Scout GA **INMAGE_SCOUT_STANDARD_8.0,1 GA. zip**. Stáhněte si balíček Scout GA z portálu, jak je popsáno v části Vytvoření trezoru.
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
 
@@ -275,9 +275,9 @@ Scout Update 4 je kumulativní aktualizace. Zahrnuje všechny opravy od aktualiz
   * Stav ovladače Scout na zdrojovém serveru je k dispozici.
 
 > [!NOTE]
-> * **Inmage_scout_standard_ 8.0.1 _ga. zip** Base Package:
->     * Aktualizovaný základní instalační program konfiguračního serveru (**inmage_cx_ 8.0.1.0 _windows_ga_26feb2015_release. exe**)
->     * Základní instalační program Windows pro hlavní cíl (**inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_26feb2015_release. exe**).
+> * Základní balíček **InMage_Scout_Standard_8 0.1_GA. zip** obsahuje:
+>     * Aktualizovaný základní instalační program konfiguračního serveru (**InMage_CX_8.0,1.0_Windows_GA_26Feb2015_release. exe**)
+>     * Základní instalační program systému Windows pro hlavní cíl (**InMage_Scout_vContinuum_MT_8.0,1.0_Windows_GA_26Feb2015_release. exe**).
 >     * Pro všechny nové instalace použijte nový konfigurační server a hlavní cílový server Windows v g bitů.
 > * Aktualizaci 4 lze použít přímo na 8.0.1 GA.
 > * Konfigurační server a aktualizace pro příjem se po použití nedají vrátit zpátky.

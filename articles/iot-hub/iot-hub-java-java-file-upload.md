@@ -10,11 +10,11 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110373"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397188"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Java)
 
@@ -26,7 +26,7 @@ V tomto kurzu se seznámíte s kódem v tématu [posílání zpráv z cloudu do 
 
 * Pomocí IoT Hub oznámení o nahrávání souborů můžete aktivovat zpracování souboru v back-endu vaší aplikace.
 
-[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-java.md) a [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-java-java-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-Cloud do úložiště objektů BLOB v Azure. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Například:
+[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-java.md) a [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-java-java-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-Cloud do úložiště objektů BLOB v Azure. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Příklad:
 
 * Velké soubory, které obsahují obrázky
 * Videa

@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326308"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395237"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace uzlů transakcí služby Azure blockchain
 
@@ -17,7 +17,7 @@ Uzly transakce slouží k posílání transakcí blockchain do služby Azure blo
 
 Zobrazení podrobností o výchozích uzlech transakce:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte ke členu služby Azure blockchain. Vyberte **uzly transakce**.
 
     ![Vybrat výchozí uzel transakce](./media/configure-transaction-nodes/nodes.png)
@@ -37,7 +37,7 @@ Chcete-li přidat uzel transakce:
 
     | Nastavení | Popis |
     |---------|-------------|
-    | Název | Název uzlu transakce. Název slouží k vytvoření adresy DNS pro koncový bod uzlu transakce. Například, `newnode-myblockchainmember.blockchain.azure.com`. Název uzlu po jeho vytvoření nelze změnit. |
+    | Název | Název uzlu transakce. Název slouží k vytvoření adresy DNS pro koncový bod uzlu transakce. například `newnode-myblockchainmember.blockchain.azure.com`. Název uzlu po jeho vytvoření nelze změnit. |
     | Heslo | Nastavte silné heslo. Použijte heslo pro přístup ke koncovému bodu uzlu transakce pomocí základního ověřování.
 
 1. Vyberte **Vytvořit**.
@@ -56,7 +56,7 @@ Chcete-li zobrazit podrobnosti o koncovém bodu uzlu transakce:
 
 Koncové body uzlu transakce jsou zabezpečené a vyžadují ověření. Můžete se připojit ke koncovému bodu transakce pomocí ověřování Azure AD, základního ověřování HTTPS a pomocí přístupového klíče přes HTTPS nebo WebSocket přes SSL.
 
-### <a name="azure-active-directory-access-control"></a>Řízení přístupu k Azure Active Directory
+### <a name="azure-active-directory-access-control"></a>Řízení přístupu Azure Active Directory
 
 Koncové body uzlu transakce služby Azure blockchain podporují ověřování Azure Active Directory (Azure AD). K vašemu koncovému bodu můžete udělit přístup uživatele, skupiny a instančního objektu služby Azure AD.
 

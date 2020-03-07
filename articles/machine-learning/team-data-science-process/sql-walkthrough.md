@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718527"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393405"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití serveru SQL Server
 V tomto kurzu se seznámíte s procesem sestavení a nasazení modelu Machine Learning pomocí SQL Server a veřejně dostupné datové sady ( [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) ). Postup následující pracovní postup standardních datových věd: ingestování a zkoumání dat, navrhování funkcí usnadnění vzdělávání, pak sestavit a nasadit model.
@@ -66,7 +66,7 @@ V tomto kurzu provedeme paralelní hromadný import dat do SQL Server, zkoumán�
 
 Nastavení prostředí Azure pro datové vědy:
 
-1. [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md)
+1. [vytvořit účet úložiště](../../storage/common/storage-account-create.md)
 2. [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md)
 3. [Zřídí Data Science Virtual Machine](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), který poskytuje SQL Server a server IPython notebook.
    

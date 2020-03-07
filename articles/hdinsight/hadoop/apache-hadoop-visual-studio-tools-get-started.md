@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 4ad58bc2d61f063dce2c23f60a65dcbec48a2303
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824957"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382137"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Použití Data Lake nástrojů pro Visual Studio pro připojení k Azure HDInsight a spouštění dotazů Apache Hive
 
@@ -26,7 +26,7 @@ Další informace o připojení ke clusteru Apache Storm najdete v tématu [výv
 
 Pomocí nástrojů Data Lake pro Visual Studio můžete přistupovat ke službě Azure Data Lake Analytics i HDInsight. Informace o nástrojích Data Lake najdete v tématu [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku a použití Data Lakech nástrojů pro Visual Studio potřebujete následující položky:
 
@@ -46,7 +46,7 @@ Postupujte podle příslušných pokynů k instalaci Data Lake nástrojů pro va
 
   ![Výběr úlohy, Instalační program pro Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
 
-- Pro Visual Studio 2015:
+- For Visual Studio 2015:
 
     [Stažení data Lakech nástrojů](https://www.microsoft.com/download/details.aspx?id=49504). Zvolte verzi nástrojů Data Lake, která se shoduje s vaší verzí sady Visual Studio.
 

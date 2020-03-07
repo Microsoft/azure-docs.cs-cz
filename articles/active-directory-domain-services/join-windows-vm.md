@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: d15877107e49c57f8f33b8ec41caeb7d48230b91
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 05705d14db336b15a6ddf2317f9e69464c8e575b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613882"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378546"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Kurz: připojení virtuálního počítače s Windows serverem ke spravované doméně
 
@@ -39,7 +39,7 @@ K dokončení tohoto kurzu potřebujete následující zdroje:
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
     * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+* Uživatelský účet, který je součástí spravované domény Azure služba AD DS.
     * Ujistěte se, že jste provedli synchronizaci hodnot hash hesel Azure AD Connect nebo Samoobslužné resetování hesla, aby se účet mohl přihlásit ke spravované doméně Azure služba AD DS.
 * Hostitel Azure bastionu nasazený ve vaší virtuální síti Azure služba AD DS.
     * V případě potřeby [Vytvořte hostitele Azure bastionu][azure-bastion].
@@ -153,7 +153,7 @@ Když je vytvořený virtuální počítač a webové připojení RDP vytvořen�
 
     ![Zadejte spravovanou doménu Azure služba AD DS, ke které se chcete připojit.](./media/join-windows-vm/join-domain.png)
 
-1. Zadejte přihlašovací údaje domény pro připojení k doméně. Použijte přihlašovací údaje uživatele, který patří do skupiny *Azure AD DC Administrators* . Pouze členové této skupiny mají oprávnění k připojení počítačů k spravované doméně Azure služba AD DS. Účet musí být součástí spravované domény Azure služba AD DS nebo tenanta Azure AD. účty z externích adresářů přidružených k vašemu tenantovi Azure AD se během procesu připojení k doméně nemůžou správně ověřit. Pověření účtu lze zadat jedním z následujících způsobů:
+1. Zadejte přihlašovací údaje domény pro připojení k doméně. Použijte přihlašovací údaje uživatele, který je součástí spravované domény Azure služba AD DS. Účet musí být součástí spravované domény Azure služba AD DS nebo tenanta Azure AD. účty z externích adresářů přidružených k vašemu tenantovi Azure AD se během procesu připojení k doméně nemůžou správně ověřit. Pověření účtu lze zadat jedním z následujících způsobů:
 
     * **Formát UPN** (doporučeno) – zadejte příponu hlavního názvu uživatele (UPN) pro uživatelský účet, jak je nakonfigurováno ve službě Azure AD. Například přípona UPN uživatele *contosoadmin* by byla `contosoadmin@aaddscontoso.onmicrosoft.com`. K dispozici je několik běžných případů použití, kdy je možné použít spolehlivý formát UPN pro přihlášení k doméně, nikoli formát *sAMAccountName* :
         * Pokud je předpona hlavního názvu uživatele (UPN) dlouhá, například *deehasareallylongname*, může být parametr *sAMAccountName* automaticky vygenerován.
@@ -169,7 +169,7 @@ Když je vytvořený virtuální počítač a webové připojení RDP vytvořen�
 1. Pokud chcete dokončit proces připojení ke spravované doméně Azure služba AD DS, restartujte virtuální počítač.
 
 > [!TIP]
-> Pomocí rutiny [Add-Computer][add-computer] můžete virtuální počítač připojit k doméně pomocí PowerShellu. V následujícím příkladu se připojí doména *AADDSCONTOSO* a pak se virtuální počítač restartuje. Po zobrazení výzvy zadejte přihlašovací údaje uživatele, který patří do skupiny *správců řadičů domény Azure AD* :
+> Pomocí rutiny [Add-Computer][add-computer] můžete virtuální počítač připojit k doméně pomocí PowerShellu. V následujícím příkladu se připojí doména *AADDSCONTOSO* a pak se virtuální počítač restartuje. Po zobrazení výzvy zadejte přihlašovací údaje uživatele, který je součástí spravované domény Azure služba AD DS:
 >
 > `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
@@ -218,7 +218,7 @@ Pokud se zobrazí výzva, která žádá o přihlašovací údaje pro připojen�
 
 Po vyzkoušení každého z těchto kroků pro řešení potíží se znovu pokuste připojit virtuální počítač s Windows serverem ke spravované doméně.
 
-* Ujistěte se, že uživatelský účet, který zadáte, patří do skupiny *Správci AAD DC* .
+* Ujistěte se, že uživatelský účet, který zadáte, patří do spravované domény Azure služba AD DS.
 * Potvrďte, že je účet součástí spravované domény Azure služba AD DS nebo tenanta Azure AD. Účty z externích adresářů přidružených k vašemu tenantovi Azure AD se během procesu připojení k doméně nedají správně ověřit.
 * Zkuste zadat přihlašovací údaje, jako je například `contosoadmin@aaddscontoso.onmicrosoft.com`, pomocí formátu UPN. Pokud ve vašem tenantovi máte mnoho uživatelů se stejnou předponou UPN nebo pokud je předpona hlavního názvu uživatele nadlimitní, je možné, že se účet *sAMAccountName* pro váš účet vygeneruje automaticky. V těchto případech se formát *sAMAccountName* pro váš účet může lišit od toho, co očekáváte nebo používáte ve vaší místní doméně.
 * Ověřte, že jste [povolili synchronizaci hesel][password-sync] s vaší spravovanou doménou. Bez tohoto kroku konfigurace nebudou k dispozici požadované hodnoty hash hesla ve spravované doméně Azure služba AD DS ke správnému ověření vašeho pokusu o přihlášení.

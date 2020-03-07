@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454432"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384328"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -35,9 +35,9 @@ K dokončení tohoto kurzu potřebujete místní instalaci Dockeru. Docker posky
 
 Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v tomto kurzu. Proto doporučujeme místní instalaci Azure CLI a vývojového prostředí pro Docker.
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry**.
 
@@ -205,7 +205,7 @@ Potom pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do své
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu *automaticky replikuje do oblasti*Západní USA*i*Východní USA`docker push`.
+Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu *automaticky replikuje do oblasti*USA – západ*i*USA – východ`docker push`.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

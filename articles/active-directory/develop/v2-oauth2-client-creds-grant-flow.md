@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159756"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365516"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0
 
@@ -67,7 +67,7 @@ Místo používání seznamů ACL můžete použít rozhraní API k vystavení s
 * Čtení pošty ve všech poštovních schránkách
 * Čtení a zápis pošty ve všech poštovních schránkách
 * Poslat e-mail jako libovolný uživatel
-* Číst data z adresáře
+* Čtení dat z adresáře
 
 Další informace o oprávněních aplikací najdete v [Microsoft Graph](https://developer.microsoft.com/graph).
 
@@ -184,7 +184,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `client_id` | Požaduje se | ID aplikace přiřazené vaší aplikaci. Tyto informace najdete na portálu, kde jste zaregistrovali vaši aplikaci. |
 | `scope` | Požaduje se | Hodnota předaná pro parametr `scope` v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, s příponou `.default`. Pro Microsoft Graph například je hodnota `https://graph.microsoft.com/.default`. <br/>Tato hodnota oznamuje koncovému bodu Microsoft Identity Platform, který má všechna přímá oprávnění aplikace nakonfigurovaná pro vaši aplikaci, koncový bod by měl vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o rozsahu `/.default` najdete v [dokumentaci k souhlasu](v2-permissions-and-consent.md#the-default-scope). |
 | `client_secret` | Požaduje se | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na portálu pro registraci aplikací. Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. |
-| `grant_type` | Požaduje se | musí být nastavené na `client_credentials`. |
+| `grant_type` | Požaduje se | Musí být nastavené na `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
 
@@ -207,7 +207,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `scope` | Požaduje se | Hodnota předaná pro parametr `scope` v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, s příponou `.default`. Pro Microsoft Graph například je hodnota `https://graph.microsoft.com/.default`. <br/>Tato hodnota informuje koncový bod platformy Microsoft Identity Platform, který obsahuje všechna přímá oprávnění aplikace, která jste pro svou aplikaci nakonfigurovali, a měla by vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o rozsahu `/.default` najdete v [dokumentaci k souhlasu](v2-permissions-and-consent.md#the-default-scope). |
 | `client_assertion_type` | Požaduje se | Hodnota musí být nastavená na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Požaduje se | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [přihlašovacích údajích k certifikátu](active-directory-certificate-credentials.md) , kde se dozvíte, jak zaregistrovat certifikát a formát kontrolního výrazu.|
-| `grant_type` | Požaduje se | musí být nastavené na `client_credentials`. |
+| `grant_type` | Požaduje se | Musí být nastavené na `client_credentials`. |
 
 Všimněte si, že parametry jsou skoro stejné jako v případě požadavku pomocí sdíleného tajného klíče s tím rozdílem, že parametr client_secret je nahrazen dvěma parametry: client_assertion_type a client_assertion.
 
