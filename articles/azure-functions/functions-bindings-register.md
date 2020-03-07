@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484719"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356028"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrovat rozšíření vazby Azure Functions
 
@@ -29,7 +29,7 @@ Následující tabulka uvádí, kdy a jak registrovat vazby.
 |Azure Portal|Automaticky|Automaticky|
 |Non-.NET jazyky nebo místní vývoj nástrojů Azure Core|Automaticky|[Použití Azure Functions Core Tools a rozšíření sad](#extension-bundles)|
 |C#Knihovna tříd pomocí sady Visual Studio|[Použití nástrojů NuGet](#vs)|[Použití nástrojů NuGet](#vs)|
-|C#Knihovna tříd pomocí Visual Studio Code|NEUŽÍVÁ SE.|[Použít .NET Core CLI](#vs-code)|
+|C#Knihovna tříd pomocí Visual Studio Code|neuvedeno|[Použít .NET Core CLI](#vs-code)|
 
 ## <a name="extension-bundles"></a>Sady rozšíření pro místní vývoj
 

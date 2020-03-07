@@ -4,11 +4,11 @@ description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje slo
 ms.date: 03/02/2020
 ms.topic: overview
 ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227377"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385224"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 

@@ -1,5 +1,5 @@
 ---
-title: Plán instalace Azure AD Connect a Azure AD Connect Health | Dokumentace Microsoftu
+title: Plán instalace Azure AD Connect a Azure AD Connect Health | Dokumenty Microsoft
 description: Tento dokument obsahuje přehled možností instalace a cest, které jsou k dispozici pro instalaci Azure AD Connect a Connect Health.
 services: active-directory
 author: billmath
@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721028"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376020"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
 
@@ -42,8 +42,8 @@ Azure AD Connect si můžete stáhnout ze stránek [Stažení softwaru](https://
 ### <a name="next-steps-to-install-azure-ad-connect"></a>Další kroky instalace služby Azure AD Connect
 |Téma |Odkaz|  
 | --- | --- |
-|Stažení služby Azure AD Connect | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)|
-|Instalace s expresním nastavením | [Expresní instalace služby Azure AD Connect](./how-to-connect-install-express.md)|
+|Stažení Azure AD Connect | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)|
+|Instalace pomocí expresního nastavení | [Expresní instalace služby Azure AD Connect](./how-to-connect-install-express.md)|
 |Instalace s vlastním nastavením | [Vlastní instalace služby Azure AD Connect](./how-to-connect-install-custom.md)|
 |Upgrade z nástroje DirSync | [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
 |Po instalaci | [Ověření instalace a přiřazení licencí](how-to-connect-post-installation.md)|

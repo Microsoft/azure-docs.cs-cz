@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620619"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362657"
 ---
 # <a name="about-migration"></a>Informace o migraci
 
@@ -26,7 +26,7 @@ Můžete provést migraci pomocí Site Recovery:
 - **Migrovat AWS:** Migrují se instance Windows AWS do virtuálních počítačů Azure IaaS. 
 
 > [!NOTE]
-> Teď můžete migrovat z místního prostředí do Azure pomocí služby Azure Migrate. [Další informace](../migrate/migrate-overview.md)
+> Teď můžete migrovat z místního prostředí do Azure pomocí služby Azure Migrate. [Další informace](../migrate/migrate-overview.md).
 
 ## <a name="what-do-we-mean-by-migration"></a>Co myslíme pojmem migrace?
 

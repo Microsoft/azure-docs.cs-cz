@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546941"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357757"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -57,9 +57,9 @@ Například v typickém řešení IoT:
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
-Azure IoT Hub udělí přístup koncovým bodům, když ověří token podle zásad sdíleného přístupu a bezpečnostních přihlašovacích údajů v registru identit.
+Azure IoT Hub uděluje přístup k koncovým bodům tím, že ověřuje token proti zásadám sdíleného přístupu a bezpečnostním přihlašovacím údajům registru identity.
 
 Přihlašovací údaje zabezpečení, jako jsou například symetrické klíče, se nikdy neodesílají přes síťový kabel.
 
@@ -87,7 +87,7 @@ V obou případech pole heslo obsahuje token, jak je popsáno v [IoT Hub tokeny 
 
 Protokol HTTPS implementuje ověřování zahrnutím platného tokenu do hlavičky **autorizační** žádosti.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Username (DeviceId rozlišuje velká a malá písmena): `iothubname.azure-devices.net/DeviceId`
 
@@ -441,7 +441,7 @@ Následující referenční témata vám poskytnou další informace o řízení
 
 Následující tabulka uvádí oprávnění, která můžete použít k řízení přístupu ke službě IoT Hub.
 
-| Oprávnění | Poznámky |
+| Oprávnění | Poznámky: |
 | --- | --- |
 | **RegistryRead** |Udělí přístup pro čtení k registru identit. Další informace najdete v části [registr identit](iot-hub-devguide-identity-registry.md). <br/>Toto oprávnění využívají back-endové cloudové služby. |
 | **RegistryReadWrite** |Udělí registru identity přístup pro čtení a zápis. Další informace najdete v části [registr identit](iot-hub-devguide-identity-registry.md). <br/>Toto oprávnění využívají back-endové cloudové služby. |

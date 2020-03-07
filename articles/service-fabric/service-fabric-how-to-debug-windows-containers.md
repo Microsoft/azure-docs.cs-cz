@@ -5,17 +5,17 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464568"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387714"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Postupy: ladění kontejnerů Windows v Azure Service Fabric pomocí sady Visual Studio 2019
 
 Pomocí sady Visual Studio 2019 můžete ladit aplikace .NET v kontejnerech jako Service Fabric služby. V tomto článku se dozvíte, jak nakonfigurovat prostředí a potom ladit aplikaci .NET v kontejneru spuštěném v místním Service Fabricovém clusteru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * V systému Windows 10 postupujte podle tohoto rychlého startu a [nakonfigurujte Windows 10 tak, aby se spouštěly kontejnery Windows](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) .
 * V systému Windows Server 2016 postupujte podle tohoto rychlého startu a [Nakonfigurujte systém windows 2016 pro spouštění kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
@@ -61,7 +61,7 @@ Níže je uveden seznam známých omezení s kontejnery pro ladění v Service F
 
 ## <a name="debug-a-net-application-running-in-docker-containers-on-service-fabric"></a>Ladění aplikace .NET běžící v kontejnerech Docker na Service Fabric
 
-1. Spusťte sadu Visual Studio jako správce.
+1. Spusťte Visual Studio jako správce.
 
 1. Otevřete existující aplikaci .NET nebo vytvořte novou.
 

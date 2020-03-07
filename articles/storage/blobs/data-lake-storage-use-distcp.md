@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543667"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388171"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2
 
@@ -21,7 +21,7 @@ Pomocí [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html
 
 DistCp poskytuje nejrůznější parametry příkazového řádku a důrazně doporučujeme, abyste si tento článek přečetli, abyste mohli optimalizovat jeho využití. Tento článek ukazuje základní funkce a zaměřuje se na její použití ke kopírování dat na účet s povoleným hierarchickým oborem názvů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Existující účet Azure Storage bez povolených možností Data Lake Storage Gen2 (hierarchický obor názvů)** .
@@ -71,9 +71,9 @@ Vzhledem k tomu, že je nejnižší členitost DistCp jediným souborem, je nast
 
 Tady je několik rad, kterými se můžete řídit.
 
-* **Krok 1: Určení celkové dostupné paměti pro výchozí frontu** přízových aplikací – prvním krokem je určení paměti dostupné pro výchozí frontu příz aplikace. Tyto informace jsou k dispozici na portálu Ambari přidruženém ke clusteru. Přejděte na PŘÍZe a zobrazte kartu Konfigurace, abyste viděli paměť PŘÍZe dostupnou pro výchozí frontu aplikací. Toto je celková dostupná paměť pro vaši úlohu DistCp (která je ve skutečnosti úlohou MapReduce).
+* **Krok 1: určení celkové dostupné paměti pro výchozí frontu přízových aplikací** – prvním krokem je určení paměti dostupné pro výchozí frontu příz aplikace. Tyto informace jsou k dispozici na portálu Ambari přidruženém ke clusteru. Přejděte na PŘÍZe a zobrazte kartu Konfigurace, abyste viděli paměť PŘÍZe dostupnou pro výchozí frontu aplikací. Toto je celková dostupná paměť pro vaši úlohu DistCp (která je ve skutečnosti úlohou MapReduce).
 
-* **Krok 2: Vypočítat počet mapovačů** – hodnota **m** se rovná podílu celkové paměti příze dělené velikostí kontejneru příze. Informace o velikosti kontejneru PŘÍZe jsou k dispozici také na portálu Ambari. Přejděte na PŘÍZe a zobrazte kartu konfigurace. V tomto okně se zobrazí velikost kontejneru PŘÍZe. Rovnice pro doručení do počtu mapovačů (**m**) je
+* **Krok 2: výpočet počtu mapovačů** – hodnota **m** se rovná PODÍLu celkové paměti příze DĚLENé velikostí kontejneru příze. Informace o velikosti kontejneru PŘÍZe jsou k dispozici také na portálu Ambari. Přejděte na PŘÍZe a zobrazte kartu konfigurace. V tomto okně se zobrazí velikost kontejneru PŘÍZe. Rovnice pro doručení do počtu mapovačů (**m**) je
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -81,11 +81,11 @@ Tady je několik rad, kterými se můžete řídit.
 
 Předpokládejme, že máte cluster s 4x D14v2s a snažíte se přenést 10 TB dat z 10 různých složek. Každá složka obsahuje různé objemy dat a velikosti souborů v jednotlivých složkách se liší.
 
-* **Celková paměť příze**: Na portálu Ambari zjistíte, že paměť PŘÍZe je 96 GB pro uzel D14. Proto je celková paměť PŘÍZe pro cluster se čtyřmi uzly: 
+* **Celková paměť příze**: z portálu Ambari zjistíte, že paměť příze je 96 GB pro uzel D14. Proto je celková paměť PŘÍZe pro cluster se čtyřmi uzly: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* **Počet mapovačů**: Na portálu Ambari zjistíte, že velikost kontejneru PŘÍZe je 3 072 MB pro uzel clusteru D14. Proto je počet mapovačů:
+* **Počet mapovačů**: na portálu Ambari zjistíte, že velikost kontejneru příze je 3 072 MB pro uzel clusteru D14. Proto je počet mapovačů:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

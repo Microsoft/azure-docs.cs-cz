@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 10/12/2019
-ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 03/03/2020
+ms.openlocfilehash: 9f518df02b1923513fd014be53646a9a1be8465e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359879"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database Nejčastější dotazy k škálování
 
@@ -39,19 +39,19 @@ Databáze s technologií škálování je databáze SQL Azure v úrovni služby 
 
 Úrovně služeb založené na vCore se liší v závislosti na dostupnosti databáze a typu úložiště, výkonu a maximální velikosti, jak je popsáno v následující tabulce.
 
-| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
+| | Typ prostředku | Obecné účely |  Hyperškálování | Pro důležité obchodní informace |
 |:---:|:---:|:---:|:---:|:---:|
-| **Nejlepší pro** |Všechno|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|Většina obchodních úloh. Automatické škálování úložiště velikosti až 100 TB, rychlé vertikální a horizontální výpočetní škálování a rychlé obnovení databáze.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
+| **Nejlepší pro** |Všechny|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|Většina obchodních úloh. Automatické škálování úložiště velikosti až 100 TB, rychlé vertikální a horizontální výpočetní škálování a rychlé obnovení databáze.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
 |  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
 | **Velikost výpočetního prostředí**|Jedna databáze/elastický fond * | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra * | 1 až 80 virtuální jádra |
-| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Nevztahuje se | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
-| **Typ úložiště** | Všechno |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
+| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | NEUŽÍVÁ SE. | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| **Typ úložiště** | Všechny |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
 | **Velikost úložiště** | Jedna databáze/elastický fond *| 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | Nevztahuje se | 32 GB – 4 TB |
+| | Spravovaná instance  | 32 GB – 8 TB | NEUŽÍVÁ SE. | 32 GB – 4 TB |
 | **IOPS** | Izolovaná databáze | 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací 7000 | Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení. | 5000 IOPS s 200 000m maximálním IOPS|
-| | Spravovaná instance | Závisí na velikosti souboru | Nevztahuje se | 1375 IOPS/vCore |
-|**Dostupnost**|Všechno|1 replika bez škálování na více instancí, žádná místní mezipaměť | Víc replik, až 4 horizontálního navýšení kapacity, částečná místní mezipaměť | 3 repliky, 1 škálování čtení na více instancí, redundantní HA v zóně, úplné místní úložiště |
-|**Vytvářet**|Všechno|RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní)| RA-GRS, 7 dní uchovávání, konstantní doba obnovení v čase (PITR) | RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní) |
+| | Spravovaná instance | Závisí na velikosti souboru | NEUŽÍVÁ SE. | 1375 IOPS/vCore |
+|**Dostupnost**|Všechny|1 replika bez škálování na více instancí, žádná místní mezipaměť | Víc replik, až 4 horizontálního navýšení kapacity, částečná místní mezipaměť | 3 repliky, 1 škálování čtení na více instancí, redundantní HA v zóně, úplné místní úložiště |
+|**Vytvářet**|Všechny|RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní)| RA-GRS, 7 dní uchovávání, konstantní doba obnovení v čase (PITR) | RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní) |
 
 \* elastické fondy nejsou v úrovni služby s škálovatelným škálováním podporované.
 
@@ -95,7 +95,7 @@ Architektura v rámci škálování poskytuje vysoký výkon a propustnost při 
 
 ### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-logical-server"></a>Můžu kombinovat škálovatelné a izolované databáze na jednom logickém serveru
 
-Ano, je to možné.
+Ano, můžete.
 
 ### <a name="does-hyperscale-require-my-application-programming-model-to-change"></a>Vyžaduje se, aby se změnila velikost aplikačního programovacího modelu
 
@@ -274,11 +274,11 @@ Ne. Zálohy spravuje subsystém úložiště a využívají snímky úložiště
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Je možné provést geografickou obnovu s databází s měřítkem
 
-Ano.  Geografické obnovení je plně podporované. Na rozdíl od obnovení k určitému bodu v čase může geografické obnovení vyžadovat dlouhou provozní operaci velikosti dat.
+Ano. Geografické obnovení je plně podporované. Na rozdíl od obnovení k určitému bodu v čase vyžaduje geografické obnovení operaci s velikostí dat. Datové soubory jsou kopírovány paralelně, takže doba trvání této operace závisí primárně na velikosti největšího souboru v databázi, nikoli na celkové velikosti databáze. Pokud se databáze obnoví v oblasti Azure, která se [spáruje](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) s oblastí zdrojové databáze, bude čas geografické obnovy výrazně kratší.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Můžu nastavit geografickou replikaci s databází s měřítkem
 
-V současnosti ne.
+V tuto chvíli to není možné.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Můžu vytvořit zálohu databáze a obnovit ji na místním serveru nebo na SQL Server na VIRTUÁLNÍm počítači.
 
@@ -296,7 +296,7 @@ Ne. V Azure SQL Database není podporován základ.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Podporuje škálování pro R a Python
 
-V současnosti ne.
+V tuto chvíli to není možné.
 
 ### <a name="are-compute-nodes-containerized"></a>Jsou výpočetní uzly kontejnery
 

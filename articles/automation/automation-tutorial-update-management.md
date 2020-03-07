@@ -4,14 +4,14 @@ description: Tento článek poskytuje přehled o tom, jak pomocí Azure Automati
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 03/04/2020
 ms.custom: mvc
-ms.openlocfilehash: 3922f8a2478f00c632b6daf294f23c7b5ad8c261
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 347f2fbc0f12aa775c42dbb14a4625dc509a20ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310131"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373056"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -22,49 +22,21 @@ Informace o cenách najdete na stránce s [cenami služby Automation za řešen�
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Připojení virtuálního počítače k řešení Update Management
 > * Zobrazení posouzení aktualizací
 > * Konfigurace upozorňování
 > * Naplánování nasazení aktualizace
 > * Zobrazení výsledků nasazení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Předplatné Azure. Pokud ho ještě nemáte, můžete si [aktivovat měsíční kredit Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Azure Automation](automation-offering-get-started.md), který bude obsahovat sledovací proces, runbooky akcí a úlohu sledovacího procesu.
+* Řešení [Update Management](automation-update-management.md) povolené pro jeden nebo více vašich virtuálních počítačů.
 * [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) pro připojení.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-
-## <a name="enable-update-management"></a>Povolení řešení Update Management
-
-Pro účely tohoto kurzu nejprve na svém virtuálním počítači povolte řešení Update Management:
-
-1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **virtuální počítače** nebo vyhledejte a vyberte **virtuální počítače** z **domovské** stránky.
-1. Vyberte virtuální počítač, pro který chcete povolit Update Management.
-1. Na stránce virtuálního počítače v části **OPERACE** vyberte **Správa aktualizací**. Otevře se podokno **Povolit řešení Update Management**.
-
-Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management. Toto ověření zahrnuje kontrolu Log Analyticsho pracovního prostoru a propojeného účtu Automation a to, jestli je řešení Update Management v pracovním prostoru povolené.
-
-Pracovní prostor [Log Analytics](../azure-monitor/platform/data-platform-logs.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
-
-Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený pomocí agenta Log Analytics a Hybrid Runbook Worker Automation. Agent slouží ke komunikaci se službou Azure Automation a získávání informací o stavu aktualizací. Agent ke komunikaci se službou Azure Automation a stahování aktualizací vyžaduje otevřený port 443.
-
-Pokud během připojování chyběla některá z následujících požadovaných součástí, automaticky se přidá:
-
-* Pracovní prostor [Log Analytics](../azure-monitor/platform/data-platform-logs.md)
-* [Účet Automation](./automation-offering-get-started.md)
-* Funkce [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) (povolená na virtuálním počítači)
-
-V části **Update Management** nastavte umístění, pracovní prostor služby Log Analytics a účet Automation, které se mají použít. Pak vyberte **Povolit**. Pokud tyto možnosti nejsou dostupné, znamená to, že pro virtuální počítač je povolené jiné řešení automatizace. V takovém případě se musí použít stejný pracovní prostor a účet Automation.
-
-![Okno Povolit řešení Update Management](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
-
-Povolení řešení může trvat až několik minut. Během této doby nezavírejte okno prohlížeče. Po povolení řešení budou informace o chybějících aktualizacích na virtuálním počítači Azure Monitor protokoly. Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ## <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
@@ -74,7 +46,7 @@ V části **informační odkaz**vyberte odkaz aktualizace a otevřete tak člán
 
 ![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-Kliknutím kamkoli jinam na aktualizaci otevřete podokno **Prohledávání protokolu** pro vybranou aktualizaci. Dotaz pro prohledávání protokolu je předdefinovaný pro tuto konkrétní aktualizaci. Tento dotaz můžete upravit nebo vytvořit vlastní dotaz a zobrazit podrobné informace o nasazených nebo chybějících aktualizacích ve vašem prostředí.
+Kliknutím kamkoli jinde v aktualizaci otevřete podokno **hledání protokolu** pro vybranou aktualizaci. Dotaz pro prohledávání protokolu je předdefinovaný pro tuto konkrétní aktualizaci. Tento dotaz můžete upravit nebo vytvořit vlastní dotaz a zobrazit podrobné informace o nasazených nebo chybějících aktualizacích ve vašem prostředí.
 
 ![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -111,15 +83,15 @@ V části **skupiny akcí**vyberte **vytvořit novou**. Skupina akcí se sklád�
 
 Do pole **Název skupiny akcí** zadejte název a krátký název upozornění. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 
-V části **Akce** zadejte název akce, například **E-mailová oznámení**. V části **TYP AKCE** vyberte **E-mailové/SMS/nabízené/hlasové oznámení**. V části **PODROBNOSTI** vyberte **Upravit podrobnosti**.
+V části **Akce**zadejte název akce, například **e-mailová oznámení**. V části **typ akce**vyberte **e-mail/SMS/Push/Voice**. V části **Podrobnosti**vyberte **Upravit podrobnosti**.
 
 V podokně **E-mailové/SMS/nabízené/hlasové oznámení** zadejte název. Zaškrtněte políčko **E-mail** a zadejte platnou e-mailovou adresu.
 
 ![Konfigurace e-mailové skupiny akcí](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-V podokně **E-mailové/SMS/nabízené/hlasové oznámení** vyberte **OK**. V podokně **Přidat skupinu akcí** vyberte **OK**.
+V podokně **e-mail/SMS/nabízení/hlas** vyberte **OK**. V podokně **Přidat skupinu akcí** vyberte **OK**.
 
-Pokud chcete upravit předmět e-mailového oznámení, na stránce **Vytvořit pravidlo** v části **Přizpůsobit akce** vyberte **Předmět e-mailu**. Jakmile budete hotovi, vyberte **Vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace.
+Chcete-li přizpůsobit předmět e-mailu s výstrahou, v části **vytvořit pravidlo**v části **Upravit akce**vyberte **Předmět e-mailu**. Jakmile budete hotovi, vyberte **Vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace.
 
 ## <a name="schedule-an-update-deployment"></a>Naplánování nasazení aktualizace
 
@@ -139,15 +111,15 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
 * **Skupiny, které se mají aktualizovat (Preview)** : Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek a vytvořte dynamickou skupinu virtuálních počítačů Azure, která se má zahrnout do vašeho nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management-groups.md) .
 
-* **Počítače k aktualizaci:** Vyberte uložené hledání, importovanou skupinu nebo vyberte jednotlivé počítače z rozevírací nabídky. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md)
+* **Počítače k aktualizaci:** Vyberte uložené hledání, importovanou skupinu nebo vyberte jednotlivé počítače z rozevírací nabídky. Pokud zvolíte možnost **počítače**, připravenost počítače se zobrazí ve sloupci **připravenosti agenta aktualizace** . Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md)
 
 * **Klasifikace aktualizace**: vyberte podporované klasifikace aktualizací, které jsou k dispozici pro každý produkt, který může být zahrnut v nasazení aktualizace. Pro účely tohoto kurzu nechte vybrané všechny typy.
 
   Typy klasifikace jsou:
 
-   |OS  |Typ  |
+   |Operační systém  |Typ  |
    |---------|---------|
-   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>nástroje</br>Aktualizace        |
+   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>Nástroje</br>Aktualizace        |
    |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |
 
    Popis typů klasifikace najdete v tématu popisujícím [klasifikace aktualizací](automation-view-update-assessments.md#update-classifications).

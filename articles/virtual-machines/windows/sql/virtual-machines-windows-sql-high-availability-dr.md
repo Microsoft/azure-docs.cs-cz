@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933959"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387828"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines
 
@@ -97,7 +97,7 @@ Virtuální počítače Azure, úložiště a sítě mají různé provozní cha
 Skupiny dostupnosti v Azure umožňují umístit uzly s vysokou dostupností do samostatných domén selhání (doménami selhání) a aktualizačních domén (UDs). Každý virtuální počítač v sadě dostupnosti má základní platformu Azure přiřazenou aktualizační doménu a doménu selhání. Tato konfigurace v rámci datového centra zajišťuje, že během plánované nebo neplánované události údržby je k dispozici aspoň jeden virtuální počítač a splňuje 99,95% Azure SLA. Chcete-li nakonfigurovat nastavení vysoké dostupnosti, umístěte všechny zúčastněné Virtual Machines SQL do stejné skupiny dostupnosti, aby nedošlo ke ztrátě aplikace nebo dat během události údržby. Ve stejné skupině dostupnosti se můžou zúčastnit jenom uzly ve stejné cloudové službě. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Uzly s vysokou dostupností v zóně dostupnosti
-Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháním Datacenter tím, že zajišťuje, že je k dispozici aspoň jeden virtuální počítač a splňuje 99,99% Azure SLA. Pokud chcete nakonfigurovat vysokou dostupnost, umístěte zúčastněný Virtual Machines SQL mezi dostupné Zóny dostupnosti v oblasti. Budou se účtovat další poplatky za přenos dat mezi virtuálními počítači v zóně dostupnosti. Další informace najdete v tématu [zóny dostupnosti](/azure/availability-zones/az-overview). 
+Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháním Datacenter tím, že zajišťuje, že je k dispozici aspoň jeden virtuální počítač a splňuje 99,99% Azure SLA. Pokud chcete nakonfigurovat vysokou dostupnost, umístěte zúčastněný Virtual Machines SQL mezi dostupné Zóny dostupnosti v oblasti. Budou se účtovat další poplatky za přenos dat mezi virtuálními počítači v zóně dostupnosti. Další informace najdete v tématu [zóny dostupnosti](/azure/availability-zones/az-overview). 
 
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Chování clusteru s podporou převzetí služeb při selhání v sítích Azure
@@ -156,7 +156,7 @@ Pokud chcete dosáhnout nejlepšího výkonu z SQL Server spuštěného na virtu
 
 Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
 
-### <a name="other-resources"></a>Další zdroje informací
+### <a name="other-resources"></a>Další prostředky
 * [Instalace nové doménové struktury služby Active Directory v Azure](../../../active-directory/active-directory-new-forest-virtual-machine.md)
 * [Vytvoření clusteru s podporou převzetí služeb při selhání pro skupiny dostupnosti v Azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
