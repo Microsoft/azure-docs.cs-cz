@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272972"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373371"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření v Azure Automation
 
@@ -84,7 +84,7 @@ Když zadáte hodnotu parametru, vyberete zdroj dat, abyste určili, jak je hodn
 | Prostředek certifikátu |Jako vstup vyberte certifikát Automation. |
 | Prostředek připojení |Jako vstup vyberte připojení Automation. |
 | Powershellový výraz |Zadejte jednoduchý [powershellový výraz](#powershell-expressions). Výraz je vyhodnocen před aktivitou a výsledek je použit pro hodnotu parametru. Proměnné můžete použít k odkazování na výstup aktivity nebo vstupní parametr Runbooku. |
-| Nenakonfigurované |Vymažte všechny dříve nakonfigurované hodnoty. |
+| Nenakonfigurováno |Vymažte všechny dříve nakonfigurované hodnoty. |
 
 #### <a name="optional-additional-parameters"></a>Nepovinné další parametry
 

@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887236"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389816"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -96,7 +96,7 @@ Po určení velikosti virtuálního počítače clusteru, škálování a typu o
 
 Chcete-li zjistit dostupné jádra, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte na stránku **Přehled** pro cluster HDInsight. 
 3. V nabídce vlevo klikněte na možnost **limity kvót**.
 
@@ -104,7 +104,7 @@ Chcete-li zjistit dostupné jádra, proveďte následující kroky:
 
 Pokud potřebujete požádat o zvýšení kvóty, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. V levé dolní části stránky vyberte **help + support** .
 1. Vyberte **Nová žádost o podporu**.
 1. Na stránce **Nová žádost o podporu** na kartě **základy** vyberte následující možnosti:

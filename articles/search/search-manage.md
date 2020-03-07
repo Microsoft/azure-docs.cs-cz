@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754322"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379600"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "75754322"
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Azure Portal](search-manage.md)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * > [Pythonu](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) 
 
 Azure Kognitivní hledání je plně spravovaná cloudová vyhledávací služba, která se používá k vytváření bohatě vyhledávaného prostředí pro vlastní aplikace. Tento článek se zabývá úlohami správy služby, které můžete provádět v [Azure Portal](https://portal.azure.com) pro vyhledávací službu, kterou jste už zřídili. Správa služeb je odlehčená podle návrhu a je omezená na následující úlohy:
 
@@ -62,7 +62,7 @@ V řídicím panelu je monitorování prostředků omezené na informace zobraze
 
 Pomocí REST API vyhledávací služby můžete získat počet dokumentů a indexů programově: 
 
-* [Získání statistik indexu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Získat statistiku indexu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Počet dokumentů](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Zotavení po havárii a výpadky služeb
@@ -83,7 +83,7 @@ V opačném případě váš kód aplikace použitý k vytvoření a naplnění 
 
 <a id="scale"></a>
 
-## <a name="scale-up-or-down"></a>Vertikálně navýšit nebo snížit kapacitu
+## <a name="scale-up-or-down"></a>Vertikální navýšení nebo snížení kapacity
 Každá vyhledávací služba začíná minimálně jednou replikou a jedním oddílem. Pokud jste se zaregistrovali do [úrovně, která poskytuje vyhrazené prostředky](search-limits-quotas-capacity.md), klikněte na dlaždici **škálování** na řídicím panelu služby a upravte využití prostředků.
 
 Když přidáváte kapacitu prostřednictvím kteréhokoli prostředku, služba je automaticky používá. V této části se nevyžaduje žádná další akce, ale dojde k mírnému zpoždění před tím, než se dopustí dopad nového prostředku. Zřizování dalších prostředků může trvat 15 minut nebo déle.

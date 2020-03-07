@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539395"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379698"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
@@ -90,7 +90,7 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Islandština|is.microsoft||  
 |Indonéština (Bahasa)|id.microsoft|ID. Lucene|  
 |Irština||GA. Lucene|  
-|Italština|it.microsoft|IT. Lucene|  
+|italština|it.microsoft|IT. Lucene|  
 |Japonština|ja.microsoft|Ja. Lucene|  
 |Kannada|kn.microsoft||  
 |Korejština|ko.microsoft|Ko. Lucene|  
@@ -101,7 +101,7 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Maráthština|mr.microsoft||  
 |norština|nb.microsoft|Ne. Lucene|  
 |Perština||FA. Lucene|  
-|Polština|pl.microsoft|pl. Lucene|  
+|polština|pl.microsoft|pl. Lucene|  
 |Portugalština (Brazílie)|pt-Br.microsoft|pt-br. Lucene|  
 |Portugalština (Portugalsko)|pt-Pt.microsoft|pt-PT. Lucene|  
 |Paňdžábština|pa.microsoft||  
@@ -116,14 +116,14 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Tamilština|ta.microsoft||  
 |Telugština|te.microsoft||  
 |Thajština|th.microsoft|th. Lucene|  
-|Turečtina|tr.microsoft|TR. Lucene|  
+|turečtina|tr.microsoft|TR. Lucene|  
 |Ukrajinština|uk.microsoft||  
 |Urdština|ur.microsoft||  
 |Vietnamština|vi.microsoft||  
 
  Všechny analyzátory s názvy popsanými pomocí **Lucene** jsou napájené z [analyzátorů jazyka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
-## <a name="see-also"></a>Viz také  
+## <a name="see-also"></a>Viz také:  
 
 + [Vytvoření indexu &#40;služby Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

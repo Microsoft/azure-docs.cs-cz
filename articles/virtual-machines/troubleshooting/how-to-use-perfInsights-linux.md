@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394765"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -83,7 +83,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - Tabulka směrování sítě
   - Otevřené porty a stav
 
-- Storage
+- Úložiště
   - Seznam blokovaných zařízení
   - Seznam oddílů
   - Seznam přípojných bodů
@@ -91,7 +91,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - Informace o svazku LVM
   - Profilace zachycení na všech discích v intervalu 5 sekund
 
-- Logs
+- Protokoly
   - /var/log/messages
   - /var/log/syslog
   - /var/log/kern.log
@@ -103,7 +103,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[složka rozšíření]/\*protokol\*
+  - /var/log/Azure/[složka rozšíření]/\*protokolu\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
@@ -112,7 +112,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
 - [Metadata instance virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] Informace o PCI ještě nejsou shromážděny v Debian a SLES distribucích
+>[`*`] Informace PCI ještě nejsou shromažďovány v Debian a SLESch distribucích.
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>Spuštění PerfInsights Linux na vašem VIRTUÁLNÍm počítači
 
@@ -125,7 +125,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
 
 - V současné době jsou podporovány následující distribuce:
 
-    | Distribuce               | Version                                         |
+    | Distribuce               | Verze                                         |
     |----------------------------|-------------------------------------------------|
     | Server Oracle Linux        | 6,10 [`*`], 7,3, 7,6, 7,5 (obrázek Oracle-Database-EE 13,8 Marketplace)|
     | CentOS                     | 6,5 [`*`], 7,6                                    |
@@ -136,7 +136,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
     |                            |                                                   |
 
 >[!Note]
->[`*`] Podívejte se na část [známé problémy](#known-issues) .
+>[`*`] Další informace najdete v části [známé problémy](#known-issues) .
 
 ### <a name="known-issues"></a>Známé problémy
 
@@ -173,7 +173,7 @@ Chcete-li spustit nástroj PerfInsights, postupujte podle následujících krok�
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Přejděte do složky, která obsahuje `perfinsights.py` soubor, a potom spusťte `perfinsights.py` příkaz pro zobrazení dostupných parametrů příkazového řádku.
+2. Přejděte do složky, která obsahuje soubor `perfinsights.py` a potom spuštěním `perfinsights.py` zobrazte dostupné parametry příkazového řádku.
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -201,19 +201,19 @@ Chcete-li spustit nástroj PerfInsights, postupujte podle následujících krok�
     ```
 
     >[!Note]
-    >Před spuštěním scénáře PerfInsights vyzve uživatele, aby souhlasil se sdílením diagnostických informací a souhlasil se smlouvou EULA. Tyto výzvy přeskočíte pomocí možnosti **-a nebo--Accept-inment-and-Share** -Diagnostics.
+    >Před spuštěním scénáře PerfInsights vyzve uživatele, aby souhlasil se sdílením diagnostických informací a souhlasil se smlouvou EULA. Tyto výzvy přeskočíte pomocí možnosti **-a nebo--Accept-inment-and-Share-Diagnostics** .
     >
     >Pokud máte aktivní lístek podpory s Microsoftem a provozujete PerfInsights na žádost pro inženýra podpory, se kterým pracujete, ujistěte se, že jste zadali číslo lístku podpory pomocí možnosti **-s nebo--support-Request** .
 
-Až se spuštění dokončí, ve stejné složce jako PerfInsights se zobrazí nový soubor tar, pokud není zadaná žádná výstupní složka. Název souboru je **PerformanceDiagnostics\_yyyy-mm\_-DD hh-mm-SS-FFF. tar. gz.** Tento soubor můžete poslat agentovi podpory k analýze nebo otevřít sestavu v souboru, abyste mohli zkontrolovat zjištění a doporučení.
+Až se spuštění dokončí, ve stejné složce jako PerfInsights se zobrazí nový soubor tar, pokud není zadaná žádná výstupní složka. Název souboru je **PerformanceDiagnostics\_rrrr-mm-dd\_HH-MM-SS-FFF. tar. gz.** Tento soubor můžete poslat agentovi podpory k analýze nebo otevřít sestavu v souboru, abyste mohli zkontrolovat zjištění a doporučení.
 
 ## <a name="review-the-diagnostics-report"></a>Kontrola diagnostické sestavy
 
-V rámci **souboru\_PerformanceDiagnostics yyyy-mm-\_DD hh-mm-SS-FFF. tar. gz** můžete najít sestavu HTML, která podrobně popisuje nálezy PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte **soubor\_PerformanceDiagnostics yyyy-mm-\_DD hh-mm-SS-FFF. tar. gz** a pak otevřete soubor **PerfInsights Report. html** .
+V rámci **PerformanceDiagnostics\_rrrr-mm-dd\_HH-MM-SS-FFF. tar. gz** můžete najít sestavu HTML, která podrobně popisuje nálezy PerfInsights. Chcete-li zobrazit sestavu, rozbalte soubor **PerformanceDiagnostics\_rrrr-mm-dd\_HH-MM-SS-FFF. tar. gz** a pak otevřete soubor **PerfInsights Report. html** .
 
 ### <a name="overview-tab"></a>Karta Přehled
 
-Karta **Přehled** poskytuje základní podrobnosti o spuštění a informace o virtuálním počítači. Na kartě nálezy se zobrazí souhrn doporučení ze všech různých částí sestavy PerfInsights.
+Karta **Přehled** poskytuje základní podrobnosti o spuštění a informace o virtuálním počítači. Na kartě **nálezy** se zobrazí souhrn doporučení ze všech různých částí sestavy PerfInsights.
 
 ![Snímek obrazovky sestavy PerfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
 ![Snímek obrazovky sestavy PerfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
@@ -231,7 +231,7 @@ Karta **CPU** poskytuje informace o spotřebě procesoru v rámci systému běhe
 
 ### <a name="storage-tab"></a>Karta úložiště
 
-V části nálezy se zobrazují různé závěry a doporučení týkající se úložiště.
+V části **nálezy** se zobrazují různé závěry a doporučení týkající se úložiště.
 
 **Bloková zařízení** a další související oddíly, jako jsou **oddíly**, **LVM**a **MDADM** , popisují, jak jsou nakonfigurované a související bloková zařízení.
 
@@ -254,4 +254,4 @@ Na následujícím snímku obrazovky se zobrazí zpráva podobná tomu, co se v�
 
 Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenosu souborů. Pro zvýšení zabezpečení je nutné při prvním použití změnit heslo.
 
-Po přihlášení se zobrazí dialogové okno pro nahrání souboru **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. tar. gz** , který byl shromážděn pomocí PerfInsights.
+Po přihlášení se zobrazí dialogové okno pro nahrání **PerformanceDiagnostics\_rrrr-mm-dd\_HH-MM-SS-FFF. tar. gz** , které bylo shromážděno pomocí PerfInsights.

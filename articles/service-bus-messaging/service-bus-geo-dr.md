@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus Geo-zotavení po havárii | Dokumentace Microsoftu
-description: Použití geografických oblastí na převzetí služeb při selhání a provádět zotavení po havárii v Azure Service Bus
+title: Azure Service Bus geograficky zotavení po havárii | Microsoft Docs
+description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Service Bus
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -10,91 +10,91 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190149"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355977"
 ---
-# <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-zotavení po havárii
+# <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
 
-Po celé oblasti Azure nebo datových centrech (Pokud ne [zóny dostupnosti](../availability-zones/az-overview.md) se používají) dojít k výpadku, je velmi důležité pro zpracování dat i nadále fungovat v jiné oblasti nebo datového centra. V důsledku toho *zotavení po havárii geograficky* důležitou součást pro všechny podniky. Azure Service Bus podporuje geo-zotavení po havárii na úrovni oboru názvů.
+Při výpadku provozu celé oblasti Azure nebo Datacenter (Pokud se nepoužívají žádné [zóny dostupnosti](../availability-zones/az-overview.md) ) je důležité, aby zpracování dat pokračovalo v práci v jiné oblasti nebo datacentru. V takovém případě *geograficky zotavení po havárii* je důležitou funkcí pro jakýkoli podnik. Azure Service Bus podporuje zotavení geografického havárií na úrovni oboru názvů.
 
-Funkce zotavení po havárii geograficky je globálně dostupná pro skladovou Položku služby Service Bus úrovně Premium. 
+Funkce geografického zotavení po havárii je globálně dostupná pro SKU Service Bus Premium. 
 
 >[!NOTE]
-> Geografické zotavení aktuálně pouze zajistí, že metadata (fronty, témata, odběry, filtry) se překopírují z primárního oboru názvů sekundární obor názvů v kombinaci.
+> Geografické zotavení po havárii v současné době zajišťuje, že se při párování zkopírují metadata (fronty, témata, odběry, filtry) z primárního oboru názvů do sekundárního oboru názvů.
 
 ## <a name="outages-and-disasters"></a>Výpadků a havárií
 
 Je důležité si uvědomit rozdíl mezi "výpadků" a "havárií." 
 
-*Výpadek* je dočasná nedostupnost služby Azure Service Bus a může mít vliv na některé součásti služby, jako je například úložiště, nebo dokonce celé datové centrum. Ale po byl problém vyřešen, Service Bus opět k dispozici. Kvůli výpadku obvykle nezpůsobí ztrátu zprávy nebo jiná data. Příkladem takových výpadek může být výpadek napájení v datovém centru. Některé výpadky jsou pouze krátkou připojení ztráty kvůli problémům s přechodným nebo sítě. 
+*Výpadek* je dočasná nedostupnost Azure Service Bus a může ovlivnit některé součásti služby, jako je třeba úložiště pro zasílání zpráv nebo i celé datacentrum. Po vyřešení problému však bude Service Bus opět k dispozici. Kvůli výpadku obvykle nezpůsobí ztrátu zprávy nebo jiná data. Příkladem takových výpadek může být výpadek napájení v datovém centru. Některé výpadky jsou pouze krátkou připojení ztráty kvůli problémům s přechodným nebo sítě. 
 
-A *po havárii* je definován jako trvalý, nebo dlouhodobější ztrátu clusteru služby Service Bus, oblasti Azure nebo datacenter. Oblasti nebo datového centra může nebo nemusí opět k dispozici nebo je pravděpodobně mimo provoz pro hodiny nebo i dny. Příkladem takové jiného problému ovlivňujícího jsou fire, zahlcení nebo zemětřesení. Po havárii, který se stane trvalé může způsobit ztrátu některé zprávy, události nebo jiná data. Ale ve většině případů by měl být nulové ztráty a zprávy lze obnovit zálohování po datové centrum.
+*Havárie* se definuje jako trvalá nebo dlouhodobá ztráta Service Bus clusteru, oblasti Azure nebo datového centra. Oblasti nebo datového centra může nebo nemusí opět k dispozici nebo je pravděpodobně mimo provoz pro hodiny nebo i dny. Příkladem takové jiného problému ovlivňujícího jsou fire, zahlcení nebo zemětřesení. Po havárii, který se stane trvalé může způsobit ztrátu některé zprávy, události nebo jiná data. Ale ve většině případů by měl být nulové ztráty a zprávy lze obnovit zálohování po datové centrum.
 
-Funkce zotavení po havárii geograficky Azure Service Bus je řešení pro zotavení po havárii. Koncepty a pracovní postup popsaný v tomto článku použít scénáře po havárii a není přechodná nebo dočasné výpadky. Podrobnou diskuzi o zotavení po havárii v Microsoft Azure, najdete v části [v tomto článku](/azure/architecture/resiliency/disaster-recovery-azure-applications).   
+Funkce Azure Service Bus geografického zotavení po havárii je řešením zotavení po havárii. Koncepty a pracovní postup popsaný v tomto článku použít scénáře po havárii a není přechodná nebo dočasné výpadky. Podrobnou diskuzi o zotavení po havárii v Microsoft Azure najdete v [tomto článku](/azure/architecture/resiliency/disaster-recovery-azure-applications).   
 
 ## <a name="basic-concepts-and-terms"></a>Základními koncepcemi a termíny
 
-Funkce zotavení po havárii implementuje zotavení po havárii metadata a spoléhá na obory názvů zotavení po havárii primární a sekundární. Všimněte si, že je k dispozici pro funkce zotavení po havárii geograficky [SKU úrovně Premium](service-bus-premium-messaging.md) pouze. Není potřeba nic měnit připojovací řetězec, protože připojení se provádí prostřednictvím alias.
+Funkce zotavení po havárii implementuje zotavení po havárii metadata a spoléhá na obory názvů zotavení po havárii primární a sekundární. Všimněte si, že funkce geografického zotavení po havárii je dostupná jenom pro [SKU úrovně Premium](service-bus-premium-messaging.md) . Není potřeba nic měnit připojovací řetězec, protože připojení se provádí prostřednictvím alias.
 
 V tomto článku se používají následující termíny:
 
--  *Alias*: Název konfigurace zotavení po havárii, které jste nastavili. Alias poskytuje jeden řetězec připojení stabilní plně kvalifikovaný název domény (FQDN). Aplikace použít tento připojovací řetězec aliasu pro připojení k oboru názvů. Používání aliasu zajišťuje, že připojovací řetězec beze změn při aktivaci převzetí služeb při selhání.
+-  *Alias*: název pro konfiguraci zotavení po havárii, kterou jste nastavili. Alias poskytuje jeden řetězec připojení stabilní plně kvalifikovaný název domény (FQDN). Aplikace použít tento připojovací řetězec aliasu pro připojení k oboru názvů. Použití aliasu zajistí, že se připojovací řetězec při aktivaci převzetí služeb při selhání nezměnil.
 
--  *Obor názvů primárního a sekundárního*: Obory názvů, které odpovídají na alias. Primární obor názvů je "aktivní" a přijímá zprávy (to může být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma jsou synchronizované, tak i hladce přijmout zprávy bez nutnosti jakkoli měnit aplikace kódu nebo připojovací řetězec. Aby bylo zajištěno, že pouze aktivní obor názvů přijímá zprávy, musíte použít alias. 
+-  *Primární nebo sekundární obor názvů*: obory názvů, které odpovídají aliasu. Primární obor názvů je "aktivní" a přijímá zprávy (to může být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma jsou synchronizované, tak i hladce přijmout zprávy bez nutnosti jakkoli měnit aplikace kódu nebo připojovací řetězec. Aby bylo zajištěno, že pouze aktivní obor názvů přijímá zprávy, musíte použít alias. 
 
--  *Metadata*: Entity, jako jsou fronty, témata a odběry; a jejich vlastnosti služby, které jsou spojeny s oborem názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy se nereplikují.
+-  *Metadata*: entity, jako jsou fronty, témata a předplatná; a jejich vlastnosti služby, které jsou přidruženy k oboru názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy nejsou replikovány.
 
--  *Převzetí služeb při selhání*: Proces aktivace sekundární obor názvů.
+-  *Převzetí služeb při selhání*: proces aktivace sekundárního oboru názvů.
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 
-Následující části je uveden přehled nastavení párování mezi obory názvů.
+V následující části je přehled nastavení párování mezi obory názvů.
 
 ![1][]
 
-Proces instalace je takto:
+Proces instalace je následující –
 
-1. Zřízení ***primární*** služby Service Bus Premium Namespace.
+1. Zřídit ***primární*** obor názvů Service Bus úrovně Premium.
 
-2. Zřízení ***sekundární*** služby Service Bus Premium Namespace v oblasti *liší od kde primární obor názvů zřizován*. To vám pomůže povolit izolaci chyb napříč oblastmi jiném datovém centru.
+2. Zřídit ***sekundární*** obor názvů Service Bus Premium v oblasti *odlišnou od místa, kde se zřizuje primární obor názvů*. To vám pomůže zajistit izolaci chyb napříč různými oblastmi Datacenter.
 
-3. Vytvoření párování mezi primární obor názvů a sekundární obor názvů získat ***alias***.
+3. Vytvořte párování mezi primárním a sekundárním oborem názvů pro získání ***aliasu***.
 
     >[!NOTE] 
-    > Pokud máte [migraci vašeho oboru názvů Azure Service Bus úrovně Standard pro Azure Service Bus Premium](service-bus-migrate-standard-premium.md), pak je třeba použít existující alias (například Service Bus úrovně Standard obor názvů připojovací řetězec) nevytvořil zotavení po havárii konfigurace prostřednictvím **PS/CLI** nebo **rozhraní REST API**.
+    > Pokud jste [přenesli obor názvů Azure Service Bus Standard do Azure Service Bus Premium](service-bus-migrate-standard-premium.md), je nutné použít již existující alias (tj. připojovací řetězec oboru názvů standardu Service Bus) k vytvoření konfigurace zotavení po havárii přes **PS/CLI** nebo **REST API**.
     >
     >
-    > Důvodem je, že během migrace, Azure Service Bus úrovně Standard názvu vašeho oboru názvů připojovací řetězec/DNS samotné stane alias do svého oboru názvů Azure Service Bus úrovně Premium.
+    > Důvodem je, že během migrace se jako připojovací řetězec oboru názvů Azure Service Bus Standard nebo název DNS sám vytvoří alias pro obor názvů Azure Service Bus Premium.
     >
-    > Tento alias (například Azure Service Bus úrovně Standard obor názvů připojovací řetězec) pro připojení k oboru názvů úrovně Premium, kde párování pro zotavení po havárii po nastavení musí využívat klientské aplikace.
+    > Vaše klientské aplikace musí používat tento alias (tj. připojovací řetězec oboru názvů Azure Service Bus Standard) pro připojení k oboru názvů Premium, ve kterém bylo nastaveno párování zotavení po havárii.
     >
-    > Pokud používáte portál pro nastavení konfigurace zotavení po havárii, pak na portálu abstraktní tento výstrahou od vás.
+    > Pokud použijete portál k nastavení konfigurace zotavení po havárii, portál tuto výstrahu zavede.
 
 
-4. Použití ***alias*** získaný v kroku 3 pro připojení klientských aplikací pro Geo-DR povolené primární obor názvů. Na začátku aliasem, který se odkazuje na primární obor názvů.
+4. Použijte ***alias*** získaný v kroku 3 k připojení klientských aplikací k primárnímu oboru názvů s povoleným geografickým Dr. Zpočátku alias odkazuje na primární obor názvů.
 
-5. [Volitelné] Přidáte monitorování ke zjištění, pokud je nutné převzetí služeb při selhání.
+5. Volitelné Pokud chcete zjistit, jestli je převzetí služeb při selhání nezbytné, přidejte nějaké monitorování.
 
 ## <a name="failover-flow"></a>Tok převzetí služeb při selhání
 
-Převzetí služeb při selhání se aktivuje ručně tak, že zákazník (buď explicitně prostřednictvím příkaz nebo vlastní obchodní logiky, která se spustí příkaz klienta) a nikdy Azure. Díky tomu zákazník úplné vlastnictví a viditelnost pro překlad výpadek v páteřní síti Azure.
+Převzetí služeb při selhání se aktivuje ručně zákazníkem (buď explicitně prostřednictvím příkazu, nebo prostřednictvím obchodní logiky vlastněné klientem, která spouští příkaz) a nikdy neplatí pro Azure. Tím se zákazníkům poskytne úplné vlastnictví a přehled o řešení výpadků v páteřní síti Azure.
 
 ![4][]
 
-Jakmile převzetí služeb při selhání se aktivuje-
+Po aktivaci převzetí služeb při selhání –
 
-1. ***Alias*** připojovací řetězec aktualizuje tak, aby odkazoval na sekundární Premium obor názvů.
+1. Připojovací řetězec ***aliasu*** je aktualizovaný, aby odkazoval na sekundární obor názvů Premium.
 
-2. Klienti (odesílateli a příjemci) se automaticky připojí na sekundární obor názvů.
+2. Klienti (odesílatelé a přijímače) se automaticky připojí k sekundárnímu oboru názvů.
 
-3. Existující párování mezi primární a sekundární obor názvů úrovně premium je poškozená.
+3. Existující párování mezi primárním a sekundárním oborem názvů Premium je přerušeno.
 
-Jakmile převzetí služeb při selhání je zahájeno-
+Po zahájení převzetí služeb při selhání –
 
-1. Pokud dojde k jinému výpadku, chcete mít možnost převzetí služeb při selhání znovu. Proto nastavit jiný obor názvů pasivní a aktualizujte párování. 
+1. Pokud dojde k dalšímu výpadku, budete chtít být schopni převzít služby po obnovení. Proto nastavit jiný obor názvů pasivní a aktualizujte párování. 
 
 2. Jakmile je opět k dispozici vytahují zprávy z předchozí primární obor názvů. Potom použijte tento obor názvů pro zasílání zpráv regulární mimo nastavení geografického zotavení nebo odstraňte starý primární obor názvů.
 
@@ -109,19 +109,19 @@ Můžete automatizovat převzetí služeb při selhání se systémy pro monitor
 
 Pokud se jedná o chybu; například spárované nesprávné oblasti při počátečním nastavení, můžete přerušit párování dané dva obory názvů v každém okamžiku. Pokud chcete použít jako regulární obory názvů spárované obory názvů, odstraňte alias.
 
-## <a name="use-existing-namespace-as-alias"></a>Použití existujícího oboru názvů jako alias
+## <a name="use-existing-namespace-as-alias"></a>Použít existující obor názvů jako alias
 
-Pokud máte scénáře, ve kterém nelze změnit připojení producenti a spotřebitelé, můžete znovu použít název vašeho oboru názvů jako název aliasu. Zobrazit [ukázkový kód na Githubu tady](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
+Pokud máte scénář, ve kterém nemůžete změnit připojení výrobců a uživatelů, můžete název oboru názvů použít jako název aliasu. Tady najdete [ukázkový kód na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
 
-## <a name="samples"></a>Ukázky kódu
+## <a name="samples"></a>Ukázky
 
-[Ukázky na Githubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) ukazují, jak nastavit a spustit převzetí služeb při selhání. Tyto ukázky ukazují následující pojmy:
+[Ukázky na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) ukazují, jak nastavit a iniciovat převzetí služeb při selhání. Tyto ukázky ukazují následující koncepty:
 
-- Ukázka .NET a nastavení, které jsou nutné ve službě Azure Active Directory pomocí Azure Resource Manageru pomocí služby Service Bus, nastavení a povolení geografické zotavení.
+- Ukázka a nastavení .NET, které jsou požadovány v Azure Active Directory pro použití Azure Resource Manager s Service Bus k nastavení a povolení geografického zotavení po havárii.
 - Kroky potřebné ke spuštění vzorového kódu.
-- Jak používat existujícího oboru názvů jako alias.
-- Kroky, případně aby Geo-zotavení po havárii prostřednictvím Powershellu nebo rozhraní příkazového řádku.
-- [Odesílání a příjem](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) z aktuálního primárního nebo sekundárního oboru názvů pomocí aliasu.
+- Jak používat existující obor názvů jako alias.
+- Postup nebo umožnění geografického zotavení po havárii prostřednictvím PowerShellu nebo rozhraní příkazového řádku.
+- [Odeslat a přijmout](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) z aktuálního primárního nebo sekundárního oboru názvů pomocí aliasu
 
 ## <a name="considerations"></a>Požadavky
 
@@ -129,30 +129,30 @@ Mějte na paměti následující aspekty brát v úvahu v této vydané verzi:
 
 1. Při plánování převzetí služeb při selhání, měli byste také zvážit faktor čas. Například pokud ztratíte připojení po dobu delší než 15 až 20 minut, můžete se rozhodnout k zahájení převzetí služeb při selhání.
 
-2. Fakt, že žádná data se replikují znamená, že momentálně se nereplikují aktivní relace. Plánované zprávy a duplicit navíc nemusí fungovat. Nové relace, nové plánované zprávy a nové duplikáty budou fungovat. 
+2. Fakt, že žádná data se replikují znamená, že momentálně se nereplikují aktivní relace. Plánované zprávy a duplicit navíc nemusí fungovat. Nové relace budou fungovat nové naplánované zprávy a nové duplicity. 
 
-3. Přebírání služeb při selhání komplexní distribuované infrastruktury by měla být [vyzkoušená](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) alespoň jednou.
+3. Převzetí služeb při selhání přes složitou distribuovanou infrastrukturu by mělo být alespoň jednou [vyzkoušeno](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) .
 
-4. Synchronizace entit může trvat nějakou dobu, přibližně 50 – 100 entit za minutu. Předplatná a pravidla i počítat jako entity.
+4. Synchronizace entit může trvat nějakou dobu, přibližně 50 – 100 entit za minutu. Předplatná a pravidla se také počítají jako entity.
 
 ## <a name="availability-zones"></a>Zóny dostupnosti
 
-SKU služby Service Bus úrovně Premium podporuje také [zóny dostupnosti](../availability-zones/az-overview.md), poskytuje umístění s izolací chyb v rámci oblasti Azure.
+SKU Service Bus Premium také podporuje [zóny dostupnosti](../availability-zones/az-overview.md)a poskytuje umístění pro izolované chyby v oblasti Azure.
 
 > [!NOTE]
-> Podpora zóny dostupnosti Azure Service Bus úrovně Premium je k dispozici pouze [oblastí Azure](../availability-zones/az-overview.md#services-support-by-region) kde zóny dostupnosti jsou k dispozici.
+> Podpora Zóny dostupnosti pro Azure Service Bus Premium je dostupná jenom v [oblastech Azure](../availability-zones/az-overview.md#services-support-by-region) , kde se nacházejí zóny dostupnosti.
 
-Zóny dostupnosti můžete povolit na pouze nové obory názvů pomocí webu Azure portal. Service Bus nepodporuje migraci z existující oborů názvů. Po povolení na váš obor názvů nejde zakázat redundanci zón.
+Zóny dostupnosti můžete povolit na pouze nové obory názvů pomocí webu Azure portal. Service Bus nepodporuje migraci stávajících oborů názvů. Po povolení na váš obor názvů nejde zakázat redundanci zón.
 
 ![3][]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Geografické zotavení najdete v článku [zde odkaz rozhraní REST API](/rest/api/servicebus/disasterrecoveryconfigs).
-- Spustit obnovení po havárii geograficky [ukázka na Githubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2).
-- Geografické zotavení najdete v článku [ukázky, která odesílá zprávy do alias](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1).
+- [Tady najdete referenční](/rest/api/servicebus/disasterrecoveryconfigs)informace o geografickém zotavení po havárii REST API.
+- Spusťte ukázku geografického zotavení po havárii [na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2).
+- Podívejte se na ukázku obnovení geografického po havárii [, které odesílá zprávy do aliasu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1).
 
-Další informace o zasílání zpráv Service Bus, najdete v následujících článcích:
+Další informace o Service Bus zasílání zpráv najdete v následujících článcích:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

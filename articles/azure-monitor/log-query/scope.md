@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
 ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660305"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357102"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Rozsah dotazu protokolu a časový rozsah ve Azure Monitor Log Analytics
 Když spustíte [dotaz protokolu](log-query-overview.md) v [Log Analytics Azure Portal](get-started-portal.md), sada dat vyhodnocených dotazem závisí na rozsahu a časovém rozsahu, který jste vybrali. Tento článek popisuje rozsah a časový rozsah a způsob, jakým můžete nastavit jednotlivé požadavky v závislosti na vašich požadavcích. Popisuje také chování různých typů oborů.
@@ -22,13 +22,13 @@ Obor dotazu definuje záznamy, které jsou vyhodnocovány dotazem. Tato akce obv
 
 Obor je vždy zobrazen v levém horním rohu okna Log Analytics. Ikona označuje, zda je oborem Log Analytics pracovní prostor nebo aplikace Application Insights. Žádná ikona indikuje jiný prostředek Azure.
 
-![Obor](media/scope/scope.png)
+![Rozsah](media/scope/scope.png)
 
 Rozsah je určen metodou, kterou použijete ke spuštění Log Analytics, a v některých případech můžete obor změnit kliknutím na něj. V následující tabulce jsou uvedeny různé typy použitého oboru a různé podrobnosti pro každou z nich.
 
 | Rozsah dotazu | Záznamy v oboru | Jak vybrat | Změna oboru |
 |:---|:---|:---|:---|
-| Pracovní prostor Log Analytics | Všechny záznamy v pracovním prostoru Log Analytics. | V nabídce **Azure monitor** nebo v nabídce **Log Analytics pracovní prostory** vyberte **protokoly** .  | Může změnit obor na libovolný jiný typ prostředku. |
+| Pracovní prostor služby Log Analytics | Všechny záznamy v pracovním prostoru Log Analytics. | V nabídce **Azure monitor** nebo v nabídce **Log Analytics pracovní prostory** vyberte **protokoly** .  | Může změnit obor na libovolný jiný typ prostředku. |
 | Application Insights aplikace | Všechny záznamy v aplikaci Application Insights. | Na stránce s **přehledem** Application Insights vyberte **Analytics** . | Rozsah lze změnit pouze na jinou Application Insights aplikaci. |
 | Skupina prostředků | Záznamy vytvořené všemi prostředky ve skupině prostředků. Může zahrnovat data z více Log Analytics pracovních prostorů. | V nabídce skupina prostředků vyberte **protokoly** . | Nelze změnit obor.|
 | Předplatné | Záznamy vytvořené všemi prostředky v předplatném. Může zahrnovat data z více Log Analytics pracovních prostorů. | V nabídce předplatné vyberte **protokoly** .   | Nelze změnit obor. |
@@ -38,7 +38,7 @@ Rozsah je určen metodou, kterou použijete ke spuštění Log Analytics, a v n�
 
 Pokud je oborem dotazu Log Analytics pracovní prostor nebo aplikace Application Insights, jsou k dispozici všechny možnosti na portálu a příkazy dotazů. V případě oboru na prostředek, následující možnosti portálu nejsou k dispozici, protože jsou přidruženy k jednomu pracovnímu prostoru nebo aplikaci:
 
-- Uložit
+- Uložení
 - Průzkumník dotazů
 - Nové pravidlo výstrahy
 
@@ -67,7 +67,7 @@ Spuštění dotazu bude zablokováno, pokud obor obsahuje pracovní prostory ve 
 
 | Umístění | Vlastnost |
 |:---|:---|
-| Pracovní prostor Log Analytics          | TimeGenerated |
+| Pracovní prostor služby Log Analytics          | TimeGenerated |
 | Application Insights aplikace | časové razítko     |
 
 Nastavte časový rozsah tak, že ho vyberete v poli pro výběr času v horní části okna Log Analytics.  Můžete vybrat předdefinované období nebo vybrat **vlastní** a zadat konkrétní časový rozsah.

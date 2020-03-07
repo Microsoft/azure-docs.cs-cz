@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450889"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390734"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard pomocí Azure Portal
 
@@ -44,7 +44,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
 
     |Nastavení        |Hodnota                                              |
     |---------      |---------                                          |
-    |Name (Název)           | myDdosProtectionPlan                              |
+    |Název           | myDdosProtectionPlan                              |
     |Předplatné   | Vyberte své předplatné.                         |
     |Skupina prostředků | Vyberte **vytvořit nové** a zadejte *myResourceGroup* . |
     |Umístění       | USA – východ                                           |
@@ -57,7 +57,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
 
     | Nastavení         | Hodnota                                                        |
     | ---------       | ---------                                                    |
-    | Name (Název)            | myVirtualNetwork                                             |
+    | Název            | myVirtualNetwork                                             |
     | Předplatné    | Vyberte své předplatné.                                    |
     | Skupina prostředků  | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
     | Umístění        | USA – východ                                                      |
@@ -73,7 +73,7 @@ Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatn
 4. V části **Nastavení**vyberte **DDoS Protection**.
 5. Vyberte **Standard**. V části **plán ochrany DDoS**vyberte existující plán DDoS Protection nebo plán, který jste vytvořili v kroku 1, a pak vyberte **Uložit**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.
 
-**Příkazy** 
+**Příkaz** 
 - Azure CLI: [AZ Network DDoS-Protection Create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create)
 - PowerShell: [New-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0)
  
@@ -84,7 +84,7 @@ Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatn
 2. V části **Nastavení**vyberte **DDoS Protection**.
 3. V části **plán DDoS Protection** vyberte **základní** a pak vyberte **Uložit**.
 
-**Příkazy** 
+**Příkaz** 
 - Azure CLI: [AZ Network DDoS-Protection Delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)
 - PowerShell: [Remove-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/az.network/remove-azddosprotectionplan?view=azps-3.2.0)
 
@@ -107,7 +107,7 @@ Můžete vybrat libovolnou z dostupných metrik ochrany DDoS, abyste byli upozor
 
     |Nastavení                  |Hodnota                                                                                               |
     |---------                |---------                                                                                           |
-    |Name (Název)                     | myDdosAlert                                                                                        |
+    |Název                     | myDdosAlert                                                                                        |
     |Předplatné             | Vyberte předplatné, které obsahuje veřejnou IP adresu, pro kterou chcete dostávat upozornění.        |
     |Skupina prostředků           | Vyberte skupinu prostředků obsahující veřejnou IP adresu, pro kterou chcete dostávat upozornění.      |
     |Prostředek                 | Vyberte veřejnou IP adresu obsahující veřejnou IP adresu, pro kterou chcete dostávat upozornění. DDoS sleduje veřejné IP adresy přiřazené k prostředkům v rámci virtuální sítě. Pokud ve virtuální síti nemáte žádné prostředky s veřejnými IP adresami, musíte nejdřív vytvořit prostředek s veřejnou IP adresou. Veřejnou IP adresu všech prostředků nasazených prostřednictvím Správce prostředků (ne Classic) můžete sledovat ve [službě Virtual Network pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), s výjimkou prostředí Azure App Service a Azure VPN Gateway. Pokud chcete pokračovat v tomto kurzu, můžete rychle vytvořit virtuální počítač s [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linuxem](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .                   |
@@ -230,7 +230,7 @@ Výstrahy obsahují obecné informace o veřejné IP adrese, která se nachází
 
 Aby bylo možné pracovat s plány ochrany DDoS Protection, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                            | Name (Název)                                     |
+| Akce                                            | Název                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | Přečíst plán DDoS Protection              |
 | Microsoft.Network/ddosProtectionPlans/write       | Vytvořit nebo aktualizovat plán DDoS Protection  |

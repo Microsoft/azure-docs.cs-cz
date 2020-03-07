@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení předvoleb Media Encoderu Standard | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak provádět pokročilé kódování pomocí přizpůsobení předvoleb Media Encoderu Standard úloh. Téma ukazuje, jak používat sadu Media Services .NET SDK k vytvoření úlohy a úlohy kódování. Také ukazuje, jak zadat vlastní předvolby pro úlohy kódování.
+title: Přizpůsobení Media Encoder Standard přednastavení | Microsoft Docs
+description: V tomto tématu se dozvíte, jak provést rozšířené kódování přizpůsobením Media Encoder Standard přednastavení úloh. Téma ukazuje, jak pomocí Media Services .NET SDK vytvořit úlohu kódování a úlohu. Také ukazuje, jak poskytovat vlastní přednastavení pro úlohu kódování.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247239"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394747"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Přednastavení přizpůsobení Media Encoder Standard  
+# <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení přednastavených Media Encoder Standard  
 
 ## <a name="overview"></a>Přehled
 
-Tento článek ukazuje, jak provádět pokročilé kódování pomocí Media Encoder Standard (MES) pomocí vlastního nastavení. Tento článek používá k vytvoření úlohu kódování a úlohu, která spustí tuto úlohu .NET.  
+Tento článek ukazuje, jak provést rozšířené kódování pomocí Media Encoder Standard (status) pomocí vlastní předvolby. V tomto článku se používá .NET k vytvoření úlohy kódování a úlohy, která tuto úlohu spustí.  
 
-Tento článek ukazuje, jak přizpůsobit přednastavení provedením [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) přednastavení, jednak snižuje počet vrstev. [Přizpůsobení kodéru Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) článku ukazuje vlastní předvolby, podle kterých je možné provádět pokročilé úlohy kódování.
+V tomto článku se dozvíte, jak přizpůsobit předvolbu pomocí přednastavení [H264 s více přenosovými rychlostmi](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) a snížením počtu vrstev. Článek [přizpůsobení Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) ukazuje vlastní předvolby, které lze použít k provádění pokročilých úloh kódování.
 
 > [!NOTE]
-> Vlastní předvolby je popsáno v tomto článku nelze použít v [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) transformace nebo příkazů rozhraní příkazového řádku. Zobrazit [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md) další podrobnosti.
+> Vlastní předvolby popsané v tomto článku nelze použít v [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) transformes nebo příkazech CLI. Další podrobnosti najdete v [pokynech k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-## <a id="customizing_presets"></a> Přizpůsobení přednastavení MES
+## <a id="customizing_presets"></a>Přizpůsobení přednastavené ekonomiky
 
-### <a name="original-preset"></a>Původnímu přednastavení
+### <a name="original-preset"></a>Původní předvolba
 
-Uložit definované v kódu JSON [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) článek v některých soubor s příponou .json. Například **CustomPreset_JSON.json**.
+Uložte JSON definovaný v článku [H264 s více přenosovými přenosovými 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) v souboru s příponou. JSON. Například **CustomPreset_JSON. JSON**.
 
-### <a name="customized-preset"></a>Vlastní předvolba
+### <a name="customized-preset"></a>Přizpůsobená předvolba
 
-Otevřít **CustomPreset_JSON.json** souboru a odebrat první tři vrstvy z **H264Layers** tak váš soubor bude vypadat takto.
+Otevřete soubor **CustomPreset_JSON. JSON** a odeberte první tři vrstvy z **H264Layers** , aby váš soubor vypadal.
 
 ```json 
     {  
@@ -113,28 +113,28 @@ Otevřít **CustomPreset_JSON.json** souboru a odebrat první tři vrstvy z **H2
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Kódování pomocí Media Services .NET SDK
+## <a id="encoding_with_dotnet"></a>Kódování pomocí sady Media Services .NET SDK
 
 Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
 
 - Vytvořte úlohu kódování.
-- Získání odkazu na kodéru Media Encoder Standard.
-- Načtěte vlastní předvolbu JSON, který jste vytvořili v předchozí části. 
+- Získejte odkaz na kodér Media Encoder Standard.
+- Načtěte vlastní přednastavení JSON, které jste vytvořili v předchozí části. 
   
         // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
-- Přidáte úlohu kódování do úlohy. 
-- Zadejte vstupní asset kódovaný.
-- Vytvoření výstupní asset, který obsahuje zakódovanému assetu.
-- Přidáte obslužnou rutinu události chcete zkontrolovat průběh úlohy.
-- Odeslání úlohy.
+- Přidejte úlohu kódování do úlohy. 
+- Určete vstupní Asset, který se má zakódovat.
+- Vytvořte výstupní Asset, který obsahuje kódovaný Asset.
+- Přidejte obslužnou rutinu události pro kontrolu průběhu úlohy.
+- Odešlete úlohu.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad:   
+#### <a name="example"></a>Příklad   
 
 ```csharp
 using System;
@@ -264,9 +264,9 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-- [Kódování s vlastní transformace s využitím rozhraní příkazového řádku](../latest/custom-preset-cli-howto.md)
+- [Postup při kódování s vlastní transformací pomocí rozhraní příkazového řádku](../latest/custom-preset-cli-howto.md)
 - [Kódování pomocí Media Services verze 3](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services

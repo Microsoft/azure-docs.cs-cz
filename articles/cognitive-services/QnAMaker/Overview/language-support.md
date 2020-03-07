@@ -1,7 +1,7 @@
 ---
-title: Jazyková podpora – QnA Maker
+title: Podpora jazyků – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Seznam jazykové verze, přirozené jazyky, které QnA Maker podporuje ve znalostní bázi. Nemíchejte jazyky ve stejné znalostní bázi.
+description: Seznam jazykovou verzi, podporuje QnA Maker znalostní báze přirozeného jazyka. Nekombinujte jazyky ve stejném znalostní báze.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389220"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora pro QnA Maker prostředky a základy znalostní báze
 
@@ -33,7 +33,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |--|
 |arabština|
 |Arménština|
-|Bengálština|
+|bengálština|
 |Baskičtina|
 |Bulharština|
 |Katalánština|
@@ -57,20 +57,20 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Islandština|
 |Indonéština|
 |Irština|
-|italština|
+|Italština|
 |Japonština|
-|Kannadština|
+|Kannada|
 |Korejština|
 |Lotyština|
 |Litevština|
-|Malajalámština|
+|Malajálamština|
 |Malajština|
 |norština|
-|polština|
+|Polština|
 |Portugalština|
 |Paňdžábština|
 |Rumunština|
-|ruština|
+|Ruština|
 |Serbian_Cyrillic|
 |Serbian_Latin|
 |Slovenština|
@@ -80,7 +80,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Tamilština|
 |Telugština|
 |Thajština|
-|turečtina|
+|Turečtina|
 |Ukrajinština|
 |Urdština|
 |Vietnamština|

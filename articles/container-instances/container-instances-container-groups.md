@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888052"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364997"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
 
@@ -72,7 +72,7 @@ V rámci skupiny kontejnerů se instance kontejnerů můžou vzájemně kontakto
 
 Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtual-network] , abyste kontejnerům umožnili zabezpečenou komunikaci s ostatními prostředky ve virtuální síti.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů. Mezi podporované svazky patří:
 * [Sdílená složka Azure][azure-files]

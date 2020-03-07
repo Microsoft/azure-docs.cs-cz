@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380913"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
@@ -285,7 +285,7 @@ K automatickému nahrávání souborů VHD pro vytváření vlastních imagí m�
 
 Pokud chcete najít cílový účet úložiště, který je přidružený k vašemu testovacímu prostředí:
 
-1.  Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2.  V nabídce vlevo vyberte **skupiny prostředků**.
 3.  Vyhledejte a vyberte skupinu prostředků, která je přidružená k vašemu testovacímu prostředí.
 4.  V části **Přehled**vyberte jeden z účtů úložiště.
@@ -304,7 +304,7 @@ Azure Marketplace by se měla používat ve výchozím nastavení, pokud nemáte
 - Podmínky dodržování předpisů nebo regulativní podmínky (například zásady zabezpečení), které musí být na místě pro všechny počítače.
 - Použití vlastních imagí by nemělo být považováno za lehce. Představují velmi složitost, protože teď musíte spravovat soubory VHD pro základní základní image. Také je potřeba rutinním pomocí aktualizací softwaru rutiny opravit. Tyto aktualizace zahrnují nové aktualizace operačního systému (OS) a všechny aktualizace nebo změny konfigurace, které jsou potřeba pro samotný softwarový balíček.
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>Artefakty
 
 ### <a name="what-are-artifacts"></a>Co jsou artefakty?
 Artefakty jsou přizpůsobitelné prvky, které můžete použít k nasazení nejnovějších bitů nebo nasazení vývojových nástrojů do virtuálního počítače. Když vytváříte virtuální počítač, připojte ke svému VIRTUÁLNÍmu počítači artefakty. Po zřízení virtuálního počítače nasadí artefakty a nakonfigurují váš virtuální počítač. V našem [veřejném úložišti GitHubu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)jsou k dispozici různé již existující artefakty. Můžete také [vytvářet vlastní artefakty](devtest-lab-artifact-author.md).
@@ -399,7 +399,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 
 Tuto chybu můžete vyřešit provedením jednoho z následujících kroků:
 
-#### <a name="option-1"></a>Možnost 1
+#### <a name="option-1"></a>možnost 1
 Ověřte dostupnost typu prostředku v oblastech Azure na stránce [produkty k dispozici podle oblasti](https://azure.microsoft.com/global-infrastructure/services/) . Pokud typ prostředku není v určité oblasti dostupný, DevTest Labs nepodporuje vytvoření testovacího prostředí v této oblasti. Při vytváření testovacího prostředí vyberte jinou oblast.
 
 #### <a name="option-2"></a>Možnost 2

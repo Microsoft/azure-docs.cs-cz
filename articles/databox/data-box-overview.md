@@ -10,17 +10,17 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067005"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380311"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
-Cloudové řešení Microsoft Azure Data Box umožňuje do Azure odeslat rychle, levně a bezpečně terabajty dat. Zabezpečený a rychlý přenos dat se zajišťuje zasláním speciálního zařízení úložiště Data Box. Každé zařízení úložiště má maximální využitelnou kapacitu úložiště 80 TB a do datového centra ho transportuje místní přepravce. Zařízení má robustní obal, který data během převozu chrání a zabezpečí.
+Cloudové řešení Microsoft Azure Data Box umožňuje do Azure odeslat rychle, levně a bezpečně terabajty dat. Zabezpečený a rychlý přenos dat se zajišťuje zasláním speciálního zařízení úložiště Data Box. Každé zařízení úložiště má maximální využitelnou kapacitu úložiště 80 TB a do datového centra ho transportuje místní přepravce. Zařízení má robustní obal, který data během převozu chrání a zabezpečuje.
 
-Zařízení Data Box si můžete objednat na webu Azure Portal. Jakmile vám zařízení přijde, můžete ho rychle nastavit. Použijete k tomu místní webové uživatelské rozhraní. Zkopírujte data ze serverů do zařízení a pošlete ho zpět do Azure. V datacentru Azure se vaše data nahrají ze zařízení do Azure automaticky. Celý proces se od začátku do konce sleduje ve službě Data Box na webu Azure Portal.
+Zařízení Data Box si můžete objednat na webu Azure Portal. Jakmile vám zařízení přijde, můžete ho rychle nastavit. Použijete k tomu místní webové uživatelské rozhraní. Zkopírujte data ze serverů do zařízení a zašlete ho zpět do Azure. V datacentru Azure se vaše data nahrají ze zařízení do Azure automaticky. Celý proces se na webu Azure Portal sleduje od začátku do konce službou Data Box.
 
 
 ## <a name="use-cases"></a>Případy použití
@@ -45,7 +45,7 @@ Data Box slouží k přesunu velkých objemů dat do Azure bez výraznějšího 
 
 - **Zabezpečení** – Data Box má integrovanou ochranu zařízení, dat a samotné služby.
   - Zařízení má robustní obal, který zabezpečují šroubky odolné vůči neoprávněné manipulaci a nálepky odhalující manipulaci. 
-  - Data na zařízení nepřetržitě chrání 256bitové šifrování AES.
+  - Data na zařízení jsou neustále chráněna pomocí 256bitového šifrování AES.
   - Zařízení je možné odemknout pouze heslem, které najdete na webu Azure Portal.
   - Služba samotná je chráněna funkcemi zabezpečení Azure.
   - Po nahrání dat do Azure se disky na zařízení zcela vymažou podle standardů NIST 800-88r1.
@@ -59,7 +59,7 @@ Zařízení Data Box má v této verzi následující funkce.
 | Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
 | Hmotnost                                                  | < 23 kg                |
-| Dimenze                                              | Šířka zařízení: Výška 309,0 mm: Hloubka 430,4 mm: 502,0 mm |            
+| Dimenze                                              | Zařízení – šířka: 309,0 mm, výška: 430,4 mm, hloubka: 502.0 mm |            
 | Místo v racku                                              | 7U při umístění do racku na boku (montáž do racku není možná)|
 | Potřebné kabely                                         | 1 napájecí kabel (je součástí balení) <br> 2 kabely RJ45 <br> 2 měděné kabely SFP+ Twinax|
 | Kapacita úložiště                                        | 100TB zařízení má 80 TB využitelné kapacity po zapnutí ochrany RAID 5|
@@ -95,9 +95,9 @@ Data Box má následující součásti:
 
 Typický postup zahrnuje tyto kroky:
 
-1. **Objednávka** – na portálu Azure Portal vytvoříte objednávku, zadáte doručovací údaje a cílový účet úložiště Azure pro svoje data. Pokud je zařízení k dispozici, připraví se v Azure a odešle se s identifikačním číslem pro sledování zásilky.
+1. **Objednávka** – na portálu Azure Portal vytvoříte objednávku, zadáte doručovací údaje a cílový účet úložiště Azure pro svoje data. Pokud je zařízení k dispozici, Azure ho připraví a odešle s identifikačním číslem pro sledování zásilky.
 
-2. **Přijetí** – jakmile zařízení obdržíte, připojte ho pomocí přiložených kabelů k síti a napájení. Zařízení zapněte a připojte se k němu. Nakonfigurujte síť zařízení a připojte sdílené složky hostitelského počítače, ze kterého chcete kopírovat data.
+2. **Přijetí** – jakmile zařízení obdržíte, připojte ho pomocí přiložených kabelů k síti a napájení. Zařízení zapněte a připojte se k němu. Nakonfigurujte síť zařízení a připojte sdílené složky hostitelského počítače, ze kterého chcete data kopírovat.
 
 3. **Kopírování dat** – zkopírujte data do sdílených složek služby Data Box.
 
@@ -113,10 +113,10 @@ Data Box může přenášet data na základě oblasti, ve které je služba nasa
 
 - **Dostupnost služby** – informace o dostupnosti oblastí najdete v [produktech Azure, které jsou dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
-- **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure, ve kterých je tato služba k dispozici.  
+- **Cílové účty úložiště** – účty úložiště, které ukládají data, jsou dostupné ve všech oblastech Azure, ve kterých je tato služba k dispozici.  
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [systémové požadavky služby Data Box](data-box-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box](data-box-limits.md).

@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028367"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359681"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -61,7 +61,7 @@ Přístup k metrikám:
 
 1. V nabídce ve spodní části stránky vyberte **Metriky**.
 
-    ![metriky](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
 1. V rozevíracím seznamu vyberte metriky, které vás zajímají. Například **požadavky**. 
 1. Graf zobrazí celkový počet volání rozhraní API.
@@ -182,44 +182,44 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 
 | Vlastnost  | Typ | Popis |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | Boolean | Má hodnotu true, pokud se požadavek HTTP dokončil se stavovým kódem odpovědi v rozsahu 2xx nebo 3xx. |
+| isRequestSuccess | Datový typ Boolean | Má hodnotu true, pokud se požadavek HTTP dokončil se stavovým kódem odpovědi v rozsahu 2xx nebo 3xx. |
 | time | date-time | Časové razítko, kdy brána spouští zpracování žádosti |
-| operationName | string | Konstantní hodnota Microsoft.ApiManagement/GatewayLogs. |
-| category | string | Konstantní hodnota GatewayLogs. |
-| durationMs | celé číslo | Počet milisekund od chvíle, kdy brána přijala požadavek, do úplného odeslání odpovědi. Zahrnuje clienTime, cacheTime a webčas_ukončení. |
-| callerIpAddress | string | IP adresa bezprostředního volajícího brány (může být prostředníkem). |
-| correlationId | string | Jedinečný identifikátor požadavku HTTP přiřazený službou API Management. |
-| location | string | Název oblasti Azure, ve které se nachází brána, která požadavek zpracovala. |
-| httpStatusCodeCategory | string | Kategorie stavového kódu odpovědi HTTP: Úspěch (301 nebo nižší, 304 nebo 307), Neautorizováno (401, 403, 429), Chyba (400, 500 až 600), Jiné. |
-| resourceId | string | ID\<předplatného API Management Resource/SUBSCRIPTIONS/>/RESOURCEGROUPS/\<Resource-Group >/PROVIDERS/MICROSOFT. Název APIMANAGEMENT/SERVICE/\< |
-| properties | object | Vlastnosti aktuálního požadavku. |
-| method | string | Metoda HTTP příchozího požadavku. |
-| url | string | Adresa URL příchozího požadavku. |
-| clientProtocol | string | Verze protokolu HTTP příchozího požadavku. |
-| responseCode | celé číslo | Stavový kód odpovědi HTTP odeslané do klienta. |
-| backendMethod | string | Metoda HTTP požadavku odeslaného do back-endu. |
-| backendUrl | string | Adresa URL požadavku odeslaného do back-endu. |
-| backendResponseCode | celé číslo | Kód odpovědi HTTP přijaté z back-endu. |
-| backendProtocol | string | Verze protokolu HTTP požadavku odeslaného do back-endu. | 
-| requestSize | celé číslo | Počet bajtů přijatých z klienta během zpracování požadavku. | 
-| responseSize | celé číslo | Počet bajtů odeslaných do klienta během zpracování požadavku. | 
-| cache | string | Stav zapojení mezipaměti služby API Management ve zpracování požadavku (tj. úspěšný přístup, neúspěšný přístup, žádné). | 
-| cacheTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích mezipaměti služby API Management (připojování, odesílání a příjem bajtů). | 
-| backendTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích back-endu (připojování, odesílání a příjem bajtů). | 
-| clientTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích klienta (připojování, odesílání a příjem bajtů). | 
-| apiId | string | Identifikátor entity rozhraní API pro aktuální požadavek. | 
-| operationId | string | Identifikátor entity operace pro aktuální požadavek. | 
-| productId | string | Identifikátor entity produktu pro aktuální požadavek. | 
-| userId | string | Identifikátor entity uživatele pro aktuální požadavek. | 
-| apimSubscriptionId | string | Identifikátor entity předplatného pro aktuální požadavek. | 
-| backendId | string | Identifikátor entity back-endu pro aktuální požadavek. | 
+| operationName | řetězec | Konstantní hodnota Microsoft.ApiManagement/GatewayLogs. |
+| category | řetězec | Konstantní hodnota GatewayLogs. |
+| durationMs | integer | Počet milisekund od chvíle, kdy brána přijala požadavek, do úplného odeslání odpovědi. Zahrnuje clienTime, cacheTime a webčas_ukončení. |
+| callerIpAddress | řetězec | IP adresa bezprostředního volajícího brány (může být prostředníkem). |
+| correlationId | řetězec | Jedinečný identifikátor požadavku HTTP přiřazený službou API Management. |
+| location | řetězec | Název oblasti Azure, ve které se nachází brána, která požadavek zpracovala. |
+| httpStatusCodeCategory | řetězec | Kategorie stavového kódu odpovědi HTTP: Úspěch (301 nebo nižší, 304 nebo 307), Neautorizováno (401, 403, 429), Chyba (400, 500 až 600), Jiné. |
+| resourceId | řetězec | ID\<předplatného API Management Resource/SUBSCRIPTIONS/>/RESOURCEGROUPS/\<Resource-Group >/PROVIDERS/MICROSOFT. Název APIMANAGEMENT/SERVICE/\<> |
+| Vlastnosti | object | Vlastnosti aktuálního požadavku. |
+| – metoda | řetězec | Metoda HTTP příchozího požadavku. |
+| Adresa URL | řetězec | Adresa URL příchozího požadavku. |
+| clientProtocol | řetězec | Verze protokolu HTTP příchozího požadavku. |
+| responseCode | integer | Stavový kód odpovědi HTTP odeslané do klienta. |
+| backendMethod | řetězec | Metoda HTTP požadavku odeslaného do back-endu. |
+| backendUrl | řetězec | Adresa URL požadavku odeslaného do back-endu. |
+| backendResponseCode | integer | Kód odpovědi HTTP přijaté z back-endu. |
+| backendProtocol | řetězec | Verze protokolu HTTP požadavku odeslaného do back-endu. | 
+| requestSize | integer | Počet bajtů přijatých z klienta během zpracování požadavku. | 
+| responseSize | integer | Počet bajtů odeslaných do klienta během zpracování požadavku. | 
+| cache | řetězec | Stav zapojení mezipaměti služby API Management ve zpracování požadavku (tj. úspěšný přístup, neúspěšný přístup, žádné). | 
+| cacheTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích mezipaměti služby API Management (připojování, odesílání a příjem bajtů). | 
+| backendTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích back-endu (připojování, odesílání a příjem bajtů). | 
+| clientTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích klienta (připojování, odesílání a příjem bajtů). | 
+| apiId | řetězec | Identifikátor entity rozhraní API pro aktuální požadavek. | 
+| operationId | řetězec | Identifikátor entity operace pro aktuální požadavek. | 
+| productId | řetězec | Identifikátor entity produktu pro aktuální požadavek. | 
+| userId | řetězec | Identifikátor entity uživatele pro aktuální požadavek. | 
+| apimSubscriptionId | řetězec | Identifikátor entity předplatného pro aktuální požadavek. | 
+| backendId | řetězec | Identifikátor entity back-endu pro aktuální požadavek. | 
 | LastError | object | Poslední chyba zpracování požadavku. | 
-| elapsed | celé číslo | Počet milisekund uplynulých mezi okamžikem, kdy brána přijala požadavek, a okamžik, kdy došlo k chybě | 
-| source | string | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
-| scope | string | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
-| section | string | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
-| reason | string | Důvod chyby | 
-| zpráva | string | Chybová zpráva | 
+| elapsed | integer | Počet milisekund uplynulých mezi okamžikem, kdy brána přijala požadavek, a okamžik, kdy došlo k chybě | 
+| source | řetězec | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
+| scope | řetězec | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
+| section | řetězec | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
+| reason | řetězec | Důvod chyby | 
+| zpráva | řetězec | Chybová zpráva | 
 
 ## <a name="next-steps"></a>Další kroky
 

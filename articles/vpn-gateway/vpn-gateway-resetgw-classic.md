@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862760"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379237"
 ---
-# <a name="reset-a-vpn-gateway"></a>Resetování služby VPN Gateway
+# <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 
 Resetování brány Azure VPN je užitečné v případě ztráty připojení VPN mezi lokalitami na jednom nebo více tunelech VPN typu Site-to-Site. V této situaci vaše místní zařízení VPN fungují správně, ale nejsou schopná vytvořit tunelová propojení prostřednictvím protokolu IPsec s branami Azure VPN. Tento článek vám pomůže resetovat bránu VPN.
 
@@ -50,7 +50,7 @@ Správce prostředků VPN Gateway můžete resetovat pomocí Azure Portal. Pokud
    ![Resetovat okno VPN Gateway](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. V okně Reset klikněte na tlačítko **obnovit** .
 
-## <a name="ps"></a>PowerShell
+## <a name="ps"></a>Prostředí
 
 ### <a name="resource-manager-deployment-model"></a>Model nasazení Resource Manager
 
@@ -63,7 +63,7 @@ $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-Result:
+Vyústit
 
 Když obdržíte výsledek vrácení, můžete předpokládat, že resetování brány bylo úspěšné. Nejedná se však o výsledek návratového výsledku, který indikuje, že bylo resetování úspěšné. Pokud se chcete podívat na historii, abyste viděli přesně, kdy došlo k obnovení brány, můžete tyto informace zobrazit v [Azure Portal](https://portal.azure.com). Na portálu přejděte na **"Gateway"-> Resource Health**.
 
@@ -77,7 +77,7 @@ Následující příklad obnoví bránu pro virtuální síť s názvem "Group T
 Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
-Result:
+Vyústit
 
 ```powershell
 Error          :
@@ -96,6 +96,6 @@ Bránu resetujete tak, že použijete příkaz [AZ Network VNet-Gateway Reset](h
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-Result:
+Vyústit
 
 Když obdržíte výsledek vrácení, můžete předpokládat, že resetování brány bylo úspěšné. Nejedná se však o výsledek návratového výsledku, který indikuje, že bylo resetování úspěšné. Pokud se chcete podívat na historii, abyste viděli přesně, kdy došlo k obnovení brány, můžete tyto informace zobrazit v [Azure Portal](https://portal.azure.com). Na portálu přejděte na **"Gateway"-> Resource Health**.

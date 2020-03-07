@@ -5,11 +5,11 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
 ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670385"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359599"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Podporované služby, schémata a kategorie pro protokoly prostředků Azure
 
@@ -24,33 +24,33 @@ Kombinace typu prostředku (k dispozici ve vlastnosti `resourceId`) a `category`
 
 | Název | Požadováno/volitelné | Popis |
 |---|---|---|
-| time | Požadováno | Časové razítko (UTC) události. |
-| resourceId | Požadováno | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
+| time | Požaduje se | Časové razítko (UTC) události. |
+| resourceId | Požaduje se | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
 | tenantId | Vyžadováno pro protokoly klientů | ID tenanta klienta služby Active Directory, se kterým je tato událost svázána. Tato vlastnost se používá jenom pro protokoly na úrovni tenanta, nezobrazuje se v protokolech na úrovni prostředků. |
-| operationName | Požadováno | Název operace reprezentované touto událostí. Pokud událost představuje operaci RBAC, jedná se o název operace RBAC (např. Microsoft. Storage/storageAccounts/blobServices/BLOBs/Read). Obvykle se modeluje ve formě operace Správce prostředků, i když nejsou skutečné dokumentované Správce prostředků operace (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`). |
-| operationVersion | Volitelné | Verze rozhraní API přidružená k operaci, pokud se operace provedla pomocí rozhraní API (např. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Pokud neexistuje žádné rozhraní API, které by odpovídalo této operaci, verze představuje verzi této operace pro případ, že se vlastnosti přidružené k operaci v budoucnu mění. |
-| category | Požadováno | Kategorie protokolu události Kategorie je členitost, na které můžete povolit nebo zakázat protokoly na konkrétním prostředku. Vlastnosti, které se zobrazují v objektu BLOB vlastností události, jsou stejné v rámci konkrétní kategorie protokolu a typu prostředku. Typické kategorie protokolu jsou "Audit" "provozní" "provádění" a "Request". |
-| resultType | Volitelné | Stav události Mezi obvyklé hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
-| resultSignature | Volitelné | Stav sub události Pokud tato operace odpovídá REST API volání, jedná se o stavový kód HTTP odpovídajícího volání REST. |
-| resultDescription | Volitelné | Statický textový popis této operace, např. "Získat soubor úložiště" |
-| durationMs | Volitelné | Doba trvání operace v milisekundách. |
-| callerIpAddress | Volitelné | IP adresa volajícího, pokud operace odpovídá volání rozhraní API, které pochází z entity s veřejně dostupnou IP adresou. |
-| correlationId | Volitelné | Identifikátor GUID použitý k seskupení sady souvisejících událostí. Obvykle Pokud mají dvě události stejný OperationName, ale dva různé stavy (např. "Spuštěno" a "úspěch") sdílí stejné ID korelace. To může také představovat jiné vztahy mezi událostmi. |
-| identita | Volitelné | Objekt BLOB JSON, který popisuje identitu uživatele nebo aplikace, která provedla operaci. Obvykle se jedná o tokeny autorizace a deklarace identity/JWT ze služby Active Directory. |
-| Úroveň | Volitelné | Úroveň závažnosti události Musí se jednat o jednu z informativních, varovných, chybových nebo kritických. |
-| umístění | Volitelné | Oblast zdroje, která vyvolala událost, např. "Východní USA" nebo "Francie – jih" |
-| vlastnosti | Volitelné | Všechny rozšířené vlastnosti související s touto konkrétní kategorií událostí. Všechny vlastní a jedinečné vlastnosti musí být vloženy do tohoto "části B" schématu. |
+| operationName | Požaduje se | Název operace reprezentované touto událostí. Pokud událost představuje operaci RBAC, jedná se o název operace RBAC (např. Microsoft. Storage/storageAccounts/blobServices/BLOBs/Read). Obvykle se modeluje ve formě operace Správce prostředků, i když nejsou skutečné dokumentované Správce prostředků operace (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`). |
+| operationVersion | Nepovinné | Verze rozhraní API přidružená k operaci, pokud se operace provedla pomocí rozhraní API (např. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Pokud neexistuje žádné rozhraní API, které by odpovídalo této operaci, verze představuje verzi této operace pro případ, že se vlastnosti přidružené k operaci v budoucnu mění. |
+| category | Požaduje se | Kategorie protokolu události Kategorie je členitost, na které můžete povolit nebo zakázat protokoly na konkrétním prostředku. Vlastnosti, které se zobrazují v objektu BLOB vlastností události, jsou stejné v rámci konkrétní kategorie protokolu a typu prostředku. Typické kategorie protokolu jsou "Audit" "provozní" "provádění" a "Request". |
+| resultType | Nepovinné | Stav události Mezi obvyklé hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
+| resultSignature | Nepovinné | Stav sub události Pokud tato operace odpovídá REST API volání, jedná se o stavový kód HTTP odpovídajícího volání REST. |
+| resultDescription | Nepovinné | Statický textový popis této operace, např. "Získat soubor úložiště" |
+| durationMs | Nepovinné | Doba trvání operace v milisekundách. |
+| callerIpAddress | Nepovinné | IP adresa volajícího, pokud operace odpovídá volání rozhraní API, které pochází z entity s veřejně dostupnou IP adresou. |
+| correlationId | Nepovinné | Identifikátor GUID použitý k seskupení sady souvisejících událostí. Obvykle Pokud mají dvě události stejný OperationName, ale dva různé stavy (např. "Spuštěno" a "úspěch") sdílí stejné ID korelace. To může také představovat jiné vztahy mezi událostmi. |
+| identity | Nepovinné | Objekt BLOB JSON, který popisuje identitu uživatele nebo aplikace, která provedla operaci. Obvykle se jedná o tokeny autorizace a deklarace identity/JWT ze služby Active Directory. |
+| Úroveň | Nepovinné | Úroveň závažnosti události Musí se jednat o jednu z informativních, varovných, chybových nebo kritických. |
+| location | Nepovinné | Oblast zdroje, která vyvolala událost, např. "Východní USA" nebo "Francie – jih" |
+| properties | Nepovinné | Všechny rozšířené vlastnosti související s touto konkrétní kategorií událostí. Všechny vlastní a jedinečné vlastnosti musí být vloženy do tohoto "části B" schématu. |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>Schémata pro protokoly prostředků pro konkrétní služby
 Schéma pro protokoly diagnostiky prostředků se liší v závislosti na kategoriích prostředků a protokolů. V tomto seznamu jsou uvedeny všechny služby, které zpřístupňují dostupné protokoly prostředků, a odkazy na schéma specifické pro službu a kategorii, kde je k dispozici.
 
-| Service | Schéma & docs |
+| Služba | Schéma & docs |
 | --- | --- |
 | Azure Active Directory | [Přehled](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schéma protokolu auditu](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) a [schéma přihlášení](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
-| Služba Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
+| Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [Protokoly prostředků API Management](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Brány Application Gateway |[Protokolování pro Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
-| Automatizace Azure |[Log Analytics pro Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
+| Azure Automation |[Log Analytics pro Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Protokolování Azure Batch](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Protokoly diagnostiky Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Protokoly Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
@@ -64,7 +64,7 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 | Data Lake Store |[Přístup k protokolům pro Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Event Hubs |[Protokoly Event Hubs Azure](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schéma není k dispozici. |
-| Azure Firewall | Schéma není k dispozici. |
+| Brána Azure Firewall | Schéma není k dispozici. |
 | IoT Hub | [IoT Hub operace](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Protokolování v Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Protokolování Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
@@ -74,9 +74,9 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 | DDOS Protection | [Spravovat Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
 | Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| Hledat |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
+| Hledání |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
 | Service Bus |[Protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| Databáze SQL | [Protokolování Azure SQL Database](../../sql-database/sql-database-metrics-diag-logging.md) |
+| SQL Database | [Protokolování Azure SQL Database](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Schéma Traffic Managerho protokolu](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuální sítě | Schéma není k dispozici. |
@@ -99,7 +99,7 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto
 |Microsoft. AAD/domainServices|AccountLogon|AccountLogon|
 |Microsoft. aadiam/tenantů|Přihlášení|Přihlášení|
 |Microsoft.AnalysisServices/servers|Modul|Modul|
-|Microsoft.AnalysisServices/servers|Service|Service|
+|Microsoft.AnalysisServices/servers|Služba|Služba|
 |Microsoft.ApiManagement/service|GatewayLogs|Protokoly související s bránou ApiManagement|
 |Microsoft. AppPlatform/pružina|ApplicationConsole|Konzola aplikace|
 |Microsoft. Automation/automationAccounts|JobLogs|Protokoly úloh|
@@ -110,10 +110,10 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto
 |Microsoft. BatchAI/pracovní prostory|BaiClusterNodeEvent|BaiClusterNodeEvent|
 |Microsoft. BatchAI/pracovní prostory|BaiJobEvent|BaiJobEvent|
 |Microsoft. blockchain/blockchainMembers|BlockchainApplication|Aplikace blockchain|
-|Microsoft. blockchain/blockchainMembers|Proxy|Proxy|
+|Microsoft. blockchain/blockchainMembers|Proxy server|Proxy server|
 |Microsoft. CDN/Profiles/koncových bodů|CoreAnalytics|Získá metriky koncového bodu, například šířku pásma, odchozí přenos atd.|
 |Microsoft.ClassicNetwork/networksecuritygroups|Událost toku pravidla skupiny zabezpečení sítě|Událost toku pravidla skupiny zabezpečení sítě|
-|Microsoft.CognitiveServices/accounts|Auditování|Protokoly auditování|
+|Microsoft.CognitiveServices/accounts|Auditování|Protokoly auditu|
 |Microsoft.CognitiveServices/accounts|Operace RequestResponse|Protokoly žádostí a odpovědí|
 |Microsoft.ContainerRegistry/registries|ContainerRegistryRepositoryEvents|Protokoly RepositoryEvent (Preview)|
 |Microsoft.ContainerRegistry/registries|ContainerRegistryLoginEvents|Události přihlášení (Preview)|
@@ -124,7 +124,7 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto
 |Microsoft.ContainerService/managedClusters|cluster – automatické škálování|Automatické škálování clusteru Kubernetes|
 |Microsoft. datacihly/pracovní prostory|dBFS|Systém souborů Databricks|
 |Microsoft. datacihly/pracovní prostory|clusters|Clustery datacihlů|
-|Microsoft. datacihly/pracovní prostory|účty|Účty datacihlů|
+|Microsoft. datacihly/pracovní prostory|accounts|Účty datacihlů|
 |Microsoft. datacihly/pracovní prostory|jobs|Úlohy datacihlů|
 |Microsoft. datacihly/pracovní prostory|poznámkového bloku|Poznámkový blok Databricks|
 |Microsoft. datacihly/pracovní prostory|SSH|SSH datacihlů|
@@ -136,11 +136,11 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto
 |Microsoft. DataFactory/továrny|ActivityRuns|Spuštění protokolu aktivity kanálu|
 |Microsoft. DataFactory/továrny|PipelineRuns|Protokol spuštění kanálu|
 |Microsoft. DataFactory/továrny|TriggerRuns|Aktivační událost spuštění protokolu|
-|Microsoft.DataLakeAnalytics/accounts|Auditování|Protokoly auditování|
-|Microsoft.DataLakeAnalytics/accounts|Požadavky|Protokoly žádostí|
-|Microsoft.DataLakeStore/accounts|Auditování|Protokoly auditování|
-|Microsoft.DataLakeStore/accounts|Požadavky|Protokoly žádostí|
-|Microsoft. datashare/Accounts|Sdílené položky|Sdílené položky|
+|Microsoft.DataLakeAnalytics/accounts|Auditování|Protokoly auditu|
+|Microsoft.DataLakeAnalytics/accounts|Žádosti|Protokoly žádostí|
+|Microsoft.DataLakeStore/accounts|Auditování|Protokoly auditu|
+|Microsoft.DataLakeStore/accounts|Žádosti|Protokoly žádostí|
+|Microsoft. datashare/Accounts|Sdílené složky|Sdílené složky|
 |Microsoft. datashare/Accounts|ShareSubscriptions|Sdílet předplatná|
 |Microsoft. datashare/Accounts|SentShareSnapshots|Odeslané sdílené snímky|
 |Microsoft. datashare/Accounts|ReceivedShareSnapshots|Přijaté snímky sdílené složky|
@@ -187,7 +187,7 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto
 |Microsoft. DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
 |Microsoft. EnterpriseKnowledgeGraph/Services|AuditEvent|Protokol AuditEvent|
 |Microsoft. EnterpriseKnowledgeGraph/Services|Dataproblém|Protokol dataissues|
-|Microsoft. EnterpriseKnowledgeGraph/Services|Požadavky|Konfigurační protokol|
+|Microsoft. EnterpriseKnowledgeGraph/Services|Žádosti|Konfigurační protokol|
 |Microsoft.EventHub/namespaces|ArchiveLogs|Protokoly archivu|
 |Microsoft.EventHub/namespaces|OperationalLogs|Provozní protokoly|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Protokoly automatického škálování|
@@ -195,7 +195,7 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto
 |Microsoft.EventHub/namespaces|KafkaUserErrorLogs|Protokoly chyb uživatele Kafka|
 |Microsoft.EventHub/namespaces|EventHubVNetConnectionEvent|Protokoly připojení k virtuální síti nebo filtrování IP adres|
 |Microsoft.EventHub/namespaces|CustomerManagedKeyUserLogs|Protokoly zákaznických klíčů spravovaných zákazníky|
-|Microsoft. HealthcareApis/Services|AuditLogs|Protokoly auditování|
+|Microsoft. HealthcareApis/Services|AuditLogs|Protokoly auditu|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Vyhodnocení automatického škálování|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Akce škálování automatického škálování|
 |Microsoft. IoTSpaces/Graph|Trasování|Trasování|
@@ -204,7 +204,7 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto
 |Microsoft. IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
 |Microsoft. IoTSpaces/Graph|Příchozí přenos dat|Příchozí přenos dat|
 |Microsoft. IoTSpaces/Graph|Výchozí přenos dat|Výchozí přenos dat|
-|Microsoft.KeyVault/vaults|AuditEvent|Protokoly auditování|
+|Microsoft.KeyVault/vaults|AuditEvent|Protokoly auditu|
 |Microsoft.Kusto/Clusters|SucceededIngestion|Úspěšné operace ingestování|
 |Microsoft.Kusto/Clusters|FailedIngestion|Neúspěšné operace ingestování|
 |Microsoft.Logic/workflows|Modul|Diagnostické události modulu runtime pracovního postupu|
@@ -270,7 +270,7 @@ Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto
 |Microsoft.Sql/servers/databases|Časové limity|Časové limity|
 |Microsoft.Sql/servers/databases|Čeká|Čeká|
 |Microsoft.Sql/servers/databases|Zablokování|Zablokování|
-|Microsoft.Sql/servers/databases|Auditování|Protokoly auditování|
+|Microsoft.Sql/servers/databases|Auditování|Protokoly auditu|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
 |Microsoft.Sql/servers/databases|DmsWorkers|Pracovní procesy DMS|
 |Microsoft.Sql/servers/databases|ExecRequests|Požadavky exec|

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191424"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386598"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
@@ -319,7 +319,7 @@ Definice prostředků vaší aplikace logiky začíná objektem `properties`, kt
 
 Tady jsou atributy, které jsou specifické pro vaši definici prostředků aplikace logiky:
 
-| Atribut | Požaduje se | Typ | Popis |
+| Atribut | Požadováno | Typ | Popis |
 |-----------|----------|------|-------------|
 | `state` | Ano | Řetězec | Stav vaší aplikace logiky při nasazení, kde `Enabled` znamená, že vaše aplikace logiky je živá a `Disabled` znamená, že vaše aplikace logiky je neaktivní. Pokud například nejste připraveni k tomu, aby aplikace logiky byla v provozu, ale chcete nasadit koncept verze, můžete použít možnost `Disabled`. |
 | `integrationAccount` | Ne | Objekt | Pokud vaše aplikace logiky používá účet pro integraci, který ukládá artefakty pro scénáře B2B (Business-to-Business), tento objekt zahrnuje atribut `id`, který určuje ID pro účet pro integraci. |

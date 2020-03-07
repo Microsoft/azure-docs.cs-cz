@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174655"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376484"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna rolí prostředků pro balíček přístupu v Azure AD – Správa nároků
 
@@ -95,7 +95,7 @@ Další informace najdete v tématu věnovaném [porovnání skupin](https://doc
     | Zabezpečení | Používá se pro udělení přístupu k prostředkům. |
     | Distribuce | Slouží k odesílání oznámení skupině lidí. |
     | O365 | Skupina Office 365, která není povolená pro týmy Používá se pro spolupráci mezi uživateli i mimo vaši společnost. |
-    | Hodnotící | Skupina Office 365, která je povolená pro týmy. Používá se pro spolupráci mezi uživateli i mimo vaši společnost. |
+    | Tým | Skupina Office 365, která je povolená pro týmy. Používá se pro spolupráci mezi uživateli i mimo vaši společnost. |
 
 1. V seznamu **role** vyberte možnost **vlastník** nebo **člen**.
 
@@ -103,7 +103,7 @@ Další informace najdete v tématu věnovaném [porovnání skupin](https://doc
 
     ![Přístup k balíčku – přidání role prostředku pro skupinu nebo tým](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. Klikněte na tlačítko **Přidat**.
+1. Klikněte na **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku přístupu se při přidání automaticky stanou členy této skupiny nebo týmu.
 
@@ -134,7 +134,7 @@ Zde jsou některé předpoklady při výběru aplikace:
 
     ![Přístup k balíčku – přidání role prostředku pro aplikaci](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. Klikněte na tlačítko **Přidat**.
+1. Klikněte na **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku pro přístup budou při přidání automaticky mít k této aplikaci přístup.
 
@@ -154,7 +154,7 @@ Azure AD může automaticky přiřadit uživatele k webu SharePointu Online nebo
 
     ![Přístup k balíčku – přidání role prostředku pro web SharePointu Online](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. Klikněte na tlačítko **Přidat**.
+1. Klikněte na **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku pro přístup budou při přidání automaticky mít přístup k tomuto webu SharePointu Online.
 
@@ -178,7 +178,7 @@ Azure AD může automaticky přiřadit uživatele k webu SharePointu Online nebo
 
 V rámci správy nároků služba Azure AD zpracuje hromadnou změnu přiřazení a prostředků v balíčcích přístupu několikrát denně. Takže pokud provedete přiřazení nebo změníte role prostředků vašeho balíčku pro přístup, může trvat až 24 hodin, než se tato změna provede v Azure AD, a navíc dobu potřebnou k rozšíření těchto změn na jiné online služby Microsoftu nebo připojené aplikace SaaS. pracují. Pokud vaše změna ovlivní jenom pár objektů, může tato změna trvat jenom pár minut, než se použije ve službě Azure AD, potom ostatní součásti Azure AD tuto změnu odhalí a aktualizují aplikace SaaS. Pokud vaše změna ovlivní tisíce objektů, bude změna trvat déle. Například pokud máte balíček pro přístup se dvěma aplikacemi a 100 přiřazení uživatele a rozhodnete se přidat roli webu služby SharePoint do balíčku pro přístup, může dojít ke zpoždění, dokud všichni uživatelé nebudou součástí této role webu služby SharePoint. Průběh můžete sledovat pomocí protokolu auditu Azure AD, protokolu zřizování Azure AD a protokolů auditu webu služby SharePoint.
 
-Když odeberete člena týmu, odstraní se i ze skupiny Office 365. Odebrání funkcí chatu týmu může být zpožděné. Další informace najdete v tématu [členství ve skupině](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+Když odeberete člena týmu, odebere se i ze skupiny Office 365. Odebrání z týmového chatu může trvat o něco déle. Další informace najdete v tématu [členství ve skupině](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
 ## <a name="next-steps"></a>Další kroky
 

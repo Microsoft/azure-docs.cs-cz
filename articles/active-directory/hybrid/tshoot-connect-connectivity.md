@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Řešení potíží s Azure AD problémy s připojením | Dokumentace Microsoftu'
-description: Vysvětluje, jak řešit problémy s připojením u služby Azure AD Connect.
+title: 'Azure AD Connect: řešení potíží s připojením služby Azure AD | Microsoft Docs'
+description: Vysvětluje, jak řešit potíže s připojením pomocí Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,99 +17,99 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572778"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376062"
 ---
-# <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením Azure AD
-Tento článek vysvětluje, jak funguje připojení mezi Azure AD Connect a službou Azure AD a jak řešit problémy s připojením. Tyto problémy jsou pravděpodobně se zobrazí v prostředí s proxy serverem.
+# <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením služby Azure AD
+Tento článek vysvětluje, jak funguje konektivita mezi Azure AD Connect a Azure AD a jak řešit problémy s připojením. Tyto problémy se pravděpodobně zobrazují v prostředí s proxy server.
 
-## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>Řešení potíží s připojením v Průvodci instalací
-Azure AD Connect používá moderní ověřování (používat knihovnu ADAL) pro ověřování. Průvodce instalací a správný synchronizační modul vyžaduje machine.config správně nakonfigurované, protože tyto dvě aplikace .NET.
+## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>Poradce při potížích s připojením v Průvodci instalací
+Azure AD Connect používá moderní ověřování (pomocí knihovny ADAL) pro ověřování. Průvodce instalací a modul pro synchronizaci musí správně nakonfigurovat soubor Machine. config, protože tyto dva jsou aplikace .NET.
 
-V tomto článku vám ukážeme, jak společnost Fabrikam připojí k Azure AD prostřednictvím jeho proxy. Proxy server je s názvem fabrikamproxy a používá port 8080.
+V tomto článku se dozvíte, jak se Fabrikam připojuje k Azure AD prostřednictvím jeho proxy serveru. Proxy server má název fabrikamproxy a používá port 8080.
 
-Nejprve je třeba Ujistěte se, že [ **machine.config** ](how-to-connect-install-prerequisites.md#connectivity) je správně nakonfigurovaný.  
+Nejdřív je potřeba zajistit, aby byl soubor [**Machine. config**](how-to-connect-install-prerequisites.md#connectivity) správně nakonfigurovaný.  
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
-> V některých jiných společností než Microsoft blogy je uvedeno, že by měly být provedeny změny miiserver.exe.config místo toho. Tento soubor je však přepsány při každé upgradu, tak i že pokud funguje během počáteční instalace, systém přestane fungovat v prvním upgradu. Z tohoto důvodu doporučujeme místo toho aktualizovat soubor machine.config.
+> V některých blogůch od jiných společností než společnosti Microsoft je uvedeno, že místo toho by se měly provést změny v souboru MIIServer. exe. config. Tento soubor se ale při každém upgradu přepíše, takže když během počáteční instalace funguje, systém přestane při prvním upgradu fungovat. Z tohoto důvodu doporučujeme místo toho aktualizovat soubor Machine. config.
 >
 >
 
-Proxy server musí mít také požadované adresy URL otevřít. Oficiálního seznamu jsou uvedené v [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Proxy server musí mít také otevřené požadované adresy URL. Oficiální seznam je popsaný v části [adresy URL a rozsahy IP adres Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
-Z těchto adres URL v následující tabulce je absolutní minimum, bude moct připojit ke službě Azure AD vůbec. Tento seznam neobsahuje žádné volitelné funkce, jako je například zpětný zápis hesla nebo Azure AD Connect Health. Je tady popsali, při řešení potíží pro počáteční konfiguraci.
+Z těchto adres URL je v následující tabulce absolutní minimum, které se může připojit ke službě Azure AD. Tento seznam neobsahuje žádné volitelné funkce, jako je třeba zpětný zápis hesla nebo Azure AD Connect Health. Najdete tady informace, které vám pomůžou při řešení potíží s počáteční konfigurací.
 
 | zprostředkovatele identity | Port | Popis |
 | --- | --- | --- |
-| mscrl.microsoft.com |HTTP/80 |Používá ke stahování seznamů CRL. |
-| \*.verisign.com |HTTP/80 |Používá ke stahování seznamů CRL. |
-| \*. entrust.net |HTTP/80 |Používá ke stahování seznamů CRL pro vícefaktorové ověřování. |
-| \*. windows.net |HTTPS/443 |Používá k přihlášení do služby Azure AD. |
+| mscrl.microsoft.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
+| \*. verisign.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
+| \*. entrust.net |HTTP/80 |Slouží ke stažení seznamů CRL pro MFA. |
+| \*.windows.net |HTTPS/443 |Používá se pro přihlášení ke službě Azure AD. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |Používá se pro MFA. |
-| \*.microsoftonline.com |HTTPS/443 |Slouží ke konfiguraci adresáře služby Azure AD a import/export dat. |
+| \*.microsoftonline.com |HTTPS/443 |Slouží ke konfiguraci adresáře služby Azure AD a importu/exportu dat. |
 
 ## <a name="errors-in-the-wizard"></a>Chyby v Průvodci
-Průvodce instalací je pomocí dvou různých kontextech zabezpečení. Na stránce **připojit ke službě Azure AD**, používá aktuálně přihlášeného uživatele. Na stránce **konfigurovat**, se mění na [účet, který spouští službu pro synchronizační modul](reference-connect-accounts-permissions.md#adsync-service-account). Pokud dochází k nějakému problému, zobrazí se pravděpodobně již **připojit ke službě Azure AD** stránku průvodce, protože je globální konfiguraci proxy serveru.
+Průvodce instalací používá dva různé kontexty zabezpečení. Na stránce **připojit k Azure AD**se používá aktuálně přihlášený uživatel. Na stránce **Konfigurace**se změní na účet, na [kterém je spuštěna služba pro synchronizační modul](reference-connect-accounts-permissions.md#adsync-service-account). Pokud dojde k nějakému problému, zdá se, že už je na stránce **připojit ke službě Azure AD** v průvodci, protože konfigurace proxy serveru je globální.
 
-Následující problémy se nejběžnějších chyb, se kterými v Průvodci instalací.
+Následující problémy jsou nejběžnější chyby, se kterými se setkáte v Průvodci instalací nástroje.
 
-### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Průvodce instalací nebyla nakonfigurována správně
-Tato chyba se zobrazí, když Průvodce nemá přístup proxy serveru.  
+### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Průvodce instalací nebyl správně nakonfigurován.
+Tato chyba se zobrazí, pokud se samotný průvodce nemůže připojit k proxy serveru.  
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
-* Pokud se zobrazí tato chyba, zkontrolujte, [machine.config](how-to-connect-install-prerequisites.md#connectivity) není správně nakonfigurovaná.
-* Pokud, která vypadá správně, postupujte podle kroků v [ověřte připojení k proxy serveru](#verify-proxy-connectivity) zobrazíte, pokud se problém nachází mimo Průvodce také.
+* Pokud se zobrazí tato chyba, zkontrolujte, jestli je soubor [Machine. config](how-to-connect-install-prerequisites.md#connectivity) správně nakonfigurovaný.
+* Pokud to vypadá správně, postupujte podle kroků v tématu [ověření připojení proxy serveru](#verify-proxy-connectivity) a zjistěte, jestli se problém vyskytuje i mimo průvodce.
 
-### <a name="a-microsoft-account-is-used"></a>Použít účet Microsoft
-Pokud používáte **účtu Microsoft** spíše než **školní nebo organizace** účtu, zobrazí obecná chyba.  
-![Microsoft Account slouží](./media/tshoot-connect-connectivity/unknownerror.png)
+### <a name="a-microsoft-account-is-used"></a>Používá se účet Microsoft.
+Pokud místo **školy nebo účtu organizace** použijete **účet Microsoft** , zobrazí se obecná chyba.  
+![se používá účet Microsoft](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>Koncový bod MFA není dostupný.
-Tato chyba se zobrazí, pokud koncový bod **https://secure.aadcdn.microsoftonline-p.com** není dostupný a globálního správce je povolená služba MFA.  
+Tato chyba se zobrazí, pokud není dostupný koncový bod **https://secure.aadcdn.microsoftonline-p.com** a váš globální správce má povolený MFA.  
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
-* Pokud se zobrazí tato chyba, ověřte, že koncový bod **secure.aadcdn.microsoftonline p.com** byla přidána k proxy serveru.
+* Pokud se zobrazí tato chyba, ověřte, že se do proxy serveru přidal koncový bod **Secure.aadcdn.microsoftonline-p.com** .
 
 ### <a name="the-password-cannot-be-verified"></a>Heslo nelze ověřit.
-Pokud Průvodce instalací byl úspěšný při připojování ke službě Azure AD, ale heslo samotné nelze ověřit, že se zobrazí tato chyba:  
-![Chybné heslo.](./media/tshoot-connect-connectivity/badpassword.png)
+Pokud se Průvodce instalací úspěšně připojí k Azure AD, ale samotné heslo se nedá ověřit, zobrazí se tato chyba:  
+![Chybné heslo](./media/tshoot-connect-connectivity/badpassword.png)
 
-* Dočasné heslo je heslo a musí být změněno? Je ve skutečnosti správné heslo? Zkuste se přihlásit k https://login.microsoftonline.com (na jiném počítači než na serveru služby Azure AD Connect) a ověřte účet je použitelná.
+* Je heslo dočasné heslo a musí se změnit? Je vlastně správné heslo? Zkuste se přihlásit k https://login.microsoftonline.com (na jiném počítači, než je server Azure AD Connect), a ověřte, že je účet použitelný.
 
-### <a name="verify-proxy-connectivity"></a>Ověřte připojení k proxy serveru
-Pokud chcete ověřit, zda má server Azure AD Connect skutečné připojení k proxy serveru a Internet, pomocí Powershellu zobrazíte, pokud proxy server povoluje webové požadavky nebo ne. V řádku prostředí PowerShell, spusťte `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`. (Technicky první volání https://login.microsoftonline.com a tento identifikátor URI funguje stejně, ale jiný identifikátor URI je rychleji reagovat.)
+### <a name="verify-proxy-connectivity"></a>Ověření připojení proxy
+Pokud chcete ověřit, jestli má server Azure AD Connect skutečné připojení k proxy serveru a Internetu, použijte k tomu, abyste viděli, jestli proxy povoluje webové požadavky, nebo ne. V příkazovém řádku PowerShellu spusťte `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`. (Technicky první volání je https://login.microsoftonline.com a tento identifikátor URI funguje stejně, ale druhý identifikátor URI je rychlejší, aby odpovídal.)
 
-Prostředí PowerShell používá ke kontaktování proxy konfiguraci v souboru machine.config. Nastavení služby winhttp/netsh by neměla mít vliv těchto rutin.
+K kontaktování proxy serveru používá PowerShell konfiguraci v souboru Machine. config. Nastavení v WinHTTP/netsh by nemělo mít vliv na tyto rutiny.
 
-Pokud se server proxy je správně nakonfigurovaná, měli byste získat stav úspěšného dokončení: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+Pokud je proxy server správně nakonfigurovaný, měli byste získat stav úspěch: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-Pokud se zobrazí **nelze se připojit ke vzdálenému serveru**, pak se pokouší PowerShell přímé volání bez použití proxy serveru nebo není správně nakonfigurovaný DNS. Ujistěte se, **machine.config** je správně nakonfigurován soubor.
+Pokud se vám **nedaří připojit ke vzdálenému serveru**, PowerShell se pokusí provést přímé volání bez použití proxy serveru nebo DNS není správně nakonfigurovaný. Ujistěte se, že je soubor **Machine. config** správně nakonfigurovaný.
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
-Pokud proxy server není správně nakonfigurovaná, dojde k chybě: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
+Pokud proxy server není správně nakonfigurovaný, zobrazí se chyba: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
 ![proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
-| Chyba | Text chyby | Komentář |
+| Chyba | Text chyby | Poznámka |
 | --- | --- | --- |
-| 403 |Zakázáno |Proxy server nebyl otevřen pro požadovanou adresu URL. Návštěvě konfiguraci proxy serveru a ujistěte se, [adresy URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) nebyla otevřena. |
-| 407 |Vyžadováno ověřování proxy serveru |U přihlášení potřeba proxy server, ale žádný není zadaný. Pokud váš proxy server vyžaduje ověření, ujistěte se, že nemá toto nastavení nakonfigurované v souboru machine.config. Ujistěte se také, že používáte doménové účty pro uživatele, který spustil průvodce a pro účet služby. |
+| 403 |Forbidden |Proxy server nebyl otevřen pro požadovanou adresu URL. Znovu navštivte konfiguraci proxy serveru a ujistěte se, že jsou [adresy URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) otevřené. |
+| 407 |Vyžaduje se ověřování proxy. |Proxy server vyžadoval přihlášení a žádné se nezadaly. Pokud vaše proxy server vyžaduje ověření, ujistěte se, že je toto nastavení nakonfigurované v souboru Machine. config. Také se ujistěte, že používáte doménové účty pro uživatele, který spouští Průvodce, a pro účet služby. |
 
-### <a name="proxy-idle-timeout-setting"></a>Nastavení časového limitu nečinnosti proxy
-Pokud Azure AD Connect odešle žádost o export do služby Azure AD, Azure AD může trvat až 5 minut, než na zpracování žádosti. před generováním odpověď. K tomu může dojít, zejména v případě, že existuje mnoho objektů skupiny s velké členství ve skupinách součástí stejného žádost o export. Ujistěte se, že je časový limit nečinnosti proxy server nakonfigurovaný tak, aby byl větší než 5 minut. V opačném případě může být dodržen přerušovaným připojením problém s Azure AD na serveru služby Azure AD Connect.
+### <a name="proxy-idle-timeout-setting"></a>Nastavení časového limitu nečinnosti proxy serveru
+Když Azure AD Connect odešle požadavek na export do Azure AD, může Azure AD trvat až 5 minut, než se žádost zpracuje, než se vygeneruje odpověď. K tomu může dojít, pokud je v jedné žádosti o export mnoho objektů skupiny s velkými členství ve skupině. Zajistěte, aby byl časový limit nečinnosti proxy serveru delší než 5 minut. V opačném případě se může na Azure AD Connect serveru pozorovat přerušované problémy s připojením k Azure AD.
 
-## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Vzor komunikace mezi službami Azure AD Connect a Azure AD
-Pokud jste postupovali podle těchto předchozích kroků a pořád nemůžete připojit, v tomto okamžiku může zahájit, prohlížení síťové protokoly nástroje. Tato část je dokumentace vzoru normálního a úspěšné připojení. To je také výpis běžné herrings red, které můžete ignorovat při čtení síťové protokoly.
+## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Způsob komunikace mezi Azure AD Connect a Azure AD
+Pokud jste postupovali podle všech předchozích kroků a stále se nebudete moct připojit, můžete v tomto okamžiku začít hledat v protokolech sítě. Tato část dokumentuje normální a úspěšný vzor připojení. Také je uveden seznam běžných červených sleďů, které lze ignorovat při čtení síťových protokolů.
 
-* Jsou volání https://dc.services.visualstudio.com. Není nutné mít tuto adresu URL, otevřete v proxy server pro instalace proběhla úspěšně a tato volání můžete ignorovat.
-* Uvidíte, že překlad názvů dns obsahuje skutečné hostitele v nsatc.net místo názvu DNS a jiných oborech názvů není pod microsoftonline.com. Ale na server skutečné názvy nejsou žádné žádosti webové služby a není nutné přidat tyto adresy URL do proxy serveru.
-* Adminwebservice koncových bodů a provisioningapi jsou koncové body pro zjišťování a použije k zjištění skutečný koncový bod, který chcete použít. Tyto koncové body se liší v závislosti na vaší oblasti.
+* Existují volání https://dc.services.visualstudio.com. Není nutné, aby byla tato adresa URL otevřená v proxy serveru, aby instalace proběhla úspěšně, a tato volání je možné ignorovat.
+* Vidíte, že překlad DNS uvádí seznam aktuálních hostitelů, které mají být v oboru názvů DNS nsatc.net a jiné obory názvů, které nejsou v microsoftonline.com. Neexistují však žádné žádosti o webovou službu na skutečné názvy serverů a nemusíte tyto adresy URL přidávat do proxy serveru.
+* Koncové body adminwebservice a provisioningapi jsou koncové body zjišťování a slouží k vyhledání skutečného koncového bodu, který má být použit. Tyto koncové body se liší v závislosti na vaší oblasti.
 
-### <a name="reference-proxy-logs"></a>Odkaz na protokoly proxy
-Tady je výpis z skutečný proxy protokolu a stránce Průvodce instalací z kde byla získána (duplicitní položky na stejný koncový bod jsme odebrali). V této části slouží jako odkaz pro vlastní proxy server a síťových protokolů. Skutečné koncové body se může lišit ve vašem prostředí (zejména těchto adres URL v *Kurzíva*).
+### <a name="reference-proxy-logs"></a>Referenční protokoly proxy
+Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instalací z místa, kde byla provedena (duplicitní položky byly odstraněny). Tato část se dá použít jako reference pro vlastní protokoly proxy a sítě. Skutečné koncové body se můžou ve vašem prostředí lišit (zejména tyto adresy URL jsou *kurzívou*).
 
 **Připojení k Azure AD**
 
@@ -117,26 +117,26 @@ Tady je výpis z skutečný proxy protokolu a stránce Průvodce instalací z kd
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://*bba800 – kotva*. microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect://*bwsc02 – Relay*. microsoftonline.com:443 |
 
 **Konfigurace**
 
 | Čas | zprostředkovatele identity |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://*bba800 – kotva*. microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba900 – kotva*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba800 – kotva*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect://*bwsc02 – Relay*. microsoftonline.com:443 |
 
 **Počáteční synchronizace**
 
@@ -144,29 +144,29 @@ Tady je výpis z skutečný proxy protokolu a stránce Průvodce instalací z kd
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba900 – kotva*. microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba800 – kotva*. microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Chyby ověřování
-Tento oddíl řeší chyby, které mohou být vráceny z knihovny ADAL (knihovny pro ověřování použít Azure AD Connect) a prostředí PowerShell. Chyba je vysvětleno by mělo pomoci vám v dalších krocích.
+V této části jsou popsány chyby, které lze vrátit z knihovny ADAL (knihovna ověřování používaná Azure AD Connect) a prostředí PowerShell. Vysvětlení chyby by vám měly porozumět dalším krokům.
 
-### <a name="invalid-grant"></a>Neplatný udělení
-Neplatné uživatelské jméno nebo heslo. Další informace najdete v tématu [nelze ověřit heslo](#the-password-cannot-be-verified).
+### <a name="invalid-grant"></a>Neplatný grant
+Neplatné uživatelské jméno nebo heslo. Další informace naleznete v tématu [nelze ověřit heslo](#the-password-cannot-be-verified).
 
-### <a name="unknown-user-type"></a>Typ Neznámý uživatel
-Adresáře služby Azure AD nemůže najít nebo vyřešení. Možná se pokusíte přihlásit s uživatelským jménem v neověřené domény?
+### <a name="unknown-user-type"></a>Neznámý typ uživatele
+Váš adresář služby Azure AD nejde najít nebo vyřešit. Možná se pokusíte přihlásit pomocí uživatelského jména v neověřené doméně?
 
-### <a name="user-realm-discovery-failed"></a>Zjišťování sféry uživatele se nezdařilo
-Problémy s konfigurací sítě nebo proxy serveru. V síti je nedostupné. Zobrazit [řešit problémy s připojením v Průvodci instalací](#troubleshoot-connectivity-issues-in-the-installation-wizard).
+### <a name="user-realm-discovery-failed"></a>Zjišťování sféry uživatele selhalo.
+Problémy s konfigurací sítě nebo proxy serveru. Síť není dostupná. Informace najdete [v tématu Poradce při potížích s připojením v Průvodci instalací](#troubleshoot-connectivity-issues-in-the-installation-wizard)nástroje.
 
-### <a name="user-password-expired"></a>Vypršela platnost hesla uživatele
-Vypršela platnost vašich přihlašovacích údajů. Změňte si heslo.
+### <a name="user-password-expired"></a>Platnost hesla uživatele vypršela.
+Vypršela platnost vašich přihlašovacích údajů. Změňte heslo.
 
-### <a name="authorization-failure"></a>Selhání autorizace
+### <a name="authorization-failure"></a>Chyba autorizace
 Nepovedlo se autorizovat uživatele k provedení akce ve službě Azure AD.
 
-### <a name="authentication-canceled"></a>Ověřování bylo zrušeno
-Výzva ověřování službou Multi-Factor Authentication (MFA) byla zrušena.
+### <a name="authentication-canceled"></a>Ověřování zrušeno
+Výzva k ověření MFA (Multi-Factor Authentication) byla zrušena.
 
 <div id="connect-msolservice-failed">
 <!--
@@ -175,8 +175,8 @@ Výzva ověřování službou Multi-Factor Authentication (MFA) byla zrušena.
 -->
 </div>
 
-### <a name="connect-to-ms-online-failed"></a>Připojte se k MS Online se nezdařilo
-Ověření bylo úspěšné, ale má problém s ověřováním Azure AD PowerShell.
+### <a name="connect-to-ms-online-failed"></a>Nepovedlo se připojit k MS online
+Ověřování bylo úspěšné, ale v Azure AD PowerShellu je problém s ověřením.
 
 <div id="get-msoluserrole-failed">
 <!--
@@ -185,8 +185,8 @@ Ověření bylo úspěšné, ale má problém s ověřováním Azure AD PowerShe
 -->
 </div>
 
-### <a name="azure-ad-global-admin-role-needed"></a>Azure AD roli globálního správce potřeby
-Uživatel byl úspěšně ověřen. Uživatel však není přiřazenou roli globálního správce. Toto je [jak můžete přiřadit roli globálního správce](../users-groups-roles/directory-assign-admin-roles.md) uživateli. 
+### <a name="azure-ad-global-admin-role-needed"></a>Je potřeba role globálního správce služby Azure AD.
+Uživatel byl úspěšně ověřen. Uživatel ale nemá přiřazenou roli globálního správce. Tímto [způsobem můžete uživateli přiřadit roli globálního správce](../users-groups-roles/directory-assign-admin-roles.md) . 
 
 <div id="privileged-identity-management">
 <!--
@@ -196,7 +196,7 @@ Uživatel byl úspěšně ověřen. Uživatel však není přiřazenou roli glob
 </div>
 
 ### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management povoleno
-Ověření bylo úspěšné. Privileged identity management. je povolen a momentálně nejste globální správce. Další informace najdete v tématu [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
+Ověřování bylo úspěšné. Byla povolena Privileged Identity Management a momentálně nejste globální správce. Další informace najdete v tématu [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
 <div id="get-msolcompanyinformation-failed">
 <!--
@@ -205,8 +205,8 @@ Ověření bylo úspěšné. Privileged identity management. je povolen a moment
 -->
 </div>
 
-### <a name="company-information-unavailable"></a>Není k dispozici informace o společnosti
-Ověření bylo úspěšné. Nelze načíst informace o společnosti ze služby Azure AD.
+### <a name="company-information-unavailable"></a>Informace o společnosti nejsou k dispozici
+Ověřování bylo úspěšné. Z Azure AD se nepovedlo načíst informace o společnosti.
 
 <div id="get-msoldomain-failed">
 <!--
@@ -215,25 +215,25 @@ Ověření bylo úspěšné. Nelze načíst informace o společnosti ze služby 
 -->
 </div>
 
-### <a name="domain-information-unavailable"></a>Není k dispozici informace o doméně
-Ověření bylo úspěšné. Nelze načíst informace o doméně z Azure AD.
+### <a name="domain-information-unavailable"></a>Informace o doméně nejsou k dispozici.
+Ověřování bylo úspěšné. Z Azure AD se nepovedlo načíst informace o doméně.
 
-### <a name="unspecified-authentication-failure"></a>Neurčené ověřování se nezdařilo
-Zobrazuje se jako Neočekávaná chyba v Průvodci instalací. Může dojít, pokud se pokusíte použít **Account Microsoft** spíše než **školní nebo organizaci účet**.
+### <a name="unspecified-authentication-failure"></a>Neurčená chyba ověřování
+Zobrazuje se v Průvodci instalací jako Neočekávaná chyba. K tomu může dojít, pokud se pokusíte použít **účet Microsoft** místo **školy nebo účtu organizace**.
 
-## <a name="troubleshooting-steps-for-previous-releases"></a>Řešení potíží s kroky pro dřívější verze.
-Spouští se s číslem sestavení 1.1.105.0 (všeobecně dostupné. února 2016), Pomocníka pro přihlášení skončil s verzemi. V této části a konfiguraci už nemá být povinné, ale se ukládají jako odkaz.
+## <a name="troubleshooting-steps-for-previous-releases"></a>Postup řešení potíží pro předchozí verze.
+V případě verzí začínajících číslem buildu 1.1.105.0 (vydáno 2016) bylo vyřazení Pomocník pro přihlášení. Tato část a tato konfigurace by se už neměla vyžadovat, ale je zachovaná jako referenční.
 
-Jednotné přihlašování v Pomocníka s nastavením pro práci musí být nakonfigurována winhttp. Tato konfigurace se provádí pomocí [ **netsh**](how-to-connect-install-prerequisites.md#connectivity).  
+Aby pomocník jednotného přihlašování fungoval, musí být nakonfigurováno WinHTTP. Tuto konfiguraci můžete provést pomocí [**příkazu netsh**](how-to-connect-install-prerequisites.md#connectivity).  
 ![netsh](./media/tshoot-connect-connectivity/netsh.png)
 
-### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Pomocník pro přihlášení není správně nakonfigurován.
-Tato chyba se zobrazí, když Pomocníka pro přihlášení nemá přístup proxy serveru nebo proxy server nepovoluje žádná žádost.
-![nonetsh](./media/tshoot-connect-connectivity/nonetsh.png)
+### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Pomocník pro přihlášení není správně nakonfigurovaný.
+Tato chyba se zobrazí, když se Pomocník pro přihlášení nemůže připojit k proxy serveru nebo proxy server nepovoluje požadavek.
+![příkazového řádku](./media/tshoot-connect-connectivity/nonetsh.png)
 
-* Pokud se zobrazí tato chyba, podívejte se na konfiguraci proxy serveru v [netsh](how-to-connect-install-prerequisites.md#connectivity) a ověřte jeho správnost.
+* Pokud se zobrazí tato chyba, podívejte se na konfiguraci proxy serveru v [netsh](how-to-connect-install-prerequisites.md#connectivity) a ověřte, jestli je správná.
   ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
-* Pokud, která vypadá správně, postupujte podle kroků v [ověřte připojení k proxy serveru](#verify-proxy-connectivity) zobrazíte, pokud se problém nachází mimo Průvodce také.
+* Pokud to vypadá správně, postupujte podle kroků v tématu [ověření připojení proxy serveru](#verify-proxy-connectivity) a zjistěte, jestli se problém vyskytuje i mimo průvodce.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
