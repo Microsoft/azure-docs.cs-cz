@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186234"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671930"
 ---
 # <a name="building-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
@@ -70,7 +70,7 @@ Tento ovládací prvek slouží k vyloučení zařízení, která jsou připojen
 
 Část řízení přístupu v zásadách podmíněného přístupu řídí způsob, jakým se zásady vynutily.
 
-### <a name="grant"></a>Udělit
+### <a name="grant"></a>Oprávnění
 
 [Udělení oprávnění](concept-conditional-access-grant.md) správcům poskytuje prostředky pro vynucení zásad, kde můžou zablokovat nebo udělit přístup.
 
@@ -131,6 +131,6 @@ V článku [společné zásady podmíněného přístupu](concept-conditional-ac
 
 [Plánování cloudového nasazení Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 
-[Správa dodržování předpisů zařízením pomocí Intune](https://docs.microsoft.com/intune/device-compliance-get-started)
+[Správa dodržování předpisů zařízením pomocí Intune](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security a podmíněný přístup](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security a podmíněný přístup](/cloud-app-security/proxy-intro-aad)

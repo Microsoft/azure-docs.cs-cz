@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 5fd38a781a58da530ad805bbeee352858eb33b41
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382049"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893109"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell
 
@@ -20,7 +20,7 @@ Modul Azure PowerShell slouží k vytváření a správě prostředků Azure pom
 
 Ukázková úloha načte streamovaná data z IoT Hubho zařízení. Vstupní data se generují simulátoru malinu PI online. V dalším kroku úloha Stream Analytics transformuje data pomocí dotazovacího jazyka Stream Analytics, aby vyfiltroval zprávy s teplotou větší než 27 °. Nakonec zapíše výsledné výstupní události do souboru v úložišti objektů BLOB.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -28,7 +28,7 @@ Ukázková úloha načte streamovaná data z IoT Hubho zařízení. Vstupní dat
 
 * Tento rychlý Start vyžaduje modul Azure PowerShell. Pomocí příkazu `Get-Module -ListAvailable Az` vyhledejte verzi, která je nainstalovaná na místním počítači. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-* Některé akce IoT Hub nejsou podporované Azure PowerShell a musí se dokončit pomocí Azure CLI verze 2.0.24 nebo novějšího a rozšíření IoT pro Azure CLI. [Nainstalujte rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a použijte `az extension add --name azure-cli-iot-ext` k instalaci rozšíření IoT.
+* Některé akce IoT Hub nejsou podporované Azure PowerShell a musí se dokončit pomocí Azure CLI verze 2.0.70 nebo novějšího a rozšíření IoT pro Azure CLI. [Nainstalujte rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a použijte `az extension add --name azure-iot` k instalaci rozšíření IoT.
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -50,7 +50,7 @@ Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
 ```
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 

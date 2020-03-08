@@ -3,12 +3,12 @@ title: Zálohování farmy služby SharePoint do Azure pomocí MABS
 description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data služby SharePoint. Tento článek poskytuje informace o konfiguraci farmy služby SharePoint, aby bylo možné ukládat požadovaná data do Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: ba9d79270da839cf99574322d68ccdba27fe2d93
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584247"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673138"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Zálohování farmy služby SharePoint do Azure pomocí MABS
 
@@ -63,7 +63,7 @@ Než budete moct použít MABS k ochraně SharePointu, musíte nakonfigurovat sl
 
 1. Na serveru WFE, na příkazovém řádku, přejít na [umístění instalace MABS] \Bin\
 2. Zadejte ConfigureSharePoint-EnableSharePointProtection.
-3. Zadejte přihlašovací údaje správce farmy. Tento účet by měl být členem místní skupiny správců na serveru WFE. Pokud není správcem farmy místní správce, udělte na serveru WFE tato oprávnění:
+3. Zadejte přihlašovací údaje správce farmy. Tento účet by měl být členem místní skupiny správců na serveru WFE. Pokud správce farmy není místní správce, udělte na serveru WFE tato oprávnění:
    * Udělte skupině WSS_Admin_WPG úplné řízení ke složce DPM (% Program Files%\Microsoft Azure Backup\DPM).
    * Udělte skupině WSS_Admin_WPG oprávnění ke čtení klíče registru DPM (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
@@ -127,7 +127,7 @@ Až nakonfigurujete MABS a farmu služby SharePoint, jak je vysvětleno dříve,
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS poskytuje do Azure maximálně dva denní zálohy z dostupného bodu zálohy na disku. Azure Backup může také řídit velikost šířky pásma sítě WAN, kterou lze použít pro zálohování v špičkách a mimo špičku pomocí [Azure Backup omezování sítě](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling).
+    > MABS poskytuje do Azure maximálně dva denní zálohy z dostupného bodu zálohy na disku. Azure Backup může také řídit velikost šířky pásma sítě WAN, kterou lze použít pro zálohování v špičkách a mimo špičku pomocí [Azure Backup omezování sítě](backup-windows-with-mars-agent.md#enable-network-throttling).
     >
     >
 11. V závislosti na plánu zálohování, který jste vybrali, vyberte na stránce **zadat zásady uchovávání online** zásady uchovávání informací pro denní, týdenní, měsíční a roční body zálohování.

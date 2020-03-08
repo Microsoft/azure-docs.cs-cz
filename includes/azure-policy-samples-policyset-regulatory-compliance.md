@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4f7357c79b9a6a57d7ede7342408d519d2278cbe
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f11fdf61bd9382cdf7956426871ce562e2a88038
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262713"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668570"
 ---
 |Název |Popis |Zásady |Verze |
 |---|---|---|---|
@@ -22,7 +22,7 @@ ms.locfileid: "78262713"
 |[\[Preview\]: audit PCI v 3.2.1:2018 řídí a nasazují specifická rozšíření virtuálních počítačů pro podporu požadavků na audit.](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/PCIv3_2_1_2018_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu PCI v 3.2.1:2018 Controls. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/pciv321-init. |39 |1.0.0 – Preview |
 |[\[Preview\]: Auditovat SWIFT CSP – CSCF v2020 ovládací prvky a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků auditu](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu CSCF v2020ových ovládacích prvků SWIFT CSP. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/SWIFT-blueprint. |71 |1.0.0 – Preview |
 |[\[Preview\]: Auditovat oficiální a NHS ovládací prvky pro Spojené království a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu OFICIÁLNÍch a NHSch ovládacích prvků pro Spojené království. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/ukofficial-blueprint a https://aka.ms/uknhs-blueprint |66 |2.0.0 – Preview |
-|[Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu doporučení srovnávacích testů zabezpečení Azure. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/azsecbm. |137 |1.0.0 – Preview |
+|[Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu doporučení srovnávacích testů zabezpečení Azure. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/azsecbm. |148 |2.0.0 – Preview |
 |[Auditovat FedRAMP vysokou kontrolu a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků FedRAMP H. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/fedramph-blueprint. |80 |2.0.0 – Preview |
 |[Auditovat HITRUST/HIPAA ovládací prvky a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu ovládacích prvků HITRUST/HIPAA. Další zásady budou přidány v nadcházejících verzích. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[Auditovat přidružování MPAA a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu bezpečnostních a řídicích mechanismů MPAA (Motion Picture Association). Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/mpaa-blueprint |45 |1.0.0 – Preview |

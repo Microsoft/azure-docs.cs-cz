@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511378"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898868"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Porozumění doménám událostí pro správu Event Grid témata
 
@@ -43,13 +43,13 @@ Poskytuje taky jeden koncový bod, na který můžete publikovat všechny událo
 
 V rámci domény získáte prostřednictvím řízení přístupu na základě role (RBAC) v Azure podrobné řízení autorizace a ověřování pro každé téma. Pomocí těchto rolí můžete omezit každého tenanta ve vaší aplikaci jenom na témata, ke kterým chcete udělit přístup.
 
-RBAC v doménách událostí funguje stejným způsobem jako [spravované řízení přístupu](security-authentication.md#management-access-control) ve zbývajících Event Grid a Azure. Pomocí RBAC vytvořte a vynuťte definice vlastních rolí v doménách událostí.
+RBAC v doménách událostí funguje stejným způsobem jako [spravované řízení přístupu](security-authorization.md) ve zbývajících Event Grid a Azure. Pomocí RBAC vytvořte a vynuťte definice vlastních rolí v doménách událostí.
 
 ### <a name="built-in-roles"></a>Předdefinované role
 
 Event Grid má dvě předdefinované definice rolí, které zjednodušují práci s doménami událostí. Tyto role jsou **EventGrid EventSubscription Přispěvatel (Preview)** a **EventGrid EventSubscription Reader (Preview)** . Tyto role přiřadíte uživatelům, kteří se potřebují přihlašovat k odběru témat v doméně událostí. Přiřadíte rozsah přiřazení role pouze k tématu, které uživatelé potřebují k přihlášení k odběru.
 
-Informace o těchto rolích najdete v tématu [předdefinované role pro Event Grid](security-authentication.md#built-in-roles).
+Informace o těchto rolích najdete v tématu [předdefinované role pro Event Grid](security-authorization.md#built-in-roles).
 
 ## <a name="subscribing-to-topics"></a>Přihlášení k odběru témat
 
@@ -101,7 +101,7 @@ Tady jsou limity a kvóty související s doménami událostí:
 
 - témata 100 000 na doménu události 
 - 100 domén událostí na předplatné Azure 
-- 500 odběrů událostí na téma v doméně událostí
+- 500 odběry událostí na téma v doméně události
 - 50 rozsahů doménových předplatných 
 - frekvence příjmu událostí 5 000 za sekundu (do domény)
 

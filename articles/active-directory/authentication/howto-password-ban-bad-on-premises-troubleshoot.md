@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s ochranou hesla – Azure Active Directory
-description: Vysvětlení běžných potíží s ochranou heslem Azure AD
+title: Řešení potíží s místní ochranou hesel služby Azure AD
+description: Přečtěte si, jak řešit potíže s ochranou hesel Azure AD pro místní Active Directory Domain Services prostředí.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377978"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671732"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží s ochranou hesel Azure AD
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Řešení potíží: místní ochrana heslem Azure AD
 
 Po nasazení ochrany heslem služby Azure AD může být potřeba řešení potíží. Tento článek podrobně popisuje některé běžné kroky při řešení potíží.
 
@@ -82,9 +82,9 @@ Tento problém může mít několik příčin.
 
 1. Agenti řadičů domény se nedají stáhnout zásady nebo nemůžou dešifrovat existující zásady. Vyhledejte možné příčiny ve výše uvedených tématech.
 
-1. Režim prosazování zásad hesla je stále nastaven na audit. Pokud tato konfigurace vstoupí v platnost, překonfigurujte ji tak, aby se vynutila pomocí portálu ochrany hesel Azure AD. Viz [Povolení ochrany heslem](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Režim prosazování zásad hesla je stále nastaven na audit. Pokud tato konfigurace vstoupí v platnost, překonfigurujte ji tak, aby se vynutila pomocí portálu ochrany hesel Azure AD. Další informace najdete v tématu [režimy provozu](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
-1. Zásady hesel jsou zakázané. Pokud tato konfigurace vstoupí v platnost, překonfigurujte ji na povolenou pomocí portálu ochrany hesel Azure AD. Viz [Povolení ochrany heslem](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Zásady hesel jsou zakázané. Pokud tato konfigurace vstoupí v platnost, překonfigurujte ji na povolenou pomocí portálu ochrany hesel Azure AD. Další informace najdete v tématu [režimy provozu](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 1. Nenainstalovali jste software agenta DC na všechny řadiče domény v doméně. V takové situaci je obtížné zajistit, aby vzdálení klienti Windows během operace změny hesla nacíleny na konkrétní řadič domény. Pokud si myslíte, že jste se úspěšně zaměřili na konkrétní řadič domény, na kterém je nainstalovaný software agenta řadiče domény, můžete ho ověřit dvojitou kontrolou protokolu událostí správce agenta řadiče domény: bez ohledu na výsledek, bude k dispozici alespoň jedna událost pro dokumentaci výsledku hesla. Export. Pokud pro uživatele, jehož heslo je změněno, není k dispozici žádná událost, změna hesla byla zřejmě zpracována jiným řadičem domény.
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 Software proxy ochrany heslem služby Azure AD není časově omezený v jakékoli verzi. Společnost Microsoft stále doporučuje, aby se řadiče DC i proxy upgradovali na nejnovější verze hned po jejich vydání. Rutina `Get-AzureADPasswordProtectionProxy` se dá použít k vyhledání agentů proxy, kteří vyžadují upgrady, podobně jako v příkladu výše pro agenty řadiče domény.
 
-Další podrobnosti o konkrétních postupech upgradu najdete v tématu [Upgrade agenta řadiče domény](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) a [Upgrade agenta proxy serveru](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) .
+Další podrobnosti o konkrétních postupech upgradu najdete v tématu [Upgrade agenta řadiče domény](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) a [upgrade služby proxy serveru](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) .
 
 ## <a name="emergency-remediation"></a>Nouzová náprava
 
 Pokud dojde k situaci, kdy služba agenta DC způsobuje problémy, služba agenta řadiče domény se může okamžitě vypnout. Knihovna DLL filtru hesel agenta řadiče domény se stále pokouší zavolat nespuštěnou službu a bude protokolovat události upozornění (10012, 10013), ale během této doby budou přijata všechna příchozí hesla. Služba agenta DC se pak dá nakonfigurovat taky prostřednictvím Správce řízení služeb systému Windows s typem spuštění zakázáno, jak je potřeba.
 
-Další mírou nápravy by bylo nastavit režim povolení na ne na portálu ochrany hesel Azure AD. Po stažení aktualizovaných zásad přejde každá služba agenta řadiče domény do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak je. Další informace najdete v tématu [režim Vynutilení](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Další mírou nápravy by bylo nastavit režim povolení na ne na portálu ochrany hesel Azure AD. Po stažení aktualizovaných zásad přejde každá služba agenta řadiče domény do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak je. Další informace najdete v tématu [režimy provozu](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 ## <a name="removal"></a>Instalační
 

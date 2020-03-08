@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200091"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672123"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -134,8 +134,8 @@ Hodnotu těchto proměnných definovaných službou můžete získat tak, aby by
 | $SucceededTasks |Počet úloh, které byly úspěšně dokončeny. |
 | $FailedTasks |Počet úkolů, které selhaly. |
 | $CurrentDedicatedNodes |Aktuální počet vyhrazených výpočetních uzlů. |
-| $CurrentLowPriorityNodes |Aktuální počet výpočetních uzlů s nízkou prioritou včetně všech uzlů, které byly předem přerušené. |
-| $PreemptedNodeCount | Počet uzlů ve fondu, které jsou ve stavu pre-přerušené. |
+| $CurrentLowPriorityNodes |Aktuální počet výpočetních uzlů s nízkou prioritou, včetně všech zrušených uzlů. |
+| $PreemptedNodeCount | Počet uzlů ve fondu, které jsou v zastaveném stavu. |
 
 > [!TIP]
 > Proměnné definované jen pro čtení, které jsou uvedeny v předchozí tabulce, jsou *objekty* , které poskytují různé metody pro přístup k datům, která jsou k nim přidružená. Další informace najdete v části [získání ukázkových dat](#getsampledata) dále v tomto článku.
@@ -222,7 +222,7 @@ Tyto předdefinované **funkce** jsou k dispozici pro použití při definován�
 | čas (String dateTime = "") |časové razítko |Vrátí časové razítko aktuálního času, pokud nejsou předány žádné parametry, nebo časové razítko řetězce dateTime, pokud je předán. Podporované formáty data a času jsou W3C-DTF a RFC 1123. |
 | Val (doubleVec v, Double i) |double |Vrátí hodnotu elementu, který je v umístění i ve vektoru v, s počátečním indexem nula. |
 
-Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Například:
+Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Příklad:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -242,7 +242,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |Vrátí období vzorků, které byly získány v historické ukázkové sadě dat. |
 | Count() |Vrátí celkový počet vzorků v historii metrik. |
 | HistoryBeginTime() |Vrátí časové razítko ukázky nejstarších dostupných dat pro danou metriku. |
-| GetSamplePercent() |Vrátí procentuální hodnotu vzorků, které jsou k dispozici v daném časovém intervalu. Například:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Vzhledem k tomu, že metoda `GetSample` dojde k chybě, pokud procento vrácených vzorků je menší než `samplePercent` určené, můžete použít metodu `GetSamplePercent` pro kontrolu prvního. Pak můžete provést alternativní akci, pokud nejsou k dispozici dostatečné vzorky, aniž by došlo k zastavení automatického vyhodnocení měřítka. |
+| GetSamplePercent() |Vrátí procentuální hodnotu vzorků, které jsou k dispozici v daném časovém intervalu. Příklad:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Vzhledem k tomu, že metoda `GetSample` dojde k chybě, pokud procento vrácených vzorků je menší než `samplePercent` určené, můžete použít metodu `GetSamplePercent` pro kontrolu prvního. Pak můžete provést alternativní akci, pokud nejsou k dispozici dostatečné vzorky, aniž by došlo k zastavení automatického vyhodnocení měřítka. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Ukázky, procentuální vzorek a metoda *getsample ()*
 Základní operací vzorce automatického škálování je získat data metrik úlohy a prostředku a pak upravit velikost fondu na základě těchto dat. V takovém případě je důležité mít jasné informace o tom, jak vzorce automatického škálování pracují s daty metrik (ukázky).
@@ -267,7 +267,7 @@ Uděláte to tak, že pomocí `GetSample(interval look-back start, interval look
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Například:
+Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Příklad:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -472,7 +472,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Povolit automatické škálování u existujícího fondu
 
-Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Například:
+Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Příklad:
 
 * [BatchClient. PoolOperations. EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [Povolit automatické škálování ve fondu][rest_enableautoscale] (REST API)

@@ -1,25 +1,26 @@
 ---
-title: Vysoká dostupnost a spolehlivost – Azure Scheduler
+title: Vysoká dostupnost a spolehlivost
 description: Informace o vysoké dostupnosti a spolehlivosti v Azure Scheduleru
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979289"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898567"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Vysoká dostupnost a spolehlivost pro Azure Scheduler
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
+>
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
 Azure Scheduler nabízí [vysokou dostupnost](https://docs.microsoft.com/azure/architecture/framework/#resiliency) a spolehlivost pro vaše úlohy. Další informace najdete v tématu [SLA pro Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
@@ -29,7 +30,7 @@ Služba Azure Scheduler je [vysoce dostupná] a používá replikaci geograficky
 
 ### <a name="geo-redundant-service-deployment"></a>Geograficky redundantní nasazení služby
 
-Služba Azure Scheduler je k dispozici v Azure Portal napříč [všemi geografickými oblastmi, které Azure ještě dnes podporuje](https://azure.microsoft.com/global-infrastructure/regions/#services). Takže pokud se datacentrum Azure v hostované oblasti nebude k dispozici, můžete i nadále používat Azure Scheduler, protože možnosti převzetí služeb při selhání služby zpřístupňují Plánovač z jiného datového centra.
+Služba Azure Scheduler je dostupná napříč skoro [všemi geografickými oblastmi, které Azure ještě dnes podporuje](https://azure.microsoft.com/global-infrastructure/regions/#services). Takže pokud se datacentrum Azure v hostované oblasti nebude k dispozici, můžete i nadále používat Azure Scheduler, protože možnosti převzetí služeb při selhání služby zpřístupňují Plánovač z jiného datového centra.
 
 ### <a name="geo-regional-job-replication"></a>Replikace geograficky regionálních úloh
 
@@ -50,7 +51,7 @@ Azure Scheduler garantuje vlastní vysokou dostupnost, ale pro úlohy vytvořen�
 
 <a name="retry-policies"></a>
 
-### <a name="retry-policies"></a>Zásady opakování pokusů
+### <a name="retry-policies"></a>Zásady opakování
 
 Azure Scheduler umožňuje nastavit zásady opakování. Pokud se úloha nezdařila, bude ve výchozím nastavení služba Scheduler opakuje úlohu čtyřikrát dvakrát v intervalu 30 sekund. Tuto zásadu opakování můžete nastavit tak, aby se lépe agresivní, například 10 časů v intervalech 30 sekund, nebo méně agresivní, například dvakrát v denních intervalech.
 
@@ -70,9 +71,9 @@ Typ akce alternativní akce se může lišit od původní akce. I když původn�
 
 Další informace o nastavení alternativního koncového bodu najdete v tématu [errorAction](scheduler-concepts-terms.md#error-action).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="next-steps"></a>Další kroky
 
-* [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)
-* [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)
+* [REST API Azure Scheduleru – referenční informace](/rest/api/scheduler)
+* [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)
 * [Omezení, kvóty, výchozí hodnoty a kódy chyb](scheduler-limits-defaults-errors.md)

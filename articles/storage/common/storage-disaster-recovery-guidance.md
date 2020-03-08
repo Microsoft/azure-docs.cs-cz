@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905525"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894528"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Zotavení po havárii a převzetí služeb při selhání v účtu (Preview)
 
@@ -114,22 +114,17 @@ Převzetí služeb při selhání účtu můžete iniciovat z rozhraní API Azur
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
-Převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všechny zákazníky, kteří používají GRS nebo RA-GRS s nasazeními Azure Resource Manager. Podporují se typy účtů pro obecné účely V1, obecné účely v2 a BLOB Storage. převzetí služeb při selhání účtu je aktuálně dostupné v těchto oblastech:
-
-- Východní Asie
-- Jihovýchodní Asie
-- Austrálie – východ
-- Austrálie – jihovýchod
-- USA – střed
-- USA – východ 2
-- USA – středozápad
-- USA – západ 2
+Převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všechny zákazníky, kteří používají GRS nebo RA-GRS s nasazeními Azure Resource Manager. Podporují se typy účtů pro obecné účely V1, obecné účely v2 a BLOB Storage. Převzetí služeb při selhání účtu je aktuálně k dispozici ve všech veřejných oblastech. Převzetí služeb při selhání účtu není v tuto chvíli k dispozici v cloudových nebo národních cloudech.
 
 Verze Preview je určena pouze pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
 
-### <a name="additional-considerations"></a>Další aspekty
+### <a name="additional-considerations"></a>Další rozhodnutí
 
 Další informace popsané v této části vám pomohou pochopit, jak můžou být vaše aplikace a služby ovlivněné při vynucení převzetí služeb při selhání během období Preview.
+
+#### <a name="storage-account-containing-archived-blobs"></a>Účet úložiště obsahující archivované objekty blob
+
+Účty úložiště obsahující archivované objekty blob podporují převzetí služeb při selhání účtu. Až se převzetí služeb při selhání dokončí, převeďte účet zpátky na GRS nebo RA-GRS všechny objekty blob archieved je potřeba nejdřív znovu vypravit do online úrovně.
 
 #### <a name="storage-resource-provider"></a>Poskytovatel prostředků úložiště
 
@@ -162,8 +157,8 @@ Mějte na paměti, že při vypnutí virtuálního počítače dojde ke ztrátě
 
 Pro převzetí služeb při selhání účtu verze Preview nejsou podporované tyto funkce a služby:
 
-- Azure File Sync nepodporuje převzetí služeb při selhání účtu úložiště. U účtů úložiště obsahujících sdílené složky Azure, které se v Synchronizaci souborů Azure používají jako koncové body cloudu, by se nemělo provádět převzetí služeb při selhání. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat.  
-- Účet úložiště obsahující archivované objekty blob nejde převzít služby při selhání. Udržujte archivované objekty BLOB v samostatném účtu úložiště, u kterých neplánujete převzít služby při selhání.
+- Azure File Sync nepodporuje převzetí služeb při selhání účtu úložiště. U účtů úložiště obsahujících sdílené složky Azure, které se v Synchronizaci souborů Azure používají jako koncové body cloudu, by se nemělo provádět převzetí služeb při selhání. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat.
+- Účty úložiště ADLS Gen2 (účty s povoleným hierarchickým oborem názvů) se v tuto chvíli nepodporují.
 - Nepovedlo se převzít služby účtů úložiště obsahující objekty blob bloku Premium. Účty úložiště, které podporují objekty blob bloku Premium, v současné době nepodporují geografickou redundanci.
 - Nepovedlo se převzít služby účtů úložiště obsahující jakékoli povolené kontejnery [zásad neměnnosti worm](../blobs/storage-blob-immutable-storage.md) . Odemčené nebo uzamčené časové uchovávání na základě času nebo zásady právního blokování brání převzetí služeb při selhání, aby se zachovalo dodržování předpisů
 - Po dokončení převzetí služeb při selhání můžou přestat fungovat následující funkce: [odběry událostí](../blobs/storage-blob-event-overview.md), [Změna kanálu](../blobs/storage-blob-change-feed.md), [zásady životního cyklu](../blobs/storage-lifecycle-management-concepts.md)a [Analýza úložiště protokolování](storage-analytics-logging.md).
@@ -180,7 +175,7 @@ Pokud je váš účet úložiště nakonfigurovaný pro RA-GRS, máte k datům p
 
 V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné havárie, může společnost Microsoft zahájit místní převzetí služeb při selhání. V takovém případě není nutná žádná akce s vaší částí. Dokud neproběhne převzetí služeb při selhání spravované Microsoftem, nebudete mít k účtu úložiště přístup pro zápis. Vaše aplikace se můžou číst ze sekundární oblasti, pokud je váš účet úložiště nakonfigurovaný pro RA-GRS. 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Iniciovat převzetí služeb při selhání účtu (Preview)](storage-initiate-account-failover.md)
 - [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)

@@ -1,25 +1,26 @@
 ---
-title: Odchozí ověřování – Azure Scheduler
+title: Ověřování odchozích spojení
 description: Přečtěte si, jak nastavit nebo odebrat odchozí ověřování pro Azure Scheduler.
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 2ea09330fb8d3d97da5fbc197dba9668f1a4f685
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300847"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898511"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Odchozí ověřování pro Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
+>
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
 Úlohy Azure Scheduleru můžou potřebovat volat služby, které vyžadují ověřování, jako jsou třeba jiné služby Azure, Salesforce.com, Facebook a zabezpečení vlastních webů. Volaná služba může určit, jestli má úloha Scheduleru přístup k požadovaným prostředkům. 
 
@@ -31,25 +32,25 @@ Plánovač podporuje tyto modely ověřování:
 
 ## <a name="add-or-remove-authentication"></a>Přidat nebo odebrat ověřování
 
-* Chcete-li přidat ověřování do úlohy plánovače při vytváření nebo aktualizaci úlohy, přidejte `authentication` `request` do elementu podřízený prvek JavaScript Object Notation (JSON). 
+* Chcete-li přidat ověřování do úlohy Scheduleru, při vytváření nebo aktualizaci úlohy přidejte do elementu `request` podřízený prvek `authentication` JavaScript Object Notation (JSON). 
 
-  Odpovědi nikdy nevrací tajné kódy, které se předávají službě plánovače prostřednictvím požadavku PUT, patch nebo post v `authentication` objektu. 
+  Odpovědi nikdy nevrátí tajné kódy, které se předávají službě plánovače prostřednictvím žádosti PUT, PATCH nebo POST v objektu `authentication`. 
   Odpovědi nastavily tajné informace na hodnotu null nebo můžou používat veřejný token, který představuje ověřenou entitu. 
 
-* Chcete-li odebrat ověřování z úlohy Scheduleru, explicitně spusťte požadavek PUT nebo patch v úloze a nastavte `authentication` objekt na hodnotu null. Odpověď neobsahuje žádné vlastnosti ověřování.
+* Chcete-li odebrat ověřování z úlohy Scheduleru, explicitně spusťte požadavek PUT nebo PATCH v úloze a nastavte objekt `authentication` na hodnotu null. Odpověď neobsahuje žádné vlastnosti ověřování.
 
 ## <a name="client-certificate"></a>Certifikát klienta
 
 ### <a name="request-body---client-certificate"></a>Text žádosti – klientský certifikát
 
-Při přidávání ověřování pomocí `ClientCertificate` modelu zadejte tyto další prvky v textu žádosti.  
+Při přidávání ověřování pomocí modelu `ClientCertificate` zadejte tyto další prvky v textu žádosti.  
 
 | Prvek | Požadováno | Popis |
 |---------|----------|-------------|
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití certifikátu klienta SSL |
-| **type** | Ano | Typ ověřování. Pro klientské certifikáty SSL je `ClientCertificate`hodnota. |
-| **pfx** | Ano | Obsah souboru PFX zakódovaný ve formátu base64 |
-| **Heslo** | Ano | Heslo pro přístup k souboru PFX |
+| **type** | Ano | Typ ověřování. Pro klientské certifikáty SSL je hodnota `ClientCertificate`. |
+| **PFX** | Ano | Obsah souboru PFX zakódovaný ve formátu base64 |
+| **zadáno** | Ano | Heslo pro přístup k souboru PFX |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Tělo odpovědi – klientský certifikát 
@@ -59,7 +60,7 @@ Při odeslání požadavku s ověřovacími informacemi obsahuje odpověď tyto 
 | Prvek | Popis | 
 |---------|-------------| 
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití certifikátu klienta SSL |
-| **type** | Typ ověřování. Pro klientské certifikáty SSL je `ClientCertificate`hodnota. |
+| **type** | Typ ověřování. Pro klientské certifikáty SSL je hodnota `ClientCertificate`. |
 | **certificateThumbprint** |Kryptografický otisk certifikátu |
 | **certificateSubjectName** |Rozlišující název subjektu certifikátu |
 | **certificateExpiration** | Datum vypršení platnosti certifikátu |
@@ -162,14 +163,14 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 ### <a name="request-body---basic"></a>Text žádosti – základní
 
-Při přidávání ověřování pomocí `Basic` modelu zadejte tyto další prvky v textu žádosti.
+Při přidávání ověřování pomocí modelu `Basic` zadejte tyto další prvky v textu žádosti.
 
 | Prvek | Požadováno | Popis |
 |---------|----------|-------------|
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití základního ověřování | 
-| **type** | Ano | Typ ověřování. Pro základní ověřování je tato hodnota `Basic`. | 
-| **uživatelské jméno** | Ano | Uživatelské jméno, které se má ověřit | 
-| **Heslo** | Ano | Heslo, které se má ověřit |
+| **type** | Ano | Typ ověřování. Pro základní ověřování je hodnota `Basic`. | 
+| **jmen** | Ano | Uživatelské jméno, které se má ověřit | 
+| **zadáno** | Ano | Heslo, které se má ověřit |
 |||| 
 
 ### <a name="response-body---basic"></a>Tělo odpovědi – základní
@@ -179,8 +180,8 @@ Při odeslání požadavku s ověřovacími informacemi obsahuje odpověď tyto 
 | Prvek | Popis | 
 |---------|-------------|
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití základního ověřování |
-| **type** | Typ ověřování. Pro základní ověřování je tato hodnota `Basic`. |
-| **uživatelské jméno** | Ověřené uživatelské jméno |
+| **type** | Typ ověřování. Pro základní ověřování je hodnota `Basic`. |
+| **jmen** | Ověřené uživatelské jméno |
 ||| 
 
 ### <a name="sample-rest-request---basic"></a>Ukázka žádosti REST – základní
@@ -276,20 +277,20 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="active-directory-oauth"></a>Active Directory OAuth
+## <a name="active-directory-oauth"></a>Protokol OAuth pro Active Directory
 
 ### <a name="request-body---active-directory-oauth"></a>Tělo žádosti – protokol OAuth pro Active Directory 
 
-Při přidávání ověřování pomocí `ActiveDirectoryOAuth` modelu zadejte tyto další prvky v textu žádosti.
+Při přidávání ověřování pomocí modelu `ActiveDirectoryOAuth` zadejte tyto další prvky v textu žádosti.
 
 | Prvek | Požadováno | Popis |
 |---------|----------|-------------|
 | **ověřování** (nadřazený element) | Ano | Objekt ověřování pro použití ověřování ActiveDirectoryOAuth |
-| **type** | Ano | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je `ActiveDirectoryOAuth`hodnota. |
+| **type** | Ano | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth`. |
 | **tenant** | Ano | Identifikátor tenanta pro tenanta služby Azure AD. Pokud chcete najít identifikátor tenanta pro tenanta Azure AD, spusťte `Get-AzureAccount` v Azure PowerShell. |
-| **osoby** | Ano | Tato hodnota je nastavena na `https://management.core.windows.net/`. | 
+| **osoby** | Ano | Tato hodnota je nastavená na `https://management.core.windows.net/`. | 
 | **clientId** | Ano | Identifikátor klienta pro aplikaci Azure AD | 
-| **secret** | Ano | Tajný kód klienta, který požaduje token | 
+| **otázku** | Ano | Tajný kód klienta, který požaduje token | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Tělo odpovědi – Active Directory OAuth
@@ -299,9 +300,9 @@ Při odeslání požadavku s ověřovacími informacemi obsahuje odpověď tyto 
 | Prvek | Popis |
 |---------|-------------|
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití ověřování ActiveDirectoryOAuth |
-| **type** | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je `ActiveDirectoryOAuth`hodnota. | 
+| **type** | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth`. | 
 | **tenant** | Identifikátor tenanta pro tenanta Azure AD |
-| **osoby** | Tato hodnota je nastavena na `https://management.core.windows.net/`. |
+| **osoby** | Tato hodnota je nastavená na `https://management.core.windows.net/`. |
 | **clientId** | Identifikátor klienta pro aplikaci Azure AD |
 ||| 
 
@@ -403,10 +404,9 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="next-steps"></a>Další kroky
 
-* [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
 * [Omezení, výchozí hodnoty a chybové kódy Azure Scheduleru](scheduler-limits-defaults-errors.md)
-* [REST API Azure Scheduleru](https://msdn.microsoft.com/library/mt629143)
+* [REST API Azure Scheduleru – referenční informace](/rest/api/scheduler)
 * [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)

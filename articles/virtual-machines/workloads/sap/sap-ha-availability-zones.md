@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291494"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675609"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
 [Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jednou z funkcí s vysokou dostupností, které poskytuje Azure. Použití Zóny dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je už v některých [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/)dostupná. V budoucnu bude k dispozici ve více oblastech.
@@ -118,6 +118,9 @@ Pro tuto konfiguraci platí následující požadavky:
 - Třetí zóna se používá k hostování zařízení SBD pro případ, že vytvoříte [cluster SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) nebo další instance aplikace.
 - Aby byla zajištěna konzistence za běhu pro kritické obchodní procesy, můžete se pokusit směrovat určité úlohy služby Batch a uživatele do instancí aplikace, které jsou v zóně s aktivní instancí DBMS, pomocí skupin systému SAP Batch, skupin přihlášení SAP nebo skupin RFC. V případě převzetí služeb při selhání však budete muset tyto skupiny ručně přesunout na instance spuštěné na virtuálních počítačích, které jsou v zóně s aktivním virtuálním počítačem databáze.  
 - V každé z zón můžete chtít nasadit instance nespících dialogových oken. Je tak umožněn okamžitý návrat k dřívější kapacitě prostředků, pokud je zóna, kterou používá část instancí vaší aplikace, mimo provoz.
+
+> [!IMPORTANT]
+> V tomto aktivním nebo aktivním scénáři se další poplatky za šířku pásma oznamují od společnosti Microsoft od 04/01/2020. Podívejte se na [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/)dokumentu. Přenos dat mezi aplikační vrstvou SAP a vrstvou SAP DBMS je poměrně náročný. Scénář aktivní/aktivní může proto přispívat k nákladům poměrně o bit. Pokud chcete získat přesné náklady, zachovejte kontrolu tohoto článku. 
 
 
 ## <a name="activepassive-deployment"></a>Aktivní/pasivní nasazení

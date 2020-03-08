@@ -4,16 +4,16 @@ description: V tomto kurzu se naučíte používat agenta Microsoft Azure Recove
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: 5958f6574f8c559bae8f500b1cb555e96e007d0e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171819"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672947"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Obnovení souborů z Azure do Windows Serveru
 
-Azure Backup umožňuje obnovení jednotlivých položek ze záloh Windows Serveru. Obnovení jednotlivých souborů je užitečné v případě, že musíte rychle obnovit náhodně odstraněné soubory. Tento kurz popisuje použití agenta služby Microsoft Azure Recovery Services (MARS) k obnovení souborů ze záloh, které jste už provedli v Azure. Co se v tomto kurzu naučíte:
+Azure Backup umožňuje obnovení jednotlivých položek ze záloh Windows Serveru. Obnovení jednotlivých souborů je užitečné v případě, že musíte rychle obnovit náhodně odstraněné soubory. Tento kurz popisuje použití agenta služby Microsoft Azure Recovery Services (MARS) k obnovení souborů ze záloh, které jste už provedli v Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -21,7 +21,7 @@ Azure Backup umožňuje obnovení jednotlivých položek ze záloh Windows Serve
 > * Výběr bodu obnovení
 > * Obnovení položek z bodu obnovení
 
-Tento kurz předpokládá, že jste už provedli postup [Zálohování Windows Serveru do Azure](backup-configure-vault.md) a že máte v Azure alespoň jednu zálohu vašich souborů Windows Serveru.
+Tento kurz předpokládá, že jste už provedli postup [Zálohování Windows Serveru do Azure](backup-windows-with-mars-agent.md) a že máte v Azure alespoň jednu zálohu vašich souborů Windows Serveru.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Zahájení obnovení jednotlivých položek
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9465b77d03fb3dbb668bd40bf2c7e6ded6891a05
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5718a23e5669de6ba16354a718d72b68d14bbf49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962049"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894540"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scénář: aplikace démona, která volá webová rozhraní API
 
@@ -46,7 +46,7 @@ Existují další běžné případy, kdy aplikace bez démona používají při
 
 Aplikace, které získají token pro vlastní identity:
 
-- jsou důvěrné klientské aplikace. Tyto aplikace, vzhledem k tomu, že získají přístup k prostředkům nezávisle na uživatelích, musí prokázat jejich identitu. Jsou také místo citlivých aplikací. Musí je schválit správci tenanta Azure Active Directory (Azure AD).
+- Jsou důvěrné klientské aplikace. Tyto aplikace, vzhledem k tomu, že získají přístup k prostředkům nezávisle na uživatelích, musí prokázat jejich identitu. Jsou také místo citlivých aplikací. Musí je schválit správci tenanta Azure Active Directory (Azure AD).
 - Zaregistrovali jste tajný klíč (heslo aplikace nebo certifikát) ve službě Azure AD. Tento tajný klíč se předává během volání služby Azure AD za účelem získání tokenu.
 
 ## <a name="specifics"></a>Specifika

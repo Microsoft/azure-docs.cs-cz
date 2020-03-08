@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812721"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851446"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Nasazení Azure Průzkumník dat do Virtual Network (Preview)
 
@@ -54,7 +54,7 @@ Celkový počet IP adres:
 | Služba správy dat | 2 |
 | Interní nástroje pro vyrovnávání zatížení | 2 |
 | Rezervované adresy Azure | 5 |
-| **Celkem** | **#engine_instances + 9** |
+| **Čtení** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
 > Velikost podsítě musí být plánována předem, protože po nasazení služby Azure Průzkumník dat není možné ji změnit. Proto odpovídajícím způsobem rezervujte potřebnou velikost podsítě.
@@ -75,16 +75,16 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 
 #### <a name="inbound-nsg-configuration"></a>Příchozí konfigurace NSG
 
-| **Použití**   | **from**   | **Komu**   | **Protokol**   |
+| **Použití**   | **Výsledkem**   | **Komu**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Správa  |[ADX Management addresss](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX podsíť: 443  | TCP  |
-| Sledování stavu  | [Adresy sledování stavu ADX](#health-monitoring-addresses)  | ADX podsíť: 443  | TCP  |
-| Interní komunikace ADX  | ADX podsíť: všechny porty  | ADX podsíť: všechny porty  | Všechno  |
+| Monitorování stavu  | [Adresy sledování stavu ADX](#health-monitoring-addresses)  | ADX podsíť: 443  | TCP  |
+| Interní komunikace ADX  | ADX podsíť: všechny porty  | ADX podsíť: všechny porty  | Vše  |
 | Povolit příchozí službu Azure Load Balancer (sondu stavu)  | AzureLoadBalancer  | ADX podsíť: 80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Konfigurace odchozího NSG
 
-| **Použití**   | **from**   | **Komu**   | **Protokol**   |
+| **Použití**   | **Výsledkem**   | **Komu**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Závislost na Azure Storage  | ADX podsíť  | Úložiště: 443  | TCP  |
 | Závislost na Azure Data Lake  | ADX podsíť  | AzureDataLake: 443  | TCP  |
@@ -93,7 +93,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Stažení konfigurace Azure Monitor  | ADX podsíť  | [Adresy koncových bodů konfigurace Azure monitor](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Služba Active Directory (Pokud je k dispozici) | ADX podsíť | Azureactivedirectory selhala: 443 | TCP |
 | Certifikační autorita | ADX podsíť | Internet: 80 | TCP |
-| Interní komunikace  | ADX podsíť  | ADX podsíť: všechny porty  | Všechno  |
+| Interní komunikace  | ADX podsíť  | ADX podsíť: všechny porty  | Vše  |
 | Porty používané pro `sql\_request` a moduly plug-in `http\_request`  | ADX podsíť  | Internet: vlastní  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>Relevantní IP adresy
@@ -108,7 +108,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Austrálie – jihovýchod | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
 | Kanada – střed | 40.82.188.208 |
-| Kanada – východ | 40.80.255.12 |
+| Východní Kanada | 40.80.255.12 |
 | Indie – střed | 40.81.249.251 |
 | USA – střed | 40.67.188.68 |
 | Střed USA EUAP | 40.89.56.69 |
@@ -120,20 +120,20 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Francie – jih | 40.82.236.24 |
 | Japonsko – východ | 20.43.89.90 |
 | Japonsko – západ | 40.81.184.86 |
-| Korea – střed | 40.82.156.149 |
-| Korea – jih | 40.80.234.9 |
+| Jižní Korea – střed | 40.82.156.149 |
+| Jižní Korea – jih | 40.80.234.9 |
 | USA – středosever | 40.81.45.254 |
 | Severní Evropa | 52.142.91.221 |
 | Jižní Afrika – sever | 102.133.129.138 |
 | Jižní Afrika – západ | 102.133.0.97 |
 | USA – středojih | 20.45.3.60 |
 | Jihovýchodní Asie | 40.119.203.252 |
-| Jižní Indie | 40.81.72.110 |
+| Indie – jih | 40.81.72.110 |
 | Velká Británie – jih | 40.81.154.254 |
-| Velká Británie – západ | 40.81.122.39 |
+| Spojené království – západ | 40.81.122.39 |
 | USA – středozápad | 52.159.55.120 |
 | Západní Evropa | 51.145.176.215 |
-| Západní Indie | 40.81.88.112 |
+| Indie – západ | 40.81.88.112 |
 | USA – západ | 13.64.38.225 |
 | USA – západ 2 | 40.90.219.23 |
 
@@ -147,7 +147,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Austrálie – jihovýchod | 191.239.160.47 |
 | Brazílie – jih | 23.98.145.105 |
 | Kanada – střed | 168.61.212.201 |
-| Kanada – východ | 168.61.212.201 |
+| Východní Kanada | 168.61.212.201 |
 | Indie – střed | 23.99.5.162 |
 | USA – střed | 168.61.212.201 |
 | Střed USA EUAP | 168.61.212.201 |
@@ -159,22 +159,22 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Francie – jih | 23.97.212.5 |
 | Japonsko – východ | 138.91.19.129 |
 | Japonsko – západ | 138.91.19.129 |
-| Korea – střed | 138.91.19.129 |
-| Korea – jih | 138.91.19.129 |
+| Jižní Korea – střed | 138.91.19.129 |
+| Jižní Korea – jih | 138.91.19.129 |
 | USA – středosever | 23.96.212.108 |
 | Severní Evropa | 191.235.212.69 
 | Jižní Afrika – sever | 104.211.224.189 |
 | Jižní Afrika – západ | 104.211.224.189 |
 | USA – středojih | 23.98.145.105 |
-| Jižní Indie | 23.99.5.162 |
+| Indie – jih | 23.99.5.162 |
 | Jihovýchodní Asie | 168.63.173.234 |
 | Velká Británie – jih | 23.97.212.5 |
-| Velká Británie – západ | 23.97.212.5 |
+| Spojené království – západ | 23.97.212.5 |
 | USA – středozápad | 168.61.212.201 |
 | Západní Evropa | 23.97.212.5 |
-| Západní Indie | 23.99.5.162 |
+| Indie – západ | 23.99.5.162 |
 | USA – západ | 23.99.5.162 |
-| USA – západ 2 | 23.99.5.162 | 
+| USA – západ 2 | 23.99.5.162 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Adresy koncových bodů konfigurace Azure Monitor
 
@@ -192,7 +192,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Střed USA EUAP | 13.90.43.231 |
 | Východní Asie | 13.75.117.221 |
 | Východní USA | 13.90.43.231 |
-| Východní USA 2 | 13.68.89.19 | 
+| Východní USA 2 | 13.68.89.19 |    
 | Východní USA 2 EUAP | 13.68.89.19 |
 | Francie – střed | 52.174.4.112 |
 | Francie – jih | 52.174.4.112 |
@@ -253,7 +253,7 @@ Je také potřeba definovat [směrovací tabulku](/azure/virtual-network/virtual
 
 Například pro **západní USA** oblast musí být definována následující udr:
 
-| Name (Název) | Předpona adresy | Další segment směrování |
+| Název | Předpona adresy | Další segment směrování |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |
@@ -263,3 +263,149 @@ Například pro **západní USA** oblast musí být definována následující u
 Pokud chcete nasadit cluster Azure Průzkumník dat do vaší virtuální sítě, použijte [cluster nasazení azure Průzkumník dat do](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) šablony Azure Resource Manager VNET.
 
 Tato šablona vytvoří cluster, virtuální síť, podsíť, skupinu zabezpečení sítě a veřejné IP adresy.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+V této části se dozvíte, jak řešit problémy s připojením, fungováním a vytvořením clusteru pro cluster, který je nasazený do vašich [Virtual Network](/azure/virtual-network/virtual-networks-overview).
+
+### <a name="access-issues"></a>Problémy s přístupem
+
+Pokud máte problém s přístupem ke clusteru pomocí veřejného koncového bodu (cluster.region.kusto.windows.net) nebo privátního (private-cluster.region.kusto.windows.net) a máte podezření, že se jedná o nastavení virtuální sítě, postupujte podle následujících kroků. Odstraňte potíže.
+
+#### <a name="check-tcp-connectivity"></a>Ověřit konektivitu protokolu TCP
+
+První krok zahrnuje kontrolu připojení TCP pomocí operačního systému Windows nebo Linux.
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+   1. Stáhněte si [TCping](https://www.elifulkerson.com/projects/tcping.php) do počítače, který se připojuje ke clusteru.
+   2. Pomocí příkazu otestujte cíl ze zdrojového počítače pomocí následujícího příkazu:
+
+    ```cmd
+     C:\> tcping -t yourcluster.kusto.windows.net 443 
+    
+     ** Pinging continuously.  Press control-c to stop **
+    
+     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+     ```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+   1. Instalace *NetCat* do počítače připojujícího se ke clusteru
+
+    ```bash
+    $ apt-get install netcat
+     ```
+
+   2. Pomocí příkazu otestujte cíl ze zdrojového počítače pomocí následujícího příkazu:
+
+     ```bash
+     $ netcat -z -v yourcluster.kusto.windows.net 443
+    
+     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+     ```
+---
+
+Pokud test neproběhne úspěšně, pokračujte následujícími kroky. Pokud je test úspěšný, problém není kvůli problému s připojením protokolu TCP. Další řešení potíží najdete v tématu [provozní problémy](#cluster-creation-and-operations-issues) .
+
+#### <a name="check-the-network-security-group-nsg"></a>Kontrolovat skupinu zabezpečení sítě (NSG)
+
+   Ověřte, že [Skupina zabezpečení sítě](/azure/virtual-network/security-overview) (NSG) připojená k podsíti clusteru má příchozí pravidlo, které umožňuje přístup z IP adresy klientského počítače pro port 443.
+
+#### <a name="check-route-table"></a>Ověřit směrovací tabulku
+
+   Pokud má podsíť clusteru nastavení vynuceného tunelového propojení s bránou firewall (podsíť s [tabulkou směrování](/azure/virtual-network/virtual-networks-udr-overview) , která obsahuje výchozí trasu 0.0.0.0/0), ujistěte se, že IP adresa počítače má trasu s [typem dalšího segmentu směrování](/azure/virtual-network/virtual-networks-udr-overview) na VirtualNetwork/Internet. To je nutné, aby nedocházelo k problémům s asymetrickým směrováním.
+
+### <a name="ingestion-issues"></a>Problémy s přijímáním
+
+Pokud dochází k problémům s přijímáním a máte podezření, že se jedná o nastavení virtuální sítě, proveďte následující kroky.
+
+#### <a name="check-ingestion-health"></a>Kontrolovat stav ingestování
+
+    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
+
+#### <a name="check-security-rules-on-data-source-resources"></a>Kontrolovat pravidla zabezpečení prostředků zdrojů dat
+
+Pokud metriky naznačují, že nebyly zpracovány žádné události ze zdroje*dat (u* služby Event/IoT Hub), zajistěte, aby prostředky zdrojů dat (centrum událostí nebo úložiště) povolovaly přístup z podsítě clusteru v pravidlech brány firewall nebo v koncových bodech služby.
+
+#### <a name="check-security-rules-configured-on-clusters-subnet"></a>Kontrolovat pravidla zabezpečení konfigurovaná v podsíti clusteru
+
+Zajistěte, aby byla podsíť clusteru NSG, UDR a pravidla brány firewall správně nakonfigurovaná. Kromě toho otestujte připojení k síti u všech závislých koncových bodů. 
+
+### <a name="cluster-creation-and-operations-issues"></a>Problémy při vytváření a operacích clusteru
+
+Pokud jste narazili na problémy s vytvářením nebo operací clusteru a máte podezření, že se jedná o nastavení virtuální sítě, postupujte podle těchto kroků a problém vyřešte.
+
+#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>Diagnostika virtuální sítě pomocí REST API
+
+[ARMClient](https://chocolatey.org/packages/ARMClient) se používá k volání REST API s využitím PowerShellu. 
+
+1. Přihlášení pomocí ARMClient
+
+   ```powerShell
+   armclient login
+   ```
+
+1. Vyvolat operaci diagnostiky
+
+    ```powershell
+    $subscriptionId = '<subscription id>'
+    $clusterName = '<name of cluster>'
+    $resourceGroupName = '<resource group name>'
+    $apiversion = '2019-11-09'
+    
+    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
+    ```
+
+1. Ověřit odpověď
+
+    ```powershell
+    HTTP/1.1 202 Accepted
+    ...
+    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    ...
+    ```
+
+1. Počkat na dokončení operace
+
+    ```powershell
+    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "[Running/Failed/Completed]",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {...}
+    }
+    ```
+    
+   Počkejte, dokud vlastnost *status* neukáže *dokončeno*, v poli *vlastnosti* by se mělo zobrazit:
+
+    ```powershell
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "Completed",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {
+        "Findings": [...]
+      }
+    }
+    ```
+
+Pokud vlastnost *nálezy* zobrazuje prázdný výsledek, znamená to, že všechny testy sítě byly úspěšně dokončeny a žádná připojení nejsou přerušena. Pokud se zobrazí chyba takto: *odchozí závislost {Dependency}: {port} může být nevyhovující (odchozí)* , cluster se nemůže připojit k koncovým bodům závislé služby. Pokud chcete řešit potíže, postupujte podle následujících kroků.
+
+#### <a name="check-network-security-group-nsg"></a>Kontrolovat skupinu zabezpečení sítě (NSG)
+
+Ujistěte se, že je správně nakonfigurovaná [Skupina zabezpečení sítě](/azure/virtual-network/security-overview) podle pokynů v tématu [závislosti pro nasazení virtuální](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment) sítě.
+
+#### <a name="check-route-table"></a>Ověřit směrovací tabulku
+
+Pokud je v podsíti clusteru nastaveno vynucené tunelové propojení na bránu firewall (podsíť s [tabulkou směrování](/azure/virtual-network/virtual-networks-udr-overview) , která obsahuje výchozí trasu "0.0.0.0/0"), ujistěte se, že IP [adresy pro správu](#azure-data-explorer-management-ip-addresses) a [IP adresy monitorování stavu](#health-monitoring-addresses) mají trasu s [typem dalšího segmentu směrování](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *Internet*a [předpona zdrojové adresy](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route) pro *Management-IP/32* a *stav-monitorování-IP/32*. To je nutné, aby nedocházelo k problémům s asymetrickým směrováním.
+
+#### <a name="check-firewall-rules"></a>Kontrolovat pravidla brány firewall
+
+Pokud vynutíte odchozí provoz podsítě tunelového propojení do brány firewall, ujistěte se, že v konfiguraci brány firewall jsou povoleny všechny závislosti plně kvalifikovaného názvu domény (například *. blob.Core.Windows.NET*), jak je popsáno v tématu [zabezpečení odchozího provozu pomocí brány firewall](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall).

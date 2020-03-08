@@ -5,18 +5,18 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Naučte se, jak povolit Azure Dev Spaces v clusteru AKS a nainstalovat nástroje na straně klienta.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 0b7f6cb4a801c84df59bd5157d8c2a1a15eaaf7e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302895"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898947"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Povolení Azure Dev Spaces v clusteru AKS a instalace nástrojů na straně klienta
 
 Tento článek ukazuje několik způsobů povolení Azure Dev Spaces v clusteru AKS a instalaci nástrojů na straně klienta.
 
-## <a name="enable-azure-dev-spaces-using-the-cli"></a>Povolení Azure Dev Spaces pomocí rozhraní příkazového řádku
+## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>Povolení nebo odebrání Azure Dev Spaces pomocí rozhraní příkazového řádku
 
 Než budete moci povolit vývojové prostory pomocí rozhraní příkazového řádku, budete potřebovat:
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][az-portal-create-account].
@@ -49,7 +49,18 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 Příkaz `use-dev-spaces` také nainstaluje Azure Dev Spaces CLI.
 
-## <a name="enable-azure-dev-spaces-using-the-azure-portal"></a>Povolení Azure Dev Spaces pomocí Azure Portal
+K odebrání Azure Dev Spaces z clusteru AKS použijte příkaz `azds remove`. Příklad:
+
+```azurecli
+$ azds remove -g MyResourceGroup -n MyAKS
+Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup' will be deleted. This will remove Azure Dev Spaces instrumentation from the target resource for new workloads. Continue? (y/N): y
+
+Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
+```
+
+Výše uvedený příkaz v *MyResourceGroup*odebere Azure dev Spaces z clusteru *MyAKS* . Všechny obory názvů, které jste vytvořili pomocí Azure Dev Spaces, zůstanou spolu s jejich úlohami, ale nové úlohy v těchto oborech názvů nebudou s Azure Dev Spaces instrumentovat. Kromě toho, Pokud restartujete jakékoli existující lusky instrumentované pomocí Azure Dev Spaces, můžou se zobrazit chyby. Tyto lusky je potřeba znovu nasadit bez nástrojů Azure Dev Spaces. Pokud chcete z clusteru úplně odebrat Azure Dev Spaces, odstraňte všechny lusky ve všech oborech názvů, kde byla povolená Azure Dev Spaces.
+
+## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>Povolení nebo odebrání Azure Dev Spaces pomocí Azure Portal
 
 Než budete moci povolit vývojářské prostory pomocí Azure Portal, budete potřebovat:
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][az-portal-create-account].
@@ -64,6 +75,8 @@ Povolení Azure Dev Spaces pomocí Azure Portal:
 ![Povolit vývojové prostory v Azure Portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
 Povolením Azure Dev Spaces **používání Azure Portal** nenainstalujete žádné nástroje na straně klienta pro Azure dev Spaces.
+
+Pokud chcete Azure Dev Spaces z clusteru AKS odebrat, změňte *Povolit vývojové prostory* na *ne* a klikněte na *Uložit*. Všechny obory názvů, které jste vytvořili pomocí Azure Dev Spaces, zůstanou spolu s jejich úlohami, ale nové úlohy v těchto oborech názvů nebudou s Azure Dev Spaces instrumentovat. Kromě toho, Pokud restartujete jakékoli existující lusky instrumentované pomocí Azure Dev Spaces, můžou se zobrazit chyby. Tyto lusky je potřeba znovu nasadit bez nástrojů Azure Dev Spaces. Pokud chcete z clusteru úplně odebrat Azure Dev Spaces, odstraňte všechny lusky ve všech oborech názvů, kde byla povolená Azure Dev Spaces.
 
 ## <a name="install-the-client-side-tools"></a>Instalace nástrojů na straně klienta
 

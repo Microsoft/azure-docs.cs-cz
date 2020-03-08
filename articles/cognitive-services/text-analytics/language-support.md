@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206170"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899437"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyků a oblastí pro rozhraní API pro analýzu textu
 
@@ -32,7 +32,7 @@ Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete zk
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analýza mínění, Extrakce klíčových frází a rozpoznávání pojmenovaných entit
 
 V případě analýzy mínění, extrakce klíčových frází a rozpoznávání entit je seznam podporovaných jazyků pokročilejší, protože analyzátory jsou upřesněny tak, aby vyhovovaly jazykovým pravidlům dalších jazyků. V případě rozpoznávání pojmenovaných entit v2 je podpora pro úplnou sadu [typů entit](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) aktuálně omezena na následující jazyky: 
-* Angličtina
+* angličtina
 * Čínština (zjednodušená)
 * Francouzština
 * Němčina
@@ -49,13 +49,13 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 
 | Jazyk              | Kód jazyka | Mínění | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
-| arabština                |     `ar`      |           |             |           ✔ \*           |                |                    |
+| Arabština                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Čeština                 |     `cs`      |           |             |           ✔ \*           |                |                    |
 | Čínština (zjednodušená)    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` také přijaty                   |
 | Čínština (tradiční)   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | dánština                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Holandština                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Angličtina               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
+| Nizozemština                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| angličtina               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
 | Finština               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Francouzština                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Němčina                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |

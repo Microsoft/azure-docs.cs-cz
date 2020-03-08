@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950273"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898150"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat v Azure Data Catalog
 
@@ -124,7 +124,7 @@ Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pr
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 a novější verze.</td>
     </tr>
     <tr>
       <td>Zobrazení Oracle Database</td>
@@ -132,7 +132,7 @@ Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pr
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 a novější verze.</td>
     </tr>
     <tr>
       <td>Jiný (obecný prostředek)</td>
@@ -195,11 +195,11 @@ Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pr
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Browser</td>
+      <td>Prohlížeč</td>
       <td>Pouze servery v nativním režimu. Režim služby SharePoint není podporován. Pouze SQL Server 2008 a novější verze</td>
     </tr>
     <tr>
-      <td>Tabulka SQL Serveru</td>
+      <td>SQL Server tabulka</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -452,7 +452,7 @@ Pokud chcete zobrazit konkrétní podporovaný zdroj dat, Navrhněte ho (nebo hl
        <td><b>Typ zdroje</b></td>
        <td><b>Typ prostředku</b></td>
        <td><b>Typy objektů</b></td>
-       <td><b>Struktura DSL<b></td>
+       <td><b>struktura DSL<b></td>
     </tr>
     <tr>
       <td>Azure Data Lake Store</td>

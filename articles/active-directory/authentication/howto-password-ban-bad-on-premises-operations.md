@@ -1,67 +1,74 @@
 ---
-title: Operace a sestavy ochrany heslem – Azure Active Directory
-description: Operace po nasazení a vytváření sestav ochrany heslem Azure AD
+title: Povolení ochrany heslem místní služby Azure AD
+description: Přečtěte si, jak povolit ochranu heslem Azure AD pro místní Active Directory Domain Services prostředí.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 03/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 4d4c0b0c6ec68c818f107c7e3e3241e4acc0edb7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377999"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671717"
 ---
-# <a name="azure-ad-password-protection-operational-procedures"></a>Provozní procedury ochrany heslem Azure AD
+# <a name="enable-on-premises-azure-active-password-protection"></a>Povolit místní ochranu heslem v místní službě Azure Active
 
-Po dokončení [instalace ochrany heslem Azure AD](howto-password-ban-bad-on-premises-deploy.md) v místním prostředí existuje několik položek, které je potřeba nakonfigurovat v Azure Portal.
+Uživatelé často vytvářejí hesla, která používají běžná místní slova, jako je škola, sportovní tým nebo slavných osoba. Tato hesla se dají snadno uhodnout a slabá na základě slovníkových útoků. K vynucení silných hesel ve vaší organizaci poskytuje Azure Active Directory (Azure AD) Ochrana heslem globální a vlastní seznam zakázaných hesel. Pokud se v seznamu zakázaných hesel vyskytne shoda, žádost o změnu hesla se nezdařila.
 
-## <a name="configure-the-custom-banned-password-list"></a>Konfigurovat vlastní seznam zakázaných hesel
+K ochraně místního prostředí Active Directory Domain Services (služba AD DS) můžete nainstalovat a nakonfigurovat ochranu heslem Azure AD pro práci s vaším Prem řadičem domény. V tomto článku se dozvíte, jak povolit ochranu heslem Azure AD pro místní prostředí.
 
-Postupujte podle pokynů v článku [Konfigurace vlastního seznamu zakázaných hesel,](howto-password-ban-bad-configure.md) kde najdete postup přizpůsobení seznamu zakázaných hesel ve vaší organizaci.
+Další informace o tom, jak funguje ochrana heslem Azure AD v místním prostředí, najdete v tématu věnovaném [vymáhání ochrany heslem Azure AD pro Windows Server Active Directory](concept-password-ban-bad-on-premises.md).
 
-## <a name="enable-password-protection"></a>Povolení ochrany heslem
+## <a name="before-you-begin"></a>Než začnete
+
+V tomto článku se dozvíte, jak povolit ochranu heslem Azure AD pro místní prostředí. Před dokončením tohoto článku [nainstalujte a zaregistrujte službu proxy ochrany heslem Azure AD a agenty řadiče domény](howto-password-ban-bad-on-premises-deploy.md) v místním služba AD DSovém prostředí.
+
+## <a name="enable-on-premises-password-protection"></a>Povolit místní ochranu heslem
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory** > **metody ověřování** **zabezpečení** >  > **ochrana heslem**.
-1. Nastavte **možnost Povolit ochranu heslem ve službě Windows Server Active Directory** na **hodnotu Ano** .
-1. Jak je uvedeno v [Průvodci nasazením](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), doporučujeme nejprve nastavit **režim** na **audit** .
-   * Až budete s funkcí spokojeni, můžete **režim** přepnout na **vynutilo** .
-1. Klikněte na **Uložit**.
+1. Nastavte možnost **Povolit ochranu heslem ve službě Windows Server Active Directory** na *hodnotu Ano*.
 
-![Povolení součástí ochrany heslem služby Azure AD v Azure Portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+    Pokud je toto nastavení nastaveno na *ne*, všechny nasazené agenty řadiče domény Azure AD se přejdou do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak jsou. Neprovádí se žádné aktivity ověření a události auditu se nevygenerují.
 
-## <a name="audit-mode"></a>Režim auditování
+1. Doporučuje se nejdřív nastavit **režim** na *audit*. Až budete s funkcí spokojeni a dopad na uživatele ve vaší organizaci, můžete **režim** přepnout do *vymáhání*. Další informace najdete v následující části o [režimech provozu](#modes-of-operation).
+1. Až budete připraveni, vyberte **Uložit**.
 
-Režim auditu je určený jako způsob, jak software spustit v režimu "co if". Každá služba agenta řadiče domény vyhodnotí příchozí heslo podle aktuálně aktivních zásad. Pokud je aktuální zásada nakonfigurovaná tak, aby byla v režimu auditování, je výsledkem "špatných" hesla zpráva protokolu událostí, ale budou přijata. Toto je jediný rozdíl mezi režimem auditu a vymáhání. všechny ostatní operace mají stejný provoz.
+    [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
-> [!NOTE]
-> Microsoft doporučuje, aby se počáteční nasazení a testování vždy spouštělo v režimu auditování. Události v protokolu událostí by se pak měly monitorovat, aby se pokusily odhadnout, jestli by nějaké existující provozní procesy po povolení režimu vykonání byly nerušené.
+## <a name="modes-of-operation"></a>Režimy provozu
 
-## <a name="enforce-mode"></a>Režim vymáhání
+Pokud povolíte místní ochranu heslem služby Azure AD, můžete použít režim *auditování* nebo režim *prosazování* . Doporučujeme, aby počáteční nasazení a testování bylo vždy spuštěno v režimu auditování. Položky v protokolu událostí by se pak měly monitorovat, aby se předpokládalo, jestli se po povolení režimu *vykonání* všech stávajících provozních procesů nenarušilo.
 
-Režim vymáhání je určený jako konečná konfigurace. Stejně jako v režimu auditování výše každá služba agenta řadiče domény vyhodnocuje příchozí hesla podle aktuálně aktivních zásad. Pokud je povolený režim vymáhání, heslo, které se považuje za nezabezpečené podle zásad, se odmítne.
+### <a name="audit-mode"></a>Režim auditování
 
-Když je v režimu vynucení odmítnuto heslo agent řadiče domény služby Azure AD heslem, viditelný dopad zobrazený koncovým uživatelem se shoduje s tím, jak by se jednalo o odmítnutí hesla tradičním vynuceným nastavením složitosti hesel. Uživatel může například na obrazovce pro heslo pro Windows logon\change zobrazit následující tradiční chybovou zprávu:
+Režim *auditu* je určený jako způsob, jak software spustit v režimu "co if". Každá služba agenta řadiče domény Azure AD pro ochranu heslem vyhodnocuje příchozí heslo podle aktuálně aktivních zásad.
 
-`Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
+Pokud je aktuální zásada nakonfigurovaná tak, aby byla v režimu auditování, je výsledkem "špatných" hesla zpráva protokolu událostí, ale jsou zpracovaná a aktualizovaná. Toto chování je jediným rozdílem mezi režimem auditu a vymáhání. Všechny ostatní operace mají stejný provoz.
+
+### <a name="enforced-mode"></a>Vynucované režim
+
+*Vynutilný* režim je určený jako konečná konfigurace. Podobně jako v režimu auditování každá služba agenta řadiče domény Azure AD pro ochranu hesel vyhodnocuje příchozí hesla podle aktuálně aktivních zásad. Pokud je povolený režim vymáhání, je heslo, které se považuje za nezabezpečené podle zásad, zamítnuto.
+
+Když agent řadiče domény Azure AD pro ochranu heslem v vynuceném režimu zamítl heslo, zobrazí se koncovým uživatelům podobná chyba, pokud se jim heslo zamítlo tradičním vynuceným nastavením složitosti hesel. Uživatel může například zobrazit následující tradiční chybovou zprávu na obrazovce přihlášení k systému Windows nebo změna hesla:
+
+*"Nelze aktualizovat heslo. Hodnota zadaná pro nové heslo nesplňuje požadavky na délku, složitost a historii domény.*
 
 Tato zpráva je pouze jedním z příkladů možných výsledků. Konkrétní chybová zpráva se může lišit v závislosti na skutečném softwaru nebo scénáři, který se pokouší nastavit nezabezpečené heslo.
 
-Ovlivnění koncoví uživatelé možná budou muset spolupracovat s pracovníky IT, aby porozuměli novým požadavkům a mohli si vybrat zabezpečená hesla.
+Ovlivnění koncoví uživatelé můžou potřebovat spolupracovat s pracovníky IT a pochopit nové požadavky a vybírat zabezpečená hesla.
 
 > [!NOTE]
 > Ochrana heslem Azure AD nemá žádné řízení pro konkrétní chybovou zprávu, která se zobrazí v klientském počítači, když se odmítne slabé heslo.
 
-## <a name="enable-mode"></a>Zapnout režim
-
-Toto nastavení by mělo zůstat ve výchozím stavu povoleno (Ano). Konfigurace tohoto nastavení na zakázáno (ne) způsobí, že všichni nasazení agenti řadiče domény Azure AD pro ochranu heslem přejdou do režimu quiescent, ve kterém jsou všechna hesla přijímána, a nebudou spuštěny žádné ověřovací aktivity (například ne i události auditu). bude vygenerováno).
-
 ## <a name="next-steps"></a>Další kroky
 
-[Monitorování ochrany hesel služby Azure AD](howto-password-ban-bad-on-premises-monitor.md)
+Pokud chcete přizpůsobit seznam zakázaných hesel pro vaši organizaci, přečtěte si téma [Konfigurace seznamu vlastních hesel pro ochranu heslem Azure AD](tutorial-configure-custom-password-protection.md).
+
+Pokud chcete monitorovat události Prem, přečtěte si téma [monitorování ochrany heslem v Prem Azure AD](howto-password-ban-bad-on-premises-monitor.md).

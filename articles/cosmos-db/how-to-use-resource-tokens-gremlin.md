@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 443b6ea2583c7c8a1c633cf1825e83cc02bd168c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756070"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897852"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
 
@@ -93,7 +93,7 @@ authenticationProperties.with(AuthProperties.Property.PASSWORD, resourceToken);
 builder.authProperties(authenticationProperties);
 ```
 
-## <a name="limit"></a>škálování
+## <a name="limit"></a>Omezení
 
 S jedním účtem Gremlin můžete vystavit neomezený počet tokenů. V průběhu jedné hodiny ale můžete použít až 100 tokenů současně. Pokud aplikace překročí limit tokenu za hodinu, je žádost o ověření zamítnutá a zobrazí se následující chybová zpráva: "překročení povoleného limitu tokenu prostředku 100, který se dá použít souběžně." Nefunguje na ukončení aktivních připojení, která používají konkrétní tokeny k uvolnění slotů pro nové tokeny. Databázový stroj Azure Cosmos DB Gremlin sleduje jedinečné tokeny během hodiny bezprostředně před požadavkem na ověření.
 

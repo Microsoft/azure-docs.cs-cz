@@ -1,26 +1,27 @@
 ---
-title: Sestavení pokročilých plánů a opakování úloh – Azure Scheduler
+title: Sestavení pokročilých plánů a opakování úloh
 description: Naučte se vytvářet pokročilé plány a opakování pro úlohy v Azure Scheduleru.
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
+ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: 386284543cd8fb00cc49fea9a29d9eaee4ca4963
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300964"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898586"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Sestavování pokročilých plánů a opakování úloh v Azure Scheduleru
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
+>
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
 V rámci úlohy [Azure Scheduleru](../scheduler/scheduler-intro.md) je plán jádrem, který určuje, kdy a jak služba plánovače úlohu spouští. Pro úlohu s plánovačem můžete nastavit několik jednorázových a opakovaných plánů. Jednorázové plány se spouští jenom jednou v zadaném čase a jsou v podstatě opakující se plány, které se spouštějí jenom jednou. Opakující se plány běží na zadané frekvenci. Díky této flexibilitě můžete použít Scheduler pro různé obchodní scénáře, například:
 
@@ -28,9 +29,9 @@ V rámci úlohy [Azure Scheduleru](../scheduler/scheduler-intro.md) je plán já
 
 * **Archivovaná data**: Vytvořte měsíční úlohu, která vloží historii faktury do zálohovací služby.
 
-* **Požadovat externí data**: Vytvořte úlohu, která se spouští každých 15 minut, a vyžádá si novou zprávu o počasí z NOAA.
+* **Požadovat externí data**: vytvořte úlohu, která se spouští každých 15 minut, a vyžádá si novou zprávu o počasí z NOAA.
 
-* **Bitové kopie procesu**: Vytvořte úlohu v týdnu, která běží v době mimo špičku a používá Cloud Computing pro komprimaci imagí odeslaných během dne.
+* **Image procesů**: můžete vytvořit úlohu v týdnu, která běží v době mimo špičku, a používá Cloud Computing pro komprimaci imagí odeslaných během dne.
 
 Tento článek popisuje příklady úloh, které můžete vytvořit pomocí plánovače a [služby Azure scheduler REST API](/rest/api/scheduler), a obsahuje definici JavaScript Object Notation (JSON) pro každý plán. 
 
@@ -67,7 +68,7 @@ Tato tabulka poskytuje podrobný přehled hlavních elementů JSON, které můž
 |---------|----------|-------------|
 | **startTime** | Ne | Hodnota řetězce DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha poprvé spustí podle plánu Basic. <p>U složitých plánů úloha začíná dřív než **StartTime**. | 
 | **recurrence** | Ne | Pravidla opakování při spuštění úlohy. Objekt **opakování** podporuje tyto prvky: **četnost**, **interval**, **plán**, **počet**a **čas**ukončení. <p>Použijete-li element **opakování** , je nutné také použít prvek **frekvence** , zatímco jiné prvky **opakování** jsou volitelné. |
-| **frequency** | Ano, při použití **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "Minute", "hodina", "den", "týden", "Month" a "Year" | 
+| **frequency** | Ano, při použití **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "minuta", "hodina", "den", "týden", "Month" a "Year" | 
 | **interval** | Ne | Celé kladné číslo určující počet časových jednotek mezi výskyty na základě **frekvence**. <p>Pokud má například **interval** hodnotu 10 a **frekvence** "týden", úloha se opakuje každých 10 týdnů. <p>Toto je nejvyšší počet intervalů pro každou frekvenci: <p>– 18 měsíců <br>– 78 týdnů <br>– 548 dní <br>– Pro hodiny a minuty je rozsah 1 < = <*interval*> < = 1000. | 
 | **schedule** | Ne | Definuje změny opakování na základě zadaných minutových značek, hodinových značek, dnů v týdnu a dnů v měsíci. | 
 | **count** | Ne | Kladné celé číslo, které určuje počet pokusů o spuštění úlohy před dokončením. <p>Pokud je například denní úloha v poli **počet** nastavená na hodnotu 7 a počáteční datum je pondělí, úloha skončí běžet v neděli. Pokud počáteční datum již prošlo, je první spuštění vypočítáno z času vytvoření. <p>Aniž byste měli **čas** ukončení ani **počet**, úloha se spustí nekonečně. V rámci stejné úlohy nemůžete použít současně jak **Count** , tak i **čas** , ale pravidlo, které se dokončí jako první, se respektuje. | 
@@ -143,7 +144,7 @@ Předpokládejme, že tento příklad s těmito podmínkami: čas zahájení v m
    1. 2015-04-11 na 2:00 odp.
    1. 2015-04-13 na 2:00 odp. 
    1. 2015-04-15 na 2:00 odp.
-   1. a tak dále...
+   1. A tak dále...
 
 1. Nakonec platí, že pokud má úloha plán, ale ne zadané hodiny a minuty, tyto hodnoty se ve výchozím nastavení vyhodnotí jako hodiny a minuty v prvním spuštění, v uvedeném pořadí.
 
@@ -164,14 +165,14 @@ Následující tabulka obsahuje podrobný popis elementů plánu:
 | **minutes** |Minuty hodiny, kdy se úloha spouští. |Pole celých čísel. |
 | **hours** |Hodiny dne, kdy se úloha spouští. |Pole celých čísel. |
 | **weekDays** |Dny v týdnu, kdy úloha běží. Dá se zadat jenom s týdenní frekvencí. |Pole některé z následujících hodnot (maximální velikost pole je 7):<br />– "Pondělí"<br />– "Úterý"<br />– "Středa"<br />-"Čtvrtek"<br />-"Pátek"<br />-"Sobota"<br />-"Neděle"<br /><br />Nerozlišuje velká a malá písmena. |
-| **monthlyOccurrences** |Určuje, které dny v měsíci je úloha spuštěna. Dá se zadat jenom s měsíční frekvencí. |Pole objektů **monthlyOccurrences** :<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **Day** je den v týdnu, kdy se úloha spouští. Například *{neděle}* je každou neděli v měsíci. Povinný parametr.<br /><br />**výskyt** je výskyt dne v měsíci. Například *{neděle,-1}* je poslední neděle v měsíci. Volitelný parametr. |
+| **monthlyOccurrences** |Určuje, které dny v měsíci je úloha spuštěna. Dá se zadat jenom s měsíční frekvencí. |Pole objektů **monthlyOccurrences** :<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **Day** je den v týdnu, kdy se úloha spouští. Například *{neděle}* je každou neděli v měsíci. Požadováno.<br /><br />**výskyt** je výskyt dne v měsíci. Například *{neděle,-1}* je poslední neděle v měsíci. Volitelná. |
 | **monthDays** |Den v měsíci, kdy se úloha spouští. Dá se zadat jenom s měsíční frekvencí. |Pole s následujícími hodnotami:<br />– Libovolná hodnota <= −1 a >= −31<br />– Libovolná hodnota >= 1 a <= 31|
 
-## <a name="examples-recurrence-schedules"></a>Příklady: Plány opakování
+## <a name="examples-recurrence-schedules"></a>Příklady: plány opakování
 
 Následující příklady znázorňují různé plány opakování. Příklady jsou zaměřeny na objekt Schedule a jeho dílčí prvky.
 
-V těchto plánech se předpokládá, že je tento **interval** nastavený na hodnotu 1.\. Příklady také předpokládají správné hodnoty **frekvence** pro hodnoty v **plánu**. Například nemůžete použít **frekvenci** "Day" (den) a **monthDays** změnu v **plánu**. Tato omezení jsme popsali výše v článku.
+V těchto plánech se předpokládá, že je tento **interval** nastavený na 1\. Příklady také předpokládají správné hodnoty **frekvence** pro hodnoty v **plánu**. Například nemůžete použít **frekvenci** "Day" (den) a **monthDays** změnu v **plánu**. Tato omezení jsme popsali výše v článku.
 
 | Příklad | Popis |
 |:--- |:--- |
@@ -207,8 +208,9 @@ V těchto plánech se předpokládá, že je tento **interval** nastavený na ho
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |Spuštění v poslední pátek v měsíci každých 15 minut. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |Spuštění každou třetí středu v měsíci v 5:15, 5:45, 17:15 a 17:45. |
 
-## <a name="see-also"></a>Viz také:
+## <a name="next-steps"></a>Další kroky
 
-* [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
+* [REST API Azure Scheduleru – referenční informace](/rest/api/scheduler)
+* [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)
 * [Omezení, výchozí hodnoty a chybové kódy Azure Scheduleru](scheduler-limits-defaults-errors.md)

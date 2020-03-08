@@ -1,6 +1,6 @@
 ---
-title: Monitorování a protokolování ochrany heslem – Azure Active Directory
-description: Pochopení monitorování a protokolování ochrany heslem v Azure AD
+title: Monitorování ochrany heslem místní služby Azure AD
+description: Přečtěte si, jak monitorovat a prohlížet protokoly pro ochranu heslem Azure AD pro místní Active Directory Domain Services prostředí.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847707"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671659"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Monitorování a protokolování ochrany heslem Azure AD
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorování a kontrola protokolů pro místní prostředí ochrany heslem služby Azure AD
 
 Po nasazení ochrany heslem služby Azure AD jsou monitorování a vytváření sestav zásadními úkoly. Tento článek obsahuje podrobné informace, které vám pomůžou pochopit různé techniky monitorování, včetně toho, kde každá služba protokoluje informace a jak ohlásit používání ochrany heslem Azure AD.
 
@@ -40,7 +40,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události zaznamenané různými součástmi agenta řadiče domény spadají do těchto rozsahů:
 
-|Součást |Rozsah ID události|
+|Komponenta |Rozsah ID události|
 | --- | --- |
 |Knihovna DLL filtru hesel agenta řadiče domény| 10000-19999|
 |Proces hostování služby agenta DC| 20000-29999|
@@ -65,7 +65,7 @@ Klíčovým událostem souvisejícím s ověřováním hesla jsou následující
 
 |   |Změna hesla |Heslo nastaveno|
 | --- | :---: | :---: |
-|Průchod |10014 |10015|
+|Úspěšný |10014 |10015|
 |Selhání (kvůli zásadám hesel zákazníka)| 10016, 30002| 10017, 30003|
 |Selhání (kvůli zásadám hesel Microsoftu)| 10016, 30004| 10017, 30005|
 |Selhání (kvůli kombinovaným zásadám hesel Microsoftu a zákazníků)| 10016, 30026| 10017, 30027|
@@ -309,7 +309,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události jsou protokolovány různými součástmi proxy serveru pomocí následujících rozsahů:
 
-|Součást |Rozsah ID události|
+|Komponenta |Rozsah ID události|
 | --- | --- |
 |Proces hostování služby proxy| 10000-19999|
 |Základní obchodní logika služby proxy| 20000-29999|

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512087"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672423"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
 
@@ -82,13 +82,13 @@ Pomocí následujícího příkladu vytvořte objekt Zásady skupiny (GPO), kter
 Pokud používáte AD FS, musíte nejprve nakonfigurovat spojovací bod služby na straně klienta pomocí výše uvedených pokynů, a to tak, že objekt zásad skupiny propojíte se servery AD FS. Objekt spojovacího bodu služby definuje zdroj autority pro objekty zařízení. Může to být místní nebo Azure AD. Když je spojovací bod služby na straně klienta nakonfigurovaný pro AD FS, je zdroj pro objekty zařízení vytvořený jako Azure AD.
 
 > [!NOTE]
-> Pokud se nezdařila konfigurace spojovacího bodu služby klienta na serverech AD FS, bude zdroj pro identity zařízení považován za místní. Služba AD FS pak začne odstraňovat objekty zařízení z místního adresáře po stanoveném období definovaném v atributu registrace zařízení ADFS "MaximumInactiveDays". Objekty registrace zařízení ADFS najdete pomocí [rutiny Get-AdfsDeviceRegistration](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).
+> Pokud se nezdařila konfigurace spojovacího bodu služby klienta na serverech AD FS, bude zdroj pro identity zařízení považován za místní. Služba AD FS pak začne odstraňovat objekty zařízení z místního adresáře po stanoveném období definovaném v atributu registrace zařízení ADFS "MaximumInactiveDays". Objekty registrace zařízení ADFS najdete pomocí [rutiny Get-AdfsDeviceRegistration](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Řízené ověřování připojení k hybridní službě Azure AD na zařízeních nižší úrovně Windows
 
 Aby bylo možné zaregistrovat zařízení Windows nižší úrovně, musí organizace nainstalovat [microsoft Workplace JOIN pro počítače s jiným systémem než Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) , které jsou k dispozici na webu Microsoft Download Center.
 
-Balíček můžete nasadit pomocí systému distribuce softwaru, jako je [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/). Balíček podporuje standardní možnosti bezobslužné instalace s parametrem quiet. Aktuální větev Configuration Manager nabízí výhody oproti starším verzím, jako je schopnost sledovat dokončené registrace.
+Balíček můžete nasadit pomocí systému distribuce softwaru, jako je [Microsoft Endpoint Configuration Manager](/configmgr/). Balíček podporuje standardní možnosti bezobslužné instalace s parametrem quiet. Aktuální větev Configuration Manager nabízí výhody oproti starším verzím, jako je schopnost sledovat dokončené registrace.
 
 Instalační program vytvoří v systému naplánovanou úlohu, která běží v uživatelském kontextu. Úkol se aktivuje, když se uživatel přihlásí k Windows. Úloha se tiše připojí k zařízení pomocí Azure AD s přihlašovacími údaji uživatele po ověření ve službě Azure AD.
 

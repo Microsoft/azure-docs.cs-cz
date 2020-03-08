@@ -4,12 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497014"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673250"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -172,4 +172,4 @@ K šifrování a dešifrování dat se používá přístupové heslo při zálo
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o podporovaných scénářích a omezeních najdete v tématu [matice podpory pro agenta Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
-- Přečtěte si další informace o [chování uchovávání zásad zálohování na vyžádání](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).
+- Přečtěte si další informace o [chování uchovávání zásad zálohování na vyžádání](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).

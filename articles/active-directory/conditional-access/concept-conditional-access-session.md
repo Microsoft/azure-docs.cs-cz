@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192139"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671884"
 ---
 # <a name="conditional-access-session"></a>Podmíněný přístup: relace
 
@@ -30,12 +30,12 @@ Organizace můžou pomocí tohoto ovládacího prvku vyžadovat, aby služba Azu
 
 Další informace o tom, jak používat a konfigurovat omezení pro uplatnění aplikace, najdete v následujících článcích:
 
-- [Povolení omezeného přístupu na SharePointu Online](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [Povolení omezeného přístupu na SharePointu Online](/sharepoint/control-access-from-unmanaged-devices)
 - [Povolení omezeného přístupu pomocí Exchange Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>Řízení aplikací podmíněného přístupu
 
-Řízení podmíněného přístupu k aplikacím používá architekturu reverzního proxy serveru a je jedinečnou integrací s podmíněným přístupem Azure AD. Podmíněný přístup Azure AD umožňuje vynutilit řízení přístupu v aplikacích vaší organizace na základě určitých podmínek. Podmínky definují, kdo (uživatel nebo skupina uživatelů) a co (které cloudové aplikace) a kde kde (která umístění a sítě) jsou aplikovány na zásady podmíněného přístupu. Po určení podmínek můžete uživatele směrovat do [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) , kde můžete chránit data pomocí řízení podmíněného přístupu k aplikacím pomocí řízení přístupu a relací.
+Řízení podmíněného přístupu k aplikacím používá architekturu reverzního proxy serveru a je jedinečnou integrací s podmíněným přístupem Azure AD. Podmíněný přístup Azure AD umožňuje vynutilit řízení přístupu v aplikacích vaší organizace na základě určitých podmínek. Podmínky definují, kdo (uživatel nebo skupina uživatelů) a co (které cloudové aplikace) a kde kde (která umístění a sítě) jsou aplikovány na zásady podmíněného přístupu. Po určení podmínek můžete uživatele směrovat do [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) , kde můžete chránit data pomocí řízení podmíněného přístupu k aplikacím pomocí řízení přístupu a relací.
 
 Conditional Access App Control povoluje přístup k aplikaci pro uživatele a relace na sledování a řízení v reálném čase na základě zásad přístupu a relace. Zásady přístupu a relace se používají v rámci portálu Cloud App Security k ještě víc zpřesnit filtry a nastavit pro uživatele provádět akce. Zásady přístupu a relace vám umožní:
 
@@ -46,7 +46,7 @@ Conditional Access App Control povoluje přístup k aplikaci pro uživatele a re
 - Blokovat přístup: můžete členit blok přístupu pro konkrétní aplikace a uživatele v závislosti na několika rizikových faktorech. Můžete je například blokovat, pokud používají klientské certifikáty jako formu správy zařízení.
 - Blokovat vlastní aktivity: některé aplikace mají jedinečné scénáře, které mají riziko, například posílání zpráv s citlivým obsahem v aplikacích, jako je Microsoft Teams nebo časová rezerva. V těchto druzích scénářů můžete kontrolovat zprávy citlivého obsahu a zablokovat je v reálném čase.
 
-Další informace najdete v článku [nasazení řízení podmíněného přístupu k aplikacím pro vybrané aplikace](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad).
+Další informace najdete v článku [nasazení řízení podmíněného přístupu k aplikacím pro vybrané aplikace](/cloud-app-security/proxy-deployment-aad).
 
 ## <a name="sign-in-frequency-preview"></a>Frekvence přihlašování (Preview)
 

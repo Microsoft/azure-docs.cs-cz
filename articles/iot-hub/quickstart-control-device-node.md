@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 3a1a37a1517000734a06caa191c353ade5f72def
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 29c6964ff2e0ce1b8ffb0964640bc460e6143902
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470849"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674300"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Rychlý Start: použití Node. js k řízení zařízení připojeného ke službě Azure IoT Hub
 
@@ -46,8 +46,10 @@ node --version
 Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -72,7 +74,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
       --hub-name {YourIoTHubName} --device-id MyNodeDevice
     ```
 
-2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+2. Spuštěním následujícího příkazu v Azure Cloud Shellu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
@@ -136,7 +138,7 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
     Nahraďte hodnotu proměnné `connectionString` připojovacím řetězcem služby, který jste si poznamenali dříve. Potom uložte změny do souboru **BackEndApplication. js**.
 
-3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte back-endovou aplikaci:
+3. V okně místního terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a spuštění back-endové aplikace:
 
     ```cmd/sh
     npm install

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83b86b9bc5c09cc9f97a320e3019ddea68434309
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616461"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675627"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade operačního systému
 Tento dokument popisuje podrobnosti o upgradech operačního systému ve velkých instancích HANA.
@@ -58,11 +58,11 @@ Konfigurace operačního systému se může v průběhu času v důsledku oprav,
   Aby bylo zajištěno správné fungování sítě a stabilita systému, je doporučeno, aby byly nainstalovány odpovídající verze ovladačů eNIC a fNIC specifické pro operační systém, jak je znázorněno v následující tabulce kompatibility. Servery jsou doručovány zákazníkům s kompatibilními verzemi. Všimněte si, že v některých případech během oprav operačního systému nebo jádra se ovladače můžou vrátit zpátky na výchozí verze ovladačů. Zajistěte, aby na příslušné verzi ovladače běžely operace post-OS/kernel patching.
        
       
-  |  Dodavatel operačního systému    |  Verze balíčku operačního systému     |  Ovladač eNIC  |  Ovladač fNIC |
-  |---------------|-------------------------|---------------|--------------|
-  |   SuSE        |  SLES 12 SP2            |   2.3.0.40    |   1.6.0.34   |
-  |   SuSE        |  SLES 12 SP3            |   2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7,2               |   2.3.0.39    |   1.6.0.34   |
+  |  Dodavatel operačního systému    |  Verze balíčku operačního systému     |  Verze firmwaru  |  Ovladač eNIC |  Ovladač fNIC | 
+  |---------------|-------------------------|--------------------|--------------|--------------|
+  |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
+  |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Příkazy pro upgrade ovladače a vyčištění starých balíčků ot./min.

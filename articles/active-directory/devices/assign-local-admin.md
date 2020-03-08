@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379665"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672728"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -68,8 +68,8 @@ Správci zařízení mají přiřazená všechna zařízení připojená k Azure
 
 Ve výchozím nastavení Azure AD přidá uživatele, který provádí službu Azure AD JOIN, do skupiny správců v zařízení. Pokud chcete běžným uživatelům zabránit v tom, aby se stali místními správci, máte následující možnosti:
 
-- Automatický [pilot pro Windows](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) – Windows autopilot vám nabízí možnost zabránit primárnímu uživateli, aby se mohl připojit od místního správce. To můžete provést [vytvořením profilu autopilotu](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile).
-- [Hromadná registrace](https://docs.microsoft.com/intune/windows-bulk-enroll) – připojení k Azure AD, které se provádí v kontextu hromadné registrace, probíhá v kontextu automaticky vytvořeného uživatele. Uživatelé, kteří se přihlašují po přihlášení k zařízení, se do skupiny Administrators nepřipojí.   
+- Automatický [pilot pro Windows](/windows/deployment/windows-autopilot/windows-10-autopilot) – Windows autopilot vám nabízí možnost zabránit primárnímu uživateli, aby se mohl připojit od místního správce. To můžete provést [vytvořením profilu autopilotu](/intune/enrollment-autopilot#create-an-autopilot-deployment-profile).
+- [Hromadná registrace](/intune/windows-bulk-enroll) – připojení k Azure AD, které se provádí v kontextu hromadné registrace, probíhá v kontextu automaticky vytvořeného uživatele. Uživatelé, kteří se přihlašují po přihlášení k zařízení, se do skupiny Administrators nepřipojí.   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>Ruční zvýšení oprávnění uživatele na zařízení 
 

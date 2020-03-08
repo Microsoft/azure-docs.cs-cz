@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d713dd968956f5bcc93e7b53ed2d7801e5d7bec2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561937"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672608"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Nasazení zabezpečené pracovní stanice spravované v Azure
 
@@ -29,13 +29,13 @@ Před nasazením řešení vyberte profil. V nasazení můžete použít více p
 > [!NOTE]
 > Použijte libovolný profil podle potřeby podle vašich požadavků. Můžete přejít na jiný profil tak, že ho přiřadíte v Microsoft Intune.
 
-| Profil | Nízký | Rozšířené | Vysoký | Specializovaná | Psán | Isolated |
+| Profil | Nízká | Rozšířené | Vysoký | Specializovaná | Psán | Izolován |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Uživatel v Azure AD | Ano | Ano | Ano | Ano | Ano | Ano |
 | Spravovaná v Intune | Ano | Ano | Ano | Ano | Ano | Ano |
 | Zařízení – zaregistrované v Azure AD | Ano |  |  |  |  | |   |
 | Zařízení – připojeno k Azure AD |   | Ano | Ano | Ano | Ano | Ano |
-| Použité standardní hodnoty zabezpečení Intune |   | Ano <br> Rozšíření | Ano <br> (HighSecurity) | Ano <br> (NCSC) | Ano <br> Psán | není k dispozici |
+| Použité standardní hodnoty zabezpečení Intune |   | Ano <br> Rozšíření | Ano <br> (HighSecurity) | Ano <br> (NCSC) | Ano <br> Psán | Není k dispozici |
 | Hardware splňuje zabezpečené standardy pro Windows 10. |   | Ano | Ano | Ano | Ano | Ano |
 | Povolené ATP programu Microsoft Defender |   | Ano  | Ano | Ano | Ano | Ano |
 | Odebrání oprávnění správce |   |   | Ano  | Ano | Ano | Ano |
@@ -57,21 +57,21 @@ Pro automatizaci zřizování licencí zvažte [licencování na základě skupi
 
 Azure Active Directory (Azure AD) spravují uživatele, skupiny a zařízení pro pracovní stanice vašich správců. Pomocí [účtu správce](../users-groups-roles/directory-assign-admin-roles.md)povolte služby a funkce identity.
 
-Když vytvoříte zabezpečený účet správce pracovní stanice, vystavte si účet pro aktuální pracovní stanici. Ujistěte se, že k provedení této počáteční konfigurace a všech globálních konfigurací používáte známé bezpečné zařízení. Chcete-li snížit riziko útoku při prvním spuštění, zvažte následující [pokyny, abyste zabránili napadení malwarem](https://docs.microsoft.com/windows/security/threat-protection/intelligence/prevent-malware-infection).
+Když vytvoříte zabezpečený účet správce pracovní stanice, vystavte si účet pro aktuální pracovní stanici. Ujistěte se, že k provedení této počáteční konfigurace a všech globálních konfigurací používáte známé bezpečné zařízení. Chcete-li snížit riziko útoku při prvním spuštění, zvažte následující [pokyny, abyste zabránili napadení malwarem](/windows/security/threat-protection/intelligence/prevent-malware-infection).
 
 Vyžadovat službu Multi-Factor Authentication alespoň pro správce. Pokyny k implementaci najdete v tématu [nasazení cloudového vícefaktorového ověřování](../authentication/howto-mfa-getstarted.md) .
 
 ### <a name="azure-ad-users-and-groups"></a>Uživatelé a skupiny Azure AD
 
 1. V Azure Portal přejděte na **Azure Active Directory** > **uživatelů** > **Nový uživatel**.
-1. Postupujte podle kroků v [kurzu Vytvoření uživatele](https://docs.microsoft.com/Intune/quickstart-create-user)a vytvořte Správce zařízení.
-1. Napište
+1. Postupujte podle kroků v [kurzu Vytvoření uživatele](/Intune/quickstart-create-user)a vytvořte Správce zařízení.
+1. Zadejte:
 
    * **Název** – zabezpečený Správce pracovní stanice
    * **Uživatelské jméno** - `secure-ws-admin@identityitpro.com`
    * **Role adresáře** - **omezeného správce** a vyberte roli **správce Intune** .
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 V dalším kroku vytvoříte dvě skupiny: uživatelé pracovní stanice a zařízení pracovní stanice.
 
@@ -86,14 +86,14 @@ V Azure Portal přejděte do **Azure Active Directory** > **skupiny** > **nové 
 
 1. Přidejte uživatele správce zabezpečené pracovní stanice: `secure-ws-admin@identityitpro.com`
 1. Můžete přidat všechny další uživatele, kteří budou spravovat zabezpečené pracovní stanice.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 1. Pro skupinu zařízení pracovní stanice zadejte:
 
    * **Typ skupiny** – zabezpečení
    * **Název skupiny** – zabezpečené pracovní stanice
    * Přiřazený **typ členství**
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ### <a name="azure-ad-device-configuration"></a>Konfigurace zařízení Azure AD
 
@@ -127,9 +127,9 @@ Z Azure Portal:
 1. Změňte nastavení **oboru uživatele MDM** na **vše**.
 1. Vyberte **Save** (Uložit).
 
-Tyto kroky umožňují spravovat jakékoli zařízení v Intune. Další informace najdete v tématu [rychlý Start k Intune: nastavení automatického zápisu pro zařízení s Windows 10](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment). V dalším kroku vytvoříte konfiguraci Intune a zásady dodržování předpisů.
+Tyto kroky umožňují spravovat jakékoli zařízení v Intune. Další informace najdete v tématu [rychlý Start k Intune: nastavení automatického zápisu pro zařízení s Windows 10](/Intune/quickstart-setup-auto-enrollment). V dalším kroku vytvoříte konfiguraci Intune a zásady dodržování předpisů.
 
-#### <a name="azure-ad-conditional-access"></a>Podmíněný přístup služby Azure AD
+#### <a name="azure-ad-conditional-access"></a>Podmíněný přístup Azure AD
 
 Podmíněný přístup Azure AD může přispět k omezení privilegované úlohy správy na vyhovující zařízení. Aby se při přihlašování ke cloudovým aplikacím provádělo ověřování Multi-Factor Authentication, musí být předdefinovaná členové skupiny **Uživatelé zabezpečených pracovních stanic** . Osvědčeným postupem je vyloučit z těchto zásad účty pro nouzový přístup. Další informace najdete v tématu [Správa účtů pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
 
@@ -137,7 +137,7 @@ Podmíněný přístup Azure AD může přispět k omezení privilegované úloh
 
 ### <a name="configure-enrollment-status"></a>Konfigurace stavu registrace
 
-Je důležité zajistit, aby zabezpečená pracovní stanice byla důvěryhodného čistého zařízení. Při nákupu nových zařízení můžete nakoupit tovární nastavení na [Windows 10 pro v režimu S](https://docs.microsoft.com/Windows/deployment/Windows-10-pro-in-s-mode), což omezuje vystavení ohrožení zabezpečení při správě dodavatelských řetězců. Jakmile od dodavatele obdržíte zařízení, můžete ho pomocí nástroje autopilot změnit z režimu S. Následující doprovodné materiály obsahují podrobné informace o použití procesu transformace.
+Je důležité zajistit, aby zabezpečená pracovní stanice byla důvěryhodného čistého zařízení. Při nákupu nových zařízení můžete nakoupit tovární nastavení na [Windows 10 pro v režimu S](/Windows/deployment/Windows-10-pro-in-s-mode), což omezuje vystavení ohrožení zabezpečení při správě dodavatelských řetězců. Jakmile od dodavatele obdržíte zařízení, můžete ho pomocí nástroje autopilot změnit z režimu S. Následující doprovodné materiály obsahují podrobné informace o použití procesu transformace.
 
 Aby se zajistilo, že zařízení jsou před použitím plně nakonfigurovaná, poskytne Intune způsob, jak **blokovat používání zařízení, dokud se nenainstalují všechny aplikace a profily**.
 
@@ -147,22 +147,22 @@ Z **Azure Portal**:
 1. Nastavte **Zobrazit průběh instalace profilu aplikace** na **Ano**.
 1. Nastavte **blokování použití zařízení, dokud nebudou všechny aplikace a profily nainstalované** na **Ano**.
 
-### <a name="create-an-autopilot-deployment-profile"></a>Vytvoření profilu nasazení autopilotu
+### <a name="create-an-autopilot-deployment-profile"></a>Vytvoření profilu nasazení Autopilotu
 
 Po vytvoření skupiny zařízení je nutné vytvořit profil nasazení pro konfiguraci zařízení s autopilotem.
 
 V Intune Azure Portal:
 
 1. Vyberte **registrace zařízení** > **profily nasazení** > **Registrace pro Windows** > **vytvořit profil**.
-1. Napište
+1. Zadejte:
 
    * Název – **profil nasazení zabezpečené pracovní stanice**.
    * Popis – **nasazení zabezpečených pracovních stanic**.
-   * Nastavte **převést všechna cílová zařízení na autopilot** na **Ano**. Toto nastavení zajistí, že všechna zařízení v seznamu se budou registrovat ve službě pro nasazení autopilotu. Povolí zpracování registrace 48 hodin.
+   * Nastavte **převést všechna cílová zařízení na autopilot** na **Ano**. Toto nastavení zajistí, že všechna zařízení v seznamu se budou registrovat ve službě pro nasazení autopilotu. Vyřízení registrace trvá 48 hodin.
 
 1. Vyberte **Další**.
 
-   * V **režimu nasazení**vyberte možnost **samoobslužné nasazení (Preview)** . Zařízení s tímto profilem jsou přidružená k uživateli, který zařízení zaregistruje. K registraci zařízení se vyžadují přihlašovací údaje uživatele. Je nutné si uvědomit, že nasazení zařízení v režimu **samoobslužného nasazení** vám umožní nasazovat přenosné počítače do sdíleného modelu. Neproběhne žádné přiřazení uživatele, dokud se zařízení poprvé přiřadí uživateli. V důsledku toho nebudou povoleny žádné zásady uživatele, jako je například BitLocker, až do dokončení přiřazení uživatele. Další informace o tom, jak se přihlásit k zabezpečenému zařízení, najdete v tématu [Vybrané profily](https://docs.microsoft.com/intune/device-profile-assign).
+   * V **režimu nasazení**vyberte možnost **samoobslužné nasazení (Preview)** . Zařízení s tímto profilem jsou přidružená k uživateli, který zařízení zaregistruje. Při registraci zařízení se musí zadat přihlašovací údaje uživatele. Je nutné si uvědomit, že nasazení zařízení v režimu **samoobslužného nasazení** vám umožní nasazovat přenosné počítače do sdíleného modelu. Neproběhne žádné přiřazení uživatele, dokud se zařízení poprvé přiřadí uživateli. V důsledku toho nebudou povoleny žádné zásady uživatele, jako je například BitLocker, až do dokončení přiřazení uživatele. Další informace o tom, jak se přihlásit k zabezpečenému zařízení, najdete v tématu [Vybrané profily](/intune/device-profile-assign).
    * **Připojení k Azure AD** by se mělo zobrazit jako **připojené k Azure AD** , které se bude zobrazovat šedě.
    * Vyberte jazyk (oblast), typ uživatelského účtu **Standard**. 
 
@@ -173,9 +173,9 @@ V Intune Azure Portal:
 1. Vyberte **Další**.
 1. Vyberte **přiřazení** > **přiřadit k** > **vybraným skupinám**. V **možnosti vybrat skupiny, které se mají zahrnout**, vyberte **zabezpečené pracovní stanice**.
 1. Vyberte **Další**.
-1. Vyberte **Vytvořit** a vytvořte profil. Profil nasazení autopilotu je teď k dispozici pro přiřazení k zařízením.
+1. Vyberte **Vytvořit** a vytvořte profil. Profil nasazení Autopilotu je teď možné přiřazovat zařízením.
 
-Registrace zařízení v autopilotu poskytuje jiné uživatelské prostředí na základě typu zařízení a role. V našem příkladu nasazení jsme ilustrují model, ve kterém jsou zabezpečená zařízení nasazená a sdílená, ale při prvním použití se zařízení přiřadí uživateli. Další informace najdete v tématu [registrace zařízení v Intune pro Automatický pilot](https://docs.microsoft.com/intune/device-enrollment).
+Registrace zařízení v autopilotu poskytuje jiné uživatelské prostředí na základě typu zařízení a role. V našem příkladu nasazení jsme ilustrují model, ve kterém jsou zabezpečená zařízení nasazená a sdílená, ale při prvním použití se zařízení přiřadí uživateli. Další informace najdete v tématu [registrace zařízení v Intune pro Automatický pilot](/intune/device-enrollment).
 
 ### <a name="configure-windows-update"></a>Konfigurace web Windows Update
 
@@ -186,7 +186,7 @@ Tento návod doporučuje vytvořit nový aktualizační kanál a změnit násled
 Na webu Azure Portal:
 
 1. Přejít na **Microsoft Intune** > **aktualizace softwaru** > **aktualizačních kanálů Windows 10**.
-1. Napište
+1. Zadejte:
 
    * Název – **aktualizace pro pracovní stanice spravované službou Azure**
    * Kanál pro údržbu – **Windows Insider – Fast**
@@ -200,10 +200,10 @@ Na webu Azure Portal:
    * Odložit připomenutí při restartu (dny) – **3**
    * Nastavit konečný termín pro čekání na restartování (dny) – **3**
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 1. Na kartě **přiřazení** přidejte skupinu **zabezpečených pracovních stanic** .
 
-Další informace o web Windows Updatech zásadách najdete v tématu [zásady CSP – aktualizace](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-update).
+Další informace o web Windows Updatech zásadách najdete v tématu [zásady CSP – aktualizace](/windows/client-management/mdm/policy-csp-update).
 
 ### <a name="windows-defender-atp-intune-integration"></a>Integrace ochrany ATP v programu Windows Defender
 
@@ -223,20 +223,20 @@ Pokud chcete nakonfigurovat integraci ochrany ATP v programu Windows Defender a 
 1. Nastavte **připojit zařízení s Windows verze 10.0.15063 a vyšší k ochraně ATP v programu Windows Defender** na **zapnuto**.
 1. Vyberte **Save** (Uložit).
 
-Další informace najdete v tématu [Rozšířená ochrana před internetovými útoky v programu Windows Defender](https://docs.microsoft.com/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
+Další informace najdete v tématu [Rozšířená ochrana před internetovými útoky v programu Windows Defender](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
 
 ### <a name="finish-workstation-profile-hardening"></a>Dokončení posílení profilu pracovní stanice
 
 Aby bylo možné úspěšně dokončit posílení zabezpečení řešení, Stáhněte a spusťte příslušný skript. Najděte odkazy ke stažení pro požadovanou **úroveň profilu**:
 
-| Profil | Umístění pro stahování | Bitmap |
+| Profil | Umístění pro stahování | Název souboru |
 | --- | --- | --- |
-| Nízká úroveň zabezpečení | Nevztahuje se | Nevztahuje se |
-| Rozšířené zabezpečení | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809). ps1 |
-| Vysoké zabezpečení | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
+| Nízká úroveň zabezpečení | neuvedeno | neuvedeno |
+| Rozšířené zabezpečení | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809).ps1 |
+| Vysoké zabezpečení | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809).ps1 |
 | Specializovaná | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline. ps1 |
-| Specializované dodržování předpisů * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
-| Psán | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline. ps1 |
+| Specializované dodržování předpisů * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10(1803).ps1 |
+| Psán | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
 
 \* specializované dodržování předpisů je skript, který vynutil specializovanou konfiguraci poskytnutou v NCSC Windows10 SecurityBaseline.
 
@@ -245,13 +245,13 @@ Po úspěšném spuštění skriptu můžete v Intune dělat aktualizace profil�
 * Tady najdete profily konfigurace zařízení Intune vytvořené skripty: **Azure Portal** > **Microsoft Intune** profily > **Konfigurace zařízení** > **profily**.
 * Tady najdete zásady dodržování předpisů zařízením v Intune, které vytvořily skripty: **Azure Portal** > **Microsoft Intune** > **zásady** **dodržování předpisů zařízením** > .
 
-Chcete-li zkontrolovat změny provedené skripty, můžete exportovat profily. Tímto způsobem můžete určit další posílení zabezpečení, které může být vyžadováno, jak je uvedeno v [dokumentaci k SECCON](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework).
+Chcete-li zkontrolovat změny provedené skripty, můžete exportovat profily. Tímto způsobem můžete určit další posílení zabezpečení, které může být vyžadováno, jak je uvedeno v [dokumentaci k SECCON](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework).
 
 Spuštěním skriptu pro export dat v Intune `DeviceConfiguration_Export.ps1` z [úložiště GiuHub DeviceConfiguration](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) Exportujte všechny aktuální profily Intune.
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>Další konfigurace a posílení zabezpečení pro zvážení
 
-Podle pokynů uvedených tady jste nasadili zabezpečenou pracovní stanici. Měli byste ale také zvážit další ovládací prvky. Například:
+Podle pokynů uvedených tady jste nasadili zabezpečenou pracovní stanici. Měli byste ale také zvážit další ovládací prvky. Příklad:
 
 * omezení přístupu k alternativním prohlížečům
 * povolení odchozího HTTP
@@ -260,7 +260,7 @@ Podle pokynů uvedených tady jste nasadili zabezpečenou pracovní stanici. Mě
 
 ### <a name="set-rules-in-the-firewall-configuration-service-provider-csp"></a>Nastavení pravidel ve zprostředkovateli služby brány firewall pro konfiguraci (CSP)
 
-U povolených a blokovaných koncových bodů můžete provádět další změny v rámci správy pravidel příchozího i odchozího připojení. Jak budete nadále posílit zabezpečenou pracovní stanici, můžete snížit omezení, které zakazuje veškerý příchozí a odchozí provoz. Je možné přidat povolené odchozí lokality pro zahrnutí běžných a důvěryhodných webů. Další informace najdete v tématu [Služba konfigurace brány firewall](https://docs.microsoft.com/Windows/client-management/mdm/firewall-csp).
+U povolených a blokovaných koncových bodů můžete provádět další změny v rámci správy pravidel příchozího i odchozího připojení. Jak budete nadále posílit zabezpečenou pracovní stanici, můžete snížit omezení, které zakazuje veškerý příchozí a odchozí provoz. Je možné přidat povolené odchozí lokality pro zahrnutí běžných a důvěryhodných webů. Další informace najdete v tématu [Služba konfigurace brány firewall](/Windows/client-management/mdm/firewall-csp).
 
 Omezující Správa provozu adres URL zahrnuje:
 
@@ -302,7 +302,7 @@ Další informace o konfiguraci nastavení Chrome najdete v tématu [Správa pro
 
 V zabezpečeném režimu je instalace aplikace omezená na portál společnosti Intune. Instalace portálu ale vyžaduje přístup k Microsoft Store. V zabezpečeném řešení můžete portál společnosti zpřístupnit všem zařízením v režimu offline.
 
-Kopie [portál společnosti](https://docs.microsoft.com/Intune/store-apps-company-portal-app) spravovaná v Intune poskytuje přístup na vyžádání k dalším nástrojům, které můžete přemístit do uživatelů zabezpečených pracovních stanic.
+Kopie [portál společnosti](/Intune/store-apps-company-portal-app) spravovaná v Intune poskytuje přístup na vyžádání k dalším nástrojům, které můžete přemístit do uživatelů zabezpečených pracovních stanic.
 
 Možná budete muset nainstalovat Windows 32 – bitové aplikace nebo jiné aplikace, jejichž nasazení vyžaduje speciální přípravy. V takových případech může [Nástroj pro přípravu obsahu Microsoft Win32](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool) poskytnout soubor `.intunewin` formátu připravený k použití pro instalaci.
 
@@ -342,7 +342,7 @@ Skript [SetDesktopBackground. ps1](https://gallery.technet.microsoft.com/scriptc
 1. Vyberte **Konfigurovat**.
    1. Nastavte **Spustit tento skript pomocí přihlašovacích údajů přihlášeného** k **Ano**.
    1. Vyberte **OK**.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 1. Vyberte **přiřazení** > **Vybrat skupiny**.
    1. Přidejte **zabezpečené pracovní stanice**skupiny zabezpečení.
    1. Vyberte **Save** (Uložit).
@@ -371,11 +371,11 @@ Po nakonfigurování zařízení dokončete kontrolu a zkontrolujte konfiguraci.
 
 ## <a name="assign-devices"></a>Přiřazení zařízení
 
-Chcete-li přiřadit zařízení a uživatele, je třeba namapovat [Vybrané profily](https://docs.microsoft.com/intune/device-profile-assign) na skupinu zabezpečení. Všichni noví uživatelé, kteří potřebují ke službě oprávnění, musí být také přidáni do skupiny zabezpečení.
+Chcete-li přiřadit zařízení a uživatele, je třeba namapovat [Vybrané profily](/intune/device-profile-assign) na skupinu zabezpečení. Všichni noví uživatelé, kteří potřebují ke službě oprávnění, musí být také přidáni do skupiny zabezpečení.
 
 ## <a name="using-sentinel-and-windows-defender-atp-to-monitor-and-respond-to-security-incidents"></a>Monitorování a reakce na incidenty zabezpečení pomocí Sentinel a ochrany ATP v programu Windows Defender
 
-Monitorování nasazení zabezpečených pracovních stanic se dá udělat tak, že povolíte [Sentinel] a využijete [hrozby a správu ohrožení zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) . Tyto pokyny neposkytují vyčerpávající povědomí o hrozbách, ale poskytují dobré běžné úsilí, které monitoruje a reaguje na potenciální incidenty zabezpečení.
+Monitorování nasazení zabezpečených pracovních stanic se dá udělat tak, že povolíte [Sentinel] a využijete [hrozby a správu ohrožení zabezpečení](/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) . Tyto pokyny neposkytují vyčerpávající povědomí o hrozbách, ale poskytují dobré běžné úsilí, které monitoruje a reaguje na potenciální incidenty zabezpečení.
 
 **Azure Sentinel** použijeme k těmto akcím: 
 
@@ -387,7 +387,7 @@ Monitorování Sentinel vyžaduje, aby byly nastaveny konektory na vaše zdroje 
 
 1. V **Azure Portal**přejít na **Azure Sentinel (Preview)** > vyberte **Přidat** .
 1. V části **zvolte pracovní prostor, který se má přidat do Azure Sentinel** vyberte **vytvořit nový pracovní prostor** .
-1. Napište
+1. Zadejte:
    * **Pracovní prostor Log Analytics** – "zabezpečené monitorování pracovní stanice"
    * **Předplatné** – vyberte své aktivní předplatné.
    * **Skupina prostředků** – vyberte * * vytvořit novou * * > zabezpečenou pracovní stanici RG > **OK** .
@@ -412,7 +412,7 @@ V **programu Windows Defender ATP (rozšířená)** použijeme následující:
 * Pomocí řídicího panelu Identifikujte chybu zabezpečení na úrovni počítače během šetření.
 * Nabízení náprav do Intune
 
-Nakonfigurujte [řídicí panel ATP pro Defender](https://securitycenter.windows.com/machines). Pomocí pokynů na [řídicím panelu pro správu ohrožení zabezpečení & hrozeb](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights).
+Nakonfigurujte [řídicí panel ATP pro Defender](https://securitycenter.windows.com/machines). Pomocí pokynů na [řídicím panelu pro správu ohrožení zabezpečení & hrozeb](/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights).
 
 ## <a name="monitoring-application-activity-using-microsoft-monitoring-agent-mma"></a>Monitorování aktivity aplikace pomocí Microsoft Monitoring Agent (MMA)
 Od specializované pracovní stanice je povolený zámek aplikace pro monitorování aktivity aplikace na pracovní stanici. Aby bylo monitorování integrované v pracovním prostoru Log Analytics, musí být dodržen agent MMA a konfigurace. 
@@ -429,7 +429,7 @@ Nasazení agenta MMA pomocí skriptu PowerShellu pro Intune
 1. Vyberte **Konfigurovat**.
    1. Nastavte **Spustit tento skript pomocí přihlašovacích údajů přihlášeného** k **Ano**.
    1. Vyberte **OK**.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 1. Vyberte **přiřazení** > **Vybrat skupiny**.
    1. Přidejte **zabezpečené pracovní stanice**skupiny zabezpečení.
    1. Vyberte **Save** (Uložit).
@@ -438,7 +438,7 @@ Dál musíte nastavit Log Analytics pro příjem nových protokolů.
 1. V **Azure Portal**klikněte na **pracovní prostor Log Analytics** > vybrat-' zabezpečené monitorování pracovní stanice '
 1. Výběr **upřesňujících nastavení** > **dat** > **protokolů událostí systému Windows**
 1. V **části shromažďovat události z následujících protokolů událostí** 
-1. Napište
+1. Zadejte:
    * ' Microsoft-Windows-AppLocker/EXE a DLL ' > zrušit výběr **informativní**
    * Microsoft-Windows-AppLocker/MSI a skript > nevybranými **informacemi**
    * Microsoft-Windows-AppLocker/zabalená aplikace-nasazení > zrušit výběr **informativní**
@@ -447,20 +447,20 @@ Dál musíte nastavit Log Analytics pro příjem nových protokolů.
 
 Protokolování aplikace bude k dispozici ve vybraném pracovním prostoru Log Analytics.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
-* Naučte se [detekovat hrozby pomocí služby Azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)
-* [Prozkoumat incidenty pomocí služby Azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-investigate-cases)
-* [Nastavení automatických odpovědí na hrozby v Azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-respond-threats-playbook)
-* Informace o tom, jak zkontrolovat [skóre expozice](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score)
-* Zkontrolovat [doporučení zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation)
-* Správa [náprav](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) zabezpečení
-* Správa [zjišťování a odezvy koncových bodů](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
-* Monitorujte profily pomocí [monitorování profilů Intune](https://docs.microsoft.com/intune/device-profile-monitor).
+* Naučte se [detekovat hrozby pomocí služby Azure Sentinel](/azure/sentinel/tutorial-detect-threats)
+* [Prozkoumat incidenty pomocí služby Azure Sentinel](/azure/sentinel/tutorial-investigate-cases)
+* [Nastavení automatických odpovědí na hrozby v Azure Sentinel](/azure/sentinel/tutorial-respond-threats-playbook)
+* Informace o tom, jak zkontrolovat [skóre expozice](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score)
+* Zkontrolovat [doporučení zabezpečení](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation)
+* Správa [náprav](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) zabezpečení
+* Správa [zjišťování a odezvy koncových bodů](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
+* Monitorujte profily pomocí [monitorování profilů Intune](/intune/device-profile-monitor).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [Microsoft Intune](https://docs.microsoft.com/intune/index).
+* Přečtěte si další informace o [Microsoft Intune](/intune/index).
 * Pochopení [služby Azure AD](../index.yml).
-* Práce s [rozšířenou ochranou proti hrozbám v programu Microsoft Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
-* Zjistit [Sentinel Azure](https://docs.microsoft.com/azure/sentinel/)
+* Práce s [rozšířenou ochranou proti hrozbám v programu Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
+* Zjistit [Sentinel Azure](/azure/sentinel/)

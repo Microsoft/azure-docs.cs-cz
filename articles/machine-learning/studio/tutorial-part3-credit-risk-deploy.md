@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9353e5749906aca1f0c91b622c93ba6028cd3bef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ab6904a2569e508c0697cc273af4fd40a1767de
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432201"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898743"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Kurz 3: nasazení modelu úvěrového rizika – Azure Machine Learning Studio (Classic)
 
@@ -47,7 +47,7 @@ Vyplňte [druhou část kurzu](tutorial-part2-credit-risk-train.md).
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 Pokud chcete ostatním umožnit používání prediktivního modelu, který jste vytvořili v tomto kurzu, můžete ho nasadit jako webovou službu v Azure.
 
-Až do tohoto okamžiku jste se seznámili s školením našeho modelu. Ale v nasazované službě se už to proveďte školení – chce generovat nových předpovědí podle hodnocení vstupu uživatele na základě našich modelu. Tedy budeme provést určitou přípravu pro převod z tohoto experimentu ***školení*** experimentovat ***prediktivní*** experimentovat. 
+Až do tohoto okamžiku jste se seznámili s školením našeho modelu. Ale v nasazované službě se už to proveďte školení – chce generovat nových předpovědí podle hodnocení vstupu uživatele na základě našich modelu. Provedeme si ale nějaké přípravy na převod tohoto experimentu z ***školicího*** experimentu na ***prediktivní*** experiment. 
 
 Příprava na nasazení je proces tří kroků:  
 
@@ -59,7 +59,7 @@ Příprava na nasazení je proces tří kroků:
 
 Nejdřív je potřeba zkrátit tento experiment trochu. v současné době máte dva různé modely v experimentu, ale chcete použít jenom jeden model, když ho nasadíte jako webovou službu.  
 
-Řekněme, že jste se rozhodli, že se zesílený stromový model vypnul lépe než model SVM. První věc, kterou je potřeba udělat, je odebrat modul [vektorového počítače podpory dvou tříd][two-class-support-vector-machine] a moduly, které se použily k jeho školení. Možná budete chtít vytvořit kopii experimentu nejprve kliknutím **uložit jako** v dolní části na plátno experimentu.
+Řekněme, že jste se rozhodli, že se zesílený stromový model vypnul lépe než model SVM. První věc, kterou je potřeba udělat, je odebrat modul [vektorového počítače podpory dvou tříd][two-class-support-vector-machine] a moduly, které se použily k jeho školení. Kopii experimentu můžete vytvořit nejdřív tak, že kliknete na **Uložit jako** v dolní části plátna experimentu.
 
 je nutné odstranit následující moduly:  
 
@@ -68,7 +68,7 @@ je nutné odstranit následující moduly:
 * [Normalizovat data][normalize-data] (obě z nich)
 * [Vyhodnotit model][evaluate-model] (protože dokončili jste vyhodnocování modelů)
 
-Vyberte každého modulu a stiskněte klávesu Delete nebo klikněte pravým tlačítkem na modul a vyberte **odstranit**. 
+Vyberte jednotlivé moduly a stiskněte klávesu DELETE nebo klikněte pravým tlačítkem na modul a vyberte **Odstranit**. 
 
 ![Zvýrazní moduly, které se mají odstranit, aby se odstranil model podpory Vector.](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
 
@@ -91,19 +91,19 @@ Můžete to provést ručně, ale naštěstí všechny tři kroky můžete prov�
 > [!TIP]
 > Pokud potřebujete další podrobnosti o tom, co se stane, když převedete školicí experiment na prediktivní experiment, přečtěte si téma [Příprava modelu pro nasazení v Azure Machine Learning Studio (Classic)](convert-training-experiment-to-scoring-experiment.md).
 
-Po kliknutí na **nastavení webové služby**, stane několik věcí:
+Když kliknete na **nastavit webovou službu**, stane se několik věcí:
 
-* Trénovaného modelu je převést na jediné **Trénovaného modelu** modulu a uložené paletě modulů nalevo od plátna experimentu (najdete ho pod **Trénované modely**)
+* Vycvičený model se převede na jeden modul **trained model** a uloží se do palety modulu nalevo od plátna experimentu (můžete ho najít v části **trained Models**).
 * Moduly, které byly použity pro vzdělávání se odeberou; konkrétně:
   * [Zvýšení rozhodovacího stromu se dvěma třídami][two-class-boosted-decision-tree]
   * [Model výuky][train-model]
   * [Rozdělit data][split]
   * druhý modul [spuštění skriptu jazyka R][execute-r-script] , který se použil pro testovací data
 * Uložené trénovaného modelu je přidána zpět do experimentu
-* **Webová služba vstup** a **webové služby výstup** moduly jsou přidány (tyto identifikátory identifikují ve kterém se data uživatele zadejte modelu a jaká data se vrátí, když přistupuje k webové službě)
+* Jsou přidány výstupní moduly **webové služby** a **výstupní webové služby** (které určují, kde budou data uživatele zadávat model a jaká data se vrátí, když je webová služba dostupná).
 
 > [!NOTE]
-> Uvidíte, že experiment se uloží do dvou částí v rámci karty, které byly přidány v horní části na plátno experimentu. Původní výukového experimentu je na kartě **výukového experimentu**, a nově vytvořený prediktivní experiment probíhá **prediktivní experiment**. Prediktivní experiment je ten, který nasadíte jako webovou službu.
+> Uvidíte, že experiment se uloží do dvou částí v rámci karty, které byly přidány v horní části na plátno experimentu. Původní školicí experiment je pod **experimentem školení**na kartě a nově vytvořený prediktivní experiment je v rámci **prediktivního experimentu**. Prediktivní experiment je ten, který nasadíte jako webovou službu.
 
 v rámci tohoto konkrétního experimentu je třeba provést jeden další krok.
 Přidali jste dva moduly [spuštění skriptu R][execute-r-script] , které poskytují funkci váhy dat. To bylo pouze štych, které jste potřebovali pro školení a testování, takže tyto moduly můžete vzít v konečném modelu.
@@ -128,7 +128,7 @@ Spusťte experiment jednou, a to tak, že kliknete na **Spustit**. Pokud chcete 
 Můžete nasadit experiment jako buď webové služby Classic, nebo jako novou webovou službu, která je založená na Azure Resource Manageru.
 
 ### <a name="deploy-as-a-classic-web-service"></a>Nasadit jako webovou službu Classic
-Nasazení webové služby Classic odvozený z našich experiment, klikněte na tlačítko **nasadit webovou službu** dole na plátně a vyberte **nasazení webové služby [Classic]** . Machine Learning Studio (Classic) nasadí experiment jako webovou službu a přejde na řídicí panel pro tuto webovou službu. Na této stránce se můžete vrátit do experimentu (**Zobrazit snímek** nebo **Zobrazit nejnovější**) a spustit jednoduchý test webové služby (viz **testování webové služby** níže). Zde najdete také informace pro vytváření aplikací, které mají přístup k webové službě (Další informace najdete v dalším kroku tohoto kurzu).
+Pokud chcete nasadit klasickou webovou službu odvozenou z našeho experimentu, klikněte na **nasadit webovou službu** pod plátno a vyberte **nasadit webovou službu [Classic]** . Machine Learning Studio (Classic) nasadí experiment jako webovou službu a přejde na řídicí panel pro tuto webovou službu. Na této stránce se můžete vrátit do experimentu (**Zobrazit snímek** nebo **Zobrazit nejnovější**) a spustit jednoduchý test webové služby (viz **testování webové služby** níže). Zde najdete také informace pro vytváření aplikací, které mají přístup k webové službě (Další informace najdete v dalším kroku tohoto kurzu).
 
 ![Řídicí panel webové služby](./media/tutorial-part3-credit-risk-deploy/publish6.png)
 
@@ -145,29 +145,29 @@ Službu můžete nakonfigurovat kliknutím na kartu **Konfigurace** . Tady můž
 
 K nasazení nové webové služby získané z našich experiment:
 
-1. Klikněte na tlačítko **nasadit webovou službu** dole na plátně a vyberte **nasazení [nové] webová služba**. Machine Learning Studio (Classic) vás přenáší na stránku **experimentu nasazení** webové služby Azure Machine Learning Web Services.
+1. Klikněte na **nasadit webovou službu** pod plátno a vyberte **nasadit webovou službu [New]** . Machine Learning Studio (Classic) vás přenáší na stránku **experimentu nasazení** webové služby Azure Machine Learning Web Services.
 
 1. Zadejte název pro webovou službu. 
 
-1. Pro **cenový plán**, můžete vybrat stávajícím cenovým tarifem, nebo vyberte "Vytvořit novou" a pojmenujte nový plán a možnost měsíční plán. Výchozí plán úrovně plány vaší výchozí oblasti a webová služba je nasazený na danou oblast.
+1. V případě **cenového plánu**můžete vybrat existující Cenový tarif nebo vybrat vytvořit nové a zadat název nového plánu a vybrat možnost měsíčního plánu. Výchozí plán úrovně plány vaší výchozí oblasti a webová služba je nasazený na danou oblast.
 
-1. Klikněte na tlačítko **nasazení**.
+1. Klikněte na **nasadit**.
 
-Po několika minutách **rychlý Start** se otevře stránka pro webovou službu.
+Po několika minutách se otevře stránka **rychlý Start** pro vaši webovou službu.
 
 Službu můžete nakonfigurovat kliknutím na kartu **Konfigurovat** . Tady můžete upravit název služby a zadat pro něj popis. 
 
-K otestování webové služby, klikněte na tlačítko **testování** kartu (naleznete v tématu **testovat webovou službu** níže). Informace o vytváření aplikací, které mají přístup k webové službě, získáte tak, že kliknete na kartu **spotřebování** (další krok v tomto kurzu se zobrazí podrobněji).
+Chcete-li otestovat webovou službu, klikněte na kartu **test** (viz **Test webové služby** níže). Informace o vytváření aplikací, které mají přístup k webové službě, získáte tak, že kliknete na kartu **spotřebování** (další krok v tomto kurzu se zobrazí podrobněji).
 
 > [!TIP]
-> Po jeho nasazení, můžete aktualizovat webovou službu. Například pokud chcete změnit váš model, pak výukového experimentu můžete upravit, upravit parametry modelu a klikněte na **nasadit webovou službu**, kde vyberou **nasazení webové služby [Classic]** nebo **Nasazení webové služby [nové]** . Při nasazení experimentu se nahradí webovou službu, teď pomocí aktualizovaného modelu.  
+> Po jeho nasazení, můžete aktualizovat webovou službu. Například pokud chcete změnit svůj model, můžete upravit experiment pro školení, upravit parametry modelu a kliknout na **nasadit webovou službu**, vybrat **nasadit webovou službu [Classic]** nebo **nasadit webovou službu [New]** . Při nasazení experimentu se nahradí webovou službu, teď pomocí aktualizovaného modelu.  
 > 
 > 
 
 ## <a name="test-the-web-service"></a>Test webové služby
 
 Když je k webové službě přistupovaná, data uživatele se doplní přes **Vstupní modul webové služby** , ve kterém se předají do modulu [skóre modelu][score-model] a skóre. Způsob, jakým jste nastavili prediktivní experiment, model očekává data ve stejném formátu jako v původní datové sadě úvěrového rizika.
-Výsledky se vrátí uživateli z webové služby prostřednictvím **webové služby výstup** modulu.
+Výsledky se vrátí uživateli z webové služby přes **výstupní modul webové služby** .
 
 > [!TIP]
 > Jak máte nakonfigurované prediktivní experiment, vrátí se celý výsledek z modulu [skóre modelu][score-model] . To zahrnuje veškerá vstupní data a rizika hodnota kreditů a bodovací pravděpodobnosti. Ale něco jiného může vrátit, pokud chcete, aby – například může vrátit pouze hodnota kreditů rizika. Provedete to tak, že vložíte modul [Vybrat sloupce][select-columns] mezi [modelem skóre][score-model] a **výstupem webové služby** , aby se vyloučily sloupce, které nechcete, aby webová služba vracela. 
@@ -175,10 +175,10 @@ Výsledky se vrátí uživateli z webové služby prostřednictvím **webové sl
 > 
 
 Klasickou webovou službu můžete testovat buď v **Machine Learning Studio (Classic)** , nebo na portálu **Azure Machine Learning Web Services** .
-Můžete testovat nové webové služby pouze v **Machine Learning Web Services** portálu.
+Novou webovou službu můžete testovat jenom na portálu **Machine Learning Web Services** .
 
 > [!TIP]
-> Při testování na portálu Azure Machine Learning Web Services, můžete mít na portálu vytvořit ukázková data, která slouží k otestování služby typu žádost-odpověď. Na **konfigurovat** stránky, vyberte Ano pro" **povolené rozhraní ukázková Data?** . Když otevřete kartu odpověď na požadavek na **Test** stránce portálu vyplní ukázková data z původní datové sady úvěrové riziko.
+> Při testování na portálu Azure Machine Learning Web Services, můžete mít na portálu vytvořit ukázková data, která slouží k otestování služby typu žádost-odpověď. Na stránce **Konfigurace** vyberte možnost Ano, pokud chcete **ukázková data povolit?** . Když na stránce **test** otevřete kartu požadavek-odpověď, vyplní portál ukázková data přijatá z původní datové sady kreditového rizika.
 
 ### <a name="test-a-classic-web-service"></a>Test webové služby Classic
 
@@ -186,37 +186,37 @@ Klasickou webovou službu můžete testovat v Machine Learning Studio (Classic) 
 
 #### <a name="test-in-machine-learning-studio-classic"></a>Test v Machine Learning Studio (klasický)
 
-1. Na **řídicí panel** stránky pro webovou službu, klikněte na tlačítko **testovací** tlačítko **výchozí koncový bod**. Dialogové okno otevře a vyzve vás vstupních dat pro službu. Jedná se o stejné sloupce, které se zobrazovaly v původní datové sady úvěrové riziko.  
+1. Na stránce **řídicího panelu** webové služby klikněte na tlačítko **test** pod **výchozím koncovým bodem**. Dialogové okno otevře a vyzve vás vstupních dat pro službu. Jedná se o stejné sloupce, které se zobrazovaly v původní datové sady úvěrové riziko.  
 
-1. Zadejte sadu dat a pak klikněte na tlačítko **OK**. 
+1. Zadejte sadu dat a pak klikněte na **OK**. 
 
 #### <a name="test-in-the-machine-learning-web-services-portal"></a>Test na portálu webových služeb Machine Learning
 
-1. Na **řídicí panel** stránky pro webovou službu, klikněte na tlačítko **Test preview** odkaz pod **výchozí koncový bod**. Zkušební stránku na portálu Azure Machine Learning Web Services pro koncový bod webové služby se otevře a zobrazí výzvu k vstupní data pro službu. Jedná se o stejné sloupce, které se zobrazovaly v původní datové sady úvěrové riziko.
+1. Na stránce **řídicího panelu** webové služby klikněte na odkaz **test Preview** pod **výchozím koncovým bodem**. Zkušební stránku na portálu Azure Machine Learning Web Services pro koncový bod webové služby se otevře a zobrazí výzvu k vstupní data pro službu. Jedná se o stejné sloupce, které se zobrazovaly v původní datové sady úvěrové riziko.
 
-2. Klikněte na tlačítko **testování Request-Response**. 
+2. Klikněte na **testovat požadavek-odpověď**. 
 
 ### <a name="test-a-new-web-service"></a>Otestovat novou webovou službu
 
 Nové webové služby můžete otestovat pouze na portálu webových služeb Machine Learning.
 
-1. V [Azure Machine Learning Web Services](https://services.azureml.net/quickstart) portálu klikněte na **Test** v horní části stránky. **Test** stránka se otevře a můžete zadat data pro službu. Vstupní pole zobrazí odpovídají sloupcům, které se zobrazovaly v původní datové sady úvěrové riziko. 
+1. Na portálu [Azure Machine Learning Web Services](https://services.azureml.net/quickstart) klikněte v horní části stránky na **test** . Otevře se stránka **test** a můžete zadat data pro službu. Vstupní pole zobrazí odpovídají sloupcům, které se zobrazovaly v původní datové sady úvěrové riziko. 
 
-1. Zadejte sadu dat a pak klikněte na tlačítko **odpověď na požadavek testu**.
+1. Zadejte sadu dat a pak klikněte na **testovat požadavek-odpověď**.
 
 Výsledky testu se zobrazí na pravé straně stránky ve výstupním sloupci. 
 
 
 ## <a name="manage-the-web-service"></a>Správa webové služby
 
-Po nasazení webové služby Classic nebo nové, ji můžete spravovat z [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart) portálu.
+Po nasazení webové služby, ať už jde o klasickou nebo novou, ji můžete spravovat z portálu [Microsoft Azure Machine Learning webové služby](https://services.azureml.net/quickstart) .
 
 Ke sledování výkonu webové služby:
 
-1. Přihlaste se k [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart) portálu
-1. Klikněte na tlačítko **webové služby**
+1. Přihlaste se k portálu [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart)
+1. Klikněte na **webové služby** .
 1. Klikněte na webovou službu
-1. Klikněte na tlačítko **řídicího panelu**
+1. Klikněte na **řídicí panel** .
 
 ## <a name="access-the-web-service"></a>Nastavení přístupu k webové službě
 
@@ -224,14 +224,10 @@ V předchozím kroku tohoto kurzu jste nasadili webovou službu, která využív
 
 Webová služba je webová služba Azure, který dokáže přijmout a vrátit data pomocí rozhraní REST API v jednom ze dvou způsobů:  
 
-* **Žádost/odpověď** – uživatel odesílá jeden nebo více řádků daty o úvěrovém ke službě s použitím protokolu HTTP a služba jako odpověď vrátí jednu nebo více sad výsledků.
-* **Spuštění dávky** – uživatel uloží jednu nebo více řádků daty o úvěrovém v Azure blob a pak odešle umístění objektu blob do služby. Služba získává všechny řádky dat do vstupního objektu blob, jiný objekt blob uloží výsledky a vrátí adresu URL tohoto kontejneru.  
+* **Požadavek nebo odpověď** – uživatel odešle do služby jeden nebo více řádků kreditních dat pomocí protokolu HTTP a služba odpoví jednou nebo více sadami výsledků.
+* **Dávkové spuštění** – uživatel ukládá jeden nebo více řádků kreditních dat do objektu blob Azure a pak odešle umístění objektu blob do služby. Služba získává všechny řádky dat do vstupního objektu blob, jiný objekt blob uloží výsledky a vrátí adresu URL tohoto kontejneru.  
 
-Nejrychlejší a nejjednodušší způsob pro přístup k webové služby Classic, je prostřednictvím [webová aplikace Azure ML Request Response Service](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) nebo [Azure ML Batch spuštění služby webové aplikace šablona](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
-
-Tyto šablony webové aplikace můžete vytvářet vlastní webové aplikace, který zná vstupních dat webové služby a budou vracet. Všechno, co je třeba provést je poskytnout přístup k vaší webové služby a data a udělá zbytek šablony.
-
-Další informace o použití šablony webové aplikace najdete v tématu [využívání služby Azure Machine Learning Web pomocí šablony webové aplikace](/azure/machine-learning/studio/consume-web-services).
+Další informace o přístupu a používání webové služby najdete v tématu věnovaném [využívání Azure Machine Learning webové služby pomocí šablony webové aplikace](/azure/machine-learning/studio/consume-web-services).
 
 
 

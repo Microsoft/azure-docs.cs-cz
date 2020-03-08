@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: f82add78eef418e3644a5961d984708d3721a8dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426060"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851178"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
@@ -67,7 +67,7 @@ Chcete-li vytvořit jednoduchou uživatelem definovanou funkci jazyka JavaScript
     }
     ```
 
-6.  Vyberte **Uložit**. Daná funkce se zobrazí v seznamu funkcí.
+6.  Vyberte **Save** (Uložit). Daná funkce se zobrazí v seznamu funkcí.
 7.  Vyberte novou funkci **hex2Int** a zkontrolujte definici funkce. U všech funkcí je k aliasu funkce přidaná předpona **UDF**. Při volání funkce v dotazu Stream Analytics je nutné *zahrnout předponu*. V tomto případě byste volali **UDF.hex2Int**.
 
 ## <a name="testing-javascript-udfs"></a>Testování UDF JavaScriptu 
@@ -103,8 +103,8 @@ Stream Analytics | JavaScript
 --- | ---
 bigint | Číslo (JavaScript může používat celá čísla jenom do hodnoty 2^53)
 Datum a čas | Datum (JavaScript podporuje jenom milisekundy)
-double | Číslo
-nvarchar(MAX) | Řetězec
+double | Počet
+nvarchar(MAX) | String
 Záznam | Objekt
 Pole | Pole
 NULL | Null
@@ -115,9 +115,9 @@ Převody z jazyka JavaScript do Stream Analytics:
 
 JavaScript | Stream Analytics
 --- | ---
-Číslo | Bigint (pokud je číslo zaokrouhlené a je v rozsahu long.MinValue a long.MaxValue; jinak typ double)
+Počet | Bigint (pokud je číslo zaokrouhlené a je v rozsahu long.MinValue a long.MaxValue; jinak typ double)
 Datum | Datum a čas
-Řetězec | nvarchar(MAX)
+String | nvarchar(MAX)
 Objekt | Záznam
 Pole | Pole
 Null, Nedefinováno | NULL
@@ -125,7 +125,7 @@ Jakýkoli jiný typ (například funkce nebo chyba) | Nepodporuje se (výsledkem
 
 Jazyk JavaScript rozlišuje velká a malá písmena a velikost polí objektu v kódu JavaScriptu musí odpovídat velikosti písmen polí v příchozích datech. Pamatujte na to, že úlohy s úrovní kompatibility 1,0 převede pole z příkazu SQL SELECT na malá písmena. V části úroveň kompatibility 1,1 a vyšší budou mít pole z příkazu SELECT stejná velká písmena jako zadaná v dotazu SQL.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 Chyby jazyka JavaScript za běhu se považují za závažné a zobrazují se prostřednictvím protokolu aktivit. Pokud chcete protokol načíst, přejděte na portálu Azure Portal na příslušnou úlohu a vyberte **Protokol aktivit**.
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Další vzory uživatelem definovaných funkcí jazyka JavaScript
@@ -147,7 +147,7 @@ SELECT
     DataString,
     DataValue,
     HexValue,
-    UDF.json_stringify(input) As InputEvent
+    UDF.jsonstringify(input) As InputEvent
 INTO
     output
 FROM
@@ -161,7 +161,7 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku.  
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
 
-## <a name="get-help"></a>Získání nápovědy
+## <a name="get-help"></a>Podpora
 Pokud potřebujete další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky

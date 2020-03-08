@@ -1,19 +1,19 @@
 ---
 title: Získání podpory pro portál komerčního tržiště v partnerském centru
 description: Seznamte se s možnostmi podpory v partnerském centru, včetně postupu zapracování žádosti o podporu.
-author: ChJenk
+author: qianw211
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/07/2020
+ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827889"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898292"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Podpora programu komerčního tržiště v partnerském centru
 
@@ -29,67 +29,55 @@ Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb
 
 1. V horní nabídce na pravé straně stránky vyberte ikonu **Podpora** . 
  
-   ![Ikona podpory](./media/commercial-marketplace-support.png)
-
-1. Podokno **pomoc a podpora** se zobrazí na pravé straně stránky. Pro každý program v partnerském centru bude k dispozici rozevírací seznam, ve kterém je váš účet zaregistrován. Vyberte rozevírací nabídku **komerčního tržiště** . 
+1. Podokno **pomoc a podpora** se zobrazí na pravé straně stránky. 
  
    ![Rozevírací nabídka podpora](./media/commercial-marketplace-support-pane.png)
+
+    Nebo přejít do podokna **domovské stránky** a vybrat **pomoc a podpora**.
+
+   ![Pomoc a podpora z domovské stránky](./media/homepage-help-support.png)
 
 1. Vyberte **[dokumentaci](../index.md)** a Projděte si kompletní odpovědi na otázky a prostředky. 
 
 1. Vyberte **[Fórum Komunitní fórum na webu Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** a odpovězte na své otázky tím, že využijete znalosti jiných vydavatelů Microsoftu. 
 
-1. Vyberte **[Další pomoc](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** pro otevření nového lístku **žádosti o podporu** . 
+1. Vyberte **[Další pomoc](https://aka.ms/marketplacepublishersupport)** pro otevření nového lístku **žádosti o podporu** .  
 
 ## <a name="how-to-open-a-support-ticket"></a>Postup otevření lístku podpory
 
-Výběr **Další pomoci** z nabídky podpora komerčního tržiště v partnerském centru vás přesměruje na stránku Podpora Microsoftu pro firmy. Zobrazí se několik rozevíracích nabídek. Prvních několik rozevíracích nabídek je pro vás automaticky vyplněné. V případě podpory na webu Marketplace Identifikujte produktovou rodinu jako **cloudové a online služby**, produkt jako **vydavatele webu Marketplace**a verzi produktu jako **publikování na webu Marketplace**. Neměňte tyto výběry předem vyplněných rozevíracích nabídek. 
+Teď jste připraveni otevřít lístek podpory na obrazovce **pomoc a podpora** .
 
-- **Vyberte kategorii, která nejlépe popisuje problém**: zvolte kategorii, která nejlépe odpovídá vašemu dotazu nebo problému. Výběrem kategorie se zobrazí další rozevírací nabídka, která vás vyzve k výběru problému, který nejlépe popisuje váš problém.
+![Nápověda a podpora](./media/help-and-support.png)
 
-- **Vyberte problém, který nejlépe popisuje problém**: Zvolte problém z uvedených možností, které nejlépe odpovídají vašemu problému. V závislosti na vašem problému se může zobrazit nová část s informacemi o odkazech, které by mohly pomáhat s odkazy souvisejícími s vaším problémem. Před výběrem tlačítka **Další** zkontrolujte tyto odkazy a zjistěte, zda je otázka nebo problém vyřešen.
+>[!Note]
+>Pokud jste se přihlásili v partnerském centru, získáte lepší zkušenosti s podporou.
 
-Když vyberete tlačítko **Další** , budete přesměrováni na stránku s **podrobnostmi o problému** . 
+**Možnost 1:** Zadejte klíčová slova, jako je: Marketplace, aplikace Azure, nabídka SaaS, Správa účtů, Správa zájemců, problém nasazení, výběr atd.
 
-#### <a name="tell-us-more-about-your-issue"></a>Uveďte další podrobnosti o vašich potížích.
+**Možnost 2:** Témata procházení – > vybrat **kategorii** = komerční marketplace – > vyberte příslušné **téma** a pak dílčí **téma**.
 
-V části **Podrobnosti o problému** vysvětlete, k čemu potřebujete pomáhat.
+Jakmile zjistíte, že jste si vybrali téma, vyberte **Zkontrolovat řešení**.
 
-- Vyberte svou zemi.
-- Vyberte jazyk, ve kterém chcete získat podporu.
-- Zadejte název problému (od 3 do 200 znaků).  
-- Zadejte stručný popis problému (maximálně 2000 znaků).
-- Vyberte **Next** (Další).
+![Další krok](./media/next-step.png)
 
-#### <a name="select-a-support-plan"></a>Vybrat plán podpory
+Budou k dispozici následující možnosti:
 
-V části **plán podpory** se nevyžadují žádné informace. Vyberte **Next** (Další). 
+* Pokud chcete vybrat jiné téma, vyberte v části **vybraný problém**jiný odkaz na téma.
+* Zkontrolujte popis tohoto problému, pokud je k dispozici.  Je to text zobrazený výše **doporučenými kroky**.
+* Zkontrolujte **Doporučené kroky**, pokud jsou k dispozici.
+* Zkontrolujte **Doporučené dokumenty**, pokud jsou k dispozici.
 
-#### <a name="select-the-severity-of-your-issue"></a>Vyberte závažnost problému.
+![Doporučená řešení](./media/recommended-solutions.png)
 
-V části **závažnost** se nevyžadují žádné informace. Vyberte **Next** (Další). 
+V případě, že odpověď nemůžete najít v **doporučených řešeních**, klikněte na **poskytnout podrobnosti o problému**.  Vyplněním formuláře a všech povinných polí můžete urychlit proces řešení.  Pak klikněte na **Odeslat**.
 
-#### <a name="who-should-we-contact"></a>Kdo by měl kontaktovat
-
-V části **kontaktní údaje** ověřte správnost jména, telefonního čísla a e-mailu primárního kontaktu. 
-- Aktualizujte tyto informace, pokud vidíte vše, co je nesprávné.
-- V případě potřeby můžete přidat další kontakty z vaší společnosti do této žádosti o podporu.
-- Vyberte **Další**.
-
-#### <a name="review-and-submit-your-support-request"></a>Kontrola a odeslání žádosti o podporu
-
-Projděte si informace o žádosti o podporu v části **přezkoumání** . 
-- Pokud jsou všechny informace správné, vyberte **Odeslat**. 
-- Pokud je potřeba aktualizovat nějaké informace, vyberte tlačítko **změnit** vedle oddílu, který je potřeba aktualizovat.
+>[!Note]
+>Pokud jste přihlášeni do partnerského centra a téma vyžaduje ověření, budete požádáni o přihlášení, než bude možné pokračovat.  Pro veřejná témata není ověřování nutné.
 
 ## <a name="track-your-existing-support-requests"></a>Sledování stávajících žádostí o podporu 
 
-Pokud chcete sledovat svou žádost o podporu, navštivte [stránku podpory komerčního tržiště](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). 
-
-V horním modrém panelu nabídek vedle možnosti "podpora pro firmy" vyberte odkaz **žádosti o podporu** . 
-
-Všechny otevřené a uzavřené žádosti o podporu najdete v části **Podpora pro Microsoft Professional** . 
+Pokud chcete zkontrolovat všechny otevřené a uzavřené lístky, na levém navigačním panelu klikněte na **komerční Marketplace** a pak vyberte **Podpora**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)
+- [Aktualizace stávající nabídky na komerčním marketplace](./update-existing-offer.md)

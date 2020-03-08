@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251862"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898835"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -34,7 +34,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-load-balancer"></a>Vytvoření Load Balancer
 
-V této části vytvoříte Load Balancer, která pomáhá vyrovnávat zatížení virtuálních počítačů. Můžete vytvořit veřejné Load Balancer nebo interní Load Balancer. Když vytvoříte veřejnou Load Balancer, musíte také vytvořit novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurovaná jako front-end (s názvem jako *LoadBalancerFrontend* ) pro Load Balancer.
+V této části vytvoříte Load Balancer, která pomáhá vyrovnávat zatížení virtuálních počítačů. Můžete vytvořit veřejné Load Balancer nebo interní Load Balancer. Při vytváření veřejné Load Balancer musíte také vytvořit novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurovaná jako front-end (s názvem jako *LoadBalancerFrontend* ) pro Load Balancer.
 
 1. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **síťové** > **Load Balancer**.
 2. Na kartě **základy** na stránce **vytvořit službu Vyrovnávání zatížení** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
@@ -46,7 +46,7 @@ V této části vytvoříte Load Balancer, která pomáhá vyrovnávat zatížen
     | Název                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte možnost **veřejné**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **Standard** nebo **Basic**. Microsoft doporučuje pro produkční úlohy Standard. |
+    | Skladová položka           | Vyberte **Standard** nebo **Basic**. Microsoft doporučuje pro produkční úlohy Standard. |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou chcete použít, vyberte **použít existující** . |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   K vytvoření základní veřejné IP adresy použijte ```-SKU Basic```. Základní veřejné IP adresy nejsou kompatibilní se službou Load Balancer **úrovně Standard** . Microsoft doporučuje používat pro produkční úlohy **Standard** .|
     | Zóna dostupnosti | Typ *zóna – redundantní* pro vytvoření odolného Load Balancer. Pokud chcete vytvořit oblast Load Balancer, vyberte konkrétní zónu z 1, 2 nebo 3. |
@@ -81,7 +81,7 @@ Pokud chcete Load Balancer, aby mohl monitorovat stav vaší aplikace, použijte
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte *myHealthProbe*. |
-    | Protocol (Protokol) | Vyberte **http**. |
+    | Protokol | Vyberte **http**. |
     | Port | Zadejte *80*.|
     | Interval | Zadejte hodnotu *15* pro **interval** mezi pokusy o sondu v sekundách. |
     | Prahová hodnota špatného stavu | Vyberte **2** pro počet chybných **prahových hodnot** nebo po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.|
@@ -98,7 +98,7 @@ Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do v
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte *myHTTPRule*. |
-    | Protocol (Protokol) | Vyberte **TCP**. |
+    | Protokol | Vyberte **TCP**. |
     | Port | Zadejte *80*.|
     | Back-endový port | Zadejte *80*. |
     | Back-endový fond | Vyberte *myBackendPool*.|

@@ -186,9 +186,14 @@
               href: live-event-error-codes.md
             - name: Kódy chyb úlohy
               href: job-error-codes.md
-    - name: Doprovodné materiály pro vysokou dostupnost
-      displayName: 'failover, bcdr'
-      href: media-services-high-availability-guidance.md
+    - name: Vysoká dostupnost
+      items:
+        - name: Kódování
+          displayName: 'failover, bcdr'
+          href: media-services-high-availability-encoding.md
+        - name: Streamování
+          displayName: 'failover, bcdr'
+          href: media-services-high-availability-streaming.md
     - name: Pokyny k migraci z v2 na v3
       href: migrate-from-v2-to-v3.md
       displayName: naming

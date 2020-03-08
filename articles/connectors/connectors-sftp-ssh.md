@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161870"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851523"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -36,29 +36,34 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   > [!NOTE]
   > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
+  Toto adaptivní chování můžete přepsat při [zadání velikosti konstantního bloku](#change-chunk-size) , která se má použít místo toho. Tato velikost může být v rozsahu od 5 MB do 50 MB. Předpokládejme například, že máte soubor 45 MB a síť, která může podporovat tuto velikost souboru bez latence. Adaptivní dělení výsledků v několika voláních, a ne v jednom volání. Pokud chcete snížit počet volání, můžete zkusit nastavit velikost bloku dat 50 MB. V různých scénářích platí, že pokud vaše aplikace logiky čeká na vypršení časového limitu, například při použití 15 MB bloků dat, můžete zkusit zmenšit velikost na 5 MB.
+
   Velikost bloku dat je přidružená k připojení, což znamená, že můžete použít stejné připojení pro akce, které podporují práci s bloky dat, a pak pro akce, které nepodporují práci s bloky dat. V takovém případě velikost bloku dat pro akce, které nepodporují rozsahy bloků dat z 5 MB na 50 MB. Tato tabulka ukazuje, které akce SFTP-SSH podporují vytváření bloků dat:
 
-  | Akce | Podpora bloků dat |
-  |--------|------------------|
-  | **Kopírovat soubor** | Ne |
-  | **Vytvořit soubor** | Ano |
-  | **Vytvořit složku** | Neuvedeno |
-  | **Odstranit soubor** | Neuvedeno |
-  | **Extrakce archivu do složky** | Neuvedeno |
-  | **Získat obsah souboru** | Ano |
-  | **Získání obsahu souboru pomocí cesty** | Ano |
-  | **Získat metadata souboru** | Neuvedeno |
-  | **Získat metadata souboru pomocí cesty** | Neuvedeno |
-  | **Zobrazit seznam souborů ve složce** | Neuvedeno |
-  | **Přejmenovat soubor** | Neuvedeno |
-  | **Aktualizovat soubor** | Ne |
-  |||
+  | Akce | Podpora bloků dat | Přepsat podporu velikosti bloku |
+  |--------|------------------|-----------------------------|
+  | **Kopírovat soubor** | Ne | Neuvedeno |
+  | **Vytvořit soubor** | Ano | Ano |
+  | **Vytvořit složku** | Neuvedeno | Neuvedeno |
+  | **Odstranit soubor** | Neuvedeno | Neuvedeno |
+  | **Extrakce archivu do složky** | Neuvedeno | Neuvedeno |
+  | **Získat obsah souboru** | Ano | Ano |
+  | **Získání obsahu souboru pomocí cesty** | Ano | Ano |
+  | **Získat metadata souboru** | Neuvedeno | Neuvedeno |
+  | **Získat metadata souboru pomocí cesty** | Neuvedeno | Neuvedeno |
+  | **Zobrazit seznam souborů ve složce** | Neuvedeno | Neuvedeno |
+  | **Přejmenovat soubor** | Neuvedeno | Neuvedeno |
+  | **Aktualizovat soubor** | Ne | Neuvedeno |
+  ||||
 
-* Protokol SFTP – triggery SSH nepodporují vytváření bloků dat. Při vyžádání obsahu souboru triggery vyberou pouze soubory, které jsou 15 MB nebo menší. Pokud chcete získat soubory větší než 15 MB, použijte tento vzor:
+  > [!NOTE]
+  > Pro nahrání velkých souborů potřebujete oprávnění ke čtení i zápisu pro kořenovou složku na vašem serveru SFTP.
 
-  * Použijte Trigger SFTP-SSH, který vrátí vlastnosti souboru, například **při přidání nebo úpravě souboru (pouze vlastnosti)** .
+* Protokol SFTP – triggery SSH nepodporují bloky zpráv. Při vyžádání obsahu souboru triggery vyberou pouze soubory, které jsou 15 MB nebo menší. Pokud chcete získat soubory větší než 15 MB, použijte tento vzor:
 
-  * Postupujte podle aktivační události s protokolem SFTP-SSH **získat obsah souboru** , který načte kompletní soubor a implicitně použije bloky zpráv.
+  1. Použijte Trigger SFTP-SSH, který vrátí pouze vlastnosti souboru, například **při přidání nebo úpravě souboru (pouze vlastnosti)** .
+
+  1. Postupujte podle aktivační události s protokolem SFTP-SSH **získat obsah souboru** , který načte kompletní soubor a implicitně použije bloky zpráv.
 
 <a name="comparison"></a>
 
@@ -153,13 +158,13 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole "SFTP SSH" jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete.
+1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole `sftp ssh` jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete.
 
    -nebo-
 
-   Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte možnost **Nový krok**. Do vyhledávacího pole zadejte jako filtr "SFTP SSH". V seznamu akce vyberte akci, kterou chcete.
+   Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte **Nový krok**. Do vyhledávacího pole zadejte `sftp ssh` jako filtr. V seznamu akce vyberte akci, kterou chcete.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Zadejte potřebné informace pro vaše připojení.
 
@@ -180,6 +185,22 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 1. Až skončíte s zadáním podrobností o připojení, vyberte **vytvořit**.
 
 1. Teď zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
+
+<a name="change-chunk-size"></a>
+
+## <a name="override-chunk-size"></a>Přepsat velikost bloku dat
+
+Chcete-li přepsat výchozí adaptivní chování, které využívá bloky dat, můžete zadat konstantní velikost bloku od 5 MB do 50 MB.
+
+1. V pravém horním rohu akce vyberte tlačítko se třemi tečkami ( **...** ) a pak vyberte **Nastavení**.
+
+   ![Otevření nastavení SFTP-SSH](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
+
+1. V části **přenos obsahu**zadejte do vlastnosti **velikost bloku** celé číslo od `5` do `50`, například: 
+
+   ![Místo toho zadejte velikost bloku, která se má použít.](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
+
+1. Jakmile budete hotovi, vyberte **Hotovo**.
 
 ## <a name="examples"></a>Příklady
 

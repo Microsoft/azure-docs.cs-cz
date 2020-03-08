@@ -6,8 +6,8 @@
       href: scheduler-intro.md
 - name: Začínáme
   items:
-    - name: Vytváření a správa úloh – portál
-      href: scheduler-get-started-portal.md
+    - name: Vytváření a správa plánů – Azure PowerShell
+      href: scheduler-powershell-reference.md
     - name: Migrace ze služby Scheduler na Logic Apps
       href: migrate-from-scheduler-to-logic-apps.md
 - name: Koncepty

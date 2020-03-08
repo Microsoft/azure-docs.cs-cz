@@ -3,12 +3,12 @@ title: Kurz – naplánování úlohy ACR
 description: V tomto kurzu se dozvíte, jak spustit úlohu Azure Container Registry podle definovaného plánu nastavením jedné nebo více triggerů časovače.
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454672"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402875"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Spuštění úlohy ACR podle definovaného plánu
 
@@ -56,8 +56,11 @@ az acr task create \
 
 Spuštěním příkazu [AZ ACR Task show][az-acr-task-show] zobrazíte, že je nakonfigurovaná aktivační událost časovače. Ve výchozím nastavení je také povolená aktivační událost základní aktualizace bitové kopie.
 
-```console
-$ az acr task show --name mytask --registry registry --output table
+```azurecli
+az acr task show --name mytask --registry registry --output table
+```
+
+```output
 NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 --------  ----------  --------  -------------------     -----------------
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
@@ -71,7 +74,7 @@ az acr task run --name mytask --registry myregistry
 
 Pokud se kontejner úspěšně spustí, bude výstup podobný následujícímu:
 
-```console
+```output
 Queued a run with ID: cf2a
 Waiting for an agent...
 2019/06/28 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
@@ -92,7 +95,7 @@ az acr task list-runs --name mytask --registry myregistry --output table
 
 Po úspěšném časovači je výstup podobný následujícímu:
 
-```console
+```output
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  -------- ----------  ---------  ---------  --------------------  ----------
 [...]
@@ -197,6 +200,14 @@ Každé pole může mít jeden z následujících typů hodnot:
 |`"30 9 * * 1-5"`|v 9:30 UTC každý den v týdnu|
 |`"30 9 * Jan Mon"`|v 9:30 UTC každé pondělí v lednu|
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete odebrat všechny prostředky, které jste vytvořili v této sérii kurzů, včetně registru kontejnerů, registrů, instance kontejneru, trezoru klíčů a instančního objektu, vydejte tyto příkazy:
+
+```azurecli
+az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
+```
 
 ## <a name="next-steps"></a>Další kroky
 

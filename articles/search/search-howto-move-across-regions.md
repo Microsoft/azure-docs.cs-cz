@@ -3,36 +3,53 @@ title: Postup přesunutí prostředku služby napříč oblastmi
 titleSuffix: Azure Cognitive Search
 description: Tento článek vám ukáže, jak přesunout prostředky Azure Kognitivní hledání z jedné oblasti do jiné v cloudu Azure.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/05/2020
-ms.openlocfilehash: df712f48c5aff722a4f1a850788378fb78ea7335
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/06/2020
+ms.openlocfilehash: 183a937a232dbd28962bb7d6ef42b0d78b8a81fd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379579"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850682"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Přesuňte službu Azure Kognitivní hledání do jiné oblasti Azure.
 
-V současné době se přesun vyhledávací služby do jiné oblasti nepodporuje, protože není k dispozici žádná automatizace nebo nástroje, které vám pomůžou s úlohou v rámci začátku do konce.
+Zákazníci se někdy dotazují o přesunu existující služby vyhledávání do jiné oblasti. V současné době nejsou k dispozici žádné předdefinované mechanismy nebo nástroje, které vám s touto úlohou pomohly. Zůstane v tomto článku ruční postup, který je popsaný níže.
 
-Příkaz **Exportovat šablonu** na portálu vytvoří základní definici služby (název, umístění, úroveň, replika a počet oddílů), ale nerozpozná obsah vaší služby, ani nepřenáší klíče, role nebo protokoly.
+> [!NOTE]
+> V Azure Portal všechny služby obsahují příkaz **Exportovat šablonu** . V případě Azure Kognitivní hledání tento příkaz vytvoří základní definici služby (název, umístění, úroveň, repliku a počet oddílů), ale nerozpozná obsah vaší služby, ani nepřenáší klíče, role nebo protokoly. I když tento příkaz existuje, nedoporučujeme ho používat pro přesun vyhledávací služby.
 
-Při přesouvání hledání z jedné oblasti do druhé doporučujeme následující postup:
+## <a name="steps-for-moving-a-service"></a>Postup přesunutí služby
 
-1. Inventarizace stávající služby pro úplný seznam objektů ve službě. Pokud jste povolili protokolování, vytvořte a archivujte sestavy, které můžete potřebovat pro budoucí porovnání.
+Pokud potřebujete přesunout vyhledávací službu do jiné oblasti, váš přístup by měl vypadat podobně jako v následujících krocích:
 
-1. Vytvořte službu v nové oblasti a znovu publikujte ze zdrojového kódu všechny existující indexy, indexery, zdroje dat, dovednosti a mapování synonym. Názvy služeb musí být jedinečné, takže nemůžete znovu použít stávající název.
+1. Identifikujte související služby, abyste pochopili úplný dopad přemístění služby. Můžete použít Azure Storage pro protokolování, znalostní bázi Knowledge Store nebo jako externí zdroj dat. Můžete použít Cognitive Services pro obohacení AI. Přístup ke službám v jiných oblastech je běžný, ale obsahuje další poplatky za šířku pásma. Pokud používáte rozšíření AI, musí být Cognitive Services a Azure Kognitivní hledání ve stejné oblasti.
+
+1. Inventarizace stávající služby pro úplný seznam objektů ve službě. Pokud jste povolili protokolování, vytvořte a archivujte všechny sestavy, které můžete potřebovat pro historický záznam.
+
+1. Zkontrolujte ceny a dostupnost v nové oblasti, abyste zajistili dostupnost služby Azure Kognitivní hledání a všech souvisejících služeb, které by mohly být vhodné vytvořit ve stejné oblasti. Podívejte se na paritu funkcí. Některé funkce ve verzi Preview mají omezenou dostupnost.
+
+1. Vytvořte službu v nové oblasti a znovu publikujte ze zdrojového kódu všechny existující indexy, indexery, zdroje dat, dovednosti, znalostní obchody a mapy synonym. Názvy služeb musí být jedinečné, takže nemůžete znovu použít stávající název.
+
+1. Znovu načtěte indexy a úložiště znalostí, pokud jsou k dispozici. Pomocí kódu aplikace buď zadáte data JSON do indexu, nebo znovu spusťte indexery pro vyžádání dokumentů z externích zdrojů. 
 
 1. Povolit protokolování a pokud je používáte, znovu vytvořit role zabezpečení.
 
 1. Aktualizujte klientské aplikace a sady testů na použití nového názvu služby a klíčů rozhraní API a otestujte všechny aplikace.
 
-1. Jakmile je nová služba plně funkční, odstraňte starou službu.
+1. Po úplném otestování a provozu nové služby odstraňte starou službu.
+
+## <a name="next-steps"></a>Další kroky
+
++ [Zvolit vrstvu](search-sku-tier.md)
++ [Vytvoření vyhledávací služby](search-create-service-portal.md)
++ [Načíst dokumenty pro hledání](search-what-is-data-import.md)
++ [Povolení protokolování](search-monitor-logs.md)
+
 
 <!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
 

@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 0b9e7732e5274fd71c773a19d17e09ecdaa2ceb0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270020"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851134"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití C# a AI k vygenerování vyhledávaného obsahu z objektů blob Azure
 
@@ -30,7 +30,7 @@ Tento kurz používá C# a [sadu .NET SDK](https://aka.ms/search-sdk) k provád�
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -95,7 +95,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Uložte připojovací řetězec do poznámkového bloku. Budete ho potřebovat později při nastavování připojení ke zdroji dat.
 
-### <a name="cognitive-services"></a>Kognitivní služby
+### <a name="cognitive-services"></a>Cognitive Services
 
 Obohacení AI je zajištěno Cognitive Services, včetně Analýza textu a Počítačové zpracování obrazu pro zpracování přirozeného jazyka a obrazu. Pokud by vaším cílem bylo dokončit skutečný prototyp nebo projekt, měli byste v tomto okamžiku zřídit Cognitive Services (ve stejné oblasti jako Azure Kognitivní hledání), abyste ho mohli připojit k operacím indexování.
 
@@ -186,7 +186,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>Vytvoření klienta
 
-Vytvořte instanci třídy `SearchServiceClient` pod položkou Main.
+Vytvořte instanci třídy `SearchServiceClient` v části `Main`.
 
 ```csharp
 public static void Main(string[] args)
@@ -213,6 +213,22 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > Třída `SearchServiceClient` spravuje připojení k vyhledávací službě. Aby se zabránilo otevírání příliš mnoha připojení, měli byste se pokusit sdílet jednu instanci třídy `SearchServiceClient` v rámci aplikace, pokud je to možné. Její metody jsou bezpečné pro přístup z více vláken a takové sdílení umožňují.
 > 
+
+### <a name="add-function-to-exit-the-program-during-failure"></a>Přidání funkce pro ukončení programu během selhání
+
+Tento kurz vám pomůže pochopit jednotlivé kroky kanálu indexování. Pokud dojde k závažnému problému, který programu brání v vytváření zdroje dat, dovednosti, indexu nebo indexeru, program zobrazí zprávu o chybě a ukončí tak, aby bylo možné tento problém pochopit a vyřešit.
+
+Přidejte `ExitProgram` pro `Main` k obsluze scénářů, které vyžadují ukončení programu.
+
+```csharp
+private static void ExitProgram(string message)
+{
+    Console.WriteLine("{0}", message);
+    Console.WriteLine("Press any key to exit the program...");
+    Console.ReadKey();
+    Environment.Exit(0);
+}
+```
 
 ## <a name="3---create-the-pipeline"></a>3\. vytvoření kanálu
 
@@ -251,7 +267,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 V případě úspěšné žádosti vrátí metoda zdroj dat, který byl vytvořen. Pokud dojde k potížím s požadavkem, například s neplatným parametrem, metoda vyvolá výjimku.
 
-Nyní přidejte do hlavního řádku řádek pro volání funkce `CreateOrUpdateDataSource`, kterou jste právě přidali.
+Nyní do `Main` přidat čáru pro volání `CreateOrUpdateDataSource` funkce, kterou jste právě přidali.
 
 ```csharp
 public static void Main(string[] args)
@@ -537,7 +553,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-Přidejte následující řádky do hlavní.
+Přidejte následující řádky pro `Main`.
 
 ```csharp
     // Create the skills
@@ -568,7 +584,7 @@ V tomto oddílu definujete schéma indexu, a to tak, že zadáte, která pole se
 
 V tomto cvičení použijeme následující pole a jejich typy:
 
-| Názvy polí: | `id`       | content   | languageCode | keyPhrases         | organizations     |
+| Názvy polí: | `id`       | content   | languageCode | keyPhrases         | organizace     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | Typy polí: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -675,7 +691,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 Během testování se můžete setkat s tím, že se pokoušíte vytvořit index více než jednou. Z tohoto důvodu zkontrolujte, zda index, který se chystáte vytvořit, již existuje před pokusem o jeho vytvoření.
 
-Přidejte následující řádky do hlavní.
+Přidejte následující řádky pro `Main`.
 
 ```csharp
     // Create the index
@@ -779,7 +795,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-Přidejte následující řádky do hlavní.
+Přidejte následující řádky pro `Main`.
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -840,7 +856,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 Pro určité kombinace zdrojových souborů a dovedností jsou upozornění běžná a ne vždy představují problém. V tomto kurzu jsou upozornění neškodná (např. v souboru JPEG nejsou žádné textové vstupy).
 
-Přidejte následující řádky do hlavní.
+Přidejte následující řádky pro `Main`.
 
 ```csharp
     // Check indexer overall status
@@ -854,7 +870,7 @@ Po dokončení indexování můžete spustit dotazy, které vracejí obsah jedno
 
 Pro ověření pošlete indexu dotaz na všechna pole.
 
-Přidejte následující řádky do hlavní.
+Přidejte následující řádky pro `Main`.
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -890,7 +906,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Přidejte následující kód do Main. První příkaz try-catch vrátí definici indexu s názvem, typem a atributy každého pole. Druhým je parametrizovaný dotaz, kde `Select` určuje, která pole se mají zahrnout do výsledků, například `organizations`. Hledaný řetězec `"*"` vrátí veškerý obsah jednoho pole.
+Přidejte následující kód pro `Main`. První příkaz try-catch vrátí definici indexu s názvem, typem a atributy každého pole. Druhým je parametrizovaný dotaz, kde `Select` určuje, která pole se mají zahrnout do výsledků, například `organizations`. Hledaný řetězec `"*"` vrátí veškerý obsah jednoho pole.
 
 ```csharp
 //Verify content is returned after indexing is finished

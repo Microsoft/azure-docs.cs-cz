@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888783"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672232"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží s hybridními Azure Active Directory připojenými zařízeními 
 
@@ -356,7 +356,7 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
    - Řešení: zakáže čip TPM v zařízeních s touto chybou. Windows 1809 automaticky detekuje selhání čipu TPM a dokončuje připojení k hybridní službě Azure AD bez použití čipu TPM.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
    - Důvod: čip TPM byl uzamčen.
-   - Řešení: přechodná chyba. Počkejte na cooldown období. Pokus o připojení po určité době by měl být úspěšný. Další informace najdete v článku [základy čipu TPM](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) .
+   - Řešení: přechodná chyba. Počkejte na cooldown období. Pokus o připojení po určité době by měl být úspěšný. Další informace najdete v článku [základy čipu TPM](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) .
 
 ##### <a name="network-errors"></a>Chyby sítě
 
@@ -372,13 +372,13 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 
 ##### <a name="federated-join-server-errors"></a>Chyby serveru federovaného připojení
 
-| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Rozlišení |
+| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Řešení |
 | --- | --- | --- | --- |
 | DirectoryError | Vaše žádost se dočasně omezuje. Zkuste to prosím po 300 sekundách. | Očekávaná chyba. Je možné, že v důsledku rychlé úspěšnosti je potřeba provést několik žádostí o registraci. | Opakovaný pokus o připojení po cooldown období |
 
 ##### <a name="sync-join-server-errors"></a>Chyby serveru připojit se k synchronizaci
 
-| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Rozlišení |
+| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Řešení |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002: <UUID> tenanta se nenašel. K této chybě může dojít, pokud pro tenanta nejsou k dispozici žádná aktivní předplatná. Obraťte se na správce předplatného. | ID tenanta v objektu SCP je nesprávné. | Ujistěte se, že je objekt SCP nakonfigurovaný se správným ID tenanta Azure AD a s aktivním předplatným a že je přítomen v tenantovi. |
 | DirectoryError | Objekt zařízení se zadaným ID nebyl nalezen. | Očekávaná chyba připojení synchronizace. Objekt zařízení se nesynchronizoval ze služby AD do Azure AD. | Počkejte, než se Azure AD Connect synchronizace dokončí, a při dalším pokusu o připojení se problém vyřeší. |

@@ -4,14 +4,14 @@ description: Seznamte se s klauzulí WHERE SQL pro Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982225"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898786"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Klauzule WHERE v Azure Cosmos DB
 
@@ -35,10 +35,11 @@ WHERE <filter_condition>
   
    Výraz představující hodnotu, která chcete vypočítat. Podrobnosti najdete v tématu [skalární výrazy](sql-query-scalar-expressions.md) .  
   
-
 ## <a name="remarks"></a>Poznámky
   
-  Aby dokumentu, který má být vrácen výraz zadaný jako filtr musí podmínka vyhodnocena na hodnotu true. Pouze pro logickou hodnotu true budou splňují zadanou podmínku, jakákoli jiná hodnota: undefined, null, hodnotu false, číslo, pole nebo objekt nebude splňují zadanou podmínku. 
+  Aby dokumentu, který má být vrácen výraz zadaný jako filtr musí podmínka vyhodnocena na hodnotu true. Pouze logická hodnota `true` splní podmínku, jakákoli jiná hodnota: undefined, null, false, Number, Array nebo Object nesplňuje podmínky.
+
+  Pokud zahrnete klíč oddílu do klauzule `WHERE` jako součást filtru rovnosti, dotaz se automaticky vyfiltruje jenom na relevantní oddíly.
 
 ## <a name="examples"></a>Příklady
 
@@ -71,10 +72,10 @@ Můžete použít následující podporované binární operátory:
 |**Typ operátoru**  | **Hodnoty** |
 |---------|---------|
 |Aritmetické operace | +,-,*,/,% |
-|bitové operace    | \|, &, ^, <<>>,, >>> (výplně nulové posunutí doprava) |
+|bitové operace    | \|, &, ^, < <, > >, > > > (0 – vyplnit vpravo Shift) |
 |Logické    | A, NEBO NE      |
-|Porovnání | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|Řetězec     |  \|\| (zřetězení) |
+|Porovnání | =,! =, &lt;, &gt;, &lt;=, &gt;=, < > |
+|String     |  \|\| (zřetězení) |
 
 Následující dotazy používají binární operátory:
 
@@ -110,4 +111,4 @@ Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * F
 
 - [Začínáme](sql-query-getting-started.md)
 - [Klíčové slovo IN](sql-query-keywords.md#in)
-- [FROM – klauzule](sql-query-from.md)
+- [Klauzule FROM](sql-query-from.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917772"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672636"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární obnovovací token?
 
@@ -33,7 +33,7 @@ Následující součásti systému Windows hrají klíčovou roli při vyžádá
 * **Modul plug-in Azure AD CloudAP**: modul plug-in specifický pro Azure AD založený na rozhraní CloudAP, který ověřuje přihlašovací údaje uživatelů pomocí Azure AD během přihlašování Windows.
 * **Modul plug-in Azure AD WAM**: modul plug-in Azure AD založený na rozhraní WAM, který umožňuje jednotné přihlašování k aplikacím, které se spoléhají na Azure AD pro ověřování.
 * **Dsreg**: specifická součást služby Azure AD ve Windows 10, která zpracovává proces registrace zařízení pro všechny stavy zařízení.
-* Čip TPM ( **Trusted Platform Module** ): čipem TPM je hardwarová komponenta integrovaná do zařízení, která poskytuje hardwarové funkce zabezpečení pro tajné klíče uživatelů a zařízení. Další podrobnosti najdete v článku [Přehled technologie Trusted Platform Module](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview).
+* Čip TPM ( **Trusted Platform Module** ): čipem TPM je hardwarová komponenta integrovaná do zařízení, která poskytuje hardwarové funkce zabezpečení pro tajné klíče uživatelů a zařízení. Další podrobnosti najdete v článku [Přehled technologie Trusted Platform Module](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
 ## <a name="what-does-the-prt-contain"></a>Co PRT obsahuje?
 
@@ -48,7 +48,7 @@ PRT je neprůhledný objekt BLOB odeslaný z Azure AD, jehož obsah není znám�
 
 ## <a name="how-is-a-prt-issued"></a>Jak se vystavuje PRT?
 
-Registrace zařízení je předpokladem pro ověřování na základě zařízení ve službě Azure AD. PRT se vydává uživatelům jenom na registrovaných zařízeních. Další podrobné informace o registraci zařízení najdete v článku [Windows Hello pro firmy a registrace zařízení](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration). Během registrace zařízení generuje komponenta dsreg dvě sady párů kryptografických klíčů:
+Registrace zařízení je předpokladem pro ověřování na základě zařízení ve službě Azure AD. PRT se vydává uživatelům jenom na registrovaných zařízeních. Další podrobné informace o registraci zařízení najdete v článku [Windows Hello pro firmy a registrace zařízení](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration). Během registrace zařízení generuje komponenta dsreg dvě sady párů kryptografických klíčů:
 
 * Klíč zařízení (dkpub/dkpriv)
 * Transportní klíč (tkpub/tkpriv)

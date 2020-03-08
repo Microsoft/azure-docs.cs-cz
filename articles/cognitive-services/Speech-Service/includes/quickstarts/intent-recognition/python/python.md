@@ -6,14 +6,14 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 1a9a85ebc9d883db0415382ecf40de343d300667
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.openlocfilehash: af7c7d992db9afa0fb7affa0053bd89257a5a30e
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445412"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668821"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete:
 
@@ -74,7 +74,7 @@ Vložte tento kód pod `IntentRecognizer`. Ujistěte se, že `"YourLanguageUnder
 
 Z objektu `IntentRecognizer` zavoláte metodu `recognize_once()`. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že po identifikaci fráze zastavit rozpoznávání řeči.
 
-Vložte tento kód pod model:
+Vložte tento kód pod model.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
@@ -82,11 +82,13 @@ Vložte tento kód pod model:
 
 Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s ním chtít něco dělat. My to Zjednodušme a vytiskneme výsledek do konzoly.
 
-Pod vaším voláním `recognize_once()`přidejte tento kód: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+Pod vaším voláním `recognize_once()`přidejte tento kód.
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>Kontrolovat kód
 
-V tomto okamžiku váš kód by měl vypadat takto:
+V tomto okamžiku by váš kód měl vypadat takto.
 
 > [!NOTE]
 > Do této verze jsme přidali nějaké komentáře.

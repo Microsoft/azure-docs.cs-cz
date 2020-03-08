@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
-ms.translationtype: MT
+ms.openlocfilehash: b58ca353bffb99b21b1049dd23620f575bde687b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942834"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669030"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -32,7 +32,9 @@ Prvním krokem je ujistit se, že máte projekt otevřený v zatmění.
 ## <a name="add-a-reference-to-gson"></a>Přidat odkaz na gson
 V tomto rychlém startu použijeme externí serializátor/deserializaci JSON. Pro Java jsme zvolili [gson](https://github.com/google/gson).
 
-Otevřete soubor pom. XML a přidejte následující odkaz: [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
+Otevřete soubor pom. XML a přidejte následující odkaz.
+
+[!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 

@@ -3,12 +3,12 @@ title: Offline zálohování pomocí Azure Data Box
 description: Naučte se, jak můžete použít Azure Data Box k osazení velkých počátečních zálohovaných dat offline od agenta MARS do trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196293"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672970"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
 
@@ -124,7 +124,7 @@ Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby byla D
 
 1. Ujistěte se, že jste odinstalovali všechny předchozí instalace agenta MARS.
 1. Stáhněte si nejnovějšího agenta MARS z [tohoto webu](https://aka.ms/azurebackup_agent).
-1. Spusťte *soubor marsagentinstaller. exe*a proveďte *pouze* kroky pro [instalaci a registraci agenta](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
+1. Spusťte *soubor marsagentinstaller. exe*a proveďte *pouze* kroky pro [instalaci a registraci agenta](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
 
    > [!NOTE]
    > Trezor Recovery Services musí být ve stejném předplatném jako úloha Azure Data Box.
@@ -307,7 +307,7 @@ Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, prov
     >[!NOTE]
     > Pokud chcete získat ID uživatele Azure, proveďte jednu z následujících akcí:
     >
-    >* Z PowerShellu připojeného k Azure spusťte příkaz `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”`.
+    >* Z PowerShellu připojeného k Azure spusťte příkaz `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"`.
     > * Do pole cesta k registru použijte název *počítače \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\DbgSettings\OnlineBackup* s názvem *CurrentUserId*.
 
 6. Klikněte pravým tlačítkem na řetězec přidaný v předchozím kroku a vyberte **změnit**. V poli hodnota zadejte kryptografický otisk certifikátu, který jste exportovali v kroku 2. Vyberte **OK**.

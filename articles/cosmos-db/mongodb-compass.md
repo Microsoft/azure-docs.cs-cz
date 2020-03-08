@@ -3,16 +3,16 @@ title: Připojení k Azure Cosmos DB pomocí kompasu
 description: Naučte se používat MongoDB kompas k ukládání a správě dat v Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/24/2019
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: 5c01bd02b1fef7c7b27a3119465cad53155b9bbf
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0924476a81027e2979616036cd828593e320a3fe
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940982"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898171"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Použití MongoDB kompasu pro připojení k rozhraní API Azure Cosmos DB pro MongoDB 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a9c9b808e737f8e72da803085bfebd8263319a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194343"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672381"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
 
@@ -35,7 +35,7 @@ Tento článek obsahuje odpovědi na některé otázky, které správci IT můž
 * *Další nastavení systému Windows*, například nastavení myši.
 
 > [!NOTE]
-> Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
+> Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](/deployedge/microsoft-edge-enterprise-sync).
 
 **Data aplikací**: univerzální aplikace pro Windows můžou zapisovat data nastavení do složky roamingu a veškerá data zapsaná do této složky se automaticky synchronizují. Pro návrh aplikace, aby tuto možnost využila, je k dispozici vývojářům jednotlivých aplikací. Další informace o tom, jak vyvíjet univerzální aplikaci pro Windows, která používá roaming, najdete na blogu věnovaném [rozhraní API úložiště aplikačních](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) údajů a [blogu vývojářům pro roaming pro Windows 8](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 

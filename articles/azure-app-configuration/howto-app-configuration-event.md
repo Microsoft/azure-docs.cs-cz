@@ -1,36 +1,32 @@
 ---
-title: 'Kurz: použití Azure App Configuration k posílání událostí do webového koncového bodu'
-titleSuffix: Azure App Configuration
-description: V tomto kurzu se dozvíte, jak nastavit odběry událostí konfigurace aplikací Azure pro odesílání událostí úprav klíč-hodnota do webového koncového bodu.
+title: Odeslání událostí do webového koncového bodu pomocí konfigurace aplikace Azure
+description: Naučte se používat odběry událostí Azure App Configuration k odesílání událostí úprav klíč-hodnota do webového koncového bodu.
 services: azure-app-configuration
-documentationcenter: ''
-author: jimmyca
-editor: ''
+author: lisaguthrie
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.topic: tutorial
-ms.date: 05/30/2019
+ms.topic: how-to
+ms.date: 02/25/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 2a80f931f2060d421483b9e26940985091c9bb5c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899696"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672143"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Rychlý Start: směrování událostí konfigurace aplikací Azure do webového koncového bodu pomocí Azure CLI
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Směrování událostí konfigurace aplikace Azure do webového koncového bodu pomocí Azure CLI
 
-V tomto rychlém startu se dozvíte, jak nastavit odběry událostí konfigurace aplikací Azure pro odesílání událostí úprav klíč-hodnota do webového koncového bodu. Uživatelé Azure App Configuration se můžou přihlásit k odběru událostí, které se generují při změně klíčových hodnot. Tyto události mohou aktivovat Webhooky, Azure Functions, Azure Storage fronty nebo jakékoli jiné obslužné rutiny událostí, které Azure Event Grid podporuje. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
+V tomto článku se dozvíte, jak nastavit odběry událostí konfigurace aplikací Azure pro odesílání událostí úprav klíč-hodnota do webového koncového bodu. Uživatelé Azure App Configuration se můžou přihlásit k odběru událostí emitovaných při změně klíčových hodnot. Tyto události mohou aktivovat Webhooky, Azure Functions, Azure Storage fronty nebo jakékoli jiné obslužné rutiny událostí, které Azure Event Grid podporuje. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/). Volitelně můžete použít Azure Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento článek vyžaduje, že používáte nejnovější verzi Azure CLI (2.0.24 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou nejnovější verzi rozhraní příkazového řádku Azure CLI (2.0.70 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Pokud nepoužíváte Cloud Shell, musíte se nejprve přihlásit pomocí příkazu `az login`.
 
@@ -46,15 +42,16 @@ Následující příklad vytvoří skupinu prostředků s názvem `<resource_gro
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>Vytvoření konfigurace aplikace
+## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
-Nahraďte `<appconfig_name>` jedinečným názvem vaší konfigurace aplikace a `<resource_group_name>` se skupinou prostředků, kterou jste vytvořili dříve. Název musí být jedinečný, protože se používá jako název DNS.
+Nahraďte `<appconfig_name>` jedinečným názvem pro úložiště konfigurace a `<resource_group_name>` se skupinou prostředků, kterou jste vytvořili dříve. Název musí být jedinečný, protože se používá jako název DNS.
 
 ```azurecli-interactive
 az appconfig create \
   --name <appconfig_name> \
   --location westus \
-  --resource-group <resource_group_name>
+  --resource-group <resource_group_name> \
+  --sku free
 ```
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
@@ -78,7 +75,7 @@ Měli byste vidět web aktuálně bez zobrazených zpráv.
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>Přihlášení k odběru vaší konfigurace aplikace
+## <a name="subscribe-to-your-app-configuration-store"></a>Přihlášení k odběru úložiště konfigurace aplikace
 
 K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat. V následujícím příkladu se přihlásí k odběru konfigurace aplikace, kterou jste vytvořili, a předá adresu URL z vaší webové aplikace jako koncový bod pro oznamování událostí. Nahraďte řetězec `<event_subscription_name>` názvem odběru události. Místo `<resource_group_name>` a `<appconfig_name>` použijte hodnoty názvu skupiny prostředků a názvu účtu úložiště, které jste vytvořili dříve.
 
@@ -122,7 +119,6 @@ Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncov
   "dataVersion": "1",
   "metadataVersion": "1"
 }]
-
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

@@ -6,20 +6,22 @@ ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, estfan
 ms.topic: article
-ms.date: 09/23/2019
-ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.date: 02/29/2020
+ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912002"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899104"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru na Azure Logic Apps
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, přesuňte se prosím na Azure Logic Apps co nejdříve podle tohoto článku. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, migrujte prosím na Azure Logic Apps co nejdříve podle tohoto článku. 
+>
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
 V tomto článku se dozvíte, jak můžete naplánovat jednorázové a opakované úlohy vytvořením automatizovaných pracovních postupů pomocí Azure Logic Apps, nikoli pomocí Azure Scheduleru. Když vytváříte naplánované úlohy pomocí Logic Apps, získáte tyto výhody:
 
@@ -45,19 +47,19 @@ Každá úloha Scheduleru je jedinečná, takže pro migraci úloh plánovače n
 
 ## <a name="schedule-one-time-jobs"></a>Plánování jednorázových úloh
 
-Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace logiky. 
+Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace logiky.
 
-1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky v návrháři aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky v návrháři aplikace logiky.
 
    Základní postup najdete v části [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Do vyhledávacího pole zadejte "při požadavku HTTP" jako filtr. V seznamu triggery vyberte tuto aktivační událost: **když se přijme požadavek HTTP** . 
+1. Do vyhledávacího pole zadejte `when a http request` k nalezení triggeru žádosti. V seznamu triggery vyberte tuto aktivační událost: **když se přijme požadavek HTTP** .
 
    ![Přidat aktivační událost "Request"](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
-1. U triggeru žádosti můžete volitelně zadat schéma JSON, které pomůže návrháři aplikace logiky pochopit strukturu vstupů z příchozího požadavku a díky tomu budou mít tyto výstupy na výběr později ve svém pracovním postupu.
+1. V případě triggeru žádosti můžete volitelně zadat schéma JSON, které pomůže návrháři aplikace logiky pochopit strukturu vstupů obsažených v příchozím volání triggeru žádosti a usnadnit výběr později v pracovním postupu.
 
-   Chcete-li zadat schéma, zadejte schéma do pole **schéma JSON textu žádosti** , například: 
+   Do pole **schéma JSON textu žádosti** zadejte schéma, například:
 
    ![Schéma požadavku](./media/migrate-from-scheduler-to-logic-apps/request-schema.png)
 
@@ -65,27 +67,34 @@ Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace 
 
    1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte datovou část ukázky a potom vyberte **Hotovo**, například:
+   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte svou ukázkovou datovou část a vyberte **Hotovo**, například:
 
       ![Ukázková datová část](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
-1. V části Trigger vyberte **Další krok**. 
+      ```json
+      {
+         "runat": "2012-08-04T00:00Z",
+         "endpoint": "https://www.bing.com"
+      }
+      ```
 
-1. Do vyhledávacího pole zadejte "zpoždění do" jako filtr. V seznamu akce vyberte tuto akci: **zpoždění do**
+1. V části Trigger vyberte **Další krok**.
+
+1. Do vyhledávacího pole zadejte `delay until` jako filtr. V seznamu akce vyberte tuto akci: **zpoždění do**
 
    Tato akce pozastaví pracovní postup aplikace logiky až do zadaného data a času.
 
    ![Přidat akci zpoždění do](./media/migrate-from-scheduler-to-logic-apps/delay-until.png)
 
-1. Zadejte časové razítko, kde chcete spustit pracovní postup aplikace logiky. 
+1. Zadejte časové razítko, kde chcete spustit pracovní postup aplikace logiky.
 
-   Když kliknete do pole **Timestamp (časové razítko** ), zobrazí se seznam dynamického obsahu, abyste mohli volitelně vybrat výstup z triggeru.
+   Když kliknete do pole **Timestamp (časové razítko** ), zobrazí se seznam dynamického obsahu, ve kterém můžete volitelně vybrat výstup z triggeru.
 
    ![Zadejte podrobnosti o zpoždění do.](./media/migrate-from-scheduler-to-logic-apps/delay-until-details.png)
 
-1. Kliknutím na [stovky konektorů připravených k použití](../connectors/apis-list.md)přidejte všechny akce, které chcete spustit. 
+1. Kliknutím na [stovky konektorů připravených k použití](../connectors/apis-list.md)přidejte všechny akce, které chcete spustit.
 
-   Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata: 
+   Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata:
 
    ![Akce HTTP](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
@@ -93,22 +102,21 @@ Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace 
 
    ![Uložení aplikace logiky](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
 
-   Při prvním uložení aplikace logiky se adresa URL koncového bodu pro Trigger požadavku vaší aplikace logiky zobrazí v poli **Adresa URL pro odeslání** . 
-   Pokud chcete zavolat aplikaci logiky a odeslat vstupy do aplikace logiky ke zpracování, použijte tuto adresu URL jako cíl volání.
+   Při prvním uložení aplikace logiky se adresa URL koncového bodu pro Trigger požadavku vaší aplikace logiky zobrazí v poli **Adresa URL pro odeslání** . Pokud chcete zavolat aplikaci logiky a odeslat vstupy do aplikace logiky ke zpracování, použijte tuto adresu URL jako cíl volání.
 
    ![Adresa URL koncového bodu triggeru žádosti](./media/migrate-from-scheduler-to-logic-apps/request-endpoint-url.png)
 
-1. Zkopírujte a uložte tuto adresu URL koncového bodu, abyste později mohli poslat ruční požadavek, který spustí vaši aplikaci logiky. 
+1. Zkopírujte a uložte tuto adresu URL koncového bodu, abyste později mohli poslat ruční požadavek, který spustí vaši aplikaci logiky.
 
 ## <a name="start-a-one-time-job"></a>Spuštění jednorázové úlohy
 
-Pokud chcete ručně spustit nebo aktivovat jednorázovou úlohu, odešlete volání adresy URL koncového bodu pro aktivační událost žádosti vaší aplikace logiky. V tomto volání určete vstupní nebo datovou část k odeslání, kterou jste si mohli popsaným způsobem popsat zadáním schématu. 
+Pokud chcete ručně spustit nebo aktivovat jednorázovou úlohu, odešlete volání adresy URL koncového bodu pro aktivační událost žádosti vaší aplikace logiky. V tomto volání určete vstupní nebo datovou část k odeslání, kterou jste si mohli popsaným způsobem popsat zadáním schématu.
 
 Například pomocí aplikace pro publikování můžete vytvořit požadavek POST s nastavením podobným této ukázce a pak vybrat **Odeslat** pro vytvoření žádosti.
 
-| Request – metoda | Adresa URL | Tělo | Hlavičky |
+| Request – metoda | URL | Text | Záhlaví |
 |----------------|-----|------|---------|
-| **POST** | <*endpoint-URL*> | **získání** <p>**JSON (Application/JSON)** <p>Do pole **nezpracované** zadejte datovou část, kterou chcete v žádosti odeslat. <p>**Poznámka**: Toto nastavení automaticky nakonfiguruje hodnoty **hlaviček** . | **Klíč**: Content-Type <br>**Hodnota**: Application/JSON |
+| **POST** | <*koncový bod-adresa URL*> | **získání** <p>**JSON (Application/JSON)** <p>Do pole **nezpracované** zadejte datovou část, kterou chcete v žádosti odeslat. <p>**Poznámka**: Toto nastavení automaticky nakonfiguruje hodnoty **hlaviček** . | **Klíč**: Content-Type <br>**Hodnota**: Application/JSON |
 |||||
 
 ![Poslat požadavek na ruční aktivaci vaší aplikace logiky](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -129,11 +137,11 @@ V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spu
 
 ## <a name="schedule-recurring-jobs"></a>Plánování opakujících se úloh
 
-1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky v návrháři aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky v návrháři aplikace logiky.
 
    Základní postup najdete v části [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Do vyhledávacího pole zadejte "opakování" jako filtr. V seznamu triggery vyberte tuto aktivační událost: **opakování** . 
+1. Do vyhledávacího pole zadejte "opakování" jako filtr. V seznamu triggery vyberte tuto aktivační událost: **opakování** .
 
    ![Přidat aktivační událost opakování](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -145,7 +153,7 @@ V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spu
 
 1. Přidejte další požadované akce výběrem ze [stovek připravených k použití](../connectors/apis-list.md). V části Trigger vyberte **Další krok**. Najděte a vyberte akce, které chcete.
 
-   Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata: 
+   Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata:
 
    ![Akce HTTP](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
@@ -169,11 +177,11 @@ Chcete-li řídit způsob, jakým se akce pokusí znovu spustit v aplikaci logik
 
    ![Vybrat zásady opakování](./media/migrate-from-scheduler-to-logic-apps/retry-policy.png)
 
-## <a name="handle-exceptions-and-errors"></a>Ošetření výjimek a chyb
+## <a name="handle-exceptions-and-errors"></a>Zpracování výjimek a chyb
 
 Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, můžete spustit akci alterative, která řeší chybový stav. V Azure Logic Apps můžete také provést stejnou úlohu.
 
-1. V návrháři aplikace logiky nad akcí, kterou chcete zpracovat, přesuňte ukazatel myši na šipku mezi jednotlivými kroky a vyberte **Přidat paralelní větev**. 
+1. V návrháři aplikace logiky nad akcí, kterou chcete zpracovat, přesuňte ukazatel myši na šipku mezi jednotlivými kroky a vyberte **Přidat paralelní větev**.
 
    ![Přidat paralelní větev](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -193,7 +201,7 @@ Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, může
 
 Další informace o zpracování výjimek naleznete v tématu [zpracování chyb a výjimek – vlastnost runafter šablonové](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 <a name="retire-date"></a>
 
@@ -204,13 +212,13 @@ Odpověď **: plán**Azure Scheduleru je naplánován na úplné vyřazení 31. 
 **O**: všechny kolekce úloh Scheduleru a úlohy přestanou běžet a jsou odstraněny ze systému.
 
 **Otázka**: musím před migrací úloh Scheduleru do Logic Apps provést zálohování nebo provedení dalších úloh? <br>
-Odpověď **: osvědčeným postupem je vždy**zálohovat práci. Ověřte, že aplikace logiky, které jste vytvořili, jsou spuštěné podle očekávání před odstraněním nebo zakázáním úloh plánovače. 
+Odpověď **: osvědčeným postupem je vždy**zálohovat práci. Ověřte, že aplikace logiky, které jste vytvořili, jsou spuštěné podle očekávání před odstraněním nebo zakázáním úloh plánovače.
 
 **Otázka**: je k dispozici nástroj, který vám může přispět k migraci mých úloh z Scheduleru na Logic Apps? <br>
 Odpověď **: každá**úloha Scheduleru je jedinečná, takže neexistují žádné nástroje, které se vejdou na všechny. Na základě vašich potřeb ale můžete [Tento skript upravit a migrovat úlohy Azure Scheduleru na Azure Logic Apps](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
 
 **Otázka**: kde můžu získat podporu pro migraci úloh plánovače? <br>
-Odpověď **: Zde je několik**způsobů, jak získat podporu: 
+Odpověď **: Zde je několik**způsobů, jak získat podporu:
 
 **Azure Portal**
 
@@ -229,7 +237,7 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
 
 1. Vyberte požadovanou možnost podpory. Pokud máte placený plán podpory, vyberte **Další**.
 
-**Community**
+**Společenství**
 
 * [Fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
@@ -237,4 +245,3 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytváření pravidelně běžících úloh a pracovních postupů pomocí Azure Logic Apps](../connectors/connectors-native-recurrence.md)
-* [Kurz: ověření provozu s využitím aplikace logiky založené na plánu](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

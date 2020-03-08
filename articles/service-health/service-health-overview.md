@@ -3,12 +3,12 @@ title: Přehled Service Health | Microsoft Docs
 description: Individuální informace o tom, jak jsou vaše aplikace Azure ovlivněny aktuálními a budoucími problémy a údržbou služeb Azure.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654014"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898440"
 ---
 # <a name="service-health-overview"></a>Přehled Service Health
 
@@ -16,11 +16,12 @@ Service Health poskytuje přizpůsobitelný řídicí panel, který sleduje stav
 
 ## <a name="service-health-events"></a>Události Service Health
 
-Service Health sleduje tři typy událostí stavu, které mohou mít vliv na vaše prostředky:
+Service Health sleduje čtyři typy událostí stavu, které mohou mít vliv na vaše prostředky:
 
 1. **Problémy se službou** – problémy ve službách Azure, které vás v tuto chvíli ovlivňují. 
 2. **Plánovaná údržba** – nadcházející údržba, která může ovlivnit dostupnost vašich služeb v budoucnu.  
 3. **Poradce pro stav** – změny ve službách Azure, které vyžadují vaši pozornost. Mezi příklady patří i v případě, že funkce Azure jsou zastaralé nebo překročíte kvótu využití.
+4. **Informační zpravodaje zabezpečení (Preview)** – oznámení související se zabezpečením, která mohou mít vliv na dostupnost služeb Azure.
 
 > [!NOTE]
 > Chcete-li zobrazit Service Health události, musí být uživatelům [udělena role čtenář](../role-based-access-control/role-assignments-portal.md) v rámci předplatného.

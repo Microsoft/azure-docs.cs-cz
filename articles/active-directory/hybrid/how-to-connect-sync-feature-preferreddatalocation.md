@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918963"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894567"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizace: konfigurace upřednostňovaného umístění dat pro prostředky Office 365
 Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá pro Office 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Office 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
@@ -40,16 +40,16 @@ Seznam všech zeměpisných oblastech pro Office 365 najdete v části [kde se n
 
 Zeměpisných oblastech v sadě Office 365 dostupné pro více geografických umístění jsou:
 
-| Zeměpisná oblast | hodnota preferredDataLocation |
+| Geografická oblast | hodnota preferredDataLocation |
 | --- | --- |
 | Asie a Tichomoří | APC |
 | Austrálie | STŘEDNÍ |
 | Kanada | NEMŮŽE |
 | Evropská unie | EUR |
 | Francie | FRA |
-| Indie | IND |
+| Indie | NAJÍT |
 | Japonsko | JPN |
-| Korea | KOR |
+| Jižní Korea | KOR |
 | Jihoafrická republika | ZAF |
 | Spojené arabské emiráty | JSOU |
 | Spojené království | GBR |
@@ -61,7 +61,7 @@ Zeměpisných oblastech v sadě Office 365 dostupné pro více geografických um
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect podpora synchronizace
 
-Azure AD Connect podporuje synchronizaci atributu **preferredDataLocation** pro **uživatelské** objekty ve verzi 1.1.524.0 a novější. Zejména:
+Azure AD Connect podporuje synchronizaci atributu **preferredDataLocation** pro **uživatelské** objekty ve verzi 1.1.524.0 a novější. Konkrétně:
 
 * Schéma typu objektu **uživatele** v konektoru služby Azure AD je rozšířené tak, aby zahrnovalo atribut **preferredDataLocation** . Atribut je typu, což je řetězec s jednou hodnotou.
 * Schéma objektu typu **osoba** v úložišti metaverse je rozšířeno tak, aby zahrnovalo atribut **preferredDataLocation** . Atribut je typu, což je řetězec s jednou hodnotou.
@@ -141,10 +141,10 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Name (Název) | *Zadat název* | Například "in from AD – User preferredDataLocation" |
+    | Název | *Zadat název* | Například "in from AD – User preferredDataLocation" |
     | Popis | *Zadejte vlastní popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby Active Directory* |  |
-    | Typ připojeného systémového objektu | **Uživatel** |  |
+    | Typ připojeného systémového objektu | **Uživatelský** |  |
     | Typ objektu úložiště metaverse | **Uživateli** |  |
     | Typ odkazu | **Spojení** |  |
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
@@ -154,7 +154,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Vyberte zdrojový atribut | Není zaškrtnuto | Aktualizovat |
+    |Přímé | preferredDataLocation | Vyberte zdrojový atribut | Není zaškrtnuto | Aktualizovat |
 
 7. Pokud chcete vytvořit příchozí pravidlo, vyberte **Přidat**.
 
@@ -170,10 +170,10 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Name (Název) | *Zadat název* | Například "odchozí do Azure AD – User preferredDataLocation" |
+    | Název | *Zadat název* | Například "odchozí do Azure AD – User preferredDataLocation" |
     | Popis | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor Azure AD.* ||
-    | Typ připojeného systémového objektu | **Uživatel** ||
+    | Typ připojeného systémového objektu | **Uživatelský** ||
     | Typ objektu úložiště metaverse | **Uživateli** ||
     | Typ odkazu | **Spojení** ||
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
@@ -183,7 +183,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | Pravda |
+    | cloudMastered | NOTEQUAL | True |
 
     Filtr oboru určuje, na které objekty služby Azure AD se toto pravidlo odchozí synchronizace použije. V tomto příkladu používáme stejný filtr pro vytváření oborů z "out do Azure AD – identita uživatele" OOB (dopředný) – pravidlo synchronizace. Zabraňuje použití synchronizačního pravidla pro **uživatelské** objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 
@@ -191,7 +191,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Není zaškrtnuto | Aktualizovat |
+    | Přímé | preferredDataLocation | preferredDataLocation | Není zaškrtnuto | Aktualizovat |
 
 7. Pokud chcete vytvořit odchozí pravidlo, zavřete **Přidat** .
 
@@ -260,7 +260,6 @@ Nyní je čas ověřit konfiguraci a povolit pro uživatele.
 3. Pomocí Exchange Online PowerShellu ověřte, že je správně nastavená oblast poštovní schránky.  
 ![Snímek obrazovky s Exchangem Online PowerShellem](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 Za předpokladu, že je váš tenant označený k tomu, aby mohl používat tuto funkci, se poštovní schránka přesune do správného geografického umístění. Můžete to ověřit tak, že si vyhledáte název serveru, kde se nachází poštovní schránka.
-4. Pokud chcete ověřit, že toto nastavení bylo v mnoha poštovních schránkách platné, použijte skript v [Galerii TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Tento skript obsahuje taky seznam prefixů serveru pro všechna datová centra Office 365 a geografickou oblast, ve které se nachází. Dá se použít jako odkaz v předchozím kroku k ověření umístění poštovní schránky.
 
 ## <a name="next-steps"></a>Další kroky
 

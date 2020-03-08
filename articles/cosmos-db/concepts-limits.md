@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9e5b3e633bf35a25a68eb513d0ec691c3254bde4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916502"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674231"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -186,6 +186,20 @@ V následující tabulce jsou uvedeny limity pro [testovací Azure Cosmos DB pro
 | Maximální celková velikost úložiště na účet | 10 GB |
 
 Zkuste Cosmos DB podporuje globální distribuci jenom v oblastech Střed USA, Severní Evropa a jihovýchodní Asie. Lístky podpory Azure nelze vytvořit pro účty try Azure Cosmos DB. Nicméně podpora je poskytována pro předplatitele se stávajícími plány podpory.
+
+## <a name="free-tier-account-limits"></a>Omezení účtu úrovně Free
+V následující tabulce jsou uvedeny limity [Azure Cosmos DB účtů úrovně Free.](optimize-dev-test.md#azure-cosmos-db-free-tier)
+
+| Prostředek | Výchozí omezení |
+| --- | --- |
+| Počet účtů bezplatné úrovně na předplatné Azure | 1 |
+| Doba trvání slevy na volné úrovni | Doba života účtu. Při vytváření účtu musí být výslovný souhlas. |
+| Maximální RU/s zdarma | 400 RU/s |
+| Maximální úložiště zdarma | 5 GB |
+| Maximální počet sdílených databází propustnosti | 5 |
+| Maximální počet kontejnerů ve sdílené databázi propustnosti | 25 <br>V účtech bezplatné úrovně je minimální RU/s pro sdílenou databázi propustnosti s až 25 kontejnery 400 RU/s. |
+
+  Kromě výše uvedeného platí [omezení podle účtů](#per-account-limits) i pro účty bezplatné úrovně.
 
 ## <a name="next-steps"></a>Další kroky
 

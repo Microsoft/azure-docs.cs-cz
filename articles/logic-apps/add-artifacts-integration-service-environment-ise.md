@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250928"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899188"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Přidání prostředků do prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
 Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)přidejte prostředky, jako jsou Logic Apps, integrační účty a konektory, aby měly přístup k prostředkům ve službě Azure Virtual Network. Například spravované ISE konektory, které jsou k dispozici po vytvoření ISE, se v návrháři aplikace logiky nezobrazí automaticky. Než budete moct tyto konektory ISE používat, musíte je ručně [Přidat a nasadit do ISE](#add-ise-connectors-environment) , aby se zobrazily v návrháři aplikace logiky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -39,7 +39,7 @@ Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí IS
 
    ![Vybrat prostředí integrační služby](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Požadováno | Popis |
    |----------|----------|-------------|
    | **Název** | Ano | Název aplikace logiky, která se má vytvořit |
    | **Předplatné** | Ano | Název předplatného Azure, které se má použít |
@@ -51,7 +51,7 @@ Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí IS
 
 1. Pokračujte [v vytváření aplikace logiky obvyklým způsobem](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-   Rozdíly ve fungování aktivačních událostí a akcí a způsobu jejich označení při použití ISE v porovnání s globálním Logic Apps službou najdete v tématu věnovaném [izolaci a globálnímu přehledu ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference).
+   Rozdíly ve fungování aktivačních událostí a akcí a způsobu jejich označení při použití ISE ve srovnání s více tenantů služby Logic Apps najdete v tématu věnovaném [izolaci oproti více tenantům v přehledu ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference).
 
 1. Pokud chcete spravovat Logic Apps a připojení k rozhraní API v ISE, přečtěte si téma [Správa prostředí integrační služby](../logic-apps/ise-manage-integration-service-environment.md).
 
@@ -71,7 +71,7 @@ Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte p
 
    ![Vybrat prostředí integrační služby](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Požadováno | Popis |
    |----------|----------|-------------|
    | **Název** | Ano | Název účtu pro integraci, který chcete vytvořit. |
    | **Předplatné** | Ano | Název předplatného Azure, které chcete použít |

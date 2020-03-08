@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252063"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403224"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -241,7 +241,7 @@ Nabyvatel pak může ověřit image v registru a získat k nim přístup.
 
 * Postup načtení obrázku:
 
-  ```console
+  ```bash
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -297,28 +297,25 @@ grep OPTIONS /etc/sysconfig/docker
 
 Například Fedora 28 Server má následující možnosti Docker démon:
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 Pokud `--signature-verification=false` chybí, `docker pull` se nezdařila s chybou podobnou této:
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
 Řešení této chyby:
 1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker`. Příklad:
-
-  ```
-  OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-  ```
+   
+   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+   
 2. Restartujte službu Docker démon spuštěním následujícího příkazu:
-
-  ```bash
-  sudo systemctl restart docker.service
-  ```
+   
+   ```bash
+   sudo systemctl restart docker.service
+   ```
 
 Podrobnosti o `--signature-verification` lze najít spuštěním `man dockerd`.
 
@@ -478,9 +475,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 Pokud předáte do příkazu `az acr build` místní zdrojovou složku, ve výchozím nastavení se z nahraného balíčku vyloučí složka `.git`. Soubor `.dockerignore` můžete vytvořit pomocí následujícího nastavení. Oznamuje příkazu, aby obnovil všechny soubory v rámci `.git` nahraného balíčku. 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 Toto nastavení platí také pro příkaz `az acr run`.
 

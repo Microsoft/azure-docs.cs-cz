@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187470"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671790"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro vystavitele tokenů JWT v Azure Active Directory B2C vlastní zásady
 
@@ -56,6 +56,7 @@ Prvky **InputClaims**, **OutputClaims**a **PersistClaims** jsou prázdné nebo c
 | allow_infinite_rolling_refresh_token | Ne | Pokud je nastavená na `true`, doba vypršení platnosti posuvných oken aktualizačního tokenu vypršela. |
 | IssuanceClaimPattern | Ne | Řídí deklaraci identity vystavitele (ISS). Jedna z hodnot:<ul><li>AuthorityAndTenantGuid – deklarace ISS zahrnuje název vaší domény, například `login.microsoftonline` nebo `tenant-name.b2clogin.com`, a identifikátor vašeho tenanta https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp – deklarace ISS zahrnuje název vaší domény, například `login.microsoftonline` nebo `tenant-name.b2clogin.com`, identifikátor tenanta a název zásady předávající strany. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> Výchozí hodnota: AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | Ne | Řídí `acr` hodnotu deklarace identity.<ul><li>Žádné – Azure AD B2C nevydá deklaraci identity ACR</li><li>PolicyId – deklarace `acr` obsahuje název zásady.</li></ul>Možnosti pro nastavení této hodnoty jsou TFP (zásady pro vztahy důvěryhodnosti) a ACR (Referenční dokumentace kontextu ověřování). Doporučuje se nastavení této hodnoty na TFP, aby se hodnota nastavila, ujistěte se, že `<Item>` s `Key="AuthenticationContextReferenceClaimPattern"` existuje a že hodnota je `None`. Do zásady předávající strany přidejte `<OutputClaims>` položku a přidejte tento prvek `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Také se ujistěte, že vaše zásada obsahuje typ deklarace `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+|RefreshTokenUserJourneyId| Ne | Identifikátor cesty uživatele, který by měl být proveden během aktualizace požadavku POST [přístupového tokenu](authorization-code-flow.md#4-refresh-the-token) do koncového bodu `/token`. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 

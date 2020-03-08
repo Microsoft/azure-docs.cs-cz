@@ -4,12 +4,12 @@ description: Řešení potíží s instalací, registrací Azure Backup Server a
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 3a83c496191baaebc30f6fe0aedda790827644cb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605743"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673117"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -32,7 +32,7 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Registrace do trezoru | Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá k dispozici nejnovější přihlašovací údaje přidružené ke službě obnovení. | Doporučená akce: <br> <ul><li> Stáhněte si nejnovější soubor s přihlašovacími údaji z trezoru a zkuste to znovu. <br>ANI</li> <li> Pokud předchozí akce nefungovala, zkuste stáhnout přihlašovací údaje do jiného místního adresáře nebo vytvořit nový trezor. <br>ANI</li> <li> Zkuste aktualizovat nastavení data a času, jak je popsáno v [tomto blogu](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/). <br>ANI</li> <li> Zkontrolujte, jestli má c:\Windows\Temp víc než 65000 souborů. Přesuňte zastaralé soubory do jiného umístění nebo odstraňte položky v dočasné složce. <br>ANI</li> <li> Ověřte stav certifikátů. <br> a. Otevřete **spravovat certifikáty počítače** (v Ovládacích panelech). <br> b. Rozbalte **osobní** uzel a jeho **certifikáty**podřízeného uzlu.<br> c.  Odeberte certifikát **nástroje Windows Azure Tools**. <br> d. Opakujte registraci v klientovi Azure Backup. <br> ANI </li> <li> Zkontrolujte, jestli nejsou nastavené žádné zásady skupiny. </li></ul> |
+| Registrace do trezoru | Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá k dispozici nejnovější přihlašovací údaje přidružené ke službě obnovení. | Doporučená akce: <br> <ul><li> Stáhněte si nejnovější soubor s přihlašovacími údaji z trezoru a zkuste to znovu. <br>ANI</li> <li> Pokud předchozí akce nefungovala, zkuste stáhnout přihlašovací údaje do jiného místního adresáře nebo vytvořit nový trezor. <br>ANI</li> <li> Zkuste aktualizovat nastavení data a času, jak je popsáno v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided). <br>ANI</li> <li> Zkontrolujte, jestli má c:\Windows\Temp víc než 65000 souborů. Přesuňte zastaralé soubory do jiného umístění nebo odstraňte položky v dočasné složce. <br>ANI</li> <li> Ověřte stav certifikátů. <br> a. Otevřete **spravovat certifikáty počítače** (v Ovládacích panelech). <br> b. Rozbalte **osobní** uzel a jeho **certifikáty**podřízeného uzlu.<br> c.  Odeberte certifikát **nástroje Windows Azure Tools**. <br> d. Opakujte registraci v klientovi Azure Backup. <br> ANI </li> <li> Zkontrolujte, jestli nejsou nastavené žádné zásady skupiny. </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>Replika je nekonzistentní.
 
@@ -62,7 +62,7 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Přenáší agenty na chráněné servery | Operace agenta se nezdařila z důvodu chyby komunikace se službou Koordinátor agenta DPM v \<servername >. | **Pokud Doporučená akce uvedená v produktu nefunguje, proveďte následující kroky**: <ul><li> Pokud připojujete počítač z nedůvěryhodné domény, postupujte podle [těchto kroků](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757801(v=sc.12)). <br> ANI </li><li> Pokud připojujete počítač z důvěryhodné domény, vyřešte potíže pomocí kroků uvedených v [tomto blogu](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>ANI</li><li> Zkuste zakázat antivirovou ochranu jako krok pro odstraňování potíží. Pokud se problém vyřeší, upravte nastavení antivirového programu podle doporučení v [tomto článku](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).</li></ul> |
+| Přenáší agenty na chráněné servery | Operace agenta se nezdařila z důvodu chyby komunikace se službou Koordinátor agenta DPM v \<servername >. | **Pokud Doporučená akce uvedená v produktu nefunguje, proveďte následující kroky**: <ul><li> Pokud připojujete počítač z nedůvěryhodné domény, postupujte podle [těchto kroků](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> ANI </li><li> Pokud připojujete počítač z důvěryhodné domény, vyřešte potíže pomocí kroků uvedených v [tomto blogu](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>ANI</li><li> Zkuste zakázat antivirovou ochranu jako krok pro odstraňování potíží. Pokud se problém vyřeší, upravte nastavení antivirového programu podle doporučení v [tomto článku](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Instalační program nemohl aktualizovat metadata registru.
 
@@ -75,8 +75,8 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Přenáší agenty na chráněné servery | Přihlašovací údaje zadané pro server jsou neplatné. | **Pokud Doporučená akce, která je zobrazená v produktu, nefunguje, proveďte následující kroky**: <br> Pokuste se agenta ochrany nainstalovat ručně na provozní server, jak je uvedeno v [tomto článku](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)).|
-| Agent Azure Backup se nemohl připojit ke službě Azure Backup (ID: 100050). | Agent Azure Backup se nemohl připojit ke službě Azure Backup. | **Pokud Doporučená akce, která je zobrazená v produktu, nefunguje, proveďte následující kroky**: <br>1. z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Otevře se okno Internet Explorer. <br/> 2. v **nabídce nástroje** > **Možnosti internetu** > **připojení** > **Nastavení LAN**. <br/> 3. Změňte nastavení tak, aby se používalo proxy server. Pak zadejte podrobnosti o proxy server.<br/> 4. Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL](backup-configure-vault.md#verify-internet-access) a [IP adresy](backup-configure-vault.md#verify-internet-access).|
+| Přenáší agenty na chráněné servery | Přihlašovací údaje zadané pro server jsou neplatné. | **Pokud Doporučená akce, která je zobrazená v produktu, nefunguje, proveďte následující kroky**: <br> Pokuste se agenta ochrany nainstalovat ručně na provozní server, jak je uvedeno v [tomto článku](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).|
+| Agent Azure Backup se nemohl připojit ke službě Azure Backup (ID: 100050). | Agent Azure Backup se nemohl připojit ke službě Azure Backup. | **Pokud Doporučená akce, která je zobrazená v produktu, nefunguje, proveďte následující kroky**: <br>1. z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Otevře se okno Internet Explorer. <br/> 2. v **nabídce nástroje** > **Možnosti internetu** > **připojení** > **Nastavení LAN**. <br/> 3. Změňte nastavení tak, aby se používalo proxy server. Pak zadejte podrobnosti o proxy server.<br/> 4. Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL](install-mars-agent.md#verify-internet-access) a [IP adresy](install-mars-agent.md#verify-internet-access).|
 | Nepovedlo se nainstalovat agenta Azure Backup | Instalace Microsoft Azure Recovery Services se nezdařila. Všechny změny, které byly provedeny v systému instalačním programem Microsoft Azure Recovery Services byly vráceny zpět. (ID: 4024) | Nainstalujte agenta Azure ručně.
 
 ## <a name="configuring-protection-group"></a>Konfigurace skupiny ochrany

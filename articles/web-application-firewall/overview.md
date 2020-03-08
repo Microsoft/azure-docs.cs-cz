@@ -4,19 +4,19 @@ description: Tento článek poskytuje přehled firewallu webových aplikací Azu
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 03/06/2020
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 7b43a6bdac254493da8693b55158e15746e76dc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44bc8db5d8ada0378f8f9d0911ed398ba491d289
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502041"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851189"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>Co je Firewall webových aplikací Azure?
 
-Firewall webových aplikací (WAF) zajišťuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. Webové aplikace jsou stále více zaměřené na škodlivé útoky, které využívají často známá ohrožení zabezpečení. Vkládání SQL a skriptování mezi weby patří mezi nejběžnější útoky.
+Firewall webových aplikací (WAF) poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. Webové aplikace jsou stále více zaměřené na škodlivé útoky, které využívají často známá ohrožení zabezpečení. Vkládání SQL a skriptování mezi weby patří mezi nejběžnější útoky.
 
 ![WAF – přehled](media/overview/wafoverview.png)
 
@@ -24,9 +24,13 @@ Prevence takových útoků v kódu aplikace je náročné. Může vyžadovat př
 
 Řešení WAF může reagovat na bezpečnostní hrozbu rychleji tím, že centrálně opraví známou chybu zabezpečení, místo abyste museli zabezpečit každou jednotlivou webovou aplikaci.
 
-WAF se dají nasadit s využitím Azure Application Gateway a služby front-dveří Azure. V současné době má WAF funkce, které jsou přizpůsobené pro každou konkrétní službu. Další informace o funkcích WAF pro jednotlivé služby najdete v přehledu jednotlivých služeb.
+## <a name="supported-services"></a>Podporované služby
+
+WAF se dají nasadit s využitím [azure Application Gateway](../application-gateway/overview.md) a [služby front-dveří Azure](../frontdoor/front-door-overview.md). Obě služby jsou nástroje pro vyrovnávání zatížení vrstvy 7 (HTTP/S), ale Application Gateway je místní služba a přední dveře je globální služba. WAF obsahuje funkce, které jsou přizpůsobené pro každou konkrétní službu.
+
+Další informace najdete v přehledu WAF pro jednotlivé služby.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o firewallu webových aplikací v Application Gateway najdete v tématu [Brána Firewall webových aplikací v Azure Application Gateway](./ag/ag-overview.md).
-- Další informace o firewallu webových aplikací na službě Azure front-dveří najdete v tématu [Služba Firewall webových aplikací ve službě Azure front-dveří](./afds/afds-overview.md).
+- Další informace o firewallu webových aplikací ve službě Azure front-dveří najdete v tématu [Služba Firewall webových aplikací ve službě Azure front-dveří](./afds/afds-overview.md).

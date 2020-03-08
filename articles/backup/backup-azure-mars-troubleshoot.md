@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit potíže s instalací a r
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: fdaad7e12a5f473a368b9249928591daddd68519
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583805"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673104"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -41,7 +41,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 | Příčina | Doporučené akce |
 | ---     | ---    |
-| **Přihlašovací údaje trezoru nejsou platné.** <br/> <br/> Soubory přihlašovacích údajů trezoru můžou být poškozené nebo můžou mít vypršení platnosti. (Například mohou být staženy více než 48 hodin před časem registrace.)| Stáhněte si nové přihlašovací údaje z trezoru Recovery Services na Azure Portal. (Viz krok 6 v části [stažení agenta Mars](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) .) Pak podle potřeby proveďte tyto kroky: <ul><li> Pokud jste již nainstalovali a zaregistrovali MARS, otevřete konzolu konzoly MMC Microsoft Azure Backup agenta a pak v podokně **Akce** vyberte možnost **Registrovat Server** a dokončete registraci pomocí nových přihlašovacích údajů. <br/> <li> Pokud se nová instalace nezdařila, zkuste ji znovu nainstalovat pomocí nových přihlašovacích údajů.</ul> **Poznámka**: Pokud se stáhlo více souborů přihlašovacích údajů úložiště, bude platit jenom nejnovější soubor po dobu dalších 48 hodin. Doporučujeme, abyste si stáhli nový soubor s přihlašovacími údaji úložiště.
+| **Přihlašovací údaje trezoru nejsou platné.** <br/> <br/> Soubory přihlašovacích údajů trezoru můžou být poškozené nebo můžou mít vypršení platnosti. (Například mohou být staženy více než 48 hodin před časem registrace.)| Stáhněte si nové přihlašovací údaje z trezoru Recovery Services na Azure Portal. (Viz krok 6 v části [stažení agenta Mars](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) .) Pak podle potřeby proveďte tyto kroky: <ul><li> Pokud jste již nainstalovali a zaregistrovali MARS, otevřete konzolu konzoly MMC Microsoft Azure Backup agenta a pak v podokně **Akce** vyberte možnost **Registrovat Server** a dokončete registraci pomocí nových přihlašovacích údajů. <br/> <li> Pokud se nová instalace nezdařila, zkuste ji znovu nainstalovat pomocí nových přihlašovacích údajů.</ul> **Poznámka**: Pokud se stáhlo více souborů přihlašovacích údajů úložiště, bude platit jenom nejnovější soubor po dobu dalších 48 hodin. Doporučujeme, abyste si stáhli nový soubor s přihlašovacími údaji úložiště.
 | **Proxy server/Brána firewall blokuje registraci** <br/>nebo <br/>**Bez připojení k Internetu** <br/><br/> Pokud má váš počítač nebo proxy server omezené připojení k Internetu a nezajistíte přístup k potřebným adresám URL, registrace se nezdaří.| Proveďte tyto kroky:<br/> <ul><li> Spolupracujte s vaším IT týmem a ujistěte se, že je systém připojen k Internetu.<li> Pokud nemáte proxy server, zajistěte, aby při registraci agenta nebyla vybraná možnost proxy. [Ověřte nastavení proxy serveru](#verifying-proxy-settings-for-windows).<li> Pokud máte bránu firewall nebo proxy server, pracujte s týmem sítě, abyste zajistili přístup k těmto adresám URL a IP adresám:<br/> <br> **Adrese**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP adresy**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Zkuste provést registraci znovu po dokončení předchozích kroků pro řešení potíží.<br></br> Pokud jste připojení prostřednictvím Azure ExpressRoute, ujistěte se, že nastavení jsou nakonfigurovaná podle pokynů v tématu [Podpora Azure ExpressRoute](backup-support-matrix-mars-agent.md#azure-expressroute-support).
 | **Antivirový software blokuje registraci** | Pokud máte na serveru nainstalovaný antivirový software, přidejte potřebná pravidla vyloučení do kontroly antivirového programu pro tyto soubory a složky: <br/><ul> <li> Souboru cbengine. exe <li> CSC.exe<li> Pomocná složka Výchozí umístění je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
@@ -49,7 +49,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 - Přejít na adresu C:/Windows/Temp a ověřte, zda je k dispozici více než 60 000 nebo 65 000 souborů s příponou. tmp. Pokud existují, odstraňte tyto soubory.
 - Zajistěte, aby datum a čas počítače odpovídaly místnímu časovému pásmu.
-- Zajistěte, aby byly [tyto weby](backup-configure-vault.md#verify-internet-access) přidány do vašich důvěryhodných webů v aplikaci Internet Explorer.
+- Zajistěte, aby byly [tyto weby](install-mars-agent.md#verify-internet-access) přidány do vašich důvěryhodných webů v aplikaci Internet Explorer.
 
 ### <a name="verifying-proxy-settings-for-windows"></a>Ověřují se nastavení proxy serveru pro Windows.
 
@@ -73,7 +73,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 | Chyba  | Možná příčina | Doporučené akce |
 | ---     | ---     | ---    |
-| <br /><ul><li>Agent Microsoft Azure Recovery Services se nemohl připojit k Microsoft Azure Backup. (ID: 100050) Zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu.<li>(407) je vyžadováno ověřování proxy serveru. |Proxy blokuje připojení. |  <ul><li>V Internet Exploreru přejdete na **nástroje** > **Možnosti internetu** > **zabezpečení** > **Internetu**. Vyberte **vlastní úroveň** a přejděte dolů k části **Stažení souboru** . Vyberte **Povolit**.<p>Je také možné, že budete muset přidat do důvěryhodných webů v aplikaci Internet Explorer [adresy URL a IP adresy](backup-configure-vault.md#verify-internet-access) .<li>Změňte nastavení na použití proxy server. Pak zadejte podrobnosti o proxy server.<li> Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL a IP adresy](backup-configure-vault.md#verify-internet-access). <li>Pokud máte na serveru nainstalovaný antivirový software, vylučte tyto soubory z antivirového vyhledávání: <ul><li>Souboru cbengine. exe (místo souboru DPMRA. exe).<li>CSC. exe (související s .NET Framework). Pro každou verzi .NET Framework nainstalovanou na serveru je k dispozici soubor CSC. exe. Vylučte soubory CSC. exe pro všechny verze .NET Framework na příslušném serveru. <li>Umístění pomocné složky nebo mezipaměti. <br>Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+| <br /><ul><li>Agent Microsoft Azure Recovery Services se nemohl připojit k Microsoft Azure Backup. (ID: 100050) Zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu.<li>(407) je vyžadováno ověřování proxy serveru. |Proxy blokuje připojení. |  <ul><li>V Internet Exploreru přejdete na **nástroje** > **Možnosti internetu** > **zabezpečení** > **Internetu**. Vyberte **vlastní úroveň** a přejděte dolů k části **Stažení souboru** . Vyberte **Povolit**.<p>Je také možné, že budete muset přidat do důvěryhodných webů v aplikaci Internet Explorer [adresy URL a IP adresy](install-mars-agent.md#verify-internet-access) .<li>Změňte nastavení na použití proxy server. Pak zadejte podrobnosti o proxy server.<li> Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL a IP adresy](install-mars-agent.md#verify-internet-access). <li>Pokud máte na serveru nainstalovaný antivirový software, vylučte tyto soubory z antivirového vyhledávání: <ul><li>Souboru cbengine. exe (místo souboru DPMRA. exe).<li>CSC. exe (související s .NET Framework). Pro každou verzi .NET Framework nainstalovanou na serveru je k dispozici soubor CSC. exe. Vylučte soubory CSC. exe pro všechny verze .NET Framework na příslušném serveru. <li>Umístění pomocné složky nebo mezipaměti. <br>Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nepovedlo se nastavit šifrovací klíč pro zabezpečené zálohy.
 

@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 11/04/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f155d153ef7af8a83fb86a37cd1b9fa826ad2ff
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533430"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673619"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning pomocí poznámkových bloků Jupyter
 
@@ -57,6 +57,6 @@ Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního poč�
 
 Prozkoumejte [ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) , abyste zjistili, co Azure Machine Learning může dělat, nebo vyzkoušejte tyto kurzy:
 
-- [Trénování a nasadit model klasifikace obrázků s mnist ručně](tutorial-train-models-with-aml.md)
+- [Výuka a nasazení modelu klasifikace obrázků pomocí MNIST ručně zapsaných](tutorial-train-models-with-aml.md)
 
-- [Příprava dat a na základě automatizovaných machine learningu k natrénování modelu regrese s datovou sadou NYC taxislužby města](tutorial-auto-train-models.md)
+- [Příprava dat a použití automatizovaného strojového učení k výuce regresního modelu s taxislužby datovou sadou NYC](tutorial-auto-train-models.md)

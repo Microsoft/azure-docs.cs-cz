@@ -7,22 +7,22 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 82f6da54aec7aee94c19fd75a06d2850ca0db8b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883148"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673383"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Vývoj pro platformu Android Platforms pomocí sad SDK Azure IoT
 
-[Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) poskytují podporu první úrovně pro oblíbené platformy, jako jsou Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci našeho závazku o zajištění větší možnosti a flexibility v nasazeních IoT podporuje sada Java SDK také [](https://developer.android.com/things/) platformu Androidu.  Vývojáři můžou využít výhody operačního systému Androidu na straně zařízení a při použití [Azure IoT Hub](about-iot-hub.md) jako centrálního centra zpráv, které se škálují na miliony současně připojených zařízení.
+[Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) poskytují podporu první úrovně pro oblíbené platformy, jako jsou Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci našeho závazku o zajištění větší možnosti a flexibility v nasazeních IoT podporuje sada Java SDK také platformu [Androidu](https://developer.android.com/things/) .  Vývojáři můžou využít výhody operačního systému Androidu na straně zařízení a při použití [Azure IoT Hub](about-iot-hub.md) jako centrálního centra zpráv, které se škálují na miliony současně připojených zařízení.
 
 Tento kurz popisuje kroky pro vytvoření aplikace na straně zařízení v Androidu pomocí sady Azure IoT Java SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Android podporuje hardware s operačním systémem Androidu.  [Dokumentaci](https://developer.android.com/things/get-started/kits#flash-at) k Androidu můžete sledovat v tématu Postup pro Flash Androidu.  Ujistěte se, že zařízení s Androidem je připojené k Internetu se základními periferními zařízeními, jako jsou klávesnice, displeje a připojené myší.  V tomto kurzu se používá Malina Pi 3.
+* Android podporuje hardware s operačním systémem Androidu.  [Dokumentaci k Androidu](https://developer.android.com/things/get-started/kits#flash-at) můžete sledovat v tématu Postup pro Flash Androidu.  Ujistěte se, že zařízení s Androidem je připojené k Internetu se základními periferními zařízeními, jako jsou klávesnice, displeje a připojené myší.  V tomto kurzu se používá Malina Pi 3.
 
 * Nejnovější verze [Android Studio](https://developer.android.com/studio/)
 
@@ -40,16 +40,16 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Ve službě Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření rozhraní příkazového řádku IoT Hub a vytvoření identity zařízení.
 
-   **YourIoTHubName** : Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
+   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
 
    **MyAndroidThingsDevice** : Toto je název zadaný pro registrované zařízení. Použijte MyAndroidThingsDevice, jak je znázorněno na obrázku. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. Spuštěním následujících příkazů v Azure Cloud Shell Získejte *připojovací řetězec zařízení* pro zařízení, které jste právě zaregistrovali. Nahraďte `YourIoTHubName` níže názvem, který zvolíte pro Centrum IoT.
+2. Spuštěním následujících příkazů v Azure Cloud Shell Získejte *připojovací řetězec zařízení* pro zařízení, které jste právě zaregistrovali. `YourIoTHubName` níže nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -79,7 +79,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 4. V Android Studio otevřete projekt pro Android v umístění v části "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample".
 
-5. Otevřete soubor Gradle. Properties a nahraďte "Device_connection_string" připojovacím řetězcem zařízení, který jste si poznamenali dříve.
+5. Otevřete soubor Gradle. Properties a nahraďte "Device_connection_string" vaším připojovacím řetězcem zařízení, který jste si poznamenali dříve.
  
 6. Klikněte na spustit – ladění a vyberte své zařízení, abyste mohli tento kód nasadit na zařízení s Androidem.
 
@@ -87,7 +87,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-Data můžete v rámci služby IoT Hub zobrazit při jejich přijetí. Rozšíření IoT Hub CLI se může ve vaší službě IoT Hub připojit ke koncovému bodu **Události** na straně služby. Toto rozšíření přijímá zprávy ze zařízení do cloudu odesílané z vašeho simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
+Data můžete v rámci služby IoT Hub zobrazit při jejich přijetí. Rozšíření rozhraní příkazového řádku IoT Hub se může připojit ke koncovému bodu **Události** na straně služby v IoT Hubu. Toto rozšíření přijímá zprávy ze zařízení do cloudu odesílané z vašeho simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
 Ve službě Azure Cloud Shell spusťte následující příkazy a položku `YourIoTHubName` nahraďte názvem centra IoT:
 

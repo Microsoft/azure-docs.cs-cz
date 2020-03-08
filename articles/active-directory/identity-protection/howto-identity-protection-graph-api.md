@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15b9bae1bd901325efdefeaa4db53df2d6b42b44
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275894"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671626"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
 Microsoft Graph je koncový bod rozhraní Microsoft Unified API a jeho Domovská stránka rozhraní API pro [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) . K dispozici jsou čtyři rozhraní API, která zveřejňují informace o rizikových uživatelích a přihlášeních. První rozhraní API, **riskDetection**, umožňuje zadat dotaz na Microsoft Graph seznam uživatelů a jejich přihlašování a související informace o detekci. Druhé rozhraní API, **riskyUsers**, vám umožní dotazovat se na Microsoft Graph informace o ochraně identity uživatelů zjištěné jako rizika. Třetí rozhraní API vám umožní dotazovat **se na**Microsoft Graph pro informace o přihlášeních k Azure AD s konkrétními vlastnostmi, které se týkají stavu rizika, podrobností a úrovně. Čtvrté rozhraní API **identityRiskEvents**umožňuje zadat dotaz na seznam [detekcí rizik](../reports-monitoring/concept-risk-events.md) a přidružených informací v Microsoft Graph. Rozhraní identityRiskEvents API bude zastaralé 10. ledna 2020; Doporučujeme místo toho použít rozhraní **riskDetections** API. Tento článek vám pomůže začít s připojením k Microsoft Graph a dotazování na tato rozhraní API. Podrobné informace o tom, úplnou dokumentaci a přístup k Průzkumníku graphu, najdete na [webu Microsoft Graph](https://graph.microsoft.io/) nebo v konkrétní referenční dokumentaci pro tato rozhraní API:
 
-* [rozhraní API pro riskDetection](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [rozhraní API pro riskyUsers](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [Přihlášení k rozhraní API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
-* [rozhraní identityRiskEvents API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta) *bude zastaralé 10. ledna 2020*
+* [rozhraní API pro riskDetection](/graph/api/resources/riskdetection?view=graph-rest-beta)
+* [rozhraní API pro riskyUsers](/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [Přihlášení k rozhraní API](/graph/api/resources/signin?view=graph-rest-beta)
+* [rozhraní identityRiskEvents API](/graph/api/resources/identityriskevent?view=graph-rest-beta) *bude zastaralé 10. ledna 2020*
 
 ## <a name="connect-to-microsoft-graph"></a>Připojit k Microsoft graphu
 
@@ -124,7 +124,7 @@ Než začnete, budete potřebovat:
 
    1. Do textového pole **Popis klíče** zadejte popis (například *zjišťování rizik Azure AD*).
    1. Jako **dobu trvání**vyberte **v 1 roce**.
-   1. Klikněte na možnost **Uložit**.
+   1. Klikněte na **Uložit**.
    1. Zkopírujte hodnotu klíče a vložte ji do bezpečného umístění.   
    
    > [!NOTE]
@@ -224,7 +224,7 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 Blahopřejeme, právě jste nastavili své první volání do Microsoft Graph!  
 Nyní se můžete dotazovat na detekci rizik identity a používat data, která se ale budou zobrazovat.
 
-Další informace o Microsoft Graph a o tom, jak sestavovat aplikace pomocí Graph API, najdete v [dokumentaci](https://docs.microsoft.com/graph/overview) a mnohem víc na [webu Microsoft Graph](https://developer.microsoft.com/graph). 
+Další informace o Microsoft Graph a o tom, jak sestavovat aplikace pomocí Graph API, najdete v [dokumentaci](/graph/overview) a mnohem víc na [webu Microsoft Graph](https://developer.microsoft.com/graph). 
 
 Související informace najdete v těchto tématech:
 

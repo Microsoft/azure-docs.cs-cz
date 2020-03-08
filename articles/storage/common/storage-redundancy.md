@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471342"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674277"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -66,7 +66,7 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 |    Úložiště    | Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
 
 <sup>1</sup> úroveň archivu se v současnosti nepodporuje u účtů ZRS.<br />
-<sup>2</sup> disky Azure pro virtuální počítače, včetně spravovaných i nespravovaných disků, podporují jenom LRS. Nepodporují ZRS ani GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+<sup>2</sup> účty úložiště, které obsahují Azure Managed disks pro virtuální počítače, vždycky používají LRS. Nespravované disky Azure by měly také používat LRS. Je možné vytvořit účet úložiště pro nespravované disky Azure, které používají GRS, ale nedoporučuje se v důsledku potenciálních problémů s konzistencí přes asynchronní geografickou replikaci. Ani spravované ani nespravované disky nepodporují ZRS nebo GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 Informace o tom, které oblasti podporují ZRS, najdete v článku **Podpora služeb podle oblasti** v tématu [co je zóny dostupnosti Azure?](../../availability-zones/az-overview.md).
 

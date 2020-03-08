@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512415"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672701"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -24,7 +24,7 @@ Služba Azure AD JOIN umožňuje připojit zařízení přímo k Azure AD bez nu
 
 Tento článek poskytuje informace, které potřebujete k plánování vaší implementace služby Azure AD JOIN.
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste obeznámeni se [správou zařízení v Azure Active Directory](../device-management-introduction.md).
 
@@ -59,7 +59,7 @@ Připojení k Azure AD funguje s oběma spravovanými i federovaným prostředí
 
 ### <a name="managed-environment"></a>Spravované prostředí
 
-Spravované prostředí se dá nasadit buď pomocí [synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) , nebo [přes ověřování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) pomocí bezproblémového jednotného přihlašování.
+Spravované prostředí se dá nasadit buď pomocí [synchronizace hodnot hash hesel](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) , nebo [přes ověřování](/azure/active-directory/hybrid/how-to-connect-pta-quick-start) pomocí bezproblémového jednotného přihlašování.
 
 Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování.
 
@@ -78,7 +78,7 @@ Pokud používáte AD FS, je nutné povolit následující koncové body WS-Trus
 Pokud Váš zprostředkovatel identity tyto protokoly nepodporuje, připojení k Azure AD nefunguje nativně. 
 
 >[!NOTE]
-> Připojení k Azure AD v současné době nefunguje s [AD FS 2019 nakonfigurovanými externími zprostředkovateli ověřování jako primární metodou ověřování](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Služba Azure AD JOIN ve výchozím nastavení používá ověřování hesla jako primární metodu, což má za následek selhání ověřování v tomto scénáři.
+> Připojení k Azure AD v současné době nefunguje s [AD FS 2019 nakonfigurovanými externími zprostředkovateli ověřování jako primární metodou ověřování](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Služba Azure AD JOIN ve výchozím nastavení používá ověřování hesla jako primární metodu, což má za následek selhání ověřování v tomto scénáři.
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Čipové karty a ověřování na základě certifikátu
@@ -91,7 +91,7 @@ K připojení zařízení do Azure AD nemůžete použít čipové karty ani ov�
 
 Pokud vytvoříte uživatele v:
 
-- **Místní služba Active Directory**, je třeba je synchronizovat s Azure AD pomocí [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
+- **Místní služba Active Directory**, je třeba je synchronizovat s Azure AD pomocí [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
 - **Azure AD**, nevyžaduje se žádné další nastavení.
 
 Místní hlavní názvy služby (UPN), které se liší od Azure AD UPN, se na zařízeních připojených k Azure AD nepodporují. Pokud uživatelé používají místní hlavní název uživatele (UPN), měli byste naplánovat přechod na použití primárního hlavního názvu uživatele (UPN) ve službě Azure AD.
@@ -127,9 +127,9 @@ Zkontrolujte podporované a nepodporované zásady, abyste zjistili, jestli mů�
 - Jsou nutné zásady nepodporované pro zařízení nebo uživatele připojená k Azure AD?
 - Platí nepodporované zásady pro nasazení na základě cloudu?
 
-Pokud vaše řešení pro správu mobilních zařízení není dostupné prostřednictvím Galerie aplikací Azure AD, můžete ho přidat za proces popsaný v [Azure Active Directory integraci s MDM](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
+Pokud vaše řešení pro správu mobilních zařízení není dostupné prostřednictvím Galerie aplikací Azure AD, můžete ho přidat za proces popsaný v [Azure Active Directory integraci s MDM](/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
 
-Prostřednictvím spolusprávy můžete pomocí nástroje SCCM spravovat určité aspekty vašich zařízení, zatímco zásady se doručují prostřednictvím platformy MDM. Microsoft Intune umožňuje spolusprávu pomocí nástroje SCCM. Další informace o společné správě zařízení s Windows 10 najdete v tématu [co je spoluspráva?](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview). Pokud používáte jiný produkt MDM než Intune, obraťte se prosím na svého poskytovatele MDM v příslušných scénářích spolusprávy.
+Prostřednictvím spolusprávy můžete pomocí nástroje SCCM spravovat určité aspekty vašich zařízení, zatímco zásady se doručují prostřednictvím platformy MDM. Microsoft Intune umožňuje spolusprávu pomocí nástroje SCCM. Další informace o společné správě zařízení s Windows 10 najdete v tématu [co je spoluspráva?](/configmgr/core/clients/manage/co-management-overview). Pokud používáte jiný produkt MDM než Intune, obraťte se prosím na svého poskytovatele MDM v příslušných scénářích spolusprávy.
 
 **Doporučení:** Zvažte správu jenom MDM pro zařízení připojená k Azure AD.
 
@@ -155,7 +155,7 @@ Pokud jsou vaše aplikace vlastní sestavené a/nebo hostované místně, musít
 - Povolit integrované ověřování Windows pro práci 
 - Poskytněte uživatelům možnosti pro jednotné přihlašování. 
 
-Pokud používáte AD FS, přečtěte si téma [ověření a správa jednotného přihlašování pomocí AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
+Pokud používáte AD FS, přečtěte si téma [ověření a správa jednotného přihlašování pomocí AD FS](/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
 **Doporučení:** Pro lepší prostředí zvažte hostování v cloudu (například Azure) a integraci se službou Azure AD.
 
@@ -163,7 +163,7 @@ Pokud používáte AD FS, přečtěte si téma [ověření a správa jednotného
 
 Uživatelé získávají přihlašování ze zařízení připojených k Azure AD, pokud má zařízení přístup k řadiči domény. 
 
-**Doporučení:** Nasaďte [aplikace Azure AD proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) , abyste pro tyto aplikace povolili zabezpečený přístup.
+**Doporučení:** Nasaďte [aplikace Azure AD proxy](/azure/active-directory/manage-apps/application-proxy) , abyste pro tyto aplikace povolili zabezpečený přístup.
 
 ### <a name="on-premises-network-shares"></a>Místní síťové sdílené složky
 
@@ -171,7 +171,7 @@ Uživatelé mají k dispozici jednotné přihlašování ze zařízení připoje
 
 ### <a name="printers"></a>Tiskárny
 
-Pro tiskárny potřebujete nasadit [hybridní cloudový tisk](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) pro zjišťování tiskáren na zařízeních připojených k Azure AD. 
+Pro tiskárny potřebujete nasadit [hybridní cloudový tisk](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) pro zjišťování tiskáren na zařízeních připojených k Azure AD. 
 
 I když se tiskárny nedají automaticky zjistit v prostředí jenom pro Cloud, můžou uživatelé použít cestu UNC tiskárny, aby je mohli přímo přidat. 
 
@@ -183,19 +183,19 @@ Zařízení připojená k Azure AD nepodporují místní aplikace, které se spo
 
 ### <a name="remote-desktop-services"></a>Vzdálená plocha
 
-Připojení ke vzdálené ploše k zařízením připojeným k Azure AD vyžaduje, aby byl hostitelský počítač buď připojený k Azure AD, nebo připojený k hybridní službě Azure AD. Vzdálená plocha z nepřipojeného zařízení nebo jiného zařízení než Windows není podporovaná. Další informace najdete v tématu [připojení ke vzdálenému počítači připojenému k Azure AD](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc) .
+Připojení ke vzdálené ploše k zařízením připojeným k Azure AD vyžaduje, aby byl hostitelský počítač buď připojený k Azure AD, nebo připojený k hybridní službě Azure AD. Vzdálená plocha z nepřipojeného zařízení nebo jiného zařízení než Windows není podporovaná. Další informace najdete v tématu [připojení ke vzdálenému počítači připojenému k Azure AD](/windows/client-management/connect-to-remote-aadj-pc) .
 
 ## <a name="understand-your-provisioning-options"></a>Informace o možnostech zřizování
 
 Službu Azure AD JOIN můžete zřídit pomocí následujících přístupů:
 
-- **Samoobslužná služba v nastavení OOBE/nastavení** – v samoobslužném režimu se uživatelé procházejí procesem připojení služby Azure AD buď během procesu OOBE (Windows out of box), nebo z nastavení systému Windows. Další informace najdete v tématu [připojení pracovního zařízení k síti vaší organizace](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network). 
-- **Windows autopilot** – Windows autopilot – Windows autopilot umožňuje předběžnou konfiguraci zařízení pro bezproblémové prostředí v OOBE k provedení služby Azure AD JOIN. Další informace najdete v tématu [Přehled Windows autopilotu](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot). 
-- **Hromadná** registrace – hromadný zápis umožňuje správcům využít službu Azure AD pro připojení pomocí nástroje pro hromadné zřizování ke konfiguraci zařízení. Další informace najdete v tématu [Hromadná registrace pro zařízení s Windows](https://docs.microsoft.com/intune/windows-bulk-enroll).
+- **Samoobslužná služba v nastavení OOBE/nastavení** – v samoobslužném režimu se uživatelé procházejí procesem připojení služby Azure AD buď během procesu OOBE (Windows out of box), nebo z nastavení systému Windows. Další informace najdete v tématu [připojení pracovního zařízení k síti vaší organizace](/azure/active-directory/user-help/user-help-join-device-on-network). 
+- **Windows autopilot** – Windows autopilot – Windows autopilot umožňuje předběžnou konfiguraci zařízení pro bezproblémové prostředí v OOBE k provedení služby Azure AD JOIN. Další informace najdete v tématu [Přehled Windows autopilotu](/windows/deployment/windows-autopilot/windows-10-autopilot). 
+- **Hromadná** registrace – hromadný zápis umožňuje správcům využít službu Azure AD pro připojení pomocí nástroje pro hromadné zřizování ke konfiguraci zařízení. Další informace najdete v tématu [Hromadná registrace pro zařízení s Windows](/intune/windows-bulk-enroll).
  
 Toto je srovnání těchto tří přístupů. 
  
-|   | Instalace samoobslužných služeb | Windows Autopilot | Hromadný zápis |
+|   | Instalace samoobslužných služeb | Windows autopilot | Hromadný zápis |
 | --- | --- | --- | --- |
 | Vyžadovat nastavení interakce s uživatelem | Ano | Ano | Ne |
 | Vyžadovat úsilí IT | Ne | Ano | Ano |
@@ -268,7 +268,7 @@ Existují tři adresy URL, které souvisejí s konfigurací MDM:
 
 - Adresa URL podmínek použití MDM
 - Adresa URL zjišťování MDM 
-- Adresa URL s předpisy služby MDM
+- Adresa URL dodržování předpisů MDM
 
 ![Přidání aplikace](./media/azureadjoin-plan/06.png)
 
@@ -296,7 +296,7 @@ Tuto implementaci můžete použít k [vyžadování spravovaných zařízení p
 
 > [!div class="nextstepaction"]
 > [Připojení nového zařízení s Windows 10 k Azure AD během prvního spuštění](azuread-joined-devices-frx.md)
-> [Připojte své pracovní zařízení k síti vaší organizace](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network) .
+> [Připojte své pracovní zařízení k síti vaší organizace](/azure/active-directory/user-help/user-help-join-device-on-network) .
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

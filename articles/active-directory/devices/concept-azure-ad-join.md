@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512194"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672669"
 ---
 # <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
@@ -31,7 +31,7 @@ Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze clou
 | **Operační systémy** | Všechna zařízení s Windows 10 |
 | **Zřizování** | Samoobslužná služba: Windows OOBE nebo nastavení |
 |   | Hromadný zápis |
-|   | Windows Autopilot |
+|   | Windows autopilot |
 | **Možnosti přihlášení zařízení** | Účty organizace pomocí: |
 |   | Heslo |
 |   | Windows Hello pro firmy |
@@ -45,9 +45,9 @@ Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze clou
 
 Zařízení připojená k Azure AD jsou přihlášená k používání účtu Azure AD organizace. Přístup k prostředkům v organizaci je možné dál omezit na základě účtu Azure AD a [zásad podmíněného přístupu](../conditional-access/overview.md) , které se používají pro identitu zařízení.
 
-Správci můžou zabezpečit a dále řídit zařízení připojená k Azure AD pomocí nástrojů pro správu mobilních zařízení (MDM), jako je Microsoft Intune nebo ve scénářích spolusprávy pomocí služby Microsoft Endpoint Configuration Manager. Tyto nástroje poskytují způsob, jak vyhovět konfiguracím vyžadovaným v organizaci, jako je třeba šifrování úložiště, složitost hesla, instalace softwaru a aktualizace softwaru. Správci můžou k dispozici pro zařízení připojená k Azure AD pomocí Configuration Manager ke [správě aplikací ze Microsoft Store pro firmy a vzdělávání](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
+Správci můžou zabezpečit a dále řídit zařízení připojená k Azure AD pomocí nástrojů pro správu mobilních zařízení (MDM), jako je Microsoft Intune nebo ve scénářích spolusprávy pomocí služby Microsoft Endpoint Configuration Manager. Tyto nástroje poskytují způsob, jak vyhovět konfiguracím vyžadovaným v organizaci, jako je třeba šifrování úložiště, složitost hesla, instalace softwaru a aktualizace softwaru. Správci můžou k dispozici pro zařízení připojená k Azure AD pomocí Configuration Manager ke [správě aplikací ze Microsoft Store pro firmy a vzdělávání](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 
-Připojení k Azure AD se dá provést pomocí možností samoobslužné služby, jako je například spuštění z prvního počítače, hromadné registrace nebo automatický [pilot pro Windows](https://docs.microsoft.com/intune/enrollment-autopilot).
+Připojení k Azure AD se dá provést pomocí možností samoobslužné služby, jako je například spuštění z prvního počítače, hromadné registrace nebo automatický [pilot pro Windows](/intune/enrollment-autopilot).
 
 Zařízení připojená k Azure AD stále můžou udržovat přístup k místním prostředkům v rámci jednotného přihlašování, když se nacházejí v síti organizace. Zařízení, která jsou připojená k Azure AD, se můžou i nadále ověřovat u místních serverů, jako jsou soubory, tisk a další aplikace.
 
@@ -74,8 +74,8 @@ Cílem zařízení připojených k Azure AD je zjednodušit:
 
 K nasazení služby Azure AD Join je možné použít jakoukoli z následujících metod:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
-- [Hromadné nasazení](https://docs.microsoft.com/intune/windows-bulk-enroll)
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)
+- [Hromadné nasazení](/intune/windows-bulk-enroll)
 - [Samoobslužné prostředí](azuread-joined-devices-frx.md)
 
 ## <a name="next-steps"></a>Další kroky

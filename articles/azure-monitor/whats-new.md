@@ -5,16 +5,70 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2020
-ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/05/2020
+ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657737"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673320"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové, nebo byly významně aktualizované. Bude aktualizován první týden v měsíci, aby zahrnoval aktualizace článků z předchozího měsíce.
+
+## <a name="march-2020"></a>Březen 2020
+
+### <a name="agents"></a>Agenti
+Více aktualizací jako součást přepisu obsahu diagnostického rozšíření.
+
+- [Přehled agentů monitorování Azure](platform/agents-overview.md) – restrukturované tabulky pro lepší objasnění jedinečných funkcí každého agenta.
+- [Přehled rozšíření Azure Diagnostics](platform/diagnostics-extension-overview.md) – dokončení přepisu
+- [Použijte úložiště objektů BLOB pro službu IIS a úložiště tabulek pro události v Azure monitor](platform/diagnostics-extension-logs.md) – obecné přepsání pro aktualizace a přehlednost.
+- [Nainstalujte a nakonfigurujte rozšíření Windows Azure Diagnostics (WAD)](platform/diagnostics-extension-windows-install.md) – nový článek. 
+- [Schéma rozšíření Windows Diagnostics](platform/diagnostics-extension-schema-windows.md) – změna uspořádání.
+- [Posílání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs](platform/diagnostics-extension-stream-event-hubs.md) – kompletně přepsáno a aktualizováno.
+- [Ukládání a zobrazení diagnostických dat v Azure Storage](platform/diagnostics-extension-to-storage.md) – kompletně přepsáno a aktualizováno.
+- [Log Analytics rozšíření pro virtuální počítače pro Windows](../virtual-machines/extensions/oms-windows.md) – lépe upřesňuje vztahy s agentem Log Analytics.
+- [Azure monitor rozšíření pro virtuální počítače pro Linux](../virtual-machines/extensions/oms-linux.md) – lépe upřesňuje vztahy s agentem Log Analytics.
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Připojovací řetězce v Azure Application Insights](app/sdk-connection-string.md) – nový článek.
+
+### <a name="insights-and-solutions"></a>Přehledy a řešení
+
+#### <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
+- [Integrace Azure Active Directory se službou Azure Kubernetes](../aks/azure-ad-integration.md) – přidání poznámky k vytvoření klientské aplikace pro podporu clusteru s POVOLENým RBAC pro podporu Azure monitor pro kontejnery.
+
+#### <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
+- [Nejčastější dotazy Azure monitor pro virtuální počítače (GA)](insights/vminsights-ga-release-faq.md) – Změna způsobu ukládání dat o výkonu.
+
+#### <a name="office-365"></a>Office 365
+- [Řešení pro správu Office 365 v Azure](insights/solution-office-365.md) – aktualizované datum vyřazení
+
+
+### <a name="logs"></a>Protokoly
+- [Optimalizujte dotazy protokolu v Azure monitor](log-query/query-optimization.md) – nový článek.
+- [Spravujte využití a náklady na protokoly Azure monitor](platform/manage-cost-storage.md) – vylepšené Ukázkové dotazy vám pomůžou pochopit vaše využití.
+
+### <a name="metrics"></a>Metriky
+- [Azure monitor metriky platformy exportovatelné prostřednictvím nastavení diagnostiky](platform/metrics-supported-export-diagnostic-settings.md) – Přidání oddílu při změně chování pro hodnoty null a nulové hodnoty.
+
+
+### <a name="visualizations"></a>Vizualizace
+Několik nových článků pro Průvodce převodem návrháře zobrazení na sešity.
+
+- [Průvodce přechodem návrháře Azure monitor do sešitů](platform/view-designer-conversion-overview.md) – nový článek.
+- [Možnosti převodu Azure monitor návrháře zobrazení na sešity](platform/view-designer-conversion-options.md) – nový článek
+- [Azure monitor návrháře zobrazení v sešitech převod dlaždic](platform/view-designer-conversion-tiles.md) – nový článek
+- [Souhrn převodu a přístup k novému článku pro návrháře zobrazení Azure monitor na sešity](platform/view-designer-conversion-access.md)
+- [Azure monitor návrháře zobrazení na sešity převod běžných úkolů](platform/view-designer-conversion-tasks.md) – nový článek
+- [Příklady převodu Azure monitor návrháře zobrazení na sešity](platform/view-designer-conversion-examples.md) – nový článek.
+
+
+
 
 ## <a name="january-2020"></a>Leden 2020
 
@@ -43,14 +97,14 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 ### <a name="insights-and-solutions"></a>Přehledy a řešení
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
-- [Konfigurace Azure monitor pro shromažďování dat agenta kontejnerů](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config) – Přidání podrobností pro upgrade agenta na Azure Red Hat OpenShift a přidání dalších informací k odlišení metod pro upgrade agenta.
-- [Vytvořte výstrahy výkonu pro Azure monitor pro kontejnery](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-alerts) – revidované informace a aktualizované kroky pro vytvoření výstrahy pro data o výkonu uložené v pracovním prostoru pomocí výstrah kontextu v pracovním prostoru.
-- [Monitorování Kubernetes s využitím Azure monitor for Containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze) – aktualizace článku s přehledem a článku o analýze týkající se podpory clusterů Windows Kubernetes.
-- [Konfigurace clusterů Azure Red Hat OpenShift s využitím Azure monitor for Containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat-setup) – Přidání podrobností pro upgrade agenta na Azure Red Hat OpenShift a přidání dalších informací k odlišení metod pro upgrade agenta.
-- [Nakonfigurujte hybridní clustery Kubernetes s Azure monitor for Containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup) – aktualizováno tak, aby odrážely přidanou podporu pro zabezpečený port: 10250 s cAdvisor Kubelet.
-- [Jak spravovat Azure monitor for Containers agent](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-manage-agent) – aktualizované podrobnosti týkající se chování a konfigurace likvidace metriky pomocí Azure Red Hat OpenShift ve srovnání s jinými typy clusterů Kubernetes.
-- [Konfigurace Azure monitor pro kontejnery Prometheus integraci](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration) – aktualizované podrobnosti související s chováním a konfigurací vyřazení metriky s využitím Azure Red Hat OpenShift v porovnání s jinými typy clusterů Kubernetes.
-- [Jak aktualizovat Azure monitor pro kontejnery pro metriky](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-update-metrics) – aktualizované podrobnosti týkající se chování a konfigurace vyřazení metriky pomocí Azure Red Hat OpenShift ve srovnání s jinými typy clusterů Kubernetes.
+- [Konfigurace Azure monitor pro shromažďování dat agenta kontejnerů](insights/container-insights-agent-config.md) – Přidání podrobností pro upgrade agenta na Azure Red Hat OpenShift a přidání dalších informací k odlišení metod pro upgrade agenta.
+- [Vytvořte výstrahy výkonu pro Azure monitor pro kontejnery](insights/container-insights-alerts.md) – revidované informace a aktualizované kroky pro vytvoření výstrahy pro data o výkonu uložené v pracovním prostoru pomocí výstrah kontextu v pracovním prostoru.
+- [Monitorování Kubernetes s využitím Azure monitor for Containers](insights/container-insights-analyze.md) – aktualizace článku s přehledem a článku o analýze týkající se podpory clusterů Windows Kubernetes.
+- [Konfigurace clusterů Azure Red Hat OpenShift s využitím Azure monitor for Containers](insights/container-insights-azure-redhat-setup.md) – Přidání podrobností pro upgrade agenta na Azure Red Hat OpenShift a přidání dalších informací k odlišení metod pro upgrade agenta.
+- [Nakonfigurujte hybridní clustery Kubernetes s Azure monitor for Containers](insights/container-insights-hybrid-setup.md) – aktualizováno tak, aby odrážely přidanou podporu pro zabezpečený port: 10250 s cAdvisor Kubelet.
+- [Jak spravovat Azure monitor for Containers agent](insights/container-insights-manage-agent.md) – aktualizované podrobnosti týkající se chování a konfigurace likvidace metriky pomocí Azure Red Hat OpenShift ve srovnání s jinými typy clusterů Kubernetes.
+- [Konfigurace Azure monitor pro kontejnery Prometheus integraci](insights/container-insights-prometheus-integration.md) – aktualizované podrobnosti související s chováním a konfigurací vyřazení metriky s využitím Azure Red Hat OpenShift v porovnání s jinými typy clusterů Kubernetes.
+- [Jak aktualizovat Azure monitor pro kontejnery pro metriky](insights/container-insights-update-metrics.md) – aktualizované podrobnosti týkající se chování a konfigurace vyřazení metriky pomocí Azure Red Hat OpenShift ve srovnání s jinými typy clusterů Kubernetes.
 
 
 #### <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače

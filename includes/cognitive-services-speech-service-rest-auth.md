@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168326"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669260"
 ---
 ## <a name="authentication"></a>Ověřování
 
@@ -22,7 +22,7 @@ Každá žádost vyžaduje autorizační hlavičku. Tato tabulka ukazuje, které
 
 Když použijete hlavičku `Ocp-Apim-Subscription-Key`, budete muset zadat jenom svůj klíč předplatného. Příklad:
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
@@ -34,7 +34,7 @@ K získání přístupového tokenu budete muset na `issueToken` koncový bod vy
 
 `issueToken` koncový bod má tento formát:
 
-```
+```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
@@ -62,7 +62,7 @@ Tělo odpovědi obsahuje přístupový token ve formátu JSON Web Token (JWT).
 
 V tomto příkladu je jednoduchý skript prostředí PowerShell k získání přístupového tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčem předplatného služby Speech. Nezapomeňte použít správný koncový bod pro oblast, která odpovídá vašeho předplatného. V tomto příkladu je aktuálně nastavený na západní USA.
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -81,7 +81,7 @@ $OAuthToken
 
 cURL je nástroj příkazového řádku jsou k dispozici v systému Linux (a v subsystému Windows pro Linux). Tento příkaz cURL znázorňuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčem předplatného služby Speech. Nezapomeňte použít správný koncový bod pro oblast, která odpovídá vašeho předplatného. V tomto příkladu je aktuálně nastavený na západní USA.
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -93,7 +93,7 @@ curl -v -X POST
 
 To C# třídy ukazuje, jak získat přístupový token. Předejte klíč předplatného Speech Service při vytváření instance třídy. Pokud vaše předplatné není v oblasti Západní USA, změňte hodnotu `FetchTokenUri` tak, aby odpovídala oblasti vašeho předplatného.
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =

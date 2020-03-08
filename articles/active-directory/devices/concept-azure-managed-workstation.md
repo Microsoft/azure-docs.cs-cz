@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561946"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672664"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Pochopení zabezpečení pracovních stanic spravovaných Azure
 
@@ -81,18 +81,18 @@ Strategie omezení zvyšují zabezpečení tím, že zvyšují počet a typ ovl�
 
 Základem pro zabezpečenou pracovní stanici je řešení dodavatelského řetězce, ve kterém používáte důvěryhodnou pracovní stanici s názvem kořen vztahu důvěryhodnosti. Technologie, která se musí vzít v úvahu při výběru kořene hardwaru vztahu důvěryhodnosti, by měla zahrnovat následující technologie, které jsou součástí moderních přenosných počítačů: 
 
-* [ČIP TPM (Trusted Platform Module) 2,0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
-* [nástroj BitLocker Drive Encryption](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
-* [Zabezpečené spouštění UEFI](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
-* [Ovladače a firmware distribuované prostřednictvím web Windows Update](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
-* [Virtualizace a HYPERVISOREM HVCI povoleny](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
-* [Ovladače a aplikace HYPERVISOREM HVCI – připravené](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
-* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
-* [Ochrana vstupu/výstupu DMA](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
-* [Ochrana systému](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
-* [Moderní pohotovostní režim](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+* [ČIP TPM (Trusted Platform Module) 2,0](/windows-hardware/design/device-experiences/oem-tpm)
+* [nástroj BitLocker Drive Encryption](/windows-hardware/design/device-experiences/oem-bitlocker)
+* [Zabezpečené spouštění UEFI](/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Ovladače a firmware distribuované prostřednictvím web Windows Update](/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [Virtualizace a HYPERVISOREM HVCI povoleny](/windows-hardware/design/device-experiences/oem-vbs)
+* [Ovladače a aplikace HYPERVISOREM HVCI – připravené](/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [Ochrana vstupu/výstupu DMA](/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [Ochrana systému](/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [Moderní pohotovostní režim](/windows-hardware/design/device-experiences/modern-standby)
 
-Pro toto řešení se kořen důvěryhodnosti nasadí pomocí technologie [Microsoft autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) s hardwarem, který splňuje moderní technické požadavky. Za účelem zabezpečení pracovní stanice vám nástroj autopilot umožňuje využívat zařízení s Windows 10 optimalizovaná výrobcem OEM. Tato zařízení jsou od výrobce dodávána se známým dobrým stavem. Místo opětovného navýšení obrazu potenciálně nezabezpečeného zařízení může tento autopilot transformovat zařízení s Windows do stavu připraveného pro přípravu do zaměstnání. Aplikuje nastavení a zásady, nainstaluje aplikace a dokonce změní edici Windows 10. Například autopilot může změnit instalaci Windows zařízení z Windows 10 pro na Windows 10 Enterprise, aby mohl používat pokročilé funkce.
+Pro toto řešení se kořen důvěryhodnosti nasadí pomocí technologie [Microsoft autopilot](/windows/deployment/windows-autopilot/windows-autopilot) s hardwarem, který splňuje moderní technické požadavky. Za účelem zabezpečení pracovní stanice vám nástroj autopilot umožňuje využívat zařízení s Windows 10 optimalizovaná výrobcem OEM. Tato zařízení jsou od výrobce dodávána se známým dobrým stavem. Místo opětovného navýšení obrazu potenciálně nezabezpečeného zařízení může tento autopilot transformovat zařízení s Windows do stavu připraveného pro přípravu do zaměstnání. Aplikuje nastavení a zásady, nainstaluje aplikace a dokonce změní edici Windows 10. Například autopilot může změnit instalaci Windows zařízení z Windows 10 pro na Windows 10 Enterprise, aby mohl používat pokročilé funkce.
 
 ![Úrovně zabezpečení pracovních stanic](./media/concept-azure-managed-workstation/supplychain.png)
 
@@ -105,7 +105,7 @@ Tento návod odkazuje na několik profilů zabezpečení a rolí, které vám po
 
 * **Rozšířené zabezpečení** – toto chráněné řešení je vhodné pro domácí uživatele, malé firmy a obecné vývojáře.
 
-   Rozšířená pracovní stanice je způsob, jak zvýšit zabezpečení nízkého profilu zabezpečení na základě zásad. Poskytuje zabezpečené prostředky pro práci s Zákaznickými daty a zároveň používá nástroje pro zvýšení produktivity, jako jsou e-maily a procházení webu. Pomocí zásad auditu a Intune můžete monitorovat rozšířenou pracovní stanici pro chování uživatelů a používání profilů. Rozšířený profil pracovní stanice nasadíte pomocí skriptu Windows10 (1809) a využijete pokročilou ochranu proti malwaru pomocí [rozšířené ochrany před internetovými útoky (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
+   Rozšířená pracovní stanice je způsob, jak zvýšit zabezpečení nízkého profilu zabezpečení na základě zásad. Poskytuje zabezpečené prostředky pro práci s Zákaznickými daty a zároveň používá nástroje pro zvýšení produktivity, jako jsou e-maily a procházení webu. Pomocí zásad auditu a Intune můžete monitorovat rozšířenou pracovní stanici pro chování uživatelů a používání profilů. Rozšířený profil pracovní stanice nasadíte pomocí skriptu Windows10 (1809) a využijete pokročilou ochranu proti malwaru pomocí [rozšířené ochrany před internetovými útoky (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
 
 * **Vysoké zabezpečení** – nejúčinnější způsob, jak omezit prostor pro útok na pracovní stanici, je odebrat možnost samoobslužně spravovat pracovní stanici. Odebrání oprávnění místního správce je krok, který vylepšuje zabezpečení, ale může mít vliv na produktivitu, pokud je nesprávně implementován. Profil vysokého zabezpečení se vytváří v rozšířeném profilu zabezpečení s jednou významnou změnou: odebrání místního správce. Tento profil je určený pro uživatele s vysokým profilem: vedoucí pracovníky, mzdy a citlivá data uživatelů, schvalovatele pro služby a procesy.
 
@@ -121,8 +121,8 @@ Tento návod odkazuje na několik profilů zabezpečení a rolí, které vám po
 
 * **Izolovaný** – tento vlastní, offline scénář představuje extrémní konec spektra. Pro tento případ nejsou k dispozici žádné instalační skripty. Možná budete muset spravovat kritickou obchodní funkci, která vyžaduje nepodporovaný nebo neopravený starší operační systém. Například vysoká hodnota výrobní linky nebo systému podpory životního cyklu. Vzhledem k tomu, že je zabezpečení důležité a cloudové služby nejsou k dispozici, můžete tyto počítače spravovat a aktualizovat ručně nebo s izolovanou doménovou strukturou služby Active Directory, jako je například rozšířené prostředí pro správu zabezpečení (zvýšeným zabezpečením). V takových případech zvažte odebrání veškerého přístupu, s výjimkou základních kontrol služby Intune a ATP.
 
-   * [Požadavek na síťovou komunikaci Intune](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [Požadavek na síťovou komunikaci ATP](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Požadavek na síťovou komunikaci Intune](/intune/network-bandwidth-use)
+   * [Požadavek na síťovou komunikaci ATP](/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>Další kroky
 

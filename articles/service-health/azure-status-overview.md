@@ -3,12 +3,12 @@ title: Přehled stavu Azure | Microsoft Docs
 description: Globální pohled na stav služeb Azure
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654150"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898346"
 ---
 # <a name="azure-status-overview"></a>Přehled stavu Azure
 
@@ -26,7 +26,7 @@ Stavová stránka Azure se aktualizuje v reálném čase, protože se změní st
 
 I když na stránce Stav Azure se vždy zobrazují nejnovější informace o stavu, můžete zobrazit starší události pomocí [stránky historie stavu Azure](https://status.azure.com/status/history/).
 
-V minulosti můžete zobrazit události až do 90 dnů, včetně předběžné hlavní příčiny, zmírnění rizik a dalších kroků pro Azure.
+Počínaje událostmi, které byly publikovány v listopadu 2019, stránka Historie stavu zobrazuje události až do 365 dnů v minulosti, včetně předběžné hlavní příčiny, zmírňování a dalších kroků pro Azure.
 
 ## <a name="rss-feed"></a>Informační kanál RSS
 

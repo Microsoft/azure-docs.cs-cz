@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967520"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673578"
 ---
 # <a name="azure-media-player-overview"></a>Přehled Azure Media Player
 
@@ -26,8 +26,6 @@ Microsoft Azure Media Services umožňuje, aby se obsah mohl zpracovat pomocí H
 
 > [!NOTE]
 > Pro Widevine zašifrovaný obsah se vyžaduje přehrávání HTTPS.
-
-[Vyzkoušejte si bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Použití ukázkové stránky Azure Media Player
 
@@ -39,7 +37,7 @@ Pokud chcete přehrát nové video, vložte jinou adresu URL a stiskněte **aktu
 
 Pokud chcete nakonfigurovat různé možnosti přehrávání (například tech, Language nebo Encryption), stiskněte **Rozšířené možnosti**.
 
-![Azure Media Player](./media/azure-media-player/home-page.png)
+![Přehrávač médií Azure](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Monitorování diagnostiky streamu videa
 

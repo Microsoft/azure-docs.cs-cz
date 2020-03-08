@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920089"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673376"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Reference k modulu & algoritmu pro návrháře Azure Machine Learning (Preview)
 
@@ -57,7 +57,7 @@ Nápovědu k výběru algoritmů najdete v tématu.
 | Jazyk R | Napište kód a vložte ho do modulu pro integraci jazyka R s vaším kanálem. | [Spustit skript jazyka R](execute-r-script.md) |
 | Analýza textu | Poskytněte specializované výpočetní nástroje pro práci s strukturovaným i nestrukturovaným textem. | [Extrahovat N gram funkcí z textu](extract-n-gram-features-from-text.md) <br/> [Hodnoty hash funkcí](feature-hashing.md) <br/> [Text předběžného zpracování](preprocess-text.md) |
 | Doporučení | Modely doporučení pro sestavení. | [Vyhodnotit doporučeného](evaluate-recommender.md) <br/> [Doporučení pro skóre SVD](score-svd-recommender.md) <br/> [Doporučení pro výuku SVD](train-SVD-recommender.md) |
-| Detekce anomálií | Sestavujte modely detekce anomálií. | [Detekce anomálií založená na DPS](pca-based-anomaly-detection.md) <br/> [Model detekce anomálií vlaku](train-anomaly-detection-model.md) |
+
 
 ## <a name="error-messages"></a>Chybové zprávy
 

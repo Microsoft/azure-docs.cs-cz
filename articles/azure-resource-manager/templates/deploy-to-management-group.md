@@ -2,23 +2,29 @@
 title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228106"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894893"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Vytváření prostředků na úrovni skupiny pro správu
 
-Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Můžete ale také vytvořit prostředky na úrovni skupiny pro správu. Nasazení na úrovni skupiny pro správu můžete použít k provádění akcí, které na této úrovni mají smysl, například přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md) nebo použití [zásad](../../governance/policy/overview.md).
+Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Prostředky však můžete vytvořit také v těchto případech:
+
+* [úroveň předplatného](deploy-to-subscription.md)
+* úroveň skupiny pro správu (uvedená v tomto článku)
+* [úroveň tenanta](deploy-to-tenant.md)
+
+Nasazení na úrovni skupiny pro správu můžete použít k provádění akcí, které na této úrovni mají smysl, například přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md) nebo použití [zásad](../../governance/policy/overview.md).
 
 ## <a name="supported-resources"></a>Podporované prostředky
 
 Na úrovni skupiny pro správu můžete nasadit následující typy prostředků:
 
-* [nasazení](/azure/templates/microsoft.resources/deployments)
+* [nasazení](/azure/templates/microsoft.resources/deployments) – pro vnořené šablony, které se nasazují do předplatných nebo skupin prostředků.
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)

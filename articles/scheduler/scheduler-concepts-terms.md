@@ -1,26 +1,27 @@
 ---
-title: Koncepty, termíny a entity – Azure Scheduler | Microsoft Docs
+title: Koncepty, termíny a entity
 description: Seznamte se s koncepty, terminologií a hierarchií entit, včetně úloh a kolekcí úloh, ve službě Azure Scheduler.
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300958"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898576"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
+>
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
 ## <a name="entity-hierarchy"></a>Hierarchie entit
 
@@ -77,7 +78,7 @@ Azure Scheduler podporuje několik typů úloh:
 * Akce, která se spustí, když se aktivuje časovač úlohy
 * Volitelné: Čas, kdy se má úloha spustit
 * Volitelné: Kdy a jak často se má úloha opakovat
-* Volitelné: Chybová akce, která se spustí, pokud dojde k chybě primární akce
+* Volitelné: Akce při chybě, která se spustí, pokud primární akce selže
 
 Úloha obsahuje také data poskytnutá systémem, jako je například čas dalšího plánovaného spuštění úlohy. Definice kódu úlohy je objekt ve formátu JSON (JavaScript Object Notation), který obsahuje tyto elementy:
 
@@ -147,7 +148,7 @@ V objektu **startTime** můžete zadat čas spuštění a posun časového pásm
 
 <a name="action"></a>
 
-## <a name="action"></a>action
+## <a name="action"></a>Akce
 
 Úloha služby Scheduler spouští primární **akci** podle zadaného plánu. Scheduler podporuje akce HTTP, fronty úložiště, fronty služby Service Bus a tématu služby Service Bus. Pokud primární **akce** selže, může Scheduler spustit sekundární akci [**errorAction**](#erroraction), která chybu zpracuje. Objekt **action** popisuje tyto elementy:
 
@@ -227,7 +228,7 @@ Stejně jako primární **akce** může i akce při chybě využívat jednoducho
 
 <a name="recurrence"></a>
 
-## <a name="recurrence"></a>opakování
+## <a name="recurrence"></a>recurrence
 
 Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakovat. Příklad:
 
@@ -245,15 +246,15 @@ Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakov
 },
 ```
 
-| Vlastnost | Požadováno | Value | Popis | 
+| Vlastnost | Požadováno | Hodnota | Popis | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
 | **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
-| **schedule** | Ne | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
-| **hours** | Ne | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
+| **schedule** | Ne | Je to různé. | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
+| **hours** | Ne | 1 až 24 | Pole s hodinami, kdy se má úloha spustit | 
 | **minutes** | Ne | 0 až 59 | Pole s minutami, kdy se má úloha spustit | 
 | **months** | Ne | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
-| **monthDays** | Ne | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
+| **monthDays** | Ne | Je to různé. | Pole se dny v měsíci, kdy se má úloha spustit | 
 | **weekDays** | Ne | Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle) | Pole se dny v týdnu, kdy se má úloha spustit | 
 | **count** | Ne | <*žádné*> | Počet opakování. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
 | **endTime** | Ne | <*žádné*> | Datum a čas, kdy se má opakování zastavit. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
@@ -275,7 +276,7 @@ Pro případ, že by došlo k selhání úlohy služby Scheduler, můžete nasta
 },
 ```
 
-| Vlastnost | Požadováno | Value | Popis | 
+| Vlastnost | Požadováno | Hodnota | Popis | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ano | **Pevné**, **Žádné** | Určuje, jestli jste zadali určili zásadu opakování (**pevné**), nebo ne (**žádné**). | 
 | **retryInterval** | Ne | PT30S | Určuje interval a frekvenci opakovaných pokusů ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimální hodnota je 15 sekund a maximální hodnota je 18 měsíců. | 
@@ -297,7 +298,7 @@ Pokud je však úloha ve stavu **Dokončeno** nebo **Došlo k chybě**, její st
 
 <a name="status"></a>
 
-## <a name="status"></a>status
+## <a name="status"></a>stav
 
 Po spuštění úlohy vrací Scheduler informace o stavu úlohy prostřednictvím objektu **status**, který řídí pouze služba Scheduler. Objekt **status** však můžete najít v objektu **job**. Stav úlohy zahrnuje následující informace:
 
@@ -319,11 +320,9 @@ Příklad:
 }
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="next-steps"></a>Další kroky
 
-* [Co je Azure Scheduler?](scheduler-intro.md)
-* [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)
 * [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)
-* [Omezení, kvóty, výchozí hodnoty a kódy chyb](scheduler-limits-defaults-errors.md)
 * [REST API Azure Scheduleru – referenční informace](/rest/api/scheduler)
 * [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)
+* [Omezení, kvóty, výchozí hodnoty a kódy chyb](scheduler-limits-defaults-errors.md)

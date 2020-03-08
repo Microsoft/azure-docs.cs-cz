@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448087"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898378"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Označení entity náročné na počítač v příkladu utterance
 
@@ -86,7 +86,7 @@ Role entit jsou označené pomocí palety entit.
 1. Na stránce s podrobnostmi záměru vyberte z panelu nástrojů kontext **paletu entity** .
 1. Po otevření palety entit vyberte ze seznamu entit entitu.
 1. Přejděte do **inspektoru entit**a buď vyberte existující roli, nebo vytvořte novou roli.
-1. V příkladu utterance text označte text pomocí role entity. 
+1. V příkladu utterance text označte text pomocí role entity.
 
 ## <a name="unlabel-entities"></a>Odznačení entit
 

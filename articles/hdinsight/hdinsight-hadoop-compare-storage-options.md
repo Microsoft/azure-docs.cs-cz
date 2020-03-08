@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 593f80583067d28292701353c8a6a62d81282614
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/26/2020
+ms.openlocfilehash: 72534225acffa176d248901f363100955e36c6f6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650822"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898913"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -28,11 +28,11 @@ Následující tabulka shrnuje Azure Storage služby, které jsou podporovány v
 
 | Služba úložiště | Typ účtu | Typ oboru názvů | Podporované služby | Podporované úrovně výkonu | Podporované úrovně přístupu | Verze HDInsight | Typ clusteru |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| Obecné účely v2 | Hierarchický (systém souborů) | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše kromě Spark 2,1 |
-|Azure Storage| Obecné účely v2 | Objekt | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
-|Azure Storage| Obecné účely v1 | Objekt | Objekt blob | Standard | neuvedeno | Vše | Vše |
-|Azure Storage| Blob Storage * * | Objekt | Objekt blob bloku | Standard | Horká, studená, archivní | Vše | Vše |
-|Azure Data Lake Storage Gen1| neuvedeno | Hierarchický (systém souborů) | neuvedeno | neuvedeno | neuvedeno | jenom 3,6 | Všechny kromě adaptérů HBA |
+|Azure Data Lake Storage Gen2| Obecné účely v2 | Hierarchický (systém souborů) | Blob | Standardní | Horká, studená, archivní | 3.6 + | Vše kromě Spark 2,1 a 2,2|
+|Azure Storage| Obecné účely v2 | Objekt | Blob | Standardní | Horká, studená, archivní | 3.6 + | Všechny |
+|Azure Storage| Obecné účely v1 | Objekt | Blob | Standardní | NEUŽÍVÁ SE. | Všechny | Všechny |
+|Azure Storage| Blob Storage * * | Objekt | Objekt blob bloku | Standardní | Horká, studená, archivní | Všechny | Všechny |
+|Azure Data Lake Storage Gen1| NEUŽÍVÁ SE. | Hierarchický (systém souborů) | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | jenom 3,6 | Všechny kromě adaptérů HBA |
 
 \* * Pro clustery HDInsight může být pouze sekundární účty úložiště typu BlobStorage a objekt blob stránky není podporovanou možností úložiště.
 
@@ -53,12 +53,12 @@ Cluster můžete vytvořit pomocí různých kombinací služeb pro primární a
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Ano |
 | 3.6 | Data Lake Storage Gen1 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Ne |
-| 4.0 | Data Lake Storage Gen1 | Všechny | Ne |
+| 4.0 | Data Lake Storage Gen1 | Vše | Ne |
 
 \* = Může to být jeden nebo několik účtů Data Lake Storage Gen2, pokud jsou všechny nastavené tak, aby používaly stejnou spravovanou identitu pro přístup k clusteru.
 
 > [!Note] 
-> Data Lake Storage Gen2 primární úložiště není pro clustery Spark 2,1 podporováno. 
+> Data Lake Storage Gen2 primární úložiště není pro clustery Spark 2,1 nebo 2,2 podporováno. 
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Použití Azure Data Lake Storage Gen2 s Apache Hadoop v Azure HDInsight
 

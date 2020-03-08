@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612356"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402950"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Vytvoření směrovací tabulky pro virtuální síť WAN pro síťová virtuální zařízení: Azure Portal
 
-V tomto článku se dozvíte, jak řídit provoz z větve (místní lokalita) připojených k virtuální síti WAN přes virtuální síť rozbočovače prostřednictvím síťového virtuálního zařízení (síťové virtuální zařízení).
+V tomto článku se dozvíte, jak řídit provoz z větve (místní lokality) připojených k virtuální síti WAN ke službě Virtual Network (VNet) prostřednictvím síťového virtuálního zařízení (síťové virtuální zařízení).
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-route-table/vwanroute.png)
+![Diagram služby Virtual WAN](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -29,15 +29,16 @@ Ověřte, že splňujete následující kritéria:
 
     * Privátní IP adresa musí být přiřazena k síťové virtuální zařízení síťovému rozhraní.
 
-    * SÍŤOVÉ virtuální zařízení není nasazený ve virtuálním centru. Musí být nasazené v samostatné virtuální síti.
+    * SÍŤOVÉ virtuální zařízení není nasazený ve virtuálním centru. Musí být nasazena v samostatné virtuální síti.
 
-    *  Virtuální síť síťové virtuální zařízení může mít připojenou jednu nebo více virtuálních sítí. V tomto článku odkazujeme na virtuální síť síťové virtuální zařízení jako "nepřímá virtuální síť rozbočovače". Tyto virtuální sítě můžou být připojené k virtuální síti síťové virtuální zařízení pomocí partnerského vztahu virtuálních sítí. Odkazy partnerských vztahů virtuálních sítí jsou znázorněny pomocí černých šipek na výše uvedeném obrázku mezi virtuální sítí VNET 1, VNet 2 a síťové virtuální zařízení.
-*  Vytvořili jste 2 virtuální sítě. Budou použity jako paprskový virtuální sítě.
+    *  Virtuální síť síťové virtuální zařízení může mít připojenu jednu nebo více virtuálních sítí. V tomto článku odkazujeme na virtuální síť síťové virtuální zařízení jako na "nepřímý virtuální síť rozbočovače". Tyto virtuální sítě se dají připojit k virtuální síti síťové virtuální zařízení pomocí partnerského vztahu virtuálních sítí. Odkazy partnerských vztahů virtuálních sítí jsou znázorněny pomocí černých šipek na výše uvedeném obrázku mezi virtuální sítí VNet 1, VNet 2 a síťové virtuální zařízení VNet.
+*  Vytvořili jste dvě virtuální sítě. Budou použity jako paprskový virtuální sítě.
 
-    * Pro toto cvičení jsou adresní prostory virtuálních sítí ve virtuální síti: VNet1:10.0.2.0/24 a VNet2:10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md).
+    * Adresní prostory virtuální sítě jsou: VNet1:10.0.2.0/24 a VNet2:10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md).
 
     * Zajistěte, aby v žádném z virtuální sítě neexistovaly žádné brány virtuální sítě.
-    * Pro tuto konfiguraci tyto virtuální sítě nevyžadují podsíť brány.
+
+    * Virtuální sítě nepotřebuje podsíť brány.
 
 ## <a name="signin"></a>1. přihlášení
 
@@ -45,7 +46,7 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
 
 ## <a name="vwan"></a>2. vytvoření virtuální sítě WAN
 
-Vytvořte virtuální síť WAN. Pro účely tohoto cvičení můžete použít následující hodnoty:
+Vytvořte virtuální síť WAN. Použijte následující příklady hodnot:
 
 * **Název virtuální sítě WAN:** myVirtualWAN
 * **Skupina prostředků:** testRG
@@ -55,7 +56,7 @@ Vytvořte virtuální síť WAN. Pro účely tohoto cvičení můžete použít 
 
 ## <a name="hub"></a>3. vytvoření centra
 
-Vytvořte centrum. Pro účely tohoto cvičení můžete použít následující hodnoty:
+Vytvořte centrum. Použijte následující příklady hodnot:
 
 * **Umístění:** Západní USA
 * **Název:** westushub
@@ -65,7 +66,7 @@ Vytvořte centrum. Pro účely tohoto cvičení můžete použít následující
 
 ## <a name="route"></a>4. vytvoření a použití tabulky směrování centra
 
-Aktualizujte centrum s tabulkou směrování na rozbočovači. Pro účely tohoto cvičení můžete použít následující hodnoty:
+Aktualizujte centrum s tabulkou směrování na rozbočovači. Použijte následující příklady hodnot:
 
 * **Adresní prostory virtuální sítě-paprsek:** (VNet1 a VNet2) 10.0.2.0/24 a 10.0.3.0/24
 * **Privátní IP adresa síťového rozhraní DMZ síťové virtuální zařízení:** 10.0.4.5
@@ -79,7 +80,7 @@ Aktualizujte centrum s tabulkou směrování na rozbočovači. Pro účely tohot
 
 ## <a name="connections"></a>5. vytvoření připojení virtuální sítě
 
-Vytvořte připojení k virtuální síti z každé nepřímo virtuální sítě rozbočovače (VNet1 a VNet2) do centra. Tato připojení k virtuální síti jsou znázorněna modrou šipkou na výše uvedeném obrázku. Pak vytvořte připojení virtuální sítě z virtuální sítě síťové virtuální zařízení do centra (černá šipka na obrázku). 
+Vytvořte připojení k virtuální síti z každé nepřímo virtuální sítě rozbočovače (VNet1 a VNet2) do centra. Tato připojení k virtuální síti jsou znázorněna modrou šipkou na výše uvedeném obrázku. Pak vytvořte připojení virtuální sítě z virtuální sítě síťové virtuální zařízení do centra (černá šipka na obrázku).
 
  Pro tento krok můžete použít následující hodnoty:
 
@@ -89,7 +90,7 @@ Vytvořte připojení k virtuální síti z každé nepřímo virtuální sítě
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-Pro každou virtuální síť, ke které se chcete připojit, zopakujte následující postup.
+Pro každou virtuální síť, kterou chcete připojit, opakujte následující postup.
 
 1. Na stránce vaší virtuální sítě WAN klikněte na **Připojení k virtuální síti**.
 2. Na stránce připojení k virtuální síti klikněte na **+Add connection** (Přidat připojení).

@@ -11,24 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 1f10a577f681d1df4ba99c987df457ea1ca09470
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108255"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671605"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
 Portál pro vývojáře je automaticky generovaný plně přizpůsobitelný web s dokumentací vašich rozhraní API. Je tam, kde můžou příjemci rozhraní API zjišťovat vaše rozhraní API, učit se, jak je používat, žádat o přístup a vyzkoušet si je.
 
 Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verzemi portálu pro vývojáře v API Management. Vysvětluje také její architekturu a poskytuje odpovědi na nejčastější dotazy.
-
-> [!WARNING]
->
-> [Naučte se migrovat z verze Preview na všeobecně dostupnou verzi portálu pro](#preview-to-ga) vývojáře.
 
 ![Portál pro vývojáře API Management](media/api-management-howto-developer-portal/cover.png)
 
@@ -39,7 +35,7 @@ Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verz
 Portál pro vývojáře můžete vytvořit dvěma způsoby:
 
 - **Spravovaná verze** – úpravou a přizpůsobením portálu, který je součástí vaší instance API Management a je přístupný prostřednictvím `<your-api-management-instance-name>.developer.azure-api.net`adresy URL. Informace o přístupu a přizpůsobení spravovaného portálu najdete v [tomto článku v dokumentaci](api-management-howto-developer-portal-customize.md) .
-- **Samoobslužná verze** – nasazením a vlastním hostováním portálu mimo instanci API Management. Tento přístup umožňuje upravit základ kódu na portálu a zvětšit poskytované základní funkce. Také je potřeba upgradovat portál na nejnovější verzi sami. Podrobnosti a pokyny najdete v [úložišti GitHub se zdrojovým kódem portálu][1] a v [kurzu implementace widgetu][3]. [Kurz pro spravovanou verzi](api-management-howto-developer-portal-customize.md) se provede pomocí panelu pro správu portálu, který je taky vybraný v samoobslužné verzi.
+- **Samoobslužná verze** – nasazením a vlastním hostováním portálu mimo instanci API Management. Tento přístup umožňuje upravit základ kódu na portálu a zvětšit poskytované základní funkce – například implementovat vlastní widgety pro integraci se systémy třetích stran. V tomto scénáři jste portálem pro správu a zodpovídáte za upgrade portálu na nejnovější verzi. Podrobnosti a pokyny najdete v [úložišti GitHub se zdrojovým kódem portálu][1] a v [kurzu implementace widgetu][3]. [Kurz spravované verze](api-management-howto-developer-portal-customize.md) se provede pomocí panelu pro správu portálu, který je společný pro spravované a samoobslužné verze.
 
 ## <a name="portal-architectural-concepts"></a>Koncepce architektury portálu
 
@@ -70,7 +66,7 @@ Portál je založen na upraveném rozvětvení [architektury Paperbits](https://
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-V této části odpovíme na běžné otázky týkající se nového portálu pro vývojáře, který má obecnou povahu. Otázky specifické pro samostatnou verzi najdete [v části wiki v úložišti GitHub](https://github.com/Azure/api-management-developer-portal/wiki).
+V této části odpovíme na běžné otázky k portálu pro vývojáře, které jsou obecné povahy. Otázky specifické pro samostatnou verzi najdete [v části wiki v úložišti GitHub](https://github.com/Azure/api-management-developer-portal/wiki).
 
 ### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> způsob migrace z verze Preview portálu?
 
@@ -86,13 +82,13 @@ Pokud nechcete obnovit obsah portálu, můžete zvážit použití nově dostupn
 
 Pokud byl portál zřízen po oznámení obecné dostupnosti, měl by již být součástí nového výchozího obsahu. Z vaší strany se nevyžaduje žádná akce.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>Jak se dá migrovat z původního portálu pro vývojáře na nový portál pro vývojáře?
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>Jak se dá migrovat z původního portálu pro vývojáře na portál pro vývojáře?
 
 Portály nejsou kompatibilní a je potřeba migrovat obsah ručně.
 
-### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Má nový portál všechny funkce starého portálu?
+### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>Má portál všechny funkce starého portálu?
 
-Nový portál pro vývojáře nepodporuje *aplikace* a *problémy*. Pokud jste ve starém portálu použili *problémy* a potřebujete je v novém, pošlete komentář ve [vyhrazeném problému GitHubu](https://github.com/Azure/api-management-developer-portal/issues/122).
+Portál pro vývojáře už nepodporuje *aplikace* a *problémy*.
 
 Ověřování pomocí OAuth v interaktivní konzole pro vývojáře ještě není podporované. Průběh můžete sledovat prostřednictvím [problému na GitHubu](https://github.com/Azure/api-management-developer-portal/issues/208).
 
@@ -104,23 +100,25 @@ Vyřazení starší verze portálů bude oznámeno samostatně. Pokud máte dota
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Funkce, které potřebuji, se na portálu nepodporují.
 
-Využijte vlastní hostovanou verzi a [implementujte vlastní widget][3].
+Můžete otevřít [žádost o funkci](https://aka.ms/apimwish) nebo [implementovat chybějící funkce sami][3]. Pokud implementujete funkci sami, můžete portál pro vývojáře sami hostovat nebo otevřít žádost o přijetí změn na GitHubu a zahrnout změny ve spravované verzi.
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Jak můžu automatizovat nasazení portálu?
 
 Můžete programově přistupovat k obsahu portálu pro vývojáře a spravovat ho prostřednictvím REST API bez ohledu na to, jestli používáte spravovanou nebo místně hostovanou verzi.
 
-Rozhraní API je popsané v [části wiki úložiště GitHubu][2]. Dá se taky použít k automatizaci migrace obsahu portálu mezi prostředími – například z testovacího prostředí do produkčního prostředí. Další informace o tomto procesu najdete [v tomto článku v dokumentaci](https://aka.ms/apimdocs/migrateportal) na GitHubu.
+Rozhraní API je popsané v [části wiki úložiště GitHubu][2]. Dá se použít k automatizaci migrace obsahu portálu mezi prostředími – například z testovacího prostředí do produkčního prostředí. Další informace o tomto procesu najdete [v tomto článku v dokumentaci](https://aka.ms/apimdocs/migrateportal) na GitHubu.
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Podporuje portál Azure Resource Manager šablony nebo je kompatibilní se sadou API Management DevOps Resource Kit?
 
 Ne.
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>Potřebuji pro nové závislosti spravovaného portálu povolit další připojení VNet?
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Musím pro závislosti spravovaného portálu povolit další připojení VNet?
 
 Ve většině případů – ne.
 
 Pokud je vaše služba API Management v interní virtuální síti, portál pro vývojáře je přístupný jenom v rámci sítě. Název hostitele koncového bodu správy se musí překládat na interní virtuální IP adresu služby z počítače, který používáte pro přístup k rozhraní pro správu portálu. Ujistěte se, že je koncový bod správy zaregistrován v DNS. V případě chybné konfigurace se zobrazí chyba: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
+
+Pokud je vaše služba API Management interní virtuální síť a k ní přistupujete prostřednictvím Application Gateway z Internetu, Nezapomeňte povolit připojení k portálu pro vývojáře a koncovým bodům správy API Management.
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>Přiřadil (a) jsem vlastní doménu API Management a publikovaný portál nefunguje
 
@@ -138,9 +136,9 @@ Po nastavení delegování je potřeba [znovu publikovat portál](api-management
 
 Většina změn konfigurace (například virtuální síť, přihlášení a podmínek produktu) vyžaduje [Opětovné publikování portálu](api-management-howto-developer-portal-customize.md#publish).
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Při použití interaktivní konzoly se mi zobrazuje chyba CORS
+### <a name="cors"></a>Při použití interaktivní konzoly se mi zobrazuje chyba CORS
 
-Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z prohlížeče. Problém CORS můžete vyřešit tak, že do svých rozhraní API přidáte [zásadu CORS](api-management-cross-domain-policies.md#CORS) . Všechny parametry můžete zadat ručně nebo použít `*` hodnoty zástupných znaků. Například:
+Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z prohlížeče. Problém CORS můžete vyřešit tak, že do svých rozhraní API přidáte [zásadu CORS](api-management-cross-domain-policies.md#CORS) . Všechny parametry můžete zadat ručně nebo použít `*` hodnoty zástupných znaků. Příklad:
 
 ```XML
 <cors>

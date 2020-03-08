@@ -9,14 +9,14 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971498"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671564"
 ---
-# <a name="frequently-asked-questions-about-azure-databricks"></a>Nejčastější dotazy týkající se platformy Azure Databricks
+# <a name="frequently-asked-questions-about-azure-databricks"></a>Nejčastější dotazy týkající se Azure Databricks
 
 V tomto článku jsou uvedené Nejčastější dotazy, které se vám mohly vzjímat s Azure Databricks. Obsahuje taky některé běžné problémy, které jste mohli mít při používání datacihlů. Další informace najdete v tématu [co je Azure Databricks](what-is-azure-databricks.md). 
 
@@ -48,7 +48,7 @@ Tady je několik problémů, se kterými se můžete setkat s datacihly.
 
 #### <a name="solution"></a>Řešení
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Vyberte **předplatná**, předplatné, které používáte, a pak **poskytovatele prostředků**. 
 1. V seznamu poskytovatelů prostředků s **cihlami Microsoft. datacihly**vyberte **Registrovat**. Abyste mohli registrovat poskytovatele prostředků, musíte mít v předplatném roli přispěvatel nebo vlastník.
 
@@ -88,11 +88,20 @@ Pokud jste pracovní prostor nevytvořili a Přidali jste ho jako uživatel, obr
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Nepovedlo se spustit poskytovatele cloudu: při nastavování clusteru došlo k chybě poskytovatele cloudu. Další informace najdete v příručce pro datacihly. Kód chyby Azure: PublicIPCountLimitReached. Chybová zpráva Azure: pro toto předplatné v této oblasti nejde vytvořit více než 60 veřejných IP adres.
+"Nepovedlo se spustit poskytovatele cloudu: při nastavování clusteru došlo k chybě poskytovatele cloudu. Další informace najdete v příručce pro datacihly. Kód chyby Azure: PublicIPCountLimitReached. Chybová zpráva Azure: pro toto předplatné v této oblasti nejde vytvořit více než 10 veřejných IP adres.
+
+#### <a name="background"></a>Pozadí
+
+Clustery datacihly používají jednu veřejnou IP adresu na uzel (včetně uzlu ovladače). Předplatná Azure mají [omezení veřejných IP adres](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address) na oblast. Vytvoření clusteru a operace škálování můžou selhat, pokud by počet veřejných IP adres přidělených k tomuto předplatnému v této oblasti překročil limit. Tento limit zahrnuje také veřejné IP adresy přidělené pro použití bez datacihlů, jako jsou například vlastní uživatelem definované virtuální počítače.
+
+Obecně platí, že clustery využívají jenom veřejné IP adresy, když jsou aktivní. `PublicIPCountLimitReached` chyby ale můžou pořád nastat po krátké době i po ukončení ostatních clusterů. Důvodem je to, že datacihly dočasně uloží prostředky Azure do mezipaměti, když se cluster ukončí. Ukládání prostředků do mezipaměti je záměrné, protože výrazně snižuje latenci spouštění a automatického škálování clusteru v mnoha běžných scénářích.
 
 #### <a name="solution"></a>Řešení
 
-Clustery Databricks používají jednu veřejnou IP adresu na uzel. Pokud vaše předplatné už používalo všechny veřejné IP adresy, měli byste [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Jako **typ problému**vyberte **kvóta** a v části **síť: ARM** jako **typ kvóty**. V **podrobnostech**si vyžádejte zvýšení kvóty veřejných IP adres. Například pokud je váš limit aktuálně 60 a chcete vytvořit cluster 100, požádejte o zvýšení limitu na 160.
+Pokud vaše předplatné již dosáhlo svého limitu veřejných IP adres pro danou oblast, měli byste provést jednu nebo druhou z následujících akcí.
+
+- Vytvořte nové clustery v jiném pracovním prostoru datacihly. Druhý pracovní prostor se musí nacházet v oblasti, ve které jste nedosáhli limitu veřejných IP adres vašeho předplatného.
+- [Požadavek na zvýšení limitu vaší veřejné IP adresy](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Jako **typ problému**vyberte **kvóta** a v části **síť: ARM** jako **typ kvóty**. V **podrobnostech**si vyžádejte zvýšení kvóty veřejných IP adres. Například pokud je váš limit aktuálně 60 a chcete vytvořit cluster 100, požádejte o zvýšení limitu na 160.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problém: druhý typ neúspěšného spuštění poskytovatele cloudu při nastavování clusteru (MissingSubscriptionRegistration)
 
@@ -103,7 +112,7 @@ Kód chyby Azure: MissingSubscriptionRegistration chybová zpráva Azure: předp
 
 #### <a name="solution"></a>Řešení
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Vyberte **předplatná**, předplatné, které používáte, a pak **poskytovatele prostředků**. 
 1. V seznamu poskytovatelů prostředků vyberte v části **Microsoft. COMPUTE**možnost **Registrovat**. Abyste mohli registrovat poskytovatele prostředků, musíte mít v předplatném roli přispěvatel nebo vlastník.
 
@@ -123,4 +132,3 @@ Přihlaste se jako globální správce Azure Portal. V případě Azure Active D
 
 - [Rychlý Start: Začínáme s Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 - [Co je Azure Databricks?](what-is-azure-databricks.md)
-

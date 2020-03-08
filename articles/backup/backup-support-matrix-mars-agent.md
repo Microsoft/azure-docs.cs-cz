@@ -3,12 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392759"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669276"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -85,7 +85,7 @@ S partnerským vztahem Microsoftu vyberte prosím následující služby nebo ob
 - Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
 - Azure Storage (podle umístění vašeho trezoru Recovery Services)
 
-Další podrobnosti najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Další informace najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 >[!NOTE]
 >Veřejné partnerské vztahy se pro nové okruhy zastaraly.
@@ -97,7 +97,7 @@ Další podrobnosti najdete v tématu [požadavky na směrování ExpressRoute](
 Řízení šířky pásma | Podporuje se. V agentovi MARS upravte šířku pásma pomocí **možnosti změnit vlastnosti** .
 Omezení sítě | Není k dispozici pro zálohované počítače se systémem Windows Server 2008 R2, Windows Server 2008 SP2 nebo Windows 7.
 
-## <a name="support-for-direct-backups"></a>Podpora přímých záloh
+## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 >[!NOTE]
 > Agent MARS nepodporuje SKU jádra systému Windows Server.
@@ -114,7 +114,6 @@ Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější
 Windows 10 (Enterprise, pro, Home) | Ano | Ne |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows 8.1 (Enterprise, pro)| Ano |Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows 8 (Enterprise, Pro) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe)
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ano | Ne | – 
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
 Další informace najdete v tématu [podporované MABS a operační systémy DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
+### <a name="operating-systems-at-end-of-support"></a>Operační systémy na konci podpory
+
+Následující operační systémy jsou na konci podpory a důrazně se doporučuje upgradovat operační systém, aby zůstal i nadále chráněný.
+
+Pokud stávající závazky brání upgradu operačního systému, zvažte migraci serverů Windows na virtuální počítače Azure a využití záloh virtuálních počítačů Azure pro pokračování v zachování ochrany. Další informace o migraci Windows serveru najdete na [stránce věnované migraci](https://azure.microsoft.com/migration/windows-server/) .
+
+U místních nebo hostovaných prostředí, kde nemůžete upgradovat operační systém ani migrovat na Azure, aktivujte u těchto počítačů rozšířené aktualizace zabezpečení, abyste mohli i nadále chránit a podporovat. Všimněte si, že pro rozšířené aktualizace zabezpečení jsou vhodné jenom konkrétní edice. Další informace najdete na [stránce s nejčastějšími dotazy](https://www.microsoft.com/cloud-platform/extended-security-updates) .
+
+| **Operační systém**                                       | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano               | Ne                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
+| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano               | Ano                | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a správa bitových kopií (DISM. exe) |
+| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Ano               | Ne                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a správa bitových kopií (DISM. exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Omezení zálohování
 

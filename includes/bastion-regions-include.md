@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 01/30/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc48daed4f20af7c275d651820cf9b17a8e24d41
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938316"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669372"
 ---
 >[!NOTE]
 >Těžko pracujeme na přidání dalších oblastí. Po přidání oblasti ji přidáme do tohoto seznamu.
@@ -21,7 +21,7 @@ ms.locfileid: "76938316"
 
 **Jižní**
 * Brazílie – jih
-* Střední Kanada
+* Kanada – střed
 * USA – střed
 * USA – východ
 * USA – východ 2
@@ -35,8 +35,8 @@ ms.locfileid: "76938316"
 * Francie – střed
 * Severní Evropa
 * Norsko – východ
-* Spojené království – jih
-* Velká Británie – západ
+* Velká Británie – jih
+* Spojené království – západ
 * Západní Evropa
 
 **Asie a Tichomoří**
@@ -46,11 +46,19 @@ ms.locfileid: "76938316"
 * Východní Asie
 * Japonsko – východ
 * Japonsko – západ
-* Korea – střed
-* Korea – jih
+* Jižní Korea – střed
+* Jižní Korea – jih
 * Jihovýchodní Asie
-* Západní Indie
+* Indie – západ
 
 **Střední východ a Afrika**
 * Jižní Afrika – sever
 * Spojené arabské emiráty – střed
+
+**Azure Government**
+* US DoD – střed
+* US DoD – východ
+* USA (Gov) – Arizona
+* US Gov – Iowa
+* USA (Gov) – Texas
+* USA (Gov) – Virginia

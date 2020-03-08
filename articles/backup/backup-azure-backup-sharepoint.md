@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled ochrany DPM/Azure Backup serveru 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6640690f725c84899babef6825f817bad447b40f
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586474"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673273"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Zálohování farmy služby SharePoint do Azure pomocí DPM
 
@@ -69,7 +69,7 @@ Než budete moct použít DPM k ochraně SharePointu, musíte nakonfigurovat slu
 
 1. Na serveru WFE klikněte na příkazovém řádku na [umístění instalace aplikace DPM] \Bin\
 2. Zadejte ConfigureSharePoint-EnableSharePointProtection.
-3. Zadejte přihlašovací údaje správce farmy. Tento účet by měl být členem místní skupiny správců na serveru WFE. Pokud není správcem farmy místní správce, udělte na serveru WFE tato oprávnění:
+3. Zadejte přihlašovací údaje správce farmy. Tento účet by měl být členem místní skupiny správců na serveru WFE. Pokud správce farmy není místní správce, udělte na serveru WFE tato oprávnění:
    * Udělte skupině WSS_Admin_WPG úplné řízení ke složce aplikace DPM (% Program Files%\Microsoft data Protection Manager\DPM).
    * Udělte skupině WSS_Admin_WPG oprávnění ke čtení klíče registru DPM (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
@@ -133,7 +133,7 @@ Jakmile nakonfigurujete aplikaci DPM a farmu služby SharePoint, jak je vysvětl
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > DPM v různých časech poskytuje maximálně dva denní zálohy do Azure. Azure Backup může také řídit velikost šířky pásma sítě WAN, kterou lze použít pro zálohování v špičkách a mimo špičku pomocí [Azure Backup omezování sítě](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling).
+    > DPM v různých časech poskytuje maximálně dva denní zálohy do Azure. Azure Backup může také řídit velikost šířky pásma sítě WAN, kterou lze použít pro zálohování v špičkách a mimo špičku pomocí [Azure Backup omezování sítě](backup-windows-with-mars-agent.md#enable-network-throttling).
     >
     >
 11. V závislosti na plánu zálohování, který jste vybrali, vyberte na stránce **zadat zásady uchovávání online** zásady uchovávání informací pro denní, týdenní, měsíční a roční body zálohování.

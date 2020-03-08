@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399205"
+ms.locfileid: "78674162"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí webu Azure portal
 
@@ -127,7 +127,7 @@ Pokud již máte virtuální síť vytvořenou, ověřte, zda jsou nastavení ko
 ### <a name="to-create-a-virtual-network"></a>Chcete-li vytvořit virtuální síť
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="create-a-virtual-network-gateway"></a>Vytvoření brány virtuální sítě
+## <a name="create-the-vnet1-gateway"></a>Vytvoření brány VNet1
 V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány. Pokud vytváříte tuto konfiguraci jako cvičení, přečtěte si [Příklad nastavení](#example-settings).
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -138,7 +138,7 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-vnet4"></a>Vytvoření a konfigurace VNet4
-Po nakonfigurování VNet1 vytvořte VNet4 opakováním předchozích kroků a nahrazením hodnot hodnotami VNet4. Před konfigurací VNet4 nemusíte čekat, dokud se nedokončí vytváření brány virtuální sítě pro VNet1. Pokud používáte vlastní hodnoty, ujistěte se, že se že adresní prostory nepřekrývaly s žádnou z virtuálních sítí, ke kterému chcete připojit.
+Po nakonfigurování VNet1 vytvořte VNet4 a VNet4 bránu tak, že zopakujete předchozí kroky a nahradíte hodnoty hodnotami VNet4. Před konfigurací VNet4 nemusíte čekat, dokud se nedokončí vytváření brány virtuální sítě pro VNet1. Pokud používáte vlastní hodnoty, ujistěte se, že se že adresní prostory nepřekrývaly s žádnou z virtuálních sítí, ke kterému chcete připojit.
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>Konfigurace připojení brány VNet1
 Po dokončení bran virtuální sítě pro VNet1 i VNet4 můžete vytvořit připojení brány virtuální sítě. V této části vytvoříte připojení z VNet1 do VNet4. Tyto kroky fungují pouze u virtuálních sítí ve stejném předplatném. Pokud jsou vaše virtuální sítě v různých předplatných, musíte k vytvoření připojení použít [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) . Ale pokud jsou vaše virtuální sítě v různých skupinách prostředků ve stejném předplatném, můžete je propojit pomocí portálu.
@@ -148,7 +148,7 @@ Po dokončení bran virtuální sítě pro VNet1 i VNet4 můžete vytvořit při
    ![Stránka připojení](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "Stránka připojení")
 2. Výběrem **+ Přidat** otevřete stránku **Přidat připojení** .
 
-   ![Přidat připojení](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "Přidat připojení")
+   ![Přidat připojení](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "Přidat připojení")
 3. Na stránce **Přidat připojení** vyplňte hodnoty pro vaše připojení:
 
    - **Název**: zadejte název připojení. Například *VNet1toVNet4*.

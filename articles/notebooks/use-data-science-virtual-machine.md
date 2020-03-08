@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646990"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898406"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Použití Virtual Machines pro datové vědy v Azure
 
@@ -38,6 +38,9 @@ Po vytvoření DSVM vyberte rozevírací seznam **Spustit** na řídicím panelu
 
 Když vyberete instanci DSVM, může Azure Notebooks zobrazit výzvu k zadání přihlašovacích údajů pro konkrétní počítač, které jste použili při vytváření virtuálního počítače.
 
+> [!Important]
+> Pro použití s JupyterHub musí mít uživatelské jméno malými písmeny.
+
 Pokud se některá z podmínek nesplní, můžete se ke službě DSVM připojit i nadále. V rozevíracím seznamu vyberte možnost **přímé výpočty** , která vás vyzve k zadání názvu (k zobrazení v seznamu), IP adresy a portu virtuálního počítače (obvykle 8000, výchozího portu, na který JupyterHub naslouchá), a přihlašovacích údajů k virtuálnímu počítači:
 
 ![Dotázat se na shromažďování informací o serveru pro možnost přímé COMPUTE](media/project-compute-tier-direct.png)
@@ -60,7 +63,7 @@ Pokud DSVM sdílí více uživatelů, můžete se vyhnout blokování tím, že 
 
 1. Na [Azure Portal](https://portal.azure.com)přejděte na svůj virtuální počítač.
 1. V části **Podpora a řešení potíží** na levém okraji vyberte **resetovat heslo**.
-1. Zadejte nové uživatelské jméno a heslo a pak vyberte **aktualizovat**. (Stávající uživatelská jména nejsou ovlivněna.)
+1. Zadejte nové **uživatelské jméno**. Pro použití s JupyterHub musí mít uživatelské jméno malými písmeny. Zadejte heslo. Pak vyberte **aktualizovat**. (Stávající uživatelská jména nejsou ovlivněna.)
 1. Opakujte předchozí krok pro všechny další uživatele.
 
 ## <a name="next-steps"></a>Další kroky

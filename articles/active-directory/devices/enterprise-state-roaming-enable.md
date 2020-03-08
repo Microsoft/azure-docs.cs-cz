@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6887edacafb4fd4a68cfbe7d97e788c71dc68522
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194445"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672396"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 
@@ -25,13 +25,13 @@ Enterprise State Roaming je k dispozici pro libovolnou organizaci s licencí Azu
 Pokud povolíte Enterprise State Roaming, vaše organizace vám automaticky udělí bezplatnou, časově omezená licenci pro Azure Rights Management Protection od Azure Information Protection. Toto bezplatné předplatné je omezené na šifrování a dešifrování podnikových nastavení a dat aplikací synchronizovaných pomocí Enterprise State Roaming. Abyste mohli využívat všechny možnosti služby Azure Rights Management, musíte mít [placené předplatné](https://azure.microsoft.com/pricing/details/information-protection/) .
 
 > [!NOTE]
-> Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
+> Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](/deployedge/microsoft-edge-enterprise-sync).
 
 ## <a name="to-enable-enterprise-state-roaming"></a>Postup povolení Enterprise State Roaming
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/).
 1. Vyberte **Azure Active Directory** &gt; **zařízení** &gt; **Enterprise State Roaming**.
-1. Vyberte možnost **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními**. Další informace najdete v tématu [Konfigurace nastavení zařízení](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
+1. Vyberte možnost **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními**. Další informace najdete v tématu [Konfigurace nastavení zařízení](/azure/active-directory/device-management-azure-portal).
   
    ![Obrázek nastavení zařízení s označením uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními.](./media/enterprise-state-roaming-enable/device-settings.png)
   
@@ -39,7 +39,7 @@ Aby zařízení s Windows 10 mohl používat službu Enterprise State Roaming, m
 
 ## <a name="data-storage"></a>Úložiště dat
 
-Data Enterprise State Roaming se hostují v jedné nebo několika [oblastech Azure](https://azure.microsoft.com/regions/) , které jsou nejlépe zarovnané s hodnotou země nebo oblasti nastavenou v instanci Azure Active Directory. Data Enterprise State Roaming jsou rozdělená na oddíly na základě tří hlavních geografických oblastí: Severní Amerika, EMEA a APAC. Data Enterprise State Roaming pro tenanta se místně nacházejí v geografickém regionu a nereplikují se mezi regiony.  Například:
+Data Enterprise State Roaming se hostují v jedné nebo několika [oblastech Azure](https://azure.microsoft.com/regions/) , které jsou nejlépe zarovnané s hodnotou země nebo oblasti nastavenou v instanci Azure Active Directory. Data Enterprise State Roaming jsou rozdělená na oddíly na základě tří hlavních geografických oblastí: Severní Amerika, EMEA a APAC. Data Enterprise State Roaming pro tenanta se místně nacházejí v geografickém regionu a nereplikují se mezi regiony.  Příklad:
 
 | Hodnota země/oblasti | hostuje svá data v |
 | -------------------- | ------------------------ |
@@ -79,7 +79,7 @@ Explicitní odstranění je v případě, že správce Azure odstraní uživatel
 
 ### <a name="stale-data-deletion"></a>Zastaralé odstranění dat
 
-Data, která se nezískala po dobu jednoho roku ("doba uchování"), budou považována za zastaralá a je možné je odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nebude nižší než 90 dní. Zastaralá data můžou být konkrétní sadou nastavení Windows/aplikace nebo všech nastavení pro uživatele. Například:
+Data, která se nezískala po dobu jednoho roku ("doba uchování"), budou považována za zastaralá a je možné je odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nebude nižší než 90 dní. Zastaralá data můžou být konkrétní sadou nastavení Windows/aplikace nebo všech nastavení pro uživatele. Příklad:
 
 * Pokud žádná zařízení nepřistupuje ke konkrétní kolekci nastavení (například když je aplikace ze zařízení odebraná nebo pokud je skupina nastavení, jako je "motiv", zakázaná pro všechna zařízení uživatele), pak se tato kolekce po dobu uchování zastará a může se odstranit. . 
 * Pokud uživatel vypnul nastavení na všech svých zařízeních, nebude k dispozici žádná data nastavení a veškerá data nastavení pro tohoto uživatele budou zastaralá a můžou se po uplynutí doby uchování odstranit. 

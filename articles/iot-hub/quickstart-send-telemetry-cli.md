@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931820"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851425"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich sledování pomocí Azure CLI
 
@@ -22,9 +22,9 @@ ms.locfileid: "73931820"
 
 IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k vytvoření IoT Hub a simulovaného zařízení, odeslání telemetrie zařízení do centra a odeslání zprávy typu cloud-zařízení. K vizualizaci metrik zařízení slouží také Azure Portal. Toto je základní pracovní postup pro vývojáře, kteří používají CLI k interakci s aplikací IoT Hub.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Pokud ještě nemáte předplatné Azure, [vytvořte ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ještě před tím, než začnete.
-- Rozhraní příkazového řádku Azure Všechny příkazy v tomto rychlém startu můžete spustit pomocí Azure Cloud Shell interaktivního prostředí CLI, které běží v prohlížeči. Pokud používáte Cloud Shell, nemusíte nic instalovat. Pokud dáváte přednost používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.76 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz az --version. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+- Azure CLI. Všechny příkazy v tomto rychlém startu můžete spustit pomocí Azure Cloud Shell interaktivního prostředí CLI, které běží v prohlížeči. Pokud používáte Cloud Shell, nemusíte nic instalovat. Pokud dáváte přednost používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.76 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz az --version. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
@@ -35,6 +35,7 @@ Bez ohledu na to, jestli spouštíte rozhraní příkazového řádku místně n
 V této části spustíte instanci Azure Cloud Shell. Pokud použijete rozhraní příkazového řádku místně, přejděte k části [Příprava dvou relací](#prepare-two-cli-sessions)rozhraní příkazového řádku.
 
 Spuštění Cloud Shell:
+
 1. Vyberte tlačítko **Cloud Shell** v pravém horním panelu nabídek v Azure Portal. 
 
     ![Tlačítko Cloud Shell Azure Portal](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ Spuštění Cloud Shell:
     > [!NOTE]
     > Pokud Cloud Shellte poprvé, zobrazí se výzva k vytvoření úložiště, které je nutné k použití Cloud Shell.  Vyberte předplatné, ve kterém chcete vytvořit účet úložiště a sdílenou složku Microsoft Azure Files. 
 
-1. V rozevíracím seznamu **Vybrat prostředí** vyberte preferované prostředí rozhraní příkazového řádku. V tomto rychlém startu se používá prostředí **bash** . Všechny následující příkazy rozhraní příkazového řádku fungují i v prostředí PowerShellu. 
+2. V rozevíracím seznamu **Vybrat prostředí** vyberte preferované prostředí rozhraní příkazového řádku. V tomto rychlém startu se používá prostředí **bash** . Všechny následující příkazy rozhraní příkazového řádku fungují i v prostředí PowerShellu. 
 
     ![Vybrat prostředí CLI](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Příprava dvou relací rozhraní příkazového řádku
+
 V této části připravíte dvě relace Azure CLI. Pokud používáte Cloud Shell, spustíte tyto dvě relace na samostatných kartách prohlížeče. Pokud používáte místní klienta CLI, spustíte dvě samostatné instance rozhraní příkazového řádku. První relaci použijete jako simulované zařízení a druhou relaci pro monitorování a posílání zpráv. Pokud chcete spustit příkaz, vyberte **Kopírovat** a zkopírujte blok kódu v tomto rychlém startu, vložte ho do relace prostředí a spusťte ho.
 
 Azure CLI vyžaduje, abyste se přihlásili ke svému účtu Azure. Veškerá komunikace mezi relací prostředí Azure CLI a službou IoT Hub je ověřená a šifrovaná. V důsledku toho tento rychlý Start nepotřebuje další ověřování, které byste použili u reálného zařízení, jako je například připojovací řetězec.
 
-1. Spuštěním příkazu [AZ Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) přidejte Microsoft Azure rozšíření IoT pro Azure CLI do prostředí CLI. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+*  Spuštěním příkazu [AZ Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) přidejte Microsoft Azure rozšíření IoT pro Azure CLI do prostředí CLI. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    Až nainstalujete rozšíření Azure IOT, nemusíte ho v žádné Cloud Shell relaci znovu instalovat. 
+   
+   Až nainstalujete rozšíření Azure IOT, nemusíte ho v žádné Cloud Shell relaci znovu instalovat. 
 
-1. Otevřete druhou relaci CLI.  Pokud používáte Cloud Shell, vyberte **otevřít novou relaci**. Pokud rozhraní příkazového řádku používáte místně, otevřete druhou instanci. 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![Otevřít novou relaci Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  Otevřete druhou relaci CLI.  Pokud používáte Cloud Shell, vyberte **otevřít novou relaci**. Pokud rozhraní příkazového řádku používáte místně, otevřete druhou instanci. 
+
+    >[!div class="mx-imgBorder"]
+    >![otevřít novou relaci Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>Vytvořit IoT Hub
 V této části pomocí Azure CLI vytvoříte skupinu prostředků a IoT Hub.  Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. IoT Hub funguje jako centrální Centrum zpráv pro obousměrnou komunikaci mezi vaší aplikací IoT a zařízeními. 

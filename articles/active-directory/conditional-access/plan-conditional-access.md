@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468433"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671818"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Postupy: plánování nasazení podmíněného přístupu v Azure Active Directory
 
@@ -163,13 +163,13 @@ Testovací plán je důležitý pro porovnání očekávaných výsledků a skut
 
 |Zásada |Scénář |Očekávaný výsledek | Výsledek |
 |---|---|---|---|
-|[Vyžadovat MFA, pokud není v práci](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autorizovaný uživatel se přihlásí do *aplikace* v důvěryhodném umístění/v práci.|Uživatel není vyzván k MFA.| |
-|[Vyžadovat MFA, pokud není v práci](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autorizovaný uživatel se přihlásí do *aplikace* , když není v důvěryhodném umístění/v práci.|Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit.| |
-|[Vyžadovat MFA (pro správce)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globální správce se přihlásí do *aplikace* .|Správce je vyzván k ověřování MFA.| |
-|[Riziková přihlášení](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Uživatel se přihlásí do *aplikace* pomocí [prohlížeče pro mandát](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook) .|Správce je vyzván k ověřování MFA.| |
-|[Správa zařízení](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autorizovaný uživatel se pokusí přihlásit z autorizovaného zařízení.|Udělen přístup| |
-|[Správa zařízení](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autorizovaný uživatel se pokusí přihlásit z neautorizovaného zařízení.|Přístup zablokován| |
-|[Změna hesla pro rizikové uživatele](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Autorizovaný uživatel se pokusí přihlásit pomocí ohrožených přihlašovacích údajů (přihlašování s vysokým rizikem).|Uživateli se zobrazí výzva ke změně hesla nebo je přístup na základě vašich zásad zablokovaný.| |
+|[Vyžadovat MFA, pokud není v práci](/azure/active-directory/conditional-access/untrusted-networks)|Autorizovaný uživatel se přihlásí do *aplikace* v důvěryhodném umístění/v práci.|Uživatel není vyzván k MFA.| |
+|[Vyžadovat MFA, pokud není v práci](/azure/active-directory/conditional-access/untrusted-networks)|Autorizovaný uživatel se přihlásí do *aplikace* , když není v důvěryhodném umístění/v práci.|Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit.| |
+|[Vyžadovat MFA (pro správce)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globální správce se přihlásí do *aplikace* .|Správce je vyzván k ověřování MFA.| |
+|[Riziková přihlášení](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Uživatel se přihlásí do *aplikace* pomocí [prohlížeče pro mandát](/azure/active-directory/active-directory-identityprotection-playbook) .|Správce je vyzván k ověřování MFA.| |
+|[Správa zařízení](/azure/active-directory/conditional-access/require-managed-devices)|Autorizovaný uživatel se pokusí přihlásit z autorizovaného zařízení.|Udělen přístup| |
+|[Správa zařízení](/azure/active-directory/conditional-access/require-managed-devices)|Autorizovaný uživatel se pokusí přihlásit z neautorizovaného zařízení.|Přístup zablokován| |
+|[Změna hesla pro rizikové uživatele](/azure/active-directory/identity-protection/howto-user-risk-policy)|Autorizovaný uživatel se pokusí přihlásit pomocí ohrožených přihlašovacích údajů (přihlašování s vysokým rizikem).|Uživateli se zobrazí výzva ke změně hesla nebo je přístup na základě vašich zásad zablokovaný.| |
 
 ### <a name="configure-the-policy"></a>Konfigurace zásad
 

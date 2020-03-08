@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186091"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671856"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Konfigurace zásad podmíněného přístupu v režimu pouze sestavy (Preview)
 
@@ -48,8 +48,8 @@ Zobrazení výsledku zásad pouze pro sestavy pro konkrétní přihlášení:
 
 Aby bylo možné zobrazit agregovaný dopad zásad podmíněného přístupu pomocí nového sešitu pro podmíněný přístup, musíte Azure Monitor s Azure AD integrovat a exportovat protokoly přihlášení. Pro nastavení této integrace existují dva kroky: 
 
-1. [Zaregistrujte si předplatné Azure monitor a vytvořte pracovní prostor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
-1. [Exportujte protokoly přihlášení z Azure AD do Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+1. [Zaregistrujte si předplatné Azure monitor a vytvořte pracovní prostor](/azure/azure-monitor/learn/quick-create-workspace).
+1. [Exportujte protokoly přihlášení z Azure AD do Azure monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
 
 Další informace o cenách Azure Monitor najdete na [stránce Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/). Prostředky k odhadování nákladů, nastavení denního limitu nebo přizpůsobení období uchovávání dat najdete v článku, [Správa využití a nákladů pomocí Azure Monitorch protokolů](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment).
 

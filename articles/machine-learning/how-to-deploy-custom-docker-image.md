@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396162"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851276"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,6 +155,9 @@ Postup v této části vás seznámí s vytvořením vlastní image Docker ve va
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > V tomto příkladu je pro obrázek použita značka `:v1`. Pokud není zadána žádná značka, je použita značka `:latest`.
+
     Během procesu sestavení jsou informace streamování do příkazového řádku. Pokud je sestavení úspěšné, zobrazí se zpráva podobná následujícímu textu:
 
     ```text
@@ -170,6 +173,10 @@ Další informace o nahrání existujících imagí do Azure Container Registry 
 Pokud chcete použít vlastní image, potřebujete tyto informace:
 
 * __Název Image__ `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` je například cesta k základní imagi Docker, kterou poskytuje Microsoft.
+
+    > [!IMPORTANT]
+    > U vlastních imagí, které jste vytvořili, nezapomeňte zahrnout všechny značky, které se s imagí používaly. Například pokud se vaše image vytvořila s konkrétní značkou, například `:v1`. Pokud jste při vytváření image nepoužili konkrétní značku, použila se `:latest` tag.
+
 * Pokud je obrázek v __privátním úložišti__, budete potřebovat následující informace:
 
     * __Adresa__registru. například `myregistry.azureecr.io`.

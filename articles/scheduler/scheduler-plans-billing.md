@@ -1,25 +1,26 @@
 ---
-title: Plány a fakturace – Azure Scheduler
+title: Plány a fakturace
 description: Další informace o plánech a fakturaci pro Azure Scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300873"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898479"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Plány a fakturace pro Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
+>
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
 ## <a name="job-collection-plans"></a>Plány kolekce úloh
 
@@ -72,7 +73,7 @@ Fakturovatelná jednotka P20 Premium může mít až 5 000 kolekcí úloh P20 Pr
 
 Kolekce úloh P20 Premium poskytují stejné možnosti jako kolekce úloh P10 Premium, ale také podporují větší počet úloh na kolekci a vyšší celkový počet úloh, které jsou celkově větší než P10 Premium a poskytují větší škálovatelnost.
 
-## <a name="plan-comparison"></a>Porovnání plánů
+## <a name="plan-comparison"></a>Porovnání plánu
 
 * Pokud máte více než 100 standardních kolekcí úloh (10 standardních fakturačních jednotek), můžete získat lepší přehled o všech kolekcích úloh v plánu Premium.
 
@@ -80,8 +81,7 @@ Kolekce úloh P20 Premium poskytují stejné možnosti jako kolekce úloh P10 Pr
 
   Služba plánovače vychází z počtu aktivních kolekcí úloh, které jsou buď Standard, nebo Premium.
 
-## <a name="see-also"></a>Viz také:
+## <a name="next-steps"></a>Další kroky
 
-* [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
 * [Omezení, výchozí hodnoty a chybové kódy Azure Scheduleru](scheduler-limits-defaults-errors.md)

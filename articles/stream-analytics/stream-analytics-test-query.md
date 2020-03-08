@@ -6,22 +6,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369860"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898391"
 ---
-# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testování úlohy Azure Stream Analytics s ukázkovými daty
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testování úlohy Azure Stream Analytics na portálu
 
-V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Na webu Azure Portal můžete testovat dotazy na příchozí data z vaší vstupní jímky nebo nahraná ukázková data z místního souboru. Dotazy můžete testovat také místně z místních ukázkových dat nebo živých dat v [aplikaci Visual Studio](stream-analytics-live-data-local-testing.md) a [Visual Studio Code](visual-studio-code-local-run-live-input.md).
+V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Můžete testovat dotazy na příchozí data ze zdrojů streamování nebo nahrávat ukázková data z místního souboru na webu Azure Portal. Dotazy můžete testovat také místně z místních ukázkových dat nebo živých dat v [aplikaci Visual Studio](stream-analytics-live-data-local-testing.md) a [Visual Studio Code](visual-studio-code-local-run-live-input.md).
 
-## <a name="sample-incoming-data-from-input"></a>Ukázková příchozí data ze vstupu
+## <a name="automatically-sample-incoming-data-from-input"></a>Automaticky vzorkovat příchozí data ze vstupu
 
-Azure Stream Analytics automaticky načte události ze vstupu streamování. Můžete spustit dotazy ve výchozí ukázce nebo nastavit konkrétní časový rámec pro ukázku.
+Azure Stream Analytics automaticky načítá události ze vstupů streamování. Můžete spustit dotazy ve výchozí ukázce nebo nastavit konkrétní časový rámec pro ukázku.
 
 1. Přihlaste se k portálu Azure.
 
@@ -98,6 +98,7 @@ Místo používání živých dat můžete použít ukázková data z místního
 10. Po ověření výsledků zobrazených v prohlížeči můžete úlohu **Spustit** .
 
 ## <a name="next-steps"></a>Další kroky
+* [Sestavte řešení IoT pomocí Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): Tento kurz vás provede vytvořením uceleného řešení s generátorem dat, který simuluje provoz v rámci bezplatného zasedacího stánku.
 
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 
@@ -105,4 +106,4 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 * [Vysvětlení vstupů pro Azure Stream Analytics](stream-analytics-add-inputs.md)
 
-* [Vysvětlení vytvořené jako výstupy z Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Porozumění výstupům z Azure Stream Analytics](stream-analytics-define-outputs.md)

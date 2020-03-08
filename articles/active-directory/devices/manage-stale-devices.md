@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538806"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672305"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Postupy: Správa zastaralých zařízení v Azure AD
 
@@ -57,7 +57,7 @@ Ke získání hodnoty časového razítka aktivity máte dvě možnosti:
 
     ![Časové razítko aktivity](./media/manage-stale-devices/01.png)
 
-- Rutina [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
+- Rutina [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
 
     ![Časové razítko aktivity](./media/manage-stale-devices/02.png)
 
@@ -75,7 +75,7 @@ K aktualizaci zařízení ve službě Azure AD potřebujete účet, který má p
 
 V zásadách úklidu vyberte účty, které mají přiřazené požadované role. 
 
-### <a name="timeframe"></a>Časový rámec
+### <a name="timeframe"></a>Časové období
 
 Definujte časové období, které je ukazatelem zastaralého zařízení. Při definování časového rámce přihlaste okno, ve kterém se aktualizuje časové razítko aktivity, na svou hodnotu. Například byste neměli považovat časové razítko mladší než 21 dní (zahrnuje odchylku) jako indikátor pro zastaralé zařízení. V určitých situacích se zařízení může jevit jako zastaralé, přestože není. Vlastník takového zařízení může být například na dovolené nebo na nemocenské,  která přesahuje časové období pro zastaralá zařízení.
 
@@ -129,11 +129,11 @@ I když zastaralá zařízení můžete uklidit na webu Azure Portal, je efektiv
 
 Typická rutina se skládá z následujících kroků:
 
-1. Připojení ke službě Azure Active Directory pomocí rutiny [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
+1. Připojení ke službě Azure Active Directory pomocí rutiny [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
 1. Získání seznamu zařízení
-1. Zakázání zařízení pomocí rutiny [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
+1. Zakázání zařízení pomocí rutiny [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
 1. Před odstraněním zařízení vyčkejte po období odkladu, jehož délku ve dnech si zvolíte.
-1. Odebrání zařízení pomocí rutiny [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
+1. Odebrání zařízení pomocí rutiny [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
 
 ### <a name="get-the-list-of-devices"></a>Získání seznamu zařízení
 

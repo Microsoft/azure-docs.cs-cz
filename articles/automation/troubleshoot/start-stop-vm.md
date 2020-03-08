@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505724"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851380"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s řešením spuštění/zastavení virtuálních počítačů v době mimo špičku
 
@@ -62,7 +62,7 @@ Nasazení mohou selhat z jednoho z následujících důvodů:
 4. Váš pracovní prostor Log Analytics má na svém počítači zámek.
 5. Máte zastaralou verzi modulů AzureRM nebo řešení spustit/zastavit.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Projděte si následující seznam, kde můžete najít možná řešení vašeho problému nebo umístit tyto problémy:
 
@@ -92,7 +92,7 @@ Tato chyba může být způsobena jedním z následujících důvodů:
 3. Sada Runbook možná běžela s chybami
 4. Možná byly vyloučeny virtuální počítače.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Projděte si následující seznam, kde můžete najít možná řešení vašeho problému nebo umístit tyto problémy:
 
@@ -133,7 +133,7 @@ Tato chyba může být způsobena jedním z následujících důvodů:
 3. Účet RunAs pravděpodobně nemá dostatečná oprávnění k virtuálnímu počítači.
 4. Virtuální počítač může mít něco, co ho zastavilo od spuštění nebo zastavení.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Projděte si následující seznam, kde můžete najít možná řešení vašeho problému nebo umístit tyto problémy:
 
@@ -165,7 +165,7 @@ Vytvořili jste vlastní Runbook nebo jste si ho stáhli ze Galerie prostředí 
 
 Příčinou selhání může být jedna z mnoha věcí. V Azure Portal klikněte na účet Automation a v části **Automatizace procesu**vyberte **úlohy** . Na stránce **úlohy** vyhledejte úlohy z Runbooku a zobrazte případné selhání úloh.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Při spouštění a zastavování virtuálních počítačů v Azure Automation se doporučuje používat [virtuální počítače spustit/zastavit během nepracovních hodin](../automation-solution-vm-management.md) . Toto řešení je vytvořené Microsoftem. Microsoft nepodporuje vlastní Runbooky. Řešení pro vlastní sadu Runbook můžete najít v článku [věnovaném řešení potíží](runbooks.md) se sadou Runbook. Tento článek poskytuje obecné pokyny a řešení potíží pro Runbooky všech typů. Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledejte případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu**vyberete **úlohy** .
 
@@ -179,7 +179,7 @@ Virtuální počítače, které jste nakonfigurovali v řešení, se nespustí a
 
 To je způsobeno nesprávným označením na virtuálních počítačích.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Proveďte následující kroky, aby bylo zajištěno, že je řešení správně nakonfigurováno.
 
@@ -199,11 +199,11 @@ Vyhledáte úlohy, které selhaly s chybou `403 forbidden` pro virtuální poč�
 
 Tento problém může být způsoben nesprávně konfigurovaným nebo vydaným účtem spustit jako s vypršelou platností. Důvodem může být také nedostatečná oprávnění k prostředkům virtuálních počítačů pomocí účtu Automation účtů spustit jako.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud chcete ověřit, jestli je účet Spustit jako správně nakonfigurovaný, Azure Portal v části **Nastavení účtu**vyberte účet Automation a vyberte **účty Spustit jako** . Tady se zobrazí stav účtů spustit jako, pokud je účet Spustit jako nesprávně nakonfigurovaný nebo vypršela jeho platnost. stav se zobrazí.
 
-Pokud je váš účet Spustit jako [špatně nakonfigurovaný](../manage-runas-account.md#misconfiguration), měli byste účet Spustit jako odstranit a znovu vytvořit.
+Pokud je váš účet Spustit jako špatně nakonfigurovaný, měli byste účet Spustit jako odstranit a znovu vytvořit. Viz [Správa účtů spustit jako Azure Automation](../manage-runas-account.md).
 
 Pokud platnost certifikátu pro účet Spustit jako vypršela, postupujte podle kroků uvedených v části [obnovení certifikátu podepsané svým držitelem](../manage-runas-account.md#cert-renewal) a obnovte certifikát.
 
@@ -222,7 +222,7 @@ V mnoha případech může být chyba způsobena použitím staré a zastaralé 
 > [!NOTE]
 > Řešení Start/Stop VMs during off-hours bylo testováno pomocí modulů Azure, které jsou importovány do účtu Automation při nasazení řešení. Řešení aktuálně nefunguje s novějšími verzemi modulu Azure. To má vliv jenom na účet Automation, který používáte ke spuštění řešení Start/Stop VMs during off-hours. V dalších účtech Automation můžete dál používat novější verze modulu Azure, jak je popsáno v tématu [Postup aktualizace Azure PowerShellch modulů v Azure Automation](../automation-update-azure-modules.md)
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Chcete-li vyřešit mnoho chyb, doporučujeme řešení odebrat a aktualizovat. Informace o tom, jak řešení aktualizovat, najdete v tématu [aktualizace virtuálních počítačů spustit/zastavit během nepracovních řešení](../automation-solution-vm-management.md#update-the-solution). Navíc můžete zkontrolovat [streamy úloh](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledat případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu**vyberete **úlohy** .
 

@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670623"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894819"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
@@ -22,12 +22,12 @@ Tento rychlý Start vás provede přidáním sady Application Insights SDK do ex
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
+K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-- [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
+- [Nainstalujte Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) s následujícími úlohami:
   - Vývoj v ASP.NET a pro web
   - Vývoj pro Azure
-- [Nainstalovat sadu .NET Core 2.0 SDK](https://www.microsoft.com/net/core)
+- [Nainstalovat sadu .NET Core 2.0 SDK](https://dotnet.microsoft.com/download)
 - Budete potřebovat předplatné Azure a webovou aplikaci v .NET Core.
 
 Pokud nemáte webovou aplikaci ASP.NET Core, můžete pomocí našeho podrobného průvodce [vytvořit aplikaci ASP.NET Core a přidat Application Insights.](../../azure-monitor/app/asp-net-core.md)
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 

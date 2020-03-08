@@ -1,14 +1,16 @@
 ---
 title: 'Rychlý Start: použití &u REST pro správu znalostní báze Knowledge Base – QnA Maker'
 description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní REST API vytvořit, publikovat a dotazovat znalostní bázi.
+ms.date: 02/27/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.date: 12/16/2019
-ms.openlocfilehash: d2542a0307387cef1c96ecfb426a8e7c01621ee2
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165457"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851201"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Rychlý Start: použití kudrlinkou a REST ke správě znalostní báze
 

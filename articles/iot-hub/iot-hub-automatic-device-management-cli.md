@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429290"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669435"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatická správa zařízení a modulů IoT pomocí Azure CLI
 
@@ -35,9 +35,13 @@ Automatické konfigurace se spouští poprvé po vytvoření konfigurace a pak v
 
 ## <a name="cli-prerequisites"></a>Předpoklady rozhraní příkazového řádku
 
-* [Služby IoT hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure. 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimálně musí být vaše Azure CLI verze 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –-version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. 
-* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure. 
+
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az –-version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. 
+
+* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-cli)
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>Implementovat vlákna
 
@@ -125,13 +129,13 @@ Pomocí následujícího příkazu vytvořte konfiguraci:
      --metrics [metric queries]
 ```
 
-* --**config-ID** – název konfigurace, která se vytvoří ve službě IoT Hub. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezery a následující neplatné znaky: `& ^ [ ] { } \ | " < > /`.
+* --**config-ID** – název konfigurace, která se vytvoří ve službě IoT Hub. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`.
 
 * **popisky** --– přidejte popisky, které vám pomůžou sledovat vaši konfiguraci. Popisky jsou název, páry hodnota, která popisují vaše nasazení. Například `HostPlatform, Linux` nebo `Version, 3.0.1`
 
 * --formátu JSON vloženého **obsahu** nebo cesty k cílovému obsahu, který se má nastavit jako nevlákenná požadovaná vlastnost. 
 
-* --**centrum – název** – název centra IoT, ve kterém se konfigurace vytvoří. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
+* --**centrum – název** – název centra IoT, ve kterém se konfigurace vytvoří. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`
 
 * --**cíl-podmínka** – zadejte cílovou podmínku pro určení, která zařízení nebo moduly budou cílem této konfigurace. Pro automatickou konfiguraci zařízení je podmínka založená na nevyhovujících značkách zařízení nebo na vyplňování požadovaných vlastností zařízení a měla by odpovídat formátu výrazu. Například `tags.environment='test'` nebo `properties.desired.devicemodel='4000x'`. Pro automatickou konfiguraci modulu je podmínka založená na nepodmíněných značkách modulu nebo v modulu, který je pro něj požadovaný.. Například `from devices.modules where tags.environment='test'` nebo `from devices.modules where properties.reported.chillerProperties.model='4000x'`.
 
@@ -150,7 +154,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**config-ID** – název konfigurace, která existuje ve službě IoT Hub.
 
-* --**centrum – název** – název centra IoT, ve kterém existuje konfigurace. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
+* --**centrum – název** – název centra IoT, ve kterém existuje konfigurace. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`
 
 Zkontrolujte konfiguraci v příkazovém okně. Vlastnost **metriky** uvádí počet pro každou metriku, která je vyhodnocována jednotlivými rozbočovači:
 
@@ -204,7 +208,7 @@ az iot hub configuration update --config-id [configuration id] \
 
     * popisky 
 
-    * priorita
+    * priority
 
 ## <a name="delete-a-configuration"></a>Odstraní konfiguraci.
 

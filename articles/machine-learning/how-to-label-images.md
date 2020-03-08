@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772444"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898703"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem
 
@@ -58,6 +58,16 @@ Azure povolí tlačítko **Odeslat** , když jste označili všechny obrázky na
 
 Po odeslání značek pro data v Azure aktualizuje stránku pomocí nové sady imagí z pracovní fronty.
 
+### <a name="assisted-machine-learning"></a>Strojové učení s asistencí 
+
+Algoritmy strojového učení se můžou aktivovat v rámci úlohy klasifikace s více třídami nebo s více štítky. Pokud jsou tyto algoritmy v projektu povolené, může se zobrazit následující:
+
+* Po označení některých imagí se mohou v horní části obrazovky vedle názvu projektu zobrazit **úkoly v clusteru** .  To znamená, že se obrázky seskupí tak, aby obsahovaly podobné obrázky na stejné stránce.  Pokud ano, přepněte na jedno z zobrazení více obrázků, abyste mohli využít výhod seskupení.  
+
+* Později se můžete podívat na úkoly, které jsou **označené** vedle názvu projektu.  Obrázky se pak zobrazí s navrhovaným popiskem, který pochází z modelu klasifikace Machine Learning. Žádný model strojového učení nemá 100% přesnost. I když používáme jenom image, pro které je model jistý, můžou být tyto image pořád nesprávně označené.  Když vidíte tyto popisky, před odesláním stránky opravte případné nesprávné popisky.  
+
+Model strojového učení, který je zvláště zpočátku v rámci označování projektu, může být dostatečně přesný, aby bylo možné předoznačit malou podmnožinu imagí. Po označení těchto imagí se projekt označování vrátí k ručnímu označování, aby se získalo více dat pro další kolo školení o modelu. V průběhu času se model bude spolehlivější o větší část imagí, což vede k pozdějšímu předznačení úkolů v projektu.
+
 ## <a name="tag-images-for-multi-class-classification"></a>Obrázky značek pro klasifikaci více tříd
 
 Pokud je váš projekt typu "Multi-Class klasifikace obrázku", přiřadíte k celému obrázku jednu značku. Pokud si chcete projít pokyny kdykoli, navštivte stránku s **pokyny** a vyberte **Zobrazit podrobné pokyny**.
@@ -81,6 +91,7 @@ Chcete-li opravit chybu, klikněte na "**X**", chcete-li vymazat jednotlivou zna
 ![Snímek obrazovky znázorňující více odvýběrů](./media/how-to-label-images/multiple-deselection.png)
 
 Azure povolí tlačítko **Odeslat** jenom po použití aspoň jedné značky pro každý obrázek. Vyberte **Odeslat** a uložte svou práci.
+
 
 ## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Tagování obrázků a určení ohraničujících polí pro detekci objektů
 

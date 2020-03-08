@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390130"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669330"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Použití klíčů prostředků pro vytváření obsahu a modulu runtime
 
@@ -81,7 +81,7 @@ Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/
 
 1. Přihlaste se k Azure CLI:
 
-    ```console
+    ```azurecli
     az login
     ```
 
@@ -89,13 +89,13 @@ Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/
 
 1. V _existující_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast vytvořte **prostředek pro vytváření obsahu Luis**typu `LUIS.Authoring`s názvem `my-luis-authoring-resource`. 
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
 1. Vytvořte **prostředek koncového bodu předpovědi Luis**typu `LUIS`s názvem `my-luis-prediction-resource` ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast. Pokud chcete vyšší propustnost, než je úroveň Free, změňte `F0` na `S0`. Přečtěte si další informace o [cenových úrovních a propustnosti](luis-boundaries.md#key-limits).
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 

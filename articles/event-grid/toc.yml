@@ -96,8 +96,12 @@
   items:
     - name: Koncepty Event Grid
       href: concepts.md
-    - name: Zabezpečení a ověřování
-      href: security-authentication.md
+    - name: Zabezpečení
+      items:
+        - name: Authentication
+          href: security-authentication.md
+        - name: Autorizace
+          href: security-authorization.md
     - name: Doručování a opakované pokusy
       href: delivery-and-retry.md
     - name: Filtrování událostí

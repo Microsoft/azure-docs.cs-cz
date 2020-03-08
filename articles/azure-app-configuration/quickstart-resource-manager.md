@@ -6,19 +6,23 @@ ms.author: lcozzens
 ms.date: 03/05/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
-ms.custom: mvc
-ms.openlocfilehash: 7c6f4b2ea9494c004067a8b19df2c2f098ac2b7f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom:
+- mvc
+- subject-armqs
+ms.openlocfilehash: 702c03aec1980b12debeef3afeb84e0cbaef55b6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274953"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671588"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration"></a>Rychlý Start: automatizované nasazení virtuálních počítačů s konfigurací aplikace
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Rychlý Start: automatizované nasazení virtuálních počítačů s konfigurací aplikace a šablonou Správce prostředků
 
 Modul Azure PowerShell slouží k vytváření a správě prostředků Azure pomocí rutin PowerShellu nebo skriptů. V tomto rychlém startu se dozvíte, jak používat šablony Azure PowerShell a Azure Resource Manager k nasazení úložiště konfigurace aplikace Azure. Pak se dozvíte, jak pomocí hodnot klíč-hodnoty v úložišti nasadit virtuální počítač.
 
 Pomocí šablony požadovaných součástí můžete vytvořit úložiště konfigurace aplikace a potom do úložiště přidat klíčové hodnoty pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI. Primární šablona odkazuje na stávající konfigurace klíč-hodnota z existujícího úložiště konfigurace. Načtené hodnoty slouží k nastavení vlastností prostředků vytvořených šablonou, jako je třeba virtuální počítač v tomto příkladu.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 76d3be0fc00465c35dbc79a258b57db962969cc8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255003"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672335"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -59,7 +59,7 @@ Připojení k hybridní službě Azure AD podporuje širokou škálu zařízení
 - Windows Server 2016
 - Windows Server 2019
 
-V případě zařízení s desktopovým operačním systémem Windows je podporovaná verze uvedená v tomto článku [informace o verzi Windows 10](https://docs.microsoft.com/windows/release-information/). Osvědčeným postupem je, že Microsoft doporučuje upgradovat na nejnovější verzi Windows 10.
+V případě zařízení s desktopovým operačním systémem Windows je podporovaná verze uvedená v tomto článku [informace o verzi Windows 10](/windows/release-information/). Osvědčeným postupem je, že Microsoft doporučuje upgradovat na nejnovější verzi Windows 10.
 
 ### <a name="windows-down-level-devices"></a>Zařízení se škálováním na nižší úrovni Windows
 
@@ -87,7 +87,7 @@ Jako první krok plánování byste měli zkontrolovat prostředí a určit, jes
 
 - Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
 
-- Pokud používáte [Sjednocený filtr zápisu](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter) a podobné technologie, které při restartování vymažou změny disku, musí se použít po připojení zařízení k hybridní službě Azure AD. Pokud tyto technologie povolíte před dokončením programu připojení k hybridní službě Azure AD, dojde při každém restartování k tomu, že se zařízení nepřipojí.
+- Pokud používáte [Sjednocený filtr zápisu](/windows-hardware/customize/enterprise/unified-write-filter) a podobné technologie, které při restartování vymažou změny disku, musí se použít po připojení zařízení k hybridní službě Azure AD. Pokud tyto technologie povolíte před dokončením programu připojení k hybridní službě Azure AD, dojde při každém restartování k tomu, že se zařízení nepřipojí.
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Zpracování zařízení s registrovaným stavem Azure AD
 Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](overview.md#getting-devices-in-azure-ad) ve vašem tenantovi, může to vést k duálnímu stavu připojení k hybridní službě Azure AD a k zaregistrovanému zařízení Azure AD. Pro automatické vyřešení tohoto scénáře doporučujeme upgradovat na Windows 10 1803 (s použitím KB4489894) nebo novějším. Ve verzích starších než 1803 budete muset před povolením hybridního připojení k Azure AD ručně odebrat stav registrovaný pro službu Azure AD. V 1803 a vyšších verzích byly provedeny následující změny, aby nedocházelo k tomuto duálnímu stavu:
@@ -100,7 +100,7 @@ Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](o
 > Zařízení zaregistrované v Azure AD se neodebere automaticky, pokud ho spravuje Intune.
 
 ### <a name="additional-considerations"></a>Další aspekty
-- Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+- Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
 - Připojení k hybridní službě Azure AD se podporuje pro čip TPM kompatibilní se standardem FIPS 2,0 a nepodporuje se pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat s hybridním připojením k Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. Od verze Windows 10 1903 se čipy TPM 1,2 nepoužívají pro připojení k hybridní službě Azure AD a zařízení s těmito čipy tpmmi se budou považovat za neexistující TPM.
 
@@ -116,7 +116,7 @@ Připojení k hybridní službě Azure AD funguje s oběma spravovanými i feder
 
 ### <a name="managed-environment"></a>Spravované prostředí
 
-Spravované prostředí se dá nasadit buď pomocí [synchronizace hodnot hash hesel (kosmetice)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) , nebo [předávat ověřování (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) pomocí [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso).
+Spravované prostředí se dá nasadit buď pomocí [synchronizace hodnot hash hesel (kosmetice)](/azure/active-directory/hybrid/whatis-phs) , nebo [předávat ověřování (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) pomocí [bezproblémového jednotného přihlašování](/azure/active-directory/hybrid/how-to-connect-sso).
 
 Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování.
 
@@ -133,7 +133,7 @@ Federované prostředí by mělo mít poskytovatele identity, který podporuje n
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). To, jaké koncové body jsou povolené, můžete zobrazit pomocí konzoly pro správu AD FS v části **koncové body** **služby** > .
+> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). To, jaké koncové body jsou povolené, můžete zobrazit pomocí konzoly pro správu AD FS v části **koncové body** **služby** > .
 
 > [!NOTE]
 > Azure AD nepodporuje čipové karty ani certifikáty ve spravovaných doménách.
@@ -147,9 +147,9 @@ V závislosti na scénáři, který odpovídá vaší infrastruktuře identity, 
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD
 
-Někdy se může stát, že místní hlavní názvy služby AD UPN se liší od vašich místních názvů UPN služby Azure AD. V takových případech služba Windows 10 Hybrid Azure AD JOIN nabízí omezené podpory místních UPN služby AD na základě [metody ověřování](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), typu domény a verze Windows 10. Existují dva typy místních UPN služby AD, které můžou existovat ve vašem prostředí:
+Někdy se může stát, že místní hlavní názvy služby AD UPN se liší od vašich místních názvů UPN služby Azure AD. V takových případech služba Windows 10 Hybrid Azure AD JOIN nabízí omezené podpory místních UPN služby AD na základě [metody ověřování](/azure/security/fundamentals/choose-ad-authn), typu domény a verze Windows 10. Existují dva typy místních UPN služby AD, které můžou existovat ve vašem prostředí:
 
-- Směrovatelný hlavní název uživatele: směrovatelný hlavní název uživatele (UPN) má platnou ověřenou doménu, která je zaregistrovaná u doménového registrátora. Pokud je například contoso.com primární doménou v Azure AD, contoso.org je primární doména v místní službě AD vlastněná společností Contoso a [ověřená v Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) .
+- Směrovatelný hlavní název uživatele: směrovatelný hlavní název uživatele (UPN) má platnou ověřenou doménu, která je zaregistrovaná u doménového registrátora. Pokud je například contoso.com primární doménou v Azure AD, contoso.org je primární doména v místní službě AD vlastněná společností Contoso a [ověřená v Azure AD](/azure/active-directory/fundamentals/add-custom-domain) .
 - Nesměrovatelný hlavní název uživatele: nesměrovatelný hlavní název uživatele (UPN) nemá ověřenou doménu. Dá se použít jenom v privátní síti vaší organizace. Pokud je například contoso.com primární doménou v Azure AD, contoso. Local je primární doména v místní službě AD, ale nejedná se o ověřitelných doménách v Internetu a používá se jenom v síti Contoso.
 
 V následující tabulce najdete podrobné informace o podpoře místních UPN služby AD ve Windows 10 – připojení k hybridní službě Azure AD.

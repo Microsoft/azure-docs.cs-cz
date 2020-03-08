@@ -1,17 +1,17 @@
 ---
 title: Agregační funkce v Azure Cosmos DB
 description: Přečtěte si o syntaxi agregační funkce SQL, typech agregačních funkcí, které podporuje Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/05/2020
+ms.author: tisande
+ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871835"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897832"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Agregační funkce v Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Agregační funkce provádějí výpočet pro sadu hodnot v klauzuli SELECT a vr
     FROM Families f
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [{
@@ -39,7 +39,7 @@ Můžete také vrátit pouze skalární hodnotu agregace pomocí klíčového sl
     FROM Families f
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [ 2 ]
@@ -53,7 +53,7 @@ Agregace můžete kombinovat i s filtry. Například následující dotaz vrát�
     WHERE f.address.state = "WA"
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [ 1 ]
@@ -66,9 +66,9 @@ Rozhraní SQL API podporuje následující agregační funkce. SUM a AVG pracuj�
 | Funkce | Popis |
 |-------|-------------|
 | POČET | Vrátí počet položek ve výrazu. |
-| SUM   | Vrátí součet všech hodnot ve výrazu. |
+| SOUČET   | Vrátí součet všech hodnot ve výrazu. |
 | MIN   | Vrátí minimální hodnotu ve výrazu. |
-| MAX   | Vrátí maximální hodnotu ve výrazu. |
+| MAX.   | Vrátí maximální hodnotu ve výrazu. |
 | PRŮMĚR   | Vrátí průměr hodnot ve výrazu. |
 
 Můžete také agregovat výsledky iterace pole.

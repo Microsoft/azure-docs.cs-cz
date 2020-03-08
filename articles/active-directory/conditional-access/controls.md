@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620715"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671848"
 ---
 # <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
@@ -67,22 +67,10 @@ Pokud chcete odstranit vlastní ovládací prvek, musíte nejdřív zkontrolovat
 
 Chcete-li upravit vlastní ovládací prvek, je nutné odstranit aktuální ovládací prvek a vytvořit nový ovládací prvek s aktualizovanými informacemi.
 
-## <a name="session-controls"></a>Ovládací prvky relace
-
-Ovládací prvky relace umožňují omezené prostředí v rámci cloudové aplikace. Ovládací prvky relace jsou vynutily cloudové aplikace a využívají další informace, které Azure AD poskytuje do aplikace o této relaci.
-
-![Řízení](./media/controls/31.png)
-
-### <a name="use-app-enforced-restrictions"></a>Použít omezení pro uplatnění aplikace
-
-Tento ovládací prvek můžete použít, pokud chcete, aby služba Azure AD předávala informace o zařízení vybraným cloudovým aplikacím. Informace o zařízení umožňuje cloudovým aplikacím zjistit, jestli je připojení iniciované z kompatibilního zařízení nebo zařízení připojeného k doméně. Tento ovládací prvek podporuje pouze SharePoint Online a Exchange Online jako vybrané cloudové aplikace. Když vyberete tuto možnost, cloudová aplikace použije informace o zařízení k poskytování uživatelů v závislosti na stavu zařízení s omezeným nebo úplným prostředím.
-
-Další informace naleznete v tématu:
-
-- [Povolení omezeného přístupu na SharePointu Online](https://aka.ms/spolimitedaccessdocs)
-- [Povolení omezeného přístupu pomocí Exchange Online](https://aka.ms/owalimitedaccess)
-
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+
+- [Režim pouze sestav](concept-conditional-access-report-only.md)
+
+- [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

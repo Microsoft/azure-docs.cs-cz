@@ -3,20 +3,20 @@ title: Přístup k vlastnostem systémových dokumentů prostřednictvím Azure 
 description: Přečtěte si, jak číst a zapisovat Cosmos DB vlastnosti systémového dokumentu přes rozhraní Gremlin API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/10/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: e762674936ab2fbdf198ca67f79acfa545127f02
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4ed7e67ae0ef027b260d0e0f0407e4e05ed5a8f4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755058"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898309"
 ---
 # <a name="system-document-properties"></a>Vlastnosti systémového dokumentu
 
-Azure Cosmos DB v každém dokumentu obsahuje [systémové vlastnosti](https://docs.microsoft.com/rest/api/cosmos-db/databases) , jako jsou ```_ts```, ```_self```, ```_attachments```, ```_rid``` a ```_etag```. Modul Gremlin kromě toho přidává pro hrany vlastnosti ```inVPartition``` a ```outVPartition```. Ve výchozím nastavení jsou tyto vlastnosti k dispozici pro procházení. Je však možné do průchodu Gremlin zahrnout konkrétní vlastnosti nebo všechny.
+Azure Cosmos DB v každém dokumentu obsahuje [systémové vlastnosti](https://docs.microsoft.com/rest/api/cosmos-db/databases) , jako jsou ```_ts```, ```_self```, ```_attachments```, ```_rid```a ```_etag```. Modul Gremlin kromě toho přidává pro hrany vlastnosti ```inVPartition``` a ```outVPartition```. Ve výchozím nastavení jsou tyto vlastnosti k dispozici pro procházení. Je však možné do průchodu Gremlin zahrnout konkrétní vlastnosti nebo všechny.
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())
