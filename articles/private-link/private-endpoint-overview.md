@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
 ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048444"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395480"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -25,7 +25,7 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
 |Vlastnost  |Popis |
 |---------|---------|
 |Název    |    Jedinečný název v rámci skupiny prostředků.      |
-|Subnet    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
+|Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
 |Prostředek privátního propojení    |   Prostředek privátního propojení pro připojení pomocí ID prostředku nebo aliasu ze seznamu dostupných typů. Pro veškerý provoz odeslaný do tohoto prostředku se vygeneruje jedinečný identifikátor sítě.       |
 |Cílový podprostředek   |      Prostředek, který se má připojit. Každý typ prostředku privátního propojení má různé možnosti pro výběr na základě předvolby.    |
 |Metoda schválení připojení    |  Automatické nebo ruční. V závislosti na oprávněních řízení přístupu na základě role (RBAC) může být váš soukromý koncový bod schválen automaticky. Pokud se pokusíte připojit k prostředku privátního propojení bez RBAC, použijte ruční metodu, která vlastníkovi prostředku povolí schválení připojení.        |
@@ -55,8 +55,8 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Služba privátního propojení** (vaše vlastní služba)   |  Microsoft. Network/privateLinkServices       | Prázdná |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure Storage**  | Microsoft.Storage/storageAccounts.    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts.    |  BLOB (objekt blob, blob_secondary)<BR> Data Lake Gen2 systému souborů (DFS, dfs_secondary)       |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Data Lake Gen2 systému souborů (DFS, dfs_secondary)       |
 |**Databáze Azure Cosmos** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
 |**Azure Database for PostgreSQL – jeden server** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
@@ -115,7 +115,7 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 |Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Table|privatelink.table.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Tabulka|privatelink.table.cosmos.azure.com|
 |Azure Database for PostgreSQL – jeden server (Microsoft. DBforPostgreSQL/servery)|postgresqlServer|privatelink.postgres.database.azure.com|
 |Azure Database for MySQL (Microsoft. DBforMySQL/servery)|mysqlServer|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (Microsoft. DBforMariaDB/servery)|mariadbServer|privatelink.mariadb.database.azure.com|

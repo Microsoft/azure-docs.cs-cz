@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 5e7a4eff57841fdcf3bab87eda4e9771d9742bc5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190366"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386769"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Kurz: načtení datové sady New York taxislužby města
 
@@ -92,7 +92,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
 12. Na panelu nástrojů vyberte **oznámení** pro monitorování procesu nasazení.
   
-     ![oznámení](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![– oznámení](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
@@ -140,7 +140,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
 
-1. Otevřete SQL Server Management Studio.
+1. Otevřete nástroj SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -148,8 +148,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Typ serveru    | Databázový stroj                            | Tato hodnota se vyžaduje.                                       |
     | Název serveru    | Plně kvalifikovaný název serveru            | Název by měl být podobný tomuto: **MyNewServer-20180430.Database.Windows.NET**. |
-    | Ověřování | Ověřování SQL Serveru                  | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
-    | Přihlásit          | Účet správce serveru                   | Jedná se o účet, který jste zadali při vytváření serveru. |
+    | Ověřování | Ověřování serveru SQL                  | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
+    | Přihlášení          | Účet správce serveru                   | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo       | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 
     ![Připojení k serveru](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -158,7 +158,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 5. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
 
-    ![databázové objekty](media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
+    ![objekty databáze](media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 
@@ -561,7 +561,7 @@ Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/
 ## <a name="authenticate-using-managed-identities-to-load-optional"></a>Ověřování pomocí spravovaných identit k načtení (volitelné)
 Načítání pomocí základů a ověřování prostřednictvím spravovaných identit je nejbezpečnější mechanismus a umožňuje využívat koncové body služby virtuální sítě s Azure Storage. 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 1.  Pomocí této [příručky](https://docs.microsoft.com/powershell/azure/install-az-ps)nainstalujte Azure PowerShell.
 2.  Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte nejdřív v této [příručce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)upgradovat na obecné účely v2.
 3.  Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .

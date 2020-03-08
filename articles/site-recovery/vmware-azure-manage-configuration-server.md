@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954357"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362641"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače nebo fyzického serveru VMware
 
@@ -71,7 +71,7 @@ Pokud jste při OVF nasazení konfiguračního serveru nenechali přidávat při
 
 1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače**.
 2. Klikněte na **Přidat přihlašovací údaje virtuálního počítače**.
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Add-mobility-Credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Zadejte nové přihlašovací údaje a klikněte na **Přidat**.
 
 Přihlašovací údaje můžete také přidat pomocí CSPSConfigtool. exe.
@@ -157,13 +157,13 @@ Proveďte upgrade serveru následujícím způsobem:
     ![Aktualizace](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Stáhněte instalační soubor aktualizace na konfigurační server.
 
-    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Aktualizovat](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Dvojím kliknutím spusťte instalační program.
 5. Instalační program detekuje aktuální verzi spuštěnou v počítači. Kliknutím na **Ano** zahájíte upgrade.
 6. Po dokončení upgradu se konfigurace serveru ověří.
 
-    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Aktualizovat](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Kliknutím na tlačítko **Dokončit** ukončíte instalační program.
 8. Chcete-li upgradovat zbývající součásti Site Recovery, přečtěte si naše [pokyny k upgradu](https://aka.ms/asr_vmware_upgrades).
@@ -188,20 +188,20 @@ Spusťte instalační soubor následujícím způsobem:
 
 |Název parametru| Typ | Popis| Hodnoty|
 |-|-|-|-|
-| /ServerMode|Požaduje se|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
-|/InstallLocation|Požaduje se|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
-|/MySQLCredsFilePath|Požaduje se|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
-|/VaultCredsFilePath|Požaduje se|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
-|/EnvType|Požaduje se|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
-|/PSIP|Požaduje se|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
-|/CSIP|Požaduje se|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
-|/PassphraseFilePath|Požaduje se|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
-|/BypassProxy|Nepovinné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
-|/ProxySettingsFilePath|Nepovinné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
-|DataTransferSecurePort|Nepovinné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
-|/SkipSpaceCheck|Nepovinné|Přeskočí kontrolu místa na disku mezipaměti.| |
-|/AcceptThirdpartyEULA|Požaduje se|Příznak značí přijetí smlouvy EULA třetích stran| |
-|/ShowThirdpartyEULA|Nepovinné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
+| /ServerMode|Požadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
+|/InstallLocation|Požadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
+|/MySQLCredsFilePath|Požadováno|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
+|/VaultCredsFilePath|Požadováno|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
+|/EnvType|Požadováno|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
+|/PSIP|Požadováno|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
+|/CSIP|Požadováno|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
+|/PassphraseFilePath|Požadováno|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
+|/BypassProxy|Volitelné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
+|/ProxySettingsFilePath|Volitelné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
+|DataTransferSecurePort|Volitelné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
+|/SkipSpaceCheck|Volitelné|Přeskočí kontrolu místa na disku mezipaměti.| |
+|/AcceptThirdpartyEULA|Požadováno|Příznak značí přijetí smlouvy EULA třetích stran| |
+|/ShowThirdpartyEULA|Volitelné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
 
 
 

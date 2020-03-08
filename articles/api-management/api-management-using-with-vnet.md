@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: apimpm
 ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047485"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374920"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -198,18 +198,18 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 |-----------------|-------------------------|---------------|
 | Veřejné Azure| Střed USA – jih (globální)| 104.214.19.224|
 | Veřejné Azure| Střed USA – sever (globální)| 52.162.110.80|
-| Veřejné Azure| Západní střed USA| 52.253.135.58|
+| Veřejné Azure| Střed USA – západ| 52.253.135.58|
 | Veřejné Azure| Jižní Korea – střed| 40.82.157.167|
 | Veřejné Azure| Spojené království – západ| 51.137.136.0|
 | Veřejné Azure| Japonsko – západ| 40.81.185.8|
 | Veřejné Azure| Střed USA – sever| 40.81.47.216|
 | Veřejné Azure| Velká Británie – jih| 51.145.56.125|
 | Veřejné Azure| Indie – západ| 40.81.89.24|
-| Veřejné Azure| USA – východ| 52.224.186.99|
+| Veřejné Azure| Východní USA| 52.224.186.99|
 | Veřejné Azure| Západní Evropa| 51.145.179.78|
 | Veřejné Azure| Japonsko – východ| 52.140.238.179|
 | Veřejné Azure| Francie – střed| 40.66.60.111|
-| Veřejné Azure| Kanada – východ| 52.139.80.117|
+| Veřejné Azure| Východní Kanada| 52.139.80.117|
 | Veřejné Azure| Spojené arabské emiráty sever| 20.46.144.85|
 | Veřejné Azure| Brazílie – jih| 191.233.24.179|
 | Veřejné Azure| Jihovýchodní Asie| 40.90.185.46|
@@ -217,17 +217,17 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejné Azure| Kanada – střed| 52.139.20.34|
 | Veřejné Azure| Jižní Korea – jih| 40.80.232.185|
 | Veřejné Azure| Indie – střed| 13.71.49.1|
-| Veřejné Azure| USA – západ| 13.64.39.16|
+| Veřejné Azure| Západní USA| 13.64.39.16|
 | Veřejné Azure| Austrálie – jihovýchod| 20.40.160.107|
 | Veřejné Azure| Austrálie – střed| 20.37.52.67|
 | Veřejné Azure| Indie – jih| 20.44.33.246|
 | Veřejné Azure| Střed USA| 13.86.102.66|
 | Veřejné Azure| Austrálie – východ| 20.40.125.155|
-| Veřejné Azure| USA – západ 2| 51.143.127.203|
+| Veřejné Azure| Západní USA 2| 51.143.127.203|
 | Veřejné Azure| Východní USA 2 EUAP| 52.253.229.253|
 | Veřejné Azure| Střed USA EUAP| 52.253.159.160|
 | Veřejné Azure| Střed USA – jih| 20.188.77.119|
-| Veřejné Azure| USA – východ 2| 20.44.72.3|
+| Veřejné Azure| Východní USA 2| 20.44.72.3|
 | Veřejné Azure| Severní Evropa| 52.142.95.35|
 | Veřejné Azure| Východní Asie| 52.139.152.27|
 | Veřejné Azure| Francie – jih| 20.39.80.2|

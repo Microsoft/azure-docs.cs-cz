@@ -15,11 +15,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206255"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374760"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 

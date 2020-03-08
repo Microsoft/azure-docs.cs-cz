@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932481"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376729"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -114,7 +114,7 @@ Přístupové balíčky nenahrazují jiné mechanismy pro přiřazení přístup
 
 Chcete-li lépe pochopit správu nároků a její dokumentaci, můžete se vrátit k následujícímu seznamu podmínek.
 
-| Doba účinnosti | Popis |
+| Termín | Popis |
 | --- | --- |
 | přístup k balíčku | Sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupový balíček je vždycky obsažený v katalogu. Vytvořili jste nový balíček pro přístup pro scénář, ve kterém uživatelé potřebují požádat o přístup.  |
 | žádost o přístup | Žádost o přístup k prostředkům v balíčku pro přístup Požadavek obvykle prochází schvalovacím pracovním postupem.  V případě schválení obdrží žádající uživatel přiřazení balíčku přístupu. |
@@ -158,7 +158,7 @@ Tady je několik ukázkových scénářů licencí, které vám pomůžou určit
 
 | Scénář | Výpočet | Počet licencí |
 | --- | --- | --- |
-| Globální správce v Woodgrove Bank vytvoří počáteční katalogy a deleguje úlohy správy na 6 dalších uživatelů. Jedna ze zásad určuje, že **Všichni zaměstnanci** (2 000 zaměstnanců) si můžou vyžádat konkrétní sadu přístupových balíčků. 150 zaměstnanci požadují balíčky pro přístup. | 2 000 zaměstnanců, kteří **můžou** žádat o přístup k balíčkům | 2 000 |
+| Globální správce v Woodgrove Bank vytvoří počáteční katalogy a deleguje úlohy správy na 6 dalších uživatelů. Jedna ze zásad určuje, že **Všichni zaměstnanci** (2 000 zaměstnanců) si můžou vyžádat konkrétní sadu přístupových balíčků. 150 zaměstnanci požadují balíčky pro přístup. | 2 000 zaměstnanců, kteří **můžou** žádat o přístup k balíčkům | 2,000 |
 | Globální správce v Woodgrove Bank vytvoří počáteční katalogy a deleguje úlohy správy na 6 dalších uživatelů. Jedna ze zásad určuje, že **Všichni zaměstnanci** (2 000 zaměstnanců) si můžou vyžádat konkrétní sadu přístupových balíčků. Jiné zásady určují, že někteří uživatelé z **partnerských společností Contoso** (Guests) můžou vyžádat stejné balíčky přístupu, které se vztahují ke schválení. Společnost Contoso má 30 000 uživatelů. 150 zaměstnanci požadují balíčky pro přístup a 10 500 uživatelům požadavek na přístup k žádosti společnosti Contoso. | 2 000 zaměstnanců + 500 uživatelé typu Host od společnosti Contoso, kteří překračují poměr 1:5 (10 500-(2 000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>Další kroky

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774479"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389169"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Popište Cluster Service Fabric pomocí Správce prostředků clusteru.
 Funkce Správce prostředků clusteru v Azure Service Fabric poskytuje několik mechanismů pro popis clusteru:
@@ -132,12 +132,12 @@ Tady je rozložení, které jsme získali, a celkový počet replik na jednu chy
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1\. místo |
-| **UD1** | |R2 | | | |1\. místo |
-| **UD2** | | |R3 | | |1\. místo |
-| **UD3** | | | |R4 | |1\. místo |
-| **UD4** | | | | |R5 |1\. místo |
-| **FDTotal** |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |- |
+| **UD0** |R1 | | | | |1 |
+| **UD1** | |R2 | | | |1 |
+| **UD2** | | |R3 | | |1 |
+| **UD3** | | | |R4 | |1 |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
 Toto rozložení je vyvážené z pohledu uzlů na doménu selhání a upgradovací doménu. Vyrovnává se taky s ohledem na počet replik na selhání a upgradovací doménu. Každá doména má stejný počet uzlů a stejný počet replik.
 
@@ -145,12 +145,12 @@ Teď se podívejme na to, co se stane, když jsme použili N6 místo N2. Jak by 
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1\. místo |
-| **UD1** |R5 | | | | |1\. místo |
-| **UD2** | | |R2 | | |1\. místo |
-| **UD3** | | | |R3 | |1\. místo |
-| **UD4** | | | | |R4 |1\. místo |
-| **FDTotal** |2 |0 |1\. místo |1\. místo |1\. místo |- |
+| **UD0** |R1 | | | | |1 |
+| **UD1** |R5 | | | | |1 |
+| **UD2** | | |R2 | | |1 |
+| **UD3** | | | |R3 | |1 |
+| **UD4** | | | | |R4 |1 |
+| **FDTotal** |2 |0 |1 |1 |1 |- |
 
 Toto rozložení porušuje naši definici záruky "maximálního rozdílu" pro omezení domény selhání. FD0 má dvě repliky, zatímco FD1 má nulovou hodnotu. Rozdíl mezi FD0 a FD1 je celkem 2, což je více než maximální rozdíl jedna. Vzhledem k tomu, že je porušení omezení, Správce prostředků clusteru toto uspořádání nepovoluje. Podobně, pokud jsme vybrali N2 a N6 (místo N1 a N2), získáme:
 
@@ -158,10 +158,10 @@ Toto rozložení porušuje naši definici záruky "maximálního rozdílu" pro o
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
-| **UD2** | | |R2 | | |1\. místo |
-| **UD3** | | | |R3 | |1\. místo |
-| **UD4** | | | | |R4 |1\. místo |
-| **FDTotal** |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |- |
+| **UD2** | | |R2 | | |1 |
+| **UD3** | | | |R3 | |1 |
+| **UD4** | | | | |R4 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
 Toto rozložení je vyvážené v souvislosti s doménami selhání. Ale teď je v rozporu s omezením domény upgradu, protože UD0 má nulové repliky a UD1 má dvě. Toto rozložení je také neplatné a nebude je vyzvednuto Správce prostředků clusteru.
 
@@ -224,12 +224,12 @@ Vzhledem k tomu, že všechny nezbytné podmínky jsou splněné, Clusterová Sp
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1\. místo |
-| **UD1** |R2 | | | | |1\. místo |
+| **UD0** |R1 | | | | |1 |
+| **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | | | |0 |
-| **UD4** | | | | |R5 |1\. místo |
-| **FDTotal** |2 |1\. místo |1\. místo |0 |1\. místo |- |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |2 |1 |1 |0 |1 |- |
 
 Pokud je hodnota **TargetReplicaSetSize** vaší služby zmenšená na čtyři (například), clusterová správce prostředků si všimněte, že se změní. Bude pokračovat pomocí logiky "maximálního rozdílu", protože **TargetReplicaSetSize** není rozdělit podle počtu domén selhání a již upgradovacích domén. V důsledku toho dojde k distribuci zbývajících čtyř replik na uzlech N1-N5 k některým přesunům replik. Tímto způsobem není porušená verze "maximální rozdíl" v doméně selhání a logika domény upgradu. 
 
@@ -237,12 +237,12 @@ Pokud je v předchozím rozložení hodnota **TargetReplicaSetSize** 5 a N1 z cl
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |Nevztahuje se |Nevztahuje se |Nevztahuje se |Nevztahuje se |Nevztahuje se |Nevztahuje se |
-| **UD1** |R2 | | | | |1\. místo |
+| **UD0** |NEUŽÍVÁ SE. |NEUŽÍVÁ SE. |NEUŽÍVÁ SE. |NEUŽÍVÁ SE. |NEUŽÍVÁ SE. |NEUŽÍVÁ SE. |
+| **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
-| **UD3** | | | |R1 | |1\. místo |
-| **UD4** | | | | |R5 |1\. místo |
-| **FDTotal** |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |- |
+| **UD3** | | | |R1 | |1 |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
 ## <a name="configuring-fault-and-upgrade-domains"></a>Konfigurace domén selhání a upgradu
 V nasazeních Service Fabric hostovaných v Azure se domény selhání a domény pro upgrade automaticky definují. Service Fabric vybere a použije informace o prostředí z Azure.
@@ -375,7 +375,7 @@ Hodnota zadaná ve vlastnosti node může být řetězec, logická hodnota nebo 
 
 * Podmíněné kontroly pro vytváření konkrétních příkazů:
 
-  | vydá | Syntaxe |
+  | Výpis | Syntaxe |
   | --- |:---:|
   | rovná se | "==" |
   | "nerovná se" | "!=" |
@@ -386,7 +386,7 @@ Hodnota zadaná ve vlastnosti node může být řetězec, logická hodnota nebo 
 
 * Logické příkazy pro seskupování a logické operace:
 
-  | vydá | Syntaxe |
+  | Výpis | Syntaxe |
   | --- |:---:|
   | ani | "&&" |
   | ani | "&#124;&#124;" |

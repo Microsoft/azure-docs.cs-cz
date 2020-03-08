@@ -7,11 +7,11 @@ ms.date: 08/23/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680969"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373952"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do Azure App Service
 
@@ -149,7 +149,7 @@ Chcete-li zakázat průběžné nasazování, vyberte možnost **Odpojit** v hor
 
 Pro aplikace pro Windows můžete průběžné nasazování nakonfigurovat ručně z cloudového úložiště Git nebo Mercurial, které portál přímo nepodporuje, jako je třeba [GitLab](https://gitlab.com/). Provedete to tak, že vyberete externí pole na stránce **centra nasazení** . Další informace najdete v tématu [Nastavení průběžného nasazování pomocí ručních kroků](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Prozkoumat běžné problémy s průběžným nasazováním](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Použití Azure Powershellu](/powershell/azureps-cmdlets-docs)

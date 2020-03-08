@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597639"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379282"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -22,7 +22,7 @@ Následující článek ukazuje, jak zaregistrovat a spravovat server pomocí sl
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Registrace nebo zrušení registrace serveru pomocí služby synchronizace úložiště
 Registrace serveru pomocí Azure File Sync vytvoří vztah důvěryhodnosti mezi Windows serverem a Azure. Tento vztah se pak dá použít k vytvoření *koncových bodů serveru* na serveru, který představuje konkrétní složky, které se mají synchronizovat se sdílenou složkou Azure (označovanou také jako *koncový bod cloudu*). 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Pokud chcete zaregistrovat server se službou synchronizace úložiště, musíte nejdřív připravit server s nezbytnými požadavky:
 
 * Na serveru musí běžet podporovaná verze Windows serveru. Další informace najdete v tématu [Azure File Sync požadavky na systém a interoperabilita](storage-sync-files-planning.md#windows-file-server-considerations).

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962488"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376942"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady a omezení hesel v Azure Active Directory
 
@@ -32,7 +32,7 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je **e-mailov
 
 * Ovlivněny jsou všechny následující role správce Azure:
   * Správce helpdesku
-  * Správce služby Service support
+  * Správce služeb
   * Správce fakturace
   * Podpora partnerů úrovně 1
   * Podpora partnerů úrovně 2
@@ -71,7 +71,7 @@ Každý uživatelský účet, který musí být přihlášený k Azure AD, musí
 
 | Vlastnost | Požadavky UserPrincipalName |
 | --- | --- |
-| Povolené znaky |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| Povolené znaky |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_! \# ^ \~</li></ul> |
 | Nepovolené znaky |<ul> <li>Libovolný "\@\" znak, který odděluje uživatelské jméno z domény.</li> <li>Nemůže obsahovat znak tečky "." hned před symbolem "\@\"</li></ul> |
 | Omezení délky |<ul> <li>Celková délka nesmí překročit 113 znaků.</li><li>Před symbolem\@\" může být až 64 znaků.</li><li>Za symbolem\@\" může být až 48 znaků.</li></ul> |
 
@@ -166,10 +166,10 @@ Následující články poskytují další informace o resetování hesla prost�
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
+* [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
 * [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
-* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
+* [Mám otázku, která nebyla zodpovězena jinde](active-directory-passwords-faq.md)

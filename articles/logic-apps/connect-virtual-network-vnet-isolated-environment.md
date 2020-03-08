@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 8c9732aec73f6387c9d32bb2333a3e7f834c2165
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 03/05/2020
+ms.openlocfilehash: 66c257f940d4345f333aacf95f8efc9051a9566c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249895"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358842"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
-Pro scénáře, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je izolované prostředí, které využívá vyhrazené úložiště a další prostředky, které jsou zachované odděleně od veřejné, Logic Apps služby pro více tenantů. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
+Pro scénáře, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je izolované prostředí, které využívá vyhrazené úložiště a další prostředky, které jsou udržovány odděleně od "globálního" víceklientské Logic Apps služby. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
 
 Při vytváření ISE Azure *vloží* do vaší virtuální sítě Azure, které ISE, nasadí službu Logic Apps do vaší virtuální sítě. Když vytvoříte aplikaci logiky nebo účet pro integraci, vyberte ISE jako své umístění. Vaše aplikace logiky nebo účet pro integraci pak můžou přímo přistupovat k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby, ve vaší virtuální síti.
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 > [!IMPORTANT]
 > Logic Apps, integrované triggery, integrované akce a konektory spouštěné ve vašem ISE používají Cenový tarif, který se liší od cenového plánu založeného na spotřebě. Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](../logic-apps/logic-apps-pricing.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -55,10 +55,10 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
     **Předpona adresy**: 0.0.0.0/0<br>
     **Další segment směrování**: Internet
 
-* Pokud chcete pro službu Azure Virtual Network používat vlastní servery DNS, [nastavte tyto servery pomocí následujících kroků](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ještě před nasazením ISE do virtuální sítě. Jinak budete muset pokaždé, když změníte server DNS, restartovat taky ISE.
+* Pokud chcete pro službu Azure Virtual Network používat vlastní servery DNS, [nastavte tyto servery pomocí následujících kroků](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ještě před nasazením ISE do virtuální sítě. Další informace o správě nastavení serveru DNS najdete v tématu [Vytvoření, změna nebo odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
-  > [!IMPORTANT]
-  > Pokud změníte nastavení serveru DNS po vytvoření ISE, ujistěte se, že jste restartovali ISE. Další informace o správě nastavení serveru DNS najdete v tématu [Vytvoření, změna nebo odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#change-dns-servers).
+  > [!NOTE]
+  > Pokud změníte nastavení serveru DNS nebo serveru DNS, musíte restartovat ISE, aby ISE mohl tyto změny vyzvednout. Další informace najdete v tématu [restart vaší ISE](#restart-ISE).
 
 <a name="enable-access"></a>
 
@@ -128,7 +128,7 @@ Tato tabulka popisuje porty ve vaší virtuální síti Azure, kterou používá
 
    ![Zadání podrobností prostředí](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požadováno | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Předplatné** | Ano | <*název_předplatného_Azure*> | Předplatné Azure, které se má použít pro vaše prostředí |
    | **Skupina prostředků** | Ano | <*Azure-Resource-Group-name*> | Nová nebo existující skupina prostředků Azure, ve které chcete vytvořit prostředí. |
@@ -277,6 +277,18 @@ Základní jednotka ISE úrovně Premium má pevnou kapacitu, takže pokud potř
 1. Pokud chcete přidat další podmínku, vyberte **Přidat podmínku škálování**.
 
 1. Až skončíte s nastavením automatického škálování, uložte změny.
+
+<a name="restart-ISE"></a>
+
+## <a name="restart-ise"></a>Restartovat ISE
+
+Pokud změníte nastavení serveru DNS nebo serveru DNS, musíte restartovat ISE, aby ISE mohl tyto změny vyzvednout. Restartování ISE SKU úrovně Premium nevede k výpadkům kvůli redundanci a komponentám, které během recyklace restartují jeden po druhém. Nicméně SKU vývojáře ISE výpadky, protože neexistuje žádná redundance. Další informace najdete v tématu [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
+
+1. V [Azure Portal](https://portal.azure.com)přejdete do prostředí integrační služby.
+
+1. V nabídce ISE vyberte **Přehled**. Na panelu nástrojů přehled **restartujte**.
+
+   ![Restartovat prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
 
 ## <a name="delete-ise"></a>Odstranit ISE
 

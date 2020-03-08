@@ -4,11 +4,11 @@ description: Pomocí výzev a kontextu můžete spravovat vícenásobná vypnut�
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210410"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389295"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534535"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379761"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexery v Azure Kognitivní hledání
 
@@ -49,7 +49,7 @@ Všechny operace související s indexery, včetně požadavků GET pro stav neb
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (ve verzi Preview)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Databáze Azure Cosmos](search-howto-index-cosmosdb.md)
 * [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Server na Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [Spravované instance SQL v Azure](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
@@ -129,7 +129,7 @@ Historie spouštění obsahuje až 50 posledních dokončených spuštění, kte
 Teď jste získali základní představu. V dalším kroku se zaměříme na požadavky a úlohy specifické pro různé typy zdrojů dat.
 
 * [Azure SQL Database nebo SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Databáze Azure Cosmos](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Indexování objektů BLOB CSV pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-csv-blobs.md)

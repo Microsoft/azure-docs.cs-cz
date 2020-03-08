@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716290"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361096"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrakce dat z utterance textu s využitím záměrů a entit
 Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON.
@@ -19,11 +19,11 @@ Nejzávažnější data k extrakci jsou data získaná počítačem, protože se
 ## <a name="data-location-and-key-usage"></a>Umístění a klíč využití dat
 LUIS poskytuje data z publikovaného [koncového bodu](luis-glossary.md#endpoint). **Požadavek https** (post nebo Get) obsahuje utterance a také některé volitelné konfigurace, například pracovní nebo produkční prostředí.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[Hodnota koncového bodu předpovědi v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[Hodnota koncového bodu předpovědi v2](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[Požadavek na koncový bod verze V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[Požadavek na koncový bod verze V3](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -38,7 +38,7 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 ## <a name="data-from-intents"></a>Data, od záměrů
 Primární data jsou nejvyšším **názvem záměru**hodnocení. Koncový bod odpověď je:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 {
@@ -51,7 +51,7 @@ Primární data jsou nejvyšším **názvem záměru**hodnocení. Koncový bod o
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 ```JSON
 {
@@ -73,14 +73,14 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 * * *
 
-|Datový objekt|Typ dat|Umístění dat|Hodnota|
+|Datový objekt|Datový typ|Umístění dat|Hodnota|
 |--|--|--|--|
 |Záměr|Řetězec|topScoringIntent.intent|"GetStoreInfo"|
 
 Pokud vaše aplikace chatovací robot nebo LUIS volá rozhodnutí na základě více než jednoho skóre záměru, vrátí všechny skóre záměrů.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 Nastavte parametr QueryString `verbose=true`. Koncový bod odpověď je:
 
@@ -105,7 +105,7 @@ Nastavte parametr QueryString `verbose=true`. Koncový bod odpověď je:
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 Nastavte parametr QueryString `show-all-intents=true`. Koncový bod odpověď je:
 
@@ -135,14 +135,14 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 Příkazů jsou seřazené od nejvyšší k nejnižší skóre.
 
-|Datový objekt|Typ dat|Umístění dat|Hodnota|Skóre|
+|Datový objekt|Datový typ|Umístění dat|Hodnota|Skóre|
 |--|--|--|--|:--|
 |Záměr|Řetězec|.intent záměry [0]|"GetStoreInfo"|0.984749258|
 |Záměr|Řetězec|.intent záměry [1]|"None"|0.0168218873|
 
 Pokud přidáte předem připravené domény, název záměru označuje doménu, například `Utilties` nebo `Communication`, a také záměr:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 {
@@ -168,7 +168,7 @@ Pokud přidáte předem připravené domény, název záměru označuje doménu,
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 ```JSON
 {
@@ -196,7 +196,7 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 * * *
 
-|Domain (Doména)|Datový objekt|Typ dat|Umístění dat|Hodnota|
+|Doména|Datový objekt|Datový typ|Umístění dat|Hodnota|
 |--|--|--|--|--|
 |Veřejné služby|Záměr|Řetězec|.intent záměry [0]|"<b>Nástroje</b>. ShowNext"|
 |Komunikace|Záměr|Řetězec|.intent záměry [1]|<b>Komunikace</b>. StartOver"|
@@ -210,7 +210,7 @@ Jedno slovo nebo frázi v utterance může odpovídat více než jednu entitu. V
 
 Všechny entity se vrátí v poli **entity** odpovědi z koncového bodu:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 "entities": [
@@ -233,7 +233,7 @@ Všechny entity se vrátí v poli **entity** odpovědi z koncového bodu:
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 ```JSON
 "entities": {
@@ -266,7 +266,7 @@ Přečtěte si [podporu tokenů](luis-language-support.md#tokenization) v Luis.
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 "entities": [
@@ -347,7 +347,7 @@ Přečtěte si [podporu tokenů](luis-language-support.md#tokenization) v Luis.
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 Bez parametru QueryString `verbose=true`:
 
@@ -556,7 +556,7 @@ Některé aplikace musí být schopna najít nové a chystané názvy, napříkl
 Role jsou kontextové rozdíly entit.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 Název entity je `Location`se dvěma rolemi, `Origin` a `Destination`.
 
@@ -589,7 +589,7 @@ Název entity je `Location`se dvěma rolemi, `Origin` a `Destination`.
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 V v3 je **název role** primárním názvem objektu.
 
@@ -709,7 +709,7 @@ Pro všechny jiné jazykové verze odpověď je:
 Entita pro extrakci klíčových frází vrátí klíčové fráze v utterance, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 {
@@ -744,7 +744,7 @@ Entita pro extrakci klíčových frází vrátí klíčové fráze v utterance, 
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
@@ -822,7 +822,7 @@ Služba LUIS vrátí všechny entity v utterance. V důsledku toho může váš 
 
 Koncový bod LUIS může vyhledat stejná data v různých entitách.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 {
@@ -948,7 +948,7 @@ Koncový bod LUIS může vyhledat stejná data v různých entitách.
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 Bez `verbose=true` jako parametr řetězce dotazu.
 
@@ -1135,7 +1135,7 @@ Pokud slovo nebo frázi, odpovídá více než jednu entitu seznamu, koncový bo
 
 U `when is the best time to go to red rock?`dotazů a aplikace má slovo `red` ve více než jednom seznamu, LUIS rozpoznává všechny entity a vrátí pole entit jako součást odpovědi koncového bodu JSON:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 {
@@ -1173,7 +1173,7 @@ U `when is the best time to go to red rock?`dotazů a aplikace má slovo `red` v
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 Bez `verbose=true` v řetězci dotazu:
 

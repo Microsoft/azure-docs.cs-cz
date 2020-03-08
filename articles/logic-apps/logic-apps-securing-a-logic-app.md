@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
 ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191323"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358765"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -622,7 +622,7 @@ Koncové body HTTP a HTTPS podporují různé druhy ověřování. V závislosti
 
 Pokud je k dispozici možnost [základní](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) , zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Ověřování** | `type` | Ano | Basic | Typ ověřování, který se má použít |
 | **Uživatelské jméno** | `username` | Ano | <*jméno uživatele*>| Uživatelské jméno pro ověřování přístupu k cílovému koncovému bodu služby |
@@ -653,9 +653,9 @@ Když použijete [zabezpečené parametry](#secure-action-parameters) k obsluze 
 
 Pokud je k dispozici možnost [certifikát klienta](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) , zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Ověřování** | `type` | Ano | **Certifikát klienta** <br>nebo <br>`ClientCertificate` | Typ ověřování, který se má použít pro SSL (Secure Sockets Layer) (SSL) klientské certifikáty. I když jsou certifikáty podepsané svým držitelem podporovány, certifikáty podepsané svým držitelem pro SSL nejsou podporovány. |
+| **Ověřování** | `type` | Ano | **Certifikát klienta** <br>or <br>`ClientCertificate` | Typ ověřování, který se má použít pro SSL (Secure Sockets Layer) (SSL) klientské certifikáty. I když jsou certifikáty podepsané svým držitelem podporovány, certifikáty podepsané svým držitelem pro SSL nejsou podporovány. |
 | **PFX** | `pfx` | Ano | <*kódovaný soubor-PFX-Content-content*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) <p><p>Chcete-li převést soubor PFX na formát s kódováním base64, můžete použít PowerShell pomocí následujících kroků: <p>1. Uložte obsah certifikátu do proměnné: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. pomocí funkce `ToBase64String()` převeďte obsah certifikátu a uložte ho do textového souboru: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Heslo** | `password`| Ne | <*hesla-pro-soubor pfx*> | Heslo pro přístup k souboru PFX |
 |||||
@@ -692,14 +692,14 @@ Další informace o zabezpečení služeb pomocí ověřování klientského cer
 
 Pokud je k dispozici možnost [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) , zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Ověřování** | `type` | Ano | **Protokol OAuth pro Active Directory** <br>nebo <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
+| **Ověřování** | `type` | Ano | **Protokol OAuth pro Active Directory** <br>or <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
 | **Dohled** | `authority` | Ne | <*Adresa URL –> vystavitele tokenu* | Adresa URL pro autoritu, která poskytuje ověřovací token. Ve výchozím nastavení je tato hodnota `https://login.windows.net`. |
 | **Tenant** | `tenant` | Ano | <*tenant-ID*> | ID tenanta pro tenanta Azure AD |
 | **Osoby** | `audience` | Ano | <*prostředku k autorizaci*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
 | **ID klienta** | `clientId` | Ano | <*Client-ID*> | ID klienta pro aplikaci požadující autorizaci |
-| **Typ přihlašovacích údajů** | `credentialType` | Ano | Certifikát <br>nebo <br>Tajný kód | Typ přihlašovacích údajů, který klient používá k vyžádání autorizace. Tato vlastnost a hodnota se nezobrazí v základní definici vaší aplikace logiky, ale určuje vlastnosti, které se zobrazí pro vybraný typ přihlašovacích údajů. |
+| **Typ přihlašovacích údajů** | `credentialType` | Ano | Certifikát <br>or <br>Secret | Typ přihlašovacích údajů, který klient používá k vyžádání autorizace. Tato vlastnost a hodnota se nezobrazí v základní definici vaší aplikace logiky, ale určuje vlastnosti, které se zobrazí pro vybraný typ přihlašovacích údajů. |
 | **Tajný kód** | `secret` | Ano, ale jenom pro typ přihlašovacích údajů tajného klíče | <> *tajného klienta* | Tajný klíč klienta pro vyžádání autorizace |
 | **PFX** | `pfx` | Ano, ale pouze pro typ přihlašovacích údajů certifikát | <*kódovaný soubor-PFX-Content-content*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) |
 | **Heslo** | `password` | Ano, ale pouze pro typ přihlašovacích údajů certifikát | <*hesla-pro-soubor pfx*> | Heslo pro přístup k souboru PFX |
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 V aktivační události nebo akci, která podporuje nezpracované ověřování, zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Ověřování** | `type` | Ano | Získání | Typ ověřování, který se má použít |
 | **Hodnota** | `value` | Ano | *autorizace <– hodnota hlavičky*> | Hodnota hlavičky autorizace, která se má použít pro ověřování |
@@ -781,10 +781,10 @@ Pokud je k dispozici možnost [spravovaná identita](../active-directory/managed
 
 1. V aktivační události nebo akci, kde chcete použít spravovanou identitu, zadejte tyto hodnoty vlastností:
 
-   | Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
+   | Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Ověřování** | `type` | Ano | **Spravovaná identita** <br>nebo <br>`ManagedServiceIdentity` | Typ ověřování, který se má použít |
-   | **Spravovaná identita** | `identity` | Ano | **spravovaná identita přiřazená * systému** <br>nebo <br>`SystemAssigned` <p><p>* <*uživatelsky přiřazené-identity-name*> | Spravovaná identita, která se má použít |
+   | **Ověřování** | `type` | Ano | **Spravovaná identita** <br>or <br>`ManagedServiceIdentity` | Typ ověřování, který se má použít |
+   | **Spravovaná identita** | `identity` | Ano | **spravovaná identita přiřazená * systému** <br>or <br>`SystemAssigned` <p><p>* <*uživatelsky přiřazené-identity-name*> | Spravovaná identita, která se má použít |
    | **Osoby** | `audience` | Ano | <*target-Resource-ID*> | ID prostředku pro cílový prostředek, ke kterému chcete získat přístup. <p>`https://storage.azure.com/` například zpřístupňuje přístupové tokeny pro ověřování platné pro všechny účty úložiště. Můžete ale taky zadat adresu URL kořenové služby, například `https://fabrikamstorageaccount.blob.core.windows.net` pro konkrétní účet úložiště. <p>**Poznámka**: vlastnost **cílové skupiny** může být v některých triggerech nebo akcích skrytá. Chcete-li tuto vlastnost zviditelnit, otevřete v aktivační události nebo akci seznam **Přidat nový parametr** a vyberte možnost **cílová skupina**. <p><p>**Důležité**: Ujistěte se, že toto ID cílového prostředku *přesně odpovídá* hodnotě, kterou očekává služba Azure AD, včetně všech požadovaných koncových lomítek. ID prostředku `https://storage.azure.com/` pro všechny účty Azure Blob Storage vyžaduje koncové lomítko. ID prostředku pro konkrétní účet úložiště ale nevyžaduje koncové lomítko. Tato ID prostředků najdete v tématu [služby Azure, které podporují Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 

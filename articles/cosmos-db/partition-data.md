@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754905"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371597"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Dělení a horizontální škálování v Azure Cosmos DB
 
-Tento článek vysvětluje fyzické a logické oddíly v Azure Cosmos DB. Popisuje také osvědčené postupy pro škálování a rozdělení do oddílů. 
+Tento článek vysvětluje fyzické a logické oddíly ve službě Azure Cosmos DB. Popisuje také osvědčené postupy pro škálování a dělení. 
 
 ## <a name="logical-partitions"></a>Logické oddíly
 
-Logický oddíl obsahuje sadu položek, které mají stejný klíč oddílu. Například v kontejneru, kde všechny položky obsahují vlastnost `City`, můžete jako klíč oddílu pro kontejner použít `City`. Skupiny položek, které mají specifické hodnoty pro `City`, například `London`, `Paris` a `NYC`, tvoří různé logické oddíly. Nemusíte se starat o odstranění oddílu, když se odstraní podkladová data.
+Logický oddíl obsahuje sadu položek, které mají stejný klíč oddílu. Například v kontejneru, kde všechny položky obsahují vlastnost `City`, můžete jako klíč oddílu pro kontejner použít `City`. Skupiny položek, které mají specifické hodnoty pro `City`, například `London`, `Paris`a `NYC`, tvoří různé logické oddíly. Nemusíte se starat o odstranění oddílu, když se odstraní podkladová data.
 
 V Azure Cosmos DB je kontejner základní jednotkou škálovatelnosti. Data přidaná do kontejneru a propustnost, kterou zřizujete na kontejneru, jsou automaticky (horizontálně) rozdělená na oddíly v rámci sady logických oddílů. Data a propustnost jsou rozdělené na oddíly na základě klíče oddílu, který zadáte pro kontejner Azure Cosmos. Další informace najdete v tématu [vytvoření kontejneru Azure Cosmos](how-to-create-container.md).
 

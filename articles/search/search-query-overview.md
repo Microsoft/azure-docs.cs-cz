@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793222"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379666"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Typy dotazů a jejich složení v Azure Kognitivní hledání
 
@@ -33,7 +33,7 @@ Následující příklad je reprezentativní dotaz vytvořený v [REST API](http
 }
 ```
 
-+ **`queryType`** nastaví analyzátor, což je buď [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) , který se používá pro pokročilé konstrukce dotazů, jako jsou regulární výrazy, vyhledávání blízkosti, přibližné a hledání pomocí zástupných znaků, pokud chcete pojmenovat několik.
++ **`queryType`** nastaví analyzátor, což je buď [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) , který se používá pro pokročilé konstrukce dotazů, jako jsou regulární výrazy, vyhledávání blízkosti, přibližné a zástupné vyhledávání, pro pojmenování několika málo.
 
 + **`search`** poskytuje kritéria shody, obvykle text, ale často spolu s logickými operátory. Jednou samostatnou *pojmem jsou dotazy* . Citace – uzavřené dotazy s více částmi jsou *klíčové fráze* dotazů. Hledání může být nedefinované, jako v **`search=*`** , ale pravděpodobněji se skládá z výrazů, frází a operátorů, které jsou podobné tomu, co se zobrazuje v příkladu.
 
@@ -151,13 +151,13 @@ Další informace o výsledcích hledání stránkování najdete v článku [ja
 ### <a name="ordering-results"></a>Řazení výsledků
 Při přijímání výsledků vyhledávacího dotazu můžete požádat, aby služba Azure Kognitivní hledání mohla sloužit k výsledkům seřazeným podle hodnot v konkrétním poli. Ve výchozím nastavení služba Azure Kognitivní hledání řadí výsledky hledání na základě pořadí hledání v jednotlivých dokumentech, které je odvozeno od [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Pokud chcete, aby služba Azure Kognitivní hledání vracela výsledky seřazené podle jiné hodnoty než skóre vyhledávání, můžete použít parametr hledání **`orderby`** . Můžete zadat hodnotu parametru **`orderby`** pro zahrnutí názvů polí a volání [**funkce `geo.distance()`** ](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může následovat `asc`, aby označoval, že výsledky jsou požadovány ve vzestupném pořadí, a **`desc`** k označení toho, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
+Pokud chcete, aby služba Azure Kognitivní hledání vracela výsledky seřazené podle jiné hodnoty než skóre vyhledávání, můžete použít parametr hledání **`orderby`** . Můžete zadat hodnotu parametru **`orderby`** pro zahrnutí názvů polí a volání [**funkce`geo.distance()`** ](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může následovat `asc`, aby označoval, že výsledky jsou požadovány ve vzestupném pořadí, a **`desc`** k označení toho, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
 
 
 ### <a name="hit-highlighting"></a>Zvýrazňování položek
 Ve službě Azure Kognitivní hledání je zdůraznění přesné části výsledků hledání, které odpovídají hledanému dotazu, snadno pomocí parametrů **`highlight`** , **`highlightPreTag`** a **`highlightPostTag`** . Můžete určit, která *vyhledávací* pole by měla mít zvýrazněný text a zároveň zadat přesné řetězcové značky, které se připojí k začátku a konci odpovídajícího textu, který Azure kognitivní hledání vrátí.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Jak funguje fulltextové vyhledávání v Azure Kognitivní hledání (architektura analýzy dotazů)](search-lucene-query-architecture.md)
 + [Průzkumník vyhledávání](search-explorer.md)

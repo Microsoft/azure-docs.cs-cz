@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/21/2020
 ms.author: raynew
 ms.openlocfilehash: b7ace4f470a4e054be5d7f5945fc3e9c4f7d0810
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444243"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362649"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -55,7 +55,7 @@ Role Windows Serveru | Nepovolujte Active Directory Domain Services; Internetov�
 Zásady skupiny| – Zabraňte přístupu k příkazovému řádku. <br/> – Zabraňte přístup k nástrojům pro úpravu registru. <br/> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br/> -Zapnout provádění skriptu. <br/> - další [informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Ujistěte se, že:<br/><br/> – Nemáte existující výchozí web. <br/> -Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br/> – Už nemusíte na portu 443 naslouchat předem existující web nebo aplikaci.<br/>
 Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware)
-Typ IP adresy | Statická
+Typ IP adresy | Static
 Porty | 443 použito pro orchestraci řídicích kanálů<br/>9443 pro přenos dat
 
 ## <a name="replicated-machines"></a>Replikované počítače
@@ -69,7 +69,7 @@ Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném po�
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky Azure](#azure-vm-requirements).
 Zatížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném počítači. [Další informace](https://aka.ms/asr_workload).
-Windows Server 2019 | Podporováno z [kumulativní aktualizace 34](https://support.microsoft.com/help/4490016) (verze 9,22 služby mobility) a vyšší.
+Windows Server. 2019 | Podporováno z [kumulativní aktualizace 34](https://support.microsoft.com/help/4490016) (verze 9,22 služby mobility) a vyšší.
 Windows Server 2016 64 – bit | Podporováno pro jádro serveru, server s desktopovým prostředím.
 Windows Server 2012 R2/Windows Server 2012 | Podporuje se.
 Windows Server 2008 R2 s aktualizací SP1 a vyšší. | Podporuje se.<br/><br/> Od agenta služby mobility verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 2008 R2 s aktualizací SP1 nebo novějším. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
@@ -138,8 +138,8 @@ SUSE Linux Enterprise Server 15 a 15 SP1 | 9,32 | Podporují se všechny [jádra
 Systémy souborů | ext3, ext4, XFS
 Správce svazků | – LVM je podporováno.<br/> –/Boot v LVM se podporuje z [kumulativní aktualizace 31](https://support.microsoft.com/help/4478871/) (verze 9,20 služby mobility) a vyšší. Není podporovaný ve starších verzích služby mobility.<br/> -Více disků s operačním systémem se nepodporuje.
 Zařízení úložiště paravirtualizovanými | Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
-Blokové vstupně-výstupní operace s více frontami | Nepodporuje se.
-Fyzické servery s řadičem úložiště HP CCISS | Nepodporuje se.
+Blokové vstupně-výstupní operace s více frontami | Není podporováno.
+Fyzické servery s řadičem úložiště HP CCISS | Není podporováno.
 Konvence pojmenování zařízení/přípojných bodů | Název zařízení nebo přípojný bod by měl být jedinečný.<br/> Zajistěte, aby v žádném ze dvou zařízení/přípojných bodů nebyly rozlišována velká a malá písmena. Například pojmenování zařízení pro stejný virtuální počítač jako *zařízení1* a *zařízení1* se nepodporuje.
 Adresáře | Pokud používáte verzi služby mobility, která je starší než verze 9,20 (vydaná v [kumulativní aktualizaci 31](https://support.microsoft.com/help/4478871/)), platí tato omezení:<br/><br/> – Tyto adresáře (Pokud se nastavují jako samostatné oddíly/souborové systémy) musí být na stejném disku s operačním systémem na zdrojovém serveru:/(root),/Boot,/usr,/usr/local,/var,/etc.</br> – Adresář/Boot by měl být na disku a nesmí být svazkem LVM.<br/><br/> Z verze 9,20 a vyšší se tato omezení nevztahují. 
 Spouštěcí adresář | – Spouštěcí disky nesmí být ve formátu oddílu GPT. Toto je omezení architektury Azure. Disky GPT jsou podporovány jako datové disky.<br/><br/> Víc spouštěcích disků na virtuálním počítači se nepodporuje.<br/><br/> –/Boot na svazku LVM na více než jednom disku se nepodporuje.<br/> – Počítač bez spouštěcího disku nejde replikovat.
@@ -152,7 +152,7 @@ BTRFS | BTRFS se podporuje z [kumulativní aktualizace 34](https://support.micro
 **Akce** | **Podrobnosti**
 --- | ---
 Změna velikosti disku na replikovaném virtuálním počítači | Podporováno ve zdrojovém virtuálním počítači před převzetím služeb při selhání přímo ve vlastnostech virtuálního počítače. Není nutné zakázat nebo znovu povolit replikaci.<br/><br/> Pokud po převzetí služeb při selhání změníte zdrojový virtuální počítač, změny se nezachytí.<br/><br/> Pokud změníte velikost disku na virtuálním počítači Azure po převzetí služeb při selhání, Site Recovery při navrácení služeb po obnovení vytvoří nový virtuální počítač s aktualizacemi.
-Přidat disk na replikovaný virtuální počítač | Nepodporuje se.<br/> Zakažte replikaci pro virtuální počítač, přidejte disk a pak znovu povolte replikaci.
+Přidat disk na replikovaný virtuální počítač | Není podporováno.<br/> Zakažte replikaci pro virtuální počítač, přidejte disk a pak znovu povolte replikaci.
 
 ## <a name="network"></a>Síť
 
@@ -174,7 +174,7 @@ Síť s více síťovými kartami Host/Server | Ano.
 
 **Komponenta** | **Podporuje se**
 --- | ---
-ExpressRoute Azure | Ano
+Azure ExpressRoute | Ano
 ILB | Ano
 ELB | Ano
 Azure Traffic Manager | Ano
@@ -185,7 +185,7 @@ Zachovat zdrojovou IP adresu | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
 Urychlení sítě | Ne
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 **Komponenta** | **Podporuje se**
 --- | ---
 Dynamický disk | Disk s operačním systémem musí být základní disk. <br/><br/>Datové disky můžou být dynamické disky.
@@ -222,7 +222,7 @@ Spuštění hosta/serveru EFI/UEFI | – Podporováno pro Windows Server 2012 ne
 |Offline osazení        |   Ne      |
 | Azure Data Box | Ne
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Úložiště Azure
 
 **Komponenta** | **Podporuje se**
 --- | ---
@@ -261,9 +261,9 @@ Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, 
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 8 192 GB při replikaci na spravovaný disk (9,26 verze a vyšší)<br></br>Až 4 095 GB při replikaci do účtu úložiště| Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
-Sdílené VHD | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán. |
+Sdílené VHD | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Disk FC | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+BitLocker | Není podporováno. | Před povolením replikace pro počítač musí být BitLocker zakázán. |
 název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
 
 ## <a name="resource-group-limits"></a>Omezení skupiny prostředků

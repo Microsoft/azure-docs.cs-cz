@@ -13,11 +13,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928150"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387421"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do a z Oracle místně pomocí Azure Data Factory
 
@@ -41,7 +41,7 @@ Data z následujících úložišť dat můžete kopírovat *do databáze Oracle
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Data Factory podporuje připojení k místním zdrojům Oracle pomocí brány Správa dat. Další informace o Správa dat bráně najdete v tématu [Správa dat Gateway](data-factory-data-management-gateway.md) . Podrobné pokyny, jak nastavit bránu v datovém kanálu pro přesun dat, najdete v tématu [přesun dat z místního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md).
 
@@ -76,13 +76,13 @@ Tento konektor Oracle podporuje dvě verze ovladačů:
 
 Pokud použijete Průvodce kopírováním k vytvoření kanálu kopírování, typ ovladače se určí znovu. Ovladač společnosti Microsoft se používá ve výchozím nastavení, pokud verze brány starší než verze 2,7 nebo jako jímku vyberete Oracle.
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 Můžete vytvořit kanál s aktivitou kopírování. Kanál přesouvá data do nebo z místní databáze Oracle pomocí různých nástrojů nebo rozhraní API.
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít Průvodce kopírováním. Rychlý návod k vytvoření kanálu pomocí Průvodce Kopírování dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete použít také jeden z následujících nástrojů: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager šablona**, rozhraní **.NET API**nebo **REST API**. Najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování.
+K vytvoření kanálu můžete použít také jeden z následujících nástrojů: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager šablona**, rozhraní **.NET API**nebo **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, proveďte následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -99,7 +99,7 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 
 Následující tabulka popisuje elementy JSON, které jsou specifické pro propojenou službu Oracle:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | type |Vlastnost **Type** musí být nastavená na **OnPremisesOracle**. |Ano |
 | driverType | Určete, který ovladač má být použit ke zkopírování dat z databáze Oracle nebo do ní. Povolené hodnoty jsou **Microsoft** a **ODP** (výchozí). Podrobnosti o ovladači najdete v části [podporovaná verze a instalace](#supported-versions-and-installation) . | Ne |
@@ -150,7 +150,7 @@ Oddíly souboru JSON datové sady, jako je například struktura, dostupnost a z
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **Oracle** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky v databázi Oracle, na kterou odkazuje propojená služba. |Ne (Pokud je zadáno **oracleReaderQuery** nebo **OracleSource** ) |
 
@@ -169,7 +169,7 @@ Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se
 
 V části aktivita kopírování, pokud je zdrojem **OracleSource** typ, jsou v oddílu **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu jazyka SQL. Například "vybrat \* z **myTable**". <br/><br/>Pokud není zadaný, spustí se tento příkaz SQL: "vybrat \* z **myTable**". |Ne<br />(Pokud je zadaný **TableName** **objektu DataSet** ) |
 
@@ -177,9 +177,9 @@ V části aktivita kopírování, pokud je zdrojem **OracleSource** typ, jsou v 
 
 **OracleSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu. |**timespan**<br/><br/> Příklad: 00:30:00 (30 minut) |Ne |
+| writeBatchTimeout |Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu. |**TimeSpan**<br/><br/> Příklad: 00:30:00 (30 minut) |Ne |
 | writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne hodnoty **writeBatchSize**. |Integer (počet řádků) |Ne (výchozí: 100) |
 | sqlWriterCleanupScript |Určuje dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. |Příkaz dotazu. |Ne |
 | sliceIdentifierColumnName |Určuje název sloupce pro aktivitu kopírování, která se má vyplnit automaticky generovaným identifikátorem řezu. Hodnota pro **sliceIdentifierColumnName** se používá k vyčištění dat určitého řezu při opakovaném spuštění. |Název sloupce sloupce, který má datový typ **Binary (32)** . |Ne |
@@ -550,7 +550,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 ```
 
 
-## <a name="troubleshooting-tips"></a>Tipy poradce při potížích
+## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
 ### <a name="problem-1-net-framework-data-provider"></a>Problém 1: .NET Framework Zprostředkovatel dat
 
@@ -563,7 +563,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 * Zprostředkovatel dat .NET Framework pro Oracle nebyla nainstalována.
 * Zprostředkovatel dat .NET Framework pro Oracle byl nainstalován do .NET Framework 2,0 a nenalezne se ve složce .NET Framework 4,0.
 
-**Řešení**
+**Rozlišení**
 
 * Pokud jste nenainstalovali poskytovatele .NET pro Oracle, [nainstalujte ho](https://www.oracle.com/technetwork/topics/dotnet/downloads/)a pak zkuste scénář zopakovat.
 * Pokud se zobrazí chybová zpráva i po instalaci poskytovatele, proveďte následující kroky:
@@ -578,7 +578,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Řešení**
+**Rozlišení**
 
 Je možné, že budete muset upravit řetězec dotazu v aktivitě kopírování na základě toho, jak jsou data ve vaší databázi Oracle nakonfigurovaná. Tady je příklad (pomocí funkce **TO_DATE** ):
 
@@ -597,15 +597,15 @@ Když přesunete data z Oracle, použijí se z datového typu Oracle na typ .NET
 | Datový typ Oracle | .NET Framework datový typ |
 | --- | --- |
 | BFILE |Byte[] |
-| BLOB |Byte[]<br/>(podporované jenom v Oracle 10g a novějších verzích při použití ovladače Microsoftu) |
+| PŘÍZNAKY |Byte[]<br/>(podporované jenom v Oracle 10g a novějších verzích při použití ovladače Microsoftu) |
 | CHAR |Řetězec |
 | CLOB |Řetězec |
-| DATE (Datum) |Datum a čas |
+| DATE (Datum) |DateTime |
 | FLOAT |Decimal, String (Pokud přesnost > 28) |
 | INTEGER |Decimal, String (Pokud přesnost > 28) |
 | INTERVAL OD ROKU DO MĚSÍCE |Datový typ Int32 |
 | DRUHÝ DEN INTERVALU |TimeSpan |
-| DLOUHÝ |Řetězec |
+| DLOUHOU |Řetězec |
 | LONG RAW |Byte[] |
 | NCHAR |Řetězec |
 | NCLOB |Řetězec |
@@ -613,9 +613,9 @@ Když přesunete data z Oracle, použijí se z datového typu Oracle na typ .NET
 | NVARCHAR2 |Řetězec |
 | ZÍSKÁNÍ |Byte[] |
 | ROWID |Řetězec |
-| TIMESTAMP |Datum a čas |
-| TIMESTAMP WITH LOCAL TIME ZONE |Datum a čas |
-| TIMESTAMP WITH TIME ZONE |Datum a čas |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
 | UNSIGNED INTEGER |Číslo |
 | VARCHAR2 |Řetězec |
 | XML |Řetězec |

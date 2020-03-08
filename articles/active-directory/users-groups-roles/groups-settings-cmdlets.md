@@ -15,11 +15,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90669ebde9537fdf597fccd621caa54deaed68a6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206448"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376614"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 

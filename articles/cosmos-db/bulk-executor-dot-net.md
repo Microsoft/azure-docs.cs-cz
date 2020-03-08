@@ -10,11 +10,11 @@ ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365495"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Použití knihovny hromadného prováděcího modulu .NET k provádění hromadných operací v Azure Cosmos DB
 
@@ -100,17 +100,17 @@ Aplikace "BulkImportSample" generuje náhodné dokumenty a hromadně je importuj
    ```
    **Metoda BulkImportAsync přijímá následující parametry:**
    
-   |**Parametr**  |**Popis** |
+   |**Ukazatele**  |**Popis** |
    |---------|---------|
    |enableUpsert    |   Příznak, který povolí operace Upsert v dokumentech. Pokud dokument s daným ID již existuje, je aktualizován. Ve výchozím nastavení je nastaveno na false.      |
    |disableAutomaticIdGeneration    |    Příznak, který chcete zakázat automatické generování ID. Ve výchozím nastavení, je nastavena na hodnotu true.     |
    |maxConcurrencyPerPartitionKeyRange    | Maximální stupeň souběžnosti na rozsah klíče oddílu a nastavení na hodnotu null způsobí, že knihovna použije výchozí hodnotu 20. |
    |maxInMemorySortingBatchSize     |  Maximální počet dokumentů, které jsou získány z enumerátoru dokumentu, který se předává volání rozhraní API v každé fázi. Pro fázi řazení v paměti, která se před hromadným importem stane, nastavení tohoto parametru na hodnotu null způsobí, že knihovna použije výchozí minimální hodnotu (Documents. Count, 1000000).       |
-   |CancellationToken    |    Token zrušení pro řádné ukončení operace hromadného importu.     |
+   |cancellationToken    |    Token zrušení pro řádné ukončení operace hromadného importu.     |
 
    **Definice objektu odpovědi pro hromadné importy** Výsledek volání rozhraní API hromadného importu obsahuje následující atributy:
 
-   |**Parametr**  |**Popis**  |
+   |**Ukazatele**  |**Popis**  |
    |---------|---------|
    |NumberOfDocumentsImported (dlouhý)   |  Celkový počet dokumentů, které byly úspěšně naimportovány z celkového počtu dokumentů dodaných do volání rozhraní API hromadného importu.       |
    |TotalRequestUnitsConsumed (Double)   |   Jednotky celkový počet žádostí (RU) využívaný hromadného importu volání rozhraní API.      |
@@ -151,15 +151,15 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
    ```  
    **Metoda BulkUpdateAsync přijímá následující parametry:**
 
-   |**Parametr**  |**Popis** |
+   |**Ukazatele**  |**Popis** |
    |---------|---------|
    |maxConcurrencyPerPartitionKeyRange    |   Maximální stupeň souběžnosti na rozsah klíče oddílu, nastavením tohoto parametru na hodnotu null umožní knihovně používat výchozí hodnotu (20).   |
    |maxInMemorySortingBatchSize    |    Maximální počet položek aktualizace načtených z výčtu položek aktualizace předaných do volání rozhraní API v každé fázi. Pro fázi řazení v paměti, která se stane před hromadnou aktualizací, nastavení tohoto parametru na hodnotu null způsobí, že knihovna použije výchozí minimální hodnotu (updateItems. Count, 1000000).     |
-   | CancellationToken|Token zrušení pro řádné ukončení operace hromadné aktualizace. |
+   | cancellationToken|Token zrušení pro řádné ukončení operace hromadné aktualizace. |
 
    **Definice objektu odpovědi na hromadnou aktualizaci** Výsledek volání rozhraní API hromadné aktualizace obsahuje následující atributy:
 
-   |**Parametr**  |**Popis** |
+   |**Ukazatele**  |**Popis** |
    |---------|---------|
    |NumberOfDocumentsUpdated (dlouhý)    |   Počet dokumentů, které byly úspěšně aktualizovány z celkových dokumentů dodaných do volání hromadné aktualizace rozhraní API.      |
    |TotalRequestUnitsConsumed (Double)   |    Celkový počet jednotek žádosti (ru) spotřebované voláním rozhraní API hromadné aktualizace.    |

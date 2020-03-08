@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4431031e5e96c71c6488b57cc570271d763bb764
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224272"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372427"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru
 
@@ -53,7 +53,7 @@ Když použijete spravované identity pro prostředky Azure, může kód získat
 
 V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nemáte nainstalovaný, stáhněte si ho [odtud](https://docs.microsoft.com/powershell/azure/overview). 
 
-1.  Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**. 
+1.  Na portálu přejděte na **Virtuální počítače**, přejděte na svůj virtuální počítač s Windows a v části **Přehled** klikněte na **Připojit**. 
 2.  Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
 3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci **PowerShell**. 
 4.  Pomocí rutiny Invoke-WebRequest vytvořte požadavek na koncový bod místní spravované identity pro prostředky Azure, abyste získali přístupový token pro Azure Resource Manager.
@@ -92,7 +92,7 @@ V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nem�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak pomocí spravované identity přiřazené systémem získat přístup k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru:
+V tomto rychlém startu jste se dozvěděli, jak pomocí spravované identity přiřazené systémem získat přístup k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru najdete tady:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

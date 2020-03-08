@@ -6,11 +6,11 @@ ms.subservice: dsc
 ms.date: 09/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: a4a46837e366caf2860aa0d6597ec7aebc94905a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373525"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu Azure Automation
 
@@ -39,7 +39,7 @@ Podrobnosti o kompilaci najdete v tématu [Konfigurace požadovaného stavu pomo
 1. Pokud konfigurace nemá žádné parametry, budete vyzváni k potvrzení, jestli ho chcete zkompilovat. Pokud má konfigurace parametry, otevře se okno **Konfigurace kompilace** , ve kterém můžete zadat hodnoty parametrů.
 1. Stránka úlohy kompilace je otevřena, abyste mohli sledovat stav úlohy kompilace. Na této stránce můžete také sledovat konfigurace uzlů (konfigurační dokumenty MOF), které jsou umístěny na serveru Pull konfigurace stavu Azure Automation.
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 K zahájení kompilace prostředí Windows PowerShell můžete použít rutinu [Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-azautomationdsccompilationjob) . Následující vzorový kód zahájí kompilaci konfigurace DSC s názvem SampleConfig.
 
@@ -103,7 +103,7 @@ Na portálu můžete zadat hodnoty parametrů po kliknutí na **kompilovat**.
 
 ![Parametry kompilace konfigurace](./media/automation-dsc-compile/DSC_compiling_1.png)
 
-#### <a name="azure-powershell"></a>Azure Powershell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 Prostředí PowerShell vyžaduje parametry v [zatřiďovací](/powershell/module/microsoft.powershell.core/about/about_hash_tables)tabulce, kde klíč odpovídá názvu parametru a hodnota se rovná hodnotě parametru.
 

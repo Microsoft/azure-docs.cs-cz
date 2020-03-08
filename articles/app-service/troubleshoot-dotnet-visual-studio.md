@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
 ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227899"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373786"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
 V tomto kurzu se dozvíte, jak používat nástroje sady Visual Studio k ladění aplikace v [App Service](https://go.microsoft.com/fwlink/?LinkId=529714), spuštění v [režimu ladění](https://docs.microsoft.com/visualstudio/debugger/) vzdáleně nebo zobrazení protokolů aplikací a protokolů webového serveru.
 
-Dozvíte se:
+Naučíte se:
 
 * Které funkce správy aplikací jsou k dispozici v sadě Visual Studio.
 * Jak používat vzdálené zobrazení sady Visual Studio k provádění rychlých změn ve vzdálené aplikaci.

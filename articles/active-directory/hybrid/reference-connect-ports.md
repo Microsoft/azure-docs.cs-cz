@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/02/2017
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f365a8325fc027d8770287208f91d164166fcbc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 611937a709152823ddc1b88b1a0befe4161217cd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024326"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376117"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Porty a protokoly, které vyžaduje hybridní identita
 Následující dokument představuje technické informace o požadovaných portech a protokolech pro implementaci řešení hybridní identity. Použijte následující obrázek a přečtěte si odpovídající tabulku.
@@ -51,7 +51,7 @@ Tato tabulka popisuje porty a protokoly, které jsou vyžadovány pro komunikaci
 | HTTP |80 (TCP) |Slouží ke stažení seznamů CRL (seznamy odvolaných certifikátů) k ověření certifikátů SSL. |
 | HTTPS |443 (TCP) |Používá se k synchronizaci s Azure AD. |
 
-Seznam adres URL a IP adres, které musíte otevřít v bráně firewall, najdete v tématu [adresy URL a rozsahy IP adres Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Seznam adres URL a IP adres, které musíte otevřít v bráně firewall, najdete v tématu [adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) a [řešení potíží s Azure AD Connect připojením](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard).
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>Tabulka 3 – Azure AD Connect a AD FS federační servery/WAP
 V této tabulce jsou popsány porty a protokoly, které jsou vyžadovány pro komunikaci mezi serverem Azure AD Connect a servery AD FS federačního/WAP.  

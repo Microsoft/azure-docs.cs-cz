@@ -8,11 +8,11 @@ ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
 ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667036"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365336"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -31,7 +31,7 @@ Praktické přehled o použití řešení Azure SQL Analytics a typické scéná
 
 Azure SQL Analytics je pouze cloudové řešení monitorování, které podporuje streamování diagnostické telemetrie pro všechny vaše databáze SQL Azure. Vzhledem k tomu, že Azure SQL Analytics nepoužívá agenty pro připojení k Azure Monitor, nepodporuje monitorování SQL Server hostovaných místně nebo na virtuálních počítačích.
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | [Nastavení diagnostiky](../platform/diagnostic-settings.md) | **Ano** | Data metriky a protokolu Azure se odesílají do protokolů Azure Monitor přímo pomocí Azure. |
 | [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Azure Monitor nečtou data z účtu úložiště. |
@@ -46,15 +46,15 @@ Níže uvedená tabulka obsahuje přehled podporovaných možností pro dvě ver
 | Možnost Azure SQL Analytics | Popis | Podpora pro jednotlivé a sdružené databáze a elastické fondy | Podpora databáze spravované instance a instance |
 | --- | ------- | ----- | ----- |
 | Prostředek podle typu | Perspektivy, která vrátí všechny prostředky, které jsou monitorovány. | Ano | Ano |
-| Přehledy | Poskytuje hierarchické procházení na užitečné přehledy o výkonu. | Ano | Ano |
+| Insights | Poskytuje hierarchické procházení na užitečné přehledy o výkonu. | Ano | Ano |
 | Chyby | Obsahuje hierarchické procházení na chyby SQL, k nimž došlo v databázích. | Ano | Ano |
-| Časové limity | Poskytuje hierarchické procházení do vypršení časových limitů SQL, který se stalo v databázích. | Ano | Ne |
+| Vypršení časových limitů | Poskytuje hierarchické procházení do vypršení časových limitů SQL, který se stalo v databázích. | Ano | Ne |
 | Blokování | Poskytuje hierarchické procházení do SQL blokování, který se stalo v databázích. | Ano | Ne |
 | Databáze čeká | Poskytuje hierarchické procházení do SQL statistiky čekání na úrovni databáze. Obsahuje souhrnné informace o celkový čas čekání a čekací doba čekání typu. |Ano | Ne |
 | Doba trvání dotazu | Poskytuje hierarchické procházení do statistiky provádění dotazu, jako je doba trvání dotazu, využití procesoru, využití datových v/v, využití protokolovacích v/v. | Ano | Ano |
 | Dotaz čeká | Poskytuje hierarchické procházení do statistiky čekání dotazu podle kategorie čekání. | Ano | Ano |
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 Pomocí postupu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md) přidejte Azure SQL Analytics (Preview) do pracovního prostoru Log Analytics.
 

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 712626345e10ab0e4290ac91b0f121ff6960303e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396818"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
 

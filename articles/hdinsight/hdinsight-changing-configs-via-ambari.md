@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150120"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386928"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optimalizace konfigurací clusteru HDInsight pomocí Apache Ambari
 
@@ -180,7 +180,7 @@ K dispozici jsou tyto typy komprese:
 | GZIP | GZIP | DEFLATE | .gz | Ne |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Ano |
 | LZO | Lzop | LZO | .lzo | Ano, pokud je indexovaný |
-| Snappy | neuvedeno | Snappy | Snappy | Ne |
+| Snappy | NEUŽÍVÁ SE. | Snappy | Snappy | Ne |
 
 Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, jinak se vytvoří velmi málo mapovačů. Pokud jsou vstupní data text, `bzip2` nejlepší možností. V případě formátu ORC je přichycení nejrychlejší možnost komprese.
 
@@ -266,7 +266,7 @@ Následující části popisují další optimalizace týkající se podregistru
 
 Výchozím typem spojení v podregistru je *náhodné spojení*. V podregistru speciální mapovače přečtou vstup a vygeneruje dvojici klíč/hodnota JOIN k mezilehlému souboru. Hadoop seřadí a sloučí tyto páry v náhodně připravené fázi. Tato fáze náhodného zpracování je náročná. Výběr správného spojení na základě vašich dat může významně zlepšit výkon.
 
-| Typ spojení | Kdy | Použití | Nastavení podregistru | Komentáře |
+| Typ spojení | Kdy | Jak | Nastavení podregistru | Komentáře |
 | -- | -- | -- | -- | -- |
 | Náhodně připojit | <ul><li>Výchozí volba</li><li>Vždy funguje</li></ul> | <ul><li>Čtení z části jedné z tabulek</li><li>Intervaly a řazení podle klávesy JOIN</li><li>Každé omezení pošle jednu sadu.</li><li>Spojení se provádí na straně snížení</li></ul> | Není potřeba žádné významné nastavení podregistru | Funguje kdykoli |
 | Připojit k mapě | <ul><li>Jedna tabulka se může vejít do paměti.</li></ul> | <ul><li>Přečte malou tabulku do tabulky hash paměti.</li><li>Streamování prostřednictvím části velkého souboru</li><li>Spojí každý záznam z zatřiďovací tabulky.</li><li>Spojení jsou pouze mapovačem.</li></ul> | `hive.auto.confvert.join=true` | Velmi rychlé, ale omezené |
@@ -428,7 +428,7 @@ Velikost setSize paměťového úložiště je definována parametry `hbase.regi
 
 ### <a name="set-memstore-local-allocation-buffer"></a>Nastavit místní vyrovnávací paměť pro přidělení setSize paměťového úložiště
 
-Využití vyrovnávací paměti pro místní přidělování setSize paměťového úložiště je určeno vlastností `hbase.hregion.memstore.mslab.enabled`. Pokud je povoleno (true), zabrání se tím fragmentaci haldy během operace silného zápisu. Výchozí hodnota je true.
+Využití vyrovnávací paměti pro místní přidělování setSize paměťového úložiště je určeno vlastností `hbase.hregion.memstore.mslab.enabled`. Pokud je povoleno (true), zabrání se tím fragmentaci haldy během operace silného zápisu. Výchozí hodnotou je hodnota true.
 
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 

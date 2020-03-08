@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980258"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364549"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s výstupy Azure Stream Analytics
 
@@ -52,7 +52,7 @@ Velké časové hodnoty prvků dočasných dotazů může přispět ke zpožděn
 
 Proto používejte podle vlastního uvážení při návrhu dotazu Stream Analytics. Pokud používáte velké časové okno (více než několik hodin až sedm dní) pro dočasné prvky v syntaxi dotazu úlohy by mohlo způsobit zpoždění v první výstupní při spuštění nebo restartování úlohy.  
 
-Jeden omezení rizik pro tento druh první výstupní zpoždění je pomocí technik paralelizace dotazů (dělení dat), nebo přidat víc jednotek streamování, pro zvýšení propustnosti, dokud úloha zachytí.  Další informace najdete v tématu [klíčových faktorů při vytváření úlohy Stream Analytics](stream-analytics-concepts-checkpoint-replay.md)
+Jeden omezení rizik pro tento druh první výstupní zpoždění je pomocí technik paralelizace dotazů (dělení dat), nebo přidat víc jednotek streamování, pro zvýšení propustnosti, dokud úloha zachytí.  Další informace najdete v tématu [týkajícím se vytváření úloh Stream Analytics](stream-analytics-concepts-checkpoint-replay.md) .
 
 Těchto faktorů, které ovlivňují včasnosti první výstup, který je generován:
 
@@ -74,15 +74,15 @@ Během normálního úlohy Pokud zjistíte, že výstupu úlohy se opožďuje za
 - Určuje, zda je omezené nadřazený zdroj
 - Určuje, zda zpracování logiky v dotazu je náročné na výpočetní prostředky
 
-Chcete-li zobrazit tyto podrobnosti najdete na webu Azure Portal vyberte úlohu streamování a vyberte **diagram úloh**. Pro každý vstupní je na oddíl nevyřízených položek událostí metriku. Pokud metrika nevyřízených položek událostí narůstá, je indikátor, že jsou omezeny systémové prostředky. Potenciálně, která je z důvodu omezení výstupní jímky nebo vysoké využití procesoru. Další informace o použití diagramu úloh najdete v tématu [řízené daty ladění pomocí diagramu úloh](stream-analytics-job-diagram-with-metrics.md).
+Chcete-li tyto podrobnosti zobrazit, vyberte v Azure Portal úlohu streamování a vyberte **diagram úlohy**. Pro každý vstupní je na oddíl nevyřízených položek událostí metriku. Pokud metrika nevyřízených položek událostí narůstá, je indikátor, že jsou omezeny systémové prostředky. Potenciálně, která je z důvodu omezení výstupní jímky nebo vysoké využití procesoru. Další informace o používání diagramu úloh naleznete v tématu [ladění řízené daty pomocí diagramu úloh](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Upozornění na porušení klíče s výstupem Azure SQL Database
 
-Při konfiguraci Azure SQL database jako výstup do úlohy Stream Analytics hromadně vloží záznamy do cílové tabulky. Obecně platí, Azure stream analytics zaručuje [alespoň jednou](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) do výstupní jímky jeden stále [dosáhnout přesně-jednou]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) SQL výstup, pokud tabulka SQL má jedinečné omezení definovaný.
+Při konfiguraci Azure SQL database jako výstup do úlohy Stream Analytics hromadně vloží záznamy do cílové tabulky. Obecně platí, že Azure Stream Analytics garantuje [alespoň jedno doručení](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) do výstupní jímky, takže když tabulka SQL má definováno jedinečné omezení, může pro výstup SQL stále [dosáhnout přesného doručení]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) .
 
 Omezení jedinečných klíčů jsou nastaveny na tabulku SQL, a během existují duplicitní záznamy nebude vložen do tabulky SQL, Azure Stream Analytics odebere duplicitní záznam. Rozdělí data do dávek a rekurzivně vkládání dávek, dokud nebude nalezen jeden duplicitní záznam. Pokud úloha streamování se značný počet duplicitních řádků, toto rozdělení a vložit procesu má ignorovat duplicity jednu po druhé, což je méně efektivní a časově náročné. Pokud se zobrazí několik klíčových porušení upozornění v protokolu aktivit za poslední hodinu, je pravděpodobné, že výstup SQL zpomalení celý projekt.
 
-Chcete-li vyřešit tento problém, měli byste [nastavit index]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , který způsobuje narušení klíče když zapnete možnost IGNORE_DUP_KEY. Povolením této možnosti umožní duplicitní hodnoty mají ignorovat během operace hromadného vložení SQL a SQL Azure jednoduše vytvoří upozornění místo chyby. Azure Stream Analytics už nevytváří chyby porušení primárního klíče.
+Chcete-li tento problém vyřešit, je nutné [nakonfigurovat index]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , který způsobuje porušení klíče, povolením možnosti IGNORE_DUP_KEY. Povolením této možnosti umožní duplicitní hodnoty mají ignorovat během operace hromadného vložení SQL a SQL Azure jednoduše vytvoří upozornění místo chyby. Azure Stream Analytics už nevytváří chyby porušení primárního klíče.
 
 Při konfiguraci IGNORE_DUP_KEY pro několik typů indexů, mějte na paměti následující poznámky:
 
@@ -94,13 +94,13 @@ Při konfiguraci IGNORE_DUP_KEY pro několik typů indexů, mějte na paměti n�
 Při použití původní úrovně kompatibility (1,0) Azure Stream Analytics použít ke změně názvů sloupců malými písmeny. Toto chování bylo opraveno v novějších úrovních kompatibility. Aby bylo možné zachovat případ, doporučujeme zákazníkům, aby přešli na úroveň kompatibility 1,1 a novější. Další informace o [úrovni kompatibility pro úlohy Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)najdete v.
 
 
-## <a name="get-help"></a>Získání nápovědy
+## <a name="get-help"></a>Podpora
 
-Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

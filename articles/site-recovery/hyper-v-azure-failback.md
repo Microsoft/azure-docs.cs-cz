@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498181"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362646"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Spuštění navrácení služeb po obnovení pro virtuální počítače Hyper-V
 

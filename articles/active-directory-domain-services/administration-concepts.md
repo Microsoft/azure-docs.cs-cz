@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378455"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Koncepce správy uživatelských účtů, hesel a správy v Azure Active Directory Domain Services
 
@@ -80,9 +80,9 @@ V Azure služba AD DS jsou dostupné výkony a funkce založené na SKU. SKU vyb
 
 | Název SKU   | Maximální počet objektů | Frekvence zálohování | Maximální počet odchozích vztahů důvěryhodnosti doménové struktury |
 |------------|----------------------|------------------|----|
-| Úroveň Standard   | Neomezený počet            | Každých 7 dní     | 0  |
-| Enterprise | Neomezený počet            | Každé 3 dny     | 5  |
-| Premium    | Neomezený počet            | Denně            | 10 |
+| Standard   | Unlimited            | Každých 7 dní     | 0  |
+| Enterprise | Unlimited            | Každé 3 dny     | 5  |
+| Premium    | Unlimited            | Denně            | 10 |
 
 Před těmito SKU služby Azure služba AD DS byly použity fakturační modely založené na počtu objektů (uživatelských a počítačových účtů) ve spravované doméně Azure služba AD DS. V závislosti na počtu objektů ve spravované doméně už neexistují variabilní ceny.
 

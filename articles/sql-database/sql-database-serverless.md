@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
 ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131969"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359835"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 
@@ -67,7 +67,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 |:---|:---|:---|
 |**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. |  Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
 | **Úsilí řízení výkonu** |Malým|Výkonnější|
-|**Škálování na výpočetní výkon**|Automaticky|Ručně|
+|**Škálování na výpočetní výkon**|Automatické|Ručně|
 |**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Okamžité|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
 
@@ -157,15 +157,15 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
 
    |Název cíle služby|Úroveň služeb|Generování hardwaru|Maximální počet virtuální jádra|
    |---|---|---|---|
-   |GP_S_Gen5_1|Pro obecné účely|Gen5|1|
-   |GP_S_Gen5_2|Pro obecné účely|Gen5|2|
-   |GP_S_Gen5_4|Pro obecné účely|Gen5|4|
-   |GP_S_Gen5_6|Pro obecné účely|Gen5|6|
-   |GP_S_Gen5_8|Pro obecné účely|Gen5|8|
-   |GP_S_Gen5_10|Pro obecné účely|Gen5|10|
-   |GP_S_Gen5_12|Pro obecné účely|Gen5|12|
-   |GP_S_Gen5_14|Pro obecné účely|Gen5|14|
-   |GP_S_Gen5_16|Pro obecné účely|Gen5|16|
+   |GP_S_Gen5_1|Obecné použití|Gen5|1|
+   |GP_S_Gen5_2|Obecné použití|Gen5|2|
+   |GP_S_Gen5_4|Obecné použití|Gen5|4|
+   |GP_S_Gen5_6|Obecné použití|Gen5|6|
+   |GP_S_Gen5_8|Obecné použití|Gen5|8|
+   |GP_S_Gen5_10|Obecné použití|Gen5|10|
+   |GP_S_Gen5_12|Obecné použití|Gen5|12|
+   |GP_S_Gen5_14|Obecné použití|Gen5|14|
+   |GP_S_Gen5_16|Obecné použití|Gen5|16|
 
 2. Volitelně můžete zadat minimální virtuální jádra a prodlevu při pauze pro změnu jejich výchozích hodnot. V následující tabulce jsou uvedeny dostupné hodnoty pro tyto parametry.
 

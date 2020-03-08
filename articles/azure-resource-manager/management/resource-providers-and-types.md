@@ -4,11 +4,11 @@ description: Popisuje poskytovatele prostředků, kteří podporují Správce pr
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478588"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372229"
 ---
 # <a name="azure-resource-providers-and-types"></a>Poskytovatelé a typy prostředků Azure
 
@@ -29,11 +29,11 @@ Tyto kroky můžete provádět pomocí Azure Portal, Azure PowerShell nebo rozhr
 
 Seznam, který mapuje poskytovatele prostředků na služby Azure, najdete v tématu [poskytovatelé prostředků pro služby Azure](azure-services-resource-providers.md).
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>portál Azure
 
 Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro vaše předplatné:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce Azure Portal vyberte **všechny služby**.
 
     ![vybrat odběry](./media/resource-providers-and-types/select-all-services.png)
@@ -50,11 +50,11 @@ Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro 
 
 Chcete-li zobrazit informace o konkrétním poskytovateli prostředků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce Azure Portal vyberte **všechny služby**.
 3. V poli **všechny služby** zadejte **Průzkumník prostředků**a potom vyberte **Průzkumník prostředků**.
 
-    ![vybrat všechny služby](./media/resource-providers-and-types/select-resource-explorer.png)
+    ![Vybrat všechny služby](./media/resource-providers-and-types/select-resource-explorer.png)
 
 4. Rozbalte položku **poskytovatelé** a vyberte šipku doprava.
 

@@ -11,11 +11,11 @@ ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206601"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365339"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditováním SQL Database
 
@@ -258,9 +258,9 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 
     > [!IMPORTANT]
     > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
-    > - USA – východ
-    > - USA – středojih
-    > - USA – západ 2
+    > - Východní USA
+    > - Střed USA – jih
+    > - Západní USA 2
 
 
 ## <a id="subheading-7"></a>Správa Azure SQL Server a auditování databáze pomocí Azure PowerShell

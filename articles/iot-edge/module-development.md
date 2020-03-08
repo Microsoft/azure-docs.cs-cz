@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548624"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358695"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Vývoj vlastních modulů IoT Edge
 
@@ -31,9 +31,9 @@ Centrum IoT Edge poskytuje dva hlavní funkce: proxy serveru do služby IoT Hub 
 
 IoT Hub vidí instancí modulu analogicky k zařízení, v tom smyslu, že:
 
-* má dvojčete modulu, který je samostatný a izolované od [dvojče zařízení](../iot-hub/iot-hub-devguide-device-twins.md) a další modul dvojčata zařízení;
-* můžete odeslat [zpráv typu zařízení cloud](../iot-hub/iot-hub-devguide-messaging.md);
-* může přijímat [přímé metody](../iot-hub/iot-hub-devguide-direct-methods.md) zaměřené na svoji identitu.
+* má nevlákenný modul, který je odlišný a izolovaný od [vlákna zařízení](../iot-hub/iot-hub-devguide-device-twins.md) a druhý modul je v tomto zařízení vyzdvojený.
+* může posílat [zprávy ze zařízení do cloudu](../iot-hub/iot-hub-devguide-messaging.md);
+* může přijímat [přímé metody](../iot-hub/iot-hub-devguide-direct-methods.md) zaměřené na svou identitu.
 
 V současné době moduly nemůžou přijímat zprávy z cloudu na zařízení nebo používat funkci pro nahrání souborů.
 
@@ -75,7 +75,7 @@ IoT Edge podporuje různé operační systémy, architektury zařízení a vývo
 
 Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zařízení AMD64 a ARM32 Linux.
 
-| Vývojářský jazyk | Vývojářské nástroje |
+| Jazyk vývoje | Vývojářské nástroje |
 | -------------------- | ----------------- |
 | C | Visual Studio Code<br>Visual Studio 2017/2019 |
 | C# | Visual Studio Code<br>Visual Studio 2017/2019 |
@@ -90,7 +90,7 @@ Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zař�
 
 Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zařízení AMD64 s Windows.
 
-| Vývojářský jazyk | Vývojářské nástroje |
+| Jazyk vývoje | Vývojářské nástroje |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (žádné možnosti ladění)<br>Visual Studio 2017/2019 |

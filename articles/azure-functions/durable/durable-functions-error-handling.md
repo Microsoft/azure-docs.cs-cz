@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047243"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371910"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
 
@@ -21,7 +21,7 @@ Veškerá výjimka, která je vyvolána ve funkci aktivity, je zařazena zpět d
 
 Zvažte například následující funkci Orchestrator, která přenáší prostředky z jednoho účtu na jiný:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -62,7 +62,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 > [!NOTE]
 > Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -106,7 +106,7 @@ Pokud se první volání funkce **CreditAccount** nepovede, funkce Orchestrator 
 
 Při volání funkcí aktivity nebo funkcí dílčí orchestrace můžete zadat zásady automatického opakování. Následující příklad se pokusí zavolat funkci až třikrát a počkat 5 sekund mezi jednotlivými pokusy:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -125,7 +125,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 > [!NOTE]
 > Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -158,7 +158,7 @@ Volání funkce Activity v předchozím příkladu přijímá parametr pro konfi
 
 Je možné, že budete chtít opustit volání funkce ve funkci Orchestrator, pokud dokončení trvá příliš dlouho. Vhodným způsobem, jak to provést dnes, je vytvoření [trvalého časovače](durable-functions-timers.md) pomocí `context.CreateTimer` (.NET) nebo `context.df.createTimer` (JavaScript) ve spojení s `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript), jako v následujícím příkladu:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -191,7 +191,7 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 > [!NOTE]
 > Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

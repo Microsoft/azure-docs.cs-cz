@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226480"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372457"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění sady Runbook v Azure Automation
 

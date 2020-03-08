@@ -4,11 +4,11 @@ description: Popisuje postup zálohování a obnovení virtuálních počítač�
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527990"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363714"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -35,7 +35,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) v knihovně Azure.
+Přečtěte si referenční informace k [rutině](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) **AZ. RecoveryServices** v knihovně Azure.
 
 ## <a name="set-up-and-register"></a>Nastavení a registrace
 
@@ -149,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-nebo
+Nebo
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -369,7 +369,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 ### <a name="stop-protection"></a>Zastavení ochrany
 
-#### <a name="retain-data"></a>Zachování dat
+#### <a name="retain-data"></a>Zachovat data
 
 Pokud si uživatel přeje zastavit ochranu, může použít rutinu [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS. Tím se zastaví naplánovaná zálohování, ale data zálohovaná, dokud se teď neuchovávají trvale.
 
@@ -378,7 +378,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Odstranění zálohovaných dat
+#### <a name="delete-backup-data"></a>Odstranit data zálohy
 
 Pokud chcete uložená zálohovaná data z trezoru úplně odebrat, stačí přidat příznak/RemoveRecoveryPoints nebo přepnout na [příkaz "Zakázat" ochranu](#retain-data).
 
@@ -417,7 +417,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení.
+### <a name="choose-a-recovery-point"></a>Zvolit bod obnovení
 
 Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
@@ -792,7 +792,7 @@ Kromě obnovování disků můžete také obnovit jednotlivé soubory ze zálohy
 Základní kroky pro obnovení souboru ze zálohy virtuálního počítače Azure jsou:
 
 * Vyberte virtuální počítač.
-* Zvolte bod obnovení.
+* Zvolit bod obnovení
 * Připojit disky bodu obnovení
 * Zkopírujte požadované soubory.
 * Odpojení disku
@@ -806,7 +806,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení.
+### <a name="choose-a-recovery-point"></a>Zvolit bod obnovení
 
 Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 

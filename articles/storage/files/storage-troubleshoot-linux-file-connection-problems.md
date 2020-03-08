@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544935"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361893"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
@@ -208,7 +208,7 @@ Na platformách systému Linux/UNIX se příkaz **CP-p** nezdařil, pokud si jin
 
 Příznak vynucení **f** ve výsledku příkazu COPYFILE spouští **CP-p-f** v systému UNIX. Tento příkaz také nedokáže zachovat časové razítko souboru, který nevlastníte.
 
-### <a name="workaround"></a>Alternativní řešení
+### <a name="workaround"></a>Alternativní řešení:
 
 Pro kopírování souborů použijte uživatele účtu úložiště:
 
@@ -282,12 +282,12 @@ Tento problém s opětovným připojením v jádru Linuxu je teď opravený v r�
 
 Tyto změny se však ještě nemusely přenést do všech distribucí Linuxu. Pokud používáte oblíbenou distribuci pro Linux, můžete se podívat na téma [použití souborů Azure se systémem Linux](storage-how-to-use-files-linux.md) k zobrazení, která verze distribuce má potřebné změny jádra.
 
-### <a name="workaround"></a>Alternativní řešení
+### <a name="workaround"></a>Alternativní řešení:
 
 Tento problém můžete obejít tím, že zadáte trvalé připojení. Trvalé připojení přinutí klienta, aby počkal na navázání nebo explicitní přerušení připojení. S jeho využitím můžete zabránit chybám způsobeným vypršením časového limitu sítě. Toto alternativní řešení však může způsobit nekonečné čekání. Buďte připraveni v případě potřeby zastavit připojení.
 
 Pokud nemůžete upgradovat na nejnovější verze jádra, můžete tento problém obejít tím, že ve sdílené složce Azure budete uchovávat soubor, do kterého budete každých maximálně 30 sekund zapisovat. Musí se jednat o operaci zápisu, jako je přepsání vytvořeného nebo upraveného data souboru. Jinak můžete dostávat výsledky uložené v mezipaměti a vaše operace nemusí aktivovat opětovné připojení.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu.
 
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.

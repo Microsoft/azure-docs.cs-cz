@@ -7,11 +7,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 5657be0dbaeb46f8f899a9b4a2f8ba9b4fe9ebaa
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461398"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373989"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Přidání nabízených oznámení do aplikace Xamarin.Android
 
@@ -23,7 +23,7 @@ V tomto kurzu přidáte nabízená oznámení do projektu [Xamarin. Android pro 
 
 Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce se serverovou sadou .NET back-end SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) průvodce.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz vyžaduje nastavení:
 

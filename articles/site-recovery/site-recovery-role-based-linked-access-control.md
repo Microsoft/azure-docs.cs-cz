@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083766"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362686"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu Site Recovery pomocí řízení přístupu na základě role (RBAC)
 
@@ -43,30 +43,30 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 
 | **Typ prostředku** | **Model nasazení** | **Udělen** |
 | --- | --- | --- |
-| Compute | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
+| Výpočty | Správce prostředků | Microsoft. COMPUTE/availabilitySets/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Write |
 |  |  | Microsoft. COMPUTE/virtualMachines/DELETE |
-|  | Classic | Microsoft.ClassicCompute/domainNames/read |
+|  | Klasický | Microsoft.ClassicCompute/domainNames/read |
 |  |  | Microsoft.ClassicCompute/domainNames/write |
 |  |  | Microsoft.ClassicCompute/domainNames/delete |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Read |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Write |
 |  |  | Microsoft. ClassicCompute/virtualMachines/DELETE |
-| Síť | Resource Manager | Microsoft.Network/networkInterfaces/read |
+| Síť | Správce prostředků | Microsoft.Network/networkInterfaces/read |
 |  |  | Microsoft.Network/networkInterfaces/write |
 |  |  | Microsoft.Network/networkInterfaces/delete |
 |  |  | Microsoft.Network/networkInterfaces/join/action |
 |  |  | Microsoft.Network/virtualNetworks/read |
 |  |  | Microsoft.Network/virtualNetworks/subnets/read |
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
-|  | Classic | Microsoft.ClassicNetwork/virtualNetworks/read |
+|  | Klasický | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| Storage | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| Úložiště | Správce prostředků | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft. Storage/storageAccounts/klíče listkey/Action |
-|  | Classic | Microsoft.ClassicStorage/storageAccounts/read |
+|  | Klasický | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
-| Skupina prostředků | Resource Manager | Microsoft. Resources/nasazení/* |
+| Skupina prostředků | Správce prostředků | Microsoft. Resources/nasazení/* |
 |  |  | Microsoft. Resources/Subscriptions/resourceGroups/Read |
 
 Zvažte použití [předdefinovaných rolí](../role-based-access-control/built-in-roles.md) Přispěvatel virtuálních počítačů a klasického přispěvatele virtuálních počítačů pro modely nasazení Správce prostředků a Classic.

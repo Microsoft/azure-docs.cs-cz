@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/9/2019
 ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976294"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363547"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Postup konfigurace parametrů serveru v Azure Database for MariaDB pomocí Azure Portal
 
@@ -21,13 +21,13 @@ Azure Database for MariaDB podporuje konfiguraci některých parametrů serveru.
 
 1. Přihlaste se k Azure Portal a potom vyhledejte server Azure Database for MariaDB.
 2. V části **Nastavení** klikněte na **parametry serveru** a otevřete stránku parametry serveru pro Azure Database for MariaDB Server.
-![Stránka parametry Azure portálový server](./media/howto-server-parameters/azure-portal-server-parameters.png)
-3. Vyhledejte nastavení, které je potřeba upravit. Zkontrolujte **popis** sloupce, které vám pomohou pochopit účel a povolených hodnot.
-![Zobrazení výčtu rozevírací seznam](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Klikněte na tlačítko **Uložit** uložte provedené změny.
+Stránka parametrů serveru ![Azure Portal](./media/howto-server-parameters/azure-portal-server-parameters.png)
+3. Vyhledejte nastavení, které je potřeba upravit. Přečtěte si sloupec **Description (popis** ), abyste pochopili účel a povolené hodnoty.
+](./media/howto-server-parameters/3-toggle_parameter.png) rozevírací seznam ![výčtu
+4. Kliknutím na **Uložit** uložte změny.
 ![Uložit nebo zahodit změny](./media/howto-server-parameters/4-save_parameters.png)
-5. Pokud jste uložili nové hodnoty pro parametry, můžete se vždycky vrátit vše zpět na výchozí hodnoty tak, že vyberete **Resetovat vše na výchozí**.
-![Resetovat vše na výchozí](./media/howto-server-parameters/5-reset_parameters.png)
+5. Pokud jste uložili nové hodnoty pro parametry, můžete kdykoli vrátit zpět všechny výchozí hodnoty výběrem možnosti **Obnovit vše na výchozí**.
+![obnovit výchozí](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>Seznam konfigurovatelných server parametrů
 
@@ -35,12 +35,12 @@ Seznam parametrů podporovaný server s neustále roste. Na kartě parametrů se
 
 ## <a name="non-configurable-server-parameters"></a>Parametry Nekonfigurovatelné serveru
 
-InnoDB vyrovnávací paměti fondu a maximální počet připojení nejsou konfigurovatelné a vázané na vaše [cenovou úroveň](concepts-pricing-tiers.md).
+InnoDB fondu vyrovnávací paměti a maximální počet připojení se nedají konfigurovat a připojovat se k vaší [cenové úrovni](concepts-pricing-tiers.md).
 
-|**Cenová úroveň**| **počet virtuálních jader:**|**Fond vyrovnávacích pamětí InnoDB (MB)**|
+|**Cenová úroveň**| **vCore (celkem)**|**Fond vyrovnávacích pamětí InnoDB (MB)**|
 |---|---|---|
-|Úroveň Basic| 1\. místo| 1024|
-|Úroveň Basic| 2| 2560|
+|Basic| 1| 1024|
+|Basic| 2| 2560|
 |Obecné použití| 2| 3584|
 |Obecné použití| 4| 7680|
 |Obecné použití| 8| 15360|
@@ -55,11 +55,11 @@ InnoDB vyrovnávací paměti fondu a maximální počet připojení nejsou konfi
 
 Tyto další server parametry nejsou konfigurovatelné v systému:
 
-|**Parametr**|**Pevná hodnota**|
+|**Ukazatele**|**Pevná hodnota**|
 | :------------------------ | :-------- |
 |innodb_file_per_table v úrovni Basic|OFF|
-|innodb_flush_log_at_trx_commit|1\. místo|
-|sync_binlog|1\. místo|
+|innodb_flush_log_at_trx_commit|1|
+|sync_binlog|1|
 |innodb_log_file_size|512MB|
 
 Další parametry serveru, které zde nejsou uvedeny, jsou nastaveny na jejich MariaDB výchozí výchozí hodnoty pro [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/).
@@ -68,10 +68,10 @@ Další parametry serveru, které zde nejsou uvedeny, jsou nastaveny na jejich M
 
 ### <a name="populating-the-time-zone-tables"></a>Naplnění tabulek časové pásmo
 
-Časové pásmo tabulky na vašem serveru je možné naplnit s voláním `az_load_timezone` uloženou proceduru z některého nástroje, například na příkazovém řádku MySQL nebo MySQL Workbench.
+Tabulky časových pásem na vašem serveru se dají naplnit voláním `az_load_timezone` uložené procedury z nástroje, jako je třeba příkazový řádek MySQL nebo MySQL Workbench.
 
 > [!NOTE]
-> Pokud používáte `az_load_timezone` příkaz z aplikace MySQL Workbench, budete muset nejprve vypnout režim bezpečného aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`.
+> Pokud používáte příkaz `az_load_timezone` z MySQL Workbench, možná budete muset nejdřív vypnout režim bezpečné aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -87,13 +87,13 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>Nastavení na globální úrovni časové pásmo
 
-Lze nastavit na globální úrovni časové pásmo **parametry serveru** stránky na webu Azure Portal. Níže Nastaví globální časovém pásmu na hodnotu "US / Tichomoří".
+Časové pásmo globální úrovně lze nastavit na stránce **parametry serveru** v Azure Portal. Níže Nastaví globální časovém pásmu na hodnotu "US / Tichomoří".
 
 ![Parametr časového pásma set](./media/howto-server-parameters/timezone.png)
 
 ### <a name="setting-the-session-level-time-zone"></a>Nastavení časového pásma úrovni relace
 
-Relace spuštěním můžete nastavit úroveň časového pásma `SET time_zone` z některého nástroje, například na příkazovém řádku MySQL nebo MySQL Workbench. Následující příklad nastaví časové pásmo **US / Tichomoří** časové pásmo.
+Časové pásmo úrovně relace můžete nastavit spuštěním příkazu `SET time_zone` z nástroje, jako je třeba příkazový řádek MySQL nebo MySQL Workbench. Následující příklad nastaví časové pásmo na časové pásmo **USA/Tichomoří** .
 
 ```sql
 SET time_zone = 'US/Pacific';

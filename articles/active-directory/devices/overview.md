@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 594f0ed55b5ce5c31e87fd2011f3bc1522a12380
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249040"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378290"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 

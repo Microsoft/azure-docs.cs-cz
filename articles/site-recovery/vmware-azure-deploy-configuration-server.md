@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75376286"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362601"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -111,7 +111,7 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 
 ### <a name="configure-settings"></a>Konfigurace nastavení
 
-1. V Průvodci správou konfiguračního serveru vyberte **nastavení připojení**. V rozevíracích seznamech nejdřív Vyberte síťovou kartu, kterou používá integrovaný procesový Server pro zjišťování a nabízenou instalaci služby mobility na zdrojové počítače. Pak vyberte síťovou kartu, kterou konfigurační server používá pro připojení k Azure. Vyberte **Uložit**. Po dokončení konfigurace není možné toto nastavení změnit. Neměňte IP adresu konfiguračního serveru. Ujistěte se, že IP adresa přiřazená ke konfiguračnímu serveru je statická IP adresa a ne IP adresa DHCP.
+1. V Průvodci správou konfiguračního serveru vyberte **nastavení připojení**. V rozevíracích seznamech nejdřív Vyberte síťovou kartu, kterou používá integrovaný procesový Server pro zjišťování a nabízenou instalaci služby mobility na zdrojové počítače. Pak vyberte síťovou kartu, kterou konfigurační server používá pro připojení k Azure. Vyberte **Save** (Uložit). Po dokončení konfigurace není možné toto nastavení změnit. Neměňte IP adresu konfiguračního serveru. Ujistěte se, že IP adresa přiřazená ke konfiguračnímu serveru je statická IP adresa a ne IP adresa DHCP.
 2. V části **vybrat Recovery Services trezor**se přihlaste k Microsoft Azure s přihlašovacími údaji použitými v kroku 6 [registrace konfiguračního serveru pomocí služeb Azure Site Recovery Services](#register-the-configuration-server-with-azure-site-recovery-services).
 3. Po přihlášení vyberte své předplatné Azure a příslušnou skupinu prostředků a trezor.
 

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666733"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358829"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
 

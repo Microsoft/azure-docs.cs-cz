@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391039"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování protokolů platformy Azure v pracovním prostoru Log Analytics v Azure Monitor
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek popisuje, jak shromažďovat protokoly prostředků v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty monitorování shromážděnými v protokolech Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitor funkcí, jako jsou výstrahy a. vizualizace. 

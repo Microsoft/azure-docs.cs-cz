@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910482"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362712"
 ---
 # <a name="service-updates-in-site-recovery"></a>Aktualizace služby v Site Recovery
 
@@ -48,7 +48,7 @@ Site Recovery upozorňuje na komponenty s vypršenou platností (nebo blížíc�
 
 E-mailová oznámení se odesílají takto.
 
-**čas** | **Frekvence**
+**Interval** | **Frekvence**
 --- | ---
 60 dní před vypršením platnosti součásti | Jednou týdně
 Dalších 53 dní | Jednou týdně
@@ -139,6 +139,6 @@ Příklad v tabulce ukazuje, jak to funguje.
 2. Nainstalujte nejnovějšího poskytovatele na serveru VMM, který spravuje sekundární lokalitu pro obnovení. Pokud je v clusteru nasazený nástroj VMM, nainstalujte poskytovatele na všechny uzly clusteru.
 3. Po aktualizaci lokality pro obnovení nainstalujte zprostředkovatele na server VMM, který spravuje primární lokalitu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?product=site-recovery) Sledujte nové aktualizace a vydání.

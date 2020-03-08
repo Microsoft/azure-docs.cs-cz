@@ -7,19 +7,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433356"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372184"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Řešení potíží s Azure cache pro Redis na straně serveru
 
 Tato část popisuje problémy, ke kterým dochází z důvodu podmínky v mezipaměti Azure pro Redis nebo virtuálních počítačů, které ji hostují.
 
-- [Tlak na paměť na serveru Redis](#memory-pressure-on-redis-server)
+- [Zatížení paměti na serveru Redis](#memory-pressure-on-redis-server)
 - [Vysoké využití procesoru nebo zatížení serveru](#high-cpu-usage-or-server-load)
-- [Dlouho běžící příkazy](#long-running-commands)
+- [Dlouhotrvající příkazy](#long-running-commands)
 - [Omezení šířky pásma na straně serveru](#server-side-bandwidth-limitation)
 
 > [!NOTE]

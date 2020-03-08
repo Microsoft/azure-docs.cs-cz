@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367755"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390794"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -73,25 +73,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner řeči.
 
-# <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
+# <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
 | Převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
 | Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
-# <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
+# <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
 | Převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
-# <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
@@ -110,25 +110,25 @@ Základní a paměť odpovídají nastavení `--cpus` a `--memory`, které se po
 
 Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Registry.
 
-# <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
+# <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
 | Kontejner | Úložiště |
 |-----------|------------|
 | Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
 | Kontejner | Úložiště |
 |-----------|------------|
 | Custom Speech na text | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
-# <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
+# <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
 | Kontejner | Úložiště |
 |-----------|------------|
 | Převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
 | Kontejner | Úložiště |
 |-----------|------------|
@@ -140,7 +140,7 @@ Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Regi
 
 ### <a name="docker-pull-for-the-speech-containers"></a>Vyžádání obsahu Docker pro kontejnery řeči
 
-# <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
+# <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Funkce Docker Pull pro kontejner převodu řeči na text
 
@@ -169,7 +169,7 @@ Následující značka je příkladem formátu:
 
 Pro všechna podporovaná národní prostředí kontejneru **převodů řeči** na text se podívejte na [tagy pro obrázky typu převod řeči na text](../containers/container-image-tags.md#speech-to-text).
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Vyžádání obsahu Docker pro kontejner Custom Speech-to-text
 
@@ -182,7 +182,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 > [!NOTE]
 > `locale` a `voice` pro vlastní kontejnery řeči jsou určeny vlastním modelem ingestované kontejnerem.
 
-# <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
+# <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Vyžádání obsahu Docker pro kontejner převodu textu na řeč
 
@@ -214,7 +214,7 @@ U všech podporovaných národních prostředí a odpovídajících hlasů konte
 > [!IMPORTANT]
 > Při vytváření standardního příspěvku http *pro převod textu na řeč* vyžaduje zpráva [SSML (Speech promarkup Language)](speech-synthesis-markup.md) prvek `voice` s atributem `name`. Hodnota je odpovídající národní prostředí a hlas kontejneru, označovaný také jako ["krátký název"](language-support.md#standard-voices). Například značka `latest` by měla název hlasu `en-US-JessaRUS`.
 
-# <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Vyžádání obsahu Docker pro vlastní kontejner převodu textu na řeč
 
@@ -240,7 +240,7 @@ Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použij
 
 Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat `{Endpoint_URI}` a `{API_Key}` hodnoty, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) . K dispozici jsou také další [příklady](speech-container-configuration.md#example-docker-run-commands) `docker run` příkazu.
 
-# <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
+# <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
 Chcete-li spustit kontejner převodu *řeči na text* , spusťte následující příkaz `docker run`.
 
@@ -259,7 +259,7 @@ Tento příkaz:
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
 Kontejner *Custom Speech-to-text* spoléhá na vlastní model řeči. Vlastní model se musí [vyškolet](how-to-custom-speech-train-model.md) pomocí [vlastního portálu pro rozpoznávání řeči](https://speech.microsoft.com/customspeech).
 
@@ -311,7 +311,7 @@ Tento příkaz:
 * Pokud se vlastní model stáhl dříve, `ModelId` se ignoruje.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
-# <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
+# <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
 Chcete-li spustit kontejner převodu *textu na řeč* , spusťte následující příkaz `docker run`.
 
@@ -330,7 +330,7 @@ Tento příkaz:
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
-# <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
 Vlastní kontejner převodu *textu na řeč* spoléhá na vlastní hlasový model. Vlastní model se musí [vyškolet](how-to-custom-voice-create-voice.md) pomocí [vlastního hlasového portálu](https://aka.ms/custom-voice-portal). Pro spuštění kontejneru je vyžadováno **ID vlastního modelu** hlasu. Najdete ho na stránce **školení** na vlastním hlasovém portálu. Z vlastního hlasového portálu přejděte na stránku **školení** a vyberte model.
 <br>

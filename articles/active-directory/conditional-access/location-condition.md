@@ -13,11 +13,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380301"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377578"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Jaká je podmínka umístění v Azure Active Directory podmíněný přístup? 
 

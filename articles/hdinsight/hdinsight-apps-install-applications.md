@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
 ms.openlocfilehash: a7d83d2bc418e62bc2858e2a7fb35d2113640c83
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271978"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389477"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací třetích stran Apache Hadoop v Azure HDInsight
 
@@ -43,7 +43,7 @@ Následující seznam uvádí publikované aplikace:
 
 Pokyny uvedené v tomto článku se týkají webu Azure Portal. Můžete také exportovat šablonu Azure Resource Manageru z portálu nebo získejte kopii souboru šablony Resource Manageru od dodavatelů a pomocí Azure Powershellu a rozhraní příkazového řádku Azure Classic k nasazení šablony.  Přečtěte si téma [vytvoření Apache Hadoop clusterů ve službě HDInsight pomocí šablon Správce prostředků](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete instalovat aplikace HDInsight na stávající cluster HDInsight, musí mít cluster služby HDInsight. Chcete-li jeden vytvořit, prostudujte si část [Tvorba clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). Aplikace HDInsight můžete také nainstalovat při vytváření clusteru HDInsight.
 
 ## <a name="install-applications-to-existing-clusters"></a>Instalace aplikací do existujících clusterů
@@ -85,8 +85,8 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
 
     |Vlastnost | Popis |
     |---|---|
-    |App name (Název aplikace) |Název aplikace |
-    |Status |Stav aplikace |
+    |Název aplikace |Název aplikace |
+    |Stav |Stav aplikace |
     |Stránku |Adresa URL webové aplikace, kterou jste nasadili na hraničním uzlu. Přihlašovací údaje jsou stejné jako přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster. |
     |Koncový bod SSH |Pomocí SSH se můžete připojit k hraničnímu uzlu. Přihlašovací údaje SSH jsou stejné jako přihlašovací údaje uživatele SSH, které jste nakonfigurovali pro cluster. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
     |Popis | Popis aplikace |
@@ -98,7 +98,7 @@ K hraničnímu uzlu se můžete připojit pomocí protokolu HTTP a SSH. Informac
 
 Přihlašovací údaje koncového bodu protokolu HTTP jsou přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster HDInsight. Přihlašovací údaje koncového bodu SSH jsou přihlašovací údaje SSH, které jste nakonfigurovali pro cluster HDInsight.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Řešení problémů
 Viz článek [Řešení potíží instalace](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation).
 
 ## <a name="next-steps"></a>Další kroky

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516682"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365580"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Nasazení služby StorSimple Device Manager pro virtuální pole StorSimple
 
@@ -73,7 +73,7 @@ Chcete-li odstranit službu, proveďte následující kroky.
 1. Přejděte na **Všechny prostředky**. Vyhledejte službu StorSimple Device Manager. Vyberte službu, kterou chcete odstranit.
    
     ![Vyberte službu, kterou chcete odstranit.](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Pokud se chcete ujistit, že nejsou k této službě připojená žádná zařízení, přečtěte si řídicí panel služby. Pokud v této službě nejsou registrována žádná zařízení, zobrazí se také zpráva banner. Klikněte na tlačítko **odstranit**.
+2. Pokud se chcete ujistit, že nejsou k této službě připojená žádná zařízení, přečtěte si řídicí panel služby. Pokud v této službě nejsou registrována žádná zařízení, zobrazí se také zpráva banner. Klikněte na **Odstranit**.
    
     ![Odstranit službu](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
@@ -94,7 +94,7 @@ Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorS
 K získání registračního klíče služby proveďte následující kroky.
 
 #### <a name="to-get-the-service-registration-key"></a>Získání registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **klíče**pro **správu &gt;**  .
+1. V okně **StorSimple Device Manager** otevřete okno **&gt;** **klíče**pro správu.
    
    ![Okno Klíče](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. V okně **klíče** se zobrazí registrační klíč služby. Zkopírujte registrační klíč pomocí ikony kopírování. 
@@ -107,7 +107,7 @@ Registrační klíč služby bude nutné znovu vygenerovat, pokud je nutné prov
 K opětovnému vygenerování registračního klíče služby proveďte následující kroky.
 
 #### <a name="to-regenerate-the-service-registration-key"></a>Opětovné vygenerování registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **klíče**pro **správu &gt;**  .
+1. V okně **StorSimple Device Manager** otevřete okno **&gt;** **klíče**pro správu.
    
    ![Okno Klíče](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. V okně **klíče** klikněte na **znovu vygenerovat**.
@@ -122,7 +122,7 @@ K opětovnému vygenerování registračního klíče služby proveďte následu
    
    Zkopírujte tento klíč a uložte ho pro registraci všech nových zařízení s touto službou.
 
-## <a name="next-steps"></a>Další postup
-* Naučte se, jak [začít s StorSimple](storsimple-virtual-array-deploy1-portal-prep.md) virtuálním polem.
+## <a name="next-steps"></a>Další kroky
+* Naučte se [, jak začít s StorSimple](storsimple-virtual-array-deploy1-portal-prep.md) virtuálním polem.
 * Naučte se [spravovat zařízení StorSimple](storsimple-ova-web-ui-admin.md).
 

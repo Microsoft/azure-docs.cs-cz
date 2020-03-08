@@ -4,11 +4,11 @@ description: Možnosti ověřování privátního služby Azure Container Regist
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 5459ac29c1264b18404cb2863b9d4209907ac029
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152939"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361507"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Ověřování pomocí služby Azure Container Registry
 
@@ -71,7 +71,7 @@ Každý registr kontejnerů obsahuje účet uživatele správce, který je ve v�
 > Účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce mezi více uživateli. Všichni uživatelé, kteří se ověřují pomocí účtu správce, se zobrazí jako jednotliví uživatelé s přístupem push a pull do registru. Změna nebo zakázání tohoto účtu zakáže přístup k registru pro všechny uživatele, kteří používají své přihlašovací údaje. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu.
 >
 
-Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete po zobrazení výzvy k zadání základního ověřování do registru předat uživatelské jméno a heslo k příkazu `docker login`. Například:
+Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete po zobrazení výzvy k zadání základního ověřování do registru předat uživatelské jméno a heslo k příkazu `docker login`. Příklad:
 
 ```
 docker login myregistry.azurecr.io 

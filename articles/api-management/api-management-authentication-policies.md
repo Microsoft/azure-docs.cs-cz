@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120824"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374342"
 ---
 # <a name="api-management-authentication-policies"></a>API Management zásady ověřování
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -56,8 +56,8 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 |Název|Popis|Požadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|uživatelské jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Ano|NEUŽÍVÁ SE.|
-|heslo|Určuje heslo základního přihlašovacího údaje.|Ano|NEUŽÍVÁ SE.|
+|username jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Ano|Není k dispozici|
+|password|Určuje heslo základního přihlašovacího údaje.|Ano|Není k dispozici|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
@@ -96,8 +96,8 @@ V tomto ukázkovém klientském certifikátu je identifikován název prostředk
   
 |Název|Popis|Požadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Kryptografický otisk pro klientský certifikát|Musí být přítomen buď `thumbprint`, nebo `certificate-id`.|NEUŽÍVÁ SE.|  
-|ID certifikátu|Název prostředku certifikátu.|Musí být přítomen buď `thumbprint`, nebo `certificate-id`.|NEUŽÍVÁ SE.|  
+|thumbprint|Kryptografický otisk pro klientský certifikát|Musí být přítomen buď `thumbprint`, nebo `certificate-id`.|Není k dispozici|  
+|ID certifikátu|Název prostředku certifikátu.|Musí být přítomen buď `thumbprint`, nebo `certificate-id`.|Není k dispozici|  
   
 ### <a name="usage"></a>Využití  
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.  
@@ -155,8 +155,8 @@ V tomto ukázkovém klientském certifikátu je identifikován název prostředk
   
 |Název|Popis|Požadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Ano|NEUŽÍVÁ SE.|  
-|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string`. |Ne|NEUŽÍVÁ SE.|  
+|resource|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Ano|Není k dispozici|  
+|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string`. |Ne|Není k dispozici|  
 |ignorovat – chyba|Datového. Pokud se nastaví na `true`, kanál zásad se bude dál spouštět i v případě, že se nezíská přístupový token.|Ne|false|  
   
 ### <a name="usage"></a>Využití  

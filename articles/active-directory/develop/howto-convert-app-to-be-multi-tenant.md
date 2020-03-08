@@ -14,12 +14,12 @@ ms.date: 02/19/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 33116039d5e47b95322ffafb4e8f4eef31bd84cf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467755"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375643"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postupy: přihlášení libovolného Azure Active Directory uživatele pomocí vzoru aplikace pro více tenantů
 
@@ -115,7 +115,7 @@ Některé oprávnění může zasílat běžný uživatel, zatímco jiné vyžad
 
 Oprávnění pouze pro aplikace vždy vyžadují souhlas správce tenanta. Pokud vaše aplikace požaduje oprávnění pouze pro přístup k aplikacím a uživatel se pokusí přihlásit k aplikaci, zobrazí se chybová zpráva oznamující, že uživatel nemůže souhlasit.
 
-Určitá delegovaná oprávnění také vyžadují souhlas správce tenanta. Například možnost vracet se zpátky do služby Azure AD, protože přihlášený uživatel vyžaduje souhlas správce tenanta. Stejně jako oprávnění pouze pro aplikace, pokud se běžný uživatel pokusí přihlásit k aplikaci, která žádá o delegované oprávnění, které vyžaduje souhlas správce, aplikace obdrží chybu. Bez ohledu na to, jestli oprávnění vyžaduje souhlas správce, se určí vývojář, který prostředek publikoval, a najdete ho v dokumentaci k prostředku. Dokumentace oprávnění pro [Graph API služby Azure AD][AAD-Graph-Perm-Scopes] a [rozhraní API Microsoft Graph][MSFT-Graph-permission-scopes] určují, která oprávnění vyžadují souhlas správce.
+Určitá delegovaná oprávnění také vyžadují souhlas správce tenanta. Například možnost vracet se zpátky do služby Azure AD, protože přihlášený uživatel vyžaduje souhlas správce tenanta. Stejně jako oprávnění pouze pro aplikace, pokud se běžný uživatel pokusí přihlásit k aplikaci, která žádá o delegované oprávnění, které vyžaduje souhlas správce, aplikace obdrží chybu. Bez ohledu na to, jestli oprávnění vyžaduje souhlas správce, se určí vývojář, který prostředek publikoval, a najdete ho v dokumentaci k prostředku. Dokumentace k oprávněním pro [rozhraní Microsoft Graph API][MSFT-Graph-permission-scopes] určuje, která oprávnění vyžadují souhlas správce.
 
 Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesto, jako je tlačítko nebo odkaz, kde může správce zahájit akci. Požadavek, který vaše aplikace posílá pro tuto akci, je obvyklým požadavkem na autorizaci OAuth2/OpenID Connect, který obsahuje taky parametr řetězce dotazu `prompt=admin_consent`. Po souhlasu správce a Vytvoření instančního objektu v tenantovi zákazníka nepotřebuje následné žádosti o přihlášení parametr `prompt=admin_consent`. Vzhledem k tomu, že správce rozhodl, že požadovaná oprávnění jsou přijatelná, žádné další uživatele v tenantovi nebudou vyzváni k jejich souhlasu od tohoto okamžiku.
 
@@ -134,7 +134,7 @@ Vaše aplikace může mít více vrstev, z nichž každý představuje vlastní 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Více vrstev v jednom tenantovi
 
-To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Například:
+To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Příklad:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
@@ -182,7 +182,6 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihl�
 * [Integrace aplikací se službou Azure Active Directory][AAD-Integrating-Apps]
 * [Přehled rozhraní pro vyjádření souhlasu][AAD-Consent-Overview]
 * [Microsoft Graph obory oprávnění rozhraní API][MSFT-Graph-permission-scopes]
-* [Obory oprávnění Graph API Azure AD][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -192,8 +191,6 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihl�
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
@@ -213,10 +210,6 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihl�
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]:access-tokens.md

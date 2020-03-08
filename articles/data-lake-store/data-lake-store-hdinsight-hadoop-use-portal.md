@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838180"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389791"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytváření clusterů HDInsight pomocí Azure Data Lake Storage Gen1 pomocí Azure Portal
 

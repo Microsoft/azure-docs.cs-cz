@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 12/29/2019
 ms.custom: mvc
 ms.openlocfilehash: c336b2f95a17896edcc7eaad2b2586c6859804f9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772189"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361857"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -79,7 +79,7 @@ Posouzení serveru používá odlehčené zařízení, které nasazujete místn�
 Azure Migrate: Nástroj pro migraci serveru vám pomůže migrovat místní virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery, další virtualizované počítače a veřejné cloudové virtuální počítače do Azure. Po posouzení můžete počítače migrovat, nebo je migrovat bez posouzení.
 
 
-## <a name="select-a-tool"></a>Výběr nástroje
+## <a name="select-a-tool"></a>Vybrat nástroj
 
 V centru Azure Migrate vyberte nástroj, který chcete použít pro posouzení, a přidejte ho do projektu Azure Migrate. Pokud přidáte nástroj ISV nebo stěhovací společnost:
 

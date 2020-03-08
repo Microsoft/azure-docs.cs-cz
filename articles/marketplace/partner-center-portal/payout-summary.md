@@ -8,11 +8,11 @@ ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
 ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715443"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344056"
 ---
 # <a name="payout-reporting"></a>Vytváření sestav o výběrech
 
@@ -48,7 +48,7 @@ Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o ú
 |---------|---------|---------|
 | Odkazy | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) a [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | Navigace | Vytváření sestav ve výběrech poskytovaných ve výběrech Insights | Sestavy výběrů poskytované v partnerském centru – ikona výběr |
-| Rozsah | <ul> <li>Transakce pro položku na řádku je viditelná, pro probíhající shromažďování, shromažďování a platby. </li> <li>Vytváření sestav – zobrazí všechny položky řádků po vytvoření objednávky nákupu, včetně probíhajícího shromažďování a fakturace probíhá, a stavu kolekce a položek řádků, které ještě nejsou způsobilé k placení. </li> </ul> | <ul> <li>Zobrazuje položky řádku, jakmile se považují za oprávněné tržby.</li> <li>Zákazníci se nejprve účtují do Microsoftu a potom prodejci uvidí, že sestava výběru začíná.</li> <li>Sestava výběru nebude zobrazovat probíhající shromažďování a probíhá fakturace.  </li> </ul>  |
+| Obor | <ul> <li>Transakce pro položku na řádku je viditelná, pro probíhající shromažďování, shromažďování a platby. </li> <li>Vytváření sestav – zobrazí všechny položky řádků po vytvoření objednávky nákupu, včetně probíhajícího shromažďování a fakturace probíhá, a stavu kolekce a položek řádků, které ještě nejsou způsobilé k placení. </li> </ul> | <ul> <li>Zobrazuje položky řádku, jakmile se považují za oprávněné tržby.</li> <li>Zákazníci se nejprve účtují do Microsoftu a potom prodejci uvidí, že sestava výběru začíná.</li> <li>Sestava výběru nebude zobrazovat probíhající shromažďování a probíhá fakturace.  </li> </ul>  |
 | Transakce není připravená na výběr. | Probíhá fakturace | Další odhadovaná platba: stav vyvýběru je v nezpracovaném stavu.  |
 | Stav výběr |  | Nezpracované <br> Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. <br> <br> Nadcházející <br> Platební objednávka – vygenerované interní recenze, které čekají na vyřízení, než se zpracuje platba <br> <br> Odesláno: <br> Platba byla odeslána do vaší banky. |
 
@@ -99,7 +99,7 @@ Například pokud zákazník nakupuje pomocí platební karty.
 
 Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vidíte na stránce Historie transakcí, typu, datu, přidruženém množství transakce, zákazníkovi, produktu a dalších transakčních detailech vztahujících se k programu pobídek.
 
-| název sloupce     | Popis    |
+| Název sloupce     | Popis    |
 |-------------|-------------------------------|
 | earningId                      | Jedinečný identifikátor pro každý z nich                                                                                                       |
 | participantId                  | Primární identita partnera v rámci programu                                                                            |

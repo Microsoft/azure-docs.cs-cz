@@ -17,11 +17,11 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2d9e5d051f101288b8528b47fa88b4783a040950
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775154"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377315"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
@@ -151,7 +151,7 @@ Přidání tohoto zvýšeného zabezpečení:
    >
    > Jak je vysvětleno v předchozí části, vaše webové rozhraní API může vždy ověřit, zda má aplikace správnou roli, která je autorizována správcem tenanta. Rozhraní API provede toto ověření tím, že ověří, že přístupový token má deklaraci identity rolí a že hodnota této deklarace je správná. V předchozí ukázce JSON je hodnota `access_as_application`.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="next-steps"></a>Další kroky
 

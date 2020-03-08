@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77504940"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378199"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)
 
@@ -52,7 +52,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory** > **zabezpečení** > **metody ověřování** > **zásady ověřování (Preview)** .
 1. V části **klíč zabezpečení FIDO2**metody vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne
@@ -61,7 +61,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>Registrace uživatelů a Správa klíčů zabezpečení FIDO2
 
-1. Přejděte na [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+1. Přejděte na adresu [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
 1. Přihlaste se, pokud ještě není.
 1. Klikněte na **informace o zabezpečení**.
    1. Pokud má uživatel již alespoň jednu zaregistrovanou metodu Azure Multi-Factor Authentication, může ihned zaregistrovat klíč zabezpečení FIDO2.
@@ -70,7 +70,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 1. Vyberte **zařízení USB** nebo **zařízení NFC**.
 1. Připravte si klíč a klikněte na tlačítko **Další**.
 1. Zobrazí se pole a požádá uživatele o vytvoření nebo zadání kódu PIN pro klíč zabezpečení a pak pro tento klíč provede požadované gesto, ať už je to biometrika nebo dotykové ovládání.
-1. Uživatel bude vrácen do kombinovaného prostředí pro registraci a požádán o poskytnutí smysluplného názvu pro klíč, aby uživatel mohl zjistit, který z nich je v případě, že má více. Klikněte na **Další**.
+1. Uživatel bude vrácen do kombinovaného prostředí pro registraci a požádán o poskytnutí smysluplného názvu pro klíč, aby uživatel mohl zjistit, který z nich je v případě, že má více. Klikněte na **Další**.
 1. Kliknutím na **Hotovo** proces dokončete.
 
 ## <a name="sign-in-with-passwordless-credential"></a>Přihlášení pomocí přihlašovacích údajů bez hesla

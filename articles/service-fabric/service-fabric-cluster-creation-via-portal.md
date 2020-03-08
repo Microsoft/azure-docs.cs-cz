@@ -4,11 +4,11 @@ description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452301"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363377"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí Azure Portal
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Vytvoření produkčního clusteru, který splňuje požadavky vaší aplikace, 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Vyhledejte prostředek Service Fabric clusteru.
 
-Přihlaste se na web [Azure Portal][azure-portal].
+Přihlaste se k webu [Azure Portal][azure-portal].
 Kliknutím na **vytvořit prostředek** přidejte novou šablonu prostředků. Na **webu Marketplace** vyhledejte šablonu Service Fabric clusteru v rámci **všeho**.
 V seznamu vyberte **Cluster Service Fabric** .
 

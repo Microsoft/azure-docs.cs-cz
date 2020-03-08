@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039537"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388663"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání imagí virtuálních počítačů s Windows v Azure Marketplace s využitím Azure PowerShell
 

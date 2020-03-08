@@ -1,5 +1,5 @@
 ---
-title: Spuštění úloh na pozadí pomocí WebJobs
+title: Spouštění úloh na pozadí pomocí WebJobs
 description: Naučte se používat webové úlohy ke spouštění úloh na pozadí v Azure App Service. Vyberte si z nejrůznějších formátů skriptů a spouštějte je s CRON výrazy.
 author: ggailey777
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
@@ -9,11 +9,11 @@ ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684194"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374184"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
@@ -82,7 +82,7 @@ when making changes in one don't forget the other two.
    | **Typ** | Průběžný | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
    | **Škálování** | Více instancí | K dispozici pouze pro nepřetržité webové úlohy. Určuje, zda se program nebo skript spouští na všech instancích nebo pouze v jedné instanci. Možnost spuštění na více instancích se nevztahuje na [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)Free nebo Shared. | 
 
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
@@ -118,9 +118,9 @@ when making changes in one don't forget the other two.
    | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
    | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
    | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Triggery** | Manual | |
+   | **Triggery** | Ručně | |
 
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
@@ -159,7 +159,7 @@ when making changes in one don't forget the other two.
    | **Triggery** | Naplánované | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
    | **Výraz CRON** | 0 0/20 * * * * | [Výrazy cron](#ncrontab-expressions) jsou popsány v následující části. |
 
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 

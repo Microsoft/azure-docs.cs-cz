@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082241"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362590"
 ---
 # <a name="monitor-the-process-server"></a>Monitorování procesového serveru
 

@@ -11,11 +11,11 @@ ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 455ebcb28ea6cc8b43431f96a4bc3929a759c2d0
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255901"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373821"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -324,11 +324,11 @@ App Service Linux směruje příchozí požadavky na port 80, takže vaše aplik
 
 Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
-| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| Server SQL | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 
 Chcete-li nakonfigurovat Tomcat pro použití JDBC (Java Database Connectivity) nebo rozhraní Java trvalá rozhraní API (JPA), nejprve Přizpůsobte proměnnou prostředí `CATALINA_OPTS`, která je čtena nástrojem Tomcat při spuštění. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 

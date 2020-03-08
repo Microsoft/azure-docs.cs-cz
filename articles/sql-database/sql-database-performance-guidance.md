@@ -12,11 +12,11 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009102"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382384"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ruční ladění výkonu dotazů v Azure SQL Database
 

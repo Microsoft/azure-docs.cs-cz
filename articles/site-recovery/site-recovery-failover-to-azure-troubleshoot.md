@@ -10,11 +10,11 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754423"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362698"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při převzetí služeb při selhání virtuálního počítače VMware nebo fyzického počítače do Azure
 
@@ -76,7 +76,7 @@ Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operačn�
 
 Pokud se tlačítko **připojit** na virtuálním počítači služby převzít služby při selhání v Azure zobrazuje šedě a nejste k Azure připojeni přes Express Route nebo připojení VPN typu Site-to-site,
 
-1. Přejděte na **virtuální počítač** > **sítě**, klikněte na název požadovaného síťového rozhraní.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. Přejděte na **virtuální počítač** > **sítě**, klikněte na název požadovaného síťového rozhraní.  ![rozhraní sítě](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. Přejděte do části **Konfigurace protokolu IP**a potom klikněte na pole název požadované konfigurace protokolu IP. ![IPConfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Pokud chcete povolit veřejnou IP adresu, klikněte na **Povolit**. ![povolit IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. Klikněte na **konfigurovat požadovaná nastavení** > **vytvořit nový**. ![vytvořit nové](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
@@ -165,7 +165,7 @@ Problém vyřešíte takto:
    - Chcete-li zajistit, aby hlavní cílový server mohl komunikovat s konfiguračním serverem:
   
      - Upravte nastavení proxy serveru v Internet Exploreru, aby se IP adresa hlavního cílového serveru nepoužívala prostřednictvím proxy serveru.   
-     nebo
+     Nebo
      - Zakažte proxy server na hlavním cílovém serveru. 
 
 

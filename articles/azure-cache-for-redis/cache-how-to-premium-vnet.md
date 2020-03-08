@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846401"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358961"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Virtuální síť je privátní síť v cloudu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro instanci Redis Premium Azure cache.
@@ -128,11 +128,11 @@ Existuje osm požadavků na rozsah příchozích portů. Příchozí požadavky 
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Příchozí |TCP |Komunikace klienta s Redis, Vyrovnávání zatížení Azure | (Podsíť Redis) | (Redis podsíť), Virtual Network Azure Load Balancer <sup>1</sup> |
 | 8443 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
-| 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Azure Load Balancer |
+| 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Nástroj pro vyrovnávání zatížení Azure |
 | 10221-10231 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Redis podsíť), Azure Load Balancer |
 | 13000-13999 |Příchozí |TCP |Komunikace klienta s Redis clustery, Vyrovnávání zatížení Azure | (Podsíť Redis) |Virtual Network Azure Load Balancer |
 | 15000-15999 |Příchozí |TCP |Komunikace klientů s Redis clustery, vyrovnáváním zatížení Azure a geografickou replikací | (Podsíť Redis) |Virtual Network, Azure Load Balancer (geografická podsíť druhé repliky) |
-| 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Azure Load Balancer |
+| 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Nástroj pro vyrovnávání zatížení Azure |
 | 20226 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
 
 <sup>1</sup> můžete použít značku služby ' AzureLoadBalancer ' (Správce prostředků) (nebo ' AZURE_LOADBALANCER ' pro klasický) pro vytváření pravidel NSG.

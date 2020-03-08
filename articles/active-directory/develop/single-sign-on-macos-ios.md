@@ -18,11 +18,11 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085528"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377135"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Postupy: Konfigurace jednotného přihlašování v macOS a iOS
 

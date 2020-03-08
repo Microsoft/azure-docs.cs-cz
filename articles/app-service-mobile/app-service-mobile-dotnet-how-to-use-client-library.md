@@ -7,11 +7,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77459187"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373988"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -370,7 +370,7 @@ Dva nebo více klientů může současně zapisovat změny stejné položky. Bez
 
 Mobile Apps podporuje optimistické řízení souběžnosti tím, že sleduje změny každé položky pomocí sloupce vlastnosti `version` systému, který je definovaný pro každou tabulku v back-endu mobilní aplikace. Pokaždé, když se aktualizuje záznam, Mobile Apps nastaví vlastnost `version` pro daný záznam na novou hodnotu. Během každé žádosti o aktualizaci se vlastnost `version` záznamu, který je součástí žádosti, porovnává se stejnou vlastností záznamu na serveru. Pokud se verze předaná s požadavkem neshoduje s back-end, Klientská knihovna vyvolá výjimku `MobileServicePreconditionFailedException<T>`. Typ zahrnutý s výjimkou je záznam z back-endu, který obsahuje verzi daného záznamu na serverech. Aplikace pak může tyto informace použít k rozhodnutí, jestli se má znovu spustit žádost o aktualizaci se správnou hodnotou `version` z back-endu pro potvrzení změn.
 
-Definujte sloupec třídy Table pro vlastnost systému `version`, aby se povolila Optimistická souběžnost. Například:
+Definujte sloupec třídy Table pro vlastnost systému `version`, aby se povolila Optimistická souběžnost. Příklad:
 
 ```csharp
 public class TodoItem
@@ -608,7 +608,7 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 Tento formulář je typové volání metody a vyžaduje, aby byl definován návratový typ **MarkAllResult** . Podporují se typové i netypové metody.
 
 Metoda InvokeApiAsync () přiřadí "/API/" do rozhraní API, které chcete volat, pokud rozhraní API nezačíná znakem "/".
-Například:
+Příklad:
 
 * `InvokeApiAsync("completeAll",...)` volání/api/completeAll na back-end
 * `InvokeApiAsync("/.auth/me",...)` volání/.auth/me na back-end

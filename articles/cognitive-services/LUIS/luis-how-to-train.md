@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143689"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361091"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Výuka aktivní verze aplikace LUIS 
 
@@ -28,11 +28,11 @@ ms.locfileid: "74143689"
 
 ## <a name="how-to-train-interactively"></a>Interaktivní trénování
 
-Spuštění iterativní proces [LUIS portál](https://www.luis.ai), musíte nejprve trénování aplikace LUIS alespoň jednou. Ujistěte se, že každý záměr má alespoň jednu utterance před školení.
+Chcete-li spustit iterativní proces na [portálu Luis](https://www.luis.ai), musíte nejprve vytvořit aplikaci Luis alespoň jednou. Ujistěte se, že každý záměr má alespoň jednu utterance před školení.
 
-1. Přístup k aplikaci tak, že vyberete jeho název na **Moje aplikace** stránky. 
+1. Přístup k aplikaci získáte tak, že na stránce **Moje aplikace** vyberete její název. 
 
-1. Ve vaší aplikaci, vyberte **Train** v horním panelu. 
+1. V aplikaci vyberte v horním panelu možnost **vlak** . 
 
 1. Po dokončení školení se v horní části prohlížeče zobrazí oznámení.
 
@@ -54,7 +54,7 @@ Nemusíte trénování po každé změně jednoho. Školení by mělo provedeno 
 
 ## <a name="training-with-the-rest-apis"></a>Trénování s využitím rozhraní REST API
 
-Školení na portálu služby LUIS je krokovat stisknutím klávesy **trénování** tlačítko. Trénování s využitím rozhraní REST API je dvoustupňový proces. První je [žádosti školení](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) pomocí HTTP POST. Vyžádejte [školení stav](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) pomocí protokolu HTTP Get. 
+Školení na portálu LUIS je jedním krokem při stisknutí tlačítka **vlak** . Trénování s využitím rozhraní REST API je dvoustupňový proces. První je požadavek na [školení](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) pomocí HTTP POST. Pak vyžádejte [stav školení](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) pomocí HTTP GET. 
 
 Pokud chcete zjistit, po dokončení školení, budete muset dotazování stavu, dokud všechny modely jsou úspěšně školení. 
 

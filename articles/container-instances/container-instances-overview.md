@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888029"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364996"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je služba Azure Container Instances?
 

@@ -8,11 +8,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 0c570702e4c3899ef2847883e6fc8649e603a787
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039693"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389634"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
@@ -91,7 +91,7 @@ Nainstalujte agenta na všechny hostitele Hyper-V obsahující virtuální poč�
 2. V **nastavení instalace**přijměte umístění instalace a umístění mezipaměti. Jednotka mezipaměti potřebuje alespoň 5 GB úložného prostoru. Doporučujeme jednotku s 600 GB nebo více volného místa. Pak vyberte **Nainstalovat**.
 3. Po dokončení instalace **klikněte na tlačítko** **Zavřít** a dokončete průvodce.
 
-    ![Nainstalovat agenta](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
+    ![Instalace agenta](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 
@@ -123,7 +123,7 @@ Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a ú�
     - **Šifrování dat uložených v Azure** je nastavené na výchozí (**vypnuto**) a označuje, že data uložená v Azure nejsou šifrovaná.
 4. Po vytvoření zásady vyberte **OK**. Když vytvoříte novou zásadu, automaticky se přidruží k cloudu VMM.
 
-## <a name="enable-replication"></a>Povolení replikace
+## <a name="enable-replication"></a>Povolit replikaci
 
 1. V **aplikaci replikovat aplikaci**vyberte **zdroj**.
 2. V části **zdroj**vyberte Cloud VMM. Pak vyberte **OK**.

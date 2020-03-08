@@ -13,11 +13,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 25b8aa9b5e80720e9543dafce7970404a62b7d1f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132643"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377435"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Použití Microsoft Authenticator nebo Portál společnosti Intune v aplikacích Xamarin
 

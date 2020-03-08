@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7fee3a1e2c26bc9fa89a4766c771a3715398b1a2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882184"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673356"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -19,7 +19,7 @@ V dnešních aplikacích je nutné, aby byly vysoce reagovaly a vždy online. Ab
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Když kliknete na tlačítko, Cosmos DB vám umožní elasticky a nezávisle škálovat propustnost a úložiště napříč libovolným počtem oblastí Azure po celém světě. Můžete elasticky škálovat propustnost a úložiště a využívat rychlý přístup k datům v řádu milisekund pomocí vašich oblíbených rozhraní API, včetně SQL, MongoDB, Cassandra, tabulek nebo Gremlin. Cosmos DB poskytuje komplexní [smlouvy o úrovni služeb](https://aka.ms/acdbsla) (SLA) kvůli propustnosti, latenci, dostupnosti a zárukám konzistence bez dalších nabídek databázových služeb.
 
-[Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
+Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků nebo využít [Azure Cosmos dB úrovně Free](optimize-dev-test.md#azure-cosmos-db-free-tier) k získání účtu s prvním 400 ru/s a 5 GB volného místa.
 
 > [!div class="nextstepaction"]
 > [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/)
@@ -28,13 +28,13 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
-### <a name="turnkey-global-distribution"></a>Globální distribuce na klíč
+### <a name="turnkey-global-distribution"></a>Globální distribuce klíč
 
 Cosmos DB vám umožní vytvářet vysoce dostupné a vysoce dostupné aplikace po celém světě. Cosmos DB transparentně replikuje data všude, kde jsou vaši uživatelé, takže vaši uživatelé můžou pracovat s replikou dat, která jsou nejblíže.
 
 Cosmos DB umožňuje kdykoli přidat nebo odebrat libovolné oblasti Azure do účtu Cosmos a kliknout na tlačítko. Cosmos DB bude bez problémů replikovat vaše data do všech oblastí přidružených k vašemu účtu Cosmos, zatímco vaše aplikace bude dál vysoce dostupná, díky funkcím pro *více koncových* částí služby. Další informace najdete v článku o [globální distribuci](distribute-data-globally.md) .
 
-### <a name="always-on"></a>Stálé připojení
+### <a name="always-on"></a>Vždy zapnuto
 
 Díky důkladné integraci s infrastrukturou Azure a [transparentní replikací s více hlavními servery](global-dist-under-the-hood.md)poskytuje Cosmos DB [99,999% vysokou dostupnost](high-availability.md) pro čtení i zápis. Cosmos DB taky poskytuje možnost programově (nebo prostřednictvím portálu) vyvolat místní převzetí služeb při selhání vašeho účtu Cosmos. Tato možnost pomáhá zajistit, že vaše aplikace bude v případě regionálních havárií navržena pro převzetí služeb při selhání.
 
@@ -48,7 +48,7 @@ Pomocí Cosmos DB můžete vytvářet vysoce reagující aplikace globálním š
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Přesně definované, vícenásobné volby konzistence
 
-Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Protokol replikace s více hlavními servery Cosmos DB je pečlivě navržený *tak, aby* nabízel [pět jasně definovaných voleb konzistence](consistency-levels.md) - *silné*, *ohraničené neaktuálnost*, *relace*, *konzistentní předpony*a konečné – pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci.
+Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Protokol replikace s více hlavními servery Cosmos DB je pečlivě navržený tak, aby nabízel [pět jasně definovaných voleb konzistence](consistency-levels.md) - *silná*, *ohraničená neaktuálnost*, *relace*, *konzistentní předpona*a *konečný – pro* intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci.
 
 ### <a name="no-schema-or-index-management"></a>Žádná Správa schématu ani indexu
 
@@ -89,7 +89,7 @@ Cosmos DB nabízí možnost výběru rozhraní API pro práci s daty uloženými
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Řešení, kterým služba Azure Cosmos DB přináší výhody
 
-Všechny [webové, mobilní, herní a aplikace IoT](use-cases.md) , které potřebují zpracovávat obrovské objemy dat, čtení a zápisů v [globálním měřítku](distribute-data-globally.md) s téměř skutečnými dobami odezvy pro nejrůznější data, budou mít výhodu [zaručené vysoké dostupnosti Cosmos DB. ](https://azure.microsoft.com/support/legal/sla/cosmos-db/), vysoká propustnost, nízká latence a přizpůsobitelné konzistence. Přečtěte si, jak můžete Azure Cosmos DB použít k sestavování [IoT a telematických](use-cases.md#iot-and-telematics), [maloobchodních a marketingových](use-cases.md#retail-and-marketing), [herních](use-cases.md#gaming) a [webových a mobilních aplikací](use-cases.md#web-and-mobile-applications).
+Všechny [aplikace pro web, mobilní zařízení, hry a IoT](use-cases.md) , které potřebují zpracovávat obrovské objemy dat, čtení a zápisy v [globálním měřítku](distribute-data-globally.md) s téměř skutečnými dobami odezvy pro nejrůznější data, budou mít výhodu Cosmos DB [garantované vysoké dostupnosti](https://azure.microsoft.com/support/legal/sla/cosmos-db/), vysoké propustnosti, nízké latence a přizpůsobitelné konzistenci. Přečtěte si, jak můžete Azure Cosmos DB použít k sestavování [IoT a telematických](use-cases.md#iot-and-telematics), [maloobchodních a marketingových](use-cases.md#retail-and-marketing), [herních](use-cases.md#gaming) a [webových a mobilních aplikací](use-cases.md#web-and-mobile-applications).
 
 ## <a name="next-steps"></a>Další kroky
 

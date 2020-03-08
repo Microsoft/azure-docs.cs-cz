@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: cherylmc
 ms.openlocfilehash: a45a3412a1ceb8e8a9bd9fd1a34dfdbd10ba1c75
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162425"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393554"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway
 

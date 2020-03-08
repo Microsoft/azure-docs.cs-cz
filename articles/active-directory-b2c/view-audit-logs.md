@@ -13,11 +13,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78185773"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378834"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -51,7 +51,7 @@ Tento příklad obrázku z Azure Portal zobrazuje data zachycená, když se uži
 
 Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 
-|Sekce|Pole|Popis|
+|Část|Pole|Popis|
 |-------|-----|-----------|
 | Aktivita | Název | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
 | Iniciované uživatelem (actor) | Objektu | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |

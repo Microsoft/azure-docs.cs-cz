@@ -11,15 +11,15 @@ ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
 ms.openlocfilehash: 744151a1ce8cde630e26c17ccf06569ebd0efb61
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770998"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365333"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Získání připojovacího řetězce služby Event Hubs
 
-Pokud chcete používat Event Hubs, je potřeba vytvořit obor názvů služby Event Hubs. Obor názvů je kontejner oboru pro více Center událostí nebo Kafka témata. Tento obor názvů poskytuje jedinečnou [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Po vytvoření oboru názvů můžete získat připojovací řetězec potřebný ke komunikaci se službou Event Hubs.
+Pokud chcete používat Event Hubs, je potřeba vytvořit obor názvů služby Event Hubs. Obor názvů je kontejner oboru pro více Center událostí nebo Kafka témata. Tento obor názvů poskytuje jedinečný [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Po vytvoření oboru názvů můžete získat připojovací řetězec potřebný ke komunikaci se službou Event Hubs.
 
 Připojovací řetězec pro službu Azure Event Hubs má následující komponenty vložit v ní,
 
@@ -32,7 +32,7 @@ Připojovací řetězec pro službu Azure Event Hubs má následující komponen
 Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 ```
 
-Příklad připojovacího řetězce vypadat `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
+Příklad připojovacího řetězce může vypadat jako `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
 
 Tento článek vás provede vás provedou různými způsoby se dá získat připojovací řetězec.
 

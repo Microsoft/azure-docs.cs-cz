@@ -8,11 +8,11 @@ ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
 ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189825"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373693"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -34,7 +34,7 @@ Aktivační událost časovače je k dispozici v balíčku NuGet [Microsoft. Azu
 
 ## <a name="example"></a>Příklad
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která se spustí pokaždé, když minuty mají hodnotu dělitelnou pěti (např. Pokud funkce začíná na 18:57:00, bude další výkon na 19:00:00). Objekt [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) je předán do funkce.
 
@@ -50,7 +50,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
 
 Následující příklad ukazuje vazbu triggeru časovače v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu. Funkce zapíše protokol, který označuje, zda je vyvolání této funkce způsobeno chybějícím výskytem plánu. Objekt [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) je předán do funkce.
 
@@ -78,7 +78,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje vazbu triggeru časovače v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapíše protokol, který označuje, zda je vyvolání této funkce způsobeno chybějícím výskytem plánu. Do funkce se předává [objekt Timer](#usage) .
 
@@ -109,7 +109,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Následující příklad používá vazbu triggeru časovače, jejíž konfigurace je popsána v souboru *Function. JSON* . Skutečná [funkce jazyka Python](functions-reference-python.md) , která používá vazbu, je popsána v souboru  *__init__. py* . Objekt předaný do funkce je typu [objekt Azure. Functions. TimerRequest](/python/api/azure-functions/azure.functions.timerrequest). Logika funkce zapisuje do protokolů, které označují, zda je aktuální vyvolání způsobeno chybějícím plánovaným výskytem. 
 
@@ -143,7 +143,7 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Následující ukázková funkce se spustí a provede každých pět minut. `@TimerTrigger` anotace funkce definuje plán pomocí stejného formátu řetězce jako [cron výrazy](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
@@ -162,7 +162,7 @@ public void keepAlive(
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V [ C# knihovně tříd](functions-dotnet-class-library.md)použijte [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
@@ -182,19 +182,19 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
 
 C# Skript nepodporuje atributy.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python nepodporuje atributy.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 `@TimerTrigger` anotace funkce definuje plán pomocí stejného formátu řetězce jako [cron výrazy](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
@@ -340,7 +340,7 @@ Aktivační událost časovače používá zámek úložiště, aby zajistila, �
 
 Na rozdíl od triggeru fronty se aktivační událost časovače neopakuje po chybě funkce. Když funkce dojde k chybě, nebude znovu volána až do příštího plánu.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Informace o tom, co dělat, když aktivační událost časovače nefunguje podle očekávání, najdete v tématu [zkoumání a hlášení problémů s aktivovanými funkcemi aktivované časovačem](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 

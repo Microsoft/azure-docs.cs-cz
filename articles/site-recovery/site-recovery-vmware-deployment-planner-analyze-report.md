@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495869"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362692"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Plánovač nasazení pro zotavení po havárii VMware do Azure
 
@@ -272,7 +272,7 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší | 20 
 **Četnost změn dat zdroje** | **Maximální omezení**
 ---|---
 Četnost změn dat ve špičce napříč všemi disky virtuálního počítače | 54 MB/s
-Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
+Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
 
 Toto jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají. Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh. Předchozí čísla předpokládají typický backlog přibližně 5 minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
 

@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701395"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375673"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokol SAML jednotného přihlašování
 
@@ -48,12 +48,12 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| ID | Požaduje se | Azure AD používá tento atribut k naplnění atributu `InResponseTo` vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
-| Verze | Požaduje se | Tento parametr by měl být nastaven na **2,0**. |
-| IssueInstant | Požaduje se | Toto je řetězec DateTime s hodnotou UTC a [formátem Round-Trip ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu DateTime tohoto typu, ale nevyhodnotí ani nepoužije hodnotu. |
-| AssertionConsumerServiceUrl | Volitelné | Je-li tento parametr zadán, musí odpovídat `RedirectUri` cloudové služby ve službě Azure AD. |
-| ForceAuthn | Volitelné | Jedná se o logickou hodnotu. Pokud má hodnotu true, znamená to, že se uživatel bude nuceně znovu ověřovat, i když má platnou relaci se službou Azure AD. |
-| Podpasse | Volitelné | Jedná se o logickou hodnotu, která určuje, jestli má služba Azure AD bez zásahu uživatele ověřit uživatele bez ohledu na to, jestli existuje. Pokud je to pravda, Azure AD se pokusí ověřit uživatele pomocí souboru cookie relace. |
+| ID | Požadováno | Azure AD používá tento atribut k naplnění atributu `InResponseTo` vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
+| Version | Požadováno | Tento parametr by měl být nastaven na **2,0**. |
+| IssueInstant | Požadováno | Toto je řetězec DateTime s hodnotou UTC a [formátem Round-Trip ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu DateTime tohoto typu, ale nevyhodnotí ani nepoužije hodnotu. |
+| AssertionConsumerServiceUrl | volitelná, | Je-li tento parametr zadán, musí odpovídat `RedirectUri` cloudové služby ve službě Azure AD. |
+| ForceAuthn | volitelná, | Jedná se o logickou hodnotu. Pokud má hodnotu true, znamená to, že se uživatel bude nuceně znovu ověřovat, i když má platnou relaci se službou Azure AD. |
+| Podpasse | volitelná, | Jedná se o logickou hodnotu, která určuje, jestli má služba Azure AD bez zásahu uživatele ověřit uživatele bez ohledu na to, jestli existuje. Pokud je to pravda, Azure AD se pokusí ověřit uživatele pomocí souboru cookie relace. |
 
 Všechny ostatní atributy `AuthnRequest`, jako je například souhlas, cíl, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex a ProviderName, budou **ignorovány**.
 
@@ -186,7 +186,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
   </samlp:Status>
 ```
 
-### <a name="assertion"></a>Kontrolní výraz
+### <a name="assertion"></a>Neplatný
 
 Kromě `ID`, `IssueInstant` a `Version`, služba Azure AD nastaví následující prvky v `Assertion` prvku odpovědi.
 

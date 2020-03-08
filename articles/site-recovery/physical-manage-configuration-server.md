@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084603"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367083"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -32,13 +32,13 @@ Tabulka shrnuje předpoklady pro nasazení místního počítače konfigurační
 | Volné místo na disku (mezipaměť procesového serveru) | 600 GB
 | Volné místo na disku (disk pro uchování) | 600 GB|
 | Operační systém  | Windows Server 2012 R2 <br> Windows Server 2016 |
-| Národní prostředí operačního systému | English (US)|
-| Verze VMware vSphere PowerCLI | Nepožaduje se|
+| Národní prostředí operačního systému | Angličtina (USA)|
+| Verze VMware vSphere PowerCLI | Nepožadováno|
 | Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V |
 | Zásady skupiny| Nepovolujte tyto zásady skupiny: <br> -Zakázat přístup k příkazovému řádku <br> – Zakázat přístup k nástrojům pro úpravu registru <br> – Logika vztahu důvěryhodnosti pro přílohy souborů <br> -Zapnout provádění skriptu <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | -Žádný předdefinovaný výchozí web <br> -Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443.<br>|
 | Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware) |
-| Typ IP adresy | Static |
+| Typ IP adresy | Statické |
 | Přístup k internetu | Server potřebuje přístup k těmto adresám URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (není vyžadováno pro procesové servery se škálováním na více instancí) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)|
 
@@ -110,20 +110,20 @@ Spusťte instalační soubor následujícím způsobem:
 
 |Název parametru| Typ | Popis| Hodnoty|
 |-|-|-|-|
-| /ServerMode|Požaduje se|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
-|/InstallLocation|Požaduje se|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
-|/MySQLCredsFilePath|Požaduje se|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
-|/VaultCredsFilePath|Požaduje se|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
-|/EnvType|Požaduje se|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
-|/PSIP|Požaduje se|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
-|/CSIP|Požaduje se|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
-|/PassphraseFilePath|Požaduje se|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
-|/BypassProxy|Nepovinné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
-|/ProxySettingsFilePath|Nepovinné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
-|DataTransferSecurePort|Nepovinné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
-|/SkipSpaceCheck|Nepovinné|Přeskočí kontrolu místa na disku mezipaměti.| |
-|/AcceptThirdpartyEULA|Požaduje se|Příznak značí přijetí smlouvy EULA třetích stran| |
-|/ShowThirdpartyEULA|Nepovinné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
+| /ServerMode|Požadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
+|/InstallLocation|Požadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
+|/MySQLCredsFilePath|Požadováno|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
+|/VaultCredsFilePath|Požadováno|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
+|/EnvType|Požadováno|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
+|/PSIP|Požadováno|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
+|/CSIP|Požadováno|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
+|/PassphraseFilePath|Požadováno|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
+|/BypassProxy|Volitelné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
+|/ProxySettingsFilePath|Volitelné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
+|DataTransferSecurePort|Volitelné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
+|/SkipSpaceCheck|Volitelné|Přeskočí kontrolu místa na disku mezipaměti.| |
+|/AcceptThirdpartyEULA|Požadováno|Příznak značí přijetí smlouvy EULA třetích stran| |
+|/ShowThirdpartyEULA|Volitelné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
 
 
 
@@ -175,7 +175,7 @@ Nastavení proxy serveru pro počítač konfiguračního serveru můžete upravi
 2. Spusťte cspsconfigtool. exe pomocí zástupce na ploše.
 3. Klikněte na kartu **registrace trezoru** .
 4. Stáhněte si nový registrační soubor z portálu a poskytněte ho jako vstup do nástroje.
-      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+      ![registrace – konfigurace-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Zadejte podrobnosti proxy serveru a klikněte na tlačítko **Registrovat** .  
 6. Otevřete okno příkazového řádku PowerShellu pro správu.
 7. Spusťte následující příkaz

@@ -10,11 +10,11 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659709"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355632"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se výkonu aplikací pro Web Apps v Azure
 
@@ -102,7 +102,7 @@ Zapnutí trasování chybných požadavků:
 1. V Azure Portal přejdete do své webové aplikace.
 3. Vyberte **všechna nastavení** > **diagnostické protokoly**.
 4. Pro **trasování chybných požadavků**vyberte **zapnuto**.
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 6. V okně webová aplikace vyberte **nástroje**.
 7. Vyberte **Visual Studio Online**.
 8. Pokud nastavení není **zapnuto**, vyberte **zapnuto**.

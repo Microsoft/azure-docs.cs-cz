@@ -1,6 +1,6 @@
 ---
-title: Výměna diskové jednotky na zařízení StorSimple 8000 series | Dokumentace Microsoftu
-description: Vysvětluje, jak Výměna diskové jednotky na primární zařízení StorSimple nebo EBOD skříň.
+title: Výměna diskové jednotky na zařízení řady StorSimple 8000 | Microsoft Docs
+description: Vysvětluje, jak nahradit diskovou jednotku v StorSimple primární skříni nebo skříni EBOD.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,100 +15,100 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576852"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365975"
 ---
-# <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Výměna diskové jednotky ve vašem zařízení řady StorSimple 8000
+# <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Výměna diskové jednotky na zařízení řady StorSimple 8000
 
 ## <a name="overview"></a>Přehled
-Tento kurz vysvětluje, jak můžete odebrat a nahraďte nefunkční nebo selhání jednotky pevného disku na zařízení s Microsoft Azure StorSimple. Nahradit diskové jednotce, budete muset:
+V tomto kurzu se dozvíte, jak můžete odebrat a nahradit jednotku pevného disku, která selhala, na zařízení Microsoft Azure StorSimple. Chcete-li nahradit diskovou jednotku, musíte:
 
-* Musí se vypnout antitamper zámku
-* Odeberte diskové jednotky
-* Nainstalujte na náhradní disk
+* Odpojí zámek proti falšování.
+* Odebrání diskové jednotky
+* Instalace náhradní diskové jednotky
 
 > [!IMPORTANT]
-> Před odebírání a nahrazování diskovou jednotku, přečtěte si informace bezpečnost v [StorSimple hardwarové komponenty nahrazení](storsimple-8000-hardware-component-replacement.md).
+> Před odebráním a nahrazením diskové jednotky si Projděte bezpečnostní informace v části [StorSimple hardwarové součásti](storsimple-8000-hardware-component-replacement.md).
  
 
-## <a name="disengage-the-antitamper-lock"></a>Musí se vypnout antitamper zámku
-Tento postup vysvětluje, jak můžete zapojení nebo odpojí po nahrazení diskové jednotky antitamper uzamčení zařízení StorSimple. Antitamper zámky jsou umístěny v popisovačích dopravce jednotky a jsou přístupné prostřednictvím malé clona v části zámek popisovače. Jednotky se dodávají s zámky. Nastavte k poloze.
+## <a name="disengage-the-antitamper-lock"></a>Odpojí zámek proti falšování.
+Tento postup vysvětluje, jak můžou být zámky proti falšování v zařízení StorSimple zavedeny nebo Nezařazené, když nahradíte diskové jednotky. Zámky proti neoprávněným zásahům jsou nainstalovány v obslužných rutinách hnacího dopravce a jsou k nim přistupované prostřednictvím malého otvoru v části západ v popisovači. Jednotky jsou dodávány s zámky nastavenými na uzamčené umístění.
 
-#### <a name="to-unlock-the-antitamper-lock"></a>Odemknout antitamper zámku
-1. Pečlivě vložte klíč zámku ("tamperproof" T10 šroubovák, které Microsoft poskytuje) do otvorů v popisovač a do jeho soketu. 
+#### <a name="to-unlock-the-antitamper-lock"></a>Odemčení zámku proti neoprávněné manipulaci
+1. Pečlivě vložte klíč zámku ("tamperproof" T10 Screwdriver, který poskytuje společnost Microsoft), do otvoru v popisovači a do jeho soketu. 
    
-   Pokud je aktivovaná antitamper zámek, je zobrazen v clona red indikátoru.
+   Pokud je zámek proti neoprávněnému zásahu aktivovaný, zobrazí se v otvoru červený indikátor.
   
-    ![Uzamčené diskovou jednotku](./media/storsimple-disk-drive-replacement/IC741056.png)
+    ![Uzamčená disková jednotka](./media/storsimple-disk-drive-replacement/IC741056.png)
    
-    **Obrázek 1** zámek proti proti zapojení
+    **Obrázek 1** Zapojení zámku proti falšování
    
-   | Štítek | Popis |
+   | Popisek | Popis |
    |:--- |:--- |
-   | 1 |Clona indikátor |
-   | 2 |Antitamper zámku |
-2. Proveďte otočení klíče v proti směru hodinových ručiček směr, dokud indikátor red není zobrazená v clona nad klíči.
-3. Odebrání klíče.
+   | 1 |Clona indikátoru |
+   | 2 |Zámek proti falšování |
+2. Otočte klíč za směr proti směru hodinových ručiček, dokud červený indikátor není viditelný na otvoru nad klíčem.
+3. Odeberte klíč.
    
-    ![Odemknout diskovou jednotku](./media/storsimple-disk-drive-replacement/IC741057.png)
+    ![Odemčená disková jednotka](./media/storsimple-disk-drive-replacement/IC741057.png)
    
-    **Obrázek 2** Odemknutý diskovou jednotku
-4. Na disk je teď možné odebrat.
+    **Obrázek 2** Odemčená disková jednotka
+4. Diskovou jednotku je teď možné odebrat.
 
-Postupujte podle kroků v opačném pořadí provozovat zámek.
+Pomocí kroků v opačném případě zapojte zámek.
 
-## <a name="remove-the-disk-drive"></a>Odeberte diskové jednotky
-Zařízení StorSimple podporuje konfiguraci RAID 10 jako úložiště prostorů. Z toho vyplývá, že může fungovat normálně s jedním neúspěšné diskem SSD (SOLID-State drive), nebo pevného disku (HDD).
+## <a name="remove-the-disk-drive"></a>Odebrání diskové jednotky
+Vaše zařízení StorSimple podporuje konfiguraci prostorů úložiště RAID 10, jako je třeba. To znamená, že může fungovat normálně s jedním vadným diskem, jednotkou SSD (Solid-State Drive) nebo pevným diskem (HDD).
 
 > [!IMPORTANT]
-> * Pokud váš systém má více než jeden selhání disku, neodebírejte více než jeden SSD nebo pevný disk ze systému v libovolném bodě v čase. To může vést ke ztrátě dat.
-> * Ujistěte se, že umístíte nahrazení SSD v přihrádce, která dříve obsahovala SSD. Podobně umístěte nahrazení pevného disku v přihrádce, která dříve obsahovala pevný disk.
-> * Na webu Azure Portal, sloty jsou číslovány od 0 – 11. Proto pokud na portálu se zobrazí, že ve slotu 2 selhání disku, na zařízení, Hledat poškozeném disku na třetí pozici od levého horního.
+> * Pokud má váš systém více než jeden vadný disk, neodstraňujte v jakémkoli časovém bodě v systému více než jednu jednotku SSD nebo HDD. V důsledku toho může dojít ke ztrátě dat.
+> * Ujistěte se, že zadáváte náhradní jednotku SSD do patice, která dříve obsahovala jednotku SSD. Podobně umístěte náhradní pevný disk do patice, která dříve obsahovala pevný disk.
+> * V Azure Portal sloty jsou číslovány od 0 – 11. Proto pokud na portálu vidíte, že se disk ve slotu 2 nezdařil, vyhledejte v zařízení disk, který selhal, na třetí pozici vlevo nahoře.
 > 
 > 
 
-Jednotky můžete odebrán a nahrazen, když je operační systém.
+Jednotky je možné odebrat a nahradit, když systém pracuje.
 
-#### <a name="to-remove-a-drive"></a>K odebrání jednotky
-1. K identifikaci selhání disku, na webu Azure Portal, přejděte do svého zařízení **Nastavení > Stav hardwaru**. Protože disk může selhat v primárním zařízení a/nebo v EBOD skříň (Pokud používáte 8600 model), podívejte se na stav disků ve skupinovém rámečku **sdílené komponenty** a v části **sdílené komponenty EBOD**. Selhání disku v obou skříň zobrazí červený stav.
-2. Vyhledejte disky ve primárního skříň nebo EBOD skříň. 
-3. Pokud je disk odemknutí, pokračujte k dalšímu kroku. Pokud je na disku, odemknout pomocí postupu v [musí vypnout antitamper Zámek](#disengage-the-antitamper-lock).
-4. Stiskněte černé zámek na modulu dopravce jednotky a vyžádaná popisovač dopravce jednotky out a okamžitě z přední části skříni.
+#### <a name="to-remove-a-drive"></a>Odebrání jednotky
+1. Chcete-li identifikovat disk, na kterém došlo k chybě, v části Azure Portal přejít do **nastavení zařízení > stav hardwaru**. Vzhledem k tomu, že disk může selhat v primární skříni a/nebo ve skříni EBOD (Pokud používáte model 8600), podívejte se na stav disků v části **sdílené součásti** a v části **sdílené součásti eBOD**. Disk, který selhal v některé skříni, se zobrazí s červeným stavem.
+2. Vyhledejte jednotky na začátku primární skříně nebo skříně EBOD. 
+3. Pokud je disk odemčený, přejděte k dalšímu kroku. Pokud je disk uzamčený, odemkněte ho pomocí postupu v části zapojte [Zámek proti falšování](#disengage-the-antitamper-lock).
+4. Stiskněte černou klávesovou zkratku v modulu nosiče jednotek a vyžádejte si z přední části skříně popisovač jednotky a napravte ho.
    
-    ![Uvolnění popisovače diskovou jednotku](./media/storsimple-disk-drive-replacement/IC741051.png)
+    ![Uvolňování popisovače diskové jednotky](./media/storsimple-disk-drive-replacement/IC741051.png)
    
-    **Obrázek 3** uvolnění popisovače jednotky
-5. Jakmile popisovač dopravce jednotky se plně rozšíří, potáhněte dopravce jednotky mimo skříni. 
+    **Obrázek 3** Uvolňuje se popisovač jednotky.
+5. Když je popisovač obslužné rutiny jednotky plně rozšířený, přesuňte ho od skříně. 
    
-    ![Klouzavé disku z disku](./media/storsimple-disk-drive-replacement/IC741052.png)
+    ![Posunutí disku na diskové jednotce](./media/storsimple-disk-drive-replacement/IC741052.png)
    
-    **Obrázek 4** klouzavé disku mimo dopravce
+    **Obrázek 4** Odsuňte diskovou jednotku od dopravce.
 
-## <a name="install-the-replacement-disk-drive"></a>Nainstalujte na náhradní disk
-Poté, co jednotku se nezdařilo v zařízení StorSimple a odeberete ji, pomocí následujícího postupu ji nahraďte novou jednotku.
+## <a name="install-the-replacement-disk-drive"></a>Instalace náhradní diskové jednotky
+Po selhání jednotky ve vašem zařízení StorSimple a jejím odebráním se pomocí tohoto postupu nahraďte novou jednotkou.
 
-#### <a name="to-insert-a-drive"></a>Chcete-li vložit na jednotku
-1. Ujistěte se, že popisovač dopravce jednotky plně prodlouží, jak je znázorněno na následujícím obrázku.
+#### <a name="to-insert-a-drive"></a>Vložení jednotky
+1. Zajistěte, aby byl popisovač nosné jednotky plně rozšířený, jak je znázorněno na následujícím obrázku.
    
-    ![Diskovou jednotku s popisovačem rozšířené](./media/storsimple-disk-drive-replacement/IC741044.png)
+    ![Disková jednotka se zvýšeným popisovačem](./media/storsimple-disk-drive-replacement/IC741044.png)
    
-    **Obrázek 5** jednotku s popisovačem rozšířené
-2. Ukázat dopravce jednotky úplně ve skříni.
+    **Obrázek 5** Jednotka s rozšířeným popisovačem
+2. Přesuňte nosiči jednotky na skříň.
    
-    ![Klouzavé disku do dopravce diskovou jednotku](./media/storsimple-disk-drive-replacement/IC741045.png)
+    ![Posunutí disku do nosiče diskové jednotky](./media/storsimple-disk-drive-replacement/IC741045.png)
    
-    **Obrázek 6** klouzavé dopravce jednotky do skříň.
-3. S dopravce jednotky vložen zavřete popisovač dopravce jednotky přitom pro nasdílení změn do skříně, jednotky dopravce dokud popisovač dopravce jednotky přichytí k uzamčené umístění.
-4. Použijte klíč zámek dodaný společností Microsoft (tamperproof Torx šroubovák) k zabezpečení dopravce popisovač do místa zapnutí zámku šroubovacím čtvrtletí zapnout po směru hodinových ručiček.
-5. Ověřte, že nahrazení proběhlo úspěšně a je funkční jednotku. Přístup k webu Azure portal a přejděte do **nastavení zařízení** > **stav hardwaru**. V části **sdílené komponenty** nebo **sdílené komponenty EBOD**, stav jednotky by měla být zelenou, která udává, že je v pořádku.
+    **Obrázek 6**  Posuňte nosič jednotky na skříň.
+3. Když je vložen nosič jednotek, uzavřete popisovač obslužné rutiny jednotky a pokračujte tak, že přehrajete nosič jednotek do skříně, dokud se popisovač obslužné rutiny jednotky nepřichytí do uzamčené pozice.
+4. Použijte klíč zámku, který byl poskytnutý Microsoftem (tamperproof Torx Screwdriver), abyste zabezpečili popisovač nosné frekvence tím, že zapnete zámek a posunete ho po směru hodinových ručiček.
+5. Ověřte, zda byla náhrada úspěšná a zda je jednotka funkční. Přejděte k Azure Portal a přejděte do **nastavení zařízení** > **stav hardwaru**. V části **sdílené součásti** nebo **sdílené součásti eBOD**by měl být stav jednotky zelený, což značí, že je v pořádku.
 
    
    > [!NOTE]
-   > Může trvat několik hodin disku stav změní na zelenou po nahrazení.
+   > Může trvat několik hodin, než se stav disku po nahrazení změní na zelený.
   
-## <a name="next-steps"></a>Další postup
-Další informace o [StorSimple hardwarové komponenty nahrazení](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [nahrazení StorSimple hardwarové součásti](storsimple-8000-hardware-component-replacement.md).
 

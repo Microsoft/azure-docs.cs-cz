@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6346c29210b6390f11c884ff51e0b60af89bbbb7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420911"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373132"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
@@ -77,7 +77,7 @@ Runbooky pracovních postupů PowerShellu jsou textové Runbooky založené na [
 
 * Implementujte všechny komplexní logiku s kódem pracovního postupu Powershellu.
 * Pokud dojde k chybě, můžete sadu Runbook obnovit pomocí [kontrolních bodů](automation-powershell-workflow.md#checkpoints) .
-* Použití [paralelní zpracování](automation-powershell-workflow.md#parallel-processing) umožňuje provádět více akcí souběžně.
+* Paralelní [zpracování](automation-powershell-workflow.md#parallel-processing) slouží k paralelnímu provádění více akcí.
 * Může zahrnovat další grafické Runbooky a runbooky pracovních postupů PowerShellu jako podřízené Runbooky pro vytváření pracovních postupů vysoké úrovně.
 
 ### <a name="limitations"></a>Omezení

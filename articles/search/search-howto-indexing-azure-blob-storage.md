@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020620"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379557"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Postup indexování dokumentů v Azure Blob Storage s využitím Azure Kognitivní hledání
 
@@ -142,7 +142,7 @@ V závislosti na [konfiguraci indexeru](#PartsOfBlobToIndex)může indexer objek
 
   * **metadata\_úložiště\_název** (EDM. String) – název souboru objektu BLOB. Pokud máte například objekt BLOB/my-Container/My-Folder/subfolder/Resume.PDF, hodnota tohoto pole je `resume.pdf`.
   * **metadata\_úložiště\_cesta** (EDM. String) – úplný identifikátor URI objektu blob, včetně účtu úložiště. Například `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`.
-  * **metadata\_úložiště\_obsahu\_typ** (EDM. String) – typ obsahu určený kódem, který jste použili k nahrání objektu BLOB. Například, `application/octet-stream`.
+  * **metadata\_úložiště\_obsahu\_typ** (EDM. String) – typ obsahu určený kódem, který jste použili k nahrání objektu BLOB. například `application/octet-stream`.
   * **metadata\_úložiště\_poslední\_upravil** (EDM. DateTimeOffset) – poslední změněné časové razítko pro objekt BLOB. Azure Kognitivní hledání používá toto časové razítko k identifikaci změněných objektů blob, aby nedocházelo k přeindexování všeho po počátečním indexování.
   * **metadata\_velikosti\_úložiště** (EDM. Int64) – velikost objektu BLOB v bajtech.
   * **metadata\_úložiště\_obsahu\_MD5** (EDM. String) – hodnota hash MD5 obsahu objektu blob, je-li k dispozici.
@@ -256,8 +256,8 @@ Výše popsané parametry konfigurace se vztahují na všechny objekty blob. V n
 
 | Název vlastnosti | Hodnota vlastnosti | Vysvětlení |
 | --- | --- | --- |
-| AzureSearch_Skip |podmínka |Dá indexeru objektů BLOB úplný skok objektu BLOB. Nezkouší se žádná metadata ani extrakce obsahu. To je užitečné, když určitý objekt BLOB opakovaně selhává a přerušuje proces indexování. |
-| AzureSearch_SkipContent |podmínka |Jedná se o ekvivalent `"dataToExtract" : "allMetadata"`ho nastavení popsaného [výše](#PartsOfBlobToIndex) v oboru určitého objektu BLOB. |
+| AzureSearch_Skip |„true“ |Dá indexeru objektů BLOB úplný skok objektu BLOB. Nezkouší se žádná metadata ani extrakce obsahu. To je užitečné, když určitý objekt BLOB opakovaně selhává a přerušuje proces indexování. |
+| AzureSearch_SkipContent |„true“ |Jedná se o ekvivalent `"dataToExtract" : "allMetadata"`ho nastavení popsaného [výše](#PartsOfBlobToIndex) v oboru určitého objektu BLOB. |
 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>Obchodování s chybami

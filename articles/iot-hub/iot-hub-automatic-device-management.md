@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
 ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429346"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386093"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatická správa zařízení a modulů IoT pomocí Azure Portal
 
@@ -54,7 +54,7 @@ Před vytvořením konfigurace musíte určit, která zařízení nebo moduly ma
 
 ## <a name="create-a-configuration"></a>Vytvořit konfiguraci
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do služby IoT hub. 
+1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
 2. Vyberte **Konfigurace zařízení IoT**.
 
@@ -66,7 +66,7 @@ Existuje pět kroků pro vytvoření konfigurace. V následujících částech s
 
 ### <a name="name-and-label"></a>Název a popisek
 
-1. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezery a následující neplatné znaky: `& ^ [ ] { } \ | " < > /`.
+1. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`.
 
 2. Přidejte popisky, které vám pomůžou sledovat vaše konfigurace. Popisky jsou **názvy**, páry **hodnot** , které popisují vaši konfiguraci. Například `HostPlatform, Linux` nebo `Version, 3.0.1`.
 
@@ -144,7 +144,7 @@ Vzhledem k tomu, že více konfigurací může cílit na stejné zařízení neb
    
    Pro automatickou konfiguraci modulu použijte dotaz k zadání značek nebo hlášených vlastností z modulů registrovaných ve službě IoT Hub. Například `from devices.modules where tags.environment='test'` nebo `from devices.modules where properties.reported.chillerProperties.model='4000x'`. Zástupný znak nelze použít pro cílení na všechny moduly. 
 
-3. Vyberte **Další** přejít k poslednímu kroku.
+3. Kliknutím na tlačítko **Další** přejdete k poslednímu kroku.
 
 ### <a name="review-configuration"></a>Kontrola konfigurace
 
@@ -154,7 +154,7 @@ Zkontrolujte informace o konfiguraci a pak vyberte **Odeslat**.
 
 Pokud chcete zobrazit podrobnosti o konfiguraci a monitorovat zařízení, která ho používají, použijte následující postup:
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do služby IoT hub. 
+1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
 2. Vyberte **Konfigurace zařízení IoT**.
 
@@ -198,7 +198,7 @@ Pokud aktualizujete cílovou podmínku, dojde k následující aktualizace:
 
 Chcete-li upravit konfiguraci, použijte následující postup: 
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do služby IoT hub. 
+1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
 2. Vyberte **Konfigurace zařízení IoT**. 
 
@@ -211,7 +211,7 @@ Chcete-li upravit konfiguraci, použijte následující postup:
    * Priorita 
    * Metriky
 
-4. Vyberte **Uložit**.
+4. Vyberte **Save** (Uložit).
 
 5. Pokud chcete sledovat změny, postupujte podle kroků v části [monitorování konfigurace](#monitor-a-configuration) . 
 
@@ -219,7 +219,7 @@ Chcete-li upravit konfiguraci, použijte následující postup:
 
 Když konfiguraci odstraníte, všechna vlákna zařízení převezmou svou další konfiguraci s nejvyšší prioritou. Pokud zařízení nesplňuje cílovou podmínku jakékoli jiné konfigurace, nebudou použita žádná další nastavení. 
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do služby IoT hub. 
+1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
 2. Vyberte **Konfigurace zařízení IoT**. 
 

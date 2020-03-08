@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 3cecb04a4f299051860c45425f0fc4e13c3722ea
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656292"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395788"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
 
@@ -33,7 +33,7 @@ Informace o konfiguraci Azure Monitor pro virtuální počítače najdete v tém
 
 Tato část popisuje výchozí kritéria stavu pro monitorování virtuálních počítačů Azure s Windows a Linux. Všechna kritéria stavu jsou předem nakonfigurovaná tak, aby odesílala výstrahu, když zjistí stav není v pořádku.
 
-| Název monitorování | Frekvence (min.) | Lookback trvání (min.) | Operátor | Prahová hodnota | Výstraha ve stavu | Závažnost | Kategorie úlohy | 
+| Název monitorování | Frekvence (min.) | Lookback trvání (min.) | Operátor | Prahová hodnota | Výstraha ve stavu | Severity | Kategorie úlohy | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Logický disk online | 5 | 15 | <> | 1 (pravda) | Kritická | Sev1 | Linux | 
 | Volné místo logického disku | 5 | 15 | < | 200 MB (upozornění)<br> 100 MB (kritické) | Upozornění | Sev1<br> Sev2 | Linux | 
@@ -55,9 +55,9 @@ Tato část popisuje výchozí kritéria stavu pro monitorování virtuálních 
 | Volné místo na logickém disku (MB) | 15 | 60 | > | Upozornění 500 MB<br> 300 MB – kritické | Kritická | Sev1<br> Sev2 | Windows | 
 | Volné místo na logickém disku (%) | 15 | 60 | > | upozornění 10%<br> 5% kritických | Kritická | Sev1<br> Sev2 | Windows |
 | Procento času nečinnosti logického disku | 15 | 360 | <= | 20 % | Upozornění | Sev2 | Windows | 
-| Procento využití využité šířky pásma | 5 | 60 | >= | 60 % | Upozornění | Sev2 | Windows | 
+| Procento využití využité šířky pásma | 5 | 60 | >= | 60% | Upozornění | Sev2 | Windows | 
 | Procento využité šířky pásma celkem | 5 | 60 | >= | 75% | Upozornění | Sev2 | Windows | 
-| Vypsání procenta využití šířky pásma | 5 | 60 | >= | 60 % | Upozornění | Sev2 | Windows | 
+| Vypsání procenta využití šířky pásma | 5 | 60 | >= | 60% | Upozornění | Sev2 | Windows | 
 | Service Health klienta DHCP | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
 | Service Health klienta DNS | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
 | Service Health protokolu událostí systému Windows | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
@@ -281,7 +281,7 @@ Pokud například vyberete položku *disk-1 d:* ze seznamu v části **model kom
 
 Pokud se chcete podívat na aktualizovaný stav, můžete stránku diagnostiky stavu aktualizovat výběrem odkazu **aktualizovat** . Pokud dojde k aktualizaci stavu kritéria stavu na základě předem definovaného intervalu cyklického dotazování, tato úloha vám umožní vyhnout se čekání a projevit nejnovější stav. **Stav kritéria** stavu je filtr, který umožňuje určit rozsah výsledků na základě vybraného stavu: Dobrý stav, varování, kritický, neznámý a vše. Čas **Poslední aktualizace** v pravém horním rohu představuje čas poslední aktualizace stránky diagnostiky stavu.
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 
 Stav Azure Monitor pro virtuální počítače se integruje s [výstrahami Azure](../../azure-monitor/platform/alerts-overview.md). Vyvolá výstrahu v případě, že při zjištění předdefinovaných kritérií dojde ke změně stavu v pořádku na stav není v pořádku. Výstrahy jsou rozdělené podle závažnosti, od závažnost 0 do závažnost 4, s závažnost 0 jako nejvyšší úrovní.
 
@@ -305,7 +305,7 @@ Toto zobrazení můžete filtrovat výběrem hodnot v rozevíracích nabídkách
 |Skupina prostředků |Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
 |Typ prostředku |Vyberte jeden nebo více typů prostředků. Ve výchozím nastavení jsou vybrané jenom výstrahy cílových **virtuálních počítačů** a zahrnují se v tomto zobrazení. Tento sloupec je k dispozici až po zadání skupiny prostředků. |
 |Prostředek |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tímto prostředkem jako cíl. Tento sloupec je k dispozici až po zadání typu prostředku. |
-|Závažnost |Vyberte Závažnost výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech závažnosti. |
+|Severity |Vyberte Závažnost výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech závažnosti. |
 |Podmínka monitorování |Vyberte podmínku monitorování, pokud chcete filtrovat výstrahy, pokud byly vyvolány nebo vyřešeny systémem, pokud již podmínka není aktivní. Případně můžete vybrat možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
 |Stav výstrahy |Pokud chcete zahrnout výstrahy všech stavů, vyberte stav výstrahy, **Nový**, **Potvrdit**, **Uzavřeno**nebo **vše** . |
 |Monitorovat službu |Vyberte službu nebo vyberte možnost **vše** , pokud chcete zahrnout všechny služby. Pro tuto funkci se podporují jenom výstrahy z virtuálního počítače Insights.|
@@ -323,7 +323,7 @@ Další informace o správě výstrah najdete v tématu [Vytvoření, zobrazení
 
 Můžete změnit stav výstrahy pro jednu nebo více výstrah tak, že je vyberete a pak vyberete **změnit stav** ze stránky **všechna upozornění** v levém horním rohu. V podokně **změnit stav výstrahy** vyberte jeden ze stavů, do pole **Komentář** přidejte popis změny a potvrďte provedené změny kliknutím na **tlačítko OK** . Když jsou informace ověřeny a jsou aplikovány změny, Sledujte průběh v nabídce **oznámení** .
 
-### <a name="configure-alerts"></a>Konfigurace výstrah
+### <a name="configure-alerts"></a>Konfigurace upozornění
 Z Azure Portal nemůžete spravovat určité úlohy správy výstrah. Tyto úlohy se musí provádět pomocí [REST API Azure monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Konkrétně:
 
 - Povolení nebo zakázání výstrahy pro kritéria stavu

@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113778"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379626"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Přehled importu dat – Azure Kognitivní hledání
 
@@ -48,7 +48,7 @@ V REST API vystavte žádosti HTTP POST s texty požadavku JSON na adresu URL ko
 V sadě .NET SDK vytvořte balíček dat do objektu `IndexBatch`. `IndexBatch` zapouzdřuje kolekci objektů `IndexAction`, z nichž každý obsahuje dokument a vlastnost, která oznamuje službě Azure Kognitivní hledání, jakou akci chcete s tímto dokumentem provádět. Příklad kódu naleznete v tématu [ C# rychlý Start](search-get-started-dotnet.md).
 
 
-| @search.action | Popis | Potřebná pole pro každý dokument | Poznámky: |
+| @search.action | Popis | Potřebná pole pro každý dokument | Poznámky |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Akce `upload` je podobná akci „upsert“, kdy je dokument vložený, pokud je nový a aktualizovaný nebo nahrazený, pokud již existuje. |klíč a další pole, která si přejete definovat |Pokud aktualizujete nebo nahrazujete stávající dokument, bude každé pole, které není zadané v žádosti, nastavené na `null`. K tomu dojde i v případě, že bylo pole dříve nastavené na nenulovou hodnotu. |
 | `merge` |Aktualizuje stávající dokument se zadanými poli. Pokud dokument v indexu neexistuje, sloučení selže. |klíč a další pole, která si přejete definovat |Každé pole zadané ve sloučení nahradí stávající pole v dokumentu. V sadě .NET SDK obsahuje pole typu `DataType.Collection(DataType.String)`. V REST API obsahuje pole typu `Collection(Edm.String)`. Například pokud dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s polem `["economy", "pool"]` s hodnotou `tags`, konečná hodnota pole `tags` bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
@@ -74,7 +74,7 @@ Model Pull prochází podporovaný zdroj dat a automaticky nahrává data do va�
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
-+ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
++ [Databáze Azure Cosmos](https://aka.ms/documentdb-search-indexer)
 + [Databáze Azure SQL a SQL Server na virtuálních počítačích Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 Indexery propojují index se zdrojem dat (obvykle tabulka, zobrazení nebo ekvivalentní struktura) a mapují pole zdroje na odpovídající pole v indexu. Během provádění je sada řádků automaticky převedena na formát JSON a načtena do určeného indexu. Všechny indexery podporují plánování, takže můžete určit, jak často se data budou aktualizovat. Většina indexerů umožňuje sledování změn dat, pokud ho zdroj dat podporuje. Indexery sledují změny a odstranění ve stávajících dokumentech a rozpoznávají nové dokumenty, a díky tomu není potřeba aktivně spravovat data v indexu. 
@@ -93,7 +93,7 @@ Rychlý způsob, jak provést předběžnou kontrolu při nahrávání dokumentu
 > [!TIP]
 > Řada [ukázek kódu Azure kognitivní hledání](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) zahrnuje vložené nebo snadno dostupné datové sady, které nabízejí snadný způsob, jak začít. Na portálu také najdete ukázkový indexer a zdroj dat, obsahující datovou sadu malé realitní kanceláře (s názvem realestate-us-sample). Když spustíte předem nakonfigurovaný indexer na vzorovém zdroji dat, vytvoří se index a načte se do dokumentů, na které se pak můžete dotazovat v Průzkumníku služby Search nebo pomocí kódu, který zapisujete.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 + [Přehled indexeru](search-indexer-overview.md)
 + [Průvodce portálem: vytvoření, načtení a dotazování indexu](search-get-started-portal.md)

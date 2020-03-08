@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
 ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668634"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372847"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows k Azure Monitor
 
@@ -92,7 +92,7 @@ Stažený soubor pro agenta je samostatný instalační balíček.  Instalační
 
 V následující tabulce jsou vysvětlené konkrétní parametry podporované instalačním programem agenta, včetně nasazení pomocí Automatizace DSC.
 
-|Možnosti specifické pro MMA                   |Poznámky:         |
+|Možnosti specifické pro MMA                   |Poznámky         |
 |---------------------------------------|--------------|
 | NASTAVENÍ NOAPM = 1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikace .NET.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = Konfigurace agenta pro hlášení do pracovního prostoru                |

@@ -3,12 +3,12 @@ title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660916"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363718"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -125,7 +125,7 @@ Výpis všech logických svazků, názvů a jejich cest ve skupině svazků:
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 Připojení logických svazků k vybrané cestě:
@@ -202,10 +202,10 @@ Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že
 
 - `download.microsoft.com`
 - Adresy URL služby obnovení (geografické názvy) odkazují na oblast, ve které se nachází trezor služby Recovery Services.
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (pro Azure Public zeměpisných oblastech)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (pro Azure Čína 21Vianet)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (pro státní správu USA Azure)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (pro Německo Azure)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (pro Azure Public zeměpisných oblastech)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (pro Azure Čína 21Vianet)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (pro státní správu USA Azure)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (pro Německo Azure)
 - Odchozí porty 53 (DNS), 443, 3260
 
 > [!NOTE]
@@ -295,7 +295,7 @@ Pokud chcete procházet soubory a složky, používá skript iniciátor iSCSI v 
 
 Používáme mechanismus vzájemného ověřování CHAP, aby každá součást ověřovala druhou. To znamená, že u falešného iniciátoru se připojíte k cíli iSCSI a napsání falešného cíle se připojí k počítači, ve kterém se skript spouští.
 
-Tok dat mezi službou obnovení a počítačem je chráněný vytvořením zabezpečeného tunelu SSL přes TCP (v počítači, na kterém je spuštěný skript,[by se měl podporovat protokol TLS 1,2](#system-requirements) ).
+Tok dat mezi službou obnovení a počítačem je chráněný vytvořením zabezpečeného tunelu TLS přes TCP (v počítači, na kterém je spuštěný skript,[by se měl podporovat protokol tls 1,2](#system-requirements) ).
 
 Jakýkoli seznam Access Control souborů (ACL), který se nachází v nadřazeném nebo zálohovaném virtuálním počítači, se zachová i v připojeném systému souborů.
 

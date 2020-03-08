@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744747"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389827"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura virtuální sítě Azure HDInsight
 
@@ -54,18 +54,18 @@ Následující tabulka shrnuje devět uzlů clusteru, které se vytvoří při n
 
 | Typ prostředku | Číslo k dispozici | Podrobnosti |
 | --- | --- | --- |
-|Hlavní uzel | dva |    |
+|Hlavní uzel | Druhá |    |
 |Uzel Zookeeper | tři | |
-|Pracovní uzel | dva | Toto číslo se může lišit v závislosti na konfiguraci a škálování clusteru. Pro Apache Kafka je potřeba minimálně tři pracovní uzly.  |
-|Uzel brány | dva | Uzly brány jsou virtuální počítače Azure, které jsou vytvořené v Azure, ale nejsou ve vašem předplatném viditelné. Pokud potřebujete tyto uzly restartovat, obraťte se na podporu. |
+|Pracovní uzel | Druhá | Toto číslo se může lišit v závislosti na konfiguraci a škálování clusteru. Pro Apache Kafka je potřeba minimálně tři pracovní uzly.  |
+|Uzel brány | Druhá | Uzly brány jsou virtuální počítače Azure, které jsou vytvořené v Azure, ale nejsou ve vašem předplatném viditelné. Pokud potřebujete tyto uzly restartovat, obraťte se na podporu. |
 
 V rámci virtuální sítě používané se službou HDInsight se automaticky vytvoří tyto síťové prostředky:
 
 | Prostředek sítě | Číslo k dispozici | Podrobnosti |
 | --- | --- | --- |
-|Nástroj pro vyrovnávání zatížení | tři | |
+|Load Balancer | tři | |
 |Síťová rozhraní | devět | Tato hodnota je založena na běžném clusteru, kde každý uzel má své vlastní síťové rozhraní. Devět rozhraní je pro dva hlavní uzly, tři uzly Zookeeper, dva pracovní uzly a dva uzly brány, které jsou uvedené v předchozí tabulce. |
-|Veřejné IP adresy | dva |    |
+|Veřejné IP adresy | Druhá |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Koncové body pro připojení ke službě HDInsight
 

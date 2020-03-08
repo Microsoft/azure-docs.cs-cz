@@ -6,11 +6,11 @@ ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: e31d4a5f513355e61cb53a6548b3091637bfe9a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472839"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379148"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Kurz: vytvoření a nasazení první šablony Azure Resource Manager
 
@@ -20,7 +20,7 @@ Tento kurz je první z řad. Jak budete postupovat podle řady, upravíte počá
 
 Pokud se chcete dozvědět o výhodách používání šablon a proč byste měli automatizovat nasazení se šablonami, přečtěte si téma [Azure Resource Manager šablony](overview.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="get-tools"></a>Získat nástroje
 
@@ -79,13 +79,13 @@ Blahopřejeme, vytvořili jste svou první šablonu.
 
 Pokud chcete začít pracovat s Azure PowerShell/Azure CLI, přihlaste se pomocí přihlašovacích údajů Azure.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az login
@@ -96,7 +96,7 @@ az login
 
 Když nasadíte šablonu, zadáte skupinu prostředků, která bude obsahovat prostředky. Před spuštěním příkazu k nasazení vytvořte skupinu prostředků buď pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. Vyberte karty v následující části kódu a vyberte si mezi Azure PowerShell a Azure CLI. Příklady rozhraní příkazového řádku v tomto článku se napíší pro prostředí bash.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -104,7 +104,7 @@ New-AzResourceGroup `
   -Location "Central US"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -118,7 +118,7 @@ az group create \
 
 K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell. Použijte skupinu prostředků, kterou jste vytvořili. Zadejte název nasazení, abyste ho mohli snadno identifikovat v historii nasazení. Pro usnadnění práce vytvořte také proměnnou, která ukládá cestu k souboru šablony. Tato proměnná usnadňuje spuštění příkazů nasazení, protože nemusíte znovu zadávat cestu pokaždé, když nasadíte.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -128,7 +128,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -142,11 +142,11 @@ az group deployment create \
 
 Příkaz pro nasazení vrátí výsledky. Vyhledejte `ProvisioningState` a zjistěte, jestli nasazení proběhlo úspěšně.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![Stav zřizování nasazení PowerShellu](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ![Stav zřizování nasazení Azure CLI](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
@@ -156,7 +156,7 @@ Příkaz pro nasazení vrátí výsledky. Vyhledejte `ProvisioningState` a zjist
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 

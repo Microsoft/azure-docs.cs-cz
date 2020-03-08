@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
 ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671647"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373783"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.

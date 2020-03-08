@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453807"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396067"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
 
@@ -24,7 +24,7 @@ Tento článek popisuje:
 * Různá oprávnění, která můžete udělit aplikaci back-end pro přístup k vaší službě zřizování.
 * Proces ověřování a tokeny, které používá k ověření oprávnění.
 
-### <a name="when-to-use"></a>When to use
+### <a name="when-to-use"></a>Kdy je použít
 
 Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům služby zřizování. Například back-end aplikace musí zahrnovat token, který obsahuje zabezpečovací pověření, spolu s každou zprávou, kterou posílá službě.
 
@@ -39,7 +39,7 @@ Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům 
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#device-provisioning-service-permissions) .
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Azure IoT Hub Device Provisioning Service uděluje přístup k koncovým bodům tím, že ověřuje token proti zásadám sdíleného přístupu. Přihlašovací údaje zabezpečení, jako jsou například symetrické klíče, se nikdy neodesílají přes síťový kabel.
 
@@ -50,7 +50,7 @@ Další informace o tom, jak vytvořit a používat tokeny zabezpečení, najdet
 
 Jediným podporovaným protokolem je HTTP a implementuje ověřování zahrnutím platného tokenu do hlavičky **autorizační** žádosti.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 ```csharp
 SharedAccessSignature sr = 
    mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
@@ -79,7 +79,7 @@ Tady jsou očekávané hodnoty:
 | --- | --- |
 | označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256.|
 | vypršení platnosti |Řetězce UTF8 po dobu v sekundách od epocha 00:00:00 UTC dne 1. ledna 1970. |
-| {URL-encoded-resourceURI} | Malá adresa URL – kódování identifikátoru URI pro malý případ prostředku. Předpona URI (podle segmentu) koncových bodů, ke kterým se dá dostat s tímto tokenem, počínaje názvem hostitele služby IoT Device Provisioning (bez protokolu). Například, `mydps.azure-devices-provisioning.net`. |
+| {URL-encoded-resourceURI} | Malá adresa URL – kódování identifikátoru URI pro malý případ prostředku. Předpona URI (podle segmentu) koncových bodů, ke kterým se dá dostat s tímto tokenem, počínaje názvem hostitele služby IoT Device Provisioning (bez protokolu). například `mydps.azure-devices-provisioning.net`. |
 | {policyName} |Název zásad sdíleného přístupu, na který tento token odkazuje |
 
 **Poznámka k předponě**: PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c`, ale ne pro `/a/bc`.
@@ -177,7 +177,7 @@ Následující referenční témata obsahují další informace o řízení př�
 
 Následující tabulka uvádí oprávnění, která můžete použít k řízení přístupu ke službě IoT Device Provisioning.
 
-| Oprávnění | Poznámky |
+| Oprávnění | Poznámky: |
 | --- | --- |
 | **ServiceConfig** |Udělí přístup ke změně konfigurací služby. <br/>Toto oprávnění používá cloudové služby back-end. |
 | **EnrollmentRead** |Uděluje oprávnění ke čtení pro registrace zařízení a skupiny registrací. <br/>Toto oprávnění používá cloudové služby back-end. |
