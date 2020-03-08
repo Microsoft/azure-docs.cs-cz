@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 600b0f598c54b5db154fd488aebf26a6fcdc0b1d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383465"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925851"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows
 
@@ -72,7 +72,7 @@ Přiřazení Azure Active Directoryho uživatele role aplikace TenantCreator umo
 
 Přiřazení role aplikace TenantCreator:
 
-1. Chcete-li spravovat roli aplikace TenantCreator, otevřete  [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **podnikové aplikace**. Pokud pracujete s více Azure Active Directory klienty, je osvědčeným postupem otevření privátní relace prohlížeče a zkopírování a vložení adres URL do panelu Adresa.
+1. Chcete-li spravovat roli aplikace TenantCreator, otevřete [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **podnikové aplikace**. Pokud pracujete s více Azure Active Directory klienty, je osvědčeným postupem otevření privátní relace prohlížeče a zkopírování a vložení adres URL do panelu Adresa.
 
    ![Snímek obrazovky s vyhledáváním podnikových aplikací v Azure Portal](media/azure-portal-enterprise-applications.png)
 2. V rámci **podnikových aplikací**vyhledejte **virtuální počítač s Windows**. V předchozí části uvidíte dvě aplikace, které jste zadali jako souhlas. Z těchto dvou aplikací vyberte **virtuální klient Windows**.

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467595"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925808"
 ---
-V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro .NET Framework (Windows).
+V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro .NET Framework (Windows). Pokud chcete, aby název balíčku začal vlastním způsobem, spusťte `Install-Package Microsoft.CognitiveServices.Speech` v konzole NuGet.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
@@ -71,7 +71,21 @@ Budete muset nainstalovat [balíček NuGet sady Speech SDK](https://aka.ms/csspe
 
    Po instalaci balíčku se v okně **konzoly Správce balíčků** zobrazí potvrzení.
 
-Nyní můžete přejít na [Další kroky](#next-steps) níže.
+### <a name="choose-target-architecture"></a>Zvolit cílovou architekturu
+
+Chcete-li sestavit a spustit konzolovou aplikaci, vytvořte konfiguraci platformy, která odpovídá architektuře vašeho počítače.
+
+1. V řádku nabídek vyberte **sestavit** > **Configuration Manager**. Zobrazí se dialogové okno **Configuration Manager** .
+
+   ![Configuration Manager – dialogové okno](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. V rozevíracím seznamu **Aktivní platforma řešení** vyberte **Nový**. Zobrazí se dialogové okno **Nová platforma řešení** .
+
+1. V rozevíracím seznamu **Typ vyberte možnost Nová platforma** :
+   - Pokud používáte 64-bitové Windows, vyberte **x64**.
+   - Pokud používáte 32-bit Windows, vyberte **x86**.
+
+1. Vyberte **OK** a pak **Zavřít**.
 
 ## <a name="next-steps"></a>Další kroky
 

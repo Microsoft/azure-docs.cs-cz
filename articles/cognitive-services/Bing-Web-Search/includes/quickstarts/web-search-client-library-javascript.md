@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 4cfea801523fbc67766920ffd2777908be5ed40b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402555"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925200"
 ---
 Klientská knihovna Vyhledávání na webu Bingu umožňuje snadnou integraci Vyhledávání na webu Bingu do aplikace Node. js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
@@ -25,7 +25,7 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější
 * Klíč předplatného  
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
