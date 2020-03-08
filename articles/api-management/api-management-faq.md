@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967456"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375405"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné otázky, vzory a osvědčené postupy pro Azure API Management.
@@ -73,7 +73,7 @@ Máte několik možností, pokud chcete zkopírovat instanci API Management do n
 * Vytvořte vlastní funkci zálohování a obnovení pomocí [REST API API Management](/rest/api/apimanagement/). Použijte REST API k uložení a obnovení entit z instance služby, kterou chcete.
 * Stáhněte konfiguraci služby pomocí Gitu a pak ji nahrajte do nové instance. Další informace najdete v tématu [Jak uložit a nakonfigurovat konfiguraci služby API Management pomocí Gitu](api-management-configuration-repository-git.md).
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Můžu spravovat instanci služby API Management programově?
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Můžu programově spravovat instanci API Management?
 Ano, API Management můžete spravovat programově pomocí:
 
 * [REST API API Management](/rest/api/apimanagement/).
@@ -83,7 +83,7 @@ Ano, API Management můžete spravovat programově pomocí:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Návody přidat uživatele do skupiny Administrators?
 Zde je postup, jak můžete přidat uživatele do skupiny Administrators:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejít do skupiny prostředků, která obsahuje instanci API Management, kterou chcete aktualizovat.
 3. V API Management přiřaďte uživateli roli **Přispěvatel služby API Management** .
 
@@ -103,7 +103,7 @@ K nastavení více prostředí, například testovací prostředí a produkční
 * Hostování různých rozhraní API na stejném tenantovi.
 * Hostovat stejná rozhraní API v různých klientech.
 
-### <a name="can-i-use-soap-with-api-management"></a>Můžu se službou API Management používat protokol SOAP?
+### <a name="can-i-use-soap-with-api-management"></a>Je možné použít protokol SOAP s API Management?
 K dispozici je teď podpora [předávacího protokolu SOAP](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) . Správci mohou importovat WSDL své služby SOAP a Azure API Management vytvoří front-end SOAP. Dokumentace k portálu pro vývojáře, testovací konzola, zásady a analýzy jsou k dispozici pro služby SOAP.
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Můžu nakonfigurovat autorizační Server OAuth 2,0 se zabezpečením AD FS?

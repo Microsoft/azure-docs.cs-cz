@@ -5,11 +5,11 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230904"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372375"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
 
@@ -75,7 +75,7 @@ Po dokončení procesu se do vaší aplikace nasadí veškerý kód ze zadaného
 
 Pokud jste už napsali funkce v [Azure Portal](https://portal.azure.com) a chcete před přechodem na průběžné nasazování stáhnout obsah vaší aplikace, přejděte na kartu **Přehled** aplikace Function App. Vyberte tlačítko **Stáhnout obsah aplikace** .
 
-![Stažení obsahu aplikace](./media/functions-continuous-deployment/download.png)
+![Stáhnout obsah aplikace](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
 > Po konfiguraci průběžné integrace už nebudete moct zdrojové soubory upravovat na portálu Functions.

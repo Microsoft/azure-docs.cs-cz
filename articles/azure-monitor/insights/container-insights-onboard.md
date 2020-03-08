@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak povolíte a nakonfigurujete Azure Moni
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395349"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Postup povolení Azure Monitor pro kontejnery
 

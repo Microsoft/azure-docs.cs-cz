@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844730"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370557"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v 1.0 s Event Grid
 
@@ -75,7 +75,7 @@ Event Grid můžete použít pro vstupní i výstupní události ve schématu Cl
 | Formát Event Grid  | Formát CloudEvents
 | Formát Event Grid  | Formát Event Grid
 
-Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do služby Event Grid a při vytváření odběru události. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](security-authentication.md).
+Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do služby Event Grid a při vytváření odběru události. Další informace najdete v tématu [Event Grid zabezpečení a ověřování](security-authentication.md).
 
 ### <a name="input-schema"></a>Vstupní schéma
 

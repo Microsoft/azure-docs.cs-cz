@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bc1f40760c1602d81da042bf6909e44a540d35de
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612151"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390602"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Vývojové nástroje na Data Science Virtual Machine Azure
 
@@ -28,7 +28,7 @@ Sada Data Science Virtual Machine (DSVM) má několik oblíbených nástrojů v 
 | Co je to?   | Rozhraní IDE pro obecné účely      |
 | Podporované verze DSVM      | Windows: Visual Studio 2017, Windows 2019 (Preview): Visual Studio 2019      |
 | Typické použití      | Vývoj softwaru    |
-| Jak je nakonfigurovaná a nainstalovaná na DSVM?      | Úloha datové vědy (Python nebo R tools), úloha Azure (Hadoop, Data Lake), Node.js, nástroje SQL Server, [Azure Machine Learning pro Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |
+| Jak je nakonfigurovaná a nainstalovaná na DSVM?      | Úlohy datových věd (nástroje Python a R), úlohy Azure (Hadoop, Data Lake), Node. js, SQL Server Tools, [Azure Machine Learning pro Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Jak použít a spustit      | Zástupce na ploše (`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`). Graficky otevřete Visual Studio pomocí ikony na ploše nebo nabídky **Start** . Vyhledejte programy (klávesu S logem Windows + S) a potom **Visual Studio**. Odtud můžete vytvářet projekty v jazycích, jako C#je, Python, R a Node. js.   |
 | Související nástroje na DSVM      |     Visual Studio Code, RStudio, Juno  |
 
@@ -82,6 +82,6 @@ Sada Data Science Virtual Machine (DSVM) má několik oblíbených nástrojů v 
 | ------------- | ------------- |
 | Co je to?   | Klient IDE pro jazyk Python    |
 | Podporované verze DSVM      | Windows 2019 (Preview), Linux      |
-| Typické použití      |  Vývoj v jazyce Python     |
+| Typické použití      |  Vývoj v Pythonu     |
 | Jak použít a spustit      | Zástupce na ploše (`C:\Program Files\tk`) ve Windows. Zástupce na ploše (`/usr/bin/pycharm`) v systému Linux      |
 | Související nástroje na DSVM      |   Visual Studio, Visual Studio Code, RStudio      |

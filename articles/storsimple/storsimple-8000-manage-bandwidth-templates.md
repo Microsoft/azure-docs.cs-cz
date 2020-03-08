@@ -1,6 +1,6 @@
 ---
-title: Správa šablon šířky pásma pro řadu StorSimple 8000 | Dokumentace Microsoftu
-description: Popisuje, jak Správa šablon šířky pásma StorSimple, které umožňují řídit využití šířky pásma.
+title: Správa šablon šířky pásma pro řady StorSimple 8000 | Microsoft Docs
+description: Popisuje, jak spravovat šablony StorSimple šířky pásma, které umožňují řídit spotřebu šířky pásma.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,161 +15,161 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 13a3e57bb27c075fc045e87790dbe13369ed9f8e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699451"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366707"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Správa šablon šířky pásma StorSimple pomocí služby Správce zařízení StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Správa šablon šířky pásma StorSimple pomocí služby StorSimple Device Manager
 
 ## <a name="overview"></a>Přehled
 
-Šablony šířky pásma vám umožňují konfigurovat využití šířky pásma sítě mezi více plánů denní dobu pro vrstvení dat ze zařízení StorSimple do cloudu.
+Šablony šířky pásma umožňují nakonfigurovat využití šířky pásma sítě napříč více časovými plány, aby se data na úrovni zařízení StorSimple do cloudu.
 
-S plány omezení šířky pásma můžete:
+Plány omezení šířky pásma vám umožní:
 
-* Zadejte vlastní šířky pásma plány v závislosti na použití síťové úlohy.
-* Centralizujte si správu a opakovaně používat plány na různých zařízeních, snadné a bezproblémové způsobem.
+* Zadejte vlastní plány šířky pásma v závislosti na využití sítě úloh.
+* Snadný a hladce usnadňuje správu a opakované použití plánů napříč různými zařízeními.
 
 > [!NOTE]
-> Tato funkce je dostupná pouze u fyzických zařízení StorSimple (modely 8100 a 8600) a ne pro řešení StorSimple Cloud Appliance (modely 8010 a 8020).
+> Tato funkce je dostupná jenom pro fyzická zařízení StorSimple (modely 8100 a 8600), ne pro StorSimple cloudová zařízení (modely 8010 a 8020).
 
 
 ## <a name="the-bandwidth-templates-blade"></a>Okno šablony šířky pásma
 
-**Šablony šířky pásma** okno má všechny šablony šířky pásma pro vaši službu ve formátu tabulky a obsahuje následující informace:
+Okno **šablony šířky** pásma má všechny šablony šířky pásma pro vaši službu v tabulkovém formátu a obsahuje následující informace:
 
-* **Název** – jedinečný název přiřazený šablonu šířky pásma při vytvoření rovnou uložil.
-* **Plán** – počet plánů obsažené v šabloně danou šířku pásma.
-* **Používá** – počet svazky s využitím šablon šířky pásma.
+* **Název** – jedinečný název přiřazený šabloně šířky pásma při jeho vytvoření.
+* **Schedule** – počet plánů obsažených v dané šabloně šířky pásma.
+* **Používá** se – počet svazků, které používají šablony šířky pásma.
 
-Můžete také najít další informace, které vám pomohou při konfiguraci šablon šířky pásma v:
+Můžete také najít další informace, které vám pomůžou nakonfigurovat šablony šířky pásma v nástroji:
 
-* [Otázky a odpovědi týkající se šablony šířky pásma](#questions-and-answers-about-bandwidth-templates)
+* [Otázky a odpovědi týkající se šablon šířky pásma](#questions-and-answers-about-bandwidth-templates)
 * [Osvědčené postupy pro šablony šířky pásma](#best-practices-for-bandwidth-templates)
 
 ## <a name="add-a-bandwidth-template"></a>Přidat šablonu šířky pásma
 
-Proveďte následující kroky a vytvoříte novou šablonu šířky pásma.
+Chcete-li vytvořit novou šablonu šířky pásma, proveďte následující kroky.
 
 #### <a name="to-add-a-bandwidth-template"></a>Přidání šablony šířky pásma
 
-1. Přejděte do služby Správce zařízení StorSimple, klikněte na tlačítko **šablony šířky pásma** a potom klikněte na tlačítko **+ šablona šířky pásma přidat**.
+1. Přejděte ke službě StorSimple Device Manager, klikněte na **šablony šířky pásma** a potom klikněte na **+ Přidat šablonu šířky pásma**.
 
-    ![Klikněte na tlačítko + Přidat šablonu šířky pásma](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
+    ![Klikněte na + Přidat šablonu šířky pásma.](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
-2. V **přidat šablonu šířky pásma** okno, proveďte následující kroky:
+2. V okně **Přidat šablonu šířky pásma** proveďte následující kroky:
    
     1. Zadejte jedinečný název pro šablonu šířky pásma.
-    2. Definujte plán šířky pásma. Vytvoření plánu:
+    2. Definujte plán šířky pásma. Postup vytvoření plánu:
    
-        1. Z rozevíracího seznamu, zvolte **dnů** v týdnu nakonfigurovaný plán. Můžete vybrat několik dní.        
+        1. V rozevíracím seznamu vyberte **dny** v týdnu, pro které je plán nakonfigurován. Můžete vybrat více dní.        
         
-        2. Zadejte **čas zahájení** v _hh: mm_ formátu. Toto je při začne plán.
+        2. Zadejte **počáteční čas** ve formátu _HH: mm_ . Tím se spustí plán.
 
-        3. Zadejte **koncový čas** v _hh: mm_ formátu. Toto je při plán se zastaví.
+        3. Zadejte **čas ukončení** ve formátu _HH: mm_ . To se stane, když se plán zastaví.
       
            > [!NOTE]
-           > Překrývající se plány nejsou povoleny. Pokud počátečním a koncovým časem bude mít za následek překrývající se plán, zobrazí se příslušná chybová zpráva.
+           > Překrývající se plány nejsou povolené. Pokud časy zahájení a ukončení budou mít za následek překrývající se plán, zobrazí se mu chybová zpráva.
 
-        4. Zadejte **rychlost šířky pásma**. Toto je šířka pásma v megabitech za sekundu (MB/s) používané zařízení StorSimple v operace, které zahrnují cloudu (nahrávání a stahování). Do tohoto pole zadejte číslo od 1 do 1 000.
+        4. Zadejte **rychlost šířky pásma**. Jedná se o šířku pásma v megabajtech za sekundu (MB/s), kterou zařízení StorSimple používá v operacích, které se týkají cloudu (odesílání a stahování). Do tohoto pole zadejte číslo od 1 do 1 000.
 
-            ![Definujte plán šířky pásma](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
+            ![Definovat plán šířky pásma](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
          
-            Opakujte předchozí postup k definování více plánů pro šablonu, až budete hotovi.
+            Opakujte výše uvedené kroky a definujte více plánů pro šablonu, dokud nebudete hotovi.
 
-        5. Klikněte na tlačítko **přidat** chcete začít vytvářet šablonu šířky pásma. Vytvořená šablona se přidá do seznamu šablon šířky pásma.
+        5. Klikněte na tlačítko **Přidat** a začněte vytvářet šablonu šířky pásma. Vytvořená šablona se přidá do seznamu šablon šířky pásma.
       
 
 ## <a name="edit-a-bandwidth-template"></a>Upravit šablonu šířky pásma
 
-Proveďte následující kroky, chcete-li upravit šablonu šířky pásma.
+Chcete-li upravit šablonu šířky pásma, proveďte následující kroky.
 
-### <a name="to-edit-a-bandwidth-template"></a>Chcete-li upravit šablonu šířky pásma
+### <a name="to-edit-a-bandwidth-template"></a>Úprava šablony šířky pásma
 
-1. Služby do Správce zařízení StorSimple a klikněte na tlačítko **šablony šířky pásma**.
-2. V seznamu šablon šířky pásma vyberte šablonu, kterou chcete odstranit. Klikněte pravým tlačítkem a v místní nabídce vyberte **odstranit**.
-3. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **OK**. To by měl odstranit šablonu šířky pásma. 
-4. Seznam aktualizací šablony šířky pásma tak, aby odrážely odstranění.
+1. Přejděte do služby StorSimple Device Manager a klikněte na **šablony šířky pásma**.
+2. V seznamu šablon šířky pásma vyberte šablonu, kterou chcete odstranit. Klikněte pravým tlačítkem myši a v místní nabídce vyberte **Odstranit**.
+3. Po zobrazení výzvy k potvrzení klikněte na tlačítko **OK**. Tato šablona by měla odstranit šablonu šířky pásma. 
+4. Seznam šablon šířky pásma se aktualizuje tak, aby odrážel odstranění.
 
 > [!NOTE]
-> Změny nelze uložit, pokud upravených plánu překrývá s existující plán v šablonu šířky pásma, který chcete upravit.
+> Změny se nedají uložit, pokud se upravený plán překrývá s existujícím plánem v šabloně šířky pásma, kterou upravujete.
 
-## <a name="delete-a-bandwidth-template"></a>Odstranit šablonu šířky pásma
+## <a name="delete-a-bandwidth-template"></a>Odstranění šablony šířky pásma
 
-Proveďte následující kroky pro odstranění šablony šířky pásma.
+K odstranění šablony šířky pásma proveďte následující kroky.
 
-#### <a name="to-delete-a-bandwidth-template"></a>Chcete-li odstranit šablonu šířky pásma
+#### <a name="to-delete-a-bandwidth-template"></a>Odstranění šablony šířky pásma
 
-1. Služby do Správce zařízení StorSimple a klikněte na tlačítko **šablony šířky pásma**.
-2. V seznamu šablon šířky pásma vyberte šablonu, kterou chcete odstranit. Klikněte pravým tlačítkem a v místní nabídce vyberte odstranit.
-3. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **OK**. To by měl odstranit šablonu šířky pásma.
-4. Seznam aktualizací šablony šířky pásma tak, aby odrážely odstranění.
+1. Přejděte do služby StorSimple Device Manager a klikněte na **šablony šířky pásma**.
+2. V seznamu šablon šířky pásma vyberte šablonu, kterou chcete odstranit. Klikněte pravým tlačítkem myši a v místní nabídce vyberte Odstranit.
+3. Po zobrazení výzvy k potvrzení klikněte na tlačítko **OK**. Tato šablona by měla odstranit šablonu šířky pásma.
+4. Seznam šablon šířky pásma se aktualizuje tak, aby odrážel odstranění.
 
-Šablona se používá všechny svazky, nebude možné jej odstranit. Zobrazí se chybová zpráva oznamující, že šablona se používá. Dialogové okno s chybová zpráva se zobrazí informacemi, že byste měli odebrat všechny odkazy na šablony.
+Pokud je šablona používána všemi svazky, nebudete ji moci odstranit. Zobrazí se chybová zpráva s oznámením, že se šablona používá. Zobrazí se dialogové okno chybová zpráva s oznámením, že všechny odkazy na šablonu by měly být odebrány.
 
-Díky přístupu můžete odstranit všechny odkazy na šablony **kontejnery svazků** stránky a úprava kontejnerů svazků, které používají tuto šablonu tak, aby použít jinou šablonu nebo použít nastavení šířky pásma vlastní nebo neomezený. Pokud byly odebrány všechny odkazy, můžete odstranit šablonu.
+Všechny odkazy na šablonu můžete odstranit tak, že na ni přistupujete na stránce **kontejnery svazků** a upravíte kontejnery svazků, které tuto šablonu používají, aby používaly jinou šablonu, nebo použijte nastavení vlastní nebo neomezená šířka pásma. Po odebrání všech odkazů můžete šablonu odstranit.
 
 ## <a name="use-a-default-bandwidth-template"></a>Použít výchozí šablonu šířky pásma
 
-Výchozí šablona šířky pásma je k dispozici a kontejnery svazků používá ve výchozím nastavení k vynucení řízení šířky pásma při přístupu ke cloudu. Výchozí šablona slouží taky jako připravené referenční informace pro uživatele, kteří vytvářejí vlastní šablony. Podrobnosti o této výchozí šablony jsou:
+K dispozici je výchozí šablona šířky pásma, která se ve výchozím nastavení používá v kontejnerech svazků, aby při přístupu ke cloudu vynutila řízení šířky pásma. Výchozí šablona slouží také jako připravený odkaz pro uživatele, kteří vytvářejí vlastní šablony. Podrobnosti o této výchozí šabloně:
 
-* **Název** – neomezený počet nocí a víkendů
-* **Plán** – jeden plán od pondělí do pátku, která se použije rychlost šířky pásma 1 MB/s až 8: 00, čas 17: 00 zařízení. Šířka pásma nastavená na neomezený počet pro zbytek týdne.
+* **Název** – neomezená nocí a víkendy
+* **Plán** – jeden plán od pondělí do pátku, který aplikuje míru šířky pásma 1 MB/s v rozmezí od 8 dop. a 5./odp. času zařízení. Šířka pásma je pro zbytek týdne nastavená na neomezenou dobu.
 
-Můžete upravit výchozí šablonu. Použití této šablony (včetně upravenou verzí) jsou sledovány.
+Výchozí šablonu lze upravit. Použití této šablony (včetně upravených verzí) je sledováno.
 
-## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Vytvořit celodenní šablonu šířky pásma, který se spustí v zadaný čas
+## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Vytvoří celodenní šablonu šířky pásma, která začne v zadaném čase.
 
-Pomocí následujícího postupu vytvořte plán, který se spustí v určenou dobu a spustí celý den. V tomto příkladu plán začíná v 9: 00 ráno a běží až do 9: 00 příští ráno. Je důležité si uvědomit počátečním a koncovým časem pro daný plán, který musí obě být obsažena v stejné období 24 hodin a nemůžou zahrnovat víc dnů. Pokud je potřeba nastavit šablony šířky pásma, které trvají více dní, je potřeba použít více plánů (jak je znázorněno v příkladu).
+Pomocí tohoto postupu můžete vytvořit plán, který se spustí v zadanou dobu a spustí se každý den. V tomto příkladu se plán začne od ráno ráno a bude běžet až do 9. příští ráno. Je důležité si uvědomit, že časy zahájení a ukončení pro daný plán musí být obsaženy ve stejném 24hodinovém plánu a nesmí rozbírat více dní. Pokud potřebujete nastavit šablony šířky pásma, které přesahují více dní, budete muset použít více plánů (jak je znázorněno v příkladu).
 
-#### <a name="to-create-an-all-day-bandwidth-template"></a>Chcete-li vytvořit celodenní šablonu šířky pásma
+#### <a name="to-create-an-all-day-bandwidth-template"></a>Vytvoření šablony celodenní šířky pásma
 
-1. Vytvořte plán, který začíná v 9: 00 ráno a běží až do půlnoci.
-2. Přidáte jiný plán. Nakonfigurujte druhý plán pro spuštění od půlnoci do 9: 00 ráno.
+1. Vytvořte plán, který začíná v 9:00 a bude běžet až do půlnoci.
+2. Přidejte další plán. Nakonfigurujte druhý plán tak, aby běžel od půlnoci až do 9 ráno.
 3. Uložte šablonu šířky pásma.
 
-Složený plán se pak spusťte v době podle vašeho výběru a celodenní.
+Složený plán se pak spustí v čase zvolení a spuštění každý den.
 
-## <a name="questions-and-answers-about-bandwidth-templates"></a>Otázky a odpovědi týkající se šablony šířky pásma
+## <a name="questions-and-answers-about-bandwidth-templates"></a>Otázky a odpovědi týkající se šablon šířky pásma
 
-**Q**. Co se stane řízení šířky pásma, když jsou mezi plány? (Nějaký plán skončil a jiný se ještě nespustilo.)
+**Otázka**. Co se stane s ovládacími prvky šířky pásma v době mezi plány? (Plán skončil a ještě nebyl spuštěn.)
 
-**A**. V takovém případě se použijí bez řízení šířky pásma. To znamená, že zařízení může používat neomezenou šířku pásma při vrstvení dat do cloudu.
+**A**. V takových případech se nepoužijí žádné ovládací prvky šířky pásma. To znamená, že zařízení může při vrstvení dat do cloudu používat neomezenou šířku pásma.
 
-**Q**. Můžete upravit šablony šířky pásma na zařízení s offline?
+**Otázka**. Můžete upravit šablony šířky pásma na zařízení v režimu offline?
 
-**A**. Nebudete mít k úpravě šablony šířky pásma na kontejnery svazků, pokud odpovídající zařízení je offline.
+**A**. Pokud je odpovídající zařízení offline, nebudete moct měnit šablony šířky pásma na kontejnerech svazků.
 
-**Q**. Můžete upravit šablonu šířky pásma spojené s kontejner svazků, pokud přidružené svazky jsou offline?
+**Otázka**. Můžete upravit šablonu šířky pásma přidruženou k kontejneru svazků, pokud jsou přidružené svazky offline?
 
-**A**. Můžete upravit šablonu šířky pásma spojené s kontejner svazků, svazky jsou offline. Všimněte si, že když svazků jsou offline, žádná data se vrstvený ze zařízení do cloudu.
+**A**. Můžete upravit šablonu šířky pásma přidruženou k kontejneru svazků, ve kterém jsou svazky offline. Všimněte si, že když jsou svazky offline, nebudou se ze zařízení do cloudu převrstvena žádná data.
 
-**Q**. Můžete odstranit výchozí šablonu?
+**Otázka**. Můžete odstranit výchozí šablonu?
 
-**A**. I když se budete moct odstranit výchozí šablonu, není vhodné tak učinit. Použití výchozí šablony, včetně upravenou verzí, jsou sledovány. Data sledování se analyzuje a v průběhu času, se používá ke zlepšení výchozí šablony.
+**A**. I když můžete odstranit výchozí šablonu, není to vhodné. Je sledováno použití výchozí šablony, včetně upravených verzí. Data sledování se analyzují a v průběhu času se používají ke zlepšení výchozí šablony.
 
-**Q**. Jak se určují, že šablony šířky pásma, který je potřeba upravit?
+**Otázka**. Jak zjistíte, že je třeba upravit šablony šířky pásma?
 
-**A**. Mezi příznaky, že budete muset upravit šablony šířky pásma je při spuštění zobrazit síť zpomalovat nebo vyseknutí více než jednou za den. Pokud k tomu dojde, monitorujte zobrazením grafy výkonu vstupně-výstupních operací a propustnosti sítě úložiště a využití sítě.
+**A**. Jeden z příznaků, které potřebujete pro úpravu šablon šířky pásma, je při spuštění zobrazení sítě zpomalit nebo potlačení několikrát za den. Pokud k tomu dojde, Sledujte síť úložiště a využití a Prohlédněte si grafy výkon I/O a propustnost sítě.
 
-Z dat propustnost sítě určuje čas, den a kontejnery svazků, ve kterých dojde k kritická místa sítě. Pokud to se stane, když je právě data Vrstvená do cloudu (získat tyto informace z vstupně-výstupní výkon pro všechny kontejnery svazků zařízení do cloudu), pak budete muset upravit šablony šířky pásma přidružené kontejnery svazků.
+Z dat propustnosti sítě určete čas a kontejnery svazků, ve kterých dochází k kritickým místu sítě. Pokud k tomu dojde, když se data vrství do cloudu (tyto informace získáte z výkonu I/O pro všechny kontejnery svazků pro zařízení do cloudu), budete muset upravit šablony šířky pásma přidružené k kontejnerům svazků.
 
-Až se změněné šablony používá, je potřeba monitorování sítě za významné latenci. Pokud stále existují, je potřeba návštěvě šablony šířky pásma.
+Po použití upravených šablon bude nutné znovu monitorovat síť pro významné latence. Pokud ještě existují, budete muset znovu navštívit šablony šířky pásma.
 
-**Q**. Co se stane, pokud máte více kontejnerů svazků při registraci zařízení v této překrytí plány, ale pro ně používají různá omezení?
+**Otázka**. Co se stane, když máte na svém zařízení více kontejnerů svazků, které se překrývají, ale na každý z nich se vztahují jiné limity?
 
-**A**. Předpokládejme, že máte zařízení s 3 kontejnery svazků. Plány přidružené těchto kontejnerů zcela překrývat. Pro každou z těchto kontejnerů omezení šířky pásma použít se 5, 10 a 15 MB/s. Pokud dochází k vstupně-výstupních operací na všech těchto kontejnerů ve stejnou dobu, může použít minimálně 3 omezení šířky pásma: v tomto případě 5 MB/s se odchozí požadavky vstupně-výstupní operace sdílení stejné frontě.
+**A**. Pojďme předpokládat, že máte zařízení se 3 kontejnery svazků. Plány přidružené k těmto kontejnerům se úplně překrývají. Pro každý z těchto kontejnerů jsou použité limity šířky pásma 5, 10 a 15 MB/s. Když vstup/výstup probíhá na všech těchto kontejnerech současně, mohou být aplikovány minimální limity šířky pásma 3: v tomto případě je 5 MB/s, protože tyto odchozí vstupně-výstupní požadavky sdílejí stejnou frontu.
 
 ## <a name="best-practices-for-bandwidth-templates"></a>Osvědčené postupy pro šablony šířky pásma
 
-Dodržujte tyto doporučené postupy zabezpečení pro zařízení StorSimple:
+Použijte tyto osvědčené postupy pro zařízení StorSimple:
 
-* Konfigurace šablony šířky pásma na svém zařízení umožníte proměnné omezení propustnosti sítě zařízení v různých časech dne. Tyto šablony šířky pásma při použití s plány zálohování efektivně využívat další šířka pásma pro cloudové operace během hodiny mimo špičku.
-* Vypočítejte skutečnou požadovanou šířku pásma pro konkrétní nasazení na základě velikosti nasazení a plánovaná doba vyžaduje obnovení (RTO).
+* Nakonfigurujte na svém zařízení šablony šířky pásma, aby bylo možné proměnlivé omezení propustnosti sítě zařízením v různou denní dobu. Tyto šablony šířky pásma při použití s plány zálohování můžou efektivně využít další šířku pásma sítě pro cloudové operace v době mimo špičku.
+* Vypočítá skutečnou šířku pásma potřebnou pro konkrétní nasazení na základě velikosti nasazení a požadovaného plánovaného času obnovení (RTO).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

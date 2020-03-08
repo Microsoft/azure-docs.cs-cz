@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07845bb5b742b1bcfbb22d260457e9a8e16edab6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425260"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378034"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication v cloudu
 
@@ -32,8 +32,8 @@ Jako správce, který má přiřazenou roli Správce ověřování, můžete vy�
 
 ![Správa metod ověřování z Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Vlevo vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **všech uživatelích**.
 1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**.
    - Při **resetování hesla** dojde k resetování hesla uživatele a přiřazení dočasného hesla, které musí být při příštím přihlášení změněno.
    - Když se uživatel poprvé přihlásí, bude se vyžadovat, aby si ho **znovu zaregistroval** . v takovém případě bude požádán o nastavení nové metody ověřování MFA.
@@ -45,8 +45,8 @@ Toto nastavení odstraní všechna hesla aplikací, která uživatel vytvořil. 
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Jak odstranit existující hesla aplikací pro uživatele
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Vlevo vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **všech uživatelích**.
 3. Na pravé straně vyberte **Multi-Factor Authentication** na panelu nástrojů. Otevře se stránka Multi-Factor Authentication.
 4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
 5. Vyberte **Spravovat uživatelská nastavení**.

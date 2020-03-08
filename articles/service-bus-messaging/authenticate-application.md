@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
 ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996992"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395631"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service Busm entitám
 Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Service Bus entit (fronty, témata, odběry nebo filtry). Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -21,7 +21,7 @@ Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autori
 ## <a name="overview"></a>Přehled
 Když se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí o přístup k Service Bus entitě, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
 
- 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. Název prostředku pro vyžádání tokenu `https://servicebus.azure.net`.
+ 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. Název prostředku pro vyžádání tokenu je `https://servicebus.azure.net`.
  1. V dalším kroku se token předává jako součást požadavku služby Service Bus k autorizaci přístupu k zadanému prostředku.
 
 Krok ověřování vyžaduje, aby žádost o aplikaci obsahovala přístupový token OAuth 2,0 za běhu. Pokud je aplikace spuštěná v rámci entity Azure, jako je třeba virtuální počítač Azure, sada škálování virtuálního počítače nebo aplikace funkce Azure, může pro přístup k prostředkům použít spravovanou identitu. Informace o tom, jak ověřit požadavky prováděné spravovanou identitou pro Service Bus službu, najdete v tématu [ověření přístupu k prostředkům Azure Service Bus pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](service-bus-managed-service-identity.md). 
@@ -39,19 +39,19 @@ Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azur
 ## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Předdefinované role RBAC pro Azure Service Bus
 Pro Azure Service Bus už je Správa oborů názvů a všech souvisejících prostředků prostřednictvím Azure Portal a rozhraní API pro správu prostředků Azure chráněná pomocí modelu *řízení přístupu na základě role* (RBAC). Azure poskytuje níže vestavěné role RBAC pro autorizaci přístupu k oboru názvů Service Bus:
 
-- [Azure Service Bus vlastník dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Umožňuje přístup k datům Service Bus obor názvů a jeho entit (fronty, témata, odběry a filtry).
-- [Azure Service Bus odesílatel dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Tuto roli použijte k poskytnutí přístupu pro přístup k oboru názvů Service Bus a jeho entitám.
-- [Azure Service Bus příjemce dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): Tuto roli použijte k poskytnutí přístupu k oboru názvů Service Bus a jeho entitám. 
+- [Azure Service Bus vlastník dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): povoluje přístup k datům Service Bus oboru názvů a jeho entit (fronty, témata, odběry a filtry).
+- [Azure Service Bus odesílatel dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Tato role slouží k poskytnutí přístupu pro přístup k oboru názvů Service Bus a jeho entitám.
+- [Azure Service Bus příjemce dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): Tato role slouží k poskytnutí přístupu k oboru názvů Service Bus a jeho entitám. 
 
 ## <a name="resource-scope"></a>Obor prostředku 
 Než přiřadíte roli RBAC objektu zabezpečení, určete rozsah přístupu, který má objekt zabezpečení mít. Osvědčené postupy určují, že vždy nejlépe přidělíte jenom nejužšímu možnému rozsahu.
 
 Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Service Bus, počínaje nejužším rozsahem:
 
-- **Zařazení do fronty**, **tématu**nebo **předplatného**: Přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí RBAC na úrovni předplatného. 
-- **Obor názvů Service Bus**: Přiřazení role zahrnuje celou topologii Service Bus pod oborem názvů a do skupiny příjemců, která je k ní přidružená.
-- **Skupina prostředků**: Přiřazení role se vztahuje na všechny prostředky Service Bus v rámci skupiny prostředků.
-- **Předplatné:** Přiřazení role se vztahuje na všechny prostředky Service Bus ve všech skupinách prostředků v rámci předplatného.
+- **Zařazení do fronty**, **tématu**nebo **předplatného**: přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí RBAC na úrovni předplatného. 
+- **Service Bus obor názvů**: přiřazování rolí zahrnuje celou topologii Service Bus pod oborem názvů a do skupiny uživatelů, které jsou k ní přidružené.
+- **Skupina prostředků**: přiřazení role se vztahuje na všechny prostředky Service Bus v rámci skupiny prostředků.
+- **Předplatné**: přiřazení role se vztahuje na všechny prostředky Service Bus ve všech skupinách prostředků v rámci předplatného.
 
 > [!NOTE]
 > Mějte na paměti, že rozšíření přiřazení rolí RBAC může trvat až pět minut. 
@@ -67,7 +67,7 @@ Po určení vhodného oboru pro přiřazení role přejděte k tomuto prostředk
 > [!NOTE]
 > Kroky popsané níže přiřadí roli vašemu oboru názvů Service Bus. Stejný postup můžete použít k přiřazení role k ostatním podporovaným oborům (skupina prostředků, předplatné atd.).
 
-1. V [Azure Portal](https://portal.azure.com/)přejděte do svého oboru názvů Service Bus. V nabídce vlevo vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro obor názvů. Pokud potřebujete vytvořit obor názvů Service Bus, postupujte podle pokynů v tomto článku: [Vytvořte obor názvů pro zasílání zpráv Service Bus](service-bus-create-namespace-portal.md).
+1. V [Azure Portal](https://portal.azure.com/)přejděte do svého oboru názvů Service Bus. V nabídce vlevo vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro obor názvů. Pokud potřebujete vytvořit obor názvů Service Bus, postupujte podle pokynů v tomto článku: [Vytvoření oboru názvů pro zasílání zpráv Service Bus](service-bus-create-namespace-portal.md).
 
     ![V nabídce vlevo vyberte Access Control](./media/authenticate-application/select-access-control-menu.png)
 1. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí. Na panelu nástrojů vyberte tlačítko **Přidat** a pak vyberte **Přidat přiřazení role**. 
@@ -91,14 +91,14 @@ Klíčovou výhodou použití Azure AD s Service Bus je to, že vaše přihlašo
 
 V následujících částech se dozvíte, jak nakonfigurovat nativní aplikaci nebo webovou aplikaci pro ověřování pomocí platformy Microsoft Identity Platform 2,0. Další informace o Microsoft Identity Platform 2,0 najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../active-directory/develop/v2-overview.md).
 
-Přehled toku přidělení kódu OAuth 2.0, naleznete v tématu [autorizovat přístup k Azure Active Directory webovým aplikacím pomocí OAuth 2.0 kódu udělit tok](../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Přehled toku udělení kódu OAuth 2,0 najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
 ### <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrace aplikace pomocí tenanta služby Azure AD
-Prvním krokem při použití Azure AD k autorizaci Service Bus entit je registrace klientské aplikace pomocí klienta služby Azure AD z [Azure Portal](https://portal.azure.com/). Při registraci klientské aplikace zadáváte informace o aplikaci službě AD. Azure AD pak poskytuje ID klienta (označované také jako ID aplikace), které můžete použít k přidružení aplikace k modulu runtime služby Azure AD. Další informace o ID klienta najdete v tématu [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
+Prvním krokem při použití Azure AD k autorizaci Service Bus entit je registrace klientské aplikace pomocí klienta služby Azure AD z [Azure Portal](https://portal.azure.com/). Při registraci klientské aplikace zadáváte informace o aplikaci službě AD. Azure AD pak poskytuje ID klienta (označované také jako ID aplikace), které můžete použít k přidružení aplikace k modulu runtime služby Azure AD. Další informace o ID klienta najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
 
 Následující obrázky ukazují kroky pro registraci webové aplikace:
 
-![Zaregistrovat aplikaci](./media/authenticate-application/app-registrations-register.png)
+![Registrace aplikace](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
 > Pokud aplikaci zaregistrujete jako nativní aplikaci, můžete pro identifikátor URI přesměrování zadat libovolný platný identifikátor URI. Pro nativní aplikace nemusí být tato hodnota skutečnou adresou URL. Pro webové aplikace musí být identifikátor URI pro přesměrování platným identifikátorem URI, protože určuje adresu URL, na které jsou tokeny poskytovány.
@@ -107,7 +107,7 @@ Po zaregistrování aplikace se v části **Nastavení**zobrazí **ID aplikace (
 
 ![ID aplikace registrované aplikace](./media/authenticate-application/application-id.png)
 
-Další informace o registraci aplikace v Azure AD najdete v tématu [integrace aplikací s Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md).
+Další informace o registraci aplikace v Azure AD najdete v tématu [integrování aplikací pomocí Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md).
 
 > [!IMPORTANT]
 > Poznamenejte si **TenantId** a **ApplicationId**. Tyto hodnoty budete potřebovat ke spuštění aplikace.
@@ -125,10 +125,10 @@ Aplikace potřebuje při žádosti o tokenu klíč klienta k prokázání jeho i
     ![Přidat stránku tajného klíče klienta](./media/authenticate-application/add-client-secret-page.png)
 1. Hodnotu nového tajného klíče hned zkopírujte do zabezpečeného umístění. Hodnota Fill se zobrazí pouze jednou.
 
-    ![Tajný kód klienta](./media/authenticate-application/client-secret.png)
+    ![Tajný klíč klienta](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Oprávnění pro rozhraní Service Bus API
-Pokud je vaše aplikace Konzolová aplikace, musíte zaregistrovat nativní aplikaci a přidat oprávnění rozhraní API pro **Microsoft. ServiceBus** do požadované sady **oprávnění** . Nativní aplikace také potřebují identifikátor **URI přesměrování** ve službě Azure AD, který slouží jako identifikátor; identifikátor URI nemusí být cílovým umístěním v síti. Použití `https://servicebus.microsoft.com` v tomto příkladu vzhledem k tomu, že ukázkový kód již používá tento identifikátor URI.
+Pokud je vaše aplikace Konzolová aplikace, musíte zaregistrovat nativní aplikaci a přidat oprávnění rozhraní API pro **Microsoft. ServiceBus** do požadované sady **oprávnění** . Nativní aplikace také potřebují identifikátor **URI přesměrování** ve službě Azure AD, který slouží jako identifikátor; identifikátor URI nemusí být cílovým umístěním v síti. Pro tento příklad použijte `https://servicebus.microsoft.com`, protože vzorový kód již používá tento identifikátor URI.
 
 ### <a name="client-libraries-for-token-acquisition"></a>Klientské knihovny pro získání tokenu  
 Po zaregistrování aplikace a udělení oprávnění k odesílání a přijímání dat v Azure Service Bus můžete do své aplikace přidat kód pro ověření objektu zabezpečení a získání tokenu OAuth 2,0. K ověření a získání tokenu můžete použít buď jednu z [knihoven ověřování Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md) , nebo jinou Open Source knihovnu, která podporuje OpenID nebo Connect 1,0. Aplikace pak může použít přístupový token k autorizaci žádosti o Azure Service Bus.
@@ -136,7 +136,7 @@ Po zaregistrování aplikace a udělení oprávnění k odesílání a přijím�
 Seznam scénářů, pro které se podporují tokeny, najdete v části [scénáře](https://aka.ms/msal-net-scenarios) v [knihovně Microsoft Authentication Library (MSAL) pro](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) úložiště GitHub .NET.
 
 ## <a name="sample-on-github"></a>Ukázka na GitHubu
-Viz následující ukázka na GitHubu: [Základní řízení přístupu role pro Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
+Viz následující ukázka na GitHubu: [role – základní řízení přístupu pro Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
 
 Použijte možnost **přihlášení pomocí tajného klíče klienta** , nikoli možnost **interaktivního přihlášení uživatele** . Když použijete možnost tajný klíč klienta, nezobrazí se místní okno. Aplikace využívá ID tenanta a ID aplikace pro ověřování. 
 
@@ -144,17 +144,17 @@ Použijte možnost **přihlášení pomocí tajného klíče klienta** , nikoli 
 
 Předtím, než můžete spustit ukázku, upravte soubor **App. config** a v závislosti na vašem scénáři nastavte následující hodnoty:
 
-- `tenantId`: Nastavte na hodnotu **TenantId** .
-- `clientId`: Nastavte na hodnotu **ApplicationId** .
-- `clientSecret`: Pokud se chcete přihlásit pomocí tajného kódu klienta, vytvořte ho v Azure AD. Také můžete použijte webovou aplikaci nebo API namísto nativní aplikaci. Přidejte také aplikaci v rámci **řízení přístupu (IAM)** v oboru názvů, kterou jste vytvořili dřív.
-- `serviceBusNamespaceFQDN`: Nastavte na úplný název DNS nově vytvořeného oboru názvů Service Bus; například `example.servicebus.windows.net`.
+- `tenantId`: nastavte na hodnotu **TenantId** .
+- `clientId`: nastavte na hodnotu **ApplicationId** .
+- `clientSecret`: Pokud se chcete přihlásit pomocí tajného kódu klienta, vytvořte ho v Azure AD. Také můžete použijte webovou aplikaci nebo API namísto nativní aplikaci. Do oboru názvů, který jste dříve vytvořili, taky přidejte aplikaci do **Access Control (IAM)** .
+- `serviceBusNamespaceFQDN`: nastavte úplný název DNS nově vytvořeného oboru názvů Service Bus; například `example.servicebus.windows.net`.
 - `queueName`: Nastavte název fronty, kterou jste vytvořili.
 - Identifikátor URI pro přesměrování, který jste zadali ve vaší aplikaci v předchozích krocích.
 
 Když spustíte konzolovou aplikaci, zobrazí se výzva k výběru scénáře. Vyberte **interaktivní uživatelské přihlášení** zadáním jeho čísla a stisknutím klávesy ENTER. Aplikace zobrazí okno přihlášení, požádá o souhlas s přístupem k Service Bus a potom službu použije ke spuštění prostřednictvím scénáře odeslání a přijetí pomocí identity přihlášení.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md)?
 - Další informace o tom, jak přiřadit a spravovat přiřazení rolí RBAC pomocí Azure PowerShell, Azure CLI nebo REST API, najdete v těchto článcích:
     - [Správa řízení přístupu na základě role (RBAC) pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  

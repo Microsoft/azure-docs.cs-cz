@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 7b7a3a0a87996358436df9f7ee4a266574c0b7db
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927092"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385523"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat účet komerčního tržiště v partnerském centru
 
@@ -232,7 +232,7 @@ Pokud vyberete více než jednu skupinu, kterou chcete přidat do svého účtu 
 
 Když přidáte existující skupinu, bude mít každý uživatel, který je členem této skupiny, přístup k vašemu účtu partnerského centra s oprávněními přidruženými k přiřazené roli skupiny.
 
-#### <a name="add-a-new-group"></a>Přidání nové skupiny
+#### <a name="add-a-new-group"></a>Přidat novou skupinu
 
 Přidání značky – nová skupina k vašemu účtu partnerského centra:
 
@@ -291,11 +291,11 @@ Pokud vaše aplikace Azure AD čte a zapisuje data v Microsoft Azure AD, bude po
 4. Zobrazí se obrazovka s **ID klienta** a **klíčovými hodnotami**. Nezapomeňte tyto informace vytisknout nebo zkopírovat, protože po opuštění této stránky nebudete moct znovu získat přístup.
 5. Pokud chcete vytvořit více klíčů, vyberte **Přidat další klíč**.
 
-## <a name="define-user-roles-and-permissions"></a>Definování rolí a oprávnění uživatelů
+## <a name="define-user-roles-and-permissions"></a>Definování uživatelských rolí a oprávnění
 
 Uživatelům vaší společnosti můžete přiřadit následující role a oprávnění pro program komerčního tržiště v partnerském centru:
 
-- **Manager**
+- **Programu**
   - Má přístup ke všem funkcím účet Microsoft s výjimkou nastavení daně a výběr
   - Může spravovat uživatele, role a pracovní účty (klienty).
 - **Developer**

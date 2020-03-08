@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: fc108b9f49bc88c722ac2462ee82e27b6c6de5c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163938"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377835"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím pomocí OpenID Connect a Azure Active Directory
 
@@ -35,7 +35,7 @@ OpenID Connect je naše doporučení, pokud vytváříte webovou aplikaci, kter�
 ## <a name="register-your-application-with-your-ad-tenant"></a>Registrace aplikace pomocí tenanta AD
 Nejdřív svou aplikaci zaregistrujete u svého tenanta Azure Active Directory (Azure AD). Pro svou aplikaci tak získáte ID a umožníte jí přijímat tokeny.
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
    
 1. Zvolte svého tenanta Azure AD tak, že vyberete svůj účet v pravém horním rohu stránky a potom vyberete možnost navigace v **adresáři přepínače** a pak vyberete příslušného tenanta. 
    - Tento krok přeskočte, pokud máte ve svém účtu jenom jednoho tenanta Azure AD, nebo pokud jste už vybrali příslušného tenanta Azure AD.
@@ -157,7 +157,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Parametr | Popis |
 | --- | --- |
-| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Chybové kódy pro chyby koncového bodu autorizace
@@ -267,7 +267,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Parametr | Popis |
 | --- | --- |
-| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 
 Popis možných kódů chyb a jejich doporučené akce klienta najdete v tématu [kódy chyb pro chyby koncového bodu autorizace](#error-codes-for-authorization-endpoint-errors).

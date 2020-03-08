@@ -12,11 +12,11 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822109"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359134"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která využívá horizontálně dělené víceklientské databáze SQL
 
@@ -32,7 +32,7 @@ V tomto kurzu se seznámíte s následujícími dvěma scénáři:
 
 Funkce [elastické úlohy](elastic-jobs-overview.md) Azure SQL Database slouží ke spouštění těchto operací mezi databázemi klientů. Úlohy také fungují v databázi tenanta Template. V ukázkové aplikaci Wingtip Tickets se tato šablona databáze zkopíruje, aby se zřídila nová databáze tenanta.
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořte agenta úloh.
@@ -40,7 +40,7 @@ Co se v tomto kurzu naučíte:
 > * Aktualizuje referenční data ve všech databázích tenanta.
 > * Vytvoří index tabulky ve všech databázích tenantů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Aplikace víceklientské lístky Wingtip již musí být nasazené:
     - Pokyny najdete v prvním kurzu, který zavádí společnost Wingtip Tickets SaaS multi-tenant Database App:<br />[Nasazení a zkoumání horizontálně dělené aplikace s více klienty, která používá Azure SQL Database](saas-multitenantdb-get-started-deploy.md).
@@ -88,7 +88,7 @@ Databáze každého tenanta obsahuje sadu typů míst v tabulce **VenueTypes** .
 Nejprve zkontrolujte typy míst, které jsou součástí každé databáze tenanta. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a prozkoumejte tabulku VenueTypes.  Tuto tabulku můžete také dotazovat v editoru dotazů v Azure Portal, ke kterému se dostanete ze stránky databáze.
 
 1. Otevřete SSMS a připojte se k klientskému serveru: *tenants1-DPT-&lt;user&gt;. Database.Windows.NET*
-1. Pokud si chcete ověřit, že **se** v tuto chvíli nezahrnují *motocykly* a *kluby* , přejděte k databázi *contosoconcerthall* na serveru *tenants1-DPT-&lt;User&gt;* Server a Dotazujte se na *VenueTypes.* tabulka:
+1. Pokud si chcete ověřit, že **se** v tuto chvíli nezahrnují *motocykly* a *kluby klubu* , přejděte k databázi *contosoconcerthall* na serveru *tenants1-DPT-&lt;User&gt;* Server a Dotazujte tabulku *VenueTypes* .
 
 
 

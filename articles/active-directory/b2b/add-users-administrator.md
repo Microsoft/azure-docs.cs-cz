@@ -12,11 +12,11 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869293"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374925"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal
 
@@ -63,14 +63,14 @@ Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá d
 
 ![Zobrazuje uživatele B2B s uživatelem typu Host.](./media/add-users-administrator/GuestUserType.png)  
 
-## <a name="add-guest-users-to-a-group"></a>Přidání uživatelů typu host do skupiny
+## <a name="add-guest-users-to-a-group"></a>Přidat uživatele typu Host do skupiny
 Pokud potřebujete ručně přidat uživatele spolupráce B2B do skupiny, postupujte takto:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. Vyhledejte a vyberte **Azure Active Directory** z libovolné stránky.
 3. V části **Spravovat**vyberte **skupiny**.
 4. Vyberte skupinu (nebo kliknutím na **Nová skupina** vytvořte novou). Je vhodné zahrnout do popisu skupiny, že skupina obsahuje uživatele typu Host B2B.
-5. Vyberte možnost **Členové**. 
+5. Vyberte **členy**. 
 6. Proveďte jednu z těchto akcí:
    - Pokud uživatel typu host již v adresáři existuje, vyhledejte uživatele B2B. Vyberte uživatele a kliknutím na tlačítko **Vybrat** přidejte uživatele do skupiny.
    - Pokud uživatel typu Host ještě v adresáři neexistuje, Pozvěte ho do skupiny zadáním jejich e-mailové adresy do vyhledávacího pole, zadáním volitelné osobní zprávy a kliknutím na **Vybrat**. Pozvánka se automaticky přehraje pozvánému uživateli.
@@ -79,7 +79,7 @@ Pokud potřebujete ručně přidat uživatele spolupráce B2B do skupiny, postup
    
 Dynamické skupiny můžete použít také při spolupráci Azure AD B2B. Další informace najdete v tématu [dynamické skupiny a Azure Active Directory spolupráce B2B](use-dynamic-groups.md).
 
-## <a name="add-guest-users-to-an-application"></a>Přidání uživatelů typu host do aplikace
+## <a name="add-guest-users-to-an-application"></a>Přidání uživatelů typu Host do aplikace
 
 Pokud chcete do aplikace přidat uživatele spolupráce B2B, postupujte takto:
 
@@ -91,7 +91,7 @@ Pokud chcete do aplikace přidat uživatele spolupráce B2B, postupujte takto:
 
     ![Tlačítko celkem uživatelů pro přidání otevřených uživatelů a skupin](./media/add-users-administrator/AppUsersAndGroups.png)
 
-6. Vyberte možnost **Přidat uživatele**.
+6. Vyberte **Přidat uživatele**.
 7. V části **Přidat přiřazení**vyberte **uživatele a skupiny**.
 8. Proveďte jednu z těchto akcí:
    - Pokud uživatel typu host již v adresáři existuje, vyhledejte uživatele B2B. Vyberte uživatele, klikněte na **Vybrat**a pak kliknutím na **přiřadit** přidejte uživatele do aplikace.
@@ -107,7 +107,7 @@ Pokud chcete do aplikace přidat uživatele spolupráce B2B, postupujte takto:
    - Klikněte na **Vybrat**.
    - Klikněte na **Přiřadit**.
  
-## <a name="resend-invitations-to-guest-users"></a>Opětovné poslání pozvánky uživatelům typu host
+## <a name="resend-invitations-to-guest-users"></a>Znovu poslat pozvánky uživatelům typu Host
 
 Pokud uživatel typu Host ještě nepoužil své pozvání, můžete znovu odeslat e-mail s pozvánkou.
 

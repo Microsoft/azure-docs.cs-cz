@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176556"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374474"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Šablony stránek v Azure API Management
-Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru dle vašeho výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a poskytnuté sady lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md)máte skvělou flexibilitu při konfiguraci obsah stránek se zobrazí podle svých potřeb pomocí těchto šablon.  
+Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
   
  Šablony v této části vám umožní přizpůsobit obsah stránek přihlášení, registrace a nenalezené stránky na portálu pro vývojáře.  
   
@@ -229,11 +229,11 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|referenceCode|string|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|ErrorCode|string|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|emailBody|string|Tělo e-mailu vygenerovalo, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|requestedUrl|string|Adresa URL požadovaná při nalezení stránky|  
-|referrerUrl|string|Adresa URL odkazující na požadovanou adresu URL|  
+|referenceCode|řetězec|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
+|errorCode|řetězec|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
+|emailBody|řetězec|Tělo e-mailu vygenerovalo, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
+|requestedUrl|řetězec|Adresa URL požadovaná při nalezení stránky|  
+|referrerUrl|řetězec|Adresa URL odkazující na požadovanou adresu URL|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931732"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365792"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Připojení a Správa zařízení StorSimple pomocí Snapshot Manager StorSimple
 ## <a name="overview"></a>Přehled
@@ -33,10 +33,10 @@ V závislosti na výběru **zobrazení** zobrazuje podokno **výsledků** násle
 
 | Sloupec výsledků | Popis |
 |:--- |:--- |
-| Name (Název) |Název zařízení, jak je nakonfigurované na portálu Azure Classic |
+| Název |Název zařízení, jak je nakonfigurované na portálu Azure Classic |
 | Model |Číslo modelu zařízení |
 | Verze |Verze softwaru nainstalovaného v zařízení |
-| Stav |Zda je zařízení k dispozici |
+| Status |Zda je zařízení k dispozici |
 | Poslední synchronizace |Datum a čas poslední synchronizace zařízení |
 | Sériové číslo. |Sériové číslo zařízení |
 
@@ -83,7 +83,7 @@ K přidání nebo nahrazení zařízení StorSimple použijte následující pos
    
     ![Konfigurace zařízení StorSimple](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
 3. V rozevíracím seznamu **zařízení** vyberte IP adresu zařízení nebo virtuálního zařízení. 
-4. Do textového pole **heslo** zadejte StorSimple Snapshot Manager heslo, které jste vytvořili pro zařízení na portálu Azure Classic. Klikněte na **OK**. StorSimple Snapshot Manager vyhledá zařízení, které jste identifikovali. 
+4. Do textového pole **heslo** zadejte StorSimple Snapshot Manager heslo, které jste vytvořili pro zařízení na portálu Azure Classic. Klikněte na tlačítko **OK**. StorSimple Snapshot Manager vyhledá zařízení, které jste identifikovali. 
    
    * Pokud je zařízení k dispozici, StorSimple Snapshot Manager přidá připojení.
    * Pokud zařízení není z nějakého důvodu k dispozici, StorSimple Snapshot Manager vrátí chybovou zprávu. Kliknutím na tlačítko **OK** zavřete chybovou zprávu a kliknutím na tlačítko **Storno** zavřete dialogové okno **Konfigurace zařízení** .
@@ -101,7 +101,7 @@ Pomocí následujícího postupu připojte zařízení StorSimple a ověřte, zd
 3. Pravým tlačítkem myši klikněte na nejvyšší uzel v podokně **Rozsah** a pak klikněte na tlačítko **Přepnout import zobrazení**.
    
     ![Vyberte možnost přepnout zobrazení importů.](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. Zobrazí se dialogové okno **Přepnout zobrazení importů** , ve kterém se zobrazuje stav importovaných skupin svazků a záloh. Klikněte na **OK**.
+4. Zobrazí se dialogové okno **Přepnout zobrazení importů** , ve kterém se zobrazuje stav importovaných skupin svazků a záloh. Klikněte na tlačítko **OK**.
 
 Po úspěšném naimportování skupin svazků a zálohování můžete k jejich správě použít Snapshot Manager StorSimple stejně, jako byste spravovali skupiny svazků a zálohy, které jste vytvořili a nakonfigurovali pomocí Snapshot Manager StorSimple. 
 
@@ -206,7 +206,7 @@ Pokud zařízení StorSimple selhalo a nahrazuje ho pohotovostním zařízením 
 4. Spusťte StorSimple Snapshot Manager.
 5. Pokud chcete nakonfigurovat nové zařízení StorSimple, postupujte podle kroků v části Krok 2: připojení zařízení StorSimple v části [nasazení StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
 6. Klikněte pravým tlačítkem myši na uzel nejvyšší úrovně v podokně **oboru** (StorSimple Snapshot Manager v příkladu) a pak klikněte na **Přepnout zobrazení importy**. 
-7. Zpráva se zobrazí, když se importované skupiny svazků a zálohy zobrazí v StorSimple Snapshot Manager. Klikněte na **OK**.
+7. Zpráva se zobrazí, když se importované skupiny svazků a zálohy zobrazí v StorSimple Snapshot Manager. Klikněte na tlačítko **OK**.
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [používat Snapshot Manager StorSimple ke správě řešení StorSimple](storsimple-snapshot-manager-admin.md).

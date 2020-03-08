@@ -12,11 +12,11 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: ba7976d602412037578d0a324916718b2d515aac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771781"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355518"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Proveďte výuku a zaregistrujte model klasifikace Keras pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Bez ohledu na to, jestli vyvíjíte model Keras z provozu nebo přenášíte exi
 
 Informace o rozdílech mezi strojovým učením a obsáhlým učením najdete v [koncepčním článku](concept-deep-learning-vs-machine-learning.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Spusťte tento kód v jednom z těchto prostředí:
 
@@ -212,7 +212,7 @@ V tomto článku jste si vyškole a zaregistrovali Keras model na Azure Machine 
 
 > [!div class="nextstepaction"]
 > [Jak a kde nasadit modely](how-to-deploy-and-where.md)
-* [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
-* [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
-* [Nasazení trénovaného modelu](how-to-deploy-and-where.md)
+* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
+* [Ladit parametry](how-to-tune-hyperparameters.md)
+* [Nasazení trained model](how-to-deploy-and-where.md)
 * [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

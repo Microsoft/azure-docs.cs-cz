@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155617"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381667"
 ---
-# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Řešení chyb ověřování při připojení k virtuálnímu počítači Azure pomocí protokolu RDP
+# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Řešení chyb ověřování při připojování k virtuálnímu počítači Azure pomocí protokolu RDP
 
 Tento článek vám může pomoct při odstraňování chyb ověřování, ke kterým dochází při použití připojení protokol RDP (Remote Desktop Protocol) (RDP) pro připojení k virtuálnímu počítači Azure (VM).
 
@@ -83,7 +83,7 @@ Pokud se chcete vzdáleně připojit k virtuálnímu počítači, použijte jedn
 
 ### <a name="group-policy-client-service"></a>Klientská služba zásad skupiny
 
-Pokud se jedná o virtuální počítač připojený k doméně, nejdřív zastavte službu klienta Zásady skupiny, aby nedošlo k přepsání změn zásad služby Active Directory. Chcete-li to provést, spusťte následující příkaz:
+Pokud se jedná o virtuální počítač připojený k doméně, nejdřív zastavte službu klienta Zásady skupiny, aby nedošlo k přepsání změn zásad služby Active Directory. Provedete to spuštěním následujícího příkazu:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
@@ -101,7 +101,7 @@ gpupdate /force
 
 Pokud se změna vrátí, znamená to, že problém způsobuje zásada služby Active Directory. 
 
-### <a name="workaround"></a>Alternativní řešení:
+### <a name="workaround"></a>Alternativní řešení
 
 Pokud chcete tento problém obejít, zakažte NLA spuštěním následujících příkazů v příkazovém okně:
 
@@ -202,15 +202,15 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 Na základě hodnoty registru použijte následující postup:
 
-* 4 (FIPS): Přejít na [kontrolu připojení algoritmů kompatibilních se standardem FIPs](#fips-compliant).
+* 4 (FIPS): Přejít na [kontrolu připojení algoritmů kompatibilních se standardem FIPS](#fips-compliant).
 
-* 3 (128 bitů šifrování): Spuštěním následujícího příkazu nastavte závažnost na **2** :
+* 3 (128 bitů šifrování): závažnost nastavte na **2** spuštěním následujícího příkazu:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (nejvyšší možná šifrování, jak je Nadiktuj klient): Můžete zkusit nastavit šifrování na minimální hodnotu **1** spuštěním následujícího příkazu:
+* 2 (nejvyšší možná šifrování, jak je Nadiktuj klient): můžete zkusit nastavit šifrování na minimální hodnotu **1** spuštěním následujícího příkazu:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f

@@ -12,11 +12,11 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 6b3047eb600c3d5808993c3646f718ca25824962
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192672"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380761"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Izolace skupiny úloh Azure synapse Analytics (Preview)
 

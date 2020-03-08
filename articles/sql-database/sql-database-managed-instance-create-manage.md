@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823404"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360508"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Reference spravovaného rozhraní API pro Azure SQL Database spravované instance
 
@@ -72,7 +72,7 @@ Pokud chcete vytvořit a spravovat spravované instance pomocí [Azure CLI](/cli
 Chcete-li vytvořit a spravovat databázi instancí po vytvoření spravované instance, použijte následující příkazy T-SQL. Tyto příkazy můžete vydat pomocí Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio) [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [Visual Studio Code](https://code.visualstudio.com/docs)nebo jakýkoli jiný program, který se může připojit k serveru Azure SQL Database a předat příkazy jazyka Transact-SQL.
 
 > [!TIP]
-> Pro rychlé starty, které ukazují, že musíte nakonfigurovat a připojit se ke spravované instanci pomocí SQL Server Management Studio v systému Microsoft Windows, přečtěte si téma [rychlý Start: konfigurace virtuálního počítače Azure pro připojení k spravované instanci Azure SQL Database](sql-database-managed-instance-configure-vm.md) a [rychlé zprovoznění: Nakonfigurujte připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí](sql-database-managed-instance-configure-p2s.md).
+> Pro rychlé starty ukazující, že musíte nakonfigurovat a připojit se ke spravované instanci pomocí SQL Server Management Studio v systému Microsoft Windows, najdete informace v tématu [rychlý Start: konfigurace virtuálního počítače Azure pro připojení k spravované instanci Azure SQL Database](sql-database-managed-instance-configure-vm.md) a [rychlé zprovoznění: Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního](sql-database-managed-instance-configure-p2s.md)prostředí.
 > [!IMPORTANT]
 > Pomocí jazyka Transact-SQL nemůžete vytvořit nebo odstranit spravovanou instanci.
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672272"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384468"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží s Azure Diagnostics
 Tento článek popisuje informace o odstraňování potíží, které souvisí s používáním Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -165,7 +165,7 @@ Tabulky v úložišti Azure, které uchovávají události ETW, se nazývají po
             tableName = "WAD" + eventDestination;
 ```
 
-Tady je příklad:
+Zde naleznete příklad:
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -212,7 +212,7 @@ Tento kód generuje čtyři tabulky:
 | Provider = "Prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("Prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Postup kontroly konfigurace rozšíření diagnostiky
 Nejjednodušší způsob, jak ověřit konfiguraci rozšíření, je přejít na [Azure Resource Explorer](https://resources.azure.com)a pak přejít na virtuální počítač nebo na cloudovou službu, kde je rozšíření Azure Diagnostics (IaaSDiagnostics/PaaDiagnostics).

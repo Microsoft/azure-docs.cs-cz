@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397336"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
@@ -56,6 +56,6 @@ Následující tabulka ukazuje, jak se při použití rozhraní Azure Cosmos DB 
 
 Přečtěte si další informace o úrovních konzistence a kompatibilitě mezi Azure Cosmos DB API pomocí Open Source rozhraní API. Viz následující články:
 
-* [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
+* [Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
 * [MongoDB funkce podporované rozhraním API Azure Cosmos DB pro MongoDB](mongodb-feature-support.md)
 * [Funkce Apache Cassandra podporované Azure Cosmos DB rozhraní API Cassandra](cassandra-support.md)

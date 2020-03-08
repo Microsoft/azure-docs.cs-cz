@@ -11,11 +11,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
 ms.openlocfilehash: 0506527808892bf1ee531d892e2773d095e18560
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965626"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362689"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Řešení potíží s virtuálními počítači v Azure pomocí diagnostiky spouštění
 
@@ -25,7 +25,7 @@ Pro virtuální počítače se systémem Linux můžete zobrazit výstup protoko
 
 Můžete vybrat možnost **Diagnostika spouštění** a zobrazit protokol a snímek obrazovky.
 
-![Správce prostředků](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
+![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>Běžné chyby spuštění
 

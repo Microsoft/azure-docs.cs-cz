@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276907"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365794"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Výměna modulu záložní baterie na zařízení StorSimple
 
@@ -39,9 +39,9 @@ Modul záložní baterie pro zařízení StorSimple je jednotka, která je nahra
    
     **Obrázek 1** Zpět primární zařízení, které zobrazuje moduly PCM a Controller
    
-   | Štítek | Popis |
+   | Popisek | Popis |
    |:--- |:--- |
-   | 1\. místo |PCM 0 |
+   | 1 |PCM 0 |
    | 2 |PCM 1 |
    | 3 |Kontroler 0 |
    | 4 |Kontroler 1 |
@@ -52,9 +52,9 @@ Modul záložní baterie pro zařízení StorSimple je jednotka, která je nahra
    
     **Obrázek 2** Zpět PCM ukazující indikátory LED sledování
    
-   | Štítek | Popis |
+   | Popisek | Popis |
    |:--- |:--- |
-   | 1\. místo |Výpadek napájení elektrické sítě |
+   | 1 |Výpadek napájení elektrické sítě |
    | 2 |Selhání ventilátoru |
    | 3 |Chyba baterie |
    | 4 |PCM – OK |

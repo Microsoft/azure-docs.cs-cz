@@ -10,11 +10,11 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888875"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392301"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení pro monitorování
 
@@ -57,7 +57,7 @@ Pokud chcete vytvořit pravidlo, které generuje upozornění, když tlak v chla
 | Popis      | Tlak v chladiči překročil 150 PSI |
 | Skupina zařízení     | Skupina zařízení **Chladiče**             |
 | Výpočet      | Okamžitý                               |
-| Pole podmínky 1| tlak                              |
+| Pole podmínky 1| pressure                              |
 | Operátor podmínky 1 | Větší než                      |
 | Hodnota podmínky 1    | 150                               |
 | Úroveň závažnosti  | Upozornění                               |

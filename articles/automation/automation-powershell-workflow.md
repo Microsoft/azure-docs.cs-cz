@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421554"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372403"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Principy konceptu pracovního postupu prostředí Windows PowerShell pro výuku pro Runbooky služby Automation
 
@@ -41,7 +41,7 @@ Kód pracovního postupu PowerShellu vypadá téměř stejně jako kód skriptu 
 
 ### <a name="activities"></a>Aktivity
 
-Aktivita je specifická úloha v pracovním postupu. Stejně jako se skript skládá z jednoho nebo více příkazů, pracovní postup se skládá z jedné nebo více aktivit, které se provádějí v pořadí. Pracovní postup prostředí Windows PowerShell automaticky převádí mnoho rutin prostředí Windows PowerShell na aktivity při spuštění pracovního postupu. Když zadáte jednu z těchto rutin v Runbooku, odpovídající aktivita se spustí programovací model Windows Workflow Foundation. Případě rutin bez odpovídající aktivity pracovní postup prostředí Windows PowerShell automaticky spustí rutinu v rámci [InlineScript](#inlinescript) aktivity. K dispozici je sada rutin, které jsou vyloučeny a nemohou být použity v pracovním postupu, pokud je výslovně nezahrnete do bloku aktivity InlineScript. Další podrobnosti o těchto konceptech najdete v tématu [pomocí aktivity ve skriptových pracovních postupech](https://technet.microsoft.com/library/jj574194.aspx).
+Aktivita je specifická úloha v pracovním postupu. Stejně jako se skript skládá z jednoho nebo více příkazů, pracovní postup se skládá z jedné nebo více aktivit, které se provádějí v pořadí. Pracovní postup prostředí Windows PowerShell automaticky převádí mnoho rutin prostředí Windows PowerShell na aktivity při spuštění pracovního postupu. Když zadáte jednu z těchto rutin v Runbooku, odpovídající aktivita se spustí programovací model Windows Workflow Foundation. V případě rutin bez odpovídající aktivity pracovní postup prostředí Windows PowerShell automaticky spustí rutinu v rámci aktivity [InlineScript](#inlinescript) . K dispozici je sada rutin, které jsou vyloučeny a nemohou být použity v pracovním postupu, pokud je výslovně nezahrnete do bloku aktivity InlineScript. Další podrobnosti o těchto konceptech najdete v tématu [použití aktivit ve skriptových pracovních postupech](https://technet.microsoft.com/library/jj574194.aspx).
 
 Aktivity pracovních postupů sdílejí sadu společných parametrů ke konfiguraci svého provozu. Podrobnosti o společných parametrech pracovního postupu najdete v tématu [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
@@ -189,7 +189,7 @@ Workflow Copy-Files
 }
 ```
 
-Můžete použít **ForEach-Parallel** konstrukce ke zpracování příkazů pro každou položku v kolekci současně. Položky v kolekci se zpracovávají paralelně, zatímco příkazy v bloku skriptu spouští sekvenčně. K tomu se používá následující syntaxe. V tomto případě Activity1 spustí ve stejnou dobu pro všechny položky v kolekci. Pro každou položku "Activity2" začíná po dokončení Activity1. Activity3 se spustí až po dokončení Activity1 i "Activity2" pro všechny položky. K omezení paralelismus používáme parametr `ThrottleLimit`. Příliš vysoká `ThrottleLimit` může způsobovat problémy. Ideální hodnota pro parametr `ThrottleLimit` závisí na mnoha faktorech ve vašem prostředí. Měli byste zkusit začít s nízkou hodnotou a vyzkoušet jiné hodnoty, dokud nezjistíte, které funguje pro konkrétní situaci.
+Konstruktor **foreach-Parallel** můžete použít ke zpracování příkazů pro každou položku v kolekci současně. Položky v kolekci se zpracovávají paralelně, zatímco příkazy v bloku skriptu spouští sekvenčně. K tomu se používá následující syntaxe. V tomto případě Activity1 spustí ve stejnou dobu pro všechny položky v kolekci. Pro každou položku "Activity2" začíná po dokončení Activity1. Activity3 se spustí až po dokončení Activity1 i "Activity2" pro všechny položky. K omezení paralelismus používáme parametr `ThrottleLimit`. Příliš vysoká `ThrottleLimit` může způsobovat problémy. Ideální hodnota pro parametr `ThrottleLimit` závisí na mnoha faktorech ve vašem prostředí. Měli byste zkusit začít s nízkou hodnotou a vyzkoušet jiné hodnoty, dokud nezjistíte, které funguje pro konkrétní situaci.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +222,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Kontrolní body
 
-*Kontrolní bod* je snímek aktuálního stavu pracovního postupu, který obsahuje aktuální hodnotu proměnných a všechny výstupy vygenerované do tohoto bodu. Pokud pracovní postup skončí chybou nebo je pozastaven, pak se při příštím spuštění spustí z posledního kontrolního bodu místo na začátku pracovního postupu.  Kontrolní bod můžete nastavit v pracovním postupu se **Checkpoint-Workflow** aktivity. Azure Automation má funkci s názvem [spravedlivá sdílená](automation-runbook-execution.md#fair-share)sada Runbook, která se spouští po dobu 3 hodin, aby bylo možné spouštět jiné Runbooky. Nakonec se uvolněná sada Runbook znovu načte a v případě, že bude, bude pokračovat v provádění z posledního kontrolního bodu, který byl proveden v sadě Runbook. Aby bylo zajištěno, že sada Runbook bude nakonec dokončena, je nutné přidat kontrolní body v intervalech, které jsou spuštěny méně než 3 hodiny. Při každém spuštění se přidá nový kontrolní bod, a pokud se sada Runbook po 3 hodinách vyřadí z důvodu chyby, sada Runbook se obnoví neomezeně.
+*Kontrolní bod* je snímek aktuálního stavu pracovního postupu, který obsahuje aktuální hodnotu proměnných a všechny výstupy vygenerované do tohoto bodu. Pokud pracovní postup skončí chybou nebo je pozastaven, pak se při příštím spuštění spustí z posledního kontrolního bodu místo na začátku pracovního postupu.  V pracovním postupu můžete nastavit kontrolní bod pomocí aktivity **kontrolního bodu-Workflow** . Azure Automation má funkci s názvem [spravedlivá sdílená](automation-runbook-execution.md#fair-share)sada Runbook, která se spouští po dobu 3 hodin, aby bylo možné spouštět jiné Runbooky. Nakonec se uvolněná sada Runbook znovu načte a v případě, že bude, bude pokračovat v provádění z posledního kontrolního bodu, který byl proveden v sadě Runbook. Aby bylo zajištěno, že sada Runbook bude nakonec dokončena, je nutné přidat kontrolní body v intervalech, které jsou spuštěny méně než 3 hodiny. Při každém spuštění se přidá nový kontrolní bod, a pokud se sada Runbook po 3 hodinách vyřadí z důvodu chyby, sada Runbook se obnoví neomezeně.
 
 V následujícím ukázkovém kódu dojde k výjimce po "Activity2" způsob ukončení pracovního postupu. Po opětovném spuštění pracovního postupu se spustí spuštěním "Activity2", protože se jednalo o hned za poslední nastavenou kontrolní sadu.
 
@@ -287,7 +287,7 @@ workflow CreateTestVms
 
 Toto není vyžadováno, pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s objektem služby.
 
-Další informace o kontrolních bodech najdete v tématu [přidání kontrolních bodů do pracovního postupu skriptu](https://technet.microsoft.com/library/jj574114.aspx).
+Další informace o kontrolních bodech najdete v tématu [Přidání kontrolních bodů do pracovního postupu skriptu](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Další kroky
 

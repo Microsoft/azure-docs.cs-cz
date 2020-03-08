@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Přihlášení uživatele | Microsoft Docs'
+title: 'Azure AD Connect: přihlášení uživatele | Microsoft Docs'
 description: Azure AD Connect přihlášení uživatele pro vlastní nastavení.
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607665"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376249"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect možností přihlášení uživatele
 Azure Active Directory (Azure AD) Connect umožňuje vašim uživatelům přihlašovat se ke cloudovým i místním prostředkům pomocí stejných hesel. Tento článek popisuje klíčové koncepty pro každý model identity, které vám pomůžou zvolit identitu, kterou chcete použít pro přihlášení k Azure AD.
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) Connect umožňuje vašim uživatelům přihla
 Pokud už jste obeznámeni s modelem identity Azure AD a chcete získat další informace o konkrétní metodě, přečtěte si příslušný odkaz:
 
 * [Synchronizace hodnot hash hesel](#password-hash-synchronization) pomocí [bezproblémového jednotného přihlašování (SSO)](how-to-connect-sso.md)
-* [Předávací ověřování](how-to-connect-pta.md) pomocí bezproblémového [jednotného přihlašování (SSO)](how-to-connect-sso.md)
+* [Předávací ověřování](how-to-connect-pta.md) pomocí [bezproblémového jednotného přihlašování (SSO)](how-to-connect-sso.md)
 * [Federované jednotné přihlašování (s Active Directory Federation Services (AD FS) (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 * [Federace s PingFederate](#federation-with-pingfederate)
 
@@ -77,7 +77,7 @@ Díky federovanému přihlašování se uživatelé můžou přihlašovat ke slu
 
 <center>
 
-![Federace s AD FS ve Windows Serveru 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
+![federace s AD FS ve Windows Serveru 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Nasazení federace s AD FS ve Windows Serveru 2012 R2
 
@@ -112,7 +112,7 @@ Další informace najdete v [seznamu Kompatibilita federace třetích stran pro 
 ### <a name="understanding-user-principal-name"></a>Porozumění hlavnímu názvu uživatele
 Ve službě Active Directory je výchozí příponou hlavního názvu uživatele (UPN) název DNS domény, ve které byl uživatelský účet vytvořen. Ve většině případů se jedná o název domény, který je zaregistrován jako doména organizace na internetu. Pomocí domén a vztahů důvěryhodnosti služby Active Directory ale můžete přidat další přípony UPN.
 
-Hlavní název uživatele (UPN) má formát username@domain. Například pro doménu služby Active Directory s názvem "contoso.com" může mít uživatel s názvem Jan hlavní název uživatele (UPNjohn@contoso.com) "". Hlavní název uživatele (UPN) je založený na dokumentu RFC 822. I když hlavní název uživatele (UPN) a e-mail mají stejný formát, hodnota hlavního názvu uživatele (UPN) může nebo nemusí být stejná jako e-mailová adresa uživatele.
+Hlavní název uživatele (UPN) má username@domainformátu. Například pro doménu služby Active Directory s názvem "contoso.com" může mít uživatel s názvem Jan hlavní název uživatele (UPN) "john@contoso.com". Hlavní název uživatele (UPN) je založený na dokumentu RFC 822. I když hlavní název uživatele (UPN) a e-mail mají stejný formát, hodnota hlavního názvu uživatele (UPN) může nebo nemusí být stejná jako e-mailová adresa uživatele.
 
 ### <a name="user-principal-name-in-azure-ad"></a>Hlavní název uživatele v Azure AD
 Průvodce Azure AD Connect používá atribut userPrincipalName nebo umožňuje zadat atribut (ve vlastní instalaci), který bude použit z místního úložiště jako hlavní název uživatele v Azure AD. Jedná se o hodnotu, která se používá pro přihlášení ke službě Azure AD. Pokud hodnota atributu userPrincipalName neodpovídá ověřené doméně ve službě Azure AD, pak Azure AD ho nahradí výchozí hodnotou. onmicrosoft.com.
@@ -128,7 +128,7 @@ Přihlašovací stránka Azure AD obsahuje seznam přípon UPN definovaných pro
 
 | Stav | Popis | Vyžaduje se akce |
 |:--- |:--- |:--- |
-| Ověřen |Azure AD Connect zjistila v Azure AD porovnávací ověřenou doménu. Všichni uživatelé této domény se můžou přihlásit pomocí svých místních přihlašovacích údajů. |Není nutné provádět žádnou akci. |
+| Ověřeno |Azure AD Connect zjistila v Azure AD porovnávací ověřenou doménu. Všichni uživatelé této domény se můžou přihlásit pomocí svých místních přihlašovacích údajů. |Není potřeba provádět žádnou akci. |
 | Neověřeno |V Azure AD se Azure AD Connect najít vyhovující vlastní doména, ale není ověřená. Přípona UPN uživatelů této domény se po synchronizaci změní na výchozí příponu. onmicrosoft.com, pokud se doména neověří. | [Ověřte vlastní doménu ve službě Azure AD.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nepřidáno |Azure AD Connect nenalezl vlastní doménu, která odpovídá příponě hlavního názvu uživatele (UPN). Přípona UPN uživatelů této domény se změní na výchozí příponu. onmicrosoft.com, pokud se doména nepřidá a ověří v Azure. | [Přidejte a ověřte vlastní doménu, která odpovídá příponě hlavního názvu uživatele (UPN).](../fundamentals/add-custom-domain.md) |
 
@@ -151,15 +151,15 @@ Důrazně doporučujeme, abyste zachovali výchozí atribut userPrincipalName. P
 #### <a name="different-custom-domain-states-and-their-effect-on-the-azure-sign-in-experience"></a>Různé vlastní stavy domény a jejich vliv na přihlašovací prostředí Azure
 Je velmi důležité pochopit vztah mezi vlastními stavy domén v adresáři služby Azure AD a příponami UPN, které jsou definovány místně. Podívejme se na různá možná prostředí pro přihlášení k Azure, když nastavujete synchronizaci pomocí Azure AD Connect.
 
-Následující informace vám předpokládají, že máme obavy s příponou UPN contoso.com, která se používá v místním adresáři jako součást hlavního názvu uživatele (UPN) user@contoso.com.
+Následující informace vám předpokládají, že máme obavy s příponou UPN contoso.com, která se používá v místním adresáři jako součást hlavního názvu uživatele (UPN), například user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Expresní nastavení/synchronizace hodnot hash hesel
 
 | Stav | Vliv na uživatelské prostředí Azure pro přihlašování |
 |:---:|:--- |
-| Nepřidáno |V tomto případě se v adresáři Azure AD nepřidala žádná vlastní doména pro contoso.com. Uživatelé, kteří mají místní uživatelské jméno (UPN) @contoso.com s příponou, nebudou moct používat svůj místní hlavní název uživatele (UPN), aby se mohli přihlásit k Azure. Místo toho budou muset použít nový hlavní název uživatele, který jim poskytla služba Azure AD, a to přidáním přípony pro výchozí adresář služby Azure AD. Pokud například provádíte synchronizaci uživatelů s adresářem Azure AD azurecontoso.onmicrosoft.com, bude místnímu uživateli user@contoso.com přiřazen user@azurecontoso.onmicrosoft.comhlavní název uživatele (UPN). |
+| Nepřidáno |V tomto případě se v adresáři Azure AD nepřidala žádná vlastní doména pro contoso.com. Uživatelé, kteří mají místní uživatelské jméno (UPN) s příponou @contoso.com nebudou moct použít svůj místní hlavní název uživatele (UPN), aby se mohli přihlásit k Azure. Místo toho budou muset použít nový hlavní název uživatele, který jim poskytla služba Azure AD, a to přidáním přípony pro výchozí adresář služby Azure AD. Pokud například synchronizujete uživatele do adresáře služby Azure AD azurecontoso.onmicrosoft.com, bude mít místní uživatel user@contoso.com hlavní název uživatele (UPN) user@azurecontoso.onmicrosoft.com. |
 | Neověřeno |V tomto případě máme vlastní doménu contoso.com, která se přidá do adresáře Azure AD. Ale zatím se neověřuje. Pokud budete pokračovat s synchronizací uživatelů bez ověřování domény, pak se uživatelům přiřadí nový hlavní název uživatele (UPN) Azure AD, stejně jako ve scénáři "nepřidáno". |
-| Ověřen |V tomto případě máme vlastní doménu contoso.com, která je už přidaná a ověřená ve službě Azure AD pro příponu hlavního názvu uživatele (UPN). Uživatelé budou moci použít svůj místní hlavní název uživatele, user@contoso.comnapříklad pro přihlášení k Azure po jejich synchronizaci do Azure AD. |
+| Ověřeno |V tomto případě máme vlastní doménu contoso.com, která je už přidaná a ověřená ve službě Azure AD pro příponu hlavního názvu uživatele (UPN). Uživatelé budou moci použít svůj místní hlavní název uživatele, například user@contoso.com, aby se mohli přihlásit do Azure, až budou synchronizováni do Azure AD. |
 
 ###### <a name="ad-fs-federation"></a>AD FS federace
 Nemůžete vytvořit federaci s výchozí doménou. onmicrosoft.com ve službě Azure AD nebo neověřenou vlastní doménou v Azure AD. Pokud při spuštění Průvodce Azure AD Connect vyberete neověřenou doménu, se kterou chcete vytvořit federaci, Azure AD Connect vás vyzve k vytvoření potřebných záznamů, kde je vaše služba DNS hostovaná pro doménu. Další informace najdete v tématu [ověření domény Azure AD vybrané pro federaci](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation).
@@ -170,26 +170,26 @@ Pokud jste vybrali možnost přihlašování uživatele v rámci **AD FS**, mus�
 |:---:|:--- |
 | Nepřidáno |V takovém případě Azure AD Connect nenalezl odpovídající vlastní doménu pro příponu UPN contoso.com v adresáři služby Azure AD. Pokud potřebujete, aby se uživatelé přihlásili pomocí AD FS s místním hlavním názvem uživatele (například user@contoso.com), musíte přidat vlastní doménu contoso.com. |
 | Neověřeno |V takovém případě vás Azure AD Connect vyzve s příslušnými podrobnostmi o tom, jak můžete doménu ověřit v pozdější fázi. |
-| Ověřen |V takovém případě můžete pokračovat v konfiguraci bez jakékoli další akce. |
+| Ověřeno |V takovém případě můžete pokračovat v konfiguraci bez jakékoli další akce. |
 
 ## <a name="changing-the-user-sign-in-method"></a>Změna metody přihlašování uživatelů
 Metodu přihlašování uživatelů můžete změnit z federace, synchronizace hodnot hash hesel nebo předávacího ověřování pomocí úloh, které jsou k dispozici v Azure AD Connect po počáteční konfiguraci Azure AD Connect pomocí průvodce. Spusťte znovu Průvodce Azure AD Connect a zobrazí se seznam úkolů, které můžete provádět. V seznamu úkolů vyberte **změnit přihlášení uživatele** .
 
-![Změna přihlašovacích údajů uživatele](./media/plan-connect-user-signin/changeusersignin.png)
+![Změna přihlášení uživatele](./media/plan-connect-user-signin/changeusersignin.png)
 
 Na další stránce budete požádáni o zadání přihlašovacích údajů pro Azure AD.
 
-![Připojení ke službě Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
+![Připojení k Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
 
 Na **přihlašovací stránce uživatele** vyberte přihlášení požadovaného uživatele.
 
-![Připojení ke službě Azure AD](./media/plan-connect-user-signin/changeusersignin2a.png)
+![Připojení k Azure AD](./media/plan-connect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
-> Pokud vytváříte pouze dočasný přepínač pro synchronizaci hodnot hash hesel, zaškrtněte políčko nepřevádět **uživatelské účty** . Pokud se nerozhodnete, tato možnost převede každého uživatele na federované a může trvat několik hodin.
+> Pokud vytváříte pouze dočasný přepínač pro synchronizaci hodnot hash hesel, zaškrtněte políčko **nepřevádět uživatelské účty** . Pokud se nerozhodnete, tato možnost převede každého uživatele na federované a může trvat několik hodin.
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [integraci místních identit s Azure Active Directory](whatis-hybrid-identity.md).
 - Přečtěte si další informace o [Azure AD Connect konceptech návrhu](plan-connect-design-concepts.md).

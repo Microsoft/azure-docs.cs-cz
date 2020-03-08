@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159824"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376077"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
@@ -107,7 +107,7 @@ Zkontrolujte všechny domény označené jako **Nepřidáno** a **Neověřeno**.
 >
 >
 
-### <a name="domain-and-ou-filtering"></a>Filtrování domén a organizačních jednotek
+### <a name="domain-and-ou-filtering"></a>doména a filtrování organizační jednotky
 Ve výchozím nastavení se synchronizují všechny domény a organizační jednotky. Pokud některé domény nebo organizační jednotky nechcete synchronizovat do Azure AD, můžete zrušit výběr těchto domén a organizačních jednotek.  
 ![Filtrování organizačních jednotek domén](./media/how-to-connect-install-custom/domainoufiltering.png)  
 Tato stránka průvodce konfiguruje filtrování podle domén a organizačních jednotek. Pokud plánujete změny, před jejich provedením si přečtěte témata [filtrování podel domén](how-to-connect-sync-configure-filtering.md#domain-based-filtering) a [filtrování podle organizačních jednotek](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering). Některé organizační jednotky jsou zásadní pro funkčnost a měly by být vybrány.
@@ -287,7 +287,7 @@ Zadejte servery, které chcete použít jako proxy servery webových aplikací. 
 
 Zobrazí se výzva k zadání přihlašovacích údajů, aby server webových aplikací mohl navázat zabezpečené připojení k serveru služby AD FS. Tyto přihlašovací údaje musí být místním správcem na serveru služby AD FS.
 
-![Proxy](./media/how-to-connect-install-custom/adfs4.png)
+![Proxy server](./media/how-to-connect-install-custom/adfs4.png)
 
 ### <a name="specify-the-service-account-for-the-ad-fs-service"></a>Zadání účtu služby AD FS
 Služba AD FS vyžaduje účet doménové služby, aby mohla ověřovat uživatele a hledat informace o uživatelích ve službě Active Directory. Podporuje dva typy účtů služeb:
@@ -382,7 +382,7 @@ Když kliknete na tlačítko Ověřit, služba Azure AD Connect ověří nastave
 
 * Překlad plně kvalifikovaného názvu domény federace: Azure AD Connect zkontroluje, jestli DNS dokáže přeložit plně kvalifikovaný název domény federace pro zajištění možnosti připojení.
 
-![Dokončit](./media/how-to-connect-install-custom/completed.png)
+![Complete](./media/how-to-connect-install-custom/completed.png)
 
 ![Ověřit](./media/how-to-connect-install-custom/adfs7.png)
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036909"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675692"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření image virtuálního počítače nebo virtuálního pevného disku
 

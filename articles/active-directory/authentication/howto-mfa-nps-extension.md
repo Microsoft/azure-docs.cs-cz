@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378113"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS do Azure Multi-Factor Authentication
 
@@ -43,11 +43,11 @@ V případě potřeby můžete vytvořit libovolný počet serverů NPS s povole
 
 Servery VPN směrují žádosti o ověření, takže potřebují vědět o nových serverech NPS s povolenou službou Azure MFA.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Rozšíření serveru NPS je určeno pro práci s vaší stávající infrastrukturou. Než začnete, ujistěte se, že máte následující předpoklady.
 
-### <a name="licenses"></a>Vázaný
+### <a name="licenses"></a>Licence
 
 Rozšíření serveru NPS pro Azure MFA je dostupné pro zákazníky, kteří mají [licence pro azure Multi-Factor Authentication](multi-factor-authentication.md) (jsou součástí Azure AD Premium, EMS nebo samostatné licence MFA). Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. 
 
@@ -68,7 +68,7 @@ Modul Microsoft Azure Active Directory pro Windows PowerShell je nainstalován, 
 
 Každý, kdo používá rozšíření serveru NPS, musí být synchronizovaný Azure Active Directory pomocí Azure AD Connect a musí být registrovaný pro MFA.
 
-Když nainstalujete rozšíření, budete potřebovat ID adresáře a přihlašovací údaje správce pro vašeho tenanta Azure AD. Do své ID adresáře můžete najít [webu Azure portal](https://portal.azure.com). Přihlaste se jako správce. Vyhledejte a vyberte **Azure Active Directory**a pak vyberte **vlastnosti**. Zkopírujte identifikátor GUID do pole **ID adresáře** a uložte ho. Tento identifikátor GUID použijete jako ID tenanta při instalaci rozšíření serveru NPS.
+Když nainstalujete rozšíření, budete potřebovat ID adresáře a přihlašovací údaje správce pro vašeho tenanta Azure AD. ID vašeho adresáře najdete v [Azure Portal](https://portal.azure.com). Přihlaste se jako správce. Vyhledejte a vyberte **Azure Active Directory**a pak vyberte **vlastnosti**. Zkopírujte identifikátor GUID do pole **ID adresáře** a uložte ho. Tento identifikátor GUID použijete jako ID tenanta při instalaci rozšíření serveru NPS.
 
 ![V části vlastnosti Azure Active Directory Najděte ID vašeho adresáře.](./media/howto-mfa-nps-extension/properties-directory-id.png)
 

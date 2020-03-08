@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: c8ef481fe277d6451923da828f0e7473354c24cf
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903009"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374339"
 ---
 # <a name="api-management-advanced-policies"></a>API Management pokročilé zásady
 
@@ -104,7 +104,7 @@ Druhá zásada toku řízení je v odchozím oddílu a podmíněně aplikuje zá
 </policies>
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Tento příklad ukazuje, jak provést filtrování obsahu odebráním datových elementů z odpovědi přijaté ze služby back-endu při použití `Starter`ho produktu. Ukázku konfigurace a používání těchto zásad najdete v tématu [cloudový krytový díl 177: další API Management funkce s využitím Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převinutí na 34:30. Začněte v 31:50. zobrazí se přehled [rozhraní API prognózy pro tmavé nebee](https://developer.forecast.io/) , které se používá pro tuto ukázku.
 
@@ -126,9 +126,9 @@ Tento příklad ukazuje, jak provést filtrování obsahu odebráním datových 
 
 ### <a name="elements"></a>Elementy
 
-| Element   | Popis                                                                                                                                                                                                                                                               | Požaduje se |
+| Prvek   | Popis                                                                                                                                                                                                                                                               | Požaduje se |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| zvolte    | Kořenový element.                                                                                                                                                                                                                                                             | Ano      |
+| Výběrem    | Kořenový element.                                                                                                                                                                                                                                                             | Ano      |
 | when      | Podmínka, která se má použít pro `if` nebo `ifelse` části zásad `choose`. Pokud má zásada `choose` více oddílů `when`, vyhodnocují se postupně. Jakmile je `condition` prvku when vyhodnocena jako `true`, nejsou vyhodnocovány žádné další podmínky `when`. | Ano      |
 | Případech | Obsahuje fragment zásady, který se použije, pokud žádná z `when` podmínek není vyhodnocena jako `true`.                                                                                                                                                                               | Ne       |
 
@@ -161,7 +161,7 @@ Zásada `forward-request` předává příchozí požadavek do back-end služby 
 
 ### <a name="examples"></a>Příklady
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Následující zásada úrovně rozhraní API přepošle všechny požadavky rozhraní API do služby back-endu s intervalem časového limitu 60 sekund.
 
@@ -181,7 +181,7 @@ Následující zásada úrovně rozhraní API přepošle všechny požadavky roz
 
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Tato zásada na úrovni operace používá element `base` k dědění zásad back-endu z nadřazeného rozsahu úrovně rozhraní API.
 
@@ -201,7 +201,7 @@ Tato zásada na úrovni operace používá element `base` k dědění zásad bac
 
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Tato zásada na úrovni operace explicitně přepošle všechny požadavky na back-end službu s časovým limitem 120 a nedědí zásady nadřazené úrovně rozhraní API. Pokud back-end služba odpoví chybovým kódem 400 až 599 včetně, aktivuje se [Chyba v oddílu On-Error](api-management-error-handling-policies.md) .
 
@@ -222,7 +222,7 @@ Tato zásada na úrovni operace explicitně přepošle všechny požadavky na ba
 
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Tato zásada na úrovni operace nepředávají požadavky do back-endové služby.
 
@@ -244,18 +244,18 @@ Tato zásada na úrovni operace nepředávají požadavky do back-endové služb
 
 ### <a name="elements"></a>Elementy
 
-| Element         | Popis   | Požaduje se |
+| Prvek         | Popis   | Požaduje se |
 | --------------- | ------------- | -------- |
-| forward-request | Kořenový element. | Ano      |
+| dopředné žádosti | Kořenový element. | Ano      |
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut                                     | Popis                                                                                                                                                                                                                                                                                                    | Požaduje se | Výchozí |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| timeout = "Integer"                             | Doba v sekundách, po kterou se má čekat na vrácení hlaviček odpovědí HTTP službou back-end, než dojde k vygenerování chyby časového limitu. Minimální hodnota je 0 sekund. Hodnoty větší než 240 sekund nemusí být dodrženy, protože podkladová síťová infrastruktura může po uplynutí této doby zrušit nečinné připojení. | Ne       | Žádné    |
-| následné přesměrování = "falešná &#124; hodnota true"          | Určuje, jestli je následováno přesměrování ze služby back-end, nebo se vrátí volajícímu.                                                                                                                                                                                                    | Ne       | false   |
-| buffer-Request-body = "false &#124; true"       | Pokud je hodnota nastavená na "true", uloží se do vyrovnávací paměti a při [opakovaném pokusu](api-management-advanced-policies.md#Retry)se znovu použije.                                                                                                                                                                                               | Ne       | false   |
-| selhání-On-Error-Status-Code = "false &#124; true" | Pokud je nastavená hodnota true Triggers [On-Error](api-management-error-handling-policies.md) , pro kódy odpovědí v rozsahu od 400 do 599 včetně.                                                                                                                                                                      | Ne       | false   |
+| timeout = "Integer"                             | Doba v sekundách, po kterou se má čekat na vrácení hlaviček odpovědí HTTP službou back-end, než dojde k vygenerování chyby časového limitu. Minimální hodnota je 0 sekund. Hodnoty větší než 240 sekund nemusí být dodrženy, protože podkladová síťová infrastruktura může po uplynutí této doby zrušit nečinné připojení. | Ne       | Žádná    |
+| následné přesměrování = "falešná &#124; hodnota true"          | Určuje, jestli je následováno přesměrování ze služby back-end, nebo se vrátí volajícímu.                                                                                                                                                                                                    | Ne       | false (nepravda)   |
+| buffer-Request-body = "false &#124; true"       | Pokud je hodnota nastavená na "true", uloží se do vyrovnávací paměti a při [opakovaném pokusu](api-management-advanced-policies.md#Retry)se znovu použije.                                                                                                                                                                                               | Ne       | false (nepravda)   |
+| selhání-On-Error-Status-Code = "false &#124; true" | Pokud je nastavená hodnota true Triggers [On-Error](api-management-error-handling-policies.md) , pro kódy odpovědí v rozsahu od 400 do 599 včetně.                                                                                                                                                                      | Ne       | false (nepravda)   |
 
 ### <a name="usage"></a>Využití
 
@@ -278,7 +278,7 @@ Zásada `limit-concurrency` zabraňuje tomu, aby byly vložené zásady spoušt�
 
 ### <a name="examples"></a>Příklady
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Následující příklad ukazuje, jak omezit počet požadavků předaných do back-endu na základě hodnoty kontextové proměnné.
 
@@ -296,7 +296,7 @@ Následující příklad ukazuje, jak omezit počet požadavků předaných do b
 
 ### <a name="elements"></a>Elementy
 
-| Element           | Popis   | Požaduje se |
+| Prvek           | Popis   | Požaduje se |
 | ----------------- | ------------- | -------- |
 | limit – souběžnost | Kořenový element. | Ano      |
 
@@ -304,8 +304,8 @@ Následující příklad ukazuje, jak omezit počet požadavků předaných do b
 
 | Atribut | Popis                                                                                        | Požaduje se | Výchozí |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| key       | Řetězec. Výraz je povolený. Určuje rozsah souběžnosti. Může být sdíleno více zásadami. | Ano      | Nevztahuje se     |
-| max – počet | Celé číslo Určuje maximální počet požadavků, které mají povolené zadání těchto zásad.           | Ano      | Nevztahuje se     |
+| key       | Řetězec. Výraz je povolený. Určuje rozsah souběžnosti. Může být sdíleno více zásadami. | Ano      | neuvedeno     |
+| max – počet | Celé číslo. Určuje maximální počet požadavků, které mají povolené zadání těchto zásad.           | Ano      | neuvedeno     |
 
 ### <a name="usage"></a>Využití
 
@@ -331,7 +331,7 @@ Zásada `log-to-eventhub` odesílá zprávy v zadaném formátu do centra událo
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Libovolný řetězec se dá použít jako hodnota, která se má Event Hubs přihlásit. V tomto příkladu se protokoluje datum a čas, název služby nasazení, ID žádosti, IP adresa a název operace pro všechna příchozí volání, která se zapisují do protokolovacího nástroje centra událostí zaregistrovaného s ID `contoso-logger`.
 
@@ -349,7 +349,7 @@ Libovolný řetězec se dá použít jako hodnota, která se má Event Hubs při
 
 ### <a name="elements"></a>Elementy
 
-| Element         | Popis                                                                     | Požaduje se |
+| Prvek         | Popis                                                                     | Požaduje se |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
 | přihlášení k centru událostí | Kořenový element. Hodnota tohoto prvku je řetězec, který se má protokolovat do centra událostí. | Ano      |
 
@@ -358,8 +358,8 @@ Libovolný řetězec se dá použít jako hodnota, která se má Event Hubs při
 | Atribut     | Popis                                                               | Požaduje se                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | logger-id     | ID protokolovacího nástroje zaregistrovaného ve vaší API Management službě.         | Ano                                                                  |
-| identifikátor oddílu  | Určuje index oddílu, ve kterém jsou odesílány zprávy.             | Nepovinný parametr. Tento atribut nelze použít, je-li použit `partition-key`. |
-| Partition – klíč | Určuje hodnotu použitou při přiřazování oddílů při posílání zpráv. | Nepovinný parametr. Tento atribut nelze použít, je-li použit `partition-id`.  |
+| identifikátor oddílu  | Určuje index oddílu, ve kterém jsou odesílány zprávy.             | Volitelné. Tento atribut nelze použít, je-li použit `partition-key`. |
+| Partition – klíč | Určuje hodnotu použitou při přiřazování oddílů při posílání zpráv. | Volitelné. Tento atribut nelze použít, je-li použit `partition-id`.  |
 
 ### <a name="usage"></a>Využití
 
@@ -394,16 +394,16 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>Elementy
 
-| Element       | Popis   | Požaduje se |
+| Prvek       | Popis   | Požaduje se |
 | ------------- | ------------- | -------- |
-| mock-response | Kořenový element. | Ano      |
+| Maketa – odezva | Kořenový element. | Ano      |
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut    | Popis                                                                                           | Požaduje se | Výchozí |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | status-code  | Určuje kód stavu odpovědi a používá se k výběru odpovídajícího příkladu nebo schématu.                 | Ne       | 200     |
-| Typ obsahu | Určuje `Content-Type` hodnotu hlavičky odpovědi a používá se k výběru odpovídajícího příkladu nebo schématu. | Ne       | Žádné    |
+| typ obsahu | Určuje `Content-Type` hodnotu hlavičky odpovědi a používá se k výběru odpovídajícího příkladu nebo schématu. | Ne       | Žádná    |
 
 ### <a name="usage"></a>Využití
 
@@ -433,7 +433,7 @@ Zásady `retry` spustí své podřízené zásady jednou a pak se znovu pokusí 
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 V následujícím příkladu se znovu pokusí o předávání požadavků až desetkrát pomocí algoritmu exponenciálního opakování. Vzhledem k tomu, že `first-fast-retry` je nastavené na false, všechny pokusy o opakování budou podléhat algoritmu exponenciálního opakování.
 
@@ -453,7 +453,7 @@ V následujícím příkladu se znovu pokusí o předávání požadavků až de
 
 ### <a name="elements"></a>Elementy
 
-| Element | Popis                                                         | Požaduje se |
+| Prvek | Popis                                                         | Požaduje se |
 | ------- | ------------------------------------------------------------------- | -------- |
 | retry   | Kořenový element. Může obsahovat jakékoli jiné zásady jako své podřízené prvky. | Ano      |
 
@@ -461,11 +461,11 @@ V následujícím příkladu se znovu pokusí o předávání požadavků až de
 
 | Atribut        | Popis                                                                                                                                           | Požaduje se | Výchozí |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| condition        | Logický literál nebo [výraz](api-management-policy-expressions.md) určující, zda mají být pokusy zastaveny (`false`) nebo pokračování (`true`).      | Ano      | Nevztahuje se     |
-| count            | Kladné číslo určující maximální počet opakovaných pokusů o opakování.                                                                                | Ano      | Nevztahuje se     |
-| interval         | Kladné číslo v sekundách, které určuje interval čekání mezi pokusy o opakování.                                                                 | Ano      | Nevztahuje se     |
-| Max – interval     | Kladné číslo v sekundách, které určuje maximální interval čekání mezi pokusy o opakování. Slouží k implementaci algoritmu exponenciálního opakování. | Ne       | Nevztahuje se     |
-| rozdíl            | Kladné číslo v sekundách, které určuje přírůstek intervalu čekání. Slouží k implementaci algoritmů lineárního a exponenciálního opakování.             | Ne       | Nevztahuje se     |
+| condition        | Logický literál nebo [výraz](api-management-policy-expressions.md) určující, zda mají být pokusy zastaveny (`false`) nebo pokračování (`true`).      | Ano      | neuvedeno     |
+| count            | Kladné číslo určující maximální počet opakovaných pokusů o opakování.                                                                                | Ano      | neuvedeno     |
+| interval         | Kladné číslo v sekundách, které určuje interval čekání mezi pokusy o opakování.                                                                 | Ano      | neuvedeno     |
+| Max – interval     | Kladné číslo v sekundách, které určuje maximální interval čekání mezi pokusy o opakování. Slouží k implementaci algoritmu exponenciálního opakování. | Ne       | neuvedeno     |
+| rozdíl            | Kladné číslo v sekundách, které určuje přírůstek intervalu čekání. Slouží k implementaci algoritmů lineárního a exponenciálního opakování.             | Ne       | neuvedeno     |
 | First – Fast – opakování | Pokud je nastavená na `true`, první pokus o opakování proběhne okamžitě.                                                                                  | Ne       | `false` |
 
 > [!NOTE]
@@ -496,7 +496,7 @@ Zásada `return-response` přerušuje spuštění kanálu a vrátí buď výchoz
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```xml
 <return-response>
@@ -510,7 +510,7 @@ Zásada `return-response` přerušuje spuštění kanálu a vrátí buď výchoz
 
 ### <a name="elements"></a>Elementy
 
-| Element         | Popis                                                                               | Požaduje se |
+| Prvek         | Popis                                                                               | Požaduje se |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
 | návrat – odpověď | Kořenový element.                                                                             | Ano      |
 | set-header      | Příkaz zásad [pro záhlaví sady](api-management-transformation-policies.md#SetHTTPheader) | Ne       |
@@ -521,7 +521,7 @@ Zásada `return-response` přerušuje spuštění kanálu a vrátí buď výchoz
 
 | Atribut              | Popis                                                                                                                                                                          | Požaduje se  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
-| Response – proměnná – Název | Název kontextové proměnné, na kterou se odkazuje, například zásada pro [odesílání požadavků pro odesílání](api-management-advanced-policies.md#SendRequest) dat a obsahující objekt `Response` | Nepovinný parametr. |
+| Response – proměnná – Název | Název kontextové proměnné, na kterou se odkazuje, například zásada pro [odesílání požadavků pro odesílání](api-management-advanced-policies.md#SendRequest) dat a obsahující objekt `Response` | Volitelné. |
 
 ### <a name="usage"></a>Využití
 
@@ -548,7 +548,7 @@ Zásada `send-one-way-request` odesílá zadaný požadavek na zadanou adresu UR
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Tato ukázková zásada ukazuje příklad použití zásady `send-one-way-request` k odeslání zprávy do chatovací místnosti s časovou rezervou, pokud je kód odpovědi HTTP větší nebo roven 500. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
 
@@ -580,21 +580,21 @@ Tato ukázková zásada ukazuje příklad použití zásady `send-one-way-reques
 
 ### <a name="elements"></a>Elementy
 
-| Element                    | Popis                                                                                                 | Požaduje se                        |
+| Prvek                    | Popis                                                                                                 | Požaduje se                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | Send – One-Way – požadavek       | Kořenový element.                                                                                               | Ano                             |
 | url                        | Adresa URL požadavku.                                                                                     | Žádný režim if = kopírovat; v opačném případě ano. |
 | method                     | Metoda HTTP pro požadavek.                                                                            | Žádný režim if = kopírovat; v opačném případě ano. |
 | záhlaví                     | Hlavička žádosti Pro více hlaviček požadavku použijte více elementů záhlaví.                                  | Ne                              |
-| text                       | Datová část požadavku.                                                                                           | Ne                              |
+| těles                       | Datová část požadavku.                                                                                           | Ne                              |
 | ověřování – certifikát | [Certifikát, který se má použít pro ověření klienta](api-management-authentication-policies.md#ClientCertificate) | Ne                              |
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut     | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Požaduje se | Výchozí  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="string" | Určuje, zda se jedná o nový požadavek nebo o kopii aktuálního požadavku. V režimu odchozího připojení neinicializuje režim = Copy Text žádosti.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Ne       | Novinka      |
-| jméno          | Určuje název hlavičky, který se má nastavit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ano      | Nevztahuje se      |
+| mode="string" | Určuje, zda se jedná o nový požadavek nebo o kopii aktuálního požadavku. V režimu odchozího připojení neinicializuje režim = Copy Text žádosti.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Ne       | Nová      |
+| jméno          | Určuje název hlavičky, který se má nastavit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ano      | neuvedeno      |
 | Existuje – akce | Určuje akci, která se má provést, když je hlavička již zadána. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override – nahradí hodnotu existujícího záhlaví.<br />-Skip – nenahradí stávající hodnotu záhlaví.<br />-Append – připojí hodnotu k existující hodnotě záhlaví.<br />-Delete – Odebere hlavičku z požadavku.<br /><br /> Pokud je nastavena na `override` zařazení více položek se stejným názvem má za následek nastavení záhlaví podle všech záznamů (které budou uvedeny vícekrát); ve výsledku budou nastaveny pouze uvedené hodnoty. | Ne       | přepsání |
 
 ### <a name="usage"></a>Využití
@@ -623,7 +623,7 @@ Zásada `send-request` odešle poskytnutý požadavek na zadanou adresu URL, kte
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Tento příklad ukazuje jeden ze způsobů, jak ověřit token odkazu pomocí autorizačního serveru. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
 
@@ -664,24 +664,24 @@ Tento příklad ukazuje jeden ze způsobů, jak ověřit token odkazu pomocí au
 
 ### <a name="elements"></a>Elementy
 
-| Element                    | Popis                                                                                                 | Požaduje se                        |
+| Prvek                    | Popis                                                                                                 | Požaduje se                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | Odeslat požadavek               | Kořenový element.                                                                                               | Ano                             |
 | url                        | Adresa URL požadavku.                                                                                     | Žádný režim if = kopírovat; v opačném případě ano. |
 | method                     | Metoda HTTP pro požadavek.                                                                            | Žádný režim if = kopírovat; v opačném případě ano. |
 | záhlaví                     | Hlavička žádosti Pro více hlaviček požadavku použijte více elementů záhlaví.                                  | Ne                              |
-| text                       | Datová část požadavku.                                                                                           | Ne                              |
+| těles                       | Datová část požadavku.                                                                                           | Ne                              |
 | ověřování – certifikát | [Certifikát, který se má použít pro ověření klienta](api-management-authentication-policies.md#ClientCertificate) | Ne                              |
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut                       | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Požaduje se | Výchozí  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="string"                   | Určuje, zda se jedná o nový požadavek nebo o kopii aktuálního požadavku. V režimu odchozího připojení neinicializuje režim = Copy Text žádosti.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Ne       | Novinka      |
-| Response-Variable-Name = "String" | Název kontextové proměnné, která bude přijímat objekt Response. Pokud proměnná neexistuje, vytvoří se po úspěšném spuštění zásady a zpřístupní se prostřednictvím kolekce [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Ano      | Nevztahuje se      |
+| mode="string"                   | Určuje, zda se jedná o nový požadavek nebo o kopii aktuálního požadavku. V režimu odchozího připojení neinicializuje režim = Copy Text žádosti.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Ne       | Nová      |
+| Response-Variable-Name = "String" | Název kontextové proměnné, která bude přijímat objekt Response. Pokud proměnná neexistuje, vytvoří se po úspěšném spuštění zásady a zpřístupní se prostřednictvím kolekce [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Ano      | neuvedeno      |
 | timeout = "Integer"               | Časový limit v sekundách, po kterém se volání adresy URL nezdařila.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Ne       | 60       |
-| ignorovat – chyba                    | V případě hodnoty true a výsledkem požadavku dojde k chybě:<br /><br /> -Pokud byla zadána hodnota Response-Variable-Name, bude obsahovat hodnotu null.<br />-Pokud nebyl zadán parametr Response-Variable-Name, je to kontext. Požadavek nebude aktualizován.                                                                                                                                                                                                                                                                                                                                                                                   | Ne       | false    |
-| jméno                            | Určuje název hlavičky, který se má nastavit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ano      | Nevztahuje se      |
+| ignorovat – chyba                    | V případě hodnoty true a výsledkem požadavku dojde k chybě:<br /><br /> -Pokud byla zadána hodnota Response-Variable-Name, bude obsahovat hodnotu null.<br />-Pokud nebyl zadán parametr Response-Variable-Name, je to kontext. Požadavek nebude aktualizován.                                                                                                                                                                                                                                                                                                                                                                                   | Ne       | false (nepravda)    |
+| jméno                            | Určuje název hlavičky, který se má nastavit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ano      | neuvedeno      |
 | Existuje – akce                   | Určuje akci, která se má provést, když je hlavička již zadána. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override – nahradí hodnotu existujícího záhlaví.<br />-Skip – nenahradí stávající hodnotu záhlaví.<br />-Append – připojí hodnotu k existující hodnotě záhlaví.<br />-Delete – Odebere hlavičku z požadavku.<br /><br /> Pokud je nastavena na `override` zařazení více položek se stejným názvem má za následek nastavení záhlaví podle všech záznamů (které budou uvedeny vícekrát); ve výsledku budou nastaveny pouze uvedené hodnoty. | Ne       | přepsání |
 
 ### <a name="usage"></a>Využití
@@ -703,7 +703,7 @@ Zásady `proxy` umožňují směrovat požadavky předané do back-endu prostře
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Poznamenejte si použití [vlastností](api-management-howto-properties.md) jako hodnot uživatelského jména a hesla, abyste se vyhnuli ukládání citlivých informací v dokumentu zásad.
 
@@ -714,17 +714,17 @@ Poznamenejte si použití [vlastností](api-management-howto-properties.md) jako
 
 ### <a name="elements"></a>Elementy
 
-| Element | Popis  | Požaduje se |
+| Prvek | Popis  | Požaduje se |
 | ------- | ------------ | -------- |
-| Proxy server   | Kořenový element | Ano      |
+| proxy server   | Kořenový element | Ano      |
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut         | Popis                                            | Požaduje se | Výchozí |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| url="string"      | Adresa URL proxy serveru ve formátu http://host:port.             | Ano      | Nevztahuje se     |
-| username="string" | Uživatelské jméno, které se má použít k ověřování pomocí proxy serveru. | Ne       | Nevztahuje se     |
-| password="string" | Heslo, které se má použít pro ověřování u proxy serveru. | Ne       | Nevztahuje se     |
+| url="string"      | Adresa URL proxy serveru ve formátu http://host:port.             | Ano      | neuvedeno     |
+| username="string" | Uživatelské jméno, které se má použít k ověřování pomocí proxy serveru. | Ne       | neuvedeno     |
+| password="string" | Heslo, které se má použít pro ověřování u proxy serveru. | Ne       | neuvedeno     |
 
 ### <a name="usage"></a>Využití
 
@@ -745,7 +745,7 @@ Zásada `set-method` umožňuje změnit metodu požadavku HTTP pro požadavek.
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Tato ukázková zásada, která používá zásadu `set-method`, ukazuje příklad odeslání zprávy do chatovací místnosti s časovou rezervou, pokud je kód odpovědi HTTP větší nebo roven 500. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
 
@@ -777,7 +777,7 @@ Tato ukázková zásada, která používá zásadu `set-method`, ukazuje příkl
 
 ### <a name="elements"></a>Elementy
 
-| Element    | Popis                                                       | Požaduje se |
+| Prvek    | Popis                                                       | Požaduje se |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | Set – metoda | Kořenový element. Hodnota elementu určuje metodu HTTP. | Ano      |
 
@@ -800,7 +800,7 @@ Zásada `set-status` nastaví stavový kód HTTP na zadanou hodnotu.
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Tento příklad ukazuje, jak vrátit odpověď 401, pokud autorizační token není platný. Další informace najdete v tématu [použití externích služeb ze služby Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/) .
 
@@ -820,7 +820,7 @@ Tento příklad ukazuje, jak vrátit odpověď 401, pokud autorizační token ne
 
 ### <a name="elements"></a>Elementy
 
-| Element    | Popis   | Požaduje se |
+| Prvek    | Popis   | Požaduje se |
 | ---------- | ------------- | -------- |
 | set-status | Kořenový element. | Ano      |
 
@@ -828,8 +828,8 @@ Tento příklad ukazuje, jak vrátit odpověď 401, pokud autorizační token ne
 
 | Atribut       | Popis                                                | Požaduje se | Výchozí |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| Code = "Integer"  | Stavový kód protokolu HTTP, který se má vrátit.                            | Ano      | Nevztahuje se     |
-| reason="string" | Popis důvodu vrácení stavového kódu. | Ano      | Nevztahuje se     |
+| Code = "Integer"  | Stavový kód protokolu HTTP, který se má vrátit.                            | Ano      | neuvedeno     |
+| reason="string" | Popis důvodu vrácení stavového kódu. | Ano      | neuvedeno     |
 
 ### <a name="usage"></a>Využití
 
@@ -858,7 +858,7 @@ Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí
 
 ### <a name="elements"></a>Elementy
 
-| Element      | Popis   | Požaduje se |
+| Prvek      | Popis   | Požaduje se |
 | ------------ | ------------- | -------- |
 | SET – proměnná | Kořenový element. | Ano      |
 
@@ -942,9 +942,9 @@ Zásada `trace` přidá vlastní trasování do výstupu kontroly rozhraní API,
 
 ### <a name="elements"></a>Elementy
 
-| Element  | Popis                                                                                                                                          | Požaduje se |
+| Prvek  | Popis                                                                                                                                          | Požaduje se |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| trasování    | Kořenový element.                                                                                                                                        | Ano      |
+| Přehled    | Kořenový element.                                                                                                                                        | Ano      |
 | zpráva  | Řetězec nebo výraz, který se má zaznamenat.                                                                                                                 | Ano      |
 | zprostředkovatele identity | Přidá do telemetrie [trasování](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) Application Insights vlastní vlastnost. | Ne       |
 
@@ -952,10 +952,10 @@ Zásada `trace` přidá vlastní trasování do výstupu kontroly rozhraní API,
 
 | Atribut | Popis                                                                                                               | Požaduje se | Výchozí |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| source    | Řetězcové literály smysluplné pro prohlížeč trasování a určení zdroje zprávy.                                   | Ano      | Nevztahuje se     |
+| source    | Řetězcové literály smysluplné pro prohlížeč trasování a určení zdroje zprávy.                                   | Ano      | neuvedeno     |
 | závažnost  | Určuje úroveň závažnosti trasování. Povolené hodnoty jsou `verbose`, `information``error` (od nejnižší po nejvyšší). | Ne       | Podrobnosti |
-| jméno      | Název vlastnosti.                                                                                                     | Ano      | Nevztahuje se     |
-| hodnota     | Hodnota vlastnosti                                                                                                    | Ano      | Nevztahuje se     |
+| jméno      | Název vlastnosti.                                                                                                     | Ano      | neuvedeno     |
+| hodnota     | Hodnota vlastnosti                                                                                                    | Ano      | neuvedeno     |
 
 ### <a name="usage"></a>Využití
 
@@ -979,7 +979,7 @@ Zásada `wait` provádí paralelní podřízené zásady paralelně a čeká bu�
 
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 V následujícím příkladu jsou k dispozici dvě zásady `choose` jako bezprostřední podřízené zásady `wait` zásad. Každá z těchto zásad `choose` provádí paralelně. Každá zásada `choose` se pokusí načíst hodnotu uloženou v mezipaměti. V případě neúspěšného vytvoření mezipaměti se zavolá služba back-end, která tuto hodnotu poskytne. V tomto příkladu se zásada `wait` nedokončila, dokud se nedokončí všechny zásady bezprostřední podřízenosti, protože atribut `for` je nastaven na `all`. V tomto příkladu jsou kontextové proměnné (`execute-branch-one`, `value-one`, `execute-branch-two`a `value-two`) deklarovány mimo obor tohoto ukázkového pravidla.
 
@@ -1017,7 +1017,7 @@ V následujícím příkladu jsou k dispozici dvě zásady `choose` jako bezpros
 
 ### <a name="elements"></a>Elementy
 
-| Element | Popis                                                                                                   | Požaduje se |
+| Prvek | Popis                                                                                                   | Požaduje se |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
 | Počkej    | Kořenový element. Může obsahovat pouze podřízené prvky `send-request`, `cache-lookup-value`a `choose` zásad. | Ano      |
 
@@ -1025,7 +1025,7 @@ V následujícím příkladu jsou k dispozici dvě zásady `choose` jako bezpros
 
 | Atribut | Popis                                                                                                                                                                                                                                                                                                                                                                                                            | Požaduje se | Výchozí |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| pro       | Určuje, jestli zásady `wait` čekají na dokončení všech bezprostředních podřízených zásad, nebo jenom jeden. Povolené hodnoty jsou:<br /><br /> - `all`-počkat na dokončení všech bezprostředních podřízených zásad<br />-Any – počkejte na dokončení všech bezprostředně podřízených zásad. Jakmile se dokončí první bezprostředně podřízená zásada, dokončí se zásada `wait` a provede se ukončení všech ostatních bezprostředních podřízených zásad. | Ne       | Vše     |
+| pro       | Určuje, jestli zásady `wait` čekají na dokončení všech bezprostředních podřízených zásad, nebo jenom jeden. Povolené hodnoty jsou následující:<br /><br /> - `all`-počkat na dokončení všech bezprostředních podřízených zásad<br />-Any – počkejte na dokončení všech bezprostředně podřízených zásad. Jakmile se dokončí první bezprostředně podřízená zásada, dokončí se zásada `wait` a provede se ukončení všech ostatních bezprostředních podřízených zásad. | Ne       | all     |
 
 ### <a name="usage"></a>Využití
 

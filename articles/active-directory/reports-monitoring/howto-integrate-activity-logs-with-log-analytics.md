@@ -3,7 +3,7 @@ title: Streamování protokolů Azure Active Directory do Azure Monitor protokol
 description: Informace o tom, jak integrovat protokoly Azure Active Directory pomocí protokolů Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bffe16d604ac6b86b489092f50fbdc0b856867b3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989774"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376451"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrace protokolů služby Azure AD s protokoly Azure Monitor
 
@@ -44,14 +44,14 @@ V tomto článku se dozvíte, jak integrovat protokoly Azure Active Directory (A
 
 Protokoly aktivit auditu a protokoly aktivit přihlašování můžete směrovat do protokolů Azure Monitor k další analýze. 
 
-* **Protokoly auditu**: [Sestava aktivita protokoly auditu](concept-audit-logs.md) vám poskytne přístup k historii každého úkolu, který se provádí ve vašem tenantovi.
-* **Protokoly přihlášení**: Pomocí [sestavy aktivit přihlašování](concept-sign-ins.md)můžete určit, kdo provedl úkoly, které jsou hlášeny v protokolech auditu.
+* **Protokoly auditu:** [Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
+* **Protokoly přihlašování:** Se [sestavou aktivit přihlašování](concept-sign-ins.md) můžete určit, kdo provedl úlohy hlášené v protokolech auditu.
 
 > [!NOTE]
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.
 >
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
@@ -64,7 +64,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-2. Vyberte **Azure Active Directory** > **Nastavení**diagnostiky přidat nastavení diagnostiky. ->  Můžete také vybrat **Exportovat nastavení** na stránce **protokoly auditu** nebo **přihlášení** a získat tak stránku konfigurace nastavení diagnostiky.  
+2. Vyberte **Azure Active Directory** > **nastavení diagnostiky** -> **Přidat nastavení diagnostiky**. Můžete také vybrat **Exportovat nastavení** na stránce **protokoly auditu** nebo **přihlášení** a získat tak stránku konfigurace nastavení diagnostiky.  
     
 3. V nabídce **nastavení diagnostiky** zaškrtněte políčko **Odeslat do Log Analytics pracovní prostor** a pak vyberte **Konfigurovat**.
 
@@ -80,7 +80,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 7. Po asi 15 minutách ověřte, že jsou události streamované do vašeho pracovního prostoru Log Analytics.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor](howto-analyze-activity-logs-log-analytics.md)
 * [Instalace a použití zobrazení Log Analytics pro Azure Active Directory](howto-install-use-log-analytics-views.md)

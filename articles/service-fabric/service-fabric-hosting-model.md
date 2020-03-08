@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464594"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391422"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostování Azure Service Fabric
 Tento článek obsahuje přehled modelů hostování aplikací poskytovaných službou Azure Service Fabric a popisuje rozdíly mezi **sdíleným procesem** a modely **exkluzivních procesů** . Popisuje, jak nasazená aplikace vypadá na Service Fabric uzlu, a vztahu mezi replikami (nebo instancemi) služby a procesem služby-Host.
@@ -38,7 +38,7 @@ Service Fabric aktivoval ' MyServicePackage ', který spustil ' MyCodePackage ',
 ![Diagram zobrazení uzlů nasazené aplikace][node-view-two]
 
 
-Service Fabric umístit novou repliku pro oddíl **P3** Service **Fabric:/app1/ServiceB** v existující aktivaci ' MyServicePackage '. Teď hned. Pojďme vytvořit další aplikační **Fabric:/app2** typu MyAppType. V **prostředcích infrastruktury:/app2**vytvořte Service **Fabric:/app2/Service**. Tato služba má dva oddíly (**P4** a **P5**) a tři repliky na oddíl. Následující diagram znázorňuje zobrazení nového uzlu:
+Service Fabric umístit novou repliku pro oddíl **P3** Service **Fabric:/app1/ServiceB** v existující aktivaci ' MyServicePackage '. Současné. Pojďme vytvořit další aplikační **Fabric:/app2** typu MyAppType. V **prostředcích infrastruktury:/app2**vytvořte Service **Fabric:/app2/Service**. Tato služba má dva oddíly (**P4** a **P5**) a tři repliky na oddíl. Následující diagram znázorňuje zobrazení nového uzlu:
 
 
 ![Diagram zobrazení uzlů nasazené aplikace][node-view-three]

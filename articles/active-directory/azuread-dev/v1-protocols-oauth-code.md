@@ -17,11 +17,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: bc303dc62892f8fac67bb6869e72db0e40f19779
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164029"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377818"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím Azure Active Directory s využitím toku poskytování kódů OAuth 2.0
 
@@ -38,7 +38,7 @@ Tok autorizačního kódu OAuth 2,0 je popsaný v [části 4,1 specifikace oauth
 ## <a name="register-your-application-with-your-ad-tenant"></a>Registrace aplikace pomocí tenanta AD
 Nejdřív svou aplikaci zaregistrujete u svého tenanta Azure Active Directory (Azure AD). Pro svou aplikaci tak získáte ID a umožníte jí přijímat tokeny.
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
    
 1. Zvolte svého tenanta Azure AD tak, že vyberete svůj účet v pravém horním rohu stránky a potom vyberete možnost navigace v **adresáři přepínače** a pak vyberete příslušného tenanta. 
    - Tento krok přeskočte, pokud máte ve svém účtu jenom jednoho tenanta Azure AD, nebo pokud jste už vybrali příslušného tenanta Azure AD.
@@ -129,7 +129,7 @@ error=access_denied
 
 | Parametr | Popis |
 | --- | --- |
-| chyba |Hodnota kódu chyby definovaná v sekci 5,2 [autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). Následující tabulka popisuje kódy chyb, které Azure AD vrátí. |
+| error |Hodnota kódu chyby definovaná v sekci 5,2 [autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). Následující tabulka popisuje kódy chyb, které Azure AD vrátí. |
 | error_description |Podrobnější popis chyby. Tato zpráva není zamýšlená jako uživatelsky přívětivý koncový uživatel. |
 | state |Hodnota stavu je náhodně generovaná neznovu použitá hodnota, která se pošle v žádosti a vrátí se v reakci na ochranu proti útokům přes CSRF (mezi lokalitami). |
 
@@ -232,7 +232,7 @@ Ukázková chybová odpověď by mohla vypadat takto:
 ```
 | Parametr | Popis |
 | --- | --- |
-| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 | error_codes |Seznam chybových kódů specifických pro službu STS, které mohou být užitečné při diagnostice. |
 | časové razítko |Čas, kdy došlo k chybě. |
@@ -285,7 +285,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | Parametr | Popis |
 | --- | --- |
 | authorization_uri |Identifikátor URI (fyzický koncový bod) autorizačního serveru. Tato hodnota se používá také jako vyhledávací klíč k získání dalších informací o serveru z koncového bodu zjišťování. <p><p> Klient musí ověřit, zda je autorizační Server důvěryhodný. Když je prostředek chráněný službou Azure AD, stačí ověřit, jestli adresa URL začíná https://login.microsoftonline.com nebo jiným názvem hostitele, který Azure AD podporuje. Prostředek specifický pro klienta by měl vždycky vracet identifikátor URI autorizace specifický pro klienta. |
-| chyba |Hodnota kódu chyby definovaná v sekci 5,2 [autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). |
+| error |Hodnota kódu chyby definovaná v sekci 5,2 [autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). |
 | error_description |Podrobnější popis chyby. Tato zpráva není zamýšlená jako uživatelsky přívětivý koncový uživatel. |
 | resource_id |Vrátí jedinečný identifikátor prostředku. Klientská aplikace může tento identifikátor používat jako hodnotu parametru `resource` při žádosti o token pro prostředek. <p><p> Je důležité, aby klientská aplikace ověřila tuto hodnotu, jinak by škodlivá služba mohla být schopna přimět útok **zvýšení oprávnění** . <p><p> Doporučenou strategií pro předcházení útokům je ověření, že `resource_id` odpovídá základu adresy URL webového rozhraní API, ke které přistupujete. Například, pokud je k dispozici https://service.contoso.com/data, `resource_id` může být https://service.contoso.com/. Klientská aplikace musí odmítnout `resource_id`, která nezačíná základní adresou URL, pokud neexistuje spolehlivý alternativní způsob, jak ID ověřit. |
 
@@ -364,7 +364,7 @@ Ukázková chybová odpověď by mohla vypadat takto:
 
 | Parametr | Popis |
 | --- | --- |
-| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 | error_codes |Seznam chybových kódů specifických pro službu STS, které mohou být užitečné při diagnostice. |
 | časové razítko |Čas, kdy došlo k chybě. |

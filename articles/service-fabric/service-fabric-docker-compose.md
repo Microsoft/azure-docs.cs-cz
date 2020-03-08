@@ -4,11 +4,11 @@ description: Azure Service Fabric přijímá formát Docker Compose, který usna
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392594"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Podpora nasazení Docker Compose ve službě Azure Service Fabric (Preview)
 

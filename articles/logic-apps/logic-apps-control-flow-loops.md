@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791748"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358981"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvořte cykly, které opakují akce pracovního postupu nebo zpracuje pole v Azure Logic Apps
 
@@ -175,8 +175,8 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
    | Vlastnost | Hodnota |
    | -------- | ----- |
-   | **Interval** | 1\. místo | 
-   | **Frekvence** | Den |
+   | **Interval** | 1 | 
+   | **Frekvence** | Day |
    | **V těchto hodinách** | 8 |
    ||| 
 
@@ -191,7 +191,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
    | Vlastnost | Hodnota | Popis |
    | -------- | ----- | ----------- |
-   | **Název** | škálování | Název vaší proměnné | 
+   | **Název** | Omezení | Název vaší proměnné | 
    | **Typ** | Integer | Datový typ proměnné | 
    | **Hodnota** | 0 | Počáteční hodnota vaší proměnné | 
    |||| 
@@ -232,7 +232,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Komu** | *\<e-mailové adresy\@doméně >* | e-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
+      | **Komu** | *\<e-mailové adresy\@doméně >* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
       | **Předmět** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
       | **Text** | <*e-mailu-obsah*> | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
       |||| 

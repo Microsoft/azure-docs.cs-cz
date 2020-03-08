@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: cc4ead968a0ee2c9890c1cd24a6b70516b2b2e74
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326802"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668641"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Úprava znalostní báze v nástroje QnA Maker
 
@@ -42,7 +42,7 @@ Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytu
     |Odstranit adresu URL|Existující adresy URL můžete odstranit tak, že vyberete ikonu odstranit, můžete do koše.|
     |Aktualizovat obsah|Pokud chcete, aby znalostní báze procházela nejnovější obsah existujících adres URL, zaškrtněte políčko **aktualizovat** . Tím se aktualizuje znalostní báze s nejnovějším obsahem adresy URL. Tato možnost nenastavuje pravidelný plán aktualizací.|
     |Přidat soubor|Podporovaný dokument, který je součástí znalostní báze, můžete přidat tak, že vyberete **Spravovat znalostní bázi**a pak vyberete **+ Přidat soubor** .|
-    |Import|Stávající znalostní bázi můžete také importovat tak, že vyberete tlačítko **znalostní báze Ímport Knowledge Base** . |
+    |Import|Stávající znalostní bázi můžete také importovat výběrem tlačítka **importovat znalostní bázi** . |
     |Aktualizace|Aktualizace znalostní báze závisí na **cenové úrovni správy** používané při vytváření QnA maker služby přidružené k vaší znalostní bázi. V případě potřeby můžete také aktualizovat úroveň správy z webu Azure portal.
 
 1. Až provedete změny ve znalostní bázi, vyberte **Uložit a vytvořit vlak** v pravém horním rohu stránky, aby se změny zachovaly.    

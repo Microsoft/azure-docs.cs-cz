@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Funkce ve verzi preview | Dokumentace Microsoftu'
-description: Toto téma popisuje v části Další podrobnosti o funkce, které jsou ve verzi preview ve službě Azure AD Connect.
+title: 'Azure AD Connect: funkce ve verzi Preview | Microsoft Docs'
+description: V tomto tématu najdete další informace o funkcích, které jsou ve verzi Preview v Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347800"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376038"
 ---
-# <a name="more-details-about-features-in-preview"></a>Další podrobnosti o funkce ve verzi preview
-Toto téma popisuje, jak používat funkce aktuálně ve verzi preview.
+# <a name="more-details-about-features-in-preview"></a>Další podrobnosti o funkcích ve verzi Preview
+Toto téma popisuje, jak používat funkce, které jsou aktuálně ve verzi Preview.
 
 ## <a name="group-writeback"></a>Zpětný zápis skupin
-Možnost pro zpětný zápis skupin v volitelné funkce vám umožní zpětný zápis **skupiny Office 365** do doménové struktury se serverem Exchange nainstalovaný. Toto je skupina, která je vždy spravovaná v cloudu. Pokud máte v místním systému Exchange, můžete napsat zpět tyto skupiny do místního uživatele s poštovní schránku v místním Exchangi můžete odesílat a přijímat e-mailů z těchto skupin.
+Možnost pro zpětný zápis skupin v volitelných funkcích umožňuje zpětný zápis **skupin Office 365** do doménové struktury s nainstalovaným systémem Exchange. Toto je skupina, která je v cloudu vždycky spravovaná. Pokud máte místní Exchange, můžete tyto skupiny do místní schránky zapsat zpátky, aby uživatelé s místní poštovní schránkou Exchange mohli odesílat a přijímat e-maily z těchto skupin.
 
 Další informace o skupinách Office 365 a jejich použití najdete [tady](https://aka.ms/O365g).
 
-Skupiny Office 365 je vyjádřena jako distribuční skupinu v místní službě AD DS. Místní Exchange serveru musí být na serveru Exchange 2013 kumulativní aktualizaci 8 (vydané spolu. března 2015) nebo Exchange 2016 rozpoznat tento nový typ skupiny.
+Skupina Office 365 se reprezentuje jako distribuční skupina v místních služba AD DS. Místní Exchange Server musí být na Exchangi 2013 kumulativní aktualizace 8 (vydané v březnu 2015) nebo Exchange 2016 pro rozpoznání tohoto nového typu skupiny.
 
-**Poznámky k verzi preview**
+**Poznámky během verze Preview**
 
-* Atribut knihy adresy není naplněn aktuálně ve verzi preview. Bez tohoto atributu skupiny není zobrazená v globálním seznamu adres. Nejjednodušší způsob, jak vyplnit tento atribut je použít rutinu Powershellu v Exchangi `update-recipient`.
-* Platné cíle pro skupiny jsou pouze doménové struktury se schématem systému Exchange. Pokud byla zjištěna žádná Exchange, pak zpětný zápis skupin není možné povolit.
-* Aktuálně jsou podporovány pouze jednou doménovou strukturou nasazení organizaci Exchange. Pokud máte více než jedna organizace v místním systému Exchange, potřebujete místní GALSync řešení pro tyto skupiny se zobrazí v vaše jiných doménových strukturách.
-* Funkce zpětný zápis skupin nezpracovává skupiny zabezpečení nebo distribuční skupiny.
+* Atribut adresáře není aktuálně naplněný ve verzi Preview. Bez tohoto atributu není skupina viditelná v globálním seznamu. Nejjednodušší způsob, jak tento atribut naplnit, je použití rutiny prostředí Exchange PowerShell `update-recipient`.
+* Platnými cíli pro skupiny jsou pouze doménové struktury se schématem Exchange. Pokud se nezjistil žádný Exchange, není možné povolit zpětný zápis skupin.
+* V tuto chvíli se podporují jenom nasazení organizace Exchange s jednou doménovou strukturou. Pokud máte místní organizaci Exchange, budete potřebovat místní řešení GALSync, aby se tyto skupiny zobrazovaly v jiných doménových strukturách.
+* Funkce zpětného zápisu skupiny nezpracovává skupiny zabezpečení nebo distribuční skupiny.
 
 > [!NOTE]
-> Předplatné služby Azure AD Premium je vyžadován pro zpětný zápis skupin.
+> Pro zpětný zápis skupin se vyžaduje předplatné Azure AD Premium.
 > 
 >
 
-## <a name="user-writeback"></a>Zpětný zápis uživatelů
+## <a name="user-writeback"></a>Zpětný zápis uživatele
 > [!IMPORTANT]
-> Funkce ve verzi preview zpětný zápis uživatelů byla odebrána v aktualizace ze srpna 2015 na Azure AD Connect. Pokud povolíte, měli byste zakázat tuto funkci.
+> Funkce pro náhled zpětného zápisu uživatelů byla v aktualizaci srpna 2015 pro Azure AD Connect odebrána. Pokud jste ho povolili, měli byste tuto funkci zakázat.
 >
 >
 
-## <a name="next-steps"></a>Další postup
-Pokračovat vaše [vlastní instalace služby Azure AD Connect](how-to-connect-install-custom.md).
+## <a name="next-steps"></a>Další kroky
+Pokračujte v [vlastní instalaci Azure AD Connect](how-to-connect-install-custom.md).
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
