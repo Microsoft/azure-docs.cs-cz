@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250299"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898767"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Klíčová slova v Azure Cosmos DB
 Tento článek podrobně popisuje klíčová slova, která se dají použít v Azure Cosmos DBch dotazech SQL.
@@ -108,7 +108,7 @@ Dotazy s agregovanou systémovou funkcí a poddotaz s příponou DISTINCT nejsou
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
 
-## <a name="in"></a>PRO
+## <a name="in"></a>IN
 
 Použijte klíčové slovo IN ke kontrole, zda zadaná hodnota odpovídá jakékoli hodnotě v seznamu. Například následující dotaz vrátí všechny rodinné položky, kde je `id` `WakefieldFamily` nebo `AndersenFamily`.
 
@@ -126,7 +126,9 @@ Následující příklad vrátí všechny položky, kde je stav kterákoli z ur�
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-Rozhraní SQL API poskytuje podporu pro [iteraci přes pole JSON](sql-query-object-array.md#Iteration)s novou konstrukcí přidanou prostřednictvím klíčového slova in ve zdroji from. 
+Rozhraní SQL API poskytuje podporu pro [iteraci přes pole JSON](sql-query-object-array.md#Iteration)s novou konstrukcí přidanou prostřednictvím klíčového slova in ve zdroji from.
+
+Pokud zahrnete klíč oddílu do filtru `IN`, dotaz se automaticky vyfiltruje jenom na relevantní oddíly.
 
 ## <a name="top"></a>VRCHOL
 

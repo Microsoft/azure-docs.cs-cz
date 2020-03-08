@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 09a720be10b09e11adc8acdc8ab26a06870311b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249105"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892750"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -35,7 +35,7 @@ Blok je výkonný ovládací prvek, který by měl být wielded s odpovídajíc�
 Správci se můžou rozhodnout vyhovět jednomu nebo více ovládacím prvkům při udělení přístupu. Tyto ovládací prvky zahrnují následující možnosti: 
 
 - [Vyžadovat Multi-Factor Authentication (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
-- [Vyžadovat, aby zařízení bylo označené jako vyhovující (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [Vyžadovat, aby zařízení bylo označené jako vyhovující (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Vyžadovat zařízení připojené k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md)
 - [Vyžadovat klientskou aplikaci schválenou](app-based-conditional-access.md)
 - [Vyžadovat zásady ochrany aplikací](app-protection-based-conditional-access.md)
@@ -53,7 +53,7 @@ Zaškrtnutí tohoto políčka bude vyžadovat, aby uživatelé prováděli Multi
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Vyžadovat, aby zařízení bylo označené jako vyhovující
 
-Organizace, které nasadily Microsoft Intune, můžou použít informace vrácené ze svých zařízení k identifikaci zařízení, která splňují konkrétní požadavky na dodržování předpisů. Tyto informace o dodržování zásad se předávají z Intune do Azure AD, kde podmíněný přístup může učinit rozhodnutí udělit nebo blokovat přístup k prostředkům. Další informace o zásadách dodržování předpisů najdete v článku [Nastavení pravidel pro zařízení, která umožňují přístup k prostředkům ve vaší organizaci pomocí Intune](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
+Organizace, které nasadily Microsoft Intune, můžou použít informace vrácené ze svých zařízení k identifikaci zařízení, která splňují konkrétní požadavky na dodržování předpisů. Tyto informace o dodržování zásad se předávají z Intune do Azure AD, kde podmíněný přístup může učinit rozhodnutí udělit nebo blokovat přístup k prostředkům. Další informace o zásadách dodržování předpisů najdete v článku [Nastavení pravidel pro zařízení, která umožňují přístup k prostředkům ve vaší organizaci pomocí Intune](/intune/protect/device-compliance-get-started).
 
 Zařízení může být označeno jako kompatibilní s Intune (pro libovolný operační systém zařízení) nebo systémem MDM jiného výrobce pro zařízení s Windows 10. Jamf pro je jediný podporovaný systém MDM třetí strany. Další informace o integraci najdete v článku integrace [Jamf pro s Intune pro dodržování předpisů](/intune/protect/conditional-access-integrate-jamf).
 
@@ -67,7 +67,35 @@ Organizace se můžou rozhodnout používat identitu zařízení jako součást 
 
 Organizace můžou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím nastavil ze schválené klientské aplikace. Tyto schválené klientské aplikace podporují [Zásady ochrany aplikací Intune](/intune/app-protection-policy) nezávisle na řešení správy mobilních zařízení (MDM).
 
-Podporované aplikace můžete najít v článku [Microsoft Intune chráněných aplikacích](/intune/apps/apps-supported-intune-apps).
+Toto nastavení platí pro následující klientské aplikace:
+
+- Microsoft Azure Information Protection
+- Rezervace Microsoftu
+- Microsoft Cortana
+- Microsoft Dynamics 365
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- Microsoft fakturace
+- Microsoft Kaizala
+- Spouštěcí program společnosti Microsoft
+- Microsoft OneDrive
+- Microsoft OneNote
+- Microsoft Outlook
+- Aplikace Microsoft Planner
+- Microsoft PowerApps
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Skype pro firmy
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams
+- Microsoft To-Do
+- Microsoft Visio
+- Microsoft Word
+- Microsoft Yammer
 
 **Poznámky**
 
@@ -76,17 +104,26 @@ Podporované aplikace můžete najít v článku [Microsoft Intune chráněných
    - Podporuje jenom podmínku platformy iOS a Android pro zařízení.
 - Podmíněný přístup nemůže vzít v úvahu schválenou klientskou aplikaci Microsoft Edge v režimu InPrivate.
 
+Informace najdete v článku [How to: vyžadovat schválené klientské aplikace pro přístup k cloudovým aplikacím s podmíněným přístupem](app-based-conditional-access.md) pro příklady konfigurace.
+
 ### <a name="require-app-protection-policy"></a>Vyžadování zásad ochrany aplikací
 
 V rámci zásad podmíněného přístupu můžete vyžadovat, aby v klientské aplikaci existovaly [Zásady ochrany aplikací Intune](/intune/app-protection-policy) , aby byl přístup k vybraným cloudovým aplikacím dostupný. 
 
-Podporované aplikace můžete najít v článku [Microsoft Intune chráněných aplikacích](/intune/apps/apps-supported-intune-apps).
+Toto nastavení platí pro následující klientské aplikace:
+
+- Microsoft Cortana
+- Microsoft OneDrive
+- Microsoft Outlook
+- Aplikace Microsoft Planner
 
 **Poznámky**
 
 - Aplikace pro zásady ochrany aplikací podporují funkci správy mobilních aplikací Intune s ochranou zásad.
 - Požadavky na **zásady pro vyžadování zásad ochrany aplikací** :
     - Podporuje jenom podmínku platformy iOS a Android pro zařízení.
+
+Informace najdete v článku [Postupy: vyžadování zásad ochrany aplikací a schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu](app-protection-based-conditional-access.md) pro příklady konfigurace.
 
 ### <a name="terms-of-use"></a>Podmínky použití
 

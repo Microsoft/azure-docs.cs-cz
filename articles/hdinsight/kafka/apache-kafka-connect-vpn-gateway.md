@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122610"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397281"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight prostřednictvím Azure Virtual Network
 
@@ -38,7 +38,7 @@ HDInsight neumožňuje přímé připojení k Kafka přes veřejný Internet. M�
   4. Nakonfigurujte přesměrování mezi serverem DNS v každé síti.
   5. Vytvořte ve virtuální síti cluster HDInsight Kafka.
 
-     Další informace najdete v části [připojení k Apache Kafka v místní síti](#on-premises) . 
+     Další informace najdete v části [připojení k Apache Kafka v místní síti](#on-premises) .
 
 * Připojte jednotlivé počítače k virtuální síti pomocí brány VPN a klienta VPN. Chcete-li povolit tuto konfiguraci, proveďte následující úlohy:
 
@@ -72,7 +72,7 @@ Tyto kroky vytvoří následující konfiguraci:
 * Účet Azure Storage (používaný službou HDInsight)
 * Kafka v HDInsightu
 
-Pokud chcete ověřit, jestli se klient Kafka může připojit ke clusteru z místního prostředí, použijte postup v [příkladu: Oddíl klienta](#python-client) Pythonu.
+Pokud chcete ověřit, jestli se klient Kafka může připojit ke clusteru z místního prostředí, použijte postup uvedený v části [příklad klienta Pythonu](#python-client) .
 
 ## <a id="vpnclient"></a>Připojení k Apache Kafka pomocí klienta VPN
 
@@ -242,7 +242,7 @@ Pomocí kroků v této části vytvoříte následující konfiguraci:
 
 Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zprostředkovatele Kafka na klienty. Tato konfigurace nefunguje s klientským softwarem sítě VPN, protože pro entity ve virtuální síti nelze použít překlad názvů. Pro tuto konfiguraci pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy místo názvů domén:
 
-1. V případě webového prohlížeče, přejít na `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` názvem Kafka v clusteru HDInsight.
+1. Pomocí webového prohlížeče, přejít na `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` názvem Kafka v clusteru HDInsight.
 
     Po zobrazení výzvy použijte uživatelské jméno a heslo HTTPS pro daný cluster. Zobrazí se webové uživatelské rozhraní Ambari pro cluster.
 
@@ -268,9 +268,9 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Chcete-li nakonfigurovat rozhraní, na kterém naslouchá Kafka, `listeners` zadejte do pole __filtru__ v pravém horním rohu.
+6. Chcete-li nakonfigurovat rozhraní, na kterém naslouchá Kafka, zadejte `listeners` do pole __filtru__ v pravém horním rohu.
 
-7. Chcete-li nakonfigurovat Kafka pro naslouchání na všech síťových rozhraních, změňte hodnotu v poli `PLAINTEXT://0.0.0.0:9092` __naslouchací procesy__ na.
+7. Chcete-li nakonfigurovat Kafka pro naslouchání na všech síťových rozhraních, změňte hodnotu v poli __Listeners__ na `PLAINTEXT://0.0.0.0:9092`.
 
 8. Chcete-li uložit změny konfigurace, použijte tlačítko __Uložit__ . Zadejte textovou zprávu popisující změny. Po uložení změn klikněte na __OK__ .
 
@@ -290,7 +290,7 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
 
 Pokud se chcete připojit k bráně VPN, použijte část __připojit k Azure__ v dokumentu [Konfigurace připojení typu Point-to-site](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) .
 
-## <a id="python-client"></a>Případě Klient Pythonu
+## <a id="python-client"></a>Příklad: klient Pythonu
 
 Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytvořte a spusťte producenta Pythonu a příjemce:
 
@@ -316,7 +316,7 @@ Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytv
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Tento skript předpokládá, `$resourceGroupName` že je název skupiny prostředků Azure, která obsahuje virtuální síť.
+    Tento skript předpokládá, že `$resourceGroupName` je název skupiny prostředků Azure, která obsahuje virtuální síť.
 
     V dalších krocích uložte vrácené informace pro použití.
 
@@ -337,14 +337,14 @@ Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytv
       producer.send('testtopic', b'test message')
    ```
 
-    Nahraďte `'kafka_broker'` položky adresami vrácenými z kroku 1 v této části:
+    Nahraďte položky `'kafka_broker'` adresami vrácenými z kroku 1 v této části:
 
-   * Pokud používáte __softwarového klienta sítě VPN__, nahraďte `kafka_broker` položky IP adresou vašich pracovních uzlů.
+   * Používáte-li __softwarového klienta sítě VPN__, nahraďte položky `kafka_broker` IP adresou vašich pracovních uzlů.
 
-   * Pokud jste __povolili překlad IP adres pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky názvem FQDN pracovních uzlů.
+   * Pokud jste __povolili překlad IP adres pomocí vlastního serveru DNS__, nahraďte položky `kafka_broker` názvem FQDN pracovních uzlů.
 
      > [!NOTE]
-     > Tento kód odešle řetězec `test message` do tématu. `testtopic` Výchozí konfigurací Kafka ve službě HDInsight je vytvoření tématu, pokud neexistuje.
+     > Tento kód odešle řetězec `test message` do tématu `testtopic`. Výchozí konfigurací Kafka ve službě HDInsight je vytvoření tématu, pokud neexistuje.
 
 4. Chcete-li načíst zprávy ze Kafka, použijte následující kód Pythonu:
 
@@ -360,11 +360,11 @@ Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytv
      print (msg)
    ```
 
-    Nahraďte `'kafka_broker'` položky adresami vrácenými z kroku 1 v této části:
+    Nahraďte položky `'kafka_broker'` adresami vrácenými z kroku 1 v této části:
 
-    * Pokud používáte __softwarového klienta sítě VPN__, nahraďte `kafka_broker` položky IP adresou vašich pracovních uzlů.
+    * Používáte-li __softwarového klienta sítě VPN__, nahraďte položky `kafka_broker` IP adresou vašich pracovních uzlů.
 
-    * Pokud jste __povolili překlad IP adres pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky názvem FQDN pracovních uzlů.
+    * Pokud jste __povolili překlad IP adres pomocí vlastního serveru DNS__, nahraďte položky `kafka_broker` názvem FQDN pracovních uzlů.
 
 ## <a name="next-steps"></a>Další kroky
 

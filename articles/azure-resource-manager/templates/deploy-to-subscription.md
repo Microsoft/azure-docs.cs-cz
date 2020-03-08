@@ -2,17 +2,23 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228127"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925266"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
-Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Můžete ale také vytvořit prostředky na úrovni předplatného. Nasazení na úrovni předplatného můžete použít k provádění akcí, které na této úrovni mají smysl, jako je třeba vytváření skupin prostředků nebo přiřazování [řízení přístupu na základě rolí](../../role-based-access-control/overview.md).
+Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Prostředky však můžete vytvořit také v těchto případech:
+
+* úroveň předplatného (uvedená v tomto článku)
+* [úroveň skupiny pro správu](deploy-to-management-group.md)
+* [úroveň tenanta](deploy-to-tenant.md)
+
+Nasazení na úrovni předplatného můžete použít k provádění akcí, které na této úrovni mají smysl, jako je třeba vytváření skupin prostředků nebo přiřazování [řízení přístupu na základě rolí](../../role-based-access-control/overview.md).
 
 Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API. Azure Portal nepodporuje nasazení na úrovni předplatného.
 
@@ -21,7 +27,7 @@ Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní př
 Na úrovni předplatného můžete nasadit následující typy prostředků:
 
 * [projektů](/azure/templates/microsoft.consumption/budgets)
-* [nasazení](/azure/templates/microsoft.resources/deployments)
+* [nasazení](/azure/templates/microsoft.resources/deployments) – pro vnořené šablony, které se nasazují do skupin prostředků.
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -88,12 +94,12 @@ U nasazení na úrovni předplatného se při používání funkcí šablon vysk
 
 * Funkce [Resource ()](template-functions-resource.md#resourcegroup) **není podporována.**
 * Funkce [Reference ()](template-functions-resource.md#reference) a [list ()](template-functions-resource.md#list) jsou podporovány.
-* Funkce [ResourceID ()](template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni předplatného. Nezadávejte hodnotu parametru skupiny prostředků.
+* K získání ID prostředku pro prostředky, které jsou nasazeny na úrovni předplatného, použijte funkci [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) .
 
   Pokud například chcete získat ID prostředku pro definici zásady, použijte:
   
   ```json
-  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
   
   ID vráceného prostředku má následující formát:
@@ -101,8 +107,6 @@ U nasazení na úrovni předplatného se při používání funkcí šablon vysk
   ```json
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
-
-  Nebo použijte funkci [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) k získání ID prostředku na úrovni předplatného.
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 

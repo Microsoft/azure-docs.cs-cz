@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: e3937241724aab63f770ad56cbf96d2e1b45f00e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 96b3e602011f4d3f237f29ce9b2fcad8bd0b8300
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251357"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395064"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -89,7 +89,7 @@ Při vytváření živé události můžete zadat následující možnosti:
 * Maximální název živé události je 32 znaků.
 * Název by měl splňovat tento vzor [regulárního výrazu](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
-Podívejte se také na [zásady vytváření názvů koncových bodů streamování](streaming-endpoint-concept.md#naming-convention).
+Viz také [zásady vytváření názvů koncových bodů streamování](streaming-endpoint-concept.md#naming-convention).
 
 > [!TIP]
 > Chcete-li zaručit jedinečnost názvu živé události, můžete vygenerovat identifikátor GUID a pak odebrat všechny spojovníky a složené závorky (pokud existují). Řetězec bude jedinečný napříč všemi živými událostmi a jeho délka bude zaručena 32.

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032559"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669046"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování do aplikací pomocí Proxy aplikace
 
@@ -43,47 +43,57 @@ Tento diagram vysvětluje tok, když se uživatel pokusí o přístup k místní
 7. Konektor odesílá původní požadavek na server aplikace pomocí token protokolu Kerberos, které získala ze služby AD.
 8. Aplikace odešle odpověď na konektoru, který je pak vrácen do Proxy aplikace služby a nakonec na uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Před zahájením práce s jednotné přihlašování pro aplikace IWA, ujistěte se, že je prostředí připravené s následující nastavení a konfigurace:
 
-* Vaše aplikace, jako je SharePoint Web apps, jsou nastaveny na používat integrované ověřování Windows. Další informace najdete v tématu [povolit podporu pro ověřování protokolem Kerberos](https://technet.microsoft.com/library/dd759186.aspx), nebo pro SharePoint najdete v tématu [plánování ověřování protokolem Kerberos v Sharepointu 2013](https://technet.microsoft.com/library/ee806870.aspx).
-* Všechny aplikace mají [hlavní názvy služby](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx).
-* Server se službou konektoru a server se službou aplikace jsou připojené k doméně a součástí stejné doméně nebo důvěryhodné domény. Další informace o připojení k doméně najdete v tématu [připojit počítač k doméně](https://technet.microsoft.com/library/dd807102.aspx).
+* Vaše aplikace, jako je SharePoint Web apps, jsou nastaveny na používat integrované ověřování Windows. Další informace najdete v tématu [Povolení podpory pro ověřování protokolem Kerberos](https://technet.microsoft.com/library/dd759186.aspx)nebo pro SharePoint v tématu [Plánování ověřování protokolem Kerberos v SharePointu 2013](https://technet.microsoft.com/library/ee806870.aspx).
+* Všechny vaše aplikace mají [hlavní názvy služeb](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx).
+* Server se službou konektoru a server se službou aplikace jsou připojené k doméně a součástí stejné doméně nebo důvěryhodné domény. Další informace o připojení k doméně najdete v tématu [připojení počítače k doméně](https://technet.microsoft.com/library/dd807102.aspx).
 * Server se službou konektoru má přístup k číst TokenGroupsGlobalAndUniversal atribut pro uživatele. Toto výchozí nastavení může být má vliv, zabezpečení, posílení zabezpečení prostředí.
 
 ### <a name="configure-active-directory"></a>Konfigurace Active Directory
 Konfigurace služby Active Directory se liší v závislosti na tom, zda váš konektor Proxy aplikací a aplikační servery jsou ve stejné doméně nebo ne.
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>Konektor a aplikačního serveru ve stejné doméně
-1. Ve službě Active Directory, přejděte na **nástroje** > **uživatelé a počítače služby**.
+1. Ve službě Active Directory přejdete na **nástroje** > **Uživatelé a počítače**.
 2. Vyberte server se službou konektoru.
 3. Klikněte pravým tlačítkem a vyberte **vlastnosti** > **delegování**.
-4. Vyberte **důvěřovat tomuto počítači pro delegování pouze určeným službám**. 
+4. Vyberte **Důvěřovat tomuto počítači pro delegování pouze určeným službám**. 
 5. Vyberte možnost **použít libovolný protokol pro ověřování**.
-6. V části **služby, ke kterým může tento účet předložit delegovaná pověření** přidejte hodnotu hlavního názvu služby identity aplikačního serveru. To umožňuje konektoru Proxy aplikace k zosobnění uživatelů ve službě AD aplikací definované v seznamu.
+6. V části **služby, kterým může tento účet prezentovat delegovaná pověření** přidejte hodnotu pro identitu hlavního názvu služby aplikačního serveru. To umožňuje konektoru Proxy aplikace k zosobnění uživatelů ve službě AD aplikací definované v seznamu.
 
    ![Snímek obrazovky okna Vlastnosti Connector 1JÁDROVÉ](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Konektor a aplikační server v různých doménách
-1. Seznam požadovaných součástí pro práci s KCD napříč doménami, najdete v části [omezeného delegování protokolu Kerberos napříč doménami](https://technet.microsoft.com/library/hh831477.aspx).
-2. Použití `principalsallowedtodelegateto` vlastnost na serveru konektoru pro povolení Proxy aplikace pro delegování pro server konektoru. Aplikační server je `sharepointserviceaccount` a delegování server `connectormachineaccount`. Pro Windows 2012 R2 tento kód použijte jako příklad:
+1. Seznam požadavků pro práci s KCD napříč doménami najdete v tématu [omezené delegování protokolu Kerberos napříč doménami](https://technet.microsoft.com/library/hh831477.aspx).
+2. Pro povolení delegování ověřování protokolem Kerberos z proxy aplikace (konektor) použijte vlastnost `principalsallowedtodelegateto` účtu služby (počítač nebo vyhrazený uživatelský účet domény) webové aplikace. Aplikační server je spuštěný v kontextu `webserviceaccount` a delegování serveru je `connectorcomputeraccount`. Spusťte níže uvedené příkazy na řadiči domény (se spuštěným systémem Windows Server 2012 R2 nebo novějším) v doméně `webserviceaccount`. Pro oba účty použijte ploché názvy (jiné než UPN).
 
-```powershell
-$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+   Pokud je `webserviceaccount` účet počítače, použijte tyto příkazy:
 
-Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
 
-Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
-```
+   Set-ADComputer -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-`sharepointserviceaccount`může se jednat o účet počítače SPS nebo účet služby, pod kterým je spuštěný fond aplikací služby SPS.
+   Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
+
+   Pokud je `webserviceaccount` uživatelským účtem, použijte tyto příkazy:
+
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
+
+   Set-ADUser -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+
+   Get-ADUser webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
 
 ## <a name="configure-single-sign-on"></a>Konfigurace jednotného přihlašování 
-1. Publikování aplikace podle pokynů v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md). Je nutné vybrat **Azure Active Directory** jako **metoda předběžného ověření**.
-2. Poté, co vaše aplikace se zobrazí v seznamu podnikových aplikací, vyberte ho a klikněte na tlačítko **jednotného přihlašování**.
-3. Nastavit režim jednotného přihlašování **integrované ověřování Windows**.  
-4. Zadejte **vnitřní hlavní název služby aplikace** aplikačního serveru. V tomto příkladu je název SPN pro naše publikované aplikace http/www.contoso.com. Tento hlavní název služby musí být v seznamu služeb, ke kterým může tento konektor předložit delegovaná pověření. 
-5. Zvolte **delegovaná identita přihlášení** pro konektor nekonfigurovali používání jménem uživatele. Další informace najdete v tématu [práce s různé místní a cloudové identity](#working-with-different-on-premises-and-cloud-identities)
+1. Publikujte aplikaci podle pokynů popsaných v tématu [publikování aplikací pomocí proxy aplikací](application-proxy-add-on-premises-application.md). Nezapomeňte vybrat **Azure Active Directory** jako **metodu předběžného ověření**.
+2. Jakmile se vaše aplikace objeví v seznamu podnikových aplikací, vyberte ji a klikněte na **jednotné přihlašování**.
+3. Nastavte režim jednotného přihlašování na **integrované ověřování systému Windows**.  
+4. Zadejte **interní hlavní název aplikace** aplikačního serveru. V tomto příkladu je název SPN pro naše publikované aplikace http/www.contoso.com. Tento hlavní název služby musí být v seznamu služeb, ke kterým může tento konektor předložit delegovaná pověření. 
+5. Vyberte **delegovanou identitu přihlášení** , kterou má konektor použít jménem uživatelů. Další informace najdete v tématu [práce s různými místními a cloudovou identitou](#working-with-different-on-premises-and-cloud-identities) .
 
    ![Konfigurace pokročilých aplikace](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
@@ -107,17 +117,17 @@ Pokud chcete povolit SPNEGO:
     net stop WAPCSvc & net start WAPCSvc
     ```
 
-Další informace o protokolu Kerberos najdete v tématu [všechny potřebujete vědět o Kerberos omezené delegování (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
+Další informace o protokolu Kerberos najdete v tématu [vše, co chcete dozvědět o omezeném delegování protokolu Kerberos (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
 
 Aplikace Windows bez obvykle uživatelská jména uživatele nebo názvy účtů SAM místo domény e-mailové adresy. Pokud se tato situace se vztahuje na aplikace, musíte nakonfigurovat pole identity delegované přihlašovací jméno pro připojení cloudové identity pro vaše aplikace identity. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>Práce s různé místní a cloudové identity
-Proxy aplikací se předpokládá, že uživatelé mají přesně stejnou identitu v cloudu i lokálně. V některých prostředích se ale v důsledku podnikových zásad nebo závislostí aplikací můžou organizace pro přihlášení použít alternativní ID. V takových případech můžete i nadále používat KCD pro jednotné přihlašování. Konfigurace **delegovaná identita přihlášení** pro každou aplikaci, aby zadat, která identita se má použít při provádění jednotného přihlašování.  
+Proxy aplikací se předpokládá, že uživatelé mají přesně stejnou identitu v cloudu i lokálně. V některých prostředích se ale v důsledku podnikových zásad nebo závislostí aplikací můžou organizace pro přihlášení použít alternativní ID. V takových případech můžete i nadále používat KCD pro jednotné přihlašování. Nakonfigurujte **identitu delegovaného přihlášení** pro každou aplikaci a určete, která identita se má použít při jednotném přihlašování.  
 
 Tato možnost umožňuje mnoho organizací, které mají různé místní a cloudové identity mít jednotné přihlašování z cloudu k místním aplikacím, aniž by uživatelé museli zadat různá uživatelská jména a hesla. Jedná se o organizace, který:
 
-* Interně mají několik domén (joe@us.contoso.com, joe@eu.contoso.com) a jednu doménu v cloudu (joe@contoso.com).
-* Mít název domény nesměrovatelných interně (joe@contoso.usa) a právní jeden v cloudu.
+* Více domén interně (joe@us.contoso.com, joe@eu.contoso.com) a jedna doména v cloudu (joe@contoso.com).
+* Název domény, který není směrovatelný, interně (joe@contoso.usa) a v cloudu musí být jiný.
 * Nepoužívejte názvy domén interně (Jan)
 * Používejte jiné aliasy místně a v cloudu. Například joe-johns@contoso.com vs. joej@contoso.com  
 
@@ -128,9 +138,9 @@ Pomocí Proxy aplikace můžete zvolit, která identita se má použít k získ�
 Pokud se používá delegovaná identita přihlášení, tato hodnota nemusí být jedinečný mezi doménami nebo doménovými strukturami ve vaší organizaci. Tento problém můžete vyhnout publikování těchto aplikací dvakrát pomocí dvou různých skupin konektoru. Protože každá aplikace má cílovou skupinu jiného uživatele, musíte připojit své konektory do jiné domény.
 
 ### <a name="configure-sso-for-different-identities"></a>Konfigurace jednotného přihlašování pro různé identity
-1. Nakonfigurujte nastavení služby Azure AD Connect, abyste hlavní identita je e-mailovou adresu (e-mailu). To se provádí jako součást procesu vlastní tak, že změníte **hlavní název uživatele** v nastavení synchronizace. Tato nastavení také určují, jak se uživatelé přihlásí k Office 365, zařízení s Windows 10 a další aplikace, které používají službu Azure AD jako jejich úložiště identit.  
-   ![Identifikace uživatele – snímek obrazovky – rozevírací seznam hlavní název uživatele](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
-2. V nastavení konfigurace aplikace pro aplikaci, byste chtěli upravit, vyberte **delegovaná identita přihlášení** má být použit:
+1. Nakonfigurujte nastavení služby Azure AD Connect, abyste hlavní identita je e-mailovou adresu (e-mailu). Tato operace se provádí v rámci procesu přizpůsobení změnou pole **hlavní název uživatele** v nastavení synchronizace. Tato nastavení také určují, jak se uživatelé přihlásí k Office 365, zařízení s Windows 10 a další aplikace, které používají službu Azure AD jako jejich úložiště identit.  
+   ![určení obrazovky uživatele – rozevírací seznam hlavní název uživatele](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
+2. V nastavení konfigurace aplikace pro aplikaci, kterou chcete upravit, vyberte **identitu delegovaného přihlášení** , která se má použít:
 
    * Hlavní název uživatele (například joe@contoso.com)
    * Alternativní hlavní název uživatele (například joed@contoso.local)
@@ -139,14 +149,13 @@ Pokud se používá delegovaná identita přihlášení, tato hodnota nemusí b�
    * Název účtu SAM místní (závisí na konfiguraci řadiče domény)
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>Řešení potíží s jednotného přihlašování pro různé identity
-Pokud dojde k chybě v procesu jednotného přihlašování, zobrazí se v protokolu událostí počítač konektor jak je vysvětleno v [Poradce při potížích s](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
-Ale v některých případech je požadavek úspěšně odeslán do back-end aplikace během této aplikace odpovědi v různých dalších odpovědi protokolu HTTP. Řešení potíží s těchto případech byste začít kontrolou číslo události 24029 na počítači se konektor Proxy aplikací protokol události relace. Identita uživatele, která byla použita pro delegování se zobrazí v poli "user" v rámci podrobnosti o události. Chcete-li zapnout relace protokolu, vyberte **zobrazit analytické a ladit protokoly** v nabídce Zobrazit prohlížeč událostí.
+Pokud v procesu jednotného přihlašování dojde k chybě, zobrazí se v protokolu událostí konektorového počítače, jak je vysvětleno v tématu [řešení potíží](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
+Ale v některých případech je požadavek úspěšně odeslán do back-end aplikace během této aplikace odpovědi v různých dalších odpovědi protokolu HTTP. Řešení potíží s těchto případech byste začít kontrolou číslo události 24029 na počítači se konektor Proxy aplikací protokol události relace. Identita uživatele, která byla použita pro delegování se zobrazí v poli "user" v rámci podrobnosti o události. Pokud chcete zapnout protokol relace, vyberte **Zobrazit protokoly analýzy a ladění** v nabídce zobrazení prohlížeče událostí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Jak nakonfigurovat aplikaci Proxy aplikací pro použití omezeného delegování protokolu Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [Řešení potíží s problémy, se kterými máte potíže s Proxy aplikací](application-proxy-troubleshoot.md)
+* [Postup konfigurace aplikace proxy aplikací pro použití omezeného delegování protokolu Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [Řešení problémů, které máte s proxy aplikací](application-proxy-troubleshoot.md)
 
 
 Nejnovější novinky a aktualizace naleznete na [blogu proxy aplikace](https://blogs.technet.com/b/applicationproxyblog/)
-

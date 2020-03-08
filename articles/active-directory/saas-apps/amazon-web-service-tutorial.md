@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 6970debd3885a513ac0e30d6cc5391b0db66cf9b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047270"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668507"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -53,7 +53,7 @@ Tento postup doporučujeme z následujících důvodů:
 > [!Note]
 > Ujistěte se, že používáte jenom aplikaci Galerie.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -264,7 +264,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     b. Pro **Popis**zadejte **tuto zásadu, která umožní načtení rolí z účtů AWS**.
 
-    c. Vyberte **vytvořit zásadu**.
+    c. Vyberte **Vytvořit zásadu**.
 
 17. Ve službě AWS IAM vytvořte nový uživatelský účet.
 
@@ -337,7 +337,10 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     ![Snímek obrazovky s oddílem nastavení se zvýrazněnou možností](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> Služba zřizování bude importovat jenom role z AWS do Azure AD. Tato služba nebude zřizovat uživatele a skupiny z Azure AD zpátky do AWS.
+> Služba zřizování importuje role jenom z AWS do Azure AD. Služba nezřizuje uživatele a skupiny z Azure AD do AWS.
+
+> [!NOTE]
+> Po uložení přihlašovacích údajů pro zřizování musíte počkat, až se spustí počáteční cyklus synchronizace. Synchronizace obvykle trvá přibližně 40 minut. V části **aktuální stav**můžete zobrazit stav na konci stránky **zřizování** .
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>Vytvořit testovacího uživatele Amazon Web Services (AWS)
 
@@ -365,7 +368,7 @@ Po kliknutí na dlaždici Amazon Web Services (AWS) na přístupovém panelu bys
 
   * Kombinovaná délka ARN role a ARN zprostředkovatele SAML pro importované role musí mít 119 znaků nebo méně.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

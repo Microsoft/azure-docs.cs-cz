@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit a spravovat znal
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 33725eb54e8a78547f4bf82d6a8f6fae58fdb5cb
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524406"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389357"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>Rychlý Start: vytvoření a Správa znalostní báze
 
@@ -30,7 +30,7 @@ Začněte s klientskou knihovnou QnA Maker. Pomocí těchto kroků nainstalujete
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Kurz: vytvoření a odpověď na databázi znalostí](../tutorials/create-publish-query-in-portal.md)
+>[Kurz: testování znalostní báze pomocí dávkového souboru](./batch-testing.md)
 
 * [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)

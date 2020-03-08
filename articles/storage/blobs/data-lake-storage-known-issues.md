@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7fd76be8d17dc1c632e555a56d038d4f5c1e1486
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919607"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669126"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -102,7 +102,7 @@ Používejte pouze verze `1.6.0` nebo vyšší. V tuto chvíli existuje chyba 
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Průzkumník služby Storage na webu Azure Portal
+## <a name="storage-explorer-in-the-azure-portal"></a>Průzkumník služby Storage v Azure Portal
 
 Seznamy řízení přístupu (ACL) ještě nejsou podporované.
 
@@ -111,6 +111,14 @@ Seznamy řízení přístupu (ACL) ještě nejsou podporované.
 ## <a name="thirdpartyapplications"></a>Aplikace třetích stran
 
 Aplikace třetích stran, které používají rozhraní REST API k práci, budou fungovat i v případě, že je použijete s Data Lake Storage Gen2 aplikacemi, které volají rozhraní API objektů blob, budou pravděpodobně fungovat.
+
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Seznamy řízení přístupu (ACL) a anonymní přístup pro čtení
+
+Pokud byl kontejneru udělen [přístup anonymního přístupu pro čtení](storage-manage-access-to-resources.md) , nebudou mít seznamy ACL žádný vliv na tento kontejner nebo soubory v tomto kontejneru.
+
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Ovladač Windows Azure Storage Blob (WASB)
+
+V současné době existuje několik problémů spojených s používáním ovladače WASB spolu s účty, které mají hierarchický obor názvů. Pro vaše úlohy doporučujeme použít ovladač [systému souborů BLOB v Azure (ABFS)](data-lake-storage-abfs-driver.md) . 
 
 
 

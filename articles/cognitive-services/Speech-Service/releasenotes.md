@@ -3,22 +3,48 @@ title: Poznámky k verzi – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: Běžící protokol vydaných verzí funkcí hlasové služby, vylepšení, oprav chyb a známé problémy.
 services: cognitive-services
-author: oscholz
-manager: nitinme
+author: brianem
+manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: oliversc
+ms.date: 02/25/2020
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168150"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394802"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+## <a name="speech-sdk-1100-2020-february-release"></a>Sada Speech SDK 1.10.0:2020 – Únorová verze
+
+**Nové funkce**
+ - Přidání balíčků Pythonu pro podporu nové verze 3,8 Pythonu
+ - Podpora Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 (C++, C#, Java, Python).
+   > [!NOTE] 
+   > Zákazníci musí podle [těchto pokynů](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)nakonfigurovat OpenSSL.
+ - Podpora ARM32 pro Linux pro Debian a Ubuntu.
+ - DialogServiceConnector nyní podporuje volitelné parametr "robot ID" v BotFrameworkConfig. Tento parametr umožňuje použití několika přímých roboty řeči s jedním prostředkem řeči Azure. Bez zadaného parametru se použije výchozí robot (tak, jak je určený na stránce Konfigurace kanálu pro přímé čáry).
+ - DialogServiceConnector má teď vlastnost SpeechActivityTemplate. Obsah tohoto řetězce JSON bude použit přímým převodem na řádku k předběžnému naplnění široké škály podporovaných polí ve všech činnostech, které se dodávají k přímému line Speech bot, včetně aktivit automaticky generovaných v reakci na události, jako je rozpoznávání řeči.
+ - TTS nyní používá pro ověřování klíč předplatného, což snižuje latenci prvního výsledku Shrnutí po vytvoření syntetizátoru.
+ - Aktualizované modely rozpoznávání řeči pro 19 národních prostředí pro průměrné snížení četnosti chyb slov 18,6% (ES-ES, ES-MX, fr-CA, fr-FR, IT-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-HK, NB-NO, Fi-FL, ru-RU, pl-PL, CA-ES, zh-TW, th-TH, pt-PT, tr-TR). Nové modely přináší významná vylepšení napříč více doménami včetně diktování, přepisu a scénářů indexování videa.
+
+**Opravy chyb**
+ - Opravená chyba, kde konverzace Transcriber v rozhraní JAVA API nečekala správně 
+ - Oprava emulátoru Androidu x86 pro [problém GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363) pro Xamarin
+ - Přidat chybějící (Get | Set) vlastnosti metod na AudioConfig
+ - Oprava chyby TTS, kde audioDataStream nebylo možné zastavit, pokud selhalo připojení
+ - Použití koncového bodu bez oblasti způsobí selhání USP pro překladatele konverzace.
+ - Generování ID v univerzálních aplikacích pro Windows teď používá vhodně jedinečný algoritmus GUID; dřív a záměrně neúmyslně nastavily implementaci podložit, která často produkuje kolizí v rámci velkých sad interakcí.
+ 
+ **Ukázky**
+ - Ukázka Unity pro použití sady Speech SDK s [mikrofonem Unity a streamování přes nabízený režim](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)
+
+**Další změny**
+ - [Dokumentace ke konfiguraci OpenSSL se aktualizovala pro Linux.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Sada Speech SDK 1.9.0:2020 – leden Release
 

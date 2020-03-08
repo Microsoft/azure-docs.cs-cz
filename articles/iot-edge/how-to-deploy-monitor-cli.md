@@ -9,12 +9,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fffe1ebda0103b3ed2cd8f76642ecb2967d23069
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9152b38a0155b610f39f7de239bcc377ad96be5d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510290"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892753"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí Azure CLI
 
@@ -26,10 +26,10 @@ V tomto článku se nastavení rozhraní příkazového řádku Azure a rozší�
 
 ## <a name="cli-prerequisites"></a>Požadavky na rozhraní příkazového řádku
 
-* [Služby IoT hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
-* [Zařízení IoT Edge](how-to-register-device.md#prerequisites-for-the-azure-cli) nainstalován modul runtime IoT Edge.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimálně musí být vaše Azure CLI verze 2.0.24 nebo novější. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
-* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
+* [IoT Edge zařízení](how-to-register-device.md#prerequisites-for-the-azure-cli) s nainstalovaným modulem runtime IoT Edge.
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
+* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension)
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
@@ -148,7 +148,7 @@ Tady je základní navrstvený manifest nasazení s jedním modulem jako příkl
 }
 ```
 
-Předchozí příklad ukázal nastavení vrstveného nasazení `properties.desired` pro modul. Pokud toto navrstvené nasazení cílí na zařízení, kde už byl stejný modul použit, přepíše všechny existující požadované vlastnosti. Chcete-li aktualizovat místo přepsání, požadované vlastnosti, můžete definovat nový pododdíl. Například:
+Předchozí příklad ukázal nastavení vrstveného nasazení `properties.desired` pro modul. Pokud toto navrstvené nasazení cílí na zařízení, kde už byl stejný modul použit, přepíše všechny existující požadované vlastnosti. Chcete-li aktualizovat místo přepsání, požadované vlastnosti, můžete definovat nový pododdíl. Příklad:
 
 ```json
 "SimulatedTEmperatureSensor": {
@@ -163,7 +163,7 @@ Další informace o konfiguraci vláken modulů v vrstveném nasazení najdete v
 
 ## <a name="identify-devices-using-tags"></a>Identifikace zařízení pomocí značek
 
-Před vytvořením nasazení, budete muset mít k určení zařízení, která chcete ovlivnit. Azure IoT Edge identifikuje zařízení pomocí **značky** ve dvojčeti zařízení. Každé zařízení může mít několik značek, které můžete definovat jakýmkoli způsobem, který dává smysl pro vaše řešení. Například pokud spravujete areálu Chytré budovy, můžete přidat následující značky k zařízení:
+Před vytvořením nasazení, budete muset mít k určení zařízení, která chcete ovlivnit. Azure IoT Edge identifikuje zařízení pomocí **značek** v zařízení s dvojitou signalizací. Každé zařízení může mít několik značek, které můžete definovat jakýmkoli způsobem, který dává smysl pro vaše řešení. Například pokud spravujete areálu Chytré budovy, můžete přidat následující značky k zařízení:
 
 ```json
 "tags":{
@@ -176,7 +176,7 @@ Před vytvořením nasazení, budete muset mít k určení zařízení, která c
 }
 ```
 
-Další informace o značky a dvojčata zařízení, najdete v části [principy a použití dvojčat zařízení ve službě IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Další informace o tom, jaké jsou vlákna a značky zařízení, najdete [v tématu pochopení a používání nevláken zařízení v IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Vytvoření nasazení
 
@@ -193,13 +193,13 @@ K vytvoření vrstveného deploymet použijte stejný příkaz s příznakem `--
 Příkaz pro vytvoření nasazení má následující parametry:
 
 * **--vrstvený** – volitelný příznak k identifikaci nasazení v podobě vrstveného nasazení.
-* **– id nasazení** – název nasazení, které se vytvoří ve službě IoT hub. Zadejte jedinečný název, který je malá písmena až 128 vašeho nasazení. Vyhněte se mezery a následující neplatné znaky: `& ^ [ ] { } \ | " < > /`. Jedná se o požadovaný parametr.
-* **--obsah** -Filepath nasazení manifestu JSON. Jedná se o požadovaný parametr.
-* **– název centra** – název služby IoT hub, ve kterém se vytvoří nasazení. Centrum musí být v rámci aktuálního předplatného. Pomocí příkazu `az account set -s [subscription name]` změňte své aktuální předplatné.
-* **--popisky** -přidat popisky pro sledování vašich nasazení. Popisky jsou název, páry hodnota, která popisují vaše nasazení. Pro názvy a hodnoty mají popisky formát JSON. Například `{"HostPlatform":"Linux", "Version:"3.0.1"}`.
-* **--cílovou podmínku** – zadejte cílovou podmínku k určení zařízení, která budou cílem s tímto nasazením. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například `tags.environment='test' and properties.reported.devicemodel='4000x'`.
-* **--priority** -kladné celé číslo. V případě, že dvě nebo víc nasazení cílí na stejném zařízení, budou platit nasazení s nejvyšší číselnou hodnotou priority.
-* **--metriky** – vytvoří metriky, které dotazují vlastnosti edgeHub hlášené na sledování stavu nasazení. Metriky přebírají vstup JSON nebo FilePath. Například, `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
+* **--Deployment-ID** – název nasazení, které se vytvoří ve službě IoT Hub. Zadejte jedinečný název, který je malá písmena až 128 vašeho nasazení. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`. Jedná se o požadovaný parametr.
+* **--Content** -FilePath pro manifest nasazení JSON. Jedná se o požadovaný parametr.
+* **--hub-název** – název centra IoT, ve kterém se nasazení vytvoří. Centrum musí být v rámci aktuálního předplatného. Pomocí příkazu `az account set -s [subscription name]` změňte své aktuální předplatné.
+* **--Labels** – přidejte popisky, které vám pomůžou sledovat vaše nasazení. Popisky jsou název, páry hodnota, která popisují vaše nasazení. Pro názvy a hodnoty mají popisky formát JSON. Například `{"HostPlatform":"Linux", "Version:"3.0.1"}`.
+* **--target-Condition** -zadejte cílovou podmínku, abyste zjistili, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například `tags.environment='test' and properties.reported.devicemodel='4000x'`.
+* **--priority** – kladné celé číslo. V případě, že dvě nebo víc nasazení cílí na stejném zařízení, budou platit nasazení s nejvyšší číselnou hodnotou priority.
+* **--metriky** – vytvoří metriky, které dotazují vlastnosti edgeHub hlášené na sledování stavu nasazení. Metriky přebírají vstup JSON nebo FilePath. například `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
 
 ## <a name="monitor-a-deployment"></a>Monitorování nasazení
 
@@ -211,13 +211,13 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 
 Příkaz pro zobrazení nasazení má následující parametry:
 
-* **– id nasazení** – název nasazení, který existuje ve službě IoT hub. Jedná se o požadovaný parametr.
-* **– název centra** – název služby IoT hub, ve které existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
+* **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub. Jedná se o požadovaný parametr.
+* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`
 
 Zkontrolujte nasazení v příkazovém okně. Vlastnost **metriky** uvádí počet pro každou metriku, která je vyhodnocována jednotlivými rozbočovači:
 
-* **targetedCount** – systém metriku, která určuje počet dvojčat zařízení ve službě IoT Hub, která splňují cílovou podmínku.
-* **appliedCount** -metrika systému určuje počet zařízení, která jste využili obsahu nasazení u jejich dvojčaty modulů ve službě IoT Hub.
+* **targetedCount** – systémová metrika, která určuje počet vláken zařízení v IoT Hub, které odpovídají podmínce cíle.
+* **appliedCount** – systémová metrika určuje počet zařízení, ve kterých byl obsah nasazení aplikován na vlákna v modulu IoT Hub.
 * **reportedSuccessfulCount** – metrika zařízení, která určuje počet IoT Edge zařízení v rámci generování sestav nasazení v IoT Edge modulu runtime klienta.
 * **reportedFailedCount** – metrika zařízení, která určuje počet IoT Edge zařízení v hlášení nasazení, které se nezdařily z modulu runtime klienta IoT Edge.
 
@@ -229,9 +229,9 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 
 Příkaz pro zobrazení metriky nasazení má následující parametry:
 
-* **– id nasazení** – název nasazení, který existuje ve službě IoT hub.
+* **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
 * **--metrika-ID** – název metriky, pro kterou chcete zobrazit seznam ID zařízení, například `reportedFailedCount`.
-* **– název centra** – název služby IoT hub, ve které existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`.
+* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`.
 
 ## <a name="modify-a-deployment"></a>Upravit nasazení
 
@@ -253,12 +253,12 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 
 Příkaz pro aktualizaci nasazení má následující parametry:
 
-* **– id nasazení** – název nasazení, který existuje ve službě IoT hub.
-* **– název centra** – název služby IoT hub, ve které existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
-* **– Nastavte** – umožňuje aktualizovat vlastnost v nasazení. Můžete aktualizovat následujícími vlastnostmi:
+* **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
+* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`
+* **--set** -aktualizuje vlastnost v nasazení. Můžete aktualizovat následujícími vlastnostmi:
   * targetCondition – například `targetCondition=tags.location.state='Oregon'`
   * popisky
-  * priorita
+  * priority
 * **--Přidat** – přidá do nasazení novou vlastnost, včetně cílových podmínek nebo popisků.
 * **--Remove** -odebere existující vlastnost, včetně cílových podmínek nebo popisků.
 
@@ -274,8 +274,8 @@ az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub na
 
 Příkaz pro odstranění nasazení má následující parametry:
 
-* **– id nasazení** – název nasazení, který existuje ve službě IoT hub.
-* **– název centra** – název služby IoT hub, ve které existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
+* **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
+* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f5345a96e333e0f75264880ee18a95c9ab8dd63c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185850"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672294"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -25,7 +25,7 @@ ms.locfileid: "77185850"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Otázka: Nedávno jsem zaregistroval zařízení. Proč se v Azure Portal v části informace o uživateli nezobrazují zařízení? Nebo proč je pro zařízení připojená k hybridnímu Azure Active Directory (Azure AD) vlastník zařízení označený jako neurčený jako N/A.
 
 **A:** Zařízení s Windows 10, která jsou připojená k hybridní službě Azure AD, se nezobrazí v části **uživatelská zařízení**.
-V Azure Portal použijte zobrazení **všechna zařízení** . Můžete také použít rutinu PowerShellu [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) .
+V Azure Portal použijte zobrazení **všechna zařízení** . Můžete také použít rutinu PowerShellu [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) .
 
 V části **uživatelská zařízení**jsou uvedena pouze následující zařízení:
 
@@ -62,7 +62,7 @@ V části **uživatelská zařízení**jsou uvedena pouze následující zaříz
 - Uživatel zařízení zakáže z portálu moje aplikace. 
 - Správce (nebo uživatel) odstraní nebo zakáže zařízení v Azure Portal nebo pomocí PowerShellu.
 - Jenom služba hybridního připojení ke službě Azure AD: správce odebere z oboru synchronizace v případě zařízení odstraněných z Azure AD organizační jednotku zařízení.
-- Upgrade služby Azure AD Connect na verzi 1.4. xx. x [Porozumění Azure AD Connect 1.4. xx. x a odobrazení zařízení](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Upgrade služby Azure AD Connect na verzi 1.4. xx. x [Porozumění Azure AD Connect 1.4. xx. x a odobrazení zařízení](/azure/active-directory/hybrid/reference-connect-device-disappearance).
 
 
 Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
@@ -128,7 +128,7 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 **A:** Může to trvat až hodinu, než se odvolat z doby, kdy je zařízení Azure AD označené jako zakázané.
 
 >[!NOTE] 
->U zaregistrovaných zařízení doporučujeme zařízení vymazat, abyste se ujistili, že uživatelé nebudou mít přístup k prostředkům. Další informace najdete v tématu [co je registrace zařízení?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>U zaregistrovaných zařízení doporučujeme zařízení vymazat, abyste se ujistili, že uživatelé nebudou mít přístup k prostředkům. Další informace najdete v tématu [co je registrace zařízení?](/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
@@ -180,13 +180,13 @@ Odstraněné nebo zakázané uživatele, kteří se předtím nemohli přihlási
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>Otázka: moji uživatelé nemůžou hledat tiskárny ze zařízení připojených k Azure AD. Jak můžu povolit tisk z těchto zařízení?
 
-**A:** Pokud chcete nasadit tiskárny pro zařízení připojená k Azure AD, přečtěte si téma [Nasazení hybridního cloudového tisku Windows serveru pomocí](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)předběžného ověření. K nasazení hybridního cloudového tisku potřebujete místní Windows Server. V současné době není k dispozici cloudová služba tisku. 
+**A:** Pokud chcete nasadit tiskárny pro zařízení připojená k Azure AD, přečtěte si téma [Nasazení hybridního cloudového tisku Windows serveru pomocí](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)předběžného ověření. K nasazení hybridního cloudového tisku potřebujete místní Windows Server. V současné době není k dispozici cloudová služba tisku. 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>Otázka: Návody se připojit ke vzdálenému zařízení připojenému k Azure AD?
 
-**A:** Viz [připojení ke VZDÁLENÉMU počítači připojenému Azure Active Directory](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+**A:** Viz [připojení ke VZDÁLENÉMU počítači připojenému Azure Active Directory](/windows/client-management/connect-to-remote-aadj-pc).
 
 ---
 
@@ -220,7 +220,7 @@ Toto chování:
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>Otázka: Proč se mi zobrazuje *... došlo k chybě!* Dialogové okno při pokusu o připojení k počítači do Azure AD?
 
-**A:** K této chybě dochází, když nastavíte registraci Azure Active Directory v Intune. Ujistěte se, že uživatel, který se pokouší o připojení k Azure AD, má přiřazenou správnou licenci Intune. Další informace najdete v tématu [Nastavení registrace pro zařízení s Windows](https://docs.microsoft.com/intune/windows-enroll).  
+**A:** K této chybě dochází, když nastavíte registraci Azure Active Directory v Intune. Ujistěte se, že uživatel, který se pokouší o připojení k Azure AD, má přiřazenou správnou licenci Intune. Další informace najdete v tématu [Nastavení registrace pro zařízení s Windows](/intune/windows-enroll).  
 
 ---
 
@@ -307,7 +307,7 @@ Připojení k hybridní službě Azure AD má přednost před stavem zaregistrov
 
 **A:** Proveďte následující kroky:
 
-1.  [Vytvoření zásady dodržování předpisů](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+1.  [Vytvoření zásady dodržování předpisů](/intune/compliance-policy-create-mac-os)
 1.  [Definování zásad podmíněného přístupu pro zařízení macOS](../active-directory-conditional-access-azure-portal.md) 
 
 **Mark**

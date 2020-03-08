@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588327"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669239"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -56,7 +56,6 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Office 365](connect-office-365.md)
     - [ATP v programu Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md)
     - [Firewall webových aplikací společnosti Microsoft](connect-microsoft-waf.md)
-    - [Události zabezpečení systému Windows](connect-windows-security-events.md) 
     - [Brána Windows Firewall](connect-windows-firewall.md)
     - [Události zabezpečení systému Windows](connect-windows-security-events.md)
 

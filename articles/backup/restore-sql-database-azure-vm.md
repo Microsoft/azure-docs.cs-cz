@@ -3,12 +3,12 @@ title: Obnovení databází SQL Server na virtuálním počítači Azure
 description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390766"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392829"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Server na virtuálních počítačích Azure
 
@@ -23,7 +23,7 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 - Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 - Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před obnovením databáze mějte na paměti následující:
 
@@ -112,24 +112,25 @@ Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možn
 2. Vyberte název SQL Server, pro který chcete obnovit záložní soubory.
 3. V **cílové cestě na serveru** zadejte cestu ke složce na serveru vybrané v kroku 2. Toto je umístění, ve kterém bude služba vypsat všechny nezbytné soubory zálohy. Cesta ke sdílené složce v síti, nebo cesta připojené sdílené složky Azure, pokud je zadaná jako cílová cesta, umožňuje snazší přístup k těmto souborům jiným počítačům ve stejné síti nebo se stejnou sdílenou složkou Azure, která je v nich namontovaná.<BR>
 
->Pokud chcete obnovit záložní soubory databáze ve sdílené složce Azure připojené k cílovému registrovanému virtuálnímu počítači, ujistěte se, že NT AUTHORITY\SYSTEM má přístup ke sdílené složce. Pomocí níže uvedených kroků můžete udělit oprávnění ke čtení a zápisu pro službu AFS připojenou k virtuálnímu počítači:
->- Spuštění `PsExec -s cmd` pro zadání NT AUTHORITY\SYSTEM Shell
->   - Spusťte příkaz `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`.
->   - Ověřit přístup pomocí `dir \\<storageacct>.file.core.windows.net\<filesharename>`
->- Zahájí obnovení souborů z trezoru služby Backup, aby se `\\<storageacct>.file.core.windows.net\<filesharename>` jako cesta.<BR>
-PsExec můžete stáhnout přes <https://docs.microsoft.com/sysinternals/downloads/psexec>
+    >Pokud chcete obnovit záložní soubory databáze ve sdílené složce Azure připojené k cílovému registrovanému virtuálnímu počítači, ujistěte se, že NT AUTHORITY\SYSTEM má přístup ke sdílené složce. Pomocí níže uvedených kroků můžete udělit oprávnění ke čtení a zápisu pro službu AFS připojenou k virtuálnímu počítači:
+    >
+    >- Spuštění `PsExec -s cmd` pro zadání NT AUTHORITY\SYSTEM Shell
+    >   - Spusťte příkaz `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`.
+    >   - Ověřit přístup pomocí `dir \\<storageacct>.file.core.windows.net\<filesharename>`
+    >- Zahájí obnovení souborů z trezoru služby Backup, aby se `\\<storageacct>.file.core.windows.net\<filesharename>` jako cesta.<BR>
+    PsExec můžete stáhnout přes <https://docs.microsoft.com/sysinternals/downloads/psexec>
 
 4. Vyberte **OK**.
 
-![Vybrat obnovit jako soubory](./media/backup-azure-sql-database/restore-as-files.png)
+    ![Vybrat obnovit jako soubory](./media/backup-azure-sql-database/restore-as-files.png)
 
 5. Vyberte **bod obnovení** odpovídající, pro který budou obnoveny všechny dostupné soubory. bak.
 
-![Vybrat bod obnovení](./media/backup-azure-sql-database/restore-point.png)
+    ![Vybrat bod obnovení](./media/backup-azure-sql-database/restore-point.png)
 
 6. Všechny záložní soubory přidružené k vybranému bodu obnovení jsou dumpingové do cílové cesty. Soubory můžete obnovit jako databázi na jakémkoli počítači, na kterém se nachází, pomocí SQL Server Management Studio.
 
-![Obnovené záložní soubory v cílové cestě](./media/backup-azure-sql-database/sql-backup-files.png)
+    ![Obnovené záložní soubory v cílové cestě](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Obnovení k určitému bodu v čase
 
@@ -163,6 +164,9 @@ Pokud jste jako typ obnovení vybrali možnost **úplný & rozdíl** , udělejte
 1. Vyberte bod obnovení ze seznamu a kliknutím na **tlačítko OK** dokončete postup bodu obnovení.
 
     ![Zvolit úplný bod obnovení](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+
+    >[!NOTE]
+    > Ve výchozím nastavení se zobrazí body obnovení za posledních 30 dní. Kliknutím na tlačítko **filtrovat** a vybrat vlastní rozsah můžete zobrazit body obnovení starší než 30 dní.
 
 1. Pokud chcete po obnovení zachovat databázi neprovozované v nabídce **Upřesnit konfiguraci** , povolte **obnovení pomocí NORECOVERY**.
 1. Pokud chcete změnit umístění pro obnovení na cílovém serveru, zadejte novou cílovou cestu.

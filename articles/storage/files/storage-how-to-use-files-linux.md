@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2469a2b5819b3011f919a2b483933bb030eed70
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772104"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925257"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí příkazu `mount` a spuštění po vytvoření položky v `/etc/fstab`.
@@ -34,7 +34,7 @@ Pokud používáte distribuci systému Linux, která není uvedená v předchoz�
 uname -r
 ```
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**Ujistěte se, že je nainstalovaný balíček CIFS-util.**  
@@ -276,7 +276,7 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="feedback"></a>Váš názor
 Uživatelé systému Linux, chceme vás od vás.
 
-Skupina uživatelé služby soubory Azure pro Linux poskytuje fórum pro sdílení zpětné vazby při vyhodnocování a přijímání úložiště souborů na platformě Linux. Zapojte [uživatele systému Azure soubory Linux](mailto:azurefileslinuxusers@microsoft.com) , aby se připojili ke skupině uživatelů.
+Skupina uživatelé služby soubory Azure pro Linux poskytuje fórum pro sdílení zpětné vazby při vyhodnocování a přijímání úložiště souborů na platformě Linux. Zapojte [uživatele systému Azure soubory Linux](mailto:azurefiles@microsoft.com) , aby se připojili ke skupině uživatelů.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Soubory Azure najdete na těchto odkazech:
