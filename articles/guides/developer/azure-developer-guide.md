@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598047"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344088"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Příručka Začínáme pro vývojáře v Azure
+# <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
 ## <a name="what-is-azure"></a>Co je Azure?
 

@@ -1,6 +1,6 @@
 ---
-title: Použití zařízení StorSimple řady 8000 souhrn | Dokumentace Microsoftu
-description: Popisuje okně s přehledem služby StorSimple a vysvětluje, jak použít ho k monitorování stavu vašeho řešení StorSimple.
+title: Použít souhrn zařízení řady StorSimple 8000 | Microsoft Docs
+description: Popisuje okno s přehledem služby StorSimple a vysvětluje, jak ho použít k monitorování stavu řešení StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,77 +15,77 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: c174f6ce0fb3d40af953be205a7bfcca60fbfeec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632972"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366708"
 ---
-# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Použijte okno s přehledem služby pro zařízení StorSimple řady 8000
+# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Použití okna s přehledem služby pro zařízení řady StorSimple 8000
 
 ## <a name="overview"></a>Přehled
 
-Okně s přehledem služby Správce zařízení StorSimple poskytuje přehled o všech zařízeních, které jsou připojené ke službě Správce zařízení StorSimple, zvýraznění taková zařízení, která vyžadují pozornost. správce systému. Tento kurz představuje okně s přehledem služby, vysvětluje obsahu řídicího panelu a funkce a popisuje úlohy, které můžete provádět z této stránky.
+Okno StorSimple Device Manager Service Summary poskytuje souhrnné zobrazení všech zařízení, která jsou připojená ke službě StorSimple Device Manager, a zvýrazňují taková zařízení, která potřebují pozornost správce systému. V tomto kurzu se seznámíte s oknem Přehled služby, vysvětlujete obsah a funkci řídicího panelu a popisujete úkoly, které můžete z této stránky provádět.
 
 ![Souhrn služby](./media/storsimple-8000-service-dashboard/service-summary1.png)
 
 
 ## <a name="management-commands"></a>Příkazy pro správu
 
-V souhrnu okně služby StorSimple se zobrazí možnosti pro správu služby Správce zařízení StorSimple a zařízeních StorSimple řady 8000 k této službě zaregistrované. Příkazy pro správu se zobrazí v horní části okna a na levé straně.
+V okně s přehledem služby StorSimple uvidíte možnosti správy služby StorSimple Device Manager a zařízení řady StorSimple 8000, která jsou zaregistrovaná v této službě. Zobrazí se příkazy pro správu v horní části okna a na levé straně.
 
 ![Panel příkazů](./media/storsimple-8000-service-dashboard/service-summary2.png)
 
-Pomocí těchto možností můžete provádět různé operace, jako jsou přidání sdílených složek nebo svazků, monitorování nebo různé úlohy běžící na zařízeních StorSimple.
+Pomocí těchto možností můžete provádět různé operace, například přidat sdílené složky nebo svazky nebo monitorovat různé úlohy běžící na zařízeních StorSimple.
 
 
 ## <a name="essentials"></a>Základy
 
-Oblasti essentials pojednává o některých důležité vlastnosti, jako je skupina prostředků, umístění a předplatné, ve kterém byl vytvořen Správce zařízení StorSimple.
+V oblasti základy se zachycují některé důležité vlastnosti, jako je například skupina prostředků, umístění a předplatné, ve kterém byl vytvořen StorSimple Device Manager.
 
 ![Základy](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
-## <a name="storsimple-device-manager-service-summary"></a>Přehled služby Správce zařízení StorSimple
+## <a name="storsimple-device-manager-service-summary"></a>Shrnutí služby StorSimple Device Manager
 
-* **Výstrahy** dlaždice obsahuje snímek všech aktivních výstrah napříč všemi zařízeními, seskupené podle závažnosti výstrahy.
+* Dlaždice **výstrahy** poskytuje snímek všech aktivních výstrah napříč všemi zařízeními seskupených podle závažnosti výstrahy.
 
-    ![Dlaždice výstrah](./media/storsimple-8000-service-dashboard/service-summary4.png)
+    ![Dlaždice výstrahy](./media/storsimple-8000-service-dashboard/service-summary4.png)
 
-    Kliknutí na dlaždici otevře **výstrahy** okno, kde můžete kliknout na jednotlivé výstrahy zobrazíte další podrobnosti o výstraze, včetně všech doporučené akce. Výstrahy můžete také zrušit, pokud byl problém vyřešen.
+    Kliknutím na dlaždici otevřete okno **výstrahy** , kde můžete kliknout na jednotlivá upozornění a zobrazit další podrobnosti o této výstraze, včetně případných doporučených akcí. Výstrahu můžete také vymazat, pokud byl problém vyřešen.
 
-    ![Kliknutím na dlaždici upozornění](./media/storsimple-8000-service-dashboard/service-summary8.png)
+    ![Dlaždice klikněte na tlačítko výstrahy](./media/storsimple-8000-service-dashboard/service-summary8.png)
 
-* **Kapacity** zobrazí dlaždice ukazuje primární úložiště, která je zřízená a zbývající napříč všemi zařízeními vzhledem k celkový úložiště k dispozici na všech zařízeních. **Zřízení** odkazuje na velikost úložiště, který je připravený a přidělené, **zbývající** odkazuje na zbývající kapacitu, kterou je možné zřídit napříč všemi zařízeními.
+* Na dlaždici **kapacita** se zobrazuje primární úložiště, které je zřízené a zbývající ve všech zařízeních vzhledem k celkovému úložišti dostupnému napříč všemi zařízeními. **Zřízené** služby se vztahují na velikost úložiště, která je připravená a přidělená k použití, **zbývající** znamená zbývající kapacitu, kterou je možné zřídit napříč všemi zařízeními.
 
-    ![Kapacity dlaždice](./media/storsimple-8000-service-dashboard/service-summary6.png)
+    ![Dlaždice kapacity](./media/storsimple-8000-service-dashboard/service-summary6.png)
 
-    **Zbývající Vrstvená** kapacita je k dispozici kapacita, která se dá zřídit včetně cloudu, zatímco **zbývající místní** je kapacita zbývající na disky připojené k StorSimple 8000 Řada zařízení.
+    **Zbývající vrstvená** kapacita je dostupná kapacita, kterou je možné zřídit včetně cloudu, zatímco **zbývající místní** kapacita je zbývající na discích připojených k zařízením řady StorSimple 8000.
 
 
-* V **využití** grafu, můžete zobrazit důležité metriky pro vaše zařízení. Můžete zobrazit z primárního úložiště používá na všech zařízeních a cloudové úložiště spotřebovávané zařízení za posledních 7 dnů, výchozí časové období. 
+* V grafu **využití** uvidíte relevantní metriky pro vaše zařízení. Můžete zobrazit primární úložiště používané napříč všemi zařízeními a cloudové úložiště spotřebované zařízeními za posledních 7 dní, což je výchozí časové období. 
 
     ![Dlaždice využití](./media/storsimple-8000-service-dashboard/service-summary7.png) 
 
-    Chcete-li vybrat různé časové měřítko, použijte **upravit** možnost v pravém horním rohu grafu.
+    Chcete-li zvolit jiné časové měřítko, použijte možnost **Upravit** v pravém horním rohu grafu.
 
-     ![Klikněte na dlaždici využití](./media/storsimple-8000-service-dashboard/service-summary10.png)
+     ![Kliknout na dlaždici využití](./media/storsimple-8000-service-dashboard/service-summary10.png)
 
      ![Exportovat data grafu](./media/storsimple-8000-service-dashboard/service-summary11.png)
 
-* **Zařízení** dlaždice obsahuje souhrn počtu zařízení řady StorSimple 8000 v Správce zařízení StorSimple seskupených podle stavu zařízení. 
+* Dlaždice **zařízení** poskytuje souhrn počtu zařízení řady StorSimple 8000 ve vaší StorSimple Device Manager seskupených podle stavu zařízení. 
 
     ![Dlaždice zařízení](./media/storsimple-8000-service-dashboard/service-summary5.png)
 
-    Klikněte na tuto dlaždici otevřete **zařízení** seznamu okno a potom klikněte na jednotlivá zařízení k podrobnostem souhrn zařízení, která je specifická pro zařízení. Akce specifické pro zařízení můžete provést také z okno s přehledem dané zařízení. Další informace o okně s přehledem zařízení, přejděte na [okno s přehledem zařízení](storsimple-8000-device-dashboard.md).
+    Kliknutím na tuto dlaždici otevřete okno seznam **zařízení** a potom klikněte na jednotlivá zařízení, abyste přešli na souhrn zařízení, který je specifický pro dané zařízení. Akce specifické pro zařízení můžete také provádět z daného okna souhrnu zařízení. Pokud chcete získat další informace o okně Souhrn zařízení, klikněte na [okno Souhrn zařízení](storsimple-8000-device-dashboard.md).
 
-    ![Kliknutím na dlaždici zařízení](./media/storsimple-8000-service-dashboard/service-summary9.png)
+    ![Dlaždice zařízení klikněte na tlačítko.](./media/storsimple-8000-service-dashboard/service-summary9.png)
 
 ## <a name="view-the-activity-logs"></a>Zobrazení protokolů aktivit
 
-Chcete-li zobrazit různé operace provádějí v rámci Správce zařízení StorSimple, klikněte na tlačítko **protokoly aktivit** odkazu na levé straně okno s přehledem StorSimple služby. Tím přejdete **protokoly aktivit** okno, ve kterém můžete prohlédnout souhrnné informace o nedávné prováděných operací.
+Pokud chcete zobrazit různé operace provedené v rámci StorSimple Device Manager, klikněte na odkaz **protokoly aktivit** na levé straně okna s přehledem služby StorSimple. Tím přejdete do okna **protokoly aktivit** , kde můžete zobrazit souhrn posledních operací, které se provedly.
 
 ![Protokoly aktivit](./media/storsimple-8000-service-dashboard/activity-logs1.png)
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, jak [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o tom, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

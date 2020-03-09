@@ -15,11 +15,11 @@ ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048630"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394918"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -51,7 +51,7 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
     e. **Účet úložiště**: volitelný účet Azure Storage, který přidružíte k účtu Batch. Pro zajištění nejlepšího výkonu se doporučuje účet úložiště pro obecné účely v2. Všechny možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account). Na portálu vyberte existující účet úložiště nebo vytvořte nový.
 
-      ![vytvořit účet úložiště][storage_account]
+      ![Vytvořit účet úložiště][storage_account]
 
     f. **Režim přidělování fondů**: na kartě **Upřesnit** nastavení můžete nastavit režim přidělování fondů jako předplatné **služby Batch** nebo **uživatele**. Ve většině scénářů přijměte výchozí **službu Batch**.
 

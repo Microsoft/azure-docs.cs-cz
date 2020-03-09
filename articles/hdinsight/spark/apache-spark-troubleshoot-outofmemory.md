@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894317"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395182"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
 
@@ -56,7 +56,7 @@ java.lang.OutOfMemoryError
 
 Nejpravděpodobnější příčinou této výjimky je, že není dostatek paměti haldy je přidělit virtuálním počítačům Java (JVMs). Tyto JVMs jsou spouštěny jako vykonavatelé nebo ovladače jako součást aplikace Apache Spark.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 1. Určete maximální velikost dat, která bude aplikace Spark zpracovávat. Vyhodnotit odhad velikosti na základě maximální velikosti vstupních dat, zprostředkujících dat vytvořených transformací vstupních dat a výstupními daty vytvořenými dalšími transformacemi mezilehlých dat. Pokud počáteční odhad není dostačující, zvětšete velikost mírně a Iterujte, dokud neproběhne Chyba paměti.
 
@@ -114,7 +114,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Můžete zvýšit velikost paměti serveru pro historii Spark úpravou vlastnosti `SPARK_DAEMON_MEMORY` v konfiguraci Sparku a restartováním všech služeb.
 
@@ -200,7 +200,7 @@ Při neočekávaném ukončení serveru Livy se také ukončí všechna připoje
 
 Při odeslání velkého počtu úloh prostřednictvím Livy jako součást vysoké dostupnosti pro Livy server ukládá tyto stavy relací v ZK (v clusterech HDInsight) a obnovuje tyto relace při restartování služby Livy. Při restartování po neočekávaném ukončení vytvoří Livy jedno vlákno na relaci a tato hodnota sestaví určitý počet relací na obnovení, což způsobí, že se vytváří příliš mnoho vláken.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Všechny položky odstraňte pomocí kroků popsaných níže.
 

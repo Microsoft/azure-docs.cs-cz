@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965460"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384901"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby StorSimple Device Manager pro zařízení řady StorSimple 8000
 
@@ -77,17 +77,17 @@ Chcete-li odstranit službu, proveďte následující kroky.
 
     ![Vyhledat službu, která se má odstranit](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Tím přejdete do okna StorSimple Device Manager Service. Klikněte na tlačítko **odstranit**.
+2. Tím přejdete do okna StorSimple Device Manager Service. Klikněte na **Odstranit**.
 
     ![Odstranit službu](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
 3. V potvrzovacím oznámení klikněte na **Ano** . Odstranění služby může trvat několik minut.
 
-    ![Potvrdit odstranění](./media/storsimple-8000-manage-service/deletessdevman3.png)
+    ![Potvrzení odstranění](./media/storsimple-8000-manage-service/deletessdevman3.png)
 
 ## <a name="get-the-service-registration-key"></a>Získání registračního klíče služby
 
-Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorSimple ve službě. K registraci prvního zařízení StorSimple budete potřebovat registrační klíč služby. K registraci dalších zařízení pomocí existující služby StorSimple potřebujete registrační klíč a šifrovací klíč dat služby (který se při registraci generuje na prvním zařízení). Další informace o šifrovacím klíči dat služby najdete v tématu [zabezpečení StorSimple](storsimple-8000-security.md). Registrační klíč můžete získat přístupem k klíčům v okně StorSimple Device Manager.
+Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorSimple ve službě. K registraci prvního zařízení StorSimple budete potřebovat registrační klíč služby. K registraci dalších zařízení pomocí existující služby StorSimple potřebujete registrační klíč a šifrovací klíč dat služby (který se při registraci generuje na prvním zařízení). Další informace o šifrovacím klíči dat služby najdete v tématu [zabezpečení StorSimple](storsimple-8000-security.md). Registrační klíč můžete získat přístupem k **klíčům** v okně StorSimple Device Manager.
 
 K získání registračního klíče služby proveďte následující kroky.
 
@@ -95,7 +95,7 @@ K získání registračního klíče služby proveďte následující kroky.
 
 Zachovejte registrační klíč služby v bezpečném umístění. K registraci dalších zařízení pomocí této služby budete potřebovat tento klíč a také šifrovací klíč dat služby. Po získání registračního klíče služby musíte zařízení nakonfigurovat prostřednictvím rozhraní Windows PowerShell pro StorSimple.
 
-Podrobnosti o používání tohoto registračního klíče najdete v [kroku 3: Nakonfigurujte a zaregistrujte zařízení prostřednictvím](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)Windows PowerShell pro StorSimple.
+Podrobnosti o používání tohoto registračního klíče najdete v části [Krok 3: konfigurace a registrace zařízení prostřednictvím Windows PowerShell pro StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
 ## <a name="regenerate-the-service-registration-key"></a>Znovu vygenerovat registrační klíč služby
 Registrační klíč služby je nutné znovu vygenerovat, pokud potřebujete provést střídání klíčů nebo pokud se změnil seznam správců služeb. Když znovu vygenerujete klíč, použije se nový klíč jenom k registraci následných zařízení. Zařízení, která jsou už zaregistrovaná, neovlivní tento proces.
@@ -103,7 +103,7 @@ Registrační klíč služby je nutné znovu vygenerovat, pokud potřebujete pro
 K opětovnému vygenerování registračního klíče služby proveďte následující kroky.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>Opětovné vygenerování registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **klíče**pro **správu &gt;**  .
+1. V okně **StorSimple Device Manager** otevřete okno **&gt;** **klíče**pro správu.
     
     ![Okno Klíče](./media/storsimple-8000-manage-service/regenregkey2.png)
 
@@ -129,7 +129,7 @@ Změna šifrovacího klíče dat služby je proces 3 kroků:
 2. Pomocí Windows PowerShell pro StorSimple zahajte změnu šifrovacího klíče dat služby.
 3. Pokud máte více než jedno zařízení StorSimple, aktualizujte šifrovací klíč dat služby na ostatních zařízeních.
 
-### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>Krok 1: Použití skriptu prostředí Windows PowerShell k autorizaci zařízení ke změně šifrovacího klíče dat služby
+### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>Krok 1: použití skriptu Windows PowerShellu k autorizaci zařízení ke změně šifrovacího klíče dat služby
 Správce zařízení obvykle vyžádá, aby správce služby schvaloval zařízení, aby změnil šifrovací klíče dat služby. Správce služby pak udělí zařízení, aby změnil klíč.
 
 Tento krok se provádí pomocí skriptu založeného na Azure Resource Manager. Správce služeb může vybrat zařízení, která mají nárok na autorizaci. Zařízení je pak autorizováno ke spuštění procesu změny šifrovacího klíče dat služby. 
@@ -145,7 +145,7 @@ Aby bylo možné iniciovat změny šifrovacího klíče dat služby, musí zař�
 * Nemůžete autorizovat zařízení, zatímco probíhá výměna šifrovacího klíče dat služby.
 * Zařízení můžete autorizovat v případě, že některá zařízení zaregistrovaná ve službě převzala šifrování, zatímco ostatní ne. 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Krok 2: Použití Windows PowerShell pro StorSimple k inicializaci změny šifrovacího klíče dat služby
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Krok 2: použití Windows PowerShell pro StorSimple k inicializaci změny šifrovacího klíče dat služby
 Tento krok se provádí v rozhraní Windows PowerShell pro StorSimple na autorizovaném zařízení StorSimple.
 
 > [!NOTE]
@@ -156,7 +156,7 @@ Pokud se připojujete k rozhraní Windows PowerShell pomocí konzoly sériového
 
 #### <a name="to-initiate-the-service-data-encryption-key-change"></a>Postup při inicializaci změny šifrovacího klíče dat služby
 1. Vyberte možnost 1 pro přihlášení s úplným přístupem.
-2. Na příkazovém řádku zadejte:
+2. Do příkazového řádku zadejte:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
 3. Po úspěšném dokončení rutiny se zobrazí nový šifrovací klíč dat služby. Zkopírujte tento klíč a uložte ho pro použití v kroku 3 tohoto procesu. Tento klíč se použije k aktualizaci všech zbývajících zařízení zaregistrovaných ve službě StorSimple Manager.
@@ -170,32 +170,32 @@ Pokud se připojujete k rozhraní Windows PowerShell pomocí konzoly sériového
    
    Máte-li pro vaši službu zaregistrovanou jedno zařízení, proces přecházení je nyní dokončen a můžete přeskočit další krok. Pokud máte pro vaši službu zaregistrovanou více zařízení, přejděte ke kroku 3.
 
-### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Krok 3: Aktualizace šifrovacího klíče dat služby na jiných zařízeních StorSimple
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Krok 3: aktualizace šifrovacího klíče dat služby na jiných zařízeních StorSimple
 Tyto kroky je potřeba provést v rozhraní Windows PowerShell zařízení StorSimple, pokud máte ve službě StorSimple Manager zaregistrovanou více zařízení. Klíč, který jste získali v kroku 2, je nutné použít k aktualizaci všech zbývajících zařízení StorSimple zaregistrovaných ve službě StorSimple Manager.
 
 Provedením následujících kroků aktualizujte šifrování dat služby na vašem zařízení.
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>Aktualizace šifrovacího klíče dat služby na fyzických zařízeních
 1. K připojení ke konzole použijte Windows PowerShell pro StorSimple. Vyberte možnost 1 pro přihlášení s úplným přístupem.
-2. Do příkazového řádku zadejte:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. Zadejte šifrovací klíč dat služby, který jste získali v [kroku 2: Použijte Windows PowerShell pro StorSimple k inicializaci změny](#to-initiate-the-service-data-encryption-key-change)šifrovacího klíče dat služby.
+2. Do příkazového řádku zadejte: `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+3. Zadejte šifrovací klíč dat služby, který jste získali v [kroku 2: použití Windows PowerShell pro StorSimple k inicializaci změny šifrovacího klíče dat služby](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Aktualizace šifrovacího klíče dat služby ve všech cloudových zařízeních 8010/8020
 1. Stáhněte a nastavte skript prostředí PowerShell [Update-CloudApplianceServiceEncryptionKey. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) . 
-2. Otevřete PowerShell a na příkazovém řádku zadejte:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Otevřete PowerShell a na příkazovém řádku zadejte: `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Tento skript zajistí, aby se šifrovací klíč dat služby nastavil na všech cloudových zařízeních 8010/8020 ve Správci zařízení.
 
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Podporované operace na zařízeních s verzemi staršími než aktualizace 5,0
 V Azure Portal se podporují jenom zařízení StorSimple, která používají aktualizaci 5,0 a vyšší. Zařízení, na kterých běží starší verze, mají omezená podpora. Po dokončení migrace na Azure Portal použijte následující tabulku, která vám pomůže pochopit, které operace jsou podporované na zařízeních s verzemi staršími než aktualizace 5,0.
 
-| Operace                                                                                                                       | Podporováno      |
+| Operace                                                                                                                       | Podporuje se      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | Registrování zařízení                                                                                                               | Ano            |
 | Konfigurace nastavení zařízení, jako jsou obecné, síť a zabezpečení                                                                | Ano            |
 | Hledání, stahování a instalace aktualizací                                                                                             | Ano            |
 | Deaktivovat zařízení                                                                                                               | Ano            |
-| Odstranit zařízení                                                                                                                   | Ano            |
+| Odstranění zařízení                                                                                                                   | Ano            |
 | Vytvoření, úprava a odstranění kontejneru svazků                                                                                   | Ne             |
 | Vytvoření, úprava a odstranění svazku                                                                                             | Ne             |
 | Vytváření, úpravy a odstraňování zásad zálohování                                                                                      | Ne             |
@@ -211,7 +211,7 @@ V Azure Portal se podporují jenom zařízení StorSimple, která používají a
 | Zapnutí a vypnutí řadičů zařízení                                                                                              | Ano            |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [procesu nasazení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 * Přečtěte si další informace o [správě účtu úložiště StorSimple](storsimple-8000-manage-storage-accounts.md).
 * Přečtěte si další informace o tom, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

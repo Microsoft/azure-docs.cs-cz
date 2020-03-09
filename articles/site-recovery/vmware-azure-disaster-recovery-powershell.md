@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861265"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391742"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí PowerShellu
 
@@ -31,7 +31,7 @@ Získáte informace o těchto tématech:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, potřebujete:
 
@@ -342,7 +342,7 @@ K ochraně zjištěného virtuálního počítače budete potřebovat následuj�
 * Chráněná položka, která má být replikována.
 * Účet úložiště, do kterého se má virtuální počítač replikovat (jenom v případě, že se replikuje do účtu úložiště). 
 * Úložiště protokolu je potřeba k ochraně virtuálních počítačů s účtem Premium Storage nebo se spravovaným diskem.
-* Procesový Server, který se má použít pro replikaci. Načíst a uloží do seznamu k dispozici procesových serverů ***$ProcessServers [0]***  *(škálování aplikace server)* a ***$ProcessServers [1]*** *(ConfigurationServer)* proměnné.
+* Procesový Server, který se má použít pro replikaci. Seznam dostupných procesových serverů byl načten a uložen do ***$ProcessServers [0]***  *(Scale-ProcessServer)* a ***$ProcessServers [1]*** *(ConfigurationServer)* proměnných.
 * Účet, který se má použít k instalaci softwaru služby mobility do počítačů. Seznam dostupných účtů byl načten a uložen v proměnné ***$AccountHandles*** .
 * Mapování kontejneru ochrany pro zásady replikace, které se má použít pro replikaci.
 * Skupina prostředků, ve které se musí vytvořit virtuální počítače při převzetí služeb při selhání.
@@ -351,11 +351,11 @@ K ochraně zjištěného virtuálního počítače budete potřebovat následuj�
 Teď replikujte následující virtuální počítače pomocí nastavení zadaných v této tabulce.
 
 
-|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásady           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
+|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásada           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |Nevztahuje se| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť-1       |
-|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Nevztahuje se                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť-1       |   
+|CentOSVM1       |ConfigurationServer   |neuvedeno| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| neuvedeno                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
 
 
 ```azurepowershell

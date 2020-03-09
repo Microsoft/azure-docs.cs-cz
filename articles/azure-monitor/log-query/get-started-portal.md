@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
 ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670232"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360816"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Začínáme s Log Analytics v Azure Monitor
 
@@ -39,11 +39,11 @@ Log Analytics je webový nástroj, který se používá pro zápis a spouštěn�
 ## <a name="firewall-requirements"></a>Požadavky na bránu firewall
 Pokud chcete použít Log Analytics, váš prohlížeč vyžaduje přístup k následujícím adresám. Pokud Váš prohlížeč přistupuje k Azure Portal přes bránu firewall, musíte povolit přístup k těmto adresám.
 
-| Uri | IP adresa | Porty |
+| Uri | IP | Porty |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamická | 80,443 |
-| api.loganalytics.io | Dynamická | 80,443 |
-| docs.loganalytics.io | Dynamická | 80,443 |
+| portal.loganalytics.io | Dynamické | 80,443 |
+| api.loganalytics.io | Dynamické | 80,443 |
+| docs.loganalytics.io | Dynamické | 80,443 |
 
 ## <a name="basic-queries"></a>Základní dotazy
 Dotazy se dají použít k vyhledávání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě vašich dat. Začněte se základním dotazem:
@@ -160,10 +160,10 @@ V případě, že je v timechart náhlé špička nebo krok, může se na řádk
 
 ![Inteligentní Diagnostika](media/get-started-portal/smart-diagnostics.png)
 
-## <a name="pin-to-dashboard"></a>Připnutí na řídicí panel
+## <a name="pin-to-dashboard"></a>Připnout na řídicí panel
 Pokud chcete připnout diagram nebo tabulku na některý ze sdílených řídicích panelů Azure, klikněte na ikonu připnutí. Všimněte si, že tato ikona se přesunula na horní část okna Log Analytics, která se liší od obrazovky níže.
 
-![Připnutí na řídicí panel](media/get-started-portal/pin-dashboard.png)
+![Připnout na řídicí panel](media/get-started-portal/pin-dashboard.png)
 
 Určitá zjednodušení se u grafu aplikují při jeho připnutí na řídicí panel:
 

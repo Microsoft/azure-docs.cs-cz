@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657839"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393453"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor změny názvů a terminologie
 V nedávné době byly provedeny významné změny, které se Azure Monitor v poslední době s různými službami konsolidovány, aby se zjednodušilo monitorování pro zákazníky Azure. Tento článek popisuje nedávné změny názvů a terminologie v dokumentaci Azure Monitor.
@@ -30,7 +30,7 @@ Pojem _Log Analytics_ teď platí hlavně pro stránku v Azure Portal použitou 
 ### <a name="log-analytics-workspaces"></a>Pracovní prostory služby Log Analytics
 [Pracovní prostory](platform/manage-access.md) , které uchovávají data protokolu v Azure monitor jsou stále označovány jako Log Analytics pracovní prostory. Nabídka **Log Analytics** v Azure Portal byla přejmenována na **Log Analytics pracovní prostory** a je tam, kde [vytvoříte nové pracovní prostory](learn/quick-create-workspace.md) a nakonfigurujete zdroje dat. Analyzujte protokoly a další data monitorování v **Azure monitor** a nakonfigurujte svůj pracovní prostor v **pracovních prostorech Log Analytics**.
 
-### <a name="management-solutions"></a>Řešení správy
+### <a name="management-solutions"></a>Řešení pro správu
 [Řešení pro správu](insights/solutions.md) byla přejmenována na _řešení monitorování_, což lépe popisuje jejich funkce.
 
 
@@ -46,7 +46,7 @@ Další funkce, které byly považovány za součást Log Analytics jako jsou na
 Operations Management Suite (OMS) je sdružením následujících služeb správy Azure pro účely licencování:
 
 - Application Insights
-- Automatizace Azure
+- Azure Automation
 - Azure Backup
 - Log Analytics
 - Site Recovery

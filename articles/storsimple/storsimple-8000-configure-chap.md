@@ -1,6 +1,6 @@
 ---
-title: Konfigurace protokolu CHAP pro zařízení StorSimple řady 8000 | Dokumentace Microsoftu
-description: Popisuje, jak nakonfigurovat Handshake ověřování protokol CHAP (Challenge) na zařízení StorSimple.
+title: Konfigurace protokolu CHAP pro zařízení řady StorSimple 8000 | Microsoft Docs
+description: V této části najdete popis postupu konfigurace protokolu CHAP (Challenge Handshake Authentication Protocol) na zařízení StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,160 +15,160 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362701"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366709"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurace protokolu CHAP pro zařízení StorSimple
 
-Tento kurz vysvětluje postup konfigurace protokolu CHAP pro zařízení StorSimple. Tento postup podrobně popsané v tomto článku se vztahuje na zařízeních StorSimple řady 8000.
+V tomto kurzu se dozvíte, jak nakonfigurovat protokol CHAP pro zařízení StorSimple. Postup podrobný v tomto článku se týká zařízení řady StorSimple 8000.
 
-Protokol CHAP jsou zahrnovaného Challenge Handshake Authentication Protocol. Je schéma ověřování používat servery pro ověření identity vzdálených klientů. Ověření je založen na sdílené heslo nebo tajný klíč. Protokol CHAP může být jedním ze způsobů (jednosměrných) nebo vzájemné (obousměrné). Jedním ze způsobů CHAP je při cíl ověření iniciátor. Ve vzájemné nebo reverzního CHAP cíl ověřuje iniciátor a pak je iniciátor ověřuje cíl. Iniciátor ověřování je možné implementovat bez cíl ověřování. Cíl ověřování, ale je možné implementovat pouze v případě, že je iniciátor ověřování také implementováno.
+Protokol CHAP představuje ověřovací protokol Challenge Handshake. Jedná se o schéma ověřování používané servery k ověření identity vzdálených klientů. Ověření vychází ze sdíleného hesla nebo tajného klíče. Protokol CHAP může být jednosměrný (jednosměrný) nebo společný (obousměrný). Jedním ze způsobů protokolu CHAP je, když cíl ověřuje iniciátor. V rámci vzájemného nebo reverzního protokolu CHAP cíl ověřuje iniciátor a pak iniciátor ověřuje cíl. Ověřování iniciátoru se dá implementovat bez cílového ověřování. Cílové ověřování však lze implementovat pouze v případě, že je implementováno také ověřování iniciátoru.
 
-Jako osvědčený postup doporučujeme použít protokol CHAP k vylepšení zabezpečení iSCSI.
+Jako osvědčený postup doporučujeme, abyste pomocí protokolu CHAP zvýšili zabezpečení iSCSI.
 
 > [!NOTE]
-> Uvědomte si, že protokol IPSEC není aktuálně podporován zařízení StorSimple.
+> Mějte na paměti, že na zařízeních StorSimple se aktuálně nepodporuje protokol IPSEC.
 
-Nastavení protokolu CHAP na zařízení StorSimple můžete nastavit následujícími způsoby:
+Nastavení protokolu CHAP na zařízení StorSimple se dá nakonfigurovat následujícími způsoby:
 
-* Jednosměrné nebo jednosměrného ověřování
-* Obousměrné nebo vzájemné nebo reverzní ověření
+* Jednosměrné nebo jednosměrné ověřování
+* Obousměrné nebo vzájemné zpětné ověřování
 
-Ve všech těchto případech je potřeba nakonfigurovat na portálu pro zařízení a serverovým softwarem iniciátoru iSCSI. Podrobné kroky pro tuto konfiguraci jsou popsány v následujícím kurzu.
+V každém z těchto případů je nutné nakonfigurovat portál pro zařízení a software iniciátoru iSCSI serveru. Podrobné pokyny pro tuto konfiguraci jsou popsány v následujícím kurzu.
 
-## <a name="unidirectional-or-one-way-authentication"></a>Jednosměrné nebo jednosměrného ověřování
+## <a name="unidirectional-or-one-way-authentication"></a>Jednosměrné nebo jednosměrné ověřování
 
-Při ověřování jednosměrnou ověřuje cíl iniciátor. Toto ověřování, musíte nakonfigurovat nastavení iniciátoru protokolu CHAP na zařízení StorSimple a iSCSI software Initiator na hostiteli. Podrobné pokyny k zařízení StorSimple a hostitele Windows jsou popsány níže.
+V případě jednosměrného ověřování cíl ověřuje iniciátor. Toto ověření vyžaduje, abyste nakonfigurovali nastavení iniciátoru protokolu CHAP na zařízení StorSimple a softwaru iniciátoru iSCSI na hostiteli. Podrobné pokyny pro zařízení StorSimple a hostitele Windows jsou popsané dál.
 
-#### <a name="to-configure-your-device-for-one-way-authentication"></a>Pro konfiguraci zařízení jednosměrného ověřování
+#### <a name="to-configure-your-device-for-one-way-authentication"></a>Konfigurace zařízení na jednosměrné ověřování
 
-1. Na webu Azure Portal přejděte do služby Správce zařízení StorSimple. Klikněte na tlačítko **zařízení** a vyberte a klikněte na které chcete nakonfigurovat protokol CHAP pro zařízení. Přejděte na **zařízení Nastavení > zabezpečení**. V **nastavení zabezpečení** okna, klikněte na tlačítko **CHAP**.
+1. V Azure Portal přejdete do služby StorSimple Device Manager. Klikněte na **zařízení** a vyberte a klikněte na zařízení, pro které chcete nakonfigurovat protokol CHAP. Přejít na **nastavení zařízení > zabezpečení**. V okně **nastavení zabezpečení** klikněte na **CHAP**.
    
-    ![Iniciátor CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
-2. V **CHAP** okně a **iniciátor protokolu CHAP** části:
+    ![Iniciátor protokolu CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
+2. V okně **protokolu CHAP** a v části **iniciátoru protokolu CHAP** :
    
-   1. Zadejte uživatelské jméno pro vaše iniciátoru protokolu CHAP.
-   2. Zadejte heslo pro váš iniciátoru protokolu CHAP.
+   1. Zadejte uživatelské jméno pro iniciátora protokolu CHAP.
+   2. Zadejte heslo pro iniciátor protokolu CHAP.
       
       > [!IMPORTANT]
-      > Uživatelské jméno CHAP musí obsahovat méně než 233 znaků. Heslo CHAP musí být 12 až 16 znaků. Delší uživatelské jméno nebo heslo má za následek selhání ověřování na hostitele Windows.
+      > Uživatelské jméno protokolu CHAP musí obsahovat méně než 233 znaků. Heslo protokolu CHAP musí mít délku 12 až 16 znaků. Delší uživatelské jméno nebo heslo způsobí selhání ověřování hostitele Windows.
    
    3. Potvrďte heslo.
 
-       ![Iniciátor CHAP](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Změny uložíte kliknutím na tlačítko **OK** .
+       ![Iniciátor protokolu CHAP](./media/storsimple-8000-configure-chap/configure-chap6.png)
+3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Klikněte na tlačítko **OK** a uložte změny.
 
-#### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Postup konfigurace jednosměrného ověřování na hostitelském Windows serveru
+#### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Konfigurace jednosměrového ověřování na hostitelském serveru Windows
 1. Na hostitelském serveru Windows spusťte iniciátor iSCSI.
-2. V **vlastnosti iniciátoru iSCSI** okno, proveďte následující kroky:
+2. V okně **Vlastnosti iniciátoru iSCSI** proveďte následující kroky:
    
-   1. Klikněte na tlačítko **zjišťování** kartu.
+   1. Klikněte na kartu **zjišťování** .
       
        ![Vlastnosti iniciátoru iSCSI](./media/storsimple-configure-chap/IC740944.png)
-   2. Klikněte na tlačítko **zjistit portál**.
-3. V **zjistit cílový portál** dialogové okno:
+   2. Klikněte na **Vyhledat portál**.
+3. V dialogovém okně **zjistit cílový portál** :
    
    1. Zadejte IP adresu vašeho zařízení.
-   2. Klikněte na tlačítko **Advanced**.
+   2. Klikněte na **Upřesnit**.
       
-       ![Zjistit cílový portál](./media/storsimple-configure-chap/IC740945.png)
-4. V **Upřesnit nastavení** dialogové okno:
+       ![Vyhledat cílový portál](./media/storsimple-configure-chap/IC740945.png)
+4. V dialogovém okně **Upřesnit nastavení** :
    
-   1. Vyberte **povolit protokol CHAP přihlášení** zaškrtávací políčko.
-   2. V **název** pole, zadejte uživatelské jméno, které jste zadali pro iniciátor protokolu CHAP na webu Azure Portal.
-   3. V **cílového tajného kódu** pole, zadejte heslo, které jste zadali pro iniciátor protokolu CHAP na webu Azure Portal.
-   4. Klikněte na **OK**.
+   1. Zaškrtněte políčko **Povolit přihlášení protokolem CHAP** .
+   2. Do pole **název** zadejte uživatelské jméno, které jste zadali pro iniciátor protokolu CHAP v Azure Portal.
+   3. V poli **cílový tajný klíč** zadejte heslo, které jste zadali pro iniciátor protokolu CHAP v Azure Portal.
+   4. Klikněte na tlačítko **OK**.
       
-       ![Upřesňující nastavení, obecné](./media/storsimple-configure-chap/IC740946.png)
-5. Na **cíle** karty **vlastnosti iniciátoru iSCSI** okna, stav zařízení mají zobrazit jako **připojeno**. Pokud používáte zařízení StorSimple 1200, všechny svazky připojené jako cíl iSCSI. Proto kroky 3 až 4 muset opakovat pro každý svazek.
+       ![Rozšířená nastavení – Obecné](./media/storsimple-configure-chap/IC740946.png)
+5. Na kartě **cíle** v okně **Vlastnosti iniciátoru iSCSI** se má stav zařízení zobrazit jako **připojeno**. Pokud používáte zařízení StorSimple 1200, pak je každý svazek připojený jako cíl iSCSI. Proto se pro každý svazek musí opakovat kroky 3-4.
    
     ![Svazky připojené jako samostatné cíle](./media/storsimple-configure-chap/chap4.png)
    
    > [!IMPORTANT]
-   > Pokud změníte název iSCSI, nový název se používá pro nové relace iSCSI. Nové nastavení nejsou použity pro existující relace, dokud se neodhlásíte a přihlásit znovu.
+   > Pokud změníte název iSCSI, nový název se použije pro nové relace iSCSI. Nová nastavení se nepoužijí pro existující relace, dokud se odhlásíte a znovu přihlásíte.
 
-Další informace o konfiguraci protokolu CHAP na hostitelském Windows serveru, přejděte na [další aspekty](#additional-considerations).
+Další informace o konfiguraci protokolu CHAP na hostitelském serveru Windows najdete v části [Další informace](#additional-considerations).
 
 ## <a name="bidirectional-or-mutual-authentication"></a>Obousměrné nebo vzájemné ověřování
 
-V případě obousměrné ověřování cíl ověřuje iniciátor a potom iniciátor ověřuje cíl. Tento postup vyžaduje, aby uživatel můžete nakonfigurovat nastavení iniciátoru protokolu CHAP, nastavení protokolu reverse CHAP na zařízení a iSCSI software Initiator na hostiteli. Následující postupy popisují postup konfigurace vzájemného ověřování v zařízení a na hostitele Windows.
+V obousměrném ověřování cíl ověřuje iniciátor a potom iniciátor ověřuje cíl. Tento postup vyžaduje, aby uživatel nakonfiguroval nastavení iniciátoru protokolu CHAP, reverzní nastavení protokolu CHAP na zařízení a software iniciátoru iSCSI na hostiteli. Následující postupy popisují postup konfigurace vzájemného ověřování na zařízení a na hostiteli s Windows.
 
 #### <a name="to-configure-your-device-for-mutual-authentication"></a>Konfigurace zařízení pro vzájemné ověřování
 
-1. Na webu Azure Portal přejděte do služby Správce zařízení StorSimple. Klikněte na tlačítko **zařízení** a vyberte a klikněte na které chcete nakonfigurovat protokol CHAP pro zařízení. Přejděte na **zařízení Nastavení > zabezpečení**. V **nastavení zabezpečení** okna, klikněte na tlačítko **CHAP**.
+1. V Azure Portal přejdete do služby StorSimple Device Manager. Klikněte na **zařízení** a vyberte a klikněte na zařízení, pro které chcete nakonfigurovat protokol CHAP. Přejít na **nastavení zařízení > zabezpečení**. V okně **nastavení zabezpečení** klikněte na **CHAP**.
    
-    ![Cíl CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
-2. Posuňte se dolů na této stránce a v **cíl protokolu CHAP** části:
+    ![Cíl protokolu CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
+2. Přejděte dolů na této stránce a v části **cíl protokolu CHAP** :
    
-   1. Zadejte **uživatelského jména** pro vaše zařízení.
-   2. Zadat **hesla reverzního CHAP** pro vaše zařízení.
+   1. Zadejte **uživatelské jméno reverzního protokolu CHAP** pro vaše zařízení.
+   2. Zadejte **reverzní heslo CHAP** pro vaše zařízení.
    3. Potvrďte heslo.
-3. V **iniciátor protokolu CHAP** části:
+3. V části **iniciátoru protokolu CHAP** :
    
    1. Zadejte **uživatelské jméno** pro vaše zařízení.
    2. Zadejte **heslo** pro vaše zařízení.
    3. Potvrďte heslo.
 
-       ![Iniciátor CHAP](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Změny uložíte kliknutím na tlačítko **OK** .
+       ![Iniciátor protokolu CHAP](./media/storsimple-8000-configure-chap/configure-chap11.png)
+4. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Klikněte na tlačítko **OK** a uložte změny.
 
-#### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Konfigurace obousměrné ověřování na hostitelském Windows serveru
+#### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Konfigurace obousměrného ověřování na hostitelském serveru Windows
 
 1. Na hostitelském serveru Windows spusťte iniciátor iSCSI.
-2. V **vlastnosti iniciátoru iSCSI** okna, klikněte na tlačítko **konfigurace** kartu.
-3. Klikněte na tlačítko **CHAP**.
-4. V **tajný klíč pro vzájemné CHAP iniciátoru iSCSI** dialogové okno:
+2. V okně **Vlastnosti iniciátoru iSCSI** klikněte na kartu **Konfigurace** .
+3. Klikněte na **protokol CHAP**.
+4. V dialogovém okně **vzájemného tajného klíče CHAP iniciátoru iSCSI** :
    
-   1. Typ **hesla Reverse CHAP** , který jste nakonfigurovali na webu Azure Portal.
-   2. Klikněte na **OK**.
+   1. Zadejte **heslo reverzního protokolu CHAP** , které jste nakonfigurovali v Azure Portal.
+   2. Klikněte na tlačítko **OK**.
       
-       ![iSCSI initiator vzájemné tajný klíč protokolu CHAP](./media/storsimple-configure-chap/IC740949.png)
-5. Klikněte na tlačítko **cíle** kartu.
-6. Klikněte na tlačítko **připojit** tlačítko. 
-7. V **připojení k cílové** dialogové okno, klikněte na tlačítko **Upřesnit**.
-8. V **Upřesnit vlastnosti** dialogové okno:
+       ![společný tajný klíč protokolu CHAP iniciátoru iSCSI](./media/storsimple-configure-chap/IC740949.png)
+5. Klikněte na kartu **cíle** .
+6. Klikněte na tlačítko **připojit** . 
+7. V dialogovém okně **připojit k cíli** klikněte na **Upřesnit**.
+8. V dialogovém okně **Upřesnit vlastnosti** :
    
-   1. Vyberte **povolit protokol CHAP přihlášení** zaškrtávací políčko.
-   2. V **název** pole, zadejte uživatelské jméno, které jste zadali pro iniciátor protokolu CHAP na webu Azure Portal.
-   3. V **cílového tajného kódu** pole, zadejte heslo, které jste zadali pro iniciátor protokolu CHAP na webu Azure Portal.
-   4. Vyberte **provést vzájemné ověřování** zaškrtávací políčko.
+   1. Zaškrtněte políčko **Povolit přihlášení protokolem CHAP** .
+   2. Do pole **název** zadejte uživatelské jméno, které jste zadali pro iniciátor protokolu CHAP v Azure Portal.
+   3. V poli **cílový tajný klíč** zadejte heslo, které jste zadali pro iniciátor protokolu CHAP v Azure Portal.
+   4. Zaškrtněte políčko **provést vzájemné ověřování** .
       
-       ![Upřesňující nastavení vzájemného ověřování](./media/storsimple-configure-chap/IC740950.png)
-   5. Klikněte na tlačítko **OK** k dokončení konfigurace protokolu CHAP
+       ![Rozšířené vzájemné ověřování nastavení](./media/storsimple-configure-chap/IC740950.png)
+   5. Kliknutím na **OK** dokončete konfiguraci protokolu CHAP.
 
-Další informace o konfiguraci protokolu CHAP na hostitelském Windows serveru, přejděte na [další aspekty](#additional-considerations).
+Další informace o konfiguraci protokolu CHAP na hostitelském serveru Windows najdete v části [Další informace](#additional-considerations).
 
 ## <a name="additional-considerations"></a>Další aspekty
 
-**Rychlé připojení** funkce nepodporuje připojení, které mají povolen protokol CHAP. Když je povolené CHAP, ujistěte se, že použít **připojit** tlačítka, které je k dispozici na **cíle** kartu pro připojení k cíli.
+Funkce **rychlé připojení** nepodporuje připojení s POVOLENým protokolem CHAP. Když je protokol CHAP povolený, ujistěte se, že pro připojení k cíli použijete tlačítko **připojit** , které je k dispozici na kartě **cíle** .
 
 ![Připojit k cíli](./media/storsimple-configure-chap/IC740947.png)
 
-V **připojit k cíli** dialogové okno, které se zobrazí, vyberte **přidat toto připojení do seznamu oblíbených cíle** zaškrtávací políčko. Tato volba zajistí, že pokaždé, když se počítač restartuje, je proveden pokus o obnovení připojení na Oblíbené cíle iSCSI.
+V dialogovém okně **připojit k cílovému cíli** vyberte zaškrtávací políčko **Přidat toto připojení do seznamu oblíbených cílů** . Tento výběr zajistí, že se pokaždé, když se počítač restartuje, provede pokus o obnovení připojení k oblíbeným cílům iSCSI.
 
 ## <a name="errors-during-configuration"></a>Chyby během konfigurace
 
-Pokud je nesprávná konfigurace protokolu CHAP, pak budete chtít nejspíš najdete v článku **ověřování se nezdařilo** chybovou zprávu.
+Pokud je konfigurace protokolu CHAP nesprávná, pravděpodobně se zobrazí chybová zpráva **selhání ověřování** .
 
 ## <a name="verification-of-chap-configuration"></a>Ověření konfigurace protokolu CHAP
 
-Můžete ověřit, že používá protokol CHAP podle následujících kroků.
+To, jestli se protokol CHAP používá, můžete ověřit provedením následujících kroků.
 
-#### <a name="to-verify-your-chap-configuration"></a>Chcete-li ověřit konfiguraci protokolu CHAP
-1. Klikněte na tlačítko **Oblíbené cíle**.
-2. Vyberte cíl, pro které jste povolili ověřování.
-3. Klikněte na tlačítko **podrobnosti**.
+#### <a name="to-verify-your-chap-configuration"></a>Ověření konfigurace protokolu CHAP
+1. Klikněte na **Oblíbené cíle**.
+2. Vyberte cíl, pro který jste povolili ověřování.
+3. Klikněte na tlačítko **Podrobnosti**.
    
-    ![Oblíbené cíle vlastnosti iniciátoru iSCSI](./media/storsimple-configure-chap/IC740951.png)
-4. V **Oblíbené podrobnosti o cíli** dialogové okno pole, mějte na paměti, položku **ověřování** pole. Pokud konfigurace proběhla úspěšně, by mělo být uvedeno **CHAP**.
+    ![Vlastnosti iniciátoru iSCSI – oblíbené cíle](./media/storsimple-configure-chap/IC740951.png)
+4. V dialogovém okně **Podrobnosti o oblíbeném cíli** si poznamenejte položku v poli **ověřování** . Pokud byla konfigurace úspěšná, měla by se jednat o **protokol CHAP**.
    
-    ![Podrobnosti o cíli Oblíbené](./media/storsimple-configure-chap/IC740952.png)
+    ![Podrobnosti o oblíbeném cíli](./media/storsimple-configure-chap/IC740952.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o [zabezpečení zařízení StorSimple](storsimple-8000-security.md).
-* Další informace o [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o [zabezpečení StorSimple](storsimple-8000-security.md).
+* Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

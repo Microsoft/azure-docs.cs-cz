@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614600"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391363"
 ---
 # <a name="replicas-and-instances"></a>Repliky a instance 
 Tento článek obsahuje přehled životního cyklu replik stavových služeb a instancí bezstavových služeb.

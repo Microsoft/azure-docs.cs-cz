@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: bae44f67a485546ba29148a114d88df198f7c3e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483086"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361568"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>Vytvoření a správa veřejného partnerského vztahu ExpressRoute
 
 > [!div class="op_single_selector"]
 > * [Článek – veřejný partnerský vztah](about-public-peering.md)
-> * [Video – veřejné partnerské vztahy](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video – veřejný partnerský vztah](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Článek – partnerský vztah Microsoftu](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
@@ -55,7 +55,7 @@ V této části jsou uvedené služby, které jsou dostupné přes veřejné par
 
 Pokud chcete ověřit dostupnost konkrétní služby, můžete si prohlédnout dokumentaci k příslušné službě a zjistit, jestli je pro danou službu publikovaný rezervovaný rozsah. Pak můžete vyhledat rozsahy IP adres cílové služby a porovnat je s rozsahy uvedenými v části [rozsahy IP adres Azure a značky služby – Public Cloud. XML soubor](https://www.microsoft.com/download/details.aspx?id=56519). Případně můžete pro vyjasnění otevřít lístek podpory pro příslušnou službu.
 
-## <a name="compare"></a>Vytvoření partnerského vztahu porovnání
+## <a name="compare"></a>Porovnání partnerských vztahů
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
@@ -65,7 +65,7 @@ Pokud chcete ověřit dostupnost konkrétní služby, můžete si prohlédnout d
 
 ## <a name="custom-route-filters"></a>Vlastní filtry tras
 
-Můžete definovat vlastní trasy filtry ve vaší síti využívat pouze trasy, které potřebujete. Odkazovat [směrování](expressroute-routing.md) stránku podrobné informace o konfiguraci směrování.
+Můžete definovat vlastní trasy filtry ve vaší síti využívat pouze trasy, které potřebujete. Podrobné informace o konfiguraci směrování najdete na stránce [Směrování](expressroute-routing.md) .
 
 ## <a name="powershell"></a>Azure PowerShell kroky
 
@@ -135,7 +135,7 @@ Vzhledem k tomu, že veřejný partnerský vztah je zastaralý, nemůžete konfi
    > 
    >
 
-### <a name="getpublic"></a>Chcete-li získat podrobností veřejného partnerského vztahu Azure
+### <a name="getpublic"></a>Získání podrobností veřejného partnerského vztahu Azure
 
 Můžete získat podrobnosti o konfiguraci pomocí následující rutiny:
 
@@ -145,7 +145,7 @@ Můžete získat podrobnosti o konfiguraci pomocí následující rutiny:
   Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-### <a name="updatepublic"></a>Chcete-li aktualizovat konfiguraci veřejného partnerského vztahu Azure
+### <a name="updatepublic"></a>Aktualizace konfigurace veřejného partnerského vztahu Azure
 
 Libovolnou část konfigurace podle následujícího příkladu můžete aktualizovat. V tomto příkladu je ID sítě VLAN okruhu aktualizované z hodnoty 200 na hodnotu 600.
 
@@ -212,7 +212,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
    * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
    * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-   * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
+   * **Volitelné –** Hodnota hash MD5, pokud se rozhodnete ji použít.
 
    Podle následujícího příkladu lze nakonfigurovat veřejný partnerský vztah Azure pro váš okruh spusťte:
 
@@ -229,7 +229,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > [!IMPORTANT]
    > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN, ne zákaznické číslo ASN.
 
-### <a name="getpublic"></a>K zobrazení podrobností veřejného partnerského vztahu Azure
+### <a name="getpublic"></a>Zobrazení podrobností veřejného partnerského vztahu Azure
 
 Můžete získat podrobnosti o konfiguraci pomocí následujícího příkladu:
 
@@ -264,7 +264,7 @@ Výstup se podobá následujícímu příkladu:
 }
 ```
 
-### <a name="updatepublic"></a>Chcete-li aktualizovat konfiguraci veřejného partnerského vztahu Azure
+### <a name="updatepublic"></a>Aktualizace konfigurace veřejného partnerského vztahu Azure
 
 Libovolnou část konfigurace podle následujícího příkladu můžete aktualizovat. V tomto příkladu je ID sítě VLAN okruhu aktualizované z hodnoty 200 na hodnotu 600.
 
@@ -284,11 +284,11 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 Pro konfiguraci partnerského vztahu použijte kroky pro PowerShell nebo CLI obsažené v tomto článku. Pro správu partnerského vztahu můžete použít následující části. U těchto kroků se tyto kroky podobají tomu, jak spravovat [partnerský vztah Microsoftu na portálu](expressroute-howto-routing-portal-resource-manager.md#msft).
 
-### <a name="get"></a>K zobrazení podrobností veřejného partnerského vztahu Azure
+### <a name="get"></a>Zobrazení podrobností veřejného partnerského vztahu Azure
 
 Výběrem partnerského vztahu na portálu zobrazte vlastnosti veřejného partnerského vztahu Azure.
 
-### <a name="update"></a>Chcete-li aktualizovat konfiguraci veřejného partnerského vztahu Azure
+### <a name="update"></a>Aktualizace konfigurace veřejného partnerského vztahu Azure
 
 Vyberte řádek pro partnerský vztah a pak upravte vlastnosti partnerského vztahu.
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280890"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393760"
 ---
 # <a name="intents-in-your-luis-app"></a>Záměry v aplikaci LUIS
 
@@ -29,7 +29,7 @@ Cestovní záměry aplikace   |   Ukázkové promluvy   |
  BookFlight (Rezervovat let)     |   "Rezervovat mě cestě a Rio příští týden" <br/> "Plout mě na Rio na 24th" <br/> "Potřebuji lístek roviny další pondělí až Rio de Janeiro"    |
  Pozdrav     |   "Hi" <br/>"Hello" <br/>"Dobrým ráno"  |
  CheckWeather | "Jak se o počasí v Bostonu jako"? <br/> "Zobrazit předpovědi pro tento víkendu" |
- Žádné         | "Si předpisu soubor cookie"<br>"Lakers win?" |
+ Žádná         | "Si předpisu soubor cookie"<br>"Lakers win?" |
 
 Všechny aplikace jsou dodávány s předdefinovaným záměrem "[none](#none-intent)", což je záložní záměr. 
 

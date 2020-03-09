@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516818"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365600"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako serveru iSCSI prostřednictvím Azure Portal
 
@@ -38,19 +38,19 @@ Dokončení popsané procedury trvá přibližně 30 minut až 1 hodinu. Informa
 Před konfigurací a nastavením StorSimple virtuálního pole se ujistěte, že:
 
 * Zřídili jste virtuální pole a připojili se k němu, jak je popsáno v tématu [nasazení virtuálního pole StorSimple – zřízení virtuálního pole v Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) nebo nasazení virtuálního pole [StorSimple – zřízení virtuálního pole ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
-* Máte registrační klíč služby ze služby StorSimple Device Manager, kterou jste vytvořili pro správu virtuálních polí StorSimple. Další informace najdete v části **krok 2: Získání registračního klíče** služby v [nasazení StorSimple Virtual Array – Připravte portál](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+* Máte registrační klíč služby ze služby StorSimple Device Manager, kterou jste vytvořili pro správu virtuálních polí StorSimple. Další informace najdete v části **Krok 2: získání registračního klíče služby** v [nasazení StorSimple Virtual Array – Příprava portálu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
 * Pokud se jedná o druhé nebo následné virtuální pole, které zaregistrujete pomocí existující služby StorSimple Device Manager, měli byste mít šifrovací klíč dat služby. Tento klíč byl vygenerován při úspěšné registraci prvního zařízení s touto službou. Pokud jste tento klíč ztratili, přečtěte si téma **získání šifrovacího klíče dat služby** v tématu [použití webového uživatelského rozhraní pro správu vašeho virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key).
 
 ## <a name="step-by-step-setup"></a>Podrobný postup instalace
 
 Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše virtuální pole StorSimple:
 
-* [Krok 1: Dokončení nastavení místního webového uživatelského rozhraní a registrace zařízení](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* Krok 2: Dokončete požadované nastavení zařízení.
-* [Krok 3: Přidat svazek](#step-3-add-a-volume)
-* [Krok 4: Připojení, inicializace a formátování svazku](#step-4-mount-initialize-and-format-a-volume)
+* [Krok 1: dokončení nastavení místního webového uživatelského rozhraní a registrace zařízení](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
+* Krok 2: dokončení nastavení požadovaného zařízení
+* [Krok 3: Přidání svazku](#step-3-add-a-volume)
+* [Krok 4: připojení, inicializace a formátování svazku](#step-4-mount-initialize-and-format-a-volume)
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1: Dokončení nastavení místního webového uživatelského rozhraní a registrace zařízení
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1: dokončení nastavení místního webového uživatelského rozhraní a registrace zařízení
 
 #### <a name="to-complete-the-setup-and-register-the-device"></a>Dokončení nastavení a registrace zařízení
 
@@ -61,10 +61,10 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
     Použijte adresu URL připojení, kterou jste si poznamenali v předchozím kroku. Zobrazí se chyba oznamující, že došlo k potížím s certifikátem zabezpečení webu. Klikněte na tlačítko **pokračovat na tuto webovou stránku**.
    
     ![Chyba certifikátu zabezpečení](./media/storsimple-virtual-array-deploy3-iscsi-setup/image3.png)
-2. Přihlaste se k webovému uživatelskému rozhraní virtuálního zařízení jako **StorSimpleAdmin**. Zadejte heslo správce zařízení, které jste změnili v kroku 3: Spuštění virtuálního zařízení v [nasazení StorSimple Virtual Array – zřízení virtuálního zařízení v Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [nasazení virtuálního pole StorSimple – zřízení virtuálního zařízení ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
+2. Přihlaste se k webovému uživatelskému rozhraní virtuálního zařízení jako **StorSimpleAdmin**. Zadejte heslo správce zařízení, které jste změnili v kroku 3: spuštění virtuálního zařízení v části [nasazení virtuálního pole StorSimple – zřízení virtuálního zařízení v Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [nasazení virtuálního pole StorSimple – zřízení virtuálního zařízení ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
    
     ![Přihlašovací stránka](./media/storsimple-virtual-array-deploy3-iscsi-setup/image4.png)
-3. Přejdete na domovskou stránku . Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního zařízení ve službě StorSimple Device Manager. Všimněte si, že nastavení **sítě**, **nastavení webového proxy serveru**a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
+3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního zařízení ve službě StorSimple Device Manager. Všimněte si, že nastavení **sítě**, **nastavení webového proxy serveru**a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
    
     ![Domovská stránka](./media/storsimple-virtual-array-deploy3-iscsi-setup/image5.png)
 4. Na stránce **nastavení sítě** v části **Síťová rozhraní**se pro vás automaticky nakonfigurují data 0. Každé síťové rozhraní je standardně nastavené tak, aby se IP adresa automaticky získala (DHCP). Proto se automaticky přiřadí IP adresa, podsíť a brána (pro IPv4 a IPv6).
@@ -77,11 +77,11 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
 5. Servery DNS se vyžadují, protože se používají, když se vaše zařízení pokusí komunikovat s poskytovateli služeb cloudového úložiště nebo překládá vaše zařízení podle názvu, pokud je nakonfigurovaný jako souborový server. Na stránce **nastavení sítě** v části **servery DNS**:
    
    1. Automaticky se nakonfigurují primární a sekundární server DNS. Pokud se rozhodnete nakonfigurovat statické IP adresy, můžete zadat servery DNS. Pro zajištění vysoké dostupnosti doporučujeme nakonfigurovat primární a sekundární server DNS.
-   2. Klikněte na tlačítko **Použít**. Tím se uplatní a ověří nastavení sítě.
+   2. Klikněte na **Použít**. Tím se uplatní a ověří nastavení sítě.
 6. Na stránce **nastavení zařízení** :
    
    1. Přiřaďte zařízení jedinečný **název** . Tento název může být 1-15 znaků a může obsahovat písmena, číslice a spojovníky.
-   2. Klikněte na ikonu ![ **serveru iSCSI** ikona serveru](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) iSCSI pro **typ** zařízení, které vytváříte. Server iSCSI vám umožní zřídit blokové úložiště.
+   2. Klikněte na ikonu **serveru iscsi** ![ikonu serveru iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) pro **typ** zařízení, které vytváříte. Server iSCSI vám umožní zřídit blokové úložiště.
    3. Určete, jestli chcete, aby toto zařízení bylo připojené k doméně. Pokud je vaše zařízení serverem iSCSI, je připojení k doméně volitelné. Pokud se rozhodnete připojit server iSCSI k doméně, klikněte na **použít**, počkejte, až se nastavení použije, a pak přejděte k dalšímu kroku.
       
        Pokud chcete zařízení připojit k doméně. Zadejte **název domény**a pak klikněte na **použít**.
@@ -93,17 +93,17 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
    4. Zobrazí se dialogové okno. Zadejte svoje přihlašovací údaje do domény v zadaném formátu. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). Budou ověřena pověření domény. Pokud jsou přihlašovací údaje nesprávné, zobrazí se chybová zpráva.
       
        ![přihlašovací údaje](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
-   5. Klikněte na tlačítko **Použít**. Tím se uplatní a ověří nastavení zařízení.
+   5. Klikněte na **Použít**. Tím se uplatní a ověří nastavení zařízení.
 7. (Volitelně) nakonfigurujte web proxy server. I když je konfigurace webového proxy serveru volitelná, uvědomte si, že pokud používáte webový proxy server, můžete ho nakonfigurovat jenom tady.
    
     ![Konfigurace webového proxy serveru](./media/storsimple-virtual-array-deploy3-iscsi-setup/image9.png)
    
     Na stránce **webového proxy serveru** :
    
-   1. Zadejte **adresu URL webového proxy serveru** v tomto formátu: *http\/:/Host-IP adresa* nebo *plně kvalifikovaný název domény: číslo portu*. Upozorňujeme, že adresy URL protokolu HTTPS nejsou podporovány.
+   1. Zadejte **adresu URL webového proxy serveru** v tomto formátu: *http:\//Host-IP adresa* nebo *plně kvalifikovaný název domény: číslo portu*. Upozorňujeme, že adresy URL protokolu HTTPS nejsou podporovány.
    2. Zadejte **ověřování** jako **základní** nebo **žádné**.
    3. Pokud používáte ověřování, budete také muset zadat **uživatelské jméno** a **heslo**.
-   4. Klikněte na tlačítko **Použít**. Tím se ověří a použije nakonfigurovaná nastavení webového proxy serveru.
+   4. Klikněte na **Použít**. Tím se ověří a použije nakonfigurovaná nastavení webového proxy serveru.
 8. (Volitelně) nakonfigurujte časová nastavení pro vaše zařízení, například časové pásmo a primární a sekundární servery NTP. Jsou vyžadovány servery NTP, protože vaše zařízení musí synchronizovat čas, aby se mohl ověřit u vašich poskytovatelů cloudových služeb.
    
     ![Nastavení času](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
@@ -113,21 +113,21 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
    1. V rozevíracím seznamu vyberte **časové pásmo** na základě geografického umístění, ve kterém se zařízení nasazuje. Výchozím časovým pásmem pro vaše zařízení je PST. Toto časové pásmo bude zařízení používat pro všechny naplánované operace.
    2. Zadejte **primární server NTP** pro vaše zařízení nebo přijměte výchozí hodnotu Time.Windows.com. Ujistěte se, že vaše síť umožňuje přenos dat NTP z vašeho datového centra na internet.
    3. Volitelně můžete zadat **sekundární server NTP** pro vaše zařízení.
-   4. Klikněte na tlačítko **Použít**. Tím se ověří a použije nakonfigurovaná nastavení času.
+   4. Klikněte na **Použít**. Tím se ověří a použije nakonfigurovaná nastavení času.
 9. Nakonfigurujte nastavení cloudu pro vaše zařízení. V tomto kroku dokončíte konfiguraci místních zařízení a pak zaregistrujete zařízení ve službě StorSimple Device Manager.
    
-   1. Zadejte **registrační klíč služby** , který jste získali v **kroku 2: Získání registračního klíče** služby v [nasazení StorSimple Virtual Array – Připravte portál](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+   1. Zadejte **registrační klíč služby** , který jste získali v **kroku 2: získání registračního klíče služby** v části [nasazení StorSimple Virtual Array – Příprava portálu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
    2. Pokud se nejedná o první zařízení, které zaregistrujete v rámci této služby, budete muset zadat **šifrovací klíč dat služby**. Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Device Manager. Další informace najdete v tématu [získání šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) v místním webovém uživatelském rozhraní.
    3. Klikněte na **zaregistrovat**. Tím se zařízení restartuje. Možná budete muset počkat na 2-3 minut, než se zařízení úspěšně zaregistruje. Jakmile se zařízení restartuje, přejdete na přihlašovací stránku.
       
-      ![Zaregistrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
+      ![Registrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. Vraťte se na Azure Portal.
 11. Přejděte do okna **zařízení** vaší služby. Pokud máte velké množství prostředků, klikněte na **všechny prostředky**, klikněte na název služby (v případě potřeby ho vyhledejte) a pak klikněte na **zařízení**.
 12. V okně **zařízení** ověřte stav tím, že se zařízení úspěšně připojilo ke službě. Stav zařízení musí být **Připraveno k nastavení**.
     
-    ![Zaregistrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Registrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
-## <a name="step-2-configure-the-device-as-iscsi-server"></a>Krok 2: Konfigurace zařízení jako serveru iSCSI
+## <a name="step-2-configure-the-device-as-iscsi-server"></a>Krok 2: konfigurace zařízení jako serveru iSCSI
 
 Provedením následujících kroků v Azure Portal dokončete požadované nastavení zařízení.
 
@@ -154,7 +154,7 @@ Provedením následujících kroků v Azure Portal dokončete požadované nasta
    
     ![Konfigurace zařízení jako serveru iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
-## <a name="step-3-add-a-volume"></a>Krok 3: Přidat svazek
+## <a name="step-3-add-a-volume"></a>Krok 3: Přidání svazku
 
 1. V okně **zařízení** vyberte zařízení, které jste právě nakonfigurovali jako server iSCSI. Klikněte na **...** (případně klikněte pravým tlačítkem myši na tento řádek) a v místní nabídce vyberte **Přidat svazek**. Na panelu příkazů můžete také kliknout na **+ Přidat svazek** . Otevře se okno **Přidat svazek** .
    
@@ -171,7 +171,7 @@ Provedením následujících kroků v Azure Portal dokončete požadované nasta
      
      ![Přidat svazek](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * Klikněte na **připojené hostitele**, vyberte záznam řízení přístupu (ACR) odpovídající iniciátoru iSCSI, ke kterému se chcete připojit, a potom klikněte na **Vybrat**. <br><br> 
-3. Chcete-li přidat nového připojeného hostitele, klikněte na tlačítko **Přidat nový**, zadejte název hostitele a jeho kvalifikovaný název iSCSI (IQN) a pak klikněte na tlačítko **Přidat**. Pokud nemáte identifikátor IQN, pokračujte na [přílohu A: Získejte identifikátor IQN hostitele](#appendix-a-get-the-iqn-of-a-windows-server-host)Windows serveru.
+3. Chcete-li přidat nového připojeného hostitele, klikněte na tlačítko **Přidat nový**, zadejte název hostitele a jeho kvalifikovaný název iSCSI (IQN) a pak klikněte na tlačítko **Přidat**. Pokud nemáte identifikátor IQN, Projděte si [Dodatek A: Získejte identifikátor IQN hostitele Windows serveru](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
       ![Přidat svazek](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Po dokončení konfigurace svazku klikněte na tlačítko **OK**. Vytvoří se svazek se zadaným nastavením a zobrazí se oznámení. Ve výchozím nastavení se pro svazek povolí monitorování a zálohování.
@@ -181,7 +181,7 @@ Provedením následujících kroků v Azure Portal dokončete požadované nasta
    
    ![Přidat svazek](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
-## <a name="step-4-mount-initialize-and-format-a-volume"></a>Krok 4: Připojení, inicializace a formátování svazků
+## <a name="step-4-mount-initialize-and-format-a-volume"></a>Krok 4: připojení, inicializace a formátování svazku
 
 K připojení, inicializaci a formátování svazků StorSimple na hostiteli s Windows serverem proveďte následující kroky.
 
@@ -194,7 +194,7 @@ K připojení, inicializaci a formátování svazků StorSimple na hostiteli s W
 3. V dialogovém okně **Zjistit cílový portál** zadejte IP adresu svého síťového rozhraní s podporou iSCSI a potom klikněte na **OK**.
    
     ![IP adresa](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
-4. V okně **iSCSI Initiator Properties** (Vlastnosti iniciátoru iSCSI) na kartě **Cíle** najděte část **Zjištěné cíle**. (Každý svazek bude zjištěným cílem.) U zařízení by se měl zobrazovat stav **Neaktivní**.
+4. V okně **iSCSI Initiator Properties** (Vlastnosti iniciátoru iSCSI) na kartě **Cíle** najděte část **Zjištěné cíle**. (Každý svazek bude zjištěným cílem.) Stav zařízení by se měl zobrazovat jako **neaktivní**.
    
     ![zjištěné cíle](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
 5. Vyberte cílové zařízení a pak klikněte na **připojit**. Po připojení zařízení by se měl stav změnit na **Připojeno**. (Další informace o použití iniciátoru iSCSI od Microsoftu najdete v tématu [instalace a Konfigurace iniciátoru iSCSI od Microsoftu][1].
@@ -232,7 +232,7 @@ K připojení, inicializaci a formátování svazků StorSimple na hostiteli s W
 
 Přečtěte si, jak pomocí místního webového uživatelského rozhraní [spravovat virtuální pole StorSimple](storsimple-ova-web-ui-admin.md).
 
-## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Příloha A: Získání názvu IQN hostitele se systémem Windows Server
+## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Příloha A: získání názvu IQN hostitele Windows serveru
 
 Pomocí následujících kroků získejte název IQN (iSCSI Qualified Name) hostitele Windows se systémem Windows Server® 2012.
 

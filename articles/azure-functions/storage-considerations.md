@@ -4,11 +4,11 @@ description: Seznamte se s požadavky na úložiště Azure Functions a o šifro
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190306"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356169"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Požadavky na úložiště pro Azure Functions
 

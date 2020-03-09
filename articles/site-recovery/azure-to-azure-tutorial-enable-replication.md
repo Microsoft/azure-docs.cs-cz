@@ -6,11 +6,11 @@ ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759785"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379886"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -22,23 +22,23 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii pro virtuální po
 > * Vytvoření trezoru Služeb zotavení
 > * Ověření nastavení cílových prostředků
 > * Nastavení odchozího připojení k síti pro virtuální počítače
-> * Povolení replikace virtuálního počítače
+> * Povolit replikaci virtuálního počítače
 
 > [!NOTE]
 > Tento článek poskytuje pokyny pro nasazení zotavení po havárii s nejjednodušším nastavením. Pokud se chcete dozvědět o přizpůsobených nastaveních, přečtěte si články v [části postupy](azure-to-azure-how-to-enable-replication.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 - Prostudujte si [architekturu a komponenty scénáře](concepts-azure-to-azure-architecture.md).
 - Než začnete, přečtěte si [požadavky na podporu](site-recovery-support-matrix-azure-to-azure.md) .
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-Vytvořte trezor v libovolné oblasti, s výjimkou zdrojové oblasti.
+V libovolné oblasti (s výjimkou zdrojové oblasti) vytvořte trezor.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. Pak vyberte **& nástroje pro správu** > **zálohování a Site Recovery**.
 1. Do pole **Název** zadejte popisný název pro identifikaci trezoru. Pokud máte více předplatných, vyberte příslušné předplatné.
 1. Vytvořte skupinu prostředků nebo vyberte existující. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
@@ -46,7 +46,7 @@ Vytvořte trezor v libovolné oblasti, s výjimkou zdrojové oblasti.
 
    ![Nový trezor](./media/azure-to-azure-tutorial-enable-replication/new-vault-settings.png)
 
-Nový trezor se přidá do oblasti **Řídicí panel** v části **Všechny prostředky** a na hlavní stránku **Trezory Recovery Services**.
+Nový trezor se přidá na **Řídicí panel** do části **Všechny prostředky** a na hlavní stránku **Trezory služby Recovery Services**.
 
 ## <a name="verify-target-resource-settings"></a>Ověření nastavení cílových prostředků
 
@@ -96,7 +96,7 @@ Azure Site Recovery poskytuje pro řízení operací správy Site Recovery tři 
 
 Přečtěte si další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md).
 
-## <a name="enable-replication-for-a-vm"></a>Povolení replikace virtuálního počítače
+## <a name="enable-replication-for-a-vm"></a>Povolit replikaci virtuálního počítače
 
 Následující části popisují, jak povolit replikaci.
 
@@ -106,7 +106,7 @@ Pokud chcete spustit nastavení replikace, vyberte zdroj, ve kterém běží va�
 
 1. Přejít na **Recovery Services trezory**, vyberte název trezoru a pak vyberte **+ replikovat**.
 1. Jako **zdroj**vyberte **Azure**.
-1. V rozevíracím seznamu **Umístění zdroje** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
+1. Jako **Zdrojové umístění** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
 1. Vyberte **Zdrojové předplatné**, ve kterém jsou virtuální počítače spuštěné. Může to být jakékoli předplatné ve stejném tenantovi Azure Active Directory, ve kterém se nachází váš trezor služby Recovery Services.
 1. Vyberte **zdrojovou skupinu prostředků**a kliknutím na **OK** nastavení uložte.
 
