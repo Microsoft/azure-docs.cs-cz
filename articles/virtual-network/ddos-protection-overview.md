@@ -1,13 +1,9 @@
 ---
-title: Přehled nástroje Azure DDoS Protection Standard | Microsoft Docs
+title: Přehled Azure DDoS Protection Standard
 description: Přečtěte si o službě Azure DDoS Protection.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 0b0052d58ab4f950467902c4b177e844c9bc498d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6392c1a128032670ae9d43a1f23c59194c2964bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905189"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389994"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled Azure DDoS Protection Standard
 
-Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. Útoky DDoS se pokoušejí vyčerpat prostředky aplikace, aby byla aplikace nedostupná oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
+Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. Útok DDoS se pokusí vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
 
 Ochrana Azure DDoS v kombinaci s osvědčenými postupy návrhu aplikací zajišťuje ochranu před útoky DDoS. Azure DDoS Protection poskytuje následující úrovně služeb:
 
@@ -37,13 +33,13 @@ Ochrana Azure DDoS v kombinaci s osvědčenými postupy návrhu aplikací zajiš
 |Automatické zmírnění útoků                    |Ano                                   |Ano                                           |
 |Záruka na dostupnost                          |Oblast Azure                          |Aplikace                                   |
 |Zásady zmírňování                             |Vyladěno pro svazek oblasti provozu Azure |Vyladěno pro objem provozu aplikace          |
-|Metriky a výstrahy                                |Ne                                    |Metriky útoku v reálném čase & diagnostické protokoly přes Azure monitor                                 |
+|Metriky & výstrahy                                |Ne                                    |Metriky útoku v reálném čase & diagnostické protokoly přes Azure monitor                                 |
 |Sestavy o zmírnění rizik                              |Ne                                    |Sestavy o zmírnění útoků po útoku                |
 |Protokoly toku pro zmírnění rizik                            |Ne                                    |Datový proud protokolu NRT pro integraci SIEM           |
 |Přizpůsobení zásad migrace                 |Ne                                    |Zapojení odborníků na DDoS                           |
 |Podpora                                         |Nejlepší úsilí                           |Přístup k odborníkům na DDoS během aktivního útoku|
-|Smlouva SLA                                             |Oblast Azure                          |Záruka aplikace & nákladová ochrana       |
-|Ceny                                         |Zadarmo                                  |Na základě měsíčních & využití                         |
+|SLA                                             |Oblast Azure                          |Záruka aplikace & nákladová ochrana       |
+|Ceny                                         |Free                                  |Na základě měsíčních & využití                         |
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>Typy útoků DDoS, které DDoS Protection standardní zmírňující rizika
 

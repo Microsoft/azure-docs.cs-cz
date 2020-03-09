@@ -4,11 +4,11 @@ description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153158"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391180"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -37,8 +37,8 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | služba | global | 1-50 | Alfanumerické znaky.<br><br>Začíná písmenem. |
 > | služba/rozhraní API | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/problémy | rozhraní api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/problémy/přílohy | chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/problémy/komentáře | chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/problémy/přílohy | Chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/problémy/komentáře | Chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/operace | rozhraní api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/operace/značky | operation | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/verze | rozhraní api | 1–80 | Alfanumerické znaky, podtržítka a spojovníky.<br><br>Zahajte a končí alfanumerickým znakem nebo podtržítkem. |

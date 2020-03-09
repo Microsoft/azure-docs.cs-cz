@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929071"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387377"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -50,12 +50,12 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z m�
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 - K vytvoření kanálu můžete také použít následující nástroje:
   - Visual Studio
-  - Azure PowerShell
+  - Azure Powershell
   - Šablona Azure Resource Manageru
   - .NET API
-  - Rozhraní REST API
+  - REST API
 
-    Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+    Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -74,9 +74,9 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | --- | --- | --- |
 | type |Vlastnost Type musí být nastavená na: **OnPremisesPostgreSql** . |Ano |
 | server |Název serveru PostgreSQL. |Ano |
-| databáze |Název databáze PostgreSQL |Ano |
-| schema |Název schématu v databázi. V názvu schématu se rozlišují velká a malá písmena. |Ne |
-| authenticationType. |Typ ověřování, který se používá pro připojení k databázi PostgreSQL. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
+| database |Název databáze PostgreSQL |Ano |
+| schéma |Název schématu v databázi. V názvu schématu se rozlišují velká a malá písmena. |Ne |
+| authenticationType |Typ ověřování, který se používá pro připojení k databázi PostgreSQL. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
@@ -302,22 +302,22 @@ Jak je uvedeno v článku aktivity [přesunu dat](data-factory-data-movement-act
 
 Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí následující mapování.
 
-| Typ databáze PostgreSQL | Aliasy PostgresSQL | Typ rozhraní .NET Framework |
+| Typ databáze PostgreSQL | Aliasy PostgresSQL | Typ .NET Framework |
 | --- | --- | --- |
-| abstime | |Datetime |
+| abstime | |Datum a čas |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], řetězec |
 | bitové proměnlivost [(n)] |varbit |Byte [], řetězec |
-| Boolean |bool |Logická hodnota |
-| seznam | |Byte [], řetězec |
+| Boolean |logick |Logická hodnota |
+| Seznam | |Byte [], řetězec |
 | Byte | |Byte [], řetězec |
 | znak [(n)] |Char [(n)] |Řetězec |
 | proměnlivé znaky [(n)] |varchar [(n)] |Řetězec |
 | identifikátor | |Řetězec |
 | cidr | |Řetězec |
-| kruh | |Byte [], řetězec |
-| date | |Datetime |
+| Žluté | |Byte [], řetězec |
+| date | |Datum a čas |
 | DateRange | |Řetězec |
 | Dvojitá přesnost |float8 |Double |
 | inet | |Byte [], řetězec |
@@ -328,18 +328,18 @@ Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí násl
 | interval [pole] [(p)] | |Časový interval |
 | json | |Řetězec |
 | jsonb | |Byte[] |
-| řádek | |Byte [], řetězec |
+| čára | |Byte [], řetězec |
 | lseg | |Byte [], řetězec |
 | macaddr | |Byte [], řetězec |
 | money | |Decimal |
 | číslice [(p, s)] |Decimal [(p, s)] |Decimal |
 | numrange | |Řetězec |
 | oid | |Datový typ Int32 |
-| Cesta | |Byte [], řetězec |
+| path | |Byte [], řetězec |
 | pg_lsn | |Int64 |
 | Vyberte | |Byte [], řetězec |
 | mnohoúhelník | |Byte [], řetězec |
-| real |float4 |Jednoduchá |
+| real |float4 |Jednoduché |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | sér |serial4 |Datový typ Int32 |

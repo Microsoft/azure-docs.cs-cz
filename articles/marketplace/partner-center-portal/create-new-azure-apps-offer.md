@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760882"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391465"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -67,7 +67,7 @@ Přečtěte si následující dokumentaci k aplikaci Azure, která poskytuje ryc
     * [Vytváření definičních souborů](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Publikování aplikace Marketplace](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
-* Vzory
+* Ukázky:
 
     * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
@@ -125,7 +125,7 @@ Po zadání **ID nabídky** a **aliasu nabídky**vyberte **vytvořit**. Pak bude
 
 Na stránce **nastavení nabídky** se zobrazí výzva k zadání následujících informací. Nezapomeňte po dokončení těchto polí vybrat **Uložit** .
 
-### <a name="test-drive"></a>Testovací verze
+### <a name="test-drive"></a>Testovací jednotka
 
 Testovací jednotka představuje skvělý způsob, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost vyzkoušet si před nákupem. Výsledkem je zvýšená konverze a generace vysoce kvalifikovaných potenciálních zákazníků. [Přečtěte si další informace o testovacích jednotkách.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
@@ -169,7 +169,7 @@ Pro každý jazyk nebo trh budete muset zadat podrobnosti o Marketplace (název 
 > [!NOTE]
 > Obsah seznamu nabídek (například popis, dokumenty, snímky obrazovky, podmínky použití atd.) nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se předem vyplní textem, který jste zadali jako **alias nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -196,7 +196,7 @@ Pár tipů pro psaní popisu:
 - Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami. 
 - Zvažte použití značek HTML pro formátování popisu a lepší poutavost.
 
-### <a name="search-keywords"></a>Hledat klíčová slova
+### <a name="search-keywords"></a>Hledaná klíčová slova
 
 Volitelně můžete zadat až tři klíčová slova pro hledání, která zákazníkům pomůžou najít vaši nabídku na webu Marketplace. Pro dosažení nejlepších výsledků zkuste použít tato klíčová slova i v popisu.
 
@@ -309,7 +309,7 @@ Služba Azure Government Services zpracovává data, která se vztahují na urč
 
 Karta **seznam plánů** zobrazuje informace o seznamu specifického plánu, které se mohou lišit mezi různými plány pro stejnou nabídku.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Předem vyplněné podle vašeho jména, které jste přiřadili k plánu při jeho vytvoření.  Tento název se zobrazí jako název tohoto "plánu softwaru" zobrazeného na webu Marketplace.  Může obsahovat až 100 znaků.
 
@@ -457,7 +457,7 @@ Poskytování informací na kartě spoluprodeje je zcela volitelné pro publikov
 
 Další informace o dokončení této karty najdete v tématu [možnost společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell).
 
-## <a name="test-drive"></a>Testovací verze
+## <a name="test-drive"></a>Testovací jednotka
 
 Karta **testovací jednotka** vám umožní nastavit ukázku (nebo "testovací jednotku"), která zákazníkům umožní vyzkoušet si vaši nabídku před tím, než se ji zakoupí. Další informace najdete v článku [co je Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)  Pokud již nechcete poskytnout testovací verzi vaší nabídky, vraťte se na stránku **nastavení nabídky** a zrušte zaškrtněte **možnost Povolit testovací jednotku**.
 

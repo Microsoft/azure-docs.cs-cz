@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672357"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384126"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky Windows
 Azure Diagnostics rozšíření je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a zatížení výpočetních prostředků Azure. Tento článek podrobně popisuje schéma používané pro konfiguraci diagnostického rozšíření na virtuálních počítačích s Windows a dalších výpočetních prostředcích.
@@ -70,7 +70,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 ## <a name="diagnosticmonitorconfiguration-element"></a>Element DiagnosticMonitorConfiguration
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Požadováno
+ Požaduje se
 
 |Atributy|Popis|  
 |----------------|-----------------|  
@@ -269,12 +269,12 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|string|Řetězec identifikující jímku.|  
+|**Jméno**|řetězec|Řetězec identifikující jímku.|  
 
 |Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
-|**Barev**|string|Jedno pro každé další filtrování, které je datového proudu|  
+|**Application Insights**|řetězec|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
+|**Barev**|řetězec|Jedno pro každé další filtrování, které je datového proudu|  
 
 ## <a name="channels-element"></a>Element Channels  
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka – kanály*
@@ -285,7 +285,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Kanál**|string|Viz popis jinde na této stránce.|  
+|**Kanál**|řetězec|Viz popis jinde na této stránce.|  
 
 ## <a name="channel-element"></a>Element kanálu
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka-kanály-kanál*
@@ -305,7 +305,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Přidáno ve verzi 1,3.  
 
- Volitelné  
+ Nepovinné  
 
  Ukládá soukromé údaje o účtu úložiště (název, klíč a koncový bod). Tyto informace se odesílají do virtuálního počítače, ale nedají se z něho načíst.  
 

@@ -4,11 +4,11 @@ description: Naučte se používat REST API k obnovení sdílených složek Azur
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444807"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393179"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Obnovení sdílených složek Azure pomocí REST API
 
@@ -20,7 +20,7 @@ Na konci tohoto článku se dozvíte, jak provádět následující operace pomo
 * Obnovte úplnou sdílenou složku Azure.
 * Obnovte jednotlivé soubory nebo složky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předpokládáme, že už máte zálohovanou sdílenou složku, kterou chcete obnovit. Pokud to neuděláte, přečtěte si článek [zálohování sdílené složky Azure pomocí REST API](backup-azure-file-share-rest-api.md) , kde se dozvíte, jak ho vytvořit.
 

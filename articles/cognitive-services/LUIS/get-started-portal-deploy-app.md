@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772482"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393782"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
@@ -23,7 +23,7 @@ Když je vaše aplikace LUIS připravená na vrácení utterance předpovědi do
 
 V tomto rychlém startu se naučíte nasadit aplikaci. Vytvoříte prostředek koncového bodu předpovědi, přiřadíte ho k aplikaci, provedete výuku aplikace a publikujete aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Získejte [předplatné Azure](https://azure.microsoft.com/free).
 * Dokončete [předchozí portál pro rychlý Start](get-started-portal-build-app.md) nebo [si stáhněte a importujte aplikaci](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
@@ -39,12 +39,12 @@ V Azure Portal vytvoříte prostředek koncového bodu předpovědi. Tento prost
 
    |Nastavení|Hodnota|Účel|
    |--|--|--|
-   |Name (Název)|`my-luis-resource`|Název prostředku Azure. Tento název budete potřebovat při přiřazení prostředku k aplikaci na portálu LUIS.|
+   |Název|`my-luis-resource`|Název prostředku Azure. Tento název budete potřebovat při přiřazení prostředku k aplikaci na portálu LUIS.|
    |Předplatné|Vaše předplatné|Vyberte jedno z předplatných přidružených k vašemu účtu.|
    |Skupina prostředků|`my-resource-group`|Vytvořte novou skupinu prostředků pro všechny prostředky služby vnímání. Až budete s prostředky hotovi, můžete odstranit skupinu prostředků, abyste mohli vyčistit své předplatné. |
-   |Umístění pro vytváření obsahu|**Západní USA**|Oblast Azure pro vytváření obsahu.|
+   |Umístění pro vytváření obsahu|**USA – západ**|Oblast Azure pro vytváření obsahu.|
    |Vytváření cenové úrovně|**F0**|Výchozí cenová úroveň pro vytváření obsahu.|
-   |Umístění modulu runtime|**Západní USA**|Oblast Azure pro předpověď dotazů na koncový bod.|
+   |Umístění modulu runtime|**USA – západ**|Oblast Azure pro předpověď dotazů na koncový bod.|
    |Cenová úroveň za běhu|**S0**|Tato cenová úroveň poskytuje weby s vysokým provozem.|
    | | | |
 
@@ -67,7 +67,7 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit 
 
     ![Pokud chcete přidat prostředek předpovědi LUIS, vyberte Přidat prostředek předpovědi.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřazení prostředků**.
+1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřadit prostředek**.
 
    ![Přiřadit prostředek vaší aplikace](./media/get-started-portal-deploy-app/assign-resource.png)
 
