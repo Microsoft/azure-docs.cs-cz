@@ -9,11 +9,11 @@ ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056338"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379387"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 

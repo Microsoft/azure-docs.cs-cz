@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
-ms.translationtype: MT
+ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206329"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356888"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -65,16 +65,16 @@ Doporučená struktura složek pro projekt funkcí Pythonu vypadá jako v násle
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -89,19 +89,47 @@ Hlavní složka projektu (\_\_App\_\_) může obsahovat následující soubory:
 
 Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (Function. JSON). 
 
-Sdílený kód by měl být uložený v samostatné složce v aplikaci \_\_\_\_. Chcete-li odkazovat na moduly ve složce SharedCode, můžete použít následující syntaxi:
-
-```python
-from __app__.SharedCode import myFirstHelperFunction
-```
-
-Chcete-li odkazovat na moduly místně na funkci, můžete použít syntaxi relativního importu následujícím způsobem:
-
-```python
-from . import example
-```
-
 Když nasadíte projekt do aplikace Function App v Azure, měli byste zahrnout celý obsah hlavního projektu ( *\_\_app\_\_* ) do balíčku, ale ne do samotné složky. Doporučujeme udržovat testy ve složce oddělené od složky projektu, v tomto příkladu `tests`. Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. Další informace najdete v tématu [testování částí](#unit-testing).
+
+## <a name="import-behavior"></a>Chování při importu
+
+Moduly v kódu funkce můžete importovat pomocí explicitních relativních i absolutních odkazů. V závislosti na struktuře složky uvedené výše následující importy fungují v rámci souboru funkce *\_\_aplikaci\_\_\my\_první\_funkce\\_\_init\_\_. py*:
+
+```python
+from . import example #(explicit relative)
+```
+
+```python
+from ..shared_code import my_first_helper_function #(explicit relative)
+```
+
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+Následující importy *nefungují* v rámci stejného souboru:
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+Sdílený kód by měl být uložený v samostatné složce v *aplikaci\_\_\_\_* . Chcete-li odkazovat na moduly ve složce *sdíleného\_kódu* , můžete použít následující syntaxi:
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>Aktivační události a vstupy
 

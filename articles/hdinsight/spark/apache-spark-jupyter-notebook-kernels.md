@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494118"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389702"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro Poznámkový blok Jupyter na clusterech s Apache Spark ve službě Azure HDInsight
 
@@ -53,7 +53,7 @@ Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [Vytváření cluster
 
 Tady je několik výhod používání nových jader s poznámkovým blokem Jupyter v clusterech Spark HDInsight.
 
-- **Přednastavené kontexty**. V prostředích **PySpark**, **PySpark3**nebo **Sparku** nemusíte před zahájením práce s aplikacemi nastavovat kontexty Sparku nebo podregistru explicitně. Jsou k dispozici ve výchozím nastavení. Tyto kontexty jsou:
+- **Přednastavené kontexty**. V prostředích **PySpark**, **PySpark3**nebo **Sparku** nemusíte před zahájením práce s aplikacemi nastavovat kontexty Sparku nebo podregistru explicitně. Jsou k dispozici ve výchozím nastavení. Kontexty jsou:
 
   - **SC** – pro kontext Spark
   - **kontext SqlContext** – pro kontext podregistru
@@ -69,12 +69,12 @@ Tady je několik výhod používání nových jader s poznámkovým blokem Jupyt
 
     V následující tabulce jsou uvedeny různé Magic dostupné prostřednictvím jader.
 
-   | Paket | Příklad: | Popis |
+   | Paket | Příklad | Popis |
    | --- | --- | --- |
-   | Pomoc |`%%help` |Vygeneruje tabulku všech dostupných MAGICS s příkladem a popisem. |
-   | Příjemce |`%%info` |Vytvoří výstup informací o relaci pro aktuální koncový bod Livy. |
+   | Nápověda |`%%help` |Vygeneruje tabulku všech dostupných MAGICS s příkladem a popisem. |
+   | info |`%%info` |Vytvoří výstup informací o relaci pro aktuální koncový bod Livy. |
    | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry pro vytvoření relace. Příznak Force (-f) je povinný, pokud už je relace vytvořená, což zajistí, že se relace vynechá a znovu vytvoří. Seznam platných parametrů najdete v [textu žádosti post/Sessions pro Livy](https://github.com/cloudera/livy#request-body) . Parametry musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr `-o`, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
+   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz Hive proti kontext sqlContext. Pokud je předán parametr `-o`, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
    | místní |`%%local`<br>`a=1` |Veškerý kód v následných řádcích se spustí místně. Kód musí být platný Python2 kód, a to i bez ohledu na používané jádro. Takže i když jste při vytváření poznámkového bloku vybrali **PySpark3** nebo **Spark** , v případě, že v buňce použijete `%%local` Magic, musí mít tato buňka platný Python2 kód. |
    | Protokoly |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
    | delete |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nemůžete odstranit relaci, která je inicializovaná pro jádro samotné. |
@@ -89,9 +89,9 @@ Tady je několik výhod používání nových jader s poznámkovým blokem Jupyt
 
 `%%sql` Magic podporuje různé parametry, které lze použít k řízení typu výstupu, který jste obdrželi při spouštění dotazů. V následující tabulce je uveden výstup.
 
-| Parametr | Příklad: | Popis |
+| Parametr | Příklad | Popis |
 | --- | --- | --- |
-| – o |`-o <VARIABLE NAME>` |Tento parametr použijte k uchování výsledku dotazu v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. Název proměnné datového rámce je název proměnné, kterou zadáte. |
+| -o |`-o <VARIABLE NAME>` |Tento parametr použijte k uchování výsledku dotazu v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. Název proměnné datového rámce je název proměnné, kterou zadáte. |
 | -q |`-q` |Pomocí této vlastnosti můžete pro buňku vypnout vizualizace. Pokud nechcete, aby se obsah buňky využíval, a chcete ji pouze zachytit jako datový rámec, použijte `-q -o <VARIABLE>`. Pokud chcete vypnout vizualizace bez zachycení výsledků (například pro spuštění dotazu SQL, jako je například příkaz `CREATE TABLE`), použijte `-q` bez zadání argumentu `-o`. |
 | -m |`-m <METHOD>` |Kde **Metoda** je buď buď **převzít** , nebo **vzorek** (výchozí **nastavení je)** . Pokud metoda **trvá**, jádro vybere prvky z horní části sady výsledků dat určené v MAXROWS (popsané dále v této tabulce). Pokud je metoda **ukázková**, jádro náhodně vypíše prvky datové sady podle parametru `-r`, popsaného dále v této tabulce. |
 | -r |`-r <FRACTION>` |Pro **zlomek** je číslo s plovoucí desetinnou čárkou v rozsahu od 0,0 do 1,0. Pokud je metoda ukázky pro dotaz SQL `sample`, pak jádro náhodně vyvzorkuje zadaný zlomek prvků sady výsledků. Například pokud spustíte dotaz SQL s argumenty `-m sample -r 0.01`, pak 1% řádků výsledků je náhodně vzorkovat. |

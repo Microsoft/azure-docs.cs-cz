@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428690"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358709"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Ukázky kódu operací s daty pro Azure Logic Apps
 
@@ -263,7 +263,7 @@ Pokud chcete vyzkoušet [příklad akce **spojení** ](../logic-apps/logic-apps-
 
 <a name="parse-json-action-example"></a>
 
-## <a name="parse-json"></a>Parsovat JSON
+## <a name="parse-json"></a>Analyzovat JSON
 
 Pokud chcete vyzkoušet [příklad akce **analyzovat JSON** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), najdete tady definice akcí, které můžete použít:
 

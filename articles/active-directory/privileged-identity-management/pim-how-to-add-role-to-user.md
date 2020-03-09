@@ -14,11 +14,11 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375432"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Přiřazení rolí Azure AD v Privileged Identity Management
 

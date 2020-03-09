@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615421"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390651"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované na virtuální počítač pro datové vědy 
 
@@ -118,7 +118,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 * Spusťte příkaz na příkazovém řádku:
 
-  Otevřete příkazový řádek a zadejte příkaz `R`.
+  Otevřete příkazový řádek a zadejte `R`.
 
 * Použití v rozhraní IDE:
 
@@ -157,7 +157,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 | ------------- | ------------- |
 | Podporované jazykové verze | 0.6 |
 | Podporované edice DSVM      | Linux, Windows     |
-| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: Při instalaci `C:\JuliaPro-VERSION`<br /> Linux: Nainstalovaným v `/opt/JuliaPro-VERSION`    |
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: nainstalováno na `C:\JuliaPro-VERSION`<br /> Linux: nainstalováno na `/opt/JuliaPro-VERSION`    |
 | Odkazy na ukázky      | Zahrnuje ukázky Jupyter poznámkových bloků pro Helena.     |
 | Související nástroje na DSVM      | Python, R      |
 ### <a name="how-to-use-and-run-it"></a>Jak použít a spustit    
@@ -196,7 +196,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
   Výchozí umístění Helena je globální prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pro instalaci balíčků do globálního prostředí spusťte Helena pomocí jedné z předchozích metod. Pak můžete spustit příkazy správce balíčků Helena, jako je `Pkg.add()` k instalaci nebo aktualizaci balíčků.
 
-## <a name="other-languages"></a>Další jazyky
+## <a name="other-languages"></a>Jiné jazyky
 
 **C#** : Je k dispozici ve Windows a přístupný prostřednictvím sady Visual Studio Community Edition nebo na `Developer Command Prompt for Visual Studio`, kde můžete spustit příkaz `csc`.
 

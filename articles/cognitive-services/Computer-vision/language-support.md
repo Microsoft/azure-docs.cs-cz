@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718608"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365464"
 ---
 # <a name="language-support-for-computer-vision"></a>Jazyková podpora pro Počítačové zpracování obrazu
 
@@ -27,7 +27,7 @@ Počítačové zpracování obrazu umí rozpoznávat text v mnoha jazycích. Kon
 
 Optické rozpoznávání znaků automaticky detekuje jazyk vstupního materiálu, takže v volání rozhraní API není nutné zadávat kód jazyka. Kódy jazyků se ale vždycky vrátí jako hodnota uzlu `"language"` v odpovědi JSON.
 
-|Jazyk| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ |
+|Jazyk| Kód jazyka | OCR API |
 |:-----|:----:|:-----:|
 |arabština | `ar`|✔ |
 |Čínština (zjednodušená) | `zh-Hans`|✔ |
@@ -41,26 +41,26 @@ Optické rozpoznávání znaků automaticky detekuje jazyk vstupního materiálu
 |Němčina | `de` |✔ |
 |Řečtina | `el` |✔ |
 |Maďarština | `hu` |✔ |
-|italština | `it` |✔ |
+|Italština | `it` |✔ |
 |Japonština | `ja` |✔ |
 |Korejština | `ko` |✔ |
 |norština | `nb` |✔ |
-|polština | `pl` |✔ |
+|Polština | `pl` |✔ |
 |Portugalština | `pt` |✔ |
 |Rumunština | `ro` |✔ |
-|ruština | `ru` |✔ |
+|Ruština | `ru` |✔ |
 |Srbština (cyrilice) | `sr-Cyrl` |✔ |
 |Srbština (latinka) | `sr-Latn` |✔ |
 |Slovenština | `sk` |✔ |
 |Španělština | `es` |✔ |
 |švédština | `sw` |✔ |
-|turečtina | `tr` |✔ |
+|Turečtina | `tr` |✔ |
 
 ## <a name="image-analysis"></a>Analýza obrázků
 
 Některé akce rozhraní API [analyzovat-image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mohou vracet výsledky v jiných jazycích, které jsou zadány pomocí parametru dotazu `language`. Jiné akce vrátí výsledky v angličtině bez ohledu na to, jaký jazyk je zadán, a jiné vyvolají výjimku pro nepodporované jazyky. Akce jsou zadány s parametry dotazu `visualFeatures` a `details`; seznam všech akcí, které můžete provádět s analýzou obrázků, najdete v [přehledu](home.md) .
 
-|Jazyk | Kód jazyka | Kategorie | Značky | Popis | Adult | Značky | Barva | Tváře | Typ obrázku | Objekty | Celebrity | Památek |
+|Jazyk | Kód jazyka | Kategorie | Značky | Popis | Pro dospělé | Značky | Barva | Tváře | ImageType | Objekty | Celebrity | Památek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Čínština | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angličtina | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
