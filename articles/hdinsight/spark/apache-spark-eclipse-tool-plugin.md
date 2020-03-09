@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 07ed22879180d8126711eba9af0a2cac5b7b2953
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936505"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381646"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight
 
@@ -23,7 +23,7 @@ Pomocí nástrojů HDInsight v sadě Azure Toolkit for [zatmění](https://www.e
 * Pro přístup k prostředkům clusteru Azure HDInsight Spark.
 * Pro vývoj a spouštění aplikace Scala Spark lokálně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Apache Spark clusteru v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -53,7 +53,7 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
     * > Verze \<Azure Toolkit for Eclipse.
     * Scala IDE \<verze >.
 
-## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure.
+## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
 
 1. Spusťte prostředí IDE s zatmění.
 
@@ -327,7 +327,7 @@ Existují dva režimy, jak odeslat úlohy. Pokud je zadané přihlašovací úda
 
 ![Při zaneprázdněném přízi clusteru se zobrazí chyba funkce zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "Při zaneprázdněném přízi clusteru se zobrazí chyba funkce zatmění")
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 

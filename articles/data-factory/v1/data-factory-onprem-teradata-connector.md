@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929055"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387528"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,7 +46,7 @@ Aby se Správa dat brána připojovala k databázi Teradata, musíte nainstalova
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API.
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -65,7 +65,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | --- | --- | --- |
 | type |Vlastnost Type musí být nastavená na: **OnPremisesTeradata** . |Ano |
 | server |Název serveru Teradata. |Ano |
-| authenticationType. |Typ ověřování, který se používá pro připojení k databázi Teradata. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
+| authenticationType |Typ ověřování, který se používá pro připojení k databázi Teradata. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi Teradata. |Ano |
@@ -282,15 +282,15 @@ Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-act
 
 Při přesunu dat do Teradata se z typu Teradata do typu .NET použijí následující mapování.
 
-| Typ databáze Teradata | Typ rozhraní .NET Framework |
+| Typ databáze Teradata | Typ .NET Framework |
 | --- | --- |
-| char |Řetězec |
+| Char |Řetězec |
 | Datový typ CLOB |Řetězec |
 | Graphic |Řetězec |
 | VarChar |Řetězec |
 | VarGraphic |Řetězec |
 | Objekt blob |Byte[] |
-| Bajtů |Byte[] |
+| Bajt |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
@@ -299,10 +299,10 @@ Při přesunu dat do Teradata se z typu Teradata do typu .NET použijí následu
 | Integer |Datový typ Int32 |
 | Číslo |Double |
 | SmallInt |Int16 |
-| Datum |Datum a čas |
-| Time |TimeSpan |
+| Datum |DateTime |
+| Čas |TimeSpan |
 | Time With Time Zone |Řetězec |
-| Časové razítko |Datum a čas |
+| Časové razítko |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |

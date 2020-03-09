@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi StorSimple 8000 Series Update 4 | Dokumentace Microsoftu
-description: Popisuje nové funkce, problémy a řešení StorSimple 8000 Series Update 4.
+title: StorSimple 8000 Series Update 4 – zpráva k vydání verze | Microsoft Docs
+description: Popisuje nové funkce, problémy a alternativní řešení pro StorSimple 8000 Series Update 4.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,80 +15,80 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698645"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394621"
 ---
-# <a name="storsimple-8000-series-update-4-release-notes"></a>Poznámky k verzi StorSimple 8000 Series Update 4
+# <a name="storsimple-8000-series-update-4-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 4
 
 ## <a name="overview"></a>Přehled
 
-Následující poznámky k verzi popisují nové funkce a identifikovat kritické otevřené problémy pro StorSimple 8000 Series Update 4. Obsahují také seznam aktualizací softwaru StorSimple jsou v ní obsažené. 
+Následující poznámky k verzi popisují nové funkce a identifikují důležité otevřené problémy pro StorSimple 8000 Series Update 4. Obsahují také seznam StorSimple aktualizací softwaru, které jsou součástí této verze. 
 
-Update 4 je použít na jakékoli zařízení StorSimple s vydání (GA) nebo aktualizace 0.1 prostřednictvím Update 3.1. Verze zařízení spojené s aktualizací Update 4 je 6.3.9600.17820.
+Aktualizaci 4 lze použít pro jakékoli zařízení StorSimple s verzí (GA) nebo Update 0,1 až do aktualizace 3,1. Verze zařízení, která je přidružená k Update 4, je 6.3.9600.17820.
 
-Přečtěte si prosím informace obsažené v poznámkách k verzi, než nasadíte aktualizace v řešení StorSimple.
+Před nasazením aktualizace do řešení StorSimple si prosím přečtěte informace uvedené v poznámkách k verzi.
 
 > [!IMPORTANT]
-> * Update 4 je software pro zařízení, USM firmwaru, LSI ovladače a firmware, firmwaru disku, Storport a Spaceport, zabezpečení a jiné aktualizace operačního systému. Trvá přibližně 4 hodin k instalaci této aktualizace. Aktualizace firmwaru disku je rušivé aktualizace a má za následek výpadek pro vaše zařízení. Doporučujeme, abyste použili aktualizovat zařízení s aktualizací Update 4. 
-> * Pro nové verze, nemusí zobrazit aktualizace okamžitě, protože děláme postupné zavádění aktualizací. Počkejte pár dní a pak vyhledávání aktualizací znovu jako tyto bude brzy k dispozici.
+> * Aktualizace 4 má software zařízení, firmware USM, adaptér LSI a firmware, firmware disku, ovladače Storport a Spaceport, zabezpečení a další aktualizace operačního systému. Instalace této aktualizace trvá přibližně 4 hodiny. Aktualizace firmwaru disku je nevratná aktualizace a vede k výpadkům vašeho zařízení. Doporučujeme, abyste použili aktualizaci 4, aby vaše zařízení zůstalo v aktuálním stavu. 
+> * Pro nové verze se aktualizace nemusí okamžitě zobrazovat, protože provádíme dvoufázové zavedení aktualizací. Počkejte několik dní a pak znovu vyhledejte aktualizace, protože budou brzy k dispozici.
 
-## <a name="whats-new-in-update-4"></a>Co je nového v aktualizaci Update 4
+## <a name="whats-new-in-update-4"></a>Co je nového ve Update 4
 
-Byly provedeny následující klíčová vylepšení a opravy chyb v aktualizaci Update 4.
+V Update 4 byly provedeny následující hlavní vylepšení a opravy chyb.
 
-* **Chytřejší automatizované algoritmy recyklace místa** – aktualizace 4, automatizované pročištěním algoritmy jsou vylepšené tak, upravte cykly recyklaci místa podle očekávané uvolňovaného volné místo dostupné v cloudu. 
+* **Inteligentní automatizované algoritmy pro opětovné získávání prostoru** – v Update 4 jsou vylepšené algoritmy automatického opětovného získávání prostorů rozšířené, aby se nastavily cykly opětovného získávání prostorů na základě očekávaného uvolněného místa v cloudu. 
 
-* **Vylepšení výkonu pro místně připojené svazky** – aktualizace Update 4 se zvýšil výkon místně připojené svazky ve scénářích, které mají vysokou ingestování (srovnatelná se velikost svazku data).
+* **Vylepšení výkonu pro místně připojené svazky** – aktualizace 4 vylepšuje výkon místně připnutého svazku ve scénářích, které mají vysokou příjem dat (data srovnatelná s velikostí svazku).
 
-* **Obnovení na základě Heatmapu** – v dřívějších verzích po zotavení po havárii (DR) se data obnovila z cloudu na základě vzorců přístupu výsledkem je snížení výkonu. 
+* **Obnovení založené na heatmapu** – v předchozích verzích po zotavení po havárii (Dr) se data obnovila z cloudu na základě vzorů přístupu, což má za následek pomalý výkon. 
 
-    Nová funkce je implementována v aktualizaci Update 4, že sleduje často používaná data k vytvoření heatmapu, když je zařízení v použití přijmou zotavení po Havárii (nejčastěji používané datové bloky mají vysokou heat vzhledem k tomu použít menší bloky dat mají nízké heat). Po zotavení po Havárii StorSimple využívá Heat mapě automaticky obnovit a dosazení dat z cloudu. 
+    V Update 4 je implementována nová funkce, která sleduje často používaná data k vytvoření heatmapu, když se zařízení používá před nástrojem DR (nejčastěji používané datové bloky mají vysoký teplo, zatímco méně využité bloky dat mají nízký výkon). Po zotavení po havárii nástroj StorSimple použije heatmapu k automatickému obnovení a dehydratovanému využití dat z cloudu. 
 
-    Všechny obnovení jsou nyní heatmapu na základě obnovení. Další informace o tom, jak dotazovat a zrušení úloh obnovení a dosazování heatmapu na základě, přejděte na [prostředí Windows PowerShell pro StorSimple Reference k rutinám](https://technet.microsoft.com/library/dn688168.aspx).
+    Všechna obnovení jsou nyní heatmapu založenou na obnovení. Další informace o tom, jak provést dotazování a zrušení úloh obnovení a reheatmapu na základě služby, naleznete v tématu [Windows PowerShell pro StorSimple Reference k rutinám](https://technet.microsoft.com/library/dn688168.aspx).
 
-* **StorSimple Diagnostika** – umožňuje snadno diagnostikovat byla vydána v Update 4, StorSimple Diagnostika a řešení potíží týkající se stav součásti systému, sítě, výkon a hardware. Tento nástroj je spustit přes Windows PowerShell pro StorSimple. Další informace najdete v části [řešení potíží pomocí StorSimple Diagnostika](storsimple-8000-diagnostics.md).
+* **Nástroj StorSimple Diagnostics** – v Update 4 se uvolňuje nástroj StorSimple Diagnostics, který umožňuje snadnou diagnostikovat a řešit problémy související se stavem systému, sítě, výkonu a hardwarových součástí. Tento nástroj se spouští prostřednictvím Windows PowerShell pro StorSimple. Další informace najdete v tématu [řešení potíží pomocí nástroje StorSimple Diagnostics](storsimple-8000-diagnostics.md).
 
-* **Na základě uživatelského rozhraní nástroj pro migraci StorSimple** -před touto verzí vyžaduje migraci dat z řad 5000 – 7000 uživatelům provádět součástí postupu migrace pomocí rozhraní Azure Powershellu. V této verzi nástroj snadným ovládáním migrací s použitím uživatelského rozhraní StorSimple je k dispozici pro podporu pro usnadnění stejný pracovní postup migrace. Tento nástroj by také umožnilo pro konsolidaci intervalů obnovení. 
+* **Nástroj pro migraci StorSimple založený na uživatelském rozhraní** – před touto verzí musí migrace dat z řady 5000-7000 vyžadovat, aby uživatelé mohli spustit součást pracovního postupu migrace pomocí rozhraní Azure PowerShell. V této verzi je k dispozici snadno použitelný nástroj pro migraci StorSimple založený na uživatelském rozhraní, který vám umožní podporovat stejný pracovní postup migrace. Tento nástroj také umožňuje konsolidaci sad obnovení. 
 
-* **Změny související s FIPS** – toto vydání a vyšší, je povolený standard FIPS ve výchozím nastavení na všech zařízeních StorSimple 8000 series pro Microsoft Azure Government i Azure veřejný cloud účty.
+* **Změny týkající se standardu FIPS** – Tato verze je navýšená, FIPS je ve výchozím nastavení povolená na všech zařízeních řady StorSimple 8000 pro účty Azure s veřejným cloudem Microsoft Azure Government i Azure.
 
-* **Aktualizovat změny** – v tomto vydání jsme opravili chyby související s aktualizovat chyby.
+* **Aktualizace změn** – v této verzi byla opravena chyba související s chybami aktualizace.
 
-* **Výstrahy pro selhání disku** – v této verzi se přidá nová výstraha, které uživatele upozorní na brzké selhání disku. Pokud narazíte na tuto výstrahu, obraťte se na Microsoft Support dodání náhradního disku. Další informace najdete v části [výstrahy hardwaru zařízení StorSimple](storsimple-8000-manage-alerts.md#hardware-alerts).
+* **Výstraha při selhání disku** – v této verzi se přidá nová výstraha upozorňující uživatele na hrozící selhání disku. Pokud se zobrazí tato výstraha, kontaktujte podpora Microsoftu k odeslání náhradního disku. Další informace najdete [v oznámeních o hardwaru na zařízení StorSimple](storsimple-8000-manage-alerts.md#hardware-alerts).
 
-* **Změny nahrazení řadiče** – přidání rutinu, která umožňuje uživateli zadat dotaz na stav proces nahrazení řadiče v této verzi. Další informace najdete v části [rutiny dotazu řadič nahrazení](https://technet.microsoft.com/library/dn688168.aspx).
+* **Změny nahrazení řadiče** – v této verzi se přidá rutina, která uživateli umožní dotazovat se na stav procesu nahrazení řadiče. Pokud potřebujete další informace, přečtěte si do [rutiny stav nahrazení řadiče dotazů](https://technet.microsoft.com/library/dn688168.aspx).
 
 
-## <a name="issues-fixed-in-update-4"></a>Chyby opravené v aktualizaci Update 4
+## <a name="issues-fixed-in-update-4"></a>Problémy opravené ve Update 4
 
-Následující tabulka obsahuje souhrn problémy, které byly opraveny v aktualizaci Update 4.    
+Následující tabulka poskytuje souhrn problémů, které byly opraveny v Update 4.    
 
 | Ne | Funkce | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- |
-| 1 |Převzetí služeb při selhání |V předchozí verzi po převzetí služeb při selhání, došlo k nějakému problému související s vyčištění zjištěnou na webu zákazníka. Tento problém je vyřešen v této verzi. |Ano |Ano |
-| 2 |Místně připojené svazky |V předchozí verzi došlo k nějakému problému na příslušný svazek vytváření místně vázaných svazků, které způsobí chyby při vytváření svazku. Tento problém byl způsobila kořenové a opravené v této verzi. |Ano |Ne |
-| 3 |Balíček pro podporu. |V předchozí verzi byly problémy související se balíček pro podporu, která způsobí System.OutOfMemory výjimky nebo jiné chyby, což vede k selhání vytváření balíčků podpory. Tyto chyby jsou opravené v této verzi. |Ano |Ano |
-| 4 |Monitorování |V předchozí verzi existuje problém týkající se sledování grafů pro místně připojené svazky ve kterém se zobrazilo spotřebu v EB. Tato chyba se vyřeší v této verzi. |Ano |Ano |
-| 5 |Migrace |V předchozí verzi byly několik problémů souvisejících s spolehlivost migrace z řad 5000 – 7000 zařízení řady 8000. V této verzi mají tyto problémy vyřeší. |Ano |Ano |
-| 6 |Aktualizace |V předchozích verzích, pokud došlo k selhání aktualizace, řadiče přejde do režimu obnovení a proto nelze pokračovat v aktualizaci uživatele a bude nutné kontaktovat Microsoft Support. <br> Toto chování se změnil v této verzi. Pokud má uživatel k selhání aktualizace po obou řadičích spuštěna stejná verze (s aktualizací Update 4), řadiče nepřejdou do režimu obnovení. Pokud uživatel zaznamená toto selhání, doporučujeme, aby čekat bit a pak zkuste aktualizaci zopakovat. Opakování může uspět. Pokud se nový pokus nezdaří, měli byste kontaktovat Microsoft Support. |Ano |Ano |
+| 1 |Převzetí služeb při selhání |V dřívější verzi se po převzetí služeb při selhání objevil problém týkající se vyčištění na webu zákazníka. Tento problém je opravený v této verzi. |Ano |Ano |
+| 2 |Místně připojené svazky |V předchozí verzi došlo k potížím se souvisejícím vytvářením svazků pro místně připnuté svazky, které by způsobily selhání vytvoření svazku. Tento problém byl způsobený kořenem a opravil v této verzi. |Ano |Ne |
+| 3 |Balíček pro podporu |V předchozí verzi byly problémy související s balíčkem podpory, které by způsobily výjimku System. OutOfMemory nebo jiné chyby, což vedlo k chybě při vytváření balíčku pro podporu. Tyto chyby jsou v této verzi opravené. |Ano |Ano |
+| 4 |Monitorování |V předchozí verzi došlo k potížím souvisejícím s monitorováním grafů pro místně připnuté svazky, ve kterých se spotřeba zobrazila v EB. Tato chyba je vyřešena v této verzi. |Ano |Ano |
+| 5 |Migrace |V předchozí verzi bylo k dispozici několik problémů souvisejících s spolehlivostí migrace z 5000-7000 řad na zařízení 8000 series. Tyto problémy byly řešeny v této verzi. |Ano |Ano |
+| 6 |Aktualizace |Pokud v předchozích verzích došlo k chybě aktualizace, řadiče přešly do režimu obnovení, takže uživatel nemůže v aktualizaci pokračovat a bude potřebovat kontaktovat podpora Microsoftu. <br> Toto chování se v této verzi změnilo. Pokud má uživatel chybu aktualizace, když oba řadiče používají stejnou verzi (Update 4), řadiče nepřejde do režimu obnovení. Pokud se tato chyba vyskytne uživateli, doporučujeme, abyste počkali na bitovou kopii, a pak zkuste aktualizaci zopakovat. Opakování může být úspěšné. Pokud se opakování nepovede, měli byste se obrátit na podpora Microsoftu. |Ano |Ano |
 
 
-## <a name="known-issues-in-update-4-from-previous-releases"></a>Známé problémy v aktualizaci Update 4 z předchozích verzí
+## <a name="known-issues-in-update-4-from-previous-releases"></a>Známé problémy v Update 4 z předchozích verzí
 
-Nejsou žádné nové známé problémy v aktualizaci Update 4. Seznam problémů přenesou na aktualizaci Update 4 z předchozích verzí, přejděte na [zpráva k vydání verze Update 3](storsimple-update3-release-notes.md#known-issues-in-update-3).
+V Update 4 nejsou žádné nové známé problémy. Seznam problémů přepravovaných s aktualizací Update 4 z předchozích verzí najdete v [poznámkách k verzi Update 3](storsimple-update3-release-notes.md#known-issues-in-update-3).
 
-## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Připojená k sériovým SCSI (SAS) kontroleru a aktualizace firmwaru v aktualizaci Update 4
+## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Řadič SCSI a aktualizace firmwaru připojené k sériovému portu (SAS) ve Update 4
 
-Tato verze má řadič SAS a aktualizace LSI ovladače a firmware. Další informace o tom, jak tyto aktualizace nainstalovat, naleznete v tématu [instalace aktualizace 4](storsimple-install-update-4.md) zařízení StorSimple.
+Tato verze obsahuje řadič SAS a aktualizace ovladačů LSI a firmware. Další informace o tom, jak tyto aktualizace nainstalovat, najdete v tématu [instalace aktualizace Update 4](storsimple-install-update-4.md) na zařízení StorSimple.
 
-## <a name="virtual-device-updates-in-update-4"></a>Aktualizace virtuálního zařízení v aktualizaci Update 4
+## <a name="virtual-device-updates-in-update-4"></a>Aktualizace virtuálních zařízení v aktualizaci Update 4
 
-Tato aktualizace nejde použít u řešení StorSimple Cloud Appliance (označované také jako virtuální zařízení). Nové virtuální zařízení bude potřeba vytvořit. 
+Tuto aktualizaci nelze použít pro StorSimple Cloud Appliance (označuje se také jako virtuální zařízení). Nová virtuální zařízení bude potřeba vytvořit. 
 
 ## <a name="next-step"></a>Další krok
 
-Zjistěte, jak [instalace aktualizace 4](storsimple-install-update-4.md) zařízení StorSimple.
+Přečtěte si, jak [nainstalovat Update 4](storsimple-install-update-4.md) na zařízení StorSimple.
 

@@ -67,7 +67,7 @@ Faktury za Azure Marketplace si můžete na webu Azure Portal zobrazit a stáhno
 
     ![Screenshot typu Azure Marketplace v tabulce faktur](./media/understand-azure-marketplace-charges/marketplace-type-twd.png)
 
-1. Pokud chcete filtrovat podle typu tak, aby se vám zobrazovaly jenom faktury za Azure Marketplace a rezervace, vyberte filtr **Typ **. Potom v rozevíracím seznamu vyberte **Azure Marketplace a rezervace**.
+1. Pokud chcete filtrovat podle typu tak, aby se vám zobrazovaly jenom faktury za Azure Marketplace a rezervace, vyberte filtr **Typ**. Potom v rozevíracím seznamu vyberte **Azure Marketplace a rezervace**.
 
     ![Screenshot s vybraným filtrem Typ zobrazující rozevírací seznam s vybranou položkou Azure Marketplace a rezervace](./media/understand-azure-marketplace-charges/type-filter.png)
 

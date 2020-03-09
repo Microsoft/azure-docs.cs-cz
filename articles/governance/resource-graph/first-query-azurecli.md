@@ -4,11 +4,11 @@ description: V tomto rychlém startu budete postupovat podle pokynů pro povolen
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304121"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360229"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Azure CLI
 
@@ -16,9 +16,9 @@ Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je 
 
 Na konci tohoto procesu budete mít za sebou přidání rozšíření k vybrané instalaci Azure CLI a spuštění prvního dotazu na službu Resource Graph.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ Když se rozšíření Azure CLI přidal do vašeho vybraného prostředí, mů�
    > [!NOTE]
    > Na tento dotaz příklad neposkytuje modifikátor řazení jako `order by`, opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost.
 
-1. Aktualizuje dotaz pro `order by` **Název** vlastnosti:
+1. Aktualizuje dotaz pro `order by`**Název** vlastnosti:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'

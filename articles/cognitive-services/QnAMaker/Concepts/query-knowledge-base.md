@@ -4,11 +4,11 @@ description: Je nutné publikovat znalostní bázi. Po publikování se znalostn
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843307"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389293"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Dotazování znalostní báze o odpovědích
 
@@ -26,7 +26,7 @@ Tento proces je vysvětlen v následující tabulce.
 
 |Krok|Účel|
 |--|--|
-|1\. místo|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
 |2|QnA Maker předzpracovává dotazy uživatelů pomocí rozpoznávání jazyka, pravopisu a dělení slov.|
 |3|Tento předzpracování se provádí pro změnu dotazu uživatele na nejlepší výsledky hledání.|
 |4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který obdrží `top` počet výsledků. Pokud se v těchto výsledcích nejedná o správnou odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů.|
@@ -99,4 +99,4 @@ Odpověď HTTP je odpověď získaná ze znalostní báze na základě nejlepš�
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Skóre spolehlivosti](./confidence-score.md)
+> [Hodnocení spolehlivosti](./confidence-score.md)

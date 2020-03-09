@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 7b47e7b0672716141f62e3f7df4b0d3ed95c663d
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
-ms.translationtype: MT
+ms.openlocfilehash: f06c50c35e25f2f64948c5f18672e00382d4ef42
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114299"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892961"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti Azure Functions sítě
 
@@ -34,7 +34,7 @@ Aplikace Function App můžete hostovat několika způsoby:
 |[Integrace virtuální sítě](#virtual-network-integration)|❌ne|✅Ano (místní)|✅Ano (místní a brána)|✅Ano|
 |[Aktivační události virtuální sítě (jiné než HTTP)](#virtual-network-triggers-non-http)|❌ne| ✅Ano |✅Ano|✅Ano|
 |[Hybridní připojení](#hybrid-connections) (jenom Windows)|❌ne|✅Ano|✅Ano|✅Ano|
-|[Omezení odchozích IP adres](#outbound-ip-restrictions)|❌ne| ❌ne|❌ne|✅Ano|
+|[Omezení odchozích IP adres](#outbound-ip-restrictions)|❌ne| ✅Ano|✅Ano|✅Ano|
 
 ## <a name="inbound-ip-restrictions"></a>Omezení příchozích IP adres
 
@@ -57,65 +57,34 @@ Přístup k privátní lokalitě znamená, že vaše aplikace bude přístupná 
 
 ## <a name="virtual-network-integration"></a>Integrace virtuální sítě
 
-Integrace virtuální sítě umožňuje aplikacím Function App přistupovat k prostředkům v rámci virtuální sítě. Tato funkce je dostupná jak v plánu Premium, tak v plánu App Service. Pokud je vaše aplikace ve App Service Environment, je již ve virtuální síti a nevyžaduje integraci virtuální sítě pro dosažení prostředků ve stejné virtuální síti.
+Integrace virtuální sítě umožňuje aplikacím Function App přistupovat k prostředkům v rámci virtuální sítě. Azure Functions podporuje dva druhy integrace virtuální sítě:
 
-Integraci virtuální sítě můžete použít k povolení přístupu z aplikací k databázím a webovým službám běžícím ve vaší virtuální síti. S integrací virtuální sítě nemusíte pro aplikace na svém VIRTUÁLNÍm počítači vystavovat veřejný koncový bod. Místo toho můžete použít soukromé IP adresy, které nejsou v Internetu.
-
-Existují dvě formy integrace virtuální sítě:
-
-+ **Integrace místní virtuální sítě (Preview)** : umožňuje integraci s virtuálními sítěmi ve stejné oblasti. Tento typ integrace vyžaduje podsíť ve virtuální síti ve stejné oblasti. Tato funkce je stále ve verzi Preview, ale je podporovaná pro aplikace Function App běžící v systému Windows s upozorněními popsanými po následující tabulce problému nebo řešení.
-+ **Integrace virtuální sítě požadovaná bránou**: umožňuje integraci s virtuálními sítěmi ve vzdálených oblastech nebo s klasickými virtuálními sítěmi. Tento typ integrace vyžaduje nasazení brány virtuální sítě do vaší virtuální sítě. Jedná se o funkci založenou na síti VPN typu Point-to-site, která je podporovaná jenom pro aplikace Function App běžící v systému Windows.
-
-Aplikace může v jednom okamžiku používat jenom jeden typ funkce integrace virtuální sítě. I když jsou obě užitečné pro mnoho scénářů, v následující tabulce je uvedeno, kde by se měly použít:
-
-| Problém  | Řešení |
-|----------|----------|
-| Chcete se spojit s adresou RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) ve stejné oblasti. | Integrace místní virtuální sítě |
-| Chcete se připojit k prostředkům v klasické virtuální síti nebo ve virtuální síti v jiné oblasti. | Brána vyžaduje integraci virtuální sítě |
-| Chcete se dostat ke koncovým bodům RFC 1918 napříč Azure ExpressRoute | Integrace místní virtuální sítě |
-| Chcete oslovit prostředky napříč koncovými body služby | Integrace místní virtuální sítě |
-
-Ani jedna z funkcí neumožňuje přístup k adresám, které nejsou RFC 1918, mezi ExpressRoute. K tomu je v současné době nutné použít App Service Environment.
-
-Použití místní integrace virtuální sítě nepřipojuje vaši virtuální síť k místním koncovým bodům nebo konfiguraci koncových bodů služby. To je samostatná konfigurace sítě. Integrace místní virtuální sítě umožňuje, aby aplikace provedla volání prostřednictvím těchto typů připojení.
-
-Bez ohledu na použitou verzi poskytuje integrace s aplikací Function App přístup k prostředkům ve vaší virtuální síti, ale neuděluje privátnímu webu přístup k vaší aplikaci Function App z virtuální sítě. Přístup k soukromému webu znamená, že vaše aplikace je přístupná jenom z privátní sítě, jako je Azure Virtual Network. Integrace virtuální sítě je jenom pro odchozí volání z vaší aplikace do vaší virtuální sítě.
-
-Funkce integrace virtuální sítě:
-
-* Vyžaduje plán App Service Standard, Premium nebo PremiumV2.
-* Podporuje protokoly TCP a UDP
-* Práce s aplikacemi App Service a aplikacemi funkcí
-
-Existuje několik věcí, které integrace virtuální sítě nepodporuje, včetně:
-
-* Připojení jednotky
-* Integrace Active Directory
-* Názv
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 Integrace virtuální sítě v Azure Functions používá sdílenou infrastrukturu s App Service webovými aplikacemi. Další informace o těchto dvou typech integrace virtuální sítě najdete v následujících tématech:
 
 * [Integrace místní virtuální sítě](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [Brána vyžaduje integraci virtuální sítě](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-Další informace o použití integrace virtuální sítě najdete v tématu [integrace aplikace Function App s virtuální sítí Azure](functions-create-vnet.md).
+Informace o tom, jak nastavit integraci virtuální sítě, najdete v tématu [integrace aplikace Function App s virtuální sítí Azure](functions-create-vnet.md).
+
+## <a name="regional-virtual-network-integration"></a>Integrace místní Virtual Network
+
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
 ## <a name="connecting-to-service-endpoint-secured-resources"></a>Připojování k zabezpečeným prostředkům koncového bodu služby
-
-> [!NOTE]
-> V současné době může trvat až 12 hodin, než se nové koncové body služby stanou dostupnými pro vaši aplikaci Function App po konfiguraci omezení přístupu pro prostředek pro příjem dat. Během této doby bude prostředek pro vaši aplikaci zcela nedostupný.
 
 Pokud chcete zajistit vyšší úroveň zabezpečení, můžete omezit počet služeb Azure na virtuální síť pomocí koncových bodů služby. Abyste mohli získat přístup k prostředku, musíte aplikaci Function App integrovat s touto virtuální sítí. Tato konfigurace je podporovaná ve všech plánech, které podporují integraci virtuálních sítí.
 
 [Přečtěte si další informace o koncových bodech služby virtuální sítě.](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť
+## <a name="restricting-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť
 
-Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. V tuto chvíli nemůžete u tohoto účtu použít žádná omezení virtuální sítě. Pokud v účtu úložiště, který používáte pro aplikaci Function App, nakonfigurujete koncový bod služby virtuální sítě, bude aplikace přerušit. Tato funkce je aktuálně dostupná pomocí plánu Premium a integrace virtuální sítě.
+Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. V tuto chvíli nemůžete u tohoto účtu použít žádná omezení virtuální sítě. Pokud v účtu úložiště, který používáte pro aplikaci Function App, nakonfigurujete koncový bod služby virtuální sítě, bude aplikace přerušit.
 
 [Přečtěte si další informace o požadavcích na účet úložiště.](./functions-create-function-app-portal.md#storage-account-requirements)
 
-### <a name="using-key-vault-references"></a>Použití Key Vaultch odkazů 
+## <a name="using-key-vault-references"></a>Použití Key Vaultch odkazů 
 
 Key Vault odkazy umožňují používat v aplikaci Azure Functions tajné klíče z Azure Key Vault, aniž by bylo nutné provádět změny kódu. Azure Key Vault je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu.
 
@@ -171,9 +140,13 @@ Další informace najdete v dokumentaci k [App Service pro Hybrid Connections](.
 
 ## <a name="outbound-ip-restrictions"></a>Omezení odchozích IP adres
 
-Omezení odchozích IP adres jsou k dispozici pouze pro funkce nasazené do App Service Environment. Můžete nakonfigurovat odchozí omezení pro virtuální síť, ve které je nasazený App Service Environment.
+Omezení odchozích IP adres jsou k dispozici v plánu Premium, App Service plánu nebo App Service Environment. Můžete nakonfigurovat odchozí omezení pro virtuální síť, ve které je nasazený App Service Environment.
 
-Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s virtuální sítí, může aplikace dál provádět odchozí volání na Internet.
+Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s virtuální sítí, může aplikace ve výchozím nastavení dál provádět odchozí volání do Internetu. Přidáním nastavení aplikace `WEBSITE_VNET_ROUTE_ALL=1`vynutíte odeslání veškerého odchozího provozu do vaší virtuální sítě, kde je možné použít pravidla skupiny zabezpečení sítě k omezení provozu.
+
+## <a name="troubleshooting"></a>Řešení potíží 
+
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

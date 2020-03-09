@@ -13,18 +13,21 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f3825a2d87d5948de4bb4a9b86be8e3050f2100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981109"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892966"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kódování videa a zvuku pomocí Media Services
 
 Termín kódování v Media Services se vztahuje na proces převodu souborů obsahujících digitální video nebo zvuk z jednoho standardního formátu na jiný, s účelem (a) zmenšování velikosti souborů a/nebo (b), která vytváří formát kompatibilní s širokou škálou zařízení a aplikací. Tento proces je také označován jako komprese videa nebo překódování. Další diskuzi o konceptech najdete v tématu [komprese dat](https://en.wikipedia.org/wiki/Data_compression) a [co je kódování a překódování](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) .
 
 Videa se většinou doručují do zařízení a aplikací pomocí [postupného stahování](https://en.wikipedia.org/wiki/Progressive_download) nebo [streamování s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming).
+
+> [!IMPORTANT]
+> Media Services nevyúčtuje zrušené nebo chybové úlohy. Například úloha, která dosáhla pokroku 50% a je zrušená, se neúčtuje za 50% minut úlohy. Účtují se vám pouze dokončené úlohy.
 
 * Aby bylo možné doručit progresivním stažením, můžete použít Azure Media Services k převodu digitálního mediálního souboru (Mezzanine) na soubor [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) , který obsahuje video kódované pomocí kodeku [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) , a zvuk kódovaný pomocí kodeku [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) . Tento soubor MP4 se zapisuje do Assetu v účtu úložiště. Můžete použít rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) a stáhnout soubor přímo. Pokud jste vytvořili výstupní Asset s konkrétním názvem kontejneru v úložišti, použijte toto umístění. V opačném případě můžete použít Media Services k [vypsání adres URL kontejneru assetů](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * Aby bylo možné připravit obsah pro doručování streamování s adaptivní přenosovou rychlostí, musí být soubor Mezzanine kódovaný s více přenosovými rychlostmi (vysoká až nízká). Aby se zajistil řádný přechod kvality, rozlišení videa se sníží, protože se sníží rychlost. Výsledkem je, že se jako kódovací žebřík používá tabulka rozlišení a přenosové rychlosti (viz [automaticky generovaná žebřík s adaptivní přenosovou rychlostí](autogen-bitrate-ladder.md)). Můžete použít Media Services ke kódování souborů Mezzanine s více přenosovými rychlostmi. V takovém případě získáte sadu souborů MP4 a přidružených konfiguračních souborů streamování zapsaných do Assetu v účtu úložiště. Pak můžete použít funkci [dynamického balení](dynamic-packaging-overview.md) v Media Services k doručování videa prostřednictvím protokolů streamování, jako jsou [MPEG-spojovníky](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). To vyžaduje, abyste vytvořili [Lokátor streamování](streaming-locators-concept.md) a vytvořili adresy URL streamování odpovídající podporovaným protokolům, které se pak dají přesměrovat na zařízení nebo aplikace na základě jejich schopností.
@@ -41,7 +44,7 @@ Pro kódování pomocí Media Services V3 potřebujete vytvořit [transformaci](
 
 Kódování pomocí Media Services, použijete přednastavení kodér zjistit, jak by se měly zpracovat vstupními multimediálními soubory. Můžete například zadat rozlišení a/nebo počet zvukové kanály, které chcete v kódovaném obsahu.
 
-Můžete začít rychle s jedním z doporučených předdefinované předvolby založená na osvědčených postupech oboru nebo můžete vytvářet vlastní přednastavení cílit na konkrétní scénář nebo zařízení požadavky. Další informace najdete v tématu [kódovat s vlastní transformace](customize-encoder-presets-how-to.md).
+Můžete začít rychle s jedním z doporučených předdefinované předvolby založená na osvědčených postupech oboru nebo můžete vytvářet vlastní přednastavení cílit na konkrétní scénář nebo zařízení požadavky. Další informace naleznete v tématu [kódování s vlastní transformací](customize-encoder-presets-how-to.md).
 
 Od ledna 2019 se při kódování s Media Encoder Standard k vytvoření souborů MP4 vytvoří nový soubor. MPI a přidá se do výstupního prostředku. Tento soubor MPI má za cíl zlepšit výkon pro [dynamické balení](dynamic-packaging-overview.md) a streamování.
 
@@ -135,6 +138,12 @@ V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Def
 ## <a name="scaling-encoding-in-v3"></a>Škálování kódování ve verzi 3
 
 Škálování zpracování médií najdete v tématu [škálování pomocí](media-reserved-units-cli-how-to.md)rozhraní příkazového řádku.
+
+## <a name="billing"></a>Fakturace
+
+Media Services nevyúčtuje zrušené nebo chybové úlohy. Například úloha, která dosáhla pokroku 50% a je zrušená, se neúčtuje za 50% minut úlohy. Účtují se vám pouze dokončené úlohy.
+
+Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

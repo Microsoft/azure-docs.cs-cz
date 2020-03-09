@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
 ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811201"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357621"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Použití spravované instance v Azure SQL Database
 
@@ -32,7 +32,7 @@ V tomto článku najdete různé příručky, skripty a vysvětlení, které vá
 
 - [Určete velikost podsítě spravované instance](sql-database-managed-instance-determine-size-vnet-subnet.md) – spravovaná instance je umístěna ve vyhradení podsítě, kterou nelze po přidání prostředků do systému změnit. Proto byste museli počítat, jaký rozsah adres IP by se vyžadoval pro podsíť v závislosti na počtu a typech instancí, které chcete v podsíti nasadit.
 - [Vytvoření nové virtuální sítě a podsítě pro spravovanou instanci](sql-database-managed-instance-create-vnet-subnet.md) – virtuální síť Azure a podsíť, kde chcete spravované instance nasadit, se musí nakonfigurovat podle [požadavků sítě](sql-database-managed-instance-connectivity-architecture.md#network-requirements), které jsou zde popsané. V této příručce najdete nejjednodušší způsob, jak vytvořit novou virtuální síť a podsíť správně nakonfigurovaných pro spravované instance.
-- [Konfigurace existující virtuální sítě a podsítě pro spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md) – Pokud chcete nakonfigurovat stávající virtuální síť a podsíť pro nasazení spravovaných instancí uvnitř, najdete tady skript, který kontroluje [požadavky na síť](sql-database-managed-instance-connectivity-architecture.md#network-requirements) a nakonfiguruje vaše podsíť podle požadavků.
+- [Konfigurace existující virtuální sítě a podsítě pro spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md) – Pokud chcete nakonfigurovat stávající virtuální síť a podsíť pro nasazení spravovaných instancí uvnitř, najdete tady skript, který kontroluje [požadavky na síť](sql-database-managed-instance-connectivity-architecture.md#network-requirements) a nakonfiguruje podsíť podle požadavků.
 - [Konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md) – Pokud chcete získat přístup k externím prostředkům v vlastní doméně ze spravované instance pomocí propojených serverových e-mailových profilů, musíte vlastní DNS nakonfigurovat.
 - [Synchronizace konfigurace sítě](sql-database-managed-instance-sync-network-configuration.md) – může dojít k tomu, že i když jste [aplikaci integrovanou do Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md),&#39;můžete t navázat připojení ke spravované instanci. Jednou z věcí, které můžete vyzkoušet, je aktualizovat konfiguraci sítě pro svůj plán služby.
 - [Najít IP adresu koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md) – spravovaná instance používá pro účely správy veřejný koncový bod. IP adresu koncového bodu správy můžete určit pomocí skriptu, který je zde popsán.

@@ -4,11 +4,11 @@ description: Naučte se spravovat metadata projektu, soubory projektu, prostřed
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197687"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360603"
 ---
 # <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> spravovat a konfigurovat projekty v Azure Notebooks Preview
 
@@ -76,10 +76,10 @@ Každá položka v seznamu souborů v projektu poskytuje příkazů pomocí mís
 | Příkaz | Klávesová zkratka | Akce |
 | --- | --- | --- |
 | Spusťte | r (nebo klikněte na tlačítko) | Spustí soubor poznámkového bloku. Jiné typy souborů jsou otevřené pro zobrazení.  |
-| Kopírovat odkaz | Y | Odkaz se zkopíruje do souboru do schránky. |
+| Kopírovat odkaz | y | Odkaz se zkopíruje do souboru do schránky. |
 | Spustit v testovacím prostředí Jupyter | j | Spuštění poznámkového bloku v JupyterLab, což je více vývojářů objektově orientovaného rozhraní než Jupyter obvykle poskytuje. |
 | Preview | p | Otevře se v HTML verzi preview souboru. verze preview pro poznámkové bloky, je jen pro čtení vykreslování poznámkového bloku. Další informace najdete v části [Preview](#preview) . |
-| Upravte soubor | Můžu | Otevře soubor pro úpravy. |
+| Upravte soubor | i | Otevře soubor pro úpravy. |
 | Ke stažení | d | Stáhne soubor zip, který obsahuje soubor nebo obsah složky. |
 | Přejmenovat | a | Výzvy k zadání nového názvu souboru nebo složky. |
 | Odstranit | x | Zobrazí výzvu k potvrzení a pak soubor trvale odebere z projektu. Odstranění se nedá vrátit zpět. |
@@ -93,7 +93,7 @@ Na stránce ve verzi preview podporuje několik nástrojů příkazů s kláveso
 
 | Příkaz | Klávesová zkratka | Akce |
 | --- | --- | --- |
-| Sdílení | s | Zobrazí sdílení překryvné okno, ze kterého lze získat odkaz, sdílení na sociálních médií, získat HTML pro vkládání a odeslat e-mailu. |
+| Sdílená složka | s | Zobrazí sdílení překryvné okno, ze kterého lze získat odkaz, sdílení na sociálních médií, získat HTML pro vkládání a odeslat e-mailu. |
 | Klonování | c  | Naklonujte ho na svůj účet. |
 | Spusťte | r | Pokud máte oprávnění k tomu, spustí Poznámkový blok. |
 | Ke stažení | d | Stáhne kopii poznámkového bloku. |

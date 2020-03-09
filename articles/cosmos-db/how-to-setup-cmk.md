@@ -8,11 +8,11 @@ ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
 ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506043"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392422"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníkem pro účet Azure Cosmos pomocí Azure Key Vault
 

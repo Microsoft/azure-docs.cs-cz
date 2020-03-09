@@ -4,11 +4,11 @@ description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Čl
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462588"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392794"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -78,7 +78,7 @@ V závislosti na předvolbách zálohování a typech zálohování (úplné/roz
 
 **Typ zálohování** | **Node**
     --- | ---
-    Úplná | Primární
+    kompletní | Primární
     Diferenciál | Primární
     Protokol |  Primární
     Pouze kopírování je úplné |  Primární
@@ -87,7 +87,7 @@ V závislosti na předvolbách zálohování a typech zálohování (úplné/roz
 
 **Typ zálohování** | **Node**
 --- | ---
-Úplná | Primární
+kompletní | Primární
 Diferenciál | Primární
 Protokol |  Sekundární
 Pouze kopírování je úplné |  Sekundární
@@ -96,7 +96,7 @@ Pouze kopírování je úplné |  Sekundární
 
 **Typ zálohování** | **Node**
 --- | ---
-Úplná | Primární
+kompletní | Primární
 Diferenciál | Primární
 Protokol |  Sekundární
 Pouze kopírování je úplné |  Sekundární
@@ -105,7 +105,7 @@ Pouze kopírování je úplné |  Sekundární
 
 **Typ zálohování** | **Node**
 --- | ---
-Úplná | Primární
+kompletní | Primární
 Diferenciál | Primární
 Protokol |  Sekundární
 Pouze kopírování je úplné |  Sekundární

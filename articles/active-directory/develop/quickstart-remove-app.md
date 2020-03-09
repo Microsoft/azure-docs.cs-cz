@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704081"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377155"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Rychlý Start: odebrání aplikace registrované s platformou Microsoft identity
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se naučíte:
 * Odebrání aplikace vytvořené vámi nebo vaší organizací
 * Odebrání aplikace vytvořené jinou organizací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte mít klienta, který má zaregistrovaných aplikací. Informace o přidání a registraci aplikací najdete v tématu [Registrace aplikace na platformě Microsoft Identity Platform](quickstart-register-app.md).
 
