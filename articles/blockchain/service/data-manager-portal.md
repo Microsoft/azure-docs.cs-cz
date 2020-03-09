@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977011"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387033"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurace Blockchain Data Manageru s využitím webu Azure Portal
 
@@ -32,7 +32,7 @@ Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí slu�
 
 Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení. Blockchain Data Manager podporuje vícenásobná odchozí připojení Event Grid tématu pro všechny dané instance služby blockchain Data Manager. Blockchain data můžete odesílat do jednoho cíle nebo odesílat blockchain data do více cílů. Pokud chcete přidat další cíl, stačí do instance přidat další odchozí připojení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejít na člen služby Azure blockchain, který se má připojit k blockchain Data Manager. Vyberte **Blockchain data Manager**.
 1. Vyberte **Přidat**.
 
@@ -42,7 +42,7 @@ Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytvá�
 
     Nastavení | Popis
     --------|------------
-    Name (Název) | Zadejte jedinečný název pro připojenou blockchain Data Manager. Název Data Manager blockchain může obsahovat malá písmena a číslice a maximální délka je 20 znaků.
+    Název | Zadejte jedinečný název pro připojenou blockchain Data Manager. Název Data Manager blockchain může obsahovat malá písmena a číslice a maximální délka je 20 znaků.
     Uzel transakce | Vyberte uzel transakce. V seznamu jsou jenom uzly transakcí, ke kterým máte přístup pro čtení.
     Název připojení | Zadejte jedinečný název odchozího připojení, kde se odesílají data blockchain transakce.
     Koncový bod služby Event Grid | V rámci stejného předplatného, jako je blockchain Data Manager instance, vyberte téma Event Grid.
@@ -110,7 +110,7 @@ Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese
 
     | Pole | Popis |
     |-------|-------------|
-    | Name (Název)  | Pojmenujte kontejner. Například *smartcontract* |
+    | Název  | Zadejte název kontejneru. Například *smartcontract* |
     | Úroveň veřejného přístupu | Zvolit *privátní (bez anonymního přístupu)* |
 
 1. Kliknutím na **OK** kontejner vytvoříte.
@@ -146,7 +146,7 @@ Pro každý objekt BLOB vygenerujte sdílený přístupový podpis.
 
     Nastavení | Popis
     --------|------------
-    Name (Název) | Zadejte jedinečný název, který má blockchain aplikace sledovat.
+    Název | Zadejte jedinečný název, který má blockchain aplikace sledovat.
     ABI kontraktu | Cesta URL k souboru ABI kontraktu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
     Bajtový kód kontraktu | Cesta URL k souboru bytového kódu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
 

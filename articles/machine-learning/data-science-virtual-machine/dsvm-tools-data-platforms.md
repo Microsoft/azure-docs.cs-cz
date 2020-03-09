@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bfae8147c348c76fa0e406fec283144ebc26e86b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615512"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390700"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Datové platformy podporované na virtuální počítač pro datové vědy
 
@@ -23,7 +23,7 @@ Pomocí Data Science Virtual Machine (DSVM) můžete vytvářet analýzy pro nej
 
 V DSVM jsou podporovány následující nástroje datové platformy.
 
-## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
+## <a name="sql-server-developer-edition"></a>Edice SQL Server Developer
 
 | | |
 | ------------- | ------------- |
@@ -55,7 +55,7 @@ Součástí DSVM jsou taky ovladače ODBC a JDBC, které vám pomůžou komuniko
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Jak je nakonfigurovaná a nainstalovaná na DSVM? 
 
- SQL Server se instaluje standardním způsobem. Je možné najít v `C:\Program Files\Microsoft SQL Server`. Instance Machine Learning Server v databázi se nachází na `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. DSVM má také samostatnou samostatnou instanci Machine Learning Server, která je nainstalovaná na `C:\Program Files\Microsoft\R Server\R_SERVER`. Tyto dvě instance Machine Learning Server nesdílejí knihovny.
+ SQL Server se instaluje standardním způsobem. Dá se najít na adrese `C:\Program Files\Microsoft SQL Server`. Instance Machine Learning Server v databázi se nachází na `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. DSVM má také samostatnou samostatnou instanci Machine Learning Server, která je nainstalovaná na `C:\Program Files\Microsoft\R Server\R_SERVER`. Tyto dvě instance Machine Learning Server nesdílejí knihovny.
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (samostatně)

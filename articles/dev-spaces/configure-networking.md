@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Popisuje požadavky na síť pro provozování Azure Dev Spaces ve službě Azure Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, CNI, kubenet, SDN, Network
 ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044993"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389688"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých topologiích sítě
 
@@ -65,7 +65,7 @@ Clustery AKS umožňují nakonfigurovat další zabezpečení, které omezuje, k
 
 V tuto chvíli se Azure Dev Spaces [privátním clusterům AKS][aks-private-clusters]nepodporuje.
 
-## <a name="client-requirements"></a>Požadavky na klienty
+## <a name="client-requirements"></a>Požadavky na klienta
 
 Azure Dev Spaces používá klientské nástroje, jako je rozšíření CLI Azure Dev Spaces, Visual Studio Code rozšíření a rozšíření sady Visual Studio, ke komunikaci s clusterem AKS pro ladění. Chcete\*-li použít Azure Dev Spaces nástrojů na straně klienta, povolte provoz z vývojových počítačů do domény *azds.IO.* . Přesný plně kvalifikovaný název domény najdete v tématu *dataplaneFqdn* v `USERPROFILE\.azds\settings.json`. Pokud používáte [rozsahy IP adres autorizovaných serverem API][auth-range-section], musíte taky povolit IP adresu všech vývojových počítačů, které se připojují ke clusteru AKS, aby se mohly připojit k vašemu serveru API.
 

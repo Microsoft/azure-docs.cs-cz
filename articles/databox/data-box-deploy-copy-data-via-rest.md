@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
 ms.openlocfilehash: b7d58bb13644c992894510f26a4848ea80c9df00
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471835"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380155"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API  
 
@@ -23,11 +23,11 @@ Tento kurz popisuje postupy pro připojení k Azure Data Box BLOB Storage prost�
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Připojení k Data Box BLOB Storage přes *http* nebo *https*
 > * Kopírování dat do Data Boxu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že:
 
@@ -100,7 +100,7 @@ Pomocí následujícího postupu naimportujte soubor `.cer` do kořenového adre
 #### <a name="use-windows-powershell"></a>Použití prostředí Windows PowerShell
 
 1. Spusťte relaci Windows PowerShellu jako správce.
-2. Do příkazového řádku zadejte:
+2. Na příkazovém řádku zadejte:
 
     ```
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
@@ -227,7 +227,7 @@ Dalším krokem je příprava zařízení k odeslání.
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Připojení k Data Box BLOB Storage přes *http* nebo *https*
 > * Kopírování dat do Data Boxu
 

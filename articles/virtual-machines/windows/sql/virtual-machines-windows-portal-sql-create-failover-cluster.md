@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
 ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965434"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388787"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání na virtuálních počítačích Azure
 
@@ -174,7 +174,7 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
 
    Na každém virtuálním počítači otevřete tyto porty na bráně Windows Firewall:
 
-   | Účel | Port TCP | Poznámky
+   | Účel | Port TCP | Poznámky:
    | ------ | ------ | ------
    | SQL Server | 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře.
    | Sonda stavu | 59999 | Libovolný otevřený port TCP. V pozdějším kroku nakonfigurujte [sondu stavu](#probe) nástroje pro vyrovnávání zatížení a cluster tak, aby používal tento port.  
@@ -236,14 +236,14 @@ Pokud chcete cluster ověřit pomocí uživatelského rozhraní, proveďte násl
 
 1. V části **Správce serveru**vyberte **nástroje**a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
 1. V části **Správce clusteru s podporou převzetí služeb při selhání**vyberte **Akce**a pak vyberte **ověřit konfiguraci**.
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Next** (Další).
+1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Další**.
 1. V části **Výběr testu**vyberte všechny testy s výjimkou **úložiště**, jak je znázorněno zde:
 
    ![Výběr testů pro ověření clusteru](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. V části **potvrzení**vyberte **Další**.
 
 Průvodce ověřením konfigurace spustí ověřovací testy.
@@ -292,7 +292,7 @@ Disk s kopií cloudu je nový typ určujícího disku kvora clusteru, který je 
 
 1. Nakonfigurujte určující disk kvora clusteru s podporou převzetí služeb při selhání Viz [Konfigurace určujícího disku kvora v uživatelském rozhraní](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
 
-### <a name="add-storage"></a>Přidat úložiště
+### <a name="add-storage"></a>Přidání úložiště
 
 Disky pro Prostory úložiště s přímým přístupem musí být prázdné. Nemohou obsahovat oddíly nebo jiná data. Chcete-li vyčistit disky, postupujte podle [kroků v této příručce](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives).
 
@@ -397,7 +397,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Výběrem **OK** vytvořte fond back-end.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Nakonfigurovat sondu stavu nástroje pro vyrovnávání zatížení
+### <a name="configure-a-load-balancer-health-probe"></a>Konfigurace sondy stavu nástroje pro vyrovnávání zatížení
 
 1. V okně nástroje pro vyrovnávání zatížení vyberte **sondy stavu**.
 
@@ -471,7 +471,7 @@ Po nastavení sondy clusteru můžete zobrazit všechny parametry clusteru v pro
 
 ## <a name="step-7-test-fci-failover"></a>Krok 7: testování převzetí služeb při selhání FCI
 
-Testovací převzetí služeb při selhání pro FCI k ověření funkčnosti clusteru. Postupujte následovně:
+Testovací převzetí služeb při selhání pro FCI k ověření funkčnosti clusteru. Proveďte následující kroky:
 
 1. Připojte se k jednomu z SQL Server uzlů clusteru FCI pomocí protokolu RDP.
 
@@ -499,7 +499,7 @@ Na virtuálních počítačích Azure není služba MSDTC podporovaná na Window
 - Clusterový prostředek MSDTC nejde nakonfigurovat tak, aby používal sdílené úložiště. Pokud v systému Windows Server 2016 vytvoříte prostředek MSDTC, nezobrazí se žádné sdílené úložiště dostupné pro použití, a to i v případě, že je úložiště k dispozici. Tento problém byl opravený v systému Windows Server 2019.
 - Nástroj pro vyrovnávání zatížení úrovně Basic nezpracovává porty RPC.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 [Nastavení Prostory úložiště s přímým přístupem pomocí vzdálené plochy (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 

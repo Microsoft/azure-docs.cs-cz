@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 18f30af4595a7679d5c3ef56763e992d54fae536
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928077"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358554"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -30,7 +30,7 @@ ms.locfileid: "74928077"
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory přesouvat data do a z Azure SQL Data Warehouse. Sestavuje se podle článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování.
 
 > [!TIP]
-> K dosažení nejlepšího výkonu dosáhnete, načtení dat do Azure SQL Data Warehouse pomocí PolyBase. [Použití PolyBase k načítání dat do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) část obsahuje podrobné informace o. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v oblasti 15 minut](data-factory-load-sql-data-warehouse.md).
+> K dosažení nejlepšího výkonu dosáhnete, načtení dat do Azure SQL Data Warehouse pomocí PolyBase. Část [použití základu k načtení dat do části Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) obsahuje podrobnosti. Návod s případem použití najdete v tématu [načtení 1 TB do Azure SQL Data Warehouse za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 Data **z Azure SQL Data Warehouse** můžete kopírovat do následujících úložišť dat:
@@ -52,7 +52,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do n
 
 Nejjednodušší způsob, jak vytvořit kanál, který kopíruje data do/z Azure SQL Data Warehouse, je použít Průvodce kopírováním dat. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: načtení dat do SQL Data Warehouse s Data Factory](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -145,12 +145,12 @@ GO
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Podrobnosti najdete v části s možností [opakování](#repeatability-during-copy). |Příkaz dotazu. |Ne |
-| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do SQL Data Warehouse.** Omezení a podrobnosti najdete v tématu [použití základu k načtení dat do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) části. |Pravda <br/>False (výchozí) |Ne |
-| polyBaseSettings |Skupina vlastností, které může být zadán při **allowPolybase** je nastavena na **true**. |&nbsp; |Ne |
+| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do SQL Data Warehouse.** Omezení a podrobnosti najdete v tématu [použití základu k načtení dat do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) části. |True <br/>False (výchozí) |Ne |
+| polyBaseSettings |Skupina vlastností, které lze zadat, je-li vlastnost **allowPolybase** nastavena na **hodnotu true**. |&nbsp; |Ne |
 | rejectValue |Určuje číslo nebo procentuální podíl řádků, které mohou být odmítnuty předtím, než se dotaz nezdaří. <br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v části **argumenty** v tématu [vytvoření externí tabulky (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (výchozí), 1, 2,... |Ne |
 | rejectType |Určuje, zda je možnost rejectValue zadána jako hodnota literálu nebo jako procento. |Hodnota (výchozí), procenta |Ne |
 | rejectSampleValue |Určuje počet řádků, které se mají načíst před tím, než základ přepočítá procento odmítnutých řádků. |1, 2, … |Ano, pokud **rejectType** je **procento** |
-| useTypeDefault |Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |True, false (výchozí) |Ne |
+| useTypeDefault |Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru.<br/><br/>Přečtěte si další informace o této vlastnosti z oddílu argumenty v tématu [Create External File Format (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |True, false (výchozí) |Ne |
 | writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL. |Integer (počet řádků) |Ne (výchozí: 10000) |
 | writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |TimeSpan<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
@@ -164,7 +164,7 @@ GO
 ```
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Použijte PolyBase k načítání dat do Azure SQL Data Warehouse
-Použití **[základny](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** je účinný způsob, jak načíst velké množství dat do Azure SQL Data Warehouse s vysokou propustností. Místo výchozího mechanismu BULKINSERT můžete v propustnosti zobrazit velký nárůst využití pomocí základu. Viz téma [kopírování referenčního čísla výkonu](data-factory-copy-activity-performance.md#performance-reference) s detailním porovnáním. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v oblasti 15 minut](data-factory-load-sql-data-warehouse.md).
+Použití **[základny](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** je účinný způsob, jak načíst velké množství dat do Azure SQL Data Warehouse s vysokou propustností. Místo výchozího mechanismu BULKINSERT můžete v propustnosti zobrazit velký nárůst využití pomocí základu. Viz téma [kopírování referenčního čísla výkonu](data-factory-copy-activity-performance.md#performance-reference) s detailním porovnáním. Návod s případem použití najdete v tématu [načtení 1 TB do Azure SQL Data Warehouse za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 * Pokud jsou zdrojová data v **Azure Blob nebo Azure Data Lake Store**a formát je kompatibilní s základnu, můžete přímo zkopírovat Azure SQL Data Warehouse pomocí základu. Podrobnosti najdete v tématu **[Přímá kopie pomocí základu](#direct-copy-using-polybase)** .
 * Pokud se vaše zdrojové úložiště dat a formát v základu nepodporují, můžete místo toho použít funkci **[dvoufázové kopie pomocí základní](#staged-copy-using-polybase)** funkce. Poskytuje taky lepší propustnost tím, že automaticky převádí data do formátu kompatibilního se standardem a ukládá data do úložiště objektů BLOB v Azure. Poté načte data do SQL Data Warehouse.
@@ -200,7 +200,7 @@ Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a au
    2. `nullValue` je nastavené na **prázdný řetězec** ("") nebo je `treatEmptyAsNull` nastavené na **true**.
    3. `encodingName` je nastavená na **UTF-8**, což je **výchozí** hodnota.
    4. nejsou zadány `escapeChar`, `quoteChar`, `firstRowAsHeader`a `skipLineCount`.
-   5. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
+   5. `compression` nemůže být **žádná komprese**, **gzip**nebo **Deflate**.
 
       ```JSON
       "typeProperties": {
@@ -307,24 +307,24 @@ Data Factory vytvoří tabulku v cílovém úložišti se stejným názvem tabul
 | TinyInt | TinyInt |
 | bit | bit |
 | Decimal | Decimal |
-| Čísla | Decimal |
+| Numeric | Decimal |
 | Float | Float |
 | money | money |
-| Real | Real |
+| real | real |
 | SmallMoney | SmallMoney |
-| Binary | Binary |
+| Binární hodnota | Binární hodnota |
 | Varbinary | Varbinary (až 8000) |
 | Datum | Datum |
-| Datum a čas | Datum a čas |
+| DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Time | Time |
+| Čas | Čas |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (až 8000) |
 | NText | NVarChar (až 4000) |
-| Obrázek | VarBinary (až 8000) |
+| Image | VarBinary (až 8000) |
 | uniqueidentifier | uniqueidentifier |
-| char | char |
+| Char | Char |
 | NChar | NChar |
 | VarChar | VarChar (až 8000) |
 | NVarChar | NVarChar (až 4000) |
@@ -342,15 +342,15 @@ Při přesunu dat na & z Azure SQL Data Warehouse se z typu SQL do typu .NET pou
 
 Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](https://msdn.microsoft.com/library/cc716729.aspx).
 
-| Typ databázového stroje SQL Server | Typ rozhraní .NET Framework |
+| Typ databázového stroje SQL Server | Typ .NET Framework |
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
 | bit |Logická hodnota |
 | char |String, Char[] |
-| date |Datum a čas |
-| Datetime |Datum a čas |
-| datetime2 |Datum a čas |
+| date |DateTime |
+| Datum a čas |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte[] |
@@ -364,15 +364,15 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | nvarchar |String, Char[] |
 | real |Jednoduchá |
 | rowversion |Byte[] |
-| smalldatetime |Datum a čas |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
 | text |String, Char[] |
 | time |TimeSpan |
 | časové razítko |Byte[] |
-| tinyint |Bajtů |
-| uniqueidentifier |Guid |
+| tinyint |Bajt |
+| uniqueidentifier |identifikátor GUID |
 | Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
@@ -564,7 +564,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 >
 > Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přijímá parametry).
 >
-> Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu (vyberte Sloupec1, Sloupec2 od myTable) pro spuštění na Azure SQL Data Warehouse. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
+> Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu (vyberte Sloupe, Sloupe od myTable) pro spuštění na Azure SQL Data Warehouse. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
 >
 >
 

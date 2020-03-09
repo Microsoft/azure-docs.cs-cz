@@ -4,11 +4,11 @@ description: Přečtěte si o podpoře fyzického serveru pro posouzení pomocí
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393328"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
@@ -25,7 +25,7 @@ K vyhodnocení místních počítačů pro migraci do Azure pomocí tohoto člá
 --- | ---
 **Omezení hodnocení**| Objevte a posuďte až 35 000 fyzických serverů v jednom [projektu](migrate-support-matrix.md#azure-migrate-projects).
 **Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Projekt může zahrnovat virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery až do limitů hodnocení.
-**Zjišťování** | Zařízení Azure Migrate může zjistit až 250 fyzických serverů.
+**Rozpoznávání** | Zařízení Azure Migrate může zjistit až 250 fyzických serverů.
 **Posouzení** | Do jedné skupiny můžete přidat až 35 000 počítačů.<br/><br/> V jednom posouzení můžete vyhodnotit až 35 000 počítačů.
 
 [Přečtěte si další informace](concepts-assessment-calculation.md) o posouzení.
@@ -53,7 +53,7 @@ Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zj
 
 Následující tabulka shrnuje požadavky na porty pro posouzení.
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Odchozí připojení na portech 443 (HTTPS), 5671 a 5672 (AMQP), která odesílají metadata zjišťování a výkonu Azure Migrate.
 **Fyzické servery** | **Windows:** Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu ze serverů Windows. <br/> **Linux:**  Příchozí připojení na portu 22 (UDP) pro vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |

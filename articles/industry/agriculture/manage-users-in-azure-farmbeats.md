@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482293"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392729"
 ---
 # <a name="manage-users"></a>Správa uživatelů
 
 Azure FarmBeats zahrnuje správu uživatelů pro uživatele, kteří jsou součástí vaší instance Azure Active Directory (Azure AD). Můžete přidat uživatele do instance Azure FarmBeats pro přístup k rozhraním API, zobrazit vygenerovaná mapování a získat přístup ke telemetrie senzorů z farmy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vyžaduje se instalace Azure FarmBeats. Další informace najdete v tématu [instalace Azure FarmBeats](install-azure-farmbeats.md).
 - ID e-mailu uživatelů, které chcete přidat nebo odebrat z instance služby Azure FarmBeats.
@@ -67,7 +67,7 @@ Odebrání uživatelů ze systému Azure FarmBeats:
 
 Pokud chcete přidat uživatele do Azure AD, udělejte toto:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V pravém horním rohu vyberte svůj účet a pak přepněte na tenanta Azure AD, který je přidružený k FarmBeats.
 3. Vyberte **Azure Active Directory** > **Uživatelé**.
 

@@ -4,11 +4,11 @@ description: Přečtěte si o zařízení replikace Azure Migrate pro migraci VM
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901555"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388905"
 ---
 # <a name="replication-appliance"></a>Replikační zařízení
 
@@ -26,7 +26,7 @@ Zařízení replikace se nasadí při nastavení migrace na základě agenta vir
 
 ## <a name="appliance-deployment"></a>Nasazení zařízení
 
-**Používá pro** | **Podrobnosti**
+**Používá se pro** | **Podrobnosti**
 --- |  ---
 Migrace založená na agentech virtuálních počítačů VMware | Šablonu pro sadu vajíček si stáhnete z centra Azure Migrate a naimportujete ji do vCenter Server a vytvoříte virtuální počítač zařízení.
 Migrace založená na agentech fyzického počítače | Pokud nemáte infrastrukturu VMware nebo pokud nemůžete vytvořit virtuální počítač VMware pomocí šablony vajíček, Stáhněte si instalační program softwaru z centra Azure Migrate a spusťte ho, abyste nastavili počítač zařízení.
@@ -58,7 +58,7 @@ Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain S
 Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
 **Nastavení sítě** |
-Typ IP adresy | Statický
+Typ IP adresy | Statická
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)
 Typ síťové karty | VMXNET3
 
@@ -91,7 +91,7 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 
 ## <a name="port-access"></a>Přístup k portu
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
 Virtuální počítače | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace (konfiguračním serverem) na portu HTTPS 443 příchozím pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (spuštěný na počítači konfiguračního serveru) na portu HTTPS 9443 příchozí. Tento port lze změnit.
 Replikační zařízení | Zařízení replikace orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: manayar
 ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278082"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390458"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Požadavky na návrh pro sady škálování
 Tento článek popisuje požadavky návrhu pro Virtual Machine Scale Sets. Informace o tom, co Virtual Machine Scale Sets, najdete v tématu [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md).
@@ -39,7 +39,7 @@ Některé funkce jsou v tuto chvíli dostupné jenom na virtuálních počítač
 - Jednotlivé virtuální počítače můžete migrovat z nativních disků na Managed disks, ale nemůžete migrovat instance virtuálních počítačů do sady škálování.
 - Můžete přiřadit veřejné IP adresy IPv6 jednotlivým virtuálním síťovým kartám virtuálních počítačů (nic), ale nemůžou to udělat pro instance virtuálních počítačů v sadě škálování. Veřejné IP adresy IPv6 můžete přiřadit nástrojům pro vyrovnávání zatížení před jednotlivými virtuálními počítači nebo virtuálními počítači sady škálování.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Škálování sad pomocí Azure Managed Disks
 Sady škálování je možné vytvořit s využitím [azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) místo tradičních účtů úložiště Azure. Managed Disks poskytují následující výhody:

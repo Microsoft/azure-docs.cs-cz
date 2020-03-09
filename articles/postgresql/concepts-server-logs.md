@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844934"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359551"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokoly v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL umožňuje konfigurovat a přistupovat ke standardním protokolům Postgres. Protokoly je možné použít k identifikaci, odstraňování potíží a opravě chyb konfigurace a k zajištění optimálního výkonu. Protokolovací informace, které můžete konfigurovat, a přístup zahrnují chyby, informace o dotazech, autovaku záznamů, připojení a kontrolní body. (Přístup k protokolům transakcí není k dispozici).
@@ -40,7 +40,7 @@ Výchozí formát protokolu v Azure Database for PostgreSQL je. log. Vzorový ř
 
 Azure Database for PostgreSQL poskytuje krátkodobé umístění úložiště pro soubory. log. Nový soubor začíná každé 1 hodinu nebo 100 MB, podle toho, co nastane dřív. Protokoly se připojují k aktuálnímu souboru, protože jsou vydávané z Postgres.  
 
-Dobu uchovávání dat pro toto krátkodobé úložiště protokolu můžete nastavit pomocí parametru `log_retention_period`. Výchozí hodnota je 3 dny; maximální hodnota je 7 dní. Umístění krátkodobého úložiště může obsahovat až 1 GB souborů protokolu. Po 1 GB se nejstarší soubory bez ohledu na dobu uchování odstraní, aby vytvářely místo pro nové protokoly. 
+Dobu uchovávání dat pro toto krátkodobé úložiště protokolu můžete nastavit pomocí parametru `log_retention_period`. Výchozí hodnota je 3 dny a maximální hodnota je 7 dnů. Umístění krátkodobého úložiště může obsahovat až 1 GB souborů protokolu. Po 1 GB se nejstarší soubory bez ohledu na dobu uchování odstraní, aby vytvářely místo pro nové protokoly. 
 
 Pro dlouhodobé uchovávání protokolů a analýzy protokolů můžete stáhnout soubory. log a přesunout je do služby třetí strany. Soubory si můžete stáhnout pomocí [Azure Portal](howto-configure-server-logs-in-portal.md) [Azure CLI](howto-configure-server-logs-using-cli.md). Případně můžete nakonfigurovat nastavení diagnostiky Azure Monitor, které automaticky generuje vaše protokoly (ve formátu JSON) do dlouhodobých umístění. Další informace o této možnosti najdete v níže uvedené části. 
 
@@ -99,10 +99,10 @@ V následující tabulce jsou popsána pole pro typ **PostgreSQLLogs** . V závi
 | TenantId | ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
-| Typ | Typ protokolu Vždy `AzureDiagnostics` |
+| Typ | Typ protokolu Vždycky `AzureDiagnostics` |
 | SubscriptionId | Identifikátor GUID předplatného, ke kterému server patří |
 | ResourceGroup | Název skupiny prostředků, do které server patří |
-| ResourceProvider | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceProvider | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Identifikátor URI prostředku |
 | Prostředek | Název serveru |
@@ -117,7 +117,7 @@ V následující tabulce jsou popsána pole pro typ **PostgreSQLLogs** . V závi
 | DatatypeName | Název datového typu (Pokud je k dispozici) |
 | LogicalServerName | Název serveru | 
 | _ResourceId | Identifikátor URI prostředku |
-| Předvolba | Předpona řádku protokolu |
+| Směr | Předpona řádku protokolu |
 
 
 ## <a name="next-steps"></a>Další kroky

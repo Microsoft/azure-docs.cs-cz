@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650653"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380854"
 ---
 # <a name="createuidefinition-functions"></a>Funkce CreateUiDefinition
 Tato část obsahuje signatury všech podporovaných funkcí CreateUiDefinition.
@@ -66,7 +66,7 @@ Následující příklad může vracet `"westus"`:
 ## <a name="string-functions"></a>Funkce řetězců
 Tyto funkce lze použít pouze s řetězci JSON.
 
-### <a name="concat"></a>concat
+### <a name="concat"></a>spojuje
 Zřetězí jeden nebo více řetězců.
 
 Například pokud výstupní hodnota `element1` Pokud `"bar"`, pak tento příklad vrátí řetězec `"foobar!"`:
@@ -327,7 +327,7 @@ Následující příklad vrátí `{"key1": "foobar"}`:
 "[take(steps('foo').element1, 1)]"
 ```
 
-### <a name="skip"></a>Přeskočit
+### <a name="skip"></a>přímo
 Obchází zadaný počet prvků v kolekci a vrátí zbývající prvky.
 
 #### <a name="example-1-string"></a>Příklad 1: řetězec
@@ -383,7 +383,7 @@ Následující příklad vrátí `false`:
 "[equals('abc', ['a', 'b', 'c'])]"
 ```
 
-### <a name="less"></a>less
+### <a name="less"></a>tolik
 Vrátí `true`, pokud je první parametr striktně menší než druhý parametr. Tato funkce podporuje pouze parametry typu Number a String.
 
 Následující příklad vrátí `true`:
@@ -407,7 +407,7 @@ Následující příklad vrátí `true`:
 "[lessOrEquals(2, 2)]"
 ```
 
-### <a name="greater"></a>greater
+### <a name="greater"></a>zvýšen
 Vrátí `true`, pokud je první parametr striktně větší než druhý parametr. Tato funkce podporuje pouze parametry typu Number a String.
 
 Následující příklad vrátí `false`:
@@ -446,7 +446,7 @@ Následující příklad vrátí `false`:
 "[and(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="or"></a>– nebo –
+### <a name="or"></a>nebo
 Vrátí `true`, pokud je alespoň jeden z parametrů vyhodnocen jako `true`. Tato funkce podporuje dva nebo více parametrů pouze typu Boolean.
 
 Následující příklad vrátí `true`:
@@ -461,7 +461,7 @@ Následující příklad vrátí `true`:
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="not"></a>not
+### <a name="not"></a>mění
 Vrátí `true`, pokud je parametr vyhodnocen jako `false`. Tato funkce podporuje pouze parametry typu Boolean.
 
 Následující příklad vrátí `true`:
@@ -518,7 +518,7 @@ Následující příklad vrátí `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>řetězec
 Převede parametr na řetězec. Tato funkce podporuje parametry všech datových typů JSON.
 
 Následující příklad vrátí `"1"`:
@@ -545,7 +545,7 @@ Následující příklad vrátí `"{"foo":"bar"}"`:
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>bool
+### <a name="bool"></a>logick
 Převede parametr na logickou hodnotu. Tato funkce podporuje parametry typu Number, String a Boolean. Podobně jako logické hodnoty v JavaScriptu, jakákoli hodnota kromě `0` nebo `'false'` vrátí `true`.
 
 Následující příklad vrátí `true`:
@@ -705,7 +705,7 @@ Následující příklad vrátí `2`:
 "[max(1, 2)]"
 ```
 
-### <a name="range"></a>range
+### <a name="range"></a>oblasti
 Vygeneruje posloupnost integrálních čísel v zadaném rozsahu.
 
 Následující příklad vrátí `[1,2,3]`:
@@ -714,7 +714,7 @@ Následující příklad vrátí `[1,2,3]`:
 "[range(1, 3)]"
 ```
 
-### <a name="rand"></a>rand
+### <a name="rand"></a>funkcí
 Vrátí náhodné integrální číslo v zadaném rozsahu. Tato funkce negeneruje kryptograficky zabezpečená náhodná čísla.
 
 Následující příklad může vracet `42`:
@@ -741,7 +741,7 @@ Následující příklad vrátí `4`:
 "[ceil(3.14)]"
 ```
 
-## <a name="date-functions"></a>Datové funkce
+## <a name="date-functions"></a>Funkce data
 ### <a name="utcnow"></a>utcNow
 Vrátí řetězec ve formátu ISO 8601 aktuálního data a času v místním počítači.
 

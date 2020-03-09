@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2020
 ms.author: mblythe
 ms.openlocfilehash: e8d251cef9e67cb8fc0c11df8ce546383f75a679
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900888"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389713"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Sdílení řídicích panelů Azure pomocí Access Control na základě rolí
 

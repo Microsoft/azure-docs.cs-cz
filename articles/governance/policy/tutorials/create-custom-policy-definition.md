@@ -4,11 +4,11 @@ description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966025"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386796"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -31,7 +31,7 @@ Přístup k vytváření vlastních zásad se řídí těmito kroky:
 > - Určení, který efekt použít
 > - Vytvoření definice zásady
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -53,7 +53,7 @@ Na základě obchodních požadavků je prostředek Azure, který se bude audito
 Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se na každou z těchto kurzů:
 
 - Rozšíření Azure Policy pro VS Code
-- Šablony Správce prostředků
+- Šablony Resource Manageru
   - Exportovat existující prostředek
   - Prostředí pro vytváření
   - Šablony pro rychlý Start (GitHub)
@@ -64,7 +64,7 @@ Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se
 
 [Rozšíření vs Code](../how-to/extension-for-vscode.md#search-for-and-view-resources) lze použít k procházení prostředků ve vašem prostředí a zobrazení vlastností Správce prostředků u každého prostředku.
 
-### <a name="resource-manager-templates"></a>Šablony Správce prostředků
+### <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
 Existuje několik způsobů, jak se podívat na [šablonu správce prostředků](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) , která obsahuje vlastnost, kterou chcete spravovat.
 
@@ -165,8 +165,8 @@ Existuje několik způsobů, jak určit aliasy pro prostředek Azure. Podíváme
 
 - Rozšíření Azure Policy pro VS Code
 - Azure CLI
-- Azure PowerShell
-- Graf prostředků Azure
+- Azure Powershell
+- Azure Resource Graph
 
 ### <a name="get-aliases-in-vs-code-extension"></a>Získat aliasy v rozšíření VS Code
 
@@ -185,7 +185,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 Ve výsledcích se zobrazí alias podporovaný účty úložiště s názvem **supportsHttpsTrafficOnly**. Tento alias znamená, že můžeme napsat zásadu, abychom vynutili naše obchodní požadavky.
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Azure Powershell
 
 V Azure PowerShell se k hledání aliasů prostředků používá rutina `Get-AzPolicyAlias`. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
 
@@ -198,7 +198,7 @@ V Azure PowerShell se k hledání aliasů prostředků používá rutina `Get-Az
 
 Podobně jako Azure CLI zobrazuje výsledky aliasy podporované účty úložiště s názvem **supportsHttpsTrafficOnly**.
 
-### <a name="azure-resource-graph"></a>Graf prostředků Azure
+### <a name="azure-resource-graph"></a>Azure Resource Graph
 
 [Azure Resource Graph](../../resource-graph/overview.md) je služba, která poskytuje další způsob hledání vlastností prostředků Azure. Tady je ukázkový dotaz pro prohlížení jednoho účtu úložiště s grafem prostředků:
 
@@ -457,7 +457,7 @@ K vytvoření nové zásady se dá použít dokončená definice. Portál a kaž
 
 Pokud to uděláte práci s prostředky z tohoto kurzu, pomocí následujícího postupu odstraňte všechna přiřazení a definice vytvořili výše:
 
-1. Vyberte **definice** (nebo **přiřazení** Pokud se pokoušíte odstranit přiřazení) v části **Authoring** v levé části na stránku služby Azure Policy.
+1. Vyberte **definice** (nebo **přiřazení** , pokud se pokoušíte odstranit přiřazení) v části **vytváření obsahu** v levé části stránky Azure Policy.
 
 1. Vyhledejte novou definici iniciativy nebo zásady (nebo přiřazení), kterou chcete odebrat.
 

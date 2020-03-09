@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610076"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386284"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Škálování clusterů Azure Service Fabric
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou obsahovat potenciálně tisíce uzlů. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně (změnit počet uzlů) nebo vertikálně (změnit prostředky uzlů).  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -26,8 +26,8 @@ Změní počet uzlů v clusteru.  Jakmile se nové uzly připojí ke clusteru, S
 
 Při škálování clusteru Azure mějte na paměti následující pokyny:
 - typy primárních uzlů, na kterých běží produkční úlohy, by měly mít vždycky pět nebo více uzlů.
-- neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů.
-- neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
+- Neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů.
+- Neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
 - Každý typ uzlu [úrovně trvanlivosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Gold nebo stříbrného by měl mít vždy pět nebo více uzlů.
 - Neodstraňujte náhodné instance virtuálních počítačů/uzly z typu uzlu, vždy použijte funkci škálování sady virtuálních počítačů. Odstranění náhodných instancí virtuálních počítačů může negativně ovlivnit schopnost systémů správně vyrovnávat zatížení.
 - Pokud používáte pravidla automatického škálování, nastavte pravidla tak, aby se škálování (odebírání instancí virtuálních počítačů) provádělo vždy v jednom uzlu. Horizontální navýšení kapacity více než jedné instance není bezpečné.

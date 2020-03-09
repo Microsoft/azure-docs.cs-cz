@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621896"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396039"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logika zpracování pravidel Azure Firewall
 Pravidla překladu adres (NAT), pravidla sítě a aplikace můžete nakonfigurovat na Azure Firewall. Pravidla se zpracovávají podle typu pravidla. 
@@ -47,7 +47,7 @@ Připojení k google.com je povolené z důvodu odpovídajícího síťového pr
 - Akce: povolení
 
 
-|name  |Protokol  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Povolení – Web     |TCP|IP adresa|*|IP adresa|*|80,443
 
@@ -55,7 +55,7 @@ Připojení k google.com je povolené z důvodu odpovídajícího síťového pr
 
 - Akce: Odepřít
 
-|name  |Typ zdroje  |Zdroj  |Protokol: port|Cílové plně kvalifikované názvy domén|
+|jméno  |Typ zdroje  |Zdroj  |Protokol: port|Cílové plně kvalifikované názvy domén|
 |---------|---------|---------|---------|----------|----------|
 |Odepřít – Google     |IP adresa|*|http: 80, https: 443|google.com
 
@@ -73,7 +73,7 @@ Přenosy SSH se zamítly, protože kolekce *síťových pravidel* s vyšší pri
 - Priorita: 200
 - Akce: povolení
 
-|name  |Protokol  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Povolení – SSH     |TCP|IP adresa|*|IP adresa|*|22
 
@@ -83,7 +83,7 @@ Přenosy SSH se zamítly, protože kolekce *síťových pravidel* s vyšší pri
 - Priorita: 100
 - Akce: Odepřít
 
-|name  |Protokol  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Odepřít – SSH     |TCP|IP adresa|*|IP adresa|*|22
 

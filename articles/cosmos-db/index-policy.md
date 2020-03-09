@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
 ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597160"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386958"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexování zásad v Azure Cosmos DB
 
 V Azure Cosmos DB má každý kontejner zásady indexování, které určují, jak by měly být indexovány položky kontejneru. Výchozí zásada indexování pro nově vytvořené kontejnery indexuje každou vlastnost každé položky, vynucuje indexy rozsahu pro libovolný řetězec nebo číslo a prostorové indexy pro libovolný objekt typu Point. JSON. To vám umožní získat vysoký výkon dotazů, aniž byste se museli zabývat o indexování a správě indexu předem.
 
-V některých situacích může být vhodné toto automatické chování přepsat, aby lépe vyhovovalo vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit nastavením jeho *režimu indexování*a zahrnutí nebo vyloučení *cest k vlastnostem*.
+V některých situacích možná budete chtít toto automatické chování přepsat, aby lépe vyhovovalo vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit nastavením jeho *režimu indexování*a zahrnutí nebo vyloučení *cest k vlastnostem*.
 
 > [!NOTE]
 > Metoda aktualizace zásad indexování popsaná v tomto článku se týká jenom rozhraní API pro Azure Cosmos DB SQL (Core).
@@ -58,9 +58,9 @@ Opětovné provedení stejného příkladu:
     }
 ```
 
-- `employees` cesta k `headquarters` je `/headquarters/employees/?`
+- `employees` cesta k `headquarters`je `/headquarters/employees/?`
 
-- cesta `country` `locations` `/locations/[]/country/?`
+- cesta `country` `locations``/locations/[]/country/?`
 
 - Cesta k libovolnému `headquarters` je `/headquarters/*`
 
@@ -73,7 +73,7 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 - Zahrňte kořenovou cestu pro selektivní vyloučení cest, které nemusejí být indexovány. To je doporučený postup, protože umožňuje Azure Cosmos DB proaktivní indexování všech nových vlastností, které mohou být přidány do modelu.
 - Vylučte kořenovou cestu pro selektivní zahrnutí cest, které je třeba indexovat.
 
-- Pro cesty s běžnými znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojitých uvozovek (například "/path/?"). V případě cest s dalšími speciálními znaky je nutné před dvojitými uvozovkami vyčínat řetězec cesty (například "/\"path-ABC \"/?"). Pokud očekáváte, že v cestě jsou speciální znaky, můžete každý z nich vymezit řídicím znakem. Funkce bez jakýchkoli rozdílů neprovádí žádnou odchylku, pokud zadáte všechny cesty a pouze ty, které mají speciální znaky.
+- Pro cesty s běžnými znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojitých uvozovek (například "/path/?"). V případě cest s dalšími speciálními znaky je nutné před dvojitými uvozovkami vyčínat řetězec cesty (například "/\"Path-ABC\"/?"). Pokud očekáváte, že v cestě jsou speciální znaky, můžete každý z nich vymezit řídicím znakem. Funkce bez jakýchkoli rozdílů neprovádí žádnou odchylku, pokud zadáte všechny cesty a pouze ty, které mají speciální znaky.
 
 - Vlastnost System "ETag" je vyloučena z indexování ve výchozím nastavení, pokud není značka ETag přidána do zahrnuté cesty pro indexování.
 
@@ -157,7 +157,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 
 Tento dotaz bude efektivnější a bude trvat méně času a bude využívat méně RU, pokud dokáže využít složený index (název ASC, věk ASC).
 
-Dotazy s filtry rozsahu lze také optimalizovat pomocí složeného indexu. Dotaz však může mít pouze jeden filtr rozsahu. Mezi filtry rozsahu patří `>`, `<`, `<=`, `>=` a `!=`. Filtr rozsahu by měl být definován jako poslední ve složeném indexu.
+Dotazy s filtry rozsahu lze také optimalizovat pomocí složeného indexu. Dotaz však může mít pouze jeden filtr rozsahu. Mezi filtry rozsahu patří `>`, `<`, `<=`, `>=`a `!=`. Filtr rozsahu by měl být definován jako poslední ve složeném indexu.
 
 Vezměte v úvahu následující dotaz s filtry rovnosti a rozsahu:
 
@@ -171,7 +171,7 @@ Při vytváření složených indexů pro dotazy s filtry na více vlastností s
 
 - Vlastnosti ve filtru dotazu by měly odpovídat hodnotám ve složeném indexu. Pokud je vlastnost ve složeném indexu, ale není obsažena v dotazu jako filtr, dotaz nebude používat složený index.
 - Pokud má dotaz další vlastnosti, které nebyly definovány ve složeném indexu, pak se pro vyhodnocení dotazu použije kombinace složených a rozsahových indexů. To bude vyžadovat méně RU než výhradně pomocí indexů rozsahu.
-- Pokud má vlastnost Rozsah filtru (`>`, `<`, `<=`, `>=` nebo `!=`), pak by tato vlastnost měla být definována jako poslední ve složeném indexu. Pokud má dotaz více než jeden filtr rozsahu, nebude složený index využívat.
+- Pokud má vlastnost Rozsah filtru (`>`, `<`, `<=`, `>=`nebo `!=`), pak by tato vlastnost měla být definována jako poslední ve složeném indexu. Pokud má dotaz více než jeden filtr rozsahu, nebude složený index využívat.
 - Při vytváření složeného indexu pro optimalizaci dotazů s více filtry nebude mít `ORDER` složeného indexu žádný vliv na výsledky. Tato vlastnost je nepovinná.
 - Pokud nedefinujete složený index pro dotaz s filtry na více vlastností, dotaz bude stále úspěšný. Náklady na dotaz na RU se ale můžou snížit pomocí složeného indexu.
 

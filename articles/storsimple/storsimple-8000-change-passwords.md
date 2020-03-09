@@ -1,6 +1,6 @@
 ---
-title: Změna hesla služby StorSimple | Dokumentace Microsoftu
-description: Popisuje způsob použití služby Správce zařízení StorSimple ke změně hesla správce Snapshot Manageru zařízení StorSimple a zařízení.
+title: Změna hesel StorSimple | Microsoft Docs
+description: Popisuje, jak používat službu StorSimple Device Manager ke změně hesla StorSimple Snapshot Manager a Správce zařízení.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,85 +15,85 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ab874bbdcd47a4bfa9abfba721afa46d0f23a338
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637961"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366706"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>Použití služby Správce zařízení StorSimple, chcete-li změnit hesla služby StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>Použijte službu StorSimple Device Manager ke změně hesla StorSimple.
 
 ## <a name="overview"></a>Přehled
-Na webu Azure portal **nastavení zařízení** možnost obsahuje všechny parametry zařízení, které můžete změnit konfiguraci na zařízení StorSimple, která jsou spravována služby Správce zařízení StorSimple. Tento kurz vysvětluje, jak můžete použít **zabezpečení** v části **nastavení zařízení** změnit správce zařízení nebo hesla Snapshot Manageru zařízení StorSimple.
+Možnost **nastavení zařízení** Azure Portal obsahuje všechny parametry zařízení, které můžete znovu nakonfigurovat na zařízení StorSimple, které spravuje služba StorSimple Device Manager. V tomto kurzu se dozvíte, jak můžete pomocí možnosti **zabezpečení** v části **nastavení zařízení** změnit správce zařízení nebo StorSimple heslo Snapshot Manager.
 
 ## <a name="change-the-device-administrator-password"></a>Změna hesla správce zařízení
-Pokud použijete rozhraní Windows PowerShell pro přístup k zařízení StorSimple, jsou nutné k zadání hesla správce zařízení. Při registraci prvního zařízení StorSimple se službou, výchozí heslo pro toto rozhraní je *Heslo1*. Pro zabezpečení vašich dat se musí změnit heslo na konci procesu registrace. Při registraci, nelze ukončit bez změny toto heslo. Další informace najdete v tématu [krok 3: Konfigurace a registrace zařízení pomocí Windows Powershellu pro StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+Pokud pro přístup k zařízení StorSimple použijete rozhraní Windows PowerShell, je nutné zadat heslo správce zařízení. Když je první zařízení StorSimple zaregistrované ve službě, výchozí heslo pro toto rozhraní je *Heslo1*. Z důvodu zabezpečení vašich dat je nutné změnit toto heslo na konci procesu registrace. Nemůžete ukončit proces registrace beze změny tohoto hesla. Další informace najdete v části [Krok 3: konfigurace a registrace zařízení prostřednictvím Windows PowerShell pro StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-Heslo, které se nejdřív nastavit prostřednictvím rozhraní Windows PowerShell při registraci můžete později změnit prostřednictvím webu Azure portal. Proveďte následující kroky ke změně hesla správce zařízení.
+Heslo, které se poprvé nastavilo prostřednictvím rozhraní Windows PowerShell během registrace, se dá později změnit přes Azure Portal. Chcete-li změnit heslo správce zařízení, proveďte následující kroky.
 
-#### <a name="to-change-the-device-administrator-password"></a>Chcete-li změnit heslo správce zařízení
+#### <a name="to-change-the-device-administrator-password"></a>Změna hesla správce zařízení
 1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**.
 
-2. V tabulkovém výpisu zařízení vyberte a klikněte na zařízení, jehož heslo chcete změnit.
+2. V tabulkovém výpisu zařízení vyberte a klikněte na zařízení, jehož heslo máte v úmyslu změnit.
 
     ![](./media/storsimple-8000-change-passwords/changepwd1.png)
 
-3. V **nastavení** okno, přejděte na **zařízení Nastavení > zabezpečení**.
+3. V okně **Nastavení** přejdete na **nastavení zařízení > zabezpečení**.
 
     ![](./media/storsimple-8000-change-passwords/changepwd2.png)
 
-4. V **nastavení zabezpečení** okna, klikněte na tlačítko **heslo** ke změně hesla správce zařízení.
+4. V okně **nastavení zabezpečení** klikněte na **heslo** a změňte heslo správce zařízení.
 
     ![](./media/storsimple-8000-change-passwords/changepwd3.png)
 
-5. V **heslo** okno, zadejte heslo správce, který obsahuje z 8 až 15 znaků. Heslo musí být kombinací 3 nebo více velká písmena, malá písmena, číselné a speciální znaky.
+5. V okně **heslo** zadejte heslo správce, které obsahuje 8 až 15 znaků. Heslo musí obsahovat 3 nebo více velkých a malých písmen, číslic a speciálních znaků.
 
 6. Potvrďte heslo.
 
     ![](./media/storsimple-8000-change-passwords/changepwd4.png)
 
-7. Klikněte na tlačítko **Uložit** a po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano**.
+7. Klikněte na **Uložit** a po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
     ![](./media/storsimple-8000-change-passwords/changepwd6.png)
 
-Nyní je třeba aktualizovat heslo správce zařízení. Můžete použít toto změněné heslo pro přístup k rozhraní Windows PowerShell.
+Heslo správce zařízení by se teď mělo aktualizovat. Toto upravené heslo můžete použít pro přístup k rozhraní Windows PowerShell.
 
-## <a name="set-the-storsimple-snapshot-manager-password"></a>Nastavení hesla Snapshot Manageru zařízení StorSimple
+## <a name="set-the-storsimple-snapshot-manager-password"></a>Nastavení StorSimple Snapshot Manager hesla
 Software Snapshot Manager zařízení StorSimple se nachází na hostiteli systému Windows a umožňuje správcům spravovat zálohy zařízení StorSimple ve formě místních a cloudových snímků.
 
-Při konfiguraci zařízení StorSimple Snapshot Manageru, vyzve k zadání zařízení IP adresy a hesla pro ověření zařízení úložiště.
+Při konfiguraci zařízení v StorSimple Snapshot Manager budete vyzváni k zadání IP adresy a hesla zařízení k ověření úložného zařízení.
 
-Můžete nastavit nebo změnit heslo pro StorSimple Snapshot Manageru prostřednictvím webu Azure portal. Proveďte následující kroky k nastavení nebo změna hesla Snapshot Manageru zařízení StorSimple.
+Můžete nastavit nebo změnit heslo pro Snapshot Manager StorSimple prostřednictvím Azure Portal. Chcete-li nastavit nebo změnit heslo StorSimple Snapshot Manager, proveďte následující kroky.
 
-#### <a name="to-set-the-storsimple-snapshot-manager-password"></a>Chcete-li nastavit heslo StorSimple Snapshot Manageru
+#### <a name="to-set-the-storsimple-snapshot-manager-password"></a>Nastavení Snapshot Manager hesla StorSimple
 1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**.
 
-2. V tabulkovém výpisu zařízení vyberte a klikněte na zařízení, jehož heslo Snapshot Manageru zařízení StorSimple, máte v úmyslu nastavit nebo změnit.
+2. V tabulkovém výpisu zařízení vyberte a klikněte na zařízení, jehož StorSimple Snapshot Manager heslo máte v úmyslu nastavit nebo změnit.
 
      ![](./media/storsimple-8000-change-passwords/changepwd1.png)
 
-3. V **nastavení** okno, přejděte na **zařízení Nastavení > zabezpečení**.
+3. V okně **Nastavení** přejdete na **nastavení zařízení > zabezpečení**.
 
      ![](./media/storsimple-8000-change-passwords/changepwd2.png)
 
-4. V **nastavení zabezpečení** okna, klikněte na tlačítko **heslo** k nastavení nebo změna hesla Snapshot Manageru zařízení StorSimple.
+4. V okně **nastavení zabezpečení** klikněte na **heslo** , abyste nastavili nebo změnili StorSimple Snapshot Manager heslo.
 
      ![](./media/storsimple-8000-change-passwords/changepwd3.png) 
 
-5. V **heslo** okno, zadejte heslo, které je tvořeno 14 až 15 znaků. Ujistěte se, že heslo obsahuje kombinaci 3 nebo více velká písmena, malá písmena, číselné a speciální znaky.
+5. V okně **heslo** zadejte heslo, které je 14 nebo 15 znaků. Ujistěte se, že heslo obsahuje kombinaci 3 nebo více velkých písmen, malých písmen, číslic a speciálních znaků.
 
 6. Potvrďte heslo.
 
      ![](./media/storsimple-8000-change-passwords/changepwd5.png)
 
-7. Klikněte na tlačítko **Uložit** a po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano**.
+7. Klikněte na **Uložit** a po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
      ![](./media/storsimple-8000-change-passwords/changepwd6.png)
 
-Nyní je třeba aktualizovat hesla Snapshot Manageru zařízení StorSimple.
+Heslo Snapshot Manager StorSimple by teď mělo být aktualizované.
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [zabezpečení zařízení StorSimple](storsimple-8000-security.md).
-* Další informace o [upravíte konfiguraci zařízení](storsimple-8000-modify-device-config.md).
-* Další informace o [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o [zabezpečení StorSimple](storsimple-8000-security.md).
+* Přečtěte si další informace o [změně konfigurace zařízení](storsimple-8000-modify-device-config.md).
+* Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

@@ -8,20 +8,20 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932618"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361890"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Přidat nebo odebrat koncový bod serveru Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
-*Koncový bod serveru* představuje konkrétní umístění na zaregistrovaném *serveru*, jako je například složka na svazku serveru nebo kořen svazku. Pokud jejich obory názvů nejsou překryté (například F:\sync1 a F:\sync2), můžou existovat na stejném svazku víc koncových bodů serveru. Zásady cloudových vrstev můžete nakonfigurovat individuálně pro každý koncový bod serveru. Pokud přidáte umístění serveru s existující sadou souborů jako koncový bod serveru do skupiny synchronizace, budou tyto soubory sloučeny s dalšími soubory, které již jsou v jiných koncových bodech ve skupině synchronizace.
+*Koncový bod serveru* představuje konkrétní umístění na *zaregistrovaném serveru*, jako je například složka na svazku serveru nebo kořen svazku. Pokud jejich obory názvů nejsou překryté (například F:\sync1 a F:\sync2), můžou existovat na stejném svazku víc koncových bodů serveru. Zásady cloudových vrstev můžete nakonfigurovat individuálně pro každý koncový bod serveru. Pokud přidáte umístění serveru s existující sadou souborů jako koncový bod serveru do skupiny synchronizace, budou tyto soubory sloučeny s dalšími soubory, které již jsou v jiných koncových bodech ve skupině synchronizace.
 
 Informace o tom, jak nasadit Azure File Sync kompletní, najdete v tématu [nasazení Azure File Sync](storage-sync-files-deployment-guide.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete vytvořit koncový bod serveru, musíte nejdřív zkontrolovat, jestli jsou splněné následující podmínky: 
 - Server má nainstalovaného agenta Azure File Sync a byl zaregistrován. Pokyny pro instalaci agenta Azure File Sync najdete v článku [registrace nebo zrušení registrace serveru s Azure File Syncm](storage-sync-files-server-registration.md) článkem. 
 - Ujistěte se, že je nasazená služba synchronizace úložiště. Podrobnosti o tom, jak nasadit službu synchronizace úložiště, najdete v tématu [postup nasazení Azure File Sync](storage-sync-files-deployment-guide.md) . 
@@ -35,9 +35,9 @@ Pokud chcete přidat koncový bod serveru, přejděte do požadované skupiny sy
 
 V části **přidat koncový bod serveru**se vyžadují tyto informace:
 
-- **Registrovaný Server**: Název serveru nebo clusteru, na kterém má být vytvořen koncový bod serveru.
-- **Cesta**: Cesta na serveru Windows Server, který má být synchronizován jako součást skupiny synchronizace.
-- **Vrstvení cloudu**: Přepínač pro povolení nebo zakázání vrstvení cloudu. Když se povolí, vrstvení cloudu bude *vrstvy* souborů na sdílené složky Azure. Tato možnost převede místní sdílené složky do mezipaměti místo úplné kopie datové sady, která vám umožní spravovat efektivitu místa na serveru.
+- **Registrovaný Server**: název serveru nebo clusteru, na kterém má být vytvořen koncový bod serveru.
+- **Cesta**: cesta na serveru Windows Server, který se má synchronizovat jako součást skupiny synchronizace.
+- **Vrstvení cloudu**: přepínač pro povolení nebo zakázání vrstvení cloudu. Když se povolí, vrstvení cloudu bude *vrstvy* souborů na sdílené složky Azure. Tato možnost převede místní sdílené složky do mezipaměti místo úplné kopie datové sady, která vám umožní spravovat efektivitu místa na serveru.
 - **Volné místo na svazku**: množství volného místa, které se má rezervovat na svazku, který je umístěn na koncovém bodu serveru. Pokud je například volné místo svazku nastaveno na 50% na svazku s jedním koncovým bodem serveru, přibližně polovina množství dat bude vrstveno na soubory Azure. Bez ohledu na to, jestli je povolená vrstva cloudu, bude mít vaše sdílená složka Azure vždycky úplnou kopii dat ve skupině synchronizace.
 
 Vyberte **vytvořit** a přidejte koncový bod serveru. Soubory v rámci oboru názvů skupiny synchronizace budou nyní udržovány v synchronizaci. 
@@ -54,14 +54,14 @@ Pokud chcete zajistit, aby se všechny vrstvené soubory před odebráním konco
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-Při `-Order CloudTieringPolicy` zadání se nejdřív odeberou poslední změněné soubory.
+Při zadání `-Order CloudTieringPolicy` se nejdřív odeberou poslední změněné soubory.
 Další volitelné, ale užitečné parametry, které je potřeba vzít v úvahu:
-* `-ThreadCount`Určuje počet souborů, které mohou být vyvolány paralelně.
-* `-PerFileRetryCount`Určuje, jak často se bude opakovat pokus o odvolání souboru, který je aktuálně blokován.
-* `-PerFileRetryDelaySeconds`Určuje dobu v sekundách mezi opakovanými pokusy o odvolání a měla by být vždy použita v kombinaci s předchozím parametrem.
+* `-ThreadCount` určuje, kolik souborů lze paralelně volat.
+* `-PerFileRetryCount`určuje, jak často se bude opakovat pokus o odvolání souboru, který je aktuálně blokován.
+* `-PerFileRetryDelaySeconds`určuje dobu v sekundách mezi opakovanými pokusy o odvolání a měla by být vždy použita v kombinaci s předchozím parametrem.
 
 > [!Note]  
-> Pokud místní svazek, který hostuje server, nemá dost volného místa pro odvolání všech vrstvených dat, rutina se `Invoke-StorageSyncFileRecall` nezdařila.  
+> Pokud místní svazek, který hostuje server, nemá dost volného místa pro odvolání všech vrstvených dat, rutina `Invoke-StorageSyncFileRecall` se nezdařila.  
 
 Odebrání koncového bodu serveru:
 
@@ -73,5 +73,5 @@ Odebrání koncového bodu serveru:
 
 ## <a name="next-steps"></a>Další kroky
 - [Registrace nebo zrušení registrace serveru s Azure File Sync](storage-sync-files-server-registration.md)
-- [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
+- [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
 - [Monitorování Synchronizace souborů Azure](storage-sync-files-monitoring.md)

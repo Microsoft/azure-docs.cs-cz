@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666303"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379675"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Kognitivní hledání
 
-  Bodování označuje výpočet *skóre vyhledávání* pro každou položku vrácenou ve výsledcích hledání. Skóre je indikátorem relevance položky v kontextu aktuální operace vyhledávání. Čím vyšší je skóre, tím důležitější je položka. Ve výsledcích hledání jsou položky seřazeny od vysoké po nejnižší na základě skóre hledání vypočítaného pro každou položku.  
+  Bodování označuje výpočet *skóre vyhledávání* pro každou položku vrácenou ve výsledcích hledání. Skóre je indikátorem relevance položek v kontextu aktuální operace vyhledávání. Čím vyšší je skóre, tím je daná položka relevantnější. Ve výsledcích hledání jsou položky seřazeny od vysoké po nejnižší na základě skóre hledání vypočítaného pro každou položku.  
 
  Azure Kognitivní hledání používá k výpočtu počátečního skóre výchozí bodování, ale tento výpočet můžete přizpůsobit pomocí *profilu vyhodnocování*. Profily vyhodnocování poskytují větší kontrolu nad hodnocením položek ve výsledcích vyhledávání. Například můžete chtít zvýšit množství položek na základě jejich potenciálních výnosů, zvýšit úroveň nových položek nebo možná zvýšit množství položek, které byly v inventáři příliš dlouho.  
 
@@ -157,7 +157,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 }  
 ```  
 
-## <a name="workflow"></a>Pracovní postupy  
+## <a name="workflow"></a>Pracovní postup  
  Chcete-li implementovat vlastní chování bodování, přidejte profil vyhodnocování do schématu definujícího index. V rámci indexu můžete mít až 100 profilů vyhodnocování (viz [omezení služby](search-limits-quotas-capacity.md)), ale v libovolném daném dotazu můžete zadat jenom jeden profil v čase.  
 
  Začněte [šablonou](#bkmk_template) uvedeným v tomto tématu.  
@@ -275,7 +275,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
  Následující tabulka uvádí několik příkladů.  
 
-|Délka|boostingDuration|  
+|Doba trvání|boostingDuration|  
 |--------------|----------------------|  
 |1 den|"P1D"|  
 |2 dny a 12 hodin|"P2DT12H"|  
@@ -284,7 +284,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
  Další příklady naleznete v tématu [schéma XML: DataTypes (w3.org Web)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
 
-## <a name="see-also"></a>Další informace najdete v tématech  
+## <a name="see-also"></a>Viz také  
  [Azure kognitivní hledání REST](https://docs.microsoft.com/rest/api/searchservice/)   
  [Vytvoření indexu &#40;služby Azure kognitivní hledání&#41; REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
  [Sada Azure Kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376321"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
 Tento článek vás seznámí s postupem, jak provést změny ve výchozí konfiguraci v Azure Active Directory (Azure AD) Connect Sync. Poskytuje kroky pro některé běžné scénáře. S tímto vědomím byste měli být schopni provádět jednoduché změny vlastní konfigurace na základě vašich vlastních obchodních pravidel.
@@ -264,10 +264,10 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Name (Název) | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
+    | Název | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
     | Popis | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
-    | Typ připojeného systémového objektu | **Uživatel** |  |
+    | Typ připojeného systémového objektu | **Uživatelský** |  |
     | Typ objektu úložiště metaverse | **Uživateli** |  |
     | Typ odkazu | **Spojení** |  |
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
@@ -284,13 +284,13 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizovat |
+    | Direct | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizace |
 
     V jiném příkladu chcete odvodit hodnotu atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut AD userPrincipalName končí částí domény <em>@partners.fabrikam123.org</em>. Můžete implementovat výraz podobný tomuto:
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Výraz | UserType | IIF (nepřítomné ([userPrincipalName]), IIF (CBool (InStr ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "Member", "Guest"), chyba ("UserPrincipalName není k dispozici pro určení UserType")) | Není zaškrtnuto | Aktualizovat |
+    | Výraz | UserType | IIF (nepřítomné ([userPrincipalName]), IIF (CBool (InStr ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "Member", "Guest"), chyba ("UserPrincipalName není k dispozici pro určení UserType")) | Není zaškrtnuto | Aktualizace |
 
 7. Kliknutím na tlačítko **Přidat** vytvořte pravidlo pro příchozí spojení.
 
@@ -306,10 +306,10 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Name (Název) | *Zadat název* | Například pro *AAD – uživatel – usertype* |
+    | Název | *Zadat název* | Například pro *AAD – uživatel – usertype* |
     | Popis | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
-    | Typ připojeného systémového objektu | **Uživatel** ||
+    | Typ připojeného systémového objektu | **Uživatelský** ||
     | Typ objektu úložiště metaverse | **Uživateli** ||
     | Typ odkazu | **Spojení** ||
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
@@ -319,7 +319,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | Pravda |
+    | cloudMastered | NOTEQUAL | True |
 
     Filtr oboru určuje, které objekty služby Azure AD toto pravidlo odchozí synchronizace používá. V tomto příkladu použijeme stejný filtr pro vytváření oborů z pravidla *pro synchronizaci od pro AD – aktuální identita uživatele* . Zabraňuje použití synchronizačního pravidla pro uživatelské objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 
@@ -327,7 +327,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | UserType | Není zaškrtnuto | Aktualizovat |
+    | Direct | UserType | UserType | Není zaškrtnuto | Aktualizace |
 
 7. Kliknutím na **Přidat** vytvořte odchozí pravidlo.
 

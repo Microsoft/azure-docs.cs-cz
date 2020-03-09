@@ -17,12 +17,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 64d8481200359b4a4421e3f3c99e4fc5a32ef23f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 88b61b29b1386f461620ad602a88d2d1253aa905
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159537"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375613"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas koncového bodu Microsoft Identity Platform
 
@@ -37,11 +37,10 @@ Platforma Microsoft Identity implementuje autorizační protokol [OAuth 2,0](act
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * Rozhraní API pro poštu Office 365: `https://outlook.office.com`
-* Graf Azure AD: `https://graph.windows.net`
 * Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Důrazně doporučujeme použít Microsoft Graph místo Azure AD Graph, Office 365 mail API atd.
+> Důrazně doporučujeme použít Microsoft Graph místo rozhraní Office 365 mail API atd.
 
 Totéž platí pro všechny prostředky třetích stran, které jsou integrované s platformou Microsoft identity. Kterýkoli z těchto prostředků taky může definovat sadu oprávnění, která se dají použít k rozdělení funkcí tohoto prostředku do menších bloků dat. Například [Microsoft Graph](https://graph.microsoft.com) má definovaná oprávnění k provádění následujících úloh mimo jiné:
 
@@ -123,7 +122,7 @@ Parametr `scope` je čárkami oddělený seznam delegovaných oprávnění, kter
 Jakmile uživatel zadá své přihlašovací údaje, koncový bod platformy Microsoft Identity ověří odpovídající záznam *souhlasu uživatele*. Pokud uživatel nesouhlasí s žádným z požadovaných oprávnění v minulosti ani správce nesouhlasí s těmito oprávněními jménem celé organizace, koncový bod platformy Microsoft Identity žádá uživatele, aby udělil požadovaná oprávnění.
 
 > [!NOTE]
-> V tuto chvíli `offline_access` ("udržovat přístup k datům, ke kterým jste udělili přístup") a `user.read` ("přihlášení a čtení vašeho profilu") jsou automaticky zahrnutá do počátečního souhlasu aplikace.  Tato oprávnění se obecně vyžadují pro správné funkce aplikací – `offline_access` poskytuje aplikaci přístup k aktualizaci tokenů, kritickým pro nativní a webové aplikace, zatímco `user.read` poskytuje přístup k `sub` deklaraci identity a umožňuje klientovi nebo aplikaci správně identifikovat uživatele v čase a přistupovat k základní informacím o uživateli.  
+>V tuto chvíli `offline_access` ("udržovat přístup k datům, ke kterým jste udělili přístup") a `user.read` ("přihlášení a čtení vašeho profilu") jsou automaticky zahrnutá do počátečního souhlasu aplikace.  Tato oprávnění se obecně vyžadují pro správné funkce aplikací – `offline_access` poskytuje aplikaci přístup k aktualizaci tokenů, kritickým pro nativní a webové aplikace, zatímco `user.read` poskytuje přístup k `sub` deklaraci identity a umožňuje klientovi nebo aplikaci správně identifikovat uživatele v čase a přistupovat k základní informacím o uživateli.  
 
 ![Ukázkový snímek obrazovky, který zobrazuje souhlas pracovního účtu](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -166,16 +165,16 @@ Ukázku kódu, který implementuje postup, najdete v [ukázce obory s omezením 
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>Vyžádání oprávnění na portálu pro registraci aplikací
 
-Aplikace jsou schopné poznamenat, jaká oprávnění vyžadují (delegované i aplikace) na portálu pro registraci aplikací.  To umožňuje použití oboru `/.default` a možnosti udělit souhlas správce na portálu Azure Portal.  Obecně je vhodné zajistit, aby byla oprávnění staticky definovaná pro danou aplikaci nadmnožinou oprávnění, která bude žádající dynamicky a přírůstkově.
+Aplikace jsou schopné poznamenat, jaká oprávnění vyžadují (delegované i aplikace) na portálu pro registraci aplikací.  To umožňuje použití oboru `/.default` a možnosti "udělit souhlas správce" Azure Portal.  Obecně je vhodné zajistit, aby byla oprávnění staticky definovaná pro danou aplikaci nadmnožinou oprávnění, která bude žádající dynamicky a přírůstkově.
 
 > [!NOTE]
-Oprávnění aplikace lze požadovat pouze pomocí [`/.default`](#the-default-scope) , takže pokud vaše aplikace potřebuje oprávnění aplikace, ujistěte se, že jsou uvedena na portálu pro registraci aplikací.  
+>Oprávnění aplikace lze požadovat pouze pomocí [`/.default`](#the-default-scope) , takže pokud vaše aplikace potřebuje oprávnění aplikace, ujistěte se, že jsou uvedena na portálu pro registraci aplikací.
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Konfigurace seznamu staticky vyžádaného oprávnění pro aplikaci
 
 1. Pokud jste to ještě neudělali, můžete přejít do aplikace v prostředí [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nebo [vytvořit aplikaci](quickstart-register-app.md) .
 2. Vyhledejte část **oprávnění rozhraní API** a v rámci oprávnění API klikněte na Přidat oprávnění.
-3. V seznamu dostupných rozhraní API vyberte preferovaný prostředek (např. **Microsoft Graph**) a přidejte oprávnění, která vaše aplikace vyžaduje.
+3. V seznamu dostupných rozhraní API vyberte **Microsoft Graph** a pak přidejte oprávnění, která vaše aplikace vyžaduje.
 3. **Uložte** registraci aplikace.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Doporučeno: podepsat uživatele do aplikace
@@ -265,7 +264,7 @@ Další informace o protokolu OAuth 2,0 a o tom, jak získat přístupové token
 
 ## <a name="the-default-scope"></a>Rozsah/.Default
 
-Obor `/.default` můžete použít k usnadnění migrace vašich aplikací z koncového bodu v 1.0 na koncový bod Microsoft Identity Platform. Toto je vestavěný obor pro každou aplikaci, který odkazuje na statický seznam oprávnění nakonfigurovaných v registraci aplikace. Hodnota `scope` `https://graph.microsoft.com/.default` je funkčně stejná jako v koncových bodech v 1.0 `resource=https://graph.microsoft.com` – konkrétně vyžaduje token s obory na Microsoft Graph, které aplikace zaregistrovala v Azure Portal.  Je vytvořen pomocí identifikátoru URI prostředku + `/.default` (např. Pokud je identifikátor URI prostředku `https://contosoApp.com`, bude požadovaný rozsah `https://contosoApp.com/.default`).  Přečtěte si [část o koncových lomítekch](#trailing-slash-and-default) pro případy, kdy je nutné pro správné vyžádání tokenu použít druhé lomítko.  
+Obor `/.default` můžete použít k usnadnění migrace vašich aplikací z koncového bodu v 1.0 na koncový bod Microsoft Identity Platform. Toto je vestavěný obor pro každou aplikaci, který odkazuje na statický seznam oprávnění nakonfigurovaných v registraci aplikace. Hodnota `scope` `https://graph.microsoft.com/.default` je funkčně stejná jako v koncových bodech v 1.0 `resource=https://graph.microsoft.com` – konkrétně vyžaduje token s obory na Microsoft Graph, které aplikace zaregistrovala v Azure Portal.  Je vytvořen pomocí identifikátoru URI prostředku + `/.default` (např. Pokud je identifikátor URI prostředku `https://contosoApp.com`, bude požadovaný rozsah `https://contosoApp.com/.default`).  Přečtěte si [část o koncových lomítekch](#trailing-slash-and-default) pro případy, kdy je nutné pro správné vyžádání tokenu použít druhé lomítko.
 
 Obor/.Default se dá použít v jakémkoli toku OAuth 2,0, ale je nutný v toku spouštěném [jménem](v2-oauth2-on-behalf-of-flow.md) a v [toku přihlašovacích údajů klienta](v2-oauth2-client-creds-grant-flow.md)a také při použití koncového bodu souhlasu správce v2 k vyžádání oprávnění aplikace.  
 
@@ -286,7 +285,7 @@ V tomto příkladu uživatel (nebo správce klienta) udělil klientovi oprávně
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>Příklad 2: uživatel nemá udělená oprávnění mezi klientem a prostředkem.
 
-V tomto příkladu neexistuje žádný souhlas uživatele mezi klientem a Microsoft Graph. Klient zaregistroval pro `user.read` a `contacts.read` oprávnění a také obor Azure Key Vault `https://vault.azure.net/user_impersonation`. Když klient požádá o token pro `scope=https://graph.microsoft.com/.default`, zobrazí se uživateli obrazovka pro `user.read`, `contacts.read`a obory Key Vault `user_impersonation`. Vrácený token bude obsahovat pouze rozsahy `user.read` a `contacts.read` a lze jej použít pouze pro Microsoft Graph. 
+V tomto příkladu neexistuje žádný souhlas uživatele mezi klientem a Microsoft Graph. Klient zaregistroval pro `user.read` a `contacts.read` oprávnění a také obor Azure Key Vault `https://vault.azure.net/user_impersonation`. Když klient požádá o token pro `scope=https://graph.microsoft.com/.default`, zobrazí se uživateli obrazovka pro `user.read`, `contacts.read`a obory Key Vault `user_impersonation`. Vrácený token bude obsahovat pouze rozsahy `user.read` a `contacts.read` a lze jej použít pouze pro Microsoft Graph.
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Příklad 3: uživatel souhlasí a klient požaduje další obory.
 
@@ -313,7 +312,7 @@ Tím se vytvoří obrazovka pro vyjádření souhlasu pro všechna registrovaná
 
 Některé identifikátory URI prostředků mají koncové lomítko (`https://contoso.com/` na rozdíl od `https://contoso.com`), což může způsobit problémy s ověřováním tokenu.  K tomu může dojít hlavně při žádosti o token pro správu prostředků Azure (`https://management.azure.com/`), který má koncové lomítko na svém identifikátoru URI prostředku a vyžaduje, aby byl k dispozici při žádosti o token.  Proto při žádosti o token pro `https://management.azure.com/` a použití `/.default`musíte požádat o `https://management.azure.com//.default` dvojité lomítko. 
 
-Obecně – Pokud jste ověřili, že se token vystavuje, a token se zamítl rozhraním API, které by ho měl přijmout, zvažte přidání druhého lomítka a opakování. K tomu dochází, protože přihlašovací server emituje token s cílovou skupinou, která odpovídá identifikátorům URI v parametru `scope` – s `/.default` odebranými na konci.  Pokud dojde k odebrání koncového lomítka, přihlašovací server pořád zpracuje požadavek a ověří ho proti identifikátoru URI prostředku, i když se už neshoduje. to je nestandardní a nemělo by se spoléhat na vaši aplikaci. 
+Obecně – Pokud jste ověřili, že se token vystavuje, a token se zamítl rozhraním API, které by ho měl přijmout, zvažte přidání druhého lomítka a opakování. K tomu dochází, protože přihlašovací server emituje token s cílovou skupinou, která odpovídá identifikátorům URI v parametru `scope` – s `/.default` odebranými na konci.  Pokud dojde k odebrání koncového lomítka, přihlašovací server pořád zpracuje požadavek a ověří ho proti identifikátoru URI prostředku, i když se už neshoduje. to je nestandardní a nemělo by se spoléhat na vaši aplikaci.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Řešení potíží s oprávněními a souhlasem
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350684"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385019"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak nahrát přizpůsobený virtuální pevný dis
 Pokud chcete vytvořit víc virtuálních počítačů z přizpůsobeného disku, nejdřív vytvořte image z virtuálního počítače nebo virtuálního pevného disku. Další informace najdete v tématu [Vytvoření vlastní image virtuálního počítače Azure pomocí rozhraní](tutorial-custom-images.md)příkazového řádku (CLI).
 
 Máte dvě možnosti, jak vytvořit vlastní disk:
-* Nahrávání virtuálního pevného disku
+* Nahrání virtuálního pevného disku
 * Kopírovat existující virtuální počítač Azure
 
 
@@ -53,7 +53,7 @@ K provedení následujících kroků budete potřebovat:
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami, například `myResourceGroup`, `mystorageaccount`a `mydisks`.
 
-<a id="prepimage"></a>
+<a id="prepimage"> </a>
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 

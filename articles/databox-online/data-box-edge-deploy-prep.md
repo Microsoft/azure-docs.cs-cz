@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438673"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384728"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Kurz: Příprava na nasazení Azure Data Box Edge  
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-### <a name="get-started"></a>Začít
+### <a name="get-started"></a>Začínáme
 
 Pokud chcete nasadit Data Box Edge, přečtěte si následující kurzy v předepsané posloupnosti.
 
@@ -44,7 +44,7 @@ Pokud chcete nasadit Data Box Edge, přečtěte si následující kurzy v přede
 
 Teď můžete začít nastavovat Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky na konfiguraci pro váš prostředek Data Box Edge, Data Box Edge zařízení a síť datacenter.
 
@@ -95,9 +95,9 @@ Chcete-li vytvořit prostředek Data Box Edge, proveďte následující kroky v 
     - Nebo Azure Government portál na této adrese URL: [https://portal.azure.us](https://portal.azure.us). Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte **data box Edge/data box Gateway**. Vyberte **data box Edge/data box Gateway**. Vyberte **Vytvořit**.
-3. Vyberte předplatné, které chcete použít pro Data Box Edge zařízení. Vyberte oblast, ve které chcete prostředek Data Box Edge nasadit. V této verzi jsou k dispozici Východní USA, Jižní Východní Asie a Západní Evropa. 
+3. Vyberte předplatné, které chcete použít pro Data Box Edge zařízení. Vyberte oblast, ve které chcete prostředek Data Box Edge nasadit. Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
-    Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V oblasti jsou uložena pouze metadata pro správu zařízení. Skutečná data můžou být uložená v jakémkoli účtu úložiště. 
+    Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V oblasti jsou uložena pouze metadata pro správu zařízení. Skutečná data můžou být uložená v jakémkoli účtu úložiště.
     
     V možnosti **data box Edge** vyberte **vytvořit**.
 
@@ -114,8 +114,8 @@ Chcete-li vytvořit prostředek Data Box Edge, proveďte následující kroky v 
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Name (Název)   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
-    |Region (Oblast)     |V této verzi jsou k dispozici Východní USA, Jižní Východní Asie a Západní Evropa k nasazení prostředku. Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
+    |Název   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
+    |Oblast     |Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
 
     ![Podrobnosti o projektu a instanci](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 

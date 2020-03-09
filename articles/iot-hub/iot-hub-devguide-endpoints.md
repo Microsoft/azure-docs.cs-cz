@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457124"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382204"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkazy-IoT Hub koncové body
 
@@ -77,8 +77,8 @@ IoT Hub aktuálně podporuje následující služby Azure jako další koncové 
 
 * Kontejnery Azure Storage
 * Event Hubs
-* Fronty Service Bus
-* Témata Service Bus
+* Fronty služby Service Bus
+* Témata služby Service Bus
 
 Omezení počtu koncových bodů, které můžete přidat, najdete v tématu [kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
 
@@ -87,8 +87,8 @@ Ke zjištění stavu koncových bodů můžete použít REST API [získat stav k
 |Stav|Popis|
 |---|---|
 |healthy|Koncový bod přijímá zprávy podle očekávání.|
-|není v pořádku|Koncový bod nepřijímá zprávy podle očekávání a IoT Hub se pokouší odeslat data do tohoto koncového bodu. Stav koncového bodu, který není v pořádku, bude aktualizován na stav v pořádku, když IoT Hub navázala trvalý stav stavu.|
-|unknown|IoT Hub nevytvořil připojení ke koncovému bodu. Z tohoto koncového bodu nebyly doručeny ani zamítnuty žádné zprávy.|
+|Není v pořádku|Koncový bod nepřijímá zprávy podle očekávání a IoT Hub se pokouší odeslat data do tohoto koncového bodu. Stav koncového bodu, který není v pořádku, bude aktualizován na stav v pořádku, když IoT Hub navázala trvalý stav stavu.|
+|neznámý|IoT Hub nevytvořil připojení ke koncovému bodu. Z tohoto koncového bodu nebyly doručeny ani zamítnuty žádné zprávy.|
 |Zpráva|Koncový bod nepřijímá zprávy, jakmile IoT Hub znovu pokusí odeslat zprávy o zkušebním období.|
 
 ## <a name="field-gateways"></a>Brány polí

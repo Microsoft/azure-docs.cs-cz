@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088173"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382703"
 ---
-# <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Řešení konkrétních chybových zpráv protokolu RDP na virtuální počítač s Windows v Azure
+# <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Řešení konkrétních chybových zpráv protokolu RDP pro virtuální počítač s Windows v Azure
 Při použití připojení vzdálené plochy k virtuálnímu počítači s Windows (VM) v Azure se může zobrazit konkrétní chybová zpráva. Tento článek podrobně popisuje některé běžné chybové zprávy, ke kterým došlo, a postup řešení potíží. Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači pomocí protokolu RDP, ale nedošlo k určité chybové zprávě, přečtěte si článek [Průvodce odstraňováním potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md).
 
 Informace o konkrétních chybových zprávách najdete v následujících tématech:
@@ -30,13 +30,13 @@ Informace o konkrétních chybových zprávách najdete v následujících téma
 * [Vzdálená relace byla odpojena, protože nejsou k dispozici žádné licenční servery vzdálené plochy pro poskytnutí licence](#rdplicense).
 * [Vzdálená plocha nemůže najít počítač "název"](#rdpname).
 * [Došlo k chybě ověřování. Místní autoritu zabezpečení nelze kontaktovat](#rdpauth).
-* [Chyba zabezpečení systému Windows: Vaše přihlašovací údaje nefungovaly](#wincred).
+* [Chyba zabezpečení systému Windows: vaše přihlašovací údaje nefungovaly](#wincred).
 * [Tento počítač se nemůže připojit ke vzdálenému počítači](#rdpconnect).
 
 <a id="rdplicense"></a>
 
 ## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>Vzdálená relace byla odpojena, protože nejsou k dispozici žádné licenční servery vzdálené plochy pro poskytnutí licence.
-Příčina: Vypršela doba odkladu licencí pro roli serveru vzdálené plochy 120. je potřeba nainstalovat licence.
+Příčina: vypršela doba odkladu licencí pro roli serveru vzdálené plochy 120. je potřeba nainstalovat licence.
 
 Jako alternativní řešení uložte místní kopii souboru RDP z portálu a spusťte tento příkaz na příkazovém řádku PowerShellu pro připojení. Tento krok zakáže licencování jenom pro toto připojení:
 
@@ -49,7 +49,7 @@ Další informace najdete v tématu Blogový příspěvek [virtuálního počít
 <a id="rdpname"></a>
 
 ## <a name="remote-desktop-cant-find-the-computer-name"></a>Vzdálená plocha nemůže najít počítač "název".
-Příčina: Klient vzdálené plochy v počítači nemůže přeložit název počítače v nastavení souboru RDP.
+Příčina: klient vzdálené plochy v počítači nemůže přeložit název počítače v nastavení souboru RDP.
 
 Možná řešení:
 
@@ -67,9 +67,9 @@ Možná řešení:
 <a id="rdpauth"></a>
 
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Došlo k chybě ověřování. Místní autoritu zabezpečení nelze kontaktovat.
-Příčina: Cílový virtuální počítač nemůže najít autoritu zabezpečení v části uživatelské jméno vašich přihlašovacích údajů.
+Příčina: cílový virtuální počítač nemůže najít autoritu zabezpečení v části uživatelské jméno vašich přihlašovacích údajů.
 
-Uživatelské jméno ve formátu *SecurityAuthority*\\*username* (příklad: Corp\user1.), *SecurityAuthority* část je buď název počítače virtuálního počítače (pro místní úřad zabezpečení), nebo název domény služby Active Directory.
+Pokud je uživatelské jméno ve tvaru *SecurityAuthority*\\*username* (příklad: Corp\user1.), část *SecurityAuthority* je název počítače virtuálního počítače (pro místní úřad zabezpečení) nebo název domény služby Active Directory.
 
 Možná řešení:
 
@@ -79,13 +79,13 @@ Možná řešení:
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Chyba zabezpečení systému Windows: Vaše přihlašovací údaje nefungovaly.
-Příčina: Cílový virtuální počítač nemůže ověřit název vašeho účtu a heslo.
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Chyba zabezpečení systému Windows: vaše přihlašovací údaje nefungovaly.
+Příčina: cílový virtuální počítač nemůže ověřit název vašeho účtu a heslo.
 
 Počítač se systémem Windows může ověřit pověření místního účtu nebo účtu domény.
 
-* Pro místní účty použijte syntaxi *ComputerName*\\*username* (příklad: SQL1\Admin4798).
-* V případě doménových účtů použijte syntaxi *DomainName*\\*username* (příklad: CONTOSO\peterodman).
+* Pro místní účty použijte syntaxi *computername*\\*username* (příklad: SQL1\Admin4798).
+* Pro účty domény použijte syntaxi *domainname*\\*username* (příklad: CONTOSO\peterodman).
 
 Pokud jste virtuální počítač zvýšili na řadič domény v nové doménové struktuře služby Active Directory, účet místního správce, pomocí kterého jste se přihlásili, se převede na ekvivalentní účet se stejným heslem v nové doménové struktuře a doméně. Místní účet se pak odstraní.
 
@@ -98,13 +98,13 @@ Pokud potřebujete změnit heslo účtu místního správce, přečtěte si tém
 <a id="rdpconnect"></a>
 
 ## <a name="this-computer-cant-connect-to-the-remote-computer"></a>Tento počítač se nemůže připojit ke vzdálenému počítači.
-Příčina: Účet, který se používá k připojení, nemá oprávnění k přihlášení ke vzdálené ploše.
+Příčina: účet, který se používá k připojení, nemá oprávnění k přihlášení ke vzdálené ploše.
 
 Každý počítač s Windows má místní skupinu Remote Desktop Users, která obsahuje účty a skupiny, které se můžou vzdáleně přihlašovat. K nim mají přístup i členové místní skupiny Administrators, i když tyto účty nejsou uvedené v místní skupině Remote Desktop Users. Pro počítače připojené k doméně obsahuje Skupina Local Administrators také správce domény pro danou doménu.
 
 Ujistěte se, že účet, který používáte k připojení, má přihlašovací práva ke vzdálené ploše. Alternativním řešením je použít účet domény nebo místního správce pro připojení přes vzdálenou plochu. Chcete-li přidat požadovaný účet do místní skupiny Uživatelé vzdálené plochy, použijte modul snap-in konzoly Microsoft Management Console (**Systémové nástroje > místní uživatelé a skupiny > skupiny > Uživatelé vzdálené plochy**).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud žádná z těchto chyb nevznikla a došlo k neznámému problému s připojením pomocí protokolu RDP, přečtěte si [Průvodce řešením potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 * Postup řešení potíží při přístupu k aplikacím běžícím na virtuálním počítači najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

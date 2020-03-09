@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058180"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389532"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -79,15 +79,15 @@ Tento scénář spouští speciální zachycení čítače výkonu společně se
 | Latence      | Prům. s/požadavek na data         |
 |              | Prům. sekund/čtení                 |
 |              | Prům. s/zápis                |
-| Velikost v/v      | Střední Bajty/požadavek na data       |
-|              | Střední Bajty/čtení               |
-|              | Střední Bajty/zápis              |
+| Velikost v/v      | Průměrný počet bajtů/dat – požadavek       |
+|              | Střední bajty/čtení               |
+|              | Střední bajty/zápis              |
 | Propustnost   | Bajty dat/s                |
 |              | Přečtené bajty/s                |
 |              | Zapsané bajty/s               |
-| Délka fronty | Střední Délka fronty čtení        |
-|              | Střední Délka fronty zápisu       |
-|              | Střední Délka fronty dat        |
+| Délka fronty | Průměrná délka fronty čtení        |
+|              | Průměrná délka fronty zápisu       |
+|              | Průměrná délka fronty dat        |
 
 ### <a name="advanced-performance-analysis"></a>Pokročilá analýza výkonu
 
@@ -108,7 +108,7 @@ Shromažďují se informace o virtuálním počítači s Windows, discích nebo 
 | Systémové informace                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Mapa svazků                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Mapa disku                          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Spuštěné úkoly                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Spuštěné úlohy                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Čítače spolehlivosti úložiště      | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Informace o úložiště               | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Fsutil Output                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
@@ -131,10 +131,10 @@ Shromažďují se informace o virtuálním počítači s Windows, discích nebo 
 
 Spouští modul založený na pravidlech na pozadí ke shromažďování dat a diagnostice probíhajících problémů s výkonem. V současné době jsou podporovány následující pravidla:
 
-- Pravidlo HighCpuUsage: Zjistí vysoké objemy využití procesoru a v těchto obdobích zobrazí uživatele s nejvyšším využitím procesoru.
-- Pravidlo HighDiskUsage: Zjistí dobu využití disku na fyzických discích a v těchto obdobích zobrazí uživatele s nejvyšším využitím disku.
-- Pravidlo HighResolutionDiskMetric: Zobrazuje metriky latence, propustnosti a vstupně-výstupních operací na 50 milisekund pro každý fyzický disk. Pomáhá rychle identifikovat dobu omezení disku.
-- Pravidlo HighMemoryUsage: Zjistí dobu využití vysoké paměti a při těchto obdobích zobrazí uživatele s největším využitím paměti.
+- Pravidlo HighCpuUsage: detekuje vysoké doby využití procesoru a v těchto obdobích zobrazuje uživatele s nejvyšším využitím procesoru.
+- Pravidlo HighDiskUsage: detekuje doba využití disku na fyzických discích a v těchto obdobích zobrazuje uživatele s nejvyšším využitím disku.
+- Pravidlo HighResolutionDiskMetric: zobrazuje počet vstupně-výstupních operací pro vstupně-výstupní operace a metriky latence na 50 milisekund pro každý fyzický disk. Pomáhá rychle identifikovat dobu omezení disku.
+- Pravidlo HighMemoryUsage: detekuje dobu využití vysoké paměti a v těchto obdobích zobrazuje uživatele s největším využitím paměti.
 
 > [!NOTE] 
 > V současné době jsou podporovány verze Windows, které zahrnují .NET Framework 4,5 nebo novější verze.
@@ -166,7 +166,7 @@ DiskSpd vstupně-výstupních úloh testů (disk s operačním systémem [zápis
 
 -  Tento nástroj se musí spustit na virtuálním počítači, který má problém s výkonem. 
 
--  Následující operační systémy se podporují: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016; Windows 8.1 a Windows 10.
+-  Podporovány jsou následující operační systémy: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016; Windows 8.1 a Windows 10.
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Možné problémy při spuštění nástroje na produkčních virtuálních počítačích
 
@@ -244,16 +244,16 @@ Chcete-li spustit nástroj PerfInsights, postupujte podle následujících krok�
     >
     >Pokud není zadaný přepínač trvání **/d** , PerfInsights vás vyzve k reprodukci problému při spouštění vmslow, azurefiles a pokročilých scénářů. 
 
-Po dokončení trasování nebo operací se ve stejné složce jako PerfInsights zobrazí nový soubor. Název souboru je **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. zip.** Tento soubor můžete poslat agentovi podpory pro účely analýzy nebo otevřít sestavu v souboru zip a zkontrolovat si závěry a doporučení.
+Po dokončení trasování nebo operací se ve stejné složce jako PerfInsights zobrazí nový soubor. Název souboru je **PerformanceDiagnostics\_rrrr-mm-dd\_HH-MM-SS-FFF. zip.** Tento soubor můžete poslat agentovi podpory pro účely analýzy nebo otevřít sestavu v souboru zip a zkontrolovat si závěry a doporučení.
 
 ## <a name="review-the-diagnostics-report"></a>Kontrola diagnostické sestavy
 
-V souboru **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. zip** můžete najít sestavu HTML, která podrobně popisuje zjištění PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte **soubor\_PerformanceDiagnostics yyyy-mm-\_DD hh-mm-SS-FFF. zip** a otevřete soubor **PerfInsights Report. html** .
+V rámci **PerformanceDiagnostics\_rrrr-mm-dd\_HH-MM-SS-FFF. zip** můžete najít sestavu HTML, která podrobně popisuje zjištění PerfInsights. Pokud chcete sestavu zkontrolovat, rozbalte **PerformanceDiagnostics\_rrrr-mm-dd\_HH-MM-SS-FFF. zip** a pak otevřete soubor **PerfInsights Report. html** .
 
 Vyberte kartu **zjištění** .
 
-![Snímek obrazovky sestavy](media/how-to-use-perfInsights/pi-finding-tab.png)
-![PerfInsights na snímku sestavy PerfInsights](media/how-to-use-perfInsights/pi-findings.png)
+![snímku sestavy PerfInsights](media/how-to-use-perfInsights/pi-finding-tab.png)
+![snímku](media/how-to-use-perfInsights/pi-findings.png) sestavy PerfInsights
 
 > [!NOTE] 
 > Nálezy zařazené do kategorie vysoká jsou známé problémy, které mohou způsobit problémy s výkonem. Nálezy kategorizované jako střední představuje neoptimální konfigurace, které nemusí nutně způsobovat problémy s výkonem. Nálezy zařazené do kategorie nízká jsou informativní pouze informativní příkazy.
@@ -270,7 +270,7 @@ V perspektivě fyzického disku (mapa disku) zobrazuje tabulka všechny logické
 
 ![Snímek obrazovky s kartou disk](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-V perspektivě svazku (mapa svazků) jsou v tabulkách zobrazeny všechny fyzické disky v rámci jednotlivých logických svazků. Všimněte si, že u polí RAID/dynamic disks můžete spustit logický svazek na více fyzických discích. V následujícím příkladu je *C:\\Mount* přípojný bod nakonfigurovaný jako *SpannedDisk* na fyzických discích 2 a 3:
+V perspektivě svazku (mapa svazků) jsou v tabulkách zobrazeny všechny fyzické disky v rámci jednotlivých logických svazků. Všimněte si, že u polí RAID/dynamic disks můžete spustit logický svazek na více fyzických discích. V následujícím příkladu je to *C:\\Mount* je přípojný bod nakonfigurovaný jako *SpannedDisk* na fyzických discích 2 a 3:
 
 ![Snímek obrazovky s kartou Volume](media/how-to-use-perfInsights/pi-volume-tab.png)
 
@@ -313,5 +313,5 @@ Na následujícím snímku obrazovky se zobrazí zpráva podobná tomu, co se v�
 
 Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenosu souborů. Pro zvýšení zabezpečení je nutné při prvním použití změnit heslo.
 
-Po přihlášení se zobrazí dialogové okno pro nahrání souboru **\_PerformanceDiagnostics yyyy-MM-DD\_HH-MM-SS-FFF. zip** , který byl shromážděn nástrojem PerfInsights.
+Po přihlášení se zobrazí dialogové okno pro nahrání souboru **PerformanceDiagnostics\_rrrr-mm-dd\_HH-MM-SS-FFF. zip** , který byl shromážděn nástrojem PerfInsights.
 

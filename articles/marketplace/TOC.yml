@@ -1,5 +1,5 @@
 - name: Dokumentace k platformám Azure Marketplace a AppSource
-  href: index.md
+  href: index.yml
   items:
     - name: Plán nasazení pro Azure Marketplace a AppSource
       href: ./marketplace-roadmap.md
@@ -51,9 +51,6 @@
           items:
             - name: Osvědčené postupy nabídky
               href: ./gtm-offer-listing-best-practices.md
-              items:
-                - name: Kategorie
-                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: Jak získat doporučení
               href: ./gtm-how-to-get-featured.md
             - name: Ověření obsahu na Marketplace
