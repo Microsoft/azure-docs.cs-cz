@@ -9,11 +9,11 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: e9cdfd40a9672d19ef32dede0baadcdd56266bab
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589092"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382257"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak používat rozhraní API pro správu digitálních vláken Azure
 

@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551263"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381402"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Kurz: Vytvoření clusteru Azure FXT Edge souborového
 
@@ -30,7 +30,7 @@ V tomto kurzu se dozvíte:
 
 Tento postup trvá 15 až 45 minut v závislosti na tom, kolik zdrojů potřebujete k identifikaci IP adres a síťových prostředků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu dokončete tyto požadavky:
 
@@ -379,13 +379,13 @@ Chcete-li nastavit odesílání podpory, postupujte podle těchto kroků.
 1. Klikněte na tlačítko znovu **ověřit informace o nahrání** .
 1. V **jedinečném názvu clusteru** nastavte název podpory clusteru – Ujistěte se, že jednoznačně identifikuje váš cluster pro podporu pracovníků.
 1. Zaškrtněte políčka pro **monitorování statistiky**, **odesílání obecných informací**a **nahrávání informací o chybách**.
-1. Klikněte na **Submit** (Odeslat).  
+1. Klikněte na **Odeslat**.  
 
    ![Snímek obrazovky s oddílem informace o dokončených zákaznících stránky nastavení podpory](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Kliknutím na trojúhelník nalevo od **zabezpečené proaktivní podpory (SPS)** rozbalte oddíl.
 1. Zaškrtněte políčko **Povolit odkaz na SPS**.
-1. Klikněte na **Submit** (Odeslat).
+1. Klikněte na **Odeslat**.
 
    ![Snímek obrazovky s dokončenou částí zabezpečená proaktivní podpora na stránce nastavení podpory](media/fxt-cluster-create/fxt-support-sps.png)
 

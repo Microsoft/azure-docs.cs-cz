@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 678385d9ed16a9821fc61be476e7eb9eaf6fd4f1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4a5d0908842c20e15fdf7b336b9e244c4bafb345
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183699"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397807"
 ---
 # <a name="string-claims-transformations"></a>Transformace deklarací řetězců
 
@@ -158,7 +158,7 @@ Určete, zda jedna deklarace identity řetězce je shodná s jinou. Výsledkem j
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | řetězec | První typ deklarace identity, který se má porovnat. |
 | inputClaim | inputClaim2 | řetězec | Druhý typ deklarace identity, který se má porovnat. |
-| InputParameter | operator | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
+| InputParameter | operátor | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
 | InputParameter | ignoreCase | Boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
 | outputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
@@ -198,7 +198,7 @@ Určuje, zda je hodnota deklarace identity shodná se vstupní hodnotou parametr
 | Položka | TransformationClaimType | Typ dat | Poznámky: |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | řetězec | Typ deklarace identity, který se má porovnat. |
-| InputParameter | operator | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
+| InputParameter | operátor | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
 | InputParameter | compareTo | řetězec | porovnání řetězců, jedna z hodnot: Ordinal, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | Boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
 | outputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
@@ -374,7 +374,7 @@ Zkopíruje lokalizované řetězce do deklarací identity.
 Použití transformace deklarací GetLocalizedStringsTransformation:
 
 1. Definujte [řetězec lokalizace](localization.md) a přidružte ho k [vlastním kontrolnímu profilu](self-asserted-technical-profile.md).
-1. `ElementType` `LocalizedString` elementu musí být nastavené na `GetLocalizedStringsTransformationClaimType`.
+1. `ElementType` `LocalizedString` elementu musí být nastaven na `GetLocalizedStringsTransformationClaimType`.
 1. `StringId` je jedinečný identifikátor, který definujete, a později ho použijte v transformaci deklarací.
 1. V transformaci deklarací identity zadejte seznam deklarací, které mají být nastaveny s lokalizovaným řetězcem. `ClaimTypeReferenceId` je odkaz na objekt ClaimType, který je již definován v části ClaimsSchema v zásadách. `TransformationClaimType` je název lokalizovaného řetězce, jak je definován v `StringId` elementu `LocalizedString`.
 1. V [technickém profilu s vlastním](self-asserted-technical-profile.md)výkonem nebo na transformaci [vstupních nebo](display-controls.md) výstupních deklarací identity vytvořte odkaz na transformaci deklarací identity.

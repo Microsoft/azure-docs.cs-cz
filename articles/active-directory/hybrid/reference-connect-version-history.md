@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963202"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376286"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydání verze
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -31,7 +31,7 @@ Téma |  Podrobnosti
 --------- | --------- |
 Postup upgradu z Azure AD Connect | Různé metody [upgradu z předchozí verze na nejnovější](how-to-upgrade-previous-version.md) verzi Azure AD Connect.
 Požadovaná oprávnění | Oprávnění potřebná k použití aktualizace najdete v tématu [účty a oprávnění](reference-connect-accounts-permissions.md#upgrade).
-Stáhnout| [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Ke stažení| [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Vydání nové verze Azure AD Connect je proces, který vyžaduje několik kroků řízení kvality, aby se zajistila funkčnost této služby. při tomto procesu se ale aktualizuje číslo verze nové verze a také stav vydání. odrážet nejnovější stav.
@@ -496,7 +496,7 @@ Pomocí následujících změn oprávnění v místní službě AD Zablokujte p�
 *   Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe. Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do sebe.
 *   Přiřaďte tato konkrétní oprávnění:
 
-Typ     | Name (Název)                          | Přístup               | Platí pro
+Typ     | Název                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SOUBORŮ                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
@@ -792,7 +792,7 @@ K tomuto problému dochází, když při spuštění Průvodce vždycky vyberete
 
 #### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
-* Dříve byla funkce [MS-DS-ConsistencyGuid as source Anchor](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) dostupná jenom pro nová nasazení. Teď je dostupná pro existující nasazení. A to konkrétně:
+* Dříve byla funkce [MS-DS-ConsistencyGuid as source Anchor](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) dostupná jenom pro nová nasazení. Teď je dostupná pro existující nasazení. A konkrétně:
   * Chcete-li získat přístup k této funkci, spusťte Průvodce Azure AD Connect a vyberte možnost *aktualizace zdrojového ukotvení* .
   * Tato možnost je viditelná jenom pro existující nasazení, která používají objectGuid jako atribut sourceAnchor.
   * Při konfiguraci možnosti ověří Průvodce stav atributu ms-DS-ConsistencyGuid ve vaší místní službě Active Directory. Pokud atribut není nakonfigurován na žádném objektu uživatele v adresáři, průvodce použije jako atribut sourceAnchor ms-DS-ConsistencyGuid. Pokud je atribut nakonfigurován na jednom nebo více objektech uživatelů v adresáři, průvodce uzavře atribut je používán jinými aplikacemi a není vhodný jako atribut sourceAnchor a nepovoluje pokračování změny zdrojového kotvy. Pokud jste si jisti, že atribut není používán existujícími aplikacemi, je třeba kontaktovat podporu a získat informace o tom, jak chybu potlačit.
@@ -836,12 +836,12 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|certThumbprint|CertExtensionOids|
+    |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Vyberte|
     |CertKeyAlgorithmParams|CertHashString|Kde|
-    |||S|
+    |||With|
 
 * Byly zavedeny změny schématu, které zákazníkům umožňují vytvářet vlastní pravidla synchronizace pro tok objektů sAMAccountName, domainNetBios a domainFQDN pro objekty skupiny a také rozlišující označení pro objekty uživatele:
 
@@ -1074,7 +1074,7 @@ Vydáno: listopadu 2016
 * Opravili jsme problém, kdy pravidla spojování nejsou znovu vyhodnocena, když se objekt v prostoru konektoru současně stane mimo rozsah pro jedno pravidlo spojení a stane se v oboru pro jiný obor. K tomu může dojít, pokud máte dvě nebo více pravidel spojení, jejichž podmínky spojení se vzájemně vylučují.
 * Opravili jsme problém, kdy pravidla příchozí synchronizace (z Azure AD), která neobsahují pravidla pro připojení, se nezpracují, pokud mají hodnoty s nižší prioritou, než obsahují pravidla připojení.
 
-**Vylepšení:**
+**Vylepšen**
 
 * Přidání podpory pro instalaci Azure AD Connect v systému Windows Server 2016 Standard nebo vyšším.
 * Přidání podpory pro použití SQL Server 2016 jako vzdálené databáze pro Azure AD Connect.
@@ -1093,7 +1093,7 @@ Vydáno: srpen 2016
 * Průvodce Azure AD Connect nezobrazuje skutečnou synchronizaci hesel a konfiguraci zpětného zápisu hesla, když je server v pracovním režimu. Vždycky se zobrazí jako zakázané.
 * Změny konfigurace synchronizace hesel a zpětného zápisu hesla nejsou trvale uložené pomocí Průvodce Azure AD Connect, když je server v pracovním režimu.
 
-**Vylepšení:**
+**Vylepšen**
 
 * Rutina Start-ADSyncSyncCycle se aktualizovala tak, aby označovala, jestli je možné úspěšně spustit nový cyklus synchronizace, nebo ne.
 * Přidání rutiny Stop-ADSyncSyncCycle pro ukončení synchronizačního cyklu a operace, které aktuálně probíhá.
@@ -1301,7 +1301,7 @@ Vydáno: duben 2015
 ## <a name="104850222"></a>1.0.485.0222
 Vydáno: únor 2015
 
-**Vylepšení:**
+**Vylepšen**
 
 * Vylepšený výkon při importu.
 

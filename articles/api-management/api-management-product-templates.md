@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176577"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374414"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Šablony produktů v Azure API Management
 
-Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru dle vašeho výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a poskytnuté sady lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md)máte skvělou flexibilitu při konfiguraci obsah stránek se zobrazí podle svých potřeb pomocí těchto šablon.  
+Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
   
  Šablony v této části umožňují přizpůsobit obsah stránek produktu na portálu pro vývojáře.  
   
@@ -208,10 +208,10 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |--------------|----------|-----------------|  
 |Produkt|[Produktu](api-management-template-data-model-reference.md#Product)|Zadaný produkt.|  
 |IsDeveloperSubscribed|Boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
-|SubscriptionState|číslo|Stav předplatného. Možné stavy:<br /><br /> -   `0 - suspended` – předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active` – předplatné je aktivní.<br />-   `2 - expired` – předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted` – žádost o předplatné udělal vývojář, ale ještě nebyla schválená ani zamítnutá.<br />-   `4 - rejected` – žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled` – předplatné zrušila vývojář nebo správce.|  
+|SubscriptionState|číslo|Stav odběru Možné stavy:<br /><br /> -   `0 - suspended` – předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active` – předplatné je aktivní.<br />-   `2 - expired` – předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted` – žádost o předplatné udělal vývojář, ale ještě nebyla schválená ani zamítnutá.<br />-   `4 - rejected` – žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled` – předplatné zrušila vývojář nebo správce.|  
 |Omezení|pole|Tato vlastnost je zastaralá a neměla by se používat.|  
 |DelegatedSubscriptionEnabled|Boolean|Zda je pro toto předplatné povoleno [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) .|  
-|DelegatedSubscriptionUrl|string|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
+|DelegatedSubscriptionUrl|řetězec|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
 |Souhlasí|Boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
 |Předplatná|Kolekce [souhrnných entit předplatného](api-management-template-data-model-reference.md#SubscriptionSummary)|Odběry produktu.|  
 |Třídy|Kolekce entit [rozhraní API](api-management-template-data-model-reference.md#API) .|Rozhraní API v tomto produktu.|  

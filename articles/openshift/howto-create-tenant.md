@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270452"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381471"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Vytvoření tenanta Azure AD pro Azure Red Hat OpenShift
 
@@ -28,7 +28,7 @@ Vytvoření tenanta:
 3. Zadejte **název organizace**.
 4. Zadejte **počáteční název domény**. K tomuto se připojí *onmicrosoft.com* . Hodnotu pro *název organizace* můžete znovu použít zde.
 5. Vyberte zemi nebo oblast, ve které se tenant vytvoří.
-6. Klikněte na **Vytvořit**.
+6. Klikněte na možnost **Vytvořit**.
 7. Po vytvoření tenanta Azure AD vyberte **kliknutím sem můžete spravovat odkaz na nový adresář** . Nový název tenanta by se měl zobrazit v pravém horním rohu Azure Portal:  
 
     ![Snímek obrazovky portálu se zobrazeným jménem klienta v pravém horním rohu][tenantcallout]  
@@ -37,7 +37,7 @@ Vytvoření tenanta:
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
-## <a name="resources"></a>Materiály
+## <a name="resources"></a>Zdroje
 
 Další informace o [klientech Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)najdete v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) .
 

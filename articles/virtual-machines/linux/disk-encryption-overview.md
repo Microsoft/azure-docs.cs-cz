@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988416"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396834"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače se systémem Linux 
 
@@ -53,7 +53,7 @@ Azure Disk Encryption je podporovaná u podmnožiny [distribucí systému Linux 
 
 Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Azure Disk Encryption; z těch, které jsou schváleny, podporuje pouze následující distribuce a verze Azure Disk Encryption:
 
-| Linuxové distribuce | Version | Typ svazku podporovaný pro šifrování|
+| Linuxové distribuce | Verze | Typ svazku podporovaný pro šifrování|
 | --- | --- |--- |
 | Ubuntu | 18,04| Disk operačního systému a dat |
 | Ubuntu | 16.04| Disk operačního systému a dat |
@@ -61,7 +61,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | RHEL | 7,7 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7,6 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.5 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7.4 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7,4 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.3 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.2 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 6.8 | Datový disk (viz poznámka níže) |
@@ -69,7 +69,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | CentOS | 7,7 | Disk operačního systému a dat |
 | CentOS | 7,6 | Disk operačního systému a dat |
 | CentOS | 7.5 | Disk operačního systému a dat |
-| CentOS | 7.4 | Disk operačního systému a dat |
+| CentOS | 7,4 | Disk operačního systému a dat |
 | CentOS | 7.3 | Disk operačního systému a dat |
 | CentOS | 7.2N | Disk operačního systému a dat |
 | CentOS | 6.8 | Datový disk |
@@ -86,7 +86,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 
 Azure Disk Encryption vyžaduje, aby byly v systému přítomné moduly dm-crypt a vfat. Odebráním nebo zakázáním VFAT z výchozí image znemožníte systému číst klíč a získat klíč potřebný k odemknutí disků při dalším restartování. Kroky pro posílení zabezpečení systému, které odebírají modul VFAT ze systému, nejsou kompatibilní s Azure Disk Encryption. 
 
-Než povolíte šifrování, datové disky, které mají být zašifrované, musí být správně uvedené v adresáři/etc/fstab. Použijte název zařízení trvalé bloku pro tuto položku jako zařízení, které názvy ve formátu "/ dev/sdX" nelze spoléhat na přidruženy stejném disku mezi restartováními, zejména po šifrování se použije. Další podrobnosti o tomto chování najdete v článku: [změny názvu zařízení pro řešení potíží s virtuálního počítače s Linuxem](troubleshoot-device-names-problems.md)
+Než povolíte šifrování, datové disky, které mají být zašifrované, musí být správně uvedené v adresáři/etc/fstab. Použijte název zařízení trvalé bloku pro tuto položku jako zařízení, které názvy ve formátu "/ dev/sdX" nelze spoléhat na přidruženy stejném disku mezi restartováními, zejména po šifrování se použije. Další podrobnosti o tomto chování najdete v tématu [řešení potíží se změnami názvů zařízení virtuálních počítačů se systémem Linux](troubleshoot-device-names-problems.md) .
 
 Ujistěte se, že nastavení /etc/fstab jsou správně nakonfigurovány pro připojení. Tato nastavení nakonfigurujete, spusťte připojení – příkaz nebo restartujte virtuální počítač a aktivuje tímto způsobem opětovné připojení. Jakmile, která se dokončí, zkontrolujte výstup příkazu lsblk k ověření, že na jednotce je pořád připojený. 
 - Pokud soubor /etc/fstab není správně připojit jednotku před povolením šifrování, Azure Disk Encryption nebude možné ji správně připojit.
@@ -116,10 +116,10 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 | Terminologie | Definice |
 | --- | --- |
 | Azure Key Vault | Key Vault je služba pro správu klíčů, kryptografické, který je založen na informace o zpracování normy FIPS (Federal) ověřených modulech hardwarového zabezpečení. Tyto normy pomáhají chránit kryptografické klíče a tajné kódy citlivé. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Azure CLI | [Rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) je optimalizovaná pro správu prostředků Azure z příkazového řádku.|
+| Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) je optimalizováno pro správu a správu prostředků Azure z příkazového řádku.|
 | DM-Crypt |[Dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) je transparentní podsystém šifrování disku založený na systému Linux, který slouží k povolení šifrování disku na virtuálních počítačích se systémem Linux. |
 | Klíč šifrování klíče (KEK) | Asymetrický klíč (RSA 2048), který můžete použít k ochraně nebo zabalení tajného klíče. Můžete zadat modulu hardwarového zabezpečení (HSM)-chráněný klíč, nebo klíč chráněný softwarem. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Rutiny prostředí PowerShell | Další informace najdete v tématu [rutin prostředí Azure PowerShell](/powershell/azure/overview). |
+| Rutiny prostředí PowerShell | Další informace najdete v tématu [rutiny Azure PowerShell](/powershell/azure/overview). |
 
 
 ## <a name="next-steps"></a>Další kroky

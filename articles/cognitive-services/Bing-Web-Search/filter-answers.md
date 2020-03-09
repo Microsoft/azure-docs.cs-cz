@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111410"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381813"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrování odpovědí, které odpověď na hledání zahrnuje  
 
@@ -100,7 +100,7 @@ I když Bing nevrátil do předchozí odpovědi výsledky videa a zpráv, neznam
 
 Nedoporučujeme používat `responseFilter` k získání výsledků z jediného rozhraní API. Pokud chcete obsah z jednoho rozhraní API Bingu, zavolejte toto rozhraní API přímo. Například pro příjem pouze imagí odešlete požadavek do koncového bodu rozhraní Vyhledávání obrázků API `https://api.cognitive.microsoft.com/bing/v7.0/images/search` nebo jeden z dalších koncových bodů [imagí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) . Volání jediného rozhraní API je důležité nejen z důvodů výkonu, ale vzhledem k tomu, že rozhraní API pro konkrétní obsah nabízejí rozsáhlejší výsledky. Například můžete použít filtry, které nejsou k dispozici pro rozhraní Vyhledávání na webu API k filtrování výsledků.  
 
-### <a name="site"></a>webovém
+### <a name="site"></a>Webovém
 
 Chcete-li získat výsledky hledání z konkrétní domény, zahrňte do řetězce dotazu parametr `site:` dotazu.  
 
@@ -111,7 +111,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > Pokud používáte operátor dotazu `site:`, je v závislosti na dotazu možné, že odpověď může obsahovat obsah pro dospělé bez ohledu na nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Operátor `site:` byste měli používat, pouze pokud znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé.
 
-### <a name="freshness"></a>Stáří
+### <a name="freshness"></a>Aktuálnosti
 
 Chcete-li omezit výsledky webové odpovědi na webové stránky, které Bing zjistil během konkrétního období, nastavte parametr dotazu [aktuálnosti](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) na jednu z následujících hodnot bez rozlišení velkých a malých písmen:
 

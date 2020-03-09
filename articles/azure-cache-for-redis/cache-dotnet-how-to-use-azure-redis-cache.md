@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/18/2018
 ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433515"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357490"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Framework
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Framework, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Konkrétně použijete klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) s C# kódem v aplikaci konzoly .NET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
@@ -85,7 +85,7 @@ V aplikaci Visual Studio otevřete soubor *App. config* a aktualizujte jej tak, 
 
 V Průzkumníku řešení klikněte pravým tlačítkem myši na **Odkazy** a klikněte na **Přidat odkaz**. Přidejte odkaz na sestavení **System.Configuration**.
 
-Do souboru *Program.cs* přidejte následující příkazy `using`:
+Do souboru `using`Program.cs*přidejte následující příkazy*:
 
 ```csharp
 using StackExchange.Redis;
@@ -185,13 +185,13 @@ V sadě Visual Studio klikněte na **Nástroje** > **Správce balíčků NuGet**
 Install-Package Newtonsoft.Json
 ```
 
-Na začátek souboru *Program.cs* přidejte následující příkaz `using`:
+Na začátek souboru `using`Program.cs*přidejte následující příkaz*:
 
 ```csharp
 using Newtonsoft.Json;
 ```
 
-Do souboru *Program.cs* přidejte následující definici třídy `Employee`:
+Do souboru `Employee`Program.cs*přidejte následující definici třídy*:
 
 ```csharp
         class Employee
@@ -209,7 +209,7 @@ Do souboru *Program.cs* přidejte následující definici třídy `Employee`:
         }
 ```
 
-Na konec procedury `Main()` a před volání metody `Dispose()` v souboru *Program.cs* přidejte do mezipaměti následující řádky kódu a získejte serializovaný objekt .NET:
+Na konec procedury `Main()` a před volání metody *v souboru*Program.cs`Dispose()` přidejte do mezipaměti následující řádky kódu a získejte serializovaný objekt .NET:
 
 ```csharp
             // Store .NET object to cache
@@ -240,9 +240,9 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
-Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+Do textového pole **Filtrovat podle názvu...** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
 ![Odstranit](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 

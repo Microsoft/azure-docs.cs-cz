@@ -6,18 +6,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d15efee635e131d658cd650b7f80eb9e670a0dea
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148963"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392091"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace nativního ověřování certifikátů Azure P2S
 
-Konfigurační soubory klienta VPN jsou obsaženy v souboru ZIP. Konfigurační soubory poskytují nastavení požadovaná pro nativní klienty s Windows, Mac IKEv2 nebo Linux pro připojení k virtuální síti přes připojení typu Point-to-site, která používají nativní ověřování certifikátů Azure.
+Konfigurační soubory klienta VPN jsou obsaženy v souboru ZIP. Konfigurační soubory poskytují nastavení požadovaná pro nativní klienty Windows, Mac IKEv2 VPN nebo Linux pro připojení k virtuální síti přes připojení typu Point-to-site, která používají nativní ověřování certifikátů Azure.
 
 Konfigurační soubory klienta jsou specifické pro konfiguraci sítě VPN pro virtuální síť. Pokud v konfiguraci sítě VPN typu Point-to-site dojde ke změnám po vygenerování konfiguračních souborů klienta VPN, jako je například typ protokolu sítě VPN nebo typ ověřování, nezapomeňte vygenerovat nové konfigurační soubory klienta VPN pro vaše uživatelská zařízení. 
 
@@ -41,6 +41,8 @@ Konfigurační soubory klienta můžete vygenerovat pomocí PowerShellu nebo pom
 
 1. V Azure Portal přejděte do brány virtuální sítě pro virtuální síť, ke které se chcete připojit.
 2. Na stránce Brána virtuální sítě klikněte na **Konfigurace Point-to-site**.
+
+   ![Stáhnout klientský portál](./media/point-to-site-vpn-client-configuration-azure-cert/client-configuration-portal.png)
 3. V horní části stránky konfigurace typu Point-to-site klikněte na **stáhnout klienta VPN**. Generování konfiguračního balíčku klienta může trvat několik minut.
 4. V prohlížeči se zobrazí zpráva, že je k dispozici soubor zip konfigurace klienta. Má název stejný jako brána. Rozbalte soubor, aby se zobrazily složky.
 
@@ -114,7 +116,7 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Do pole **místní ID** zadejte název certifikátu (z kroku 6). V tomto příkladu je to "ikev2Client.com". Potom kliknutím na tlačítko **použít** uložte změny.
 
-   ![vyrovnat](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. V dialogovém okně **síť** klikněte na **použít** a uložte všechny změny. Pak klikněte na **připojit** a spusťte připojení P2S k virtuální síti Azure.
 
 ## <a name="linuxgui"></a>Linux (grafické rozhraní klient strongswan)
@@ -138,7 +140,7 @@ V Ubuntu 18.0.4 byly vytvořeny následující pokyny. Ubuntu 16.0.10 nepodporuj
    ```
    sudo apt install network-manager-strongswan
    ```
-2. Vyberte **Nastavení** a pak vybrat **síť**.
+2. Vyberte **Nastavení**a pak vybrat **síť**.
 
    ![Upravit připojení](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
 3. Kliknutím na tlačítko **+** vytvořte nové připojení.

@@ -15,11 +15,11 @@ ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837411"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383573"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu Azure CDN
 V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). Pokud k doručování obsahu používáte síť CDN a chcete, aby se v adrese URL sítě CDN zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky. 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
 
@@ -68,9 +68,9 @@ Vytvoření záznamu CNAME se subdoménou cdnverify:
 
     | Zdroj                    | Typ  | Cíl                     |
     |---------------------------|-------|---------------------------------|
-    | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
+    | cdnverify. www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - Zdroj: zadejte název vlastní domény včetně subdomény cdnverify v následujícím formátu: cdnverify.&gt;&lt;název vlastní domény. Například cdnverify.www.contoso.com.
+    - Zdroj: zadejte název vlastní domény včetně subdomény cdnverify v následujícím formátu: cdnverify.&gt;&lt;název vlastní domény. Například cdnverify. www.contoso.com.
 
     - Typ: Zadejte *CNAME*.
 
@@ -94,13 +94,13 @@ Například postup pro registrátora domén GoDaddy je následující:
 
     - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
 
-    - Host (Hostitel): Zadejte subdoménu své vlastní domény, kterou chcete použít, včetně názvu subdomény cdnverify. Například cdnverify.www.
+    - Host (Hostitel): Zadejte subdoménu své vlastní domény, kterou chcete použít, včetně názvu subdomény cdnverify. Například cdnverify. www.
 
     - Points to (Odkazuje na): Zadejte název hostitele vašeho koncového bodu CDN včetně názvu subdomény cdnverify. Například cdnverify.contoso.azureedge.net. 
 
     - TTL: Ponechte vybranou hodnotu *1 Hour* (1 hodina).
 
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
  
     Záznam CNAME se přidá do tabulky záznamů DNS.
 
@@ -134,7 +134,7 @@ Po zaregistrování vlastní domény ji můžete přidat do svého koncového bo
    Azure ověří, že pro zadaný název vlastní domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří. 
 
    Rozšíření nastavení nové vlastní domény do všech hraničních uzlů CDN může chvíli trvat: 
-    - Šíření profilů **Azure CDN Standard od Microsoftu** trvá většinou 10 minut. 
+    - U profilů **Azure CDN Standard od Microsoftu** šíření trvá většinou 10 minut. 
     - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
     - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut.   
 
@@ -162,7 +162,7 @@ Vytvoření záznamu CNAME pro vlastní doménu:
 
     | Zdroj          | Typ  | Cíl           |
     |-----------------|-------|-----------------------|
-    | < www. contoso. com > | CNAME | contoso.azureedge.net |
+    | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
    - Zdroj: zadejte název vlastní domény (například www\.contoso.com).
 
@@ -198,7 +198,7 @@ Například postup pro registrátora domén GoDaddy je následující:
 
     - TTL: Ponechte vybranou hodnotu *1 Hour* (1 hodina).
 
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
  
     Záznam CNAME se přidá do tabulky záznamů DNS.
 

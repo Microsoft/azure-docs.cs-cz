@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903375"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389842"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžícího na Windows Serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů se systémem Windows Server, je místní nebo s jakýmkoli poskytovatelem cloudu. Service Fabric poskytuje instalační balíček pro vytváření clusterů Service Fabric s názvem samostatný balíček Windows serveru. Tradiční Service Fabric clustery v Azure jsou k dispozici jako spravovaná služba, zatímco samostatné clustery Service Fabric jsou samoobslužné. Další informace o rozdílech najdete v tématu [porovnání clusterů Azure a samostatných Service Fabric](./service-fabric-deploy-anywhere.md).
@@ -18,7 +18,7 @@ Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na
 Tento článek vás provede kroky pro vytvoření samostatného clusteru Service Fabric.
 
 > [!NOTE]
-> Tento samostatný balíček Windows serveru je komerčně dostupný zdarma a může se používat pro produkční nasazení. Tento balíček může obsahovat nové funkce Service Fabric, které jsou ve verzi Preview. Posuňte se dolů k[funkcím verze Preview, které jsou součástí tohoto balíčku](#previewfeatures_anchor). v části pro seznam funkcí verze Preview. Je možné [stáhnout kopii této smlouvy EULA](https://go.microsoft.com/fwlink/?LinkID=733084) nyní.
+> Tento samostatný balíček Windows serveru je komerčně dostupný zdarma a může se používat pro produkční nasazení. Tento balíček může obsahovat nové funkce Service Fabric, které jsou ve verzi Preview. Posuňte se dolů k[funkcím verze Preview, které jsou součástí tohoto balíčku](#previewfeatures_anchor). v části pro seznam funkcí verze Preview. [Kopii smlouvy EULA](https://go.microsoft.com/fwlink/?LinkID=733084) si můžete stáhnout hned teď.
 > 
 > 
 
@@ -154,7 +154,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 Podle toho, jak se vaše obchodní potřeby mění, můžete uzly do samostatného clusteru Service Fabric přidávat nebo je z něj odebírat. Podrobné kroky najdete v tématu [Přidávání uzlů do samostatného clusteru Service Fabric nebo jejich odebírání](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
 <a id="removecluster" name="removecluster_anchor"></a>
-## <a name="remove-a-cluster"></a>Odebrat cluster
+## <a name="remove-a-cluster"></a>Odebrání clusteru
 Chcete-li cluster odebrat, spusťte skript *RemoveServiceFabricCluster.ps1* prostředí PowerShell ze složky balíčku a předejte mu cestu ke konfiguračnímu souboru JSON. Volitelně můžete určit umístění pro protokol odstranění.
 
 Tento skript můžete spustit na jakýkoli počítač, který má přístup správce pro všechny počítače, které jsou označeny jako uzly v clusteru konfigurační soubor. Počítače, ve kterém se skript spouští na nemusí být součástí clusteru.

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
 ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646381"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356607"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřazení více IP adres k virtuálním počítačům pomocí Azure Portal
 
@@ -55,7 +55,7 @@ V závislosti na typu IP adresy, kterou chcete přidat, proveďte kroky v jedné
 Chcete-li přidat novou privátní IP adresu, proveďte následující kroky:
 
 1. Proveďte kroky v části [základní kroky](#coreadd) tohoto článku.
-2. Klikněte na tlačítko **Add** (Přidat). V podokně **Přidat konfiguraci protokolu IP** , které se zobrazí, vytvořte konfiguraci protokolu IP s názvem *ipconfig-4* s *10.0.0.7* jako se *statickou* privátní IP adresou a pak klikněte na **OK**.
+2. Klikněte na **Přidat**. V podokně **Přidat konfiguraci protokolu IP** , které se zobrazí, vytvořte konfiguraci protokolu IP s názvem *ipconfig-4* s *10.0.0.7* jako se *statickou* privátní IP adresou a pak klikněte na **OK**.
 
     > [!NOTE]
     > Když přidáváte statickou IP adresu, musíte v podsíti, ke které je připojená síťová karta, zadat nepoužitou platnou adresu. Pokud vybraná adresa není k dispozici, portál zobrazí X pro IP adresu a Vy musíte vybrat jinou.
@@ -87,7 +87,7 @@ Veřejná IP adresa je jedno nastavení pro prostředek veřejné IP adresy. Pok
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Přidružte prostředek veřejné IP adresy k nové konfiguraci protokolu IP.
 
 1. Proveďte kroky v části [základní kroky](#coreadd) tohoto článku.
-2. Klikněte na tlačítko **Add** (Přidat). V podokně **Přidat konfiguraci protokolu IP** , které se zobrazí, vytvořte konfiguraci protokolu IP s názvem *ipconfig-4*. Povolte **veřejnou IP adresu** a vyberte existující dostupný prostředek veřejné IP adresy z podokna **zvolit veřejnou IP adresu** , které se zobrazí.
+2. Klikněte na **Přidat**. V podokně **Přidat konfiguraci protokolu IP** , které se zobrazí, vytvořte konfiguraci protokolu IP s názvem *ipconfig-4*. Povolte **veřejnou IP adresu** a vyberte existující dostupný prostředek veřejné IP adresy z podokna **zvolit veřejnou IP adresu** , které se zobrazí.
 
     Po výběru prostředku veřejné IP adresy klikněte na **OK** a zavře se podokno. Pokud nemáte existující veřejnou IP adresu, můžete ji vytvořit provedením kroků v části [vytvoření prostředku veřejné IP adresy](#create-public-ip) v tomto článku. 
 
