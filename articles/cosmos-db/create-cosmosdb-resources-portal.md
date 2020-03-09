@@ -9,19 +9,19 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
 ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560826"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385421"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](create-cosmosdb-resources-portal.md)
-> * [.NET](create-sql-api-dotnet.md)
-> * [Java](create-sql-api-java.md)
-> * [Node.js](create-sql-api-nodejs.md)
+> * [Platformy](create-sql-api-dotnet.md)
+> * [Kompilátor](create-sql-api-java.md)
+> * [Node. js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
@@ -30,7 +30,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit účet Azure Cosmos DB [rozhraní SQL API](sql-api-introduction.md) , vytvořit databázi dokumentů a kontejner a přidat data do kontejneru. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadovaný
 
 Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -38,7 +38,7 @@ Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
-## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -55,12 +55,12 @@ K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure 
     
 1.  V podokně **Přidat kontejner** zadejte nastavení pro nový kontejner.
     
-    |Nastavení|Navrhovaná hodnota|Popis
+    |Nastavením|Navrhovaná hodnota|Název
     |---|---|---|
     |**ID databáze**|ToDoList|Jako název nové databáze zadejte *ToDoList* . Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`ani mezeru. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
-    |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
-    |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . ID kontejnerů mají stejné požadavky na znaky jako názvy databází.|
-    |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
+    |**Zvyšují**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud chcete snížit latenci, můžete propustnost později škálovat.| 
+    |**ID kontejneru**|Položek|Jako název nového kontejneru zadejte *položky* . ID kontejnerů mají stejné požadavky na znaky jako názvy databází.|
+    |**Klíč oddílu**| /Category| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
 
     
     Nepřidávat **jedinečné klíče** pro tento příklad. Jedinečné klíče umožňují přidat do databáze vrstvu integrity dat tím, že zajistí jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v tématu [jedinečné klíče v Azure Cosmos DB](unique-keys.md).
@@ -73,7 +73,7 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
 
 1. V **Průzkumník dat**rozbalte databázi **ToDoList** a rozbalte kontejner **položky** . V dalším kroku vyberte **položky**a pak vyberte **Nová položka**. 
    
-   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   ![Vytváření nových dokumentů v Průzkumník dat Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
 1. Přidejte následující strukturu do dokumentu na pravé straně podokna **dokumenty** :
 
@@ -87,13 +87,13 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
      }
      ```
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
    
    ![Zkopírujte data JSON a vyberte Uložit v Průzkumník dat Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    
 1. Znovu vyberte **Nový dokument** a vytvořte a uložte jiný dokument s jedinečným `id`a dalšími vlastnostmi a hodnotami, které chcete. Vaše dokumenty můžou mít jakoukoli strukturu, protože Azure Cosmos DB do vašich dat neukládají žádné schéma.
 
-## <a name="query-your-data"></a>Dotazování dat
+## <a name="query-your-data"></a>Dotazování na data
 
 [!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)] 
 
@@ -109,7 +109,7 @@ Pokud chcete odstranit jenom databázi a používat účet Azure Cosmos v budouc
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos DB, vytvořit databázi a kontejner pomocí Průzkumník dat. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data. 
+V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos DB, vytvořit databázi a kontejner pomocí Průzkumník dat. Teď můžete do účtu Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
-> [Importování dat do služby Azure Cosmos DB](import-data.md)
+> [Importovat data do Azure Cosmos DB](import-data.md)

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668209"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395769"
 ---
-# <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
+# <a name="common-alert-schema-definitions"></a>Běžné definice schémat výstrah
 
 Tento článek popisuje [běžné definice schématu výstrah](https://aka.ms/commonAlertSchemaDocs) pro Azure monitor, včetně těch pro Webhooky, Azure Logic Apps, Azure Functions a Azure Automation Runbooky. 
 
@@ -71,11 +71,11 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 ## <a name="essentials"></a>Základy
 
-| Pole | Popis|
+| Dílčí | Název|
 |:---|:---|
 | alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
 | alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
-| Závažnost | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3 nebo Sev4. |
+| závažnost | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3 nebo Sev4. |
 | signalType | Určuje signál, na kterém bylo pravidlo výstrahy definováno. Možné hodnoty: metrika, protokol nebo protokol aktivit. |
 | monitorCondition | Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na **aktivováno**. Pokud je podkladová podmínka, která způsobila výstrahu, **vyhodnocena**jako nejasná, je stav monitorování nastaven na hodnotu Vyřešeno.   |
 | monitoringService | Služba monitorování nebo řešení, které výstrahu vygenerovalo. Pole pro kontext výstrahy určuje služba monitorování. |
@@ -83,7 +83,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 | originAlertId | ID instance výstrahy vygenerované službou monitorování. |
 | firedDateTime | Datum a čas, kdy byla instance výstrahy vyvolána v koordinovaném univerzálním čase (UTC). |
 | resolvedDateTime | Datum a čas, kdy je podmínka monitorování instance výstrahy nastavena na hodnotu **Vyřešeno** ve formátu UTC. V současné době platí jenom pro výstrahy metriky.|
-| description | Popis definovaný v pravidle výstrahy. |
+| Název | Popis definovaný v pravidle výstrahy. |
 |essentialsVersion| Číslo verze oddílu základy.|
 |alertContextVersion | Číslo verze oddílu `alertContext`. |
 
@@ -111,7 +111,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 ## <a name="alert-context"></a>Kontext výstrahy
 
-### <a name="metric-alerts"></a>Upozornění metrik
+### <a name="metric-alerts"></a>Výstrahy metriky
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -281,7 +281,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 }
 ```
 
-### <a name="activity-log-alerts"></a>Upozornění protokolu aktivit
+### <a name="activity-log-alerts"></a>Výstrahy protokolu aktivit
 
 #### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 

@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: fc81226e754178ad0edfff96a494dd7522662261
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368504"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395446"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití služby Azure Event Hubs z aplikací Apache Kafka
 Služba Event Hubs poskytuje Kafka koncového bodu, který lze použít ve stávajících Kafka aplikací založených na jako alternativu ke spuštění clusteru Kafka. Event Hubs podporuje [Apache Kafka protokol 1,0 a novější](https://kafka.apache.org/documentation/)a funguje s vašimi stávajícími aplikacemi Kafka, včetně nástroje MirrorMaker.  
@@ -33,7 +33,7 @@ Koncepční Kafka a Event Hubs jsou téměř identické: Jedná se o segmentovan
 | Cluster | Obor názvů |
 | Téma | Centrum událostí |
 | Oddíl | Oddíl|
-| Skupiny příjemců | Skupiny příjemců |
+| Skupina uživatelů | Skupina uživatelů |
 | Posun | Posun|
 
 ### <a name="key-differences-between-kafka-and-event-hubs"></a>Hlavní rozdíly mezi Kafka a Event Hubs

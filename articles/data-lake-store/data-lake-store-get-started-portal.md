@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438747"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385686"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal
 
@@ -26,7 +26,7 @@ ms.locfileid: "75438747"
 
 Naučte se, jak pomocí Azure Portal vytvořit účet Data Lake Storage Gen1 a provádět základní operace, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace najdete v tématu [přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
@@ -56,7 +56,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 
         Další informace najdete v tématu [šifrování dat v Azure Data Lake Storage Gen1](./data-lake-store-encryption.md).
 
-4. Klikněte na **Vytvořit**. Pokud jste se rozhodli připnout účet na řídicí panel, přejdete zpátky na řídicí panel a uvidíte průběh zřizování účtu Data Lake Storage Gen1. Po zřízení účtu Data Lake Storage Gen1 se zobrazí okno účtu.
+4. Klikněte na možnost **Vytvořit**. Pokud jste se rozhodli připnout účet na řídicí panel, přejdete zpátky na řídicí panel a uvidíte průběh zřizování účtu Data Lake Storage Gen1. Po zřízení účtu Data Lake Storage Gen1 se zobrazí okno účtu.
 
 ## <a name="assign-permissions-to-azure-key-vault"></a>Přiřazení oprávnění pro Azure Key Vault
 
@@ -103,7 +103,7 @@ Data můžete na účet Data Lake Storage Gen1 nahrát přímo na úrovni kořen
 1. V okně **Průzkumník dat** klikněte na **Nahrát**.
 2. V okně **Nahrát soubory** přejděte k souborům, které chcete nahrát, a pak klikněte na **Přidat vybrané soubory**. Pro nahrání můžete také vybrat více než jeden soubor.
 
-    ![Nahrávání dat](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Nahrávání dat")
+    ![Nahrávání dat](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Nahrání dat")
 
 Pokud hledáte ukázková data, která byste mohli nahrát, můžete použít složku **Ambulance Data** z [úložiště Git Azure Data Lake](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData).
 
@@ -113,11 +113,11 @@ Klikněte na ikonu se třemi tečkami naproti souboru a v místní nabídce klik
 
 ![Vlastnosti dat](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Vlastnosti dat")
 
-## <a name="secure-your-data"></a>Zabezpečte svoje data
+## <a name="secure-your-data"></a>Zabezpečení dat
 
 Data uložená ve vašem účtu Data Lake Storage Gen1 můžete zabezpečit pomocí Azure Active Directory a řízení přístupu (ACL). Pokyny k tomu, jak to provést, najdete v tématu [zabezpečení dat v Azure Data Lake Storage Gen1](data-lake-store-secure-data.md).
 
-## <a name="delete-your-account"></a>Odstranit účet
+## <a name="delete-your-account"></a>Odstranění účtu
 
 Pokud chcete účet Data Lake Storage Gen1 odstranit, v okně Data Lake Storage Gen1 klikněte na **Odstranit**. Tuto akci je nutné potvrdit, a proto se zobrazí výzva k zadání názvu účtu, který chcete odstranit. Zadejte název účtu a klikněte na možnost **Odstranit**.
 

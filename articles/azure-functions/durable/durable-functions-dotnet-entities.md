@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198492"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357885"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Příručka pro vývojáře k odolným entitám v .NET
 
@@ -203,7 +203,7 @@ Kromě poskytování kontroly typu rozhraní jsou užitečná pro lepší odděl
 
 ### <a name="example-client-signals-entity-through-interface"></a>Příklad: klient signalizuje entitu prostřednictvím rozhraní.
 
-Klientský kód může použít `SignalEntityAsync<TEntityInterface>` k odesílání signálů entitám, které implementují `TEntityInterface`. Například:
+Klientský kód může použít `SignalEntityAsync<TEntityInterface>` k odesílání signálů entitám, které implementují `TEntityInterface`. Příklad:
 
 ```csharp
 [FunctionName("DeleteCounter")]

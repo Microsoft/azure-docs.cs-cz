@@ -5,18 +5,18 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450030"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396815"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Obnovení souborů do Windows pomocí modelu nasazení Azure Resource Manager
 
-Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li obnovit data, použijte Průvodce obnovením dat v agentovi Microsoft Azure Recovery Services (MARS). Můžete:
+Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li obnovit data, použijte Průvodce obnovením dat v agentovi Microsoft Azure Recovery Services (MARS). Můžeš:
 
 * Obnovte data na stejném počítači, ze kterého byly zálohy pořízeny.
-* Obnovení dat na jiný počítač
+* Obnovte data na alternativním počítači.
 
 Pomocí funkce okamžitého obnovení můžete připojit zapisovatelný zapisovatelný snímek bodu obnovení jako svazek pro obnovení. Pak můžete prozkoumat svazek pro obnovení a kopírovat soubory do místního počítače, a tak selektivně obnovovat soubory.
 
@@ -32,7 +32,7 @@ Pomocí okamžitého obnovení s Recovery Services trezory v Azure Portal. Pokud
 
 Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače (ze kterého se zálohování provádí), při obnovování těchto dat vám pomůže následující postup.
 
-1. Otevřete modul snap-in **Microsoft Azure Backup**. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **Microsoft Azure Backup**v počítači nebo na serveru.
+1. Otevřete modul snap-in **Microsoft Azure Backup** . Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **Microsoft Azure Backup**v počítači nebo na serveru.
 
     Aplikace klasické pracovní plochy by se měla zobrazit ve výsledcích hledání.
 

@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: MT
+ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194496"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358520"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity Platform (v 2.0) – přehled
 
@@ -33,7 +33,7 @@ Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Di
   - Sociální nebo místní účty (prostřednictvím Azure AD B2C)
 - **Open source knihovny**: knihovny Microsoft Authentication Library (MSAL) a podpora dalších knihoven odpovídajících standardům
 - **Portál pro správu aplikací**: prostředí pro registraci a konfiguraci vytvořené v Azure Portal společně se všemi ostatními možnostmi správy Azure.
-- **Rozhraní API pro konfiguraci aplikací a PowerShell**: umožňuje programovou konfiguraci vašich aplikací prostřednictvím REST API (Microsoft Graph a Azure Active Directory Graph 1,6) a PowerShellu, takže můžete automatizovat úlohy DevOps.
+- **Rozhraní API pro konfiguraci aplikací a PowerShell**: umožňuje programovou konfiguraci vašich aplikací prostřednictvím rozhraní Microsoft Graph API a PowerShellu, takže můžete automatizovat úlohy DevOps.
 - **Vývojářský obsah**: koncepční a referenční dokumentace, ukázky pro rychlý Start, ukázky kódu, kurzy a návody.
 
 Pro vývojáře nabízí Microsoft Identity Platform bezproblémovou integraci do inovací v rámci identity a prostoru zabezpečení, jako je ověřování bez hesla, krokové ověřování a podmíněný přístup.  Nemusíte tyto funkce implementovat sami: aplikace integrované s Microsoft Identity platformou nativně využívají takové inovace.

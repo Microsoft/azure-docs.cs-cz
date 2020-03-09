@@ -8,11 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906980"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396521"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -22,7 +22,7 @@ Tento článek vysvětluje kvóty pro IoT Hub a poskytuje informace, které vám
 
 Každé předplatné Azure může mít maximálně 50 IoT Hub a maximálně 1 bezplatné centrum.
 
-Každé centrum IoT se zřizuje s určitým počtem jednotek na konkrétní úrovni. Úroveň a počet jednotek určují maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, která se používá k výpočtu denní kvóty, je 0,5 KB pro rozbočovač úrovně Free a 4KB pro všechny ostatní úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+Každé centrum IoT se zřizuje s určitým počtem jednotek na konkrétní úrovni. Tato úroveň a počet jednotek určují maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, která se používá k výpočtu denní kvóty, je 0,5 KB pro rozbočovač úrovně Free a 4KB pro všechny ostatní úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Vrstva také určuje omezení omezování, která IoT Hub vynutila pro všechny operace.
 
@@ -93,7 +93,7 @@ Pokud například koupíte jednu jednotku S1, získáte omezení 100 připojení
 
 IoT Hub vynutila jiné provozní limity:
 
-| Operace | škálování |
+| Operace | Omezení |
 | --------- | ----- |
 | Zařízení | Celkový počet zařízení plus modulů, které se dají zaregistrovat do jednoho centra IoT Hub, je omezené na 1 000 000. Jediným způsobem, jak tento limit zvýšit, je kontaktovat [Podpora Microsoftu](https://azure.microsoft.com/support/options/).|
 | Nahrání souborů | 10 souběžných nahrávání souborů na zařízení. |

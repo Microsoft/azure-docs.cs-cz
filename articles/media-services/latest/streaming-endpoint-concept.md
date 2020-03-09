@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562356"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395073"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Koncové body streamování (počátek) v Azure Media Services
 
@@ -59,7 +59,7 @@ Informace o smlouvě SLA najdete v článku [ceny a smlouvy SLA](https://azure.m
 
 ## <a name="comparing-streaming-types"></a>Porovnávání typů streamování
 
-Funkce|Standardní|Premium
+Funkce|Standard|Premium
 ---|---|---
 Propustnost |Až 600 MB/s a při použití CDN může poskytovat mnohem vyšší efektivní propustnost.|200 MB/s na jednotku streamování (SU). Může poskytovat mnohem vyšší efektivní propustnost při použití CDN.
 CDN|Azure CDN, CDN třetí strany nebo bez CDN.|Azure CDN, CDN třetí strany nebo bez CDN.
@@ -150,7 +150,7 @@ Jeden koncový bod streamování může streamovat videa živě i na vyžádán�
 
     Vezměte v úvahu scénář, ve kterém budou vaši zákazníci hlavně sledovat živý obsah, ale občas sledují obsah na vyžádání a je obsluhován ze stejného koncového bodu streamování. Nízké využití obsahu na vyžádání by zabíralo místo v mezipaměti, které by bylo lépe uloženo pro živý obsah. V tomto scénáři doporučujeme, abyste zasloužili živý obsah z jednoho koncového bodu streamování a z jiného koncového bodu streamování obsah Long. Tím se zvýší výkon obsahu živé události.
     
-## <a name="scaling-streaming-with-cdn"></a>Škálování streamování pomocí CDN
+## <a name="scaling-streaming-with-cdn"></a>Škálování streamování s využitím CDN
 
 Viz následující články:
 

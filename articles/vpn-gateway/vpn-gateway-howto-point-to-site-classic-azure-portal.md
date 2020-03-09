@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894873"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391267"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-site pomocí ověřování certifikátů (Classic)
 
@@ -35,7 +35,7 @@ Bránu VPN typu Point-to-Site (P2S) můžete použít k vytvoření zabezpečen�
 
 ![Diagram Point-to-Site](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Připojení pro ověřování certifikátů Point-to-site vyžadují následující požadavky:
 
@@ -79,13 +79,13 @@ Než začnete, ověřte, že máte předplatné Azure. Pokud ještě nemáte př
 
 ### <a name="part-1-create-a-virtual-network"></a>Část 1: Vytvoření virtuální sítě
 
-Pokud ještě nemáte virtuální síť (VNet), vytvořte ji. Snímky obrazovek slouží jen jako příklady. Hodnoty na obrázcích nahraďte vlastními hodnotami. Pokud chcete vytvořit virtuální síť přes Azure Portal, použijte následující postup:
+Pokud ještě nemáte virtuální síť (VNet), vytvořte ji. Snímky obrazovek slouží jen jako příklady. Nezapomeňte hodnoty nahradit vlastními. Pokud chcete vytvořit virtuální síť přes Azure Portal, použijte následující postup:
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**. **Nový** otevře se stránka.
+1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**. Otevře se **Nová** stránka.
 
-2. V **Hledat na marketplace** zadejte *virtuální sítě* a vyberte **virtuální síť** z vráceném seznamu. **Virtuální síť** otevře se stránka.
+2. Do pole **Hledat na Marketplace** zadejte *Virtual Network* a ze vráceného seznamu vyberte **virtuální síť** . Otevře se stránka **virtuální síť** .
 
-3. V seznamu **Vybrat model nasazení** vyberte **Classic**a pak vyberte **vytvořit**. **Vytvořit virtuální síť** otevře se stránka.
+3. V seznamu **Vybrat model nasazení** vyberte **Classic**a pak vyberte **vytvořit**. Otevře se stránka **vytvořit virtuální síť** .
 
 4. Na stránce **Vytvořit virtuální síť** nakonfigurujte nastavení virtuální sítě. Na této stránce přidáte první adresní prostor a jeden rozsah adres podsítě. Po dokončení vytváření sítě VNet můžete přejít zpět a přidat další podsítě a adresní prostory.
 

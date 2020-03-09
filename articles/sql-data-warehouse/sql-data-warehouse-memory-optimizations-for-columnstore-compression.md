@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 11c0a168e4b2e8eac03eaebd37b208446082d1b4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197194"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381093"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace kvality skupiny řádků pro columnstore
 
@@ -119,7 +119,7 @@ Databáze sdílí udělení paměti pro dotaz mezi všemi operátory v dotazu. K
 
 Navrhněte zátěžový dotaz, abyste se mohli zaměřit pouze na načtení dotazu. Pokud potřebujete pro data spustit transformace, spouštějte je odděleně od načteného dotazu. Můžete například připravit data v tabulce haldy, spustit transformace a pak načíst pracovní tabulku do indexu columnstore. Můžete také načíst data jako první a potom použít systém MPP k transformaci dat.
 
-### <a name="adjust-maxdop"></a>Adjust MAXDOP
+### <a name="adjust-maxdop"></a>Upravit MAXDOP
 
 Každá distribuce komprimuje rowgroups do columnstore paralelně, pokud je pro jednotlivé distribuce k dispozici více než jeden procesor. Paralelismus vyžaduje další paměťové prostředky, což může vést k přetížení paměti a oříznutí skupiny řádků.
 

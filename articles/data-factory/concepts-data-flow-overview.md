@@ -1,5 +1,5 @@
 ---
-title: Toky dat mapování
+title: Mapování toků dat
 description: Přehled toků mapování dat v Azure Data Factory
 author: kromerm
 ms.author: makromer
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444509"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395965"
 ---
-# <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
+# <a name="what-are-mapping-data-flows"></a>Co jsou mapování toků dat?
 
 Mapování datových toků je vizuálně navržené transformace dat v Azure Data Factory. Datové toky umožňují technikům pro transformaci dat pracovat s grafickými logikami bez psaní kódu. Výsledné toky dat se spouštějí jako aktivity v rámci Azure Data Factory kanálů, které používají clustery Spark se škálováním na více systémů. Aktivity toku dat je možné provozovat prostřednictvím stávajících Data Factory plánování, řízení, toku a monitorování.
 
@@ -33,13 +33,13 @@ Tím přejdete na plátno toku dat, kde můžete vytvořit logiku transformace. 
 
 Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfigurace. 
 
-![Plátno](media/data-flow/canvas1.png "Plátno")
+![Kreslicí](media/data-flow/canvas1.png "Kreslicí")
 
-### <a name="graph"></a>Grafová databáze
+### <a name="graph"></a>Zapisovací
 
 Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace.
 
-![Plátno](media/data-flow/canvas2.png "Plátno")
+![Kreslicí](media/data-flow/canvas2.png "Kreslicí")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Vlastnosti toku dat prostředí Azure Integration runtime
 
@@ -87,11 +87,11 @@ První karta v podokně Konfigurace každé transformace obsahuje nastavení spe
 
 ![Karta nastavení zdroje](media/data-flow/source1.png "Karta nastavení zdroje")
 
-#### <a name="optimize"></a>Optimalizace
+#### <a name="optimize"></a>Zvýšit
 
 Karta **optimalizace** obsahuje nastavení pro konfiguraci schémat dělení.
 
-![Optimalizovat](media/data-flow/optimize1.png "Optimalizace")
+![Zvýšit](media/data-flow/optimize1.png "Zvýšit")
 
 Ve výchozím nastavení se **používá aktuální dělení**, které dává pokyn Azure Data Factory, aby používalo schéma dělení, které je nativní pro toky dat běžící na Sparku. Ve většině scénářů doporučujeme toto nastavení.
 
@@ -109,7 +109,7 @@ K dispozici jsou následující možnosti dělení.
 
 Kruhové dotazování je jednoduchý oddíl, který automaticky distribuuje data rovnoměrně mezi oddíly. Použijte kruhové dotazování, pokud nemáte vhodné klíčové kandidáty k implementaci ucelené strategie vytváření oddílů. Můžete nastavit počet fyzických oddílů.
 
-##### <a name="hash"></a>Hodnota hash
+##### <a name="hash"></a>Kontrole
 
 Azure Data Factory vytvoří hodnotu hash sloupců pro vytvoření stejnorodých oddílů tak, aby řádky s podobnými hodnotami byly ve stejném oddílu. Když použijete možnost hash, otestujete možnou hodnotu zešikmení oddílu. Můžete nastavit počet fyzických oddílů.
 
@@ -121,15 +121,15 @@ Dynamický rozsah bude používat dynamické rozsahy Sparku na základě sloupc�
 
 Sestavte výraz, který poskytuje pevný rozsah pro hodnoty v rámci sloupců s dělenými daty. Abyste se vyhnuli zkosení oddílu, měli byste před použitím této možnosti dobře pochopit svá data. Hodnoty, které zadáte pro výraz, budou použity jako součást funkce oddílu. Můžete nastavit počet fyzických oddílů.
 
-##### <a name="key"></a>Klíč
+##### <a name="key"></a>Zkrat
 
 Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření oddílů dobrým zvykem. Při vytváření oddílů se vytvoří oddíly pro každou jedinečnou hodnotu ve sloupci. Počet oddílů nejde nastavit, protože číslo bude založené na jedinečných hodnotách v datech.
 
-#### <a name="inspect"></a>Inspect
+#### <a name="inspect"></a>Prohlížen
 
 Karta **Kontrola** poskytuje zobrazení metadat datového proudu, který transformuje. Můžete zobrazit počty sloupců, změněné sloupce, přidané sloupce, datové typy, řazení sloupců a odkazy na sloupce. **Kontrola** je zobrazení vašich metadat jen pro čtení. Není nutné mít povolen režim ladění, aby bylo možné zobrazit metadata v podokně **Kontrola** .
 
-![Prohlížen](media/data-flow/inspect1.png "Inspect")
+![Prohlížen](media/data-flow/inspect1.png "Prohlížen")
 
 Když změníte tvar dat prostřednictvím transformací, v podokně **Kontrola** se zobrazí tok změn metadat. Pokud ve zdrojové transformaci není definované schéma, metadata se v podokně **Kontrola** nezobrazí. Nedostatek metadat je běžné ve scénářích pro posun schématu.
 

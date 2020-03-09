@@ -1,46 +1,46 @@
 ---
-title: Kurz Kubernetes v Azure – Vytvoření registru kontejneru
-description: V tomto kurzu Azure Kubernetes Service (AKS) vytvoříte instanci služby Azure Container Registry a nahrajete image kontejneru ukázkové aplikace.
+title: Kurz Kubernetes v Azure – vytvoření registru kontejnerů
+description: V tomto kurzu AKS (Azure Kubernetes Service) vytvoříte instanci Azure Container Registry a nahrajete ukázkovou image kontejneru aplikace.
 services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: 6b8d520a539f69889b1e1bd23d255f3fe19b8717
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593202"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374582"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
+# <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: nasazení a použití Azure Container Registry
 
-Azure Container Registry (ACR) je privátní registr pro Image kontejnerů. Privátní registr kontejneru umožňuje zabezpečeně sestavovat a nasazovat aplikace a vlastní kód. V tomto kurzu, který je druhou částí sedmidílné série, nasadíte instanci ACR a odešlete do ní image kontejneru. Získáte informace o těchto tématech:
+Azure Container Registry (ACR) je privátní registr pro Image kontejnerů. Privátní registr kontejnerů umožňuje bezpečné sestavení a nasazení aplikací a vlastního kódu. V tomto kurzu, který je druhou částí 7, nasadíte instanci ACR a nahrajete do ní image kontejneru. Naučíte se:
 
 > [!div class="checklist"]
-> * Vytvoření instance služby Azure Container Registry (ACR)
-> * Označit image kontejneru pro službu ACR
-> * Odeslat image do služby ACR
+> * Vytvoření instance Azure Container Registry (ACR)
+> * Označení image kontejneru pro ACR
+> * Nahrání image do ACR
 > * Zobrazení imagí v registru
 
 V dalších kurzech se tato instance ACR integruje s clusterem Kubernetes v AKS a z image se nasadí aplikace.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-V [předchozím kurzu][aks-tutorial-prepare-app] byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure ještě nevytvořili, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru][aks-tutorial-prepare-app].
+V [předchozím kurzu][aks-tutorial-prepare-app]byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure nevytvořili, vraťte se ke [kurzu 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
-Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][azure-cli-install].
 
-## <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
+## <a name="create-an-azure-container-registry"></a>Vytvoření Azure Container Registry
 
-Pokud chcete vytvořit službu Azure Container Registry, potřebujete nejprve skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Pokud chcete vytvořit Azure Container Registry, musíte nejdřív potřebovat skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*:
+Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] . V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus* :
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Pomocí příkazu [AZ ACR Create][az-acr-create] vytvořte instanci Azure Container registry a zadejte vlastní název registru. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Ve zbývající části tohoto kurzu se jako zástupný název registru kontejneru používá `<acrName>`. Zadejte vlastní jedinečný název registru. Skladová položka *Basic* představuje vstupní bod optimalizovaný z hlediska nákladů pro účely vývoje a poskytuje vyváženou kombinaci úložiště a propustnosti.
+Pomocí příkazu [AZ ACR Create][az-acr-create] vytvořte instanci Azure Container registry a zadejte vlastní název registru. Název registru musí být v rámci Azure jedinečný a obsahovat 5-50 alfanumerických znaků. Ve zbývající části tohoto kurzu se `<acrName>` používá jako zástupný symbol pro název registru kontejneru. Zadejte vlastní jedinečný název registru. *Základní* SKU je cenově optimalizovaný vstupní bod pro účely vývoje, který poskytuje rovnováhu mezi úložištěm a propustností.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -48,13 +48,13 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## <a name="log-in-to-the-container-registry"></a>Přihlášení k registru kontejneru
 
-Pokud chcete používat instanci ACR, musíte se nejprve přihlásit. Pomocí příkazu [AZ ACR Login][az-acr-login] zadejte jedinečný název, který se v předchozím kroku předává do registru kontejneru.
+Pokud chcete použít instanci ACR, musíte se nejdřív přihlásit. Pomocí příkazu [AZ ACR Login][az-acr-login] zadejte jedinečný název, který se v předchozím kroku předává do registru kontejneru.
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-Příkaz po dokončení vrátí zprávu *Login Succeeded* (Přihlášení proběhlo úspěšně).
+Příkaz po dokončení vrátí zprávu o *úspěšném přihlášení* .
 
 ## <a name="tag-a-container-image"></a>Označení image kontejneru
 
@@ -69,7 +69,7 @@ redis                        latest              a1b99da73d05        7 days ago 
 tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
 ```
 
-Pokud chcete použít image kontejneru *azure-vote-front* s ACR, musí být image označená pomocí adresy přihlašovacího serveru vašeho registru. Tato značka se používá pro směrování při nahrávání imagí kontejneru do registru imagí.
+Pokud chcete použít image kontejneru *Azure-hlasování* s ACR, musí být image označená adresou přihlašovacího serveru vašeho registru. Tato značka se používá pro směrování při vkládání imagí kontejneru do registru imagí.
 
 Chcete-li získat adresu přihlašovacího serveru, použijte příkaz [AZ ACR list][az-acr-list] a dotaz na *loginServer* následujícím způsobem:
 
@@ -77,13 +77,13 @@ Chcete-li získat adresu přihlašovacího serveru, použijte příkaz [AZ ACR l
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Teď si označíte svůj místní obrázek *Azure-hlasování* s adresou *acrLoginServer* registru kontejneru. Na konec názvu image přidejte *:v1*, abyste označili číslo verze image:
+Teď si označíte svůj místní obrázek *Azure-hlasování* s adresou *acrLoginServer* registru kontejneru. Chcete-li určit verzi obrázku, přidejte *: V1* na konec názvu bitové kopie:
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Chcete-li ověřit, zda byly značky aplikovány, spusťte znovu [Image Docker][docker-images] . Image je označená pomocí adresy instance ACR a čísla verze.
+Chcete-li ověřit, zda byly značky aplikovány, spusťte znovu [Image Docker][docker-images] . Obrázek je označený adresou instance ACR a číslem verze.
 
 ```
 $ docker images
@@ -95,7 +95,7 @@ redis                                                latest        a1b99da73d05 
 tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313        8 months ago        694 MB
 ```
 
-## <a name="push-images-to-registry"></a>Nahrávání imagí do registru
+## <a name="push-images-to-registry"></a>Vložení imagí do registru
 
 Když jste vytvořili a označili obrázek, nahrajte do instance ACR obrázek *hlasování Azure* . Použijte [Docker push][docker-push] a zadejte vlastní adresu *acrLoginServer* pro název bitové kopie následujícím způsobem:
 
@@ -103,17 +103,17 @@ Když jste vytvořili a označili obrázek, nahrajte do instance ACR obrázek *h
 docker push <acrLoginServer>/azure-vote-front:v1
 ```
 
-Odeslání image do ACR může trvat několik minut.
+Dokončení vložení image do ACR může trvat několik minut.
 
-## <a name="list-images-in-registry"></a>Vypsání imagí v registru
+## <a name="list-images-in-registry"></a>Výpis obrázků v registru
 
-Pokud chcete vrátit seznam imagí, které byly vloženy do instance ACR, použijte příkaz [AZ ACR úložiště list][az-acr-repository-list] . Zadejte vlastní hodnotu `<acrName>` následujícím způsobem:
+Pokud chcete vrátit seznam imagí, které byly vloženy do instance ACR, použijte příkaz [AZ ACR úložiště list][az-acr-repository-list] . Následujícím způsobem zadejte vlastní `<acrName>`:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
-Následující příklad výstupu jako dostupnou image v registru uvádí *azure-vote-front*:
+Následující příklad výstupu uvádí obrázek pro *hlasování Azure* , jak je k dispozici v registru:
 
 ```
 Result
@@ -127,7 +127,7 @@ Chcete-li zobrazit značky pro konkrétní obrázek, použijte příkaz [AZ ACR 
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
 ```
 
-Následující příklad výstupu ukazuje image *v1* označenou v předchozím kroku:
+Následující příklad výstupu ukazuje image *v1* označená v předchozím kroku:
 
 ```
 Result
@@ -135,19 +135,19 @@ Result
 v1
 ```
 
-Teď máte image kontejneru uloženou v privátní instanci služby Azure Container Registry. V dalším kurzu se tato image nasadí z ACR do clusteru Kubernetes.
+Nyní máte image kontejneru, která je uložena v privátní instanci Azure Container Registry. Tento obrázek je nasazen z ACR do clusteru Kubernetes v dalším kurzu.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili službu Azure Container Registry a odeslali jste do ní image pro použití v clusteru AKS. Naučili jste se tyto postupy:
+V tomto kurzu jste vytvořili Azure Container Registry a vložili image pro použití v clusteru AKS. Zjistili jste, jak:
 
 > [!div class="checklist"]
-> * Vytvoření instance služby Azure Container Registry (ACR)
-> * Označit image kontejneru pro službu ACR
-> * Odeslat image do služby ACR
+> * Vytvoření instance Azure Container Registry (ACR)
+> * Označení image kontejneru pro ACR
+> * Nahrání image do ACR
 > * Zobrazení imagí v registru
 
-V dalším kurzu se dozvíte, jak nasadit cluster Kubernetes v Azure.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak nasadit cluster Kubernetes v Azure.
 
 > [!div class="nextstepaction"]
 > [Nasazení clusteru Kubernetes][aks-tutorial-deploy-cluster]

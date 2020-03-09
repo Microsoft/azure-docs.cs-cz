@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224751"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388730"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On na SQL Server ve virtuálních počítačích Azure
 
@@ -41,7 +41,7 @@ V tomto kurzu se předpokládá, že máte základní znalosti skupin dostupnost
 Potřebujete mít účet Azure. Můžete si [otevřít bezplatný účet Azure](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Kliknutím na **+** vytvoříte nový objekt na portálu.
 
    ![Nový objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -185,7 +185,7 @@ Následující tabulka uvádí nastavení těchto dvou počítačů:
 | **Velikost** |DS1_V2 |
 | **Storage** | **Použít spravované disky** - **Ano** |
 | **Virtuální síť** |autoHAVNET |
-| **Podsíť** |správ |
+| **Podsíť** |admin |
 | **Veřejná IP adresa** |*Stejný název jako virtuální počítač* |
 | **Skupina zabezpečení sítě** |*Stejný název jako virtuální počítač* |
 | **Skupina dostupnosti** |adavailabilityset </br>**Domény selhání**: 2 </br>**Aktualizovat domény**: 2|
@@ -220,7 +220,7 @@ V následujících krocích nakonfigurujte počítač **AD-Primary-DC** jako řa
 
     ![Dialogové okno Přidat role](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/23-addroles.png)
 7. Klikněte na tlačítko **Další** , dokud se nedostanete do části **potvrzení** . V **případě potřeby zaškrtněte políčko automaticky restartovat cílový server** .
-8. Klikněte na **Instalovat**.
+8. Klikněte na **Nainstalovat**.
 9. Po dokončení instalace funkcí se vraťte na řídicí panel **Správce serveru** .
 10. V levém podokně vyberte možnost Nová **Služba AD DS** .
 11. Klikněte na odkaz **Další** na žlutém výstražném panelu.
@@ -234,7 +234,7 @@ V následujících krocích nakonfigurujte počítač **AD-Primary-DC** jako řa
     | **Konfigurace nasazení** |**Přidat novou doménovou strukturu**<br/> **Název kořenové domény** = Corp.contoso.com |
     | **Možnosti řadiče domény** |**DSRM Password** = contoso! 0000<br/>**Potvrzení hesla** = contoso! 0000 |
 14. Kliknutím na tlačítko **Další** přejdete na ostatní stránky v průvodci. Na stránce **Kontrola předpokladů** ověřte, že se zobrazí následující zpráva: **všechny kontroly požadovaných součástí byly úspěšně úspěšné**. Můžete si prohlédnout jakékoli použitelné varovné zprávy, ale je možné pokračovat v instalaci.
-15. Klikněte na **Instalovat**. Virtuální počítač **AD-Primary-DC** se automaticky restartuje.
+15. Klikněte na **Nainstalovat**. Virtuální počítač **AD-Primary-DC** se automaticky restartuje.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Poznamenejte si IP adresu primárního řadiče domény.
 
@@ -261,7 +261,7 @@ Po vytvoření prvního řadiče domény a povolení DNS na prvním serveru nako
 
 3. Klikněte na **vlastní**a zadejte privátní IP adresu primárního řadiče domény.
 
-4. Klikněte na možnost **Uložit**.
+4. Klikněte na **Uložit**.
 
 ### <a name="configure-the-second-domain-controller"></a>Konfigurace druhého řadiče domény
 Po restartování primárního řadiče domény můžete nakonfigurovat druhý řadič domény. Tento volitelný krok je určen pro vysokou dostupnost. Pomocí těchto kroků nakonfigurujete druhý řadič domény:
