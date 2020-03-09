@@ -12,12 +12,12 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189646"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933015"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -113,7 +113,7 @@ Potom do Azure AD B2C nahrajte kontrolní výraz SAML a podpisový certifikát o
 
 ### <a name="21-create-the-saml-token-issuer"></a>2,1 Vytvoření vystavitele tokenu SAML
 
-Nyní přidejte schopnost vašeho tenanta, aby vydávala tokeny SAML.
+Teď přidejte schopnost vašeho tenanta, aby vydával tokeny SAML, pomocí [vystavitele tokenu SAML](saml-issuer-technical-profile.md) a technických profilů [zprostředkovatele relace SAML](custom-policy-reference-sso.md#samlssosessionprovider) .
 
 Otevřete `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** v úvodním balíčku vlastní zásady.
 
@@ -269,7 +269,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 zaregistrovat aplikaci v Azure Active Directory
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
@@ -297,7 +297,7 @@ Metadata jsou informace, které se používají v protokolu SAML k vystavení ko
 
 Pokud jsou v adrese URL metadat *SAML i v* manifestu registrace aplikace zadány vlastnosti, budou **sloučeny**. Vlastnosti zadané v adrese URL metadat jsou zpracovávány jako první a mají přednost.
 
-Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte následující hodnotu pro `samlMetadataUrl`:
+Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte pro `samlMetadataUrl`následující hodnotu:
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",

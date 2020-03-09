@@ -1,74 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure DevOps Projects
+### YamlMime:Landing
+title: Dokumentace ke službě Azure DevOps Projects
+summary: Azure DevOps Projects představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.
 metadata:
-  title: Dokumentace ke službě Azure DevOps Project – rychlá zprovoznění a kurzy
-  meta.description: null
-  services: devops-project
-  author: mlearned
-  manager: gwallace
+  title: Dokumentace ke službě Azure DevOps Projects
+  description: Azure DevOps Projects představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.
   ms.service: devops-project
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/06/2018
-  ms.author: mlearned
-abstract:
-  description: 'Azure DevOps Projects představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: _img\video-devops-project.png
-      width: 250
-    title: 'Video k vytvoření CI/CD s využitím DevOps Projects (8:53)'
-    href: 'https://channel9.msdn.com/Events/Connect/2017/T174/player/'
-    width: 250
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Naučte se sestavit typ vaší aplikace a nasadit ho do zvolené služby Azure:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media\logo_net.svg
-            text: .NET
-            href: /azure/devops-project/azure-devops-project-aspnet-core
-          - image:
-              src: media\logo_nodejs.svg
-            text: Node.js
-            href: /azure/devops-project/azure-devops-project-nodejs
-          - image:
-              src: media\logo_java.svg
-            text: Java
-            href: /azure/devops-project/azure-devops-project-java
-          - image:
-              src: media\logo_python.svg
-            text: Python
-            href: /azure/devops-project/azure-devops-project-python
-          - image:
-              src: media\logo_php.svg
-            text: PHP
-            href: /azure/devops-project/azure-devops-project-php
-          - image:
-              src: media\logo_ruby.svg
-            text: Ruby
-            href: /azure/devops-project/azure-devops-project-ruby
-          - image:
-              src: media\logo_gopher.svg
-            text: Přejít
-            href: /azure/devops-project/azure-devops-project-go
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Další informace o využití DevOps Projects k vytváření kanálů verzí
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/devops-project/azure-devops-project-github">Používání vlastního kódu s využitím GitHubu</a>
-          - html: <a href="/azure/devops-project/azure-devops-project-vms">Nasazení aplikace v ASP.NET do Azure Virtual Machines</a>
-          - html: <a href="/azure/devops-project/azure-devops-project-sql-database">Nasazení aplikace v ASP.NET a Azure SQL Database</a>
-          - html: <a href="/azure/devops-project/azure-devops-project-aks">Nasazení aplikace do prostředí Azure Container Service a Kubernetes</a>
-          - html: <a href="/azure/devops-project/azure-devops-project-service-fabric">Nasazení aplikace do Azure Service Fabric</a>
+  author: 
+  ms.author: 
+  ms.date: 03/05/2020
+  ms.openlocfilehash: 0c67ed2fdffd80c447608348429985477dd426df
+  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/06/2020
+  ms.locfileid: "78674183"
+landingContent:
+- title: Informace o Azure DevOps Projects
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure DevOps Projects?
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Video k vytvoření CI/CD s využitím DevOps Projects (8:53)
+      url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
+- title: Vytvoření kanálu CI/CD
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET
+      url: /azure/devops-project/azure-devops-project-aspnet-core
+    - text: Node.js
+      url: /azure/devops-project/azure-devops-project-nodejs
+    - text: Java
+      url: /azure/devops-project/azure-devops-project-java
+    - text: Python
+      url: /azure/devops-project/azure-devops-project-python
+    - text: PHP
+      url: /azure/devops-project/azure-devops-project-php
+    - text: Ruby
+      url: /azure/devops-project/azure-devops-project-ruby
+    - text: Přejít
+      url: /azure/devops-project/azure-devops-project-go
+- title: Vytvoření kanálů verzí
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Používání vlastního kódu s využitím GitHubu
+      url: azure-devops-project-vms.md
+    - text: Nasazení aplikace v ASP.NET do Azure Virtual Machines
+      url: azure-devops-project-vms.md
+    - text: Nasazení aplikace v ASP.NET a Azure SQL Database
+      url: azure-devops-project-sql-database.md
+    - text: Nasazení aplikace do prostředí Azure Container Service a Kubernetes
+      url: azure-devops-project-aks.md
+    - text: Nasazení aplikace do Azure Service Fabric
+      url: azure-devops-project-service-fabric.md

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78397820"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932973"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
 
@@ -58,13 +58,13 @@ Následující příklad ukazuje technický profil pro **AAD-Common** :
 
 ## <a name="input-claims"></a>Vstupní deklarace identity
 
-Mezi následující technické profily patří **InputClaims** pro sociální a místní účty:
+Element InputClaims obsahuje deklaraci identity, která se používá k vyhledání účtu v adresáři, nebo vytvoření nového. Ve vstupní kolekci deklarací pro všechny technické profily služby Azure AD musí existovat přesně jeden element InputClaim. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v Azure Active Directory.
 
-- Technical Profiles pro sociální profily **AAD-UserReadUsingAlternativeSecurityId** a **AAD-UserWriteUsingAlternativeSecurityId** zahrnuje deklaraci identity **AlternativeSecurityId** . Tato deklarace identity obsahuje identifikátor uživatele účtu sociální sítě.
-- Technical Profiles s místními profily **AAD-UserReadUsingEmailAddress** a **AAD-UserWriteUsingLogonEmail** zahrnuje deklaraci identity **e-mailu** . Tato deklarace identity obsahuje přihlašovací jméno místního účtu.
-- Jednotné (místní a sociální) technické profily **AAD-UserReadUsingObjectId**, **AAD-UserWritePasswordUsingObjectId**, **AAD-UserWriteProfileUsingObjectId**a **AAD-UserWritePhoneNumberUsingObjectId** zahrnují deklaraci **objectID** . Jedinečný identifikátor účtu
+Pokud chcete číst, aktualizovat nebo odstranit existující uživatelský účet, vstupní deklarace identity je klíč, který jedinečně identifikuje účet v adresáři služby Azure AD. Například **objectID**, **userPrincipalName**, **signInNames. EmailAddress**, **signInNames. username**nebo **alternativeSecurityId**. 
 
-Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací nebo generování nových.
+Pokud chcete vytvořit nový uživatelský účet, vstupní deklarace identity je klíč, který jednoznačně identifikuje místní nebo federovaný účet. Například místní účet: **signInNames. EmailAddress**nebo **signInNames. username**. Pro federovaný účet: **alternativeSecurityId**.
+
+Element InputClaimsTransformations může obsahovat kolekci vstupních transformačních prvků deklarací identity, které se používají k úpravě vstupní deklarace identity nebo k vygenerování nového.
 
 ## <a name="output-claims"></a>Deklarace výstupů
 

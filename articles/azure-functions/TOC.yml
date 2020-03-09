@@ -50,6 +50,8 @@
       href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: Machine learning s TensorFlow
       href: functions-machine-learning-tensorflow.md
+    - name: Klasifikace obrázků s využitím PyTorchu
+      href: machine-learning-pytorch.md
     - name: Vytvoření vlastní linuxové image
       href: functions-create-function-linux-custom-image.md
     - name: Functions na zařízení IoT Edge

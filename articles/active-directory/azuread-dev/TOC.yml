@@ -155,8 +155,8 @@
           href: active-directory-acs-migration.md
         - name: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
           href: howto-reactivate-disabled-acs-namespaces.md
-    - name: Použití Graph API v Azure AD
-      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Použití rozhraní Microsoft Graph API
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: AD FS pro vývojáře
       href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
 - name: Odkazy
@@ -164,8 +164,8 @@
     - name: Knihovny ověřování
       displayName: ADAL
       href: active-directory-authentication-libraries.md
-    - name: Azure AD Graph API
-      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Microsoft Graph API
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Manifest aplikace
       href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Kódy chyb autorizace a ověřování

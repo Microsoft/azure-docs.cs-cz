@@ -1,6 +1,6 @@
 ---
-title: Importovat Postman prostředí pro volání Azure Media Services REST
-description: Toto téma obsahuje definici prostředí nástroje Postman pro volání Azure Media Services REST.
+title: Import prostředí post pro Azure Media Services volání REST
+description: Toto téma poskytuje definici předzálohovacího prostředí pro Azure Media Services volání REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6813dfca4a89263a10887ef4fa58c7403a9b1294
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637552"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926713"
 ---
-# <a name="import-the-postman-environment"></a>Importovat Postman prostředí  
+# <a name="import-the-postman-environment"></a>Import prostředí post  
 
-Tento článek obsahuje definici **Postman** proměnné prostředí, které se používají [Postman collection](postman-collection.md) , který obsahuje seskupené požadavky HTTP, které volají rozhraní API služby Media Services REST. Soubory prostředí a kolekce jsou používány [volá konfigurace nástroje Postman pro REST API služby Media Services](media-rest-apis-with-postman.md) kurzu.
+Tento článek obsahuje definici proměnných prostředí **post** , které používají [kolekci post](postman-collection.md) , která obsahuje seskupené požadavky HTTP, které volají Media Services rozhraní REST API. Soubory prostředí a kolekcí používá kurz [Konfigurace post pro Media Services REST API volání](media-rest-apis-with-postman.md) .
+
+> [!NOTE]
+> Hodnota `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. Pokud chcete získat ID tenanta, můžete ukazatel myši umístit na své uživatelské jméno na portálu (v pravém horním rohu) a bude v adresáři "adresář: Microsoft ({{TENANTID}}).
 
 ```
 {

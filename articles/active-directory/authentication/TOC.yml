@@ -110,20 +110,18 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Ochrana hesel Azure AD
       items:
-        - name: Místní integrace
-          items:
-            - name: Nasazení ochrany hesel Azure AD
-              href: howto-password-ban-bad-on-premises-deploy.md
-            - name: Konfigurace ochrany hesel Azure AD
-              href: howto-password-ban-bad-on-premises-operations.md
-            - name: Monitorování ochrany hesel Azure AD
-              href: howto-password-ban-bad-on-premises-monitor.md
-            - name: Řešení problémů s ochranou hesel Azure AD
-              href: howto-password-ban-bad-on-premises-troubleshoot.md
-            - name: Nejčastější dotazy
-              href: howto-password-ban-bad-on-premises-faq.md
-            - name: Historie verzí místního agenta
-              href: howto-password-ban-bad-on-premises-agent-versions.md
+        - name: Plánování a nasazení v místním prostředí
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Povolení a konfigurace v místním prostředí
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: Monitorování místních nasazení
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Řešení potíží s místními nasazeními
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: Nejčastější dotazy k místnímu prostředí
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Historie verzí místního agenta
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Inteligentní uzamykání Azure AD
       href: howto-password-smart-lockout.md
     - name: Bez hesla

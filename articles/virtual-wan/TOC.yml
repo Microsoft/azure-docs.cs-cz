@@ -34,24 +34,36 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: Konfigurace globálních partnerských vztahů virtuálních sítí
       href: global-peering-vnet.md
-    - name: Konfigurace šifrování ExpressRoute
-      href: vpn-over-expressroute.md
     - name: Upgrade SKU virtuální sítě WAN
       href: upgrade-virtual-wan.md
     - name: Konfigurace vlastních zásad IPsec
       href: virtual-wan-custom-ipsec-portal.md
-    - name: Konfigurace certifikátů pro uživatelské sítě VPN (Point-to-Site)
-      href: certificates-point-to-site.md
-    - name: Konfigurace tenanta Azure AD pro VPN uživatele
-      href: openvpn-azure-ad-tenant.md
-    - name: Povolení služby Multi-Factor Authentication (MFA) pro VPN uživatele
-      href: openvpn-azure-ad-mfa.md
-    - name: Konfigurace ověřování Azure AD pro VPN uživatele
-      href: virtual-wan-point-to-site-azure-ad.md
-    - name: Konfigurace víceaplikačního ověřování Azure AD pro VPN uživatele
-      href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Stažení globálních profilů VPN a profilů VPN založených na centrech
-      href: global-hub-profile.md
+    - name: ExpressRoute
+      items:
+        - name: Vytvoření připojení ExpressRoute
+          href: virtual-wan-expressroute-portal.md
+        - name: Konfigurace šifrování ExpressRoute
+          href: vpn-over-expressroute.md
+    - name: Site-to-Site
+      items:
+        - name: Vytvoření připojení typu Site-to-Site
+          href: virtual-wan-site-to-site-portal.md
+    - name: Uživatelská síť VPN (point-to-site)
+      items:
+        - name: Vytvoření připojení VPN uživatele (Point-to-Site)
+          href: virtual-wan-point-to-site-portal.md
+        - name: Konfigurace certifikátů pro uživatelské sítě VPN
+          href: certificates-point-to-site.md
+        - name: Konfigurace tenanta Azure AD pro VPN uživatele
+          href: openvpn-azure-ad-tenant.md
+        - name: Povolení služby Multi-Factor Authentication (MFA) pro VPN uživatele
+          href: openvpn-azure-ad-mfa.md
+        - name: Konfigurace ověřování Azure AD pro VPN uživatele
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: Konfigurace víceaplikačního ověřování Azure AD pro VPN uživatele
+          href: openvpn-azure-ad-tenant-multi-app.md
+        - name: Stažení globálních profilů VPN a profilů uživatelských sítí VPN založených na centrech
+          href: global-hub-profile.md
     - name: Konfigurace směrování
       items:
         - name: Směrování provozu z virtuálního rozbočovače do síťového virtuálního zařízení

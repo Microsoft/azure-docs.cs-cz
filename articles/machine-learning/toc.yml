@@ -75,10 +75,10 @@
       href: samples-notebooks.md
     - name: Otevřené datové sady Azure
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: Datové sady designeru
+      href: sample-designer-datasets.md
     - name: Kompletní příklady MLOps
       href: 'https://github.com/microsoft/MLOps'
-    - name: Ukázkové datové sady pro Designer
-      href: designer-sample-datasets.md
 - name: Koncepty
   items:
     - name: Pracovní prostor

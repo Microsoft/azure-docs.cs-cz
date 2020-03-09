@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
 ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748571"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392553"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysoká dostupnost a zotavení po havárii
 
@@ -45,7 +45,7 @@ Možnosti obnovení dostupné zákazníkům v takové situaci představují [př
 
 Obě tyto možnosti převzetí služeb při selhání nabízejí následující cíle bodů obnovení (RPO):
 
-| Data type | Cíle bodu obnovení (RPO) |
+| Typ dat | Cíle bodu obnovení (RPO) |
 | --- | --- |
 | Registr identit |0-5 min. ztráta dat |
 | Data vlákna zařízení |0-5 min. ztráta dat |
@@ -123,11 +123,11 @@ Pro zjednodušení tohoto kroku byste měli použít operace idempotentní. Oper
 
 Tady je souhrn možností HA/DR prezentovaných v tomto článku, které se dají použít jako rámec Reference k výběru správné možnosti, která funguje pro vaše řešení.
 
-| Možnost HA/DR | RTO | OBNOVENÍ | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
+| Možnost HA/DR | RTO | Cíl bodu obnovení | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
 | --- | --- | --- | --- | --- | --- |
-| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádný|Žádný|
-| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádný|
-| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|Ne|Vysoký|> 1x náklady 1 centra IoT|
+| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádná|Žádná|
+| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádná|
+| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|Ne|Vysoká|> 1x náklady 1 centra IoT|
 
 ## <a name="next-steps"></a>Další kroky
 

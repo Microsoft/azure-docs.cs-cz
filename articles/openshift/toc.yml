@@ -35,8 +35,8 @@
           href: howto-aad-app-configuration.md
     - name: Nasazení samostatného systému Prometheus v clusteru Azure Red Hat OpenShift
       href: howto-deploy-prometheus.md
-    - name: Správa projektů v clusteru Azure Red Hat OpenShift
-      href: howto-manage-projects.md
+    - name: Vytvoření privátního clusteru Azure Red Hat OpenShift
+      href: howto-create-private-cluster.md
     - name: Monitorování a protokolování
       items:
         - name: Azure Monitor pro kontejnery (Preview)

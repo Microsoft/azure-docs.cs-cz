@@ -81,8 +81,12 @@
           href: batch-aad-auth-management.md
         - name: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
           href: credential-access-key-vault.md
-    - name: Použití balíčků aplikací
-      href: batch-application-packages.md
+    - name: Kopírování souborů a aplikací do uzlů fondu
+      items:
+        - name: Použití balíčků aplikací
+          href: batch-application-packages.md
+        - name: Vytváření souborů prostředků
+          href: resource-files.md
     - name: Vytváření a správa fondů
       items:
         - name: Automatické škálování výpočetních uzlů
@@ -123,12 +127,12 @@
           href: batch-user-accounts.md
         - name: Odeslání velkého počtu úkolů
           href: large-number-tasks.md
+        - name: Plánování úloh pro zajištění efektivity
+          href: batch-job-schedule.md
         - name: Kontrola chyb úlohy a úkolů
           href: batch-job-task-error-checking.md
         - name: Zjišťování a zpracování chyb služby Batch
           href: batch-retry-after-errors.md
-    - name: Vytváření souborů prostředků
-      href: resource-files.md
     - name: Trvalý výstup úloh a funkcí
       href: batch-task-output.md
       items:

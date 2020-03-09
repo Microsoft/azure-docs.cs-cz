@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: Application Gateway s koncovými body služby
           href: networking/app-gateway-with-service-endpoints.md
+        - name: Privátní koncové body
+          href: networking/private-endpoint.md
     - name: Příchozí a odchozí IP adresy
       href: overview-inbound-outbound-ips.md
     - name: Integrace virtuální sítě
@@ -181,7 +183,7 @@
           href: manage-scale-up.md
         - name: Konfigurace úrovně PremiumV2
           href: app-service-configure-premium-tier.md
-        - name: Horizontální navýšení kapacity na několik instancí
+        - name: Škálování na více instancí
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: Hostování s vysokou hustotou
           href: manage-scale-per-app.md

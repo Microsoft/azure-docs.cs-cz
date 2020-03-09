@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208708"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926848"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
@@ -33,7 +33,7 @@ SCIM je standardizovaná definice dvou koncových bodů: bod/Users a koncový bo
 
 Standardní schéma uživatelského objektu a rozhraní REST API pro správu definovaná v SCIM 2,0 (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) umožňují snazší integraci zprostředkovatelů identity a aplikací. Vývojáři aplikací, kteří vytvářejí koncový bod SCIM, mohou být integrováni s jakýmkoli klientem kompatibilním s SCIM, aniž by museli provádět vlastní práci.
 
-Automatizace zřizování pro aplikaci vyžaduje sestavení a integraci koncového bodu SCIM s odpovídajícím Azure AD SCIM. Provedením následujících kroků spustíte zřizování uživatelů a skupin do vaší aplikace. 
+Automatizace zřizování pro aplikaci vyžaduje sestavení a integraci koncového bodu SCIM s klientem Azure AD SCIM. Provedením následujících kroků spustíte zřizování uživatelů a skupin do vaší aplikace. 
     
   * **[Krok 1: návrh schématu uživatelů a skupin](#step-1-design-your-user-and-group-schema)** Identifikujte objekty a atributy, které vaše aplikace potřebuje, a určete, jak se mají mapovat na schéma uživatelů a skupin podporované implementací Azure AD SCIM.
 
@@ -63,7 +63,7 @@ Každá aplikace vyžaduje pro vytvoření uživatele nebo skupiny jiné atribut
 |workMail|E-maily [typ EQ "Work"]. Value|Pošta|
 |Správce|Správce|Správce|
 |tag|urn: IETF: params: SCIM: schémata: rozšíření: 2.0: CustomExtension: tag|extensionAttribute1|
-|stav|aktivní|isSoftDeleted (vypočtená hodnota neuložená na uživateli)|
+|status|aktivní|isSoftDeleted (vypočtená hodnota neuložená na uživateli)|
 
 Výše definované schéma by představovalo použití datové části JSON níže. Všimněte si, že kromě atributů vyžadovaných pro aplikaci obsahuje reprezentace JSON požadované atributy ID, externalId a meta.
 
@@ -106,7 +106,7 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
 | givenName |name.givenName |
 | pracovní funkce |Název |
-| pošta |e-mailů [typ eq "pracovní"] .value |
+| e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
 | Správce |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager |
 | Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
@@ -124,9 +124,9 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | Skupina Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
-| pošta |e-mailů [typ eq "pracovní"] .value |
+| e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |displayName |
-| členy |členy |
+| členové |členové |
 | ID objektu |externalId |
 | proxyAddresses |e-mailů [Zadejte eq "other"]. Hodnota |
 
@@ -543,7 +543,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
     }
 }
 ```
-#### <a name="delete-user"></a>Odstranit uživatele
+#### <a name="delete-user"></a>Odstranění uživatele
 
 ##### <a name="request-6"></a>Request
 
@@ -560,7 +560,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 * Aktualizace žádosti o opravu skupiny by měla v odpovědi vracet *HTTP 204 bez obsahu* . Vrácení textu se seznamem všech členů není vhodné.
 * Není nutné podporovat vrácení všech členů skupiny.
 
-#### <a name="create-group"></a>Vytvořit skupinu
+#### <a name="create-group"></a>Vytvoření skupiny
 
 ##### <a name="request-7"></a>Request
 
@@ -712,7 +712,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *HTTP/1.1 204 bez obsahu*
 
-#### <a name="delete-group"></a>Odstranit skupinu
+#### <a name="delete-group"></a>Odstranění skupiny
 
 ##### <a name="request-13"></a>Request
 
@@ -752,7 +752,7 @@ Minimální pruh šifrovacích sad TLS 1,2:
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Krok 3: Vytvoření koncového bodu SCIM
 
-Teď, když jste si desidned schéma a pochopili implementaci Azure AD SCIM, můžete začít vyvíjet svůj koncový bod SCIM. Místo začátku od nuly a sestavení implementace zcela na vlastní, můžete spoléhat na počet Open Source knihoven SCIM publikovaných SCIM Commuinty.  
+Teď, když jste navrhli schéma a rozumíte implementaci Azure AD SCIM, můžete začít s vývojem koncového bodu SCIM. Místo začátku od nuly a sestavení implementace zcela na vlastní, můžete spoléhat na počet Open Source knihoven SCIM publikovaných SCIM Commuinty.  
 Open source [referenční kód](https://aka.ms/SCIMReferenceCode) .NET Core publikovaný týmem zřizování Azure AD je jeden takový prostředek, který může přejít k zahájení vývoje. Po vytvoření koncového bodu SCIM ho budete chtít otestovat. Můžete použít kolekci předávacích [testů](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) , které jsou součástí referenčního kódu, nebo spustit prostřednictvím vzorových požadavků nebo odpovědí uvedených [výše](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations).  
 
 Poznámka: referenční kód vám dává pomoc při sestavování koncového bodu SCIM a je k dispozici "tak, jak je". Příspěvky z komunity jsou Vítá vás při sestavování a údržbě kódu. 

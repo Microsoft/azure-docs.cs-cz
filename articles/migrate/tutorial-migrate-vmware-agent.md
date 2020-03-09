@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: MVC
 ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057273"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388939"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agentů)
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Před migrací virtuálních počítačů do Azure doporučujeme, abyste si vyzkoušeli vyhodnocování virtuálního počítače s VMware pomocí posouzení serveru Azure Migrate. Proveďte vyhodnocení následujícím způsobem:
 
@@ -57,7 +57,7 @@ Pokud chcete rozhodnout, jestli chcete použít migraci bez agenta nebo agenta, 
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 

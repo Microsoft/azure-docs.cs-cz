@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153855"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381677"
 ---
 # <a name="azure-serial-console"></a>Sériová konzola Azure
 
@@ -45,7 +45,7 @@ Konzola sériového portu pro virtuální počítače a sadu škálování virtu
 
 ### <a name="serial-console-for-virtual-machines"></a>Sériová Konzola pro Virtual Machines
 Sériová Konzola pro virtuální počítače je stejně jednoduchá jako při kliknutí na **sériová konzola** v části **Podpora a řešení potíží** v Azure Portal.
-  1. Otevřete web [Azure Portal](https://portal.azure.com).
+  1. Otevřete [portál Azure](https://portal.azure.com).
 
   1. Přejděte na **všechny prostředky** a vyberte virtuální počítač. Otevře se stránka s přehledem pro virtuální počítač.
 
@@ -55,7 +55,7 @@ Sériová Konzola pro virtuální počítače je stejně jednoduchá jako při k
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Sériová Konzola pro Virtual Machine Scale Sets
 Sériová konzola je k dispozici pro virtuální počítače, které jsou dostupné na každé instanci v rámci sady škálování. Před zobrazením tlačítka **sériová konzola** budete muset přejít na jednotlivé instance sady škálování virtuálního počítače. Pokud vaše sada škálování virtuálního počítače nemá zapnutou diagnostiku spouštění, ujistěte se, že jste aktualizovali model sady škálování virtuálních počítačů, aby se aktivovala spouštění diagnostiky, a pak upgradovat všechny instance na nový model, aby bylo možné získat přístup ke konzole sériového portu.
-  1. Otevřete web [Azure Portal](https://portal.azure.com).
+  1. Otevřete [portál Azure](https://portal.azure.com).
 
   1. Přejděte na **všechny prostředky** a vyberte sadu škálování virtuálního počítače. Otevře se stránka s přehledem pro sadu škálování virtuálního počítače.
 

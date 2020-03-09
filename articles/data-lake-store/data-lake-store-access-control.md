@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394225"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -27,9 +27,9 @@ Azure Data Lake Storage Gen1 implementuje model řízení přístupu, který je 
 
 Existují dva druhy seznamů řízení přístupu (ACL) – **přístupové seznamy ACL** a **výchozí seznamy ACL**.
 
-* **Přístupové seznamy ACL**: Tyto ovládací prvky mají přístup k objektu. Přístupové seznamy ACL jsou definovány pro soubory i složky.
+* **Přístupové seznamy ACL:** Řídí přístup k objektu. Přístupové seznamy ACL jsou definovány pro soubory i složky.
 
-* **Výchozí seznamy ACL**: "Šablona" seznamů ACL přidružených ke složce, které určují přístupové seznamy ACL pro všechny podřízené položky, které jsou vytvořeny v této složce. Výchozí seznamy ACL nejsou definovány pro soubory.
+* **Výchozí seznamy ACL:** „Šablona“ seznamů ACL přidružených ke složce, které určují přístupové seznamy ACL pro všechny podřízené položky vytvořené v rámci příslušné složky. Výchozí seznamy ACL nejsou definovány pro soubory.
 
 
 Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
@@ -75,8 +75,8 @@ Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit,
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Čtení      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Připojení k | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Odstranění    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Vytvořit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Odstranit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Vytvoření    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Seznam      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Seznam      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Seznam      | /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -108,7 +108,7 @@ Superuživatel má většina oprávnění ze všech uživatelů v účtu Data La
 * Může měnit oprávnění pro kterýkoli soubor nebo složku.
 * Může měnit vlastnícího uživatele nebo vlastnící skupinu pro kterýkoli soubor nebo složku.
 
-Všechny uživatele, kteří jsou součástí **vlastníky** roli pro účet Data Lake Storage Gen1 jsou automaticky superuživatel.
+Všichni uživatelé, kteří jsou součástí role **vlastníci** pro účet Data Lake Storage Gen1, jsou automaticky výhradním uživatelem.
 
 ### <a name="the-owning-user"></a>Vlastnící uživatel
 
@@ -124,18 +124,18 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 
 ### <a name="the-owning-group"></a>Vlastnící skupina
 
-**Na pozadí**
+**Pozadí**
 
 V seznamech ACL POSIX je ke každému uživateli přiřazena „primární skupina“. Uživatel „alice“ může například patřit do skupiny „finance“. Alice může patřit do více skupin, ale jedna skupina je vždy určena jako její primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
 
 Protože neexistuje žádná "primární skupina" přidružené k uživateli v Data Lake Storage Gen1, vlastnící skupinu je přiřazen jako níže.
 
-**Přiřazuje se vlastnící skupina pro nový soubor nebo složku**
+**Přiřazení vlastnící skupiny pro nový soubor nebo složku**
 
-* **Případ 1**: Kořenová složka "/". Tato složka se vytvoří při vytvoření účtu Data Lake Storage Gen1. V takovém případě je vlastnící skupina nastavena na identifikátor GUID pro všemi nulovými.  Tato hodnota neumožňuje přístup.  Do té doby, které je skupina přiřazena je zástupný symbol.
-* **Případ 2** (Všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazené složky.
+* **Případ 1:** Kořenová složka „/“. Tato složka se vytvoří při vytvoření účtu Data Lake Storage Gen1. V takovém případě je vlastnící skupina nastavena na identifikátor GUID pro všemi nulovými.  Tato hodnota neumožňuje přístup.  Do té doby, které je skupina přiřazena je zástupný symbol.
+* **Případ 2** (všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazené složky.
 
-**Mění se vlastnící skupina**
+**Změna vlastnící skupiny**
 
 Vlastnící skupinu smí změnit:
 * Všichni superuživatelé.
@@ -144,7 +144,7 @@ Vlastnící skupinu smí změnit:
 > [!NOTE]
 > Vlastnící skupina *nemůže* měnit přístupové seznamy souboru nebo složky.
 >
-> Pro účty vytvořené před. září 2018 dnem, byla vlastnící skupina nastavena na uživatele, který vytvořil účet v případě kořenové složky pro **případ 1**výše.  Jeden uživatelský účet není možné poskytnout oprávnění prostřednictvím vlastnící skupiny, tedy žádná oprávnění jsou udělena podle tohoto výchozího nastavení. Tato oprávnění můžete přiřadit platné skupině uživatelů.
+> Pro účty vytvořené před 1. září 2018 byla vlastnící skupina nastavena na uživatele, který účet vytvořil v případě kořenové složky pro **případ 1**, výše.  Jeden uživatelský účet není možné poskytnout oprávnění prostřednictvím vlastnící skupiny, tedy žádná oprávnění jsou udělena podle tohoto výchozího nastavení. Tato oprávnění můžete přiřadit platné skupině uživatelů.
 
 
 ## <a name="access-check-algorithm"></a>Algoritmus kontroly přístupu
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>Maska
 
-Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro **pojmenované uživatele**, **vlastnící skupinu**, a **pojmenovaným skupinám**.  
+Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro **pojmenované uživatele**, **vlastnící skupinu**a **pojmenované skupiny**.  
 
 > [!NOTE]
 > Pro nový účet Data Lake Storage Gen1 je použita výchozí maska přístupového seznamu ACL kořenové složky ("/") hodnotou rwx.
@@ -297,6 +297,6 @@ Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro 
 * [POSIX ACL na Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-* [Přehled služby Azure Data Lake Storage Gen1](data-lake-store-overview.md)
+* [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/06/2019
-ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/06/2020
+ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979707"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927562"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Referenční informace o monitorování služby Azure Machine Learning
 
@@ -63,7 +63,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | Kategorie | Název události protokolu, AmlComputeClusterNodeEvent |
 | ProvisioningState | Stav zřizování clusteru |
 | Název clusteru | Název clusteru |
-| ClusterType | Typ clusteru |
+| clusterType | Typ clusteru |
 | CreatedBy | Uživatel, který vytvořil cluster |
 | CoreCount | Počet jader v clusteru |
 | VmSize | Velikost virtuálního počítače v clusteru |
@@ -75,7 +75,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | NodeDeallocationOption | Jak se má uzel uvolnit |
 | Vydavatel | Vydavatel typu clusteru |
 | Nabídka | Nabídka, se kterou je cluster vytvořený |
-| SKU | SKU uzlu nebo virtuálního počítače vytvořeného v rámci clusteru |
+| Skladová jednotka (SKU) | SKU uzlu nebo virtuálního počítače vytvořeného v rámci clusteru |
 | Verze | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
 | SubnetId | SubnetId clusteru |
 | AllocationState | Stav přidělení clusteru |
@@ -111,7 +111,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | VmPriority | Priorita uzlu, který byl vytvořen jako vyhrazený/LowPriority |
 | Vydavatel | Vydavatel image virtuálního počítače, třeba Microsoft-dsvm |
 | Nabídka | Nabídka přidružená k vytvoření virtuálního počítače |
-| SKU | SKU vytvořeného uzlu nebo virtuálního počítače |
+| Skladová jednotka (SKU) | SKU vytvořeného uzlu nebo virtuálního počítače |
 | Verze | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
 | ClusterCreationTime | Čas, kdy byl cluster vytvořen |
 | ResizeStartTime | Doba, po kterou bylo spuštěno navýšení nebo snížení kapacity clusteru |
@@ -126,7 +126,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 
 V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro Azure Machine Learning všechny metriky jsou uloženy v oboru názvů **pracovní prostor Azure Machine Learning**.
 
-**Model**
+**Vzorový**
 
 | Metrika | Jednotka | Popis |
 | ----- | ----- | ----- |
@@ -164,7 +164,7 @@ Níže jsou uvedené dimenze, které lze použít k filtrování metrik kvót:
 | Název rodiny virtuálních počítačů | Procento využití kvóty | Název rodiny virtuálních počítačů, kterou cluster používá. |
 | Priorita virtuálního počítače | Procento využití kvóty | Priorita virtuálního počítače.
 
-**Spuštění**
+**Spouštěl**
 
 Informace o spuštěných školicích kurzech.
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5dcbc2ee35620d0a29c495b24bd3756769095a17
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184447"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932995"
 ---
 # <a name="localization"></a>Lokalizace
 
@@ -146,7 +146,7 @@ Element **LocalizedString** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| ElementType | Ano | Odkaz na element typu deklarace identity nebo prvek uživatelského rozhraní v zásadách. Možné hodnoty: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`nebo. Hodnota `ClaimType` slouží k lokalizaci jednoho z atributů deklarace identity, jak je uvedeno v StringId. Hodnota `UxElement` slouží k lokalizaci jednoho z prvků uživatelského rozhraní, jak je uvedeno v StringId. Hodnota `ErrorMessage` slouží k lokalizaci jedné z chybových zpráv systému, jak je uvedeno v StringId. Hodnota `Predicate` slouží k lokalizaci jedné z chybových zpráv [predikátu](predicates.md) , jak je uvedeno v StringId. Hodnota `InputValidation` slouží k lokalizaci jedné z chybových zpráv skupiny [PredicateValidation](predicates.md) , jak je uvedeno v StringId. |
+| ElementType | Ano | Odkaz na element typu deklarace identity nebo prvek uživatelského rozhraní v zásadách. Možné hodnoty: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`nebo `GetLocalizedStringsTransformationClaimType`. Hodnota `ClaimType` slouží k lokalizaci jednoho z atributů deklarace identity, jak je uvedeno v StringId. Hodnota `UxElement` slouží k lokalizaci jednoho z prvků uživatelského rozhraní, jak je uvedeno v StringId. Hodnota `ErrorMessage` slouží k lokalizaci jedné z chybových zpráv systému, jak je uvedeno v StringId. Hodnota `Predicate` slouží k lokalizaci jedné z chybových zpráv [predikátu](predicates.md) , jak je uvedeno v StringId. Hodnota `InputValidation` slouží k lokalizaci jedné z chybových zpráv skupiny [PredicateValidation](predicates.md) , jak je uvedeno v StringId. Hodnota `GetLocalizedStringsTransformationClaimType` se používá ke kopírování lokalizovaných řetězců do deklarací identity. Další informace najdete v tématu [transformace deklarací identity GetLocalizedStringsTransformation](string-transformations.md#getlocalizedstringstransformation) .  | 
 | ElementId | Ano | Pokud je typ **ElementType** nastaven na `ClaimType`, `Predicate`nebo `InputValidation`, tento prvek obsahuje odkaz na typ deklarace, který je již definován v oddílu ClaimsSchema. |
 | StringId | Ano | Pokud je vlastnost **ElementType** nastavena na `ClaimType`, tento prvek obsahuje odkaz na atribut typu deklarace. Možné hodnoty: `DisplayName`, `AdminHelpText`nebo `PatternHelpText`. Hodnota `DisplayName` slouží k nastavení zobrazovaného názvu deklarace identity. Hodnota `AdminHelpText` slouží k nastavení názvu textu v nápovědě pro uživatele s deklarací identity. Hodnota `PatternHelpText` slouží k nastavení textu v nápovědě ke vzorci deklarace identity. Pokud je vlastnost **ElementType** nastavena na `UxElement`, tento prvek obsahuje odkaz na atribut prvku uživatelského rozhraní. Pokud je typ **ElementType** nastaven na `ErrorMessage`, tento prvek určuje identifikátor chybové zprávy. Úplný seznam identifikátorů `UxElement` naleznete v tématu [lokalizace ID řetězců](localization-string-ids.md) .|
 

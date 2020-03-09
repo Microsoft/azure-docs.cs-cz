@@ -193,10 +193,8 @@
           items:
             - name: Rozhraní REST API pro převod textu na řeč
               href: rest-text-to-speech.md
-        - name: Využití telefonní sady
-          items:
-            - name: Využití telefonní sady s rozhraním Speech API (SAPI)
-              href: sapi-phoneset-usage.md
+        - name: Fonetické sady SSML
+          href: speech-ssml-phonetic-sets.md
     - name: Zdroje a prostředky
       items:
         - name: Nejčastější dotazy k převodu textu na řeč
@@ -494,19 +492,14 @@
           href: speech-devices-sdk.md
         - name: Získání sady Speech Devices SDK
           href: get-speech-devices-sdk.md
-        - name: "Poznámky k\_verzi"
-          href: devices-sdk-release-notes.md
-        - name: Podrobnosti k Roobo v1
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Podrobnosti k Roobo v2
-          href: speech-devices-sdk-roobo-v2.md
-        - name: Specifikace mikrofonu
     - name: Hardware
       items:
         - name: Doporučení pro mikrofonní pole
           href: speech-devices-sdk-microphone.md
-        - name: Sada Roobo v1
+        - name: Podrobnosti k Roobo v1
           href: speech-devices-sdk-roobo-v1.md
+        - name: Podrobnosti k Roobo v2
+          href: speech-devices-sdk-roobo-v2.md
     - name: Rychlý start
       items:
         - name: Použití sady Speech Devices SDK

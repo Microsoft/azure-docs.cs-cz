@@ -142,10 +142,16 @@
       items:
         - name: Přehled
           href: backup-azure-about-mars.md
+        - name: Instalace nebo upgrade
+          items:
+            - name: Instalace agenta MARS
+              href: install-mars-agent.md
+            - name: Upgrade agenta MARS
+              href: upgrade-mars-agent.md
         - name: Backup
           items:
             - name: Zálohování souborů a složek Windows Serveru
-              href: backup-configure-vault.md
+              href: backup-windows-with-mars-agent.md
             - name: Zálohování stavu systému Windows Server
               href: backup-azure-system-state.md
         - name: Obnovení

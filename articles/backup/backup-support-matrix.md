@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363713"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932739"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -84,7 +84,7 @@ Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux:
 
 ## <a name="daylight-saving-time-support"></a>Podpora letního času
 
-Azure Backup nepodporuje automatické úpravy hodin pro letní čas pro zálohování virtuálních počítačů Azure. Zásady zálohování upravte podle potřeby ručně.
+Azure Backup nepodporuje automatické úpravy hodin pro letní čas pro zálohování virtuálních počítačů Azure. Neposune hodinu zálohy dopředu nebo dozadu. Pokud chcete zajistit, aby záloha běžela v požadované době, upravte zásady zálohování ručně podle potřeby.
 
 ## <a name="disk-deduplication-support"></a>Podpora odstranění duplicitních dat disku
 

@@ -165,6 +165,22 @@
               href: map-get-information-from-coordinate.md
             - name: Zobrazení pokynů pro trasu z A do B
               href: map-route.md
+        - name: Prostorový modul V/V
+          items:
+            - name: Použití prostorového modulu IO
+              href: how-to-use-spatial-io-module.md
+            - name: Přidání jednoduché datové vrstvy
+              href: spatial-io-add-simple-data-layer.md
+            - name: Čtení a zápis prostorových dat
+              href: spatial-io-read-write-spatial-data.md
+            - name: Přidání vrstvy mapy OGC
+              href: spatial-io-add-ogc-map-layer.md
+            - name: Připojení ke službě WFS
+              href: spatial-io-connect-wfs-service.md
+            - name: Využití základních operací
+              href: spatial-io-core-operations.md
+            - name: Podrobnosti o podporovaných formátech dat
+              href: spatial-io-supported-data-format-details.md
         - name: Podporované prohlížeče pro sadu Web SDK
           href: supported-browsers.md
     - name: Vývoj s využitím sady Android SDK

@@ -1,14 +1,14 @@
 ---
 title: Azure Policy rozšíření pro Visual Studio Code
 description: Přečtěte si, jak pomocí rozšíření Azure Policy Visual Studio Code vyhledat Správce prostředků aliasy.
-ms.date: 11/04/2019
+ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386805"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932784"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použít rozšíření Azure Policy pro Visual Studio Code
 
@@ -82,7 +82,7 @@ Při prvním přihlášení se rozšíření Azure Policy načte jenom výchozí
 
    - Paleta příkazů: 
 
-     V řádku nabídek přejděte na **zobrazit** > **paleta příkazů**a zadejte **Azure Policy: Vyberte odběry**.
+     V řádku nabídek přejděte na **zobrazit** > **paleta příkazů**a zadejte **Azure: vyberte předplatná**.
 
    - Zápatí okna
 

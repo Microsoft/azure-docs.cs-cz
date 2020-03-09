@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349704"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389883"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a Diagnostika pro Azure Service Fabric
 
@@ -45,7 +45,7 @@ Poskytnuté diagnostiky jsou ve formě komplexní sady událostí mimo pole. Tyt
 
 Události se odesílají přes standardní kanály na Windows i Linux a dají se číst libovolným monitorovacím nástrojem, který je podporuje. Řešení Azure Monitor je Azure Monitor protokolů. Můžete si přečíst další informace o [integraci protokolů Azure monitor](service-fabric-diagnostics-event-analysis-oms.md) , které zahrnují vlastní operační řídicí panel pro váš cluster a některé ukázkové dotazy, ze kterých můžete vytvářet výstrahy. Další koncepty monitorování clusteru jsou k dispozici na [úrovni platforem a generování protokolů](service-fabric-diagnostics-event-generation-infra.md).
 
-### <a name="health-monitoring"></a>Sledování stavu
+### <a name="health-monitoring"></a>Monitorování stavu
 Platforma Service Fabric zahrnuje model stavu, který poskytuje rozšiřitelné vytváření sestav o stavu pro stav entit v clusteru. Každý uzel, aplikace, služba, oddíl, replika nebo instance má nepřetržitě aktualizovatelný stav. Stav může být buď "OK", "Warning" nebo "Error". Můžete si představit Service Fabric události jako operace prováděné clusterem do různých entit a stavu jako u každé entity jako přídavného jména. Pokaždé, když se změní stav konkrétní entity, vygeneruje se taky událost. Tímto způsobem můžete nastavit dotazy a výstrahy pro události stavu v monitorovacím nástroji zvoleném podobně jako u jakékoli jiné události. 
 
 Kromě toho i tak umožníme uživatelům přepsat stav entit. Pokud vaše aplikace projde upgradem a testy ověření selžou, můžete zapisovat do Service Fabric stavu pomocí rozhraní API stavu, abyste označili, že aplikace už není v pořádku, a Service Fabric bude upgrade automaticky vrátit! Další informace o modelu stavu najdete v [úvodu ke Service Fabric sledování stavu](service-fabric-health-introduction.md) .

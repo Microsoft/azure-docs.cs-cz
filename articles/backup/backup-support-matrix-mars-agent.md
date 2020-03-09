@@ -3,12 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669276"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932702"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -158,7 +158,7 @@ Windows 7| 1 700 GB
 
 **Typ** | **Podpora**
 --- | ---
-Šifrované| Podporuje se.
+Šifrované<sup>*</sup>| Podporuje se.
 Komprimované | Podporuje se.
 Řídké | Podporuje se.
 Komprimované a zhuštěné |Podporuje se.
@@ -169,6 +169,8 @@ Komprimovaný datový proud| Nepodporuje se. Přeskočeno.
 Zhuštěný datový proud| Nepodporuje se. Přeskočeno.
 OneDrive (synchronizované soubory jsou zhuštěné streamy)| Nepodporuje se.
 Složky s povoleným Replikace DFS | Nepodporuje se.
+
+\* zajistěte, aby měl agent MARS přístup k požadovaným certifikátům pro přístup k šifrovaným souborům. Nedostupné soubory se přeskočí.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Podporované jednotky nebo svazky pro zálohování
 

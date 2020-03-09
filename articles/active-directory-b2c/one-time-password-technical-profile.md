@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4732d780bb241a18e0738c99603799c31c2102f
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184022"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933049"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu s jednorázovým heslem v Azure AD B2C vlastní zásady
 
@@ -69,7 +69,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 ### <a name="metadata"></a>Metadata
 
-Následující nastavení lze použít ke konfiguraci generování a údržby kódu:
+Následující nastavení lze použít ke konfiguraci režimu generování kódu:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
@@ -77,7 +77,7 @@ Následující nastavení lze použít ke konfiguraci generování a údržby k�
 | CodeLength | Ne | Délka kódu. Výchozí hodnota je `6`. |
 | CharacterSet | Ne | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. například `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
 | NumRetryAttempts | Ne | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
-| Operace | Ano | Operace, která má být provedena. Možné hodnoty: `GenerateCode`nebo `VerifyCode`. |
+| Operace | Ano | Operace, která má být provedena. Možná hodnota: `GenerateCode`. |
 | ReuseSameCode | Ne | Bez ohledu na to, zda by měl být uveden duplicitní kód namísto generování nového kódu, pokud uplynula platnost daného kódu a je stále platný. Výchozí hodnota je `false`. |
 
 ### <a name="returning-error-message"></a>Vracení chybové zprávy
@@ -90,22 +90,22 @@ Následující příklad `TechnicalProfile` se používá pro generování kódu
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
-    <DisplayName>Generate Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">GenerateCode</Item>
-        <Item Key="CodeExpirationInSeconds">600</Item>
-        <Item Key="CodeLength">6</Item>
-        <Item Key="CharacterSet">0-9</Item>
-        <Item Key="NumRetryAttempts">5</Item>
-        <Item Key="ReuseSameCode">false</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-    </InputClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
-    </OutputClaims>
+  <DisplayName>Generate Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">GenerateCode</Item>
+    <Item Key="CodeExpirationInSeconds">600</Item>
+    <Item Key="CodeLength">6</Item>
+    <Item Key="CharacterSet">0-9</Item>
+    <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="ReuseSameCode">false</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
@@ -132,21 +132,23 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 ### <a name="metadata"></a>Metadata
 
-Následující nastavení lze použít ke konfiguraci chybové zprávy, která se zobrazí při selhání ověření kódu:
+V režimu ověření kódu lze použít následující nastavení:
+
+| Atribut | Požaduje se | Popis |
+| --------- | -------- | ----------- |
+| Operace | Ano | Operace, která má být provedena. Možná hodnota: `VerifyCode`. |
+
+
+### <a name="error-messages"></a>Chybové zprávy
+
+Následující nastavení lze použít ke konfiguraci chybových zpráv zobrazených při selhání ověřování kódu. Metadata by měla být nakonfigurovaná v technickém profilu s [vlastním kontrolním](self-asserted-technical-profile.md) výrazem. Chybové zprávy lze [lokalizovat](localization-string-ids.md#one-time-password-error-messages).
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Ne | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
 | UserMessageIfMaxRetryAttempted | Ne | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |
 | UserMessageIfInvalidCode | Ne | Zpráva, která se zobrazí uživateli, pokud jim byl zadán neplatný kód. |
-
-### <a name="returning-error-message"></a>Vracení chybové zprávy
-
-Jak je popsáno v části [metadata](#metadata), můžete přizpůsobit chybovou zprávu pro uživatele pro různé chybové případy. Tyto zprávy můžete dále lokalizovat pomocí prefixu národního prostředí, například:
-
-```XML
-<Item Key="en.UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-```
+|UserMessageIfSessionConflict|Ne| Zpráva, která se zobrazí uživateli, pokud nelze kód ověřit|
 
 ### <a name="example"></a>Příklad
 
@@ -154,24 +156,21 @@ Následující příklad `TechnicalProfile` slouží k ověření kódu:
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
-    <DisplayName>Verify Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">VerifyCode</Item>
-        <Item Key="UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-        <Item Key="UserMessageIfSessionDoesNotExist">Code has expired.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You've tried too many times.</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-        <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
-    </InputClaims>
+  <DisplayName>Verify Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">VerifyCode</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+    <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujícím článku najdete příklad použití profilu jednorázového hesla technial s vlastním ověřením e-mailu:
+V následujícím článku najdete příklad použití technického profilu s jednorázovým heslem s ověřováním pomocí vlastního e-mailu:
 
 - [Ověření vlastního e-mailu v Azure Active Directory B2C](custom-email.md)
 

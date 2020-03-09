@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
-ms.date: 11/22/2019
-ms.openlocfilehash: 29c91cf14413a11804de82eeaf08d628b125d76a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/06/2020
+ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471937"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927444"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Nasazení modelu Machine Learning do Azure Functions (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -148,10 +148,10 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
-    az appservice plan create --name myplanname --resource-group myresourcegroup --sku EP1 --is-linux
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    V tomto příkladu se používá cenová úroveň pro _Linux Premium_ (`--sku EP1`).
+    V tomto příkladu se používá cenová úroveň _Basic pro Linux_ (`--sku B1`).
 
     > [!IMPORTANT]
     > Image vytvořené Azure Machine Learning používají Linux, takže musíte použít parametr `--is-linux`.
@@ -159,13 +159,13 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
 1. Vytvořte účet úložiště, který se použije pro úložiště webové úlohy, a získejte připojovací řetězec. Nahraďte `<webjobStorage>` názvem, který chcete použít.
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. K vytvoření aplikace Function App použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagename>` hodnotami vrácenými `package.location` dříve. Nahraďte položku Replace `<webjobStorage>` názvem účtu úložiště z předchozího kroku:
+1. K vytvoření aplikace Function App použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagename>` hodnotami vrácenými `package.location` dříve. Nahraďte `<webjobStorage>` názvem účtu úložiště z předchozího kroku:
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
@@ -179,7 +179,7 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
-    ```azurecli-interactive
+    ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     Záznam tohoto připojovacího řetězce pro poskytnutí aplikace Function App. Později ji použijeme, až se požádáme o `<triggerConnectionString>`
@@ -205,7 +205,7 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
     ```
     Uloží vrácenou hodnotu, která bude použita jako `imagetag` v dalším kroku.
 
-1. K poskytnutí aplikace Function App s přihlašovacími údaji potřebnými pro přístup k registru kontejneru použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagetag>` hodnotami z volání AZ CLI v předchozím kroku. Nahraďte `<username>` a `<password>` informace o přihlášení ACR, které byly načteny dříve:
+1. K poskytnutí aplikace Function App s přihlašovacími údaji potřebnými pro přístup k registru kontejneru použijte následující příkaz. Nahraďte `<app-name>` názvem aplikace Function App. Nahraďte `<acrinstance>` a `<imagetag>` hodnotami z volání AZ CLI v předchozím kroku. Nahraďte `<username>` a `<password>` informace o přihlášení ACR, které byly načteny dříve:
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -246,6 +246,52 @@ V tuto chvíli začne aplikace Function App načítat obrázek.
 
 > [!IMPORTANT]
 > Než se image načte, může to trvat několik minut. Průběh můžete sledovat pomocí webu Azure Portal.
+
+## <a name="test-the-deployment"></a>Otestování nasazení
+
+Jakmile se image načte a aplikace je k dispozici, použijte k aktivaci aplikace následující postup:
+
+1. Vytvořte textový soubor, který obsahuje data, která soubor score.py očekává. Následující příklad bude fungovat s score.py, která očekává pole 10 čísel:
+
+    ```json
+    {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+    ```
+
+    > [!IMPORTANT]
+    > Formát dat závisí na tom, co váš score.py a model očekává.
+
+2. Pomocí následujícího příkazu nahrajte tento soubor do vstupního kontejneru v objektu BLOB úložiště triggeru, který jste vytvořili dříve. Nahraďte `<file>` názvem souboru, který obsahuje data. Nahraďte `<triggerConnectionString>` připojovacím řetězcem, který se vrátil dříve. V tomto příkladu je `input` název vstupního kontejneru, který jste vytvořili dříve. Pokud jste použili jiný název, nahraďte tuto hodnotu:
+
+    ```azurecli-interactive
+    az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    Výstup tohoto příkazu je podobný následujícímu formátu JSON:
+
+    ```json
+    {
+    "etag": "\"0x8D7C21528E08844\"",
+    "lastModified": "2020-03-06T21:27:23+00:00"
+    }
+    ```
+
+3. Chcete-li zobrazit výstup vyprodukovaný funkcí, použijte následující příkaz pro výpis vygenerovaných výstupních souborů. Nahraďte `<triggerConnectionString>` připojovacím řetězcem, který se vrátil dříve. V tomto příkladu je `output` název výstupního kontejneru, který jste vytvořili dříve. Pokud jste použili jiný název, nahraďte tuto hodnotu::
+
+    ```azurecli-interactive
+    az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
+    ```
+
+    Výstup tohoto příkazu je podobný `sample_input_out.json`.
+
+4. Chcete-li stáhnout soubor a zkontrolovat obsah, použijte následující příkaz. Nahraďte `<file>` názvem souboru vráceným předchozím příkazem. Nahraďte `<triggerConnectionString>` připojovacím řetězcem, který se vrátil dříve: 
+
+    ```azurecli-interactive
+    az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    Až se příkaz dokončí, otevřete soubor. Obsahuje data vrácená modelem.
+
+Další informace o používání triggerů objektů BLOB najdete v článku [Vytvoření funkce aktivované úložištěm Azure Blob Storage](/azure/azure-functions/functions-create-storage-blob-triggered-function) .
 
 ## <a name="next-steps"></a>Další kroky
 

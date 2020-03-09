@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494971"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386345"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
 
 V tomto dokumentu se naučíte základy správy a monitorování [Apache Stormch](https://storm.apache.org/) topologií běžících na clusterech HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
@@ -207,7 +207,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 
 | Tlačítko | Popis |
 | --- | --- |
-| Aktivace | Obnoví zpracování deaktivované topologie. |
+| Aktivovat | Obnoví zpracování deaktivované topologie. |
 | Deaktivovat | Pozastaví běžící topologii. |
 | Obnovení rovnováhy | Upravuje paralelismus topologie. Po změně počtu uzlů v clusteru byste měli znovu vyrovnat běžící topologie. Tato operace umožňuje, aby topologie upravila paralelismus, aby vyrovnala dodatečné nebo omezené množství uzlů v clusteru.<br/><br/>Další informace najdete v tématu <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Princip paralelismu Apache Storm topologie</a>.
 | Kill | Ukončí topologii nečinnosti po zadaném časovém limitu. |
@@ -228,7 +228,7 @@ Výběr Spout z částí **spoutů** nebo **šrouby** zobrazí následující in
 | Statistiky výstupu *(časový rámec)* | Informace o datových proudech emitovaných Spout nebo šroubem. |
 | Profilace a ladění | Ovládací prvky pro profilaci a ladění komponent na této stránce. Můžete nastavit hodnotu **stav/časový limit (minuty)** a můžete vybrat tlačítka pro **JStack**, **restartovat pracovní proces**a **haldu**. |
 | Prováděcí moduly *(časový rámec)* | Informace o instancích Spout nebo šroubu. Chcete-li zobrazit protokol diagnostických informací vytvořených pro tuto instanci, vyberte položku **port** pro konkrétního prováděcího modulu. Pracovní prostředky přidružené ke konkrétnímu vykonavateli můžete zobrazit také tak, že vyberete jeho odkaz ve sloupci **hostitel** . |
-| chyby | Jakékoli informace o chybě pro Spout nebo šroub. |
+| Chyby | Jakékoli informace o chybě pro Spout nebo šroub. |
 
 Stránka souhrnu šroubového šroubu bude vypadat podobně jako tato webová stránka:
 
@@ -255,7 +255,7 @@ Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru můžete na
 | Ambari Web | Na webové stránce clusteru Ambari (`https://CLUSTERNAME.azurehdinsight.net` **) vyberte v**horní části stránky **služby** a pak vyberte možnost přestránkovat. Na kartě **Souhrn** vyberte možnost **Server uživatelského rozhraní**. V horní části stránky se zobrazí plně kvalifikovaný název domény uzlu, který je hostitelem uživatelského rozhraní a REST API. |
 | Ambari REST API | Pomocí příkazového `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` můžete načíst informace o uzlu, na kterém běží uživatelské rozhraní a REST API. Nahraďte dvě instance *název_clusteru* názvem clusteru. Až budete vyzváni, zadejte heslo pro účet uživatele (správce). V odpovědi obsahuje položka "host_name" výstupu JSON plně kvalifikovaný název domény uzlu. |
 
-### <a name="authentication"></a>Ověření
+### <a name="authentication"></a>Ověřování
 
 Požadavky na REST API musí používat *základní ověřování*, proto musíte pro cluster HDInsight použít jméno správce a heslo.
 

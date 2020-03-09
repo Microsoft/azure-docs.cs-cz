@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389816"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932708"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -56,7 +56,7 @@ Cluster má přístup k kombinaci různých účtů úložiště. Mezi typické 
 * Když chcete data udělat, už jste nahráli do kontejneru objektů blob, který je k dispozici pro cluster.
 * Pokud chcete izolovat různé části úložiště z důvodů zabezpečení nebo zjednodušit správu.
 
-Pro cluster 48 doporučujeme 4 až 8 účtů úložiště. I když již může existovat dostatečná celková velikost úložiště, každý účet úložiště poskytuje pro výpočetní uzly další šířku pásma sítě. Pokud máte více účtů úložiště, použijte pro každý účet úložiště náhodný název bez předpony. Účelem náhodného pojmenování je snížit pravděpodobnost kritických bodů úložiště (omezování) nebo selhání v běžném režimu napříč všemi účty. Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
+Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
 
 ## <a name="choose-a-cluster-type"></a>Zvolit typ clusteru
 

@@ -7,11 +7,11 @@ ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8caf502db91ab09eea48fc8a902dacf6bf40f24c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462203"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372848"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
 
@@ -26,14 +26,14 @@ Ve službě Azure Automation se přístup uděluje přiřazením příslušné r
 | Vlastník |Role vlastníka umožňuje přístup ke všem prostředkům a akcím v rámci účtu Automation, včetně poskytnutí přístupu dalším uživatelům, skupinám a aplikacím za účelem správy účtu Automation. |
 | Přispěvatel |Role přispěvatele umožňuje spravovat všechno kromě úpravy oprávnění jiných uživatelů k přístupu k účtu Automation. |
 | Čtenář |Role čtenáře vám umožní zobrazit všechny prostředky na účtu Automation, ale neumožní vám provádět změny. |
-| Operátor automatizace |Role operátora služby Automation umožňuje zobrazit název a vlastnosti Runbooku a vytvářet a spravovat úlohy pro všechny Runbooky v účtu Automation. Tato role je užitečná, pokud chcete chránit prostředky účtu Automation, jako jsou přihlašovací údaje assetů a runbooky, aby se zobrazovaly nebo upravily, ale stále umožňují členům vaší organizace spouštět tyto Runbooky. |
+| Operátor služby Automation |Role operátora služby Automation umožňuje zobrazit název a vlastnosti Runbooku a vytvářet a spravovat úlohy pro všechny Runbooky v účtu Automation. Tato role je užitečná, pokud chcete chránit prostředky účtu Automation, jako jsou přihlašovací údaje assetů a runbooky, aby se zobrazovaly nebo upravily, ale stále umožňují členům vaší organizace spouštět tyto Runbooky. |
 |Operátor úloh automatizace|Role operátora úlohy Automation umožňuje vytvářet a spravovat úlohy pro všechny Runbooky v účtu Automation.|
 |Operátor Runbooku služby Automation|Role operátora Runbooku Automation umožňuje zobrazit název a vlastnosti Runbooku.|
 | Přispěvatel Log Analytics | Role Přispěvatel Log Analytics umožňuje číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů, čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage, vytváření a konfiguraci účtů služby Automation, přidávání řešení a konfigurace diagnostiky Azure na všechny prostředky Azure.|
 | Čtenář Log Analytics | Role čtecího modulu Log Analytics umožňuje zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování. To zahrnuje zobrazení konfigurace diagnostiky Azure pro všechny prostředky Azure. |
 | Přispěvatel monitorování | Role Přispěvatel monitorování umožňuje číst všechna data monitorování a aktualizovat nastavení monitorování.|
 | Čtečka monitorování | Role čtenář monitorování umožňuje číst všechna data monitorování. |
-| Správce uživatelského přístupu |Role správce přístupu uživatelů umožňuje spravovat přístup uživatelů k účtům Azure Automation. |
+| Správce přístupu uživatelů |Role správce přístupu uživatelů umožňuje spravovat přístup uživatelů k účtům Azure Automation. |
 
 ## <a name="role-permissions"></a>Oprávnění role
 
@@ -67,7 +67,7 @@ Přispěvatel může spravovat všechno kromě přístupu. Následující tabulk
 |---------|---------|
 |Microsoft. Automation/automationAccounts/Read|Zobrazit všechny prostředky v účtu Automation. |
 
-### <a name="automation-operator"></a>Operátor automatizace
+### <a name="automation-operator"></a>Operátor služby Automation
 
 Operátor automatizace může vytvářet a spravovat úlohy a číst názvy a vlastnosti sad Runbook pro všechny sady Runbook v účtu Automation.  Poznámka: Pokud chcete řídit přístup operátora k jednotlivým sadám Runbook, pak tuto roli nenastavujte a místo toho použijte role operátora úlohy Automation a operátora Runbooku služby Automation v kombinaci. Následující tabulka uvádí oprávnění udělená pro roli:
 
@@ -194,7 +194,7 @@ Přispěvatel monitorování může číst všechna data monitorování a aktual
 |Microsoft. OperationalInsights/pracovní prostory/hledání/akce|Hledání Log Analytics pracovních prostorů.|
 |Microsoft. support/*|Vytváření a Správa lístků podpory|
 
-### <a name="user-access-administrator"></a>Správce uživatelského přístupu
+### <a name="user-access-administrator"></a>Správce přístupu uživatelů
 
 Správce přístupu uživatelů může spravovat přístup uživatelů k prostředkům Azure. Následující tabulka uvádí oprávnění udělená pro roli:
 
@@ -258,8 +258,8 @@ Služba Update Management dosáhne v rámci více služeb, aby poskytovala služ
 |---------|---------|---------|
 |Účet Automation     | Přispěvatel Log Analytics       | Účet Automation        |
 |Účet Automation    | Přispěvatel virtuálního počítače        | Skupina prostředků pro účet        |
-|Pracovní prostor Log Analytics     | Přispěvatel Log Analytics| Pracovní prostor Log Analytics        |
-|Pracovní prostor Log Analytics |Čtenář Log Analytics| Předplatné|
+|Pracovní prostor služby Log Analytics     | Přispěvatel Log Analytics| Pracovní prostor služby Log Analytics        |
+|Pracovní prostor služby Log Analytics |Čtenář Log Analytics| Předplatné|
 |Řešení     |Přispěvatel Log Analytics         | Řešení|
 |Virtuální počítač     | Přispěvatel virtuálního počítače        | Virtuální počítač        |
 
@@ -283,7 +283,7 @@ V následující části se dozvíte, jak nakonfigurovat RBAC na svém účtu Au
 
 3. Zadejte uživatelské jméno uživatele, kterému chcete udělit oprávnění v poli **Vybrat** . Vyberte uživatele ze seznamu a klikněte na **Uložit**.
 
-   ![Přidávání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Přidání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Nyní byste měli vidět, že uživatel byl přidán na stránku Uživatelé s přiřazenou vybranou rolí.
 

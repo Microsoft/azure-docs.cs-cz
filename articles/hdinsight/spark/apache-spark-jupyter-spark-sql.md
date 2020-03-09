@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Vytvoření clusteru Apache Spark pomocí šablony – Azure HDInsight'
-description: V tomto rychlém startu se dozvíte, jak pomocí šablony Resource Manageru vytvořit cluster Apache Spark ve službě Azure HDInsight a jak spustit jednoduchý dotaz Spark SQL.
+description: V tomto rychlém startu se dozvíte, jak pomocí šablony Správce prostředků vytvořit cluster služby Apache Spark ve službě Azure HDInsight a spustit dotaz Spark SQL.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
 ms.custom: mvc
-ms.openlocfilehash: 2637603fa303d57340aa36786443508f1930a481
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/05/2020
+ms.openlocfilehash: a4c207cdbe4bbd0fdef5e1da8da0f4b582702308
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381323"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932668"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí šablony Správce prostředků
 
@@ -21,9 +21,7 @@ V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření
 
 [Přehled: Apache Spark ve službě Azure HDInsight](apache-spark-overview.md) | [Apache Spark](https://spark.apache.org/) | [Apache Hive](https://hive.apache.org/) | [Jupyter notebook](https://jupyter.org/) | [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
-## <a name="prerequisites"></a>Předpoklady
-
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-an-apache-spark-cluster"></a>Vytvoření clusteru Apache Spark
 
@@ -42,18 +40,18 @@ Cluster jako úložiště využívá Azure Storage Blob. Další informace o pou
 
     | Vlastnost | Hodnota |
     |---|---|
-    |**Předplatné**|Vyberte předplatné Azure použité k vytvoření tohoto clusteru. V tomto rychlém startu se používá předplatné **&lt;název předplatného Azure>** . |
-    | **Skupina prostředků**|Vytvořte skupinu prostředků nebo vyberte existující. Skupina prostředků slouží ke správě prostředků Azure pro vaše projekty. V tomto rychlém startu se používá název nové skupiny prostředků **myspark20180403rg**.|
-    | **Umístění**|Vyberte umístění skupiny prostředků. Šablona toto umístění používá k vytvoření clusteru i jako výchozí úložiště clusteru. V tomto rychlém startu se používá umístění **USA – východ 2**.|
-    | **Název clusteru**|Zadejte název clusteru, který chcete vytvořit. V tomto rychlém startu se používá název nového clusteru **myspark20180403**.|
-    | **Přihlašovací jméno a heslo clusteru**|Výchozí přihlašovací jméno je admin. Vyberte heslo pro přihlášení clusteru. V tomto rychlém startu se používá přihlašovací jméno **admin**.|
-    | **Uživatelské jméno a heslo SSH**|Zvolte heslo pro uživatele SSH. V tomto rychlém startu se používá uživatelské jméno SSH **sshuser**.|
+    |Předplatné|Vyberte předplatné Azure použité k vytvoření tohoto clusteru. |
+    | Skupina prostředků|Vytvořte skupinu prostředků nebo vyberte existující. Skupina prostředků slouží ke správě prostředků Azure pro vaše projekty. V tomto rychlém startu se používá název nové skupiny prostředků **myspark20180403rg**.|
+    | Umístění|Vyberte umístění skupiny prostředků. Tato šablona používá toto umístění pro vytvoření clusteru a výchozí úložiště clusteru. V tomto rychlém startu se používá umístění **USA – východ 2**.|
+    | Název clusteru|Zadejte název clusteru, který chcete vytvořit. V tomto rychlém startu se používá název nového clusteru **myspark20180403**.|
+    | Přihlašovací jméno a heslo clusteru|Výchozí přihlašovací jméno je admin. Vyberte heslo pro přihlášení clusteru. V tomto rychlém startu se používá přihlašovací jméno **admin**.|
+    | Uživatelské jméno a heslo SSH|Zvolte heslo pro uživatele SSH. V tomto rychlém startu se používá uživatelské jméno SSH **sshuser**.|
 
     ![Vytvoření clusteru Spark ve službě HDInsight pomocí šablony Azure Resource Manager](./media/apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Vytvoření clusteru Spark ve službě HDInsight pomocí šablony Azure Resource Manager")
 
-3. Vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**, vyberte **Připnout na řídicí panel** a pak vyberte **Koupit**. Zobrazí se nová dlaždice s názvem **Nasazení šablony**. Vytvoření clusteru trvá přibližně 20 minut. Cluster se nejprve musí vytvořit, a až pak můžete pokračovat k další relaci.
+3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**a pak vyberte **koupit**. Zobrazí se nová dlaždice s názvem **Nasazení šablony**. Vytvoření clusteru trvá přibližně 20 minut. Cluster se nejprve musí vytvořit, a až pak můžete pokračovat k další relaci.
 
-Pokud narazíte na problém s vytvářením clusterů HDInsight, může to být tím, že nemáte správná oprávnění k tomu. Další informace najdete v tématu popisujícím [požadavky na řízení přístupu](../hdinsight-hadoop-create-linux-clusters-portal.md).
+Pokud narazíte na problém s vytvářením clusterů HDInsight, může to být tím, že nemáte správná oprávnění k tomu. Další informace najdete v tématu popisujícím [požadavky na řízení přístupu](../hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="install-intellijeclipse-for-spark-applications"></a>Instalace IntelliJ/zatmění pro aplikace Spark
 
@@ -92,6 +90,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
     ![Stav jádra](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Stav jádra")
 
     Při prvním spuštění poznámkového bloku jádro provede některé úlohy na pozadí. Počkejte, až bude jádro připravené.
+
 1. Do prázdné buňky vložte následující kód a stisknutím **SHIFT + ENTER** kód spusťte. Příkaz vypíše tabulky Hive v clusteru:
 
     ```sql
@@ -120,7 +119,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-HDInsight ukládá vaše data a poznámkové bloky Jupyter ve službě Azure Storage nebo Azure Data Lake Store, takže můžete cluster bezpečně odstranit, když se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na kurzu uvedeném v části [Další kroky](#next-steps), měli byste cluster zachovat.
+HDInsight ukládá vaše data a Jupyter poznámkové bloky do Azure Storage nebo Azure Data Lake Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají. Pokud se chystáte hned začít pracovat na kurzu uvedeném v části [Další kroky](#next-steps), měli byste cluster zachovat.
 
 Přepněte zpět na web Azure Portal a vyberte **Odstranit**.
 
@@ -133,4 +132,4 @@ Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny 
 V tomto rychlém startu jste zjistili, jak vytvořit cluster Apache Spark v HDInsight a spustit základní dotaz Spark SQL. Přejděte k dalšímu kurzu, kde se dozvíte, jak používat cluster HDInsight ke spouštění interaktivních dotazů na ukázkových datech.
 
 > [!div class="nextstepaction"]
->[Spouštění interaktivních dotazů na Apache Spark](./apache-spark-load-data-run-query.md)
+> [Spouštění interaktivních dotazů na Apache Spark](./apache-spark-load-data-run-query.md)

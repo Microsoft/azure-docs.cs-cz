@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 390655e3caab89425fe3c8623928c584f8bd3324
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934008"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933138"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: nasazení modelu strojového učení pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-
 > * Nasaďte koncový bod v reálném čase.
 > * Otestujte koncový bod v reálném čase.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Kompletní [část tohoto kurzu](tutorial-designer-automobile-price-train-score.md) se naučíte, jak v Návrháři naučit a vyhodnocovat model strojového učení.
 
@@ -39,7 +39,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
 
 1. Nad plátnem kanálu vyberte **vytvořit kanál odvození** > **kanál pro odvození v reálném čase**.
 
-    ![Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
+    ![Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     Váš kanál by teď měl vypadat takto: 
 
@@ -56,7 +56,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
     > Ve výchozím nastavení bude **vstup webové služby** očekávat stejné schéma dat jako školicí data použitá k vytvoření prediktivního kanálu. V tomto scénáři je cena zahrnutá ve schématu. Cena se ale během předpovědi nepoužívá jako faktor.
     >
 
-1. Vyberte **Spustit**a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
+1. Vyberte **Odeslat**a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
 
 1. Vyberte **Nasadit**.
 

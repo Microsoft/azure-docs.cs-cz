@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514149"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380449"
 ---
 ::: zone target="docs"
 
@@ -40,10 +40,10 @@ V tomto kurzu se naučíte:
 > * Kopírování dat na Data Box Disk
 > * Ověření dat
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že:
-- Dokončili jste [Kurz: Instalace a konfigurace Azure Data Box Disku](data-box-disk-deploy-set-up.md).
+- Máte za sebou [Kurz: Instalace a konfigurace Azure Data Box Disku](data-box-disk-deploy-set-up.md).
 - Vaše disky jsou odemknuté a připojené ke klientskému počítači.
 - Klientský počítač, který se používá ke kopírování dat na disky, musí používat [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
 - Ujistěte se, že zamýšlený typ úložiště pro vaše data odpovídá [podporovaným typům úložiště](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
@@ -106,8 +106,8 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
     |Cíl       | Určuje cestu k cílovému adresáři.        |
     |/E                  | Zkopíruje podadresáře včetně prázdných adresářů. |
     |/MT[:N]             | Vytvoří vícevláknové kopie s N vlákny, kde N je celé číslo mezi 1 a 128. <br>Výchozí hodnota N je 8.        |
-    |/R: \<N>             | Určuje počet opakovaných pokusů při neúspěšném kopírování. Výchozí hodnota N je 1 000 000 (jeden milion opakování).        |
-    |/W: \<N>             | Určuje dobu čekání mezi opakovanými pokusy v sekundách. Výchozí hodnota N je 30 (čeká se 30 sekund).        |
+    |/R: \<N >             | Určuje počet opakovaných pokusů při neúspěšném kopírování. Výchozí hodnota N je 1 000 000 (jeden milion opakování).        |
+    |/W: \<N >             | Určuje dobu čekání mezi opakovanými pokusy v sekundách. Výchozí hodnota N je 30 (čeká se 30 sekund).        |
     |/NFL                | Určuje, že se nemají protokolovat názvy souborů.        |
     |/NDL                | Určuje, že se nemají protokolovat názvy adresářů.        |
     |/FFT                | Přebírá časy systému souborů FAT (s přesností na 2 sekundy).        |
@@ -291,7 +291,7 @@ Pokud se při ověřování zobrazí chyby, přečtěte si téma věnované [ře
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
+V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například:
 
 > [!div class="checklist"]
 > * Kopírování dat na Data Box Disk

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a85d9ebb03ea0c9ebe078ad49ce6bbf40a5b004d
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898292"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927535"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Podpora programu komerčního tržiště v partnerském centru
 
@@ -27,9 +27,9 @@ Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb
 
 1. Přihlaste se do [programu pro komerční tržiště v partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) pomocí svého pracovního účtu. (Pokud jste to ještě neudělali, budete muset [vytvořit účet partnerského centra](./create-account.md).)
 
-1. V horní nabídce na pravé straně stránky vyberte ikonu **Podpora** . 
+2. V horní nabídce na pravé straně stránky vyberte ikonu **Podpora** . 
  
-1. Podokno **pomoc a podpora** se zobrazí na pravé straně stránky. 
+3. Podokno **pomoc a podpora** se zobrazí na pravé straně stránky. 
  
    ![Rozevírací nabídka podpora](./media/commercial-marketplace-support-pane.png)
 
@@ -37,11 +37,11 @@ Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb
 
    ![Pomoc a podpora z domovské stránky](./media/homepage-help-support.png)
 
-1. Vyberte **[dokumentaci](../index.md)** a Projděte si kompletní odpovědi na otázky a prostředky. 
+4. Vyberte **[dokumentaci](../index.yml)** a Projděte si kompletní odpovědi na otázky a prostředky. 
 
-1. Vyberte **[Fórum Komunitní fórum na webu Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** a odpovězte na své otázky tím, že využijete znalosti jiných vydavatelů Microsoftu. 
+5. Vyberte **[Fórum Komunitní fórum na webu Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** a odpovězte na své otázky tím, že využijete znalosti jiných vydavatelů Microsoftu. 
 
-1. Vyberte **[Další pomoc](https://aka.ms/marketplacepublishersupport)** pro otevření nového lístku **žádosti o podporu** .  
+6. Vyberte **[Další pomoc](https://aka.ms/marketplacepublishersupport)** pro otevření nového lístku **žádosti o podporu** .  
 
 ## <a name="how-to-open-a-support-ticket"></a>Postup otevření lístku podpory
 

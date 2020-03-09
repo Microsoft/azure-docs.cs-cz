@@ -24,6 +24,8 @@
           href: hana-data-tiering-extension-nodes.md
         - name: Provozní model a zodpovědnosti
           href: hana-operations-model.md
+        - name: Kompatibilní operační systémy
+          href: os-compatibility-matrix-hana-large-instance.md
     - name: Architektura
       items:
         - name: Obecná architektura
