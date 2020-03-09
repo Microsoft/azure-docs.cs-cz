@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561758"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623122"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hive jako nástroje pro extrakci, transformaci a načítání (ETL)
 
@@ -81,7 +81,7 @@ Model ETL se obvykle používá, pokud chcete:
 
 * Načtěte data streamu nebo velké objemy částečně strukturovaných nebo nestrukturovaných dat z externích zdrojů do existující databáze nebo informačního systému.
 * Vyčistit, transformovat a ověřit data před jejich načtením, například pomocí více než jedné transformace projde clusterem.
-* Vygenerujte sestavy a vizualizace, které se pravidelně aktualizují.  Například pokud sestava trvá příliš dlouho pro vygenerování během dne, můžete naplánovat, aby se sestava spouštěla v noci.  K automatickému spuštění dotazu na podregistr můžete použít Azure Scheduler a PowerShell.
+* Vygenerujte sestavy a vizualizace, které se pravidelně aktualizují. Například pokud sestava trvá příliš dlouho pro vygenerování během dne, můžete naplánovat, aby se sestava spouštěla v noci. Pokud chcete automaticky spustit dotaz na podregistr, můžete použít [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) a PowerShell.
 
 Pokud cíl pro data není databáze, můžete vygenerovat soubor v příslušném formátu v rámci dotazu, například CSV. Tento soubor je pak možné importovat do aplikace Excel nebo Power BI.
 

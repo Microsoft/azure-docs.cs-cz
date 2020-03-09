@@ -4,7 +4,7 @@ description: Provedení zálohování a obnovení operačního systému pro SAP 
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 046daed4f548d24010c3d3bef177cee8cf24a55e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098722"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616871"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3
 
@@ -31,7 +31,7 @@ Tento dokument popisuje kroky pro zálohování a obnovení na úrovni souborů 
 >[!NOTE]
 >Skripty pro zálohování operačního systému využívají zadní software, který je předem nainstalován na serveru.  
 
-Po dokončení zřizování týmem Microsoftu `Service Management` ve výchozím nastavení je server nakonfigurovaný se dvěma plány zálohování k zálohování na úrovni systému souborů zpátky v operačním systému. Plány úloh zálohování můžete kontrolovat pomocí následujícího příkazu:
+Po dokončení zřizování nástrojem Microsoft `Service Management` Team se ve výchozím nastavení server nakonfiguruje se dvěma plány zálohování k zálohování na úrovni systému souborů back-v operačním systému. Plány úloh zálohování můžete kontrolovat pomocí následujícího příkazu:
 ```
 #crontab –l
 ```
@@ -76,7 +76,7 @@ Následující snímek obrazovky ukazuje obnovení úplné zálohy:
 Balíčky s vysokou a obnovenou **instalací jsou předem nainstalovány** v **SKU typu II** velkých instancí Hana a žádná akce není od vás nutná. Pro zálohování operačního systému můžete přímo začít používat zezadu.
 V případech, kdy potřebujete balíčky nainstalovat sami, můžete postupovat podle pokynů uvedených v části instalace a konfigurace nástroje pro zpětnou instalaci.
 
-Chcete-li nainstalovat záložní balíčky, použijte následující příkazy:
+Chcete **-li nainstalovat záložní balíčky** , použijte následující příkazy:
 
 Pro operační systém **SLES** použijte následující příkaz:
 ```
@@ -86,7 +86,7 @@ Pro operační systém **RHEL** použijte následující příkaz:
 ```
 #yum install rear -y
 ```
-Ke konfiguraci zadního nástroje je potřeba aktualizovat parametry **OUTPUT_URL** a **BACKUP_URL** v *souboru/etc/Rear/Local.conf*.
+Chcete-li nakonfigurovat zadní nástroj, je nutné aktualizovat parametry **OUTPUT_URL** a **BACKUP_URL** v *souboru/etc/Rear/Local.conf*.
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso

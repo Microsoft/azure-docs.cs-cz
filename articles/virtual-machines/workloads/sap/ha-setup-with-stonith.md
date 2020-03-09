@@ -4,7 +4,7 @@ description: Zajištění vysoké dostupnosti pro SAP HANA v Azure (velké insta
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71212527"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615089"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Nastavení vysoké dostupnosti v SUSE pomocí STONITH
 Tento dokument popisuje podrobné pokyny k nastavení vysoké dostupnosti v SUSE operačním systému pomocí zařízení STONITH.
@@ -130,8 +130,8 @@ Tato část popisuje kroky pro nastavení clusteru SUSE HA.
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![zypperpatternha_sles.png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
-![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![zypperpatternha_sles. png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+![zypperpatternSAPHANASR-doc. png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 nastavení clusteru
 3.2.1 můžete buď použít příkaz *ha-cluster-init* , nebo můžete použít Průvodce YaST2 k nastavení clusteru. V tomto případě se používá Průvodce YaST2. Tento krok provedete **pouze v primárním uzlu**.
@@ -320,7 +320,7 @@ crm configure load update crm-vip.txt
 ### <a name="74-validate-the-resources"></a>7,4 ověřit prostředky
 
 Po spuštění příkazu *crm_mon*můžete zobrazit tyto dva prostředky.
-![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+![crm_mon_command. png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
 Můžete také zobrazit stav *https://\<IP adresa uzlu >: 7630/CIB/Live/State.*
 
@@ -393,11 +393,11 @@ V části závislosti vyberte "nainstalovat Doporučené balíčky" ![YaST-Depen
 
 Zkontrolujte změny a stiskněte OK.
 
-![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
+![Yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
 Instalace balíčku pokračuje ![YaST-Performing-Installation. png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-Kliknutí na Další
+Klikněte na Další.
 
 ![YaST-Installation-Report. png](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
@@ -413,7 +413,7 @@ zypper -n install libyui-qt
 ```
 ![Zypper-Install-ligyui. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
 ![zypperu-Install-ligyui_part2. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) Yast2 by mělo být schopné nyní otevřít grafické zobrazení, jak je znázorněno zde.
-![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![YaST2-Control-Center. png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>Scénář 3: YaST2 nemá možnost vysoké dostupnosti
 Aby bylo možné zobrazit možnost vysoké dostupnosti v řídicím centru YaST2, je nutné nainstalovat další balíčky.
@@ -433,8 +433,8 @@ Používání softwaru YaST2 > software > správu softwaru
 
 Výběr vzorů
 
-![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
-![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![YaST-pattern1. png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+![YaST-pattern2. png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
 Klikněte na **přijmout**
 

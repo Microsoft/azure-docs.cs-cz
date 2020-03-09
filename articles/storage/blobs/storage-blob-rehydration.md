@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780231"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614804"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Dehydratované data objektů BLOB z archivní úrovně
 
@@ -51,8 +51,8 @@ Objekty BLOB v archivní úrovni by měly být uložené minimálně 180 dnů. O
 ## <a name="quickstart-scenarios"></a>Scénáře Rychlý start
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Dehydratované objekt BLOB archivu do online úrovně
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 
@@ -70,14 +70,14 @@ Objekty BLOB v archivní úrovni by měly být uložené minimálně 180 dnů. O
 
 ![Změna úrovně účtu úložiště](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 Pomocí následujícího skriptu PowerShellu můžete změnit úroveň objektu BLOB archivu. Proměnná `$rgName` musí být inicializována názvem vaší skupiny prostředků. Proměnná `$accountName` musí být inicializována s názvem vašeho účtu úložiště. Proměnná `$containerName` musí být inicializována s názvem kontejneru. Proměnná `$blobName` musí být inicializována s vaším názvem objektu BLOB. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
 $accountName = ""
 $containerName = ""
-$blobName == ""
+$blobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -99,8 +99,8 @@ $rgName = ""
 $accountName = ""
 $srcContainerName = ""
 $destContainerName = ""
-$srcBlobName == ""
-$destBlobName == ""
+$srcBlobName = ""
+$destBlobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName

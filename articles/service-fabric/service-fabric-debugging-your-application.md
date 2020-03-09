@@ -1,26 +1,26 @@
 ---
-title: Ladění aplikace v sadě Visual Studio
+title: Ladění aplikace v aplikaci Visual Studio
 description: Vylepšete spolehlivost a výkon vašich služeb tím, že je vyvíjíte a ladíte v aplikaci Visual Studio v místním vývojovém clusteru.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 18b32c0fb0b2d203b3536e7a859e149da8453f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458111"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624142"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Ladění aplikace Service Fabric pomocí sady Visual Studio
 > [!div class="op_single_selector"]
 > * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
-> * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
+> * [Zatmění/Java](service-fabric-debugging-your-application-java.md)
 >
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>Ladění místní aplikace Service Fabric
-Můžete ušetřit čas a peníze nasazením a laděním aplikace Azure Service Fabric v clusteru pro vývoj místních počítačů. Sady Visual Studio 2019 nebo 2015 mohou nasadit aplikaci do místního clusteru a automaticky připojit ladicí program ke všem instancím aplikace. Pro připojení ladicího programu je nutné spustit aplikaci Visual Studio jako správce.
+Můžete ušetřit čas a peníze nasazením a laděním aplikace Azure Service Fabric v clusteru pro vývoj místních počítačů. Sady Visual Studio 2019 nebo 2015 mohou nasadit aplikaci do místního clusteru a automaticky připojit ladicí program ke všem instancím aplikace. Pro připojení ladicího programu je třeba spustit aplikaci Visual Studio jako správce.
 
 1. Spusťte místní vývojový cluster podle kroků uvedených v části [Nastavení vývojového prostředí Service Fabric](service-fabric-get-started.md).
 2. Stiskněte klávesu **F5** nebo klikněte na **ladění** > **Spustit ladění**.

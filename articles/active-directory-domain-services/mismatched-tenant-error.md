@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 76dc964b7fe7f5e8acfcfb03b2e89bebb2caa176
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979515"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613380"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Řešení chyb neodpovídajících adresářů pro existující Azure AD Domain Services spravované domény
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, proč k chybě dochází a jak ho vyřešit.
 
 ## <a name="what-causes-this-error"></a>Co způsobuje tuto chybu?
 
-Neshodná Chyba adresáře se stane, když spravovaná doména a virtuální síť Azure služba AD DS patří do dvou různých tenantů Azure AD. Můžete mít například spravovanou doménu Azure služba AD DS s názvem *aadds.contoso.com* , která běží v TENANTOVI Azure AD společnosti Contoso. Virtuální síť Azure pro spravovanou doménu je ale součástí tenanta Azure AD společnosti Fabrikam.
+Neshodná Chyba adresáře se stane, když spravovaná doména a virtuální síť Azure služba AD DS patří do dvou různých tenantů Azure AD. Můžete mít například spravovanou doménu Azure služba AD DS s názvem *aaddscontoso.com* , která běží v TENANTOVI Azure AD společnosti Contoso. Virtuální síť Azure pro spravovanou doménu je ale součástí tenanta Azure AD společnosti Fabrikam.
 
 Azure používá řízení přístupu na základě role (RBAC) k omezení přístupu k prostředkům. Pokud povolíte Azure služba AD DS v tenantovi Azure AD, hodnoty hash přihlašovacích údajů se synchronizují do spravované domény. Tato operace vyžaduje, abyste byli správcem tenanta pro adresář služby Azure AD a aby bylo možné řídit přístup k přihlašovacím údajům. K nasazení prostředků do virtuální sítě Azure a řízení provozu musíte mít ve virtuální síti, ve které nasazujete Azure služba AD DS, oprávnění správce.
 

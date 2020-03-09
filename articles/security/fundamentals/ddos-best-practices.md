@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS Protection – navrhování odolných řešení | Microsoft Docs
+title: Navrhování odolných řešení pomocí Azure DDoS Protection
 description: Přečtěte si, jak můžete pomocí dat protokolování získat podrobné informace o vaší aplikaci.
 services: security
 author: barclayn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8d3fc809999508bf3d49c3765c90017e89e80fa7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595424"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624057"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – navrhování odolných řešení
 
@@ -35,7 +35,7 @@ Kromě základní ochrany DDoS na platformě nabízí [Azure DDoS Protection Sta
 
 V následujících částech najdete doporučené pokyny k sestavování DDoS odolných služeb v Azure.
 
-### <a name="design-for-security"></a>Navrhování se zabezpečením
+### <a name="design-for-security"></a>Návrh pro zabezpečení
 
 Zajistěte, aby zabezpečení bylo prioritní v celém životním cyklu aplikace, od návrhu a implementace po nasazení a provoz. Aplikace mohou mít chyby, které umožňují relativně nízké množství požadavků na použití nadměrné množství prostředků, což vede k výpadku služby. 
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 46557d802222190c0ed82f6243dd2a9b997ecaa5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960565"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614241"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Změna SKU pro existující Azure AD Domain Services spravovanou doménu
 
@@ -46,7 +46,7 @@ Další informace o těchto omezeních najdete v tématu [funkce a omezení slu�
 
 Pokud chcete změnit SKLADOVOU položku pro spravovanou doménu Azure služba AD DS pomocí Azure Portal, proveďte následující kroky:
 
-1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Ze seznamu vyberte spravovanou doménu, například *aadds.contoso.com*.
+1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Ze seznamu vyberte spravovanou doménu, například *aaddscontoso.com*.
 1. V nabídce na levé straně stránky Azure služba AD DS vyberte **nastavení > SKU**.
 
     ![Vyberte možnost nabídky SKU pro spravovanou doménu Azure služba AD DS v Azure Portal](media/change-sku/overview-change-sku.png)

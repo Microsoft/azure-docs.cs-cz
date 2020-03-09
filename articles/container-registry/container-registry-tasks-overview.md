@@ -2,13 +2,13 @@
 title: Přehled úloh ACR
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/22/2020
+ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938879"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615958"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -56,9 +56,9 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když je kód p
 
 Úlohy ACR podporují následující triggery při nastavení úložiště Git jako kontextu úkolu:
 
-| Trigger | Ve výchozím nastavení povoleno |
+| Aktivační událost | Ve výchozím nastavení povolena |
 | ------- | ------------------ |
-| Potvrzení | Ano |
+| Potvrdit | Ano |
 | Žádost o získání dat | Ne |
 
 Pokud chcete nakonfigurovat aktivační proceduru aktualizace zdrojového kódu, je nutné zadat úlohu pomocí tokenu PAT (Personal Access token) pro nastavení Webhooku ve veřejném nebo privátním úložišti GitHubu nebo Azure DevOps.
@@ -70,26 +70,12 @@ Naučte se, jak aktivovat sestavení v potvrzení zdrojového kódu v druhém ku
 
 ## <a name="automate-os-and-framework-patching"></a>Automatizace oprav operačního systému a rozhraní
 
-Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci základní image. Po vložení aktualizované základní image do registru nebo obnovení základní image ve veřejném úložišti, jako je například Docker Hub, můžou úlohy ACR automaticky vytvářet na základě této aplikace bitové kopie aplikací.
+Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci *základní image*. Pro většinu imagí kontejnerů je základní image nadřazená image, na které je založena jedna nebo více imagí aplikace. Základní image obvykle obsahují operační systém a někdy aplikační architektury. 
 
-Image kontejnerů se dají široce rozdělit do *základních* imagí a imagí *aplikací* . Základní image typicky obsahují operační systém a aplikační architektury, na kterých je vaše aplikace sestavená, spolu s dalšími úpravami. Tyto základní image jsou obvykle na základě veřejných nadřazených imagí, například: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet]nebo [Node. js][base-node]. Několik imagí vaší aplikace může sdílet společný základní obrázek.
+Můžete nastavit úlohu ACR pro sledování závislosti na základní imagi při sestavení image aplikace. Po vložení aktualizované základní image do registru nebo obnovení základní image ve veřejném úložišti, jako je například Docker Hub, můžou úlohy ACR automaticky vytvářet na základě této aplikace bitové kopie aplikací.
+Díky této automatické detekci a novému sestavování vám ACR úlohy šetří čas a úsilí obvykle potřebné k ručnímu sledování a aktualizaci jednotlivých imagí a všech imagí aplikace, které odkazují na aktualizovanou základní image.
 
-Pokud je v případě, že je nadřazeným nástrojem pro správu a údržbu image architektury operačního systému nebo aplikace, třeba s kritickou opravou zabezpečení operačního systému, je potřeba aktualizovat také základní image, aby zahrnovaly kritickou opravu. Každý obrázek aplikace musí být pak znovu sestaven, aby zahrnoval tyto opravy pro odesílání dat, které jsou nyní součástí základní image.
-
-Vzhledem k tomu, že úlohy ACR dynamicky zjišťují základní závislosti obrázků při vytváření image kontejneru, může rozpoznat, kdy se aktualizuje základní obrázek image aplikace. S jedním předkonfigurovaným [úkolem sestavení](container-registry-tutorial-base-image-update.md#create-a-task)ACR úkoly **automaticky znovu sestaví každou image aplikace** . Díky této automatické detekci a novému sestavování vám ACR úlohy šetří čas a úsilí obvykle potřebné k ručnímu sledování a aktualizaci jednotlivých imagí a všech imagí aplikace, které odkazují na aktualizovanou základní image.
-
-V případě sestavení obrázků z souboru Dockerfile úloha ACR sleduje základní aktualizaci obrázku, pokud je základní bitová kopie v jednom z následujících umístění:
-
-* Stejný registr kontejneru Azure, ve kterém se úloha spouští
-* Další Azure Container Registry ve stejné oblasti 
-* Veřejné úložiště v Docker Hub
-* Veřejné úložiště v Microsoft Container Registry
-
-> [!NOTE]
-> * V úloze ACR je ve výchozím nastavení povolená aktivační událost pro aktualizaci základní image. 
-> * V současné době ACR úlohy pouze sleduje základní aktualizace obrázků pro aplikace (*běhové*image). ACR úlohy nesleduje aktualizace základních imagí pro mezilehlé (*BuildTime*) image používané ve více fázích fázemi. 
-
-Další informace o opravách operačních systémů a rozhraní v rámci třetího kurzu ACR úlohy, [Automatizace sestavení imagí na základě aktualizace základního obrázku pomocí úloh Azure Container Registry](container-registry-tutorial-base-image-update.md).
+Další informace o [aktivačních událostech základní aktualizace imagí](container-registry-tasks-base-images.md) pro úlohy ACR A naučíte se, jak aktivovat sestavení image při vložení základní image do registru kontejneru v kurzu [Automatizace sestavení imagí kontejneru, když se v registru kontejnerů Azure aktualizuje základní image](container-registry-tutorial-base-image-update.md) .
 
 ## <a name="schedule-a-task"></a>Naplánování úlohy
 
@@ -116,7 +102,7 @@ Přečtěte si o úlohách s více kroky při [spouštění více kroků sestave
 
 Následující tabulka ukazuje několik příkladů podporovaných umístění kontextu pro úlohy ACR:
 
-| Umístění kontextu | Popis | Příklad: |
+| Umístění kontextu | Popis | Příklad |
 | ---------------- | ----------- | ------- |
 | Místní systém souborů | Soubory v adresáři v místním systému souborů. | `/home/user/projects/myapp` |
 | Větev hlavní větve GitHubu | Soubory v rámci hlavní větve (nebo jiné výchozí) ve veřejném nebo privátním úložišti GitHub.  | `https://github.com/gituser/myapp-repo.git` |

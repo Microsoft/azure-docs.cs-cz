@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426220"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620008"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -62,12 +62,12 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 * Kanada – střed
 * USA – středozápad
 * USA – východ
-* USA – východ 2
+* Východní USA 2
 * USA – středosever
-* USA – středojih
-* USA – střed
-* USA – západ
-* USA – západ 2
+* Střed USA – jih
+* Střed USA
+* Západní USA
+* Západní USA 2
 * Francie – střed
 * Západní Evropa
 * Severní Evropa
@@ -92,13 +92,13 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Kanada – střed
 * USA – středozápad
 * USA – východ
-* USA – východ 2
+* Východní USA 2
 * USA – středosever
-* USA – středojih
-* USA – střed
-* USA – západ
-* USA – západ 2
-* USA – střed
+* Střed USA – jih
+* Střed USA
+* Západní USA
+* Západní USA 2
+* Střed USA
 * Francie – střed
 * Západní Evropa
 * Severní Evropa
@@ -115,7 +115,7 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * USA (Gov) – Virginia
 * Čína – východ 2
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="user-access-requirements"></a>Požadavky na přístup uživatelů
 
@@ -123,7 +123,7 @@ Váš účet musí být členem jedné z následujících [předdefinovaných ro
 
 |Model nasazení   | Role                   |
 |---------          |---------               |
-|Resource Manager   | Vlastník                  |
+|Správce prostředků   | Vlastník                  |
 |                   | Přispěvatel            |
 |                   | Čtenář                 |
 |                   | Přispěvatel sítě    |
@@ -201,7 +201,7 @@ Analýzu provozu můžete nakonfigurovat taky pomocí rutiny [set-AzNetworkWatch
 
 ## <a name="view-traffic-analytics"></a>Zobrazit analýzu provozu
 
-Na levé straně portálu vyberte **všechny služby**a pak do pole **Filtr** zadejte *monitor* . Když se **monitor** zobrazí ve výsledcích hledání, vyberte ho. Pokud chcete začít prozkoumat analýzu provozu a její možnosti, vyberte **sledovací proces sítě**a pak **Analýza provozu**.
+Pokud chcete zobrazit Analýza provozu, vyhledejte **Network Watcher** na panelu hledání na portálu. Když jste v Network Watcher prozkoumali analýzu provozu a její možnosti, vyberte v nabídce vlevo možnost **Analýza provozu** . 
 
 ![Přístup k řídicímu panelu Analýza provozu](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

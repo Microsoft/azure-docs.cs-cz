@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769859"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619631"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
@@ -20,6 +20,8 @@ Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je
 ## <a name="backups"></a>Zálohování
 
 Azure Database for PostgreSQL přebírá zálohy datových souborů a transakčního protokolu. V závislosti na podporované maximální velikosti úložiště vezmeme úplné a rozdílové zálohy (4 TB max. servery úložiště) nebo zálohy snímků (až 16 TB maximálních úložných serverů). Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
+
+Tyto záložní soubory nelze exportovat. Zálohy lze použít pouze pro operace obnovení v Azure Database for PostgreSQL. K zkopírování databáze můžete použít [pg_dump](howto-migrate-using-dump-and-restore.md) .
 
 ### <a name="backup-frequency"></a>Frekvence zálohování
 
@@ -52,7 +54,7 @@ Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí 
 > [!IMPORTANT]
 > Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Obnovení k určitému časovému okamžiku
+### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
 Nezávisle na možnosti redundance záloh můžete provést obnovení do libovolného bodu v čase v rámci doby uchovávání záloh. Nový server se vytvoří ve stejné oblasti Azure jako původní server. Vytvoří se s konfigurací původního serveru pro cenovou úroveň, generování výpočtů, počet virtuální jádra, velikost úložiště, dobu uchování zálohy a možnost redundance zálohy.
 
@@ -73,7 +75,7 @@ Během geografického obnovení můžou konfigurace serveru, které je možné z
 Po obnovení z některého mechanismu obnovení byste měli provést následující úlohy, aby se uživatelé a aplikace mohli zálohovat a spustit:
 
 - Pokud má nový server nahradit původní server, přesměrujte klienty a klientské aplikace na nový server.
-- Zajistěte, aby se pro uživatele připojovala odpovídající pravidla brány firewall na úrovni serveru.
+- Aby se uživatelé mohli připojit, zajistěte, aby byla k dismístě vhodná pravidla brány firewall na úrovni serveru a sítě. Tato pravidla se nekopírují z původního serveru.
 - Zajistěte, aby byla zajištěna příslušná přihlášení a oprávnění na úrovni databáze.
 - Podle potřeby nakonfigurujte výstrahy.
 

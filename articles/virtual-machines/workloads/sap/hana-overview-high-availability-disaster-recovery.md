@@ -4,7 +4,7 @@ description: Zajištění vysoké dostupnosti a plánování pro zotavení po ha
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0150aeace3960d075bbf61c1dd0bba4865aaf2b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099711"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616934"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Velké instance SAP HANA vysoká dostupnost a zotavení po havárii v Azure 
 
@@ -32,9 +32,9 @@ Vysoká dostupnost a zotavení po havárii (DR) jsou zásadními aspekty provozo
 
 Microsoft podporuje některé SAP HANA vysoce dostupné funkce s velkými instancemi HANA. Mezi tyto možnosti patří:
 
-- **Replikace úložiště**: Schopnost systému úložiště replikovat všechna data do jiné oblasti Azure s velkým označením instance v jiné oblasti Azure. SAP HANA funguje nezávisle na této metodě. Tato funkce je výchozím mechanismem zotavení po havárii nabízeným pro velké instance HANA.
-- **Replikace systému Hana**: [Replikace všech dat v SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) do samostatného systému SAP HANA. Cíl doby obnovení je minimalizován prostřednictvím replikace dat v pravidelných intervalech. SAP HANA podporuje asynchronní, synchronní a synchronní režimy v paměti. Synchronní režim se používá jenom pro SAP HANA systémy, které jsou ve stejném datovém centru nebo méně než 100 km od sebe. Díky aktuálnímu návrhu razítek velkých instancí HANA se replikace systému HANA dá použít jenom pro vysokou dostupnost v rámci jedné oblasti. Replikace systému HANA vyžaduje reverzní proxy server nebo komponentu směrování třetí strany pro konfiguraci zotavení po havárii v jiné oblasti Azure. 
-- **Automatické převzetí služeb při selhání hostitele**: Místní řešení pro obnovení chyb pro SAP HANA, které je alternativou k replikaci systému HANA. Pokud hlavní uzel přestane být k dispozici, nakonfigurujete jeden nebo více pohotovostních SAP HANA uzlů v režimu škálování na více instancí a SAP HANA automaticky převezme převzetí služeb při selhání v pohotovostním uzlu.
+- **Replikace úložiště**: schopnost systému úložiště replikovat všechna data na další časová razítka pro velké instance Hana v jiné oblasti Azure. SAP HANA funguje nezávisle na této metodě. Tato funkce je výchozím mechanismem zotavení po havárii nabízeným pro velké instance HANA.
+- **Replikace systému Hana**: [replikace všech dat v SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) do samostatného systému SAP HANA. Cíl doby obnovení je minimalizován prostřednictvím replikace dat v pravidelných intervalech. SAP HANA podporuje asynchronní, synchronní a synchronní režimy v paměti. Synchronní režim se používá jenom pro SAP HANA systémy, které jsou ve stejném datovém centru nebo méně než 100 km od sebe. Díky aktuálnímu návrhu razítek velkých instancí HANA se replikace systému HANA dá použít jenom pro vysokou dostupnost v rámci jedné oblasti. Replikace systému HANA vyžaduje reverzní proxy server nebo komponentu směrování třetí strany pro konfiguraci zotavení po havárii v jiné oblasti Azure. 
+- **Automatické převzetí služeb při selhání hostitele**: místní řešení pro obnovení chyb pro SAP HANA, které je alternativou replikace systému Hana. Pokud hlavní uzel přestane být k dispozici, nakonfigurujete jeden nebo více pohotovostních SAP HANA uzlů v režimu škálování na více instancí a SAP HANA automaticky převezme převzetí služeb při selhání v pohotovostním uzlu.
 
 SAP HANA v Azure (velké instance) se nabízí ve dvou oblastech Azure ve čtyřech geopolitických oblastech (USA, Austrálie, Evropa a Japonsko). Dvě oblasti v geopolitické oblasti, které hostují Velká časová razítka instance HANA, jsou připojené k odděleným vyhrazeným síťovým okruhům. Používají se pro replikaci snímků úložiště k poskytování metod zotavení po havárii. Replikace není ve výchozím nastavení navázaná, ale je nastavená pro zákazníky, kteří doplňují funkce zotavení po havárii. Replikace úložiště závisí na využití snímků úložiště pro velké instance HANA. Nemůžete zvolit oblast Azure jako oblast zotavení po havárii, která je v jiné geopolitické oblasti. 
 
@@ -43,7 +43,7 @@ Následující tabulka uvádí aktuálně podporované metody a kombinace vysok�
 | Scénář podporovaný ve velkých instancích HANA | Možnost vysoké dostupnosti | Možnost zotavení po havárii | Komentáře |
 | --- | --- | --- | --- |
 | Jeden uzel | Není k dispozici. | Vyhrazené nastavení zotavení po havárii<br /> Nastavení Multipurpose DR. | |
-| Automatické převzetí služeb při selhání hostitele: Horizontální navýšení kapacity (s pohotovostním nebo Bezm)<br /> včetně 1 + 1 | Je možné, že se v pohotovostním režimu vezme aktivní role.<br /> HANA řídí přepínač role. | Vyhrazené nastavení zotavení po havárii<br /> Nastavení Multipurpose DR.<br /> Synchronizace DR pomocí replikace úložiště. | Sady svazků HANA jsou připojeny ke všem uzlům.<br /> Lokalita DR musí mít stejný počet uzlů. |
+| Automatické převzetí služeb při selhání hostitele: horizontální navýšení kapacity (s úsporným nebo bez)<br /> včetně 1 + 1 | Je možné, že se v pohotovostním režimu vezme aktivní role.<br /> HANA řídí přepínač role. | Vyhrazené nastavení zotavení po havárii<br /> Nastavení Multipurpose DR.<br /> Synchronizace DR pomocí replikace úložiště. | Sady svazků HANA jsou připojeny ke všem uzlům.<br /> Lokalita DR musí mít stejný počet uzlů. |
 | Replikace systému HANA | Možné s primárním nebo sekundárním nastavením.<br /> Sekundární přesun do primární role v případě převzetí služeb při selhání.<br /> Replikace systému HANA a převzetí služeb při selhání ovládacího prvku operačního systému | Vyhrazené nastavení zotavení po havárii<br /> Nastavení Multipurpose DR.<br /> Synchronizace DR pomocí replikace úložiště.<br /> Zotavení po havárii pomocí replikace systému HANA ještě není možné bez součástí jiných výrobců. | K jednotlivým uzlům jsou připojeny samostatné sady diskových svazků.<br /> Replikují se do umístění DR jenom diskové svazky sekundární repliky v produkční lokalitě.<br /> Na webu DR se vyžaduje jedna sada svazků. | 
 
 Vyhrazená instalace DR je tam, kde se jednotka velkých instancí HANA v lokalitě DR nepoužívá ke spuštění žádné jiné úlohy nebo neprodukčního systému. Jednotka je pasivní a je nasazena pouze v případě, že je provedeno převzetí služeb při selhání po havárii. Tato instalace ale není upřednostňovanou volbou pro mnoho zákazníků.
@@ -51,7 +51,7 @@ Vyhrazená instalace DR je tam, kde se jednotka velkých instancí HANA v lokali
 Pokud chcete zjistit rozložení úložiště a podrobnosti o síti Ethernet pro vaši architekturu, přečtěte si [scénáře podporované HLI](hana-supported-scenario.md) .
 
 > [!NOTE]
-> [SAP HANA nasazení MCOD](https://launchpad.support.sap.com/#/notes/1681092) (víc instancí HANA na jedné jednotce) jako překrytí scénářů fungují s metodami HA a zotavení po havárii, které jsou uvedené v tabulce. Výjimkou je použití replikace systému HANA s automatickým clusterem s podporou převzetí služeb při selhání založeném na Pacemaker. Takový případ podporuje pouze jednu instanci HANA na jednotku. U [SAP HANA nasazení MDC](https://launchpad.support.sap.com/#/notes/2096000) budou fungovat jenom metody HA a ha, které nevyužívají úložiště a zotavení po havárii, pokud je nasazený víc než jeden tenant. U jednoho nasazeného tenanta jsou všechny uvedené metody platné.  
+> [SAP HANA nasazení MCOD](https://launchpad.support.sap.com/#/notes/1681092) (více instancí Hana na jedné jednotce) jako překrytí scénářů fungují s metodami ha a zotavení po havárii, které jsou uvedené v tabulce. Výjimkou je použití replikace systému HANA s automatickým clusterem s podporou převzetí služeb při selhání založeném na Pacemaker. Takový případ podporuje pouze jednu instanci HANA na jednotku. U [SAP HANA nasazení MDC](https://launchpad.support.sap.com/#/notes/2096000) budou fungovat jenom metody HA a ha, které nevyužívají úložiště a zotavení po havárii, pokud je nasazený víc než jeden tenant. U jednoho nasazeného tenanta jsou všechny uvedené metody platné.  
 
 Víceúčelový instalační program se používá v případě, že velká jednotka instance HANA na webu DR spouští neprodukční úlohy. V případě havárie vypněte neprodukční systém, připojte sady svazků replikované úložiště (další) a pak spusťte instanci provozní HANA. Většina zákazníků, kteří používají funkci zotavení po havárii velké instance HANA, tuto konfiguraci používají. 
 
@@ -85,7 +85,7 @@ Kromě předchozích požadavků pro nastavení zotavení po havárii s velkými
 - Přiobjednat další úložiště na webu DR pro každý SAP HANA v SKU Azure (velké instance), které chcete obnovit na webu pro zotavení po havárii. Nákup dalšího úložiště vám umožní přidělit svazky úložiště. Můžete přidělit svazky, které jsou cílem replikace úložiště z produkční oblasti Azure, do oblasti Azure pro zotavení po havárii.
 - V případě, kdy máte HSR instalaci na primárním počítači a nastavili jste replikaci založenou na úložišti na lokalitu DR, je nutné v lokalitě DR zakoupit další úložiště, aby se data primárních i sekundárních uzlů mohla replikovat do lokality DR.
 
-  **Další postup**
+  **Další kroky**
 - Přečtěte si téma [zálohování a obnovení](hana-backup-restore.md).
 
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126111"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380389"
 ---
 # <a name="azure-data-box-heavy-limits"></a>Omezení Azure Data Box Heavy
 

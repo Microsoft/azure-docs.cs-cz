@@ -3,28 +3,28 @@ title: Certifikace SAP HANA v Azure (velké instance) | Microsoft Docs
 description: Certifikace SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c2c919d6e85a2b708dc247b1642e7e8987df81b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099881"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617232"
 ---
 # <a name="certification"></a>Certifikace
 
 Kromě certifikace NetWeaver vyžaduje SAP speciální certifikaci pro SAP HANA podporu SAP HANA na určitých infrastrukturách, jako je Azure IaaS.
 
-Základní Poznámka ke službě SAP na NetWeaver a SAP HANA certifikace jsou [v rámci služby SAP Note #1928533 – aplikace SAP v Azure: Podporované produkty a typy](https://launchpad.support.sap.com/#/notes/1928533)virtuálních počítačů Azure.
+Základní Poznámka ke službě SAP na NetWeaver a SAP HANA certifikace, je [SAP – poznámka #1928533 – aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533).
 
 Záznamy o certifikaci pro SAP HANA v Azure (velké instance) najdete na webu [SAP HANA Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) . 
 
@@ -40,5 +40,5 @@ V porovnání se spouštěním SAP HANA na virtuálních počítačích má toto
 - Kromě řešení popsaných tady můžete nainstalovat další komponenty v rámci předplatného Azure, které se připojují k SAP HANA v Azure (velké instance). Příklady jsou komponenty, které umožňují komunikaci s SAP HANA nebo přímo do databáze, jako jsou servery odkazů, servery RDP, SAP HANA Studio, SAP Data Services pro scénáře SAP BI nebo řešení monitorování sítě.
 - Stejně jako v Azure nabízí velká instance HANA podporu pro funkce vysoké dostupnosti a zotavení po havárii.
 
-**Další postup**
+**Další kroky**
 - Projděte si [dostupné SKU pro HLI](hana-available-skus.md) 

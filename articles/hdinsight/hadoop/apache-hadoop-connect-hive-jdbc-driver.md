@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466922"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616648"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hive prostřednictvím ovladače JDBC v HDInsight
 
@@ -23,7 +23,7 @@ Naučte se používat ovladač JDBC z aplikace Java k odesílání dotazů Apach
 
 Další informace o rozhraní JDBC podregistru najdete v tématu [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * An HDInsight clusteru Hadoop. Pokud ho chcete vytvořit, přečtěte si téma Začínáme [se službou Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Ujistěte se, že je služba HiveServer2 spuštěná.
 * [Sada Java Developer Kit (JDK) verze 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) nebo vyšší.
@@ -36,6 +36,18 @@ Připojení JDBC k clusteru HDInsight v Azure se provádí přes port 443 a pře
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 Parametr `CLUSTERNAME` nahraďte názvem vašeho clusteru HDInsight.
+
+Nebo můžete získat připojení prostřednictvím **uživatelského rozhraní Ambari > > konfiguracích registru > Upřesnit**.
+
+![Získání připojovacího řetězce JDBC prostřednictvím Ambari](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+
+### <a name="host-name-in-connection-string"></a>Název hostitele v připojovacím řetězci
+
+Název hostitele CLUSTERNAME.azurehdinsight.net v připojovacím řetězci je stejný jako adresa URL clusteru. Můžete ji získat prostřednictvím Azure Portal. 
+
+### <a name="port-in-connection-string"></a>Port v připojovacím řetězci
+
+**Port 443** můžete použít jenom pro připojení ke clusteru z některých míst mimo virtuální síť Azure. HDInsight je spravovaná služba, která znamená, že všechna připojení ke clusteru se spravují přes zabezpečenou bránu. K HiveServer 2 se nemůžete připojit přímo na portech 10001 nebo 10000, protože tyto porty nejsou vystavené vně. 
 
 ## <a name="authentication"></a>Ověřování
 
@@ -138,6 +150,15 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 1. Ukončete SQuirreL a potom v systému vyhledejte adresář, ve kterém je nainstalováno SQuirreL, případně `C:\Program Files\squirrel-sql-4.0.0\lib`. V adresáři SquirreL v adresáři `lib` nahraďte existující Commons-Codec. jar jedním staženým z clusteru HDInsight.
 
 1. Restartujte SQuirreL. Tato chyba by se už neměla vyskytnout při připojování k podregistru v HDInsight.
+
+### <a name="connection-disconnected-by-hdinsight"></a>Připojení odpojené službou HDInsight
+
+**Příznaky**: při pokusu o stažení obrovských objemů dat (například několik GB) prostřednictvím JDBC/ODBC se při stahování neočekávaně odpojí připojení ke službě HDInsight. 
+
+**Příčina**: Tato chyba je způsobená omezením u uzlů brány. Při získávání dat z JDBC/ODBC musí všechna data projít uzlem brány. Brána však není navržena tak, aby stahoval velké množství dat, takže připojení může být uzavřeno bránou, pokud nemůže zpracovávat přenosy.
+
+**Řešení**: Vyhněte se použití ovladače JDBC/ODBC ke stahování velkých objemů dat. Místo toho zkopírujte data přímo z úložiště objektů BLOB.
+
 
 ## <a name="next-steps"></a>Další kroky
 

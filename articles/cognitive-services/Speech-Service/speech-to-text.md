@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: erhopf
 ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379945"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388285"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 

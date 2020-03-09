@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424928"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623691"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při použití Azure Cosmos DB
 
@@ -22,6 +22,20 @@ Tento článek vás provede obecným doporučeným přístupem k řešení potí
 Optimalizace dotazů můžete široce kategorizovat v Azure Cosmos DB: optimalizace, které omezují náklady na žádost (RU) na dotaz a optimalizace, které pouze omezují latenci. Omezením poplatku za dotaz by se snížila i latence.
 
 Tento dokument bude používat příklady, které se dají znovu vytvořit pomocí [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datové sady.
+
+## <a name="important"></a>Důležité
+
+- Nejlepší výkon získáte pomocí [tipů ke zvýšení výkonu](performance-tips.md).
+    > [!NOTE] 
+    > Pro zvýšení výkonu se doporučuje zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní ServiceInterop. dll k analýze a optimalizaci dotazů v místním prostředí a je podporována pouze na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop. dll není k dispozici, provede další síťové volání brány k získání optimalizovaného dotazu. 
+- Cosmos DB dotaz nepodporuje minimální počet položek.
+    - Kód by měl zpracovat libovolnou velikost stránky od 0 do maximálního počtu položek.
+    - Počet položek na stránce může a bude změněn bez předchozího upozornění.
+- Pro dotazy jsou očekávány prázdné stránky a lze je kdykoli zobrazit. 
+    - Důvody, proč jsou v sadách SDK zpřístupněny prázdné stránky, umožňují více příležitostí zrušit dotaz. Také umožňuje vymazat, že sada SDK provádí více síťových volání.
+    - Prázdné stránky se mohou zobrazit ve stávajících úlohách, protože fyzický oddíl je rozdělen Cosmos DB. První oddíl má nyní 0 výsledků, což způsobí, že bude prázdná stránka.
+    - Prázdné stránky jsou způsobeny back-endu pro dotazování, protože dotaz vychází z back-endu s větším množstvím času pro načtení dokumentů. Pokud Cosmos DB zruší dotaz, vrátí token pro pokračování, který umožní, aby dotaz pokračoval. 
+- Nezapomeňte dotaz úplně vyprázdnit. Podívejte se na ukázky sady SDK a pomocí smyčky while na `FeedIterator.HasMoreResults` vyprázdněte celý dotaz.
 
 ### <a name="obtaining-query-metrics"></a>Získávání metrik dotazů:
 
@@ -144,7 +158,7 @@ Zásady indexování:
 }
 ```
 
-**Poplatek za ru:** 409,51 ru 's
+**Poplatek za ru:** 409,51 ru
 
 ### <a name="optimized"></a>Optimalizované
 
@@ -163,7 +177,7 @@ Zásady indexování se aktualizovaly:
 }
 ```
 
-**Poplatek za ru:** 2,98 ru 's
+**Poplatek za ru:** 2,98 ru
 
 K zásadám indexování můžete kdykoli přidat další vlastnosti bez dopadu na dostupnost nebo výkon zápisu. Pokud do indexu přidáte novou vlastnost, budou dotazy, které tuto vlastnost používají, okamžitě využívat nový dostupný index. Dotaz bude při sestavení používat nový index. Výsledkem je, že výsledky dotazu můžou být nekonzistentní, protože probíhá opětovné sestavení indexu. Pokud je nová vlastnost indexována, dotazy, které využívají pouze existující indexy, nebudou při opětovném sestavení indexu ovlivněny. [Průběh transformace indexu můžete sledovat](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
@@ -217,7 +231,7 @@ Zásady indexování:
 }
 ```
 
-**Poplatek za ru:** 44,28 ru 's
+**Poplatek za ru:** 44,28 ru
 
 ### <a name="optimized"></a>Optimalizované
 
@@ -257,7 +271,7 @@ Zásady indexování se aktualizovaly:
 
 ```
 
-**Poplatek za ru:** 8,86 ru 's
+**Poplatek za ru:** 8,86 ru
 
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Optimalizujte výrazy JOIN pomocí poddotazu.
 Podhodnoty poddotazů mohou optimalizovat `JOIN` výrazy vložením predikátů za každý výraz SELECT-many místo po všech křížových spojeních v klauzuli `WHERE`.
@@ -274,7 +288,7 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**Poplatek za ru:** 167,62 ru 's
+**Poplatek za ru:** 167,62 ru
 
 Pro tento dotaz bude index odpovídat jakémukoli dokumentu, který má značku s názvem "počáteční vzorec", nutritionValue větší než 0 a obsluhující množství větší než 1. Výraz `JOIN` v tomto případě provede všechny položky značek, živin a zařadí pole pro každý shodný dokument před použitím jakéhokoli filtru. Klauzule `WHERE` pak použije predikát filtru u každé `<c, t, n, s>` řazené kolekce členů.
 
@@ -290,7 +304,7 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**Poplatek za ru:** 22,17 ru 's
+**Poplatek za ru:** 22,17 ru
 
 Předpokládejme, že filtr odpovídá pouze jedné položce v poli značek a existuje pět položek pro živiny i pole. Výrazy `JOIN` se pak rozbalí na 1 x 1 x 5 × 5 = 25 položek, a to na rozdíl od 1 000 položek v prvním dotazu.
 

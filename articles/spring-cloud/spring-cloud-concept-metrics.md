@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500331"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389560"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -98,13 +98,13 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >|----|----|----|------------|
 >|Procento využití procesoru v systému | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
 >| Procento využití procesoru aplikací | Procento využití procesoru aplikací | Procento | Poslední využití procesoru pro proces prostředí Java Virtual Machine. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
->| Přiřazená paměť aplikace | JVM. Memory. potvrzený | Bajty | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzení může být menší než init. potvrzená bude vždycky větší nebo rovna hodnotě použité. |
->| Využitá paměť aplikace | JVM. Memory .Ed – použito | Bajty | Představuje velikost aktuálně využité paměti v bajtech. |
->| Maximální velikost paměti aplikace | JVM. Memory. max | Bajty | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá < = Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
->| Maximální velikost dostupných starých dat generace | JVM. GC. max. data. Size | Bajty | Využití paměti ve špičce starého fondu paměti generace od spuštění virtuálního počítače Java. |
->| Stará velikost dat generace | JVM. GC. Live. data. Size | Bajty | Velikost staré generace fondu paměti po úplném GC. |
->| Zvýšit úroveň na starou velikost dat generace | JVM. GC. Memory. propagovaný | Bajty | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
->| Zvýšení úrovně na velikost dat malé generace | JVM. GC. Memory. alokovaný | Bajty | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
+>| Přiřazená paměť aplikace | JVM. Memory. potvrzený | B | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzení může být menší než init. potvrzená bude vždycky větší nebo rovna hodnotě použité. |
+>| Využitá paměť aplikace | JVM. Memory .Ed – použito | B | Představuje velikost aktuálně využité paměti v bajtech. |
+>| Maximální velikost paměti aplikace | JVM. Memory. max | B | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá < = Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
+>| Maximální velikost dostupných starých dat generace | JVM. GC. max. data. Size | B | Využití paměti ve špičce starého fondu paměti generace od spuštění virtuálního počítače Java. |
+>| Stará velikost dat generace | JVM. GC. Live. data. Size | B | Velikost staré generace fondu paměti po úplném GC. |
+>| Zvýšit úroveň na starou velikost dat generace | JVM. GC. Memory. propagovaný | B | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
+>| Zvýšení úrovně na velikost dat malé generace | JVM. GC. Memory. alokovaný | B | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
 >| Počet pozastavení GC | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
 >| Celkový čas pozastavení GC | JVM. GC. Pause (celkem-Time) | Milisekundy | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
 
@@ -112,8 +112,8 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >[!div class="mx-tdCol2BreakAll"]
 >| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Celkový počet odeslaných bajtů Tomcat | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
->| Celkový počet přijatých bajtů Tomcat | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
+>| Celkový počet odeslaných bajtů Tomcat | Tomcat. Global. odesláno | B | Množství odeslaného webového serveru datového Tomcat |
+>| Celkový počet přijatých bajtů Tomcat | Tomcat. Global. Received | B | Množství přijatého webového serveru datového Tomcat |
 >| Celkový čas žádosti Tomcat | Tomcat. Global. Request (celkem-Time) | Milisekundy | Celková doba, jakou Tomcat webový server zpracovává žádosti |
 >| Celkový počet žádostí Tomcat | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
 >| Maximální čas požadavku Tomcat | Tomcat. Global. Request. max | Milisekundy | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |

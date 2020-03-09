@@ -3,18 +3,18 @@ title: Definování více instancí vlastnosti
 description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování několikrát při vytváření vlastnosti prostředku.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b1e31f981f361b4cfbe7e7930f2c70bfce8b8656
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210863"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622865"
 ---
 # <a name="property-iteration-in-azure-resource-manager-templates"></a>Iterace vlastnosti v šablonách Azure Resource Manager
 
 V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti v šabloně Azure Resource Manager. Přidáním elementu **kopírování** do oddílu Vlastnosti prostředku ve vaší šabloně můžete dynamicky nastavit počet položek pro vlastnost během nasazení. Nemusíte se také vyhnout opakování syntaxe šablony.
 
-Můžete také použít kopírování s [prostředky](copy-resources.md) a [proměnnými](copy-variables.md).
+Můžete také použít kopírování s [prostředky](copy-resources.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
 
 ## <a name="property-iteration"></a>Iterace vlastnosti
 
@@ -185,14 +185,17 @@ Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerSh
 
 Následující příklad ukazuje běžný scénář pro vytvoření více než jedné hodnoty pro vlastnost.
 
-|Šablony  |Popis  |
+|Šablona  |Popis  |
 |---------|---------|
 |[Nasazení virtuálního počítače s proměnným počtem datových disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Nasadí několik datových disků s virtuálním počítačem. |
 
 ## <a name="next-steps"></a>Další kroky
 
 * Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Správce prostředků](template-tutorial-create-multiple-instances.md).
-* Pro jiné použití kopie elementu, viz [iterace prostředků v Azure Resource Manager šablony](copy-resources.md) a [iterace proměnných v šablonách Azure Resource Manager](copy-variables.md).
+* Pro jiné použití kopie elementu viz:
+  * [Iterace prostředků v šablonách Azure Resource Manager](copy-resources.md)
+  * [Iterace proměnné v šablonách Azure Resource Manager](copy-variables.md)
+  * [Výstupní iterace v šablonách Azure Resource Manager](copy-outputs.md)
 * Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření Azure Resource Manager šablon](template-syntax.md).
 * Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](deploy-powershell.md).
 

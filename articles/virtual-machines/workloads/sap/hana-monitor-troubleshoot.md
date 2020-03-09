@@ -3,22 +3,22 @@ title: Monitorování a řešení potíží ze strany HANA na SAP HANA v Azure (
 description: Monitorování a řešení potíží ze strany HANA na SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2c596a876817f0a501025c37e463a7eebb55cf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099828"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617080"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Sledování a řešení potíží na straně HANA
 
@@ -26,18 +26,18 @@ Aby bylo možné efektivně analyzovat problémy související s SAP HANA v Azur
 
 Příslušné Nejčastější dotazy týkající se SAP HANA výkonu najdete v následujících komentářích ke službě SAP:
 
-- [Poznámky SAP #2222200 – Nejčastější dotazy: SAP HANA sítě](https://launchpad.support.sap.com/#/notes/2222200)
+- [Poznámky SAP #2222200 – Nejčastější dotazy: SAP HANA síť](https://launchpad.support.sap.com/#/notes/2222200)
 - [Poznámky SAP #2100040 – Nejčastější dotazy: SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
-- [Poznámky SAP #199997 – Nejčastější dotazy: SAP HANA paměti](https://launchpad.support.sap.com/#/notes/2177064)
-- [Poznámky SAP #200000 – Nejčastější dotazy: Optimalizace výkonu SAP HANA](https://launchpad.support.sap.com/#/notes/2000000)
-- [Poznámky SAP #199930 – Nejčastější dotazy: SAP HANA v/v analýzy](https://launchpad.support.sap.com/#/notes/1999930)
-- [Poznámky SAP #2177064 – Nejčastější dotazy: SAP HANA restartování služby a zhroucení](https://launchpad.support.sap.com/#/notes/2177064)
+- [Poznámky SAP #199997 – Nejčastější dotazy: SAP HANA paměť](https://launchpad.support.sap.com/#/notes/2177064)
+- [Poznámky SAP #200000 – Nejčastější dotazy: optimalizace výkonu SAP HANA](https://launchpad.support.sap.com/#/notes/2000000)
+- [Poznámky SAP #199930 – Nejčastější dotazy: SAP HANA I/O analýza](https://launchpad.support.sap.com/#/notes/1999930)
+- [Poznámka ke SAP #2177064 – Nejčastější dotazy: SAP HANA restartování služby a zhroucení](https://launchpad.support.sap.com/#/notes/2177064)
 
 ## <a name="sap-hana-alerts"></a>Výstrahy SAP HANA
 
-V prvním kroku zkontrolujete aktuální protokoly výstrah SAP HANA. V SAP HANA studiu, otevřete **konzolu pro správu: Generoval Zobrazit: všechny výstrahy**. Tato karta zobrazí všechny výstrahy SAP HANA pro konkrétní hodnoty (volná fyzická paměť, využití procesoru atd.), které spadají mimo nastavený minimální a maximální prahovou hodnotu. Ve výchozím nastavení se kontroly automaticky aktualizují každých 15 minut.
+V prvním kroku zkontrolujete aktuální protokoly výstrah SAP HANA. V SAP HANA studiu, otevřete **konzolu pro správu: výstrahy: Zobrazit: všechny výstrahy**. Tato karta zobrazí všechny výstrahy SAP HANA pro konkrétní hodnoty (volná fyzická paměť, využití procesoru atd.), které spadají mimo nastavený minimální a maximální prahovou hodnotu. Ve výchozím nastavení se kontroly automaticky aktualizují každých 15 minut.
 
-![V SAP HANA studiu, otevřete konzolu pro správu: Generoval Zobrazit: všechny výstrahy](./media/troubleshooting-monitoring/image1-show-alerts.png)
+![V SAP HANA studiu, otevřete konzolu pro správu: výstrahy: Zobrazit: všechny výstrahy.](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
 ## <a name="cpu"></a>Procesor
 
@@ -64,13 +64,13 @@ Graf zatížení může zobrazit vysokou spotřebu procesoru nebo vysokou spotř
 
 Výstraha aktivovaná z důvodu vysokého využití procesoru může být způsobena několika důvody, mimo jiné: provádění určitých transakcí, načítání dat, úlohy, které nereagují, dlouho běžící příkazy SQL a chybný výkon dotazu (například s ČERNOBÍLými datovými krychlemi HANA.
 
-Přečtěte si téma řešení potíží s SAPHANA:[ V případě problémů souvisejících s](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) procesorem a řešeními najdete podrobný postup řešení potíží.
+Podrobné kroky pro řešení potíží najdete v tématu [řešení potíží s SAP HANA: příčiny související s procesorem a řešeními](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) .
 
 ## <a name="operating-system"></a>Operační systém
 
 Jednou z nejdůležitějších kontrol SAP HANA v systému Linux je ujistit se, že jsou transparentní velké stránky zakázané, viz téma [SAP Note #2131662 – průhledné velké stránky (THP) na SAP HANA serverech](https://launchpad.support.sap.com/#/notes/2131662).
 
-- Můžete kontrolovat, jestli jsou transparentní obrovský stránky povolené pomocí následujícího příkazu Linux: **Cat/sys/kernel/mm/Transparent\_hugepage/Enabled** .
+- Můžete kontrolovat, jestli jsou transparentní obrovský stránky povolené pomocí následujícího příkazu Linux: **Cat/sys/kernel/mm/transparent\_hugepage/Enabled** .
 - Pokud je _vždycky_ uzavřený v závorkách jako dole, znamená to, že jsou povolené průhledné velké stránky: [Always] madvise nikdy; Pokud _nikdy_ není uzavřený v závorkách jako dole, znamená to, že průhledné obrovský stránky jsou zakázané: vždycky madvise [nikdy].
 
 Následující příkaz pro Linux by neměl vracet hodnotu Nothing: **ot-QA | grep ulimit.** Pokud se zdá, že _ulimit_ je nainstalovaný, okamžitě ho odinstalujte.
@@ -86,26 +86,26 @@ Můžete si všimnout, že velikost paměti přidělená SAP HANA databáze je v
 - Využití paměti pro hlavní úložiště tabulek úložiště sloupců (výstraha 45)
 - Soubory výpisu paměti za běhu (výstraha 46)
 
-Přečtěte si téma řešení potíží s SAPHANA:[ Na webu](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) problémy s pamětí najdete podrobné kroky pro řešení potíží.
+Podrobné kroky pro řešení potíží najdete v tématu [řešení potíží s SAP HANAem: lokalita problémů s pamětí](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) .
 
 ## <a name="network"></a>Síť
 
 Přečtěte si informace v tématu [SAP note #2081065 – řešení potíží s SAP HANA sítě](https://launchpad.support.sap.com/#/notes/2081065) a postup řešení potíží se sítí v této poznámce SAP.
 
 1. Analyzuje se doba odezvy mezi serverem a klientem.
-  A. Spusťte [ _\_síťové\_klienty_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
+  A. Spusťte příkaz SQL Script [_HANA\_Network\_klienti_](https://launchpad.support.sap.com/#/notes/1969700) _._
   
 2. Analýza komunikace mezi uzly.
-  A. Spusťte [ _\_síťové\_služby_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
+  A. Spusťte skript SQL [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) _._
 
 3. Spusťte příkaz Linux Command **ifconfig** (výstup ukazuje, zda dochází ke ztrátám paketů).
 4. Spusťte příkaz **tcpdump**pro Linux.
 
 Pomocí nástroje open source [IPERF](https://iperf.fr/) Tool (nebo podobné) můžete také měřit skutečný výkon sítě aplikace.
 
-Přečtěte si téma řešení potíží s SAPHANA:[ Podrobnosti o výkonu sítě a](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) potížích s připojením pro účely podrobného postupu pro řešení potíží.
+Podrobné kroky pro řešení potíží najdete v tématu [řešení potíží s SAP HANAem: problémy s výkonem sítě a problémy s připojením](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) .
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 V perspektivě pro koncové uživatele se aplikace (nebo systém jako celek) spouští sluggishly, neodpovídá nebo může dokonce reagovat, pokud dojde k problémům s výkonem vstupně-výstupních operací. Na kartě **svazky** v nástroji SAP HANA Studio můžete zobrazit připojené svazky a které svazky používají jednotlivé služby.
 
@@ -115,11 +115,11 @@ Připojené svazky v dolní části obrazovky vám pomůžou zobrazit podrobnost
 
 ![Připojené svazky v dolní části obrazovky vidíte podrobnosti o svazcích, jako jsou soubory a statistiky I/O.](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-Přečtěte si téma řešení potíží s SAPHANA:[ Hlavní příčiny a řešení](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) [související s vstupně-výstupními operacemi a SAP HANA řešení potíží: Hlavní příčiny pro řešení potíží související](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) s diskem a jeho řešení.
+Přečtěte si téma [řešení potíží s SAP HANA: hlavní příčiny a řešení související s/O](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) a [SAP HANA řešení potíží: hlavní příčiny pro řešení potíží související s diskem a řešení](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) .
 
 ## <a name="diagnostic-tools"></a>Diagnostické nástroje
 
-Proveďte SAP HANA kontrolu stavu prostřednictvím služby Hana\_Configuration\_Minichecks. Tento nástroj vrátí potenciálně kritické technické problémy, které by měly být v SAP HANA studiu již vyvolány jako výstrahy.
+Proveďte SAP HANA kontrolu stavu prostřednictvím HANA\_Configuration\_Minichecks. Tento nástroj vrátí potenciálně kritické technické problémy, které by měly být v SAP HANA studiu již vyvolány jako výstrahy.
 
 Informace o SAP HANA a stažení souboru. zip s příkazy SQL, které jsou připojené k této poznámce, najdete v tématu [SAP Note #1969700 – kolekce příkazů SQL](https://launchpad.support.sap.com/#/notes/1969700) . Uložte tento soubor. zip na místní pevný disk.
 
@@ -129,13 +129,13 @@ V SAP HANA studiu klikněte pravým tlačítkem na kartě **Systémové informac
 
 Vyberte soubor. zip s příkazy jazyka SQL uložený místně a složka s odpovídajícími příkazy SQL se naimportuje. V tomto okamžiku lze pomocí těchto příkazů SQL spustit i mnoho různých diagnostických kontrol.
 
-Pokud třeba chcete vyzkoušet SAP HANA požadavky na šířku pásma replikace systému, klikněte pravým tlačítkem na příkaz **Šířka pásma** v části **replikace: Šířka** pásma a vyberte **otevřít** v konzole SQL.
+Pokud třeba chcete otestovat SAP HANA požadavky na šířku pásma replikace systému, klikněte pravým tlačítkem myši na příkaz **Šířka** pásma v části **replikace: šířka pásma** a v konzole SQL vyberte **otevřít** .
 
 Úplný příkaz SQL otevře a pak provede změnu vstupních parametrů (oddíl úprav).
 
 ![Úplný příkaz SQL otevře úpravu vstupních parametrů (oddíl úprav), který se má změnit a následně provést.](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-Dalším příkladem je kliknutí pravým tlačítkem myši na **příkazy v části replikace: Přehled**. V místní nabídce vyberte **Execute (spustit** ):
+Dalším příkladem je kliknutí pravým tlačítkem myši na příkazy v části **replikace: Přehled**. V místní nabídce vyberte **Execute (spustit** ):
 
 ![Dalším příkladem je kliknutí pravým tlačítkem myši na příkazy v části replikace: Přehled. V místní nabídce vyberte spustit.](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -143,30 +143,30 @@ To má za následek informace, které pomáhají při řešení potíží:
 
 ![Výsledkem bude informace, které vám pomůžou při řešení potíží.](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-Proveďte stejnou konfiguraci pro Minichecks\_konfigurace\_Hana a ve sloupci _C_ (kritické) vyhledejte libovolné značky _X_ .
+Proveďte stejnou konfiguraci\_konfigurace pro HANA\_Minichecks a ve sloupci _C_ (kritické) vyhledejte libovolné značky _X_ .
 
 Ukázkové výstupy:
 
-**Konfigurace\_HanaMiniChecks\_rev 102.01 + 1 pro obecné SAP HANA kontroly.\_**
+**HANA\_Configuration\_MiniChecks\_rev 102.01 + 1** pro obecné SAP HANA kontroly.
 
-![Konfigurace\_Hana\_MiniChecks\_rev 102.01 + 1 pro obecné kontroly SAP HANA](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
+![HANA\_Configuration\_MiniChecks\_rev 102.01 + 1 pro obecné SAP HANA kontroly](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**Přehled\_služeb\_pro službu Hana** , který nabízí přehled o tom, co jsou aktuálně spuštěné služby SAP HANA.
+**Služba HANA\_services\_přehled** o tom, jaké služby SAP HANA Services aktuálně běží.
 
-![Přehled\_služeb\_Hana a přehled o tom, co jsou aktuálně spuštěné služby SAP HANA](./media/troubleshooting-monitoring/image12-services-overview.png)
+![Služba HANA\_Services\_přehled o tom, jaké služby SAP HANA Services aktuálně běží.](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-**Statistika\_služeb\_Hana** pro SAP HANA informace o službách (CPU, paměť atd.).
+**Služba HANA\_Services\_statistiku** pro SAP HANA informace o službě (CPU, paměť atd.).
 
-![Statistika\_služby\_Hana pro informace o službě SAP HANA](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![Služba HANA\_Services\_statistiku pro SAP HANA informace o službě](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**\_Přehled\_konfigurace Hana Rev110 + pro obecné informace o instanci SAP HANA.\_**
+**\_\_Configuration Hana – přehled\_Rev110 +** pro obecné informace o instanci SAP HANA.
 
-![Přehled\_konfigurace\_Hana Rev110 + pro obecné informace o instanci SAP HANA\_](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![\_\_konfigurace HANA\_Rev110 + pro obecné informace o instanci SAP HANA](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**\_Parametry\_konfigurace Hana Rev70 + pro kontrolu parametrů SAP HANA.\_**
+**HANA\_konfigurační\_parametry\_Rev70 +** pro kontrolu SAP HANA parametrů.
 
-![Parametry\_konfigurace\_Hana Rev70 + pro kontrolu parametrů SAP HANA\_](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![HANA\_konfigurační\_parametry\_Rev70 + pro kontrolu SAP HANA parametrů](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
-**Další postup**
+**Další kroky**
 
 - [Nastavení vysoké dostupnosti najdete v SUSE pomocí STONITH](ha-setup-with-stonith.md).

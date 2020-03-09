@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846213"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622728"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -63,7 +63,7 @@ Přizpůsobené přizpůsobování, pomocí něhož se naučíte vybírat jednu 
 
 Použít přizpůsobeného přizpůsobování obsahu:
 
-* Pro výběr z má omezená sada položek (max. ~ 50). Pokud máte větší seznam, [použijte modul doporučení](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines) , který zmenší seznam na 50 položek.
+* Pro výběr z má omezená sada položek (max. ~ 50). Pokud máte větší seznam, [použijte modul doporučení](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) , který zmenší seznam na 50 položek.
 * Obsahuje informace popisující obsah, který chcete seřadit: _akce s funkcemi_ a _funkcemi kontextu_.
 * Má minimálně ~ 1 tisíc události související s obsahem pro přizpůsobení, aby byly účinné. Pokud přizpůsobený modul neobdrží potřebný minimální provoz, služba trvá déle a určí jednu nejlepší položku obsahu.
 

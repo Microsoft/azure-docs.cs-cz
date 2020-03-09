@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367154"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614065"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Vytvoření organizační jednotky (OU) ve Azure AD Domain Services spravované doméně
 
@@ -66,11 +66,11 @@ Pokud chcete vytvořit vlastní organizační jednotku, použijte nástroje pro 
 1. Přihlaste se ke svému VIRTUÁLNÍmu počítači pro správu. Postup, jak se připojit pomocí Azure Portal, najdete v tématu [připojení k virtuálnímu počítači s Windows serverem][connect-windows-server-vm].
 1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, které byly nainstalovány v tomto kurzu, aby bylo možné [vytvořit virtuální počítač pro správu][tutorial-create-management-vm].
 1. Chcete-li vytvořit a spravovat organizační jednotky, vyberte **Centrum správy služby Active Directory** ze seznamu nástrojů pro správu.
-1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *aadds.contoso.com*. Zobrazí se seznam existujících organizačních jednotek a prostředků:
+1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *aaddscontoso.com*. Zobrazí se seznam existujících organizačních jednotek a prostředků:
 
     ![Vyberte spravovanou doménu Azure služba AD DS v Centrum správy služby Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-1. Podokno **úlohy** se zobrazuje na pravé straně Centrum správy služby Active Directory. V části doména, jako je *aadds.contoso.com*, vyberte **Nový > organizační jednotka**.
+1. Podokno **úlohy** se zobrazuje na pravé straně Centrum správy služby Active Directory. V části doména, jako je *aaddscontoso.com*, vyberte **Nový > organizační jednotka**.
 
     ![Vyberte možnost vytvoření nové organizační jednotky v Centrum správy služby Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 

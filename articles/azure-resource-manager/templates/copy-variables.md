@@ -3,18 +3,18 @@ title: Definování více instancí proměnné
 description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování několikrát při vytváření proměnné.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 9e252a0b9721ffec99535c5d30e609e12e9e67eb
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210811"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622883"
 ---
 # <a name="variable-iteration-in-azure-resource-manager-templates"></a>Iterace proměnné v šablonách Azure Resource Manager
 
 V tomto článku se dozvíte, jak vytvořit více než jednu hodnotu pro proměnnou v šabloně Azure Resource Manager. Přidáním prvku **kopírování** do oddílu proměnné vaší šablony můžete dynamicky nastavit počet položek pro proměnnou během nasazování. Nemusíte se také vyhnout opakování syntaxe šablony.
 
-Můžete také použít kopírování s [prostředky](copy-resources.md) a [vlastnostmi v prostředku](copy-properties.md).
+Můžete také použít kopírování s [prostředky](copy-resources.md), [vlastnosti v prostředku](copy-properties.md)a [výstupy](copy-outputs.md).
 
 ## <a name="variable-iteration"></a>Iterace proměnné
 
@@ -305,7 +305,7 @@ Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerSh
 
 Následující příklady znázorňují běžné scénáře pro vytvoření více než jedné hodnoty pro proměnnou.
 
-|Šablony  |Popis  |
+|Šablona  |Popis  |
 |---------|---------|
 |[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby, jak iterace proměnných vymezit. |
 |[Více pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Pro parametr viz [více souborů parametrů NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
@@ -313,7 +313,10 @@ Následující příklady znázorňují běžné scénáře pro vytvoření víc
 ## <a name="next-steps"></a>Další kroky
 
 * Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Správce prostředků](template-tutorial-create-multiple-instances.md).
-* Pro jiné použití kopie elementu, viz [iterace prostředků v Azure Resource Manager šablony](copy-resources.md) a [iterace vlastnosti v šablonách Azure Resource Manager](copy-properties.md).
+* Pro jiné použití kopie elementu viz:
+  * [Iterace prostředků v šablonách Azure Resource Manager](copy-resources.md)
+  * [Iterace vlastnosti v šablonách Azure Resource Manager](copy-properties.md)
+  * [Výstupní iterace v šablonách Azure Resource Manager](copy-outputs.md)
 * Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření Azure Resource Manager šablon](template-syntax.md).
 * Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](deploy-powershell.md).
 

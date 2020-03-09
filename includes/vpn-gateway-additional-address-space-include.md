@@ -5,27 +5,29 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/30/2018
+ms.date: 02/25/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cc17df68280c342f863e69e6a253788d20caeba8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.openlocfilehash: 5d6a12a4dbeba4ce35bacd5c2a0fdcb43442b9b8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174850"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619793"
 ---
 ### <a name="to-add-additional-address-space"></a>Přidání dalšího adresního prostoru
 
-1. Chcete-li přidat rozsahy adres další do adresního prostoru v **nastavení** část stránce vaší virtuální sítě, vyberte **adresní prostor**. **Adresní prostor** se zobrazí stránka.
-2. Přidání dalšího adresního rozsahu a pak vyberte **Uložit** v horní části stránky.
+1. Pokud chcete do svého adresního prostoru přidat další rozsahy adres, vyberte v části **Nastavení** na stránce virtuální síť možnost **adresní prostor**. Zobrazí se stránka **adresní prostor** .
+2. Přidejte další rozsah adres a potom v horní části stránky vyberte **Uložit** .
 
-   ![Přidání adresního prostoru](./media/vpn-gateway-additional-address-space-include/address_space.png)
+   ![Přidání adresního prostoru](./media/vpn-gateway-additional-address-space-include/add-space.png)
 
 ### <a name="to-create-additional-subnets"></a>Vytvoření dalších podsítí
 
-1. Chcete vytvořit podsítě, v **nastavení** část stránce vaší virtuální sítě, vyberte **podsítě**. **Podsítě** se zobrazí stránka. 
-2. Vyberte **podsítě** otevřít **přidat podsíť** stránky. Zadejte **název** nové podsítě a zadejte **rozsah adres**.
+1. Pokud chcete vytvořit další podsítě, v části **Nastavení** na stránce virtuální síť vyberte **podsítě**. Zobrazí se stránka **podsítě** .
+1. Výběrem **+ podsíť** otevřete stránku **Přidat podsíť** .
 
-   ![Nastavení podsítě](./media/vpn-gateway-additional-address-space-include/add_subnet.png)
-3. Chcete-li uložit změny, vyberte **OK** v dolní části stránky.
+   ![Přidání podsítě](./media/vpn-gateway-additional-address-space-include/subnet.png)
+1. Zadejte **název** nové podsítě a určete **Rozsah adres**. Změny uložíte kliknutím na **OK** v dolní části stránky.
+
+   ![Nastavení podsítě](./media/vpn-gateway-additional-address-space-include/add-subnet.png)

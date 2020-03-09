@@ -3,22 +3,22 @@ title: Požadavky na registraci pro SAP HANA v Azure (velké instance) | Microso
 description: Požadavky na registraci pro SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99ad334a526b269879034dcc0e1cd0b1b22f1f7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101191"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617006"
 ---
 # <a name="onboarding-requirements"></a>Požadavky na onboarding
 
@@ -27,12 +27,12 @@ Tento seznam uvádí požadavky na spouštění SAP HANA v Azure (větší insta
 **Microsoft Azure**
 
 - Předplatné Azure, které se dá propojit s SAP HANA v Azure (velké instance).
-- Smlouvu Microsoft Premier Support. Konkrétní informace související s provozem SAP v Azure najdete v [tématu Podpora SAP Poznámka #2015553 – SAP v Microsoft Azure: Požadavky](https://launchpad.support.sap.com/#/notes/2015553)na podporu. Pokud používáte velké jednotky instancí HANA s 384 a více procesory, musíte také pro smlouvu Premier Support zvětšit, aby zahrnovala Azure Rapid Response.
+- Smlouvu Microsoft Premier Support. Konkrétní informace související s provozem SAP v Azure najdete v článku o [podpoře SAP poznámka #2015553 – SAP v Microsoft Azure: požadavky na podporu](https://launchpad.support.sap.com/#/notes/2015553). Pokud používáte velké jednotky instancí HANA s 384 a více procesory, musíte také pro smlouvu Premier Support zvětšit, aby zahrnovala Azure Rapid Response.
 - Povědomí o SKU velkých instancí HANA, které potřebujete, po provedení cvičení změny velikosti pomocí SAP.
 
 **Připojení k síti**
 
-- ExpressRoute mezi místními prostředími a Azure: Pokud chcete připojit vaše místní datové centrum k Azure, ujistěte se, že je u poskytovatele internetových služeb nutné objednat aspoň jedno připojení s 1 GB/s. Připojení mezi jednotkami velkých instancí HANA a Azure využívá i technologii ExpressRoute. Toto připojení ExpressRoute mezi jednotkami velkých instancí HANA a Azure je zahrnuté v ceně jednotek velkých instancí HANA včetně všech poplatků za příchozí a odchozí přenos dat tohoto konkrétního okruhu ExpressRoute. Proto jste jako zákazník nenarazili na další náklady za propojení ExpressRoute mezi místními a Azure.
+- ExpressRoute mezi místním prostředím a Azure: Pokud chcete připojit vaše místní datové centrum k Azure, ujistěte se, že je u poskytovatele internetových služeb nutné objednat aspoň jedno připojení s 1 GB/s. Připojení mezi jednotkami velkých instancí HANA a Azure využívá i technologii ExpressRoute. Toto připojení ExpressRoute mezi jednotkami velkých instancí HANA a Azure je zahrnuté v ceně jednotek velkých instancí HANA včetně všech poplatků za příchozí a odchozí přenos dat tohoto konkrétního okruhu ExpressRoute. Proto jste jako zákazník nenarazili na další náklady za propojení ExpressRoute mezi místními a Azure.
 
 **Operační systém**
 
@@ -48,9 +48,9 @@ Tento seznam uvádí požadavky na spouštění SAP HANA v Azure (větší insta
    > Operační systém dodaný Microsoftem není zaregistrovaný ve Red Hat. Není připojený k instanci správce předplatného Red Hat.
 
 - Správce předplatného Red Hat byl nasazený v Azure na virtuálním počítači. Správce předplatného Red Hat nabízí možnost SAP HANA v Azure (velké instance), která se má zaregistrovat a v aktualizovaném případě Red Hat. (Není k dispozici přímý přístup k Internetu z klienta nasazeného v rámci razítka velké instance Azure.)
-- SAP vyžaduje, abyste měli smlouvu o podpoře i s vaším poskytovatelem Linux. Tento požadavek se neodebere z řešení velké instance HANA ani ze skutečnosti, že na Azure spouštíte Linux. Na rozdíl od některých imagí z Galerie Azure pro Linux se v nabídce řešení velké instance Hana nezahrne poplatek za služby. Je vaší zodpovědností splnit požadavky SAP týkající se smluv o podpoře s distributorem Linux. 
-   - V případě systému SUSE Linux vyhledejte požadavky na smlouvy o podpoře v [části SAP Note #1984787-SUSE Linux Enterprise Server 12: Poznámky](https://launchpad.support.sap.com/#/notes/1984787) k instalaci a [SAP Poznámka #1056161 – prioritní podpora pro aplikace SAP pro SUSE](https://launchpad.support.sap.com/#/notes/1056161).
-   - V případě systému Red Hat Linux musíte mít správné úrovně předplatného, které zahrnují podporu a aktualizace služeb pro operační systémy velké instance HANA. Red Hat doporučuje Red Hat Enterprise Linux předplatné pro řešení SAP. Odkaz https://access.redhat.com/solutions/3082481. 
+- SAP vyžaduje, abyste měli smlouvu o podpoře i s vaším poskytovatelem Linux. Tento požadavek se neodebere z řešení velké instance HANA ani ze skutečnosti, že na Azure spouštíte Linux. Na rozdíl od některých imagí z Galerie Azure pro Linux se v nabídce řešení velké instance HANA *nezahrne poplatek* za služby. Je vaší zodpovědností splnit požadavky SAP týkající se smluv o podpoře s distributorem Linux. 
+   - V případě systému SUSE Linux vyhledejte požadavky na smlouvy o podpoře v části [SAP note #1984787-SUSE Linux Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787) a zpráva [SAP poznámky #1056161-SUSE priorita pro aplikace SAP](https://launchpad.support.sap.com/#/notes/1056161).
+   - V případě systému Red Hat Linux musíte mít správné úrovně předplatného, které zahrnují podporu a aktualizace služeb pro operační systémy velké instance HANA. Red Hat doporučuje Red Hat Enterprise Linux předplatné pro řešení SAP. Přečtěte si https://access.redhat.com/solutions/3082481. 
 
 Pro matrici podpory různých verzí SAP HANA s různými verzemi systému Linux najdete informace v tématu [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
@@ -82,5 +82,5 @@ Pro matrici kompatibility operačního systému a verze firmwaru nebo ovladače 
 - Očekává se, že jste zákazníkem SAP a máte smlouvu o podpoře s SAP.
 - Zejména u implementací třídy II třídy typu SKU velkých instancí služby HANA si projděte článek SAP ve verzích SAP HANA a případné konfigurace pro velký hardware s horizontálním škálováním.
 
-**Další postup**
+**Další kroky**
 - Informace [o architektuře SAP Hana (velké instance) v Azure](hana-architecture.md)

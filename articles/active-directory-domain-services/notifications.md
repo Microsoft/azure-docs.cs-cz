@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704495"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613297"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Konfigurace e-mailových oznámení pro problémy v Azure Active Directory Domain Services
 
@@ -58,7 +58,7 @@ Můžete se také rozhodnout, že mají všichni *globální správci* adresář
 Chcete-li zkontrolovat existující příjemce e-mailových oznámení nebo přidat další příjemce, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**.
-1. Vyberte spravovanou doménu Azure služba AD DS, například *aadds.contoso.com*.
+1. Vyberte spravovanou doménu Azure služba AD DS, například *aaddscontoso.com*.
 1. Na levé straně okna prostředků Azure služba AD DS vyberte **Nastavení oznámení**. Zobrazí se stávající příjemci e-mailových oznámení.
 1. Příjemce e-mailu přidáte tak, že do tabulky další příjemci zadáte e-mailovou adresu.
 1. Po dokončení vyberte **Uložit** na horním navigačním panelu.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8a82d2ad3e79633bb930348c6162996e961c4306
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704276"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612959"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Pochopení stavů a řešení pozastavených domén v Azure Active Directory Domain Services
 
@@ -41,7 +41,7 @@ Spravovaná doména Azure služba AD DS může být v jednom z následujících 
 
 Spravovaná doména Azure služba AD DS, která je nakonfigurovaná správně a běží bez problémů, je ve stavu *spuštěno* . Toto je požadovaný stav pro spravovanou doménu.
 
-### <a name="what-to-expect"></a>Co můžete očekávat
+### <a name="what-to-expect"></a>Co očekávat
 
 * Platforma Azure může pravidelně monitorovat stav spravované domény.
 * Řadiče domény pro spravovanou doménu jsou opravené a pravidelně se aktualizují.
@@ -56,7 +56,7 @@ Jedním z příkladů výstrah je, že existuje omezující skupina zabezpečen�
 
 Další informace najdete v tématu [řešení potíží s výstrahami pro spravovanou doménu Azure služba AD DS][resolve-alerts].
 
-### <a name="what-to-expect"></a>Co můžete očekávat
+### <a name="what-to-expect"></a>Co očekávat
 
 Pokud je spravovaná doména Azure služba AD DS ve stavu *vyžaduje pozornost* , platforma Azure nemusí být schopná pravidelně monitorovat, opravovat, aktualizovat ani zálohovat data. V některých případech, například s neplatnou konfigurací sítě, mohou být řadiče domény pro spravovanou doménu nedosažitelné.
 
@@ -77,7 +77,7 @@ Spravovaná doména Azure služba AD DS do **pozastaveného** stavu vstoupí z n
 
 Spravované domény jsou pozastavené, když platforma Azure nemůže spravovat, monitorovat, opravovat nebo zálohovat doménu. Spravovaná doména zůstane v *pozastaveném* stavu po dobu 15 dnů. Chcete-li zachovat přístup ke spravované doméně, vyřešte kritické výstrahy okamžitě.
 
-### <a name="what-to-expect"></a>Co můžete očekávat
+### <a name="what-to-expect"></a>Co očekávat
 
 Pokud je spravovaná doména Azure služba AD DS v *pozastaveném* stavu, dojde k následujícímu chování:
 
@@ -96,7 +96,7 @@ Na stránce Stav služby Azure služba AD DS v Azure Portal se zobrazí [Upozorn
 Pokud chcete obnovit stav spravované domény Azure služba AD DS, která je v *pozastaveném* stavu, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **Domain Services**.
-1. Ze seznamu vyberte spravovanou doménu Azure služba AD DS, například *aadds.contoso.com*, a pak vyberte **stav**.
+1. Ze seznamu vyberte spravovanou doménu Azure služba AD DS, například *aaddscontoso.com*, a pak vyberte **stav**.
 1. V závislosti na příčině pozastavení vyberte výstrahu, jako je například *AADDS503* nebo *AADDS504*.
 1. Vyberte odkaz řešení, který je uveden v upozornění, a postupujte podle kroků k jeho vyřešení.
 
@@ -108,7 +108,7 @@ Po vyřešení upozornění, když je spravovaná doména v *pozastaveném* stav
 
 Pokud má spravovaná doména Azure služba AD DS v *pozastaveném* stavu 15 dní, odstraní se. Tento proces nelze obnovit.
 
-### <a name="what-to-expect"></a>Co můžete očekávat
+### <a name="what-to-expect"></a>Co očekávat
 
 Když Azure služba AD DS spravovaná doména vstoupí do *odstraněného* stavu, zobrazí se následující chování:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f51744d79d34b734c9cc24cf72785a076a91a4f5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509049"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613865"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurace Azure Active Directory Domain Services pro podporu synchronizace profilů uživatelů pro server SharePoint
 
@@ -62,7 +62,7 @@ Z virtuálního počítače pro správu Azure služba AD DS proveďte následuj�
 
 1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, které byly nainstalovány v tomto kurzu, aby bylo možné [vytvořit virtuální počítač pro správu][tutorial-create-management-vm].
 1. Pokud chcete spravovat členství ve skupině, vyberte **Centrum správy služby Active Directory** ze seznamu nástrojů pro správu.
-1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *aadds.contoso.com*. Zobrazí se seznam existujících organizačních jednotek a prostředků.
+1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *aaddscontoso.com*. Zobrazí se seznam existujících organizačních jednotek a prostředků.
 1. Vyberte organizační jednotku **uživatelů** a pak zvolte skupinu zabezpečení *AAD DC Service Accounts* .
 1. Vyberte **Členové**a pak zvolte **Přidat...** .
 1. Zadejte název účtu služby SharePoint a pak vyberte **OK**. V následujícím příkladu má účet služby SharePoint název *SPAdmin*:

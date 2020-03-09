@@ -1,106 +1,106 @@
 ---
-title: Vyřazeno úrovně výkonu služby Azure Cosmos DB
-description: Další informace o S1, S2 a S3 úrovní výkonu dané dříve k dispozici ve službě Azure Cosmos DB.
+title: Vyřazení úrovní výkonu Azure Cosmos DB
+description: Přečtěte si o úrovních výkonu S1, S2 a S3, které byly dříve dostupné v Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928276"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623332"
 ---
-# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Po vyřazení úrovní výkonu S1, S2 a S3
+# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Vyřazení úrovní výkonu S1, S2 a S3
 
 > [!IMPORTANT] 
-> Úrovní výkonu S1, S2 a S3 popisovaných v tomto článku se vyřazuje a nadále již nebudou k dispozici pro nové účty služby Azure Cosmos DB.
+> Úrovně výkonu S1, S2 a S3 popsané v tomto článku jsou vyřazeny a již nejsou k dispozici pro nové účty Azure Cosmos DB.
 >
 
-Tento článek poskytuje přehled úrovní výkonu S1, S2 a S3 a popisuje, jak kolekce, které používají tyto úrovně výkonu se dají migrovaných do jednoho dělené kolekce. Po přečtení tohoto článku, budete moci odpovědět na následující otázky:
+Tento článek obsahuje přehled úrovní výkonu S1, S2 a S3 a popisuje, jak se kolekce, které používají tyto úrovně výkonu, můžou migrovat do kolekcí s jedním děleným oddílem. Po přečtení tohoto článku, budete moci odpovědět na následující otázky:
 
-- [Proč jsou úrovní výkonu S1, S2 a S3, se vyřazuje?](#why-retired)
-- [Jak kolekce jednoho oddílu a dělených kolekcí srovnání na S1, S2, úrovní výkonu S3?](#compare)
-- [Co je potřeba provést k zajištění nepřerušovaného přístupu k Moje data?](#uninterrupted-access)
-- [Jak se po dokončení migrace změní mé kolekce?](#collection-change)
-- [Jak bude Moje vyúčtování změnit poté, co jsem se migrovaly do kolekce jednoho oddílu?](#billing-change)
-- [Co když budu potřebovat víc než 10 GB úložiště?](#more-storage-needed)
-- [Můžu změnit mezi S1, S2 a S3 úrovně výkonu než plánované migrace?](#change-before)
-- [Jak migrovat z S1, S2 nebo S3 úrovněmi výkonu pro kolekce jednoho oddílu na vlastní?](#migrate-diy)
-- [Jak jsem vliv pokud jsem zákazník EA?](#ea-customer)
+- [Proč dochází k vyřazení úrovní výkonu S1, S2 a S3?](#why-retired)
+- [Jak se porovnávají kolekce s jedním oddílem a dělené kolekce s úrovněmi výkonu S1, S2 a S3?](#compare)
+- [Co potřebuji k zajištění nepřerušovaného přístupu k datům?](#uninterrupted-access)
+- [Jak se změní moje kolekce po migraci?](#collection-change)
+- [Jak se změní fakturace po migraci do kolekcí s jedním oddílem?](#billing-change)
+- [Co když potřebuji víc než 20 GB úložiště?](#more-storage-needed)
+- [Můžu během plánované migrace změnit úroveň výkonu S1, S2 a S3?](#change-before)
+- [Návody migrujete z úrovní výkonu S1, S2, S3 na samostatné kolekce na vlastní oddíly?](#migrate-diy)
+- [Jak mám dopad na to, když jsem zákazníkem se smlouvou EA?](#ea-customer)
 
 <a name="why-retired"></a>
 
-## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Proč jsou výkonu S1, S2 a S3 úrovně vyřazuje?
+## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Proč jsou vyřazení úrovní výkonu S1, S2 a S3?
 
-Úrovní výkonu S1, S2 a S3 flexibilitu, která poskytuje standardní nabídka služby Azure Cosmos DB nabízí. Kapacitu úložiště i propustnost s S1, S2 nebo S3 úrovně výkonu, byly předem nastavené a nenabízí elasticitu. Azure Cosmos DB teď nabízí možnost přizpůsobit si propustnost a úložiště, nabízí mnohem větší flexibilitu v vaši schopnost škálovat podle vašich aktuálních potřeb.
+Úroveň výkonu S1, S2 a S3 nenabízí flexibilitu, kterou nabízí standardní Azure Cosmos DB. U úrovní výkonu S1, S2 a S3 byla předem nastavena propustnost i kapacita úložiště a nenabídla se tak pružnost. Azure Cosmos DB teď nabízí možnost přizpůsobit svou propustnost a úložiště, nabízí vám mnohem větší flexibilitu ve vaší schopnosti škálování podle vašich potřeb.
 
 <a name="compare"></a>
 
-## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>Jak kolekce jednoho oddílu a dělených kolekcí srovnání na S1, S2, úrovní výkonu S3?
+## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>Jak se porovnávají kolekce s jedním oddílem a dělené kolekce s úrovněmi výkonu S1, S2 a S3?
 
-Následující tabulka porovnává možnosti propustnost a úložiště, které jsou dostupné v kolekce jednoho oddílu, dělených kolekcí a S1, S2, úrovní výkonu S3. Tady je příklad pro oblast USA – východ 2:
+V následující tabulce jsou porovnávány možnosti propustnosti a úložiště dostupné v kolekcích s jedním oddílem, dělené kolekce a S1, S2 a S3 úrovně výkonu. Tady je příklad USA – východ 2 oblasti:
 
-|   |Dělené kolekce|Kolekce jednoho oddílu|S1|S2|S3|
+|   |Dělená kolekce|Kolekce s jedním oddílem|S1|S2|S3|
 |---|---|---|---|---|---|
-|Maximální propustnost|Unlimited|10 tisíc RU/s|250 RU/s|1 tisíc RU/s|2.5 tisíc RU/s|
-|Minimální propustnost|2.5 tisíc RU/s|400 RU/s|250 RU/s|1 tisíc RU/s|2.5 tisíc RU/s|
-|Maximální velikost úložiště|Unlimited|10 GB|10 GB|10 GB|10 GB|
-|Cena (měsíčně)|Propustnost: 6 USD / 100 RU/s<br><br>Storage: $ 0,25/GB služby|Propustnost: 6 USD / 100 RU/s<br><br>Storage: $ 0,25/GB služby|25 USD|50 USD|100 USD|
+|Maximální propustnost|Neomezeno|10 000 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
+|Minimální propustnost|2,5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
+|Maximální velikost úložiště|Neomezeno|20 GB|20 GB|20 GB|20 GB|
+|Cena (měsíčně)|Propustnost: $6/100 RU/s<br><br>Úložiště: $0,25/GB|Propustnost: $6/100 RU/s<br><br>Úložiště: $0,25/GB|$25 USD|$50 USD|$100 USD|
 
-Jste zákazník EA? Pokud ano, přečtěte si téma [jak jsem jsem to vliv na jsem zákazník EA?](#ea-customer)
+Jste zákazníkem EA? Pokud ano, přečtěte si, [Jak mám dopad na to, pokud jsem zákazníkem se smlouvou EA?](#ea-customer)
 
 <a name="uninterrupted-access"></a>
 
-## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Co je potřeba provést k zajištění nepřerušovaného přístupu k Moje data?
+## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Co potřebuji k zajištění nepřerušovaného přístupu k datům?
 
-Pokud máte kolekci S1, S2 nebo S3, měli byste migrovat kolekce do kolekce jednoho oddílu programově [pomocí sady .NET SDK](#migrate-diy). 
+Pokud máte kolekci S1, S2 nebo S3, měli byste kolekci migrovat do jedné kolekce oddílů programově [pomocí sady .NET SDK](#migrate-diy). 
 
 <a name="collection-change"></a>
 
-## <a name="how-will-my-collection-change-after-the-migration"></a>Jak se po dokončení migrace změní mé kolekce?
+## <a name="how-will-my-collection-change-after-the-migration"></a>Jak se změní moje kolekce po migraci?
 
-Pokud máte kolekci S1, můžete je migrovat do kolekce jednoho oddílu s propustnost 400 RU/s. 400 RU/s je nejnižší propustnost kolekce jednoho oddílu k dispozici. Náklady na 400 RU/s v kolekce jednoho oddílu je však přibližně stejné jako byly kolekce S1 a 250 RU/s – platit tak nebudou platit za velmi 150 RU/s k dispozici.
+Pokud máte kolekci S1, můžete je migrovat do jedné kolekce oddílů s propustností 400 RU/s. 400 RU/s je nejnižší propustnost dostupná pro kolekce s jedním oddílem. Náklady na 400 RU/s v kolekci s jedním oddílem jsou ale přibližně stejné jako u vaší kolekce S1 a 250 RU/s, takže nebudete platit za další 150, které máte k dispozici.
 
-Pokud máte kolekci S2, můžete je migrovat do kolekce jednoho oddílu s 1 tisíc RU/s. Zobrazí se žádné změny k úroveň propustnosti.
+Pokud máte kolekci S2, můžete je migrovat do jedné kolekce oddílů s 1 K RU/s. Zobrazí se žádná změna úrovně propustnosti.
 
-Pokud máte kolekci S3, můžete je migrovat do kolekce jednoho oddílu s 2,5 tisíc RU/s. Zobrazí se žádné změny k úroveň propustnosti.
+Pokud máte kolekci S3, můžete je migrovat do jedné kolekce oddílů pomocí 2,5 K RU/s. Zobrazí se žádná změna úrovně propustnosti.
 
-V každém z těchto případů se po migraci kolekce, bude možné upravit úroveň propustnosti, nebo ji škálovat nahoru nebo dolů podle potřeby můžete svým uživatelům poskytnout přístup s nízkou latencí. 
+V každém z těchto případů budete moct po migraci kolekce přizpůsobit úroveň propustnosti nebo je podle potřeby škálovat nahoru a dolů, aby se uživatelům zajistil přístup s nízkou latencí. 
 
 <a name="billing-change"></a>
 
-## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Jak bude Moje vyúčtování změnit poté, co mohu migrovat do kolekce jednoho oddílu?
+## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Jak se změní fakturace po migraci do kolekcí s jedním oddílem?
 
-Za předpokladu, že budete mít 10 kolekce S1, 1 GB úložiště pro každý v oblasti USA – východ a migrací těchto 10 kolekce S1 na 10 kolekce jednoho oddílu na 400 RU/s (minimální). Pokud uchováváte 10 kolekce jednoho oddílu pro celý měsíc, bude váš účet vypadat takto:
+Za předpokladu, že máte 10 kolekcí S1, 1 GB úložiště pro každý, v USA – východ oblasti a migrujete tyto 10 kolekcí S1 do 10 kolekcí s jedním oddílem při 400 RU/s (minimální úroveň). Pokud udržujete 10 kolekcí s jedním oddílem po celý měsíc, vaše vyúčtování bude vypadat takto:
 
-![Jak si S1 ceny pro 10 kolekce vede na 10 kolekce pomocí ceny za kolekce jednoho oddílu](./media/performance-levels/s1-vs-standard-pricing.png)
+![Jak ceny S1 pro 10 kolekcí porovnávají s 10 kolekcemi za použití cen pro jednu kolekci oddílů](./media/performance-levels/s1-vs-standard-pricing.png)
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Co když budu potřebovat víc než 10 GB úložiště?
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>Co když potřebuji víc než 20 GB úložiště?
 
-Určuje, zda máte kolekci s úrovní výkonu S1, S2 nebo S3, nebo pro kolekci jeden oddíl, všechny z nich mít 10 GB úložiště, které jsou k dispozici, že můžete použít nástroj Azure Cosmos DB Data migrace pro migraci dat do dělené kolekce s prakticky neomezené úložiště. Informace o výhodách do dělené kolekce najdete v tématu [dělení a škálování ve službě Azure Cosmos DB](sql-api-partition-data.md). 
+Bez ohledu na to, jestli máte kolekci s úrovní výkonu S1, S2 nebo S3 nebo pokud máte kolekci s jedním oddílem, máte k dispozici více než 20 GB úložiště, můžete použít nástroj pro migraci dat Azure Cosmos DB k migraci dat do dělené kolekce s prakticky neomezené úložiště. Informace o výhodách dělené kolekce najdete [v tématu dělení a škálování v Azure Cosmos DB](sql-api-partition-data.md). 
 
 <a name="change-before"></a>
 
-## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Můžu změnit mezi S1, S2 a S3 úrovně výkonu než plánované migrace?
+## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Můžu během plánované migrace změnit úroveň výkonu S1, S2 a S3?
 
-Pouze existující účty s výkonu S1, S2 a S3 je možné změnit a měnit úrovně úrovně výkonu prostřednictvím kódu programu [pomocí sady .NET SDK](#migrate-diy). Pokud se změní z S1 S3 a S3 do kolekce jednoho oddílu nelze vrátit úrovní výkonu S1, S2 nebo S3.
+Pouze existující účty s výkonem S1, S2 a S3 lze měnit a měnit [pomocí sady .NET SDK na](#migrate-diy)úrovni výkonu programově. Pokud přejdete z S1, S3 nebo S3 na jednu kolekci oddílů, nemůžete se vrátit na úroveň výkonu S1, S2 nebo S3.
 
 <a name="migrate-diy"></a>
 
-## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>Jak migrovat z S1, S2 nebo S3 úrovněmi výkonu pro kolekce jednoho oddílu na vlastní?
+## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>Návody migrujete z úrovní výkonu S1, S2, S3 na samostatné kolekce na vlastní oddíly?
 
-Můžete migrovat z úrovní výkonu S1, S2 a S3 do kolekce jednoho oddílu programově [pomocí sady .NET SDK](#migrate-diy). Můžete to provést sami před plánovanou migraci těžit z možností flexibilní propustnost kolekce jednoho oddílu k dispozici.
+[Pomocí sady .NET SDK](#migrate-diy)můžete z úrovní výkonu S1, S2 a S3 migrovat do kolekcí s jedním oddílem programově. Můžete to provést na vlastní před plánovanou migrací, abyste využili výhod flexibilních možností propustnosti dostupných v kolekcích s jedním oddílem.
 
-### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>Migrace do kolekce jednoho oddílu s použitím sady .NET SDK
+### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>Migrace do kolekcí s jedním oddílem pomocí sady .NET SDK
 
-Tato část popisuje pouze změny shromažďování výkonu pomocí na úrovni [SQL .NET API](sql-api-sdk-dotnet.md), ale proces se podobá našich dalších sad SDK.
+Tato část se zabývá jenom změnou úrovně výkonu kolekce pomocí [rozhraní API SQL .NET](sql-api-sdk-dotnet.md), ale tento postup je podobný pro naše jiné sady SDK.
 
-Tady je fragment kódu pro změna propustnost kolekce na 5 000 jednotek žádostí za sekundu:
+Tady je fragment kódu pro změnu propustnosti kolekce na 5 000 jednotek žádostí za sekundu:
     
 ```csharp
     //Fetch the resource to be updated
@@ -116,7 +116,7 @@ Tady je fragment kódu pro změna propustnost kolekce na 5 000 jednotek žádost
     await client.ReplaceOfferAsync(offer);
 ```
 
-Navštivte [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) zobrazit další příklady a další informace o metodách naše nabídky:
+Podívejte se na [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) , kde najdete další příklady a další informace o našich způsobech nabídky:
 
 * [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
 * [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
@@ -125,13 +125,13 @@ Navštivte [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.docum
 
 <a name="ea-customer"></a>
 
-## <a name="how-am-i-impacted-if-im-an-ea-customer"></a>Jak jsem vliv pokud jsem zákazník EA?
+## <a name="how-am-i-impacted-if-im-an-ea-customer"></a>Jak mám dopad na to, když jsem zákazníkem se smlouvou EA?
 
-Cena chráněné až do konce jejich aktuálního smlouvy bude zákazníky se smlouvou EA.
+Zákazníci se smlouvou EA budou mít cenu chráněnou až do konce stávající smlouvy.
 
-## <a name="next-steps"></a>Další postup
-Další informace o cenách a správě dat pomocí služby Azure Cosmos DB najdete v těchto zdrojích:
+## <a name="next-steps"></a>Další kroky
+Pokud chcete získat další informace o cenách a správě dat pomocí Azure Cosmos DB, Prozkoumejte tyto materiály:
 
-1.  [Dělení dat v databázi Cosmos DB](sql-api-partition-data.md). Pochopili rozdíl mezi jedním oddílem kontejneru a dělené kontejnery, jakož i tipy k implementaci strategie dělení k jednoduchému škálování.
-2.  [Ceny služby cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/). Další informace o náklady na zřizování propustnosti a využívání úložiště.
-3.  [Jednotky žádostí](request-units.md). Vysvětlení využití propustnosti pro typy jiné operace, například číst, zapisovat, dotaz.
+1.  [Vytváření oddílů dat v Cosmos DB](sql-api-partition-data.md). Pochopte rozdíl mezi kontejnerem s jedním oddílem a kontejnery rozdělenými na oddíly a také tipy k implementaci strategie dělení pro bezproblémové škálování.
+2.  [Cosmos DB ceny](https://azure.microsoft.com/pricing/details/cosmos-db/). Seznamte se s náklady na zřizování propustnosti a spotřebou úložiště.
+3.  [Jednotky žádosti](request-units.md). Pochopte spotřebu propustnosti pro různé typy operací, například čtení, zápis a dotazování.

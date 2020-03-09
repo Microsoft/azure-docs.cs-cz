@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111437"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387765"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
 
@@ -120,10 +120,10 @@ Podrobné informace o použití [videoId](https://docs.microsoft.com/rest/api/co
 
 Ve výchozím nastavení vrací rozhraní API Bingu pro vyhledávání videí všechna videa, která jsou pro dotaz relevantní. Pokud chcete zobrazit pouze videa zdarma nebo videa kratší než pět minut, můžete použít následující parametry dotazu filtru:
 
-- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing) &mdash; filtrování videí podle ceny (například videa, která jsou zdarma nebo placená videa)
-- [resolution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution) &mdash; filtrování videí podle rozlišení (například videa s rozlišením 720p nebo vyšším rozlišením)
-- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength) &mdash; filtrování videí podle jeho délky (například videa, která jsou kratší než pět minut)
-- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash; filtrování videí podle stáří (například videa nalezená Bingem během posledního týdne)
+- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash; filtrování videí podle ceny (například videa, která jsou zdarma nebo placená videa)
+- [resolution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash; filtrování videí podle rozlišení (například videa s rozlišením 720p nebo vyšším rozlišením)
+- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash; filtrování videí podle jeho délky (například videa, která jsou kratší než pět minut)
+- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash; filtrování videí podle stáří (například videa nalezená Bingem během posledního týdne)
 
 Pokud chcete získat videa z konkrétní domény, použijte v řetězci dotazu operátor [site:](https://msdn.microsoft.com/library/ff795613.aspx).
 

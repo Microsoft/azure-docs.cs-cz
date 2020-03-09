@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: 9360a90b457f99cb9c15deda80dce8233069100d
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606552"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355875"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB výstupní vazba pro Azure Functions 2. x
 
@@ -565,8 +565,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**     | neuvedeno | musí být nastavené na `cosmosDB`.        |
-|**direction**     | neuvedeno | musí být nastavené na `out`.         |
+|**type**     | neuvedeno | Musí být nastavené na `cosmosDB`.        |
+|**direction**     | neuvedeno | Musí být nastavené na `out`.         |
 |**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
 |**Databáze** | **Databáze**|Databáze obsahující kolekci, do které se vytvoří dokument.     |
 |**collectionName** |**CollectionName**  | Název kolekce, ve kterém se vytvoří dokument. |

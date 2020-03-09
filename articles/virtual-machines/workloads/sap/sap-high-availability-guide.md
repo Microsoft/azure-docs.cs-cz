@@ -3,8 +3,8 @@ title: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver | Microsoft D
 description: Průvodce vysokou dostupností pro SAP NetWeaver v Azure Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a3e4c76463aaea0735d20d4fcc283aee460b48f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 65037ec0cc8b10b176622a7047beb7d912c7f701
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597520"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617548"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver
 
@@ -588,7 +588,7 @@ V našem příkladu je adresní prostor virtuální sítě Azure 10.0.0.0/16. Ex
 Chcete-li nastavit požadované IP adresy DNS, proveďte následující kroky.
 
 1. V Azure Portal v okně **servery DNS** se ujistěte, že je možnost **servery DNS** virtuální sítě nastavená na **vlastní DNS**.
-2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících zdrojích:
+2. Vyberte nastavení podle typu sítě, kterou máte. Další informace naleznete v následujících zdrojích:
    * Přidejte IP adresy místních serverů DNS.  
    Místní servery DNS můžete rozmístit do virtuálních počítačů, které běží v Azure. V takovém scénáři můžete přidat IP adresy virtuálních počítačů Azure, na kterých spouštíte službu DNS.
    * Pro nasazení virtuálních počítačů izolované v Azure: nasaďte další virtuální počítač ve stejné instanci Virtual Network, která slouží jako server DNS. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
@@ -695,7 +695,7 @@ Chcete-li vytvořit požadované koncové body interního vyrovnávání zatíž
 
 | Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (ASCS instance s číslem instance 00) (OLAJÍCÍCH s 10) |
 | --- | --- | --- |
-| Server/ *lbrule3200* fronty |32 <*číslo instance*> |3200 |
+| Server/ *lbrule3200* fronty |32 <*číslo instance*> |3 200 |
 | Server zpráv ABAP/ *lbrule3600* |36 <*číslo instance*> |3600 |
 | Interní zpráva ABAP/ *lbrule3900* |39 <*číslo instance*> |3900 |
 | HTTP/ *Lbrule8100* serveru zpráv |81 <*číslo instance*> |8100 |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513605"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623589"
 ---
 # <a name="offline-evaluation"></a>Offline vyhodnocení
 
@@ -49,6 +49,16 @@ Níže jsou uvedené důležité požadavky na zástupce pro offline testování
 Přizpůsobený modul může k automatickému zjišťování lepších výukových zásad využít proces vyhodnocení offline.
 
 Po provedení testování offline se v porovnání s aktuálními zásadami online zobrazí srovnávací efektivita přizpůsobení s touto novou zásadou. Tuto zásadu učení pak můžete použít, chcete-li ji uplatnit hned v přizpůsobeném, a to tak, že ji stáhnete a nahrajete na panelu modely a zásady. Můžete si ho také stáhnout pro účely budoucí analýzy nebo použití.
+
+Aktuální zásady zahrnuté do hodnocení:
+
+| Nastavení učení | Účel|
+|--|--|
+|**Online zásady**| Aktuální zásady učení použité v přizpůsobeném nástroji |
+|**Směrný**|Výchozí hodnota aplikace (určená první akcí odeslanou při voláních pořadí)|
+|**Náhodné zásady**|Chování imaginárního pořadí, které vždy vrátí náhodný výběr akcí ze zadaných.|
+|**Vlastní zásady**|Při spuštění vyhodnocení se nahrály další zásady učení.|
+|**Optimalizované zásady**|Pokud bylo vyhodnocení spuštěno s možností zjišťování optimalizované zásady, bude porovnána a bude možné ji stáhnout, nebo ji můžete nastavit jako zásady učení online, přičemž nahradíte tu aktuální.|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Princip závažnosti offline vyhodnocení výsledků
 
@@ -92,7 +102,7 @@ Doporučujeme, abyste provedli hodnocení funkcí a požádali:
 
 * Další, další funkce, které může vaše aplikace nebo systém poskytovat na řádcích, které jsou efektivnější?
 * Jaké funkce je možné odebrat z důvodu nízké efektivity? Funkce s nízkou efektivitou přidávají do strojového učení _šum_ .
-* Jsou k dispozici nějaké funkce, které jsou omylem zahrnuty? Příklady těchto údajů: identifikovatelné osobní údaje (PII), duplicitní ID atd.
+* Jsou k dispozici nějaké funkce, které jsou omylem zahrnuty? Příklady těchto: uživatelsky identifikovatelné informace, duplicitní ID atd.
 * Existují nějaké nežádoucí funkce, které by se neměly používat k přizpůsobení v důsledku regulativního nebo zodpovědného použití. Jsou k dispozici funkce, které by mohly být proxy serverem (to znamená, že se jedná o těsné zrcadlení nebo korelace)?
 
 

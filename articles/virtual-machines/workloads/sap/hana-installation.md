@@ -4,7 +4,7 @@ description: Jak nainstalovat SAP HANA na SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c08036f16cd30a1c10963accd8d486d77c9683ee
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264165"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617099"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure
 
@@ -115,7 +115,7 @@ Níže jsou uvedené poznámky k podpoře SAP, které se vztahují k implementac
 - [Poznámka k podpoře SAP #2397039 – Nejčastější dotazy: SAP v RHEL](https://launchpad.support.sap.com/#/notes/2397039)
 - [Poznámka k podpoře SAP #2002167-Red Hat Enterprise Linux 7. x: instalace a upgrade](https://launchpad.support.sap.com/#/notes/2002167)
 
-### <a name="time-synchronization"></a>Čas synchronizace
+### <a name="time-synchronization"></a>Synchronizace času
 
 Aplikace SAP, které jsou postavené na architektuře SAP NetWeaver, jsou citlivé na časové rozdíly mezi různými součástmi, které tvoří systém SAP. Krátké výpisy SAP ABAP s názvem chyby ZDATE\_velký čas\_\_ROZDÍLové časy jsou pravděpodobně známé. Důvodem je, že tyto krátké výpisy se zobrazí, když je systémový čas různých serverů nebo virtuálních počítačů příliš daleko od sebe.
 
@@ -134,7 +134,7 @@ V některých podrobnostech se dozvíte o sítích jednotlivých jednotek. Každ
 
 Další informace o možnostech sítě Ethernet pro vaši architekturu najdete v tématu [podporované scénáře HLI](hana-supported-scenario.md).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Rozložení úložiště pro SAP HANA v Azure (velké instance) se konfiguruje SAP HANA v Azure `service management` prostřednictvím doporučených pokynů pro SAP. Tyto pokyny jsou popsány v dokumentu White Paper [požadavky na úložiště SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) . 
 

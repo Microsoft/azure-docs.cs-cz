@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: ee44dda7a7ca2f7e1ad386498798191fe792cef0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840838"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619917"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
@@ -186,6 +186,9 @@ Tento scénář je příkladem čtení záznamů v protokolech toku NSG bez nutn
 
 ## <a name="next-steps"></a>Další kroky
 
+
 Podívejte se na téma [použití elastického zásobníku](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [použití Grafana](network-watcher-nsg-grafana.md)a další informace o způsobech zobrazení protokolů toku NSG [pomocí graylogu](network-watcher-analyze-nsg-flow-logs-graylog.md) . Open Source přístup ke službě Azure Functions pro přímé využívání objektů BLOB a vydávání různých příjemců Log Analytics najdete tady: [konektor protokolů toku Azure Network WATCHER NSG](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
+
+Pomocí služby [Azure Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) můžete získat přehled o přenosových tocích. Analýza provozu používá [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) k zajištění Queryable toku přenosu.
 
 Další informace o objektech blob úložiště najdete v těchto [vazbách: Azure Functions BLOB Storage](../azure-functions/functions-bindings-storage-blob.md) .

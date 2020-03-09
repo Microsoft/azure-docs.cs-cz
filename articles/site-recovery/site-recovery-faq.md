@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
 ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760347"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362683"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
 
@@ -73,13 +73,13 @@ Pro detailní odhad nákladů spusťte nástroj Plánovač nasazení pro [VMware
 
 Ne, za mezipaměť se neúčtují žádné další poplatky. Při replikaci do účtu úložiště úrovně Standard je toto úložiště mezipaměti součástí stejného cílového účtu úložiště.
 
-### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Používám Azure Site Recovery už víc než měsíc. Získám i tak prvních 31 dní pro každou chráněnou instanci zadarmo?
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Jsem uživatel Azure Site Recovery po dobu delší než měsíc. Je pro každou chráněnou instanci stále k dispozici prvních 31 dní zdarma?
 
-Ano. U chráněných instancí se neúčtují žádné poplatky za Azure Site Recovery za prvních 31 dní. Pokud jste například v posledních 6 měsících chránili 10 instancí a připojíte k Azure Site Recovery jedenáctou instanci, pro jedenáctou instanci se za prvních 31 dní neúčtují žádné poplatky. Za prvních 10 instancí se nadále účtují Azure Site Recovery poplatky, protože jsou chráněné po dobu více než 31 dní.
+Ano. Každá chráněná instance nevzniká žádné Azure Site Recovery poplatky za prvních 31 dní. Pokud jste například v posledních 6 měsících chránili 10 instancí a připojíte k Azure Site Recovery jedenáctou instanci, pro jedenáctou instanci se za prvních 31 dní neúčtují žádné poplatky. Za prvních 10 instancí se nadále účtují Azure Site Recovery poplatky, protože jsou chráněné po dobu více než 31 dní.
 
-### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Budu se mi během prvních 31 dní účtovat nějaké další poplatky Azure?
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Během prvních 31 dnů se mi účtují nějaké další poplatky za Azure?
 
-Ano, i když je Site Recovery během prvních 31 dní chráněné instance zadarmo, můžou vám být účtovány poplatky za Azure Storage, transakce úložiště a přenos dat. U obnoveného virtuálního počítače se můžou účtovat taky poplatky za výpočty Azure.
+Ano, i když je Site Recovery během prvních 31 dní chráněné instance zadarmo, můžou vám být účtovány poplatky za Azure Storage, transakce úložiště a přenos dat. U obnoveného virtuálního počítače můžou být účtovány i poplatky za výpočetní výkon Azure.
 
 
 ### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>Jsou nějaké náklady spojené s prováděním cvičení a testování převzetí služeb při selhání pro zotavení po havárii?
@@ -219,7 +219,7 @@ Ano, můžete použít obnovení do alternativního umístění pro navrácení 
 * [Pro virtuální počítače VMware](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Pro virtuální počítače s technologií Hyper-V](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automatizace
+## <a name="automation"></a>Automation
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Můžu Site Recovery scénáře automatizovat pomocí sady SDK?
 Ano. Postupy workflow Site Recovery je možné automatizovat pomocí rozhraní REST API, PowerShellu a sady Azure SDK. Aktuálně podporované scénáře nasazení Site Recovery pomocí prostředí PowerShell:

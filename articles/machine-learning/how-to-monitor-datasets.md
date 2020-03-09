@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264759"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617638"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,10 +131,10 @@ Tato tabulka obsahuje základní nastavení použitá pro monitorování datový
 
 | Nastavení | Popis | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- | 
-| Name (Název) | Název monitorování datové sady | | Ne |
+| Název | Název monitorování datové sady | | Ne |
 | Základní datová sada | Tabulková datová sada, která bude použita jako základ pro porovnání cílové datové sady v průběhu času. | Základní datová sada musí mít funkce společné s cílovou datovou sadou. Obecně platí, že by měl být standardní hodnota nastavena na školicí datovou sadu modelu nebo na řez cílové datové sady. | Ne |
 | Cílová datová sada | Sada tabulkových dat se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat | Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datovou sadu, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data. | Ne | 
-| Frequency | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
+| Četnost | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
 | Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nezahrnují funkce, které se přirozeně mění v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Ano | 
 | Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Ano | 
 
@@ -145,7 +145,7 @@ Tato nastavení se dají vytvořit v případě naplánovaných kanálů monitor
 | Nastavení | Popis | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- |
 | Povolení | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
-| Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
+| Čekací doba | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
 | E-mailové adresy | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Ano | 
 | Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano | 
 
@@ -156,7 +156,7 @@ Tato nastavení slouží ke spouštění zpětných dat pro metriky pro přenos 
 | Nastavení | Popis | Tipy |
 | ------- | ----------- | ---- |
 | Počáteční datum | Počáteční datum úlohy naplnění | | 
-| Datum ukončení | Koncové datum úlohy naplnění | Koncové datum nemůže být větší než 31 * frekvence jednotek času od počátečního data. U stávajícího monitorování datových sad může být metrika zpětně vyplněna, aby bylo možné analyzovat historická data nebo nahrazovat metriky s aktualizovanými nastaveními. |
+| Koncové datum | Koncové datum úlohy naplnění | Koncové datum nemůže být větší než 31 * frekvence jednotek času od počátečního data. U stávajícího monitorování datových sad může být metrika zpětně vyplněna, aby bylo možné analyzovat historická data nebo nahrazovat metriky s aktualizovanými nastaveními. |
 
 ## <a name="create-dataset-monitors"></a>Vytváření monitorování datových sad 
 
@@ -266,8 +266,8 @@ Tyto metriky lze také načíst v sadě Python SDK prostřednictvím metody `get
 | ------ | ----------- |  
 | Wasserstein vzdálenost | Minimální množství práce k transformaci distribuce směrného plánu do cílové distribuce. |
 | Střední hodnota | Průměrná hodnota funkce |
-| Min. hodnota | Minimální hodnota funkce |
-| Max. hodnota | Maximální hodnota funkce |
+| Minimální hodnota | Minimální hodnota funkce |
+| Maximální hodnota | Maximální hodnota funkce |
 
 ![Podrobnosti o funkcích – číselné](./media/how-to-monitor-datasets/feature-details.png)
 
@@ -301,7 +301,7 @@ Metriky monitorování datových sad jsou uloženy jako `customMetrics`. Můžet
 
 Po určení metrik pro nastavení pravidel upozornění vytvořte nové pravidlo upozornění:
 
-![Nové pravidlo upozornění](./media/how-to-monitor-datasets/alert-rule.png)
+![Nové pravidlo výstrahy](./media/how-to-monitor-datasets/alert-rule.png)
 
 Můžete použít existující skupinu akcí nebo vytvořit novou, abyste mohli definovat akci, která se má provést při splnění nastavených podmínek:
 
@@ -319,13 +319,13 @@ Omezení a známé problémy:
 
 Sloupce nebo funkce v datové sadě jsou klasifikovány jako kategorií nebo číselné na základě podmínek v následující tabulce. Pokud tato funkce nesplňuje tyto podmínky – například sloupec typu řetězec s > 100 jedinečnými hodnotami – funkce je vyřazena z našeho algoritmu pro posun dat, ale je stále profilovaná. 
 
-| Typ funkce | Data type | Podmínka | Omezení | 
+| Typ funkce | Typ dat | Podmínka | Omezení | 
 | ------------ | --------- | --------- | ----------- |
 | Kategorické | String, bool, int, float | Počet jedinečných hodnot ve funkci je menší než 100 a menší než 5% počtu řádků. | Hodnota null se považuje za svou vlastní kategorii. | 
 | Číselné | int, float | Hodnoty ve funkci jsou číselného datového typu a nesplňují podmínky pro funkci kategorií. | Funkce byla vynechána, pokud > 15% hodnot mají hodnotu null. | 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přejděte na [Azure Machine Learning studia](https://ml.azure.com) nebo [poznámkového bloku Python](https://aka.ms/datadrift-notebook) a nastavte monitor DataSet.
+* Přejděte na [Azure Machine Learning studia](https://ml.azure.com) nebo [poznámkového bloku Python](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) a nastavte monitor DataSet.
 * Přečtěte si, jak nastavit posun dat na [modelech nasazených do služby Azure Kubernetes](how-to-monitor-data-drift.md).
 * Nastavte monitorování posunu datové sady pomocí [Event gridu](how-to-use-event-grid.md). 

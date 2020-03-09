@@ -1,162 +1,59 @@
 ---
 title: Jak přizpůsobovat funkce přizpůsobování
-titleSuffix: Azure Cognitive Services
-description: Přizpůsobování využívá Machine Learning ke zjištění, jakou akci použít v kontextu. Každá výuková smyčka má model, který je vyškolen výhradně na datech, která jste jim odeslali prostřednictvím volání Rank a disměna. Každá výuková smyčka je zcela nezávislá na sobě.
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+description: _Smyčka_ přizpůsobování využívá Machine Learning k sestavení modelu, který předpovídá hlavní akci pro váš obsah. Model je vyškolen výhradně na vašich datech, která jste jim poslali pomocí volání pořadí a odměny.
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.author: diberry
-ms.openlocfilehash: 902bf84ebf090cf9f0f886ad1e774ff7bdfeca93
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/18/2020
+ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490748"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623755"
 ---
 # <a name="how-personalizer-works"></a>Jak služba Personalizace funguje
 
-Přizpůsobování využívá Machine Learning ke zjištění, jakou akci použít v kontextu. Každá výuková smyčka má model, který je vyškolen výhradně na datech, která jste jim odeslali prostřednictvím volání **Rank** a **disměna** . Každá výuková smyčka je zcela nezávislá na sobě. Vytvořte výukovou smyčku pro každou část nebo chování vaší aplikace, kterou chcete přizpůsobit.
+Prostředek pro přizpůsobování, vaše _výuková smyčka_, využívá Machine Learning k sestavení modelu, který předpovídá hlavní akci pro váš obsah. Model je vyškolen výhradně na vašich datech, která jste jim poslali pomocí volání **pořadí** a **odměny** . Každá smyčka je zcela nezávislá na sobě.
 
-Pro každou smyčku **volejte rozhraní API řazení s** použitím aktuálního kontextu s:
+## <a name="rank-and-reward-apis-impact-the-model"></a>Rozhraní API pro pořadí a odměňování ovlivní model
 
-* Seznam možných akcí: položek obsahu, ze kterých se má vybrat hlavní akce
-* Seznam [funkcí kontextu](concepts-features.md): kontextově relevantní data, jako je například uživatel, obsah a kontext.
-
-Rozhraní API **pořadí** se rozhodne použít buď:
+Do rozhraní API pro řazení můžete odesílat _akce s funkcemi_ a _kontextovou funkcí_ . Rozhraní API **pořadí** se rozhodne použít buď:
 
 * _Zneužití_: aktuální model pro určení nejlepší akce na základě minulých dat.
-* _Prozkoumejte_: Vyberte jinou akci namísto horní akce.
+* _Prozkoumejte_: Vyberte jinou akci namísto horní akce. [Toto procento nakonfigurujete](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) pro prostředek přizpůsobeného v Azure Portal.
 
-API pro **odměnu** :
+Určíte skóre odměňování a odešlete toto skóre do API pro odměnu. API pro **odměnu** :
 
 * Shromažďuje data pro výuku modelu pomocí zaznamenávání funkcí a odměňování skóre každého volání pořadí.
 * Tato data používá k aktualizaci modelu na základě konfigurace zadané v _zásadách Učení_.
 
-## <a name="architecture"></a>Architektura
+## <a name="your-system-calling-personalizer"></a>Vlastní přizpůsobování volání systému
 
 Následující obrázek ukazuje architekturu pro volání pořadí a odměny:
 
 ![alternativní text](./media/how-personalizer-works/personalization-how-it-works.png "Jak funguje přizpůsobení")
 
-1. Přizpůsobování používá interní model AI k určení pořadí akce.
-1. Služba rozhodne, zda má využít aktuální model nebo prozkoumat nové volby modelu.  
-1. Výsledky hodnocení se odesílají do centra EventHub.
-1. Když přizpůsobování obdrží odměnu, bude se tato měna odesílat do centra EventHub. 
-1. Rozsah a měna jsou korelační.
-1. Model AI se aktualizuje na základě výsledků korelace.
-1. Odvozený modul se aktualizuje novým modelem. 
+1. Do rozhraní API pro řazení můžete odesílat _akce s funkcemi_ a _kontextovou funkcí_ .
+
+    * Přizpůsobování určuje, jestli se má zneužít aktuální model, nebo prozkoumat nové volby modelu.
+    * Výsledky hodnocení se odesílají do centra EventHub.
+1. Nejvyšší pořadí se vrátí do vašeho systému jako _ID akce odměna_.
+    Váš systém prezentuje obsah a určí skóre odměňování podle vašich vlastních obchodních pravidel.
+1. Váš systém vrátí skóre odměňování do výukové smyčky.
+    * Když přizpůsobování obdrží odměnu, bude se tato měna odesílat do centra EventHub.
+    * Rozsah a měna jsou korelační.
+    * Model AI se aktualizuje na základě výsledků korelace.
+    * Odvozený modul se aktualizuje novým modelem.
+
+## <a name="personalizer-retrains-your-model"></a>Přizpůsobení přeškolí váš model.
+
+Přizpůsobuje váš model na základě nastavení **aktualizace četnosti modelu** na prostředku přizpůsobeného v Azure Portal.
+
+Přizpůsobení používá všechna aktuálně zachovaná data na základě nastavení **uchovávání dat** v počtu dnů na prostředku přizpůsobeného v Azure Portal.
 
 ## <a name="research-behind-personalizer"></a>Výzkum za přizpůsobením
 
 Přizpůsobování vychází z špičkové vědy a výzkumu v oblasti [posílení učení](concepts-reinforcement-learning.md) , včetně papírů, výzkumných aktivit a pokračujících oblastí průzkumu v Microsoft Research.
 
-## <a name="terminology"></a>Terminologie
-
-* **Výuková smyčka**: můžete vytvořit výukovou smyčku pro každou část aplikace, která může být výhodou individuálního nastavení. Pokud máte více než jedno prostředí pro přizpůsobení, vytvořte smyčku pro každý z nich. 
-
-* **Akce**: akce jsou položky obsahu, jako jsou produkty nebo propagační akce, ze kterých si můžete vybrat. Přizpůsobení zvolí hlavní akci, která se zobrazí uživatelům, označovanou jako _Akce odměňování_prostřednictvím rozhraní API pro řazení. Každá akce může mít funkce odeslané pomocí požadavku Rank.
-
-* **Kontext**: Chcete-li zadat přesnější pořadí, zadejte informace o kontextu, například:
-    * Váš uživatel.
-    * Zařízení, na kterém jsou. 
-    * Aktuální čas.
-    * Další informace o aktuální situaci.
-    * Historická data o uživateli nebo kontextu.
-
-    Vaše konkrétní aplikace mohou mít různé kontextové informace. 
-
-* **[Funkce](concepts-features.md)** : jednotka informací o položce obsahu nebo kontextu uživatele.
-
-* **Disměna**: míra reakce uživatele na rozhraní API řazení vrátilo akci jako skóre mezi 0 a 1. Hodnota 0 až 1 je nastavená vaší obchodní logikou na základě toho, jak volba pomáhá dosáhnout vašich obchodních cílů přizpůsobení. 
-
-* **Průzkum**: služba přizpůsobeného přizpůsobuje, kdy místo vrácení nejlepší akce zvolí pro uživatele jinou akci. Služba přizpůsobeného přizpůsobování zabraňuje posunu, stagnation a přizpůsobení probíhajícímu uživatelskému chování, a to zkoumáním. 
-
-* **Doba trvání experimentu**: doba, po kterou služba přizpůsobené může čekat na určitou odměnu od okamžiku, kdy pro danou událost proběhlo volání pořadí.
-
-* **Neaktivní události**: neaktivní událost je ta, kde se říkáte Rank, ale nejste si jistí, že uživatel uvidí výsledek z důvodu rozhodnutí klientské aplikace. Neaktivní události umožňují vytvořit a uložit výsledky přizpůsobení a pak se rozhodnout o jejich zrušení později, aniž by to ovlivnilo model strojového učení.
-
-* **Model**: model pro přizpůsobení zachycuje všechna data zjištěná v souvislosti s uživatelským chováním a získá školicí data z kombinace argumentů, které odesíláte do volání funkce Rank a disměna, a s chováním školení stanoveným pomocí zásad učení. 
-
-* **Zásady učení**: jak přizpůsobovat vlaky na každou událost se určí pomocí některých meta parametrů, které mají vliv na to, jak algoritmy strojového učení fungují. Nové smyčky pro přizpůsobení začnou používat výchozí zásady učení, což může přinést střední výkon. Při spuštění [hodnocení](concepts-offline-evaluation.md)může přizpůsobovat nové zásady učení, které jsou speciálně optimalizované pro případy použití smyčky. Přizpůsobený přizpůsobování bude výrazně lepší díky zásadám optimalizovaným pro každou specifickou smyčku vygenerovanou během hodnocení.
-
-## <a name="example-use-cases-for-personalizer"></a>Příklady případů použití pro přizpůsobování
-
-* Vysvětlení záměru & zrušení nejasností: pomůžete uživatelům lepší zkušenosti, když jejich záměr není jasný, protože nabízí možnost přizpůsobení každému uživateli.
-* Výchozí návrhy pro nabídky & možnosti: robotovi nabídne nejpravděpodobnější položku přizpůsobeným způsobem jako první krok, namísto prezentace nepracovní nabídky nebo seznamu alternativ.
-* Roboty & tónové znaky: pro roboty, které se můžou lišit ve stylu tónů, podrobností a psaní, zvažte, že se tyto vlastnosti upraví různými způsoby.
-* Obsah upozornění & oznámení: Rozhodněte, jaký text se má použít pro výstrahy, aby bylo možné uživatele zapojit.
-* Oznámení & časování výstrah: máte přizpůsobené informace o tom, kdy posílat oznámení uživatelům, aby je mohli zapojit.
-
-## <a name="how-to-use-personalizer-in-a-web-application"></a>Použití přizpůsobení ve webové aplikaci
-
-Přidání smyčky do webové aplikace zahrnuje:
-
-* Určete, jaké prostředí se má přizpůsobit, jaké akce a funkce máte, jaké kontextové funkce se mají použít, a jaké možnosti, které nastavíte.
-* Přidejte odkaz na sadu SDK přizpůsobení ve vaší aplikaci.
-* Až budete připraveni k přizpůsobení, zavolejte rozhraní API pro řazení.
-* Uložte ID události. Později se vám pošle protiměna pomocí API pro odměnu.
-1. Pokud jste si jisti, že uživatel viděl vaši personalizovanou stránku, zavolejte aktivovat pro událost.
-1. Počkejte na výběr uživatelem seřazeného obsahu. 
-1. K určení, jak dobře existoval výstup rozhraní API řazení, zavolejte API pro odměnu.
-
-## <a name="how-to-use-personalizer-with-a-chat-bot"></a>Použití přizpůsobení s robotem chatu
-
-V tomto příkladu se dozvíte, jak použít přizpůsobení k vytvoření výchozího návrhu místo odeslání uživatele v několika nabídkách nebo volbách pokaždé, když.
-
-* Získat [kód](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/ChatbotExample) pro tuto ukázku.
-* Nastavte své řešení robot. Ujistěte se, že jste publikovali aplikaci LUIS. 
-* Spravujte volání API pro řazení a měnu pro robota.
-    * Přidejte kód pro správu zpracování záměru LUIS. Pokud se jako nejvyšší záměr vrátí **žádná položka None** nebo je skóre nejvyšší záměru pod prahovou hodnotou vaší obchodní logiky, pošlete seznam záměrů, aby bylo možné seřadit záměr.
-    * Zobrazit seznam záměrů pro uživatele jako volitelných odkazů s prvním záměrem z odpovědi rozhraní API řazení
-    * Zachyťte výběr uživatele a odešlete ho v volání API pro odměnu. 
-
-### <a name="recommended-bot-patterns"></a>Doporučené vzory robotů
-
-* Zajistěte volání rozhraní API pro přizpůsobování při každém nutnosti nejednoznačnosti, a to na rozdíl od ukládání výsledků do mezipaměti pro každého uživatele. Výsledek jednoznačného záměru se může v průběhu času pro jednu osobu změnit a povolit rozhraní API řazení pro zkoumání odchylek zrychlí celkové učení.
-* Vyberte interakci, která je společná pro mnoho uživatelů, abyste měli k dispozici dostatek dat pro přizpůsobení. Úvodní otázky můžou být například lepší, než menší vyjasnění v grafu konverzace, ke kterým se může dostat jenom pár uživatelů.
-* Použijte volání rozhraní API pro řazení, pokud chcete povolit konverzace "první návrh je pravá", kde se uživateli zobrazí výzva "líbí se vám X?" nebo "znamenali jste X?" a uživatel si ho může jenom potvrdit; na rozdíl od poskytnutí možností uživateli, kde musí zvolit z nabídky. Například uživatel: "chtěl bych seřadit robot" bot: "Přejete si Double espresso?". Tímto způsobem je signál pro odměnu také silný, protože se vztahuje přímo k jednomu návrhu.
-
-## <a name="how-to-use-personalizer-with-a-recommendation-solution"></a>Používání přizpůsobeného řešení s řešením doporučení
-
-Pomocí nástroje pro doporučení můžete vyfiltrovat velký katalog na několik položek, které se pak dají odeslat do rozhraní API řazení jako 30 možných akcí.
-
-Můžete použít moduly pro doporučení s přizpůsobením:
-
-* Nastavte [řešení doporučení](https://github.com/Microsoft/Recommenders/). 
-* Při zobrazení stránky volejte model doporučení, který získá krátký seznam doporučení.
-* Zavolejte přizpůsobení a určete tak výstup řešení doporučení.
-* Pošlete nám svůj názor na vaši akci uživatele pomocí volání API pro odměnu.
-
-
-## <a name="pitfalls-to-avoid"></a>Nástrah, abyste se vyhnuli
-
-* Nepoužívejte přizpůsobené chování, u kterého není individuální chování zjištěné u všech uživatelů, ale místo toho, aby je bylo možné zapamatovat pro konkrétní uživatele, nebo pochází ze seznamu alternativ konkrétního uživatele. Například použití přizpůsobeného modulu k navržení prvního Pizza objednávky ze seznamu 20 možných položek nabídky je užitečné, ale kontakt na volání ze seznamu kontaktů uživatelů, když se vyžaduje pomáhat s péči o dítě (například "Grandma"), není objekt, který je přizpůsobitelný napříč vaše uživatelská základna.
-
-
-## <a name="adding-content-safeguards-to-your-application"></a>Přidání ochrany obsahu do aplikace
-
-Pokud vaše aplikace umožňuje velké odchylky v obsahu zobrazeného uživatelům a některý z těchto obsahů může být pro některé uživatele nebezpečný nebo nevhodný, měli byste předem naplánovat, aby se zajistilo, že jsou zavedená správná ochranná opatření, aby se uživatelům zabránilo v nepřijatelném zobrazení. sušin. Nejlepším způsobem, jak implementovat ochranu, je:
-    * Získejte seznam akcí, které je potřeba seřadit.
-    * Vyfiltrujte ty, které nejsou pro cílovou skupinu životaschopné.
-    * Tyto životaschopné akce je možné seřadit pouze.
-    * Zobrazí uživateli horní seřazenou akci.
-
-V některých architekturách může být výše uvedená sekvence těžká implementace. V takovém případě existuje alternativní přístup k implementaci ochrany po hodnocení, ale je třeba provést zřízení, takže akce, které spadají mimo ochranu, se nepoužijí ke školení modelu přizpůsobeného objektu pro přizpůsobení.
-
-* Získejte seznam akcí, které se mají seřadit, a Naučte se deaktivovat.
-* Akce pořadí.
-* Zkontroluje, jestli je akce nejvyšší úrovně životaschopná.
-    * Pokud je nejdůležitější akce životaschopná, aktivujte pro toto pořadí učení a pak ho Zobrazte uživateli.
-    * Pokud akce nejvyšší úrovně není životaschopná, nepovolujte si výuku tohoto hodnocení a rozhodněte se pomocí vlastní logiky nebo alternativních přístupů k tomu, co se uživateli zobrazí. I v případě, že použijete druhou možnost, která je v pořadí, neaktivuje se učení pro toto hodnocení.
-
-## <a name="verifying-adequate-effectiveness-of-personalizer"></a>Ověření adekvátní efektivity přizpůsobeného přizpůsobování
-
-Efektivitu přizpůsobeného přizpůsobování můžete pravidelně monitorovat prováděním [offline hodnocení](how-to-offline-evaluation.md) .
-
 ## <a name="next-steps"></a>Další kroky
 
-Pochopení, [kde můžete použít přizpůsobování](where-can-you-use-personalizer.md).
-Provést [vyhodnocení offline](how-to-offline-evaluation.md)
+Další informace o [hlavních scénářích](where-can-you-use-personalizer.md) pro přizpůsobování

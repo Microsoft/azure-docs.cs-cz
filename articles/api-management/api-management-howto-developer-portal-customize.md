@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454416"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893270"
 ---
 # <a name="access-and-customize-developer-portal"></a>Přístup a přizpůsobení portálu pro vývojáře
 
@@ -36,7 +36,7 @@ Další podrobnosti najdete na portálu pro vývojáře v článku [Přehled por
 
 ![Portál pro vývojáře API Management – režim správy](media/api-management-howto-developer-portal-customize/cover.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 - Import a publikování instance služby Azure API Management. Další informace najdete v tématu [Import a publikování](import-and-publish.md) .
@@ -91,7 +91,7 @@ Pokaždé, když provedete změnu na portálu, je nutné ji uložit ručně stis
 Než zpřístupníte portál návštěvníkům, měli byste přizpůsobit automaticky generovaný obsah. Mezi doporučené změny patří rozložení, styly a obsah domovské stránky.
 
 > [!NOTE]
-> Z důvodu integrace nelze tyto stránky odebrat nebo přesunout pod jinou adresu URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso``/signup`.
+> Z důvodu integrace nelze tyto stránky odebrat nebo přesunout pod jinou adresu URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
 
 ### <a name="home-page"></a>Domovská stránka
 
@@ -125,6 +125,10 @@ Pokud chcete, aby byl váš portál a jeho nejnovější změny dostupné pro n�
 ## <a name="visit-the-published-portal"></a>Navštívit publikovaný portál
 
 Po publikování portálu je možné k němu přistupovat na stejné adrese URL jako panel pro správu, například `https://contoso-api.developer.azure-api.net`. Zobrazí se v samostatné relaci prohlížeče (režim procházení anonymním/privátní) jako externí návštěvník.
+
+## <a name="apply-the-cors-policy-on-apis"></a>Použití zásad CORS na rozhraních API
+
+V rozhraních API musíte povolit CORS (sdílení prostředků mezi zdroji), aby návštěvníci vašeho portálu mohli testovat rozhraní API prostřednictvím integrované interaktivní konzoly. Další podrobnosti najdete v [tomto článku dokumentace](api-management-howto-developer-portal.md#cors) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b9e6d2d6cf602bca74c8899586eef0a8108fde3c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620731"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893251"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -40,7 +40,7 @@ Podmíněný přístup Azure AD podporuje tyto platformy zařízení:
 
 - Android
 - iOS
-- Windows Phone
+- telefon se systémem Windows
 - Windows
 - macOS
 
@@ -72,7 +72,7 @@ Zásady podmíněného přístupu se standardně používají pro aplikace zalo�
       - Tato možnost zahrnuje klienty, kteří používají základní a starší ověřovací protokoly, které nepodporují moderní ověřování.
          - Ověřený protokol SMTP, pomocí kterého klient POP a IMAP odesílá e-mailové zprávy.
          - Automatická konfigurace – používá klienti Outlooku a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.
-         - Exchange Online PowerShell – slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Exchange Online PowerShell – slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
          - Webové služby Exchange (EWS) – programovací rozhraní, které používá Outlook, Outlook pro Mac a aplikace třetích stran.
          - IMAP4 – používá e-mailové klienty IMAP.
          - Rozhraní MAPI přes protokol HTTP (MAPI/HTTP) – používá Outlook 2010 a novější.
@@ -88,14 +88,14 @@ Tyto podmínky se běžně používají při vyžadování spravovaného zaříz
 
 Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zásadu zařízení, třeba požadavky na vyhovující zařízení, podporují se tyto operační systémy a prohlížeče:
 
-| OS | Prohlížeče |
+| Operační systém | Prohlížeče |
 | :-- | :-- |
 | Windows 10 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |
 | Windows 7 | Internet Explorer, Chrome |
 | iOS | Microsoft Edge, Intune Managed Browser, Safari |
 | Android | Microsoft Edge, Intune Managed Browser, Chrome |
-| Windows Phone | Microsoft Edge, Internet Explorer |
+| telefon se systémem Windows | Microsoft Edge, Internet Explorer |
 | Windows Server 2019 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows Server 2016 | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer |
@@ -142,8 +142,8 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 | Aplikace Pošta/kalendář/lidé, Outlook 2016, Outlook 2013 (s moderním ověřováním)| Office 365 Exchange Online | Windows 10 |
 | Zásady vícefaktorového ověřování a umístění pro aplikace Zásady založené na zařízeních se nepodporují.| Všechny moje aplikace App Service | Android a iOS |
 | Microsoft Team Services – řídí všechny služby, které podporují Microsoft teams a všechny jeho klientské aplikace – desktopové aplikace pro Windows, iOS, Android, WP a webový klient. | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
-| Aplikace Office 2016, Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
-| Aplikace Office 2016, univerzální aplikace Office, sada Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
+| Aplikace Office 2016, Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
+| Aplikace Office 2016, univerzální aplikace Office, sada Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (jenom Word, Excel, PowerPoint, OneNote) | Office 365 SharePoint Online | macOS |
 | Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
 | Mobilní aplikace Office | Office 365 SharePoint Online | Android, iOS |

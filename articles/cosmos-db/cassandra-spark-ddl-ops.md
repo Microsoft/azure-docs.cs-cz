@@ -1,6 +1,6 @@
 ---
-title: Operace DDL v Azure Cosmos DB Cassandra API z aplikace Spark
-description: Tento článek podrobně popisuje operace DDL prostoru klíčů a tabulky Azure Cosmos DB Cassandra API z aplikace Spark.
+title: Operace DDL v Azure Cosmos DB rozhraní API Cassandra ze Sparku
+description: Tento článek podrobně popisuje operace v oblasti klíčů a v tabulce DDL pro Azure Cosmos DB rozhraní API Cassandra ze Sparku.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c12787cd6e0df19fd842dd44da49aa5ea97aa05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898878"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622578"
 ---
-# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Operace DDL v Azure Cosmos DB Cassandra API z aplikace Spark
+# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Operace DDL v Azure Cosmos DB rozhraní API Cassandra ze Sparku
 
-Tento článek podrobně popisuje operace DDL prostoru klíčů a tabulky Azure Cosmos DB Cassandra API z aplikace Spark.
+Tento článek podrobně popisuje operace v oblasti klíčů a v tabulce DDL pro Azure Cosmos DB rozhraní API Cassandra ze Sparku.
 
-## <a name="cassandra-api-related-configuration"></a>Konfigurace rozhraní API související Cassandra 
+## <a name="cassandra-api-related-configuration"></a>Konfigurace související s rozhraní API Cassandra 
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,9 +48,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="keyspace-ddl-operations"></a>Operace DDL prostor klíčů
+## <a name="keyspace-ddl-operations"></a>Operace DDL prostoru klíčů
 
-### <a name="create-a-keyspace"></a>Vytvoření prostor klíčů
+### <a name="create-a-keyspace"></a>Vytvoření prostoru klíčů
 
 ```scala
 //Cassandra connector instance
@@ -60,34 +60,34 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE KEYSPACE IF NOT EXISTS books_ks WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 } "))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ověření v cqlsh
+#### <a name="validate-in-cqlsh"></a>Ověřit v cqlsh
 
-Spuštěním následujícího příkazu v cqlsh a měli byste vidět prostor klíčů, který jste vytvořili dříve.
+Spusťte následující příkaz v cqlsh a měli byste vidět místo na disku, které jste vytvořili dříve.
 
 ```bash
 DESCRIBE keyspaces;
 ```
 
-### <a name="drop-a-keyspace"></a>Vyřadit prostor klíčů
+### <a name="drop-a-keyspace"></a>Vyřazení prostoru klíčů
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP KEYSPACE books_ks"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ověření v cqlsh
+#### <a name="validate-in-cqlsh"></a>Ověřit v cqlsh
 
 ```bash
 DESCRIBE keyspaces;
 ```
 ## <a name="table-ddl-operations"></a>Operace DDL tabulky
 
-**Důležité informace:**  
+**Odůvodněn**  
 
-- Propustnost je možné přiřadit na úrovni tabulky pomocí příkazu create table.  
-- 10 GB dat můžete ukládat jeden klíč oddílu.  
-- Jeden záznam může ukládat maximálně 2 MB na data.  
-- Jeden rozsah klíče oddílu můžete uložit více klíčů oddílů.
+- Propustnost lze přiřadit na úrovni tabulky pomocí příkazu CREATE TABLE.  
+- Jeden klíč oddílu může ukládat 20 GB dat.  
+- Jeden záznam může obsahovat maximálně 2 MB dat.  
+- Jeden rozsah klíčů oddílu může ukládat několik klíčů oddílů.
 
 ### <a name="create-a-table"></a>Vytvoření tabulky
 
@@ -96,52 +96,52 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT PRIMARY KEY,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ověření v cqlsh
+#### <a name="validate-in-cqlsh"></a>Ověřit v cqlsh
 
-Spuštěním následujícího příkazu v cqlsh a měli byste vidět v tabulce s názvem "knih: 
+V cqlsh spusťte následující příkaz a měli byste vidět tabulku s názvem Books: 
 
 ```bash
 USE books_ks;
 DESCRIBE books;
 ```
 
-Zřízená propustnost a výchozí hodnoty TTL se nezobrazují ve výstupu předchozího příkazu, můžete tyto hodnoty získat z portálu.
+Zřízené propustnost a výchozí hodnoty TTL nejsou zobrazeny ve výstupu předchozího příkazu. Tyto hodnoty můžete získat z portálu.
 
-### <a name="alter-table"></a>Příkaz alter table
+### <a name="alter-table"></a>Změnit tabulku
 
-Pomocí příkazu alter table je možné změnit následující hodnoty:
+Následující hodnoty můžete změnit pomocí příkazu ALTER TABLE:
 
 * zřízená propustnost 
-* Hodnota Time to live
-<br>Změny ve sloupcích se momentálně nepodporují.
+* Hodnota TTL (Time to Live)
+<br>Změny sloupců nejsou aktuálně podporovány.
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("ALTER TABLE books_ks.books WITH cosmosdb_provisioned_throughput=8000, WITH default_time_to_live=0;"))
 ```
 
-### <a name="drop-table"></a>Odstranit tabulku
+### <a name="drop-table"></a>Odkládací tabulka
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP TABLE IF EXISTS books_ks.books;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ověření v cqlsh
+#### <a name="validate-in-cqlsh"></a>Ověřit v cqlsh
 
-Spuštěním následujícího příkazu v cqlsh a byste měli vidět, že tabulka "knihy" již není k dispozici:
+Spusťte následující příkaz v cqlsh a měli byste vidět, že tabulka Books už není dostupná:
 
 ```bash
 USE books_ks;
 DESCRIBE tables;
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po vytvoření prostor klíčů a tabulky, pokračujte v následujících článcích pro operace CRUD a další:
+Po vytvoření prostoru klíčů a tabulky pokračujte v následujících článcích pro operace CRUD a další:
  
-* [Vytvořit/vložit operací](cassandra-spark-create-ops.md)  
-* [operace čtení](cassandra-spark-read-ops.md)  
+* [Operace vytvoření/vložení](cassandra-spark-create-ops.md)  
+* [Operace čtení](cassandra-spark-read-ops.md)  
 * [Operace Upsert](cassandra-spark-upsert-ops.md)  
 * [Operace odstranění](cassandra-spark-delete-ops.md)  
 * [Agregační operace](cassandra-spark-aggregation-ops.md)  

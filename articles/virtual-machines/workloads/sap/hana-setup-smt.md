@@ -4,21 +4,21 @@ description: Jak nastavit server SMT pro SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d9e86e54a4c94db97b6c89b3ef8799855963020
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099767"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616993"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Nastavení serveru SMT pro SUSE Linux
 Velké instance SAP HANA nemají přímé připojení k Internetu. Nejedná se o přímočarý proces k registraci takové jednotky s poskytovatelem operačního systému a ke stažení a instalaci aktualizací. Řešením pro SUSE Linux je nastavení serveru SMT na virtuálním počítači Azure. Virtuální počítač hostte ve virtuální síti Azure, která je připojená k velké instanci HANA. U takového serveru SMT by mohla jednotka velké instance HANA registrovat a stahovat aktualizace. 
@@ -34,7 +34,7 @@ Požadavky pro instalaci serveru SMT, který plní úlohu pro velké instance HA
 
 Nejdřív se přihlaste do [centra pro zákazníky v SUSE](https://scc.suse.com/).
 
-Přejít na > **přihlašovací údaje organizace**organizace. V této části byste měli najít přihlašovací údaje, které jsou nutné k nastavení serveru SMT.
+Přejít na **organizaci** > **přihlašovací údaje organizace**. V této části byste měli najít přihlašovací údaje, které jsou nutné k nastavení serveru SMT.
 
 Pak ve virtuální síti Azure nainstalujte virtuální počítač s SUSE Linux. Pokud chcete nasadit virtuální počítač, vezměte image z Galerie SLES 12 SP2 do Azure (vyberte BYOS SUSE image). V procesu nasazení nedefinujte název DNS a nepoužívejte statické IP adresy.
 
@@ -151,7 +151,7 @@ Pokud narazíte na problém, který je třeba opravit na základě kroků v čl�
 
 Nakonfigurovali jste klienta SMT jednotky velkých instancí HANA pro připojení k serveru SMT, který jste nainstalovali na virtuálním počítači Azure. Nyní můžete provést příkaz "zypperu nahoru" nebo "zypperu in" a nainstalovat aktualizace operačního systému do rozsáhlých instancí HANA nebo nainstalovat další balíčky. Aktualizace, které jste stáhli do serveru SMT, můžete získat jenom.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Instalace Hana na HLI](hana-example-installation.md)
 
 

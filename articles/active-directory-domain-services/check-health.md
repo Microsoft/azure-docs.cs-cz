@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509134"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614247"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Zkontroluje stav Azure Active Directory Domain Services spravované domény.
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak zobrazit stav služby Azure služba AD DS Heal
 Stav pro spravovanou doménu Azure služba AD DS je zobrazený pomocí Azure Portal. Informace o posledním čase zálohování a synchronizaci se službou Azure AD najdete spolu s případnými výstrahami, které indikují problém se stavem spravované domény. Pokud chcete zobrazit stav pro spravovanou doménu Azure služba AD DS, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**.
-1. Vyberte spravovanou doménu Azure služba AD DS, například *aadds.contoso.com*.
+1. Vyberte spravovanou doménu Azure služba AD DS, například *aaddscontoso.com*.
 1. Na levé straně okna prostředků Azure služba AD DS vyberte **stav**. Následující ukázkový snímek obrazovky ukazuje v dobrém stavu Azure služba AD DS spravované doméně a stavu poslední zálohy a synchronizace Azure AD:
 
     ![Přehled stránky stavu v Azure Portal zobrazující stav Azure Active Directory Domain Services](./media/check-health/health-page.png)
@@ -43,13 +43,13 @@ Stav v pravém horním rohu udává celkový stav spravované domény Azure slu�
 | Spuštěno | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Spravovaná doména Azure služba AD DS je spuštěná správně a nemá žádné kritické výstrahy nebo upozornění. Doména může obsahovat informativní výstrahy. |
 | Vyžaduje pozornost (upozornění) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Ve spravované doméně Azure služba AD DS neexistují žádné kritické výstrahy, ale je potřeba vyřešit aspoň jedno upozornění. |
 | Vyžaduje pozornost (kritická) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Ve spravované doméně Azure služba AD DS se vyskytla jedna nebo více kritických výstrah, které je potřeba řešit. Mohou být také zobrazovány upozornění nebo informativní výstrahy. |
-| Nasazování | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Probíhá nasazení domény Azure služba AD DS. |
+| Nasazení | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Probíhá nasazení domény Azure služba AD DS. |
 
 ## <a name="understand-monitors-and-alerts"></a>Pochopení monitorování a výstrah
 
 Stav pro spravovanou doménu Azure služba AD DS zobrazuje dva typy informací – *monitorování*a *výstrahy*. Monitory ukazují dobu, po kterou byly dokončeny základní úlohy na pozadí. Výstrahy obsahují informace nebo návrhy, které zlepšují stabilitu spravované domény.
 
-### <a name="monitors"></a>Monitory
+### <a name="monitors"></a>Sledování
 
 Monitory jsou oblasti spravované domény Azure služba AD DS, které jsou pravidelně kontrolovány. Pokud existují aktivní výstrahy pro spravovanou doménu Azure služba AD DS, může dojít k tomu, že některé z monitorování nahlásí problém. Azure AD Domain Services aktuálně obsahuje monitory pro následující oblasti:
 

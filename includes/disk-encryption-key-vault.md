@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72511461"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77618499"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -69,7 +69,7 @@ Trezor klíčů můžete vytvořit také pomocí [šablony Správce prostředků
 
 ##  <a name="set-key-vault-advanced-access-policies"></a>Nastavení zásad rozšířeného přístupu trezoru klíčů
 
-Platforma Azure potřebuje přístup k šifrovacím klíčům nebo tajným klíčům v trezoru klíčů, aby byly k dispozici pro virtuální počítač, aby bylo možné spouštět a dešifrovat svazky. 
+Platforma Azure potřebuje přístup k šifrování klíčů nebo tajných klíčů v trezoru klíčů, aby byly k dispozici pro virtuální počítač pro spuštění a dešifrování svazky. 
 
 Pokud jste nepovolili použití trezoru klíčů pro šifrování disků, nasazení nebo nasazení šablon v době vytváření (jak je znázorněno v předchozím kroku), musíte aktualizovat své pokročilé zásady přístupu.  
 
@@ -115,30 +115,30 @@ K povolení šifrování disku pro Trezor klíčů použijte [AZ Key trezor Upda
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Vyberte svůj Trezor klíčů, přejděte na **zásady přístupu**a **kliknutím zobrazte zásady pokročilého přístupu**.
 2. Zaškrtněte políčko s názvem **Povolit přístup k Azure Disk Encryption pro šifrování svazku**.
 3. V případě potřeby vyberte **Povolit přístup k Azure Virtual Machines pro nasazení** nebo **povolit přístup k Azure Resource Manager pro nasazení šablony**. 
 4. Klikněte na **Uložit**.
 
-    ![Zásady rozšířeného přístupu ke službě Azure Key trezor](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
+    ![Azure key vaultu pokročilé zásady přístupu](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="set-up-a-key-encryption-key-kek"></a>Nastavení klíče šifrovacího klíče (KEK)
 
-Pokud chcete pro další vrstvu zabezpečení pro šifrovací klíče použít klíč šifrovacího klíče (KEK), přidejte do trezoru klíčů KEK. Když je zadaný klíč šifrování klíče, Azure Disk Encryption používá tento klíč k zabalení šifrovacích tajných kódů před zápisem do Key Vault.
+Pokud chcete použít šifrovací klíč klíče (KEK) pro další úroveň zabezpečení pro šifrovací klíče, přidejte do trezoru klíčů KEK. Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault.
 
 Novou KEK můžete vygenerovat pomocí příkazu Azure CLI [AZ klíčů trezor Key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) Azure PowerShell, rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) nebo [Azure Portal](https://portal.azure.com/). Musíte vygenerovat typ klíče RSA; Azure Disk Encryption zatím nepodporuje používání klíčů eliptické křivky.
 
 Místo toho můžete importovat KEK z místního modulu hardwarové správy klíčů. Další informace najdete v [dokumentaci Key Vault](/azure/key-vault/key-vault-hsm-protected-keys).
 
-Adresy URL vašeho trezoru klíčů KEK musí být ve verzi. Azure vynutilo toto omezení správy verzí. Platné tajné a KEK adresy URL najdete v následujících příkladech:
+Adresy URL vašeho trezoru klíčů KEK musí být ve verzi. Azure vynucuje toto omezení správy verzí. Platný tajný kód a adresy URL KEK viz následující příklady:
 
 * Příklad platné tajné adresy URL: *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 * Příklad platné adresy URL KEK: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-Azure Disk Encryption nepodporuje zadání čísel portů jako součást tajných kódů trezoru klíčů a adres URL KEK. Příklady nepodporovaných a podporovaných adres URL trezoru klíčů najdete v následujících příkladech:
+Azure Disk Encryption nepodporuje zadání čísel portů jako součást tajných kódů služby key vault a KEK adresy URL. Příkladem adresy URL není podporováno a podporované služby key vault najdete v následující příklady:
 
   * Přijatelná adresa URL trezoru klíčů: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Nepřijatelná adresa URL trezoru klíčů: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
@@ -151,7 +151,7 @@ Pomocí příkazu Azure CLI [AZ klíčů trezor Key Create](/cli/azure/keyvault/
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
 ```
 
-. Místo toho můžete importovat privátní klíč pomocí příkazu Azure CLI [AZ klíčů trezor Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) :
+Místo toho můžete importovat privátní klíč pomocí příkazu Azure CLI [AZ klíčů trezor Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) :
 
 V obou případech dáte název KEK do Azure CLI [AZ VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --Key-Encryption-Key. 
 

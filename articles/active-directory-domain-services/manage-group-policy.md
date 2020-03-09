@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705082"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613584"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Správa Zásady skupiny ve spravované doméně Azure AD Domain Services
 
@@ -53,7 +53,7 @@ Pokud chcete vytvořit a nakonfigurovat objekt Zásady skupiny (GPO), musíte na
 1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
 1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
 1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
-1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aadds.contoso.com*, a pak vyberte **Další**.
+1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aaddscontoso.com*, a pak vyberte **Další**.
 1. Na stránce **role serveru** klikněte na **Další**.
 1. Na stránce **funkce** vyberte funkci **správy Zásady skupiny** .
 
@@ -76,7 +76,7 @@ Pro uživatele a počítače ve spravované doméně služby Azure služba AD DS
 
 Existují dva předdefinované Zásady skupiny objekty (GPO) v Azure služba AD DS spravované doméně – jeden pro kontejner *počítačů AADDC* a jeden pro kontejner *AADDC Users* . Tyto objekty zásad skupiny můžete přizpůsobit tak, aby podle potřeby v rámci vaší spravované domény služba AD DS Azure nakonfigurovaly zásady skupiny.
 
-1. V konzole **pro správu Zásady skupiny** rozbalte uzel **doménová struktura: aadds.contoso.com** . Dále rozbalte uzly **domény** .
+1. V konzole **pro správu Zásady skupiny** rozbalte uzel **doménová struktura: aaddscontoso.com** . Dále rozbalte uzly **domény** .
 
     Pro *počítače s AADDC* a *uživatele AADDC*existují dva předdefinované kontejnery. U každého z těchto kontejnerů je použit výchozí objekt zásad skupiny.
 

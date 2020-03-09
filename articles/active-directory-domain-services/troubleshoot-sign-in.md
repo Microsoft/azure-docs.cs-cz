@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827050"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612746"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Řešení potíží s přihlašováním k účtu pomocí spravované domény Azure AD Domain Services
 
@@ -32,7 +32,7 @@ Nejběžnějšími důvody pro uživatelský účet, který se nemůže přihlá
 
 V závislosti na velikosti adresáře může trvat nějakou dobu, než jsou uživatelské účty a hodnoty hash přihlašovacích údajů dostupné v Azure služba AD DS. U rozsáhlých adresářů může tato počáteční synchronizace z Azure AD trvat několik hodin a až jeden den nebo dvě. Před opakovaným pokusem o ověření se ujistěte, že jste čekali dostatečně dlouho.
 
-Pro hybridní prostředí, která uživatel Azure AD Connect k synchronizaci místních adresářových dat do služby Azure AD, se ujistěte, že používáte nejnovější verzi Azure AD Connect a že jste [nakonfigurovali Azure AD Connect k provedení úplné synchronizace po povolení Azure. služba AD DS][azure-ad-connect-phs]. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
+Pro hybridní prostředí, která uživatel Azure AD Connect k synchronizaci místních adresářových dat do Azure AD, se ujistěte, že používáte nejnovější verzi Azure AD Connect a máte [nakonfigurovanou Azure AD Connect k provedení úplné synchronizace po povolení služba AD DS Azure][azure-ad-connect-phs]. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
 
 Pokud budete mít nadále problémy s účty, které se nesynchronizují prostřednictvím Azure AD Connect, restartujte službu Azure AD Sync. Z počítače s nainstalovanou Azure AD Connect otevřete okno příkazového řádku a spusťte následující příkazy:
 
@@ -59,7 +59,7 @@ Azure služba AD DS spravované domény, které nemají místní synchronizaci, 
     * [Změňte heslo pro účet][enable-user-accounts] , abyste vygenerovali požadované hodnoty hash hesla, a pak počkejte 15 minut, než se znovu pokusíte o přihlášení.
     * Pokud zakážete Azure služba AD DS a pak znovu povolíte, každý účet musí znovu postupovat podle kroků a změnit heslo a vygenerovat požadované hodnoty hash hesla.
 * **Ano, heslo bylo změněno.**
-    * Pokuste se přihlásit pomocí *hlavního názvu uživatele (UPN)* , jako je například `driley@contoso.com`, místo formátu *sAMAccountName* jako `CONTOSO\deeriley`.
+    * Pokuste se přihlásit pomocí *hlavního názvu uživatele (UPN)* , jako je například `driley@aaddscontoso.com`, místo formátu *sAMAccountName* jako `AADDSCONTOSO\deeriley`.
     * *SAMAccountName* se může automaticky vygenerovat pro uživatele, jejichž předpona hlavního názvu uživatele je příliš dlouhá nebo je stejná jako jiný uživatel ve spravované doméně. Formát *UPN* je v rámci TENANTA Azure AD zaručený jako jedinečný.
 
 ## <a name="the-account-is-locked-out"></a>Účet je uzamčený.

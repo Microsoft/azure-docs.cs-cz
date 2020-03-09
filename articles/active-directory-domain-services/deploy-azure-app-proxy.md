@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720489"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613981"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD pro zabezpečený přístup k interním aplikacím ve Azure AD Domain Services spravované doméně
 
@@ -74,7 +74,7 @@ Když je virtuální počítač připravený k použití jako konektor Azure Pro
         > [!NOTE]
         > Globální účet správce použitý k registraci konektoru musí patřit do stejného adresáře, ve kterém povolíte službu proxy aplikací.
         >
-        > Pokud je například doména Azure AD *contoso.com*, globální správce by měl `admin@contoso.com` nebo jiný platný alias v této doméně.
+        > Pokud je například doména Azure AD *aaddscontoso.com*, globální správce by měl `admin@aaddscontoso.com` nebo jiný platný alias v této doméně.
 
    * Pokud je pro virtuální počítač, na který konektor instalujete, zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, může být registrační obrazovka zablokovaná. Pokud chcete povolit přístup, postupujte podle pokynů v chybové zprávě nebo vypněte rozšířené zabezpečení aplikace Internet Explorer během procesu instalace.
    * Pokud se registrace konektoru nepovede, přečtěte si téma [řešení potíží s proxy aplikací](../active-directory/manage-apps/application-proxy-troubleshoot.md)
@@ -99,16 +99,16 @@ Další informace najdete v tématu [Konfigurace omezeného delegování protoko
 
 Použijte [příkaz Get-ADComputer][Get-ADComputer] k načtení nastavení pro počítač, na kterém je nainstalovaný konektor Azure proxy aplikací služby AD. Z virtuálního počítače pro správu připojeného k doméně a přihlášený jako uživatelský účet, který je členem skupiny *Azure AD DC Administrators* , spusťte následující rutiny.
 
-Následující příklad načte informace o účtu počítače s názvem *appproxy.contoso.com*. Zadejte vlastní název počítače pro virtuální počítač Azure Proxy aplikací služby AD nakonfigurovaný v předchozích krocích.
+Následující příklad načte informace o účtu počítače s názvem *appproxy.aaddscontoso.com*. Zadejte vlastní název počítače pro virtuální počítač Azure Proxy aplikací služby AD nakonfigurovaný v předchozích krocích.
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-Pro každý aplikační server, na kterém běží aplikace za Azure Proxy aplikací služby AD použijte ke konfiguraci KCD na základě prostředků rutinu PowerShellu [set-ADComputer][Set-ADComputer] . V následujícím příkladu má konektor Azure Proxy aplikací služby AD udělena oprávnění k používání počítače s *AppServer.contoso.com* :
+Pro každý aplikační server, na kterém běží aplikace za Azure Proxy aplikací služby AD použijte ke konfiguraci KCD na základě prostředků rutinu PowerShellu [set-ADComputer][Set-ADComputer] . V následujícím příkladu má konektor Azure Proxy aplikací služby AD udělena oprávnění k používání počítače s *AppServer.aaddscontoso.com* :
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 Pokud nasadíte více konektorů služby Azure Proxy aplikací služby AD, je nutné pro každou instanci konektoru nakonfigurovat KCD založenou na prostředku.

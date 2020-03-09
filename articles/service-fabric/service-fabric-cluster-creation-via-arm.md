@@ -3,12 +3,12 @@ title: Vytvoření clusteru Azure Service Fabric
 description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v Azure pomocí Azure Resource Manager.  Cluster můžete vytvořit pomocí výchozí šablony nebo pomocí vlastní šablony clusteru.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 935f67c25f4a2aee7d06be7591dbe7576c87806e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349873"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624116"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ V tomto článku nasadíte cluster pomocí modulu Service Fabric RM PowerShell n
 * [Azure CLI verze 2,0 a vyšší][azure-CLI]
 
 Referenční dokumentaci k modulům Service Fabric najdete tady:
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
+* [AZ. ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [AZ SF CLI Module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -262,7 +262,7 @@ $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretID -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Nasazení clusteru pomocí rozhraní příkazového řádku Azure:
@@ -271,11 +271,11 @@ Nasazení clusteru pomocí rozhraní příkazového řádku Azure:
 declare $resourceGroupName = "testRG"
 declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
-declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+declare $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
-    --secret-identifier az $secretID  \
-    --template-file $templateFilePath --parameter-file $parametersFilePath 
+    --secret-identifier $secretID  \
+    --template-file $templateFilePath --parameter-file $parameterFilePath 
 ```
 
 ## <a name="next-steps"></a>Další kroky

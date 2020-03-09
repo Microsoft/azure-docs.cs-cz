@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705679"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619883"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer nejčastějších dotazech
 
@@ -77,6 +77,14 @@ Ano, Video Indexer můžete integrovat do technologií bez serveru, jako jsou Lo
 
 Můžete vidět, které oblasti Azure Video Indexer k dispozici na stránce [oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) .
 
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Můžu přizpůsobit Video Indexer modely pro můj konkrétní případ použití? 
+
+Ano. V Video Indexer můžete přizpůsobit některé z dostupných modelů, aby lépe vyhovovaly vašim potřebám. 
+
+Například náš model person podporuje dopředné 1 000 000i rozpoznávání celebrit, ale můžete ho také naučit, aby rozpoznal jiné plošky, které nejsou v této databázi. 
+
+Podrobnosti najdete v článcích o přizpůsobení [osob](customize-person-model-overview.md), [značek](customize-brands-model-overview.md)a [jazykových](customize-language-model-overview.md) modelů. 
+
 ### <a name="what-is-the-sla-for-video-indexer"></a>Jaká je smlouva SLA pro Video Indexer?
 
 Smlouva SLA pro Azure Media Service pokrývá Video Indexer a najdete je na stránce věnované [smlouvě SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) . Smlouva SLA platí jenom pro Video Indexer placené účty a nevztahuje se na bezplatnou zkušební verzi.
@@ -118,6 +126,21 @@ Na Video Indexer se vztahuje [prohlášení o zásadách ochrany osobních údaj
 ### <a name="what-certifications-does-video-indexer-have"></a>Jaké certifikace Video Indexer mají?
 
 Video Indexer aktuálně má certifikaci SOC. Pokud si chcete projít certifikaci Video Indexer, přečtěte si prosím [Centrum zabezpečení Microsoftu](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
+
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>Jaký je rozdíl mezi soukromými a veřejnými videy? 
+
+Po nahrání videa do Video Indexer můžete zvolit ze dvou nastavení ochrany osobních údajů: soukromé a veřejné. Veřejná videa jsou přístupná pro kohokoli, včetně anonymních a neidentifikovaných uživatelů. Soukromé objekty jsou omezeny výhradně na členy účtu. 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Při pokusu o nahrání videa jako veřejně došlo k označení nevhodného nebo urážlivého obsahu, co to znamená? 
+
+Při nahrávání videa do Video Indexer se automatická analýza obsahu provádí pomocí algoritmů a modelů, aby se zajistilo, že se nebude veřejně prezentovat žádný nevhodný obsah. Pokud se zjistí, že video bude podezřelé, že obsahuje explicitní obsah, nebude možné ho nastavit jako veřejný. Členové účtu ale můžou k němu přistupovat jako o soukromém videu (Zobrazit ho, Stáhnout přehledy a extrahovat artefakty a provádět další operace, které členové účtu mají k dispozici).   
+
+Aby bylo možné nastavit video pro veřejný přístup, můžete použít tyto kroky: 
+
+* Sestavte si vlastní vrstvu rozhraní (například aplikaci nebo Web) a použijte ji k interakci se službou Video Indexer. Tímto způsobem zůstane video na našem portálu soukromé a vaši uživatelé s ním můžou s vaším rozhraním pracovat. Můžete například dál získat přehledy nebo zobrazit video ve vlastním rozhraní. 
+* Vyžádá si lidská recenze obsahu, což by vedlo k odebrání omezení za předpokladu, že obsah není explicitní. 
+
+    Tuto možnost lze prozkoumat, pokud je Web Video Indexer používán přímo uživateli jako vrstva rozhraní a pro veřejné (neověřené) zobrazení. 
 
 ## <a name="api-questions"></a>Dotazy k rozhraní API
 
@@ -161,7 +184,7 @@ Video Indexer používá jednoduchý cenový model s průběžnými platbami pod
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Kdy se mi účtuje použití Video Indexer?
 
-Při odesílání videa k indexování bude uživatel definovat, jestli se použije analýza videa, analýza zvuku, nebo oboje. Tím se určí, které jednotky SKU se budou účtovat. Pokud během zpracování dojde k chybě kritické úrovně, jako odpověď se vrátí chybový kód. V takovém případě se nic neúčtuje.  Kritická chyba může být způsobená chybou v našem kódu nebo kritickým selháním v interní závislosti této služby. Chyby typu chybné identifikace nebo extrakce přehledů se nepovažují za kritické a bude vrácena odpověď. Účtovat se bude ve všech případech, kdy je vrácena platná odpověď (jiný než chybový kód).
+Při odesílání videa, které se má indexovat, bude uživatel definovat indexování, která bude analyzována jako video, analýza zvuku nebo obojí. Tím se určí, které skladové jednotky budou účtovány. Pokud během zpracování dojde k chybě kritické úrovně, jako odpověď se vrátí kód chyby. V takovém případě se neobjeví žádná fakturace.  Kritická chyba může být způsobena chybou v našem kódu nebo kritickou chybou v interní závislosti, kterou služba má. Chyby jako chybné identifikace nebo extrakce Insight nejsou považovány za kritické a vrátí odpověď. V každém případě, kdy se vrátí platná odpověď (kód bez chybového kódu), dojde k fakturaci.
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Nabízí Video Indexer bezplatnou zkušební verzi?
 

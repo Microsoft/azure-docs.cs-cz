@@ -4,7 +4,7 @@ description: Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 66921280403027d1723b27f104b42d2c83271213
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100069"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616693"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure
 Tento článek popisuje, jak nasadit systém SAP v systému SAP se systémem SQL Server a operačním systémem Windows v Azure pomocí knihovny cloudových zařízení SAP (SAP CAL) 3,0. Snímky obrazovky ukazují podrobný proces. Pokud chcete nasadit jiné řešení, použijte stejný postup.
@@ -60,7 +60,7 @@ Až se přihlásíte ke službě SAP CAL, první stránka obvykle vás provede n
 
     ![Účty SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-1. Zadejte **ID** předplatného Azure, které najdete na Azure Portal. 
+1. Zadejte **ID předplatného** Azure, které najdete na Azure Portal. 
 
     ![ID předplatného SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
@@ -72,7 +72,7 @@ Až se přihlásíte ke službě SAP CAL, první stránka obvykle vás provede n
 
     ![Potvrzení Cloud Services v Internet Exploreru](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-1. Klikněte na tlačítko **přijmout**. Pokud je autorizace úspěšná, znovu se zobrazí definice účtu SAP CAL. Po krátké době zpráva potvrdí, že proces autorizace byl úspěšný.
+1. Klikněte na **přijmout**. Pokud je autorizace úspěšná, znovu se zobrazí definice účtu SAP CAL. Po krátké době zpráva potvrdí, že proces autorizace byl úspěšný.
 
 1. Pokud chcete uživateli přiřadit nově vytvořený účet SAP CAL, zadejte své **ID uživatele** do textového pole vpravo a klikněte na **Přidat**. 
 
@@ -95,7 +95,7 @@ Až se přihlásíte ke službě SAP CAL, první stránka obvykle vás provede n
 ### <a name="deploy-a-solution"></a>Nasazení řešení
 1. Po nastavení účtu SAP CAL vyberte **řešení SAP v systému Windows a SQL Server** řešení. Klikněte na **vytvořit instanci**a potvrďte podmínky použití a podmínky. 
 
-1. **V základním režimu: Na stránce** vytvořit instanci musíte:
+1. Na stránce **Základní režim: vytvořit instanci** budete potřebovat:
 
     a. Zadejte **název**instance.
 
@@ -103,7 +103,7 @@ Až se přihlásíte ke službě SAP CAL, první stránka obvykle vás provede n
 
     c.  Zadejte hlavní **heslo** pro řešení, jak je znázorněno níže:
 
-    ![Základní režim SAP CAL: Vytvořit instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![Základní režim SAP CAL: vytvořit instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. Klikněte na možnost **Vytvořit**. Po určité době v závislosti na velikosti a složitosti řešení (odhad licencí SAP CAL poskytuje odhad) se stav zobrazuje jako aktivní a připravený k použití: 
 

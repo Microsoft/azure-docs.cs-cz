@@ -4,21 +4,21 @@ description: Jak nainstalovat HANA na SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d266f458894d93540977c995ff7e8ab71414083f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101285"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617213"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Instalace HANA na SAP HANA v Azure (velké instance)
 
@@ -39,7 +39,7 @@ Jednotky velkých instancí HANA nejsou přímo připojené k Internetu. Nemůž
 
 Potřebujete SAP S – uživatel nebo jiný uživatel, který vám umožní přístup k webu SAP Marketplace.
 
-1. Přihlaste se a přečtěte si [Web SAP Service Marketplace](https://support.sap.com/en/index.html). Vyberte **možnost stáhnout instalace softwaru** > **a upgradovat** > **podle abecedního indexu**. Pak vyberte **v části H – SAP HANA Platform Edition** > **SAP HANA Platform Edition 2,0** > **instalace**. Stáhněte si soubory zobrazené na následujícím snímku obrazovky.
+1. Přihlaste se a přečtěte si [Web SAP Service Marketplace](https://support.sap.com/en/index.html). Vyberte možnost **stáhnout > softwaru** **a upgradovat** > **podle abecedního indexu**. Pak vyberte **v části H – SAP HANA Platform edition** > **SAP HANA platform Edition 2,0** > **instalaci**. Stáhněte si soubory zobrazené na následujícím snímku obrazovky.
 
    ![Snímek obrazovky se soubory, které se mají stáhnout](./media/hana-installation/image16_download_hana.PNG)
 
@@ -130,7 +130,7 @@ Po dokončení instalace by se měla zobrazit obrazovka podobná této:
 Instance SAP HANA by teď měla být spuštěná a připravená k použití. Měli byste být schopni se k němu připojit z SAP HANA studia. Ujistěte se také, že jste kontrolovali a použili nejnovější aktualizace.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Velké instance SAP HANA vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md)
 

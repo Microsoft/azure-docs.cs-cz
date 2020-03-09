@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9d8c5f98cfd8b4b3831bcbd7e65285f93e6c323f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 0743499b019bd1c7b985636e886eee9352284a55
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441948"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616073"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Integrace služeb Azure Kubernetes Services s využitím Security Center (Preview)
 Služba Azure Kubernetes Service (AKS) je spravovaná služba Microsoftu pro vývoj, nasazování a správu kontejnerových aplikací. 
@@ -45,7 +45,7 @@ Používání těchto dvou služeb nabízí:
     * Nezpracované události zabezpečení, jako jsou například síťové údaje a vytváření procesů
     * Protokol auditu Kubernetes
 
-    Další informace najdete v tématu [detekce hrozeb pro kontejnery Azure](security-center-alerts-compute.md#azure-containers-) .
+    Další informace najdete v tématu [Ochrana před hrozbami pro kontejnery Azure](threat-protection.md#azure-containers) .
 
     Seznam možných výstrah najdete v těchto částech v tabulce referenčních informací o výstrahách: [AKS výstrahy na úrovni clusteru](alerts-reference.md#alerts-akscluster) a [výstrahy na úrovni hostitele kontejneru](alerts-reference.md#alerts-containerhost).  
 

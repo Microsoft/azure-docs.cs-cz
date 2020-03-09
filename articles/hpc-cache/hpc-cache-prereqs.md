@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: rohogue
 ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651062"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388246"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 

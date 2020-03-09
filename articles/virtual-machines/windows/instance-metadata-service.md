@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: ab4569860d24a397816aa2e6c92f2e90f9a14ed1
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526531"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615941"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -104,7 +104,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Ve výchozím nastavení Instance Metadata Service vrátí data ve formátu JSON (`Content-Type: application/json`). V případě potřeby ale jiná rozhraní API vrací data v různých formátech.
 Následující tabulka je odkazem na jiné rozhraní API datových formátů, které může podporovat.
 
-API | Výchozí formát dat | Jiné formáty
+Rozhraní API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
 /instance | json | text
 /scheduledevents | json | Žádná
@@ -134,6 +134,7 @@ Stavový kód HTTP | Důvod
 400 Chybný požadavek | Chybějící záhlaví `Metadata: true` nebo chybějící formát při dotazování na uzel typu list
 404 Nenalezeno | Požadovaný element neexistuje.
 Metoda 405 není povolená. | Podporují se jenom `GET` požadavky.
+410 pryč | Opakovat po uplynutí určité doby na maximum 70 sekund
 429 příliš mnoho požadavků | Rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu.
 Chyba služby 500     | Zkusit znovu za chvíli
 
@@ -457,7 +458,7 @@ identita | Spravované identity pro prostředky Azure. Viz [získání přístup
 instance | Viz [rozhraní API instance](#instance-api) | 2017-04-02
 scheduledevents | Viz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>Rozhraní API instance
+### <a name="instance-api"></a>Rozhraní API instance
 
 V rozhraní API instance jsou k dispozici následující výpočetní kategorie:
 
@@ -468,12 +469,12 @@ Data | Popis | Představená verze
 -----|-------------|-----------------------
 azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 customData | Tato funkce je teď zakázaná a my tuto dokumentaci aktualizujeme, až bude dostupná. | 2019-02-01
-umístění | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
+location | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
 name | Název virtuálního počítače | 2017-04-02
 offer | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
-rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
+Rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
 platformUpdateDomain |  [Aktualizujte doménu](manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
 Zprostředkovatel | Poskytovatel virtuálního počítače | 2018-10-01
@@ -486,7 +487,7 @@ storageProfile | Viz [profil úložiště](#storage-profile) | 2019-06-01
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
 značek | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
 tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
-Verze nástroje | Verze image virtuálního počítače | 2017-04-02
+version | Verze image virtuálního počítače | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
 vmScaleSetName | [Název sady škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
 vmSize | [Velikost virtuálního počítače](sizes.md) | 2017-04-02
@@ -570,7 +571,6 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, 
 
 Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, SKU, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu obrázku. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 
-
 ## <a name="example-scenarios-for-usage"></a>Příklady scénářů použití  
 
 ### <a name="tracking-vm-running-on-azure"></a>Sledování virtuálního počítače spuštěného v Azure
@@ -589,7 +589,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Umístění kontejnerů do domény selhání nebo aktualizační domény založené na datových oddílech 
+### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Umístění kontejnerů do domény selhání nebo aktualizační domény založené na datových oddílech
 
 V některých scénářích je umístění různých replik dat primárním významem. Například [umístění repliky HDFS](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) nebo umístění kontejneru přes [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) vám může vyžadovat, abyste věděli `platformFaultDomain` a `platformUpdateDomain`, na kterém je virtuální počítač spuštěný.
 K provedení těchto rozhodnutí můžete použít také [zóny dostupnosti](../../availability-zones/az-overview.md) pro instance.
@@ -609,7 +609,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 ### <a name="getting-more-information-about-the-vm-during-support-case"></a>Získání dalších informací o virtuálním počítači pro případ podpory
 
-Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli získat další informace o virtuálním počítači. Dotazování zákazníků na sdílení výpočetních metadat může poskytnout základní informace o tom, že profesionální pracovník podpory ví o typu virtuálního počítače v Azure. 
+Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli získat další informace o virtuálním počítači. Dotazování zákazníků na sdílení výpočetních metadat může poskytnout základní informace o tom, že profesionální pracovník podpory ví o typu virtuálního počítače v Azure.
 
 **Požadavek**
 
@@ -823,7 +823,7 @@ Verification successful
 Data | Popis
 -----|------------
 nonce | Uživatel zadal nepovinný řetězec s požadavkem. Pokud se v požadavku nezadala hodnota nonce, vrátí se aktuální časové razítko UTC.
-rozhraní | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
+Rozhraní | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
 časové razítko/createdOn | Časové razítko UTC, na kterém byl vytvořen první podepsaný dokument
 časové razítko/expiresOn | Časové razítko UTC, na kterém vyprší platnost podepsaného dokumentu
 vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
@@ -839,10 +839,12 @@ Jakmile získáte podpis výše, můžete ověřit, že signatura pochází od M
 
  Cloud | Certifikát
 ---------|-----------------
-[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure Čína 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure Čína 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+Došlo k známému problému kolem certifikátu použitého k podepsání. Certifikáty nemusí mít přesnou shodu `metadata.azure.com` pro veřejný cloud. Ověřování certifikace by proto mělo umožňovat běžný název z jakékoli `.metadata.azure.com` subdomény.
 
 ```bash
 
@@ -919,7 +921,7 @@ id      | ID prostředku
 offer   | Nabídka platformy nebo Image Marketplace
 publisher | Vydavatel obrázku
 skj     | SKU image
-Verze nástroje | Verze image platformy nebo webu Marketplace
+version | Verze image platformy nebo webu Marketplace
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 

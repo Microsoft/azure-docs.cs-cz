@@ -3,8 +3,8 @@ title: SKU pro SAP HANA v Azure (velké instance) | Microsoft Docs
 description: SKU pro SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f31d742dc78e16d4786216259a8fce5349152c63
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: aad4e3ff3df8b4aeecbbbee7883ba383b9fd0d9c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591247"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617267"
 ---
 # <a name="available-skus-for-hli"></a>Dostupné skladové položky pro HLI
 
 Služba SAP HANA v Azure (velké instance) založené na revizi 3 razítka je k dispozici v několika konfiguracích v oblastech Azure v nástroji:
 
-- USA – západ
+- Západní USA
 - USA – východ
 - Austrálie – východ
 - Austrálie – jihovýchod
@@ -35,9 +35,9 @@ Služba SAP HANA v Azure (velké instance) založené na revizi 3 razítka je k 
 
 SAP HANA v Azure (velké instance) založené na razítkech revize 4 jsou k dispozici v několika konfiguracích v oblastech Azure v:
 
-- USA – západ 2
+- Západní USA 2
 - USA – východ
-- USA – středojih
+- Střed USA – jih
 - Západní Evropa
 - Severní Evropa
 

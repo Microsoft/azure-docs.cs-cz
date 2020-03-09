@@ -3,22 +3,22 @@ title: Provozní model SAP HANA v Azure (velké instance) | Microsoft Docs
 description: Provozní model SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a8ea845dd53048766abc337a1351a408ea7f1bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e147e4a5f104ca4cd1a10a776c907e3f9f1d6128
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099696"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616975"
 ---
 # <a name="operations-model-and-responsibilities"></a>Provozní model a zodpovědnosti
 
@@ -32,15 +32,15 @@ Tato služba je optimalizovaná pro SAP HANA, takže existují oblasti, ve kter�
 
 Následující seznam poskytuje další podrobnosti o každé z vrstev a jejich zodpovědnosti:
 
-**Síťové služby**: Všechny interní sítě pro označení velkých instancí, na kterých běží SAP HANA. Vaše zodpovědnost zahrnuje přístup k úložišti, připojení mezi instancemi (pro škálování a další funkce), připojení k krajině a připojení k Azure, kde je aplikační vrstva SAP hostovaná na virtuálních počítačích. Zahrnuje taky připojení WAN mezi datovými centry Azure a replikací pro účely zotavení po havárii. Všechny sítě jsou rozdělené do oddílů v rámci tenanta a jsou použité kvalitní služby.
+**Sítě**: všechny interní sítě pro označení velkých instancí, na kterých běží SAP HANA. Vaše zodpovědnost zahrnuje přístup k úložišti, připojení mezi instancemi (pro škálování a další funkce), připojení k krajině a připojení k Azure, kde je aplikační vrstva SAP hostovaná na virtuálních počítačích. Zahrnuje taky připojení WAN mezi datovými centry Azure a replikací pro účely zotavení po havárii. Všechny sítě jsou rozdělené do oddílů v rámci tenanta a jsou použité kvalitní služby.
 
-**Úložiště**: Virtualizované dělené úložiště pro všechny svazky, které jsou potřeba pro SAP HANA servery, i pro snímky. 
+**Storage**: virtualizované dělené úložiště pro všechny svazky, které potřebuje servery SAP Hana a také pro snímky. 
 
-**Servery**: Vyhrazené fyzické servery spouštějí SAP HANA databáze přiřazené klientům. Servery typu třída SKU jsou hardware abstraktní. U těchto typů serverů je konfigurace serveru shromažďována a udržována v profilech, které lze přesunout z jednoho fyzického hardwaru na jiný fyzický hardware. Takovým (ručním) Přesunutí profilu podle operací se dá porovnat s bitem Azure Service retušovací. Servery SKU třídy Type II nenabízejí takovou schopnost.
+**Servery**: vyhrazené fyzické servery spouštějí SAP HANA databáze přiřazené klientům. Servery typu třída SKU jsou hardware abstraktní. U těchto typů serverů je konfigurace serveru shromažďována a udržována v profilech, které lze přesunout z jednoho fyzického hardwaru na jiný fyzický hardware. Takovým (ručním) Přesunutí profilu podle operací se dá porovnat s bitem Azure Service retušovací. Servery SKU třídy Type II nenabízejí takovou schopnost.
 
-**SDDC**: Software pro správu, který se používá ke správě datových center jako entit definovaných softwarem. Umožňuje Microsoftu sdružování prostředků do fondů pro účely škálování, dostupnosti a výkonu.
+**SDDC**: software pro správu, který se používá ke správě datových center jako entit definovaných softwarem. Umožňuje Microsoftu sdružování prostředků do fondů pro účely škálování, dostupnosti a výkonu.
 
-**O/S**: Zvolený operační systém (SUSE Linux nebo Red Hat Linux), který běží na serverech. Bitové kopie operačního systému, které jste zadali, poskytl jednotliví dodavatel pro Linux Microsoftu pro spouštění SAP HANA. Pro konkrétní SAP HANA optimalizované bitové kopie musíte mít předplatné s dodavatelem systému Linux. Zodpovídáte za registraci imagí s dodavatelem operačního systému. 
+**O/S**: zvolený operační systém (SUSE Linux nebo Red Hat Linux), který běží na serverech. Bitové kopie operačního systému, které jste zadali, poskytl jednotliví dodavatel pro Linux Microsoftu pro spouštění SAP HANA. Pro konkrétní SAP HANA optimalizované bitové kopie musíte mít předplatné s dodavatelem systému Linux. Zodpovídáte za registraci imagí s dodavatelem operačního systému. 
 
 Od předají od Microsoftu zodpovídáte za všechny další opravy operačního systému Linux. Tato oprava zahrnuje další balíčky, které mohou být nezbytné k úspěšné instalaci SAP HANA a které nebyly součástí konkrétního dodavatele pro Linux ve svých SAP HANA optimalizovaných bitových kopiích operačního systému. (Další informace najdete v dokumentaci k instalaci SAP na HANA a poznámky ke službě SAP.) 
 
@@ -55,17 +55,17 @@ Vaše zodpovědnost zahrnuje i plánování monitorování a kapacity:
 
 Základní infrastruktura velké instance HANA poskytuje funkce pro zálohování a obnovení svazku s operačním systémem. Používání této funkce je zároveň zodpovědností.
 
-**Middleware**: Instance SAP HANA, primárně. Vaše zodpovědnost za správu, provoz a monitorování. Pomocí poskytované funkce můžete používat snímky úložiště pro účely zálohování a obnovení a zotavení po havárii. Tyto možnosti poskytuje infrastruktura. Mezi vaše zodpovědnosti patří i návrh vysoké dostupnosti nebo zotavení po havárii s těmito možnostmi, jejich využití a monitorování, aby bylo možné zjistit, jestli se snímky úložiště úspěšně provedly.
+**Middleware**: instance SAP HANA, primárně. Vaše zodpovědnost za správu, provoz a monitorování. Pomocí poskytované funkce můžete používat snímky úložiště pro účely zálohování a obnovení a zotavení po havárii. Tyto možnosti poskytuje infrastruktura. Mezi vaše zodpovědnosti patří i návrh vysoké dostupnosti nebo zotavení po havárii s těmito možnostmi, jejich využití a monitorování, aby bylo možné zjistit, jestli se snímky úložiště úspěšně provedly.
 
-**Data**: Data spravovaná pomocí SAP HANA a další data, jako jsou například soubory zálohy umístěné ve svazcích nebo sdílených složkách souborů. Mezi vaše zodpovědnosti patří monitorování volného místa na disku a Správa obsahu na svazcích. Zodpovídáte také za monitorování úspěšného provedení zálohování svazků disku a snímků úložiště. Úspěšné spuštění replikace dat do lokalit pro zotavení po havárii je zodpovědností společnosti Microsoft.
+**Data**: data spravovaná pomocí SAP Hana a další data, jako jsou například soubory zálohy umístěné ve svazcích nebo sdílených složkách souborů. Mezi vaše zodpovědnosti patří monitorování volného místa na disku a Správa obsahu na svazcích. Zodpovídáte také za monitorování úspěšného provedení zálohování svazků disku a snímků úložiště. Úspěšné spuštění replikace dat do lokalit pro zotavení po havárii je zodpovědností společnosti Microsoft.
 
-**Vyrovnání** Instance aplikace SAP nebo, v případě aplikací pro jiné než SAP, aplikační vrstva těchto aplikací. Mezi vaše zodpovědnosti patří nasazení, Správa, operace a monitorování těchto aplikací. Zodpovídáte za plánování kapacity spotřeby prostředků procesoru, spotřeby paměti, Azure Storage spotřeby a využití šířky pásma sítě v rámci virtuálních sítí. Zodpovídáte také za plánování kapacity pro využití prostředků z virtuálních sítí, která se SAP HANA v Azure (velké instance).
+**Aplikace:** Instance aplikace SAP nebo, v případě aplikací pro jiné než SAP, aplikační vrstva těchto aplikací. Mezi vaše zodpovědnosti patří nasazení, Správa, operace a monitorování těchto aplikací. Zodpovídáte za plánování kapacity spotřeby prostředků procesoru, spotřeby paměti, Azure Storage spotřeby a využití šířky pásma sítě v rámci virtuálních sítí. Zodpovídáte také za plánování kapacity pro využití prostředků z virtuálních sítí, která se SAP HANA v Azure (velké instance).
 
-Sítě **WAN**: Připojení, která jste navázali z místního nasazení do Azure, pro úlohy. Všichni zákazníci s velkou instancí HANA používají pro připojení Azure ExpressRoute. Toto připojení není součástí SAP HANA v řešení Azure (velké instance). Zodpovídáte za nastavení tohoto připojení.
+**WAN**: připojení, která jste navázali z místního nasazení do Azure, pro úlohy. Všichni zákazníci s velkou instancí HANA používají pro připojení Azure ExpressRoute. Toto připojení není součástí SAP HANA v řešení Azure (velké instance). Zodpovídáte za nastavení tohoto připojení.
 
-**Archiv**: Je možné, že budete chtít archivovat kopie dat pomocí vlastních metod v účtech úložiště. Archivace vyžaduje správu, dodržování předpisů, náklady a operace. Zodpovídáte za generování archivovaných kopií a záloh v Azure a jejich uložení v souladu s vyhovujícím způsobem.
+**Archivace**: možná budete chtít archivovat kopie dat pomocí vlastních metod v účtech úložiště. Archivace vyžaduje správu, dodržování předpisů, náklady a operace. Zodpovídáte za generování archivovaných kopií a záloh v Azure a jejich uložení v souladu s vyhovujícím způsobem.
 
 Podívejte se na [smlouvu SLA pro SAP HANA v Azure (velké instance)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/).
 
-**Další postup**
+**Další kroky**
 - Informace [o architektuře SAP Hana (velké instance) v Azure](hana-architecture.md)

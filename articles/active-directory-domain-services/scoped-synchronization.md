@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704387"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613041"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurace vymezené synchronizace z Azure AD na Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ Když Azure Portal ukáže, že se dokončilo zřizování spravované domény A
 
 Pokud chcete upravit seznam skupin, jejichž uživatelé by se měli synchronizovat do spravované domény Azure služba AD DS, proveďte následující kroky:
 
-1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte svou instanci, například *aadds.contoso.com*.
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte svou instanci, například *aaddscontoso.com*.
 1. V nabídce na levé straně vyberte **synchronizace** .
 1. Chcete-li přidat skupinu, zvolte možnost **+ Vybrat skupiny** v horní části a pak zvolte skupiny, které chcete přidat.
 1. Chcete-li odebrat skupinu z oboru synchronizace, vyberte ji ze seznamu aktuálně synchronizovaných skupin a zvolte možnost **odebrat skupiny**.
@@ -82,7 +82,7 @@ Změna rozsahu synchronizace způsobí, že doména spravovaná službou Azure s
 
 Pokud chcete zakázat synchronizaci s rozsahem na základě skupin pro spravovanou doménu Azure služba AD DS, proveďte následující kroky:
 
-1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte svou instanci, například *aadds.contoso.com*.
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte svou instanci, například *aaddscontoso.com*.
 1. V nabídce na levé straně vyberte **synchronizace** .
 1. Nastavte obor synchronizace z **oboru** na **vše**a pak vyberte **Uložit rozsah synchronizace**.
 
@@ -194,11 +194,11 @@ K dokončení této sady kroků použijte PowerShell. Informace o [povolení Azu
 
 1. Teď vytvořte spravovanou doménu Azure služba AD DS a povolte synchronizaci vymezenou na základě skupin. Do parametru *-Properties* zahrňte *"filteredSync" = "Enabled* ".
 
-    Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aadds.contoso.com*. ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] . Nastavte název skupiny prostředků, název virtuální sítě a oblast na hodnoty použité v předchozích krocích k vytvoření podpůrných prostředků Azure:
+    Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aaddscontoso.com*. ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] . Nastavte název skupiny prostředků, název virtuální sítě a oblast na hodnoty použité v předchozích krocích k vytvoření podpůrných prostředků Azure:
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "aadds.contoso.com"
+   $ManagedDomainName = "aaddscontoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"

@@ -10,11 +10,11 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434581"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393962"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Kurz: nastavení zařízení pro zřízení pomocí IoT Hub Device Provisioning Service Azure
 
@@ -34,7 +34,7 @@ Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
@@ -121,7 +121,7 @@ V závislosti na tom, jestli jste sestavili sadu SDK, aby používala ověřová
       > [!NOTE]
       > Pokud pro tento krok používáte příkazový řádek Git Bash, budete muset změnit zpětná lomítka na lomítka – například: `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
 
-   1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+   1. Pomocí sady Visual Studio otevřete řešení *vygenerované ve složce*cmake`azure_iot_sdks.sln` a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
 
    1. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. 
 
@@ -129,7 +129,7 @@ V závislosti na tom, jestli jste sestavili sadu SDK, aby používala ověřová
 
 - Simulované zařízení X.509:
 
-  1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+  1. Pomocí sady Visual Studio otevřete řešení *vygenerované ve složce*cmake`azure_iot_sdks.sln` a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
 
   1. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **dice\_device\_enrollment** a vyberte **Nastavit jako spouštěný projekt**. 
   

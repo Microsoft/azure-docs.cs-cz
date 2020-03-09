@@ -3,18 +3,18 @@ title: Nasazení více instancí prostředků
 description: K nasazení typu prostředku mnohokrát použijte operaci kopírování a pole v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210824"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620219"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Iterace prostředků v šablonách Azure Resource Manager
 
 V tomto článku se dozvíte, jak vytvořit v šabloně Azure Resource Manager více než jednu instanci prostředku. Přidáním prvku **kopírování** do části Resources (prostředky) vaší šablony můžete dynamicky nastavit počet nasazených prostředků. Nemusíte se také vyhnout opakování syntaxe šablony.
 
-Můžete také použít kopírování s [vlastnostmi](copy-properties.md) a [proměnnými](copy-variables.md).
+Můžete také použít příkaz Kopírovat s [vlastnostmi](copy-properties.md), [proměnnými](copy-variables.md) a [výstupy](copy-outputs.md).
 
 Pokud potřebujete určit, jestli je prostředek nasazený vůbec, viz [Podmínka elementu](conditional-resource-deployment.md).
 
@@ -130,6 +130,8 @@ Následující příklad vytvoří jeden účet úložiště pro každý název 
   "outputs": {}
 }
 ```
+
+Pokud chcete vrátit hodnoty z nasazených prostředků, můžete použít příkaz [Kopírovat v části výstupy](copy-outputs.md).
 
 ## <a name="serial-or-parallel"></a>Sériové nebo paralelní
 
@@ -268,7 +270,7 @@ Pomocí [úplného nasazení režimu](deployment-modes.md) s kopírováním buď
 
 Následující příklady znázorňují běžné scénáře pro vytvoření více než jedné instance prostředku nebo vlastnosti.
 
-|Šablony  |Popis  |
+|Šablona  |Popis  |
 |---------|---------|
 |[Kopírovat úložiště](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Nasadí více než jeden účet úložiště s číslem indexu v názvu. |
 |[Úložiště sériového kopírování](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Nasadí několik účtů úložiště v jednom okamžiku. Název zahrnuje číslo indexu. |
@@ -279,7 +281,10 @@ Následující příklady znázorňují běžné scénáře pro vytvoření víc
 ## <a name="next-steps"></a>Další kroky
 
 * Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Správce prostředků](template-tutorial-create-multiple-instances.md).
-* Pro jiné použití kopie elementu, viz [iterace vlastnosti v Azure Resource Manager šablony](copy-properties.md) a [iterace proměnných v šablonách Azure Resource Manager](copy-variables.md).
+* Pro jiné použití kopie elementu viz:
+  * [Iterace vlastnosti v šablonách Azure Resource Manager](copy-properties.md)
+  * [Iterace proměnné v šablonách Azure Resource Manager](copy-variables.md)
+  * [Výstupní iterace v šablonách Azure Resource Manager](copy-outputs.md)
 * Informace o použití kopírování s vnořenými šablonami naleznete v tématu [using Copy](linked-templates.md#using-copy).
 * Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření Azure Resource Manager šablon](template-syntax.md).
 * Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](deploy-powershell.md).

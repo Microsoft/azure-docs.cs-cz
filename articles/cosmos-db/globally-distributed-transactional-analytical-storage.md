@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445409"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623383"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globálně distribuované transakční a analytické úložiště pro kontejnery Azure Cosmos
 
@@ -29,8 +29,8 @@ Transakční modul úložiště je zálohovaný místními SSD, zatímco analyti
 
 |Funkce  |Transakční úložiště  |Analytické úložiště |
 |---------|---------|---------|
-|Maximální velikost úložiště na jeden kontejner Azure Cosmos |   Neomezený počet      |    Neomezený počet     |
-|Maximální velikost úložiště na klíč logického oddílu   |   10 GB      |   Neomezený počet      |
+|Maximální velikost úložiště na jeden kontejner Azure Cosmos |   Neomezeno      |    Neomezeno     |
+|Maximální velikost úložiště na klíč logického oddílu   |   20 GB      |   Neomezeno      |
 |Kódování úložiště  |   Řádky orientované pomocí interního formátu.   |   Sloupce orientované pomocí formátu Apache Parquet. |
 |Místní úložiště |   Replikované úložiště, které je založené na místním/souběžném clusteru SSD. |  Replikované úložiště zajištěné nenáročným vzdáleným/vypnutým clusterem SSD.       |
 |Stálost  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |

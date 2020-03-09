@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931236"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612518"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services (Preview)
 
@@ -89,7 +89,7 @@ Pokud chcete nakonfigurovat příchozí vztah důvěryhodnosti v místní domén
    > [!NOTE]
    > Pokud nevidíte možnost nabídky **důvěryhodnosti** , zkontrolujte v části **vlastnosti** pro *Typ doménové struktury*. Vztahy důvěryhodnosti můžou vytvářet jenom doménové struktury *prostředků* . Pokud je typem doménové struktury *uživatel*, nemůžete vytvořit vztahy důvěryhodnosti. V současné době neexistuje způsob, jak změnit typ doménové struktury spravované domény Azure služba AD DS. Je nutné odstranit a znovu vytvořit spravovanou doménu jako doménovou strukturu prostředků.
 
-1. Do pole název domény pro Azure služba AD DS zadejte název, jako je třeba *aadds.contoso.com*, a potom vyberte **Další** .
+1. Do pole název domény pro Azure služba AD DS zadejte název, jako je třeba *aaddscontoso.com*, a potom vyberte **Další** .
 1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury**a pak vytvořte **jednosměrné: příchozí** vztah důvěryhodnosti.
 1. Vyberte, chcete-li vytvořit vztah důvěryhodnosti **pouze pro tuto doménu**. V dalším kroku vytvoříte vztah důvěryhodnosti v Azure Portal pro spravovanou doménu Azure služba AD DS.
 1. Zvolte možnost použití **ověřování v rámci doménové struktury**a pak zadejte a potvrďte heslo vztahu důvěryhodnosti. Stejné heslo je také zadáno v Azure Portal v další části.
@@ -102,7 +102,7 @@ S místní doménou služba AD DS nakonfigurovanou pro přeložení spravované 
 
 Pokud chcete vytvořit odchozí vztah důvěryhodnosti pro spravovanou doménu Azure služba AD DS v Azure Portal, proveďte následující kroky:
 
-1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**a pak vyberte spravovanou doménu, například *aadds.contoso.com* .
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**a pak vyberte spravovanou doménu, například *aaddscontoso.com* .
 1. V nabídce na levé straně spravované domény Azure služba AD DS vyberte **vztahy důvěryhodnosti**a pak zvolte **Přidat** vztah důvěryhodnosti.
 1. Zadejte zobrazovaný název, který identifikuje vaši důvěryhodnost, a pak místní název DNS důvěryhodné doménové struktury, například *OnPrem.contoso.com* .
 1. Zadejte stejné heslo vztahu důvěryhodnosti, které bylo použito při konfiguraci vztahu důvěryhodnosti příchozí doménové struktury pro místní služba AD DS domény v předchozí části.
@@ -194,7 +194,7 @@ Pomocí virtuálního počítače s Windows serverem připojeného k doménové 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ověření ověřování mezi doménovými strukturami v prostředku
 
 1. Přihlaste se k počítači s Windows připojenému k místní službě Active Directory pomocí uživatelského účtu z vaší místní služby Active Directory.
-1. Pomocí **Průzkumníka Windows**se připojte ke sdílené složce, kterou jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené složky, jako je `\\fs1.aadds.contoso.com\CrossforestShare`.
+1. Pomocí **Průzkumníka Windows**se připojte ke sdílené složce, kterou jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené složky, jako je `\\fs1.aaddscontoso.com\CrossforestShare`.
 1. Chcete-li ověřit oprávnění k zápisu, ve složce klikněte pravým tlačítkem myši, vyberte možnost **Nový**a pak vyberte možnost **textový dokument**. Použijte výchozí název **nový textový dokument**.
 
     Pokud jsou oprávnění k zápisu nastavena správně, je vytvořen nový textový dokument. Následující kroky pak otevřou, upraví a odstraní soubor podle potřeby.

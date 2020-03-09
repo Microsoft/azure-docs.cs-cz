@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f0ad8d503b5280b8cba89d940b99dcd81da71ffc
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593343"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893204"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -384,7 +384,7 @@ Doporučené nastavení:
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 a novější | 0777 |
 
-Pokud používáte cluster s Kuberetes verze 1.8.5 nebo vyšší a dynamicky vytváříte trvalý svazek s třídou úložiště, můžete v objektu třídy úložiště zadat možnosti připojení. Následující příklad nastaví *0777*:
+Pokud používáte cluster s Kubernetes verze 1.8.5 nebo vyšší a dynamicky vytváříte trvalý svazek s třídou úložiště, můžete v objektu třídy úložiště zadat možnosti připojení. Následující příklad nastaví *0777*:
 
 ```yaml
 kind: StorageClass
@@ -491,6 +491,10 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 Tato chyba je způsobená nepodmíněným konfliktem automatického škálování clusteru, kde automatické škálování clusteru končí jinou hodnotou, než je ta, která je ve skutečnosti v clusteru. Pokud se chcete dostat z tohoto stavu, stačí zakázat a znovu povolit [Automatické škálování clusteru][cluster-autoscaler].
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Pomalé přílohy disku, GetAzureDiskLun trvá 10 až 15 minut a zobrazí se chyba.
+
+U verzí Kubernetes **starších než 1.15.0** se může zobrazit chyba, jako je například **Error WaitForAttach. pro disk nelze najít logickou jednotku (LUN)** .  Alternativním řešením pro tuto operaci je počkat přibližně 15 minut a opakovat akci.
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

@@ -4,12 +4,12 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 813a13739020bed839cc389897704395c77a322d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586491"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614374"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
 
@@ -24,7 +24,7 @@ Chcete-li úspěšně zaregistrovat server aplikace DPM pomocí Azure Backup, je
 >
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](backup-azure-dpm-introduction.md#prerequisites-and-limitations) pro použití Microsoft Azure Backup k ochraně úloh. Mezi tyto požadavky patří následující:
 
@@ -38,8 +38,8 @@ Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](b
 
 Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujte podle následujících kroků:
 
-1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
-2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > instalaci** v konzola správce aplikace DPM. Podrobné pokyny najdete v tématu [instalace agenta ochrany aplikace DPM](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) .
+1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > instalaci** v konzola správce aplikace DPM. Podrobné pokyny najdete v tématu [instalace agenta ochrany aplikace DPM](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
 
@@ -62,7 +62,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 
    * Chci krátkodobou ochranu pomocí disku.
    * Chci online ochranu.
-6. Klikněte na **Další**.
+6. Klikněte na **Další**.
 7. Zaškrtněte možnost **Spustit Eseutil pro kontrolu integrity dat** , pokud chcete ověřit integritu databází serveru Exchange.
 
     Po výběru této možnosti se kontrola konzistence zálohy spustí na serveru DPM, aby se zabránilo vstupně-výstupnímu přenosu generovanému spuštěním příkazu **eseutil** na serveru Exchange.
@@ -72,7 +72,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
    > ![Chyba programu Eseutil](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Klikněte na **Další**.
+8. Klikněte na **Další**.
 9. Vyberte databázi pro **zálohování kopírováním**a pak klikněte na **Další**.
 
    > [!NOTE]

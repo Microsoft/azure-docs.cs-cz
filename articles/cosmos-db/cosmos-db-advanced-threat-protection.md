@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445530"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614834"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)
 
@@ -49,7 +49,7 @@ Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB detekuje a
 3. V okně **Upřesnit konfiguraci zabezpečení** :
 
     * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** a nastavte ji na **zapnuto**.
-    * Klikněte na **Uložit** a uložte nové nebo aktualizované zásady Advanced Threat Protection.   
+    * Kliknutím na **Uložit** uložte nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky.   
 
 ### <a name="set-up-atp-using-rest-api"></a>Nastavení ATP pomocí REST API
 
@@ -105,7 +105,7 @@ E-mailové oznámení se také pošle s podrobnostmi výstrahy a doporučenými 
 
 ## <a name="cosmos-db-atp-alerts"></a>Výstrahy ATP Cosmos DB
 
- Pokud chcete zobrazit seznam výstrah generovaných při monitorování účtů Azure Cosmos DB, přečtěte si část [Cosmos DB výstrahy](../security-center/security-center-alerts-data-services.md#cosmos-db) v dokumentaci k Security Center.
+ Pokud chcete zobrazit seznam výstrah generovaných při monitorování účtů Azure Cosmos DB, přečtěte si část [Cosmos DB výstrahy](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) v dokumentaci k Azure Security Center.
 
 ## <a name="next-steps"></a>Další kroky
 

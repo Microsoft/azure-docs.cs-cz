@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování úloh DPM
 description: Naučte se nasazovat a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí PowerShellu.
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 06c138a4015a0b730369e091fc57a34d2190051d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583091"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616735"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 
@@ -234,7 +234,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 V této části přidáte do DPM provozní server a pak data ochráníte do místního úložiště DPM a pak na Azure Backup. V příkladech ukážeme, jak zálohovat soubory a složky. Logika se dá snadno rozšířit na zálohování libovolného zdroje dat podporovaného aplikací DPM. Všechny zálohy aplikace DPM se řídí skupinou ochrany (PG) se čtyřmi částmi:
 
-1. **Členové skupiny** jsou seznam všech chráněných objektů (označovaných také jako *zdroje dat* v aplikaci DPM), které chcete chránit ve stejné skupině ochrany. Například můžete chtít chránit produkční virtuální počítače v jedné skupině ochrany a SQL Server databáze v jiné skupině ochrany, protože mohou mít různé požadavky na zálohování. Než budete moct zálohovat jakýkoli zdroj dat na provozním serveru, musíte se ujistit, že je na serveru nainstalovaný agent DPM a spravuje ho DPM. Postupujte podle kroků pro [instalaci agenta DPM](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10)) a jeho propojení s příslušným serverem DPM.
+1. **Členové skupiny** jsou seznam všech chráněných objektů (označovaných také jako *zdroje dat* v aplikaci DPM), které chcete chránit ve stejné skupině ochrany. Například můžete chtít chránit produkční virtuální počítače v jedné skupině ochrany a SQL Server databáze v jiné skupině ochrany, protože mohou mít různé požadavky na zálohování. Než budete moct zálohovat jakýkoli zdroj dat na provozním serveru, musíte se ujistit, že je na serveru nainstalovaný agent DPM a spravuje ho DPM. Postupujte podle kroků pro [instalaci agenta DPM](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) a jeho propojení s příslušným serverem DPM.
 2. **Metoda ochrany dat** Určuje cílové umístění zálohy – páska, disk a Cloud. V našem příkladu budeme chránit data na místní disk a do cloudu.
 3. **Plán zálohování** , který určuje, kdy je potřeba provést zálohování a jak často se mají synchronizovat data mezi serverem DPM a provozním serverem.
 4. **Plán uchovávání informací** , který určuje, jak dlouho mají být body obnovení v Azure uchovávány.

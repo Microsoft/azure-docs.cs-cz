@@ -6,11 +6,11 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465620"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389847"
 ---
 # <a name="azure-service-fabric-support-options"></a>Možnosti podpory pro Azure Service Fabric
 

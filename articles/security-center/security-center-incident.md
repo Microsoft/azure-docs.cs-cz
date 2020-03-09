@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: a600b17ce25a467b788671e12e3c2425ad20b809
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 1a6dbaeac5355d50edb93a7f215d7f8e88231e98
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604080"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615970"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Správa incidentů zabezpečení v Azure Security Center
 
@@ -48,14 +48,20 @@ Další informace o výstrahách, [správě a reakci na výstrahy zabezpečení]
 
 Následující témata vás provedou různými výstrahami v závislosti na typech prostředků:
 
-* [Výstrahy IaaS virtuální počítače a servery](security-center-alerts-iaas.md)
-* [Nativní výpočetní výstrahy](security-center-alerts-compute.md)
-* [Výstrahy datových služeb](security-center-alerts-data-services.md)
+* [Výstrahy pro počítače s IaaS s Windows](threat-protection.md#windows-machines)
+* [Výstrahy pro počítače se systémem IaaS Linux](threat-protection.md#linux-machines)
+* [Výstrahy pro Azure App Service](threat-protection.md#app-services)
+* [Výstrahy pro kontejnery Azure](threat-protection.md#azure-containers)
+* [Výstrahy pro SQL Database a SQL Data Warehouse](threat-protection.md#data-sql)
+* [Výstrahy pro Azure Storage](threat-protection.md#azure-storage)
+* [Výstrahy pro Cosmos DB](threat-protection.md#cosmos-db)
 
 Následující témata vysvětlují, jak Security Center používá jinou telemetrii, kterou shromažďuje z integrace s infrastrukturou Azure, aby bylo možné použít další vrstvy ochrany pro prostředky nasazené v Azure:
 
-* [Výstrahy vrstvy služeb](security-center-alerts-service-layer.md)
-* [Detekce hrozeb pro Azure WAF a Azure DDoS Protection](security-center-alerts-integration.md)
+* [Výstrahy pro vrstvu správy Azure (Azure Resource Manager) (Preview)](threat-protection.md#management-layer)
+* [Výstrahy pro Azure Key Vault (Preview)](threat-protection.md#azure-keyvault)
+* [Výstrahy pro síťovou vrstvu Azure](threat-protection.md#network-layer)
+* [Výstrahy z jiných služeb](threat-protection.md#alerts-other)
 
 ## <a name="see-also"></a>Viz také
 V tomto dokumentu jste zjistili, jak ve službě Azure Security Center používat funkci incidentů zabezpečení. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
@@ -63,4 +69,3 @@ V tomto dokumentu jste zjistili, jak ve službě Azure Security Center používa
 * [Výstrahy zabezpečení v Azure Security Center](security-center-alerts-overview.md).
 * [Správa výstrah zabezpečení](security-center-managing-and-responding-alerts.md)
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

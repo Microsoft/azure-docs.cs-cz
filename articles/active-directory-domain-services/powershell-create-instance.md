@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: dddbc15a80fe741b9ad1634aac18cb13819dc235
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ee85002aea962dfa675ac6c09a6bfbaeba8e9e79
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704427"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613237"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolení Azure Active Directory Domain Services pomocí prostředí PowerShell
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak povolit Azure služba AD DS pomocí prostřed�
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Když je vytvořená skupina *AAD DC Administrators* , přidejte uživatele do skupiny pomocí rutiny [Add-AzureADGroupMember][Add-AzureADGroupMember] . Nejprve pomocí rutiny [Get-][Get-AzureADUser] [AzureADGroup][Get-AzureADGroup] Získejte ID objektu skupiny *AAD DC Administrators* a pak ID objektu požadovaného uživatele.
 
-V následujícím příkladu ID objektu uživatele pro účet s UPN `admin@contoso.onmicrosoft.com`. Nahraďte tento uživatelský účet uživatelským jménem uživatele, kterého chcete přidat do skupiny *správců řadiče domény AAD* :
+V následujícím příkladu ID objektu uživatele pro účet s UPN `admin@aaddscontoso.onmicrosoft.com`. Nahraďte tento uživatelský účet uživatelským jménem uživatele, kterého chcete přidat do skupiny *správců řadiče domény AAD* :
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -74,7 +74,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -128,7 +128,7 @@ $Vnet= New-AzVirtualNetwork `
 
 ## <a name="create-an-azure-ad-ds-managed-domain"></a>Vytvoření spravované domény Azure služba AD DS
 
-Nyní vytvoříme Azure služba AD DS spravovanou doménu. Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aadds.contoso.com*. ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] .
+Nyní vytvoříme Azure služba AD DS spravovanou doménu. Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aaddscontoso.com*. ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] .
 
 Pokud zvolíte oblast, která podporuje Zóny dostupnosti, prostředky Azure služba AD DS se rozdělují mezi zóny, aby se mohla zvýšit redundance.
 
@@ -138,7 +138,7 @@ Není tu nic, co byste mohli nakonfigurovat pro Azure služba AD DS k distribuci
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "aadds.contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
@@ -167,12 +167,12 @@ Následující dokončený skript PowerShellu kombinuje všechny úlohy, které 
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@aaddscontoso.onmicrosoft.com"
 $ResourceGroupName = "myResourceGroup"
 $VnetName = "myVnet"
 $AzureLocation = "westus"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "aadds.contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Connect to your Azure AD directory.
 Connect-AzureAD
