@@ -16,11 +16,11 @@ ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10caa9e5e61dc1dd0c1062583f55a7357c643ce5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547449"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363989"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal
 
@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure se spravovan
 
 V tomto článku se naučíte, jak pomocí webu Azure Portal vytvořit, vypsat, odstranit nebo přiřadit roli spravované identitě přiřazené uživateli.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -46,7 +46,7 @@ K vytvoření spravované identity přiřazené uživatelem potřebuje váš ú�
    - **Předplatné**: vyberte předplatné, ve kterém chcete vytvořit spravovanou identitu přiřazenou uživatelem.
    - **Skupina prostředků**: Vytvořte novou skupinu prostředků, která bude obsahovat vaši uživatelem přiřazenou spravovanou identitu, nebo vyberte **použít existující** a vytvořte spravovanou identitu přiřazenou uživatelem v existující skupině prostředků.
    - **Umístění**: vyberte umístění pro nasazení spravované identity přiřazené uživatelem, například **západní USA**.
-4. Klikněte na **Vytvořit**.
+4. Klikněte na možnost **Vytvořit**.
 
 ![Vytvoření spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280864"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393853"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Návrh s využitím a modelů entit 
 

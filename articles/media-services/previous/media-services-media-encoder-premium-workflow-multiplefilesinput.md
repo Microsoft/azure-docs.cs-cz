@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015441"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392949"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Použití více vstupních souborů a vlastností komponenty s kodérem Premium
 ## <a name="overview"></a>Přehled
@@ -31,7 +31,7 @@ Existují scénáře, ve kterých může být nutné přizpůsobit vlastnosti ko
 * Překrytí obrázku loga na vstupním videu při kódování videa.
 * Kódování více zvukového jazyka.
 
-Aby **Media Encoder Premium Workflow** věděli, že měníte některé vlastnosti v pracovním postupu při vytváření úlohy nebo odesílání více vstupních souborů, musíte použít konfigurační řetězec, který obsahuje **setRuntimeProperties** a/nebo  **transcodeSource**. V tomto tématu se dozvíte, jak je používat.
+Aby **Media Encoder Premium Workflow** věděli, že měníte některé vlastnosti v pracovním postupu při vytváření úlohy nebo odesílání více vstupních souborů, musíte použít konfigurační řetězec, který obsahuje **setRuntimeProperties** a/nebo **transcodeSource**. V tomto tématu se dozvíte, jak je používat.
 
 ## <a name="configuration-string-syntax"></a>Syntaxe konfiguračního řetězce
 Konfigurační řetězec, který má být nastaven v úloze kódování, používá dokument XML, který vypadá takto:
@@ -97,7 +97,7 @@ Příklad:
 ```
 
 ### <a name="property-with-an-xml-value"></a>Vlastnost s hodnotou XML
-Chcete-li nastavit vlastnost, která očekává hodnotu XML, zapouzdřte `<![CDATA[ and ]]>`pomocí.
+Chcete-li nastavit vlastnost, která očekává hodnotu XML, zapouzdřit pomocí `<![CDATA[ and ]]>`.
 
 Příklad:
 
@@ -131,7 +131,7 @@ Příklad:
 ```
 
 > [!NOTE]
-> Ujistěte se, že nezadáte návratový znak hned po `<![CDATA[`.
+> Ujistěte se, že nevložíte znak návratu hned po `<![CDATA[`.
 
 ### <a name="propertypath-value"></a>hodnota propertyPath
 V předchozích příkladech byl propertyPath "/Media File Input/filename" nebo "/inactiveTimeout" nebo "clipListXml".
@@ -151,7 +151,7 @@ Každý úkol, který odešlete do **Media Encoder Premium Workflow** , vyžaduj
 
 Když odesíláte více mediálních souborů do **Media Encoder Premium Workflow** kodéru, platí následující omezení:
 
-* Všechny mediální soubory musí být ve stejném mediálním *prostředku*. Používání více mediálních prostředků se nepodporuje.
+* Všechny mediální soubory musí být ve stejném *mediálním prostředku*. Používání více mediálních prostředků se nepodporuje.
 * V tomto datovém médiu musíte nastavit primární soubor (v ideálním případě jde o hlavní videosoubor, který kodér požaduje k zpracování).
 * Je nutné předat konfigurační data zahrnující **setRuntimeProperties** a/nebo **transcodeSource** element do procesoru.
   * **setRuntimeProperties** se používá k přepsání vlastnosti FileName nebo jiné vlastnosti v součástech pracovního postupu.
@@ -199,7 +199,7 @@ V pracovním postupu můžete zadat XML seznam klipů za běhu pomocí **transco
   </transcodeRequest>
 ```
 
-Chcete-li zadat/primarySourceFile k použití této vlastnosti k pojmenování výstupních souborů pomocí výrazu ' Expressions ', pak doporučujeme předat XML seznam klipů jako vlastnost *po* vlastnosti/primarySourceFile, aby nedošlo k přepsání seznamu klipů nastavení/primarySourceFile
+Chcete-li zadat/primarySourceFile pro použití této vlastnosti k pojmenování výstupních souborů pomocí výrazu "Expressions", pak doporučujeme předat XML seznam klipů jako vlastnost *po* vlastnosti/primarySourceFile, aby se zabránilo přepsání seznamu klipů nastavením/primarySourceFile.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -269,13 +269,13 @@ S dalším oříznutím přes rám:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Příklad 1: Překrytí obrázku nad videem
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Příklad 1: překrytí obrázku nad videem
 
 ### <a name="presentation"></a>Prezentace
 Vezměte v úvahu příklad, ve kterém chcete překrýt obrázek loga na vstupním videu, když je video zakódované. V tomto příkladu se vstupní video jmenuje "Microsoft_HoloLens_Possibilities_816p24. mp4" a logo má název "logo. png". Proveďte následující kroky:
 
 * Vytvořte prostředek pracovního postupu pomocí souboru pracovního postupu (viz následující příklad).
-* Vytvoření mediálního prostředku, který obsahuje dva soubory: MyInputVideo. mp4 jako primární soubor a MyLogo. png.
+* Vytvořte mediální prostředek, který obsahuje dva soubory: MyInputVideo. mp4 jako primární soubor a MyLogo. png.
 * Odešlete úlohu do procesoru Media Encoder Premium Workflow médií pomocí výše uvedených vstupních assetů a zadejte následující konfigurační řetězec.
 
 Konfigurace:
@@ -299,7 +299,7 @@ V předchozím příkladu je název videosouboru odeslán do komponenty pro vstu
 ### <a name="step-by-step-workflow-creation"></a>Vytváření pracovních postupů krok za krokem
 Tady je postup vytvoření pracovního postupu, který jako vstup používá dva soubory: video a obrázek. Obrázek se překryje nad video.
 
-Otevřete **Návrhář postupu provádění** a vyberte **soubor** > **nový pracovní prostor** > **překódování**.
+Otevřete **Návrhář postupu provádění** a vyberte **soubor** > **nový pracovní prostor** > **přecode podrobný plán**.
 
 Nový pracovní postup ukazuje tři prvky:
 
@@ -358,7 +358,7 @@ Nastavte kodér AAC a vyberte možnost Převod/přednastavení formátu zvuku: 2
 
 *Audio a video kodéry*
 
-Teď přidejte **soubory** multiplexů a výstupů **ISO MPEG-4** a připojte PIN kódy, jak je znázorněno na obrázku.
+Teď přidejte soubory multiplexů a **výstupů** **ISO MPEG-4** a připojte PIN kódy, jak je znázorněno na obrázku.
 
 ![Multiplexor MP4 a výstup souboru](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture16_mp4output.png)
 
@@ -429,9 +429,9 @@ Po dokončení úlohy zobrazí soubor MP4 v výstupním prostředku překryv.
 
 Ukázkový pracovní postup si můžete stáhnout z [GitHubu](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
 
-## <a name="example-2--multiple-audio-language-encoding"></a>Příklad 2: Kódování více jazyků v zvukovém prostředí
+## <a name="example-2--multiple-audio-language-encoding"></a>Příklad 2: kódování více jazyků v zvukovém prostředí
 
-V GitHubu je k dispozici příklad více pracovních postupů [](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding)pro kódování zvukového jazyka.
+V [GitHubu](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding)je k dispozici příklad více pracovních postupů pro kódování zvukového jazyka.
 
 Tato složka obsahuje ukázkový pracovní postup, který lze použít ke kódování souboru MXF na prostředek s více soubory MP4 s více zvukovými stopami.
 
@@ -466,7 +466,7 @@ Pro kódování proveďte následující kroky:
 
 * Kódovaný prostředek bude obsahovat zvukové stopy ve více jazycích a tyto stopy by se měly vybrat v Azure Media Player.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 * [Představujeme Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Jak používat kódování Premium v Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Kódování obsahu na vyžádání pomocí Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
@@ -477,5 +477,5 @@ Pro kódování proveďte následující kroky:
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

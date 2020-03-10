@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894844"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366710"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Správa řadičů zařízení StorSimple
 

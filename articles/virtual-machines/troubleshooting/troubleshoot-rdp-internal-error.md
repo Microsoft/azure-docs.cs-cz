@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918253"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381680"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Dojde k interní chybě při pokusu o připojení k virtuálnímu počítači Azure přes vzdálenou plochu
 
 Tento článek popisuje chybu, která může dojít při pokusu o připojení k virtuálnímu počítači (VM) v Microsoft Azure.
 
 
-## <a name="symptoms"></a>Příznaky
+## <a name="symptoms"></a>Symptomy
 
 Nelze se připojit k virtuálnímu počítači Azure s použitím remote desktop protocol (RDP). Připojení zablokuje v části "Konfigurace vzdálené", nebo se zobrazí následující chybová zpráva:
 

@@ -11,11 +11,11 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373675"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 
@@ -179,7 +179,7 @@ Následující operace objektů BLOB můžou použít zapůjčení ke správě p
 * Objekt BLOB snímku – ID zapůjčení je volitelné, pokud existuje zapůjčení.
 * Kopírovat objekt BLOB – ID zapůjčení je povinné, pokud v cílovém objektu BLOB existuje zapůjčení.
 * Přerušit kopii objektu BLOB – vyžaduje se ID zapůjčení, pokud v cílovém objektu BLOB existuje nekonečné zapůjčení.
-* Operace Lease Blob  
+* Objekt BLOB zapůjčení  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pesimistická souběžnost pro kontejnery
 
@@ -195,11 +195,11 @@ Následující operace kontejneru můžou použít zapůjčení ke správě pesi
 * Nastavení seznamu ACL kontejneru
 * Kontejner zapůjčení  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
-* [Určení hlaviček podmínek pro operace Blob service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Určení podmíněných hlaviček pro operace služby BLOB Service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Kontejner zapůjčení](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Operace Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Objekt BLOB zapůjčení](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-table-storage"></a>Správa souběžnosti v úložišti tabulek
 
@@ -256,7 +256,7 @@ Všimněte si, že operace **vložení nebo nahrazení entit** a **vložení neb
 
 V obecných vývojářích, kteří používají tabulky, by měly při vývoji škálovatelných aplikací spoléhat na optimistickou souběžnost. Pokud je potřeba pesimistické zamykání, můžou při přístupu k tabulkám podniknout vývojáři, kteří přiřadí určený objekt BLOB pro každou tabulku a před tím, než bude v tabulce pracovat, se pokusí o objekt BLOB převzít zapůjčení. Tento přístup vyžaduje aplikaci, aby se zajistilo, že všechny cesty k datům získají zapůjčení před tím, než se v tabulce začne pracovat. Je také potřeba si uvědomit, že minimální doba zapůjčení je 15 sekund, což vyžaduje pečlivou pozornost škálovatelnosti.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Operace s entitami](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -266,9 +266,9 @@ Jedním z scénářů, ve kterých je souběžnost ve frontě ve službě Queuei
 
 Služba front nemá podporu pro optimistickou ani pesimistickou souběžnost a z tohoto důvodu klienti zpracovávající zprávy načtené z fronty mají jistotu, že se zprávy zpracovávají idempotentní způsobem. Pro operace aktualizace, jako je SetQueueServiceProperties, SetQueueMetaData, SetQueueACL a UpdateMessage, se používá poslední strategie zapisovače WINS.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
-* [Rozhraní REST API služby Queue Service](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [REST API služby fronty](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Získat zprávy](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-azure-files"></a>Správa souběžnosti v souborech Azure
@@ -277,7 +277,7 @@ K Souborové službě se dá dostat pomocí dvou různých koncových bodů prot
 
 Když klient SMB otevře soubor pro odstranění, označí soubor jako nedokončený, dokud nebudou všechny ostatní otevřené popisovače protokolu SMB v tomto souboru zavřeny. Když je soubor označený jako čeká na odstranění, všechny operace REST na tomto souboru vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Stavový kód 404 (Nenalezeno) se nevrátí, protože klient SMB může před zavřením souboru odstranit příznak nedokončeného odstranění. Jinými slovy, stavový kód 404 (Nenalezeno) se očekává jenom v případě, že byl soubor odebraný. Všimněte si, že když je soubor ve stavu čekání na odstranění protokolu SMB, nebude zahrnutý do výsledků souborů seznamu. Všimněte si také, že operace odstranění souboru REST a odstranění adresáře REST jsou potvrzeny atomicky a nevedou k nedokončenému stavu odstranění.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Správa zámků souborů](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2e6aeda0e84b11221af110bda738d6d93f258978
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894994"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391139"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Vytvoření připojení typu Site-to-Site na webu Azure Portal
 
@@ -51,7 +51,7 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
 * **Podsíť:** Front-end: 10.1.0.0/24, Back-end: 10.1.1.0/24 (volitelné pro toto cvičení)
 * **Rozsah adres podsítě brány:** 10.1.255.0/27
 * **Název brány virtuální sítě:** VNet1GW
-* **Název veřejné IP adresy:** VNet1GWIP
+* **Název veřejné IP adresy:** VNet1GWpip
 * **Typ sítě VPN:** Založená na trasách
 * **Typ připojení:** Síť Site-to-Site (IPsec)
 * **Typ brány:** Síť VPN
@@ -61,7 +61,7 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
 
 ## <a name="CreatVNet"></a>1. vytvoření virtuální sítě
 
-[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>2. Vytvoření brány VPN
 
@@ -77,7 +77,7 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 * **Podrobnosti Instance > typ brány:** S2S
 * **Podrobnosti Instance > typ sítě VPN:** Založené na trasách
 * **Rozsah adres podsítě Virtual Network > brány:** 10.1.255.0/27
-* **Veřejná IP adresa > název veřejné IP adresy:** VNet1GWIP
+* **Veřejná IP adresa > název veřejné IP adresy:** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -92,7 +92,7 @@ Brána místní sítě obvykle odkazuje na vaše místní umístění. Pro toto 
 
 * **Název:** Site1
 * **Skupina prostředků:** TestRG1
-* **Umístění:** Východní USA
+* **Umístění:** USA – východ
 
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]

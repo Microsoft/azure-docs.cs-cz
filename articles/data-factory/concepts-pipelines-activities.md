@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280742"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386669"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 
@@ -105,14 +105,14 @@ Tady je způsob definice kanálu ve formátu JSON:
 }
 ```
 
-Značka | Popis | Typ | Požaduje se
+Značka | Popis | Typ | Požadováno
 --- | ----------- | ---- | --------
-jméno | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Řetězec | Ano
-description | Určuje text popisující, k čemu se kanál používá. | Řetězec | Ne
-activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Pole | Ano
-parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | Ne
-concurrency | Maximální počet souběžných spuštění kanálu může být. Ve výchozím nastavení neexistuje žádná maximální hodnota. Pokud je dosaženo limitu souběžnosti, další spuštění kanálu budou zařazena do fronty, dokud nebudou dokončeny dříve. | Číslo | Ne 
-Anotac | Seznam značek přidružených k kanálu | Pole | Ne
+name | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | String | Ano
+description | Určuje text popisující, k čemu se kanál používá. | String | Ne
+aktivity | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Pole | Ano
+parametry | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | Ne
+concurrency | Maximální počet souběžných spuštění kanálu může být. Ve výchozím nastavení neexistuje žádná maximální hodnota. Pokud je dosaženo limitu souběžnosti, další spuštění kanálu budou zařazena do fronty, dokud nebudou dokončeny dříve. | Počet | Ne 
+poznámky | Seznam značek přidružených k kanálu | Pole | Ne
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
 Část **activities** může obsahovat definici jedné nebo více aktivit. Existují dva hlavní typy aktivit: aktivity spuštění a aktivity řízení.
@@ -140,14 +140,14 @@ Aktivity spuštění zahrnují aktivity [přesunu dat](#data-movement-activities
 
 Následující tabulka obsahuje popis vlastností v definici aktivity ve formátu JSON:
 
-Značka | Popis | Požaduje se
+Značka | Popis | Požadováno
 --- | ----------- | ---------
-jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li></ul>
+name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li></ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
-type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Ano
+typ | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Ano
 linkedServiceName | Název propojené služby používané aktivitou.<br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. | Ano v případě aktivity HDInsight, dávkové hodnoticí aktivity služby Azure Machine Learning a aktivita uložené procedury <br/><br/>Ne ve všech ostatních případech
 typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
-policy | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost zahrnuje chování při vypršení časového limitu a opakovaných pokusech. Pokud není zadaná, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | Ne
+zásady | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost zahrnuje chování při vypršení časového limitu a opakovaných pokusech. Pokud není zadaná, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | Ne
 dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | Ne
 
 ### <a name="activity-policy"></a>Zásada aktivity
@@ -181,11 +181,11 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 }
 ```
 
-Název JSON | Popis | Povolené hodnoty | Požaduje se
+Název JSON | Popis | Povolené hodnoty | Požadováno
 --------- | ----------- | -------------- | --------
-timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
-retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.
-retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | Ne. Výchozí hodnota je 30 sekund.
+timeout | Určuje časový limit pro spuštění aktivity. | Časový rozsah | Ne. Výchozí hodnota časového limitu je 7 dní.
+retry | Maximální počet opakovaných pokusů. | Celé číslo | Ne. Výchozí hodnota je 0.
+retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Celé číslo | Ne. Výchozí hodnota je 30 sekund.
 secureOutput | Při nastavení vlastnosti na true se výstup aktivity považuje za bezpečný, tzn. že se nezaznamená do monitorování. | Logická hodnota | Ne. Výchozí hodnota je false.
 
 ### <a name="control-activity"></a>Aktivita řízení
@@ -205,11 +205,11 @@ Aktivity řízení mají následující strukturu nejvyšší úrovně:
 }
 ```
 
-Značka | Popis | Požaduje se
+Značka | Popis | Požadováno
 --- | ----------- | --------
-jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li><ul>
+name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li><ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
-type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Ano
+typ | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Ano
 typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
 dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | Ne
 
@@ -372,7 +372,7 @@ Dvě aktivity můžete zřetězit pomocí [závislosti aktivit](#activity-depend
 ## <a name="scheduling-pipelines"></a>Plánování kanálů
 Kanály se plánují pomocí aktivačních událostí. Existují různé druhy aktivačních událostí (aktivační událost plánovače, která umožňuje spouštění kanálů podle hodinového plánu, nebo ruční aktivační událost, která spouští kanály na vyžádání). Další informace o aktivačních událostech najdete v článku [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md).
 
-Pokud chcete, aby aktivační událost aktivovala spuštění kanálu, musíte do definice aktivační události zahrnout odkaz na příslušný kanál. Mezi kanály a aktivačními událostmi existuje vztah n-m. Více aktivačních událostí může aktivovat jeden kanál a jedna aktivační událost může aktivovat více kanálů. Jakmile je aktivační událost definovaná, musíte ji spustit, aby mohla začít aktivovat kanál. Další informace o aktivačních událostech najdete v článku [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md).
+Pokud chcete, aby aktivační událost aktivovala spuštění kanálu, musíte do definice aktivační události zahrnout odkaz na příslušný kanál. Mezi kanály a aktivačními událostmi existuje vztah n-m. Víc aktivačních událostí může aktivovat jeden kanál a jedna aktivační událost může aktivovat víc kanálů. Jakmile je aktivační událost definovaná, musíte ji spustit, aby mohla začít aktivovat kanál. Další informace o aktivačních událostech najdete v článku [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md).
 
 Řekněme například, že máte aktivační událost plánovače "Trigger A", kterou chci aktivovat mého kanálu "MyCopyPipeline". Definujte aktivační událost podle následujícího příkladu:
 

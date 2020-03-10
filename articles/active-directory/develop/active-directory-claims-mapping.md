@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699066"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375809"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -73,7 +73,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | appidacr |
 | Neplatný |
 | at_hash |
-| aud |
+| AUD |
 | auth_data |
 | auth_time |
 | authorization_code |
@@ -87,7 +87,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| kód |
+| code |
 | ovládací prvky |
 | credential_keys |
 | csr |
@@ -105,7 +105,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | grant_type |
 | graph |
 | group_sids |
-| skupiny |
+| seskupení |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -156,13 +156,13 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | refresh_token |
 | refreshtoken kontextového tokenu |
 | request_nonce |
-| resource |
+| prostředek |
 | roles |
 | role |
-| scope |
+| obor |
 | scp |
 | sid |
-| signature |
+| podpis |
 | signin_state |
 | src1 |
 | src2 |
@@ -288,9 +288,9 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 |-----|-----|-----|
 | Uživatel | Příjmení | Název řady |
 | Uživatel | givenName | jméno |
-| Uživatel | displayName | Zobrazovaný název |
-| Uživatel | objektu | MVObjectID |
-| Uživatel | e-mailu | E-mailová adresa |
+| Uživatel | DisplayName | Zobrazované jméno |
+| Uživatel | objektu | Objektu |
+| Uživatel | pošta | E-mailová adresa |
 | Uživatel | userprincipalname | Hlavní název uživatele |
 | Uživatel | Oddělení|Oddělení|
 | Uživatel | onpremisessamaccountname | Místní název účtu SAM |
@@ -319,15 +319,15 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | extensionattribute14 | Atribut rozšíření 14 |
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
 | Uživatel | othermail | Jiná pošta |
-| Uživatel | země | Země |
+| Uživatel | krajin | Země |
 | Uživatel | city | Město |
-| Uživatel | state | Stav |
+| Uživatel | state | Stát |
 | Uživatel | jobtitle | Funkce |
-| Uživatel | EmployeeID | Identifikační číslo zaměstnance |
+| Uživatel | EmployeeID | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
-| aplikace, prostředek, cílová skupina | displayName | Zobrazovaný název |
-| aplikace, prostředek, cílová skupina | s objekty | MVObjectID |
-| aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
+| aplikace, prostředek, cílová skupina | DisplayName | Zobrazované jméno |
+| aplikace, prostředek, cílová skupina | s objekty | Objektu |
+| aplikace, prostředek, cílová skupina | značek | Značka objektu služby |
 | Společnost | tenantcountry | Země tenanta |
 
 **TransformationID:** Element TransformationID se musí poskytnout jenom v případě, že je zdrojový element nastavený na transformaci.
@@ -360,8 +360,8 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
-|Spojit|řetězec1, řetězec2, oddělovač|OutputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|e-mailu|OutputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není k dispozici žádný \@ znak, je původní vstupní řetězec vrácen tak, jak je.|
+|Spojit|řetěze, řetěze, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetěze: "foo@bar.com", řetěze: "Sandbox", oddělovač: "." má za následek outputClaim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|pošta|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není k dispozici žádný \@ znak, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
@@ -386,10 +386,10 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 |Zdroj|ID|Popis|
 |-----|-----|-----|
-| Uživatel | e-mailu|E-mailová adresa|
+| Uživatel | pošta|E-mailová adresa|
 | Uživatel | userprincipalname|Hlavní název uživatele|
 | Uživatel | onpremisessamaccountname|Místní název účtu SAM|
-| Uživatel | EmployeeID|Identifikační číslo zaměstnance|
+| Uživatel | EmployeeID|ID zaměstnance|
 | Uživatel | extensionattribute1 | Atribut rozšíření 1 |
 | Uživatel | extensionattribute2 | Atribut rozšíření 2 |
 | Uživatel | extensionattribute3 | Atribut rozšíření 3 |
@@ -415,7 +415,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 
-Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Pokud chcete přidat vlastní podpisový klíč, můžete k vytvoření přihlašovacích údajů symetrického klíče pro objekt aplikace použít rutinu prostředí Azure PowerShell `new-azureadapplicationkeycredential`. Další informace o této rutině Azure PowerShellu získáte kliknutím [sem](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Aby bylo možné přidat vlastní podpisový klíč, můžete použít rutinu Azure PowerShell `new-azureadapplicationkeycredential` k vytvoření pověření symetrického klíče pro objekt aplikace. Další informace o této rutině Azure PowerShell najdete v článku [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
 Aplikace s povoleným mapováním deklarací musí ověřit své podpisové klíče tokenu připojením `appid={client_id}` k [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Níže je uvedený formát dokumentu metadat OpenID Connect, který byste měli použít: 
 
@@ -469,7 +469,7 @@ V tomto příkladu vytvoříte zásadu, která odebere základní sadu deklarac�
       Get-AzureADPolicy
       ```
 1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby.
-   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na Microsoft Graph](/graph/traverse-the-graph). Nebo se v [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)přihlaste k účtu Azure AD.
+   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na rozhraní Microsoft Graph API](/graph/traverse-the-graph). Nebo v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)se přihlaste k účtu služby Azure AD.
    2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:  
      
       ``` powershell
@@ -493,7 +493,7 @@ V tomto příkladu vytvoříte zásadu, která přidá ČísloZaměstnance a Ten
       Get-AzureADPolicy
       ```
 1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby. 
-   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na Microsoft Graph](/graph/traverse-the-graph). Nebo se v [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)přihlaste k účtu Azure AD.
+   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na rozhraní Microsoft Graph API](/graph/traverse-the-graph). Nebo v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)se přihlaste k účtu služby Azure AD.
    2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:  
      
       ``` powershell
@@ -517,13 +517,13 @@ V tomto příkladu vytvoříte zásadu, která emituje vlastní deklaraci identi
       Get-AzureADPolicy
       ```
 1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby. 
-   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na Microsoft Graph](/graph/traverse-the-graph). Nebo se v [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)přihlaste k účtu Azure AD.
+   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na rozhraní Microsoft Graph API](/graph/traverse-the-graph). Nebo v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)se přihlaste k účtu služby Azure AD.
    2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz: 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 Informace o tom, jak přizpůsobit deklarace identity vydané v tokenu SAML prostřednictvím Azure Portal, najdete v tématu [How to: Customize Claims vydaných v tokenu SAML pro podnikové aplikace.](active-directory-saml-claims-customization.md)

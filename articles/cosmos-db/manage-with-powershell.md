@@ -8,15 +8,15 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882113"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364442"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
-Následující příručka popisuje použití prostředí PowerShell ke skriptování a automatizaci správy prostředků Azure Cosmos DB, včetně účtu, databáze, kontejneru a propustnosti. Správa Azure Cosmos DB je zpracována prostřednictvím rutiny AzResource přímo k poskytovateli prostředků Azure Cosmos DB. Pokud chcete zobrazit všechny vlastnosti, které se dají spravovat pomocí prostředí PowerShell pro poskytovatele prostředků Azure Cosmos DB, přečtěte si téma [schéma poskytovatele prostředků Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions) .
+Následující příručka popisuje, jak pomocí PowerShellu skriptovat a automatizovat správu prostředků Azure Cosmos DB, včetně účtů, databází, kontejnerů a propustnosti. Správa služby Azure Cosmos DB se provádí odesíláním rutin AzResource přímo poskytovateli prostředků služby Azure Cosmos DB. Pokud chcete zobrazit všechny vlastnosti, které se dají spravovat pomocí prostředí PowerShell pro poskytovatele prostředků Azure Cosmos DB, přečtěte si téma [schéma poskytovatele prostředků Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions) .
 
 Pro správu Azure Cosmos DB pro různé platformy můžete použít rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), [REST API][rp-rest-api]nebo [Azure Portal](create-sql-api-dotnet.md#create-account).
 
@@ -27,7 +27,7 @@ Pro správu Azure Cosmos DB pro různé platformy můžete použít rozhraní p�
 Postupujte podle pokynů v tématu [instalace a konfigurace Azure PowerShell][powershell-install-configure] pro instalaci a přihlášení ke svému účtu Azure v prostředí PowerShell.
 
 * Pokud chcete spustit následující příkazy, aniž byste museli potvrzovat uživatele, přidejte do příkazu příznak `-Force`.
-* Všechny následující příkazy jsou synchronní.
+* Následující příkazy jsou synchronní.
 
 ## <a name="azure-cosmos-accounts"></a>Účty Azure Cosmos
 
@@ -243,7 +243,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="list-keys"></a>Výpis klíčů účtu
 
-Když vytvoříte účet Azure Cosmos DB, služba vytvoří dva hlavní přístupové klíče, které se dají použít k ověřování při přístupu k účtu Azure Cosmos DB. Po poskytnutí dvou přístupových klíčů vám Azure Cosmos DB umožňuje znovu vygenerovat klíče bez přerušení pro váš Azure Cosmos DB účet. K dispozici jsou také klíče jen pro čtení k ověřování operací jen pro čtení. Existují dva klíče pro čtení i zápis (primární a sekundární) a dva klíče jen pro čtení (primární a sekundární).
+Při vytváření účtu služby Azure Cosmos DB, generuje tato služba dva hlavní přístupové klíče, které se dá použít pro ověření při přístupu k účtu Azure Cosmos DB. Poskytnutím dvou přístupových klíčů služby Azure Cosmos DB umožňuje znovu vygenerovat klíče bez přerušení ke svému účtu Azure Cosmos DB. Klíče jen pro čtení pro ověřování jen pro čtení operace jsou také k dispozici. (Primární i sekundární) existují dva klíče pro čtení i zápis (primární i sekundární) a dva klíče jen pro čtení.
 
 ```azurepowershell-interactive
 # List keys for an Azure Cosmos Account
@@ -261,7 +261,7 @@ Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 
 ### <a id="list-connection-strings"></a>Vypsat připojovací řetězce
 
-V případě účtů MongoDB se připojovací řetězec pro připojení aplikace MongoDB k databázovému účtu dá načíst pomocí následujícího příkazu.
+Pro účty MongoDB můžete načíst připojovací řetězec pro připojení aplikace MongoDB k účtu databáze pomocí následujícího příkazu.
 
 ```azurepowershell-interactive
 # List connection strings for an Azure Cosmos Account
@@ -479,7 +479,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $resourceName
 ```
 
-## <a name="azure-cosmos-container"></a>Kontejner Azure Cosmos
+## <a name="azure-cosmos-container"></a>Azure Cosmos Container
 
 Následující části demonstrují, jak spravovat kontejner Azure Cosmos, včetně:
 

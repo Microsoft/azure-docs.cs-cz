@@ -8,11 +8,11 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713194"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355614"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Síťové požadavky pro App Service Environment #
 
@@ -53,7 +53,7 @@ Při horizontálním navýšení nebo snížení kapacity se přidají nové rol
 
 K fungování pomocného mechanismu pro zpracování vyžaduje jenom následující porty, které se dají otevřít:
 
-| Použití | Z | Akce |
+| Použití | Z | Pro |
 |-----|------|----|
 | Správa | Adresy pro správu App Service | Podsíť pomocného mechanismu: 454, 455 |
 |  Interní komunikace prostřednictvím pomocného mechanismu | Podsíť pomocného mechanismu: všechny porty | Podsíť pomocného mechanismu: všechny porty
@@ -109,7 +109,7 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
 -   Webové úlohy
--   Functions
+-   Funkce
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření

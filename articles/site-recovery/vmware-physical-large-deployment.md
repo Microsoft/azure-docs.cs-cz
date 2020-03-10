@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895795"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362577"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware nebo fyzické servery
 
@@ -101,7 +101,7 @@ Co to znamená? Aby bylo možné spustit virtuální počítač Azure, Azure vy�
 **Počítač vyhovuje Azure?** | **Omezení virtuálních počítačů Azure (převzetí služeb při selhání spravovaného disku)**
 --- | --- 
 Ano | 2000
-Ne | 1 000
+Ne | 1 000
 
 - Omezení předpokládají, že v cílové oblasti pro předplatné probíhá minimálně jiné úlohy.
 - Některé oblasti Azure jsou menší a můžou mít mírně nižší omezení.
@@ -127,7 +127,7 @@ Je důležité, abyste měli dostatek konfiguračních serverů a procesových s
  
 Kapacita konfiguračního serveru je ovlivněná počtem počítačů, které se replikují, a ne podle míry četnosti změn dat. Pokud chcete zjistit, jestli potřebujete další konfigurační servery, použijte tyto definované limity virtuálních počítačů.
 
-**CPU** | **Paměť** | **Disk mezipaměti** | **Limit replikovaného počítače**
+**VČETNĚ** | **Rezident** | **Disk mezipaměti** | **Limit replikovaného počítače**
  --- | --- | --- | ---
 8 vCPU<br> 2 sokety × 4 jádra @ 2,5 GHz | 16 GB | 600 GB | Až 550 počítačů<br> Předpokládá, že každý počítač má tři disky o velikosti 100 GB.
 
@@ -153,7 +153,7 @@ Kapacita procesového serveru je ovlivněná mírami četnosti změn dat, nikoli
 - Doporučujeme přidat server s nejvyšší specifikací. 
 
 
-**CPU** | **Paměť** | **Disk mezipaměti** | **Míra četnosti změn**
+**VČETNĚ** | **Rezident** | **Disk mezipaměti** | **Míra četnosti změn**
  --- | --- | --- | --- 
 12 vCPU<br> 2 sokety × 6 jader @ 2,5 GHz | 24 GB | 1 GB | Až 2 TB za den
 

@@ -4,11 +4,11 @@ description: Příprava na vrácení back-VM virtuálních počítačů VMware p
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498225"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362625"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>Příprava na přeochranu a navrácení služeb po obnovení virtuálních počítačů VMware
 

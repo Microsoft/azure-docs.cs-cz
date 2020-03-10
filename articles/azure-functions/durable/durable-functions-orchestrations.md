@@ -6,11 +6,11 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261547"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357787"
 ---
 # <a name="durable-orchestrations"></a>Trvalé orchestrace
 
@@ -57,7 +57,7 @@ Když je funkce orchestrace předána více práce (například přijetí zpráv
 
 Chování při vytváření událostí pro trvalý rámec úloh je úzce spojeno s kódem funkce Orchestrator, který zapisujete. Předpokládejme, že máte funkci Orchestrator pro řetězení aktivit, jako je například následující funkce Orchestrator:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -75,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -110,12 +110,12 @@ Po dokončení kontrolního bodu je možné odebrat funkci Orchestrator z pamět
 
 Po dokončení bude historie dříve zobrazených funkcí vypadat podobně jako v následující tabulce v Azure Table Storage (pro ilustraci se zkráceně):
 
-| PartitionKey (InstanceId)                     | EventType             | Časové razítko               | Vstup | Name (Název)             | Výsledek                                                    | Stav |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Vstup | Název             | Výsledek                                                    | Stav |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokio!" "                                        |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
@@ -216,7 +216,7 @@ Funkce kritická část je také užitečná pro koordinaci změn trvalých enti
 
 Funkce nástroje Orchestrator nejsou povoleny v/v, jak je popsáno v tématu [omezení kódu funkce nástroje Orchestrator](durable-functions-code-constraints.md). Typickým řešením pro toto omezení je zabalení jakéhokoli kódu, který potřebuje v/v funkce Activity. Orchestrace, která komunikuje s externími systémy, často používají funkce aktivity k provádění volání HTTP a vracejí výsledek do orchestrace.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Pro zjednodušení tohoto obecného vzoru mohou funkce nástroje Orchestrator použít metodu `CallHttpAsync` k přímému vyvolání rozhraní HTTP API.
 
@@ -238,7 +238,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -265,7 +265,7 @@ Další informace a podrobné příklady najdete v článku věnovaném [funkcí
 
 Není možné předat více parametrů funkci Activity přímo. Doporučení je nutné předat v poli objektů nebo složených objektů.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V rozhraní .NET můžete také použít objekty [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) . Následující ukázka používá nové funkce [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) přidané s [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
 
@@ -304,7 +304,7 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 #### <a name="orchestrator"></a>Orchestrator
 

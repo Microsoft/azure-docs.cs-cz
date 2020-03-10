@@ -4,11 +4,11 @@ description: V tomto kurzu použijete zásady k vymáhání standardů, řízen�
 ms.date: 12/20/2019
 ms.topic: tutorial
 ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436248"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384504"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů
 
@@ -59,7 +59,7 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
 1. Nechte **vynucení zásad** _Povolit_. Když je toto nastavení _zakázané_, povolí testování výsledku zásady bez aktivace tohoto efektu. Další informace najdete v tématu [režim vynucení](../concepts/assignment-structure.md#enforcement-mode).
 
-1. **Přiřazené podle** se automaticky vyplní podle toho, který je přihlášen. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
+1. **Přiřazeno uživatelem** je automaticky vyplněno na základě toho, kdo je přihlášen. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
 
 1. V horní části průvodce vyberte kartu **parametry** .
 
@@ -83,7 +83,7 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
 
    ![Stránka definice v části Authoring Group](../media/create-and-manage/definition-under-authoring.png)
 
-1. V horní části stránky vyberte **+ Definice zásady**. Toto tlačítko otevře **definice zásady** stránky.
+1. V horní části stránky vyberte **+ Definice zásady**. Toto tlačítko se otevře na stránce **definice zásad** .
 
 1. Zadejte následující informace:
 
@@ -127,7 +127,7 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
 
    Další ukázky zásad Azure najdete v [ukázkách pro Azure Policy](../samples/index.md).
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>Vytvoření definice zásady pomocí rozhraní REST API
 
@@ -358,10 +358,10 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 1. Projděte seznam **Dostupné definice** (pravá polovina stránky **Definice iniciativy**) a vyberte definice zásad, které chcete přidat do této iniciativy. V části **získat zabezpečený** podnět přidejte následující definice integrovaných zásad, a to tak, že vyberete **+** vedle informací o definici zásady nebo vyberete řádek definice zásad a pak na stránce podrobností možnost **+ Přidat** :
 
    - Povolená umístění
-   - Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center
+   - Monitorovat chybějící Endpoint Protection v Azure Security Center
    - Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.
    - Azure Backup by měla být povolená Virtual Machines
-   - Pro virtuální počítače by se mělo povolit šifrování disků.
+   - Na virtuálních počítačích by se mělo použít šifrování disku
 
    Po výběru definice zásady ze seznamu se každá z nich přidá pod **kategorii**.
 
@@ -376,7 +376,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
    Nastavte parametr ' Allowed umístění ' na ' Východní USA 2 ' a ponechte ostatní jako výchozí ' AuditifNotExists '.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Vytvoření definice iniciativy zásad pomocí Azure CLI
 
@@ -453,7 +453,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů**.
 
-1. Vyhledejte bezpečnostní iniciativu **Get** . Bude pravděpodobně stále v _stavu dodržování předpisů_ z **Nezahájeno**.
+1. Vyhledejte bezpečnostní iniciativu **Get** . Je nejspíš pořád ve _stavu dodržování předpisů_ **Nezahájeno**.
    Pokud chcete získat úplné informace o průběhu přiřazení, vyberte iniciativu.
 
    ![Stránka dodržování předpisů iniciativ – hodnocení Nezahájeno](../media/create-and-manage/compliance-status-not-started.png)
@@ -468,7 +468,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 Po přiřazení iniciativy zásad pro vyžadování konkrétního umístění dojde k odepření veškerého prostředku vytvořeného v jiném umístění. V této části se dozvíte, jak vyřešit zamítnutou žádost o vytvoření prostředku vytvořením vyloučení pro jednu skupinu prostředků. Vyloučení brání vynucení zásady (nebo iniciativy) v této skupině prostředků. V následujícím příkladu je libovolné umístění ve vyloučené skupině prostředků povolené. Vyloučení se může vztahovat na předplatné, skupinu prostředků nebo na jednotlivé prostředky.
 
-Nasazení zabraňující přiřazeným zásadám nebo iniciativě můžete zobrazit ve skupině prostředků, která je cílem nasazení: vyberte **nasazení** v levé straně stránky a potom vyberte **název nasazení** neúspěšného nasazení. U zamítnutého prostředku je uvedený stav _Zakázáno_. Chcete-li určit zásadu nebo iniciativu a přiřazení, které prostředek odepřel, vyberte možnost **neúspěšné. Kliknutím sem zobrazíte podrobnosti – >** na stránce Přehled nasazení. Na pravé straně stránky se otevře okno s informacemi o chybě. V části **podrobnosti o chybě** jsou identifikátory GUID objektů souvisejících zásad.
+Nasazení zabraňující přiřazeným zásadám nebo iniciativě můžete zobrazit ve skupině prostředků, která je cílem nasazení: vyberte **nasazení** v levé straně stránky a potom vyberte **název nasazení** neúspěšného nasazení. U zamítnutého prostředku je uvedený stav _Zakázáno_. Chcete-li určit zásadu nebo iniciativu a přiřazení, které prostředek odepřel, vyberte možnost **neúspěšné. Kliknutím sem zobrazíte podrobnosti – >** na stránce Přehled nasazení. Na pravé straně stránky se otevře okno s informacemi o chybě. V části **Podrobnosti o chybě** jsou identifikátory GUID souvisejících objektů zásad.
 
 ![Nasazení zamítnuté přiřazením zásady](../media/create-and-manage/rg-deployment-denied.png)
 
@@ -499,13 +499,13 @@ V této části jste vyřešili odepření požadavku tak, že vytvoříte vylou
 
 Pokud jste dokončili práci s prostředky z tohoto kurzu, pomocí následujícího postupu odstraňte všechna přiřazení a definice zásad, které jste vytvořili výše:
 
-1. Vyberte **definice** (nebo **přiřazení** Pokud se pokoušíte odstranit přiřazení) v části **Authoring** v levé části na stránku služby Azure Policy.
+1. Vyberte **definice** (nebo **přiřazení** , pokud se pokoušíte odstranit přiřazení) v části **vytváření obsahu** v levé části stránky Azure Policy.
 
 1. Vyhledejte novou definici iniciativy nebo zásady (nebo přiřazení), kterou chcete odebrat.
 
 1. Klikněte na řádek pravým tlačítkem nebo vyberte tři tečky na konci definice (nebo přiřazení) a pak vyberte **Odstranit definici** (nebo **Odstranit přiřazení**).
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Revidovat
 
 V tomto kurzu jste úspěšně provedli následující úlohy:
 

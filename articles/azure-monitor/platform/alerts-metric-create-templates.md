@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664832"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368006"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -565,7 +565,7 @@ az group deployment create \
 
 Novější výstrahy metrik podporují upozorňování na multidimenzionální metriky a podporují více kritérií. Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro multidimenzionální metriky a zadat více kritérií.
 
-Při použití dimenzí v pravidle výstrahy obsahujícím více kritérií Pamatujte na následující omezení:
+Při použití dimenzí v pravidle upozornění obsahujícím více kritérií nezapomeňte na následující omezení:
 - V rámci každého kritéria můžete vybrat jenom jednu hodnotu na dimenzi.
 - Jako hodnotu dimenze nelze použít "\*".
 - Pokud metriky, které jsou konfigurovány v různých kriteriích, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných kritériích).

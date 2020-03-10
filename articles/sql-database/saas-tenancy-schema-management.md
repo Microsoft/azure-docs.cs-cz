@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
 ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822019"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397158"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v aplikaci SaaS pomocí modelu databáze na tenanta s Azure SQL Database
  
@@ -24,7 +24,7 @@ V rámci vývoje databázových aplikací je u schématu databáze nebo referen�
 
 V tomto kurzu se seznámíte se dvěma scénáři – nasazení aktualizací referenčních dat pro všechny klienty a opětovné sestavení indexu v tabulce obsahující referenční data. Funkce [elastické úlohy](elastic-jobs-overview.md) se používá ke spouštění těchto akcí ve všech databázích tenanta a v databázi šablon použité k vytváření nových databází tenanta.
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > 
@@ -37,7 +37,7 @@ Co se v tomto kurzu naučíte:
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
 * Aplikace Wingtip Tickets SaaS Database na tenanta je nasazená. Postup nasazení za méně než pět minut najdete v tématu [nasazení a prozkoumání aplikace Wingtip Tickets SaaS Database na klienta](saas-dbpertenant-get-started-deploy.md) .
-* Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Prostředí Azure PowerShell je nainstalované. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Je nainstalovaná nejnovější verze SQL Server Management Studia (SSMS). [Stažení a instalace SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
@@ -77,7 +77,7 @@ V aplikaci Wingtip Tickets obsahuje každá databáze tenanta sadu podporovanýc
 Nejprve zkontrolujte typy míst, které jsou součástí každé databáze tenanta. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a prozkoumejte tabulku VenueTypes.  Tuto tabulku můžete také dotazovat v editoru dotazů v Azure Portal, ke kterému se dostanete ze stránky databáze. 
 
 1. Otevřete SSMS a připojte se k klientskému serveru: *tenants1-DPT-&lt;user&gt;. Database.Windows.NET*
-1. Pokud si chcete ověřit, že **se** v tuto chvíli nezahrnují *motocykly* a *kluby* , přejděte k databázi _contosoconcerthall_ na serveru *tenants1-DPT-&lt;User&gt;* Server a Dotazujte se na *VenueTypes.* tabulka:
+1. Pokud si chcete ověřit, že **se** v tuto chvíli nezahrnují *motocykly* a *kluby klubu* , přejděte k databázi _contosoconcerthall_ na serveru *tenants1-DPT-&lt;User&gt;* Server a Dotazujte tabulku *VenueTypes* .
 
 Teď vytvoříme úlohu, která aktualizuje tabulku *VenueTypes* ve všech databázích tenantů, aby se přidaly nové typy míst konání.
 
@@ -129,7 +129,7 @@ V tomto kurzu jste se naučili:
 Potom si v [kurzu vytváření sestav ad hoc](saas-tenancy-cross-tenant-reporting.md) Prozkoumejte spouštění distribuovaných dotazů napříč databázemi klientů.
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Další kurzy, které se sestavují na základě SaaS databáze Wingtip Tickets pro každé klientské nasazení aplikace](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Správa cloudových databází s horizontálním navýšením kapacity](elastic-jobs-overview.md)

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887078"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390527"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Práce s kanály, které přijímají živý datový proud s více přenosovými rychlostmi z místních kodérů
 
@@ -64,7 +64,7 @@ Následující kroky popisují úlohy, které se podílejí na vytváření bě�
     Live Encoder používá k odeslání datového proudu do kanálu adresu URL pro příjem.
 4. Načte adresu URL náhledu kanálu.
 
-    Tuto adresu URL můžete použít, když chcete ověřit, jestli kanál správně přijímá proud živého vysílání.
+    Tuto adresu můžete použít, když chcete ověřit, jestli kanál správně přijímá živý datový proud.
 5. Vytvořte program.
 
     Při použití Azure Portal vytvoří program také Asset.
@@ -119,7 +119,7 @@ Pokud k vygenerování datového proudu s více přenosovými rychlostmi použí
 
 Následující tabulka ukazuje, jakým způsobem je vypočítána doba trvání segmentu:
 
-| Interval klíčového snímku | Poměr obalů segmentů HLS (FragmentsPerSegment) | Příklad: |
+| Interval klíčového snímku | Poměr obalů segmentů HLS (FragmentsPerSegment) | Příklad |
 | --- | --- | --- |
 | Menší než nebo rovno 3 sekundy |3:1 |Pokud je KeyFrameInterval (nebo skupinu GOP) 2 sekundy, výchozí Poměrový podíl segmentu HLS je 3 – 1. Tím se vytvoří segment HLS o 6 sekund. |
 | 3 až 5 sekund |2:1 |Pokud je KeyFrameInterval (nebo skupinu GOP) 4 sekundy, výchozí Poměrový podíl segmentu HLS je 2 – 1. Tím se vytvoří HLS segment o 8 sekund. |
@@ -176,15 +176,15 @@ I po zastavení a odstranění programu můžou uživatelé streamovat archivova
 ## <a id="states"></a>Stavy kanálu a fakturace
 K dispozici jsou možné hodnoty pro aktuální stav kanálu:
 
-* **Zastaveno**: Jedná se o počáteční stav kanálu po jeho vytvoření. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povolené.
-* **Začíná**: kanál se spouští. V tomto stavu nejsou povoleny žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu **Zastaveno** .
+* **Zastaveno**: Jedná se o počáteční stav kanálu po jeho vytvoření. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
+* **Začíná**: kanál se spouští. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu **Zastaveno** .
 * **Spuštěno**: kanál dokáže zpracovávat živé streamy.
-* **Zastavování**: kanál je ukončován. V tomto stavu nejsou povoleny žádné aktualizace ani streamování.
-* **Odstraňování**: kanál se odstraňuje. V tomto stavu nejsou povoleny žádné aktualizace ani streamování.
+* **Zastavování**: kanál je ukončován. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Odstraňování**: kanál se odstraňuje. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
 
-Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
+Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace.
 
-| Stav kanálu | Indikátory v uživatelském rozhraní portálu | Fakturováno? |
+| Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje? |
 | --- | --- | --- |
 | **Začátek** |**Začátek** |Ne (přechodný stav) |
 | **Instalovanou** |**Připraveno** (žádné spuštěné programy)<p><p>nebo<p>**Streamování** (aspoň jeden spuštěný program) |Ano |
@@ -194,7 +194,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 ## <a id="cc_and_ads"></a>Skryté titulky a vkládání reklam
 Následující tabulka ukazuje podporované standardy pro uzavřené titulky a vkládání reklam.
 
-| Úroveň Standard | Poznámky |
+| Standardní | Poznámky: |
 | --- | --- |
 | CEA-708 a EIA-608 (708/608) |CEA-708 a EIA-608 jsou standardy titulků pro USA a Kanadu.<p><p>V současné době se titulky podporují jenom v případě, že se přenesou do kódovaného vstupního streamu. Potřebujete použít živý kodér médií, který může vkládat popisky 608 nebo 708 do kódovaného datového proudu, který je odeslán do Media Services. Media Services doručuje obsah pomocí vložených titulků vašim uživatelům. |
 | TTML uvnitř. ismt (textové stopy Smooth Streaming) |Media Services dynamické balení umožňuje klientům streamovat obsah v libovolném z následujících formátů: POMLČKy, HLS nebo Smooth Streaming. Pokud však ingestují fragmenty MP4 (Smooth Streaming) s titulky uvnitř. ismt (Smooth Streaming textové stopy), můžete datový proud doručovat pouze do Smooth Streaming klientů. |
@@ -225,10 +225,10 @@ Tady jsou další otázky týkající se práce s kanály a souvisejícími sou�
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Názor
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Související témata
+## <a name="related-topics"></a>Příbuzná témata
 [Doporučené na místních kodérech](media-services-recommended-encoders.md)
 
 [Azure Media Services fragmentované specifikace ingestování MP4](../media-services-fmp4-live-ingest-overview.md)

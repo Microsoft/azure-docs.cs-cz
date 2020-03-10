@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484802"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388155"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Zavedení integrace stavu do Azure Deployment Manager (Public Preview)
 
@@ -134,11 +134,11 @@ Příklad najdete v tématu [kurz: použití kontroly stavu v Azure Deployment M
 
 V tomto okamžiku Azure Deployment Manager ví, jak zadat dotaz na stav vaší služby a v jaké fázi zavádění. Azure Deployment Manager ale umožňuje také hloubkovou konfiguraci časování těchto kontrol. HealthCheck krok se provádí ve 3 sekvenčních fázích, přičemž všechny mají konfigurovatelné doby trvání: 
 
-1. Wait
+1. Wait (Čekat)
 
     1. Po dokončení operace nasazení se můžou virtuální počítače restartovat, znovu nakonfigurovat na základě nových dat nebo dokonce spustit poprvé. V některých případech také trvá, než služby začnou vysílat signály stavu, aby je mohl agregovat poskytovatel sledování stavu. Během tohoto procesu tumultuous nemusí být smyslem kontrolovat stav služby, protože aktualizace ještě nedosáhla stabilního stavu. Služba může být ve skutečnosti mezi dobrým a špatným stavem v rámci vyrovnání prostředků. 
     1. Během čekací fáze není stav služby monitorován. Tato možnost slouží k povolení zanesli nasazených prostředků před zahájením procesu kontroly stavu. 
-1. Elastická
+1. Udává
 
     1. Vzhledem k tomu, že ve všech případech nemůžete znát, jak dlouho budou prostředky trvat zanesli, než se budou stabilní, elastická fáze umožní flexibilní časové období mezi tím, kdy jsou prostředky potenciálně nestabilní a kdy jsou nutné pro udržení dobré stabilní doby. státech.
     1. Po zahájení elastické fáze začíná Azure Deployment Manager dotazování poskytnutého koncového bodu REST na stav služby pravidelně. Interval dotazování se dá konfigurovat. 

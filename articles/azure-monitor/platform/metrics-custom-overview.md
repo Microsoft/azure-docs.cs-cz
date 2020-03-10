@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662344"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385330"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Vlastní metriky v Azure Monitor
 
@@ -156,13 +156,17 @@ Před tím, než se vygeneruje, není nutné před tím, než bude vygenerována
 
 ## <a name="using-custom-metrics"></a>Použití vlastních metrik
 Až se vlastní metriky odešlou do Azure Monitor, můžete je procházet pomocí Azure Portal a dotazovat je prostřednictvím rozhraní API REST Azure Monitor. Můžete také vytvořit výstrahy, které vám upozorní na splnění určitých podmínek.
+
+> [!NOTE]
+> Abyste mohli zobrazit vlastní metriky, musíte být čtenář nebo role Přispěvatel.
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Procházejte vlastní metriky prostřednictvím Azure Portal
-1.  Přejděte na [Azure Portal](https://portal.azure.com).
-2.  Vyberte podokno **monitorování** .
-3.  Vyberte **Metriky**.
-4.  Vyberte prostředek, pro který jste vygenerovali vlastní metriky.
-5.  Vyberte obor názvů metrik pro vlastní metriku.
-6.  Vyberte vlastní metriku.
+1.    Přejděte na [Azure Portal](https://portal.azure.com).
+2.    Vyberte podokno **monitorování** .
+3.    Vyberte **Metriky**.
+4.    Vyberte prostředek, pro který jste vygenerovali vlastní metriky.
+5.    Vyberte obor názvů metrik pro vlastní metriku.
+6.    Vyberte vlastní metriku.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouze v podmnožině oblastí Azure. Toto omezení znamená, že metriky lze publikovat pouze pro prostředky v jedné z podporovaných oblastí. Následující tabulka uvádí sadu podporovaných oblastí Azure pro vlastní metriky. Obsahuje také seznam odpovídajících koncových bodů, na které by se měly metriky pro prostředky v těchto oblastech publikovat:

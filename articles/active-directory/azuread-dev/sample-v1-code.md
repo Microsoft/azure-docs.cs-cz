@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 74da5b84fafd7f7c60d07fc90b05c051c1fa2a3e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164393"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377694"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázka kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -54,7 +54,7 @@ V této ukázce se dozvíte, jak napsat jednostránkovou aplikaci zabezpečenou 
 
 Následující ukázky ilustrují webové aplikace, které podepisují uživatele. Některé z těchto aplikací také volají Microsoft Graph nebo vlastní webové rozhraní API, a to jménem přihlášeného uživatele.
 
- Platforma | Pouze přihlášení uživatelé | Volá Microsoft Graph nebo graf AAD.| Volá jiné webové rozhraní API ASP.NET nebo ASP.NET Core 2,0.
+ Platforma | Pouze přihlášení uživatelé | Volání Microsoft Graph | Volá jiné webové rozhraní API ASP.NET nebo ASP.NET Core 2,0.
  -------- | ------------------- | --------------------- | -------------------------
 ![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-WebApp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-WebApi-víceklientské tenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(Graf AAD) | [dotnet-WebApp-WebApi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
 ![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WebApp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-WebApp-WebApi-OAuth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-WebApp-víceklientské openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (Graf AAD) |
@@ -125,10 +125,6 @@ Ukázky a kurzy, které ukazují různé způsoby použití rozhraní Microsoft 
 
 ## <a name="see-also"></a>Viz také
 
-[Azure Active Directory příručka pro vývojáře](v1-overview.md)
-
-[Azure Active Directory knihovny ověřování](active-directory-authentication-libraries.md)
-
-[Azure AD Graph API koncepční a referenční dokumentace](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-
-[Pomocná knihovna Graph API Azure AD](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Azure Active Directory příručka pro vývojáře](v1-overview.md)
+- [Azure Active Directory knihovny ověřování](active-directory-authentication-libraries.md)
+- [Koncepční a referenční informace k rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api)

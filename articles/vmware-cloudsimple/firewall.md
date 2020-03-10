@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565022"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386838"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Nastavení tabulek a pravidel brány firewall pro privátní cloudy
 

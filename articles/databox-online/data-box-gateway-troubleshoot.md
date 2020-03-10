@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754403"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384654"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Vyřešte potíže s Azure Data Box Gateway 
 
@@ -31,11 +31,11 @@ Pokud chcete diagnostikovat a vyřešit potíže s libovolnými chybami zaříze
 
 1. V místním webovém uživatelském rozhraní přejděte na **Řešení potíží > Diagnostické testy**. Vyberte test, který chcete spustit a klikněte na tlačítko **Spustit test**. Tím se spustí testy, které provedou diagnostiku všech možných problémů se sítí, zařízením, webovým proxy serverem, časem nebo nastavením cloudu. Na spuštěné testy v zařízení budete upozorněni.
 
-    ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/run-diag-1.png)
+    ![Klikněte na Přidat uživatele](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
 2. Po dokončení testů se zobrazí výsledky. Pokud bude test neúspěšný, zobrazí se adresa URL s doporučenou akcí. Můžete na adresu URL kliknout a doporučenou akci zobrazit. 
  
-    ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![Klikněte na Přidat uživatele](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>Shromáždění balíčku pro podporu
@@ -46,9 +46,9 @@ Pokud chcete balíček pro podporu vyzvednout, proveďte následující kroky.
 
 1. V místním webovém uživatelském rozhraní přejděte na **Řešení potíží > Podpora**. Klikněte na **Vytvořit balíček pro podporu**. Systém začne shromažďovat balíček pro podporu. Shromažďování balíčků může několik minut trvat.
 
-    ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![Klikněte na Přidat uživatele](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. Po vytvoření balíčku pro podporu klikněte na **Stáhnout balíček pro podporu**. Komprimovaný balíček se stáhne do vámi vybrané cesty. Můžete rozbalit balíček.
+2. Po vytvoření balíčku pro podporu klikněte na **Stáhnout balíček pro podporu**. Komprimovaný balíček se stáhne do vámi vybrané cesty. Balíček můžete rozbalit.
 
     ![Klikněte na Přidat uživatele](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
@@ -58,7 +58,7 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
 
 1. Pokud chcete chybové soubory zobrazit, přejděte do sdílené složky a kliknutím na ni obsah zobrazte. 
 
-      ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![Klikněte na Přidat uživatele](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. Klikněte na _Složka Microsoft Data Box Gateway_. Tato složka obsahuje dvě podsložky:
 
@@ -98,14 +98,14 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Nelze nahrát data na účet, protože účet nebo sdílená složka jsou zakázané.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Nelze se připojit ke kontejneru, protože oprávnění účtu jsou nesprávná nebo zastaralá. Zkontrolujte svůj přístup.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Nelze přidat nová data, protože kontejner je plný. Nahlédněte do specifikací Azure a ověřte podporované velikosti kontejnerů podle typu. Soubor Azure například podporuje pouze maximální velikost 5 TB.                                     |
-    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Nebylo možné nahrát data, protože neexistuje v kontejneru přidruženého k sdílenou složku.                                     |    
-    |    2997            |    ERROR_ITEM_CANCELED                                     |    Došlo k neočekávané chybě. Jde o přechodnou chybu, která se vyřeší.                                                                           |
+    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Data se nepovedlo nahrát, protože kontejner přidružený ke sdílené složce neexistuje.                                     |    
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    Došlo k neočekávané chybě. Jedná se o přechodnou chybu, která se vyřeší sám.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Došlo k neočekávané chybě. Chyba se může vyřešit sama, ale pokud přetrvá déle než 24 hodin, obraťte se na podporu Microsoftu.                                                                                                     |
     |    16000           |    RefreshException                                        |    Tento soubor nelze zpracovat.                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    Tento soubor nelze zpracovat, protože už v místním systému existuje.                                                                                                                                                         |
     |    16002           |    RefreshWorkNeededException                              |    Tento soubor nelze aktualizovat, protože ještě není zcela nahraný.                                                                                                                                                                          | 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [známých potížích v této verzi](data-box-gateway-release-notes.md).

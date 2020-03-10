@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526324"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390209"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodické zálohování a obnovení v clusteru Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
 
 ## <a name="enabling-backup-and-restore-service"></a>Povolení služby zálohování a obnovení
 
-### <a name="using-azure-portal"></a>Použití webu Azure Portal
+### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
 Povolit `Include backup restore service` zaškrtávací políčko v části `+ Show optional settings` na kartě `Cluster Configuration`.
 

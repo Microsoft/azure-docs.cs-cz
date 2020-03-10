@@ -12,11 +12,11 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198180"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357176"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Omezení kapacity Azure synapse Analytics (dříve SQL DW)
 
@@ -38,14 +38,14 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| databáze |Maximální velikost | Gen1: na disku je komprimováno 240 TB. Toto místo je nezávislé na tempdb nebo v prostoru protokolu, a proto je toto místo vyhrazeno pro trvalé tabulky.  Clusterovaná komprese columnstore je odhadnuta na pětinásobné.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky clusterovaný cluster columnstore (výchozí typ tabulky). <br/><br/> Gen2: neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je na disku stále omezená na 240 TB. |
+| Databáze |Maximální velikost | Gen1: na disku je komprimováno 240 TB. Toto místo je nezávislé na tempdb nebo v prostoru protokolu, a proto je toto místo vyhrazeno pro trvalé tabulky.  Clusterovaná komprese columnstore je odhadnuta na pětinásobné.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky clusterovaný cluster columnstore (výchozí typ tabulky). <br/><br/> Gen2: neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je na disku stále omezená na 240 TB. |
 | Tabulka |Maximální velikost |Neomezená velikost tabulek columnstore. <br>60 TB pro tabulky rowstore komprimované na disku. |
-| Tabulka |Tabulky na databázi | 100 000 |
+| Tabulka |Tabulky na databázi | 100,000 |
 | Tabulka |Sloupce na tabulku |sloupce 1024 |
 | Tabulka |Počet bajtů na sloupec |Závisí na [datovém typu](sql-data-warehouse-tables-data-types.md)sloupce. U znakových datových typů může maximální limit ukládat až 2 GB na vypnutou velikost stránky (přetečení řádku).  Znaky jiné než Unicode, jako je například char nebo varchar, jsou 8000 na datové stránce. na stránce dat je 4000 znaků Unicode, jako je například nchar nebo omezení nvarchar.  Zvyšte výkon pomocí velikosti úložiště datových stránek. |
 | Tabulka |Počet bajtů na řádek, definovaná velikost |8060 bajtů<br/><br/>Počet bajtů na řádek se počítá stejným způsobem jako SQL Server s kompresí stránky. Podobně jako SQL Server podporuje úložiště přetečení řádku, které umožňuje vložit **sloupce proměnné délky** mimo řádek. Pokud jsou řádky proměnlivé délky vloženy mimo řádek, v hlavním záznamu je uložen pouze kořenový adresář 24 bajtů. Další informace najdete v tématu [data přetečení řádků přesahují 8 – KB](https://msdn.microsoft.com/library/ms186981.aspx). |
 | Tabulka |Počet oddílů na tabulku |15 000<br/><br/>Pro vysoký výkon doporučujeme minimalizovat počet oddílů, které potřebujete, a přitom pořád podporovat vaše podnikové požadavky. Vzhledem k tomu, že počet oddílů roste, režie pro operace DDL (Data Definition Language) a jazyk manipulace s daty (DML) roste a způsobuje pomalejší výkon. |
-| Tabulka |Hodnota ohraničení znaků na oddíl. |4000 |
+| Tabulka |Hodnota ohraničení znaků na oddíl. |4 000 |
 | Index |Neclusterované indexy na tabulku |50<br/><br/>Platí jenom pro tabulky rowstore. |
 | Index |Clusterované indexy na tabulku |1<br><br/>Platí pro rowstore i tabulky columnstore. |
 | Index |Velikost klíče indexu |900 bajtů.<br/><br/>Platí jenom pro indexy rowstore.<br/><br/>Indexy pro sloupce varchar s maximální velikostí větší než 900 bajtů lze vytvořit, pokud existující data ve sloupcích nepřekračují 900 bajtů při vytvoření indexu. Později ale nebude možné VKLÁDAT nebo aktualizovat akce na sloupcích, které způsobí, že celková velikost překročí 900 bajtů. |
@@ -54,7 +54,7 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 | Statistika |Sloupce na objekt statistiky |32 |
 | Statistika |Statistiky se vytvořily pro sloupce na tabulce. |30,000 |
 | Uložené procedury |Maximální úroveň vnoření. |8 |
-| Zobrazení |Sloupce na zobrazení |1,024 |
+| Zobrazit |Sloupce na zobrazení |1,024 |
 ||||
 
 ## <a name="loads"></a>Zaveden
@@ -68,16 +68,16 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| Dotaz |Dotazy zařazené do fronty v uživatelských tabulkách |1000 |
+| Dotaz |Dotazy zařazené do fronty v uživatelských tabulkách |1 000 |
 | Dotaz |Souběžné dotazy na systémová zobrazení. |100 |
-| Dotaz |Dotazy zařazené do fronty pro systémová zobrazení |1000 |
+| Dotaz |Dotazy zařazené do fronty pro systémová zobrazení |1 000 |
 | Dotaz |Maximální počet parametrů |2098 |
-| Batch |Maximální velikost |65,536*4096 |
+| Dávka |Maximální velikost |65,536*4096 |
 | VYBRAT výsledky |Sloupce na řádek |4 096<br/><br/>V výsledku výběru nikdy nemůžete mít v jednom řádku více než 4096 sloupců. Neexistuje žádná záruka, že můžete mít vždycky 4096. Pokud plán dotazu vyžaduje dočasnou tabulku, mohou platit sloupce 1024 na maximum v tabulce. |
-| SELECT |Vnořené poddotazy |32<br/><br/>V příkazu SELECT nikdy nemůžete mít více než 32 vnořených poddotazů. Neexistuje žádná záruka, že můžete mít vždycky 32. Například spojení může do plánu dotazu zavést poddotaz. Počet poddotazů může být také omezen pamětí, která je k dispozici. |
-| SELECT |Sloupce na spojení |sloupce 1024<br/><br/>Ve spojení nikdy nemůžete mít více než 1024 sloupců. Neexistuje žádná záruka, že můžete mít vždycky 1024. Pokud plán spojení vyžaduje dočasnou tabulku s více sloupci, než je výsledek spojení, vztahuje se limit 1024 na dočasnou tabulku. |
-| SELECT |Počet bajtů na skupinu podle sloupců. |8060<br/><br/>Sloupce v klauzuli GROUP BY mohou mít maximálně 8060 bajtů. |
-| SELECT |Počet bajtů na objednávku podle sloupců |8060 bajtů<br/><br/>Sloupce v klauzuli ORDER BY mohou mít maximálně 8060 bajtů. |
+| VYBRAT |Vnořené poddotazy |32<br/><br/>V příkazu SELECT nikdy nemůžete mít více než 32 vnořených poddotazů. Neexistuje žádná záruka, že můžete mít vždycky 32. Například spojení může do plánu dotazu zavést poddotaz. Počet poddotazů může být také omezen pamětí, která je k dispozici. |
+| VYBRAT |Sloupce na spojení |sloupce 1024<br/><br/>Ve spojení nikdy nemůžete mít více než 1024 sloupců. Neexistuje žádná záruka, že můžete mít vždycky 1024. Pokud plán spojení vyžaduje dočasnou tabulku s více sloupci, než je výsledek spojení, vztahuje se limit 1024 na dočasnou tabulku. |
+| VYBRAT |Počet bajtů na skupinu podle sloupců. |8060<br/><br/>Sloupce v klauzuli GROUP BY mohou mít maximálně 8060 bajtů. |
+| VYBRAT |Počet bajtů na objednávku podle sloupců |8060 bajtů<br/><br/>Sloupce v klauzuli ORDER BY mohou mít maximálně 8060 bajtů. |
 | Počet identifikátorů na příkaz |Počet odkazovaných identifikátorů |65,535<br/><br/> Počet identifikátorů, které mohou být obsaženy v jednom výrazu dotazu, je omezen. Výsledkem překročení tohoto čísla je SQL Server chyba 8632. Další informace najdete v tématu [vnitřní chyba: bylo dosaženo limitu služeb výrazů](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Řetězcové literály | Počet řetězcových literálů v příkazu | 20,000 <br/><br/>Počet řetězcových konstant v jednom výrazu dotazu je omezen. Výsledkem překročení tohoto čísla je SQL Server chyba 8632.|
 ||||

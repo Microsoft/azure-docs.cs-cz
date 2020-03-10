@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, devcenter, cc996988-fb4f-47
 ms.openlocfilehash: 3e5513d8730f455b220fa480eb99ce9c29216210
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769366"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358343"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
@@ -23,7 +23,7 @@ Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru]
 > [!NOTE]
 > C#Vývojáři by měli zvážit [Vytvoření první funkce v aplikaci Visual Studio 2019](functions-create-your-first-function-visual-studio.md) místo na portálu. 
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com> pomocí svého účtu Azure.
 

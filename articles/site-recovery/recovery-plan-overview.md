@@ -4,11 +4,11 @@ description: Přečtěte si o plánech obnovení v Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396988"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
@@ -62,11 +62,11 @@ V takovém případě se toto přizpůsobení stane při spuštění převzetí 
 
 Obnovování rozsáhlých aplikací může být složitý úkol. Ruční kroky činí proces náchylný k chybě a osoba, která přebírá převzetí služeb při selhání, nemusí vědět o všech složitými rozhraními App. Plán obnovení můžete použít k vytvoření objednávky a automatizaci akcí potřebných v každém kroku, a to pomocí Azure Automation Runbooky pro převzetí služeb při selhání do Azure nebo skriptů. Pro úlohy, které nemůžou být automatizované, můžete do plánů obnovení vložit pauzy pro ruční akce. Existuje několik typů úloh, které můžete nakonfigurovat:
 
-* **Úlohy na virtuálním počítači Azure po převzetí služeb při selhání**: když převezmete služby do Azure, obvykle je potřeba provést akce, abyste se mohli k virtuálnímu počítači připojit po převzetí služeb při selhání. Například: 
+* **Úlohy na virtuálním počítači Azure po převzetí služeb při selhání**: když převezmete služby do Azure, obvykle je potřeba provést akce, abyste se mohli k virtuálnímu počítači připojit po převzetí služeb při selhání. Příklad: 
     * Vytvořte veřejnou IP adresu na virtuálním počítači Azure.
     * Přiřaďte skupinu zabezpečení sítě k síťovému adaptéru virtuálního počítače Azure.
     * Přidejte Nástroj pro vyrovnávání zatížení do skupiny dostupnosti.
-* **Úkoly v rámci virtuálního počítače po převzetí služeb při selhání**: tyto úlohy obvykle překonfigurují aplikaci běžící na počítači, aby i nadále fungovala správně v novém prostředí. Například:
+* **Úkoly v rámci virtuálního počítače po převzetí služeb při selhání**: tyto úlohy obvykle překonfigurují aplikaci běžící na počítači, aby i nadále fungovala správně v novém prostředí. Příklad:
     * Upravte připojovací řetězec databáze v počítači.
     * Změňte konfiguraci nebo pravidla webového serveru.
 

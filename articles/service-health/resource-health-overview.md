@@ -3,12 +3,12 @@ title: Přehled Azure Resource Health
 description: Přehled Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356793"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926088"
 ---
 # <a name="resource-health-overview"></a>Přehled Resource Health
  
@@ -26,19 +26,19 @@ Další informace o vyhodnocení stavu najdete v seznamu typů prostředků a ko
 
 Stav prostředku se zobrazuje jako jeden z následujících stavů.
 
-### <a name="available"></a>Dostupné
+### <a name="available"></a>K dispozici
 
 *K dispozici* znamená, že nebyly zjištěny žádné události, které mají vliv na stav prostředku. V případech, kdy se prostředek zotavil z neplánovaného výpadku za posledních 24 hodin, se zobrazí oznámení "nedávno Vyřešeno".
 
 ![Stav * k dispozici * pro virtuální počítač s oznámením "nedávno Vyřešeno"](./media/resource-health-overview/Available.png)
 
-### <a name="unavailable"></a>Neaktivní
+### <a name="unavailable"></a>Nedostupný
 
 *Nedostupné* znamená, že služba zjistila trvalou platformu nebo jinou událost než platformu, která má vliv na stav prostředku.
 
 #### <a name="platform-events"></a>Události platformy
 
-Události platformy se spouštějí více komponentami infrastruktury Azure. Zahrnují jak plánované akce (například plánovaná údržba), tak neočekávané incidenty (například neplánovaný restart hostitele).
+Události platformy se spouštějí více komponentami infrastruktury Azure. Zahrnují jak plánované akce (například plánované údržby), tak neočekávané incidenty (například neplánovaný restart hostitele nebo snížený hostitelský hardware, který je po určeném časovému intervalu neúspěšný).
 
 Resource Health poskytuje další podrobnosti o události a procesu obnovení. Také vám umožňuje kontaktovat podpora Microsoftu i v případě, že nemáte aktivní smlouvu o podpoře.
 
@@ -50,7 +50,7 @@ Akce uživatele aktivují události jiné než platformy. Mezi příklady patř�
 
 ![Stav "není k dispozici" pro virtuální počítač z důvodu události jiné než platformy](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
-### <a name="unknown"></a>Není známo
+### <a name="unknown"></a>Neznámé
 
 *Neznámý* znamená, že Resource Health nedostaly informace o prostředku více než 10 minut. I když tento stav není konečným náznakem stavu prostředku, je důležitým datovým bodem pro řešení problémů.
 
@@ -80,7 +80,7 @@ Můžete získat přístup ke 14 dnům historie v části **historie stavu** Res
 
 ![Seznam událostí Resource Health za poslední dva týdny](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 Pro otevření Resource Health pro jeden prostředek:
 

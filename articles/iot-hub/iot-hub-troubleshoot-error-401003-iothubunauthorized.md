@@ -9,17 +9,17 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: d0a9f643516af5945037acb3dd1da24b06944171
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960630"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396481"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
 Tento článek popisuje příčiny a řešení 401003 chyb **IoTHubUnauthorized** .
 
-## <a name="symptoms"></a>Příznaky
+## <a name="symptoms"></a>Symptomy
 
 ### <a name="symptom-1"></a>Příznak 1
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478796"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360016"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Správa prostředků Azure pomocí Azure Portal
 
@@ -33,7 +33,7 @@ Prostředky Azure se uspořádávají podle služeb Azure a skupin prostředků.
 
 Postup otevření prostředku podle typu služby:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V levém podokně vyberte službu Azure. V tomto případě **účty úložiště**.  Pokud uvedenou službu nevidíte, vyberte **všechny služby**a potom vyberte typ služby.
 
     ![otevřít prostředek Azure na portálu](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -48,7 +48,7 @@ Postup otevření prostředku podle typu služby:
 
 Postup otevření prostředku podle skupiny prostředků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V levém podokně vyberte **skupiny prostředků** a seznam prostředků v rámci skupiny.
 3. Vyberte prostředek, který chcete otevřít. 
 
@@ -60,7 +60,7 @@ Při zobrazení prostředku na portálu se zobrazí možnosti správy daného ko
 
 Snímek obrazovky ukazuje možnosti správy pro virtuální počítač Azure. Můžete provádět operace, jako je spuštění, restartování a zastavení virtuálního počítače.
 
-## <a name="delete-resources"></a>Odstranění prostředků
+## <a name="delete-resources"></a>Odstranit prostředky
 
 1. Otevřete prostředek na portálu. Postup najdete v tématu [Open Resources](#open-resources).
 2. Vyberte **Odstranit**. Následující snímek obrazovky ukazuje možnosti správy pro virtuální počítač.

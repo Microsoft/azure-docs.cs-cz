@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757862"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384760"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge požadavky na systém
 
@@ -58,7 +58,7 @@ Azure IoT Edge umožňuje odchozí komunikaci z místního hraničního zaříze
 
 Použijte následující tabulku pro konfiguraci portů pro servery hostující Azure IoT Edge Runtime:
 
-| Číslo portu | V nebo ven | Rozsah portů | Požaduje se | Pokyny |
+| Číslo portu | V nebo ven | Rozsah portů | Požadováno | Doprovodné materiály |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| Mimo       | WAN        | Ano      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace je nutná, pokud používáte ruční skripty nebo Azure IoT zařízení zřizování služby (DPS).|
 
@@ -82,9 +82,9 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 
 | Vzor adresy URL                      | Součást nebo funkce                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft Container Registry (povinné)               |
-| https://\*.azurecr.io                     | Registry kontejnerů pro osobní a třetí strany (volitelné) | 
-| https://\*.azure-devices.net              | Přístup k IoT Hub (povinné)                             | 
+| https:\//mcr.microsoft.com<br></br>https://\*. cdn.mscr.io | Microsoft Container Registry (povinné)               |
+| https://\*. azurecr.io                     | Registry kontejnerů pro osobní a třetí strany (volitelné) | 
+| https://\*. azure-devices.net              | Přístup k IoT Hub (povinné)                             | 
 
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>Vzory adres URL pro bránu pro Azure Government
 
@@ -94,8 +94,8 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 
 | Vzor adresy URL                      | Součást nebo funkce                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft Container Registry (povinné)               |
-| https://\*.azure-devices.us              | Přístup k IoT Hub (povinné)           |
+| https:\//mcr.microsoft.com<br></br>https://\*. cdn.mscr.com | Microsoft Container Registry (povinné)               |
+| https://\*. azure-devices.us              | Přístup k IoT Hub (povinné)           |
 | https://\*. azurecr.us                    | Registry kontejnerů pro osobní a třetí strany (volitelné) | 
 
 ## <a name="internet-bandwidth"></a>Šířka pásma internetu

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 03/06/2020
 ms.author: b-juche
-ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b76edb2d0db806d8ff4935d2b093fee3c2bb34d7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048812"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925357"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -148,6 +148,11 @@ Azure NetApp Files podporuje verze Active Directory Domain Services Windows Serv
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Proč dostupné místo v klientovi SMB nezobrazuje zřízené velikosti?
 
 Velikost svazku hlášená klientem SMB je maximální velikost, na kterou může Azure NetApp Files svazek růst. Velikost Azure NetApp Filesho svazku, jak je znázorněno na klientovi SMB, se nereflektuje na kvótu nebo velikost svazku. Můžete získat velikost Azure NetApp Filesho svazku nebo kvótu prostřednictvím Azure Portal nebo rozhraní API.
+<!--
+### Does Azure NetApp Files support LDAP signing? 
+
+Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
+--> 
 
 ## <a name="capacity-management-faqs"></a>Nejčastější dotazy ke správě kapacity
 

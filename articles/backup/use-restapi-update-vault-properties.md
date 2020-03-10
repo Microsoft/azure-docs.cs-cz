@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78204493"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395528"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizace konfigurace služby Azure Recovery Services trezoru pomocí REST API
 
@@ -83,11 +83,11 @@ K vytvoření textu žádosti se použijí tyto společné definice.
 
 Další podrobnosti najdete [v dokumentaci k REST API](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Název  |Požadováno  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|eTag     |         |   Řetězec      |  Volitelné eTag       |
-|location     |  true (pravda)       |Řetězec         |   Umístění prostředku      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
+|eTag     |         |   String      |  Volitelné eTag       |
+|umístění     |  true       |String         |   Umístění prostředku      |
+|vlastnosti     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
 |značek     |         | Objekt        |     Značky prostředků    |
 
 #### <a name="example-request-body"></a>Příklad textu žádosti

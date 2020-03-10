@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954337"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362638"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
@@ -43,7 +43,7 @@ Vyvážení zátěže přesunutím virtuálních počítačů mezi dvěma proces
 
     ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. Klikněte na **Vyrovnávání zatížení**, vyberte cílový procesový Server, na který chcete přesunout počítače. Pak klikněte na **OK** .
+4. Klikněte na **Vyrovnávání zatížení**, vyberte cílový procesový Server, na který chcete přesunout počítače. Potom klikněte na **OK**.
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
@@ -59,7 +59,7 @@ Přesuňte celé zatížení zpracovávané procesovým serverem na jiný proces
 1. V trezoru v části **Spravovat** klikněte na **Site Recovery infrastruktura**. V části **pro fyzické počítače VMware &** klikněte na **konfigurační servery**.
 2. Klikněte na konfigurační server, se kterým jsou zaregistrované procesní servery.
 3. Klikněte na procesový Server, ze kterého chcete úlohu přepnout.
-4. Klikněte na **přepínač**, vyberte cílový procesový Server, na který chcete přesunout úlohu. Pak klikněte na **OK** .
+4. Klikněte na **přepínač**, vyberte cílový procesový Server, na který chcete přesunout úlohu. Potom klikněte na **OK**.
 
     ![Přepínač](media/vmware-azure-manage-process-server/Switch.PNG)
 

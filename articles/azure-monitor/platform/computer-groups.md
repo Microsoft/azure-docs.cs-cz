@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655327"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373306"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v Azure Monitor dotazy protokolu
 Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../log-query/log-query-overview.md) na konkrétní sadu počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Pokud je skupina zahrnutá v dotazu protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačům ve skupině.

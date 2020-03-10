@@ -16,18 +16,18 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016717"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392977"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Rozšířené kurzy Media Encoder Premium Workflow
 ## <a name="overview"></a>Přehled
 Tento dokument obsahuje návody, které ukazují, jak přizpůsobit pracovní postupy pomocí **Návrhář postupu provádění**. Skutečné soubory pracovního postupu najdete [tady](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples).  
 
 ## <a name="toc"></a>TOC
-Jsou pokrytá následující témata:
+Jsou pokryta následující témata:
 
 * [Kódování MXF do typu MP4 s jednou přenosovou rychlostí](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
   * [Spouští se nový pracovní postup.](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
@@ -238,7 +238,7 @@ Připojte k naší nové komponentě AVC nekomprimovaný kód PIN výstupního s
 
 Teď můžete přizpůsobit konfiguraci pro náš nový kodér AVC na výstup 960x540 při 2,5 MB/s. (Použijte jeho vlastnosti "Šířka výstupu", "Výstupní výška" a "přenosová rychlost (KB/s)".)
 
-Vzhledem k tomu, že chceme použít výsledný prostředek společně s Azure Media Services dynamické balení, musí být koncový bod streamování schopný vygenerovat z těchto souborů MP4 HLS/fragmentovat fragmenty MP4/POMLČKy, které jsou přesně zarovnané na sebe navzájem tak, aby klienti, kteří přecházejí mezi různými přenosovými rychlostmi, získají jediné plynule nepřetržité video a zvukové prostředí. K tomu je potřeba zajistit, aby ve vlastnostech skupinu GOP ("skupina obrázků") pro oba soubory MP4 byl velikost ("skupina obrázků") na 2 sekundy, kterou může udělat:
+Vzhledem k tomu, že chceme použít výsledný prostředek společně s Azure Media Services dynamickým balením, musí být koncový bod streamování schopný vygenerovat z těchto souborů MP4 HLS/fragmentované fragmenty MP4/POMLČKy, které jsou přesně zarovnané na sebe tak, aby klienti, kteří přecházejí mezi různými přenosovými rychlostmi, získali jediné plynulé nepřetržité video a zvukové prostředí. K tomu je potřeba zajistit, aby ve vlastnostech skupinu GOP ("skupina obrázků") pro oba soubory MP4 byl velikost ("skupina obrázků") na 2 sekundy, kterou může udělat:
 
 * nastavení režimu velikosti skupinu GOP na pevnou skupinu GOP velikost a
 * Interval klíčových snímků na dvě sekundy.
@@ -294,7 +294,7 @@ Vytvořte třetí komponentu výstupu souboru pro výstup odchozího datového p
 *Audio muxer vytváření výstupu souboru*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Přidání. ISM – soubor SMIL
-Aby dynamické balení fungovalo v kombinaci se soubory MP4 (a MP4 jenom zvukovým souborem MP4) v našem Media Servicesm assetu, potřebujeme taky soubor manifestu (označovaný také jako "SMIL": Synchronizovaný jazyk integrace multimédií). Tento soubor indikuje Azure Media Services, které soubory MP4 jsou k dispozici pro dynamické balení a které z nich je vhodné pro streamování zvuku. Typický soubor manifestu pro sadu MP4's s jedním zvukovým datovým proudem vypadá takto:
+Aby dynamické balení fungovalo v kombinaci se soubory MP4 (a souborem MP4 pouze zvuku) v našem Media Servicesm assetu, potřebujeme také soubor manifestu (označovaný také jako "SMIL": synchronizovaný Cloud pro integraci multimédií). Tento soubor indikuje Azure Media Services, které soubory MP4 jsou k dispozici pro dynamické balení a které z nich je vhodné pro streamování zvuku. Typický soubor manifestu pro sadu MP4's s jedním zvukovým datovým proudem vypadá takto:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -761,7 +761,7 @@ To bylo provedeno prostřednictvím normální operace manipulace s řetězci. V
 
 *Protokolování výsledného seznamu klipů*
 
-Proveďte testovací spuštění, abyste viděli, jak byly oříznuté streamování videa a zvuku. Jak provedete více než jeden testovací běh s různými hodnotami pro oříznutí bodů, všimnete si, že se ale neberou v úvahu. Důvodem je, že návrhář, na rozdíl od modulu Azure runtime, nepřepisuje cliplist XML při každém spuštění. To znamená, že pouze poprvé jste nastavili body in a out, což způsobí transformaci kódu XML (pokud (`clipListXML.indexOf("<trim>") == -1`)) zabrání v přidání dalšího elementu Trim, pokud již existuje.
+Proveďte testovací spuštění, abyste viděli, jak byly oříznuté streamování videa a zvuku. Jak provedete více než jeden testovací běh s různými hodnotami pro oříznutí bodů, všimnete si, že se ale neberou v úvahu. Důvodem je, že návrhář, na rozdíl od modulu Azure runtime, nepřepisuje cliplist XML při každém spuštění. To znamená, že pouze poprvé jste nastavili body in a out, což způsobí transformaci kódu XML, a to v případě, že (`clipListXML.indexOf("<trim>") == -1`)) zabrání pracovnímu postupu v přidání dalšího elementu Trim, pokud již existuje.
 
 Abychom mohli náš pracovní postup dobře testovat v místním prostředí, je vhodné přidat nějaký kód pro vedení práce, který kontroluje, zda již existuje element Trim. Pokud ano, můžeme ho odebrat, než budete pokračovat úpravou XML novými hodnotami. Místo toho, aby se nepoužívaly manipulace s prostými řetězci, je pravděpodobně bezpečnější provést pomocí reálné analýzy modelu objektu XML.
 
@@ -955,5 +955,5 @@ Pomocí níže uvedené klauzule jednoduché ochrany můžeme zjistit, jestli je
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

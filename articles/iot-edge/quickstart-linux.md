@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4a076f9e6ae67b9a4dc27fcd058945716dfebe75
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: e2dd17a324c8920f44e972987508352a69383bb9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264606"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893090"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rychlý Start: nasazení prvního modulu IoT Edge do virtuálního zařízení se systémem Linux
 
@@ -23,7 +23,7 @@ Vyzkoušejte si Azure IoT Edge v tomto rychlém startu nasazením kontejneru kó
 V tomto rychlém startu se naučíte:
 
 1. Vytvořit IoT Hub.
-2. Zaregistrovat zařízení IoT Edge do centra IoT Hub.
+2. Zaregistrovat zařízení IoT Edge do IoT Hubu.
 3. Nainstalujte a spusťte modul runtime IoT Edge na virtuálním zařízení.
 4. Vzdáleně nasadit modul na zařízení IoT Edge.
 
@@ -40,8 +40,10 @@ K dokončení řady kroků v tomto rychlém startu použijete Azure CLI. Azure I
 Přidejte rozšíření Azure IoT do instance služby Cloud Shell.
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
+   
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,11 +66,11 @@ Zařízení IoT Edge:
 
    Vytvoření a spuštění nového virtuálního počítače může trvat několik minut.
 
-   Při vytváření nového virtuálního počítače, poznamenejte si, **publicIpAddress**, který je součástí výstupu příkazu create. Tato veřejná IP adresa bude používat pro připojení k virtuálnímu počítači dále v tomto rychlém startu.
+   Když vytváříte nový virtuální počítač, poznamenejte si **publicIpAddress**, který je k dispozici jako součást výstupu příkazu CREATE. Tato veřejná IP adresa bude používat pro připojení k virtuálnímu počítači dále v tomto rychlém startu.
 
 * Pokud chcete spustit modul runtime Azure IoT Edge na vlastním zařízení, postupujte podle pokynů v [části instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md).
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Začněte s rychlým startem vytvořením služby IoT Hub pomocí Azure CLI.
 
@@ -84,7 +86,7 @@ Následující kód vytvoří bezplatné centrum **F1** ve skupině prostředků
 
    Pokud dojde k chybě kvůli tomu, že vaše předplatné již jedno bezplatné centrum obsahuje, změňte skladovou položku na **S1**. Pokud dojde k chybě, že název služby IoT Hub není k dispozici, znamená to, že má někdo jiný již centra s tímto názvem. Zkuste použít nový název.
 
-## <a name="register-an-iot-edge-device"></a>Zaregistrovat zařízení IoT Edge
+## <a name="register-an-iot-edge-device"></a>Registrace zařízení IoT Edge
 
 Zaregistrujte zařízení IoT Edge do nově vytvořeného centra IoT.
 
@@ -92,7 +94,7 @@ Zaregistrujte zařízení IoT Edge do nově vytvořeného centra IoT.
 
 Vytvořte identitu zařízení pro zařízení IoT Edge, aby mohla komunikovat se službou IoT Hub. Identita zařízení se uchovává v cloudu a k přidružení fyzického zařízení k identitě zařízení se používá jedinečný připojovací řetězec zařízení.
 
-Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické zařízení IoT, deklarujte tuto identitu pro zařízení IoT Edge se `--edge-enabled` příznak.
+Vzhledem k tomu, že se zařízení IoT Edge chovají a dají se spravovat jinak než typická zařízení IoT, deklarujte tuto identitu pro IoT Edge zařízení s příznakem `--edge-enabled`.
 
 1. Ve službě Azure Cloud Shell zadejte následující příkaz, kterým v centru vytvoříte zařízení **myEdgeDevice**.
 
@@ -108,7 +110,7 @@ Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Zkopírujte hodnotu klíče `connectionString` z výstupu JSON a uložte ho. Tato hodnota je připojovací řetězec zařízení. Tento připojovací řetězec použijete ke konfiguraci modulu runtime IoT Edge v další části.
+3. Zkopírujte hodnotu klíče `connectionString` z výstupu JSON a uložte ho. Tato hodnota je připojovací řetězec zařízení. Pomocí tohoto připojovacího řetězce můžete nakonfigurovat modul runtime IoT Edge v další části.
 
    ![Načtení připojovacího řetězce z výstupu rozhraní příkazového řádku](./media/quickstart/retrieve-connection-string.png)
 
@@ -118,13 +120,13 @@ Na zařízení IoT Edge spusťte modul runtime Azure IoT Edge.
 
 ![Diagram – spuštění modulu runtime na zařízení](./media/quickstart-linux/start-runtime.png)
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. **IoT Edge démon zabezpečení** se spustí pokaždé, když se spustí IoT Edge zařízení, a spustí agenta IoT Edge. **Agent IoT Edge** umožňuje nasadit a monitorovat moduly na zařízení IoT Edge, včetně centra služby IoT Edge. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. **IoT Edge démon zabezpečení** se spustí pokaždé, když se spustí IoT Edge zařízení, a spustí agenta IoT Edge. **Agent IoT Edge** umožňuje nasadit a monitorovat moduly na zařízení IoT Edge, včetně IoT Edge Hubu. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
 
 Během konfigurace modulu runtime zadáte připojovací řetězec zařízení. Použijte řetězec, který jste získali z Azure CLI. Tento řetězec přidruží vaše fyzické zařízení k identitě zařízení IoT Edge v Azure.
 
 ### <a name="set-the-connection-string-on-the-iot-edge-device"></a>Nastavit připojovací řetězec na zařízení IoT Edge
 
-Pokud používáte Azure IoT Edge na virtuálním počítači s Ubuntu, jak je popsáno v části požadavky, má už zařízení IoT Edge runtime nainstalované. Stačí nakonfigurovat zařízení pomocí připojovacího řetězce zařízení, který jste získali v předchozí části. Můžete to provést vzdáleně bez nutnosti připojení k virtuálnímu počítači. Spusťte následující příkaz a nahraďte `{device_connection_string}` vlastním řetězcem.
+Pokud používáte Azure IoT Edge na virtuálním počítači s Ubuntu, jak je popsáno v části požadavky, má už zařízení IoT Edge runtime nainstalované. Stačí nakonfigurovat zařízení pomocí připojovacího řetězce zařízení, který jste získali v předchozí části. To můžete provést vzdáleně, aniž byste se museli připojovat k virtuálnímu počítači. Spusťte následující příkaz a nahraďte `{device_connection_string}` vlastním řetězcem.
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
@@ -171,8 +173,8 @@ Vaše zařízení IoT Edge je teď nakonfigurované. Je připravené na spoušt�
 
 ## <a name="deploy-a-module"></a>Nasadit modul
 
-Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit modul, který bude odesílat telemetrická data do služby IoT Hub.
-![Diagram – nasazení modulu z cloudu do zařízení](./media/quickstart-linux/deploy-module.png)
+Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit modul, který bude posílat telemetrická data do IoT Hubu.
+![diagram – nasazení modulu z cloudu do zařízení](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 

@@ -4,11 +4,11 @@ description: Popisuje, jak vyřešit chyby registrace poskytovatele prostředků
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484516"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390055"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Vyřešit chyby registrace poskytovatele prostředků
 
@@ -16,7 +16,7 @@ Tento článek popisuje, chyby, které může dojít při používání poskytov
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="symptom"></a>Příznak
+## <a name="symptom"></a>Symptom
 
 Při nasazování prostředků, může se zobrazit následující kód chyby a zprávy:
 
@@ -79,13 +79,13 @@ Pokud chcete získat podporované verze rozhraní API pro konkrétní typ prost�
 
 ## <a name="solution-2---azure-cli"></a>Řešení 2 – rozhraní příkazového řádku Azure
 
-Pokud chcete zobrazit, zda poskytovatel je zaregistrovaný, použijte `az provider list` příkazu.
+Chcete-li zjistit, zda je poskytovatel zaregistrován, použijte příkaz `az provider list`.
 
 ```azurecli-interactive
 az provider list
 ```
 
-Zaregistrovat poskytovatele prostředků, použijte `az provider register` příkaz a zadejte *obor názvů* k registraci.
+Chcete-li zaregistrovat poskytovatele prostředků, použijte příkaz `az provider register` a zadejte *obor názvů* , který chcete zaregistrovat.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
@@ -101,7 +101,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 Můžete zobrazit stav registrace a obor názvů zprostředkovatele prostředků prostřednictvím portálu pro registraci.
 
-1. Z portálu, vyberte **všechny služby**.
+1. Na portálu vyberte **všechny služby**.
 
    ![Vyberte všechny služby](./media/error-register-resource-provider/select-all-services.png)
 
@@ -113,10 +113,10 @@ Můžete zobrazit stav registrace a obor názvů zprostředkovatele prostředků
 
    ![Vyberte předplatné, zaregistrujte poskytovatele prostředků](./media/error-register-resource-provider/select-subscription-to-register.png)
 
-1. Pro vaše předplatné, vyberte **poskytovatelů prostředků**.
+1. U svého předplatného vyberte **poskytovatelé prostředků**.
 
    ![Vyberte poskytovatele prostředků](./media/error-register-resource-provider/select-resource-provider.png)
 
-1. Podívejte se na seznam poskytovatelů prostředků a v případě potřeby vyberte **zaregistrovat** odkaz se zaregistrovat poskytovatele prostředků typu, který zkoušíte nasadit.
+1. Podívejte se na seznam poskytovatelů prostředků a v případě potřeby vyberte odkaz **zaregistrovat** a zaregistrujte poskytovatele prostředků typu, který se pokoušíte nasadit.
 
    ![Seznam poskytovatelů prostředků](./media/error-register-resource-provider/list-resource-providers.png)

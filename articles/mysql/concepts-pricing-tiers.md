@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: cf959112a2a717da1005be062dda3b83163d8d6c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163688"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374115"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -30,7 +30,7 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
 | Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
-| Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
+| Obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
 Po vytvoření serveru se dá v průběhu několika sekund změnit počet virtuální jádra, generování hardwaru a cenová úroveň (s výjimkou a od úrovně Basic). Velikost úložiště můžete také nezávisle upravovat a dobu uchovávání záloh nahoru nebo dolů bez výpadků aplikací. Po vytvoření serveru nejde typ úložiště zálohy změnit. Další informace najdete v části [Scale Resources](#scale-resources) .
@@ -83,7 +83,7 @@ Pokud jste například zřídili 1000 GB úložiště a skutečné využití dos
 
 Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Zálohovat
 
 Služba automaticky provede zálohování vašeho serveru. Můžete vybrat dobu uchování z rozsahu 7 až 35 dní. Pro obecné účely a paměťově optimalizované servery se můžou rozhodnout pro zálohování geograficky redundantního úložiště. Další informace o zálohách [najdete v článku koncepty](concepts-backup.md).
 

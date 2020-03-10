@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273960"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366713"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Nasazení místního zařízení StorSimple (Update 3 a novější)
 
@@ -62,7 +62,7 @@ Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci s
 
 * [Stáhnout kontrolní seznam konfigurace nasazení zařízení StorSimple](https://www.microsoft.com/download/details.aspx?id=49159)
 
-## <a name="deployment-prerequisites"></a>Požadavky pro nasazení
+## <a name="deployment-prerequisites"></a>Požadavky nasazení
 Následující části popisují požadavky konfigurace pro službu Správce zařízení StorSimple a zařízení StorSimple.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>Služba Správce zařízení StorSimple

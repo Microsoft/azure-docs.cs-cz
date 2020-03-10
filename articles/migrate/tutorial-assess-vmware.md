@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
 ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289437"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388902"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate
 
@@ -65,7 +65,7 @@ Vytvořte nový Azure Migrate projekt následujícím způsobem:
 
    ![Pole pro název a oblast projektu](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: posouzení serveru** > **Další**.
 
    ![Výběr nástroje pro vyhodnocování serveru](./media/tutorial-assess-vmware/assessment-tool.png)

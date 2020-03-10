@@ -14,12 +14,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: daf26f346ab10906eb5c37c6d7d2bb24736417cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698812"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375653"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 
@@ -77,7 +77,7 @@ Podobně jako aplikační objekty lze instanční objekty vytvořit také prost�
 * Když správce přidá aplikaci z Galerie aplikací (tím se vytvoří také základní objekt aplikace)
 * Přidání aplikace pro použití [proxy aplikací služby AD Azure](/azure/active-directory/manage-apps/application-proxy)
 * Připojení aplikace pro jednotné přihlašování pomocí protokolu SAML nebo jednotného přihlašování k heslu (SSO)
-* Programově prostřednictvím Graph API Azure AD nebo PowerShellu
+* Prostřednictvím kódu programu Microsoft Graph rozhraní API nebo PowerShell
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Jak jsou objekty aplikace a instanční objekty vzájemně propojené?
 
@@ -100,13 +100,13 @@ Aplikace, které přidáte sami (v diagramu jsou reprezentovány jako **aplikace
 
 ### <a name="notes-and-exceptions"></a>Poznámky a výjimky
 
-* Ne všechny instanční objekty odkazují zpátky na objekt aplikace. Když je služba Azure AD původně sestavená o služby poskytované aplikacím, byly omezenější a objekt služby byl pro vytvoření identity aplikace dostačující. Původní instanční objekt byl blíž v obrazci k účtu služby Windows Server Active Directory. Z tohoto důvodu je stále možné vytvářet instanční objekty prostřednictvím různých cest, jako je například použití Azure AD PowerShellu, aniž byste nejdřív vytvořili objekt aplikace. Graph API služby Azure AD vyžaduje aplikační objekt před vytvořením instančního objektu.
+* Ne všechny instanční objekty odkazují zpátky na objekt aplikace. Když je služba Azure AD původně sestavená o služby poskytované aplikacím, byly omezenější a objekt služby byl pro vytvoření identity aplikace dostačující. Původní instanční objekt byl blíž v obrazci k účtu služby Windows Server Active Directory. Z tohoto důvodu je stále možné vytvářet instanční objekty prostřednictvím různých cest, jako je například použití Azure AD PowerShellu, aniž byste nejdřív vytvořili objekt aplikace. Rozhraní Microsoft Graph API vyžaduje aplikační objekt před vytvořením instančního objektu.
 * Ne všechny výše popsané informace jsou aktuálně vystaveny prostřednictvím kódu programu. Následující jsou k dispozici pouze v uživatelském rozhraní:
   * Pravidla transformace deklarací identity
   * Mapování atributů (zřizování uživatelů)
-* Podrobnější informace o instančním objektu a objektech aplikace najdete v referenční dokumentaci k Azure AD graphu REST API:
-  * [Aplikace](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Instanční objekt](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* Podrobnější informace o instančním objektu a objektech aplikace najdete v referenční dokumentaci k rozhraní Microsoft Graph API:
+  * [Použití](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [Instanční objekt](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Proč se aplikace integrují s Azure AD?
 

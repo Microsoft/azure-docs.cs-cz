@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77911810"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380297"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Správa Data Box Disk pomocí Azure Portal
 
@@ -57,7 +57,7 @@ Během pár minut se vytvoří klon, portál se aktualizuje a zobrazí se na ně
 
 [![Klonování objednávky 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
-## <a name="delete-order"></a>Odstranění objednávky
+## <a name="delete-order"></a>Odstranit objednávku
 
 Po dokončení objednávky můžete chtít objednávku odstranit. Objednávka obsahuje vaše osobní údaje jako jméno, adresu a kontaktní údaje. Při odstranění objednávky se tyto osobní údaje odstraní.
 
@@ -89,7 +89,7 @@ Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 
     ![Ukázkový expediční štítek](media/data-box-portal-ui-admin/example-shipping-label.png)
 
-## <a name="edit-shipping-address"></a>Úprava dodací adresy
+## <a name="edit-shipping-address"></a>Upravit dodací adresu
 
 Po zadání objednávky může být potřeba upravit dodací adresu. Tato možnost je dostupná jenom do odeslání disku. Po odeslání disku už tato možnost nebude dostupná.
 
@@ -103,7 +103,7 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
     ![Úprava dodací adresy 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
+## <a name="edit-notification-details"></a>Upravit podrobnosti o oznámení
 
 Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí disku. Po dokončení kopírování dat může být potřeba informovat jiného uživatele, aby před jeho odstraněním ze zdroje mohl ověřit data v účtu služby Azure Storage. V takových případech můžete upravit podrobnosti o oznámení.
 

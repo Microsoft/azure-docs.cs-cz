@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460071"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926014"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí pomocí Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
 Azure Event Hubs umožňuje automaticky zachytit streamovaná data v Event Hubs v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo v účtu, který si využijete [Azure Data Lake Storage obecné 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) s přidanou flexibilitou zadání času nebo velikosti intervalu. Nastavení zachytávání je rychlé, neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují s Event Hubs [jednotkami propustnosti](event-hubs-scalability.md#throughput-units). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
@@ -94,10 +94,11 @@ Kompletní ukázka je k dispozici ve streamování v úložišti škálování:
 
 ### <a name="use-apache-spark"></a>Použít Apache Spark
 
-[Apache Spark][Apache Spark] je "jednotný analytický modul pro velké zpracování dat". Podporuje různé jazyky, včetně SQL, a umožňuje snadný přístup k úložišti objektů BLOB v Azure. Existují dvě možnosti, jak spustit Apache Spark v Azure a jak zajistit snadný přístup k úložišti objektů BLOB v Azure:
+[Apache Spark][Apache Spark] je "jednotný analytický modul pro velké zpracování dat". Podporuje různé jazyky, včetně SQL, a umožňuje snadný přístup k úložišti objektů BLOB v Azure. K dispozici je několik možností, jak Apache Spark v Azure spouštět, a každý z nich poskytuje snadný přístup k úložišti objektů BLOB v Azure:
 
 - [HDInsight: adresování souborů ve službě Azure Storage][HDInsight: Address files in Azure storage]
 - [Azure Databricks: úložiště objektů BLOB v Azure][Azure Databricks: Azure Blob Storage]
+- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/spark-job) 
 
 ### <a name="use-avro-tools"></a>Použití nástrojů Avro
 

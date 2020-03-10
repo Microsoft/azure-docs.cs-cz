@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961355"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362609"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -36,7 +36,7 @@ Komponenta | Podrobnosti
 
 Konfigurační server, který používá sestavený procesový Server k ochraně zatížení, může zpracovat až 200 virtuálních počítačů na základě následujících konfigurací:
 
-Procesor | Memory (Paměť) | Velikost disku mezipaměti | Frekvence změny dat | Chráněné počítače
+Procesor | Paměť | Velikost disku mezipaměti | Frekvence změny dat | Chráněné počítače
 --- | --- | --- | --- | ---
 8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB nebo méně | Použijte k replikaci méně než 100 počítačů.
 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | Použijte k replikaci počítačů s 100 až 150.
@@ -163,7 +163,7 @@ Postup přidání hlavního cílového serveru pro virtuální počítač se sys
     ![Snímek obrazovky, který ukazuje, kde zadat IP adresu a přístupové heslo pro konfigurační server](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. Vyberte **Zaregistrovat**. Po dokončení registrace vyberte **Dokončit**.
 
-Po úspěšném dokončení registrace se server zobrazí v Azure Portal v **trezoru Recovery Services** > Site Recovery > **konfiguračního serveru** **infrastruktury** na hlavních cílových serverech konfigurační server.
+Po úspěšném dokončení registrace se server zobrazí v Azure Portal v **trezoru Recovery Services** > **Site Recovery infrastruktury** > **konfigurační servery**na hlavních cílových serverech konfiguračního serveru.
 
  > [!NOTE]
  > Stáhněte si nejnovější verzi [souboru sjednocené instalace hlavního cílového serveru pro Windows](https://aka.ms/latestmobsvc).

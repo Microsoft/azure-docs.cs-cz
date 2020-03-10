@@ -11,11 +11,11 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 6e4b5bc6d30f6caa2809b7aa1e72be70ae12dbc1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193030"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396624"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure synapse Analytics (dříve SQL DW) 
 
@@ -52,8 +52,8 @@ S odděleným úložištěm a výpočetním prostředím může při použití S
 
 SQL Analytics využívá Azure Storage k zabezpečení vašich uživatelských dat.  Vzhledem k tomu, že vaše data jsou uložená a spravovaná pomocí Azure Storage, pro vaši spotřebu úložiště se účtuje samostatně. Data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Můžete zvolit, který vzor horizontálního dělení se má použít k distribuci dat při definování tabulky. Jsou podporovány tyto horizontálního dělení vzory:
 
-* Hodnota hash
-* Kruhové dotazování.
+* Hash
+* Round-Robin
 * Replikace
 
 ### <a name="control-node"></a>Řídicí uzel

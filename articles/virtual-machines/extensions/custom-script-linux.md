@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
 ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246148"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380974"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s virtuálními počítači se systémem Linux
 Rozšíření vlastních skriptů verze 2 stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakoukoli jinou úlohu konfigurace nebo správy. Můžete stáhnout skripty z Azure Storage nebo jiného přístupného internetového umístění, nebo je můžete poskytnout modulu runtime rozšíření. 
@@ -113,16 +113,16 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | Název | Hodnota / příklad | Typ dat | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft. Compute. Extensions | řetězec |
-| type | CustomScript | řetězec |
+| publisher | Microsoft. Compute. Extensions | string |
+| typ | CustomScript | string |
 | typeHandlerVersion | 2.1 | int |
 | fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | pole |
-| commandToExecute (např.) | MyPythonScript.py Pythonu \<moje-param1 > | řetězec |
-| . | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | řetězec |
-| skipDos2Unix (např.) | false (nepravda) | Boolean |
+| commandToExecute (např.) | MyPythonScript.py Pythonu \<moje-param1 > | string |
+| Skript | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
+| skipDos2Unix (např.) | false | Boolean |
 | timestamp (např.) | 123456789 | 32-bitové celé číslo |
-| storageAccountName (např.) | examplestorageacct | řetězec |
-| storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | řetězec |
+| storageAccountName (např.) | examplestorageacct | string |
+| storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 | managedIdentity (např.) | {} nebo {"clientId": "31b403aa-C364-4240-a7ff-d85fb6cd7232"} nebo {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | objekt JSON |
 
 ### <a name="property-value-details"></a>Podrobnosti hodnoty vlastnosti
@@ -248,7 +248,7 @@ Pokud chcete v cílovém virtuálním počítači/VMSS použít identitu přiřa
 > [!NOTE]
 > vlastnost managedIdentity se **nesmí** používat ve spojení s vlastnostmi StorageAccountName nebo storageAccountKey.
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON popsané v předchozí části lze použít v šabloně Azure Resource Manager ke spuštění rozšíření vlastních skriptů během nasazování Azure Resource Manager šablony. Ukázkovou šablonu, která obsahuje rozšíření vlastních skriptů, najdete tady: [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 
@@ -376,7 +376,7 @@ az vm extension set \
   --protected-settings ./protected-config.json
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 Když se rozšíření vlastních skriptů spustí, skript se vytvoří nebo stáhne do adresáře, který je podobný následujícímu příkladu. Výstup příkazu je také uložen do tohoto adresáře v souboru `stdout` a `stderr`.
 
 ```bash

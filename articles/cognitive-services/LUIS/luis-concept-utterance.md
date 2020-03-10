@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280796"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396947"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 

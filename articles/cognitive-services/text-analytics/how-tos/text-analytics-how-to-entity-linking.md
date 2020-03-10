@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367639"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942658"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -47,7 +47,7 @@ Rozhraní API pro analýzu textu nabízí dvě verze rozpoznávání pojmenovan�
 Informace najdete v tématu [Podpora jazyků](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
 
-#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 ### <a name="entity-types"></a>Typy entit
 
@@ -74,7 +74,7 @@ Propojení entit
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
 ### <a name="entity-types"></a>Typy entit
 
@@ -130,7 +130,7 @@ Vytvoření žádosti POST. Můžete [použít post](text-analytics-how-to-call-
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek najdete na webu Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 [Referenční informace o rerozpoznávání entity V3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -144,7 +144,7 @@ NER
 Propojení entit
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
 [Referenční informace o rozpoznávání pojmenovaných entit (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
@@ -185,7 +185,7 @@ Všechny žádosti POST vrátí odpověď ve formátu JSON s ID a zjištěnými 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi.
 
 
-#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Příklad odpovědí V3
 
@@ -242,7 +242,7 @@ Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpověd
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
 ### <a name="example-ner-v2-response"></a>Příklad odpovědi NER v2
 ```json

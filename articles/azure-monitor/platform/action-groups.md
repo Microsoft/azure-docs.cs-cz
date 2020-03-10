@@ -7,11 +7,11 @@ ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357129"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -80,7 +80,7 @@ Ve skupině akcí můžete mít omezený počet akcí sady Runbook.
 ### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
 Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-mail
 E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že je správně nakonfigurováno filtrování e-mailů.
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -109,7 +109,7 @@ Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 ### <a name="secure-webhook"></a>Zabezpečený Webhook
 Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
-1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz třída https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Podívejte se na téma https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
     - Nakonfigurujte chráněné rozhraní API, které bude volat aplikace typu démon.
     
 1. Povolením použití skupin akcí v aplikaci Azure AD.

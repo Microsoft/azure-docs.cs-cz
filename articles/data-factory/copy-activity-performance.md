@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
 ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444140"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356254"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce škálovatelností a výkonem aktivity kopírování
 
@@ -42,7 +42,7 @@ Po přečtení tohoto článku, budou moci odpovědět na následující otázky
 
 ADF nabízí architekturu bez serveru, která umožňuje paralelismus na různých úrovních, což vývojářům umožňuje vytvářet kanály pro plné využití šířky pásma sítě a vstupně-výstupních operací úložiště a šířky pásma pro maximalizaci propustnosti přesunu dat pro vaše prostředí.  To znamená, že propustnost, kterou můžete dosáhnout, lze odhadnout měřením minimální propustnosti nabízených zdrojovým úložištěm dat, cílovým úložištěm dat a šířky pásma sítě mezi zdrojovým a cílovým serverem.  V následující tabulce je vypočítána doba kopírování na základě velikosti dat a limitu šířky pásma pro vaše prostředí. 
 
-| Velikost dat/ <br/> šířka pásma | 50 Mb/s    | 100 Mb/s  | 500 Mb/s  | 1 Gb/s   | 5 Gb/s   | 10 Gb/s  | 50 GB/s   |
+| Velikost dat/ <br/> připojení | 50 Mb/s    | 100 Mb/s  | 500 Mb/s  | 1 Gbps   | 5 Gb/s   | 10 Gb/s  | 50 GB/s   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
 | **1 GB**                    | 2,7 min.    | 1,4 min.   | 0,3 min.   | 0,1 min.  | 0,03 min. | 0,01 min. | 0,0 min.   |
 | **10 GB**                   | 27,3 min.   | 13,7 min.  | 2,7 min.   | 1,3 min.  | 0,3 min.  | 0,1 min.  | 0,03 min.  |
@@ -117,7 +117,7 @@ Provedením těchto kroků vyoptimalizujete výkon služby Azure Data Factory s 
 
    - [Paralelní kopírování](#parallel-copy)
    - [Jednotky integrace dat](#data-integration-units)
-   - [Kopírování dvoufázové instalace](#staged-copy)
+   - [Připravené kopírování](#staged-copy)
    - [Škálovatelnost prostředí Integration runtime v místním prostředí](concepts-integration-runtime.md#self-hosted-integration-runtime)
 
 5. **Rozšiřte konfiguraci na celou datovou sadu.** Až budete spokojeni s výsledky a výkonem spuštění, můžete rozšířit definici a kanál tak, aby pokryly celou datovou sadu.
@@ -128,7 +128,7 @@ Azure Data Factory poskytuje následující funkce optimalizace výkonu:
 
 - [Paralelní kopírování](#parallel-copy)
 - [Jednotky integrace dat](#data-integration-units)
-- [Kopírování dvoufázové instalace](#staged-copy)
+- [Připravené kopírování](#staged-copy)
 
 ### <a name="data-integration-units"></a>Jednotky pro integraci dat
 
@@ -144,7 +144,7 @@ Povolený DIUs k tomu, aby mohl provádět kopírování aktivit, je **mezi 2 a 
 | Kopírovat data do Azure SQL Database nebo Azure Cosmos DB |Mezi 4 a 16 v závislosti na úrovni jímky Azure SQL Database nebo Cosmos DB (počet DTU/ru) |
 | Všechny ostatní scénáře kopírování | 4 |
 
-Chcete-li přepsat toto výchozí nastavení, zadejte hodnotu **dataIntegrationUnits** vlastnost následujícím způsobem. *Skutečný počet DIUs* , že operace kopírování používá za běhu je rovna nebo menší než nakonfigurovaná hodnota, v závislosti na vašich dat vzor.
+Chcete-li přepsat toto výchozí nastavení, zadejte hodnotu vlastnosti **dataIntegrationUnits** následujícím způsobem. *Skutečný počet DIUs* , který operace kopírování používá v době běhu, se rovná nebo je menší než nakonfigurovaná hodnota v závislosti na datovém vzoru.
 
 Při monitorování spuštění aktivit můžete zobrazit DIUs, která se používá pro každé spuštění kopírování v výstupu aktivity kopírování. Další informace najdete v tématu [monitorování aktivit kopírování](copy-activity-overview.md#monitoring).
 
@@ -184,7 +184,7 @@ Pro každou spuštění aktivity kopírování Azure Data Factory určuje počet
 | Kopírovat data mezi úložišti souborů |Závisí na velikosti souborů a na počtu DIUs používaných ke kopírování dat mezi dvěma úložišti dat cloudu nebo na fyzické konfiguraci počítače prostředí Integration runtime v místním prostředí. |
 | Kopírování z relačního úložiště dat s povolenou možností oddílu (včetně [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabulky SAP](connector-sap-table.md#sap-table-as-source)a [otevřeného centra SAP](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Kopírování dat z libovolného zdrojového úložiště do Azure Table Storage |4 |
-| Dalších scénářů kopírování |1\. místo |
+| Dalších scénářů kopírování |1 |
 
 > [!TIP]
 > Když kopírujete data mezi úložišti na základě souborů, výchozí chování obvykle poskytuje nejlepší propustnost. Výchozí chování je automaticky určováno na základě vzoru zdrojového souboru.
@@ -224,7 +224,7 @@ Pro řízení zatížení počítačů, které hostují vaše úložiště dat n
 
 Při kopírování dat ze zdrojového úložiště dat do úložiště dat jímky, můžete zvolit použití Blob storage jako dočasné pracovní úložiště. Pracovní je zvláště užitečná v následujících případech:
 
-- **Chcete ingestovat data z různých úložišť dat do SQL Data Warehouse prostřednictvím základny.** SQL Data Warehouse používá k načtení velkých objemů dat do SQL Data Warehouse PolyBase jako vhodný mechanismus vysokou propustnost. Zdrojová data musí být ve službě BLOB Storage nebo Azure Data Lake Store a musí splňovat další kritéria. Při načítání dat z úložiště dat než Blob storage nebo Azure Data Lake Store můžete aktivovat kopírování prostřednictvím Blob storage dočasné pracovní data. V takovém případě Azure Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Potom použije PolyBase k načtení dat do SQL Data Warehouse efektivně. Další informace najdete v tématu [použití PolyBase k načítání dat do Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **Chcete ingestovat data z různých úložišť dat do SQL Data Warehouse prostřednictvím základny.** SQL Data Warehouse používá k načtení velkých objemů dat do SQL Data Warehouse PolyBase jako vhodný mechanismus vysokou propustnost. Zdrojová data musí být ve službě BLOB Storage nebo Azure Data Lake Store a musí splňovat další kritéria. Při načítání dat z úložiště dat než Blob storage nebo Azure Data Lake Store můžete aktivovat kopírování prostřednictvím Blob storage dočasné pracovní data. V takovém případě Azure Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Potom použije PolyBase k načtení dat do SQL Data Warehouse efektivně. Další informace najdete v tématu [použití základny k načtení dat do Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
 - **V některých případech trvá i v průběhu provádění hybridního přesunu dat (tedy kopírování z místního úložiště dat do cloudového úložiště dat) prostřednictvím pomalého síťového připojení.** Za účelem zvýšení výkonu můžete pomocí připravené kopie komprimovat data v místním prostředí, aby při přesunu dat do pracovního úložiště dat v cloudu trvalo méně času. Pak můžete data v pracovním úložišti dekomprimovat ještě předtím, než se načtou do cílového úložiště dat.
 - **Nechcete v bráně firewall otevírat jiné porty než port 80 a port 443 kvůli podnikovým zásadám IT.** Například při kopírování dat z do místního úložiště dat jímky Azure SQL Database nebo Azure SQL Data Warehouse jímky, budete muset aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows firewall a váš podnikový firewall. V tomto scénáři může připravené kopírování využít výhod místního prostředí Integration runtime k prvnímu kopírování dat do pracovní instance úložiště objektů BLOB přes protokol HTTP nebo HTTPS na portu 443. Pak může data načíst do SQL Database nebo SQL Data Warehouse z přípravy úložiště objektů BLOB. V tomto toku není nutné povolit port 1433.
 
@@ -242,11 +242,11 @@ V současné době nemůžete kopírovat data mezi dvěma datovými úložišti,
 
 Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování, abyste určili, jestli chcete data připravit v úložišti objektů blob, než je načtete do cílového úložiště dat. Při nastavování **enableStaging** na `TRUE`zadejte další vlastnosti uvedené v následující tabulce. Je také potřeba vytvořit sdílenou službu Azure Storage nebo sdílený přístupový podpis s úložištěm pro přípravu, pokud ji ještě nemáte.
 
-| Vlastnost | Popis | Výchozí hodnota | Požaduje se |
+| Vlastnost | Popis | Výchozí hodnota | Požadováno |
 | --- | --- | --- | --- |
 | enableStaging |Určete, jestli chcete kopírovat data prostřednictvím jako dočasné pracovní úložiště. |Nepravda |Ne |
-| linkedServiceName |Zadejte název [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) propojenou službu, která odkazuje na instanci úložiště, které můžete použít jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do SQL Data Warehouse prostřednictvím základny. Můžete ji použít v jiných scénářích. |Nevztahuje se |Ano, pokud **enableStaging** nastavena na hodnotu TRUE |
-| Cesta |Zadejte cestu úložiště objektů Blob, který chcete s daty, dvoufázové instalace. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. <br/><br/> Zadejte cestu, pouze v případě, že používáte úložiště pomocí sdíleného přístupového podpisu nebo vyžadujete dočasných dat v konkrétním umístění. |Nevztahuje se |Ne |
+| linkedServiceName |Zadejte název propojené služby [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do SQL Data Warehouse prostřednictvím základny. Můžete ji použít v jiných scénářích. |NEUŽÍVÁ SE. |Ano, pokud je **enableStaging** nastavené na true |
+| path |Zadejte cestu úložiště objektů Blob, který chcete s daty, dvoufázové instalace. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. <br/><br/> Zadejte cestu, pouze v případě, že používáte úložiště pomocí sdíleného přístupového podpisu nebo vyžadujete dočasných dat v konkrétním umístění. |NEUŽÍVÁ SE. |Ne |
 | Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení omezuje objem dat přenášených. |Nepravda |Ne |
 
 >[!NOTE]
@@ -289,7 +289,7 @@ Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v p�
 * Při použití přípravy během kopírování do cloudu, který kopíruje data z cloudového úložiště dat do jiného cloudového úložiště dat, se v obou fázích, které zmocňuje prostředí Azure Integration runtime, účtují [součet doby kopírování pro krok 1 a krok 2] x [cena za jednotku cloudového kopírování].
 * Při použití přípravy během hybridní kopie, která kopíruje data z místního úložiště dat do cloudového úložiště dat, je jedna fáze, kterou má samoobslužný modul runtime integrace v místním prostředí, účtována za [doba trvání hybridního kopírování] × [cena za jednotku Hybrid Copy] + [doba kopírování v cloudu] x [Jednotková cena za kopii v cloudu].
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 Tady jsou odkazy na sledování výkonu a ladění pro některá z podporovaných úložišť dat:
 

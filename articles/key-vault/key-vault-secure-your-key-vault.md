@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
 ms.openlocfilehash: eac3850cfa0684bd1751cf7b88b4ff8e92667293
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197432"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373812"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečený přístup k trezoru klíčů
 
@@ -127,9 +127,9 @@ Následující tabulka shrnuje přístupová oprávnění pro naše role a aplik
 | Role | Oprávnění k rovině správy | Oprávnění k rovině dat |
 | --- | --- | --- |
 | Bezpečnostní tým | Přispěvatel Key Vault | Klíče: zálohovat (backup), vytvořit (create), odstranit (delete), získat (get), importovat (import), vypsat (list), obnovit (restore)<br>Tajné kódy: všechny operace |
-| Vývojáři a&nbsp;operátory | Oprávnění k nasazení Key Vault<br><br> **Poznámka**: Toto oprávnění umožňuje nasazeným virtuálním počítačům načíst tajné kódy z trezoru klíčů. | Žádná |
-| Auditoři | Žádná | Klíče: vypsat (list)<br>Tajné klíče: vypsat (list)<br><br> **Poznámka**: Toto oprávnění umožňuje auditorům kontrolovat atributy (značky, data aktivace, data vypršení platnosti) pro klíče a tajné klíče, které nejsou v protokolech vygenerovány. |
-| Aplikace | Žádná | Klíče: podepsat (sign)<br>Tajné klíče: získat (get) |
+| Vývojáři a&nbsp;operátory | Oprávnění k nasazení Key Vault<br><br> **Poznámka**: Toto oprávnění umožňuje nasazeným virtuálním počítačům načíst tajné kódy z trezoru klíčů. | Žádné |
+| Auditoři | Žádné | Klíče: vypsat (list)<br>Tajné klíče: vypsat (list)<br><br> **Poznámka**: Toto oprávnění umožňuje auditorům kontrolovat atributy (značky, data aktivace, data vypršení platnosti) pro klíče a tajné klíče, které nejsou v protokolech vygenerovány. |
+| Aplikace | Žádné | Klíče: podepsat (sign)<br>Tajné klíče: získat (get) |
 
 Tři role týmu potřebují přístup k dalším prostředkům spolu s oprávněními Key Vault. Pokud chcete nasadit virtuální počítače (nebo funkci Web Apps Azure App Service), vývojáři a operátoři potřebují `Contributor` přístup k těmto typům prostředků. Auditoři potřebují přístup pro čtení k účtu úložiště, ve kterém jsou uložené protokoly Key Vault.
 
@@ -193,7 +193,7 @@ Náš příklad popisuje jednoduchý scénář. Scénáře reálného života m�
 
 Pro Trezor klíčů doporučujeme nastavit další zabezpečený přístup [konfigurací Key Vault bran firewall a virtuálních sítí](key-vault-network-security.md).
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Prostředky
 
 * [Azure AD RBAC](../role-based-access-control/role-assignments-portal.md)
 

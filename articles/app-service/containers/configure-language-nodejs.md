@@ -5,11 +5,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255854"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373877"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Node. js pro Azure App Service
 
@@ -261,7 +261,7 @@ if (req.secure) {
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud se funkční aplikace Node. js chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 

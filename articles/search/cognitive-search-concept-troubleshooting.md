@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113825"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391232"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tipy pro rozšíření AI v Azure Kognitivní hledání
 
