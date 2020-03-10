@@ -89,7 +89,7 @@
       href: relational-nosql.md
     - name: Globální distribuce
       items:
-        - name: Přehled
+        - name: Přehled globální distribuce
           displayName: 'replication, replicate, geo distribution'
           href: distribute-data-globally.md
         - name: Úrovně konzistence
@@ -118,7 +118,7 @@
           href: globally-distributed-transactional-analytical-storage.md
     - name: Dělení
       items:
-        - name: Přehled
+        - name: Přehled dělení
           href: partitioning-overview.md
         - name: Dělení a horizontální škálování
           href: partition-data.md
@@ -461,7 +461,7 @@
           href: modeling-data.md
         - name: Indexování
           items:
-            - name: Přehled
+            - name: Přehled indexování
               displayName: 'range, spatial'
               href: index-overview.md
             - name: Zásady indexování
@@ -476,7 +476,7 @@
           href: database-transactions-optimistic-concurrency.md
     - name: Změna kanálu
       items:
-        - name: Přehled
+        - name: Přehled kanálů změn
           href: change-feed.md
         - name: Čtení kanálu změn
           href: read-change-feed.md
@@ -530,7 +530,7 @@
           href: cosmos-db-reserved-capacity.md
     - name: Zabezpečení
       items:
-        - name: Přehled
+        - name: Přehled zabezpečení
           href: database-security.md
         - name: Šifrování dat
           href: database-encryption-at-rest.md
@@ -564,12 +564,12 @@
   items:
     - name: Rozhraní Cassandra API
       items:
-        - name: Úvod
-          href: cassandra-introduction.md
-        - name: Podpora přenosového protokolu
-          href: cassandra-support.md
-        - name: Elastické škálování
-          href: manage-scale-cassandra.md
+        - name: Přehled
+          items:
+            - name: Co je rozhraní API Cassandra v Cosmos DB?
+              href: cassandra-introduction.md
+            - name: Podpora přenosového protokolu
+              href: cassandra-support.md
         - name: Rychlé starty
           items:
             - name: .NET
@@ -591,6 +591,10 @@
             - name: 4. Migrace dat
               displayName: import
               href: cassandra-import-data.md
+        - name: Koncepty
+          items:
+            - name: Elastické škálování
+              href: manage-scale-cassandra.md
         - name: Návody
           items:
             - name: Změna kanálu
@@ -628,12 +632,14 @@
               href: cli-samples-cassandra.md
     - name: Rozhraní MongoDB API
       items:
-        - name: Úvod
-          href: mongodb-introduction.md
-        - name: Podpora přenosového protokolu (3.2)
-          href: mongodb-feature-support.md
-        - name: Podpora přenosového protokolu (3.6)
-          href: mongodb-feature-support-36.md
+        - name: Přehled
+          items:
+            - name: Co je rozhraní API MongoDB v Cosmos DB?
+              href: mongodb-introduction.md
+            - name: Podpora přenosového protokolu (3.2)
+              href: mongodb-feature-support.md
+            - name: Podpora přenosového protokolu (3.6)
+              href: mongodb-feature-support-36.md
         - name: Rychlé starty
           items:
             - name: .NET
@@ -719,10 +725,12 @@
     - name: Rozhraní Gremlin API
       displayName: 'graph, graph database'
       items:
-        - name: Úvod
-          href: graph-introduction.md
-        - name: Podpora přenosového protokolu
-          href: gremlin-support.md
+        - name: Přehled
+          items:
+            - name: Co je rozhraní API Germlin v Cosmos DB?
+              href: graph-introduction.md
+            - name: Podpora přenosového protokolu
+              href: gremlin-support.md
         - name: Rychlé starty
           items:
             - name: Konzola Gremlin
@@ -778,8 +786,10 @@
               href: cli-samples-gremlin.md
     - name: Rozhraní Table API
       items:
-        - name: Úvod
-          href: table-introduction.md
+        - name: Přehled
+          items:
+            - name: Co je rozhraní API pro tabulky v Cosmos DB?
+              href: table-introduction.md
         - name: Rychlé starty
           items:
             - name: .NET
@@ -849,10 +859,14 @@
               href: /rest/api/storageservices/table-service-rest-api
     - name: Rozhraní Etcd API
       items:
-        - name: Úvod
-          href: etcd-api-introduction.md
-        - name: Azure Kubernetes s Azure Cosmos DB
-          href: bootstrap-kubernetes-cluster.md
+        - name: Přehled
+          items:
+            - name: Co je rozhraní API Etcd v Cosmos DB?
+              href: etcd-api-introduction.md
+        - name: Návody
+          items:
+            - name: Azure Kubernetes s Azure Cosmos DB
+              href: bootstrap-kubernetes-cluster.md
 - name: Návody
   items:
     - name: Práce s účtem Azure Cosmos

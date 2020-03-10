@@ -57,6 +57,8 @@
       href: test-your-model.md
     - name: Vylepšení klasifikátoru
       href: getting-started-improving-your-classifier.md
+    - name: Výběr domény
+      href: select-domain.md
     - name: Použití prediktivního rozhraní API
       href: use-prediction-api.md
     - name: Použití nástroje Smart Labeler

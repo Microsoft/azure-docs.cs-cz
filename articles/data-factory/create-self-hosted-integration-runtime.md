@@ -219,7 +219,7 @@ Můžete přidružit více uzlů instalací softwaru místního prostředí Inte
 
 ### <a name="scale-considerations"></a>Požadavky na škálování
 
-#### <a name="scale-out"></a>Horizontální navýšení kapacity
+#### <a name="scale-out"></a>Škálování na více instancí
 
 Když je využití procesoru vysoké a v místním prostředí IR je k dispozici málo dostupné paměti, přidejte nový uzel, abyste mohli lépe škálovat zatížení napříč počítači. Pokud dojde k selhání aktivit, protože časový limit vypršel nebo je v místním prostředí IR hostitelský uzel v režimu offline, pomůže vám to, když do brány přidáte uzel.
 

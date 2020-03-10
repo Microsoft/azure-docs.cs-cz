@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: škálování COMPUTE – PowerShell '
-description: Škálování výpočetní kapacity ve fondu SQL v PowerShellu Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+description: Škálování výpočetní kapacity ve fondu SQL v PowerShellu Výpočetní prostředky můžete škálovat na více instancí, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg

@@ -8,7 +8,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: REST API
       items:
@@ -26,21 +26,15 @@
           href: quickstarts/ruby.md
     - name: Sada SDK
       items:
-        - name: 'Pomocí C#'
-          href: image-search-sdk-quickstart.md
-        - name: Pomocí Node.js
-          href: image-search-sdk-node-quickstart.md
-        - name: Pomocí Pythonu
-          href: image-sdk-python-quickstart.md
-        - name: Pomocí Javy
-          href: image-sdk-java-quickstart.md
+        - name: Klientské knihovny Vyhledávání obrázků Bingu
+          href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Sestavení webové aplikace interaktivního hledání
       href: tutorial-bing-image-search-single-page-app.md
     - name: Extrakce podrobností image
       href: tutorial-image-post.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'

@@ -145,10 +145,6 @@
             - name: Výstupy
               displayName: 'iteration,copy'
               href: copy-outputs.md
-        - name: Prostředky na úrovni předplatného
-          href: deploy-to-subscription.md
-        - name: Prostředky na úrovni skupiny pro správu
-          href: deploy-to-management-group.md
     - name: Použití nástrojů pro vytváření
       items:
         - name: VS Code
@@ -182,7 +178,15 @@
           href: rollback-on-error.md
         - name: Zabezpečení šablony s tokenem SAS
           href: secure-template-with-sas-token.md
-        - name: Nasazení do několika skupin prostředků nebo předplatných
+    - name: Nasazení s vymezeným oborem
+      items:
+        - name: Předplatné
+          href: deploy-to-subscription.md
+        - name: Skupina pro správu
+          href: deploy-to-management-group.md
+        - name: Tenant
+          href: deploy-to-tenant.md
+        - name: Několik skupin prostředků nebo předplatných
           href: cross-resource-group-deployment.md
     - name: Zadání parametrů
       items:

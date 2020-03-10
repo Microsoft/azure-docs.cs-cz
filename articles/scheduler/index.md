@@ -1,24 +1,28 @@
 ---
-title: Dokumentace ke službě Azure Scheduler – kurzy, reference k rozhraní API | Dokumentace Microsoftu
-description: Naučte se používat Scheduler k plánování a vyvolávání úloh, jako jsou například opakující se akce aplikace a běžná údržba. Kurzy, reference k rozhraní API a další zdroje informací
+title: Dokumentace ke službě Azure Scheduler
+description: Vytváření, plánování a spouštění automatizovaných úloh v cloudu, jako jsou například opakující se akce aplikací a běžná údržba
 services: scheduler
-author: carmonmills
-manager: carmonm
-layout: LandingPage
 ms.service: scheduler
+author: derek1ee
+ms.author: estfan
+layout: LandingPage
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carmonm
-ms.openlocfilehash: ddf335d0c2b165ae98feab0b42e60527f87de59c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 02/23/2020
+ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610330"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898610"
 ---
 # <a name="scheduler-documentation"></a>Dokumentace ke službě Scheduler
 
-Naučte se používat Scheduler k plánování a automatickému vyvolávání opakujících se úloh v cloudu. Kurzy, reference k rozhraní API a další dokumentace vám ukáží, jak můžete plánovat a monitorovat úlohy, jako jsou například opakující se akce aplikace a běžná údržba.
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se [vyřazuje z provozu](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Pokud chcete i nadále pracovat s úlohami, které máte nastavené ve Scheduleru, co nejdříve prosím [migrujte na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler už není k dispozici na webu Azure Portal, ale rozhraní [REST API](/rest/api/scheduler) a [powershellové rutiny Azure Scheduleru](scheduler-powershell-reference.md) zůstávají momentálně dostupné, abyste mohli spravovat vaše úlohy a kolekce úloh.
+
+Seznamte se s vytvářením, plánováním, spouštěním, správou a aktualizací automatizovaných opakujících se úloh v cloudu. Kurzy, reference k rozhraní API a další dokumentace vám ukáží, jak můžete plánovat a monitorovat úlohy, jako jsou například opakující se akce aplikace a běžná údržba.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -40,6 +44,24 @@ Naučte se používat Scheduler k plánování a automatickému vyvolávání op
         </a>
     </li>
     <li>
+        <a href="/azure/scheduler/migrate-from-scheduler-to-logic-apps">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Migrace z Azure Scheduleru na Azure Logic Apps</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=scheduler">
         <div class="cardSize">
             <div class="cardPadding">
@@ -51,24 +73,6 @@ Naučte se používat Scheduler k plánování a automatickému vyvolávání op
                     </div>
                     <div class="cardText">
                         <h3>Knihovna videí ke službě Azure Scheduler</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/scheduler/scheduler-get-started-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Začínáme se službou Azure Scheduler</h3>
                     </div>
                 </div>
             </div>
