@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 846425e6d36462636ea1f4e82d6c7233dcb28ac9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592879"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374518"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -29,8 +29,7 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo nově
 Při vytváření a správě clusterů AKS, které podporují více fondů uzlů, platí následující omezení:
 
 * Podívejte se [na téma kvóty, omezení velikosti virtuálních počítačů a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)][quotas-skus-regions].
-* Výchozí fond uzlů (první) nelze odstranit.
-* Nelze použít doplněk směrování aplikace HTTP.
+* Ve výchozím nastavení nemůžete fond uzlů systému odstranit, protože se jedná o první fond uzlů.
 * Cluster AKS musí používat standardní nástroj pro vyrovnávání zatížení SKU pro použití více fondů uzlů, ale funkce nástroje pro vyrovnávání zatížení Basic SKU není podporována.
 * Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 * Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.

@@ -1,17 +1,17 @@
 ---
 title: Spravované identity
-description: Přečtěte si, jak spravované identity fungují v Azure App Service a Azure Functions, jak nakonfigurovat spravovanou identitu a vygenerovat token pro prostředek back-end.
+description: Přečtěte si, jak spravované identity fungují v Azure App Service a Azure Functions, jak nakonfigurovat spravovanou identitu a generovat token pro prostředek back-endu.
 author: mattchenderson
 ms.topic: article
-ms.date: 10/30/2019
+ms.date: 03/04/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365515"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -22,9 +22,9 @@ V tomto tématu se dozvíte, jak vytvořit spravovanou identitu pro App Service 
 
 Aplikaci lze udělit dva typy identit: 
 - **Identita přiřazená systémem** je svázána s vaší aplikací a je odstraněna, pokud je vaše aplikace odstraněna. Aplikace může mít jenom jednu identitu přiřazenou systémem.
-- **Identita přiřazená uživatelem** je samostatný prostředek Azure, který se dá přiřadit k vaší aplikaci. Aplikace může mít více uživatelsky přiřazených identit.
+- **Uživatelsky přiřazená identita** je samostatný prostředek Azure, který je možné přiřadit k vaší aplikaci. Aplikace může mít více uživatelsky přiřazených identit.
 
-## <a name="adding-a-system-assigned-identity"></a>Přidání identity přiřazené systémem
+## <a name="add-a-system-assigned-identity"></a>Přidat identitu přiřazenou systémem
 
 Vytvoření aplikace s identitou přiřazenou systémem vyžaduje pro aplikaci nastavenou další vlastnost.
 
@@ -38,7 +38,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 3. Vyberte **Identita**.
 
-4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na možnost **Uložit**.
+4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**.
 
     ![Spravovaná identita v App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
@@ -146,10 +146,10 @@ Když je web vytvořen, má následující další vlastnosti:
 }
 ```
 
-Kde `<TENANTID>` a `<PRINCIPALID>` nahrazují identifikátory GUID. Vlastnost tenantId určuje, ke kterému tenantovi AAD patří identita. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci služby AAD má instanční objekt stejný název, jaký jste zadali App Service nebo Azure Functions instanci.
+Vlastnost tenantId určuje, ke kterému tenantovi AAD patří identita. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci služby AAD má instanční objekt stejný název, jaký jste zadali App Service nebo Azure Functions instanci.
 
 
-## <a name="adding-a-user-assigned-identity"></a>Přidání uživatelsky přiřazené identity
+## <a name="add-a-user-assigned-identity"></a>Přidání uživatelsky přiřazené identity
 
 Vytvoření aplikace s uživatelem přiřazenou identitou vyžaduje, abyste vytvořili identitu a pak přidali svůj identifikátor prostředku do vaší konfigurace aplikace.
 
@@ -230,15 +230,17 @@ Když je web vytvořen, má následující další vlastnosti:
 }
 ```
 
-Kde `<PRINCIPALID>` a `<CLIENTID>` nahrazují identifikátory GUID. PrincipalId je jedinečný identifikátor pro identitu, která se používá pro správu AAD. ClientId je jedinečný identifikátor nové identity aplikace, který se používá k určení identity, která se má použít při volání za běhu.
+PrincipalId je jedinečný identifikátor pro identitu, která se používá pro správu AAD. ClientId je jedinečný identifikátor pro novou identitu aplikace, která se používá k určení identity, která se má použít během volání za běhu.
 
 
-## <a name="obtaining-tokens-for-azure-resources"></a>Získání tokenů pro prostředky Azure
+## <a name="obtain-tokens-for-azure-resources"></a>Získání tokenů pro prostředky Azure
 
 Aplikace může pomocí spravované identity získat tokeny pro přístup k jiným prostředkům chráněným službou AAD, například Azure Key Vault. Tyto tokeny reprezentují aplikaci, která přistupuje k prostředku, a ne žádného konkrétního uživatele aplikace. 
 
+Možná budete muset nakonfigurovat cílový prostředek, aby povoloval přístup z vaší aplikace. Například pokud požadujete token pro přístup k Key Vault, musíte se ujistit, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. V opačném případě budou volání Key Vault odmítnuta, a to i v případě, že obsahují token. Další informace o tom, které prostředky podporují Azure Active Directory tokeny, najdete v tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
 > [!IMPORTANT]
-> Možná budete muset nakonfigurovat cílový prostředek, aby povoloval přístup z vaší aplikace. Například pokud požadujete token pro přístup k Key Vault, musíte se ujistit, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. V opačném případě budou volání Key Vault odmítnuta, a to i v případě, že obsahují token. Další informace o tom, které prostředky podporují Azure Active Directory tokeny, najdete v tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+> Back-endové služby pro spravované identity udržují po dobu přibližně 8 hodin identifikátor URI na jeden prostředek. Pokud aktualizujete zásady přístupu určitého cílového prostředku a hned načtete token pro tento prostředek, můžete i nadále získat token uložený v mezipaměti se zastaralými oprávněními, dokud tento token nevyprší. V tuto chvíli neexistuje způsob, jak vynutit aktualizaci tokenu.
 
 K získání tokenu v App Service a Azure Functions existuje jednoduchý protokol REST. Tato možnost se dá použít pro všechny aplikace a jazyky. Pro .NET a Java poskytuje sada Azure SDK abstrakci prostřednictvím tohoto protokolu a usnadňuje místní vývojové prostředí.
 
@@ -301,7 +303,7 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>Příklady kódu
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > Pro jazyky .NET můžete použít také [Microsoft. Azure. Services. AppAuthentication](#asal) místo toho, aby se tento požadavek využíval sami.
@@ -317,7 +319,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
@@ -333,7 +335,7 @@ const getToken = function(resource, cb) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -352,7 +354,7 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -413,7 +415,7 @@ V případě aplikací a funkcí Java nejjednodušší způsob, jak pracovat se 
 
 ## <a name="remove"></a>Odebrání identity
 
-Identitu přiřazenou systémem je možné odebrat tak, že ji zakážete pomocí portálu, PowerShellu nebo rozhraní příkazového řádku stejným způsobem, jakým jste ji vytvořili. Uživatelsky přiřazené identity je možné odebrat jednotlivě. Pokud chcete odebrat všechny identity, můžete v protokolu šablony REST/ARM udělat tento postup nastavením typu na "none":
+Identitu přiřazenou systémem je možné odebrat tak, že ji zakážete pomocí portálu, PowerShellu nebo rozhraní příkazového řádku stejným způsobem, jakým jste ji vytvořili. Uživatelsky přiřazené identity je možné odebrat jednotlivě. Pokud chcete odebrat všechny identity, nastavte v [šabloně ARM](#using-an-azure-resource-manager-template)typ na None (žádné):
 
 ```json
 "identity": {

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 169cc3f6a195a7339ab33eb9f00d9937451a93e0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485331"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395412"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -56,7 +56,7 @@ Azure Monitor shromažďuje data z nejrůznějších zdrojů, včetně protokol�
 Azure Monitor shromažďuje data z nejrůznějších zdrojů do [protokolů](platform/data-platform-logs.md) nebo [metrik](platform/data-platform-metrics.md). Každý typ dat má své vlastní relativní výhody a každá z nich podporuje konkrétní sadu funkcí v Azure Monitor. Pro každé předplatné Azure existuje jedna databáze metrik, zatímco můžete vytvořit několik pracovních prostorů Log Analytics pro shromažďování protokolů v závislosti na vašich požadavcích. Viz [Azure monitor datovou platformu](platform/data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Je možné shromažďovat v Azure Monitor maximální množství dat?
-Množství dat metrik, která můžete shromažďovat, není nijak omezené, ale tato data se ukládají maximálně po 93 dnech. Podívejte se [na uchovávání metrik](platform/data-platform-metrics.md#retention-of-metrics). Množství dat protokolu, která se dají shromáždit, není nijak omezené, ale může to mít vliv na cenovou úroveň, kterou zvolíte pro pracovní prostor Log Analytics. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/monitor/).
+Množství dat metrik, která můžete shromažďovat, není nijak omezené, ale tato data se ukládají maximálně po 93 dnech. Podívejte se [na uchovávání metrik](platform/data-platform-metrics.md#retention-of-metrics). Množství dat protokolu, která můžete shromažďovat, není nijak omezené, ale může to mít vliv na cenovou úroveň, kterou zvolíte pro pracovní prostor Log Analytics. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Návody přístup k datům shromažďovaným pomocí Azure Monitor?
 Přehledy a řešení poskytují vlastní prostředí pro práci s daty uloženými v Azure Monitor. Můžete pracovat přímo s daty protokolu pomocí dotazu protokolu napsaného v Kusto Query Language (KQL). V Azure Portal můžete zapisovat a spouštět dotazy a interaktivně analyzovat data pomocí Log Analytics. Analyzujte metriky v Azure Portal pomocí Průzkumník metrik. Přečtěte si téma [Analýza dat protokolu v Azure monitor](log-query/log-query-overview.md) a [začínáme s Azure Průzkumník metrik](platform/metrics-getting-started.md).

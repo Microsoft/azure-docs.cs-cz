@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916587"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361093"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -98,7 +98,7 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 
 Následující jazykové verze mají vlastní verze provádějících tokenizaci:
 
-|Jazyková verze|Verze|Účel|
+|Kultura|Version|Účel|
 |--|--|--|
 |Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, je zapnutý `Ich fahre einen kranken wagen`. Povolení označení `kranken` a `wagen` nezávisle na různých entitách.|
 |Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstane jeden token. Proto je `krankenwagen` označena jako jediná entita. |

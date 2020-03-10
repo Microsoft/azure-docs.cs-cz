@@ -10,11 +10,11 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359699"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -89,7 +89,7 @@ Následující obrázek představuje oblast geografické oblasti zvýrazněnou m
 
 Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu prostředků v Azure Portal. Chcete-li vytvořit skupinu prostředků, proveďte následující kroky:
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Skupiny prostředků**.
     
@@ -241,7 +241,7 @@ Všechny relevantní informace o událostech se pak uchovávají v úložišti o
 
 6. Zkopírujte [ C# kód](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) do funkce.
  
-7. Ve C# skriptu nahraďte následující parametry. Klikněte na možnost **Uložit**. Neklepejte ještě na **Spustit** .
+7. Ve C# skriptu nahraďte následující parametry. Klikněte na **Uložit**. Neklepejte ještě na **Spustit** .
     * Nahraďte **SUBSCRIPTION_KEY** klíčem primárního předplatného účtu Azure Maps.
     * Nahraďte **udId** UDIDou geograficky, kterou jste nahráli. 
     * Funkce **CreateBlobAsync** ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. Pomocí přístupového klíče účtu úložiště, názvu účtu a kontejneru úložiště dat nahraďte **ACCESS_KEY**, **ACCOUNT_NAME**a **STORAGE_CONTAINER_NAME** .

@@ -10,11 +10,11 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657099"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368919"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -84,12 +84,12 @@ Datové výrazy poskytují přístup k datům vlastností ve funkci.
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['at', number, array]` | objekt | Načte položku z pole. |
-| `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
-| `['get', string]` | hodnota | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
-| `['get', string, object]` | hodnota | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['geometry-type']` | string | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
+| `['get', string]` | value | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string, object]` | value | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['has', string]` | Boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
 | `['has', string, object]` | Boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
-| `['id']` | hodnota | Získá ID funkce, pokud má jednu. |
+| `['id']` | value | Získá ID funkce, pokud má jednu. |
 | `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
 | `['in', boolean | string | number, array]` | Boolean | Určuje, jestli položka existuje v poli. |
 | `['in', substring, string]` | Boolean | Určuje, zda podřetězec existuje v řetězci. |
@@ -190,7 +190,7 @@ Agregační výraz přebírá tři hodnoty: hodnotu operátoru a počáteční h
 
 Pokud všechny funkce v datové sadě mají vlastnost `revenue`, což je číslo. Pak lze vypočítat celkový výnos všech bodů v clusteru, které jsou vytvořeny ze sady dat. Tento výpočet se provádí pomocí následujícího agregačního výrazu: `['+', 0, ['get', 'revenue']]`
 
-## <a name="boolean-expressions"></a>Logické výrazy
+## <a name="boolean-expressions"></a>logické výrazy
 
 Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocení logických porovnání.
 
@@ -402,12 +402,12 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | Array \| objekt | Vrátí literálovou hodnotu pole nebo objektu. Tento výraz použijte k zabránění vyhodnocení pole nebo objektu jako výrazu. To je nezbytné, pokud musí být pole nebo objekt vráceny výrazem. |
-| `['image', string]` | řetězec | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
+| `['image', string]` | string | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
 | `['to-boolean', value]` | Boolean | Převede vstupní hodnotu na logickou hodnotu. Výsledek je `false`, když je vstup prázdný řetězec, `0`, `false`, `null`nebo `NaN`; v opačném případě `true`. |
-| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Převede vstupní hodnotu na barvu. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
+| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | barva | Převede vstupní hodnotu na barvu. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | číslo | Pokud je to možné, převede vstupní hodnotu na číslo. Pokud je vstup `null` nebo `false`, výsledek je 0. Pokud je vstup `true`, výsledkem je 1. Pokud je vstup řetězcem, je převeden na číslo pomocí funkce řetězce [tonumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) ve specifikaci jazyka ECMAScript. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
-| `['to-string', value]` | řetězec | Převede vstupní hodnotu na řetězec. Pokud je vstup `null`, výsledek je `""`. Pokud je vstup logická hodnota, výsledek je `"true"` nebo `"false"`. Pokud je vstup číslo, je převedeno na řetězec pomocí funkce [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specifikace jazyka ECMAScript. Je-li vstup barva, je převedena na RGBA řetězce barev CSS `"rgba(r,g,b,a)"`. V opačném případě je vstup převeden na řetězec pomocí funkce [JSON. Stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specifikace jazyka ECMAScript. |
-| `['typeof', value]` | řetězec | Vrátí řetězec popisující typ dané hodnoty. |
+| `['to-string', value]` | string | Převede vstupní hodnotu na řetězec. Pokud je vstup `null`, výsledek je `""`. Pokud je vstup logická hodnota, výsledek je `"true"` nebo `"false"`. Pokud je vstup číslo, je převedeno na řetězec pomocí funkce [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specifikace jazyka ECMAScript. Je-li vstup barva, je převedena na RGBA řetězce barev CSS `"rgba(r,g,b,a)"`. V opačném případě je vstup převeden na řetězec pomocí funkce [JSON. Stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specifikace jazyka ECMAScript. |
+| `['typeof', value]` | string | Vrátí řetězec popisující typ dané hodnoty. |
 
 > [!TIP]
 > Pokud se v konzole prohlížeče zobrazí chybová zpráva podobná `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].`, znamená to, že ve vašem kódu je výraz, který má pole, které nemá řetězec pro svou první hodnotu. Pokud chcete, aby výraz vrátil pole, zabalte pole pomocí výrazu `literal`. Následující příklad nastaví ikonu `offset` možnosti vrstvy symbolu, která musí být pole obsahující dvě čísla pomocí výrazu `match` pro výběr dvou hodnot posunu na základě hodnoty vlastnosti `entityType` funkce Point.
@@ -437,8 +437,8 @@ Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených*, *zelených*a *modrých* komponent, které musí být v rozsahu mezi `0` a `255`a komponentou Alpha `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
-| `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené*a *modré* komponenty, které musí být v rozsahu mezi `0` a `255`a komponentou alfa v rámci rozsahu `0` a `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
+| `['rgb', number, number, number]` | barva | Vytvoří hodnotu barvy z *červených*, *zelených*a *modrých* komponent, které musí být v rozsahu mezi `0` a `255`a komponentou Alpha `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
+| `['rgba', number, number, number, number]` | barva | Vytvoří hodnotu barvy z *červené*, *zelené*a *modré* komponenty, které musí být v rozsahu mezi `0` a `255`a komponentou alfa v rámci rozsahu `0` a `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
 | `['to-rgba']` | \[číslo, číslo, číslo, číslo\] | Vrátí pole se čtyřmi prvky obsahující *červenou*, *zelenou*, *modrou*a *alfa* komponentu vstupní barvy v tomto pořadí. |
 
 **Příklad**
@@ -465,9 +465,9 @@ Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako
 
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | řetězec | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Pokud je třeba, použijte výraz typu `to-string` k převodu ostatních typů hodnot na řetězec. |
-| `['downcase', string]` | řetězec | Převede zadaný řetězec na malá písmena. |
-| `['upcase', string]` | řetězec | Převede zadaný řetězec na velká písmena. |
+| `['concat', string, string, …]` | string | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Pokud je třeba, použijte výraz typu `to-string` k převodu ostatních typů hodnot na řetězec. |
+| `['downcase', string]` | string | Převede zadaný řetězec na malá písmena. |
+| `['upcase', string]` | string | Převede zadaný řetězec na velká písmena. |
 
 **Příklad**
 

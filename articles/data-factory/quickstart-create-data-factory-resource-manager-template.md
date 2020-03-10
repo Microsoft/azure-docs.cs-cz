@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440058"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386689"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Vytvoření datové továrny Azure pomocí šablony Azure Resource Manageru
 
@@ -36,7 +36,7 @@ Tento rychlý start popisuje použití šablony Azure Resource Manageru k vytvo�
 
 Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
-## <a name="resource-manager-templates"></a>Šablony Správce prostředků
+## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
 Obecné informace o šablonách Azure Resource Manageru najdete v tématu [Vytváření šablon Azure Resource Manageru](../azure-resource-manager/templates/template-syntax.md).
 
@@ -634,7 +634,7 @@ Definujete kanál, který kopíruje data z jedné binární datové sady do jin�
 }
 ```
 
-#### <a name="trigger"></a>Trigger
+#### <a name="trigger"></a>Aktivační událost
 
 Nadefinujete trigger, který spouští kanál jednou za hodinu. Nasazený trigger je v zastaveném stavu. Spusťte Trigger pomocí rutiny **Start-AzDataFactoryV2Trigger** . Další informace o triggerech najdete v článku [Spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md#triggers).
 
@@ -697,4 +697,4 @@ Všimněte si, že první příkaz používá soubor parametrů pro vývojové p
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

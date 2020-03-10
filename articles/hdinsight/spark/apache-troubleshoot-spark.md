@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894293"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395147"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparku s využitím Azure HDInsight
 
@@ -31,21 +31,21 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se Apache Spark aplikace 
 
 1. V seznamu konfigurací vyberte a rozbalte **Custom-spark2-Defaults**.
 
-1. Vyhledejte nastavení hodnoty, které je potřeba upravit, jako například **spark.executor.memory**. V tomto případě je hodnota **9728m** příliš vysoká.
+1. Vyhledejte nastavení hodnoty, které je potřeba upravit, jako je **Spark. exekutor. Memory**. V tomto případě je hodnota **9728m** příliš vysoká.
 
     ![Vyberte výchozí nastavení vlastní spark](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
-1. Nastavte hodnotu na doporučené nastavení. Hodnota **2048m** se doporučuje pro toto nastavení.
+1. Nastavte hodnotu na doporučené nastavení. Pro toto nastavení se doporučuje hodnota **2048m** .
 
-1. Uložte hodnotu a pak konfiguraci uložte. Vyberte **Uložit**.
+1. Uložte hodnotu a pak konfiguraci uložte. Vyberte **Save** (Uložit).
 
     ![Změňte hodnotu na 2 048 m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    Zápis poznámky o změnách konfigurace a pak vyberte **Uložit**.
+    Zapište si poznámku týkající se změn konfigurace a pak vyberte **Uložit**.
 
     ![Zadejte poznámku o provedené změny](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    Pokud žádné konfigurace, které je potřeba věnovat pozornost, se zobrazí oznámení. Položky a potom vyberte **i přesto pokračovat**.
+    Pokud žádné konfigurace, které je potřeba věnovat pozornost, se zobrazí oznámení. Poznamenejte si položky a pak vyberte **pokračovat**.
 
     ![Vyberte přesto pokračovat](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
@@ -61,13 +61,13 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se Apache Spark aplikace 
 
     ![Zkontrolujte spuštěné procesy](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. Můžete přidat konfigurace. Vyberte v seznamu konfigurací **výchozí hodnoty vlastní spark2**a pak vyberte **přidat vlastnost**.
+1. Můžete přidat konfigurace. V seznamu konfigurací vyberte **Custom-spark2-Defaults**a pak vyberte **Přidat vlastnost**.
 
     ![Výběr možnosti Přidat vlastnost](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Definování nové vlastnosti. Pomocí dialogového okna pro konkrétní nastavení, jako je datový typ, můžete definovat jednu vlastnost. Nebo můžete definovat více vlastností pomocí jednu definici na řádek.
 
-    V tomto příkladu **spark.driver.memory** vlastnost je definována s hodnotou **4g**.
+    V tomto příkladu je vlastnost **Spark. Driver. Memory** definovaná s hodnotou **4G**.
 
     ![Definovat nové vlastnosti](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
@@ -77,7 +77,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Sparku s využitím Poznámkový blok Jupyter v clusterech?
 
-V první buňky Poznámkový blok Jupyter po **%% konfigurace** směrnice, určení konfigurací Sparku v platném formátu JSON. Podle potřeby změňte skutečnými hodnotami:
+V první buňce poznámkového bloku Jupyter po direktivě **%% Configure** zadejte konfigurace Sparku v platném formátu JSON. Podle potřeby změňte skutečnými hodnotami:
 
 ![Přidat konfiguraci](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
@@ -99,7 +99,7 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Apache Spark odesílání úloh v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="next-steps"></a>Další kroky
 

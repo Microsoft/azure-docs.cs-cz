@@ -12,11 +12,11 @@ ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273505"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361097"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [hranice modelu](#model-boundaries), která řídí záměry, entity a funkce v Luis. Druhá oblast má [omezení kvóty](#key-limits) na základě typu klíče. Třetí oblastí hranice je [kombinace kláves](#keyboard-controls) pro řízení webu Luis. Čtvrtá oblast je [mapování světové oblasti](luis-reference-regions.md) mezi vytvářením webu Luis a rozhraními API [koncového bodu](luis-glossary.md#endpoint) Luis.
@@ -26,7 +26,7 @@ Služba LUIS má několik oblasti hranic. První je [hranice modelu](#model-boun
 
 Pokud vaše aplikace překračuje limity a hranice modelu LUIS, zvažte použití aplikace [Luis Dispatch](luis-concept-enterprise.md#dispatch-tool-and-model) nebo [kontejneru Luis](luis-container-howto.md).
 
-|Oblast|Omezení|
+|Plošný|Omezení|
 |--|:--|
 | [Název aplikace][luis-get-started-create-app] | \* Znak výchozí maximální |
 | Aplikace| 500 aplikací na prostředek pro vytváření obsahu Azure |
@@ -62,7 +62,7 @@ Následující musí být jedinečné v rámci aplikace LUIS:
 * Název verze
 * úmysl
 * entita
-* prostředků
+* role
 
 Následující musí být jedinečné v rámci použité oblasti:
 

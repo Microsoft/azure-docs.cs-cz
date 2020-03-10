@@ -5,11 +5,11 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: 2f1734d30136be904aedf7d880922ba052130ec7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664725"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384517"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Vysvětlení, jak fungují výstrahy metrik v Azure Monitor
 

@@ -10,11 +10,11 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510528"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379350"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Nasadit moduly Azure IoT Edge z portálu Azure portal
 
@@ -24,18 +24,18 @@ Tento článek popisuje, jak na webu Azure portal vás provede vytvořením mani
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Služby IoT hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
-* [Zařízení IoT Edge](how-to-register-device.md#register-in-the-azure-portal) nainstalován modul runtime IoT Edge.
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
+* [IoT Edge zařízení](how-to-register-device.md#register-in-the-azure-portal) s nainstalovaným modulem runtime IoT Edge.
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Další informace o způsobu práce manifesty nasazení a o tom, k jejich vytvoření najdete v tématu [pochopit, jak můžete použít moduly IoT Edge a způsob jejich konfiguraci a znovu použít](module-composition.md).
+Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Další informace o tom, jak manifesty nasazení fungují a jak je vytvořit, najdete v tématu [Vysvětlení způsobu použití, konfigurace a](module-composition.md)opětovného použití modulů IoT Edge.
 
-Na webu Azure portal obsahuje průvodce, který vás provede vytvořením manifest nasazení místo ruční vytváření dokumentů JSON. Má tři kroky: **přidat moduly**, **trasy zadejte**, a **zkontrolujte nasazení**.
+Na webu Azure portal obsahuje průvodce, který vás provede vytvořením manifest nasazení místo ruční vytváření dokumentů JSON. Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
 
 ### <a name="select-device-and-add-modules"></a>Vyberte zařízení a přidejte moduly.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do služby IoT hub.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do služby IoT Hub.
 1. V levém podokně vyberte v nabídce možnost **IoT Edge** .
 1. Kliknutím na ID cílové zařízení ze seznamu zařízení.
 1. Na horním panelu vyberte možnost **nastavit moduly**.
@@ -47,7 +47,7 @@ Na webu Azure portal obsahuje průvodce, který vás provede vytvořením manife
    * **Modul Marketplace** – moduly hostované ve Azure Marketplace. Některé moduly Marketplace vyžadují další konfiguraci, proto si Projděte podrobnosti o modulu v seznamu [Azure Marketplace IoT Edge moduly](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) .
    * **Azure Stream Analytics modul** – moduly generované z úlohy Azure Stream Analytics.
 
-1. Po přidání modulu vyberte v seznamu název modulu a otevřete nastavení modulu. V případě potřeby zadejte volitelná pole. Pro další informace o kontejneru vytvořte možnosti, zásady restartování a zjistěte požadovaný stav [EdgeAgent požadované vlastnosti](module-edgeagent-edgehub.md#edgeagent-desired-properties). Další informace o dvojčeti modulu najdete v části [definovat nebo aktualizace požadované vlastnosti](module-composition.md#define-or-update-desired-properties).
+1. Po přidání modulu vyberte v seznamu název modulu a otevřete nastavení modulu. V případě potřeby zadejte volitelná pole. Další informace o možnostech vytvoření kontejneru, zásadách restartování a požadovaném stavu najdete v tématu [EdgeAgent požadované vlastnosti](module-edgeagent-edgehub.md#edgeagent-desired-properties). Další informace o tomto modulu najdete v tématu [definice nebo aktualizace požadovaných vlastností](module-composition.md#define-or-update-desired-properties).
 1. V případě potřeby opakujte kroky 5 až 8 pro přidání dalších modulů do nasazení.
 1. Vyberte **Další: trasy** pro pokračování v části trasy.
 
@@ -59,7 +59,7 @@ Přidejte nebo aktualizujte trasy s informacemi z [deklarace trasy](module-compo
 
 ### <a name="review-deployment"></a>Zkontrolujte nasazení
 
-Zkontrolujte část pořady, kterou jste nasazení JSON manifestu byl vytvořen na základě vašeho výběru v předchozích dvou částech. Všimněte si, že existují dva moduly deklarovat, že jste nepřidali: **$edgeAgent** a **$edgeHub**. Tyto dva moduly tvoří [modul runtime IoT Edge](iot-edge-runtime.md) a jsou povinné výchozí hodnoty v každém nasazení.
+Zkontrolujte část pořady, kterou jste nasazení JSON manifestu byl vytvořen na základě vašeho výběru v předchozích dvou částech. Všimněte si, že jsou deklarovány dva moduly, které jste nepřidali: **$edgeAgent** a **$edgeHub**. Tyto dva moduly tvoří [modul runtime IoT Edge](iot-edge-runtime.md) a jsou požadované výchozí hodnoty v každém nasazení.
 
 Zkontrolujte informace o svém nasazení a pak vyberte **vytvořit**.
 
@@ -106,4 +106,4 @@ Vyberte **Další: trasy** a pokračujte v nasazení, jak je popsáno v tématu 
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md)
+Naučte se [nasazovat a monitorovat IoT Edge moduly ve velkém měřítku](how-to-deploy-monitor.md) .

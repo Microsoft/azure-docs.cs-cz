@@ -1,27 +1,22 @@
 ---
 title: Skóre záměna – Přizpůsobte si
-titleSuffix: Azure Cognitive Services
 description: Skóre odměňování indikuje, jak dobře vlastní individuální nastavení RewardActionID a způsobilo pro uživatele. Hodnota skóre odměňování je určena vaší obchodní logikou na základě pozorování chování uživatele. Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490885"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397120"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Skóre odměňování indikuje úspěch přizpůsobení
 
 Skóre odměňování indikuje, jak dobře vlastní individuální nastavení [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response)a způsobilo pro uživatele. Hodnota skóre odměňování je určena vaší obchodní logikou na základě pozorování chování uživatele.
 
-Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu. 
+Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu.
+
+Přečtěte si, [jak](how-to-settings.md#configure-rewards-for-the-feedback-loop) nakonfigurovat výchozí skóre pro odměnu v Azure Portal pro váš prostředek pro přizpůsobování.
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Použití API pro odměnu pro posílání skóre nedostatku do přizpůsobení
 
@@ -47,16 +42,16 @@ Vezměte v úvahu tyto signály a chování pro kontext skóre odměňování:
 
 V obchodní logice musí být vypočítáno skóre odměňování. Skóre lze znázornit jako:
 
-* Jedno odeslané číslo 
+* Jedno odeslané číslo
 * Skóre odesláno okamžitě (například 0,8) a další skóre bylo odesláno později (obvykle 0,2).
 
 ## <a name="default-rewards"></a>Výchozí ceny
 
 Pokud v [době čekání na odměnu](#reward-wait-time)nedojde k žádné záměna, doba od volání metody Rank implicitně aplikuje **výchozí odměnu** na tuto událost pořadí.
 
-## <a name="building-up-rewards-with-multiple-factors"></a>Sestavování na více faktorech  
+## <a name="building-up-rewards-with-multiple-factors"></a>Sestavování na více faktorech
 
-Pro efektivní přizpůsobení můžete vytvořit skóre pro odměnu na základě více faktorů. 
+Pro efektivní přizpůsobení můžete vytvořit skóre pro odměnu na základě více faktorů.
 
 Můžete například použít tato pravidla pro přizpůsobení seznamu obsahu videa:
 
@@ -93,8 +88,8 @@ Pokud přidáte skóre pro každou měnu, vaše konečná odměna může být mi
 * **Zvažte nezamýšlené důsledky**: Vytvořte funkce odměňování, které vedou k odpovědným výsledkům s [etickým a odpovědným používáním](ethics-responsible-use.md).
 
 * **Použití přírůstků**: Přidání částečných odčítání pro menší uživatelské chování pomáhá přizpůsobovat, aby se zajistilo lepší ceny. Tato přírůstková odměna umožňuje algoritmu poznat, že je přiblížný k uživateli v konečném požadovaném chování.
-    * Pokud se zobrazuje seznam filmů, pokud uživatel po chvíli najede myší na jednu z nich, můžete určit, že došlo k nějakému uživateli – zapojení. Chování se může počítat s skóre pro odměnu 0,1. 
-    * Pokud uživatel stránku otevřel a pak skončil, může být skóre odměňování 0,2. 
+    * Pokud se zobrazuje seznam filmů, pokud uživatel po chvíli najede myší na jednu z nich, můžete určit, že došlo k nějakému uživateli – zapojení. Chování se může počítat s skóre pro odměnu 0,1.
+    * Pokud uživatel stránku otevřel a pak skončil, může být skóre odměňování 0,2.
 
 ## <a name="reward-wait-time"></a>Doba čekání na odměnu
 
@@ -106,12 +101,12 @@ Pokud **Doba čekání na odměnu** vyprší a neexistují žádné informace o 
 
 Pro lepší výsledky použijte tato doporučení.
 
-* Nechte si volnou dobu čekání, jak je to možné, a zároveň nechat dostatek času na získání zpětné vazby od uživatele. 
+* Nechte si volnou dobu čekání, jak je to možné, a zároveň nechat dostatek času na získání zpětné vazby od uživatele.
 
 * Nevybírejte dobu trvání, která je kratší než čas potřebný k získání zpětné vazby. Například pokud se některé z vašich vydaných vašich vydaných z vašich vydaných uživatelů dokončí po zobrazení 1 minuty videa, délka experimentu by měla být aspoň dvojitá.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Posílení učení](concepts-reinforcement-learning.md) 
+* [Posílení učení](concepts-reinforcement-learning.md)
 * [Vyzkoušejte rozhraní API pro řazení](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [Vyzkoušejte API pro odměnu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

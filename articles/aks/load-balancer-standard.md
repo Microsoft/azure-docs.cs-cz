@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3fe4de2b8b85e603bc200b27fa15c67f6cc05dd4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374675"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -39,7 +39,7 @@ Pokud máte existující cluster se základní Load Balancer SKU, při migraci n
 
 Například provedení modrých a zelených nasazení pro migraci clusterů je běžným postupem, který `load-balancer-sku` typ clusteru lze definovat pouze v době vytváření clusteru. Základní nástroje pro vyrovnávání zatížení *SKU* ale používají *základní* IP adresy SKU, které nejsou kompatibilní se *standardními* nástroji pro vyrovnávání zatížení SKU, protože vyžadují standardní IP adresy *SKU* . Při migraci clusterů na upgrade Load Balancer SKU se vyžaduje nová IP adresa s kompatibilní SKLADOVOU adresou IP.
 
-Další informace o tom, jak migrovat clustery, najdete [v naší dokumentaci týkající se migrace](acs-aks-migration.md) , kde najdete seznam důležitých témat, která je potřeba vzít v úvahu při migraci. Při použití standardních nástrojů pro vyrovnávání zatížení SKU v AKS jsou také důležité rozdíly v chování.
+Další informace o tom, jak migrovat clustery, najdete [v naší dokumentaci týkající se migrace](aks-migration.md) , kde najdete seznam důležitých témat, která je potřeba vzít v úvahu při migraci. Při použití standardních nástrojů pro vyrovnávání zatížení SKU v AKS jsou také důležité rozdíly v chování.
 
 ### <a name="limitations"></a>Omezení
 

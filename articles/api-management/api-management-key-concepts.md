@@ -14,15 +14,15 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073439"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374455"
 ---
 # <a name="about-api-management"></a>Informace o službě API Management
 
-API Management (APIM) je způsob, jak vytvořit konzistentní a moderní brány API pro stávající back-endové služby.
+Služba API Management (APIM) představuje způsob, jak vytvářet konzistentní a moderní brány rozhraní API pro stávající back-endové služby.
 
 API Management pomáhá organizacím při publikování rozhraní API pro externí, partnerské a interní vývojáře, aby odemkli potenciál jejich dat a služeb. Firmy po celém světě hledají způsoby, jak rozšířit svojí činnost na digitální platformě, vytvářejí nové kanály, hledají nové zákazníky a více se propojují s těmi stávajícími. Služba API Management nabízí základní možnosti pro zajištění úspěšného programu s rozhraním API prostřednictvím zapojení vývojářů, informací o podniku, analýz, zabezpečení a ochrany. S pomocí služby Azure API Management můžete vzít jakýkoli back-end a na jeho základě spustit plnohodnotný program s rozhraním API.
 
@@ -60,7 +60,7 @@ Systém se skládá z následujících součástí:
   * Vytvořit účet a přihlásit se k odběru za účelem získání klíčů rozhraní API.
   * Přistupovat k analýzám jejich využití.
 
-Další informace najdete [v cloudovém API Management: Využijte sílu rozhraní API](https://j.mp/ms-apim-whitepaper) pro dokumenty PDF. Tato bílá kniha s úvodními informacemi o službě API Management vytvořená společností CITO Research obsahuje: 
+Další informace najdete v bílé knize [Cloudová služba API Management: využití síly rozhraní API](https://j.mp/ms-apim-whitepaper) (formát PDF). Tato bílá kniha s úvodními informacemi o službě API Management vytvořená společností CITO Research obsahuje: 
  
  * Běžné požadavky a problémy rozhraní API
  * Oddělení rozhraní API a představení průčelí
@@ -71,7 +71,7 @@ Další informace najdete [v cloudovém API Management: Využijte sílu rozhran�
  * Použití cloudového nebo místního řešení
  * Azure API Management
  
-## <a name="apis"></a>Rozhraní API a operace
+## <a name="apis"> </a>Rozhraní API a operace
 Rozhraní API jsou základem instance služby API Management. Každé rozhraní API představuje sadu operací, které jsou vývojářům dostupné. Každé rozhraní API obsahuje odkaz na back-endovou službu, která implementuje rozhraní API, a jeho operace se mapují na operace implementované back-endovou službou. Operace ve službě API Management jsou vysoce konfigurovatelné a umožňují kontrolu nad mapováním adres URL, parametry dotazů a cest, obsahem požadavků a odezev a ukládáním operací do mezipaměti. Na úrovni rozhraní API nebo jednotlivé operace můžete implementovat také zásady kvót, omezení četnosti nebo omezení IP.
 
 Další informace najdete v článcích [Vytvoření rozhraní API][How to create APIs] a [Přidání operací do rozhraní API][How to add operations to an API].

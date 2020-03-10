@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980316"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362662"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -29,7 +29,7 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii místních fyzick�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 - Ujistěte se, že rozumíte [architektuře a komponentám](physical-azure-architecture.md) pro tento scénář.
 - Zkontrolujte [požadavky na podporu](vmware-physical-secondary-support-matrix.md) pro všechny komponenty.
@@ -146,7 +146,7 @@ Vyberte a zkontrolujte cílové prostředky.
 2. Zadejte cílový model nasazení.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
-   ![Výběr cílového umístění](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Cíl](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
@@ -162,7 +162,7 @@ Vyberte a zkontrolujte cílové prostředky.
 
 Tato zásada se automaticky přidruží ke konfiguračnímu serveru. Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud je například zásada replikace zásadou pro **replikaci** , vytvoří se zásady navrácení služeb **po obnovení.** Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
 
-## <a name="enable-replication"></a>Povolení replikace
+## <a name="enable-replication"></a>Povolit replikaci
 
 Povolte replikaci pro každý server.
 

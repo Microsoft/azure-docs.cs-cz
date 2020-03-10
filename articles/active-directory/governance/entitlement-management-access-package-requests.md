@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: addc7db2aa2f0f9ba16438d2a31d6c7cc6bfa49e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174495"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376758"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Zobrazit žádosti o přístup k balíčku v Azure AD – Správa nároků
 
 V části Správa opravňujících k Azure AD vidíte, kdo požaduje přístupové balíčky, jejich zásady a stav. Tento článek popisuje, jak zobrazit žádosti pro balíčky pro přístup.
 
-## <a name="view-requests"></a>Zobrazit žádosti
+## <a name="view-requests"></a>Zobrazení požadavků
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 

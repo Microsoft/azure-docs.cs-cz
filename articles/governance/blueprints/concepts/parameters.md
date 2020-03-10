@@ -4,11 +4,11 @@ description: Přečtěte si o statických a dynamických parametrech a jejich po
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644966"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385258"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 
@@ -52,7 +52,7 @@ Hodnota parametru definovaná v definici podrobného plánu se nazývá **static
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Nastavení statických parametrů na portálu
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 
@@ -169,7 +169,7 @@ Opakem statického parametru je **dynamický parametr**. Tento parametr není de
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Nastavení dynamických parametrů na portálu
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 

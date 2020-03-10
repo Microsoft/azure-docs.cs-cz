@@ -9,18 +9,18 @@ ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022191"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384285"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
 > 
 
@@ -28,21 +28,21 @@ Tento článek vám pomůže vytvořit připojení k propojení virtuální sít
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Zkontrolujte [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
+* Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
 
 * Musí mít aktivní okruh ExpressRoute.
-  * Postupujte podle pokynů a [vytvořit okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a mějte ho povolený poskytovatel připojení.
+  * Podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a pořiďte okruh povolený vaším poskytovatelem připojení.
   * Ujistěte se, že máte soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Pokyny pro vytváření partnerských vztahů a směrování najdete v článku [Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](expressroute-howto-routing-portal-resource-manager.md) .
   * Ověřte, že je nakonfigurovaný soukromého partnerského vztahu Azure a partnerského vztahu protokolu BGP mezi vaší sítí a Microsoftem nahoru tak, že povolíte připojení k začátku do konce.
-  * Ujistěte se, že máte virtuální síť a Brána virtuální sítě vytvořené a plně zřízený. Postupujte podle pokynů a [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType "ExpressRoute", ne VPN.
+  * Ujistěte se, že máte virtuální síť a Brána virtuální sítě vytvořené a plně zřízený. Postupujte podle pokynů a [vytvořte bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType "ExpressRoute", ne VPN.
 
 * Až 10 virtuálních sítí můžete propojit standardní okruh ExpressRoute. Všechny virtuální sítě musí být ve stejné geopolitické oblasti, při použití standardní okruh ExpressRoute.
 
 * Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Můžete vytvořit nový objekt připojení pro každý okruh ExpressRoute, ke kterému se připojujete pomocí procesu níže. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou.
 
-* Můžete propojit virtuální síť mimo geopolitické oblasti okruh ExpressRoute nebo připojení větší počet virtuálních sítí pro váš okruh ExpressRoute, pokud jste povolili doplněk ExpressRoute premium. Zkontrolujte, [nejčastější dotazy k](expressroute-faqs.md) podrobné informace o doplněk premium.
+* Můžete propojit virtuální síť mimo geopolitické oblasti okruh ExpressRoute nebo připojení větší počet virtuálních sítí pro váš okruh ExpressRoute, pokud jste povolili doplněk ExpressRoute premium. Další podrobnosti o doplňku Premium najdete v [nejčastějších dotazech](expressroute-faqs.md) .
 
-* Je možné [zobrazení videa](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit) před zahájením pro lepší pochopení kroků.
+* Než začnete lépe pochopit tento postup, můžete si [prohlédnout video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit) .
 
 ## <a name="connect-a-vnet-to-a-circuit---same-subscription"></a>Připojení virtuální sítě k okruhu - stejné předplatné
 
@@ -55,7 +55,7 @@ Tento článek vám pomůže vytvořit připojení k propojení virtuální sít
 1. Ujistěte se, že váš okruh ExpressRoute a soukromého partnerského vztahu Azure byl úspěšně nakonfigurován. Postupujte podle pokynů v tématu [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md) a [Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](expressroute-howto-routing-arm.md). Váš okruh ExpressRoute by měl vypadat jako na následujícím obrázku:
 
    [![Snímek obrazovky okruhu ExpressRoute](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Zobrazit okruh")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
-2. Teď můžete začít zřizování připojení k propojení vaší brány virtuální sítě pro váš okruh ExpressRoute. Klikněte na tlačítko **připojení** > **přidat** otevřít **přidat připojení** stránce a pak proveďte konfiguraci hodnot.
+2. Teď můžete začít zřizování připojení k propojení vaší brány virtuální sítě pro váš okruh ExpressRoute. Kliknutím na **připojení** > **Přidat** otevřete stránku **Přidat připojení** a pak nakonfigurujte tyto hodnoty.
 
    [![Obrázek přidání připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Obrázek přidání připojení")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Po připojení se úspěšně nakonfigurovalo, objekt připojení se zobrazí informace o připojení.
@@ -86,7 +86,7 @@ Vlastníka okruhu má schopnost upravovat dokumentů a odvolání přístupu aut
 
 ### <a name="circuit-owner-operations"></a>Operace vlastníka okruhu
 
-**Chcete-li vytvořit připojení autorizace**
+**Vytvoření autorizace připojení**
 
 Vlastníka okruhu vytvoří autorizaci. Výsledkem je vytvoření autorizačního klíče, který je možné připojit své brány virtuální sítě k okruhu ExpressRoute uživatelem okruhu. Povolení platí jenom jedno připojení.
 
@@ -94,46 +94,46 @@ Vlastníka okruhu vytvoří autorizaci. Výsledkem je vytvoření autorizačníh
 > Každé připojení vyžaduje samostatnou autorizaci.
 >
 
-1. Na stránce ExpressRoute, klikněte na **povolení** a potom zadejte **název** autorizace a klikněte na **Uložit**.
+1. Na stránce ExpressRoute klikněte na **autorizace** a potom zadejte **název** autorizace a klikněte na **Uložit**.
 
    ![Autorizace](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
-2. Po uložení konfigurace zkopírovat **ID prostředku** a **autorizační klíč**.
+2. Po uložení konfigurace zkopírujte **ID prostředku** a **autorizační klíč**.
 
    ![Autorizační klíč](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
-**Chcete-li odstranit autorizaci připojení**
+**Odstranění autorizace připojení**
 
-Připojení můžete odstranit tak, že vyberete **odstranit** ikonu na stránce pro připojení.
+Připojení můžete odstranit výběrem ikony **Odstranit** na stránce pro vaše připojení.
 
 ### <a name="circuit-user-operations"></a>Operace pro uživatele okruhu
 
 ID prostředku a autorizační klíč z vlastníka okruhu, musí uživatel okruhu.
 
-**Chcete-li uplatnit autorizaci připojení**
+**Uplatnění autorizace připojení**
 
-1. Klikněte na tlačítko **+ nová** tlačítko.
+1. Klikněte na tlačítko **+ Nový** .
 
    ![Klikněte na tlačítko Nový](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
-2. Vyhledejte **"Připojení"** na webu Marketplace, vyberte ho a klikněte na tlačítko **vytvořit**.
+2. Na webu Marketplace vyhledejte **"připojení"** , vyberte ho a klikněte na **vytvořit**.
 
    ![Hledat připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
-3. Ujistěte se, **typ připojení** je nastavena na "ExpressRoute".
-4. Vyplňte podrobnosti a pak klikněte na **OK** na základní stránce.
+3. Ujistěte se, že je **Typ připojení** nastavený na "ExpressRoute".
+4. Vyplňte podrobnosti a klikněte na tlačítko **OK** na stránce základy.
 
    ![Základní informace o stránce](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
-5. V **nastavení** stránky, vyberte **Brána virtuální sítě** a zkontrolujte **uplatnit autorizaci** zaškrtávací políčko.
-6. Zadejte **autorizační klíč** a **identifikátor URI okruhu partnerských uzlů** a zadejte název připojení. Klikněte na tlačítko **OK**. **Identifikátor URI partnerského okruhu** je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
+5. Na stránce **Nastavení** vyberte **bránu virtuální sítě** a zaškrtněte políčko **uplatnit autorizaci** .
+6. Zadejte **autorizační klíč** a **identifikátor URI rovnocenného okruhu** a zadejte název připojení. Klikněte na tlačítko **OK**. **Identifikátor URI partnerského okruhu** je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
 
    ![Stránka Nastavení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
-7. Zkontrolujte informace **Souhrn** stránky a klikněte na tlačítko **OK**.
+7. Zkontrolujte informace na stránce **Souhrn** a klikněte na tlačítko **OK**.
 
-**K uvolnění ověření připojení**
+**Uvolnění autorizace připojení**
 
 Povolení můžete uvolnit tak, že odstraníte okruh ExpressRoute k virtuální síti, která odkazuje připojení.
 
 ## <a name="delete-a-connection-to-unlink-a-vnet"></a>Odstranit připojení k propojení virtuální sítě
 
-Můžete odstranit připojení a zrušit propojení virtuální sítě k okruhu ExpressRoute, tak, že vyberete **odstranit** ikonu na stránce pro připojení.
+Připojení a odpojení virtuální sítě k okruhu ExpressRoute můžete odstranit tak, že na stránce vyberete ikonu **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022275"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374739"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Aktualizace informací o profilu a účtu na portálu moje aplikace
 
@@ -83,7 +83,7 @@ Pokud chcete změnit heslo pro svůj pracovní nebo školní účet, můžete vy
 
     ![Stránka pro změnu hesla](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Vyberte **odeslat**.
+3. Vyberte **Odeslat**.
 
     Vaše heslo se změnilo. Budete se muset přihlásit ke všem aplikacím, ke kterým jste se předtím přihlásili pomocí pracovního nebo školního účtu.
 
@@ -114,7 +114,7 @@ Dvojúrovňové ověřování vyžaduje, abyste předtím, než se dostanete k �
 
     - **Nastavte aplikaci Microsoft Authenticator.** Můžete zvolit nastavení aplikace Microsoft Authenticator, aby fungovala jako metoda ověřování. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md)
 
-3. Vyberte **Uložit** uložte provedené změny.
+3. Kliknutím na **Uložit** uložte změny.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Kontrola podmínek použití v rámci vaší organizace
 

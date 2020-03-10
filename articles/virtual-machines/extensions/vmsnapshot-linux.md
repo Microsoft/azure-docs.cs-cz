@@ -11,11 +11,11 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
 ms.openlocfilehash: d2af6b6c981a2fcbce38546196aa84f1e6be4e38
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263298"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383415"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozšíření pro systém Linux snímku virtuálního počítače pro Azure Backup
 
@@ -60,7 +60,7 @@ Následující JSON zobrazuje schéma pro rozšíření snímku virtuálního po
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | string |
@@ -72,7 +72,7 @@ Následující JSON zobrazuje schéma pro rozšíření snímku virtuálního po
 
 
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Doporučený způsob přidání rozšíření snímku virtuálního počítače na virtuální počítač je ale povolením zálohování na virtuálním počítači. To je možné dosáhnout pomocí Správce prostředků šablony.  Ukázková Správce prostředků šablona umožňující zálohování na virtuálním počítači najdete v [galerii Azure Rychlé zprovoznění](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
 
@@ -91,7 +91,7 @@ az backup protection enable-for-vm \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 
@@ -111,4 +111,4 @@ Informace o řešení potíží najdete v [Průvodci odstraňováním potíží 
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).

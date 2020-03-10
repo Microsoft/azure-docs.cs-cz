@@ -5,11 +5,11 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989684"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363710"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Správa záloh virtuálních počítačů Azure pomocí služby Azure Backup
 
@@ -30,8 +30,8 @@ Zálohy můžete spravovat pomocí řídicího panelu a přechodem k jednotlivý
 
 Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
-2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Recovery Services**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **úložiště Recovery Services**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Služby zotavení**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **úložiště Recovery Services**.
 
     ![Vytvoření trezoru Služeb zotavení](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
@@ -56,7 +56,7 @@ Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
 Správa zásad zálohování:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/). Otevřete řídicí panel trezoru.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
 2. Na dlaždici **zálohované položky** vyberte **Azure Virtual Machines**.
 
     ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/contoso-vault-1606.png)
@@ -124,7 +124,7 @@ Zastavení ochrany a odstranění dat virtuálního počítače:
 1. Na [řídicím panelu položky trezoru](#view-vms-on-the-dashboard)vyberte **Zastavit zálohování**.
 2. Vyberte možnost **Odstranit zálohovaná data**a podle potřeby potvrďte výběr. Zadejte název zálohované položky a přidejte komentář, pokud chcete.
 
-    ![Odstranění zálohovaných dat](./media/backup-azure-manage-vms/delete-backup-data1.png)
+    ![Odstranit data zálohy](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
 ## <a name="resume-protection-of-a-vm"></a>Obnovení ochrany virtuálního počítače
 
@@ -139,7 +139,7 @@ Obnovení ochrany virtuálního počítače:
 
     ![Zpráva indikující úspěšnému chráněnému virtuálnímu počítači](./media/backup-azure-manage-vms/success-message.png)
 
-## <a name="delete-backup-data"></a>Odstranění zálohovaných dat
+## <a name="delete-backup-data"></a>Odstranit data zálohy
 
 Existují dva způsoby, jak odstranit data zálohy virtuálního počítače:
 
@@ -154,7 +154,7 @@ Existují dva způsoby, jak odstranit data zálohy virtuálního počítače:
   * Na [řídicím panelu položky trezoru](#view-vms-on-the-dashboard)vyberte **Odstranit zálohovaná data**.
   * Zadejte název zálohované položky, abyste potvrdili, že chcete body obnovení odstranit.
 
-    ![Odstranění zálohovaných dat](./media/backup-azure-manage-vms/delete-backup-data1.png)
+    ![Odstranit data zálohy](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
   * Chcete-li odstranit data zálohy pro položku, vyberte možnost **Odstranit**. Zpráva s oznámením vám poskytne informace o odstranění zálohovaných dat.
 

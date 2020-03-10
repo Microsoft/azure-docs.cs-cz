@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
 ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587273"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359753"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -82,11 +82,11 @@ Na rozdíl od tradičních databázových strojů, které mají centralizované 
 
 Následující diagram znázorňuje různé typy uzlů v databázi s škálovatelným škálováním:
 
-![Architektura](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![architektura](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
 Databáze v rámci škálování obsahuje následující různé typy komponent:
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Výpočty
 
 Výpočetní uzel je místo, kde se nachází relační modul, takže se objeví všechny jazykové prvky, zpracování dotazů a tak dále. Všechny interakce uživatelů s databází škálování na úrovni služeb probíhají prostřednictvím těchto výpočetních uzlů. Výpočetní uzly mají mezipaměti založené na SSD (s RBPEXm rozšířením fondu vyrovnávací paměti v předchozím diagramu) k minimalizaci počtu síťových přenosů, které jsou nutné k načtení stránky dat. Je k dispozici jeden primární výpočetní uzel, ve kterém jsou zpracovávány všechny úlohy a zápisy čtení a transakcí. K dispozici je jeden nebo více sekundárních výpočetních uzlů, které fungují jako aktivní pohotovostní uzly pro účely převzetí služeb při selhání, a také fungovat jako výpočetní uzly jen pro čtení pro přesměrování zpracování úloh čtení (Pokud je tato funkce požadovaná).
 
@@ -98,7 +98,7 @@ Stránkové servery jsou systémy, které představují modul úložiště s hor
 
 Protokolová služba přijímá záznamy protokolu z primární repliky služby COMPUTE, uchovává je v odolné mezipaměti a předávají záznamy protokolu na zbytek výpočetních replik (takže může aktualizovat jejich mezipaměti) i na relevantní stránky, aby se data mohla aktualizovat. Některé. Tímto způsobem se všechny změny dat z primární repliky COMPUTE šíří prostřednictvím služby protokolování na všechny sekundární výpočetní repliky a servery stránky. Nakonec jsou záznamy protokolu odesílány do dlouhodobého úložiště v Azure Storage, což je prakticky nekonečné úložiště úložiště. Tento mechanismus odebere nutnost častého zkracování protokolů. Protokolová služba má také místní mezipaměť pro urychlení přístupu k záznamům protokolu.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Úložiště Azure
 
 Azure Storage obsahuje všechny datové soubory v databázi. Stránky serverů udržují datové soubory v Azure Storage aktuálním stavu. Toto úložiště se používá pro účely zálohování a také pro replikaci mezi oblastmi Azure. Zálohy jsou implementovány pomocí snímků úložiště datových souborů. Operace obnovení využívající snímky jsou rychlé bez ohledu na velikost dat. Data je možné obnovit do libovolného bodu v čase v rámci doby uchovávání záloh databáze.
 
@@ -170,27 +170,27 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Austrálie – jihovýchod
 - Brazílie – jih
 - Kanada – střed
-- USA – střed
+- Střed USA
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
-- USA – východ
+- Východní USA
 - Východní USA 2
 - Francie – střed
 - Japonsko – východ
 - Japonsko – západ
 - Jižní Korea – střed
 - Jižní Korea – jih
-- USA – středosever
+- Střed USA – sever
 - Severní Evropa
 - Jižní Afrika – sever
-- USA – středojih
+- Střed USA – jih
 - Jihovýchodní Asie
 - Velká Británie – jih
 - Spojené království – západ
 - Západní Evropa
-- USA – západ
-- USA – západ 2
+- Západní USA
+- Západní USA 2
 
 Pokud chcete vytvořit databázi s škálovatelným škálováním v oblasti, která není uvedená jako podporovaná, můžete odeslat požadavek na registraci prostřednictvím Azure Portal. Pokyny najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md) . Při odesílání vaší žádosti postupujte podle následujících pokynů:
 

@@ -6,11 +6,11 @@ ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
 ms.openlocfilehash: 9a829b0c84c397f297539cdb04b3ad027a18c834
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473616"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383605"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření šablon Azure Resource Manageru pomocí nástroje Visual Studio Code
 
@@ -20,7 +20,7 @@ V tomto rychlém startu nasadíte účet úložiště:
 
 ![Šablona Resource Manageru rychlý Start pro Visual Studio Code diagram](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -94,11 +94,11 @@ Chcete-li se setkat s tím, jak šablonu upravit pomocí Visual Studio Code, př
 
 2. Vyberte prostředí **PowerShell** nebo **bash**(CLI) v levém horním rohu a zvolte preferované prostředí.  Po přepnutí se vyžaduje restartování prostředí.
 
-    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![CLI v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Prostředí PowerShell pro Azure Portal Cloud Shell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
@@ -106,11 +106,11 @@ Chcete-li se setkat s tím, jak šablonu upravit pomocí Visual Studio Code, př
 
 3. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**.
 
-    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
@@ -120,18 +120,18 @@ Chcete-li se setkat s tím, jak šablonu upravit pomocí Visual Studio Code, př
 
     Volitelně můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
 
-    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![Zobrazení souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Zobrazení souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
     ---
 4. Ve službě Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
 
-    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
@@ -141,7 +141,7 @@ Chcete-li se setkat s tím, jak šablonu upravit pomocí Visual Studio Code, př
     az group deployment create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -157,11 +157,11 @@ Chcete-li se setkat s tím, jak šablonu upravit pomocí Visual Studio Code, př
 
     Následující snímek obrazovky ukazuje ukázkové nasazení:
 
-    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
@@ -171,7 +171,7 @@ Chcete-li se setkat s tím, jak šablonu upravit pomocí Visual Studio Code, př
 
 5. Spuštěním následujícího příkazu rozhraní příkazového řádku nebo PowerShellu zobrazíte nově vytvořený účet úložiště:
 
-    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
@@ -180,7 +180,7 @@ Chcete-li se setkat s tím, jak šablonu upravit pomocí Visual Studio Code, př
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

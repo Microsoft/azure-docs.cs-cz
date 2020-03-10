@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169593"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379053"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
 
@@ -66,7 +66,7 @@ Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupení
 
 ## <a name="tags"></a>Značky
 
-**Značky** kartu umožňuje definovat vlastní moderování značky kromě značek moderování dvě výchozí&mdash;**isadult** (**a**) **isracy**  (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
+Karta **značky** vám umožňuje definovat vlastní značky moderování kromě dvou výchozích značek moderování&mdash;**nezletilá** (**a**) a **isracy** (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
 
 ![Zobrazení značek, včetně zaškrtávacích políček "je viditelné"](images/tags-4-disable.png)
 
@@ -94,7 +94,7 @@ Výchozí konektor při vytváření pracovního postupu je konektor Content Mod
 
 [Nástroj pro kontrolu](./human-in-the-loop.md) zahrnuje následující konektory:
 
-- Emotion
+- Emoce
 - Tvář
 - Cloudová služba PhotoDNA
 - Analýza textu

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/20/2020
+ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186884"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389026"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -36,7 +36,7 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte.
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
 1. Klikněte na možnost **Vytvořit**.
@@ -51,7 +51,7 @@ Další informace o tom, jak spravované identity fungují ve službě Azure HDI
 
 Vytvořte účet úložiště Azure Data Lake Storage Gen2.
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
 1. Klikněte na možnost **Vytvořit**.
@@ -82,20 +82,18 @@ Přiřaďte spravovanou identitu k roli **vlastníka dat objektů BLOB úložiš
     ![Snímek obrazovky ukazující, jak přiřadit roli RBAC](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. Vyberte **Save** (Uložit). Uživatelem přiřazená identita, kterou jste vybrali, je teď uvedená v seznamu vybraná role.
-1. Po dokončení tohoto počátečního nastavení můžete cluster vytvořit prostřednictvím portálu. Cluster musí být ve stejné oblasti Azure jako účet úložiště. V části **úložiště** v nabídce vytvoření clusteru vyberte následující možnosti:
+1. Po dokončení tohoto počátečního nastavení můžete cluster vytvořit prostřednictvím portálu. Cluster musí být ve stejné oblasti Azure jako účet úložiště. Na kartě **úložiště** v nabídce vytvoření clusteru vyberte následující možnosti:
 
     * Jako **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen2**.
-    * V části **Vybrat účet úložiště**vyhledejte a vyberte nově vytvořený účet úložiště data Lake Storage Gen2.
+    * V části **primární účet úložiště**vyhledejte a vyberte nově vytvořený účet úložiště data Lake Storage Gen2.
 
-        ![Nastavení úložiště pro použití Data Lake Storage Gen2 se službou Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+    * V části **Identita**vyberte nově vytvořenou spravovanou identitu přiřazenou uživatelem.
 
-    * V části **Identita**vyberte správné předplatné a nově vytvořenou spravovanou identitu přiřazenou uživatelem.
+        ![Nastavení úložiště pro použití Data Lake Storage Gen2 se službou Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 
-        ![Nastavení identity pro použití Data Lake Storage Gen2 se službou HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-
-> [!NOTE]
-> * Pokud chcete přidat sekundární Data Lake Storage Gen2 účet, na úrovni účtu úložiště jednoduše přiřaďte spravovanou identitu vytvořenou dříve k novému účtu úložiště Data Lake Storage Gen2, který chcete přidat. Doporučujeme přidat sekundární Data Lake Storage Gen2 účet přes okno další účty úložiště ve službě HDInsight se nepodporuje.
-> * V účtu Azure Storage, který používá HDInsight, můžete povolit RA-GRS nebo RA-ZRS. Vytvoření clusteru se sekundárním koncovým bodem RA-GRS nebo RA-ZRS se ale nepodporuje.
+    > [!NOTE]
+    > * Pokud chcete přidat sekundární Data Lake Storage Gen2 účet, na úrovni účtu úložiště jednoduše přiřaďte spravovanou identitu vytvořenou dříve k novému účtu úložiště Data Lake Storage Gen2, který chcete přidat. Doporučujeme přidat sekundární Data Lake Storage Gen2 účet přes okno další účty úložiště ve službě HDInsight se nepodporuje.
+    > * V účtu Azure Storage, který používá HDInsight, můžete povolit RA-GRS nebo RA-ZRS. Vytvoření clusteru se sekundárním koncovým bodem RA-GRS nebo RA-ZRS se ale nepodporuje.
 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Vytvoření clusteru s Data Lake Storage Gen2 prostřednictvím Azure CLI
@@ -151,7 +149,7 @@ az group deployment create --name HDInsightADLSGen2Deployment \
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-azure-powershell"></a>Vytvoření clusteru pomocí Data Lake Storage Gen2 přes Azure PowerShell
 
-Použití PowerShellu k vytvoření clusteru HDInsight s Azure Data Lake Storage Gen2 se momentálně nepodporuje.
+Použití PowerShellu k vytvoření clusteru HDInsight s Azure Data Lake Storage Gen2 není aktuálně podporováno.
 
 ## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>Řízení přístupu pro Data Lake Storage Gen2 ve službě HDInsight
 
@@ -205,7 +203,7 @@ Příklady jsou založené na [připojení SSH](./hdinsight-hadoop-linux-use-ssh
 
 #### <a name="a-few-hdfs-commands"></a>Několik příkazů HDFS
 
-1. Vytvořte v místním úložišti jednoduchý soubor.
+1. Vytvoří soubor v místním úložišti.
 
     ```bash
     touch testFile.txt

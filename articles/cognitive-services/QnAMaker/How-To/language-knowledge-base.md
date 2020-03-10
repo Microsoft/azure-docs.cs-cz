@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: a818d84bf3df712190ccc6c1721c26933a9fbcdb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73793937"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389441"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Jazyková podpora obsahu znalostní báze pro QnA Maker
 
-Při vytváření první znalostní báze v prostředku je vybraný jazyk pro službu. Všechny další databáze znalostí v prostředku musí být ve stejném jazyce. 
+Při vytváření první znalostní báze v prostředku je vybraný jazyk pro službu. Všechny další databáze znalostí v prostředku musí být ve stejném jazyce.
 
 Jazyk určuje relevanci výsledků QnA Maker poskytuje odpověď na dotazy uživatelů.
 
@@ -29,32 +29,32 @@ QnA Maker umožňuje vybrat jazyk pro službu QnA při vytváření první znalo
 
 Vytváření znalostní báze v různých jazycích v jednom zdroji negativně ovlivňuje relevanci výsledků QnA Maker poskytuje odpověď na dotazy uživatelů.
 
-Projděte si seznam [podporovaných jazyků](../overview/language-support.md#languages-supported) a to, jak jazyky ovlivňují [a relevance](#query-matching-and-relevance). 
+Projděte si seznam [podporovaných jazyků](../overview/language-support.md#languages-supported) a to, jak jazyky ovlivňují [a relevance](#query-matching-and-relevance).
 
 ## <a name="select-language-when-creating-first-knowledge-base"></a>Při vytváření prvního znalostní báze vybrat jazyk
 
-Výběr jazyka je součástí kroků k vytvoření první znalostní báze v prostředku. 
+Výběr jazyka je součástí kroků k vytvoření první znalostní báze v prostředku.
 
 ![Snímek obrazovky QnA Makerového portálu pro výběr jazyka pro první znalostní bázi](../media/language-support/select-language-when-creating-knowledge-base.png)
 
-## <a name="query-matching-and-relevance"></a>Shoda a závažnost dotazu
-QnA Maker závisí na [analyzátorech kognitivní hledání jazyka Azure](https://docs.microsoft.com/rest/api/searchservice/language-support) pro poskytování výsledků. 
+## <a name="query-matching-and-relevance"></a>Odpovídající dotaz a relevance
+QnA Maker závisí na [analyzátorech kognitivní hledání jazyka Azure](https://docs.microsoft.com/rest/api/searchservice/language-support) pro poskytování výsledků.
 
-I když jsou možnosti Azure Kognitivní hledání pro podporované jazyky v nominální hodnotě, QnA Maker má další hodnocení, které je umístěné nad výsledky Azure Search. V tomto modelu hodnocení používáme některé speciální sémantické funkce a funkce založené na slovech v následujících jazycích. 
+I když jsou možnosti Azure Kognitivní hledání pro podporované jazyky v nominální hodnotě, QnA Maker má další hodnocení, které je umístěné nad výsledky Azure Search. V tomto modelu hodnocení používáme některé speciální sémantické funkce a funkce založené na slovech v následujících jazycích.
 
 |Jazyky s dalšími přiřazením|
 |--|
 |Čínština|
 |Čeština|
-|Holandština|
-|Angličtina|
+|Nizozemština|
+|angličtina|
 |Francouzština|
 |Němčina|
 |Maďarština|
-|italština|
+|Italština|
 |Japonština|
 |Korejština|
-|polština|
+|Polština|
 |Portugalština|
 |Španělština|
 |švédština|
@@ -65,10 +65,10 @@ Toto dodatečné hodnocení představuje interní pracovní QnA Maker hodnocení
 
 Jazyk prostředku QnA Maker můžete ověřit na stránce nastavení služby v QnA Maker.
 
-![Snímek obrazovky QnA Makerového portálu stránky nastavení služby](../media/language-support/language-knowledge-base.png) 
+![Snímek obrazovky QnA Makerového portálu stránky nastavení služby](../media/language-support/language-knowledge-base.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření QnA robota pomocí Azure Bot Service](../Tutorials/create-qna-bot.md)
+> [Migrace znalostní báze](../Tutorials/migrate-knowledge-base.md)

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
 ms.openlocfilehash: 4103930e0d089f5f7c17586f22616431c8aa11d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978361"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374935"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě
 
@@ -33,7 +33,7 @@ Přečtěte si, jak vytvořit, změnit nebo odstranit partnerský vztah virtuál
 Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnerskými vztahy.
+- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnerskými vztahy.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy prostředí PowerShell, buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Connect-AzAccount` s účtem, který má [potřebná oprávnění](#permissions) pro práci s partnerským vztahem, a vytvořit tak připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte taky spustit `az login` s účtem, který má [potřebná oprávnění](#permissions) pro práci s partnerským vztahem, a vytvořit tak připojení k Azure.
 
@@ -82,9 +82,9 @@ Před změnou partnerského vztahu se seznamte s požadavky a omezeními a [pot�
 3. V části **Nastavení**vyberte **partnerské vztahy**.
 4. Vyberte partnerský vztah, pro který chcete zobrazit nebo změnit nastavení.
 5. Změňte příslušné nastavení. Přečtěte si o možnostech pro každé nastavení v [kroku 5](#add-peering) vytvoření partnerského vztahu.
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
-**Příkazy**
+**Příkaz**
 
 - **Azure CLI**: [AZ Network VNet peering list](/cli/azure/network/vnet/peering) pro výpis partnerských vztahů pro virtuální síť, [AZ Network VNet peering show](/cli/azure/network/vnet/peering) k zobrazení nastavení konkrétního partnerského vztahu a [AZ Network VNet peering Update](/cli/azure/network/vnet/peering) pro změnu nastavení partnerského vztahu. |
 - **PowerShell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) pro načtení nastavení partnerského vztahu zobrazení a nastavení [-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) pro změnu nastavení.
@@ -103,7 +103,7 @@ Pokud chcete, aby virtuální sítě mohly někdy komunikovat, ale ne vždy, mí
 4. Na pravé straně partnerského vztahu, který chcete odstranit, vyberte **...** , vyberte **Odstranit**a pak vyberte **Ano** , pokud chcete odstranit partnerský vztah z první virtuální sítě.
 5. Dokončete předchozí kroky a odstraňte partnerský vztah z jiné virtuální sítě v partnerském vztahu.
 
-**Příkazy**
+**Příkaz**
 
 - **Azure CLI**: [AZ Network VNet peering Delete](/cli/azure/network/vnet/peering)
 - **PowerShell**: [Remove-AzVirtualNetworkPeering](/powershell/module/az.network/remove-azvirtualnetworkpeering)
@@ -142,7 +142,7 @@ Pokud chcete, aby virtuální sítě mohly někdy komunikovat, ale ne vždy, mí
 
 Pokud váš účet není přiřazený k jedné z předchozích rolí, musí být přiřazený k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k potřebným akcím z následující tabulky:
 
-| Akce                                                          | Name (Název) |
+| Akce                                                          | Název |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vyžaduje se vytvoření partnerského vztahu z virtuální sítě A do virtuální sítě B. virtuální síť musí být virtuální síť (Správce prostředků).          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | Vyžaduje se k vytvoření partnerského vztahu z virtuální sítě B (Správce prostředků) k virtuální síti.                                                       |

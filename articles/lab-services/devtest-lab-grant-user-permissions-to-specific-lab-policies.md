@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: spelluru
 ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028435"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380951"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Udělení uživatelských oprávnění ke konkrétním zásadám testovacího prostředí
 ## <a name="overview"></a>Přehled
@@ -30,7 +30,7 @@ Jak je popsáno v článku [Access Control založeném na rolích Azure](../role
 
 V DevTest Labs je zásada typem prostředku, který umožňuje akci RBAC **Microsoft. DevTestLab/Labs/policySets/policies**/. Každá zásada testovacího prostředí je prostředek v typu prostředku zásady a dá se přiřadit jako obor role RBAC.
 
-Pokud třeba chcete uživatelům udělit oprávnění ke čtení a zápisu pro zásady **povolených velikostí virtuálních počítačů** , vytvoříte vlastní roli, která bude fungovat s **Microsoft. DevTestLab/Labs/policySets/** actions/action a pak jim přiřadí příslušné uživatele. Tato vlastní role v oboru **Microsoft. DevTestLab/Labs/policySets/policies/AllowedVmSizesInLab**.
+Pokud třeba chcete uživatelům udělit oprávnění ke čtení a zápisu pro zásady **povolených velikostí virtuálních počítačů** , vytvoříte vlastní roli, která bude fungovat s **Microsoft. DevTestLab/Labs/policySets/** actions/action, a pak těmto vlastním rolím přiřadíte příslušné uživatele v oboru **Microsoft. DevTestLab/Labs/PolicySets/** Policy/AllowedVmSizesInLab.
 
 Další informace o vlastních rolích v RBAC najdete v tématu [řízení přístupu vlastních rolí](../role-based-access-control/custom-roles.md).
 

@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924844"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387478"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Přesun dat ze služby Amazon Simple Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -37,7 +37,7 @@ Zkopírujte data z Amazonu S3, ujistěte se, že máte následující oprávněn
 * `s3:GetObject` a `s3:GetObjectVersion` pro operace s objekty Amazon S3.
 * `s3:ListBucket` pro operace s kontejnerem Amazon S3. Pokud používáte Průvodce kopírováním Data Factory, vyžaduje se také `s3:ListAllMyBuckets`.
 
-Podrobnosti o úplný seznam Amazon S3 oprávnění najdete v tématu [určení oprávnění v zásadách](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+Podrobnosti o úplném seznamu oprávnění Amazon S3 najdete v tématu [určení oprávnění v zásadě](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data ze zdroje Amazon S3 pomocí různých nástrojů nebo rozhraní API.
@@ -62,16 +62,16 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte propojenou službu typu **AwsAccessKey** a propojíte úložiště dat Amazon S3 s datovou továrnou. Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Amazon S3 (AwsAccessKey).
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | accessKeyID |ID tajný přístupový klíč. |string |Ano |
 | secretAccessKey |Vlastního klíče přístupu k tajným klíčům. |Šifrovaný tajný řetězec |Ano |
 
 >[!NOTE]
->Tento konektor vyžaduje přístupové klíče pro účet IAM zkopírovat data z Amazonu S3. [Dočasné bezpečnostním pověřením](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) se nepodporuje.
+>Tento konektor vyžaduje přístupové klíče pro účet IAM zkopírovat data z Amazonu S3. [Dočasné přihlašovací údaje zabezpečení](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nejsou podporovány.
 >
 
-Zde naleznete příklad:
+Tady je příklad:
 
 ```json
 {
@@ -91,14 +91,14 @@ Pokud chcete určit datovou sadu, která bude představovat vstupní data ve slu
 
 Oddíly, jako jsou struktura, dostupnost a zásady, jsou podobné pro všechny typy datových sad (například SQL Database, Azure Blob a Azure Table). Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **AmazonS3** (která zahrnuje datovou sadu Amazon S3) má následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| bucketName |Název sektoru S3. |Řetězec |Ano |
-| key |Klíč objektu S3. |Řetězec |Ne |
-| prefix |Předpona klíče objektu S3. Objekty, jejichž klíče začínat touto předponou vybráno. Platí pouze v případě, že klíč je prázdný. |Řetězec |Ne |
-| version |Verze objektu S3, pokud je povolená Správa verzí S3. |Řetězec |Ne |
-| formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. | |Ne |
-| compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně jsou: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). | |Ne |
+| bucketName |Název sektoru S3. |String |Ano |
+| key |Klíč objektu S3. |String |Ne |
+| prefix |Předpona klíče objektu S3. Objekty, jejichž klíče začínat touto předponou vybráno. Platí pouze v případě, že klíč je prázdný. |String |Ne |
+| Verze nástroje |Verze objektu S3, pokud je povolená Správa verzí S3. |String |Ne |
+| format | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v oddílech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), formát [ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formát [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. | |Ne |
+| komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně jsou: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). | |Ne |
 
 
 > [!NOTE]
@@ -172,9 +172,9 @@ Můžete to samé udělat pro vlastnost **prefix** datové sady Amazon S3. Sezna
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam oddílů a vlastností dostupných pro definování aktivit najdete v tématu [vytváření kanálů](data-factory-create-pipelines.md). Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásady. Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se liší podle typu aktivity. U aktivity kopírování se vlastnosti liší v závislosti na typech zdrojů a jímky. Pokud je zdroj v aktivitě kopírování typu **FileSystemSource** (který zahrnuje Amazon S3), je v části **typeProperties** k dispozici následující vlastnost:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| recursive |Určuje, jestli se mají rekurzivně zobrazovat objekty S3 v rámci adresáře. |true nebo false |Ne |
+| rekurzivní |Určuje, jestli se mají rekurzivně zobrazovat objekty S3 v rámci adresáře. |true nebo false |Ne |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>Příklad JSON: kopírování dat z Amazon S3 do Azure Blob Storage
 V této ukázce se dozvíte, jak kopírovat data z Amazon S3 do úložiště objektů BLOB v Azure. Data se ale dají zkopírovat přímo do [kterékoli z jímky, které jsou podporované](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Data Factory.
@@ -220,7 +220,7 @@ Ukázka kopíruje data z Amazon S3 do objektu blob Azure každou hodinu. Vlastno
 
 ### <a name="amazon-s3-input-dataset"></a>Vstupní datová sada Amazon S3
 
-Nastavení **"External": true** informuje službu Data Factory, že datová sada je externí pro datovou továrnu. Nastavte tuto vlastnost na true pro vstupní datovou sadu, která není vytvořená aktivitou v kanálu.
+Nastavení **"External": hodnota true** informuje službu Data Factory, že datová sada je externí pro datovou továrnu. Nastavte tuto vlastnost na true pro vstupní datovou sadu, která není vytvořená aktivitou v kanálu.
 
 ```json
     {

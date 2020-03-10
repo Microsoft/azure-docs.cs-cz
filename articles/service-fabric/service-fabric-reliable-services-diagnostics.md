@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462914"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388410"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostické funkce pro stavové služby Reliable Services
 Stavová Reliable Services StatefulServiceBase třídy Azure Service Fabric emituje události [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) , které se dají použít k ladění služby, poskytování přehledů o fungování modulu runtime a k řešení potíží.
@@ -20,12 +20,12 @@ Název EventSource pro stavovou Reliable Services třídy StatefulServiceBase je
 
 Příklady nástrojů a technologií, které vám pomůžou při shromažďování a zobrazování událostí EventSource, jsou [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)a [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-## <a name="events"></a>Akce
+## <a name="events"></a>Události
 | Název události | ID události | Úroveň | Popis události |
 | --- | --- | --- | --- |
-| StatefulRunAsyncInvocation |1\. místo |Informační |Vygenerováno při spuštění úlohy služby RunAsync |
-| StatefulRunAsyncCancellation |2 |Informační |Vygenerováno při zrušení úlohy RunAsync služby |
-| StatefulRunAsyncCompletion |3 |Informační |Vygenerováno po dokončení úkolu služby RunAsync |
+| StatefulRunAsyncInvocation |1 |Informativní |Vygenerováno při spuštění úlohy služby RunAsync |
+| StatefulRunAsyncCancellation |2 |Informativní |Vygenerováno při zrušení úlohy RunAsync služby |
+| StatefulRunAsyncCompletion |3 |Informativní |Vygenerováno po dokončení úkolu služby RunAsync |
 | StatefulRunAsyncSlowCancellation |4 |Upozornění |Vygenerováno, když úloha RunAsync služby trvá příliš dlouho k dokončení zrušení |
 | StatefulRunAsyncFailure |5 |Chyba |Vygenerováno, když úloha RunAsync služby vyvolá výjimku. |
 
@@ -38,7 +38,7 @@ StatefulRunAsyncFailure je generována vždy, když úloha RunAsync () vyvolá v
 
 StatefulRunAsyncSlowCancellation je vygenerována vždy, když žádost o zrušení úlohy RunAsync trvá déle než čtyři sekundy. V případě, že dokončení zrušení služby trvá příliš dlouho, má vliv na možnost rychlého restartování služby na jiném uzlu. Tento scénář může mít vliv na celkovou dostupnost služby.
 
-## <a name="performance-counters"></a>Čítače výkonu
+## <a name="performance-counters"></a>Čítače výkonnosti
 Reliable Services Runtime definuje následující kategorie čítače výkonu:
 
 | Kategorie | Popis |

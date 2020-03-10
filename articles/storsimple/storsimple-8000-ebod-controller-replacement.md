@@ -1,6 +1,6 @@
 ---
-title: Výměna kontroleru StorSimple 8600 EBOD | Dokumentace Microsoftu
-description: Vysvětluje, jak odstranit a nahradit jeden nebo oba řadiče EBOD zařízení StorSimple 8600.
+title: Výměna EBOD kontroleru StorSimple 8600 | Microsoft Docs
+description: Vysvětluje, jak odebrat a nahradit jeden nebo oba EBOD řadiče na zařízení StorSimple 8600.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,89 +15,89 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578666"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365974"
 ---
-# <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Výměna kontroleru EBOD, zařízení StorSimple
+# <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Výměna EBOD kontroleru na zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
-Tento kurz vysvětluje, jak nahradit vadným modul řadiče EBOD na zařízení s Microsoft Azure StorSimple. Nahradit modul řadiče EBOD, budete muset:
+V tomto kurzu se dozvíte, jak nahradit vadný modul EBOD Controller na zařízení Microsoft Azure StorSimple. Chcete-li nahradit modul EBOD Controller, je třeba:
 
-* Odeberte chybné kontroleru EBOD
-* Instalaci nového řadiče EBOD
+* Odebrat vadný kontroler EBOD
+* Nainstalovat nový kontroler EBOD
 
-Před zahájením vezměte v úvahu následující informace:
+Než začnete, vezměte v úvahu následující informace:
 
-* Prázdné EBOD moduly musí být vložen do všechny nepoužívané sloty. Přílohu nebude studenou správně, pokud slot je otevřená.
-* Kontroleru EBOD je za provozu a může být odebraly nebo nahradily. Neodebírejte modulu se nezdařilo, dokud nezískáte náhradu. Když zahájíte proces nahrazení, se musí dokončit během 10 minut.
+* Prázdné moduly EBOD musí být vloženy do všech nepoužitých slotů. Když zůstane otvor otevřený, skříň se neprojeví správně.
+* Kontroler EBOD je horká a může být odebraný nebo nahrazený. Neodstraňujte modul, který selhal, dokud nebudete mít náhradu. Když zahájíte proces nahrazení, musíte ho dokončit do 10 minut.
 
 > [!IMPORTANT]
-> Než se pokusíte odebrat nebo nahradit jakoukoli komponentu StorSimple, ujistěte se, abyste si [bezpečnosti ikonu konvence](storsimple-safety.md#safety-icon-conventions) a dalších [bezpečnostní opatření](storsimple-safety.md).
+> Před pokusem o odebrání nebo nahrazení jakékoli součásti StorSimple se ujistěte, že jste provedli kontrolu [bezpečnostních ikon](storsimple-safety.md#safety-icon-conventions) a další [bezpečnostní opatření](storsimple-safety.md).
 
-## <a name="remove-an-ebod-controller"></a>Odeberte kontroleru EBOD
-Před nahrazením modulu se nezdařilo řadiče EBOD v zařízení StorSimple, ujistěte se, že ostatní moduly řadiče EBOD je aktivní a v chodu. Následující postup a tabulka vysvětlují, jak modul řadiče EBOD odebrat.
+## <a name="remove-an-ebod-controller"></a>Odebrání kontroleru EBOD
+Než v zařízení StorSimple nahradíte modul neúspěšného EBOD kontroleru, ujistěte se, že je aktivní a spuštěný modul EBOD Controller. Následující postup a tabulka vysvětlují, jak odebrat modul EBOD Controller.
 
-#### <a name="to-remove-an-ebod-module"></a>Chcete-li odebrat modul EBOD
+#### <a name="to-remove-an-ebod-module"></a>Odebrání modulu EBOD
 1. Otevřete web Azure Portal.
-2. Přejděte do svého zařízení a přejděte do **nastavení** > **stav hardwaru**a ověřte, zda je stav LED pro modul active řadiče EBOD zelené a LED selhání kontroleru EBOD modul je červený.
-3. Vyhledejte modul selhání kontroleru EBOD zádi zařízení.
-4. Odeberte kabely, které modul řadiče EBOD ke kontroleru připojit před přepnutím modulu EBOD mimo systém.
-5. Poznamenejte si přesný portů SAS modulu řadiče EBOD, který byl připojen k řadiči. Budete muset obnovit systém tuto konfiguraci po nahrazení EBOD modulu.
+2. Přejděte na své zařízení, přejděte na **nastavení** > **stav hardwaru**a ověřte, že je stav indikátoru LED pro modul Active eBOD Controller zelený a indikátor LED pro modul eBOD Controller, který selhal, je červený.
+3. Na zadní straně zařízení Najděte modul EBOD Controller, který selhal.
+4. Než eBOD modul EBOD ze systému, odeberte kabely, které připojovat modul kontroleru k řadiči.
+5. Poznamenejte si přesný port SAS modulu EBOD Controller, který byl připojen k řadiči. Po nahrazení modulu EBOD budete muset obnovit systém do této konfigurace.
    
    > [!NOTE]
-   > Obvykle to bude Port A, který je označen jako **hostovat v** v následujícím diagramu.
+   > Obvykle se jedná o port A, který je označen jako **hostitel v** následujícím diagramu.
    
-    ![Kontroleru EBOD propojovací rozhraní systému](./media/storsimple-ebod-controller-replacement/IC741049.png)
+    ![Plán EBOD kontroleru](./media/storsimple-ebod-controller-replacement/IC741049.png)
    
-     **Obrázek 1** EBOD zpět z modulu
+     **Obrázek 1** Zpět modul EBOD
    
-   | Štítek | Popis |
+   | Popisek | Popis |
    |:--- |:--- |
-   | 1 |Selhání LED |
-   | 2 |Napájení LED |
-   | 3 |SAS konektory |
-   | 4 |SAS indikátorů LED |
-   | 5 |Sériové porty pouze pro objekt pro vytváření |
-   | 6 |Port (hostitele v) |
-   | 7 |Port B (hostitel out) |
-   | 8 |Port C (pouze pro objekt pro vytváření použití) |
+   | 1 |INDIKÁTOR chyby |
+   | 2 |Indikátor napájení |
+   | 3 |Konektory SAS |
+   | 4 |Indikátory LED SAS |
+   | 5 |Sériové porty jenom pro tovární použití |
+   | 6 |Port A (hostitel v) |
+   | 7 |Port B (hostitel) |
+   | 8 |Port C (jenom pro tovární použití) |
 
-## <a name="install-a-new-ebod-controller"></a>Instalaci nového řadiče EBOD
-Následující postup a tabulka vysvětlují, jak nainstalovat modul řadiče EBOD v zařízení StorSimple.
+## <a name="install-a-new-ebod-controller"></a>Nainstalovat nový kontroler EBOD
+Následující postup a tabulka vysvětlují, jak nainstalovat modul EBOD Controller do zařízení StorSimple.
 
-#### <a name="to-install-an-ebod-controller"></a>Instalace řadiče EBOD
-1. Zkontrolujte zařízení EBOD poškození, zejména rozhraní konektoru. Pokud jsou všechny kódy PIN ohnuty instalaci nového řadiče EBOD.
-2. Se zámky na pozici, otevřít potáhněte modulu do prostoru dokud zapojit zámků.
+#### <a name="to-install-an-ebod-controller"></a>Instalace kontroleru EBOD
+1. Ověřte, jestli je u zařízení EBOD poškození, zejména konektor rozhraní. Neinstalujte nový kontroler EBOD, pokud jsou kódy PIN ohnuté.
+2. Pomocí zámků v otevřené pozici posuňte modul do skříně, dokud se západky nespustí.
    
-    ![Instalace řadiče EBOD](./media/storsimple-ebod-controller-replacement/IC741050.png)
+    ![Instalace kontroleru EBOD](./media/storsimple-ebod-controller-replacement/IC741050.png)
    
-    **Obrázek 2** instaluje se modul kontroleru EBOD
-3. Zavřete zámek. Kliknutím by měl poslechněte si, jak zaujme zámek.
+    **Obrázek 2**  Instalace modulu EBOD Controller
+3. Zavřete západku. Po kliknutí na západku byste měli slyšet.
    
-    ![Uvolnění EBOD západky](./media/storsimple-ebod-controller-replacement/IC741047.png)
+    ![Uvolňování západky EBOD](./media/storsimple-ebod-controller-replacement/IC741047.png)
    
-    **Obrázek 3** zavření západku modulu EBOD
-4. Znovu připojte kabely. Použijte přesnou konfiguraci, která byla k dispozici před nahrazení. Viz následující diagram a tabulka podrobné informace o tom, jak připojit kabely.
+    **Obrázek 3**  Zavírá se západka modulu EBOD.
+4. Znovu připojte kabely. Použijte přesnou konfiguraci, která byla přítomna před nahrazením. Podrobnosti o tom, jak připojit kabely, najdete v následujícím diagramu a tabulce.
    
-    ![Zapojení kabeláže zařízení 4U výkon](./media/storsimple-ebod-controller-replacement/IC770723.png)
+    ![Kabel zařízení 4U pro napájení](./media/storsimple-ebod-controller-replacement/IC770723.png)
    
-    **Obrázek 4**. Opětovné připojení kabely
+    **Obrázek 4**. Opětovné připojování kabelů
    
-   | Štítek | Popis |
+   | Popisek | Popis |
    |:--- |:--- |
-   | 1 |Primární zařízení |
+   | 1 |Primární skříň |
    | 2 |PCM 0 |
    | 3 |PCM 1 |
    | 4 |Kontroler 0 |
    | 5 |Kontroler 1 |
-   | 6 |Kontroleru EBOD 0 |
-   | 7 |Kontroleru EBOD 1 |
-   | 8 |Skříň EBOD |
-   | 9 |Jednotek pro distribuci napájení |
+   | 6 |EBOD Controller 0 |
+   | 7 |EBOD řadič 1 |
+   | 8 |EBOD skříň |
+   | 9 |Jednotky distribuce napájení |
 
-## <a name="next-steps"></a>Další postup
-Další informace o [StorSimple hardwarové komponenty nahrazení](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [nahrazení StorSimple hardwarové součásti](storsimple-8000-hardware-component-replacement.md).
 

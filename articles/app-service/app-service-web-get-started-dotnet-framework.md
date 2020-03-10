@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: f2e31723dc2761007994f652d9d6c28ab3f7d47d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671394"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388205"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
 
@@ -20,7 +20,7 @@ V tomto rychlém startu se dozvíte, jak nasadit první webovou aplikaci v ASP.N
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu nainstalujte <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> s úlohou **vývoje ASP.NET a web** .
 
@@ -43,7 +43,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 4. Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET. Pro tento rychlý Start vyberte šablonu **MVC** .
 
-5. Ujistěte se, že je ověřování nastaveno na **bez ověřování**. Vyberte **Create** (Vytvořit).
+5. Ujistěte se, že je ověřování nastaveno na **bez ověřování**. Vyberte **Vytvořit**.
 
    ![Vytvoření webové aplikace v ASP.NET](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
@@ -84,7 +84,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
    |-|-|-|
    |Plán služby App Service| myAppServicePlan | Název plánu služby App Service. |
    | Umístění | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
-   | Velikost | Zadarmo | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
+   | Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
 
    ![Vytvoření plánu služby App Service](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 

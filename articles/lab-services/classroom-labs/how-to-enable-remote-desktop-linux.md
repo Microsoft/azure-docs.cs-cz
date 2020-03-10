@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
 ms.openlocfilehash: cb9a3e2b9ddcd0f74bfa4978f0bc3f4eb0688257
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583719"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360601"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Povolení vzdálené plochy pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -46,7 +46,7 @@ V současné době se připojení ke vzdálené ploše podporuje pro následují
 - openSUSE, přestupné 42,3
 - CentOS-based 7,5
 - Debian 9 "Stretch"
-- Ubuntu Server 16,04 LTS
+- Ubuntu Server 16.04 LTS
 
 ## <a name="connect-to-the-template-vm"></a>Připojení k šabloně virtuálního počítače 
 Učitelé se musí nejdřív připojit k virtuálnímu počítači šablony pomocí SSH a nainstalovat na něm balíčky RDP a GUI. Učitelé pak můžou pomocí protokolu RDP připojit se k virtuálnímu počítači šablony: 

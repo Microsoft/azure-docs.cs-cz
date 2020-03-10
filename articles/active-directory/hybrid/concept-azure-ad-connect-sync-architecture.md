@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace Azure AD Connect: Pochopení architektury – Azure'
-description: Toto téma popisuje architekturu služby synchronizace Azure AD Connect a vysvětluje termíny používané.
+title: 'Azure AD Connect synchronizace: Princip architektury – Azure'
+description: Toto téma popisuje architekturu Azure AD Connect Sync a vysvětluje použité výrazy.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,209 +17,209 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138590"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376240"
 ---
-# <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Synchronizace Azure AD Connect: Principy architektury
-Toto téma popisuje základní architekturu pro synchronizaci Azure AD Connect. V mnoha aspektech se podobně jako jeho předchůdci MIIS 2003, ILM 2007 a FIM 2010. Synchronizace Azure AD Connect navazuje na těchto technologií. Pokud jste se seznámili s některým z těchto starší technologie, obsah tohoto tématu bude známými i. Pokud jste ještě synchronizace, toto téma je za vás. Je však není potřeba znát podrobnosti o tomto tématu k dosažení úspěchu při vytváření vlastního nastavení synchronizace Azure AD Connect (označované jako synchronizačního modulu v tomto tématu).
+# <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect synchronizace: Principy architektury
+Toto téma popisuje základní architekturu pro Azure AD Connect synchronizaci. V mnoha aspektech se podobá jejím předchůdcům MIIS 2003, ILM 2007 a FIM 2010. Azure AD Connect synchronizace je vývoj těchto technologií. Pokud jste obeznámeni s některou z těchto dřívějších technologií, bude vám také docházet k obsahu tohoto tématu. Pokud s synchronizací začínáte, toto téma je za vás. Není však nutné znát podrobnosti tohoto tématu, aby bylo možné provést přizpůsobení Azure AD Connect synchronizaci (tzv. synchronizační modul v tomto tématu).
 
 ## <a name="architecture"></a>Architektura
-Synchronizační modul vytváří integrované zobrazení objektů, které jsou uložené ve více připojených zdrojů dat a spravuje informace o identitě v těchto zdrojích dat. Toto integrované zobrazení se určuje podle informací o identitě z připojených zdrojů dat a sadu pravidel, které určují, jak zpracovat tyto informace načíst.
+Synchronizační modul vytvoří integrované zobrazení objektů uložených v několika propojených zdrojích dat a spravuje informace o identitě v těchto zdrojích dat. Toto integrované zobrazení je určeno informacemi o identitě získanými z připojených zdrojů dat a sadou pravidel, která určují, jak tyto informace zpracovat.
 
 ### <a name="connected-data-sources-and-connectors"></a>Připojené zdroje dat a konektory
-Synchronizační modul zpracovává informace o identitě z různých datových úložišť, jako je Active Directory nebo do databáze SQL serveru. Každé úložiště dat, který slouží k uspořádání svá data ve formátu podobném databáze, který poskytuje metody standardní přístup k datům je potenciální Release candidate zdroje dat pro synchronizační modul. Úložiště dat, které jsou synchronizovány pomocí synchronizační modul se nazývají **připojené zdroje dat** nebo **připojení adresáře** (CD).
+Synchronizační modul zpracovává informace o identitě z různých úložišť dat, jako je například služba Active Directory nebo databáze SQL Server. Každé úložiště dat, které organizuje jeho data ve formátu podobném databázi a poskytuje standardní metody přístupu k datům, je potenciálním kandidátem zdroje dat pro synchronizační modul. Úložiště dat, která jsou synchronizovaná pomocí synchronizačního modulu, se nazývají **připojené zdroje dat** nebo **připojené adresáře** (CD).
 
-Synchronizační modul zapouzdřuje interakci s připojeného zdroje dat v rámci modul s názvem **konektor**. Každý typ zdroje dat má ke konkrétním konektorům. Konektor přeloží požadované operace do formátu srozumitelného připojeného zdroje dat.
+Synchronizační modul zapouzdřuje interakci s připojeným zdrojem dat v rámci modulu s názvem **konektor**. Každý typ připojeného zdroje dat má určitý konektor. Konektor přeloží požadovanou operaci do formátu, který je v připojeném zdroji dat srozumitelný.
 
-Konektory provádět s připojeného zdroje dat volání rozhraní API k výměně informací o identitě (čtení a zápis). Je také možné přidat vlastní konektor pomocí rozhraní rozšiřitelného připojení. Následující obrázek znázorňuje, jak konektor připojí připojeného zdroje dat synchronizačního modulu.
+Konektory umožňují volání rozhraní API k výměně informací o identitě (čtení i zápis) s připojeným zdrojem dat. Je také možné přidat vlastní konektor pomocí rozšiřitelné architektury pro připojení. Následující obrázek znázorňuje, jak konektor připojuje propojený zdroj dat k synchronizačnímu modulu.
 
 ![Arch1](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
 
-Můžete v některém směru toku dat, ale jeho nelze současně probíhaly v obou směrech. Jinými slovy konektor můžete nakonfigurovat tak, aby data, které jsou předávány z připojeného zdroje dat pro synchronizační modul nebo synchronizačního modulu do zdroje dat, ale pouze jeden z těchto operací může dojít kdykoliv pro jeden objekt a atribut. Směr se může lišit pro různé objekty a pro jiné atributy.
+Data mohou být v obou směrech předávána, ale nemohou současně procházet oběma směry. Jinými slovy konektor lze nakonfigurovat tak, aby povoloval data, která se mají přesměrovat z připojeného zdroje dat do synchronizačního modulu, nebo z synchronizačního modulu do připojeného zdroje dat, ale pro jeden objekt a atribut můžou být v jednom okamžiku jenom jedna z těchto operací. Směr se může lišit pro různé objekty a pro různé atributy.
 
-Konfigurace konektoru, určit typy objektů, které se mají synchronizovat. Určení typů objektů definuje rozsah objektů, které jsou součástí procesu synchronizace. Dalším krokem je vybrat atributy pro synchronizaci, což se označuje jako seznam povolených položek atributů. Tato nastavení můžete změnit kdykoli v reakci na změny na obchodní pravidla. Při použití Průvodce instalací Azure AD Connect, tato nastavení se nakonfigurují automaticky.
+Chcete-li konfigurovat konektor, zadejte typy objektů, které chcete synchronizovat. Určení typů objektů definuje rozsah objektů, které jsou zahrnuty v procesu synchronizace. Dalším krokem je výběr atributů, které se mají synchronizovat, což je známý jako seznam zahrnutí atributů. Tato nastavení je možné kdykoli změnit v reakci na změny vašich obchodních pravidel. Když použijete Průvodce instalací Azure AD Connect, nakonfigurují se tato nastavení.
 
-Exportovat objekty do připojeného zdroje dat, seznam povolených položek atribut musí obsahovat alespoň minimální atributy vyžadované k vytvoření připojeného zdroje dat určitého typu objektu. Například **sAMAccountName** atribut musí obsahovat atribut seznam povolených položek pro export objekt uživatele do služby Active Directory, protože všechny objekty uživatelů ve službě Active Directory musí mít **sAMAccountName** definován atribut. Průvodce instalací nemá znovu, tato konfigurace za vás.
+Aby bylo možné exportovat objekty do připojeného zdroje dat, musí seznam zahrnutí atributů obsahovat alespoň minimální atributy potřebné k vytvoření konkrétního typu objektu v připojeném zdroji dat. Například atribut **sAMAccountName** musí být obsažen v seznamu zahrnutí atributů pro export objektu uživatele do služby Active Directory, protože všechny uživatelské objekty ve službě Active Directory musí mít definován atribut **sAMAccountName** . Znovu provede Průvodce instalací tuto konfiguraci.
 
-Pokud je připojený zdroj dat používá strukturálních součásti, jako je například oddíly nebo kontejnery pro uspořádání objektů, můžete omezit oblasti v připojených zdrojů dat, které se používají pro dané řešení.
+Pokud připojený zdroj dat používá ke uspořádání objektů strukturální komponenty, jako jsou oddíly nebo kontejnery, můžete omezit oblasti v připojeném zdroji dat, které se používají pro dané řešení.
 
-### <a name="internal-structure-of-the-sync-engine-namespace"></a>Vnitřní struktura oboru názvů modul synchronizace
-Obor názvů pro modul celý synchronizaci se skládá z dva obory názvů, které ukládají informace o identitě. Dané dva obory názvů jsou:
+### <a name="internal-structure-of-the-sync-engine-namespace"></a>Interní struktura oboru názvů synchronizačního modulu
+Celý obor názvů synchronizačního modulu se skládá ze dvou oborů názvů, které ukládají informace o identitě. Dva obory názvů:
 
-* V prostoru konektoru (CS)
+* Místo konektoru (CS)
 * Úložiště metaverse (MV)
 
-**Prostoru konektoru** je pracovní oblast, která obsahuje reprezentace určené objekty z připojeného zdroje dat a atributy určené v seznamu povolených položek atributů. Synchronizační modul používá v prostoru konektoru, můžete zjistit, co se změnilo v připojených zdrojů dat a příchozí změny. Synchronizační modul používá také v prostoru konektoru pro odchozí změny pro export do zdroje dat. Synchronizační modul udržuje prostoru jedinečných konektoru jako pracovní oblast pro jednotlivé konektory.
+**Místo konektoru** je pracovní oblast, která obsahuje reprezentace určených objektů z připojeného zdroje dat a atributů zadaných v seznamu zahrnutí atributů. Synchronizační modul používá prostor konektoru k určení toho, co se změnilo v připojeném zdroji dat a přípravu příchozích změn. Synchronizační modul používá také prostor konektoru pro přípravu odchozích změn pro export do připojeného zdroje dat. Synchronizační modul udržuje odlišné místo konektoru jako pracovní oblast pro každý konektor.
 
-S použitím pracovní oblast, synchronizační modul zůstane v nezávisle na připojené zdroje dat a nemá vliv jejich dostupnost a usnadnění přístupu. V důsledku toho může zpracovat informace o identitě v čase s využitím dat v pracovní oblasti. Synchronizační modul může vyžádat pouze změny provedené v připojených zdrojů dat od poslední komunikace relace byla ukončena nebo push pouze ke změnám informace o identitě, který dosud nepřijal připojených zdrojů dat, což snižuje sítě provoz mezi synchronizačního modulu a připojené datové zdroje.
+Pomocí pracovní oblasti zůstává synchronizační modul nezávislý na připojených zdrojích dat a nemá vliv na jejich dostupnost a přístupnost. V důsledku toho můžete informace o identitě zpracovávat kdykoli pomocí dat v pracovní oblasti. Synchronizační modul může vyžádat pouze změny provedené v připojeném zdroji dat od ukončení poslední relace komunikace nebo nabízet pouze změny informací o identitě, které připojený zdroj dat ještě nepřijal, což snižuje síť. přenos dat mezi synchronizačním modulem a připojeným zdrojem dat.
 
-Kromě toho synchronizační modul uchovává stavové informace o všech objektech, zpracování v prostoru konektoru. Po přijetí nových dat synchronizační modul vždy vyhodnotí, zda data již byly synchronizovány.
+Kromě toho synchronizační modul ukládá informace o stavu všech objektů, které se v prostoru konektoru rozpravují. Když jsou přijata nová data, synchronizační modul vždy vyhodnocuje, zda byla data již synchronizována.
 
-**Metaverse** je úložiště, který obsahuje informace o agregovaných identitě z různých zdrojů dat, poskytuje jednotný pohled globální, a integrované všechny kombinované objektů. Podle informací o identitě, který je načten z připojené zdroje dat a sadu pravidel, která umožňují přizpůsobit proces synchronizace jsou vytvořeny objekty úložiště Metaverse.
+**Metaverse** je oblast úložiště, která obsahuje agregované informace o identitě z více propojených zdrojů dat a poskytuje jedno globální integrované zobrazení všech kombinovaných objektů. Objekty Metaverse se vytvářejí na základě informací o identitě načtených z připojených zdrojů dat a sady pravidel, které vám umožní přizpůsobit proces synchronizace.
 
-Následující obrázek znázorňuje konektor obor názvů a názvů metaverse v rámci synchronizačního modulu.
+Následující obrázek znázorňuje obor názvů konektoru a obor názvů Metaverse v rámci synchronizačního modulu.
 
 ![Arch2](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
 
-## <a name="sync-engine-identity-objects"></a>Objekty identity modul synchronizace
-Objekty v synchronizační modul jsou reprezentace buď objektů v připojených zdrojů dat nebo těchto objektů má integrované zobrazení, které modul synchronizace. Každý objekt synchronizační modul musí mít globálně jedinečný identifikátor (GUID). Identifikátory GUID zajištění integrity dat a výslovně vztahy mezi objekty.
+## <a name="sync-engine-identity-objects"></a>Synchronizovat objekty identity modulu
+Objekty v modulu synchronizace představují reprezentace buď objektů v připojeném zdroji dat, nebo integrovaného zobrazení, které modul synchronizace obsahuje. Každý objekt synchronizačního modulu musí mít globálně jedinečný identifikátor (GUID). Identifikátory GUID poskytují integritu dat a expresní vztahy mezi objekty.
 
 ### <a name="connector-space-objects"></a>Objekty prostoru konektoru
-Pokud synchronizační modul komunikuje s připojeného zdroje dat, čte informace o identitě v připojených zdrojů dat a použije ji k vytvoření reprezentace objektu identity v prostoru konektoru. Nejde vytvořit nebo odstranit tyto objekty jednotlivě. Můžete však ručně odstranit všechny objekty v prostoru konektoru.
+Když synchronizační modul komunikuje s připojeným zdrojem dat, přečte informace o identitě v připojeném zdroji dat a použije tyto informace k vytvoření reprezentace objektu identity v prostoru konektoru. Tyto objekty nemůžete vytvořit ani odstranit jednotlivě. Můžete však ručně odstranit všechny objekty v prostoru konektoru.
 
-Všechny objekty v prostoru konektoru mít dva atributy:
+Všechny objekty v prostoru konektoru mají dva atributy:
 
 * Globálně jedinečný identifikátor (GUID)
-* Rozlišující název (DN)
+* Rozlišující název (označovaný také jako DN)
 
-Pokud připojeného zdroje dat objektu přiřadí jedinečný atribut, pak objekty v prostoru konektoru můžete taky nechat atributem ukotvení. Atribut ukotvení jednoznačně identifikuje objektů v připojených zdrojů dat. Synchronizační modul používá k vyhledání odpovídající reprezentaci tohoto objektu v připojených zdrojů dat ukotvení. Synchronizační modul předpokládá, že anchor objektu se nikdy nemění během životního cyklu objektu.
+Pokud připojený zdroj dat přiřadí objektu jedinečný atribut, objekty v prostoru konektoru mohou mít také atribut ukotvení. Atribut Anchor jednoznačně identifikuje objekt v připojeném zdroji dat. Synchronizační modul používá kotvu k vyhledání odpovídající reprezentace tohoto objektu v připojeném zdroji dat. Synchronizační modul předpokládá, že kotva objektu se nikdy nemění po dobu života objektu.
 
-Řada konektory známé jedinečný identifikátor slouží k vytvoření ukotvení automaticky pro každý objekt po importu. Například používá konektor služby Active Directory **objectGUID** atribut ukotvení. Připojených zdrojů dat, které neposkytují jasně definované jedinečný identifikátor můžete určit generaci ukotvení jako součást konfigurace konektoru.
+Mnohé z konektorů používají známý jedinečný identifikátor k automatickému vygenerování kotvy pro každý objekt při importu. Například konektor služby Active Directory používá pro kotvu atribut **objectGUID** . Pro připojené zdroje dat, které neposkytují jasně definovaný jedinečný identifikátor, můžete určit generování kotvy jako součást konfigurace konektoru.
 
-V tom případě ukotvení je sestaven z jednoho nebo více jedinečných atributy objektu typu, ani změny a který jednoznačně identifikuje objekt v prostoru konektoru (například číslo zaměstnance nebo ID uživatele).
+V takovém případě je kotva sestavena z jednoho nebo více jedinečných atributů typu objektu, ani z těch, které se nemění a které jednoznačně identifikují objekt v prostoru konektoru (například číslo zaměstnance nebo ID uživatele).
 
-Objekt prostoru konektoru může být jedna z následujících akcí:
+Objekt prostoru konektoru může být jeden z následujících:
 
 * Pracovní objekt
-* Zástupný text
+* Zástupný symbol
 
 ### <a name="staging-objects"></a>Pracovní objekty
-Pracovní objekt představuje instanci objektu určené typy z připojených zdrojů dat. Kromě rozlišující název a identifikátor GUID pracovní objekt má vždy hodnotu určující typ objektu.
+Pracovní objekt představuje instanci určených typů objektů z připojeného zdroje dat. Kromě identifikátoru GUID a rozlišujícího názvu má pracovní objekt vždycky hodnotu, která označuje typ objektu.
 
-Pracovní objekty, které se naimportovaly vždy mít hodnotu pro atribut ukotvení. Pracovní objekty, které byly nově zajišťovaný modulem synchronizace a se právě vytváří v připojených zdrojů dat nemají hodnotu pro atribut ukotvení.
+Pracovní objekty, které byly importovány, mají vždy hodnotu pro atribut ukotvení. Pracovní objekty, které byly nově zřízeny synchronizačním modulem a v procesu vytváření v připojeném zdroji dat, nemají hodnotu pro atribut ukotvení.
 
-Pracovní objekty také mít aktuální hodnoty atributů obchodní a provozní informace potřebné pro synchronizační modul provést proces synchronizace. Provozní informace zahrnují příznaky, které označují typ aktualizace, které jsou připravené na pracovní objekt. Pokud pracovní objekt obdržel nové informace o identitě z připojených zdrojů dat, která ještě nebyla zpracována, je objekt označený jako **čekajícího na import**. Pokud má pracovní objekt nové informace o identitě, který ještě nebyl byly vyexportovány do připojeného zdroje dat, je označena příznakem **čekající na export**.
+Pracovní objekty také přenášejí aktuální hodnoty obchodních atributů a provozní informace, které synchronizační modul potřebuje k provedení procesu synchronizace. Provozní informace obsahují příznaky indikující typ aktualizací, které jsou připravené na pracovním objektu. Pokud pracovní objekt obdržel nové informace o identitě z připojeného zdroje dat, který ještě nebyl zpracován, objekt je označen jako **čeká na Import**. Pokud má pracovní objekt nové informace o identitě, která ještě nebyla exportována do připojeného zdroje dat, je označena jako **nevyřízená export**.
 
-Pracovní objekt může být objekt importu nebo exportu objektu. Synchronizační modul vytvoří objekt importu pomocí z připojeného zdroje dat byly přijaty informace o objektu. Když synchronizační modul obdrží informace o existenci nový objekt, který odpovídá jednomu z typů objektů vybraných v konektoru, vytvoří jako reprezentace objektu v připojených zdrojů dat objektu importu v prostoru konektoru.
+Pracovní objekt může být objekt pro import nebo objekt exportu. Synchronizační modul vytvoří objekt import s použitím informací o objektu přijatých z připojeného zdroje dat. Když synchronizační modul obdrží informace o existenci nového objektu, který odpovídá jednomu z typů objektů vybraných v konektoru, vytvoří objekt import v prostoru konektoru jako reprezentace objektu v připojeném zdroji dat.
 
-Import objektu, který představuje objekt v připojených zdrojů dat na následujícím obrázku.
+Následující ilustrace znázorňuje objekt importu, který představuje objekt v připojeném zdroji dat.
 
 ![Arch3](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
 
-Synchronizační modul vytváří objekt exportu s použitím informací o objektu v úložišti metaverse. Exportovat objekty jsou exportovány do zdroje dat během příští relaci komunikace. Z pohledu synchronizační modul exportovat objekty neexistují v připojených zdrojů dat ještě. Proto atribut ukotvení objektu export není k dispozici. Po přijetí objekt z synchronizační modul, připojeného zdroje dat vytvoří jedinečnou hodnotu pro atribut ukotvení objektu.
+Synchronizační modul vytvoří objekt exportu pomocí informací o objektu v úložišti Metaverse. Exportovat objekty jsou exportovány do připojeného zdroje dat během další komunikační relace. Z perspektivy synchronizačního modulu neexistují objekty exportu v připojeném zdroji dat. Proto atribut Anchor pro objekt exportu není k dispozici. Po přijetí objektu z synchronizačního modulu vytvoří připojený zdroj dat jedinečnou hodnotu pro atribut ukotvení objektu.
 
-Následující obrázek znázorňuje, jak je vytvořen objekt exportu s použitím informací o identitě v úložišti metaverse.
+Následující obrázek ukazuje, jak je objekt exportu vytvořen pomocí informací o identitě v úložišti Metaverse.
 
 ![Arch4](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
 
-Synchronizační modul potvrdí export objektu o opakovaném importování z připojeného zdroje dat objektu. Při exportu objektů jsou import objektů při synchronizační modul je obdrží při dalším importu z tohoto připojeného zdroje dat.
+Synchronizační modul potvrdí Export objektu opětovným importem objektu z připojeného zdroje dat. Exportovat objekty se stanou importovat objekty, když je synchronizační modul obdrží během příštího importu z připojeného zdroje dat.
 
 ### <a name="placeholders"></a>Zástupné symboly
-Synchronizační modul používá k ukládání objektů s plochým oborem názvů. Ale některé zdroje dat jako je Active Directory pomocí hierarchického oboru názvů. Získat informace z hierarchického oboru názvů s plochým oborem názvů, synchronizační modul používá zástupné symboly pro zachování v hierarchii.
+Synchronizační modul používá k ukládání objektů plochý obor názvů. Některé připojené zdroje dat, jako je Active Directory, ale používají hierarchický obor názvů. Aby bylo možné transformovat informace z hierarchického oboru názvů do plochého oboru názvů, synchronizační modul používá k zachování hierarchie zástupné symboly.
 
-Každý zástupný text představuje součást (například s organizační jednotkou) objektu hierarchického oboru názvů, který ještě nebyl importován synchronizační modul, ale je potřeba vytvořit hierarchického oboru názvů. Probírají mezery vytvořené odkazy v připojených zdrojů dat na objekty, které nejsou pracovní objekty v prostoru konektoru.
+Každý zástupný symbol představuje komponentu (například organizační jednotku) hierarchického názvu objektu, která nebyla importována do synchronizačního modulu, ale je nutná k vytvoření hierarchického názvu. Doplňují mezery vytvořené odkazy v připojeném zdroji dat k objektům, které nejsou pracovní objekty v prostoru konektoru.
 
-Zástupné symboly synchronizační modul také používá k ukládání odkazované objekty, které dosud nebyl importován. Například, pokud sync je nakonfigurovaná pro atribut manager pro *Abbie Spencer* objektu a přijatá hodnota je objekt, který nebyl importované dosud, například *CN Lee Sperry, CN = = Users, DC = fabrikam, DC = com* , správce informace jsou uloženy jako zástupné symboly v prostoru konektoru. Pokud je objekt správce později importovat, zástupný objekt přepíše pracovní objekt představující správce.
+Synchronizační modul používá také zástupné symboly k ukládání odkazovaných objektů, které ještě nebyly naimportovány. Pokud je třeba synchronizace nakonfigurovaná tak, aby zahrnovala atribut správce pro objekt *Abbie Spencer* a přijatá hodnota je objekt, který ještě není importovaný, například *CN = Novák Sperry, CN = Users, DC = Fabrikam, DC = com*, informace o Správci se ukládají jako zástupné symboly v prostoru konektoru. Pokud je objekt správce později importován, zástupný objekt je přepsán příznakem přípravy, který reprezentuje správce.
 
-### <a name="metaverse-objects"></a>Objekty úložiště Metaverse
-Objekt úložiště metaverse obsahuje agregované zobrazení tohoto synchronizačního modulu má pracovní objektů v prostoru konektoru. Synchronizační modul vytváří objekty úložiště metaverse podle informací uvedených v import objektů. Několik objektů prostor konektoru nesmí být propojení objektu úložiště metaverse jednu, ale objekt prostoru konektoru, nelze ho propojit s více než jeden objekt úložiště metaverse.
+### <a name="metaverse-objects"></a>Objekty Metaverse
+Objekt Metaverse obsahuje agregované zobrazení, které synchronizační modul obsahuje pracovní objekty v prostoru konektoru. Synchronizační modul vytváří objekty Metaverse pomocí informací v části Import objektů. Několik objektů prostoru konektoru lze propojit s jedním objektem Metaverse, ale objekt prostoru konektoru nelze propojit s více než jedním objektem Metaverse.
 
-Objekty úložiště Metaverse nelze ručně vytvořené ani odstranit. Synchronizační modul automaticky odstraní metaverse objekty, které nemají odkaz na libovolný objekt prostoru konektoru v prostoru konektoru.
+Objekty úložiště metaverse nelze vytvořit nebo odstranit ručně. Synchronizační modul automaticky odstraní objekty Metaverse, které nemají odkaz na žádný objekt prostoru konektoru v prostoru konektoru.
 
-K mapování objektů v rámci připojeného zdroje dat na odpovídající typ objektu v úložišti metaverse, synchronizační modul poskytuje rozšiřitelný schématu s předdefinovanou sadu typů objektů a přidružených atributů. Můžete vytvořit nové typy objektů a atributů pro objekty úložiště metaverse. Atributy mohou být jednoho nebo více hodnot a typy atributů může být řetězce, odkazy, čísla a logické hodnoty.
+Pro mapování objektů v rámci připojeného zdroje dat na odpovídající typ objektu v úložišti Metaverse poskytuje synchronizační modul rozšiřitelné schéma s předdefinovanou sadou typů objektů a přidružených atributů. Můžete vytvořit nové typy objektů a atributy pro objekty Metaverse. Atributy můžou být jednoduché nebo vícehodnotové a typy atributů můžou být řetězce, odkazy, čísla a logické hodnoty.
 
-### <a name="relationships-between-staging-objects-and-metaverse-objects"></a>Vztahy mezi pracovním a objekty úložiště metaverse
-V rámci oboru názvů modul Synchronizace tok dat zajišťuje vztah mezi pracovní a objekty úložiště metaverse. Je volána pracovní objekt, který je propojený s objektu úložiště metaverse **připojený k objektu** (nebo **objekt konektoru**). Je volána pracovní objekt, který není přidružený k objektu úložiště metaverse **odebrán objekt** (nebo **odpojovače objekt**). Podmínky připojený a jíž se dává přednost před nelze zaměňovat s využitím konektorů za import a export dat z připojený adresář.
+### <a name="relationships-between-staging-objects-and-metaverse-objects"></a>Vztahy mezi přípravnými objekty a objekty úložiště metaverse
+V rámci oboru názvů synchronizačního modulu je tok dat povolen vztahem propojení mezi pracovními objekty a objekty úložiště metaverse. Pracovní objekt propojený s objektem Metaverse se nazývá **připojený objekt** (nebo **objekt konektoru**). Pracovní objekt, který není propojen s objektem Metaverse, se označuje jako **odpojený objekt** (nebo **objekt odpojení**). Přidané a odpojování podmínek se nedoporučuje Zaměňujte s konektory zodpovědnými za import a export dat z připojeného adresáře.
 
-Zástupné symboly jsou nikdy připojeného k objektu úložiště metaverse
+Zástupné symboly nejsou nikdy propojeny s objektem Metaverse
 
-Objekt připojené k doméně se skládá z pracovní objekt a jeho propojené vztah k objektu jednoho úložiště metaverse. Připojených objektů se používají k synchronizaci hodnoty atributů mezi objekt prostoru konektoru a objektu úložiště metaverse.
+Připojený objekt obsahuje pracovní objekt a jeho propojený vztah k jednomu objektu úložiště metaverse. Připojené objekty slouží k synchronizaci hodnot atributů mezi objektem prostoru konektoru a objektem Metaverse.
 
-Když pracovní objekt se stane připojené k doméně objekt během synchronizace, může tok atributů mezi pracovní objekt a objektu úložiště metaverse. Tok atributů je obousměrný a se konfiguruje pomocí pravidel atribut import a export atribut.
+Když se pracovní objekt změní na připojený objekt během synchronizace, atributy můžou přesměrovat mezi pracovní objekt a objekt úložiště metaverse. Tok atributů je obousměrný a je nakonfigurovaný pomocí pravidel pro import atributů a exportovat pravidla atributů.
 
-Objekt prostoru jeden konektor lze propojit pouze jeden objekt úložiště metaverse. Ale každého objektu úložiště metaverse nesmí být propojení více místa na objekty konektoru ve stejných nebo v různých konektor mezery, jak je znázorněno na následujícím obrázku.
+Jeden objekt prostoru konektoru může být propojený jenom s jedním objektem úložiště metaverse. Každý objekt úložiště metaverse je však možné propojit s více objekty prostoru konektoru ve stejném nebo v různých prostorech konektoru, jak je znázorněno na následujícím obrázku.
 
 ![Arch5](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
 
-Propojené vztah mezi pracovní objekt a objektu úložiště metaverse je trvalé a lze odebrat pouze pomocí pravidel, která jste zadali.
+Propojený vztah mezi pracovním objektem a objektem úložiště metaverse je trvalý a lze jej odebrat pouze pomocí pravidel, která zadáte.
 
-Objekt rozděleným je pracovní objekt, který není propojený s libovolného objektu úložiště metaverse. Atribut, který hodnoty objektu rozděleným nejsou zpracovány žádné další v rámci úložiště metaverse. Atribut hodnoty odpovídajícího objektu v připojených zdrojů dat nejsou aktualizovány modulem synchronizace.
+Odpojený objekt je pracovní objekt, který není propojený s žádným objektem Metaverse. Hodnoty atributu odpojeného objektu nejsou v úložišti Metaverse dále zpracovány. Synchronizační modul neaktualizuje hodnoty atributu odpovídajícího objektu v připojeném zdroji dat.
 
-Pomocí rozděleným objektů můžete ukládat informace o identitě v synchronizační modul a později ji zpracovat. Zachovat pracovní objekt jako objekt rozděleným v prostoru konektoru má mnoho výhod. Protože systém už připravil požadované informace o tomto objektu, není nutné vytvořit reprezentaci tohoto objektu znovu při další importu z připojených zdrojů dat. Tímto způsobem synchronizační modul má úplný snímek zdroje dat vždy i v případě, že neexistuje žádná aktivní připojení ke zdroji dat. Rozděleným objekty mohou být převedeny do připojených objektů a naopak, v závislosti na zadaných pravidel.
+Pomocí odpojených objektů můžete ukládat informace o identitě v modulu synchronizace a zpracovat je později. Udržování pracovního objektu jako odpojeného objektu v prostoru konektoru má mnoho výhod. Vzhledem k tomu, že systém již připravil požadované informace o tomto objektu, není nutné znovu vytvořit reprezentaci tohoto objektu při dalším importu z připojeného zdroje dat. V takovém případě má modul synchronizace vždycky úplný snímek připojeného zdroje dat, i když neexistuje žádné aktuální připojení k připojenému zdroji dat. Odpojení objektů se dá převést na připojené objekty a naopak, v závislosti na zadaných pravidlech.
 
-Import objektu se vytvoří jako objekt rozděleným. Export objektu musí být připojený k objektu. Logika systému vynutí toto pravidlo a odstraní každý export objekt, který není připojený k objektu.
+Objekt importu se vytvoří jako odpojený objekt. Objekt exportu musí být připojený objekt. Systémová logika vynutila toto pravidlo a odstraní všechny objekty exportu, které nejsou připojeným objektem.
 
-## <a name="sync-engine-identity-management-process"></a>Procesu synchronizace modul identity management
-Proces správy identit řídí způsob, jakým aktualizuje informace o identitě mezi různé připojené datové zdroje. Správa identit probíhá tři procesy:
+## <a name="sync-engine-identity-management-process"></a>Proces správy identit modulu synchronizace
+Proces správy identit řídí způsob, jakým se aktualizují informace o identitě mezi různými připojenými zdroji dat. Správa identit probíhá ve třech procesech:
 
-* Import
+* Importovat
 * Synchronizace
-* Export
+* Exportovat
 
-Během procesu importu synchronizační stroj vyhodnotí příchozí informace o identitách z připojeného zdroje dat. Když se zjistí změny, se vytvoří nový pracovní objekty nebo existující pracovní objekty v prostoru konektoru pro synchronizaci aktualizací.
+Synchronizační modul během procesu importu vyhodnocuje příchozí informace o identitě z připojeného zdroje dat. Pokud jsou zjištěny změny, vytvoří buď nové pracovní objekty, nebo aktualizuje stávající pracovní objekty v prostoru konektoru pro synchronizaci.
 
-Během procesu synchronizace synchronizační modul aktualizuje metaverse tak, aby odrážely změny, ke kterým došlo v prostoru konektoru a aktualizuje v prostoru konektoru tak, aby odrážely změny, ke kterým došlo v úložišti metaverse.
+Synchronizační modul během procesu synchronizace aktualizuje úložiště metaverse tak, aby odrážel změny, ke kterým došlo v prostoru konektoru, a aktualizuje prostor konektoru tak, aby odrážel změny, ke kterým došlo v úložišti Metaverse.
 
-Během procesu exportu synchronizační modul přenáší změny, které jsou připravené na pracovní objekty a, které jsou označeny jako čekající na export.
+Synchronizační modul během procesu exportu vysune změny, které jsou připravené na pracovních objektech a které jsou označené jako nevyřízené exporty.
 
-Následující obrázek ukazuje, kde každý z procesů vyskytuje se jako toky identity informace z jednoho zdroje dat do jiného.
+Následující obrázek ukazuje, kde se jednotlivé procesy vyskytují jako informace o identitě z jednoho připojeného zdroje dat do jiného.
 
 ![Arch6](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
 
-### <a name="import-process"></a>Proces importu
-Během procesu importu synchronizační stroj vyhodnotí aktualizace informací o identitě. Synchronizační modul porovná informace o identitě přijatých z připojeného zdroje dat s informací o identitě o pracovní objektu a určuje, zda pracovní objekt vyžaduje aktualizace. Pokud je potřeba aktualizovat pracovní objekt s novými daty, pracovní objekt označen jako čekajícího na import.
+### <a name="import-process"></a>Importovat proces
+Synchronizační modul během procesu importu vyhodnocuje aktualizace informací o identitě. Synchronizační modul porovnává informace o identitě získané z připojeného zdroje dat s informacemi o přípravných objektech a určí, zda pracovní objekt vyžaduje aktualizace. Pokud je potřeba aktualizovat pracovní objekt novými daty, pracovní objekt je označen jako čeká na import.
 
-Podle pracovní objekty v prostoru konektoru před synchronizací, synchronizační modul může zpracovat pouze informací o identitě, které se změnily. Tento postup nabízí následující výhody:
+Pomocí pracovních objektů v prostoru konektoru před synchronizací může synchronizační modul zpracovat pouze informace o identitě, které se změnily. Tento proces přináší následující výhody:
 
-* **Efektivní synchronizace**. Minimalizovat objem dat zpracovaných během synchronizace.
-* **Efektivní resynchronizace**. Můžete změnit způsob, jak synchronizační modul zpracuje informace o identitě bez opětovné připojení ke zdroji dat synchronizačního modulu.
-* **Možnost vyzkoušet si synchronizace**. Můžete zobrazit náhled synchronizace ověřte správnost předpokladů o procesu správy identit.
+* **Efektivní synchronizace**. Množství dat zpracovaných během synchronizace je minimalizováno.
+* **Účinná opakovaná synchronizace**. Můžete změnit způsob, jakým synchronizační modul zpracovává informace o identitě bez opětovného připojení synchronizačního modulu ke zdroji dat.
+* **Možnost synchronizace náhledu** Můžete zobrazit náhled synchronizace a ověřit, jestli jsou vaše předpoklady týkající se procesu správy identit správné.
 
-Pro každý objekt určený v konektoru jak reprezentaci objektu v prostoru konektoru Connector poprvé pokusí synchronizačního modulu. Synchronizační modul zkontroluje všechny pracovní objekty v prostoru konektoru a pokusí se najít odpovídající pracovní objekt, který má odpovídající atribut ukotvení. Žádné existující pracovní objekt nemá odpovídající atribut ukotvení, synchronizační modul se pokusí najít odpovídající pracovní objekt s rozlišujícím názvem.
+Pro každý objekt zadaný v konektoru se synchronizační modul nejprve pokusí najít reprezentace objektu v prostoru konektoru konektoru. Synchronizační modul prověřuje všechny pracovní objekty v prostoru konektoru a pokusí se najít odpovídající pracovní objekt, který má odpovídající atribut ukotvení. Pokud žádný existující pracovní objekt nemá odpovídající atribut ukotvení, modul synchronizace se pokusí najít odpovídající pracovní objekt se stejným rozlišujícím názvem.
 
-Když se synchronizační modul najde pracovní objekt, který odpovídá rozlišující název, ale ne ukotvení, dojde k následující zvláštní chování:
+Když synchronizační modul najde pracovní objekt, který odpovídá rozlišujícímu názvu, ale nikoli kotvě, dojde k následujícímu zvláštnímu chování:
 
-* Pokud není dostupná žádná kotva nemá objekt umístěný v prostoru konektoru, pak synchronizační modul odebere tento objekt prostoru konektoru a označí objekt úložiště metaverse spojený s jako **opakujte zřizování při další synchronizaci spustit**. Potom vytvoří nový objekt importu.
-* Pokud má objekt nachází v prostoru konektoru kotva, synchronizační modul se předpokládá, že tento objekt obsahuje buď bylo přejmenováno nebo odstraněno v připojeném adresáři. Tak, aby ho můžete připravit, příchozí objektu přiřadí dočasné, nové rozlišující název pro objekt prostoru konektoru. Původní objekt se pak stane **přechodné**, čeká konektor pro import přejmenování nebo odstranění k vyřešení situace.
+* Pokud objekt umístěný v prostoru konektoru nemá žádnou kotvu, pak synchronizační modul tento objekt z prostoru konektoru odstraní a označí objekt Metaverse, ke kterému je tento objekt propojený, jako **zkuste znovu zřídit při příštím spuštění synchronizace**. Pak vytvoří nový objekt importu.
+* Pokud objekt umístěný v prostoru konektoru má kotvu, pak synchronizační modul předpokládá, že se tento objekt buď přejmenoval, nebo odstranil v připojeném adresáři. Přiřadí dočasný, nový rozlišující název objektu prostoru konektoru tak, aby mohl připravit příchozí objekt. Starý objekt pak bude **přechodný**a čeká, až konektor importuje přejmenování nebo odstranění za účelem vyřešení situace.
 
-Pokud synchronizační modul vyhledává pracovní objekt, který odpovídá objekt určený v konektoru, určuje, jaký druh změn k použití. Synchronizační modul může přejmenování nebo odstranění objektu v připojených zdrojů dat nebo může aktualizovat pouze hodnoty atributů objektu.
+Pokud synchronizační modul vyhledá pracovní objekt, který odpovídá objektu zadanému v konektoru, určuje, jaký typ změn použít. Například synchronizační stroj může přejmenovat nebo odstranit objekt v připojeném zdroji dat nebo může aktualizovat pouze hodnoty atributu objektu.
 
-Pracovní objekty s aktualizovanými daty jsou označené jako nedokončené importu. Různé typy čekající importy jsou k dispozici. V závislosti na výsledek procesu importu pracovní objekt v prostoru konektoru má jednu z následujících čekající import typů:
+Pracovní objekty s aktualizovanými daty jsou označeny jako nedokončené importy. K dispozici jsou různé typy nedokončených importů. V závislosti na výsledku procesu importu má pracovní objekt v prostoru konektoru jeden z následujících nedokončených typů importu:
 
-* **Žádný**. Žádné změny atributy pracovní objekt jsou k dispozici. Synchronizační modul neoznačí jako čekajícího na import tohoto typu.
-* **Přidat**. Pracovní objekt je objekt importu v prostoru konektoru. Synchronizační modul označí tento typ jako čekajícího na import pro další zpracování v úložišti metaverse.
-* **Aktualizace**. Synchronizační modul najde odpovídající pracovní objekt v prostoru konektoru a označí tento typ jako čekajícího na import tak, aby aktualizace atributů lze zpracovat v úložišti metaverse. Aktualizace zahrnují přejmenování objektu.
-* **Odstranit**. Synchronizační modul najde odpovídající pracovní objekt v prostoru konektoru a označí tento typ jako čekajícího na import tak, aby připojený k objektu je odstranit.
-* **Odstranit nebo přidat**. Synchronizační modul najde odpovídající pracovní objekt v prostoru konektoru, ale nejsou shodné typy objektů. V tomto případě na odstranění přidat připravené změny. A delete přidat úpravu označuje synchronizačního modulu, že dokončení opětovné synchronizace tohoto objektu musí dojít, protože různé sady pravidel použít pro tento objekt, když typ objektu změny.
+* **Žádný**. Žádné změny atributů pracovního objektu nejsou k dispozici. Synchronizační modul neoznačí tento typ jako nedokončený import.
+* **Přidat**. Pracovní objekt je novým objektem importu v prostoru konektoru. Synchronizační modul označí tento typ jako nedokončený import pro další zpracování v úložišti Metaverse.
+* **Aktualizace**. Synchronizační modul vyhledá odpovídající pracovní objekt v prostoru konektoru a označí tento typ jako nedokončený import, aby bylo možné zpracovat aktualizace atributů v úložišti Metaverse. Aktualizace obsahují přejmenování objektů.
+* **Odstraňte**. Synchronizační modul najde odpovídající pracovní objekt v prostoru konektoru a označí tento typ jako nedokončený import, aby bylo možné připojený objekt odstranit.
+* **Odstranit/přidat**. Synchronizační modul vyhledá odpovídající pracovní objekt v prostoru konektoru, ale typy objektů se neshodují. V tomto případě je upravena úprava přidávání a přidávání. Modifikace Delete-Add indikuje modulu synchronizace, že je nutné provést úplnou resynchronizaci tohoto objektu, protože se u tohoto objektu při změně typu objektu vztahují různé sady pravidel.
 
-Nastavením stavu čekajícího importu pracovní objekt je možné výrazně snížit objem dat zpracovaných během synchronizace, protože tak učiníte, umožníte systém zpracovávat pouze ty objekty, které mají aktualizovaná data.
+Nastavením stavu čekání na Import pracovního objektu je možné výrazně snížit množství dat zpracovaných během synchronizace, protože Tím umožníte, aby systém zpracovával pouze ty objekty, které mají aktualizovaná data.
 
-### <a name="synchronization-process"></a>Procesu synchronizace
+### <a name="synchronization-process"></a>Proces synchronizace
 Synchronizace se skládá ze dvou souvisejících procesů:
 
-* Synchronizace příchozích dat, když se aktualizuje obsah úložišti metaverse pomocí dat v prostoru konektoru.
-* Odchozí synchronizace, když se aktualizuje obsah v prostoru konektoru s využitím dat v úložišti metaverse.
+* Příchozí synchronizace, když se obsah úložiště metaverse aktualizuje pomocí dat v prostoru konektoru.
+* Odchozí synchronizace, když se obsah prostoru konektoru aktualizuje pomocí dat v úložišti Metaverse.
 
-S použitím informací o připravené v prostoru konektoru, vytvoří proces synchronizace příchozích dat v úložišti metaverse integrované zobrazení dat, která je uložena v připojené zdroje dat. Všechny pracovní objekty nebo pouze ty s informacemi o čekajícího importu se agregují, v závislosti na konfiguraci pravidla.
+Pomocí informací v prostoru konektoru vytvoří proces příchozí synchronizace v úložišti Metaverse integrované zobrazení dat uložených v připojených zdrojích dat. Všechny pracovní objekty nebo pouze ty, které mají nedokončené informace o importu, se agreguje v závislosti na konfiguraci pravidel.
 
-Proces aktualizace odchozí synchronizace exportovat objekty při změně objektů úložiště metaverse.
+Proces odchozí synchronizace aktualizuje objekty exportu při změně objektů úložiště metaverse.
 
-Synchronizace příchozích dat vytvoří integrované zobrazení v úložišti metaverse přijatá z připojených zdrojů informací o identitě. Synchronizační modul může zpracovat informace o identitě v každém okamžiku pomocí nejnovějších informací o identitě, kterou má z připojených zdrojů dat.
+Příchozí synchronizace vytvoří integrované zobrazení v úložišti Metaverse informací o identitě, která je přijímána z připojených zdrojů dat. Synchronizační modul může kdykoli zpracovat informace o identitě pomocí nejnovějších informací o identitě, které má z připojeného zdroje dat.
 
-**Synchronizace příchozích dat**
+**Příchozí synchronizace**
 
-Synchronizace příchozích dat zahrnuje následující procesy:
+Příchozí synchronizace zahrnuje následující procesy:
 
-* **Zřízení** (také nazývané **projekce** Pokud je důležité rozlišovat tento proces od odchozí synchronizace zřizování). Synchronizační modul vytvoří nový objekt úložiště metaverse podle pracovní objekt a propojí je. Zřízení je operace na úrovni objektů.
-* **Připojte se k**. Synchronizační modul propojí pracovní objekt do existujícího objektu úložiště metaverse. Spojení je operace na úrovni objektů.
-* **Importovat tok atributů**. Hodnoty atributů, volá tok atributů objektu v úložišti metaverse aktualizuje modul synchronizace. Import toku atributů je úroveň atributu operace, která vyžaduje odkaz mezi pracovní objekt a objektu úložiště metaverse.
+* **Zřízení** (označované také jako **projekce** , pokud je důležité odlišit tento proces od odchozího zřizování synchronizace). Synchronizační modul vytvoří nový objekt Metaverse na základě pracovního objektu a propojí je. Zřízení je operace na úrovni objektu.
+* **Připojte**se. Synchronizační modul propojí pracovní objekt s existujícím objektem úložiště metaverse. Spojení je operace na úrovni objektu.
+* **Importujte tok atributů**. Synchronizační modul aktualizuje hodnoty atributů, které se nazývají tok atributů objektu v úložišti Metaverse. Tok atributu import je operace na úrovni atributu, která vyžaduje propojení mezi pracovním objektem a objektem úložiště metaverse.
 
-Zřízení je jediný proces, který vytvoří objekty v úložišti metaverse. Zřízení ovlivňuje pouze import objektů, které jsou odpojené objekty. Během zřizování vytvoří modul synchronizace objektu úložiště metaverse, který odpovídá objektu typu importovaného objektu a vytvoří propojení mezi oba objekty, tedy vytvoření připojeného k objektu.
+Zřizuje se jediný proces, který vytváří objekty v úložišti Metaverse. Zřizování má vliv pouze na Import objektů, které jsou odpojeny objekty. Během zřizování vytvoří synchronizační modul objekt úložiště metaverse, který odpovídá typu objektu importovaného objektu, a vytvoří propojení mezi oběma objekty, čímž vytvoří připojený objekt.
 
-Proces připojení k také vytvoří propojení mezi import objektů a objektu úložiště metaverse. Rozdíl mezi spojení a zřizování je, že proces připojení vyžaduje, aby objekt importu jsou propojeny s existující objekt úložiště metaverse, kde proces zřízení vytvoří nový objekt úložiště metaverse.
+Proces připojení také vytvoří propojení mezi importovanými objekty a objektem úložiště metaverse. Rozdíl mezi připojením a zřizováním je, že proces připojení vyžaduje, aby byl objekt importu propojen s existujícím objektem úložiště metaverse, kde proces zřizování vytvoří nový objekt úložiště metaverse.
 
-Synchronizační stroj se pokusí připojit objekt importu do objektu úložiště metaverse pomocí kritéria, která je určená v konfiguraci synchronizačního pravidla.
+Synchronizační modul se pokusí připojit objekt import do objektu Metaverse pomocí kritérií, která jsou zadána v konfiguraci synchronizačního pravidla.
 
-Během procesu zřizování a zapojte se synchronizační modul odkazuje objekt rozděleným na objektu úložiště metaverse, díky kterým jsou připojené k. Po dokončení těchto operací na úrovni objektů, můžete aktualizovat synchronizační modul hodnoty atributů objektu přidruženého úložiště metaverse. Tento proces se nazývá toku atributu importu.
+Během procesu zřizování a připojení synchronizační modul propojí odpojený objekt s objektem metaverse a připojí ho. Po dokončení těchto operací na úrovni objektu může synchronizační modul aktualizovat hodnoty atributu přidruženého objektu úložiště metaverse. Tento proces se nazývá import toku atributů.
 
-Import toku atributů probíhá na všechny objekty importu, které obsahují nová data a jsou propojeny s objektu úložiště metaverse.
+Tok atributu import probíhá u všech objektů importu, které obsahují nová data a jsou propojeny s objektem Metaverse.
 
 **Odchozí synchronizace**
 
-Aktualizace odchozí synchronizace exportovat objekty, když objektu úložiště metaverse změnit, ale není odstraněn. Cílem odchozí synchronizace je k vyhodnocení, zda změny do úložiště metaverse objektů vyžadují aktualizaci pracovní objekty v prostor konektoru. V některých případech se může vyžadovat změny této pracovní aktualizovat objekty ve všech prostor konektoru. Pracovní objekty, které se mění se označí jako čekající na export, díky kterým exportovat objekty. Tyto exportu objektů se později vynuceně instalují do zdroje dat během procesu exportu.
+Aktualizace odchozí synchronizace vyexportují objekty, když se změní objekt Metaverse, ale neodstraní se. Cílem odchozí synchronizace je vyhodnotit, jestli změny objektů Metaverse vyžadují aktualizace pracovních objektů v prostorech konektoru. V některých případech mohou změny vyžadovat, aby byly pracovní objekty ve všech prostorech konektoru aktualizovány. Změněné přípravné objekty jsou příznakem čekání na export, takže se exportují objekty. Tyto objekty exportu jsou později během procesu exportu přesunuty do připojeného zdroje dat.
 
 Odchozí synchronizace má tři procesy:
 
@@ -227,37 +227,37 @@ Odchozí synchronizace má tři procesy:
 * **Zrušení zřízení**
 * **Exportovat tok atributů**
 
-Zřizování a zrušení zřizování jsou operace na úrovni objektů. Zrušení zřízení závisí na zřizování, protože pouze zřizování můžete spustit ho. Zrušení zřízení se aktivuje při zřizování odebere propojení mezi objektu úložiště metaverse a export objektu.
+Zřizování a rušení zřizování jsou operace na úrovni objektu. Zrušení zřízení závisí na zřizování, protože ho může iniciovat jenom zřizování. Zrušení zřízení se aktivuje, když zřizování odebere propojení mezi objektem metaverse a objektem exportu.
 
-Zřizování se vždy aktivuje v případě změny se použijí k objektům v úložišti metaverse. Při změně objektů v metaverse, synchronizačního modulu můžete provádět následující úlohy jako součást procesu zřizování:
+Zřizování se vždycky aktivuje, když se změny aplikují na objekty v úložišti Metaverse. Při provádění změn v objektech úložiště metaverse může synchronizační modul provádět v rámci procesu zřizování některé z následujících úloh:
 
-* Vytvoření připojených objektů, kde je objekt úložiště metaverse propojeny s nově vytvořený export objektu.
-* Přejmenování objektu připojené k doméně.
-* Odpojování od propojení mezi objektu úložiště metaverse a přípravu objektů, vytváření samostatném objektu.
+* Vytvoří připojené objekty, kde je objekt úložiště metaverse propojený s nově vytvořeným objektem exportu.
+* Přejmenování připojeného objektu.
+* Odpojení propojení mezi objektem úložiště metaverse a pracovními objekty a vytvořením odpojeného objektu.
 
-Pokud zřizování vyžaduje synchronizační modul, chcete-li vytvořit nový objekt konektoru, pracovní objekt, se kterým je spojen objektu úložiště metaverse je vždy export objektu, protože objekt v připojených zdrojů dat ještě neexistuje.
+Pokud zřizování vyžaduje, aby modul pro synchronizaci vytvořil nový objekt konektoru, pracovní objekt, na který je objekt úložiště metaverse propojený, je vždy objekt exportu, protože objekt ještě neexistuje v připojeném zdroji dat.
 
-Zrušení zřízení se aktivuje, pokud zřizování vyžaduje synchronizační modul pro odpojování od objektu připojené k doméně, vytváření samostatném objektu. Proces zrušení zřízení odstraní objekt.
+Pokud zřizování vyžaduje, aby synchronizační modul zrušil připojení k připojenému objektu a vytvořil odpojený objekt, aktivuje se zrušení zřízení. Proces zrušení zřízení odstraní objekt.
 
-Během rušení zřízení se odstraněním objektu export nedojde k odstranění fyzicky objektu. Objekt je označena příznakem **odstranit**, což znamená, že je u objektu připravené operaci odstranění zopakovat.
+Při zrušení zřízení neodstraní objekt exportu fyzický objekt. Objekt je označen jako **Odstraněný**, což znamená, že operace odstranění je v objektu připravená.
 
-Toku atributů exportu také vyvolá se během procesu odchozí synchronizace, podobným způsobem, že během synchronizace příchozích dat dojde k toku atributu importu. Toku atributů exportu nastávají jenom mezi objekty úložiště metaverse a export, které jsou připojené.
+Tok atributů exportu se taky objevuje během procesu odchozí synchronizace, podobně jako při příchozí synchronizaci probíhá import toku atributů. Tok atributu export probíhá pouze mezi úložišti metaverse a objekty, které jsou připojeny.
 
-### <a name="export-process"></a>Proces exportu
-Během procesu exportu synchronizační modul prozkoumá všechny exportovat objekty, které jsou označeny jako čekající na export v prostoru konektoru a potom pošle aktualizace do zdroje dat.
+### <a name="export-process"></a>Exportovat proces
+V průběhu procesu exportu ověří modul synchronizace všechny objekty exportu, které jsou označeny jako nevyřízené při exportu v prostoru konektoru, a poté odešle aktualizace připojeného zdroje dat.
 
-Synchronizační modul může zjistit úspěch export, ale nelze dostatečně určit, dokončení procesu správy identit. Objekty v připojených zdrojů dat můžete kdykoli změnit jinými procesy. Vzhledem k tomu, že synchronizační modul nemá trvalé připojení ke zdroji dat, není dostatečná k vytvářet předpoklady o vlastnosti objektu ve zdroji dat založen pouze na oznámení o úspěšném exportu.
+Synchronizační modul může určit úspěšnost exportu, ale nemůže dostatečně určit, zda je proces správy identit dokončen. Objekty v připojeném zdroji dat mohou být vždy změněny jinými procesy. Vzhledem k tomu, že synchronizační modul nemá trvalé připojení k připojenému zdroji dat, není dostačující vytvářet předpoklady o vlastnostech objektu v připojeném zdroji dat na základě úspěšného oznámení o exportu.
 
-Například může proces v připojených zdrojů dat změnit zpět na původní hodnoty atributů objektu (to znamená, připojeného zdroje dat by mohl přepsat hodnoty ihned po data jsou vynuceně instalují modulem synchronizace a úspěšně použila v zdroj dat).
+Například proces v připojeném zdroji dat může změnit atributy objektu zpátky na původní hodnoty (to znamená, že připojený zdroj dat může přepsat hodnoty ihned po vložení dat modulem synchronizace a úspěšně použít v připojený zdroj dat).
 
-Ukládá modul Synchronizace exportovat a importovat informace o každé pracovní objekt stavu. Pokud od poslední export změní hodnoty atributů, které jsou uvedeny v seznamu povolených položek atributů, skladování import a export stav umožňuje synchronizační modul reagovat odpovídajícím způsobem. Synchronizační modul používá pro potvrzení hodnoty atributů, které byly vyexportovány do připojeného zdroje dat proces importu. Porovnání mezi službou importované a exportované informace, jak je znázorněno na následujícím obrázku, umožňuje synchronizační modul k určení, zda export proběhl úspěšně, nebo jestli je potřeba opakovat.
+Synchronizační modul ukládá informace o stavu exportu a importu o všech pracovních objektech. Pokud se od posledního exportu změnily hodnoty atributů, které jsou zadány v seznamu pro zahrnutí atributů, je uložení stavu importu a exportu umožní, aby synchronizační modul správně reagoval. Synchronizační modul používá proces importu k potvrzení hodnot atributů, které byly exportovány do připojeného zdroje dat. Porovnání importovaných a exportovaných informací, jak je znázorněno na následujícím obrázku, umožňuje modulu synchronizace určit, zda byl export úspěšný, nebo zda je nutné jej opakovat.
 
 ![Arch7](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
 
-Například pokud synchronizační modul exportuje atribut C, který má hodnotu 5, do zdroje dat, uloží C = 5 v jeho export stavu paměti. Každý další export na tento objekt výsledky při pokusu o export do zdroje dat C = 5 znovu vzhledem k tomu, že synchronizační modul se předpokládá, že tato hodnota nebyla trvale použita na objekt (to znamená, pokud jiná hodnota naimportovaná nedávno z připojený zdroj dat). Export paměti se vymaže při přijetí C = 5 během operace importu v objektu.
+Například pokud synchronizační modul exportuje atribut C, který má hodnotu 5, na připojený zdroj dat, ukládá C = 5 do své paměťové stavy exportu. Každý další export tohoto objektu vede k pokusu o export C = 5 do připojeného zdroje dat, protože synchronizační modul předpokládá, že se tato hodnota pro objekt netrvalě nepoužila (to znamená, pokud v poslední době nedošlo k importu jiné hodnoty z připojený zdroj dat). Exportovaná paměť je vymazána při přijetí C = 5 během operace importu objektu.
 
-## <a name="next-steps"></a>Další postup
-Další informace o [synchronizace Azure AD Connect](how-to-connect-sync-whatis.md) konfigurace.
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
 

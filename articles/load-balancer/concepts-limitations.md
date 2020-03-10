@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
 ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605683"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358658"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer komponenty a omezení
 Azure Load Balancer obsahuje několik klíčových součástí pro jeho operaci.  Tyto komponenty můžete nakonfigurovat v předplatném prostřednictvím Azure Portal, Azure CLI nebo Azure PowerShell.  

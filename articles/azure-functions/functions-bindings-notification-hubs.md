@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926318"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370823"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazba pro Azure Functions
 
@@ -249,13 +249,13 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** |–| Musí být nastaveno na `notificationHub`. |
-|**direction** |–| Musí být nastaveno na `out`. | 
-|**name** |–| Název proměnné použitý v kódu funkce pro zprávu centra oznámení |
+|**type** |neuvedeno| Musí být nastavené na `notificationHub`. |
+|**direction** |neuvedeno| Musí být nastavené na `out`. | 
+|**Jméno** |neuvedeno| Název proměnné použitý v kódu funkce pro zprávu centra oznámení |
 |**tagExpression** |**TagExpression** | Výrazy značek umožňují určit, že oznámení budou doručena do sady zařízení, která jsou zaregistrovaná pro příjem oznámení, která odpovídají výrazu značky.  Další informace najdete v tématu [výrazy směrování a značek](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Název prostředku centra oznámení v Azure Portal. |
-|**připojení** | **connectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec Notification Hubs.  Připojovací řetězec musí být nastaven na hodnotu *DefaultFullSharedAccessSignature* vašeho centra oznámení. Viz [nastavení připojovacího řetězce](#connection-string-setup) dále v tomto článku.|
-|**platforma** | **Platforma** | Vlastnost Platform označuje klientskou platformu, na kterou vaše oznámení cílí. Ve výchozím nastavení platí, že pokud je vlastnost Platform vynechána z výstupní vazby, lze pomocí oznámení šablon cílit na jakoukoli platformu nakonfigurovanou v centru oznámení Azure. Další informace o použití šablon obecně k odesílání oznámení pro různé platformy pomocí Centra oznámení Azure najdete v tématu [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Při nastavení musí být **platforma** jedna z následujících hodnot: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Další informace o konfiguraci centra oznámení pro službu APN a přijetí oznámení v klientské aplikaci najdete v tématu [Posílání nabízených oznámení do systému iOS pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Další informace o konfiguraci centra oznámení pro ADM a přijetí oznámení v aplikaci Kindle najdete v tématu [Začínáme Notification Hubs pro aplikace Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[službu nabízených oznámení systému Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) , která cílí na platformy Windows. WNS podporuje i Windows Phone 8,1 a novější. Další informace najdete v tématu [Začínáme se Notification Hubs pro aplikace Univerzální platformy Windows](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[službu nabízených oznámení Microsoftu](/previous-versions/windows/apps/ff402558(v=vs.105)). Tato platforma podporuje Windows Phone 8 a starších Windows Phonech platforem. Další informace najdete v tématu [Posílání nabízených oznámení pomocí Azure Notification Hubs v Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**vázán** | **ConnectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec Notification Hubs.  Připojovací řetězec musí být nastaven na hodnotu *DefaultFullSharedAccessSignature* vašeho centra oznámení. Viz [nastavení připojovacího řetězce](#connection-string-setup) dále v tomto článku.|
+|**platformy** | **Platformy** | Vlastnost Platform označuje klientskou platformu, na kterou vaše oznámení cílí. Ve výchozím nastavení platí, že pokud je vlastnost Platform vynechána z výstupní vazby, lze pomocí oznámení šablon cílit na jakoukoli platformu nakonfigurovanou v centru oznámení Azure. Další informace o použití šablon obecně k odesílání oznámení pro různé platformy pomocí Centra oznámení Azure najdete v tématu [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Při nastavení musí být **platforma** jedna z následujících hodnot: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Další informace o konfiguraci centra oznámení pro službu APN a přijetí oznámení v klientské aplikaci najdete v tématu [Posílání nabízených oznámení do systému iOS pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Další informace o konfiguraci centra oznámení pro ADM a přijetí oznámení v aplikaci Kindle najdete v tématu [Začínáme Notification Hubs pro aplikace Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[službu nabízených oznámení systému Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) , která cílí na platformy Windows. WNS podporuje i Windows Phone 8,1 a novější. Další informace najdete v tématu [Začínáme se Notification Hubs pro aplikace Univerzální platformy Windows](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[službu nabízených oznámení Microsoftu](/previous-versions/windows/apps/ff402558(v=vs.105)). Tato platforma podporuje Windows Phone 8 a starších Windows Phonech platforem. Další informace najdete v tématu [Posílání nabízených oznámení pomocí Azure Notification Hubs v Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -303,5 +303,5 @@ Název tohoto nastavení aplikace je to, co se nachází v nastavení připojen�
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)
 

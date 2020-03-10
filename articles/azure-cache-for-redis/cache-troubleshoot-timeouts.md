@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412075"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356404"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s Azure cache pro vypršení časových limitů Redis
 
@@ -40,12 +40,12 @@ Tato chybová zpráva obsahuje metriky, které vám pomohou Ukázat příčinu a
 | --- | --- |
 | instrukce |V posledním časovém intervalu: byly vydány příkazy 0. |
 | Mgr |Správce soketů provádí `socket.select`, což znamená, že se požádá o operační systém, aby označoval soket, který má něco udělat. Čtenář se aktivně nečte ze sítě, protože nebere v úvahu cokoli, co dělat. |
-| fronta |K dispozici jsou 73 celkový počet probíhajících operací. |
+| queue |K dispozici jsou 73 celkový počet probíhajících operací. |
 | Thá |6 probíhajících operací je v neodeslané frontě a ještě není zapsaná do odchozí sítě. |
 | qs |67 probíhajících operací bylo odesláno na server, ale odpověď zatím není k dispozici. Odpověď může být `Not yet sent by the server` nebo `sent by the server but not yet processed by the client.` |
 | qc |počet probíhajících operací zaznamenal odpovědi, ale ještě nebyly označeny jako splněné, protože čekají na cyklus dokončení. |
 | radiační |Existuje aktivní zapisovač (to znamená, že 6 neodeslaných požadavků se Neignoruje) bajtů/activewriters |
-| v |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
+| in |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
 
 Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 

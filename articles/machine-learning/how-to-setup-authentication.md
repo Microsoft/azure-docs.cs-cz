@@ -11,11 +11,11 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602584"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355828"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ V této části se dozvíte, jak provádět následující úlohy:
 
 Obecný přehled zabezpečení a ověřování v rámci Azure Machine Learning najdete v [článku o konceptu](concept-enterprise-security.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač s Azure Machine Learningm poznámkovým blokem](concept-azure-machine-learning-architecture.md#compute-instance) , který už je nainstalovaný s SDK.
@@ -297,12 +297,12 @@ Webové služby také podporují ověřování na základě tokenů, ale jenom p
 
 ### <a name="token-based-web-service-authentication"></a>Ověřování webové služby založené na tokenech
 
-Pokud povolíte ověřování pomocí tokenu pro webovou službu, uživatelé musí pro přístup k této webové službě předložit Azure Machine Learning JSON Web Token. Platnost tokenu vyprší po zadaném časovém rámci a je nutné ji aktualizovat, aby bylo možné pokračovat v volání.
+Pokud povolíte ověřování pomocí tokenu pro webovou službu, uživatelé musí pro přístup k této webové službě předložit Azure Machine Learning JSON Web Token. Platnost tokenu po zadané době vyprší a je potřeba ji obnovit, pokud chcete provádět další volání.
 
 * Ověřování tokenu je **ve výchozím nastavení** při nasazení do služby Azure Kubernetes zakázané.
 * Ověřování tokenu se při nasazení do Azure Container Instances **nepodporuje** .
 
-K řízení ověřování pomocí tokenu použijte parametr `token_auth_enabled` při vytváření nebo aktualizaci nasazení.
+K řízení ověřování pomocí tokenu slouží parametr `token_auth_enabled`, který se zadává při vytváření nebo aktualizaci nasazení.
 
 Pokud je povoleno ověřování tokenu, můžete použít metodu `get_token` k načtení JSON Web Token (JWT) a času vypršení platnosti tohoto tokenu:
 
@@ -312,7 +312,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Po `refresh_by`ovém čase tokenu budete muset požádat o nový token. Pokud potřebujete aktualizovat tokeny mimo sadu Python SDK, jednu z možností je použít REST API s ověřováním instančního objektu k pravidelnému volání `service.get_token()`, jak je popsáno výše.
+> Po uplynutí doby `refresh_by` tokenu je potřeba vyžádat si nový token. Pokud potřebujete aktualizovat tokeny mimo sadu Python SDK, jednu z možností je použít REST API s ověřováním instančního objektu k pravidelnému volání `service.get_token()`, jak je popsáno výše.
 >
 > Důrazně doporučujeme vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes. 
 >

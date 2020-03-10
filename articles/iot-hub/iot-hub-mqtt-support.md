@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
 ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648491"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381986"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -339,7 +339,7 @@ Tělo odpovědi obsahuje oddíl vlastností vlákna zařízení, jak je znázorn
 
 Možné stavové kódy:
 
-|Status | Popis |
+|Stav | Popis |
 | ----- | ----------- |
 | 200 | Úspěch |
 | 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
@@ -370,7 +370,7 @@ Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty p
 
 Možné stavové kódy:
 
-|Status | Popis |
+|Stav | Popis |
 | ----- | ----------- |
 | 204 | Úspěch (není vrácen žádný obsah) |
 | 400 | Chybný požadavek. Chybně vytvořený kód JSON |
@@ -422,7 +422,7 @@ K reakci zařízení pošle zprávu s platným JSON nebo prázdným textem do t�
 
 Další informace najdete v tématu [Průvodce pro vývojáře Direct Method](iot-hub-devguide-direct-methods.md).
 
-## <a name="additional-considerations"></a>Další aspekty
+## <a name="additional-considerations"></a>Další rozhodnutí
 
 Pokud potřebujete přizpůsobit chování protokolu MQTT na straně cloudu, měli byste si prohlédnout [bránu protokolu Azure IoT](iot-hub-protocol-gateway.md). Tento software vám umožní nasadit vysoce výkonnou bránu vlastního protokolu, kterou rozhraní přímo s IoT Hub. Brána protokolu Azure IoT umožňuje přizpůsobit protokol zařízení tak, aby vyhovoval nasazením brownfield MQTT nebo jiným vlastním protokolům. Tento přístup ale vyžaduje, abyste spustili a provozoval vlastní bránu protokolu.
 

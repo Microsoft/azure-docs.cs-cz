@@ -4,7 +4,7 @@ description: Plánování a implementace služby Azure Virtual Machines pro SAP 
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
-ms.author: sedusch
+ms.date: 03/05/2020
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b8f38b49a5d1b99664ef3479979179b9974f791
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591945"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892876"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -416,85 +416,88 @@ Aby bylo možné shromažďovat data pro plánování nasazení do Azure, je dů
 Podrobnosti o podporovaných součástech SAP v Azure, podporované jednotky infrastruktury Azure a související verze operačních systémů a vydání DBMS jsou vysvětleny v článku o [tom, jaký software SAP je podporován pro nasazení Azure](./sap-supported-product-on-azure.md). Výsledky získané při vyhodnocování platných vydání SAP, operačních systémů a systémů DBMS mají velký dopad na úsilí o přesun systémů SAP do Azure. Výsledkem tohoto vyhodnocení je definování toho, jestli v případech, kdy je potřeba upgradované verze SAP nebo změny operačních systémů, mohlo dojít k výraznému přípravnému úsilí.
 
 
+## <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Oblasti Azure
+Služby Azure od Microsoftu se shromažďují v oblastech Azure. Oblast Azure je jedna nebo kolekce z datových center, která obsahují hardware a infrastrukturu, která běží a hostuje různé služby Azure. Tato infrastruktura zahrnuje velký počet uzlů, které fungují jako výpočetní uzly nebo uzly úložiště, nebo spouštějí síťové funkce. 
 
-## <a name="first-steps-planning-a-deployment"></a>První postup plánování nasazení
-Prvním krokem při plánování nasazení není vyhledání virtuálních počítačů, které jsou dostupné pro běh SAP. Prvním krokem může být časově náročné, ale nejdůležitější je spolupracovat s týmy pro dodržování předpisů a zabezpečení ve vaší společnosti na základě toho, jaké jsou podmínky hranice pro nasazení, který typ úlohy SAP nebo obchodní proces do veřejného cloudu. Pokud vaše společnost nasadila jiný software před do Azure, může být tento proces snadný. Pokud je vaše společnost na začátku cesty větší, můžou být potřebné větší diskuze, aby bylo možné zjistit podmínky hranic, podmínky zabezpečení, které umožňují hostování určitých dat SAP a obchodních procesů SAP ve veřejném cloudu.
+Seznam různých oblastí Azure najdete v tématu geografické oblasti [Azure](https://azure.microsoft.com/global-infrastructure/geographies/). Ne všechny oblasti Azure nabízejí stejné služby. Závisí na produktu SAP, který chcete spustit, a na operačním systému a DBMS, které se k němu vztahují. můžete tak skončit v situaci, kdy určitá oblast nenabízí požadované typy virtuálních počítačů. To platí zejména pro spuštěné SAP HANA, kde obvykle potřebujete virtuální počítače řady virtuálních počítačů M/Mv2. Tyto rodiny virtuálních počítačů se nasazují jenom v podmnožině oblastí. Můžete zjistit, co přesně přesný virtuální počítač, typy, typy úložiště Azure nebo jiné služby Azure jsou k dispozici v rámci kterých oblastí s technickou [dostupností produktů v jednotlivých](https://azure.microsoft.com/global-infrastructure/services/)oblastech. Při zahájení plánování a splnění určitých oblastí jako primární oblasti a nakonec sekundární oblasti je třeba nejprve prozkoumat, zda jsou v těchto oblastech k dispozici nezbytné služby. 
 
-Jak je užitečné, můžete na základě [nabídek pro dodržování předpisů Microsoftu](https://docs.microsoft.com/microsoft-365/compliance/offering-home) Ukázat seznam dodržování předpisů tím, že Microsoft může poskytnout. 
+### <a name="availability-zones"></a>Zóny dostupnosti
+Některé oblasti Azure implementovaly koncept nazvaný Zóny dostupnosti. Zóny dostupnosti jsou fyzicky samostatná umístění v oblasti Azure. Každá zóna dostupnosti se skládá z jednoho nebo více datových center vybavených nezávislými napájením, chlazením a sítěmi. Například nasazení dvou virtuálních počítačů do dvou Zóny dostupnosti Azure a implementace architektury s vysokou dostupností pro váš systém SAP DBMS nebo centrální služby SAP vám nabízí nejlepší smlouvu SLA v Azure. Pro tuto konkrétní smlouvu SLA pro virtuální počítač v Azure se podívejte na nejnovější verzi [SLA virtuálního počítače](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Vzhledem k tomu, že se oblasti Azure vyvinuly a v posledních letech rychle rozšířily, topologie oblastí Azure, počet fyzických Datacenter, vzdálenost mezi těmito datacentry a vzdálenost mezi Zóny dostupnosti Azure se může lišit. A s tím, že latence sítě.
 
-Další oblasti otázek, jako je šifrování dat pro neaktivní nebo jiné šifrování ve službě Azure, jsou popsány v části [Přehled šifrování Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview).
-
-Podceňují skutečnou tuto fázi projektu ve vašem plánování. Jenom v případě, že k tomuto tématu máte smlouvu a pravidla, musíte přejít na další krok, což je plánování síťové architektury, kterou nasazujete v Azure.
+Princip Zóny dostupnosti se nevztahuje na službu HANA [velkých instancí Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). Smlouvy o úrovni služeb pro velké instance HANA najdete v článku [o smlouvě SLA pro SAP HANA ve velkých instancích Azure](https://azure.microsoft.com/support/legal/sla/sap-hana-large/) 
 
 
+### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Domény selhání
+Domény selhání reprezentují fyzickou jednotku selhání, úzce souvisí s fyzickou infrastrukturou obsaženou v datových centrech, zatímco fyzické okno nebo stojan se dá považovat za doménu selhání, protože mezi nimi není žádné přímé mapování 1:1.
 
-## <a name="microsoft-azure-virtual-machine-services"></a>Microsoft Azure služeb virtuálních počítačů
-Microsoft Azure platformou je platforma cloudových služeb v internetovém měřítku, která je hostovaná a provozovaná v datových centrech Microsoftu. Platforma zahrnuje Microsoft Azure služby virtuálních počítačů (infrastruktura jako služba nebo IaaS) a sadu bohatých funkcí Platform as a Service (PaaS).
+Když nasadíte více Virtual Machines jako součást jednoho systému SAP v Microsoft Azure služeb virtuálních počítačů, můžete ovlivnit kontroler prostředků infrastruktury Azure za účelem nasazení vaší aplikace do různých domén selhání, a tím i splnění vyšších požadavků SLA dostupnosti. Ale distribuce domén selhání přes jednotku škálování Azure (kolekce stovek výpočetních uzlů nebo uzlů úložiště a sítě) nebo přiřazení virtuálních počítačů do konkrétní domény selhání je něco, co nemusíte mít přímý ovládací prvek. Aby bylo možné nasměrovat řadič Azure Fabric tak, aby nasadil sadu virtuálních počítačů do různých domén selhání, musíte k virtuálním počítačům přiřadit skupinu dostupnosti Azure v době nasazení. Další informace o skupinách dostupnosti Azure najdete v části [skupiny dostupnosti Azure][planning-guide-3.2.3] v tomto dokumentu.
 
-Platforma Azure omezuje nutnost zakoupování technologií a infrastruktury. Zjednodušuje údržbu a provoz aplikací tím, že poskytuje výpočetní a úložné úložiště na vyžádání pro hostování, škálování a správu webových aplikací a připojených aplikací. Správa infrastruktury je automatizovaná s platformou, která je navržená pro vysokou dostupnost a dynamické škálování, aby odpovídala potřebám využití s možností cenového modelu s průběžnými platbami.
+
+### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Upgradovat domény
+Upgradovací domény reprezentují logickou jednotku, která pomáhá určit, jak se aktualizuje virtuální počítač v rámci systému SAP, který se skládá z instancí SAP spuštěných ve více virtuálních počítačích. Když dojde k upgradu, Microsoft Azure projde procesem aktualizace těchto domén upgradu o jednu po jednom. Rozšíříte-li virtuální počítače v době nasazení v různých upgradovacích doménách, můžete chránit systém SAP částečně před potenciálním výpadkem. Aby mohl Azure nasazovat virtuální počítače systému SAP v různých upgradovacích doménách, je potřeba nastavit konkrétní atribut v době nasazení každého virtuálního počítače. Podobně jako u domén selhání je jednotka škálování Azure rozdělená do několika upgradovacích domén. Aby bylo možné nasměrovat řadič Azure Fabric na nasazení sady virtuálních počítačů v různých upgradovacích doménách, musíte k virtuálním počítačům v době nasazení přiřadit skupinu dostupnosti Azure. Další informace o skupinách dostupnosti Azure najdete níže v kapitole věnovaném [sadám dostupnosti Azure][planning-guide-3.2.3] .
+
+
+### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Skupiny dostupnosti Azure
+Azure Virtual Machines v rámci jedné skupiny dostupnosti Azure distribuuje kontroler prostředků infrastruktury Azure v různých doménách selhání a upgradu. Účelem distribuce v různých doménách selhání a upgradu je zabránit vypnutí všech virtuálních počítačů systému SAP v případě údržby infrastruktury nebo selhání v rámci jedné domény selhání. Ve výchozím nastavení nejsou virtuální počítače součástí skupiny dostupnosti. Účast na virtuálním počítači ve skupině dostupnosti je definována v okamžiku nasazení nebo později v důsledku opětovné konfigurace a opětovného nasazení virtuálního počítače.
+
+Další informace o konceptu skupin dostupnosti Azure a způsobu, jakým se skupiny dostupnosti vztahují k doménám selhání a upgradu, najdete v [tomto článku][virtual-machines-manage-availability]. 
+
+Při definování skupin dostupnosti a pokusu o kombinaci různých virtuálních počítačů různých rodin virtuálních počítačů v rámci jedné skupiny dostupnosti dojde k problémům, které vám zabrání v zahrnutí určitého typu virtuálního počítače do této skupiny dostupnosti. Důvodem je, že skupina dostupnosti je svázána s jednotkou škálování, která obsahuje určitý typ výpočetních hostitelů. A určitý typ výpočetního hostitele může spouštět jenom určité typy rodin virtuálních počítačů. Pokud třeba vytvoříte skupinu dostupnosti a nasadíte první virtuální počítač do skupiny dostupnosti a zvolíte typ virtuálního počítače Esv3 a potom se pokusíte nasadit jako druhý virtuální počítač pro virtuální počítač řady M, bude se vám v druhém přidělení zamítnout. Důvodem je, že virtuální počítače Esv3 Family neběží na stejném hostitelském hardwaru jako virtuální počítače řady M. K tomuto problému může dojít při pokusu o změnu velikosti virtuálních počítačů a pokus o přesun virtuálního počítače z rodiny Esv3 na typ virtuálního počítače řady M. V případě změny velikosti na rodinu virtuálních počítačů, které se nedají hostovat na stejném hostitelském hardwaru, musíte vypnout všechny virtuální počítače ve skupině dostupnosti a změnit jejich velikost, aby bylo možné je spustit na jiném typu hostitelského počítače. SLA virtuálních počítačů, které jsou nasazené v rámci skupiny dostupnosti, najdete v článku [SLA virtuálního počítače](https://azure.microsoft.com/support/legal/sla/virtual-machines/). 
+
+Zásady skupiny dostupnosti a související aktualizace a doména selhání se nevztahují na službu HANA pro [velké instance služby Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). Smlouvy o úrovni služeb pro velké instance HANA najdete v článku věnovaném [smlouvě SLA pro SAP HANA ve velkých instancích Azure](https://azure.microsoft.com/support/legal/sla/sap-hana-large/). 
+
+> [!IMPORTANT]
+> Pojmy Zóny dostupnosti Azure a sady dostupnosti Azure se vzájemně vylučují. To znamená, že můžete nasadit pár nebo několik virtuálních počítačů do konkrétní zóny dostupnosti nebo do skupiny dostupnosti Azure. Ale ne obojí.
+
+
+## <a name="azure-virtual-machine-services"></a>Služby virtuálních počítačů Azure
+Azure nabízí širokou škálu virtuálních počítačů, které můžete vybrat k nasazení. Nemusíte mít k dispozici žádné další technologie a nákupy infrastruktury. Nabídka služby virtuálního počítače Azure zjednodušuje údržbu a provozní aplikace tím, že poskytuje výpočetní prostředky a úložiště na vyžádání pro hostování, škálování a správu webových aplikací a připojených aplikací. Správa infrastruktury je automatizovaná s platformou, která je navržená pro vysokou dostupnost a dynamické škálování, aby odpovídala potřebám využití s možností několika různých cenových modelů.
 
 ![Umístění služeb Microsoft Azure virtuálních počítačů][planning-guide-figure-400]
 
-Pomocí služeb Azure Virtual Machine vám Microsoft umožňuje nasazovat vlastní serverové image do Azure jako instance IaaS. Virtual Machines v Azure jsou založené na virtuálních pevných discích (VHD) a můžou spouštět různé operační systémy jako hostovaný operační systém.
+S virtuálními počítači Azure vám Microsoft umožňuje nasazovat vlastní serverové image do Azure jako instance IaaS. Nebo si z Galerie imagí Azure můžete vybrat z bohatě vydaných imagí operačních systémů s možnostmi, které jsou k dispozici.
 
-Z provozní perspektivy služba virtuálního počítače Azure nabízí podobné prostředí jako virtuální počítače nasazené místně. Má ale značnou výhodu, že nemusíte zastarat, spravovat a spravovat infrastrukturu. Vývojáři a správci mají plnou kontrolu nad imagí operačního systému v těchto virtuálních počítačích. Správci se můžou vzdáleně přihlásit k těmto virtuálním počítačům, aby mohli provádět úlohy údržby a odstraňování potíží a taky úlohy nasazení softwaru. V souvislosti s nasazením jsou jediná omezení velikosti a možnosti virtuálních počítačů Azure. Tyto velikosti nemusí být v konfiguraci podrobně detailní, protože je možné je provést místně. Existuje volba typů virtuálních počítačů, které reprezentují kombinaci:
+Z provozní perspektivy služba virtuálního počítače Azure nabízí podobné prostředí jako virtuální počítače nasazené místně. Zodpovídáte za správu, operace a také opravy konkrétního operačního systému, který běží na virtuálním počítači Azure a jeho aplikacích v daném virtuálním počítači. Společnost Microsoft neposkytuje žádné další služby nad rámec hostování tohoto virtuálního počítače v infrastruktuře Azure (infrastruktura jako služba – IaaS). Pro úlohy SAP, které jste jako nasazení zákazníka, nemá společnost Microsoft žádné nabídky mimo nabídky IaaS. 
 
-* Počet vCPU
-* Memory (Paměť)
-* Počet virtuálních pevných disků, které se dají připojit
-* Šířka pásma sítě a úložiště
+Microsoft Azure platforma je víceklientské platforma. V důsledku toho jsou úložiště, sítě a výpočetní prostředky, které hostují virtuální počítače Azure, s několika výjimkami sdíleny mezi klienty. Inteligentní omezení a logika kvót se používají k tomu, aby jeden tenant neovlivnil výkon jiného tenanta (s vysokou úrovní jednosměrového souseda) drasticky. Zejména pro certifikaci platformy Azure pro SAP HANA musí společnost Microsoft prokázat izolaci prostředků v případech, kdy je možné pravidelně spouštět více virtuálních počítačů na stejném hostiteli s SAP. I když se logika v Azure snaží zachovat odchylky v případě malých, vysoce sdílených platforem, což má za následek větší odchylky při dostupnosti prostředků nebo šířky pásma, než se zákazníci můžou setkat s jejich místními nasazeními. Pravděpodobnost, že systém SAP v Azure může vyskytnout větší odchylky než v místním systému, je potřeba vzít v úvahu.
 
-Velikost a omezení různých velikostí různých virtuálních počítačů, které se nabízí, se dají zobrazit v tabulce v [tomto článku (Linux)][virtual-machines-sizes-linux] a v [tomto článku (Windows)][virtual-machines-sizes-windows].
+### <a name="azure-virtual-machines-for-sap-workload"></a>Virtuální počítače Azure pro úlohu SAP
 
-V každé oblasti Azure se nemusí nabízet všechny různé řady virtuálních počítačů. Také si uvědomte, že ne všechny virtuální počítače nebo řady virtuálních počítačů jsou certifikované pro SAP.
+Pro úlohy SAP jsme výběr omezili na různé rodiny virtuálních počítačů, které jsou vhodné pro úlohy SAP a SAP HANA úlohy. Způsob, jakým najdete správný typ virtuálního počítače a jeho schopnost pracovat prostřednictvím úlohy SAP, je popsán v dokumentu, [který software SAP podporuje pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure). 
 
-> [!IMPORTANT]
-> Pro použití SAP NetWeaver, S/4HANA a SAP HANA se podporují jenom podmnožina typů virtuálních počítačů a konfigurací uvedených v části SAP Note [1928533] . U SAP HANA certifikovaných jednotek Azure ověřte [adresář SAP HANA hardwaru](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) .
->
+> [!NOTE]
+> Typy virtuálních počítačů, které jsou certifikované pro úlohy SAP, neexistují žádné prostředky procesoru a paměti při nadměrném zřizování.
 
-Microsoft Azure platforma je víceklientské platforma. V důsledku toho se mezi klienty sdílí úložiště, síť a další prostředky. Inteligentní omezení a logika kvót se používají k tomu, aby jeden tenant neovlivnil výkon jiného tenanta (s vysokou úrovní jednosměrového souseda) drasticky. Zejména pro certifikaci platformy Azure pro SAP HANA musí společnost Microsoft prokázat izolaci prostředků v případech, kdy je možné pravidelně spouštět více virtuálních počítačů na stejném hostiteli s SAP. I když se logika v Azure snaží zachovat odchylky v případě malých, vysoce sdílených platforem, což má za následek větší odchylky při dostupnosti prostředků nebo šířky pásma, než se zákazníci můžou setkat s jejich místními nasazeními. Pravděpodobnost, že systém SAP v Azure může vyskytnout větší odchylky než v místním systému, je potřeba vzít v úvahu.
+Mimo výběr čistě podporovaných virtuálních počítačů musíte také ověřit, jestli jsou v konkrétní oblasti dostupné, a to na základě [produktů, které jsou dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Ale důležitější je, že je potřeba vyhodnotit, jestli:
 
-Proto je nutné, aby se zákazníci seznámili s různými funkcemi typů Azure podporovaných pomocí SAP v oblasti:
+- Prostředky procesoru a paměti různých typů virtuálních počítačů 
+- Šířka pásma IOPS různých typů virtuálních počítačů
+- Síťové možnosti různých typů virtuálních počítačů
+- Počet disků, které lze připojit
+- Možnost využít určité typy úložiště Azure
 
-* Prostředky procesoru a paměti různých typů virtuálních počítačů 
-* Šířka pásma IOPS různých typů virtuálních počítačů
-* Síťové možnosti různých typů virtuálních počítačů
+podle potřeby. Většinu těchto dat najdete [tady (Linux)][virtual-machines-sizes-linux] a [tady (Windows)][virtual-machines-sizes-windows] pro konkrétní typ virtuálního počítače.
 
-Většinu těchto dat najdete [tady (Linux)][virtual-machines-sizes-linux] a [tady (Windows)][virtual-machines-sizes-windows].
+V případě cenového modelu máte několik různých cenových možností, jako jsou:
+
+- Průběžné platby
+- Rezervovaný jeden rok
+- Rezervované tři roky
+- Ceny na místě
+
+Ceny každé z různých nabídek s různými nabídkami služeb v rámci operačních systémů a různých oblastí jsou k dispozici na webu [Linux Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Podrobnosti a flexibilitu za jeden rok a tři roky rezervované instance najdete v těchto článcích:
+
+- [Co jsou rezervace Azure?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/reserved-vm-instance-size-flexibility)
+- [Jak se na virtuální počítače použije sleva na rezervaci Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-vm-reservation-charges) 
+
+Další informace o cenách na místě najdete v článku [Virtual Machines na místě Azure](https://azure.microsoft.com/pricing/spot/). Ceny stejného typu virtuálního počítače se taky můžou lišit mezi různými oblastmi Azure. Pro některé zákazníky je vhodné provést nasazení do levnější oblasti Azure.
+
+Azure navíc nabízí koncepty vyhrazeného hostitele. Koncept vyhrazeného hostitele nabízí větší kontrolu nad cykly oprav, které provádí Azure. Můžete si čas opravit podle vašich vlastních plánů. Tato nabídka je konkrétně zaměřená na zákazníky s úlohou, která nemusí následovat po běžném cyklu úlohy. Pokud si chcete přečíst koncepty nabídek vyhrazených hostitelů Azure, přečtěte si článek [vyhrazený hostitel Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts). Použití této nabídky je podporováno pro úlohy SAP a používá se několika zákazníky SAP, kteří chtějí mít větší kontrolu nad opravou infrastruktury a s případnými plány údržby společnosti Microsoft. Další informace o tom, jak Microsoft udržuje a opraví infrastrukturu Azure, která je hostitelem virtuálních počítačů, najdete [v článku údržba virtuálních počítačů v Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates).
 
 
-### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Oblasti Azure
-Virtual Machines se nasazují do *oblastí Azure*, které se nazývají. Oblast Azure může být jedno nebo několik datových center, která se nacházejí v těsné blízkosti. Pro většinu geopolitických oblastí světa má Microsoft alespoň dvě oblasti Azure. V Evropě je například oblast Azure *Severní Evropa* a jedna z *západní Evropa*. Tyto dvě oblasti Azure v rámci geopolitické oblasti jsou oddělené významnou vzdáleností, aby přirozené nebo technické havárie neovlivnily obě oblasti Azure ve stejné geopolitické oblasti. Vzhledem k tomu, že Microsoft neustále sestavuje nové oblasti Azure v různých geopolitických oblastech globálně, počet těchto oblastí se neustále zvětšuje a od prosince 2015 dosáhly počtu 20 oblastí Azure s dalšími dříve oznámenými oblastmi. Jako zákazník můžete nasadit systémy SAP do všech těchto oblastí, včetně dvou oblastí Azure v Číně. Aktuální informace o oblastech Azure najdete na tomto webu: <https://azure.microsoft.com/regions/>
+ 
 
-### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Microsoft Azure koncept virtuálního počítače
-Microsoft Azure nabízí řešení infrastruktury jako služby (IaaS) pro hostování Virtual Machines s podobnými funkcemi jako místní řešení virtualizace. Můžete vytvořit Virtual Machines z Azure Portal, PowerShellu nebo rozhraní příkazového řádku, které nabízí taky možnosti nasazení a správy.
-
-Azure Resource Manager umožňuje zřídit aplikace pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Stejnou šablonu použijete k opakovanému nasazení aplikace během každé fáze životního cyklu aplikace.
-
-Další informace o používání šablon Správce prostředků najdete tady:
-
-* [Nasazení a správa virtuálních počítačů pomocí šablon Azure Resource Manager a Azure CLI](../../linux/create-ssh-secured-vm-from-template.md)
-* [Správa virtuálních počítačů pomocí Azure Resource Manager a PowerShellu][virtual-machines-deploy-rmtemplates-powershell]
-* <https://azure.microsoft.com/documentation/templates/>
-
-Další zajímavou funkcí je schopnost vytvářet image z Virtual Machines, což vám umožní připravit určitá úložiště, ze kterých můžete rychle nasadit instance virtuálních počítačů, které splňují vaše požadavky.
-
-Další informace o vytváření imagí z Virtual Machines najdete v [tomto článku (Linux)][virtual-machines-linux-capture-image-resource-manager] a v [tomto článku (Windows)][virtual-machines-windows-capture-image-resource-manager].
-
-#### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Domény selhání
-Domény selhání reprezentují fyzickou jednotku selhání, úzce souvisí s fyzickou infrastrukturou obsaženou v datových centrech, zatímco fyzické okno nebo stojan se dá považovat za doménu selhání, protože mezi nimi není žádné přímé mapování 1:1.
-
-Když nasadíte více Virtual Machines jako součást jednoho systému SAP v Microsoft Azure služeb virtuálních počítačů, můžete ovlivnit kontroler prostředků infrastruktury Azure, aby se vaše aplikace nasadila do různých domén selhání. tím se tak splní požadavky na Microsoft Azure SLA. Ale distribuce domén selhání přes jednotku škálování Azure (kolekce stovek výpočetních uzlů nebo uzlů úložiště a sítě) nebo přiřazení virtuálních počítačů do konkrétní domény selhání je něco, co nemusíte mít přímý ovládací prvek. Aby bylo možné nasměrovat řadič Azure Fabric tak, aby nasadil sadu virtuálních počítačů do různých domén selhání, musíte k virtuálním počítačům přiřadit skupinu dostupnosti Azure v době nasazení. Další informace o skupinách dostupnosti Azure najdete v části [skupiny dostupnosti Azure][planning-guide-3.2.3] v tomto dokumentu.
-
-#### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Upgradovat domény
-Upgradovací domény reprezentují logickou jednotku, která pomáhá určit, jak se aktualizuje virtuální počítač v rámci systému SAP, který se skládá z instancí SAP spuštěných ve více virtuálních počítačích. Když dojde k upgradu, Microsoft Azure projde procesem aktualizace těchto domén upgradu o jednu po jednom. Rozšíříte-li virtuální počítače v době nasazení v různých upgradovacích doménách, můžete chránit systém SAP částečně před potenciálním výpadkem. Aby mohl Azure nasazovat virtuální počítače systému SAP v různých upgradovacích doménách, je potřeba nastavit konkrétní atribut v době nasazení každého virtuálního počítače. Podobně jako u domén selhání je jednotka škálování Azure rozdělená do několika upgradovacích domén. Aby bylo možné nasměrovat řadič Azure Fabric na nasazení sady virtuálních počítačů v různých upgradovacích doménách, musíte k virtuálním počítačům v době nasazení přiřadit skupinu dostupnosti Azure. Další informace o skupinách dostupnosti Azure najdete níže v kapitole věnovaném [sadám dostupnosti Azure][planning-guide-3.2.3] .
-
-#### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Skupiny dostupnosti Azure
-Azure Virtual Machines v rámci jedné skupiny dostupnosti Azure distribuuje kontroler prostředků infrastruktury Azure v různých doménách selhání a upgradu. Účelem distribuce v různých doménách selhání a upgradu je zabránit vypnutí všech virtuálních počítačů systému SAP v případě údržby infrastruktury nebo selhání v rámci jedné domény selhání. Ve výchozím nastavení nejsou virtuální počítače součástí skupiny dostupnosti. Účast na virtuálním počítači ve skupině dostupnosti je definována v okamžiku nasazení nebo později v důsledku opětovné konfigurace a opětovného nasazení virtuálního počítače.
-
-Pro pochopení konceptu skupin dostupnosti Azure a způsobu, jakým se skupiny dostupnosti vztahují k doménám selhání a upgradu, přečtěte si [Tento článek][virtual-machines-manage-availability] .
-
-Chcete-li definovat skupiny dostupnosti pro Azure Resource Manager prostřednictvím šablony JSON, přečtěte si téma [specifikace REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2015-06-15/swagger/compute.json) a vyhledejte "dostupnost".
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Úložiště: Microsoft Azure Storage a datové disky
 Microsoft Azure Virtual Machines využívá jiné typy úložišť. Při implementaci SAP na službách virtuálních počítačů Azure je důležité pochopit rozdíly mezi těmito dvěma hlavními typy úložiště:
@@ -799,6 +802,17 @@ Informace o instalaci, konfiguraci a způsobu použití příkazů rozhraní př
 
 Přečtěte si také kapitolu [Azure CLI pro virtuální počítače se systémem Linux][deployment-guide-4.5.2] v [Průvodci nasazením][planning-guide] , jak pomocí rozhraní příkazového řádku Azure nasadit rozšíření Azure pro SAP.
 
+
+## <a name="first-steps-planning-a-deployment"></a>První postup plánování nasazení
+Prvním krokem při plánování nasazení není vyhledání virtuálních počítačů, které jsou dostupné pro běh SAP. Prvním krokem může být časově náročné, ale nejdůležitější je spolupracovat s týmy pro dodržování předpisů a zabezpečení ve vaší společnosti na základě toho, jaké jsou podmínky hranice pro nasazení, který typ úlohy SAP nebo obchodní proces do veřejného cloudu. Pokud vaše společnost nasadila jiný software před do Azure, může být tento proces snadný. Pokud je vaše společnost na začátku cesty větší, můžou být potřebné větší diskuze, aby bylo možné zjistit podmínky hranic, podmínky zabezpečení, které umožňují hostování určitých dat SAP a obchodních procesů SAP ve veřejném cloudu.
+
+Jako užitečnou nápovědu můžete Ukázat na [nabídky dodržování předpisů Microsoftu](https://docs.microsoft.com/microsoft-365/compliance/offering-home) , které nabízí seznam dodržování předpisů, které může společnost Microsoft poskytnout. 
+
+Další oblasti otázek, jako je šifrování dat pro neaktivní nebo jiné šifrování ve službě Azure, jsou popsány v části [Přehled šifrování Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview).
+
+Podceňují skutečnou tuto fázi projektu ve vašem plánování. Jenom v případě, že k tomuto tématu máte smlouvu a pravidla, musíte přejít na další krok, což je plánování síťové architektury, kterou nasazujete v Azure.
+
+
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Různé způsoby nasazení virtuálních počítačů pro SAP v Azure
 
 V této části se seznámíte s různými způsoby nasazení virtuálního počítače v Azure. V této kapitole jsou uvedené další postupy přípravy, jakož i manipulace s virtuálními pevnými disky a virtuálními počítači v Azure.
@@ -922,7 +936,7 @@ Takový virtuální počítač se nemusí zobecnit a je možné ho nahrát ve st
 ##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Nahrání virtuálního pevného disku a jeho zpřístupnění na disku Azure
 V tomto případě chceme nahrát VHD, a to buď s operačním systémem, nebo bez něj, a připojit ho k virtuálnímu počítači jako datový disk nebo ho použít jako disk s operačním systémem. Toto je proces s více kroky
 
-**Powershell**
+**PowerShell**
 
 * Přihlaste se ke svému předplatnému pomocí *Connect-AzAccount* .
 * Nastavte předplatné kontextu pomocí *set-AzContext* a parametrů SubscriptionId nebo Subscription – viz <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
@@ -979,7 +993,7 @@ Pokud chcete nahrát existující virtuální počítač nebo virtuální pevný
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Stahování VHD nebo Managed Disks do místního prostředí
 Infrastruktura Azure jako služba není jednosměrná ulice, která dokáže nahrávat jenom virtuální pevné disky a systémy SAP. Systémy SAP můžete přesunout z Azure zpátky do místního světa.
 
-V době stahování VHD nebo Managed Disks nejde aktivovat. I když stahujete disky, které jsou připojené k virtuálním počítačům, musí být virtuální počítač vypnutý a navrácený. Pokud chcete pouze stáhnout obsah databáze, který by se měl použít k nastavení nového místního systému, a pokud je přijatelný během doby stahování a nastavení nového systému, který může systém v Azure stále fungovat , můžete se vyhnout dlouhému výpadku tím, že provedete komprimaci zálohy databáze na disk a stačí stáhnout tento disk místo toho, abyste stáhli základní virtuální počítač s operačním systémem.
+V době stahování VHD nebo Managed Disks nejde aktivovat. I když stahujete disky, které jsou připojené k virtuálním počítačům, musí být virtuální počítač vypnutý a navrácený. Pokud chcete stáhnout jenom obsah databáze, který by se měl použít k nastavení nového místního systému, a pokud je přijatelný v době stahování a nastavení nového systému, který může systém v Azure stále fungovat , můžete se vyhnout dlouhému výpadku tím, že provedete komprimaci zálohy databáze na disk a stačí stáhnout tento disk místo toho, abyste stáhli základní virtuální počítač s operačním systémem.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -1052,7 +1066,7 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Azure CLI
 
-Pomocí Azure CLI můžete zkopírovat VHD, jak je znázorněno v [tomto článku][storage-azure-cli-copy-blobs]. Pokud chcete vytvořit nový spravovaný disk, použijte příkaz *AZ disk Create* , jak je znázorněno v následujícím příkladu.
+Pomocí Azure CLI můžete kopírovat VHD. Pokud chcete vytvořit nový spravovaný disk, použijte příkaz *AZ disk Create* , jak je znázorněno v následujícím příkladu.
 
 ```
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
@@ -1153,8 +1167,6 @@ az storage blob show --name <target blob name> --container <target container nam
 
 * Připojte nový virtuální pevný disk k virtuálnímu počítači, jak je popsáno výše.
 
-Příklady najdete v [tomto článku][storage-azure-cli-copy-blobs].
-
 ### <a name="disk-handling"></a>Zpracování disků
 
 #### <a name="4efec401-91e0-40c0-8e64-f2dceadff646"></a>Struktura virtuálních počítačů a disků pro nasazení SAP
@@ -1251,7 +1263,7 @@ V dalším kroku se musíte rozhodnout, jestli chcete vytvořit nový a prázdn�
 ---
 Pokud je nový disk prázdný disk, budete muset také naformátovat disk. Pro formátování, zejména pro systémy souborů a soubory protokolů, se používají stejná doporučení jako pro nasazení systému DBMS na holé systémy.
 
-Jak už bylo zmíněno v kapitole [Microsoft Azure konceptu virtuálního počítače][planning-guide-3.2], Azure Storage účet neposkytuje nekonečné prostředky z hlediska vstupně-výstupního svazku, IOPS a objemu dat. Obvykle jsou virtuální počítače se systémem DBMS ovlivněny tímto. Pro každý virtuální počítač může být nejvhodnější použít samostatný účet úložiště, pokud máte více virtuálních počítačů s vysokým počtem vstupně-výstupních operací k nasazení, aby bylo možné zůstat v rámci limitu Azure Storageho objemu účtu. V opačném případě potřebujete zjistit, jak můžete vyrovnávat tyto virtuální počítače mezi různými účty úložiště, aniž byste dosáhli limitu každého jednoho účtu úložiště. Další podrobnosti jsou popsány v [Průvodci nasazením systému DBMS][dbms-guide]. Měli byste taky zachovat tato omezení pro virtuální počítače s čistým aplikačním serverem SAP nebo jiné virtuální počítače, což může vyžadovat další virtuální pevné disky. Tato omezení neplatí při použití spravovaného disku. Pokud plánujete použít Premium Storage, doporučujeme použít spravovaný disk.
+Účet Azure Storage neposkytuje nekonečné prostředky z pohledu na vstupně-výstupní svazek, IOPS a objem dat. Obvykle jsou virtuální počítače se systémem DBMS ovlivněny tímto. Pro každý virtuální počítač může být nejvhodnější použít samostatný účet úložiště, pokud máte více virtuálních počítačů s vysokým počtem vstupně-výstupních operací k nasazení, aby bylo možné zůstat v rámci limitu Azure Storageho objemu účtu. V opačném případě potřebujete zjistit, jak můžete vyrovnávat tyto virtuální počítače mezi různými účty úložiště, aniž byste dosáhli limitu každého jednoho účtu úložiště. Další podrobnosti jsou popsány v [Průvodci nasazením systému DBMS][dbms-guide]. Měli byste taky zachovat tato omezení pro virtuální počítače s čistým aplikačním serverem SAP nebo jiné virtuální počítače, což může vyžadovat další virtuální pevné disky. Tato omezení neplatí při použití spravovaného disku. Pokud plánujete použít Premium Storage, doporučujeme použít spravovaný disk.
 
 Dalším tématem, které je relevantní pro účty úložiště, je to, jestli se virtuální pevné disky v účtu úložiště získávají geograficky replikované. Geografická replikace je povolená nebo zakázaná na úrovni účtu úložiště, ne na úrovni virtuálního počítače. Pokud je geografická replikace povolená, virtuální pevné disky v účtu úložiště se replikují do jiného datového centra Azure v rámci stejné oblasti. Před tím, než se rozhodnete, je třeba zvážit následující omezení:
 
@@ -1333,7 +1345,7 @@ Je možné, že bude nutné nakonfigurovat bránu firewall na virtuálních poč
 >
 
 ---
-#### <a name="security-recommendations"></a>Doporučení zabezpečení
+#### <a name="security-recommendations"></a>Bezpečnostní doporučení
 
 Grafické rozhraní SAP se nepřipojuje okamžitě k žádné instanci SAP (port 32xx), která je spuštěná, ale nejdřív se připojuje přes port otevřený k procesu serveru zpráv SAP (port 36xx). V minulosti byl stejný port použit serverem zpráv pro interní komunikaci s instancemi aplikace. Aby místní aplikační servery nechtěně komunikovaly se serverem zpráv v Azure, je možné změnit interní komunikační porty. Důrazně doporučujeme změnit interní komunikaci mezi serverem zpráv SAP a jeho instancemi aplikace na jiné číslo portu v systémech, které byly naklonovány z místních systémů, jako je klon vývoje pro testování projektu atd. Dá se to udělat s výchozím parametrem profilu:
 
@@ -1469,7 +1481,7 @@ $vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
-##### <a name="cli"></a>Rozhraní příkazového řádku
+##### <a name="cli"></a>CLI
 
 V systému Linux lze použít následující vzorový kód. V případě systému Windows buď použijte prostředí PowerShell, jak je popsáno výše, nebo tento příklad Přizpůsobte, aby místo $rgName používal% rgName%, a nastavte proměnnou prostředí pomocí *sady*příkazů systému Windows.
 
@@ -1607,7 +1619,7 @@ V tabulce níže jsou uvedeny typické komunikační porty SAP. V podstatě sta�
 
 <!-- sapms is prefix of a SAP service name and not a spelling error -->
 
-| Služba | Název portu | Příklad `<nn`> = 01 | Výchozí rozsah (min-max) | Poznámka |
+| Service | Název portu | Příklad `<nn`> = 01 | Výchozí rozsah (min-max) | Komentář |
 | --- | --- | --- | --- | --- |
 | Dispečer |sapdp`<nn>` viz * |3201 |3200 - 3299 |SAP Dispatcher, používané grafickým uživatelským rozhraním SAP pro Windows a Java |
 | Server zpráv |sapms`<sid`> Zobrazit * * |3600 |bezplatné sapms`<anySID`> |SID = SAP-System-ID |
@@ -1623,9 +1635,7 @@ V tomto dokumentu byste měli být schopni otevřít vyhrazené porty v zaříze
 
 Další bezpečnostní opatření při nasazení virtuálních počítačů v takovém scénáři by mohla být vytvoření [skupiny zabezpečení sítě][virtual-networks-nsg] pro definování pravidel přístupu.
 
-### <a name="dealing-with-different-virtual-machine-series"></a>Zvládnutí různých řad virtuálních počítačů
 
-Společnost Microsoft přidala mnoho dalších typů virtuálních počítačů, které se liší podle počtu vCPU, paměti nebo důležitějšího hardwaru, na kterém běží. Ne všechny tyto virtuální počítače jsou podporované pomocí SAP (viz článek podporované typy virtuálních počítačů v tématu SAP Note [1928533]). Některé z těchto virtuálních počítačů běží na různých generacích hardwarových hostitelských zařízení. Tyto generace hostitelských hardwaru se nasazují v členitosti jednotky kapacity Azure. Můžou nastat případy, kdy zvolené typy virtuálních počítačů nejdou spustit na stejné jednotce škálování. Skupina dostupnosti je omezená pro možnost rozsahu jednotek škálování na základě jiného hardwaru.  Pokud například spustíte vrstvu SAP DBMS na E64s_v3, virtuální počítač, který je ve skupině dostupnosti společně s virtuálním počítačem, který spouští sekundární instanci DBMS v konfiguraci HA, nemůžete jednoduše zastavit a znovu spustit sekundární virtuální počítač jako virtuální počítač řady M-Series, protože byste mohli chtít pgrade virtuální počítač. Důvodem je, že virtuální počítače řady M-Series a virtuální počítače řady Ev3-Series běží na různých hardwarových a s různou jednotkou škálování. Museli byste vytvořit novou skupinu dostupnosti, odstranit sekundární virtuální počítač Ev3-Series, aniž byste úložiště odstranili, a potom virtuální počítač znovu nasadit jako virtuální počítač řady M-Series do nové skupiny dostupnosti.
 
 #### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>Tisk na tiskárně místní sítě z instance SAP v Azure
 
@@ -1666,7 +1676,7 @@ Sdílená složka tiskárny je v síti identifikována jedinečným názvem:
 * Název domény, Pokud sdílená tiskárna není ve stejné doméně jako systém SAP.
 * Kromě toho může být vyžadováno uživatelské jméno a heslo pro přístup ke sdílení tiskárny.
 
-Postup:
+Postupy:
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -1705,7 +1715,7 @@ Systém SAP Change and Transporting (TMS) musí být nakonfigurovaný tak, aby v
 
 Nakonfigurujte svou doménu přenosu v systému, který jste označili jako transportní řadič domény, jak je popsáno v tématu [Konfigurace přenosového řadiče domény](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Vytvoří se systémový uživatel TMSADM a bude vygenerován požadovaný cíl RFC. Tato připojení RFC můžete kontrolovat pomocí SM59 transakce. V rámci vaší domény přenosu musí být povoleno rozlišení názvu hostitele.
 
-Postup:
+Postupy:
 
 * V našem scénáři jsme se rozhodli, že místní systém QAS bude řadičem domény CTS. Zavolejte STMS transakce. Zobrazí se dialogové okno organizace TMS. Zobrazí se dialogové okno Konfigurovat doménu přenosu. (Toto dialogové okno se zobrazí pouze v případě, že jste ještě nenakonfigurovali doménu přenosu.)
 * Ujistěte se, že automaticky vytvořený uživatel TMSADM je autorizovaný (SM59-> ABAP Connection-> TMSADM@E61.DOMAIN_E61-> Details-> Utilities (M) – > autorizační test). Úvodní obrazovka transakčního STMS by měla Ukázat, že tento systém SAP teď funguje jako řadič domény přenosu, jak je znázorněno zde:
@@ -1723,7 +1733,7 @@ Tento systém SAP teď obsahuje informace potřebné pro všechny ostatní syst�
 
 Pokračujte v konfiguraci přenosového systému obvyklým způsobem, jak je popsáno v dokumentaci pro [změnu a přenos systému](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
 
-Postup:
+Postupy:
 
 * Ujistěte se, že je váš STMS místní konfigurace správně nakonfigurovaný.
 * Ujistěte se, že se název hostitele přenosového řadiče domény dá vyřešit vaším virtuálním počítačem v Azure a naopak.
@@ -1735,7 +1745,7 @@ V případě propojení mezi místními prostředími mezi lokalitami může bý
 
 Aby bylo možné tuto latenci obejít a tyto systémy budou rychle fungovat při čtení nebo zápisu do nebo z adresáře přenosu, můžete nastavit dvě STMS dopravních domén (jeden pro místní a druhý se systémy v Azure a propojit domény přenosu. Podívejte se prosím na tuto dokumentaci, která vysvětluje principy tohoto konceptu v tématu SAP TMS: <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>.
 
-Postup:
+Postupy:
 
 * Nastavení domény pro přenos v každém umístění (místně a Azure) pomocí transakčního STMS <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
 * Propojte domény s propojením domény a potvrďte propojení mezi těmito dvěma doménami.

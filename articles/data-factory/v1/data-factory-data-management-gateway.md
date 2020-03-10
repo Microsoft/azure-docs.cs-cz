@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932008"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355807"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -71,7 +71,7 @@ Tady je tok dat na nejvyšší úrovni pro a shrnutí kroků pro kopírování p
 * **Bránu musíte použít** i v případě, že je úložiště dat v cloudu na **virtuálním počítači Azure s IaaS**.
 
 ## <a name="installation"></a>Instalace
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 * Podporované verze **operačního systému** jsou Windows 7, Windows 8/8.1, Windows 10, Windows Server 2008 R2, windows Server 2012, windows Server 2012 R2. Instalace brány pro správu dat v řadiči domény se v tuto chvíli nepodporuje.
 * Vyžaduje se .NET Framework 4.5.1 nebo vyšší. Pokud instalujete bránu na počítač se systémem Windows 7, nainstalujte .NET Framework 4,5 nebo novější. Podrobnosti najdete v tématu [.NET Framework systémových požadavků](https://msdn.microsoft.com/library/8z6watww.aspx) .
 * Doporučená **Konfigurace** pro počítač brány je minimálně 2 GHz, 4 jádra, 8 GB RAM a 80-GB disku.
@@ -97,7 +97,7 @@ Bránu pro správu dat je možné nainstalovat následujícími způsoby:
 4. Na **úvodní** stránce vyberte **jazyk** a klikněte na tlačítko **Další**.
 5. **Přijměte** licenční smlouvu s koncovým uživatelem a klikněte na tlačítko **Další**.
 6. Vyberte **složku** pro instalaci brány a klikněte na **Další**.
-7. Na **připraveno k instalaci** klikněte na **nainstalovat**.
+7. Na stránce **připraveno k instalaci** klikněte na **nainstalovat**.
 8. Instalaci dokončíte kliknutím na **Dokončit** .
 9. Získat klíč z Azure Portal. Podrobné pokyny najdete v další části.
 10. Na stránce **zaregistrovat bránu** **Správa dat brány Configuration Manager** na vašem počítači spusťte následující kroky:
@@ -262,7 +262,7 @@ Ve výchozím nastavení je brána pro správu dat automaticky aktualizována, p
 
 Karta domů v Configuration Manager brány Správa dat zobrazuje plán aktualizace a čas, kdy byla brána naposledy nainstalována/aktualizována.
 
-![Aktualizace plánu](media/data-factory-data-management-gateway/UpdateSection.png)
+![Plán aktualizací](media/data-factory-data-management-gateway/UpdateSection.png)
 
 Aktualizaci můžete nainstalovat hned nebo počkat, až se brána automaticky aktualizuje v naplánovaném čase. Například na následujícím obrázku vidíte zprávu s oznámením, která se zobrazuje v Configuration Manager brány, spolu s tlačítkem aktualizovat, na kterou můžete kliknout a hned ji nainstalovat.
 
@@ -305,7 +305,7 @@ Funkci Automatické aktualizace můžete zakázat nebo povolit provedením násl
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
-## <a name="configuration-manager"></a>Configuration Manager
+## <a name="configuration-manager"></a>Správce konfigurace
 Jakmile bránu nainstalujete, můžete spustit Správa dat Configuration Manager brány jedním z následujících způsobů:
 
 1. V okně **hledání** zadejte pro přístup k tomuto nástroji **Správa dat bránu** .
@@ -337,7 +337,7 @@ Stránka Diagnostika umožňuje provést následující akce:
 * Povolit podrobné **protokolování**, zobrazit protokoly v prohlížeči událostí a odeslat protokoly společnosti Microsoft v případě selhání.
 * **Otestujte připojení** ke zdroji dat.
 
-### <a name="help-page"></a>Stránka nápovědy
+### <a name="help-page"></a>Stránka s usnadněním
 Na stránce s informací o nápovědě se zobrazí následující informace:
 
 * Stručný popis brány
@@ -364,7 +364,7 @@ Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :
 
 Vlastnost monitorování | Popis
 :------------------ | :----------
-Name (Název) | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
+Název | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
 Stav | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
 Version | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase.
@@ -383,7 +383,7 @@ Stav  | Komentáře a scénáře
 Online | Uzel je připojený ke službě Data Factory.
 Offline | Uzel je offline.
 Upgrade | Uzel se automaticky aktualizuje.
-Omezená | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů.
+Limitovan | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů.
 Neaktivní | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům.
 
 Následující tabulka uvádí možné stavy **logické brány**. Stav brány závisí na stavech uzlů brány.
@@ -393,7 +393,7 @@ Stav | Komentáře
 Vyžaduje registraci | Pro tuto logickou bránu ještě není zaregistrovaný žádný uzel.
 Online | Uzly brány jsou online.
 Offline | Žádný uzel ve stavu online.
-Omezená | Ne všechny uzly v této bráně jsou v dobrém stavu. Tento stav je upozorněním, že některý uzel může být mimo provoz. <br/><br/>Důvodem může být problém synchronizace přihlašovacích údajů u dispečera nebo pracovního uzlu.
+Limitovan | Ne všechny uzly v této bráně jsou v dobrém stavu. Tento stav je upozorněním, že některý uzel může být mimo provoz. <br/><br/>Důvodem může být problém synchronizace přihlašovacích údajů u dispečera nebo pracovního uzlu.
 
 ## <a name="scale-up-gateway"></a>Horizontální navýšení kapacity brány
 Můžete nakonfigurovat počet **souběžných úloh přesunu dat** , které se můžou spouštět na uzlu, abyste mohli škálovat možnosti přesouvání dat mezi místními a cloudovým úložištěm dat.
@@ -420,7 +420,7 @@ V této části najdete postup přesunutí klienta brány z jednoho počítače 
     ![Konfigurace stránky](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. Ponechte **Configuration Manager otevřené brány Microsoft Správa dat** .
 
-    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    ![Správce konfigurace](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. Na portálu na stránce **Konfigurace** klikněte na panelu příkazů na **znovu vytvořit klíč** a pro zprávu upozornění klikněte na **Ano** . Klikněte na tlačítko **Kopírovat** vedle textu klíče, který kopíruje klíč do schránky. Brána na původním počítači přestane fungovat, jakmile znovu vytvoříte klíč.
 
     ![Znovu vytvořit klíč](./media/data-factory-data-management-gateway/RecreateKey.png)

@@ -8,11 +8,11 @@ ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0f13f297facedceb50920c0f6afca63fe1df0b48
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248052"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375165"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -53,7 +53,7 @@ Výběr **modulu** protokoluje všechny [xEvents](https://docs.microsoft.com/ana
 |Zpracování dotazů     |   Začátek Directquery      |
 |Zpracování dotazů     |  Konec dotazu s přímým přístupem       |
 
-### <a name="service"></a>Služba
+### <a name="service"></a>Service
 
 |Název operace  |Nastane, když  |
 |---------|---------|
@@ -215,7 +215,7 @@ Existují stovky dotazy, které můžete použít. Další informace o dotazech 
 
 V tomto rychlém kurzu vytvoříte účet úložiště ve stejném předplatném a skupině prostředků jako váš server Analysis Service. Pak pomocí Set-AzDiagnosticSetting zapněte protokolování diagnostiky a odešlete výstup do nového účtu úložiště.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 K dokončení tohoto kurzu musíte mít následující prostředky:
 
 * Stávající server Azure Analysis Services. Pokyny k vytvoření prostředku serveru najdete v tématu [vytvoření serveru v Azure Portal](analysis-services-create-server.md)nebo [Vytvoření Azure Analysis Servicesho serveru pomocí PowerShellu](analysis-services-create-powershell.md).

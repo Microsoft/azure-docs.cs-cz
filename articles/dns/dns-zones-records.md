@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392606"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Přehled zón a záznamů DNS
 
@@ -109,7 +109,7 @@ Vícenásobné řetězce v záznamu DNS by neměly být zaměňovány pomocí v�
 
 ### <a name="tags"></a>Značky
 
-Značky jsou seznam párů název-hodnota a používají Azure Resource Manager k označení prostředků.  Azure Resource Manager používá značky k povolení filtrovaných zobrazení vaší faktury za Azure a také umožňuje nastavit zásady, které vyžadují značky. Další informace o značkách najdete v článku o [použití značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md).
+Značky jsou seznam párů název-hodnota a používají Azure Resource Manager k označení prostředků.  Azure Resource Manager používá značky k povolení filtrovaných zobrazení vaší faktury za Azure a také umožňuje nastavit zásady, které vyžadují značky. Další informace o značkách najdete v tématu [Použití značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md).
 
 Azure DNS podporuje použití značek Azure Resource Manager v prostředcích zóny DNS.  Nepodporuje značky pro sady záznamů DNS, i když jako alternativní metadata se v sadách záznamů DNS podporují, jak je vysvětleno níže.
 

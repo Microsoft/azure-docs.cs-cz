@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: mvc
 ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230769"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370316"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Vytvoření aplikace funkcí na webu Azure Portal
 
@@ -21,7 +21,7 @@ V tomto tématu se dozvíte, jak pomocí Azure Functions vytvořit aplikaci Func
 
 Při vytváření aplikace funkcí zadejte platný **Název aplikace**, který může obsahovat pouze písmena, číslice a pomlčky. Podtržítko ( **_** ) není povolené znak.
 
-Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom čísla a malá písmena. Váš název účtu úložiště musí být jedinečný v rámci Azure. 
+Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom čísla a malá písmena. Název vašeho účtu úložiště musí být jedinečný v rámci Azure. 
 
 Po vytvoření aplikace funkcí můžete jednotlivé funkce vytvářet v jednom nebo několika různých jazycích. Funkce můžete vytvářet [pomocí portálu](functions-create-first-azure-function.md#create-function), [průběžného nasazování](functions-continuous-deployment.md) nebo prostřednictvím [nahrávání přes protokol FTP](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp).
 

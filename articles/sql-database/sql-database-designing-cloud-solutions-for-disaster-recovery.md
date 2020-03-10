@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807950"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359144"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Návrh globálně dostupných služeb pomocí Azure SQL Database
 
@@ -119,7 +119,7 @@ Prostředky aplikace by se měly nasadit v každé geografické oblasti, kde má
 
 ![Scénář 3. Konfigurace s primárním v Východní USA.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-Na konci dne (například v místním čase 23:00) by měly být aktivní databáze přepnuty do další oblasti (Severní Evropa). Tato úloha se dá plně automatizovat pomocí [služby plánování Azure](../scheduler/scheduler-intro.md).  Úkol zahrnuje následující kroky:
+Na konci dne, například v 11 místního času, by měly být aktivní databáze přepnuty do další oblasti (Severní Evropa). Tato úloha se dá plně automatizovat pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Úkol zahrnuje následující kroky:
 
 * Přepnutí primárního serveru ve skupině převzetí služeb při selhání na Severní Evropa s použitím popisného převzetí služeb při selhání (1
 * Odebrání skupiny převzetí služeb při selhání mezi Východní USA a Severní Evropa
@@ -130,7 +130,7 @@ Následující diagram znázorňuje novou konfiguraci po plánovaném převzetí
 
 ![Scénář 3. Převod primárního na Severní Evropa.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Pokud dojde k výpadku v Severní Evropa například automatické převzetí služeb při selhání databáze je iniciováno skupinou převzetí služeb při selhání, což efektivně vede k přesunu aplikace do další oblasti před plánem (1).  V takovém případě je USA – východ jedinou zbývající sekundární oblastí, dokud Severní Evropa znovu nepřejdete do režimu online. Zbývající dvě oblasti slouží zákazníkům ve všech třech zeměpisných oblastech přepínáním rolí. Plánovač Azure je potřeba upravit odpovídajícím způsobem. Vzhledem k tomu, že zbývající oblasti získají další uživatelský provoz z Evropy, výkon aplikace bude mít vliv nejen na další latenci, ale také na zvýšený počet připojení koncových uživatelů. Po omezení výpadku v Severní Evropa je sekundární databáze okamžitě synchronizovaná s aktuální primární databází. Následující diagram znázorňuje výpadek Severní Evropa:
+Pokud dojde k výpadku v Severní Evropa například automatické převzetí služeb při selhání databáze je iniciováno skupinou převzetí služeb při selhání, což efektivně vede k přesunu aplikace do další oblasti před plánem (1).  V takovém případě je USA – východ jedinou zbývající sekundární oblastí, dokud Severní Evropa znovu nepřejdete do režimu online. Zbývající dvě oblasti slouží zákazníkům ve všech třech zeměpisných oblastech přepínáním rolí. Azure Logic Apps musí být upraveny odpovídajícím způsobem. Vzhledem k tomu, že zbývající oblasti získají další uživatelský provoz z Evropy, výkon aplikace bude mít vliv nejen na další latenci, ale také na zvýšený počet připojení koncových uživatelů. Po omezení výpadku v Severní Evropa je sekundární databáze okamžitě synchronizovaná s aktuální primární databází. Následující diagram znázorňuje výpadek Severní Evropa:
 
 ![Scénář 3. Výpadek v Severní Evropa.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
@@ -152,7 +152,7 @@ Existují však některé **kompromisy**:
 
 Vaše konkrétní strategie cloudového zotavení po havárii může tyto vzory návrhu zkombinovat nebo roztáhnout tak, aby co nejlépe splňovala požadavky vaší aplikace.  Jak už bylo zmíněno dříve, strategie, kterou zvolíte, je založená na smlouvě SLA, kterou chcete nabídnout vašim zákazníkům a topologii nasazení aplikace. Následující tabulka porovnává tyto možnosti podle rozhodnutí bodu obnovení (RPO) a odhadované doby obnovení (ERT), které vám pomůžou s vaším rozhodnutím.
 
-| Vzor | OBNOVENÍ | ERT |
+| Vzor | Cíl bodu obnovení | ERT |
 |:--- |:--- |:--- |
 | Aktivní – pasivní nasazení pro zotavení po havárii s společně umístěným přístupem k databázi |Přístup pro čtení i zápis < 5 sec |Čas detekce selhání + hodnota TTL systému DNS |
 | Aktivní – aktivní nasazení pro vyrovnávání zatížení aplikace |Přístup pro čtení i zápis < 5 sec |Čas detekce selhání + hodnota TTL systému DNS |

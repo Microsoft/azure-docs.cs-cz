@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201556"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379200"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -54,7 +54,7 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
   * BackEnd: 10.12.0.0/24 (volitelné pro toto cvičení)
 * **Podsíť brány:** 10.11.255.0/27
 * **Skupina prostředků:** TestRG1
-* **Umístění:** Východní USA
+* **Umístění:** USA – východ
 * **Server DNS:** 10.11.0.3 (volitelné pro toto cvičení)
 * **Název místní lokality:** Site2
 * **Klientský adresní prostor:** Adresní prostor umístěný ve vaší místní lokalitě.
@@ -65,7 +65,7 @@ Pokud vytváříte virtuální síť pro použití k připojení typu Site-to-Si
 
 * Pokud již máte virtuální síť vytvořenou, ověřte, zda jsou nastavení kompatibilní s vaším návrhem brány VPN. Věnujte zvláštní pozornost všem podsítím, které by se mohly překrývat s jinými sítěmi. 
 
-* Pokud ještě nemáte virtuální síť, vytvořte si ji. Snímky obrazovek slouží jen jako příklady. Hodnoty na obrázcích nahraďte vlastními hodnotami.
+* Pokud ještě nemáte virtuální síť, vytvořte si ji. Snímky obrazovek slouží jen jako příklady. Nezapomeňte hodnoty nahradit vlastními.
 
 ### <a name="to-create-a-virtual-network"></a>Chcete-li vytvořit virtuální síť
 
@@ -76,7 +76,7 @@ Pokud vytváříte virtuální síť pro použití k připojení typu Site-to-Si
 
    ![Stránka pro vytvoření virtuální sítě](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Stránka pro vytvoření virtuální sítě")
 5. V rozevíracím seznamu **Předplatné** zkontrolujte, jestli je vybrané správné předplatné. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
-6. Klikněte na **Skupina prostředků** a vyberte existující skupinu prostředků nebo zadáním názvu vytvořte novou. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md#resource-groups).
+6. Klikněte na **Skupina prostředků** a vyberte existující skupinu prostředků nebo zadáním názvu vytvořte novou. Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md#resource-groups).
 7. Potom vyberte nastavení **Umístění** sítě VNet. Umístění určuje, kde budou uloženy prostředky nasazené v této síti VNet.
 8. Kliknutím na **Vytvořit** vytvořte virtuální síť.
 9. Po kliknutí na Vytvořit se na řídicím panelu zobrazí dlaždice, která zobrazuje postup vaší virtuální sítě. Obsah dlaždice se v průběhu vytváření sítě VNet mění.

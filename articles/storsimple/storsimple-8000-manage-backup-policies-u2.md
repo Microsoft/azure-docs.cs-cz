@@ -1,6 +1,6 @@
 ---
-title: Správa zásad zálohování StorSimple 8000 series | Dokumentace Microsoftu
-description: Vysvětluje, jak můžete pomocí služby Správce zařízení StorSimple k vytváření a správě ručního zálohování, plány zálohování a uchování zálohy na zařízení řady StorSimple 8000.
+title: Správa zásad zálohování řady StorSimple 8000 | Microsoft Docs
+description: Vysvětluje, jak můžete službu StorSimple Device Manager použít k vytváření a správě ručních záloh, plánů zálohování a uchovávání záloh na zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,88 +15,88 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 607379f8645226a031646376df9ca18f4d3164bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60818854"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394570"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Správa zásad zálohování pomocí služby Správce zařízení StorSimple na webu Azure portal
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Ke správě zásad zálohování použijte službu StorSimple Device Manager v Azure Portal.
 
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz vysvětluje, jak pomocí služby Správce zařízení StorSimple **zásady zálohování** okno pro řízení procesů zálohování a uchovávání záloh pro svazky zařízení StorSimple. Také popisuje, jak dokončit ručního zálohování.
+V tomto kurzu se dozvíte, jak pomocí okna **zásady zálohování** služby StorSimple Device Manager řídit procesy zálohování a uchovávání záloh pro vaše svazky StorSimple. Také popisuje, jak provést ruční zálohování.
 
-Při zálohování svazku, můžete vytvořit místní snímek nebo cloudový snímek. Pokud zálohujete místně vázaný svazek, doporučujeme zadat snímek v cloudu. V situaci, ve kterém můžete rychle spustit mimo místní prostor způsobí trvá velký počet místních snímků místně vázaný svazek s datovou sadou, která obsahuje mnoho změn s velkou provázaností. Pokud vyberete možnost vytvářet místní snímky, doporučujeme trvat méně denní snímky zálohovat aktuální stav je zachovat za den a potom je odstraňte.
+Při zálohování svazku můžete zvolit vytvoření místního snímku nebo snímku v cloudu. Pokud zálohujete místně připojený svazek, doporučujeme, abyste určili snímek v cloudu. Výsledkem většího počtu místních snímků místně připnutého svazku, na kterém je propojená sada dat s velkým množstvím změn, je situace, kdy se můžete rychle dostat mimo místní prostor. Pokud se rozhodnete použít místní snímky, doporučujeme vám, abyste měli méně denní snímky pro zálohování nejaktuálnějšího stavu, zachováte je za den a pak je odstraníte.
 
-Při pořídíte cloudový snímek místně vázaný svazek, kopírovat změněná data do cloudu, kde je s odstraněním duplicitních dat a komprimované.
+Když pořídíte snímek v cloudu místně připojeného svazku, kopírujete jenom změněná data do cloudu, kde se odstraňují a komprimují.
 
 ## <a name="the-backup-policy-blade"></a>Okno zásady zálohování
 
-**Zásady zálohování** okno pro zařízení StorSimple umožňuje spravovat zásady zálohování a plánování místních a cloudových snímků. Zásady zálohování se používají ke konfiguraci plány zálohování a uchovávání záloh pro kolekci svazků. Zásady zálohování umožňují vytvoření snímku více svazků najednou. To znamená, že zálohy vytvořené zásady zálohování bude konzistentní kopie.
+Okno **zásady zálohování** pro zařízení StorSimple umožňuje spravovat zásady zálohování a naplánovat místní a cloudové snímky. Zásady zálohování se používají ke konfiguraci plánů zálohování a uchovávání záloh pro kolekci svazků. Zásady zálohování umožňují pořizovat snímek více svazků současně. To znamená, že zálohy vytvořené zásadami zálohování budou kopie konzistentní vzhledem k chybě.
 
-Zásady zálohování tabulkovém výpisu také vám umožní filtrovat existující zásady zálohování jednu nebo více z následujících polí:
+Tabulkový výpis zásad zálohování také umožňuje filtrovat existující zásady zálohování podle jednoho nebo více následujících polí:
 
-* **Název zásad** – název přidružených k zásadě. Zahrnout různé typy zásad:
+* **Název zásady** – název přidružený k zásadě. Mezi různé typy zásad patří:
 
-  * Naplánované zásady, které jsou explicitně vytvořený uživatelem.
-  * Importované zásady, které byly původně vytvořeny StorSimple Snapshot Manageru. Ty se musí značky, které popisují, které zásady byly naimportovány z hostitele StorSimple Snapshot Manageru.
+  * Naplánované zásady, které uživatel výslovně vytvořil.
+  * Importované zásady, které se původně vytvořily v StorSimple Snapshot Manager. Mají značku, která popisuje StorSimple Snapshot Manager hostitele, ze kterého byly zásady naimportovány.
 
   > [!NOTE]
-  > Automatické nebo výchozí zásady zálohování jsou již není povolena v době vytvoření svazku.
+  > Automatické nebo výchozí zásady zálohování už nejsou povolené v době vytváření svazku.
 
-* **Poslední úspěšná záloha** – datum a čas posledního úspěšného zálohování, která byla provedena s touto zásadou.
+* **Poslední úspěšná záloha** – datum a čas posledního úspěšného zálohování, které se provedlo pomocí této zásady.
 
-* **Příští zálohování** – datum a čas další plánované zálohy, aktivuje se v těchto zásadách.
+* **Další zálohování** – datum a čas příštího plánovaného zálohování, které budou touto zásadou iniciovány.
 
-* **Svazky** – svazky přidružené k těmto zásadám. Všechny svazky, které jsou přidružené k těmto zásadám zálohování jsou seskupené dohromady při vytváření zálohy.
+* **Svazky** – svazky přidružené k zásadám. Všechny svazky přidružené k zásadám zálohování se při vytváření záloh seskupují dohromady.
 
-* **Plány** – počet plánů, které jsou přidružené k těmto zásadám zálohování.
+* **Plány** – počet plánů přidružených k zásadě zálohování.
 
-Jsou často používaných operací, které můžete provést pro zásady zálohování:
+Často používané operace, které můžete provést pro zásady zálohování, jsou tyto:
 
 * Přidání zásady zálohování
-* Přidat nebo změnit plán
+* Přidat nebo upravit plán
 * Přidat nebo odebrat svazek
-* Odstraňování zásady zálohování
-* Proveďte ruční zálohování
+* Odstranění zásady zálohování
+* Provedení ručního zálohování
 
 ## <a name="add-a-backup-policy"></a>Přidání zásady zálohování
 
-Přidání zásady zálohování a automaticky naplánovat zálohování. Při prvním vytvoření svazku, neexistuje žádný výchozí zásady zálohování přidružené k svazku. Budete muset přidat a přiřadit zásady zálohování pro ochranu dat svazku.
+Přidejte zásady zálohování pro automatické naplánování zálohování. Při prvním vytvoření svazku nejsou k tomuto svazku přidruženy žádné výchozí zásady zálohování. Chcete-li chránit data svazků, je nutné přidat a přiřadit zásady zálohování.
 
-Proveďte následující kroky na webu Azure Portal k přidání zásady zálohování pro zařízení StorSimple. Jakmile přidáte zásady, můžete definovat plán (viz [přidat nebo změnit plán](#add-or-modify-a-schedule)).
+Chcete-li přidat zásady zálohování pro zařízení StorSimple, proveďte následující kroky v Azure Portal. Po přidání zásady můžete definovat plán (viz [Přidat nebo upravit plán](#add-or-modify-a-schedule)).
 
 [!INCLUDE [storsimple-8000-add-backup-policy-u2](../../includes/storsimple-8000-add-backup-policy-u2.md)]
 
-## <a name="add-or-modify-a-schedule"></a>Přidat nebo změnit plán
+## <a name="add-or-modify-a-schedule"></a>Přidat nebo upravit plán
 
-Můžete přidat nebo upravit plán, který je připojen k existující zásadu zálohování zařízení StorSimple. Proveďte následující kroky na webu Azure Portal přidat nebo upravit plán.
+Můžete přidat nebo upravit plán, který je připojený k existující zásadě zálohování na zařízení StorSimple. Chcete-li přidat nebo upravit plán, proveďte následující kroky v Azure Portal.
 
 [!INCLUDE [storsimple-8000-add-modify-backup-schedule](../../includes/storsimple-8000-add-modify-backup-schedule-u2.md)]
 
 
 ## <a name="add-or-remove-a-volume"></a>Přidat nebo odebrat svazek
 
-Můžete přidat nebo odebrat svazek přiřazené zásady zálohování v zařízení StorSimple. Proveďte následující kroky na webu Azure Portal přidat nebo odebrat svazek.
+Na zařízení StorSimple můžete přidat nebo odebrat svazek přiřazený k zásadám zálohování. Chcete-li přidat nebo odebrat svazek, proveďte následující kroky v Azure Portal.
 
 [!INCLUDE [storsimple-8000-add-volume-backup-policy-u2](../../includes/storsimple-8000-add-remove-volume-backup-policy-u2.md)]
 
 
-## <a name="delete-a-backup-policy"></a>Odstraňování zásady zálohování
+## <a name="delete-a-backup-policy"></a>Odstranění zásady zálohování
 
-Proveďte následující kroky na webu Azure Portal k odstraňování zásady zálohování v zařízení StorSimple.
+Proveďte následující kroky v Azure Portal k odstranění zásad zálohování na zařízení StorSimple.
 
 [!INCLUDE [storsimple-8000-delete-backup-policy](../../includes/storsimple-8000-delete-backup-policy.md)]
 
-## <a name="take-a-manual-backup"></a>Proveďte ruční zálohování
+## <a name="take-a-manual-backup"></a>Provedení ručního zálohování
 
-Proveďte následující kroky na webu Azure Portal k vytvoření zálohy na vyžádání (ručně) pro samostatný svazek.
+Pokud chcete vytvořit zálohu na vyžádání (ruční) pro jeden svazek, proveďte následující kroky v Azure Portal.
 
 [!INCLUDE [storsimple-8000-create-manual-backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

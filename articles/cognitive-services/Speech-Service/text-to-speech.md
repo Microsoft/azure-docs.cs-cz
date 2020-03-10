@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: erhopf
 ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394796"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -37,7 +37,7 @@ Převod textu na řeč od služby pro rozpoznávání řeči umožňuje vašim a
 
 * SSML (Speech syntézy Language) – značkovací jazyk založený na jazyce XML, který slouží k přizpůsobení výstupů řeči na text. Pomocí SSML můžete upravit rozteč, přidat pauzy, zlepšit výslovnost, zrychlit nebo zpomalit rychlost řeči, zvýšit nebo snížit objem a zadat u jednoho dokumentu více hlasů. Viz [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 Služba převod textu na řeč je k dispozici prostřednictvím [sady Speech SDK](speech-sdk.md). V různých jazycích a platformách je k dispozici několik běžných scénářů jako rychlé starty:
 

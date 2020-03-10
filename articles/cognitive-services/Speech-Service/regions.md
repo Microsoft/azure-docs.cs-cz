@@ -12,11 +12,11 @@ ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431158"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378981"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
@@ -51,12 +51,12 @@ Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speec
 | Austrálie     | Austrálie – východ   | `australiaeast`      |
 | Evropa        | Severní Evropa     | `northeurope`        |
 | Evropa        | Západní Evropa      | `westeurope`         |
-| Severní Amerika | USA – východ          | `eastus`             |
-| Severní Amerika | USA – východ 2        | `eastus2`            |
-| Severní Amerika | USA – středojih | `southcentralus`     |
-| Severní Amerika | USA – středozápad  | `westcentralus`      |
-| Severní Amerika | USA – západ          | `westus`             |
-| Severní Amerika | USA – západ 2        | `westus2`            |
+| Severní Amerika | Východní USA          | `eastus`             |
+| Severní Amerika | Východní USA 2        | `eastus2`            |
+| Severní Amerika | Střed USA – jih | `southcentralus`     |
+| Severní Amerika | Střed USA – západ  | `westcentralus`      |
+| Severní Amerika | Západní USA          | `westus`             |
+| Severní Amerika | Západní USA 2        | `westus2`            |
 | Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
 
 Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
@@ -67,10 +67,10 @@ Toto je podmnožina oblastí publikování, které podporuje [služba Language U
 
 | Oblast         | Identifikátor oblasti |
 | -------------- | -------------------- |
-| USA – západ        | `westus`             |
-| USA – západ 2      | `westus2`            |
-| USA – východ        | `eastus`             |
-| USA – východ 2      | `eastus2`            |
+| Západní USA        | `westus`             |
+| Západní USA 2      | `westus2`            |
+| Východní USA        | `eastus`             |
+| Východní USA 2      | `eastus2`            |
 | Západní Evropa    | `westeurope`         |
 | Severní Evropa   | `northeurope`        |
 | Jihovýchodní Asie | `southeastasia`      |

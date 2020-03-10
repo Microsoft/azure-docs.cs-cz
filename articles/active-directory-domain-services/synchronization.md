@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132210"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944420"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Způsob synchronizace objektů a přihlašovacích údajů ve spravované doméně Azure AD Domain Services
 
@@ -47,9 +47,9 @@ Následující tabulka uvádí některé běžné atributy a způsob jejich sync
 | Historie identifikátorů SID pro uživatele a skupiny | Identifikátor SID místního primárního uživatele a skupiny | Atribut *SIDHistory* pro uživatele a skupiny v Azure služba AD DS je nastavený tak, aby odpovídal PŘÍSLUŠNÉmu identifikátoru SID primárního uživatele nebo skupiny v místním prostředí služba AD DS. Tato funkce pomáhá zajistit přezvednutí místních aplikací do Azure služba AD DS, protože nemusíte znovu vytvářet prostředky ACL. |
 
 > [!TIP]
-> **Přihlaste se ke spravované doméně pomocí formátu UPN** . U některých uživatelských účtů ve spravované doméně Azure služba AD DS se může automaticky generovat atribut *sAMAccountName* , například `CONTOSO\driley`. Automaticky generovaná hodnota *sAMAccountName* uživatele se může lišit od PŘEDPONY názvu UPN, takže není vždy spolehlivým způsobem, jak se přihlásit.
+> **Přihlaste se ke spravované doméně pomocí formátu UPN** . U některých uživatelských účtů ve spravované doméně Azure služba AD DS se může automaticky generovat atribut *sAMAccountName* , například `AADDSCONTOSO\driley`. Automaticky generovaná hodnota *sAMAccountName* uživatele se může lišit od PŘEDPONY názvu UPN, takže není vždy spolehlivým způsobem, jak se přihlásit.
 >
-> Například pokud má více uživatelů stejný atribut *mailNickname* nebo mají více uživatelů delší předpony hlavního názvu uživatele (UPN), mohou být pro tyto uživatele automaticky vygenerovány hodnoty *sAMAccountName* pro tyto uživatele. K spolehlivému přihlášení ke spravované doméně Azure služba AD DS použijte formát UPN, například `driley@contoso.com`.
+> Například pokud má více uživatelů stejný atribut *mailNickname* nebo mají více uživatelů delší předpony hlavního názvu uživatele (UPN), mohou být pro tyto uživatele automaticky vygenerovány hodnoty *sAMAccountName* pro tyto uživatele. K spolehlivému přihlášení ke spravované doméně Azure služba AD DS použijte formát UPN, například `driley@aaddscontoso.com`.
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Mapování atributů uživatelských účtů
 
@@ -65,7 +65,7 @@ Následující tabulka ukazuje, jak se konkrétní atributy pro uživatelské ob
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | pracovní funkce |Název |
-| e-mailu |e-mailu |
+| pošta |pošta |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (někdy může být generováno automaticky) |
 | Mobilní zařízení |Mobilní zařízení |
@@ -89,7 +89,7 @@ Následující tabulka ukazuje, jak se konkrétní atributy pro objekty skupin v
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName (někdy může být generováno automaticky) |
-| e-mailu |e-mailu |
+| pošta |pošta |
 | mailNickname |msDS-AzureADMailNickname |
 | objektu |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Čísel |

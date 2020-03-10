@@ -5,11 +5,11 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292922"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356764"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -119,14 +119,14 @@ requests
 
 Tabulky, které jsou k dispozici, jsou zobrazeny na kartě **schéma** na levé straně. Data generovaná pomocí volání funkcí najdete v následujících tabulkách:
 
-| Table | Popis |
+| Tabulka | Popis |
 | ----- | ----------- |
 | **trasování** | Protokoly vytvořené modulem runtime a kódem funkce. |
 | **požádal** | Jedna žádost pro každé vyvolání funkce. |
 | **výjimek** | Jakékoli výjimky vyvolané modulem runtime. |
 | **customMetrics** | Počet úspěšných a neúspěšných vyvolání, míra úspěšnosti a trvání. |
 | **customEvents** | Události sledované modulem runtime, například: požadavky HTTP, které aktivují funkci. |
-| **performanceCounters** | Informace o výkonu serverů, na kterých jsou spuštěny funkce. |
+| **Čítače výkonu** | Informace o výkonu serverů, na kterých jsou spuštěny funkce. |
 
 Ostatní tabulky jsou k dispozici pro testy dostupnosti a telemetrie klientů a prohlížečů. Můžete implementovat vlastní telemetrii a přidat do nich data.
 
@@ -151,18 +151,18 @@ Modul runtime Functions vytvoří protokoly s kategorií, která začíná na "h
 
 Pokud zapíšete protokoly do kódu funkce, kategorie je `Function` ve verzi 1. x modulu runtime Functions. V kategorii verze 2. x je `Function.<YOUR_FUNCTION_NAME>.User`kategorie.
 
-### <a name="log-levels"></a>Úrovně protokolování
+### <a name="log-levels"></a>Úrovně protokolu
 
 Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každým protokolem. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a celočíselný kód označuje relativní důležitost:
 
-|ÚroveňProtokolu    |kód|
+|LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladění       | 1\. místo |
+|Ladit       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritické    | 5 |
+|Kritická    | 5 |
 |Žádné        | 6 |
 
 `None` úrovně protokolu je vysvětleno v další části. 
@@ -271,7 +271,7 @@ Protokoly jsou k dispozici v tabulce **customMetrics** v Application Insights. J
 
 Všechny tyto protokoly jsou zapsány na `Information` úrovně. Pokud filtrujete `Warning` nebo výše, nezobrazí se žádná z těchto dat.
 
-### <a name="other-categories"></a>Další kategorie
+### <a name="other-categories"></a>Jiné kategorie
 
 Všechny protokoly pro jiné kategorie než ty, které jsou již uvedeny, jsou k dispozici v tabulce **trasování** v Application Insights.
 
@@ -672,7 +672,7 @@ Pokud chcete zakázat integrované protokolování, odstraňte nastavení aplika
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Application Insights](/azure/application-insights/)
 * [Protokolování ASP.NET Core](/aspnet/core/fundamentals/logging/)

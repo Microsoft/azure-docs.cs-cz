@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.custom: mvc
 ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845514"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388949"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů Hyper-V pomocí Azure Migrate posouzení serveru
 
@@ -69,7 +69,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     - Oblast projektu slouží pouze k uložení metadat shromážděných z místních virtuálních počítačů.
     - Při migraci virtuálních počítačů můžete vybrat jinou cílovou oblast Azure. Všechny oblasti Azure jsou podporovány pro cíl migrace.
 
-7. Klikněte na **Další**.
+7. Klikněte na **Další**.
 8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: posouzení serveru** > **Další**.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-hyper-v/assessment-tool.png)
@@ -136,8 +136,8 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
 3. V části **najít složku**vyberte složku **Virtual Machines** . Pak klikněte na tlačítko **Další**.
 1. V nabídce **Vybrat virtuální počítač**klikněte na **Další**.
 2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Pak klikněte na tlačítko **Další**.
-3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
-4. V části **složky úložiště**ponechte výchozí nastavení. Klikněte na **Další**.
+3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
+4. V části **složky úložiště**ponechte výchozí nastavení. Klikněte na **Další**.
 5. V části **zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure. [Přečtěte si informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) o vytvoření virtuálního přepínače.
 6. V části **Souhrn**zkontrolujte nastavení. Pak klikněte na **Dokončit**.
 7. Ve Správci technologie Hyper-V > **Virtual Machines**spusťte virtuální počítač.
@@ -186,7 +186,7 @@ Pokud používáte na SMB virtuální pevné disky, musíte povolit delegování
 
 Povolit na zařízení následujícím způsobem:
 
-#### <a name="option-1"></a>Možnost 1
+#### <a name="option-1"></a>možnost 1
 
 Na virtuálním počítači zařízení spusťte tento příkaz. HyperVHost1/HyperVHost2 jsou příklady názvů hostitelů.
 
@@ -211,7 +211,7 @@ Připojte se ze zařízení k hostitelům nebo clusterům Hyper-V a spusťte zji
 
 1. Do pole **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu, které zařízení použije ke zjištění virtuálních počítačů. Zadejte popisný název přihlašovacích údajů a klikněte na **Uložit podrobnosti**.
 2. Klikněte na **Přidat hostitele**a zadejte podrobnosti o hostiteli nebo clusteru Hyper-V.
-3. Klikněte na tlačítko **ověřit**. Po ověření se zobrazí počet virtuálních počítačů, které se dají zjistit u každého hostitele nebo clusteru.
+3. Klikněte na **Validate** (Ověřit). Po ověření se zobrazí počet virtuálních počítačů, které se dají zjistit u každého hostitele nebo clusteru.
     - Pokud se ověření pro hostitele nepovede, přečtěte si chybu, když najedete myší na ikonu ve sloupci **stav** . Opravte problémy a znovu ověřte.
     - Chcete-li odebrat hostitele nebo clustery, vyberte možnost > **Odstranit**.
     - Z clusteru nelze odebrat konkrétního hostitele. Můžete odebrat jenom celý cluster.
@@ -245,7 +245,7 @@ Proveďte posouzení následujícím způsobem:
 1. Projděte si [osvědčené postupy](best-practices-assessment.md) pro vytváření hodnocení.
 2. Na **serverech** > **Azure Migrate: posouzení serveru**, klikněte na **vyhodnotit**.
 
-    ![Posouzení](./media/tutorial-assess-hyper-v/assess.png)
+    ![Hodnocení](./media/tutorial-assess-hyper-v/assess.png)
 
 3. V poli **vyhodnotit servery**zadejte název posouzení.
 4. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
@@ -332,7 +332,7 @@ Hodnocení spolehlivosti pro posouzení je následující.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavení zařízení Azure Migrate

@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359485"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .NET SDK pomocí metody Login objektu služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
+- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
 - Nainstalujte nástroj, který byste chtěli použít pro vývoj pro .NET. Postup v tomto článku ukazuje, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Visual Studio Code lze použít v tématu [Working with C# ](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný Editor kódu.
 
 > [!IMPORTANT]
@@ -43,7 +43,7 @@ Ukázková aplikace v tomto tématu cílí na `netcoreapp2.0`. Kód používá A
 ## <a name="add-required-nuget-packages"></a>Přidat požadované balíčky NuGet
 
 1. V aplikaci Visual Studio vyberte **nástroje** > **správce balíčků NuGet** > **Konzola správce NuGet**.
-2. V okně **konzoly Správce balíčků** použijte příkaz `Install-Package` a přidejte následující balíčky NuGet. Například, `Install-Package Microsoft.Azure.Management.Media`.
+2. V okně **konzoly Správce balíčků** použijte příkaz `Install-Package` a přidejte následující balíčky NuGet. například `Install-Package Microsoft.Azure.Management.Media`.
 
 |Balíček|Popis|
 |---|---|
@@ -145,7 +145,7 @@ namespace ConsoleApp1
 
 Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. V následujícím kódu GetCredentialsAsync funkce vytvoří objekt ServiceClientCredentials na základě přihlašovacích údajů dodaných v místním konfiguračním souboru.
 
-1. Otevřít `Program.cs`.
+1. Otevřete `Program.cs`.
 1. Vložte následující kód:
 
 ```csharp
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [Vytváření filtrů pomocí Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Příklady pokročilých videí na vyžádání Azure Functions v2 s Media Services V3](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Reference k .NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * Další příklady kódu naleznete v tématu úložiště [ukázek sady .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) .

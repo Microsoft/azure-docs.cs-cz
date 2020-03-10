@@ -10,11 +10,11 @@ ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024105"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379111"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
@@ -26,7 +26,7 @@ Tento rychlý start ukazuje, jak na webu Azure Portal vytvořit účet Batch, *f
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="create-a-batch-account"></a>Vytvoření účtu služby Batch
+## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
 Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testování. Účet Batch budete potřebovat k vytváření fondů a úloh. Jak vidíte, účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití.
 
@@ -41,11 +41,11 @@ Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testová
 
 4. U ostatních nastavení ponechte výchozí hodnoty a výběrem možnosti **Vytvořit** vytvořte účet.
 
-   ![Vytvoření účtu služby Batch][account_portal]  
+   ![Vytvoření účtu Batch][account_portal]  
 
 Po zobrazení zprávy **Nasazení bylo úspěšné** přejděte na portálu do účtu Batch.
 
-## <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
+## <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
 
 Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový fond výpočetních uzlů s Windows. V tomto rychlém příkladu fond obsahuje 2 uzly se spuštěnou imagí systému Windows Server 2012 R2 z Azure Marketplace.
 
@@ -110,7 +110,7 @@ Vytvoření prvního úkolu:
 
    ![Vytvoření úkolu][task_create]
 
-Po vytvoření služba Batch zařadí úkol do fronty pro spuštění ve fondu. Jakmile bude dostupný uzel, který ho bude moct spustit, úkol se spustí.
+Služba Batch úkol po vytvoření zařadí do fronty pro spuštění ve fondu. Jakmile bude dostupný uzel, který ho bude moct spustit, úkol se spustí.
 
 Pokud chcete vytvořit druhý úkol, vraťte se ke kroku 1. Zadejte jiné **ID úkolu**, ale na příkazový řádek zadejte totéž. Pokud je první úkol pořád spuštěný, služba Batch spustí druhý úkol ve druhém uzlu ve fondu.
 
@@ -126,7 +126,7 @@ Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Př
 
 Pokud chcete pokračovat v prohlížení kurzů a ukázek služby Batch, použijte účet Batch a propojený účet úložiště, které jste vytvořili v tomto rychlém startu. Za samotný účet Batch se neúčtují žádné poplatky.
 
-Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. V zobrazení účtu vyberte **Fondy** a název fondu. Vyberte **Odstranit**.  Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
+Za fond, ve kterém jsou spuštěné uzly, se účtují poplatky, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. V zobrazení účtu vyberte **Fondy** a název fondu. Vyberte **Odstranit**.  Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
 

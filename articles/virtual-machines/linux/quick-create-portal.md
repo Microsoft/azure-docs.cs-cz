@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035216"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372583"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
@@ -34,7 +34,7 @@ K dokončení tohoto rychlého startu potřebujete pár klíčů SSH. Pokud už 
 Otevřete prostředí Bash a pomocí nástroje [ssh-keygen](https://www.ssh.com/ssh/keygen/) vytvořte pár klíčů SSH. Pokud na místním počítači nemáte prostředí Bash, můžete použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V nabídce v horní části stránky vyberte ikonu `>_` pro otevření Cloud Shell.
 1. Ujistěte se, že Cloudshellu říká **bash** v levém horním rohu. Pokud se jedná o PowerShell, vyberte v rozevíracím seznamu **bash** a vyberte **Potvrdit** pro změnu prostředí bash shell.
 1. Zadejte `ssh-keygen -t rsa -b 2048` pro vytvoření klíče SSH. 
@@ -47,7 +47,7 @@ Otevřete prostředí Bash a pomocí nástroje [ssh-keygen](https://www.ssh.com/
 
 Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.azure.com) .
 
-## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
+## <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
 1. Do vyhledávacího pole zadejte **virtuální počítače** .
 1. V části **služby**vyberte **virtuální počítače**.
@@ -58,7 +58,7 @@ Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.
 
 1. V části **Podrobnosti o instanci**zadejte *MyVM* pro **název virtuálního počítače**, vyberte *východní USA* pro vaši **oblast**a jako **Obrázek**vyberte *Ubuntu 18,04 LTS* . Zbytek ponechte ve výchozím nastavení.
 
-    ![Část podrobnosti o instancích](./media/quick-create-portal/instance-details.png)
+    ![Část podrobností o instancích](./media/quick-create-portal/instance-details.png)
 
 1. V části **účet správce**vyberte **veřejný klíč SSH**, zadejte své uživatelské jméno a pak vložte svůj veřejný klíč. Ve veřejném klíči odeberte počáteční a koncové prázdné znaky.
 
@@ -68,14 +68,14 @@ Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.
 
     ![Otevřené porty pro protokoly RDP a HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
-1. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
+1. Zbytek ponechte ve výchozím nastavení a pak v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
 
 1. Na stránce **Vytvoření virtuálního počítače** se zobrazí podrobnosti o virtuálním počítači, který se chystáte vytvořit. Až budete připraveni, vyberte **Vytvořit**.
 
 Nasazení virtuálního počítače bude několik minut trvat. Po dokončení nasazení se přesuňte k další části.
 
     
-## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
+## <a name="connect-to-virtual-machine"></a>Připojit k virtuálnímu počítači
 
 Vytvořte připojení SSH k virtuálnímu počítači.
 

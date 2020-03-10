@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648421"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376999"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -43,7 +43,7 @@ Tento článek vám poskytne přehled o sestavě auditu.
 
 * Uživatelé v roli **Správce zabezpečení**, **Čtenář zabezpečení**, **čtečka sestav** , **globální čtenář** nebo **globální správce**
 
-## <a name="audit-logs"></a>Protokoly auditu
+## <a name="audit-logs"></a>Protokoly auditování
 
 Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **monitorování** v **Azure Active Directory**možnost **protokoly auditu** . Všimněte si, že protokoly auditu můžou mít latenci až hodinu, takže může trvat dlouhou dobu, než se na portálu po dokončení úkolu zobrazí data o aktivitě auditu.
 
@@ -58,38 +58,38 @@ Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující
 - cíl
 - Iniciátor/actor (kdo) aktivity
 
-![Protokoly auditu](./media/concept-audit-logs/listview.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/listview.png "Protokoly auditování")
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Protokoly auditu](./media/concept-audit-logs/columns.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/columns.png "Protokoly auditování")
 
 To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazená.
 
-![Protokoly auditu](./media/concept-audit-logs/columnselect.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/columnselect.png "Protokoly auditování")
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Protokoly auditu](./media/concept-audit-logs/details.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/details.png "Protokoly auditování")
 
 
 ## <a name="filtering-audit-logs"></a>Filtrování protokolů auditu
 
 Data auditu můžete filtrovat v následujících polích:
 
-- Služba
+- Service
 - Kategorie
 - Aktivita
-- Status
+- Stav
 - Cíl
 - Spustil(a) (činitel)
 - Rozsah dat
 
-![Protokoly auditu](./media/concept-audit-logs/filter.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/filter.png "Protokoly auditování")
 
 Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
-- Vše
+- Všechny
 - UX pro správu AAD
 - Kontroly přístupu
 - Zřizování účtů
@@ -111,7 +111,7 @@ Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující slu�
 
 Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
-- Vše
+- Všechny
 - AdministrativeUnit
 - ApplicationManagement
 - Ověřování
@@ -125,9 +125,9 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - KerberosDomain
 - Správa
 - Popisek
-- Ostatní
+- Další
 - PermissionGrantPolicy
-- Zásada
+- Zásady
 - ResourceManagement
 - RoleManagement
 - UserManagement
@@ -138,9 +138,9 @@ Seznam všech aktivit auditu můžete získat pomocí Graph API: `https://graph.
 
 Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Stav může být jedna z následujících:
 
-- Vše
+- Všechny
 - Úspěch
-- Selhání
+- Nezdařilo se
 
 **Cílový** filtr vám umožní vyhledat konkrétní cíl podle názvu nebo hlavního názvu uživatele (UPN). Název cíle a hlavní název uživatele (UPN) rozlišují velká a malá písmena. 
 
@@ -157,7 +157,7 @@ Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a
 
 Můžete si také stáhnout filtrovaná data, až 250 000 záznamů, a to tak, že vyberete tlačítko **Stáhnout** . Protokoly si můžete stáhnout buď ve formátu CSV, nebo ve formátu JSON. Počet záznamů, které si můžete stáhnout, je omezený o [Azure Active Directory zásady uchovávání sestav](reference-reports-data-retention.md).
 
-![Protokoly auditu](./media/concept-audit-logs/download.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/download.png "Protokoly auditování")
 
 ## <a name="audit-logs-shortcuts"></a>Zástupci pro protokoly auditu
 
@@ -188,11 +188,11 @@ S použitím sestav auditu orientovaných na uživatele a skupiny můžete nají
 
 Chcete-li zkontrolovat pouze auditovaná data, která se vztahují k uživatelům, můžete filtrované zobrazení najít v části **protokoly auditu** v části **monitorování** na kartě **Uživatelé** . Tento vstupní bod má **UserManagement** jako předvybranou kategorii.
 
-![Protokoly auditu](./media/concept-audit-logs/users.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/users.png "Protokoly auditování")
 
 Pokud chcete zkontrolovat jenom auditovaná data, která souvisí se skupinami, najdete filtrované zobrazení v části **protokoly auditu** v části **monitorování** na kartě **skupiny** . Tento vstupní bod má **GroupManagement** jako předvybranou kategorii.
 
-![Protokoly auditu](./media/concept-audit-logs/groups.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/groups.png "Protokoly auditování")
 
 ### <a name="enterprise-applications-audit-logs"></a>Protokoly auditu podnikových aplikací
 
@@ -206,7 +206,7 @@ S použitím sestav auditu orientovaných na aplikace můžete najít odpovědi 
 
 Pokud chcete zkontrolovat data auditu související s vašimi aplikacemi, najdete filtrované zobrazení v části **protokoly auditu** v části **aktivita** v okně **podnikové aplikace** . Tento vstupní bod má jako **Typ aplikace**předvybranou možnost **podnikové aplikace** .
 
-![Protokoly auditu](./media/concept-audit-logs/enterpriseapplications.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/enterpriseapplications.png "Protokoly auditování")
 
 ## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
 

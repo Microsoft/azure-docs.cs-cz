@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598744"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360174"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachovat soubory v Azure Cloud Shell
 Cloud Shell využívá službu Azure File Storage k uchování souborů napříč relacemi. Při počátečním spuštění vás Cloud Shell vyzve k přidružení nové nebo existující sdílené složky, která bude uchovávat soubory napříč relacemi.
@@ -66,7 +66,7 @@ Pokud chcete zjistit aktuální oblast, kterou můžete spustit `env` v bash, na
 
 Cloud Shell počítače existují v následujících oblastech:
 
-|Oblast|Oblast|
+|Plošný|Oblast|
 |---|---|
 |Amerika|Východní USA, Střed USA – jih Západní USA|
 |Evropa|Severní Evropa, Západní Evropa|

@@ -15,11 +15,11 @@ ms.date: 08/13/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: c8a78acfa1f3e7332cee337ae1a82ee365fe356a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022966"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356251"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -54,7 +54,7 @@ Omezení velikosti fondu nastavuje služba Batch. Na rozdíl od [kvót prostřed
 | Režim přidělování fondů předplatných dávky | 80 |
 | **Výpočetní uzly ve [fondu vytvořené pomocí prostředku spravované image](batch-custom-images.md)** <sup>1</sup> ||
 | Vyhrazené uzly | 2000 |
-| Uzly s nízkou prioritou | 1 000 |
+| Uzly s nízkou prioritou | 1 000 |
 
 <sup>1</sup> pro fondy, které nejsou povolené komunikace mezi uzly.
 
@@ -99,9 +99,9 @@ Pomocí těchto kroků můžete požádat o zvýšení kvóty pro účet Batch n
    
     c. **Typ kvóty** > **Batch**
       
-    Vyberte **Next** (Další).
+    Vyberte **Další**.
     
-1. V **podrobnosti**:
+1. Oblast **Details** (Podrobnosti) obsahuje:
       
     a. V části **Zadejte podrobnosti**zadejte umístění, typ kvóty a účet Batch.
     
@@ -119,7 +119,7 @@ Pomocí těchto kroků můžete požádat o zvýšení kvóty pro účet Batch n
 
     b. Vyberte **závažnost** podle svého [obchodního dopadu][support_sev].
 
-    Vyberte **Next** (Další).
+    Vyberte **Další**.
 
 1. V **kontaktní údaje**:
    
@@ -142,7 +142,7 @@ Fondy služby Batch v konfiguraci virtuálního počítače nasazené ve virtuá
 Tyto prostředky se přidělují v rámci předplatného, které obsahuje virtuální síť, která se zadala při vytváření fondu Batch. Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. Pokud plánujete nasazení rozsáhlých fondů ve virtuální síti, Prohlédněte si kvóty předplatného pro tyto prostředky. V případě potřeby požádejte o zvýšení Azure Portal tím, že vyberete **help + podpora**.
 
 
-## <a name="related-topics"></a>Související témata
+## <a name="related-topics"></a>Příbuzná témata
 * [Vytvoření účtu Azure Batch pomocí Azure Portal](batch-account-create-portal.md)
 * [Přehled funkcí Azure Batch](batch-api-basics.md)
 * [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)

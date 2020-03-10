@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
 ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461537"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380771"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: nastavení Synchronizace dat SQL mezi Azure SQL Database a SQL Server místním prostředím
 
@@ -86,7 +86,7 @@ V části **databáze členů** můžete volitelně přidat Azure SQL Database d
   | ----------------------------- | ------------------------------------------------- |
   | **Název člena synchronizace** | Zadejte název nového člena synchronizace. Tento název se liší od samotného názvu databáze. |
   | **Předplatné** | Vyberte přidružené předplatné Azure pro účely fakturace. |
-  | **Azure SQL Server** | Vyberte existující server SQL Database. |
+  | **SQL Server Azure** | Vyberte existující server SQL Database. |
   | **Azure SQL Database** | Vyberte existující databázi SQL. |
   | **Pokyny pro synchronizaci** | Vyberte **obousměrnou synchronizaci**, **do centra**nebo **z centra**. |
   | **Uživatelské jméno** a **heslo** | Zadejte existující pověření pro server SQL Database, na kterém je umístěna členský databáze. Nezadávejte *nové* přihlašovací údaje v této části. |
@@ -163,13 +163,13 @@ Po vytvoření a nasazení nových členů skupiny synchronizace se na stránce 
 
 1. V seznamu vyberte tabulky, které chcete synchronizovat. Ve výchozím nastavení jsou vybrány všechny sloupce, takže políčko pro sloupce, které nechcete synchronizovat, zakažte. Nezapomeňte ponechat vybraný sloupec primárního klíče.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 1. Ve výchozím nastavení nejsou databáze synchronizovány, dokud je neplánujete nebo ručně spustíte. Pokud chcete spustit ruční synchronizaci, přejděte k databázi SQL v Azure Portal, vyberte **synchronizovat s ostatními databáze**a vyberte skupinu synchronizace. Otevře se stránka **synchronizace dat** . Vyberte **Synchronizovat**.
 
     ![Ruční synchronizace](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Jak často může synchronizace dat synchronizovat moje data?**
 

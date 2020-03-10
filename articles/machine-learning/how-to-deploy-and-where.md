@@ -12,11 +12,11 @@ ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250974"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355327"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Pracovní postup je podobný bez ohledu na [to, kam model nasazujete](#target) :
 
 Další informace o konceptech, které jsou součástí pracovního postupu nasazení, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -672,7 +672,7 @@ Následující tabulka popisuje různé stavy služby:
 | Přechod | Služba je v procesu nasazení. | Ne |
 | Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
 | Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
-| Neúspěch | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
+| Neúspěšné | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
 | V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
 
 ### <a id="notebookvm"></a>Webová služba COMPUTE instance (vývoj/testování)

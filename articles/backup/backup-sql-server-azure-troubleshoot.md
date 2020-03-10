@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
-ms.translationtype: MT
+ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602320"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392853"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -21,6 +21,7 @@ Další informace o procesu zálohování a omezeních najdete v tématu [inform
 Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním počítači, musíte na tomto virtuálním počítači nainstalovat rozšíření **AzureBackupWindowsWorkload** . Pokud se zobrazí chyba **UserErrorSQLNoSysadminMembership**, znamená to, že vaše instance SQL Server nemá požadovaná oprávnění k zálohování. Pokud chcete tuto chybu opravit, postupujte podle kroků v části [Nastavení oprávnění virtuálních počítačů](backup-azure-sql-database.md#set-vm-permissions).
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Řešení potíží se zjišťováním a konfigurací problémů
+
 Po vytvoření a konfiguraci trezoru Recovery Services, který zjišťuje databáze a konfiguruje zálohování, je proces se dvěma kroky.<br>
 
 ![SQL](./media/backup-azure-sql-database/sql.png)
@@ -37,13 +38,29 @@ Pokud se v konfiguraci zálohování nezobrazuje virtuální počítač SQL a je
 
 Pokud je potřeba virtuální počítač SQL zaregistrovat v novém trezoru, musíte ho odregistrovat ve starém trezoru.  Zrušení registrace virtuálního počítače s SQL z trezoru vyžaduje, aby všechny chráněné zdroje dat byly zastavené a potom můžete zálohovaná data odstranit. Odstraňování zálohovaných dat je destruktivní operace.  Po kontrole a přijetí všech preventivních opatření pro zrušení registrace virtuálního počítače SQL proveďte registraci stejného virtuálního počítače v novém trezoru a zkuste operaci zálohování zopakovat.
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>Řešení potíží se zálohováním a obnovením  
 
+V některých případech se může stát, že při operacích zálohování a obnovení dojde k náhodným selháním nebo se můžou tyto operace zablokovat. To může být způsobeno antivirovými programy na vašem VIRTUÁLNÍm počítači. V rámci osvědčeného postupu doporučujeme následující postup:
 
-## <a name="error-messages"></a>Chybové zprávy
+1. Vylučte z kontroly antivirového programu následující složky:
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    Nahraďte `C:\` písmenem pro *systemdrive*.
+
+1. Vylučte následující tři procesy běžící v rámci virtuálního počítače z kontroly antivirové ochrany:
+
+    - IaasWLPluginSvc. exe
+    - IaasWorkloadCoordinaorService. exe
+    - TriggerExtensionJob. exe
+
+1. SQL také nabízí některé pokyny pro práci s antivirovými programy. Podrobnosti najdete v [tomto článku](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) .
+
+## <a name="error-messages"></a>Chybovými zprávami
 
 ### <a name="backup-type-unsupported"></a>Typ zálohování se nepodporuje.
 
-| Severity | Popis | Možné příčiny | Doporučená akce |
+| Závažnost | Popis | Možné příčiny | Doporučená akce |
 |---|---|---|---|
 | Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
 
@@ -149,7 +166,6 @@ Operace je zablokovaná, protože trezor dosáhl maximálního limitu pro tyto o
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
 Virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problémům s připojením k Internetu. | Virtuální počítač potřebuje odchozí připojení ke službě Azure Backup, Azure Storage nebo Azure Active Directory.| – Pokud k omezení připojení používáte NSG, měli byste pomocí značky služby AzureBackup povolit odchozí přístup k Azure Backup Azure Backup služby, Azure Storage nebo Azure Active Directory služby. Pomocí těchto [kroků](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) udělíte přístup.<br>– Zajistěte překlad koncových bodů Azure DNS.<br>– Ověřte, jestli je virtuální počítač za nástrojem pro vyrovnávání zatížení blokující přístup k Internetu. Po přiřazení veřejné IP adresy k virtuálním počítačům bude zjišťování fungovat.<br>– Ověřte, že není k dispozici brána firewall/antivirová ochrana nebo proxy server blokující volání výše uvedených tří cílových služeb.
-
 
 ## <a name="re-registration-failures"></a>Selhání opětovné registrace
 

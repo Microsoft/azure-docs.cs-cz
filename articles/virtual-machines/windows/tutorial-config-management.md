@@ -16,11 +16,11 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064803"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372958"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače s Windows v Azure
 
@@ -40,7 +40,7 @@ Chcete-li otevřít libovolný blok kódu v Cloud Shell, stačí vybrat příkaz
 
 Cloud Shell můžete také otevřít na samostatné kartě prohlížeče tak, že kliknete na [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Vyberte **Kopírovat** pro zkopírování bloků kódu, vložte je na kartu Cloud Shell a stiskněte klávesu ENTER pro spuštění kódu.
 
-## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete potřebovat virtuální počítač s Windows v Azure.
 
@@ -121,7 +121,7 @@ Pokud chcete naplánovat nové nasazení aktualizace pro virtuální počítač,
 |**Operační systém**| Vyberte možnost **Linux** nebo **Windows**.|
 | **Skupiny, které se mají aktualizovat** |U virtuálních počítačů hostovaných v Azure definujte dotaz na základě kombinace předplatného, skupin prostředků, umístění a značek. Tento dotaz vytvoří dynamickou skupinu virtuálních počítačů hostovaných v Azure, které se mají zahrnout do nasazení. </br></br>U virtuálních počítačů, které nejsou hostované v Azure, vyberte existující uložené výsledky hledání. Pomocí tohoto hledání můžete vybrat skupinu těchto virtuálních počítačů, které chcete zahrnout do nasazení. </br></br> Další informace najdete v tématu [dynamické skupiny](../../automation/automation-update-management-groups.md).|
 | **Počítače, které se mají aktualizovat** |Vyberte **uložené hledání**, **importované skupiny**nebo **počítače**.<br/><br/>Pokud vyberete možnost **počítače**, můžete z rozevíracího seznamu zvolit jednotlivé počítače. Připravenost jednotlivých počítačů se zobrazí ve sloupci **připravenosti agenta aktualizace** v tabulce.</br></br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md) |
-|**klasifikace aktualizací;**|Vyberte všechny potřebné klasifikace aktualizací.|
+|**Klasifikace aktualizací**|Vyberte všechny potřebné klasifikace aktualizací.|
 |**Zahrnout nebo vyloučit aktualizace**|Tuto možnost vyberte, pokud chcete otevřít podokno **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout, a ty, které se mají vyloučit, jsou na různých kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu [Naplánování nasazení aktualizací](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment). |
 |**Nastavení plánu**|Zvolte čas **spuštění a vyberte jeden nebo znovu** **.**|
 | **Pre-Scripts + post-Scripts**|Vyberte skripty, které se spustí před nasazením a po něm.|

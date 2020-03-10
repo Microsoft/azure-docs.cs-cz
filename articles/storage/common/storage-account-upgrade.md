@@ -6,27 +6,27 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: eb3523ca55e67d7a26ae608da8963dbf6124f2f7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42cef26143eaeb49c4aa80dc5e1b05eb7be943cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975830"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362723"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely v2
 
 Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Pro většinu scénářů úložišť se doporučuje používat účty pro obecné účely v2. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů. Účty pro obecné účely v2 podporují úrovně přístupu na úrovni Standard, horké nebo studené a převrstvení objektů BLOB mezi horkou, studenou nebo archivní.
 
-Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné účely v1 nebo BLOB Storage je jednoduchý. Můžete upgradovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
+Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné účely v1 nebo BLOB Storage je jednoduchý. Můžete upgradovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI. Neexistuje žádné výpadky nebo riziko ztráty dat související s upgradem na účet úložiště pro obecné účely v2. K upgradu účtu dochází prostřednictvím jednoduché operace Azure Resource Manager, která mění typ účtu.
 
 > [!IMPORTANT]
 > Upgrade účtu úložiště pro obecné účely v1 nebo blob na obecné účely je trvalý a nedá se vrátit zpátky.
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na **Konfigurace**.
 4. V části **Druh účtu** klikněte na **Upgradovat**.
@@ -35,7 +35,7 @@ Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné úč
 
     ![Upgradovat druh účtu](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Potom zavolejte následující příkaz pro upgrade účtu, kde nahradíte náze
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí Azure CLI, nejdřív nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -85,7 +85,7 @@ Všechny účty úložiště vycházejí z cenového modelu úložiště objekt�
 
 * **Cena za přenosy dat geografické replikace:** Tento poplatek se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
 
-* **Cena za odchozí přenosy dat**: Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za GB, stejně jako je tomu u účtů úložiště pro obecné účely.
+* **Cena za odchozí datové přenosy**: Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za gigabajt, stejně jako je tomu u účtů úložiště pro obecné účely.
 
 * **Změna úrovně přístupu úložiště**: Změna úrovně přístupu k úložišti účtů ze studené na horkou má poplatek, který se rovná čtení všech dat existujících v účtu úložiště. Změna úrovně přístupu k účtu z horké na studenou se ale účtuje za poplatek, který se rovná zápisu všech dat do studené úrovně (pouze účty GPv2).
 

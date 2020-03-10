@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
 ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561778"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361328"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -25,7 +25,7 @@ Pomocí [Azure Portal](https://portal.azure.com)můžete spravovat clustery [Apa
 
 Existující cluster Apache Hadoop v HDInsight.  Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 
@@ -111,7 +111,7 @@ Na [domovské stránce clusteru](#homePage)v části **Nastavení** vyberte **vl
 |DATUM VYTVOŘENÍ|Datum, kdy byl cluster nasazen.|
 |OPERAČNÍ SYSTÉM|Buď **Windows** , nebo **Linux**.|
 |TYP|Hadoop, HBA, vyplavení, Spark.|
-|Verze|Viz [verze HDInsight](hdinsight-component-versioning.md).|
+|Version|Viz [verze HDInsight](hdinsight-component-versioning.md).|
 |Minimální verze protokolu TLS|Verze TLS.|
 |PŘEDPLATNÉ|Název předplatného|
 |VÝCHOZÍ ZDROJ DAT|Výchozí systém souborů clusteru.|

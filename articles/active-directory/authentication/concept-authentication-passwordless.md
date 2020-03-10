@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffe3d359dffea3278337de00bea42e0b959e10f6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269523"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378215"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
@@ -69,7 +69,7 @@ Bezpečnostní klíč **musí** implementovat následující funkce a rozšíře
 
 Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých faktorů, u kterých je známo, že jsou kompatibilní s prostředím bez hesla. Pro vyhodnocení vlastností zabezpečení těchto klíčů doporučujeme, abyste se obrátili na dodavatele i na FIDO Alliance.
 
-| Poskytovatel | Kontakt |
+| Zprostředkovatel | Kontakt |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

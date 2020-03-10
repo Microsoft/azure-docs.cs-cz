@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176535"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374363"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Referenční informace k datovému modelu šablony Azure API Management
 Toto téma popisuje entity a typy reprezentace pro běžné položky používané v datových modelech pro šablony portálu pro vývojáře v Azure API Management.  
@@ -61,21 +61,21 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`id`|string|Identifikátor prostředku Jedinečně identifikuje rozhraní API v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `apis/{id}`, kde `{id}` je identifikátor rozhraní API. Tato vlastnost je určena jen pro čtení.|  
+|`id`|string|Identifikátor prostředku Jedinečně identifikuje rozhraní API v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `apis/{id}`, kde `{id}` je identifikátor rozhraní API. Tato vlastnost je jen ke čtení.|  
 |`name`|string|Název rozhraní API Nesmí být prázdný. Maximální délka je 100 znaků.|  
 |`description`|string|Popis rozhraní API Nesmí být prázdný. Může obsahovat značky formátování HTML. Maximální délka je 1000 znaků.|  
 |`serviceUrl`|string|Absolutní adresa URL back-end služby implementující toto rozhraní API.|  
 |`path`|string|Relativní adresa URL jednoznačně identifikuje toto rozhraní API a všechny jeho cesty k prostředkům v rámci instance služby API Management. Připojí se k základní adrese URL koncového bodu rozhraní API zadané během vytváření instance služby za účelem vytvoření veřejné adresy URL pro toto rozhraní API.|  
 |`protocols`|pole čísla|V této části najdete popis protokolů, které mohou být operace v tomto rozhraní API vyvolány. Povolené hodnoty jsou `1 - http` a `2 - https`, nebo obojí.|  
 |`authenticationSettings`|[Nastavení ověřování autorizačního serveru](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Kolekce nastavení ověřování zahrnutá v tomto rozhraní API|  
-|`subscriptionKeyParameterNames`|object|Volitelná vlastnost, která se dá použít k zadání vlastních názvů pro parametry dotazu nebo hlavičky obsahující klíč předplatného Pokud je tato vlastnost přítomna, musí obsahovat alespoň jednu ze dvou následujících vlastností.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
+|`subscriptionKeyParameterNames`|objekt|Volitelná vlastnost, která se dá použít k zadání vlastních názvů pro parametry dotazu nebo hlavičky obsahující klíč předplatného Pokud je tato vlastnost přítomna, musí obsahovat alespoň jednu ze dvou následujících vlastností.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="APISummary"></a>Přehled rozhraní API  
  `API summary` entita má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`id`|string|Identifikátor prostředku Jedinečně identifikuje rozhraní API v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `apis/{id}`, kde `{id}` je identifikátor rozhraní API. Tato vlastnost je určena jen pro čtení.|  
+|`id`|string|Identifikátor prostředku Jedinečně identifikuje rozhraní API v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `apis/{id}`, kde `{id}` je identifikátor rozhraní API. Tato vlastnost je jen ke čtení.|  
 |`name`|string|Název rozhraní API Nesmí být prázdný. Maximální délka je 100 znaků.|  
 |`description`|string|Popis rozhraní API Nesmí být prázdný. Může obsahovat značky formátování HTML. Maximální délka je 1000 znaků.|  
   
@@ -87,7 +87,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 |`Id`|string|Jedinečný identifikátor aplikace|  
 |`Title`|string|Název aplikace|  
 |`Description`|string|Popis aplikace|  
-|`Url`|IDENTIFIKÁTOR URI|Identifikátor URI pro aplikaci|  
+|`Url`|URI|Identifikátor URI pro aplikaci|  
 |`Version`|string|Informace o verzi aplikace|  
 |`Requirements`|string|Popis požadavků pro aplikaci.|  
 |`State`|číslo|Aktuální stav aplikace<br /><br /> -0 – registrováno<br /><br /> -1-odesláno<br /><br /> -2 – Publikováno<br /><br /> -3 – zamítnuto<br /><br /> -4 – nepublikováno|  
@@ -163,7 +163,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
   
 |Vlastnost|Typ|Popis|  
 |--------------|-----------------|----------|  
-|`name`|string|Název parametru|  
+|`name`|string|Název parametru.|  
 |`description`|string|Popis parametru|  
 |`value`|string|Hodnota hlavičky|  
 |`typeName`|string|Datový typ hodnoty hlavičky|  
@@ -195,7 +195,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`id`|string|Identifikátor prostředku Jednoznačně identifikuje operaci v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `apis/{aid}/operations/{id}`, kde `{aid}` je identifikátor rozhraní API a `{id}` je identifikátor operace. Tato vlastnost je určena jen pro čtení.|  
+|`id`|string|Identifikátor prostředku Jednoznačně identifikuje operaci v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `apis/{aid}/operations/{id}`, kde `{aid}` je identifikátor rozhraní API a `{id}` je identifikátor operace. Tato vlastnost je jen ke čtení.|  
 |`name`|string|Název operace Nesmí být prázdný. Maximální délka je 100 znaků.|  
 |`description`|string|Popis operace Nesmí být prázdný. Může obsahovat značky formátování HTML. Maximální délka je 1000 znaků.|  
 |`scheme`|string|V této části najdete popis protokolů, které mohou být operace v tomto rozhraní API vyvolány. Povolené hodnoty jsou `http`, `https`nebo `http` i `https`.|  
@@ -220,7 +220,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`Id`|string|ID operace|  
+|`Id`|string|ID operace.|  
 |`Title`|string|Popis operace.|  
 |`HttpMethod`|string|Metoda HTTP operace.|  
   
@@ -240,7 +240,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
   
 |Vlastnost|Typ|Popis|  
 |--------------|-----------------|----------|  
-|`name`|string|Název parametru|  
+|`name`|string|Název parametru.|  
 |`description`|string|Popis parametru|  
 |`value`|string|Hodnota parametru.|  
 |`options`|pole řetězce|Hodnoty definované pro hodnoty parametrů dotazu.|  
@@ -253,7 +253,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Identifikátor prostředku Jednoznačně identifikuje produkt v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `products/{pid}`, kde `{pid}` je identifikátor produktu. Tato vlastnost je určena jen pro čtení.|  
+|`Id`|string|Identifikátor prostředku Jednoznačně identifikuje produkt v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `products/{pid}`, kde `{pid}` je identifikátor produktu. Tato vlastnost je jen ke čtení.|  
 |`Title`|string|Název produktu Nesmí být prázdný. Maximální délka je 100 znaků.|  
 |`Description`|string|Popis produktu Nesmí být prázdný. Může obsahovat značky formátování HTML. Maximální délka je 1000 znaků.|  
 |`Terms`|string|Produktové podmínkami použití. Vývojářům, kteří se pokoušejí přihlásit k odběru produktu, se zobrazí a bude muset tyto podmínky přijmout, aby mohli dokončit proces předplatného.|  
@@ -283,19 +283,19 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Identifikátor prostředku Jednoznačně identifikuje odběr v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `subscriptions/{sid}`, kde `{sid}` je identifikátor předplatného. Tato vlastnost je určena jen pro čtení.|  
+|`Id`|string|Identifikátor prostředku Jednoznačně identifikuje odběr v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `subscriptions/{sid}`, kde `{sid}` je identifikátor předplatného. Tato vlastnost je jen ke čtení.|  
 |`ProductId`|string|Identifikátor prostředku produktu odebíraného produktu. Hodnota je platná relativní adresa URL ve formátu `products/{pid}`, kde `{pid}` je identifikátor produktu.|  
 |`ProductTitle`|string|Název produktu Nesmí být prázdný. Maximální délka je 100 znaků.|  
 |`ProductDescription`|string|Popis produktu Nesmí být prázdný. Může obsahovat značky formátování HTML. Maximální délka je 1000 znaků.|  
 |`ProductDetailsUrl`|string|Relativní adresa URL s podrobnostmi o produktu|  
-|`state`|string|Stav předplatného. Možné stavy:<br /><br /> - `0 - suspended` – předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br /><br /> - `1 - active` – předplatné je aktivní.<br /><br /> - `2 - expired` – předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br /><br /> - `3 - submitted` – žádost o předplatné udělal vývojář, ale ještě nebyla schválená ani zamítnutá.<br /><br /> - `4 - rejected` – žádost o předplatné byla zamítnuta správcem.<br /><br /> - `5 - cancelled` – předplatné zrušila vývojář nebo správce.|  
+|`state`|string|Stav odběru Možné stavy:<br /><br /> - `0 - suspended` – předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br /><br /> - `1 - active` – předplatné je aktivní.<br /><br /> - `2 - expired` – předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br /><br /> - `3 - submitted` – žádost o předplatné udělal vývojář, ale ještě nebyla schválená ani zamítnutá.<br /><br /> - `4 - rejected` – žádost o předplatné byla zamítnuta správcem.<br /><br /> - `5 - cancelled` – předplatné zrušila vývojář nebo správce.|  
 |`DisplayName`|string|Zobrazovaný název předplatného|  
-|`CreatedDate`|Hodnotu|Datum vytvoření odběru ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
+|`CreatedDate`|Datum a čas|Datum vytvoření odběru ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
 |`CanBeCancelled`|Boolean|Zda může být předplatné zrušeno aktuálním uživatelem.|  
 |`IsAwaitingApproval`|Boolean|Zda předplatné čeká na schválení.|  
-|`StartDate`|Hodnotu|Počáteční datum předplatného ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
-|`ExpirationDate`|Hodnotu|Datum vypršení platnosti předplatného ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
-|`NotificationDate`|Hodnotu|Datum oznámení pro předplatné ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
+|`StartDate`|Datum a čas|Počáteční datum předplatného ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
+|`ExpirationDate`|Datum a čas|Datum vypršení platnosti předplatného ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
+|`NotificationDate`|Datum a čas|Datum oznámení pro předplatné ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
 |`primaryKey`|string|Primární klíč předplatného. Maximální délka je 256 znaků.|  
 |`secondaryKey`|string|Sekundární klíč předplatného. Maximální délka je 256 znaků.|  
 |`CanBeRenewed`|Boolean|Určuje, zda může být předplatné obnoveno aktuálním uživatelem.|  
@@ -309,7 +309,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Identifikátor prostředku Jednoznačně identifikuje odběr v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `subscriptions/{sid}`, kde `{sid}` je identifikátor předplatného. Tato vlastnost je určena jen pro čtení.|  
+|`Id`|string|Identifikátor prostředku Jednoznačně identifikuje odběr v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `subscriptions/{sid}`, kde `{sid}` je identifikátor předplatného. Tato vlastnost je jen ke čtení.|  
 |`DisplayName`|string|Zobrazovaný název předplatného|  
   
 ##  <a name="UserAccountInfo"></a>Informace o uživatelském účtu  

@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fe38b434c4e54b375b22d76c573d3bbe88b0e16
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: be6a6e9231b13c47d1421543464c720f6283b5f9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376182"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory předávací ověřování: rychlý Start
 
@@ -148,7 +148,7 @@ Za druhé můžete vytvořit a spustit skript bezobslužného nasazení. To je u
         $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
 3. Do složky **C:\Program Files\Microsoft Azure AD Connect Authentication agent** a spusťte následující skript pomocí objektu `$cred`, který jste vytvořili:
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 >[!IMPORTANT]
 >Pokud je na virtuálním počítači nainstalovaný agent ověřování, nemůžete naklonovat virtuální počítač a nastavit jiného ověřovacího agenta. Tato metoda není **podporována**.

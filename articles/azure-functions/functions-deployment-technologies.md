@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
 ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190749"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358166"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -32,7 +32,7 @@ Každý plán má jiné chování. Ne všechny technologie nasazení jsou k disp
 | Adresa URL externího balíčku<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | Nasazení zip |✔|✔|✔|✔|✔|✔|
 | Kontejner Docker | | | | |✔|✔|
-| Web Deploy |✔|✔|✔| | | |
+| Nasazení webu |✔|✔|✔| | | |
 | Správa zdrojového kódu |✔|✔|✔| |✔|✔|
 | Místní Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Cloudová synchronizace<sup>1</sup> |✔|✔|✔| |✔|✔|

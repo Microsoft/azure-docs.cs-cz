@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812921"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394826"
 ---
 # <a name="about-voice-assistants"></a>O hlasových asistentcích
 
@@ -56,11 +56,11 @@ Bez ohledu na to, jestli pro vytvoření interakce asistenta zvolíte možnost [
 
 Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka.
 
-| Rychlý start | Platforma | Referenční materiály k rozhraním API |
+| Rychlé zprovoznění | Platforma | API – referenční informace |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Procházet](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Hlíží](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Hlíží](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 

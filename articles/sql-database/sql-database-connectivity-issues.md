@@ -14,11 +14,11 @@ ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027795"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379925"
 ---
 # <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Řešení chyb přechodného připojení k SQL Database
 
@@ -90,7 +90,7 @@ Chcete-li otestovat logiku opakování, je nutné simulovat nebo způsobit chybu
 
 Jedním ze způsobů, jak otestovat logiku opakování, je odpojit klientský počítač od sítě v době, kdy je program spuštěný. Tato chyba je:
 
-- **SqlException.Number** = 11001
+- **SqlException. Number** = 11001
 - Zpráva: "žádný takový hostitel není známý"
 
 V rámci prvního pokusu je možné znovu připojit klientský počítač k síti a pak se pokusit připojit.
@@ -108,7 +108,7 @@ Aby byl tento test praktický, odpojte počítač od sítě před spuštěním p
 
 V programu může být uživatelské jméno před prvním pokusem o připojení záměrně napředné. Tato chyba je:
 
-- **SqlException.Number** = 18456
+- **SqlException. Number** = 18456
 - Zpráva: přihlášení uživatele WRONG_MyUserName se nezdařilo.
 
 V rámci prvního pokusu může program opravit chybu a potom se pokusit o připojení.
@@ -187,7 +187,7 @@ Obvykle je nutné zajistit, aby byl pro odchozí komunikaci v počítači, kter�
 
 Pokud je například klientský program hostovaný v počítači se systémem Windows, můžete k otevření portu 1433 použít bránu Windows Firewall na hostiteli.
 
-1. Otevřete okno Ovládací panely.
+1. Otevřete ovládací panely.
 2. Vyberte **všechny položky Ovládacích panelů** > **brány Windows Firewall** > **upřesnit nastavení** > **odchozí pravidla** > **Akce** > **nové pravidlo**.
 
 Pokud je váš klientský program hostovaný na virtuálním počítači Azure (VM), přečtěte si [porty, které přesahují 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
@@ -343,7 +343,7 @@ V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandlin
 - **RetryPolicy** – třída
   - Metoda **ExecuteAction**
 - **ExponentialBackoff** – třída
-- **SqlDatabaseTransientErrorDetectionStrategy** class
+- **SqlDatabaseTransientErrorDetectionStrategy** – třída
 - **ReliableSqlConnection** – třída
   - Metoda **ExecuteCommand**
 

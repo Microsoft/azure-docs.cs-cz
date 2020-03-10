@@ -12,11 +12,11 @@ ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
 ms.openlocfilehash: 3f6bbef8f274c5efb99d5b98961450aa7b001527
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264861"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359953"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 
@@ -39,9 +39,9 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximální počet možností úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
+| Maximální úložiště OLTP v paměti na fond (GB) | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. |
 | Maximální počet databází pro každý fond | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
-| Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
+| Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3 200 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
 | Minimální možnosti eDTU na databázi | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 |
 | Maximální počet eDTU vybraných pro každou databázi | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
@@ -54,7 +54,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximální počet možností úložiště na fond (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
+| Maximální úložiště OLTP v paměti na fond (GB) | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. |
 | Maximální počet databází pro každý fond | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -69,9 +69,9 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximální počet možností úložiště na fond (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
+| Maximální úložiště OLTP v paměti na fond (GB) | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. |
 | Maximální počet databází pro každý fond | 500 | 500 | 500 | 500 | 500 |
-| Maximální počet souběžných pracovních procesů (požadavků) na fond | 2400 | 3200 | 4000 | 5000 | 6000 |
+| Maximální počet souběžných pracovních procesů (požadavků) na fond | 2400 | 3 200 | 4 000 | 5000 | 6000 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální možnosti eDTU na databázi | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
 | Maximální počet eDTU vybraných pro každou databázi | 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
@@ -84,7 +84,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 250 | 500 | 750 | 1024 | 1536 |
 | Maximální počet možností úložiště na fond (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
-| Maximální úložiště OLTP v paměti na fond (GB) | 1\. místo | 2 | 4 | 10 | 12 |
+| Maximální úložiště OLTP v paměti na fond (GB) | 1 | 2 | 4 | 10 | 12 |
 | Maximální počet databází pro každý fond | 50 | 100 | 100 | 100 | 100 |
 | Maximální počet souběžných pracovních procesů na fond (požadavky) | 200 | 400 | 800 | 1600 | 2400 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -101,7 +101,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 | Maximální počet možností úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096|
 | Maximální úložiště OLTP v paměti na fond (GB) | 16 | 20 | 24 | 28 | 32 |
 | Maximální počet databází pro každý fond | 100 | 100 | 100 | 100 | 100 |
-| Maximální počet souběžných pracovních procesů (požadavků) na fond | 3200 | 4000 | 4800 | 5600 | 6400 |
+| Maximální počet souběžných pracovních procesů (požadavků) na fond | 3 200 | 4 000 | 4800 | 5600 | 6 400 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální možnosti eDTU na databázi | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
 | Maximální počet eDTU vybraných pro každou databázi | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
@@ -109,7 +109,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |||||||
 
 > [!IMPORTANT]
-> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
+> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 
 Pokud se využívají všechny DTU elastického fondu, pak každá databáze ve fondu obdrží stejné množství prostředků ke zpracování dotazů. Služba SQL Database poskytuje spravedlivé sdílení prostředků mezi databázemi tím, že zajišťuje rovnoměrné rozdělení výpočetního času. Pokud je minimální počet DTU na databázi nastaven na nenulovou hodnotu, pro každou databázi bude garantováno spravedlivé sdílení prostředků elastického fondu je společně s libovolným množstvím prostředků.
 

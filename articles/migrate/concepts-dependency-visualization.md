@@ -4,11 +4,11 @@ description: Poskytuje přehled výpočtů posouzení ve službě hodnocení ser
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: f24656d02e19f422ff26e6b06d1631a9128dff43
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587103"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361979"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 

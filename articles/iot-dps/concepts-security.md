@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973454"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378885"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service koncepce zabezpečení 
 
@@ -40,7 +40,7 @@ Modul hardwarového zabezpečení (HSM) se používá k zabezpečenému hardwaro
 
 Tajné kódy zařízení je také možné ukládat v softwaru (paměti), ale jedná se o méně bezpečnou podobu úložiště než modul hardwarového zabezpečení (HSM).
 
-## <a name="trusted-platform-module"></a>Čip TPM (Trusted Platform Module)
+## <a name="trusted-platform-module"></a>Modul Trusted Platform
 
 ČIP TPM může odkazovat na standard pro bezpečné ukládání klíčů používaných k ověřování platformy, nebo může odkazovat na vstupně-výstupní rozhraní používané pro interakci s moduly, které implementují Standard. Čipy TPM může existovat jako diskrétní hardware, integrovaný hardware, firmware nebo software založený na firmwaru nebo softwaru. Přečtěte si další informace o [ověření identity čipy TPM a čipu TPM](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Služba Device Provisioning podporuje jenom čip TPM 2,0.
 

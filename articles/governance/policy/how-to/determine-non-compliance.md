@@ -4,11 +4,11 @@ description: Pokud prostředek není kompatibilní, existuje mnoho možných dů
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972827"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385244"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -111,7 +111,7 @@ U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ se ve virtuálním p
 
 Je také možné, že nebudete mít přístup k virtuálnímu počítači přímo, ale potřebujete podávat zprávu o tom, proč virtuální počítač _nedodržuje předpisy_.
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Začněte podle stejných kroků v části výše pro zobrazení podrobností o dodržování zásad.
 

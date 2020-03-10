@@ -17,11 +17,11 @@ ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
 ms.openlocfilehash: 5d7ec2cbbc5cc1bf8bdc87d7f82a965b3bc8c267
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363622"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 V tomto článku se dozvíte, jak ke svému VIRTUÁLNÍmu počítači připojit trvalý disk, abyste mohli zachovat vaše data – i když se váš virtuální počítač znovu zřídí z důvodu údržby nebo změny velikosti.
@@ -236,7 +236,7 @@ Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux
     sudo fstrim /datadrive
     ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 

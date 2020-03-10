@@ -1,6 +1,6 @@
 ---
-title: Zobrazení a Správa úloh pro řadu StorSimple 8000 | Dokumentace Microsoftu
-description: Popisuje úlohy okně služby Správce zařízení StorSimple a použít ke sledování poslední, aktuální a naplánované úlohy zálohování.
+title: Zobrazení a správa úloh pro řady StorSimple 8000 | Microsoft Docs
+description: Popisuje okno úlohy služby StorSimple Device Manager a jeho použití ke sledování posledních, aktuálních a naplánovaných úloh zálohování.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,77 +15,77 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 462f8dafdffa7ee01e6ccf7945a1abfdff90db42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720690"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395851"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Pomocí služby Správce zařízení StorSimple můžete zobrazit a spravovat úlohy (aktualizace 3 a novější)
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Použití služby StorSimple Device Manager k zobrazení a správě úloh (aktualizace 3 a novější)
 
 ## <a name="overview"></a>Přehled
-**Úlohy** okno poskytuje jednu centrální portál pro zobrazení a správu úloh, které byly spuštěny na zařízení připojená ke službě Správce zařízení StorSimple. Můžete zobrazit naplánované, spuštěný, dokončené, zrušené a neúspěšné úlohy pro více zařízení. Výsledky jsou uvedené ve formátu tabulky.
+Okno **úlohy** nabízí jeden centrální portál pro zobrazení a správu úloh, které byly spuštěny na zařízeních připojených ke službě StorSimple Device Manager. Můžete zobrazit naplánované, spuštěné, dokončené, zrušené a neúspěšné úlohy pro více zařízení. Výsledky jsou uvedeny v tabulkovém formátu.
 
 ![Okno úlohy](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
-Můžete rychle najít úloh, které mají zájem pomocí filtrování pole, jako:
+Můžete rychle najít úlohy, které vás zajímají, filtrováním polí, jako jsou:
 
-* **Stav** – úlohy můžou být v průběhu, bylo úspěšné, zrušené, se nezdařilo, zrušení nebo úspěchu s chybami.
-* **Časový rozsah** – úlohy je možné filtrovat podle rozsahu datum a čas. Tyto rozsahy následují za poslední hodinu, posledních 24 hodin, posledních 7 dní, posledních 30 dnů, minulého roku nebo vlastní data.
-* **Typ** – typ úlohy může být naplánované zálohování, ručního zálohování, obnovení zálohu klonovat svazek, převzetí služeb při selhání kontejnerů svazků, vytvořit místně připojené svazky, změnu svazku, instalovat aktualizace, shromažďování protokolů podpory a vytvoření cloudového zařízení.
-* **Zařízení** – zahájí úlohy na určitých zařízení připojená ke službě.
+* **Stav** – úlohy mohou být probíhající, úspěšné, zrušené, neúspěšné, zrušené nebo úspěšné s chybami.
+* **Časový rozsah** – úlohy je možné filtrovat podle rozsahu data a času. Rozsahy jsou za 1 hodinu, posledních 24 hodin, posledních 7 dní, posledních 30 dní, minulý rok nebo vlastní datum.
+* **Typ** – typ úlohy může být plánované zálohování, ruční zálohování, obnovení zálohy, klonování svazku, převzetí služeb při selhání kontejnerů svazků, vytváření místně připnutého svazku, změna svazku, instalace aktualizací, shromažďování protokolů podpory a vytváření cloudových zařízení.
+* **Zařízení** – úlohy jsou spuštěné na určitém zařízení, které je připojené k vaší službě.
   
-Filtrované úlohy jsou pak uvedených na základě následující atributy:
+Filtrované úlohy se pak ukládají na základě následujících atributů:
   
-* **Název** – naplánované zálohování, ručního zálohování, obnovení zálohu, klonování svazku, převzetí služeb při selhání kontejnerů svazků, vytvořit místně připojený svazek, změnu svazku, instalovat aktualizace, shromažďování protokolů podpory nebo vytvořit cloudové zařízení.
-* **Stav** – spuštěné, dokončené, zrušené, se nezdařilo, zrušení nebo dokončené s chybami.
-* **Entity** – úlohy, které mohou být spojeny s svazku, zásady zálohování nebo zařízení. Například úloha klonování je přidruženo ke svazku, že naplánované úlohy zálohování je přidružené k zásadám zálohování. V důsledku operaci obnovení nebo zotavení po havárii (DR) se vytvoří úloha zařízení.
-* **Zařízení** – název zařízení, na kterém byla spuštěna úloha.
-* **Spustit na** – čas zahájení úlohy.
+* **Název** – plánované zálohování, ruční zálohování, obnovení zálohy, klonování svazků, převzetí služeb při selhání, vytvoření místně připojeného svazku, úprava svazku, instalace aktualizací, shromáždění protokolů podpory nebo vytvoření cloudového zařízení.
+* **Stav** – spuštěno, dokončeno, zrušeno, selhalo, zrušení nebo dokončení s chybami.
+* **Entita** – úlohy je možné přidružit ke svazku, zásadě zálohování nebo zařízení. Například úloha klonování je přidružená ke svazku, zatímco je naplánovaná úloha zálohování přidružená k zásadám zálohování. Úloha zařízení je vytvořena v důsledku zotavení po havárii (DR) nebo operace obnovení.
+* **Zařízení** – název zařízení, na kterém se úloha spustila.
+* **Zahájeno** – čas spuštění úlohy.
 * **Doba trvání** – čas potřebný k dokončení úlohy.
 
 Seznam úloh se aktualizuje každých 30 sekund.
 
-Provedením následujících akcí souvisejících s úlohami na této stránce:
+Na této stránce můžete provádět následující akce související s úlohou:
 
 * Zobrazení podrobností o úloze
 * Zrušení úlohy
 
 ## <a name="view-job-details"></a>Zobrazení podrobností o úloze
-Proveďte následující kroky, chcete-li zobrazit podrobnosti libovolné úlohy.
+Chcete-li zobrazit podrobnosti o jakékoli úloze, proveďte následující kroky.
 
-#### <a name="to-view-job-details"></a>Chcete-li zobrazit podrobnosti o úloze
-1. Přejděte do služby Správce zařízení StorSimple a potom klikněte na tlačítko **úlohy**.
+#### <a name="to-view-job-details"></a>Zobrazení podrobností o úloze
+1. Přejděte do služby StorSimple Device Manager a klikněte na **úlohy**.
 
-2. V **úlohy** okně zobrazení úlohy mají zájem spuštěním dotazu s vhodné filtry. Můžete hledat dokončení spuštěný, nebo zrušit úlohy.
+2. V okně **úlohy** Zobrazte úlohy, které vás zajímají, spuštěním dotazu s příslušnými filtry. Můžete hledat dokončené, spuštěné nebo zrušené úlohy.
 
     ![Okno úlohy](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
-2. Vyberte a klikněte na úlohu.
+2. Vyberte úlohu a klikněte na ni.
 
     ![Okno úlohy](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
-3. V okně podrobností úlohy můžete zobrazit stav, podrobností, statistiku časových údajů a dat statistiky.
+3. V okně podrobností úlohy můžete zobrazit informace o stavu, podrobnostech, časové statistice a statistice dat.
    
     ![Podrobnosti o úloze](./media/storsimple-8000-manage-jobs-u2/jobs4.png)
 
 ## <a name="cancel-a-job"></a>Zrušení úlohy
-Proveďte následující kroky a zrušit běžící úlohu.
+Provedením následujících kroků zrušíte spuštěnou úlohu.
 
 > [!NOTE]
-> Některé úlohy, například kvůli úpravě svazku pro změnu typu svazku nebo rozšíření svazku nejde zrušit.
+> Některé úlohy, jako je například změna svazku pro změnu typu svazku nebo rozšíření svazku, nelze zrušit.
 
 
-### <a name="to-cancel-a-job"></a>Zrušit úlohu
-1. Na **úlohy** stránce, zobrazit spuštěné úlohy, které chcete zrušit tak, že spouštění dotazů s vhodné filtry. Vyberte úlohu.
+### <a name="to-cancel-a-job"></a>Zrušení úlohy
+1. Na stránce **úlohy** Zobrazte spuštěné úlohy, které chcete zrušit spuštěním dotazu s příslušnými filtry. Vyberte úlohu.
 
-2. Klikněte pravým tlačítkem na vybrané úlohy vyvolejte místní nabídku a klikněte na tlačítko **zrušit**.
+2. Kliknutím pravým tlačítkem myši na vybranou úlohu vyvolejte kontextovou nabídku a klikněte na tlačítko **Storno**.
 
     ![Podrobnosti o úloze](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
-3. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Tato úloha je teď zrušena.
+3. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Tato úloha je teď zrušená.
 
-## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [spravovat své zásady zálohování StorSimple](storsimple-8000-manage-backup-policies-u2.md).
-* Zjistěte, jak [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Další kroky
+* Naučte se [Spravovat zásady zálohování StorSimple](storsimple-8000-manage-backup-policies-u2.md).
+* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

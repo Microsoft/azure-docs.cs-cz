@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954325"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362598"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>Konfigurace a Správa zásad replikace pro zotavení po havárii VMware
 
@@ -53,7 +53,7 @@ Zásadu upravte takto:
 2. Vyberte zásadu replikace, kterou chcete upravit.
 3. Klikněte na **Upravit nastavení**a v případě potřeby aktualizujte pole četnosti snímků RPO/doba uchovávání bodů obnovení/konzistentní doba uchování pro aplikaci.
 4. Pokud chcete vypnout generování bodů konzistence aplikací, vyberte v rozevíracím seznamu **frekvence snímků konzistentních vzhledem k aplikacím**pole hodnota vypnuto.
-5. Klikněte na možnost **Uložit**. Zásada by se měla aktualizovat v rozmezí 30 až 60 sekund.
+5. Klikněte na **Uložit**. Zásada by se měla aktualizovat v rozmezí 30 až 60 sekund.
 
 
 

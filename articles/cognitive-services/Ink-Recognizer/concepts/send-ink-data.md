@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274476"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393096"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Odesílání dat do rozhraní API pro rozpoznávání rukopisu 
 
 Termín digitální rukopis označuje technologie, které umožňují digitální reprezentaci výstupu, jako jsou rukopis a kresby. To se obvykle dosahuje pomocí digitizéru, který zachycuje přesuny vstupních zařízení, jako je Stylus. Zařízení stále víc podporují bohatá prostředí digitálních rukopisů a umělá inteligence a strojové učení umožňují rozpoznávání psaných tvarů a textu v libovolném kontextu. Rozhraní API pro rozpoznávání rukopisu umožňuje odeslat tahy perem a získat podrobné informace o nich. 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Rozhraní API pro rozpoznávání rukopisu vs. Služby OCR
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Rozhraní API pro rozpoznávání rukopisu vs. OCR Services
 
 Rozhraní API pro rozpoznávání rukopisu nepoužívá optické rozpoznávání znaků (OCR). Služba OCR zpracovává data v pixelech z obrázků, aby poskytovala rozpoznávání rukopisu a textu. To se někdy nazývá rozpoznávání offline. Místo toho rozhraní API pro rozpoznávání rukopisu vyžaduje, aby se při použití vstupního zařízení použila data digitálního tahu. Zpracování dat digitálního inkoustu tímto způsobem může dosáhnout přesnější výsledků rozpoznávání v porovnání se službami OCR. 
 
@@ -84,7 +84,7 @@ Výsledkem rozpoznávání se předem získáte informace o vlastnostech tahů p
 
 [Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) nabízí nástroje a technologie, které umožňují digitální psaní digitálních zážitků na nejrůznějších zařízeních. Platformu Windows Ink API můžete kombinovat s rozhraním API pro rozpoznávání rukopisu k vytváření aplikací, které zobrazují a interpretují tahy digitálního pera.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Co je rozhraní API pro rozpoznávání rukopisu?](../overview.md)
 * [Odkaz na REST API pro rozpoznávání rukopisu](https://go.microsoft.com/fwlink/?linkid=2089907)

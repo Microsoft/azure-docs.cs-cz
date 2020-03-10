@@ -16,17 +16,17 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025951"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376981"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
 
 Následující informace a příklady vám pomůžou získat pokročilejší princip licencování na základě skupin Azure Active Directory (Azure AD).
 
-## <a name="usage-location"></a>Umístění použití
+## <a name="usage-location"></a>Místo použití
 
 Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v **Nastavení**&gt; profilu **uživatele** &gt; .
 
@@ -227,5 +227,5 @@ Další informace o jiných scénářích pro správu licencí pomocí licencov�
 * [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
 * [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
-* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

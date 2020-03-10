@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370371"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364954"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric poskytují zprávy o stavu systému pro všechny entity v clusteru přímo ze seznamu. [Health Store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity založené na sestavách systému. Uspořádává je také v hierarchii, která zachycuje interakce entit.
@@ -27,7 +27,7 @@ Sestavy o stavu systému poskytují přehled o funkcích clusterů a aplikací a
 > 
 > 
 
-Sestavy systémových součástí jsou označeny zdrojem, který začíná na "**System".** „com.microsoft.intune.mam“. Sledovací zařízení nemůžou používat stejnou předponu pro své zdroje, protože sestavy s neplatnými parametry se odmítnou.
+Sestavy systémových součástí jsou označeny zdrojem, který začíná na "**System".** směr. Sledovací zařízení nemůžou používat stejnou předponu pro své zdroje, protože sestavy s neplatnými parametry se odmítnou.
 
 Podívejme se na některé systémové sestavy, abyste porozuměli tomu, co je spouští, a zjistili si, jak opravit potenciální problémy, které představují.
 
@@ -48,7 +48,7 @@ Sestava určuje časový limit globálního zapůjčení jako hodnota TTL (Time 
 * **Vlastnost**: začíná na **okolí** a obsahuje informace o uzlu.
 * **Další kroky**: Zjistěte, proč došlo ke ztrátě okolního okolí. Například ověřte komunikaci mezi uzly clusteru.
 
-### <a name="rebuild"></a>Opětovné sestavení
+### <a name="rebuild"></a>Sestavit znovu
 
 Služba Správce převzetí služeb při selhání (FM) spravuje informace o uzlech clusteru. Když FM ztratí svá data a přejde do ztráty dat, nemůže zaručit, že obsahuje nejaktuálnější informace o uzlech clusteru. V tomto případě systém provede opakované sestavení a System.FM shromáždí data ze všech uzlů v clusteru, aby bylo možné znovu sestavit svůj stav. V důsledku potíží se sítí nebo uzlem se někdy může opětovné sestavení podržet nebo zablokovat. Totéž může nastat u služby Správce převzetí služeb při selhání Master (FMM). FMM je Bezstavová systémová služba, která sleduje, kde jsou všechny FMs v clusteru. Primární FMM je vždy uzel s ID nejbližším 0. Pokud je tento uzel vyřazen, je aktivováno opětovné sestavení.
 V případě, že dojde k jednomu z předchozích podmínek, **System.FM** nebo **System. FMM** ho označí pomocí zprávy o chybách. Opětovné sestavení může být zablokované v jedné ze dvou fází:
@@ -139,7 +139,7 @@ System. hosting hlásí upozornění, pokud jsou definované kapacity uzlů v ma
 ## <a name="application-system-health-reports"></a>Sestavy o stavu systému aplikace
 System.CM, která představuje službu Správce clusterů, je autoritou, která spravuje informace o aplikaci.
 
-### <a name="state"></a>Stav
+### <a name="state"></a>Stát
 System.CM sestavy jako OK, když byla aplikace vytvořena nebo aktualizována. Informuje Health Store při odstranění aplikace, aby ji bylo možné odebrat z úložiště.
 
 * **SourceId**: System.cm
@@ -172,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Sestavy stavu systému služby
 System.FM, která představuje službu Správce převzetí služeb při selhání, je autoritou, která spravuje informace o službách.
 
-### <a name="state"></a>Stav
+### <a name="state"></a>Stát
 System.FM sestavy jako OK po vytvoření služby. Odstraní entitu z Health Store při odstranění služby.
 
 * **SourceId**: System.FM
@@ -214,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>Vytváření oddílů sestav stavu systému
 System.FM, která představuje službu Správce převzetí služeb při selhání, je autoritou, která spravuje informace o oddílech služeb.
 
-### <a name="state"></a>Stav
+### <a name="state"></a>Stát
 System.FM sestavy jako OK, když byl oddíl vytvořen a je v pořádku. Odstraní entitu z Health Store, když se oddíl odstraní.
 
 Pokud je oddíl pod minimálním počtem replik, ohlásí chybu. Pokud oddíl není pod minimálním počtem replik, ale je pod počtem cílových replik, ohlásí upozornění. Pokud je oddíl ve ztrátě kvora, System.FM hlásí chybu.
@@ -391,7 +391,7 @@ V případě příkladu je potřeba další šetření. V předchozím příklad
 ## <a name="replica-system-health-reports"></a>Sestavy stavu systému repliky
 **System. ra**, který představuje součást agenta rekonfigurace, je autoritou pro stav repliky.
 
-### <a name="state"></a>Stav
+### <a name="state"></a>Stát
 Sestavy System. RA po vytvoření repliky jsou v pořádku.
 
 * **SourceId**: System. ra
@@ -684,7 +684,7 @@ Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IR
 
 Pokud operace pojmenování trvá déle, než se očekávalo, operace se označí pomocí sestavy upozornění na primární replice oddílu názvového serveru, který slouží k operaci. Pokud se operace úspěšně dokončí, upozornění se vymaže. Pokud se operace dokončí s chybou, zpráva o stavu obsahuje podrobnosti o chybě.
 
-* **SourceId**: System.NamingService
+* **SourceId**: System. NamingService
 * **Vlastnost**: začíná předponou "**Duration_** " a identifikuje pomalou operaci a název Service Fabric, na kterém je operace použita. Například pokud služba Create Service v názvu **Fabric:/MyApp/mojesluzba** trvá příliš dlouho, vlastnost je **Duration_AOCreateService. Fabric:/MyApp/mojesluzba**. "AO" odkazuje na roli oddílu názvů pro tento název a operaci.
 * **Další kroky**: Zkontrolujte, proč se operace pojmenování nezdařila. Každá operace může mít různé hlavní příčiny. Například služba odstranění může být zablokovaná. Služba může být zablokovaná, protože hostitel aplikace udržuje v uzlu chybu kvůli chybě uživatele v kódu služby.
 

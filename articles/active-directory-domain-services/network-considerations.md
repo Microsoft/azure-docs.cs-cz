@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917335"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376951"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure AD Domain Services
 
@@ -105,12 +105,12 @@ Spravovaná doména Azure služba AD DS během nasazení vytvoří několik sí�
 
 Pro Azure služba AD DS k poskytování služeb ověřování a správy se vyžadují následující pravidla skupiny zabezpečení sítě. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, ve které je vaše spravovaná doména Azure služba AD DS nasazená.
 
-| Číslo portu | Protocol (Protokol) | Zdroj                             | Cíl | Akce | Požaduje se | Účel |
+| Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Požadováno | Účel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
-| 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Ano      | Správa vaší domény. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Správa vaší domény. |
-| 636         | TCP      | Všechny                                | Všechny         | Povolit  | Ne       | Povoluje se jenom při konfiguraci zabezpečení LDAP (LDAPs). |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Vše         | Povolit  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Vše         | Povolit  | Ano      | Správa vaší domény. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Vše         | Povolit  | Ano      | Správa vaší domény. |
+| 636         | TCP      | Vše                                | Vše         | Povolit  | Ne       | Povoluje se jenom při konfiguraci zabezpečení LDAP (LDAPs). |
 
 > [!WARNING]
 > Neupravujte ručně tyto síťové prostředky a konfigurace. Když přiřadíte nesprávně nakonfigurovanou skupinu zabezpečení sítě nebo uživatelem definovanou tabulku směrování s podsítí, ve které je nasazená služba Azure služba AD DS, můžete přerušit schopnost služby a správy domény od Microsoftu. Dojde také k přerušení synchronizace mezi vaším klientem služby Azure AD a službou Azure služba AD DS spravované domény.

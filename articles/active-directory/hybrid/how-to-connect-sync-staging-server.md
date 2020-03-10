@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect synchronizace: Provozní úlohy a požadavky | Microsoft Docs'
+title: 'Azure AD Connect synchronizace: provozní úlohy a požadavky | Microsoft Docs'
 description: Toto téma popisuje provozní úlohy pro Azure AD Connect synchronizaci a postup přípravy na provoz této součásti.
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900061"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376220"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Pracovní server a zotavení po havárii
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: přípravný Server a zotavení po havárii
 U serveru v pracovním režimu můžete změnit konfiguraci a zobrazit náhled změn před tím, než provedete server aktivní. Umožňuje taky spustit úplnou synchronizaci a úplnou synchronizaci a ověřit, jestli jsou všechny změny očekávané, než provedete tyto změny v produkčním prostředí.
 
 ## <a name="staging-mode"></a>Pracovní režim
@@ -60,7 +60,7 @@ Chcete-li použít tuto metodu, postupujte podle následujících kroků:
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. Odhlaste se nebo se přihlaste a v nabídce Start vyberte **synchronizační službu**.
 
-#### <a name="configuration"></a>Konfiguraci
+#### <a name="configuration"></a>Konfigurace
 Pokud jste provedli vlastní změny primárního serveru a chcete porovnat konfiguraci s pracovním serverem, použijte [Azure AD Connect Configuration Documentation](https://github.com/Microsoft/AADConnectConfigDocumenter).
 
 #### <a name="import-and-synchronize"></a>Import a synchronizace
@@ -71,10 +71,10 @@ Pokud jste provedli vlastní změny primárního serveru a chcete porovnat konfi
 
 Teď máte připravené změny v exportu do Azure AD a místní služby AD (Pokud používáte hybridní nasazení Exchange). Následující kroky vám umožní zkontrolovat, co se chystá změnit, než začnete s exportem do adresářů.
 
-#### <a name="verify"></a>Ověření
-1. Spuštění příkazového řádku a přechod na`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Spuštěním příkazu `csexport "Name of Connector" %temp%\export.xml /f:x`Název konektoru najdete v části synchronizační služba. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
-3. Spuštěním příkazu `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`Máte soubor v souboru% temp% s názvem export. csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
+#### <a name="verify"></a>Ověřit
+1. Spuštění příkazového řádku a přechod na `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Run: `csexport "Name of Connector" %temp%\export.xml /f:x` název konektoru najdete v části synchronizační služba. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
+3. Spusťte: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` máte soubor v souboru% temp% s názvem export. csv, který se dá prozkoumat v Microsoft Excelu. Tento soubor obsahuje všechny změny, které mají být exportovány.
 4. Proveďte nezbytné změny dat nebo konfigurace a spusťte tyto kroky znovu (import a synchronizace a ověření), dokud se neočekávají změny, které se chystá exportovat.
 
 **Princip exportu souboru. csv** Většina souboru je zřejmá. Některé zkratky pro pochopení obsahu:
@@ -84,7 +84,7 @@ Teď máte připravené změny v exportu do Azure AD a místní služby AD (Poku
 **Načíst společné identifikátory** Soubor export. csv obsahuje všechny změny, které mají být exportovány. Každý řádek odpovídá změně objektu v prostoru konektoru a objekt je identifikován atributem DN. Atribut DN je jedinečný identifikátor přiřazený objektu v prostoru konektoru. Máte-li k analýze mnoho řádků a změn v souboru export. csv, může být obtížné zjistit, které objekty se tyto změny týkají, na základě samotného atributu DN. Pro zjednodušení procesu analýzy změn použijte skript prostředí PowerShell csanalyzer. ps1. Skript načte běžné identifikátory (například DisplayName, userPrincipalName) objektů. Postup použití skriptu:
 1. Zkopírujte skript PowerShellu z části [CSAnalyzer](#appendix-csanalyzer) do souboru s názvem `csanalyzer.ps1`.
 2. Otevřete okno PowerShellu a přejděte do složky, ve které jste vytvořili PowerShellový skript.
-3. Spustit: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
+3. Spusťte: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
 4. Teď máte soubor s názvem **processedusers1. csv** , který se dá prozkoumat v Microsoft Excelu. Všimněte si, že soubor poskytuje mapování z atributu DN na společné identifikátory (například DisplayName a userPrincipalName). V současné době nezahrnuje změny atributů, které mají být exportovány.
 
 #### <a name="switch-active-server"></a>Přepnout aktivní server
@@ -126,7 +126,7 @@ Pokud nepoužíváte SQL Server Express, která se dodává s Azure AD Connect, 
 Do Azure AD Connect ve verzi 1.1.524.0 se přidala podpora pro SQL AOA. Před instalací Azure AD Connect musíte povolit SQL AOA. Během instalace Azure AD Connect zjistí, jestli je zadaná instance SQL povolená pro SQL AOA nebo ne. Pokud je povolený SQL AOA, Azure AD Connect dál vyhodnotí, pokud je SQL AOA nakonfigurované na používání synchronní replikace nebo asynchronní replikace. Při nastavování naslouchacího procesu skupiny dostupnosti doporučujeme nastavit vlastnost RegisterAllProvidersIP na hodnotu 0. Důvodem je to, že Azure AD Connect aktuálně používá SQL Native Client k připojení k SQL a SQL Native Client nepodporuje použití vlastnosti MultiSubNetFailover.
 
 ## <a name="appendix-csanalyzer"></a>Příloha CSAnalyzer
-Informace o tom [](#verify) , jak tento skript použít, najdete v části.
+Informace o tom, jak tento skript použít, najdete [v části.](#verify)
 
 ```
 Param(
@@ -267,8 +267,8 @@ Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
 $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 **Témata s přehledem**  
 
-* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect synchronizace: pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)  
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)  

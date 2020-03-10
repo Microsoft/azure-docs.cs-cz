@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jeconnoc
 ms.openlocfilehash: 0e47bde280e9483f3c265e0d3147eadcbb128612
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270984"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344186"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -51,7 +51,7 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Asie a Tichomoří |Východní Asie (Hongkong) | Jihovýchodní Asie (Singapur) |
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
 | Austrálie |Austrálie – střed |Austrálie – střed 2 |
-| Brazílie |Brazílie – jih |USA – středojih |
+| Brazílie |Brazílie – jih |Střed USA – jih |
 | Kanada |Kanada – střed |Východní Kanada |
 | Čína |Čína – sever |Čína – východ|
 | Čína |Čína – sever 2 |Čína – východ 2|
@@ -62,12 +62,12 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Indie |Indie – západ |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Jižní Korea – střed |Jižní Korea – jih |
-| Severní Amerika |USA – východ |USA – západ |
-| Severní Amerika |USA – východ 2 |USA – střed |
-| Severní Amerika |USA – středosever |USA – středojih |
-| Severní Amerika |USA – západ 2 |USA – středozápad |
+| Severní Amerika |Východní USA |Západní USA |
+| Severní Amerika |Východní USA 2 |Střed USA |
+| Severní Amerika |Střed USA – sever |Střed USA – jih |
+| Severní Amerika |Západní USA 2 |Střed USA – západ |
 | Norsko | Norsko – východ | Norsko – západ |
-| Jižní Afrika | Jižní Afrika – sever |Jižní Afrika – západ |
+| Jihoafrická republika | Jižní Afrika – sever |Jižní Afrika – západ |
 | Švýcarsko | Švýcarsko – sever |Švýcarsko – západ |
 | Spojené království |Spojené království – západ |Velká Británie – jih |
 | Spojené arabské emiráty | Spojené arabské emiráty sever | Spojené arabské emiráty – střed

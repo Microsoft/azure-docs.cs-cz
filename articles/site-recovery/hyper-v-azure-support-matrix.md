@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
 ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774430"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362704"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -51,8 +51,8 @@ Hostovaný operační systém | Libovolný hostovaný operační systém [podpor
 
 **Akce** | **Podrobnosti**
 --- | ---
-Změna velikosti disku na replikovaném virtuálním počítači s technologií Hyper-V | Není podporováno. Zakažte replikaci, proveďte tuto změnu a pak znovu povolte replikaci pro virtuální počítač.
-Přidat disk na replikovaný virtuální počítač Hyper-V | Není podporováno. Zakažte replikaci, proveďte tuto změnu a pak znovu povolte replikaci pro virtuální počítač.
+Změna velikosti disku na replikovaném virtuálním počítači s technologií Hyper-V | Nepodporuje se. Zakažte replikaci, proveďte tuto změnu a pak znovu povolte replikaci pro virtuální počítač.
+Přidat disk na replikovaný virtuální počítač Hyper-V | Nepodporuje se. Zakažte replikaci, proveďte tuto změnu a pak znovu povolte replikaci pro virtuální počítač.
 
 ## <a name="hyper-v-network-configuration"></a>Konfigurace sítě Hyper-V
 
@@ -80,7 +80,7 @@ ILB | Ano | Ano
 ELB | Ano | Ano
 Azure Traffic Manager | Ano | Ano
 Více síťových karet | Ano | Ano
-Rezervovaná IP adresa | Ano | Ano
+Vyhrazené IP... | Ano | Ano
 IPv4 | Ano | Ano
 Zachovat zdrojovou IP adresu | Ano | Ano
 Koncové body služby Azure Virtual Network<br/> (bez Azure Storage firewallů) | Ano | Ano
@@ -91,7 +91,7 @@ Akcelerované síťové služby | Ne | Ne
 
 **Storage** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | --- 
-NFS | není k dispozici | není k dispozici
+NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ano | Ano
 SÍŤ SAN (ISCSI) | Ano | Ano
 Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON | Ano | Ano
@@ -100,15 +100,15 @@ Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPat
 
 **Storage** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-VMDK | není k dispozici | není k dispozici
+VMDK | Není k dispozici | Není k dispozici
 VHD/VHDX | Ano | Ano
 Virtuální počítač 2. generace | Ano | Ano
 ROZHRANÍ EFI/UEFI<br></br>Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS. Na virtuálním počítači by měl běžet jenom Windows Server 2012 a novější. Disk s operačním systémem by měl mít až pět oddílů nebo méně a velikost disku s operačním systémem by měla být menší než 300 GB.| Ano | Ano
 Disk sdíleného clusteru | Ne | Ne
 Zašifrovaný disk | Ne | Ne
-NFS | není k dispozici | není k dispozici
+NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ne | Ne
-RDM | není k dispozici | není k dispozici
+RDM | Není k dispozici | Není k dispozici
 Disk > 1 TB | Ano, až 4 095 GB | Ano, až 4 095 GB
 Disk: 4K logický a fyzický sektor | Nepodporováno: Obecná 1/fin 2 | Nepodporováno: Obecná 1/fin 2
 Disk: 4K fyzický sektor a logický sektor 512-byte | Ano |  Ano
@@ -154,14 +154,14 @@ Místní virtuální počítače, které se replikují do Azure, musí splňovat
 Hostovaný operační systém | Site Recovery podporuje všechny operační systémy, které [Azure podporuje](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Nepodporovaná Chyba kontroly požadovaných součástí
 Architektura hostovaného operačního systému | 32 – bit (Windows Server 2008)/64-bit | Nepodporovaná Chyba kontroly požadovaných součástí
 Velikost disku operačního systému | Až 2 048 GB pro virtuální počítače 1. generace.<br/><br/> Až 300 GB pro virtuální počítače 2. generace.  | Nepodporovaná Chyba kontroly požadovaných součástí
-Počet disků operačního systému | 1\. místo | Nepodporovaná Chyba kontroly požadovaných součástí
+Počet disků operačního systému | 1 | Nepodporovaná Chyba kontroly požadovaných součástí
 Počet datových disků | 16 nebo méně  | Nepodporovaná Chyba kontroly požadovaných součástí
 Velikost virtuálního pevného disku datového disku | Až 4 095 GB | Nepodporovaná Chyba kontroly požadovaných součástí
 Síťové adaptéry | Podporuje se více adaptérů |
-Sdílený virtuální pevný disk | Nepodporováno | Nepodporovaná Chyba kontroly požadovaných součástí
-Disk FC | Nepodporováno | Nepodporovaná Chyba kontroly požadovaných součástí
+Sdílené VHD | Nepodporuje se | Nepodporovaná Chyba kontroly požadovaných součástí
+Disk FC | Nepodporuje se | Nepodporovaná Chyba kontroly požadovaných součástí
 Formát pevného disku | VIRTUÁLNÍHO <br/><br/> VHDX | Při převzetí služeb při selhání do Azure Site Recovery automaticky převede VHDX na VHD. Po navrácení služeb po obnovení do místního nasazení budou virtuální počítače nadále používat formát VHDX.
-BitLocker | Nepodporováno | Aby bylo možné povolit replikaci virtuálního počítače, musí být nástroj BitLocker zakázán.
+BitLocker | Nepodporuje se | Aby bylo možné povolit replikaci virtuálního počítače, musí být nástroj BitLocker zakázán.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače v Site Recovery.
 Typ virtuálního počítače | Generace 1<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 

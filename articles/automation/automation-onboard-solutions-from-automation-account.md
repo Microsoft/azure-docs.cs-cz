@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834287"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372983"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Zprovoznění řešení Update Management, Change Tracking a inventáře
 
@@ -35,11 +35,11 @@ Vyberte pracovní prostor Log Analytics a účet Automation a kliknutím na **Po
 
 Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
 
-Po oznámení dokončení začlenění řešení Change Tracking a Inventory klikněte v části **SPRÁVA KONFIGURACE** na **Update Management**.
+Až se dokončí oznámení o registraci řešení Change Tracking a Inventory, vyberte v části **Správa aktualizací**možnost **Správa aktualizací** .
 
-Řešení Update Management umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows. Můžete vyhodnotit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení za účelem ověření správného použití aktualizací ve virtuálních počítačích. Tato akce aktivuje řešení pro váš virtuální počítač.
+Řešení Update Management umožňuje spravovat aktualizace a opravy pro Azure a hybridní virtuální počítače. Můžete posoudit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení, abyste ověřili, že aktualizace byly do nich úspěšně aplikovány.
 
-V části **Správa aktualizací**vyberte **Správa aktualizací** . Vybraný pracovní prostor Log Analytics je stejný pracovní prostor, který jste použili v předchozím kroku. Kliknutím na **Povolit** začleňte řešení Update Management. Povolení řešení trvá přibližně 15 minut.
+Na stránce povolit řešení je vybraný pracovní prostor Log Analytics stejným pracovním prostorem použitým v předchozím kroku. Klikněte na **Povolit** , aby se připojilo řešení Update Management. Povolení řešení trvá přibližně 15 minut.
 
 ![Připojení řešení Update](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
@@ -49,9 +49,9 @@ Každé řešení používá v rámci pracovního prostoru konfiguraci oboru pro
 
 Pokud vybraný pracovní prostor nemá zatím Update Management nebo Change Tracking řešení, vytvoří se následující konfigurace oboru:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig – sledování změn ve**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig – aktualizace**
 
 Pokud vybraný pracovní prostor už toto řešení obsahuje, řešení se znovu nenasadit a do něj se nepřidá konfigurace oboru.
 
@@ -61,7 +61,7 @@ Když se počítač přidá do Update Management nebo řešení Change Tracking 
 
 Přejděte do pracovního prostoru Log Analytics a v části **Obecné**vyberte **uložená hledání** . Dvě uložená hledání, která používají tato řešení, se dají zobrazit v následující tabulce:
 
-|Name (Název)     |Kategorie  |Alias  |
+|Název     |Kategorie  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |

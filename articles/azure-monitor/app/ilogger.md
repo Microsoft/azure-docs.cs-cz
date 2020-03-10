@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 2c97c79229c6f136c154169253f2299b7756a105
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192468"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362068"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Protokoly ApplicationInsightsLoggerProvider pro .NET Core ILogger
 
@@ -498,7 +498,7 @@ Tento kód je vyžadován pouze v případě, že používáte samostatného zpr
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Další informace pro:
 
 * [Přihlašování ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)
 * [Protokoly trasování .NET v Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)

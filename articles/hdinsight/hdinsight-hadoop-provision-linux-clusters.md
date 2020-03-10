@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 02/12/2020
 ms.openlocfilehash: b4922326b92efa88552eb100488a29fc53e1f914
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198972"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386391"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších
 
@@ -37,7 +37,7 @@ V následující tabulce jsou uvedeny různé metody, které můžete použít k
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
-| [Šablony Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Šablony Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 Tento článek vás provede instalačním programem v [Azure Portal](https://portal.azure.com), kde můžete vytvořit cluster HDInsight pomocí výchozího zobrazení nebo *klasického*nastavení.
 
@@ -82,7 +82,7 @@ Azure HDInsight v současné době poskytuje následující typy clusterů, z ni
 | [Spark](spark/apache-spark-overview.md) |Zpracování v paměti, interaktivní dotazy, zpracování streamu mikrodávkování |
 | [Chráněn](storm/apache-storm-overview.md) |Zpracování událostí v reálném čase |
 
-#### <a name="version"></a>Verze
+#### <a name="version"></a>Version
 
 Vyberte verzi HDInsight pro tento cluster. Další informace najdete v tématu [podporované verze HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 

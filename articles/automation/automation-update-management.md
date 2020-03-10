@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71cf1a2c4a0a2ff07d2aa0b48a8ee3bb3da8a540
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919702"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372893"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -27,9 +27,9 @@ Update Management pro virtuální počítače můžete povolit pomocí následuj
 > [!NOTE]
 > Řešení Update Management vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí najdete v tématu [mapování pracovních prostorů Azure](./how-to/region-mappings.md). Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti z účtu Automation.
 
-K dispozici je [Šablona Azure správce prostředků](automation-update-management-deploy-template.md) , která umožňuje nasadit řešení Update Management do nového nebo existujícího účtu Automation a Log Analytics pracovní prostor v předplatném.
-
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+K dispozici je [Šablona Azure správce prostředků](automation-update-management-deploy-template.md) , která umožňuje nasadit řešení Update Management do nového nebo existujícího účtu Automation a Log Analytics pracovní prostor v předplatném.
 
 ## <a name="solution-overview"></a>Přehled řešení
 
@@ -248,10 +248,15 @@ Update Management spoléhá na místně nakonfigurované úložiště aktualizac
 
 Chcete-li začít aktualizovat systémy, je nutné povolit řešení Update Management. Níže jsou uvedené doporučené a podporované metody připojení řešení:
 
-* [Z virtuálního počítače](automation-onboard-solutions-from-vm.md)
-* [Z prohlížení více počítačů](automation-onboard-solutions-from-browse.md)
-* [Z účtu Automation](automation-onboard-solutions-from-automation-account.md)
-* [S Azure Automation sadou Runbook](automation-onboard-solutions.md)
+- [Z virtuálního počítače](automation-onboard-solutions-from-vm.md)
+
+- [Z prohlížení více počítačů](automation-onboard-solutions-from-browse.md)
+
+- [Z účtu Automation](automation-onboard-solutions-from-automation-account.md)
+
+- [S Azure Automation sadou Runbook](automation-onboard-solutions.md)
+
+- [Se šablonou Azure Resource Manager](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: 12e6892930afe8ba9c7bad9b05fd39eeaf8835fc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206720"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381332"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -122,7 +122,7 @@ Když použijete skript na cluster, stav clusteru se změní ze **spuštěno** n
 Skripty akcí skriptů lze použít prostřednictvím následujících nástrojů:
 
 * Azure Portal
-* Azure Powershell
+* Azure PowerShell
 * Azure CLI
 * Sada HDInsight .NET SDK
 
@@ -299,7 +299,7 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
     ![Trvalé akce při odstraňování skriptů](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 | rutiny | Funkce |
 | --- | --- |
@@ -361,7 +361,7 @@ Služba HDInsight nabízí několik způsobů použití vlastních komponent. St
 
 3. **Ukázky**. V případě oblíbených vlastních komponent mohou společnosti Microsoft a jiné poskytnout ukázky, jak lze tyto komponenty použít v clusterech HDInsight. Tyto ukázky jsou k dispozici bez podpory.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 K zobrazení informací protokolovaných akcemi skriptů můžete použít webové uživatelské rozhraní Ambari. Pokud se skript během vytváření clusteru nezdařil, jsou protokoly dostupné taky ve výchozím účtu úložiště přidruženém ke clusteru. V této části najdete informace o tom, jak protokoly načíst pomocí obou těchto možností.
 

@@ -4,11 +4,11 @@ description: Přečtěte si o podpoře vyhodnocení VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121339"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361962"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 

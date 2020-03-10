@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084594"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377382"
 ---
 # <a name="using-web-browsers-msalnet"></a>Používání webových prohlížečů (MSAL.NET)
 
@@ -45,15 +45,15 @@ Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systé
 
 ### <a name="at-a-glance"></a>Na první pohled
 
-| .NET Framework        | Vložené | Systém | Výchozí |
+| .NET Framework        | vložené | Systém | Výchozí |
 | ------------- |-------------| -----| ----- |
-| .NET Classic     | Ano | Ano ^ | Vložené |
+| .NET Classic     | Ano | Ano ^ | vložené |
 | .NET Core     | Ne | Ano ^ | Systém |
 | .NET Standard | Ne | Ano ^ | Systém |
-| UWP | Ano | Ne | Vložené |
+| UWP | Ano | Ne | vložené |
 | Xamarin.Android | Ano | Ano  | Systém |
 | Xamarin.iOS | Ano | Ano  | Systém |
-| Xamarin.Mac| Ano | Ne | Vložené |
+| Xamarin.Mac| Ano | Ne | vložené |
 
 ^ Vyžaduje identifikátor URI přesměrování "http://localhost"
 
@@ -149,7 +149,7 @@ Mezi vloženým webovým zobrazením a systémovým prohlížečem v MSAL.NET js
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí vloženého webviewu:**
 
-![Vložené](media/msal-net-web-browsers/embedded-webview.png)
+![vložené](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí systémového prohlížeče:**
 

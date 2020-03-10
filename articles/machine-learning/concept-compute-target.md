@@ -10,11 +10,11 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169818"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355262"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -50,7 +50,7 @@ Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure 
 
 Můžete vytvořit Azure Machine Learning výpočetních instancí (Preview) nebo výpočetních clusterů v nástroji:
 
-| | Azure Machine Learning Studio | Azure Portal | Sada SDK | Šablona Resource Manageru | Rozhraní příkazového řádku |
+| | Azure Machine Learning Studio | Azure Portal | Sada SDK | Šablona Resource Manageru | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
 | Instance služby Compute | ano | ano | ano | ano |  |
 | Výpočetní cluster | ano | ano | ano | ano | ano |

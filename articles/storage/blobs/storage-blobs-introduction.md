@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 03/04/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c2bbd3aff8c2c10864fb2fa8937c9159ecd3606
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: aeb6971d37601367e62b8f883ccbc576e9534cdb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972455"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356485"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -23,13 +23,13 @@ ms.locfileid: "75972455"
 
 Úložiště objektů BLOB nabízí tři typy prostředků:
 
-- **Účet úložiště**. 
+- **Účet úložiště**
 - **Kontejner** v účtu úložiště
-- **Objekt BLOB** v kontejneru 
+- **Objekt BLOB** v kontejneru
 
 Na následujícím diagramu jsou vztahy těchto prostředků.
 
-![vztah mezi objektem BLOB účtu a prostředkem kontejneru](./media/storage-blob-introduction/blob1.png)
+![vztah mezi objektem BLOB účtu a prostředkem kontejneru](./media/storage-blobs-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>Účty úložiště
 
@@ -50,13 +50,13 @@ Kontejner uspořádá sadu objektů blob, podobně jako adresář v systému sou
   > [!NOTE]
   > Názvy kontejnerů musí obsahovat jenom malá písmena. Další informace o pojmenování kontejnerů najdete v tématu [pojmenování kontejnerů, objektů BLOB a metadat a odkazování](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)na ně.
 
-### <a name="blobs"></a>Bloby
+### <a name="blobs"></a>Objekty blob
  
 Azure Storage podporuje tři typy objektů BLOB:
 
-* **Objekty blob bloku** ukládají textová a binární data, až do přibližně 4,7 TB. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě.
-* **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Doplňovací objekty blob jsou ideální pro scénáře, jako je protokolování dat z virtuálních počítačů.
-* **Objekty blob stránky** ukládají soubory s náhodným přístupem až do velikosti 8 TB. Objekty blob stránky ukládají soubory virtuálního pevného disku (VHD) a slouží jako disky pro virtuální počítače Azure. Další informace o objektech blob stránky najdete v tématu [Přehled objektů blob stránky Azure](storage-blob-pageblob-overview.md) .
+- **Objekty blob bloku** ukládají textová a binární data, až do přibližně 4,7 TB. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě.
+- **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Doplňovací objekty blob jsou ideální pro scénáře, jako je protokolování dat z virtuálních počítačů.
+- **Objekty blob stránky** ukládají soubory s náhodným přístupem až do velikosti 8 TB. Objekty blob stránky ukládají soubory virtuálního pevného disku (VHD) a slouží jako disky pro virtuální počítače Azure. Další informace o objektech blob stránky najdete v tématu [Přehled objektů blob stránky Azure](storage-blob-pageblob-overview.md) .
 
 Další informace o různých typech objektů BLOB najdete v tématu [Principy objektů blob bloku, doplňovacích objektů BLOB a objektů blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 

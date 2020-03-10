@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 03/09/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 86224508b9f24906abce157b92a77c0a2f24d882
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 11149019c609079bb22e043c3aaad7df9ec8393d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605729"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943361"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Podpora jazyků a oblastí pro službu Speech
 
@@ -34,48 +34,48 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
- Národní prostředí | Jazyk | Podporuje se | Vlastní nastavení
-------|------------|-----------|-------------
-`ar-AE` | Arabština (Spojené arabské emiráty) | Ano | Ne
-`ar-BH` | Arabština (Bahrajn) | Ano | Jazykový model
-`ar-EG` | Arabština (Egypt), moderní standard | Ano | Jazykový model
-`ar-KW` | Arabština (Kuvajt) | Ano | Ne
-`ar-QA` | Arabština (Katar) | Ano | Ne
-`ar-SA` | Arabština (Saúdská Arábie) | Ano | Ne
-`ca-ES` | Katalánština | Ano | Jazykový model
-`da-DK` | Dánština (Dánsko) | Ano | Jazykový model
-`de-DE` | Němčina (Německo) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
-`en-AU` | angličtina (Austrálie) | Ano | Akustický model<br>Jazykový model
-`en-CA` | angličtina (Kanada) | Ano | Akustický model<br>Jazykový model
-`en-GB` | Angličtina (Spojené království) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
-`en-IN` | English (India) | Ano | Akustický model<br>Jazykový model
-`en-NZ` | angličtina (Nový Zéland) | Ano | Akustický model<br>Jazykový model
-`en-US` | Čeština (Česká republika) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
-`es-ES` | Španělština (Španělsko) | Ano | Akustický model<br>Jazykový model
-`es-MX` | Španělština (Mexiko) | Ano | Akustický model<br>Jazykový model
-`fi-FI` | Finština (Finsko) | Ano | Jazykový model
-`fr-CA` | Francouzština (Kanada) | Ano | Akustický model<br>Jazykový model
-`fr-FR` | Francouzština (Francie) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
-`gu-IN` | Gudžarátština (Indie) | Ano | Jazykový model
-`hi-IN` | hindština (Indie) | Ano | Akustický model<br>Jazykový model
-`it-IT` | Italština (Itálie) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
-`ja-JP` | Japonština (Japonsko) | Ano | Jazykový model
-`ko-KR` | Korejština (Jižní Korea) | Ano | Jazykový model
-`mr-IN` | Maráthština (Indie) | Ano | Jazykový model
-`nb-NO` | Norština (Bokmal) (Norsko) | Ano | Jazykový model
-`nl-NL` | Nizozemština (Nizozemsko) | Ano | Jazykový model
-`pl-PL` | Polština (Polsko) | Ano | Jazykový model
-`pt-BR` | Portugalština (Brazílie) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
-`pt-PT` | Portugalština (Portugalsko) | Ano | Jazykový model
-`ru-RU` | Ruština (Rusko) | Ano | Akustický model<br>Jazykový model
-`sv-SE` | Švédština (Švédsko) | Ano | Jazykový model
-`ta-IN` | tamilština (Indie) | Ano | Jazykový model
-`te-IN` | telugština (Indie) | Ano | Ne
-`th-TH` | thajština (Thajsko) | Ano | Ne
-`tr-TR` | Turečtina (Turecko) | Ano | Ne
-`zh-CN` | Čínština (Mandarínština, zjednodušená čínština) | Ano | Akustický model<br>Jazykový model
-`zh-HK` | Čínština (kantonština, tradiční) | Ano | Jazykový model
-`zh-TW` | Čínština (Tchaj-wanská Mandarínština) | Ano | Jazykový model
+| Národní prostředí  | Jazyk                          | Podporuje se | Přizpůsobení                                    |
+|---------|-----------------------------------|-----------|---------------------------------------------------|
+| `ar-AE` | Arabština (Spojené arabské emiráty)                      | Ano       | Ne                                                |
+| `ar-BH` | Arabština (Bahrajn), moderní Standard | Ano       | Jazykový model                                    |
+| `ar-EG` | arabština (Egypt)                    | Ano       | Jazykový model                                    |
+| `ar-KW` | Arabština (Kuvajt)                   | Ano       | Ne                                                |
+| `ar-QA` | Arabština (Katar)                    | Ano       | Ne                                                |
+| `ar-SA` | Arabština (Saúdská Arábie)             | Ano       | Ne                                                |
+| `ca-ES` | Katalánština                           | Ano       | Jazykový model                                    |
+| `da-DK` | Dánština (Dánsko)                  | Ano       | Jazykový model                                    |
+| `de-DE` | Němčina (Německo)                  | Ano       | Akustický model<br>Jazykový model<br>Výslovnost |
+| `en-AU` | angličtina (Austrálie)               | Ano       | Akustický model<br>Jazykový model                  |
+| `en-CA` | angličtina (Kanada)                  | Ano       | Akustický model<br>Jazykový model                  |
+| `en-GB` | Angličtina (Spojené království)          | Ano       | Akustický model<br>Jazykový model<br>Výslovnost |
+| `en-IN` | English (India)                   | Ano       | Akustický model<br>Jazykový model                  |
+| `en-NZ` | angličtina (Nový Zéland)             | Ano       | Akustický model<br>Jazykový model                  |
+| `en-US` | Čeština (Česká republika)           | Ano       | Akustický model<br>Jazykový model<br>Výslovnost |
+| `es-ES` | Španělština (Španělsko)                   | Ano       | Akustický model<br>Jazykový model                  |
+| `es-MX` | Španělština (Mexiko)                  | Ano       | Akustický model<br>Jazykový model                  |
+| `fi-FI` | Finština (Finsko)                 | Ano       | Jazykový model                                    |
+| `fr-CA` | Francouzština (Kanada)                   | Ano       | Akustický model<br>Jazykový model                  |
+| `fr-FR` | Francouzština (Francie)                   | Ano       | Akustický model<br>Jazykový model<br>Výslovnost |
+| `gu-IN` | Gudžarátština (Indie)                 | Ano       | Jazykový model                                    |
+| `hi-IN` | hindština (Indie)                     | Ano       | Akustický model<br>Jazykový model                  |
+| `it-IT` | Italština (Itálie)                   | Ano       | Akustický model<br>Jazykový model<br>Výslovnost |
+| `ja-JP` | Japonština (Japonsko)                  | Ano       | Jazykový model                                    |
+| `ko-KR` | Korejština (Jižní Korea)                    | Ano       | Jazykový model                                    |
+| `mr-IN` | Maráthština (Indie)                   | Ano       | Jazykový model                                    |
+| `nb-NO` | Norština (Bokmal) (Norsko)       | Ano       | Jazykový model                                    |
+| `nl-NL` | Nizozemština (Nizozemsko)               | Ano       | Jazykový model                                    |
+| `pl-PL` | Polština (Polsko)                   | Ano       | Jazykový model                                    |
+| `pt-BR` | Portugalština (Brazílie)               | Ano       | Akustický model<br>Jazykový model<br>Výslovnost |
+| `pt-PT` | Portugalština (Portugalsko)             | Ano       | Jazykový model                                    |
+| `ru-RU` | Ruština (Rusko)                  | Ano       | Akustický model<br>Jazykový model                  |
+| `sv-SE` | Švédština (Švédsko)                  | Ano       | Jazykový model                                    |
+| `ta-IN` | tamilština (Indie)                     | Ano       | Jazykový model                                    |
+| `te-IN` | telugština (Indie)                    | Ano       | Ne                                                |
+| `th-TH` | thajština (Thajsko)                   | Ano       | Ne                                                |
+| `tr-TR` | Turečtina (Turecko)                  | Ano       | Ne                                                |
+| `zh-CN` | Čínština (Mandarínština, zjednodušená čínština)    | Ano       | Akustický model<br>Jazykový model                  |
+| `zh-HK` | Čínština (kantonština, tradiční)  | Ano       | Jazykový model                                    |
+| `zh-TW` | Čínština (Tchaj-wanská Mandarínština)      | Ano       | Jazykový model                                    |
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
@@ -92,14 +92,14 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 
 Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
 
-Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | Krátký název hlasu
---------|----------|--------|---------|------------
-`de-DE` | Němčina (Německo) | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (de-DE, KatjaNeural) | de-DE-KatjaNeural "
-`en-US` | Angličtina (USA) | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, JessaNeural) | "en-US-JessaNeural"
-`en-US` | Angličtina (USA) | Muž | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, GuyNeural) | "en-US-GuyNeural"
-`it-IT` | Italština (Itálie) | Žena |Microsoft Server Speech Převod textu na řeč hlas (IT – IT, ElsaNeural) | "IT-IT-ElsaNeural"
-`pt-BR` | Portugalština (Brazílie) | Žena | Microsoft Server Speech Převod textu na řeč Voice (pt-BR, FranciscaNeural) | pt-BR-FranciscaNeural
-`zh-CN` | Čínština (Španělsko) | Žena | "Microsoft Server Speech Převod textu na řeč Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
+| Národní prostředí  | Jazyk            | Pohlaví | Úplné mapování názvu služby                                               | Krátký název hlasu        |
+|---------|---------------------|--------|-------------------------------------------------------------------------|-------------------------|
+| `de-DE` | Němčina (Německo)    | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (de-DE, KatjaNeural)     | de-DE-KatjaNeural "     |
+| `en-US` | Angličtina (USA)        | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, JessaNeural)     | "en-US-JessaNeural"     |
+| `en-US` | Angličtina (USA)        | Muž   | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, GuyNeural)       | "en-US-GuyNeural"       |
+| `it-IT` | Italština (Itálie)     | Žena | Microsoft Server Speech Převod textu na řeč hlas (IT – IT, ElsaNeural)      | "IT-IT-ElsaNeural"      |
+| `pt-BR` | Portugalština (Brazílie) | Žena | Microsoft Server Speech Převod textu na řeč Voice (pt-BR, FranciscaNeural) | pt-BR-FranciscaNeural |
+| `zh-CN` | Čínština (Španělsko)  | Žena | "Microsoft Server Speech Převod textu na řeč Voice (zh-CN, XiaoxiaoNeural)"  | "zh-CN-XiaoxiaoNeural"  |
 
 Pokud se chcete dozvědět, jak můžete nakonfigurovat a upravit hlasy neuronové, přečtěte si téma věnované [jazykům pro označování řeči](speech-synthesis-markup.md#adjust-speaking-styles).
 
@@ -110,89 +110,89 @@ Pokud se chcete dozvědět, jak můžete nakonfigurovat a upravit hlasy neuronov
 
 Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a národních prostředích, což vám umožní převést text na syntetizované řeč. Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
 
-Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | Krátký název
--------|----------|---------|----------|----------
-<sup>1</sup>`ar-EG` | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)" | ar-EG-Hoda
-`ar-SA` | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)" | ar-SA-Naayf "
-`bg-BG` | Bulharština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)" | BG-BG-Ivan
-`ca-ES` | katalánština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)" | "Ca-ES-HerenaRUS"
-`cs-CZ` | Čeština | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Jakub)" | cs-CZ-Jakub "
-`da-DK` | dánština | Žena | "Microsoft serveru řeči Text na řeč hlas (da-DK HelleRUS)" | "da-DK-HelleRUS"
-`de-AT` | němčina (Rakousko) | Muž | "Microsoft Server řeči Text na řeč hlas (de-AT, musí Michael)" | de-AT-Michael
-`de-CH` | němčina (Švýcarsko) | Muž | "Microsoft serveru řeči Text na řeč hlas (de-CH, Karsten)" | de-CH-Karsten
-`de-DE` | Němčina (Německo) | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, Hedda)" | de-DE-Hedda "
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, HeddaRUS)" | de-DE-HeddaRUS "
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (de-DE, Stefan, Apollo)" | de-DE-Stefan-Apollo "
-`el-GR` | Řečtina | Muž | "Microsoft serveru řeči Text na řeč hlas (el-GR, Stefanos)" | "El-GR-Stefanos"
-`en-AU` | angličtina (Austrálie) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, Catherine)" | "en-AU-Catherine"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, HayleyRUS)" | "en-AU-HayleyRUS"
-`en-CA` | angličtina (Kanada) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, Lenka)" | "en-CA-Linda"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, HeatherRUS)" | "en-CA-HeatherRUS"
-`en-GB` | Angličtina (Velká Británie) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, Susan, Apollo)" | "en-GB-Zuzana-Apollo"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, HazelRUS)" | "en-GB-HazelRUS"
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (en-GB, George, Apollo)" | "en-GB-Jiří-Apollo"
-`en-IE` | angličtina (Irsko) | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Sean)" | "en-IE-Novák"
-`en-IN` | English (India) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, Heera, Apollo)" | "en-IN-Heera-Apollo"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, PriyaRUS)" | "en-IN-PriyaRUS"
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IN, Ravi, Apollo)" | "en-IN-Ravi-Apollo"
-`en-US` | Angličtina (USA) | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)" | "en-US-ZiraRUS"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaRUS)" | "en-US-JessaRUS"
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, BenjaminRUS)" | "en-US-BenjaminRUS"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" | "en-US-Jessa24kRUS"
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)" | "en-US-Guy24kRUS"
-`es-ES` | Španělština (Španělsko) |Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, Laura, Apollo)" | ES-ES-Laura-Apollo "
-| | | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, HelenaRUS)" | ES-ES-HelenaRUS "
-| | | Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, tablet Pablo, Apollo)" | ES-ES-Pablo-Apollo
-`es-MX` | Španělština (Mexiko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-MX, HildaRUS)" | ES-MX-HildaRUS
-| | | Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-MX, Raul, Apollo)" | ES-MX-Raul-Apollo
-`fi-FI` | Finština | Žena | "Microsoft serveru řeči Text na řeč hlas (fi-FI, HeidiRUS)" | "Fi-FI-HeidiRUS"
-`fr-CA` | Francouzština (Kanada) |Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-CA, Caroline)" | "fr-CA-Caroline"
-| | | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-CA, HarmonieRUS)" | "fr-CA-HarmonieRUS"
-`fr-CH` | francouzština (Švýcarsko)| Muž | "Microsoft Server řeči převod textu na řeč hlasové (fr-CH, Guillaume)" | "fr-CH-Guillaume"
-`fr-FR` | Francouzština (Francie)| Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, Julie, Apollo)" | "fr-FR-Julie-Apollo"
-| | | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, HortenseRUS)" | "fr-FR-HortenseRUS"
-| | | Muž | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, Paul, Apollo)" | "fr-FR-Paul-Apollo"
-`he-IL` | hebrejština (Izrael) | Muž| "Microsoft serveru řeči Text na řeč hlas (he-IL, Asaf)" | "he-IL-Asaf"
-`hi-IN` | hindština (Indie) | Žena | "Microsoft serveru řeči Text na řeč hlas (hi v, Kalpana, Apollo)" | "Hi-IN-Kalpana-Apollo"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (hi v, Kalpana)" | "Dobrý den-Kalpana"
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (hi v, Hemant)" | "Dobrý den-Hemant"
-`hr-HR` | Chorvatština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (hr-HR, Matej)" | "HR-HR-Matej"
-`hu-HU` | Maďarština | Muž | "Microsoft serveru řeči Text na řeč hlas (hu-HU, Szabolcs)" | "hu-HU-Szabolcs"
-`id-ID` | Indonéština| Muž | "Microsoft serveru řeči Text na řeč hlas (id-ID, Andika)" | ID-ID-Andika
-`it-IT` | italština | Muž | "Microsoft serveru řeči Text hlas řeči (it-IT, Cosimo, Apollo)" | "IT-IT-Cosimo-Apollo"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (it-IT, LuciaRUS)" | "IT-IT-LuciaRUS"
-`ja-JP` | Japonština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo"
-| | | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo"
-| | | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, HarukaRUS)" | "ja-JP-HarukaRUS"
-`ko-KR` | Korejština | Žena | "Microsoft serveru řeči Text na řeč hlas (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS"
-`ms-MY` | Malajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ms Moje, Rizwan)" | "MS-MY-Rizwan"
-`nb-NO` | norština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nb-NO HuldaRUS)" | "NB-NO-HuldaRUS"
-`nl-NL` | Nizozemština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nl-NL, HannaRUS)" | nl-NL-HannaRUS "
-`pl-PL` | polština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pl-PL, PaulinaRUS)" | pl-PL-PaulinaRUS "
-`pt-BR` | Portugalština (Brazílie) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, HeloisaRUS)" | pt-BR-HeloisaRUS
-| | | Muž |"Microsoft Server řeči převod textu na řeč hlasové (pt-BR, ADAM, Apollo)" | pt-BR-Daniel-Apollo
-`pt-PT` | Portugalština (Portugalsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)" | pt-PT-HeliaRUS
-`ro-RO` | Rumunština | Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO, Andrei)" | "RO-RO-Andrei"
-`ru-RU` |Ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)" | ru-RU-Irina-Apollo "
-| | | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Pavel, Apollo)" | ru-RU-Pavel-Apollo "
-| | | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, EkaterinaRUS)" | ru-RU – EkaterinaRUS
-`sk-SK` | Slovenština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)" | "SK-SK-Filip"
-`sl-SI` | Slovinština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sl Incidentech Lado)" | "SL-SI-lado"
-`sv-SE` | švédština | Žena | "Microsoft serveru řeči Text na řeč hlas (sv-SE, HedvigRUS)" | "sv-SE-HedvigRUS"
-`ta-IN` | tamilština (Indie) | Muž | "Microsoft serveru řeči Text na řeč hlas, (ta v, Valluvar)" | "ta-IN-Valluvar"
-`te-IN` | telugština (Indie) | Žena | "Microsoft serveru řeči Text na řeč hlas (te v, Chitra)" | "te-IN-Chitra"
-`th-TH` | Thajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (th TÝ, Pattara)" | "th-TH-Pattara"
-`tr-TR` | Turečtina (Turecko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
-`vi-VN` | Vietnamština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (vi VN)" | "VI-VN-a"
-`zh-CN` | Čínština (Španělsko) | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, HuihuiRUS)" | zh-CN-HuihuiRUS "
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Yaoyao, Apollo)" | zh-CN-Yaoyao-Apollo "
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo"
-`zh-HK` | čínština (Hongkong) | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-HK, Tracy, Apollo)" | "zh-HK-Tracy-Apollo"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-HK, TracyRUS)" | "zh-HK-TracyRUS"
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-HK, Danny, Apollo)" | "zh-HK-Danny-Apollo"
-`zh-TW` | Čínština (Tchaj-wan) | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Yating, Apollo)" | "zh-TW-Yating-Apollo"
-| | | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
-| | | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
+| Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | Krátký název |
+|--|--|--|--|--|
+| <sup>1</sup>`ar-EG` | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)" | ar-EG-Hoda |
+| `ar-SA` | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)" | ar-SA-Naayf " |
+| `bg-BG` | Bulharština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)" | BG-BG-Ivan |
+| `ca-ES` | katalánština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)" | "Ca-ES-HerenaRUS" |
+| `cs-CZ` | Čeština | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Jakub)" | cs-CZ-Jakub " |
+| `da-DK` | dánština | Žena | "Microsoft serveru řeči Text na řeč hlas (da-DK HelleRUS)" | "da-DK-HelleRUS" |
+| `de-AT` | němčina (Rakousko) | Muž | "Microsoft Server řeči Text na řeč hlas (de-AT, musí Michael)" | de-AT-Michael |
+| `de-CH` | němčina (Švýcarsko) | Muž | "Microsoft serveru řeči Text na řeč hlas (de-CH, Karsten)" | de-CH-Karsten |
+| `de-DE` | Němčina (Německo) | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, Hedda)" | de-DE-Hedda " |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, HeddaRUS)" | de-DE-HeddaRUS " |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (de-DE, Stefan, Apollo)" | de-DE-Stefan-Apollo " |
+| `el-GR` | Řečtina | Muž | "Microsoft serveru řeči Text na řeč hlas (el-GR, Stefanos)" | "El-GR-Stefanos" |
+| `en-AU` | angličtina (Austrálie) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, Catherine)" | "en-AU-Catherine" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, HayleyRUS)" | "en-AU-HayleyRUS" |
+| `en-CA` | angličtina (Kanada) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, Lenka)" | "en-CA-Linda" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, HeatherRUS)" | "en-CA-HeatherRUS" |
+| `en-GB` | Angličtina (Velká Británie) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, Susan, Apollo)" | "en-GB-Zuzana-Apollo" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, HazelRUS)" | "en-GB-HazelRUS" |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (en-GB, George, Apollo)" | "en-GB-Jiří-Apollo" |
+| `en-IE` | angličtina (Irsko) | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Sean)" | "en-IE-Novák" |
+| `en-IN` | English (India) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, Heera, Apollo)" | "en-IN-Heera-Apollo" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, PriyaRUS)" | "en-IN-PriyaRUS" |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IN, Ravi, Apollo)" | "en-IN-Ravi-Apollo" |
+| `en-US` | Angličtina (USA) | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)" | "en-US-ZiraRUS" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaRUS)" | "en-US-JessaRUS" |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, BenjaminRUS)" | "en-US-BenjaminRUS" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" | "en-US-Jessa24kRUS" |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)" | "en-US-Guy24kRUS" |
+| `es-ES` | Španělština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, Laura, Apollo)" | ES-ES-Laura-Apollo " |
+|  |  | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, HelenaRUS)" | ES-ES-HelenaRUS " |
+|  |  | Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, tablet Pablo, Apollo)" | ES-ES-Pablo-Apollo |
+| `es-MX` | Španělština (Mexiko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-MX, HildaRUS)" | ES-MX-HildaRUS |
+|  |  | Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-MX, Raul, Apollo)" | ES-MX-Raul-Apollo |
+| `fi-FI` | Finština | Žena | "Microsoft serveru řeči Text na řeč hlas (fi-FI, HeidiRUS)" | "Fi-FI-HeidiRUS" |
+| `fr-CA` | Francouzština (Kanada) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-CA, Caroline)" | "fr-CA-Caroline" |
+|  |  | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-CA, HarmonieRUS)" | "fr-CA-HarmonieRUS" |
+| `fr-CH` | francouzština (Švýcarsko) | Muž | "Microsoft Server řeči převod textu na řeč hlasové (fr-CH, Guillaume)" | "fr-CH-Guillaume" |
+| `fr-FR` | Francouzština (Francie) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, Julie, Apollo)" | "fr-FR-Julie-Apollo" |
+|  |  | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, HortenseRUS)" | "fr-FR-HortenseRUS" |
+|  |  | Muž | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, Paul, Apollo)" | "fr-FR-Paul-Apollo" |
+| `he-IL` | hebrejština (Izrael) | Muž | "Microsoft serveru řeči Text na řeč hlas (he-IL, Asaf)" | "he-IL-Asaf" |
+| `hi-IN` | hindština (Indie) | Žena | "Microsoft serveru řeči Text na řeč hlas (hi v, Kalpana, Apollo)" | "Hi-IN-Kalpana-Apollo" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (hi v, Kalpana)" | "Dobrý den-Kalpana" |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (hi v, Hemant)" | "Dobrý den-Hemant" |
+| `hr-HR` | Chorvatština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (hr-HR, Matej)" | "HR-HR-Matej" |
+| `hu-HU` | Maďarština | Muž | "Microsoft serveru řeči Text na řeč hlas (hu-HU, Szabolcs)" | "hu-HU-Szabolcs" |
+| `id-ID` | Indonéština | Muž | "Microsoft serveru řeči Text na řeč hlas (id-ID, Andika)" | ID-ID-Andika |
+| `it-IT` | Italština | Muž | "Microsoft serveru řeči Text hlas řeči (it-IT, Cosimo, Apollo)" | "IT-IT-Cosimo-Apollo" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (it-IT, LuciaRUS)" | "IT-IT-LuciaRUS" |
+| `ja-JP` | Japonština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo" |
+|  |  | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo" |
+|  |  | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, HarukaRUS)" | "ja-JP-HarukaRUS" |
+| `ko-KR` | Korejština | Žena | "Microsoft serveru řeči Text na řeč hlas (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS" |
+| `ms-MY` | Malajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ms Moje, Rizwan)" | "MS-MY-Rizwan" |
+| `nb-NO` | norština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nb-NO HuldaRUS)" | "NB-NO-HuldaRUS" |
+| `nl-NL` | Nizozemština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nl-NL, HannaRUS)" | nl-NL-HannaRUS " |
+| `pl-PL` | Polština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pl-PL, PaulinaRUS)" | pl-PL-PaulinaRUS " |
+| `pt-BR` | Portugalština (Brazílie) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, HeloisaRUS)" | pt-BR-HeloisaRUS |
+|  |  | Muž | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, ADAM, Apollo)" | pt-BR-Daniel-Apollo |
+| `pt-PT` | Portugalština (Portugalsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)" | pt-PT-HeliaRUS |
+| `ro-RO` | Rumunština | Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO, Andrei)" | "RO-RO-Andrei" |
+| `ru-RU` | Ruština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)" | ru-RU-Irina-Apollo " |
+|  |  | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Pavel, Apollo)" | ru-RU-Pavel-Apollo " |
+|  |  | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, EkaterinaRUS)" | ru-RU – EkaterinaRUS |
+| `sk-SK` | Slovenština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)" | "SK-SK-Filip" |
+| `sl-SI` | Slovinština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sl Incidentech Lado)" | "SL-SI-lado" |
+| `sv-SE` | švédština | Žena | "Microsoft serveru řeči Text na řeč hlas (sv-SE, HedvigRUS)" | "sv-SE-HedvigRUS" |
+| `ta-IN` | tamilština (Indie) | Muž | "Microsoft serveru řeči Text na řeč hlas, (ta v, Valluvar)" | "ta-IN-Valluvar" |
+| `te-IN` | telugština (Indie) | Žena | "Microsoft serveru řeči Text na řeč hlas (te v, Chitra)" | "te-IN-Chitra" |
+| `th-TH` | Thajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (th TÝ, Pattara)" | "th-TH-Pattara" |
+| `tr-TR` | Turečtina (Turecko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)" | "tr-TR-SedaRUS" |
+| `vi-VN` | Vietnamština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (vi VN)" | "VI-VN-a" |
+| `zh-CN` | Čínština (Španělsko) | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, HuihuiRUS)" | zh-CN-HuihuiRUS " |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Yaoyao, Apollo)" | zh-CN-Yaoyao-Apollo " |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo" |
+| `zh-HK` | čínština (Hongkong) | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-HK, Tracy, Apollo)" | "zh-HK-Tracy-Apollo" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-HK, TracyRUS)" | "zh-HK-TracyRUS" |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-HK, Danny, Apollo)" | "zh-HK-Danny-Apollo" |
+| `zh-TW` | Čínština (Tchaj-wan) | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Yating, Apollo)" | "zh-TW-Yating-Apollo" |
+|  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS" |
+|  |  | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo" |
 
 **1** *ar-eg podporuje moderní arabštinu Standard (MSA).*
 
@@ -212,77 +212,76 @@ Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlas
 
 ### <a name="text-languages"></a>Text jazyky
 
-| Jazyk textu    | Kód jazyka |
-|:----------- |:-------------:|
-| Afrikánština      | `af`          |
-| Arabština       | `ar`          |
-| Bengálština      | `bn`          |
-| Bosenština (latinka)      | `bs`          |
-| Bulharština      | `bg`          |
-| Kantonština (tradiční)      | `yue`          |
-| Katalánština      | `ca`          |
-| Zjednodušená čínština      | `zh-Hans`          |
-| Tradiční čínština      | `zh-Hant`          |
-| Chorvatština      | `hr`          |
-| Čeština      | `cs`          |
-| dánština      | `da`          |
-| Nizozemština      | `nl`          |
-| angličtina      | `en`          |
-| Estonština      | `et`          |
-| Vládní      | `fj`          |
-| Filipínština      | `fil`          |
-| Finština      | `fi`          |
-| Francouzština      | `fr`          |
-| Němčina      | `de`          |
-| Řečtina      | `el`          |
-| Haitská kreolština      | `ht`          |
-| Hebrejština      | `he`          |
-| Hindština      | `hi`          |
-| Hmong Daw      | `mww`          |
-| Maďarština      | `hu`          |
-| Indonéština      | `id`          |
-| Irština      | `ga`          |
-| italština      | `it`          |
-| Japonština      | `ja`          |
-| Kannada      | `kn`          |
-| Svahilština      | `sw`          |
-| Klingon      | `tlh`          |
-| Klingon (plqaD)      | `tlh-Qaak`          |
-| Korejština      | `ko`          |
-| Lotyština      | `lv`          |
-| Litevština      | `lt`          |
-| Malgašský      | `mg`          |
-| Malajština      | `ms`          |
-| Malajálamština      | `ml`          |
-| Maltština      | `mt`          |
-| norština      | `nb`          |
-| Perština      | `fa`          |
-| polština      | `pl`          |
-| Portugalština (Brazílie)      | `pt-br`          |
-| Portugalština (Portugalsko)      | `pt-pt`          |
-| Paňdžábština      | `pa`          |
-| Queretaro Otomi      | `otq`          |
-| Rumunština      | `ro`          |
-| Ruština      | `ru`          |
-| Samoan      | `sm`          |
-| Srbština (cyrilice)      | `sr-Cyrl`          |
-| Srbština (Latina)      | `sr-Latn`          |
-| Slovenština     | `sk`          |
-| Slovinština      | `sl`          |
-| Španělština      | `es`          |
-| švédština      | `sv`          |
-| Tahitian      | `ty`          |
-| Tamilština      | `ta`          |
-| Telugština      | `te`          |
-| Thajština      | `th`          |
-| Tonžská      | `to`          |
-| turečtina      | `tr`          |
-| Ukrajinština      | `uk`          |
-| Urdština      | `ur`          |
-| Vietnamština      | `vi`          |
-| Velština      | `cy`          |
-| Yucatec Maya      | `yua`          |
-
+| Jazyk textu           | Kód jazyka |
+|:------------------------|:-------------:|
+| Afrikánština               | `af`          |
+| Arabština                  | `ar`          |
+| Bengálština                  | `bn`          |
+| Bosenština (latinka)         | `bs`          |
+| Bulharština               | `bg`          |
+| Kantonština (tradiční) | `yue`         |
+| Katalánština                 | `ca`          |
+| Zjednodušená čínština      | `zh-Hans`     |
+| Tradiční čínština     | `zh-Hant`     |
+| Chorvatština                | `hr`          |
+| Čeština                   | `cs`          |
+| dánština                  | `da`          |
+| Nizozemština                   | `nl`          |
+| angličtina                 | `en`          |
+| Estonština                | `et`          |
+| Vládní                  | `fj`          |
+| Filipínština                | `fil`         |
+| Finština                 | `fi`          |
+| Francouzština                  | `fr`          |
+| Němčina                  | `de`          |
+| Řečtina                   | `el`          |
+| Haitská kreolština          | `ht`          |
+| Hebrejština                  | `he`          |
+| Hindština                   | `hi`          |
+| Hmong Daw               | `mww`         |
+| Maďarština               | `hu`          |
+| Indonéština              | `id`          |
+| Irština                   | `ga`          |
+| Italština                 | `it`          |
+| Japonština                | `ja`          |
+| Kannada                 | `kn`          |
+| Svahilština               | `sw`          |
+| Klingon                 | `tlh`         |
+| Klingon (plqaD)         | `tlh-Qaak`    |
+| Korejština                  | `ko`          |
+| Lotyština                 | `lv`          |
+| Litevština              | `lt`          |
+| Malgašský                | `mg`          |
+| Malajština                   | `ms`          |
+| Malajálamština               | `ml`          |
+| Maltština                 | `mt`          |
+| norština               | `nb`          |
+| Perština                 | `fa`          |
+| Polština                  | `pl`          |
+| Portugalština (Brazílie)     | `pt-br`       |
+| Portugalština (Portugalsko)   | `pt-pt`       |
+| Paňdžábština                 | `pa`          |
+| Queretaro Otomi         | `otq`         |
+| Rumunština                | `ro`          |
+| Ruština                 | `ru`          |
+| Samoan                  | `sm`          |
+| Srbština (cyrilice)      | `sr-Cyrl`     |
+| Srbština (Latina)         | `sr-Latn`     |
+| Slovenština                  | `sk`          |
+| Slovinština               | `sl`          |
+| Španělština                 | `es`          |
+| švédština                 | `sv`          |
+| Tahitian                | `ty`          |
+| Tamilština                   | `ta`          |
+| Telugština                  | `te`          |
+| Thajština                    | `th`          |
+| Tonžská                  | `to`          |
+| Turečtina                 | `tr`          |
+| Ukrajinština               | `uk`          |
+| Urdština                    | `ur`          |
+| Vietnamština              | `vi`          |
+| Velština                   | `cy`          |
+| Yucatec Maya            | `yua`         |
 
 ## <a name="next-steps"></a>Další kroky
 

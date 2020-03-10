@@ -4,11 +4,11 @@ description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojov
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457893"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382990"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -167,8 +167,8 @@ Modul runtime Service Fabric, který je součástí instalace sady SDK, obsahuje
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1,8 | Implicitně převzato z npm | latest |
-RHEL | - | OpenJDK 1.8 | Implicitně převzato z npm | latest |
+Ubuntu | 2.0.0 | AzulJDK 1,8 | Implicitně převzato z npm | nejnovější |
+RHEL | - | OpenJDK 1.8 | Implicitně převzato z npm | nejnovější |
 
 ## <a name="set-up-a-local-cluster"></a>Nastavení místního clusteru
 Po dokončení instalace spusťte místní cluster.
@@ -224,7 +224,7 @@ Po nainstalování generátorů vytvořte spustitelné soubory hosta nebo služb
 
 ## <a name="set-up-net-core-20-development"></a>Nastavení pro vývoj v .NET Core 2.0
 
-Pokud chcete začít [vytvářet aplikace Service Fabric v jazyce C#](service-fabric-create-your-first-linux-application-with-csharp.md), nainstalujte sadu [.NET Core 2.0 SDK pro Ubuntu](https://www.microsoft.com/net/core#linuxubuntu). Balíčky pro aplikace Service Fabric v .NET Core 2.0 jsou hostované na NuGet.org, aktuálně ve verzi Preview.
+Pokud chcete začít [vytvářet aplikace Service Fabric v jazyce C#](https://www.microsoft.com/net/core#linuxubuntu), nainstalujte sadu [.NET Core 2.0 SDK pro Ubuntu](service-fabric-create-your-first-linux-application-with-csharp.md). Balíčky pro aplikace Service Fabric v .NET Core 2.0 jsou hostované na NuGet.org, aktuálně ve verzi Preview.
 
 ## <a name="set-up-java-development"></a>Nastavení pro vývoj v Javě
 

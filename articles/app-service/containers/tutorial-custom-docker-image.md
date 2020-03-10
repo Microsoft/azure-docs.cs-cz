@@ -9,11 +9,11 @@ ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767105"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356152"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Kurz: Vytvoření vlastní image a spuštění v App Service z privátního registru
 
@@ -99,7 +99,7 @@ Přejděte na adresu `http://localhost:8000` a ověřte, že webová aplikace i 
 
 Pokud chcete vytvořit aplikaci, která používá Image, kterou jste právě vytvořili, spustíte příkazy rozhraní příkazového řádku Azure, které vytvoří skupinu prostředků, nahraje image a pak vytvoří službu App Service Plan Web App, která ji spustí.
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -178,7 +178,7 @@ Měli byste získat následující výstup.
 
 ### <a name="create-web-app"></a>Vytvoření webové aplikace
 
-Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte v `myAppServicePlan`plánu služby App Service [webovou aplikaci](app-service-linux-intro.md). Nahraďte _\<název aplikace >_ jedinečným názvem aplikace a _\<Azure-Container-registry-Name >_ s vaším názvem registru.
+Ve službě Cloud Shell pomocí příkazu [](app-service-linux-intro.md)`myAppServicePlan` vytvořte v [plánu služby App Service `az webapp create`webovou aplikaci](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nahraďte _\<název aplikace >_ jedinečným názvem aplikace a _\<Azure-Container-registry-Name >_ s vaším názvem registru.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0

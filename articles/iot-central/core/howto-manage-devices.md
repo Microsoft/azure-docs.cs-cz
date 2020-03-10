@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: dfbfd65223ddad5e8a20958d62ef86b5aa16af43
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023476"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391585"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
@@ -51,7 +51,7 @@ Postup přidání zařízení do aplikace Azure IoT Central:
 
 1. **Zapnout nebo** **vypnout** **simulované** přepínání Reálné zařízení je pro fyzické zařízení, které se připojujete k aplikaci Azure IoT Central. Simulované zařízení obsahuje ukázková data, která vám vygenerovala Azure IoT Central.
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 1. Toto zařízení se nyní zobrazí v seznamu zařízení pro tuto šablonu. Výběrem zařízení zobrazíte stránku s podrobnostmi o zařízení, která obsahuje všechna zobrazení pro dané zařízení.
 

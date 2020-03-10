@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c62af3ddf8b2c2dc8082dc4f4870ecfcdc175ab8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661955"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380745"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -243,7 +243,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**VERZE PREVIEW – zjistila se vazba role Správce clusteru.**|Analýza protokolu auditu Kubernetes zjistila novou vazbu na roli Správce clusteru, která má za následek oprávnění správce. Zbytečné poskytování oprávnění správce může mít za následek problémy s eskalací oprávnění v clusteru.|Trvalost|
-|**Zjištěný řídicí panel Kubernetes vystavený verzí PREVIEW**|Analýza protokolu auditu Kubernetes zjistila expozici řídicího panelu Kubernetes službou Vyrovnávání zatížení. Vystavené řídicí panely umožňují neověřený přístup ke správě clusteru a představují bezpečnostní hrozbu.|Trvalost|
+|**Zjištěný řídicí panel Kubernetes vystavený verzí PREVIEW**|Analýza protokolu auditu Kubernetes zjistila expozici řídicího panelu Kubernetes službou Vyrovnávání zatížení. Vystavené řídicí panely umožňují neověřený přístup ke správě clusteru a představují bezpečnostní hrozbu.|Počáteční přístup|
 |**PREVIEW – zjistila se nová role s vysokou úrovní oprávnění.**|Analýza protokolu auditu Kubernetes zjistila novou roli s vysokou úrovní oprávnění. Vazba na roli s vysokými oprávněními poskytuje zvýšená oprávnění uživatele nebo skupiny v clusteru. Zbytečně poskytování zvýšených oprávnění může způsobit problémy eskalace oprávnění v clusteru.|Trvalost|
 |**PREVIEW – zjistil se nový kontejner v oboru názvů Kube-System.**|Analýza protokolu auditu Kubernetes zjistila nový kontejner v oboru názvů Kube-System, který není mezi kontejnery, které obvykle běží v tomto oboru názvů. Obory názvů Kube-System by neměly obsahovat prostředky uživatele. Útočníci můžou pomocí tohoto oboru názvů skrývat škodlivé součásti.|Trvalost|
 |**PREVIEW – zjistil se kontejner dolování z digitálního Currency.**|Analýza protokolu auditu Kubernetes zjistila kontejner, který obsahuje image přidruženou k nástroji dolování v digitální měně.|Spouštěcí|
@@ -263,7 +263,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 |**Server SSH běží uvnitř kontejneru.**|Protokoly počítače označují, že server SSH běží uvnitř kontejneru Docker. I když toto chování může být záměrné, často to znamená, že kontejner je nesprávně nakonfigurovaný nebo porušil.|Spouštěcí|
 |**Zjistil se kontejner s Miner imagí.**|Protokoly počítače označují spuštění kontejneru Docker se spuštěnou imagí přidruženou k dolování v digitální měně. Toto chování může znamenat, že vaše prostředky budou zneužity.|Spouštěcí|
 |**Podezřelá žádost o rozhraní Kubernetes API**|Protokoly počítače označují, že v rozhraní Kubernetes API byl proveden podezřelý požadavek. Požadavek byl odeslán z uzlu Kubernetes, případně z jednoho z kontejnerů, které jsou spuštěny v uzlu. I když toto chování může být záměrné, může to znamenat, že uzel používá napadený kontejner.|Spouštěcí|
-|**Podezřelá žádost na řídicí panel Kubernetes**|Protokoly počítače označují, že na řídicím panelu Kubernetes byl proveden podezřelý požadavek. Požadavek byl odeslán z uzlu Kubernetes, případně z jednoho z kontejnerů, které jsou spuštěny v uzlu. I když toto chování může být záměrné, může to znamenat, že uzel používá napadený kontejner.|-|
+|**Podezřelá žádost na řídicí panel Kubernetes**|Protokoly počítače označují, že na řídicím panelu Kubernetes byl proveden podezřelý požadavek. Požadavek byl odeslán z uzlu Kubernetes, případně z jednoho z kontejnerů, které jsou spuštěny v uzlu. I když toto chování může být záměrné, může to znamenat, že uzel používá napadený kontejner.|Laterální pohyb|
 ||||
 
 
@@ -395,7 +395,7 @@ Porozumění úmyslnému útoku vám může usnadnit prozkoumání a hlášení 
 
 Řada kroků popisujících průběh cyberattack z rekognoskace na data exfiltrace se často označuje jako "dezaktivační řetězec". 
 
-Podporované záměry dezaktivačního řetězu Security Center jsou založené na rozhraní [Mitre ATT &AMP; CK™ Framework](https://attack.mitre.org/matrices/enterprise) a popsané v následující tabulce.
+Podporované záměry dezaktivačního řetězu Security Center jsou založené na rozhraní [Mitre ATT &AMP; CK&trade; Framework](https://attack.mitre.org/matrices/enterprise) a popsané v následující tabulce.
 
 |Záměr|Popis|
 |------|-------|

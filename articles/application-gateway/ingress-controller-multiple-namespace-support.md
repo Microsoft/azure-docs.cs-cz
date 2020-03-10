@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795562"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373481"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Povolení podpory více oborů názvů v clusteru AKS s Application Gatewaym řadičem příchozího přenosu dat
 
@@ -23,7 +23,7 @@ Od verze 0,7 [Azure Application Gateway Kubernetes IngressController](https://gi
 
 Verze 0,7 AGIC bude nadále výhradně sledovat obor názvů `default`, pokud není explicitně změněno na jeden nebo více různých oborů názvů v konfiguraci Helm (viz část níže).
 
-## <a name="enable-multiple-namespace-support"></a>Povolit podporu více oborů názvů
+## <a name="enable-multiple-namespace-support"></a>Povolení podpory více oborů názvů
 Povolení podpory více oborů názvů:
 1. Upravte soubor [Helm-config. yaml](#sample-helm-config-file) jedním z následujících způsobů:
    - odstraní klíč `watchNamespace` výhradně z [Helm-config. yaml](#sample-helm-config-file) -AGIC bude sledovat všechny obory názvů.
@@ -83,8 +83,8 @@ spec:
 
 I přes to, že dva prostředky příchozího přenosu dat náročné na `www.contoso.com` mají být směrovány na příslušné obory názvů Kubernetes, může provoz obsluhovat pouze jeden back-end. AGIC by pro jeden z prostředků vytvořila konfiguraci podle "prvního přidávaného" prvního přidávaného ". Pokud jsou dva příchozí prostředky vytvářeny současně, bude mít přednost ta, která byla dříve v abecedě. Z výše uvedeného příkladu budeme moct vytvořit nastavení pro `production` příchozí přenos dat. Application Gateway budou konfigurovány s následujícími prostředky:
 
-  - Naslouchací proces: `fl-www.contoso.com-80`
-  - Pravidlo směrování: `rr-www.contoso.com-80`
+  - Naslouchací proces: `fl- www.contoso.com-80`
+  - Pravidlo směrování: `rr- www.contoso.com-80`
   - Back-end fond: `pool-production-contoso-web-service-80-bp-80`
   - Nastavení HTTP: `bp-production-contoso-web-service-80-80-websocket-ingress`
   - Sonda stavu: `pb-production-contoso-web-service-80-websocket-ingress`

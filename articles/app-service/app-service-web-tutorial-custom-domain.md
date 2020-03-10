@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672079"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373642"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Přesměrovat výchozí adresu URL do vlastního adresáře
 > * Automatizovat mapování domén pomocí skriptů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu je potřeba:
 

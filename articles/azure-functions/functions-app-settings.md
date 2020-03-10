@@ -4,11 +4,11 @@ description: Referenční dokumentace pro nastavení aplikace Azure Functions ne
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963695"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355912"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -16,11 +16,11 @@ Nastavení aplikace v aplikaci function app obsahovat globální konfiguraci mo�
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Existují další možnosti globální konfiguraci v [host.json](functions-host-json.md) souboru a [local.settings.json](functions-run-local.md#local-settings-file) souboru.
+V souboru [Host. JSON](functions-host-json.md) a v souboru [Local. Settings. JSON](functions-run-local.md#local-settings-file) existují i další globální možnosti konfigurace.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Instrumentační klíč Application Insights při použití služby Application Insights. Zobrazit [monitorování Azure Functions](functions-monitoring.md).
+Instrumentační klíč Application Insights při použití služby Application Insights. Viz [Monitor Azure Functions](functions-monitoring.md).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -32,7 +32,7 @@ Ve verzi 2. x a novějších verzích modulu runtime Functions konfiguruje chov�
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-Připojovací řetězec účtu volitelné úložiště pro ukládání protokolů a jejich v zobrazení **monitorování** karta na portálu. Toto nastavení je platné jenom pro aplikace, které cílí na verzi 1. x Azure Functions runtime. Účet úložiště musí být pro obecné účely ten, který podporuje objekty BLOB, frontám a tabulkám. Další informace najdete v tématu [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).
+Volitelný připojovací řetězec účtu úložiště pro ukládání protokolů a jejich zobrazení na portálu na kartě **monitorování** . Toto nastavení je platné jenom pro aplikace, které cílí na verzi 1. x Azure Functions runtime. Účet úložiště musí být pro obecné účely ten, který podporuje objekty BLOB, frontám a tabulkám. Další informace najdete v tématu [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -43,19 +43,19 @@ Připojovací řetězec účtu volitelné úložiště pro ukládání protokol�
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` znamená, že zakáže výchozí úvodní stránku, která se zobrazí pro kořenovou adresu URL aplikace function app. Výchozí je `false`.
+`true` znamená zakázat výchozí cílovou stránku, která se zobrazí pro kořenovou adresu URL aplikace Function App. Výchozí hodnota je `false`.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |AzureWebJobsDisableHomepage|true|
 
-Když je toto nastavení aplikace vynechán nebo nastaven na `false`, zobrazí se stránka podobná následujícímu příkladu v reakci na adresu URL `<functionappname>.azurewebsites.net`.
+Pokud je toto nastavení aplikace vynecháno nebo je nastaveno na `false`, zobrazí se stránka podobná následujícímu příkladu jako odpověď na adresu URL `<functionappname>.azurewebsites.net`.
 
 ![Cílová stránka aplikace – funkce](media/functions-app-settings/function-app-landing-page.png)
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` znamená, že použití režimu vydání, při kompilaci kódu .NET; `false` znamená, že použití režimu ladění. Výchozí je `true`.
+`true` znamená použití režimu vydání při kompilování kódu .NET; `false` znamená použít režim ladění. Výchozí hodnota je `true`.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -79,7 +79,7 @@ Určuje úložiště nebo zprostředkovatele má být použit pro úložiště k
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Modul runtime Azure Functions používá tento připojovací řetězec účtu úložiště pro všechny funkce kromě funkcí aktivovanou protokolem HTTP. Účet úložiště musí být pro obecné účely ten, který podporuje objekty BLOB, frontám a tabulkám. Zobrazit [účtu úložiště](functions-infrastructure-as-code.md#storage-account) a [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).
+Modul runtime Azure Functions používá tento připojovací řetězec účtu úložiště pro všechny funkce kromě funkcí aktivovanou protokolem HTTP. Účet úložiště musí být pro obecné účely ten, který podporuje objekty BLOB, frontám a tabulkám. Viz požadavky na [účet úložiště](functions-infrastructure-as-code.md#storage-account) a [účet úložiště](storage-considerations.md#storage-account-requirements).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -93,21 +93,21 @@ Cestu ke kompilátoru používá pro TypeScript. Umožňuje přepsat výchozí h
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%Home%\typescript|
 
-## <a name="function_app_edit_mode"></a>FUNKCE\_APLIKACE\_UPRAVIT\_REŽIMU
+## <a name="function_app_edit_mode"></a>FUNKCE\_APP\_upravit režim\_
 
 Určuje, zda jsou povoleny úpravy v Azure Portal. Platné hodnoty jsou "readwrite" a "jen pro čtení".
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|FUNKCE\_APLIKACE\_UPRAVIT\_REŽIMU|jen pro čtení|
+|FUNKCE\_APP\_upravit režim\_|jen pro čtení|
 
-## <a name="functions_extension_version"></a>FUNKCE\_ROZŠÍŘENÍ\_VERZE
+## <a name="functions_extension_version"></a>FUNKCE\_rozšíření\_verze
 
-Verze modulu runtime Functions pro použití v této aplikace function app. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 2"). Když jsou k dispozici nová verze pro stejný hlavní verze, jsou automaticky nainstalovány do aplikace function App. Chcete-li připnout aplikaci na konkrétní verzi, použijte celé číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2". Hodnota `~1` připíná vaší aplikace na verzi 1.x modulu runtime.
+Verze modulu runtime Functions pro použití v této aplikace function app. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 2"). Když jsou k dispozici nová verze pro stejný hlavní verze, jsou automaticky nainstalovány do aplikace function App. Chcete-li připnout aplikaci na konkrétní verzi, použijte celé číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2". Hodnota `~1` připnete aplikaci k verzi 1. x modulu runtime.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|FUNKCE\_ROZŠÍŘENÍ\_VERZE|~ 2|
+|FUNKCE\_rozšíření\_verze|~ 2|
 
 ## <a name="functions_v2_compatibility_mode"></a>\_režimu kompatibility\_funkce\_v2
 
@@ -131,31 +131,31 @@ Určuje maximální počet pracovních procesů jazyka s výchozí hodnotou `1`.
 |POČET funkcí\_pracovní proces\_procesu\_|2|
 
 
-## <a name="functions_worker_runtime"></a>FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME
+## <a name="functions_worker_runtime"></a>FUNCTIONs\_WORKer\_RUNTIME
 
 Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet` (C#/F#), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell) a `python` (Python).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME|DotNet|
+|FUNCTIONs\_WORKer\_RUNTIME|DotNet|
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úložiště, kde jsou uloženy kód aplikace funkcí a konfigurace. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
+Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úložiště, kde jsou uloženy kód aplikace funkcí a konfigurace. Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [název]; AccountKey = [klíč]|
 
-## <a name="website_contentshare"></a>WEB\_CONTENTSHARE
+## <a name="website_contentshare"></a>Web\_CONTENTSHARE
 
-Pro spotřebu & jenom plánů Premium. Cesta k souboru kódu aplikace funkcí a konfigurace. Použít s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace function app. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
+Pro spotřebu & jenom plánů Premium. Cesta k souboru kódu aplikace funkcí a konfigurace. Použít s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace function app. Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="website_max_dynamic_application_scale_out"></a>WEB\_MAXIMÁLNÍ\_DYNAMICKÉ\_APLIKACE\_ŠKÁLOVÁNÍ\_NAVÝŠENÍ KAPACITY
+## <a name="website_max_dynamic_application_scale_out"></a>Web\_MAX\_DYNAMIC\_aplikace\_ŠKÁLOVÁNÍ\_
 
 Maximální počet instancí, které aplikace function app můžete horizontální navýšení kapacity na. Výchozí hodnota je neomezený.
 
@@ -164,26 +164,26 @@ Maximální počet instancí, které aplikace function app můžete horizontáln
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|WEB\_MAXIMÁLNÍ\_DYNAMICKÉ\_APLIKACE\_ŠKÁLOVÁNÍ\_NAVÝŠENÍ KAPACITY|5|
+|Web\_MAX\_DYNAMIC\_aplikace\_ŠKÁLOVÁNÍ\_|5|
 
-## <a name="website_node_default_version"></a>WEB\_UZEL\_DEFAULT_VERSION
+## <a name="website_node_default_version"></a>\_\_uzlů webu DEFAULT_VERSION
 
 _Pouze Windows._  
 Nastaví verzi Node. js, která se má použít při spuštění aplikace Function App ve Windows. Chcete-li, aby modul runtime používal nejnovější dostupnou verzi cílené hlavní verze, použijte vlnovku (~). Například pokud je nastavena na `~10`, je použita nejnovější verze Node. js 10. V případě, že je hlavní verze cílena na vlnovku, nemusíte ručně aktualizovat dílčí verzi. 
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|WEB\_UZEL\_DEFAULT_VERSION|~ 10|
+|\_\_uzlů webu DEFAULT_VERSION|~ 10|
 
-## <a name="website_run_from_package"></a>WEB\_SPUSTIT\_FROM\_BALÍČKU
+## <a name="website_run_from_package"></a>Web\_spustit\_z\_balíčku
 
 Umožňuje aplikaci function app pro spuštění ze souboru balíčku připojené.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|WEB\_SPUSTIT\_FROM\_BALÍČKU|1\. místo|
+|Web\_spustit\_z\_balíčku|1|
 
-Platné hodnoty jsou buď adresu URL, který se přeloží do umístění souboru balíčku nasazení, nebo `1`. Pokud je nastavena na `1`, velikost balíčku musí být v `d:\home\data\SitePackages` složky. Při použití s tímto nastavením zip nasazení, balíček je automaticky odeslána do tohoto umístění. Ve verzi preview, se toto nastavení s názvem `WEBSITE_RUN_FROM_ZIP`. Další informace najdete v tématu [spouštět funkce ze souboru balíčku](run-functions-from-deployment-package.md).
+Platné hodnoty jsou buď adresy URL, které se přeloží na umístění souboru balíčku pro nasazení, nebo `1`. Když nastavíte `1`, balíček musí být ve složce `d:\home\data\SitePackages`. Při použití s tímto nastavením zip nasazení, balíček je automaticky odeslána do tohoto umístění. Ve verzi Preview bylo toto nastavení pojmenováno `WEBSITE_RUN_FROM_ZIP`. Další informace najdete v tématu [spuštění funkcí ze souboru balíčku](run-functions-from-deployment-package.md).
 
 ## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 
@@ -201,10 +201,10 @@ Toto nastavení určuje, zda je % 2F dekódovat jako ve parametry trasy vložen�
 
 |Klíč|Hodnota|Popis|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry trasy s kódováním lomítka kliknul dekódovat. `example.com/api%2ftest` se stane `example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry trasy s kódováním lomítka kliknul dekódovat. `example.com/api%2ftest` se stanou `example.com/api/test`|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Toto je výchozí chování. Všechny trasy, které se předají parametry beze změny|
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Zde je příkladu proxies.json v aplikaci function app na myfunction.com adresy URL
 
@@ -229,8 +229,8 @@ Zde je příkladu proxies.json v aplikaci function app na myfunction.com adresy 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Zjistěte, jak aktualizovat nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)
+[Informace o tom, jak aktualizovat nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[Zobrazit globální nastavení v souboru host.json](functions-host-json.md)
+[Viz globální nastavení v souboru Host. JSON.](functions-host-json.md)
 
-[Viz další nastavení aplikace pro aplikace služby App Service](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
+[Zobrazit další nastavení aplikací pro App Service aplikace](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

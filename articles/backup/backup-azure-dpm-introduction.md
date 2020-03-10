@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak připravit zálohy aplikace Syste
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753948"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381509"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -51,7 +51,7 @@ Místní úložiště | Každý počítač, který chcete zálohovat, musí mít
 Azure ExpressRoute | Pokud je Azure ExpressRoute nakonfigurovaný s privátním nebo veřejným partnerským vztahem Microsoftu, nejde ho použít k zálohování dat do Azure.<br/><br/> Pokud je Azure ExpressRoute nakonfigurovaný s veřejným partnerským vztahem, dá se použít k zálohování dat do Azure.<br/><br/> **Poznámka:** Veřejné partnerské vztahy se pro nové okruhy zastaraly.
 Agent Azure Backup | Je-li aplikace DPM spuštěna v produktu System Center 2012 SP1, nainstalujte kumulativní aktualizaci 2 nebo novější pro aplikaci DPM SP1. To je vyžadováno pro instalaci agenta.<br/><br/> Tento článek popisuje, jak nasadit nejnovější verzi agenta Azure Backup, označovaného také jako agent služby Microsoft Azure Recovery Services (MARS). Pokud máte nasazenou starší verzi, aktualizujte na nejnovější verzi, abyste zajistili, že zálohování funguje podle očekávání.
 
-Než začnete, potřebujete účet Azure s povolenou funkcí Azure Backup. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Přečtěte si o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+Než začnete, potřebujete účet Azure s povolenou funkcí Azure Backup. Jestli účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Přečtěte si o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
@@ -97,7 +97,7 @@ Pokud chcete získat přihlašovací údaje, Stáhněte si soubor s přihlašova
 
 Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítače následujícím způsobem:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete trezor, ve kterém chcete zaregistrovat server DPM.
 3. V **Nastavení**klikněte na **vlastnosti**.
 

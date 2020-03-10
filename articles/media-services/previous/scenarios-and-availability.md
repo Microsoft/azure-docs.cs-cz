@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920582"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366906"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -33,11 +33,11 @@ V tomto tématu najdete běžné scénáře pro doručování obsahu v [reálné
 
 ## <a name="overview"></a>Přehled
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 
-* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
+* Účet Azure. Jestli účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
 * Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
 
@@ -177,10 +177,10 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 #### <a name="availability"></a>Dostupnost
 
-|Název|Status|Datová centra
+|Název|Stav|Datová centra
 |---|---|---|
-|Standard|GA|Vše|
-|Premium|GA|Vše|
+|Standardní|GA|Všechny|
+|Premium|GA|Všechny|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
 
@@ -194,9 +194,9 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Status|Datová centra
+|Název procesoru médií|Stav|Datová centra
 |---|---|---|
-|Media Encoder Standard|GA|Vše|
+|Media Encoder Standard|GA|Všechny|
 |Pracovní postup kodéru Media Encoder Premium|GA|Všechny s výjimkou Číny|
 
 ### <a name="analytics-media-processors"></a>Analytické procesory médií
@@ -208,14 +208,14 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Status|Datová centra
+|Název procesoru médií|Stav|Datová centra
 |---|---|---|
-|Azure Media Face Detector|Preview|Vše|
-|Azure Media Indexer|GA|Vše|
-|Azure Media Motion Detector|Preview|Vše|
-|Azure Media OCR|Preview|Vše|
-|Azure Media Redactor|GA|Vše|
-|Azure Media Video Thumbnails|Preview|Vše|
+|Azure Media Face Detector|Preview|Všechny|
+|Azure Media Indexer|GA|Všechny|
+|Azure Media Motion Detector|Preview|Všechny|
+|Azure Media OCR|Preview|Všechny|
+|Azure Media Redactor|GA|Všechny|
+|Azure Media Video Thumbnails|Preview|Všechny|
 
 ### <a name="protection"></a>Ochrana
 
@@ -223,12 +223,12 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 #### <a name="availability"></a>Dostupnost
 
-|Šifrování|Status|Datová centra|
+|Šifrování|Stav|Datová centra|
 |---|---|---| 
-|Úložiště|GA|Vše|
-|Klíče AES-128|GA|Vše|
-|FairPlay|GA|Vše|
-|PlayReady|GA|Vše|
+|Úložiště|GA|Všechny|
+|Klíče AES-128|GA|Všechny|
+|FairPlay|GA|Všechny|
+|PlayReady|GA|Všechny|
 |Widevine|GA|Všechna kromě oblastí Německo, Federální vláda a Čína.
 
 ### <a name="reserved-units-rus"></a>Rezervované jednotky (RU)
@@ -249,9 +249,9 @@ Další informace najdete v části popisující [škálování](#scaling).
 
 #### <a name="availability"></a>Dostupnost
 
-|Název typu RU|Status|Datová centra
+|Název typu RU|Stav|Datová centra
 |---|---|---|
-|S1|GA|Vše|
+|S1|GA|Všechny|
 |S2|GA|Všechna kromě oblastí Brazílie – jih a Indie – západ|
 |S3|GA|Všechna kromě oblasti Indie – západ|
 
@@ -265,6 +265,6 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -4,11 +4,11 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 09/05/2017
 ms.openlocfilehash: 67cb1c1f92694ca217e99fb6528fb1d00f2cfcf6
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207305"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356344"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Funkce porovnání pro šablony Azure Resource Manager
 
@@ -239,7 +239,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | Nepravda |
 | checkStrings | Bool | True |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -315,7 +315,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | Nepravda |
 | checkStrings | Bool | True |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -392,7 +392,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkStrings | Bool | Nepravda |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -468,7 +468,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkStrings | Bool | Nepravda |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 

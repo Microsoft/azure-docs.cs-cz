@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966932"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384804"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -173,7 +173,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
 |TimeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace s back-end fondy používala protokol SSL. Platné hodnoty jsou zapnuté a vypnuté.|
-|hostitel| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
+|host| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
 |originalHost| Název hostitele, se kterým Application Gateway požadavek přijal z klienta.|
 ```json
 {
@@ -221,7 +221,7 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 |serverRouted| Back-end Server, na který Aplikační brána směruje požadavek.|
 |serverStatus| Stavový kód HTTP back-end serveru.|
 |serverResponseLatency| Latence odpovědi ze serveru back-end.|
-|hostitel| Adresa uvedená v hlavičce hostitele žádosti.|
+|host| Adresa uvedená v hlavičce hostitele žádosti.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -264,7 +264,7 @@ Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na ka
 |requestCount     | Počet zpracovaných požadavků.        |
 |latence | Průměrná latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí|
-|Propustnost| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
+|propustnost| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
 
 ```json
 {
@@ -301,7 +301,7 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 |requestUri     | Adresa URL přijatého požadavku       |
 |ruleSetType     | Typ sady pravidel Dostupná hodnota je OWASP.        |
 |ruleSetVersion     | Použitá verze sady pravidel Dostupné hodnoty jsou 2.2.9 a 3,0.     |
-|ruleId     | ID pravidla události triggeru        |
+|RuleId     | ID pravidla události triggeru        |
 |zpráva     | Uživatelsky přívětivá zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
 |action     |  Akce prováděná na žádosti Dostupné hodnoty se shodují a zablokují.      |
 |site     | Lokalita, pro kterou se protokol vygeneroval. V současné době se v seznamu zobrazí pouze globální, protože pravidla jsou globální.|
@@ -343,7 +343,7 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 
 ```
 
-### <a name="view-and-analyze-the-activity-log"></a>Zobrazení a analýza protokolu aktivit
+### <a name="view-and-analyze-the-activity-log"></a>Zobrazit a analyzovat protokol aktivit
 
 Data protokolu aktivit si můžete zobrazit použitím jedné z následujících metod:
 

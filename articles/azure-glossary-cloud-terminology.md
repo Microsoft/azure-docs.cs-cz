@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978762"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356567"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Glosář: slovník cloudové terminologie na platformě Azure
 
@@ -29,7 +29,7 @@ Glosář Microsoft Azure je krátký slovník cloudové terminologie pro platfor
 * [Microsoft Azure a Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) – definice služeb Azure a jejich protějšků v AWS.<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [Pojem Cloud Computing](https://azure.microsoft.com/overview/cloud-computing-dictionary/) – obecné oborové cloudové prostředí.
 
-## <a name="account"></a>account
+## <a name="account"></a>účet
 Účet, který se používá pro přístup k předplatnému Azure a jeho správu. Často se označuje jako účet Azure, přestože účet může být některý z těchto: stávající pracovní, školní nebo osobní účet Microsoft nebo uživatelské jméno a heslo pro Office 365. Můžete také vytvořit účet pro správu předplatného Azure při registraci [bezplatné zkušební verze](https://azure.microsoft.com).  
 Přečtěte si téma [registrace předplatného Azure s účtem Office 365](cost-management-billing/manage/office-365-account-for-azure-subscription.md) a [účty, které můžete použít k přihlášení](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -90,11 +90,11 @@ Zobrazit [stránku s podrobnostmi nabídky Azure](https://azure.microsoft.com/su
 ## <a name="portal"></a>portál
 Zabezpečený webový portál, který slouží k nasazení a správě služeb Azure.
 
-## <a name="region"></a>.
+## <a name="region"></a>region
 Oblast v geografické oblasti, která nezahrnuje mezinárodní hranice a obsahuje nejméně jedno datacentra. Ceny, regionální služby a typy nabídek se zveřejňují na úrovni oblasti. Oblast je obvykle spárována s jinou oblastí, což může trvat až několik set mil. Regionální páry lze použít jako mechanismus pro zotavení po havárii a pro scénáře s vysokou dostupností. Také se označuje jako *umístění*.  
 Zobrazit [oblasti Azure](best-practices-availability-paired-regions.md)
 
-## <a name="resource"></a>resource
+## <a name="resource"></a>prostředek
 Položka, která je součástí vašeho řešení Azure. Každá služba Azure umožňuje nasadit různé typy prostředků, jako jsou databáze nebo virtuální počítače.   
 Další informace najdete v tématu [Azure Resource Manager Overview](azure-resource-manager/management/overview.md) .
 
@@ -153,7 +153,7 @@ Další informace najdete v tématu [Virtual Network Overview](virtual-network/v
 ## <a name="web-app"></a>Webová aplikace
 Jiný název [aplikace App Service](#app-service-app).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Začínáme s Azure](https://azure.microsoft.com/get-started/)
 * [Centrum prostředků cloudu](https://azure.microsoft.com/resources/)  

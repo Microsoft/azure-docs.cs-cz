@@ -13,11 +13,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
 ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820731"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360090"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
@@ -242,7 +242,7 @@ Zvýhodněné hybridní využití Azure pro SQL Server se liší od mobility lic
 
 Zákazníci SQL Database mají pro SQL Server k Zvýhodněné hybridní využití Azure přidružená tato práva:
 
-|Využití licencí|K čemu Zvýhodněné hybridní využití Azure SQL Server získat přístup?|
+|Nároky na licenci|K čemu Zvýhodněné hybridní využití Azure SQL Server získat přístup?|
 |---|---|
 |Zákazníci se základními edicemi SQL Server Enterprise s SA|<li>Může platit základní sazba pro Pro obecné účely nebo Pro důležité obchodní informace SKLADOVOU položku.</li><br><li>1 jádro v místním prostředí = 4 jádra v Pro obecné účely SKU</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro důležité obchodní informace SKU</li>|
 |Zákazníci se základními edicemi SQL Server Standard s SA|<li>Může platit základní sazba jenom pro Pro obecné účely SKU.</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro obecné účely SKU</li>|

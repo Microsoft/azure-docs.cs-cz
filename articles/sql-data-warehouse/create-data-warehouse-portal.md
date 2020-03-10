@@ -12,17 +12,17 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 7a3dbe5d74dc1e88d0615937b8c6e6d2a77b64a7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200091"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381085"
 ---
 # <a name="quickstart-create-and-query-an-azure-synapse-analytics-sql-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování fondu SQL Azure synapse Analytics pomocí Azure Portal
 
 Zřízení fondu SQL ve službě Azure synapse Analytics (dřív SQL DW) pomocí Azure Portal umožňuje rychle vytvořit datový sklad a dotazovat se na něj.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
@@ -33,7 +33,7 @@ Zřízení fondu SQL ve službě Azure synapse Analytics (dřív SQL DW) pomocí
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
@@ -74,7 +74,7 @@ Pomocí těchto kroků vytvořte datový sklad, který obsahuje ukázková data 
 
 6. Na panelu nástrojů vyberte **oznámení** pro monitorování procesu nasazení.
 
-   ![oznámení](media/create-data-warehouse-portal/notification.png)
+   ![– oznámení](media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
@@ -114,7 +114,7 @@ Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým
 
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. V nabídce na levé straně vyberte **Azure synapse Analytics** a na stránce **Azure synapse Analytics** vyberte svůj datový sklad.
 
@@ -126,7 +126,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
 
-1. Otevřete SQL Server Management Studio.
+1. Otevřete nástroj SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -134,8 +134,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | :------ | :-------------- | :---------- |
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **sqlpoolservername.Database.Windows.NET**. |
-   | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-   | Přihlásit | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
+   | Ověřování | Ověřování serveru SQL | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+   | Přihlášení | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
    ||||
 
@@ -145,7 +145,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
 
-   ![databázové objekty](media/create-data-warehouse-portal/connected-ssms.png) 
+   ![objekty databáze](media/create-data-warehouse-portal/connected-ssms.png) 
 
 ## <a name="run-some-queries"></a>Spuštění nějakých dotazů
 

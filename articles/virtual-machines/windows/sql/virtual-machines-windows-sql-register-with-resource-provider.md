@@ -15,11 +15,11 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201624"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388746"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -35,14 +35,14 @@ Nasazení Azure Marketplace image SQL Server virtuálního počítače pomocí A
 
 - **Zjednodušená správa licencí**: registrace pomocí poskytovatele prostředků virtuálního počítače SQL zjednodušuje správu licencí SQL Server a umožňuje rychlou identifikaci SQL Server virtuálních počítačů s povoleným Zvýhodněné hybridní využití Azure pomocí [Azure Portal](virtual-machines-windows-sql-manage-portal.md), AZ CLI nebo PowerShellu: 
 
-   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-   # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
@@ -57,7 +57,7 @@ Další informace o výhodách použití poskytovatele prostředků virtuálníc
 <iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Výhody od poskytovatele prostředků SQL VM při samoobslužné instalaci SQL Server na Azure – Microsoft Channel 9 video"></iframe>
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat: 
 
@@ -106,14 +106,14 @@ Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem pr
 
 Zaregistrujte poskytovatele prostředků virtuálního počítače SQL do svého předplatného Azure pomocí AZ CLI nebo PowerShellu. 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 ```azurecli-interactive
 # Register the SQL VM resource provider to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell-interactive
 # Register the SQL VM resource provider to your subscription
@@ -132,7 +132,7 @@ Poskytněte SQL Server Typ licence jako průběžné platby (`PAYG`) a platíte 
 
 Instance clusteru s podporou převzetí služeb při selhání a nasazení s více instancemi se dají zaregistrovat jenom u poskytovatele prostředků virtuálního počítače SQL v odlehčeném režimu. 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 Pomocí AZ CLI Zaregistrujte SQL Server virtuálního počítače v jednoduchém režimu: 
 
@@ -142,7 +142,7 @@ Pomocí AZ CLI Zaregistrujte SQL Server virtuálního počítače v jednoduchém
   ```
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Pomocí PowerShellu Zaregistrujte SQL Server virtuální počítač v jednoduchém režimu:  
 
@@ -183,7 +183,7 @@ Jako **sqlLicenseType**zadejte buď `AHUB`, `PAYG`nebo `DR`, a buď `SQL2008-WS2
 K registraci instance SQL Server 2008 nebo 2008 R2 v instanci Windows Server 2008 použijte následující příkaz AZ CLI nebo PowerShell Code: 
 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 Zaregistrujte svůj virtuální počítač SQL Server 2008 v režimu neagentů pomocí AZ CLI: 
 
@@ -202,7 +202,7 @@ Pomocí AZ CLI Zaregistrujte svůj virtuální počítač SQL Server 2008 R2 v r
    --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
  ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Pomocí PowerShellu Zaregistrujte virtuální počítač SQL Server 2008 v režimu agenta: 
 
@@ -245,7 +245,7 @@ Postup upgradu režimu agenta na úplný:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejít na prostředek [virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Vyberte svůj virtuální počítač SQL Server a vyberte **Přehled**. 
 1. V případě SQL Server virtuálních počítačů pomocí agenta nebo režimu zjednodušeného IaaS vyberte možnost **jediný typ licence a aktualizace edice jsou k dispozici ve zprávě rozšíření SQL IaaS** .
@@ -258,7 +258,7 @@ Postup upgradu režimu agenta na úplný:
 
 ### <a name="command-line"></a>Příkazový řádek
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 Spusťte následující příkaz AZ CLI Code fragment:
 
@@ -267,7 +267,7 @@ Spusťte následující příkaz AZ CLI Code fragment:
   az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
   ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Spusťte následující fragment kódu prostředí PowerShell:
 
@@ -286,7 +286,7 @@ Můžete ověřit, jestli váš virtuální počítač s SQL Server už je zareg
 
 ### <a name="azure-portal"></a>Azure Portal 
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Přejít na [virtuální počítače s SQL Server](virtual-machines-windows-sql-manage-portal.md).
 1. Ze seznamu vyberte svůj virtuální počítač SQL Server. Pokud zde SQL Server virtuální počítač, pravděpodobně není zaregistrovaný u poskytovatele prostředků virtuálního počítače SQL. 
 1. Zobrazit hodnotu v části **stav** Pokud je stav **úspěšný**, byl virtuální počítač SQL Server zaregistrován u poskytovatele prostředků virtuálního počítače SQL úspěšně. 
@@ -297,14 +297,14 @@ Můžete ověřit, jestli váš virtuální počítač s SQL Server už je zareg
 
 Ověřte aktuální SQL Server stav registrace virtuálního počítače pomocí AZ CLI nebo PowerShellu. `ProvisioningState` se zobrazí `Succeeded`, pokud byla registrace úspěšná. 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 
   ```azurecli-interactive
   az sql vm show -n <vm_name> -g <resource_group>
  ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
   Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
@@ -345,7 +345,7 @@ Chcete-li zrušit registraci SQL Serverho virtuálního počítače poskytovatel
 
 ### <a name="command-line"></a>Příkazový řádek
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Pokud chcete zrušit registraci virtuálního počítače s SQL Server od poskytovatele prostředků pomocí Azure CLI, použijte příkaz [AZ SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) . Tato akce odebere *prostředek* virtuálního počítače SQL Server, ale virtuální počítač se neodstraní. 
 
 
@@ -356,7 +356,7 @@ az sql vm delete
   --yes 
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Pokud chcete zrušit registraci virtuálního počítače s SQL Server od poskytovatele prostředků pomocí Azure CLI, použijte příkaz [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm). Tato akce odebere *prostředek* virtuálního počítače SQL Server, ale virtuální počítač se neodstraní. 
 
 ```powershell-interactive

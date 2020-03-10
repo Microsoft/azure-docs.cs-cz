@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976957"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393842"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Entity a jejich účel v LUIS
 
@@ -128,7 +128,7 @@ Pokud LUIS nalezne `location`, ale nemůže určit roli, entita umístění se p
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Pokud potřebujete více než maximální počet entit
 
-Pokud potřebujete víc, než je limit, obraťte se na podporu. Uděláte to tak, získat podrobné informace o systému, přejděte [LUIS](luis-reference-regions.md#luis-website) webu a pak vyberte **podporu**. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/).
+Pokud potřebujete víc, než je limit, obraťte se na podporu. Provedete to tak, že shromáždíte podrobné informace o vašem systému, přejdete na web [Luis](luis-reference-regions.md#luis-website) a pak vyberete **Podpora**. Pokud vaše předplatné Azure zahrnuje služby podpory, obraťte se na [technickou podporu Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="entity-prediction-status"></a>Stav předpovědi entity
 
@@ -136,9 +136,9 @@ Portál LUIS se zobrazí, když entita ve vzorovém utterance má jinou předpov
 
 ## <a name="next-steps"></a>Další kroky
 
-Další koncepty o dobré [projevy](luis-concept-utterance.md).
+Seznamte se s koncepty dobré [projevy](luis-concept-utterance.md).
 
-Zobrazit [přidat entity](luis-how-to-add-entities.md) získat další informace o přidání entity do aplikace LUIS.
+Další informace o tom, jak přidat entity do aplikace LUIS, najdete v tématu věnovaném [Přidání entit](luis-how-to-add-entities.md) .
 
 Viz [kurz: extrakce strukturovaných dat ze utterance uživatelů pomocí entit strojového učení v tématu Language Understanding (Luis)](tutorial-machine-learned-entity.md) , kde se dozvíte, jak extrahovat strukturovaná data z utterance pomocí této entity, kterou se naučila počítač.
  
