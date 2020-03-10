@@ -393,6 +393,7 @@
           href: media-services-deliver-asset-download.md
         - name: Scénář streamování při selhání
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: Konzumace
       items:
         - name: Přehrávání médií pomocí stávajících přehrávačů

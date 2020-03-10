@@ -128,7 +128,7 @@
         - name: Zakoupení domény
           href: ../manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Mapování domén s Traffic Managerem
-          href: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+          href: ../configure-domain-traffic-manager.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Migrace aktivní domény
           href: ../manage-custom-dns-migrate-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Zabezpečená aplikace
@@ -155,7 +155,7 @@
       items:
         - name: Vertikální navýšení kapacity serveru
           href: ../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Horizontální navýšení kapacity na několik instancí
+        - name: Škálování na více instancí
           href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Hostování s vysokou hustotou
           href: ../manage-scale-per-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json

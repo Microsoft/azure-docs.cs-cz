@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 256bae142cad43325f96871c377eaa53660ffafe
-  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+  ms.openlocfilehash: 5311b4c8bafbd525ae69d6778e92dc99ae2d4d7d
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/06/2020
-  ms.locfileid: "78673547"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943078"
 highlightedContent:
   items:
   - title: Úvodní příručka pro vývojáře v Azure
@@ -347,7 +347,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/power-bi.svg
     azureCategories:
     - analytics
-    url: power-bi-embedded/index.md
+    url: https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded
   - title: R Server pro HDInsight
     summary: Prediktivní analýza, strojové učení a statistické modelování pro velký objem dat
     imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
@@ -460,7 +460,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cloud-services.svg
     azureCategories:
     - compute
-    url: cloud-services/index.md
+    url: cloud-services/index.yml
   - title: Container Instances
     summary: Snadné spouštění kontejnerů v Azure bez nutnosti spravovat servery
     imageSrc: https://static.docs.com/ui/media/product/azure/container-instances.svg
