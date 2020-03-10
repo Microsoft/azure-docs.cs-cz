@@ -4,23 +4,25 @@ description: Tento článek vám pomůže lépe porozumět datům, která obsahu
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560605"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245376"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
 Tento článek vám pomůže lépe porozumět datům o využití a nákladech za Azure, která jsou zahrnuta ve službě Azure Cost Management. Vysvětluje, jak často se data zpracovávají, shromažďují, zobrazují a uzavírají. Za využití Azure se vám účtuje měsíčně. Přestože fakturační cykly probíhají měsíčně, počáteční a koncové datum cyklu se liší podle typu předplatného. To, jak často služba Cost Management získává data o využití, se liší v závislosti na různých faktorech. Mezi tyto faktory patří doba, po kterou se zpracovávají data, a to, jak často služby Azure generují využití do fakturačního systému.
 
 Cost Management zahrnuje veškeré využití a nákupy, včetně rezervací a nabídek třetích stran, pro účty pod smlouvou Enterprise (EA). Účty Smlouvy se zákazníkem Microsoftu a jednotlivá předplatná s tarify průběžných plateb zahrnují pouze využití ze služeb Azure a Marketplace. Podpora a další náklady zahrnuty nejsou. Až do vygenerování faktury se náklady pouze odhadují a nezohledňují kredity.
+
+Pokud máte nové předplatné, nemůžete rovnou využívat funkce služby Cost Management. Může trvat až 48 hodin, než budete moct využívat všechny funkce služby Cost Management.
 
 ## <a name="supported-microsoft-azure-offers"></a>Podporované nabídky Microsoft Azure
 

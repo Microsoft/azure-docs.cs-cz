@@ -3,17 +3,17 @@ title: Kurz – Snížení nákladů na Azure pomocí doporučení
 description: Tento kurz vám pomůže snížit náklady na Azure, pokud se budete řídit doporučeními ohledně optimalizace.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 796d843461d5d622988f7992439a7c4426186761
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199955"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245411"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů na základě doporučení
 
@@ -32,7 +32,7 @@ Doporučení jsou dostupná pro nejrůznější obory a typy účtů Azure. Úpl
 - Předplatné
 - Skupina prostředků
 
-Musíte mít aktivní virtuální počítače, které jsou aktivní nejméně 14 dnů.
+Pokud máte nové předplatné, nemůžete rovnou využívat funkce služby Cost Management. Může trvat až 48 hodin, než budete moct využívat všechny funkce služby Cost Management. Také musíte mít aktivní virtuální počítače, které jsou aktivní nejméně 14 dnů.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com/).

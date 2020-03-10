@@ -4,17 +4,17 @@ description: Tento kurz vám pomůže plánovat a zohledňovat náklady na služ
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/23/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582380"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251171"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
@@ -40,7 +40,9 @@ V tomto kurzu se naučíte:
 
 Rozpočty jsou podporovány pro různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku, který [vysvětluje data služby Cost Management](understand-cost-mgt-data.md). Pokud chcete zobrazit rozpočty, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
 
- Pokud máte předplatná Azure EA, musíte mít oprávnění ke čtení, abyste si mohli rozpočty zobrazit. Chcete-li rozpočty vytvářet a spravovat, musíte mít oprávnění přispěvatele. Můžete vytvořit individuální rozpočty pro předplatná EA a skupiny prostředků. Nemůžete však vytvořit rozpočty pro fakturační účty EA.
+Pokud máte nové předplatné, nemůžete rovnou vytvořit rozpočet ani využívat další funkce služby Cost Management. Může trvat až 48 hodin, než budete moct využívat všechny funkce služby Cost Management.
+
+Pokud máte předplatná Azure EA, musíte mít oprávnění ke čtení, abyste si mohli rozpočty zobrazit. Chcete-li rozpočty vytvářet a spravovat, musíte mít oprávnění přispěvatele. Můžete vytvořit individuální rozpočty pro předplatná EA a skupiny prostředků. Nemůžete však vytvořit rozpočty pro fakturační účty EA.
 
 Pro rozpočty se podporují následující oprávnění nebo obory Azure pro předplatná podle uživatelů a skupin. Další informace o oborech najdete v článku o [principech oborů a práci s nimi](understand-work-scopes.md).
 

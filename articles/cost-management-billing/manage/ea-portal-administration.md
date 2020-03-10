@@ -7,12 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3006450fe530d3e6271ad624c6f246213cab6569
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 79225d4dfe9e53da6936f8647c9f5a1dff0b4909
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272461"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301468"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -24,7 +24,7 @@ Podnikoví správci mají při správě registrace do Azure EA největší oprá
 
 ## <a name="update-user-state-from-pending-to-active"></a>Aktualizace stavu uživatele z Čeká na vyřízení na Aktivní
 
-Při prvním přidání nových vlastníků účtů do registrace Azure EA se u nových vlastníků zobrazí stav _Čeká na vyřízení_. Jakmile noví vlastníci účtu dostanou úvodní aktivační e-mail, můžou se přihlásit a aktivovat si účet. Jakmile si účet aktivují, stav účtu se aktualizuje z _Čeká na vyřízení_ na _Aktivní_. Vlastník účtu si musí přečíst zprávu upozornění a pak kliknout na **Pokračovat**. Při vytvoření komerčního účtu se může novým uživatelům zobrazit výzva k zadání jména a příjmení. Pokud se zobrazí, musí zadat požadované informace, aby mohli pokračovat, a pak se účet aktivuje.
+Při prvním přidání nových vlastníků účtů do registrace Azure EA se u nových vlastníků zobrazí stav _Čeká na vyřízení_. Jakmile noví vlastníci účtu dostanou úvodní aktivační e-mail, můžou se přihlásit a aktivovat si účet. Jakmile si účet aktivují, stav účtu se aktualizuje z _Čeká na vyřízení_ na _Aktivní_. Vlastník účtu si musí přečíst zprávu upozornění a pak vybrat **Pokračovat**. Při vytvoření komerčního účtu se může novým uživatelům zobrazit výzva k zadání jména a příjmení. Pokud se zobrazí, musí zadat požadované informace, aby mohli pokračovat, a pak se účet aktivuje.
 
 ## <a name="add-a-department-admin"></a>Přidání správce oddělení
 
@@ -39,28 +39,28 @@ Podnikoví správci můžou přidružovat existující účty k oddělením v r�
 ### <a name="to-associate-an-account-to-a-department"></a>Přidružení účtu k oddělení
 
 1. Přihlaste se k portálu Azure EA jako podnikový správce.
-1. V levém navigačním panelu klikněte na **Spravovat**.
-1. Klikněte na **Oddělení**.
-1. Najeďte myší na řádek s požadovaným účtem a klikněte na ikonu tužky na pravé straně.
+1. V levém navigačním panelu vyberte **Manage** (Spravovat).
+1. Vyberte **Oddělení**.
+1. Najeďte myší na řádek s požadovaným účtem a vyberte ikonu tužky na pravé straně.
 1. V rozevírací nabídce vyberte požadované oddělení.
-1. Klikněte na **Uložit**.
+1. Vyberte **Uložit**.
 
 ## <a name="department-spending-quotas"></a>Kvóty útraty oddělení
 
-Zákazníci EA můžou nastavit nebo změnit kvóty útraty pro každé oddělení v rámci registrace. Výše kvóty útraty se nastavuje pro aktuální období závazku. Pokud nedojde k aktualizaci hodnot, na konci aktuálního období závazku systém prodlouží stávající kvótu útraty na další období závazku.
+Zákazníci se smlouvou Enterprise můžou nastavit nebo změnit kvóty útraty pro každé oddělení v rámci registrace. Výše kvóty útraty se nastavuje pro aktuální období závazku. Pokud nedojde k aktualizaci hodnot, na konci aktuálního období závazku systém prodlouží stávající kvótu útraty na další období závazku.
 
 Správce oddělení může zobrazit kvótu útraty, ale pouze podnikový správce může aktualizovat její výši. Podnikový správce a správce oddělení obdrží oznámení, když dojde k dosažení 50 %, 75 %, 90 % a 100 % kvóty.
 
 ### <a name="enterprise-administrator-to-set-the-quota"></a>Nastavení kvóty podnikovým správcem:
 
  1. Otevřete portál Azure EA.
- 1. V levém navigačním panelu klikněte na **Spravovat**.
- 1. Klikněte na kartu **Oddělení**.
- 1. Klikněte na požadované oddělení.
- 1. Klikněte na ikonu tužky v části Podrobnosti o oddělení nebo klikněte na tlačítko **+ Přidat oddělení** a přidejte nové oddělení i s kvótou útraty.
+ 1. V levém navigačním panelu vyberte **Manage** (Spravovat).
+ 1. Vyberte kartu **Oddělení**.
+ 1. Vyberte požadované oddělení.
+ 1. Vyberte symbol tužky v části Podrobnosti o oddělení nebo vyberte symbol **+ Přidat oddělení** a přidejte nové oddělení i s kvótou útraty.
  1. V části Podrobnosti o oddělení zadejte do pole Kvóta útraty (USD) výši kvóty útraty v měně registrace (hodnota musí být vyšší než 0).
     - V tuto chvíli můžete upravit také Název oddělení a Nákladové středisko.
- 1. Klikněte na **Uložit**.
+ 1. Vyberte **Uložit**.
 
 Kvóta útraty oddělení se teď zobrazí na kartě Oddělení v zobrazení Seznam oddělení. Na konci aktuálního závazku se na portálu Azure EA zachovají kvóty útraty pro další období závazku.
 
@@ -69,8 +69,8 @@ Výše kvóty oddělení je nezávislá na aktuálním peněžním závazku a v�
 ### <a name="department-administrator-to-view-the-quota"></a>Zobrazení kvóty správcem oddělení:
 
 1. Otevřete portál Azure EA.
-1. V levém navigačním panelu klikněte na **Spravovat**.
-1. Kliknutím na kartu **Oddělení** zobrazte zobrazení Seznam oddělení s kvótami útraty.
+1. V levém navigačním panelu vyberte **Manage** (Spravovat).
+1. Výběrem karty **Oddělení** zobrazte zobrazení Seznam oddělení s kvótami útraty.
 
 Pokud jste nepřímý zákazník, váš distribuční partner musí povolit funkce nákladů.
 
@@ -88,27 +88,27 @@ Další informace o rolích uživatelů najdete v tématu [Role podnikových už
 
 ## <a name="add-an-azure-ea-account"></a>Přidání účtu Azure EA
 
-Účet Azure EA je organizační jednotka portálu Azure EA, která se používá ke správě předplatných a při vytváření sestav. Pokud chcete získat přístup ke službám Azure, potřebujete vytvořit účet nebo vám ho někdo musí vytvořit.
+Účet Azure EA je organizační jednotka portálu Azure EA Portal. Slouží ke správě předplatných a také ke generování sestav. Pokud chcete získat přístup ke službám Azure, potřebujete vytvořit účet nebo vám ho někdo musí vytvořit.
 
 Další informace o účtech Azure najdete v tématu Přidání účtu.
 
 ## <a name="enterprise-devtest-offer"></a>Nabídka Enterprise pro vývoj/testování
 
-Jako podnikový správce Azure teď můžete vlastníkům účtů ve vaší organizaci umožnit vytvářet předplatná na základě nabídky EA pro vývoj/testování. Můžete to provést zaškrtnutím políčka Vývoj/testování u příslušného vlastníka účtu na portálu Azure EA.
+Jako podnikový správce Azure můžete vlastníkům účtů ve vaší organizaci umožnit vytvářet předplatná na základě nabídky EA pro vývoj/testování. Můžete to provést zaškrtnutím políčka Vývoj/testování u příslušného vlastníka účtu na portálu Azure EA Portal.
 
 Po zaškrtnutí políčka Vývoj/testování informujte daného vlastníka účtu, aby mohl nastavit potřebná předplatná EA pro vývoj/testování pro týmy předplatitelů nabídky Vývoj/testování.
 
-Tato nabídka umožňuje aktivním předplatitelům sady Visual Studio spouštět v Azure vývojové a testovací úlohy za speciální sazby pro vývoj/testování a poskytuje jim přístup k celé galerii imagí pro vývoj/testování, včetně imagí Windows 8.1 a Windows 10.
+Tato nabídka umožňuje aktivním předplatitelům sady Visual Studio spouštět v Azure vývojové a testovací úlohy za speciální sazby pro vývoj/testování. Poskytuje přístup k celé galerii imagí pro vývoj/testování, včetně imagí Windows 8.1 a Windows 10.
 
 ### <a name="to-set-up-the-enterprise-devtest-offer"></a>Nastavení nabídky Enterprise pro vývoj/testování:
 
 1. Přihlaste se jako podnikový správce.
-1. V levém navigačním panelu klikněte na **Spravovat**.
-1. Klikněte na kartu **Účet**.
-1. Klikněte na řádek účtu, kterému chcete povolit přístup k nabídce Vývoj/testování.
-1. Klikněte na ikonu tužky napravo od řádku.
+1. V levém navigačním panelu vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Account** (Účet).
+1. Vyberte řádek účtu, kterému chcete povolit přístup k nabídce Vývoj/testování.
+1. Vyberte symbol tužky napravo od řádku.
 1. Zaškrtněte políčko Vývoj/testování.
-1. Klikněte na **Uložit**.
+1. Vyberte **Uložit**.
 
 Když se uživatel přidá jako vlastník účtu přes portál Azure EA, všechna předplatná Azure na základě nabídky Vývoj/testování s průběžnými platbami nebo nabídek měsíčního kreditu pro předplatitele sady Visual Studio přidružená k danému vlastníkovi účtu se převedou na nabídku EA pro vývoj/testování. Předplatná na základě jiných typů nabídek, jako jsou nabídky průběžných plateb, přidružená k danému vlastníkovi účtu se převedou na nabídky Microsoft Azure Enterprise.
 
@@ -116,13 +116,13 @@ Nabídka Vývoj/testování se v současné době nevztahuje na zákazníky Azur
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Převod podnikového účtu do nové registrace
 
-Při převodu účtu se jeho vlastník přenese z jedné registrace do druhé. Do cílové registrace se přesunou všechna související předplatná pod tímto vlastníkem. Tato operace se provede, když máte víc aktivních registrací a chcete přesunout jenom vybrané vlastníky účtů.
+Při převodu účtu se jeho vlastník přenese z jedné registrace do druhé. Do cílové registrace se přesunou všechna související předplatná pod tímto vlastníkem. Převod účtu využijte v případě, že máte více aktivních registrací a chcete přesunout jenom vybrané vlastníky účtů.
 
 Tato část je určená jenom k informativním účelům, protože tuto akci nemůže provést podnikový správce. Pro převod podnikového účtu na novou registraci se vyžaduje žádost o podporu.
 
 Při převodu podnikového účtu do nové registrace mějte na paměti následující body:
 
-- Převádějí se jenom účty, které jsou zadané v požadavku. Pokud zvolíte všechny účty, přenesou se všechny.
+- Převádějí se jenom účty, které jsou zadané v požadavku. Pokud zvolíte všechny účty, převedou se všechny.
 - Zdrojová registrace zůstane v aktivním nebo prodlouženém stavu. Registraci můžete používat dál, dokud jí nevyprší platnost.
 
 ### <a name="prerequisites"></a>Požadavky
@@ -148,7 +148,7 @@ Převod registrace se bere v úvahu v těchto případech:
 
 - Skončilo období závazku aktuální registrace.
 - Registrace je ve stavu vypršení platnosti nebo prodloužení a dojednává se nová smlouva.
-- Pokud máte více registrací a chcete konsolidovat všechny účty a fakturaci v rámci jediné registrace.
+- Máte více registrací a chcete zkombinovat všechny účty a fakturaci v rámci jediné registrace.
 
 Tato část je určená jenom k informativním účelům, protože tuto akci nemůže provést podnikový správce. Pro převod podnikové registrace na novou se vyžaduje žádost o podporu.
 
@@ -158,8 +158,8 @@ Pokud požádáte o převod celé podnikové registrace do jiné registrace, pro
 - U registrace se nastaví stav _Přenesené_. Přenesená registrace bude k dispozici jenom pro sestavy, které se týkají historie použití.
 - Do přenesené registrace už nemůžete přidávat role ani předplatná. Přenesený stav brání dalšímu použití této registrace.
 - Zbývající zůstatek peněžního závazku ve smlouvě se ruší, včetně budoucích podmínek.
--   Pokud registrace, ze které provádíte převod, obsahuje zakoupené rezervované instance, kupní cena rezervovaných instancí zůstane ve zdrojové registraci, ale všechny výhody rezervovaných instancí se převedou do nové registrace.
--   Jednorázový poplatek za nákup na marketplace ani žádné měsíční paušální poplatky již vzniklé ve staré registraci se do nové registrace nepřevedou. Poplatky za marketplace na základě spotřeby se převedou.
+-    Pokud registrace, ze které provádíte převod, obsahuje zakoupené rezervované instance, kupní cena rezervovaných instancí zůstane ve zdrojové registraci, ale všechny výhody rezervovaných instancí se převedou do nové registrace.
+-    Jednorázový poplatek za nákup na marketplace ani žádné měsíční paušální poplatky již vzniklé ve staré registraci se do nové registrace nepřevedou. Poplatky za marketplace na základě spotřeby se převedou.
 
 ### <a name="effective-transfer-date"></a>Platné datum převodu
 
@@ -205,16 +205,16 @@ Zobrazení uživatelů s přístupem RBAC k předplatnému:
 
 Pokud se předplatné převede do účtu jiného tenanta Azure AD, tak všichni uživatelé, skupiny a instanční objekty, které měly ke správě prostředků přístup [RBAC](../../role-based-access-control/overview.md), tento přístup _ztratí_. I když neexistuje přístup RBAC, může být přístup k předplatnému dostupný prostřednictvím bezpečnostních mechanismů, jako je například:
 
-- Správa certifikátů, které udělují uživateli oprávnění správce prostředků předplatného. Další informace najdete v tématu o [vytvoření a nahrání certifikátu pro správu Azure](../../cloud-services/cloud-services-certs-create.md).
+- Certifikáty pro správu, které udělují uživateli oprávnění správce prostředků předplatného. Další informace najdete v tématu o [vytvoření a nahrání certifikátu pro správu Azure](../../cloud-services/cloud-services-certs-create.md).
 - Přístupové klíče pro služby, jako je Storage. Další informace najdete v tématu [Přehled účtu Azure Storage](../../storage/common/storage-account-overview.md).
 - Oprávnění pro vzdálený přístup ke službám, jako je Azure Virtual Machines.
 
-Pokud příjemce potřebuje omezit přístup k prostředkům Azure, měl by zvážit aktualizaci tajných kódů přidružených ke službě. Většinu prostředků můžete aktualizovat takto:
+Pokud příjemce potřebuje omezit přístup k prostředkům Azure, měl by zvážit aktualizaci tajných klíčů přidružených k dané službě. Většinu prostředků můžete aktualizovat takto:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce centra vyberte **Všechny prostředky**.
 3. Vyberte prostředek.
-4. Na stránce prostředku klikněte na **Nastavení**. Tady se můžete podívat na stávající tajné kódy nebo je můžete aktualizovat.
+4. Na stránce prostředku vyberte **Nastavení**. Tady se můžete podívat na stávající tajné klíče nebo je můžete aktualizovat.
 
 ## <a name="delete-subscription"></a>Odstranění předplatného
 
@@ -222,20 +222,22 @@ Odstranění předplatného, ve kterém jste vlastníkem účtu:
 
 1. Přihlaste se k webu Azure Portal pomocí přihlašovacích údajů přidružených k vašemu účtu.
 1. V nabídce centra vyberte **Předplatná**.
-1. Na kartě Předplatná v levém horním rohu stránky vyberte předplatné, které chcete zrušit, a kliknutím na **Zrušit předplatné** otevřete kartu Zrušení.
-1. Zadejte název předplatného, zvolte důvod pro zrušení a klikněte na tlačítko **Zrušit předplatné**.
+1. Na kartě Předplatná v levém horním rohu stránky vyberte předplatné, které chcete zrušit, a výběrem možnosti **Zrušit předplatné** otevřete kartu Zrušení.
+1. Zadejte název předplatného, zvolte důvod pro zrušení a vyberte tlačítko **Zrušit předplatné**.
 
-Mějte na paměti, že předplatná můžou rušit pouze správci účtů.
+Předplatná můžou rušit pouze správci účtů.
+
+Další informace najdete v části [Co se stane po zrušení předplatného?](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription).
 
 ## <a name="delete-an-account"></a>Odstranění účtu
 
 Odebrat je možné pouze aktivní účty bez aktivních předplatných.
 
 1. V levém navigačním panelu portálu Enterprise Portal vyberte **Spravovat**.
-1. Klikněte na kartu **Účet**.
+1. Vyberte kartu **Account** (Účet).
 1. V tabulce Účty vyberte účet, který chcete odstranit.
-1. Klikněte na ikonu X na pravé straně řádku účtu.
-1. Jakmile účet nebude obsahovat žádná aktivní předplatná, kliknutím na tlačítko **Ano** pod řádkem účtu potvrďte odebrání účtu.
+1. Vyberte symbol X na pravé straně řádku účtu.
+1. Jakmile účet nebude obsahovat žádná aktivní předplatná, výběrem možnosti **Ano** pod řádkem účtu potvrďte odebrání účtu.
 
 ## <a name="update-notification-settings"></a>Aktualizace nastavení oznámení
 
@@ -251,11 +253,11 @@ Zobrazení aktuálního nastavení oznámení:
 
 Přidání kontaktu:
 
-1. Klikněte na **+Přidat kontakt**.
+1. Vyberte **+ Přidat kontakt**.
 2. Zadejte e-mailovou adresu a potvrďte ji.
-3. Klikněte na **Uložit**.
+3. Vyberte **Uložit**.
 
-Nový kontakt pro oznámení se zobrazí v oddílu **Kontakt pro oznámení**. Pokud chcete změnit frekvenci oznamování, vyberte kontakt pro oznámení a klikněte na symbol tužky, který je napravo od vybraného řádku. Nastavte **denní**, **týdenní**, **měsíční** nebo **žádnou** frekvenci.
+Nový kontakt pro oznámení se zobrazí v oddílu **Kontakt pro oznámení**. Pokud chcete změnit frekvenci oznamování, vyberte kontakt pro oznámení a pak vyberte symbol tužky, který je napravo od vybraného řádku. Nastavte **denní**, **týdenní**, **měsíční** nebo **žádnou** frekvenci.
 
 Můžete také potlačit _blížící se koncové datum pokrytého období_ a _vypnout a zrušit zřízené blížící se datum_ u oznámení o životním cyklu. Pokud vypnete oznámení o životním cyklu, potlačíte tím oznámení o pokrytém období a o datu ukončení smlouvy.
 
@@ -265,23 +267,23 @@ Každý správce partnera na portálu Azure EA může přidat nebo odebrat ostat
 
 ### <a name="add-a-partner-administrator"></a>Přidání správce partnera
 
-Pokud chcete zobrazit seznam všech registrací přidružených ke stejné partnerské organizaci jako aktuální uživatel, klikněte na kartu **Registrace** a zaškrtněte políčko požadované registrace.
+Pokud chcete zobrazit seznam všech registrací přidružených ke stejné partnerské organizaci jako aktuální uživatel, vyberte kartu **Registrace** a zaškrtněte políčko požadované registrace.
 
 1. Přihlaste se jako správce partnera.
-1. V levém navigačním panelu klikněte na **Spravovat**.
-1. Klikněte na kartu **Partner**.
-1. Klikněte na **+ Přidat správce** a vyplňte e-mailovou adresu, kontakt pro zasílání oznámení a podrobnosti o oznámení.
-1. Klikněte na **Přidat**.
+1. V levém navigačním panelu vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Partner**.
+1. Vyberte **+ Přidat správce** a vyplňte e-mailovou adresu, kontakt pro oznámení a podrobnosti o oznámení.
+1. Vyberte **Přidat**.
 
 ### <a name="remove-a-partner-administrator"></a>Odebrání správce partnera
 
-Pokud chcete zobrazit seznam všech registrací přidružených ke stejné partnerské organizaci jako aktuální uživatel, klikněte na kartu **Registrace** a zaškrtněte políčko požadované registrace.
+Pokud chcete zobrazit seznam všech registrací přidružených ke stejné partnerské organizaci jako aktuální uživatel, vyberte kartu **Registrace** a zaškrtněte políčko požadované registrace.
 
 1. Přihlaste se jako správce partnera.
-1. V levém navigačním panelu klikněte na **Spravovat**.
-1. Klikněte na kartu **Partner**.
+1. V levém navigačním panelu vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Partner**.
 1. V části Správce vyberte odpovídající řádek správce, kterého chcete odebrat.
-1. Klikněte na ikonu X na pravé straně.
+1. Vyberte symbol X na pravé straně.
 1. Potvrďte, že skutečně chcete provést odstranění.
 
 ## <a name="manage-partner-notifications"></a>Správa oznámení pro partnery
@@ -291,12 +293,12 @@ Správci partnerů můžou spravovat frekvenci, s jakou budou u svých registrac
 Pokud uživatel nedostává oznámení, zkontrolujte, jestli jsou správně nastavená. Použijte k tomu následující postup.
 
 1. Přihlaste se na portál Azure EA jako správce partnera.
-2. Klikněte na **Spravovat** a pak klikněte na kartu **Partner**.
+2. Vyberte **Spravovat** a pak vyberte kartu **Partner**.
 3. V části Správce si prohlédněte seznam správců.
-4. Pokud chcete upravit předvolby oznámení, najeďte myší na příslušného správce a klikněte na symbol tužky.
-5. Podle potřeby aktualizujte frekvenci a životní cyklus oznámení.
-6. Pokud potřebujete přidat kontakt, klikněte na **Přidat**.
-7. Klikněte na **Uložit**.
+4. Pokud chcete upravit předvolby oznámení, najeďte myší na příslušného správce a vyberte symbol tužky.
+5. Podle potřeby zvyšte frekvenci a aktualizujte životní cyklus oznámení.
+6. Pokud potřebujete přidat kontakt, vyberte **Přidat**.
+7. Vyberte **Uložit**.
 
 ![Příklad ukazující pole pro přidání kontaktu ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
 
@@ -307,11 +309,11 @@ Správci partnerů můžou zobrazit seznam všech svých přímých i nepřímý
 ### <a name="view-a-list-of-enrollments"></a>Zobrazení seznamu registrací
 
 1. Přihlaste se jako správce partnera.
-1. V navigačním panelu na levé straně stránky klikněte na **Spravovat**.
-1. Klikněte na kartu**Registrace**.
+1. V navigačním panelu na levé straně stránky vyberte **Spravovat**.
+1. Klikněte na kartu **Enrollment** (Registrace).
 1. Zaškrtněte políčko u požadované registrace.
 
-V horní části stránky zůstane zobrazení všech registrací, včetně polí pro jednotlivé registrace. Mezi registracemi můžete přecházet také kliknutím na číslo aktuální registrace v navigačním panelu na levé straně stránky. Zobrazí se automaticky otevírané okno, ve kterém můžete vyhledávat registrace nebo kliknutím na odpovídající políčko vybrat jinou registraci.
+V horní části stránky zůstane zobrazení všech registrací, včetně polí pro jednotlivé registrace. Mezi registracemi můžete přecházet také výběrem čísla aktuální registrace v navigačním panelu na levé straně stránky. Zobrazí se automaticky otevírané okno, ve kterém můžete vyhledávat registrace nebo zaškrtnutím odpovídajícího políčka vybrat jinou registraci.
 
 ## <a name="azure-sponsorship-offer"></a>Nabídka Azure Sponsorship
 
@@ -346,7 +348,7 @@ V jednom předplatném je povolený pouze jeden vlastník účtu.  Další role 
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Může být vlastník účtu Azure uvedený u více než jednoho oddělení?
 
-Vlastník účtu může být přidružený pouze k jednomu oddělení.  Je to z toho důvodu, aby se zajistilo přesné monitorování a rozdělování útraty a nákladů přidružených k odpovídajícímu oddělení v rámci registrace EA na portálu Azure EA.
+Ne, vlastník účtu může být přidružený pouze k jednomu oddělení. Tato zásada pomáhá zajistit přesné monitorování a rozdělování útraty a nákladů přidružených k odpovídajícímu oddělení v rámci registrace EA na portálu Azure EA Portal.
 
 ### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Může být vlastník účtu Azure uvedený jako skupina zabezpečení?
 
@@ -362,7 +364,7 @@ V současné době je potřeba k tomu použít zásady. To znamená, že byste m
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>Kde můžu vytvořit předplatné?
 
-Abyste mohli vytvořit předplatné nabídky Enterprise Azure (EA), správce vaší registrace EA musí na portálu Azure EA přidat váš účet do role vlastníka účtu. Pak se musíte přihlásit k portálu Azure EA a získat oprávnění k vytváření předplatných nabídek EA. První předplatné EA doporučujeme vytvořit pomocí odkazu + Přidat předplatné na kartě předplatného na portálu EA.  Jakmile však váš účet získá oprávnění, může být snadnější vytvářet předplatná na webu portal.azure.com na kartě předplatného v levém horním rohu stránky, kde můžete předplatné v jednom kroku vytvořit i přejmenovat.
+Abyste mohli vytvořit předplatné nabídky Enterprise Azure (EA), správce vaší registrace EA musí na portálu Azure EA Portal přidat váš účet do role vlastníka účtu. Pak se musíte přihlásit k portálu Azure EA Portal a získat oprávnění k vytváření předplatných nabídek EA. První předplatné EA doporučujeme vytvořit pomocí odkazu + Přidat předplatné na kartě předplatného na portálu EA Portal.  Jakmile však váš účet získá oprávnění, může být snadnější vytvářet předplatná na webu portal.azure.com na kartě předplatného v levém horním rohu stránky, kde můžete předplatné v jednom kroku vytvořit i přejmenovat.
 
 ### <a name="who-can-create-a-subscription"></a>Kdo může vytvořit předplatné?
 

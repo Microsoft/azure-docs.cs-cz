@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1c5dd5ebd5023b75aad5dabf6a721a1193a6224d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500576"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272208"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -42,6 +42,7 @@ Plány služby:
 - **Azure Database for PostgreSQL** – Rezervace se vztahuje pouze na náklady na výpočetní prostředky. Rezervace se nevztahuje na poplatky za software, sítě ani úložiště související s databázovými servery PostgreSQL.
 - **Azure Database for MariaDB** – Rezervace se vztahuje pouze na náklady na výpočetní prostředky. Rezervace se nevztahuje na poplatky za software, sítě ani úložiště související s databázovým serverem MariaDB.
 - **Azure Data Explorer** – Rezervace se vztahuje na přirážku. Rezervace se nevztahuje na poplatky za výpočetní prostředky, sítě ani úložiště související s clustery.
+- **Azure Cache for Redis** – Rezervace se vztahuje pouze na náklady na výpočetní prostředky. Rezervace se nevztahuje na poplatky za sítě ani úložiště související s instancemi mezipaměti Redis.
 - **Spravované disky SSD úrovně Premium** – Rezervace se vztahuje pouze na zadanou skladovou položku disku. 
 
 Softwarové plány:

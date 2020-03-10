@@ -4,17 +4,17 @@ description: V tomto článku je vysvětlené, jak partneři používají funkce
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117590"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245452"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -140,18 +140,14 @@ Pokud je nákladová zásada nastavená na **Ano**, můžou uživatelé předpla
 
 Pokud je zásada viditelnosti nákladů povolená, zobrazí se u všech služeb, které využívají předplatné, náklady podle tarifů s průběžnými platbami. U využitých rezervací se zobrazí nulové poplatky, a to jak u skutečných, tak u amortizovaných nákladů. Nákupy a nároky nejsou přidružené ke konkrétnímu předplatnému. To znamená, že se nákupy v rozsahu předplatného nezobrazují.
 
-Pokud chcete zobrazit náklady zákaznického tenanta, otevřete **Správu nákladů a fakturace** a vyberte příslušný fakturační účet s uzavřenou smlouvou s partnerem Microsoftu.
 
-![Výběr fakturačního účtu](./media/get-started-partners/select-billing-account.png)
+### <a name="view-customer-costs"></a>Zobrazení nákladů zákazníka
 
-V části **Fakturace** vyberte **Předplatná Azure** a pak vyberte zákazníka.
-
-![Výběr zákazníka s předplatným Azure](./media/get-started-partners/subscriptions-select-customer.png)
-
-Vyberte **Analýzu nákladů** a můžete začít prohlížet náklady.
-Analýza nákladů, rozpočty a upozornění jsou k dispozici pro rozsahy RBAC předplatného a skupin prostředků. Použijí se náklady podle tarifů s průběžnými platbami.
+Pokud chcete zobrazit náklady na tenanta zákazníka, otevřete **Cost Management a fakturace**. Vyberte **Analýza nákladů**, změňte rozsah na předplatné tenanta zákazníka a můžete začít prohlížet náklady.
 
 ![Zobrazení analýzy nákladů zákazníkem ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+
+Analýza nákladů, rozpočty a upozornění jsou k dispozici pro rozsahy RBAC předplatného a skupin prostředků. Použijí se náklady podle tarifů s průběžnými platbami.
 
 V amortizačních zobrazeních a ve skutečných nákladech na rezervované instance v rozsazích RBAC se zobrazí nulové poplatky. Náklady na rezervované instance se zobrazují jenom v těch rozsazích fakturace, kde došlo k nákupu.
 
