@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988630"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943000"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Seznámení s znalostními obchody v Azure Kognitivní hledání
 
 > [!IMPORTANT] 
-> znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
+> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 Znalostní báze je funkce služby Azure Kognitivní hledání, která uchovává výstup [kanálu rozšíření AI](cognitive-search-concept-intro.md) pro nezávislou analýzu nebo zpracování pro příjem dat. *Obohacený dokument* je výstup kanálu vytvořený z obsahu, který byl extrahován, strukturovaný a analyzován pomocí procesů AI. V standardním kanálu AI jsou obohacené dokumenty přechodné, používané jenom při indexování a pak se zahodí. Díky znalostnímu obchodu jsou rozšířené dokumenty zachované. 
 
@@ -97,7 +97,7 @@ Je ale možné vytvořit několik sad `table`-`object`-`file` projekce a můžet
 
 K vytvoření úložiště Knowledge Store použijte portál nebo verzi Preview REST API (`api-version=2019-05-06-Preview`).
 
-### <a name="use-the-azure-portal"></a>Použití portálu Azure
+### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
 Průvodce **importem dat** obsahuje možnosti pro vytvoření úložiště znalostí. V případě prvotního průzkumu [Vytvořte své první znalostní báze ve čtyřech krocích](knowledge-store-connect-power-bi.md).
 
@@ -131,7 +131,7 @@ Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nást
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>Referenční materiály k rozhraním API
+## <a name="api-reference"></a>API – referenční informace
 
 REST API verze `2019-05-06-Preview` poskytuje znalostní bázi s dalšími definicemi na dovednosti. Kromě odkazu najdete informace o tom, jak volat rozhraní API, v tématu [Vytvoření úložiště znalostí pomocí služby post](knowledge-store-create-rest.md) .
 
@@ -147,3 +147,13 @@ Nejjednodušším přístupem k vytváření obohacených dokumentů je [portál
 
 > [!div class="nextstepaction"]
 > [Vytvoření úložiště znalostí pomocí post a REST](knowledge-store-create-rest.md)
+
+Další informace o projekcich, možnostech a způsobu [jejich definování ve dovednosti](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [Projekce ve znalostní bázi Knowledge Store](knowledge-store-projection-overview.md)
+
+Kurz týkající se pokročilých konceptů projekce, jako je například vytváření řezů, line Shaping a Relationships, Začínáme s [definováním projekce ve znalostní bázi Knowledge Store](knowledge-store-projections-examples.md)
+
+> [!div class="nextstepaction"]
+> [Definování projekce ve znalostní bázi Knowledge Store](knowledge-store-projections-examples.md)

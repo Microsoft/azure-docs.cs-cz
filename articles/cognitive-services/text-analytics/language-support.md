@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899437"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942659"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyků a oblastí pro rozhraní API pro analýzu textu
 
@@ -32,7 +32,7 @@ Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete zk
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analýza mínění, Extrakce klíčových frází a rozpoznávání pojmenovaných entit
 
 V případě analýzy mínění, extrakce klíčových frází a rozpoznávání entit je seznam podporovaných jazyků pokročilejší, protože analyzátory jsou upřesněny tak, aby vyhovovaly jazykovým pravidlům dalších jazyků. V případě rozpoznávání pojmenovaných entit v2 je podpora pro úplnou sadu [typů entit](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) aktuálně omezena na následující jazyky: 
-* angličtina
+* Angličtina
 * Čínština (zjednodušená)
 * Francouzština
 * Němčina
@@ -47,7 +47,7 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 > [!NOTE]
 > Podrobnou jazykovou podporu pro funkci rozpoznávání pojmenovaných entit (NER) v3 Public Preview najdete v tématu [typy pojmenovaných entit](named-entity-types.md).
 
-| Jazyk              | Kód jazyka | Mínění | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky        |
+| Jazyk              | Kód jazyka | Mínění | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky:        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arabština                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Čeština                 |     `cs`      |           |             |           ✔ \*           |                |                    |
@@ -55,29 +55,29 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 | Čínština (tradiční)   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | dánština                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Nizozemština                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| angličtina               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
+| Angličtina               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
 | Finština               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Francouzština                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Němčina                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Řečtina                 |     `el`      |   ✔ \*    |             |                          |                |                    |
 | Maďarština             |     `hu`      |           |             |           ✔ \*           |                |                    |
-| italština               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Italština               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Japonština              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Korejština                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
 | Norština (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` také přijaty                   |
-| polština                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Polština                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Portugalština (Portugalsko) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` také přijaty |
 | Portugalština (Brazílie)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
 | Ruština               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Španělština               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
 | švédština               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| turečtina               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
+| Turečtina               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
 
 Podpora jazyka \* je ve verzi Preview.
 
 \** k dispozici také v [Analýza mínění V3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) a/nebo ve verzi Public Preview pro [rozpoznávání entit V3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) .
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Stránka dokumentace Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

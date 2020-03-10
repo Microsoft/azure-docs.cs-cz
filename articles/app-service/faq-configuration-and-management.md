@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649274"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942936"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -212,7 +212,7 @@ Další informace najdete v tématu [vytvoření App Service Environment](enviro
 V některých případech se vytváření App Service Environment nezdařilo. V takovém případě se v protokolech aktivit zobrazí následující chyba:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 Chcete-li tento problém vyřešit, ujistěte se, že není splněna žádná z následujících podmínek:
@@ -248,7 +248,7 @@ Chcete-li provést testování průniku, [odešlete žádost](https://portal.msr
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Návody nakonfigurovat vlastní název domény pro webovou aplikaci App Service, která používá Traffic Manager?
 
-Pokud chcete zjistit, jak použít vlastní název domény s aplikací App Service, která používá Azure Traffic Manager pro vyrovnávání zatížení, přečtěte si téma [Konfigurace vlastního názvu domény pro webovou aplikaci Azure s Traffic Manager](web-sites-traffic-manager-custom-domain-name.md).
+Pokud chcete zjistit, jak použít vlastní název domény s aplikací App Service, která používá Azure Traffic Manager pro vyrovnávání zatížení, přečtěte si téma [Konfigurace vlastního názvu domény pro webovou aplikaci Azure s Traffic Manager](configure-domain-traffic-manager.md).
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Můj App Service certifikát je označený jako podvodný. Návody vyřešit?
 

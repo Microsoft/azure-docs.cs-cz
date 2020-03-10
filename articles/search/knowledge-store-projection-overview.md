@@ -1,24 +1,24 @@
 ---
 title: Projekce ve znalostní bázi Knowledge Store (Preview)
 titleSuffix: Azure Cognitive Search
-description: Uložte obohacená data z kanálu indexování pro rozšíření AI do úložiště znalostí pro použití ve scénářích, které nejsou fulltextovým vyhledáváním. znalostní databáze je aktuálně ve verzi Public Preview.
+description: Uložte obohacená data z kanálu indexování pro rozšíření AI do úložiště znalostí pro použití ve scénářích, které nejsou fulltextovým vyhledáváním. Znalostní databáze je aktuálně ve verzi Public Preview.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754520"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942975"
 ---
 # <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projekce ve znalostní bázi ve službě Azure Kognitivní hledání
 
 > [!IMPORTANT] 
-> znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
+> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 Azure Kognitivní hledání v rámci indexování umožňuje rozšíření obsahu prostřednictvím integrovaných schopností rozpoznávání a vlastní dovednosti. Obohacení vytvoří nové informace tam, kde už dříve neexistovaly: extrakce informací z obrázků, detekce mínění, klíčových slov a entit z textu, na několik názvů. Rozšíření také přidává strukturu na nerozlišený text. Výsledkem všech těchto procesů jsou dokumenty, které usnadňují vyhledávání fulltextového vyhledávání. V mnoha instancích jsou obohacené dokumenty užitečné pro jiné scénáře, než je hledání, například pro dolování znalostí.
 
@@ -211,3 +211,8 @@ Jako další krok si vytvořte svoje první úložiště znalostní báze s pou�
 
 > [!div class="nextstepaction"]
 > [Vytvořte znalostní bázi v klidovém úložišti](knowledge-store-create-rest.md).
+
+Kurz týkající se pokročilých konceptů projekce, jako je například vytváření řezů, line Shaping a Relationships, Začínáme s [definováním projekce ve znalostní bázi Knowledge Store](knowledge-store-projections-examples.md)
+
+> [!div class="nextstepaction"]
+> [Definování projekce ve znalostní bázi Knowledge Store](knowledge-store-projections-examples.md)

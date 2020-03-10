@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227453"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944180"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update Management
 
@@ -35,7 +35,7 @@ Staré aktualizace se zobrazují v Update Management účtu Azure jako chybějí
 
 Nahrazené aktualizace nejsou správně označeny jako odmítnuté, aby je bylo možné považovat za nepoužité.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud se nahradí nahrazené aktualizace 100 procent, měli byste změnit stav schválení dané aktualizace na **Odmítnuto**. Postup pro všechny aktualizace:
 
@@ -75,7 +75,7 @@ Možná bude nutné znovu zaregistrovat a znovu nainstalovat Hybrid Runbook Work
 
 Je možné, že jste v pracovním prostoru nastavili kvótu, která je dosažená a která zabraňuje dalšímu ukládání dat.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 * Spusťte Poradce při potížích pro [Windows](update-agent-issues.md#troubleshoot-offline) nebo [Linux](update-agent-issues-linux.md#troubleshoot-offline), a to v závislosti na operačním systému.
 
@@ -116,7 +116,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Zprostředkovatel prostředků Automation není v předplatném zaregistrován.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujte podle následujících kroků v Azure Portal:
 
@@ -143,7 +143,7 @@ K této chybě může dojít z následujících důvodů:
 - Komunikace s účtem Automation je zablokovaná.
 - Virtuální počítač, který se připojuje, může pocházet z klonovaného počítače, který se nástroje Sysprep s nainstalovanou sadou Microsoft Monitoring Agent (MMA).
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 1. Pokud chcete zjistit, které adresy a porty musí Update Management fungovat, přejít na [Plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) .
 2. Pokud používáte Klonovaný obrázek:
@@ -166,7 +166,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 K této chybě dojde, když vytvoříte nasazení aktualizace, které obsahuje virtuální počítače Azure v jiném tenantovi, které jsou zahrnuté v nasazení aktualizace.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 K naplánování těchto položek použijte následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) s přepínačem `-ForUpdate`. Pak použijte rutinu [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) a předejte počítače do jiného tenanta do parametru `-NonAzureComputer`. Následující příklad ukazuje, jak to provést:
@@ -191,7 +191,7 @@ I když jste nastavili možnost **ovládacího prvku restartování** na **Nikdy
 
 Web Windows Update může upravit několik klíčů registru, z nichž některé můžou upravovat chování při restartování.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Zkontrolujte klíče registru uvedené v části [Konfigurace automatických aktualizací úpravou registru](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) a [klíčů registru používaných ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) a ujistěte se, že jsou vaše počítače správně nakonfigurované.
 
@@ -215,18 +215,21 @@ K této chybě může dojít z některého z následujících důvodů:
 * Byla zjištěna aktualizace MMA, která změnila SourceComputerId.
 * Pokud jste dosáhli limitu 2 000 souběžných úloh v účtu Automation, vaše spuštění aktualizace bylo omezené. Každé nasazení se považuje za úlohu a každý počítač v nasazení aktualizace se počítá jako úloha. Jakékoli jiné úlohy služby Automation nebo nasazení aktualizací, které aktuálně běží ve vašem účtu Automation, se počítá s limitem souběžných úloh.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 V případě potřeby použijte pro nasazení aktualizací [dynamické skupiny](../automation-update-management-groups.md) . A dále:
 
-* Ověřte, že počítač stále existuje a je dostupný. Pokud neexistuje, upravte nasazení a odeberte počítač.
+* Ověřte, že počítač stále existuje a je dostupný. 
+* Pokud počítač neexistuje, upravte nasazení a odeberte počítač.
 * V části [Plánování sítě](../automation-update-management.md#ports) najdete seznam portů a adres, které jsou potřeba pro Update Management, a pak ověřte, že váš počítač splňuje tyto požadavky.
-* Spusťte následující dotaz v Log Analytics k vyhledání počítačů ve vašem prostředí, jejichž `SourceComputerId` se změnila. Vyhledejte počítače se stejnou `Computer`ovou hodnotou, ale jinou hodnotou `SourceComputerId`. 
+* Ověřte připojení k Hybrid Runbook Worker pomocí Poradce při potížích Hybrid Runbook Worker agenta. Další informace o poradci při potížích najdete v tématu [Poradce při potížích s aktualizací agenta](update-agent-issues.md).
+* Spusťte následující dotaz v Log Analytics k vyhledání počítačů ve vašem prostředí, pro které se `SourceComputerId` změnilo. Vyhledejte počítače se stejnou `Computer`ovou hodnotou, ale jinou hodnotou `SourceComputerId`.
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
-   Po nalezení ovlivněných počítačů upravte nasazení aktualizace, která cílí na tyto počítače, a pak je odeberte a znovu přidejte, aby `SourceComputerId` odrážela správnou hodnotu.
+
+* Po nalezení ovlivněných počítačů upravte nasazení aktualizace, která cílí na tyto počítače, a pak je odeberte a znovu přidejte, aby `SourceComputerId` odrážela správnou hodnotu.
 
 ## <a name="updates-nodeployment"></a>Scénář: aktualizace se instalují bez nasazení.
 
@@ -238,7 +241,7 @@ Při registraci počítače se systémem Windows v nástroji Update Management s
 
 Ve Windows se aktualizace nainstalují automaticky, jakmile budou k dispozici. Toto chování může způsobit nejasnost, pokud jste neplánovali nasazení aktualizace na počítač.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Klíč registru `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` se standardně nastavuje na hodnotu 4: **automaticky stáhnout a nainstalovat**.
 
@@ -260,7 +263,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Počítač už je zaregistrované do jiného pracovního prostoru pro Update Management.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 1. Postupujte podle kroků v části [počítače se nezobrazují na portálu v části Update Management](#nologs) , abyste se ujistili, že se počítač hlásí do správného pracovního prostoru.
 2. Vyčistěte staré artefakty na počítači [odstraněním skupiny Hybrid Runbook](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)a akci opakujte.
@@ -291,7 +294,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 Server proxy, brány nebo brány firewall můžou blokovat síťovou komunikaci. 
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Zkontrolujte své sítě a ujistěte se, že jsou povolené příslušné porty a adresy. Seznam portů a adres, které jsou vyžadovány Update Management a hybridními pracovními procesy Runbooku, najdete v části [požadavky na síť](../automation-hybrid-runbook-worker.md#network-planning) .
 
@@ -309,7 +312,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Hybrid Runbook Worker se nepovedlo vygenerovat certifikát podepsaný svým držitelem.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Ověřte, že účet System má oprávnění ke čtení pro složku **C:\ProgramData\Microsoft\Crypto\RSA** , a zkuste to znovu.
 
@@ -319,7 +322,7 @@ Ověřte, že účet System má oprávnění ke čtení pro složku **C:\Program
 
 Výchozí časové období údržby pro aktualizace je 120 minut. Časový interval pro správu a údržbu můžete zvýšit na maximálně 6 hodin nebo 360 minut.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Upravte všechna neúspěšná naplánovaná nasazení aktualizací a zvyšte časový interval pro správu a údržbu.
 
@@ -337,7 +340,7 @@ Další informace o časových obdobích údržby najdete v tématu [install Upd
 
 Agent aktualizace (agent web Windows Update v systému Windows; Správce balíčků pro distribuci pro Linux) není správně nakonfigurovaný. Update Management spoléhá na agenta aktualizace počítače, aby poskytoval aktualizace, které jsou potřeba, stav opravy a výsledky nasazených oprav. Bez těchto informací Update Management nedokáže správně ohlásit potřebné opravy, které jsou potřeba nebo nainstalované.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Zkuste provést aktualizace místně na počítači. Pokud se to nepovede, obvykle to znamená, že došlo k chybě konfigurace agenta aktualizací.
 
@@ -385,7 +388,7 @@ Možné příčiny:
 * Počítač je nedosažitelný.
 * Aktualizace obsahovaly závislosti, které nebyly vyřešeny.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud dojde k selhání během hromadné postupné aktualizace po úspěšném spuštění, [Podívejte se ve výstupu úlohy](../manage-update-multi.md#view-results-of-an-update-deployment) na příslušný počítač v běhu. Můžete najít konkrétní chybové zprávy z počítačů, které můžete prozkoumat a provádět s nimi akce. Update Management vyžaduje, aby správce balíčků byl v pořádku pro úspěšná nasazení aktualizací.
 

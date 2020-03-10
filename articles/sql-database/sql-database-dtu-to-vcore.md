@@ -1,5 +1,5 @@
 ---
-title: Migrace z DTU na vCore
+title: Migrace z DTU na virtuální jádra
 description: Migrujte z modelu DTU do modelu vCore. Migrace na vCore je podobná upgradu nebo downgrade mezi úrovní Standard a Premium.
 services: sql-database
 ms.service: sql-database
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/09/2020
+ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811271"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945400"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace z modelu založeného na DTU na model založený na vCore
 
@@ -36,16 +36,16 @@ Následující tabulka poskytuje pokyny pro konkrétní scénáře migrace:
 |Aktuální úroveň služby|Cílová úroveň služby|Typ migrace|Akce uživatele|
 |---|---|---|---|
 |Standard|Obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
-|Premium|Pro důležité obchodní informace|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
-|Standard|Pro důležité obchodní informace|Upgrade|Nejprve je třeba migrovat sekundární|
-|Pro důležité obchodní informace|Standard|Downgrade|Nejprve je třeba migrovat primární|
+|Premium|Důležité pro podnikání|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
+|Standard|Důležité pro podnikání|Upgrade|Nejprve je třeba migrovat sekundární|
+|Důležité pro podnikání|Standard|Downgrade|Nejprve je třeba migrovat primární|
 |Premium|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
 |Obecné účely|Premium|Upgrade|Nejprve je třeba migrovat sekundární|
-|Pro důležité obchodní informace|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
-|Obecné účely|Pro důležité obchodní informace|Upgrade|Nejprve je třeba migrovat sekundární|
+|Důležité pro podnikání|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
+|Obecné účely|Důležité pro podnikání|Upgrade|Nejprve je třeba migrovat sekundární|
 ||||
 
-\* každých 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore a každé 125 DTU úrovně Premium vyžaduje aspoň 1 vCore.
+\* jako pravidlo palce, každé 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore a každé 125 DTU úrovně Premium vyžaduje aspoň 1 vCore. Další informace najdete v tématu [nákupní model založený na Vcore](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
 
 ## <a name="migrate-failover-groups"></a>Migrace skupin převzetí služeb při selhání
 

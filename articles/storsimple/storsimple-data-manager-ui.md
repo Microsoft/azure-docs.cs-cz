@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273969"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933748"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manager v Azure Portal
 
@@ -48,7 +48,7 @@ Chcete-li vytvořit službu StorSimple Data Manager, proveďte následující kr
     
    5. Pokud chcete na řídicím panelu získat odkaz na tuto službu, vyberte **Připnout na řídicí panel**.
     
-   6. Klikněte na **Vytvořit**.
+   6. Klikněte na možnost **Vytvořit**.
 
       ![Vytvoření StorSimple Data Manager služby 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -102,9 +102,9 @@ K vytvoření definice úlohy proveďte následující kroky.
 
    3. V podčásti **Filtr** zadejte kořenový adresář, který obsahuje vaše data o vašem zájmu ve formátu _\MyRootDirectory\Data_ . Písmena jednotek, například _\C: \Data_ , nejsou podporována. Sem můžete přidat také libovolné filtry souborů.
 
-   4. Služba transformace dat pracuje s daty, která se do Azure vloží přes snímky. Když tuto úlohu spustíte, můžete si zvolit, jestli se má při každém spuštění této úlohy provést zálohování (pro práci s nejnovějšími daty), nebo použít poslední existující zálohu v cloudu (Pokud pracujete na některých archivovaných datech).
+   4. Služba transformace dat funguje jenom na posledním snímku dat, která se odešlou do Azure.
 
-   5. Klikněte na **OK**.
+   5. Klikněte na tlačítko **OK**.
 
       ![Konfigurace zdrojového datového úložiště 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -121,7 +121,7 @@ K vytvoření definice úlohy proveďte následující kroky.
     
     1. V rozevíracím seznamu v **názvu cílového účtu**vyberte úložiště, které jste vytvořili jako cíl.
 
-    2. Jako objekty blob nebo soubory vyberte typ úložiště. Zadejte název kontejneru úložiště, ve kterém se transformovaná data nacházejí. Klikněte na **OK**.
+    2. Jako objekty blob nebo soubory vyberte typ úložiště. Zadejte název kontejneru úložiště, ve kterém se transformovaná data nacházejí. Klikněte na tlačítko **OK**.
 
         ![Konfigurace účtu úložiště cílového datového úložiště](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
@@ -133,7 +133,7 @@ K vytvoření definice úlohy proveďte následující kroky.
 
 ### <a name="run-the-job-definition"></a>Spuštění definice úlohy
 
-Kdykoli potřebujete přesunout data z StorSimple do účtu úložiště, který jste zadali v definici úlohy, je nutné ji spustit. V době běhu lze některé parametry zadat odlišně. Kroky jsou následující:
+Kdykoli potřebujete přesunout data z StorSimple do účtu úložiště, který jste zadali v definici úlohy, je nutné ji spustit. V době běhu lze některé parametry zadat odlišně. Konkrétní postup je následující:
 
 1. Vyberte službu StorSimple Data Manager a pokračujte na **Definice úloh > správy**. Vyberte definici úlohy, kterou chcete spustit, a klikněte na ni.
      
@@ -150,6 +150,11 @@ Kdykoli potřebujete přesunout data z StorSimple do účtu úložiště, který
 4. Pokud chcete monitorovat tuto úlohu, přečtěte si v StorSimple Data Manager **úlohy** . Kromě monitorování v okně **úlohy** můžete také naslouchat frontě úložiště, do které se přidá zpráva pokaždé, když se soubor přesune z StorSimple do účtu úložiště.
 
     ![Spustit úlohu 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>Zobrazení protokolů po dokončení úlohy
+
+Po dokončení úlohy můžete zobrazit stav úlohy. Stav úlohy je možné **úspěšně**provést, **částečně úspěšné** a **neúspěšné**. Můžete zobrazit seznam souborů, které byly úspěšně zkopírovány, a soubory, jejichž kopírování se nezdařilo. Tyto seznamy jsou k dispozici v kontejneru s názvem **"StorSimple-data-Manager-joblogs"** v rámci svého cílového účtu úložiště. V rámci tohoto kontejneru můžete vyhledat složku se stejným názvem, jako má vaše definice úlohy. V této složce se vytvoří složka pro každé spuštění úlohy, která bude obsahovat vaše seznamy. Název této složky bude identifikátor GUID úlohy, který můžete získat ze stránky s podrobnostmi úlohy. Případně se ve většině případů na stránce úlohy zobrazí odkaz na protokoly kopírování.
+V této složce se zobrazuje 2 sada souborů CSV. Všechny soubory, které začínají na **copiedfilelist...** budou obsahovat seznam úspěšně zkopírovaných souborů. Všechny soubory, které začínají na **failedfilelist...** obsahují soubory, které se nemohly zkopírovat, spolu s chybovou zprávou.
 
 
 ## <a name="next-steps"></a>Další kroky

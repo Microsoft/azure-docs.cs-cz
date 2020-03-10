@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917352"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946439"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
@@ -36,6 +36,7 @@ Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure 
 * [Můžu přidat řadiče domény do spravované domény Azure AD Domain Services?](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [Můžou se uživatelé typu Host pozvat do adresáře použít Azure AD Domain Services?](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
 * [Můžu existující Azure AD Domain Services spravovanou doménu přesunout do jiného předplatného, skupiny prostředků, oblasti nebo virtuální sítě?](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [Zahrnuje Azure AD Domain Services možnosti vysoké dostupnosti?](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Můžu vytvořit více spravovaných domén pro jeden adresář služby Azure AD?
 Ne. Pro jeden adresář služby Azure AD můžete vytvořit jenom jednu spravovanou doménu Azure AD Domain Services.
@@ -75,6 +76,10 @@ Ne. Uživatelé typu Host, kteří se pozvali k adresáři Azure AD pomocí proc
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Můžu existující Azure AD Domain Services spravovanou doménu přesunout do jiného předplatného, skupiny prostředků, oblasti nebo virtuální sítě?
 Ne. Po vytvoření spravované domény Azure AD Domain Services nemůžete instanci přesunout do jiné skupiny prostředků, virtuální sítě, předplatného atd. Při nasazování instance služby Azure služba AD DS je nutné vybrat nejvhodnější předplatné, skupinu prostředků, oblast a virtuální síť.
 
+### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Zahrnuje Azure AD Domain Services možnosti vysoké dostupnosti?
+
+Ano. Každá Azure AD Domain Services spravovaná doména obsahuje dva řadiče domény. Tyto řadiče domény nespravujete ani se k nim nepřipojujete, jsou součástí spravované služby. Pokud nasadíte Azure AD Domain Services do oblasti, která podporuje Zóny dostupnosti, řadiče domény se rozdělují mezi zóny. V oblastech, které nepodporují Zóny dostupnosti, jsou řadiče domény distribuované napříč skupinami dostupnosti. Pro tuto distribuci nemáte žádné možnosti konfigurace nebo řízení správy. Další informace najdete v tématu [Možnosti dostupnosti pro virtuální počítače v Azure](../virtual-machines/windows/availability.md).
+
 ## <a name="administration-and-operations"></a>Správa a operace
 
 * [Můžu se k řadiči domény pro spravovanou doménu připojit pomocí vzdálené plochy?](#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)
@@ -91,13 +96,13 @@ Ne. Po vytvoření spravované domény Azure AD Domain Services nemůžete insta
 Ne. Nemáte oprávnění pro připojení k řadičům domény pro spravovanou doménu pomocí vzdálené plochy. Členové skupiny *Správci AAD DC* můžou spravovat spravovanou doménu pomocí nástrojů pro správu služby AD, jako je centrum pro správu služby Active Directory (ADAC) nebo prostředí AD PowerShell. Tyto nástroje se instalují pomocí funkce *Nástroje pro vzdálenou správu serveru* na Windows serveru připojeném ke spravované doméně. Další informace najdete v tématu [Vytvoření virtuálního počítače pro správu pro konfiguraci a správu Azure AD Domain Services spravované domény](tutorial-create-management-vm.md).
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Povolil (a) Azure AD Domain Services. Jaký uživatelský účet mám použít k připojení počítačů do domény k této doméně?
-Členové skupiny pro správu *AAD DC správci* můžou počítače připojit k doméně. Členové této skupiny navíc udělují přístup ke vzdálené ploše počítačům, které jsou připojené k doméně.
+K virtuálnímu počítači se může připojit libovolný uživatelský účet, který je součástí spravované domény Azure služba AD DS. Členové skupiny *Správci AAD DC* mají oprávnění ke vzdálené ploše pro počítače, které jsou připojené ke spravované doméně.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Mám oprávnění správce domény pro spravovanou doménu, kterou poskytuje Azure AD Domain Services?
 Ne. Ve spravované doméně neudělíte oprávnění správce. Oprávnění *správce domény* a *podnikového správce* nejsou k dispozici pro použití v rámci domény. Členům skupiny Domain Administrators nebo Enterprise Administrators ve vaší místní službě Active Directory se taky ve spravované doméně neudělují oprávnění správce domény nebo rozlehlé sítě.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Je možné upravit členství ve skupinách pomocí protokolu LDAP nebo jiných nástrojů pro správu služby AD ve spravovaných doménách?
-Ne. Členství ve skupinách nelze upravovat v doménách, které jsou službou Azure AD Domain Services. Totéž platí pro atributy uživatele. Můžete změnit členství ve skupině nebo atributy uživatele v Azure AD nebo v místní doméně. Změny se automaticky synchronizují s Azure AD Domain Services.
+Uživatele a skupiny, které jsou synchronizované z Azure Active Directory Azure AD Domain Services nelze upravovat, protože jejich zdroj původu je Azure Active Directory. Je možné upravit všechny uživatele nebo skupiny pocházející ze spravované domény.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Jak dlouho trvá, aby se změny v adresáři služby Azure AD zobrazily ve spravované doméně?
 Změny provedené v adresáři Azure AD pomocí uživatelského rozhraní služby Azure AD nebo PowerShellu se automaticky synchronizují do vaší spravované domény. Tento proces synchronizace běží na pozadí. Pro tuto synchronizaci není definováno žádné časové období, aby se dokončily všechny změny objektu.

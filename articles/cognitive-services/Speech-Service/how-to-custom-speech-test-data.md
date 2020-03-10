@@ -3,19 +3,19 @@ title: Příprava testovacích dat pro službu Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
 description: Při testování přesnosti rozpoznávání řeči od Microsoftu nebo školení vašich vlastních modelů budete potřebovat zvuková a textová data. Na této stránce se zabýváme typy dat, jak je používat a spravujeme.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 03/09/2020
+ms.author: dapine
+ms.openlocfilehash: 969c1450966d2754e6e8f00126da52a1e88181fc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660405"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942684"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -25,9 +25,9 @@ Při testování přesnosti rozpoznávání řeči od Microsoftu nebo školení 
 
 Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít každý datový typ a doporučené množství. Pro vytvoření modelu není vyžadován každý datový typ. Požadavky na data se budou lišit v závislosti na tom, zda vytváříte testovací nebo školicí model.
 
-| Data type | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
+| Typ dat | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | N/a |
+| [Kazet](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | N/a |
 | [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1 – 1000 hodin zvukového přenosu |
 | [Související text](#related-text-data-for-training) | Ne | N/a | Ano | 1-200 MB souvisejícího textu |
 
@@ -36,7 +36,7 @@ Soubory by měly být seskupené podle typu do datové sady a nahrané jako soub
 > [!TIP]
 > Pokud chcete rychle začít, zvažte použití ukázkových dat. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Ukázková Custom Speechová data <span class="docon docon-navigate-external x-hidden-focus"></span> </a> najdete v tomto úložišti GitHubu.
 
-## <a name="upload-data"></a>Nahrávání dat
+## <a name="upload-data"></a>Nahrání dat
 
 Data odešlete tak, že přejdete na <a href="https://speech.microsoft.com/customspeech" target="_blank">portál <span class="docon docon-navigate-external x-hidden-focus"> </span>Custom Speech </a>. Na portálu klikněte na **nahrát data** a spusťte průvodce a vytvořte svou první datovou sadu. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
 
@@ -55,15 +55,17 @@ Zvuková data jsou ideální pro testování přesnosti základního rozpoznáv�
 
 Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně formátované pro použití s Custom Speech:
 
-| Vlastnost | Hodnota |
-|----------|-------|
-| Formát souboru | RIFF (WAV) |
-| Vzorkovací frekvence | 8 000 Hz nebo 16 000 Hz |
-| Kanály | 1 (mono) |
-| Maximální délka na zvuk | 2 hodiny |
-| Vzorový formát | PCM, 16 bitů |
-| Formát archivu | .zip |
-| Maximální velikost archivu | 2 GB |
+| Vlastnost                 | Hodnota                 |
+|--------------------------|-----------------------|
+| Formát souboru              | RIFF (WAV)            |
+| Vzorkovací frekvence              | 8 000 Hz nebo 16 000 Hz |
+| Kanály                 | 1 (mono)              |
+| Maximální délka na zvuk | 2 hodiny               |
+| Vzorový formát            | PCM, 16 bitů           |
+| Formát archivu           | .zip                  |
+| Maximální velikost archivu     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
 > Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Pokud potřebujete další data pro školení, rozdělte je do několika souborů zip a nahrajte je samostatně. Později můžete zvolit výuku z *více* datových sad. Můžete však testovat pouze z *jedné* datové sady.
@@ -79,18 +81,20 @@ Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox 
 
 Chcete-li změřit přesnost přesnosti řeči na text od společnosti Microsoft při zpracování zvukových souborů, je nutné zadat přepisy (Word-by-Word) pro porovnání. I když je přepis uživatelsky popisku často časově náročný, je nutné vyhodnotit přesnost a vyškolit model pro vaše případy použití. Mějte na paměti, že vylepšení v oblasti rozpoznávání budou stejně vhodná jako poskytnutá data. Z tohoto důvodu je důležité, aby se nahrály jenom přepisy s vysokou kvalitou.
 
-| Vlastnost | Hodnota |
-|----------|-------|
-| Formát souboru | RIFF (WAV) |
-| Vzorkovací frekvence | 8 000 Hz nebo 16 000 Hz |
-| Kanály | 1 (mono) |
+| Vlastnost                 | Hodnota                               |
+|--------------------------|-------------------------------------|
+| Formát souboru              | RIFF (WAV)                          |
+| Vzorkovací frekvence              | 8 000 Hz nebo 16 000 Hz               |
+| Kanály                 | 1 (mono)                            |
 | Maximální délka na zvuk | 2 hodiny (testování)/60 s (školení) |
-| Vzorový formát | PCM, 16 bitů |
-| Formát archivu | .zip |
-| Maximální velikost souboru ZIP | 2 GB |
+| Vzorový formát            | PCM, 16 bitů                         |
+| Formát archivu           | .zip                                |
+| Maximální velikost souboru ZIP         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Uou lze testovat pouze z *jedné* datové sady, nezapomeňte ji zachovat v rámci příslušné velikosti souboru.
+> Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Můžete provést test pouze z *jedné* datové sady, nezapomeňte ji zachovat v rámci příslušné velikosti souboru. Kromě toho každý školicí soubor nemůže být delší než 60 sekund, jinak dojde k chybě.
 
 Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slovech přibližně 10 až 1 000 hodin zvukového přenosu. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 
@@ -115,7 +119,7 @@ Až shromáždíte zvukové soubory a odpovídající přepisy, před nahráním
 
 Názvy produktů nebo funkce, které jsou jedinečné, by měly obsahovat související textová data pro školení. Související text pomáhá zajistit správné rozpoznávání. K dispozici jsou dva typy souvisejících textových dat pro zlepšení rozpoznávání:
 
-| Data type | Jak tato data zlepšují rozpoznávání |
+| Typ dat | Jak tato data zlepšují rozpoznávání |
 |-----------|------------------------------------|
 | Věty (projevy) | Zvyšte přesnost při rozpoznávání názvů produktů nebo slovníku specifického pro konkrétní obor v kontextu věty. |
 | Výslovnost | Zlepšení výslovnosti neobvyklých pojmů, akronymů nebo jiných slov pomocí nedefinovaných výslovnosti. |
@@ -133,7 +137,7 @@ Pomocí této tabulky zajistěte, aby byl správně naformátován váš souvise
 | Vlastnost | Hodnota |
 |----------|-------|
 | Kódování textu | UTF-8 BOM |
-| Počet promluv na řádek | 1\. místo |
+| Počet promluv na řádek | 1 |
 | Maximální velikost souboru | 200 MB |
 
 Navíc se budete chtít přihlédnout k následujícím omezením:
@@ -171,12 +175,12 @@ Pomocí následující tabulky ověřte, zda je váš související datový soub
 | Vlastnost | Hodnota |
 |----------|-------|
 | Kódování textu | BOM UTF-8 (ANSI je také podporováno pro angličtinu) |
-| počet výslovnosti na řádek | 1\. místo |
+| počet výslovnosti na řádek | 1 |
 | Maximální velikost souboru | 1 MB (1 KB pro úroveň Free) |
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Trénování modelu](how-to-custom-speech-train-model.md)
+* [Výuka modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

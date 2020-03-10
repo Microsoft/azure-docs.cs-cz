@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 42431c0db55219c3cb49968986c1a0c7f071b219
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 10c8008d73390174c44ec503f708c1e2c0011e09
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509271"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944298"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -28,7 +28,7 @@ Tento článek poskytuje pokyny pro vývoj a ladění modulů v několika jazyc�
 >[!NOTE]
 >Podpora pro vývoj a ladění pro zařízení se systémem Linux ARM64 je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Další informace najdete v tématu [vývoj a ladění ARM64 IoT Edgech modulů v Visual Studio Code (Preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Jako vývojový počítač můžete použít počítač nebo virtuální počítač s Windows, macOS nebo Linux. V počítačích s Windows můžete vyvíjet moduly pro Windows nebo Linux. Pro vývoj modulů Windows použijte počítač s Windows, na kterém běží verze 1809/Build 17763 nebo novější. Pokud chcete vyvíjet moduly pro Linux, použijte počítač s Windows, který splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 
@@ -37,7 +37,7 @@ Nejdřív nainstalujte [Visual Studio Code](https://code.visualstudio.com/) a pa
 - [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Rozšíření Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - Rozšíření pro Visual Studio specifická pro jazyk, v němž vyvíjíte:
-  - C#včetně Azure Functions: [ C# rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  - C#včetně Azure Functions: [ C# rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   - Python: [rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   - Java: [balíček rozšíření Java pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
   - C: [rozšíření cC++ /rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
@@ -56,7 +56,7 @@ K sestavení a nasazení image modulu potřebujete Docker pro sestavení image m
 
 - [Docker Community Edition](https://docs.docker.com/install/) na vašem vývojovém počítači.
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo [Docker Hubu](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- Centrum [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo [Docker](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru.
@@ -78,9 +78,9 @@ K otestování modulu v zařízení budete potřebovat aktivní službu IoT Hub 
 
 Následující kroky ukazují, jak vytvořit modul IoT Edge v preferovaném vývojovém jazyce (včetně Azure Functions, který jste napsali C#) pomocí Visual Studio Code a nástrojů Azure IoT. Začnete vytvořením řešení a potom vygenerujete první modul v tomto řešení. Každé řešení může obsahovat více modulů.
 
-1. Vyberte **zobrazení** > **příkaz palety**.
+1. Vyberte **zobrazit** > **paleta příkazů**.
 
-1. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: nové řešení IoT Edge**.
+1. V paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: nové IoT Edge řešení**.
 
    ![Spustit nové řešení IoT Edge](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -121,8 +121,8 @@ Chcete-li do řešení přidat další moduly, spusťte příkaz **Azure IoT Edg
 
 Výchozí kód modulu, který je součástí řešení, je umístěn v následujícím umístění:
 
-- C#Funkce Azure Functions (): **moduly >  *&lt;název&gt;*  >  *&lt;vašeho modulu název&gt;vašeho modulu*. cs**
-- C#: **moduly >  *&lt;název&gt; modulu* > program.cs**
+- Funkce Azure Functions (C#): **moduly > *&lt;název modulu&gt;*  >  *&lt;název modulu&gt;* . cs**
+- C#: **moduly > *&lt;název modulu&gt;* > program.cs**
 - Python: **moduly > *&lt;název modulu&gt;* > Main.py**
 - Node. js: **moduly > *&lt;název modulu&gt;* > App. js.**
 - Java: **moduly > *&lt;název modulu&gt;* > src > main > java > com > edgemodulemodules > App. Java**
@@ -198,7 +198,7 @@ Chcete-li nastavit a spustit simulátor, spusťte příkaz **Azure IoT Edge: spu
    > [!NOTE]
    > Pokud používáte systém Windows, ujistěte se, že prostředí Visual Studio Code integrovaným terminálem je **Git bash** nebo **WSL bash**. Nemůžete spustit příkaz `curl` z PowerShellu nebo příkazového řádku.
    > [!TIP]
-   > Můžete také použít [PostMan](https://www.getpostman.com/) nebo jiné nástroje rozhraní API pro odesílání zpráv prostřednictvím místo `curl`.
+   > K posílání zpráv místo `curl`můžete použít taky [post](https://www.getpostman.com/) nebo jiné nástroje API.
 
 1. V zobrazení ladění Visual Studio Code uvidíte proměnné na levém panelu.
 
@@ -367,4 +367,4 @@ Další informace a podrobné pokyny najdete v této [položce blogu vývojář 
 
 Po vytvoření modulu se naučíte, jak [nasadit Azure IoT Edge moduly z Visual Studio Code](how-to-deploy-modules-vscode.md).
 
-Vývoj modulů pro zařízení IoT Edge, [principy a použití sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md).
+Pro vývoj modulů pro zařízení IoT Edge, [pochopení a používání sady Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md).

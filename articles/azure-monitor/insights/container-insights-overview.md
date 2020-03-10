@@ -4,11 +4,11 @@ description: Tento článek popisuje Azure Monitor pro kontejnery, které monito
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198033"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385547"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor pro kontejnery – přehled
 

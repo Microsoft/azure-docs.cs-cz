@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443852"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944090"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v systému Linux
 
@@ -180,6 +180,10 @@ Tady jsou pravidla pro určení kontejneru, který je přístupný – v pořad�
 Účtují se vám běžné ceny Azure App Service počtu hodin, po které se aplikace spouští.
 
 ## <a name="other-questions"></a>Další otázky
+
+**Co znamená, že požadovaná funkce není ve skupině prostředků k dispozici?**
+
+Tato zpráva se může zobrazit při vytváření webové aplikace pomocí Azure Resource Manager (ARM). Na základě současného omezení pro stejnou skupinu prostředků nemůžete kombinovat aplikace pro Windows a Linux ve stejné oblasti.
 
 **Jaké jsou podporované znaky v názvech nastavení aplikace?**
 

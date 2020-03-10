@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649503"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944202"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Vytvoření privátního clusteru služby Azure Kubernetes (Preview)
 
@@ -100,6 +100,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>Vytvoření privátního clusteru AKS
 
+### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+
+Vytvořte skupinu prostředků nebo pro svůj cluster AKS použijte existující skupinu prostředků.
+
+```azurecli-interactive
+az group create -l westus -n MyResourceGroup
+```
+
 ### <a name="default-basic-networking"></a>Výchozí základní sítě 
 
 ```azurecli-interactive
@@ -126,35 +134,29 @@ Kde *--Enable-Private-cluster* je povinný příznak pro privátní cluster.
 > [!NOTE]
 > Pokud adresa mostu Docker (172.17.0.1/16) koliduje s podsítí CIDR, změňte adresu mostu Docker odpovídajícím způsobem.
 
-## <a name="connect-to-the-private-cluster"></a>Připojit k privátnímu clusteru
+## <a name="options-for-connecting-to-the-private-cluster"></a>Možnosti připojení k privátnímu clusteru
 
-Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. V důsledku toho musíte ve virtuální síti vytvořit virtuální počítač Azure a připojit se k serveru rozhraní API. Uděláte to takto:
+Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. Pokud chcete spravovat Server API, budete muset použít virtuální počítač, který má přístup k Azure Virtual Network AKS (VNet) clusteru. K dispozici je několik možností pro vytvoření síťového připojení k privátnímu clusteru.
 
-1. Získejte přihlašovací údaje pro připojení ke clusteru.
+* Vytvořte virtuální počítač ve stejné službě Azure Virtual Network (VNet) jako cluster AKS.
+* Použijte virtuální počítač v samostatné síti a nastavte [partnerský vztah virtuálních sítí][virtual-network-peering].  Další informace o této možnosti najdete v části níže.
+* Použijte [expresní trasu nebo připojení k síti VPN][express-route-or-VPN] .
 
-   ```azurecli-interactive
-   az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
-   ```
+Nejjednodušší možností je vytvoření virtuálního počítače ve stejné virtuální síti jako cluster AKS.  Expresní směrování a sítě VPN přidávají náklady a vyžadují další složitost sítě.  Partnerský vztah virtuálních sítí vyžaduje, abyste naplánovali rozsahy směrování sítě, aby se zajistilo, že se překrývají rozsahy.
 
-1. Proveďte jednu z následujících akcí:
-   * Vytvořte virtuální počítač ve stejné virtuální síti jako cluster AKS.  
-   * Vytvořte virtuální počítač v jiné virtuální síti a navázat tuto virtuální síť pomocí virtuální sítě clusteru AKS.
+## <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
-     Pokud vytvoříte virtuální počítač v jiné virtuální síti, nastavte propojení mezi touto virtuální sítí a privátní zónou DNS. Postupujte následovně:
+Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze způsobů, jak získat přístup k privátnímu clusteru. Pokud chcete použít partnerský vztah virtuálních sítí, musíte nastavit propojení mezi virtuální sítí a privátní zónou DNS.
     
-     a. V Azure Portal otevřete skupinu prostředků MC_ *.  
-     b. Vyberte privátní zónu DNS.   
-     c. V levém podokně vyberte odkaz **virtuální síť** .  
-     d. Vytvořte nový odkaz pro přidání virtuální sítě virtuálního počítače do privátní zóny DNS. Může to trvat několik minut, než se odkaz na zónu DNS stane dostupným.  
-     e. Vraťte se do skupiny prostředků MC_ * v Azure Portal.  
-     f. V pravém podokně vyberte virtuální síť. Název virtuální sítě je ve formátu *AKS-VNet-\** .  
-     g. V levém podokně vyberte **partnerské vztahy**.  
-     h. Vyberte **Přidat**, přidejte virtuální síť virtuálního počítače a vytvořte partnerský vztah.  
-     i. Do virtuální sítě, ve které máte virtuální počítač, vyberte **partnerské vztahy**, vyberte virtuální síť AKS a vytvořte partnerský vztah. Pokud se rozsahy adres ve virtuální síti AKS a v konfliktu virtuální sítě virtuálního počítače, partnerský vztah se nezdařil. Další informace najdete v tématu [partnerský vztah virtuálních sítí][virtual-network-peering].
-
-1. Přístup k virtuálnímu počítači přes Secure Shell (SSH).
-1. Nainstalujte nástroj Kubectl a spusťte příkazy Kubectl.
-
+1. V Azure Portal otevřete skupinu prostředků MC_ *.  
+2. Vyberte privátní zónu DNS.   
+3. V levém podokně vyberte odkaz **virtuální síť** .  
+4. Vytvořte nový odkaz pro přidání virtuální sítě virtuálního počítače do privátní zóny DNS. Může to trvat několik minut, než se odkaz na zónu DNS stane dostupným.  
+5. Vraťte se do skupiny prostředků MC_ * v Azure Portal.  
+6. V pravém podokně vyberte virtuální síť. Název virtuální sítě je ve formátu *AKS-VNet-\** .  
+7. V levém podokně vyberte **partnerské vztahy**.  
+8. Vyberte **Přidat**, přidejte virtuální síť virtuálního počítače a vytvořte partnerský vztah.  
+9. Do virtuální sítě, ve které máte virtuální počítač, vyberte **partnerské vztahy**, vyberte virtuální síť AKS a vytvořte partnerský vztah. Pokud se rozsahy adres ve virtuální síti AKS a v konfliktu virtuální sítě virtuálního počítače, partnerský vztah se nezdařil. Další informace najdete v tématu [partnerský vztah virtuálních sítí][virtual-network-peering].
 
 ## <a name="dependencies"></a>Závislosti  
 * Služba privátního propojení je podporována pouze u standardních Azure Load Balancer. Základní Azure Load Balancer nejsou podporované.  
@@ -179,6 +181,8 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. V důsled
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[private-link-service]: /private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 

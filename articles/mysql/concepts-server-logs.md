@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844951"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359669"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Pomalé dotazování protokolů v Azure Database for MySQL
 V Azure Database for MySQL je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -59,10 +59,10 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated` [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Vždy `AzureDiagnostics` |
+| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -79,7 +79,7 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 | `insert_id_s` | Vložit ID |
 | `sql_text_s` | Úplný dotaz |
 | `server_id_s` | ID serveru |
-| `thread_id_s` | ID vlákna |
+| `thread_id_s` | ID podprocesu |
 | `\_ResourceId` | Identifikátor URI prostředku |
 
 > [!Note]

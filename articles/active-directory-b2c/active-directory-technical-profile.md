@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2020
-ms.locfileid: "78932973"
+ms.locfileid: "78944212"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
 
@@ -56,7 +56,7 @@ Následující příklad ukazuje technický profil pro **AAD-Common** :
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Vstupní deklarace identity
+## <a name="inputclaims"></a>InputClaims
 
 Element InputClaims obsahuje deklaraci identity, která se používá k vyhledání účtu v adresáři, nebo vytvoření nového. Ve vstupní kolekci deklarací pro všechny technické profily služby Azure AD musí existovat přesně jeden element InputClaim. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v Azure Active Directory.
 
@@ -66,7 +66,7 @@ Pokud chcete vytvořit nový uživatelský účet, vstupní deklarace identity j
 
 Element InputClaimsTransformations může obsahovat kolekci vstupních transformačních prvků deklarací identity, které se používají k úpravě vstupní deklarace identity nebo k vygenerování nového.
 
-## <a name="output-claims"></a>Deklarace výstupů
+## <a name="outputclaims"></a>OutputClaims
 
 Element **OutputClaims** obsahuje seznam deklarací vrácených technickým profilem Azure AD. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v Azure Active Directory. Můžete také zahrnout deklarace identity, které nejsou vráceny Azure Active Directory, pokud nastavíte atribut `DefaultValue`.
 

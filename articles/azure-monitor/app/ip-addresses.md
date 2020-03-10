@@ -6,11 +6,11 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
 ms.openlocfilehash: ef8f5d1e011990e1d98a492ab8bfd871b7f429aa
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192400"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381248"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy, které používá Application Insights a Log Analytics
 Služba [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) používá několik IP adres. Pokud je aplikace, kterou sledujete, hostovaná za bránou firewall, může být potřeba tyto adresy znát.
@@ -174,7 +174,7 @@ East US
 ```  
 
 ## <a name="application-insights-api"></a>Rozhraní API pro Application Insights
-| Účel | Identifikátor URI | IP adresa | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Rozhraní API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | Dokumentace k rozhraní API |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
@@ -182,14 +182,14 @@ East US
 
 ## <a name="log-analytics-api"></a>Rozhraní API pro Log Analytics
 
-| Účel | Identifikátor URI | IP adresa | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Rozhraní API |api.loganalytics.io<br/>*.api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | Dokumentace k rozhraní API |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 
 ## <a name="application-insights-analytics"></a>Analýzy Application Insights
 
-| Účel | Identifikátor URI | IP adresa | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Portál Analytics | analytics.applicationinsights.io | dynamické | 80,443 |
 | CDN | applicationanalytics.azureedge.net | dynamické | 80,443 |
@@ -199,7 +199,7 @@ Poznámka: doména *. applicationinsights.io je vlastněna týmem Application In
 
 ## <a name="log-analytics-portal"></a>Portál Log Analytics
 
-| Účel | Identifikátor URI | IP adresa | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Portál | portal.loganalytics.io | dynamické | 80,443 |
 | CDN | applicationanalytics.azureedge.net | dynamické | 80,443 |
@@ -208,14 +208,14 @@ Poznámka: doména *. loganalytics.io je vlastněna týmem Log Analytics.
 
 ## <a name="application-insights-azure-portal-extension"></a>Rozšíření Application Insights Azure Portal
 
-| Účel | Identifikátor URI | IP adresa | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Rozšíření Application Insights | stamp2.app.insightsportal.visualstudio.com | dynamické | 80,443 |
 | CDN rozšíření Application Insights | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamické | 80,443 |
 
 ## <a name="application-insights-sdks"></a>Sady Application Insights SDK
 
-| Účel | Identifikátor URI | IP adresa | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | CDN SDK pro Application Insights JS | az416426.vo.msecnd.net | dynamické | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamické | 80,443 |
@@ -228,7 +228,7 @@ Poznámka: doména *. loganalytics.io je vlastněna týmem Log Analytics.
 
 ## <a name="profiler"></a>Profiler
 
-| Účel | Identifikátor URI | IP adresa | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portál | gateway.azureserviceprofiler.net | dynamické | 443
@@ -239,7 +239,7 @@ Poznámka: doména *. loganalytics.io je vlastněna týmem Log Analytics.
 > [!NOTE]
 > Profiler a Snapshot Debugger sdílejí stejnou sadu IP adres.
 
-| Účel | Identifikátor URI | IP adresa | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portál | ppe.gateway.azureserviceprofiler.net | dynamické | 443

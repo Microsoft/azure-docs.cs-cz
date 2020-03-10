@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448787"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943915"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
@@ -32,9 +32,9 @@ Probírají se tyto úlohy:
 > - Přidání připnutých položek
 > - Integrace vlastního vyhledávání do webové stránky
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Postup, jak získat klíč, naleznete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Pokud chcete získat klíč, [vytvořte v Azure Portal prostředek vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) . můžete použít také [zkušební klíč](https://azure.microsoft.com/try/cognitive-services).
 - Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2017 nebo novější, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Vytvoření instance vlastního vyhledávání
@@ -45,9 +45,9 @@ Vytvoření instance vlastního vyhledávání Bingu:
   
 2. Přejděte na [portál](https://customsearch.ai) vlastního vyhledávání.  
   
-3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud účet Microsoft nemáte, klikněte na **Vytvořit účet Microsoft**. Pokud portál používáte poprvé, zobrazí se výzva k udělení oprávnění pro přístup k vašim datům. Klikněte na **Ano**.  
+3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud nemáte MSA, klikněte na **vytvořit účet Microsoft**. Pokud na portálu používáte portál poprvé, bude požádat o oprávnění k přístupu k vašim datům. Klikněte na **Ano**.  
   
-4. Po přihlášení klikněte na **Nové vlastní vyhledávání**. V okně **Vytvořit novou instanci vlastního vyhledávání** zadejte smysluplný název popisující typ obsahu, který vyhledávání vrací. Název můžete kdykoli změnit.  
+4. Po přihlášení klikněte na **Nové vlastní vyhledávání**. V okně **vytvořit novou instanci vlastního vyhledávání** zadejte smysluplný název a popis typu obsahu, který hledání vrátí. Název můžete kdykoli změnit.  
   
    ![Snímek obrazovky s oknem Vytvořit novou instanci vlastního vyhledávání](../media/newCustomSrch.png)  
   
@@ -60,11 +60,11 @@ Vytvoření instance vlastního vyhledávání Bingu:
 
 Pokud chcete zahrnout výsledky z konkrétních webů nebo adres URL, přidejte je na kartě **Aktivní**.
 
-1.  Na stránce **Konfigurace** klikněte na kartu **Aktivní** a zadejte adresy URL webů, které chcete do vyhledávání zahrnout.
+1.       Na stránce **Konfigurace** klikněte na kartu **Aktivní** a zadejte adresy URL webů, které chcete do vyhledávání zahrnout.
 
     ![Snímek obrazovky editoru definice s kartou Aktivní](../media/customSrchEditor.png)
 
-2.  Pokud chcete ověřit, že vaše instance vrací výsledky, zadejte dotaz do podokna náhledu na pravé straně. Bing vrátí výsledky pouze pro veřejné weby, které indexoval.
+2.       Pokud chcete ověřit, že vaše instance vrací výsledky, zadejte dotaz do podokna náhledu na pravé straně. Bing vrátí výsledky pouze pro veřejné weby, které indexoval.
 
 ## <a name="add-blocked-entries"></a>Přidání blokovaných položek
 
@@ -79,7 +79,7 @@ Pokud chcete vyloučit výsledky z konkrétních webů nebo adres URL, přidejte
 
 ## <a name="add-pinned-entries"></a>Přidání připnutých položek
 
-Chcete-li připnout konkrétní webovou stránku na začátek výsledků hledání, přidejte webovou stránku a dotaz na **připnuté** kartu. **Připnutá** karta obsahuje seznam párů webových stránek a termínů dotazu, které určují webovou stránku, která se zobrazí jako nejvyšší výsledek konkrétního dotazu. Webová stránka se připne pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu připnuté webové stránky na základě podmínky shody připnuté webové stránky. Ve vyhledávání se zobrazí pouze indexované webové stránky. Další informace najdete v tématu [Definování vlastního zobrazení](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
+Chcete-li připnout konkrétní webovou stránku na začátek výsledků hledání, přidejte webovou stránku a dotaz na **připnuté** kartu. **Připnutá** karta obsahuje seznam párů webových stránek a termínů dotazu, které určují webovou stránku, která se zobrazí jako nejvyšší výsledek konkrétního dotazu. Webová stránka je připnuté pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu PIN na základě podmínky pro shodu PIN kódu. Ve vyhledávání se zobrazí pouze indexované webové stránky. Další informace najdete v tématu [Definování vlastního zobrazení](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. Na stránce **Konfigurace** klikněte na kartu **Připnuté** a zadejte webovou stránku, kterou chcete vrátit jako nejlepší výsledek, a její termín dotazu.  
   

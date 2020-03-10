@@ -4,12 +4,12 @@ description: Popisuje způsob použití omezení požadavků Azure Resource Mana
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 43ccf4f2e8098f6577f18943c4ab4132884b66f2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: eabc621ce02d4f30c5efb5bcef2635ea0e8dbcb2
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251341"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944058"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
@@ -124,7 +124,7 @@ Get-AzResourceGroup -Debug
 
 Který vrátí více hodnot, včetně následujících hodnota odpovědi:
 
-```powershell
+```output
 DEBUG: ============================ HTTP RESPONSE ============================
 
 Status Code:
@@ -143,7 +143,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 
 Který vrátí více hodnot, včetně následujících hodnot:
 
-```powershell
+```output
 DEBUG: ============================ HTTP RESPONSE ============================
 
 Status Code:

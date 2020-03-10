@@ -4,30 +4,26 @@ description: Přečtěte si, jak migrovat zařízení s StorSimple 8100 nebo 860
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330306"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943592"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
-Série StorSimple 8000 je představována buď na úrovni 8100, 8600 nebo na místním zařízení a na součásti cloudové služby. Data z některého z těchto zařízení je možné migrovat do Azure File Syncho prostředí. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync.
+Série StorSimple 8000 je představována buď 8100, 8600 nebo s fyzickými, místními zařízeními a jejich součástmi cloudové služby. Data z některého z těchto zařízení je možné migrovat do Azure File Syncho prostředí. Azure File Sync je výchozí a strategická dlouhodobá služba Azure, na kterou je možné StorSimple zařízení migrovat.
 
-## <a name="storsimple"></a>StorSimple
+Série StorSimple 8000 se [dokončí do konce životnosti](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) v prosinci 2022. Je důležité zahájit plánování migrace co nejrychleji. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync. 
 
-StorSimple je ukončený produkt společnosti Microsoft. Rozšířená podpora pro tento produkt a jeho cloudová služba vyprší od prosince 31 2022. Je důležité zahájit plánování migrace z StorSimpleu hned.
-
-Azure File Sync je výchozí a strategická dlouhodobá služba Azure, na kterou je možné StorSimple zařízení migrovat.
+## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 > [!IMPORTANT]
 > Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFilesMigration@microsoft. com pro vlastní plán migrace a také pomoc při migraci.
-
-## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 Azure File Sync je cloudová služba Microsoftu založená na dvou hlavních součástech:
 
@@ -247,10 +243,10 @@ Během tohoto procesu migrace připojíte k VIRTUÁLNÍmu počítači několik k
 > [!IMPORTANT]
 > Aby to fungovalo, musí být na serveru před konfigurací Azure File Sync nastaven klíč registru.
 
-1. Na systémové jednotce virtuálního počítače vytvořte nový adresář. Informace o Azure File Sync bude nutné zachovat místo v případě klonování připojených svazků. Příklad: `“C:\syncmetadata”`
+1. Na systémové jednotce virtuálního počítače vytvořte nový adresář. Informace o Azure File Sync bude nutné zachovat místo v případě klonování připojených svazků. Příklad: `"C:\syncmetadata"`
 2. Otevřete regedit a vyhledejte následující podregistr registru: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. Vytvořte nový klíč typu String s názvem: ***MetadataRootPath***
-4. Nastavte úplnou cestu k adresáři, který jste vytvořili na systémovém svazku, například: `C:\syncmetadata”`
+4. Nastavte úplnou cestu k adresáři, který jste vytvořili na systémovém svazku, například: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Konfigurace Azure File Sync na virtuálním počítači Azure
 

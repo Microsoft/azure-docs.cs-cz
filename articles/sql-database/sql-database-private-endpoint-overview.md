@@ -7,15 +7,15 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
-ms.date: 09/17/2019
-ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121076"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945376"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privátní odkaz pro Azure SQL Database a datový sklad (Preview)
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Privátní odkaz pro Azure SQL Database a datový sklad
 
 Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu**. Seznam pro PaaS služby, které podporují funkce privátního propojení, najdete na stránce [dokumentace k privátním linkám](../private-link/index.yml) . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../virtual-network/virtual-networks-overview.md) síti a podsíti. 
 
@@ -145,7 +145,7 @@ Výsledkem je, že jedna IP adresa je nahoru. který odpovídá IP adrese privá
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Ověření připojení pomocí SQL Server Management Studio (SSMS)
 > [!NOTE]
->Pro klienty použijte **plně kvalifikovaný název domény (FQDN)** serveru v připojovacích řetězcích. Jakékoli pokusy o přihlášení provedené přímo na IP adresu se návrhem nezdařily.
+> Pro klienty použijte **plně kvalifikovaný název domény (FQDN)** serveru v připojovacích řetězcích. Jakékoli pokusy o přihlášení provedené přímo na IP adresu se nezdaří. Toto chování je záměrné, protože privátní koncový bod směruje provoz do brány SQL v oblasti a je nutné zadat plně kvalifikovaný název domény, aby přihlášení bylo úspěšné.
 
 Pokud se [chcete k SQL Database připojit pomocí SSMS](sql-database-connect-query-ssms.md), postupujte podle těchto kroků. Po připojení k SQL Database pomocí SSMS ověřte, že se připojujete z privátní IP adresy virtuálního počítače Azure spuštěním následujícího dotazu:
 
@@ -153,8 +153,9 @@ Pokud se [chcete k SQL Database připojit pomocí SSMS](sql-database-connect-que
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
-> [!NOTE]
-> Připojení k privátnímu koncovému bodu ve verzi Preview podporuje **proxy** jenom jako [zásady připojení](sql-database-connectivity-architecture.md#connection-policy) .
+
+## <a name="limitations"></a>Omezení 
+Připojení k privátnímu koncovému bodu podporují **proxy server** jenom jako [zásady připojení](sql-database-connectivity-architecture.md#connection-policy) .
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Připojení z virtuálního počítače Azure v partnerském Virtual Network (VNet) 

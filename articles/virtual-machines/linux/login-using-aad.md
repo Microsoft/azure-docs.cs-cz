@@ -1,25 +1,18 @@
 ---
 title: Přihlášení k virtuálnímu počítači se systémem Linux s přihlašovacími údaji Azure Active Directory
 description: Naučte se vytvořit a nakonfigurovat virtuální počítač Linux pro přihlášení pomocí Azure Active Directory ověřování.
-services: virtual-machines-linux
-documentationcenter: ''
 author: iainfoulds
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544612"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944798"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -113,7 +106,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-*ProvisioningState* *se po* úspěšné instalaci rozšíření na virtuálním počítači zobrazí.
+*ProvisioningState* *se po* úspěšné instalaci rozšíření na virtuálním počítači zobrazí. Pro instalaci rozšíření potřebuje virtuální počítač spuštěného agenta virtuálního počítače. Další informace najdete v tématu [Přehled agenta virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurace přiřazení rolí pro virtuální počítač
 
@@ -175,7 +168,7 @@ Při prvním spuštění sudo se zobrazí výzva k ověření druhého času. Po
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-S tímto řádkem:
+s tímto řádkem:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL

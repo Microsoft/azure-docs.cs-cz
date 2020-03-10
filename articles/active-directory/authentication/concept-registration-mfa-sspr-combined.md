@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/06/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425347"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942898"
 ---
 # <a name="combined-security-information-registration-preview"></a>Registrace informací o kombinovaném zabezpečení (Preview)
 
@@ -47,7 +47,7 @@ Stránky s profilem jsou lokalizovány na základě nastavení jazyka počítač
 
 Kombinovaná registrace podporuje následující metody ověřování a akce:
 
-|   | Zaregistrovat | Změnit | Odstranit |
+|   | Registrace | Změnit | Odstranit |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
 | Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
@@ -55,9 +55,10 @@ Kombinovaná registrace podporuje následující metody ověřování a akce:
 | Telefon | Ano | Ano | Ano |
 | Alternativní telefon | Ano | Ano | Ano |
 | Telefon do kanceláře | Ne | Ne | Ne |
-| E-mail | Ano | Ano | Ano |
+| Email | Ano | Ano | Ano |
 | Bezpečnostní otázky | Ano | Ne | Ano |
 | Hesla aplikací | Ano | Ne | Ano |
+| FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Ano | Ano | Ano |
 
 > [!NOTE]
 > Hesla aplikací jsou k dispozici pouze pro uživatele, kteří byli vynutili Multi-Factor Authentication. Hesla aplikací nejsou k dispozici uživatelům, kteří jsou povoleni pro Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu.
@@ -67,7 +68,7 @@ Uživatelé můžou jako výchozí metodu Multi-Factor Authentication nastavit j
 - Microsoft Authenticator – oznámení
 - Ověřovací aplikace nebo hardwarový token – kód.
 - Telefonní hovor.
-- Textová zpráva.
+- Textová zpráva
 
 Jak budeme dál přidávat do Azure AD další metody ověřování, budou tyto metody k dispozici v kombinované registraci.
 

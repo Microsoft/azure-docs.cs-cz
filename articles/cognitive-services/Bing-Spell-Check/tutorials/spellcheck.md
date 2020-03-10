@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 12/20/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382792"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943096"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
 
@@ -25,11 +25,11 @@ V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > - vytvoření jednoduchého dotazu na rozhraní API Bingu pro kontrolu pravopisu,
-> - zobrazení výsledků dotazu.
+> - Zobrazení výsledků dotazu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
+Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho ještě nemáte, vytvořte v Azure Portal [prostředek kontrola pravopisu Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) . můžete použít také [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
 
 ## <a name="create-a-new-web-page"></a>Vytvoření nové webové stránky
 
@@ -37,7 +37,7 @@ Otevřete textový editor. Vytvořte nový soubor s názvem například spellche
 
 ## <a name="add-html-header"></a>Přidání hlavičky HTML
 
-Přidejte informace hlavičky HTML a začněte část se skriptem tak, jak vidíte na následujícím obrázku.
+Přidejte informace hlavičky HTML a začněte oddíl script tak, jak vidíte na následujícím obrázku.
 
 ```html
 <!DOCTYPE html>
@@ -66,7 +66,7 @@ Přidejte informace hlavičky HTML a začněte část se skriptem tak, jak vidí
 
 ## <a name="getsubscriptionkey-function"></a>Funkce getSubscriptionKey
 
-Funkce getSubscriptionKey vrací klíč rozhraní API Bingu pro kontrolu pravopisu. Buď ho získá z místního úložiště (tj. ze souboru cookie), nebo v případě potřeby vyzve uživatele k jeho zadání.
+Funkce getSubscriptionKey vrací klíč rozhraní API Bingu pro kontrolu pravopisu. Buď ho získá z místního úložiště (t.j. souboru cookie), nebo v případě potřeby vyzve uživatele k jeho zadání.
 
 Začněte s funkcí getSubscriptionKey a deklarujte název souboru cookie následujícím způsobem.
 
@@ -118,7 +118,7 @@ Podpůrná funkce getSubscriptionKeyLocalStorage se nejprve pokusí načíst kl�
     }
 ```
 
-Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API Bingu pro kontrolu pravopisu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API Bingu pro kontrolu pravopisu.
+Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate**. Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API Bingu pro kontrolu pravopisu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API Bingu pro kontrolu pravopisu.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -322,4 +322,4 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Požadavky na použití a zobrazení](../UseAndDisplayRequirements.md)
+> [Požadavky na zobrazení a použití](../UseAndDisplayRequirements.md)

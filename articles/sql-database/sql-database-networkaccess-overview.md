@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251902"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945381"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database a řízení přístupu k síti v datovém skladu
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251902"
 > [!IMPORTANT]
 > Tento článek se *nevztahuje na* **Azure SQL Database spravovanou instanci**. Další informace o konfiguraci sítě najdete v tématu [připojení ke spravované instanci](sql-database-managed-instance-connect-app.md) .
 
-Když vytvoříte novou službu Azure SQL Server [z Azure Portal](sql-database-single-database-get-started.md), výsledkem je veřejný koncový bod ve formátu *yourservername.Database.Windows.NET*. V rámci návrhu je odepřen veškerý přístup k veřejnému koncovému bodu. Pak můžete pomocí následujících ovládacích prvků přístupu k síti selektivně dovolit přístup k databázi SQl prostřednictvím veřejného koncového bodu.
-- Povolení služeb Azure: – Pokud je nastavené na ZAPNUTo, další prostředky v rámci hranice Azure, například virtuální počítač Azure, mají přístup k SQL Database
+Když v [Azure Portal](sql-database-single-database-get-started.md)vytvoříte novou SQL Server Azure, výsledkem je veřejný koncový bod ve formátu *yourservername.Database.Windows.NET*.
 
-- Pravidla brány firewall protokolu IP: – pomocí této funkce můžete výslovně dovolit připojení z konkrétní IP adresy, například z místních počítačů.
+Pomocí následujících ovládacích prvků přístupu k síti můžete selektivně dovolit přístup k databázi SQl prostřednictvím veřejného koncového bodu:
+- Povolení služeb Azure: Pokud je tato možnost nastavená na ON, můžou mít k disSQL Database k dishranici jiné prostředky v rámci hranice Azure, například virtuální počítač Azure.
 
-- Virtual Network pravidla brány firewall: – pomocí této funkce povolíte provoz z konkrétní Virtual Network v rámci hranice Azure.
+- Pravidla brány firewall protokolu IP: pomocí této funkce můžete výslovně dovolit připojení z konkrétní IP adresy, například z místních počítačů.
 
+Privátní přístup k SQL Database z [virtuálních sítí](../virtual-network/virtual-networks-overview.md) můžete také taky udělit prostřednictvím:
+- Virtual Network pravidla brány firewall: pomocí této funkce povolíte provoz z konkrétní Virtual Network v rámci hranice Azure.
+
+- Privátní odkaz: pomocí této funkce můžete vytvořit privátní koncový bod pro Azure SQL Server v rámci konkrétní Virtual Network
+
+
+
+V níže uvedeném videu najdete nejdůležitější vysvětlení těchto ovládacích prvků přístupu a jejich možnosti:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>Povolení služeb Azure 
 Při vytváření nové služby Azure SQL Server [z Azure Portal](sql-database-single-database-get-started.md)zůstane toto nastavení ponecháno nezaškrtnuté.
 
- ![Snímek obrazovky s vytvořením nového serveru][1]
+
 
 Toto nastavení můžete také změnit přes podokno brány firewall po vytvoření služby Azure SQL Server následujícím způsobem.
   
@@ -129,6 +138,9 @@ Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a spr�
 > [!NOTE]
 > V podsíti ještě nemůžete mít SQL Database. Pokud váš server Azure SQL Database byl uzlem v podsíti ve vaší virtuální síti, můžou všechny uzly v rámci virtuální sítě komunikovat s vaší SQL Database. V takovém případě můžou vaše virtuální počítače komunikovat s SQL Database bez nutnosti používat pravidla virtuální sítě nebo pravidla protokolu IP.
 
+## <a name="private-link"></a>Privátní propojení 
+Privátní odkaz vám umožní připojit se k Azure SQL Server prostřednictvím **privátního koncového bodu**. Privátní koncový bod je privátní IP adresa v rámci konkrétní [Virtual Network](../virtual-network/virtual-networks-overview.md) a podsítě.
+
 ## <a name="next-steps"></a>Další kroky
 
 - Rychlý Start k vytvoření pravidla brány firewall IP na úrovni serveru najdete v tématu [Vytvoření databáze SQL Azure](sql-database-single-database-get-started.md).
@@ -146,3 +158,4 @@ Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a spr�
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

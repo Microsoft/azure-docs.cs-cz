@@ -6,15 +6,15 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: imaging
+ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695437"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944960"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Verze Preview: Vytvoření virtuálního počítače se systémem Linux pomocí nástroje Azure image Builder
+# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Verze Preview: Vytvoření virtuálního počítače se systémem Linux pomocí Azure image Builder
 
 V tomto článku se dozvíte, jak vytvořit přizpůsobenou image pro Linux pomocí Azure image Builder a Azure CLI. Příklad v tomto článku [používá pro přizpůsobení](image-builder-json.md#properties-customize) image tři různé úpravy:
 
@@ -91,7 +91,7 @@ az group create -n $imageResourceGroup -l $location
 ## <a name="set-permissions-on-the-resource-group"></a>Nastavení oprávnění pro skupinu prostředků
 Udělte přispěvateli image Builder oprávnění k vytvoření image ve skupině prostředků. Bez správných oprávnění se sestavení image nezdaří. 
 
-`--assignee` Hodnota je ID registrace aplikace pro službu Tvůrce imagí. 
+Hodnota `--assignee` je ID registrace aplikace pro službu Tvůrce imagí. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -114,14 +114,14 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-V případě potřeby můžete tento příklad. JSON upravit. Můžete například zvýšit hodnotu `buildTimeoutInMinutes` tak, aby umožňovala delší spuštění sestavení. Soubor můžete upravit v Cloud Shell pomocí textového editoru, jako `vi`je.
+V případě potřeby můžete tento příklad. JSON upravit. Můžete například zvýšit hodnotu `buildTimeoutInMinutes`, aby bylo možné déle spouštět buildy. Soubor můžete upravit v Cloud Shell pomocí textového editoru, jako je `vi`.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Pro zdrojovou image musíte vždycky [zadat verzi](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), kterou nemůžete použít `latest`.
+> V případě zdrojového obrázku je nutné vždy [zadat verzi](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), nelze použít `latest`.
 >
 > Pokud přidáte nebo změníte skupinu prostředků, ve které je bitová kopie distribuována, musíte zajistit, aby byla [pro skupinu prostředků nastavena oprávnění](#set-permissions-on-the-resource-group).
 
@@ -203,7 +203,7 @@ Měli byste vidět, že obrázek byl přizpůsoben se zprávou dne, jakmile se n
 *******************************************************
 ```
 
-Zadejte `exit` , kdy jste hotovi s cílem zavřít připojení SSH.
+Po dokončení připojení SSH zadejte `exit`.
 
 ## <a name="check-the-source"></a>Ověřit zdroj
 
@@ -235,6 +235,6 @@ az group delete -n $imageResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](image-builder-json.md).

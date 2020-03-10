@@ -2,23 +2,17 @@
 title: Nasazení prostředků do tenanta
 description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: d63697f3c140b5ad374607f1ecb00dad20e697de
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
-ms.translationtype: MT
+ms.date: 03/09/2020
+ms.openlocfilehash: aa72116c3e6e98293b28b2d4413fd1dafb1372d9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899136"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942742"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Vytváření prostředků na úrovni tenanta
 
-Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Prostředky však můžete vytvořit také v těchto případech:
-
-* [úroveň předplatného](deploy-to-subscription.md)
-* [úroveň skupiny pro správu](deploy-to-management-group.md)
-* úroveň tenanta (uvedená v tomto článku)
-
-Nasazení na úrovni tenanta využíváte k provádění akcí, které jsou na této úrovni vhodné, například přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md) nebo použití [zásad](../../governance/policy/overview.md).
+V případě, že vaše organizace bude vyspělá, možná budete muset v tenantovi Azure AD definovat a přiřazovat [zásady](../../governance/policy/overview.md) nebo [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) . Pomocí šablon na úrovni tenanta můžete deklarativně uplatňovat zásady a přiřazovat role na globální úrovni.
 
 ## <a name="supported-resources"></a>Podporované prostředky
 
@@ -41,10 +35,10 @@ Pro šablony použijte:
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-Pro soubory parametrů použijte:
+Schéma pro soubor parametrů je pro všechny obory nasazení stejné. Pro soubory parametrů použijte:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="required-access"></a>Požadovaný přístup
@@ -181,5 +175,4 @@ Pro nasazení klientů existují při použití funkcí šablon důležité důl
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o přiřazování rolí najdete v tématu [Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
-* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md).
-* Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](template-functions.md).
+* Šablony můžete nasadit i na úrovni [předplatného](deploy-to-subscription.md) nebo [skupiny pro správu](deploy-to-management-group.md).

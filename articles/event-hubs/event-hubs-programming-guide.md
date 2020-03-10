@@ -9,28 +9,28 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: afd466e0266cf2d95f95eb8536943f5856c26a58
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899907"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945781"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Průvodce programováním v rozhraní .NET pro Azure Event Hubs (starší balíček Microsoft. Azure. EventHubs)
 Tento článek popisuje některé běžné situace při psaní kódu s využitím služby Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
 
 > [!WARNING]
-> Tato příručka je určena pro starý balíček **Microsoft. Azure. EventHubs** . Doporučujeme, abyste při [migraci](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md) kódu používali nejnovější balíček [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) .  
+> Tato příručka je určena pro starý balíček **Microsoft. Azure. EventHubs** . Doporučujeme, abyste při [migraci](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) kódu používali nejnovější balíček [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) .  
 
 
 ## <a name="event-publishers"></a>Zdroje událostí
 
 Odesíláte události do centra událostí, buď pomocí HTTP POST nebo prostřednictvím připojení protokolu AMQP 1.0. Možnost, která chcete používat a kdy závisí na konkrétním adresovaném scénáři. Připojení protokolu AMQP 1.0 se měří jako zprostředkovaná připojení ve službě Service Bus. Díky tomu, že poskytují trvalý kanál pro zasílání zpráv, jsou vhodnější ve scénářích, kde se počítá s častými vysokými objemy zpráv a vyžaduje se nižší latence.
 
-Pokud používáte rozhraní API spravované pomocí .NET, budou primárními konstrukcemi pro publikování dat ve službě Event Hubs třídy [EventHubClient][] a [EventData][]. [EventHubClient][] poskytuje komunikační kanál AMQP, přes který se události posílají do centra událostí. [EventData][] třída představuje událost a slouží k publikování zpráv do centra událostí. Tato třída zahrnuje tělo, některá metadata (vlastnosti) a informace hlavičky (SystemProperties) o události. Další vlastnosti jsou přidány do [EventData][] objektu prostřednictvím centra událostí.
+Pokud používáte rozhraní API spravované pomocí .NET, budou primárními konstrukcemi pro publikování dat ve službě Event Hubs třídy [EventHubClient][] a [EventData][]. [EventHubClient][] poskytuje komunikační kanál AMQP, přes který se události odesílají do centra událostí. Třída [EventData][] představuje událost a slouží k publikování zpráv do centra událostí. Tato třída zahrnuje tělo, některá metadata (vlastnosti) a informace hlavičky (SystemProperties) o události. Do objektu [EventData][] se přidají další vlastnosti, které procházejí centrem událostí.
 
-## <a name="get-started"></a>Začít
-Třídy, které podporují službu Event Hubs jsou k dispozici v rozhraní .NET [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) balíček NuGet. Můžete nainstalovat pomocí Průzkumníka řešení v sadě Visual Studio nebo [Konzola správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) v sadě Visual Studio. V tom případě je potřeba zadat v okně [konzoly Správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) následující příkaz:
+## <a name="get-started"></a>Začínáme
+Třídy .NET, které podporují Event Hubs, jsou k dispozici v balíčku NuGet [Microsoft. Azure. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) . Můžete nainstalovat pomocí Průzkumníka řešení sady Visual Studio nebo [konzoly Správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) v aplikaci Visual Studio. V tom případě je potřeba zadat v okně [konzoly Správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) následující příkaz:
 
 ```shell
 Install-Package Microsoft.Azure.EventHubs
@@ -38,11 +38,11 @@ Install-Package Microsoft.Azure.EventHubs
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-Webu Azure portal, Azure Powershellu nebo Azure CLI slouží k vytvoření služby Event Hubs. Podrobnosti najdete v tématu [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](event-hubs-create.md).
+Webu Azure portal, Azure Powershellu nebo Azure CLI slouží k vytvoření služby Event Hubs. Podrobnosti najdete v tématu [Vytvoření oboru názvů Event Hubs a centra událostí pomocí Azure Portal](event-hubs-create.md).
 
 ## <a name="create-an-event-hubs-client"></a>Vytvoření klienta pro centra událostí (Event Hubs)
 
-Primární třídou pro interakci se službou Event Hubs je [Microsoft.Azure.EventHubs.EventHubClient][EventHubClient]. Můžete vytvořit instanci této třídy pomocí [CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createfromconnectionstring) způsob, jak je znázorněno v následujícím příkladu:
+Primární třídou pro interakci s Event Hubs je [Microsoft. Azure. EventHubs. EventHubClient][EventHubClient]. Můžete vytvořit instanci této třídy pomocí metody [CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createfromconnectionstring) , jak je znázorněno v následujícím příkladu:
 
 ```csharp
 private const string EventHubConnectionString = "Event Hubs namespace connection string";
@@ -58,11 +58,11 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="send-events-to-an-event-hub"></a>Odesílání událostí do centra událostí
 
-Odesílání událostí do centra událostí tak, že vytvoříte [EventHubClient][] instance a odesláním asynchronně prostřednictvím [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) metody. Tato metoda přebírá jediný [EventData][] parametru instance a asynchronně odešle do centra událostí.
+Události odesíláte do centra událostí vytvořením instance [EventHubClient][] a jejím asynchronním odesláním prostřednictvím metody [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) . Tato metoda přijímá jeden parametr instance [EventData][] a asynchronně ho odesílá do centra událostí.
 
 ## <a name="event-serialization"></a>Serializace událostí
 
-[EventData][] třída má [dvě přetížené konstruktory](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) , které přebírají různé parametry, bajtů nebo s polem bajtů, které představují data datové části události. Pokud při práci s třídou [EventData][] používáte JSON, můžete načíst pole bajtů řetězce kódovaného ve formátu JSON pomocí metody **Encoding.UTF8.GetBytes()** . Příklad:
+Třída [EventData][] má [dva přetížené konstruktory](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) , které přijímají různé parametry, bajty nebo bajtové pole, které reprezentují datovou část dat události. Pokud při práci s třídou [EventData][] používáte JSON, můžete načíst pole bajtů řetězce kódovaného ve formátu JSON pomocí metody **Encoding.UTF8.GetBytes()** . Příklad:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -78,7 +78,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 > [!NOTE]
 > Pokud nejste obeznámeni s oddíly, přečtěte si [Tento článek](event-hubs-features.md#partitions). 
 
-Při odesílání dat události, můžete zadat hodnotu, která se po zahašování použije k vytvoření přiřazení k oddílu. Můžete zadat pomocí oddílu [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) vlastnost. Však rozhodnout a použít oddíly znamená možnost volby mezi dostupností a konzistencí. 
+Při odesílání dat události, můžete zadat hodnotu, která se po zahašování použije k vytvoření přiřazení k oddílu. Oddíl určíte pomocí vlastnosti [PartitionSender. PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) . Však rozhodnout a použít oddíly znamená možnost volby mezi dostupností a konzistencí. 
 
 ### <a name="availability-considerations"></a>Aspekty dostupnosti
 
@@ -92,17 +92,17 @@ Tyto požadavky na dostupnost podle scénářů můžete zvolit jednu z následu
 - Vyřadit (zprávy nejsou důležité. můžete vyřadit je)
 - Opakovat (zprávy podle svých potřeb opakování)
 
-Další informace a diskuze o kompromisech mezi dostupností a konzistencí najdete v tématu [dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md). 
+Další informace a diskuzi o kompromisech mezi dostupností a konzistencí najdete v tématu [dostupnost a konzistence v Event Hubs](event-hubs-availability-and-consistency.md). 
 
 ## <a name="batch-event-send-operations"></a>Dávkové operace odesílání událostí
 
-Odesílání událostí v dávkách může pomoci zvýšit propustnost. Můžete použít [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) rozhraní API k vytvoření dávky dat je možné později přidat objekty pro [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) volání.
+Odesílání událostí v dávkách může pomoci zvýšit propustnost. Pomocí rozhraní [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API můžete vytvořit dávku, do které lze později přidat datové objekty pro volání [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) .
 
-Jedna dávka nesmí překročit omezení 1 MB události. Kromě toho každá zpráva v batchi používá stejnou identitu zdroje. Dodržení maximálního limitu velikosti události u batche musí zajistit odesílatel. V případě překročení se u klienta vygeneruje chyba odeslání (**Send**). K zajištění, aby dávka nepřekročila 1 MB, můžete použít pomocnou metodu [EventHubClient. CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) . Získejte prázdnou [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) z [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) rozhraní API a pak použijte [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) přidání události k vytvoření služby batch. 
+Jedna dávka nesmí překročit omezení 1 MB události. Kromě toho každá zpráva v batchi používá stejnou identitu zdroje. Dodržení maximálního limitu velikosti události u batche musí zajistit odesílatel. V případě překročení se u klienta vygeneruje chyba odeslání (**Send**). K zajištění, aby dávka nepřekročila 1 MB, můžete použít pomocnou metodu [EventHubClient. CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) . Z rozhraní [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API získáte prázdné [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) a pak pomocí [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) přidáte události pro vytvoření dávky. 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchronní odesílání a škálované odesílání
 
-Asynchronně odesíláte události do centra událostí. Asynchronní odesílání zvýší rychlost, s jakou je klient schopný odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objektu. Můžete použít [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) možnosti opakování třídy na straně klienta pro klienta ovládacího prvku.
+Asynchronně odesíláte události do centra událostí. Asynchronní odesílání zvýší rychlost, s jakou je klient schopný odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí objekt [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) . K řízení možností opakování klienta můžete použít třídu [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) na klientovi.
 
 ## <a name="event-consumers"></a>Příjemci událostí
 Třída [EventProcessorHost][] zpracovává data z center událostí (Event Hubs). Tuto implementaci byste měli používat při vytváření čtenářů událostí na platformě .NET. Třída [EventProcessorHost][] poskytuje pro implementace zpracovatelů událostí bezpečné prostředí runtime, které umožňuje bezpečné použití vláken a více procesů. Taky poskytuje možnost vytváření kontrolních bodů a správy „půjčování“ oddílu.
@@ -114,7 +114,7 @@ K použití třídy [EventProcessorHost][] může být potřeba implementovat ro
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Abyste mohli zahájit zpracování událostí, vytvořit instanci [EventProcessorHost][], poskytnutím příslušných parametrů pro vaše Centrum událostí. Příklad:
+Pokud chcete spustit zpracování událostí, vytvořte instanci [EventProcessorHost][]a poskytněte příslušné parametry centra událostí. Příklad:
 
 > [!NOTE]
 > EventProcessorHost a související třídy jsou k dispozici v balíčku **Microsoft. Azure. EventHubs. Processor** . Přidejte balíček do projektu sady Visual Studio podle pokynů v [tomto článku](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) nebo vyvoláním následujícího příkazu v okně [konzoly správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) :`Install-Package Microsoft.Azure.EventHubs.Processor`.
@@ -128,7 +128,7 @@ var eventProcessorHost = new EventProcessorHost(
         StorageContainerName);
 ```
 
-Potom zavolejte [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync) zaregistrovat vaše [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementace s modulem runtime:
+Pak zavolejte [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync) k registraci vaší implementace [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) s modulem runtime:
 
 ```csharp
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();

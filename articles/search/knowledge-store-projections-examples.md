@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441965"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943679"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Projekce pro znalostní bázi Knowledge Store: jak natvarovat a exportovat obohacení
 
@@ -671,7 +671,13 @@ Při definování projekce je k dispozici několik běžných problémů, které
 
 Příklady v tomto článku ukazují běžné vzory způsobu vytváření projekce. Teď, když máte dobré znalosti o konceptech, je lepší zajistit vytváření projekce pro konkrétní scénář.
 
-Při iteraci na definicích znalostní báze zvažte možnost přírůstkové obohacení v dalším kroku. Přírůstkové obohacení je založeno na ukládání do mezipaměti, které umožňuje znovu použít jakékoli obohacení, které není jinak ovlivněné dovednosti úpravou. To je zvlášť užitečné pro kanály, které zahrnují analýzu OCR a obrázků.
+Při zkoumání nových funkcí zvažte možnost přírůstkové obohacení v dalším kroku. Přírůstkové obohacení je založeno na ukládání do mezipaměti, které umožňuje znovu použít jakékoli obohacení, které není jinak ovlivněné dovednosti úpravou. To je zvlášť užitečné pro kanály, které zahrnují analýzu OCR a obrázků.
 
 > [!div class="nextstepaction"]
 > [Úvod k přírůstkové obohacení a ukládání do mezipaměti](cognitive-search-incremental-indexing-conceptual.md)
+
+Přehled o projekcích najdete v tématu Další informace o možnostech, jako jsou skupiny a vytváření řezů, a jak je [definujete v dovednosti](knowledge-store-projection-overview.md) .
+
+> [!div class="nextstepaction"]
+> [Projekce ve znalostní bázi Knowledge Store](knowledge-store-projection-overview.md)
+

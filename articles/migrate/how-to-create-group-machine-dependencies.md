@@ -1,14 +1,14 @@
 ---
 title: Nastavení Vizualizace závislostí v Azure Migrate
-description: Popisuje nastavení Vizualizace závislostí v Azure Migrate posuzování serveru.
+description: Tento článek popisuje, jak nastavit vizualizaci závislostí v Azure Migrate posuzování serveru.
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916281"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78940959"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 

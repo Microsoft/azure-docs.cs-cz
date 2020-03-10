@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927989"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943667"
 ---
 # <a name="azure-database-security-best-practices"></a>Osvědčené postupy zabezpečení databáze v Azure
 Tento článek popisuje osvědčené postupy pro zabezpečení databáze.
@@ -72,7 +72,7 @@ Pokud používáte ověřování SQL Server, musíte:
 
 - Spravujte silné přihlašovací údaje sami.
 - Zabezpečte přihlašovací údaje v připojovacím řetězci.
-- (Potenciálně) chránit přihlašovací údaje předané sítí z webového serveru do databáze. Další informace najdete v tématu [jak: Připojení k SQL Server pomocí ověřování SQL v ASP.NET 2,0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
+- (Potenciálně) chránit přihlašovací údaje předané sítí z webového serveru do databáze. Další informace najdete v tématu [Postup: připojení k SQL Server pomocí ověřování SQL v ASP.NET 2,0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Ověřování Azure Active Directory (AD)*
 Ověřování Azure AD je mechanismus připojení k Azure SQL Database a [SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit ve službě Azure AD. Pomocí ověřování Azure AD můžete spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.
@@ -90,12 +90,12 @@ Mezi jeho výhody patří následující:
 - Používá uživatele databáze s omezením k ověřování identit na úrovni databáze.
 - Podporuje ověřování na základě tokenů pro aplikace, které se připojují k SQL Database.
 - Podporuje AD FS (doménová federace) nebo nativní ověřování uživatele a hesla pro místní instanci Azure Active Directory bez synchronizace domén.
-- Azure AD podporuje připojení z SQL Server Management Studio, která používají univerzální ověřování služby Active Directory, které zahrnuje službu Multi-Factor Authentication. Multi-Factor Authentication poskytuje silné ověřování s řadou možností ověřování – telefonní hovor, textová zpráva, čipové karty s kódem PIN nebo oznámením mobilní aplikace. Další informace najdete v tématu [Podpora SSMS pro Multi-Factor Authentication v Azure AD pomocí SQL Database a SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
+- Azure AD podporuje připojení z SQL Server Management Studio, která používají univerzální ověřování služby Active Directory, což zahrnuje Multi-Factor Authentication. Multi-Factor Authentication poskytuje silné ověřování s řadou možností ověřování – telefonní hovor, textová zpráva, čipové karty s kódem PIN nebo oznámením o mobilní aplikaci. Další informace najdete v tématu [Podpora SSMS pro Azure AD Multi-Factor Authentication s SQL Database a SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Postup konfigurace zahrnuje následující postupy konfigurace a používání ověřování Azure AD:
 
 - Vytvoření a naplnění služby Azure AD.
-- Volitelné: Přidružte nebo změňte instanci služby Active Directory, která je aktuálně přidružená k vašemu předplatnému Azure.
+- Volitelné: přidružte nebo změňte instanci služby Active Directory, která je aktuálně přidružená k vašemu předplatnému Azure.
 - Vytvořte správce Azure Active Directory pro Azure SQL Database nebo [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 - Nakonfigurujte klientské počítače.
 - Vytvořte uživatele databáze s omezením ve vaší databázi namapované na identity Azure AD.
@@ -145,18 +145,18 @@ Ochrana před hrozbami překračuje detekci. Ochrana před hrozbami databáze za
 - Implementace zabezpečených konfigurací v databázi, aby bylo možné chránit databázi.
 - Zjišťování a reakce na potenciální hrozby, když k nim dojde, abyste mohli rychle reagovat a opravovat.
 
-**Osvědčené postupy**: Zjišťování, klasifikace a označování citlivých dat ve vašich databázích.   
-**Podrobnosti**: Klasifikace dat ve službě SQL Database povolením [zjišťování a klasifikace dat](/azure/sql-database/sql-database-data-discovery-and-classification) v Azure SQL Database. Přístup k citlivým datům můžete sledovat na řídicím panelu Azure nebo v sestavách ke stažení.
+**Osvědčené postupy**: zjištění, klasifikace a označení citlivých dat ve vašich databázích.   
+**Podrobnosti**: klasifikace dat ve službě SQL Database povolením [zjišťování a klasifikace dat](/azure/sql-database/sql-database-data-discovery-and-classification) v Azure SQL Database. Přístup k citlivým datům můžete sledovat na řídicím panelu Azure nebo v sestavách ke stažení.
 
-**Osvědčené postupy**: Sledujte slabá místa v databázi, abyste mohli proaktivně vylepšit zabezpečení databáze.   
-**Podrobnosti**: Použijte službu [posouzení ohrožení zabezpečení](/azure/sql-database/sql-vulnerability-assessment) Azure SQL Database, která vyhledá potenciální ohrožení zabezpečení databáze. Služba využívá znalostní bázi pravidel, která označují slabá místa zabezpečení a zobrazují odchylky od osvědčených postupů, jako jsou například chyby konfigurace, nadměrné oprávnění a nechráněná citlivá data.
+**Osvědčený postup**: Sledujte slabá místa v databázi, abyste mohli proaktivně vylepšit zabezpečení databáze.   
+**Podrobnosti**: použijte službu [posouzení ohrožení zabezpečení](/azure/sql-database/sql-vulnerability-assessment) Azure SQL Database, která vyhledá potenciální ohrožení zabezpečení databáze. Služba využívá znalostní bázi pravidel, která označují slabá místa zabezpečení a zobrazují odchylky od osvědčených postupů, jako jsou například chyby konfigurace, nadměrné oprávnění a nechráněná citlivá data.
 
 Tato pravidla jsou založená na osvědčených postupech Microsoftu a zaměřuje se na problémy zabezpečení, které představují největší rizika pro vaši databázi a jejich cenná data. Zahrnují jak problémy na úrovni databáze, tak i problémy zabezpečení na úrovni serveru, jako je nastavení brány firewall serveru a oprávnění na úrovni serveru. Tato pravidla také reprezentují mnoho požadavků od regulativních orgánů, aby splnily jejich standardy dodržování předpisů.
 
-**Osvědčené postupy**: Povolte detekci hrozeb.  
-**Podrobnosti**:  Povolením Azure SQL Database [detekce hrozeb](/azure/sql-database/sql-database-threat-detection) získáte výstrahy zabezpečení a doporučení, jak prozkoumat a zmírnit hrozby. Dostanete výstrahy o podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení a útocích prostřednictvím injektáže SQL a také o přístupu k databázi neobvyklé a vzorcích dotazů.
+**Osvědčený postup**: povolení detekce hrozeb.  
+**Podrobnosti**: povolení [detekce hrozeb](/azure/sql-database/sql-database-threat-detection) Azure SQL Database k získání výstrah zabezpečení a doporučení, jak zkoumat a zmírnit hrozby. Dostanete výstrahy o podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení a útocích prostřednictvím injektáže SQL a také o přístupu k databázi neobvyklé a vzorcích dotazů.
 
-[Rozšířená ochrana před internetovými útoky](/azure/sql-database/sql-advanced-threat-protection) je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje výše zmíněné služby: Zjišťování a klasifikace dat, posouzení ohrožení zabezpečení a detekce hrozeb. Poskytuje jedno umístění pro povolení a správu těchto schopností.
+[Rozšířená ochrana před internetovými útoky](/azure/sql-database/sql-advanced-threat-protection) je jednotný balíček pro pokročilé funkce zabezpečení SQL. Obsahuje výše zmíněné služby: zjišťování a klasifikace dat, posouzení ohrožení zabezpečení a detekce hrozeb. Poskytuje jedno umístění pro povolení a správu těchto schopností.
 
 Povolení těchto možností vám pomůže:
 
@@ -167,13 +167,9 @@ Povolení těchto možností vám pomůže:
 
 Kromě toho detekce hrozeb integruje výstrahy se Azure Security Center pro centrální zobrazení stavu zabezpečení všech vašich prostředků Azure.
 
-## <a name="enable-feature-restrictions"></a>Povolit omezení funkcí
-
-Data obsažená ve vašich databázích můžou být vystavená útočníkům pomocí vektorů útoku, které využívají chyby databáze a časy spuštění dotazů. Azure SQL Database poskytuje řadu mechanismů omezení funkcí pro ochranu databáze. Další informace najdete v tématu [omezení funkcí SQL Database](/azure/sql-database/sql-database-feature-restrictions).
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.
 
 K dispozici jsou následující prostředky, které poskytují obecnější informace o zabezpečení Azure a souvisejících službách Microsoftu:
 * [Blog týmu pro zabezpečení Azure](https://blogs.msdn.microsoft.com/azuresecurity/) – aktuální informace o nejnovější verzi v zabezpečení Azure
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu.secure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu secure@microsoft.com

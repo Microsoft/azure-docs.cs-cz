@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727109"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942950"
 ---
 # <a name="azure-sql-database-security-features"></a>Funkce zabezpečení Azure SQL Database    
 Azure SQL Database poskytuje službu relačních databází v Azure. Aby bylo možné chránit zákaznická data a poskytovat silné bezpečnostní funkce, které zákazníci očekávají od služby relační databáze, SQL Database mají vlastní sady možností zabezpečení. Tyto možnosti se sestavují na ovládací prvky, které jsou zděděné z Azure.
@@ -62,9 +62,9 @@ Vzhledem k tomu, že řadič prostředků infrastruktury (FC) je centrálním n�
 ### <a name="vlan-isolation"></a>Izolace sítě VLAN
 Produkční síť Azure je logicky oddělená na tři primární sítě VLAN:
 
-- Hlavní síť VLAN: Propojuje nedůvěryhodné uzly zákazníka.
-- SÍŤ VLAN FC: Obsahuje důvěryhodné FCs a podpůrné systémy.
-- SÍŤ VLAN zařízení: Obsahuje důvěryhodnou síť a jiná zařízení infrastruktury.
+- Hlavní síť VLAN: propojení nedůvěryhodných uzlů zákazníka.
+- SÍŤ VLAN FC: obsahuje důvěryhodné nástroje FCs a podpůrné systémy.
+- SÍŤ VLAN zařízení: obsahuje důvěryhodnou síť a jiná zařízení infrastruktury.
 
 ### <a name="packet-filtering"></a>Filtrování paketů
 IPFilter a softwarové brány firewall implementované v kořenovém operačním systému a hostovaném operačním systému uzlů vynutila omezení připojení a zabraňují neoprávněnému provozu mezi virtuálními počítači.
@@ -75,7 +75,7 @@ Izolaci kořenového operačního systému z virtuálních počítačů hosta a 
 ### <a name="types-of-rules-on-firewalls"></a>Typy pravidel pro brány firewall
 Pravidlo je definováno jako:
 
-{Security Response Center (src) IP adresa, zdrojový port, cílová IP adresa, cílový port, cílový protokol, stav/výstup, stavový/stavový časový limit pro stavový tok.
+{Src IP, src port, cílová IP adresa, cílový port, cílový protokol, vstupně-výstupní protokol, stavový/stavový, časový limit pro stavový tok}.
 
 Pakety synchronního nečinného znaku (SYN) jsou povolené nebo odstraněné jenom v případě, že je povolují některá z těchto pravidel. V případě TCP používá Azure Bezstavová pravidla, kde je zásada, že umožňuje do virtuálního počítače nebo z něj pouze všechny pakety, které nepatří do SYN. Místní zabezpečení je, že jakýkoliv zásobník hostitele je odolný proti ignorování nesyn, pokud předtím neviděl paket SYN. Samotný protokol TCP je stavový a v kombinaci s pravidlem založeným na nestavové implementaci dosahuje celkové chování stavové implementace.
 
@@ -92,7 +92,7 @@ Změny se monitorují pro úspěch. V případě selhání se změna vrátí zp�
 
 Podobně platí, že změny hardwaru a sítě vedly k vyhodnocení dodržování požadavků na sestavení. Vydané verze jsou přezkoumány a autorizovány prostřednictvím koordinovaných poradních panelů pro změny (CAB) odpovídajících skupin v rámci zásobníku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure, najdete tady:
 
 - [Zařízení, místní a fyzické zabezpečení Azure](physical-security.md)
@@ -104,5 +104,3 @@ Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azur
 - [Monitorování infrastruktury Azure](infrastructure-monitoring.md)
 - [Integrita infrastruktury Azure](infrastructure-integrity.md)
 - [Ochrana zákaznických dat Azure](protection-customer-data.md)
-
-

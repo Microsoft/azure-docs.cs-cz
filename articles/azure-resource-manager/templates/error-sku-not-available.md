@@ -3,12 +3,12 @@ title: Chyby SKU nejsou k dispozici
 description: Popisuje, jak vyřešit chybu SKU, která není k dispozici při nasazování prostředků pomocí Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 5d055540b4c0d8f2900d2ede6735662801be5974
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250644"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942718"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb kvůli nedostupné skladové položce
 
@@ -42,7 +42,7 @@ Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 
 Výsledky obsahují seznam SKU pro umístění a veškerá omezení pro danou skladovou jednotku. Všimněte si, že SKU může být uvedeno jako `NotAvailableForSubscription`.
 
-```powershell
+```output
 ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
 ------------          ----           ---------   ----      -----------                      ----------           -----
 virtualMachines       Standard_A0    centralus             NotAvailableForSubscription      MaxResourceVolumeMB   20480

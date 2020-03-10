@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 32121681b14989f23e29c3701826b4494988c263
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f7facb539a84d39e6659627e80ecc560fc87591c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772427"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673510"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Registrace zařízení Azure IoT Edge
 
@@ -38,15 +38,15 @@ Bezplatné nebo standardní [Centrum IoT](../iot-hub/iot-hub-create-through-port
 
 V IoT Hub v Azure Portal se zařízení IoT Edge vytváří a spravují odděleně od zařízení IOT, která nejsou povolená Edge.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do služby IoT hub.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do služby IoT Hub.
 2. V levém podokně vyberte v nabídce možnost **IoT Edge** .
 3. Vyberte **Přidat zařízení IoT Edge**.
 4. Zadejte ID popisný zařízení. K automatickému generování ověřovacích klíčů a připojení nového zařízení k rozbočovači použijte výchozí nastavení.
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 ### <a name="view-iot-edge-devices-in-the-azure-portal"></a>Zobrazit IoT Edge zařízení v Azure Portal
 
-Jsou uvedeny všechny povolené hraniční zařízení, která připojení ke službě IoT hub na **IoT Edge** stránky.
+Všechna zařízení s povoleným okrajem, která se připojují ke službě IoT Hub, jsou uvedena na stránce **IoT Edge** .
 
 ![Zobrazit všechna zařízení IoT Edge ve službě IoT hub](./media/how-to-register-device/portal-view-devices.png)
 
@@ -63,7 +63,7 @@ Existuje více způsobů provádějí většinu operací v nástroji VS Code. Te
 
 ### <a name="prerequisites-for-visual-studio-code"></a>Předpoklady pro Visual Studio Code
 
-* [Služby IoT hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pro Visual Studio Code
 
@@ -71,27 +71,27 @@ Existuje více způsobů provádějí většinu operací v nástroji VS Code. Te
 
 Pomocí rozšíření Azure IoT pro Visual Studio Code můžete provádět operace s IoT Hub. Aby tyto operace fungovaly, musíte se přihlásit ke svému účtu Azure a vybrat IoT Hub.
 
-1. V sadě Visual Studio Code otevřete **Explorer** zobrazení.
+1. V Visual Studio Code otevřete zobrazení **Průzkumníka** .
 1. V dolní části Průzkumníka rozbalte část **Azure IoT Hub** .
 
    ![Rozbalte část zařízení Azure IoT Hub](./media/how-to-register-device/azure-iot-hub-devices.png)
 
 1. Klikněte na **...** v hlavičce oddílu **Azure IoT Hub** . Pokud nevidíte tři tečky, klikněte na nebo najeďte myší na záhlaví.
-1. Zvolte **vyberte službu IoT Hub**.
+1. Zvolte **vybrat IoT Hub**.
 1. Pokud nejste přihlášení ke svému účtu Azure, postupujte podle pokynů.
 1. Vyberte své předplatné Azure.
 1. Vyberte své Centrum IoT.
 
 ### <a name="create-an-iot-edge-device-with-visual-studio-code"></a>Vytvoření zařízení IoT Edge pomocí Visual Studio Code
 
-1. V Průzkumníku VS Code rozbalte **zařízení Azure IoT Hub** oddílu.
-1. Klikněte na **...**  v **zařízení Azure IoT Hub** hlavičku oddílu. Pokud nevidíte tři tečky, klikněte na nebo najeďte myší na záhlaví.
-1. Vyberte **vytvoření zařízení IoT Edge**.
+1. V Průzkumníku VS Code rozbalte část **zařízení Azure IoT Hub** .
+1. V záhlaví oddílu **zařízení IoT Hub Azure** klikněte na **...** Pokud nevidíte tři tečky, klikněte na nebo najeďte myší na záhlaví.
+1. Vyberte **vytvořit IoT Edge zařízení**.
 1. V textovém poli, které se otevře zadejte zařízení identifikátor.
 
-V okně výstupu se zobrazí výsledek příkazu. Vytisknout informace o zařízení, která obsahuje **deviceId** , které jste zadali a **connectionString** , můžete použít k připojení fyzických zařízení do služby IoT hub.
+V okně výstupu se zobrazí výsledek příkazu. Budou vytištěny informace o zařízení, které obsahují **deviceId** , které jste zadali, a **připojovací řetězec** , který můžete použít k připojení fyzického zařízení k centru IoT.
 
-V okně výstupu se zobrazí výsledek příkazu. Vytisknout informace o zařízení, která obsahuje **deviceId** , které jste zadali a **connectionString** , můžete použít k připojení fyzických zařízení do služby IoT hub.
+V okně výstupu se zobrazí výsledek příkazu. Budou vytištěny informace o zařízení, které obsahují **deviceId** , které jste zadali, a **připojovací řetězec** , který můžete použít k připojení fyzického zařízení k centru IoT.
 
 ### <a name="view-iot-edge-devices-with-visual-studio-code"></a>Zobrazit IoT Edge zařízení s Visual Studio Code
 
@@ -104,21 +104,21 @@ Všechna zařízení, která se připojují ke službě IoT Hub, jsou uvedená v
 Až budete připravení nastavit vaše zařízení, budete potřebovat připojovací řetězec, který propojí vaše fyzické zařízení do jeho identitu ve službě IoT hub.
 
 1. V části **Azure IoT Hub** klikněte pravým tlačítkem na ID vašeho zařízení.
-1. Vyberte **zkopírujte připojovací řetězec zařízení**.
+1. Vyberte **Kopírovat připojovací řetězec zařízení**.
 
    Připojovací řetězec je zkopírován do schránky.
 
-Můžete také vybrat **získat informace o zařízení** v místní nabídce zobrazíte všechny informace o zařízení, včetně připojovací řetězec v okně výstup.
+Můžete také vybrat možnost **získat informace o zařízení** z nabídky kliknutím pravým tlačítkem myši a zobrazit všechny informace o zařízení, včetně připojovacího řetězce, v okně výstup.
 
 ## <a name="register-with-the-azure-cli"></a>Registrace pomocí Azure CLI
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Edge. Umožňuje spravovat prostředky Azure IoT Hub, instance služby device provisioning a propojená centra úprav. Nové rozšíření IoT vylepšuje Azure CLI s funkcemi, jako je Správa zařízení a úplné možnosti služby IoT Edge.
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Edge. Umožňuje spravovat prostředky Azure IoT Hub, instance služby device provisioning a propojená centra úprav. Rozšíření IoT rozšiřuje rozhraní příkazového řádku Azure pomocí funkcí, jako je Správa zařízení a plná IoT Edge funkce.
 
 ### <a name="prerequisites-for-the-azure-cli"></a>Předpoklady pro rozhraní příkazového řádku Azure
 
-* [Služby IoT hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimálně musí být vaše Azure CLI verze 2.0.24 nebo novější. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
-* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
+* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension)
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Vytvoření zařízení IoT Edge pomocí Azure CLI
 
@@ -130,9 +130,9 @@ Pomocí příkazu [AZ IoT Hub Device-identity Create](https://docs.microsoft.com
 
 Tento příkaz zahrnuje tři parametry:
 
-* **id zařízení**: Zadejte popisný název, který je jedinečný pro své Centrum IoT.
-* **název centra**: Zadejte název služby IoT hub.
-* **povolené Edge**: Tento parametr deklaruje, že zařízení je pro použití se službou IoT Edge.
+* **ID zařízení**: zadejte popisný název, který je jedinečný pro Centrum IoT.
+* **název centra**: zadejte název centra IoT.
+* **Edge-povoleno**: Tento parametr deklaruje, že zařízení je pro použití s IoT Edge.
 
    ![vytvořit výstup, az iot hub-identity zařízení](./media/how-to-register-device/Create-edge-device.png)
 
@@ -144,7 +144,7 @@ Pomocí příkazu [AZ IoT Hub Device-identity list](https://docs.microsoft.com/c
    az iot hub device-identity list --hub-name [hub name]
    ```
 
-Jakékoli zařízení, které je zaregistrované jako zařízení IoT Edge bude mít vlastnost **capabilities.iotEdge** nastavena na **true**.
+Všechna zařízení, která jsou zaregistrovaná jako zařízení IoT Edge, budou mít **Možnosti vlastností. iotEdge** nastaveno na **hodnotu true**.
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>Načtení připojovacího řetězce pomocí Azure CLI
 

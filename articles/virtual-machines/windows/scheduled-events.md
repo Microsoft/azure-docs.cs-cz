@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b3aa5d50822863e3aa46fcf9970e0b3e67a6f69
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920656"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944469"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače s Windows
 
@@ -45,7 +45,7 @@ Pomocí Scheduled Events může aplikace zjistit, kdy se bude provádět údržb
 
 Scheduled Events poskytuje události v následujících případech použití:
 - [Údržba iniciovaná platformou](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (například restartování virtuálního počítače, migrace za provozu nebo zachovávání aktualizací v paměti pro hostitele)
-- Snížený hardware
+- Virtuální počítač běží na [degradované hostitelském hardwaru](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) , který brzy vypoví selhání.
 - Údržba iniciovaná uživatelem (třeba restartováním nebo opětovným nasazením virtuálního počítače)
 - Vyřazení instancí [virtuálních počítačů](spot-vms.md) a [sad škálování](../../virtual-machine-scale-sets/use-spot.md) na místě
 
@@ -135,6 +135,9 @@ Každé události je naplánováno minimální množství času v budoucnu na z�
 | Opětovné nasazení | 10 minut |
 | Přerušen | 30 sekund |
 | Ruší | [Uživatelsky konfigurovatelné](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 až 15 minut |
+
+> [!NOTE] 
+> V některých případech může Azure předpovědět selhání hostitele kvůli zhoršenému hardwaru a při plánování migrace se pokusí zmírnit přerušení služby. Ovlivněné virtuální počítače obdrží naplánovanou událost s `NotBefore`, která je obvykle několik dní v budoucnu. Skutečný čas se liší v závislosti na předpokládaném vyhodnocení rizik při selhání. Pokud je to možné, Azure se pokusí poskytnout oznámení v předstihu 7 dní, ale skutečná doba se změní a může být menší, pokud je předpověď taková, že dojde k bezprostřednímu výpadku hardwaru. Abyste minimalizovali riziko pro vaši službu pro případ, že se hardware před migrací iniciující systémem nezdařil, doporučuje se virtuální počítač hned znovu nasadit, jakmile to bude možné.
 
 ### <a name="event-scope"></a>Rozsah události     
 Naplánované události jsou doručovány do:

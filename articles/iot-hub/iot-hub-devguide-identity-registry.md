@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení registru identit služby Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře – Popis registru identit služby IoT Hub a jak ji používat ke správě svých zařízení. Obsahuje informace o importu a exportu identit zařízení hromadně.
+title: Vysvětlení registru identit Azure IoT Hub | Microsoft Docs
+description: Příručka pro vývojáře – popis IoT Hub registru identit a jeho použití ke správě zařízení. Obsahuje informace o hromadném importu a exportu identit zařízení.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,116 +8,118 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d43ad2ce88108a728b26e10eecc7082262a4b637
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363148"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945923"
 ---
-# <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT hub
+# <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
 
-Každá služba IoT hub obsahuje registr identit, která uchovává informace o zařízení a moduly, které jsou povolené pro připojení ke službě IoT hub. Než zařízení nebo modulu se můžou připojit do služby IoT hub, musí existovat položka pro toto zařízení nebo modulu v registru identit služby IoT hub. Zařízení nebo modul musí ověřovat také pomocí založené na přihlašovací údaje uložené v registru identit služby IoT hub.
+Každé centrum IoT má registr identit, který ukládá informace o zařízeních a modulech povolených pro připojení ke službě IoT Hub. Předtím, než se zařízení nebo modul může připojit ke službě IoT Hub, musí existovat položka pro toto zařízení nebo modul v registru identit služby IoT Hub. Zařízení nebo modul se musí také ověřit ve službě IoT Hub na základě přihlašovacích údajů uložených v registru identit.
 
-ID zařízení nebo modulu uložené v registru identit rozlišuje velká a malá písmena.
+ID zařízení nebo modulu uloženého v registru identity rozlišuje velká a malá písmena.
 
-Na vysoké úrovni je registr identit podporující REST kolekci zařízení nebo modul identity prostředků. Při přidání záznam v registru identit služby IoT Hub vytvoří sadu prostředků podle zařízení, jako jsou fronty, který obsahuje neukládají žádné zprávy typu cloud zařízení.
+Registr identit je na vysoké úrovni shromažďování prostředků identity zařízení nebo modulů, které podporuje REST. Když přidáte položku do registru identity, IoT Hub vytvoří sadu prostředků pro zařízení, například frontu, která obsahuje zprávy ve službě cloud-zařízení.
 
-Registr identit použijte, pokud potřebujete:
+Registr identit použijte v případě, že potřebujete:
 
-* Zřízení zařízení nebo moduly, které se připojují ke službě IoT hub.
-* Řízení přístupu podle zařízení/za – moduly pro vaše Centrum zařízení nebo přístupem k modulu koncové body.
+* Zřídí zařízení nebo moduly, které se připojují ke službě IoT Hub.
+* Řízení přístupu podle zařízení/modulu k koncovým bodům pro zařízení nebo modul s přístupem ke svému rozbočovači.
 
 > [!NOTE]
 > * Registr identit neobsahuje žádná metadata specifická pro aplikaci.
-> * Dvojče zařízení identit a modul je ve verzi public preview. Následující funkce budou podporované v modulu identity po obecné k dispozici.
+> * Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Tato funkce bude podporována u identity modulu, pokud je Obecná dostupnost.
 >
 
 ## <a name="identity-registry-operations"></a>Operace registru identit
 
-Registr identit služby IoT Hub zveřejňuje následující operace:
+IoT Hub registr identit zpřístupňuje tyto operace:
 
-* Vytvoření identity zařízení nebo modul
-* Aktualizace zařízení nebo modul identity
-* Načíst identitu zařízení nebo modul podle ID
-* Odstranit zařízení nebo modul identity
-* Seznam až 1 000 identit
-* Export identit zařízení do služby Azure blob storage
-* Importovat zařízení identit z úložiště objektů blob v Azure
+* Vytvoření identity zařízení nebo modulu
+* Aktualizace identity zařízení nebo modulu
+* Načíst identitu zařízení nebo modulu podle ID
+* Odstranit identitu zařízení nebo modulu
+* Seznam identit až 1000
+* Export identit zařízení do úložiště objektů BLOB v Azure
+* Import identit zařízení ze služby Azure Blob Storage
 
-Všechny tyto operace můžete použít optimistické řízení souběžnosti, jak je uvedeno v [RFC7232](https://tools.ietf.org/html/rfc7232).
-
-> [!IMPORTANT]
-> Jediný způsob, jak načíst všechny identity v registru identit služby IoT hub je použít [exportovat](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) funkce.
-
-Registr identit služby IoT Hub:
-
-* Neobsahuje žádné metadat aplikace.
-* Podobně jako slovník, lze přistupovat pomocí **deviceId** nebo **moduleId** jako klíč.
-* Nepodporuje výrazové dotazy.
-
-Řešení IoT obvykle má samostatné úložiště specifické pro řešení, který obsahuje metadata specifická pro aplikaci. Specifické pro řešení úložiště v inteligentní sestavování řešení by například zaznamenat místnosti, ve kterém je nasazen senzoru teploty.
+Všechny tyto operace mohou používat optimistickou souběžnost, jak je uvedeno v [RFC7232](https://tools.ietf.org/html/rfc7232).
 
 > [!IMPORTANT]
-> Registr identit použijte pouze pro správu zařízení a zřizování operace. Vysoká propustnost operací v době běhu neměli spoléhat na provádění operací v registru identit. Například kontroluje se stav připojení zařízení před odesláním příkazu není podporovaný model. Ujistěte se, že ke kontrole [míru omezení](iot-hub-devguide-quotas-throttling.md) pro registr identit a [prezenčního signálu zařízení](iot-hub-devguide-identity-registry.md#device-heartbeat) vzor.
+> Jediným způsobem, jak načíst všechny identity v registru identit služby IoT Hub, je použití funkcí [exportu](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) .
+
+IoT Hub registru identit:
+
+* Neobsahuje žádná metadata aplikace.
+* Může být k dispozici jako slovník pomocí **deviceId** nebo **moduleId** jako klíče.
+* Nepodporuje dotazy na dotazy.
+
+Řešení IoT má obvykle samostatné úložiště specifické pro řešení, které obsahuje metadata specifická pro aplikaci. Například úložiště specifické pro řešení v rámci inteligentního řešení sestavení by znamenalo místo, ve kterém je senzor teploty nasazen.
+
+> [!IMPORTANT]
+> Pro operace správy a zřizování zařízení používejte jenom registr identit. Operace vysoké propustnosti v době běhu by neměly záviset na provádění operací v registru identit. Například kontrola stavu připojení zařízení před odesláním příkazu není podporovaný vzor. Ujistěte se, že jste zkontrolovali [míry omezování](iot-hub-devguide-quotas-throttling.md) pro registr identit a vzorek [prezenčního signálu zařízení](iot-hub-devguide-identity-registry.md#device-heartbeat) .
 
 ## <a name="disable-devices"></a>Zakázání zařízení
 
-Zařízení můžete zakázat aktualizací **stav** vlastnost identity v registru identit. Obvykle tuto vlastnost použijete ve dvou scénářích:
+Zařízení můžete zakázat tak, že aktualizujete vlastnost **stav** identity v registru identit. Obvykle tuto vlastnost použijete ve dvou scénářích:
 
-* Během procesu zřizování Orchestrace. Další informace najdete v tématu [Device Provisioning](iot-hub-devguide-identity-registry.md#device-provisioning).
+* Během procesu orchestrace zřizování. Další informace najdete v tématu [zřizování zařízení](iot-hub-devguide-identity-registry.md#device-provisioning).
 
-* Pokud z nějakého důvodu domníváte, že dojde k narušení nebo přestal neoprávněné zařízení.
+* Pokud z nějakého důvodu máte podezření, že dojde k ohrožení zabezpečení zařízení nebo se stane neoprávněným.
 
 Tato funkce není k dispozici pro moduly.
 
 ## <a name="import-and-export-device-identities"></a>Import a export identit zařízení
 
-Použití asynchronních operací v [koncový bod poskytovatele prostředků služby IoT Hub](iot-hub-devguide-endpoints.md) identit zařízení hromadně exportovat z registru identit služby IoT hub. Exporty se dlouhotrvajících úloh, které používají k ukládání dat identity zařízení čtení z registru kontejneru objektů blob poskytnuté zákazníkem.
+Pomocí asynchronních operací na [koncovém bodu poskytovatele prostředků IoT Hub](iot-hub-devguide-endpoints.md) můžete hromadně exportovat identity zařízení z registru identit služby IoT Hub. Exporty jsou dlouhotrvající úlohy, které pomocí kontejneru objektů BLOB zadaného zákazníkem ukládají data identity zařízení načtená z registru identity.
 
-Použití asynchronních operací v [koncový bod poskytovatele prostředků služby IoT Hub](iot-hub-devguide-endpoints.md) identit zařízení hromadně importovat do registru identity služby IoT hub. Importuje se dlouho běžící úlohy, které používají data v kontejneru objektů blob poskytnuté zákazníkem pro zápis dat identitu zařízení v registru identit.
+Pomocí asynchronních operací na [koncovém bodu poskytovatele prostředků IoT Hub](iot-hub-devguide-endpoints.md) můžete importovat identity zařízení hromadně do registru identit služby IoT Hub. Importy jsou dlouhodobě běžící úlohy, které používají data v kontejneru objektů BLOB poskytovaných zákazníkem k zápisu dat identity zařízení do registru identity.
 
-Další informace o import a export rozhraní API najdete v tématu [poskytovatele prostředků služby IoT Hub rozhraní REST API](/rest/api/iothub/iothubresource). Další informace o spuštění import a export úloh najdete v tématu [Hromadná Správa identit zařízení služby IoT Hub](iot-hub-bulk-identity-mgmt.md).
+Další informace o rozhraních API pro import a export najdete v tématu [IoT Hub rozhraní REST API poskytovatele prostředků](/rest/api/iothub/iothubresource). Další informace o spouštění úloh importu a exportu najdete v tématu [Hromadná Správa identit zařízení IoT Hub](iot-hub-bulk-identity-mgmt.md).
+
+Identity zařízení se taky dají exportovat a importovat z IoT Hub přes rozhraní API služby prostřednictvím [REST API](/rest/api/iothub/service/createimportexportjob) nebo jedné ze [sad SDK služby](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)IoT Hub.
 
 ## <a name="device-provisioning"></a>Zřizování zařízení
 
-Data zařízení, která ukládá daného řešení IoT, závisí na konkrétní požadavky tohoto řešení. Ale minimálně, musí ukládat řešení identit zařízení a ověřovací klíče. Služba Azure IoT Hub obsahuje registr identit, která může ukládat hodnoty pro každé zařízení, jako je například ID, ověřovací klíče a stavové kódy. Řešení můžete použít další služby Azure, jako jsou úložiště tabulek, úložiště objektů blob nebo Cosmos DB k ukládání dat další zařízení.
+Data zařízení, která dané řešení IoT ukládá, závisí na konkrétních požadavcích tohoto řešení. Kromě toho musí řešení ukládat identity zařízení a ověřovací klíče. Azure IoT Hub zahrnuje registr identit, který může ukládat hodnoty pro každé zařízení, jako jsou ID, ověřovací klíče a stavové kódy. Řešení může použít další služby Azure, jako je Table Storage, BLOB Storage nebo Cosmos DB k uložení jakýchkoli dalších dat zařízení.
 
-*Zřizování zařízení* je proces přidávání počáteční zařízení data ukládá ve vašem řešení. Povolit nové zařízení pro připojení k centru, musíte přidat ID zařízení a klíče v registru identit služby IoT Hub. Jako součást procesu zřizování může být potřeba inicializovat data specifická pro zařízení v jiných úložištích řešení. Azure IoT Hub Device Provisioning Service můžete také zajistit plně automatizované, just-in-time zřizování pro jeden nebo více centra IoT bez zásahu člověka. Další informace najdete v tématu [dokumentace ke službě zřizování](https://azure.microsoft.com/documentation/services/iot-dps).
+*Zřizování zařízení* je proces přidávání počátečních dat zařízení do úložišť ve vašem řešení. Pokud chcete novému zařízení povolit připojení k vašemu rozbočovači, musíte do registru IoT Hub identity přidat ID zařízení a klíče. V rámci procesu zřizování může být potřeba inicializovat data specifická pro zařízení v jiných úložištích řešení. Azure IoT Hub Device Provisioning Service můžete použít také k povolení nulového dotykového zřizování pro jedno nebo více rozbočovačů IoT bez nutnosti zásahu člověka. Další informace najdete v dokumentaci ke [službě zřizování](https://azure.microsoft.com/documentation/services/iot-dps).
 
 ## <a name="device-heartbeat"></a>Prezenční signál zařízení
 
-Registr identit služby IoT Hub obsahuje pole s názvem **connectionState**. Použít pouze **connectionState** pole při vývoji a ladění. Řešení IoT by neměl dotaz na pole v době běhu. Například není dotaz **connectionState** pole, které chcete zkontrolovat, jestli je zařízení připojené před odesláním zprávy typu cloud zařízení nebo zprávu SMS. Doporučujeme vám, že se přihlásíte k odběru [ **odpojení zařízení** události](iot-hub-event-grid.md#event-types) na služby Event Grid výstrahy a monitorování stavu připojení zařízení. Použijte tento [kurzu](iot-hub-how-to-order-connection-state-events.md) se naučíte integrovat zařízení připojené a odpojené zařízení události ze služby IoT Hub v řešení IoT.
+IoT Hub registr identit obsahuje pole s názvem **vlastnost ConnectionState**. Při vývoji a ladění používejte pouze pole **vlastnost ConnectionState** . Řešení IoT by se neměla dotazovat na pole v době běhu. Například nedotazujte pole **vlastnost ConnectionState** , abyste zkontrolovali, jestli je zařízení připojené, než odešlete zprávu typu cloud-zařízení nebo SMS. Doporučujeme přihlášení k odběru události [ **odpojení zařízení** ](iot-hub-event-grid.md#event-types) v Event Grid, aby se zobrazily výstrahy a sledovaly stav připojení zařízení. V tomto [kurzu](iot-hub-how-to-order-connection-state-events.md) se dozvíte, jak integrovat události připojené k zařízení a odpojené zařízení z IoT Hub ve vašem řešení IoT.
 
-Pokud je potřeba vědět, pokud je zařízení připojené, můžete implementovat řešení IoT *prezenčního signálu vzor*.
-Ve vzoru prezenčního signálu zařízení odesílá zprávy typu zařízení cloud alespoň jednou každých pevné množství času (například alespoň jednou za hodinu). Proto i v případě, že zařízení nemá žádná data k odeslání, stále odešle prázdnou zprávu typu zařízení cloud (obvykle s vlastností, který ji identifikuje jako prezenční signál). Na straně služby řešení udržuje mapu s poslední prezenční signál pro každé zařízení. Pokud řešení neobdrží zprávu prezenčního signálu v očekávaném čase ze zařízení, předpokládá, že dojde k problému se zařízením.
+Pokud vaše řešení IoT potřebuje zjistit, jestli je zařízení připojené, můžete použít *vzor prezenčního signálu*.
+Ve vzorku prezenčního signálu zařízení odesílá zprávy typu zařízení-Cloud nejméně jednou za určitou dobu (například nejméně jednou za hodinu). Proto i v případě, že zařízení nemá žádná data k odeslání, stále pošle prázdnou zprávu typu zařízení-Cloud (obvykle s vlastností, která ji identifikuje jako prezenční signál). Řešení na straně služby udržuje mapu s posledním obdrženým prezenčním signálem pro každé zařízení. Pokud řešení neobdrží zprávu prezenčního signálu v očekávaném čase ze zařízení, předpokládá se, že došlo k potížím se zařízením.
 
-Složitější implementace by mohla obsahovat informace z [Azure Monitor](../azure-monitor/index.yml) a [Azure Resource Health](../service-health/resource-health-overview.md) k identifikaci zařízení, která se pokouší o připojení nebo komunikaci ale nedaří, zkontrolujte [Monitorování s diagnostikou](iot-hub-monitor-resource-health.md) průvodce. Pokud implementujete vzor prezenčního signálu, nezapomeňte zaškrtnout [IoT Hub kvóty a omezení](iot-hub-devguide-quotas-throttling.md).
+Složitější implementace by mohla zahrnovat informace z [Azure monitor](../azure-monitor/index.yml) a [Azure Resource Health](../service-health/resource-health-overview.md) k identifikaci zařízení, která se pokoušejí připojit nebo komunikovat, ale selhání, podívejte se na [sledování pomocí Průvodce diagnostikou](iot-hub-monitor-resource-health.md) . Při implementaci vzoru prezenčního signálu nezapomeňte zkontrolovat [IoT Hub kvóty a omezení](iot-hub-devguide-quotas-throttling.md).
 
 > [!NOTE]
-> Pokud řešení IoT používá stav připojení výhradně k určení, zda chcete odesílat zprávy typu cloud zařízení a zprávy nejsou vysílat velké sady zařízení, zvažte použití jednodušší *krátký čas vypršení platnosti* vzor. Tento model dosáhne stejného výsledku jako uchovávat registr stavu připojení zařízení pomocí vzoru prezenčního signálu při zachování efektivnější. Pokud jste požádali o zprávy potvrzení, můžete služby IoT Hub informovat vás o tom, která zařízení jsou schopných přijímat zprávy, které nejsou.
+> Pokud řešení IoT používá stav připojení výhradně k určení toho, jestli se mají odesílat zprávy z cloudu na zařízení, a zprávy se neodesílají do velkých sad zařízení, zvažte použití zjednodušeného vzoru *času vypršení platnosti* . Tento model dosahuje stejného výsledku jako udržování registru stavu připojení zařízení pomocí vzoru prezenčního signálu, a přitom je efektivnější. Pokud si vyžádáte potvrzení zprávy, IoT Hub vás může informovat o tom, která zařízení budou moci přijímat zprávy a které nejsou.
 
-## <a name="device-and-module-lifecycle-notifications"></a>Oznámení životního cyklu zařízení a modul
+## <a name="device-and-module-lifecycle-notifications"></a>Oznámení o životním cyklu zařízení a modulů
 
-IoT Hub může upozornit řešení IoT, při vytvoření nebo odstranění zasláním oznámení životního cyklu identity. Uděláte to tak, musí vaše řešení IoT má být vytvořena trasa a nastavení zdroje dat rovná *DeviceLifecycleEvents* nebo *ModuleLifecycleEvents*. Ve výchozím nastavení jsou odeslány žádné oznámení životního cyklu, to znamená, předem neexistuje žádný takový trasy. Oznámení obsahuje vlastnosti a text.
+IoT Hub může upozornění na vaše řešení IoT při vytvoření nebo odstranění identity odesláním oznámení životního cyklu. K tomu je potřeba, aby vaše řešení IoT vytvořilo trasu a nastavilo zdroj dat na hodnotu *DeviceLifecycleEvents* nebo *ModuleLifecycleEvents*. Ve výchozím nastavení se neodesílají žádná oznámení o životním cyklu, to znamená, že žádné takové trasy již neexistují. Zpráva s oznámením obsahuje vlastnosti a text.
 
-Vlastnosti: Vlastnosti zprávy systému začínají `$` symbol.
+Vlastnosti: vlastnosti systému zprávy jsou opatřeny předponou `$`.
 
-Oznámení pro zařízení:
+Zpráva oznámení pro zařízení:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  Čas odeslání oznámení |
-|$iothub-message-source | deviceLifecycleEvents |
+|$iothub-Message-source | deviceLifecycleEvents |
 |$content-encoding | utf-8 |
 |opType | **createDeviceIdentity** nebo **deleteDeviceIdentity** |
-|hubName | Name of IoT Hub |
+|hubName | Název IoT Hub |
 |deviceId | ID zařízení |
-|operationTimestamp | Časové razítko ISO8601 operace |
-|iothub-message-schema | deviceLifecycleNotification |
+|operationTimestamp | ISO8601 časové razítko operace |
+|iothub-Message-Schema | deviceLifecycleNotification |
 
-Text: Tato část je ve formátu JSON a představuje dvojčete identitou zařízení vytvořenou. Například:
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Například:
 
 ```json
 {
@@ -139,21 +141,21 @@ Text: Tato část je ve formátu JSON a představuje dvojčete identitou zaříz
     }
 }
 ```
-Oznámení pro modul:
+Zpráva oznámení pro modul:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  Čas odeslání oznámení |
-$iothub-message-source | moduleLifecycleEvents |
+$iothub-Message-source | moduleLifecycleEvents |
 $content-encoding | utf-8 |
 opType | **createModuleIdentity** nebo **deleteModuleIdentity** |
-hubName | Name of IoT Hub |
+hubName | Název IoT Hub |
 moduleId | ID modulu |
-operationTimestamp | Časové razítko ISO8601 operace |
-iothub-message-schema | moduleLifecycleNotification |
+operationTimestamp | ISO8601 časové razítko operace |
+iothub-Message-Schema | moduleLifecycleNotification |
 
-Text: Tato část je ve formátu JSON a představuje dvojčete vytvořený modul identity. Například:
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Například:
 
 ```json
 {
@@ -177,82 +179,82 @@ Text: Tato část je ve formátu JSON a představuje dvojčete vytvořený modul
 }
 ```
 
-## <a name="device-identity-properties"></a>Vlastnosti identit zařízení
+## <a name="device-identity-properties"></a>Vlastnosti identity zařízení
 
-Identit zařízení jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
-
-| Vlastnost | Možnosti | Popis |
-| --- | --- | --- |
-| deviceId |aktualizace vyžaduje, na jen pro čtení |Řetězec malá a velká písmena (maximálně 128 znaků) alfanumerické znaky ASCII 7 bitů a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| generationId |vyžaduje jen pro čtení |IoT generované rozbočovače, velká a malá písmena řetězci až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejnou **deviceId**, když se odstraní a znovu vytvořen. |
-| etag |vyžaduje jen pro čtení |Řetězce představují slabou značku ETag pro identitu zařízení, jak je uvedeno [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| ověřování |Volitelné |Složený objekt obsahující ověřování zabezpečení informací a materiály. |
-| auth.symkey |Volitelné |Složený objekt obsahující primární a sekundární klíč uložený ve formátu base64. |
-| status |Vyžaduje |Indikátor přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení může připojit. Pokud **zakázané**, toto zařízení nemá přístup k libovolné koncového bodu připojeného k zařízení. |
-| statusReason |Volitelné |128 znaků dlouhý řetězec, který ukládá důvod stavu identity zařízení. Jsou povoleny všechny znaky UTF-8. |
-| statusUpdateTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas poslední aktualizace stavu. |
-| connectionState |jen pro čtení |Pole určující stav připojení: buď **připojeno** nebo **odpojeno**. Toto pole představuje služby IoT Hub zobrazení stavu připojení zařízení. **Důležité**: Toto pole by měla sloužit pouze pro účely vývoje a ladění. Stav připojení se aktualizuje jenom pro zařízení používat protokol MQTT nebo AMQP. Také je založená na úrovni protokolu za příkazy ping (příkazy ping pro zjištění protokol MQTT nebo příkazy ping protokolu AMQP) a může mít maximální zpoždění, jenom 5 minut. Z těchto důvodů může být počet falešně pozitivních výsledků, například zařízení hlášená jako připojená, ale, která jsou odpojené. |
-| connectionStateUpdatedTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas posledního stavu připojení byla aktualizována. |
-| lastActivityTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas posledního zařízení připojené, přijetí nebo byla odeslána zpráva. |
-
-> [!NOTE]
-> Stav připojení může představovat pouze služby IoT Hub pohled na stav připojení. Aktualizace tohoto stavu se může zpozdit, v závislosti na stavu sítě a konfigurace.
-
-> [!NOTE]
-> Aktuálně zařízení sady SDK nepodporují použití `+` a `#` znaků **deviceId**.
-
-## <a name="module-identity-properties"></a>Vlastnosti modulu identity
-
-Modul identity jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
+Identity zařízení se reprezentují jako dokumenty JSON s následujícími vlastnostmi:
 
 | Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
-| deviceId |aktualizace vyžaduje, na jen pro čtení |Řetězec malá a velká písmena (maximálně 128 znaků) alfanumerické znaky ASCII 7 bitů a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| moduleId |aktualizace vyžaduje, na jen pro čtení |Řetězec malá a velká písmena (maximálně 128 znaků) alfanumerické znaky ASCII 7 bitů a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| generationId |vyžaduje jen pro čtení |IoT generované rozbočovače, velká a malá písmena řetězci až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejnou **deviceId**, když se odstraní a znovu vytvořen. |
-| etag |vyžaduje jen pro čtení |Řetězce představují slabou značku ETag pro identitu zařízení, jak je uvedeno [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| ověřování |Volitelné |Složený objekt obsahující ověřování zabezpečení informací a materiály. |
-| auth.symkey |Volitelné |Složený objekt obsahující primární a sekundární klíč uložený ve formátu base64. |
-| status |Vyžaduje |Indikátor přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení může připojit. Pokud **zakázané**, toto zařízení nemá přístup k libovolné koncového bodu připojeného k zařízení. |
-| statusReason |Volitelné |128 znaků dlouhý řetězec, který ukládá důvod stavu identity zařízení. Jsou povoleny všechny znaky UTF-8. |
-| statusUpdateTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas poslední aktualizace stavu. |
-| connectionState |jen pro čtení |Pole určující stav připojení: buď **připojeno** nebo **odpojeno**. Toto pole představuje služby IoT Hub zobrazení stavu připojení zařízení. **Důležité**: Toto pole by měla sloužit pouze pro účely vývoje a ladění. Stav připojení se aktualizuje jenom pro zařízení používat protokol MQTT nebo AMQP. Také je založená na úrovni protokolu za příkazy ping (příkazy ping pro zjištění protokol MQTT nebo příkazy ping protokolu AMQP) a může mít maximální zpoždění, jenom 5 minut. Z těchto důvodů může být počet falešně pozitivních výsledků, například zařízení hlášená jako připojená, ale, která jsou odpojené. |
-| connectionStateUpdatedTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas posledního stavu připojení byla aktualizována. |
-| lastActivityTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas posledního zařízení připojené, přijetí nebo byla odeslána zpráva. |
+| deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (až 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
+| etag |požadováno, jen pro čtení |Řetězec představující slabou značku ETag pro identitu zařízení, jak je na [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| auth |volitelné |Složený objekt obsahující ověřovací informace a materiály pro zabezpečení. |
+| auth.symkey |volitelné |Složený objekt obsahující primární a sekundární klíč uložený ve formátu base64. |
+| status |požadováno |Indikátor přístupu. Lze **Povolit** nebo **Zakázat**. Pokud je tato možnost **povolená**, může se zařízení připojit. Pokud je toto zařízení **zakázané**, nemůže získat přístup ke koncovému bodu, který se týká zařízení. |
+| statusReason |volitelné |Řetězec dlouhého znaku 128, který ukládá důvod pro stav identity zařízení. Všechny znaky UTF-8 jsou povoleny. |
+| statusUpdateTime |Jen pro čtení |Dočasný indikátor zobrazující datum a čas poslední aktualizace stavu. |
+| connectionState |Jen pro čtení |Pole indikující stav připojení: **připojeno** nebo **Odpojeno**. Toto pole představuje IoT Hub zobrazení stavu připojení zařízení. **Důležité**: Toto pole by mělo být používáno pouze pro účely vývoje a ladění. Stav připojení se aktualizuje jenom pro zařízení, která používají MQTT nebo AMQP. Také je založena na protokolech příkazového testu na úrovni protokolu (MQTT příkazového testu) a může mít maximální zpoždění pouze 5 minut. Z těchto důvodů můžou existovat falešně pozitivní, například zařízení nahlášená jako připojená, ale odpojená. |
+| connectionStateUpdatedTime |Jen pro čtení |Dočasný indikátor zobrazující datum a čas poslední aktualizace stavu připojení. |
+| lastActivityTime |Jen pro čtení |Dočasná indikátor zobrazující datum a čas, kdy se zařízení připojilo, přijalo nebo poslalo zprávu. |
 
 > [!NOTE]
-> Aktuálně zařízení sady SDK nepodporují použití `+` a `#` znaků **deviceId** a **moduleId**.
+> Stav připojení může představovat pouze IoT Hub zobrazení stavu připojení. Aktualizace tohoto stavu můžou být zpožděné v závislosti na podmínkách a konfiguracích sítě.
 
-## <a name="additional-reference-material"></a>Další referenční materiál
+> [!NOTE]
+> Sady SDK pro zařízení v současné době nepodporují použití `+` a `#` znaků v **deviceId**.
 
-Další referenční témata v příručce pro vývojáře IoT Hub patří:
+## <a name="module-identity-properties"></a>Vlastnosti identity modulu
 
-* [Koncové body IoT Hubu](iot-hub-devguide-endpoints.md) popisuje různé koncové body, které každý IoT hub zpřístupní pro operace za běhu a správy.
+Identity modulů jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
 
-* [Omezování a kvótách](iot-hub-devguide-quotas-throttling.md) popisuje kvóty a omezování chování, které se vztahují ke službě IoT Hub.
+| Vlastnost | Možnosti | Popis |
+| --- | --- | --- |
+| deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (až 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (až 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
+| etag |požadováno, jen pro čtení |Řetězec představující slabou značku ETag pro identitu zařízení, jak je na [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| auth |volitelné |Složený objekt obsahující ověřovací informace a materiály pro zabezpečení. |
+| auth.symkey |volitelné |Složený objekt obsahující primární a sekundární klíč uložený ve formátu base64. |
+| status |požadováno |Indikátor přístupu. Lze **Povolit** nebo **Zakázat**. Pokud je tato možnost **povolená**, může se zařízení připojit. Pokud je toto zařízení **zakázané**, nemůže získat přístup ke koncovému bodu, který se týká zařízení. |
+| statusReason |volitelné |Řetězec dlouhého znaku 128, který ukládá důvod pro stav identity zařízení. Všechny znaky UTF-8 jsou povoleny. |
+| statusUpdateTime |Jen pro čtení |Dočasný indikátor zobrazující datum a čas poslední aktualizace stavu. |
+| connectionState |Jen pro čtení |Pole indikující stav připojení: **připojeno** nebo **Odpojeno**. Toto pole představuje IoT Hub zobrazení stavu připojení zařízení. **Důležité**: Toto pole by mělo být používáno pouze pro účely vývoje a ladění. Stav připojení se aktualizuje jenom pro zařízení, která používají MQTT nebo AMQP. Také je založena na protokolech příkazového testu na úrovni protokolu (MQTT příkazového testu) a může mít maximální zpoždění pouze 5 minut. Z těchto důvodů můžou existovat falešně pozitivní, například zařízení nahlášená jako připojená, ale odpojená. |
+| connectionStateUpdatedTime |Jen pro čtení |Dočasný indikátor zobrazující datum a čas poslední aktualizace stavu připojení. |
+| lastActivityTime |Jen pro čtení |Dočasná indikátor zobrazující datum a čas, kdy se zařízení připojilo, přijalo nebo poslalo zprávu. |
 
-* [Azure IoT zařízení a služby sady SDK](iot-hub-devguide-sdks.md) uvádí různé jazykové sady SDK můžete použít při vývoji aplikace s zařízení i služby, které pracují s centrem IoT.
+> [!NOTE]
+> Sady SDK pro zařízení v současné době nepodporují použití `+` a `#` znaků v **deviceId** a **moduleId**.
 
-* [Dotazovací jazyk služby IoT Hub](iot-hub-devguide-query-language.md) popisuje dotazovací jazyk, slouží k načtení informací ze služby IoT Hub o dvojčata zařízení a úlohy.
+## <a name="additional-reference-material"></a>Další referenční materiály
 
-* [Podpora IoT Hub MQTT](iot-hub-mqtt-support.md) poskytuje další informace o podpoře služby IoT Hub pro protokolu MQTT.
+Další referenční témata v IoT Hub příručce pro vývojáře zahrnují:
 
-## <a name="next-steps"></a>Další postup
+* [IoT Hub koncové body](iot-hub-devguide-endpoints.md) popisují různé koncové body, které jednotlivé služby IoT Hub zpřístupňují pro operace run-time a Management.
 
-Teď, když jste se naučili, jak pomocí registru identit služby IoT Hub, vás může zajímat v následujících tématech příručky pro vývojáře IoT Hub:
+* [Omezení a kvóty](iot-hub-devguide-quotas-throttling.md) popisují chování kvót a omezení, která se vztahují na službu IoT Hub.
+
+* Sady [SDK pro zařízení a služby Azure IoT](iot-hub-devguide-sdks.md) obsahují různé jazykové sady SDK, které můžete použít při vývoji aplikací pro zařízení i služby, které komunikují s IoT Hub.
+
+* Dotazovací jazyk [IoT Hub](iot-hub-devguide-query-language.md) popisuje dotazovací jazyk, který můžete použít k načtení informací z IoT Hub o nečinnosti zařízení a úlohách.
+
+* [Podpora IoT Hub MQTT](iot-hub-mqtt-support.md) poskytuje další informace o podpoře IoT Hub pro protokol MQTT.
+
+## <a name="next-steps"></a>Další kroky
+
+Teď, když jste se seznámili s použitím IoT Hub registru identit, může vás zajímat následující témata IoT Hub příručka pro vývojáře:
 
 * [Řízení přístupu k IoT Hubu](iot-hub-devguide-security.md)
 
-* [Použití dvojčat zařízení k synchronizaci stavu a konfigurace](iot-hub-devguide-device-twins.md)
+* [Pro synchronizaci stavu a konfigurací použít vlákna zařízení](iot-hub-devguide-device-twins.md)
 
 * [Vyvolání přímé metody v zařízení](iot-hub-devguide-direct-methods.md)
 
 * [Plánování úloh na několika zařízeních](iot-hub-devguide-jobs.md)
 
-Vyzkoušet si některé koncepty popsané v tomto článku, najdete v následujícím kurzu služby IoT Hub:
+Pokud si chcete vyzkoušet některé z konceptů popsaných v tomto článku, přečtěte si následující IoT Hub kurz:
 
 * [Začínáme s Azure IoT Hub](quickstart-send-telemetry-dotnet.md)
 
-Prozkoumat pomocí IoT Hub Device Provisioning Service umožňuje plně automatizované, just-in-time zřizování, najdete v tématech: 
+Pokud chcete prozkoumat použití IoT Hub Device Provisioning Service k povolení nulového dotykového zřizování za běhu, přečtěte si téma: 
 
 * [Služba Azure IoT Hub Device Provisioning](https://azure.microsoft.com/documentation/services/iot-dps)

@@ -1,19 +1,19 @@
 ---
-title: Další informace o Azure Image Builder pro virtuální počítače s Linuxem (preview)
-description: Další informace o Azure Image Builder.
+title: Seznamte se s Azure image Builder (Preview)
+description: Přečtěte si další informace o Azure image Builder pro počítače s virtuální v Azure.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
-ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 80982529ad891f7bd64e321c6c5d6edcaf32744c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.openlocfilehash: d0644fca56b852bb34a001a73511f4df33a5f441
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667573"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944978"
 ---
-# <a name="preview-azure-image-builder-overview"></a>Verze Preview: Přehled služby Azure Image Builder
+# <a name="preview-azure-image-builder-overview"></a>Preview: Přehled nástroje Azure image Builder
 
 [!INCLUDE [virtual-machines-image-builder-overview](../../../includes/virtual-machines-image-builder-overview.md)]

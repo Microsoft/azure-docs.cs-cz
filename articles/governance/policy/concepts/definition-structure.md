@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 95625894d0eb603ae9a37c96c91d01f3720346b1
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360262"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932599"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -578,16 +578,16 @@ Pro použití v rámci pravidla zásad jsou k dispozici všechny [funkce šablon
 - resourceId()
 - proměnné ()
 
-Následující funkce jsou k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager:
+Tato funkce je k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager:
 
-- `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime "rrrr-MM-DDThh: mm: ss. fffffffZ"
-  - **numberOfDaysToAdd**: [povinné] celé číslo-počet dnů k přidání
 - `utcNow()` – na rozdíl od Správce prostředků šablony se dá použít mimo defaultValue.
   - Vrátí řetězec, který je nastaven na aktuální datum a čas ve formátu Universal ISO 8601 DateTime yyyy-MM-ddTHH: mm: ss. fffffffZ.
 
 Následující funkce jsou dostupné jenom v pravidlech zásad:
 
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **DateTime**: [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime "rrrr-MM-DDThh: mm: ss. fffffffZ"
+  - **numberOfDaysToAdd**: [povinné] celé číslo-počet dnů k přidání
 - `field(fieldName)`
   - **FieldName**: [required] řetězec-název [pole](#fields) , které se má načíst
   - Vrátí hodnotu tohoto pole z prostředku, který je vyhodnocován podmínkou if.

@@ -1,14 +1,15 @@
 ---
 title: Kurz – vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
-description: Kurz ilustrující postup vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Application Gateway jako řadiče pro příchozí přenosy
+description: V tomto kurzu vytvoříte cluster Kubernetes pomocí služby Azure Kubernetes Service s Application Gateway jako adaptér příchozího přenosu dat.
+keywords: Azure DevOps terraformu Application Gateway pro příchozí AKS Kubernetes
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 03/09/2020
+ms.openlocfilehash: 6b48d0acb654f0b0643c0754e53f6bc6ea76bb45
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251761"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945325"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Kurz: vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
 
@@ -77,7 +78,10 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.18"
+      # The "feature" block is required for AzureRM provider 2.x. 
+      # If you are using version 1.x, the "features" block is not allowed.
+      version = "~>2.0"
+      features {}
     }
 
     terraform {
@@ -442,11 +446,10 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
         }
       }
 
-      agent_pool_profile {
+      default_node_pool {
         name            = "agentpool"
-        count           = var.aks_agent_count
+        node_count      = var.aks_agent_count
         vm_size         = var.aks_agent_vm_size
-        os_type         = "Linux"
         os_disk_size_gb = var.aks_agent_os_disk_size
         vnet_subnet_id  = data.azurerm_subnet.kubesubnet.id
       }

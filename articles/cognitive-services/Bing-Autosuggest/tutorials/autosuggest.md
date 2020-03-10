@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: b5032d9d39e66435ca4df36081d6acb225e2327b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 10e25338ab6960addeebcc224d0a6633df451964
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402644"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943149"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Kurz: získání návrhů vyhledávání na webové stránce
 
@@ -29,7 +29,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro automatické návrhy Bingu. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
+Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro automatické návrhy Bingu. Pokud ho ještě nemáte, vytvořte v Azure Portal [prostředek automatické návrhy Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) . můžete použít také [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="create-a-new-web-page"></a>Vytvoření nové webové stránky
 

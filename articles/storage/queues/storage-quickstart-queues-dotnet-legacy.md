@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: f51038b1e79a699c15ad2fd969d75c09a2530f6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473854"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943562"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rychlý Start: použití sady Azure Storage SDK V11 pro .NET ke správě fronty
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure Storage klientské knihovny verze 11 pro .NET vytvořit frontu a přidat do ní zprávy. V dalším kroku se dozvíte, jak číst a zpracovávat zprávy z fronty. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -35,7 +35,7 @@ Informace o výběru mezi .NET Core a .NET Framework najdete v tématu [Výběr 
 ### <a name="linux"></a>Linux
 
 - Nainstalujte [.NET Core pro Linux](https://www.microsoft.com/net/download/linux).
-- Volitelně nainstalujte [Visual Studio Code](https://www.visualstudio.com/) a [rozšíření jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068).
+- Volitelně nainstalujte [Visual Studio Code](https://www.visualstudio.com/) a [rozšíření jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 
 ### <a name="macos"></a>macOS
 
@@ -220,7 +220,7 @@ Console.WriteLine("Contents of peeked message '{0}': {1}", peekedMessage.Id, pee
 Console.WriteLine();
 ```
 
-### <a name="dequeue-a-message"></a>Odstranění zprávy z fronty
+### <a name="dequeue-a-message"></a>Vyřadit zprávu do fronty
 
 Ukázka také ukazuje, jak vyřadit zprávu z fronty. Když vyřadíte zprávu z fronty, načtěte zprávu z přední části fronty a dočasně ji vykreslíte ostatním klientům. Ve výchozím nastavení zůstane zpráva po dobu 30 sekund neviditelná. Během této doby může váš kód zpracovat zprávu. Chcete-li dokončit vyřazení zprávy z fronty, odstraňte zprávu hned po zpracování, aby jiný klient vyřadí stejnou zprávu do fronty.
 

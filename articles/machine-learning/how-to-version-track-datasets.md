@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sihhu
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834796"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939249"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 
@@ -60,6 +60,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
+Novou verzi datové sady můžete zaregistrovat taky na 
 
 ### <a name="retrieve-a-dataset-by-name"></a>Načíst datovou sadu podle názvu
 
@@ -120,7 +121,7 @@ dataset2.register(workspace = workspace,
 
 Datovou sadu můžete použít jako vstup a výstup každého kroku Machine Learning kanálu. Při opětovném spuštění kanálů bude výstup každého kroku kanálu zaregistrován jako nová verze datové sady.
 
-Vzhledem k tomu, že Machine Learning potrubí naplní výstup každého kroku do nové složky pokaždé, když se kanál znovu spustí, výstupní datové sady se správou verzí budou reprodukovatelné.
+Vzhledem k tomu, že Machine Learning potrubí naplní výstup každého kroku do nové složky pokaždé, když se kanál znovu spustí, výstupní datové sady se správou verzí budou reprodukovatelné. Přečtěte si další informace o [datových sadách v kanálech](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -169,7 +170,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-`input_datasets` můžete také vyhledat z experimentů pomocí nástroje [Azure Machine Learning Studio](https://ml.azure.com/). 
+`input_datasets` můžete také vyhledat z experimentů pomocí https://ml.azure.com/. 
 
 Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu v Azure Machine Learning Studiu. V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu, `keras-mnist`.
 
@@ -183,7 +184,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo [Azure Machine Learning studia](https://ml.azure.com/). Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které jsou zaregistrované s datovou sadou. 
+Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo přejít na https://ml.azure.com/.
+
+Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které jsou zaregistrované s datovou sadou. 
 
 ![Vstupní modely datových sad](./media/how-to-version-track-datasets/dataset-models.png)
 

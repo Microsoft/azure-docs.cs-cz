@@ -1,27 +1,22 @@
 ---
-title: Otevření portů pro virtuální počítač se systémem Linux pomocí Azure CLI
-description: Zjistěte, jak otevřít port/vytvořit koncový bod pro virtuální počítač se systémem Linux pomocí modelu nasazení Azure Resource Manager a Azure CLI.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Otevření portů k virtuálnímu počítači pomocí Azure CLI
+description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač pomocí Azure CLI.
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354049"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944547"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač se systémem Linux pomocí Azure CLI
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač pomocí Azure CLI
 
 Otevřete port nebo vytvořte koncový bod s virtuálním počítačem v Azure vytvořením síťového filtru v podsíti nebo síťovém rozhraní virtuálního počítače. Tyto filtry umístíte, což řídí příchozí i odchozí provoz, ve skupině zabezpečení sítě připojené k prostředku, který přijímá provoz. Pojďme použít běžný příklad webového provozu na portu 80. V tomto článku se dozvíte, jak otevřít port k virtuálnímu počítači pomocí Azure CLI. 
 

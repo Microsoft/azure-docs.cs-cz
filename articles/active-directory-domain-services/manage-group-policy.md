@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613584"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946412"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Správa Zásady skupiny ve spravované doméně Azure AD Domain Services
 
@@ -42,7 +42,11 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 * Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
 
 > [!NOTE]
-> Protože [v Azure služba AD DS nemáte přístup k řadičům domény](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), nemůžete vytvořit a použít centrální úložiště pro šablony pro správu zásad skupiny ve spravované doméně. [Adresář SYSVOL není zahrnutý v místní synchronizaci Azure AD Connect](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), takže nemůžete vytvořit místní centrální úložiště a synchronizovat ho do Azure služba AD DS prostřednictvím Azure AD.
+> Pomocí Zásady skupiny Šablony pro správu můžete zkopírovat nové šablony do pracovní stanice pro správu. Zkopírujte soubory *. admx* do `%SYSTEMROOT%\PolicyDefinitions` a zkopírujte soubory. *ADML* specifické pro národní prostředí do `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, kde `Language-CountryRegion` odpovídá jazyku a oblasti souborů *. adml* .
+>
+> Zkopírujte například anglickou USA verzi souborů *. adml* do složky `\en-us`.
+>
+> Případně můžete centrálně Uložit Zásady skupiny šablonu pro správu na řadičích domény, které jsou součástí spravované domény Azure služba AD DS. Další informace najdete v tématu [Vytvoření a Správa centrálního úložiště pro Zásady skupiny šablony pro správu v systému Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="install-group-policy-management-tools"></a>Instalace nástrojů pro správu Zásady skupiny
 

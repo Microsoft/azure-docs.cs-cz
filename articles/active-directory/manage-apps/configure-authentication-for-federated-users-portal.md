@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367876"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943440"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry
 
@@ -150,7 +150,7 @@ Pomocí rutin Azure AD PowerShellu projdeme několik scénářů, mezi které pa
 - Seznam aplikací, pro které je nakonfigurovaná zásada
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty služby ve službě Azure AD.
 
 1.  Začněte stažením nejnovější rutiny Azure AD PowerShellu ve verzi Preview. 
@@ -258,7 +258,7 @@ Použijte předchozí příklad k získání **ID objectID** zásady a k objektu
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Krok 2: odebrání přiřazení zásad z instančního objektu služby  
 
 ``` powershell
-Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
+Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 3: odstranění seznamu objektů služby, ke kterým je zásada přiřazena, najdete v části odebrání. 

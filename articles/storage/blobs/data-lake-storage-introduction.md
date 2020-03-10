@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920990"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942921"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do Azure Data Lake Storage Gen2
 
@@ -25,15 +25,15 @@ Azure Data Lake Storage Gen2 je sada funkcí vyhrazených pro analýzy velkých 
 
 Základní část Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](data-lake-storage-namespace.md) do úložiště objektů BLOB. Hierarchického oboru názvů slouží k uspořádání objektů nebo souborů do hierarchie adresářů pro přístup k datům efektivní. Běžné zásady vytváření názvů úložiště objektu používá lomítek v názvu tak, aby napodoboval strukturu hierarchického adresáře. Tato struktura bude skutečné s Data Lake Storage Gen2. Operace, jako je přejmenování nebo odstranění adresáře se stanou metadat jednotného atomické operace na adresář místo vytváření výčtů a zpracování všech objektů, které sdílejí předpona názvu adresáře.
 
-V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a zabezpečení. Data Lake Storage Gen2 řeší všechny tyto aspekty následujícími způsoby:
+Data Lake Storage Gen2 se vytváří na BLOB Storage a vylepšuje výkon, správu a zabezpečení následujícími způsoby:
 
--   **Výkon** je optimalizován, protože není nutné kopírovat nebo transformovat data jako předpoklad pro analýzu. Hierarchického oboru názvů výrazně zvyšuje výkon directory operace správy, který zlepšuje celkový výkon úlohy.
+-   **Výkon** je optimalizován, protože není nutné kopírovat nebo transformovat data jako předpoklad pro analýzu. V porovnání s plochým oborem názvů v úložišti objektů BLOB by hierarchický obor názvů významně zlepšit výkon operací správy adresářů, což zvyšuje celkový výkon úloh.
 
 -   **Správa** je jednodušší, protože můžete uspořádat soubory a manipulovat s nimi prostřednictvím adresářů a podadresářů.
 
 -   **Zabezpečení** je vykonatelné, protože můžete definovat oprávnění POSIX pro adresáře nebo jednotlivé soubory.
 
--   **Nákladová efektivita** je možná, protože Data Lake Storage Gen2 je postavená na [Azure Blob Storage](storage-blobs-introduction.md)s nízkými náklady. Další funkce dále snížit celkové náklady na vlastnictví pro spuštění analýzy velkých objemů dat v Azure.
+Data Lake Storage Gen2 je taky velmi nákladově efektivní, protože je postavená na [Azure Blob Storage](storage-blobs-introduction.md)s nízkými náklady. Další funkce dále snížit celkové náklady na vlastnictví pro spuštění analýzy velkých objemů dat v Azure.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Klíčové funkce služby Data Lake Storage Gen2
 

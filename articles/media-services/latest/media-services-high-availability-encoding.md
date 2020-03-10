@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: f5b02376111a3deba33cd5688330018bd7c370d8
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899214"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934190"
 ---
 # <a name="media-services-high-availability-encoding"></a>Media Services kódování s vysokou dostupností 
 
@@ -42,8 +42,8 @@ Podle pokynů a osvědčených postupů popsaných v článku snížíte riziko 
     * [Microsoft. Azure. EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (podporující události Media Services nativně).
 
     Můžete také spotřebovávat Event Grid události prostřednictvím Azure Functions.
-*    Při vytváření [úlohy](transforms-jobs-concept.md):
-    
+* Při vytváření [úlohy](transforms-jobs-concept.md):
+
     * Náhodně vyberte účet ze seznamu aktuálně používaných účtů (Tento seznam bude obvykle obsahovat oba účty, ale pokud se zjistí problémy, může obsahovat jenom jeden účet). Pokud je seznam prázdný, vyvolejte výstrahu, aby mohl operátor prozkoumat.
     * Obecné pokyny potřebujete jednu [rezervovanou jednotku médií](media-reserved-units-cli-how-to.md) na [JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) (Pokud nepoužíváte [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) , kde se doporučuje 3 rezervované jednotky médií na JobOutput).
     * Získejte počet rezervovaných jednotek médií (MRUs) pro vybraný účet. Pokud aktuální počet **rezervovaných jednotek médií** již není na maximální hodnotě, přidejte počet MRUs potřebných pro úlohu a aktualizujte službu. Pokud je rychlost odeslání úlohy vysoká a často se dotazuje na MRUs, abyste zjistili, že jste na maximum, použijte distribuovanou mezipaměť pro hodnotu s přiměřeným časovým limitem.

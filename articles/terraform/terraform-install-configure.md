@@ -1,27 +1,17 @@
 ---
-title: Instalace a konfigurace Terraformu pro zřizování prostředků Azure
-description: Naučte se instalovat a konfigurovat Terraformu k vytváření prostředků Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: tomarchermsft
-manager: gwallace
-editor: na
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 09/20/2019
-ms.author: tarcher
-ms.openlocfilehash: 74728fb05e900c534580f1c8eaf14dd0e48fc42c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+title: Rychlý Start – instalace a konfigurace Terraformu pro zřizování prostředků Azure
+description: V tomto quicstart nainstalujete a nakonfigurujete Terraformu k vytváření prostředků Azure.
+keywords: konfigurace Azure DevOps terraformu Install
+ms.topic: quickstart
+ms.date: 03/09/2020
+ms.openlocfilehash: 82635f59ec8165add2046a230a040b06f89d9898
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473126"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943507"
 ---
-# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Instalace a konfigurace Terraformu pro zřizování prostředků Azure
+# <a name="quickstart-install-and-configure-terraform-to-provision-azure-resources"></a>Rychlý Start: instalace a konfigurace Terraformu pro zřizování prostředků Azure
  
 Terraformu poskytuje snadný způsob, jak definovat, zobrazovat náhled a nasazovat cloudovou infrastrukturu pomocí [jednoduchého jazyka šablonování](https://www.terraform.io/docs/configuration/syntax.html). Tento článek popisuje nezbytné kroky pro použití Terraformu ke zřízení prostředků v Azure.
 
@@ -29,9 +19,9 @@ Další informace o tom, jak používat Terraformu s Azure, najdete v [centru te
 > [!NOTE]
 > V případě podpory specifické pro Terraformu se prosím obraťte na Terraformu přímo pomocí některého z jejich kanálů komunity:
 >
->   • [Část terraformu](https://discuss.hashicorp.com/c/terraform-core) na portálu komunity obsahuje otázky, případy použití a užitečné vzory.
+>    * [Část terraformu](https://discuss.hashicorp.com/c/terraform-core) na portálu komunity obsahuje otázky, případy použití a užitečné vzory.
 >
->   • Pro otázky související se zprostředkovatelem si přečtěte část [poskytovatelé terraformu](https://discuss.hashicorp.com/c/terraform-providers) na portálu komunity.
+>    * Otázky související se zprostředkovatelem najdete v části [poskytovatelé terraformu](https://discuss.hashicorp.com/c/terraform-providers) na portálu komunity.
 
 
 
@@ -104,6 +94,10 @@ Vytvořte soubor `test.tf` v prázdném adresáři a vložte ho do následujíc�
 
 ```hcl
 provider "azurerm" {
+  # The "feature" block is required for AzureRM provider 2.x. 
+  # If you are using version 1.x, the "features" block is not allowed.
+  version = "~>2.0"
+  features {}
 }
 resource "azurerm_resource_group" "rg" {
         name = "testResourceGroup"

@@ -1,14 +1,15 @@
 ---
 title: Kurz – zřizování infrastruktury s sloty nasazení Azure pomocí Terraformu
-description: Kurz o používání Terraformu se sloty nasazení zprostředkovatele Azure
+description: V tomto kurzu použijete Terraformu s sloty nasazení poskytovatele Azure.
+keywords: sloty nasazení Azure DevOps terraformu
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: 68c790b4fad442d94e6ac82d1a545b8554d2dd4f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 03/09/2020
+ms.openlocfilehash: ddd4d84ee8bf4ab1e90dd68da185cdd9075fe1e0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159181"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943491"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Kurz: zřízení infrastruktury pomocí slotů nasazení Azure pomocí Terraformu
 
@@ -16,7 +17,7 @@ ms.locfileid: "74159181"
 
 Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "produkční" a "fázování" jsou libovolné. Můžou to být libovolná vhodná pro váš scénář.) Až nakonfigurujete sloty nasazení, použijete Terraformu k proměně mezi oběma sloty podle potřeby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
@@ -68,7 +69,12 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     resource "azurerm_resource_group" "slotDemo" {
         name = "slotDemoResourceGroup"
@@ -247,7 +253,12 @@ Chcete-li otestovat záměnu těchto dvou slotů nasazení, proveďte následuj�
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     # Swap the production slot and the staging slot
     resource "azurerm_app_service_active_slot" "slotDemoActiveSlot" {

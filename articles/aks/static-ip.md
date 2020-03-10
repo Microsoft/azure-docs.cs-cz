@@ -3,13 +3,13 @@ title: Použití statické IP adresy a popisku DNS ve službě Azure Kubernetes 
 description: Naučte se, jak vytvořit a používat statickou IP adresu pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service).
 services: container-service
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/09/2020
+ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593593"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943569"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použití statické veřejné IP adresy a popisku DNS pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service)
 
@@ -67,7 +67,7 @@ Než začnete vytvářet službu, ujistěte se, že instanční objekt používa
 ```azurecli-interactive
 az role assignment create \
     --assignee <SP Client ID> \
-    --role "Contributor" \
+    --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
@@ -97,7 +97,7 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>Použití popisku DNS u služby
 
-Pokud vaše služba používá dynamickou nebo statickou veřejnou IP adresu, můžete použít `service.beta.kubernetes.io/azure-dns-label-name` anotace služby k nastavení popisku DNS s veřejným přístupem. Tím se publikuje plně kvalifikovaný název domény pro vaši službu pomocí veřejných serverů DNS Azure a domény nejvyšší úrovně. Hodnota anotace musí být jedinečná v rámci umístění Azure, takže se doporučuje použít dostatečně kvalifikovaný popisek.   
+Pokud vaše služba používá dynamickou nebo statickou veřejnou IP adresu, můžete použít `service.beta.kubernetes.io/azure-dns-label-name` anotace služby k nastavení popisku DNS s veřejným přístupem. Tím se publikuje plně kvalifikovaný název domény pro vaši službu pomocí veřejných serverů DNS Azure a domény nejvyšší úrovně. Hodnota anotace musí být jedinečná v rámci umístění Azure, proto se doporučuje použít dostatečně kvalifikovaný popisek.   
 
 Azure pak automaticky připojí výchozí podsíť, jako je například `<location>.cloudapp.azure.com` (kde umístění je oblast, kterou jste vybrali), k zadání názvu, který zadáte, k vytvoření plně kvalifikovaného názvu DNS. Příklad:
 

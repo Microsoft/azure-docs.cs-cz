@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1b52d9b7eb60483da91f87435ace1994d91b1039
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 7018100c830f22c3ed5e924b5096911b1f8135cb
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665837"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942323"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -154,7 +154,7 @@ Možné příklady:
         task='classification',
         primary_metric='AUC_weighted',
         experiment_timeout_minutes=30,
-        blacklist_models='XGBoostClassifier',
+        blacklist_models=['XGBoostClassifier'],
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=2)
@@ -165,7 +165,7 @@ Možné příklady:
     automl_regressor = AutoMLConfig(
         task='regression',
         experiment_timeout_minutes=60,
-        whitelist_models='kNN regressor'
+        whitelist_models=['kNN regressor'],
         primary_metric='r2_score',
         training_data=train_data,
         label_column_name=label,
@@ -357,7 +357,7 @@ Tato 2 rozhraní API použijte v prvním kroku namontovaného modelu, abyste lé
 
 + Rozhraní API 1: `get_engineered_feature_names()` vrátí seznam názvů funkcí navržených pro inženýry.
 
-  Využití:
+  Použití:
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -373,7 +373,7 @@ Tato 2 rozhraní API použijte v prvním kroku namontovaného modelu, abyste lé
 
 + Rozhraní API 2: `get_featurization_summary()` vrátí souhrn featurization pro všechny vstupní funkce.
 
-  Využití:
+  Použití:
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```

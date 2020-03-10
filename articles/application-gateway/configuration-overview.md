@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: f42be2a3075d313a490703562761a5df13542c85
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913255"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945481"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -340,7 +340,7 @@ Pokud je například v nastavení **název hostitele** zadán parametr *www.cont
 
 ## <a name="back-end-pool"></a>Back-endový fond
 
-Back-end fond můžete nasměrovat na čtyři typy členů back-endu: konkrétní virtuální počítač, sada škálování virtuálního počítače, IP adresa nebo plně kvalifikovaný název domény nebo služba App Service. Každý fond back-end může ukazovat na více členů stejného typu. Přechod na členy různých typů ve stejném fondu back-end není podporován.
+Back-end fond můžete nasměrovat na čtyři typy členů back-endu: konkrétní virtuální počítač, sada škálování virtuálního počítače, IP adresa nebo plně kvalifikovaný název domény nebo služba App Service. 
 
 Až vytvoříte fond back-end, musíte ho přidružit k jednomu nebo více pravidlům směrování požadavků. Pro každý fond back-end v bráně Application Gateway musíte taky nakonfigurovat testy stavu. Pokud je splněna podmínka pravidla směrování požadavků, služba Application Gateway přesměruje provoz na servery, které jsou v pořádku (podle určení sond stavu), do odpovídajícího fondu back-end.
 

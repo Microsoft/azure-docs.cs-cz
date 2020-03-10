@@ -2,13 +2,13 @@
 title: Nejčastější dotazy k Azure Migrate zařízením
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 99f7fc7db79785f99b96e6076607e434e43e605f
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.date: 03/09/2020
+ms.openlocfilehash: 3d0844b980ac418c5c334c2535c40dc5f3caeb16
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927326"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939287"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -64,7 +64,7 @@ Data shromažďovaná zařízením Azure Migrate se ukládají do umístění Az
 
 Zde jsou další informace o tom, jak jsou data uložená:
 
-- Data jsou bezpečně uložená v předplatném Microsoftu a při odstraňování Azure Migrate projektu se odstraní.
+- Shromážděná data jsou bezpečně uložená v CosmosDB v předplatném Microsoftu. Data jsou odstraněna při odstranění Azure Migrate projektu. Úložiště zpracovává Azure Migrate. Nemůžete konkrétně zvolit účet úložiště pro shromážděná data.
 - Pokud používáte [vizualizaci závislostí](concepts-dependency-visualization.md), shromážděná data se uloží do USA v pracovním prostoru Azure Log Analytics, který jste vytvořili v předplatném Azure. Data se odstraní při odstranění pracovního prostoru Log Analytics v rámci vašeho předplatného.
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Kolik dat se nahrává během nepřetržitého profilace?
@@ -88,9 +88,13 @@ Tento postup popisuje, jak se zařízení připojuje k VMware vCenter Server:
 3. Zařízení shromažďuje konfigurační data o virtuálních počítačích (jádrech, paměti, discích, síťových rozhraních) a historii výkonu každého virtuálního počítače za minulý měsíc.
 4. Shromážděná metadata se odesílají do Azure Migrate: Nástroj pro vyhodnocení serveru (přes Internet prostřednictvím protokolu HTTPS) pro posouzení.
 
-## <a name="can-i-connect-the-appliance-to-multiple-instances-of-vcenter-server"></a>Můžu zařízení připojit k více instancím vCenter Server?
+## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Může se zařízení Azure Migrate připojit k více serverům vCenter?
 
-Ne. Mezi zařízením a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení.
+Ne. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení. 
+
+## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Může Azure Migrate projekt mít více zařízení?
+K projektu může být připojeno více zařízení. Zařízení je však možné přidružit pouze k jednomu projektu. 
+
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů nebo serverů můžu zjistit pomocí zařízení?
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226804"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933016"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
@@ -118,7 +118,7 @@ Pomocí tohoto poskytovatele se potlačí obrazovka "zvolit zprostředkovatele i
 
 #### <a name="metadata"></a>Metadata
 
-| Atribut | Požadováno | Popis|
+| Atribut | Požaduje se | Popis|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 
@@ -138,7 +138,7 @@ Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi
 
 Při použití poskytovatele pro uložení relace SAML B2C musí být `RegisterServiceProviders` nastaveno na `true`. Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` dokončení.
 
-[Technický profil vystavitele SAML](connect-with-saml-service-providers.md) používá následující `SM-Saml-idp` technický profil
+[Technický profil vystavitele SAML](saml-issuer-technical-profile.md) používá následující `SM-Saml-idp` technický profil
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">
@@ -148,7 +148,7 @@ Při použití poskytovatele pro uložení relace SAML B2C musí být `RegisterS
 ```
 #### <a name="metadata"></a>Metadata
 
-| Atribut | Požadováno | Popis|
+| Atribut | Požaduje se | Popis|
 | --- | --- | --- |
 | IncludeSessionIndex | Ne | Aktuálně se nepoužívá, může být ignorováno.|
 | RegisterServiceProviders | Ne | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí) nebo `false`.|

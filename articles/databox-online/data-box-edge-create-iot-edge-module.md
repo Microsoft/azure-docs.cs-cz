@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315823"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942545"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Vývoj modulu C# IoT Edge pro přesun souborů na data box Edge
 
@@ -40,7 +40,7 @@ Vaše zařízení Data Box Edge může nasazovat a spouštět IoT Edge moduly. H
 
 Jakmile se soubor nachází ve sdílené složce cloudu, automaticky se nahraje na váš Azure Storage účet.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -53,7 +53,7 @@ Než začnete, ujistěte se, že máte následující:
 - Následující zdroje pro vývoj:
 
     - [Visual Studio Code](https://code.visualstudio.com/).
-    - [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+    - [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
     - [Rozšíření Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Možná budete muset vytvořit účet ke stažení a instalaci softwaru.
@@ -92,8 +92,8 @@ Následující kroky vytvoří projekt modulu IoT Edge v závislosti na sadě .N
 Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí vlastního kódu.
 
 1. V Visual Studio Code vyberte **zobrazit > paleta příkazů** pro otevření vs Code paleta příkazů.
-2. V paletě příkazů zadejte a spusťte příkaz **Azure: Přihlaste se** a postupujte podle pokynů a přihlaste se k účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
-3. V paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení**IoT Edge. Na paletě příkazů zadejte následující informace k vytvoření řešení:
+2. Na paletě příkazů zadejte a spusťte příkaz **Azure: Sign in** (Azure: Přihlásit se) a postupujte podle pokynů pro přihlášení k účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
+3. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Na paletě příkazů zadejte následující informace k vytvoření řešení:
 
     1. Vyberte složku, ve které chcete vytvořit řešení.
     2. Zadejte název pro vaše řešení nebo přijměte výchozí název **EdgeSolution**.
@@ -107,7 +107,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
     5. Zadejte registr kontejneru, který jste vytvořili v předchozí části, jako úložiště imagí pro váš první modul. Nahraďte **localhost:5000** hodnotou pro přihlašovací server, kterou jste zkopírovali.
 
-        Výsledný řetězec vypadá takto `<Login server name>/<Module name>`:. V tomto příkladu je řetězec: `mycontreg2.azurecr.io/filecopymodule`.
+        Výsledný řetězec vypadá jako `<Login server name>/<Module name>`. V tomto příkladu je řetězec: `mycontreg2.azurecr.io/filecopymodule`.
 
         ![Vytvořit nové řešení 3](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -242,7 +242,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
 ## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
 
-V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do FileCopyModule ke zkopírování souborů z místní sdílené složky do sdílené složky cloudu. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
+V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do FileCopyModule ke zkopírování souborů z místní sdílené složky do sdílené složky cloudu. Teď je potřeba sestavit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
 1. V VSCode přejděte do terminálu > nový terminál a otevřete nové Visual Studio Code integrovaného terminálu.
 2. Přihlaste se k Docker zadáním následujícího příkazu v integrovaném terminálu.
@@ -270,9 +270,9 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
     Může se zobrazit následující upozornění, které můžete ignorovat:
 
-    *Program. cs (77, 44): upozornění CS1998: V této asynchronní metodě chybí operátory await a spustí se synchronně. Zvažte použití operátoru await pro čekání na neblokující volání rozhraní API nebo ' await Task. Run (...) ' k provedení práce vázané na procesor ve vlákně na pozadí.*
+    *Program. cs (77, 44): upozornění CS1998: v této asynchronní metodě chybí operátory await a spustí se synchronně. Zvažte použití operátoru await pro čekání na neblokující volání rozhraní API nebo ' await Task. Run (...) ' k provedení práce vázané na procesor ve vlákně na pozadí.*
 
-4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v souboru Module. JSON ve formátu `<repository>:<version>-<platform>`. Pro tento článek by měl vypadat nějak takto `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`:.
+4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v souboru Module. JSON ve formátu `<repository>:<version>-<platform>`. V tomto článku by měl vypadat jako `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 
 ## <a name="next-steps"></a>Další kroky
 

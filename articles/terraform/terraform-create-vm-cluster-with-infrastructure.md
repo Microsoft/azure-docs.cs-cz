@@ -1,14 +1,15 @@
 ---
 title: Kurz – vytvoření clusteru virtuálních počítačů Azure s Terraformu a HCL
-description: Použití Terraformu a HCL k vytvoření clusteru virtuálních počítačů se systémem Linux s nástrojem pro vyrovnávání zatížení v Azure
+description: V tomto kurzu použijete Terraformu a HCL k vytvoření clusteru virtuálních počítačů se systémem Linux s nástrojem pro vyrovnávání zatížení v Azure.
+keywords: cluster virtuálních počítačů s virtuálním počítačem Azure DevOps terraformu
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: ae1b8eac15309ff27297d9472e70d32e68acaaac
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470866"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945271"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraformu a HCL
 
@@ -49,6 +50,8 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
    variable client_secret {}
   
    provider "azurerm" {
+      version = "~>1.40"
+     
       subscription_id = var.subscription_id
       tenant_id = var.tenant_id
       client_id = var.client_id
@@ -129,7 +132,6 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
       name                          = "testConfiguration"
       subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 

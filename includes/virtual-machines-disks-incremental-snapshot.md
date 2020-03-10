@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 2316b52115cc23d11dfb26d951a7f1820f2737cc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77520653"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945914"
 ---
 Přírůstkové snímky (Preview) jsou zálohy v čase pro spravované disky, které se při pořízení skládají pouze ze všech změn od posledního snímku. Při pokusu o stažení nebo jiné použití přírůstkového snímku se použije úplný virtuální pevný disk. Tato nová funkce pro snímky spravovaných disků může potenciálně dovolit, aby bylo cenově výhodnější, protože už nebudete muset ukládat celý disk s každým snímkem, pokud se nerozhodnete. Stejně jako běžné snímky lze přírůstkové snímky použít k vytvoření úplného spravovaného disku, nebo k vytvoření normálního snímku.
 
@@ -25,8 +25,7 @@ Přírůstkové snímky také nabízí rozdílovou možnost, která je jednozna�
 
 V současné době jsou podporovány pouze následující oblasti:
 
-- K dispozici jako nabídka GA v oblasti Středozápadní USA, Kanada – východ, Kanada – střed.
-- K dispozici jako veřejná verze Preview v oblastech Východní USA, Východní USA 2, Střed USA, Severní Evropa, Jižní Východní Asie.
+- K dispozici jako nabídka GA v Středozápadní USA, Východní USA, Východní USA 2, Střed USA, Kanada – východ, Kanada – střed, Severní Evropa, Jižní Východní Asie oblasti.
 
 ## <a name="restrictions"></a>Omezení
 - Přírůstkové snímky momentálně nelze vytvořit poté, co jste změnili velikost disku (pouze během verze Preview).
@@ -79,7 +78,7 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>Rozhraní příkazového řádku
 
 Můžete vytvořit přírůstkový snímek pomocí Azure CLI, budete potřebovat nejnovější verzi rozhraní příkazového řádku Azure CLI. 
 

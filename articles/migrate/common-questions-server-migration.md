@@ -3,12 +3,12 @@ title: Nejčastější dotazy k migraci Azure Migrate serveru
 description: Získejte odpovědi na běžné otázky týkající se použití migrace serveru Azure Migrate k migraci počítačů.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 273ef746e685afcf9f3654963dd9c6bd5b855b24
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927522"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939198"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
 
@@ -74,6 +74,19 @@ Ne. Azure Migrate podporuje migraci jenom na spravované disky (HDD úrovně Sta
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Kolik virtuálních počítačů je možné najednou replikovat pomocí migrace bez agentů?
 
 V současné době můžete migrovat 100 virtuálních počítačů na instanci vCenter Server současně. Migrace v dávkách s 10 virtuálními počítači
+
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Kdy můžu migrovat počítače jako fyzické servery?
+
+Migrace počítačů jejich použitím jako fyzických serverů je užitečná v různých scénářích:
+
+- Migrace místních fyzických serverů.
+- Pokud migrujete virtuální počítače virtualizované pomocí platforem, jako je například Xen, KVM.
+- Migrace virtuálních počítačů Hyper-V nebo VMware, pokud z nějakého důvodu nemůžete použít standardní proces migrace pro [Hyper-v](tutorial-migrate-hyper-v.md)nebo migraci [VMware](server-migrate-overview.md) . Například pokud nepoužíváte VMware vCenter a používáte jenom hostitele ESXi.
+- Migrace virtuálních počítačů, které jsou aktuálně spuštěné v privátních cloudech do Azure
+- Pokud chcete migrovat virtuální počítače běžící ve veřejných cloudech, jako je Amazon Web Services (AWS) nebo Google Cloud Platform (GCP), do Azure.
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Potřebuji pro migraci virtuálních počítačů VMware Server VMware vCenter?
+Pokud chcete [migrovat virtuální počítače VMware](server-migrate-overview.md) pomocí agenta VMware nebo migrace bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální počítače umístěné, spravované pomocí vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální počítače VMware tak, že je migrujete jako fyzické servery. [Další informace](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>Další kroky
 

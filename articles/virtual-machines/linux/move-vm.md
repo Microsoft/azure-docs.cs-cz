@@ -1,36 +1,26 @@
 ---
-title: Přesunutí virtuálního počítače se systémem Linux v Azure
-description: Přesuňte virtuální počítač se systémem Linux do jiného předplatného Azure nebo do skupiny prostředků v modelu nasazení Správce prostředků.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Přesunutí virtuálního počítače pomocí rozhraní příkazového řádku Azure
+description: Přesuňte virtuální počítač do jiného předplatného Azure nebo skupiny prostředků pomocí Azure CLI.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979026"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944591"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Přesunutí virtuálního počítače se systémem Linux do jiného předplatného nebo skupiny prostředků
-Tento článek vás seznámí s postupem přesunutí virtuálního počítače se systémem Linux mezi skupinami prostředků nebo odběry. Přesunutí virtuálního počítače mezi předplatnými může být užitečné, pokud jste vytvořili virtuální počítač v osobním předplatném a teď ho chcete přesunout do předplatného vaší společnosti.
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Přesunutí virtuálního počítače do jiného předplatného nebo skupiny prostředků
+Tento článek vás provede postupem přesunutí virtuálního počítače mezi skupinami prostředků nebo odběry. Přesunutí virtuálního počítače mezi předplatnými může být užitečné, pokud jste vytvořili virtuální počítač v osobním předplatném a teď ho chcete přesunout do předplatného vaší společnosti.
 
 > [!IMPORTANT]
->V tuto chvíli nejde přesunout službu Azure Managed Disks.
->
 >V rámci přesunutí se vytvoří nová ID prostředků. Po přesunutí virtuálního počítače budete muset aktualizovat nástroje a skripty, aby používaly nová ID prostředků.
 >
->
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Přesunutí virtuálního počítače pomocí rozhraní příkazového řádku Azure
 

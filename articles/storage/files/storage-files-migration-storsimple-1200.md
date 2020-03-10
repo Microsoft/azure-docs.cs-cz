@@ -4,30 +4,26 @@ description: Přečtěte si, jak migrovat virtuální zařízení řady StorSimp
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4a32251b60066d6a85595e4d1b6c002f8587c01d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 6863e7f8ef8e2f263cda824fd13186dc7b035454
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330936"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943614"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrace StorSimple 1200 na Azure File Sync
 
-Série StorSimple 1200 je virtuální zařízení, které běží v místním datovém centru. Je možné migrovat data z tohoto zařízení do Azure File Syncho prostředí. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync.
+Série StorSimple 1200 je virtuální zařízení, které běží v místním datovém centru. Je možné migrovat data z tohoto zařízení do Azure File Syncho prostředí. Azure File Sync je výchozí a strategická dlouhodobá služba Azure, na kterou je možné StorSimple zařízení migrovat.
 
-## <a name="storsimple"></a>StorSimple
+Série StorSimple 1200 se [dokončí do konce životnosti](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series) v prosinci 2022.  Je důležité zahájit plánování migrace co nejrychleji. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync. 
 
-StorSimple je ukončený produkt společnosti Microsoft. Rozšířená podpora pro tento produkt a jeho cloudová služba vyprší od prosince 31 2022. Je důležité zahájit plánování migrace z StorSimpleu hned.
-
-Azure File Sync je výchozí a strategická dlouhodobá služba Azure, na kterou je možné StorSimple zařízení migrovat.
+## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 > [!IMPORTANT]
 > Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFilesMigration@microsoft. com pro vlastní plán migrace a také pomoc při migraci.
-
-## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 Azure File Sync je cloudová služba Microsoftu založená na dvou hlavních součástech:
 

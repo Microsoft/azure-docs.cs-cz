@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76508998"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942907"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Přenos dat s využitím knihovny pro přesun dat
 
@@ -32,7 +32,7 @@ Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, která bě�
 - Kopírování souboru z adresy URL do Blob Storage.
 - Kopírovat z Blob Storage do Blob Storage
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Účet úložiště Azure](storage-account-create.md)
@@ -42,7 +42,7 @@ Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, která bě�
 1. Navštivte [Průvodce instalací .NET Core](https://www.microsoft.com/net/core) a nainstalujte .NET Core. Při výběru prostředí zvolte možnost příkazového řádku.
 2. Z příkazového řádku vytvořte adresář pro váš projekt. Přejděte do tohoto adresáře a potom zadejte `dotnet new console -o <sample-project-name>` pro vytvoření projektu C# konzoly.
 3. Otevřete tento adresář v Visual Studio Code. Tento krok můžete rychle provést pomocí příkazového řádku zadáním `code .` ve Windows.
-4. Nainstalujte [ C# rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) z webu Visual Studio Code Marketplace. Restartujte Visual Studio Code.
+4. Nainstalujte [ C# rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) z webu Visual Studio Code Marketplace. Restartujte Visual Studio Code.
 5. V tomto okamžiku byste měli vidět dvě výzvy. Jedna je určena k přidání "požadovaných assetů pro sestavení a ladění". Klikněte na tlačítko Ano. Další výzvou pro obnovení nevyřešených závislostí. Klikněte na tlačítko obnovit.
 6. Upravte `launch.json` v části `.vscode` na použití externího terminálu jako konzoly. Toto nastavení by se mělo číst jako `"console": "externalTerminal"`
 7. Visual Studio Code umožňuje ladit aplikace .NET Core. Spusťte aplikaci `F5` a ověřte, že instalace funguje. Měl by se zobrazit "Hello World!" vytištěno do konzoly.

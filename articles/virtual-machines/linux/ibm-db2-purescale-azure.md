@@ -1,25 +1,21 @@
 ---
 title: IBM DB2 pureScale v Azure
 description: V tomto článku se zobrazuje architektura pro spuštění prostředí IBM DB2 pureScale v Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
 manager: edprice
 editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 4012048100bbed2229c45434ee4a27dfe9b952e7
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530067"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945058"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
