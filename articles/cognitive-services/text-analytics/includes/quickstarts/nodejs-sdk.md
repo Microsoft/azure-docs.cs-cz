@@ -1,88 +1,88 @@
 ---
-title: 'Rychlý Start: Klientská knihovna Analýza textu v3 pro Node. js | Microsoft Docs'
-description: Začínáme s klientskou knihovnou V3 Analýza textu pro Node. js
+title: 'Rychlý start: Klientská knihovna Analýza textu v3 pro Node.js | Microsoft Docs'
+description: Začínáme s klientskou knihovnou Analýza textu v3 pro Node.js
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/06/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 9f4c5e8d491bcff420e354657ff7302a22cd7583
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.openlocfilehash: 4ce2da3070105f6e098373108164b6f590d423c6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155444"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925077"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-[Referenční dokumentace v3](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [zdrojový kód knihovny v3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 Package (npm)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [V3 Samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[Referenční dokumentace k v3](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [Zdrojový kód knihovny v3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [Balíček v3 (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [Ukázky v3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-[Referenční dokumentace v2](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [zdrojového kódu knihovny v2](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [v2 Package (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2 Samples](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Referenční dokumentace k v2](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [Zdrojový kód knihovny v2](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [Balíček v2 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [Ukázky v2](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ---
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Aktuální verze [Node. js](https://nodejs.org/).
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="vytvořit prostředek Analýza textu"  target="_blank">vytvořit Analýza textu</a> prostředků <span class="docon docon-navigate-external x-hidden-focus"></span> v Azure Portal a získat tak klíč a koncový bod. 
-    * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
-    * Pomocí cenové úrovně Free můžete službu vyzkoušet a později upgradovat na placenou úroveň pro produkční prostředí.
+* Předplatné Azure: Můžete si ho [vytvořit zdarma](https://azure.microsoft.com/free/).
+* Aktuální verze [Node.js](https://nodejs.org/).
+* Jakmile máte předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Vytvoření prostředku Analýzy textu"  target="_blank">vytvořte si prostředek Analýza textu<span class="docon docon-navigate-external x-hidden-focus"></span></a> na webu Azure Portal. Získáte klíč a koncový bod. 
+    * Tento klíč a koncový bod z vytvářeného prostředku budete potřebovat pro připojení vaší aplikace k rozhraní API pro analýzu textu. Uděláte to v další fázi tohoto rychlého zprovoznění.
+    * Můžete si službu vyzkoušet s bezplatnou cenovou úrovní a pro produkční prostředí později upgradovat na placenou úroveň.
 
 ## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
 > [!NOTE]
-> Tuto verzi klientské knihovny Analýza textu můžete také spustit [v prohlížeči](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
+> Tuto verzi klientské knihovny Analýza textu můžete také spustit [ve vašem prohlížeči](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
 
-V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
+V okně konzoly (například cmd, PowerShell nebo Bash) vytvořte pro vaši aplikaci nový adresář a přejděte do něj. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Spusťte příkaz `npm init` pro vytvoření aplikace uzlu se souborem `package.json`. 
+Spuštěním příkazu `npm init` vytvoříte aplikaci uzlu se souborem `package.json`. 
 
 ```console
 npm init
 ```
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Instalace balíčků `@azure/ai-text-analytics` NPM:
+Nainstalujte balíčky NPM `@azure/ai-text-analytics`:
 
 ```console
 npm install --save @azure/ai-text-analytics
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Instalace balíčků `@azure/cognitiveservices-textanalytics` NPM:
+Nainstalujte balíčky NPM `@azure/cognitiveservices-textanalytics`:
 
 ```console
 npm install --save @azure/cognitiveservices-textanalytics
 ```
 
-Soubor `package.json` vaší aplikace bude aktualizován pomocí závislostí.
+Soubor `package.json` vaší aplikace se bude aktualizovat s využitím závislostí.
 
-Vytvořte soubor s názvem `index.js` a přidejte následující knihovny:
+Vytvořte si soubor s názvem `index.js` a přidejte následující knihovny:
 
 ---
 
-Soubor `package.json` vaší aplikace bude aktualizován pomocí závislostí.
-Vytvořte soubor s názvem `index.js` a přidejte následující knihovny:
+Soubor `package.json` vaší aplikace se bude aktualizovat s využitím závislostí.
+Vytvořte si soubor s názvem `index.js` a přidejte následující knihovny:
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
 ```javascript
 "use strict";
@@ -90,7 +90,7 @@ Vytvořte soubor s názvem `index.js` a přidejte následující knihovny:
 const { TextAnalyticsClient, TextAnalyticsApiKeyCredential } = require("@azure/ai-text-analytics");
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
 ```javascript
 "use strict";
@@ -99,7 +99,7 @@ const { TextAnalyticsClient, CognitiveServicesCredential } = require("@azure/cog
 ```
 ---
 
-Vytvořte proměnné pro koncový bod a klíč Azure prostředku.
+Vytvořte proměnné pro koncový bod a klíč Azure vašeho prostředku.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -110,34 +110,34 @@ const endpoint = `<paste-your-text-analytics-endpoint-here>`;
 
 ## <a name="object-model"></a>Objektový model
 
-Klient Analýza textu je `TextAnalyticsClient` objekt, který se pomocí vašeho klíče ověřuje v Azure. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku.
+Klient Analýzy textu je objekt `TextAnalyticsClient`, který se ověřuje pro Azure pomocí vašeho klíče. Tento klient nabízí několik metod analýzy textu, a to ve formě jednoho řetězce nebo dávky.
 
-Text se pošle do rozhraní API jako seznam `documents`, což jsou `dictionary` objekty obsahující kombinaci `id`, `text`a `language` atributů v závislosti na použité metodě. Atribut `text` ukládá text, který má být analyzován v `language`původu, a `id` může být libovolná hodnota. 
+Text se do rozhraní API odesílá ve formě seznamu `documents`, což jsou objekty `dictionary` obsahující kombinaci atributů `id`, `text` a `language` (v závislosti na zvolené metodě). Atribut `text` ukládá text, který se má analyzovat v původním jazyce (`language`) a `id` může být libovolná hodnota. 
 
-Objekt Response je seznam obsahující informace o analýze pro každý dokument. 
+Objekt odpovědi je seznam obsahující analytické informace pro jednotlivé dokumenty. 
 
 ## <a name="code-examples"></a>Příklady kódu
 
-* [Ověřování klienta](#client-authentication)
+* [Ověření klienta](#client-authentication)
 * [Analýza mínění](#sentiment-analysis) 
 * [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
-* [Propojení entit](#entity-linking)
+* [Spojování entit](#entity-linking)
 * [Extrakce klíčových frází](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>Ověření klienta
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Vytvořte nový objekt `TextAnalyticsClient` s vaším klíčem a koncovým bodem jako parametry.
+Vytvořte nový objekt `TextAnalyticsClient` a jako parametry použijte váš klíč a koncový bod.
 
 ```javascript
 const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new TextAnalyticsApiKeyCredential(key));
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Vytvoří nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) s `credentials` a `endpoint` jako parametr.
+Vytvořte nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) s využitím `credentials` a jako parametr použijte `endpoint`.
 
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
@@ -145,9 +145,9 @@ Vytvoří nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascri
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `analyzeSentiment()` klienta a získejte vrácený objekt `SentimentBatchResult`. Procházejte seznamem výsledků a vytiskněte ID každého dokumentu, mínění na úrovni dokumentu s výsledky spolehlivosti. Výsledek každého dokumentu obsahuje mínění na úrovni věty spolu s posuny, délkou a hodnocením spolehlivosti.
+Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `analyzeSentiment()` klienta. Získáte vrácený objekt `SentimentBatchResult`. Iterujte přes seznam výsledků a vytiskněte ID každého dokumentu, mínění na úrovni dokumentu a skóre spolehlivosti. Pro každý dokument tyto výsledky obsahují mínění na úrovni jednotlivých vět společně s posuny, délkou a skóre spolehlivosti.
 
 ```javascript
 async function sentimentAnalysis(client){
@@ -174,7 +174,7 @@ async function sentimentAnalysis(client){
 sentimentAnalysis(textAnalyticsClient)
 ```
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -194,13 +194,13 @@ ID: 0
                 Length: 30, Offset: 31
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Vytvořte seznam objektů slovníku obsahující dokumenty, které chcete analyzovat. Zavolejte metodu [mínění ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) klienta a získejte vrácenou [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Procházejte seznamem výsledků a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
+Vytvořte seznam slovníkových objektů obsahujících dokumenty, které chcete analyzovat. Zavolejte metodu [sentiment()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) klienta. Získáte vrácený objekt [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Iterujte přes seznam výsledků a vytiskněte ID každého dokumentu a skóre mínění. Skóre blížící se 0 značí negativní mínění, zatímco skóre blížící se 1 značí pozitivní mínění.
 
 [!code-javascript[Sentiment analysis](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=sentimentAnalysis)]
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -215,9 +215,9 @@ Spusťte kód pomocí `node index.js` v okně konzoly.
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `detectLanguage()` klienta a získejte vrácenou `DetectLanguageResultCollection`. Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu s příslušným primárním jazykem.
+Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `detectLanguage()` klienta. Získáte vrácený objekt `DetectLanguageResultCollection`. Potom iterujte přes seznam výsledků a vytiskněte ID každého dokumentu spolu s příslušným primárním jazykem.
 
 ```javascript
 async function languageDetection(client) {
@@ -235,7 +235,7 @@ async function languageDetection(client) {
 languageDetection(textAnalyticsClient);
 ```
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -244,13 +244,13 @@ ID: 0
         Primary Language French
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Vytvořte seznam objektů slovníku obsahující vaše dokumenty. Zavolejte metodu [operaci DetectLanguage ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) klienta a získejte vrácenou [LanguageBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult). Potom Iterujte výsledky a vytiskněte ID a jazyk každého dokumentu.
+Vytvořte seznam slovníkových objektů obsahujících vaše dokumenty. Zavolejte metodu [detectLanguage()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) klienta. Získáte vrácený objekt [LanguageBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult). Potom iterujte přes seznam výsledků a vytiskněte ID každého dokumentu a jazyk.
 
 [!code-javascript[Language detection](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=languageDetection)]
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -262,16 +262,16 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
+## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER, Named Entity Recognition)
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
 > [!NOTE]
 > Ve verzi `3.0-preview`:
-> * NER obsahuje samostatné metody zjišťování osobních údajů. 
-> * Odkaz na entitu je samostatný požadavek než NER.
+> * Rozpoznávání pojmenovaných entit zahrnuje samostatné metody pro detekci osobních údajů. 
+> * Spojování entit je samostatný požadavek.
 
-Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `recognizeEntities()` klienta a získejte objekt `RecognizeEntitiesResult`. Iterujte seznamem výsledků a vytiskněte název entity, typ, podtyp, posun, délku a skóre.
+Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `recognizeEntities()` klienta. Získáte objekt `RecognizeEntitiesResult`. Iterujte přes seznam výsledků a vytiskněte název entity, typ, podtyp, posun, délku a skóre.
 
 ```javascript
 async function entityRecognition(client){
@@ -293,7 +293,7 @@ async function entityRecognition(client){
 entityRecognition(textAnalyticsClient);
 ```
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -321,9 +321,9 @@ Document ID: 1
         Name: Seattle   Category: Location      Subcategory: GPE
 ```
 
-## <a name="using-ner-to-detect-personal-information"></a>Použití NER k detekci osobních údajů
+## <a name="using-ner-to-detect-personal-information"></a>Použití rozpoznávání pojmenovaných entit k detekci osobních údajů
 
-Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `recognizePiiEntities()` klienta a získejte objekt `EntitiesBatchResult`. Iterujte seznamem výsledků a vytiskněte název entity, typ, podtyp, posun, délku a skóre.
+Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `recognizePiiEntities()` klienta. Získáte objekt `EntitiesBatchResult`. Iterujte přes seznam výsledků a vytiskněte název entity, typ, podtyp, posun, délku a skóre.
 
 
 ```javascript
@@ -345,7 +345,7 @@ async function entityPiiRecognition(client){
 entityPiiRecognition(textAnalyticsClient);
 ```
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -357,7 +357,7 @@ Document ID: 0
 
 ## <a name="entity-linking"></a>Entity Linking
 
-Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `recognizeLinkedEntities()` klienta a získejte objekt `RecognizeLinkedEntitiesResult`. Iterujte seznamem výsledků a vytiskněte název entity, ID, zdroj dat, adresu URL a shodu. Každý objekt v poli `matches` bude pro tuto shodu obsahovat posun, délku a skóre.
+Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `recognizeLinkedEntities()` klienta. Získáte objekt `RecognizeLinkedEntitiesResult`. Iterujte přes seznam výsledků a vytiskněte název entity, ID, zdroj dat, adresu URL a shody. Každý objekt v poli `matches` bude obsahovat posun, délku a skóre pro příslušnou shodu.
 
 ```javascript
 async function linkedEntityRecognition(client){
@@ -382,7 +382,7 @@ async function linkedEntityRecognition(client){
 linkedEntityRecognition(textAnalyticsClient);
 ```
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -418,16 +418,16 @@ Document ID: 0
                 Offset: 89, Length: 5   Score: 0.281
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
 > [!NOTE]
-> Ve verzi 2,1 je odkaz na entitu součástí odpovědi NER.
+> Ve verzi 2.1 je spojování entit součástí odpovědi NER.
 
-Vytvořte seznam objektů, které obsahují vaše dokumenty. Zavolejte metodu entity klienta [()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) a získejte objekt [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult) . Iterujte seznamem výsledků a vytiskněte ID každého dokumentu. Pro každou zjištěnou entitu vytiskněte název Wikipedii, typ a dílčí typy (pokud existuje) a také umístění v původním textu.
+Vytvořte seznam objektů obsahujících vaše dokumenty. Zavolejte metodu [entities()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) klienta. Získáte objekt [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult). Iterujte přes seznam výsledků a vytiskněte ID každého dokumentu. Pro každou zjištěnou entitu vytiskněte odpovídající název na Wikipedii, typ a podtypy (pokud existují) a také umístění v původním textu.
 
 [!code-javascript[Entity recognition](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=entityRecognition)]
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -463,9 +463,9 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `extractKeyPhrases()` klienta a získejte vrácený objekt `ExtractKeyPhrasesResult`. Iterujte výsledky a vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
+Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte metodu `extractKeyPhrases()` klienta. Získáte vrácený objekt `ExtractKeyPhrasesResult`. Potom iterujte přes seznam výsledků a vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
 
 ```javascript
 async function keyPhraseExtraction(client){
@@ -483,7 +483,7 @@ async function keyPhraseExtraction(client){
 keyPhraseExtraction(textAnalyticsClient);
 ```
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -492,13 +492,13 @@ ID: 0
         Document Key Phrases: cat,veterinarian
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Vytvořte seznam objektů, které obsahují vaše dokumenty. Zavolejte metodu klíčová [fráze klienta ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) a získejte vrácený objekt [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) . Iterujte výsledky a vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
+Vytvořte seznam objektů obsahujících vaše dokumenty. Zavolejte metodu [keyPhrases()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) klienta. Získáte vrácený objekt [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult). Potom iterujte přes seznam výsledků a vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
 
 [!code-javascript[Key phrase extraction](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyPhraseExtraction)]
 
-Spusťte kód pomocí `node index.js` v okně konzoly.
+Spusťte kód s `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -515,7 +515,7 @@ Spusťte kód pomocí `node index.js` v okně konzoly.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci pomocí příkazu `node` v souboru rychlého startu.
+Spusťte aplikaci pomocí příkazu `node` pro soubor rychlého startu.
 
 ```console
 node index.js

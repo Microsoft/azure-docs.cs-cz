@@ -223,6 +223,9 @@
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Dotazovací jazyk Stream Analytics
   items:
+    - name: Přehled dotazovacího jazyka Stream Analytics
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: Předdefinované funkce
       items:
         - name: Přehled předdefinovaných funkcí

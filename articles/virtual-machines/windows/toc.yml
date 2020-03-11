@@ -337,7 +337,8 @@
               href: spot-portal.md
             - name: PowerShell
               href: spot-powershell.md
-            - name: Šablona
+            - name: Šablona ARM
+              displayName: Azure Resource Manager
               href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Kódy chyb
               href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
@@ -349,16 +350,17 @@
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: 'Použití šablony s jazykem C#'
+        - name: 'Použití šablony ARM s jazykem C#'
           href: csharp-template.md
+          displayName: Azure Resource Manager
         - name: Vytvoření virtuálního počítače pomocí Chefu
           href: ../../chef/chef-automation.md
         - name: Použití Javy
           href: java.md
         - name: Použití Pythonu
           href: python.md
-        - name: Použití šablony
-          displayName: 'Azure Resource Manager template, ARM'
+        - name: Použití šablony ARM
+          displayName: Azure Resource Manager template
           href: ps-template.md
         - name: Připojení k virtuálnímu počítači
           href: connect-logon.md
@@ -473,7 +475,8 @@
           href: change-drive-letter.md
         - name: Změna skupiny dostupnosti
           href: change-availability-set.md
-        - name: Stažení šablony
+        - name: Export šablony ARM
+          displayName: Azure Resource Manager
           href: download-template.md
         - name: Agent virtuálního počítače Azure
           href: ../extensions/agent-windows.md
@@ -543,7 +546,8 @@
               href: image-builder-gallery-update-image-version.md
             - name: Ukládání skriptů
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Referenční informace k šablonám
+            - name: Referenční informace k šablonám ARM
+              displayName: Azure Resource Manager
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Řešení potíží
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
@@ -620,7 +624,8 @@
               href: attach-managed-disk-portal.md
         - name: Odpojení disku
           href: detach-disk.md
-        - name: Nasazení disků pomocí šablony
+        - name: Nasazení disků s využitím šablony ARM
+          displayName: Azure Resource Manager
           href: using-managed-disks-template-deployments.md
         - name: Povolení sdílených disků
           href: disks-shared-enable.md
@@ -690,6 +695,7 @@
         - name: PowerShell
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: Šablona Azure Resource Manageru
+          displayName: ARM
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: REST
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
@@ -743,7 +749,8 @@
       href: /azure/templates/microsoft.compute/allversions
 - name: Zdroje a prostředky
   items:
-    - name: Tvorba šablon
+    - name: Vytváření šablon ARM
+      displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines

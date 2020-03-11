@@ -329,6 +329,8 @@
                       href: restful-technical-profile.md
                     - name: SAML
                       href: saml-technical-profile.md
+                    - name: Vydavatel tokenu SAML
+                      href: saml-issuer-technical-profile.md
                     - name: Samopopisné
                       href: self-asserted-technical-profile.md
                     - name: Relace SSO

@@ -4,7 +4,7 @@
   items:
     - name: Co je Service Fabric?
       href: service-fabric-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření aplikace .NET
@@ -105,7 +105,7 @@
       href: service-fabric-best-practices-applications.md
     - name: Kontrolní seznam připravenosti k produkci
       href: service-fabric-production-readiness-checklist.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://docs.microsoft.com/samples/browse/'
@@ -316,6 +316,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Vyvážení clusteru
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: Subclustering
+              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Přesun služeb
