@@ -3,12 +3,12 @@ title: Vizualizace závislostí ve službě Azure Migrate
 description: Poskytuje přehled výpočtů posouzení ve službě hodnocení serveru v Azure Migrate
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: f24656d02e19f422ff26e6b06d1631a9128dff43
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361979"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082027"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -55,7 +55,7 @@ Existují dvě možnosti nasazení Vizualizace závislostí:
 **Podporované operační systémy** | Projděte si [operační systémy](migrate-support-matrix-vmware.md#agentless-dependency-visualization) , které jsou podporované pro vizualizaci bez agentů.
 **Virtuální počítače** | **Nástroje VMware**: na virtuálních počítačích, které chcete analyzovat, musí být nainstalované a spuštěné nástroje VMware.<br/><br/> **Účet**: na zařízení Azure Migrate musíte přidat uživatelský účet, který se dá použít pro přístup k virtuálním počítačům pro účely analýzy.<br/><br/> **Virtuální počítače s Windows**: uživatelský účet musí být na počítači místním správcem nebo správcem domény.<br/><br/> **Virtuální počítače se systémem Linux**: na účtu se vyžaduje oprávnění root. Tento uživatelský účet také vyžaduje tyto dvě funkce na/bin/netstat a/bin/LS soubory: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE. | [Přečtěte si o](migrate-appliance.md) zařízení Azure Migrate.
 **VMware** | **vCenter**: zařízení vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >.<br/><br/> **Hostitelé ESXi**: na hostiteli ESXi, na kterých běží virtuální počítače, které chcete analyzovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
-**Shromážděná data** |  Vizualizace závislostí bez agentů funguje tak, že zachytí data připojení TCP z počítačů, pro které je povolená. Po zahájení zjišťování závislosti zařízení shromáždí tato data z počítačů pomocí cyklického dotazování každých pět minut:<br/> – Připojení TCP.<br/> – Názvy procesů, které mají aktivní připojení.<br/> – Názvy nainstalovaných aplikací, které spouštějí proces s aktivními připojeními.<br/> – Počet připojení zjištěných při každém intervalu dotazování.
+**Shromážděná data** |  Analýza závislostí bez agentů funguje tak, že zachytává data připojení TCP z počítačů, na kterých je povolená. Po povolení zjišťování závislostí zařízení shromáždí data o připojení TCP každých 5 minut od virtuálních počítačů hosta. Tato data se shromažďují z virtuálních počítačů hosta prostřednictvím vCenter Server pomocí rozhraní API vSphere. Shromážděná data se zpracovávají na zařízení, aby se odvodit informace o závislostech a odesílaly Azure Migrate každých 6 hodin. Z každého počítače se shromažďují následující data: <br/> – Názvy procesů, které mají aktivní připojení.<br/> – Názvy aplikací, které spouštějí proces s aktivními připojeními.<br/> – Cílový port aktivních připojení.
 
 
 ## <a name="next-steps"></a>Další kroky

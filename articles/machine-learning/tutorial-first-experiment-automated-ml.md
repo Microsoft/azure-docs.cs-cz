@@ -1,7 +1,7 @@
 ---
-title: Vytvoření prvního automatizovaného experimentu v ML
+title: Vytváření automatizovaných klasifikačních modelů ML
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí automatizovaného strojového učení v Azure Machine Learning Studiu naučit a nasazovat model klasifikace.
+description: Naučte se, jak naučit & nasazovat modely klasifikace pomocí rozhraní automatizovaného strojového učení pro Azure Machine Learning (Automated ML).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 84d539f35919293522f05abdeabeca936138c140
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048291"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081620"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto kurzu se naučíte, jak vytvořit první automatizovaný experiment strojového učení prostřednictvím Azure Machine Learning studia, aniž byste museli psát jediný řádek kódu. Tento příklad vytvoří model klasifikace, který předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
+V tomto kurzu se naučíte, jak vytvořit základní model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného rozhraní machine learningu Azure Machine Learning. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
 Pomocí automatizovaného strojového učení můžete automatizovat časově náročné úlohy. Automatizované Machine Learning rychle projde mnoho kombinací algoritmů a parametrů, které vám pomůžou najít nejlepší model na základě metriky úspěšnosti výběru.
 
@@ -32,9 +32,9 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
 * Stáhněte bankmarketing_train datový soubor [ **. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Sloupec **y** indikuje, jestli se zákazník přihlásil k odběru pevně stanoveného termínu, který se později identifikuje jako cílový sloupec pro předpovědi v tomto kurzu. 
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
 
-Pracovní prostor můžete vytvořit pomocí nástroje Azure Machine Learning Studio, webové konzoly pro správu prostředků Azure.
+Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,9 +51,9 @@ Pracovní prostor můžete vytvořit pomocí nástroje Azure Machine Learning St
 
 ## <a name="create-and-run-the-experiment"></a>Vytvoření a spuštění experimentu
 
-Dokončili jste následující postup experimentování a spouštění v sadě Azure Machine Learning Studio, konsolidované rozhraní, které zahrnuje nástroje strojového učení, které slouží k provádění scénářů pro datové vědy v rámci všech úrovní dovedností. Aplikace Studio není podporována v prohlížečích aplikace Internet Explorer.
+Provedením následujících kroků experimentu a spuštění v Azure Machine Learning v https://ml.azure.comse jedná o konsolidované webové rozhraní, které zahrnuje nástroje strojového učení k provádění scénářů pro datové vědy u všech úrovní dovedností. Toto rozhraní není podporované v prohlížečích Internet Exploreru.
 
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
+1. Přihlaste se k Azure Machine Learning v https://ml.azure.com.
 
 1. Vyberte své předplatné a pracovní prostor, který jste vytvořili.
 
@@ -63,13 +63,13 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
    Vzhledem k tomu, že se jedná o váš první automatizovaný experiment ML, zobrazí se prázdný seznam a odkazy na dokumentaci.
 
-   ![Azure Machine Learning Studio](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![Stránka Začínáme](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. Vyberte **nový automatizovaný běh ml**. 
 
 1. Vytvořte novou datovou sadu výběrem možnosti **místní soubory** z rozevíracího seznamu **+ vytvořit datovou sadu** . 
 
-    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Automatizovaná ML v sadě Azure Machine Learning Studio aktuálně podporuje pouze tabelární datové sady, takže typ datové sady by měl být výchozí tabulkou.
+    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Rozhraní Automated ML aktuálně podporuje pouze TabularDatasets, takže typ datové sady by měl být výchozí *tabulkou*.
 
     1. V levém dolním rohu vyberte **Další** .
 
@@ -93,7 +93,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi&nbsp; samostatné, nezávislé oblasti v prostém textu nebo jiných datových proudech. |Tečkou
         Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
-        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádný
+        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádná
 
     1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , tak, aby se pro tento experiment nezahrnul. Vyberte **Další**.
 
@@ -137,7 +137,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
         Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
-        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádný
+        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádná
         Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;úlohy školení&nbsp;čas (hodiny): 1 <br> &nbsp;prahová hodnota skóre&nbsp;metriky: žádné
         Ověření | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>křížové ověření &nbsp;k-skládání&nbsp; <br> <br> Počet ověření: 2
         Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální&nbsp;souběžných&nbsp;ch iterací: 5
@@ -163,9 +163,9 @@ Následující navigace prochází pomocí karet **Podrobnosti modelu** a **vizu
 
 ![Podrobnosti spuštění iterace](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>Nasazení modelu
+## <a name="deploy-the-best-model"></a>Nasazení nejlepšího modelu
 
-Automatizované strojové učení v Azure Machine Learning Studiu vám umožní nasadit nejlepší model jako webovou službu v několika krocích. Nasazení je integrací modelu, takže může předpovídat nová data a identifikovat potenciální oblasti příležitostí. 
+Automatizované rozhraní Machine Learning umožňuje nasadit nejlepší model jako webovou službu v několika krocích. Nasazení je integrací modelu, takže může předpovídat nová data a identifikovat potenciální oblasti příležitostí. 
 
 Pro tento experiment nasazení do webové služby znamená, že finanční instituce teď má iterativní a škálovatelné webové řešení pro identifikaci potenciálních zákazníků s dlouhodobým vkladem. 
 
@@ -201,29 +201,29 @@ Soubory nasazení jsou větší než data a experimenty, takže se o jejich ulo�
 
 ### <a name="delete-the-deployment-instance"></a>Odstraní instanci nasazení.
 
-Pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy a průzkum, odstraňte jenom instanci nasazení z Azure Machine Learning studia. 
+Pokud chcete zachovat skupinu prostředků a pracovní prostor pro jiné kurzy a průzkum, odstraňte jenom instanci nasazení z Azure Machine Learning v https://ml.azure.com/. 
 
-1. Přejít na [Azure Machine Learning Studio](https://ml.azure.com/). Přejděte do pracovního prostoru a vlevo pod podoknem **assety** vyberte **koncové body**. 
+1. Přejít na Azure Machine Learning na https://ml.azure.com/. Přejděte do pracovního prostoru a vlevo pod podoknem **assety** vyberte **koncové body**. 
 
 1. Vyberte nasazení, které chcete odstranit, a vyberte **Odstranit**. 
 
 1. Vyberte **pokračovat**.
 
-### <a name="delete-the-resource-group"></a>Odstranit skupinu prostředků
+### <a name="delete-the-resource-group"></a>Odstranění skupiny prostředků
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu automatizovaného strojového učení jste pomocí Azure Machine Learning studia vytvořili a nasadili klasifikační model. Další informace a další kroky najdete v těchto článcích:
+V tomto kurzu automatizovaného strojového učení jste pomocí automatizovaného rozhraní ML Azure Machine Learning vytvořili a nasadili klasifikační model. Další informace a další kroky najdete v těchto článcích:
 
 > [!div class="nextstepaction"]
 > [Využití webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ Přečtěte si další informace o [featurization](how-to-create-portal-experiments.md#featurization).
-+ Přečtěte si další informace o [profilování dat](how-to-create-portal-experiments.md#profile).
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
-+ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
++ Další informace o metrikách a grafech klasifikace najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) . Další informace o [featurization](how-to-create-portal-experiments.md#featurization).
++ Přečtěte si další informace o [profilování dat](how-to-create-portal-experiments.md#profile).
+
 
 >[!NOTE]
 > Tato datová sada bank je k dispozici v rámci [licence Creative-@ (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Všechna práva k individuálnímu obsahu databáze jsou licencovaná v rámci [licence k obsahu databáze](https://creativecommons.org/publicdomain/zero/1.0/) a dostupná na [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Tato datová sada byla původně k dispozici v rámci [databáze UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>

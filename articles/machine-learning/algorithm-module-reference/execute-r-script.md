@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/10/2020
+ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917403"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037113"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
@@ -67,11 +67,43 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
   > Zkontrolujte prosím, jestli balíček už existuje, a teprve potom ho nainstalujte, abyste se vyhnuli opakované instalaci. Podobně jako `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` výše vzorový kód. Opakování instalace může způsobit vypršení časového limitu požadavku webové služby.     
 
+## <a name="upload-files"></a>Nahrání souborů
+**Skript spustit r** podporuje nahrávání souborů pomocí Azure Machine Learning R SDK.
+
+Následující příklad ukazuje, jak nahrát soubor obrázku do **skriptu Execute jazyka R**:
+```R
+
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+
+  # Generate a jpeg graph
+  img_file_name <- "rect.jpg"
+  jpeg(file=img_file_name)
+  example(rect)
+  dev.off()
+
+  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
+
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+Po úspěšném odeslání kanálu můžete zobrazit náhled obrázku v pravém panelu modulu ![nahraný obrázek](media/module/upload-image-in-r-script.png)
+
 ## <a name="how-to-configure-execute-r-script"></a>Jak nakonfigurovat skript spouštěný v jazyce R
 
 Modul **spuštění skriptu jazyka R** obsahuje vzorový kód, který můžete použít jako výchozí bod. Chcete-li nakonfigurovat modul **skriptu Execute R** , poskytněte sadu vstupů a kódů, které mají být provedeny.
 
-![R – modul](media/module/execute-r-script.png)
+![R – modul](media/module/upload-image-in-r-script.png)
 
 Datové sady uložené v návrháři se při načtení s tímto modulem automaticky převedou na datový rámec R.
 
@@ -284,7 +316,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | pastel       | 1.3.4      | 
 | Curl         | 3.3        | 
 | data. tabulka   | 1.12.2     | 
-| datové sady     | 3.5.1      | 
+| datasets     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 
@@ -336,7 +368,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | nlme         | 3.1 – 140    | 
 | sušené         | 7.3-12     | 
 | numDeriv     | 2016.8-1.1 | 
-| OpenSSL      | 1,4        | 
+| OpenSSL      | 1.4        | 
 | parallel     | 3.5.1      | 
 | pilíř       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 

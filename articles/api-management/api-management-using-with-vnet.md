@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374920"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967978"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -31,7 +31,7 @@ Službu Azure API Management lze nasadit v rámci virtuální sítě (VNET), aby
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -113,16 +113,16 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 | * / 80, 443                  | Příchozí            | TCP                | INTERNET/VIRTUAL_NETWORK            | Komunikace klienta s API Management                      | Externí             |
 | * / 3443                     | Příchozí            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Koncový bod správy pro Azure Portal a PowerShell         | Externí & interní  |
 | * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK/úložiště             | **Závislost na Azure Storage**                             | Externí & interní  |
-| * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK/Azureactivedirectory selhala | Azure Active Directory (Pokud je k dispozici)                   | Externí & interní  |
+| * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK/Azureactivedirectory selhala | [Azure Active Directory](api-management-howto-aad.md) (Pokud je k dispozici)                   | Externí & interní  |
 | * / 1433                     | Odchozí           | TCP                | VIRTUAL_NETWORK / SQL                 | **Přístup k koncovým bodům SQL Azure**                           | Externí & interní  |
-| */5671, 5672, 443          | Odchozí           | TCP                | VIRTUAL_NETWORK / EventHub            | Závislost pro protokolování do zásad centra událostí a agenta monitorování | Externí & interní  |
-| * / 445                      | Odchozí           | TCP                | VIRTUAL_NETWORK/úložiště             | Závislost na sdílené složce Azure pro GIT                      | Externí & interní  |
+| */5671, 5672, 443          | Odchozí           | TCP                | VIRTUAL_NETWORK / EventHub            | Závislost pro [protokolování do zásad centra událostí](api-management-howto-log-event-hubs.md) a agenta monitorování | Externí & interní  |
+| * / 445                      | Odchozí           | TCP                | VIRTUAL_NETWORK/úložiště             | Závislost na sdílené složce Azure pro [Git](api-management-configuration-repository-git.md)                      | Externí & interní  |
 | * / 1886                     | Odchozí           | TCP                | VIRTUAL_NETWORK/INTERNET            | Je potřeba publikovat stav Resource Health          | Externí & interní  |
-| */443                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publikování diagnostických protokolů a metrik                        | Externí & interní  |
+| */443                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publikování [diagnostických protokolů a metrik](api-management-howto-use-azure-monitor.md)                       | Externí & interní  |
 | * / 25                       | Odchozí           | TCP                | VIRTUAL_NETWORK/INTERNET            | Připojení k předávání SMTP pro odesílání e-mailů                    | Externí & interní  |
 | * / 587                      | Odchozí           | TCP                | VIRTUAL_NETWORK/INTERNET            | Připojení k předávání SMTP pro odesílání e-mailů                    | Externí & interní  |
 | * / 25028                    | Odchozí           | TCP                | VIRTUAL_NETWORK/INTERNET            | Připojení k předávání SMTP pro odesílání e-mailů                    | Externí & interní  |
-| * / 6381 - 6383              | Příchozí & odchozí | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Přístup k mezipaměti Azure pro instance Redis mezi RoleInstances          | Externí & interní  |
+| * / 6381 - 6383              | Příchozí & odchozí | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Přístup ke službě Redis pro zásady [Omezení četnosti](api-management-access-restriction-policies.md#LimitCallRateByKey) mezi počítači         | Externí & interní  |
 | * / *                        | Příchozí            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Load Balancer infrastruktury Azure                          | Externí & interní  |
 
 >[!IMPORTANT]
@@ -136,9 +136,12 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejné Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>prod.warmpath.msftcloudes.com (**bude zastaralé**)</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Veřejné Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>prod.warmpath.msftcloudes.com (**bude zastaralé**)</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3-black.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3-red.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+
+>[!IMPORTANT]
+> Změna clusterů výše se zónou DNS **. nsatc.NET** na **. Microsoftmetrics.com** je většinou změnou DNS. IP adresa clusteru se nezmění.
 
 + **Předávání SMTP**: odchozí připojení k síti pro přenos SMTP, které se řeší pod `smtpi-co1.msn.com`hostitele, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com``smtpi-sin.msn.com` a `ies.global.microsoft.com`
 
@@ -198,14 +201,14 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 |-----------------|-------------------------|---------------|
 | Veřejné Azure| Střed USA – jih (globální)| 104.214.19.224|
 | Veřejné Azure| Střed USA – sever (globální)| 52.162.110.80|
-| Veřejné Azure| Střed USA – západ| 52.253.135.58|
+| Veřejné Azure| USA – středozápad| 52.253.135.58|
 | Veřejné Azure| Jižní Korea – střed| 40.82.157.167|
 | Veřejné Azure| Spojené království – západ| 51.137.136.0|
 | Veřejné Azure| Japonsko – západ| 40.81.185.8|
-| Veřejné Azure| Střed USA – sever| 40.81.47.216|
+| Veřejné Azure| USA – středosever| 40.81.47.216|
 | Veřejné Azure| Velká Británie – jih| 51.145.56.125|
 | Veřejné Azure| Indie – západ| 40.81.89.24|
-| Veřejné Azure| Východní USA| 52.224.186.99|
+| Veřejné Azure| USA – východ| 52.224.186.99|
 | Veřejné Azure| Západní Evropa| 51.145.179.78|
 | Veřejné Azure| Japonsko – východ| 52.140.238.179|
 | Veřejné Azure| Francie – střed| 40.66.60.111|
@@ -217,17 +220,17 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejné Azure| Kanada – střed| 52.139.20.34|
 | Veřejné Azure| Jižní Korea – jih| 40.80.232.185|
 | Veřejné Azure| Indie – střed| 13.71.49.1|
-| Veřejné Azure| Západní USA| 13.64.39.16|
+| Veřejné Azure| USA – západ| 13.64.39.16|
 | Veřejné Azure| Austrálie – jihovýchod| 20.40.160.107|
 | Veřejné Azure| Austrálie – střed| 20.37.52.67|
 | Veřejné Azure| Indie – jih| 20.44.33.246|
-| Veřejné Azure| Střed USA| 13.86.102.66|
+| Veřejné Azure| USA – střed| 13.86.102.66|
 | Veřejné Azure| Austrálie – východ| 20.40.125.155|
-| Veřejné Azure| Západní USA 2| 51.143.127.203|
+| Veřejné Azure| USA – západ 2| 51.143.127.203|
 | Veřejné Azure| Východní USA 2 EUAP| 52.253.229.253|
 | Veřejné Azure| Střed USA EUAP| 52.253.159.160|
-| Veřejné Azure| Střed USA – jih| 20.188.77.119|
-| Veřejné Azure| Východní USA 2| 20.44.72.3|
+| Veřejné Azure| USA – středojih| 20.188.77.119|
+| Veřejné Azure| USA – východ 2| 20.44.72.3|
 | Veřejné Azure| Severní Evropa| 52.142.95.35|
 | Veřejné Azure| Východní Asie| 52.139.152.27|
 | Veřejné Azure| Francie – jih| 20.39.80.2|

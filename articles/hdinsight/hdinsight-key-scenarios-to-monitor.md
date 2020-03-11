@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770879"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082876"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
 
@@ -31,9 +31,9 @@ Pokud se chcete podívat na nejvyšší úroveň uzlů clusteru a jejich načít
 | --- | --- |
 | Červená | Nejméně jedna hlavní součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
 | Orange | Nejméně jedna sekundární součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
-| Žlutá | Server Ambari nedostal od hostitele prezenční signál po dobu delší než 3 minuty. |
-| Zelená | Normální stav spuštění. |
- 
+| Opatřen | Server Ambari nedostal od hostitele prezenční signál po dobu delší než 3 minuty. |
+| Šetrn | Normální stav spuštění. |
+
 Zobrazí se také sloupce zobrazující počet jader a velikost paměti RAM pro každého hostitele a využití disku a průměr zatížení.
 
 ![Přehled karty hostitelé Apache Ambari](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -81,6 +81,46 @@ Pokud je úložiště záložního clusteru Azure Data Lake Storage (ADLS), je p
 * [Pokyny k ladění výkonu pro Apache Hive ve službě HDInsight a Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Pokyny k ladění výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Pokyny k ladění výkonu pro Apache Storm ve službě HDInsight a Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>Řešení potíží s výkonem uzlu pomalá
+
+V některých případech může Sluggishness vycházet z důvodu nedostatku místa na disku v clusteru. Prozkoumejte pomocí těchto kroků:
+
+1. Pomocí [příkazu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke každému uzlu.
+
+1. Spusťte jeden z následujících příkazů a ověřte využití disku:
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. Zkontrolujte výstup a zkontrolujte přítomnost velkých souborů ve složce `mnt` nebo v jiných složkách. Obvykle složky `usercache`a `appcache` (mnt/Resource/Hadoop/nitě/Local/usercache/podregistr/APPCACHE/) obsahují velké soubory.
+
+1. Pokud jsou velké soubory, je možné, že aktuální úloha způsobuje nárůst souboru nebo neúspěšná předchozí úloha mohla přispět k tomuto problému. Chcete-li zjistit, zda je toto chování způsobeno aktuální úlohou, spusťte následující příkaz:
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. Pokud tento příkaz indikuje konkrétní úlohu, můžete se rozhodnout ukončit úlohu pomocí příkazu, který se podobá následujícímu:
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    Nahraďte `application_id` IDENTIFIKÁTORem aplikace. Pokud neuvedete žádné konkrétní úlohy, pokračujte na další krok.
+
+1. Po dokončení příkazu, nebo pokud nejsou zadány žádné konkrétní úlohy, odstraňte velké soubory, které jste identifikovali, spuštěním příkazu, který se podobá následujícímu:
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+Další informace o potížích s místem na disku najdete v tématu [nedostatek místa na disku](./hadoop/hdinsight-troubleshoot-out-disk-space.md).
+
+> [!NOTE]  
+> Pokud máte velké soubory, které chcete zachovat, ale přispějete k potížím s nedostatkem místa na disku, je třeba škálovat cluster HDInsight a restartovat vaše služby. Po dokončení tohoto postupu a čekání na několik minut si všimněte, že je úložiště uvolněno a že je obnovený obvyklý výkon uzlu.
 
 ## <a name="next-steps"></a>Další kroky
 

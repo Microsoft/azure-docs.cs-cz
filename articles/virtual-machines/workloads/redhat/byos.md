@@ -1,6 +1,6 @@
 ---
 title: Red Hat Enterprise Linux vlastní předplatné Azure images | Microsoft Docs
-description: Přečtěte si o imagích s vlastními předplatnými pro Red Hat Enterprise Linux v Azure
+description: Přečtěte si o imagích s vlastními předplatnými pro Red Hat Enterprise Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,81 +14,80 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 712626345e10ab0e4290ac91b0f121ff6960303e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 825d26307f2b462d51b143b88127e229508f2f25
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396818"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970485"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
 
-V Azure jsou k dispozici image Red Hat Enterprise Linux (RHEL), a to prostřednictvím modelu PAYG (průběžné platby s průběžnými platbami) nebo vlastního předplatného (Red Hat Gold Image). Tento dokument poskytuje přehled imagí Red Hat Gold v Azure.
+V Azure jsou k dispozici image Red Hat Enterprise Linux (RHEL) prostřednictvím modelu průběžných plateb (BYOS) (Image Red Hat Gold). Tento článek poskytuje přehled imagí Red Hat Gold v Azure.
 
 >[!NOTE]
-> Image RHEL BYOS Gold jsou k dispozici v Azure Public (komerční) a v cloudech Azure Government. Nejsou k dispozici v Azure Čína ani v cloudech Azure blackforest.
+> Image RHEL BYOS Gold jsou k dispozici ve veřejných cloudech Azure (komerčních) a Azure Government. Nejsou k dispozici v Azure Čína ani v cloudech Azure blackforest.
 
 ## <a name="important-points-to-consider"></a>Důležité body, které je třeba zvážit
 
-- Image Red Hat Gold dodávané v tomto programu jsou RHEL obrázky připravené pro produkční prostředí podobné RHEL PAYG obrázků v galerii Azure nebo na webu Marketplace.
-
-- Obrázky následují naše aktuální zásady popsané v tématu [Red Hat Enterprise Linux images v Azure](./redhat-images.md) .
-
+- Image Red Hat Gold dodávané v tomto programu jsou RHEL obrázky připravené pro produkční prostředí, podobně jako image RHEL s průběžnými platbami v Azure Marketplace.
+- Image se řídí aktuálními zásadami popsanými v [Red Hat Enterprise Linux imagí v Azure](./redhat-images.md).
 - Standardní zásady podpory se vztahují na virtuální počítače vytvořené z těchto imagí.
-
-- Virtuální počítače zřízené z imagí Red Hat Gold nenesou RHEL poplatky spojené s imagemi PAYG RHEL.
-
-- Image jsou neoprávněné, takže musíte použít Správce předplatného k registraci a přihlášení k odběru virtuálních počítačů za účelem získání aktualizací ze Red Hat přímo.
-
-- V současné době není možné dynamicky přepínat mezi BYOS a PAYG modely fakturace pro Image Linux. K přepnutí modelu fakturace se vyžaduje opětovné nasazení virtuálního počítače z příslušné image.
+- Virtuální počítače zřízené z imagí Red Hat Gold nenesou RHEL poplatky spojené s imagemi RHEL s průběžnými platbami.
+- Obrázky jsou neoprávněné. K registraci a přihlášení k odběru virtuálních počítačů za účelem přímého získání aktualizací ze Red Hat je nutné použít Správce předplatného Red Hat.
+- V současné době není možné dynamicky přepínat mezi BYOS a modelem fakturace s průběžnými platbami pro Image Linux. Chcete-li přepnout model fakturace, je nutné znovu nasadit virtuální počítač z příslušné bitové kopie.
 
 >[!NOTE]
-> Image generace 2 RHEL BYOS nejsou aktuálně k dispozici prostřednictvím nabídky Marketplace. Pokud potřebujete image BYOS s RHELou Gen 2, přejděte na řídicí panel coud Access ve správě předplatných Red Hat. Další podrobnosti najdete v dokumentaci k [Red Hat](https://access.redhat.com/articles/4847681).
+> RHEL 2. generace BYOS image nejsou aktuálně dostupné prostřednictvím nabídky Marketplace. Pokud potřebujete image BYOS generace 2 RHEL, přejděte na řídicí panel Cloud Access ve správě předplatných Red Hat. Další informace najdete v dokumentaci k [Red Hat](https://access.redhat.com/articles/4847681).
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Požadavky a podmínky pro přístup k obrazům Red Hat Gold
 
-1. Seznamte se s podmínkami [programu Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a Umožněte svým předplatným Red Hat pro cloudový přístup ve [Správci Red Hat Subscription Manager](https://access.redhat.com/management/cloud). Budete muset mít k dispozici předplatné Azure, které se bude registrovat pro cloudový přístup.
+1. Seznamte se s podmínkami [programu Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) . Umožněte svým předplatným Red Hat pro cloudový přístup v [Red Hat Subscription-Manager](https://access.redhat.com/management/cloud). Musíte mít k dispozici předplatná Azure, která se budou registrovat pro cloudový přístup.
 
-1. Pokud jste povolili předplatné Red Hat pro cloudový přístup, který splňuje správné požadavky na způsobilost, budou mít vaše předplatná Azure automaticky povolený přístup k obrazům Gold.
+1. Pokud je u předplatných Red Hat, které jste povolili pro přístup k cloudu, splněny požadavky na způsobilost, budou mít vaše předplatná Azure automaticky povolený přístup k imagi
 
 ### <a name="expected-time-for-image-access"></a>Očekávaný čas pro přístup k obrázku
 
-Po dokončení kroků povolení přístupu ke cloudu vám Red Hat ověří nárok na Image Red Hat Gold. Pokud bude ověření úspěšné, dostanete během tří hodin přístup ke zlatým imagím.
+Po dokončení kroků povolení přístupu do cloudu ověří Red Hat nárok na Image Red Hat Gold. Pokud je ověření úspěšné, dostanete do tří hodin přístup ke zlatým obrázkům.
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>Použití imagí Red Hat Gold z Azure Portal
 
-1. Jakmile vaše předplatné Azure získá přístup k obrázkům Red Hat Gold, můžete je vyhledat v [Azure Portal](https://portal.azure.com) tak, že přejdete na **vytvořit prostředek** a pak **zobrazíte vše**.
+1. Jakmile vaše předplatné Azure získá přístup k obrázkům Red Hat Gold, můžete je vyhledat v [Azure Portal](https://portal.azure.com). Přejděte na **vytvořit prostředek** > **Zobrazit vše**.
 
-1. V horní části stránky se zobrazí, že máte soukromé nabídky.
+1. V horní části stránky uvidíte, že máte soukromé nabídky.
 
     ![Veřejné nabídky Marketplace](./media/rhel-byos-privateoffers.png)
 
-1. Můžete kliknout na fialový odkaz nebo přejít dolů k dolnímu okraji stránky a zobrazit vaše soukromé nabídky.
+1. Vyberte fialový odkaz, nebo se posuňte dolů k dolnímu okraji stránky, aby se zobrazily vaše soukromé nabídky.
 
-1. Zbytek zřizování v uživatelském rozhraní se neliší od žádné jiné existující image Red Hat. Vyberte verzi RHEL a podle pokynů zřiďte svůj virtuální počítač. Tento postup vám také umožní přijmout podmínky image v posledním kroku.
+1. Zbytek zřizování v uživatelském rozhraní se neliší od ostatních stávajících imagí Red Hat. Vyberte verzi RHEL a postupujte podle pokynů pro zřízení virtuálního počítače. Tento proces také umožňuje přijmout podmínky obrázku v posledním kroku.
 
 >[!NOTE]
->Tyto kroky zatím neumožňují pro programové nasazení obrázek Red Hat Gold. další krok bude nutný, jak je popsáno v části Další informace.
+>Tyto kroky zatím neumožňují instalaci Red Hat Gold pro programové nasazení. Další krok je vyžadován, jak je popsáno v části "Další informace".
 
 Zbytek tohoto dokumentu se zaměřuje na metodu CLI, která umožňuje zřídit a přijmout podmínky pro image. Uživatelské rozhraní a CLI jsou plně zaměnitelné, pokud se jedná o konečný výsledek (zřízený virtuální počítač RHEL Gold Image).
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>Použití imagí Red Hat Gold z Azure CLI
-Následující postup vás provede procesem prvotního nasazení pro virtuální počítač s RHEL pomocí rozhraní příkazového řádku Azure CLI. V těchto pokynech se předpokládá, že máte nainstalované rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+Následující pokyny vás provedou procesem prvotního nasazení pro virtuální počítač s RHEL pomocí Azure CLI. V těchto pokynech se předpokládá, že máte nainstalované rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 >[!IMPORTANT]
 >Ujistěte se, že používáte všechna malá písmena v odkazech vydavatele, nabídky, plánu a obrázku pro všechny následující příkazy.
 
-1. Ověřte, že jste v požadovaném předplatném:
+1. Ověřte, že jste v požadovaném předplatném.
+
     ```azurecli
     az account show -o=json
     ```
 
-1. Vytvořte skupinu prostředků pro virtuální počítač s Red Hat Gold s obrázkem:
+1. Vytvořte skupinu prostředků pro virtuální počítač Red Hat Gold Image.
+
     ```azurecli
     az group create --name <name> --location <location>
     ```
 
-1. Přijměte podmínky pro Image:
+1. Přijměte podmínky pro obrázek.
+
     ```azurecli
     az vm image terms accept --publisher redhat --offer rhel-byos --plan <SKU value here> -o=jsonc
 
@@ -99,10 +98,12 @@ Následující postup vás provede procesem prvotního nasazení pro virtuální
 
     az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm8:8.0.20190620
     ```
+
     >[!NOTE]
     >Tyto výrazy je potřeba přijmout *jednou pro každou skladovou jednotku na obrázku za předplatné Azure*.
 
 1. Volitelné Ověřte nasazení virtuálního počítače pomocí následujícího příkazu:
+
     ```azurecli
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
 
@@ -110,19 +111,20 @@ Následující postup vás provede procesem prvotního nasazení pro virtuální
     az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
     ```
 
-1. Zřiďte virtuální počítač spuštěním stejného příkazu, který není bez `--validate` argumentu:
+1. Zřiďte virtuální počítač spuštěním stejného příkazu, jak je znázorněno v předchozím příkladu bez argumentu `--validate`.
+
     ```azurecli
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
     ```
 
-1. Připojte se k VIRTUÁLNÍmu počítači přes SSH a ověřte, jestli máte neoprávněnou image. Pokud to chcete provést, spusťte `sudo yum repolist` (pro RHEL 8 použijte `sudo dnf repolist`). Výstup vás vyzve k použití Správce předplatného k registraci virtuálního počítače pomocí Red Hat.
+1. Připojte se k VIRTUÁLNÍmu počítači přes SSH a ověřte, jestli máte neoprávněnou image. Chcete-li provést tento krok, spusťte `sudo yum repolist`. Pro RHEL 8 použijte `sudo dnf repolist`. Výstup vás vyzve k použití Správce předplatného k registraci virtuálního počítače pomocí Red Hat.
 
 >[!NOTE]
->V RHEL 8 `dnf` a `yum` jsou zaměnitelné, další informace najdete v [příručce pro správce RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings).
-
+>V RHEL 8 jsou `dnf` a `yum` zaměnitelné. Další informace najdete v příručce pro [správce RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings).
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>Použití imagí Red Hat Gold z PowerShellu
-Následuje ukázkový skript. Měli byste nahradit skupinu prostředků, umístění, název virtuálního počítače, přihlašovací informace a další proměnné s konfigurací, kterou zvolíte. Informace o vydavateli a plánu musí být malé.
+
+Následující skript je příkladem. Podle konfigurace podle vlastního výběru nahraďte skupinu prostředků, umístění, název virtuálního počítače, přihlašovací informace a další proměnné. Informace o vydavateli a plánu musí být malé.
 
 ```powershell-interactive
     # Variables for common values
@@ -179,15 +181,15 @@ Následuje ukázkový skript. Měli byste nahradit skupinu prostředků, umíst�
 
 ## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>Šifrování zlatých imagí Red Hat Enterprise Linux s využitím vlastních předplatných
 
-Pomocí [Azure Disk Encryption](../../linux/disk-encryption-overview.md)je možné zabezpečit zlaté image, které se dají použít Red Hat Enterprise Linux. Předplatné ale **musí** být zaregistrované předtím, než se povolí šifrování.  Podrobnosti o registraci RHEL BYOS Gold jsou k dispozici na webu Red Hat. Podívejte se [, jak zaregistrovat a přihlásit se k odběru systému na portál Red Hat Customer pomocí programu Red Hat Subscription – Manager](https://access.redhat.com/solutions/253273). Pokud máte aktivní předplatné Red Hat, můžete si také přečíst téma [vytváření aktivačních klíčů pro zákazníka Red Hat](https://access.redhat.com/articles/1378093).
+Red Hat Enterprise Linux BYOS zlaté obrázky lze zabezpečit pomocí [Azure Disk Encryption](../../linux/disk-encryption-overview.md). Aby bylo možné povolit šifrování, *musí* být předplatné registrováno. Další informace o tom, jak zaregistrovat RHEL BYOS Gold, najdete v tématu [registrace a přihlášení k odběru systému na portál Red Hat Customer pomocí Správce předplatného Red Hat](https://access.redhat.com/solutions/253273). Pokud máte aktivní předplatné Red Hat, můžete si také přečíst téma [vytváření aktivačních klíčů pro zákazníka Red Hat](https://access.redhat.com/articles/1378093).
 
-Azure Disk Encryption se u [vlastních imagí Red Hat](../../linux/redhat-create-upload-vhd.md)nepodporuje. Další požadavky a požadavky na ADE jsou popsány v [Azure Disk Encryption pro virtuální počítače se systémem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
+U [vlastních imagí Red Hat](../../linux/redhat-create-upload-vhd.md)se Azure Disk Encryption nepodporuje. Další Azure Disk Encryption požadavky a požadavky jsou popsány v [Azure Disk Encryption pro virtuální počítače se systémem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
 
-Kroky pro použití Azure Disk Encryption jsou k dispozici ve [scénářích Azure Disk Encryption na virtuálních počítačích s Linux a v](../../linux/disk-encryption-linux.md) souvisejících článcích.
+Postup pro použití Azure Disk Encryption najdete v tématu [scénáře Azure Disk Encryption na virtuálních počítačích se systémem Linux a v](../../linux/disk-encryption-linux.md) souvisejících článcích.
 
 ## <a name="additional-information"></a>Další informace
 
-- Pokud se pokusíte zřídit virtuální počítač v předplatném, které není pro tuto nabídku povoleno, zobrazí se následující chyba:
+- Pokud se pokusíte zřídit virtuální počítač v předplatném, které není pro tuto nabídku povoleno, zobrazí se následující zpráva:
 
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
@@ -203,15 +205,17 @@ Kroky pro použití Azure Disk Encryption jsou k dispozici ve [scénářích Azu
     -g AnotherGroupName --location EastUS2 -n VMName \
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm75
     ```
+
     Poznamenejte si parametry plánu v posledním řádku.
 
-    [Azure Disk Encryption](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) se nepodporuje u vlastních imagí.
+    [Azure Disk Encryption](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) se u vlastních imagí nepodporuje.
 
-- Pokud používáte automatizaci k zřizování virtuálních počítačů z imagí RHEL BYOS, musíte zadat parametry plánu podobné tomu, co bylo uvedeno výše. Například pokud používáte Terraformu, zadejte informace o plánu do [bloku plánu](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
+- Pokud používáte automatizaci k zřizování virtuálních počítačů z imagí RHEL BYOS, je nutné zadat parametry plánu podobné tomu, co bylo zobrazeno v ukázkových příkazech. Například pokud používáte Terraformu, zadáte informace o plánu do [bloku plánu](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
 ## <a name="next-steps"></a>Další kroky
-- Podrobné návody a podrobnosti o programu pro cloudový přístup jsou k dispozici v dokumentaci k řešení [Red Hat Cloud Access.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
-- Přečtěte si další informace o [infrastruktuře aktualizací Red Hat pro Azure](./redhat-rhui.md).
-- Pokud se chcete dozvědět víc o všech obrázcích Red Hat v Azure, navštivte [stránku dokumentace](./redhat-images.md).
+
+- Podrobné návody a podrobné informace o programu pro cloudový přístup najdete v dokumentaci k řešení [Red Hat Cloud Access](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index).
+- Další informace o infrastruktuře aktualizace Red Hat najdete v tématu [infrastruktura aktualizací Azure Red Hat](./redhat-rhui.md).
+- Další informace o všech obrázcích Red Hat v Azure najdete na [stránce s dokumentací](./redhat-images.md).
 - Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .
 - Další dokumentaci k RHEL Gold imagí najdete v [dokumentaci k Red Hat](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).

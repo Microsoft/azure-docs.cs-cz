@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: Ověřování pomocí spravované identity – Power BI
           href: powerbi-output-managed-identity.md
+        - name: Šifrování dat
+          href: data-protection.md
     - name: Vytváření řešení
       items:
         - name: Analýza subjektivního hodnocení na Twitteru
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: Použití rozhraní API pro úlohy IoT Edge
           href: stream-analytics-cicd-api.md
+        - name: Export a nasazení s využitím Azure Resource Manageru
+          href: resource-manager-export.md
     - name: Visual Studio
       items:
         - name: Instalace nástrojů

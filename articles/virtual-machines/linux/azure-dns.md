@@ -1,24 +1,17 @@
 ---
-title: Možnosti překladu názvů DNS pro virtuální počítače se systémem Linux v Azure
+title: Možnosti překladu názvů DNS pro virtuální počítače se systémem Linux
 description: Scénáře překladu názvů pro virtuální počítače se systémem Linux ve službě Azure IaaS, včetně poskytovaných služeb DNS, hybridního externího DNS a uvedení vlastního serveru DNS.
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: gwallace
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084045"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969318"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překladu názvů DNS pro virtuální počítače se systémem Linux v Azure
 Azure poskytuje překlad názvů DNS standardně pro všechny virtuální počítače, které jsou v jedné virtuální síti. Můžete implementovat vlastní řešení překladu názvů DNS tak, že na virtuálních počítačích, které hostují Azure, nakonfigurujete vlastní služby DNS. Následující scénáře vám pomůžou vybrat ten, který bude fungovat pro vaši situaci.
@@ -86,7 +79,7 @@ K dispozici je několik různých balíčků pro ukládání do mezipaměti DNS,
 5. Restartujte síťovou službu ("restartování sítě služby") a nastavte mezipaměť jako místní Překladač DNS.
 
 > [!NOTE]
-> : Balíček ' Dnsmasq ' je pouze jedna z mnoha mezipamětí služby DNS, které jsou k dispozici pro Linux. Než ho použijete, ověřte, jestli vyhovuje vašim potřebám a jestli není nainstalovaná žádná jiná mezipaměť.
+> : Balíček ' Dnsmasq ' je pouze jednou z mnoha mezipamětí služby DNS, které jsou k dispozici pro Linux. Než ho použijete, ověřte, jestli vyhovuje vašim potřebám a jestli není nainstalovaná žádná jiná mezipaměť.
 >
 >
 
@@ -112,7 +105,7 @@ Soubor soubor resolv. conf se vygeneruje automaticky a neměl by se upravovat. K
 2. Spusťte aktualizaci spuštěním příkazu ' netconfig Update '.
 
 **CentOS pomocí neautorizovaných vln softwaru (dříve OpenLogic)** (používá NetworkManager)
-1. Přidání příkazu "RES_OPTIONS =" timeout: 1 pokusů: 5 "" na "/etc/sysconfig/Network".
+1. Přidání RES_OPTIONS = časový limit: 1 pokusy: 5 "" na "/etc/sysconfig/Network".
 2. Spusťte restart síťové služby, aby se aktualizoval.
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Překlad názvů pomocí vlastního serveru DNS
@@ -126,7 +119,7 @@ Předávání DNS taky umožňuje překlad DNS mezi virtuálními sítěmi a umo
 
 Když použijete překlad IP adres, který poskytuje Azure, interní přípona DNS se poskytne každému virtuálnímu počítači pomocí DHCP. Pokud používáte vlastní řešení překladu IP adres, tato přípona není k dispozici virtuálním počítačům, protože přípona koliduje s ostatními architekturami DNS. Pokud chcete odkazovat na počítače podle plně kvalifikovaného názvu domény nebo nakonfigurovat příponu na virtuálních počítačích, můžete k určení přípony použít PowerShell nebo rozhraní API:
 
-* Pro virtuální sítě, které jsou spravovány nástrojem Azure Resource Manager, je přípona k dispozici prostřednictvím prostředku [síťového rozhraní](https://msdn.microsoft.com/library/azure/mt163668.aspx) . Můžete také spustit `azure network public-ip show <resource group> <pip name>` příkaz, který zobrazí podrobnosti o veřejné IP adrese, včetně plně kvalifikovaného názvu domény síťového rozhraní.
+* Pro virtuální sítě, které jsou spravovány nástrojem Azure Resource Manager, je přípona k dispozici prostřednictvím prostředku [síťového rozhraní](https://msdn.microsoft.com/library/azure/mt163668.aspx) . Můžete také spustit příkaz `azure network public-ip show <resource group> <pip name>`, který zobrazí podrobnosti o veřejné IP adrese, včetně plně kvalifikovaného názvu domény síťového rozhraní.
 
 Pokud předávání dotazů do Azure nevyhovuje vašim potřebám, je třeba zadat vlastní řešení DNS.  Vaše řešení DNS potřebuje:
 

@@ -1,20 +1,15 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru C# , (.NET) – služba Speech'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
 author: IEvangelist
-manager: nitinme
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/14/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 8c980d4aac5c864e83cddfad00fe6030840d1370
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: c92a3d1219358d7fe15cfe0ec93f1e720ee80af8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925416"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082275"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 

@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: daf38baf9daff5fd192091be977a996c9bd5cfc2
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539861"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967637"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
 
 V tomto scénáři se dozvíte, jak nakonfigurovat instanci Azure API Management k ochraně rozhraní API.
-Protokol OpenID Connect použijeme spolu s Azure AD B2C společně API Management k zabezpečení Azure Functions back-endu pomocí EasyAuth.
+Protokol OAuth 2,0 s Azure AD B2C společně API Management k zabezpečení Azure Functions back-endu pomocí EasyAuth.
 
 ## <a name="aims"></a>Usiluje
 Zjistíme, jak se dá API Management použít ve zjednodušeném scénáři s Azure Functions a Azure AD B2C. Vytvoříte aplikaci JavaScript (JS), která volá rozhraní API, které se přihlásí uživatelům pomocí Azure AD B2C. Pak použijete funkce zásad Validate-JWT API Management k ochraně back-endu API.
@@ -66,11 +66,11 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
    * Klient front-end.
    * Rozhraní API funkce back-end.
    * Volitelné Portál pro vývojáře API Management (Pokud nepoužíváte Azure API Management v úrovni spotřeby, další informace v tomto scénáři najdete později).
-1. Nastavte WebApp/webové rozhraní API a umožněte implicitní tok na Ano.
+1. Nastavte WebApp/Web API pro všechny 3 aplikace a nastavte možnost ' Allow implicitní tok ' na Ano jenom pro klienta front-endu.
 1. Teď nastavte identifikátor URI ID aplikace, vyberte něco jedinečného a důležitého pro vytvářenou službu.
 1. Použijte zástupné symboly pro adresy URL odpovědí, pro které teď jako https://localhostaktualizujeme tyto adresy URL později.
 1. Klikněte na tlačítko vytvořit a opakujte kroky 2-5 pro každou ze tří výše uvedených aplikací, záznam identifikátoru URI, názvu a ID aplikace pro pozdější použití pro všechny tři aplikace.
-1. Otevřete back-end rozhraní API ze seznamu aplikací a vyberte kartu *klíče* (v části Obecné) a vygenerujte ověřovací klíč kliknutím na vygenerovat klíč.
+1. Otevřete API Management aplikaci Portál pro vývojáře ze seznamu aplikací a vyberte kartu *klíče* (v části Obecné) a vygenerujte ověřovací klíč kliknutím na vygenerovat klíč.
 1. Když kliknete na Uložit, poznamenejte si klíč někam do trezoru pro pozdější použití – mějte na paměti, že toto místo je jedinou pravděpodobností, abyste se dostali k zobrazení a zkopírování tohoto klíče.
 1. Teď vyberte kartu *publikované obory* (v části přístup k rozhraní API).
 1. Vytvořte a pojmenujte obor rozhraní API funkce a zaznamenejte obor a naplněnou hodnotu rozsahu a pak klikněte na Uložit.
@@ -85,7 +85,7 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
 1. Pak vyberte Toky uživatelů (zásady) a klikněte na nový tok uživatele.
 1. Vyberte typ uživatelského toku registrace a přihlášení.
 1. Zadejte název zásady a nahrajte ji pro pozdější verzi.
-1. Pak v části zprostředkovatelé identity zaškrtněte políčko zaregistrovat uživatele a klikněte na OK. 
+1. Pak v části zprostředkovatelé identity zaškrtněte políčko registrace uživatele (to může říci, že se jedná o E-mail) a klikněte na OK. 
 1. V části atributy uživatelů a deklarace identity klikněte na Zobrazit další. pak zvolte možnosti deklarace identity, které chcete, aby vaši uživatelé zadali a vrátili v tokenu. Zkontrolujte aspoň zobrazované jméno a e-mailovou adresu, abyste mohli shromažďovat a vracet údaje, klikněte na OK a pak klikněte na vytvořit.
 1. Vyberte zásadu, kterou jste vytvořili v seznamu, a pak klikněte na tlačítko spustit tok uživatele.
 1. Tato akce otevře okno spustit tok uživatele, vyberte front-end aplikaci a potom si poznamenejte adresu domény b2clogin.com, která je zobrazená pod rozevíracím seznamem pro možnost Vybrat doménu.
@@ -98,6 +98,7 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
    > Pokud chcete, můžete kliknout na tlačítko spustit tok uživatele (Pokud chcete projít proces registrace nebo přihlášení) a získat dojem, co v praxi provede, ale krok přesměrování na konci selže, protože aplikace ještě není nasazená.
 
 ## <a name="build-the-function-api"></a>Sestavení rozhraní API funkcí
+1. V Azure Portal přepněte zpátky na standardního tenanta Azure AD, abychom mohli znovu nakonfigurovat položky v předplatném. 
 1. V okně funkce aplikace Azure Portal otevřete prázdnou aplikaci funkcí a pak pomocí rychlého startu vytvořte novou funkci Webhooku a rozhraní API v portálu.
 1. Vložte ukázkový kód níže do souboru run. csx, který se zobrazí v existujícím kódu.
 
@@ -156,15 +157,16 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
 1. Dále vyberte kartu funkce platformy a vyberte možnost ověřování/autorizace.
 1. Zapněte funkci ověřování App Service.
 1. V části zprostředkovatelé ověřování vyberte možnost Azure Active Directory a v přepínači režim správy vyberte možnost Upřesnit.
-1. Vložte ID aplikace back-end rozhraní API (z Azure AD B2C do pole ID klienta).
+1. Vložte ID aplikace rozhraní API funkce back-end (z Azure AD B2C do pole ID klienta).
 1. Do pole Adresa URL vystavitele vložte bod konfigurace známého Open-ID v zásadách registrace nebo přihlašování (Tato konfigurace jsme dříve zaznamenali).
-1. Přidejte tři (nebo dvě, pokud se používají model API Management) ID aplikací, které jste si dříve poznamenali pro Azure AD B2C aplikace do povolených cílových skupin tokenů. Toto nastavení oznamuje EasyAuth, které AUD hodnoty deklarací identity jsou povolené v přijatých tokenech.
-1. Vyberte OK a pak klikněte na Uložit.
+1. Vyberte OK.
+1. Nastavte akci, která se má provést, když se v rozevíracím seznamu požadavek neověřuje – Přihlaste se pomocí Azure Active Directory a pak klikněte na Uložit.
 
    > [!NOTE]
-   > Rozhraní API funkcí je teď nasazené a mělo by vyvolat chyby 401 nebo 403 pro neautorizované žádosti a vracet data při předložení platné žádosti.
-   > I když máte platný klíč, ale pořád nemáte žádné zabezpečení IP adresy, můžete ho zavolat odkudkoli – ideálně chceme vynutit, aby všechny žádosti byly pořízeny prostřednictvím API Management.
-   > Pokud ale používáte úroveň spotřeby API Management, nebudete moct toto uzamčení po VIP provést, protože pro tuto vrstvu není k dispozici žádná vyhrazená statická IP adresa, budete se muset spolehnout na metodu, kterou volání rozhraní API zamkne přes klíč funkce Shared Secret. , takže kroky 11-14 nebudou možné.
+   > Rozhraní API funkcí je teď nasazené a má vyvolat 401 odpovědí, pokud není zadaný správný klíč, a měl by vracet data při předložení platné žádosti.
+   > Do EasyAuth jste přidali další zabezpečení obrany tím, že nakonfigurujete možnost přihlášení pomocí služby Azure AD pro zpracování neověřených požadavků. Mějte na paměti, že tato akce změní chování neautorizovaných žádostí mezi back-end Function App a front-endu SPA, protože EasyAuth vydá neautorizovanou odpověď 302 na 401 AAD, a to pomocí API Management později.
+   > Pořád ještě nemáte žádné použití zabezpečení IP, pokud máte platný klíč a OAuth2 token, kdokoli ho může zavolat odkudkoli – ideálně chceme vynutit, aby všechny žádosti byly pořízeny prostřednictvím API Management.
+   > Pokud používáte úroveň spotřeby API Management, nebudete moct toto uzamčení po VIP provést, protože pro tuto vrstvu není k dispozici žádná vyhrazená statická IP adresa, budete se muset spoléhat na způsob, jak uzamknout volání rozhraní API prostřednictvím klíče sdíleného tajného klíče. , takže kroky 11-13 nebudou možné.
 
 1. Zavřete okno ověřování/autorizace. 
 1. Vyberte síť a pak vyberte omezení přístupu.
@@ -172,13 +174,13 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
 1. Pokud chcete pokračovat v interakci s portálem functions a provést volitelné kroky níže, měli byste sem přidat vlastní veřejnou IP adresu nebo rozsah CIDR.
 1. Jakmile je položka Povolit v seznamu, Azure přidá implicitní pravidlo odepření pro blokování všech ostatních adres. 
 
-Na panel omezení IP adres budete muset přidat bloky s formátovaným směrováním CIDR. Pokud potřebujete přidat jednu adresu, například API Management VIP, je nutné ji přidat ve formátu xx. xx. xx. xx/32.
+Na panel omezení IP adres budete muset přidat bloky s formátovaným směrováním CIDR. Pokud potřebujete přidat jednu adresu, například API Management VIP, je nutné ji přidat ve formátu xx. xx. xx. xx.
 
    > [!NOTE]
    > Rozhraní API funkcí by teď nemělo být možné volat odkudkoli, než prostřednictvím služby API Management, nebo vaší adresy.
-
+   
 ## <a name="import-the-function-app-definition"></a>Import definice aplikace Function App
-1. Otevřete okno API Management Portal a vyberte svou instanci API Management.
+1. Otevřete okno *API Management*a pak otevřete *vaši instanci*.
 1. V části API Management vaší instance vyberte okno rozhraní API.
 1. V podokně Přidat nové rozhraní API zvolte Function App a pak v horní části automaticky otevíraného okna vyberte plná.
 1. Klikněte na Procházet, vyberte aplikaci Function App, do které rozhraní API hostuje, a klikněte na vybrat.
@@ -186,13 +188,13 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
 1. Ujistěte se, že jste si zaznamenali základní adresu URL pro pozdější použití, a pak klikněte na vytvořit.
 
 ## <a name="configure-oauth2-for-api-management"></a>Konfigurace Oauth2 pro API Management
-1. V Azure Portal přepněte zpátky na standardního tenanta Azure AD, abychom mohli znovu nakonfigurovat položky v předplatném a otevřít okno *API Management*a pak otevřít *vaši instanci*.
+
 1. Pak na kartě zabezpečení vyberte okno OAuth 2,0 a klikněte na Přidat.
 1. Zadejte hodnoty pro *zobrazované jméno* a *Popis* pro přidaný koncový bod OAuth (tyto hodnoty se budou zobrazovat v dalším kroku jako Oauth2 koncový bod).
 1. Do adresy URL stránky pro registraci klienta můžete zadat libovolnou hodnotu, protože tato hodnota nebude použita.
-1. Ověřte typ udělení *implicitního ověřování* a volitelně zrušte kontrolu typu udělení autorizačního kódu.
+1. Ověřte typ udělení *implicitního ověřování* a ponechte zaškrtnuté políčko typ udělení autorizačního kódu.
 1. Přejděte do pole *autorizace* a koncový bod *tokenu* a zadejte hodnoty, které jste si poznamenali v dřívějším známém konfiguračním dokumentu XML.
-1. Posuňte se dolů a naplňte *parametr těla* s názvem Resource pomocí ID klienta Function API z registrace aplikace Azure AD B2C.
+1. Posuňte se dolů a naplňte *parametr těla* s názvem Resource pomocí ID klienta rozhraní API funkce back-end z registrace aplikace Azure AD B2C.
 1. Vyberte možnost pověření klienta, nastavte ID klienta na ID aplikace konzoly pro vývojáře – tento krok přeskočte, pokud používáte API Management model spotřeby.
 1. Nastavte tajný klíč klienta na klíč, který jste si poznamenali dříve – tento krok přeskočte, pokud používáte API Management model spotřeby.
 1. Nakonec nyní zaznamenejte redirect_uri udělení ověřovacího kódu z API Management pro pozdější použití.
@@ -242,7 +244,6 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
    ```
 1. Upravte adresu URL OpenID-config tak, aby se shodovala se známým Azure AD B2Cm koncovým bodem pro zásady registrace nebo přihlašování.
 1. Upravte hodnotu deklarace identity tak, aby odpovídala platnému ID aplikace, označované také jako ID klienta pro aplikaci API back-endu a uložte.
-1. Vyberte operaci rozhraní API pod "všechna rozhraní API".
 
    > [!NOTE]
    > Teď může funkce API Management reagovat na žádosti mezi požadavky na různé zdroje i na aplikace na úrovni JS, a až do předání požadavku na rozhraní API, bude se předávat omezení četnosti a předběžného ověření tokenu JWT.

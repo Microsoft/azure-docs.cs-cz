@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit problémy v zálohování
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583295"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969578"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
@@ -137,7 +137,7 @@ Pokud úloha selže, indikuje problém WSB, který by způsobil selhání záloh
 
 | Příznak | Řešení
 | -- | --
-| -Agent MARS se nezdařil s chybovou zprávou: zálohování se nezdařilo, protože svazek stínové kopie nemohl být zvětšen, protože na svazcích obsahujících systémové soubory není dostatek místa na disku. <br/><br/> -V protokolech událostí systému Volsnap jsou k dispozici následující protokol chyb nebo upozornění: "na svazku C není dostatek místa na disku: pro zvýšení úložiště stínové kopie pro stínové kopie C: z důvodu této chyby je riziko odstranění všech stínových kopií svazku C:" | – Uvolněte místo na zvýrazněném svazku v protokolu událostí tak, aby bylo dost místa pro růst stínových kopií, zatímco probíhá zálohování. <br/><br/> – Při konfiguraci prostoru stínových kopií můžeme omezit množství místa využitého pro stínovou kopii. Další informace najdete v tomto [článku](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) .
+| -Agent MARS se nezdařil s chybovou zprávou: zálohování se nezdařilo, protože svazek stínové kopie nemohl být zvětšen, protože na svazcích obsahujících systémové soubory není dostatek místa na disku. <br/><br/> -V protokolech událostí systému Volsnap jsou k dispozici následující protokol chyb nebo upozornění: "na svazku C není dostatek místa na disku: pro zvýšení úložiště stínové kopie pro stínové kopie C: z důvodu této chyby je riziko odstranění všech stínových kopií svazku C:" | – Uvolněte místo na zvýrazněném svazku v protokolu událostí tak, aby bylo dost místa pro růst stínových kopií, zatímco probíhá zálohování. <br/><br/> – Při konfiguraci prostoru stínových kopií můžeme omezit množství místa využitého pro stínovou kopii. Další informace najdete v tomto [článku](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage) .
 
 ### <a name="efi-partition-locked"></a>Oddíl EFI uzamčen
 

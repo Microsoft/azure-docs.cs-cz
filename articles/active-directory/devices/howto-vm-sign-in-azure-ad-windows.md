@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672594"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080089"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -152,7 +152,8 @@ Teď, když jste vytvořili virtuální počítač, musíte nakonfigurovat zása
 
 > [!NOTE]
 > Pokud chcete uživateli dovolit, aby se přihlásil k VIRTUÁLNÍmu počítači přes RDP, musíte přiřadit buď roli přihlášení správce virtuálního počítače, nebo přihlašovací údaje uživatele virtuálního počítače. Uživatel Azure s rolemi vlastník nebo přispěvatel přiřazený k virtuálnímu počítači nemá automaticky oprávnění k přihlášení k virtuálnímu počítači přes RDP. Slouží k zajištění prověřeného oddělení mezi sadou osob, které ovládají virtuální počítače a sadou lidí, kteří mají přístup k virtuálním počítačům.
-Existuje několik způsobů, jak můžete nakonfigurovat přiřazení rolí pro virtuální počítač:
+
+Přiřazení rolí pro virtuální počítač můžete nakonfigurovat několika způsoby:
 
 - Použití prostředí portálu Azure AD
 - Použití prostředí Azure Cloud Shell
@@ -194,7 +195,7 @@ Další informace o tom, jak pomocí RBAC spravovat přístup k prostředkům p�
 - [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](/azure/role-based-access-control/role-assignments-portal)
 - [Spravujte přístup k prostředkům Azure pomocí RBAC a Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
-'
+
 ## <a name="using-conditional-access"></a>Použití podmíněného přístupu
 
 Před autorizací přístupu k virtuálním počítačům s Windows v Azure, které jsou povolené při přihlášení ke službě Azure AD, můžete vyhovět zásadám podmíněného přístupu, jako je vícefaktorové ověřování nebo ověření rizik přihlašování uživatelů. Pokud chcete použít zásady podmíněného přístupu, musíte v rámci možnosti přiřazení cloudových aplikací nebo akcí vybrat aplikaci přihlášení k virtuálnímu počítači Azure Azure a pak použít pro podmínku přihlášení podmínky přihlášení nebo vyžadovat vícefaktorové ověřování jako řízení přístupu pro udělení. 
@@ -363,4 +364,5 @@ Pokud jste nenainstalovali Windows Hello pro firmy a pokud to není možnost pro
 Nasdílejte svůj názor na tuto funkci ve verzi Preview nebo nahlaste problémy s jejich použitím ve [fóru pro názory na Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 
 ## <a name="next-steps"></a>Další kroky
+
 Další informace o Azure Active Directory najdete v tématu [co je Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) .

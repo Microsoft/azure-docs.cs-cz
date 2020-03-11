@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1cac52dcee91e57a22b6d18595b067de888aba73
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365339"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082487"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditováním SQL Database
 
@@ -255,12 +255,6 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 - Auditování Azure SQL Database je optimalizováno pro zajištění dostupnosti &ho výkonu. Během velmi vysoké aktivity Azure SQL Database umožňuje operacím pokračovat a nemusí nahrávat některé auditované události.
 
 - Informace o konfiguraci neměnného auditu v účtu úložiště najdete v tématu [Povolení zápisů v zabezpečeném připojení objektů BLOB](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes). Upozorňujeme, že název kontejneru pro auditování je **sqldbauditlogs**.
-
-    > [!IMPORTANT]
-    > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
-    > - Východní USA
-    > - Střed USA – jih
-    > - Západní USA 2
 
 
 ## <a id="subheading-7"></a>Správa Azure SQL Server a auditování databáze pomocí Azure PowerShell

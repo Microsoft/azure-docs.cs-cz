@@ -9,12 +9,12 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 7c5087a15210dff7c2a51aa5af38b8f7c26e28cc
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673473"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037311"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>Použití ukázkových datových sad v Návrháři Azure Machine Learning (Preview)
 
@@ -44,4 +44,4 @@ Ukázkové datové sady jsou k dispozici v části **datové sady**-kategorie **
 
 * Seznamte se se základy prediktivní analýzy a strojového učení s využitím [kurzu: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md)
 
-* Import ukázkových datových sad pomocí modulu [Import dat](./algorithm-module-reference/import-data.md)
+* Naučte se, jak upravit existující [ukázky Návrháře](samples-designer.md) a přizpůsobit je vašim potřebám.

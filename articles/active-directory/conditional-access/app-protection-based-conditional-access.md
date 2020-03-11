@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d8cdb32e04f9ba1274291430ac230107f3150c6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298373"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080068"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování zásad ochrany aplikací a schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -30,6 +30,9 @@ Tento článek obsahuje dva scénáře konfigurace zásad podmíněného příst
 V podmíněném přístupu jsou tyto klientské aplikace chráněné zásadami ochrany aplikací. Další informace o zásadách ochrany aplikací najdete v článku [Přehled zásad ochrany aplikací](/intune/apps/app-protection-policy) .
 
 Seznam oprávněných klientských aplikací najdete v tématu [požadavky na zásady ochrany aplikací](concept-conditional-access-grant.md).
+
+> [!NOTE]
+>    V rámci této zásady se používá klauzule nebo, která uživatelům umožňuje využívat aplikace, které podporují **Zásady ochrany aplikací** , nebo vyžadují udělené ovládací prvky pro udělení **autorizovaných klientských aplikací** . Další informace o tom, které aplikace podporují řízení udělení **zásad ochrany aplikací** , najdete v tématu [požadavky na zásady ochrany aplikací](concept-conditional-access-grant.md).
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Scénář 1: aplikace Office 365 vyžadují schválené aplikace se zásadami ochrany aplikací.
 
@@ -56,7 +59,7 @@ Aby bylo možné vyžadovat použití schválené klientské aplikace na mobiln�
 1. V části **řízení přístupu** > **udělení**vyberte následující možnosti:
    - **Vyžadovat klientskou aplikaci schválenou**
    - **Vyžadovat zásady ochrany aplikací (Preview)**
-   - **Vyžadovat všechny vybrané ovládací prvky**
+   - **Vyžadovat jeden z vybraných ovládacích prvků**
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
@@ -75,7 +78,7 @@ Pro zásady podmíněného přístupu v tomto kroku nakonfigurujte následujíc�
    1. **Klientské aplikace (Preview)** :
       1. Nastavte **Konfigurovat** na **Ano**.
       1. Vyberte **mobilní aplikace a klienti klasické pracovní plochy** a **klienti Exchange ActiveSync**.
-1. V části **řízení přístupu** > **udělení**vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci**a vyberte **Vybrat**.
+1. V části **řízení přístupu** > **udělení**vyberte **udělit přístup**, **vyžadovat zásadu ochrany aplikací**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
@@ -108,7 +111,7 @@ Aby organizace vyžadovala použití schválené klientské aplikace na mobilní
 1. V části **řízení přístupu** > **udělení**vyberte následující možnosti:
    - **Vyžadovat klientskou aplikaci schválenou**
    - **Vyžadovat zásady ochrany aplikací (Preview)**
-   - **Vyžadovat všechny vybrané ovládací prvky**
+   - **Vyžadovat jeden z vybraných ovládacích prvků**
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
@@ -125,7 +128,7 @@ Aby organizace vyžadovala použití schválené klientské aplikace na mobilní
    1. **Klientské aplikace (Preview)** :
       1. Nastavte **Konfigurovat** na **Ano**.
       1. Vyberte **mobilní aplikace a klienti klasické pracovní plochy** a **klienti Exchange ActiveSync**.
-1. V části **řízení přístupu** > **udělení**vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci**a vyberte **Vybrat**.
+1. V části **řízení přístupu** > **udělení**vyberte **udělit přístup**, **vyžadovat zásadu ochrany aplikací**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 

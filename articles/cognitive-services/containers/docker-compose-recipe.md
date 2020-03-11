@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716894"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037521"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Použití nástroje Docker Compose k nasazení několika kontejnerů
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak nasadit více kontejnerů Azure Cognitive Serv
 
 > [Docker Compose](https://docs.docker.com/compose/) je nástroj pro definování a spouštění aplikací Docker pro více kontejnerů. V sestavách pomocí souboru YAML nakonfigurujete služby vaší aplikace. Pak můžete vytvořit a spustit všechny služby z konfigurace spuštěním jediného příkazu.
 
-Může být užitečné pro orchestraci více imagí kontejneru v jednom hostitelském počítači. V tomto článku budeme vyžádat kontejnery pro Rozpoznávání textu a vyžádané formuláře.
+Může být užitečné pro orchestraci více imagí kontejneru v jednom hostitelském počítači. V tomto článku si vyžádáme kontejnery pro čtení a rozpoznávání formulářů.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -70,11 +70,11 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text"
+    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
     environment:
       eula: accept
-      apikey: # < Your recognize text API key >
-      billing: # < Your recognize text billing URL >
+      apikey: # < Your computer vision API key >
+      billing: # < Your computer vision billing URL >
     ports:
       - "5021:5000"
 ```
@@ -87,9 +87,9 @@ services:
 Soubor Docker Compose umožňuje správu všech fází v životním cyklu definované služby: spouštění, zastavování a obnovování služeb; zobrazení stavu služby; a streamování protokolů. Otevřete rozhraní příkazového řádku z adresáře projektu (kde se nachází soubor Docker-tváře. yaml).
 
 > [!NOTE]
-> Aby se předešlo chybám, ujistěte se, že hostitelský počítač správně sdílí jednotky s modulem Docker. Například pokud se E:\publicpreview používá jako adresář v souboru Docker-tváře. yaml, sdílejte jednotku E s Docker.
+> Aby se předešlo chybám, ujistěte se, že hostitelský počítač správně sdílí jednotky s modulem Docker. Například pokud se *E:\publicpreview* používá jako adresář v souboru *Docker-tváře. yaml* , sdílejte jednotku **E** s Docker.
 
-V rozhraní příkazového řádku spusťte následující příkaz, který spustí (nebo restartuje) všechny služby definované v souboru Docker-tváře. yaml:
+V rozhraní příkazového řádku spusťte následující příkaz, který spustí (nebo restartuje) všechny služby definované v souboru *Docker-tváře. yaml* :
 
 ```console
 docker-compose up
@@ -113,8 +113,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:)...
-latest: Pulling from microsoft/cognitive-services-recognize-text
+Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
+latest: Pulling from microsoft/cognitive-services-read
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -167,18 +167,12 @@ Tady je příklad výstupu:
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
 2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
+4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>Testování kontejneru Rozpoznávání textu
+### <a name="test-containers"></a>Kontejnery testů
 
-Otevřete **na** hostitelském počítači prohlížeč a v souboru Docker-YAML, jako je například http://localhost:5021/swagger/index.html, použijte zadaný port. K otestování Rozpoznávání textuho koncového bodu můžete použít funkci vyzkoušet ho v rozhraní API.
-
-![Rozpoznávání textu kontejner](media/recognize-text-swagger-page.png)
-
-### <a name="test-the-form-recognizer-container"></a>Testování kontejneru pro rozpoznávání formulářů
-
-Otevřete **na** hostitelském počítači prohlížeč a v souboru Docker-YAML, jako je například http://localhost:5010/swagger/index.html, použijte zadaný port. Pomocí funkce try it v rozhraní API můžete testovat koncový bod pro rozpoznávání formuláře.
+Otevřete **na** hostitelském počítači prohlížeč a v souboru *Docker-YAML* , jako je například http://localhost:5021/swagger/index.html, použijte zadaný port. Můžete například použít funkci **try it** v rozhraní API k otestování koncového bodu pro rozpoznávání formulářů. Stránky Swagger kontejneru by měly být k dispozici a testovatelné.
 
 ![Kontejner pro rozpoznávání formulářů](media/form-recognizer-swagger-page.png)
 

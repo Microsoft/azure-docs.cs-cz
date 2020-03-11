@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 7874a6b274939c233dd1c4e6d146df2a9a409e65
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cd4ff97902b1ce3d1d5a0ea066608fd33e6bf697
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833993"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037098"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Použití kontejnerů služby Speech s Kubernetes a Helm
 
 Jednou z možností správy vašich místních kontejnerů řeči je použití Kubernetes a Helm. Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby a různé možnosti konfigurace. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [instalace a spuštění kontejnerů služby Speech](speech-container-howto.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů řeči v místním prostředí použijte následující požadavky:
 
@@ -39,8 +39,8 @@ Referenční informace najdete v tématu podrobnosti o [hostitelském počítač
 
 | Služba | PROCESOR/kontejner | Paměť/kontejner |
 |--|--|--|
-| **Speech-to-Text** | jeden dekodér vyžaduje minimálně 1 150 millicores. Pokud je povolená `optimizedForAudioFile`, je potřeba 1 950 millicores. (výchozí: dva dekodéry) | Požadováno: 2 GB<br>Omezeno: 4 GB |
-| **Text-to-Speech** | Jedna souběžná žádost vyžaduje minimálně 500 millicores. Pokud je povolená `optimizeForTurboMode`, je potřeba 1 000 millicores. (výchozí: dvou souběžných požadavků) | Požadováno: 1 GB<br> Omezeno: 2 GB |
+| **Převod řeči na text** | jeden dekodér vyžaduje minimálně 1 150 millicores. Pokud je povolená `optimizedForAudioFile`, je potřeba 1 950 millicores. (výchozí: dva dekodéry) | Požadováno: 2 GB<br>Omezeno: 4 GB |
+| **Převod textu na řeč** | Jedna souběžná žádost vyžaduje minimálně 500 millicores. Pokud je povolená `optimizeForTurboMode`, je potřeba 1 000 millicores. (výchozí: dvou souběžných požadavků) | Požadováno: 1 GB<br> Omezeno: 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Připojení ke clusteru Kubernetes
 

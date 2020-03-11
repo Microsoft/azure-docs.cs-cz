@@ -1,25 +1,17 @@
 ---
 title: Nasazení IBM DB2 pureScale v Azure
 description: Naučte se, jak nasadit ukázkovou architekturu, která se nedávno použila k migraci podniku z prostředí IBM DB2 běžícího na z/OS do IBM DB2 pureScale v Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291545"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968898"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení IBM DB2 pureScale v Azure
 
@@ -27,7 +19,7 @@ Tento článek popisuje, jak nasadit [ukázkovou architekturu](ibm-db2-purescale
 
 Pokud chcete postupovat podle kroků používaných pro migraci, přečtěte si instalační skripty v úložišti [DB2onAzure](https://aka.ms/db2onazure) na GitHubu. Tyto skripty jsou založené na architektuře pro typickou úlohu zpracování online zpracování transakcí (OLTP).
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 Pokud chcete nasadit tuto architekturu, Stáhněte a spusťte skript deploy.sh, který najdete v úložišti [DB2onAzure](https://aka.ms/db2onazure) na GitHubu.
 
@@ -81,7 +73,7 @@ Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pure
 
 | Název obrazovky               | Pole                                        | Hodnota                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Vítáme vás                   |                                              | Nová instalace                                                                                           |
+| Uvítání                   |                                              | Nová instalace                                                                                           |
 | Zvolit produkt          |                                              | 11.1.3.3 verze DB2 Edice serveru s DB2 pureScale                                              |
 | Konfigurace             | Adresář                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Vyberte typ instalace.                 | Typické                                                                                               |

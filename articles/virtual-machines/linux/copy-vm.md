@@ -1,25 +1,17 @@
 ---
 title: Kopírování virtuálního počítače se systémem Linux pomocí Azure CLI
 description: Naučte se vytvořit kopii virtuálního počítače Azure Linux pomocí Azure CLI a Managed Disks.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 4612d15dd5d3ab6e814f09210d5ff3991fef0328
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ed8574133eafe751699e90ea8cae832ee649fb00
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121872"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969584"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Vytvoření kopie virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku Azure a Managed Disks
 
@@ -27,7 +19,7 @@ V tomto článku se dozvíte, jak pomocí rozhraní příkazového řádku Azure
 
 [Virtuální počítač můžete také nahrát a vytvořit z virtuálního pevného disku](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -   Nainstalujte [rozhraní příkazového řádku Azure CLI](/cli/azure/install-az-cli2).
 

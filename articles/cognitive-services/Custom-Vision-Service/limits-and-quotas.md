@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718364"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081773"
 ---
 # <a name="limits-and-quotas"></a>Omezení a kvóty
 
@@ -25,9 +25,9 @@ Pro projekty S0 se očekává, že počet školicích obrázků na projekt a zna
 
 ||**F0**|**S0**|
 |-----|-----|-----|
-|projekty|2|100|
+|Projekty|2|100|
 |Školení imagí na projekt |5 000|100 000|
-|Předpovědi za měsíc|10 000 |Unlimited|
+|Předpovědi za měsíc|10 000 |Neomezeno|
 |Značky/projekt|50|500|
 |Iterací |10|10|
 |Minimální počet označených obrázků na značku, klasifikace (maximálně 50 + doporučeno) |5|5|
@@ -42,8 +42,8 @@ Pro projekty S0 se očekává, že počet školicích obrázků na projekt a zna
 |Maximální výška a šířka obrázku v pixelech|Bez omezení|Bez omezení|
 |Maximální velikost obrázku (školicí obrázek při nahrávání) |6 MB|6 MB|
 |Maximální velikost obrázku (předpověď)|4 MB|4 MB|
-|Maximální počet oblastí na školicí obrázek detekce objektu|200|200|
-|Maximální počet značek na obrázek klasifikace|30|30|
+|Maximální počet oblastí na školicí obrázek detekce objektu|300|300|
+|Maximální počet značek na obrázek klasifikace|100|100|
 
 > [!NOTE]
 > Obrázky menší než 256 pixelů budou přijímány, ale budou zvětšeny.

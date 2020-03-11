@@ -1,17 +1,15 @@
 ---
 title: Azure Functions geografického zotavení po havárii a vysoké dostupnosti
 description: Použití geografických oblastí pro zajištění redundance a převzetí služeb při selhání v Azure Functions.
-author: wesmc7777
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: jehollan
-ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920798"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080236"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geografické zotavení po havárii
 

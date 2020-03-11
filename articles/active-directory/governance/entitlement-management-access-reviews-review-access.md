@@ -16,18 +16,18 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a78a69301ab2ae637531f8643d9d57a8b44b563f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608927"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968747"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Kontrola přístupu k balíčku přístupu v Azure AD – Správa nároků
 
 Správa nároků Azure AD zjednodušuje způsob, jakým podniky spravují přístup ke skupinám, aplikacím a webům SharePointu. Tento článek popisuje, jak provést kontroly přístupu pro jiné uživatele, kteří jsou přiřazeni k balíčku přístupu jako určený kontrolor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li zkontrolovat přiřazení balíčku aktivních přístupů uživatelů, je nutné splnit požadavky na kontrolu přístupu:
 - Azure AD Premium P2
@@ -47,7 +47,7 @@ K vyhledání a otevření kontroly přístupu použijte následující postup:
 
 1. Kliknutím na odkaz **Kontrola přístupu uživatele** otevřete kontrolu přístupu. 
 
-1. Pokud nemáte e-mail, můžete najít své nedokončené kontroly přístupu, a to tak, že přejdete přímo na https://myaccess.microsoft.com.
+1. Pokud nemáte e-mail, můžete najít své nedokončené kontroly přístupu, a to tak, že přejdete přímo na https://myaccess.microsoft.com.  (Pro státní správu USA použijte místo toho `https://myaccess.microsoft.us`.)
 
 1. Kliknutím na kontroly **přístupu** na levém navigačním panelu zobrazte seznam nedokončených revizí přístupu, které jste vám přiřadili.
     

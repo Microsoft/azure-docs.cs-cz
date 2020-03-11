@@ -1,20 +1,15 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru C++ , (Linux) – služba Speech'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/14/2020
-ms.author: erhopf
-ms.openlocfilehash: 552e5f4b0e484e361502de53b3532bfd4d91b269
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/10/2020
+ms.author: dapine
+ms.openlocfilehash: 8890cb515d39d47a5f5cfa4e4309d0191477acdd
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78926044"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082576"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 

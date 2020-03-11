@@ -3,12 +3,12 @@ title: Použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure 
 description: Naučte se používat modul plug-in Azure Dev Spaces v kanálu průběžné integrace.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 281565cec5ee947781ab8ee9f62a00e01f9ababb
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250905"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037027"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Kurz: použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubernetes 
 
@@ -265,7 +265,7 @@ Konfigurace kanálu Jenkinse a Jenkinsfile definují fáze v kanálu CI. Tento v
 
 ![Tok kanálu Jenkinse](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
 
-1. Stáhněte si upravenou verzi projektu *mywebapi* z https://github.com/azure-devops/mywebapi. Tento projekt obsahuje několik souborů potřebných k vytvoření kanálu, včetně grafu *Jenkinsfile*, *fázemi*a Helm.
+1. Stáhněte si upravenou verzi projektu *mywebapi* z [https://github.com/azure-devops/mywebapi](https://github.com/azure-devops/mywebapi). Tento projekt obsahuje několik souborů potřebných k vytvoření kanálu, včetně grafu *Jenkinsfile*, *fázemi*a Helm.
 
 2. Přihlaste se k Jenkinse. V nabídce na levé straně vyberte **Přidat položku**.
 

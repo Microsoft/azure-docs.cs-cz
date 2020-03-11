@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192621"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037243"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
@@ -25,11 +25,11 @@ V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDIns
 > [!IMPORTANT]  
 > Druh účtu úložiště **BlobStorage** se dá použít jenom jako sekundární úložiště pro clustery HDInsight.
 
-| Druh účtu úložiště | Podporované služby | Podporované úrovně výkonu | Podporované úrovně přístupu |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (obecné účely v2)  | Objekt blob     | Standard                    | Horká, studená, archivní\*   |
-| Storage (pro obecné účely V1)   | Objekt blob     | Standard                    | neuvedeno                    |
-| BlobStorage                    | Objekt blob     | Standard                    | Horká, studená, archivní\*   |
+| Druh účtu úložiště | Podporované služby | Podporované úrovně výkonu |Nepodporované úrovně výkonu| Podporované úrovně přístupu |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2 (obecné účely v2)  | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
+| Storage (pro obecné účely V1)   | Objekt blob     | Standard                    |Premium| neuvedeno                    |
+| BlobStorage                    | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
 
 Pro ukládání obchodních dat nedoporučujeme používat výchozí kontejner objektů BLOB. Ideální postup je výchozí kontejner objektů blob po každém použití odstranit a snížit tak náklady na úložiště. Výchozí kontejner obsahuje protokoly aplikací a systému. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
 

@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365338"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968127"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm
 
@@ -68,7 +68,7 @@ Odemčené zásady uchovávání informací založené na čase se doporučují 
 Následující omezení platí pro zásady uchovávání informací:
 
 - V případě účtu úložiště je maximální počet kontejnerů, které mají uzamčené zásady s neproměnlivým časem, 10 000.
-- Minimální interval uchovávání dat je jeden den. Maximální počet je 146 000 dní (400 let).
+- Minimální interval uchovávání dat je 1 den. Maximální počet je 146 000 dní (400 let).
 - V případě kontejneru je maximální počet úprav pro prodloužení intervalu uchování pro neměnné zásady na základě času 5.
 - V případě kontejneru jsou pro uzamčenou zásadu uchovány maximálně sedm protokolů auditu zásad uchovávání času.
 
@@ -84,15 +84,7 @@ Předpokládejme například, že uživatel vytvoří zásady uchovávání dat 
 
 Odemknuté zásady uchovávání informací umožňují, aby nastavení `allowProtectedAppendWrites` bylo kdykoli povolené a zakázané. Jakmile jsou zásady uchovávání informací založené na čase zamčeny, nastavení `allowProtectedAppendWrites` nelze změnit.
 
-Zásady právního blokování nemohou povolit `allowProtectedAppendWrites` a neumožňují připojit nové bloky k doplňovacím objektům blob. Pokud se v případě zásady uchovávání informací s povoleným `allowProtectedAppendWrites` používá právní blokování, rozhraní API *AppendBlock* selže, dokud se neobnoví právní blokování.
-
-> [!IMPORTANT] 
-> V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v rámci uchovávání dat v následujících oblastech:
-> - USA – východ
-> - USA – středojih
-> - USA – západ 2
->
-> V tuto chvíli se důrazně doporučuje, abyste nepovolili `allowProtectedAppendWrites` ve všech ostatních oblastech kromě těch, které jsou uvedené, protože můžou způsobit občasné chyby a ovlivnit dodržování předpisů pro doplňovací objekty blob. Další informace o tom, jak nastavit a uzamknout zásady uchovávání informací na základě času, najdete v tématu [Povolení povolení povolit chráněným připojením objektů BLOB](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
+Zásady právního blokování nemohou povolit `allowProtectedAppendWrites` a žádné právní blokování budou nezruší vlastnost allowProtectedAppendWrites. Pokud se v případě zásady uchovávání informací s povoleným `allowProtectedAppendWrites` používá právní blokování, rozhraní API *AppendBlock* selže, dokud se neobnoví právní blokování.
 
 ## <a name="legal-holds"></a>Blokování z právních důvodů
 
@@ -140,7 +132,7 @@ Ne, můžete použít neměnné úložiště s existujícími nebo nově vytvoř
 
 **Můžu použít právní zásady uchovávání informací i na základě času?**
 
-Ano, kontejner může současně obsahovat i právní blokování i zásady uchovávání informací podle času. Všechny objekty BLOB v tomto kontejneru zůstávají v neměnném stavu, dokud se nevymaže všechna zákonná blokování, a to i v případě, že vypršela doba uchování platnosti. V opačném případě objekt BLOB zůstane v neměnném stavu, dokud nevyprší doba uchování, a to i v případě, že všechna zákonná blokování byla vymazána.
+Ano, kontejner může současně obsahovat i právní blokování a zásady uchovávání informací na základě času; nastavení "allowProtectedAppendWrites" ale nebude platit, dokud není nezaškrtnuté právní blokování. Všechny objekty BLOB v tomto kontejneru zůstávají v neměnném stavu, dokud se nevymaže všechna zákonná blokování, a to i v případě, že vypršela doba uchování platnosti. V opačném případě objekt BLOB zůstane v neměnném stavu, dokud nevyprší doba uchování, a to i v případě, že všechna zákonná blokování byla vymazána. 
 
 **Jsou právní zásady uchovávání jenom pro právní jednání nebo existují jiné scénáře použití?**
 
@@ -164,7 +156,7 @@ Ano, příkaz nastavit úroveň objektu blob můžete použít k přesunu dat na
 
 **Co se stane, když zapomenu zaplatit a můj interval uchovávání informací ještě nevypršel?**
 
-V případě nevýplaty se budou běžné zásady uchovávání dat vztahovat na vymezené podmínky a ujednání vaší smlouvy s Microsoftem.
+V případě nevýplaty se budou běžné zásady uchovávání dat vztahovat na vymezené podmínky a ujednání vaší smlouvy s Microsoftem. Obecné informace najdete v tématu [Správa dat v Microsoftu](https://www.microsoft.com/en-us/trust-center/privacy/data-management). 
 
 **Nabízíte zkušební období nebo období odkladu pouze na vyzkoušení této funkce?**
 

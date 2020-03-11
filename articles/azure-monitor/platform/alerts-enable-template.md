@@ -4,23 +4,22 @@ description: Naučte se používat šablonu Správce prostředků k vytvoření 
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
+ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: c25886308b4f9560b336982b87bd4b38b306bcb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668039"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037226"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
-V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat upozornění metrik Azure. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.
-
-> [!NOTE]
+> [!WARNING]
 > 
-> Tento článek popisuje vytvoření **klasických výstrah metrik** pomocí Správce prostředků šablon. Pokud hledáte [nové výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) pomocí šablon, najdete v [tomto článku](alerts-metric-create-templates.md) podrobnosti.
+> Tento článek popisuje vytvoření **klasických výstrah metrik** pomocí Správce prostředků šablon. Klasické výstrahy byly vyřazeny v srpnu 2019 a nastaveny tak, aby byly plně zastaralé v červnu 2020. Nemůžete vytvářet nové klasické výstrahy Public Azure. Některé regionální verze Azure můžou mít stále možnost, ale doporučujeme vám místo toho vytvořit [novější výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) pomocí šablon, pokud je to možné. V [tomto článku](alerts-metric-create-templates.md) najdete podrobnosti.
 >
 
+V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat výstrahy metriky Azure Classic. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.
 
 Základní postup je následující:
 

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 08a4330f4a786deca8ddb2f1c6803b29152e7f50
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207026"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080140"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Import klíčů chráněných modulem HSM do Key Vaultu (Preview)
 
@@ -58,9 +58,11 @@ V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azur
 
 ## <a name="supported-hsms"></a>Podporované HSM
 
-|Název dodavatele HSM|Podporované modely HSM|Další informace|
-|---|---|---|
-|Thales|SafeNet Luna HSM 7 Family s firmwarem verze 7,3 nebo novější| [Nástroj SafeNet Luna BYOK a dokumentace](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Název dodavatele|Typ dodavatele|Podporované modely HSM|Další informace|
+|---|---|---|---|
+|Thales|Výrobce|SafeNet Luna HSM 7 Family s firmwarem verze 7,3 nebo novější| [Nástroj SafeNet Luna BYOK a dokumentace](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Fortanix|HSM jako služba|Služba správy klíčů (SDKMS) pro samoobslužné naobranu|[Export klíčů SDKMS do poskytovatelů cloudu pro BYOK-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+
 
 > [!NOTE]
 > Pro import klíčů chráněných pomocí HSM z podpůrný software nCipher hardwarového nShield řady HSM použijte [starší postup v BYOK](hsm-protected-keys-legacy.md).

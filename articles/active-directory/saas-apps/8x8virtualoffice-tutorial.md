@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49c2b445af9acb0761d01b731250e068cb96a36
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9c598222978a1c831be6f5e9db9eb87b2d6b6b96
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562309"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968662"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s 8x8
 
@@ -30,9 +30,9 @@ V tomto kurzu se dozvíte, jak integrovat 8x8 s Azure Active Directory (Azure AD
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k 8x8 svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -86,20 +86,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí jednoho z následujících vzorů:
+    a. Do textového pole **identifikátor** zadejte adresu URL: `https://sso.8x8.com/saml2`
 
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
-
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu url: `https://sso.8x8.com/saml2`
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače. Certifikát budete používat později v tomto kurzu v části **Konfigurace jednotného přihlašování 8x8** .
 
@@ -151,9 +140,15 @@ V další části kurzu záleží na tom, jaký typ předplatného máte v 8x8.
 
 1. Z domovské stránky klikněte na **Správa identit**.
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+
 1. Zaškrtněte políčko **jednotného přihlašování (SSO)** a pak vyberte **Microsoft Azure AD**.
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+
 1. Zkopírujte tři adresy URL a podpisový certifikát ze stránky **nastavit jednotné přihlašování pomocí SAML** ve službě Azure AD do části **Microsoft Azure AD nastavení SAML** v 8x8 Configuration Manager.
+
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 
     a. Zkopírujte **přihlašovací adresu** URL pro **přihlašovací adresu URL pro IDP**.
 
@@ -163,7 +158,7 @@ V další části kurzu záleží na tom, jaký typ předplatného máte v 8x8.
 
     d. Stáhněte si **certifikát (Base64)** a nahrajte ho do **certifikátu**.
 
-    e. Klikněte na možnost **Uložit**.
+    e. Klikněte na **Uložit**.
 
 ### <a name="configure-8x8-account-manager"></a>Konfigurace správce účtů 8x8
 
@@ -171,15 +166,27 @@ V další části kurzu záleží na tom, jaký typ předplatného máte v 8x8.
 
 1. Na panelu aplikace vyberte **správce účtu Virtual Office** .
 
+    ![Konfigurovat na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+
 1. Vyberte **obchodní** účet, který chcete spravovat, a klikněte na tlačítko **Přihlásit** .
+
+    ![Konfigurovat na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. V seznamu nabídek klikněte na kartu **účty** .
 
+    ![Konfigurovat na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+
 1. V seznamu účtů klikněte na **jednotné přihlašování** .
+
+    ![Konfigurovat na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. V části metody ověřování vyberte **jednotné přihlašování** a klikněte na **SAML**.
 
+    ![Konfigurovat na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+
 1. V části **jednotné přihlašování SAML** proveďte následující kroky:
+
+    ![Konfigurovat na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
     a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -201,11 +208,11 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Když na přístupovém panelu kliknete na dlaždici 8x8, měli byste se automaticky přihlásit k 8x8, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -16,12 +16,12 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89a346f48856ea33ae5e27e3537f53dfa1ca3ae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608810"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967774"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Samoobslužné přezkoumání balíčku přístupu v Azure AD – Správa nároků
 
@@ -37,7 +37,7 @@ Chcete-li provést kontrolu přístupu, je třeba nejprve otevřít kontrolu př
 
 1. Klikněte na odkaz **zkontrolovat přístup** .
 
-1. Pokud neobdržíte e-mail, můžete přejít přímo na https://myaccess.microsoft.com a vyhledat tak nedokončené recenze přístupu.
+1. Pokud neobdržíte e-mail, můžete přejít přímo na https://myaccess.microsoft.com a vyhledat tak nedokončené recenze přístupu.  (Pro státní správu USA použijte místo toho `https://myaccess.microsoft.us`.)
 
 1. Kliknutím na kontroly **přístupu** na levém navigačním panelu zobrazte seznam nedokončených revizí přístupu, které jste vám přiřadili.
 

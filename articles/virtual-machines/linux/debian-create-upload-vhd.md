@@ -1,25 +1,17 @@
 ---
-title: Příprava virtuálního pevného disku s Debian Linux v Azure
-description: Naučte se vytvářet Debian image VHD pro nasazení v Azure.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Příprava virtuálního pevného disku s Debian Linux
+description: Naučte se vytvářet Debian image VHD pro nasazení virtuálních počítačů v Azure.
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: mimckitt
-ms.openlocfilehash: 579704ad663e20fdbb59b94d1d4c5ea831d3a68a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f17759fb65cec1609298d34b29829e895526e080
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251692"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970254"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
 ## <a name="prerequisites"></a>Předpoklady

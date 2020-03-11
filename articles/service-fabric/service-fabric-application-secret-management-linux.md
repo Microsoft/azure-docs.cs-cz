@@ -5,12 +5,12 @@ author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614702"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969037"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech se systémem Linux
 V tomto článku se dozvíte, jak nastavit šifrovací certifikát a použít ho k šifrování tajných klíčů v clusterech se systémem Linux. Clustery Windows najdete v tématech [Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech Windows][secret-management-windows-specific-link].
@@ -31,12 +31,12 @@ Certifikát zašifrování dat se používá výhradně pro šifrování a deši
 ## <a name="install-the-certificate-in-your-cluster"></a>Instalace certifikátu do clusteru
 Certifikát musí být nainstalovaný na každém uzlu v clusteru v části `/var/lib/sfcerts`. Uživatelský účet, pod kterým je služba spuštěna (sfuser ve výchozím nastavení), **by měl mít přístup pro čtení** nainstalovaného certifikátu (tj. `/var/lib/sfcerts/TestCert.pem` pro aktuální příklad).
 
-## <a name="encrypt-secrets"></a>Šifrování tajných kódů
+## <a name="encrypt-secrets"></a>Šifrování tajných klíčů
 Následující fragment kódu lze použít k šifrování tajného klíče. Tento fragment kódu šifruje pouze hodnotu. **nepodepisuje** šifrovaný text. Pokud chcete pro tajné hodnoty vydávat šifrovaný text, **musíte použít** stejný certifikát zašifrování, který je nainstalovaný v clusteru.
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 Výsledný výstup řetězce s kódováním Base-64 na Encrypted. txt obsahuje tajný šifrovaný kód i informace o certifikátu, který se použil k zašifrování. Jeho platnost můžete ověřit tak, že ho dešifrujete pomocí OpenSSL.

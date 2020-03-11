@@ -1,26 +1,18 @@
 ---
 title: Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 description: Nasazení aplikace pro Cloud Foundry v Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45ae8979a2617d4f380e417e3f0910182ebe145e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036833"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970060"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 
@@ -39,7 +31,7 @@ Pro vytváření Cloud Foundryho prostředí v Azure existuje několik možnost�
 
 ## <a name="connect-to-the-cloud-controller"></a>Připojit ke cloud Controller
 
-Cloud Controller je primárním vstupním bodem pro Cloud Foundry prostředí pro nasazení a správu aplikací. Rozhraní API základního cloudového kontroleru (CCAPI) je REST API, ale je dostupné prostřednictvím různých nástrojů. V tomto případě interakci s ní provedeme prostřednictvím [Cloud Foundry CLI][cf-cli]. Můžete nainstalovat rozhraní příkazového řádku v systému Linux, MacOS nebo Windows, ale pokud byste ho raději nenainstalovali, je k dispozici v [Azure Cloud Shell][cloudshell-docs].
+Cloud Controller je primárním vstupním bodem pro Cloud Foundry prostředí pro nasazení a správu aplikací. Rozhraní API základního cloudového kontroleru (CCAPI) je REST API, ale je dostupné prostřednictvím různých nástrojů. V tomto případě interakci s ní provedeme prostřednictvím [Cloud Foundry CLI][cf-cli]. Můžete nainstalovat rozhraní příkazového řádku v systému Linux, macOS nebo Windows, ale pokud byste ho raději nenainstalovali, je k dispozici v [Azure Cloud Shell][cloudshell-docs].
 
 Pokud se chcete přihlásit, přiřaďte `api` k SYSTEMDOMAINURL, který jste získali z nasazení na Marketplace. Vzhledem k tomu, že výchozí nasazení používá certifikát podepsaný svým držitelem, měli byste také použít přepínač `skip-ssl-validation`.
 

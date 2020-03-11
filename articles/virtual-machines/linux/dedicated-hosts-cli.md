@@ -1,20 +1,17 @@
 ---
-title: Nasazení vyhrazených hostitelů Azure pomocí rozhraní příkazového řádku
+title: Nasazení virtuálních počítačů Linux na vyhrazené hostitele pomocí rozhraní příkazového řádku
 description: Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI.
-services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ab9d7128748e99b75b7e1a7187a7958e18300759
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f712d1be76a9bb3dc4856b9f1fa7c7b805296dea
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483478"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970758"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
  
@@ -97,7 +94,7 @@ az vm host create \
 
 
  
-## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač 
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače 
 Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create)vytvořte virtuální počítač v rámci vyhrazeného hostitele. Pokud jste při vytváření skupiny hostitelů zadali zónu dostupnosti, budete při vytváření virtuálního počítače muset použít stejnou zónu.
 
 ```bash

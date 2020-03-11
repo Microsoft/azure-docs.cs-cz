@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443683"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079802"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -170,6 +170,8 @@ Azure Maps také nabízí pohodlný [mapový ovládací prvek JavaScriptu](https
 Přístup ke službám Azure Maps Services je podstatou [Azure Portal](https://portal.azure.com) a vytvořením účtu Azure Maps.
 
 V Azure Maps se používá schéma ověřování založeného na klíčích. Váš účet obsahuje dvě klíče, které jsou už vygenerované za vás, a to pomocí obou klíčů. Zahajte integraci těchto schopností umístění do vaší aplikace a vyžádejte si žádosti o služby Azure Maps Services.
+
+Poznámka: Azure Maps pro účely mapování funkcí a dotazů na umístění ("dotazy") poskytovaných uživatelem ("dotazy") od jiných výrobců TomTom. Dotazy nejsou propojeny s žádným zákazníkem nebo koncovým uživatelem, pokud jsou sdíleny s TomTom a nelze je použít k identifikaci jednotlivců. Microsoft v současné době v procesu přidávání TomTom do seznamu subdodavatelů služeb Online Services. Mějte na paměti, že mobilita a povětrnostní služby, které zahrnují integraci s Moovit a AccuWeather, jsou momentálně ve [verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="supported-regions"></a>Podporované oblasti
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 9faa47e615217d62eade50a0c181dfda9ec9cd0a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
-ms.translationtype: HT
+ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944781"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969040"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: vytvoření a použití páru veřejných privátních klíčů SSH pro virtuální počítače se systémem Linux v Azure
 
@@ -65,7 +65,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 Pokud zkopírujete a vložíte obsah souboru veřejného klíče, který chcete použít v Azure Portal nebo šabloně Správce prostředků, ujistěte se, že nekopírujete žádné koncové mezery. Pokud chcete zkopírovat veřejný klíč v macOS, můžete soubor veřejného klíče přesměrovat na `pbcopy`. Podobně v systému Linux můžete soubor veřejného klíče přesměrovat na programy, jako je `xclip`.
 
-Veřejný klíč, který umístíte na virtuální počítač Linux v Azure, je ve výchozím nastavení uložený v ~/.ssh/id_rsa. pub, pokud jste nezadali jiné umístění při vytváření páru klíčů. Pokud chcete pomocí [Azure CLI 2,0](/cli/azure) vytvořit virtuální počítač s existujícím veřejným klíčem, zadejte hodnotu a volitelně umístění tohoto veřejného klíče pomocí příkazu [AZ VM create](/cli/azure/vm#az-vm-create) s možností `--ssh-key-value`. V následujícím příkazu nahraďte *VMname*, *RGname*a *keyfile* vlastními hodnotami:
+Veřejný klíč, který umístíte na virtuální počítač Linux v Azure, je ve výchozím nastavení uložený v ~/.ssh/id_rsa. pub, pokud jste nezadali jiné umístění při vytváření páru klíčů. Pokud chcete pomocí [Azure CLI 2,0](/cli/azure) vytvořit virtuální počítač s existujícím veřejným klíčem, zadejte hodnotu a volitelně umístění tohoto veřejného klíče pomocí příkazu [AZ VM create](/cli/azure/vm#az-vm-create) s možností `--ssh-key-values`. V následujícím příkazu nahraďte *VMname*, *RGname*a *keyfile* vlastními hodnotami:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub

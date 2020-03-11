@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: fc6d3bbe1580c4e6f7064c957a9d420555296231
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372540"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081994"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -139,7 +139,13 @@ Heartbeat
 | where TimeGenerated > ago(30m)
 ```
 
-Ve výsledcích hledání byste měli zobrazit záznamy prezenčního signálu pro daný počítač, což znamená, že je připojený a oznamuje službě zprávy. Ve výchozím nastavení každý Agent přepošle záznam prezenčního signálu do přiřazeného pracovního prostoru. Můžete ověřit, že agent správně stáhl řešení automatizace, když má složku s názvem **AzureAutomationFiles** v adresáři **C:\Program Files\Microsoft monitoring Agent\Agent**. Verzi Hybrid Runbook Worker ověříte tak, že přejdete do složky **C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation** a poznamenejte si podsložku **verze** .
+Ve výsledcích hledání byste měli zobrazit záznamy prezenčního signálu pro daný počítač, což znamená, že je připojený a oznamuje službě zprávy. Ve výchozím nastavení každý Agent přepošle záznam prezenčního signálu do přiřazeného pracovního prostoru. 
+
+Pomocí následujících kroků dokončete instalaci a instalaci agenta.
+
+1. Povolte řešení, aby se připojil počítač agenta. Viz část [zprovoznění počítačů v pracovním prostoru](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
+2. Ověřte, že agent správně stáhl řešení automatizace. Měla by mít složku s názvem **AzureAutomationFiles** v adresáři **C:\Program Files\Microsoft monitoring Agent\Agent**. 
+3. Verzi Hybrid Runbook Worker ověříte tak, že přejdete do složky **C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation** a poznamenejte si podsložku **verze** .
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Krok 4 – instalace prostředí Runbooku a připojení k Azure Automation
 

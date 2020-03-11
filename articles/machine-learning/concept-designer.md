@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312426"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037628"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Co je Azure Machine Learning Designer? 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>Co je Návrhář Azure Machine Learning (Preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sady](#datasets) a [moduly](#module) na interaktivním plátně a vytvářet modely strojového učení. Informace o tom, jak začít s návrhářem, najdete v tématu [kurz: předpověď ceny automobilu pomocí návrháře.](tutorial-designer-automobile-price-train-score.md)
@@ -116,7 +116,7 @@ Návrhář vytvoří stejný objekt [PublishedPipeline](https://docs.microsoft.c
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Přesun z vizuálního rozhraní do návrháře
 
-Vizuální rozhraní (Preview) bylo aktualizováno a je nyní Azure Machine Learning Designer. Návrhář byl znovu navržen tak, aby používal back-end založený na kanálu, který je plně integrován s ostatními funkcemi Azure Machine Learning. 
+Rozhraní jazyka Visual (Preview) bylo aktualizováno a nyní je Azure Machine Learning Designer (Preview). Návrhář byl znovu navržen tak, aby používal back-end založený na kanálu, který je plně integrován s ostatními funkcemi Azure Machine Learning. 
 
 V důsledku těchto aktualizací se některé koncepty a pojmy pro vizuální rozhraní změnily nebo přejmenovaly. Nejdůležitější koncepční změny najdete v následující tabulce. 
 
@@ -135,13 +135,5 @@ Existující experimenty vizuálního rozhraní a webové služby můžete přev
 ## <a name="next-steps"></a>Další kroky
 
 * Seznamte se se základy prediktivní analýzy a strojového učení s využitím [kurzu: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md)
-* Použijte jednu z ukázek a upravte ji tak, aby vyhovovala vašim potřebám:
-
-- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](how-to-designer-sample-classification-predict-income.md)
-- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Ukázka 5 – klasifikace: předpověď změn](how-to-designer-sample-classification-churn.md)
-- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
-- [Ukázka 7 – klasifikace textu: Wikipedii SP 500 DataSet](how-to-designer-sample-text-classification.md)
+* Naučte se, jak upravit existující [ukázky Návrháře](samples-designer.md) a přizpůsobit je vašim potřebám.
 

@@ -7,19 +7,22 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
-ms.openlocfilehash: 81f8edb42be1f73692062d36440890ef5a1e7c9a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899305"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082825"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Vytvoření, přístup a Správa clusteru Azure Red Hat OpenShift 4,3
 
 > [!IMPORTANT]
-> Azure Red Hat OpenShift (ARO) 4,3 se nabízí ve verzi Preview. Funkce ve verzi Preview jsou samoobslužné a jsou k dispozici, jak jsou dostupné a jsou vyloučené z smlouvy o úrovni služeb (SLA) a omezené záruky. Proto funkce nejsou určeny pro použití v produkčním prostředí.
+> Upozorňujeme, že Azure Red Hat OpenShift 4,3 je teď k dispozici jenom v privátní verzi Preview v Východní USA. Přijetí privátní verze Preview je jenom na pozvání. Před pokusem o povolení této funkce nezapomeňte zaregistrovat své předplatné: [registrace Azure Red Hat OpenShift Private Preview](https://aka.ms/aro-preview-register)
 
-## <a name="prerequisites"></a>Požadavky
+> [!NOTE]
+> Funkce ve verzi Preview jsou samoobslužné a jsou k dispozici, jak jsou dostupné a jsou vyloučené z smlouvy o úrovni služeb (SLA) a omezené záruky. Proto funkce nejsou určeny pro použití v produkčním prostředí.
+
+## <a name="prerequisites"></a>Předpoklady
 
 K vytvoření clusteru Azure Red Hat OpenShift 4,3 budete potřebovat následující:
 

@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b887508fb8e422bd83aa9d13e42085d7a6bd2283
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361962"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080376"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -43,6 +43,7 @@ Kromě zjišťování počítačů Azure Migrate: posouzení serveru může zji�
 **přihlašovací údaje pro vCenter** | Účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro Virtual Machines > operace hosta.
 **Přihlašovací údaje virtuálního počítače** | Aktuálně podporuje použití jednoho pověření pro všechny servery se systémem Windows a jedno přihlašovací údaje pro všechny servery se systémem Linux.<br/><br/> Vytvoříte uživatelský účet hosta pro virtuální počítače s Windows a běžný/normální uživatelský účet (bez přístupu sudo) pro všechny virtuální počítače se systémem Linux.
 **Nástroje VMware** | Na virtuálních počítačích, které chcete zjistit, musí být nainstalované a spuštěné nástroje VMware. <br/> Pokud je vaše verze nástrojů VMware mezi 9,10 – 10.2.0, ujistěte se, že jste ji upgradovali na rámec 10.2.0.
+**Powershell** | Virtuální počítače musí mít PowerShell verze 2,0 nebo vyšší.
 **Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete zjišťovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
 **Omezení** | Pro zjišťování aplikací můžete zjistit až 10000 na každé zařízení. 
 
@@ -100,6 +101,7 @@ Tato možnost je v současnosti v náhledové verzi. [Další informace](how-to-
 **Účet Linux** | Vizualizace vyžaduje uživatelský účet s oprávněním root.<br/><br/> V alternativním případě uživatelský účet potřebuje tato oprávnění pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
 **Agenti virtuálních počítačů** | Na virtuálních počítačích není nutný žádný agent.
 **Nástroje VMware** | Na virtuálních počítačích, které chcete analyzovat, musí být nainstalované a spuštěné nástroje VMware. <br/> Pokud je vaše verze nástrojů VMware mezi 9,10 – 10.2.0, ujistěte se, že jste ji upgradovali na rámec 10.2.0.
+**Powershell** | Virtuální počítače musí mít PowerShell verze 2,0 nebo vyšší.
 **přihlašovací údaje pro vCenter** | Účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro Virtual Machines > operace hosta.
 **Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete analyzovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
 

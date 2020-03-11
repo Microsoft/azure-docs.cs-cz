@@ -1,19 +1,19 @@
 ---
 title: Úprava sady škálování virtuálních počítačů Azure
 description: Naučte se, jak upravit a aktualizovat sadu škálování virtuálního počítače Azure pomocí rozhraní REST API, Azure PowerShell a Azure CLI.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390418"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082331"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava sady škálování virtuálních počítačů
 
@@ -311,7 +311,7 @@ Pokud chcete aktualizovat stávající virtuální počítače, musíte provést
 >[!NOTE]
 > Clustery Service Fabric můžou používat jenom *Automatický* režim, ale aktualizace se zpracovává jinak. Další informace najdete v tématu [Service Fabric upgrady aplikací](../service-fabric/service-fabric-application-upgrade.md).
 
-Existuje jeden typ úprav vlastností globální sady škálování, který nedodržuje zásady upgradu. Změny profilu operačního systému sady škálování (například uživatelské jméno a heslo správce) se dají změnit jenom v rozhraní API verze *2017-12-01* nebo novějším. Tyto změny platí jenom pro virtuální počítače vytvořené po změně v modelu sady škálování. Chcete-li stávající virtuální počítače přenést do aktuálního stavu, je nutné provést novou bitovou kopii každého existujícího virtuálního počítače. Tuto rebitovou kopii můžete provést prostřednictvím:
+Existuje jeden typ úprav vlastností globální sady škálování, který nedodržuje zásady upgradu. Změny v operačním systému a profilu datového disku (například uživatelské jméno a heslo správce) se dají změnit jenom v rozhraní API verze *2017-12-01* nebo novějším. Tyto změny platí jenom pro virtuální počítače vytvořené po změně v modelu sady škálování. Chcete-li stávající virtuální počítače přenést do aktuálního stavu, je nutné provést novou bitovou kopii každého existujícího virtuálního počítače. Tuto rebitovou kopii můžete provést prostřednictvím:
 
 - REST API pomocí [COMPUTE/virtualmachinescalesets/ReImage](/rest/api/compute/virtualmachinescalesets/reimage) následujícím způsobem:
 

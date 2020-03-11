@@ -206,11 +206,15 @@
   items:
     - name: Začínáme
       items:
+        - name: Vytvoření účtu – portál
+          href: create-account-portal.md
         - name: Vytvoření účtu – rozhraní příkazového řádku
           href: create-account-cli-how-to.md
           displayName: storage
         - name: Resetování přihlašovacích údajů k účtu – CLI
           href: cli-reset-account-credentials.md
+        - name: Přístup k rozhraním API – portál
+          href: access-api-portal.md
         - name: Přístup k rozhraním API – rozhraní příkazového řádku
           href: access-api-cli-how-to.md
         - name: Škálování rezervovaných jednotek médií – CLI

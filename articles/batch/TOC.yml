@@ -51,6 +51,8 @@
       href: batch-api-basics.md
     - name: Rozhraní API a nástroje
       href: batch-apis-tools.md
+    - name: Zjišťování a zpracování chyb služby Batch
+      href: batch-retry-after-errors.md
     - name: Osvědčené postupy
       href: best-practices.md
     - name: Kvóty a omezení
@@ -131,8 +133,6 @@
           href: batch-job-schedule.md
         - name: Kontrola chyb úlohy a úkolů
           href: batch-job-task-error-checking.md
-        - name: Zjišťování a zpracování chyb služby Batch
-          href: batch-retry-after-errors.md
     - name: Trvalý výstup úloh a funkcí
       href: batch-task-output.md
       items:

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544313"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080356"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
 
@@ -41,6 +41,10 @@ Zbývající část dokumentu popisuje kroky potřebné k zašifrování dat nas
 
 Prvním krokem je zajistit, aby měl váš [tenant Azure](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) instanční objekt přiřazený pro udělení oprávnění službě Azure Container Instances. 
 
+> [!IMPORTANT]
+> Pokud chcete spustit následující příkaz a úspěšně vytvořit instanční objekt, potvrďte, že máte oprávnění k vytváření instančních objektů ve vašem tenantovi.
+>
+
 Následující příkaz rozhraní příkazového řádku nastaví ACI SP v prostředí Azure:
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 Výstup z běhu tohoto příkazu by měl Ukázat instanční objekt, který se nastavil s názvem DisplayName (název služby Azure Container instance).
+
+V případě, že nemůžete úspěšně vytvořit instanční objekt:
+* Ověřte, že máte ve svém tenantovi oprávnění k tomu.
+* Zkontrolujte, jestli už ve vašem tenantovi neexistuje instanční objekt pro nasazení do ACI. Můžete to udělat tak, že spustíte `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` a místo toho použijete tento instanční objekt.
 
 ### <a name="create-a-key-vault-resource"></a>Vytvoření prostředku Key Vault
 

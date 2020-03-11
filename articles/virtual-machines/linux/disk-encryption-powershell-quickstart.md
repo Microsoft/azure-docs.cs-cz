@@ -3,19 +3,20 @@ title: Vytvoření a šifrování virtuálního počítače se systémem Linux p
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShellu vytvořit a zašifrovat virtuální počítač se systémem Linux.
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 14cdd1e15212141e8c631b589c9c470bbdfe38a9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a2cb8919ac0752c42f22e064d6201c7120fbc9b6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829904"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970536"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače se systémem Linux v Azure pomocí Azure PowerShell
 
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell vytvořit virtuální počítač se systémem Linux, vytvořit Key Vault pro ukládání šifrovacích klíčů a zašifrovat virtuální počítač. V tomto rychlém startu se používá Image Ubuntu 16,04 LTS z webu z kanonického a Standard_D2S_V3 velikosti virtuálního počítače. 
+Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell vytvořit virtuální počítač se systémem Linux, vytvořit Key Vault pro ukládání šifrovacích klíčů a zašifrovat virtuální počítač. V tomto rychlém startu se používá image z Ubuntu 16,04 LTS z kanonického a Standard_D2S_V3 velikosti virtuálního počítače. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -27,7 +28,7 @@ Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/m
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
-## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 Vytvořte virtuální počítač Azure pomocí [New-AzVM](/powershell/module/az.compute/new-azvm)a předejte mu objekt konfigurace virtuálního počítače, který jste vytvořili výše.
 
@@ -37,7 +38,7 @@ $cred = = Get-Credential
 New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image Canonical:UbuntuServer:16.04-LTS:latest -Size Standard_D2S_V3
 ```
 
-Nasazení virtuálního počítače bude trvat několik minut. 
+Nasazení virtuálního počítače bude několik minut trvat. 
 
 ## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Vytvoření Key Vault nakonfigurovaného pro šifrovací klíče
 

@@ -2,17 +2,18 @@
 title: Povolit Azure Disk Encryption pro virtuální počítače se systémem Linux
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače se systémem Linux.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 28d37ba6796799ea27bbd5338247a504ea82388f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396834"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970456"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače se systémem Linux 
 
@@ -61,7 +62,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | RHEL | 7,7 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7,6 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.5 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7,4 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7.4 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.3 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.2 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 6.8 | Datový disk (viz poznámka níže) |
@@ -69,7 +70,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | CentOS | 7,7 | Disk operačního systému a dat |
 | CentOS | 7,6 | Disk operačního systému a dat |
 | CentOS | 7.5 | Disk operačního systému a dat |
-| CentOS | 7,4 | Disk operačního systému a dat |
+| CentOS | 7.4 | Disk operačního systému a dat |
 | CentOS | 7.3 | Disk operačního systému a dat |
 | CentOS | 7.2N | Disk operačního systému a dat |
 | CentOS | 6.8 | Datový disk |

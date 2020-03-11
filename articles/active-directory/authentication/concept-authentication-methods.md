@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848744"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968777"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -34,7 +34,7 @@ Microsoft důrazně doporučuje správcům, aby uživatelům umožnil vybrat ví
 | Aplikace Microsoft Authenticator | MFA a SSPR |
 | Hardwarový token OATH | Verze Public Preview pro MFA a SSPR |
 | SMS | MFA a SSPR |
-| Hlasový hovor | MFA a SSPR |
+| Hlasové volání | MFA a SSPR |
 | Hesla aplikací | Vícefaktorové ověřování pouze v určitých případech |
 
 ![Metody ověřování používané na přihlašovací obrazovce](media/concept-authentication-methods/overview-login.png)
@@ -129,7 +129,7 @@ Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microso
 > Uživatelé nebudou mít možnost registrovat svou mobilní aplikaci při registraci pro Samoobslužné resetování hesla. Místo toho si uživatelé můžou svou mobilní aplikaci zaregistrovat na [https://aka.ms/mfasetup](https://aka.ms/mfasetup) nebo ve verzi Preview registrace bezpečnostních údajů v [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 >
 
-### <a name="notification-through-mobile-app"></a>Oznámení přes mobilní aplikaci
+### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
 
 Aplikace Microsoft Authenticator může přispět k zabránění neoprávněnému přístupu k účtům a zastavovat podvodné transakce vložením oznámení do telefonu Smartphone nebo tabletu. Uživatelé zobrazí oznámení a pokud je to legitimní, vyberte ověřit. V opačném případě mohou vybrat odepřít.
 
@@ -146,7 +146,7 @@ Pokud povolíte použití oznámení prostřednictvím mobilní aplikace a ově�
 
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 
-Aplikaci Microsoft Authenticator nebo jiné aplikace třetích stran lze použít jako softwarový token k vytvoření ověřovacího kódu OATH. Po zadání uživatelského jména a hesla zadáte kód poskytnutý aplikací do přihlašovací obrazovky. Ověřovací kód poskytuje druhý způsob ověřování.
+Aplikaci Microsoft Authenticator nebo jiné aplikace třetích stran lze použít jako softwarový token k vytvoření ověřovacího kódu OATH. Po zadání uživatelského jména a hesla zadáte kód poskytnutý aplikací do přihlašovací obrazovky. Ověřovací kód poskytuje druhou formu ověřování.
 
 > [!WARNING]
 > Pro Samoobslužné resetování hesla, je-li pro ověřovací kód obnovení k dispozici pouze jedna metoda, je k dispozici pouze možnost pro uživatele, aby se **zajistila nejvyšší úroveň zabezpečení**.
@@ -156,25 +156,25 @@ Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ov�
 
 ## <a name="oath-hardware-tokens-public-preview"></a>Hardwarové tokeny OATH (Public Preview)
 
-OATH je otevřený standard, který určuje, jak jsou generovány kódy jednorázového hesla (jednorázového hesla). Azure AD bude podporovat použití tokenů SHA-1 typu OATH-TOTP pro celou řadu 30 sekund nebo 60 sekund. Zákazníci si tyto tokeny můžou vyřídit od dodavatele dle svého výběru. Tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní se všemi tokeny. Tajné klíče musí být kódované v Base32.
+OATH je otevřený standard, který určuje, jak jsou generovány kódy jednorázového hesla (jednorázového hesla). Azure AD bude podporovat použití tokenů SHA-1 typu OATH-TOTP pro celou řadu 30 sekund nebo 60 sekund. Zákazníci si tyto tokeny můžou vyřídit od dodavatele dle svého výběru. Tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní se všemi tokeny. Tajný klíč může obsahovat pouze znaky *a-z* nebo *a-z* a číslice *1-7*a musí být kódovány v Base32.
 
-![Nahrávají se tokeny OATH do okna tokeny OATH serveru MFA.](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![Nahrávají se tokeny OATH do okna tokeny OATH MFA.](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 Hardwarové tokeny OATH jsou podporovány v rámci verze Public Preview. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.
 
-Po získání tokenů musí být nahrané ve formátu CSV (textový soubor s oddělovači (CSV), který obsahuje hlavní název uživatele, sériové číslo, tajný klíč, časový interval, výrobce a model, jak ukazuje následující příklad.
+Po získání tokenů musí být nahrané ve formátu textového souboru s oddělovači (CSV), včetně hlavního názvu uživatele, sériového čísla, tajného klíče, časového intervalu, výrobce a modelu, jak je znázorněno v následujícím příkladu:
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> Ujistěte se, že jste do souboru CSV zahrnuli řádek záhlaví, jak vidíte výše.
+> Ujistěte se, že jste do souboru CSV zahrnuli řádek záhlaví.
 
-Po správném formátování souboru CSV se správce může přihlásit k Azure Portal a přejít na **Azure Active Directory**, **MFA Server**, **tokeny Oath**a nahrát výsledný soubor CSV.
+Po správném formátování jako souboru CSV se správce může přihlásit k Azure Portal, přejít k **Azure Active Directory** > **tokeny Oath** **zabezpečení** > **MFA** > a nahrát výsledný soubor CSV.
 
-V závislosti na velikosti souboru CSV může zpracování trvat několik minut. Kliknutím na tlačítko **aktualizovat** zobrazíte aktuální stav. Pokud v souboru dojde k nějakým chybám, budete mít možnost stáhnout si soubor CSV se seznamem všech chyb, které můžete vyřešit.
+V závislosti na velikosti souboru CSV může zpracování trvat několik minut. Kliknutím na tlačítko **aktualizovat** zobrazíte aktuální stav. Pokud v souboru dojde k nějakým chybám, budete mít možnost stáhnout si soubor CSV se seznamem všech chyb, které můžete vyřešit. Názvy polí ve staženém souboru CSV se liší od nahrané verze.
 
 Až budou všechny chyby vyřešené, může správce aktivovat každý klíč tak, že klikne na **aktivovat** , aby se token aktivoval a vstoupil do něj heslo zobrazené na tokenu.
 

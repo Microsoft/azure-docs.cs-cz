@@ -1,6 +1,6 @@
 ---
-title: Připojení soukromě k webové aplikaci a zabezpečení datových exfiltrace pomocí privátního koncového bodu Azure
-description: Připojení soukromě k webové aplikaci a zabezpečení datových exfiltrace pomocí privátního koncového bodu Azure
+title: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
+description: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
@@ -8,24 +8,23 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: aa1fd341e60a71ad1ffbb535120e63db5a8bfd0b
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 893a7a2c7483fccc3bbc7bd198929f65917457b3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851233"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036950"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
 
-Pro webovou aplikaci Azure můžete použít privátní koncový bod, který umožňuje klientům umístěným ve vaší privátní síti zabezpečený přístup k aplikaci prostřednictvím privátního propojení. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě Azure. Síťový provoz mezi klientem v privátní síti a webovou aplikací prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. Pomocí privátního koncového bodu můžete zakázat odchozí síťové toky z podsítě s NSG a eliminovat riziko úniku dat.
+Pro webovou aplikaci Azure můžete použít privátní koncový bod, který umožňuje klientům umístěným ve vaší privátní síti zabezpečený přístup k aplikaci prostřednictvím privátního propojení. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě Azure. Síťový provoz mezi klientem v privátní síti a webovou aplikací prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
 Použití privátního koncového bodu pro vaši webovou aplikaci vám umožní:
 
 - Zabezpečte svou webovou aplikaci konfigurací koncového bodu služby a odstraněním veřejné expozice
-- Zvyšte zabezpečení virtuální sítě tím, že vám umožníte blokovat data exfiltrace z virtuální sítě.
 - Připojte se bezpečně k webové aplikaci z místních sítí, které se připojují k virtuální síti pomocí privátního partnerského vztahu VPN nebo ExpressRoute.
 
-Pokud potřebujete zabezpečené připojení mezi vaší virtuální sítí a webovou aplikací, je koncový bod služby nejjednodušším řešením. Pokud potřebujete chránit před exfiltrace dat nebo směrování přístupu z místního prostředí, je toto řešení privátním koncovým bodem.
+Pokud potřebujete zabezpečené připojení mezi vaší virtuální sítí a webovou aplikací, je koncový bod služby nejjednodušším řešením. Pokud budete také potřebovat připojit se k webové aplikaci z místního prostředí prostřednictvím brány Azure, místní sítě s partnerským vztahem nebo globálně připojenou virtuální sítí, jedná se o řešení privátního koncového bodu.  
 
 Další informace o [koncovém bodu služby][serviceendpoint]
 
@@ -36,20 +35,24 @@ Když vytvoříte privátní koncový bod pro webovou aplikaci, poskytuje zabezp
 Připojení mezi soukromým koncovým bodem a webovou aplikací používá zabezpečený [privátní odkaz][privatelink]. Privátní koncový bod se používá jenom pro příchozí toky do vaší webové aplikace. Odchozí toky nepoužívají tento privátní koncový bod, ale můžete do sítě vložit odchozí toky v jiné podsíti prostřednictvím [funkce integrace virtuální][vnetintegrationfeature]sítě.
 
 Podsíť, ve které zapojujete soukromý koncový bod, může mít v sobě jiné prostředky, a proto nebudete potřebovat vyhrazenou prázdnou podsíť.
+Privátní koncový bod můžete nasadit v jiné oblasti, než je webová aplikace. 
+
 > [!Note]
 >Funkce integrace virtuální sítě nemůže používat stejnou podsíť než soukromý koncový bod, což je omezení funkce integrace virtuální sítě.
 
 Z hlediska zabezpečení:
 
 - Když pro webovou aplikaci povolíte koncový bod služby, zakážete tím veškerý veřejný přístup.
-- V ostatních virtuální sítě a podsítích můžete povolit více privátních koncových bodů.
+- Můžete povolit více privátních koncových bodů v jiných virtuální sítě a podsítích, včetně virtuální sítě v jiných oblastech.
+- IP adresa privátního koncového bodu musí být dynamická, avšak zůstane stejná, dokud neodstraníte soukromý koncový bod.
 - K síťovému rozhraní privátního koncového bodu se nedá přidružit NSG.
-- K podsíti, která je hostitelem privátního koncového bodu, může být přidruženo NSG, ale je nutné zakázat vynucování zásad sítě pro soukromý koncový bod v [tomto článku] [disablesecuritype]. V důsledku toho není možné filtrovat podle NSG přístup k vašemu privátnímu koncovému bodu.
+- K podsíti, která je hostitelem privátního koncového bodu, může být přidruženo NSG, ale je nutné zakázat vynucování zásad sítě pro soukromý koncový bod v [tomto článku][disablesecuritype]. V důsledku toho nebudete moct filtrovat podle NSG přístupu k privátnímu koncovému bodu.
 - Když pro webovou aplikaci povolíte privátní koncový bod, konfigurace [omezení přístupu][accessrestrictions] webové aplikace se nevyhodnotí.
+- Odstraněním všech pravidel NSG, kde destination je tag Internet nebo služby Azure, můžete snížit riziko exfiltrace dat z virtuální sítě. Ale přidání koncového bodu Web App Service do vaší podsítě vám umožní získat přístup k jakékoli webové aplikaci hostované ve stejném razítku a zpřístupnit ji pro Internet.
 
-Privátní koncový bod pro webovou aplikaci je k dispozici pro vrstvu Standard, PremiumV2 a izolovanou s externím pomocným mechanismem.
+Privátní koncový bod pro webovou aplikaci je dostupný pro vrstvu PremiumV2 a izolovaný s externím pomocným mechanismem.
 
-V protokolech HTTP webové aplikace zjistíte, že víte, že je zdrojová adresa IP klienta. Implementovali jsme protokol proxy protokolu TCP a předávali jsme webové aplikaci k IP adrese klienta. Další informace najdete v [tomto článku][tcpproxy].
+V protokolech HTTP webové aplikace se nachází zdrojová IP adresa klienta. Implementovali jsme protokol proxy protokolu TCP a předávali jsme webové aplikaci vlastnost IP adresy klienta. Další informace najdete v [tomto článku][tcpproxy].
 
 ![Globální přehled][1]
 

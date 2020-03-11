@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902541"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079872"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Posouzení serverů pomocí importovaných dat
 
@@ -66,14 +66,14 @@ Nastavení nového projektu Azure Migrate:
 
 4. V části **Začínáme**vyberte **Přidat nástroje**.
 5. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
-6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Další informace:
+6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Další informace najdete tady:
 
     - Kontrola [podporovaných geografických](migrate-support-matrix.md#supported-geographies)oblastí. Zeměpisná oblast projektu slouží pouze k ukládání metadat shromážděných z místních virtuálních počítačů.
     - Při spouštění migrace můžete vybrat jakoukoli cílovou oblast.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-import/migrate-project.png)
 
-7. Vyberte **Next** (Další).
+7. Vyberte **Další**.
 8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: posouzení serveru** > **Další**.
 
     ![Vytvoření posouzení Azure Migrate](./media/tutorial-assess-import/assessment-tool.png)
@@ -108,8 +108,8 @@ Následující tabulka shrnuje pole souborů k vyplnění:
 **Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
 **IP adresa** | Ne | Adresa serveru.
 **Jader** | Ano | Počet jader procesoru přidělených serveru.
-**Paměť** | Ano | Celková velikost paměti RAM (v MB) přidělená serveru.
-**Název operačního systému** | Ano | Serverový operační systém.
+**Rezident** | Ano | Celková velikost paměti RAM (v MB) přidělená serveru.
+**Název operačního systému** | Ano | Serverový operační systém. <br/> Vyhodnocování rozpoznávají názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu.
 **Verze operačního systému** | Ne | Verze operačního systému serveru.
 **Počet disků** | Ne | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
 **Velikost disku 1**  | Ne | Maximální velikost disku (v GB)<br/>[Přidáním sloupců](#add-multiple-disks) do šablony můžete přidat podrobnosti o dalších discích. Můžete přidat až osm disků.
@@ -179,7 +179,7 @@ Pokud například chcete zadat všechna pole pro druhou aplikaci, přidejte tyto
 Po přidání informací do šablony sdíleného svazku clusteru importujte servery do vyhodnocování serveru.
 
 1. V Azure Migrate v části **zjišťování počítačů**přejít na dokončenou šablonu.
-2. Vyberte **Import** (Importovat).
+2. Vyberte **importovat**.
 3. Zobrazí se stav importu.
     - Pokud se ve stavu zobrazí upozornění, můžete je buď opravit, nebo pokračovat bez jejich adresování.
     - Pro zlepšení přesnosti hodnocení Vylepšete informace o serveru, jak je navrženo v části upozornění.
@@ -406,10 +406,10 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 :::row-end:::
 :::row:::
    :::column span="":::
-      Windows 10<br/>
+      Windows 10<br/>
       Windows 2000<br/>
       Systém Windows 3<br/>
-      Windows 7<br/>
+      Windows 7<br/>
       Windows 8<br/>
       Windows 95<br/>
       Windows 98<br/>
@@ -426,14 +426,14 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
       Windows Server 2019<br/>
       Prahová hodnota pro Windows Server<br/>
       Windows Vista<br/>
-      Windows Web Server 2008 R2<br/>
+      Webový server Windows 2008 R2<br/>
       Windows XP Professional
    :::column-end:::
 :::row-end:::
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Importované servery do Azure Migrate: posouzení serveru pomocí sdíleného svazku clusteru.

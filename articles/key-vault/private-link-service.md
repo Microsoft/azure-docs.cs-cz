@@ -1,27 +1,27 @@
 ---
 title: Integrace se službou Azure Private Link
 description: Naučte se integrovat Azure Key Vault se službou Azure Private Link.
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 01/28/2020
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e058e643f4c37336f09b43c41cd09aa361a23d15
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a5cc5bbdb56e308d79b8eb2c8db546184cedb39
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907072"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080339"
 ---
-# <a name="integrate-key-vault-with-azure-private-link-preview"></a>Integrace Key Vault s privátním odkazem Azure (Preview)
+# <a name="integrate-key-vault-with-azure-private-link"></a>Integrace Key Vault s privátním propojením Azure
 
 Služba privátního propojení Azure vám umožňuje přístup ke službám Azure (například Azure Key Vault, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti.
 
-Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služeb se dá směrovat přes privátní koncový bod, takže nejsou potřeba žádné brány, zařízení pro překlad adres (NAT), připojení VPN nebo ExpressRoute ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
+Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
 Další informace najdete v tématu [co je to Azure Private Link (Preview)?](../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete integrovat Trezor klíčů s privátním odkazem na Azure (Preview), budete potřebovat následující:
 
@@ -34,7 +34,7 @@ Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti.
 
 Váš privátní koncový bod používá privátní IP adresu ve vaší virtuální síti.
 
-## <a name="establish-a-private-link-connection-to-key-vault"></a>Navázání připojení privátního propojení k trezoru klíčů
+## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Navázání připojení privátního propojení k Key Vault pomocí Azure Portal 
 
 Nejdřív vytvořte virtuální síť podle kroků v části [vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/quick-create-portal.md)
 
@@ -49,7 +49,7 @@ Po nakonfigurování základních informací o trezoru klíčů vyberte kartu s�
 1. Na kartě síť vyberte přepínač privátního koncového bodu (Preview).
 1. Kliknutím na tlačítko + Přidat přidáte soukromý koncový bod.
 
-    ![Obrázek](./media/private-link-service-1.png)
+    ![Image](./media/private-link-service-1.png)
  
 1. V poli umístění v okně vytvořit privátní koncový bod vyberte oblast, ve které se nachází vaše virtuální síť. 
 1. V poli název Vytvořte popisný název, který vám umožní identifikovat Tento soukromý koncový bod. 
@@ -57,7 +57,7 @@ Po nakonfigurování základních informací o trezoru klíčů vyberte kartu s�
 1. Ponechte možnost integrace s DNS privátní zóny beze změny.  
 1. Vyberte OK.
 
-    ![Obrázek](./media/private-link-service-2.png)
+    ![Image](./media/private-link-service-2.png)
  
 Teď budete moct zobrazit nakonfigurovaný soukromý koncový bod. Teď máte možnost Tento soukromý koncový bod odstranit a upravit. Vyberte tlačítko "revize + vytvořit" a vytvořte Trezor klíčů. Dokončení nasazení bude trvat 5-10 minut. 
 
@@ -79,6 +79,60 @@ Pro libovolný prostředek Azure v tomto okně se můžete rozhodnout vytvořit 
 Obrázek ![](./media/private-link-service-3.png)
 ![obrázku](./media/private-link-service-4.png)
 
+## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Navázání připojení privátního propojení k Key Vault pomocí rozhraní příkazového řádku
+
+### <a name="login-to-azure-cli"></a>Přihlášení do Azure CLI
+```console
+az login 
+```
+### <a name="select-your-azure-subscription"></a>Výběr vašeho předplatného Azure 
+```console
+az account set --subscription {AZURE SUBSCRIPTION ID}
+```
+### <a name="create-a-new-resource-group"></a>Vytvořit novou skupinu prostředků 
+```console
+az group create -n {RG} -l {AZURE REGION}
+```
+### <a name="register-microsoftkeyvault-as-a-provider"></a>Registrovat Microsoft. webrecovery jako poskytovatele 
+```console
+az provider register -n Microsoft.KeyVault
+```
+### <a name="create-a-new-key-vault"></a>Vytvořit nový Key Vault
+```console
+az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION}
+```
+### <a name="create-a-virtual-network"></a>Vytvoření Virtual Network
+```console
+az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
+```
+### <a name="add-a-subnet"></a>Přidání podsítě
+```console
+az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
+```
+### <a name="disable-virtual-network-policies"></a>Zakázat zásady Virtual Network 
+```console
+az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
+```
+### <a name="add-a-private-dns-zone"></a>Přidat zónu Privátní DNS 
+```console
+az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.azure.net
+```
+### <a name="link-private-dns-zone-to-virtual-network"></a>Propojit zónu Privátní DNS s Virtual Network 
+```console
+az network private-dns link vnet create --resoruce-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+```
+### <a name="create-a-private-endpoint-automatically-approve"></a>Vytvoření privátního koncového bodu (automaticky schvalovat) 
+```console
+az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
+```
+### <a name="create-a-private-endpoint-manually-request-approval"></a>Vytvoření privátního koncového bodu (žádost o schválení ručně) 
+```console
+az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
+```
+### <a name="show-connection-status"></a>Zobrazit stav připojení 
+```console
+az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
+```
 ## <a name="manage-private-link-connection"></a>Spravovat připojení privátního propojení
 
 Při vytváření privátního koncového bodu musí být připojení schváleno. Pokud je prostředek, pro který vytváříte privátní koncový bod, ve vašem adresáři, budete moci schválit žádost o připojení, pokud máte dostatečná oprávnění. Pokud se připojujete k prostředku Azure v jiném adresáři, musíte počkat, až vlastník tohoto prostředku schválí žádost o připojení.
@@ -87,12 +141,12 @@ Existují čtyři stavy zřizování:
 
 | Služba poskytuje akci | Stav privátního koncového bodu příjemce služby | Popis |
 |--|--|--|
-| Žádné | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádná | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
-| Odmítnout | Odmítnutí | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
+| Odmítnout | Odmítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Odpojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
  
-###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault"></a>Jak spravovat připojení privátního koncového bodu k trezoru klíčů
+###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Správa připojení privátního koncového bodu k Key Vault pomocí Azure Portal 
 
 1. Přihlaste se k webu Azure Portal.
 1. Na panelu hledání zadejte "trezory klíčů".
@@ -103,7 +157,24 @@ Existují čtyři stavy zřizování:
 1. Vyberte tlačítko Schválit.
 1. Pokud existují nějaká připojení privátního koncového bodu, která chcete zamítnout, ať už se jedná o nevyřízenou žádost nebo existující připojení, vyberte připojení a klikněte na tlačítko "zamítnout".
 
-    ![Obrázek](./media/private-link-service-7.png)
+    ![Image](./media/private-link-service-7.png)
+
+##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>Správa připojení privátního koncového bodu k Key Vault pomocí rozhraní příkazového řádku Azure
+
+### <a name="approve-a-private-link-connection-request"></a>Schválení žádosti o připojení privátního odkazu
+```console
+az keyvault private-endpoint-connection approve --approval-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
+```
+
+### <a name="deny-a-private-link-connection-request"></a>Zamítnutí žádosti o připojení privátního odkazu
+```console
+az keyvault private-endpoint-connection reject --rejection-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
+```
+
+### <a name="delete-a-private-link-connection-request"></a>Odstranění žádosti o připojení privátního propojení
+```console
+az keyvault private-endpoint-connection delete --resource-group {RG} --vault-name {KEY VAULT NAME} --name {PRIVATE LINK CONNECTION NAME}
+```
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Ověření, že připojení privátního propojení funguje
 

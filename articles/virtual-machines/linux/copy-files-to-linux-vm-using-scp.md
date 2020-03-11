@@ -1,26 +1,19 @@
 ---
 title: Přesun souborů do a z virtuálních počítačů Azure Linux pomocí spojovacího bodu služby
 description: Zabezpečený přesun souborů do a z virtuálního počítače se systémem Linux v Azure pomocí spojovacího bodu služby a páru klíčů SSH.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036586"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969605"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Přesunutí souborů do a z virtuálního počítače se systémem Linux pomocí spojovacího bodu služby
 
@@ -72,7 +65,7 @@ Následující příkaz zkopíruje soubory z adresáře */Home/azureuser/logs/* 
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-Příznak `-r` CLI instruuje spojovací bod služby k rekurzivnímu kopírování souborů a adresářů z místa v adresáři uvedeném v příkazu.  Všimněte si také, že syntaxe příkazového řádku je podobná příkazu `cp` kopírování.
+Příznak `-r` dá SPOJOVACÍmu bodu služby pokyn k rekurzivnímu kopírování souborů a adresářů z místa v adresáři uvedeném v příkazu.  Všimněte si také, že syntaxe příkazového řádku je podobná příkazu `cp` kopírování.
 
 ## <a name="next-steps"></a>Další kroky
 

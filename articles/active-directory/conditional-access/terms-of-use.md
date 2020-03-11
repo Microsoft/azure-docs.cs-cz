@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d92c3e51aae70c66dcf9b7ca6dfd631650ace574
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 1dbd1d96cda88d500e16fff885dae03ebfa230f0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561744"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079896"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -52,7 +52,7 @@ Funkce Azure AD terms of use mají tyto možnosti:
 - Zobrazit protokol aktivity použití pro dodržování předpisů a audit.
 - Vytvářejte a spravujte podmínek použití pomocí [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (aktuálně ve verzi Preview).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít a nakonfigurovat používání podmínek Azure AD, musíte mít:
 
@@ -94,8 +94,8 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
    | Vypršení platnosti začíná | Frequency | Výsledek |
    | --- | --- | --- |
-   | Dnešní datum  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
-   | Datum v budoucnosti  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Pokud dojde k budoucí datum, souhlasu vyprší a pak musí uživatelé ovlivnění každý měsíc.  |
+   | Dnešní datum  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
+   | Datum v budoucnosti  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Pokud dojde k budoucí datum, souhlasu vyprší a pak musí uživatelé ovlivnění každý měsíc.  |
 
    Pokud například nastavíte vypršení platnosti začínající na **1** a četnost na **měsíčně**, v této části se může vyskytnout vypršení platnosti pro dva uživatele:
 
@@ -108,7 +108,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
    | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
    | --- | --- | --- | --- | --- |
-   | Alice | 1\. ledna | 31. ledna | 2\. března | Dubna 1 |
+   | Alice | 1\. ledna | 31. ledna | Března 2 | Dubna 1 |
    | Bob | 15. ledna | 14. února | Března 16 | Dubna 15 |
 
    Je možné použít potvrzení a dobu **platnosti vypršení platnosti** **před tím, než znovu přijme nastavení (dny)** , ale obvykle použijete jednu nebo druhou.
@@ -277,7 +277,11 @@ Pokud uživatel používá Windows 10 a Microsoft Edge, zobrazí se mu zpráva p
 
 Pokud používají Chrome, zobrazí se výzva k instalaci [rozšíření účtů Windows 10](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
 
-### <a name="join-an-android-device"></a>Připojit zařízení s Androidem
+### <a name="register-an-ios-device"></a>Registrace zařízení se systémem iOS
+
+Pokud uživatel používá zařízení se systémem iOS, bude vyzván k instalaci [aplikace Microsoft Authenticator](https://apps.apple.com/us/app/microsoft-authenticator/id983156458).
+
+### <a name="register-an-android-device"></a>Registrace zařízení s Androidem
 
 Pokud uživatel používá zařízení se systémem Android, zobrazí se výzva k instalaci [aplikace Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator).
 

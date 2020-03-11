@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587409"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082961"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
@@ -112,7 +112,7 @@ Podrobnosti vlastního TLV:
 |  |4        |UINT32 (4 bajty) představující LINKID privátního koncového bodu. Kódováno ve formátu Little endian.|
 
  > [!NOTE]
- > Poskytovatel služeb zodpovídá za zajištění, že služba za standardním nástrojem pro vyrovnávání zatížení je nakonfigurovaná tak, aby analyzovala hlavičku protokolu proxy podle [specifikace](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) , když je na službě privátního propojení povolený protokol proxy. Pokud je ve službě privátního propojení povolený protokol proxy a služba není nakonfigurovaná k analýze hlavičky, požadavek selže. Obdobně se požadavek nezdaří, pokud služba očekává hlavičku proxy protokolu, ale toto nastavení není povoleno ve službě privátních odkazů. Po povolení nastavení protokolu proxy bude hlavička protokolu serveru proxy také obsažena v testu stavu HTTP/TCP z hostitele do virtuálních počítačů back-end, a to i v případě, že v hlavičce nebudou žádné informace o klientovi. 
+ > Poskytovatel služeb zodpovídá za zajištění, že služba za standardním nástrojem pro vyrovnávání zatížení je nakonfigurovaná tak, aby analyzovala hlavičku protokolu proxy podle [specifikace](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) , když je na službě privátního propojení povolený protokol proxy. V případě, že je ve službě privátního propojení povolený protokol proxy a služba poskytovatele služeb není nakonfigurovaná k analýze hlavičky, požadavek selže. Obdobně se požadavek nezdaří, pokud služba poskytovatele služeb očekává hlavičku proxy protokolu, ale toto nastavení není povolené ve službě privátních odkazů. Po povolení nastavení protokolu proxy bude hlavička protokolu serveru proxy také obsažena v testu stavu HTTP/TCP z hostitele do virtuálních počítačů back-end, a to i v případě, že v hlavičce nebudou žádné informace o klientovi. 
 
 ## <a name="limitations"></a>Omezení
 

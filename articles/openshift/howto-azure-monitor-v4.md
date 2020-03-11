@@ -6,21 +6,24 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.openlocfilehash: 1a372ef12ef7b0afb06ed3c540daaee5e38c3374
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a784fc070400995c56d16a3bc264d589bcb1f64e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899162"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082842"
 ---
 # <a name="azure-monitor-integration-for-azure-red-hat-openshift-43"></a>Integrace Azure Monitor pro Azure Red Hat OpenShift 4,3
 
-> [!IMPORTANT]
-> Azure Red Hat OpenShift 4,3 se nabízí ve verzi Preview. Funkce ve verzi Preview jsou samoobslužné a jsou k dispozici, jak jsou dostupné a jsou vyloučené z smlouvy o úrovni služeb (SLA) a omezené záruky. Proto funkce nejsou určeny pro použití v produkčním prostředí. 
+> [!IMPORTANT] 
+> Upozorňujeme, že Azure Red Hat OpenShift 4,3 je teď k dispozici jenom v privátní verzi Preview v Východní USA. Přijetí privátní verze Preview je jenom na pozvání. Před pokusem o povolení této funkce nezapomeňte zaregistrovat své předplatné: [registrace Azure Red Hat OpenShift Private Preview](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> Funkce ve verzi Preview jsou samoobslužné a jsou k dispozici, jak jsou dostupné a jsou vyloučené z smlouvy o úrovni služeb (SLA) a omezené záruky. Proto funkce nejsou určeny pro použití v produkčním prostředí.
 
 Tento článek popisuje, jak povolit privátní verzi Preview Azure Monitor pro kontejnery pro clustery s OpenShift 4,3 hostované na Prem nebo v jakémkoli cloudovém prostředí. Stejné pokyny platí i pro povolení monitorování clusterů Azure Red Hat OpenShift (ARO) 4,3.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Helm 3](https://helm.sh/docs/intro/install/)

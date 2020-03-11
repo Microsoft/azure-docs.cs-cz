@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 6027978b50ca72de5d18ff474b36814e22a94e85
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552213"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082859"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Přístup k Grafana ve službě Azure HDInsight
 
 [Grafana](https://grafana.com/) je oblíbený Open Source tvůrce grafů a řídicích panelů. Grafana je funkce bohatá; neumožňuje uživatelům vytvářet přizpůsobitelné řídicí panely a sdílet je, ale také nabízí šablony/skripty řídicí panely, integraci protokolu LDAP, více zdrojů dat a další.
 
-V současné době se v Azure HDInsight Grafana podporuje s typy clusterů HBA, Kafka a interaktivních dotazů. U clusterů s povolenou sadou Enterprise Security Pack není podporována podpora.
+V současné době se v Azure HDInsight Grafana podporuje s typy clusterů Spark, HBA, Kafka a Interactive Query. U clusterů s povolenou sadou Enterprise Security Pack není podporována podpora.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Vytvoření clusteru Apache Hadoop
 
-Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). Jako **typ clusteru**vyberte **Kafka**, **HBA**nebo **interaktivní dotaz**.
+Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). Jako **typ clusteru**vyberte **Spark**, **Kafka**, **HBA**nebo **interaktivní dotaz**.
 
 ## <a name="access-the-grafana-dashboard"></a>Přístup k řídicímu panelu Grafana
 
@@ -40,7 +40,7 @@ Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 
@@ -52,7 +52,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o analýze dat pomocí HDInsight najdete v následujících článcích:
+Další informace o analýze dat pomocí HDInsight naleznete v následujících článcích:
 
 * [Použijte Apache Hive se službou HDInsight](../hadoop/hdinsight-use-hive.md).
 

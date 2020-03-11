@@ -1,26 +1,17 @@
 ---
-title: Použití Docker Compose na virtuálním počítači se systémem Linux v Azure
-description: Jak nainstalovat a používat Docker a vytvořit na virtuálních počítačích se systémem Linux pomocí Azure CLI
-services: virtual-machines-linux
-documentationcenter: ''
+title: Použití Docker Compose
+description: Jak nainstalovat a používat Docker a vytvořit na virtuálních počítačích se systémem Linux pomocí Azure CLI.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f2f12e0124743ad31e083cf4ece83bcb608bce0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036276"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970310"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Začínáme s Docker a seznámení s definováním a spuštěním aplikace s více kontejnery v Azure
 Při [psaní](https://github.com/docker/compose)použijete jednoduchý textový soubor k definování aplikace sestávající z více kontejnerů Docker. Pak aplikaci vyvoláte v jediném příkazu, který provede všechno k nasazení definovaného prostředí. V tomto článku se dozvíte, jak rychle vytvořit blog WordPress s back-end MariaDB SQL Database na virtuálním počítači s Ubuntu. K nastavení složitějších aplikací můžete použít také možnost vytvořit.
@@ -42,7 +33,7 @@ Vytvořte soubor s názvem *Cloud-init. txt* a vložte následující konfigurac
 #include https://get.docker.com
 ```
 
-Teď pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create) vytvořte virtuální počítač. Pomocí parametru `--custom-data` předejte svůj konfigurační soubor cloud-init. Pokud jste konfigurační soubor *cloud-init.txt* uložili mimo aktuální pracovní adresář, zadejte úplnou cestu k němu. Následující příklad vytvoří virtuální počítač s názvem *myDockerVM* a otevře port 80 pro webový provoz.
+Nyní vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). Pomocí parametru `--custom-data` předejte svůj konfigurační soubor cloud-init. Pokud jste konfigurační soubor *cloud-init.txt* uložili mimo aktuální pracovní adresář, zadejte úplnou cestu k němu. Následující příklad vytvoří virtuální počítač s názvem *myDockerVM* a otevře port 80 pro webový provoz.
 
 ```azurecli-interactive
 az vm create \

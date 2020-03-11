@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903477"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970100"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak pomocí Azure Portal, PowerShellu nebo rozhraní p�
 
 ## <a name="set-retention-policies-and-legal-holds"></a>Nastavit zásady uchovávání informací a právní blokování
 
-### <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Vytvořte nový kontejner nebo vyberte stávající kontejner pro uložení objektů blob, které je potřeba zachovat v neměnném stavu. Kontejner musí být v účtu úložiště pro obecné účely v2 nebo BLOB.
 
@@ -59,11 +59,11 @@ Tento článek popisuje, jak pomocí Azure Portal, PowerShellu nebo rozhraní p�
 
 9. Chcete-li odstranit právní blokování, odeberte značku identifikátoru používaného právního blokování.
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Tato funkce je zahrnutá v následujících skupinách příkazů: `az storage container immutability-policy` a `az storage container legal-hold`. Pro zobrazení příkazů spusťte `-h`.
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -116,10 +116,10 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-Vytvořit nebo aktualizovat zásady neměnnosti:
+Vytvořit nebo aktualizovat zásady neměnnosti založené na čase:
 
 ```powershell
-# Create an immutablity policy
+# Create a time-based immutablity policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -168,17 +168,23 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ## <a name="enabling-allow-protected-append-blobs-writes"></a>Povoluje se povolit zápisy chráněných objektů BLOB
 
-V tuto chvíli můžete přístup k nastavení `allowProtectedAppendWrites` použít jenom pro zásady uchovávání informací prostřednictvím tohoto konkrétního [odkazu na portál](https://aka.ms/immutableappendblobs). 
-
-> [!IMPORTANT] 
->  V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
-> - USA – východ
-> - USA – středojih
-> - USA – západ 2
->
-> Další informace najdete v tématu [Povolení zápisů v zabezpečeném připojení objektů BLOB](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 ![Povolení dalších připojovat zápisů](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Tato funkce je zahrnutá v následujících skupinách příkazů: `az storage container immutability-policy` a `az storage container legal-hold`. Pro zobrazení příkazů spusťte `-h`.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+# Create an immutablity policy with appends allowed
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
+```
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

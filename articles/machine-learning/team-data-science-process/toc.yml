@@ -185,47 +185,29 @@
         - name: Vytvoření a trénování modelů
           items:
             - name: Volba algoritmů
-              href: /azure/machine-learning/studio/algorithm-choice?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: Tahák s algoritmy
-              href: /azure/machine-learning/studio/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: Nasazení modelů v produkčním prostředí
       href: deploy-models-in-production.md
 - name: Související
   items:
     - name: Azure Machine Learning
       href: ../
-    - name: Galerie Azure AI
-      href: 'https://gallery.azure.ai'
-    - name: Cortana Analytics
+    - name: Cognitive Services
+      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+    - name: Detekce anomálií
+      href: apps-anomaly-detection-api.md
+    - name: Prediktivní údržba
       items:
-        - name: Detekce anomálií
-          href: apps-anomaly-detection-api.md
-        - name: Cognitive Services
-          href: 'https://docs.microsoft.com/azure/cognitive-services/'
-        - name: Prediktivní údržba
-          items:
-            - name: Přehled
-              href: cortana-analytics-playbook-predictive-maintenance.md
-            - name: Architektura
-              href: cortana-analytics-architecture-predictive-maintenance.md
-            - name: Technický průvodce
-              href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: Přehled
+          href: predictive-maintenance-playbook.md
+        - name: Architektura
+          href: predictive-maintenance-architecture.md
+        - name: Technický průvodce
+          href: predictive-maintenance-technical-guide.md
 - name: Zdroje a prostředky
   items:
-    - name: Blogy
-      items:
-        - name: Nejnovější aktualizace pro TDSP
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
-        - name: Použití TDSP ve službě Azure Machine Learning
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
-        - name: Data Science Utilities v.0.11 pro TDSP
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
-        - name: Nejnovější nástroje pro TDSP
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-        - name: Šablona plánování projektů pro datové vědy
-          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
-        - name: Blog věnovaný Cortana Intelligence a Machine Learningu
-          href: 'https://blogs.technet.microsoft.com/machinelearning/'
     - name: Organizace využívající TDSP
       items:
         - name: Nový podpis

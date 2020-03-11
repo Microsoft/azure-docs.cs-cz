@@ -5,14 +5,14 @@ services: networking
 author: nayak-mahesh
 ms.service: virtual-network
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 03/10/2020
 ms.author: kumud
-ms.openlocfilehash: dc2cb6545093e8ab70d18014a5fd9d0e7d36f8b7
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3469daa8b81b20d5d0052a23ce3236fc4fde75de
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122393"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082930"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Statistika latence odezvy sítě Azure
 
@@ -22,9 +22,9 @@ Azure nepřetržitě monitoruje latenci (rychlost) základních oblastí své s�
 
 Měření latence se shromažďují od agentů ThousandEyes hostovaných v cloudových oblastech Azure po celém světě, které neustále odesílají testy sítě mezi sebou v intervalu 1 minut. Statistika měsíční latence se odvozuje z průměrného počtu shromážděných ukázek v měsíci.
 
-## <a name="january-2020-round-trip-latency-figures"></a>Hodnoty latence odezvy v lednu 2020
+## <a name="february-2020-round-trip-latency-figures"></a>Hodnoty latence odezvy v únoru 2020
 
-Níže jsou uvedené průměrné doby odezvy mezi oblastmi Azure za posledních 31 dní (končící 31. ledna 2020). Následující měření jsou poháněná nástrojem [ThousandEyes](https://thousandeyes.com).
+Níže jsou uvedené měsíční průměrné doby odezvy mezi oblastmi Azure za posledních 29 dní (končící 29. února 2020). Následující měření jsou poháněná nástrojem [ThousandEyes](https://thousandeyes.com).
 
 [![statistik latence mezi oblastmi Azure](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

@@ -1,7 +1,7 @@
 ---
-title: Sestavení & nasazení automatizovaných modelů ML
+title: Použití autoML k vytvoření modelů & nasazení
 titleSuffix: Azure Machine Learning
-description: Vytvářejte, spravujte a nasaďte automatizované experimenty strojového učení v Azure Machine Learning Studiu.
+description: Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,22 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 706b67216d1037440fd1641d9bc82deee2c43109
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355309"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078409"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení pomocí Azure Machine Learning studia
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
- V tomto článku se naučíte, jak vytvářet, zkoumat a nasazovat automatizované experimenty strojového učení v Azure Machine Learning Studiu bez jediného řádku kódu. Automatizované Machine Learning automatizuje proces výběru nejlepšího algoritmu, který se má použít pro vaše konkrétní data, takže můžete model strojového učení rychle vygenerovat. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
+V tomto článku se naučíte, jak vytvářet, zkoumat a nasazovat automatizované modely strojového učení bez jediného řádku kódu v rozhraní sady Azure Machine Learning Studio. Automatizované Machine Learning je proces, ve kterém se pro vás vybere nejlepší algoritmus strojového učení, který se má použít pro vaše konkrétní data. Tento proces vám umožní rychle vygenerovat modely strojového učení. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
+ 
+Příklad koncového na konci najdete v [kurzu Vytvoření modelu klasifikace pomocí automatizovaného rozhraní ML Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 
- Pokud dáváte přednost více prostředím založeným na kódu, můžete [v Pythonu nakonfigurovat i automatizované experimenty strojového učení](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azure Machine Learning SDK [nakonfigurovat experimenty automatizovaného strojového učení](how-to-configure-auto-train.md) .
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -33,7 +35,7 @@ ms.locfileid: "78355309"
 
 ## <a name="get-started"></a>Začínáme
 
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com). 
+1. Přihlaste se k Azure Machine Learning v https://ml.azure.com. 
 
 1. Vyberte své předplatné a pracovní prostor. 
 
@@ -184,8 +186,8 @@ Guardrail|Status|Podmínka&nbsp;pro aktivační událost&nbsp;
 ---|---|---
 Chybějící hodnoty&nbsp;&nbsp;imputace |**Předaný** <br> <br> **Určí**|    Žádná chybějící hodnota v žádném ze vstupních&nbsp;sloupců <br> <br> U některých sloupců chybí hodnoty.
 Křížové ověření|**Hotovo**|Pokud není zadaná žádná explicitní ověřovací sada
-&nbsp;funkce&nbsp;detekce&nbsp;mohutnosti vysoké úrovně.|  **Předaný** <br> <br>**Hotovo**|   Nezjistily se žádné funkce vysoké mohutnosti. <br><br> Zjistily se vstupní sloupce vysoké mohutnosti.
-Detekce zůstatku třídy |**Předaný** <br><br><br>**Upozorněni** |Třídy jsou vyvážené do školicích dat; Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrý reprezentace, měřená podle počtu a poměru vzorků. <br> <br> Třídy v školicích datech jsou nevyrovnané
+&nbsp;funkce&nbsp;detekce&nbsp;mohutnosti vysoké úrovně.|    **Předaný** <br> <br>**Hotovo**|    Nezjistily se žádné funkce vysoké mohutnosti. <br><br> Zjistily se vstupní sloupce vysoké mohutnosti.
+Detekce zůstatku třídy    |**Předaný** <br><br><br>**Upozorněni** |Třídy jsou vyvážené do školicích dat; Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrý reprezentace, měřená podle počtu a poměru vzorků. <br> <br> Třídy v školicích datech jsou nevyrovnané
 Konzistence dat časové řady|**Předaný** <br><br><br><br> **Určí** |<br> Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. <br> <br>Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a mohou způsobit nedostatek paměti experimentu. Zpoždění nebo posuvné okno bylo vypnuto.
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
@@ -240,7 +242,6 @@ Nyní máte provozní webovou službu, která generuje předpovědi. Předpověd
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vyzkoušejte si kompletní [kurz tvorby prvního automatizovaného experimentu s Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md). 
-* [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.
-* [Pochopte automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
 * [Naučte se využívat webovou službu](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* [Pochopte automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
+* [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.

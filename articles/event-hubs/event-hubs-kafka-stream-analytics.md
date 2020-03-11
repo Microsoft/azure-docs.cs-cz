@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: d7b060a2b35ca41bf87b69be706284174d7b1012
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 8047ac5d3db2db230a00583e888a4afea3b282b9
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587154"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969376"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: proces Apache Kafka pro události Event Hubs pomocí Stream Analytics 
 Tento článek popisuje, jak Streamovat data do služby Event Hubs povolené Kafka a zpracovat je s Azure Stream Analytics. Provede vás provede následujícími kroky: 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak Streamovat data do služby Event Hubs povolené Kaf
 Není potřeba změnit klienty protokolu nebo spustit vlastní clusterů při použití koncového bodu Kafka vystavené centra událostí. Azure Event Hubs podporuje [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html). a vyšší. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -60,7 +60,7 @@ Když vytvoříte obor názvů úrovně **standard** Event Hubs, je automaticky 
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. Přejděte na `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/com/example/app`a otevřete soubor **TestDataReporter. Java** v editoru dle vašeho výběru. 
+5. Přejděte na `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`a otevřete soubor **TestDataReporter. Java** v editoru dle vašeho výběru. 
 6. Okomentujte následující řádek kódu:
 
     ```java
