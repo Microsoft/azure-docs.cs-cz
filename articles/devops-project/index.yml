@@ -3,18 +3,18 @@ title: Dokumentace ke službě Azure DevOps Projects
 summary: Azure DevOps Projects představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.
 metadata:
   title: Dokumentace ke službě Azure DevOps Projects
-  description: Azure DevOps Projects představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.
+  description: Přeneste váš stávající kód a úložiště Git nebo zvolte ukázkovou aplikaci pro vytvoření kanálu kontinuální integrace (CI) a průběžného doručování (CD) do Azure.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
   ms.date: 03/05/2020
-  ms.openlocfilehash: 0c67ed2fdffd80c447608348429985477dd426df
-  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/06/2020
-  ms.locfileid: "78674183"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78942460"
 landingContent:
 - title: Informace o Azure DevOps Projects
   linkLists:

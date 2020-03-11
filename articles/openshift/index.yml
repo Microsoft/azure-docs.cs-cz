@@ -1,37 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Služba Azure Red Hat OpenShift
+### YamlMime:Landing
+title: Dokumentace k Azure Red Hat OpenShiftu
+summary: Azure Red Hat OpenShift poskytuje vysoce dostupné clustery Kubernetes s jedním tenantem v Azure, a to s podporou Red Hatu a Microsoftu.
 metadata:
-  title: 'Dokumentace ke službě Azure Red Hat OpenShift – kurzy, reference k rozhraní API'
-  meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
-  services: container-service
-  author: tylermsft
+  title: Dokumentace k Azure Red Hat OpenShiftu
+  description: Microsoft Azure Red Hat OpenShift umožňuje do Azure rychle nasadit cluster Red Hat OpenShift připravený pro produkční prostředí. Tyto kurzy a praktičtí průvodci vás naučí využívat Azure Red Hat OpenShift.
   ms.service: container-service
+  services: container-service
   ms.topic: landing-page
-  ms.date: 05-06-2019
-  ms.author: twhitney
-abstract:
-  description: 'Azure Red Hat OpenShift poskytuje vysoce dostupné clustery Kubernetes s jedním tenantem v Azure, a to s podporou Red Hatu a Microsoftu.'
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Naučte se vytvářet a spravovat clustery Azure Red Hat OpenShift.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/openshift/tutorial-create-cluster">Vytvoření clusteru Azure Red Hat OpenShift</a>
-          - html: <a href="/azure/openshift/tutorial-scale-cluster">Škálování clusteru Azure Red Hat OpenShift</a>
-          - html: <a href="/azure/openshift/tutorial-delete-cluster">Odstranění clusteru Azure Red Hat OpenShift</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/cli/azure/openshift">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/openshift">REST API</a></p>
-          - title: Dokumentace k Red Hatu
-            html: '<p><a href="https://docs.openshift.com/aro/welcome/index.html">Dokumentace ke službě Red Hat OpenShift</a></p>'
+  author: jimzim
+  ms.author: jzim
+  ms.date: 03/06/2020
+  ms.openlocfilehash: ec40ff9af0b2c09db32e40536009cd0db684f030
+  ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/10/2020
+  ms.locfileid: "79037046"
+landingContent:
+- title: Informace o platformě Azure Red Hat OpenShift
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Red Hat OpenShift?
+      url: intro-openshift.md
+- title: Začínáme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření clusteru Azure Red Hat OpenShift
+      url: tutorial-create-cluster.md
+    - text: Škálování clusteru Azure Red Hat OpenShift
+      url: tutorial-scale-cluster.md
+    - text: Odstranění clusteru Azure Red Hat OpenShift
+      url: tutorial-delete-cluster.md
+- title: Nastavení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení vývojového prostředí Azure Red Hat OpenShift
+      url: howto-setup-environment.md
+    - text: Vytvoření tenanta Azure AD
+      url: howto-create-tenant.md
+    - text: Vytvoření uživatele a objektu aplikace Azure AD
+      url: howto-aad-app-configuration.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/openshift
+    - text: REST API
+      url: /rest/api/openshift
+    - text: Dokumenty k Red Hat OpenShiftu
+      url: https://docs.openshift.com/aro/welcome/index.html

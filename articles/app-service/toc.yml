@@ -33,7 +33,7 @@
       items:
         - name: .NET Core s SQL DB
           href: app-service-web-tutorial-dotnetcore-sqldb.md
-        - name: .NET s SQL DB
+        - name: .NET Framework s SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP s MySQL
           href: app-service-web-tutorial-php-mysql.md
@@ -87,8 +87,6 @@
           href: networking-features.md
         - name: Application Gateway s koncovými body služby
           href: networking/app-gateway-with-service-endpoints.md
-        - name: Privátní koncové body
-          href: networking/private-endpoint.md
     - name: Příchozí a odchozí IP adresy
       href: overview-inbound-outbound-ips.md
     - name: Integrace virtuální sítě
@@ -146,7 +144,7 @@
         - name: Zakoupení domény
           href: manage-custom-dns-buy-domain.md
         - name: Mapování domén s Traffic Managerem
-          href: web-sites-traffic-manager-custom-domain-name.md
+          href: configure-domain-traffic-manager.md
         - name: Migrace aktivní domény
           href: manage-custom-dns-migrate-domain.md
     - name: Zabezpečená aplikace

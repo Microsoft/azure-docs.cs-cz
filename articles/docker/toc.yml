@@ -1,5 +1,5 @@
 - name: Dokumentace k Dockeru
-  href: index.md
+  href: index.yml
 - name: Rychlý start
   expanded: true
   items:

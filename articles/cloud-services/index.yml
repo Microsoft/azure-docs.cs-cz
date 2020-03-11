@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Cloud Services
+summary: Naučte se používat Cloud Services k hostování a spouštění vysoce dostupných škálovatelných cloudových aplikací a rozhraní API. Ukazuje, jak spravovat hostitele virtuálních počítačů a konfigurovat, opravovat a instalovat software.
+metadata:
+  title: Dokumentace ke službě Azure Cloud Services
+  description: Popisuje použití Cloud Services k hostování a spouštění vysoce dostupných a škálovatelných cloudových aplikací a rozhraní API.
+  ms.service: cloud-services
+  service: cloud-services
+  ms.topic: landing-page
+  author: tgore03
+  ms.author: tagore
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943186"
+landingContent:
+- title: Informace o Cloud Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Cloud Services?
+      url: cloud-services-choose-me.md
+  - linkListType: video
+    links:
+    - text: Knihovna videí ke službě Cloud Services
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
+- title: Začínáme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ASP.NET
+      url: cloud-services-dotnet-get-started.md
+    - text: Python pro Visual Studio
+      url: cloud-services-python-ptvs.md
+- title: Vývoj
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření rolí pracovního procesu a webu PHP
+      url: ../cloud-services-php-create-web-role.md
+    - text: Sestavení a nasazení aplikace Node.js do Azure
+      url: cloud-services-nodejs-develop-deploy-app.md
+    - text: Sestavení a nasazení webové aplikace Node.js a využitím Expressu
+      url: cloud-services-nodejs-develop-deploy-express-app.md
+- title: Nasazení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření a nasazení cloudové služby na portálu
+      url: cloud-services-how-to-create-deploy-portal.md
+    - text: Vytvoření prázdného kontejneru cloudové služby v PowerShellu
+      url: cloud-services-powershell-create-cloud-container.md
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Běžné úlohy správy
+      url: cloud-services-how-to-manage-portal.md
+    - text: Konfigurace cloudové služby
+      url: cloud-services-how-to-configure-portal.md

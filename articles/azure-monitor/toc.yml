@@ -213,6 +213,8 @@
               items:
                 - name: JavaScript na straně klienta
                   href: app/javascript.md
+                - name: Sourcemap pro JavaScript
+                  href: app/source-map-support.md
             - name: Souhrn rozhraní API Application Insights
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: Migrace událostí správy na upozornění protokolu aktivit
               href: platform/migrate-management-alerts.md
+            - name: Schéma webhooku
+              href: platform/activity-log-alerts-webhook.md
         - name: Upozornění na stav služby v protokolu aktivit
           items:
             - name: Zobrazení oznámení
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: Integrace schématu běžných upozornění s Logic Apps
               href: platform/alerts-common-schema-integrations.md
-            - name: Schéma webhooku
-              href: platform/activity-log-alerts-webhook.md
             - name: Chování upozornění SMS
               href: platform/alerts-sms-behavior.md
             - name: Omezení četnosti oznámení

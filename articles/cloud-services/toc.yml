@@ -1,5 +1,5 @@
 - name: Dokumentace ke službě Cloud Services
-  href: index.md
+  href: index.yml
 - name: Přehled
   items:
     - name: Co je služba Cloud Services?

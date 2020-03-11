@@ -3,7 +3,7 @@ title: Dokumentace k zabezpečenému vývoji
 summary: Naše ukázkové aplikace, osvědčené postupy a pokyny vám ukážou, jak vyvíjet a nasazovat zabezpečené aplikace v Azure.
 metadata:
   title: Dokumentace k zabezpečenému vývoji v Microsoft Azure
-  description: Další informace o vývoji zabezpečených aplikací v Azure
+  description: Naše ukázkové aplikace, osvědčené postupy a pokyny vám ukážou, jak vyvíjet zabezpečené aplikace v Azure.
   services: security
   ms.service: security
   ms.subservice: develop
@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 10/24/2019
-  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 6ca73686874b1a90d5374d7d6326c4f121d928f9
+  ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72934070"
+  ms.lasthandoff: 03/10/2020
+  ms.locfileid: "78970018"
 landingContent:
 - title: Vývoj zabezpečených ukázkových aplikací
   linkLists:

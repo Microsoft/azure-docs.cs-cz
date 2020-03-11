@@ -1,6 +1,6 @@
 - name: Dokumentace ke Cloud Foundry
-  href: index.md
-- name: Šablony Rychlý start
+  href: index.yml
+- name: Rychlé starty
   expanded: true
   items:
     - name: Šablona Marketplace

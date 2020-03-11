@@ -708,6 +708,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
             - name: Řešení potíží s Apache HIVE
               href: ./hdinsight-troubleshoot-hive.md
+            - name: Protokoly Apache Hive zabírající veškeré místo na disku na hlavním uzlu
+              href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
 - name: Služby ML
   items:
     - name: Přehled

@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: Kompletní příklady MLOps
       href: 'https://github.com/microsoft/MLOps'
+    - name: Kanály designeru
+      href: samples-designer.md
 - name: Koncepty
   items:
     - name: Pracovní prostor
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: Trénování modelů
       items:
-        - name: Použití designeru
-          displayName: sample designer experiments
-          items:
-            - name: Predikce ceny
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: Predikce ceny (pokročilá)
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: Predikce příjmu
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: Predikce úvěrového rizika (pokročilá)
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: Predikce četnosti změn
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: Predikce zpoždění letů
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: Klasifikace textu
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: Použití nástrojů pro odhady pro ML
           items:
             - name: Vytváření odhadů při trénování

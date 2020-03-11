@@ -1,56 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě API Management
+summary: Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Dozvíte se, jak vytvářet a spravovat moderní brány API pro existující backendové služby hostované kdekoli.
 metadata:
-  title: 'Dokumentace ke službě Azure API Management – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  description: 'Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy moderních bran rozhraní API pro stávající back-endové služby, ať už jsou hostované kdekoli.'
+  title: Dokumentace ke službě API Management
+  description: Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Dozvíte se, jak vytvářet a spravovat moderní brány API pro existující backendové služby hostované kdekoli.
   services: api-management
-  author: georgewallace
-  manager: gwallace
   ms.service: api-management
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  author: georgewallace
   ms.author: gwallace
-abstract:
-  description: 'Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy moderních bran rozhraní API pro stávající back-endové služby, ať už jsou hostované kdekoli.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Vytvoření instance API Managementu
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Vytvoření instance – portál
-            href: /azure/api-management/get-started-create-service-instance
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: Vytvoření instance – PowerShell
-            href: /azure/api-management/powershell-create-service-instance
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Naučte se spravovat službu API Management.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/api-management/import-and-publish">Import a publikování vašeho prvního rozhraní API</a>
-          - html: <a href="/azure/api-management/api-management-howto-add-products">Vytvoření a publikování produktu</a>
-          - html: <a href="/azure/api-management/mock-api-responses">Napodobení odpovědí API</a>
-          - html: <a href="/azure/api-management/transform-api">Transformace a ochrana vašeho rozhraní API</a>
-          - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">Monitorování publikovaných rozhraní API</a>
-          - html: <a href="/azure/api-management/api-management-howto-api-inspector">Ladění rozhraní API s využitím trasování požadavků</a>
-          - html: <a href="/azure/api-management/api-management-get-started-revise-api">Použití revizí k bezpečnému provedení nevýznamných změn</a>
-          - html: <a href="/azure/api-management/api-management-get-started-publish-versions">Publikování několika verzí vašeho rozhraní API</a>
-          - html: <a href="/azure/api-management/api-management-customize-styles">Přizpůsobení stylu stránek portálu pro vývojáře</a>
-  - title: Ukázky
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/api-management/policy-samples">Zásady</a>
-          - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>
-          - html: '<a href="https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration">Referenční architektura</a>'
+  ms.date: 03/08/2020
+  ms.openlocfilehash: 2ed84dfdfcabafe7222b8cb64a853ed04e2335a2
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78944170"
+landingContent:
+- title: Informace o službě API Management
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba API Management?
+      url: api-management-key-concepts.md
+    - text: Dostupnost funkcí
+      url: api-management-features.md
+- title: Vytvoření instance
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: portál Azure
+      url: get-started-create-service-instance.md
+    - text: Azure PowerShell
+      url: powershell-create-service-instance.md
+- title: Správa API Managementu
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. Import a publikování vašeho prvního rozhraní API
+      url: import-and-publish.md
+    - text: 2. Vytvoření a publikování produktu
+      url: api-management-howto-add-products.md
+    - text: 3. Napodobení odpovědí API
+      url: mock-api-responses.md
+    - text: 4. Transformace a ochrana vašeho rozhraní API
+      url: transform-api.md
+    - text: 5. Monitorování publikovaných rozhraní API
+      url: api-management-howto-use-azure-monitor.md
+    - text: 6. Ladění rozhraní API s využitím trasování požadavků
+      url: api-management-howto-api-inspector.md
+    - text: 7. Použití revizí k bezpečnému provedení nevýznamných změn
+      url: api-management-get-started-revise-api.md
+    - text: 8. Publikování několika verzí rozhraní API
+      url: api-management-get-started-publish-versions.md
+    - text: 9. Přizpůsobení stylu stránek portálu pro vývojáře
+      url: api-management-customize-styles.md
+- title: ukázky
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Zásada
+      url: policy-samples.md
+    - text: Azure PowerShell
+      url: powershell-samples.md
+- title: Architektura
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Základní podniková integrace
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
