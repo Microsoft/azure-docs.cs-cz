@@ -4,12 +4,12 @@ description: Informace o tom, jaké porty a adresy se vyžadují k řízení odc
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.openlocfilehash: b40415fa78b48d506800049e72c864fb3cab3e29
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191295"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946401"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -34,7 +34,7 @@ K zabezpečení odchozího provozu a definování potřebných portů a adres m�
 
 > [!IMPORTANT]
 > Když použijete Azure Firewall k omezení odchozího provozu a vytvoření trasy definované uživatelem (UDR) k vynucení veškerého odchozího provozu, ujistěte se, že jste v bráně firewall vytvořili příslušné pravidlo DNAT pro správné povolení provozu příchozího přenosu dat. Použití Azure Firewall s UDR v důsledku asymetrického směrování narušuje nastavení příchozího přenosu dat. (K tomuto problému dochází, pokud má podsíť AKS výchozí trasu, která přechází na soukromou IP adresu brány firewall, ale používáte veřejný Nástroj pro vyrovnávání zatížení – příchozí nebo Kubernetes služba typu: Vyrovnávání zatížení sítě). V tomto případě se příchozí provoz nástroje pro vyrovnávání zatížení přijímá prostřednictvím veřejné IP adresy, ale návratová cesta prochází přes privátní IP adresu brány firewall. Vzhledem k tomu, že brána firewall je stavová, dojde k vrácení vráceného paketu, protože brána firewall neví o zavedené relaci. Informace o tom, jak integrovat Azure Firewall s vaším nástrojem pro vyrovnávání zatížení pro příchozí přenosy nebo služby, najdete v tématu věnovaném [integraci Azure firewall s Azure Standard Load Balancer](https://docs.microsoft.com/azure/firewall/integrate-lb).
-> Provoz pro port TCP 9000 a port TCP 22 můžete uzamknout pomocí síťového pravidla mezi IP adresami odchozího pracovního uzlu a IP adresou serveru rozhraní API.
+> Provoz pro port TCP 9000, port TCP 22 a port UDP 1194 můžete uzamknout pomocí síťového pravidla mezi IP adresami odchozího pracovního uzlu a IP adresou serveru rozhraní API.
 
 V AKS existují dvě sady portů a adres:
 
@@ -50,7 +50,7 @@ Pro cluster AKS se vyžadují následující Odchozí porty nebo Síťová pravi
 
 * Port TCP *443*
 * TCP [IPAddrOfYourAPIServer]: 443 se vyžaduje, pokud máte aplikaci, která potřebuje komunikovat se serverem rozhraní API.  Tuto změnu lze nastavit po vytvoření clusteru.
-* Port TCP *9000* a TCP port *22* pro front-endu tunelu pro komunikaci s koncovým tunelem na serveru rozhraní API.
+* Port TCP *9000*, port TCP *22* a port UDP *1194* pro front-endu tunelu pro komunikaci s koncovým TUNELOVÝM zakončením na serveru rozhraní API.
     * Pokud chcete získat konkrétnější informace, podívejte se na*umístění *. HCP.\<\>. azmk8s.IO* a * *. tun.\<umístění\>. adresy azmk8s.IO* v následující tabulce.
 * Port UDP *123* pro synchronizaci času NTP (Network Time Protocol) (uzly Linux).
 * Port UDP *53* pro DNS se vyžaduje i v případě, že máte k dispozici přímý přístup k serveru rozhraní API.
@@ -60,29 +60,34 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 > [!IMPORTANT]
 > * **. blob.Core.Windows.NET a aksrepos.azurecr.IO** již nevyžadují pravidla plně kvalifikovaného názvu domény pro funkci pro přenos odchozích dat.  U existujících clusterů [proveďte operaci upgradu clusteru][aks-upgrade] pomocí příkazu `az aks upgrade`, abyste tato pravidla odebrali.
 
+> [!IMPORTANT]
+> *. cdn.mscr.io nahradil (a) *. data.mcr.microsoft.com pro oblasti veřejného cloudu Azure. Upgradujte prosím stávající pravidla brány firewall, aby se změny projevily.
+
 - Globální Azure
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                       | Port      | Použití      |
+| Plně kvalifikovaný název domény                       | Port      | Použití      |
 |----------------------------|-----------|----------|
-| *. HCP.\<umístění\>. azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
-| *.tun.\<umístění\>. azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
+| *. HCP.\<umístění\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Tato adresa je vyžadována pro komunikaci mezi uzly < > serveru API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
+| *.tun.\<umístění\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Tato adresa je vyžadována pro komunikaci mezi uzly < > serveru API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
+| *.cdn.mscr.io       | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
 | mcr.microsoft.com          | HTTPS:443 | Tato adresa je nutná pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje soubory a grafy první strany (například Moby atd.), které se vyžadují pro fungování clusteru během upgradu a škálování clusteru. |
-| *.cdn.mscr.io              | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
 | management.azure.com       | HTTPS:443 | Tato adresa je vyžadována pro Kubernetes operace GET/PUT. |
 | login.microsoftonline.com  | HTTPS:443 | Tato adresa je vyžadována pro Azure Active Directory ověřování. |
 | ntp.ubuntu.com             | UDP:123   | Tato adresa se vyžaduje pro synchronizaci času NTP na uzlech se systémem Linux. |
 | packages.microsoft.com     | HTTPS:443 | Tato adresa je úložiště balíčků Microsoftu používané pro operace *apt-get* uložené v mezipaměti.  Příklady balíčků zahrnují Moby, PowerShell a Azure CLI. |
-| acs-mirror.azureedge.net   | HTTPS:443 | Tato adresa je určena pro úložiště potřebné k instalaci požadovaných binárních souborů, jako je kubenet a Azure CNI. |
+| acs-mirror.azureedge.net      | HTTPS:443 | Tato adresa je určena pro úložiště potřebné k instalaci požadovaných binárních souborů, jako je kubenet a Azure CNI. |
 
 - Azure China 21Vianet
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                       | Port      | Použití      |
+| Plně kvalifikovaný název domény                       | Port      | Použití      |
 |----------------------------|-----------|----------|
-| *. HCP.\<umístění\>. cx.prod.service.azk8s.cn | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
-| *.tun.\<umístění\>. cx.prod.service.azk8s.cn | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
+| *. HCP.\<umístění\>. cx.prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Tato adresa je vyžadována pro komunikaci mezi uzly < > serveru API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
+| *.tun.\<umístění\>. cx.prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Tato adresa je vyžadována pro komunikaci mezi uzly < > serveru API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
 | *. azk8s.cn        | HTTPS:443 | Tato adresa se vyžaduje ke stažení požadovaných binárních souborů a imagí.|
 | mcr.microsoft.com          | HTTPS:443 | Tato adresa je nutná pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje soubory a grafy první strany (například Moby atd.), které se vyžadují pro fungování clusteru během upgradu a škálování clusteru. |
-| *.cdn.mscr.io              | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
+| *.cdn.mscr.io       | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
 | management.chinacloudapi.cn       | HTTPS:443 | Tato adresa je vyžadována pro Kubernetes operace GET/PUT. |
 | login.chinacloudapi.cn  | HTTPS:443 | Tato adresa je vyžadována pro Azure Active Directory ověřování. |
 | ntp.ubuntu.com             | UDP:123   | Tato adresa se vyžaduje pro synchronizaci času NTP na uzlech se systémem Linux. |
@@ -90,17 +95,18 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 
 - Azure Government
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                       | Port      | Použití      |
+| Plně kvalifikovaný název domény                       | Port      | Použití      |
 |----------------------------|-----------|----------|
-| *. HCP.\<umístění\>. cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
-| *.tun.\<umístění\>. cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
+| *. HCP.\<umístění\>. cx.aks.containerservice.azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Tato adresa je vyžadována pro komunikaci mezi uzly < > serveru API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
+| *.tun.\<umístění\>. cx.aks.containerservice.azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Tato adresa je vyžadována pro komunikaci mezi uzly < > serveru API. *\>umístění\<* nahraďte oblastí, ve které je nasazený cluster AKS. |
 | mcr.microsoft.com          | HTTPS:443 | Tato adresa je nutná pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje soubory a grafy první strany (například Moby atd.), které se vyžadují pro fungování clusteru během upgradu a škálování clusteru. |
-| *.cdn.mscr.io              | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
+|*.cdn.mscr.io              | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
 | management.usgovcloudapi.net       | HTTPS:443 | Tato adresa je vyžadována pro Kubernetes operace GET/PUT. |
 | login.microsoftonline.us  | HTTPS:443 | Tato adresa je vyžadována pro Azure Active Directory ověřování. |
 | ntp.ubuntu.com             | UDP:123   | Tato adresa se vyžaduje pro synchronizaci času NTP na uzlech se systémem Linux. |
 | packages.microsoft.com     | HTTPS:443 | Tato adresa je úložiště balíčků Microsoftu používané pro operace *apt-get* uložené v mezipaměti.  Příklady balíčků zahrnují Moby, PowerShell a Azure CLI. |
-| acs-mirror.azureedge.net   | HTTPS:443 | Tato adresa je určena pro úložiště potřebné k instalaci požadovaných binárních souborů, jako je kubenet a Azure CNI. |
+| acs-mirror.azureedge.net      | HTTPS:443 | Tato adresa je určena pro úložiště potřebné k instalaci požadovaných binárních souborů, jako je kubenet a Azure CNI. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Volitelné Doporučené adresy a porty pro clustery AKS
 
@@ -108,7 +114,7 @@ Následující Odchozí porty nebo Síťová pravidla jsou pro cluster AKS volit
 
 Pro správné fungování clusterů AKS se doporučuje následující plně kvalifikovaný název domény nebo pravidla použití:
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
+| Plně kvalifikovaný název domény                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com | HTTP:80   | Tato adresa umožní uzlům clusteru se systémem Linux stáhnout požadované opravy a aktualizace zabezpečení. |
 
@@ -116,7 +122,7 @@ Pro správné fungování clusterů AKS se doporučuje následující plně kval
 
 Pro clustery AKS s povoleným grafickým procesorem jsou vyžadovány následující plně kvalifikovaný název domény nebo pravidla použití:
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
+| Plně kvalifikovaný název domény                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | nvidia.github.io | HTTPS:443 | Tato adresa se používá pro správnou instalaci ovladače a operaci na uzlech založených na GPU. |
 | us.download.nvidia.com | HTTPS:443 | Tato adresa se používá pro správnou instalaci ovladače a operaci na uzlech založených na GPU. |
@@ -126,10 +132,10 @@ Pro clustery AKS s povoleným grafickým procesorem jsou vyžadovány následuj�
 
 Pro clustery AKS s povoleným Azure Monitor pro kontejnery jsou vyžadována následující plně kvalifikovaný název domény nebo pravidla použití:
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
+| Plně kvalifikovaný název domény                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
-| dc.services.visualstudio.com | HTTPS:443  | Jedná se o správné metriky a monitorování telemetrie pomocí Azure Monitor. |
-| *.ods.opinsights.azure.com    | HTTPS:443 | Tuto hodnotu používá Azure Monitor k ingestování dat Log Analytics. |
+| dc.services.visualstudio.com | HTTPS:443    | Jedná se o správné metriky a monitorování telemetrie pomocí Azure Monitor. |
+| *.ods.opinsights.azure.com    | HTTPS:443    | Tuto hodnotu používá Azure Monitor k ingestování dat Log Analytics. |
 | *.oms.opinsights.azure.com | HTTPS:443 | Tuto adresu používá omsagent, která se používá k ověření služby Log Analytics. |
 |*.microsoftonline.com | HTTPS:443 | Slouží k ověřování a posílání metrik pro Azure Monitor. |
 |*.monitoring.azure.com | HTTPS:443 | Slouží k odesílání dat metrik do Azure Monitor. |
@@ -138,7 +144,7 @@ Pro clustery AKS s povoleným Azure Monitor pro kontejnery jsou vyžadována ná
 
 Pro clustery AKS s povoleným Azure Dev Spaces jsou vyžadována následující plně kvalifikovaný název domény nebo pravidla použití:
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
+| Plně kvalifikovaný název domény                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS:443 | Tato adresa se používá pro získání systému Linux Alpine a dalších Azure Dev Spacesch imagí. |
 | gcr.io | HTTP: 443 | Tato adresa se používá k získání imagí Helm/do pokladny. |
@@ -152,11 +158,11 @@ Pro clustery AKS s povoleným Azure Dev Spaces jsou vyžadována následující 
 
 Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující plně kvalifikovaný název domény nebo pravidla použití.
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
+| Plně kvalifikovaný název domény                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Tato adresa se používá pro správnou operaci Azure Policy. (aktuálně ve verzi Preview v AKS) |
 | RAW.githubusercontent.com | HTTPS:443 | Tato adresa se používá k vyžádání předdefinovaných zásad z GitHubu, aby bylo zajištěno správné fungování Azure Policy. (aktuálně ve verzi Preview v AKS) |
-| *. GK.\<umístění\>. azmk8s.io | HTTPS:443   | Doplněk Azure Policy, který se domluví na koncový bod auditu serveru gatekeeper běžící na hlavním serveru, aby získal výsledky auditu. |
+| *. GK.\<umístění\>. azmk8s.io | HTTPS:443    | Doplněk Azure Policy, který se domluví na koncový bod auditu serveru gatekeeper běžící na hlavním serveru, aby získal výsledky auditu. |
 | dc.services.visualstudio.com | HTTPS:443 | Doplněk Azure Policy, který odesílá data telemetrie do koncového bodu Application Insights. |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Vyžadované uzly na bázi Windows serveru (ve verzi Public Preview) povolené
@@ -166,7 +172,7 @@ Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující pln�
 
 Pro clustery AKS založené na Windows serveru jsou potřeba následující plně kvalifikovaný název domény nebo pravidla použití:
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
+| Plně kvalifikovaný název domény                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS:443 | Instalace binárních souborů souvisejících s Windows |
 | mp.microsoft.com, www<span></span>. msftconnecttest.com, ctldl.windowsupdate.com | HTTP:80 | Instalace binárních souborů souvisejících s Windows |
