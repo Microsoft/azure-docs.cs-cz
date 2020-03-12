@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: azure-government
 ms.date: 12/11/2019
 ms.author: gsacavdm
-ms.openlocfilehash: b6f395964c286aca1bc8a1c190edeea00ba6e15c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 38eb44e6355ddcb5ac78f5d8bb2008ea5a0f0cdf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362035"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127939"
 ---
 # <a name="azure-government-monitoring--management"></a>Azure Government Monitorování a správa
 Tento článek popisuje varianty a požadavky služby monitorování a správy pro prostředí Azure Government.
@@ -179,6 +179,9 @@ Prostředky, které jsou aktuálně podporované v průběhu druhé výstrahy ge
 - Microsoft.Web/sites
 - Microsoft.Web/sites/slots
 
+> [!NOTE]
+> Vytváření pravidel upozornění na více prostředků v Virtual Machines **aktuálně není podporováno**. Tento článek se aktualizuje, jakmile bude tato funkce k dispozici.
+
 Pro prostředky, které ještě nejsou k dispozici ve druhé generaci výstrah, můžete nadále používat [klasické výstrahy](../azure-monitor/platform/alerts-classic.overview.md) . 
 
 Při použití volání PowerShellu/ARM/REST k vytvoření upozornění na metriku budete muset nastavit "umístění" výstrahy metriky na "USGov) – Virginia" nebo "USGov Iowa". Příklad nastavení je následující:
@@ -190,6 +193,7 @@ Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "USGov Virginia" -ResourceGroup
 ```
 
 Další informace o používání PowerShellu najdete v tématu [Veřejná dokumentace](../azure-monitor/platform/powershell-quickstart-samples.md).
+
 
 ## <a name="application-insights"></a>Application Insights
 

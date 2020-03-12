@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
-ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a2af1e87ce7b17183ae09fb02b2652a04f585e84
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541878"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128831"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Přístup k datům v Azure Machine Learning
 
@@ -28,7 +28,7 @@ Až budete připraveni použít data v úložišti, doporučujeme vám
 3. Využijte tuto datovou sadu v experimentu ve službě Machine Learning, a to buď 
     1. Připojení k cíli výpočetního cíle experimentu pro školení modelů
 
-        **OR** 
+        **ANI** 
 
     1. Přímo v Azure Machine Learning řešeních, jako je automatizované spouštění machine learningu (automatizované ML), kanály strojového učení a [návrhář Azure Machine Learning](concept-designer.md).
 4. Vytvořte monitorování datových sad pro výstupní datovou sadu modelu pro detekci posunu dat. 
@@ -53,7 +53,7 @@ Podporované služby úložiště Azure, které se dají zaregistrovat jako úlo
 + Sdílená složka Azure
 + Azure Data Lake
 + Azure Data Lake Gen2
-+ Databáze SQL Azure
++ Azure SQL Database
 + Azure Database for PostgreSQL
 + Systém souborů Databricks
 + Azure Database for MySQL
@@ -83,7 +83,7 @@ S datovými sadami můžete provádět řadu úloh strojového učení prostřed
 
 + [Naučte se modely strojového učení](how-to-train-with-datasets.md).
 + Využívání datových sad v 
-     + [automatizované experimenty ML](how-to-create-portal-experiments.md)
+     + [automatizované experimenty ML](how-to-use-automated-ml-for-ml-models.md)
      + [Návrhář](tutorial-designer-automobile-price-train-score.md#import-data) 
 + Přístup k datovým sadám pro bodování pomocí dávkového odvozování v [kanálech strojového učení](how-to-create-your-first-pipeline.md).
 + Vytvořte [projekt pro popisky dat](#label).

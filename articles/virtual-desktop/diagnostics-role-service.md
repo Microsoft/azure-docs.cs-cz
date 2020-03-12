@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+manager: lizross
+ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383649"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127934"
 ---
 # <a name="identify-and-diagnose-issues"></a>Identifikace a diagnostika problémů
 
@@ -34,23 +35,66 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 Diagnostika virtuálních počítačů s Windows používá jenom jednu rutinu prostředí PowerShell, ale obsahuje mnoho volitelných parametrů, které vám pomůžou zúžit a izolovat problémy. V následujících částech jsou uvedeny rutiny, které můžete spustit pro diagnostiku problémů. Většinu filtrů lze použít společně. Hodnoty uvedené v závorkách, například `<tenantName>`, by měly být nahrazeny hodnotami, které se vztahují na vaši situaci.
 
-### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Načtení diagnostických aktivit ve vašem tenantovi
+>[!IMPORTANT]
+>Funkce diagnostiky je určena pro řešení potíží s jedním uživatelem. Všechny dotazy, které používají PowerShell, musí zahrnovat parametry *-username* nebo *-ActivityId* . Pro možnosti monitorování použijte Log Analytics. Další informace o tom, jak odesílat diagnostická data do vašeho pracovního prostoru, najdete v tématu [použití Log Analytics pro diagnostickou funkci](diagnostics-log-analytics.md) . 
 
-Diagnostické aktivity můžete načíst zadáním rutiny **Get-RdsDiagnosticActivities** . Následující příklad rutiny vrátí seznam diagnostických aktivit seřazených z většiny na nejméně poslední.
+### <a name="filter-diagnostic-activities-by-user"></a>Filtrovat diagnostické aktivity podle uživatele
 
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName>
-```
-
-Podobně jako jiné rutiny PowerShellu pro virtuální počítače s Windows musíte použít parametr **-tenant** a zadat tak název tenanta, kterého chcete pro dotaz použít. Název tenanta je použitelný pro téměř všechny dotazy na diagnostické aktivity.
-
-### <a name="retrieve-detailed-diagnostic-activities"></a>Načtení podrobných diagnostických aktivit
-
-Parametr **-detailed** poskytuje další podrobnosti pro každou vrácenou diagnostickou aktivitu. Formát každé aktivity se liší v závislosti na typu aktivity. Parametr **-detailed** lze přidat do jakéhokoli dotazu **Get-RdsDiagnosticActivities** , jak je znázorněno v následujícím příkladu.
+Parametr **-username** vrátí seznam diagnostických aktivit iniciované zadaným uživatelem, jak je znázorněno v následujícím příkladu rutiny.
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
+
+Parametr **-username** lze také kombinovat s dalšími volitelnými parametry filtrování.
+
+### <a name="filter-diagnostic-activities-by-time"></a>Filtrovat diagnostické aktivity podle času
+
+Můžete filtrovat seznam vrácených diagnostických aktivit s parametry **-čas_spuštění** a **-čas_ukončení** . Parametr **-StartTime** vrátí seznam diagnostických aktivit od konkrétního data, jak je znázorněno v následujícím příkladu.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
+```
+
+Parametr **-čas_ukončení** lze přidat do rutiny s parametrem **-StartTime** pro určení konkrétního časového období, pro které chcete získat výsledky. Následující příklad rutiny vrátí seznam diagnostických aktivit od 1. srpna do 10.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
+```
+
+Parametry **-čas_spuštění** a **-čas_ukončení** lze také kombinovat s jinými volitelnými parametry filtrování.
+
+### <a name="filter-diagnostic-activities-by-activity-type"></a>Filtrovat diagnostické aktivity podle typu aktivity
+
+Diagnostické aktivity můžete také filtrovat podle typu aktivity s parametrem **-ActivityType** . Následující rutina vrátí seznam připojení koncových uživatelů:
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
+```
+
+Následující rutina vrátí seznam úloh správy správců:
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
+```
+
+Rutina **Get-RdsDiagnosticActivities** v současné době nepodporuje určení kanálu jako ActivityType.
+
+### <a name="filter-diagnostic-activities-by-outcome"></a>Filtrovat diagnostické aktivity podle výsledku
+
+Seznam vrácených diagnostických aktivit můžete filtrovat podle výsledku s parametrem **-výsledek** . Následující příklad rutiny vrátí seznam úspěšných diagnostických aktivit.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
+```
+
+Následující příklad rutiny vrátí seznam neúspěšných diagnostických aktivit.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
+```
+
+Parametr **-výsledek** lze také kombinovat s jinými volitelnými parametry filtrování.
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Načtení konkrétní diagnostické aktivity podle ID aktivity
 
@@ -68,63 +112,13 @@ Chcete-li zobrazit chybové zprávy pro aktivitu, která selhala, je nutné spus
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="filter-diagnostic-activities-by-user"></a>Filtrovat diagnostické aktivity podle uživatele
+### <a name="retrieve-detailed-diagnostic-activities"></a>Načtení podrobných diagnostických aktivit
 
-Parametr **-username** vrátí seznam diagnostických aktivit iniciované zadaným uživatelem, jak je znázorněno v následujícím příkladu rutiny.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
-```
-
-Parametr **-username** lze také kombinovat s dalšími volitelnými parametry filtrování.
-
-### <a name="filter-diagnostic-activities-by-time"></a>Filtrovat diagnostické aktivity podle času
-
-Můžete filtrovat seznam vrácených diagnostických aktivit s parametry **-čas_spuštění** a **-čas_ukončení** . Parametr **-StartTime** vrátí seznam diagnostických aktivit od konkrétního data, jak je znázorněno v následujícím příkladu.
+Parametr **-detailed** poskytuje další podrobnosti pro každou vrácenou diagnostickou aktivitu. Formát každé aktivity se liší v závislosti na typu aktivity. Parametr **-detailed** lze přidat do jakéhokoli dotazu **Get-RdsDiagnosticActivities** , jak je znázorněno v následujícím příkladu.
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018"
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
 ```
-
-Parametr **-čas_ukončení** lze přidat do rutiny s parametrem **-StartTime** pro určení konkrétního časového období, pro které chcete získat výsledky. Následující příklad rutiny vrátí seznam diagnostických aktivit od 1. srpna do 10.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
-```
-
-Parametry **-čas_spuštění** a **-čas_ukončení** lze také kombinovat s jinými volitelnými parametry filtrování.
-
-### <a name="filter-diagnostic-activities-by-activity-type"></a>Filtrovat diagnostické aktivity podle typu aktivity
-
-Diagnostické aktivity můžete také filtrovat podle typu aktivity s parametrem **-ActivityType** . Následující rutina vrátí seznam připojení koncových uživatelů:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Connection
-```
-
-Následující rutina vrátí seznam úloh správy správců:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
-```
-
-Rutina **Get-RdsDiagnosticActivities** v současné době nepodporuje určení kanálu jako ActivityType.
-
-### <a name="filter-diagnostic-activities-by-outcome"></a>Filtrovat diagnostické aktivity podle výsledku
-
-Seznam vrácených diagnostických aktivit můžete filtrovat podle výsledku s parametrem **-výsledek** . Následující příklad rutiny vrátí seznam úspěšných diagnostických aktivit.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Success
-```
-
-Následující příklad rutiny vrátí seznam neúspěšných diagnostických aktivit.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
-```
-
-Parametr **-výsledek** lze také kombinovat s jinými volitelnými parametry filtrování.
 
 ## <a name="common-error-scenarios"></a>Běžné chybové scénáře
 
@@ -143,7 +137,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|
 |3|UnauthorizedAccess|Uživatel, který se pokusil spustit rutinu prostředí PowerShell pro správu, nemá oprávnění k tomu, aby to provedl nebo nedokázal zadat své uživatelské jméno.|
-|1 000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
+|1000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|Tenanta nemůžete odstranit, pokud obsahuje objekty. Nejprve odstraňte fondy hostitelů relací a potom akci opakujte.|
 |2000|HostPoolNotFound|Název fondu hostitelů, který jste zadali, se neshoduje s žádnými existujícími fondy hostitelů. Přečtěte si název fondu hostitelů pro překlepy a zkuste to znovu.|
 |2005|HostPoolCannotBeRemovedHasApplicationGroups|Fond hostitelů nemůžete odstranit, pokud obsahuje objekty. Odeberte nejprve všechny skupiny aplikací ve fondu hostitelů.|

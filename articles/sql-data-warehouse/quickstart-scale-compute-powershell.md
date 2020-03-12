@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: škálování COMPUTE – PowerShell '
-description: Škálování výpočetní kapacity ve fondu SQL v PowerShellu Výpočetní prostředky můžete škálovat na více instancí, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+title: Škálování COMPUTE pro synapse fond SQL (Azure PowerShell)
+description: Výpočetní prostředky pro synapse fond SQL (datový sklad) můžete škálovat pomocí Azure PowerShell.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5952f17c83b778e8713488b5c53c9f210c84a146
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 2b8aef37e9e7a3022ffc799bba80e8944330b8f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390497"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128879"
 ---
-# <a name="quickstart-scale-compute-in-in-azure-synapse-analytics-sql-pool-using-azure-powershell"></a>Rychlý Start: škálování výpočetních prostředků ve službě Azure synapse Analytics SQL Pool pomocí Azure PowerShell
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: škálování COMPUTE pro synapse fond SQL s Azure PowerShell
 
-Škálujte výpočetní prostředky ve fondu SQL pomocí Azure PowerShell. Můžete [horizontálně navýšit kapacitu výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo ji snížit a dosáhnout tak nižších nákladů.
+Výpočetní prostředky pro synapse fond SQL (datový sklad) můžete škálovat pomocí Azure PowerShell. Můžete [horizontálně navýšit kapacitu výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo ji snížit a dosáhnout tak nižších nákladů. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 

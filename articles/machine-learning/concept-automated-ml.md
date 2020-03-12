@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 501158ffa8d05bc34dd39c21680012b1f3308def
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396426"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127198"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -95,9 +95,9 @@ V každém automatizovaném experimentu Machine Learning se vaše data automatic
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Pokročilý předzpracování: volitelné featurization
 
-K dispozici jsou také další rozšířené předzpracování a featurization, například data guardrails, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#featurization). Povolit toto nastavení pomocí:
+K dispozici jsou také další rozšířené předzpracování a featurization, například data guardrails, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-use-automated-ml-for-ml-models.md#featurization). Povolit toto nastavení pomocí:
 
-+ Azure Machine Learning Studio: v části **Zobrazit další konfiguraci** povolte **Automatické featurization** [pomocí těchto kroků](how-to-create-portal-experiments.md#create-and-run-experiment).
++ Azure Machine Learning Studio: v části **Zobrazit další konfiguraci** povolte **Automatické featurization** [pomocí těchto kroků](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
 + Python SDK: určení `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` pro [třídu`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
@@ -153,7 +153,7 @@ Model **C** představuje nejasný případ přeložení; přesnost školení je 
 
 ## <a name="classification--regression"></a>Klasifikace & regrese
 
-Klasifikace a regrese jsou nejběžnějšími typy úloh strojového učení. Oba typy jsou pod dohledem učení, ve kterém se modely učí pomocí školicích dat, a tyto učení použít pro nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-create-portal-experiments.md#featurization) 
+Klasifikace a regrese jsou nejběžnějšími typy úloh strojového učení. Oba typy jsou pod dohledem učení, ve kterém se modely učí pomocí školicích dat, a tyto učení použít pro nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-use-automated-ml-for-ml-models.md#featurization) 
 
 Hlavním cílem modelů klasifikace je předpovědět, ke kterým kategoriím budou nová data zacházet v závislosti na studiu ze svých školicích dat. Mezi běžné klasifikace patří zjišťování podvodů, rozpoznávání rukopisu a detekce objektů.  Přečtěte si další informace a podívejte [se na příklad klasifikace pomocí automatizovaného strojového učení](tutorial-train-models-with-aml.md).
 
@@ -286,7 +286,7 @@ Podívejte se na příklady a Naučte se vytvářet modely pomocí automatizovan
 + Postupujte podle [kurzu: Automatické učení regresního modelu s Azure Machine Learning](tutorial-auto-train-models.md)
 
 + Nakonfigurujte nastavení pro experiment automatických školení:
-  + V Azure Machine Learning Studiu [použijte tento postup](how-to-create-portal-experiments.md).
+  + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md).
   + Pomocí sady Python SDK [použijte následující postup](how-to-configure-auto-train.md).
 
 + Naučte se, jak automaticky naučit data časových řad pomocí [těchto kroků](how-to-auto-train-forecast.md).

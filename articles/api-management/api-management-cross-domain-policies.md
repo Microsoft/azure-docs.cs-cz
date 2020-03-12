@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375068"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126543"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -127,7 +127,7 @@ Tento příklad ukazuje, jak podporovat žádosti o předběžné lety, jako jso
 |CORS|Kořenový element.|Ano|neuvedeno|
 |povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins` může obsahovat jeden prvek `origin`, který určuje `*` pro povolení jakéhokoli původu, nebo jeden nebo více `origin` prvků, které obsahují identifikátor URI.|Ano|neuvedeno|
 |počátek|Hodnota může být buď `*`, aby povolovala všechny zdroje, nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Ano|Pokud je port v identifikátoru URI vynechán, použije se port 80 pro protokol HTTP a port 443 pro protokol HTTPS.|
-|povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje prvky `method`, které určují podporované příkazy HTTP.|Ne|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
+|povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje prvky `method`, které určují podporované příkazy HTTP. Hodnota `*` označuje všechny metody.|Ne|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
 |method|Určuje příkaz HTTP.|Pokud je k dispozici oddíl `allowed-methods`, je vyžadován alespoň jeden prvek `method`.|neuvedeno|
 |povoleno – hlavičky|Tento prvek obsahuje `header` prvky určující názvy hlaviček, které mohou být zahrnuty v žádosti.|Ne|neuvedeno|
 |vystavení – hlavičky|Tento prvek obsahuje `header` prvky určující názvy hlaviček, které budou přístupné pro klienta.|Ne|neuvedeno|

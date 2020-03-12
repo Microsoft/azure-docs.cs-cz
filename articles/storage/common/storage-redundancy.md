@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674277"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130074"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -61,7 +61,7 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 
 |    Typ účtu úložiště    |    Podporované oblasti    |    Podporované služby    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Obecné účely v2<sup>1</sup>    | Jihovýchodní Asie<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japonsko – východ<br /> Velká Británie – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2    |    Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
+|    Obecné účely v2<sup>1</sup>    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japonsko – východ<br /> Jižní Afrika – sever<br /> Velká Británie – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2    |    Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
 |    BlockBlobStorage<sup>1</sup>    | Evropa – západ<br /> USA – východ    |    Pouze objekty blob bloku    |
 |    Úložiště    | Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
 
@@ -109,10 +109,12 @@ GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících 
 - Jihovýchodní Asie
 - Evropa – sever
 - Evropa – západ
+- Japonsko – východ
 - Velká Británie – jih
 - USA – východ
 - USA – východ 2
 - USA – střed
+- USA – západ 2
 
 Microsoft nadále povoluje GZRS a RA-GZRS v dalších oblastech Azure. Informace o podporovaných oblastech najdete na stránce [aktualizace služby Azure](https://azure.microsoft.com/updates/) .
 

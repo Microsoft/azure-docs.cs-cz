@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386958"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129252"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexování zásad v Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Azure Cosmos DB podporuje dva režimy indexování:
 
 Ve výchozím nastavení je zásada indexování nastavená na `automatic`. Dosáhnete toho nastavením vlastnosti `automatic` v zásadách indexování na `true`. Nastavení této vlastnosti na `true` umožní službě Azure CosmosDB automaticky indexovat dokumenty při jejich zápisu.
 
-## <a name="including-and-excluding-property-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
+## <a id="include-exclude-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
 
 Vlastní zásada indexování může určovat cesty vlastností, které jsou explicitně zahrnuté nebo vyloučené z indexování. Optimalizací počtu indexovaných cest můžete snížit velikost úložiště využitého vaším kontejnerem a zlepšit latenci operací zápisu. Tyto cesty jsou definovány podle [metody popsané v části Přehled indexování](index-overview.md#from-trees-to-property-paths) s následujícími přídavky:
 
@@ -75,7 +75,7 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 
 - Pro cesty s běžnými znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojitých uvozovek (například "/path/?"). V případě cest s dalšími speciálními znaky je nutné před dvojitými uvozovkami vyčínat řetězec cesty (například "/\"Path-ABC\"/?"). Pokud očekáváte, že v cestě jsou speciální znaky, můžete každý z nich vymezit řídicím znakem. Funkce bez jakýchkoli rozdílů neprovádí žádnou odchylku, pokud zadáte všechny cesty a pouze ty, které mají speciální znaky.
 
-- Vlastnost System "ETag" je vyloučena z indexování ve výchozím nastavení, pokud není značka ETag přidána do zahrnuté cesty pro indexování.
+- Vlastnost System "_etag" je vyloučena z indexování ve výchozím nastavení, pokud není značka ETag přidána do zahrnuté cesty pro indexování.
 
 Při zahrnutí a vyloučení cest se můžete setkat s následujícími atributy:
 

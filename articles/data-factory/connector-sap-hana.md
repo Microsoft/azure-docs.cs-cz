@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
 ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431088"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79125989"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -148,8 +148,8 @@ Chcete-li kopírovat data z SAP HANA, jsou podporovány následující vlastnost
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **SapHanaTable** . | Ano |
-| schema | Název schématu v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "query") |
-| table | Název tabulky v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "query") |
+| schéma | Název schématu v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "query") |
+| tabulka | Název tabulky v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad:**
 
@@ -284,7 +284,7 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 | INTEGER            | Datový typ Int32                          |
 | NCLOB              | Řetězec                         |
 | NVARCHAR           | Řetězec                         |
-| NEMOVITOSTÍ               | Jednoduchá                         |
+| NEMOVITOSTÍ               | Jednoduché                         |
 | SECONDDATE         | DateTime                       |
 | SHORTTEXT          | Řetězec                         |
 | SMALLDECIMAL       | Decimal                        |

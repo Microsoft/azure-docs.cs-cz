@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364448"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129191"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -87,11 +87,11 @@ Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i konte
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>Aktualizace propustnosti v databázi nebo kontejneru
 
-Po vytvoření kontejneru Azure Cosmos nebo databáze můžete aktualizovat zřízenou propustnost. Maximální zajištěná propustnost, kterou můžete nakonfigurovat v databázi nebo v kontejneru, není nijak omezena. Minimální zajištěná propustnost závisí na následujících faktorech: 
+Po vytvoření kontejneru Azure Cosmos nebo databáze můžete aktualizovat zřízenou propustnost. Maximální zajištěná propustnost, kterou můžete nakonfigurovat v databázi nebo v kontejneru, není nijak omezena. [Minimální zajištěná propustnost](concepts-limits.md#storage-and-throughput) závisí na následujících faktorech: 
 
 * Maximální velikost dat, kterou jste někdy uložili do kontejneru
 * Maximální propustnost, kterou jste na kontejneru někdy zřídili.
-* Maximální počet Cosmos kontejnerů Azure, které jste někdy vytvořili v databázi se sdílenou propustností. 
+* Aktuální počet Cosmos kontejnerů Azure, které máte v databázi se sdílenou propustností. 
 
 Minimální propustnost kontejneru nebo databáze můžete načíst programově pomocí sad SDK nebo zobrazit hodnotu v Azure Portal. Při použití sady .NET SDK umožňuje metoda [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) škálovat hodnotu zřízené propustnosti. Při použití sady Java SDK umožňuje metoda [RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples) škálovat hodnotu zřízené propustnosti. 
 

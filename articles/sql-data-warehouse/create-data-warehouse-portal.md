@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a dotazování datového skladu (Azure Portal)
-description: Vytvoření a dotazování fondu SQL Azure synapse Analytics pomocí Azure Portal
+title: Vytvoření a dotazování synapse fondu SQL (Azure Portal)
+description: Vytvoření a dotazování synapse fondu SQL pomocí Azure Portal
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a3dbe5d74dc1e88d0615937b8c6e6d2a77b64a7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6966932e95ff538de4b2f9be1ac06516311a0919
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381085"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129245"
 ---
-# <a name="quickstart-create-and-query-an-azure-synapse-analytics-sql-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování fondu SQL Azure synapse Analytics pomocí Azure Portal
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování synapse fondu SQL pomocí Azure Portal
 
-Zřízení fondu SQL ve službě Azure synapse Analytics (dřív SQL DW) pomocí Azure Portal umožňuje rychle vytvořit datový sklad a dotazovat se na něj.
+Rychle vytvářejte a Dotazujte synapse fond SQL (datový sklad) ve službě Azure synapse Analytics (dřív SQL DW) pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
@@ -39,7 +39,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Datové sklady se vytvářejí pomocí fondu SQL ve službě Azure synapse Analytics. Vytvoří se fond SQL s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-servers.md).
 
-Pomocí těchto kroků vytvořte datový sklad, který obsahuje ukázková data **AdventureWorksDW** .
+Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **AdventureWorksDW** .
 
 1. v levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
 
@@ -55,7 +55,7 @@ Pomocí těchto kroků vytvořte datový sklad, který obsahuje ukázková data 
    | :------ | :-------------- | :---------- |
    | **Předplatné** | Vaše předplatné | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
    | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   | **Název datového skladu** | Jakýkoli globálně jedinečný název (příklad je *mySampleDataWarehouse*) | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). Poznámka: datový sklad je jedním z typů databáze. |
+   | **Název fondu SQL** | Jakýkoli globálně jedinečný název (příklad je *mySampleDataWarehouse*) | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). Všimněte si, že fond SQL je jedním z typů databáze. |
    | **Server** | Libovolný globálně jedinečný název | Vyberte existující server nebo vytvořte nový název serveru, vyberte **vytvořit novou**. Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
 
    ![vytvoření základních podrobností datového skladu](media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -66,7 +66,7 @@ Pomocí těchto kroků vytvořte datový sklad, který obsahuje ukázková data 
 
    Další informace o úrovních výkonu najdete v tématu [Správa výpočetních prostředků v Azure SQL Data Warehouse](sql-data-warehouse-manage-compute-overview.md).
 
-5. Teď, když jste dokončili kartu základy formuláře Azure synapse Analytics, vyberte **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte datový sklad ve fondu SQL. Zřizování trvá několik minut.
+5. Teď, když jste dokončili kartu základy formuláře Azure synapse Analytics, vyberte **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte fond SQL. Zřizování trvá několik minut.
 
    ![vybrat kontrolu + vytvořit](media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -74,7 +74,7 @@ Pomocí těchto kroků vytvořte datový sklad, který obsahuje ukázková data 
 
 6. Na panelu nástrojů vyberte **oznámení** pro monitorování procesu nasazení.
 
-   ![– oznámení](media/create-data-warehouse-portal/notification.png)
+   ![oznámení](media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
@@ -105,7 +105,7 @@ Služba Azure synapse vytvoří bránu firewall na úrovni serveru. Tato brána 
 
 8. Vyberte **OK** a pak zavřete stránku **nastavení brány firewall** .
 
-Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým skladům. Připojení funguje z aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Při připojování použijte účet správce serveru, který jste předtím vytvořili.
+Nyní se můžete připojit k SQL serveru a jeho fondům SQL pomocí této IP adresy. Připojení funguje z aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Při připojování použijte účet správce serveru, který jste předtím vytvořili.
 
 > [!IMPORTANT]
 > Standardně je přístup přes bránu firewall služby SQL Database povolený pro všechny služby Azure. na této stránce vyberte **vypnuto** a pak výběrem **Uložit** zakažte bránu firewall pro všechny služby Azure.
@@ -116,7 +116,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. V nabídce na levé straně vyberte **Azure synapse Analytics** a na stránce **Azure synapse Analytics** vyberte svůj datový sklad.
+2. V nabídce na levé straně vyberte **Azure synapse Analytics** a na stránce **Azure synapse Analytics** vyberte svůj.
 
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název sqlpoolservername.database.windows.net.
 
@@ -126,7 +126,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
 
-1. Otevřete nástroj SQL Server Management Studio.
+1. Otevřete SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -134,8 +134,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | :------ | :-------------- | :---------- |
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **sqlpoolservername.Database.Windows.NET**. |
-   | Ověřování | Ověřování serveru SQL | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-   | Přihlášení | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
+   | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+   | Přihlásit | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
    ||||
 
@@ -145,7 +145,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
 
-   ![objekty databáze](media/create-data-warehouse-portal/connected-ssms.png) 
+   ![databázové objekty](media/create-data-warehouse-portal/connected-ssms.png) 
 
 ## <a name="run-some-queries"></a>Spuštění nějakých dotazů
 
@@ -174,21 +174,21 @@ SQL Data Warehouse jako dotazovací jazyk používá T-SQL. Pokud chcete otevř�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Účtují se vám poplatky za jednotky datového skladu a data uložená v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
+Účtují se vám poplatky za jednotky datového skladu a data uložená ve vašem fondu SQL. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
 
-- Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Můžete pokračovat v výpočtůch, kdykoli budete připraveni na práci s daty.
+- Pokud chcete uchovávat data v úložišti, můžete pozastavit výpočetní prostředí, když nepoužíváte fond SQL. Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Můžete pokračovat v výpočtůch, kdykoli budete připraveni na práci s daty.
 
-- Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit.
+- Pokud chcete odebrat budoucí poplatky, můžete odstranit fond SQL.
 
 Pomocí těchto kroků vyčistěte prostředky, které už nepotřebujete.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte svůj datový sklad.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)vyberte svůj fond SQL.
 
    ![Vyčištění prostředků](media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je datový sklad pozastavený, zobrazí se tlačítko pro **obnovení** . Chcete-li obnovit výpočetní výkon, vyberte možnost **pokračovat**.
+2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je fond SQL pozastaven, zobrazí se tlačítko pro **obnovení** . Chcete-li obnovit výpočetní výkon, vyberte možnost **pokračovat**.
 
-3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
+3. Pokud chcete odebrat fond SQL, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
 
 4. Pokud chcete odebrat vytvořený SQL Server, vyberte na předchozím obrázku **sqlpoolservername.Database.Windows.NET** a pak vyberte **Odstranit**. S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
@@ -196,7 +196,4 @@ Pomocí těchto kroků vyčistěte prostředky, které už nepotřebujete.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste vytvořili datový sklad, vytvořili jste pravidlo brány firewall připojené k vašemu datovému skladu a spustili několik dotazů. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
-
-> [!div class="nextstepaction"]
-> [Načtení dat do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+Pokud se chcete dozvědět víc o načítání dat do fondu SQL, přejděte do článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) . 

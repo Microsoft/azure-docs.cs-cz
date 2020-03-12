@@ -15,23 +15,25 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: b432f381bae79d783663130d06dbf874f00a9994
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082076"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129400"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přesun z Media Services V2 na V3
 
 >Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` do čtečky kanálů RSS.
 
-Tento článek popisuje změny, které byly představeny v Azure Media Services V3, zobrazuje rozdíly mezi dvěma verzemi a poskytuje pokyny k migraci.
+Tento článek poskytuje pokyny k migraci z Media Services V2 na v3.
 
 Pokud máte k dispozici službu video Service na [starší verzi rozhraní api Media Services V2](../previous/media-services-overview.md), měli byste před migrací na rozhraní API V3 zkontrolovat následující pokyny a důležité informace. Rozhraní V3 API nabízí spoustu výhod a nových funkcí, které zlepšují vývojové prostředí a možnosti Media Services. Nicméně jak je uvedeno v části [známé problémy](#known-issues) v tomto článku, existují také určitá omezení v důsledku změn mezi verzemi rozhraní API. Tato stránka bude zachována, protože Media Services tým zajišťuje pokračování v vylepšeních rozhraní API v3 a řeší mezery mezi verzemi. 
 
-> [!NOTE]
-> [Azure Portal](https://portal.azure.com/) můžete použít ke správě [prostředků](assets-concept.md)V3 [Live Events](live-events-outputs-concept.md), View (ne Manage) v3, získat informace o přístupu k rozhraním API. Další podrobnosti najdete v tématu [Nejčastější dotazy](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources). 
+## <a name="prerequisites"></a>Předpoklady
+
+* Kontrola [Media Services V2 vs. v3](media-services-v2-vs-v3.md)
+* [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="benefits-of-media-services-v3"></a>Výhody Media Services V3
   
@@ -57,78 +59,6 @@ Pokud máte k dispozici službu video Service na [starší verzi rozhraní api M
 * Zabezpečení pro ingestování RTMP<br/>Při vytváření živé události získáte čtyři adresy URL pro příjem. 4 adresy URL pro přijímání jsou skoro stejné, mají stejný token streamování (AppId), ale liší se jenom část číslo portu. Dvě z těchto adres URL jsou primární a zálohují pro RTMP.   
 * Máte v rámci svých entit řízení přístupu na základě role (RBAC). 
 
-## <a name="changes-from-v2"></a>Změny z v2
-
-* Pro prostředky vytvořené pomocí v3 Media Services podporuje pouze [šifrování úložiště Azure Storage na straně serveru](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
-    * Rozhraní V3 API můžete použít s prostředky vytvořenými s rozhraními API v2, která měla [šifrování úložiště](../previous/media-services-rest-storage-encryption.md) (AES 256) poskytované Media Services.
-    * Nemůžete vytvářet nové Assety se starším [šifrováním úložiště](../previous/media-services-rest-storage-encryption.md) AES 256, které používá rozhraní V3 API.
-* Vlastnosti [assetu](assets-concept.md)v v3 se liší od v2, viz [jak mapování vlastností](assets-concept.md#map-v3-asset-properties-to-v2).
-* Sady SDK V3 jsou teď oddělené od sady SDK úložiště, což vám dává větší kontrolu nad verzí sady SDK pro úložiště, kterou chcete použít, a vyhněte se problémům se správou verzí. 
-* V rozhraních API V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavených Media Encoder Standard v2. Například přenosová rychlost v v2 by se zadala jako 128 (KB/s), ale v v3 by byla 128000 (bity za sekundu). 
-* Entity AssetFiles, AccessPolicies a IngestManifests v v3 neexistují.
-* Vlastnost IAsset. ParentAssets v v3 neexistuje.
-* ContentKeys už není entita, teď je to vlastnost lokátoru streamování.
-* Event Grid podpora nahrazuje NotificationEndpoints.
-* Následující entity byly přejmenovány
-    * Výstup úlohy nahrazuje úlohu a je teď součástí úlohy.
-    * Lokátor streamování nahrazuje lokátor.
-    * Živá událost nahrazuje kanál.<br/>Účtování živých událostí je založeno na měřičích živých kanálů. Další informace najdete v tématu [fakturace](live-event-states-billing.md) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
-    * Živý výstup nahrazuje program.
-* Živé výstupy začínají při vytváření a při odstranění se zastaví. Programy fungují jinak v rozhraních API v2, musely se spustit po vytvoření.
-* Chcete-li získat informace o úloze, je nutné znát název transformace, pod kterou byla úloha vytvořena. 
-* Ve verzích v2 se [vstupní](../previous/media-services-input-metadata-schema.md) a [výstupní](../previous/media-services-output-metadata-schema.md) soubory metadat XML generují jako výsledek úlohy kódování. V v3 se formát metadat změnil z XML na JSON. 
-* V Media Services V2 lze zadat inicializační vektor (IV). V Media Services V3 nelze zadat FairPlay IV. I když nemá vliv na zákazníky, kteří používají Media Services pro balíčky i doručování licencí, může to být problém při použití systému DRM jiného výrobce k doručování licencí FairPlay (hybridní režim). V takovém případě je důležité znát, že FairPlay IV je odvozená od ID klíče cbcs a dá se načíst pomocí tohoto vzorce:
-
-    ```
-    string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
-    ```
-
-    with
-
-    ``` 
-    public static byte[] HexStringToByteArray(string hex)
-    {
-        return Enumerable.Range(0, hex.Length)
-            .Where(x => x % 2 == 0)
-            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-            .ToArray();
-    }
-    ```
-
-    Další informace najdete v tématu [Azure Functions C# kód pro Media Services V3 v hybridním režimu pro operace Live i vod](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3).
- 
-> [!NOTE]
-> Projděte si zásady vytváření názvů, které se vztahují k [prostředkům Media Services V3](media-services-apis-overview.md#naming-conventions). Přečtěte si také [pojmenování objektů BLOB](assets-concept.md#naming).
-
-## <a name="feature-gaps-with-respect-to-v2-apis"></a>Mezery funkcí v souvislosti s rozhraními API v2
-
-Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uzavírání mezer je nedokončené.
-
-* [Kodér úrovně Premium](../previous/media-services-premium-workflow-encoder-formats.md) a starší [procesory media Analytics](../previous/media-services-analytics-overview.md) (Azure Media Services indexer 2 Preview, Face redigování atd.) nejsou přístupné prostřednictvím v3.<br/>Zákazníci, kteří chtějí migrovat z Media Indexer 1 nebo 2 Preview, můžou hned použít předvolbu AudioAnalyzer v rozhraní V3 API.  Tato nová předvolba obsahuje více funkcí, než je starší Media Indexer 1 nebo 2. 
-* Mnohé z [pokročilých funkcí Media Encoder standard v](../previous/media-services-advanced-encoding-with-mes.md) rozhraních API v2 v současnosti nejsou v systému V3 k dispozici, například:
-  
-    * Sešity prostředků
-    * Překrytí
-    * Jej
-    * Sprite miniatur
-    * Vložení tiché zvukové stopy, když vstup nemá žádný zvuk
-    * Vložení stop videa, když vstup nemá žádné video
-* Živé události s překódováním v současné době nepodporují vložení do středu a vložení značek AD prostřednictvím volání rozhraní API. 
-
-> [!NOTE]
-> Zapište prosím tento článek do záložky a zkontrolujte, jestli jsou aktualizace.
- 
-## <a name="code-differences"></a>Rozdíly v kódu
-
-V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné scénáře.
-
-|Scénář|V2 API|V3 API|
-|---|---|---|
-|Vytvoření assetu a nahrání souboru |[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|Odeslat úlohu|[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Ukazuje, jak nejdřív vytvořit transformaci a pak odeslat úlohu.|
-|Publikování assetu pomocí šifrování AES |1. vytvoření ContentKeyAuthorizationPolicyOption<br/>2. vytvoření ContentKeyAuthorizationPolicy<br/>3. vytvoření AssetDeliveryPolicy<br/>4. vytvoření Assetu a nahrání obsahu nebo odeslání úlohy a použití výstupního prostředku<br/>5. přidružte AssetDeliveryPolicy k Assetu.<br/>6. vytvoření ContentKey<br/>7. připojení ContentKey k Assetu<br/>8. vytvoření AccessPolicy<br/>9. vytvořit Lokátor<br/><br/>[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. vytvoření zásad klíče obsahu<br/>2. vytvoření Assetu<br/>3. nahrání obsahu nebo použití Assetu jako JobOutput<br/>4. vytvoření lokátoru streamování<br/><br/>[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|Získat podrobnosti o úloze a spravovat úlohy |[Správa úloh s v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Správa úloh pomocí v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
-
 ## <a name="known-issues"></a>Známé problémy
 
 *  V současné době můžete použít [Azure Portal](https://portal.azure.com/) k těmto akcím:
@@ -153,5 +83,4 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si článek o [streamování souborů](stream-files-dotnet-quickstart.md), kde se dozvíte, jak je snadné začít s kódováním a streamováním videosouborů. 
-
+[Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET](stream-files-dotnet-quickstart.md)

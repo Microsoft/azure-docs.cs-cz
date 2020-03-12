@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/03/2020
-ms.openlocfilehash: 27dae07328af125c25512ab9f1eb81d0f4eda99b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 3150eed063413d0665adfc104a603f9f2b5755c3
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396326"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129177"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -26,6 +26,10 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odráželo rozšířené (zatím volitelné) používání vnímání a zpracování AI v základních operacích. Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Nová a stávající řešení hledání nejsou ovlivněna změnou názvu služby.
 
 ## <a name="feature-announcements"></a>Oznámení funkcí
+
+### <a name="march-2020"></a>Březen 2020
+
++ Nové stabilní [REST API pro správu (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) je teď k dispozici. 
 
 ### <a name="february-2020"></a>Únor 2020
 

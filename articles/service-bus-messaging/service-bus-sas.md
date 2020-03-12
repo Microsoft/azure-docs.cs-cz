@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121739"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117159"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
@@ -29,7 +29,7 @@ SAS chrání přístup k Service Bus na základě autorizačních pravidel. Ty j
 > [!NOTE]
 > Azure Service Bus podporuje autorizaci přístupu k oboru názvů Service Bus a jeho entitám pomocí Azure Active Directory (Azure AD). Ověřování uživatelů nebo aplikací pomocí tokenu OAuth 2,0 vráceného službou Azure AD poskytuje vynikající zabezpečení a usnadňuje použití přes sdílené přístupové podpisy (SAS). V případě Azure AD není nutné ukládat tokeny do kódu a ohrozit potenciální ohrožení zabezpečení.
 >
-> Microsoft doporučuje používat Azure AD s aplikacemi Azure Service Bus, pokud je to možné. Další informace najdete v těchto článcích:
+> Microsoft doporučuje používat Azure AD s aplikacemi Azure Service Bus, pokud je to možné. Další informace najdete v následujících článcích:
 > - [Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service BUSM entitám](authenticate-application.md).
 > - [Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus](service-bus-managed-service-identity.md)
 
@@ -263,18 +263,18 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 
 | Operace | Požadovaná deklarace identity | Rozsah deklarací identity |
 | --- | --- | --- |
-| **Namespace** | | |
-| Konfigurace autorizačního pravidla pro obor názvů |Spravujte |Libovolná adresa oboru názvů |
+| **Hosting** | | |
+| Konfigurace autorizačního pravidla pro obor názvů |Správa |Libovolná adresa oboru názvů |
 | **Registr služby** | | |
-| Zobrazení výčtu privátních zásad |Spravujte |Libovolná adresa oboru názvů |
+| Zobrazení výčtu privátních zásad |Správa |Libovolná adresa oboru názvů |
 | Zahájení naslouchání na oboru názvů |Naslouchat |Libovolná adresa oboru názvů |
 | Odesílání zpráv do naslouchacího procesu v oboru názvů |Odeslat |Libovolná adresa oboru názvů |
-| **Fronta** | | |
-| Vytvoření fronty |Spravujte |Libovolná adresa oboru názvů |
-| Odstranění fronty |Spravujte |Libovolná platná adresa fronty |
-| Zobrazení výčtu front |Spravujte |/Queues $Resources |
-| Získat popis fronty |Spravujte |Libovolná platná adresa fronty |
-| Konfigurace autorizačního pravidla pro frontu |Spravujte |Libovolná platná adresa fronty |
+| **Provedených** | | |
+| Vytvoření fronty |Správa |Libovolná adresa oboru názvů |
+| Odstranění fronty |Správa |Libovolná platná adresa fronty |
+| Zobrazení výčtu front |Správa |/Queues $Resources |
+| Získat popis fronty |Správa |Libovolná platná adresa fronty |
+| Konfigurace autorizačního pravidla pro frontu |Správa |Libovolná platná adresa fronty |
 | Odeslat do fronty |Odeslat |Libovolná platná adresa fronty |
 | Přijímání zpráv z fronty |Naslouchat |Libovolná platná adresa fronty |
 | Opuštění nebo ukončení zpráv po přijetí zprávy v režimu prohlížení zámku |Naslouchat |Libovolná platná adresa fronty |
@@ -283,26 +283,26 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 | Získání stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Nastavení stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Naplánování zprávy pro pozdější doručení; například [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Naslouchat | Libovolná platná adresa fronty
-| **Téma** | | |
-| Vytvoření tématu |Spravujte |Libovolná adresa oboru názvů |
-| Odstranění tématu |Spravujte |Jakákoli platná adresa tématu |
-| Vyčíslení výčtu témat |Spravujte |/Topics $Resources |
-| Získat popis tématu |Spravujte |Jakákoli platná adresa tématu |
-| Konfigurace autorizačního pravidla pro téma |Spravujte |Jakákoli platná adresa tématu |
+| **Výklad** | | |
+| Vytvoření tématu |Správa |Libovolná adresa oboru názvů |
+| Odstranění tématu |Správa |Jakákoli platná adresa tématu |
+| Vyčíslení výčtu témat |Správa |/Topics $Resources |
+| Získat popis tématu |Správa |Jakákoli platná adresa tématu |
+| Konfigurace autorizačního pravidla pro téma |Správa |Jakákoli platná adresa tématu |
 | Odeslat do tématu |Odeslat |Jakákoli platná adresa tématu |
 | **Předplatné** | | |
-| Vytvoření odběru |Spravujte |Libovolná adresa oboru názvů |
-| Odstranění předplatného |Spravujte |.. /myTopic/Subscriptions/mySubscription |
-| Zobrazení výčtu předplatných |Spravujte |.. /myTopic/Subscriptions |
-| Získat popis předplatného |Spravujte |.. /myTopic/Subscriptions/mySubscription |
+| Vytvoření odběru |Správa |Libovolná adresa oboru názvů |
+| Odstranění předplatného |Správa |.. /myTopic/Subscriptions/mySubscription |
+| Zobrazení výčtu předplatných |Správa |.. /myTopic/Subscriptions |
+| Získat popis předplatného |Správa |.. /myTopic/Subscriptions/mySubscription |
 | Opuštění nebo ukončení zpráv po přijetí zprávy v režimu prohlížení zámku |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | Odložit zprávu pro pozdější načtení |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | Zpráva nedoručených zpráv |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | Získání stavu přidruženého k relaci tématu |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | Nastavení stavu přidruženého k relaci tématu |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
-| **pravidla** | | |
-| Vytvoření pravidla |Spravujte |.. /myTopic/Subscriptions/mySubscription |
-| Odstranění pravidla |Spravujte |.. /myTopic/Subscriptions/mySubscription |
+| **Pravidly** | | |
+| Vytvoření pravidla |Správa |.. /myTopic/Subscriptions/mySubscription |
+| Odstranění pravidla |Správa |.. /myTopic/Subscriptions/mySubscription |
 | Zobrazení výčtu pravidel |Spravovat nebo naslouchat |.. /myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>Další kroky

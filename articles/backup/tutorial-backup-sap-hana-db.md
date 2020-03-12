@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 6273b4d5745b3c13b48622cde842c0222a47c5d4
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 435668dedc7efa33fd5fbfeea8671f05d070a385
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921211"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128647"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -96,7 +96,23 @@ Spuštění předregistračního skriptu provede následující funkce:
 
 * Nainstaluje nebo aktualizuje všechny potřebné balíčky, které vyžaduje agent Azure Backup pro vaši distribuci.
 * Provádí odchozí kontroly připojení k síti pomocí Azure Backup serverů a závislých služeb, jako je Azure Active Directory a Azure Storage.
-* Přihlásí se do systému HANA pomocí klíče uživatele uvedeného v rámci [požadavků](#prerequisites). Tento klíč se používá k vytvoření uživatele pro zálohování (AZUREWLBACKUPHANAUSER) v systému HANA a dá se odstranit po úspěšném spuštění skriptu před registrací. Tento uživatel pro zálohování (AZUREWLBACKUPHANAUSER) umožní agentovi služby Backup zjišťovat, zálohovat a obnovovat databáze v systému HANA.
+* Přihlásí se do systému HANA pomocí klíče uživatele uvedeného v rámci [požadavků](#prerequisites). Uživatelský klíč se používá k vytvoření zálohovacího uživatele (AZUREWLBACKUPHANAUSER) v systému HANA a klíč uživatele lze odstranit po úspěšném spuštění skriptu před registrací.
+* K AZUREWLBACKUPHANAUSER se přiřazují tyto požadované role a oprávnění:
+  * Správce databáze: pro vytvoření nových databází během obnovy.
+  * ČTENÍ katalogu: pro čtení katalogu záloh.
+  * SAP_INTERNAL_HANA_SUPPORT: pro přístup k několika soukromým tabulkám.
+* Skript přidá klíč do **hdbuserstore** pro AZUREWLBACKUPHANAUSER pro modul plug-in Hana pro zpracování všech operací (databázové dotazy, operace obnovení, konfigurace a spuštění zálohování).
+
+Pro potvrzení vytvoření klíče spusťte na počítači HANA příkaz HDBSQL s přihlašovacími údaji SIDADM:
+
+```hdbsql
+hdbuserstore list
+```
+
+Výstup příkazu by měl zobrazovat klíč {SID} {DBNAME} s uživatelem zobrazeným jako AZUREWLBACKUPHANAUSER.
+
+>[!NOTE]
+> Ujistěte se, že v `/usr/sap/{SID}/home/.hdb/`máte jedinečnou sadu souborů SSFS. V této cestě by měla být jenom jedna složka.
 
 ## <a name="create-a-recovery-service-vault"></a>Vytvoření trezoru služby Recovery Services
 

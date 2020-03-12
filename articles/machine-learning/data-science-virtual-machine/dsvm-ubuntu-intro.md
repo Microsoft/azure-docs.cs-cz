@@ -4,22 +4,22 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Nakonfigurujte a vytvořte Data Science Virtual Machine pro Linux (Ubuntu), abyste mohli provádět analýzy a strojové učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: quickstart
-ms.date: 12/31/2019
-ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 03/10/2020
+ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526106"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129521"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Linux (Ubuntu)
 
 Načtěte si Ubuntu 18,04 Data Science Virtual Machine a spusťte ho.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit Data Science Virtual Machine 18,04 Ubuntu, musíte mít předplatné Azure. [Vyzkoušejte si Azure zdarma](https://azure.com/free).
 Upozorňujeme prosím, že bezplatné účty Azure nepodporují SKU virtuálních počítačů s povoleným GPU.
@@ -29,7 +29,7 @@ Upozorňujeme prosím, že bezplatné účty Azure nepodporují SKU virtuálníc
 Tady je postup vytvoření instance Data Science Virtual Machine Ubuntu 18,04:
 
 1. Pokud ještě nejste přihlášení, můžete přejít na [Azure Portal](https://portal.azure.com) zobrazí se výzva k přihlášení k účtu Azure.
-1. Vyhledejte výpis virtuálního počítače zadáním příkazu "virtuální počítač pro datové vědy" a výběrem Data Science Virtual Machine-Ubuntu 18,04 Preview.
+1. Vyhledejte výpis virtuálního počítače zadáním příkazu "virtuální počítač pro datové vědy" a výběrem Data Science Virtual Machine-Ubuntu 18,04.
 
 1. V dalším okně vyberte **vytvořit**.
 
@@ -60,7 +60,7 @@ Tady je postup vytvoření instance Data Science Virtual Machine Ubuntu 18,04:
    1. Vyberte **Zkontrolovat a vytvořit**.
    1. **Zkontrolovat a vytvořit**
       * Ověřte, zda všechny informace, které jste zadali správný. 
-      * Vyberte **Create** (Vytvořit).
+      * Vyberte **Vytvořit**.
     
     Zřizování by měla trvat asi 5 minut. Stav se zobrazí v Azure Portal.
 
@@ -118,13 +118,14 @@ Ubuntu DSVM spouští [JupyterHub](https://github.com/jupyterhub/jupyterhub), v�
       ![IP adresa počítače Ubuntu](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
    1. Z místního počítače otevřete webový prohlížeč a přejděte do https:\//Your-VM-IP: 8000 a nahraďte "Your-VM-IP" IP adresou, kterou jste si poznamenali dříve.
+   1. Váš prohlížeč vám pravděpodobně znemožní otevřít stránku přímo a oznamuje vám, že došlo k chybě certifikátu. DSVM zajišťuje zabezpečení prostřednictvím certifikátu podepsaného svým držitelem. Většina prohlížečů vám po tomto upozornění umožní kliknout na. Mnoho prohlížečů bude nadále poskytovat určitý druh vizuálního upozornění na certifikát v rámci vaší webové relace.
    1. Zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače, a přihlaste se. 
 
       ![Zadejte Jupyter přihlášení.](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
    1. Projděte si mnoho dostupných ukázkových poznámkových bloků.
 
-JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Pokud k němu chcete získat přístup, přihlaste se k JupyterHub a potom přejděte na adresu URL https:\//Your-VM-IP: 8000/User/Your-username/Lab a nahraďte "Your-username" uživatelským jménem, které jste si zvolili při konfiguraci virtuálního počítače.
+JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Pokud k němu chcete získat přístup, přihlaste se k JupyterHub a potom přejděte na adresu URL https:\//Your-VM-IP: 8000/User/Your-username/Lab a nahraďte "Your-username" uživatelským jménem, které jste si zvolili při konfiguraci virtuálního počítače. Je možné, že se zpočátku zablokuje přístup k webu z důvodu chyby certifikátu.
 
 JupyterLab můžete nastavit jako výchozí server Poznámkový blok přidáním tohoto řádku do `/etc/jupyterhub/jupyterhub_config.py`:
 

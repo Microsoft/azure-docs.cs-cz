@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384688"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129524"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Kurz: připojení, nastavení a aktivace Azure Data Box Edge 
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Připojení k fyzickému zařízení
 > * Nastavení a aktivace fyzického zařízení
 
-## <a name="prerequisites"></a>Požadovaný
+## <a name="prerequisites"></a>Předpoklady
 
 Před konfigurací a nastavením Data Box Edge zařízení se ujistěte, že:
 
@@ -41,7 +41,7 @@ Před konfigurací a nastavením Data Box Edge zařízení se ujistěte, že:
 
 2. Připojte počítač k portu 1 na svém zařízení. Pomocí následující ilustrace Identifikujte PORT 1 na vašem zařízení.
 
-    ![Naplánování kabelového zařízení](./media/data-box-edge-deploy-install/backplane-cabled.png)
+    ![Propojovací rozhraní zařízení se zapojenou kabeláží](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
 
 3. Otevřete okno prohlížeče a přejděte k místnímu webovému uživatelskému rozhraní zařízení na `https://192.168.100.10`.  
@@ -81,7 +81,7 @@ Nyní jste na řídicím panelu zařízení.
    
     Při konfiguraci nastavení sítě Pamatujte na toto:
 
-   - Pokud je ve vašem prostředí povolený protokol DHCP, jsou síťová rozhraní nakonfigurovaná automaticky. Automaticky se přiřadí IP adresa, podsíť, brána a DNS.
+   - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. Automaticky se přiřadí IP adresa, podsíť, brána a DNS.
    - Pokud není protokol DHCP povolený, můžete v případě potřeby přiřadit statické IP adresy.
    - Síťové rozhraní můžete nakonfigurovat jako IPv4.
 
@@ -94,13 +94,18 @@ Nyní jste na řídicím panelu zařízení.
    
    Na stránce **nastavení webového proxy serveru** postupujte takto:
    
-   určitého. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://host-IP address or FQDN:Port number`. Adresy URL protokolu HTTPS nejsou podporovány.
+   a. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://host-IP address or FQDN:Port number`. Adresy URL protokolu HTTPS nejsou podporovány.
 
    b. V části **ověřování**vyberte **žádné** nebo **NTLM**.
 
-   r. Pokud používáte ověřování, zadejte uživatelské jméno a heslo.
+   c. Pokud používáte ověřování, zadejte uživatelské jméno a heslo.
 
-   trojrozměrné. Pokud chcete ověřit a použít nakonfigurovaná nastavení webového proxy serveru, vyberte **použít nastavení**.
+   d. Pokud chcete ověřit a použít nakonfigurovaná nastavení webového proxy serveru, vyberte **použít nastavení**.
+   
+   > [!NOTE]
+   > Soubory automatické konfigurace proxy serveru (PAC) nejsou podporovány. Soubor PAC definuje způsob, jakým můžou webové prohlížeče a další uživatelské agenti automaticky zvolit odpovídající proxy server (přístupovou metodu) pro načtení dané adresy URL.
+   > Proxy servery, které se pokoušejí zachytit a načíst veškerý provoz (pak se znovu podepisuje vše s vlastní certifikací) nejsou kompatibilní, protože certifikát proxy serveru není důvěryhodný.
+   > Obvykle transparentní proxy servery dobře fungují s Azure Data Box Edge.
 
 4. Volitelné V levém podokně vyberte **Nastavení času**a pak nakonfigurujte časové pásmo a primární a sekundární servery NTP pro vaše zařízení.  
     Jsou vyžadovány servery NTP, protože vaše zařízení musí synchronizovat čas, aby se mohl ověřit u vašich poskytovatelů cloudových služeb.
@@ -129,7 +134,7 @@ Nyní jste na řídicím panelu zařízení.
 6. V levém podokně vyberte **Nastavení cloudu**a potom aktivujte zařízení pomocí služby Data Box Edge v Azure Portal.
     
     1. Do pole **aktivační klíč** zadejte aktivační klíč, který jste získali v [části získání aktivačního klíče](data-box-edge-deploy-prep.md#get-the-activation-key) pro data box Edge.
-    2. Vyberte **použít**.
+    2. Vyberte **Použít**.
        
         ![Stránka nastavení cloudu místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 
@@ -147,7 +152,7 @@ Instalace zařízení je dokončená. V zařízení teď můžete přidat sdíle
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak:
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Připojení k fyzickému zařízení

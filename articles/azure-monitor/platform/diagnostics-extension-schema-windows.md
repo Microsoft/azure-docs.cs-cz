@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384126"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128455"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky Windows
 Azure Diagnostics rozšíření je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a zatížení výpočetních prostředků Azure. Tento článek podrobně popisuje schéma používané pro konfiguraci diagnostického rozšíření na virtuálních počítačích s Windows a dalších výpočetních prostředcích.
@@ -506,7 +506,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 ```
 
 > [!NOTE]
-> Definice veřejné jímky Azure Monitor pro konfiguraci má dvě vlastnosti, *PrincipalId* a *tajný kód*. Ty se vyžadují jenom pro klasické virtuální počítače a klasické cloudové služby. Tyto vlastnosti by neměly být používány pro jiné prostředky.
+> Definice privátního jímky konfigurace Azure Monitor má dvě vlastnosti, *PrincipalId* a *tajný kód*. Ty se vyžadují jenom pro klasické virtuální počítače a klasické cloudové služby. Tyto vlastnosti by neměly být používány pro jiné prostředky.
 
 
 ```json

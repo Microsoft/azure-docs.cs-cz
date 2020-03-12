@@ -5,17 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358870"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126975"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Správa prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
-Pokud chcete zjistit stav sítě pro [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a spravovat Logic Apps, připojení, účty pro integraci a konektory, které existují ve vaší ISE, postupujte podle kroků v tomto tématu. Pokud chcete přidat tyto artefakty do svého ISEu, přečtěte si téma [Přidání artefaktů do prostředí integrační služby](../logic-apps/add-artifacts-integration-service-environment-ise.md).
+Tento článek ukazuje, jak provádět úlohy správy pro [prostředí integračních služeb (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), například:
+
+* Spravujte prostředky, jako jsou Logic Apps, připojení, účty pro integraci a konektory v ISE.
+* Ověřte stav sítě v ISE.
+* Přidejte kapacitu, restartujte ISE nebo odstraňte své ISE, postupujte podle kroků v tomto tématu. Pokud chcete přidat tyto artefakty do svého ISEu, přečtěte si téma [Přidání artefaktů do prostředí integrační služby](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
 ## <a name="view-your-ise"></a>Zobrazení ISE
 
@@ -97,6 +101,83 @@ Můžete zobrazit a spravovat vlastní konektory, které jste nasadili do ISE.
 
 1. Chcete-li odebrat účty pro integraci z ISE, pokud už je nepotřebujete, vyberte tyto účty pro integraci a pak vyberte **Odstranit**.
 
+<a name="add-capacity"></a>
+
+## <a name="add-ise-capacity"></a>Přidat kapacitu ISE
+
+Základní jednotka ISE úrovně Premium má pevnou kapacitu, takže pokud potřebujete větší propustnost, můžete přidat další jednotky škálování, a to buď během vytváření, nebo později. SKU vývojáře neobsahuje možnost přidávat jednotky škálování.
+
+1. V [Azure Portal](https://portal.azure.com)přejdete do svého ISEu.
+
+1. Pokud chcete zkontrolovat metriky využití a výkonu pro váš ISE, v nabídce ISE vyberte **Přehled**.
+
+   ![Zobrazit využití pro ISE](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
+
+1. V části **Nastavení**vyberte **horizontální**navýšení kapacity. V podokně **Konfigurace** vyberte z těchto možností:
+
+   * [**Ruční škálování**](#manual-scale): škálování na základě počtu zpracovávaných jednotek, které chcete použít.
+   * [**Vlastní automatické škálování**](#custom-autoscale): škálování na základě metrik výkonu výběrem z různých kritérií a určením mezních podmínek pro splnění těchto kritérií.
+
+   ![Vyberte typ škálování, který chcete.](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+
+<a name="manual-scale"></a>
+
+### <a name="manual-scale"></a>Ruční škálování
+
+1. Po výběru **ručního škálování**pro **Další kapacitu**vyberte počet jednotek škálování, které chcete použít.
+
+   ![Vyberte typ škálování, který chcete.](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
+
+1. Jakmile budete mít hotovo, vyberte **Uložit**.
+
+<a name="custom-autoscale"></a>
+
+### <a name="custom-autoscale"></a>Vlastní automatické škálování
+
+1. Po výběru možností **vlastní automatické škálování**, pro **název nastavení automatického škálování**zadejte název vašeho nastavení a volitelně vyberte skupinu prostředků Azure, do které nastavení patří.
+
+   ![Zadejte název pro nastavení automatického škálování a vyberte skupinu prostředků.](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
+
+1. Pro **výchozí** podmínku vyberte možnost škálování na **základě metriky** nebo **škály na konkrétní počet instancí**.
+
+   * Pokud zvolíte možnost založený na instanci, zadejte číslo pro jednotky zpracování, což je hodnota od 0 do 10.
+
+   * Zvolíte-li možnost založenou na metrikách, postupujte následovně:
+
+     1. V části **pravidla** vyberte **Přidat pravidlo**.
+
+     1. V podokně **pravidlo škálování** nastavte kritéria a akci, která se má provést při triggeru pravidla.
+
+     1. V případě **omezení instancí**zadejte tyto hodnoty:
+
+        * **Minimum**: minimální počet jednotek zpracování, které se mají použít
+        * **Maximum**: maximální počet jednotek zpracování, které se mají použít
+        * **Výchozí**: Pokud dojde k potížím při čtení metriky prostředků a aktuální kapacita je pod výchozí kapacitou, automatické škálování škáluje na výchozí počet zpracovaných jednotek. Pokud ale aktuální kapacita překročí výchozí kapacitu, automatické škálování se neškáluje.
+
+1. Pokud chcete přidat další podmínku, vyberte **Přidat podmínku škálování**.
+
+1. Až skončíte s nastavením automatického škálování, uložte změny.
+
+<a name="restart-ISE"></a>
+
+## <a name="restart-ise"></a>Restartovat ISE
+
+Pokud změníte nastavení serveru DNS nebo serveru DNS, musíte restartovat ISE, aby ISE mohl tyto změny vyzvednout. Restartování ISE SKU úrovně Premium nevede k výpadkům kvůli redundanci a komponentám, které během recyklace restartují jeden po druhém. Nicméně SKU vývojáře ISE výpadky, protože neexistuje žádná redundance. Další informace najdete v tématu [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
+
+1. V [Azure Portal](https://portal.azure.com)přejdete do svého ISEu.
+
+1. V nabídce ISE vyberte **Přehled**. Na panelu nástrojů přehled **restartujte**.
+
+   ![Restartovat prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
+
+<a name="delete-ise"></a>
+
+## <a name="delete-ise"></a>Odstranit ISE
+
+Než odstraníte ISE, který už nepotřebujete, nebo skupinu prostředků Azure obsahující ISE, ověřte, že nemáte žádné zásady ani zámky ve skupině prostředků Azure, která obsahuje tyto prostředky nebo ve službě Azure Virtual Network, protože tyto položky můžou blokovat odstranění.
+
+Po odstranění ISE možná budete muset počkat až 9 hodin, než se pokusíte odstranit virtuální síť Azure nebo podsítě.
+
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak se [připojit k virtuálním sítím Azure z izolovaných aplikací logiky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) .
+* [Přidání prostředků do prostředí integrační služby](../logic-apps/add-artifacts-integration-service-environment-ise.md)

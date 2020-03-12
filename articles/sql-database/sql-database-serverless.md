@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 3/11/2020
+ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359835"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129335"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 
@@ -67,8 +67,8 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 |:---|:---|:---|
 |**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. |  Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
 | **Úsilí řízení výkonu** |Malým|Výkonnější|
-|**Škálování na výpočetní výkon**|Automatické|Ručně|
-|**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Okamžité|
+|**Škálování na výpočetní výkon**|Automaticky|Ručně|
+|**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Okamžitá|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
 
 ## <a name="purchasing-model-and-service-tier"></a>Nákup modelu a úrovně služeb
@@ -149,6 +149,10 @@ Pokud je databáze bez serveru pozastavená, pak se při prvním přihlášení 
 
 Latence pro autoresume a autopauza databáze bez serveru je obvykle na hodnotu 1 minuta k autoresume a 1-10 minut pro autopauzu.
 
+### <a name="customer-managed-transparent-data-encryption-byok"></a>Transparentní šifrování dat spravované zákazníkem (BYOK)
+
+Pokud používáte [transparentní šifrování dat (BYOK) spravované zákazníkem](transparent-data-encryption-byok-azure-sql.md) a databáze bez serveru se při odstraňování nebo odvolávání klíčů automaticky pozastavila, databáze zůstane ve stavu automatického pozastavení.  V takovém případě se při dalším pokusu o obnovení databáze zůstane pozastavená, dokud se její stav nevrátí na nedostupný po přibližně 10 minut nebo i méně.  Jakmile bude databáze nepřístupná, proces obnovení bude stejný jako u zřízených výpočetních databází.  Pokud je databáze bez serveru v režimu online, když dojde k odstranění nebo odvolání klíče, pak se databáze také stane nedostupnou po přibližně 10 minutách nebo méně, stejně jako u zřízené výpočetní databáze.
+
 ## <a name="onboarding-into-serverless-compute-tier"></a>Připojování do výpočetní úrovně bez serveru
 
 Vytvoření nové databáze nebo přesunutí existující databáze do výpočetní úrovně bez serveru se řídí stejným vzorem jako vytvoření nové databáze v zřízené výpočetní úrovni a zahrnuje následující dva kroky.
@@ -157,15 +161,15 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
 
    |Název cíle služby|Úroveň služeb|Generování hardwaru|Maximální počet virtuální jádra|
    |---|---|---|---|
-   |GP_S_Gen5_1|Obecné použití|Gen5|1|
-   |GP_S_Gen5_2|Obecné použití|Gen5|2|
-   |GP_S_Gen5_4|Obecné použití|Gen5|4|
-   |GP_S_Gen5_6|Obecné použití|Gen5|6|
-   |GP_S_Gen5_8|Obecné použití|Gen5|8|
-   |GP_S_Gen5_10|Obecné použití|Gen5|10|
-   |GP_S_Gen5_12|Obecné použití|Gen5|12|
-   |GP_S_Gen5_14|Obecné použití|Gen5|14|
-   |GP_S_Gen5_16|Obecné použití|Gen5|16|
+   |GP_S_Gen5_1|Pro obecné účely|Gen5|1|
+   |GP_S_Gen5_2|Pro obecné účely|Gen5|2|
+   |GP_S_Gen5_4|Pro obecné účely|Gen5|4|
+   |GP_S_Gen5_6|Pro obecné účely|Gen5|6|
+   |GP_S_Gen5_8|Pro obecné účely|Gen5|8|
+   |GP_S_Gen5_10|Pro obecné účely|Gen5|10|
+   |GP_S_Gen5_12|Pro obecné účely|Gen5|12|
+   |GP_S_Gen5_14|Pro obecné účely|Gen5|14|
+   |GP_S_Gen5_16|Pro obecné účely|Gen5|16|
 
 2. Volitelně můžete zadat minimální virtuální jádra a prodlevu při pauze pro změnu jejich výchozích hodnot. V následující tabulce jsou uvedeny dostupné hodnoty pro tyto parametry.
 
