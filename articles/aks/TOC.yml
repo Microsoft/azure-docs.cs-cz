@@ -216,7 +216,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: Řízení nasazování s využitím Azure Policy (Preview)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
-        - name: Aktualizace přihlašovacích údajů instančního objektu clusteru
+        - name: Aktualizace přihlašovacích údajů clusteru
           href: update-credentials.md
         - name: Omezení a řízení výchozí přenosu clusteru
           href: limit-egress-traffic.md

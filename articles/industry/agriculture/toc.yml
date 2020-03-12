@@ -9,6 +9,8 @@
       href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Ingestování historických telemetrických dat
       href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: Dotazování na ingestovaná telemetrická data
+      href: query-telemetry-data-from-azure-farmbeats.md
 - name: Koncepty
   items:
     - name: Vzory integrace

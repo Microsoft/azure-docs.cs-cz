@@ -10,6 +10,8 @@
   items:
     - name: Nastavení skupiny dostupnosti Azure RHEL VM s využitím STONITH
       href: sql-server-linux-rhel-ha-stonith-tutorial.md
+    - name: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure
+      href: sql-server-linux-rhel-ha-listener-tutorial.md
 - name: Referenční informace
   items:
     - name: Azure CLI

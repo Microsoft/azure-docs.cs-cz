@@ -105,8 +105,10 @@
           href: logic-apps-diagnosing-failures.md
     - name: Přístup k virtuálním sítím Azure
       items:
-        - name: Připojení k virtuálním sítím s prostředími integrační služby
+        - name: Vytvoření prostředí integrační služby – Azure Portal
           href: connect-virtual-network-vnet-isolated-environment.md
+        - name: Vytvoření prostředí integrační služby – REST API
+          href: create-integration-service-environment-rest-api.md
         - name: Nastavení přístupu k více prostředím integrační služby
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Přidání prostředků do prostředí integrační služby

@@ -102,6 +102,8 @@
     - name: Analýza
       href: cdn-log-analysis.md
       items:
+        - name: Nezpracované protokoly HTTP
+          href: enable-raw-logs.md
         - name: Diagnostické protokoly Azure
           href: cdn-azure-diagnostic-logs.md
         - name: Analytické nástroje pro Azure CDN od Verizonu
