@@ -8,12 +8,12 @@ ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851523"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128412"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -55,9 +55,6 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   | **Přejmenovat soubor** | Neuvedeno | Neuvedeno |
   | **Aktualizovat soubor** | Ne | Neuvedeno |
   ||||
-
-  > [!NOTE]
-  > Pro nahrání velkých souborů potřebujete oprávnění ke čtení i zápisu pro kořenovou složku na vašem serveru SFTP.
 
 * Protokol SFTP – triggery SSH nepodporují bloky zpráv. Při vyžádání obsahu souboru triggery vyberou pouze soubory, které jsou 15 MB nebo menší. Pokud chcete získat soubory větší než 15 MB, použijte tento vzor:
 

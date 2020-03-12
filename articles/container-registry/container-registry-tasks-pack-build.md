@@ -3,12 +3,12 @@ title: Sestavení image s nativním cloudovým Buildpackm
 description: Pomocí příkazu AZ ACR Pack Build sestavíte image kontejneru z aplikace a nahrajete ji do Azure Container Registry bez použití souboru Dockerfile.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456117"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087076"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Sestavení a vložení obrázku z aplikace pomocí cloudového nativního Buildpacku
 
@@ -30,7 +30,7 @@ Při spuštění `az acr pack build`zadejte alespoň následující:
 * Jedno z [podporovaných umístění kontextu](container-registry-tasks-overview.md#context-locations) pro ACR úlohy, jako je například místní adresář, úložiště GitHub nebo vzdálené tarballu
 * Název obrázku tvůrce Buildpack, který je vhodný pro vaši aplikaci. Azure Container Registry ukládá do mezipaměti image tvůrce, jako je například `cloudfoundry/cnb:0.0.34-cflinuxfs3` pro rychlejší sestavení.  
 
-`az acr pack build` podporuje další funkce příkazů úloh ACR, včetně [proměnných pro spuštění](container-registry-tasks-reference-yaml.md#run-variables) a [protokolů spuštění úloh](container-registry-tasks-overview.md#view-task-logs) , které jsou streamované a také uložené pro pozdější načtení.
+`az acr pack build` podporuje další funkce příkazů úloh ACR, včetně [proměnných pro spuštění](container-registry-tasks-reference-yaml.md#run-variables) a [protokolů spuštění úloh](container-registry-tasks-logs.md) , které jsou streamované a také uložené pro pozdější načtení.
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Příklad: sestavení obrázku Node. js pomocí nástroje Cloud Foundry Builder
 

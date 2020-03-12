@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852182"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087005"
 ---
 # <a name="job-and-task-error-checking"></a>Kontrola chyb úlohy a úlohy
 
@@ -72,6 +72,17 @@ Ve všech případech je nutné zkontrolovat chyby a informace o chybách v nás
 Je třeba vzít v úvahu dopad selhání úkolů na úlohu a jakékoli závislosti úkolů.  Vlastnost [exitConditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions) lze zadat pro úkol ke konfiguraci akce pro závislosti a pro úlohu.
 - Pro závislosti [DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction) určuje, jestli jsou úlohy závislé na neúspěšném úkolu blokované nebo spuštěné.
 - V případě úlohy [JobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction) určuje, jestli neúspěšná úloha vede k vypínání, ukončení nebo ponechání úlohy beze změny.
+
+### <a name="task-command-line-failures"></a>Selhání příkazového řádku úlohy
+
+Po spuštění příkazového řádku úlohy se výstup zapíše do `stderr.txt` a `stdout.txt`. Kromě toho aplikace může zapisovat do souborů protokolu specifických pro aplikace.
+
+Pokud uzel fondu, na kterém je úloha spuštěná, stále existuje, můžete soubory protokolu získat a zobrazit. Například Azure Portal seznamy a mohou zobrazovat soubory protokolu pro úlohu nebo uzel fondu. Více rozhraní API také umožňuje vypsat a získat soubory úloh, například [získat z úlohy](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask).
+
+Vzhledem k tomu, že se často dodávají fondy a uzly fondu, se uzly neustále přidávají a odstraňují, doporučuje se, aby byly soubory protokolu trvalé. [Výstupní soubory úlohy](https://docs.microsoft.com/azure/batch/batch-task-output-files) představují pohodlný způsob, jak ukládat soubory protokolu do Azure Storage.
+
+### <a name="output-file-failures"></a>Selhání výstupního souboru
+Při každém nahrání souboru Batch zapisuje do výpočetního uzlu dva soubory protokolu `fileuploadout.txt` a `fileuploaderr.txt`. Můžete si prohlédnout tyto soubory protokolu a získat další informace o konkrétní chybě. V případech, kdy se odeslání souboru nikdy nepokoušelo, například kvůli tomu, že se nezdařilo spustit samotný úkol, tyto soubory protokolu nebudou existovat.  
 
 ## <a name="next-steps"></a>Další kroky
 

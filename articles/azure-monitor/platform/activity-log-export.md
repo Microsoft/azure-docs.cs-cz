@@ -8,11 +8,11 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379537"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096284"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs
 
@@ -30,7 +30,7 @@ Archivace protokolu aktivit do účtu úložiště je užitečná v případě, 
 * **Streamování do systémů protokolování a telemetrie třetích stran**: v průběhu času se streamování služby Azure Event Hubs stane mechanismem pro přesměrování vaší aktivity do řešení systémů Siem a Log Analytics třetích stran.
 * **Sestavení vlastní telemetrie a**rozhraní pro protokolování: Pokud už máte vlastní platformu telemetrie nebo uvažujete o jejím sestavování, je vysoce škálovatelná verze Event Hubs pro publikování a odběr, která umožňuje flexibilní ingestování protokolu aktivit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="storage-account"></a>Účet úložiště
 Pokud budete protokol aktivit archivovat, musíte si [vytvořit účet úložiště](../../storage/common/storage-account-create.md) , pokud ho ještě nemáte. Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům monitorování. Pokud i přesto archivujte protokoly a metriky do účtu úložiště, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
@@ -117,7 +117,7 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Vlastnost | Požadováno | Popis |
+    | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
     | Název |Ano |Název vašeho profilu protokolu. |
     | StorageAccountId |Ne |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
@@ -160,14 +160,14 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Vlastnost | Požadováno | Popis |
+    | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
-    | name |Ano |Název vašeho profilu protokolu. |
+    | jméno |Ano |Název vašeho profilu protokolu. |
     | storage-account-id |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
     | místa |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name`. |
     | dní |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
     |povolené | Ano |True nebo False.  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
-    | kategorie |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
+    | categories |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
 
 
 

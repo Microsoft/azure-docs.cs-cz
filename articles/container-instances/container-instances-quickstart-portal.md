@@ -1,20 +1,15 @@
 ---
 title: Rychlý Start – nasazení kontejneru Docker do instance kontejneru – portál
 description: V tomto rychlém startu použijete Azure Portal k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533528"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087997"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí Azure Portal
 
@@ -40,15 +35,16 @@ Na stránce **základy** zadejte do textových polí **Skupina prostředků**, *
 
 * Skupina prostředků: **Vytvořit novou** > `myresourcegroup`
 * Název kontejneru: `mycontainer`
-* Image kontejneru: `mcr.microsoft.com/azuredocs/aci-helloworld`
+* Zdroj obrázku: **obrázky rychlého** startu
+* Obrázek kontejneru: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Konfigurace základního nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-03]
 
-Pro účely tohoto rychlého startu použijete výchozí nastavení **typu image** **Public** k nasazení veřejné image Microsoft `aci-helloworld`. Tato bitová kopie systému Linux sbalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML.
+V tomto rychlém startu použijete výchozí nastavení k nasazení veřejné image Microsoft `aci-helloworld`. Tato ukázková bitová kopie systému Linux zapisuje malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML. Můžete také přenést vlastní image kontejnerů uložené v Azure Container Registry, Docker Hub nebo v jiných registrech.
 
 Na stránce **sítě** zadejte **popisek názvu DNS** pro váš kontejner. Název musí být jedinečný v rámci oblasti Azure, ve které vytvoříte instanci kontejneru. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
-![Konfigurace nové instance kontejneru na webu Azure Portal][aci-portal-04]
+![Konfigurace nastavení sítě pro novou instanci kontejneru v Azure Portal][aci-portal-04]
 
 U ostatních nastavení ponechte výchozí nastavení a pak vyberte **zkontrolovat + vytvořit**.
 
@@ -56,7 +52,7 @@ Po dokončení ověření se zobrazí souhrn nastavení kontejneru. Vyberte **vy
 
 ![Souhrn nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-05]
 
-Po zahájení nasazení se zobrazí oznámení, které informuje o průběhu nasazení. Po nasazení skupiny kontejnerů se zobrazí další oznámení.
+Po zahájení nasazení se zobrazí oznámení, které indikuje, že nasazení probíhá. Po nasazení skupiny kontejnerů se zobrazí další oznámení.
 
 Otevřete přehled skupiny kontejnerů tak, že přejdete na **skupiny prostředků** > **myresourcegroup** > **myContainer**. Poznamenejte si **Plně kvalifikovaný název domény** instance kontejneru a také její **Stav**.
 
@@ -88,7 +84,7 @@ Jakmile se zobrazí potvrzovací dialogové okno, vyberte **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili službu Azure Container instance z veřejné image Microsoft. Pokud si chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
+V tomto rychlém startu jste vytvořili službu Azure Container instance z veřejné image Microsoft. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)

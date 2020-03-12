@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701326"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126644"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -30,6 +30,9 @@ Tato příručka ukazuje, jak implementovat přihlášení do Microsoftu prostř
 Po dokončení této příručky bude aplikace moci přijímat přihlášení osobních účtů z podobných outlook.com a live.com. Pracovní a školní účty z libovolné společnosti nebo organizace, která je integrovaná s platformou Microsoft Identity Platform, se budou moct přihlašovat do vaší aplikace.
 
 > Tato příručka vyžaduje Microsoft Visual Studio 2019.  Nemáte ji?  [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/).
+
+>[!NOTE]
+> Pokud s platformou Microsoft Identity začínáte, doporučujeme začít s [přihlašováním do webové aplikace ASP.NET přidat Microsoft Identity Platform](quickstart-v2-aspnet-webapp.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak ukázková aplikace vygenerovaná touto příručkou funguje
 
@@ -429,8 +432,8 @@ Po procházení zobrazení řadiče by se měla zobrazit tabulka, která obsahuj
 |---|---|---|
 |**Název** |Celé jméno uživatele | Jméno a příjmení uživatele
 |**Uživatelské jméno** |<span>@domain.com</span> uživatelů | Uživatelské jméno, které se používá k identifikaci uživatele|
-|**Předmět** |Předmět |Řetězec, který jedinečně identifikuje uživatele napříč webem|
-|**ID tenanta** |Guid | **Identifikátor GUID** , který jednoznačně představuje organizaci Azure AD pro uživatele|
+|**Předmět** |Subjekt |Řetězec, který jedinečně identifikuje uživatele napříč webem|
+|**ID tenanta** |identifikátor GUID | **Identifikátor GUID** , který jednoznačně představuje organizaci Azure AD pro uživatele|
 
 Kromě toho by se měla zobrazit tabulka všech deklarací identity, které jsou v žádosti o ověření. Další informace najdete v [seznamu deklarací identity, které jsou v tokenu ID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 

@@ -10,17 +10,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303609"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087906"
 ---
-# <a name="assets-in-azure-media-services"></a>Prostředky v Azure Media Services
+# <a name="assets-in-azure-media-services-v3"></a>Prostředky v Azure Media Services V3
 
 V Azure Media Services [Asset](https://docs.microsoft.com/rest/api/media/assets) je základní koncept. Je místo, kde zadáváte média (například prostřednictvím upload nebo Live ingestování), výstupní média (z výstupu úlohy) a publikování médií z (pro streamování). 
 
@@ -39,37 +39,6 @@ Názvy assetů musí být jedinečné. Pro názvy prostředků Media Services V3
 ### <a name="blobs"></a>Objekty blob
 
 Názvy souborů nebo objektů BLOB v rámci assetu musí splňovat požadavky na [název objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) a [požadavky na název systému souborů NTFS](https://docs.microsoft.com/windows/win32/fileio/naming-a-file). Důvodem těchto požadavků jsou soubory, které lze kopírovat z úložiště objektů blob na místní disk NTFS ke zpracování.
-
-## <a name="map-v3-asset-properties-to-v2"></a>Mapování vlastností assetu V3 na v2
-
-Následující tabulka ukazuje, jak vlastnosti [assetu](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)v v3 jsou mapovány na vlastnosti assetu ve verzi v2.
-
-|vlastnosti V3|vlastnosti v2|
-|---|---|
-|`id`-(jedinečné) úplná Azure Resource Manager cesta najdete v tématu Příklady v [assetu](https://docs.microsoft.com/rest/api/media/assets/createorupdate) .||
-|`name` – (jedinečné) viz zásady [vytváření názvů](media-services-apis-overview.md#naming-conventions) ||
-|`alternateId`|`AlternateId`|
-|`assetId`|`Id` – (jedinečná) hodnota začíná předponou `nb:cid:UUID:`.|
-|`created`|`Created`|
-|`description`|`Name`|
-|`lastModified`|`LastModified`|
-|`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options` (možnosti vytváření)|
-|`type`||
-
-## <a name="storage-side-encryption"></a>Šifrování na straně úložiště
-
-K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifrovat pomocí šifrování na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště ve službě Media Services:
-
-|Možnost šifrování|Popis|Media Services v2|Media Services v3|
-|---|---|---|---|
-|Šifrování úložiště služby Media Services|Šifrování AES-256, klíč spravovaný pomocí Media Services.|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
-|[Šifrování služby Storage pro neaktivní neaktivní data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporuje se|Podporuje se|
-|[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Nepodporuje se|Nepodporuje se|
-
-<sup>1</sup> když Media Services podporuje zpracování obsahu v nešifrované/bez jakékoli formy šifrování, nedoporučuje se to.
-
-<sup>2</sup> v Media Services V3 se šifrování úložiště (šifrování AES-256) podporuje jenom pro zpětnou kompatibilitu, když se vaše prostředky vytvořily pomocí Media Services V2. To znamená, že V3 funguje se stávajícími šifrovanými prostředky úložiště, ale neumožňuje vytváření nových.
 
 ## <a name="next-steps"></a>Další kroky
 

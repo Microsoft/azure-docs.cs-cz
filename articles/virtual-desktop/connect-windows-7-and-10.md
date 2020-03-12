@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: helohr
-ms.openlocfilehash: 15bda000f0297f6e8e006416672897cb15792b79
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 1fb9ef702de4cec2a655aadebe0bc4d69f583ff7
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367497"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128205"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
 

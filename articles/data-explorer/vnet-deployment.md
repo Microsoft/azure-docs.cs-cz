@@ -1,5 +1,5 @@
 ---
-title: Nasazení Azure Průzkumník dat do Virtual Network (Preview)
+title: Nasazení Azure Průzkumník dat do Virtual Network
 description: Přečtěte si, jak nasadit Azure Průzkumník dat do Virtual Network
 author: basaba
 ms.author: basaba
@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851446"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096769"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Nasazení Azure Průzkumník dat do Virtual Network (Preview)
+# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>Nasazení Azure Průzkumník dat do Virtual Network
 
 Tento článek popisuje prostředky, které jsou k dispozici při nasazení clusteru Azure Průzkumník dat do vlastního Virtual Network Azure. Tyto informace vám pomůžou nasadit cluster do podsítě ve vaší Virtual Network (virtuální síť). Další informace o virtuálních sítích Azure najdete v tématu [co je Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
@@ -25,9 +25,6 @@ Azure Průzkumník dat podporuje nasazení clusteru do podsítě v Virtual Netwo
 * Vynutili pravidla [skupiny zabezpečení sítě](/azure/virtual-network/security-overview) (NSG) v provozu clusteru Azure Průzkumník dat.
 * Připojte svoji místní síť k podsíti Azure Průzkumník dat clusteru.
 * Zabezpečte zdroje datových připojení ([centrum událostí](/azure/event-hubs/event-hubs-about) a [Event Grid](/azure/event-grid/overview)) pomocí [koncových bodů služby](/azure/virtual-network/virtual-network-service-endpoints-overview).
-
-> [!NOTE]
-> Integrace Virtual Network a nasazení je v režimu náhledu. Pokud chcete tuto funkci povolit, otevřete [lístek podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 ## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>Přístup ke clusteru Azure Průzkumník dat ve vaší virtuální síti
 

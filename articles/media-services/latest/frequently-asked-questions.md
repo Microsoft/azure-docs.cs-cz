@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977722"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086781"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
@@ -28,9 +28,13 @@ Tento článek obsahuje odpovědi na nejčastější dotazy k Azure Media Servic
 
 Přečtěte si téma [řízení přístupu na základě role (RBAC) pro účty Media Services](rbac-overview.md).
 
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>Jak se streamovat do zařízení Apple iOS?
+
+Ujistěte se, že na konci vaší cesty (po "/manifest" části adresy URL "se nachází" (Format = M3U8-AAPL) ", aby server zdroje streamování vrátil zpět HLS obsah pro spotřebu na nativních zařízeních Apple iOS (podrobnosti najdete v tématu [doručování obsahu](dynamic-packaging-overview.md)).
+
 ### <a name="how-do-i-configure-media-reserved-units"></a>Návody nakonfigurovat rezervované jednotky médií?
 
-Pro úlohy analýzy zvuku a analýzy videa, které jsou aktivované službou Media Services v3 nebo Video Indexerem, důrazně doporučujeme zřídit váš účet s 10 rezervovanými jednotkami S3. Pokud potřebujete více než 10 použité položky S3, otevřete lístek podpory pomocí [webu Azure portal](https://portal.azure.com/).
+Pro úlohy analýzy zvuku a analýzy videa, které jsou aktivované službou Media Services v3 nebo Video Indexerem, důrazně doporučujeme zřídit váš účet s 10 rezervovanými jednotkami S3. Pokud potřebujete více než 10 S3 MRUs, otevřete lístek podpory pomocí [Azure Portal](https://portal.azure.com/).
 
 Podrobnosti najdete v tématu [škálování zpracování médií pomocí](media-reserved-units-cli-how-to.md)rozhraní příkazového řádku.
 
@@ -38,13 +42,17 @@ Podrobnosti najdete v tématu [škálování zpracování médií pomocí](media
 
 Pomocí [transformací](https://docs.microsoft.com/rest/api/media/transforms) můžete nakonfigurovat běžné úlohy pro kódování a analýzu videí. Každá **transformace** popisuje recept nebo pracovní postup úloh pro zpracování vašich videosouborů nebo zvukových souborů. [Úloha](https://docs.microsoft.com/rest/api/media/jobs) je skutečný požadavek na Media Services, jak použít **transformaci** na dané vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odesílat úlohy pomocí rozhraní Media Services API nebo kterékoli z publikovaných sad SDK. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
 
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Video se nahrálo, zakódoval a publikovalo. Jaký je důvod, proč se video nedaří přehrát při pokusu o streamování?
+
+Jedním z nejběžnějších důvodů je, že nemáte koncový bod streamování, ze kterého se snažíte přejít do běžícího stavu.
+
 ### <a name="how-does-pagination-work"></a>Jak funguje stránkování?
 
 Při použití stránkování byste měli vždy použít další odkaz k zobrazení výčtu kolekce a nezáleží na konkrétní velikosti stránky. Podrobnosti a příklady najdete v tématu [filtrování, řazení, stránkování](entities-overview.md).
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Jaké funkce ještě nejsou v Azure Media Services V3 k dispozici?
 
-Podrobnosti najdete v tématu [mezery funkcí v souvislosti s rozhraními API v2](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+Podrobnosti najdete v tématu [mezery funkcí v souvislosti s rozhraními API v2](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Jaký je proces přesunutí účtu Media Services mezi předplatnými?  
 
@@ -76,11 +84,11 @@ Další informace najdete v tématu [Ochrana obsahu pomocí Media Services dynam
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Jak a kde se získat token JWT před jeho použitím žádosti o licenci nebo klíč?
 
-1. V produkčním prostředí potřebujete službu tokenů zabezpečení (STS) (webová služba), která vydává token JWT po požadavku HTTPS. Pro testování, můžete použít kód zobrazený v **GetTokenAsync** metody definované v [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
-2. Přehrávač, bude nutné vytvořit žádost, po ověření uživatele, na službu STS pro takový token a přiřaďte ji jako hodnotu tokenu. Můžete použít [rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/).
+1. V produkčním prostředí potřebujete službu tokenů zabezpečení (STS) (webová služba), která vydává token JWT po požadavku HTTPS. Pro test můžete použít kód zobrazený v metodě **GetTokenAsync** definované v [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+2. Přehrávač, bude nutné vytvořit žádost, po ověření uživatele, na službu STS pro takový token a přiřaďte ji jako hodnotu tokenu. Můžete použít [rozhraní Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/).
 
-* Příkladem s symetrické i asymetrické klíč služby tokenů zabezpečení, najdete v tématu [ https://aka.ms/jwt ](https://aka.ms/jwt). 
-* Příklad přehrávač založené na Azure Media Player pomocí těchto tokenu JWT, naleznete v tématu [ https://aka.ms/amtest ](https://aka.ms/amtest) (expand na token vstup odkaz "player_settings").
+* Příklad spuštění služby STS s symetrickým a asymetrickým klíčem najdete v [https://aka.ms/jwt](https://aka.ms/jwt). 
+* Příklad přehrávače, který je založený na Azure Media Player pomocí takového tokenu JWT, najdete v tématu [https://aka.ms/amtest](https://aka.ms/amtest) (Pokud chcete zobrazit vstup tokenu, rozbalte odkaz player_settings).
 
 ### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Jak autorizujete požadavky na datový proud videa s využitím šifrování AES
 
@@ -90,7 +98,7 @@ V závislosti na profilu uživatele přidejte v rámci služby STS různé dekla
 
 Použijte rozhraní API pro Azure Media Services ke konfiguraci poskytování licencí/klíčů a šifrování prostředků (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
-Další informace:
+Další informace naleznete v tématu:
 
 - [Přehled ochrany obsahu](content-protection-overview.md)
 - [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
@@ -126,13 +134,19 @@ Zákazníci často investovali do serverové farmy licence buď ve své vlastní
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Můžu Azure Portal použít ke správě prostředků V3?
 
-Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
+V současné době můžete použít [Azure Portal](https://portal.azure.com/) k těmto akcím:
+
+* Správa událostí Media Services V3 [Live](live-events-outputs-concept.md) 
+* Zobrazit (Nespravovat) 3 [prostředky](assets-concept.md)V3 
+* [Získejte informace o přístupu k rozhraním API](access-api-portal.md). 
+
+Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Je v v3 koncept AssetFile?
 
 AssetFiles se odebral z rozhraní API AMS, aby bylo možné oddělit Media Services od závislosti sady SDK úložiště. Teď je úložiště, které není Media Services, uchovává informace, které patří do úložiště. 
 
-Další informace najdete v tématu [migrace na Media Services V3](migrate-from-v2-to-v3.md).
+Další informace najdete v tématu [migrace na Media Services V3](media-services-v2-vs-v3.md).
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Kde se nacházelo šifrování úložiště na straně klienta?
 

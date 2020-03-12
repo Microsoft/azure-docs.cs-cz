@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8d40dd09144bddc41347947c0123988530f93f90
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945440"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096679"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Nastavení připojení Azure SQL
 > [!NOTE]
@@ -77,49 +77,6 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 ```
 
-## <a name="minimal-tls-version"></a>Minimální verze protokolu TLS 
-Minimální verze protokolu TLS umožňuje zákazníkovi řídit verzi [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) pro své SQL Server Azure.
-
-Doporučujeme nastavit minimální verzi protokolu TLS na 1,2. Pro zákazníky s aplikacemi, které spoléhají na starší verzi TLS, doporučujeme nastavit minimální verzi TLS podle požadavků vašich aplikací. Pro zákazníky, kteří spoléhají na aplikace, aby se připojili pomocí nešifrovaného připojení, doporučujeme nenastavit žádnou minimální verzi TLS. Další informace najdete v tématu [požadavky na TLS pro SQL Database připojení](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
-
-Po nastavení minimální verze protokolu TLS budou pokusy o přihlášení od klientů, kteří používají verzi TLS nižší, než je minimální verze protokolu TLS serveru, selžou s následující chybou:
-
-```output
-Error 47072
-Login failed with invalid TLS version
-```
-
-## <a name="set-minimal-tls-version-via-powershell"></a>Nastavení minimální verze protokolu TLS prostřednictvím PowerShellu
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Následující skript vyžaduje [modul Azure PowerShell](/powershell/azure/install-az-ps).
-
-Následující skript prostředí PowerShell ukazuje, jak `Get` a `Set` vlastnost **Minimální verze protokolu TLS** na úrovni logického serveru:
-
-```powershell
-#Get the Public Network Access property
-(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).PublicNetworkAccess
-
-# Update Public Network Access to Disabled
-$SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
-
-Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString  -MinimalTlsVersion "1.2"
-```
-
-## <a name="set-minimal-tls-version-via-azure-cli"></a>Nastavení minimální verze protokolu TLS prostřednictvím rozhraní příkazového řádku Azure
-> [!IMPORTANT]
-> Všechny skripty v této části vyžadují rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-### <a name="azure-cli-in-a-bash-shell"></a>Rozhraní příkazového řádku Azure v prostředí bash
-Následující skript rozhraní příkazového řádku ukazuje, jak změnit nastavení **Minimální verze protokolu TLS** v prostředí bash:
-
-```azurecli-interactive
-# Get current setting for Minimal TLS Version
-az sql server show -n sql-server-name -g sql-server-group --query "minimalTlsVersion"
-
-# Update setting for Minimal TLS Version
-az sql server update -n sql-server-name -g sql-server-group --set minimalTlsVersion="1.2"
-```
 
 ## <a name="connection-policy"></a>Zásady připojení
 [Zásady připojení](sql-database-connectivity-architecture.md#connection-policy) určují, jak se klienti připojují k Azure SQL Server. 

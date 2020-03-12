@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5386cace7191be60534f0d2fbf4a85b592d1ecdd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 762f62fa0901672c447da42f416e5b003e7419b2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151635"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127293"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>Informace o profilech klienta VPN P2S
 
@@ -60,7 +60,7 @@ Když přidáte připojení, použijte informace, které jste shromáždili v p�
 
 ## <a name="folder-contents"></a>Obsah složky
 
-* **Složka OpenVPN** obsahuje profil *ovpn* , který je potřeba upravit tak, aby zahrnoval klíč a certifikát. Další informace najdete v tématu [Konfigurace OpenVPN klientů pro Azure VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows).
+* **Složka OpenVPN** obsahuje profil *ovpn* , který je potřeba upravit tak, aby zahrnoval klíč a certifikát. Další informace najdete v tématu [Konfigurace OpenVPN klientů pro Azure VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows). Pokud je v bráně VPN vybraná možnost ověřování Azure AD, nebude tato složka v souboru zip k dispozici. Místo toho bude azurevpnconfig. XML ve složce AzureVPN.
 
 * **Obecná složka** obsahuje certifikát veřejného serveru a soubor VpnSettings. XML. Soubor VpnSettings. XML obsahuje informace potřebné ke konfiguraci obecného klienta.
 

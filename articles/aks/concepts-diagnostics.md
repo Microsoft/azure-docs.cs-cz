@@ -6,16 +6,18 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596177"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126603"
 ---
-# <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Přehled diagnostiky Azure Kubernetes Service (AKS)
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Přehled služby Azure Kubernetes Service Diagnostics (Preview)
 
 Řešení potíží s clustery Azure Kubernetes Service (AKS) je důležitou součástí údržby clusteru, zejména v případě, že cluster používá klíčové úlohy. Diagnostika AKS je inteligentní a samoobslužné prostředí, které vám pomůže identifikovat a vyřešit problémy v clusteru. Diagnostika AKS je v cloudu nativní a můžete ji použít bez dalších konfigurací nebo fakturačních nákladů.
+
+Tato funkce je teď ve verzi Public Preview.
 
 ## <a name="open-aks-diagnostics"></a>Otevřít diagnostiku AKS
 

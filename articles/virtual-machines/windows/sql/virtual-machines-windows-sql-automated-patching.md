@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b48ccede9ca3330d356fa75d4df34789e31eb916
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 292f3e8819f6f9f4b2989423814e02dfcfb4bfdb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350752"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127681"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server v Azure Virtual Machines (Resource Manager)
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.locfileid: "75350752"
 Automatizované opravy vytváří okno údržby pro virtuální počítač Azure s SQL Server. Automatizované aktualizace je možné nainstalovat pouze během tohoto časového období údržby. V případě SQL Serveru toto omezení zajišťuje, že aktualizace systému a případná restartování proběhnou v době, která je pro databázi nejvhodnější. 
 
 > [!IMPORTANT]
-> Jsou nainstalovány pouze aktualizace Windows a SQL Server označené jako **důležité** . Ostatní aktualizace SQL Serveru, jako jsou kumulativní aktualizace, je potřeba nainstalovat ručně. 
+> Jsou nainstalovány pouze aktualizace Windows a SQL Server označené jako **důležité** nebo **kritické** . Další aktualizace SQL Server, jako jsou aktualizace Service Pack a kumulativní aktualizace, které nejsou označeny jako **důležité** nebo **kritické** , musí být nainstalovány ručně. 
 
 Automatizované opravy závisí na [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete používat automatizované opravy, vezměte v úvahu následující požadavky:
 
 **Operační systém**:
@@ -114,7 +114,7 @@ s Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -Resourc
 
 Na základě tohoto příkladu popisuje následující tabulka praktický efekt na cílovém virtuálním počítači Azure:
 
-| Parametr | Efekt |
+| Parametr | Účinek |
 | --- | --- |
 | **DayOfWeek** |Opravy se nainstalují každý čtvrtek. |
 | **MaintenanceWindowStartingHour** |Začněte s aktualizacemi na 11:10:00. |

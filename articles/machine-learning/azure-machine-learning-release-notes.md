@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9407ad09a9b30e11cbf1e3f3debb357df46e316d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c12a6efd608625b93b1a084de3ceb790a8773eee
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399454"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129802"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -22,9 +22,99 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
 
+## <a name="2020-03-11"></a>2020-03-11
+
+### <a name="azure-machine-learning-sdk-for-python-v115"></a>Sada SDK Azure Machine Learning pro Python v 1.1.5
+
++ **Zastaralá funkce**
+  + **Python 2,7**
+    + Poslední verze pro podporu Pythonu 2,7
+
++ **Průlomové změny**
+  + **2.0.0 sémantických verzí**
+    + Od verze 1,1 Azure ML Python SDK přijímá sémantickou verzi 2.0.0. [Další informace najdete tady](https://semver.org/). Všechny další verze budou následovat po novém schématu číslování a kontraktu sémantických verzí. 
+
++ **Opravy chyb a vylepšení**
+  + **Azure-CLI-ml**
+    + Pokud chcete zajistit konzistenci, změňte název příkazu rozhraní příkazového řádku z příkazu AZ ml Endpoint AKS na az ml Endpoint reálný.
+    + aktualizace pokynů k instalaci rozhraní příkazového řádku pro stabilní a experimentální větve CLI
+    + Profilace jedné instance byla opravena, aby vytvořila doporučení a byla k dispozici v základní sadě SDK.
+  + **AzureML-automl – jádro**
+    + Povolený odvození dávkového režimu (vícenásobné řádky jednou) pro automl ONNX modely
+    + Vylepšili jsme detekci četnosti datových sad, postrádáte data nebo obsahují nepravidelné datové body.
+    + Přidání možnosti odebrat datové body, které nejsou v souladu s dominantní frekvencí.
+    + Změnil vstup konstruktoru tak, aby provedl seznam možností pro použití možností imputace pro odpovídající sloupce.
+    + Bylo vylepšeno protokolování chyb.
+  + **AzureML-automl-runtime**
+    + Opravili jsme problém, pokud došlo k chybě, pokud se v sadě testů objevila zrna, která nebyla přítomna v sadě školení.
+    + Při bodování služby prognózování se odebral požadavek y_query.
+    + Opravili jsme problém s prognózou, pokud datová sada obsahuje krátká zrna s dlouhou časovou mezerou.
+    + Opravili jsme problém, když je zapnutý automatický maximální horizont a sloupec data obsahuje kalendářní data ve formě řetězců. Byly přidány správné převody a chybové zprávy, pokud není možné převod na datum.
+    + Použití nativních NumPy a SciPy pro serializaci a deserializaci mezilehlých dat pro FileCacheStore (používá se pro místní AutoML spuštění)
+    + Opravili jsme chybu, při které se neúspěšná podřízená spuštění můžou zablokovat v běžícím stavu.
+    + Vyšší rychlost featurization
+    + Opravili jste kontrolu četnosti během bodování, teď úlohy předpovědi nevyžadují striktní rovnost frekvencí mezi vlakem a testovací sadou.
+    + Změnil vstup konstruktoru tak, aby provedl seznam možností pro použití možností imputace pro odpovídající sloupce.
+    + Opravily se chyby související s výběrem typu prodlevy.
+    + Opravili jsme neklasifikovanou chybu vyvolanou u datových sad, které mají zrna s jedním řádkem.
+    + Opravili jsme problém s pomalou frekvencí detekce frekvence.
+    + Opravuje chybu v AutoML zpracování výjimek, která způsobila, že se v důsledku neúspěchu v AttributeError nahradí reálný důvod selhání školení.
+  + **AzureML-CLI – společné**
+    + Profilace jedné instance byla opravena, aby vytvořila doporučení a byla k dispozici v základní sadě SDK.
+  + **AzureML-contrib-Mir**
+    + Přidá do třídy MirWebservice funkce pro získání přístupového tokenu.
+    + Při volání metody MirWebservice. Run () použijte k MirWebservice ve výchozím nastavení token auth, pokud volání selhává.
+    + Nasazení webové služby Mir nyní vyžaduje správné SKU [Standard_DS2_v2, Standard_F16, Standard_A2_v2] namísto [Ds2v2, A2v2 a F16 úrovně].
+  + **AzureML-contrib-kanál – kroky**
+    + Nepovinný parametr side_inputs přidaný do ParallelRunStep. Tento parametr lze použít k připojení složky v kontejneru. Aktuálně podporované typy jsou DataReference a PipelineData.
+    + Parametry předané v ParallelRunConfig lze přepsat předáním parametrů kanálu nyní. Jsou podporovány nové parametry kanálu aml_mini_batch_size, aml_error_threshold, aml_logging_level aml_run_invocation_timeout (aml_node_count a aml_process_count_per_node jsou již součástí starší verze).
+  + **AzureML-Core**
+    + Nasazené WebServices služby AzureML teď budou `INFO` protokolování do výchozího nastavení. To se dá řídit nastavením proměnné prostředí `AZUREML_LOG_LEVEL` v nasazené službě.
+    + Python SDK používá službu zjišťování k použití koncového bodu API namísto kanálů.
+    + Přepnout na nové trasy ve všech voláních sady SDK
+    + Změní směrování volání do ModelManagementService do nové sjednocené struktury.
+      + Nastavila se veřejně dostupná metoda aktualizace pracovního prostoru.
+      + Přidání parametru image_build_compute v metodě aktualizace pracovního prostoru pro povolení aktualizace výpočtů pro sestavení imagí uživatelem
+    +  Do starého pracovního postupu profilace se přidaly zprávy o zastaralosti. Pevné profilace omezení procesoru a paměti
+    + Přidání RSection jako součásti prostředí pro spouštění úloh R
+    +  Bylo přidáno ověřování pro `Dataset.mount` k vyvolání chyby, pokud zdroj datové sady není přístupný nebo neobsahuje žádná data.
+    + Přidáno `--grant-workspace-msi-access` jako další parametr pro rozhraní příkazového řádku úložiště (CLI) pro registraci kontejneru objektů blob Azure, který vám umožní zaregistrovat kontejner objektů blob, který je za virtuální sítí.
+    + Profilace jedné instance byla opravena, aby vytvořila doporučení a byla k dispozici v základní sadě SDK.
+    + Opravili jsme problém v aks.py _deploy
+    + Ověří integritu odesílaných modelů, aby nedocházelo k selháním v tichém úložišti.
+    + Uživatel může nyní zadat hodnotu ověřovacího klíče při opětovném generování klíčů pro služby WebServices.
+    + Opravená chyba, kde se velká písmena nedají použít jako vstupní název datové sady
+  + **AzureML – výchozí**
+    + `azureml-dataprep` se teď nainstaluje jako součást `azureml-defaults`. Pro připojení datových sad už není nutné ručně instalovat součásti dataprep [zapékací] na výpočetní cíle.
+  + **AzureML-interpretace**
+    + Aktualizace AzureML-interpretace na interpretaci Community 0,6. *
+    + Aktualizace AzureML-interpretace závisí na interpretu 0.5.0 komunity
+    + přidání výjimek ve stylu AzureML do AzureML-interpretace
+    + pevná serializace DeepScoringExplainer pro modely keras
+  + **AzureML-mlflow**
+    + Přidání podpory pro cloudy svrchovan do AzureML. mlflow
+  + **AzureML-kanál – jádro**
+    + Poznámkový blok kanálu dávky vyhodnocování teď používá ParallelRunStep.
+    + Opravili jsme chybu, při které by se PythonScriptStep výsledky, i když se změní seznam argumentů.
+    + Přidání možnosti pro nastavení typu Columns při volání metody parse_ * v `PipelineOutputFileDataset`
+  + **AzureML-Pipeline – kroky**
+    + `AutoMLStep` přesunuli do balíčku `azureml-pipeline-steps`. Zastaralá `AutoMLStep` v rámci `azureml-train-automl-runtime`.
+    + Přidání příkladu dokumentace pro datovou sadu jako PythonScriptStep Input
+  + **AzureML-tensorboard**
+    + aktualizace AzureML-tensorboard na podporu tensorflow 2,0
+    + Při použití vlastního Tensorboard portu na výpočetní instanci zobrazit správné číslo portu
+  + **AzureML-vlak-automl-Client**
+    + Opravili jsme problém, kdy se některé balíčky můžou na vzdáleném spuštění nainstalovat na nesprávnou verzi.
+    + opravený problém FeaturizationConfig, který filtruje vlastní konfiguraci featurization.
+  + **AzureML-vlak-automl-runtime**
+    + Opravili jsme problém s detekcí četnosti ve vzdálených spuštěních.
+    + Přesunuli jsme `AutoMLStep` do balíčku `azureml-pipeline-steps`. Zastaralá `AutoMLStep` v rámci `azureml-train-automl-runtime`.
+  + **AzureML-vlak – jádro**
+    + Podpora PyTorch verze 1,4 ve PyTorch Estimator
+  
 ## <a name="2020-03-02"></a>2020-03-02
 
-### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Azure Machine Learning SDK pro Python v 1.1.2 RC0
+### <a name="azure-machine-learning-sdk-for-python-v112rc0-pre-release"></a>Azure Machine Learning SDK pro Python v 1.1.2 RC0 (Předběžná verze)
 
 + **Opravy chyb a vylepšení**
   + **AzureML-automl – jádro**
@@ -62,7 +152,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
 
 ## <a name="2020-02-18"></a>2020-02-18
 
-### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>Sada SDK Azure Machine Learning pro Python v 1.1.1 RC0
+### <a name="azure-machine-learning-sdk-for-python-v111rc0-pre-release"></a>Azure Machine Learning SDK pro Python v 1.1.1 RC0 (Předběžná verze)
 
 + **Opravy chyb a vylepšení**
   + **Azure-CLI-ml**
@@ -101,7 +191,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
   
 ## <a name="2020-02-04"></a>2020-02-04
 
-### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Sada SDK Azure Machine Learning pro Python v 1.1.0 RC0
+### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>Sada SDK Azure Machine Learning pro Python v 1.1.0 RC0 (Předběžná verze)
 
 + **Průlomové změny**
   + **2.0.0 sémantických verzí**

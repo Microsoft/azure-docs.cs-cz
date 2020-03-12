@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 9f3fd59fa040ab46a5fc4ef8272a17cba4c631b8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925771"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127332"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrace prostředků IaaS do Azure Resource Manager do 1. března 2023 
 
@@ -23,7 +23,7 @@ V 2014 jsme na Azure Resource Manager spustili IaaS a vylepšili jsme možnosti,
 
 V dnešní době se o 90% virtuálních počítačů s IaaS používají Azure Resource Manager. Pokud používáte prostředky IaaS prostřednictvím služby Azure Service Manager (ASM), zahajte vám plánování migrace hned a od 1. března 2023, abyste mohli využít [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/).
 
-Klasické virtuální počítače budou po vyřazení za [moderní zásady životního cyklu](https://support.microsoft.com/help/30881/modern-lifecycle-policy) .
+Klasické virtuální počítače budou za [moderní zásady životního cyklu](https://support.microsoft.com/help/30881/modern-lifecycle-policy) pro vyřazení.
 
 ## <a name="how-does-this-affect-me"></a>Co to pro mě znamená? 
 
@@ -31,7 +31,7 @@ Klasické virtuální počítače budou po vyřazení za [moderní zásady živo
 2) Od 1. března 2023 už zákazníci nebudou moct IaaS virtuální počítače s využitím Azure Service Manager a všechny, které jsou pořád spuštěné nebo přidělené, se zastaví a zruší její přidělení. 
 2) Od 1. března 2023 budou předplatná, která nebyla migrována do Azure Resource Manager, informována o časových osách pro odstranění všech zbývajících klasických virtuálních počítačů.  
 
-Tyto služby a funkce **Azure nebudou** ovlivněny tímto vyřazením: 
+Toto vyřazení z provozu **NEBUDE** mít vliv na následující služby a funkce Azure: 
 - Cloud Services 
 - Účty úložiště, které **se** nepoužívají v klasických virtuálních počítačích 
 - Virtuální sítě (virtuální sítě) **se** nepoužívají v klasických virtuálních počítačích. 

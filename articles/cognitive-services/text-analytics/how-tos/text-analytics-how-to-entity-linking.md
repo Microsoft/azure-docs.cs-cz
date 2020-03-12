@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942658"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117472"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -38,11 +38,11 @@ Rozhraní API pro analýzu textu nabízí dvě verze rozpoznávání pojmenovan�
 
 | Funkce                                                         | NER v2 | NER V3 |
 |-----------------------------------------------------------------|--------|--------|
-| Metody pro jednotlivé a dávkové požadavky                          | X      | X      |
-| Základní rozpoznávání entit v několika kategoriích              | X      | X      |
-| Rozšířená klasifikace pro rozpoznané entity                 |        | X      |
-| Samostatné koncové body pro posílání NER entit a žádostí o připojení. |        | X      |
-| Správa verzí modelů                                                |        | X      |
+| Metody pro jednotlivé a dávkové požadavky                          | ×      | ×      |
+| Základní rozpoznávání entit v několika kategoriích              | ×      | ×      |
+| Rozšířená klasifikace pro rozpoznané entity                 |        | ×      |
+| Samostatné koncové body pro posílání NER entit a žádostí o připojení. |        | ×      |
+| Správa verzí modelů                                                |        | ×      |
 
 Informace najdete v tématu [Podpora jazyků](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
@@ -83,25 +83,25 @@ Propojení entit
 
 | Typ  | SubType | Příklad |
 |:-----------   |:------------- |:---------|
-| Osoba        | Není k dispozici\*         | Jan, vyúčtování Branch     |
+| Person (Osoba)        | Není k dispozici\*         | Jan, vyúčtování Branch     |
 | Umístění      | Není k dispozici\*         | "Redmond, Washington", "Paříž"  |
 | Organizace  | Není k dispozici\*         | Microsoft   |
-| Množství      | Počet        | "6", "šest"     |
+| Množství      | Číslo        | "6", "šest"     |
 | Množství      | Procento    | "50%", "50 procent"|
 | Množství      | Řadový       | "2.", "Second"     |
-| Množství      | Stáří           | "90 den starý", "30 let starý"    |
+| Množství      | Věk           | "90 den starý", "30 let starý"    |
 | Množství      | Měna      | "$10,99"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
-| Množství      | Temperature   | "32 stupňů"    |
-| Datum a čas      | Není k dispozici\*         | "6:17:30 4. února 2012"      |
-| Datum a čas      | Datum          | "Květen 2, 2017", "05/02/2017"   |
-| Datum a čas      | Čas          | "8:00", "8:00"  |
-| Datum a čas      | DateRange     | "Může 2. května až 5."    |
-| Datum a čas      | TimeRange     | "18:00 to 19:00"     |
-| Datum a čas      | Doba platnosti      | 1 minuta a 45 sekund   |
-| Datum a čas      | Nastavit           | "každé úterý"     |
-| URL           | Není k dispozici\*         | "https:\//www.bing.com"    |
-| E-mail         | Není k dispozici\*         | support@contoso.com |
+| Množství      | Teplota   | "32 stupňů"    |
+| DateTime      | Není k dispozici\*         | "6:17:30 4. února 2012"      |
+| DateTime      | Datum          | "Květen 2, 2017", "05/02/2017"   |
+| DateTime      | Čas          | "8:00", "8:00"  |
+| DateTime      | DateRange     | "Může 2. května až 5."    |
+| DateTime      | TimeRange     | "18:00 to 19:00"     |
+| DateTime      | Doba trvání      | 1 minuta a 45 sekund   |
+| DateTime      | Nastavit           | "každé úterý"     |
+| zprostředkovatele identity           | Není k dispozici\*         | "https:\//www.bing.com"    |
+| Email         | Není k dispozici\*         | support@contoso.com |
 | Telefonní číslo v USA  | Není k dispozici\*         | (Jenom telefonní čísla USA) "(312) 555-0176" |
 | IP adresa    | Není k dispozici\*         | 10.0.0.100 |
 

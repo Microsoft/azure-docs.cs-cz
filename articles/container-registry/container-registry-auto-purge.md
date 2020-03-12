@@ -3,12 +3,12 @@ title: Vyprázdnit značky a manifesty
 description: Pomocí příkazu vyčistit můžete odstranit více značek a manifestů z registru kontejneru Azure na základě stáří a filtru značek a volitelně naplánovat operace vyprázdnění.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923111"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087340"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatické mazání imagí z Azure Container Registry
 
@@ -47,7 +47,7 @@ Při spuštění `acr purge`zadejte alespoň následující:
 
 Pro další parametry spusťte `acr purge --help`. 
 
-`acr purge` podporuje další funkce příkazů úloh ACR, včetně [proměnných pro spuštění](container-registry-tasks-reference-yaml.md#run-variables) a [protokolů spuštění úloh](container-registry-tasks-overview.md#view-task-logs) , které jsou streamované a také uložené pro pozdější načtení.
+`acr purge` podporuje další funkce příkazů úloh ACR, včetně [proměnných pro spuštění](container-registry-tasks-reference-yaml.md#run-variables) a [protokolů spuštění úloh](container-registry-tasks-logs.md) , které jsou streamované a také uložené pro pozdější načtení.
 
 ### <a name="run-in-an-on-demand-task"></a>Spuštění v úloze na vyžádání
 

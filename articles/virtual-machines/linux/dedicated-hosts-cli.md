@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: f712d1be76a9bb3dc4856b9f1fa7c7b805296dea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970758"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127695"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
  
@@ -24,7 +24,7 @@ Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.70 nebo novější a 
 ## <a name="limitations"></a>Omezení
 
 - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
-- Počáteční verze podporuje následující řadu virtuálních počítačů: DSv3, ESv3, FSv2, LSv2 a MSv2. 
+- Typy velikosti a hardwaru, které jsou dostupné pro vyhrazené hostitele, se v jednotlivých oblastech liší. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
  
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků 
@@ -77,7 +77,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Vytvoření hostitele 
 
-Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu pro hostitele je nutné zadat SKU pro hostitele. SKU hostitele zachytí podporovanou řadu virtuálních počítačů a také generování hardwaru pro vyhrazeného hostitele.  Podporovány jsou následující hodnoty SKU: DSv3_Type1 a ESv3_Type1.
+Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu pro hostitele je nutné zadat SKU pro hostitele. SKU hostitele zachytí podporovanou řadu virtuálních počítačů a také generování hardwaru pro vyhrazeného hostitele.  
 
 Další informace o SKU a cenách hostitelů najdete v tématu [ceny za vyhrazené hostitele Azure](https://aka.ms/ADHPricing).
 

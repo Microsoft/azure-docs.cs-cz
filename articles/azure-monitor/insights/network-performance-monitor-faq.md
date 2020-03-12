@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654429"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096229"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -172,7 +172,7 @@ NPM může monitorovat připojení ke službám v jakékoli části světa, od p
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Které oblasti se podporují pro monitor ExpressRoute v NPM?
 NPM dokáže monitorovat vaše ExpressRoute okruhy, které jsou umístěné v libovolné oblasti Azure. K připojení do NPM budete potřebovat pracovní prostor Log Analytics, který musí být hostovaný v některé z [podporovaných oblastí](/azure/expressroute/how-to-npm) .
 
-## <a name="troubleshoot"></a>Řešení problémů
+## <a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Proč jsou některé z směrování označeny jako neidentifikované v zobrazení síťové topologie?
 NPM používá upravenou verzi traceroute ke zjištění topologie ze zdrojového agenta do cíle. Neidentifikovaný skok znamená, že směrování sítě nereagovalo na žádost traceroute zdrojového agenta. Pokud tři po sobě jdoucí síťové segmenty nereagují na traceroute agenta, toto řešení označí nereagující chmel jako neidentifikovaný a nepokusí se zjistit další segmenty směrování.
@@ -183,7 +183,7 @@ Segment směrování nemusí reagovat na traceroute v jednom nebo několika nás
 * Síťová zařízení nepovolují ICMP_TTL_EXCEEDED provoz.
 * Brána firewall blokuje ICMP_TTL_EXCEEDED reakci ze síťového zařízení.
 
-Když některý z koncových bodů leží v Azure, traceroute zobrazí neidentifikovaný segment směrování, protože Azure ndrastructure neodhaluje identitu pro traceroute. 
+Když některý z koncových bodů leží v Azure, traceroute zobrazí neidentifikované směrování, protože infrastruktura Azure neodhalí identitu pro traceroute. 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Zobrazují se upozornění na špatné testy, ale v grafu ztrát a latence se nezobrazuje vysoké hodnoty NPM. Návody zjistit, co není v pořádku?
 NPM vygeneruje výstrahu v případě, že koncová latence mezi zdrojem a cílem překračuje prahovou hodnotu pro libovolnou cestu mezi nimi. Některé sítě mají více cest připojujících se ke stejnému zdroji a cíli. NPM vyvolá výstrahu, že některá cesta není v pořádku. Ztráta a latence zaznamenané v grafech jsou průměrnou hodnotou všech cest, takže se nemusí zobrazit přesnou hodnotu jedné cesty. Chcete-li zjistit, kde došlo k porušení prahové hodnoty, vyhledejte ve výstraze sloupec "podtyp". Pokud je problém způsoben cestou, hodnota podtypu bude Síťovácesta (pro testy sledování výkonu), EndpointPath (pro testy monitorování dostupnosti služby) a ExpressRoutePath (pro testy ExpressRotue monitor). 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Konfigurace RingCentral pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro RingCentral.
+description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po RingCentral.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,44 +15,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6c6936b485526c07b3486874d6bdaacaf07ae8e5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 052223f69fc1c1d59ec5f1bcbeb3746ef7122c86
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77060808"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087042"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Kurz: Konfigurace RingCentral pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v RingCentral a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro RingCentral.
+Tento kurz popisuje kroky, které je třeba provést v RingCentral i Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, které se [RingCentral](https://www.ringcentral.com/office/plansandpricing.html) pomocí služby zřizování Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md). 
 
-> [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
->
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="capabilities-supported"></a>Podporované funkce
+> [!div class="checklist"]
+> * Vytváření uživatelů v RingCentral
+> * Odebrat uživatele v RingCentral, když už nevyžadují přístup
+> * Udržování uživatelských atributů synchronizovaných mezi Azure AD a RingCentral
+> * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial) k RingCentral (doporučeno)
+
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* Tenant Azure AD
+* [Tenant Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
 * [Tenant RingCentral](https://www.ringcentral.com/office/plansandpricing.html)
 * Uživatelský účet v RingCentral s oprávněními správce.
 
-## <a name="assigning-users-to-ringcentral"></a>Přiřazování uživatelů k RingCentral
+## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
+1. Přečtěte si [, jak služba zřizování funguje](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Určete, kdo bude v [oboru pro zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Určete, jaká data se mají [mapovat mezi Azure AD a RingCentral](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
-
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k RingCentral. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k RingCentral podle pokynů uvedených tady:
-* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-ringcentral"></a>Důležité tipy pro přiřazení uživatelů k RingCentral
-
-* Doporučuje se, aby se k RingCentral k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
-
-* Při přiřazování uživatele k RingCentral musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
-
-## <a name="set-up-ringcentral-for-provisioning"></a>Nastavení RingCentral pro zřizování
+## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace RingCentral pro podporu zřizování pomocí Azure AD
 
 1. Přihlaste se ke [konzole pro správu RingCentral](https://login.ringcentral.com/sw.html). Přejděte na **nástroje > integrace adresáře**.
 
@@ -67,37 +63,22 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 > [!NOTE]
 > Pokud chcete přiřadit licence uživatelům, přečtěte si [zde](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)odkaz na video.
 
-## <a name="add-ringcentral-from-the-gallery"></a>Přidání RingCentral z Galerie
+## <a name="step-3-add-ringcentral-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání RingCentral z Galerie aplikací Azure AD
 
-Před konfigurací RingCentral pro Automatické zřizování uživatelů se službou Azure AD je nutné přidat RingCentral z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Přidejte RingCentral z Galerie aplikací Azure AD a začněte spravovat zřizování pro RingCentral. Pokud jste dříve nastavili RingCentral pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
-**Pokud chcete přidat RingCentral z Galerie aplikací Azure AD, proveďte následující kroky:**
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4. Definujte, kdo bude v oboru pro zřizování. 
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+Služba zřizování Azure AD umožňuje obor, který se zřídí na základě přiřazení do aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se zřídí pro vaši aplikaci na základě přiřazení, můžete k přiřazení uživatelů a skupin k aplikaci použít následující [postup](../manage-apps/assign-user-or-group-access-portal.md) . Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, můžete použít filtr oboru, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+* Při přiřazování uživatelů a skupin k RingCentral je nutné vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu se z zřizování vylučují a v protokolech zřizování se označí jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat další role. 
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+* Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
+## <a name="step-5-configure-automatic-user-provisioning-to-ringcentral"></a>Krok 5. Konfigurace automatického zřizování uživatelů na RingCentral 
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **RingCentral**, na panelu výsledků vyberte **RingCentral** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
-
-    ![RingCentral v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-ringcentral"></a>Konfigurace automatického zřizování uživatelů na RingCentral 
-
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v RingCentral na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
-
-> [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro RingCentral podle pokynů uvedených v [kurzu RingCentral jednotného přihlašování](ringcentral-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
-
-> [!NOTE]
-> Další informace o RingCentral koncového bodu SCIM najdete v tématu [Reference k rozhraní RingCentral API](https://developers.ringcentral.com/api-reference).
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v TestApp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro RingCentral ve službě Azure AD:
 
@@ -119,23 +100,38 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte `https://platform.ringcentral.com/scim/v2` na **adrese URL tenanta**. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k RingCentral. Pokud se připojení nepovede, ujistěte se, že má váš účet RingCentral oprávnění správce, a zkuste to znovu.
 
-    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Karta zřizování](./media/ringcentral-provisioning-tutorial/provisioning.png)
 
-6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě** .
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-7. Klikněte na **Uložit**.
+7. Vyberte **Save** (Uložit).
 
 8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé RingCentral**.
 
-    ![Mapování uživatelů RingCentral](media/ringcentral-provisioning-tutorial/usermappings.png)
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do RingCentral v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v RingCentral pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), budete muset zajistit, aby rozhraní RingCentral API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD do RingCentral v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v RingCentral pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+   |Atribut|Typ|
+   |---|---|
+   |userName|Řetězec|
+   |externalId|Řetězec|
+   |aktivní|Logická hodnota|
+   |displayName|Řetězec|
+   |Název|Řetězec|
+   |e-mailů [typ eq "pracovní"] .value|Řetězec|
+   |adresy [typ EQ "Work"]. Country|Řetězec|
+   |adresy [typ EQ "Work"]. region|Řetězec|
+   |adresy [typ EQ "Work"].|Řetězec|
+   |.postalCode adresy [typ eq "pracovní"]|Řetězec|
+   |.streetAddress adresy [typ eq "pracovní"]|Řetězec|
+   |name.givenName|Řetězec|
+   |name.familyName|Řetězec|
+   |phoneNumbers [eq typ "mobilní"] .value|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
 
-    ![Atributy uživatele RingCentral](media/ringcentral-provisioning-tutorial/userattributes.png)
-
-10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Pokud chcete povolit službu Azure AD Provisioning pro RingCentral, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -149,16 +145,20 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v RingCentral.
+Tato operace spustí počáteční cyklus synchronizace všech uživatelů a skupin definovaných v **oboru** v části **Nastavení** . Počáteční cyklus trvá déle než u dalších cyklů, ke kterým dojde přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
+Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto prostředky:
 
-## <a name="additional-resources"></a>Další zdroje informací:
+1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně nastavili.
+2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
+3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+## <a name="additional-resources"></a>Další zdroje
+
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
-
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)

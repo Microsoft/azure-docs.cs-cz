@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e32754d94bf6d0c35ac131f244696049f56380e9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 8ca4b1ce6e0470476e9f16ed338b8707d3faf90f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76118110"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128890"
 ---
 ## <a name="resources-for-development-with-net"></a>Prostředky pro vývoj s využitím .NET
 
@@ -21,13 +21,13 @@ Odkazy níže poskytují užitečné prostředky pro vývojáře pomocí Azure S
 
 ### <a name="azure-storage-common-apis"></a>Azure Storage společná rozhraní API
 
-- [Referenční dokumentace k rozhraní API](/dotnet/api/overview/azure/storage/client)
+- [Referenční dokumentace k rozhraní API](/dotnet/api/overview/azure/storage)
 - [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
 ### <a name="blob-storage-apis"></a>Úložiště objektů BLOB rozhraní API
 
-- [Referenční dokumentace k rozhraní API](/dotnet/api/overview/azure/storage/client)
+- [Referenční dokumentace k rozhraní API](/dotnet/api/overview/azure/storage)
 - [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 - [Package (NuGet) pro verzi 11. x](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 - [Package (NuGet) pro verzi 12. x](https://www.nuget.org/packages/Azure.Storage.Blobs)

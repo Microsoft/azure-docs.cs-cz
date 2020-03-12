@@ -3,12 +3,12 @@ title: Spuštění Azure Functions z balíčku
 description: Modul runtime Azure Functions spouští vaše funkce připojením souboru balíčku pro nasazení, který obsahuje soubory projektu Function App.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921109"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087029"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Spuštění Azure Functions ze souboru balíčku
 
@@ -91,6 +91,7 @@ Další informace najdete v následujících článcích.
 - Formáty tar a gzip se nepodporují.
 - Tato funkce nevytváří místní mezipaměť.
 - Pro zlepšení výkonu pro studený start použijte místní možnost zip (`WEBSITE_RUN_FROM_PACKAGE`= 1).
+- Příkaz spustit z balíčku není kompatibilní s možností přizpůsobení nasazení (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`), krok sestavení bude během nasazení ignorován.
 
 ## <a name="next-steps"></a>Další kroky
 

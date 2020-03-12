@@ -1,32 +1,34 @@
 ---
 title: Resetování přihlašovacích údajů pro cluster Azure Kubernetes Service (AKS)
-description: Informace o tom, jak aktualizovat nebo resetovat přihlašovací údaje instančního objektu pro cluster ve službě Azure Kubernetes (AKS)
+description: Přečtěte si, jak aktualizovat nebo resetovat přihlašovací údaje pro instanční objekt nebo přihlašovací údaje aplikace AAD pro cluster Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 46665e78450538cdc473de32e6c2e9a418660af1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/11/2019
+ms.openlocfilehash: 5dab9a778653d2ec6e32ddb3833ddcf6a95cae13
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593066"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096104"
 ---
-# <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro instanční objekt ve službě Azure Kubernetes Service (AKS)
+# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro službu Azure Kubernetes (AKS)
 
 Ve výchozím nastavení se clustery AKS vytvářejí s instančním objektem, který má dobu platnosti v jednom roce. Až se blížíte k datu vypršení platnosti, můžete resetovat přihlašovací údaje, aby se instanční objekt po dalších časových obdobích rozšířil. Přihlašovací údaje můžete také aktualizovat nebo otočit v rámci definovaných zásad zabezpečení. Tento článek podrobně popisuje, jak aktualizovat tyto přihlašovací údaje pro cluster AKS.
+
+Cluster AKS můžete také [integrovat s Azure Active Directory][aad-integration]a použít ho jako poskytovatele ověřování pro váš cluster. V takovém případě budete mít pro svůj cluster vytvořenou 2 více identit, aplikaci AAD Server a klientskou aplikaci AAD, můžete také resetovat tato pověření. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
-## <a name="choose-to-update-or-create-a-service-principal"></a>Vyberte, chcete-li aktualizovat nebo vytvořit instanční objekt
+## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>Aktualizace nebo vytvoření nového instančního objektu pro cluster AKS
 
 Pokud chcete aktualizovat přihlašovací údaje pro cluster AKS, můžete se rozhodnout:
 
 * Aktualizujte přihlašovací údaje pro existující instanční objekt používaný clusterem nebo
 * Vytvořte instanční objekt a aktualizujte cluster tak, aby používal tyto nové přihlašovací údaje.
 
-### <a name="update-existing-service-principal-expiration"></a>Aktualizace stávajícího vypršení platnosti instančního objektu
+### <a name="reset-existing-service-principal-credential"></a>Resetovat existující pověření instančního objektu
 
 Pokud chcete aktualizovat přihlašovací údaje pro existující instanční objekt, Získejte ID objektu služby vašeho clusteru pomocí příkazu [AZ AKS show][az-aks-show] . Následující příklad získá ID pro cluster s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup* . ID instančního objektu se nastaví jako proměnná s názvem *SP_ID* pro použití v dalším příkazu.
 
@@ -41,11 +43,11 @@ Pomocí sady proměnných, která obsahuje ID instančního objektu, teď resetu
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-Teď pokračujte a [aktualizujte cluster AKS s novými přihlašovacími údaji](#update-aks-cluster-with-new-credentials). Tento krok je nezbytný, aby se instanční objekt změnil v závislosti na clusteru AKS.
+Teď pokračujte a [aktualizujte cluster AKS pomocí nových přihlašovacích údajů instančního objektu](#update-aks-cluster-with-new-service-principal-credentials). Tento krok je nezbytný, aby se instanční objekt změnil v závislosti na clusteru AKS.
 
 ### <a name="create-a-new-service-principal"></a>Vytvořit nový instanční objekt
 
-Pokud se rozhodnete aktualizovat existující přihlašovací údaje instančního objektu v předchozí části, tento krok přeskočte. Pokračujte [v aktualizaci clusteru AKS novými přihlašovacími údaji](#update-aks-cluster-with-new-credentials).
+Pokud se rozhodnete aktualizovat existující přihlašovací údaje instančního objektu v předchozí části, tento krok přeskočte. Pokračujte [v aktualizaci clusteru AKS s použitím nových přihlašovacích údajů instančního objektu](#update-aks-cluster-with-new-service-principal-credentials).
 
 Pokud chcete vytvořit instanční objekt a potom aktualizovat cluster AKS, aby používal tyto nové přihlašovací údaje, použijte příkaz [AZ AD SP Create-for-RBAC][az-ad-sp-create] . V následujícím příkladu parametr `--skip-assignment` zakazuje jakékoli další přiřazení výchozích přiřazení:
 
@@ -71,9 +73,9 @@ SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
 
-Teď pokračujte a [aktualizujte cluster AKS s novými přihlašovacími údaji](#update-aks-cluster-with-new-credentials). Tento krok je nezbytný, aby se instanční objekt změnil v závislosti na clusteru AKS.
+Teď pokračujte a [aktualizujte cluster AKS pomocí nových přihlašovacích údajů instančního objektu](#update-aks-cluster-with-new-service-principal-credentials). Tento krok je nezbytný, aby se instanční objekt změnil v závislosti na clusteru AKS.
 
-## <a name="update-aks-cluster-with-new-credentials"></a>Aktualizovat cluster AKS s novými přihlašovacími údaji
+## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>Aktualizovat cluster AKS pomocí nových přihlašovacích údajů instančního objektu
 
 Bez ohledu na to, jestli jste se rozhodli aktualizovat přihlašovací údaje pro existující instanční objekt nebo vytvořit instanční objekt, teď cluster AKS aktualizujete pomocí nových přihlašovacích údajů pomocí příkazu [AZ AKS Update-Credentials][az-aks-update-credentials] . Používají se proměnné pro *--Service-Principal* a *--Client-tajné* :
 
@@ -88,14 +90,31 @@ az aks update-credentials \
 
 Aktualizace přihlašovacích údajů instančního objektu ve službě AKS chvíli trvá.
 
+## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>Aktualizovat cluster AKS s novými přihlašovacími údaji aplikace AAD
+
+Pomocí [kroků integrace AAD][create-aad-app]můžete vytvořit nové servery a klientské aplikace AAD. Nebo obnovte stávající aplikace AAD [podle stejné metody jako u resetování instančního objektu](#reset-existing-service-principal-credential). Až budete muset aktualizovat přihlašovací údaje vaší aplikace AAD clusteru pomocí stejného příkazu [AZ AKS Update-Credentials][az-aks-update-credentials] , ale použijte proměnné *--reset-AAD* .
+
+```azurecli-interactive
+az aks update-credentials \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --reset-aad \
+    --aad-server-app-id <SERVER APPLICATION ID> \
+    --aad-server-app-secret <SERVER APPLICATION SECRET> \
+    --aad-client-app-id <CLIENT APPLICATION ID>
+```
+
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku se instanční objekt pro samotný cluster AKS aktualizoval. Další informace o tom, jak spravovat identitu pro úlohy v rámci clusteru, najdete v tématu [osvědčené postupy pro ověřování a autorizaci v AKS][best-practices-identity].
+V tomto článku se aktualizoval instanční objekt pro samotný cluster AKS a aplikace pro integraci AAD. Další informace o tom, jak spravovat identitu pro úlohy v rámci clusteru, najdete v tématu [osvědčené postupy pro ověřování a autorizaci v AKS][best-practices-identity].
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-update-credentials]: /cli/azure/aks#az-aks-update-credentials
 [best-practices-identity]: operator-best-practices-identity.md
+[aad-integration]: azure-ad-integration.md
+[create-aad-app]: azure-ad-integration.md#create-the-server-application
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

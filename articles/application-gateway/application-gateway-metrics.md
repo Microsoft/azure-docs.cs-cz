@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8b63233aa2b20862e4654c89f1a6dd5d00c78940
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485178"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096069"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -125,10 +125,6 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
    Počet úspěšných požadavků, které Application Gateway obsluhovány. Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
 
-- **Shodná pravidla firewallu webových aplikací**
-
-- **Pravidla aktivované firewallem webových aplikací**
-
 ### <a name="backend-metrics"></a>Metriky back-endu
 
 Pro Application Gateway jsou k dispozici následující metriky:
@@ -180,9 +176,9 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
   Počet úspěšných požadavků, které Application Gateway obsluhovány. Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
 
-- **Shodná pravidla firewallu webových aplikací**
-
-- **Pravidla aktivované firewallem webových aplikací**
+- **Počet blokovaných požadavků firewallu webových aplikací**
+- **Distribuce blokovaných požadavků firewallu webových aplikací**
+- **Distribuce všech pravidel v firewallu webových aplikací**
 
 ### <a name="backend-metrics"></a>Metriky back-endu
 

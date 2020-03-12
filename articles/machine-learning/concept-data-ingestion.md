@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303116"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086888"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Přijímání dat v Azure Machine Learning
 
@@ -26,7 +26,7 @@ V tomto článku se seznámíte s odborníky a nevýhody následujících možno
 
 Přijímání dat je proces, při kterém se nestrukturovaná data extrahují z jednoho nebo několika zdrojů a pak se připravují pro školení modelů strojového učení. Také je časově náročná, zejména pokud je to možné, a pokud máte velké množství dat z více zdrojů. Automatizace tohoto úsilí uvolní prostředky a zajišťuje, aby vaše modely používaly nejnovější a použitelné údaje.
 
-Doporučujeme, abyste nejdřív vyhodnotili pomocí Azure Data Factory (ADF), protože je konkrétně sestavená k extrakci, načítání a transformaci dat. Pokud nemůžete splnit vaše požadavky pomocí ADF, můžete použít sadu Python SDK pro vývoj vlastního řešení kódu nebo pomocí ADF a sady Python SDK vytvořit celkový pracovní postup příjmu dat, který vyhovuje vašim potřebám.
+Azure Data Factory (ADF) je speciálně sestavená tak, aby mohl extrahovat, načítat a transformovat data, ale sada Python SDK umožňuje vyvíjet vlastní řešení pro zpracování základních úloh ingestování dat. Pokud ani tak není, co potřebujete, můžete také pomocí ADF a sady Python SDK vytvořit celkový pracovní postup příjmu dat, který vyhovuje vašim potřebám. 
 
 ## <a name="use-azure-data-factory"></a>Použití Azure Data Factory
 
@@ -52,6 +52,8 @@ Tyto kroky a následující diagram znázorňují pracovní postup pro přijím�
 
 
     ![Ingestování dat ADF](media/concept-data-ingestion/data-ingest-option-one.svg)
+    
+Naučte se, jak vytvořit kanál pro příjem dat pro Machine Learning s využitím [Azure Data Factory](how-to-data-ingest-adf.md).
 
 ## <a name="use-the-python-sdk"></a>Použití sady Python SDK 
 

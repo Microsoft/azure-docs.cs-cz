@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435435"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117232"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight
 
@@ -40,7 +40,7 @@ Nejjednodušší způsob, jak začít používat značky služeb v clusteru HDIn
 
 1. V rozevíracím seznamu **tag zdrojové služby** vyberte **HDInsight**.
 
-    ![Azure Portal přidat značku služby](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure Portal přidat značku služby](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 Tato značka obsahuje IP adresy služeb stavu a správy pro všechny oblasti, kde je HDInsight k dispozici, a zajistí, že cluster bude moci komunikovat s nezbytnými službami pro stav a správu bez ohledu na to, kde je vytvořen.
 
@@ -54,7 +54,7 @@ Chcete-li zjistit, které značky služby se mají přidat do vaší oblasti, p�
 
 Pokud upřednostňujete možnost označení služby dvě a váš cluster se nachází v jedné z oblastí uvedených v této tabulce, stačí do skupiny zabezpečení sítě přidat jenom jednu oblastní značku služby.
 
-| Země | Region (Oblast) | Značka služby |
+| Země | Oblast | Značka služby |
 | ---- | ---- | ---- |
 | Austrálie | Austrálie – východ | HDInsight. AustraliaEast |
 | &nbsp; | Austrálie – jihovýchod | HDInsight. AustraliaSoutheast |
@@ -66,16 +66,17 @@ Pokud upřednostňujete možnost označení služby dvě a váš cluster se nach
 | &nbsp; | USA – středozápad | HDInsight. WestCentralUS |
 | Kanada | Východní Kanada | HDInsight. CanadaEast |
 | Brazílie | Brazílie – jih | HDInsight. BrazilSouth |
-| Korea | Korea – střed | HDInsight. KoreaCentral |
-| &nbsp; | Korea – jih | HDInsight. KoreaSouth |
+| Jižní Korea | Jižní Korea – střed | HDInsight. KoreaCentral |
+| &nbsp; | Jižní Korea – jih | HDInsight. KoreaSouth |
 | Indie | Indie – střed | HDInsight. CentralIndia |
-| &nbsp; | Jižní Indie | HDInsight. SouthIndia |
+| &nbsp; | Indie – jih | HDInsight. SouthIndia |
 | Japonsko | Japonsko – západ | HDInsight. JapanWest |
 | Francie | Francie – střed| HDInsight. FranceCentral |
-| Spojené království | Spojené království – jih | HDInsight. UKSouth |
+| Spojené království | Velká Británie – jih | HDInsight. UKSouth |
 | Azure Government | USDoD – střed   | HDInsight. USDoDCentral |
 | &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD východ | HDInsight. USDoDEast |
+| &nbsp; | USGov Arizona | HDInsight. USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Použití více značek regionální služby
 
@@ -93,7 +94,7 @@ Pokud je například cluster vytvořen v oblasti `East US 2`, bude nutné do sku
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Země | Region (Oblast) | Značka služby |
+| Země | Oblast | Značka služby |
 | ---- | ---- | ---- |
 | Spojené státy | USA – východ 2 | HDInsight. EastUS2 |
 | &nbsp; | USA – střed | HDInsight. CentralUS |

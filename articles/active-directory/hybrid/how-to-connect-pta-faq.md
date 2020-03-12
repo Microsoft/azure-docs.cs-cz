@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484413"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096053"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: nejčastější dotazy
 
@@ -44,7 +44,7 @@ Ne. Předávací ověřování je dostupné jenom v celosvětové instanci Azure
 Ano. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje předávací ověřování "alternativní ID" jako uživatelské jméno místo "userPrincipalName"?
-V omezeném rozsahu předávací ověřování podporuje alternativní ID jako uživatelské jméno při konfiguraci v Azure AD Connect. Azure AD Connect potřebuje k Azure AD synchronizovat místní atribut služby Active Directory `UserPrincipalName`. Díky tomu se `UserPrincipalName` v místní službě AD a Azure AD stanou identické. Pokud chcete použít jiný atribut k synchronizaci z místní služby AD jako hlavního názvu uživatele (UPN) do Azure AD, budete muset použít buď synchronizaci hodnoty hash hesla, nebo AD FS. Další informace najdete v tématu [vlastní instalace Azure AD Connect](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID`. Přečtěte si téma Podpora dokumentace k konkrétní aplikaci.
+Přihlaste se pomocí jiné hodnoty než UPN, například alternativního e-mailu, se v privátní verzi Preview testuje při předávacím ověřování (PTA) a synchronizaci hodnot hash hesel (KOSMETICE).
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Funguje synchronizace hodnot hash hesel jako záložní pro předávací ověřování?
 

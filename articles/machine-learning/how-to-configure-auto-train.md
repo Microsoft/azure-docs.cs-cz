@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6f49529b0599f36ae4a26939bbbe171a45a1a53a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081824"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127221"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Možnosti konfigurace je k dispozici ve službě automatizované machine learnin
 * Zkoumání metrik model
 * Registrace a nasazení modelu
 
-Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-create-portal-experiments.md).
+Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-use-automated-ml-for-ml-models.md).
 
 ## <a name="select-your-experiment-type"></a>Vyberte typ testu
 
@@ -174,7 +174,7 @@ Možné příklady:
 
 Existují tři různé hodnoty parametrů `task` (třetí typ úlohy je `forecasting`a používá podobný fond algoritmů jako `regression` úkoly). určuje seznam modelů, které se mají použít. Pomocí parametrů `whitelist` nebo `blacklist` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) pro ([klasifikace](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [Prognózování](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)a [regresi](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
 
-Službě ověřování pomocí automatizovaného ML bude vyžadovat, aby `experiment_timeout_minutes` být nastavené na minimální časový limit 15 minut, aby se předešlo neúspěšným časovým limitům experimentů.
+Ověřovací služba automatizovaného ML bude vyžadovat, aby `experiment_timeout_minutes` být nastavené na minimální časový limit 15 minut, aby se zabránilo neúspěchům při experimentování s časovým limitem.
 
 ### <a name="primary-metric"></a>Primární metriku
 Primární metrika určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.
@@ -191,7 +191,7 @@ Přečtěte si o konkrétních definicích těchto metrik v seznámení s [autom
 
 ### <a name="data-featurization"></a>Featurization dat
 
-U každého automatizovaného experimentu strojového učení se vaše data [automaticky škálují a normalizují](concept-automated-ml.md#preprocess) tak, aby pomohly *určité* algoritmy, které jsou citlivé na funkce, které jsou v různých měřítkech.  Můžete ale také povolit další featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#featurization).
+U každého automatizovaného experimentu strojového učení se vaše data [automaticky škálují a normalizují](concept-automated-ml.md#preprocess) tak, aby pomohly *určité* algoritmy, které jsou citlivé na funkce, které jsou v různých měřítkech.  Můžete ale také povolit další featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
 
 Při konfiguraci experimentů můžete povolit upřesňující nastavení `featurization`. V následující tabulce jsou uvedena přijímaná nastavení pro featurization ve [třídě`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -199,7 +199,7 @@ Při konfiguraci experimentů můžete povolit upřesňující nastavení `featu
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Indikuje, že by se měl použít upravený krok featurization. [Přečtěte si, jak přizpůsobit featurization](how-to-configure-auto-train.md#customize-feature-engineering).|
 |`"featurization": 'off'`| Indikuje, že krok featurization by se neměl provádět automaticky.|
-|`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-create-portal-experiments.md#advanced-featurization-options) provádějí automaticky.|
+|`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) provádějí automaticky.|
 
 > [!NOTE]
 > Automatické kroky featurization strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky featurization, jaké jste použili během školení.

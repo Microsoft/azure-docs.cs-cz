@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424979"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096414"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Ingestování objektů blob do Azure Průzkumník dat díky přihlášení k odběru oznámení Event Grid
 
@@ -118,7 +118,7 @@ Nyní se můžete připojit k Event Grid z Azure Průzkumník dat, aby se data p
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Tabulka | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
-    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOH, SCSV, TSV a TXT. Podporované možnosti komprese: zip a GZip |
+    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOH, SCSV, TSV, RAW a TXT. Podporované možnosti komprese: zip a GZip |
     | Mapování sloupců | *TestMapping* | Mapování, které jste vytvořili v databázi **TestDatabase** a které mapuje příchozí data JSON na názvy sloupců a datové typy tabulky **TestTable**.|
     | | |
     
@@ -150,13 +150,32 @@ Uložte data do souboru a nahrajte ho pomocí tohoto skriptu:
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Aby se dosáhlo nejlepšího výkonu ingestování, musí být předávána *nekomprimovaná* velikost komprimovaných objektů BLOB odeslaných pro přijímání. Vzhledem k tomu, že Event Grid oznámení obsahují pouze základní údaje, musí být informace o velikosti explicitně sdělovány. Informace o nekomprimované velikosti lze poskytnout nastavením vlastnosti `rawSizeBytes` u metadat objektu BLOB s *nekomprimovanými* velikostmi dat v bajtech.
+
+### <a name="ingestion-properties"></a>Vlastnosti ingestování
+
+[Vlastnosti](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) příjmu objektu blob můžete určit prostřednictvím metadat objektu BLOB.
+
+Tyto vlastnosti lze nastavit:
+
+|**Vlastnost** | **Popis vlastnosti**|
+|---|---|
+| `rawSizeBytes` | Velikost nezpracovaných (nekomprimovaných) dat Pro Avro/ORC/Parquet se jedná o velikost před použitím komprese specifické pro formát.|
+| `kustoTable` |  Název existující cílové tabulky Přepíše `Table` sadu v okně `Data Connection`. |
+| `kustoDataFormat` |  Formát dat. Přepíše `Data format` sadu v okně `Data Connection`. |
+| `kustoIngestionMappingReference` |  Název existujícího mapování ingestování, které se má použít. Přepíše `Column mapping` sadu v okně `Data Connection`.|
+| `kustoIgnoreFirstRecord` | Pokud je nastavená na `true`, Kusto ignoruje první řádek objektu BLOB. Použijte v tabulkovém formátu data (CSV, TSV nebo podobné) k ignorování hlaviček. |
+| `kustoExtentTags` | Řetězec představující [značky](/azure/kusto/management/extents-overview#extent-tagging) , které budou připojeny k výslednému rozsahu. |
+| `kustoCreationTime` |  Přepíše [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) pro objekt blob, formátovaný jako řetězec ISO 8601. Použijte k naplnění. |
 
 > [!NOTE]
 > Azure Průzkumník dat neodstraní objekty blob po ingestování.

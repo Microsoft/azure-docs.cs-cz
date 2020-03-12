@@ -15,11 +15,11 @@ ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aefd7a55090da7f55404d6f551ab61268582ff5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394501"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096323"
 ---
 # <a name="configure-a-load-balancer-for-an-availability-group-on-azure-sql-server-vms"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti na virtuálních počítačích Azure SQL Server
 Tento článek vysvětluje, jak vytvořit nástroj pro vyrovnávání zatížení pro skupinu dostupnosti Always On SQL Server ve virtuálních počítačích Azure, které běží s Azure Resource Manager. Skupina dostupnosti vyžaduje nástroj pro vyrovnávání zatížení, pokud jsou instance SQL Server na virtuálních počítačích Azure. Nástroj pro vyrovnávání zatížení ukládá IP adresu pro naslouchací proces skupiny dostupnosti. Pokud skupina dostupnosti zahrnuje více oblastí, bude každá oblast potřebovat nástroj pro vyrovnávání zatížení.
@@ -161,7 +161,7 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
 > 
 
 ## <a name="configure-the-cluster-to-use-the-load-balancer-ip-address"></a>Konfigurace clusteru pro použití IP adresy nástroje pro vyrovnávání zatížení
-Dalším krokem je konfigurace naslouchacího procesu v clusteru a převedení naslouchacího procesu do režimu online. Postupujte takto: 
+Dalším krokem je konfigurace naslouchacího procesu v clusteru a převedení naslouchacího procesu do režimu online. Udělejte toto: 
 
 1. Vytvořte naslouchací proces skupiny dostupnosti v clusteru s podporou převzetí služeb při selhání. 
 
@@ -244,9 +244,9 @@ Pokud chcete přidat IP adresu k nástroji pro vyrovnávání zatížení s Azur
     |**Port back-endu** |Použijte stejnou hodnotu jako **port**.
     |**Back-end fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
     |**Sonda stavu** |Vyberte test, který jste vytvořili.
-    |**Trvalost relace** |Žádné
+    |**Trvalost relace** |Žádná
     |**Časový limit nečinnosti (minuty)** |Výchozí (4)
-    |**Plovoucí IP adresa (přímá návrat ze serveru)** | Povolit
+    |**Plovoucí IP adresa (přímá návrat ze serveru)** | Povoleno
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Konfigurace skupiny dostupnosti pro použití nové IP adresy
 
@@ -293,9 +293,9 @@ Pokud se skupina dostupnosti účastní distribuované skupiny dostupnosti, nás
    |**Port back-endu** | 5022 – použijte stejnou hodnotu jako **port**.
    |**Back-end fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
    |**Sonda stavu** |Vyberte test, který jste vytvořili.
-   |**Trvalost relace** |Žádné
+   |**Trvalost relace** |Žádná
    |**Časový limit nečinnosti (minuty)** |Výchozí (4)
-   |**Plovoucí IP adresa (přímá návrat ze serveru)** | Povolit
+   |**Plovoucí IP adresa (přímá návrat ze serveru)** | Povoleno
 
 Opakujte tyto kroky pro nástroj pro vyrovnávání zatížení u ostatních skupin dostupnosti, které se účastní distribuovaných skupin dostupnosti.
 

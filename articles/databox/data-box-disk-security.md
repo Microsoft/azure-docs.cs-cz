@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606561"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117268"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk zabezpečení a ochrana dat
 
@@ -34,7 +34,7 @@ Následující schéma představuje tok dat přes Azure Data Box Disk od místn�
 
 ## <a name="security-features"></a>Funkce zabezpečení
 
-Data Box Disk představuje bezpečné řešení pro přenos dat díky tomu, že prohlížet, upravovat a mazat data mohou jen oprávněné entity. Bezpečnostní funkce tohoto řešení se týkají disku a související služby a zajišťují maximální bezpečí uložených dat. 
+Data Box Disk představuje bezpečné řešení pro přenos dat díky tomu, že prohlížet, upravovat a mazat data mohou jen oprávněné entity. Bezpečnostní funkce tohoto řešení se týkají disku a související služby a zajišťují maximální bezpečí uložených dat.
 
 ### <a name="data-box-disk-protection"></a>Ochrana Data Box Disku
 
@@ -48,7 +48,7 @@ Data Box Disk je chráněný následujícími funkcemi:
 
 Data, která se do Data Box Disku ukládají a která se z něho kopírují, jsou chráněna následujícími funkcemi:
 
-- Šifrování uložených dat nástrojem BitLocker za všech okolností. 
+- Šifrování uložených dat nástrojem BitLocker za všech okolností.
 - Bezpečné vymazání dat z disku po dokončení nahrávání dat do Azure. Vymazání dat je v souladu se standardy NIST 800-88r1.
 
 ### <a name="data-box-service-protection"></a>Ochrana služby Data Box
@@ -56,10 +56,9 @@ Data, která se do Data Box Disku ukládají a která se z něho kopírují, jso
 Služba Data Box Disk je chráněná následujícími funkcemi.
 
 - Přístup ke službě Data Box Disk vyžaduje, aby vaše organizace měla předplatné Azure, který zahrnuje Data Box Disk. Vaše předplatné určuje funkce, které máte na webu Azure Portal dostupné.
-- Protože služba Data Box je hostovaná v Azure, je chráněna funkcemi zabezpečení Azure. Další informace o funkcích zabezpečení poskytovaných v prostředí Microsoft Azure najdete v [Centru zabezpečení Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx). 
+- Protože služba Data Box je hostovaná v Azure, je chráněna funkcemi zabezpečení Azure. Další informace o funkcích zabezpečení poskytovaných v prostředí Microsoft Azure najdete v [Centru zabezpečení Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx).
 - Na Data Box Disku je uložený klíč, který se používá k odemknutí disku v rámci služby. 
-- Služba Data Box Disk ukládá údaje o objednávce a stavu přenosu v úložišti služby. Tyto informace se odstraní při smazání objednávky. 
-
+- Služba Data Box Disk ukládá údaje o objednávce a stavu přenosu v úložišti služby. Tyto informace se odstraní při smazání objednávky.
 
 ## <a name="managing-personal-data"></a>Správa osobních údajů
 
@@ -92,6 +91,6 @@ Další informace najdete v Zásadách ochrany osobních údajů společnosti Mi
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si [požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
+- Projděte si [Požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Disk](data-box-disk-limits.md).
 - Rychlé nasazení řešení [Azure Data Box Disk](data-box-disk-quickstart-portal.md) na webu Azure Portal

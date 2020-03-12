@@ -5,14 +5,14 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/04/2020
+ms.date: 03/10/2020
 ms.author: lahugh
-ms.openlocfilehash: 6654506a1e53165ef0891ba0de32a7937c21c904
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: a71b7b7de6f6039106b43576847675f48de803c8
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164810"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79088058"
 ---
 # <a name="h-series"></a>H-series
 
@@ -40,6 +40,52 @@ Aktualizace pro zachování paměti: nepodporováno
 <sup>1</sup> pro MPI aplikace je v síti FDR InfiniBand povolena vyhrazená síť s back-end službou RDMA.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+
+## <a name="supported-os-images-linux"></a>Podporované image operačního systému (Linux)
+ 
+Azure Marketplace má mnoho distribucí systému Linux, které podporují připojení RDMA:
+  
+* **HPC založená na CentOS** – pro virtuální počítače, které nejsou povolené SR-IOV, CentOS verze 6,5 HPC nebo novější, jsou vhodné až 7,5. Pro virtuální počítače řady H-Series doporučujeme verze 7,1 až 7,5. Na virtuálním počítači jsou nainstalované ovladače RDMA a Intel MPI 5,1.
+  Pro virtuální počítače SR-IOV přináší CentOS-HPC 7,6 optimalizované a předem načtené s ovladači RDMA a různými nainstalovanými balíčky MPI.
+  Pro jiné image virtuálních počítačů s RHEL/CentOS přidejte rozšíření InfiniBandLinux, aby bylo možné InfiniBand povolit. Tato přípona virtuálního počítače se systémem Linux nainstaluje ovladače Mellanox OFED (na virtuálních počítačích SR-IOV) pro připojení RDMA. Následující rutina prostředí PowerShell nainstaluje nejnovější verzi (verze 1,0) rozšíření InfiniBandDriverLinux na existující virtuální počítač s podporou RDMA. Virtuální počítač s podporou RDMA má název *myVM* a do skupiny prostředků s názvem *myResourceGroup* ve *západní USA* oblasti se nasadí takto:
+
+  ```powershell
+  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  ```
+  Alternativně lze rozšíření virtuálních počítačů zahrnout do šablon Azure Resource Manager pro snadné nasazení pomocí následujícího elementu JSON:
+  ```json
+  "properties":{
+  "publisher": "Microsoft.HpcCompute",
+  "type": "InfiniBandDriverLinux",
+  "typeHandlerVersion": "1.0",
+  } 
+  ```
+  
+  Následující příkaz nainstaluje nejnovější InfiniBandDriverLinux rozšíření verze 1,0 na všechny virtuální počítače podporující RDMA ve stávající sadě virtuálních počítačů s názvem *myVMSS* nasazenou ve skupině prostředků s názvem *myResourceGroup*:
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+  
+  > [!NOTE]
+  > U imagí HPC založených na CentOS jsou aktualizace jádra v konfiguračním souboru **Yumu** zakázané. Důvodem je to, že ovladače pro Linux RDMA jsou distribuované jako balíček ot./min. a aktualizace ovladačů nemusí fungovat, pokud je jádro aktualizované.
+  >
+  
+
+* **SUSE Linux Enterprise Server** – SLES 12 SP3 pro HPC, SLES 12 SP3 pro HPC (Premium), SLES 12 SP1 pro HPC, SLES 12 SP1 pro HPC (Premium), SLES 12 SP4 a SLES 15. Jsou nainstalované ovladače RDMA a na virtuálním počítači jsou distribuované balíčky Intel MPI. Nainstalujte MPI spuštěním následujícího příkazu:
+
+  ```bash
+  sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+  ```
+  
+* **Ubuntu** -Ubuntu Server 16,04 LTS, 18,04 LTS. Nakonfigurujte na virtuálním počítači ovladače RDMA a zaregistrujte se pomocí Intel pro stažení Intel MPI:
+
+  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
+
+  Další informace o povolení InfiniBand, nastavení MPI najdete v tématu [Povolení InfiniBand](/workloads/hpc/enable-infiniband.md).
 
 ## <a name="other-sizes"></a>Jiné velikosti
 

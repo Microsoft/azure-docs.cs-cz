@@ -13,18 +13,21 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7704779ff605e28358f6f82c22ccda84d371dba9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: abf083aacbdc643d780a8061b405752f36e27e45
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084386"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129936"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro iOS nebo macOS.
 
 V tomto kurzu se dozvíte, jak integrovat aplikaci pro iOS nebo macOS s platformou Microsoft identity. Aplikace se přihlásí k uživateli, získá přístupový token pro volání rozhraní Microsoft Graph API a vytvoří požadavek na rozhraní Microsoft Graph API.  
 
 Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
+
+>[!NOTE]
+> Pokud začínáte s platformou Microsoft identity, doporučujeme začít s [přihlašováním uživatelů a volat rozhraní Microsoft Graph API z aplikace pro iOS nebo MacOS](quickstart-v2-ios.md).
 
 ## <a name="how-this-tutorial-works"></a>Jak tento kurz funguje
 
@@ -44,7 +47,7 @@ Tato ukázka implementuje ověřování pomocí knihovny Microsoft Authenticatio
 
 Tento kurz se týká aplikací pro iOS i macOS. Všimněte si, že některé kroky se mezi těmito dvěma platformami liší. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - K sestavení aplikace v této příručce se vyžaduje XCode verze 10. x nebo vyšší. XCode si můžete stáhnout z [webu iTunes](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Adresa URL pro stažení XCode").
 - Knihovna Microsoft Authentication Library ([MSAL. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Můžete použít Správce závislostí nebo přidat knihovnu ručně. Níže uvedené pokyny vám ukážou, jak.

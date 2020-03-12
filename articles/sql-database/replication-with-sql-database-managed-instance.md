@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7356f627c8a85cb89f3900e1af84d5e0a7d4be17
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372464"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096198"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace v databázi spravované instance Azure SQL Database
 
@@ -260,8 +260,8 @@ EXEC sp_addpushsubscription_agent
   @subscriber_security_mode = 0,
   @subscriber_login = N'$(target_username)',
   @subscriber_password = N'$(target_password)',
-  @job_login = N'$(target_username)',
-  @job_password = N'$(target_password)';
+  @job_login = N'$(username)',
+  @job_password = N'$(password)';
 
 -- Initialize the snapshot
 EXEC sp_startpublication_snapshot

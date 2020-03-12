@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614241"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126704"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Změna SKU pro existující Azure AD Domain Services spravovanou doménu
 
-V Azure Active Directory Domain Services (Azure služba AD DS) je dostupný výkon a funkce na základě typu SKU. Tyto rozdíly mezi funkcemi zahrnují četnost zálohování nebo maximální počet jednosměrných odchozích vztahů důvěryhodnosti doménové struktury (aktuálně ve verzi Preview). SKU vybíráte při vytváření spravované domény a po nasazení spravované domény můžete přepnout SKU podle toho, jak se vaše firemní potřeby změnily. Změny v obchodních požadavcích můžou zahrnovat nutnost častých záloh nebo vytváření dalších vztahů důvěryhodnosti doménové struktury. Další informace o limitech a cenách různých SKU najdete v tématu [Koncepty azure služba AD DS SKU][concepts-sku] a cenové stránky [Azure služba AD DS][pricing] .
+V Azure Active Directory Domain Services (Azure služba AD DS) je dostupný výkon a funkce na základě typu SKU. Tyto rozdíly mezi funkcemi zahrnují četnost zálohování nebo maximální počet jednosměrných odchozích vztahů důvěryhodnosti doménové struktury (aktuálně ve verzi Preview). SKU vyberete při vytváření spravované domény a po nasazení spravované domény můžete přepínat nebo snížit skladové položky podle toho, jak se vaše firemní potřeby mění. Změny v obchodních požadavcích můžou zahrnovat nutnost častých záloh nebo vytváření dalších vztahů důvěryhodnosti doménové struktury. Další informace o limitech a cenách různých SKU najdete v tématu [Koncepty azure služba AD DS SKU][concepts-sku] a cenové stránky [Azure služba AD DS][pricing] .
 
 V tomto článku se dozvíte, jak změnit SKLADOVOU položku pro existující spravovanou doménu Azure služba AD DS pomocí Azure Portal.
 
@@ -36,9 +36,12 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 ## <a name="sku-change-limitations"></a>Omezení změny SKU
 
-Existují určitá omezení operace změny skladové položky, pokud používáte doménovou strukturu prostředků (aktuálně ve verzi Preview) a vytvořili jste jednosměrné vztahy důvěryhodnosti mezi Azure služba AD DS do místního prostředí služba AD DS. SKU *Premium* a *Enterprise* definují limit počtu vztahů důvěryhodnosti, které můžete vytvořit. Nemůžete změnit na SKU s nižším maximálním limitem, než je aktuálně nakonfigurované.
+Po nasazení spravované domény Azure služba AD DS můžete skladové jednotky změnit nahoru nebo dolů. Pokud ale používáte doménovou strukturu prostředků (aktuálně ve verzi Preview) a vytvořili jste jednosměrnou odchozí důvěryhodnost doménové struktury z Azure služba AD DS do místního prostředí služba AD DS, existují určitá omezení operace změny SKU. SKU *Premium* a *Enterprise* definují limit počtu vztahů důvěryhodnosti, které můžete vytvořit. Nemůžete změnit na SKU s nižším maximálním limitem, než je aktuálně nakonfigurované.
 
-Pokud jste například vytvořili dvě vztahy důvěryhodnosti doménové struktury na SKU *Premium* , nemůžete přejít na *standardní* SKU. *Standardní* SKU nepodporuje vztahy důvěryhodnosti doménové struktury. Případně, pokud jste vytvořili sedm vztahů důvěryhodnosti na SKU *Premium* , nemůžete přejít na SKU *Enterprise* . SKU *Enterprise* podporuje maximálně pět vztahů důvěryhodnosti.
+Příklad:
+
+* Pokud jste vytvořili dvě vztahy důvěryhodnosti doménové struktury na SKU *Premium* , nemůžete přejít na standardní SKU *Standard* . *Standardní* SKU nepodporuje vztahy důvěryhodnosti doménové struktury.
+* Případně, pokud jste vytvořili sedm vztahů důvěryhodnosti na SKU *Premium* , nemůžete přejít na SKU *Enterprise* . SKU *Enterprise* podporuje maximálně pět vztahů důvěryhodnosti.
 
 Další informace o těchto omezeních najdete v tématu [funkce a omezení služby Azure služba AD DS SKU][concepts-sku].
 

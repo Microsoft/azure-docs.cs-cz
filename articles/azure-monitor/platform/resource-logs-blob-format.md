@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b90b6f8eabbda229fbed4dcef6a5d863ea721faf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659131"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096778"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Příprava na změnu formátu Azure Monitor protokoly platformy archivované na účet úložiště
 
 > [!WARNING]
-> Pokud odesíláte [protokoly prostředků Azure nebo metriky do účtu úložiště pomocí nastavení diagnostiky](resource-logs-collect-storage.md) nebo [protokolů aktivit v účtu úložiště pomocí profilů protokolů](activity-log-export.md), formát dat v účtu úložiště se změní na řádky JSON od 1. listopadu 2018. Níže uvedené pokyny popisují dopad a způsob aktualizace nástrojů pro zpracování nového formátu.
+> Pokud odesíláte [protokoly prostředků Azure nebo metriky do účtu úložiště pomocí nastavení diagnostiky](resource-logs-collect-storage.md) nebo [protokolů aktivit v účtu úložiště pomocí profilů protokolů](resource-logs-collect-storage.md), formát dat v účtu úložiště se změní na řádky JSON od 1. listopadu 2018. Níže uvedené pokyny popisují dopad a způsob aktualizace nástrojů pro zpracování nového formátu.
 >
 
 ## <a name="what-changed"></a>Co se změnilo

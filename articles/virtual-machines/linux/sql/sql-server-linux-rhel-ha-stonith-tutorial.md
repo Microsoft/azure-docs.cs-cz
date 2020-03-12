@@ -7,13 +7,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 01/27/2020
-ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/27/2020
+ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252208"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096702"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 
@@ -360,8 +360,8 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. Klikněte na [ **Registrace aplikací**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Klikněte na **Nová registrace** .
  5. Zadejte **název** , jako `<resourceGroupName>-app`, vyberte **účty pouze v tomto adresáři organizace**
- 6. Vyberte možnost **Web**typu aplikace, zadejte adresu URL pro přihlášení (například http://localhost) a klikněte na Přidat. Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
- 7. Vyberte **certifikáty a tajné klíče**a pak klikněte na **nový tajný klíč klienta** .
+ 6. Vyberte možnost **Web**typu aplikace, zadejte adresu URL pro přihlášení (například http://localhost) a klikněte na Přidat. Přihlašovací adresa URL se nepoužívá a může to být jakákoli platná adresa URL. Po dokončení klikněte na **zaregistrovat** .
+ 7. Vyberte **certifikáty a tajné klíče** pro novou registraci aplikace a pak klikněte na **nový tajný klíč klienta** .
  8. Zadejte popis nového klíče (tajný klíč klienta), vyberte možnost **nikdy nevyprší** a klikněte na **Přidat** .
  9. Zapište hodnotu tajného kódu. Používá se jako heslo instančního objektu.
 10. Vyberte **Přehled**. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (přihlašovací ID v následujících krocích) instančního objektu.
@@ -569,12 +569,14 @@ V současné době nepodporujeme ověřování AD na koncový bod AG. Proto je n
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
 GO
+
 BACKUP CERTIFICATE dbm_certificate
    TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
    WITH PRIVATE KEY (
            FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
            ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
        );
+GO
 ```
 
 Ukončete relaci SQL CMD spuštěním příkazu `exit` a vraťte se zpět do relace SSH.
@@ -623,6 +625,7 @@ Ukončete relaci SQL CMD spuštěním příkazu `exit` a vraťte se zpět do rel
         FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
         DECRYPTION BY PASSWORD = '<Private_Key_Password>'
                 );
+    GO
     ```
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Vytvoření koncových bodů zrcadlení databáze ve všech replikách
@@ -640,6 +643,7 @@ ENCRYPTION = REQUIRED ALGORITHM AES
 GO
 
 ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
+GO
 ```
 
 ### <a name="create-the-availability-group"></a>Vytvoření skupiny dostupnosti
@@ -677,6 +681,7 @@ CREATE AVAILABILITY GROUP [ag1]
 GO
 
 ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+GO
 ```
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Vytvoření SQL Server přihlašovacího jména pro Pacemaker
@@ -688,9 +693,12 @@ Na všech serverech SQL Server vytvořte přihlašovací údaje SQL pro Pacemake
 ```sql
 USE [master]
 GO
+
 CREATE LOGIN [pacemakerLogin] with PASSWORD= N'<password>';
 GO
+
 ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
+GO
 ```
 
 Na všech serverech SQL Server uložte pověření používaná pro přihlášení SQL Server. 
@@ -733,6 +741,7 @@ Na všech serverech SQL Server uložte pověření používaná pro přihlášen
     GO
 
     ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+    GO
     ```
 
 1. Spusťte následující skript Transact-SQL na primární replice a na všech sekundárních replikách:
@@ -742,6 +751,7 @@ Na všech serverech SQL Server uložte pověření používaná pro přihlášen
     GO
     
     GRANT VIEW SERVER STATE TO pacemakerLogin;
+    GO
     ```
 
 1. Až budou sekundární repliky připojené, můžete je zobrazit v SSMS Průzkumník objektů rozbalením uzlu **vždy na vysokou dostupnost** :
@@ -766,6 +776,7 @@ BACKUP DATABASE [db1] -- backs up the database to disk
 GO
 
 ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to the AG
+GO
 ```
 
 ### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Ověření, jestli je databáze vytvořená na sekundárních serverech
@@ -805,7 +816,6 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
-    virtualip      (ocf::heartbeat:IPaddr2):       Started <VM1>
     ```
 
 ### <a name="create-a-virtual-ip-resource"></a>Vytvoření prostředku virtuální IP adresy
@@ -946,7 +956,6 @@ Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzet�
          Masters: [ <VM2> ]
          Slaves: [ <VM1> <VM3> ]
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
-     
     ```
 
 ## <a name="test-fencing"></a>Oplocení testů
@@ -975,7 +984,7 @@ Další informace o testování ochranného zařízení najdete v následující
 
 ## <a name="next-steps"></a>Další kroky
 
-Aby bylo možné využít naslouchací proces skupiny dostupnosti pro SQL servery, které jste vytvořili v Azure, budete nejdřív muset vytvořit a nakonfigurovat nástroj pro vyrovnávání zatížení.
+Aby bylo možné využít naslouchací proces skupiny dostupnosti pro vaše SQL servery, budete muset vytvořit a nakonfigurovat nástroj pro vyrovnávání zatížení.
 
 > [!div class="nextstepaction"]
-> [Vytvoření a konfigurace nástroje pro vyrovnávání zatížení v Azure Portal](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal)
+> [Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure](sql-server-linux-rhel-ha-listener-tutorial.md)

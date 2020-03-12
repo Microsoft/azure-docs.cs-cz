@@ -6,18 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899188"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127273"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Přidání prostředků do prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
 Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)přidejte prostředky, jako jsou Logic Apps, integrační účty a konektory, aby měly přístup k prostředkům ve službě Azure Virtual Network. Například spravované ISE konektory, které jsou k dispozici po vytvoření ISE, se v návrháři aplikace logiky nezobrazí automaticky. Než budete moct tyto konektory ISE používat, musíte je ručně [Přidat a nasadit do ISE](#add-ise-connectors-environment) , aby se zobrazily v návrháři aplikace logiky.
 
-## <a name="prerequisites"></a>Požadavky
+> [!IMPORTANT]
+> Aby Logic Apps a integrační účty fungovaly společně v ISE, musí jako své umístění používat *stejný ISE* .
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -39,7 +42,7 @@ Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí IS
 
    ![Vybrat prostředí integrační služby](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-   | Vlastnost | Požadováno | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Název** | Ano | Název aplikace logiky, která se má vytvořit |
    | **Předplatné** | Ano | Název předplatného Azure, které se má použít |
@@ -71,7 +74,7 @@ Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte p
 
    ![Vybrat prostředí integrační služby](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-   | Vlastnost | Požadováno | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Název** | Ano | Název účtu pro integraci, který chcete vytvořit. |
    | **Předplatné** | Ano | Název předplatného Azure, které chcete použít |

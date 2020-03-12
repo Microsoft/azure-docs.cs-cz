@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5a6a96f478c4402a830cc522657f56cfd11fa56f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4f30bf112175742566c2957d78154e5a7abd1733
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821829"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096861"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -65,7 +65,7 @@ Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k u
 |:---------------------------------------------| :-------------- | :----------------|
 | Automatické převzetí služeb při selhání                           |     Ne          |      Ano         |
 | Převzetí služeb při selhání více databází současně  |     Ne          |      Ano         |
-| Po převzetí služeb při selhání aktualizovat připojovací řetězec      |     Ano         |      Ne          |
+| Uživatel musí po převzetí služeb při selhání aktualizovat připojovací řetězec.      |     Ano         |      Ne          |
 | Spravovaná instance je podporovaná.                   |     Ne          |      Ano         |
 | Může být ve stejné oblasti jako primární             |     Ano         |      Ne          |
 | Více replik                            |     Ano         |      Ne          |
@@ -85,7 +85,7 @@ Při vývoji plánu provozní kontinuity musíte pochopit maximální přijateln
 
 Různé metody obnovení nabízejí různé úrovně bodu RPO a RTO. Můžete zvolit konkrétní metodu obnovení nebo použít kombinaci metod k dosažení úplného obnovení aplikace. Následující tabulka porovnává RPO a RTO jednotlivých možností obnovení. Skupiny automatického převzetí služeb při selhání zjednodušují nasazení a využití geografické replikace a přidávají další možnosti, jak je popsáno v následující tabulce.
 
-| Metoda obnovení | RTO | OBNOVENÍ |
+| Metoda obnovení | RTO | Cíl bodu obnovení |
 | --- | --- | --- | 
 | Geografické obnovení ze geograficky replikovaných záloh | 12 h | 1 h |
 | Skupiny automatického převzetí služeb při selhání | 1 h | 5 s |

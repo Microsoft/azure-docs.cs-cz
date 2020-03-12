@@ -4,28 +4,28 @@ description: Tento článek poskytuje přehled podpory Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 1/7/2020
+ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: ac9dd31e01b1915642951aeddb10d3eae118d943
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c43ac0923e0d3d76c25657f4870a0a0431bc8b6e
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523777"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096441"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
-Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci na stejném portu služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com a fabrikam.com ze dvou fondů back-endového serveru s názvy FondServeruContoso a FondServeruFabrikam.
+Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci na stejném portu služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu brána Application Gateway obsluhuje provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů back-end serverů s názvem Fondserverucontoso a Fondserverufabrikam.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
 > Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu pro SKU v1. V případě SKU verze V2 mají přesné shody vyšší prioritu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
 
-Žádosti na adresu `http://contoso.com` se směrují na ContosoServerPool a žádosti na adresu `http://fabrikam.com` na FabrikamServerPool.
+Požadavky na adresu `http://contoso.com` se směrují na ContosoServerPool a požadavky na adresu `http://fabrikam.com` na FabrikamServerPool.
 
-Podobně lze ve stejném nasazení služby Application Gateway hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy `http://blog.contoso.com` a `http://app.contoso.com` hostované v jednom nasazení aplikační brány.
+Podobně můžete hostovat více subdomén stejné nadřazené domény ve stejném nasazení služby Application Gateway. Můžete například hostovat `http://blog.contoso.com` a `http://app.contoso.com` v jednom nasazení služby Application Gateway.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hlavičky hostitele a Identifikace názvu serveru (SNI)
 
@@ -35,11 +35,17 @@ Existují tři běžné mechanismy pro povolení hostování více webů ve stej
 2. Použití názvu hostitele k hostování více webových aplikací na stejné IP adrese.
 3. Použití různých portů k hostování více webových aplikací na stejné IP adrese.
 
-V současné době získá služba Application Gateway jednu veřejnou IP adresu, na které naslouchá provozu. Proto v současné době podpora více aplikací, z nichž každá má vlastní IP adresu, není podporována. Služba Application Gateway podporuje hostování více aplikací, z nichž každá naslouchá na jiném portu, ale tento scénář by vyžadoval, aby aplikace přijímaly provoz na nestandardních portech, a tato konfigurace často není požadována. Služba Application Gateway se při hostování více než jednoho webu na stejné veřejné IP adrese a portu spoléhá na hlavičky hostitele HTTP 1.1. Weby hostované ve službě Application Gateway mohou také podporovat přesměrování zpracování SSL pomocí rozšíření protokolu TLS Identifikace názvu serveru (SNI). Tento scénář znamená, že klientský prohlížeč a back-endová webová farma musí podporovat HTTP/1.1 a rozšíření protokolu TLS, jak je definováno v dokumentu RFC 6066.
+V současné době Application Gateway podporuje jednu veřejnou IP adresu, kde naslouchá provozu. To znamená, že v současné době není podporována více aplikací, z nichž každá má vlastní IP adresu. 
+
+Application Gateway podporuje několik aplikací, které každé naslouchá na různých portech, ale tento scénář vyžaduje, aby aplikace přijímaly provoz na nestandardních portech. To není často konfigurace, kterou požadujete.
+
+Služba Application Gateway se při hostování více než jednoho webu na stejné veřejné IP adrese a portu spoléhá na hlavičky hostitele HTTP 1.1. Weby hostované ve službě Application Gateway mohou také podporovat přesměrování zpracování SSL pomocí rozšíření protokolu TLS Identifikace názvu serveru (SNI). Tento scénář znamená, že klientský prohlížeč a back-endová webová farma musí podporovat HTTP/1.1 a rozšíření protokolu TLS, jak je definováno v dokumentu RFC 6066.
 
 ## <a name="listener-configuration-element"></a>Konfigurační prvek naslouchacího procesu
 
-Existující konfigurační prvek HTTPListener je vylepšený pro podporu názvu hostitele a prvků Identifikace názvu serveru. Ty slouží k tomu, aby služba Application Gateway mohla směrovat provoz na příslušný back-endový fond. Následující ukázka kódu je fragment prvku HttpListeners ze souboru šablony.
+Existující prvky konfigurace HTTPListener jsou vylepšené pro podporu názvů hostitelů a prvků indikace názvu serveru. Používá se Application Gateway ke směrování provozu do příslušného back-endu. 
+
+Následující příklad kódu je fragment prvku HttpListeners ze souboru šablony:
 
 ```json
 "httpListeners": [
@@ -81,7 +87,7 @@ Na stránce [Šablona Resource Manageru používající hostování více webů]
 
 ## <a name="routing-rule"></a>Pravidlo směrování
 
-V pravidle směrování není požadována žádná změna. Stále byste měli volit pravidlo směrování „Základní“ k provázání příslušných naslouchacích procesů webů s odpovídajícími back-endovými fondy adres.
+V pravidle směrování není vyžadována žádná změna. Stále byste měli volit pravidlo směrování „Základní“ k provázání příslušných naslouchacích procesů webů s odpovídajícími back-endovými fondy adres.
 
 ```json
 "requestRoutingRules": [

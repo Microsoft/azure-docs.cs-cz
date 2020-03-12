@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572346"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127023"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
 
@@ -26,9 +26,9 @@ Všechna volání musí být ověřena pomocí platného tokenu Azure Active Dir
 ## <a name="design-the-logic-app"></a>Návrh aplikace logiky
 
 > [!IMPORTANT]
-> V následujících příkladech se předpokládá, že je brána firewall Azure Analysis Services zakázaná.  Pokud je brána firewall povolená, musí být v bráně Azure Analysis Services firewall povolená veřejná IP adresa iniciátoru žádosti. Další informace o rozsahu IP adres aplikace logiky na oblast najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
+> V následujících příkladech se předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je povolená brána firewall, musí být v bráně Azure Analysis Services firewall povolená veřejná IP adresa iniciátoru žádosti. Další informace o Azure Logic Apps rozsahech IP adres na oblast najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#configuration).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 #### <a name="create-a-service-principal-spn"></a>Vytvoření instančního objektu (SPN)
 
@@ -64,13 +64,13 @@ Aktivitu HTTP nakonfigurujte následujícím způsobem:
 
 |Vlastnost  |Hodnota  |
 |---------|---------|
-|**Metoda**     |SPUŠTĚNÍ         |
+|**Metoda**     |POST         |
 |**IDENTIFIKÁTOR URI**     | https://*na server region*/Servers/*AAS název serveru*/Models/*název vaší databáze*/refreshes <br /> <br /> Například: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
 |**Hlavičky**     |   Content-Type, Application/JSON <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Další informace o vytváření textu žádosti najdete v tématu [asynchronní aktualizace pomocí REST API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Ověřování**     |Protokol OAuth pro Active Directory         |
 |**Tenant**     |Vyplňte Azure Active Directory TenantId         |
-|**Osoby**     |https://*. asazure. Windows. NET         |
+|**Osoby**     |https://*.asazure.windows.net         |
 |**ID klienta**     |Zadejte své hlavní název služby ClientID.         |
 |**Typ přihlašovacích údajů**     |Tajný kód         |
 |**Tajný kód**     |Zadejte tajný klíč hlavního názvu služby.         |

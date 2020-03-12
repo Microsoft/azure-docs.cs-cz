@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025924"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086224"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -90,13 +90,11 @@ Služba Batch používá přidružený účet úložiště k ukládání balíč
 
 Doporučujeme vytvořit účet úložiště *konkrétně* pro použití s účtem Batch a vybrat ho tady. Po vytvoření účtu úložiště ho můžete propojit s účtem Batch pomocí okna **účtu úložiště** .
 
-> [!NOTE] 
-> V současné době nemůžete použít balíčky aplikací s účtem Azure Storage, který je nakonfigurovaný pomocí [pravidel brány firewall](../storage/common/storage-network-security.md).
-> 
+> [!IMPORTANT] 
+> - V současné době nemůžete použít balíčky aplikací s účtem Azure Storage, který je nakonfigurovaný pomocí [pravidel brány firewall](../storage/common/storage-network-security.md).
+> - Účet Azure Storage s **hierarchickým oborem názvů** nastaveným na **Enabled** nelze použít pro balíčky aplikací.
 
 Služba Batch používá Azure Storage k ukládání balíčků aplikací jako objektů blob bloku. Poplatky za data objektů blob bloku se [účtují jako normální][storage_pricing] a velikost každého balíčku nemůže překročit maximální velikost objektu blob bloku. Další informace najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../storage/blobs/scalability-targets.md). Nezapomeňte vzít v úvahu velikost a počet balíčků aplikací a pravidelně odebírat zastaralé balíčky pro minimalizaci nákladů.
-> 
-> 
 
 ### <a name="view-current-applications"></a>Zobrazit aktuální aplikace
 Pokud chcete zobrazit aplikace ve vašem účtu Batch, klikněte v levé nabídce na položku nabídky **aplikace** a zobrazte si **účet Batch**.
@@ -110,7 +108,7 @@ Po výběru této možnosti nabídky se otevře okno **aplikace** :
 V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
 * **Balíčky**: počet verzí přidružených k této aplikaci.
-* **Výchozí verze**: verze aplikace je nainstalovaná, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je volitelné.
+* **Výchozí verze**: verze aplikace je nainstalovaná, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je nepovinné.
 * **Povolit aktualizace**: hodnota, která určuje, zda jsou povoleny aktualizace balíčků, odstraňování a přidání. Pokud je toto nastavení nastaveno na **ne**, aktualizace balíčků a odstranění jsou pro aplikaci zakázané. Přidat lze pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
 
 Pokud chcete zobrazit strukturu souborů balíčku aplikace na výpočetním uzlu, přejděte na portál na účet Batch. Z účtu Batch přejděte na **fondy**. Vyberte fond, který obsahuje výpočetní uzel (y), na které vás zajímáte.

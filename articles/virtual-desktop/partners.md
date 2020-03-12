@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+manager: lizross
+ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201777"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127568"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -159,7 +160,7 @@ Jako certifikovaný partner pro integraci liquit pomáhá urychlit přechod do c
 
 Přihlašovací VSI je poskytovatel služeb s přidanými virtuálními počítači s Windows a poskytuje software pro testování výkonu aplikace v prostředích virtuálních ploch Windows. Zákazníci, kteří přesouvá své místní obchodní služby na virtuální plochu Windows, používají přihlašovací VSI Enterprise Edition k vyhodnocení a údržbě optimálního výkonu, škálovatelnosti a dostupnosti Windows 10 Enterprise multi-session, Windows 10 Enterprise a Systém Windows 7 je povolený s jejich důležitými podnikovými aplikacemi.
 
-- [Přejít na web partnera](https://www.loginvsi.com).
+- [Přejít na web partnera](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -253,6 +254,16 @@ Tricerat nabízí vynikající řešení pro správu tisku pro virtuální poč�
 V Tricerat je tisk na virtuálním počítači s Windows a mimo něj bezproblémové. Tricerat software umožňuje správcům snadno připojovat místní tiskárny ke cloudu a rozšiřovat správu podnikových tiskáren z tradičních prostředí na nové moderní pracovní prostory.
 
 - [Přejít na web partnera](https://www.tricerat.com/microsoft-printing).
+
+## <a name="vast-limits"></a>nepřeberné limity
+
+![logo pro velké množství](./media/partners/vast-limits.png)
+
+nepřeberné omezení uberAgent společnosti poskytuje přehled o nasazeních virtuálních ploch ve Windows. Vytvoří software pro podnikovou aplikaci, protože ví, jak profesionálové IT považují a jaké nástroje potřebují. Jeho produkty pomůžou profesionálům v oblasti IT lépe zefektivnit tím, že jim přesně dostanou, co potřebují ke své práci. žádné další, ne méně.
+
+uberAgent je produkt pro monitorování a analýzu, který je navržený pro výpočetní uživatele, který nejenom shromažďuje data – poskytuje zákazníkům informace, na kterých záleží. uberAgent má své vlastní metriky, které pokrývají klíčové aspekty uživatelského prostředí, výkonu aplikací a zabezpečení koncového bodu, a oznamuje vám všechno, co potřebujete znát o virtuálních počítačích s virtuálními počítači s Windows, aniž by to ovlivnilo hustotu uživatelů vašich systémů. uberAgent zjednodušuje řešení potíží, pomáhá při změně velikosti a poskytuje bohatě důležité informace pro zabezpečení informací.
+
+- [Přejít na web partnera](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspot"></a>Workspot
 

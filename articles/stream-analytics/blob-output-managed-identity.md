@@ -5,17 +5,17 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 03/11/2020
+ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664303"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129970"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy do Azure Blob Storage Output (Preview)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy do Azure Blob Storage Output
 
-[Spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) pro výstup do Azure Blob Storage je k dispozici pro Azure Stream Analytics jako ve verzi Preview. To umožňuje Stream Analytics úlohám přímý přístup k účtu úložiště namísto použití připojovacího řetězce. Kromě vylepšeného zabezpečení tato funkce také umožňuje zapisovat data do účtu úložiště v Virtual Network (VNET) v rámci Azure.
+[Spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) pro výstup do úložiště objektů BLOB v Azure umožňuje Stream Analytics úlohy s přímým přístupem k účtu úložiště namísto použití připojovacího řetězce. Kromě vylepšeného zabezpečení tato funkce také umožňuje zapisovat data do účtu úložiště v Virtual Network (VNET) v rámci Azure.
 
 V tomto článku se dozvíte, jak povolit spravovanou identitu pro výstupy objektů BLOB Stream Analytics úlohy prostřednictvím Azure Portal a prostřednictvím Azure Resource Manager nasazení.
 

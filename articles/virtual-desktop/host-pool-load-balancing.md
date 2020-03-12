@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 4838a11c3ff54c902e823dcf93ba610f123407a8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+manager: lizross
+ms.openlocfilehash: 193821ed0df09b87f19e45a82ca42026405a0dc4
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606824"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127867"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Metody vyrovnávání zatížení fondu hostitelů
 

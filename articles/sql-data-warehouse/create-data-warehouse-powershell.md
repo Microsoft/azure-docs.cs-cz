@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: vytvoření datového skladu (PowerShell)'
-description: K rychlému vytvoření logického serveru datového skladu Azure synapse Analytics použijte pravidlo brány firewall na úrovni serveru s použitím Azure PowerShell.
+title: Vytvoření a dotazování synapse fondu SQL pomocí Azure PowerShell
+description: K rychlému vytvoření logického serveru synapse fondu SQL pomocí pravidla brány firewall na úrovni serveru použijte Azure PowerShell.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3cf55a400c1894794d555e1362f2197aad44a96b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199984"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130294"
 ---
-# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Rychlý Start: vytvoření & dotazování datového skladu pomocí Azure PowerShell
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: vytvoření a dotazování synapse fondu SQL pomocí Azure PowerShell
 
-Vytvořte datový sklad Azure synapse Analytics tím, že zřídíte fond SQL pomocí Azure PowerShell.
+Vytvořte synapse fond SQL (datový sklad) ve službě Azure synapse Analytics pomocí Azure PowerShell.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-> [!NOTE]
-> Vytvoření datového skladu může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> [!IMPORTANT]
+> Vytvoření fondu SQL může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -94,7 +94,9 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfigurace pravidla brány firewall serveru
 
-Pomocí příkazu [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) vytvořte [pravidlo brány firewall na úrovni serveru SQL Azure](../sql-database/sql-database-firewall-configure.md) . Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například SQL Server Management Studio nebo nástroj SQLCMD, pro připojení k SQL Data Warehouse prostřednictvím brány firewall služby SQL Data Warehouse. V následujícím příkladu je brána firewall otevřená pouze pro ostatní prostředky Azure. Pokud chcete povolit externí připojení, změňte IP adresu na příslušnou adresu pro vaše prostředí. Chcete-li otevřít všechny IP adresy, použijte jako počáteční IP adresu 0.0.0.0 a jako koncovou adresu 255.255.255.255.
+Pomocí příkazu [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) vytvořte [pravidlo brány firewall na úrovni serveru SQL Azure](../sql-database/sql-database-firewall-configure.md) . Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například SQL Server Management Studio nebo nástroj SQLCMD pro připojení ke fondu SQL prostřednictvím brány firewall služby fondu SQL. 
+
+V následujícím příkladu je brána firewall otevřená pouze pro ostatní prostředky Azure. Pokud chcete povolit externí připojení, změňte IP adresu na příslušnou adresu pro vaše prostředí. Chcete-li otevřít všechny IP adresy, použijte jako počáteční IP adresu 0.0.0.0 a jako koncovou adresu 255.255.255.255.
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -107,8 +109,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
-Tento příklad vytvoří datový sklad pomocí dříve definovaných proměnných.  Určuje cíl služby jako DW100c, což je výchozí bod pro přenos dat datového skladu nižších nákladů. 
+## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
+Následující příklad vytvoří fond SQL pomocí dříve definovaných proměnných.  Určuje cíl služby jako DW100c, což je výchozí bod pro snížení nákladů pro váš fond SQL. 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,10 +126,10 @@ New-AzSqlDatabase `
 Požadované parametry jsou:
 
 * **RequestedServiceObjectiveName**: množství [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) , které požadujete. Zvýšením této hodnoty se zvýší náklady na výpočetní výkon. Seznam podporovaných hodnot naleznete v tématu limity pro [paměť a souběžnost](memory-concurrency-limits.md).
-* **DatabaseName**: název datového skladu, který vytváříte.
+* **DatabaseName**: název vytvářeného fondu SQL.
 * **Název_serveru**: název serveru, který používáte pro vytváření.
 * **ResourceGroupName**: Skupina prostředků, kterou používáte. K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
-* **Edice**: pro vytvoření datového skladu musí být "datový sklad".
+* **Edice**: pro vytvoření fondu SQL musí být "DataWarehouse".
 
 Volitelné parametry jsou:
 
@@ -151,6 +153,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste vytvořili datový sklad, vytvořili jste pravidlo brány firewall připojené k vašemu datovému skladu a spustili několik dotazů. Pokud se chcete dozvědět víc, přejděte k kurzu načtení dat.
-> [!div class="nextstepaction"]
->[Načtení dat do datového skladu](load-data-from-azure-blob-storage-using-polybase.md)
+Nyní jste vytvořili fond SQL, vytvořili jste pravidlo brány firewall připojenou k vašemu fondu SQL a spustili několik dotazů. Pokud se chcete dozvědět víc, přejděte k článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) .

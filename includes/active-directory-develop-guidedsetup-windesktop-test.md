@@ -14,48 +14,48 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175185"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128596"
 ---
 ## <a name="test-your-code"></a>Testování kódu
 
-Chcete-li spustit váš projekt v sadě Visual Studio, vyberte **F5**. Vaše aplikace **hlavního okna MainWindow** se zobrazí, jak je znázorněno zde:
+Chcete-li spustit projekt, v aplikaci Visual Studio vyberte **F5**. Zobrazí se **MainWindow** vaší aplikace, jak je znázorněno zde:
 
 ![Testování aplikace](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-Při prvním spuštění aplikace a vyberte **volat Microsoft Graph API** tlačítko, budete vyzváni k přihlášení. Použijte účet s Azure Active Directory (pracovní nebo školní účet) nebo účet Microsoft (live.com, outlook.com) a otestovat ho.
+Při prvním spuštění aplikace a výběru tlačítka **volat Microsoft Graph rozhraní API** se zobrazí výzva, abyste se přihlásili. K otestování použijte účet Azure Active Directory (pracovní nebo školní účet) nebo účet Microsoft (live.com, outlook.com).
 
 ![Přihlášení k aplikaci](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
-### <a name="provide-consent-for-application-access"></a>Zadejte svůj souhlas pro přístup k aplikaci
+### <a name="provide-consent-for-application-access"></a>Poskytnutí souhlasu pro přístup k aplikaci
 
-Při prvním přihlášení do aplikace, budete také vyzváni k poskytování souhlasit s povolením aplikace pro přístup k profilu a přihlášení v, jak je znázorněno zde:
+Při prvním přihlášení do aplikace se zobrazí také výzva k poskytnutí souhlasu, aby aplikace mohla přistupovat k vašemu profilu a přihlásili se, jak je znázorněno zde:
 
-![Zadejte svůj souhlas pro přístup k aplikaci](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
+![Zadejte svůj souhlas s přístupem k aplikacím.](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
-### <a name="view-application-results"></a>Zobrazení výsledků aplikace
+### <a name="view-application-results"></a>Zobrazit výsledky aplikace
 
-Po přihlášení, měli byste vidět informace profilu uživatele, který je vrácen voláním rozhraní Microsoft Graph API. Výsledky se zobrazí v **výsledků volání rozhraní API** pole. Základní informace o tokenu, který byl získán prostřednictvím volání `AcquireTokenInteractive` nebo `AcquireTokenSilent` by se zobrazovat v **informace o tokenu** pole. Výsledky obsahují následující vlastnosti:
+Po přihlášení byste měli vidět informace o profilu uživatele, které jsou vráceny voláním rozhraní Microsoft Graph API. Výsledky se zobrazí v poli **výsledky volání rozhraní API** . Základní informace o tokenu, který byl získán prostřednictvím volání `AcquireTokenInteractive` nebo `AcquireTokenSilent`, by měly být viditelné v poli **informace o tokenu** . Výsledky obsahují následující vlastnosti:
 
 |Vlastnost  |Formát  |Popis |
 |---------|---------|---------|
-
-|**Uživatelské jméno**  | <span> user@domain.com </span> | Uživatelské jméno, který se používá k identifikaci uživatele. | | **Vyprší platnost tokenu** | Datum a čas | Čas, kdy vyprší platnost tokenu. Knihovna MSAL je rozšířením datum vypršení platnosti obnovuje se token podle potřeby. |
+|**Uživatelské jméno** |<span>user@domain.com</span> |Uživatelské jméno, které se používá k identifikaci uživatele.|
+|**Vypršení platnosti tokenu** |DateTime |Čas vypršení platnosti tokenu MSAL rozšiřuje datum vypršení platnosti tím, že podle potřeby obnoví token.|
 
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaná oprávnění
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaných oprávněních
 
-Vyžaduje rozhraní Microsoft Graph API *user.read* obory a čtení profilu uživatele. Tento obor se automaticky přidá ve výchozím nastavení každá aplikace, které je registrované v portálu pro registraci aplikace. Další rozhraní API pro Microsoft Graph, stejně jako vlastní rozhraní API pro back endového serveru může vyžadovat další obory. Vyžaduje rozhraní Microsoft Graph API *Calendars.Read* oboru seznam kalendářů uživatele.
+Rozhraní Microsoft Graph API vyžaduje, aby *uživatel. přečetl* obor pro čtení profilu uživatele. Tento obor se ve výchozím nastavení automaticky přidá v každé aplikaci, která je registrovaná na portálu pro registraci aplikací. Jiná rozhraní API pro Microsoft Graph a také vlastní rozhraní API pro back-end Server můžou vyžadovat další obory. Rozhraní Microsoft Graph API vyžaduje *kalendáře. Přečtěte* si obor pro výpis kalendářů uživatele.
 
-Chcete-li přístup ke kalendářům uživatele v rámci aplikace, přidejte *Calendars.Read* delegovaná oprávnění aplikace informace o registraci. Pak přidejte *Calendars.Read* rozsah `acquireTokenSilent` volání.
+Chcete-li získat přístup k kalendářům uživatele v kontextu aplikace, přidejte *kalendáře. Přečtěte si* delegované oprávnění k informacím o registraci aplikace. Pak přidejte *calendars.* scope pro `acquireTokenSilent` volání.
 
 >[!NOTE]
->Uživatel může zobrazit výzva pro další souhlasy zvýšit počet oborů.
+>Uživatel může být vyzván k dalšímu souhlasu při zvýšení počtu oborů.
 
 <!--end-collapse-->
 

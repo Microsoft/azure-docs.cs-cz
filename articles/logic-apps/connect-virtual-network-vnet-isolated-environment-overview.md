@@ -5,23 +5,26 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 03/05/2020
-ms.openlocfilehash: a0330ae8e69691f431756e6ea9a3027e1ac07b1c
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/12/2020
+ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303371"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127246"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
-V některých případech vaše aplikace logiky a účty pro integraci potřebují přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které jsou ve [službě Azure Virtual Network](../virtual-network/virtual-networks-overview.md). K nastavení tohoto přístupu můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE je izolovaná instance Logic Apps služby, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps.
+V některých případech vaše aplikace logiky potřebuje přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které se nacházejí ve [službě Azure Virtual Network](../virtual-network/virtual-networks-overview.md). K nastavení tohoto přístupu můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE je izolovaná instance Logic Apps služby, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps.
 
 Spouštění Logic Apps ve vaší vlastní samostatné izolované instanci pomáhá snižovat dopad, který můžou mít ostatní klienti Azure na výkon vašich aplikací, označované taky jako ["vzdálení" sousedních směrovačů](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). ISE také poskytuje tyto výhody:
 
 * Vaše vlastní statické IP adresy, které jsou oddělené od statických IP adres, které jsou sdíleny pomocí aplikace logiky ve službě pro více tenantů. Pro komunikaci s cílovými systémy můžete také nastavit jednu veřejnou, statickou a předvídatelná odchozí IP adresu. Tímto způsobem není nutné nastavovat další otevřená brána firewall v těchto cílových systémech pro každý ISE.
 
 * Zvýšené limity doby trvání běhu, uchovávání úložiště, propustnosti, požadavků HTTP a časových limitů odpovědí, velikostí zpráv a požadavků vlastních konektorů. Další informace najdete v tématu [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md).
+
+> [!NOTE]
+> Některé virtuální sítě Azure používají pro poskytování přístupu ke službám Azure PaaS, jako jsou například Azure Storage, Azure Cosmos DB nebo Azure SQL Database, partnerské služby nebo služby zákazníkům hostované v Azure, privátní koncové body ([privátní propojení Azure](../private-link/private-link-overview.md)). Pokud vaše aplikace logiky potřebují přístup k virtuálním sítím, které používají privátní koncové body, musíte tyto aplikace logiky vytvořit, nasadit a spustit v rámci ISE.
 
 Když vytvoříte ISE, Azure *vloží* nebo nasadí tento ISE do vaší virtuální sítě Azure. Tuto ISE pak můžete použít jako umístění pro aplikace logiky a účty pro integraci, které potřebují přístup.
 
@@ -42,7 +45,7 @@ I nadále můžete použít konektory, které nemají štítek **Core** nebo **I
 > [!IMPORTANT]
 > Logic Apps, integrované triggery, integrované akce a konektory spouštěné ve vašem ISE používají Cenový tarif, který se liší od cenového plánu založeného na spotřebě. Další informace najdete v tématu [Logic Apps cenového modelu](../logic-apps/logic-apps-pricing.md#fixed-pricing). Podrobnosti o cenách najdete v tématu [Logic Apps ceny](../logic-apps/logic-apps-pricing.md).
 
-Tento přehled popisuje další informace o tom, jak ISE poskytuje vašim aplikacím logiky a integračním účtům přímý přístup k vaší virtuální síti Azure a porovnává rozdíly mezi ISE a službou víceklientské Logic Apps.
+Tento přehled popisuje další informace o tom, jak ISE poskytuje Logic Apps přímý přístup k vaší virtuální síti Azure a porovnává rozdíly mezi ISE a službou víceklientské Logic Apps.
 
 <a name="difference"></a>
 
@@ -51,8 +54,6 @@ Tento přehled popisuje další informace o tom, jak ISE poskytuje vašim aplika
 Když vytváříte a spouštíte Logic Apps v ISE, získáte stejné uživatelské prostředí a podobné možnosti jako služba pro více tenantů Logic Apps. Můžete použít všechny stejné integrované triggery, akce a spravované konektory, které jsou k dispozici ve víceklientské Logic Apps službě. Některé spravované konektory nabízejí další verze ISE. Rozdíl mezi konektory ISE a neISEými konektory existují v místě, kde se spouštějí, a popisky, které mají v návrháři aplikace logiky při práci v rámci ISE.
 
 ![Konektory s popisky a bez nich v ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
-
-
 
 * Vestavěné triggery a akce zobrazují **základní** popisek. Vždycky se spouštějí ve stejném ISE jako vaše aplikace logiky. Spravované konektory, které zobrazují popisek **ISE** , se také spouštějí ve stejném ISE jako vaše aplikace logiky.
 
@@ -129,8 +130,6 @@ Tyto koncové body ovlivňují také způsob, jakým máte přístup ke vstupům
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připojení k virtuálním sítím Azure z izolovaných aplikací logiky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
-* [Přidání artefaktů do prostředí integračních služeb](../logic-apps/add-artifacts-integration-service-environment-ise.md)
-* [Správa prostředí integrační služby](../logic-apps/ise-manage-integration-service-environment.md)
+* [Připojení k virtuálním sítím Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 * Další informace o [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
 * Informace o [integraci virtuální sítě pro služby Azure](../virtual-network/virtual-network-for-azure-services.md)

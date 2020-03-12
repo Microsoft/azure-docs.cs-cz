@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132074"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096609"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Nastavit časový limit pro nečinnost na úrovni adresáře
 
@@ -24,7 +24,7 @@ Nastavení časového limitu nečinnosti pomáhá chránit vaše prostředky př
 
 Pokud jste globální správce a chcete vyhodnotit nastavení časového limitu nečinnosti pro všechny uživatele Azure Portal, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V záhlaví globální stránky vyberte **Nastavení** .
 3. Vyberte text odkazu **konfigurace časového limitu na úrovni adresáře**.
 
@@ -43,7 +43,7 @@ Pokud chcete potvrdit, že se správně nastavily zásady časového limitu neč
 Nastavení se projeví pro nové relace. Nebude okamžitě platit pro všechny uživatele, kteří jsou už přihlášení.
 
 > [!NOTE]
-> Pokud správce nakonfiguroval nastavení časového limitu na úrovni adresáře, uživatelé můžou zásady přepsat a nastavit vlastní neaktivní dobu odhlašování. Uživatel však musí zvolit časový interval, který je menší, než je nastaveno na úrovni adresáře.
+> Pokud globální správce nakonfiguroval nastavení časového limitu na úrovni adresáře, uživatelé můžou zásadu přepsat a nastavit vlastní dobu neaktivního odhlašování. Uživatel však musí zvolit časový interval, který je menší, než je nastaveno na úrovni adresáře globálním správcem.
 >
 
 ## <a name="next-steps"></a>Další kroky

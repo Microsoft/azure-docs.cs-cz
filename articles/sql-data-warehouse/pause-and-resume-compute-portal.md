@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: pozastavení & obnovení COMPUTE – Azure Portal '
+title: Pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL prostřednictvím Azure Portal
 description: Pomocí Azure Portal můžete pozastavit výpočetní výkon fondu SQL a ušetřit tak náklady. Až budete připraveni k používání datového skladu, obnovte výpočetní prostředky.
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,22 +11,20 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 49684e6844c2d9f58e9b750b12991428218e4426
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3a131c1ebbf2a69f1c738cbc3421635406500d3c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200594"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130359"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní služby ve fondu SQL Azure synapse Analytics v Azure Portal
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL prostřednictvím Azure Portal
 
-Pomocí Azure Portal můžete pozastavit výpočetní výkon fondu SQL a ušetřit tak náklady. Až budete připraveni k používání datového skladu, [obnovte výpočetní](sql-data-warehouse-manage-compute-overview.md) prostředky.
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Azure Portal můžete použít k pozastavení a obnovení výpočetních prostředků fondu SQL synapse (datový sklad). Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -34,11 +32,13 @@ Pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md)
 
 ## <a name="pause-compute"></a>Pozastavit výpočetní prostředky
 
-Pokud chcete ušetřit náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Pokud například nebudete databázi používat během noci a na víkendech, můžete ji během těchto časů pozastavit a obnovit během dne. Za výpočetní prostředky se vám nebudou účtovat žádné poplatky, zatímco databáze je pozastavená. Budeme se ale nadále účtovat za úložiště. 
+Pokud chcete snížit náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Pokud například nebudete databázi používat během noci a na víkendech, můžete ji během těchto časů pozastavit a obnovit během dne. 
+>[!NOTE]
+>Za výpočetní prostředky se vám nebudou účtovat žádné poplatky, zatímco databáze je pozastavená. Budeme se ale nadále účtovat za úložiště. 
 
-Pomocí těchto kroků pozastavíte fond SQL.
+Pomocí těchto kroků pozastavíte fond SQL:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V levé navigační stránce Azure Portal klikněte na **Azure synapse Analytics (dřív SQL DW)** .
 2. Vyberte **mySampleDataWarehouse** ze stránky **Azure synapse Analytics (dříve SQL DW)** a otevřete fond SQL. 
 3. Na stránce **mySampleDataWarehouse** je **stav** oznámení **online**.
@@ -80,7 +80,7 @@ Pomocí těchto kroků obnovíte fond SQL.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Účtují se vám poplatky za jednotky datového skladu a data uložená v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně. 
+Účtují se vám poplatky za jednotky datového skladu a data uložená ve vašem fondu SQL. Výpočetní prostředky a prostředky úložiště se účtují odděleně. 
 
 - Pokud chcete uchovávat data v úložišti, pozastavte výpočetní prostředí.
 - Pokud chcete odebrat budoucí poplatky, můžete odstranit fond SQL. 
@@ -95,14 +95,15 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 2. Pokud chcete odebrat fond SQL, abyste vám neúčtovali výpočetní výkon nebo úložiště, klikněte na **Odstranit**.
 
-3. Pokud chcete odebrat vytvořený SQL Server, klikněte na **sqlpoolservername.Database.Windows.NET**a pak klikněte na **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+3. Pokud chcete odebrat vytvořený SQL Server, klikněte na **sqlpoolservername.Database.Windows.NET**a pak klikněte na **Odstranit**.  
 
-4. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
+   > [!CAUTION]
+   > S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+
+5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste pozastavili a obnovili výpočetní výkon pro váš fond SQL. Pro další kroky pokračujte v kurzu načítání dat.
+Nyní jste pozastavili a obnovili výpočetní výkon pro váš fond SQL. V dalším článku se dozvíte další informace o tom, jak [načíst data do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md). Další informace o správě výpočetních funkcí najdete v článku [Správa výpočetních přehledů](sql-data-warehouse-manage-compute-overview.md) . 
 
-> [!div class="nextstepaction"]
-> [Načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md)

@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f3edbc4fc48abd9c7df92aedcdea50dd77a0fd4b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672123"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086259"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -128,7 +128,7 @@ Hodnotu těchto proměnných definovaných službou můžete získat tak, aby by
 | $NetworkInBytes |Počet příchozích bajtů. |
 | $NetworkOutBytes |Počet odchozích bajtů. |
 | $SampleNodeCount |Počet výpočetních uzlů. |
-| $ActiveTasks |Počet úloh, které jsou připravené ke spuštění, ale ještě nejsou spuštěny. Počet $ActiveTasks zahrnuje všechny úlohy, které jsou v aktivním stavu a jejichž závislosti byly splněny. Všechny úlohy, které jsou v aktivním stavu, ale jejichž závislosti nejsou splněné, jsou vyloučené z $ActiveTasks počet.|
+| $ActiveTasks |Počet úloh, které jsou připravené ke spuštění, ale ještě nejsou spuštěny. Počet $ActiveTasks zahrnuje všechny úlohy, které jsou v aktivním stavu a jejichž závislosti byly splněny. Všechny úlohy, které jsou v aktivním stavu, ale jejichž závislosti nejsou splněné, jsou vyloučené z $ActiveTasks počet. V případě úlohy s více instancemi bude $ActiveTasks obsahovat počet instancí nastavených v úkolu.|
 | $RunningTasks |Počet úloh ve spuštěném stavu. |
 | $PendingTasks |Součet $ActiveTasks a $RunningTasks. |
 | $SucceededTasks |Počet úloh, které byly úspěšně dokončeny. |

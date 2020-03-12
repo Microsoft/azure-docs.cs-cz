@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670521"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096727"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Zdroje dat monitorování pro Azure Monitor
 Azure Monitor je založený na [běžné platformě dat pro monitorování](data-platform.md) , která zahrnuje [protokoly](data-platform-logs.md) a [metriky](data-platform-metrics.md). Shromažďování dat na této platformě umožňuje analyzovat data z několika prostředků společně pomocí běžné sady nástrojů v Azure Monitor. Data monitorování se můžou posílat i na další místa pro podporu určitých scénářů a některé prostředky můžou zapisovat do jiných umístění, než je budete moct shromažďovat do protokolů nebo metrik.
@@ -72,8 +72,8 @@ Telemetrie související se stavem a provozem vašeho předplatného Azure.
 |:---|:---|
 | Protokol aktivit | Protokol aktivit se shromáždí do vlastního úložiště dat, které můžete zobrazit v nabídce Azure Monitor, nebo můžete použít k vytvoření výstrah protokolu aktivit. | [Dotazování protokolu aktivit v Azure Portal](activity-log-view.md#azure-portal) |
 | Protokoly služby Azure Monitor | Nakonfigurujte protokoly Azure Monitor pro shromáždění protokolu aktivit, abyste ho mohli analyzovat s ostatními daty monitorování. | [Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](activity-log-collect.md) |
-| Azure Storage | Exportujte protokol aktivit do Azure Storage k archivaci. | [Protokol aktivit archivu](activity-log-export.md#archive-activity-log)  |
-| Event Hubs | Streamování protokolu aktivit do jiných umístění pomocí Event Hubs | [Streamování protokolu aktivit do centra událostí](activity-log-export.md#stream-activity-log-to-event-hub). |
+| Azure Storage | Exportujte protokol aktivit do Azure Storage k archivaci. | [Protokol aktivit archivu](resource-logs-collect-storage.md)  |
+| Event Hubs | Streamování protokolu aktivit do jiných umístění pomocí Event Hubs | [Streamování protokolu aktivit do centra událostí](resource-logs-stream-event-hubs.md). |
 
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../../service-health/service-health-overview.md) poskytuje informace o stavu služeb Azure ve vašem předplatném, na kterém závisí vaše aplikace a prostředky.
@@ -200,7 +200,7 @@ Kromě standardních úrovní aplikace může být nutné monitorovat další pr
 ## <a name="other-services"></a>Další služby
 Další služby v Azure zapisují data na Azure Monitor datovou platformu. Díky tomu můžete analyzovat data shromážděná těmito službami s daty shromažďovanými nástrojem Azure Monitor a využívat stejné nástroje pro analýzu a vizualizaci.
 
-| Service | Cíl | Popis | Referenční informace |
+| Služba | Cíl | Popis | Referenční informace |
 |:---|:---|:---|:---|
 | [Azure Security Center](/azure/security-center/) | Protokoly služby Azure Monitor | Azure Security Center ukládá data zabezpečení shromažďovaná v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty protokolů shromážděnými Azure Monitor.  | [Shromažďování dat v Azure Security Center](../../security-center/security-center-enable-data-collection.md) |
 | [Sentinel Azure](/azure/sentinel/) | Protokoly služby Azure Monitor | Služba Azure Sentinel ukládá data, která shromažďuje z různých zdrojů dat v pracovním prostoru Log Analytics, což umožňuje jejich analýzu s dalšími daty protokolů shromážděnými pomocí Azure Monitor.  | [Připojení zdrojů dat](/azure/sentinel/quickstart-onboard) |

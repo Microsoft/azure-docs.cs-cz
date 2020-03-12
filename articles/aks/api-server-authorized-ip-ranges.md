@@ -4,12 +4,12 @@ description: Naučte se zabezpečit cluster pomocí rozsahu IP adres pro příst
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 80a8504e42eda966554d0151f54668015cf7ee83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596705"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126620"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -59,6 +59,8 @@ az aks create \
 > - Veřejná IP adresa brány firewall
 > - Libovolný rozsah, který představuje sítě, ze kterých budete spravovat cluster.
 > - Pokud používáte Azure Dev Spaces v clusteru AKS, musíte na [základě vaší oblasti zapnout další rozsahy][dev-spaces-ranges].
+
+> Horní limit počtu rozsahů IP adres, které můžete zadat, je 3500. 
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Zadejte odchozí IP adresy pro nástroj pro vyrovnávání zatížení Standard SKU.
 

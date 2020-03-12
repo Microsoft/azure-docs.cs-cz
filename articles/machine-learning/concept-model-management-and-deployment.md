@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250865"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096179"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -70,11 +70,6 @@ Registrované modely se identifikují prostřednictvím názvu a verze. Vždy, k
 
 Registrovaný model, který se používá v aktivním nasazení, se nedá odstranit.
 Další informace naleznete v části model registru v tématu [nasazení modelů](how-to-deploy-and-where.md#registermodel).
-
-### <a name="profile-models"></a>Modely profilů
-
-Azure Machine Learning vám může pomáhat pochopit požadavky na procesor a paměť služby, která se vytvoří při nasazení modelu. Profilace testuje službu, která spouští váš model, a vrací informace, jako je využití CPU, využití paměti a latence odezvy. Poskytuje taky doporučení pro procesor a paměť na základě využití prostředků.
-Další informace najdete v části profilace v tématu [nasazení modelů](how-to-deploy-and-where.md#profilemodel).
 
 ### <a name="package-and-debug-models"></a>Modely balíčků a ladění
 

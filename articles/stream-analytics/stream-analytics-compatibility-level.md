@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201794"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087861"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -25,11 +25,9 @@ Některé nové funkce ve službě však mohou způsobit zásadní změnu, např
 
 Azure Stream Analytics aktuálně podporuje tři úrovně kompatibility:
 
-* 1,0 – předchozí chování
-* 1,1 – výchozí chování
+* 1,0 – původní úroveň kompatibility zavedená během obecné dostupnosti Azure Stream Analytics před několika lety.
+* 1,1 – předchozí chování
 * 1,2 – nejnovější chování s nejnovějšími vylepšeními
-
-Původní úroveň kompatibility 1,0 byla zavedena během obecné dostupnosti Azure Stream Analytics před několika lety.
 
 Když vytváříte novou Stream Analytics úlohu, je osvědčeným postupem, jak ji vytvořit pomocí nejnovější úrovně kompatibility. Zahajte návrh úlohy, který se spoléhá na nejnovější chování, abyste se později vyhnuli přidané změně a složitosti.
 
@@ -123,7 +121,7 @@ V úrovni kompatibility 1.1 byly zavedeny následující hlavní změny:
 
 ### <a name="service-bus-xml-format"></a>Service Bus formát XML
 
-**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Například:
+**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Příklad:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

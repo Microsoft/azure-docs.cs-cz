@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: pozastavení & obnovení výpočetní prostředí – PowerShell '
-description: Pomocí PowerShellu můžete pozastavit výpočetní výkon ve fondu SQL Azure synapse Analytics a ušetřit tak náklady. Až budete připraveni k používání datového skladu, obnovte výpočetní prostředky.
+title: Pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL pomocí Azure PowerShell
+description: Pomocí Azure PowerShell můžete pozastavit a obnovit synapse fond SQL (datový sklad). výpočetní prostředky.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,16 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ce183edef9e5895d7b3f702f5466c505956a869a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4677668004831b93f45f4bfac240f16ba20a82ee
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200562"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130284"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-with-azure-powershell"></a>Rychlý Start: pozastavení a obnovení výpočetní služby ve fondu SQL Azure synapse Analytics pomocí Azure PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL pomocí Azure PowerShell
 
-Pomocí Azure PowerShell můžete pozastavit výpočetní výkon fondu SQL a ušetřit tak náklady. Až budete připraveni k používání datového skladu, [obnovte výpočetní](sql-data-warehouse-manage-compute-overview.md) prostředky.
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Azure PowerShell můžete použít k pozastavení a obnovení výpočetních prostředků fondu SQL synapse (datový sklad). Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -50,26 +48,29 @@ Pokud potřebujete použít jiné předplatné než výchozí, spusťte rutinu [
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-data-warehouse-information"></a>Vyhledání informací o datovém skladu
+## <a name="look-up-sql-pool-information"></a>Vyhledat informace o fondu SQL
 
 Vyhledejte název databáze, název serveru a skupinu prostředků pro fond SQL, který plánujete pozastavit a obnovit.
 
-Pomocí těchto kroků můžete najít informace o poloze pro váš fond SQL.
+Pomocí těchto kroků můžete najít informace o poloze pro váš fond SQL:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Na levé straně Azure Portal klikněte na **Azure synapse Analytics (dřív SQL DW)** .
-1. Vyberte **mySampleDataWarehouse** ze stránky **Azure synapse Analytics (dříve SQL DW)** . Otevře se datový sklad.
+1. Vyberte **mySampleDataWarehouse** ze stránky **Azure synapse Analytics (dříve SQL DW)** . Otevře se fond SQL.
 
     ![Název serveru a skupina prostředků](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-1. Zapište název datového skladu, což je název databáze. Také poznamenejte si název serveru a skupinu prostředků.
+1. Zapište název fondu SQL, což je název databáze. Také poznamenejte si název serveru a skupinu prostředků.
 1. V rutinách PowerShellu použijte jenom první část názvu serveru. Na předchozím obrázku je úplný název serveru sqlpoolservername.database.windows.net. V rutině PowerShellu používáme jako název serveru **sqlpoolservername** .
 
 ## <a name="pause-compute"></a>Pozastavit výpočetní prostředky
 
-Pokud chcete ušetřit náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Pokud například nepoužíváte databázi v noci a na víkendech, můžete ji během těchto časů pozastavit a obnovit během dne. Při pozastavení databáze se za výpočetní prostředky neúčtují žádné poplatky. Nicméně se vám bude účtovat i nadále za úložiště.
+Pokud chcete ušetřit náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Pokud například nepoužíváte databázi v noci a na víkendech, můžete ji během těchto časů pozastavit a obnovit během dne. 
 
-Chcete-li pozastavit databázi, použijte rutinu [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) . Následující příklad pozastaví datový sklad s názvem **mySampleDataWarehouse** hostovaný na serveru s názvem **sqlpoolservername**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
+>[!NOTE]
+>Při pozastavení databáze se za výpočetní prostředky neúčtují žádné poplatky. Nicméně se vám bude účtovat i nadále za úložiště.
+
+Chcete-li pozastavit databázi, použijte rutinu [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) . Následující příklad pozastaví fond SQL s názvem **mySampleDataWarehouse** hostovaný na serveru s názvem **sqlpoolservername**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
 
 
 ```Powershell
@@ -77,7 +78,7 @@ Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-Variace, tento další příklad načte databázi do objektu $database. Pak objekt [přeruší na AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). Výsledky jsou uloženy v objektu resultDatabase. Poslední příkaz zobrazí výsledky.
+Následující příklad načte databázi do objektu $database. Pak objekt [přeruší na AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). Výsledky jsou uloženy v objektu resultDatabase. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -95,7 +96,7 @@ Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
 ```
 
-Variace, tento další příklad načte databázi do objektu $database. Pak objekt převede na [pokračování – AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) a výsledky uloží do $resultDatabase. Poslední příkaz zobrazí výsledky.
+Následující příklad načte databázi do objektu $database. Pak objekt převede na [pokračování – AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) a výsledky uloží do $resultDatabase. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -104,9 +105,9 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="check-status-of-your-data-warehouse-operation"></a>Zkontroluje stav operace datového skladu.
+## <a name="check-status-of-your-sql-pool-operation"></a>Zkontroluje stav operace vašeho fondu SQL.
 
-Pokud chcete zjistit stav datového skladu, použijte rutinu [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) .
+Pokud chcete zjistit stav svého fondu SQL, použijte rutinu [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) .
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -114,7 +115,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Účtují se vám poplatky za jednotky datového skladu a uložená data v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
+Účtují se vám poplatky za jednotky datového skladu a data uložená ve vašem fondu SQL. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
 
 - Pokud chcete uchovávat data v úložišti, pozastavte výpočetní prostředí.
 - Pokud chcete odebrat budoucí poplatky, můžete odstranit fond SQL.
@@ -136,7 +137,4 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste pozastavili a obnovili výpočetní výkon pro váš fond SQL. Pokud chcete získat další informace o fondu SQL, pokračujte v kurzu načítání dat.
-
-> [!div class="nextstepaction"]
-> [Načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md)
+Pokud se chcete dozvědět víc o fondu SQL, přejděte k článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) . Další informace o správě výpočetních funkcí najdete v článku [Správa výpočetních přehledů](sql-data-warehouse-manage-compute-overview.md) . 

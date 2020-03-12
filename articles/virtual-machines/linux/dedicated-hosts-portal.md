@@ -4,14 +4,15 @@ description: Nasaďte virtuální počítače na vyhrazené hostitele pomocí Az
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 01/09/2020
+ms.workload: infrastructure
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 5af09cf7ef6c811a239a64c5c6349c3625316177
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
-ms.translationtype: HT
+ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970751"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086750"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí portálu
 
@@ -38,6 +39,26 @@ Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedica
 1. Když se zobrazí zpráva, že ověření proběhlo úspěšně, vyberte **vytvořit**.
 
 Nasazení virtuálního počítače bude několik minut trvat.
+
+## <a name="add-an-existing-vm"></a>Přidat existující virtuální počítač 
+
+Do vyhrazeného hostitele můžete přidat opuštěný virtuální počítač, ale virtuální počítač musí být nejdřív Stop\Deallocated. Před přesunutím virtuálního počítače na vyhrazeného hostitele se ujistěte, že je konfigurace virtuálních počítačů podporovaná:
+
+- Velikost virtuálního počítače musí být ve stejné rodině velikostí jako vyhrazený hostitel. Pokud je například vyhrazený hostitel DSv3, může být velikost virtuálního počítače Standard_D4s_v3, ale nemůžete ho Standard_A4_v2. 
+- Virtuální počítač musí být umístěný ve stejné oblasti jako vyhrazený hostitel.
+- Virtuální počítač nemůže být součástí skupiny umístění blízkosti. Odeberte virtuální počítač ze skupiny umístění blízkosti, než ho přesunete na vyhrazeného hostitele. Další informace najdete v tématu [přesun virtuálního počítače ze skupiny umístění do blízkosti](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group) .
+- Virtuální počítač nemůže být ve skupině dostupnosti.
+- Pokud je virtuální počítač v zóně dostupnosti, musí se jednat o stejnou zónu dostupnosti jako skupina hostitelů. Nastavení zóny dostupnosti pro virtuální počítač a skupinu hostitelů se musí shodovat.
+
+Přesuňte virtuální počítač na vyhrazeného hostitele pomocí [portálu](https://portal.azure.com).
+
+1. Otevřete stránku pro virtuální počítač.
+1. Vyberte **zastavit** , aby se virtuální počítač stop\deallocate.
+1. V nabídce vlevo vyberte **Konfigurace** .
+1. Z rozevíracích nabídek vyberte skupinu hostitelů a hostitele.
+1. Po dokončení vyberte **Uložit** v horní části stránky.
+1. Po přidání virtuálního počítače do hostitele vyberte v nabídce vlevo možnost **Přehled** .
+1. V horní části stránky vyberte **Spustit** a restartujte virtuální počítač.
 
 ## <a name="next-steps"></a>Další kroky
 

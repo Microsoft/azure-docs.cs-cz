@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157699"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128347"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Iniciovat převzetí služeb při selhání účtu úložiště (Preview)
 
@@ -29,9 +29,8 @@ Tento článek ukazuje, jak iniciovat převzetí služeb při selhání účtu �
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Než budete moct provést převzetí služeb při selhání účtu úložiště, ujistěte se, že jste provedli následující kroky:
+Před převzetím služeb při selhání v účtu úložiště ověřte, že jste provedli následující krok:
 
-- Zaregistrujte se pro převzetí služeb při selhání účtu Preview. Informace o tom, jak se zaregistrovat, najdete v tématu [o verzi Preview](storage-disaster-recovery-guidance.md#about-the-preview).
 - Ujistěte se, že je váš účet úložiště nakonfigurovaný tak, aby používal buď geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Další informace o geograficky redundantním úložišti najdete v tématu [Azure Storage redundance](storage-redundancy.md).
 
 ## <a name="important-implications-of-account-failover"></a>Důležité důsledky převzetí služeb při selhání účtu
@@ -44,7 +43,7 @@ Po převzetí služeb při selhání se Váš typ účtu úložiště automatick
 
 Po opětovném povolení GRS pro váš účet úložiště začne Microsoft replikovat data ve vašem účtu do nové sekundární oblasti. Doba replikace závisí na množství replikovaných dat.  
 
-## <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+## <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Pokud chcete iniciovat převzetí služeb při selhání účtu z Azure Portal, postupujte takto:
 
@@ -60,7 +59,7 @@ Pokud chcete iniciovat převzetí služeb při selhání účtu z Azure Portal, 
 
     ![Snímek obrazovky s potvrzovacím dialogem pro převzetí služeb při selhání účtu](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud chcete pomocí PowerShellu iniciovat převzetí služeb při selhání, musíte nejdřív nainstalovat modul 6.0.1 Preview. Pomocí těchto kroků nainstalujte modul:
 
@@ -97,7 +96,7 @@ Pokud chcete iniciovat převzetí služeb při selhání z PowerShellu, spusťte
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete pomocí Azure CLI iniciovat převzetí služeb při selhání, spusťte následující příkazy:
 

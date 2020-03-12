@@ -7,18 +7,19 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+manager: lizross
+ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676626"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127919"
 ---
-# <a name="windows-virtual-desktop-environment"></a>Prostředí virtuálních počítačů s Windows
+# <a name="windows-virtual-desktop-environment"></a>Prostředí Windows Virtual Desktop
 
 Virtuální plocha Windows je služba, která uživatelům poskytuje snadný a zabezpečený přístup ke svým virtualizovaným plochám a aplikacím RemoteApp. V tomto tématu se dozvíte další informace o obecné struktuře prostředí virtuálních počítačů s Windows.
 
-## <a name="tenants"></a>tenantů
+## <a name="tenants"></a>Klienti
 
 Tenant virtuálních klientů Windows je primárním rozhraním pro správu prostředí virtuálních počítačů s Windows. Každý tenant virtuálních klientů s Windows musí být přidružený k Azure Active Directory, která obsahuje uživatele, kteří se přihlásí k prostředí. Z tenanta virtuálních klientů Windows můžete začít vytvářet fondy hostitelů pro spouštění úloh vašich uživatelů.
 

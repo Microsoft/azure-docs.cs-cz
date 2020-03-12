@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6130c934f9a718baab840dae714222e4153bfcf6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260148"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126353"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
@@ -19,7 +19,7 @@ K exkluzivnímu používání protokolu TLS (Transport Layer Security) verze 1,2
 
 V rámci tohoto úsilí budeme provádět následující změny v mezipaměti Azure pro Redis:
 
-* **Fáze 1:** Nastavíme výchozí minimální verzi TLS na 1,2 pro nově vytvořené instance mezipaměti.  Existující instance mezipaměti se v tomto okamžiku neaktualizují.  V případě potřeby budete moct [změnit minimální verzi TLS](cache-configure.md#access-ports) zpátky na 1,0 nebo 1,1 na zpětnou kompatibilitu.  Tato změna se dá udělat prostřednictvím Azure Portal nebo jiných rozhraní API pro správu.
+* **Fáze 1:** Nastavíme výchozí minimální verzi TLS na 1,2 pro nově vytvořené instance mezipaměti. (Používá se k TLS 1,0.) Existující instance mezipaměti se v tomto okamžiku neaktualizují. V případě potřeby budete moct [změnit minimální verzi TLS](cache-configure.md#access-ports) zpátky na 1,0 nebo 1,1 na zpětnou kompatibilitu. Tato změna se dá udělat prostřednictvím Azure Portal nebo jiných rozhraní API pro správu.
 * **Fáze 2:** Přestanou podporovat verze TLS 1,0 a 1,1. Po této změně bude vaše aplikace vyžadovat použití TLS 1,2 nebo novější ke komunikaci s mezipamětí.
 
 Kromě toho se v rámci této změny odstraní podpora pro starší, nezabezpečené sady šifrováním.  Naše podporované sady šifrováním budou omezeny na následující, pokud je mezipaměť konfigurována s minimální verzí TLS 1,2.
@@ -31,12 +31,12 @@ Tento článek poskytuje obecné pokyny k detekci závislostí na těchto starš
 
 Datum, kdy se tyto změny projeví:
 
-| Cloud               | Počáteční datum fáze 1 | Počáteční datum fáze 2 |
+| Cloudová               | Počáteční datum fáze 1 | Počáteční datum fáze 2 |
 |---------------------|--------------------|--------------------|
 | Azure (Global)      |  13. ledna 2020  | 31. března 2020     |
 | Azure Government    |  13. března 2020    | 11. května 2020       |
-| Azure (Německo)       |  13. března 2020    | 11. května 2020       |
-| Azure (Čína)         |  13. března 2020    | 11. května 2020       |
+| Azure Germany       |  13. března 2020    | 11. května 2020       |
+| Azure Čína         |  13. března 2020    | 11. května 2020       |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Ověřte, zda je aplikace již kompatibilní.
 
@@ -87,21 +87,27 @@ Uzly Redis a IORedis ve výchozím nastavení používají TLS 1,2.
 
 ### <a name="php"></a>PHP
 
-Predis v PHP 7 nebude fungovat, protože PHP 7 podporuje jenom TLS 1,0. Ve výchozím nastavení používá Predis ve PHP 7.2.1 nebo starší protokol TLS 1,0 nebo 1,1. Při vytváření instance klienta můžete zadat TLS 1,2:
+#### <a name="predis"></a>Predis
+ 
+* Verze starší než PHP 7: Predis podporuje pouze TLS 1,0. Tyto verze nefungují s TLS 1,2; musíte upgradovat na použití TLS 1,2.
+ 
+* PHP 7,0 až PHP 7.2.1: Predis používá ve výchozím nastavení pouze TLS 1,0 nebo 1,1. K použití TLS 1,2 můžete použít následující alternativní řešení. Zadejte TLS 1,2 při vytváření instance klienta:
 
-``` PHP
-$redis=newPredis\Client([
-    'scheme'=>'tls',
-    'host'=>'host',
-    'port'=>6380,
-    'password'=>'password',
-    'ssl'=>[
-        'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
-    ],
-]);
-```
+  ``` PHP
+  $redis=newPredis\Client([
+      'scheme'=>'tls',
+      'host'=>'host',
+      'port'=>6380,
+      'password'=>'password',
+      'ssl'=>[
+          'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+      ],
+  ]);
+  ```
 
-V PHP 7,3 nebo vyšší Predis používá nejnovější verzi TLS.
+* PHP 7,3 a novější verze: Predis používá nejnovější verzi TLS.
+
+#### <a name="phpredis"></a>PhpRedis
 
 PhpRedis nepodporuje protokol TLS u žádné verze PHP.
 

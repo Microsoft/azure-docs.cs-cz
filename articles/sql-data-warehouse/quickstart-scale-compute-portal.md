@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: škálování výpočetních Azure Portal '
-description: Škálování výpočetní kapacity ve fondu SQL ve Azure Portal. Výpočetní prostředky můžete škálovat na více instancí, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+title: Škálování COMPUTE pro synapse fond SQL (Azure Portal)
+description: Výpočetní prostředky pro synapse fond SQL (datový sklad) můžete škálovat pomocí Azure Portal.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7463849223fdf81466237c7d0c912763988e80e6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: df0b21e98812faf99b6e67f262cec6e9c29db2f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200331"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130254"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Rychlý Start: škálování výpočetních prostředků ve fondu SQL Azure synapse Analytics v Azure Portal
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Rychlý Start: škálování COMPUTE pro synapse fond SQL pomocí Azure Portal
 
-Škálování výpočetní kapacity ve fondu SQL ve Azure Portal. Můžete [horizontálně navýšit kapacitu výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo ji snížit a dosáhnout tak nižších nákladů. 
+Výpočetní prostředky pro synapse fond SQL (datový sklad) můžete škálovat pomocí Azure Portal. Můžete [horizontálně navýšit kapacitu výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo ji snížit a dosáhnout tak nižších nákladů. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Můžete škálovat fond SQL, který už máte, nebo můžete použít [rychlý Start: vytvoření a připojení – portál](create-data-warehouse-portal.md) pro vytvoření fondu SQL s názvem **mySampleDataWarehouse**.  Tento rychlý start škáluje **mySampleDataWarehouse**.
+Můžete škálovat fond SQL, který už máte, nebo můžete použít [rychlý Start: vytvoření a připojení – portál](create-data-warehouse-portal.md) pro vytvoření fondu SQL s názvem **mySampleDataWarehouse**. Tento rychlý start škáluje **mySampleDataWarehouse**.
 
->[!Note]
+>[!IMPORTANT] 
 >Váš fond SQL musí být online, aby se mohlo škálovat. 
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
@@ -52,7 +52,4 @@ Změna jednotek datového skladu:
     ![Přesunutí posuvníku](media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>Další kroky
-Nyní jste se naučili škálovat výpočetní výkon pro fond SQL. Pokud chcete získat další informace o fondu SQL, pokračujte v kurzu načítání dat.
-
-> [!div class="nextstepaction"]
->[Načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md)
+Pokud se chcete dozvědět víc o fondu SQL, přejděte k kurzu [načíst data do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) . 

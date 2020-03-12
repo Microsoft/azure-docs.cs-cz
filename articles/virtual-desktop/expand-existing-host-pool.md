@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
-ms.openlocfilehash: 354ee312099902372863ce2ea636d2f9f9943d5c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+manager: lizross
+ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566423"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127895"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
 
@@ -45,7 +46,7 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Reso
 
 Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšíření fondu hostitelů:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Na panelu hledání v horní části Azure Portal vyhledejte **skupiny prostředků** a vyberte položku v části **služby**.
 3. Vyhledejte a vyberte skupinu prostředků, kterou jste vytvořili při vytváření fondu hostitelů.
 4. V panelu na levé straně prohlížeče vyberte **nasazení**.
@@ -76,13 +77,13 @@ Postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí Azure M
 
 Všechny hodnoty v této části by se měly shodovat s tím, co jste zadali při prvním vytváření virtuálních počítačů hostitelů a hostitele relací, s výjimkou *výchozích uživatelů plochy*:
 
-1.  V poli *předplatné*vyberte předplatné, ve kterém jste poprvé vytvořili fond hostitelů.
-2.  V poli *Skupina prostředků*vyberte stejnou skupinu prostředků, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
-3.  V poli *oblast*vyberte stejnou oblast, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
-4.  Do pole *název Hostpool*zadejte název existujícího fondu hostitelů.
-5.  Jako *typ stolního počítače*vyberte typ pracovní plochy, který odpovídá stávajícímu fondu hostitelů.
-6.  U *výchozích uživatelů plochy*zadejte seznam oddělený čárkami všech dalších uživatelů, kteří se chtějí přihlašovat k klientům virtuálních klientů Windows, a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete přiřadit user3@contoso.com a přístup user4@contoso.com, zadejte user3@contoso.com,user4@contoso.com.
-7.  Vyberte **Další: konfigurace virtuálního počítače**.
+1.    V poli *předplatné*vyberte předplatné, ve kterém jste poprvé vytvořili fond hostitelů.
+2.    V poli *Skupina prostředků*vyberte stejnou skupinu prostředků, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
+3.    V poli *oblast*vyberte stejnou oblast, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
+4.    Do pole *název Hostpool*zadejte název existujícího fondu hostitelů.
+5.    Jako *typ stolního počítače*vyberte typ pracovní plochy, který odpovídá stávajícímu fondu hostitelů.
+6.    U *výchozích uživatelů plochy*zadejte seznam oddělený čárkami všech dalších uživatelů, kteří se chtějí přihlašovat k klientům virtuálních klientů Windows, a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete přiřadit user3@contoso.com a přístup user4@contoso.com, zadejte user3@contoso.com,user4@contoso.com.
+7.    Vyberte **Další: konfigurace virtuálního počítače**.
 
 >[!NOTE]
 >S výjimkou *výchozích uživatelů stolních počítačů*se všechna pole musí přesně shodovat s tím, co bylo konfigurováno v existujícím fondu hostitelů. Pokud dojde k neshodě, která bude mít za následek nový fond hostitelů.

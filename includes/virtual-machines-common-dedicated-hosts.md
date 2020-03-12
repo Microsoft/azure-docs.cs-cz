@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246213"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129384"
 ---
 ## <a name="limitations"></a>Omezení
 
 - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
-- Podporují se tyto řady virtuálních počítačů: DSv3, ESv3 a Fsv2. 
 
 ## <a name="benefits"></a>Výhody 
 
@@ -101,17 +100,15 @@ Další informace najdete v tématu [ceny za vyhrazené hostitele Azure](https:/
 
 Můžete také ušetřit náklady pomocí [rezervované instance vyhrazených hostitelů Azure](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
-## <a name="vm-families-and-hardware-generations"></a>Rodiny virtuálních počítačů a generování hardwaru
+## <a name="sizes-and-hardware-generations"></a>Velikosti a generace hardwaru
 
-Pro hostitele je definována SKU, která představuje řadu a typ velikosti virtuálního počítače. V rámci jednoho hostitele můžete kombinovat více virtuálních počítačů s různými velikostmi, pokud mají stejnou řadu velikostí. Typ je generování hardwaru, které je aktuálně k dispozici v oblasti.
+Pro hostitele je definována SKU, která představuje řadu a typ velikosti virtuálního počítače. V rámci jednoho hostitele můžete kombinovat více virtuálních počítačů s různými velikostmi, pokud mají stejnou řadu velikostí. 
 
-Různé `types` pro stejnou řadu virtuálních počítačů budou od různých dodavatelů CPU a mají různé generace CPU a počet jader.
+*Typ* je generování hardwaru. Různé typy hardwaru pro stejnou řadu virtuálních počítačů budou od různých dodavatelů CPU a mají různé generace PROCESORů a počet jader. 
 
-Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
+Typy velikosti a hardwaru se v jednotlivých oblastech liší. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
 
-Vyhrazení hostitelé podporují následující hostitele SKU\types: DSv3_Type1 a ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>Životní cyklus hostitele
 
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1864b4867b8e1367a2397c5ed2ed9a77001dadb4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701191"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129923"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Volání rozhraní API pro Microsoft Graph z desktopové aplikace pro Windows
 
@@ -30,6 +30,9 @@ Po dokončení průvodce bude vaše aplikace moci volat chráněné rozhraní AP
 
 > [!NOTE]
 > Průvodce vyžaduje Visual Studio 2015 Update 3, Visual Studio 2017 nebo Visual Studio 2019. Nemáte žádné z těchto verzí? [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/).
+
+>[!NOTE]
+> Pokud s platformou Microsoft Identity začínáte, doporučujeme začít s [získáním tokenu a voláním Microsoft Graph API z desktopové aplikace pro Windows](quickstart-v2-windows-desktop.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak ukázková aplikace vygenerovaná touto příručkou funguje
 
@@ -51,7 +54,7 @@ Tato příručka používá následující balíčky NuGet:
 
 |Knihovna|Popis|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL.NET)|
+|[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL.NET)|
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -65,7 +68,7 @@ Aplikace, kterou vytvoříte pomocí této příručky, zobrazuje tlačítko, kt
 
 Chcete-li vytvořit aplikaci, postupujte následovně:
 
-1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
+1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**.
 2. V části **šablony**vyberte **možnost C#vizuál** .
 3. Vyberte možnost **aplikace WPF (.NET Framework)** v závislosti na verzi sady Visual Studio, kterou používáte.
 
@@ -159,7 +162,7 @@ V tomto kroku vytvoříte třídu pro zpracování interakce s MSAL, jako je nap
 
 V této části se dozvíte, jak může aplikace zadat dotaz na chráněný back-end Server, jako je například Microsoft Graph. 
 
-Soubor *MainWindow. XAML* by měl být automaticky vytvořen jako součást šablony projektu. Otevřete tento soubor a potom nahraďte uzel *\<mřížka* vaší aplikace následujícím kódem:
+Soubor *MainWindow. XAML* by měl být automaticky vytvořen jako součást šablony projektu. Otevřete tento soubor a potom nahraďte uzel *>\<mřížka* vaší aplikace následujícím kódem:
 
 ```xml
 <Grid>

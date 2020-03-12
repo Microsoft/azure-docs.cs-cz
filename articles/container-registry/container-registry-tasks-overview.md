@@ -3,12 +3,12 @@ title: Přehled úloh ACR
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 ms.topic: article
 ms.date: 01/22/2020
-ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615958"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087281"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -56,9 +56,9 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když je kód p
 
 Úlohy ACR podporují následující triggery při nastavení úložiště Git jako kontextu úkolu:
 
-| Aktivační událost | Ve výchozím nastavení povolena |
+| Trigger | Ve výchozím nastavení povolena |
 | ------- | ------------------ |
-| Potvrdit | Ano |
+| Potvrzení | Ano |
 | Žádost o získání dat | Ne |
 
 Pokud chcete nakonfigurovat aktivační proceduru aktualizace zdrojového kódu, je nutné zadat úlohu pomocí tokenu PAT (Personal Access token) pro nastavení Webhooku ve veřejném nebo privátním úložišti GitHubu nebo Azure DevOps.
@@ -119,20 +119,16 @@ Následující tabulka ukazuje několik příkladů podporovaných umístění k
 
 Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. Zadejte značku `--platform` pro vytváření imagí Windows nebo imagí Linux pro jiné architektury. Zadejte operační systém a volitelně podporovanou architekturu ve formátu operačního systému/architektury (například `--platform Linux/arm`). U architektur ARM můžete volitelně zadat variantu ve formátu OS/Architecture/variant (například `--platform Linux/arm64/v8`):
 
-| OS | Architektura|
+| Operační systém | Architektura|
 | --- | ------- | 
 | Linux | AMD<br/>ARM<br/>arm64<br/>386 |
 | Windows | AMD |
 
-## <a name="view-task-logs"></a>Zobrazit protokoly úloh
+## <a name="view-task-output"></a>Zobrazení výstupu úkolu
 
-Každý běh úlohy generuje výstup protokolu, který můžete zkontrolovat, abyste zjistili, jestli se kroky úlohy úspěšně spustily. Pokud k aktivaci úlohy použijete příkaz [AZ ACR Build](/cli/azure/acr#az-acr-build), [AZ ACR Run](/cli/azure/acr#az-acr-run)nebo [AZ ACR Task Run](/cli/azure/acr/task#az-acr-task-run) , výstup protokolu pro spuštění úlohy se streamuje do konzoly a také se uloží pro pozdější načtení. Když se úkol automaticky aktivuje, například potvrzením zdrojového kódu nebo obnovením základní image, ukládají se jenom protokoly úloh. Zobrazte protokoly spuštění úlohy ve Azure Portal nebo použijte příkaz [AZ ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) .
+Každý běh úlohy generuje výstup protokolu, který můžete zkontrolovat, abyste zjistili, jestli se kroky úlohy úspěšně spustily. Když úlohu spouštíte ručně, výstup protokolu pro spuštění úlohy je streamování do konzoly a také uložený pro pozdější načtení. Když se úkol automaticky aktivuje, například potvrzením zdrojového kódu nebo obnovením základní image, ukládají se jenom protokoly úloh. Zobrazte protokoly spuštění v Azure Portal nebo použijte příkaz [AZ ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) .
 
-Ve výchozím nastavení se data a protokoly pro úlohy spouštějí v registru po dobu 30 dnů a pak se automaticky vyprázdní. Pokud chcete archivovat data pro spuštění úlohy, povolte archivaci pomocí příkazu [AZ ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) . Následující příklad umožňuje archivaci úlohy spustit *CF11* v registru *myregistry*.
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+Přečtěte si další informace o [zobrazení a správě protokolů úloh](container-registry-tasks-logs.md).
 
 ## <a name="next-steps"></a>Další kroky
 

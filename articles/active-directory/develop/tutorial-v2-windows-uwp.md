@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a62026ecec2317173361f166adcc3a7981f6d1c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701174"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129884"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (XAML)
 
@@ -32,6 +32,9 @@ Na konci tohoto průvodce vaše aplikace volá chráněné rozhraní API pomocí
 
 >[!NOTE]
 > Tato příručka vyžaduje Visual Studio s nainstalovanou Univerzální platforma Windows vývoj. Pokyny ke stažení a konfiguraci sady Visual Studio pro vývoj Univerzální platforma Windowsch aplikací najdete v tématu věnovaném [získání](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) .
+
+>[!NOTE]
+> Pokud začínáte s platformou Microsoft identity, doporučujeme začít [voláním rozhraní Microsoft Graph API z rychlého startu aplikace Univerzální platforma Windows (UWP)](quickstart-v2-uwp.md).
 
 ## <a name="how-this-guide-works"></a>Jak funguje tento průvodce
 
@@ -45,7 +48,7 @@ Tato příručka používá následující balíček NuGet:
 
 |Knihovna|Popis|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Identity a ověřování Microsoftu|
+|[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Identity a ověřování Microsoftu|
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -343,8 +346,8 @@ Do *MainPage.XAML.cs*přidejte následující novou metodu:
 
 Nyní je nutné zaregistrovat aplikaci:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
-1. Vyberte **Azure Active Directory** > **registrace aplikací**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Vyberte **Azure Active Directory** > **Registrace aplikací**.
 1. Vyberte **Nová registrace**. Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například *UWP-App-Call-MSGraph*.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox)** a pokračujte kliknutím na **Registrovat** .
 1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady Visual Studio, otevřete *MainPage.XAML.cs*a nahraďte hodnotu `ClientId` touto hodnotou.
@@ -353,7 +356,7 @@ Konfigurace ověřování pro vaši aplikaci:
 
 1. Zpátky v [Azure Portal](https://portal.azure.com)v části **Spravovat**vyberte **ověřování**.
 1. V části **identifikátory URI pro přesměrování** | **Doporučené identifikátory URI pro přesměrování pro veřejné klienty (mobilní zařízení, stolní počítače)** , ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Konfigurace oprávnění rozhraní API pro aplikaci:
 

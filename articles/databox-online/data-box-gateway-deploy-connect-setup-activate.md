@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561829"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087943"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Kurz: připojení, nastavení, aktivace Azure Data Box Gateway
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Připojení k virtuálnímu zařízení
 > * Nastavení a aktivace virtuálního zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než nakonfigurujete a nastavíte Data Box Gateway, ujistěte se, že:
 
@@ -92,6 +92,11 @@ Nyní jste na **řídicím panelu** zařízení.
    2. V části **ověřování**vyberte **žádné** nebo **NTLM**.
    3. Pokud používáte ověřování, zadejte **uživatelské jméno** a **heslo**.
    4. Pokud chcete ověřit a použít nakonfigurovaná nastavení webového proxy serveru, vyberte **použít**.
+
+   > [!NOTE]
+   > Soubory automatické konfigurace proxy serveru (PAC) nejsou podporovány. Soubor PAC definuje způsob, jakým můžou webové prohlížeče a další uživatelské agenti automaticky zvolit odpovídající proxy server (přístupovou metodu) pro načtení dané adresy URL.
+   > Proxy servery, které se pokoušejí zachytit a načíst veškerý provoz (pak se znovu podepisuje vše s vlastní certifikací) nejsou kompatibilní, protože certifikát proxy serveru není důvěryhodný.
+   > Obvykle transparentní proxy servery dobře fungují s Azure Data Box Gateway.
 
 4. Volitelné V levém podokně vyberte **Nastavení času**a pak nakonfigurujte časové pásmo a primární a sekundární servery NTP pro vaše zařízení. 
 
