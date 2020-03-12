@@ -9,12 +9,12 @@ ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 9f1f60fd16aa830372bd0f5b19e22e7003de496b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770307"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082910"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířených metrik pro virtuální počítače Azure
 
@@ -34,7 +34,7 @@ Budete například chtít monitorovat procento využití procesoru a paměti ve 
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Zjištění, zda jsou povoleny rozšířené metriky
 
-1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. V části **Virtuální počítače** vyberte virtuální počítač a v části **Monitorování** vyberte **Metriky**. Zobrazí se seznam dostupných metrik.
 3. Vyberte některé metriky a v grafu se zobrazí data.  
     ![Ukázková metrika – procento procesoru hostitele](./media/azure-vm-extended-metrics/metric01.png)
