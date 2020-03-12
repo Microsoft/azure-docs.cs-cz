@@ -182,9 +182,13 @@
             - name: Přizpůsobení uživatelského rozhraní
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
+            - name: Přizpůsobení jazyka
+              href: custom-policy-localization.md
             - name: Vlastní e-mail
               href: custom-email.md
               displayName: verification
+            - name: Zakázání ověření e-mailu
+              href: custom-policy-disable-email-verification.md
             - name: Povolení JavaScriptu
               href: javascript-samples.md
             - name: Složitost hesla
