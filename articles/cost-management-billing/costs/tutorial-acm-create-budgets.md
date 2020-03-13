@@ -4,17 +4,17 @@ description: Tento kurz vám pomůže plánovat a zohledňovat náklady na služ
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251171"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128353"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
@@ -54,7 +54,7 @@ Další informace o přiřazování oprávnění k datům služby Cost Managemen
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-- Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+- Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Vytvoření rozpočtu na portálu Azure Portal
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Vytvoření rozpočtu pomocí šablony Azure Resource Manageru
 
-Pomocí šablony Azure Resource Manageru můžete vytvořit rozpočet. Šablona vám pomůže vytvořit rozpočet v rámci skupiny prostředků. Šablona podporuje jenom zákazníky se smlouvou Enterprise.
+Pomocí šablony Azure Resource Manageru můžete vytvořit rozpočet. Šablona vám pomůže vytvořit rozpočet v rámci skupiny prostředků. 
 
 Vyberte následující obrázek, přihlaste se k webu Azure Portal a otevřete šablonu:
 

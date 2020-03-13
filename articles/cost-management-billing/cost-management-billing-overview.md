@@ -8,16 +8,16 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 1c6f03663a7487e814272c6296f6e7862c65c806
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769889"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970122"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Co je správa nákladů a fakturace v Azure?
 
-S produkty a službami Azure platíte jenom za to, co využijete. S tím, jak vytváříte a používáte prostředky Azure, se vám za ně účtují poplatky. Pomocí funkcí správy nákladů a fakturace v Azure můžete provádět úlohy správy fakturace a spravovat přístup k fakturám a nákladům. Pomůžou vám také sledovat a řídit útraty za Azure a optimalizovat využití prostředků Azure.
+S produkty a službami Azure platíte jenom za to, co využijete. S tím, jak vytváříte a používáte prostředky Azure, se vám za ně účtují poplatky. Pomocí funkcí správy nákladů a fakturace v Azure můžete provádět úlohy správy fakturace a spravovat přístup k fakturám a nákladům. Pomohou vám také sledovat a řídit útraty za Azure a optimalizovat využití prostředků Azure.
 
 ## <a name="understand-azure-billing"></a>Principy fakturace v Azure
 
@@ -35,12 +35,12 @@ Web Azure Portal aktuálně podporuje následující typy fakturačních účtů
 
 - **Smlouva se zákazníkem Microsoftu:** Fakturační účet pro smlouvu se zákazníkem Microsoftu se vytvoří tehdy, když vaše organizace uzavře smlouvu se zákazníkem Microsoftu prostřednictvím zástupce Microsoftu. Fakturační účet pro smlouvu se zákazníkem Microsoftu můžou mít i někteří zákazníci ve vybraných oblastech, kteří si prostřednictvím webu Azure zaregistrují [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo upgradují svůj [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/). Další informace najdete v tématu [Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu](./understand/mca-overview.md).
 
-### <a name="scopes-for-billing-accounts"></a>Obory pro fakturační účty
+### <a name="scopes-for-billing-accounts"></a>Rozsahy pro fakturační účty
 Obor je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a spravujete fakturaci. Právě tady spravujete fakturační údaje, platby a faktury a provádíte všeobecnou správu účtu.
 
 #### <a name="microsoft-online-services-program"></a>Program MOSP (Microsoft Online Services Program)
 
-|Obor  |Definice  |
+|Rozsah  |Definice  |
 |---------|---------|
 |Fakturační účet     | Představuje jednoho vlastníka (správce účtu) pro jedno nebo více předplatných Azure. Správce účtu má oprávnění provádět různé úkony spojené s fakturací, jako je vytváření předplatných, zobrazení faktur nebo změna fakturace pro předplatná.  |
 |Předplatné     |  Představuje seskupení prostředků Azure. Faktura se vygeneruje v oboru předplatného. Má vlastní způsoby platby, pomocí kterých se hradí příslušné faktury.|
@@ -48,7 +48,7 @@ Obor je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a spra
 
 #### <a name="enterprise-agreement"></a>Smlouva Enterprise
 
-|Obor  |Definice  |
+|Rozsah  |Definice  |
 |---------|---------|
 |Fakturační účet    | Představuje registraci smlouvy Enterprise. Faktura se vygeneruje v oboru fakturačního účtu. Je strukturovaná na základě oddělení a registračních účtů.  |
 |Oddělení     |  Volitelné seskupení registračních účtů.      |
@@ -57,10 +57,10 @@ Obor je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a spra
 
 #### <a name="microsoft-customer-agreement"></a>Smlouva se zákazníkem Microsoftu
 
-|Obor  |Úlohy  |
+|Rozsah  |Úlohy  |
 |---------|---------|
 |Fakturační účet     |   Představuje zákaznickou smlouvu na více produktů a služeb Microsoftu. Fakturační účet je strukturovaný pomocí fakturačních profilů a oddílů faktury.   |
-|Fakturační profil     |  Představuje fakturu a související způsoby platby. V tomto oboru se generují faktury. Fakturační profil může obsahovat více oddílů faktury.      |
+|Fakturační profil     |  Představuje fakturu a související způsoby platby. V tomto rozsahu se generují faktury. Fakturační profil může obsahovat více oddílů faktury.      |
 |Oddíl faktury     |   Představuje skupinu nákladů na faktuře. K oboru oddílu faktury jsou přidružená předplatná a další nákupy.    |
 
 

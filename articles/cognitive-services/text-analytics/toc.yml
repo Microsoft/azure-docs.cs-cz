@@ -50,6 +50,8 @@
       href: named-entity-types.md
     - name: Podpora jazyků a oblastí
       href: language-support.md
+    - name: Posuny textu
+      href: concepts/text-offsets.md
 - name: Návody
   items:
     - name: Volání rozhraní Text Analytics API

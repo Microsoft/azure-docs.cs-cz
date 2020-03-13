@@ -125,6 +125,8 @@
       href: event-grid-tutorial.md
     - name: Příjem oznámení prostřednictvím Event Gridu a Logic Apps
       href: event-grid-logicapps.md
+    - name: Obměna tajných kódů pro jednouživatelské prostředky
+      href: tutorial-rotation.md
     - name: Integrace se službou Azure Policy
       href: azure-policy.md
     - name: Integrace se službou Azure Private Link (Preview)

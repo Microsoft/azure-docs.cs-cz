@@ -12,6 +12,8 @@
       href: ./servers/onboard-portal.md
     - name: Připojení počítačů ve velkém měřítku s využitím instančního objektu
       href: ./servers/onboard-service-principal.md
+    - name: Připojení počítačů ke službě Azure Arc s využitím DSC PowerShellu
+      href: ./servers/onboard-dsc.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku agenta připojeného počítače Azure

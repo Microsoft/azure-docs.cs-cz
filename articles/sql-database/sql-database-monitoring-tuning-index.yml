@@ -10,13 +10,13 @@ metadata:
   ms.collection: performance
   author: CarlRabeler
   ms.author: carlrab
-  ms.date: 01/25/2020
-  ms.openlocfilehash: 9ef3980b61f60deaa929c932cecc093a82025cbd
-  ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
+  ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/26/2020
-  ms.locfileid: "76756619"
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79208898"
 landingContent:
 - title: Informace o monitorování a optimalizaci výkonu
   linkLists:
@@ -28,14 +28,20 @@ landingContent:
     links:
     - text: Monitorovací playbook Microsoft Azure Database
       url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
-- title: Shromažďování metrik a protokolů
+- title: Doporučení k inteligentnímu výkonu
   linkLists:
   - linkListType: concept
     links:
-    - text: Metriky a diagnostické protokolování
-      url: sql-database-metrics-diag-logging.md
-    - text: Vysvětlení diagnostického protokolu výkonu
-      url: sql-database-intelligent-insights-use-diagnostics-log.md
+    - text: Doporučení optimalizace pro SQL Database Advisor
+      url: sql-database-advisor.md
+    - text: Automatické ladění
+      url: sql-database-automatic-tuning.md
+    - text: Query Performance Insight
+      url: sql-database-query-performance.md
+  - linkListType: video
+    links:
+    - text: Automatické ladění
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
 - title: Omezení prostředků
   linkLists:
   - linkListType: concept
@@ -52,50 +58,46 @@ landingContent:
       url: sql-database-managed-instance-resource-limits.md
     - text: Limity prostředků fondů spravované instance
       url: sql-database-instance-pools.md#instance-pools-resource-limitations
-- title: Začínáme – Azure Portal
+- title: Analýzy inteligentního výkonu
   linkLists:
   - linkListType: overview
     links:
-    - text: Monitorování a optimalizace s využitím AI
-      url: sql-database-performance.md
+    - text: Intelligent Insights s využitím AI
+      url: sql-database-intelligent-insights.md
   - linkListType: concept
     links:
-    - text: Doporučení optimalizace pro SQL Database Advisor
-      url: sql-database-advisor.md
-    - text: Query Performance Insight
-      url: sql-database-query-performance.md
+    - text: Metriky a diagnostické protokolování
+      url: sql-database-metrics-diag-logging.md
+    - text: Vysvětlení diagnostického protokolu výkonu
+      url: sql-database-intelligent-insights-use-diagnostics-log.md
     - text: Azure SQL Analytics
       url: ../azure-monitor/insights/azure-sql.md
-    - text: Užitečné přehledy
-      url: sql-database-intelligent-insights.md
     - text: Rozpoznatelné vzory výkonu
       url: sql-database-intelligent-insights-troubleshoot-performance.md
-    - text: Automatické ladění
-      url: sql-database-automatic-tuning.md
+    - text: Inteligentní zpracování dotazů
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
   - linkListType: video
     links:
     - text: Užitečné přehledy
       url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
-    - text: Automatické ladění
-      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
 - title: Ruční optimalizace výkonu
   linkLists:
   - linkListType: overview
     links:
-    - text: Pokyny k ruční optimalizaci výkonu
-      url: sql-database-performance-guidance.md
+    - text: Detekce problémů s výkonem dotazů
+      url: sql-database-identify-query-performance-issues.md
   - linkListType: concept
     links:
+    - text: Monitorování pomocí zobrazení dynamické správy
+      url: sql-database-monitoring-with-dmvs.md
+    - text: Optimalizace aplikací a databází
+      url: sql-database-performance-guidance.md
     - text: S využitím úložiště dotazů
       url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
-    - text: S využitím zobrazení dynamické správy
-      url: sql-database-monitoring-with-dmvs.md
     - text: S využitím rozšířených událostí
       url: sql-database-xevent-db-diff-from-svr.md
     - text: Diagnostika výkonu hyperškálování
       url: sql-database-hyperscale-performance-diagnostics.md
-    - text: Inteligentní zpracování dotazů
-      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
 - title: Škálování prostředků
   linkLists:
   - linkListType: overview

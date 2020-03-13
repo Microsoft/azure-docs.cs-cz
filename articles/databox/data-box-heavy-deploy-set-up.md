@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514421"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117256"
 ---
 ::: zone target = "docs"
 
@@ -100,7 +100,7 @@ Při zapojování kabeláže zařízení postupujte následovně.
 
 Pomocí následujícího postupu připojte jeden z uzlů zařízení k síti.
 
-1. Pomocí síťového kabelu CAT 6 RJ-45 (modrý kabel na obrázku) připojte hostitelský počítač k portu pro správu s rychlostí 1 GB/s.
+1. Pomocí síťového kabelu CAT 6 RJ-45 (kabel na obrázku vpravo nahoře, připojený k zásuvce označené MGMT) připojte hostitelský počítač k portu pro správu s rychlostí 1 GB/s.
 2. Pomocí kabelu QSFP+ (optického nebo měděného) připojte alespoň jedno síťové rozhraní s rychlostí 40 Gb/s (tomu se dává přednost před rozhraním s rychlostí 1 Gb/s) pro data. Pokud používáte přepínač s rychlostí 10 GB/s, použijte k připojení síťového rozhraní s rychlostí 40 GB/s pro data kabel SFP+ s adaptérem QSFP+ na SFP+ (adaptér QSA).
 
     ![Zapojená kabeláž portů Data Boxu Heavy](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

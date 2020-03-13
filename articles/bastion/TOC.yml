@@ -4,6 +4,10 @@
   items:
     - name: Informace o službě Azure Bastion
       href: bastion-overview.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření opevněného hostitelského počítače z nastavení virtuálního počítače
+      href: quickstart-host-portal.md
 - name: Návody
   items:
     - name: Vytvoření hostitele typu bašta

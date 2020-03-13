@@ -97,6 +97,8 @@
       href: concepts-security.md
     - name: Služba
       href: concepts-service.md
+    - name: Principy IP adres DPS
+      href: iot-dps-understand-ip-address.md
     - name: Osvědčení TPM
       href: concepts-tpm-attestation.md
     - name: Osvědčení symetrického klíče
@@ -127,6 +129,8 @@
           href: how-to-manage-dps-with-cli.md
         - name: Řízení přístupu k rozhraním API služby zřizování
           href: how-to-control-access.md
+        - name: Konfigurace filtrování IP
+          href: iot-dps-ip-filtering.md
     - name: Zřízení zařízení IoT Edge
       items:
         - name: Linux

@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200910"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942579"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Řešení potíží s platbami za Azure
 
 Může dojít k problému nebo chybě při pokusu o aktualizaci platebních informací v profilu účtu na portálu Microsoft Azure nebo v Centru účtů Azure.
 
 Pokud chcete tyto potíže vyřešit, zvolte si z následujících témat to, které nejvíce připomíná vaši situaci.
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>Při pokusu o registraci do Azure byla moje platební karta odmítnuta
+
+Pokud chcete řešit problémy s odmítnutou kartou, přečtěte si téma [Řešení potíží s odmítnutou kartou při registraci do Azure](troubleshoot-declined-card.md).
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Nejde aktualizovat způsob platby, protože se nezobrazují předplatná v rámci účtu
+
+Možná používáte ID e-mailu, které se liší od ID používaného pro předplatná.
+
+Pokud chcete tento problém vyřešit, přečtěte si téma [Chyba přihlášení Nenašla se žádná předplatná pro Azure Portal nebo Centrum účtů Azure](no-subscriptions-found.md).
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>Jako způsob platby nejde použít virtuální ani předplacenou kreditní nebo debetní kartu.
+
+*   Při platbě za předplatná Azure se nepřijímají virtuální ani předplacené platební karty.
+*   Při platbě za předplatná Azure se nepřijímají debetní karty.
+
+Další informace najdete v tématu [Řešení potíží s odmítnutou kartou při registraci do Azure](troubleshoot-declined-card.md).
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Z uloženého způsobu platby faktur nejde odebrat platební kartu
 
@@ -33,19 +50,11 @@ Pokud potřebujete stávající kartu odstranit, buď musíte do předplatného 
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Po přidání nového způsobu platby nejde odstranit starý způsob platby
 
-Nový platební nástroj nemusí být přidružený k předplatnému. Pokud chcete přidružit platební nástroj k předplatnému, přečtěte si téma [Přidání, aktualizace nebo odebrání kreditní nebo debetní karty v Azure](change-credit-card.md).
-
-Pokud chcete řešit problémy s odmítnutou kartou, přečtěte si téma [Řešení potíží s odmítnutou kartou při registraci do Azure](troubleshoot-declined-card.md).
+Nový platební nástroj nemusí být přidružený k předplatnému. Pokud chcete přidružit platební nástroj k předplatnému, přečtěte si téma věnované [přidání, aktualizaci nebo odebrání platební karty v Azure](change-credit-card.md).
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Nedá se odstranit způsob platby kvůli chybové zprávě *Nejde odstranit způsob platby*
 
 K tomu dochází kvůli nevyrovnanému zůstatku. Dorovnejte nevyrovnaný zůstatek a pak odstraňte způsob platby.
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Nejde aktualizovat způsob platby, protože se nezobrazují předplatná v rámci účtu
-
-Možná používáte ID e-mailu, které se liší od ID používaného pro předplatná.
-
-Pokud chcete tento problém vyřešit, přečtěte si téma [Chyba přihlášení Nenašla se žádná předplatná pro Azure Portal nebo Centrum účtů Azure](no-subscriptions-found.md).
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Nejde provést platbu za předplatné
 

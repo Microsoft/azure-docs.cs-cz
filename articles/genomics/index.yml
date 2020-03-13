@@ -1,27 +1,37 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k Microsoft Genomics
+summary: Seznamte se s tím, jak Microsoft Genomics může zajistit výkonné sekvenování genomu s využitím cloudové implementace nástrojů Burrows-Wheeler Aligner (BWA) a Genome Analysis Toolkit (GATK) pro sekundární analýzy.
 metadata:
   title: Dokumentace k Microsoft Genomics
-  meta.description: Learn how Microsoft Genomics can power genome sequencing using a cloud implementation of the Burrows-Wheeler Aligner (BWA) and the Genome Analysis Toolkit (GATK) for secondary analysis.
+  description: Seznamte se s tím, jak Microsoft Genomics může zajistit výkonné sekvenování genomu s využitím cloudové implementace nástrojů Burrows-Wheeler Aligner (BWA) a Genome Analysis Toolkit (GATK) pro sekundární analýzy.
   services: genomics
-  author: grhuynh
-  manager: cgronlun
-  ms.author: grhuynh
   ms.service: genomics
   ms.topic: landing-page
-  ms.date: 12/07/2017
-abstract:
-  description: 'Seznamte se s tím, jak Microsoft Genomics může zajistit výkonné sekvenování genomu s využitím cloudové implementace nástrojů Burrows-Wheeler Aligner (BWA) a Genome Analysis Toolkit (GATK) pro sekundární analýzy.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Odešlete pracovní postup prostřednictvím služby Microsoft Genomics.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/helix-blue-orange.svg
-            text: Odeslání pracovního postupu
-            href: quickstart-run-genomics-workflow-portal
+  author: grhuynh
+  ms.author: grhuynh
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 36b5898aca2f019351aaeda8438fb6771a09b6c4
+  ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/12/2020
+  ms.locfileid: "79137037"
+landingContent:
+- title: Začínáme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Microsoft Genomics?
+      url: overview-what-is-genomics.md
+    - text: Časté dotazy
+      url: frequently-asked-questions-genomics.md
+  - linkListType: quickstart
+    links:
+    - text: Spuštění ukázkového pracovního postupu
+      url: quickstart-run-genomics-workflow-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití vstupních souborů FASTQ
+      url: quickstart-input-pair-fastq.md
+    - text: Použití vstupních souborů BAM
+      url: quickstart-input-bam.md

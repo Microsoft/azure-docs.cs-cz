@@ -4,16 +4,16 @@ description: Tento článek vysvětluje, jak nainstalovat a používat aplikaci 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 4a50ce5c386f1b928e9f767891840c84534938a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: bc676910a05dbec97ae05578399029f85f71e1ef
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169697"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399626"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise (EA)
 
@@ -43,7 +43,7 @@ Postup instalace aplikace:
   ![Začínáme s novou aplikací – Připojit](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
 9. V zobrazeném dialogovém okně zadejte do pole **BillingProfileIdOrEnrollmentNumber** číslo registrace EA. Zadejte počet měsíců, pro které se mají data získat. Ponechte výchozí hodnotu pro **Obor** na **Číslo registrace** a pak vyberte **Další**.  
   ![Zadání informací o registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. Další dialogové okno se připojí k Azure a získá data požadovaná pro doporučení rezervovaných instancí. Ponechte nakonfigurované výchozí hodnoty a vyberte **Přihlásit**.  
+10. Další dialogové okno se připojí k Azure a získá data požadovaná pro doporučení rezervovaných instancí. *Ponechte nakonfigurované výchozí hodnoty* a vyberte **Přihlásit se**.  
   ![Připojení k Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. Poslední krok instalace se připojí k registraci EA a vyžaduje účet [podnikového správce](../manage/understand-ea-roles.md). Vyberte **Přihlásit** a ověřte se pomocí své registrace EA. Tento krok také v Power BI spustí akci aktualizace dat.  
   ![Připojení k registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -124,6 +124,50 @@ Podrobnosti o tom, jak používat tuto sestavu, najdete v části [Pokrytí virt
 **Nákupy RI** – sestava zobrazuje nákupy rezervovaných instancí v zadaném období.
 
 **Ceník** – sestava zobrazuje podrobný seznam cen specifických pro fakturační účet nebo registraci EA.
+
+## <a name="troubleshoot-problems"></a>Poradce při potížích
+
+Pokud máte problémy s aplikací Power BI, mohou vám při řešení potíží pomoci následující informace.
+
+### <a name="budgetamount-error"></a>Chyba BudgetAmount
+
+Může se zobrazit chyba typu:
+
+```
+Something went wrong
+There was an error when processing the data in the dataset.
+Please try again later or contact support. If you contact support, please provide these details.
+Data source error: The 'budgetAmount' column does not exist in the rowset. Table: Budgets.
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě dochází kvůli chybě základních metadat. K tomuto problému dochází, protože v části **Cost Management > Rozpočet** na webu Azure Portal není k dispozici žádný rozpočet. Oprava této chyby se průběžně nasazuje do Power BI Desktopu a služby Power BI. 
+
+#### <a name="solution"></a>Řešení
+
+- Do doby, než se tato chyba opraví, můžete problém obejít tak, že na webu Azure Portal na úrovni fakturačního účtu / registrace EA přidáte testovací rozpočet. Testovací rozpočet odblokuje připojení k Power BI. Další informace o vytvoření rozpočtu najdete v tématu [Kurz: Vytváření a správa rozpočtů Azure](tutorial-acm-create-budgets.md).
+
+
+### <a name="invalid-credentials-for-azureblob-error"></a>Chyba typu Neplatné přihlašovací údaje pro AzureBlob
+
+Může se zobrazit chyba typu:
+
+```
+Failed to update data source credentials: The credentials provided for the AzureBlobs source are invalid.
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě dojde, pokud změníte metodu ověřování pro připojení objektu blob AutoFitComboMeter.
+
+#### <a name="solution"></a>Řešení
+
+1. Připojte se k datům.
+1. Po zadání registrace EA a počtu měsíců zkontrolujte, že jste jako metodu ověřování ponechali výchozí hodnotu **Anonymní** a pro úroveň soukromí je nastavena hodnota **Žádné**.  
+  ![Připojení k Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+1. Na další stránce jako metodu ověřování nastavte **OAuth2** a pro úroveň soukromí nastavte hodnotu **Žádné**. Potom se přihlaste a ověřte pomocí své registrace. Tento krok také v Power BI spustí aktualizace dat.
+
 
 ## <a name="data-reference"></a>Reference pro data
 

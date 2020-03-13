@@ -161,6 +161,9 @@
         - name: Data galerie
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+        - name: Stažení poznámkových bloků
+          displayName: export
+          href: download-notebooks-data.md
 - name: Referenční informace
   items:
     - name: Referenční informace k modulům a algoritmům

@@ -392,14 +392,22 @@
       items:
         - name: Kopírování dat pomocí aktivit kopírování
           href: copy-activity-overview.md
+        - name: Monitorování aktivity kopírování
+          href: copy-activity-monitoring.md
         - name: Odstranění souborů pomocí aktivity odstranění
           href: delete-activity.md
         - name: Nástroj pro kopírování dat
           href: copy-data-tool.md
         - name: Podpora formátů a komprese
           href: supported-file-formats-and-compression-codecs.md
-        - name: Výkon a ladění
-          href: copy-activity-performance.md
+        - name: Výkon aktivity kopírování
+          items:
+            - name: Průvodce výkonem a škálovatelností
+              href: copy-activity-performance.md
+            - name: Řešení potíží s výkonem
+              href: copy-activity-performance-troubleshooting.md
+            - name: Funkce pro zajištění výkonu
+              href: copy-activity-performance-features.md
         - name: Zachování metadat a seznamů ACL
           href: copy-activity-preserve-metadata.md
         - name: Mapování typů a schémat
@@ -689,6 +697,8 @@
       href: frequently-asked-questions.md
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: Blog
+      href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: Zeptejte se – fórum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: Zeptejte se – Stack Overflow

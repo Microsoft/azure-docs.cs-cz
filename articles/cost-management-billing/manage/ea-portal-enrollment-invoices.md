@@ -7,12 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: df2d4eb1b28ac9f13511692ca7588414ea4fdff0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272385"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037258"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
@@ -30,8 +30,8 @@ Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní
 1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.
 
    Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
-1. Do pole **PO Number**  (Číslo nákupní objednávky) zadejte nové číslo nákupní objednávky.
-1. Pokud chcete změnu odeslat, vyberte **Save**  (Uložit).
+1. Do pole**Číslo objednávky** zadejte nové číslo nákupní objednávky.
+1. Pokud chcete změnu odeslat, vyberte **Uložit**.
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Aktualizace čísla nákupní objednávky na Azure Marketplace:
 
@@ -41,8 +41,8 @@ Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní
 1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.
 
    Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
-1. Do pole **PO Number**  (Číslo nákupní objednávky) zadejte nové číslo nákupní objednávky.
-1. Pokud chcete změnu odeslat, vyberte **Save**  (Uložit).
+1. Do pole**Číslo objednávky** zadejte nové číslo nákupní objednávky.
+1. Pokud chcete změnu odeslat, vyberte **Uložit**.
 
 ## <a name="cadence-of-azure-enterprise-billing"></a>Četnost fakturace Azure Enterprise
 

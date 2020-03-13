@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 8e272267ffc8dd2946a390470df78b179ebbdf92
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f8f2db3e81c498757bfc39bf70999ce1e70c09da
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199649"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117179"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Získání vlastnictví fakturace předplatných Azure pro vlastní účet se smlouvou MPA
 
@@ -139,7 +139,7 @@ Produkty z Azure Marketplace dostupné pro předplatná spravovaná poskytovatel
 
 ### <a name="azure-reservations-transfer"></a>Přenos rezervací Azure
 
-Rezervace Azure se s předplatným automaticky nepřevádí. Pokud je chcete přesunout, [obraťte se na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Rezervace služby Azure Reservations se nepřesouvají automaticky s předplatnými. Můžete si je nechat, nebo [je zrušit a znovu zakoupit](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) v CSP. 
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 
