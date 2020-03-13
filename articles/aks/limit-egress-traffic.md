@@ -3,13 +3,13 @@ title: Omezení odchozího provozu ve službě Azure Kubernetes (AKS)
 description: Informace o tom, jaké porty a adresy se vyžadují k řízení odchozího provozu ve službě Azure Kubernetes (AKS)
 services: container-service
 ms.topic: article
-ms.date: 01/21/2020
-ms.openlocfilehash: b40415fa78b48d506800049e72c864fb3cab3e29
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
-ms.translationtype: HT
+ms.date: 03/10/2020
+ms.openlocfilehash: 2cd7aeea272d22615d3ba3d3db6acc2c84d22cca
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78946401"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080175"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
