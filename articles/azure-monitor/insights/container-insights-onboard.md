@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak povolíte a nakonfigurujete Azure Moni
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395349"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275305"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Postup povolení Azure Monitor pro kontejnery
 
@@ -30,7 +30,7 @@ Azure Monitor pro kontejnery lze povolit pro nové nebo jedno nebo více existuj
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -73,7 +73,7 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 
 |Prostředek agenta|Porty |Popis | 
 |--------------|------|-------------|
-| *. ods.opinsights.azure.cn | 443 | Přijímání dat |
+| *. ods.opinsights.azure.cn | 443 | Příjem dat |
 | *. oms.opinsights.azure.cn | 443 | Připojování OMS |
 | *.blob.core.windows.net | 443 | Používá se pro monitorování odchozího připojení. |
 | microsoft.com | 80 | Používá se pro připojení k síti. To se vyžaduje jenom v případě, že verze image agenta je ciprod09262019 nebo starší. |
@@ -83,7 +83,7 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 
 |Prostředek agenta|Porty |Popis | 
 |--------------|------|-------------|
-| *.ods.opinsights.azure.us | 443 | Přijímání dat |
+| *.ods.opinsights.azure.us | 443 | Příjem dat |
 | *.oms.opinsights.azure.us | 443 | Připojování OMS |
 | *.blob.core.windows.net | 443 | Používá se pro monitorování odchozího připojení. |
 | microsoft.com | 80 | Používá se pro připojení k síti. To se vyžaduje jenom v případě, že verze image agenta je ciprod09262019 nebo starší. |

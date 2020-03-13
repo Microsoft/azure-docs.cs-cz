@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 52eb3bdb463389d075421661610b5ee94d14d77d
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3370c7ebb8e0253543e6b9cb6ce7614811fb5bd0
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037081"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140786"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -114,7 +114,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-Po úspěšném odeslání kanálu můžete zobrazit náhled obrázku v pravém panelu modulu ![nahraný obrázek](media/module/upload-image-in-python-script.png)
+Po úspěšném odeslání kanálu můžete zobrazit náhled obrázku v pravém panelu modulu.
+
+[!div class="mx-imgBorder"]
+Nahrání ![– obrázek](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>Jak nakonfigurovat skript spustit v Pythonu
 
@@ -132,7 +135,7 @@ Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který m
 
     ![Spustit vstupní mapu Pythonu](media/module/python-module.png)
 
-4. Pokud chcete zahrnout nové balíčky nebo kód v Pythonu, přidejte do **svazku skriptu**soubor zip, který obsahuje tyto vlastní prostředky. **Sada prostředků skriptu** musí být soubor zip odeslaný do vašeho pracovního prostoru jako datová sada typu souboru. 
+4. Pokud chcete zahrnout nové balíčky nebo kód v Pythonu, přidejte do **svazku skriptu**soubor zip, který obsahuje tyto vlastní prostředky. **Sada prostředků skriptu** musí být soubor zip odeslaný do vašeho pracovního prostoru jako datová sada typu souboru. Datovou sadu můžete nahrát na stránce Asset **sady** dat a můžete ji přetáhnout ze seznamu **Moje datové sady** na levém stromu modulu na stránce vytváření návrháře. 
 
     Během provádění kanálu lze použít jakýkoli soubor obsažený v odeslaném archivu zip. Pokud archiv obsahuje adresářovou strukturu, struktura se zachová, ale musíte do cesty předřadit adresář **Src** .
 

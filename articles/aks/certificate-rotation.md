@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9ae8f5072573dcc91dd3e8bdcd08968790f6444d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917029"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205217"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes (AKS)
 
@@ -19,7 +19,7 @@ Služba Azure Kubernetes Service (AKS) používá certifikáty pro ověřování
 
 V tomto článku se dozvíte, jak otočit certifikáty v clusteru AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.77 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
@@ -37,7 +37,7 @@ AKS generuje a používá následující certifikáty, certifikační autority a
 * Klient `kubectl` má certifikát pro komunikaci s clusterem AKS.
 
 > [!NOTE]
-> Clustery AKS vytvořené před vydáním března 2019 obsahují certifikáty, jejichž platnost vyprší po dvou letech. Každý cluster vytvořený po uplynutí března 2019 nebo jakýkoli cluster s otočenými certifikáty má certifikáty, jejichž platnost vyprší po 30 letech. Pokud chcete ověřit, kdy byl cluster vytvořen, použijte `kubectl get nodes` k zobrazení *stáří* fondů uzlů.
+> Clustery AKS vytvořené před vydáním března 2019 obsahují certifikáty, jejichž platnost vyprší po dvou letech. Každý cluster vytvořený po březnu 2019 nebo jakémkoli clusteru, který má jeho certifikáty otočený, má certifikáty certifikační autority clusteru, jejichž platnost vyprší po 30 letech. Platnost všech ostatních certifikátů vyprší po dvou letech. Pokud chcete ověřit, kdy byl cluster vytvořen, použijte `kubectl get nodes` k zobrazení *stáří* fondů uzlů.
 > 
 > Navíc můžete kontrolovat datum vypršení platnosti certifikátu vašeho clusteru. Například následující příkaz zobrazí podrobnosti o certifikátu pro cluster *myAKSCluster* .
 > ```console

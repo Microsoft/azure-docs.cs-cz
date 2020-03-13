@@ -8,11 +8,11 @@ ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
 ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373693"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277151"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -310,7 +310,7 @@ Když použijete `WEBSITE_TIME_ZONE`, čas se upraví na časové změny v konkr
 
 Na rozdíl od výrazu CRON určuje `TimeSpan` hodnota časový interval mezi voláními funkce. Jakmile se funkce dokončí po spuštění déle, než je zadaný interval, časovač okamžitě vyvolá funkci znovu.
 
-Vyjádřeno jako řetězec, formát `TimeSpan` je `hh:mm:ss`, pokud je `hh` menší než 24. Pokud jsou první dvě číslice 24 nebo větší, formát je `dd:hh:mm`. Zde je několik příkladů:
+Vyjádřeno jako řetězec, formát `TimeSpan` je `hh:mm:ss`, pokud je `hh` menší než 24. Pokud jsou první dvě číslice 24 nebo větší, formát je `dd:hh:mm`. Následuje několik příkladů:
 
 |Příklad |Při aktivaci  |
 |---------|---------|

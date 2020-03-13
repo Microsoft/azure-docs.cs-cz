@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/18/2018
 ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357490"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241385"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Framework
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Framework, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Konkrétně použijete klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) s C# kódem v aplikaci konzoly .NET.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
@@ -45,7 +45,7 @@ Upravte soubor *TajnéKódyMezipaměti.config* a přidejte do něj následujíc�
 `<access-key>` nahraďte primárním klíčem mezipaměti.
 
 
-## <a name="create-a-console-app"></a>Vytvoření konzolové aplikace
+## <a name="create-a-console-app"></a>Vytvoření aplikace konzoly
 
 V sadě Visual Studio klikněte na **Soubor** > **Nový** > **Projekt**.
 

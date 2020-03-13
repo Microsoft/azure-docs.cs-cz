@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 15e1c3de5392238e9e1dbfd324fe40087950a766
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0afb0ddb65a4f27463e2bb5c1b9441d248c34415
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380805"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240755"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Rychlý Start: vytvoření datové továrny pomocí Azure Data Factoryho uživatelského rozhraní
 
@@ -67,6 +67,10 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
 1. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Azure Data Factory.
    
    ![Domovská stránka datové továrny s dlaždici Vytvořit a monitorovat](./media/doc-common-process/data-factory-home-page.png)
+   
+   > [!NOTE]
+   > Pokud vidíte, že webový prohlížeč je zablokovaný při autorizaci, zrušte zaškrtnutí políčka **Blokovat soubory cookie a data lokality třetích stran** . Nebo ho nechejte vybraný, vytvořte výjimku pro **Login.microsoftonline.com**a pak zkuste aplikaci znovu otevřít.
+   
 1. Na stránce **Začínáme** přepněte na levém panelu na kartu **Vytvořit**. 
 
     ![Stránka Začínáme](./media/doc-common-process/get-started-page-author-button.png)

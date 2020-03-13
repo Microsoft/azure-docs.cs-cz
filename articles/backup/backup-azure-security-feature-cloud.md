@@ -3,12 +3,12 @@ title: Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f89d9ab3ef373ecd9a7d15ef4ec9b2109750f8de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248070"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy, které používají Azure Backup
 
@@ -178,24 +178,23 @@ Postupujte následovně:
 1. Chcete-li [Zakázat obnovitelné odstranění](#disabling-soft-delete), postupujte podle pokynů.
 2. V Azure Portal přejdete do trezoru, přejdete na **položku zálohované položky**a zvolíte odstraněný virtuální počítač.
 
-![Výběr obnovitelného odstraněného virtuálního počítače](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![Výběr obnovitelného odstraněného virtuálního počítače](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. Vyberte možnost zrušit **odstranění**.
 
-![Zvolit možnost zrušit odstranění](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
+   ![Zvolit možnost zrušit odstranění](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
 4. Zobrazí se okno. Vyberte možnost zrušit **odstranění**.
 
-![Vybrat zrušit odstranění](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![Vybrat zrušit odstranění](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
 5. Chcete-li trvale odstranit data zálohy, vyberte možnost **Odstranit zálohovaná data** .
 
-![Zvolit odstranění zálohovaných dat](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Zvolit odstranění zálohovaných dat](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. Zadejte název zálohované položky, abyste potvrdili, že chcete body obnovení odstranit.
 
-![Zadejte název zálohované položky.](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Zadejte název zálohované položky.](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. Chcete-li odstranit data zálohy pro položku, vyberte možnost **Odstranit**. Zpráva s oznámením vám poskytne informace o odstranění zálohovaných dat.
 
@@ -268,6 +267,10 @@ Azure Backup umožňuje zálohovat Azure Virtual Machines obsahující disky ši
 ### <a name="backup-of-encrypted-vms"></a>Zálohování šifrovaných virtuálních počítačů
 
 Pomocí služby Azure Backup můžete zálohovat a obnovovat virtuální počítače Azure s Windows nebo Linuxem pomocí šifrovaných disků. Pokyny najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="private-endpoints"></a>Soukromé koncové body
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="other-security-features"></a>Další funkce zabezpečení
 

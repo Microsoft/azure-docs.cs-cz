@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.openlocfilehash: 1d1ddb84c000efaf58356ffdd15382e0b74aa744
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395210"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239557"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte, jak vytvořit cluster [Apache Hadoop](https://hadoop
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Vytvoření účtu úložiště Azure
+> * Vytvoření účtu služby Azure storage
 > * Vysvětlení aktivity Azure Data Factory
 > * Vytvoření datové továrny pomocí Azure Portal
 > * Vytvoření propojených služeb
@@ -34,7 +34,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
 
@@ -196,7 +196,7 @@ V tomto článku nakonfigurujete aktivitu podregistru tak, aby se vytvořil clus
     |Název | Zadejte název objektu pro vytváření dat. Tento název musí být globálně jedinečný.|
     |Předplatné | Vyberte své předplatné Azure. |
     |Skupina prostředků | Vyberte **použít existující** a pak vyberte skupinu prostředků, kterou jste vytvořili pomocí skriptu PowerShellu. |
-    |Verze | Ponechte v **v2**. |
+    |Version | Ponechte v **v2**. |
     |Umístění | Umístění je automaticky nastaveno na umístění, které jste zadali během vytváření skupiny prostředků. Pro tento kurz je umístění nastavené na **východní USA**. |
     |Povolit GIT|Zrušte toto políčko.|
 
@@ -356,7 +356,7 @@ Případně můžete odstranit celou skupinu prostředků, kterou jste pro tento
 1. Na dlaždici **prostředky** máte k dispozici výchozí účet úložiště a datovou továrnu, pokud nesdílíte skupinu prostředků s jinými projekty.
 1. Vyberte **Odstranit skupinu prostředků**. Tím se odstraní účet úložiště a data uložená v účtu úložiště.
 
-    ![Azure Portal odstranit skupinu prostředků](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Odstranění skupiny prostředků")
+    ![Azure Portal odstranit skupinu prostředků](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Odstranit skupinu prostředků")
 
 1. Zadáním názvu skupiny prostředků potvrďte odstranění a pak vyberte **Odstranit**.
 

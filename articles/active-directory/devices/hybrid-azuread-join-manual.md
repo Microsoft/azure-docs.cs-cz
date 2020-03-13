@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672275"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239081"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -35,7 +35,7 @@ Pokud máte místní prostředí Active Directory a chcete připojit svá zaří
 > * Ověření připojených zařízení
 > * Řešení potíží s implementací
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste obeznámeni s:
 
@@ -82,10 +82,10 @@ V následující tabulce najdete přehled požadovaných kroků pro váš scén�
 
 | Kroky | Aktuální Windows a synchronizace hodnoty hash hesel | Aktuální Windows a federace | Windows nižší úrovně |
 | :--- | :---: | :---: | :---: |
-| Konfigurace spojovacího bodu služby | ![Zaškrtnout][1] | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
-| Nastavení vystavování deklarací identity |     | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
-| Povolení zařízení bez Windows 10 |       |        | ![Zaškrtnout][1] |
-| Ověření připojených zařízení | ![Zaškrtnout][1] | ![Zaškrtnout][1] | [Zda][1] |
+| Konfigurace spojovacího bodu služby | ![Kontrola][1] | ![Kontrola][1] | ![Kontrola][1] |
+| Nastavení vystavování deklarací identity |     | ![Kontrola][1] | ![Kontrola][1] |
+| Povolení zařízení bez Windows 10 |       |        | ![Kontrola][1] |
+| Ověření připojených zařízení | ![Kontrola][1] | ![Kontrola][1] | [Zda][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurace spojovacího bodu služby
 

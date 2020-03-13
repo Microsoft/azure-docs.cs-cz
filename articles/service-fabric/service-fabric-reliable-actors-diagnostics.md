@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389596"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282325"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostika a sledování výkonu služby Reliable Actors
 Modul runtime Reliable Actors generuje události [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) a [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto informace poskytují přehled o tom, jak modul runtime pracuje a který umožňuje řešení potíží a monitorování výkonu.
@@ -20,7 +20,7 @@ Název zprostředkovatele EventSource pro modul runtime Reliable Actors je "Micr
 
 Příklady nástrojů a technologií, které vám pomohou při shromažďování a zobrazování událostí EventSource, jsou [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [sémantické protokolování](https://msdn.microsoft.com/library/dn774980.aspx)a [Knihovna Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-### <a name="keywords"></a>Klíčová slova
+### <a name="keywords"></a>klíčová slova
 Všechny události, které patří do Reliable Actors EventSource, jsou přidruženy k jednomu nebo více klíčovým slovům. To umožňuje filtrovat události, které jsou shromažďovány. Jsou definovány následující bity klíčového slova.
 
 | bit | Popis |
@@ -30,7 +30,7 @@ Všechny události, které patří do Reliable Actors EventSource, jsou přidru�
 | 0x4 |Sada událostí souvisejících se stavem objektu actor. Další informace najdete v tématu [Správa stavu objektu actor](service-fabric-reliable-actors-state-management.md). |
 | 0x8 |Sada událostí souvisejících s podporou souběžnosti v objektu actor. Další informace najdete v tématu o [souběžnosti](service-fabric-reliable-actors-introduction.md#concurrency). |
 
-## <a name="performance-counters"></a>Čítače výkonu
+## <a name="performance-counters"></a>Čítače výkonnosti
 Modul runtime Reliable Actors definuje následující kategorie čítače výkonu.
 
 | Kategorie | Popis |
@@ -132,16 +132,16 @@ Modul runtime Reliable Actors emituje následující události související s [
 
 | Název události | ID události | Úroveň | Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ReplicaChangeRoleToPrimary |1 |Informační |0x1 |Replika objektu actor změnila roli na primární. To znamená, že objekty Actors pro tento oddíl budou vytvořeny v rámci této repliky. |
-| ReplicaChangeRoleFromPrimary |2 |Informační |0x1 |Replika objektu actor změnila roli na jinou než primární. To znamená, že objekty Actors pro tento oddíl již nebudou v rámci této repliky vytvořeny. Do aktérů již vytvořených v rámci této repliky nebudou doručeny žádné nové žádosti. Objekty actor budou po dokončení všech probíhajících žádostí zničeny. |
+| ReplicaChangeRoleToPrimary |1 |Informativní |0x1 |Replika objektu actor změnila roli na primární. To znamená, že objekty Actors pro tento oddíl budou vytvořeny v rámci této repliky. |
+| ReplicaChangeRoleFromPrimary |2 |Informativní |0x1 |Replika objektu actor změnila roli na jinou než primární. To znamená, že objekty Actors pro tento oddíl již nebudou v rámci této repliky vytvořeny. Do aktérů již vytvořených v rámci této repliky nebudou doručeny žádné nové žádosti. Objekty actor budou po dokončení všech probíhajících žádostí zničeny. |
 
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Události aktivace a deaktivace objektu actor a čítače výkonu
 Modul runtime Reliable Actors emituje následující události týkající se [Aktivace a deaktivace objektu actor](service-fabric-reliable-actors-lifecycle.md).
 
 | Název události | ID události | Úroveň | Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ActorActivated |5 |Informační |0x1 |Byl aktivován objekt actor. |
-| ActorDeactivated |6 |Informační |0x1 |Objekt actor byl deaktivován. |
+| ActorActivated |5 |Informativní |0x1 |Byl aktivován objekt actor. |
+| ActorDeactivated |6 |Informativní |0x1 |Objekt actor byl deaktivován. |
 
 Modul runtime Reliable Actors zveřejňuje následující čítače výkonu související s aktivací a deaktivací objektu actor.
 

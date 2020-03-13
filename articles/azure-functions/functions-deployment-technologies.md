@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
 ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358166"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277125"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -33,7 +33,7 @@ Každý plán má jiné chování. Ne všechny technologie nasazení jsou k disp
 | Nasazení zip |✔|✔|✔|✔|✔|✔|
 | Kontejner Docker | | | | |✔|✔|
 | Nasazení webu |✔|✔|✔| | | |
-| Správa zdrojového kódu |✔|✔|✔| |✔|✔|
+| Správy zdrojového kódu |✔|✔|✔| |✔|✔|
 | Místní Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Cloudová synchronizace<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Protokol FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
@@ -133,7 +133,7 @@ Nasazení webu balíčky a nasadí aplikace Windows na libovolný server služby
 
 >__Kdy ji použít:__ Nasazení webu se podporuje a nemá žádné problémy, ale upřednostňovaným mechanismem je [nasazení zip s povoleným spuštěním z balíčku](#zip-deploy). Další informace najdete v příručce pro [vývoj sady Visual Studio](functions-develop-vs.md#publish-to-azure).
 
-### <a name="source-control"></a>Správa zdrojového kódu
+### <a name="source-control"></a>Správy zdrojového kódu
 
 Použijte správu zdrojového kódu k připojení aplikace Function App k úložišti Git. Aktualizace kódu v tomto úložišti aktivuje nasazení. Další informace najdete na [wikiwebu Kudu](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
 

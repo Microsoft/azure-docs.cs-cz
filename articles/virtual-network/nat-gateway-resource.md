@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359093"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217014"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT (Public Preview)
 
@@ -31,10 +31,6 @@ Prostředky brány NAT jsou součástí [Virtual Network NAT](nat-overview.md) a
 </p>
 
 *Obrázek: Virtual Network NAT pro odchozí připojení do Internetu*
-
-
->[!NOTE] 
->Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](nat-overview.md#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>Postup nasazení překladu adres (NAT)
 
@@ -54,7 +50,7 @@ Trasy definované uživatelem nejsou nutné.
 
 Prostředek je navržený tak, aby byl jednoduchý, jak můžete vidět v následujícím příkladu Azure Resource Manager ve formátu podobném šabloně.  Tento formát podobný tomuto: slouží k znázornění konceptů a struktury.  Upravte příklad podle svých potřeb.  Tento dokument není určený jako kurz.
 
-Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revize 
+Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revidovat 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network objektového modelu NAT">
@@ -147,7 +143,7 @@ V této části se seznámíte s důležitými informacemi pro navrhování virt
 
 ### <a name="cost-optimization"></a>Optimalizace nákladů
 
-[Koncové body služby](virtual-network-service-endpoints-overview.md) a [soukromé odkazy](../private-link/private-link-overview.md) jsou dvě možnosti, které je potřeba vzít v úvahu pro optimalizaci nákladů, u kterých není potřeba NAT.  Přenos dat směrovaný do koncových bodů služby nebo privátního propojení se nezpracovává pomocí překladu adres (NAT) virtuální sítě.  
+[Koncové body služby](virtual-network-service-endpoints-overview.md) a [soukromé odkazy](../private-link/private-link-overview.md) jsou možnosti, které je vhodné zvážit pro optimalizaci nákladů. NAT není pro tyto služby potřeba. Přenosy směrované do koncových bodů služby nebo privátního propojení nejsou zpracovávány překladem adres (NAT) virtuální sítě.  
 
 Koncové body služby propojují prostředky služeb Azure s vaší virtuální sítí a ovládají přístup k prostředkům služby Azure. Když například přistupujete k Azure Storage, použijte koncový bod služby pro úložiště, abyste se vyhnuli poplatkům za NAT zpracovaných dat. Koncové body služby jsou bezplatné.
 
@@ -339,33 +335,29 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 - Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
 - Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
-## <a name="preview-participation"></a>Účast ve verzi Preview
 
-Podle [pokynů povolte své předplatné](nat-overview.md#public-preview-participation).
+## <a name="feedback"></a>Názor
 
-## <a name="feedback"></a>Váš názor
-
-Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
+Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o službě [NAT pro virtuální sítě](nat-overview.md).
 * Seznamte [se s metrikami a upozorněními pro prostředky brány NAT](nat-metrics.md).
 * Přečtěte si informace o [řešení potíží s prostředky brány NAT](troubleshoot-nat.md).
-* [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
-* [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).
 * Kurz pro ověření brány NAT
-  - Rozhraní příkazového [řádku Azure](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Azure Portal](tutorial-create-validate-nat-gateway-cli.md)
 * Rychlý Start pro nasazení prostředku brány NAT
-  - Rozhraní příkazového [řádku Azure](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md),
-  - [Portál](./quickstart-create-nat-gateway-portal.md).
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [Azure Portal](./quickstart-create-nat-gateway-portal.md)
 * Další informace o rozhraní API prostředků brány NAT
-  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  - Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+
 * Přečtěte si o [zónách dostupnosti](../availability-zones/az-overview.md).
 * Přečtěte si o [službě Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md).
 * Seznamte [se se zónami dostupnosti a standardním nástrojem pro vyrovnávání zatížení](../load-balancer/load-balancer-standard-availability-zones.md).

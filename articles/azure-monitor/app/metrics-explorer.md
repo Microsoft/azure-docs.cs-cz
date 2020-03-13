@@ -4,11 +4,11 @@ description: Jak interpretovat grafy v Průzkumníkovi metrik a jak přizpůsobi
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670164"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275890"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Zkoumání metrik v Application Insights
 Metriky v [Application Insights][start] jsou měřené hodnoty a počty událostí, které se odesílají v telemetrie z vaší aplikace. Vám pomůžou detekovat problémy s výkonem a sledovat trendy v tom, jak se vaše aplikace používá. Existuje celá řada standardních metrik a můžete také vytvořit vlastní metriky a události.

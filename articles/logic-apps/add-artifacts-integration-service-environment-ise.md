@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127273"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79164875"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Přidání prostředků do prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
@@ -20,7 +20,7 @@ Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps
 > [!IMPORTANT]
 > Aby Logic Apps a integrační účty fungovaly společně v ISE, musí jako své umístění používat *stejný ISE* .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -42,7 +42,7 @@ Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí IS
 
    ![Vybrat prostředí integrační služby](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Požadováno | Popis |
    |----------|----------|-------------|
    | **Název** | Ano | Název aplikace logiky, která se má vytvořit |
    | **Předplatné** | Ano | Název předplatného Azure, které se má použít |
@@ -74,7 +74,7 @@ Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte p
 
    ![Vybrat prostředí integrační služby](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Požadováno | Popis |
    |----------|----------|-------------|
    | **Název** | Ano | Název účtu pro integraci, který chcete vytvořit. |
    | **Předplatné** | Ano | Název předplatného Azure, které chcete použít |

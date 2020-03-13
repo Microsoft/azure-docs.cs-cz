@@ -12,11 +12,11 @@ ms.reviewer: nibaccam
 ms.date: 02/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 36d622bf2873b7e629a0f6abeecded33e32898f5
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082019"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283729"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak snadno získat přístup k datům ve službě 
 
 Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. Pro Nepodporovaná řešení úložišť a za účelem úspory nákladů na výstup dat během experimentů machine learningu doporučujeme [přesunout data](#move) na podporovaná Azure Storage řešení. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Budete potřebovat:
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -224,7 +224,7 @@ ws.set_default_datastore('your datastore name')
 
 Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) a [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) popsané v následujících příkladech jsou specifické pro a pracují stejně jako třídy [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) a [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
 
-### <a name="upload"></a>Odeslat
+### <a name="upload"></a>Nahrát
 
 Nahrát buď adresář nebo jednotlivé soubory do úložiště dat pomocí sady Python SDK:
 
@@ -239,7 +239,7 @@ Parametr `target_path` určuje umístění sdílené složky (nebo kontejneru ob
 
 Můžete také nahrát seznam jednotlivých souborů do úložiště dat prostřednictvím metody `upload_files()`.
 
-### <a name="download"></a>Ke stažení
+### <a name="download"></a>Stáhnout
 
 Stáhněte data z úložiště dat do místního systému souborů:
 

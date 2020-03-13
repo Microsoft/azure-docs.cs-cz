@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 655c3a96792fba83ac73365f02d48ce0347e9048
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566345"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137882"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
 
@@ -25,7 +25,10 @@ Tento článek je úvodem do geoprostorové funkce ve službě Azure Cosmos DB. 
 
 Prostorová data popisuje pozice a tvar objektů v prostoru. Ve většině aplikací tyto odpovídá objektům na světě a Geoprostorová data. Prostorová data slouží k reprezentaci umístění osoby, místa, které vás zajímají nebo hranici město nebo jezera. Běžné případy použití často zahrnují blízkých výrazů dotazů, třeba, "najít všechny v kavárnách téměř moji aktuální polohu."
 
-Rozhraní SQL API Azure Cosmos DB podporuje **zeměpisný** datový typ. **Zeměpisný** typ představuje data v systému souřadnic pro kulatou zemi.
+Rozhraní SQL API Azure Cosmos DB podporuje dva typy prostorových dat: typ dat **geometrie** a **zeměpisný** datový typ.
+
+- Typ **geometrie** reprezentuje data v Euclidean (plochý) souřadnicový systém.
+- **Zeměpisný** typ představuje data v systému souřadnic pro kulatou zemi.
 
 ## <a name="supported-data-types"></a>Podporované datové typy
 
@@ -70,7 +73,11 @@ Typy prostorových dat lze vložit do dokumentu Azure Cosmos DB, jak je znázorn
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>Body v geografickém systému souřadnic
+### <a name="points-in-a-geometry-coordinate-system"></a>Body v systému souřadnic geometrie
+
+Pro **geometrický** typ dat určuje specifikace injson jako první a svislou osu druhé.
+
+### <a name="points-in-a-geography-coordinate-system"></a>Body v systému geografických souřadnic
 
 Pro zeměpisný datový typ Určuje specifikace **geografické** JSON délku první a zeměpisnou šířku sekund. Stejně jako v ostatních aplikacích mapování zeměpisné šířky a délky se jedná o úhly a reprezentovat z hlediska stupňů. Zeměpisná délka hodnoty se měří z poledníku, který a jsou v rozmezí od-180 stupňů a 180.0 stupňů, a hodnoty zeměpisné šířky se měří od rovníku spadají do rozsahu-90.0 stupňů a 90.0 stupňů.
 

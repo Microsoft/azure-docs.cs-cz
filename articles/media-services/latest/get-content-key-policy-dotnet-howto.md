@@ -13,11 +13,11 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: ff27ae0fd639316f03fe89ffc906561b3ef85f6f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391316"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251450"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>Získat podpisový klíč ze stávající zásady
 
@@ -25,7 +25,7 @@ Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpeče
 
 V příkladu v tomto článku se dozvíte, jak pomocí .NET získat podpisový klíč ze stávající zásady. 
  
-## <a name="download"></a>Ke stažení 
+## <a name="download"></a>Stáhnout 
 
 Naklonujte úložiště GitHub, které obsahuje úplný vzorek .NET, na váš počítač, a to pomocí následujícího příkazu:  
 

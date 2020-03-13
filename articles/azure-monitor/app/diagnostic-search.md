@@ -4,11 +4,11 @@ description: Hledání a filtrování nezpracovaných telemetrie odesílaných v
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368307"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275981"
 ---
 # <a name="using-search-in-application-insights"></a>Použití vyhledávání v Application Insights
 
@@ -92,14 +92,14 @@ Možná budete chtít nastavit časový rozsah, protože hledání v kratším r
 
 Vyhledejte úplná slova, nikoli podřetězce. Použijte uvozovky k uzavření speciálních znaků.
 
-| Řetězec | *Nenalezeno* | Nenachází |
+| String | *Nenalezeno* | Nenachází |
 | --- | --- | --- |
 | HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |Spojené státy|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Tady jsou hledané výrazy, které můžete použít:
 
-| Vzorový dotaz | Účinek |
+| Vzorový dotaz | Efekt |
 | --- | --- |
 | `apple` |Najde všechny události v časovém rozsahu, jehož pole obsahují slovo "Apple". |
 | `apple AND banana` <br/>`apple banana` |Najde události, které obsahují obě slova. Použijte velká písmena "a", nikoli "a". <br/>Krátká forma. |

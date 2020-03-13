@@ -10,11 +10,11 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: eed2223dbfeee307b552cdd010530f27c379f5fe
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082061"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219442"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Značky image kontejneru Azure Cognitive Services
 
@@ -29,19 +29,19 @@ Image kontejneru [detektoru anomálií][ad-containers] se dá najít v registru 
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                    | Poznámky: |
+| Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
 | `1.1.008500001-amd64-preview` |       |
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>Počítačové zpracování obrazu
 
 Image kontejneru [počítačové zpracování obrazu][cv-containers] můžete najít v registru kontejneru `containerpreview.azurecr.io`. Je umístěn v úložišti `microsoft` a má název `cognitive-services-read`. Plně kvalifikovaný název Image kontejneru je `containerpreview.azurecr.io/microsoft/cognitive-services-read`.
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                    | Poznámky: |
+| Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.011580001-amd64-preview` |       |
@@ -54,7 +54,7 @@ Image kontejneru [Face][fa-containers] se dá najít v registru kontejneru `cont
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                    | Poznámky: |
+| Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -72,7 +72,7 @@ Image kontejneru [pro rozpoznávání formulářů][fr-containers] se dá najít
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                    | Poznámky: |
+| Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -85,7 +85,7 @@ Image kontejneru [Luis][lu-containers] se dá najít v části `mcr.microsoft.co
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                    | Poznámky: |
+| Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -103,7 +103,7 @@ Obrázek kontejneru [Custom Speech do textu][sp-cstt] lze nalézt v registru kon
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku            | Poznámky: |
+| Značky obrázku            | Poznámky |
 |-----------------------|:------|
 | `latest`              |       |
 | `2.1.1-amd64-preview` |       |
@@ -117,7 +117,7 @@ Vlastní image kontejneru [textu na řeč][sp-ctts] se dá najít v registru kon
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku            | Poznámky: |
+| Značky obrázku            | Poznámky |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.3.0-amd64-preview` |       |
@@ -128,7 +128,7 @@ Obrázek s obrázkem [mluveného textu na text][sp-stt] najdete na `containerpre
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                  | Poznámky:                                    |
+| Značky obrázku                  | Poznámky                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Obrázek kontejneru s národním prostředím `en-US` |
 | `2.1.1-amd64-ar-ae-preview` | Obrázek kontejneru s národním prostředím `ar-AE` |
@@ -410,7 +410,7 @@ Obrázek kontejneru [Převod textu na řeč][sp-tts] najdete na `containerprevie
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                                  | Poznámky:                                                                      |
+| Značky obrázku                                  | Poznámky                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-JessaRUS`m hlasem        |
 | `1.3.0-amd64-ar-eg-hoda-preview`            | Obrázek kontejneru s `ar-EG` národním prostředím a `ar-EG-Hoda`m hlasem            |
@@ -586,7 +586,7 @@ Image kontejneru [extrakce klíčových frází][ta-kp] můžete najít v část
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                    | Poznámky: |
+| Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -601,7 +601,7 @@ Image kontejneru [rozpoznávání jazyka][ta-la] můžete najít v části `mcr.
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                    | Poznámky: |
+| Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -616,7 +616,7 @@ Image kontejneru [Analýza mínění][ta-se] můžete najít v části `mcr.micr
 
 Tato image kontejneru má k dispozici následující značky:
 
-| Značky obrázku                    | Poznámky: |
+| Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364551"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254440"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Výstup Azure Stream Analytics ke službě Azure Cosmos DB  
 Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument uvádí i některé doporučené postupy pro implementaci této konfigurace.
@@ -113,7 +113,7 @@ Použití Azure Cosmos DB jako výstupu v Stream Analytics generuje následujíc
 |Klíč účtu     | Sdílený přístupový klíč pro účet Azure Cosmos DB.|
 |Databáze        | Azure Cosmos DB název databáze.|
 |Název kontejneru | Název kontejneru, například `MyContainer`. Musí existovat jeden kontejner s názvem `MyContainer`.  |
-|ID dokumentu     | Volitelné. Název sloupce ve výstupních událostech používaný jako jedinečný klíč, na které insert nebo update musí být operace založené. Pokud necháte pole prázdné, budou vloženy všechny události bez možnosti aktualizace.|
+|ID dokumentu     | Volitelná. Název sloupce ve výstupních událostech používaný jako jedinečný klíč, na které insert nebo update musí být operace založené. Pokud necháte pole prázdné, budou vloženy všechny události bez možnosti aktualizace.|
 
 Jakmile nakonfigurujete Azure Cosmos DB výstup, můžete ho použít v dotazu jako cíl [příkazu into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Pokud používáte výstup Azure Cosmos DB, je [třeba nastavit klíč oddílu explicitně](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). 
 

@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d9f67250a232d4666e4655f83e9bdc7622754331
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669586"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136736"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
 
@@ -38,7 +38,7 @@ Rozhraní Application Insights SDK pro .NET, .NET Core, Java, Node. js a JavaScr
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
-* [Python (Preview)](opencensus-python.md)
+* [Python](opencensus-python.md)
 
 Když je nainstalovaná a nakonfigurovaná sada SDK s patřičnou Application Insights, trasovací informace se automaticky shromažďují pro oblíbené architektury, knihovny a technologie pomocí automatických kolekcí závislosti sady SDK. Úplný seznam podporovaných technologií je k dispozici v [dokumentaci k automatické kolekci závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
@@ -48,7 +48,7 @@ Když je nainstalovaná a nakonfigurovaná sada SDK s patřičnou Application In
 
 Kromě Application Insights sady SDK Application Insights podporuje také distribuované trasování prostřednictvím [OpenCensus](https://opencensus.io/). OpenCensus je open source, dodavatel – nezávislá, jedna distribuce knihoven, která poskytuje shromažďování metrik a distribuované trasování pro služby. Umožňuje také komunitě Open Source povolit distribuované trasování s oblíbenými technologiemi, jako je Redis, memcached nebo MongoDB. [Microsoft spolupracuje na OpenCensus s několika dalšími monitorováními a cloudových partnerů](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-[Python (Preview)](opencensus-python.md) 
+[Python](opencensus-python.md) 
 
 Web OpenCensus udržuje referenční dokumentaci rozhraní API pro [Python](https://opencensus.io/api/python/trace/usage.html) a [Přejít](https://godoc.org/go.opencensus.io)a také různá různá vodítka pro použití OpenCensus. 
 

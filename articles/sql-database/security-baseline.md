@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d9cf78f3cc5399a9e974cd9b4f0b3f24c80dacce
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943642"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214120"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Základní hodnoty zabezpečení Azure pro Azure SQL Database
 
@@ -238,13 +238,12 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 Kromě toho můžete zasílat telemetrii diagnostiky Azure SQL do Azure SQL Analytics, což je cloudové řešení, které monitoruje výkon databází SQL Azure, elastických fondů a spravovaných instancí škálované a mezi několika předplatnými. Může vám to usnadnit shromažďování a vizualizace Azure SQL Database metriky výkonu a obsahuje integrované inteligentní funkce pro řešení potíží s výkonem.
 
-
 Postup nastavení auditování pro Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor:
+Jak shromažďovat metriky a protokoly prostředků pomocí Azure Monitor:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 
@@ -575,7 +574,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 **Zodpovědnost**: zákazník
 
-## <a name="data-protection"></a>Ochrana dat
+## <a name="data-protection"></a>Data Protection
 
 *Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
 

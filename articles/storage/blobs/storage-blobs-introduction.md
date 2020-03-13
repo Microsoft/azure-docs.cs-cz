@@ -9,11 +9,11 @@ ms.date: 03/04/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: aeb6971d37601367e62b8f883ccbc576e9534cdb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356485"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240531"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 

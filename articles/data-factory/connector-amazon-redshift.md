@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396542"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243585"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -40,7 +40,7 @@ Konkrétně tento konektor Amazon RedShift podporuje načítání dat z RedShift
 > [!TIP]
 > Abyste dosáhli nejlepšího výkonu při kopírování velkých objemů dat z RedShift, zvažte použití integrovaného Redshiftu pro uvolnění prostřednictvím Amazon S3. Podrobnosti najdete v tématu věnovaném [kopírování dat z oddílu Amazon RedShift pomocí uvolnění](#use-unload-to-copy-data-from-amazon-redshift) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud kopírujete data do místního úložiště dat pomocí [Integration runtime](create-self-hosted-integration-runtime.md)v místním prostředí, udělte přístup ke clusteru Amazon RedShift Integration runtime (použijte IP adresu počítače). Pokyny najdete v tématu [autorizace přístupu ke clusteru](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) .
 * Pokud kopírujete data do úložiště dat Azure, přečtěte si téma [rozsahy IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653) pro výpočetní IP adresu a rozsahy SQL používané datovými centry Azure.
@@ -55,13 +55,13 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Amazon RedShift jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **AmazonRedshift** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **AmazonRedshift** . | Ano |
 | server |IP adresa nebo název hostitele serveru Amazon RedShift Server. |Ano |
-| port |Číslo portu TCP, který server Amazon RedShift používá k naslouchání klientským připojením. |Ne, výchozí hodnota je 5439 |
-| database |Název databáze Amazon RedShift. |Ano |
-| uživatelské jméno |Jméno uživatele, který má přístup k databázi. |Ano |
+| Port |Číslo portu TCP, který server Amazon RedShift používá k naslouchání klientským připojením. |Ne, výchozí hodnota je 5439 |
+| databáze |Název databáze Amazon RedShift. |Ano |
+| username jméno |Jméno uživatele, který má přístup k databázi. |Ano |
 | heslo |Heslo pro uživatelský účet. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -97,9 +97,9 @@ Pro propojenou službu Amazon RedShift jsou podporovány následující vlastnos
 
 Chcete-li kopírovat data z Amazon RedShift, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **AmazonRedshiftTable** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **AmazonRedshiftTable** . | Ano |
 | schéma | Název schématu. |Ne (když je zadán zdroj aktivity "query")  |
 | tabulka | Název tabulky. |Ne (když je zadán zdroj aktivity "query")  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové zatížení použijte `schema` a `table`. | Ne (když je zadán zdroj aktivity "query") |
@@ -132,10 +132,10 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Pokud chcete kopírovat data z Amazon RedShift, nastavte typ zdroje v aktivitě kopírování na **AmazonRedshiftSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AmazonRedshiftSource** . | Ano |
-| query |Pomocí vlastního dotazu můžete číst data. Příklad: select * from MyTable. |Ne (když je "tableName" v datové sadě zadán) |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AmazonRedshiftSource** . | Ano |
+| dotaz |Pomocí vlastního dotazu můžete číst data. Příklad: select * from MyTable. |Ne (když je "tableName" v datové sadě zadán) |
 | redshiftUnloadSettings | Skupina vlastností při použití aplikace Amazon RedShift Unload. | Ne |
 | s3LinkedServiceName | Odkazuje na službu Amazon S3, která se používá jako dočasné úložiště, a to zadáním názvu propojené služby typu "AmazonS3". | Ano, pokud se používá uvolnění |
 | bucketName | Označuje, že se má v poli S3 ukládat dočasná data. Pokud není zadaný, Služba Data Factory ji automaticky vygeneruje.  | Ano, pokud se používá uvolnění |
@@ -219,17 +219,17 @@ Při kopírování dat z Amazon RedShift se z datových typů Amazon RedShift po
 | Typ dat Amazon RedShift | Data factory dočasné datový typ |
 |:--- |:--- |
 | BIGINT |Int64 |
-| BOOLEAN |Řetězec |
-| CHAR |Řetězec |
-| DATE (Datum) |DateTime |
+| BOOLEAN |String |
+| CHAR |String |
+| DATUM |Datum a čas |
 | NOTACI |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Datový typ Int32 |
 | NEMOVITOSTÍ |Jednoduché |
 | SMALLINT |Int16 |
-| TEXT |Řetězec |
-| TIMESTAMP |DateTime |
-| VARCHAR |Řetězec |
+| TEXT |String |
+| TIMESTAMP |Datum a čas |
+| VARCHAR |String |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

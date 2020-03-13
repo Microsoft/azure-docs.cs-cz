@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363490"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240041"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
+## <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
 1. Do vyhledávacího pole zadejte **virtuální počítače** .
 1. V části **služby**vyberte **virtuální počítače**.
@@ -57,7 +57,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     ![Zkontrolovat a vytvořit](./media/quick-create-portal/review-create.png)
 
 
-## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
+## <a name="connect-to-virtual-machine"></a>Připojit k virtuálnímu počítači
 
 Vytvořte připojení ke vzdálené ploše virtuálního počítače. Tyto pokyny popisují připojení k virtuálnímu počítači z počítače z Windows. Na počítači Mac budete potřebovat klienta protokolu RDP, jako je například tento [Klient vzdálené plochy](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) na Mac App Storu.
 

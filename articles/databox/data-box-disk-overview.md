@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box Disk – přehled | Microsoft Docs
-description: Tento článek popisuje službu Azure Data Box Disk, což je cloudové řešení, které umožňuje přenášet velké objemy dat do Azure.
+description: Tento článek popisuje Azure Data Box Disk, cloudové řešení, které umožňuje přenést do Azure velké objemy dat
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,11 +10,11 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204766"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240727"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -77,27 +77,27 @@ Další informace najdete v článku, který se věnuje [zabezpečení a ochran�
 | Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
 | Hmotnost                                                  | < 1 kg na krabici. Až 5 disků v poli                |
-| Dimenze                                              | Disk – 2,5“ SSD |            
+| Rozměry                                              | Disk – 2,5“ SSD |            
 | Kabely                                                  | 1 kabel USB 3.1 pro každý disk|
 | Kapacita služby Storage na jednu objednávku                              | 40 TB (využitelnost cca 35 TB)|
 | Kapacita úložiště disku                                   | 8 TB (využitelnost cca 7 TB)|
 | Datové rozhraní                                          | USB   |
 | Zabezpečení                                                | Předběžné šifrování pomocí nástroje BitLocker a zabezpečené aktualizace <br> Disky chráněné klíčem <br> Data šifrovaná za všech okolností  |
 | Rychlost přenosu dat                                      | Až 430 MB/s v závislosti na velikosti souboru      |
-|Správa                                               | portál Azure |
+|Správa                                               | Azure Portal |
 
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Informace o dostupnosti oblast, přejít na [dostupné produkty Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk je také možné nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+Informace o dostupnosti oblastí najdete v [produktech Azure, které jsou dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 
 ## <a name="pricing"></a>Ceny
 
-Informace o cenách najdete v části [stránce s cenami](https://azure.microsoft.com/pricing/details/databox/disk/).
+Informace o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/databox/disk/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Projděte si [požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
+- Projděte si [Požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Disk](data-box-disk-limits.md).
 - Rychlé nasazení řešení [Azure Data Box Disk](data-box-disk-quickstart-portal.md) na webu Azure Portal

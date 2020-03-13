@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168788"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218167"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definování vlastních modulů R pro Azure Machine Learning Studio (Classic)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Toto téma popisuje, jak vytvořit a nasadit vlastní R Studio (Classic). Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování. Ukazuje, jak vytvořit soubory, které definují modulu a zaregistrovat modul pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy použité v definici vlastního modulu jsou pak popsány podrobněji. Použití pomocné funkce a soubory a několik výstupů se probírá také. 
 
@@ -200,7 +202,7 @@ Pokud například chcete upravit modul **vlastní přidané řádky** na výstup
     </Ports> 
 
 
-A vrátí seznam objektů v seznamu ve správném pořadí v "CustomAddRows.R":
+A vrátí seznam objektů v seznamu ve správném pořadí v ' CustomAddRows. R ':
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -293,7 +295,7 @@ Parametr modulu je definován pomocí podřízeného prvku **arg** oddílu **arg
     * Všechny
   * **výchozí** – platné výchozí možnosti pro výběr sloupce zahrnují: 
     
-    * Žádná
+    * Žádné
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -333,11 +335,11 @@ Parametr modulu je definován pomocí podřízeného prvku **arg** oddílu **arg
 Každý soubor, který je umístěn v souboru ZIP vlastní modul bude k dispozici pro použití při spuštění. Všechny adresáře struktury k dispozici jsou zachovány. To znamená, že u zdroje souborů funguje stejně místně i v Azure Machine Learning Studio (klasickém) spuštění. 
 
 > [!NOTE]
-> Všimněte si, že všechny soubory jsou extrahovány do adresáře "src", musí mít všechny cesty "src /" předponu.
+> Všimněte si, že všechny soubory jsou extrahovány do adresáře src, takže všechny cesty by měly obsahovat předponu src/.
 > 
 > 
 
-Předpokládejme například, že chcete odebrat všechny řádky s NAs z datové sady a taky před výstupu do CustomAddRows odebrat všechny duplicitní řádky a už jste napsali R funkce, který činí v souboru RemoveDupNARows.R:
+Řekněme například, že chcete z datové sady odebrat všechny řádky s NAs, a také odebrat všechny duplicitní řádky, než je vložíte do CustomAddRows, a už jste napsali funkci R, která v souboru RemoveDupNARows. R:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ Pomocný soubor RemoveDupNARows.R ve funkci CustomAddRows mají možnost:
         return (dataset)
     }
 
-V dalším kroku nahrajte soubor zip obsahující "CustomAddRows.R", "CustomAddRows.xml" a "RemoveDupNARows.R" jako vlastní modul R.
+Potom nahrajte soubor ZIP obsahující ' CustomAddRows. R ', ' CustomAddRows. XML ' a ' RemoveDupNARows. R ' jako vlastní modul R.
 
 ## <a name="execution-environment"></a>Spuštění prostředí
 Spouštěcí prostředí pro skript R používá stejnou verzi R jako modul **spuštění skriptu jazyka r** a může používat stejné výchozí balíčky. Další balíčky r. na vlastní modul můžete také přidat jejich zahrnutím do vlastního modulu zip balíčku. Stačí je načte ve skriptu R stejně jako v prostředí R. 

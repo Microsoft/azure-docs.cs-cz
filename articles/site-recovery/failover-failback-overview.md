@@ -4,11 +4,11 @@ description: Přečtěte si o převzetí služeb při selhání a selhání v Az
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539514"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281805"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Místní převzetí služeb při selhání a zotavení po havárii
 
@@ -23,7 +23,7 @@ Převzetí služeb při selhání a navrácení služeb po obnovení v Site Reco
 - **Fáze 3:** převzetí služeb při selhání z Azure: Pokud je vaše místní lokalita znovu spuštěná v normálním provozu, spustíte jiné převzetí služeb při selhání, tentokrát dojde k selhání back-VM virtuálních počítačů Azure do vaší místní lokality. Můžete navrátit služby po obnovení do původního umístění, ze kterého došlo k převzetí služeb při selhání, nebo do alternativního umístění.
 - **Fáze 4: opětovná ochrana místních počítačů**: po navrácení služeb po obnovení znovu povolte replikaci místních počítačů do Azure.
 
-## <a name="failover"></a>Převzetí služeb při selhání
+## <a name="failover"></a>Při selhání
 
 Převzetí služeb při selhání provedete v rámci strategie pro provozní kontinuitu a zotavení po havárii (BCDR).
 

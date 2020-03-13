@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195511"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218403"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení Azure Key Vault s použitím rotace a auditování klíčů
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195511"
 
 Po použití trezoru klíčů ho můžete začít používat k ukládání klíčů a tajných kódů. Vaše aplikace už nepotřebují uchovávat vaše klíče nebo tajné kódy, ale podle potřeby je můžou vyžádat z trezoru. Trezor klíčů umožňuje aktualizovat klíče a tajné kódy, aniž by to mělo vliv na chování vaší aplikace. tím se otevře spousta možností pro správu klíčů a tajných kódů.
 
->[!IMPORTANT]
-> Příklady v tomto článku jsou k dispozici pouze pro účely ilustrace. Nejsou určené pro použití v produkčním prostředí. 
+V tomto článku se dozvíte, jak implementovat naplánovaný rotaci klíčů účtu úložiště, monitorovat protokoly auditu trezoru klíčů a vyvolat výstrahy při neočekávaných žádostech. 
 
-Tento článek vás provede:
+Musíte nejdřív vytvořit Trezor klíčů pomocí metody podle vlastního výběru:
 
-- Příklad použití Azure Key Vault k uložení tajného kódu. V tomto článku je tajný kód uložený pomocí klíče účtu úložiště Azure, ke kterému má aplikace přistup. 
-- Jak implementovat plánované otočení tohoto klíče účtu úložiště.
-- Jak monitorovat protokoly auditu trezoru klíčů a vyvolávat výstrahy při neočekávaných žádostech.
+- [Nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](quick-create-cli.md)
+- [Nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure PowerShell](quick-create-powershell.md)
+- [Nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](quick-create-portal.md)
 
-> [!NOTE]
-> Tento článek podrobně vysvětluje počáteční nastavení vašeho trezoru klíčů. Tyto informace najdete v tématu [co je Azure Key Vault?](key-vault-overview.md). Pokyny k rozhraní příkazového řádku pro různé platformy najdete v tématu [správa Key Vault pomocí Azure CLI](key-vault-manage-with-cli2.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>Nastavení služby Key Vault
+## <a name="store-a-secret"></a>Uložení tajného klíče
 
 Pokud chcete aplikaci povolit načtení tajného klíče z Key Vault, musíte nejdřív vytvořit tajný kód a nahrát ho do svého trezoru.
 

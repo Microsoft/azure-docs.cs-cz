@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822237"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214465"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorování a Správa výkonu databází a fondů Azure SQL v aplikaci SaaS s více klienty
 
@@ -24,7 +24,7 @@ V tomto kurzu se prozkoumá několik klíčových scénářů správy výkonu po
 
 Aplikace Wingtip Tickets SaaS Database na tenanta používá datový model s jedním tenantům, kde každé místo (tenant) má svou vlastní databázi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Aby bylo možné využít výhod tohoto typického vzoru použití databáze, jsou databáze tenantů nasazeny do elastických fondů. Elastické fondy optimalizují náklady na řešení prostřednictvím sdílení prostředků mezi mnoha databázemi. S tímto typem vzorců je důležité monitorovat využití databáze a prostředků fondu k zajištění, že jsou přiměřeně vyvážená přetížení mezi jednotlivými fondy. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a že fondy nedosahují limitů [eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model). Tento kurz se věnuje způsobům monitorování a správy databází a fondů a uvádí, jak se provádějí nápravné akce v reakci na variace v úloze.
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > 
@@ -37,7 +37,7 @@ Co se v tomto kurzu naučíte:
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
 * Aplikace Wingtip Tickets SaaS Database na tenanta je nasazená. Postup nasazení za méně než pět minut najdete v tématu [nasazení a prozkoumání aplikace Wingtip Tickets SaaS Database na klienta](saas-dbpertenant-get-started-deploy.md) .
-* Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Prostředí Azure PowerShell je nainstalované. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>Seznámení se vzory správy výkonu SaaS
 
@@ -52,11 +52,11 @@ Fondy a databáze ve fondech by se měly monitorovat, aby se zajistilo jejich ud
 * Aby nedocházelo k ručnímu monitorování výkonu, je nejúčinnější **nastavit výstrahy, které se aktivují, když se databáze nebo fondy odstanou z normálních rozsahů**.
 * Aby bylo možné reagovat na krátkodobé výkyvy v agregované výpočetní velikosti fondu, **můžete škálovat nebo snížit kapacitu na úrovni eDTU fondu**. Pokud k tomuto kolísání dochází pravidelně nebo je předvídatelné, **je možné naplánovat automatické škálování fondu**. Pokud například víte, že je úloha malého rozsahu, třeba přes noc nebo o víkendech, můžete vertikálně snížit kapacitu.
 * Pokud chcete reagovat na dlouhodobější kolísání nebo změny počtu databází, **je možné přesunout jednotlivé databáze do jiných fondů**.
-* Aby bylo možné reagovat na krátkodobé zvýšení v *jednotlivých* **databázích, je možné vyřadit jednotlivé databáze z fondu a přiřadit individuální výpočetní velikost**. Po snížení zatížení je možné databázi vrátit do fondu. Pokud je to předem známo, je možné databáze přesunout do sálu, abyste zajistili, že databáze bude mít vždy potřebné prostředky a aby se zabránilo dopadu na další databáze ve fondu. Pokud je tento požadavek předvídatelný, například v místě, kde se předpokládá navýšení prodeje lístků na oblíbenou akci, je možné toto chování správy začlenit do aplikace.
+* Aby bylo možné reagovat na krátkodobé zvýšení v *jednotlivých* **databázích, je možné vyřadit jednotlivé databáze z fondu a přiřadit individuální výpočetní velikost**. Po snížení zatížení je možné databázi vrátit do fondu. V případě, že je tato možnost předem známa, je možné databáze přesunout zpět, aby databáze vždy měla potřebné prostředky a aby se zabránilo dopadu na další databáze ve fondu. Pokud je tento požadavek předvídatelný, například v místě, kde se předpokládá navýšení prodeje lístků na oblíbenou akci, je možné toto chování správy začlenit do aplikace.
 
 [Azure Portal](https://portal.azure.com) poskytuje integrované monitorování a upozorňování pro většinu prostředků. Ve službě SQL Database je monitorování a upozorňování k dispozici v databázích a fondech. Toto integrované monitorování a upozorňování je specifické pro konkrétní prostředky, takže je vhodné použít pro malý počet prostředků, ale není velmi výhodné při práci s mnoha prostředky.
 
-U scénářů s vysokým objemem, kde pracujete s mnoha prostředky, je možné použít [protokoly Azure monitor](saas-dbpertenant-log-analytics.md) . Jedná se o samostatnou službu Azure, která poskytuje analýzy přes emitované diagnostické protokoly a telemetrii shromážděné v pracovním prostoru Log Analytics. Protokoly Azure Monitor můžou shromažďovat telemetrii z mnoha služeb a používat je k dotazování a nastavování výstrah.
+U scénářů s vysokým objemem, kde pracujete s mnoha prostředky, je možné použít [protokoly Azure monitor](saas-dbpertenant-log-analytics.md) . Jedná se o samostatnou službu Azure, která poskytuje analýzy prostřednictvím vygenerovaných protokolů shromážděných v pracovním prostoru Log Analytics. Protokoly Azure Monitor můžou shromažďovat telemetrii z mnoha služeb a používat je k dotazování a nastavování výstrah.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace Wingtip Tickets SaaS Database na klientské aplikace
 
@@ -74,7 +74,7 @@ Pokud jste již v předchozím kurzu zřídili dávku tenantů, přejděte k č�
 
 Skript nasadí 17 tenantů za méně než pět minut.
 
-Skript *New-TenantBatch* používá vnořenou nebo propojenou sadu [Správce prostředků](../azure-resource-manager/index.yml) šablon, které vytvářejí dávku tenantů, která ve výchozím nastavení kopíruje databázi **basetenantdb** na serveru katalogu, aby vytvořila nové databáze tenantů. potom registruje je v katalogu a nakonec je inicializuje s názvem tenanta a typem místa. To je konzistentní s tím, jak aplikace zřídí nového tenanta. Všechny změny provedené v *basetenantdb* se aplikují na všechny nové klienty zřízené později. Informace o tom, jak provádět změny schématu ve *stávajících* databázích tenanta (včetně databáze *basetenantdb* ), najdete v [kurzu Správa schématu](saas-tenancy-schema-management.md) .
+Skript *New-TenantBatch* používá vnořenou nebo propojenou sadu [Správce prostředků](../azure-resource-manager/index.yml) šablon, které vytvářejí dávku tenantů, která ve výchozím nastavení kopíruje databázi **basetenantdb** na serveru katalogu, aby vytvořila nové databáze tenantů, a pak je zaregistruje v katalogu a nakonec je inicializuje s názvem tenanta a typem místa. To je konzistentní s tím, jak aplikace zřídí nového tenanta. Všechny změny provedené v *basetenantdb* se aplikují na všechny nové klienty zřízené později. Informace o tom, jak provádět změny schématu ve *stávajících* databázích tenanta (včetně databáze *basetenantdb* ), najdete v [kurzu Správa schématu](saas-tenancy-schema-management.md) .
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Simulace využití ve všech databázích tenantů
 
@@ -177,7 +177,7 @@ Jako alternativu navýšení kapacity fondu vytvořte druhý fond a přemístět
    1. Kliknutím na **přidat databáze** zobrazíte seznam databází na serveru, které je možné přidat do *Pool2*.
    1. Vyberte libovolné 10 databází, které chcete přesunout do nového fondu, a potom klikněte na **Vybrat**. Pokud jste spustili generátor zatížení, služba již ví, že váš profil výkonu vyžaduje větší fond než výchozí velikost 50 eDTU a doporučuje začít s nastavením 100 eDTU.
 
-      ![Základě](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![základě](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. Pro tento kurz ponechte výchozí hodnotu v 50 eDTU a znovu klikněte na **Vybrat** .
    1. Vyberte **OK** , pokud chcete vytvořit nový fond a přesunout do něj vybrané databáze.
@@ -218,7 +218,7 @@ Po vysokém zatížení databáze contosoconcerthall byste měli dotaz vrátit d
 
 ## <a name="other-performance-management-patterns"></a>Další vzory správy výkonu
 
-**Škálování před preemptivní** V cvičení výše, kde jste prozkoumali, jak škálovat izolovanou databázi, jste věděli, jakou databázi hledáte. Pokud byla správa wingtips společnosti Contoso informována o nadcházejícím prodeji lístků, databáze se mohla přesunout mimo sálu fondu. Jinak by to vyžadovalo výstrahu ve fondu nebo v databázi s cílem zjistit, co se stalo. Pravděpodobně byste to nechtěli zjistit proto, že by si ostatní tenanti ve fondu stěžovali na snížený výkon. A kdyby mohli tenanti předvídat, na jak dlouho by potřebovali další prostředky, můžete nastavit runbook Azure Automation na přesunutí databáze mimo fond a potom zpět podle předem definovaného plánu.
+**Škálování před preemptivní** V cvičení výše, kde jste prozkoumali, jak škálovat izolovanou databázi, jste věděli, jakou databázi hledáte. Pokud byla správa wingtips společnosti Contoso informována o nadcházejícím prodeji lístků, databáze by mohla být bez přerušení přesunuta z fondu. Jinak by to vyžadovalo výstrahu ve fondu nebo v databázi s cílem zjistit, co se stalo. Pravděpodobně byste to nechtěli zjistit proto, že by si ostatní tenanti ve fondu stěžovali na snížený výkon. A kdyby mohli tenanti předvídat, na jak dlouho by potřebovali další prostředky, můžete nastavit runbook Azure Automation na přesunutí databáze mimo fond a potom zpět podle předem definovaného plánu.
 
 **Samoobslužné škálování tenanta**  Protože škálování je úkol, který se snadno volá prostřednictvím rozhraní API pro škálu, můžete snadno vytvořit možnost škálovat databáze tenantů do aplikace směřující k tenantovi a nabízet ji jako funkci služby SaaS. Můžete například umožnit tenantům samoobslužné vertikální navýšení a snížení kapacity navázané přímo na fakturaci.
 
@@ -230,7 +230,7 @@ Tam, kde agregované využití tenanta probíhá podle předvídatelných vzorc�
 
 ## <a name="next-steps"></a>Další kroky
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Simulace použití v databázích tenantů pomocí dodaného generátoru zatížení
@@ -241,7 +241,7 @@ Co se v tomto kurzu naučíte:
 [Kurz Obnovení jednoho tenanta](saas-dbpertenant-restore-single-tenant.md)
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * Další [kurzy, které se sestavují na základě SaaS databáze Wingtip Tickets pro každé klientské nasazení aplikace](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastické fondy SQL](sql-database-elastic-pool.md)

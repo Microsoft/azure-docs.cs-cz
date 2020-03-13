@@ -11,17 +11,22 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 07/02/2019
-ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/09/2020
+ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360278"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256416"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
+> [!NOTE]
+> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 
-Tento článek popisuje architekturu připojení Azure SQL Database a SQL Data Warehouse a také způsob, jakým funkce různé komponenty směrují provoz do vaší instance Azure SQL. Tyto součásti pro připojení umožňují směrovat síťový provoz do Azure SQL Database nebo SQL Data Warehouse pomocí klientů připojujících se z Azure a s klienty, kteří se připojují mimo Azure. Tento článek také poskytuje ukázky skriptů pro změnu způsobu, jakým dojde k připojení, a aspektů, které se týkají změny výchozího nastavení připojení.
+> [!IMPORTANT]
+> Tento článek se *nevztahuje na* **Azure SQL Database spravovanou instanci**. [Pro spravovanou instanci se podívejte na architekturu připojení](sql-database-managed-instance-connectivity-architecture.md).
+
+Tento článek vysvětluje architekturu různých komponent, které směrují síťový provoz do Azure SQL Database nebo SQL Data Warehouse. Vysvětluje taky různé zásady připojení a jejich dopad na klienty připojující se z Azure a klienty, kteří se připojují mimo Azure. 
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
 
@@ -39,13 +44,13 @@ Následující kroky popisují, jak se naváže připojení ke službě Azure SQ
 
 Azure SQL Database podporuje pro nastavení zásad připojení serveru SQL Database následující tři možnosti:
 
-- **Přesměrování (doporučeno):** Klienti navázali připojení přímo k uzlu, který je hostitelem databáze, což vede ke snížení latence a lepší propustnosti. Aby připojení používala klienti tohoto režimu, musí
-   - Povolí příchozí a odchozí komunikaci z klienta se všemi IP adresami Azure v oblasti na portech v rozsahu 11000 11999.  
-   - Povolí příchozí a odchozí komunikaci od klienta až po Azure SQL Database IP adresy brány na portu 1433.
+- **Přesměrování (doporučeno):** Klienti navázali připojení přímo k uzlu, který je hostitelem databáze, což vede ke snížení latence a lepší propustnosti. Pro připojení, která používají tento režim, musí klienti:
+   - Povolí odchozí komunikaci z klienta se všemi IP adresami Azure v oblasti na portech v rozsahu 11000 11999. Zjednodušte správu pomocí značek služeb pro SQL.  
+   - Povolí odchozí komunikaci od klienta až po Azure SQL Database IP adresy brány na portu 1433.
 
-- **Proxy server:** V tomto režimu jsou všechna připojení proxy prostřednictvím bran Azure SQL Database, což vede ke zvýšení latence a snížení propustnosti. Aby připojení používala tento režim, klienti musí povolit příchozí a odchozí komunikaci od klienta až po Azure SQL Database IP adresy brány na portu 1433.
+- **Proxy server:** V tomto režimu jsou všechna připojení proxy prostřednictvím bran Azure SQL Database, což vede ke zvýšení latence a snížení propustnosti. Pro připojení, která používají tento režim, musí klienti umožňovat odchozí komunikaci od klienta až po Azure SQL Database IP adresy brány na portu 1433.
 
-- **Výchozí:** Toto je zásada připojení platná pro všechny servery po vytvoření, pokud zásadu připojení explicitně neupravíte na buď `Proxy`, nebo `Redirect`. Výchozí zásady jsou`Redirect` pro všechna připojení klientů pocházející z Azure (např. z virtuálního počítače Azure) a `Proxy`pro všechna klientská připojení, která pocházejí mimo (např. připojení z místní pracovní stanice).
+- **Výchozí:** Toto je zásada připojení platná pro všechny servery po vytvoření, pokud zásadu připojení explicitně neupravíte na buď `Proxy`, nebo `Redirect`. Výchozí zásady jsou`Redirect` pro všechna připojení klientů pocházející z Azure (například z virtuálního počítače Azure) a `Proxy`pro všechna klientská připojení, která pocházejí mimo (například připojení z místní pracovní stanice).
 
  Pro nejnižší latenci a nejvyšší propustnost doporučujeme, abyste zásady připojení `Redirect` k zásadám připojení `Proxy`. Budete ale muset splnit další požadavky na povolení síťového provozu, jak je uvedeno výše. Pokud se jedná o virtuální počítač Azure, můžete to udělat pomocí skupin zabezpečení sítě (NSG) s [visačkami služby](../virtual-network/security-overview.md#service-tags). Pokud se klient připojuje z místní pracovní stanice, možná budete muset spolupracovat se správcem sítě a zapnout síťový provoz přes bránu firewall vaší firmy.
 
@@ -80,15 +85,15 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
 | Brazílie – jih         | 104.41.11.5, 191.233.200.14 |
 | Kanada – střed       | 40.85.224.249      |
-| Východní Kanada          | 40.86.226.166      |
-| USA – střed           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
+| Kanada – východ          | 40.86.226.166      |
+| Střed USA           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Čína – východ           | 139.219.130.35     |
 | Čína – východ 2         | 40.73.82.1         |
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
 | Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| USA – východ              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
-| USA – východ 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
+| Východní USA              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| Východní USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
 | Německo – sever východ   | 51.5.144.179       |
@@ -99,94 +104,25 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Jižní Korea – střed        | 52.231.32.42       |
 | Jižní Korea – jih          | 52.231.200.86      |
-| USA – středosever     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| Střed USA – sever     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Severní Evropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
+| Norsko – východ          | 51.120.96.0        |
+| Norsko – západ          | 51.120.216.0       |
 | Jižní Afrika – sever   | 102.133.152.0      |
 | Jižní Afrika – západ    | 102.133.24.0       |
-| USA – středojih     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| Střed USA – jih     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Jihovýchodní Asie      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Spojené arabské emiráty – střed          | 20.37.72.64        |
 | Spojené arabské emiráty sever            | 65.52.248.0        |
 | Velká Británie – jih             | 51.140.184.11      |
 | Spojené království – západ              | 51.141.8.11        |
-| USA – středozápad      | 13.78.145.25       |
+| Střed USA – západ      | 13.78.145.25       |
 | Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
-| USA – západ              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA – západ 2            | 13.66.226.202      |
+| Západní USA              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
+| Západní USA 2            | 13.66.226.202      |
 |                      |                    |
 
-## <a name="change-azure-sql-database-connection-policy"></a>Změna zásad Azure SQL Databaseho připojení
 
-Chcete-li změnit zásady Azure SQL Database připojení pro Azure SQL Database Server, použijte příkaz Connection [-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) .
-
-- Pokud je vaše zásada připojení nastavená na `Proxy`, všechny síťové pakety se procházejí přes bránu Azure SQL Database. Pro toto nastavení je potřeba, abyste povolili odchozí jenom na IP adresu Azure SQL Database brány. Použití nastavení `Proxy` má větší latenci než nastavení `Redirect`.
-- Pokud je vaše zásada připojení nastavená `Redirect`, všechny síťové pakety se budou nacházet přímo do databázového clusteru. Pro toto nastavení je potřeba, abyste povolili odchozí i víc IP adres.
-
-## <a name="script-to-change-connection-settings-via-powershell"></a>Skript pro změnu nastavení připojení prostřednictvím PowerShellu
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Následující skript vyžaduje [modul Azure PowerShell](/powershell/azure/install-az-ps).
-
-Následující skript prostředí PowerShell ukazuje, jak změnit zásady připojení.
-
-```powershell
-# Get SQL Server ID
-$sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
-
-# Set URI
-$id="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-(Get-AzResource -ResourceId $id).Properties.connectionType
-
-# Update connection policy
-Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
-```
-
-## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skript pro změnu nastavení připojení přes rozhraní příkazového řádku Azure
-
-> [!IMPORTANT]
-> Tento skript vyžaduje rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-### <a name="azure-cli-in-a-bash-shell"></a>Rozhraní příkazového řádku Azure v prostředí bash
-
-> [!IMPORTANT]
-> Tento skript vyžaduje rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-Následující skript rozhraní příkazového řádku ukazuje, jak změnit zásady připojení v prostředí bash.
-
-```azurecli-interactive
-# Get SQL Server ID
-sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
-
-# Set URI
-ids="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-az resource show --ids $ids
-
-# Update connection policy
-az resource update --ids $ids --set properties.connectionType=Proxy
-```
-
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Azure CLI z příkazového řádku Windows
-
-> [!IMPORTANT]
-> Tento skript vyžaduje rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-Následující skript CLI ukazuje, jak změnit zásady připojení z příkazového řádku Windows (s nainstalovaným rozhraním Azure CLI).
-
-```azurecli
-# Get SQL Server ID and set URI
-FOR /F "tokens=*" %g IN ('az sql server show --resource-group myResourceGroup-571418053 --name server-538465606 --query "id" -o tsv') do (SET sqlserverid=%g/connectionPolicies/Default)
-
-# Get current connection policy
-az resource show --ids %sqlserverid%
-
-# Update connection policy
-az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
-```
 
 ## <a name="next-steps"></a>Další kroky
 

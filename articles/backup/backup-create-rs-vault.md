@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit Recovery Services trezo
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: eb7dcb4038260b1edac57a2163a1c0eae29ee452
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5eac302668c2f322390b38475860c77f1cd40d72
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363709"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247953"
 ---
 # <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -85,10 +85,18 @@ Tuto funkci zvolíte tak, že v okně **Konfigurace zálohování** vyberete **P
 Pro tento proces se na úrovni úložiště účtují cenové dopady.
 
 >[!NOTE]
->Než začnete:
+>Před zahájením:
 >
 >- Seznam podporovaných spravovaných typů a oblastí najdete v [matici podpory](backup-support-matrix.md#cross-region-restore) .
->- Funkce obnovení mezi oblastmi (CRR) je teď dostupná jenom v těchto oblastech: Středozápadní USA, Západní USA 2, Austrálie – východ a Austrálie – jihovýchod. 
+>- Funkce obnovení mezi oblastmi (CRR) je aktuálně dostupná jenom v těchto oblastech: 
+>    - Střed USA – západ
+>    - Západní USA 2
+>    - Austrálie – východ
+>    - Austrálie – jihovýchod
+>    - Japonsko – východ
+>    - Japonsko – západ
+>    - Jihovýchodní Asie
+>    - Velká Británie – jih
 >- CRR je funkce výslovných přihlášení na úrovni trezoru pro libovolný trezor GRS (ve výchozím nastavení vypnutý).
 >- K připojení předplatného pro tuto funkci použijte prosím následující příkaz:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

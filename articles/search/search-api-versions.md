@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2f774401f32ff02ced690173c418dafc4c789b5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278813"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137284"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Verze rozhraní API v Azure Kognitivní hledání
 
@@ -32,12 +32,12 @@ Níže je snímek aktuální verze všech programovacích rozhraní do Azure Kog
 
 | Rozhraní | Nejnovější hlavní verze | Stav |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Obecně dostupné, vydání květen 2019 |
+| [.NET SDK](https://aka.ms/search-sdk) |9,0 |Obecně dostupné, vydání květen 2019 |
 | [.NET SDK Preview](https://aka.ms/search-sdk-preview) |8,0 – Preview |Preview, vydáno v dubnu 2019 |
-| [Rozhraní API služby REST](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Obecná dostupnost |
+| [Rozhraní API služby REST](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Všeobecně dostupné |
 | [Služba REST API 2019-05-06 – Preview](search-api-preview.md) |2019-05-06 – Preview |Preview |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Obecná dostupnost |
-| [Rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Obecná dostupnost |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3,0 |Všeobecně dostupné |
+| [Rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|Všeobecně dostupné |
 
 Pro rozhraní REST API, včetně `api-version` pro každé volání se vyžaduje. Použití `api-version` usnadňuje cílení na konkrétní verzi, jako je rozhraní API pro verzi Preview. Následující příklad ukazuje, jak je zadán parametr `api-version`:
 

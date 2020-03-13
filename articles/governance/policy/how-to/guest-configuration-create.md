@@ -4,11 +4,11 @@ description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro v
 ms.date: 12/16/2019
 ms.topic: how-to
 ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387291"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264580"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 

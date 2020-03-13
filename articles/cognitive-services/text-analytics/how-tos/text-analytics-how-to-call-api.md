@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395723"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219299"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -27,7 +27,7 @@ Odvolání tohoto Analýza textu je bezstavové, takže neexistují žádné dat
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -39,11 +39,11 @@ Vstup musí být JSON v nezpracovaném nestrukturovaném textu. KÓD XML není p
 
 V současné době můžete pro všechny operace Analýza textu odeslat stejné dokumenty: mínění, klíčová fráze, rozpoznávání jazyka a identifikace entit. (Schéma se může v budoucnu lišit pro každou analýzu.)
 
-| Prvek | Platné hodnoty | Povinné? | Využití |
+| Prvek | Platné hodnoty | Požadováno? | Využití |
 |---------|--------------|-----------|-------|
-|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Požaduje se | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
-|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Požaduje se | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../text-analytics-supported-languages.md). |
-|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat `text`, který zadáte. |
+|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Požadováno | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
+|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Požadováno | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../text-analytics-supported-languages.md). |
+|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../text-analytics-supported-languages.md) | Je to různé. | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat `text`, který zadáte. |
 
 Další informace o omezeních najdete v tématu [Analýza textu přehled >ch omezení dat](../overview.md#data-limits). 
 
@@ -90,7 +90,7 @@ Služba přijme požadavek o velikosti až 1 MB. Pokud používáte metodu post 
 
    V poli post se odpověď zobrazuje v následujícím okně jako jeden dokument JSON s položkou pro každé ID dokumentu, které je v požadavku k dispozici.
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Viz také: 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

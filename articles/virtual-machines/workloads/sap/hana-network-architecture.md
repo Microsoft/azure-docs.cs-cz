@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 068cc2ed9743a62aa2249a815893c71499711092
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: ca05603ebf06906349a7f94443eafb773a0764f9
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617019"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138990"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Síťová architektura SAP HANA (velké instance)
 
@@ -77,7 +77,7 @@ S revizí 3 dlouhých razítek instancí HANA může být latence sítě mezi vi
 
 S revizí 4 velkými objemy instancí HANA se může latence sítě mezi virtuálními počítači Azure nasazenými v blízkosti razítka velké instance naplnit průměrnou nebo vyšší než průměrná klasifikace, jak je uvedeno v tématu [SAP Note #1100926-Nejčastější dotazy: výkon sítě](https://launchpad.support.sap.com/#/notes/1100926/E) , pokud je nakonfigurovaná rychlá cesta Azure ExpressRoute (viz níže). Aby bylo možné nasadit virtuální počítače Azure v těsné blízkosti pro jednotky s velkým počtem instancí revize 4, je nutné využívat [skupiny umístění v blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Způsob, jakým se dají skupiny umístění blízkosti použít k vyhledání vrstvy aplikace SAP ve stejném datovém centru Azure jako revize 4 jednotky velkých instancí HANA, jsou popsané v tématu [skupiny umístění pro zajištění optimální latence sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
 
-Aby se zajistila deterministické latence sítě mezi virtuálními počítači a rozsáhlou instancí HANA, je nutné vybrat SKU brány ExpressRoute. Na rozdíl od vzorců přenosů mezi místními a virtuálními počítači může model přenosů mezi virtuálními počítači a rozsáhlou instancí HANA vyvíjet malé, ale i vysoké shluky požadavků a datových svazků, které se mají přenést. Abychom mohli tyto shluky zvládnout správně, důrazně doporučujeme použití SKU brány UltraPerformance. Pro třídu Type II třídy SKU velkých instancí služby HANA je použití SKU brány UltraPerformance jako brány ExpressRotue povinné.
+Aby se zajistila deterministické latence sítě mezi virtuálními počítači a rozsáhlou instancí HANA, je nutné vybrat SKU brány ExpressRoute. Na rozdíl od vzorců přenosů mezi místními a virtuálními počítači může model přenosů mezi virtuálními počítači a rozsáhlou instancí HANA vyvíjet malé, ale i vysoké shluky požadavků a datových svazků, které se mají přenést. Abychom mohli tyto shluky zvládnout správně, důrazně doporučujeme použití SKU brány UltraPerformance. Pro třídu Type II třídy SKU velkých instancí služby HANA je použití SKU brány UltraPerformance jako brány ExpressRoute povinné.
 
 > [!IMPORTANT] 
 > Vzhledem k celkovému zatížení sítě mezi aplikací SAP a vrstvami databáze jsou podporovány pouze skladové položky brány HighPerformance nebo UltraPerformance pro virtuální sítě, aby se připojovaly k SAP HANA v Azure (velké instance). U velkých SKU typu instance II pro HANA se jako brána ExpressRoute podporuje jenom SKU brány UltraPerformance. Výjimky se použijí při použití rychlé cesty ExpressRoute (viz níže).

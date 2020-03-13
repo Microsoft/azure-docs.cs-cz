@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/13/2020
 ms.author: pafarley
-ms.openlocfilehash: a641893fece37c759480ab31f505b1673f50e2b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973607"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203547"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý Start: Vyzkoušejte Content Moderator na webu
 
 V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód. Pokud chcete tuto službu integrovat do vaší aplikace rychleji, přečtěte si další rychlé starty v části [Další kroky](#next-steps) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Webový prohlížeč
 
@@ -32,9 +32,23 @@ Nástroj pro kontrolu Content Moderator je webový nástroj, který umožňuje l
 
 ## <a name="create-a-review-team"></a>Vytvořit tým pro revize
 
-Dále vytvořte tým revize. V pracovním scénáři se jedná o skupinu uživatelů, kteří budou ručně kontrolovat rozhodnutí o moderování služby. Prozatím stačí vytvořit název týmu. Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
+Dále vytvořte tým revize. V pracovním scénáři se jedná o skupinu uživatelů, kteří budou ručně kontrolovat rozhodnutí o moderování služby. Chcete-li vytvořit tým, je nutné vybrat **oblast**a zadat **název týmu** a **ID týmu**. Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
 
-![Pozvat člena týmu](images/QuickStart-2-small.png)
+> [!NOTE]
+> **Název týmu** je popisný název pro váš tým recenze. Toto je název zobrazený v Azure Portal. **ID týmu** je to, co se používá k identifikaci programově týmu.
+
+> [!div class="mx-imgBorder"]
+> ![pozvat člena týmu](images/create-team.png)
+
+Pokud se rozhodnete šifrovat data pomocí klíče spravovaného zákazníkem (CMK), budete vyzváni k zadání **ID prostředku** pro váš Content moderator prostředku v cenové úrovni E0. Prostředek, který zadáte, musí být nový. 
+
+> [!div class="mx-imgBorder"]
+> ![pozvat člena týmu pomocí CMK](images/create-team-cmk.png)
+
+Pokud se pokusíte znovu použít prostředek Content Moderator, zobrazí se toto upozornění: 
+
+> [!div class="mx-imgBorder"]
+> ![selhání CMK](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>Nahrát ukázkový obsah
 

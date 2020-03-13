@@ -4,11 +4,11 @@ description: Při použití správy delegovaných prostředků Azure je důleži
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394046"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270703"
 ---
 # <a name="recommended-security-practices"></a>Doporučené postupy zabezpečení
 
@@ -28,7 +28,7 @@ Při vytváření struktury oprávnění nezapomeňte postupovat podle principu 
 
 Například můžete chtít použít strukturu, jako je tato:
 
-|Název skupiny  |Typ  |principalId  |Definice role  |ID definice role  |
+|Název skupiny  |Typ  |principalId  |Definice rolí  |ID definice role  |
 |---------|---------|---------|---------|---------|
 |Architekty     |Skupina uživatelů         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Posouzení     |Skupina uživatelů         |\<principalId\>         |Čtenář         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |

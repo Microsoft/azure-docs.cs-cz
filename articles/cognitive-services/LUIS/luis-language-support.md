@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361093"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220850"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -40,13 +40,13 @@ Služba LUIS rozumí projevy v následujících jazycích:
 | Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|
 | Němčina |`de-DE` |✔| ✔ |✔ |✔|
 | Hindština | `hi-IN`|-|-|-|-|
-| Italština |`it-IT` |✔| ✔ |✔|✔|
+| italština |`it-IT` |✔| ✔ |✔|✔|
 | *[japonština](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Pouze klíčových frází|
 | Korejština |`ko-KR` |✔|   -   |-|Pouze klíčových frází|
 | Portugalština (Brazílie) |`pt-BR` |✔| ✔ |✔ |Ne všechny dílčí jazykových verzí|
 | Španělština (Španělsko) |`es-ES` |✔| ✔ |✔|✔|
 | Španělština (Mexiko)|`es-MX` |-|  -   |✔|✔|
-| Turečtina | `tr-TR` |✔|-|-|Jenom mínění|
+| turečtina | `tr-TR` |✔|-|-|Jenom mínění|
 
 Podpora jazyků se liší u [předem sestavených entit](luis-reference-prebuilt-entities.md) a [předem sestavených domén](luis-reference-prebuilt-domains.md).
 
@@ -87,7 +87,7 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 |Francouzština (fr-CA)|✔||||
 |Němčina|||✔|✔|
 | Hindština |✔|-|-|-|-|
-|Italština|✔||||
+|italština|✔||||
 |Japonština||||✔|
 |Korejština||✔||✔|
 |Portugalština (Brazílie)|✔||||
@@ -98,7 +98,7 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 
 Následující jazykové verze mají vlastní verze provádějících tokenizaci:
 
-|Kultura|Version|Účel|
+|Jazyková verze|Version|Účel|
 |--|--|--|
 |Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, je zapnutý `Ich fahre einen kranken wagen`. Povolení označení `kranken` a `wagen` nezávisle na různých entitách.|
 |Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstane jeden token. Proto je `krankenwagen` označena jako jediná entita. |

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e773d628b4600d6c2e73d488d82d6ab4c64b56a2
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392382"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239921"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat Key Vault obnovitelné odstranění pomocí rozhraní příkazového řádku
 
@@ -23,7 +23,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 - Podpora obnovitelného odstranění trezoru klíčů
 - Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure CLI – Pokud nemáte toto nastavení pro vaše prostředí, přečtěte si téma [správa Key Vault pomocí Azure CLI](key-vault-manage-with-cli2.md).
 
@@ -36,7 +36,7 @@ Operace Key Vault se samostatně spravují prostřednictvím oprávnění říze
 | Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft.KeyVault/deletedVaults/read|
-|Zotavit|Obnoví odstraněný Trezor klíčů.|Microsoft.KeyVault/vaults/write|
+|Obnovit|Obnoví odstraněný Trezor klíčů.|Microsoft.KeyVault/vaults/write|
 |Vyprázdnit|Trvale odstraní odstraněný Trezor klíčů a veškerý jeho obsah.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 Další informace o oprávněních a řízení přístupu najdete v tématu [zabezpečení trezoru klíčů](key-vault-secure-your-key-vault.md).
@@ -53,7 +53,7 @@ Pokud chcete povolit obnovení odstraněného trezoru klíčů nebo objektů ulo
 Pro existující Trezor klíčů s názvem ContosoVault povolte obnovitelné odstranění následujícím způsobem. 
 
 ```azurecli
-az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{print $1}') --set properties.enableSoftDelete=true
+az keyvault update -n ContosoVault --enable-soft-delete true
 ```
 
 ### <a name="new-key-vault"></a>Nový trezor klíčů

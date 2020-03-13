@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117472"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203487"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -38,11 +38,11 @@ Rozhraní API pro analýzu textu nabízí dvě verze rozpoznávání pojmenovan�
 
 | Funkce                                                         | NER v2 | NER V3 |
 |-----------------------------------------------------------------|--------|--------|
-| Metody pro jednotlivé a dávkové požadavky                          | ×      | ×      |
-| Základní rozpoznávání entit v několika kategoriích              | ×      | ×      |
-| Rozšířená klasifikace pro rozpoznané entity                 |        | ×      |
-| Samostatné koncové body pro posílání NER entit a žádostí o připojení. |        | ×      |
-| Správa verzí modelů                                                |        | ×      |
+| Metody pro jednotlivé a dávkové požadavky                          | X      | X      |
+| Základní rozpoznávání entit v několika kategoriích              | X      | X      |
+| Rozšířená klasifikace pro rozpoznané entity                 |        | X      |
+| Samostatné koncové body pro posílání NER entit a žádostí o připojení. |        | X      |
+| Správa verzí modelů                                                |        | X      |
 
 Informace najdete v tématu [Podpora jazyků](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
@@ -83,25 +83,25 @@ Propojení entit
 
 | Typ  | SubType | Příklad |
 |:-----------   |:------------- |:---------|
-| Person (Osoba)        | Není k dispozici\*         | Jan, vyúčtování Branch     |
+| Osoba        | Není k dispozici\*         | Jan, vyúčtování Branch     |
 | Umístění      | Není k dispozici\*         | "Redmond, Washington", "Paříž"  |
 | Organizace  | Není k dispozici\*         | Microsoft   |
-| Množství      | Číslo        | "6", "šest"     |
+| Množství      | Počet        | "6", "šest"     |
 | Množství      | Procento    | "50%", "50 procent"|
 | Množství      | Řadový       | "2.", "Second"     |
-| Množství      | Věk           | "90 den starý", "30 let starý"    |
+| Množství      | Stáří           | "90 den starý", "30 let starý"    |
 | Množství      | Měna      | "$10,99"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
-| Množství      | Teplota   | "32 stupňů"    |
-| DateTime      | Není k dispozici\*         | "6:17:30 4. února 2012"      |
-| DateTime      | Datum          | "Květen 2, 2017", "05/02/2017"   |
-| DateTime      | Čas          | "8:00", "8:00"  |
-| DateTime      | DateRange     | "Může 2. května až 5."    |
-| DateTime      | TimeRange     | "18:00 to 19:00"     |
-| DateTime      | Doba trvání      | 1 minuta a 45 sekund   |
-| DateTime      | Nastavit           | "každé úterý"     |
-| zprostředkovatele identity           | Není k dispozici\*         | "https:\//www.bing.com"    |
-| Email         | Není k dispozici\*         | support@contoso.com |
+| Množství      | Temperature   | "32 stupňů"    |
+| Datum a čas      | Není k dispozici\*         | "6:17:30 4. února 2012"      |
+| Datum a čas      | Datum          | "Květen 2, 2017", "05/02/2017"   |
+| Datum a čas      | Čas          | "8:00", "8:00"  |
+| Datum a čas      | DateRange     | "Může 2. května až 5."    |
+| Datum a čas      | TimeRange     | "18:00 to 19:00"     |
+| Datum a čas      | Doba platnosti      | 1 minuta a 45 sekund   |
+| Datum a čas      | Nastavit           | "každé úterý"     |
+| URL           | Není k dispozici\*         | "https:\//www.bing.com"    |
+| E-mail         | Není k dispozici\*         | support@contoso.com |
 | Telefonní číslo v USA  | Není k dispozici\*         | (Jenom telefonní čísla USA) "(312) 555-0176" |
 | IP adresa    | Není k dispozici\*         | 10.0.0.100 |
 
@@ -182,14 +182,13 @@ Rozhraní API pro analýzu textu je Bezstavová. Ve vašem účtu se neukládaj�
 
 Všechny žádosti POST vrátí odpověď ve formátu JSON s ID a zjištěnými vlastnostmi entity.
 
-Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi.
-
+Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi. Vzhledem k podpoře vícejazyčných a Emoji může odpověď obsahovat posunutí textu. Další informace najdete v tématu [postup zpracování posunutí textu](../concepts/text-offsets.md) .
 
 #### <a name="version-30-preview"></a>[Verze 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Příklad odpovědí V3
 
-Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpovědi pro obě operace jsou uvedené níže.
+Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpovědi pro obě operace jsou uvedené níže. 
 
 #### <a name="example-ner-response"></a>Příklad odpovědi NER
 

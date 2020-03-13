@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357957"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276826"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -363,6 +363,7 @@ Objekt `context.res` (Response) má následující vlastnosti:
 | _záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
 | _isRaw_   | Indikuje, že pro odpověď se přeskočilo formátování.    |
 | _stav_  | Stavový kód protokolu HTTP odpovědi.                     |
+| _soubory cookie_ | Pole objektů cookie protokolu HTTP, které jsou nastaveny v odpovědi. Objekt souborů cookie protokolu HTTP obsahuje `name`, `value`a další vlastnosti souboru cookie, jako je například `maxAge` nebo `sameSite`. |
 
 ### <a name="accessing-the-request-and-response"></a>Přístup k žádosti a odpovědi 
 
@@ -615,7 +616,7 @@ Příkaz `npm start` je ekvivalentní k následujícím příkazům:
 - `tsc`
 - `func start`
 
-#### <a name="publish-to-azure"></a>Publikování aplikací do Azure
+#### <a name="publish-to-azure"></a>Publikování do Azure
 
 Předtím, než použijete příkaz [`func azure functionapp publish`] k nasazení do Azure, vytvoříte sestavení JavaScriptu připravené pro produkční soubory z zdrojových souborů TypeScriptu. 
 
@@ -696,7 +697,7 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace naleznete v následujících zdrojích:
 
 + [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 + [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

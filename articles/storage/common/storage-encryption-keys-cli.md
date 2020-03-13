@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bf21cd27fa290b9b9b863803aef043eccc815573
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: fcb4636263843143e685de2e3d2a27bf87cc5a90
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912718"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137403"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure CLI
 
@@ -120,11 +120,21 @@ Když vytváříte novou verzi klíče, budete muset aktualizovat účet úloži
 
 Pokud chcete změnit klíč, který se používá pro Azure Storage šifrování, zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) , jak je znázorněno v části [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem](#configure-encryption-with-customer-managed-keys) , a zadejte nový název a verzi klíče. Pokud je nový klíč v jiném trezoru klíčů, aktualizujte také identifikátor URI trezoru klíčů.
 
+## <a name="revoke-customer-managed-keys"></a>Odvolání klíčů spravovaných zákazníkem
+
+Pokud se domníváte, že došlo k ohrožení bezpečnosti klíče, můžete odvolat klíče spravované zákazníkem odebráním zásad přístupu trezoru klíčů. Pokud chcete odvolat klíč spravovaný zákazníkem, zavolejte příkaz [AZ Key trezor Delete-Policy](/cli/azure/keyvault#az-keyvault-delete-policy) , jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
+
+```azurecli-interactive
+az keyvault delete-policy \
+    --name <key-vault> \
+    --object-id $storage_account_principal
+```
+
 ## <a name="disable-customer-managed-keys"></a>Zakázat klíče spravované zákazníkem
 
-Když zakážete klíče spravované zákazníkem, váš účet úložiště se pak zašifruje pomocí klíčů spravovaných Microsoftem. Pokud chcete zakázat klíče spravované zákazníkem, zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) a nastavte `--encryption-key-source parameter` na `Microsoft.Storage`, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
+Když zakážete klíče spravované zákazníkem, váš účet úložiště se znovu zašifruje pomocí klíčů spravovaných Microsoftem. Pokud chcete zakázat klíče spravované zákazníkem, zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) a nastavte `--encryption-key-source parameter` na `Microsoft.Storage`, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
-```powershell
+```azurecli-interactive
 az storage account update
     --name <storage-account> \
     --resource-group <resource_group> \

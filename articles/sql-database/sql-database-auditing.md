@@ -11,11 +11,11 @@ ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 1cac52dcee91e57a22b6d18595b067de888aba73
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082487"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269182"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditováním SQL Database
 

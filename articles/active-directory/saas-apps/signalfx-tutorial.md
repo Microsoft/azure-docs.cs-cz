@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8ba01ea8a443c4f8a3a8e7b911dcc605ee61ea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967693"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136410"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SignalFx
 
@@ -30,9 +30,9 @@ V tomto kurzu se dozvíte, jak integrovat SignalFx s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k SignalFx svým účtům Azure AD; ani
 * Spravujte svoje účty na jednom místě (Azure Portal).
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat:
 
@@ -57,7 +57,7 @@ Pomocí těchto pokynů přidejte aplikaci SignalFx do seznamu spravovaných apl
 1. Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. Vyberte **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte a vyberte **SignalFx**.
-    * Je možné, že budete muset několik minut počkat, než se aplikace přidá do vašeho tenanta.
+     * Je možné, že budete muset několik minut počkat, než se aplikace přidá do vašeho tenanta.
 1. Nechejte Azure Portal otevřít a pak otevřete novou kartu Web.    
 
 ## <a name="step-2-begin-signalfx-sso-configuration"></a>Krok 2: začátek konfigurace jednotného přihlašování SignalFx
@@ -171,11 +171,11 @@ Přečtěte si následující informace týkající se testování jednotného p
 
 * SignalFx podporuje vytvoření uživatelem **pouze v čase** , což znamená, že pokud uživatel v SignalFx neexistuje, bude účet uživatele vytvořen při prvním pokusu o přihlášení.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

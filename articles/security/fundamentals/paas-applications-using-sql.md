@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: f7d993799fed637fbec55afc8f06d90c8fc6910f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b0a4627d377f5fa9ca997d1cc96bc38b0a6c37f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726784"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217225"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Osvědčené postupy pro zabezpečení databází PaaS v Azure
 
@@ -48,7 +48,7 @@ Databáze SQL Azure je možné nakonfigurovat tak, aby používaly jeden ze dvou
 - Používá uživatele databáze s omezením k ověřování identit na úrovni databáze.
 - Podporuje ověřování založené na tokenech pro aplikace, které se připojují k SQL Database.
 - Podporuje federaci doménové federace s Active Directory Federation Services (AD FS) (ADFS) nebo nativním ověřováním uživatele a hesla pro místní službu Azure AD bez synchronizace domén.
-- Podporuje připojení z SQL Server Management Studio, která používají univerzální ověřování služby Active Directory, které zahrnuje službu [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). MFA zahrnuje silné ověřování s využitím celé řady možností ověření – telefonických hovorů, textových zpráv, čipových karet s kódem PIN nebo oznámení mobilní aplikace. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
+- Podporuje připojení z SQL Server Management Studio, která používají univerzální ověřování služby Active Directory, což zahrnuje [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). MFA zahrnuje silné ověřování s využitím celé řady možností ověření – telefonických hovorů, textových zpráv, čipových karet s kódem PIN nebo oznámení mobilní aplikace. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Další informace o ověřování Azure AD najdete tady:
 
@@ -68,7 +68,7 @@ SQL Database výchozí omezení zdrojové IP adresy umožňují přístup z jak�
 
 Další informace o bráně firewall Azure SQL a omezeních IP adres najdete v těchto tématech:
 
-- [Řízení přístupu Azure SQL Database a SQL Data Warehouse](../../sql-database/sql-database-control-access.md)
+- [Řízení přístupu Azure SQL Database a SQL Data Warehouse](../../sql-database/sql-database-manage-logins.md)
 - [Pravidla brány firewall Azure SQL Database a SQL Data Warehouse](../../sql-database/sql-database-firewall-configure.md)
 
 

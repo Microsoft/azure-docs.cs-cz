@@ -4,11 +4,11 @@ description: Přečtěte si o podpoře migrace fyzického serveru v Azure Migrat
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389011"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269546"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Matice podpory pro migraci fyzických serverů
 
@@ -54,7 +54,7 @@ Tabulka shrnuje podporu pro fyzické servery, které chcete migrovat pomocí mig
 **NFS** | Svazky NFS připojené jako svazky na počítačích se nebudou replikovat.
 **cíle iSCSI** | Počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
 **Multipath v/v** | Není podporováno.
-**VMotion úložiště** | Podporováno
+**VMotion úložiště** | Podporuje se
 **Seskupené síťové adaptéry** | Není podporováno.
 **Protokolů** | Není podporováno.
 

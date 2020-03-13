@@ -3,12 +3,12 @@ title: Použití nastavení diagnostiky pro trezory Recovery Services
 description: Článek popisující, jak používat staré a nové diagnostické události pro Azure Backup
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583941"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136935"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Použití nastavení diagnostiky pro trezory služby Recovery Services
 
@@ -56,7 +56,9 @@ Jakmile se data natoků do pracovního prostoru LA, v pracovním prostoru se vyt
 
 V rámci jedné události s názvem "AzureBackupReport" se tradičně používala všechna diagnostická data týkající se zálohování pro trezor. Šest událostí popsaných výše jsou v podstatě dekompozice všech dat obsažených v AzureBackupReport. 
 
-V současné době i nadále podporujeme událost AzureBackupReport pro zpětnou kompatibilitu, v případech, kdy uživatelé mají v této události existující vlastní dotazy, například vlastní výstrahy protokolu, vlastní vizualizace atd. V trezoru ale doporučujeme zvolit nové události pro všechna nová nastavení diagnostiky, protože díky tomu bude mnohem snazší pracovat s nimi v protokolových dotazech. poskytuje lepší zjistitelnost schémat a jejich strukturu, zlepšuje výkon při příjmu dat. latence a časy dotazování. Podpora pro použití režimu Azure Diagnostics bude nakonec vycházet z provozu, takže výběr nových událostí vám může pomoci vyhnout se složitým migracím později.
+V současné době i nadále podporujeme událost AzureBackupReport pro zpětnou kompatibilitu, v případech, kdy uživatelé mají v této události existující vlastní dotazy, například vlastní výstrahy protokolu, vlastní vizualizace atd. Doporučujeme ale **co nejdříve přejít na nové události**, protože to usnadňuje práci s daty v protokolových dotazech, poskytuje lepší zjistitelnost schémat a jejich struktury, zlepšuje výkon v rámci latence příjmu i časů dotazů. **Podpora pro použití režimu Azure Diagnostics bude nakonec vycházet z provozu, takže výběr nových událostí vám může pomoci vyhnout se složitým migracím později**.
+
+Pomocí předdefinované zásady Azure Backup můžete přidat nové nastavení diagnostiky s 6 novými událostmi pro všechny trezory v zadaném rozsahu: [Konfigurace nastavení diagnostiky trezoru ve velkém měřítku](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 Můžete se rozhodnout vytvořit samostatná nastavení diagnostiky pro AzureBackupReport a šest nových událostí, dokud nemigrujete všechny vlastní dotazy, aby používaly data z nových tabulek. Následující obrázek ukazuje příklad trezoru se dvěma nastaveními diagnostiky. První nastavení s názvem **Setting1** odesílá data události AzureBackupReport do pracovního prostoru La v režimu AzureDiagnostics. Druhé nastavení s názvem **Setting2** odesílá data o šesti nových událostech Azure Backup do pracovního prostoru La v režimu specifickém pro prostředky.
 

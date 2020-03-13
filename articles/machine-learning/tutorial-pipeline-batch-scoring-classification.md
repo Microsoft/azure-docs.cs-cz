@@ -1,35 +1,36 @@
 ---
 title: 'Kurz: kanály ML pro dávkové vyhodnocování'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu vytvoříte kanál strojového učení pro spuštění dávkového vyhodnocování pro model klasifikace obrázků v Azure Machine Learning. Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na vaše odbornosti a strojové učení – místo na infrastruktuře a automatizaci.
+description: V tomto kurzu vytvoříte kanál strojového učení, který bude provádět dávkové vyhodnocování pro model klasifikace imagí. Azure Machine Learning vám umožní soustředit se na strojové učení místo infrastruktury a automatizace.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
-ms.reviewer: trbye
-ms.date: 02/10/2020
-ms.openlocfilehash: cb99861a53c6802598cf925121f1821f74e7d76f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.reviewer: laobri
+ms.date: 03/11/2020
+ms.openlocfilehash: bfa39d4a508412322f0caec36d557c3fc6775090
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354917"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238647"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Kurz: vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto kurzu použijete kanál v Azure Machine Learning ke spuštění úlohy dávkového vyhodnocování. V příkladu se používá [předem](https://arxiv.org/abs/1512.00567) vydaný model Tensorflow sítě konvoluční neuronové pro klasifikaci neoznačených obrázků. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, který můžete použít ke spuštění kanálu z libovolné knihovny HTTP na libovolné platformě.
+Naučte se, jak vytvořit kanál v Azure Machine Learning ke spuštění úlohy vyhodnocování dávek. Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na strojové učení místo infrastruktury a automatizace. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, který můžete použít ke spuštění kanálu z libovolné knihovny HTTP na libovolné platformě. 
 
-Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na vaše odbornosti a strojové učení – místo na infrastruktuře a automatizaci. [Přečtěte si další informace o kanálech strojového učení](concept-ml-pipelines.md).
+V příkladu se používá předem provedený [model konvoluční neuronové](https://arxiv.org/abs/1512.00567) , který implementuje v Tensorflow pro klasifikaci neoznačených obrázků. [Přečtěte si další informace o kanálech strojového učení](concept-ml-pipelines.md).
 
 V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
-> * Konfigurace pracovního prostoru a stažení ukázkových dat
-> * Vytvoření datových objektů pro načtení a výstup dat
+> * Konfigurace pracovního prostoru 
+> * Stažení a uložení ukázkových dat
+> * Vytvoření objektů DataSet pro načtení a výstup dat
 > * Stažení, příprava a registrace modelu v pracovním prostoru
 > * Zřizování výpočetních cílů a vytvoření skriptu bodování
 > * Použít třídu `ParallelRunStep` pro asynchronní dávkové vyhodnocování
@@ -38,7 +39,7 @@ V tomto kurzu provedete následující úlohy:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, vyplňte [část 1 tohoto kurzu instalace](tutorial-1st-experiment-sdk-setup.md).
 * Po dokončení kurzu instalace použijte stejný server poznámkového bloku a otevřete Poznámkový blok *kurzy/Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-scoring-Classification. ipynb* .
@@ -57,7 +58,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>Vytvoření úložiště dat pro ukázkové image
+## <a name="create-a-datastore-for-sample-images"></a>Vytvoření úložiště dat pro ukázkové image
 
 Na účtu `pipelinedata` Získejte ukázku veřejné dat ImageNet Evaluation z `sampledata` veřejného kontejneru objektů BLOB. Zavolejte `register_azure_blob_container()`, aby data byla k dispozici v pracovním prostoru pod názvem `images_datastore`. Pak nastavte výchozí úložiště dat pracovního prostoru jako výstupní úložiště dat. Použijte výstupní úložiště dat k určení skóre výstupu v kanálu.
 
@@ -73,7 +74,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>Vytváření datových objektů
+## <a name="create-dataset-objects"></a>Vytváření objektů DataSet
 
 Při sestavování kanálů `Dataset` objekty používány pro čtení dat z úložiště dat v pracovním prostoru a objekty `PipelineData` se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu.
 
@@ -259,7 +260,7 @@ def run(mini_batch):
 > [!TIP]
 > Kanál v tomto kurzu má pouze jeden krok a zapisuje výstup do souboru. Pro kanály s více kroky můžete také použít `ArgumentParser` k definování adresáře pro zápis výstupních dat pro vstup do následujících kroků. Příklad předávání dat mezi různými kroky kanálu pomocí `ArgumentParser`ho vzoru návrhu najdete v [poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
-## <a name="build-and-run-the-pipeline"></a>Sestavení a spuštění kanálu
+## <a name="build-the-pipeline"></a>Vytvoření kanálu
 
 Před spuštěním kanálu vytvořte objekt, který definuje prostředí Python, a vytvoří závislosti, které váš `batch_scoring.py` skript vyžaduje. Hlavní požadovaná závislost je Tensorflow, ale také nainstalujete `azureml-defaults` pro procesy na pozadí. Vytvořte objekt `RunConfiguration` pomocí závislostí. Také zadejte Docker a Docker-GPU support.
 
@@ -324,7 +325,7 @@ batch_score_step = ParallelRunStep(
 
 Seznam všech tříd, které lze použít pro různé typy kroků, naleznete v [balíčku kroků](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
 
-### <a name="run-the-pipeline"></a>Spuštění kanálu
+## <a name="run-the-pipeline"></a>Spuštění kanálu
 
 Teď kanál spusťte. Nejprve vytvořte objekt `Pipeline` pomocí odkazu na pracovní prostor a kroku kanálu, který jste vytvořili. Parametr `steps` je pole kroků. V tomto případě je pro dávkové vyhodnocování k dispozici pouze jeden krok. Chcete-li vytvořit kanály, které mají více kroků, umístěte kroky v tomto poli do pořadí.
 

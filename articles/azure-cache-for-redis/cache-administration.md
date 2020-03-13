@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357482"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278841"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak spravovat službu Azure cache pro Redis
 Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartování](#reboot) a [Plánování aktualizací](#schedule-updates) pro instance Redis v mezipaměti Azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="reboot"></a>Restartování
+## <a name="reboot"></a>Restartovat
 Okno **restartování** vám umožní restartovat jeden nebo několik uzlů mezipaměti. Tato schopnost restartování umožňuje testovat aplikaci, aby byla odolná proti chybám, pokud dojde k selhání uzlu mezipaměti.
 
-![Restartování](./media/cache-administration/redis-cache-administration-reboot.png)
+![Restartovat](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Vyberte uzly, které chcete restartovat, a klikněte na **restartovat**.
 
-![Restartování](./media/cache-administration/redis-cache-reboot.png)
+![Restartovat](./media/cache-administration/redis-cache-reboot.png)
 
 Pokud máte mezipaměť Premium s povoleným clusteringem, můžete vybrat, které horizontálních oddílů mezipaměti se mají restartovat.
 
-![Restartování](./media/cache-administration/redis-cache-reboot-cluster.png)
+![Restartovat](./media/cache-administration/redis-cache-reboot-cluster.png)
 
 Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované uzly a klikněte na tlačítko **restartovat**. Pokud máte mezipaměť Premium s povoleným clusteringem, vyberte požadované horizontálních oddílů k restartování a pak klikněte na **restartovat**. Po několika minutách se vybrané uzly restartují a v průběhu několika minut budete zase online.
 

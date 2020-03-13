@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357068"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240643"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Rychlý Start: použití Azure Portal k vytvoření fronty Service Bus
 V tomto rychlém startu se dozvíte, jak odesílat a přijímat zprávy z Service Bus fronty, pomocí [Azure Portal][Azure portal] k vytvoření oboru názvů pro zasílání zpráv a fronty v rámci tohoto oboru názvů a získání přihlašovacích údajů pro autorizaci v tomto oboru názvů. Postup pak ukazuje, jak do této fronty odesílat zprávy a přijímat je z ní pomocí [knihovny .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
@@ -57,7 +57,7 @@ Kód spustíte následovně:
    ```
 3. Přejděte do složky s ukázkou `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
 4. Zkopírujte připojovací řetězec a název fronty, který jste získali v části získání přihlašovacích údajů pro správu.
-5.  Do příkazového řádku zadejte následující příkaz:
+5.  Na příkazovém řádku zadejte následující příkaz:
 
     ```
     dotnet build

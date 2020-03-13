@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
 ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395328"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275240"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Použití řešení Service Map v Azure
 
@@ -97,7 +97,7 @@ Uživatelé si můžou vybrat, které servery patří do skupiny dohromady, a zv
 
 Pokud chcete vytvořit skupinu, vyberte počítače nebo počítače, které chcete v seznamu počítače, a klikněte na **Přidat do skupiny**.
 
-![Vytvoření skupiny](media/service-map/machine-groups-create.png)
+![Vytvořit skupinu](media/service-map/machine-groups-create.png)
 
 Zde můžete zvolit **vytvořit nové** a zadat název skupiny.
 
@@ -552,7 +552,7 @@ Další informace o shromažďování a používání dat naleznete v tématu [p
 
 Přečtěte si další informace o [hledání v protokolu](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud máte potíže s instalaci nebo spuštění řešení Service Map, tato část vám pomoct. Pokud stále nejde problém vyřešit, obraťte se prosím Microsoft Support.
 
@@ -571,7 +571,7 @@ Může být užitečné nejdřív nainstalovat [nejnovější knihovny modulu ru
 
 V následující tabulce jsou uvedeny čísly kódů a doporučená řešení.
 
-| Kód | Popis | Řešení |
+| Kód | Popis | Rozlišení |
 |:--|:--|:--|
 | 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která nebyla nainstalována. | Vyhledejte v protokolu nejnovější instalační program knihovny.<br><br>Pokud je odkaz na `Windows8.1-KB2999226-x64.msu` následovaný řádkem `Error 0x80240017: Failed to execute MSU package,` nemáte požadavky na instalaci KB2999226. Postupujte podle pokynů v části požadavky v tématu [Universal C Runtime](https://support.microsoft.com/kb/2999226) v článku o systému Windows. Může být potřeba spuštěním služby Windows Update a restartovat více než jednou. aby bylo možné nainstalujte příslušné požadované součásti.<br><br>Znovu spusťte instalační program agenta Microsoft Dependency. |
 
@@ -600,6 +600,6 @@ Pokud se Váš počítač nachází v Service Map, ale nemá žádná data o pro
 
 Podívejte se na `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) nebo `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Poslední řádek souboru by měla zobrazovat, proč se nenačetla jádra. Například jádra nemusí být podporovány v Linuxu, pokud jste aktualizovali vaši jádra.
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Názor
 
 Máte pro nás informace o Service Map nebo této dokumentaci?  Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.

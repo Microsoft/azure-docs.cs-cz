@@ -7,11 +7,11 @@ description: Přečtěte si, jak Azure Dev Spaces poskytuje rychlé a iterativn�
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 586b19070ec36517add21f7aac86ddf15121be2d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393606"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240699"
 ---
 # <a name="introduction-to-azure-dev-spaces"></a>Úvod do Azure Dev Spaces
 

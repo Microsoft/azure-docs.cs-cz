@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3ec965318da1361454b4a6bb78ed7147562b5fea
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194991"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138514"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -50,7 +50,7 @@ Azure AD taky poskytuje Azure Active Directory B2C, aby se organizace mohli při
 
 Tokeny zabezpečení obsahují informace o uživatelích a aplikacích. Azure AD používá tokeny založené na JSON (JWTs), které obsahují deklarace identity.
 
-Deklarace identity poskytuje kontrolní výrazy týkající se jedné entity, například [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) nebo [vlastníka prostředku](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)), k jiné entitě, jako je například [server prostředků](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server).
+Deklarace identity poskytuje kontrolní výrazy týkající se jedné entity, jako je například [klientská aplikace](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) nebo [vlastník prostředku](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner), k jiné entitě, jako je například [server prostředků](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server).
 
 Deklarace identity jsou páry název-hodnota, které přenášejí fakta týkající se předmětu tokenu. Deklarace identity může například obsahovat fakta o objektu zabezpečení, který byl ověřen [autorizačním serverem](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server). Deklarace identity přítomné v daném tokenu závisí na mnoha věcí, včetně typu tokenu, typu přihlašovacího údaje použitého k ověření předmětu, konfigurace aplikace atd.
 

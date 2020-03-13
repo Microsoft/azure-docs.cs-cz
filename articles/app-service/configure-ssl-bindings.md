@@ -7,11 +7,11 @@ ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373923"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239704"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou SSL v Azure App Service
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Vynucení protokolu TLS 1.1/1.2
 > * Automatizace správy protokolu TLS pomocí skriptů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup při použití tohoto průvodce:
 
@@ -163,7 +163,7 @@ Konfigurační příručky specifické pro jazyk, jako je například Průvodce 
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Další zdroje informací
+## <a name="more-resources"></a>Další materiály
 
 * [Použití certifikátu SSL v kódu aplikace](configure-ssl-certificate-in-code.md)
 * [Nejčastější dotazy: App Service certifikátů](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

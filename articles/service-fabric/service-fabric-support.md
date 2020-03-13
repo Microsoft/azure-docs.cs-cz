@@ -6,11 +6,11 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389847"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282091"
 ---
 # <a name="azure-service-fabric-support-options"></a>Možnosti podpory pro Azure Service Fabric
 
@@ -20,7 +20,7 @@ Pro zajištění vhodné podpory pro Service Fabric clusterů, na kterých běž
 
 Pokud chcete nahlásit problémy v clusteru Service Fabric nasazeném v Azure, otevřete lístek pro podporu [Azure Portal nebo na](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) [portálu podpory Microsoftu](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
-Další informace:
+Další informace pro:
  
 - [Podpora Microsoftu pro Azure](https://azure.microsoft.com/support/plans/?b=16.44).
 - [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
@@ -36,7 +36,7 @@ Další informace:
 
 Pokud chcete nahlásit problémy s nasazeným clusterem Service Fabric místně nebo v jiných cloudech, otevřete lístek pro profesionální podporu na [portálu podpory Microsoftu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-Další informace:
+Další informace pro:
 
 - [Professional Support od Microsoftu pro místní podporu](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 - [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).

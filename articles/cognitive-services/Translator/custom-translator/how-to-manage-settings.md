@@ -10,11 +10,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595763"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219508"
 ---
 # <a name="how-to-manage-settings"></a>Správa nastavení
 
@@ -85,11 +85,11 @@ Ve vlastním překladateli můžete sdílet svůj pracovní prostor s ostatními
 
 ## <a name="sharing-permissions"></a>Oprávnění ke sdílení
 
-1.  **Modulu** Čtenář v pracovním prostoru bude moci zobrazit všechny informace v pracovním prostoru.
+1.  **Čtecí modul:** Čtenář v pracovním prostoru bude moci zobrazit všechny informace v pracovním prostoru.
 
-2.  **Editoru** Editor v pracovním prostoru bude moci přidávat dokumenty, naučit modely a odstraňovat dokumenty a projekty. Můžou přidat klíč předplatného, ale nemůžou upravovat, na koho se pracovní prostor sdílí, odstranit pracovní prostor nebo změnit název pracovního prostoru.
+2.  **Editor:** Editor v pracovním prostoru bude moci přidávat dokumenty, naučit modely a odstraňovat dokumenty a projekty. Můžou přidat klíč předplatného, ale nemůžou upravovat, na koho se pracovní prostor sdílí, odstranit pracovní prostor nebo změnit název pracovního prostoru.
 
-3.  **Owner** Vlastník má k pracovnímu prostoru úplná oprávnění.
+3.  **Vlastník:** Vlastník má k pracovnímu prostoru úplná oprávnění.
 
 ## <a name="change-sharing-permission"></a>Změnit oprávnění ke sdílení
 
@@ -101,6 +101,6 @@ Když se pracovní prostor sdílí, v části nastavení sdílení se zobrazí v
 
     ![Sdílení nastavení oprávnění](media/how-to/sharing-permission-settings.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte [se migrovat pracovní prostor a projekt](how-to-migrate.md) z [centra Microsoft Translator](https://hub.microsofttranslator.com) .

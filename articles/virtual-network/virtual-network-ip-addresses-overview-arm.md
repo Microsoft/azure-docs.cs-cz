@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355891"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245184"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -45,13 +45,13 @@ Veřejné IP adresy umožňují internetovým prostředkům příchozí komunika
 * Internetové nástroje pro vyrovnávání zatížení
 * VPN Gateway
 * Application Gateway
-* Brána Azure Firewall
+* Azure Firewall
 
 ### <a name="ip-address-version"></a>Verze IP adresy
 
 Veřejné IP adresy se vytvářejí s IPv4 nebo IPv6 adresou. 
 
-### <a name="sku"></a>Skladová jednotka (SKU)
+### <a name="sku"></a>Skladová položka
 
 Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 
@@ -68,7 +68,7 @@ Všechny veřejné IP adresy vytvořené před zavedením skladových položek j
 - Jsou přiřazované k jakémukoli prostředku Azure, ke kterému může být přiřazena veřejná IP adresa, jako jsou například síťová rozhraní, brány VPN Gateway, brány Application Gateway a internetové nástroje pro vyrovnávání zatížení.
 - Nepodporují scénáře zón dostupnosti.  Pro scénáře zón dostupnosti je třeba použít veřejnou IP adresu standardního SKU. Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-#### <a name="standard"></a>Standard
+#### <a name="standard"></a>Standardní
 
 Veřejné IP adresy standardních SKU jsou:
 
@@ -134,7 +134,7 @@ Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné veřejnou IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamické | Statické |
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
@@ -178,10 +178,10 @@ Privátní IP adresu můžete přiřadit konfiguraci **front-endu** nástroje [A
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné privátní IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamické | Statické |
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
-| Nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
+| Load Balancer |Konfigurace front-endu |Ano |Ano |
 | Application Gateway |Konfigurace front-endu |Ano |Ano |
 
 ## <a name="limits"></a>Omezení

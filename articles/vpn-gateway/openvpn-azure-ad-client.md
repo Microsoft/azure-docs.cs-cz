@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3559a139ff89c949ee691310ae25af7d6950abdf
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251619"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138956"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN: ověřování Azure AD
 
@@ -38,7 +38,7 @@ Při práci s profilem založeným na certifikátech se ujistěte, že jsou na k
 
 ### <a name="radius"></a>Postup vytvoření profilu klienta protokolu RADIUS
 
-  ![zaoblen](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  ![Zaoblen](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
 > [!NOTE]
 > Tajný kód serveru se dá exportovat v profilu klienta VPN P2S.  Pokyny, jak exportovat profil klienta, najdete [tady](about-vpn-profile-download.md).
@@ -82,11 +82,11 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Vyberte tři tečky vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![odstranit](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Vyberte **Odebrat** a odstraňte.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![odstranit](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="connection"></a>Vytvoření připojení
 
@@ -184,6 +184,10 @@ Můžete upravit stažený soubor XML profilu a přidat **\<dnsservers >\<server
 </clientconfig>
 </azvpnprofile>
 ```
+
+> [!NOTE]
+> Klient Azure AD OpenVPN využívá položky tabulky zásad překladu názvů DNS (NRPT), což znamená, že servery DNS nebudou uvedené pod výstupem `ipconfig /all`. Pokud chcete potvrdit nastavení používané v rámci služby DNS, podívejte se prosím do rutiny [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) v PowerShellu.
+>
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Návody přidat vlastní trasy k klientovi VPN?
 

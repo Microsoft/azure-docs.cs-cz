@@ -1,22 +1,22 @@
 ---
-title: 'Kurz: Vytvoření zásad WAF pro front-in Azure – Azure Portal'
-description: V tomto kurzu se naučíte vytvořit zásadu firewallu webových aplikací (WAF) pomocí Azure Portal.
+title: 'Kurz: Vytvoření zásad firewallu webových aplikací (WAF) pro front-in Azure – Azure Portal'
+description: V tomto kurzu se naučíte vytvářet zásady WAF pomocí Azure Portal.
 author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/07/2019
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 2e4987273d0ecdc258a3134b89ffc3406e25e97c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186727"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137573"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Kurz: Vytvoření zásad brány firewall webových aplikací na frontách Azure pomocí Azure Portal
 
-V tomto kurzu se dozvíte, jak vytvořit základní zásadu firewallu webových aplikací Azure (WAF) a použít ji pro front-end hostitele v Azure front-endu.
+V tomto kurzu se dozvíte, jak vytvořit základní zásadu brány firewall webových aplikací (WAF) pro Azure, a použít ji na front-end hostitele v Azure front-endu.
 
 V tomto kurzu se naučíte:
 
@@ -27,17 +27,18 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vytvořte profil front-dveří podle pokynů popsaných v tématu [rychlý Start: vytvoření profilu front-dveří](../../frontdoor/quickstart-create-front-door.md). 
+Vytvořte profil front-dveří podle pokynů popsaných v tématu [rychlý Start: vytvoření profilu front-dveří](../../frontdoor/quickstart-create-front-door.md).
 
 ## <a name="create-a-web-application-firewall-policy"></a>Vytvoření zásady firewallu webových aplikací
 
-Nejdřív vytvořte základní zásadu WAF se sadou spravovaných výchozích pravidel (DRS) pomocí portálu. 
+Nejdřív vytvořte základní zásadu WAF se sadou spravovaných výchozích pravidel (DRS) pomocí portálu.
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**> hledat **WAF**> vyberte **Firewall webových aplikací (Preview)** > vyberte **vytvořit**.
+1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**> hledat **WAF**> vyberte * * Firewall webových aplikací * * > vyberte **vytvořit**.
 2. Na kartě **základy** na stránce **vytvořit zásadu WAF** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
+    | Zásady pro            |Vyberte globální WAF (přední dveře).|
     | Předplatné            |Vyberte název předplatného pro přední dveře.|
     | Skupina prostředků          |Vyberte název skupiny prostředků front dveří.|
     | Název zásady             |Zadejte jedinečný název pro zásady WAF.|
@@ -57,7 +58,7 @@ Nejdřív vytvořte základní zásadu WAF se sadou spravovaných výchozích pr
 
 ## <a name="configure-web-application-firewall-rules-optional"></a>Konfigurace pravidel firewallu webových aplikací (volitelné)
 
-### <a name="change-mode"></a>Režim změny
+### <a name="change-mode"></a>Změnit režim
 
 Když vytvoříte zásadu WAF, použije se výchozí zásada WAF v režimu **detekce** . V režimu **detekce** neblokuje WAF žádné požadavky, místo toho se protokolují požadavky, které odpovídají pravidlům WAF, do protokolů WAF.
 Pokud chcete zobrazit WAF v akci, můžete změnit nastavení režimu z **detekce** na **prevence**. V režimu **prevence** se požadavky, které odpovídají pravidlům definovaným ve výchozí sadě pravidel (DRS), zablokují a přihlásily v protokolech WAF.

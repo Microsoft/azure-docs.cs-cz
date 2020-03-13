@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dfe0f8788275dd4403b6c9cad99a8eb09e479b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274719"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138497"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Změna názvu nebo loga podnikové aplikace v Azure Active Directory
 
@@ -42,8 +42,8 @@ Můžete snadno změnit název nebo logo vlastní podnikové aplikace v Azure Ac
 7. V okně pro výběr souborů vyberte soubor, který chcete umístit jako nové logo. Název souboru se zobrazí v poli pod aktuálním obrázkem loga.
 
    > [!NOTE]
-   > Azure vyžaduje, aby obrázek loga byl soubor PNG a platila omezení šířky, výšky a velikosti souboru.
-8. Vyberte **Uložit**. Pokud jste zvolili nové logo, obrázek pole **loga** se změní podle nového souboru loga.
+   > Azure vyžaduje, aby obrázek loga byl soubor PNG a platila omezení šířky, výšky a velikosti souboru. Vlastní loga musí mít velikost přesně 215 &times; 215 pixelů a musí být ve formátu PNG. Pro zobrazení nejvhodnějších pro uživatele doporučujeme použít pozadí s plnou barvou bez transparentnosti v logu aplikace.
+8. Vyberte **Save** (Uložit). Pokud jste zvolili nové logo, obrázek pole **loga** se změní podle nového souboru loga.
 
 ## <a name="next-steps"></a>Další kroky
 

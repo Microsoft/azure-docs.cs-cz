@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391422"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282390"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostování Azure Service Fabric
 Tento článek obsahuje přehled modelů hostování aplikací poskytovaných službou Azure Service Fabric a popisuje rozdíly mezi **sdíleným procesem** a modely **exkluzivních procesů** . Popisuje, jak nasazená aplikace vypadá na Service Fabric uzlu, a vztahu mezi replikami (nebo instancemi) služby a procesem služby-Host.

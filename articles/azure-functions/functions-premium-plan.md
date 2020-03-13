@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 1d9f148351e4ce12d6f6bcd699cdd74e94ba09ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358105"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276904"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-V tomto příkladu nahraďte `<RESOURCE_GROUP>` skupinou prostředků a `<PLAN_NAME>` s názvem pro váš plán, který je ve skupině prostředků jedinečný. Zadejte [podporovanou `<REGION>`](#regions). Pokud chcete vytvořit plán Premium, který podporuje Linux, zahrňte možnost `--is-linux`.
+V tomto příkladu nahraďte `<RESOURCE_GROUP>` skupinou prostředků a `<PLAN_NAME>` s názvem pro váš plán, který je ve skupině prostředků jedinečný. Zadejte [podporovanou `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions). Pokud chcete vytvořit plán Premium, který podporuje Linux, zahrňte možnost `--is-linux`.
 
 Pomocí vytvořeného plánu můžete vytvořit aplikaci Function App pomocí [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) . Na portálu se současně vytvoří plán i aplikace. Příklad kompletního skriptu Azure CLI najdete v tématu [Vytvoření aplikace Function App v plánu Premium](scripts/functions-cli-create-premium-plan.md).
 
@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Úložiště|
+|Skladová položka|Jádra|Paměť|Úložiště|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -99,44 +99,42 @@ Spuštění v počítači, který má více paměti, neznamená vždycky, že va
 
 Například aplikace funkcí JavaScriptu je omezená na výchozí omezení paměti v Node. js. Pokud chcete zvýšit toto omezení pevné paměti, přidejte nastavení aplikace `languageWorkers:node:arguments` s hodnotou `--max-old-space-size=<max memory in MB>`.
 
-## <a name="regions"></a>Oblasti
+## <a name="region-max-scale-out"></a>Maximální horizontální navýšení kapacity oblasti
 
-Níže jsou uvedené aktuálně podporované oblasti pro každý operační systém.
+Níže jsou uvedené maximální podporované hodnoty horizontálního navýšení kapacity pro jeden plán v každé oblasti a konfiguraci operačního systému. Pokud chcete požádat o zvýšení, otevřete prosím lístek podpory.
+
+Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |Oblast| Windows | Linux |
 |--| -- | -- |
-|Austrálie – střed| ✔<sup>1</sup> | |
-|Austrálie – střed 2| ✔<sup>1</sup> | |
-|Austrálie – východ| ✔ | ✔<sup>1</sup> |
-|Austrálie – jihovýchod | ✔ | ✔<sup>1</sup> |
-|Brazílie – jih| ✔<sup>2</sup> | ✔<sup>1</sup> |
-|Kanada – střed| ✔ | ✔<sup>1</sup> |
-|USA – střed| ✔ | ✔<sup>1</sup> |
-|Východní Asie| ✔ | ✔<sup>1</sup> |
-|USA – východ | ✔ | ✔<sup>1</sup> |
-|USA – východ 2| ✔ | ✔<sup>1</sup> |
-|Francie – střed| ✔ | ✔<sup>1</sup> |
-|Německo – středozápad| ✔ | |
-|Japonsko – východ| ✔ | ✔<sup>1</sup> |
-|Japonsko – západ| ✔ | ✔<sup>1</sup> |
-|Jižní Korea – střed| ✔ | ✔<sup>1</sup> |
-|USA – středosever| ✔ | ✔<sup>1</sup> |
-|Severní Evropa| ✔ | ✔<sup>1</sup> |
-|Norsko – východ| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|USA – středojih| ✔ | ✔<sup>1</sup> |
-|Indie – jih | ✔ | |
-|Jihovýchodní Asie| ✔ | ✔<sup>1</sup> |
-|Velká Británie – jih| ✔ | ✔<sup>1</sup> |
-|Spojené království – západ| ✔ | ✔<sup>1</sup> |
-|Západní Evropa| ✔ | ✔<sup>1</sup> |
-|Indie – západ| ✔ | ✔<sup>1</sup> |
-|USA – středozápad| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|USA – západ| ✔ | ✔<sup>1</sup> |
-|USA – západ 2| ✔ | ✔<sup>1</sup> |
-
-<sup>1</sup> Maximální horizontální navýšení kapacity je omezené na 20 instancí.  
-<sup>2</sup> . Maximální horizontální navýšení kapacity je omezeno na 60 instancí.
-
+|Austrálie – střed| 20 | Nedostupný |
+|Austrálie – střed 2| 20 | Nedostupný |
+|Austrálie – východ| 100 | 20 |
+|Austrálie – jihovýchod | 100 | 20 |
+|Brazílie – jih| 60 | 20 |
+|Kanada – střed| 100 | 20 |
+|Střed USA| 100 | 20 |
+|Východní Asie| 100 | 20 |
+|Východní USA | 100 | 20 |
+|Východní USA 2| 100 | 20 |
+|Francie – střed| 100 | 20 |
+|Německo – středozápad| 100 | Nedostupný |
+|Japonsko – východ| 100 | 20 |
+|Japonsko – západ| 100 | 20 |
+|Jižní Korea – střed| 100 | 20 |
+|Střed USA – sever| 100 | 20 |
+|Severní Evropa| 100 | 20 |
+|Norsko – východ| 20 | 20 |
+|Střed USA – jih| 100 | 20 |
+|Indie – jih | 100 | Nedostupný |
+|Jihovýchodní Asie| 100 | 20 |
+|Velká Británie – jih| 100 | 20 |
+|Spojené království – západ| 100 | 20 |
+|Západní Evropa| 100 | 20 |
+|Indie – západ| 100 | 20 |
+|Střed USA – západ| 20 | 20 |
+|Západní USA| 100 | 20 |
+|Západní USA 2| 100 | 20 |
 
 ## <a name="next-steps"></a>Další kroky
 

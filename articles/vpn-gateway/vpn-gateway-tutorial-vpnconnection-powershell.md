@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 1f4687a6af9cae7172a70527f336b98c75d0e9cd
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: c42d164647d608fc45e1135cd4111ff3900a733c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903387"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137156"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Kurz: vytvoření a Správa připojení S2S VPN pomocí PowerShellu
 
@@ -25,13 +25,13 @@ Připojení VPN Azure typu Site-to-Site poskytují zabezpečené propojení růz
 > * Přidání dalších připojení VPN
 > * Odstranění připojení VPN
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Následující diagram ukazuje topologii pro tento kurz:
 
 ![Diagram připojení VPN typu Site-to-Site](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Práce s Azure Cloud Shell a Azure PowerShell
+
+[!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="requirements"></a>Požadavky
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 802dfa7e3b2d0b9deac957662ac1e7604d085fd9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6bae9e871be2a5d56d057d2a077de53329b8c3ec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828082"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208934"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL Server do Azure SQL Database spravované instance
 
@@ -45,7 +45,7 @@ Nejdřív Zjistěte, jestli je spravovaná instance kompatibilní s požadavky n
 
 Použijte [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze v Azure SQL Database. DMA zatím nepodporuje spravovanou instanci jako cíl migrace, ale doporučuje se spustit posouzení proti Azure SQL Database a pečlivě zkontrolovat seznam hlášených problémů s kompatibilitou funkcí a problémy s kompatibilitou v dokumentaci k produktu. Podívejte se na téma [Azure SQL Database funkce](sql-database-features.md) ke kontrole. byly zjištěny blokující problémy, které nejsou blokovány ve spravované instanci, protože většina potíží blokujících brání migraci Azure SQL Database byla odebrána se spravovanou instancí. Například funkce, jako jsou databázové dotazy, mezidatabázové transakce v rámci stejné instance, odkazovaný server na jiné zdroje SQL, CLR, globální dočasné tabulky, zobrazení na úrovni instance, Service Broker a podobně, jsou k dispozici ve spravovaných instancích.
 
-Pokud se u možnosti nasazení Managed instance neodstraní některé hlášené problémy, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
+Pokud se u možnosti nasazení Managed instance neodstraní některé hlášené problémy, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Následuje několik příkladů:
 
 - Pokud vyžadujete přímý přístup k operačnímu systému nebo systému souborů, například k instalaci jiných agentů nebo vlastních agentů na stejný virtuální počítač s SQL Server.
 - Pokud máte striktní závislost na funkcích, které stále nejsou podporované, jako jsou FileStream/soubor, základ a transakce mezi instancemi.
@@ -72,14 +72,14 @@ Některé parametry, které byste potřebovali pro měření SQL Server instance
 - Monitorujte výkon úloh a dotazů nebo instanci SQL Server tím, že prozkoumáte zobrazení dynamické správy nebo úložiště dotazů, pokud migrujete z SQL Server 2016 + verze. Identifikujte Průměrné trvání a využití procesoru nejdůležitějších dotazů v úloze a porovnejte je s dotazy, které jsou spuštěny ve spravované instanci.
 
 > [!Note]
-> Pokud si všimnete jakýchkoli potíží s úlohou na SQL Server, jako je například vysoké využití procesoru, konstantní tlak paměti, databáze tempdb nebo řešení, je vhodné je před provedením standardních hodnot a migrace zkusit vyřešit na své zdrojové SQL Server instanci. Migrace s cílem informovat všechny nové systémové migh způsobí neočekávané výsledky a zruší všechny porovnání výkonu.
+> Pokud si všimnete jakýchkoli potíží s úlohou na SQL Server, jako je například vysoké využití procesoru, konstantní tlak paměti, databáze tempdb nebo Parametrizace, měli byste je před provedením standardních hodnot a migrace zkusit vyřešit na své zdrojové SQL Server instanci. Migrace s cílem informovat všechny nové systémové migh způsobí neočekávané výsledky a zruší všechny porovnání výkonu.
 
 Jako výsledek této aktivity byste měli mít přehlednou průměrnou a maximální hodnotu pro využití procesoru, paměti a vstupně-výstupních operací ve zdrojovém systému a také průměrnou a maximální dobu trvání a využití procesoru dominantního a nejzávažných dotazů v rámci úlohy. Tyto hodnoty byste měli později použít k porovnání výkonu úloh na spravované instanci s výkonem standardních hodnot zatížení na zdrojovém SQL Server.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Nasazení na optimální spravovanou instanci
 
 Spravovaná instance je přizpůsobená pro místní úlohy, které plánují přesun do cloudu. Zavádí [Nový model nákupu](sql-database-service-tiers-vcore.md) , který poskytuje větší flexibilitu při výběru správné úrovně prostředků pro vaše úlohy. V místním světě jste pravděpodobně zvyklí velikost těchto úloh použít fyzickými jádry a šířkou pásma v/v. Nákupní model pro spravovanou instanci je založený na virtuálních jádrech neboli "virtuální jádra", a navíc je k dispozici další úložiště a vstupně-výstupní operace samostatně. Model vCore je jednodušší způsob, jak pochopit požadavky na výpočetní výkon v cloudu a co dnes používáte místně. Tento nový model vám umožní správnou velikost cílového prostředí v cloudu. Tady jsou některé obecné pokyny, které vám pomohou zvolit správnou úroveň služby a charakteristiky:
-- Na základě základní využití procesoru můžete zřídit spravovanou instanci, která odpovídá počtu jader, které používáte v SQL Server. Pamatujte na to, že je potřeba škálovat vlastnosti procesoru tak, aby odpovídaly [vlastnostem virtuálního počítače, kde je nainstalovaná spravovaná instance. ](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- Na základě základní využití procesoru můžete zřídit spravovanou instanci, která odpovídá počtu jader, které používáte v SQL Server. je třeba mít na paměti, že je potřeba škálovat vlastnosti procesoru tak, aby odpovídaly [vlastnostem virtuálního počítače, kde je spravovaná instance nainstalovaná](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 - Na základě základní využití paměti vyberte [úroveň služby, která má odpovídající paměť](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics). Velikost paměti se nedá přímo vybrat, takže byste museli vybrat spravovanou instanci s množstvím virtuální jádra, které má odpovídající paměť (například 5,1 GB/vCore v Gen5). 
 - Na základě základní latence v/v subsystému souborů vyberte mezi Pro obecné účely (latence větší než 5ms) a Pro důležité obchodní informace úrovně služeb (latence menší než 3 MS).
 - Na základě propustnosti směrného plánu předem přidělte velikost dat nebo souborů protokolu, aby bylo možné získat očekávaný vstupně-výstupní výkon.
@@ -113,13 +113,13 @@ Spravovaná instance podporuje následující možnosti migrace databáze (aktu�
 
 [Azure Database Migration Service (DMS)](../dms/dms-overview.md) je plně spravovaná služba navržená tak, aby umožňovala bezproblémové migrace z více databázových zdrojů do datových platforem Azure s minimálními výpadky. Tato služba zjednodušuje úlohy potřebné k přesunu stávajících databází třetích stran a SQL Server do Azure. Mezi možnosti nasazení ve verzi Public Preview patří databáze v Azure SQL Database a databáze SQL Server na virtuálním počítači Azure. DMS je doporučená metoda migrace pro vaše podnikové úlohy.
 
-Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) v SQL Server místně, DMS ještě nepodporuje migraci katalogu SSIS (SSISDB), který ukládá balíčky SSIS, ale můžete zřídit Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), která bude Vytvořte ve spravované instanci nový SSISDB a pak můžete balíčky znovu nasadit do tohoto prostředí. Další informace najdete v tématu věnovaném [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) v SQL Server místně, DMS ještě nepodporuje migraci katalogu SSIS (SSISDB), který ukládá balíčky SSIS, ale můžete zřídit Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), která vytvoří nový SSISDB ve spravované instanci a pak můžete balíčky znovu nasadit do tohoto úložiště v tématu [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Další informace o tomto scénáři a postupu konfigurace pro DMS najdete v tématu [migrace místní databáze do spravované instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
 
 ### <a name="native-restore-from-url"></a>Nativní obnovení z adresy URL
 
-OBNOVENÍ nativních záloh (souborů. bak) pořízených z SQL Server místně nebo [SQL Server na virtuálních počítačích](https://azure.microsoft.com/services/virtual-machines/sql-server/), která jsou k dispozici v [Azure Storage](https://azure.microsoft.com/services/storage/), je jednou z klíčových možností nasazení Managed instance, která umožňuje rychlé a jednoduché offline prostředí. migrace databáze.
+OBNOVENÍ nativních záloh (souborů. bak) pořízených z SQL Server místně nebo [SQL Server na virtuálních počítačích](https://azure.microsoft.com/services/virtual-machines/sql-server/), která jsou k dispozici v [Azure Storage](https://azure.microsoft.com/services/storage/), je jednou z klíčových možností nasazení Managed instance, která umožňuje rychlou a jednoduchou migraci offline databáze.
 
 Následující diagram poskytuje podrobný přehled procesu:
 
@@ -129,7 +129,7 @@ V následující tabulce najdete další informace týkající se metod, které 
 
 |Krok|Stroj a verze SQL|Metoda Backup/Restore|
 |---|---|---|
-|Vložit zálohu do Azure Storage|Předchozí verze SQL 2012 SP1 CU2|Nahrání souboru. bak přímo do Azure Storage|
+|Vložit zálohu do Azure Storage|Prior SQL 2012 SP1 CU2|Nahrání souboru. bak přímo do Azure Storage|
 ||2012 SP1 CU2-2016|Přímá záloha pomocí syntaxe [přihlašovacích údajů](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) zastaralá|
 ||2016 a vyšší|Přímé zálohování pomocí [s přihlašovacími údaji SAS](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
 |Obnovení z úložiště Azure do spravované instance|[OBNOVIT z adresy URL s PŘIHLAŠOVACÍmi údaji SAS](sql-database-managed-instance-get-started-restore.md)|

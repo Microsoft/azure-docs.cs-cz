@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388866"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279751"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika problému s filtrováním síťového provozu virtuálního počítače
 
@@ -170,11 +170,11 @@ Ať už pomocí webu Azure [Portal](#diagnose-using-azure-portal), [PowerShellu]
 
 | Vlastnost                | Hodnota                                                                              |
 |---------                |---------                                                                           |
-| Zdroj                  | Všechny                                                                                |
-| Rozsahy zdrojových portů      | Všechny                                                                                |
+| Zdroj                  | Vše                                                                                |
+| Source port ranges      | Vše                                                                                |
 | Cíl             | IP adresa virtuálního počítače, rozsah IP adres nebo všechny adresy v podsíti. |
 | Rozsahy cílových portů | 80                                                                                 |
-| Protocol (Protokol)                | TCP                                                                                |
+| Protokol                | TCP                                                                                |
 | Akce                  | Povolit                                                                              |
 | Priorita                | 100                                                                                |
 | Název                    | Allow-HTTP-All                                                                     |

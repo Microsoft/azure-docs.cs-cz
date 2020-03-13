@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: erhopf
 ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390812"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220443"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -51,10 +51,10 @@ Tyto parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
 
 | Parametr | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| `language` | Identifikuje mluvený jazyk, který je právě rozpoznán. Viz [podporované jazyky](language-support.md#speech-to-text). | Požaduje se |
-| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed`. Jednoduché výsledky zahrnují `RecognitionStatus`, `DisplayText`, `Offset`a `Duration`. Podrobné odpovědi zahrnout více výsledků s jistotou hodnotami a čtyři různé reprezentace. Výchozí nastavení je `simple`. | Nepovinné |
-| `profanity` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `masked`, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku nebo `raw`, což zahrnuje vulgární výrazy ve výsledku. Výchozí nastavení je `masked`. | Nepovinné |
-| `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu `cid` použijte **ID koncového bodu** . | Nepovinné |
+| `language` | Identifikuje mluvený jazyk, který je právě rozpoznán. Viz [podporované jazyky](language-support.md#speech-to-text). | Požadováno |
+| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed`. Jednoduché výsledky zahrnují `RecognitionStatus`, `DisplayText`, `Offset`a `Duration`. Podrobné odpovědi zahrnout více výsledků s jistotou hodnotami a čtyři různé reprezentace. Výchozí nastavení je `simple`. | Volitelné |
+| `profanity` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `masked`, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku nebo `raw`, což zahrnuje vulgární výrazy ve výsledku. Výchozí nastavení je `masked`. | Volitelné |
+| `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu `cid` použijte **ID koncového bodu** . | Volitelné |
 
 ## <a name="request-headers"></a>Hlavičky požadavku
 
@@ -64,8 +64,8 @@ Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod ř
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Tato hlavička nebo `Authorization` je povinná. |
 | `Authorization` | Autorizační token předchází `Bearer`m slovem. Další informace najdete v tématu [Ověřování](#authentication). | Tato hlavička nebo `Ocp-Apim-Subscription-Key` je povinná. |
-| `Content-type` | Popisuje formátu a kodek zadaná zvuková data. Přijaté hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus`. | Požaduje se |
-| `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Nepovinné |
+| `Content-type` | Popisuje formátu a kodek zadaná zvuková data. Přijaté hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus`. | Požadováno |
+| `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Volitelné |
 | `Expect` | Pokud používáte přenos přes blok dat, pošlete `Expect: 100-continue`. Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Požadováno při odesílání bloku zvuková data. |
 | `Accept` | Je-li tento příkaz zadán, musí být `application/json`. Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept`. | Volitelné, ale doporučené. |
 
@@ -105,7 +105,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | `200` | OK | Žádost byla úspěšná. text odpovědi je objekt JSON. |
 | `400` | Nesprávná žádost | Kód jazyka není k dispozici, nejedná se o podporovaný jazyk, neplatný zvukový soubor atd. |
 | `401` | Neautorizováno | Klíč předplatného nebo autorizační token je neplatný. v zadané oblasti nebo neplatný koncový bod. |
-| `403` | Forbidden | Chybí klíč předplatného nebo autorizační token. |
+| `403` | Zakázáno | Chybí klíč předplatného nebo autorizační token. |
 
 ## <a name="chunked-transfer"></a>Bloku
 
@@ -156,7 +156,7 @@ Výsledky jsou k dispozici jako dokumenty JSON. `simple` formát zahrnuje tato p
 
 Pole `RecognitionStatus` může obsahovat tyto hodnoty:
 
-| Status | Popis |
+| Stav | Popis |
 |--------|-------------|
 | `Success` | Rozpoznávání bylo úspěšné a pole `DisplayText` je k dispozici. |
 | `NoMatch` | V zvukový datový proud byl zjištěn řeči, ale žádná slova v cílovém jazyce se shoda našla. Obvykle znamená, že jazyk rozpoznávání je jiný jazyk než ty, které uživatel to mluví. |

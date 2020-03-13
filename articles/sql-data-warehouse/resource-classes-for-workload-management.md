@@ -12,11 +12,11 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 97c5bf0c7bdf036a0555e8d536b5421d739327ad
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668557"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256611"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Správa úloh pomocí tříd prostředků v Azure synapse Analytics
 
@@ -69,12 +69,12 @@ Přidělení paměti pro jednotlivé třídy prostředků je následující.
 
 | Úroveň služby  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
-| DW100c         | 25 %               | 25 %                    | 25 %                    | 70 %                    |
-| DW200c         | 12,5%             | 12,5%                  | 22                    | 70 %                    |
-| DW300c         | 8 %                | 10 %                    | 22                    | 70 %                    |
-| DW400c         | 6,25%             | 10 %                    | 22                    | 70 %                    |
-| DW500c         | 5 %                | 10 %                    | 22                    | 70 %                    |
-| DW1000c na<br> DW30000c | 3 %       | 10 %                    | 22                    | 70 %                    |
+| DW100c         | 25 %               | 25 %                    | 25 %                    | 70%                    |
+| DW200c         | 12,5%             | 12,5%                  | 22                    | 70%                    |
+| DW300c         | 8 %                | 10 %                    | 22                    | 70%                    |
+| DW400c         | 6,25%             | 10 %                    | 22                    | 70%                    |
+| DW500c         | 5 %                | 10 %                    | 22                    | 70%                    |
+| DW1000c na<br> DW30000c | 3 %       | 10 %                    | 22                    | 70%                    |
 
 
 

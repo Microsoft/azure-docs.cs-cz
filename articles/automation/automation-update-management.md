@@ -6,11 +6,11 @@ ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372893"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278503"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -77,7 +77,7 @@ Počítač zaregistrovaný pro Update Management ve více než jednom pracovním
 
 Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací. Oprava vyžaduje Hybrid Runbook Worker. Informace o požadavcích na Hybrid Runbook Worker najdete v pokynech k instalaci pro instalaci [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md) a [Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker).
 
-|Operační systém  |Poznámky:  |
+|Operační systém  |Poznámky  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 || 
 |Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje jenom vyhodnocení pro tento operační systém, takže se nepodporuje aktualizace, protože [Hybrid Runbook Worker](automation-windows-hrw-install.md) není pro Windows Server 2008 R2 podporovaná. |
@@ -94,11 +94,11 @@ Následující tabulka uvádí podporované operační systémy pro posouzení a
 
 V následující tabulce jsou uvedeny nepodporované operační systémy:
 
-|Operační systém  |Poznámky:  |
+|Operační systém  |Poznámky  |
 |---------|---------|
 |Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) nejsou podporovány.        |
-|Windows Server 2016 Nano Server     | Nepodporuje se.       |
-|Uzly služby Azure Kubernetes | Nepodporuje se. Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
+|Windows Server 2016 Nano Server     | Není podporováno.       |
+|Uzly služby Azure Kubernetes | Není podporováno. Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
 
 ### <a name="client-requirements"></a>Požadavky na klienta
 
@@ -206,7 +206,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Man
 
 ### <a name="windows"></a>Windows
 
-|Classification  |Popis  |
+|Klasifikace  |Popis  |
 |---------|---------|
 |Důležité aktualizace     | Aktualizace pro určitý problém, která řeší kritickou chybu nesouvisející se zabezpečením.        |
 |Aktualizace zabezpečení     | Aktualizace pro problém související se zabezpečením určitého produktu.        |
@@ -219,7 +219,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Man
 
 ### <a name="linux-2"></a>Linux
 
-|Classification  |Popis  |
+|Klasifikace  |Popis  |
 |---------|---------|
 |Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro konkrétní problém nebo problém související se zabezpečením určitého produktu.         |
 |Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo které nejsou aktualizacemi zabezpečení.        |

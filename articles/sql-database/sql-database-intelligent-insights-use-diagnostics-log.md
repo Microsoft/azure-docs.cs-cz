@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587347"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209448"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použijte protokol Intelligent Insights Azure SQL Database Performance Diagnostics
 
-Tato stránka obsahuje informace o tom, jak používat protokol Azure SQL Databaseho diagnostiky výkonu generovaný [Intelligent Insights](sql-database-intelligent-insights.md), jeho formát a data, která obsahuje pro vlastní potřeby vývoje. Tento diagnostický protokol můžete odeslat do [protokolů Azure monitor](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
+Tato stránka obsahuje informace o tom, jak používat protokol Azure SQL Databaseho diagnostiky výkonu generovaný [Intelligent Insights](sql-database-intelligent-insights.md), jeho formát a data, která obsahuje pro vlastní potřeby vývoje. Tento diagnostický protokol můžete odeslat do [protokolů Azure monitor](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
 
 ## <a name="log-header"></a>Hlavička protokolu
 
@@ -47,8 +47,8 @@ Vlastnost elastický fond (elasticPoolName_s) určuje, do kterého elastického 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
 "intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported time stamp
-"elasticPoolName_s" : "", // resource elastic pool (if applicable) 
-"databaseName_s" : "db_name",  // database name
+"elasticPoolName_s" : "", // resource elastic pool (if applicable)
+"databaseName_s" : "db_name", // database name
 "issueId_d" : 1525, // unique ID of the issue detected
 "status_s" : "Active" // status of the issue – possible values: "Active", "Verifying", and "Complete"
 ```
@@ -64,7 +64,7 @@ Zjištěné problémy s výkonem jsou hlášeny s následující strukturou vlas
 "impact" : 1 to 3, // impact of the issue detected, possible values 1-3 (1 low, 2 moderate, 3 high impact)
 "category" : "Detectable performance pattern", // performance issue detected, see the table
 "details": <Details outputted> // details of an issue (see the table)
-}] 
+}]
 ```
 
 V následující tabulce jsou uvedeny informace o zjistitelných vzorech výkonu a podrobnostech, které jsou výstupem do diagnostického protokolu.
@@ -105,7 +105,7 @@ V následujícím příkladu protokolu bylo zjištěno, že dotaz s algoritmem h
 
 ```json
 "impact" : [{
-"entity" : { 
+"entity" : {
 "Type" : "Query", // type of entity - query
 "Value" : "query hash value", // for example "0x9102EXZ4" query hash value },
 "Metric" : "DurationIncreaseSeconds", // measured metric and the measurement unit (in this case seconds)
@@ -137,10 +137,8 @@ Poslední část Intelligent Insightsho protokolu výkonu se týká analýzy aut
 Můžete použít protokol výkonu Intelligent Insights s [protokoly Azure monitor]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
 
 ## <a name="next-steps"></a>Další kroky
+
 - Přečtěte si o [Intelligent Insights](sql-database-intelligent-insights.md) konceptech.
 - Naučte [se řešit problémy s výkonem Azure SQL Database Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Naučte se [monitorovat Azure SQL Database pomocí Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
 - Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
-
-
-

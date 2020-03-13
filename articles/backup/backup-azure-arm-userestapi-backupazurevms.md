@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395589"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248161"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -182,7 +182,7 @@ Chcete-li vytvořit chráněnou položku, níže jsou uvedené součásti textu 
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
-|properties     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
+|vlastnosti     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
 
 Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Vytvoření chráněné položky REST API dokumentu](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
 
@@ -296,7 +296,7 @@ Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součás
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
-|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
+|vlastnosti     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
 Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [spuštění zálohování chráněných položek REST API dokumentu](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
 

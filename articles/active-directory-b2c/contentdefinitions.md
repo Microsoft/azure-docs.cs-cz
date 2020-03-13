@@ -12,11 +12,11 @@ ms.date: 02/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374798"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246055"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ Metadata technického profilu **LocalAccountSignUpWithLogonEmail** s vlastním k
 
 Element **ContentDefinition** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
 
@@ -137,7 +137,7 @@ Element **metadata** obsahuje následující prvky:
 
 Element **Item** elementu **metadata** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Klíč | Ano | Klíč metadat.  |
 
@@ -145,7 +145,7 @@ Element **Item** elementu **metadata** obsahuje následující atributy:
 
 Definice obsahu podporuje následující položky metadat:
 
-| Klíč | Požaduje se | Popis |
+| Klíč | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | DisplayName | Ne | Řetězec, který obsahuje název definice obsahu. |
 
@@ -159,7 +159,7 @@ Element **LocalizedResourcesReferences** obsahuje následující prvky:
 
 Element **LocalizedResourcesReference** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Jazyk | Ano | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
 | LocalizedResourcesReferenceId | Ano | Identifikátor elementu **LocalizedResources** |

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380854"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248447"
 ---
 # <a name="createuidefinition-functions"></a>Funkce CreateUiDefinition
 Tato část obsahuje signatury všech podporovaných funkcí CreateUiDefinition.
@@ -45,7 +45,7 @@ Následující příklad vrátí výstup elementu s názvem `foo` v kroku zákla
 "[basics('foo')]"
 ```
 
-### <a name="steps"></a>kroky
+### <a name="steps"></a>Kroky
 Vrátí výstupní hodnoty prvku, který je definován v zadaném kroku. Chcete-li získat výstupní hodnoty prvků v kroku základy, použijte místo toho `basics()`.
 
 Následující příklad vrátí výstup elementu s názvem `bar` v kroku s názvem `foo`:
@@ -54,7 +54,7 @@ Následující příklad vrátí výstup elementu s názvem `bar` v kroku s náz
 "[steps('foo').bar]"
 ```
 
-### <a name="location"></a>location
+### <a name="location"></a>umístění
 Vrátí umístění vybrané v kroku základy nebo v aktuálním kontextu.
 
 Následující příklad může vracet `"westus"`:
@@ -75,7 +75,7 @@ Například pokud výstupní hodnota `element1` Pokud `"bar"`, pak tento příkl
 "[concat('foo', steps('step1').element1, '!')]"
 ```
 
-### <a name="substring"></a>substring
+### <a name="substring"></a>podřetězec
 Vrátí podřetězec určeného řetězce. Podřetězec začíná zadaným indexem a má zadanou délku.
 
 Následující příklad vrátí `"ftw"`:
@@ -518,7 +518,7 @@ Následující příklad vrátí `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>řetězec
+### <a name="string"></a>string
 Převede parametr na řetězec. Tato funkce podporuje parametry všech datových typů JSON.
 
 Následující příklad vrátí `"1"`:

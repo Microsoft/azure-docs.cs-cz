@@ -5,11 +5,11 @@ ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
 ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186985"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240937"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -87,22 +87,22 @@ Skupině pro správu se dá například přiřadit role RBAC Přispěvatel virtu
 
 Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
-| Název role RBAC             | Vytvoření | Přejmenovat | Přesun** | Odstranění | Přiřazení přístupu | Přiřazení zásad | Čtení  |
+| Název role RBAC             | Vytvořit | Přejmenovat | Přesun** | Odstranit | Přiřazení přístupu | Přiřadit zásady | Číst  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
-|Vlastník                       | ×      | ×      | ×      | ×      | ×             | ×             | ×     |
-|Přispěvatel                 | ×      | ×      | ×      | ×      |               |               | ×     |
-|Přispěvatel MG*             | ×      | ×      | ×      | ×      |               |               | ×     |
-|Čtenář                      |        |        |        |        |               |               | ×     |
-|Čtenář MG*                  |        |        |        |        |               |               | ×     |
-|Přispěvatel zásad prostředků |        |        |        |        |               | ×             |       |
-|Správce přístupu uživatelů   |        |        |        |        | ×             | ×             |       |
+|Vlastník                       | X      | X      | X      | X      | X             | X             | X     |
+|Přispěvatel                 | X      | X      | X      | X      |               |               | X     |
+|Přispěvatel MG*             | X      | X      | X      | X      |               |               | X     |
+|Čtenář                      |        |        |        |        |               |               | X     |
+|Čtenář MG*                  |        |        |        |        |               |               | X     |
+|Přispěvatel zásad prostředků |        |        |        |        |               | X             |       |
+|Správce uživatelského přístupu   |        |        |        |        | X             | X             |       |
 
 *: Role Přispěvatel MG a Čtenář MG umožňují uživateli provádět tyto akce jenom v rozsahu příslušné skupiny pro správu.  
 \* *: Přiřazení rolí pro kořenovou skupinu pro správu se nevyžadují k přesunu předplatného nebo skupiny pro správu do a z ní.  Další informace o přesunu položek v rámci hierarchie najdete v tématu věnovaném [správě prostředků s využitím skupin pro správu](manage.md).
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Vlastní definice role RBAC a přiřazení
 
-Vlastní podpora rolí RBAC pro skupiny pro správu je momentálně ve verzi Preview s některými [omezeními](#limitations).  Můžete definovat rozsah skupiny pro správu v oboru přiřazení definice role.  Tato vlastní role RBAC pak bude k dispozici pro přiřazení v této skupině pro správu a skupině pro správu, předplatného, skupině prostředků nebo prostředku pod ní. Tato vlastní role zdědí hierarchii stejně jako všechny předdefinované role.    
+Vlastní podpora rolí RBAC pro skupiny pro správu je momentálně ve verzi Preview s některými [omezeními](#limitations).  Obor skupiny pro správu můžete definovat v oboru, který se dá přiřadit k definici role.  Tato vlastní role RBAC pak bude k dispozici pro přiřazení k této skupině pro správu a ke všem podřízeným skupinám pro správu, předplatným, skupinám prostředků a prostředkům. Tato vlastní role se bude dědit v rámci hierarchie jako všechny předdefinované role.    
 
 ### <a name="example-definition"></a>Příklad definice
 [Definování a vytvoření vlastní role](../../role-based-access-control/custom-roles.md) se nemění se zahrnutím skupin pro správu. Pomocí úplné cesty definujte skupinu pro správu **/providers/Microsoft.Management/managementgroups/{GroupID}** . 

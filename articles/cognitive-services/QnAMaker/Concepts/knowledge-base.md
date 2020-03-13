@@ -4,11 +4,11 @@ description: QnA Maker znalostní báze se skládá ze sady sad otázek a odpov�
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389154"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219684"
 ---
 # <a name="importing-from-data-sources"></a>Import ze zdrojů dat
 
@@ -63,7 +63,7 @@ Pokud si nejste jistí, jak reprezentovat QnA sadu v souboru `.tsv`, vytvořte s
 > [!div class="nextstepaction"]
 > [Životní cyklus vývoje znalostní báze](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 Použijte odkaz QnA Maker [Markdownu](../reference-markdown-format.md) , který vám umožní formátovat odpovědi.
 

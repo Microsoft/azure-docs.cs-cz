@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390651"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283651"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované na virtuální počítač pro datové vědy 
 
@@ -103,7 +103,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
   Výchozí prostředí Pythonu na datové VĚDY jsou globální prostředí číst všichni uživatelé. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pokud chcete balíčky nainstalovat do globálního prostředí, aktivujte py35 prostředí pomocí příkazu `source activate` jako správce nebo jako uživatel s oprávněním sudo. Pak můžete k instalaci nebo aktualizaci balíčků použít Správce balíčků, jako je `conda` nebo `pip`.
 
 
-## <a name="r"></a>R
+## <a name="r"></a>v
 
 |    |           |
 | ------------- | ------------- |
@@ -155,7 +155,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 |    |           |
 | ------------- | ------------- |
-| Podporované jazykové verze | 0.6 |
+| Podporované jazykové verze | 0,6 |
 | Podporované edice DSVM      | Linux, Windows     |
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: nainstalováno na `C:\JuliaPro-VERSION`<br /> Linux: nainstalováno na `/opt/JuliaPro-VERSION`    |
 | Odkazy na ukázky      | Zahrnuje ukázky Jupyter poznámkových bloků pro Helena.     |

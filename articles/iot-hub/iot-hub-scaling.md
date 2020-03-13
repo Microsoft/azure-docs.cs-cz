@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
 ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393642"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284418"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Volba správné IoT Hub úrovně pro vaše řešení
 
@@ -35,7 +35,7 @@ Každá IoT Hubová vrstva je dostupná ve třech velikostech, a to na základě
 
 Pro jednu IoT Hub lze zvolit pouze jeden typ [edice](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci vrstvy. Můžete například vytvořit IoT Hub s více jednotkami S1, ale ne se směsí jednotek z různých edic, například S1 a S2.
 
-| Schopnost | Úroveň Basic | Úroveň Free/Standard |
+| Funkce | Úroveň Basic | Úroveň Free/Standard |
 | ---------- | ---------- | ------------- |
 | [Telemetrie ze zařízení do cloudu](iot-hub-devguide-messaging.md) | Ano | Ano |
 | [Identita vázaná na zařízení](iot-hub-devguide-identity-registry.md) | Ano | Ano |
@@ -70,7 +70,7 @@ Pokud migrujete z úrovně Basic na úroveň Standard, zůstane konfigurace odd�
 
 Rozdíl v podporovaných možnostech mezi úrovněmi Basic a Standard IoT Hub znamená, že některá volání rozhraní API nefungují s centry na úrovni Basic. Následující tabulka uvádí, která rozhraní API jsou k dispozici:
 
-| Rozhraní API | Úroveň Basic | Úroveň Free/Standard |
+| API | Úroveň Basic | Úroveň Free/Standard |
 | --- | ---------- | ------------- |
 | [Odstranit zařízení](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Ano | Ano |
 | [Získat zařízení](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Ano | Ano |

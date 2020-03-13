@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368596"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276397"
 ---
 # <a name="extended-geojson-geometries"></a>Rozšířená geometriía pro injson
 
@@ -43,7 +43,7 @@ Geometrie `Circle` reprezentovaná pomocí objektu `GeoJSON Feature` __musí__ o
 
     Střed kružnice je reprezentován pomocí objektu `GeoJSON Point`.
 
-- zaoblen
+- Zaoblen
 
     `radius` kružnice je reprezentovaná pomocí vlastností `GeoJSON Feature`. Hodnota poloměru je v _metrech_ a musí být typu `double`.
 

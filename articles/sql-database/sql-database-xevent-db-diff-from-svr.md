@@ -3,7 +3,7 @@ title: Rozšířené události
 description: Popisuje rozšířené události (XEvents) v Azure SQL Database a způsob, jakým se relace událostí mírně liší od relací událostí v Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822306"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213950"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozšířené události v SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -91,7 +91,7 @@ Funkce Rozšířené události je podporována v několika [zobrazeních katalog
 
 V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *. Server\_* namísto *\_. Database* . Vzor názvu je jako **Sys. server_event_%** .
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nová zobrazení dynamické správy [(zobrazení dynamické správy)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Nová zobrazení dynamické správy [(zobrazení dynamické správy)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické správy)](https://msdn.microsoft.com/library/bb677293.aspx) , které podporují rozšířené události. Zobrazení dynamické správy vás informuje o *aktivních* relacích událostí.
 
@@ -142,7 +142,7 @@ SELECT
 ```
 
 
-<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a> &nbsp;
+<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a>&nbsp;
 
 ## <a name="targets-for-your-sql-database-event-sessions"></a>Cíle pro relace událostí SQL Database
 
@@ -169,8 +169,8 @@ Aby bylo možné vystavit příkaz **vytvořit relaci události** , je nutné m�
 
 Token SAS, který vygenerujete pro kontejner Azure Storage, musí pro oprávnění zadat **RWL** . Hodnota **RWL** poskytuje následující oprávnění:
 
-- Čtení
-- Zápis
+- Číst
+- Zapisovat
 - Seznam
 
 ## <a name="performance-considerations"></a>Otázky výkonu

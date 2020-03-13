@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386004"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283859"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Referenční příručka schématu pro jazyk definice pracovního postupu v Azure Logic Apps
 
@@ -35,7 +35,7 @@ Tady je struktura vysoké úrovně pro definici pracovního postupu:
 }
 ```
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 |-----------|----------|-------------|
 | `definition` | Ano | Počáteční element pro definici pracovního postupu |
 | `$schema` | Pouze v případě, že odkaz odkazuje na externě na definici pracovního postupu | Umístění souboru schématu JSON, které popisuje jazykovou verzi definice pracovního postupu, které najdete tady: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
@@ -74,9 +74,9 @@ Tady je obecná struktura definice parametru:
 },
 ```
 
-| Atribut | Požaduje se | Typ | Popis |
+| Atribut | Požadováno | Typ | Popis |
 |-----------|----------|------|-------------|
-| *název parametru* <> | Ano | Řetězec | Název parametru, který chcete definovat |
+| *název parametru* <> | Ano | String | Název parametru, který chcete definovat |
 | <> *typu parametru* | Ano | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Poznámka**: pro všechna hesla, klíče a tajné klíče použijte typy `securestring` nebo `secureobject`, protože operace `GET` nevrátí tyto typy. Další informace o zabezpečení parametrů najdete v tématu [doporučení zabezpečení pro parametry akce a vstup](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
 | <*výchozí parametr-hodnota*> | Ano | Stejné jako `type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. Atribut `defaultValue` je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
 | <*pole-s parametrem----Parameter-values*> | Ne | Pole | Pole s hodnotami, které může parametr přijmout |
@@ -112,13 +112,13 @@ V atributu `staticResults` definujte maketu `outputs` akce a `status`, že akce 
 }
 ```
 
-| Atribut | Požaduje se | Typ | Popis |
+| Atribut | Požadováno | Typ | Popis |
 |-----------|----------|------|-------------|
-| <*static-Result-definition-name*> | Ano | Řetězec | Název statické definice výsledku, kterou může definice akce odkazovat prostřednictvím objektu `runtimeConfiguration.staticResult`. Další informace najdete v tématu [nastavení konfigurace modulu runtime](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Můžete použít libovolný jedinečný název, který chcete. Ve výchozím nastavení se tento jedinečný název připojí s číslem, což se zvyšuje podle potřeby. |
-| <*výstup-atributy-a-Values-vráceno*> | Ano | Různé | Požadavky na tyto atributy se liší v závislosti na různých podmínkách. Například pokud je `status` `Succeeded`, atribut `outputs` obsahuje atributy a hodnoty vracené jako výstupní výstupy akcí. Pokud je `status` `Failed`, atribut `outputs` obsahuje atribut `errors`, což je pole s jednou nebo více chybami `message` objekty, které obsahují informace o chybě. |
+| <*static-Result-definition-name*> | Ano | String | Název statické definice výsledku, kterou může definice akce odkazovat prostřednictvím objektu `runtimeConfiguration.staticResult`. Další informace najdete v tématu [nastavení konfigurace modulu runtime](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Můžete použít libovolný jedinečný název, který chcete. Ve výchozím nastavení se tento jedinečný název připojí s číslem, což se zvyšuje podle potřeby. |
+| <*výstup-atributy-a-Values-vráceno*> | Ano | Je to různé. | Požadavky na tyto atributy se liší v závislosti na různých podmínkách. Například pokud je `status` `Succeeded`, atribut `outputs` obsahuje atributy a hodnoty vracené jako výstupní výstupy akcí. Pokud je `status` `Failed`, atribut `outputs` obsahuje atribut `errors`, což je pole s jednou nebo více chybami `message` objekty, které obsahují informace o chybě. |
 | <*hodnoty hlaviček*> | Ne | JSON | Všechny hodnoty hlaviček vracené akcí |
-| <*stav-kód – vráceno*> | Ano | Řetězec | Stavový kód vrácený akcí |
-| <*akce – stav*> | Ano | Řetězec | Stav akce, například `Succeeded` nebo `Failed` |
+| <*stav-kód – vráceno*> | Ano | String | Stavový kód vrácený akcí |
+| <*akce – stav*> | Ano | String | Stav akce, například `Succeeded` nebo `Failed` |
 |||||
 
 Například v této definici akce HTTP atribut `runtimeConfiguration.staticResult.name` odkazuje `HTTP0` dovnitř atributu `staticResults`, kde jsou definovány výstupní výstupy pro akci. Atribut `runtimeConfiguration.staticResult.staticResultOptions` určuje, že nastavení statického výsledku je `Enabled` akce HTTP.
@@ -275,9 +275,9 @@ Tady je obecná struktura definice výstupu:
 }
 ```
 
-| Atribut | Požaduje se | Typ | Popis |
+| Atribut | Požadováno | Typ | Popis |
 |-----------|----------|------|-------------|
-| <*název klíče*> | Ano | Řetězec | Název klíče pro návratovou hodnotu výstupu |
+| <*název klíče*> | Ano | String | Název klíče pro návratovou hodnotu výstupu |
 | <> *typu klíče* | Ano | int, float, string, securestring, bool, array, objekt JSON | Typ výstupní návratové hodnoty |
 | <*hodnoty klíč-hodnota*> | Ano | Stejné jako <>*typu klíče* | Výstupní návratová hodnota |
 |||||
@@ -290,9 +290,9 @@ Pokud chcete získat výstup z pracovního postupu, přečtěte si historii spu�
 
 Ve [výrazech](#expressions) a [funkcích](#functions)operátory provádějí konkrétní úkoly, jako je například odkaz na vlastnost nebo hodnotu v poli.
 
-| Operátor | Úkol |
+| Operátor | Úloha |
 |----------|------|
-| ' | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze do jednoduchých uvozovek, například `'<myString>'`. Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Příklad: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Příklad: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
+| tokenu prostředku | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze do jednoduchých uvozovek, například `'<myString>'`. Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Příklad: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Příklad: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
 | [] | Pro odkazování na hodnotu na konkrétní pozici (index) v poli použijte hranaté závorky. Například pro získání druhé položky v poli: <p>`myArray[1]` |
 | . | Chcete-li odkazovat na vlastnost v objektu, použijte operátor tečka. Například pro získání vlastnosti `name` pro objekt `customer` JSON: <p>`"@parameters('customer').name"` |
 | ? | Chcete-li odkazovat na vlastnosti null v objektu bez běhové chyby, použijte operátor otazník. Chcete-li například zpracovat výstupy s hodnotou null z triggeru, můžete použít tento výraz: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
@@ -300,7 +300,7 @@ Ve [výrazech](#expressions) a [funkcích](#functions)operátory provádějí ko
 
 <a name="functions"></a>
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Některé výrazy získají jejich hodnoty z běhových akcí, které nemusí být k dispozici, když začne běžet definice pracovního postupu. Chcete-li odkazovat nebo pracovat s těmito hodnotami ve výrazech, můžete použít [*funkce*](../logic-apps/workflow-definition-language-functions-reference.md) , které poskytuje jazyk definice pracovního postupu.
 

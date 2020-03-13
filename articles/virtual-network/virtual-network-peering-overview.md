@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
 ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390253"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279543"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -76,7 +76,7 @@ Podporuje se přenos bran mezi virtuálními sítěmi vytvořenými prostřednic
 
 Při vytváření partnerského vztahu virtuálních sítí, které sdílejí jedno připojení Azure ExpressRoute, procházejí přenosy mezi nimi prostřednictvím vztahu partnerských vztahů. Tento provoz používá páteřní síť Azure. K připojení k místnímu okruhu lze v obou sítích nadále používat místní brány. V opačném případě můžete použít sdílenou bránu a nakonfigurovat přenos pro místní připojení.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Řešení problémů
 
 Pokud chcete potvrdit, že jsou virtuální sítě v partnerském vztahu, můžete zkontrolovat efektivní trasy. Podívejte se na trasy pro síťové rozhraní v jakékoli podsíti ve virtuální síti. Pokud partnerský vztah virtuální sítě existuje, mají všechny podsítě virtuální sítě trasy s typem dalšího přechodu *VNet peering*, a to u každého adresního prostoru v každé partnerské virtuální síti. Další informace najdete v tématu [Diagnostika problému s směrováním virtuálního počítače](diagnose-network-routing-problem.md).
 

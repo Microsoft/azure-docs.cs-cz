@@ -4,11 +4,11 @@ description: Než budete moct vytvořit žádné nástroje QnA Maker znalostníc
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 663cbce0e096c6189d97cf7872d466383d272f06
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389381"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220586"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 

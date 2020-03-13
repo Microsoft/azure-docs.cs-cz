@@ -4,11 +4,11 @@ description: Referenční dokumentace pro nastavení aplikace Azure Functions ne
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355912"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277827"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -192,7 +192,7 @@ Ve výchozím nastavení proxy služby Functions bude využívat zástupce k ode
 |Klíč|Hodnota|Popis|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Volání s adresou URL back-endu ukazující na funkci v místním Function App již nebudou odesílána přímo do funkce a místo toho budou přesměrována zpět na front-end protokolu HTTP pro Function App|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Toto je výchozí hodnota. Volání s adresou URL back-endu ukazující na funkci v místním Function App budou předána přímo této funkci.|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Jedná se o výchozí hodnotu. Volání s adresou URL back-endu ukazující na funkci v místním Function App budou předána přímo této funkci.|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES

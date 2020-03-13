@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085128"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262903"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -74,7 +74,7 @@ Mnoho moderních webových aplikací je postavených jako aplikace na straně kl
 
 Tento tok ověřování neobsahuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako jsou například elektronicky a reagující na nativní, protože vyžadují další možnosti pro interakci s nativními platformami.
 
-## <a name="authorization-code"></a>Autorizační kód
+## <a name="authorization-code"></a>autorizační kód
 
 MSAL podporuje [udělení autorizačního kódu OAuth 2](v2-oauth2-auth-code-flow.md). Tento grant se dá použít v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Díky tomu můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. 
 

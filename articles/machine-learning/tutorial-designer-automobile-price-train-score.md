@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/30/2020
-ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.date: 03/04/2020
+ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396173"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238661"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -262,16 +262,16 @@ Pomocí modulu **vyhodnocení modelu** můžete vyhodnotit, jak dobře model vyh
 
 Teď, když je váš kanál všechna nastavení, můžete odeslat spuštění kanálu, abyste mohli naučit svůj model strojového učení. Běh kanálu můžete odeslat kdykoli při vytváření kanálů v návrháři. To můžete provést, chcete-li zkontrolovat práci podle svých požadavků a ověřit své funkce kanálu podle očekávání.
 
-1. V horní části plátna vyberte **Spustit**.
+1. V horní části plátna vyberte **Odeslat**.
 
-1. V dialogovém okně **nastavit spuštění kanálu** vyberte **+ nový experiment** pro **experiment**.
+1. V dialogovém okně **nastavit spuštění kanálu** vyberte **vytvořit novou**.
 
     > [!NOTE]
     > Experimenty seskupují podobný kanál společně. Pokud kanál spouštíte několikrát, můžete vybrat stejný experiment pro po sobě jdoucí běhy.
 
-    1. Zadejte popisný název pro **název experimentu**.
+    1. Zadejte popisný název **nového názvu experimentu**.
 
-    1. Vyberte **Run** (Spustit).
+    1. Vyberte **Odeslat**.
     
     Stav spuštění a podrobnosti můžete zobrazit v pravém horním rohu plátna.
 

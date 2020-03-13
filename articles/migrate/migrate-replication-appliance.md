@@ -4,11 +4,11 @@ description: Přečtěte si o zařízení replikace Azure Migrate pro migraci VM
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388905"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245860"
 ---
 # <a name="replication-appliance"></a>Replikační zařízení
 
@@ -58,7 +58,7 @@ Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain S
 Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
 **Nastavení sítě** |
-Typ IP adresy | Statická
+Typ IP adresy | Statické
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)
 Typ síťové karty | VMXNET3
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381826"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247576"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN z funkcí modulu pravidel Premium Verizon
 
@@ -175,7 +175,7 @@ Název | Účel
 
 Hodnota|Výsledek
 --|--
-Povoleno | Odpověď, která je odeslána žadateli, obsahuje hlavičku stáří.
+Povolit | Odpověď, která je odeslána žadateli, obsahuje hlavičku stáří.
 Zakázáno | Hlavička věkové odpovědi je vyloučena z odpovědi odeslané žadateli.
 
 **Výchozí chování**: zakázáno.
@@ -194,7 +194,7 @@ Parametry omezení šířky pásma určují, jestli je rychlost přenosu dat pro
 
 Hodnota|Výsledek
 --|--
-Povoleno|Umožňuje bodům POP akceptovat požadavky na omezení šířky pásma.
+Povolit|Umožňuje bodům POP akceptovat požadavky na omezení šířky pásma.
 Zakázáno|Způsobí, že body POP ignorují parametry omezení šířky pásma. Požadovaný obsah se zpracovává normálně (tj. bez omezení šířky pásma).
 
 **Výchozí chování:** Umožněn.
@@ -230,7 +230,7 @@ Prebuf sekund|Tuto možnost nastavte na počet sekund, po které mají body POP 
 
 Hodnota|Výsledek
 --|--
-Povoleno|Způsobí, že všechny žádosti přecházejí na zdrojový server, a to i v případě, že obsah byl dříve uložen do mezipaměti v bodu POP.
+Povolit|Způsobí, že všechny žádosti přecházejí na zdrojový server, a to i v případě, že obsah byl dříve uložen do mezipaměti v bodu POP.
 Zakázáno|Způsobí, že body POP budou ukládat prostředky do mezipaměti podle zásad mezipaměti definovaných v hlavičkách odpovědi.
 
 **Výchozí chování:**
@@ -410,7 +410,7 @@ Nová cesta|Zadejte relativní cestu pro nový klíč mezipaměti. Relativní ce
 
 ---
 
-### <a name="comment"></a>Poznámka
+### <a name="comment"></a>Komentář
 
 **Účel:** Umožňuje přidat poznámku v rámci pravidla.
 
@@ -443,7 +443,7 @@ Ponechte výchozí konfiguraci pro velkou platformu HTTP, protože snižuje zat�
 
 Hodnota|Výsledek
 --|--
-Povoleno|Obnoví výchozí chování. Výchozím chováním je vynutit, aby POP zahájil načítání assetu ze zdrojového serveru. V takovém případě bude Asset v místní mezipaměti POP.
+Povolit|Obnoví výchozí chování. Výchozím chováním je vynutit, aby POP zahájil načítání assetu ze zdrojového serveru. V takovém případě bude Asset v místní mezipaměti POP.
 Zakázáno|Zabrání v tom, aby se v rámci assetu provádělo načítání na pozadí. Výsledkem je, že další požadavek na daný Asset z této oblasti způsobí, že se bod POP vyžádá od serveru zákazníka.
 
 **Výchozí chování:** Umožněn.
@@ -553,7 +553,7 @@ X-ES-Debug: x-EC-cache, x-ES-check-Cached, x-EC-cache-Key, x-ES-cache-State
 
 Hodnota|Výsledek
 -|-
-Povoleno|Požadavky na hlavičky odpovědí mezipaměti ladění vrátí odpověď, která obsahuje hlavičku X-EC-Debug.
+Povolit|Požadavky na hlavičky odpovědí mezipaměti ladění vrátí odpověď, která obsahuje hlavičku X-EC-Debug.
 Zakázáno|Hlavička odpovědi X-EC-Debug se z odpovědi vyloučí.
 
 **Výchozí chování:** Zabezpečen.
@@ -614,7 +614,7 @@ Kvůli způsobu, jakým jsou sledována nastavení mezipaměti, nelze tuto funkc
 
 Hodnota | Výsledek
 ------|-------
-Povoleno| Způsobí odmítnutí všech požadavků, které splňují kritéria pro porovnání, s 403 zakázanou odpovědí.
+Povolit| Způsobí odmítnutí všech požadavků, které splňují kritéria pro porovnání, s 403 zakázanou odpovědí.
 Zakázáno| Obnoví výchozí chování. Výchozím chováním je, aby zdrojový server mohl určit typ odpovědi, která bude vrácena.
 
 **Výchozí chování**: zakázáno
@@ -680,7 +680,7 @@ Informace o klíči:
 
 Hodnota|Výsledek
 -|-
-Povoleno|Žádosti je možné přesměrovat.
+Povolit|Žádosti je možné přesměrovat.
 Zakázáno|Žádosti nebudou přesměrovány.
 
 **Výchozí chování:** Zabezpečen.
@@ -760,7 +760,7 @@ Pokud klient HTTP odešle hlavičku `Cache-Control: no-cache` nebo `Pragma: no-c
 
 Hodnota|Výsledek
 --|--
-Povoleno|Umožňuje přeposílání požadavků na neukládání do mezipaměti klienta HTTP na zdrojový server a zdrojový server vrátí hlavičky odpovědi a tělo prostřednictvím serveru POP zpátky do klienta HTTP.
+Povolit|Umožňuje přeposílání požadavků na neukládání do mezipaměti klienta HTTP na zdrojový server a zdrojový server vrátí hlavičky odpovědi a tělo prostřednictvím serveru POP zpátky do klienta HTTP.
 Zakázáno|Obnoví výchozí chování. Výchozím chováním je zabránit přeposílání požadavků na neukládání do mezipaměti na zdrojový server.
 
 U všech produkčních přenosů se důrazně doporučuje ponechat tuto funkci ve svém výchozím zakázaném stavu. Jinak se zdrojové servery nebudou chránit před koncovými uživateli, kteří můžou nechtěně aktivovat spoustu požadavků bez mezipaměti při obnovení webových stránek nebo z mnoha oblíbených přehrávačů médií, které jsou kódované tak, aby odesílali hlavičku bez mezipaměti s každou žádostí o video. Tato funkce ale může být užitečná pro použití v některých neprodukčních nebo testovacích adresářích, aby bylo možné na vyžádání začít s čerstvým obsahem ze zdrojového serveru.
@@ -827,7 +827,7 @@ Ve výchozím nastavení se tento stavový kód vrátí, když zadaný požadave
 
 Hodnota|Výsledek
 -|-
-Povoleno|Zabraňuje bodům POP v reakci na neplatnou žádost o bajtovém rozsahu s 416 požadovaným rozsahem, který nesplňuje stavový kód. Místo toho budou servery doručovat požadovaný prostředek a vrátí 200 OK klientovi.
+Povolit|Zabraňuje bodům POP v reakci na neplatnou žádost o bajtovém rozsahu s 416 požadovaným rozsahem, který nesplňuje stavový kód. Místo toho budou servery doručovat požadovaný prostředek a vrátí 200 OK klientovi.
 Zakázáno|Obnoví výchozí chování. Výchozím chováním je respektování 416 požadovaného rozsahu, který nesplňuje stavový kód.
 
 **Výchozí chování:** Zabezpečen.
@@ -893,7 +893,7 @@ Kvůli způsobu, jakým jsou sledována nastavení mezipaměti, nelze tuto funkc
 
 Hodnota|Výsledek
 -|-
-Povoleno|Povoluje ukládání řetězců dotazů při zaznamenávání adres URL v protokolu přístupu. Pokud adresa URL neobsahuje řetězec dotazu, nebude mít tato možnost žádný efekt.
+Povolit|Povoluje ukládání řetězců dotazů při zaznamenávání adres URL v protokolu přístupu. Pokud adresa URL neobsahuje řetězec dotazu, nebude mít tato možnost žádný efekt.
 Zakázáno|Obnoví výchozí chování. Výchozím chováním je ignorovat řetězce dotazů při zaznamenávání adres URL v protokolu přístupu.
 
 **Výchozí chování:** Zabezpečen.
@@ -953,7 +953,7 @@ Informace o klíči:
     - přesměrovaná
     - host
     - vedení
-    - upozornění
+    - varování
     - x-předané – pro
     - Všechny názvy hlaviček začínající řetězcem "x-ES" jsou rezervované.
 
@@ -1002,7 +1002,7 @@ Informace o klíči:
     - upgrade
     - toho
     - vedení
-    - upozornění
+    - varování
     - Všechny názvy hlaviček začínající řetězcem "x-ES" jsou rezervované.
 
 [Zpět na začátek](#azure-cdn-from-verizon-premium-rules-engine-features)
@@ -1019,7 +1019,7 @@ Tato částečná mezipaměť se pak může použít k plnění nových požadav
 
 Hodnota|Výsledek
 -|-
-Povoleno|Požadavky mohou vygenerovat částečně uložený obsah v mezipaměti.
+Povolit|Požadavky mohou vygenerovat částečně uložený obsah v mezipaměti.
 Zakázáno|Požadavky mohou vygenerovat pouze plně uloženou verzi požadovaného obsahu v mezipaměti.
 
 **Výchozí chování:** Zabezpečen.
@@ -1079,11 +1079,11 @@ Výchozí seznam obsahuje následující hlavičky protokolu HTTP:
 
 **Účel:** Určuje, jakým způsobem se v rozhraních pop zpracovávají požadavky klienta HTTP na prostředek mezipaměti o velikosti 0 bajtů.
 
-Platné hodnoty jsou:
+Platné hodnoty:
 
 Hodnota|Výsledek
 --|--
-Povoleno|Způsobí, že bod POP znovu načte Asset ze zdrojového serveru.
+Povolit|Způsobí, že bod POP znovu načte Asset ze zdrojového serveru.
 Zakázáno|Obnoví výchozí chování. Výchozím chováním je zajišťovat platné prostředky mezipaměti na vyžádání.
 
 Tato funkce není nutná pro správné ukládání do mezipaměti a doručování obsahu, ale může být užitečná jako alternativní řešení. Například generátory dynamického obsahu na zdrojovém serveru můžou neúmyslně vést k odesílání odpovědí do bodů POP na 0 bajtů. Tyto typy odpovědí jsou obvykle ukládány do mezipaměti pomocí bodů POP. Pokud víte, že odpověď 0 bajty není nikdy platnou odezvou pro takový obsah, může tato funkce zabránit tomu, aby tyto typy prostředků byly obsluhovány klientům.
@@ -1134,7 +1134,7 @@ Zajistěte, aby zadaný název záhlaví neodpovídal žádnému z následujíc�
     - host
     - toho
     - vedení
-    - upozornění
+    - varování
     - x-předané – pro
     - Všechny názvy hlaviček začínající řetězcem "x-ES" jsou rezervované.
 
@@ -1150,7 +1150,7 @@ Zajistěte, aby zadaný název záhlaví neodpovídal žádnému z následujíc�
 
 Hodnota|Výsledek
 -|-
-Povoleno|Zastaralému obsahu se zajišťují žadateli, když dojde k chybě během připojení k původnímu serveru.
+Povolit|Zastaralému obsahu se zajišťují žadateli, když dojde k chybě během připojení k původnímu serveru.
 Zakázáno|Žadateli se přepošle chyba zdrojového serveru.
 
 **Výchozí chování:** Zabezpečen
@@ -1194,7 +1194,7 @@ Tato funkce má přednost před většinou funkcí s výjimkou funkce přepisu a
 
 Hodnota | Výsledek
 ------|---------
-Povoleno | Chrání požadovaný obsah pomocí ověřování založeného na tokenech. Budou přijaty pouze požadavky od klientů, kteří poskytují platný token a splňují požadavky. Transakce FTP jsou vyloučeny z ověřování založeného na tokenech.
+Povolit | Chrání požadovaný obsah pomocí ověřování založeného na tokenech. Budou přijaty pouze požadavky od klientů, kteří poskytují platný token a splňují požadavky. Transakce FTP jsou vyloučeny z ověřování založeného na tokenech.
 Zakázáno| Obnoví výchozí chování. Výchozím chováním je povolení konfigurace ověřování na základě tokenu, aby bylo možné určit, jestli bude požadavek zabezpečený.
 
 #### <a name="compatibility"></a>Kompatibilita
@@ -1219,7 +1219,7 @@ Kód odpovědi|Název odpovědi|Popis
 302|Nenachází|Tento stavový kód přesměruje neautorizované uživatele na adresu URL zadanou v hlavičce umístění. Tento kód stavu je standardní způsob, jak provést přesměrování.
 307|Dočasné přesměrování|Tento stavový kód přesměruje neautorizované uživatele na adresu URL zadanou v hlavičce umístění.
 401|Neautorizováno|Kombinování tohoto stavového kódu s hlavičkou odpovědi WWW-Authenticate vám umožní vyzvat uživatele k ověření.
-403|Forbidden|Tato zpráva je standardní 403 zakázané zprávy o stavu, které se při pokusu o přístup k chráněnému obsahu uvidí neautorizovaný uživatel.
+403|Zakázáno|Tato zpráva je standardní 403 zakázané zprávy o stavu, které se při pokusu o přístup k chráněnému obsahu uvidí neautorizovaný uživatel.
 404|Soubor se nenašel.|Tento stavový kód označuje, že klient protokolu HTTP byl schopen komunikovat se serverem, nebyl však nalezen požadovaný obsah.
 
 #### <a name="compatibility"></a>Kompatibilita
@@ -1268,11 +1268,11 @@ Parametry ovlivněné touto funkcí jsou:
 - ec_ref_allow
 - ec_ref_deny
 
-Platné hodnoty jsou:
+Platné hodnoty:
 
 Hodnota|Výsledek
 ---|----
-Povoleno|Způsobí, že se při porovnávání adres URL pro parametry ověřování na základě tokenu ignoruje velikost písmen POP.
+Povolit|Způsobí, že se při porovnávání adres URL pro parametry ověřování na základě tokenu ignoruje velikost písmen POP.
 Zakázáno|Obnoví výchozí chování. Výchozím chováním je pro porovnání adres URL při ověřování tokenu rozlišovat velká a malá písmena.
 
 **Výchozí chování:** Zabezpečen.
@@ -1295,7 +1295,7 @@ Informace o klíči:
 
 Hodnota|Výsledek
 ----|----
-Povoleno|Možnost Value definuje název parametru řetězce dotazu, prostřednictvím kterého by měly být definovány tokeny.
+Povolit|Možnost Value definuje název parametru řetězce dotazu, prostřednictvím kterého by měly být definovány tokeny.
 Zakázáno|Token se dá zadat jako nedefinovaný parametr řetězce dotazu v adrese URL požadavku.
 
 **Výchozí chování:** Zabezpečen. Token se dá zadat jako nedefinovaný parametr řetězce dotazu v adrese URL požadavku.

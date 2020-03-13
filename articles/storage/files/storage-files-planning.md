@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b5bf5cc5c44226236f39a6e32c33ebe346e36eeb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357678"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269013"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -45,7 +45,7 @@ Pro zákazníky, kteří migrují z místních souborových serverů nebo vytvá
 Pokud máte v úmyslu používat pro přístup ke sdíleným složkám Azure klíč účtu úložiště, doporučujeme používat koncové body služby, jak je popsáno v části [síť](#networking) .
 
 ## <a name="networking"></a>Sítě
-Sdílené složky Azure jsou přístupné odkudkoli prostřednictvím veřejného koncového bodu účtu úložiště. To znamená, že ověřené požadavky, jako jsou požadavky autorizované identitou přihlašování uživatele, můžou pocházet z interního nebo mimo Azure. V mnoha zákaznických prostředích se počáteční připojení sdílené složky Azure na místní pracovní stanici nezdaří, i když připojení z virtuálních počítačů Azure bude úspěšné. Důvodem je to, že mnoho organizací a poskytovatelů internetových služeb (ISP) blokuje port, který protokol SMB používá ke komunikaci, port 445. 
+Sdílené složky Azure jsou přístupné odkudkoli prostřednictvím veřejného koncového bodu účtu úložiště. To znamená, že ověřené požadavky, jako jsou požadavky autorizované identitou přihlašování uživatele, můžou pocházet z interního nebo mimo Azure. V mnoha zákaznických prostředích se počáteční připojení sdílené složky Azure na místní pracovní stanici nezdaří, i když připojení z virtuálních počítačů Azure bude úspěšné. Důvodem je to, že mnoho organizací a poskytovatelů internetových služeb (ISP) blokuje port, který protokol SMB používá ke komunikaci, port 445. Souhrn poskytovatelů internetových služeb, kteří umožňují nebo neumožňují přístup z portu 445, najdete na webu [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
 Pokud chcete odblokovat přístup ke sdílené složce Azure, máte dvě hlavní možnosti:
 
@@ -127,7 +127,7 @@ Následující tabulka ilustruje několik příkladů těchto vzorců pro zříz
 |10 240      | 10 240  | Až 30 720  | 675 | 450   |
 |33 792      | 33 792  | Až 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Až 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Až 100 000 | 6 204 | 4 136   |
+|102 400     | 100,000 | Až 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > Výkon sdílených složek závisí na omezeních sítě počítačů, dostupné šířce pásma sítě, velikosti v/v, paralelních operacích, mezi mnoha dalšími faktory. Například na základě interního testování s 8 KiB velikostí vstupně-výstupních operací čtení a zápisu může být jeden virtuální počítač s Windows, *Standard F16s_v2*připojený ke sdílené složce Premium přes SMB, mohl dosáhnout 20 tisíc čtení IOPS a 15 000 IOPS. S 512 velikostí čtení/zápisu v/v souboru MiB může stejný virtuální počítač dosáhnout propustnosti 1,1 GiB/s a 370 propustnosti příchozího přenosu dat MiB/s. Chcete-li dosáhnout maximálního rozsahu výkonu, rozšíříte zatížení napříč více virtuálními počítači. Některé běžné problémy s výkonem a alternativní řešení najdete v [Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) .

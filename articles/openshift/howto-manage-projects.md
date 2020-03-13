@@ -4,16 +4,16 @@ description: Správa projektů, šablon a datových proudů imagí v clusteru Az
 services: openshift
 keywords: projekty Red Hat OpenShift žádají samoobslužného zřizování
 author: mjudeikis
-ms.author: b-majude
+ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d88be50468f55a848b43613e1f7851621202052d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378224"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139109"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Správa projektů, šablon a datových proudů imagí v clusteru Azure Red Hat OpenShift 
 
@@ -27,7 +27,7 @@ Při odeslání žádosti o projekt nahradí rozhraní API následující parame
 
 | Parametr               | Popis                                    |
 | ----------------------- | ---------------------------------------------- |
-| PROJECT_NAME            | Název projektu. Povinná hodnota.             |
+| PROJECT_NAME            | Název projektu. Požadováno.             |
 | PROJECT_DISPLAYNAME     | Zobrazovaný název projektu. Může být prázdné. |
 | PROJECT_DESCRIPTION     | Popis projektu Může být prázdné.  |
 | PROJECT_ADMIN_USER      | Uživatelské jméno uživatele pro správu       |

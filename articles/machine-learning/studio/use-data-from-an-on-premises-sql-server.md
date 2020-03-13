@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9afac1adef801956f176dd339c795e2df533a2c7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169121"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204178"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analýza pomocí Azure Machine Learning Studio (Classic) pomocí místní databáze SQL Server
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Často podniky, které fungují s místními daty by chtěli využívat škálování a flexibility cloudu k jejich počítači strojové učení. Ale nebudete chtít narušit jejich aktuální obchodní procesy a pracovní postupy díky přesunu jejich místní data do cloudu. Azure Machine Learning Studio (Classic) teď podporuje čtení vašich dat z místní databáze SQL Server a následné školení a vyhodnocování modelu s těmito daty. Už máte ručně zkopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho se teď může modul **importu dat** v Azure Machine Learning Studio (Classic) přečíst přímo z místní databáze SQL Server pro vaše školicí a vyhodnocovací úlohy.
 
@@ -43,7 +45,7 @@ Data Factory modul Integration Runtime má následující požadavky:
 * Integrace místním objekt pro vytváření dat vyžaduje 64-bit operační systém pomocí rozhraní .NET Framework 4.6.1 nebo vyšší.
 * Podporované verze operačního systému Windows jsou Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * Doporučená konfigurace pro počítač reakcí na Incidenty, je nejméně 2 GHz, 4 jádra procesoru, 8GB paměti RAM a 80GB disk.
-* Pokud hostitelský počítač přejde do režimu spánku, prostředí IR neodpovídá na požadavky na data. Proto konfigurovat schéma napájení příslušné v v počítači před instalací IR. Pokud je počítač nakonfigurovaný do režimu hibernace, instalace prostředí IR zobrazí zprávu.
+* Pokud se hostitelský počítač přepne do režimu hibernace, přestane IR reagovat na požadavky na data. Proto konfigurovat schéma napájení příslušné v v počítači před instalací IR. Pokud je počítač nakonfigurovaný do režimu hibernace, instalace prostředí IR zobrazí zprávu.
 * Vzhledem k tomu, že konkrétní frekvencí dojde k aktivitě kopírování, využití prostředků (procesor, paměť) na počítači také používá stejný vzor s ve špičce a doby nečinnosti. Využití prostředků také závisí do značné míry na množství dat, který se přesouvá. Když probíhají úlohy s více kopií, budete sledovat využití prostředků zvýší během špiček. Minimální konfigurace uvedené výše je technicky dostatečná, můžete chtít mít konfigurací s více prostředků, než minimální požadavky na konfiguraci v závislosti na konkrétní zatížení pro přesun dat.
 
 Vezměte v úvahu následující při nastavování a pomocí Data Factory modul Integration Runtime:
@@ -51,7 +53,7 @@ Vezměte v úvahu následující při nastavování a pomocí Data Factory modul
 * V jednom počítači můžete nainstalovat jenom jednu instanci reakcí na Incidenty.
 * Jednotné prostředí IR můžete použít pro více zdrojů dat v místním prostředí.
 * Více IRs na různé počítače můžete připojit ke stejnému zdroji dat místní.
-* V jednu chvíli nakonfigurujete finanční úřad jenom pro jeden pracovní prostor. V současné době IRs se nedají sdílet mezi pracovními prostory.
+* V jednu chvíli nakonfigurujete finanční úřad jenom pro jeden pracovní prostor. V současné době se finanční úřad nedá sdílet mezi pracovními prostory.
 * Můžete nakonfigurovat více IRs pro jeden pracovní prostor. Například můžete chtít použít IR, který je připojený k vašim testovacím zdrojům dat během vývoje, a provozní IR, až budete připraveni k zprovoznění.
 * Prostředí IR nemusí být ve stejném počítači jako zdroj dat. Ale zůstává blíž ke zdroji dat snižuje čas potřebný pro bránu pro připojení ke zdroji dat. Doporučujeme nainstalovat prostředí IR v počítači, který je jiný než ten, který je hostitelem místního zdroje dat tak, aby brána a zdroj dat není soutěží o prostředky.
 * Pokud již máte v počítači nainstalováno INFRAČERVENé prostředí, které obsluhuje Power BI nebo Azure Data Factorych scénářů, nainstalujte samostatný IR pro Azure Machine Learning Studio (Classic) v jiném počítači.
@@ -118,7 +120,7 @@ Prvním krokem je vytvoření a nastavení brány pro přístup k vaší místn�
 Tím se dokončí proces instalace brány v Azure Machine Learning Studio (Classic).
 Nyní jste připraveni používat vaše místní data.
 
-Pro každý pracovní prostor můžete vytvořit a nastavit několik bran v nástroji Studio (Classic). Například může mít bránu, kterou chcete připojit ke zdrojům dat testu během vývoje a jinou bránu pro zdroje dat produkčního prostředí. Azure Machine Learning Studio (Classic) získáte flexibilitu při nastavení několika bran v závislosti na vašem podnikovém prostředí. Momentálně nemůžete sdílet brány mezi pracovními prostory a jenom jedna brána lze nainstalovat v jednom počítači. Další informace najdete v tématu [přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány](../../data-factory/tutorial-hybrid-copy-portal.md).
+Pro každý pracovní prostor můžete vytvořit a nastavit několik bran v nástroji Studio (Classic). Například může mít bránu, kterou chcete připojit ke zdrojům dat testu během vývoje a jinou bránu pro zdroje dat produkčního prostředí. Azure Machine Learning Studio (Classic) získáte flexibilitu při nastavení několika bran v závislosti na vašem podnikovém prostředí. V tuto chvíli nemůžete sdílet bránu mezi pracovními prostory a v jednom počítači může být nainstalovaná jenom jedna brána. Další informace najdete v tématu [přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: Použití brány číst data z místních zdrojů dat
 Po nastavení brány můžete přidat modul **importu dat** do experimentu, který bude pokaždé zadat data z místní databáze SQL Server.

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 90fa3b06e2696e9b45c333c75c8a8e117d5c0c96
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e918f7ee64d4bc49d5da80bf9a3e7595555296dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563112"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203691"
 ---
-# <a name="scaling-streaming-with-cdn"></a>Škálování streamování pomocí CDN
+# <a name="scaling-streaming-with-cdn"></a>Škálování streamování s využitím CDN
 
 Azure Content Delivery Network (CDN) nabízí vývojářům globální řešení pro rychlé doručování širokopásmového obsahu uživatelům díky ukládání obsahu do mezipaměti na fyzických uzlech strategicky umístěných po celém světě.  
 
@@ -88,9 +88,9 @@ Pro zákazníky, kteří mají přímý kontrakt s Akamai CDN, je k dispozici po
 
 |Hlavička protokolu HTTP|Hodnoty|Odesílatel|Příjemce|Účel|
 | ---- | ---- | ---- | ---- | ----- |
-|CDN – počátek – pomoc – předběžné načtení – povoleno | 1 (výchozí) nebo 0 |CDN|Zdroj|K označení CDN je povolené předběžné načtení|
-|CDN – počátek-asistence – předběžné načtení-cesta| Příklad: <br/>Fragmenty (video = 1400000000, Format = MPD-Time-CMAF)|Zdroj|CDN|Zadání cesty předběžného načtení do sítě CDN|
-|CDN – počátek-asistence – předběžné načtení – požadavek|1 (požadavek na předběžné načtení) nebo 0 (pravidelný požadavek)|CDN|Zdroj|Pro indikaci, že žádost z CDN je předběžné načtení|
+|CDN – počátek – pomoc – předběžné načtení – povoleno | 1 (výchozí) nebo 0 |CDN|Počátek|K označení CDN je povolené předběžné načtení|
+|CDN – počátek-asistence – předběžné načtení-cesta| Příklad: <br/>Fragmenty (video = 1400000000, Format = MPD-Time-CMAF)|Počátek|CDN|Zadání cesty předběžného načtení do sítě CDN|
+|CDN – počátek-asistence – předběžné načtení – požadavek|1 (požadavek na předběžné načtení) nebo 0 (pravidelný požadavek)|CDN|Počátek|Pro indikaci, že žádost z CDN je předběžné načtení|
 
 Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkoušet následující postup:
 
@@ -147,4 +147,5 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="next-steps"></a>Další kroky
 
-Ukázka [v tomto úložišti](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) ukazuje, jak spustit výchozí koncový bod streamování pomocí .NET.
+* Nezapomeňte další dokument [koncového bodu streamování (Origin)](streaming-endpoint-concept.md) .
+* Ukázka [v tomto úložišti](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) ukazuje, jak spustit výchozí koncový bod streamování pomocí .NET.

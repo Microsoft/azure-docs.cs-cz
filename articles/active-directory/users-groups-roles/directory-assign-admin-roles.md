@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b7c26a40d5c5feebe122db911b88dc5a0caa9042
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356919"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254206"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -409,7 +409,7 @@ Ochrana ATP a EDR v programu Windows Defender | Zobrazit a prozkoumat výstrahy.
 Uživatelé s touto rolí můžou otevřít žádosti o podporu od Microsoftu pro Azure a služby Office 365 a zobrazit řídicí panel služby a Centrum zpráv v [centru pro správu](https://admin.microsoft.com) [Azure Portal](https://portal.azure.com) a Microsoft 365. Další informace najdete v informacích [o rolích správce](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> V rozhraní Microsoft Graph API a Azure AD PowerShell se tato role identifikuje jako správce služby Service support. Je to "Správce služeb" v [Azure Portal](https://portal.azure.com), centru pro [správu Microsoft 365](https://admin.microsoft.com)a na portálu Intune.
+> Dříve byla tato role v [Azure Portal](https://portal.azure.com) a v [centru pro správu Microsoft 365](https://admin.microsoft.com)se nazývá "Správce služby". Přejmenovali jsme ho na správce služby Service support, aby se v Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell rovnal s názvem existujícího.
 
 ### <a name="sharepoint-administrator"></a>[Správce služby SharePoint](#sharepoint-service-administrator-permissions)
 
@@ -990,18 +990,19 @@ Může spravovat všechny aspekty produktu Exchange.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuje základní vlastnosti skupin Office 365. |
 | Microsoft. Directory/Groups/Unified/Create | Vytvořte skupiny Office 365. |
 | Microsoft. Directory/Groups/Unified/DELETE | Odstraňte skupiny Office 365. |
 | Microsoft. Directory/Groups/Unified/Members/Update | Aktualizuje členství skupin Office 365. |
 | Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizujte vlastnictví skupin Office 365. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. Exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Oprávnění správce externího zprostředkovatele identity
 
@@ -1101,7 +1102,6 @@ Může spravovat všechny aspekty skupin a nastavení skupiny, jako jsou zásady
 | microsoft.office365.messageCenter/messages/read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
 
 ### <a name="guest-inviter-permissions"></a>Oprávnění pozvat hosta
 Může zvát uživatele typu host bez ohledu na nastavení, jestli členové můžou zvát hosty.
@@ -1212,10 +1212,12 @@ Může spravovat všechny aspekty produktu Skype pro firmy.
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
 
 ### <a name="message-center-privacy-reader-permissions"></a>Oprávnění čtenářů ochrany osobních údajů centra zpráv
 
@@ -1260,7 +1262,6 @@ Může spravovat cloudové služby aplikací Office, včetně správy zásad a n
 | microsoft.office365.messageCenter/messages/read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
 | Microsoft. Office 365. userCommunication/allEntities/allTasks | Přečtěte si a aktualizujte viditelnost nových zpráv. |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
@@ -1442,7 +1443,6 @@ Může vytvářet a spravovat všechny aspekty nastavení služby Microsoft Sear
 | microsoft.office365.search/allEntities/allProperties/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat všechny vlastnosti v Microsoft. Office 365. Search. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="search-editor-permissions"></a>Oprávnění editoru hledání
@@ -1458,7 +1458,6 @@ Může vytvářet a spravovat redakční obsah, jako jsou záložky, Q a as, Loc
 | --- | --- |
 | microsoft.office365.messageCenter/messages/read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
 | microsoft.office365.search/content/allProperties/allTasks | Vytváření a odstraňování obsahu a čtení a aktualizace všech vlastností v Microsoft. Office 365. Search. |
-| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
 
 ### <a name="security-administrator-permissions"></a>Oprávnění správce zabezpečení
 
@@ -1507,7 +1506,6 @@ Vytvoří a spravuje události zabezpečení.
 | Microsoft. Azure. advancedThreatProtection/allEntities/Read | Čtení a konfigurace rozšířené ochrany před internetovými útoky Azure AD |
 | Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Čtení a konfigurace Centrum zabezpečení a dodržování předpisů. |
-| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Čtení a konfigurace rozšířené ochrany před internetovými útoky v programu Windows Defender |
 
 ### <a name="security-reader-permissions"></a>Oprávnění čtenáře zabezpečení
@@ -1560,18 +1558,19 @@ Může spravovat všechny aspekty služby SharePoint.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuje základní vlastnosti skupin Office 365. |
 | Microsoft. Directory/Groups/Unified/Create | Vytvořte skupiny Office 365. |
 | Microsoft. Directory/Groups/Unified/DELETE | Odstraňte skupiny Office 365. |
 | Microsoft. Directory/Groups/Unified/Members/Update | Aktualizuje členství skupin Office 365. |
 | Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizujte vlastnictví skupin Office 365. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | microsoft.office365.sharepoint/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. SharePoint. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="teams-communications-administrator-permissions"></a>Teams Communications – oprávnění správce
 

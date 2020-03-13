@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381162"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247290"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorování, příjem a posílání událostí s využitím Azure Event Hubs a Azure Logic Apps
 
 V tomto článku se dozvíte, jak můžete monitorovat a spravovat události odeslané do [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) z aplikace logiky pomocí konektoru Azure Event Hubs. Můžete tak vytvářet aplikace logiky, které automatizují úlohy a pracovní postupy kontroly, odesílání a příjmu událostí z centra událostí. Technické informace specifické pro konektor najdete v [referenčních</a>ch konektoru Azure Event Hubs](https://docs.microsoft.com/connectors/eventhubs/) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -74,7 +74,7 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky p
 
    ![Vlastnosti aktivační události](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Požadováno | Popis |
    |----------|----------|-------------|
    | **Název centra událostí** | Ano | Název centra událostí, které chcete monitorovat |
    | **Typ obsahu** | Ne | Typ obsahu události Výchozí formát je `application/octet-stream`. |
@@ -86,7 +86,7 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky p
 
    **Další vlastnosti**
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Požadováno | Popis |
    |----------|----------|-------------|
    | **Schéma obsahu** | Ne | Schéma obsahu JSON pro události, které se mají číst z centra událostí. Pokud například zadáte schéma obsahu, můžete spustit aplikaci logiky jenom pro události, které odpovídají schématu. |
    | **Minimální klíč oddílu** | Ne | Zadejte minimální ID [oddílu](../event-hubs/event-hubs-features.md#partitions) , který se má přečíst. Ve výchozím nastavení jsou všechny oddíly čteny. |
@@ -130,7 +130,7 @@ V seznamu akce vyberte tuto akci: **Odeslat událost – Event Hubs**
 
    ![Vyberte název centra událostí a zadejte obsah události.](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Požadováno | Popis |
    |----------|----------|-------------|
    | **Název centra událostí** | Ano | Centrum událostí, do kterého chcete událost odeslat |
    | **Obsah** | Ne | Obsah události, kterou chcete odeslat |
@@ -152,7 +152,7 @@ V seznamu akce vyberte tuto akci: **Odeslat událost – Event Hubs**
 
 1. Po zobrazení výzvy k zadání informací o připojení zadejte tyto podrobnosti:
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požadováno | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
    | **Obor názvů Event Hubs** | Ano | <*Event-Centers – obor názvů*> | Vyberte obor názvů Event Hubs, který chcete použít. |

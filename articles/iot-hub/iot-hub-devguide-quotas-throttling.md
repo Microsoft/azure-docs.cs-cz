@@ -8,11 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967873"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284691"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -36,7 +36,7 @@ Omezení operací jsou omezení četnosti, která se uplatní v minutách a jsou
 
 V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na jednotlivé rozbočovače.
 
-| Omezení | Free, B1 a S1 | B2 a S2 | B3 a S3 | 
+| Omezovač | Free, B1 a S1 | B2 a S2 | B3 a S3 | 
 | -------- | ------- | ------- | ------- |
 | [Operace registru identit](#identity-registry-operations-throttle) (vytvoření, načtení, výpis, aktualizace, odstranění) | 1.67/s/jednotku (100/min/Unit) | 1.67/s/jednotku (100/min/Unit) | 83.33/s/jednotku (5 000/min/jednotku) |
 | [Nová připojení zařízení](#device-connections-throttle) (Tato omezení se vztahují na rychlost _nových připojení_, ne na celkový počet připojení) | Vyšší z 100/s nebo 12/s/jednotka <br/> Například dvě jednotky S1 jsou 2\*12 = 24 nových připojení/s, ale v rámci jednotek máte minimálně 100 nových připojení za sekundu. S devíti jednotkami S1 máte v rámci svých jednotek 108 nových připojení/s (9\*12). | 120 nových připojení/s/jednotku | 6 000 nových připojení/s/jednotku |
@@ -115,7 +115,7 @@ IoT Hub vynutila jiné provozní limity:
 
 V libovolném okamžiku můžete zvýšit počet kvót nebo omezení omezení [zvýšením počtu zřízených jednotek ve službě IoT Hub](iot-hub-upgrade.md).
 
-## <a name="latency"></a>Latence
+## <a name="latency"></a>Čekací doba
 
 IoT Hub usiluje o zajištění nízké latence pro všechny operace. Vzhledem k podmínkám sítě a jiným nepředvídatelným faktorům však nemůže zaručit určitou latenci. Při návrhu řešení byste měli:
 

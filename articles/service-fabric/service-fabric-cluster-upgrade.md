@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.custom: sfrev
 ms.openlocfilehash: 6897854820339fc78dd9083c82147dce95ab68b6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391409"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258652"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade a aktualizace clusteru Azure Service Fabric
 
@@ -67,7 +67,7 @@ E-mail s těmito informacemi se pošle vlastníkovi předplatného, a to i v př
 
 Pokud jsou splněné zásady stavu clusteru, upgrade se považuje za úspěšný a označený jako úplný. K tomu může dojít během prvotního upgradu nebo při každém spuštění upgradu v této fázi. Neexistují žádné e-mailové potvrzení úspěšného spuštění.
 
-## <a name="manage-certificates"></a>Správa certifikátů
+## <a name="manage-certificates"></a>Správa certifikátů.
 
 Service Fabric používá [certifikáty serveru X. 509](service-fabric-cluster-security.md) , které zadáte při vytváření clusteru pro zabezpečení komunikace mezi uzly clusteru a ověřování klientů. Certifikáty pro cluster a klienta můžete přidat, aktualizovat nebo odstranit v [Azure Portal](https://portal.azure.com) nebo pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.  Další informace najdete v článku [Přidání nebo odebrání certifikátů](service-fabric-cluster-security-update-certs-azure.md) .
 

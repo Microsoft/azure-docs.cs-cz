@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c90278eccf889595378d3b6b07de2468910c660c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 5b05cd31a1747da0170556003e7a8534752e2fde
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080872"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137190"
 ---
 # <a name="use-the-azure-portal-to-create-a-media-services-account"></a>Vytvoření účtu Media Services pomocí Azure Portal
 
@@ -34,7 +34,7 @@ Pro všechny ostatní úlohy správy (například [transformace a úlohy](transf
 
 V tomto článku se dozvíte, jak vytvořit účet Media Services pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 
@@ -54,8 +54,6 @@ K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v
     
 1. Zaškrtněte **Připnout na řídicí panel**, abyste viděli průběh nasazení účtu.
 1. Klikněte na tlačítko **Vytvořit** dole na formuláři.
-   
-    Po úspěšném vytvoření účtu se načte stránka s přehledem. V tabulce koncových bodů streamování bude účet mít výchozí koncový bod streamování ve stavu **Zastaveno** . 
 
     Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod [dynamického balení](dynamic-packaging-overview.md) a [dynamického šifrování](content-protection-overview.md), musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **spuštěno** . 
 
@@ -63,6 +61,6 @@ K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v
 
 Pokud plánujete přístup k rozhraní API Media Services programově, přečtěte si téma [přístup k rozhraní api Azure Media Services pomocí ověřování Azure AD](access-api-portal.md).
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

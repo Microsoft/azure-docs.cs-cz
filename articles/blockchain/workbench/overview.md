@@ -4,12 +4,12 @@ description: Přehled služby Azure blockchain Workbench Preview a jejích možn
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387067"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203640"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Co je Azure Blockchain Workbench?
 
@@ -29,7 +29,7 @@ Azure Blockchain Workbench nabízí webovou aplikaci a rozhraní REST API, kter�
 
 Rozhraní REST API služby Blockchain Workbench a rozhraní API založená na zprávách můžete integrovat do stávajících systémů. Rozhraní API umožňují nahradit nebo použít technologie více distribuovaných registrů, nabízených úložišť a databází.
 
-Blockchain Workbench mění zprávy, odeslané rozhraní API založenému na zprávách, na vytvořené transakce ve formátu, který očekává blockchainové nativní rozhraní API.  Služba Workbench přihlašuje a přesměrovává transakce na příslušný blockchain. 
+Blockchain Workbench může transformovat zprávy odeslané do svého rozhraní API založené na zprávách pro vytváření transakcí ve formátu očekávaném nativním rozhraním API této blockchain.  Služba Workbench přihlašuje a přesměrovává transakce na příslušný blockchain. 
 
 Workbench automaticky poskytuje události službám Service Bus a Event Grid, které posílají zprávy podřízeným spotřebitelům. Vývojáři můžou integrovat kterýkoli z těchto systémů zasílání zpráv, aby mohli řídit transakce a prohlížet výsledky.
 
@@ -37,7 +37,7 @@ Workbench automaticky poskytuje události službám Service Bus a Event Grid, kt
 
 Azure Blockchain Workbench zjednodušuje nastavení síťového blockchainového konsorcia ve formě předem nakonfigurovaného řešení využívajícího šablonu řešení Azure Resource Manageru. Šablona usnadňuje nasazení, protože umožňuje nasadit všechny součásti potřebné k provozu konsorcia. Dnes Blockchain Workbench podporuje projekt Ethereum.
 
-## <a name="use-active-directory"></a>Použít Active Directory
+## <a name="use-active-directory"></a>Používat službu Active Directory
 
 U stávajících blockchainových protokolů jsou blockchainové identity vyjádřeny jako adresy v síti. Azure Blockchain Workbench přidruží blockchainovou identitu k identitě v Active Directory. To usnadňuje tvorbu podnikových aplikací, které využívají identity z Active Directory.
 

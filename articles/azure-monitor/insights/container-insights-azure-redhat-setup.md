@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250702"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275513"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitor for Containers
 
@@ -30,7 +30,7 @@ Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift, j
 - Živá data (Preview)
 - [Shromážděte metriky](container-insights-update-metrics.md) z uzlů clusteru a lusky a ukládají je do databáze Azure Monitorch metrik.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete povolit a přistupovat k funkcím v Azure Monitor pro kontejnery, minimálně musíte být členem role *přispěvatele* Azure v předplatném Azure a členem role [*přispěvatele Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics s nakonfigurovaným Azure monitor for Containers.
 
@@ -149,7 +149,7 @@ Tato metoda obsahuje dvě šablony JSON. Jedna šablona určuje konfiguraci povo
 
 - Skupina prostředků, ve které je cluster nasazen
 
-- Pracovní prostor služby Log Analytics.
+- Pracovní prostor Log Analytics.
 
 Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
 

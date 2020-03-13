@@ -11,14 +11,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: be3a07eb2d4232d27a5b41ddc4258c89b79729bf
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 8179e36342f4f3544a1ecd503d7f136ea437d374
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169039"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217810"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co je Machine Learning Studio (Classic)?
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -49,7 +51,7 @@ Tady je rychlé porovnání:
 | Moduly pro rozhraní přetažení | Počtu | Počáteční sada oblíbených [modulů](../algorithm-module-reference/module-reference.md)|
 |Školení výpočetních cílů| Proprietární výpočetní cíl, jenom podpora procesoru| Podporuje výpočetní virtuální počítače s Azure Machine Learning (GPU nebo CPU) a notebook.<br/>([Další výpočetní prostředky podporované v sadě SDK](../concept-compute-target.md#train))|
 |Inferencing výpočetní cíle| Speciální formát webové služby, není přizpůsobitelný |  Služba Azure Kubernetes a služba AML COMPUTE <br/>([Další výpočetní prostředky podporované v sadě SDK](../how-to-deploy-and-where.md)) |
-| Kanál ML | Nepodporuje se | Podporované [kanály](../concept-ml-pipelines.md) |
+| Kanál ML | Nepodporováno | Podporované [kanály](../concept-ml-pipelines.md) |
 | MLOps | Základní Správa modelů a nasazení | Konfigurovatelné nasazení – model a správa verzí a kanálů |
 | Formát modelu | Speciální formát, jenom Studio (Classic) | Standardní formát v závislosti na typu úlohy školení |
 |Automatizované školení modelů a ladění parametrů | Ne | Ještě není v návrháři. <br/> ([Podporováno na úvodní stránce sady SDK a pracovního prostoru](../concept-automated-ml.md)) | 

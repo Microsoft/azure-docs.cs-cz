@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 03b40dea4949bb50c30f7755b56294ac53107403
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905242"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137318"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace při živém streamování vyprší metadata 
 
@@ -42,7 +42,7 @@ Tato specifikace popisuje několik režimů, které jsou podporovány Media Serv
 
 ## <a name="11-terms-used"></a>Použité výrazy 1,1
 
-| Doba účinnosti                | Definice                                                                                                                                                                                                                                    |
+| Termín                | Definice                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Přerušení reklamy            | Místo nebo bod v čase, kdy je možné naplánovat doručení jedné nebo více reklam. stejné jako možnosti k dispozici a umístění.                                                                                                                     |
 | Služba pro rozhodování AD | externí služba, která určuje, které AD a doby trvání budou zobrazeny uživateli. Služby jsou obvykle poskytovány partnerem a nejsou v oboru pro tento dokument.                                                                    |
@@ -51,7 +51,7 @@ Tato specifikace popisuje několik režimů, které jsou podporovány Media Serv
 | Čas prezentace   | Čas, kdy se událost prezentuje prohlížeči. Čas představuje moment na časové ose média, který by mohl zobrazit událost v prohlížeči. Například čas prezentace příkazu SCTE-35 splice_info () je splice_time (). |
 | Čas doručení        | Čas, kdy zpráva události dorazí. Čas se obvykle liší od doby prezentace události, protože zprávy o událostech jsou odesílány před dobou prezentace události.                                                    |
 | Zhuštěná stopa        | stopa multimédií není souvislá a je synchronizována s nadřazenou nebo řídicí dráhou.                                                                                                                                                  |
-| Zdroj              | Služba streamování médií Azure                                                                                                                                                                                                             |
+| Počátek              | Služba streamování médií Azure                                                                                                                                                                                                             |
 | Jímka kanálu        | Služba Azure Media Live Streaming Service                                                                                                                                                                                                        |
 | HLS                 | Protokol Apple HTTP Live Streaming                                                                                                                                                                                                            |
 | PŘERUŠENÍ                | Dynamické adaptivní streamování přes HTTP                                                                                                                                                                                                          |
@@ -67,14 +67,14 @@ Tato specifikace popisuje několik režimů, které jsou podporovány Media Serv
 Následující dokumenty obsahují pravidla, která prostřednictvím odkazu v tomto textu představují ustanovení tohoto dokumentu. Všechny dokumenty podléhají revizi podle standardů a čtenáři se doporučuje prozkoumat možnost použít nejnovější verze níže uvedených dokumentů. Čtenáři jsou také upozorněni, že novější edice odkazovaných dokumentů nemusí být kompatibilní s touto verzí specifikace časovanéch metadat pro Azure Media Services.
 
 
-| Úroveň Standard          | Definice                                                                                                                                                                                                     |
+| Standardní          | Definice                                                                                                                                                                                                     |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Adobe-primetime] | [Specifikace signalizace vkládání digitálního programu primetime 1,2](https://www.adobe.com/content/dam/acom/en/devnet/primetime/PrimetimeDigitalProgramInsertionSignalingSpecification.pdf)                       |
 | [Adobe-Flash-AS]  | [Reference jazyka ActionScript pro FLASH](https://help.adobe.com/archive/en_US/as2/flashlite_2.x_3.x_aslr.pdf)                                                                                                   |
 | [AMF0]            | ["AMF0 zpráv o akcích"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)                                                                                                              |
 | [POMLČKA-IF-IOP]     | Doprovodné materiály pro spolupráci s POMLČKou v oboru pro fóra v 4,2 [https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
 | [HLS-TMD]         | Časované metadata pro HTTP Live Streaming- [https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
-| [CMAF-ID3]        | [Časované metadata ve formátu Common Media Application Format (CMAF)](https://aomediacodec.github.io/av1-id3/)                                                                                                        |
+| [CMAF-ID3]        | [Časované metadata ve formátu Common Media Application Format (CMAF)](https://github.com/AOMediaCodec/id3-emsg)                                                                                                        |
 | [ID3v2]           | Verze značky ID3 2.4.0 [http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
 | [ISO-14496-12]    | ISO/IEC 14496-12: formát základního mediálního souboru ISO v části 12, FourthEdition 2012-07-15                                                                                                                                 |
 | [MPEGDASH]        | Informační technologie – dynamické adaptivní streamování přes HTTP (POMLČKa) – část 1: Popis prezentace multimédií a formáty segmentů. Květen 2014. Zveřejněna. Adresa URL: https://www.iso.org/standard/65274.html         |
@@ -82,7 +82,7 @@ Následující dokumenty obsahují pravidla, která prostřednictvím odkazu v t
 | [MPEGCENC]        | Informační technologie – systémy MPEG Systems – část 7: běžné šifrování ve formátech souborů formátu základního média ISO. Února 2016. Zveřejněna. Adresa URL: https://www.iso.org/standard/68042.html                   |
 | [MS-SSTR]         | [Protokol Microsoft Smooth Streaminge, 15. května 2014](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
 | [MS-SSTR-ingestování]  | [Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
-| [RFC8216]         | R. Pantos, Ed.; W. květen. HTTP Live Streaming. Srpen 2017. Informativní. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
+| [RFC8216]         | Í. Pantos, Ed.; W. květen. HTTP Live Streaming. Srpen 2017. Informativní. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | Kódování dat Base16, Base32 a Base64 – [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | RTMP            | ["Protokol zasílání zpráv v reálném čase od společnosti Adobe", od 21. prosince 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
 | [SCTE-35-2019]    | SCTE 35:2019 – zpráva cueing pro vložení digitálního programu pro https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf kabelů                                                                       |
@@ -210,7 +210,7 @@ Schéma pro datovou část XML EventStream [MPEG-SPOJOVNÍK] je definováno jako
 ### <a name="built-in-supported-scheme-id-uris"></a>Předdefinované identifikátory URI IDENTIFIKÁTORů podporovaných schémat
 | Identifikátor URI ID schématu                 | Popis                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| https:\//aomedia.org/emsg/ID3 | Popisuje, jak lze metadata [ID3v2] přenést jako časované metadata v rámci fragmentované MP4 kompatibilního s CMAF [MPEGCMAF]. Další informace najdete v tématu [časované metadata ve formátu Common Media Application Format (CMAF)](https://aomediacodec.github.io/av1-id3/) . |
+| https:\//aomedia.org/emsg/ID3 | Popisuje, jak lze metadata [ID3v2] přenést jako časované metadata v rámci fragmentované MP4 kompatibilního s CMAF [MPEGCMAF]. Další informace najdete v tématu [časované metadata ve formátu Common Media Application Format (CMAF)](https://github.com/AOMediaCodec/id3-emsg) . |
 
 ### <a name="event-processing-and-manifest-signaling"></a>Zpracování událostí a signalizace manifestu
 
@@ -237,13 +237,13 @@ V následující části se zobrazuje "jednoduchý" režim "v" režimu RTMP, kte
 
 ## <a name="213--rtmp-ad-cue-signaling-with-onadcue---simple-mode"></a>2.1.3 pro upozornění na hromádku RTMP AD pomocí "onAdCue" – jednoduchý režim
 
-| Název pole | Typ pole | Povinné? | Popisy                                                                                                                                                                                                                                                                        |
+| Název pole | Typ pole | Požadováno? | Popisy                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type       | Řetězec     | Požaduje se  | Zpráva události  Musí být "SpliceOut" k určení spojení jednoduchého režimu.                                                                                                                                                                                                         |
-| id         | Řetězec     | Požaduje se  | Jedinečný identifikátor popisující připletení nebo segment. Identifikuje tuto instanci zprávy.                                                                                                                                                                                       |
-| duration   | Číslo     | Požaduje se  | Doba trvání připletení. Jednotky jsou zlomky sekund.                                                                                                                                                                                                                           |
-| elapsed    | Číslo     | Volitelné  | V případě, že se signál opakuje za účelem podpory navýšení služby, toto pole je množství času prezentace, které uplynulo od zahájení spojení. Jednotky jsou zlomky sekund. Při použití jednoduchého režimu by tato hodnota neměla přesáhnout původní dobu trvání zapletení. |
-| time       | Číslo     | Požaduje se  | Musí být čas zapletení v době prezentace. Jednotky jsou zlomky sekund.                                                                                                                                                                                                |
+| typ       | String     | Požadováno  | Zpráva události  Musí být "SpliceOut" k určení spojení jednoduchého režimu.                                                                                                                                                                                                         |
+| id         | String     | Požadováno  | Jedinečný identifikátor popisující připletení nebo segment. Identifikuje tuto instanci zprávy.                                                                                                                                                                                       |
+| duration   | Počet     | Požadováno  | Doba trvání připletení. Jednotky jsou zlomky sekund.                                                                                                                                                                                                                           |
+| elapsed    | Počet     | Volitelné  | V případě, že se signál opakuje za účelem podpory navýšení služby, toto pole je množství času prezentace, které uplynulo od zahájení spojení. Jednotky jsou zlomky sekund. Při použití jednoduchého režimu by tato hodnota neměla přesáhnout původní dobu trvání zapletení. |
+| time       | Počet     | Požadováno  | Musí být čas zapletení v době prezentace. Jednotky jsou zlomky sekund.                                                                                                                                                                                                |
 
 ---
  
@@ -265,14 +265,14 @@ Zprávy SCTE-35 se obvykle mohou objevit pouze ve vstupech datového proudu MPEG
 
 V tomto scénáři je nutné odeslat z místního kodéru následující datovou část pomocí typu zprávy **"onAdCue"** [AMF0].
 
-| Název pole | Typ pole | Povinné? | Popisy                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Název pole | Typ pole | Požadováno? | Popisy                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| informovat        | Řetězec     | Požaduje se  | Zpráva události  U zpráv [SCTE-35] musí být toto pole binární splice_info_section () kódovaný v kódování Base64 (), aby bylo možné zprávy odesílat do HLS, hladkého a přerušovaného klienta.                                                                                                                                                                                                                               |
-| type       | Řetězec     | Požaduje se  | Název URN nebo adresa URL, které identifikují schéma zprávy. U zpráv [SCTE-35] **by měl** být **"scte35"** , aby bylo možné zprávy odesílat do HLS, hladkého a přerušovaného klienta v souladu s [Adobe-primetime]. V případě potřeby může být k signalizaci zprávy [SCTE-35] použito také URN "urn: scte: scte35:2013: bin".                                                                                                        |
-| id         | Řetězec     | Požaduje se  | Jedinečný identifikátor popisující připletení nebo segment. Identifikuje tuto instanci zprávy.  Zprávy s ekvivalentní sémantikou musí mít stejnou hodnotu.                                                                                                                                                                                                                                                       |
-| duration   | Číslo     | Požaduje se  | Doba, po kterou je segment přihlášení k události nebo AD, je-li znám. Pokud je tato hodnota neznámá, **měla by** být 0.                                                                                                                                                                                                                                                                                                                    |
-| elapsed    | Číslo     | Volitelné  | Pokud se pro účely navýšení signálu [SCTE-35] AD opakuje, toto pole je množství času prezentace, které uplynulo od začátku zaznamenání. Jednotky jsou zlomky sekund. V režimu [SCTE-35] může tato hodnota přesáhnout původní určenou dobu trvání zapletení nebo segmentu.                                                                                                                   |
-| time       | Číslo     | Požaduje se  | Čas prezentace události nebo reklamy.  Čas a trvání prezentace **by měly být** v souladu s přístupovými body streamu (SAP) typu 1 nebo 2, jak je definováno v [ISO-14496-12] příloze I. Pro odchozí HLS **by měl být** čas a trvání zarovnaný s hranicemi segmentů. Prezentace a doba trvání různých zpráv událostí v rámci stejného datového proudu událostí se nesmí překrývat. Jednotky jsou zlomky sekund. |
+| informovat        | String     | Požadováno  | Zpráva události  U zpráv [SCTE-35] musí být toto pole binární splice_info_section () kódovaný v kódování Base64 (), aby bylo možné zprávy odesílat do HLS, hladkého a přerušovaného klienta.                                                                                                                                                                                                                               |
+| typ       | String     | Požadováno  | Název URN nebo adresa URL, které identifikují schéma zprávy. U zpráv [SCTE-35] **by měl** být **"scte35"** , aby bylo možné zprávy odesílat do HLS, hladkého a přerušovaného klienta v souladu s [Adobe-primetime]. V případě potřeby může být k signalizaci zprávy [SCTE-35] použito také URN "urn: scte: scte35:2013: bin".                                                                                                        |
+| id         | String     | Požadováno  | Jedinečný identifikátor popisující připletení nebo segment. Identifikuje tuto instanci zprávy.  Zprávy s ekvivalentní sémantikou musí mít stejnou hodnotu.                                                                                                                                                                                                                                                       |
+| duration   | Počet     | Požadováno  | Doba, po kterou je segment přihlášení k události nebo AD, je-li znám. Pokud je tato hodnota neznámá, **měla by** být 0.                                                                                                                                                                                                                                                                                                                    |
+| elapsed    | Počet     | Volitelné  | Pokud se pro účely navýšení signálu [SCTE-35] AD opakuje, toto pole je množství času prezentace, které uplynulo od začátku zaznamenání. Jednotky jsou zlomky sekund. V režimu [SCTE-35] může tato hodnota přesáhnout původní určenou dobu trvání zapletení nebo segmentu.                                                                                                                   |
+| time       | Počet     | Požadováno  | Čas prezentace události nebo reklamy.  Čas a trvání prezentace **by měly být** v souladu s přístupovými body streamu (SAP) typu 1 nebo 2, jak je definováno v [ISO-14496-12] příloze I. Pro odchozí HLS **by měl být** čas a trvání zarovnaný s hranicemi segmentů. Prezentace a doba trvání různých zpráv událostí v rámci stejného datového proudu událostí se nesmí překrývat. Jednotky jsou zlomky sekund. |
 
 ---
 
@@ -291,10 +291,10 @@ Typ zprávy "onCuePoint" je definován v [Adobe-Flash-AS] a má následující s
 
 | Vlastnost   | Popis                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| jméno       | Název by měl být "**scte35**" prostřednictvím elementu Live.                                                                                                                                                                              |
+| name       | Název by měl být "**scte35**" prostřednictvím elementu Live.                                                                                                                                                                              |
 | time       | Čas v sekundách, kdy během časové osy došlo k startovacímu bodu v souboru videa                                                                                                                                           |
-| type       | Typ startovacího bodu by měl být nastaven na "**Event**".                                                                                                                                                                             |
-| parameters | Asociativní pole řetězců dvojice název/hodnota obsahující informace ze zprávy SCTE-35, včetně ID a doby trvání. Tyto hodnoty jsou analyzovány Azure Media Services a zahrnuty do tagu dekorace manifestu. |
+| typ       | Typ startovacího bodu by měl být nastaven na "**Event**".                                                                                                                                                                             |
+| parametry | Asociativní pole řetězců dvojice název/hodnota obsahující informace ze zprávy SCTE-35, včetně ID a doby trvání. Tyto hodnoty jsou analyzovány Azure Media Services a zahrnuty do tagu dekorace manifestu. |
 
 
 Když se použije tento režim značky AD, výstup manifestu HLS je podobný režimu Adobe "Simple".
@@ -417,13 +417,13 @@ Zhuštěná stopa **musí** být deklarována v poli manifestu živého serveru 
 
 | **Název atributu** | **Typ pole** | **Požadovanou?** | **Popis**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| systemBitrate      | Číslo         | Požaduje se      | **Musí** být "0", což znamená, že záznam má neznámou proměnlivou přenosovou rychlost.                                                                                                                                                          |
-| parentTrackName    | Řetězec         | Požaduje se      | **Musí** být název nadřazeného záznamu, na který jsou kódy času zhuštěného stopy zarovnané na časovou osu. Nadřazená stopa nemůže být zhuštěná stopa.                                                                             |
-| manifestOutput     | Logická hodnota        | Požaduje se      | **Musí** být "true", aby bylo patrné, že zhuštěné stopy budou vloženy do hladkého manifestu klienta.                                                                                                                        |
-| Podtyp            | Řetězec         | Požaduje se      | **Musí** se jednat o čtyři kódy znaků "data".                                                                                                                                                                                  |
-| Programu             | Řetězec         | Požaduje se      | **Musí** to být název URN nebo adresa URL identifikující schéma zprávy. U zpráv [SCTE-35] **musí** být název urn: SCTE: scte35:2013: bin, aby bylo možné zprávy odeslat HLS, hladkému a přerušovanému klientovi v souladu s [SCTE-35]. |
-| trackName          | Řetězec         | Požaduje se      | **Musí** se jednat o název zhuštěného záznamu. Stop lze použít k odlišení více datových proudů událostí se stejným schématem. Každý datový proud událostí **musí** mít jedinečný název stopy.                                |
-| timescale          | Číslo         | Volitelné      | **Musí** se jednat o časovou osu nadřazené stopy.                                                                                                                                                                               |
+| systemBitrate      | Počet         | Požadováno      | **Musí** být "0", což znamená, že záznam má neznámou proměnlivou přenosovou rychlost.                                                                                                                                                          |
+| parentTrackName    | String         | Požadováno      | **Musí** být název nadřazeného záznamu, na který jsou kódy času zhuštěného stopy zarovnané na časovou osu. Nadřazená stopa nemůže být zhuštěná stopa.                                                                             |
+| manifestOutput     | Logická hodnota        | Požadováno      | **Musí** být "true", aby bylo patrné, že zhuštěné stopy budou vloženy do hladkého manifestu klienta.                                                                                                                        |
+| Podtyp            | String         | Požadováno      | **Musí** se jednat o čtyři kódy znaků "data".                                                                                                                                                                                  |
+| Programu             | String         | Požadováno      | **Musí** to být název URN nebo adresa URL identifikující schéma zprávy. U zpráv [SCTE-35] **musí** být název urn: SCTE: scte35:2013: bin, aby bylo možné zprávy odeslat HLS, hladkému a přerušovanému klientovi v souladu s [SCTE-35]. |
+| trackName          | String         | Požadováno      | **Musí** se jednat o název zhuštěného záznamu. Stop lze použít k odlišení více datových proudů událostí se stejným schématem. Každý datový proud událostí **musí** mít jedinečný název stopy.                                |
+| timescale          | Počet         | Volitelné      | **Musí** se jednat o časovou osu nadřazené stopy.                                                                                                                                                                               |
 
 ---
 
@@ -435,7 +435,7 @@ Pole Moov **by mělo** obsahovat pole **TrackHeaderBox (' tkhd ')** , jak je def
 
 | **Název pole** | **Typ pole**          | **Požadovanou?** | **Popis**                                                                                                    |
 | -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| duration       | 64 – bitová unsigned integer | Požaduje se      | Hodnota **by měla** být 0, protože pole Track má nula vzorků a celková doba trvání vzorků v poli stop je 0. |
+| duration       | 64 – bitová unsigned integer | Požadováno      | Hodnota **by měla** být 0, protože pole Track má nula vzorků a celková doba trvání vzorků v poli stop je 0. |
 
 ---
 
@@ -443,7 +443,7 @@ Pole Moov **by mělo** obsahovat **HandlerBox (' HDLR ')** , jak je definováno 
 
 | **Název pole** | **Typ pole**          | **Požadovanou?** | **Popis**       |
 | -------------- | ----------------------- | ------------- | --------------------- |
-| handler_type   | 32 – bitová unsigned integer | Požaduje se      | **Měla by** být meta. |
+| handler_type   | 32 – bitová unsigned integer | Požadováno      | **Měla by** být meta. |
 
 ---
 
@@ -461,8 +461,8 @@ Pole MovieFragmentBox (' Moof ') **musí** obsahovat pole **TrackFragmentExtende
 
 | **Název pole**         | **Typ pole**          | **Požadovanou?** | **Popis**                                                                                           |
 | ---------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
-| fragment_absolute_time | 64 – bitová unsigned integer | Požaduje se      | **Musí** se jednat o dobu příjezdu události. Tato hodnota Zarovná zprávu s nadřazenou stopou.           |
-| fragment_duration      | 64 – bitová unsigned integer | Požaduje se      | **Musí** se jednat o dobu trvání události. Doba trvání může být nulová, aby označovala, že doba trvání je neznámá. |
+| fragment_absolute_time | 64 – bitová unsigned integer | Požadováno      | **Musí** se jednat o dobu příjezdu události. Tato hodnota Zarovná zprávu s nadřazenou stopou.           |
+| fragment_duration      | 64 – bitová unsigned integer | Požadováno      | **Musí** se jednat o dobu trvání události. Doba trvání může být nulová, aby označovala, že doba trvání je neznámá. |
 
 ---
 
@@ -471,10 +471,10 @@ Pole MediaDataBox (' mdat ') **musí** mít následující formát:
 
 | **Název pole**          | **Typ pole**                   | **Požadovanou?** | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                 | 32-bit unsigned integer (uimsbf) | Požaduje se      | Určuje formát obsahu v poli ' mdat '. Nerozpoznané verze budou ignorovány. V současné době je jediná podporovaná verze 1.                                                                                                                                                                                                                                                                                                                                                                      |
-| id                      | 32-bit unsigned integer (uimsbf) | Požaduje se      | Identifikuje tuto instanci zprávy. Zprávy s ekvivalentní sémantikou musí mít stejnou hodnotu. To znamená, že zpracování libovolného okna se zprávou o události se stejným ID je dostatečné.                                                                                                                                                                                                                                                                                                                            |
-| presentation_time_delta | 32-bit unsigned integer (uimsbf) | Požaduje se      | Součet fragment_absolute_time určený v TrackFragmentExtendedHeaderBox a presentation_time_delta **musí** být časem prezentace události. Čas a trvání prezentace **by měly být** v souladu s přístupovými body streamu (SAP) typu 1 nebo 2, jak je definováno v [ISO-14496-12] příloze I. Pro odchozí HLS **by měl být** čas a trvání zarovnaný s hranicemi segmentů. Prezentace a doba trvání různých zpráv událostí v rámci **stejného datového proudu událostí se nesmí** překrývat. |
-| zpráva                 | pole bajtů                       | Požaduje se      | Zpráva události U zpráv [SCTE-35] je zpráva binární splice_info_section (). U zpráv [SCTE-35] **musí** být toto splice_info_section (), aby bylo možné ODESÍLAT zprávy HLS, hladkému a přerušovanému klientovi v souladu s [SCTE-35]. Pro zprávy [SCTE-35] je binární splice_info_section () datovou částí pole mdat a není kódována pomocí **kódování Base64.**                                                                                                                     |
+| Verze nástroje                 | 32-bit unsigned integer (uimsbf) | Požadováno      | Určuje formát obsahu v poli ' mdat '. Nerozpoznané verze budou ignorovány. V současné době je jediná podporovaná verze 1.                                                                                                                                                                                                                                                                                                                                                                      |
+| id                      | 32-bit unsigned integer (uimsbf) | Požadováno      | Identifikuje tuto instanci zprávy. Zprávy s ekvivalentní sémantikou musí mít stejnou hodnotu. To znamená, že zpracování libovolného okna se zprávou o události se stejným ID je dostatečné.                                                                                                                                                                                                                                                                                                                            |
+| presentation_time_delta | 32-bit unsigned integer (uimsbf) | Požadováno      | Součet fragment_absolute_time určený v TrackFragmentExtendedHeaderBox a presentation_time_delta **musí** být časem prezentace události. Čas a trvání prezentace **by měly být** v souladu s přístupovými body streamu (SAP) typu 1 nebo 2, jak je definováno v [ISO-14496-12] příloze I. Pro odchozí HLS **by měl být** čas a trvání zarovnaný s hranicemi segmentů. Prezentace a doba trvání různých zpráv událostí v rámci **stejného datového proudu událostí se nesmí** překrývat. |
+| zpráva                 | pole bajtů                       | Požadováno      | Zpráva události U zpráv [SCTE-35] je zpráva binární splice_info_section (). U zpráv [SCTE-35] **musí** být toto splice_info_section (), aby bylo možné ODESÍLAT zprávy HLS, hladkému a přerušovanému klientovi v souladu s [SCTE-35]. Pro zprávy [SCTE-35] je binární splice_info_section () datovou částí pole mdat a není kódována pomocí **kódování Base64.**                                                                                                                     |
 
 ---
 
@@ -501,38 +501,38 @@ StreamIndex **musí** mít PODTYP "data" a CustomAttributes – **musí** obsaho
 
 #### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>Vyhlazený manifest klienta příklad ukazující na kódování Base64 [SCTE35] splice_info_section ()
 ~~~ xml
-<?xml version=”1.0” encoding=”utf-8”?>
-<SmoothStreamingMedia MajorVersion=”2” MinorVersion=”0” TimeScale=”10000000” IsLive=”true” Duration=”0”
-  LookAheadFragmentCount=”2” DVRWindowLength=”6000000000”>
+<?xml version="1.0" encoding="utf-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" TimeScale="10000000" IsLive="true" Duration="0"
+  LookAheadFragmentCount="2" DVRWindowLength="6000000000">
 
-  <StreamIndex Type=”video” Name=”video” Subtype=”” Chunks=”0” TimeScale=”10000000”
-    Url=”QualityLevels({bitrate})/Fragments(video={start time})”>
-    <QualityLevel Index=”0” Bitrate=”230000”
-      CodecPrivateData=”250000010FC3460B50878A0B5821FF878780490800704704DC0000010E5A67F840” FourCC=”WVC1”
-      MaxWidth=”364” MaxHeight=”272”/>
-    <QualityLevel Index=”1” Bitrate=”305000”
-      CodecPrivateData=”250000010FC3480B50878A0B5821FF87878049080894E4A7640000010E5A67F840” FourCC=”WVC1”
-      MaxWidth=”364” MaxHeight=”272”/>
-    <c t=”0” d=”20000000” r=”300” />
+  <StreamIndex Type="video" Name="video" Subtype="" Chunks="0" TimeScale="10000000"
+    Url="QualityLevels({bitrate})/Fragments(video={start time})">
+    <QualityLevel Index="0" Bitrate="230000"
+      CodecPrivateData="250000010FC3460B50878A0B5821FF878780490800704704DC0000010E5A67F840" FourCC="WVC1"
+      MaxWidth="364" MaxHeight="272"/>
+    <QualityLevel Index="1" Bitrate="305000"
+      CodecPrivateData="250000010FC3480B50878A0B5821FF87878049080894E4A7640000010E5A67F840" FourCC="WVC1"
+      MaxWidth="364" MaxHeight="272"/>
+    <c t="0" d="20000000" r="300" />
   </StreamIndex>
-  <StreamIndex Type=”audio” Name=”audio” Subtype=”” Chunks=”0” TimeScale=”10000000”
-    Url=”QualityLevels({bitrate})/Fragments(audio={start time})”>
-    <QualityLevel Index=”0” Bitrate=”96000” CodecPrivateData=”1000030000000000000000000000E00042C0”
-      FourCC=”WMAP” AudioTag=”354” Channels=”2” SamplingRate=”44100” BitsPerSample=”16” PacketSize=”4459”/>
-    <c t=”0” d=”20000000” r=”300” />
+  <StreamIndex Type="audio" Name="audio" Subtype="" Chunks="0" TimeScale="10000000"
+    Url="QualityLevels({bitrate})/Fragments(audio={start time})">
+    <QualityLevel Index="0" Bitrate="96000" CodecPrivateData="1000030000000000000000000000E00042C0"
+      FourCC="WMAP" AudioTag="354" Channels="2" SamplingRate="44100" BitsPerSample="16" PacketSize="4459"/>
+    <c t="0" d="20000000" r="300" />
   </StreamIndex>
-  <StreamIndex Type=”text” Name=”scte35-sparse-stream” Subtype=”DATA” Chunks=”0” TimeScale=”10000000”
-    ParentStreamIndex=”video” ManifestOutput=”true” 
-    Url=”QualityLevels({bitrate})/Fragments(captions={start time})”>
-    <QualityLevel Index=”0” Bitrate=”0” CodecPrivateData=”” FourCC=””>
+  <StreamIndex Type="text" Name="scte35-sparse-stream" Subtype="DATA" Chunks="0" TimeScale="10000000"
+    ParentStreamIndex="video" ManifestOutput="true" 
+    Url="QualityLevels({bitrate})/Fragments(captions={start time})">
+    <QualityLevel Index="0" Bitrate="0" CodecPrivateData="" FourCC="">
       <CustomAttributes>
-        <Attribute Name=”Scheme” Value=”urn:scte:scte35:2013:bin”/>
+        <Attribute Name="Scheme" Value="urn:scte:scte35:2013:bin"/>
       </CustomAttributes>
     </QualityLevel>
     <!-- The following <c> and <f> fragments contains the base64-encoded [SCTE35] splice_info_section() message -->
-    <c t=”600000000” d=”300000000”>    <f>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</f>
+    <c t="600000000" d="300000000">    <f>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</f>
     </c>
-    <c t=”1200000000” d=”400000000”>      <f>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</f>
+    <c t="1200000000" d="400000000">      <f>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</f>
     </c>
   </StreamIndex>
 </SmoothStreamingMedia>
@@ -764,12 +764,12 @@ Označení "starší" verze "EXT-X-HROMÁDKy je definováno níže a také můž
 
 | **Název atributu** | **Typ**                      | **Požadovanou?**                             | **Popis**                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| INFORMOVAT                | řetězec v uvozovkách                 | Požaduje se                                  | Zpráva zakódovaná jako řetězec kódovaný v kódování Base64, jak je popsáno v [RFC4648]. U zpráv [SCTE-35] se jedná o splice_info_section kódovaný v kódování Base64 ().                                                                                                                                      |
-| TYP               | řetězec v uvozovkách                 | Požaduje se                                  | Název URN nebo adresa URL, které identifikují schéma zprávy. U zpráv [SCTE-35] má typ speciální hodnotu "scte35".                                                                                                                                                                          |
-| ID                 | řetězec v uvozovkách                 | Požaduje se                                  | Jedinečný identifikátor události Pokud ID není zadáno při ingestování zprávy, vygeneruje Azure Media Services jedinečný identifikátor.                                                                                                                                              |
-| ÚKOLU           | desítkové číslo s plovoucí desetinnou čárkou | Požaduje se                                  | Doba trvání události. Pokud je tato hodnota neznámá, **měla by** být 0. Jednotky jsou factional sekund.                                                                                                                                                                                           |
+| INFORMOVAT                | řetězec v uvozovkách                 | Požadováno                                  | Zpráva zakódovaná jako řetězec kódovaný v kódování Base64, jak je popsáno v [RFC4648]. U zpráv [SCTE-35] se jedná o splice_info_section kódovaný v kódování Base64 ().                                                                                                                                      |
+| TYP               | řetězec v uvozovkách                 | Požadováno                                  | Název URN nebo adresa URL, které identifikují schéma zprávy. U zpráv [SCTE-35] má typ speciální hodnotu "scte35".                                                                                                                                                                          |
+| ID                 | řetězec v uvozovkách                 | Požadováno                                  | Jedinečný identifikátor události Pokud ID není zadáno při ingestování zprávy, vygeneruje Azure Media Services jedinečný identifikátor.                                                                                                                                              |
+| DOBA TRVÁNÍ           | desítkové číslo s plovoucí desetinnou čárkou | Požadováno                                  | Doba trvání události. Pokud je tato hodnota neznámá, **měla by** být 0. Jednotky jsou factional sekund.                                                                                                                                                                                           |
 | UPLYNULÝ            | desítkové číslo s plovoucí desetinnou čárkou | Volitelné, ale vyžadované pro posuvné okno | Když se signál opakuje pro podporu posuvných oken prezentace, toto pole **musí** být množství času prezentace, které uplynulo od začátku události. Jednotky jsou zlomky sekund. Tato hodnota může přesáhnout původní určenou dobu trvání připletení nebo segmentu. |
-| ČAS               | desítkové číslo s plovoucí desetinnou čárkou | Požaduje se                                  | Čas prezentace události Jednotky jsou zlomky sekund.                                                                                                                                                                                                                        |
+| ČAS               | desítkové číslo s plovoucí desetinnou čárkou | Požadováno                                  | Čas prezentace události Jednotky jsou zlomky sekund.                                                                                                                                                                                                                        |
 
 
 Vrstva aplikace přehrávače HLS použije typ k identifikaci formátu zprávy, dekódování zprávy, použití potřebných převodů času a zpracování události.  Události jsou v závislosti na časovém razítku události synchronizovány v seznamu stop segmentu nadřazené stopy.  Jsou vloženy před nejbližší segment (#EXTINF značka).
@@ -881,9 +881,9 @@ Element EventStream má následující atributy:
 
 | **Název atributu** | **Typ**                | **Požadovanou?** | **Popis**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| scheme_id_uri      | string                  | Požaduje se      | Určuje schéma zprávy. Schéma je nastaveno na hodnotu atributu schématu v poli manifest živého serveru. Hodnota **by měla** být název URN nebo adresa URL identifikující schéma zprávy; Podporovaná výstupní schemeId by měla být "urn: scte: scte35:2014: XML + bin" na [SCTE-214-1] SEK 6.7.4 (MPD), protože služba v tuto chvíli podporuje pouze "XML + bin" pro zkrácení v MPD. |
-| hodnota              | string                  | Volitelné      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, **musí** být hodnota nastavena na název datového proudu událostí (stopovat pro [MS-SSTR-ingesta] nebo AMF název zprávy pro [RTMP] ingestovat).                                                                         |
-| Timescale          | 32 – bitová unsigned integer | Požaduje se      | Časová osa v taktech za sekundu.                                                                                                                                                                                                                                                                                                                                                     |
+| scheme_id_uri      | string                  | Požadováno      | Určuje schéma zprávy. Schéma je nastaveno na hodnotu atributu schématu v poli manifest živého serveru. Hodnota **by měla** být název URN nebo adresa URL identifikující schéma zprávy; Podporovaná výstupní schemeId by měla být "urn: scte: scte35:2014: XML + bin" na [SCTE-214-1] SEK 6.7.4 (MPD), protože služba v tuto chvíli podporuje pouze "XML + bin" pro zkrácení v MPD. |
+| value              | string                  | Volitelné      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, **musí** být hodnota nastavena na název datového proudu událostí (stopovat pro [MS-SSTR-ingesta] nebo AMF název zprávy pro [RTMP] ingestovat).                                                                         |
+| Timescale          | 32 – bitová unsigned integer | Požadováno      | Časová osa v taktech za sekundu.                                                                                                                                                                                                                                                                                                                                                     |
 
 
 ### <a name="332-example-event-streams-for-mpeg-dash"></a>3.3.2 příklad streamů událostí pro MPEG POMLČKu
@@ -1133,13 +1133,13 @@ Následující podrobnosti popisují konkrétní hodnoty, které by měl klient 
 
 | **Název pole**          | **Typ pole**          | **Požadovanou?** | **Popis**                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| scheme_id_uri           | string                  | Požaduje se      | Určuje schéma zprávy. Schéma je nastaveno na hodnotu atributu schématu v poli manifest živého serveru. Hodnota **musí** být název URN identifikující schéma zprávy. Pro zprávy [SCTE-35] **musí** být "urn: SCTE: scte35:2013: bin" v souladu s [SCTE-214-3].          |
-| Hodnota                   | string                  | Požaduje se      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, bude hodnota nastavena na název datového proudu událostí (název stopy pro hladkou zprávu ingesta nebo název zprávy AMF pro ingestování RTMP). |
-| Timescale               | 32 – bitová unsigned integer | Požaduje se      | Časová osa (v taktech za sekundu) polí časy a trvání v rámci pole ' EMSG '.                                                                                                                                                                                                            |
-| Presentation_time_delta | 32 – bitová unsigned integer | Požaduje se      | Časový rozdíl v době prezentace médií v době a nejbližší době prezentace v tomto segmentu. Čas a trvání prezentace **by měly být** v souladu s přístupovými body streamu (SAP) typu 1 nebo 2, jak je definováno v [ISO-14496-12] příloze I.                                  |
-| event_duration          | 32 – bitová unsigned integer | Požaduje se      | Doba trvání události nebo 0xFFFFFFFF, která označuje neznámou dobu trvání.                                                                                                                                                                                                                              |
-| ID                      | 32 – bitová unsigned integer | Požaduje se      | Identifikuje tuto instanci zprávy. Zprávy s ekvivalentní sémantikou musí mít stejnou hodnotu. Pokud ID není zadáno při ingestování zprávy, vygeneruje Azure Media Services jedinečný identifikátor.                                                                                        |
-| Message_data            | pole bajtů              | Požaduje se      | Zpráva události Pro zprávy [SCTE-35] jsou data zprávy binární splice_info_section () v souladu s [SCTE-214-3].                                                                                                                                                                        |
+| scheme_id_uri           | string                  | Požadováno      | Určuje schéma zprávy. Schéma je nastaveno na hodnotu atributu schématu v poli manifest živého serveru. Hodnota **musí** být název URN identifikující schéma zprávy. Pro zprávy [SCTE-35] **musí** být "urn: SCTE: scte35:2013: bin" v souladu s [SCTE-214-3].          |
+| Hodnota                   | string                  | Požadováno      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, bude hodnota nastavena na název datového proudu událostí (název stopy pro hladkou zprávu ingesta nebo název zprávy AMF pro ingestování RTMP). |
+| Timescale               | 32 – bitová unsigned integer | Požadováno      | Časová osa (v taktech za sekundu) polí časy a trvání v rámci pole ' EMSG '.                                                                                                                                                                                                            |
+| Presentation_time_delta | 32 – bitová unsigned integer | Požadováno      | Časový rozdíl v době prezentace médií v době a nejbližší době prezentace v tomto segmentu. Čas a trvání prezentace **by měly být** v souladu s přístupovými body streamu (SAP) typu 1 nebo 2, jak je definováno v [ISO-14496-12] příloze I.                                  |
+| event_duration          | 32 – bitová unsigned integer | Požadováno      | Doba trvání události nebo 0xFFFFFFFF, která označuje neznámou dobu trvání.                                                                                                                                                                                                                              |
+| ID                      | 32 – bitová unsigned integer | Požadováno      | Identifikuje tuto instanci zprávy. Zprávy s ekvivalentní sémantikou musí mít stejnou hodnotu. Pokud ID není zadáno při ingestování zprávy, vygeneruje Azure Media Services jedinečný identifikátor.                                                                                        |
+| Message_data            | pole bajtů              | Požadováno      | Zpráva události Pro zprávy [SCTE-35] jsou data zprávy binární splice_info_section () v souladu s [SCTE-214-3].                                                                                                                                                                        |
 
 
 #### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Příklad entity InBandEvenStream pro Adobe Simple Mode

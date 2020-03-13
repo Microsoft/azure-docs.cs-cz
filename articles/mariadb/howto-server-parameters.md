@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/9/2019
 ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363547"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251502"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Postup konfigurace parametrů serveru v Azure Database for MariaDB pomocí Azure Portal
 
@@ -41,23 +41,23 @@ InnoDB fondu vyrovnávací paměti a maximální počet připojení se nedají k
 |---|---|---|
 |Basic| 1| 1024|
 |Basic| 2| 2560|
-|Obecné použití| 2| 3584|
-|Obecné použití| 4| 7680|
-|Obecné použití| 8| 15360|
-|Obecné použití| 16| 31232|
-|Obecné použití| 32| 62976|
-|Obecné použití| 64| 125952|
-|Paměťově optimalizované| 2| 7168|
-|Paměťově optimalizované| 4| 15360|
-|Paměťově optimalizované| 8| 30720|
-|Paměťově optimalizované| 16| 62464|
-|Paměťově optimalizované| 32| 125952|
+|Obecné účely| 2| 3584|
+|Obecné účely| 4| 7680|
+|Obecné účely| 8| 15360|
+|Obecné účely| 16| 31232|
+|Obecné účely| 32| 62976|
+|Obecné účely| 64| 125952|
+|Optimalizováno pro paměť| 2| 7168|
+|Optimalizováno pro paměť| 4| 15360|
+|Optimalizováno pro paměť| 8| 30720|
+|Optimalizováno pro paměť| 16| 62464|
+|Optimalizováno pro paměť| 32| 125952|
 
 Tyto další server parametry nejsou konfigurovatelné v systému:
 
 |**Ukazatele**|**Pevná hodnota**|
 | :------------------------ | :-------- |
-|innodb_file_per_table v úrovni Basic|OFF|
+|innodb_file_per_table v úrovni Basic|VYPNOUT|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512MB|

@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390734"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279725"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard pomocí Azure Portal
 
@@ -47,7 +47,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
     |Název           | myDdosProtectionPlan                              |
     |Předplatné   | Vyberte své předplatné.                         |
     |Skupina prostředků | Vyberte **vytvořit nové** a zadejte *myResourceGroup* . |
-    |Umístění       | USA – východ                                           |
+    |Umístění       | Východní USA                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>Povolení DDoS pro novou virtuální síť
 
@@ -60,7 +60,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
     | Název            | myVirtualNetwork                                             |
     | Předplatné    | Vyberte své předplatné.                                    |
     | Skupina prostředků  | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění        | USA – východ                                                      |
+    | Umístění        | Východní USA                                                      |
     | Ochrana DDos | Vyberte **Standard** a potom v části **DDoS Protection**vyberte **myDdosProtectionPlan**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
 
 Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatného, pokud je DDoS standard pro virtuální síť povolený. Pokud potřebujete přesunout virtuální síť se zapnutou DDoS standardem, zakažte nejprve DDoS Standard, přesuňte virtuální síť a pak povolte DDoS Standard. Po přesunu se automaticky vyladěné prahové hodnoty zásad pro všechny chráněné veřejné IP adresy ve virtuální síti resetují.
@@ -195,7 +195,7 @@ Protokoly o omezeních toků útoků na útoky umožňují kontrolovat vyřazen�
 1. Pokud chcete zobrazit data protokolů toku na řídicím panelu Azure Analytics, můžete vzorový řídicí panel naimportovat z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Protokoly toku budou obsahovat následující pole: 
-- Zdrojová IP adresa
+- Zdrojová adresa IP
 - Cílová IP adresa
 - Zdrojový port 
 - Cílový port 

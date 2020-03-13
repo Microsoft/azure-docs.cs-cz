@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385075"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220190"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání zpráv
 
@@ -37,20 +37,20 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |Rakousko|Němčina|de-AT|
 |Švýcarsko|Němčina|de-CH|
 |Německo|Němčina|de-DE|
-|Austrálie|Angličtina|cs AU|
-|Kanada|Angličtina|cs CA|
-|Spojené království|Angličtina|en-GB|
-|Indonésie|Angličtina|EN-ID|
-|Irsko|Angličtina|cs IE|
-|Indie|Angličtina|en-IN|
-|Malajsie|Angličtina|EN – MY|
-|Nový Zéland|Angličtina|cs NZ|
-|Filipínská republika|Angličtina|EN-PH|
-|Singapur|Angličtina|en-SG|
-|Spojené státy|Angličtina|cs-CZ|
-|Angličtina|Všeobecně|EN-WW|
-|Angličtina|Všeobecně|en-XA|
-|Jižní Afrika|Angličtina|EN-ZA|
+|Austrálie|angličtina|cs AU|
+|Kanada|angličtina|cs CA|
+|Spojené království|angličtina|en-GB|
+|Indonésie|angličtina|EN-ID|
+|Irsko|angličtina|cs IE|
+|Indie|angličtina|en-IN|
+|Malajsie|angličtina|EN – MY|
+|Nový Zéland|angličtina|cs NZ|
+|Filipínská republika|angličtina|EN-PH|
+|Singapur|angličtina|en-SG|
+|Spojené státy|angličtina|cs-CZ|
+|angličtina|Všeobecně|EN-WW|
+|angličtina|Všeobecně|en-XA|
+|Jihoafrická republika|angličtina|EN-ZA|
 |Argentina|Španělština|ES-AR|
 |Chile|Španělština|es-CL|
 |Španělsko|Španělština|es-ES|
@@ -63,7 +63,7 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |Belgie|Nizozemština|nl-BE|
 |Švýcarsko|Francouzština|FR-CH|
 |Francie|Francouzština|fr-FR|  
-|Itálie|Italština|IT-IT|
+|Itálie|italština|IT-IT|
 |Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|  
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Japonsko|Japonština|ja-JP|  
@@ -73,7 +73,7 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |Brazílie|Portugalština|pt-BR|
 |Rusko|Ruština|ru-RU|  
 |Švédsko|švédština|sv-SE|  
-|Turecko|Turečtina|tr-TR|  
+|Turecko|turečtina|tr-TR|  
 
 ## <a name="supported-markets-for-news-endpoint"></a>Podporované trhy pro koncový bod zprávy
 V následující tabulce `/news` koncový bod uvádí hodnoty kódu trhu, které můžete použít k zadání parametru dotazu `mkt`. Bing vrátí obsah jenom pro tyto trhy. V seznamu se může změnit.  
@@ -84,17 +84,17 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |---------------------|--------------|-----------------|
 |Dánsko|dánština|da-DK|
 |Německo|Němčina|de-DE|
-|Austrálie|Angličtina|cs AU|
-|Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
-|Angličtina|Všeobecně|EN-WW|
+|Austrálie|angličtina|cs AU|
+|Spojené království|angličtina|en-GB|
+|Spojené státy|angličtina|cs-CZ|
+|angličtina|Všeobecně|EN-WW|
 |Chile|Španělština|es-CL|
 |Mexiko|Španělština|es-MX|
 |Spojené státy|Španělština|es-US|
 |Finsko|Finština|fi-FI|  
 |Kanada|Francouzština|fr-CA|
 |Francie|Francouzština|fr-FR|  
-|Itálie|Italština|IT-IT|
+|Itálie|italština|IT-IT|
 |Brazílie|Portugalština|pt-BR|
 |Čínská lidová republika|Čínština|zh-CN|
 
@@ -106,11 +106,11 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |Země/oblast|Jazyk|Kód trhu|  
 |---------------------|--------------|-----------------|
 |Německo|Němčina|de-DE|
-|Austrálie|Angličtina|cs AU|
-|Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
-|Kanada|Angličtina|cs CA|
-|Indie|Angličtina|en-IN|
+|Austrálie|angličtina|cs AU|
+|Spojené království|angličtina|en-GB|
+|Spojené státy|angličtina|cs-CZ|
+|Kanada|angličtina|cs CA|
+|Indie|angličtina|en-IN|
 |Francie|Francouzština|fr-FR|
 |Kanada|Francouzština|fr-CA|
 |Brazílie|Portugalština|pt-BR|
@@ -129,7 +129,7 @@ Níže jsou uvedené kódy země/oblasti, které můžete zadat v parametru `cc`
 |Rakousko|AT|  
 |Belgie|BE|  
 |Brazílie|BR|  
-|Kanada|CA|  
+|Kanada|CERTIFIKAČNÍ ÚŘAD|  
 |Chile|CL|  
 |Dánsko|DK|  
 |Finsko|FI|  
@@ -152,14 +152,14 @@ Níže jsou uvedené kódy země/oblasti, které můžete zadat v parametru `cc`
 |Filipínská republika|PH|  
 |Rusko|RU|  
 |Saúdská Arábie|SA|  
-|Jižní Afrika|ZA|  
+|Jihoafrická republika|ZA|  
 |Španělsko|ES|  
 |Švédsko|SE|  
 |Švýcarsko|CH|  
 |Tchaj-wan|TW|  
 |Turecko|TR|  
 |Spojené království|GB|  
-|Spojené státy|USA|
+|Spojené státy|US|
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Vyhledávání zpráv Binguch koncových bodech najdete v referenčních informacích k [rozhraní vyhledávání zpráv API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

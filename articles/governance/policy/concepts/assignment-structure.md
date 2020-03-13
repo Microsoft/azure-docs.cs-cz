@@ -4,11 +4,11 @@ description: Popisuje definici přiřazení zásad, kterou používá Azure Poli
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355063"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265295"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -18,10 +18,10 @@ K vytvoření přiřazení zásady použijte JSON. Přiřazení zásady obsahuje
 
 - Zobrazovaný název
 - description
-- zprostředkovatele identity
+- metadata
 - režim vynucení
 - definice zásad
-- parameters
+- parametry
 
 Například následující JSON zobrazuje přiřazení zásady v režimu _DoNotEnforce_ s dynamickými parametry:
 
@@ -61,8 +61,8 @@ Tato vlastnost má následující hodnoty:
 
 |Režim |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
 |-|-|-|-|-|-|
-|Povoleno |Výchozí |řetězec |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
-|Zakázáno |DoNotEnforce |řetězec |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
+|Povolit |Výchozí |string |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
+|Zakázáno |DoNotEnforce |string |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
 
 Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , použije se _výchozí_ hodnota. Pro zásady [deployIfNotExists](./effects.md#deployifnotexists) se dají spouštět [úlohy nápravy](../how-to/remediate-resources.md) , a to i v případě, že **EnforcementMode** je nastavená na _DoNotEnforce_.
 

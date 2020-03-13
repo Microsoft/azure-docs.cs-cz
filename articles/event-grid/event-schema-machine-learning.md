@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132873"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202140"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid schéma událostí pro Azure Machine Learning
 
@@ -30,6 +30,7 @@ Azure Machine Learning emituje následující typy událostí:
 | Microsoft. MachineLearningServices. ModelDeployed | Vyvolá se při úspěšném nasazení modelů do koncového bodu. |
 | Microsoft. MachineLearningServices. RunCompleted | Vyvolá se při úspěšném dokončení běhu. |
 | Microsoft. MachineLearningServices. DatasetDriftDetected | Vyvolá se v případě, že dojde ke sledování posunu datové sady. |
+| Microsoft. MachineLearningServices. RunStatusChanged | Vyvolá se při změně stavu spuštění na Failed. |
 
 ## <a name="the-contents-of-an-event-response"></a>Obsah odpovědi na událost
 
@@ -148,20 +149,60 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 }]
 ```
 
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Událost Microsoft. MachineLearningServices. RunStatusChanged
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
+  "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "ExperimentName": "automl-local-regression",
+    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "RunType": null,
+    "RunTags": {},
+    "RunProperties": {
+        "runTemplate": "automl_child",
+        "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
+        "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
+        "training_percent": "100",
+        "predicted_cost": "0.062226144097381045",
+        "iteration": "5",
+        "run_template": "automl_child",
+        "run_preprocessor": "StandardScalerWrapper",
+        "run_algorithm": "LassoLars",
+        "conda_env_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/conda_env_v_1_0_0.yml",
+        "model_name": "AutoMLad912b2d65",
+        "scoring_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/scoring_file_v_1_0_0.py",
+        "model_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/model.pkl"
+    },
+   "RunStatus": "failed"
+   },
+  "dataVersion": "",
+  "metadataVersion": "1"
+}]
+```
+
+
+
+
 ## <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| subject | řetězec | Cesta definovaná vydavatelem k předmětu události |
-| eventType | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
-| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data události služby Blob Storage. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
+| topic | string | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| subject | string | Cesta definovaná vydavatelem k předmětu události |
+| eventType | string | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor události |
+| data | object | Data události služby Blob Storage. |
+| dataVersion | string | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má pro každý typ události následující vlastnosti:
 
@@ -169,45 +210,56 @@ Datový objekt má pro každý typ události následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| ModelName | řetězec | Název modelu, který byl zaregistrován. |
-| ModelVersion | int | Verze modelu, který byl zaregistrován. |
-| ModelTags | objekt | Značky modelu, který byl zaregistrován. |
-| ModelProperties | objekt | Vlastnosti modelu, který byl zaregistrován. |
+| ModelName | string | Název modelu, který byl zaregistrován. |
+| ModelVersion | string | Verze modelu, který byl zaregistrován. |
+| ModelTags | object | Značky modelu, který byl zaregistrován. |
+| ModelProperties | object | Vlastnosti modelu, který byl zaregistrován. |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| ServiceName | řetězec | Název nasazené služby. |
-| ServiceComputeType | řetězec | Výpočetní typ (např. ACI, AKS) nasazené služby. |
-  | ModelIds | řetězec | Čárkami oddělený seznam ID modelů. ID modelů nasazených ve službě. |
-| ServiceTags | objekt | Značky nasazené služby. |
-| ServiceProperties | objekt | Vlastnosti nasazené služby. |
+| ServiceName | string | Název nasazené služby. |
+| ServiceComputeType | string | Výpočetní typ (např. ACI, AKS) nasazené služby. |
+  | ModelIds | string | Čárkami oddělený seznam ID modelů. ID modelů nasazených ve službě. |
+| ServiceTags | object | Značky nasazené služby. |
+| ServiceProperties | object | Vlastnosti nasazené služby. |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| ExperimentId | řetězec | ID experimentu, do kterého daný běh patří. |
-| Experiment | řetězec | Název experimentu, do kterého daný běh patří. |
-| RunId | řetězec | ID běhu, které bylo dokončeno. |
-| RunType | řetězec | Typ spuštění dokončeného běhu. |
-| RunTags | objekt | Značky dokončeného spuštění. |
-| RunProperties | objekt | Vlastnosti dokončeného běhu |
+| ExperimentId | string | ID experimentu, do kterého daný běh patří. |
+| Experiment | string | Název experimentu, do kterého daný běh patří. |
+| RunId | string | ID běhu, které bylo dokončeno. |
+| RunType | string | Typ spuštění dokončeného běhu. |
+| RunTags | object | Značky dokončeného spuštění. |
+| RunProperties | object | Vlastnosti dokončeného běhu |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. DatasetDriftDetected
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| DataDriftId | řetězec | ID monitoru pro posunování dat, který spustil událost |
-| Datatenatových | řetězec | Název monitoru pro posun dat, který spustil událost. |
-| RunId | řetězec | ID spuštění, které zjistilo posun dat |
-| BaseDatasetId | řetězec | ID základní datové sady použité k detekci posunu |
-| TargetDatasetId | řetězec | ID cílové sady dat použité ke zjištění posunu |
+| DataDriftId | string | ID monitoru pro posunování dat, který spustil událost |
+| Datatenatových | string | Název monitoru pro posun dat, který spustil událost. |
+| RunId | string | ID spuštění, které zjistilo posun dat |
+| BaseDatasetId | string | ID základní datové sady použité k detekci posunu |
+| TargetDatasetId | string | ID cílové sady dat použité ke zjištění posunu |
 | DriftCoefficient | double | Koeficient – výsledek, který spustil událost |
 | StartTime | datetime | Čas zahájení časové řady cílové sady dat, která vedla k detekci posunu.  |
 | EndTime | datetime | Koncový čas časové řady cílové sady, která vedla k detekci posunu. |
 
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
+
+| Vlastnost | Typ | Popis |
+| -------- | ---- | ----------- |
+| ExperimentId | string | ID experimentu, do kterého daný běh patří. |
+| Experiment | string | Název experimentu, do kterého daný běh patří. |
+| RunId | string | ID běhu, které bylo dokončeno. |
+| RunType | string | Typ spuštění dokončeného běhu. |
+| RunTags | object | Značky dokončeného spuštění. |
+| RunProperties | object | Vlastnosti dokončeného běhu |
+| RunStatus | string | Stav spuštění. |
 
 ## <a name="next-steps"></a>Další kroky
 

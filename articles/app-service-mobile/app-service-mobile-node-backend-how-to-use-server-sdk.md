@@ -7,11 +7,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358141"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249942"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node. js SDK
 
@@ -364,7 +364,7 @@ Většina nastavení v souboru azureMobile. js má ekvivalentní nastavení apli
 
 | Nastavení aplikace | nastavení azureMobile. js | Popis | Platné hodnoty |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |jméno |Název aplikace |řetězec |
+| **MS_MobileAppName** |name |Název aplikace |string |
 | **MS_MobileLoggingLevel** |Logging. Level |Minimální úroveň protokolu pro zprávy, které se mají protokolovat |Chyba, upozornění, informace, podrobný, ladění, Silly |
 | **MS_DebugMode** |ladit |Povolí nebo zakáže režim ladění. |Hodnota TRUE, false |
 | **MS_TableSchema** |data.schema |Výchozí název schématu pro tabulky SQL |String (výchozí: dbo) |

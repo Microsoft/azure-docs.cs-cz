@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: aahi
-ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197466"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203453"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
 
@@ -44,11 +44,11 @@ Rozhraní API pro analýzu textu nabízí dvě verze Analýza mínění-v2 a v3.
 
 | Funkce                                   | Analýza mínění v2 | Analýza mínění V3 |
 |-------------------------------------------|-----------------------|-----------------------|
-| Metody pro jednotlivé a dávkové požadavky    | ×                     | ×                     |
-| Mínění skóre celého dokumentu  | ×                     | ×                     |
-| Mínění skóre pro jednotlivé věty |                       | ×                     |
-| Mínění popisky                        |                       | ×                     |
-| Správa verzí modelů                   |                       | ×                     |
+| Metody pro jednotlivé a dávkové požadavky    | X                     | X                     |
+| Mínění skóre celého dokumentu  | X                     | X                     |
+| Mínění skóre pro jednotlivé věty |                       | X                     |
+| Mínění popisky                        |                       | X                     |
+| Správa verzí modelů                   |                       | X                     |
 
 #### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
@@ -160,7 +160,7 @@ Rozhraní API pro analýzu textu je Bezstavová. Ve vašem účtu se neukládaj�
 
 Analyzátor mínění klasifikuje text jako převládající nebo negativní. Přiřadí skóre v rozsahu od 0 do 1. Hodnoty blížící se 0,5 představují neutrální nebo neurčité mínění. Skóre 0,5 indikuje neutralitu. Pokud řetězec nelze analyzovat pro mínění nebo nemá žádné mínění, skóre je vždy 0,5 přesně. Když například zadáte řetězec ve španělštině s kódem jazyka pro angličtinu, je skóre 0,5.
 
-Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo uložit výstup do souboru v místním systému. Pak importujte výstup do aplikace, kterou můžete použít k řazení, vyhledávání a manipulaci s daty.
+Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo uložit výstup do souboru v místním systému. Pak importujte výstup do aplikace, kterou můžete použít k řazení, vyhledávání a manipulaci s daty. Vzhledem k podpoře vícejazyčných a Emoji může odpověď obsahovat posunutí textu. Další informace najdete v tématu [postup zpracování posunů](../concepts/text-offsets.md) .
 
 #### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
@@ -268,7 +268,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro analýzu míněn�
 + Požadavek POST je na `/sentiment` koncový bod pomocí přizpůsobeného [přístupového klíče a koncového bodu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který je platný pro vaše předplatné.
 + Výstup odpovědi, který se skládá z mínění skóre pro každé ID dokumentu, se může streamovat do libovolné aplikace, která přijímá JSON. Například Excel a Power BI.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Přehled rozhraní API pro analýzu textu](../overview.md)
 * [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)

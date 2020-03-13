@@ -4,11 +4,11 @@ description: Projekty Azure Notebooks ve verzi Preview spravují kolekci poznám
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360602"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280570"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Vytváření a klonování projektů v Azure Notebooks Preview
 
@@ -29,13 +29,13 @@ Co můžete dělat na řídicím panelu, závisí na tom, jestli jste přihláš
 | Příkaz | Dostupnost | Popis |
 | --- | --- | --- |
 | **Spouštěl** | Vlastník | Spustí server project server a otevře složku projektu v Jupyter. (Častěji, můžete nejprve přejděte do složky projektu a pak spustit Poznámkový blok z něj.) |
-| **Stáhnout** | Všem uživatelům | Stáhne kopii vybraného projektu jako soubor ZIP. |
-| **Sdílení** | Všem uživatelům | Zobrazí místní nabídku sdílení, pomocí které můžete získat adresu URL vybraného projektu, sdílet je se sociálními médii, poslat e-mail s adresou URL a získat kód HTML nebo Markdownu pro přístup pomocí znaku "Poznámkový blok" (viz část [získání znaku ke spuštění](#obtain-a-launch-badge)) s adresou URL. |
+| **Stáhnout** | Kdokoliv | Stáhne kopii vybraného projektu jako soubor ZIP. |
+| **Sdílení** | Kdokoliv | Zobrazí místní nabídku sdílení, pomocí které můžete získat adresu URL vybraného projektu, sdílet je se sociálními médii, poslat e-mail s adresou URL a získat kód HTML nebo Markdownu pro přístup pomocí znaku "Poznámkový blok" (viz část [získání znaku ke spuštění](#obtain-a-launch-badge)) s adresou URL. |
 | **Odstranění** | Vlastník | Odstraní vybraný projekt. Tato operace se nedá vrátit zpět. |
 | **Terminálovému** | Vlastník | Spustí server project server a pak otevře nové okno prohlížeče pomocí prostředí bash, terminálu pro tento server. |
 | **+ Nový projekt** | Vlastník | Vytvoří nový projekt. Viz [Vytvoření nového projektu](#create-a-new-project). |
 | **Nahrát úložiště GitHub** | Vlastník | Importuje projektu z Githubu. [Naimportujte projekt z GitHubu](#import-a-project-from-github). |
-| **Klonovat** | Všem uživatelům | Zkopíruje vybraný projekt do vlastního účtu. Zobrazí výzvu k přihlášení Nepřihlášený. Viz [klonování projektu](#clone-a-project). |
+| **Klonovat** | Kdokoliv | Zkopíruje vybraný projekt do vlastního účtu. Zobrazí výzvu k přihlášení Nepřihlášený. Viz [klonování projektu](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Získání spuštění oznámení "BADGE"
 
@@ -70,11 +70,11 @@ Následující vyhrazená slova nelze použít samostatně jako ID projektu. Tat
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| o produktu | account | správa | api | webový | učeben |
+| o produktu | účet | Správa | api | webový | učeben |
 | content | řídicí panel | okno | dotaz | Nápověda | html |
 | Domů | importovat | Knihovna | management | nových | poznámkového bloku |
-| poznámkové bloky | pdf | preview | ceny | profile | search |
-| status | podpora | test | | | |
+| poznámkové bloky | pdf | preview | ceny | profile | hledat |
+| stav | podpora | test | | | |
 
 Pokud se pokusíte použít jedno z těchto slov jako ID projektu, místní nabídky pro **Vytvoření nového projektu** a **projektu** označují, že "ID knihovny je vyhrazený identifikátor".
 

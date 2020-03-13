@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847490"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281831"
 ---
-# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Navrácení služeb po havárii virtuálních počítačů VMware po zotavení po havárii do Azure
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Navrácení služeb po obnovení virtuálních počítačů VMware po zotavení po havárii do Azure
 
 Po převzetí služeb při selhání do Azure v rámci procesu zotavení po havárii můžete navrátit služby po obnovení do místní lokality. Existují dva různé typy navrácení služeb po obnovení, které lze provést pomocí Azure Site Recovery: 
 
@@ -48,7 +48,7 @@ Pokud místní virtuální počítač neexistuje před tím, než se znovu zamkn
 > [!NOTE]
 > Fyzický počítač, při převzetí služeb při selhání do Azure, se může vrátit zpátky jenom jako virtuální počítač VMware. Tento postup se řídí stejným pracovním postupem jako obnovení do alternativního umístění. Ujistěte se, že jste zjistili aspoň jeden hlavní cílový server a nezbytné hostitele ESX/ESXi, ke kterým se potřebujete navrátit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Proveďte [operaci navrácení služeb po obnovení](vmware-azure-failback.md)pomocí tohoto postupu.
 

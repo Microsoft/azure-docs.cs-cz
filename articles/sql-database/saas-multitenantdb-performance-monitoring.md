@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cc8ccbbde56b57af684ad47840002a846bdcd8c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827955"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214165"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a Správa výkonu horizontálně dělené Azure SQL Database v SaaS aplikaci s více klienty
 
@@ -24,7 +24,7 @@ V tomto kurzu se prozkoumá několik klíčových scénářů správy výkonu po
 
 Aplikace Wingtip Tickets SaaS s více klienty používá datový model horizontálně dělené pro více tenantů, kde jsou data místa (tenanta) distribuována podle ID tenanta napříč potenciálně více databázemi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Chcete-li využít výhod tohoto typického vzoru použití databáze, je možné databáze škálovat nahoru a dolů, aby se optimalizoval náklady na řešení. U tohoto typu vzoru je důležité monitorovat využití prostředků databáze, aby bylo zajištěno, že zatížení budou poměrně vyvážená napříč potenciálně více databázemi. Také je potřeba zajistit, aby jednotlivé databáze měly dostatečné prostředky a nemusely zajišťovat omezení [DTU](sql-database-purchase-models.md#dtu-based-purchasing-model) . V tomto kurzu se seznámíte s možnostmi pro monitorování a správu databází a o tom, jak provést nápravné akce v reakci na kolísání zatížení.
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > 
@@ -36,7 +36,7 @@ Co se v tomto kurzu naučíte:
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
 * Nasadí se aplikace SaaS pro víceklientské klienty. Nasazení za méně než pět minut najdete v tématu [nasazení a prozkoumání SaaS aplikace pro více tenantů](saas-multitenantdb-get-started-deploy.md) .
-* Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Prostředí Azure PowerShell je nainstalované. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>Seznámení se vzory správy výkonu SaaS
 
@@ -47,11 +47,11 @@ Správa výkonu databáze sestává z kompilování a analýz dat výkonu a nás
 * Abyste se vyhnuli nutnosti ručního monitorování výkonu, je nejúčinnější **nastavit výstrahy, které se aktivují, když se databáze nevyskytují v normálním rozsahu**.
 * Aby bylo možné reagovat na krátkodobé kolísání výpočetní velikosti databáze, **úroveň DTU se dá škálovat nahoru nebo dolů**. Pokud dochází k této výkyvy na pravidelném nebo předvídatelném základu, **může se naplánování velikosti databáze naplánovat na automatické výskyty**. Pokud například víte, že je úloha malého rozsahu, třeba přes noc nebo o víkendech, můžete vertikálně snížit kapacitu.
 * Aby bylo možné reagovat na dlouhodobé výkyvy nebo změny v klientech, **mohou být jednotliví klienti přesunuti do jiné databáze**.
-* Aby bylo možné reagovat na krátkodobé zvýšení zatížení *jednotlivých* klientů, **můžete jednotlivé klienty vyřadit z databáze a přiřadit individuální výpočetní velikost**. Po snížení zatížení se může klient vrátit do databáze s více klienty. Pokud je to předem známo, můžou se klienti přesunout do sálu, aby se zajistilo, že databáze bude mít vždy potřebné prostředky a aby se zabránilo dopadu na ostatní klienty v víceklientské databázi. Pokud je tento požadavek předvídatelný, například v místě, kde se předpokládá navýšení prodeje lístků na oblíbenou akci, je možné toto chování správy začlenit do aplikace.
+* Aby bylo možné reagovat na krátkodobé zvýšení zatížení *jednotlivých* klientů, **můžete jednotlivé klienty vyřadit z databáze a přiřadit individuální výpočetní velikost**. Po snížení zatížení se může klient vrátit do databáze s více klienty. V případě, že je tato skutečnost známa předem, mohou být klienti bez potíží přesunuti, aby měli jistotu, že bude mít databáze vždy potřebné prostředky a aby se zabránilo dopadu na ostatní klienty v víceklientské databázi. Pokud je tento požadavek předvídatelný, například v místě, kde se předpokládá navýšení prodeje lístků na oblíbenou akci, je možné toto chování správy začlenit do aplikace.
 
 [Azure Portal](https://portal.azure.com) poskytuje integrované monitorování a upozorňování pro většinu prostředků. Pro SQL Database jsou v databázích k dispozici monitorování a upozorňování. Toto integrované monitorování a upozorňování je specifické pro konkrétní prostředky, takže je vhodné použít pro malý počet prostředků, ale není vhodné při práci s mnoha prostředky.
 
-U scénářů s vysokým objemem, kde pracujete s mnoha prostředky, je možné použít [protokoly Azure monitor](https://azure.microsoft.com/services/log-analytics/) . Jedná se o samostatnou službu Azure, která poskytuje analýzy přes emitované diagnostické protokoly a telemetrii shromážděné v pracovním prostoru Log Analytics. Protokoly Azure Monitor můžou shromažďovat telemetrii z mnoha služeb a používat je k dotazování a nastavování výstrah.
+U scénářů s vysokým objemem, kde pracujete s mnoha prostředky, je možné použít [protokoly Azure monitor](https://azure.microsoft.com/services/log-analytics/) . Jedná se o samostatnou službu Azure, která poskytuje analýzy prostřednictvím vygenerovaných protokolů shromážděných v pracovním prostoru Log Analytics. Protokoly Azure Monitor můžou shromažďovat telemetrii z mnoha služeb a používat je k dotazování a nastavování výstrah.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Získat lístky Wingtip Tickets SaaS Database Code a Script aplikace pro více tenantů
 
@@ -185,7 +185,7 @@ Kde agregované využití tenanta se řídí předvídatelnými vzorci použití
 
 ## <a name="next-steps"></a>Další kroky
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Simulace využití v databázi s více klienty horizontálně dělené spuštěním zadaného generátoru zatížení
@@ -193,7 +193,7 @@ Co se v tomto kurzu naučíte:
 > * Horizontální navýšení kapacity databáze na základě zvýšeného zatížení databáze
 > * Zřízení tenanta v databázi s jedním klientem
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 <!--* [Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 * [Azure Automation](../automation/automation-intro.md)

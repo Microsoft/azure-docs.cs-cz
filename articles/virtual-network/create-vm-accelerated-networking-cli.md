@@ -17,11 +17,11 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363491"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245080"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux s využitím akcelerované sítě pomocí Azure CLI
 
@@ -65,7 +65,7 @@ Další informace o instancích virtuálních počítačů najdete v tématu [ve
 ### <a name="custom-images"></a>Vlastní image
 Pokud používáte vlastní image a vaše image podporuje akcelerované síťové služby, ujistěte se, že máte požadované ovladače pro práci s Mellanox ConnectX a ConnectX-4 LX síťových adaptérů v Azure.
 
-### <a name="regions"></a>Regions
+### <a name="regions"></a>Oblasti
 K dispozici ve všech veřejných oblastech Azure a také Azure Governmentch cloudech.
 
 <!-- ### Network interface creation 

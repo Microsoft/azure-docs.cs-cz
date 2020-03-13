@@ -8,11 +8,11 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391815"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243858"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Uzamčení App Service Environment
 
@@ -116,7 +116,7 @@ Následující informace jsou požadovány pouze v případě, že chcete nakonf
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Azure Event Hub |
+| Centrum událostí Azure |
 
 #### <a name="ip-address-dependencies"></a>Závislosti IP adres
 
@@ -274,7 +274,7 @@ Linux není dostupný v US Gov oblastech a není tak uvedený jako volitelná ko
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Azure Event Hub |
+| Centrum událostí Azure |
 
 #### <a name="ip-address-dependencies"></a>Závislosti IP adres
 

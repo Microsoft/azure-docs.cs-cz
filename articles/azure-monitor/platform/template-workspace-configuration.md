@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373316"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248603"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -39,10 +39,10 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
-| Pracovní prostor   | workspaces    | 2017-03-15 – Preview |
-| Hledání      | savedSearches | 2015-03-20 |
+| Pracovní prostor   | pracovní prostory    | 2017-03-15 – Preview |
+| Hledat      | savedSearches | 2015-03-20 |
 | Zdroj dat | zdroje dat   | 2015-11-01-preview |
-| Řešení    | Řešení     | 2015-11-01-preview |
+| Řešení    | řešení     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 

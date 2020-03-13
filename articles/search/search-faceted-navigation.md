@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390349"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283157"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementace omezující navigace v Azure Kognitivní hledání
 
@@ -34,7 +34,7 @@ Při vývoji aplikací psaní kódu, který vytváří dotazy, představuje hrom
 ## <a name="sample-code-and-demo"></a>Ukázkový kód a ukázka
 Tento článek používá jako příklad portál pro hledání úloh. Příklad je implementován jako aplikace ASP.NET MVC.
 
-- Ukázka a testování pracovní ukázky online na webu [Azure kognitivní hledání ukázka portálu úloh](http://azjobsdemo.azurewebsites.net/).
+- Ukázka a testování pracovní ukázky online na webu [Azure kognitivní hledání ukázka portálu úloh](https://aka.ms/azjobsdemo).
 
 - Stáhněte si kód z [úložiště ukázek Azure na GitHubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -78,7 +78,7 @@ Složité výrazy hledání snižují výkon dotazu. Pokud je to možné, využi
 Pro lepší pochopení, jak filtr přidává větší přesnost, porovnejte složitý vyhledávací výraz s výrazem, který obsahuje výraz filtru:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 Oba dotazy jsou platné, ale druhá je nadřazená, pokud hledáte nemotelsy s parkováním v Seattlu.
 -   První dotaz spoléhá na tato konkrétní slova uvedená nebo není uvedena v polích řetězců, jako je název, popis a jakékoli jiné pole obsahující hledaná data.
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 Parametr dotazu omezující vlastnosti je nastaven na pole a v závislosti na datovém typu může být dále parametrizovaný seznamem odděleným čárkami, který obsahuje `count:<integer>`, `sort:<>`, `interval:<integer>`a `values:<list>`. Seznam hodnot se při nastavování rozsahů podporuje pro číselná data. Podrobnosti o využití najdete v tématu [Prohledání dokumentů (Azure kognitivní hledání API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
 
-Společně s omezujícími vlastnostmi by požadavek, který aplikace formuluje, měl také vytvořit filtry pro zúžení sady kandidátských dokumentů na základě výběru hodnoty omezující vlastnosti. V případě úložiště kol napodobná navigace nabízí otázky *, jako jsou jaké barvy, výrobci a typy kol k dispozici?* . Dotazy na odpovědi *, jako je například přesná kola, jsou v tomto cenovém rozsahu červené, horská kola?* Když kliknete na tlačítko "červená" a označíte, že by se měly zobrazit jenom červené produkty, další dotaz, který aplikace odešle, zahrnuje `$filter=Color eq ‘Red’`.
+Společně s omezujícími vlastnostmi by požadavek, který aplikace formuluje, měl také vytvořit filtry pro zúžení sady kandidátských dokumentů na základě výběru hodnoty omezující vlastnosti. V případě úložiště kol napodobná navigace nabízí otázky *, jako jsou jaké barvy, výrobci a typy kol k dispozici?* . Dotazy na odpovědi *, jako je například přesná kola, jsou v tomto cenovém rozsahu červené, horská kola?* Když kliknete na tlačítko "červená" a označíte, že by se měly zobrazit jenom červené produkty, další dotaz, který aplikace odešle, zahrnuje `$filter=Color eq 'Red'`.
 
 Následující fragment kódu ze stránky `JobsSearch.cs` přidá vybraný obchodní titul do filtru, pokud vyberete hodnotu z omezující vlastnosti obchodního titulu.
 
@@ -371,7 +371,7 @@ Příklady filtrů můžete najít v [syntaxi výrazu OData (Azure kognitivní h
 ## <a name="try-the-demo"></a>Vyzkoušejte si ukázku
 Ukázka na portálu úloh Azure Kognitivní hledání obsahuje příklady, na které se odkazuje v tomto článku.
 
--   Ukázka a testování pracovní ukázky online na webu [Azure kognitivní hledání ukázka portálu úloh](https://azjobsdemo.azurewebsites.net/).
+-   Ukázka a testování pracovní ukázky online na webu [Azure kognitivní hledání ukázka portálu úloh](https://aka.ms/azjobsdemo).
 
 -   Stáhněte si kód z [úložiště ukázek Azure na GitHubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 

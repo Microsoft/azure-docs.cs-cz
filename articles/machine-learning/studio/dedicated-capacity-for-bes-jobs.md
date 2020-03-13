@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 0bb4157ff77ef57f377ba0c6a08bfe8529f663f4
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 618bc5719e3629d37567d8ac77594e7734f82a09
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169277"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204422"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Služba Azure Batch pro úlohy Azure Machine Learning Studio (Classic)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Machine Learning fondu služby Batch zpracování poskytuje spravované zákazníkem škálování pro spuštění služby Azure Machine Learning služby Batch. Klasické dávkové zpracování pro strojové učení probíhá v prostředí s více tenanty, která omezuje počet souběžných úloh, které můžete odeslat a úlohy se zařadí do fronty na základě first-in-first-out. Tento nejistoty znamená, že nelze předvídat přesně kdy se budou spouštět vaše úlohy.
 
@@ -111,4 +113,4 @@ Doporučujeme vám, že dotazování stavu úlohy k určení po dokončení úlo
 
 | **Použít zpracování fondu Batch, když**    | **V případě použití klasického dávkového zpracování**  |
 |---|---|
-|Je potřeba spustit velký počet úloh<br>Nebo<br/>Je potřeba vědět, že vaše úlohy se spustí hned<br/>Nebo<br/>Je třeba garantovanou propustnost. Například budete muset spustit několik úloh v daném časovém rámci a chcete pro horizontální navýšení kapacity výpočetních prostředků podle svých potřeb.    | Používáte pár úloh<br/>A<br/> Není nutné úloh spustit okamžitě |
+|Je potřeba spustit velký počet úloh<br>Nebo<br/>Je potřeba vědět, že vaše úlohy se spustí hned<br/>Nebo<br/>Je třeba garantovanou propustnost. Například budete muset spustit několik úloh v daném časovém rámci a chcete pro horizontální navýšení kapacity výpočetních prostředků podle svých potřeb.    | Používáte pár úloh<br/>A<br/> Nepotřebujete spouštět úlohy hned. |

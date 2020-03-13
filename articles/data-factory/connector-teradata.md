@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357248"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281727"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -67,7 +67,7 @@ Propojená služba Teradata podporuje následující vlastnosti:
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavena na **Teradata**. | Ano |
 | connectionString | Určuje informace potřebné pro připojení k instanci Teradata. Přečtěte si následující ukázky.<br/>Můžete také vložit heslo do Azure Key Vault a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení ke službě Teradata. Platí při použití ověřování systému Windows. | Ne |
+| username jméno | Zadejte uživatelské jméno pro připojení ke službě Teradata. Platí při použití ověřování systému Windows. | Ne |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete také zvolit odkaz na [tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). <br>Platí při použití ověřování systému Windows nebo odkazování na heslo v Key Vault pro základní ověřování. | Ne |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ano |
 
@@ -309,27 +309,27 @@ Při kopírování dat z Teradata platí následující mapování. Další info
 | Datum |Datum a čas |
 | Decimal |Decimal |
 | Double |Double |
-| Graphic |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Graphic |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
 | Celé číslo |Datový typ Int32 |
-| Interval Day |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Day To Hour |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Day To Minute |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Day To Second |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Hodina intervalu |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Hour To Minute |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Hour To Second |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Minute |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Minute To Second |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Month |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Second |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Year |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Interval Year To Month |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Day |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Day To Hour |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Day To Minute |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Day To Second |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Hodina intervalu |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Hour To Minute |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Hour To Second |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Minute |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Minute To Second |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Month |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Second |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Year |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Year To Month |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
 | Počet |Double |
-| Tečka (datum) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Tečka (čas) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Období (čas s časovým pásmem) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Tečka (časové razítko) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| Tečka (časové razítko s časovým pásmem) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Tečka (datum) |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Tečka (čas) |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Období (čas s časovým pásmem) |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Tečka (časové razítko) |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Tečka (časové razítko s časovým pásmem) |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
 | SmallInt |Int16 |
 | Čas |TimeSpan |
 | Time With Time Zone |TimeSpan |
@@ -337,8 +337,8 @@ Při kopírování dat z Teradata platí následující mapování. Další info
 | Timestamp With Time Zone |Datum a čas |
 | VarByte |Byte[] |
 | VarChar |String |
-| VarGraphic |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
-| XML |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| VarGraphic |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
+| XML |Není podporováno. Použije explicitní přetypování ve zdrojovém dotazu. |
 
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání

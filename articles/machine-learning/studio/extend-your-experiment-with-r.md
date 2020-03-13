@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: d6174459237399ea370ee9c36ba537391104a917
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7b4b869695eb2073121a889cd81d99c4fc06d4b9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168561"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218037"
 ---
 # <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure Machine Learning Studio (Classic): prodlužte experiment pomocí R 
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Můžete roztáhnout funkce Azure Machine Learning Studio (Classic) prostřednictvím jazyka R pomocí modulu [spuštění skriptu jazyka r][execute-r-script] .
 
 Tento modul přijímá více vstupních datových sad a jako výstup poskytuje jedinou datovou sadu. Skript R můžete zadat do parametru skriptu jazyka **r** v modulu [spouštění skriptu jazyka r][execute-r-script] .

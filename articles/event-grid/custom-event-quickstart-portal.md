@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 398e63ec9a8b9e1b16d8ffcee538351fc6572de9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387037"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240965"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Rychlý start: Směrování vlastních událostí do webového koncového bodu pomocí webu Azure portal a Event gridu
 
@@ -125,7 +125,7 @@ V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč vlastn�
     curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
     ```
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 V druhém příkladu se k provedení podobných kroků používá PowerShell.
 
 1. V Azure Portal vyberte možnost **Cloud Shell** (případně přejít na https://shell.azure.com/). V levém horním rohu okna Cloud Shell vyberte **PowerShell** . Podívejte se na ukázku obrázku okna **Cloud Shell** v části Azure CLI.

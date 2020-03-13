@@ -5,11 +5,11 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357089"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277099"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -184,7 +184,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 Další informace o používání Azure Functions Core Tools najdete v tématu [Code and test Azure Functions v místním](functions-run-local.md)prostředí.
 
-## <a name="publish-to-azure"></a>Publikování aplikací do Azure
+## <a name="publish-to-azure"></a>Publikování do Azure
 
 Při publikování ze sady Visual Studio se používá jedna ze dvou metod nasazení:
 

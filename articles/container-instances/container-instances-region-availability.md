@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
 ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364995"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247134"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -26,11 +26,11 @@ Informace o kvótách a dalších omezeních v nasazeních najdete v tématu [kv
 
 Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery systému Windows Server 2016 jsou k dispozici následující oblasti a maximální počet prostředků.
 
-| Oblasti | Operační systém | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Úložiště (GB) |
+| Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) | Úložiště (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa, Západní USA, Západní USA 2 | Linux | 4 | 16 | 50 |
 | Austrálie – východ, Japonsko – východ | Linux | 2 | 8 | 50 |
-| USA – středosever | Linux | 2 | 3,5 | 50 |
+| Střed USA – sever | Linux | 2 | 3,5 | 50 |
 | Brazílie – jih, Japonsko – východ, Západní Evropa | Windows | 4 | 16 | 20 |
 | Východní USA Západní USA | Windows | 4 | 14 | 20 |
 | Austrálie – východ, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA 2, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní USA 2 | Windows | 2 | 3,5 | 20 |
@@ -39,7 +39,7 @@ Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instance
 
 Následující oblasti a maximální prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
 
-| Oblasti | Operační systém | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Úložiště (GB) |
+| Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) | Úložiště (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | Austrálie – východ, Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Japonsko – východ, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa | Windows | 4 | 16 | 20 |
 | Východní USA 2 Západní USA 2 | Windows | 2 | 3,5 | 20 |

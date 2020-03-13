@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377117"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261291"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a Správa Azure AD Connect
 Použijte provozní postupy v tomto článku k přizpůsobení služby Azure Active Directory (Azure AD) k tomu, aby splňovaly potřeby a požadavky vaší organizace.  
@@ -56,12 +56,12 @@ Ke kontrole stavu synchronizace použijte Azure Portal.
 Pokud potřebujete spustit úlohu synchronizace, můžete to udělat takto:
 
 1. Spusťte Průvodce dvojitým kliknutím na zástupce Azure AD Connect Desktop.
-2. Klikněte na **Konfigurovat**.
+2. Klikněte na tlačítko **Konfigurovat**.
 3. Na obrazovce úlohy vyberte **Možnosti přizpůsobení synchronizace** a klikněte na **Další** .
 4. Zadejte svoje přihlašovací údaje služby Azure AD.
-5. Klikněte na **Další**. Klikněte na **Další**.  Klikněte na **Další**.
+5. Klikněte na **Další**. Klikněte na **Další**.  Klikněte na **Další**.
 5.  Na obrazovce **připraveno ke konfiguraci** zajistěte, aby bylo zaškrtnuto políčko **spustit proces synchronizace po dokončení konfigurace** .
-6.  Klikněte na **Konfigurovat**.
+6.  Klikněte na tlačítko **Konfigurovat**.
 
 Další informace o plánovači Azure AD Connect Sync najdete v tématu [Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
 

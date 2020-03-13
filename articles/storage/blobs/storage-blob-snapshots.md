@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fb2da8acb0aa4d105f23ab5d1ad42f08a6ae722c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d9650db601426cef195c27e6eb874ec26cf13bb8
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595255"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137675"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Vytvoření a Správa snímku objektu BLOB v .NET
 
-Snímek je verze objektu BLOB jen pro čtení, která je pořízena v určitém časovém okamžiku. Snímky jsou užitečné pro zálohování objektů BLOB. Tento článek popisuje, jak vytvořit a spravovat snímky objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client).
+Snímek je verze objektu BLOB jen pro čtení, která je pořízena v určitém časovém okamžiku. Snímky jsou užitečné pro zálohování objektů BLOB. Tento článek popisuje, jak vytvořit a spravovat snímky objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="about-blob-snapshots"></a>O snímcích objektů BLOB
 

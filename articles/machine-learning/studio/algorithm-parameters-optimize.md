@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 33705d0c9f2f405be733fd21c88cb83e96aec781
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168966"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218272"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Výběr parametrů pro optimalizaci algoritmů v Azure Machine Learning Studio (Classic)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Toto téma popisuje, jak zvolit správnou sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic). Většina algoritmů strojového učení mít parametry se mají nastavit. Při tréninku modelu, budete muset zadat hodnoty pro tyto parametry. Efektivnost trénovaného modelu, závisí na parametry modelu, které zvolíte. Proces nalezení optimální sady parametrů je známý jako *Výběr modelu*.
 
@@ -41,7 +43,7 @@ Můžete definovat parametrem nastaveným na model inicializačnímu kroku. Podo
 
 ![Dvěma třídami posíleného rozhodovacího stromu, jeden parametr](./media/algorithm-parameters-optimize/fig2.png)
 
- Alternativně můžete definovat maximální a minimální body mřížky a celkový počet bodů, které mají být vygenerovány pomocí **Tvůrce rozsahu použití**. Hodnoty parametrů jsou ve výchozím nastavení generovány lineární stupnice. Pokud je ale zaškrtnuto **měřítko protokolu** , generují se hodnoty v logaritmickém měřítku (to znamená, že poměr sousedních bodů je konstantní místo jejich rozdílu). Pro celočíselné parametry můžete definovat rozsah použitím spojovníku. Například "1-10" znamená, že všechny celých čísel od 1 do 10 (obojí inkluzivní) tvoří sadu parametrů. Ve smíšeném režimu je také podporována. Například nastavte parametr "1-10, 20, 50" bude zahrnovat celá čísla 1 až 10, 20 a 50.
+ Alternativně můžete definovat maximální a minimální body mřížky a celkový počet bodů, které mají být vygenerovány pomocí **Tvůrce rozsahu použití**. Hodnoty parametrů jsou ve výchozím nastavení generovány lineární stupnice. Pokud je ale zaškrtnuto **měřítko protokolu** , generují se hodnoty v logaritmickém měřítku (to znamená, že poměr sousedních bodů je konstantní místo jejich rozdílu). Pro celočíselné parametry můžete definovat rozsah použitím spojovníku. Například "1-10" znamená, že všechna celá čísla mezi 1 a 10 (včetně) tvoří sadu parametrů. Ve smíšeném režimu je také podporována. Například sada parametrů "1-10, 20, 50" by obsahovala celá čísla 1-10, 20 a 50.
 
 ![Dvěma třídami posíleného rozhodovacího stromu, parametr rozsahu](./media/algorithm-parameters-optimize/fig3.png)
 

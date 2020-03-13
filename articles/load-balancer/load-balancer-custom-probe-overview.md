@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: 46d566dc7527097d36b72886ada1f8c94f727535
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357420"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285133"
 ---
-# <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
+# <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
 Pokud používáte pravidla vyrovnávání zatížení s Azure Load Balancer, je nutné zadat sondy stavu, aby bylo možné Load Balancer detekovat stav koncového bodu back-endu.  Konfigurace sondy stavu a odezvy sondy určují, které instance fondu back-end budou dostávat nové toky. Sondy stavu můžete použít k detekci selhání aplikace na koncovém bodu back-endu. Můžete také vygenerovat vlastní odpověď na sondu stavu a použít sondu stavu pro řízení toku ke správě zátěže nebo plánovaného výpadku. Pokud selže test stavu, Load Balancer zastaví odesílání nových toků do příslušné instance, která není v pořádku. Odchozí připojení nemá vliv na jenom příchozí připojení.
 

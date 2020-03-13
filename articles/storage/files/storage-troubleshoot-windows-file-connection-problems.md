@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 17ecc80fee3b024c334b8d36533663f1f3cebe4d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597962"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136901"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se soubory Azure v systému Windows
 
@@ -44,13 +44,21 @@ Pokud jsou pro účet úložiště nakonfigurovaná pravidla virtuální sítě 
 
 Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
+### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Příčina 3: oprávnění na úrovni sdílené složky nejsou při použití ověřování založeného na identitě správná
+
+Pokud uživatelé přistupují ke sdílené složce Azure pomocí ověřování služby Active Directory (AD) nebo Azure Active Directory Domain Services (Azure služba AD DS), přístup ke sdílené složce selže a dojde k chybě "přístup byl odepřen", pokud jsou nesprávná oprávnění na úrovni sdílení. 
+
+### <a name="solution-for-cause-3"></a>Řešení pro příčinu 3
+
+Pokud chcete aktualizovat oprávnění na úrovni sdílené složky, přečtěte si téma [Přiřazení přístupových oprávnění k identitě](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#assign-access-permissions-to-an-identity).
+
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Při připojení nebo odpojení sdílené složky Azure došlo k chybě 53, chyba 67 nebo chyba 87.
 
 Když se pokusíte připojit sdílenou složku z místního prostředí nebo z jiného datového centra, může dojít k následujícím chybám:
 
 - Došlo k systémové chybě 53. Síťová cesta se nenašla.
-- Došlo k systémové chybě 67. Název sítě se nenašel.
+- Došlo k systémové chybě 67. Síťový název nelze nalézt.
 - Došlo k systémové chybě 87. Parametr je nesprávný.
 
 ### <a name="cause-1-port-445-is-blocked"></a>Příčina 1: port 445 je blokován
@@ -264,7 +272,7 @@ Když se soubor zkopíruje přes síť, dešifruje se na zdrojovém počítači,
 ### <a name="cause"></a>Příčina
 K tomuto problému může dojít, pokud používáte systém souborů EFS (Encrypting File System) (EFS). Soubory šifrované BitLockerem je možné zkopírovat do souborů Azure. Soubory Azure ale nepodporují systém souborů NTFS.
 
-### <a name="workaround"></a>Alternativní řešení
+### <a name="workaround"></a>Alternativní řešení:
 Chcete-li zkopírovat soubor přes síť, je nutné jej nejprve dešifrovat. Použijte jednu z následujících metod:
 
 - Použijte příkaz **Kopírovat/d** . Povoluje ukládání šifrovaných souborů v cílovém umístění jako dešifrovaných souborů.
@@ -317,5 +325,5 @@ V současné době můžete zvážit opětovné nasazení služby AAD DS pomocí
 - Názvy nesmí začínat číselným znakem.
 - Název musí mít délku 3 až 63 znaků.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu.
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.

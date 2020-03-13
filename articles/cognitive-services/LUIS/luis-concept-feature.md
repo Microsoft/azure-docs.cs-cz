@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393898"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220993"
 ---
 # <a name="machine-learned-features"></a>Funkce učené počítačem 
 
@@ -26,7 +26,7 @@ Na [portálu Luis ve verzi Preview](https://preview.luis.ai)jsou funkce _popisov
 
 ## <a name="features-_descriptors_-in-language-understanding"></a>Funkce (_popisovače_) v Language Understanding
 
-Funkce, které jsou známé také jako popisovače, popisují popsaných prvků, které vám pomůžou Language Understanding identifikovat příklad projevy. K funkcím patří: 
+Funkce, které jsou známé také jako popisovače, popisují popsaných prvků, které vám pomůžou Language Understanding identifikovat příklad projevy. Mezi hlavní funkce patří: 
 
 * Seznam frází jako funkce pro záměry nebo entit
 * Entity jako funkce pro záměry nebo entity

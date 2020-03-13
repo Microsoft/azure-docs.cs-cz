@@ -4,11 +4,11 @@ description: Přečtěte si o hodnoceních v Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425693"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269689"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>O hodnoceních v Azure Migrate
 

@@ -1,22 +1,22 @@
 ---
 title: Přehled služby Azure blockchain
 description: Přehled služby Azure blockchain
-ms.date: 11/21/2019
+ms.date: 03/12/2020
 ms.topic: overview
-ms.reviewer: janders
-ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: ravastra
+ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387373"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205070"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
 Služba Azure Blockchain je plně spravovaná služba v hlavní knize, která umožňuje uživatelům rozšiřovat a provozovat blockchain sítě ve velkém měřítku v Azure. Poskytováním jednotného řízení pro správu infrastruktury i zásad správného řízení sítě blockchain zajišťuje služba Azure blockchain:
 
 * Jednoduché síťové nasazení a operace
-* Integrovaná správa konsorcií
+* Integrovaná správa konsorcia
 * Vývoj inteligentních smluv pomocí známých vývojářských nástrojů
 
 Služba Azure Blockchain je navržená tak, aby podporovala více protokolů hlavní knihy. V současné době poskytuje podporu pro hlavní knihu [kvora](https://www.goquorum.com/) ethereem pomocí mechanismu [iBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensu.
@@ -29,7 +29,7 @@ Nasazení služby Azure blockchain se provádí prostřednictvím Azure Portal, 
 
 ### <a name="performance-and-service-tiers"></a>Výkon a úrovně služeb
 
-Služba Azure blockchain nabízí dvě úrovně služeb: *Basic* a *Standard*. Každá úroveň nabízí jiný výkon a možnosti pro podporu zjednodušeného vývoje a testování zatížení až po rozsáhlou škálu nasazení produkčního blockchainu. Obě úrovně zahrnují aspoň jeden uzel transakce a jeden uzel validátoru (základní) nebo dva uzly validátoru (Standard).
+Služba Azure blockchain nabízí dvě úrovně služeb: *Basic* a *Standard*. Každá úroveň nabízí jiný výkon a možnosti pro podporu zjednodušeného vývoje a testování zatížení až po rozsáhlou škálu nasazení produkčního blockchainu. Využijte *základní* vrstvu pro vývoj, testování a kontrolu konceptů. Použijte úroveň *Standard* pro nasazení produkčních úrovní. Obě úrovně zahrnují aspoň jeden uzel transakce a jeden uzel validátoru (základní) nebo dva uzly validátoru (Standard). 
 
 ![Cenové úrovně](./media/overview/pricing-tiers.png)
 
@@ -49,7 +49,7 @@ Kromě toho služba Azure blockchain poskytuje bohatou metriku prostřednictvím
 
 Uživatelé můžou prostřednictvím Azure Log Analytics zobrazovat protokoly související s hlavní knihou kvora nebo jiné důležité informace, jako je například pokus o připojení k uzlům transakcí.
 
-## <a name="built-in-consortium-management"></a>Integrovaná správa konsorcií
+## <a name="built-in-consortium-management"></a>Integrovaná správa konsorcia
 
 Při nasazování prvního blockchain člena se buď připojte, nebo vytvořte novou konsorcium.  Konsorcium je logická skupina, která slouží ke správě zásad správného řízení a připojení mezi blockchain členy, kteří pracují v procesu s více stranami.  Služba Azure blockchain poskytuje předdefinované ovládací prvky zásad správného řízení prostřednictvím předem definovaných inteligentních kontraktů, které určují, jaké akce mohou členové konsorcia provádět.  Tyto ovládací prvky zásad správného řízení je možné přizpůsobit správcem konsorcia podle potřeby. Při vytváření nového konsorcia je váš blockchain člen výchozím správcem konsorcia a umožňuje tak pozvat jiné strany, aby se připojili k vašemu konsorciu.  Konsorcium můžete spojit pouze v případě, že jste byli dříve pozváni.  Při spojení s konsorciem se váš blockchain člen řídí ovládacími prvky zásad správného řízení, které provádí správce konsorcia.
 

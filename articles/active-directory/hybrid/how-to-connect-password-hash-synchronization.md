@@ -16,11 +16,11 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6451507eb5a25f432c73468d0da0db1838c8c9a
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081985"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261382"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -199,7 +199,7 @@ Pokud používáte Azure AD Domain Services k poskytování staršího ověřov�
     * Zapíše hodnoty hash hesla protokolu Kerberos, které obdrží, do Azure AD Domain Services řadiče domény. Hodnoty hash jsou uloženy do atributu *supplementalCredentials* objektu uživatele, který je zašifrovaný do veřejného klíče řadiče domény Azure AD Domain Services.
     * Azure AD Domain Services zapíše hodnotu hash hesla protokolu NTLM získanou do řadiče domény Azure AD Domain Services. Hodnota hash se uloží do atributu *unicodePwd* objektu uživatele, který se zašifruje do veřejného klíče řadiče domény Azure AD Domain Services.
 
-## <a name="enable-password-hash-synchronization"></a>Povolení synchronizace hodnoty hash hesel
+## <a name="enable-password-hash-synchronization"></a>Povolit synchronizaci hodnot hash hesel
 
 >[!IMPORTANT]
 >Pokud migrujete z AD FS (nebo jiných federačních technologií) na synchronizaci hodnot hash hesel, důrazně doporučujeme, abyste provedli náš podrobný průvodce nasazením, který jste publikovali [tady](https://aka.ms/adfstophsdpdownload).

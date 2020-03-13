@@ -7,11 +7,11 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384529"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274811"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Vysvětlení fungování nástroje pro migraci
 
@@ -163,7 +163,7 @@ Pro služby účtu úložiště, jako je například blob, Table, File a Queue, 
 | ServerTimeOutError | Metrika transakcí s dimenzemi "ResponseType" = "ServerTimeOutError"  | |
 | Úspěch | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" | |
 | TotalBillableRequests| Transakce | |
-| TotalEgress | Výchozí přenos dat | |
+| TotalEgress | Výchozí přenos | |
 | Totalbillablerequests | Příchozí přenos dat | |
 | TotalRequests | Transakce | |
 

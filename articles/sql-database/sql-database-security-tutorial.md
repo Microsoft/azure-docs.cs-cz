@@ -10,16 +10,16 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818040"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238829"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: zabezpečení jedné nebo sdružené databáze
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > - Vytvoření pravidel brány firewall na úrovni serveru a databáze
@@ -50,7 +50,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 - Server a databáze SQL Azure
   - Vytváření pomocí [Azure Portal](sql-database-single-database-get-started.md), [CLI](sql-database-cli-samples.md)nebo [PowerShellu](sql-database-powershell-samples.md)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -80,7 +80,7 @@ Nastavení pravidla brány firewall na úrovni serveru:
 
 1. Na stránce **Přehled** vyberte **nastavit bránu firewall serveru**. Otevře se stránka **nastavení brány firewall** pro databázový server.
 
-   1. Na panelu nástrojů vyberte **Přidat IP adresu klienta** a přidejte tak aktuální IP adresu do nového pravidla brány firewall. Pravidlo může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres. Vyberte **Uložit**.
+   1. Na panelu nástrojů vyberte **Přidat IP adresu klienta** a přidejte tak aktuální IP adresu do nového pravidla brány firewall. Pravidlo může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres. Vyberte **Save** (Uložit).
 
       ![nastavení pravidla brány firewall serveru](./media/sql-database-security-tutorial/server-firewall-rule2.png)
 
@@ -149,7 +149,7 @@ Informace o konfiguraci služby Azure AD najdete v těchto tématech:
 
 ## <a name="manage-database-access"></a>Správa přístupu k databázi
 
-Správa přístupu k databázi přidáním uživatelů do databáze nebo povolení přístupu uživatelů pomocí zabezpečených připojovacích řetězců. Připojovací řetězce jsou užitečné pro externí aplikace. Další informace najdete v tématu [řízení přístupu k Azure SQL](sql-database-control-access.md) a [ověřování AD](sql-database-aad-authentication.md).
+Správa přístupu k databázi přidáním uživatelů do databáze nebo povolení přístupu uživatelů pomocí zabezpečených připojovacích řetězců. Připojovací řetězce jsou užitečné pro externí aplikace. Další informace najdete v tématech [Správa přihlašovacích údajů a uživatelských účtů](sql-database-manage-logins.md) a [ověřování AD](sql-database-aad-authentication.md).
 
 Chcete-li přidat uživatele, vyberte typ ověření databáze:
 
@@ -290,7 +290,7 @@ Povolení auditování:
 
        - **Centrum událostí**, které umožňuje směrování událostí pro použití v jiných aplikacích
 
-   1. Vyberte **Uložit**.
+   1. Vyberte **Save** (Uložit).
 
       ![Nastavení auditu](./media/sql-database-security-tutorial/audit-settings.png)
 
@@ -315,7 +315,7 @@ Povolení maskování dat:
 
     ![Nastavení masky](./media/sql-database-security-tutorial/mask-settings.png)
 
-1. Vyberte **Uložit**. Vybrané informace jsou nyní maskovány pro ochranu osobních údajů.
+1. Vyberte **Save** (Uložit). Vybrané informace jsou nyní maskovány pro ochranu osobních údajů.
 
     ![Příklad masky](./media/sql-database-security-tutorial/mask-query.png)
 
@@ -329,7 +329,7 @@ Povolení nebo ověření šifrování:
 
 1. V části **zabezpečení** vyberte **transparentní šifrování dat**.
 
-1. V případě potřeby nastavte **šifrování dat** na **zapnuto**. Vyberte **Uložit**.
+1. V případě potřeby nastavte **šifrování dat** na **zapnuto**. Vyberte **Save** (Uložit).
 
     ![Transparentní šifrování dat](./media/sql-database-security-tutorial/encryption-settings.png)
 

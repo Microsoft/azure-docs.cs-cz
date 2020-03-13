@@ -1,5 +1,5 @@
 ---
-title: Konfigurace a Správa
+title: Konfigurace a správa
 description: Naučte se konfigurovat a spravovat Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
-ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082425"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209425"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Jak používat Azure SQL Database
 
@@ -43,7 +43,7 @@ V této části najdete různé příručky, skripty a vysvětlení, které vám
 
 - [Ruční ladění](sql-database-performance-guidance.md)
 - [Monitorování výkonu pomocí zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md)
-- [Monitorování výkonu pomocí úložiště dotazů](sql-database-operate-query-store.md)
+- [Monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Řešení potíží s výkonem pomocí Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [Použití diagnostického protokolu Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Monitorování OLTP místa v paměti](sql-database-in-memory-oltp-monitoring.md)

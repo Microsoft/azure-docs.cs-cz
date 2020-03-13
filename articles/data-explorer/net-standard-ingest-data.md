@@ -8,17 +8,17 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379814"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251775"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Ingestování dat pomocí sady Azure Průzkumník dat .NET Standard SDK (Preview)
 
 Azure Průzkumník dat (ADX) je rychlá a vysoce škálovatelná služba pro zkoumání dat pro data protokolů a telemetrie. ADX poskytuje dvě klientské knihovny pro .NET Standard: [knihovnu](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) ingest a [knihovnu dat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku vytvoříte nejprve tabulku a mapování dat v testovacím clusteru. Potom do fronty zařadíte ingestování do clusteru a ověříte výsledky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -55,7 +55,7 @@ var password = "<Password>";
 ```
 
 ## <a name="construct-the-connection-string"></a>Vytvoření připojovacího řetězce
-Teď vytvořte připojovací řetězec. Cílovou tabulku a mapování vytvoříte v pozdějším kroku.
+Teď sestavte připojovací řetězec. Cílovou tabulku a mapování vytvoříte v pozdějším kroku.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";

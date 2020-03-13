@@ -12,17 +12,17 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128432"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240069"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rychlý start: Vytvoření virtuální sítě pomocí webu Azure Portal
 
 V tomto rychlém startu se dozvíte, jak vytvořit virtuální síť pomocí Azure Portal. Nasadíte dva virtuální počítače (VM). Dále zabezpečeně komunikujete mezi virtuálními počítači a připojením k virtuálním počítačům z Internetu. Virtuální síť je základním stavebním blokem pro vaši privátní síť v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače, bezpečně komunikovat mezi sebou a s internetem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -72,7 +72,7 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Název virtuálního počítače | Zadejte *myVm1*. |
     | Oblast | Vyberte **USA – východ**. |
     | Možnosti dostupnosti | Ve výchozím nastavení **není nutná žádná redundance infrastruktury**. |
-    | Image | Ve výchozím nastavení se jedná o **Windows Server 2019 Datacenter**. |
+    | Obrázek | Ve výchozím nastavení se jedná o **Windows Server 2019 Datacenter**. |
     | Velikost | Výchozí hodnota je **Standard DS1 v2**. |
     | **Účet správce** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
@@ -108,7 +108,7 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte *myvmstorageaccount*. Pokud se tento název povede, vytvořte jedinečný název.|
-    | Account kind (Druh účtu) | Výchozí hodnota pro **Storage (pro obecné účely V1)** . |
+    | Druh účtu | Výchozí hodnota pro **Storage (pro obecné účely V1)** . |
     | Výkon | Výchozí hodnota je **Standard**. |
     | Replikace | Výchozí pro **místně redundantní úložiště (LRS)** . |
 

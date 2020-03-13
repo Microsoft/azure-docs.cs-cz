@@ -3,12 +3,12 @@ title: Zobrazení metrik v reálném čase pomocí Azure Monitor pro kontejnery 
 description: Tento článek popisuje zobrazení metrik v reálném čase bez použití kubectl s Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404932"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216591"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Jak zobrazit metriky v reálném čase
 
@@ -34,7 +34,7 @@ Tato funkce provádí operaci cyklického dotazování u koncových bodů metrik
 
 Interval dotazování se konfiguruje v rozevíracím seznamu **nastavit interval** , který umožňuje nastavit dotazování pro nová data každých 1, 5, 15 a 30 sekund. 
 
-![Interval cyklického dotazování na živý seznam](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![Interval cyklického dotazování na živý seznam](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >Doporučujeme nastavit interval dotazování na jednu sekundu a vyřešit problém po krátkou dobu. Tyto požadavky mohou mít vliv na dostupnost a omezování rozhraní Kubernetes API v clusteru. Následně znovu nakonfigurujte na delší interval dotazování. 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379242"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279387"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Práce s SKU brány virtuální sítě (zastaralé SKU)
 
@@ -36,7 +36,7 @@ Ceny starší brány můžete zobrazit v části **Virtual Network brány** , kt
 
 Bránu můžete změnit na SKU brány ve stejné rodině SKU. Například pokud máte standardní SKU, můžete změnit velikost na HighPerformance SKU. Nemůžete ale změnit velikost služby VPN Gateway mezi původními SKU a nové rodiny SKU. Například nemůžete přejít ze standardní SKU na SKU VpnGw2 nebo základní SKU na VpnGw1.
 
-### <a name="resource-manager"></a>Resource Manager
+### <a name="resource-manager"></a>Správce prostředků
 
 Chcete-li změnit velikost brány pro model nasazení Správce prostředků pomocí prostředí PowerShell, použijte následující příkaz:
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389883"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282481"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a Diagnostika pro Azure Service Fabric
 
@@ -18,7 +18,7 @@ Tento článek poskytuje přehled monitorování a diagnostiky pro Azure Service
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="application-monitoring"></a>Monitorování aplikace
+## <a name="application-monitoring"></a>Sledování aplikací
 Monitorování aplikací sleduje, jak se používají funkce a komponenty vaší aplikace. Chcete monitorovat své aplikace, abyste měli jistotu, že jsou zachyceny problémy, které mají vliv na uživatele. Zodpovědnost za monitorování aplikací je na uživatelích, kteří vyvíjí aplikaci a její služby, protože je jedinečná pro obchodní logiku vaší aplikace. Monitorování aplikací může být užitečné v následujících scénářích:
 * Kolik provozu má aplikace? – Potřebujete škálovat vaše služby tak, aby splňovaly požadavky uživatelů, nebo řešit potenciální kritická místa ve vaší aplikaci?
 * Je moje služba pro volání úspěšná a sledovaná?

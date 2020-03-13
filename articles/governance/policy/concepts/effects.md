@@ -4,11 +4,11 @@ description: Definice Azure Policy mají různé efekty, které určují, jak je
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355044"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281181"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy Azure Policy efekty
 

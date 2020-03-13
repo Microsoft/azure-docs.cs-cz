@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e0870ac9dc818ca07e149421b486136c76dd61a4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822484"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208818"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database
 
@@ -36,9 +36,9 @@ Seznam funkcí, které jsou v SQL Database podporované a nepodporované, najdet
 
 Základní příkazy DDL (Data Definition Language) jsou k dispozici, ale některé příkazy DDL mají rozšíření související s umístěním na disku a nepodporovanými funkcemi.
 
-- Příkazy CREATE a ALTER databáze mají více než tři desítkové možnosti. Příkazy zahrnují možnosti umístění souborů, FILESTREAM a Service Broker, které platí pouze pro SQL Server. To může být bez ohledu na to, jestli vytváříte databáze před migrací, ale pokud migrujete kód T-SQL, který vytváří databáze, měli byste porovnat [databázi CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) se syntaxí SQL Server v [create Database (SQL Server Transact-SQL). ](https://msdn.microsoft.com/library/ms176061.aspx)aby se zajistilo, že se podporují všechny možnosti, které používáte. Vytvoření databáze pro Azure SQL Database má také možnosti cíle služby a elastického škálování, které se vztahují pouze na SQL Database.
+- Příkazy CREATE a ALTER databáze mají více než tři desítkové možnosti. Příkazy zahrnují možnosti umístění souborů, FILESTREAM a Service Broker, které platí pouze pro SQL Server. To může být bez ohledu na to, jestli vytváříte databáze před migrací, ale pokud migrujete kód T-SQL, který vytváří databáze, měli byste porovnat [databázi CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) se syntaxí SQL Server v [create Database (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) , abyste měli jistotu, že se podporují všechny možnosti, které používáte. Vytvoření databáze pro Azure SQL Database má také možnosti cíle služby a elastického škálování, které se vztahují pouze na SQL Database.
 - Příkazy CREATE a ALTER TABLE mají možnosti FileTable, které nelze použít na SQL Database, protože FILESTREAM není podporován.
-- Příkazy CREATE a ALTER LOGIN jsou podporovány, ale SQL Database nenabízí všechny možnosti. Aby byla databáze lépe přenosná, SQL Database doporučuje používat uživatele databáze s omezením místo přihlášení, kdykoli je to možné. Další informace najdete v tématech [Vytvoření a změna přihlášení](https://msdn.microsoft.com/library/ms189828.aspx) a [řízení a udělení přístupu k databázi](sql-database-manage-logins.md).
+- Příkazy CREATE a ALTER LOGIN jsou podporovány, ale SQL Database nenabízí všechny možnosti. Aby byla databáze lépe přenosná, SQL Database doporučuje používat uživatele databáze s omezením místo přihlášení, kdykoli je to možné. Další informace najdete v tématu [Vytvoření a změna přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql) údajů a [Správa přihlášení a uživatelů](sql-database-manage-logins.md).
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>V Azure SQL Database není podporovaná syntaxe jazyka Transact-SQL.
 

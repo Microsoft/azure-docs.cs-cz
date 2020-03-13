@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
 ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379380"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249110"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor
 

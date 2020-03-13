@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363925"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245925"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Kontrola výstupu Video Indexer vytvořeného rozhraním API
 
@@ -109,7 +109,7 @@ V této části se zobrazuje souhrn přehledů.
 |failureMessage|Zpráva o selhání, pokud se nepovedlo zpracovat.|
 |externalId|Externí ID videa (Pokud určuje uživatel)|
 |externalUrl|Externí adresa URL videa (Pokud určuje uživatel)|
-|zprostředkovatele identity|Externí metadata videa (Pokud určuje uživatel)|
+|metadata|Externí metadata videa (Pokud určuje uživatel)|
 |z dospělého|Označuje, zda bylo video ručně zkontrolováno a identifikováno jako video z dospělého.|
 |Insights|Objekt Insights Další informace najdete v tématu [přehledy](#insights).|
 |thumbnailId|ID miniatury videa Chcete-li získat skutečný miniaturní hovor [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) a předat mu ID a thumbnailId videa.|

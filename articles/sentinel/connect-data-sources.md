@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
 ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669239"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240083"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -120,21 +120,21 @@ Případně můžete agenta nasadit ručně na existující virtuální počíta
 | Firewall webových aplikací Microsoft (WAF) – (AzureDiagnostics) |[Připojení brány firewall webových aplikací od Microsoftu](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [Připojit Symantec](connect-symantec.md) | V | |
 | ThreatIntelligenceIndicator  | [Propojit analýzu hrozeb](connect-threat-intelligence.md)  | V | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Mapa služby Azure Monitor](../azure-monitor/insights/service-map.md)<br>[Azure Monitor připojování k VIRTUÁLNÍm počítačům](../azure-monitor/insights/vminsights-onboard.md) <br> [Povolení Azure Monitorch přehledů virtuálních počítačů](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Použití samostatného připojení k virtuálnímu počítači](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [Použití při připojování prostřednictvím zásad](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| × | Sešit VM Insights  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Mapa služby Azure Monitor](../azure-monitor/insights/service-map.md)<br>[Azure Monitor připojování k VIRTUÁLNÍm počítačům](../azure-monitor/insights/vminsights-onboard.md) <br> [Povolení Azure Monitorch přehledů virtuálních počítačů](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Použití samostatného připojení k virtuálnímu počítači](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [Použití při připojování prostřednictvím zásad](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| X | Sešit VM Insights  |
 | DnsEvents | [Připojit DNS](connect-dns.md) | V | |
-| W3CIISLog | [Připojit protokoly služby IIS](../azure-monitor/platform/data-sources-iis-logs.md)  | × | |
-| WireData | [Připojení dat o kabelech](../azure-monitor/insights/wire-data.md) | × | |
+| W3CIISLog | [Připojit protokoly služby IIS](../azure-monitor/platform/data-sources-iis-logs.md)  | X | |
+| WireData | [Připojení dat o kabelech](../azure-monitor/insights/wire-data.md) | X | |
 | WindowsFirewall | [Připojit bránu Windows Firewall](connect-windows-firewall.md) | V | |
 | AADIP SecurityAlert  | [Připojení Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | V | |
 | AATP SecurityAlert  | [Připojení Azure ATP](connect-azure-atp.md) | V | |
 | SecurityAlert ASC  | [Připojit Azure Security Center](connect-azure-security-center.md)  | V | |
 | MCAS SecurityAlert  | [Připojit Microsoft Cloud App Security](connect-cloud-app-security.md)  | V | |
 | SecurityAlert | | | |
-| Sysmon (událost) | [Připojit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Připojit události systému Windows](../azure-monitor/platform/data-sources-windows-events.md) <br> [Získání analyzátoru Sysmon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| × | Kolekce Sysmon není ve výchozím nastavení ve virtuálních počítačích nainstalovaná. Další informace o tom, jak nainstalovat agenta Sysmon, najdete v tématu [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
-| ConfigurationData  | [Automatizace inventáře virtuálních počítačů](../automation/automation-vm-inventory.md)| × | |
-| ConfigurationChange  | [Automatizace sledování virtuálních počítačů](../automation/change-tracking.md) | × | |
-| F5 BIG-IP | [Připojit F5 – BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | × | |
-| McasShadowItReporting  |  | × | |
+| Sysmon (událost) | [Připojit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Připojit události systému Windows](../azure-monitor/platform/data-sources-windows-events.md) <br> [Získání analyzátoru Sysmon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| X | Kolekce Sysmon není ve výchozím nastavení ve virtuálních počítačích nainstalovaná. Další informace o tom, jak nainstalovat agenta Sysmon, najdete v tématu [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
+| ConfigurationData  | [Automatizace inventáře virtuálních počítačů](../automation/automation-vm-inventory.md)| X | |
+| ConfigurationChange  | [Automatizace sledování virtuálních počítačů](../automation/change-tracking.md) | X | |
+| F5 BIG-IP | [Připojit F5 – BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | X | |
+| McasShadowItReporting  |  | X | |
 | Barracuda_CL | [Připojit Barracuda](connect-barracuda.md) | V | |
 
 

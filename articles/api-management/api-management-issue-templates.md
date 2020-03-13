@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374352"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249578"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Vystavení šablon v Azure API Management
 Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
@@ -102,8 +102,8 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |--------------|----------|-----------------|  
 |`Issues`|Kolekce entit [problémů](api-management-template-data-model-reference.md#Issue) .|Problémy viditelné pro aktuálního uživatele.|  
 |`Paging`|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce aplikací.|  
-|`IsAuthenticated`|Boolean|Určuje, jestli je aktuální uživatel přihlášený k portálu pro vývojáře.|  
-|`CanReportIssues`|Boolean|Zda má aktuální uživatel oprávnění k zastavení problému.|  
+|`IsAuthenticated`|Datový typ Boolean|Určuje, jestli je aktuální uživatel přihlášený k portálu pro vývojáře.|  
+|`CanReportIssues`|Datový typ Boolean|Zda má aktuální uživatel oprávnění k zastavení problému.|  
 |`Search`|string|Tato vlastnost je zastaralá a neměla by se používat.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  

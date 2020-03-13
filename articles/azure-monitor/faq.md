@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
 ms.openlocfilehash: 169cc3f6a195a7339ab33eb9f00d9937451a93e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395412"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275578"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -259,7 +259,7 @@ Podrobnosti závisí na typu projektu. Pro webovou aplikaci:
   * Microsoft.ApplicationInsights
   * Microsoft.ApplicationInsights.Platform
 * Vloží položky do:
-  * Soubor web.config
+  * Web.config
   * packages.config
 * (Jenom nové projekty – Pokud [přidáte Application Insights do existujícího projektu][start], musíte to provést ručně.) Vloží fragmenty kódu do klienta a kód serveru pro inicializaci s ID prostředku Application Insights. Například v aplikaci MVC je kód vložen do zobrazení Master Page View/Shared/\_layout. cshtml
 

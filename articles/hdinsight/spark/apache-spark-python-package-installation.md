@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 98326d23f5aca1264bc47168cc25b427c3db331d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087118"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135951"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
@@ -52,8 +52,8 @@ Cluster HDInsight Spark se vytvoří s instalací Anaconda. V clusteru jsou dvě
 | |Python 2,7|Python 3,5|
 |----|----|----|
 |Cesta|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Výchozí nastavení je 2,7|Není k dispozici|
-|Livy|Výchozí nastavení je 2,7|Není k dispozici|
+|Spark|Výchozí nastavení je 2,7|NEUŽÍVÁ SE.|
+|Livy|Výchozí nastavení je 2,7|NEUŽÍVÁ SE.|
 |Jupyter|Jádro PySpark|Jádro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpečně instalovat externí balíčky Pythonu
@@ -74,12 +74,38 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     Úplný seznam balíčků, které jsou k dispozici, můžete vyhledat v [indexu balíčku](https://pypi.python.org/pypi) . Můžete také získat seznam dostupných balíčků z jiných zdrojů. Balíčky, které jsou k dispozici například, můžete nainstalovat pomocí [conda-zfalšovat](https://conda-forge.org/feedstocks/).
 
-    -   `seaborn` je název balíčku, který chcete nainstalovat.
-    -   `-n py35new` zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
+    Použijte níže uvedený příkaz, pokud chcete nainstalovat knihovnu s nejnovější verzí:
+    
+    - Použít conda kanál:
 
-    ```bash
-    sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
-    ```
+        -   `seaborn` je název balíčku, který chcete nainstalovat.
+        -   `-n py35new` zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
+        ```
+
+    - Nebo použijte úložiště PyPi, změňte `seaborn` a `py35new` odpovídajícím způsobem:
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        ```        
+
+    Použijte níže uvedený příkaz, pokud chcete nainstalovat knihovnu s konkrétní verzí:
+
+    - Použít conda kanál:
+
+        -   `numpy=1.16.1` je název a verze balíčku, které byste chtěli nainstalovat.
+        -   `-n py35new` zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
+        ```
+
+    - Nebo použijte úložiště PyPi, změňte `numpy==1.16.1` a `py35new` odpovídajícím způsobem:
+
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        ```
 
     Pokud neznáte název virtuálního prostředí, můžete SSH na hlavní uzel clusteru a spustit `/usr/bin/anaconda/bin/conda info -e` pro zobrazení všech virtuálních prostředí.
 

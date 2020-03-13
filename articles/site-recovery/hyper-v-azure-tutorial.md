@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239844"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Toto je třetí kurz ze specializované série. Předpokládá se, že jste již dokončili úlohy v předchozích kurzech:
 
@@ -134,7 +134,7 @@ Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a ú�
 
     ![Zásady replikace](./media/hyper-v-azure-tutorial/replication-policy.png)
 
-## <a name="enable-replication"></a>Povolení replikace
+## <a name="enable-replication"></a>Povolit replikaci
 
 1. V **aplikaci replikovat aplikaci**vyberte **zdroj**.
 2. V části **Zdroj** vyberte lokalitu **ContosoHyperVSite**. Pak vyberte **OK**.

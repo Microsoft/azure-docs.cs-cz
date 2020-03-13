@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372206"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135934"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Vytvoření nebo odstranění kontejneru v Azure Storage pomocí .NET
 
-Objekty BLOB v Azure Storage jsou uspořádány do kontejnerů. Než budete moct nahrát objekt blob, musíte nejdřív vytvořit kontejner. Tento článek ukazuje, jak vytvořit a odstranit kontejnery pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client).
+Objekty BLOB v Azure Storage jsou uspořádány do kontejnerů. Než budete moct nahrát objekt blob, musíte nejdřív vytvořit kontejner. Tento článek ukazuje, jak vytvořit a odstranit kontejnery pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="name-a-container"></a>Pojmenování kontejneru
 
@@ -37,7 +37,7 @@ Chcete-li vytvořit kontejner, zavolejte jednu z následujících metod:
 
 - [Vytvoření](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
-- [createIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
+- [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
 
 Metody **Create** a **CreateAsync** vyvolávají výjimku, pokud kontejner se stejným názvem již existuje.
@@ -185,7 +185,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Vytvořit operaci kontejneru](/rest/api/storageservices/create-container)
 - [Operace Delete Container](/rest/api/storageservices/delete-container)

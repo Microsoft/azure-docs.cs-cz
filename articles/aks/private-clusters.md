@@ -4,103 +4,26 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: b8b4f8062d9f60648e22ab4eb0be78eb47159834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944202"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205171"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Vytvoření privátního clusteru služby Azure Kubernetes (Preview)
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
 V privátním clusteru má Řídicí rovina nebo Server rozhraní API interní IP adresy, které jsou definované v dokumentu [RFC1918-Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918) . Pomocí privátního clusteru můžete zajistit, aby síťový provoz mezi vaším serverem API a fondy uzlů zůstaly jenom v privátní síti.
 
 Rovina ovládacího prvku nebo Server API se nachází v předplatném Azure spravovaném službou Azure Kubernetes (AKS). Cluster nebo fond uzlů zákazníka je v předplatném zákazníka. Server a cluster nebo fond uzlů můžou vzájemně komunikovat prostřednictvím [služby privátního propojení Azure][private-link-service] ve virtuální síti serveru API a privátního koncového bodu, který je vystavený v PODSÍTI clusteru AKS zákazníka.
 
-> [!IMPORTANT]
-> Funkce AKS ve verzi Preview jsou samoobslužné a jsou nabízeny na základě výslovného souhlasu. Verze Preview jsou *k dispozici* *tak, jak* jsou, a jsou vyloučené z smlouvy o úrovni služeb (SLA) a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou, a to s ohledem na *nejlepší úsilí* . Proto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
->
-> * [Zásady podpory AKS](support-policies.md)
-> * [Nejčastější dotazy k podpoře Azure](faq.md)
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="prerequisites"></a>Předpoklady
+* Azure CLI verze 2.2.0 nebo novější
 
-* Azure CLI verze 2.0.77 nebo novější a verze rozšíření Azure CLI AKS ve verzi Preview 0.4.18
-
-## <a name="currently-supported-regions"></a>Aktuálně podporované oblasti
-
-* Austrálie – východ
-* Austrálie – jihovýchod
-* Brazílie – jih
-* Kanada – střed
-* Východní Kanada
-* Cenral nás
-* Východní Asie
-* USA – východ
-* USA – východ 2
-* Východní USA 2 EUAP
-* Francie – střed
-* Německo – sever
-* Japonsko – východ
-* Japonsko – západ
-* Jižní Korea – střed
-* Jižní Korea – jih
-* USA – středosever
-* Severní Evropa
-* Severní Evropa
-* USA – středojih
-* Velká Británie – jih
-* Západní Evropa
-* USA – západ
-* USA – západ 2
-* USA – východ 2
-
-## <a name="currently-supported-availability-zones"></a>Aktuálně podporované Zóny dostupnosti
-
-* USA – střed
-* USA – východ
-* USA – východ 2
-* Francie – střed
-* Japonsko – východ
-* Severní Evropa
-* Jihovýchodní Asie
-* Velká Británie – jih
-* Západní Evropa
-* USA – západ 2
-
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Nainstalovat nejnovější rozšíření Azure CLI AKS Preview
-
-Pokud chcete používat privátní clustery, potřebujete rozšíření Azure CLI AKS Preview verze 0.4.18 nebo novější. Nainstalujte rozšíření Azure CLI AKS Preview pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli jsou dostupné aktualizace, pomocí následujícího příkazu [AZ Extension Update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-> [!CAUTION]
-> Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí ve verzi Preview můžete použít výchozí nastavení pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
-
-```azurecli-interactive
-az feature register --name AKSPrivateLinkPreview --namespace Microsoft.ContainerService
-```
-
-Může trvat několik minut, než se stav registrace zobrazí jako *zaregistrované*. Stav můžete zjistit pomocí následujícího příkazu [AZ Feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSPrivateLinkPreview')].{Name:name,State:properties.state}"
-```
-
-Když je stav zaregistrován, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí následujícího příkazu [AZ Provider Register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-az provider register --namespace Microsoft.Network
-```
 ## <a name="create-a-private-aks-cluster"></a>Vytvoření privátního clusteru AKS
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Vytvořte skupinu prostředků nebo pro svůj cluster AKS použijte existující skupinu prostředků.
 
@@ -159,6 +82,7 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 9. Do virtuální sítě, ve které máte virtuální počítač, vyberte **partnerské vztahy**, vyberte virtuální síť AKS a vytvořte partnerský vztah. Pokud se rozsahy adres ve virtuální síti AKS a v konfliktu virtuální sítě virtuálního počítače, partnerský vztah se nezdařil. Další informace najdete v tématu [partnerský vztah virtuálních sítí][virtual-network-peering].
 
 ## <a name="dependencies"></a>Závislosti  
+
 * Služba privátního propojení je podporována pouze u standardních Azure Load Balancer. Základní Azure Load Balancer nejsou podporované.  
 * Pokud chcete použít vlastní server DNS, nasaďte server služby Active Directory se službou DNS pro přeposílání na tento protokol IP 168.63.129.16
 
@@ -173,7 +97,6 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 * Žádná podpora pro převod stávajících clusterů AKS na privátní clustery
 * Odstraněním nebo úpravou privátního koncového bodu v podsíti zákazníka dojde k zastavení fungování clusteru. 
 * Služba Azure Monitor for Containers Live data není v současné době podporovaná.
-* Využití *vlastního DNS* není momentálně podporované.
 
 
 <!-- LINKS - internal -->

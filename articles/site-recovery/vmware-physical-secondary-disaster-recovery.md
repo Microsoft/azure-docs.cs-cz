@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362680"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256806"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii místních virtuálních počítačů VMware nebo fyzických serverů do sekundární lokality
 
@@ -51,14 +51,14 @@ v případě fyzických počítačů postupujte podle tohoto [kurzu](./physical-
 **Požadované součásti** |Služba mobility na replikovaných počítačích. Místní konfigurační server, procesový Server, hlavní cílový server. Dočasný procesový Server v Azure pro navrácení služeb po obnovení.|Služba mobility, procesový Server, konfigurační server a hlavní cíl
 **Konfigurace a orchestrace** |Recovery Services trezor v Azure Portal | Použití vContinuum 
 **Replikovateln** |Disk (Windows a Linux) |Svazek – okna<br> Disk – Linux
-**Cluster sdíleného disku** |Nepodporuje se|Podporuje se
+**Cluster sdíleného disku** |Nepodporováno|Podporuje se
 **Omezení četnosti změn dat (průměr)** |10 MB/s dat na disk<br> data 25 MB JAVASCRIPTOVÉHO/s na virtuální počítač<br> [Další informace](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s dat na disk  <br> > dat o velikosti 25 MB/s na virtuální počítač
 **Monitorování** |Z Azure Portal|Z CX (konfigurační server)
 **Matice podpory** | [Kliknutím sem zobrazíte podrobnosti.](./vmware-physical-azure-support-matrix.md)|[Stáhnout matrici kompatibilní s funkcí ASR Scout](https://aka.ms/asr-scout-cm)
 
 
-## <a name="prerequisites"></a>Předpoklady
-K provedení kroků v tomto kurzu je potřeba:
+## <a name="prerequisites"></a>Požadavky
+Pro absolvování tohoto kurzu potřebujete:
 
 - [Zkontrolujte](vmware-physical-secondary-support-matrix.md) požadavky na podporu pro všechny komponenty.
 - Ujistěte se, že počítače, které chcete replikovat, vyhovují [podpoře replikovaného počítače](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
@@ -128,7 +128,7 @@ Stáhněte soubor [Update](https://aka.ms/asr-scout-update7) . zip a konfigurač
   8. **Zdrojový server Linux**: Chcete-li aktualizovat sjednoceného agenta, zkopírujte odpovídající verzi souboru sjednoceného agenta na server Linux a rozbalte ji. V extrahované složce spusťte příkaz **/install**.  Příklad: pro RHEL 6,7 64-bit Server zkopírujte **InMage_UA_8.0,7.0_RHEL6-64_GA_03Dec2018_release. tar. gz** na server a rozbalte ho. V extrahované složce spusťte příkaz **/install**.
   9. Po upgradu konfiguračního serveru, procesového serveru a serveru pro příjem s výše uvedenými instalačními programy je potřeba upgradovat ručně knihovny PHP a MySQL pomocí kroků uvedených v části 7,4 příručky pro [rychlé instalace](https://aka.ms/asr-scout-quick-install-guide).
 
-## <a name="enable-replication"></a>Povolení replikace
+## <a name="enable-replication"></a>Povolit replikaci
 
 1. Nastavte replikaci mezi zdrojovou a cílovou lokalitou VMware.
 2. Další informace o instalaci, ochraně a obnovení najdete v následujících dokumentech:

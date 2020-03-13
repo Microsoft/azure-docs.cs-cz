@@ -4,11 +4,11 @@ description: Azure hodnocení zásad a efekty určení dodržování předpisů.
 ms.date: 02/01/2019
 ms.topic: how-to
 ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384426"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280635"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -84,12 +84,12 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 V přiřazení je prostředek **nekompatibilní** , pokud nedodržuje pravidla zásad nebo iniciativ.
 Následující tabulka ukazuje, jak různé zásady účinky pracovat s vyhodnocením podmínek pro výsledný stav dodržování předpisů:
 
-| Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
+| Stav prostředku | Efekt | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Neodpovídající |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Odpovídající |
-| Nová | Audit, AuditIfNotExist\* | True | Neodpovídající |
-| Nová | Audit, AuditIfNotExist\* | False | Odpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Nekompatibilní |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Kompatibilní |
+| Nový | Audit, AuditIfNotExist\* | True | Nekompatibilní |
+| Nový | Audit, AuditIfNotExist\* | Nepravda | Kompatibilní |
 
 \* Účinky Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE.
 Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
@@ -268,7 +268,7 @@ Vaše výsledky budou vypadat přibližně jako v následujícím příkladu:
 
 Další informace o dotazování na události zásad najdete v článku referenční informace o [událostech Azure Policy](/rest/api/policy-insights/policyevents) .
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Azure PowerShell modul pro Azure Policy je na Galerie prostředí PowerShell k dispozici jako [AZ. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights).
 Pomocí PowerShellGet můžete nainstalovat modul pomocí `Install-Module -Name Az.PolicyInsights` (Ujistěte se, že máte nainstalovanou nejnovější [Azure PowerShell](/powershell/azure/install-az-ps) ):

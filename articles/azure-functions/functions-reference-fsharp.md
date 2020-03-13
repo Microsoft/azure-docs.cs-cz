@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358185"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276761"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Referenční F# informace pro vývojáře Azure Functions
 
@@ -285,7 +285,7 @@ Cesty poskytují direktivu `#load` jsou relativní vzhledem k umístění vašeh
 Direktiva `#load` pracuje pouze se soubory `.fsx`F# (skriptu), nikoli se soubory `.fs`.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících zdrojích:
+Další informace naleznete v následujících zdrojích:
 
 * [F#Program](/dotnet/articles/fsharp/index)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)

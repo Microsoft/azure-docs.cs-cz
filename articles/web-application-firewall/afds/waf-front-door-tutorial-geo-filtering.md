@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: dd9c3f972a2b598c0c03db2cb80986c08900c609
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abcef61d478eccb4e979b60eb845ac8d398a49f9
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517121"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135866"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Nastavení geografického filtrování zásad WAF pro vaše přední dveře
 
@@ -21,7 +21,7 @@ V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit ukázkovou z�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s nastavením zásad geografického filtru, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 ### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
@@ -113,4 +113,4 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [bráně firewall webových aplikací Azure](../overview.md).
-- Přečtěte si, jak [vytvořit Front Door](../../frontdoor/quickstart-create-front-door.md).
+- Přečtěte si, jak [vytvořit službu Front Door](../../frontdoor/quickstart-create-front-door.md).

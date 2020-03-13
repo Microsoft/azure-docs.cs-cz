@@ -9,17 +9,18 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/07/2020
-ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: dcaaf3c2f793e7148e1695cdfaa68c768db5fff6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382334"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240538"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 
-Azure SQL Database vám umožní vytvářet a plánovat úlohy, které se můžou pravidelně provádět v jedné nebo mnoha databázích, aby se daly spouštět dotazy T-SQL a provádět úlohy údržby. Každá úloha zaznamená stav spuštění a také automaticky opakuje operace, pokud dojde k nějaké chybě.
+Azure SQL Database vám umožní vytvářet a plánovat úlohy, které se můžou pravidelně provádět v jedné nebo mnoha databázích, aby se daly spouštět dotazy T-SQL a provádět úlohy údržby.
+Každá úloha zaznamená stav spuštění a také automaticky opakuje operace, pokud dojde k nějaké chybě.
 Můžete definovat cílovou databázi nebo skupiny databází Azure SQL, kde se úloha spustí, a také definovat plány pro spuštění úlohy.
 Úloha zpracovává úlohu přihlášení do cílové databáze. Můžete také definovat, udržovat a zachovat skripty jazyka Transact-SQL, které se mají spouštět napříč skupinou databází SQL Azure.
 
@@ -48,10 +49,10 @@ V Azure SQL Database jsou k dispozici následující technologie plánování ú
 
 Je potřeba si vymezit několik rozdílů mezi agentem SQL (dostupnými místně a jako součást SQL Database spravované instance) a Agent elastické úlohy databáze (k dispozici pro izolované databáze ve službě Azure SQL Database a databáze v SQL Data Warehouse).
 
-|  |Elastické úlohy  |Agent SQL |
+| |Elastické úlohy |Agent SQL |
 |---------|---------|---------|
-|Rozsah     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
-|Podporovaná rozhraní API a nástroje     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
+|Obor | Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
+|Podporovaná rozhraní API a nástroje | Portál, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent Jobs
 
@@ -106,8 +107,8 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @email_address = '$(loginEmail)',
     @display_name = 'SQL Agent Account',
     @mailserver_name = '$(mailserver)' ,
-    @username = '$(loginEmail)' ,  
-    @password = '$(password)' 
+    @username = '$(loginEmail)' ,
+    @password = '$(password)'
 
 -- Create a Database Mail profile
 EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -125,13 +126,13 @@ Budete taky muset povolit Databázová pošta na spravované instanci:
 
 ```sql
 GO
-EXEC sp_configure 'show advanced options', 1;  
-GO  
-RECONFIGURE;  
-GO  
-EXEC sp_configure 'Database Mail XPs', 1;  
-GO  
-RECONFIGURE 
+EXEC sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+EXEC sp_configure 'Database Mail XPs', 1;
+GO
+RECONFIGURE
 ```
 
 Můžete upozornit operátora, že se něco stalo s vašimi úlohami agenta SQL. Operátor definuje kontaktní informace pro jednotlivce zodpovědného za údržbu jedné nebo více spravovaných instancí. V některých případech se odpovědnosti operátorů přiřazují jednomu jednotlivci.
@@ -140,23 +141,24 @@ V systémech, které mají více spravovaných instancí nebo serverů SQL, mnoh
 Můžete vytvořit operátory pomocí SSMS nebo skriptu Transact-SQL, který je znázorněn v následujícím příkladu:
 
 ```sql
-EXEC msdb.dbo.sp_add_operator 
-    @name=N'Mihajlo Pupun', 
-        @enabled=1, 
-        @email_address=N'mihajlo.pupin@contoso.com'
+EXEC msdb.dbo.sp_add_operator
+    @name=N'Mihajlo Pupun',
+    @enabled=1,
+    @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
 Můžete upravit libovolnou úlohu a přiřadit operátory, které budou upozorňovány prostřednictvím e-mailu, pokud se úloha dokončí, selže nebo bude úspěšná pomocí SSMS nebo následujícího skriptu Transact-SQL:
 
 ```sql
-EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
-        @notify_level_email=3,                        -- Options are: 1 on succeed, 2 on failure, 3 on complete
-        @notify_email_operator_name=N'Mihajlo Pupun'
+EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
+    @notify_level_email=3, -- Options are: 1 on succeed, 2 on failure, 3 on complete
+    @notify_email_operator_name=N'Mihajlo Pupun'
 ```
 
 ### <a name="sql-agent-job-limitations"></a>Omezení úloh agenta SQL
 
 Některé funkce agenta SQL, které jsou k dispozici v SQL Server, nejsou ve spravované instanci podporovány:
+
 - Nastavení agenta SQL jsou jen pro čtení. Procedura `sp_set_agent_properties` není ve spravované instanci podporována.
 - Povolení nebo zakázání agenta SQL se v tuto chvíli nepodporuje ve spravované instanci. Agent SQL je vždycky spuštěný.
 - Oznámení jsou částečně podporovaná.
@@ -180,17 +182,16 @@ Následující obrázek ukazuje agenta úloh, který spouští úlohy napříč 
 
 ### <a name="elastic-job-components"></a>Komponenty elastických úloh
 
-|Komponenta  | Popis (další podrobnosti jsou uvedené pod tabulkou) |
+|Komponenta | Popis (další podrobnosti jsou uvedené pod tabulkou) |
 |---------|---------|
-|[**Agent elastických úloh**](#elastic-job-agent) |  Prostředek Azure, který vytvoříte pro spouštění a správu úloh.   |
-|[**Databáze úloh**](#job-database)    |    Databáze Azure SQL, do které agent úloh ukládá data související s úlohami, definice úloh atd.      |
-|[**Cílová skupina**](#target-group)      |  Sada serverů, fondu, databází a map horizontálních oddílů, pro které se má úloha spustit.       |
-|[**Úloha**](#job)  |  Úloha je jednotka práce, která se skládá z jednoho nebo více [kroků úlohy](#job-step). Kroky úlohy určují skript T-SQL, který se má spustit, a také další podrobnosti potřebné ke spuštění skriptu.  |
-
+|[**Agent elastických úloh**](#elastic-job-agent) | Prostředek Azure, který vytvoříte pro spouštění a správu úloh. |
+|[**Databáze úloh**](#job-database) | Databáze Azure SQL, do které agent úloh ukládá data související s úlohami, definice úloh atd. |
+|[**Cílová skupina**](#target-group) | Sada serverů, fondu, databází a map horizontálních oddílů, pro které se má úloha spustit. |
+|[**Úloha**](#job) | Úloha je jednotka práce, která se skládá z jednoho nebo více [kroků úlohy](#job-step). Kroky úlohy určují skript T-SQL, který se má spustit, a také další podrobnosti potřebné ke spuštění skriptu. |
 
 #### <a name="elastic-job-agent"></a>Agent elastických úloh
 
-Agent elastických úloh je prostředek Azure určený k vytváření, spouštění a správě úloh. Agent elastických úloh je prostředek Azure, který vytvoříte na portálu (podporuje se také [PowerShell](elastic-jobs-powershell.md) a REST). 
+Agent elastických úloh je prostředek Azure určený k vytváření, spouštění a správě úloh. Agent elastických úloh je prostředek Azure, který vytvoříte na portálu (podporuje se také [PowerShell](elastic-jobs-powershell.md) a REST).
 
 K vytvoření **agenta elastických úloh** je potřeba existující databáze SQL. Agent nakonfiguruje tuto existující databázi jako [*databázi úloh*](#job-database).
 
@@ -202,24 +203,20 @@ Agent elastických úloh je bezplatný. Databáze úloh se účtuje stejnou sazb
 
 V aktuální verzi Preview je k vytvoření agenta elastických úloh potřeba existující databáze Azure SQL (S0 nebo vyšší).
 
-*Databáze úloh* nemusí být v některých případech nová, ale měla by to být čistý, prázdný, S0 nebo vyšší cíl služby. Doporučený cíl služby *databáze úloh* je S1 nebo vyšší, ale optimální volba závisí na potřebách výkonu vaší úlohy: počet kroků úlohy, počet cílů úlohy a četnost spouštění úloh. Například databáze S0 může být dostatečná pro agenta úloh, který spouští několik úloh, které cílí na méně než deset databází, ale spuštění úlohy každou minutu nemusí být dostatečně rychlé s databází S0 a vyšší úroveň služby může být lepší. 
+*Databáze úloh* nemusí být v některých případech nová, ale měla by to být čistý, prázdný, S0 nebo vyšší cíl služby. Doporučený cíl služby *databáze úloh* je S1 nebo vyšší, ale optimální volba závisí na potřebách výkonu vaší úlohy: počet kroků úlohy, počet cílů úlohy a četnost spouštění úloh. Například databáze S0 může být dostatečná pro agenta úloh, který spouští několik úloh, které cílí na méně než deset databází, ale spuštění úlohy každou minutu nemusí být dostatečně rychlé s databází S0 a vyšší úroveň služby může být lepší.
 
-Pokud jsou operace s databází úloh pomalejší, než se čekalo, [monitorujte](sql-database-monitor-tune-overview.md#monitor-database-performance) výkon databáze a využití prostředků v databázi úloh během období pomalé míry pomocí Azure Portal nebo [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. Pokud se využití prostředku, jako je například CPU, datový vstup/výstup nebo zápis do protokolu, blíží 100% a koreluje s periodami zpomalení, zvažte možnost přírůstkového škálování databáze na vyšší cíle služby (buď v [modelu DTU](sql-database-service-tiers-dtu.md) , nebo v [modelu Vcore](sql-database-service-tiers-vcore.md)), dokud nebude dostatečně vylepšen výkon databáze úloh.
-
+Pokud jsou operace s databází úloh pomalejší, než se čekalo, [monitorujte](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) výkon databáze a využití prostředků v databázi úloh během období pomalé míry pomocí Azure Portal nebo [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. Pokud se využití prostředku, jako je například CPU, datový vstup/výstup nebo zápis do protokolu, blíží 100% a koreluje s periodami zpomalení, zvažte možnost přírůstkového škálování databáze na vyšší cíle služby (buď v [modelu DTU](sql-database-service-tiers-dtu.md) , nebo v [modelu Vcore](sql-database-service-tiers-vcore.md)), dokud nebude dostatečně vylepšen výkon databáze úloh.
 
 ##### <a name="job-database-permissions"></a>Oprávnění k databázi úloh
 
 Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky a role *jobs_reader*. Tato role se vytvoří s následujícími oprávněními a je určená k tomu, aby správcům poskytovala podrobnější řízení přístupu pro účely monitorování úloh:
 
-
-|Název role  |Oprávnění ke schématu jobs  |Oprávnění ke schématu jobs_internal  |
+|Název role |Oprávnění ke schématu jobs |Oprávnění ke schématu jobs_internal |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Žádná     |
+|**jobs_reader** | VYBRAT | Žádné |
 
 > [!IMPORTANT]
 > Jako správce databáze zvažte před udělením přístupu k *databázi úloh* všechny bezpečnostní důsledky. Uživatel se zlými úmysly s oprávněními k vytváření nebo úpravě úloh by mohl vytvořit nebo upravit úlohu, která se pomocí uložených přihlašovacích údajů připojí k databázi pod jeho kontrolou a uživatel se zlými úmysly by tak mohl zjistit přihlašovací heslo.
-
-
 
 #### <a name="target-group"></a>Cílová skupina
 
@@ -246,7 +243,6 @@ Následující příklady ukazují, jak se při spuštění úlohy dynamicky zji
 **Příklad 3** ukazuje podobnou cílovou skupinu jako *příklad 2*, ale s jednou výslovně vyloučenou databází. Akce kroku úlohy se ve vyloučené databázi *neprovede*.<br>
 **Příklad 4** ukazuje cílovou skupinu, která jako cíl obsahuje elastický fond. Podobně jako v *příkladu 2* se fond automaticky zjistí za běhu úlohy a určí se seznam databází ve fondu.
 <br><br>
-
 
 ![Příklady cílových skupin](media/elastic-jobs-overview/targetgroup-examples2.png)
 
@@ -287,7 +283,7 @@ Pokud chcete zajistit, aby při spouštění úloh pro databáze v elastickém f
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je Agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
-- [Jak vytvářet a spravovat elastické úlohy](elastic-jobs-overview.md) 
-- [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md) 
-- [Vytváření a správa elastických úloh pomocí Transact-SQL (T-SQL)](elastic-jobs-tsql.md) 
+- [Co je Agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [Jak vytvářet a spravovat elastické úlohy](elastic-jobs-overview.md)
+- [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md)
+- [Vytváření a správa elastických úloh pomocí Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

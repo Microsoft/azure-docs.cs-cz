@@ -3,120 +3,72 @@ title: Nastavení výstrah a oznámení (Azure Portal)
 description: Pomocí Azure Portal můžete vytvářet SQL Database výstrahy, které můžou aktivovat oznámení nebo automatizaci při splnění zadaných podmínek.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-ms.date: 11/02/2018
-ms.openlocfilehash: c2b889d4013abb60c9ad7bb4bcdc4e6546cfa37c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/10/2020
+ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745954"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209509"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Vytváření upozornění pro Azure SQL Database a datový sklad pomocí Azure Portal
+# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Vytváření upozornění pro Azure SQL Database a databáze Azure synapse Analytics pomocí Azure Portal
 
 ## <a name="overview"></a>Přehled
-V tomto článku se dozvíte, jak nastavit Azure SQL Database a výstrahy datového skladu pomocí Azure Portal. Když některá metrika (například velikost databáze nebo využití procesoru) dosáhne prahové hodnoty, můžou vám výstrahy poslat e-mail nebo zavolat webový Hook. Tento článek také poskytuje osvědčené postupy pro nastavení dob upozornění.    
+
+V tomto článku se dozvíte, jak nastavit výstrahy pro databáze s jedním, sdruženým a datovým skladem v Azure SQL Database a Azure synapse Analytics (dřív Azure SQL Data Warehouse) pomocí Azure Portal. Když některá metrika (například velikost databáze nebo využití procesoru) dosáhne prahové hodnoty, můžou vám výstrahy poslat e-mail nebo zavolat webový Hook. Tento článek také poskytuje osvědčené postupy pro nastavení dob upozornění.
 
 > [!IMPORTANT]
 > Tato funkce není zatím k dispozici ve spravované instanci. Jako alternativu můžete použít agenta SQL k posílání e-mailových upozornění pro některé metriky na základě [zobrazení dynamické správy](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
 Můžete obdržet upozornění na základě metrik monitorování pro události nebo služby Azure.
 
-* **Hodnoty metrik** – výstraha se aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu, kterou přiřadíte v obou směrech. To znamená, že se aktivuje při prvním splnění podmínky a následně v případě, že se už podmínka nesplní.    
+* **Hodnoty metrik** – výstraha se aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu, kterou přiřadíte v obou směrech. To znamená, že se aktivuje při prvním splnění podmínky a následně v případě, že se už podmínka nesplní.
 * **Události protokolu aktivit** – výstraha se může aktivovat *každou* událost, nebo jenom v případě, že dojde k určitému počtu událostí.
 
 Můžete nakonfigurovat výstrahu, která při triggeru provede následující akce:
 
-* odesílání e-mailových oznámení správci služeb a spolusprávcům
+* Odesílání e-mailových oznámení správci služeb a spolusprávcům
 * Odešlete e-mail na další e-maily, které zadáte.
-* volání Webhooku
+* Volání webhooku
 
 Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí
 
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
 * [rozhraní příkazového řádku (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
-* [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě s Azure Portal
+
 1. Na [portálu](https://portal.azure.com/)vyhledejte prostředek, který chcete monitorovat, a vyberte ho.
-2. V části monitorování vyberte **výstrahy (Classic)** . Text a ikona se mohou mírně lišit pro různé prostředky.  
-   
-     ![Sledování](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
+2. V části monitorování vyberte **výstrahy** . Text a ikona se mohou mírně lišit pro různé prostředky.  
+
+   ![Monitorování](media/sql-database-insights-alerts-portal/Alerts.png)
   
-   - **Jenom SQL DW**: klikněte na graf **využití DWU** . Vybrat **zobrazení klasických výstrah**
+3. Kliknutím na tlačítko **nové pravidlo výstrahy** otevřete stránku **vytvořit pravidlo** .
+  ![vytvořit pravidlo](media/sql-database-insights-alerts-portal/create-rule.png)
 
-3. Vyberte tlačítko **Přidat upozornění metriky (Classic)** a vyplňte pole.
-   
-    ![Přidat výstrahu](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
-4. **Pojmenujte** pravidlo upozornění a vyberte **Popis**, který se zobrazí také v oznámeních e-mailů.
-5. Vyberte **metriku** , kterou chcete monitorovat, a pak zvolte **podmínku** a **prahovou** hodnotu pro metriku. Také vyberte časové **období** , po které musí být pravidlo metriky splněné před triggerem výstrahy. Pokud například použijete tečku "PT5M" a vaše výstraha vyhledá procesor nad 80%, výstraha se aktivuje, když je **průměrný** procesor nad 80% po dobu 5 minut. Po prvním triggeru se znovu spustí, když je průměrný procesor pod 80% za 5 minut. Měření procesoru probíhá každé 1 minuty. V následující tabulce najdete podporovaná časová okna a typ agregace, které jednotlivé výstrahy používají – ne všechny výstrahy používají průměrnou hodnotu.   
-6. Kontrolovat **vlastníky e-mailů...** Pokud chcete, aby správci a spolusprávci byli při aktivaci výstrahy e-mailem.
-7. Pokud chcete, aby vám další e-maily dostaly oznámení v případě, že se výstraha aktivuje, přidejte je do pole **Další e-maily správce** . Oddělte více e-mailů středníkem – *e-mail\@contoso. com; email2\@contoso.com*
-8. Vložte do pole **Webhooku** platný identifikátor URI, pokud chcete, aby se vyvolalo, když se výstraha aktivuje.
-9. Po dokončení vytváření výstrahy vyberte **OK** .   
+4. V části **Podmínka** klikněte na **Přidat**.
+  ![definování podmínky](media/sql-database-insights-alerts-portal/create-rule.png)
+5. Na stránce **Konfigurovat logiku signálu** vyberte signál.
+  ![vybrat](media/sql-database-insights-alerts-portal/select-signal.png)signálu.
+6. Po výběru signálu, jako je **Procento procesoru**, se zobrazí stránka **Konfigurovat logiku signálu** .
+  ![nakonfigurovat logiku signálu](media/sql-database-insights-alerts-portal/configure-signal-logic.png)
+7. Na této stránce nakonfigurujte tento typ prahové hodnoty, operátor, typ agregace, prahovou hodnotu, členitost agregace a frekvenci vyhodnocení. Potom klikněte na **Done** (Hotovo).
+8. V poli **vytvořit pravidlo**vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Skupina akcí umožňuje definovat akci, která má být provedena při výskytu výstrahy.
+  ![definovat skupinu akcí](media/sql-database-insights-alerts-portal/action-group.png)
 
-Během několika minut je výstraha aktivní a triggery, jak je popsáno výše.
+9. Definujte název pravidla, zadejte volitelný popis, zvolte úroveň závažnosti pro pravidlo, zvolte, jestli se má pravidlo Povolit při vytváření pravidla, a pak klikněte na **vytvořit výstrahu pravidla** a vytvořte výstrahu pravidla metriky.
 
-## <a name="managing-your-alerts"></a>Správa výstrah
-Jakmile vytvoříte upozornění, můžete ho vybrat a:
-
-* Zobrazení grafu znázorňujícího prahovou hodnotu metriky a skutečné hodnoty z předchozího dne.
-* Upravte nebo odstraňte.
-* Tuto možnost **zakažte** nebo **Povolte** , pokud chcete dočasně zastavit nebo obnovit přijímání oznámení pro tuto výstrahu.
-
-
-## <a name="sql-database-alert-values"></a>SQL Database hodnoty výstrah
-
-| Typ prostředku | Název metriky | Popisný název | Typ agregace | Minimální časový interval výstrahy|
-| --- | --- | --- | --- | --- |
-| Databáze SQL | cpu_percent | Procento CPU | Průměr | 5 minut |
-| Databáze SQL | physical_data_read_percent | Procento datových V/V | Průměr | 5 minut |
-| Databáze SQL | log_write_percent | Procentní hodnota protokolu v/v | Průměr | 5 minut |
-| Databáze SQL | dtu_consumption_percent | Procento DTU | Průměr | 5 minut |
-| Databáze SQL | úložiště | Celková velikost databáze | Maximum | 30 minut |
-| Databáze SQL | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| Databáze SQL | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
-| Databáze SQL | blocked_by_firewall | Blokováno bránou firewall | Celkem | 10 minut |
-| Databáze SQL | zablokování | Zablokování | Celkem | 10 minut |
-| Databáze SQL | storage_percent | Procento velikosti databáze | Maximum | 30 minut |
-| Databáze SQL | xtp_storage_percent | Procento úložiště v paměti OLTP (Preview) | Průměr | 5 minut |
-| Databáze SQL | workers_percent | Procento pracovních procesů | Průměr | 5 minut |
-| Databáze SQL | sessions_percent | Procento relací | Průměr | 5 minut |
-| Databáze SQL | dtu_limit | Limit DTU | Průměr | 5 minut |
-| Databáze SQL | dtu_used | Využité DTU | Průměr | 5 minut |
-||||||
-| Elastický fond | cpu_percent | Procento CPU | Průměr | 10 minut |
-| Elastický fond | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
-| Elastický fond | log_write_percent | Procentní hodnota protokolu v/v | Průměr | 10 minut |
-| Elastický fond | dtu_consumption_percent | Procento DTU | Průměr | 10 minut |
-| Elastický fond | storage_percent | Procento úložiště | Průměr | 10 minut |
-| Elastický fond | workers_percent | Procento pracovních procesů | Průměr | 10 minut |
-| Elastický fond | eDTU_limit | limit eDTU | Průměr | 10 minut |
-| Elastický fond | storage_limit | Omezení úložiště | Průměr | 10 minut |
-| Elastický fond | eDTU_used | využité eDTU | Průměr | 10 minut |
-| Elastický fond | storage_used | Využité úložiště | Průměr | 10 minut |
-||||||               
-| Datový sklad SQL | cpu_percent | Procento CPU | Průměr | 10 minut |
-| Datový sklad SQL | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
-| Datový sklad SQL | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| Datový sklad SQL | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
-| Datový sklad SQL | blocked_by_firewall | Blokováno bránou firewall | Celkem | 10 minut |
-| Datový sklad SQL | service_level_objective | Úroveň služby databáze | Celkem | 10 minut |
-| Datový sklad SQL | dwu_limit | DWU limit | Maximum | 10 minut |
-| Datový sklad SQL | dwu_consumption_percent | Procento DWU | Průměr | 10 minut |
-| Datový sklad SQL | dwu_used | DWU použito | Průměr | 10 minut |
-||||||
-
+Během 10 minut je výstraha aktivní a triggery, jak je popsáno výše.
 
 ## <a name="next-steps"></a>Další kroky
-* [Získejte přehled o monitorování Azure](../monitoring-and-diagnostics/monitoring-overview.md) , včetně typů informací, které můžete shromažďovat a monitorovat.
+
 * Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/platform/alerts-webhooks.md).
-* Získejte [Přehled diagnostických protokolů](../azure-monitor/platform/platform-logs-overview.md) a Shromážděte na vaší službě detailní metriky s vysokou frekvencí.
-* Získejte [Přehled o kolekci metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.

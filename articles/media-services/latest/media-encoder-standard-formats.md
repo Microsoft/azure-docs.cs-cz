@@ -15,11 +15,11 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363955"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251359"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Formáty a kodeky Standard Encoder
 

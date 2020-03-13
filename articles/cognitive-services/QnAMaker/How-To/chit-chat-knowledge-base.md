@@ -12,11 +12,11 @@ ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: a9a14056e6be62fc1c1b5e542c1a3acceb738eac
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389393"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220707"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidat Chit chat znalostní báze
 
@@ -46,10 +46,10 @@ CHITEST – datové sady chatu jsou podporovány v následujících jazycích:
 |Jazyk|
 |--|
 |Čínština|
-|Angličtina|
+|angličtina|
 |Francouzština|
 |Německo|
-|Italština|
+|italština|
 |Japonština|
 |Korejština|
 |Portugalština|
@@ -86,6 +86,6 @@ Vyberte své znalostní báze a přejděte na stránku **Nastavení** . Váš ko
 > [!div class="nextstepaction"]
 > [Import znalostní báze](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Viz také: 
 
 [Přehled služby QnA Maker](../Overview/overview.md)

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365464"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220135"
 ---
 # <a name="language-support-for-computer-vision"></a>Jazyková podpora pro Počítačové zpracování obrazu
 
@@ -29,32 +29,32 @@ Optické rozpoznávání znaků automaticky detekuje jazyk vstupního materiálu
 
 |Jazyk| Kód jazyka | OCR API |
 |:-----|:----:|:-----:|
-|arabština | `ar`|✔ |
+|Arabština | `ar`|✔ |
 |Čínština (zjednodušená) | `zh-Hans`|✔ |
 |Čínština (tradiční) | `zh-Hant`|✔ |
 |Čeština | `cs` |✔ |
 |dánština | `da` |✔ |
-|Holandština | `nl` |✔ |
-|Angličtina | `en` |✔ |
+|Nizozemština | `nl` |✔ |
+|angličtina | `en` |✔ |
 |Finština | `fi` |✔ |
 |Francouzština | `fr` |✔ |
 |Němčina | `de` |✔ |
 |Řečtina | `el` |✔ |
 |Maďarština | `hu` |✔ |
-|Italština | `it` |✔ |
+|italština | `it` |✔ |
 |Japonština | `ja` |✔ |
 |Korejština | `ko` |✔ |
 |norština | `nb` |✔ |
-|Polština | `pl` |✔ |
+|polština | `pl` |✔ |
 |Portugalština | `pt` |✔ |
 |Rumunština | `ro` |✔ |
 |Ruština | `ru` |✔ |
 |Srbština (cyrilice) | `sr-Cyrl` |✔ |
-|Srbština (latinka) | `sr-Latn` |✔ |
+|Srbština (Latina) | `sr-Latn` |✔ |
 |Slovenština | `sk` |✔ |
 |Španělština | `es` |✔ |
 |švédština | `sw` |✔ |
-|Turečtina | `tr` |✔ |
+|turečtina | `tr` |✔ |
 
 ## <a name="image-analysis"></a>Analýza obrázků
 
@@ -63,7 +63,7 @@ Některé akce rozhraní API [analyzovat-image](https://westus.dev.cognitive.mic
 |Jazyk | Kód jazyka | Kategorie | Značky | Popis | Pro dospělé | Značky | Barva | Tváře | ImageType | Objekty | Celebrity | Památek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Čínština | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|Angličtina | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
+|angličtina | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japonština | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portugalština | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Španělština | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|

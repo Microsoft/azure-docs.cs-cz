@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: bea6a572e55f1a79515c385fd7b79881c54ae65e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802921"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214016"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorování Azure SQL Database výkonu pomocí zobrazení dynamické správy
 
@@ -28,7 +28,7 @@ SQL Database částečně podporuje tři kategorie zobrazení dynamické správy
 - Zobrazení dynamické správy související s prováděním
 - Zobrazení dynamické správy související s transakcemi.
 
-Podrobné informace o zobrazeních dynamické správy najdete v tématu [dynamické zobrazení a funkce pro správu (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) v SQL Server Books Online. 
+Podrobné informace o zobrazeních dynamické správy najdete v tématu [dynamické zobrazení a funkce pro správu (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) v SQL Server Books Online.
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -40,6 +40,17 @@ GRANT VIEW DATABASE STATE TO database_user;
 ```
 
 V instanci místních SQL Server vrací zobrazení dynamické správy informace o stavu serveru. V SQL Database vrátí pouze informace týkající se aktuální logické databáze.
+
+Tento článek obsahuje kolekci dotazů DMV, které můžete spustit pomocí SQL Server Management Studio nebo Azure Data Studio k detekci následujících typů problémů s výkonem dotazů:
+
+- [Identifikace dotazů souvisejících s nadměrným využitím procesoru](#identify-cpu-performance-issues)
+- [PAGELATCH_ * a WRITE_LOG čekají v souvislosti s kritickými body v/v.](#identify-io-performance-issues)
+- [PAGELATCH_ * čekání způsobilo spory bytTempDB](#identify-tempdb-performance-issues)
+- [Čeká se na vyRESOURCE_SEMAHPORE z důvodu problémů přidělení paměti.](#identify-memory-grant-wait-performance-issues)
+- [Určení velikostí databáze a objektů](#calculating-database-and-objects-sizes)
+- [Načítání informací o aktivních relacích](#monitoring-connections)
+- [Načíst informace o využití prostředků na úrovni systému a databázového prostředku](#monitor-resource-use)
+- [Načítání informací o výkonu dotazu](#monitoring-query-performance)
 
 ## <a name="identify-cpu-performance-issues"></a>Identifikace problémů s výkonem procesoru
 
@@ -56,11 +67,11 @@ K určení horních hodnot hash dotazů použijte následující dotaz:
 ```sql
 PRINT '-- top 10 Active CPU Consuming Queries (aggregated)--';
 SELECT TOP 10 GETDATE() runtime, *
-FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
-     FROM(SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
+FROM (SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
+    FROM (SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
           FROM sys.dm_exec_requests AS req
-               CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
-     GROUP BY query_hash) AS t
+                CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
+    GROUP BY query_hash) AS t
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
@@ -72,14 +83,14 @@ K identifikaci těchto dotazů použijte následující dotaz:
 PRINT '--top 10 Active CPU Consuming Queries by sessions--';
 SELECT TOP 10 req.session_id, req.start_time, cpu_time 'cpu_time_ms', OBJECT_NAME(ST.objectid, ST.dbid) 'ObjectName', SUBSTRING(REPLACE(REPLACE(SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1), CHAR(10), ' '), CHAR(13), ' '), 1, 512) AS statement_text
 FROM sys.dm_exec_requests AS req
-     CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
+    CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
 ORDER BY cpu_time DESC;
 GO
 ```
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>V minulosti došlo k problému s PROCESORem.
 
-Pokud k problému došlo v minulosti a chcete provést analýzu hlavní příčiny, použijte [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Uživatelé s přístupem k databázi můžou použít T-SQL k dotazování na data úložiště dotazů.  Výchozí konfigurace úložiště dotazů používají členitost 1 hodina.  Pomocí následujícího dotazu si můžete prohlédnout aktivity s vysokými nároky na procesor. Tento dotaz vrátí prvních 15 náročných dotazů na procesor.  Nezapomeňte změnit `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
+Pokud k problému došlo v minulosti a chcete provést analýzu hlavní příčiny, použijte [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Uživatelé s přístupem k databázi můžou použít T-SQL k dotazování na data úložiště dotazů. Výchozí konfigurace úložiště dotazů používají členitost 1 hodina. Pomocí následujícího dotazu si můžete prohlédnout aktivity s vysokými nároky na procesor. Tento dotaz vrátí prvních 15 náročných dotazů na procesor. Nezapomeňte změnit `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -243,7 +254,7 @@ Pro kolize databáze tempdb je běžnou metodou snížit nebo znovu napsat kód 
 
 - Dočasné tabulky
 - Proměnné tabulky
-- Parametry s hodnotou tabulky
+- parametry s hodnotou tabulky
 - Využití úložiště verzí (konkrétně spojené s dlouhými běžícími transakcemi)
 - Dotazy, které mají plány dotazů, které používají řazení, spojení s algoritmem hash a zařazování
 
@@ -512,7 +523,7 @@ Můžete také monitorovat využití pomocí těchto dvou zobrazení:
 - [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys. dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 Můžete použít zobrazení [Sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) v každé databázi SQL. Zobrazení **Sys. dm_db_resource_stats** ukazuje poslední data použití prostředků vzhledem k úrovni služby. Průměrné procentuální hodnoty pro procesor, data v/v, zápisy protokolů a paměť se zaznamenávají každých 15 sekund a uchovávají se po dobu 1 hodiny.
 
@@ -533,7 +544,7 @@ FROM sys.dm_db_resource_stats;
 
 Další dotazy naleznete v příkladech v [tabulce sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysresource_stats"></a>sys. resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 Zobrazení [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) v **hlavní** databázi obsahuje další informace, které vám pomůžou monitorovat výkon SQL Database na konkrétní úrovni služby a výpočetní velikosti. Data se shromažďují každých 5 minut a uchovávají se po dobu přibližně 14 dnů. Toto zobrazení je užitečné pro dlouhodobé historické analýzy způsobu, jakým vaše databáze SQL používá prostředky.
 
@@ -612,7 +623,7 @@ Následující příklad ukazuje různé způsoby, jak můžete pomocí zobrazen
 
    | Průměrné procento využití procesoru | Maximální procento využití procesoru |
    | --- | --- |
-   | 24,5 |100,00 |
+   | 24.5 |100,00 |
 
     Průměrná doba využití procesoru je čtvrtina limitu výpočetní velikosti, která by odpovídala i výpočetní velikosti databáze. Ale maximální hodnota udává, že databáze dosáhne limitu výpočetní velikosti. Potřebujete přejít na další vyšší výpočetní velikost? Podívejte se, kolikrát vaše zatížení dosáhlo 100 procent, a pak ho porovnejte s cílem úlohy vaší databáze.
 
@@ -635,19 +646,19 @@ U elastických fondů můžete monitorovat jednotlivé databáze ve fondu pomoc�
 
 Pokud chcete zobrazit počet souběžných požadavků, spusťte tento dotaz Transact-SQL ve vaší databázi SQL:
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R;
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R;
+```
 
 Pokud chcete analyzovat úlohy místní databáze SQL Server, upravte tento dotaz tak, aby se vyfiltroval konkrétní databáze, kterou chcete analyzovat. Například pokud máte místní databázi s názvem MyDatabase, tento dotaz Transact-SQL vrátí počet souběžných žádostí v této databázi:
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R
-    INNER JOIN sys.databases D ON D.database_id = R.database_id
-    AND D.name = 'MyDatabase';
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R
+INNER JOIN sys.databases D ON D.database_id = R.database_id
+AND D.name = 'MyDatabase';
+```
 
 Toto je pouze snímek v jednom bodě v čase. Abyste lépe pochopili vaše úlohy a požadavky na souběžné požadavky, budete potřebovat shromáždit spoustu ukázek v průběhu času.
 
@@ -664,16 +675,20 @@ Pokud více klientů používá stejný připojovací řetězec, služba ověřu
 
 Pokud chcete zobrazit počet aktuálních aktivních relací, spusťte tento dotaz Transact-SQL ve vaší databázi SQL:
 
-    SELECT COUNT(*) AS [Sessions]
-    FROM sys.dm_exec_connections
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections
+```
 
 Pokud analyzujete místní úlohu SQL Server, upravte dotaz tak, aby se zazaměřil na konkrétní databázi. Tento dotaz vám pomůže určit možné potřeby relace pro databázi, Pokud zvažujete jejich přesun do Azure SQL Database.
 
-    SELECT COUNT(*)  AS [Sessions]
-    FROM sys.dm_exec_connections C
-    INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
-    INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-    WHERE D.name = 'MyDatabase'
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections C
+INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
+INNER JOIN sys.databases D ON (D.database_id = S.database_id)
+WHERE D.name = 'MyDatabase'
+```
 
 Tyto dotazy znovu vrátí počet bodů v čase. Pokud shromáždíte více ukázek v průběhu času, budete mít k dispozici nejvhodnější informace o použití vaší relace.
 
@@ -687,22 +702,22 @@ Pomalé nebo dlouho běžící dotazy můžou využívat významné systémové 
 
 Následující příklad vrátí informace o pěti nejčastějších dotazech seřazené podle průměrného času procesoru. V tomto příkladu jsou shrnuty dotazy podle jejich hodnoty hash dotazů, takže logicky ekvivalentní dotazy jsou seskupeny podle jejich kumulativní spotřeby prostředků.
 
-    ```sql
-    SELECT TOP 5 query_stats.query_hash AS "Query Hash",
-       SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
-       MIN(query_stats.statement_text) AS "Statement Text"
-    FROM
-       (SELECT QS.*,
+```sql
+SELECT TOP 5 query_stats.query_hash AS "Query Hash",
+    SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
+     MIN(query_stats.statement_text) AS "Statement Text"
+FROM
+    (SELECT QS.*,
         SUBSTRING(ST.text, (QS.statement_start_offset/2) + 1,
-        ((CASE statement_end_offset
-           WHEN -1 THEN DATALENGTH(ST.text)
-           ELSE QS.statement_end_offset END
-           - QS.statement_start_offset)/2) + 1) AS statement_text
-    FROM sys.dm_exec_query_stats AS QS
-    CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
-    GROUP BY query_stats.query_hash
-    ORDER BY 2 DESC;
-    ```
+            ((CASE statement_end_offset
+                WHEN -1 THEN DATALENGTH(ST.text)
+                ELSE QS.statement_end_offset END
+            - QS.statement_start_offset)/2) + 1) AS statement_text
+FROM sys.dm_exec_query_stats AS QS
+CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
+GROUP BY query_stats.query_hash
+ORDER BY 2 DESC;
+```
 
 ### <a name="monitoring-blocked-queries"></a>Monitorování blokovaných dotazů
 
@@ -712,26 +727,26 @@ Pomalé nebo dlouho běžící dotazy můžou přispět k nadměrné spotřebě 
 
 Neefektivní plán dotazů taky může zvýšit spotřebu procesoru. Následující příklad používá zobrazení [Sys. dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) k určení, který dotaz používá nejvíc kumulativní procesor.
 
-    ```sql
-    SELECT
-       highest_cpu_queries.plan_handle,
-       highest_cpu_queries.total_worker_time,
-       q.dbid,
-       q.objectid,
-       q.number,
-       q.encrypted,
-       q.[text]
-    FROM
-       (SELECT TOP 50
+```sql
+SELECT
+    highest_cpu_queries.plan_handle,
+    highest_cpu_queries.total_worker_time,
+    q.dbid,
+    q.objectid,
+    q.number,
+    q.encrypted,
+    q.[text]
+FROM
+    (SELECT TOP 50
         qs.plan_handle,
         qs.total_worker_time
     FROM
         sys.dm_exec_query_stats qs
-    ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
-    CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
-    ORDER BY highest_cpu_queries.total_worker_time DESC;
-    ```
+ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
+CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
+ORDER BY highest_cpu_queries.total_worker_time DESC;
+```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Úvod do SQL Database](sql-database-technical-overview.md)

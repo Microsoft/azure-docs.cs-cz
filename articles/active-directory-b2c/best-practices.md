@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304391"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136155"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Doporučení a osvědčené postupy pro Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ Během fáze implementace Vezměte v úvahu následující doporučení.
 
 |  |  |
 |--|--|
-| Úprava vlastních zásad pomocí rozšíření Azure AD B2C pro Visual Studio Code | Stáhněte si Visual Studio Code a toto rozšíření postavené na komunitě [z webu Visual Studio Code Marketplace]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)). I když není oficiální produkt společnosti Microsoft, Azure AD B2C rozšíření pro Visual Studio Code obsahuje několik funkcí, které usnadňují práci s vlastními zásadami. |
+| Úprava vlastních zásad pomocí rozšíření Azure AD B2C pro Visual Studio Code | Stáhněte si Visual Studio Code a toto rozšíření postavené na komunitě [z webu Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c). I když není oficiální produkt společnosti Microsoft, Azure AD B2C rozšíření pro Visual Studio Code obsahuje několik funkcí, které usnadňují práci s vlastními zásadami. |
 | Postup řešení potíží s Azure AD B2C | Naučte se [řešit potíže s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) během vývoje. Naučte se, jak vypadá normální tok ověřování, a používejte nástroje pro zjišťování anomálií a chyb. Můžete například použít [Application Insights](troubleshoot-with-application-insights.md) ke kontrole výstupních protokolů cest uživatelů. |
 | Využijte naši knihovnu prověřených vlastních vzorů zásad. | Najděte si [ukázky](https://github.com/azure-ad-b2c/samples) pro několik vylepšených Azure AD B2Cch cest uživatelů pro správu identit a přístupu (CIAM) zákazníků. |
 

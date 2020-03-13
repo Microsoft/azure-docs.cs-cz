@@ -2,14 +2,14 @@
 title: Migrace virtuálních počítačů VMware pomocí migrace serveru na základě agentů Azure Migrate
 description: Naučte se spouštět migraci virtuálních počítačů VMware založených na agentech pomocí Azure Migrate.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388939"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238437"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agentů)
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Před migrací virtuálních počítačů do Azure doporučujeme, abyste si vyzkoušeli vyhodnocování virtuálního počítače s VMware pomocí posouzení serveru Azure Migrate. Proveďte vyhodnocení následujícím způsobem:
 
@@ -57,7 +57,7 @@ Pokud chcete rozhodnout, jestli chcete použít migraci bez agenta nebo agenta, 
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
@@ -156,7 +156,7 @@ Na počítače, které chcete replikovat, bude nutné nainstalovat službu Mobil
 
 - Zařízení replikace Azure Migrate může provést nabízenou instalaci této služby, když povolíte replikaci pro určitý počítač, nebo ji můžete nainstalovat ručně nebo pomocí instalačních nástrojů.
 - V tomto kurzu provedeme instalaci služby Mobility pomocí nabízené instalace.
-- Pro nabízenou instalaci musíte připravit účet, který Azure Migrate migrace serveru použít pro přístup k virtuálnímu počítači.
+- Pro nabízenou instalaci musíte připravit účet, který Azure Migrate migrace serveru použít pro přístup k virtuálnímu počítači. Tento účet se používá jenom pro nabízenou instalaci, pokud nenainstalujete službu mobility ručně.
 
 Připravte účet následujícím způsobem:
 
@@ -409,7 +409,10 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 
 ## <a name="complete-the-migration"></a>Dokončete migraci
 
-1. Po dokončení migrace klikněte pravým tlačítkem na virtuální počítač > **zastavit migraci**. Tím se zastaví replikace místního počítače a vyčistí se informace o stavu replikace pro virtuální počítač.
+1. Po dokončení migrace klikněte pravým tlačítkem na virtuální počítač > **zastavit migraci**. Provede následující akce:
+    - Zastaví replikaci místního počítače.
+    - Odebere počítač z počtu **replikačních serverů** v Azure Migrate: Migrace serveru.
+    - Vyčistí informace o stavu replikace pro virtuální počítač.
 2. Na migrované počítače nainstalujte agenta Azure VM pro [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) .
 3. Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
 4. U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
@@ -420,7 +423,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
-- Lokálně
+- Místní
     - Přesuňte provoz aplikace do aplikace, která běží na instanci migrovaného virtuálního počítače Azure.
     - Odeberte místní virtuální počítače z místního inventáře virtuálních počítačů.
     - Odeberte místní virtuální počítače ze záloh.

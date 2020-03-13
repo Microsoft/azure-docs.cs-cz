@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362585"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238899"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak spustit postup zotavení po havárii pro místní p
 
 Toto je čtvrtý kurz v řadě, ve kterém se dozvíte, jak nastavit zotavení po havárii do Azure pro místní počítače.
 
-V tomto kurzu získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Nastavení izolované sítě pro testovací převzetí služeb při selhání

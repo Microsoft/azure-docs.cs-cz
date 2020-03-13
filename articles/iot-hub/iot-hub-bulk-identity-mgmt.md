@@ -1,6 +1,6 @@
 ---
-title: Importovat export identit zařízení Azure IoT Hub | Microsoft Docs
-description: Jak používat sadu SDK služby Azure IoT k provádění hromadných operací s registrem identit k importu a exportu identit zařízení. Operace importu umožňují hromadně vytvářet, aktualizovat a odstraňovat identity zařízení.
+title: Import/export identit zařízení v Azure IoT Hub | Microsoft Docs
+description: Jak používat sadu SDK služby Azure IoT ke spouštění hromadných operací s registrem identit k importu a exportu identit zařízení. Operace importu umožňují hromadně vytvářet, aktualizovat a odstraňovat identity zařízení.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429259"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218421"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Hromadné import a export identit zařízení IoT Hub
 
@@ -26,7 +26,6 @@ Operace importu a exportu se provádějí v kontextu *úloh* , které umožňuj�
 Třída **RegistryManager** zahrnuje metody **ExportDevicesAsync** a **ImportDevicesAsync** , které používají architekturu **úloh** . Tyto metody umožňují exportovat, importovat a synchronizovat celý registr identit služby IoT Hub.
 
 Toto téma popisuje použití třídy **RegistryManager** a systému **úloh** k provádění hromadných importů a exportů zařízení do registru identit služby IoT Hub a z něj. Azure IoT Hub Device Provisioning Service můžete použít také k povolení nulového dotykového zřizování pro jedno nebo více rozbočovačů IoT bez nutnosti zásahu člověka. Další informace najdete v dokumentaci ke [službě zřizování](/azure/iot-dps).
-
 
 ## <a name="what-are-jobs"></a>Co jsou úlohy?
 
@@ -47,7 +46,7 @@ JobProperties exportJob = await
 ```
 
 > [!NOTE]
-> Pokud chcete ve svém C# kódu použít třídu RegistryManager, přidejte do projektu balíček NuGet **Microsoft. Azure. Devices** . Třída **RegistryManager** je v oboru názvů **Microsoft. Azure. Devices** .
+> Pokud chcete ve **RegistryManager** svém C# kódu použít třídu RegistryManager, přidejte do projektu balíček NuGet **Microsoft. Azure. Devices** . Třída **RegistryManager** je v oboru názvů **Microsoft. Azure. Devices** .
 
 Třídu **RegistryManager** můžete použít k dotazování stavu **úlohy** pomocí vrácených metadat **JobProperties** . Chcete-li vytvořit instanci třídy **RegistryManager** , použijte metodu **CreateFromConnectionString** .
 
@@ -261,7 +260,7 @@ Použijte volitelnou vlastnost **importMode** v části Import dat serializace p
 | --- | --- |
 | **createOrUpdate** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, stávající informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
 | **vytvoření** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, zapíše se do souboru protokolu chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
-| **update** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
+| **Update** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
 | **updateIfMatchETag** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. |
 | **createOrUpdateIfMatchETag** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
 | **odstranění** |Pokud zařízení se zadaným **ID**už existuje, odstraní se bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |

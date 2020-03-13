@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356230"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277463"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
 
@@ -354,15 +354,15 @@ Python nepodporuje atributy.
 
 V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou k dispozici v souboru *Function. JSON* a atribut `SendGrid`/anotace.
 
-| *Function. JSON* – vlastnost | Atribut nebo vlastnost anotace | Popis | Nepovinné |
+| *Function. JSON* – vlastnost | Atribut nebo vlastnost anotace | Popis | Volitelné |
 |--------------------------|-------------------------------|-------------|----------|
-| type |neuvedeno| Musí být nastavené na `sendGrid`.| Ne |
-| směr |neuvedeno| Musí být nastavené na `out`.| Ne |
-| jméno |neuvedeno| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return`, pokud je k dispozici pouze jedna návratová hodnota. | Ne |
+| typ |neuvedeno| Musí být nastavené na `sendGrid`.| Ne |
+| direction |neuvedeno| Musí být nastavené na `out`.| Ne |
+| name |neuvedeno| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return`, pokud je k dispozici pouze jedna návratová hodnota. | Ne |
 | apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| Ne |
-| na| Akce | E-mailová adresa příjemce | Ano |
+| na| Pro | E-mailová adresa příjemce | Ano |
 | from| Z | E-mailová adresa odesílatele |  Ano |
-| subject| Subjekt | Předmět daného e-mailu. | Ano |
+| subject| Předmět | Předmět daného e-mailu. | Ano |
 | text| Text | Obsah e-mailu | Ano |
 
 Volitelné vlastnosti mohou mít ve vazbě definovány výchozí hodnoty a buď přidány nebo přepsány programově.

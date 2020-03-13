@@ -3,12 +3,12 @@ title: Správa serverů a trezorů služby Azure Recovery Services
 description: V tomto článku se dozvíte, jak pomocí řídicího panelu přehled služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b57d6eff5f5dfa2163962a47eee079d7e26257b5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586440"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136952"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -49,7 +49,7 @@ Pokud chcete monitorovat výstrahy nebo zobrazit data správy o trezoru Recovery
 V části monitorování se zobrazují výsledky předdefinovaných **výstrah zálohování** a dotazy na **úlohy zálohování** . Dlaždice monitorování poskytují aktuální informace o:
 
 * Kritické výstrahy a upozornění na úlohy zálohování (za posledních 24 hodin)
-* Stav předběžného ověření pro virtuální počítače Azure – úplné informace o stavu předběžné kontroly najdete v [blogu zálohování při předběžné kontrole zálohování](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/).
+* Stav předběžné kontroly pro virtuální počítače Azure Úplné informace o stavu předběžné kontroly najdete v tématu [stav předběžné kontroly zálohování](#backup-pre-check-status).
 * Probíhající úlohy zálohování a úlohy, které selhaly (za posledních 24 hodin).
 
 Dlaždice využití poskytují:
@@ -62,6 +62,22 @@ Kliknutím na dlaždice (s výjimkou úložiště zálohování) otevřete přid
 ![Nabídka výstrah zálohování je filtrovaná pro kritické výstrahy.](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
 V nabídce výstrahy zálohování se na obrázku výše filtruje podle: stav je aktivní, závažnost je kritická a čas je uvedený za posledních 24 hodin.
+
+### <a name="backup-pre-check-status"></a>Stav předběžné kontroly zálohování
+
+Předběžná kontrola zálohování kontroluje v konfiguraci virtuálních počítačů problémy, které můžou negativně ovlivnit zálohy. Tyto informace jsou shrnuté, takže je můžete zobrazit přímo z řídicího panelu Recovery Services trezoru a poskytnout doporučení pro nápravná opatření, aby bylo zajištěno úspěšné zálohování konzistentní se soubory nebo aplikacemi. Nevyžadují žádnou infrastrukturu a nemají žádné další náklady.  
+
+Předběžné kontroly zálohování se spouštějí jako součást plánovaných operací zálohování pro vaše virtuální počítače Azure. Dokončí jeden z následujících stavů:
+
+* **Úspěch**: Tento stav označuje, že by konfigurace vašeho virtuálního počítače měla vést k úspěšným zálohám a není nutné provádět žádné nápravné akce.
+* **Upozornění**: Tento stav označuje jeden nebo více problémů v konfiguraci virtuálního počítače, které *mohou* vést k selhání zálohování. Poskytuje *Doporučené* kroky k zajištění úspěšných záloh. Například pokud není nainstalován nejnovější agent virtuálního počítače, může dojít k výpadku zálohování. Tato situace by poskytovala stav upozornění.
+* **Kritické**: Tento stav indikuje minimálně jeden kritický problém v konfiguraci virtuálního *počítače, který vede k* selhání zálohování, a poskytne *potřebné* kroky k zajištění úspěšných záloh. Například problém se sítí způsobený aktualizací pravidel NSG virtuálního počítače způsobí selhání zálohování, protože zabrání tomu, aby virtuální počítač komunikoval se službou Azure Backup. Tato situace by poskytovala kritický stav.
+
+Postupujte podle následujících kroků a začněte řešit všechny problémy hlášené předběžnými kontrolami zálohování virtuálních počítačů ve vašem úložišti Recovery Services.
+
+* Na řídicím panelu trezoru Recovery Services vyberte dlaždici **stav předběžné kontroly zálohování (virtuální počítače Azure)** .
+* Vyberte libovolný virtuální počítač se stavem předběžné kontroly zálohování buď **kritického** , nebo **Upozornění**. Tato akce otevře podokno **Podrobnosti o virtuálním počítači** .
+* V horní části podokna vyberte oznámení v podokně, které odhalí popis problému s konfigurací a nápravné kroky.
 
 ## <a name="manage-backup-alerts"></a>Spravovat výstrahy zálohování
 
@@ -81,7 +97,7 @@ V seznamu výstrahy zálohování se zobrazí vybrané informace pro filtrovaná
 | ----------- | ----------- |
 | Kritická | Zobrazí se důležité výstrahy, když se nezdaří úlohy zálohování, úlohy obnovení selžou a když zastavíte ochranu na serveru, ale zachováte data.|
 | Upozornění | Upozornění se zobrazí, když se úlohy zálohování dokončí s upozorněními, například pokud je méně než 100 souborů nezálohovaných kvůli problémům s poškozením nebo při úspěšném zálohování více než 1 000 000 souborů. |
-| Informační | v současné době se nepoužívají žádné informativní výstrahy. |
+| Informativní | v současné době se nepoužívají žádné informativní výstrahy. |
 
 ### <a name="viewing-alert-details"></a>Zobrazení podrobností výstrahy
 
@@ -91,13 +107,13 @@ Sestava výstrahy zálohování sleduje osm podrobností o jednotlivých výstra
 
 Ve výchozím nastavení se v sestavě zobrazí všechny podrobnosti, s výjimkou **času posledního výskytu**.
 
-* Výstrahy
+* Výstraha
 * Zálohovaná položka
 * Chráněný Server
-* Severity
-* Doba trvání
+* Závažnost
+* Doba platnosti
 * Čas vytvoření
-* Status
+* Stav
 * Čas posledního výskytu
 
 ### <a name="change-the-details-in-alerts-report"></a>Změna podrobností v sestavě výstrahy
@@ -217,12 +233,12 @@ Můžete zobrazit jednu operaci nebo všechny operace. Nemůžete vybrat dvě ne
 * Všechny operace
 * Registrace
 * Konfigurace zálohování
-* Backup
+* Zálohovat
 * Obnovení
 * Zakázat zálohování
-* Odstranění zálohovaných dat
+* Odstranit data zálohy
 
-#### <a name="status"></a>Status
+#### <a name="status"></a>Stav
 
 Můžete zobrazit všechny stavy nebo jeden. Nemůžete vybrat dva nebo tři stavy. Dostupné stavy jsou:
 
@@ -272,4 +288,3 @@ Dlaždice úložiště zálohování na řídicím panelu zobrazuje úložiště
 
 * [Obnovení Windows serveru nebo klienta Windows z Azure](backup-azure-restore-windows-server.md)
 * Další informace o Azure Backup najdete v tématu [Azure Backup Overview](backup-introduction-to-azure-backup.md) .
-

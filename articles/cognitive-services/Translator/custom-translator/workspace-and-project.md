@@ -1,5 +1,5 @@
 ---
-title: Co je pracovní prostor a projekt? – Vlastní Překladatel
+title: Co je pracovní prostor a projekt? – Vlastní Translator
 titleSuffix: Azure Cognitive Services
 description: Tento článek vysvětluje rozdíly mezi pracovním prostorem a projektem a také kategorie a popisky projektu pro vlastní službu Translator.
 services: cognitive-services
@@ -11,11 +11,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647317"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219431"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co je vlastní pracovní prostor překladatele?
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
 ms.openlocfilehash: 9112c7070708f3b97d79c1978a9b7204721c3194
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220399"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -106,7 +106,7 @@ V tomto okamžiku ověřte, že skupina prostředků (**SpeechEchoBotTutorial-re
 
 | Název | Typ  | Umístění |
 |------|-------|----------|
-| SpeechEchoBotTutorial – řeč | Kognitivní služby | Západní USA |
+| SpeechEchoBotTutorial – řeč | Cognitive Services | Západní USA |
 
 ### <a name="create-an-azure-app-service-plan"></a>Vytvoření plánu služby Azure App Service
 
@@ -128,7 +128,7 @@ V tomto okamžiku ověřte, že vaše skupina prostředků (**SpeechEchoBotTutor
 | Název | Typ  | Umístění |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | Západní USA |
-| SpeechEchoBotTutorial – řeč | Kognitivní služby | Západní USA |
+| SpeechEchoBotTutorial – řeč | Cognitive Services | Západní USA |
 
 ## <a name="build-an-echo-bot"></a>Sestavení robota s odezvou
 
@@ -211,7 +211,7 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Západní USA |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | Západní USA |
-| SpeechEchoBotTutorial – řeč | Kognitivní služby | Západní USA |
+| SpeechEchoBotTutorial – řeč | Cognitive Services | Západní USA |
 
 ## <a name="enable-web-sockets"></a>Povolit webové sokety
 
@@ -253,7 +253,7 @@ V tomto okamžiku ověřte skupinu prostředků **SpeechEchoBotTutorial-Resource
 | EchoBot20190805125647 | App Service | Západní USA |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | Západní USA |
 | SpeechEchoBotTutorial-BotRegistration | Registrace kanálů robota | global |
-| SpeechEchoBotTutorial – řeč | Kognitivní služby | Západní USA |
+| SpeechEchoBotTutorial – řeč | Cognitive Services | Západní USA |
 
 > [!IMPORTANT]
 > Prostředek registrace kanálů robota zobrazí globální oblast, i když jste vybrali Západní USA. To se očekává.
@@ -440,7 +440,7 @@ Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, mů�
 > [!div class="nextstepaction"]
 > [Vytvoření vlastní klientské aplikace pomocí sady Speech SDK](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * Nasazení do [oblasti Azure v blízkosti,](https://azure.microsoft.com/global-infrastructure/locations/) abyste viděli vylepšení doby odezvy robota
 * Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

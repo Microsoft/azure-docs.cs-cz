@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380311"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240713"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
@@ -59,7 +59,7 @@ Zařízení Data Box má v této verzi následující funkce.
 | Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
 | Hmotnost                                                  | < 23 kg                |
-| Dimenze                                              | Zařízení – šířka: 309,0 mm, výška: 430,4 mm, hloubka: 502.0 mm |            
+| Rozměry                                              | Zařízení – šířka: 309,0 mm, výška: 430,4 mm, hloubka: 502.0 mm |            
 | Místo v racku                                              | 7U při umístění do racku na boku (montáž do racku není možná)|
 | Potřebné kabely                                         | 1 napájecí kabel (je součástí balení) <br> 2 kabely RJ45 <br> 2 měděné kabely SFP+ Twinax|
 | Kapacita úložiště                                        | 100TB zařízení má 80 TB využitelné kapacity po zapnutí ochrany RAID 5|

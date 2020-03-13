@@ -1,6 +1,6 @@
 ---
 title: Adaptivní posílení zabezpečení sítě v Azure Security Center | Microsoft Docs
-description: Naučte se posílit na základě skutečných schémat přenosů, pravidel skupin zabezpečení sítě (NSG) a další vylepšení stav zabezpečení.
+description: Naučte se používat skutečné modely provozu k posílení pravidel skupin zabezpečení sítě (NSG) a další vylepšení stav zabezpečení.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: bc610fa1d7a5fa1a10db3298164404b92d5d9f85
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559283"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139585"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
 Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Azure Security Center.
@@ -30,10 +30,12 @@ Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu po
 
 Řekněme například, že stávající pravidlo NSG je povolit provoz z 140.20.30.10/24 na portu 22. Doporučení adaptivního posílení zabezpečení sítě, které je založené na analýze, by mělo omezit rozsah a povolit provoz z 140.23.30.10/29, což je úzký rozsah IP adres, a odepřít veškerý ostatní provoz na tento port.
 
-![zobrazení posílení zabezpečení sítě](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+>[!TIP]
+> Doporučení adaptivního posílení zabezpečení sítě se podporují jenom u konkrétních portů. Úplný seznam najdete v části [které porty jsou podporovány?](#which-ports-are-supported) níže. 
 
-> [!NOTE]
-> Doporučení adaptivního posílení zabezpečení sítě jsou podporovaná na následujících portech: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128.
+
+![Zobrazení posílení zabezpečení sítě](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Zobrazit výstrahy a pravidla adaptivního posílení zabezpečení sítě
 
@@ -73,7 +75,7 @@ Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu po
     ![vymáhat pravidla](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### Úprava pravidla <a name ="modify-rule"></a>
+### Úprava pravidla <a name ="modify-rule"> </a>
 
 Možná budete chtít upravit parametry pravidla, které se doporučuje. Můžete například chtít změnit Doporučené rozsahy IP adres.
 
@@ -106,7 +108,7 @@ Některé důležité pokyny pro úpravu pravidla posílení adaptivní sítě:
 
     ![vymáhat pravidlo](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### Přidat nové pravidlo <a name ="add-rule"></a>
+### Přidat nové pravidlo <a name ="add-rule"> </a>
 
 Můžete přidat pravidlo "Allow", které nedoporučuje Security Center.
 
@@ -129,7 +131,7 @@ Můžete přidat pravidlo "Allow", které nedoporučuje Security Center.
     ![vymáhat pravidlo](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### Odstranění pravidla <a name ="delete-rule"></a>
+### Odstranění pravidla <a name ="delete-rule"> </a>
 
 V případě potřeby můžete odstranit Doporučené pravidlo pro aktuální relaci. Můžete například určit, že použití navrhovaného pravidla může blokovat legitimní provoz.
 
@@ -139,11 +141,72 @@ V případě potřeby můžete odstranit Doporučené pravidlo pro aktuální re
 
     ![pravidla posílení zabezpečení](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
 
-
-
-
-
-
-
  
 
+## <a name="which-ports-are-supported"></a>Které porty jsou podporovány?
+
+Doporučení adaptivního posílení zabezpečení sítě se podporují jenom u konkrétních portů. Tato tabulka poskytuje úplný seznam:
+
+|Port|Protokol|Přidružená služba|
+|:---:|:----:|:----|
+|13|UDP|Služba Daytime|
+|17|UDP|Protokol QOTD|
+|19|UDP|Protokol CHARGEN|
+|22|TCP|SSH|
+|23|TCP|Telnet|
+|53|UDP|DNS|
+|69|UDP|TFTP|
+|81|TCP|Potenciálně škodlivý (uzel pro ukončení operace)|
+|111|TCP/UDP|RPC|
+|119|TCP|PROTOKOLY|
+|123|UDP|NTP|
+|135|TCP/UDP|Mapovač koncových bodů; RPC DCE|
+|137|TCP/UDP|Služba názvu NetBIOS|
+|138|TCP/UDP|Služba datagramu rozhraní NetBIOS|
+|139|TCP|Služba relace rozhraní NetBIOS|
+|161|TCP/UDP|Agent|
+|162|TCP/UDP|Agent|
+|389|TCP|LDAP|
+|445|TCP|SMB|
+|512|TCP|Rexec|
+|514|TCP|Vzdálené prostředí|
+|593|TCP/UDP|HTTP RPC|
+|636|TCP|LDAP|
+|873|TCP|rsync|
+|1433|TCP|MS SQL|
+|1434|UDP|MS SQL|
+|1900|UDP|SSDP|
+|1900|UDP|SSDP|
+|2049|TCP/UDP|NFS|
+|2301|TCP|Služba pro správu Compaq|
+|2323|TCP|3D – nfsd|
+|2381|TCP|Služba pro správu Compaq|
+|3268|TCP|LDAP|
+|3306|TCP|MySQL|
+|3389|TCP|RDP|
+|4333|TCP|mSQL|
+|5353|UDP|mDNS|
+|5432|TCP|PostgreSQL|
+|5555|TCP|Osobní Agent; HP OmniBack|
+|5800|TCP|VNC|
+|5900|TCP|Vzdálená framebuffer; VNC|
+|5900|TCP|VNC|
+|5985|TCP|Windows PowerShell|
+|5986|TCP|Windows PowerShell|
+|6379|TCP|Redis|
+|6379|TCP|Redis|
+|7000|TCP|Cassandra|
+|7001|TCP|Cassandra|
+|7199|TCP|Cassandra|
+|8081|TCP|CosmosDB Správce proxy Sun|
+|8089|TCP|Splunk|
+|8545|TCP|Potenciálně škodlivý (Cryptominer)|
+|9042|TCP|Cassandra|
+|9160|TCP|Cassandra|
+|9300|TCP|Elasticsearch|
+|11211|UDP|Memcached|
+|16379|TCP|Redis|
+|26379|TCP|Redis|
+|27017|TCP|MongoDB|
+|37215|TCP|Potenciálně škodlivé|
+||||

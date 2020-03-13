@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e83ecb3888ed4b19933233f3ab511d1e86fb37af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721570"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136986"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 Tento článek poskytuje informace o tom, jak implementovat standardní prvky stránky výsledků hledání, jako jsou celkové počty, načítání dokumentů, objednávky řazení a navigace. Možnosti související s stránkou, které přidávají data nebo informace do výsledků hledání, jsou zadány prostřednictvím požadavků [dokumentu vyhledávání](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) odesílaných do služby Azure kognitivní hledání. 
@@ -25,7 +25,7 @@ Chcete-li rychle vygenerovat stránku vyhledávání pro klienta, Prozkoumejte t
 + Pomocí [generátoru aplikací](search-create-app-portal.md) na portálu můžete vytvořit stránku HTML pomocí panelu hledání, omezující navigace a oblasti výsledků.
 + Při vytváření funkčního klienta postupujte podle pokynů [v části Vytvoření první aplikace v C# ](tutorial-csharp-create-first-app.md) kurzu.
 
-Několik ukázek kódu zahrnuje webové front-endové rozhraní, které můžete najít tady: aplikace pro ukázkovou [úlohu v New Yorku](https://azjobsdemo.azurewebsites.net/), [ukázkový kód JavaScriptu s živým ukázkovým webem](https://github.com/liamca/azure-search-javascript-samples)a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Několik ukázek kódu zahrnuje webové front-endové rozhraní, které můžete najít tady: aplikace pro ukázkovou [úlohu v New Yorku](https://aka.ms/azjobsdemo), [ukázkový kód JavaScriptu s živým ukázkovým webem](https://github.com/liamca/azure-search-javascript-samples)a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Platná žádost obsahuje počet prvků, jako je například adresa URL služby a cesta, příkaz HTTP, `api-version`atd. V případě zkrácení jsme tyto příklady vyhodili a zvýraznili jenom syntaxi, která je relevantní pro stránkování. Další informace o syntaxi žádosti najdete v tématu [rozhraní REST API pro Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice).

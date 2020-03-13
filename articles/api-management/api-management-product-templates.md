@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374414"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243923"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Šablony produktů v Azure API Management
 
@@ -207,16 +207,16 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |Produkt|[Produktu](api-management-template-data-model-reference.md#Product)|Zadaný produkt.|  
-|IsDeveloperSubscribed|Boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
+|IsDeveloperSubscribed|Datový typ Boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
 |SubscriptionState|číslo|Stav odběru Možné stavy:<br /><br /> -   `0 - suspended` – předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active` – předplatné je aktivní.<br />-   `2 - expired` – předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted` – žádost o předplatné udělal vývojář, ale ještě nebyla schválená ani zamítnutá.<br />-   `4 - rejected` – žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled` – předplatné zrušila vývojář nebo správce.|  
 |Omezení|pole|Tato vlastnost je zastaralá a neměla by se používat.|  
-|DelegatedSubscriptionEnabled|Boolean|Zda je pro toto předplatné povoleno [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) .|  
-|DelegatedSubscriptionUrl|řetězec|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
-|Souhlasí|Boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
+|DelegatedSubscriptionEnabled|Datový typ Boolean|Zda je pro toto předplatné povoleno [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) .|  
+|DelegatedSubscriptionUrl|string|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
+|Souhlasí|Datový typ Boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
 |Předplatná|Kolekce [souhrnných entit předplatného](api-management-template-data-model-reference.md#SubscriptionSummary)|Odběry produktu.|  
 |Třídy|Kolekce entit [rozhraní API](api-management-template-data-model-reference.md#API) .|Rozhraní API v tomto produktu.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na limit předplatného.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na více než více předplatných povolených.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|Datový typ Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na limit předplatného.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|Datový typ Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na více než více předplatných povolených.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

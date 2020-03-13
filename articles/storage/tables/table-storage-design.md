@@ -5,15 +5,15 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387127"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255142"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Návrh škálovatelných a výkonných tabulek
 
@@ -37,7 +37,7 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -49,8 +49,8 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>Email</th>
+<th>Stáří</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Nepřipojovat</td>
@@ -69,8 +69,8 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>Email</th>
+<th>Stáří</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Čer</td>
@@ -87,7 +87,7 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <td>
 <table>
 <tr>
-<th>DepartmentName</th>
+<th>Název oddělení</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -106,8 +106,8 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>Email</th>
+<th>Stáří</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -140,19 +140,8 @@ Ve službě Table service transakcí skupin entit (EGTs) jsou pouze předdefinov
 EGTs také zavede potenciální kompromis k vyhodnocení v návrhu. To znamená, že použití více oddílů zvyšuje škálovatelnost vaší aplikace, protože Azure nabízí více příležitostí pro žádosti o vyrovnávání zatížení napříč uzly. Ale použití více oddílů může omezit schopnost vaší aplikace provádět atomické transakce a udržovat velkou konzistenci pro vaše data. Kromě toho existují konkrétní cíle škálovatelnosti na úrovni oddílu, která může omezit propustnost transakcí, které můžete očekávat pro jeden uzel. Další informace o cílech škálovatelnosti pro účty Azure Standard Storage najdete v tématu [cíle škálovatelnosti pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md). Další informace o cílech škálovatelnosti pro Table service najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště tabulek](scalability-targets.md).
 
 ## <a name="capacity-considerations"></a>Důležité informace o kapacity
-Následující tabulka popisuje některé klíčové hodnoty, které je třeba znát při navrhování Table service řešení:  
 
-| Celková kapacita účtu služby Azure storage | 500 TB |
-| --- | --- |
-| Počet tabulek v účtu služby Azure storage |Omezeno pouze kapacity účtu úložiště |
-| Počet oddílů v tabulce |Omezeno pouze kapacity účtu úložiště |
-| Počet entit v oddílu |Omezeno pouze kapacity účtu úložiště |
-| Velikost jednotlivých entit |Až 1 MB s maximálním počtem 255 vlastností (včetně **PartitionKey**, **RowKey**a **časového razítka**) |
-| Velikost **PartitionKey** |Řetězec, velikost až 1 KB |
-| Velikost **RowKey** |Řetězec, velikost až 1 KB |
-| Velikost transakce skupin entit |Transakce může obsahovat maximálně 100 entit a datová část musí být menší než 4 MB. EGT lze aktualizovat pouze entity jednou. |
-
-Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>Důležité informace o nákladech
 Tabulka úložiště je poměrně nákladná, ale měli byste zahrnout odhadované náklady na využití kapacity a množství transakcí v rámci vyhodnocení jakéhokoli Table service řešení. V mnoha scénářích ale ukládání denormalizovaných nebo duplicitních dat, aby se zlepšil výkon nebo škálovatelnost vašeho řešení, je platný přístup. Další informace o cenách najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).  

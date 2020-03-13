@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572475"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205161"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rychlý start: Konfigurace brány firewall serveru – portál
 
@@ -22,7 +22,8 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server slu�
 
 - Server služby Analysis Services v předplatném. Další informace najdete v článku [Rychlý start: Vytvoření serveru – portál](analysis-services-create-server.md) nebo v článku [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md).
 - Jeden nebo více rozsahů IP adres pro klientské počítače (pokud jsou potřeba).
-- Upozorňujeme, že scénář importu z Power BI Premium aktuálně není podporován.
+- Některé scénáře, kdy se Power BI Premium připojuje k Azure Analysis Services, včetně importu dat (aktualizace) a stránkovaných sestav, se v tuto chvíli nepodporují, i když je povolená možnost povolit přístup z Power BI. Podporuje se i častější scénář použití živého připojení z Power BI Premium. Jsou podporovány všechny scénáře Power BI Pro.
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal 
 

@@ -10,11 +10,11 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392301"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239515"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení pro monitorování
 
@@ -55,9 +55,9 @@ Pokud chcete vytvořit pravidlo, které generuje upozornění, když tlak v chla
 | ---------------- | ------------------------------------- |
 | Název pravidla        | Upozornění chladiče                       |
 | Popis      | Tlak v chladiči překročil 150 PSI |
-| Skupina zařízení     | Skupina zařízení **Chladiče**             |
+| skupina zařízení;     | Skupina zařízení **Chladiče**             |
 | Výpočet      | Okamžitý                               |
-| Pole podmínky 1| pressure                              |
+| Pole podmínky 1| tlak                              |
 | Operátor podmínky 1 | Větší než                      |
 | Hodnota podmínky 1    | 150                               |
 | Úroveň závažnosti  | Upozornění                               |
@@ -78,7 +78,7 @@ Pokud chcete vytvořit pravidlo s několika podmínkami, které generuje kritick
 | ---------------- | ------------------------------------- |
 | Název pravidla        | Kritická vlhkost a teplota chladiče    |
 | Popis      | Úrovně vlhkosti a teploty jsou kritické |
-| Skupina zařízení     | Skupina zařízení **Chladiče**             |
+| skupina zařízení;     | Skupina zařízení **Chladiče**             |
 | Výpočet      | Průměr                               |
 | Časové období      | 5                                     |
 | Pole podmínky 1| vlhkost                              |
@@ -92,7 +92,7 @@ Druhou podmínku přidáte kliknutím na + Přidat podmínku. Pro novou podmínk
 
 | Nastavení          | Hodnota                                 |
 | ---------------- | ------------------------------------- |
-| Pole podmínky 2| Teplota                           |
+| Pole podmínky 2| teplota                           |
 | Operátor podmínky 2 | Větší než                      |
 | Hodnota podmínky 2    | 75                                |
 

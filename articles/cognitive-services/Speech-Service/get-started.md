@@ -12,11 +12,11 @@ ms.date: 02/26/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
 ms.openlocfilehash: f74e3ea3d20ad2666b434e009cf62add6f88d200
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388269"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219662"
 ---
 # <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
 

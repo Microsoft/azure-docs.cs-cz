@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 03/04/2020
 ms.custom: mvc
 ms.openlocfilehash: 347f2fbc0f12aa775c42dbb14a4625dc509a20ed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373056"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239655"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Naplánování nasazení aktualizace
 > * Zobrazení výsledků nasazení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -50,7 +50,7 @@ Kliknutím kamkoli jinde v aktualizaci otevřete podokno **hledání protokolu**
 
 ![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/logsearch.png)
 
-## <a name="configure-alerts"></a>Konfigurace upozornění
+## <a name="configure-alerts"></a>Konfigurace výstrah
 
 V tomto kroku se naučíte nastavit výstrahu, která vám umožní zjistit stav nasazení aktualizace.
 
@@ -62,7 +62,7 @@ Váš účet Automation už je vybraný jako prostředek. Pokud ho chcete změni
 
 Klikněte na **Přidat podmínku** a vyberte signál, který je vhodný pro nasazení aktualizace. V následující tabulce jsou uvedeny podrobnosti o dvou dostupných signálech pro nasazení aktualizací:
 
-|Název signálu|Dimenze|Popis|
+|Název signálu|Rozměry|Popis|
 |---|---|---|
 |**Celkový počet spuštění nasazení aktualizací**|– Název nasazení aktualizace</br>-Status|Tento signál slouží k upozornění na celkový stav nasazení aktualizace.|
 |**Celkový počet spuštěných počítačů nasazení aktualizace**|– Název nasazení aktualizace</br>-Status</br>– Cílový počítač</br>– Aktualizovat ID běhu nasazení|Tento signál se používá k upozornění na stav nasazení aktualizace zaměřeného na konkrétní počítače.|
@@ -117,7 +117,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
   Typy klasifikace jsou:
 
-   |Operační systém  |Typ  |
+   |OS  |Typ  |
    |---------|---------|
    |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>Nástroje</br>Aktualizace        |
    |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |

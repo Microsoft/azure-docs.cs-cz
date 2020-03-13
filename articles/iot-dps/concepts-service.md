@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975597"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285211"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Device Provisioning Service koncepty
 
@@ -31,7 +31,7 @@ Koncový bod operací služby je koncový bod pro správu nastavení služby a �
 
 Koncový bod zřizování zařízení je jedním koncovým bodem, který všechna zařízení používají pro Automatické zřizování. Adresa URL je stejná pro všechny instance služby zřizování a eliminuje nutnost opětovného doplňování zařízení s novými informacemi o připojení ve scénářích dodavatelských řetězců. Rozsah ID zajišťuje izolaci tenanta.
 
-## <a name="linked-iot-hubs"></a>Propojená centra IoT Hub
+## <a name="linked-iot-hubs"></a>Propojené IoT Huby
 
 Služba Device Provisioning může zřizovat zařízení jenom pro centra IoT, která jsou s ní propojená. Propojení služby IoT Hub s instancí služby Device Provisioning poskytuje oprávnění ke čtení a zápisu do registru zařízení služby IoT Hub. pomocí tohoto odkazu může služba Device Provisioning zaregistrovat ID zařízení a nastavit počáteční konfiguraci v zařízení s dvojitou vazbou. Propojená centra IoT můžou být v libovolné oblasti Azure. Můžete propojit centra v jiných předplatných s vaší službou zřizování.
 
@@ -73,6 +73,6 @@ Jednotlivá registrace je záznam pro jedno zařízení, které se může zaregi
 
 Registrace znamená, že se zařízení úspěšně zaregistrovalo nebo zřídí do IoT Hub prostřednictvím služby Device Provisioning. Registrační záznamy jsou vytvořeny automaticky; je možné je odstranit, ale nelze je aktualizovat.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Operace
 
-Operace jsou fakturační jednotka služby Device Provisioning. Jedna operace představuje úspěšné dokončení jedné instrukce ke službě. Operace zahrnují registraci a opakovanou registraci zařízení a také změny na straně služby, jako je přidání položek seznamu registrací a jejich aktualizace.
+Operace jsou fakturační jednotka služby Device Provisioning. Jedna operace představuje úspěšné dokončení jedné instrukce ke službě. Operace zahrnují registraci a opakovanou registraci zařízení. operace také zahrnují změny na straně služby, jako je přidání položek seznamu registrací a aktualizace položek seznamu registrací.

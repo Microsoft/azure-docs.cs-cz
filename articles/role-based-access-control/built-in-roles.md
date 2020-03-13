@@ -1,6 +1,6 @@
 ---
 title: Předdefinované role Azure pro Azure RBAC
-description: Popisuje předdefinované role Azure pro řízení přístupu na základě role (Azure RBAC). Zobrazí seznam akcí, NotActions, dataactions a NotDataActions.
+description: Tento článek popisuje předdefinované role Azure pro řízení přístupu na základě role (RBAC) v Azure. Zobrazuje seznam akcí, NotActions, dataactions a NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b7b944880074b64f6a9e66e177082e52632e9c9d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 5b6da05f07636f6a6dde16cf6d8061629a72adfa
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205887"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281103"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
-[Řízení přístupu na základě role v Azure (Azure RBAC)](overview.md) má několik předdefinovaných rolí Azure, které můžete přiřadit uživatelům, skupinám, objektům služby a spravovaným identitám. Přiřazení rolí představují způsob, jakým ovládáte přístup k prostředkům Azure. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](custom-roles.md).
+[Řízení přístupu na základě role (RBAC) v Azure](overview.md) má několik předdefinovaných rolí Azure, které můžete přiřadit uživatelům, skupinám, objektům služby a spravovaným identitám. Přiřazení rolí představují způsob, jakým ovládáte přístup k prostředkům Azure. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](custom-roles.md).
 
-V tomto článku jsou uvedené předdefinované role pro prostředky Azure, které se vždycky vyvíjejí. K získání nejnovějších rolí použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Pokud hledáte role správce pro Azure Active Directory, přečtěte si téma [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+V tomto článku jsou uvedené předdefinované role pro prostředky Azure, které se vždycky vyvíjejí. K získání nejnovějších rolí použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Pokud hledáte role správce pro Azure Active Directory (Azure AD), přečtěte si téma [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="descriptions-and-ids"></a>Popisy a ID
 
-Následující tabulka uvádí stručný popis a jedinečné ID každé předdefinované role. Kliknutím na název role zobrazíte seznam `Actions`, `NotActions`, `DataActions`a `NotDataActions` pro každou roli. Informace o tom, co tyto akce znamenají a jak se vztahují na datové roviny pro správu a data, najdete v tématu [vysvětlení definic rolí pro prostředky Azure](role-definitions.md).
+Následující tabulka uvádí stručný popis a jedinečné ID každé předdefinované role. Vyberte název role, abyste zobrazili seznam `Actions`, `NotActions`, `DataActions`a `NotDataActions` pro každou roli. Informace o tom, co tyto akce znamenají a jak se vztahují na datové roviny pro správu a data, najdete v tématu [vysvětlení definic rolí pro prostředky Azure](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
@@ -306,7 +306,7 @@ Umožňuje zobrazit vše, ale ne provádět žádné změny.
 }
 ```
 
-### <a name="user-access-administrator"></a>Správce přístupu uživatelů
+### <a name="user-access-administrator"></a>Správce uživatelského přístupu
 
 Umožňuje spravovat přístup uživatelů k prostředkům Azure.
 
@@ -531,7 +531,7 @@ Umožňuje číst a zobrazit seznam klíčů Cognitive Services.
 }
 ```
 
-## <a name="analytics"></a>Analýzy
+## <a name="analytics"></a>Analytics
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Vlastník dat Event Hubs Azure
@@ -1019,7 +1019,7 @@ Umožňuje přístup k blockchain členským uzlům.
 }
 ```
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Výpočty
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Přispěvatel klasických virtuálních počítačů
@@ -1059,7 +1059,7 @@ Umožňuje správu klasických virtuálních počítačů, ale ne přístup k ni
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they’re connected to.",
+  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they're connected to.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "name": "d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "permissions": [
@@ -1316,7 +1316,7 @@ Zobrazte Virtual Machines na portálu a přihlaste se jako běžný uživatel.
 }
 ```
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -1521,7 +1521,7 @@ nabízení ACR
 }
 ```
 
-### <a name="acrquarantinewriter"></a>AcrQuarantineWriter
+### <a name="acrquarantinewriter"></a>AcrQuarantineReader
 
 zapisovač dat karantény ACR
 
@@ -2052,7 +2052,7 @@ Umožňuje spravovat spravované instance SQL a požadovanou konfiguraci sítě,
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage SQL Managed Instances and required network configuration, but can’t give access to others.",
+  "description": "Lets you manage SQL Managed Instances and required network configuration, but can't give access to others.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "name": "4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "permissions": [
@@ -3621,7 +3621,7 @@ Vytvářejte a spravujte úlohy pomocí runbooků Automation.
 }
 ```
 
-### <a name="automation-operator"></a>Operátor služby Automation
+### <a name="automation-operator"></a>Operátor automatizace
 
 Operátory automatizace můžou spouštět, zastavovat, pozastavovat a obnovovat úlohy.
 
@@ -3853,10 +3853,7 @@ Může spravovat definice podrobného plánu, ale nepřiřazovat je.
 
 ### <a name="blueprint-operator"></a>Operátor podrobného plánu
 
-Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové plány. 
-
-> [!NOTE] 
-> To funguje jenom v případě, že se přiřazení provádí pomocí uživatelem přiřazené spravované identity.
+Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové plány. Poznámka: Tato akce funguje pouze v případě, že je přiřazení provedeno pomocí uživatelem přiřazené spravované identity.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4316,6 +4313,8 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
 > | Microsoft. monitor zátěže byl/monitores/* |  |
 > | Microsoft. monitor zátěže byl/notificationSettings/* |  |
 > | Microsoft. AlertsManagement/smartDetectorAlertRules/* |  |
+> | Microsoft. AlertsManagement/actionRules/* |  |
+> | Microsoft. AlertsManagement/smartGroups/* |  |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |
@@ -4359,7 +4358,9 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
         "Microsoft.WorkloadMonitor/notificationSettings/*",
-        "Microsoft.AlertsManagement/smartDetectorAlertRules/*"
+        "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
+        "Microsoft.AlertsManagement/actionRules/*",
+        "Microsoft.AlertsManagement/smartGroups/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4796,7 +4797,7 @@ Umožňuje převzetí služeb při selhání a navrácení služeb po obnovení,
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/switchprotection/Action | Přepnout kontejner ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
+> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Při selhání |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Aktualizovat službu mobility |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
@@ -5322,7 +5323,7 @@ Může spravovat koncové body CDN, ale nemůže udělit přístup jiným uživa
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "name": "426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "permissions": [
@@ -5376,7 +5377,7 @@ Může zobrazovat koncové body CDN, ale nemůže provádět změny.
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN endpoints, but can’t make changes.",
+  "description": "Can view CDN endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "name": "871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "permissions": [
@@ -5430,7 +5431,7 @@ Může spravovat profily CDN a jejich koncové body, ale nemůže udělit přís
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN profiles and their endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN profiles and their endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "name": "ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "permissions": [
@@ -5484,7 +5485,7 @@ Může zobrazit profily CDN a jejich koncové body, ale nemůže provádět změ
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN profiles and their endpoints, but can’t make changes.",
+  "description": "Can view CDN profiles and their endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8f96442b-4075-438f-813d-ad51ab4019af",
   "name": "8f96442b-4075-438f-813d-ad51ab4019af",
   "permissions": [
@@ -5731,7 +5732,7 @@ Přispěvatel Sentinel Azure
 > | **Akce** |  |
 > | Microsoft. SecurityInsights/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Hledání pomocí nového stroje |
-> | Microsoft.OperationalInsights/workspaces/read | Získá existující pracovní prostor. |
+> | Microsoft. OperationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
 > | Microsoft. OperationsManagement/Solutions/Read | Získat ukončení řešení OMS |
 > | Microsoft.OperationalInsights/workspaces/query/read | Spouštění dotazů nad daty v pracovním prostoru |
@@ -5763,7 +5764,7 @@ Přispěvatel Sentinel Azure
       "actions": [
         "Microsoft.SecurityInsights/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5797,7 +5798,8 @@ Přispěvatel Sentinel Azure
 > | **Akce** |  |
 > | Microsoft. SecurityInsights/*/Read |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Hledání pomocí nového stroje |
-> | Microsoft.OperationalInsights/workspaces/read | Získá existující pracovní prostor. |
+> | Microsoft. OperationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
+> | Microsoft. OperationalInsights/pracovní prostory/LinkedServices/číst | Získejte propojené služby v daném pracovním prostoru. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | Načte uložený vyhledávací dotaz. |
 > | Microsoft. OperationsManagement/Solutions/Read | Získat ukončení řešení OMS |
 > | Microsoft.OperationalInsights/workspaces/query/read | Spouštění dotazů nad daty v pracovním prostoru |
@@ -5829,7 +5831,8 @@ Přispěvatel Sentinel Azure
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5863,8 +5866,9 @@ Respondér služby Azure Sentinel
 > | **Akce** |  |
 > | Microsoft. SecurityInsights/*/Read |  |
 > | Microsoft. SecurityInsights/případy/* |  |
+> | Microsoft. SecurityInsights/incidenty/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Hledání pomocí nového stroje |
-> | Microsoft.OperationalInsights/workspaces/read | Získá existující pracovní prostor. |
+> | Microsoft. OperationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
 > | Microsoft. OperationalInsights/pracovní prostory/zdroje dat/číst | Získat zdroje dat v pracovním prostoru. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | Načte uložený vyhledávací dotaz. |
 > | Microsoft. OperationsManagement/Solutions/Read | Získat ukončení řešení OMS |
@@ -5897,8 +5901,9 @@ Respondér služby Azure Sentinel
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/cases/*",
+        "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
@@ -6655,6 +6660,7 @@ Může zobrazovat služby zálohování, ale nemůže provádět změny.
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Získá stav operace pro danou operaci. |
 > | Microsoft. RecoveryServices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
 > | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Ověřit funkce |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |
@@ -6709,7 +6715,8 @@ Může zobrazovat služby zálohování, ale nemůže provádět změny.
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.RecoveryServices/Vaults/usages/read"
+        "Microsoft.RecoveryServices/Vaults/usages/read",
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7843,7 +7850,7 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 }
 ```
 
-## <a name="other"></a>Ostatní
+## <a name="other"></a>Další
 
 
 ### <a name="biztalk-contributor"></a>Přispěvatel BizTalk

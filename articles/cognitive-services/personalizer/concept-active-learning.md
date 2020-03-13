@@ -4,11 +4,11 @@ description: Nastavení učení určuje základní *parametry* školení modelů
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381274"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219343"
 ---
 # <a name="learning-policy-and-settings"></a>Zásady učení a nastavení
 

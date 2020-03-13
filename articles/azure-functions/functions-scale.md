@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9970894436107ab51c2ad2d31aa1e14a3e6b5778
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356498"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276605"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
@@ -153,12 +153,10 @@ Jednotka škálování pro Azure Functions je aplikace Function App. Při horizo
 Škálování se může u různých faktorů lišit a škáluje se různě na základě zvoleného triggeru a jazyka. Existuje několik složitými rozhraními chování škálování, která je potřeba znát:
 
 * Jedna aplikace Function App se škáluje maximálně na 200 instancí. Jedna instance může zpracovávat více než jednu zprávu nebo požádat současně, takže neexistuje nastavený limit počtu souběžných spuštění.
-* U triggerů HTTP se nové instance přiřazují jenom jednou za 1 sekundu.
-* U triggerů bez protokolu HTTP se nové instance přiřazují jenom každých 30 sekund.
-
-Různé aktivační události mohou mít také různá omezení škálování a jsou popsány níže:
-
-* [Centrum událostí](functions-bindings-event-hubs-trigger.md#scaling)
+* Pro aktivační události HTTP se přidělují nové instance, a to nejvíce jednou za sekundu.
+* U triggerů bez protokolu HTTP se přidělují nové instance, a to nejvíce každých 30 sekund. Škálování je rychlejší při provozu v [plánu Premium](#premium-plan).
+* Pro aktivační události Service Bus použijte pro nejúčinnější škálování _Spravovat_ práva k prostředkům. U oprávnění k _naslouchání_ není škálování tak přesné, protože délka fronty se nedá použít k informování rozhodnutí o škálování. Další informace o nastavení práv v zásadách přístupu Service Bus najdete v tématu [zásady autorizace sdíleného přístupu](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
+* Aktivační události centra událostí najdete v [návodu k škálování](functions-bindings-event-hubs-trigger.md#scaling) v referenčním článku. 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Osvědčené postupy a vzory pro škálovatelné aplikace
 

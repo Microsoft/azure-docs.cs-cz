@@ -4,11 +4,11 @@ description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386796"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238941"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -31,7 +31,7 @@ Přístup k vytváření vlastních zásad se řídí těmito kroky:
 > - Určení, který efekt použít
 > - Vytvoření definice zásady
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -165,7 +165,7 @@ Existuje několik způsobů, jak určit aliasy pro prostředek Azure. Podíváme
 
 - Rozšíření Azure Policy pro VS Code
 - Azure CLI
-- Azure Powershell
+- Azure PowerShell
 - Azure Resource Graph
 
 ### <a name="get-aliases-in-vs-code-extension"></a>Získat aliasy v rozšíření VS Code
@@ -185,7 +185,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 Ve výsledcích se zobrazí alias podporovaný účty úložiště s názvem **supportsHttpsTrafficOnly**. Tento alias znamená, že můžeme napsat zásadu, abychom vynutili naše obchodní požadavky.
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 V Azure PowerShell se k hledání aliasů prostředků používá rutina `Get-AzPolicyAlias`. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
 
@@ -463,7 +463,7 @@ Pokud to uděláte práci s prostředky z tohoto kurzu, pomocí následujícího
 
 1. Klikněte na řádek pravým tlačítkem nebo vyberte tři tečky na konci definice (nebo přiřazení) a pak vyberte **Odstranit definici** (nebo **Odstranit přiřazení**).
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Revidovat
 
 V tomto kurzu jste úspěšně provedli následující úlohy:
 

@@ -1,18 +1,18 @@
 ---
 title: Vytvoření clusteru Azure Red Hat OpenShift 4,3 | Microsoft Docs
-description: Vytvoření clusteru pomocí Azure Red Hat OpenShift 3,11
+description: Vytvoření clusteru pomocí Azure Red Hat OpenShift 4,3
 author: lamek
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
-ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 23d7c950396c36925ce50d746195916292d360ad
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082825"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79201038"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Vytvoření, přístup a Správa clusteru Azure Red Hat OpenShift 4,3
 
@@ -22,7 +22,7 @@ ms.locfileid: "79082825"
 > [!NOTE]
 > Funkce ve verzi Preview jsou samoobslužné a jsou k dispozici, jak jsou dostupné a jsou vyloučené z smlouvy o úrovni služeb (SLA) a omezené záruky. Proto funkce nejsou určeny pro použití v produkčním prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytvoření clusteru Azure Red Hat OpenShift 4,3 budete potřebovat následující:
 
@@ -56,7 +56,7 @@ Rozšíření `az aro` umožňuje vytvořit, otevřít a odstranit clustery Azur
 2. Spusťte následující příkaz pro instalaci rozšíření `az aro`:
 
    ```console
-   az extension add --source https://arosvc.blob.core.windows.net/az-preview/aro-0.1.0-py2.py3-none-any.whl
+   az extension add -n aro --index https://az.aroapp.io/preview
    ```
 
 3. Ověřte, zda je rozšíření ARO společnosti registrováno.

@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s Azure Data Lake Analytics úlohy U-SQL kvůli upgradu .NET 4.7.2
-description: Řešení chyb úloh U-SQL kvůli upgradu na rozhraní .NET 4.7.2
+title: Řešení potíží se selháním úlohy U Azure Data Lake Analytics U-SQL kvůli .NET Framework upgradu 4.7.2
+description: Řešení chyb úloh U-SQL kvůli upgradu na .NET Framework 4.7.2
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873229"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213580"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics upgradovat na .NET Framework v 4.7.2
 
@@ -22,12 +22,12 @@ Azure Data Lake Analytics výchozí modul runtime provádí upgrade z .NET Frame
 
 Tento upgrade z .NET Framework 4.5.2 na verzi 4.7.2 znamená, že .NET Framework nasazený v modulu runtime U-SQL (výchozí modul runtime) se teď vždycky 4.7.2. Pro .NET Framework verze není k dispozici souběžná možnost.
 
-Po dokončení tohoto upgradu na rozhraní .NET 4.7.2 bude spravovaný kód systému běžet jako verze 4.7.2. uživatelsky zadané knihovny, jako jsou vlastní sestavení U-SQL, budou spouštěny v režimu zpětného kompatibility vhodném pro verzi, kterou vygenerovalo sestavení. for.
+Po dokončení tohoto upgradu na .NET Framework 4.7.2 bude spravovaný kód systému běžet jako verze 4.7.2. uživatelsky zadané knihovny, jako jsou vlastní sestavení U-SQL, budou spuštěny v režimu zpětně kompatibilním, který je vhodný pro verzi, pro kterou bylo sestavení vygenerováno pro.
 
 - Pokud jsou knihovny DLL sestavení generovány pro verzi 4.5.2, nasazené rozhraní je bude považovat za knihovny 4.5.2 a poskytuje (s několika výjimkami) sémantiku 4.5.2.
 - Nyní můžete používat vlastní sestavení U-SQL, která využívají funkce 4.7.2 verze, pokud cílíte na .NET Framework 4.7.2.
 
-Vzhledem k tomu, že tento upgrade na rozhraní .NET 4.7.2, je možné zavést zásadní změny úloh U-SQL, které používají vlastní sestavení .NET. V níže uvedeném postupu doporučujeme, abyste kontrolovali problémy s nekompatibilitou.
+Vzhledem k tomu, že tento upgrade na .NET Framework 4.7.2, je možné zavést zásadní změny úloh U-SQL, které používají vlastní sestavení .NET. V níže uvedeném postupu doporučujeme, abyste kontrolovali problémy s nekompatibilitou.
 
 ## <a name="how-to-check-for-backwards-compatibility-issues"></a>Jak kontrolovat problémy s zpětnou kompatibilitou
 
@@ -57,10 +57,10 @@ Můžete odeslat svou úlohu se starou verzí modulu runtime (která je sestaven
 
 ### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Jaké jsou nejběžnější problémy zpětné kompatibility, se kterými se můžete setkat
 
-Nejběžnější zpětně nekompatibility, které by kontrola mohla rozpoznat, jsou (Tento seznam jsme vygenerovali spuštěním kontroly na našich vnitřních interních ADLA úloh), které mají vliv na knihovny (Všimněte si, že je možné knihovny volat jenom nepřímo, takže je je důležité provést #1 požadovaných akcí, abyste zkontrolovali, jestli jsou vaše úlohy ovlivněné), a možné akce, které je potřeba vyřešit. Poznámka: ve většině případů pro naše vlastní úlohy se upozornění vypnula jako falešně pozitivní vzhledem k úzkým povahám většiny závažných změn.
+Nejběžnější zpětně nekompatibility, které je pravděpodobné, že je kontrola pravděpodobně identifikována (Tento seznam jsme vygenerovali spuštěním kontroly na našich vnitřních interních ADLA úloh), na které jsou ovlivněné knihovny (Všimněte si, že můžete knihovny volat jenom nepřímo, takže je důležité, abyste přijali potřebné akce #1, abyste zjistili, jestli jsou vaše úlohy ovlivněné) a jaké akce je potřeba opravit. Poznámka: ve většině případů pro naše vlastní úlohy se upozornění vypnula jako falešně pozitivní vzhledem k úzkým povahám většiny závažných změn.
 
 - Vlastnost IAsyncResult. CompletedSynchronously musí být správná, aby se výsledný úkol dokončil.
-  - Při volání TaskFactory. FromAsync musí být implementace vlastnosti IAsyncResult. CompletedSynchronously správná, aby se výsledný úkol dokončil. To znamená, že vlastnost musí vracet hodnotu true, pokud a pouze v případě, že implementace byla dokončena synchronně. Dříve nebyla zaškrtnuta vlastnost.
+  - Při volání TaskFactory. FromAsync musí být implementace vlastnosti IAsyncResult. CompletedSynchronously správná, aby se výsledný úkol dokončil. To znamená, že vlastnost musí vracet hodnotu true, pokud a pouze v případě, že implementace byla dokončena synchronně. Dříve nebyla tato vlastnost zaškrtnuta.
   - Ovlivněné knihovny: mscorlib, System. Threading. Tasks
   - Navrhovaná akce: Ujistěte se, že TaskFactory. FromAsync vrátí hodnotu true správně.
 
