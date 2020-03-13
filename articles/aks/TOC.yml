@@ -117,18 +117,12 @@
   items:
     - name: Operace clusteru
       items:
-        - name: Vytvoření clusteru AKS
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: Škálování clusteru AKS
           href: scale-cluster.md
         - name: Upgrade clusteru AKS
           href: upgrade-cluster.md
         - name: Aktualizace operačního systému procesních uzlů
           href: node-updates-kured.md
-        - name: Odstranění clusteru AKS
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: Integrace ACR s clusterem AKS
           href: cluster-container-registry-integration.md
         - name: Vytváření virtuálních uzlů
