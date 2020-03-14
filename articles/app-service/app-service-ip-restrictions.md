@@ -8,11 +8,11 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422227"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280349"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service #
 
@@ -50,7 +50,7 @@ Při vytváření pravidla musíte vybrat možnost povolit/odepřít a také typ
 
 Pokud chcete nastavit pravidlo na základě IP adresy, vyberte typ protokolu IPv4 nebo IPv6. Zápis IP adres musí být zadán v zápisu CIDR pro adresy IPv4 i IPv6. Pokud chcete zadat konkrétní adresu, můžete použít něco jako 1.2.3.4/32, kde první čtyři oktety reprezentují vaši IP adresu a/32 je maska. Zápis IPv4 protokolu IPv4 pro všechny adresy je 0.0.0.0/0. Pokud se chcete dozvědět víc o zápisu CIDR, můžete číst [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
 
-## <a name="service-endpoints"></a>Koncové body služby
+## <a name="service-endpoints"></a>Koncové body služeb
 
 Koncové body služby umožňují omezit přístup k vybraným podsítím virtuální sítě Azure. Chcete-li omezit přístup k určité podsíti, vytvořte pravidlo omezení s typem Virtual Network. Můžete vybrat předplatné, virtuální síť a podsíť, ke kterým chcete povolit nebo odepřít přístup. Pokud koncové body služby již nejsou povoleny s Microsoft. Web pro podsíť, kterou jste vybrali, bude automaticky povolena, pouze pokud jste zaškrtli políčko s výzvou k provedení. Situace, kdy byste ji chtěli povolit v aplikaci, ale ne v podsíti, je z velké části spojená s tím, že máte oprávnění k povolení koncových bodů služby v podsíti, nebo ne. Pokud potřebujete někomu jinému, aby se povolily koncové body služby v podsíti, můžete zaškrtnout políčko a nechat aplikaci nakonfigurovanou pro koncové body služby ve předvídání jejího povolení později v podsíti. 
 

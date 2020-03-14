@@ -9,18 +9,18 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547655"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248486"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Jak vytvořit žádost o podporu Azure
 
 ## <a name="overview"></a>Přehled
 
-Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v [Azure Portal](https://portal.azure.com).
+Azure umožňuje vytvářet a spravovat žádosti o podporu, označované taky jako lístky podpory. Můžete vytvářet a spravovat požadavky v [Azure Portal](https://portal.azure.com), který je popsaný v tomto článku. Žádosti můžete také vytvářet a spravovat programově pomocí [lístku podpory Azure REST API](/rest/api/support).
 
 > [!NOTE]
 > Adresa URL Azure Portal je specifická pro cloud Azure, ve kterém je vaše organizace nasazená.
@@ -41,15 +41,15 @@ Na základě zpětné vazby od zákazníků jsme aktualizovali prostředí žád
 
 Můžete získat pomoc a **podporu** v Azure Portal. Je k dispozici v nabídce Azure Portal, v globální hlavičce nebo v nabídce prostředků služby. Než budete moct vytvořit žádost o podporu, musíte mít příslušná oprávnění.
 
-### <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
+### <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Chcete-li vytvořit žádost o podporu, musíte být správcem nebo přiřazeni k roli [Přispěvatel žádosti o podporu](../../role-based-access-control/built-in-roles.md#support-request-contributor) .
+Pokud chcete vytvořit žádost o podporu, musíte být správcem nebo mít přiřazenou roli [Přispěvatel žádosti o podporu](../../role-based-access-control/built-in-roles.md#support-request-contributor) na úrovni předplatného.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Přejít na pomoc a podpora z globálního záhlaví
 
 Spuštění žádosti o podporu odkudkoli v Azure Portal:
 
-1. Ve službě Power BI vyberte **?** v globálním záhlaví. Pak vyberte **help + podpora**.
+1. Vyberte **?** v globálním záhlaví. Pak vyberte **help + podpora**.
 
    ![Nápověda a podpora](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -67,7 +67,7 @@ K zahájení žádosti o podporu v kontextu prostředku teď pracujete s:
 
 2. Postupujte podle pokynů a poskytněte nám informace o problému, který máte. Když zahájíte proces žádosti o podporu z prostředku, některé možnosti jsou pro vás předem vybrané.
 
-## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
+## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
 
 Provede vás několik kroků, které vám pomůžou shromáždit informace o vašem problému a vyřešit ho. Jednotlivé kroky jsou popsány v následujících částech.
 

@@ -1,5 +1,6 @@
 ---
 title: Co je Azure Virtual Network NAT?
+titlesuffix: Azure Virtual Network
 description: Přehled Virtual Network funkcí NAT, prostředků, architektury a implementace. Přečtěte si, jak Virtual Network NAT funguje a jak používat prostředky brány NAT v cloudu.
 services: virtual-network
 documentationcenter: na
@@ -13,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55e5b0be7ebefaa26a5981afe3b7c9d3f8a5bf37
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216973"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>Co je Virtual Network NAT (Public Preview)?
+# <a name="what-is-virtual-network-nat"></a>Co je Virtual Network NAT?
 
 Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Internetu pouze pro virtuální sítě. Při konfiguraci v podsíti všechna odchozí připojení používá vaše zadané statické veřejné IP adresy.  Odchozí připojení je možné bez nástroje pro vyrovnávání zatížení nebo veřejných IP adres, které jsou přímo připojené k virtuálním počítačům. Překlad adres (NAT) je plně spravovaný a vysoce odolný.
 
@@ -36,10 +37,6 @@ Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Int
 
 
 *Obrázek: Virtual Network NAT*
-
-
->[!NOTE] 
->Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statické IP adresy pouze pro odchozí
 
@@ -125,48 +122,6 @@ Provoz vašeho překladu adres (NAT) můžete monitorovat prostřednictvím mult
 
 V obecné dostupnosti je k dispozici alespoň 99,9% cesta k datům NAT.
 
-## <a name = "region-availability"></a>Dostupnost oblasti
-
-Překlad adres (NAT) je aktuálně k dispozici v těchto oblastech:
-
-- Evropa – západ
-- Japonsko – východ
-- USA – východ 2
-- USA – západ
-- USA – západ 2
-- USA – středozápad
-
-## <a name = "enable-preview"></a>Účast Public Preview
-
-Aby bylo možné zúčastnit se Public Preview, musí být odběry registrovány.  Účast vyžaduje proces se dvěma kroky a pokyny pro Azure CLI a Azure PowerShell.  Dokončení aktivace může trvat několik minut.
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. registrace předplatného pro Public Preview
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. aktivovat registraci
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure Powershell
-
-1. registrace předplatného pro Public Preview
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. aktivovat registraci
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>Ceny
 
@@ -186,9 +141,10 @@ Ve verzi Public Preview se ceny uvažují 50%.
 
 Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Názor
 
-Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
+Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
+
 
 ## <a name="limitations"></a>Omezení
 
@@ -201,4 +157,4 @@ Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Publi
 
 * Přečtěte si o [prostředku brány NAT](./nat-gateway-resource.md).
 * [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
-* [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).
+

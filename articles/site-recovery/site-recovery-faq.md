@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
 ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362683"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257677"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
 
@@ -192,7 +192,7 @@ Ano. Další informace o omezování šířky pásma najdete v těchto článcí
 
 
 
-## <a name="failover"></a>Převzetí služeb při selhání
+## <a name="failover"></a>Při selhání
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Pokud převezmem služby při selhání do Azure, jak mám přístup k virtuálním počítačům Azure po převzetí služeb při selhání?
 
 K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).

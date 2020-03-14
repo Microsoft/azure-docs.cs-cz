@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 6fef1829e008b58f50546e9e6e7ad2ccee037224
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78892876"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245262"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -495,9 +495,17 @@ Další informace o cenách na místě najdete v článku [Virtual Machines na m
 
 Azure navíc nabízí koncepty vyhrazeného hostitele. Koncept vyhrazeného hostitele nabízí větší kontrolu nad cykly oprav, které provádí Azure. Můžete si čas opravit podle vašich vlastních plánů. Tato nabídka je konkrétně zaměřená na zákazníky s úlohou, která nemusí následovat po běžném cyklu úlohy. Pokud si chcete přečíst koncepty nabídek vyhrazených hostitelů Azure, přečtěte si článek [vyhrazený hostitel Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts). Použití této nabídky je podporováno pro úlohy SAP a používá se několika zákazníky SAP, kteří chtějí mít větší kontrolu nad opravou infrastruktury a s případnými plány údržby společnosti Microsoft. Další informace o tom, jak Microsoft udržuje a opraví infrastrukturu Azure, která je hostitelem virtuálních počítačů, najdete [v článku údržba virtuálních počítačů v Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates).
 
+#### <a name="generation-1-and-generation-2-virtual-machines"></a>Generace 1 a generace 2 – virtuální počítače
+Hypervisor Microsoftu dokáže zvládnout dvě různé generace virtuálních počítačů. Tyto formáty se nazývají **generace 1** a **generace 2**. **Generace 2** byla představena v roce 2012 s hypervisorem systému Windows Server 2012. Azure se spustil s použitím virtuálních počítačů 1. generace. Při nasazení virtuálních počítačů Azure stále používá výchozí formát 1. generace. Mezitím můžete nasadit i formáty virtuálních počítačů 2. generace. [Podpora virtuálních počítačů 2. generace v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) obsahuje seznam rodin virtuálních počítačů Azure, které se dají nasadit jako virtuální počítač 2. generace. Tento článek obsahuje také seznam velmi důležitých funkčních rozdílů virtuálních počítačů generace 2, které mohou běžet v privátním cloudu technologie Hyper-V a v Azure. Důležitější Tento článek také obsahuje seznam funkčních rozdílů mezi virtuálními počítači 1. generace a virtuálními počítači 2. generace, které jsou spuštěny v Azure. 
+
+> [!NOTE]
+> Existují funkční rozdíly virtuálních počítačů generace 1 a generace 2 spuštěných v Azure. Přečtěte si článek [Podpora virtuálních počítačů 2. generace v Azure, kde](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) najdete seznam těchto rozdílů.  
+ 
+Přesunutí stávajícího virtuálního počítače z jedné generace do druhé generace není možné. Pokud chcete změnit generaci virtuálního počítače, musíte nasadit nový virtuální počítač pro generaci, který si přejete, a znovu nainstalovat software, který používáte ve virtuálním počítači generace. To má vliv jenom na základní image virtuálního pevného disku virtuálního počítače a nemá žádný vliv na datové disky nebo připojené soubory NFS ani sdílené složky SMB. Datové disky, NFS nebo sdílené složky SMB, které byly původně přiřazeny, například na virtuálním počítači generace 1.
+
+V tuto chvíli se k tomuto problému setkáte hlavně mezi virtuálními počítači Azure M-Series a virtuálními počítači řady Mv2-Series. Vzhledem k omezením ve formátu virtuálního počítače 1. generace nebylo možné ve formátu generace 1 nabídnout velké virtuální počítače řady Mv2, ale je nutné ji v generaci 2 jenom nabízet. Na druhé straně rodina virtuálních počítačů řady M-Series ještě není povolená pro nasazení v generaci 2. V důsledku toho Změna velikosti mezi virtuálními počítači řady M-Series a Mv2-Series vyžaduje novou instalaci softwaru ve virtuálním počítači, který je cílem jiné rodiny virtuálních počítačů. Microsoft pracuje na tom, aby vám umožnil nasazení virtuálních počítačů řady M-Series pro nasazení 2. generace. Nasazení virtuálních počítačů řady M-Series jako virtuálních počítačů generace 2 v budoucnu umožní, aby se u virtuálních počítačů řady M-Series a Mv2-Series zobrazovalo méně nové velikosti. V obou směrech buď změňte velikost z řady M-Series na větší virtuální počítače Mv2-Series nebo zmenšete velikost z většího počtu virtuálních počítačů Mv2-Series na menší virtuální počítače řady M-Series. Dokumentace se bude aktualizovat, jakmile budou virtuální počítače řady M-Series možné nasadit jako virtuální počítače generace 2.    
 
  
-
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Úložiště: Microsoft Azure Storage a datové disky
 Microsoft Azure Virtual Machines využívá jiné typy úložišť. Při implementaci SAP na službách virtuálních počítačů Azure je důležité pochopit rozdíly mezi těmito dvěma hlavními typy úložiště:

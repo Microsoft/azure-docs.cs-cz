@@ -15,17 +15,17 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471988"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245665"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure CLI
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] tomto článku se dozvíte, jak přiřadit role pomocí rozhraní příkazového řádku Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 

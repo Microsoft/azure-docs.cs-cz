@@ -1,5 +1,5 @@
 ---
-title: Co je řízení přístupu na základě role (RBAC) pro prostředky Azure? | Dokumentace Microsoftu
+title: Co je řízení přístupu na základě role (RBAC) pro prostředky Azure? | Dokumenty Microsoft
 description: Získejte přehled řízení přístupu na základě role (RBAC) pro prostředky Azure. K řízení přístupu k prostředkům Azure použijte přiřazení rolí.
 services: active-directory
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357677"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240104"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě role (RBAC) pro prostředky Azure?
 
@@ -59,7 +59,7 @@ Objekt *zabezpečení* je objekt, který představuje uživatele, skupinu, insta
 - Instanční objekt – identita zabezpečení, kterou používají aplikace nebo služby pro přístup ke konkrétním prostředkům Azure. Můžete si ji představit jako *identitu uživatele* (uživatelské jméno a heslo nebo certifikát) pro aplikaci.
 - Spravovaná identita – identita v Azure Active Directory, kterou automaticky spravuje Azure. [Spravované identity](../active-directory/managed-identities-azure-resources/overview.md) obvykle používáte při vývoji cloudových aplikací pro správu přihlašovacích údajů pro ověřování ve službách Azure.
 
-### <a name="role-definition"></a>Definice role
+### <a name="role-definition"></a>Definice rolí
 
 *Definice role* je kolekce oprávnění. Obvykle se nazývá jenom *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Role mohou být souhrnné, například vlastník, nebo konkrétní, například čtenář virtuálních počítačů.
 
@@ -76,7 +76,7 @@ Zbývající předdefinované role umožňují správu konkrétních prostředk�
 
 Azure obsahuje operace s daty, které umožňují udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [vysvětlení definic rolí pro prostředky Azure](role-definitions.md).
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Obor
 
 *Obor* je sada prostředků, na které se vztahuje přístup. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
 

@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
 ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129335"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268701"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 
@@ -67,7 +67,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 |:---|:---|:---|
 |**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. |  Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
 | **Úsilí řízení výkonu** |Malým|Výkonnější|
-|**Škálování na výpočetní výkon**|Automaticky|Ručně|
+|**Škálování na výpočetní výkon**|Automaticky|Ručně prováděné|
 |**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Okamžitá|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
 
@@ -126,7 +126,7 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 
 |Funkce|Aktivační událost autoresume|
 |---|---|
-|Ověřování a autorizace|Přihlásit|
+|Ověřování a autorizace|Přihlášení|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
 |Zjišťování a klasifikace dat|Přidávání, úpravy, odstraňování nebo zobrazování popisků citlivosti|
 |Auditování|Zobrazení záznamů auditu.<br>Probíhá aktualizace nebo zobrazení zásad auditování.|
@@ -145,7 +145,7 @@ Automatické obnovení se také aktivuje při nasazení některých aktualizací
 
 Pokud je databáze bez serveru pozastavená, pak se při prvním přihlášení obnoví databáze a vrátí se chyba s oznámením, že databáze není k dispozici, kód chyby 40613. Po obnovení databáze se přihlašovací jméno musí znovu pokusit o navázání připojení. Klienti databáze s logikou opakování připojení by nemuseli upravovat.
 
-### <a name="latency"></a>Latence
+### <a name="latency"></a>Čekací doba
 
 Latence pro autoresume a autopauza databáze bez serveru je obvykle na hodnotu 1 minuta k autoresume a 1-10 minut pro autopauzu.
 
@@ -161,15 +161,15 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
 
    |Název cíle služby|Úroveň služeb|Generování hardwaru|Maximální počet virtuální jádra|
    |---|---|---|---|
-   |GP_S_Gen5_1|Pro obecné účely|Gen5|1|
-   |GP_S_Gen5_2|Pro obecné účely|Gen5|2|
-   |GP_S_Gen5_4|Pro obecné účely|Gen5|4|
-   |GP_S_Gen5_6|Pro obecné účely|Gen5|6|
-   |GP_S_Gen5_8|Pro obecné účely|Gen5|8|
-   |GP_S_Gen5_10|Pro obecné účely|Gen5|10|
-   |GP_S_Gen5_12|Pro obecné účely|Gen5|12|
-   |GP_S_Gen5_14|Pro obecné účely|Gen5|14|
-   |GP_S_Gen5_16|Pro obecné účely|Gen5|16|
+   |GP_S_Gen5_1|Obecné účely|Gen5|1|
+   |GP_S_Gen5_2|Obecné účely|Gen5|2|
+   |GP_S_Gen5_4|Obecné účely|Gen5|4|
+   |GP_S_Gen5_6|Obecné účely|Gen5|6|
+   |GP_S_Gen5_8|Obecné účely|Gen5|8|
+   |GP_S_Gen5_10|Obecné účely|Gen5|10|
+   |GP_S_Gen5_12|Obecné účely|Gen5|12|
+   |GP_S_Gen5_14|Obecné účely|Gen5|14|
+   |GP_S_Gen5_16|Obecné účely|Gen5|16|
 
 2. Volitelně můžete zadat minimální virtuální jádra a prodlevu při pauze pro změnu jejich výchozích hodnot. V následující tabulce jsou uvedeny dostupné hodnoty pro tyto parametry.
 

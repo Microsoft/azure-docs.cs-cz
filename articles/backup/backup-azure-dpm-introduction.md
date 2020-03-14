@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak připravit zálohy aplikace Syste
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381509"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273459"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -34,7 +34,7 @@ Mezi obchodní výhody zálohování serverů DPM do Azure patří:
 - Pro místní DPM Azure Backup poskytuje alternativu k dlouhodobému nasazení na pásku.
 - Pro DPM běžící na virtuálním počítači Azure Azure Backup umožňuje přesměrování úložiště z disku Azure. Ukládání starších dat do trezoru záloh vám umožní škálovat vaše podnikání tím, že se na disk uloží nová data.
 
-## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
+## <a name="prerequisites-and-limitations"></a>Předpoklady a omezení
 
 **Nastavení** | **Požadavek**
 --- | ---

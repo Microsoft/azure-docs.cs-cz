@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441999"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251723"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Ingestování dat pomocí knihovny Pythonu v Azure Průzkumník dat
 
@@ -22,7 +22,7 @@ Nejprve vytvořte tabulku a mapování dat v clusteru. Pak vytvoříte frontu in
 
 Tento článek je také k dispozici jako [notebook Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -39,7 +39,7 @@ pip install azure-kusto-data
 pip install azure-kusto-ingest
 ```
 
-## <a name="add-import-statements-and-constants"></a>Přidání příkazů pro import a konstant
+## <a name="add-import-statements-and-constants"></a>Přidání příkazů a konstant pro import
 
 Importujte třídy z Azure-kusto-data.
 
@@ -70,7 +70,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Teď vytvořte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít [certifikát aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [klíč aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)a [uživatele a heslo AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Teď sestavte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít [certifikát aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [klíč aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)a [uživatele a heslo AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 Cílovou tabulku a mapování vytvoříte v pozdějším kroku.
 

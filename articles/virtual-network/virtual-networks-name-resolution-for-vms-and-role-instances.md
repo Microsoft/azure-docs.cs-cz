@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
 ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355970"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244885"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky v Azure Virtual Networks
 
@@ -43,8 +43,8 @@ To, který typ překladu názvů použijete, závisí na tom, jak spolu vaše pr
 | Překlad názvů z App Service Web Apps v jedné virtuální síti na virtuální počítače v jiné virtuální síti |Servery DNS spravované zákazníky, které předávají dotazy mezi virtuálními sítěmi pro překlad prostřednictvím Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Rozlišení místních počítačů a názvů služeb z virtuálních počítačů nebo instancí rolí v Azure. |Servery DNS spravované zákazníky (místní řadič domény, místní řadič domény jen pro čtení nebo sekundární služba DNS, která se synchronizuje pomocí zónových přenosů, například). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů hostitelů Azure z místních počítačů. |Předává dotazy do služby DNS spravované zákazníkem proxy server v odpovídající virtuální síti, proxy server předává dotazy do Azure pro řešení. Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Reverzní DNS pro interní IP adresy |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Neuvedeno |
-| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Neužívá se. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Neuvedeno|
+| Reverzní DNS pro interní IP adresy |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Nelze použít |
+| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Není k dispozici. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Nelze použít|
 
 ## <a name="azure-provided-name-resolution"></a>Překlad názvů poskytovaných službou Azure
 
@@ -187,7 +187,7 @@ Pokud potřebujete provést překlad IP adres z vaší webové aplikace vytvoře
 * V Azure Portal pro App Service plán hostování webové aplikace vyberte možnost **synchronizovat síť** v části **síť**, **Virtual Network integrace**.
 
 ## <a name="specify-dns-servers"></a>Zadat servery DNS
-Pokud používáte vlastní servery DNS, poskytuje Azure možnost zadat několik serverů DNS na jednu virtuální síť. Můžete také zadat více serverů DNS pro každé síťové rozhraní (pro Azure Resource Manager) nebo pro každou cloudovou službu (pro klasický model nasazení). Servery DNS zadané pro síťové rozhraní nebo cloudovou službu mají přednost před servery DNS zadanými pro virtuální síť.
+Pokud používáte vlastní servery DNS, poskytuje Azure možnost zadat několik serverů DNS na jednu virtuální síť. Můžete také zadat víc serverů DNS na síťové rozhraní (pro Azure Resource Manageru), nebo za cloudové služby (v případě modelu nasazení classic). Servery DNS zadané pro síťové rozhraní nebo cloudovou službu mají přednost před servery DNS zadanými pro virtuální síť.
 
 > [!NOTE]
 > Vlastnosti síťového připojení, například IP adresy serveru DNS, by se neměly upravovat přímo v rámci virtuálních počítačů. Důvodem je to, že při zaretušování služby se můžou vymazat, když se virtuální síťový adaptér nahradí. To platí pro virtuální počítače se systémem Windows i Linux.

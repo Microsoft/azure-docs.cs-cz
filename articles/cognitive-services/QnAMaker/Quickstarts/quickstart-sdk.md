@@ -5,11 +5,11 @@ ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
 ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389357"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241763"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>Rychlý Start: vytvoření a Správa znalostní báze
 

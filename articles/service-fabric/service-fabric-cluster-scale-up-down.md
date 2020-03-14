@@ -4,11 +4,11 @@ description: Škálujte Service Fabric clusteru v nebo v souladu s požadavky na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389856"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258730"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontální snížení nebo navýšení kapacity clusteru
 
@@ -58,7 +58,7 @@ Podle těchto pokynů [nastavte automatické škálování pro jednotlivé sady 
 
 ## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Ruční přidání virtuálních počítačů do typu uzlu/sady škálování virtuálních počítačů
 
-Při škálování na více instancí přidáte do škálovací sady více instancí virtuálních počítačů. Tyto instance se stanou uzly, které bude Service Fabric používat. Service Fabric to pozná, když se do škálovací sady přidají další instance (díky horizontálnímu navýšení kapacity), a automaticky zareaguje. 
+Při horizontálním navyšování kapacity přidáte do škálovací sady více instancí virtuálních počítačů. Tyto instance se stanou uzly, které bude Service Fabric používat. Service Fabric to pozná, když se do škálovací sady přidají další instance (díky horizontálnímu navýšení kapacity), a automaticky zareaguje. 
 
 > [!NOTE]
 > Přidání virtuálních počítačů trvá určitou dobu, takže neočekáváme, že se doplňují. Proto si naplánujte, abyste předem nastavili kapacitu ještě více než 10 minut, než bude k dispozici kapacita virtuálního počítače pro repliky/instance služby, které se mají načíst.

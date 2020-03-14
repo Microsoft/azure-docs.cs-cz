@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
 ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990517"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246666"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
@@ -40,15 +40,15 @@ Následující tabulka obsahuje informace o podpoře funkcí a sítí pro každ�
 
 Typ prostředí IR | Veřejná síť | Privátní síť
 ------- | -------------- | ---------------
-Azure | Tok dat<br/>Pohyb dat<br/>Odesílání aktivit | &nbsp;
-V místním prostředí | Pohyb dat<br/>Odesílání aktivit | Pohyb dat<br/>Odesílání aktivit
+Azure | Data Flow<br/>Přesuny dat<br/>Odesílání aktivit | &nbsp;
+V místním prostředí | Přesuny dat<br/>Odesílání aktivit | Přesuny dat<br/>Odesílání aktivit
 Azure-SSIS | Spouštění balíčků služby SSIS | Spouštění balíčků služby SSIS
 
 Následující diagram znázorňuje, jak se dají různá prostředí Integration Runtime používat v kombinaci, aby nabízela bohaté funkce integrace dat a podporu sítí:
 
 ![Různé typy prostředí Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Azure Integration Runtime
+## <a name="azure-integration-runtime"></a>Prostředí Azure Integration Runtime
 Prostředí Azure Integration Runtime nabízí tyto funkce:
 
 - Spouštění toků dat v Azure 
@@ -70,7 +70,7 @@ Informace o vytváření a konfiguraci prostředí najdete v návodu k vytvořen
 > [!NOTE] 
 > Prostředí Azure Integration runtime má vlastnosti související s modulem runtime toku dat, který definuje základní výpočetní infrastrukturu, která by se použila ke spouštění toků dat. 
 
-## <a name="self-hosted-integration-runtime"></a>Místní prostředí Integration Runtime
+## <a name="self-hosted-integration-runtime"></a>Prostředí Integration Runtime v místním prostředí
 Prostředí IR v místním prostředí nabízí tyto funkce:
 
 - Spouštění aktivity kopírování mezi úložišti dat v cloudu a úložištěm dat v privátní síti.

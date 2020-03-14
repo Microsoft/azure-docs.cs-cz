@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365677"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254726"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Správa virtuálního pole StorSimple pomocí webového uživatelského rozhraní
 ![průběh procesu nastavení](./media/storsimple-ova-web-ui-admin/manage4.png)

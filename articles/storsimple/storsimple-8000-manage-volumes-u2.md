@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381857"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254765"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použití služby StorSimple Device Manager ke správě svazků (Update 3 nebo novější)
 
@@ -57,8 +57,8 @@ V následující tabulce najdete maximální zřízenou kapacitu pro každé za�
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuální zařízení** | | |
-| 8010 |30 TB |neuvedeno |
-| 8020 |64 TB |neuvedeno |
+| 8010 |30 TB |NEUŽÍVÁ SE. |
+| 8020 |64 TB |NEUŽÍVÁ SE. |
 
 ## <a name="the-volumes-blade"></a>Okno svazky
 
@@ -165,7 +165,7 @@ Upravte svazek, pokud ho potřebujete rozšířit, nebo změňte hostitele, kte�
    
    1. Přejít na **Správa počítače** ->**Správa disků**.
    2. Klikněte pravým tlačítkem na **Správa disků** a vyberte znovu **Prohledat disky**.
-   3. V seznamu disků vyberte svazek, který jste aktualizovali, klikněte na něj pravým tlačítkem myši a vyberte možnost **Zvětšit svazek**. Spustí se Průvodce rozšířeným svazkem. Klikněte na **Další**.
+   3. V seznamu disků vyberte svazek, který jste aktualizovali, klikněte na něj pravým tlačítkem myši a vyberte možnost **Zvětšit svazek**. Spustí se Průvodce rozšířeným svazkem. Klikněte na **Další**.
    4. Dokončete průvodce a přijměte výchozí hodnoty. Po dokončení průvodce by měl svazek Zobrazit větší velikost.
       
       > [!NOTE]

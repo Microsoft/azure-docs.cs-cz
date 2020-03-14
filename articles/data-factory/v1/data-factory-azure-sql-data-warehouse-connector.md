@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 18f30af4595a7679d5c3ef56763e992d54fae536
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358554"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282000"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -68,9 +68,9 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro Azure SQL Data Warehouse propojenou službu.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **AzureSqlDW** . |Ano |
+| typ |Vlastnost Type musí být nastavená na: **AzureSqlDW** . |Ano |
 | connectionString |Zadejte informace potřebné pro připojení k instanci Azure SQL Data Warehouse pro vlastnost connectionString. Podporuje se jenom základní ověřování. |Ano |
 
 > [!IMPORTANT]
@@ -81,7 +81,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro Azure SQL Da
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro sadu dat typu **AzureSqlDWTable** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky nebo zobrazení v databázi Azure SQL Data Warehouse, na kterou odkazuje propojená služba |Ano |
 
@@ -96,7 +96,7 @@ V takovém případě se vlastnosti dostupné v části typeProperties v aktivit
 ### <a name="sqldwsource"></a>SqlDWSource
 Pokud je zdroj typu **SqlDWSource**, jsou v oddílu **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: select * from MyTable. |Ne |
 | sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. |Ne |
@@ -142,7 +142,7 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Podrobnosti najdete v části s možností [opakování](#repeatability-during-copy). |Příkaz dotazu. |Ne |
 | allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do SQL Data Warehouse.** Omezení a podrobnosti najdete v tématu [použití základu k načtení dat do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) části. |True <br/>False (výchozí) |Ne |
@@ -315,20 +315,20 @@ Data Factory vytvoří tabulku v cílovém úložišti se stejným názvem tabul
 | Binární hodnota | Binární hodnota |
 | Varbinary | Varbinary (až 8000) |
 | Datum | Datum |
-| DateTime | DateTime |
+| Datum a čas | Datum a čas |
 | DateTime2 | DateTime2 |
 | Čas | Čas |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (až 8000) |
 | NText | NVarChar (až 4000) |
-| Image | VarBinary (až 8000) |
+| Obrázek | VarBinary (až 8000) |
 | uniqueidentifier | uniqueidentifier |
 | Char | Char |
 | NChar | NChar |
 | VarChar | VarChar (až 8000) |
 | NVarChar | NVarChar (až 4000) |
-| Xml | Varchar (až 8000) |
+| XML | Varchar (až 8000) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -348,9 +348,9 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | binary |Byte[] |
 | bit |Logická hodnota |
 | char |String, Char[] |
-| date |DateTime |
-| Datum a čas |DateTime |
-| datetime2 |DateTime |
+| date |Datum a čas |
+| Datum a čas |Datum a čas |
+| datetime2 |Datum a čas |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte[] |
@@ -362,9 +362,9 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | ntext |String, Char[] |
 | numeric |Decimal |
 | nvarchar |String, Char[] |
-| real |Jednoduchá |
+| real |Jednoduché |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datum a čas |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
@@ -375,7 +375,7 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | uniqueidentifier |identifikátor GUID |
 | Varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |Xml |
+| xml |XML |
 
 Sloupce můžete také namapovat ze zdrojové datové sady na sloupce z datové sady jímky v definici aktivity kopírování. Podrobnosti najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
 

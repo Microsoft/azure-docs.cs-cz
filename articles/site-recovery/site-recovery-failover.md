@@ -5,11 +5,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609217"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257690"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Spuštění převzetí služeb při selhání z místního prostředí do Azure
 
@@ -46,7 +46,7 @@ Spusťte plán obnovení převzetí služeb při selhání následujícím způs
 1. V trezoru Site Recovery vyberte možnost **plány obnovení** > *recoveryplan_name*.
 2. Klikněte na **převzetí služeb při selhání**.
 
-    ![Převzetí služeb při selhání](./media/site-recovery-failover/Failover.png)
+    ![Při selhání](./media/site-recovery-failover/Failover.png)
 
 3. V části **převzetí služeb při** selhání > **směr převzetí služeb při selhání**ponechte výchozí, pokud provádíte replikaci do Azure.
 4. V části **převzetí služeb při selhání**vyberte **bod obnovení** , u kterého chcete převzít služby při selhání.
@@ -80,7 +80,7 @@ Pro virtuální počítače Hyper-V můžete spustit plánované převzetí slu�
 
 K převzetí služeb při selhání je přidruženo několik úloh.
 
-![Převzetí služeb při selhání](./media/site-recovery-failover/FailoverJob.png)
+![Při selhání](./media/site-recovery-failover/FailoverJob.png)
 
 - **Kontroly předpokladů**: zajišťuje splnění všech podmínek vyžadovaných pro převzetí služeb při selhání.
 - **Převzetí služeb při selhání**: zpracovává data, aby bylo možné z ní vytvořit virtuální počítač Azure. Pokud jste zvolili **nejnovější** bod obnovení, vytvoří se bod obnovení z dat, která byla odeslána do služby.

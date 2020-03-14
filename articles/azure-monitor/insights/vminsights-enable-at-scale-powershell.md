@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
 ms.openlocfilehash: e28a5dce4dda677ef4e5eb0ed08c42ec1f03c308
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395807"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249188"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Povolit Azure Monitor pro virtuální počítače (Preview) pomocí šablon Azure PowerShell nebo Správce prostředků
 

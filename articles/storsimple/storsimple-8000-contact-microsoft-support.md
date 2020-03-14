@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384877"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254986"
 ---
 # <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
 
@@ -23,7 +23,7 @@ StorSimple Device Manager poskytuje možnost **zaprotokolovat novou žádost o p
 
 Před vytvořením Support request si přečtěte [SLA a informace o řadě StorSimple 8000](https://msdn.microsoft.com/library/mt433077.aspx) .
 
-## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
+## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
 
 V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)můžete vytvořit lístky podpory pro problém na zařízení StorSimple přímo z okna s přehledem služby StorSimple Device Manager. Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
 
@@ -37,7 +37,7 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
    1. V rozevíracím seznamu **typ problému** vyberte možnost **technický**.
    2. Automaticky se zvolí aktuální **předplatné**, typ **služby** a **prostředek** (Služba StorSimple Device Manager Service). 
    3. V rozevíracím seznamu vyberte **plán podpory** , pokud máte k vašemu předplatnému k dispozici několik plánů. K povolení technické podpory potřebujete placený plán podpory.
-   4. Klikněte na **Další**.
+   4. Klikněte na **Další**.
 
        ![Kontaktovat podporu společnosti Microsoft prostřednictvím nového portálu](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
@@ -49,7 +49,7 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
     4. Zadejte datum a čas spuštění problému.
     5. V části **nahrání souboru**klikněte na ikonu složky a přejděte do balíčku pro podporu.
     6. Podívejte se na **sdílené diagnostické informace**.
-    7. Klikněte na **Další**.
+    7. Klikněte na **Další**.
 
        ![Kontaktovat podporu společnosti Microsoft prostřednictvím nového portálu](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 

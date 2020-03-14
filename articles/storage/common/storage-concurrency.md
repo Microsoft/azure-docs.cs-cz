@@ -11,11 +11,11 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373675"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255298"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 

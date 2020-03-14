@@ -5,11 +5,11 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357984"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276618"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure Functions
 V Azure Functions konkrétní funkce sdílí několik základních technických konceptů a komponent bez ohledu na jazyk nebo vazbu, které používáte. Než přejdete k podrobnostem učení, které jsou specifické pro daný jazyk nebo vazbu, přečtěte si tento přehled, který platí pro všechny.
@@ -42,9 +42,9 @@ Vlastnost `bindings` je tam, kde konfigurujete triggery i vazby. Každá vazba s
 
 | Vlastnost | Hodnoty a typy | Komentáře |
 | --- | --- | --- |
-| `type` |řetězec |Typ vazby například `queueTrigger`. |
+| `type` |string |Typ vazby například `queueTrigger`. |
 | `direction` |' in ', ' out ' |Označuje, zda je vazba určena pro příjem dat do funkce nebo odesílání dat z funkce. |
-| `name` |řetězec |Název, který se používá pro vázaná data ve funkci. Pro C#je toto název argumentu; v případě JavaScriptu je klíč v seznamu klíč/hodnota. |
+| `name` |string |Název, který se používá pro vázaná data ve funkci. Pro C#je toto název argumentu; v případě JavaScriptu je klíč v seznamu klíč/hodnota. |
 
 ## <a name="function-app"></a>Function App
 Function App poskytuje kontext spuštění v Azure, ve kterém se vaše funkce spouštějí. V takovém případě je to jednotka nasazení a správy pro vaše funkce. Aplikace Function App se skládá z jedné nebo několika individuálních funkcí, které jsou spravované, nasazené a škálovat dohromady. Všechny funkce ve Function App sdílí stejný cenový plán, způsob nasazení a běhovou verzi. Aplikaci Function App si můžete představit jako způsob, jak organizovat a shromažďovat své funkce. Další informace najdete v tématu [Správa aplikace Function App](functions-how-to-use-azure-function-app-settings.md). 
@@ -96,7 +96,7 @@ Máte problémy s chybami pocházejícími z vazeb? Přečtěte si dokumentaci [
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících zdrojích:
+Další informace naleznete v následujících zdrojích:
 
 * [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 * [Místní psaní kódu a testování funkcí Azure Functions](./functions-develop-local.md)

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373589"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280011"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služby Application Gateway v2 
 
@@ -167,15 +167,15 @@ Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivý
 
 |Rozdíl|Podrobnosti|
 |--|--|
-|Ověřovací certifikát|Nepodporuje se.<br>Další informace najdete v tématu [Přehled koncového šifrování protokolu SSL s Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporuje se|
-|Uživatelem definovaná trasa (UDR) na Application Gateway podsíti|Nepodporuje se|
+|Ověřovací certifikát|Není podporováno.<br>Další informace najdete v tématu [Přehled koncového šifrování protokolu SSL s Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
+|Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporováno|
+|Uživatelem definovaná trasa (UDR) na Application Gateway podsíti|Nepodporováno|
 |NSG pro rozsah portů pro příchozí spojení| -65200 až 65535 pro Standard_v2 SKU<br>-65503 až 65534 pro SKU Standard.<br>Další informace najdete v [nejčastějších dotazech](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
-|Protokoly výkonu v diagnostice Azure|Nepodporuje se.<br>Měly by se používat metriky Azure.|
+|Protokoly výkonu v diagnostice Azure|Není podporováno.<br>Měly by se používat metriky Azure.|
 |Fakturace|Fakturace naplánovala zahájení od 1. července 2019.|
 |Režim FIPS|V tuto chvíli se nepodporují.|
 |Jenom interního nástroje režim|To se v tuto chvíli nepodporuje. Podporují se veřejné a interního nástroje režimy.|
-|Integrace Netwatcher|Nepodporuje se.|
+|Integrace Netwatcher|Není podporováno.|
 |Integrace Azure Security Center|Ještě není k dispozici.
 
 ## <a name="migrate-from-v1-to-v2"></a>Migrace z v1 na v2

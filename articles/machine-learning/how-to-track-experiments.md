@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: e6b2f73540a0af7ed9c12469406a77d1bed8a2b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396446"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270001"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Vylepšete proces vytváření modelů sledováním experimentů a monitorován�
 
 Pro spuštění při školení experiment lze přidat následující metriky. Podrobné informace o tom, co lze sledovat při spuštění, naleznete v [dokumentaci třídy Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
-|Typ| Funkce jazyka Python | Poznámky:|
+|Typ| Funkce jazyka Python | Poznámky|
 |----|:----|:----|
 |Skalární hodnoty |Funkce:<br>`run.log(name, value, description='')`<br><br>Příklad:<br>Run.log ("přesnost", 0,95) |Protokol a číselné nebo řetězcová hodnota pro spouštění s daným názvem. Protokolování metriky o spuštění způsobí, že tuto metriku, který bude uložen do běhu záznam v experimentu.  Stejné metriky můžete přihlásit více než jednou v rámci spuštěný proces, výsledek se považuje za vektor tuto metriku.|
 |Seznamy|Funkce:<br>`run.log_list(name, value, description='')`<br><br>Příklad:<br>Run.log_list ("přesností" [0.6, 0,7, 0.87]) | Přihlaste se seznam hodnot pro spouštění s daným názvem.|
@@ -329,7 +329,7 @@ Tyto poznámkové bloky předvedení konceptů v tomto článku:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete naučit používat sadu Azure Machine Learning SDK pro Python, vyzkoušejte tyto další kroky:
+Vyzkoušejte tyto další kroky pro další informace o použití sady SDK Azure Machine Learning pro Python:
 
 * Podívejte se na příklad, jak registrovat nejlepší model a nasadit ho v kurzu, [Naučte si model klasifikace imagí pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
 

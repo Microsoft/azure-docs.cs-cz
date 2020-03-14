@@ -4,11 +4,11 @@ description: Tento článek popisuje běžné úlohy správy a monitorování sd
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382538"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247654"
 ---
 # <a name="manage-azure-file-share-backups"></a>Správa záloh sdílených složek Azure
 
@@ -125,7 +125,7 @@ Obnovení ochrany sdílené složky Azure:
 
    ![Zásada zálohování se úspěšně aktualizovala.](./media/manage-afs-backup/successfully-updated.png)
 
-## <a name="delete-backup-data"></a>Odstranění zálohovaných dat
+## <a name="delete-backup-data"></a>Odstranit data zálohy
 
 Zálohu sdílené složky můžete odstranit během úlohy **zastavení zálohování** nebo kdykoli po zastavení ochrany. Před odstraněním bodů obnovení může být výhodné počkat dny nebo dokonce týdny. Při odstraňování zálohovaných dat nemůžete zvolit konkrétní body obnovení, které se mají odstranit. Pokud se rozhodnete odstranit zálohovaná data, odstraníte všechny body obnovení spojené se sdílenou složkou souborů.
 
@@ -135,7 +135,7 @@ Odstranění zálohovaných dat pro sdílenou složku Azure:
 
 1. Po zastavení úlohy zálohování jsou v řídicím panelu **zálohovaná položka** k dispozici možnosti **obnovit zálohu** a **odstranit záložní data** . Vyberte možnost **Odstranit data záloh** .
 
-   ![Odstranění zálohovaných dat](./media/manage-afs-backup/delete-backup-data.png)
+   ![Odstranit data zálohy](./media/manage-afs-backup/delete-backup-data.png)
 
 1. Otevře se podokno **Odstranit zálohovaná data** . Zadáním názvu sdílené složky potvrďte odstranění. Volitelně můžete zadat další informace v polích **důvod** nebo **Komentáře** . Až si budete jisti, že se data záloh odstraňují, vyberte **Odstranit**.
 

@@ -7,11 +7,11 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373352"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274538"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru pro správu služeb IT
 
@@ -112,7 +112,7 @@ Po vytvoření připojení ITSM můžete vytvořit pracovní položku v nástroj
 
 Skupiny akcí poskytují modulární a opakovaně použitelný způsob aktivace akcí pro vaše výstrahy Azure. Skupiny akcí s upozorněními na metriky, upozornění protokolu aktivit a výstrahy služby Azure Log Analytics můžete používat v Azure Portal.
 
-Použijte následující postup:
+Pomocí následujícího postupu:
 
 1. V Azure Portal klikněte na **monitorování**.
 2. V levém podokně klikněte na **skupiny akcí**. Zobrazí se okno **Přidat skupinu akcí** .
@@ -183,7 +183,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Dopad
 - Priorita
 - Eskalace
-- Autor
+- Vytvořil
 - Vyřešil
 - Uzavřel
 - Zdroj
@@ -205,7 +205,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 **Pole**
 - ServiceDeskConnectionName
 - ID oddělení služeb
-- Autor
+- Vytvořil
 - Uzavřel
 - Zdroj
 - Přiřazeno uživateli
@@ -247,7 +247,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | Přiřazeno uživateli  |
 | Category_s | Kategorie |
 | Title_s|  Krátký popis |
-| Description_s|  Poznámky: |
+| Description_s|  Poznámky |
 | CreatedDate_t|  Otevřít |
 | ClosedDate_t| Uzavřeno|
 | ResolvedDate_t|Vyřešeno|

@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 4ad58bc2d61f063dce2c23f60a65dcbec48a2303
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382137"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272783"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Použití Data Lake nástrojů pro Visual Studio pro připojení k Azure HDInsight a spouštění dotazů Apache Hive
 
@@ -26,7 +26,7 @@ Další informace o připojení ke clusteru Apache Storm najdete v tématu [výv
 
 Pomocí nástrojů Data Lake pro Visual Studio můžete přistupovat ke službě Azure Data Lake Analytics i HDInsight. Informace o nástrojích Data Lake najdete v tématu [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku a použití Data Lakech nástrojů pro Visual Studio potřebujete následující položky:
 
@@ -54,7 +54,7 @@ Postupujte podle příslušných pokynů k instalaci Data Lake nástrojů pro va
 
 Potom nezapomeňte aktualizovat Data Lake nástroje na nejnovější verzi.
 
-1. Otevřete sadu Visual Studio.
+1. Otevřít Visual Studio.
 
 2. V okně **Start** vyberte **pokračovat bez kódu**.
 
@@ -84,7 +84,7 @@ Pomocí nástrojů Data Lake pro Visual Studio se můžete připojit ke cluster�
 
 Připojení k předplatnému Azure:
 
-1. Otevřete sadu Visual Studio.
+1. Otevřít Visual Studio.
 
 2. V okně **Start** vyberte **pokračovat bez kódu**.
 

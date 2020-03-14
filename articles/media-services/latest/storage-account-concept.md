@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
 ms.openlocfilehash: 4bbadd7e10f0fd6896932dd79a5ca42d9906d2a2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393471"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251320"
 ---
 # <a name="azure-storage-accounts"></a>Účty Azure Storage
 
@@ -48,7 +48,7 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 |---|---|---|
 |Šifrování úložiště služby Media Services| Šifrování AES-256, klíče spravované službou Media Services|Nepodporováno<sup>(1)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru nabízených službou Azure Storage, klíče spravované službou Azure nebo podle zákazníka|Podporuje se|
-|[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta nabízené službou Azure storage, klíče spravované zákazníkem ve službě Key Vault|Nepodporuje se|
+|[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta nabízené službou Azure storage, klíče spravované zákazníkem ve službě Key Vault|Nepodporováno|
 
 <sup>1</sup> v Media Services V3 se šifrování úložiště (šifrování AES-256) podporuje jenom pro zpětnou kompatibilitu, když se vaše prostředky vytvořily pomocí Media Services V2. To znamená v3 spolupracuje s existující úložiště šifrované prostředky, ale nebude umožňovat vytváření nových.
 

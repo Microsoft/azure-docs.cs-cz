@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383236"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250618"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -38,13 +38,13 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 
  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
 Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](/azure/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
 
-| Distribuce | Verze |
+| Distribuce | Version |
 |---|---|
 | Debian | Všechny verze |
 | Ubuntu| 18,04 |
@@ -275,7 +275,7 @@ $publicConfig = '{
 }'
 ```
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je například připojování k Azure Automation. 
 
@@ -289,7 +289,7 @@ Další informace o šabloně Azure Resource Manager naleznete v tématu [author
 ### <a name="use-azure-cliazure-cli"></a>Použití [Azure CLI] [Azure-CLI]
 Před nasazením rozšíření DSCForLinux nakonfigurujte své `public.json` a `protected.json` podle různých scénářů v oddílu 3.
 
-#### <a name="classic"></a>Classic
+#### <a name="classic"></a>Klasický
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
@@ -309,7 +309,7 @@ Pokud se chcete dozvědět, jak nejnovější dostupná verze rozšíření, spu
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>Správce prostředků
 Můžete přepnout na režim Azure Resource Manager spuštěním:
 ```
 $ azure config mode arm
@@ -327,7 +327,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 ### <a name="use-azure-powershellazure-powershell"></a>Použití [Azure PowerShell] [Azure-PowerShell]
 
-#### <a name="classic"></a>Classic
+#### <a name="classic"></a>Klasický
 
 Můžete se přihlásit ke svému účtu Azure v režimu správy služeb Azure spuštěním:
 
@@ -366,7 +366,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>Správce prostředků
 
 Můžete se přihlásit ke svému účtu Azure v režimu Azure Resource Manager spuštěním:
 
@@ -410,7 +410,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 

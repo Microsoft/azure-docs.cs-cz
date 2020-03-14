@@ -9,11 +9,11 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372830"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279244"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Skupiny pravidel a pravidla pro počítačový rezervační Firewall webových aplikací
 

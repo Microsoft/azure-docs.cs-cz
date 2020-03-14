@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: a7bb74c09b45429a160a3ec481c23073575cfe3c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394249"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251710"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
 
@@ -32,7 +32,7 @@ Data z databáze MongoDB můžete kopírovat do libovolného podporovaného úlo
 
 Konkrétně tento konektor MongoDB podporuje **verze až 3,4**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -46,11 +46,11 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type |Vlastnost Type musí být nastavená na: **MongoDbV2** . |Ano |
+| typ |Vlastnost Type musí být nastavená na: **MongoDbV2** . |Ano |
 | connectionString |Zadejte připojovací řetězec MongoDB, např. `mongodb://[username:password@]host[:port][/[database][?options]]`. Další podrobnosti najdete [v MongoDB manuálně na připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Můžete také vložit heslo do Azure Key Vault a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . |Ano |
-| database | Název databáze, ke které chcete získat přístup. | Ano |
+| databáze | Název databáze, ke které chcete získat přístup. | Ano |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
@@ -76,9 +76,9 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). Pro datovou sadu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **MongoDbV2Collection** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbV2Collection** . | Ano |
 | collectionName |Název kolekce v databázi MongoDB |Ano |
 
 **Příklad:**
@@ -108,10 +108,10 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbV2Source** . | Ano |
-| filter | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ({}). | Ne |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbV2Source** . | Ano |
+| Filter | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ({}). | Ne |
 | cursorMethods.project | Určuje pole, která se mají vrátit v dokumentech pro projekci. Chcete-li vrátit všechna pole v porovnání dokumentů, vynechejte tento parametr. | Ne |
 | cursorMethods. Sort | Určuje pořadí, ve kterém dotaz vrátí vyhovující dokumenty. Podívejte se na [kurzor. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Ne |
 | cursorMethods. limit | Určuje maximální počet dokumentů vrácených serverem. Viz [Cursor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Ne |

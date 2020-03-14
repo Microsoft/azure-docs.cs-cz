@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
 ms.openlocfilehash: dc9d10a6539c7fc3a7c5c8b3db290cc951c24883
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357584"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252464"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -204,7 +204,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Viz [zvýšení počtu vláken/úloh](#increase-threads) v části sítě.
 
-## <a name="indexing-policy"></a>Zásady indexování
+## <a name="indexing-policy"></a>Zásada indexování
  
 1. **Vyloučení nepoužívaných cest z indexování za účelem zrychlení zápisu**
 

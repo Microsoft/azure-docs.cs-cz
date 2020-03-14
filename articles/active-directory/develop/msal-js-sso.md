@@ -14,11 +14,11 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695870"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262851"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Jednotné přihlašování s využitím MSAL.js
 
@@ -87,7 +87,7 @@ Postup pro konfiguraci volitelných deklarací v manifestu aplikace najdete [tad
 
 **Použití pomocného parametru přihlášení**
 
-Pokud nemáte nakonfigurovanou deklaraci SID nebo potřebujete obejít výzvu k výběru účtu při volání interaktivního ověřování, můžete to udělat tak, že v parametrech požadavku zadáte `login_hint` a případně `domain_hint` jako `extraQueryParameters` v interaktivních metodách MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` a `acquireTokenRedirect`). Například:
+Pokud nemáte nakonfigurovanou deklaraci SID nebo potřebujete obejít výzvu k výběru účtu při volání interaktivního ověřování, můžete to udělat tak, že v parametrech požadavku zadáte `login_hint` a případně `domain_hint` jako `extraQueryParameters` v interaktivních metodách MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` a `acquireTokenRedirect`). Příklad:
 
 ```javascript
 var request = {

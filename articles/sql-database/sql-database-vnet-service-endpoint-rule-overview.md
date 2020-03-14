@@ -12,11 +12,11 @@ ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 0562d609231d69d95f1d2b5b838663b704f8f2f3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358456"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255740"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery
 
@@ -110,7 +110,7 @@ Azure Storage implementoval stejnou funkci, která umožňuje omezit připojení
 
 Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azure Storagech účtů. Pokud účet Azure Storage, ze kterého načítáte data, omezuje přístup jenom na sadu virtuálních sítí VNet, dojde k přerušení připojení od základu k účtu. Pokud chcete povolit jak základní scénáře importu i exportu, tak pomocí Azure SQL Data Warehouse připojení k Azure Storage, která je zabezpečená pro virtuální síť, postupujte podle kroků uvedených níže:
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Pomocí této [příručky](https://docs.microsoft.com/powershell/azure/install-az-ps)nainstalujte Azure PowerShell.
 - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte nejdřív v této [příručce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)upgradovat na obecné účely v2.
@@ -224,7 +224,7 @@ Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání roz
 
 - [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *typu* koncového bodu služby, který je relevantní pro Azure SQL Database.
 

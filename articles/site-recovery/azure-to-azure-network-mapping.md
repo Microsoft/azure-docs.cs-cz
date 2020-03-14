@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
 ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954161"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258080"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavení mapování sítě a adresování IP pro virtuální sítě
 

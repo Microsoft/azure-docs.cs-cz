@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358417"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281753"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -47,7 +47,7 @@ Konkrétně tato konektorová tabulka SAP podporuje:
 - Kopírování dat pomocí základního ověřování nebo zabezpečené síťové komunikace (SNC), pokud je nakonfigurován SNC.
 - Připojování k aplikačnímu serveru SAP nebo serveru zpráv SAP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít tento konektor tabulky SAP, musíte:
 
@@ -72,7 +72,7 @@ V následujících částech najdete podrobné informace o vlastnostech, které 
 
 Následující vlastnosti jsou podporovány pro propojenou službu SAP BW Open hub:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | `type` | Vlastnost `type` musí být nastavena na hodnotu `SapTable`. | Ano |
 | `server` | Název serveru, na kterém je umístěna instance SAP.<br/>Slouží k připojení k aplikačnímu serveru SAP. | Ne |
@@ -180,7 +180,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu SAP BW Open h
 
 Chcete-li kopírovat data z a do propojené služby SAP BW Open hub, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | `type` | Vlastnost `type` musí být nastavena na hodnotu `SapTableResource`. | Ano |
 | `tableName` | Název tabulky SAP, ze které se mají kopírovat data | Ano |
@@ -212,7 +212,7 @@ Chcete-li kopírovat data z a do propojené služby SAP BW Open hub, jsou podpor
 
 Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastnosti:
 
-| Vlastnost                         | Popis                                                  | Požaduje se |
+| Vlastnost                         | Popis                                                  | Požadováno |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | Vlastnost `type` musí být nastavena na hodnotu `SapTableSource`.         | Ano      |
 | `rowCount`                         | Počet řádků, které mají být načteny.                              | Ne       |

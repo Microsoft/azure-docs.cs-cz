@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 93e5ee9b46fb3387b70dd5092f72efcaa8a2bc19
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669341"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239165"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Kurz: povolení synchronizace hesel v Azure Active Directory Domain Services pro hybridní prostředí
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 

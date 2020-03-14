@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383209"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253790"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Rozšíření agenta Stackify retracee pro Linux
 
@@ -37,13 +37,13 @@ Přetrasování je jediný nástroj, který poskytuje všechny následující fu
 
 Toto rozšíření poskytuje instalační cestu pro agenta pro Linux pro opětovné trasování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém 
 
 Agenta přetrasování lze spustit pro tyto distribuce systému Linux.
 
-| Distribuce | Verze |
+| Distribuce | Version |
 |---|---|
 | Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 a 17,04 |
 | Debian | 7.9 + a 8.2 +, 9 |
@@ -87,7 +87,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Stackify Retrace.
     }      
 ```
 
-## <a name="template-deployment"></a>Nasazení šablon 
+## <a name="template-deployment"></a>Nasazení šablony 
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON popsané v předchozí části se dá použít v šabloně Azure Resource Manager ke spuštění rozšíření agenta Linux Retrace Stackify během nasazování šablony Azure Resource Manager.  
 
@@ -191,7 +191,7 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 40 | Chyba instalace | activationKey je povinný údaj. |
 | 51 | Chyba instalace | Distribuce OS se nepodporuje. |
 | 60 | Chyba instalace | prostředí je povinné. |
-| 70 | Chyba instalace | Není známo |
+| 70 | Chyba instalace | Neznámé |
 | 80 | Povolit chybu | Instalace služby se nezdařila |
 | 90 | Povolit chybu | Spuštění služby se nezdařilo |
 | 100 | Zakázat chybu | Zastavení služby se nezdařilo |

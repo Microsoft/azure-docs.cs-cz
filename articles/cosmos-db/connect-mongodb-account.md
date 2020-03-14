@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373856"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246848"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB k Azure Cosmos DB
 Zjistěte, jak připojit aplikaci MongoDB ke službě Azure Cosmos DB pomocí připojovacího řetězce MongoDB. Pak můžete jako úložiště dat pro aplikaci MongoDB použít databázi Azure Cosmos DB. 
@@ -23,7 +23,7 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 - [Metoda rychlý Start](#QuickstartConnection)pro použití s ovladači .NET, Node. js, MongoDB Shell, Java a Python
 - [Metoda vlastního připojovacího řetězce](#GetCustomConnection)pro použití s jinými ovladači
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure. Pokud nemáte účet Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) hned teď. 
 - Účet Cosmos. Pokyny najdete v tématu [Vytvoření webové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a .NET SDK](create-mongodb-dotnet.md).

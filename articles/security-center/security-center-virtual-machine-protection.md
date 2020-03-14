@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380821"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282637"
 ---
 # <a name="protect-your-machines-and-applications"></a>Ochrana počítačů a aplikací
 Když Azure Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
@@ -113,7 +113,7 @@ Pokud chcete nastavit všechny existující sady škálování pro instalaci Mic
 ### <a name="cloud-services"></a>Cloudové služby
 Pro cloudové služby se vytvoří doporučení, když je verze operačního systému zastaralá.
 
-![Cloud Services](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
+![Cloudové služby](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
 
 V případě, kdy máte doporučení, postupujte podle kroků v doporučení pro aktualizaci operačního systému. Pokud je k dispozici aktualizace, budete mít upozornění (červená nebo oranžová) v závislosti na závažnosti problému. Úplné vysvětlení tohoto doporučení získáte kliknutím na možnost **Aktualizovat verzi operačního systému** ve sloupci **Popis** .
 

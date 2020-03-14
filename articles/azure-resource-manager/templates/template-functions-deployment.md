@@ -4,11 +4,11 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 11/27/2019
 ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355038"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274265"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkce nasazení pro šablony Azure Resource Manager 
 
@@ -133,7 +133,7 @@ Předchozí příklad vrátí následující objekt:
 
 Šablonu na úrovni předplatného, která používá funkci nasazení, najdete v tématu [funkce nasazení předplatného](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Je nasazena buď pomocí příkazů `az deployment create`, nebo `New-AzDeployment`.
 
-## <a name="environment"></a>environment
+## <a name="environment"></a>prostředí
 
 `environment()`
 
@@ -231,7 +231,7 @@ Předchozí příklad vrátí následující objekt při nasazení na globální
 }
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>parametry
 
 `parameters(parameterName)`
 
@@ -239,9 +239,9 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Ano |string |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -328,11 +328,11 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringOutput | Řetězec | možnost 1 |
+| stringOutput | String | možnost 1 |
 | intOutput | Int | 1 |
 | objectOutput | Objekt | {"One": "a", "Two": "b"} |
 | arrayOutput | Pole | [1, 2, 3] |
-| crossOutput | Řetězec | možnost 1 |
+| crossOutput | String | možnost 1 |
 
 Další informace o použití parametrů naleznete v tématu [Parameters in Azure Resource Manager Template](template-parameters.md).
 
@@ -344,9 +344,9 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v od
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
+| variableName |Ano |String |Název proměnné, která se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -420,9 +420,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| exampleOutput1 | Řetězec | MojePromenna |
+| exampleOutput1 | String | MojePromenna |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |
-| exampleOutput3 | Řetězec | MojePromenna |
+| exampleOutput3 | String | MojePromenna |
 | exampleOutput4 |  Objekt | {"vlastnost1": "hodnota1"; "Vlastnost2": "hodnota2"} |
 
 Další informace o použití proměnných naleznete v tématu [proměnné v šabloně Azure Resource Manager](template-variables.md).

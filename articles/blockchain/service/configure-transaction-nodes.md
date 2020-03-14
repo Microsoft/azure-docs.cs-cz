@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395237"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252256"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace uzlů transakcí služby Azure blockchain
 
@@ -71,7 +71,7 @@ Udělení řízení přístupu Azure AD ke koncovému bodu:
     |---------|-------------|
     | Role | Vyberte možnost **vlastník**, **Přispěvatel**nebo **Čtenář**.
     | Přiřadit přístup k | Vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**.
-    | Vyberte | Vyhledejte uživatele, skupinu nebo instanční objekt, který chcete přidat.
+    | Vybrat | Vyhledejte uživatele, skupinu nebo instanční objekt, který chcete přidat.
 
 1. Vyberte **Uložit** a přidejte přiřazení role.
 

@@ -4,11 +4,11 @@ description: Tato příručka vás provede opravou prostředků, které nedodrž
 ms.date: 02/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 5cf26f5235fbc35cdc9bfc8527967c3cc5ca91b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383538"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264528"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 

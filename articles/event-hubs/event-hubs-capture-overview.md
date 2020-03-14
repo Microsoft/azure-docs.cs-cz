@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78926014"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265009"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí pomocí Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
 Azure Event Hubs umožňuje automaticky zachytit streamovaná data v Event Hubs v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo v účtu, který si využijete [Azure Data Lake Storage obecné 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) s přidanou flexibilitou zadání času nebo velikosti intervalu. Nastavení zachytávání je rychlé, neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují s Event Hubs [jednotkami propustnosti](event-hubs-scalability.md#throughput-units). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.

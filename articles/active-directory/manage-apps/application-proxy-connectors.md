@@ -13,11 +13,11 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375727"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244287"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 

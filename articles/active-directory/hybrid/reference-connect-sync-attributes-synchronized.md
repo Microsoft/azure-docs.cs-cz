@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376098"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253608"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect synchronizace: atributy synchronizované s Azure Active Directory
 Toto téma obsahuje seznam atributů synchronizovaných pomocí Azure AD Connect synchronizace.  
@@ -91,7 +91,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | Správce |X |X | | |
 | člen | | |X | |
 | Mobilní zařízení |X |X | | |
@@ -214,7 +214,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | l |X |X | | |
 | pošta |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | Správce |X |X | | |
 | člen | | |X | |
 | middleName |X |X | | |
@@ -250,7 +250,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | thumbnailphoto |X |X | | |
 | Název |X |X | | |
 | unauthOrig |X |X |X | |
-| url |X |X | | |
+| Adresa URL |X |X | | |
 | usageLocation |X | | |Mechanická vlastnost. Země nebo oblast uživatele
 . Používá se pro přiřazení licencí. |
 | userPrincipalName (Hlavní název uživatele) |X | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
@@ -274,7 +274,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | l |X |X | | |
 | pošta |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | Správce |X |X | | |
 | člen | | |X | |
 | Mobilní zařízení |X |X | | |
@@ -351,7 +351,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | l |X |X | | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | Správce |X |X | | |
 | člen | | |X | |
 | Mobilní zařízení |X |X | | |
@@ -385,7 +385,7 @@ Tato skupina je sadou atributů, které se dají použít, pokud se adresář sl
 | Zaměstnance |X |  |  | |
 | givenName |X |X | | |
 | pošta |X | |X | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | mailNickName |X |X |X | |
 | člen | | |X | |
 | objectSID |X | | |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
@@ -466,7 +466,7 @@ Objekty zařízení se vytvářejí ve službě Active Directory. Tyto objekty m
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>Poznámky:
+## <a name="notes"></a>Poznámky
 * Při použití alternativního ID se místní atribut userPrincipalName synchronizuje s atributem Azure AD onPremisesUserPrincipalName. Identifikátor alternativní ID, například pošta, je synchronizovaný s atributem userPrincipalName služby Azure AD.
 * Ve výše uvedených seznamech se typ objektu **uživatel** vztahuje také na typ objektu **InetOrgPerson**.
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
 ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386586"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270248"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky pomocí sady Visual Studio
 
@@ -23,7 +23,7 @@ I když můžete vytvářet, upravovat, spravovat a nasazovat Logic Apps v [Azur
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -61,7 +61,7 @@ I když můžete vytvářet, upravovat, spravovat a nasazovat Logic Apps v [Azur
 
 V aplikaci Visual Studio můžete najít všechny aplikace logiky, které jsou přidruženy k vašemu předplatnému Azure a které jsou nasazeny v Azure Portal pomocí Průzkumníka cloudu.
 
-1. Otevřete sadu Visual Studio. V nabídce **zobrazení** vyberte **Průzkumník cloudu**.
+1. Otevřít Visual Studio. V nabídce **zobrazení** vyberte **Průzkumník cloudu**.
 
 1. V Průzkumníku cloudu vyberte **Správa účtů**. Vyberte předplatné Azure přidružené k vašim Logic Apps a pak vyberte **použít**. Příklad:
 
@@ -259,7 +259,7 @@ Pokud chcete aplikaci logiky odstranit z Azure Portal, v Průzkumníku cloudu ot
 > [!NOTE]
 > Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění. Všechna probíhající a čekající spuštění se zruší. Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu. 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Když otevřete projekt aplikace logiky v Návrháři Logic Apps, nebudete mít možnost pro výběr vašeho předplatného Azure. Místo toho se aplikace logiky otevře s předplatným Azure, které není ten, který chcete použít. K tomuto chování dochází, protože po otevření souboru. JSON aplikace logiky Visual Studio uloží první vybrané předplatné do mezipaměti pro budoucí použití. Chcete-li tento problém vyřešit, zkuste jeden z následujících kroků:
 

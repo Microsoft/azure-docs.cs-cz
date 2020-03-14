@@ -9,11 +9,11 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360929"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255311"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -24,20 +24,20 @@ Tento článek popisuje důležité požadavky pro vaši službu Azure Import/Ex
 Pro přípravu pevných disků pomocí nástroje WAImportExport jsou podporovány následující **64 operační systémy, které podporují nástroj BitLocker Drive Encryption** .
 
 
-|Platforma |Verze |
+|Platforma |Version |
 |---------|---------|
 |Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Jiného požadovaného softwaru pro klienta Windows
 
-|Platforma |Verze |
+|Platforma |Version |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
-| BitLocker        |  \_          |
+| BitLocker        |  _          |
 
 
-## <a name="supported-storage-accounts"></a>Podporované účty úložiště
+## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
 Služba Import/Export Azure podporuje následující typy účtů úložiště:
 
@@ -57,10 +57,10 @@ Každá úloha slouží k přenosu dat do nebo z pouze jeden účet úložiště
 Následující seznam typů úložiště podporuje služba Azure Import/Export.
 
 
-|Úloha  |Služba Storage |Podporuje se  |Nepodporuje se  |
+|Úloha  |Služba Storage |Podporuje se  |Nepodporováno  |
 |---------|---------|---------|---------|
-|Import     |  Azure Blob Storage <br><br> Azure File storage       | Objekty BLOB bloku a stránku objekty BLOB podporována <br><br> Podporované soubory          |
-|Export     |   Azure Blob Storage       | Objekty BLOB bloku, objekty BLOB stránky a doplňovací objekty BLOB, nepodporuje         | Nepodporuje soubory Azure
+|Importovat     |  Azure Blob Storage <br><br> Azure File storage       | Objekty BLOB bloku a stránku objekty BLOB podporována <br><br> Podporované soubory          |
+|Exportovat     |   Azure Blob Storage       | Objekty BLOB bloku, objekty BLOB stránky a doplňovací objekty BLOB, nepodporuje         | Nepodporuje soubory Azure
 
 
 ## <a name="supported-hardware"></a>Podporovaný hardware

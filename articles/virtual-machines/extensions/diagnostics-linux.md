@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381160"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250631"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Monitorování metrik a protokolů pomocí diagnostického rozšíření systému Linux
 
@@ -49,7 +49,7 @@ Tyto pokyny k instalaci a [Ukázková konfigurace ke stažení](https://raw.gith
 
 Konfigurace ke stažení je pouze příklad. upravte ji tak, aby vyhovovala vašim potřebám.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spuštěním `/usr/sbin/waagent -version` potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) .
 * **Azure CLI**. Nastavte na svém počítači prostředí [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
@@ -195,8 +195,8 @@ Tento volitelný oddíl definuje další cíle, do kterých rozšíření odesí
 
 Prvek | Hodnota
 ------- | -----
-jméno | Řetězec, který se používá k odkazování na tuto jímku na jiné místo v konfiguraci rozšíření.
-type | Typ definované jímky. Určuje další hodnoty (pokud existují) v instancích tohoto typu.
+name | Řetězec, který se používá k odkazování na tuto jímku na jiné místo v konfiguraci rozšíření.
+typ | Typ definované jímky. Určuje další hodnoty (pokud existují) v instancích tohoto typu.
 
 Diagnostické rozšíření pro Linux verze 3,0 podporuje dva typy jímky: EventHub a JsonBlob.
 
@@ -283,7 +283,7 @@ Prvek | Hodnota
 eventVolume | volitelné Určuje počet oddílů vytvořených v rámci tabulky úložiště. Musí se jednat o jednu z `"Large"`, `"Medium"`nebo `"Small"`. Pokud není zadaný, použije se výchozí hodnota `"Medium"`.
 sampleRateInSeconds | volitelné Výchozí interval mezi kolekcemi nezpracovaných (neagregovaných) metrik. Nejmenší podporovaná vzorkovací frekvence je 15 sekund. Pokud není zadaný, použije se výchozí hodnota `15`.
 
-#### <a name="metrics"></a>Průzkumníku metrik
+#### <a name="metrics"></a>metrics
 
 ```json
 "metrics": {
@@ -338,16 +338,16 @@ Tento volitelný oddíl řídí kolekci metrik. Nezpracované vzorky jsou agrego
 Prvek | Hodnota
 ------- | -----
 jímky | volitelné Čárkami oddělený seznam názvů umyvadel, na které LAD odesílá agregované výsledky metriky. Všechny agregované metriky jsou publikovány v každé uvedené jímky. Viz [sinksConfig](#sinksconfig). Příklad: `"EHsink1, myjsonsink"`.
-type | Určuje skutečného poskytovatele metriky.
+typ | Určuje skutečného poskytovatele metriky.
 Třída | Společně s "čítač" identifikuje konkrétní metriku v oboru názvů poskytovatele.
-counter | Společně s "Class" identifikuje konkrétní metriku v oboru názvů poskytovatele.
+čítač | Společně s "Class" identifikuje konkrétní metriku v oboru názvů poskytovatele.
 counterSpecifier | Identifikuje konkrétní metriku v oboru názvů metrik Azure.
 condition | volitelné Vybere konkrétní instanci objektu, na kterou metrika aplikuje, nebo vybere agregaci napříč všemi instancemi daného objektu. Další informace najdete v tématu `builtin` – definice metriky.
 sampleRate | JE 8601 interval, který nastavuje rychlost shromažďování nezpracovaných vzorků pro tuto metriku. Pokud není nastaven, interval shromažďování je nastaven hodnotou [sampleRateInSeconds](#ladcfg). Nejkratší podporovaná vzorkovací frekvence je 15 sekund (PT15S).
-unit | Mělo by se jednat o jeden z těchto řetězců: "Count", "bytes", "Seconds", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekund". Definuje jednotku pro metriku. Spotřebitelé shromážděných dat očekávají, že hodnoty shromážděných dat odpovídají této jednotce. LAD ignoruje toto pole.
+jednotka | Mělo by se jednat o jeden z těchto řetězců: "Count", "bytes", "Seconds", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekund". Definuje jednotku pro metriku. Spotřebitelé shromážděných dat očekávají, že hodnoty shromážděných dat odpovídají této jednotce. LAD ignoruje toto pole.
 displayName | Popisek (v jazyce určeném pomocí přidruženého nastavení národního prostředí), který se má připojit k těmto datům v Azure metrik. LAD ignoruje toto pole.
 
-CounterSpecifier je libovolný identifikátor. Příjemci metrik, jako je například funkce Azure Portaling a upozorňování, používají counterSpecifier jako klíč, který identifikuje metriku nebo instanci metriky. U `builtin`ch metrik doporučujeme používat counterSpecifier hodnoty, které začínají na `/builtin/`. Pokud shromažďujete konkrétní instanci metriky, doporučujeme připojit identifikátor instance k hodnotě counterSpecifier. Několik příkladů:
+CounterSpecifier je libovolný identifikátor. Příjemci metrik, jako je například funkce Azure Portaling a upozorňování, používají counterSpecifier jako klíč, který identifikuje metriku nebo instanci metriky. U `builtin`ch metrik doporučujeme používat counterSpecifier hodnoty, které začínají na `/builtin/`. Pokud shromažďujete konkrétní instanci metriky, doporučujeme připojit identifikátor instance k hodnotě counterSpecifier. Příklady:
 
 * `/builtin/Processor/PercentIdleTime` – Průměrná doba nečinnosti v rámci všech vCPU
 * `/builtin/Disk/FreeSpace(/mnt)` – volné místo pro systém souborů/mnt
@@ -412,9 +412,9 @@ Tento volitelný oddíl řídí provádění libovolných dotazů [OMI](https://
 
 Prvek | Hodnota
 ------- | -----
-Obor názvů | volitelné Obor názvů OMI, ve kterém má být dotaz proveden. Je-li tento parametr zadán, je použita výchozí hodnota "root/SCX", kterou implementuje [poskytovatelé služeb System Center pro různé platformy](https://github.com/Microsoft/SCXcore).
-query | Dotaz OMI, který se má spustit.
-table | volitelné Tabulka úložiště Azure v určeném účtu úložiště (viz [Nastavení chráněná](#protected-settings)).
+obor názvů | volitelné Obor názvů OMI, ve kterém má být dotaz proveden. Je-li tento parametr zadán, je použita výchozí hodnota "root/SCX", kterou implementuje [poskytovatelé služeb System Center pro různé platformy](https://github.com/Microsoft/SCXcore).
+dotaz | Dotaz OMI, který se má spustit.
+tabulka | volitelné Tabulka úložiště Azure v určeném účtu úložiště (viz [Nastavení chráněná](#protected-settings)).
 frequency | volitelné Počet sekund mezi provedením dotazu. Výchozí hodnota je 300 (5 minut); minimální hodnota je 15 sekund.
 jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které by měly být publikovány nezpracované ukázkové výsledky metriky. Žádná agregace těchto nezpracovaných vzorků se počítá rozšířením nebo metrikami Azure.
 
@@ -437,7 +437,7 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 Prvek | Hodnota
 ------- | -----
 file | Úplná cesta k souboru protokolu, který má být sledován a zachycen. Cesta musí pojmenovat jeden soubor. nemůže obsahovat název adresáře ani zástupné znaky.
-table | volitelné Tabulka úložiště Azure v určeném účtu úložiště (jak je uvedeno v chráněných konfiguracích), do kterého se zapisují nové řádky z "koncového" souboru.
+tabulka | volitelné Tabulka úložiště Azure v určeném účtu úložiště (jak je uvedeno v chráněných konfiguracích), do kterého se zapisují nové řádky z "koncového" souboru.
 jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které se odesílají řádky protokolu.
 
 Je třeba zadat buď Table, nebo "jímky", nebo obojí.
@@ -447,7 +447,7 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 Předdefinovaná zprostředkovatel metriky je zdrojem metrik, které jsou zajímavé pro širokou škálu uživatelů. Tyto metriky spadají do pěti širších tříd:
 
 * Procesor
-* Memory (Paměť)
+* Paměť
 * Síť
 * systém souborů
 * Disk
@@ -456,7 +456,7 @@ Předdefinovaná zprostředkovatel metriky je zdrojem metrik, které jsou zajím
 
 Třída procesoru metrik nabízí informace o využití procesoru ve virtuálním počítači. Při agregaci procent je výsledkem průměr ve všech procesorech. V případě vCPU virtuálního počítače, pokud byl jeden vCPU 100% zaneprázdněný a druhý byl 100% nečinný, nahlášený PercentIdleTime by byl 50. Pokud by každý vCPU byl 50% zaneprázdněný pro stejné období, nahlášený výsledek by byl také 50. Ve vCPUm virtuálním počítači, který má zaneprázdněný vCPU 100% a jiné nečinné, nahlášený PercentIdleTime by byl 75.
 
-counter | Význam
+čítač | Význam
 ------- | -------
 PercentIdleTime | Procento času během okna agregace, které procesory prováděly nečinný cyklus jádra
 percentProcessorTime | Procento času spuštění vlákna, které není nečinné
@@ -474,7 +474,7 @@ Pro získání jedné metriky agregované napříč všemi procesory nastavte `"
 
 Třída Memory metriky poskytuje informace o využití paměti, stránkování a prohození.
 
-counter | Význam
+čítač | Význam
 ------- | -------
 AvailableMemory | Dostupná fyzická paměť v databázi MiB
 PercentAvailableMemory | Dostupná fyzická paměť jako procento z celkové paměti
@@ -494,7 +494,7 @@ Tato třída metrik má pouze jednu instanci. Atribut Condition nemá žádná u
 
 Třída Network metriky poskytuje informace o aktivitě sítě v jednotlivých síťových rozhraních od spuštění. LAD nevystavuje metriky šířky pásma, které se dají načíst z metrik hostitelů.
 
-counter | Význam
+čítač | Význam
 ------- | -------
 BytesTransmitted | Celkový počet odeslaných bajtů od spuštění
 BytesReceived | Celkový počet přijatých bajtů od spuštění
@@ -511,7 +511,7 @@ TotalCollisions | Počet kolizí hlášených síťovými porty od spuštění
 
 Třída FileSystem metrik poskytuje informace o využití systému souborů. Absolutní a procentuální hodnoty jsou hlášeny tak, jak by se zobrazily běžnému uživateli (ne root).
 
-counter | Význam
+čítač | Význam
 ------- | -------
 FreeSpace | Volné místo na disku v bajtech
 UsedSpace | Využité místo na disku v bajtech
@@ -534,7 +534,7 @@ Agregované hodnoty napříč všemi systémy souborů lze získat nastavením `
 
 Disková třída metrik nabízí informace o využití diskového zařízení. Tyto statistiky se vztahují na celou jednotku. V případě, že je v zařízení více systémů souborů, jsou čítače pro toto zařízení efektivně agregované napříč všemi.
 
-counter | Význam
+čítač | Význam
 ------- | -------
 ReadsPerSecond | Operace čtení za sekundu
 WritesPerSecond | Operace zápisu za sekundu

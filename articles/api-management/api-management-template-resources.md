@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374398"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249500"
 ---
 # <a name="azure-api-management-template-resources"></a>Prostředky šablony Azure API Management
 Azure API Management poskytuje následující typy prostředků pro použití v šablonách portálu pro vývojáře.  
@@ -584,7 +584,7 @@ Podporovány jsou následující možnosti lokalizace:
 |TextboxLabelOrganizationName|Název organizace|  
 |SubscriptionStateActive|Aktivní|  
 |SubscriptionStateCancelled|Zrušeno|  
-|SubscriptionStateExpired|Platnost vypršela|  
+|SubscriptionStateExpired|Vypršela platnost|  
 |SubscriptionStateRejected|Odmítnuto|  
 |SubscriptionStateRequested|Požadováno|  
 |SubscriptionStateSuspended|Pozastaveno|  

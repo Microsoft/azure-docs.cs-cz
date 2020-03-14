@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 2b726dff1e2c23b94118a11fb6b6ccf1f9622d4d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374571"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266296"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru Azure Kubernetes Services (AKS) pro použití virtuálních uzlů pomocí Azure CLI
 
@@ -17,7 +17,7 @@ Pokud chcete rychle škálovat úlohy aplikace v clusteru AKS (Azure Kubernetes 
 
 V tomto článku se dozvíte, jak vytvořit a nakonfigurovat prostředky virtuální sítě a cluster AKS, a pak povolit virtuální uzly.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Virtuální uzly umožňují síťovou komunikaci mezi lusky, které běží v ACI a v clusteru AKS. Pro zajištění této komunikace se vytvoří podsíť virtuální sítě a přiřadí se delegovaná oprávnění. Virtuální uzly fungují jenom s clustery AKS vytvořenými pomocí *pokročilých* sítí. Ve výchozím nastavení se clustery AKS vytvářejí se *základními* sítěmi. V tomto článku se dozvíte, jak vytvořit virtuální síť a podsítě a pak nasadit cluster AKS, který využívá pokročilé sítě.
 
@@ -76,7 +76,7 @@ Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horn�
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.49 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *westus*.
 

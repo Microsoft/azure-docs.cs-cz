@@ -4,11 +4,11 @@ description: Poskytuje seznam běžných limitů, kvót a omezení předplatnéh
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: f7fefecddaf50feda247dd711505aef1b4f206f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357471"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274525"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -126,7 +126,7 @@ Nejnovější hodnoty pro Azure Machine Learning výpočetních kvót najdete na
 
 ## <a name="azure-monitor-limits"></a>Omezení Azure Monitor
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-alerts.md)]
 

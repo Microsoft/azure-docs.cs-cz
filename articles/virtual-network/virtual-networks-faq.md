@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
 ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358888"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244807"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 

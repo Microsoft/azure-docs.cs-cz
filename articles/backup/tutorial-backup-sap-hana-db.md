@@ -4,11 +4,11 @@ description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.openlocfilehash: 435668dedc7efa33fd5fbfeea8671f05d070a385
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128647"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238773"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -22,7 +22,7 @@ V tomto kurzu se dozvíte, jak zálohovat SAP HANA databáze běžící na virtu
 
 [Tady](sap-hana-backup-support-matrix.md#scenario-support) jsou všechny scénáře, které momentálně podporujeme.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující kroky:
 

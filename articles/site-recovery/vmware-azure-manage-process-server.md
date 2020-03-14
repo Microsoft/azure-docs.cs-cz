@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362638"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257248"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387528"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281194"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat Teradata můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje pouze přesouvání dat z úložiště dat Teradata do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Teradata.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Data Factory podporuje připojení k místním zdrojům Teradata prostřednictvím brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
 Brána je vyžadována i v případě, že se Teradata hostuje na virtuálním počítači Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
@@ -61,12 +61,12 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Teradata.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **OnPremisesTeradata** . |Ano |
+| typ |Vlastnost Type musí být nastavená na: **OnPremisesTeradata** . |Ano |
 | server |Název serveru Teradata. |Ano |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi Teradata. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
-| uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
+| username jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi Teradata. |Ano |
 
@@ -82,9 +82,9 @@ V takovém případě se vlastnosti dostupné v části typeProperties v aktivit
 
 Pokud je zdrojem typ **RelationalSource** (který zahrnuje Teradata), jsou v části **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: select * from MyTable. |Ano |
+| dotaz |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: select * from MyTable. |Ano |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>Příklad JSON: kopírování dat z Teradata do Azure Blob
 Následující příklad poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data z Teradata do Azure Blob Storage. Data však lze zkopírovat do kterékoli z těchto umyvadel, které jsou [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedeny, pomocí aktivity kopírování v Azure Data Factory.
@@ -284,25 +284,25 @@ Při přesunu dat do Teradata se z typu Teradata do typu .NET použijí následu
 
 | Typ databáze Teradata | Typ .NET Framework |
 | --- | --- |
-| Char |Řetězec |
-| Datový typ CLOB |Řetězec |
-| Graphic |Řetězec |
-| VarChar |Řetězec |
-| VarGraphic |Řetězec |
-| Objekt blob |Byte[] |
+| Char |String |
+| Datový typ CLOB |String |
+| Graphic |String |
+| VarChar |String |
+| VarGraphic |String |
+| Blob |Byte[] |
 | Bajt |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
 | Decimal |Decimal |
 | Double |Double |
-| Integer |Datový typ Int32 |
-| Číslo |Double |
+| Celé číslo |Datový typ Int32 |
+| Počet |Double |
 | SmallInt |Int16 |
-| Datum |DateTime |
+| Datum |Datum a čas |
 | Čas |TimeSpan |
-| Time With Time Zone |Řetězec |
-| Časové razítko |DateTime |
+| Time With Time Zone |String |
+| Timestamp |Datum a čas |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |
@@ -314,15 +314,15 @@ Při přesunu dat do Teradata se z typu Teradata do typu .NET použijí následu
 | Interval Minute |TimeSpan |
 | Interval Minute To Second |TimeSpan |
 | Interval Second |TimeSpan |
-| Interval Year |Řetězec |
-| Interval Year To Month |Řetězec |
-| Interval Month |Řetězec |
-| Tečka (datum) |Řetězec |
-| Tečka (čas) |Řetězec |
-| Period(Time With Time Zone) |Řetězec |
-| Tečka (časové razítko) |Řetězec |
-| Period(Timestamp With Time Zone) |Řetězec |
-| Xml |Řetězec |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Interval Month |String |
+| Tečka (datum) |String |
+| Tečka (čas) |String |
+| Period(Time With Time Zone) |String |
+| Tečka (časové razítko) |String |
+| Period(Timestamp With Time Zone) |String |
+| XML |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
 Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).

@@ -15,11 +15,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374760"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253075"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -79,7 +79,7 @@ Pořadí částí v rámci výrazu je důležité, aby nedocházelo k chybám sy
 Existují tři typy vlastností, které lze použít k vytvoření pravidla členství.
 
 - Logická hodnota
-- Řetězec
+- String
 - Kolekce řetězců
 
 Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvoření jednoho výrazu.
@@ -104,7 +104,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | facsimileTelephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. facsimileTelephoneNumber-EQ "value") |
 | givenName |Libovolná hodnota řetězce nebo hodnota *null* |(User. Value-EQ "value") |
 | pracovní funkce |Libovolná hodnota řetězce nebo hodnota *null* |(User. jobTitle-EQ "value") |
-| e-mailu |Libovolná hodnota řetězce nebo hodnota *null* (adresa SMTP uživatele) |(User. mail-EQ "value") |
+| pošta |Libovolná hodnota řetězce nebo hodnota *null* (adresa SMTP uživatele) |(User. mail-EQ "value") |
 | mailNickName |Libovolná hodnota řetězce (e-mailový alias uživatele) |(User. mailNickName-EQ "value") |
 | Mobilní zařízení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Mobile-EQ "value") |
 | ID objektu |Identifikátor GUID objektu uživatele |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |

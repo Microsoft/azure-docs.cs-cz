@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393216"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255428"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
@@ -36,8 +36,8 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Sítě |[Má zařízení na straně klienta vysoce kvalitní síťový odkaz?](#link-quality) |
 | &nbsp; |Sítě |[Je klientská aplikace ve stejné oblasti jako účet úložiště?](#location) |
 | &nbsp; |Přímý přístup klienta |[Používáte k tomu přímý přístup k Azure Storage pomocí sdílených přístupových podpisů (SAS) a sdílení prostředků mezi zdroji (CORS)?](#sas-and-cors) |
-| &nbsp; |Ukládání do mezipaměti |[Ukládá vaše aplikace data, ke kterým dochází často a zřídka se mění?](#reading-data) |
-| &nbsp; |Ukládání do mezipaměti |[Provádí vaše aplikace dávkové aktualizace jejich ukládáním do mezipaměti v klientovi a jejich nahráním do větších sad?](#uploading-data-in-batches) |
+| &nbsp; |Caching |[Ukládá vaše aplikace data, ke kterým dochází často a zřídka se mění?](#reading-data) |
+| &nbsp; |Caching |[Provádí vaše aplikace dávkové aktualizace jejich ukládáním do mezipaměti v klientovi a jejich nahráním do větších sad?](#uploading-data-in-batches) |
 | &nbsp; |Konfigurace .NET |[Používáte pro optimální výkon .NET Core 2,1 nebo novější?](#use-net-core) |
 | &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
@@ -151,7 +151,7 @@ Předpokládejme například, že webová aplikace spuštěná v Azure vytvoří
   
 SAS i CORS vám můžou přispět k tomu, abyste se vyhnuli zbytečnému zatížení vaší webové aplikace.  
 
-## <a name="caching"></a>Ukládání do mezipaměti
+## <a name="caching"></a>Caching
 
 Ukládání do mezipaměti hraje důležitou roli ve výkonu. Následující části popisují osvědčené postupy pro ukládání do mezipaměti.
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 9d3e9484fc6726241ff9bc1eafc56fce92d711cd
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 625b1a40543af8024bb3506bb02151d435c89a57
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198095"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79134387"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Kurz: použití Azure Key Vault s virtuálním počítačem s Windows v .NET
 
@@ -36,13 +36,13 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md). 
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
-  * Tento kurz vyžaduje, abyste spouštěli Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
+  * Tento kurz vyžaduje, abyste spouštěli Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli).
 
 ## <a name="about-managed-service-identity"></a>Informace o funkci Identita spravované služby
 
@@ -66,7 +66,7 @@ Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku Azu
 az login
 ```
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). 
 
@@ -103,7 +103,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Tento tajný kód ukládá hodnotu **MySecret**.
 
-### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 Vytvořte virtuální počítač pomocí jedné z následujících metod:
 
 * [Rozhraní příkazového řádku Azure](../virtual-machines/windows/quick-create-cli.md)

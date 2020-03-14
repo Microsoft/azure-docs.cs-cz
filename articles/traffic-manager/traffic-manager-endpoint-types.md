@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rohink
 ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250930"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 
@@ -38,7 +38,7 @@ Následující části popisují jednotlivé typy koncových bodů podrobněji.
 Koncové body Azure se používají pro služby založené na Azure v Traffic Manager. Podporují se tyto typy prostředků Azure:
 
 * PaaS cloudové služby.
-* Web Apps
+* Webové aplikace
 * Sloty webové aplikace
 * Prostředky PublicIPAddress (které se dají připojit k virtuálním počítačům přímo nebo prostřednictvím Azure Load Balancer) PublicIpAddress musí mít přiřazený název DNS, aby ho bylo možné použít v profilu Traffic Manager.
 

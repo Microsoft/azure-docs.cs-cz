@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: victorh
 ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373613"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279985"
 ---
 # <a name="azure-application-gateway-features"></a>Funkce Azure Application Gateway
 
@@ -58,7 +58,7 @@ Application Gateway Standard_v2 může zahrnovat více Zóny dostupnosti, což n
 
 SKU služby Application Gateway Standard_v2 podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění ani po dobu života Application Gateway.
 
-## <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
+## <a name="web-application-firewall"></a>Firewall webových aplikací
 
 Firewall webových aplikací (WAF) je služba, která poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. WAF je založená na pravidlech z [OWASP (Open Web Application Security Project) základních sad pravidel](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (jenom WAF_v2), 3,0 a 2.2.9. 
 
@@ -143,7 +143,7 @@ Application Gateway podporuje možnost přidávat, odebírat nebo aktualizovat p
 
 Další informace najdete v tématu [přepis hlaviček protokolu HTTP](rewrite-http-headers.md).
 
-## <a name="sizing"></a>Velikosti
+## <a name="sizing"></a>Velikost
 
 Pro nasazení automatického škálování nebo pevné velikosti se dá nakonfigurovat Application Gateway Standard_v2. Tato SKU nenabízí různé velikosti instancí. Další informace o výkonu a cenách v2 najdete v tématu Automatické [škálování v2 SKU](application-gateway-autoscaling-zone-redundant.md#pricing).
 
@@ -153,7 +153,7 @@ Application Gateway Standard se nabízí ve třech velikostech: **malá**, **st�
 
 Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway V1 s povoleným snižováním zatížení SSL:
 
-| Průměrná velikost odpovědi back-endu stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
+| Průměrná velikost odpovědi back-endu stránky | Malé | Střední | Velké |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

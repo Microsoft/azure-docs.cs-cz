@@ -4,11 +4,11 @@ description: Zachyťte výjimky z aplikací ASP.NET spolu s telemetrie žádost�
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 24b7acfa6610c2040daf0f7d8d25f25391140303
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375054"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276228"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostikujte výjimky ve vašich webových aplikacích pomocí Application Insights
 Výjimky v živé webové aplikaci jsou hlášeny [Application Insights](../../azure-monitor/app/app-insights-overview.md). Neúspěšné žádosti s výjimkami a dalšími událostmi můžete korelovat na straně klienta i serveru, abyste mohli rychle diagnostikovat příčiny.
@@ -286,7 +286,7 @@ Zaregistrujte AiHandleErrorAttribute jako globální filtr v FilterConfig.cs:
 
 [Ukázka](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api"></a>Web API
+## <a name="web-api"></a>Webové rozhraní API
 Počínaje verzí Application Insights web SDK verze 2,6 (beta3 a novější) Application Insights shromažďuje neošetřené výjimky, které jsou vyvolány v metodách kontroleru automaticky pro WebAPI 2 +. Pokud jste dříve přidali vlastní obslužnou rutinu ke sledování takových výjimek (jak je popsáno v následujících příkladech), je možné ji odebrat, aby nedocházelo k dvojímu sledování výjimek.
 
 Existuje několik případů, kdy filtry výjimek nemůžou zpracovat. Příklad:

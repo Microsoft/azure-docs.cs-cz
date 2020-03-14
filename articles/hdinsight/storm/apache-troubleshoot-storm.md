@@ -10,15 +10,15 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896007"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271925"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Řešení potíží s Apache Storm pomocí Azure HDInsight
 
-Další informace o nejčastější problémy a jejich řešení pro práci s [Apache Storm](https://storm.apache.org/) datové části v [Apache Ambari](https://ambari.apache.org/).
+Přečtěte si o hlavních problémech a jejich řešeních pro práci s [Apache Stormmi](https://storm.apache.org/) datovými částmi v [Apache Ambari](https://ambari.apache.org/).
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Jak získám přístup do uživatelského rozhraní Storm v clusteru?
 
@@ -27,8 +27,8 @@ Máte dvě možnosti pro přístup k rozhraní Storm z prohlížeče:
 ### <a name="apache-ambari-ui"></a>Uživatelské rozhraní Apache Ambari
 
 1. Přejdete na řídicí panel Ambari.
-2. V seznamu služeb vyberte **Storm**.
-3. V **rychlé odkazy** nabídce vyberte možnost **uživatelské rozhraní Storm**.
+2. V seznamu **služeb vyberte možnost**zaplavit.
+3. V nabídce **Rychlé odkazy** vyberte **uživatelské rozhraní**pro zaplavení.
 
 ### <a name="direct-link"></a>Přímý odkaz
 
@@ -40,7 +40,7 @@ Příklad: `https://stormcluster.azurehdinsight.net/stormui`
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Jak přenesu o kontrolním bodu spoutu centra událostí Stormu z jedné topologie do jiného?
 
-Při vývoji topologií, které čtou z Azure Event Hubs pomocí centra událostí Stormu v HDInsight spout soubor .jar, je nutné nasadit topologii, která má stejný název v novém clusteru. Musí však zachovat dat kontrolního bodu, který se potvrdily [Apache ZooKeeper](https://zookeeper.apache.org/) v původním clusteru.
+Při vývoji topologií, které čtou z Azure Event Hubs pomocí centra událostí Stormu v HDInsight spout soubor .jar, je nutné nasadit topologii, která má stejný název v novém clusteru. Je však nutné zachovat data kontrolního bodu, která byla potvrzena k [Apache Zookeeper](https://zookeeper.apache.org/) v původním clusteru.
 
 ### <a name="where-checkpoint-data-is-stored"></a>Uložení dat kontrolního bodu
 
@@ -52,11 +52,11 @@ Data kontrolního bodu pro posunutí neukládají spoutu centra událostí v Zoo
 
 ### <a name="how-to-restore"></a>Postup při obnovení
 
-Pokud chcete získat skripty a knihoven, které můžete použít k exportu dat mimo ZooKeeper a potom importovat data zpět do ZooKeeper s novým názvem, naleznete v tématu [příklady použití Stormu v HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
+Pokud chcete získat skripty a knihovny, které slouží k exportu dat z ZooKeeper, a pak data importovat zpět do ZooKeeper s novým názvem, přečtěte si [Příklady HDInsight pro HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
 
 Lib – složka obsahuje soubory .jar, které obsahují implementaci pro operace exportu/importu. Bash složka obsahuje ukázkový skript, který ukazuje, jak exportovat data ze serveru ZooKeeper v původním clusteru a potom naimportovat zpět na server ZooKeeper v novém clusteru.
 
-Spustit [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) skript z uzlu ZooKeeper, abyste exportovat a importovat data. Aktualizujte skript na správnou verzi Hortonworks Data Platform (HDP). (Kterých pracujeme na tom, aby tyto skripty Obecné v HDInsight. Obecný skripty můžete spustit z libovolného uzlu v clusteru bez úprav uživatele.)
+Spusťte skript [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) z uzlů Zookeeper pro export a import dat. Aktualizujte skript na správnou verzi Hortonworks Data Platform (HDP). (Kterých pracujeme na tom, aby tyto skripty Obecné v HDInsight. Obecný skripty můžete spustit z libovolného uzlu v clusteru bez úprav uživatele.)
 
 Příkaz pro export zapíše metadata do cesty Apache Hadoop systém souborů DFS (Distributed File System) (HDFS) (v Azure Blob Storage nebo Azure Data Lake Storage) do umístění, které jste nastavili.
 
@@ -137,11 +137,11 @@ Další informace o používání soubory .jar spoutu centra událostí Stormu s
 
 ### <a name="java-based-topology"></a>Topologie založené na jazyce Java
 
-[Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
+[Zpracování událostí z Azure Event Hubs s využitím Apache Storm v HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# – na základě topologie (Mono na clustery Linux Storm HDInsight 3.4 +)
 
-[Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Zpracování událostí z Azure Event Hubs s využitím Apache Storm veC#službě HDInsight ()](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Nejnovější Apache Storm event hub spout binárních souborů pro clustery HDInsight 3.5 + Linux Storm
 
@@ -149,11 +149,11 @@ Další informace o tom, jak používat nejnovější Spout centra událostí, k
 
 ### <a name="source-code-examples"></a>Příklady zdrojového kódu
 
-Zobrazit [příklady](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) o tom, jak číst a zapisovat z Azure Event Hubs pomocí topologie Apache Storm (napsané v jazyce Java) v clusteru Azure HDInsight.
+Podívejte se na [Příklady](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) čtení a zápisu z centra událostí azure pomocí Apache Storm topologie (napsané v jazyce Java) v clusteru Azure HDInsight.
 
 ## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Kde najdu soubory konfigurace Storm Log4J 2 v clusterech?
 
-K identifikaci [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) konfigurační soubory pro Storm služby.
+Identifikujte konfigurační soubory [Apache log4j 2](https://logging.apache.org/log4j/2.x/) pro služby pro zaplavení.
 
 ### <a name="on-head-nodes"></a>Na hlavní uzly.
 
@@ -174,7 +174,7 @@ Příklady: `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 
 Při odesílání topologie může uživatel obdržet chybovou zprávu podobnou této: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
 
-Aby uživatel mohl řešení vyřešit, může být potřeba, aby si museli pořídit lístek, aby se uzly restartovaly nebo restartovaly. Další informace najdete na adrese [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
+Aby uživatel mohl řešení vyřešit, může být potřeba, aby si museli pořídit lístek, aby se uzly restartovaly nebo restartovaly. Další informace najdete v tématu [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
 
 ---
 

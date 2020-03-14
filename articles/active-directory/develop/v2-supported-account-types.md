@@ -17,11 +17,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: de90c81f56b6017b2d53ecbfb2c400a4c9f05d81
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365236"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262279"
 ---
 # <a name="supported-account-types"></a>Podporované typy účtu
 

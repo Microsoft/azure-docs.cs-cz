@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395686"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285055"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
 
@@ -144,7 +144,7 @@ Pokud bude zařízení během instalace offline nebo pokud chcete nainstalovat u
 
 Nejnovější instalační soubory IoT Edge spolu s předchozími verzemi najdete v tématu [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
 
-Chcete-li provést instalaci pomocí offline komponent, použijte parametr `-OfflineInstallationPath` jako součást příkazu Deploy-IoTEdge a zadejte absolutní cestu k adresáři souborů. Například:
+Chcete-li provést instalaci pomocí offline komponent, použijte parametr `-OfflineInstallationPath` jako součást příkazu Deploy-IoTEdge a zadejte absolutní cestu k adresáři souborů. Například
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

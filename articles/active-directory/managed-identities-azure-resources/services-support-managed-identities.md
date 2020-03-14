@@ -11,11 +11,11 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0576a70b1b345d31ffc11c55f7fa5cbd288acd5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355736"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246445"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -32,8 +32,8 @@ Spravované identity pro prostředky Azure podporují následující služby Azu
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | Preview | Preview | Preview | 
-| Přiřazeno uživatelem | K dispozici. | Preview | Preview | Preview |
+| Přiřazeno systémem | K dispozici | Preview | Preview | Preview | 
+| Přiřazeno uživatelem | K dispozici | Preview | Preview | Preview |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
@@ -47,8 +47,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v o
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | Preview | Preview | Preview |
-| Přiřazeno uživatelem | K dispozici. | Preview | Preview | Preview |
+| Přiřazeno systémem | K dispozici | Preview | Preview | Preview |
+| Přiřazeno uživatelem | K dispozici | Preview | Preview | Preview |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale Sets (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
@@ -62,8 +62,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
-| Přiřazeno uživatelem | K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
+| Přiřazeno systémem | K dispozici | K dispozici | K dispozici | K dispozici |
+| Přiřazeno uživatelem | K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure App Service (v oblastech, kde je dostupná), použijte následující seznam:
 
@@ -76,8 +76,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure App Service (v oblast
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | K dispozici. | Není k dispozici. | Není k dispozici. |
-| Přiřazeno uživatelem | K dispozici. | K dispozici. | Není k dispozici. | Není k dispozici. |
+| Přiřazeno systémem | K dispozici | K dispozici | Není k dispozici. | Není k dispozici. |
+| Přiřazeno uživatelem | K dispozici | K dispozici | Není k dispozici. | Není k dispozici. |
 
 Pokud chcete použít spravovanou identitu s podrobnými [plány Azure](../../governance/blueprints/overview.md), přečtěte si následující seznam:
 
@@ -88,8 +88,8 @@ Pokud chcete použít spravovanou identitu s podrobnými [plány Azure](../../go
 
 Typ spravované identity |Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
-| Přiřazeno uživatelem | K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
+| Přiřazeno systémem | K dispozici | K dispozici | K dispozici | K dispozici |
+| Přiřazeno uživatelem | K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Functions (v oblastech, kde je dostupná), použijte následující seznam:
 
@@ -114,7 +114,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Logic Apps (v oblaste
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | K dispozici. | Není k dispozici. | K dispozici. |
+| Přiřazeno systémem | K dispozici | K dispozici | Není k dispozici. | K dispozici |
 | Přiřazeno uživatelem | Není k dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Data Factory v2 (v oblastech, kde je dostupná), použijte následující seznam:
@@ -128,7 +128,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Data Factory v2 (v ob
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | K dispozici. | Není k dispozici. | Není k dispozici. |
+| Přiřazeno systémem | K dispozici | K dispozici | Není k dispozici. | Není k dispozici. |
 | Přiřazeno uživatelem | Není k dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure API Management (v oblastech, kde je dostupná), podívejte se na následující seznam:
@@ -152,7 +152,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Container Instances (
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
+| Přiřazeno systémem | K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 | Přiřazeno uživatelem | Preview | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro úlohy Azure Container Registry (v oblastech, kde je dostupná), použijte následující seznam:
@@ -164,8 +164,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro úlohy Azure Container Regi
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazeno systémem | K dispozici. | Nedostupný | Nedostupný | není k dispozici |
-| Přiřazeno uživatelem | K dispozici. | Nedostupný | Nedostupný |Nedostupný |
+| Přiřazeno systémem | K dispozici | Nedostupný | Nedostupný | není k dispozici |
+| Přiřazeno uživatelem | K dispozici | Nedostupný | Nedostupný |Nedostupný |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro aplikace Service Fabric Azure ve všech oblastech, přečtěte si následující seznam:
 - [Šablona Azure Resource Manageru](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
@@ -183,55 +183,55 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 - [Přiřazení přístupu přes rozhraní příkazového řádku Azure](howto-assign-access-CLI.md)
 - [Přiřazení přístupu prostřednictvím šablony Azure Resource Manager](../../role-based-access-control/role-assignments-template.md)
 
-| Cloudová | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
-| Globální Azure | `https://management.azure.com/`| K dispozici. |
-| Azure Government | `https://management.usgovcloudapi.net/` | K dispozici. |
-| Azure Germany | `https://management.microsoftazure.de/` | K dispozici. |
-| Azure China 21Vianet | `https://management.chinacloudapi.cn` | K dispozici. |
+| Globální Azure | `https://management.azure.com/`| K dispozici |
+| Azure Government | `https://management.usgovcloudapi.net/` | K dispozici |
+| Azure Germany | `https://management.microsoftazure.de/` | K dispozici |
+| Azure China 21Vianet | `https://management.chinacloudapi.cn` | K dispozici |
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-| Cloudová | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
-| Globální Azure | `https://vault.azure.net`| K dispozici. |
-| Azure Government | `https://vault.usgovcloudapi.net` | K dispozici. |
-| Azure Germany |  `https://vault.microsoftazure.de` | K dispozici. |
-| Azure China 21Vianet | `https://vault.azure.cn` | K dispozici. |
+| Globální Azure | `https://vault.azure.net`| K dispozici |
+| Azure Government | `https://vault.usgovcloudapi.net` | K dispozici |
+| Azure Germany |  `https://vault.microsoftazure.de` | K dispozici |
+| Azure China 21Vianet | `https://vault.azure.cn` | K dispozici |
 
 ### <a name="azure-data-lake"></a>Azure Data Lake 
 
-| Cloudová | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
-| Globální Azure | `https://datalake.azure.net/` | K dispozici. |
+| Globální Azure | `https://datalake.azure.net/` | K dispozici |
 | Azure Government |  | Nedostupný |
 | Azure Germany |   | Nedostupný |
 | Azure China 21Vianet |  | Nedostupný |
 
 ### <a name="azure-sql"></a>Azure SQL 
 
-| Cloudová | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
-| Globální Azure | `https://database.windows.net/` | K dispozici. |
-| Azure Government | `https://database.usgovcloudapi.net/` | K dispozici. |
-| Azure Germany | `https://database.cloudapi.de/` | K dispozici. |
-| Azure China 21Vianet | `https://database.chinacloudapi.cn/` | K dispozici. |
+| Globální Azure | `https://database.windows.net/` | K dispozici |
+| Azure Government | `https://database.usgovcloudapi.net/` | K dispozici |
+| Azure Germany | `https://database.cloudapi.de/` | K dispozici |
+| Azure China 21Vianet | `https://database.chinacloudapi.cn/` | K dispozici |
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-| Cloudová | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
-| Globální Azure | `https://eventhubs.azure.net` | K dispozici. |
+| Globální Azure | `https://eventhubs.azure.net` | K dispozici |
 | Azure Government |  | Nedostupný |
 | Azure Germany |   | Nedostupný |
 | Azure China 21Vianet |  | Nedostupný |
 
 ### <a name="azure-service-bus"></a>Azure Service Bus
 
-| Cloudová | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
-| Globální Azure | `https://servicebus.azure.net`  | K dispozici. |
-| Azure Government |  | K dispozici. |
+| Globální Azure | `https://servicebus.azure.net`  | K dispozici |
+| Azure Government |  | K dispozici |
 | Azure Germany |   | Nedostupný |
 | Azure China 21Vianet |  | Nedostupný |
 
@@ -245,12 +245,12 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage objekty BLOB a fronty
 
-| Cloudová | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
-| Globální Azure | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | K dispozici. |
-| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | K dispozici. |
-| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | K dispozici. |
-| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | K dispozici. |
+| Globální Azure | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | K dispozici |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | K dispozici |
+| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | K dispozici |
+| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | K dispozici |
 
 
 
@@ -263,9 +263,9 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
-| Cloudová | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
-| Globální Azure | `https://*.asazure.windows.net` | K dispozici. |
-| Azure Government | `https://*.asazure.usgovcloudapi.net` | K dispozici. |
-| Azure Germany | `https://*.asazure.cloudapi.de` | K dispozici. |
-| Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | K dispozici. |
+| Globální Azure | `https://*.asazure.windows.net` | K dispozici |
+| Azure Government | `https://*.asazure.usgovcloudapi.net` | K dispozici |
+| Azure Germany | `https://*.asazure.cloudapi.de` | K dispozici |
+| Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | K dispozici |

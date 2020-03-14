@@ -10,11 +10,11 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372876"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278295"
 ---
 # <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Pochopení a řešení stavu Linux Hybrid Runbook Worker pro Update Management
 
@@ -52,7 +52,7 @@ Jakmile budete hotovi, výsledky se vrátí v okně. Kontrolní oddíly obsahuj�
 
 Kontroly operačního systému ověří, jestli Hybrid Runbook Worker používá jeden z následujících operačních systémů:
 
-|Operační systém  |Poznámky:  |
+|Operační systém  |Poznámky  |
 |---------|---------|
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje, aby příkaz "Yumu" vracel data zabezpečení, která CentOS nejsou v poli.         |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |

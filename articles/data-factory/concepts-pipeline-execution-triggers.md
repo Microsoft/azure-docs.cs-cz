@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386505"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246198"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -92,7 +92,7 @@ https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGrou
 
 Úplnou ukázku najdete v tématu [Rychlý start: Vytvoření datové továrny pomocí rozhraní REST API](quickstart-create-data-factory-rest-api.md).
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -171,7 +171,7 @@ Kanály a triggery mají relaci m:n (s výjimkou aktivační události pro bubno
 }
 ```
 
-## <a name="schedule-trigger"></a>Aktivační událost plánovače
+## <a name="schedule-trigger"></a>Aktivační procedura Plán
 Aktivační událost plánovače spouští kanály podle časového plánu. Tato aktivační událost podporuje pravidelné spouštění i rozšířené možnosti kalendáře. Tato aktivační událost podporuje například intervaly, jako „weekly“ (týdně) nebo „Monday at 5:00 PM and Thursday at 9:00 PM“ (V pondělí v 17:00 a ve čtvrtek ve 21:00). Aktivační událost plánovače je flexibilní, protože je nezávislá na vzorech datových sad a nerozlišuje mezi daty časových řad a daty bez časových řad.
 
 Další informace o aktivačních událostech plánovače a příklady najdete v tématu [Vytvoření aktivační události plánovače](how-to-create-schedule-trigger.md).
@@ -276,13 +276,13 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 ### <a name="schema-defaults-limits-and-examples"></a>Výchozí hodnoty, omezení a příklady schématu
 
-| Vlastnost JSON | Typ | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad |
+| Vlastnost JSON | Typ | Požadováno | Výchozí hodnota | Platné hodnoty | Příklad |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | řetězec | Ano | Žádná | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | objekt | Ano | Žádná | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | string | Ano | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | object | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | řetězec | Ano | Žádná | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | objekt | Ne | Žádná | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **endTime** | string | Ano | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | object | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Vlastnost startTime
 Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovládá spouštění aktivační události:
@@ -367,13 +367,13 @@ Aktivační událost pro přeskakující okno i aktivační událost plánovače
 
 Následující tabulka obsahuje porovnání aktivační události pro přeskakující okno a aktivační události plánovače:
 
-|  | Aktivační událost pro přeskakující okno | Aktivační událost plánovače |
+|  | Aktivační událost pro přeskakující okno | Aktivační procedura Plán |
 |:--- |:--- |:--- |
-| **Scénáře obnovení dat** | Podporuje se. Spuštění kanálu je možné naplánovat i pro okna v minulosti. | Nepodporuje se. Spuštění kanálu je možné provést pouze v časová období od současnosti do budoucnosti. |
+| **Scénáře obnovení dat** | Podporuje se. Spuštění kanálu je možné naplánovat i pro okna v minulosti. | Není podporováno. Spuštění kanálu je možné provést pouze v časová období od současnosti do budoucnosti. |
 | **Spolehlivost** | 100% spolehlivost. Spuštění kanálu je možné plánovat pro všechna okna od zadaného času začátku, a to bez mezer. | Menší spolehlivost. |
-| **Možnost opakování** | Podporuje se. Spuštění kanálu, která selžou, mají výchozí zásadu opakování 0 nebo zásadu zadanou uživatelem v definici aktivační události. Automaticky opakuje pokus, když spuštění kanálu selže kvůli omezením souběžnosti, serveru nebo využití sítě (tedy stavové kódy 400: Chyba uživatele, 429: Příliš mnoho požadavků a 500: Vnitřní chyba serveru). | Nepodporuje se. |
-| **Souběžnost** | Podporuje se. Uživatelé můžou pro aktivační událost explicitně nastavit omezení souběžnosti. Umožňuje 1 až 50 souběžně aktivovaných spuštění kanálu. | Nepodporuje se. |
-| **Systémové proměnné** | Podporuje použití systémových proměnných **WindowStart** a **WindowEnd**. Uživatelé mají v definici aktivační události přístup k `triggerOutputs().windowStartTime` a `triggerOutputs().windowEndTime` jako systémovým proměnným aktivační události. Tyto hodnoty se používají v čase začátku okna a v čase konce okna. Například pro aktivační událost pro přeskakující okno, která se spouští každou hodinu, je definice okna od 1:00 do 2:00 následující: `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` a `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nepodporuje se. |
+| **Možnost opakování** | Podporuje se. Spuštění kanálu, která selžou, mají výchozí zásadu opakování 0 nebo zásadu zadanou uživatelem v definici aktivační události. Automaticky opakuje pokus, když spuštění kanálu selže kvůli omezením souběžnosti, serveru nebo využití sítě (tedy stavové kódy 400: Chyba uživatele, 429: Příliš mnoho požadavků a 500: Vnitřní chyba serveru). | Není podporováno. |
+| **Souběžnost** | Podporuje se. Uživatelé můžou pro aktivační událost explicitně nastavit omezení souběžnosti. Umožňuje 1 až 50 souběžně aktivovaných spuštění kanálu. | Není podporováno. |
+| **Systémové proměnné** | Podporuje použití systémových proměnných **WindowStart** a **WindowEnd**. Uživatelé mají v definici aktivační události přístup k `triggerOutputs().windowStartTime` a `triggerOutputs().windowEndTime` jako systémovým proměnným aktivační události. Tyto hodnoty se používají v čase začátku okna a v čase konce okna. Například pro aktivační událost pro přeskakující okno, která se spouští každou hodinu, je definice okna od 1:00 do 2:00 následující: `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` a `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Není podporováno. |
 | **Vztah mezi kanálem a aktivační událostí** | Podporuje vztah 1:1. Je možné aktivovat pouze jeden kanál. | Podporuje vztahy M:N. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů. |
 
 ## <a name="next-steps"></a>Další kroky

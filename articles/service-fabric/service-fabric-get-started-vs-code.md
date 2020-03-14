@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361235"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258483"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
@@ -21,7 +21,7 @@ Tento článek poskytuje přehled požadavků a nastavení rozšíření a také
 > [!IMPORTANT]
 > Aplikace Service Fabric Java je možné vyvíjet na počítačích s Windows, ale dají se nasadit jenom do clusterů Azure Linux. Ladění aplikací Java není v systému Windows podporováno.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ve všech prostředích musí být nainstalované následující požadavky.
 
@@ -48,7 +48,7 @@ Pro vývoj v jazyce Java je nutné nainstalovat následující požadavky:
 Pro .NET Core/C# vývoj musí být nainstalované tyto požadavky:
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (verze 2.0.0 nebo novější)
-* [vs Code rozšíření pro Visual Studio Code (s technologií OmniSharp) C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Nutné pro ladění C# služeb. Instalaci můžete provést kliknutím na ikonu rozšíření na **řádku aktivity** vs Code a hledáním rozšíření nebo na webu vs Code Marketplace.
+* [vs Code rozšíření pro Visual Studio Code (s technologií OmniSharp) C# ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) Nutné pro ladění C# služeb. Instalaci můžete provést kliknutím na ikonu rozšíření na **řádku aktivity** vs Code a hledáním rozšíření nebo na webu vs Code Marketplace.
 
 ## <a name="setup"></a>Nastavení
 

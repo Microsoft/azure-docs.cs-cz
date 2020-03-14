@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387789"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256260"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databází pomocí Správce map horizontálních oddílů
 
@@ -53,9 +53,9 @@ Elastické škálování podporuje následující typy jako horizontálního dě
 
 | .NET | Java |
 | --- | --- |
-| celé číslo |celé číslo |
+| integer |integer |
 | long |long |
-| guid |Uuid |
+| guid |uuid |
 | Byte  |Byte |
 | datetime | časové razítko |
 | TimeSpan | duration|
@@ -75,7 +75,7 @@ Mapy horizontálních oddílů lze vytvořit pomocí **seznamů jednotlivých ho
 | 3 |Database_B |
 | 4 |Database_C |
 | 6 |Database_B |
-| Tlačítka ... |Tlačítka ... |
+| ... |... |
 
 ### <a name="range-shard-maps"></a>Horizontálních oddílů mapy rozsahu
 
@@ -89,7 +89,7 @@ Například **[0, 100)** zahrnuje všechna celá čísla větší než nebo rovn
 | [50,100) |Database_B |
 | [100,200) |Database_C |
 | [400,600) |Database_C |
-| Tlačítka ... |Tlačítka ... |
+| ... |... |
 
 Každá z výše uvedených tabulek je koncepční příklad objektu **ShardMap** . Každý řádek je zjednodušeným příkladem jednotlivých **PointMapping** (pro mapu seznamu horizontálních oddílů) nebo **RangeMapping** (pro objekt Range horizontálních oddílů map).
 

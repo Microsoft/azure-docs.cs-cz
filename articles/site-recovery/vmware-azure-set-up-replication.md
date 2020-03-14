@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362598"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257118"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>Konfigurace a Správa zásad replikace pro zotavení po havárii VMware
 
 Tento článek popisuje, jak nakonfigurovat zásady replikace při replikaci virtuálních počítačů VMware do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
 
-## <a name="create-a-policy"></a>Vytvoření zásad
+## <a name="create-a-policy"></a>Vytvoření zásady
 
 1. Vyberte **Spravovat** > **Infrastruktura Site Recovery**.
 2. V nástroji **pro VMware a fyzické počítače**vyberte **Zásady replikace**.

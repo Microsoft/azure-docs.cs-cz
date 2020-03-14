@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 82f9c5a67cb056752cf8310be3b7c9f0bd2501e9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383364"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254037"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Linux
 
 Azure Monitor pro funkci mapování virtuálních počítačů získává data od agenta Microsoft Dependency. Rozšíření virtuálního počítače Azure VM Dependency Agent pro Linux se zveřejňuje a podporuje Microsoft. Rozšíření nainstaluje agenta závislostí na virtuální počítače Azure. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače služby Azure VM Dependency Agent pro Linux.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -77,10 +77,10 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
-| type | DependencyAgentLinux |
+| typ | DependencyAgentLinux |
 | typeHandlerVersion | 9.5 |
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 
 Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon Azure Resource Manager. Pomocí schématu JSON popsaného v předchozí části šablony Azure Resource Manager můžete během nasazování Azure Resource Manager šablony spustit rozšíření agenta závislostí virtuálních počítačů Azure.
 
@@ -143,7 +143,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI:
 

@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129191"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251970"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -19,8 +19,8 @@ Databáze Azure Cosmos je jednotka správy pro skupinu kontejnerů. Databáze ob
 
 Pomocí Azure Cosmos DB můžete zřídit propustnost ve dvou členitosti:
  
-- Kontejnery Azure Cosmos DB
-- Databáze Azure Cosmos DB
+- Kontejnery služby Azure Cosmos
+- Databáze Azure Cosmos
 
 ## <a name="set-throughput-on-a-container"></a>Nastavení propustnosti pro kontejner  
 

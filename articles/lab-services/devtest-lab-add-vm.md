@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 22060cc6dd5eb15e81a0c397a7b0255f16780d74
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381021"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284249"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs
 Pokud jste už [svůj první virtuální počítač vytvořili](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), pravděpodobně jste to učinili z předem načtené [image na webu Marketplace](devtest-lab-configure-marketplace-images.md). Pokud teď chcete do testovacího prostředí přidat další virtuální počítače, můžete také zvolit *základ* , který je buď [vlastní obrázek](devtest-lab-create-template.md) , nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede použitím Azure Portal k přidání virtuálního počítače do testovacího prostředí v DevTest Labs.

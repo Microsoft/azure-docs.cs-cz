@@ -5,11 +5,11 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357043"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276735"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -75,9 +75,9 @@ $TriggerMetadata.sys
 
 | Vlastnost   | Popis                                     | Typ     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | Když v UTC, byla funkce aktivována.        | DateTime |
-| MethodName | Název aktivované funkce     | řetězec   |
-| RandGuid   | Jedinečný identifikátor GUID tohoto spuštění funkce | řetězec   |
+| UtcNow     | Když v UTC, byla funkce aktivována.        | Datum a čas |
+| MethodName | Název aktivované funkce     | string   |
+| RandGuid   | Jedinečný identifikátor GUID tohoto spuštění funkce | string   |
 
 Každý typ triggeru má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje `InsertionTime`, `Id``DequeueCount`, mimo jiné. Další informace o metadatech triggeru fronty najdete v [oficiální dokumentaci k aktivačním událostem fronty](functions-bindings-storage-queue-trigger.md#message-metadata). V dokumentaci k [aktivačním událostem](functions-triggers-bindings.md) , se kterými pracujete, můžete zjistit, co se nachází uvnitř metadat triggeru.
 
@@ -127,7 +127,7 @@ Níže jsou uvedené platné parametry pro volání `Push-OutputBinding`:
 
 | Název | Typ | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
+| **`-Name`** | String | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
 | **`-Clobber`** | Přepínací parametr | Jmenovanou | Volitelné Když se tato hodnota zadá, vynutí nastavení hodnoty pro zadanou výstupní vazbu. | 
 
@@ -234,7 +234,7 @@ Protokolování funkcí prostředí PowerShell funguje jako běžné protokolov�
 | ------------- | -------------- |
 | Chyba | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
-| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Zapisuje do protokolování na úrovni _informací_ . |
+| Informace | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informace | Zapisuje do protokolování na úrovni _informací_ . |
 | Ladit | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
@@ -275,7 +275,7 @@ K dispozici je řada triggerů a vazeb pro použití s aplikací Function App. �
 Všechny triggery a vazby jsou reprezentovány v kódu jako několik reálných datových typů:
 
 * Hashtable
-* řetězec
+* string
 * Byte
 * int
 * double
@@ -298,10 +298,10 @@ Objekt Request, který je předán do skriptu, je typu `HttpRequestContext`, kte
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body` je serializován do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | object |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | < Řetězec slovníku, > řetězce<sup>*</sup> |
-| **`Method`** | Metoda HTTP požadavku.                                | řetězec                    |
+| **`Method`** | Metoda HTTP požadavku.                                | string                    |
 | **`Params`**  | Objekt, který obsahuje parametry směrování požadavku. | < Řetězec slovníku, > řetězce<sup>*</sup> |
 | **`Query`** | Objekt, který obsahuje parametry dotazu.                  | < Řetězec slovníku, > řetězce<sup>*</sup> |
-| **`Url`** | Adresa URL požadavku.                                        | řetězec                    |
+| **`Url`** | Adresa URL požadavku.                                        | string                    |
 
 <sup>*</sup> U všech `Dictionary<string,string>` klíčů se nerozlišují velká a malá písmena.
 
@@ -312,7 +312,7 @@ Objekt Response, který byste měli odeslat zpět, je typu `HttpResponseContext`
 | Vlastnost      | Popis                                                 | Typ                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | object                    |
-| **`ContentType`** | Krátká ruka pro nastavení typu obsahu pro odpověď. | řetězec                    |
+| **`ContentType`** | Krátká ruka pro nastavení typu obsahu pro odpověď. | string                    |
 | **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulka   |
 | **`StatusCode`**  | Stavový kód protokolu HTTP odpovědi.                       | řetězec nebo int             |
 
@@ -601,7 +601,7 @@ Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

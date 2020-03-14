@@ -4,11 +4,11 @@ description: Přečtěte si o podpoře migrace Hyper-V s Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393293"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245821"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Matice podpory pro migraci technologie Hyper-V
 
@@ -46,8 +46,8 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | **NFS**                        | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat. |
 | **ISCSI**                      | Virtuální počítače s cíli iSCSI se nepodporují pro migraci.
 | **Cílový disk**                | Můžete migrovat jenom na virtuální počítače Azure se spravovanými disky. |
-| **Protokolů** | Nepodporuje se.
-| **Seskupování síťových adaptérů** | Nepodporuje se.
+| **Protokolů** | Není podporováno.
+| **Seskupování síťových adaptérů** | Není podporováno.
 | **Azure Site Recovery** | Pokud je virtuální počítač povolený pro replikaci pomocí Azure Site Recovery, nejde replikovat pomocí Azure Migrate migrace serveru.
 | **Porty** | Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů.
 
@@ -62,9 +62,9 @@ Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, 
 Počet datových disků | 16 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
-Sdílené VHD | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán.
+Sdílené VHD | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Disk FC | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+BitLocker | Není podporováno. | Před povolením replikace pro počítač musí být BitLocker zakázán.
 název virtuálního počítače | Od 1 do 63 znaků.<br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
 Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md). |
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  

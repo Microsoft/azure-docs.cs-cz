@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: c99e232243e95d3aa0a85e09c2534973114e28ea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0ae159b57a89b4238d52d178d59cb79b452e0411
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068762"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214545"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu na virtuální počítače v rámci konkrétní zóny dostupnosti
 
@@ -55,7 +55,7 @@ Tento ukázkový skript Azure CLI vytvoří vše potřebné pro spuštění něk
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \

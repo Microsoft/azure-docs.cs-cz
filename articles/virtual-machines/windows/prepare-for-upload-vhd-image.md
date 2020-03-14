@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
 ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128428"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250189"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
@@ -235,7 +235,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 9. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady, abyste se ujistili, že předchozí nastavení nebudou obnovená. 
     
-    | Cíl                                     | Zásada                                                                                                                                                       | Hodnota                                                                                    |
+    | Cíl                                     | Zásady                                                                                                                                                       | Hodnota                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Protokol RDP je povolený.                           | Computer cestě konfigurace Settings\Administrative Templates\Components\Remote Desktop – pracovní relace, Host\Connections         | Umožňuje uživatelům vzdálené připojení pomocí vzdálené plochy.                                  |
     | NLA – zásady skupiny                         | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
@@ -275,7 +275,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
    ``` 
 6. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady služby Azure AD a ujistěte se, že předchozí nastavení nejsou obnovená. 
 
-    | Cíl                                 | Zásada                                                                                                                                                  | Hodnota                                   |
+    | Cíl                                 | Zásady                                                                                                                                                  | Hodnota                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Povolit profily brány Windows Firewall | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Chránit všechna síťová připojení         |
     | Povolit protokol RDP                           | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Povolit příchozí výjimky vzdálené plochy |
@@ -408,7 +408,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | Jádro                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
-| Vzdálená plocha | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
+| Služba Vzdálená plocha | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 – KB3000850         | 10.0.14393.0 – KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
@@ -446,7 +446,7 @@ Ne každá role nebo aplikace, která je nainstalovaná na počítači se systé
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
 1. Spusťte **příkazový řádek** jako správce. 
-1. Změňte adresář na `%windir%\system32\sysprep`. Potom spusťte `sysprep.exe`.
+1. Změňte adresář na `%windir%\system32\sysprep`. Potom spusťte příkaz `sysprep.exe`.
 1. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
 
     ![Nástroj pro přípravu systému](media/prepare-for-upload-vhd-image/syspre.png)

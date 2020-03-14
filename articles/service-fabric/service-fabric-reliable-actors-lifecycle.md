@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389579"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258314"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Životní cyklus objektu actor, automatické uvolňování paměti a ruční odstranění
 Objekt actor se aktivuje při prvním volání jakékoli z jeho metod. Objekt actor se deaktivuje (uvolňování paměti modulem Actors), pokud se nepoužívá pro konfigurovatelnou dobu. Objekt actor a jeho stav lze také kdykoli odstranit ručně.

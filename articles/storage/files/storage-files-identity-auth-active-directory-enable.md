@@ -4,14 +4,14 @@ description: Naučte se, jak povolit ověřování na základě identity přes S
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/11/2020
 ms.author: rogarana
-ms.openlocfilehash: 1f904435622c8128810bb0e381308c8a308dd360
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d9d2e06cc3beae8a7bb8ea1b4eee15fb1641ddd4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128573"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255220"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Povolení ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure
 
@@ -34,7 +34,7 @@ Když povolíte službu AD pro sdílené složky Azure přes protokol SMB, poč�
 
 Identity služby AD používané pro přístup ke sdíleným složkám Azure musí být synchronizované do Azure AD, aby bylo možné vyhodnotit oprávnění k souborům na úrovni sdílené složky prostřednictvím standardního modelu [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) . Pro soubory nebo adresáře přenesené z existujících souborových serverů se zachovají a vynutily [volitelné seznamy stylů Windows](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) . Tato funkce nabízí bezproblémovou integraci s infrastrukturou domény podnikové služby AD. Při nahrazení Prem souborové servery pomocí sdílených složek Azure mají stávající uživatelé přístup ke sdíleným složkám Azure ze svých současných klientů s jednotným přihlašováním bez jakýchkoli změn v přihlašovacích údajích, které se používají.  
  
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Než povolíte ověřování AD pro sdílené složky Azure, ujistěte se, že jste dokončili následující požadavky: 
 
@@ -65,10 +65,10 @@ Než povolíte ověřování AD pro sdílené složky Azure, ujistěte se, že j
 Ověřování Azure Files AD (Preview) je dostupné ve [většině veřejných oblastí](https://azure.microsoft.com/global-infrastructure/regions/).
 
 Ověřování služby Azure soubory AD není k dispozici v nástroji:
-- USA – západ
-- USA – západ 2
-- USA – východ
-- USA – východ 2
+- Západní USA
+- Západní USA 2
+- Východní USA
+- Východní USA 2
 - Západní Evropa
 - Severní Evropa
 
@@ -129,7 +129,8 @@ Connect-AzAccount
 #Select the target subscription for the current session
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
-#Register the target storage account with your active directory environment under the target OU
+#Register the target storage account with your active directory environment under the target OU (for example: "OU=ComputersOU,DC=prod,DC=corp,DC=contoso,DC=com")
+#You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
 join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
@@ -150,7 +151,7 @@ Jakmile budete mít tento klíč, vytvořte v rámci své organizační jednotky
 
 Pokud vaše organizační jednotka vynutila vypršení platnosti hesla, musíte aktualizovat heslo před maximálním stářím hesla, aby nedocházelo k chybám ověřování při přístupu ke sdíleným složkám Azure. Podrobnosti najdete v tématu [aktualizace hesla k účtu AD](#update-ad-account-password) .
 
-Ponechte si identifikátor SID nově vytvořeného účtu, budete ho potřebovat pro další krok.
+Ponechte si identifikátor SID nově vytvořeného účtu, budete ho potřebovat pro další krok. Identita AD, kterou jste právě vytvořili, která představuje účet úložiště, nemusí být synchronizovaná se službou Azure AD.
 
 ##### <a name="c-enable-the-feature-on-your-storage-account"></a>c. Povolení funkce v účtu úložiště
 

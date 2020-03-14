@@ -4,11 +4,11 @@ description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery S
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363716"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273511"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -171,8 +171,8 @@ Stav úlohy se může lišit v závislosti na následujících scénářích:
 Dokončeno | Probíhá | Probíhá
 Dokončeno | Přeskočeno | Dokončeno
 Dokončeno | Dokončeno | Dokončeno
-Dokončeno | Neúspěch | Dokončeno s upozorněním
-Neúspěch | Neúspěch | Neúspěch
+Dokončeno | Neúspěšné | Dokončeno s upozorněním
+Neúspěšné | Neúspěšné | Neúspěšné
 
 Díky této funkci se můžou dvě zálohy spustit paralelně, ale v obou fázích (snímky, přenos dat do trezoru) může běžet jenom jedna dílčí úloha. Takže v rámci scénářů skončila úloha zálohování v průběhu příštího dne neúspěšného zálohování v této funkci odpojuje se. V dalších dnech můžou být snímky dokončené **, zatímco přenos dat do trezoru** se přeskočil, pokud probíhá úloha zálohování staršího dne.
 Přírůstkový bod obnovení vytvořený v trezoru bude zachytit všechny změny z posledního bodu obnovení vytvořeného v trezoru. Na uživatele není žádný vliv na náklady.

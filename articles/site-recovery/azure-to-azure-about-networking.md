@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 1/23/2020
 ms.author: sutalasi
 ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362593"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258158"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 

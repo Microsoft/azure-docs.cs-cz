@@ -16,11 +16,11 @@ ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393482"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269793"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrana obsahu pomocí Media Services dynamického šifrování
 
@@ -114,7 +114,7 @@ Služba tokenů zabezpečení (STS) vydává token JWT jako přístupový token 
 
 [Tento nástroj STS](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) můžete použít k otestování služby STS. Podporuje všechny tři typy ověřovacích klíčů: symetrický, asymetrický nebo Azure Active Directory (Azure AD) s použitím klíčového přechodu.
 
-## <a name="streaming-protocols-and-encryption-types"></a>Typy šifrování a protokoly streamování
+## <a name="streaming-protocols-and-encryption-types"></a>Typy šifrování a streamování protokolů
 
 Media Services můžete doručovat obsah zašifrovaný dynamicky pomocí nezašifrovaného klíče AES a DRM šifrování pomocí PlayReady, Widevine a FairPlay. V současné době můžete šifrovat formáty HLS, MPEG POMLČKy a Smooth Streaming. Každý protokol podporuje následující metody šifrování.
 

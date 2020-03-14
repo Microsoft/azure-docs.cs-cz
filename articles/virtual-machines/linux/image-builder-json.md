@@ -6,13 +6,14 @@ ms.author: danis
 ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 manager: gwallace
-ms.openlocfilehash: 08a1ca0c85d69d1a5262f1dcac5d46fb82b1c22b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 870c8856cdc22b0586199051575de02312420990
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385099"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267258"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -59,18 +60,18 @@ Toto je základní formát šablony:
 
 Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imagí se podporují tyto oblasti:
 
-- USA – východ
-- USA – východ 2
-- USA – středozápad
-- USA – západ
-- USA – západ 2
+- Východní USA
+- Východní USA 2
+- Střed USA – západ
+- Západní USA
+- Západní USA 2
 
 
 ```json
     "location": "<region>",
 ```
 ## <a name="vmprofile"></a>vmProfile
-Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuální počítač pro sestavení "Standard_D1_v2", můžete ho například přepsat, pokud chcete přizpůsobit image pro virtuální počítač GPU, potřebujete velikost virtuálního počítače GPU. Tato položka je nepovinná.
+Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuální počítač pro sestavení "Standard_D1_v2", můžete ho například přepsat, pokud chcete přizpůsobit image pro virtuální počítač GPU, potřebujete velikost virtuálního počítače GPU. Tento krok je nepovinný.
 
 ```json
  {
@@ -80,7 +81,7 @@ Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuáln
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-Ve výchozím nastavení nemění tvůrce imagí velikost obrázku, ale bude používat velikost ze zdrojové image. Můžete upravit velikost disku s operačním systémem (Win a Linux), poznamenat si, že nebudete příliš malá, než minimální požadované místo vyžadované operačním systémem. To je volitelné a hodnota 0 znamená, že zůstane stejná velikost jako zdrojová image. Tato položka je nepovinná.
+Ve výchozím nastavení nemění tvůrce imagí velikost obrázku, ale bude používat velikost ze zdrojové image. Můžete upravit velikost disku s operačním systémem (Win a Linux), poznamenat si, že nebudete příliš malá, než minimální požadované místo vyžadované operačním systémem. To je volitelné a hodnota 0 znamená, že zůstane stejná velikost jako zdrojová image. Tento krok je nepovinný.
 
 ```json
  {

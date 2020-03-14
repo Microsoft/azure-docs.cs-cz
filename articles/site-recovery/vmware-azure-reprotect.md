@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362665"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257170"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Zpětná replikace z Azure do místního prostředí
 
 Po [převzetí služeb při selhání](site-recovery-failover.md) místních virtuálních počítačů VMware nebo fyzických serverů do Azure je prvním krokem při selhání zpět na místní lokalitu, aby se znovu chránily virtuální počítače Azure vytvořené během převzetí služeb při selhání. Tento článek popisuje, jak to provést. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 1. Postupujte podle kroků v [tomto článku](vmware-azure-prepare-failback.md) a připravte se na opětovnou ochranu a navrácení služeb po obnovení, včetně nastavení procesového serveru v Azure, místního hlavního cílového serveru a konfigurace sítě Site-to-Site VPN nebo ExpressRoute privátního partnerského vztahu pro navrácení služeb po obnovení.
 2. Ujistěte se, že místní konfigurační server běží a je připojený k Azure. Během převzetí služeb při selhání do Azure nemusí být místní lokalita přístupná a konfigurační server může být nedostupný nebo vypnutý. Během navrácení služeb po obnovení musí virtuální počítač existovat v databázi konfiguračního serveru. V opačném případě je navrácení služeb po obnovení neúspěšné.

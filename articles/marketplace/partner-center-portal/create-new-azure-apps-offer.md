@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391465"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283365"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -50,12 +50,12 @@ Všechny aplikace Azure obsahují v kořenové složce `.zip` archivu aspoň dva
 
 Všechny nové nabídky aplikací Azure musí zahrnovat [identifikátor GUID poskytovatele využívání zákaznických zákazníků Azure](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution).
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 Přečtěte si následující dokumentaci k aplikaci Azure, která poskytuje rychlé starty, kurzy a ukázky.
 
 * [Principy šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-* Rychlá zprovoznění:
+* Šablony rychlý start:
 
     * [Šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/)
     * [Šablony Azure pro rychlý Start pro GitHub](https://github.com/azure/azure-quickstart-templates)
@@ -498,7 +498,7 @@ Možnost **výpisy testovacích jednotek** , která se nachází na kartě **tes
 
 Po dokončení těchto polí vyberte **Uložit** .
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 2f147890887d5eb9dd1b2681bd09c662c14c74ff
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381953"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246185"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -74,7 +74,7 @@ Pokud chcete použít ověřování pomocí klíče účtu úložiště, jsou po
 | Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **AzureBlobFS**. |Ano |
-| url | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net`. | Ano |
+| Adresa URL | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net`. | Ano |
 | accountKey | Klíč účtu pro Data Lake Storage Gen2. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud je vaše úložiště dat v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tato vlastnost není zadaná, použije se výchozí prostředí Azure Integration runtime. |Ne |
 
@@ -126,7 +126,7 @@ Tyto vlastnosti jsou pro propojenou službu podporované:
 | Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **AzureBlobFS**. |Ano |
-| url | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net`. | Ano |
+| Adresa URL | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net`. | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako `SecureString` pro bezpečné uložení v Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano |
@@ -180,7 +180,7 @@ Tyto vlastnosti jsou pro propojenou službu podporované:
 | Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **AzureBlobFS**. |Ano |
-| url | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net`. | Ano |
+| Adresa URL | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net`. | Ano |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud je vaše úložiště dat v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ne |
 
 **Příklad:**

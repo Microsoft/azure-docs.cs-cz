@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
 ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388787"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249799"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání na virtuálních počítačích Azure
 
@@ -63,7 +63,7 @@ Pokud chcete porovnat BYOL s průběžnými platbami a licencováním pro SQL Se
 
 Celé řešení můžete vytvořit v Azure ze šablony. Příklad šablony je k dispozici v [šablonách rychlého](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad)startu pro Azure na GitHubu. Tento příklad není navržený nebo testován pro žádnou konkrétní úlohu. Můžete spustit šablonu a vytvořit SQL Server FCI s úložištěm Prostory úložiště s přímým přístupem připojeným k vaší doméně. Můžete vyhodnotit šablonu a upravit ji pro vaše účely.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 K dispozici je několik věcí, které potřebujete znát a které jsou ještě před začátkem.
 
@@ -174,9 +174,9 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
 
    Na každém virtuálním počítači otevřete tyto porty na bráně Windows Firewall:
 
-   | Účel | Port TCP | Poznámky:
+   | Účel | Port TCP | Poznámky
    | ------ | ------ | ------
-   | SQL Server | 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře.
+   | Server SQL | 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře.
    | Sonda stavu | 59999 | Libovolný otevřený port TCP. V pozdějším kroku nakonfigurujte [sondu stavu](#probe) nástroje pro vyrovnávání zatížení a cluster tak, aby používal tento port.  
 
 1. Přidejte úložiště do virtuálního počítače. Podrobné informace najdete v tématu věnovaném [Přidání úložiště](../disks-types.md).
@@ -271,7 +271,7 @@ Následující skript PowerShellu vytvoří cluster s podporou převzetí služe
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
-#### <a name="windows-server-2019"></a>Windows Server 2019
+#### <a name="windows-server-2019"></a>Windows Server. 2019
 
 Následující skript PowerShellu vytvoří cluster s podporou převzetí služeb při selhání pro Windows Server 2019. Další informace najdete v tématu [cluster pro převzetí služeb při selhání: objekt sítě s clustery](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97). Aktualizujte skript s použitím názvů uzlů (názvy virtuálních počítačů) a dostupné IP adresy z virtuální sítě Azure.
 
@@ -499,7 +499,7 @@ Na virtuálních počítačích Azure není služba MSDTC podporovaná na Window
 - Clusterový prostředek MSDTC nejde nakonfigurovat tak, aby používal sdílené úložiště. Pokud v systému Windows Server 2016 vytvoříte prostředek MSDTC, nezobrazí se žádné sdílené úložiště dostupné pro použití, a to i v případě, že je úložiště k dispozici. Tento problém byl opravený v systému Windows Server 2019.
 - Nástroj pro vyrovnávání zatížení úrovně Basic nezpracovává porty RPC.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Nastavení Prostory úložiště s přímým přístupem pomocí vzdálené plochy (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 

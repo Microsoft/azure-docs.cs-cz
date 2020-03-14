@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394499"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252126"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Rychlý Start pro bash v Azure Cloud Shell
 
@@ -52,7 +52,7 @@ az account set --subscription 'my-subscription-name'
 > [!TIP]
 > Vaše předplatné bude zapamatovatelné pro budoucí relace pomocí `/home/<user>/.azure/azureProfile.json`.
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 Vytvořte novou skupinu prostředků v WestUS s názvem "MyRG".
 ```azurecli-interactive
 az group create --location westus --name MyRG

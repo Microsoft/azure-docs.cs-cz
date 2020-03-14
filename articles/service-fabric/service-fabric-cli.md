@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388398"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258938"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -18,7 +18,7 @@ Rozhraní příkazového řádku (CLI) Azure Service Fabric je nástroj příkaz
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před instalací se ujistěte, že je ve vašem prostředí nainstalovaný Python a pip. Další informace najdete v [úvodní dokumentaci nástroje pip](https://pip.pypa.io/en/latest/quickstart/) a oficiální [dokumentaci k instalaci Pythonu](https://wiki.python.org/moin/BeginnersGuide/Download).
 
@@ -33,7 +33,7 @@ Smyslem Service Fabric CLI je podpora nejnovější verze modulu runtime sady Se
 | Nejnovější (~ = 9)  | Nejnovější (~ = 7)              |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
-| 6.0.0         | 6.3                       |
+| 6.0.0         | 6,3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
 | 3.0.0         | 6.0                       |

@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 02/10/2020
+ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8c995a40e621f7155ad0741004d10b1146523489
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360032"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256052"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -48,7 +48,7 @@ Tato stránka také vysvětluje [dočasné známé problémy](#Issues) , které 
 - [ODPOJIT SKUPINU DOSTUPNOSTI](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Klauzule [set hadr](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) příkazu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Zálohovat
 
 Spravované instance mají automatické zálohování, takže uživatelé můžou vytvářet úplné zálohy databáze `COPY_ONLY`. Zálohy rozdílů, protokolů a snímků souborů se nepodporují.
 
@@ -65,7 +65,6 @@ Určitá
 
 - Se spravovanou instancí můžete zálohovat databázi instance do zálohy s až 32 proužky, které jsou pro databáze až 4 TB v případě, že se používá zálohování zálohy, v případě, že je použita komprese záloh.
 - Nemůžete spouštět `BACKUP DATABASE ... WITH COPY_ONLY` v databázi, která je zašifrovaná pomocí transparentní šifrování dat TDE (spravováno službou). TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu. Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
-- Ruční zálohování do úložiště objektů BLOB v Azure se podporuje jenom pro [účty BlockBlobStorage](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 - Maximální velikost záložního proužku pomocí příkazu `BACKUP` ve spravované instanci je 195 GB, což je maximální velikost objektu BLOB. Zvyšte počet pruhů v příkazu Backup, abyste snížili velikost jednotlivých pruhů a zůstali v rámci tohoto limitu.
 
     > [!TIP]
@@ -140,8 +139,8 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
     Spravovaná instance podporuje objekty zabezpečení databáze Azure AD se syntaxí `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Tato funkce se označuje taky jako uživatelé databáze s omezením Azure AD.
 
 - Přihlášení Windows vytvořená pomocí syntaxe `CREATE LOGIN ... FROM WINDOWS` nejsou podporovaná. Používejte Azure Active Directory přihlašovacích údajů a uživatelů.
-- Uživatel Azure AD, který vytvořil instanci, má [neomezená oprávnění správce](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Uživatele na úrovni databáze služby Azure AD, kteří nejsou správci, se dají vytvořit pomocí syntaxe `CREATE USER ... FROM EXTERNAL PROVIDER`. Viz [vytvořit uživatele... OD externího poskytovatele](sql-database-manage-logins.md#non-administrator-users).
+- Uživatel Azure AD, který vytvořil instanci, má [neomezená oprávnění správce](sql-database-manage-logins.md).
+- Uživatele na úrovni databáze služby Azure AD, kteří nejsou správci, se dají vytvořit pomocí syntaxe `CREATE USER ... FROM EXTERNAL PROVIDER`. Viz [vytvořit uživatele... OD externího poskytovatele](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
 - Objekty zabezpečení serveru Azure AD (přihlášení) podporují jenom funkce SQL v rámci jedné spravované instance. Funkce, které vyžadují interakci mezi instancemi, bez ohledu na to, jestli jsou ve stejném tenantovi Azure AD nebo v různých klientech, se pro uživatele Azure AD nepodporují. Příklady takových funkcí:
 
   - Transakční replikace SQL.
@@ -273,7 +272,7 @@ Následující možnosti nelze upravit:
 
 Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
-### <a name="sql-server-agent"></a>Agent SQL Server
+### <a name="sql-server-agent"></a>SQL Server Agent
 
 - Povolení a zakázání agenta SQL Server v současnosti není ve spravované instanci podporováno. Agent SQL je vždycky spuštěný.
 - Nastavení agenta SQL Server jsou jen pro čtení. Procedura `sp_set_agent_properties` není ve spravované instanci podporována. 
@@ -470,6 +469,7 @@ Služba Service Broker mezi instancemi není podporována:
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - `sp_execute_external_scripts` se nepodporuje. Viz [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).

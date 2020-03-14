@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392801"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249773"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Zálohování a obnovení pro SQL Server v Azure Virtual Machines
 
@@ -35,7 +35,7 @@ Následující tabulka poskytuje informace o různých možnostech zálohování
 |---|---|---|
 | [Automatizované zálohování](#automated) | 2014<br/> 2016<br/> 2017 | Automatizované zálohování umožňuje naplánovat pravidelné zálohování pro všechny databáze na SQL Serverm virtuálním počítači. Zálohy se ukládají v Azure Storage po dobu až 30 dnů. Počínaje SQL Server 2016 nabízí automatizované zálohování v2 další možnosti, jako je třeba konfigurace ručního plánování a četnost úplných záloh a zálohování protokolů. |
 | [Azure Backup pro virtuální počítače SQL](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup poskytuje možnost zálohování podnikové třídy pro SQL Server běžící na virtuálních počítačích Azure. Pomocí této služby můžete centrálně spravovat zálohy pro víc serverů a tisíců databází. Databáze je možné obnovit do určitého bodu v čase na portálu. Nabízí přizpůsobitelné zásady uchovávání informací, které můžou uchovávat zálohy po rocích. |
-| [Ruční zálohování](#manual) | Vše | V závislosti na vaší verzi SQL Server existují různé postupy pro ruční zálohování a obnovení SQL Server spuštěné na virtuálním počítači Azure. V tomto scénáři zodpovídáte za zálohování databází a umístění úložiště a správu těchto záloh. |
+| [Ruční zálohování](#manual) | Všechny | V závislosti na vaší verzi SQL Server existují různé postupy pro ruční zálohování a obnovení SQL Server spuštěné na virtuálním počítači Azure. V tomto scénáři zodpovídáte za zálohování databází a umístění úložiště a správu těchto záloh. |
 
 V následujících částech jsou jednotlivé možnosti podrobněji popsány. Poslední část tohoto článku poskytuje souhrn ve formě matice funkcí.
 

@@ -14,11 +14,11 @@ ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 4a3b699c90e1fefb834f8ddfe3a23fc2a97354ec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359350"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251411"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
 
@@ -70,7 +70,7 @@ Podívejte se na následující ukázky, které ukazují, jak se připojit pomoc
 * [Připojení s využitím Node.js](configure-connect-nodejs-howto.md)
 * [Připojení s využitím Pythonu](configure-connect-python-howto.md)
 
-## <a name="naming-conventions"></a>Zásady vytváření názvů
+## <a name="naming-conventions"></a>Konvence zadávání názvů
 
 Na názvy prostředků služby Azure Media Services v3 (například prostředky, úlohy, transformace) se vztahují omezení vytváření názvů Azure Resource Manageru. V souladu s Azure Resource Managerem jsou názvy prostředků vždy jedinečné. Jako názvy prostředků tedy můžete použít jakékoli řetězce jedinečného identifikátoru (například identifikátory GUID).
 
@@ -118,7 +118,7 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 > [!NOTE]
 > Sady SDK Azure Media Services V3 nejsou zaručeny jako bezpečné pro přístup z více vláken. Při vývoji aplikace s více vlákny byste měli přidat vlastní logiku synchronizace vláken pro ochranu klienta nebo použití nového objektu AzureMediaServicesClient na vlákno. Měli byste také dbát na problémy s více vlákny, které přináší volitelné objekty poskytované vaším kódem, klientovi (například instance HttpClient v rozhraní .NET).
 
-|Sada SDK|Referenční informace|
+|Sada SDK|Odkaz|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[Referenční informace k .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Referenční informace k Javě](https://aka.ms/ams-v3-java-ref)|
@@ -127,7 +127,7 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Referenční informace k jazyku Go](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Viz také:
 
 - [EventGrid .NET SDK zahrnující události Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -146,7 +146,7 @@ Viz téma [filtrování, řazení, stránkování Azure Media Services entit](en
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 

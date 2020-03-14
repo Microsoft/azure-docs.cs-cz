@@ -6,11 +6,11 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372983"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278672"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Zprovoznění řešení Update Management, Change Tracking a inventáře
 

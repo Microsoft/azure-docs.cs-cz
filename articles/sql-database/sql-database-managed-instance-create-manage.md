@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360508"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268857"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Reference spravovaného rozhraní API pro Azure SQL Database spravované instance
 
@@ -37,7 +37,7 @@ Pokud chcete vytvořit a spravovat spravované instance pomocí Azure PowerShell
 > [!TIP]
 > Ukázkové skripty PowerShellu najdete v tématu [rychlý Start skriptu: vytvoření spravované instance Azure SQL pomocí knihovny prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 |[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Vytvoří spravovanou instanci Azure SQL Database. |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Vrátí informace o spravované instanci Azure SQL.|
@@ -55,7 +55,7 @@ Pokud chcete vytvořit a spravovat spravované instance pomocí [Azure CLI](/cli
 > [!TIP]
 > Rychlý Start Azure CLI najdete v tématu [práce se službou SQL Managed instance pomocí Azure CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 |[AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Vytvoří spravovanou instanci.|
 |[AZ SQL mi list](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Zobrazí seznam dostupných spravovaných instancí.|

@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: 9e5b3e633bf35a25a68eb513d0ec691c3254bde4
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086245"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246913"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -25,11 +25,11 @@ Po vytvoření účtu Azure Cosmos v rámci svého předplatného můžete sprav
 | --- | --- |
 | Maximální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . |
 | Maximální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . |
-| Maximální ru na (logický) klíč oddílu | 10 000 |
+| Maximální ru na (logický) klíč oddílu | 10,000 |
 | Maximální velikost úložiště napříč všemi položkami na (logický) klíč oddílu| 20 GB |
-| Maximální počet různých (logických) klíčů oddílu | Neomezeno |
-| Maximální velikost úložiště na kontejner | Neomezeno |
-| Maximální velikost úložiště na databázi | Neomezeno |
+| Maximální počet různých (logických) klíčů oddílu | Neomezený počet |
+| Maximální velikost úložiště na kontejner | Neomezený počet |
+| Maximální velikost úložiště na databázi | Neomezený počet |
 | Maximální velikost přílohy na účet (funkce přílohy je odepsána) | 2 GB |
 | Minimální ru vyžadovaná za 1 GB | 10 RU/s |
 
@@ -76,7 +76,7 @@ Cosmos DB automaticky provede zálohování vašich dat v pravidelných interval
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální počet databází | Neomezeno |
+| Maximální počet databází | Neomezený počet |
 | Maximální počet kontejnerů na databázi se sdílenou propustností |25 |
 | Maximální počet kontejnerů na databázi nebo účet s vyhrazenou propustností  |Bez omezení |
 | Maximální počet oblastí | Bez omezení (všechny oblasti Azure) |

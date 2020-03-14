@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: 4146191453e7c7a589dacc41345a36a29a540de5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964320"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260771"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory
 
@@ -77,7 +77,7 @@ V následující tabulce jsou porovnávány některé funkce serveru Azure SQL D
 
 | Funkce | Izolovaná databáze/elastický fond| Spravovaná instance |
 |---------|--------------|------------------|
-| **Plánování** | Agent SQL Server není k dispozici.<br/><br/>Viz [Naplánování spuštění balíčku ve data Factoryovém kanálu](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Agent spravované instance je k dispozici. |
+| **Plánuje** | Agent SQL Server není k dispozici.<br/><br/>Viz [Naplánování spuštění balíčku ve data Factoryovém kanálu](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Agent spravované instance je k dispozici. |
 | **Ověřování** | Můžete vytvořit instanci SSISDB s uživatelem databáze s omezením, který představuje libovolnou skupinu Azure AD se spravovanou identitou vaší datové továrny jako členem v roli **db_owner** .<br/><br/>Další informace najdete v tématu [Povolení ověřování Azure AD pro vytvoření instance SSISDB na serveru Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Můžete vytvořit instanci SSISDB s databází s omezením uživatele, která představuje spravovanou identitu vaší datové továrny. <br/><br/>Další informace najdete [v tématu Povolení ověřování Azure AD pro vytvoření instance SSISDB ve spravované instanci Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Úroveň služeb** | Když vytvoříte Azure-SSIS IR se serverem Azure SQL Database, můžete vybrat úroveň služby pro SSISDB. Existuje několik úrovní služeb. | Když vytvoříte Azure-SSIS IR s vaší spravovanou instancí, nemůžete vybrat úroveň služby pro SSISDB. Všechny databáze ve spravované instanci sdílejí stejný prostředek přidělený k této instanci. |
 | **Virtuální síť** | Pokud používáte Azure SQL Database Server s pravidly brány firewall nebo koncovými body služby virtuální sítě, váš Azure-SSIS IR se může připojit k virtuální síti Azure Resource Manager. | Váš Azure-SSIS IR se může připojit k virtuální síti Azure Resource Manager, pokud použijete spravovanou instanci s privátním koncovým bodem. Virtuální síť se vyžaduje, když nepovolíte veřejný koncový bod pro spravovanou instanci.<br/><br/>Pokud připojíte Azure-SSIS IR ke stejné virtuální síti jako vaše spravovaná instance, ujistěte se, že je Azure-SSIS IR v jiné podsíti než vaše spravovaná instance. Pokud připojíte Azure-SSIS IR k jiné virtuální síti ze spravované instance, doporučujeme buď vytvoření partnerského vztahu virtuální sítě, nebo připojení typu síť-síť. Viz téma [připojení aplikace k spravované instanci Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md). |
@@ -118,7 +118,7 @@ Po vytvoření objektu pro vytváření dat otevřete jeho stránku Přehled v A
 
    1. Pro **Uložit peníze**vyberte možnost zvýhodněné hybridní využití Azure pro prostředí Integration Runtime: **Ano** nebo **ne**. Vyberte **Ano** , pokud chcete využít vlastní licenci SQL Server se Software Assurance, abyste využili úspory nákladů s využitím hybridního použití.
 
-   1. Vyberte **Next** (Další).
+   1. Vyberte **Další**.
 
 1. V části **nastavení SQL** proveďte následující kroky.
 
@@ -366,7 +366,7 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 }
 ```
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina.
 

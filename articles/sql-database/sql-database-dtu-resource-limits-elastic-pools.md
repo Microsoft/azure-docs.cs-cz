@@ -12,11 +12,11 @@ ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
 ms.openlocfilehash: 3f6bbef8f274c5efb99d5b98961450aa7b001527
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359953"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256338"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 
@@ -97,8 +97,8 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 
 | Počet eDTU na fond | **2000** | **2500** | **3000** | **3500** | **4000**|
 |:---|---:|---:|---:| ---: | ---: |
-| Zahrnuté úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096 |
-| Maximální počet možností úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096|
+| Zahrnuté úložiště na fond (GB) | 2048 | 2560 | 3072 | 3548 | 4 096 |
+| Maximální počet možností úložiště na fond (GB) | 2048 | 2560 | 3072 | 3548 | 4 096|
 | Maximální úložiště OLTP v paměti na fond (GB) | 16 | 20 | 24 | 28 | 32 |
 | Maximální počet databází pro každý fond | 100 | 100 | 100 | 100 | 100 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 3 200 | 4 000 | 4800 | 5600 | 6 400 |

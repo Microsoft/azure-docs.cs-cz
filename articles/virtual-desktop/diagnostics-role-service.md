@@ -9,11 +9,11 @@ ms.date: 03/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127934"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254258"
 ---
 # <a name="identify-and-diagnose-issues"></a>Identifikace a diagnostika problémů
 
@@ -137,7 +137,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|
 |3|UnauthorizedAccess|Uživatel, který se pokusil spustit rutinu prostředí PowerShell pro správu, nemá oprávnění k tomu, aby to provedl nebo nedokázal zadat své uživatelské jméno.|
-|1000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
+|1 000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|Tenanta nemůžete odstranit, pokud obsahuje objekty. Nejprve odstraňte fondy hostitelů relací a potom akci opakujte.|
 |2000|HostPoolNotFound|Název fondu hostitelů, který jste zadali, se neshoduje s žádnými existujícími fondy hostitelů. Přečtěte si název fondu hostitelů pro překlepy a zkuste to znovu.|
 |2005|HostPoolCannotBeRemovedHasApplicationGroups|Fond hostitelů nemůžete odstranit, pokud obsahuje objekty. Odeberte nejprve všechny skupiny aplikací ve fondu hostitelů.|

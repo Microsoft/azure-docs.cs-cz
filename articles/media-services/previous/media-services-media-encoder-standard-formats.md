@@ -15,11 +15,11 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78366838"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251021"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
 
@@ -30,7 +30,7 @@ ms.locfileid: "78366838"
 Tento dokument obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít s Media Encoder Standard.
 
 ## <a name="input-containerfile-formats"></a>Vstupní formáty kontejneru nebo souborů
-| Formáty souborů (přípony souborů) | Podporováno |
+| Formáty souborů (přípony souborů) | Podporuje se |
 | --- | --- |
 | FLV (s kodeky H. 264 a AAC) (. flv) |Ano |
 | MXF    (.mxf) |Ano |
@@ -54,12 +54,12 @@ Media Encoder Standard podporuje překonání následujících formátů zvuku v
 
 * Soubory MXF, GXF a QuickTime, které obsahují zvukové stopy s prokládanými ukázkami stereo nebo 5,1
 
-or
+nebo
 
 * Soubory MXF, GXF a QuickTime, kde se zvuk přenese jako samostatná stopa PCM, ale mapování kanálu (na stereo nebo 5,1) se dá odvodit z metadat souboru.
 
 ## <a name="input-video-codecs"></a>Vstupní kodeky videa
-| Vstupní kodeky videa | Podporováno |
+| Vstupní kodeky videa | Podporuje se |
 | --- | --- |
 | AVC 8-bit/10 bitů, až 4:2:2, včetně AVCIntra |8 bitů 4:2:0 a 4:2:2 |
 | Avid DNxHD (v MXF) |Ano |
@@ -82,7 +82,7 @@ or
 | HEVC/H. 265| Hlavní a hlavní profily 10&#42;()<br/>Hlavní Podpora profilů pro 10 je určená pro obsah 8bit 4:2:0. |
 
 ## <a name="input-audio-codecs"></a>Vstupní zvukové kodeky
-| Vstupní zvukové kodeky | Podporováno |
+| Vstupní zvukové kodeky | Podporuje se |
 | --- | --- |
 | AAC (AAC-LC, AAC-HE a AAC-HEv2; až do 5,1) |Ano |
 | MPEG – vrstva 2 |Ano |
@@ -109,7 +109,7 @@ V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou po
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také:

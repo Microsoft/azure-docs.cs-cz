@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: d408a862c18038f64b816bb54fc235d1b9d84179
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968208"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240377"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -47,7 +47,7 @@ Pokud plánujete ochranu obsahu pomocí Media Services dynamického šifrování
 
 Váš klient streamování může určit následující formáty HLS:
 
-|Protocol (Protokol)|Příklad|
+|Protokol|Příklad|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
@@ -57,7 +57,7 @@ Váš klient streamování může určit následující formáty HLS:
 
 Váš klient streamování může určit následující formáty MPEG-SPOJOVNÍK:
 
-|Protocol (Protokol)|Příklad|
+|Protokol|Příklad|
 |---|---|
 |MPEG-SPOJOVNÍK CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
 |MPEG-SPOJOVNÍK CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
@@ -66,7 +66,7 @@ Váš klient streamování může určit následující formáty MPEG-SPOJOVNÍK
 
 Váš klient streamování může určit následující formáty Smooth Streaming:
 
-|Protocol (Protokol)|Poznámky a příklady| 
+|Protokol|Poznámky a příklady| 
 |---|---|
 |Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
 |Smooth Streaming 2,0 (starší manifest)|Ve výchozím nastavení obsahuje Smooth Streaming formát manifestu značku opakování (značka r). Někteří hráči ale nepodporují `r-tag`. Klienti s těmito hráči můžou používat formát, který zakazuje značku r:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
@@ -299,7 +299,7 @@ Chcete-li řídit počet běhů, formátů, přenosové rychlosti a časová obd
 
 Podívejte se na [Azure Media Services komunita](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="need-help"></a>Potřebujete pomoc?
+## <a name="need-help"></a>Potřebujete pomoct?
 
 Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

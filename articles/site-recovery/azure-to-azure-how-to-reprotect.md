@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 818c053c22cfa47cac0f4f6a19349cf239d3cdec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396852"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258119"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné zapnutí ochrany virtuálních počítačů Azure v primární oblasti
 
@@ -44,7 +44,7 @@ Během ochrany můžete přizpůsobit následující vlastnosti cílového virtu
 
 ![Přizpůsobit](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
-|Vlastnost |Poznámky:  |
+|Vlastnost |Poznámky  |
 |---------|---------|
 |Cílová skupina prostředků | Upravte cílovou skupinu prostředků, ve které se virtuální počítač vytvoří. V rámci ochrany je cílový virtuální počítač odstraněný. Můžete zvolit novou skupinu prostředků, ve které se po převzetí služeb při selhání vytvoří virtuální počítač. |
 |Cílová virtuální síť | Cílovou síť nelze změnit během úlohy opětovného zapnutí ochrany. Chcete-li změnit síť, proveďte znovu mapování sítě. |

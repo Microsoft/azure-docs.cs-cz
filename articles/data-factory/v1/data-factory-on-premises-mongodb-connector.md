@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387587"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281337"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
 
@@ -67,7 +67,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | server |IP adresa nebo název hostitele serveru MongoDB |Ano |
 | Port |Port TCP, který server MongoDB používá k naslouchání klientským připojením. |Volitelná výchozí hodnota: 27017 |
 | authenticationType |Basic nebo Anonymous. |Ano |
-| uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
+| username jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
 | heslo |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole vašich přihlašovacích údajů pro ověřování. |Volitelné (Pokud se používá základní ověřování). výchozí: používá účet správce a databázi určenou pomocí vlastnosti databaseName. |
 | databaseName |Název databáze MongoDB, ke které chcete získat přístup. |Ano |

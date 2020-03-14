@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265438"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě sdílených složek ve službě Azure Data Box Gateway 
 
@@ -45,9 +45,12 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 3. Vyberte **Typ** sdílené složky. Typ může být **SMB** nebo **NFS**, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu. V závislosti na tom, jestli vyberete sdílené složky SMB nebo systému souborů NFS, se budou mírně lišit zobrazené možnosti.
 
-4. Je nutné zadat **účet úložiště**, ve kterém se bude sdílená složka nacházet. V účtu úložiště se vytvoří kontejner s názvem sdílené složky, pokud ještě neexistuje. Pokud už kontejner existuje, použije se existující kontejner.
+4. Je nutné zadat **účet úložiště**, ve kterém se bude sdílená složka nacházet. V účtu úložiště se vytvoří kontejner s názvem sdílené složky, pokud ještě neexistuje. Pokud už kontejner existuje, použije se existující kontejner.  
 
 5. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. V tomto případě chceme, aby se ukládala jako objekty blob bloku v Azure, proto vybereme **Objekt blob bloku**. Pokud zvolíte **Objekt blob stránky**, je nutné zajistit, aby vaše data byla zarovnaná na 512 bajtů. Formát VHDX je například vždy zarovnaný na 512 bajtů.
+
+   > [!IMPORTANT]
+   > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte s Azure Stack Edge nebo Data Box Gateway zařízení. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. Postup v tomto kroku závisí na tom, jestli vytváříte sdílenou složku SMB nebo systému souborů NFS.
     - **Pokud vytváříte sdílenou složku SMB** – v poli **Místní uživatel se všemi oprávněními** zvolte **Vytvořit nový** nebo **Použít existující**. Pokud vytváříte nového místního uživatele, zadejte **uživatelské jméno**, **heslo** a pak potvrďte heslo. Tím se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
@@ -89,21 +92,21 @@ Funkce aktualizace umožňuje aktualizovat obsah místní sdílené složky. Kdy
 
 Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal následující kroky.
 
-1.  Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
+1.   Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
 
     ![Vybrat sdílenou složku](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.  Klikněte na **Aktualizovat**. 
+2.   Klikněte na **Aktualizovat**. 
 
     ![Kliknutím aktualizujte](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.  Po zobrazení výzvy k potvrzení klikněte na **Ano**. Spustí se úloha, která zaktualizuje obsah místní sdílené složky. 
+3.   Po zobrazení výzvy k potvrzení klikněte na **Ano**. Spustí se úloha, která zaktualizuje obsah místní sdílené složky. 
 
     ![Potvrďte aktualizaci](media/data-box-gateway-manage-shares/refresh-3.png)
  
-4.  Když aktualizace probíhá, bude možnost aktualizace v místní nabídce neaktivní. Kliknutím na oznámení úlohy zobrazte stav úlohy aktualizace.
+4.   Když aktualizace probíhá, bude možnost aktualizace v místní nabídce neaktivní. Kliknutím na oznámení úlohy zobrazte stav úlohy aktualizace.
 
-5.  Doba aktualizace závisí na počtu souborů v kontejneru Azure a také na souborech v zařízení. Po úspěšném dokončení aktualizace se zaktualizuje časové razítko sdílené složky. Operace se považuje za úspěšnou i v případě částečně neúspěšné aktualizace a časové razítko zaktualizuje. 
+5.   Doba aktualizace závisí na počtu souborů v kontejneru Azure a také na souborech v zařízení. Po úspěšném dokončení aktualizace se zaktualizuje časové razítko sdílené složky. Operace se považuje za úspěšnou i v případě částečně neúspěšné aktualizace a časové razítko zaktualizuje. 
 
     ![Aktualizované časové razítko](media/data-box-gateway-manage-shares/refresh-4.png)
  

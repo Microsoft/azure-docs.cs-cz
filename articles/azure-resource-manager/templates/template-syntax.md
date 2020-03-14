@@ -4,11 +4,11 @@ description: Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomo
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388123"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248239"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopení struktury a syntaxe šablon Azure Resource Manager
 

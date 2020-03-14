@@ -8,11 +8,11 @@ ms.date: 12/06/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 0f024bac535ed792d8480c991e470cf5d85932b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355646"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247420"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s Azure Cosmos DB
 
@@ -81,25 +81,25 @@ Tato funkce je k dispozici v následujících oblastech Azure:
 
 - Jihovýchodní Asie
 
-- USA – východ
+- Východní USA
 
-- USA – východ 2
+- Východní USA 2
 
-- USA – střed
+- Střed USA
 
 - Západní Evropa
 
-- USA – západ 2
+- Západní USA 2
 
 > [!NOTE]
 > Povolení Zóny dostupnosti pro jednu oblast účtu Azure Cosmos bude mít za následek poplatky, které se rovnají přidání další oblasti do svého účtu. Podrobnosti o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a s [náklady na více oblastí v Azure Cosmos DB](optimize-cost-regions.md) článcích.
 
 Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigurací účtu:
 
-|Klíčové ukazatele výkonu  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
+|KLÍČOVÝ UKAZATEL VÝKONU  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
 |---------|---------|---------|---------|
-|Smlouva SLA o dostupnosti pro zápis | 99,99 % | 99,99 % | 99,999 % |
-|SLA dostupnosti pro čtení  | 99,99 % | 99,99 % | 99,999 % |
+|Smlouva SLA o dostupnosti pro zápis | 99,99 % | 99,99 % | 99.999% |
+|SLA dostupnosti pro čtení  | 99,99 % | 99,99 % | 99.999% |
 |Cena | Fakturační sazba jedné oblasti | Fakturační sazba zóny dostupnosti v jedné oblasti | Fakturační sazba pro více oblastí |
 |Selhání zón – ztráta dat | Ztráta dat | Žádná ztráta dat | Žádná ztráta dat |
 |Selhání zón – dostupnost | Ztráta dostupnosti | Žádná ztráta dostupnosti | Žádná ztráta dostupnosti |

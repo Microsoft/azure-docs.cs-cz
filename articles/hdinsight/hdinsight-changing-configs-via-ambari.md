@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386928"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272562"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optimalizace konfigurací clusteru HDInsight pomocí Apache Ambari
 
@@ -428,7 +428,7 @@ Velikost setSize paměťového úložiště je definována parametry `hbase.regi
 
 ### <a name="set-memstore-local-allocation-buffer"></a>Nastavit místní vyrovnávací paměť pro přidělení setSize paměťového úložiště
 
-Využití vyrovnávací paměti pro místní přidělování setSize paměťového úložiště je určeno vlastností `hbase.hregion.memstore.mslab.enabled`. Pokud je povoleno (true), zabrání se tím fragmentaci haldy během operace silného zápisu. Výchozí hodnotou je hodnota true.
+Využití vyrovnávací paměti pro místní přidělování setSize paměťového úložiště je určeno vlastností `hbase.hregion.memstore.mslab.enabled`. Pokud je povoleno (true), zabrání se tím fragmentaci haldy během operace silného zápisu. Výchozí hodnota je true.
 
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 

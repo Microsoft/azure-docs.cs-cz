@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386316"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272458"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
 Clustery Azure HDInsight poskytují Apache Hadoop v známém prostředí pro Linux běžící v cloudu Azure. Pro většinu věcí by měla fungovat přesně stejně jako všechny ostatní instalace systému Hadoop-Linux. Tento dokument volá konkrétní rozdíly, o kterých byste měli vědět.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Mnohé z kroků v tomto dokumentu používají následující nástroje, které může být potřeba nainstalovat do systému.
 

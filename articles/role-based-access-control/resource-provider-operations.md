@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9b3a1175b5e22b787c62365d3b113e02ec1d1326
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6b0d967dad250b06988865cde2f4ce11367f8acb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361900"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245769"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager operace poskytovatele prostředků
 
@@ -448,10 +448,9 @@ Služba Azure: [API Management](../api-management/index.yml)
 > | Akce | Microsoft. ApiManagement/služba/brány/číst | Vypíše kolekci bran zaregistrovaných u instance služby. nebo získá podrobnosti o bráně určené identifikátorem. |
 > | Akce | Microsoft. ApiManagement/Service/gateways/Write | Vytvoří nebo aktualizuje bránu, která se má použít v instanci API managementu. nebo aktualizuje podrobnosti o bráně určené identifikátorem. |
 > | Akce | Microsoft. ApiManagement/Service/gateways/DELETE | Odstraní konkrétní bránu. |
-> | Akce | Microsoft. ApiManagement/Service/gateways/Key/Action | Načte klíče brány. |
-> | Akce | Microsoft. ApiManagement/Service/gateways/regeneratePrimaryKey/Action | Znovu vygeneruje klíč primární brány invalidationg všechny tokeny, které se s ním vytvořily. |
-> | Akce | Microsoft. ApiManagement/Service/gateways/regenerateSecondaryKey/Action | Znovu vygeneruje klíč sekundární brány invalidationg všechny tokeny, které se s ním vytvořily. |
-> | Akce | Microsoft. ApiManagement/Service/gateways/token/Action | Získá autorizační token sdíleného přístupu pro bránu. |
+> | Akce | Microsoft. ApiManagement/Service/gateways/klíče listkey/Action | Načte klíče brány. |
+> | Akce | Microsoft. ApiManagement/Service/gateways/regenerateKey/Action | Znovu vygeneruje zadaný klíč brány invalidationg všechny tokeny, které se s ním vytvořily. |
+> | Akce | Microsoft. ApiManagement/Service/gateways/generateToken/Action | Získá autorizační token sdíleného přístupu pro bránu. |
 > |  | **služby/brány/rozhraní API** |  |
 > | Akce | Microsoft. ApiManagement/Service/gateways/API/Read | Zobrazí seznam kolekcí rozhraní API přidružených k bráně. |
 > | Akce | Microsoft. ApiManagement/Service/gateways/API/Write | Přidá rozhraní API k zadané bráně. |
@@ -483,7 +482,7 @@ Služba Azure: [API Management](../api-management/index.yml)
 > | Akce | Microsoft. ApiManagement/Service/namedValues/Read | Vypíše kolekci pojmenovaných hodnot definovaných v rámci instance služby. nebo získá podrobnosti o pojmenované hodnotě určené identifikátorem. |
 > | Akce | Microsoft. ApiManagement/Service/namedValues/Write | Vytvoří nebo aktualizuje pojmenovanou hodnotu. nebo aktualizuje konkrétní pojmenovanou hodnotu. |
 > | Akce | Microsoft. ApiManagement/Service/namedValues/DELETE | Odstraní konkrétní pojmenovanou hodnotu z instance služby API Management. |
-> | Akce | Microsoft. ApiManagement/Service/namedValues/listSecrets/Action | Získá tajné kódy pojmenované hodnoty určené identifikátorem. |
+> | Akce | Microsoft. ApiManagement/Service/namedValues/listValue/Action | Získá tajný kód pojmenované hodnoty určené identifikátorem. |
 > |  | **Služba/NetworkStatus** |  |
 > | Akce | Microsoft. ApiManagement/Service/NetworkStatus/Read | Získá stav přístupu k síti prostředků, na kterých je služba závislá. |
 > |  | **Služba/oznámení** |  |
@@ -809,6 +808,18 @@ Služba Azure: [Automatizace](../automation/index.yml)
 > | Akce | Microsoft. Automation/automationAccounts/Nodes/Reports/Reports/Read | Přečte obsah sestavy Azure Automation DSC. |
 > |  | **automationAccounts/objectDataTypes/pole** |  |
 > | Akce | Microsoft.Automation/automationAccounts/objectDataTypes/fields/read | Získá Azure Automation TypeFields |
+> |  | **automationAccounts/privateEndpointConnectionProxies** |  |
+> | Akce | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/Read | Přečte Azure Automation proxy připojení privátního koncového bodu. |
+> | Akce | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/Write | Vytvoří proxy připojení privátního koncového bodu Azure Automation. |
+> | Akce | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/Validate/Action | Ověření žádosti o připojení privátního koncového bodu (ověření groupId) |
+> | Akce | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu Azure Automation |
+> |  | **automationAccounts/privateEndpointConnectionProxies/operationResults** |  |
+> | Akce | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/operationResults/Read | Získá Azure Automation výsledky operace proxy privátního koncového bodu. |
+> |  | **automationAccounts/privateEndpointConnections** |  |
+> | Akce | Microsoft. Automation/automationAccounts/privateEndpointConnections/Read | Získat stav připojení Azure Automation privátního koncového bodu |
+> | Akce | Microsoft. Automation/automationAccounts/privateEndpointConnections/Write | Schválení nebo odmítnutí připojení privátního koncového bodu Azure Automation |
+> |  | **automationAccounts/privateLinkResources** |  |
+> | Akce | Microsoft. Automation/automationAccounts/privateLinkResources/Read | Přečte informace o skupině pro soukromé koncové body. |
 > |  | **automationAccounts/python2Packages** |  |
 > | Akce | Microsoft. Automation/automationAccounts/python2Packages/Read | Získá Azure Automation balíček Python 2. |
 > | Akce | Microsoft. Automation/automationAccounts/python2Packages/Write | Vytvoří nebo aktualizuje balíček Azure Automation Python 2. |
@@ -910,6 +921,8 @@ Služba Azure: jádro
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.AzureStack/register/action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. AzureStack. |
+> |  | **cloudManifestFiles** |  |
+> | Akce | Microsoft. AzureStack/cloudManifestFiles/Read | Načte soubor manifestu cloudu. |
 > |  | **Provoz** |  |
 > | Akce | Microsoft.AzureStack/Operations/read | Získá vlastnosti operace poskytovatele prostředků. |
 > |  | **rozpoznávání** |  |
@@ -927,8 +940,6 @@ Služba Azure: jádro
 > | Akce | Microsoft. AzureStack/registrs/Products/GetProducts/Action | Načte seznam produktů Azure Stack Marketplace. |
 > | Akce | Microsoft. AzureStack/registrs/Products/getprodukt/Action | Načte produkt Azure Stack Marketplace. |
 > | Akce | Microsoft. AzureStack/registrs/Products/uploadProductLog/Action | Záznam Azure Stack stav a časové razítko produktu Marketplace |
-> |  | **verificationKeys** |  |
-> | Akce | Microsoft. AzureStack/verificationKeys/getCurrentKey/Action | Získá aktuální verzi Azure Stack podepsání veřejného klíče. |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -1010,6 +1021,7 @@ Služba Azure: [cost management + fakturace](../cost-management-billing/index.ym
 > | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/Write |  |
 > | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/Read |  |
 > | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/Write |  |
+> | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/Write |  |
 > |  | **billingAccounts/billingProfiles/billingPermissions** |  |
 > | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/billingPermissions/Read |  |
 > |  | **billingAccounts/billingProfiles/zákazníci** |  |
@@ -1019,6 +1031,7 @@ Služba Azure: [cost management + fakturace](../cost-management-billing/index.ym
 > |  | **billingAccounts/billingProfiles/invoiceSections** |  |
 > | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/invoiceSections/Write |  |
 > | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/invoiceSections/Read |  |
+> | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/invoiceSections/Write |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingPermissions** |  |
 > | Akce | Microsoft. fakturace/billingAccounts/billingProfiles/invoiceSections/billingPermissions/Read |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingSubscriptions** |  |
@@ -1263,14 +1276,6 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Akce | Microsoft. CDN/CheckNameAvailability/Action |  |
 > | Akce | Microsoft. CDN/ValidateProbe/Action |  |
 > | Akce | Microsoft. CDN/CheckResourceUsage/Action |  |
-> |  | **cdnwebapplicationfirewallmanagedrulesets** |  |
-> | Akce | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/Read |  |
-> | Akce | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/Write |  |
-> | Akce | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/DELETE |  |
-> |  | **cdnwebapplicationfirewallpolicies** |  |
-> | Akce | Microsoft. CDN/cdnwebapplicationfirewallpolicies/Read |  |
-> | Akce | Microsoft. CDN/cdnwebapplicationfirewallpolicies/Write |  |
-> | Akce | Microsoft. CDN/cdnwebapplicationfirewallpolicies/DELETE |  |
 > |  | **edgenodes** |  |
 > | Akce | Microsoft. CDN/edgenodes/Read |  |
 > | Akce | Microsoft. CDN/edgenodes/Write |  |
@@ -1279,10 +1284,6 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Akce | Microsoft. CDN/operationresults/Read |  |
 > | Akce | Microsoft. CDN/operationresults/Write |  |
 > | Akce | Microsoft.Cdn/operationresults/delete |  |
-> |  | **operationresults/cdnwebapplicationfirewallpolicyresults** |  |
-> | Akce | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/Read |  |
-> | Akce | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/Write |  |
-> | Akce | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/DELETE |  |
 > |  | **operationresults/profileresults** |  |
 > | Akce | Microsoft.Cdn/operationresults/profileresults/read |  |
 > | Akce | Microsoft.Cdn/operationresults/profileresults/write |  |
@@ -1306,6 +1307,10 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Akce | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/delete |  |
 > | Akce | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/DisableCustomHttps/action |  |
 > | Akce | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/EnableCustomHttps/action |  |
+> |  | **operationresults/profileresults/endpointresults/origingroupresults** |  |
+> | Akce | Microsoft. CDN/operationresults/profileresults/endpointresults/origingroupresults/Read |  |
+> | Akce | Microsoft. CDN/operationresults/profileresults/endpointresults/origingroupresults/Write |  |
+> | Akce | Microsoft. CDN/operationresults/profileresults/endpointresults/origingroupresults/DELETE |  |
 > |  | **operationresults/profileresults/endpointresults/originresults** |  |
 > | Akce | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/read |  |
 > | Akce | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/write |  |
@@ -1335,6 +1340,10 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Akce | Microsoft.Cdn/profiles/endpoints/customdomains/delete |  |
 > | Akce | Microsoft. CDN/Profiles/Endpoints/customdomains/DisableCustomHttps/Action |  |
 > | Akce | Microsoft.Cdn/profiles/endpoints/customdomains/EnableCustomHttps/action |  |
+> |  | **profily/koncové body/origingroups** |  |
+> | Akce | Microsoft. CDN/Profiles/Endpoints/origingroups/Read |  |
+> | Akce | Microsoft. CDN/Profiles/Endpoints/origingroups/Write |  |
+> | Akce | Microsoft. CDN/Profiles/Endpoints/origingroups/DELETE |  |
 > |  | **profily/koncové body/zdroje** |  |
 > | Akce | Microsoft. CDN/Profiles/koncových bodů/původu/čtení |  |
 > | Akce | Microsoft. CDN/Profiles/koncových bodů/origines/Write |  |
@@ -1756,6 +1765,7 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
+> | Akce | Microsoft.CognitiveServices/register/action | Akce registrace předplatného |
 > | Akce | Microsoft.CognitiveServices/register/action | Zaregistruje předplatné pro Cognitive Services. |
 > | Akce | Microsoft.CognitiveServices/checkDomainAvailability/action | Přečte dostupné SKU pro předplatné. |
 > | Akce | Microsoft.CognitiveServices/register/action | Zaregistruje předplatné pro Cognitive Services. |
@@ -2447,6 +2457,8 @@ Služba Azure: [Container Registry](../container-registry/index.yml)
 > | Akce | Microsoft.ContainerRegistry/registries/queueBuild/action | Vytvoří nové sestavení založené na parametrech žádosti a přidá je do fronty sestavení. |
 > | Akce | Microsoft.ContainerRegistry/registries/listBuildSourceUploadUrl/action | Získá umístění adresy URL pro nahrání zdroje pro registr kontejneru. |
 > | Akce | Microsoft.ContainerRegistry/registries/scheduleRun/action | Naplánování spuštění proti registru kontejneru. |
+> |  | **Registry/agentpools** |  |
+> | Akce | Microsoft. ContainerRegistry/Registry/agentpools/listQueueStatus/Action | Zobrazí seznam všech stavů fronty pro neznámá pro registr kontejnerů. |
 > |  | **Registry/artefakty** |  |
 > | Akce | Microsoft.ContainerRegistry/registries/artifacts/delete | Odstraňte artefakt v registru kontejnerů. |
 > |  | **Registry a sestavení** |  |
@@ -2510,6 +2522,8 @@ Služba Azure: [Container Registry](../container-registry/index.yml)
 > | Akce | Microsoft. ContainerRegistry/Registry/scopeMaps/operationStatuses/Read | Získá stav asynchronní operace mapování oboru. |
 > |  | **Registry a znaménko** |  |
 > | Akce | Microsoft.ContainerRegistry/registries/sign/write | Metadata vztahu důvěryhodnosti nabízených nebo vyžádaného obsahu pro registr kontejneru. |
+> |  | **Registry/taskruns** |  |
+> | Akce | Microsoft. ContainerRegistry/Registry/taskruns/listDetails/Action | Zobrazí seznam všech podrobností o Taskrun registru kontejneru. |
 > |  | **Registry/úlohy** |  |
 > | Akce | Microsoft.ContainerRegistry/registries/tasks/read | Načte úlohu pro registr kontejneru nebo seznam všech úkolů. |
 > | Akce | Microsoft.ContainerRegistry/registries/tasks/write | Vytvoří nebo aktualizuje úlohu pro registr kontejneru. |
@@ -2812,6 +2826,9 @@ Služba Azure: [Azure Databricks](../azure-databricks/index.yml)
 > | Akce | Microsoft. datacihly/pracovní prostory/odstranit | Odebere pracovní prostor datacihly. |
 > | Akce | Microsoft. datacihly/pracovní prostory/refreshPermissions/Action | Aktualizace oprávnění pro pracovní prostor |
 > | Akce | Microsoft. datacihly/pracovní prostory/updateDenyAssignment/Action | Aktualizace přiřazení zamítnutí akcí pro skupinu spravovaných prostředků pracovního prostoru |
+> | Akce | Microsoft. datacihly/pracovní prostory/refreshWorkspaces/Action | Aktualizuje pracovní prostor s novými podrobnostmi, jako je adresa URL. |
+> |  | **pracovní prostory/dbWorkspaces** |  |
+> | Akce | Microsoft. datacihly/pracovní prostory/dbWorkspaces/Write | Inicializuje pracovní prostor datacihly (jenom interní). |
 > |  | **pracovní prostory/poskytovatelé/Microsoft. Insights/diagnosticSettings** |  |
 > | Akce | Microsoft. datacihly/pracovní prostory/poskytovatelé/Microsoft. Insights/diagnosticSettings/Read | Nastaví dostupná nastavení diagnostiky pro pracovní prostor datacihly. |
 > | Akce | Microsoft. datacihly/pracovní prostory/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Write | Přidat nebo upravit nastavení diagnostiky. |
@@ -3470,7 +3487,7 @@ Služba Azure: [Azure Database for PostgreSQL](../postgresql/index.yml)
 > | Akce | Microsoft. DBforPostgreSQL/servery/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení disagnostic prostředku. |
 > | Akce | Microsoft. DBforPostgreSQL/servery/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
 > |  | **servery/poskytovatelé/Microsoft. Insights/logDefinitions** |  |
-> | Akce | Microsoft. DBforPostgreSQL/servery/zprostředkovatelé/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro Postgres servery. |
+> | Akce | Microsoft. DBforPostgreSQL/servery/zprostředkovatelé/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro PostgreSQL servery. |
 > |  | **servery/poskytovatelé/Microsoft. Insights/metricDefinitions** |  |
 > | Akce | Microsoft. DBforPostgreSQL/servery/zprostředkovatelé/Microsoft. Insights/metricDefinitions/Read | Návratové typy metrik, které jsou k dispozici pro databáze |
 > |  | **servery/queryTexts** |  |
@@ -3506,7 +3523,7 @@ Služba Azure: [Azure Database for PostgreSQL](../postgresql/index.yml)
 > | Akce | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení disagnostic prostředku. |
 > | Akce | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
 > |  | **serversv2/Providers/Microsoft. Insights/logDefinitions** |  |
-> | Akce | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro Postgres servery. |
+> | Akce | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro PostgreSQL servery. |
 > |  | **serversv2/Providers/Microsoft. Insights/metricDefinitions** |  |
 > | Akce | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. Insights/metricDefinitions/Read | Návratové typy metrik, které jsou k dispozici pro databáze |
 
@@ -3597,6 +3614,7 @@ Služba Azure: [IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning Ser
 > | Akce | Microsoft. Devices/iotHubs/klíče listkey/Action | Získat všechny IotHub klíče |
 > | Akce | Microsoft. Devices/iotHubs/exportDevices/Action | Exportovat zařízení |
 > | Akce | Microsoft. Devices/iotHubs/importDevices/Action | Importovat zařízení |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnectionsApproval/Action | Schválení nebo zamítnutí připojení privátního koncového bodu |
 > |  | **iotHubs/certifikáty** |  |
 > | Akce | Microsoft. Devices/iotHubs/Certificates/Read | Získá certifikát. |
 > | Akce | Microsoft. Devices/iotHubs/Certificates/Write | Vytvořit nebo aktualizovat certifikát |
@@ -3611,6 +3629,10 @@ Služba Azure: [IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning Ser
 > |  | **IotHubs/diagnosticSettings** |  |
 > | Akce | Microsoft. Devices/IotHubs/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
 > | Akce | Microsoft. Devices/IotHubs/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> |  | **iotHubs/digitalTwinsLinks** |  |
+> | Akce | Microsoft. Devices/iotHubs/digitalTwinsLinks/Write |  |
+> | Akce | Microsoft. Devices/iotHubs/digitalTwinsLinks/Read |  |
+> | Akce | Microsoft. Devices/iotHubs/digitalTwinsLinks/DELETE |  |
 > |  | **iotHubs/eventGridFilters** |  |
 > | Akce | Microsoft. Devices/iotHubs/eventGridFilters/Write | Vytvořit nový nebo aktualizovat existující filtr Event Grid |
 > | Akce | Microsoft.Devices/iotHubs/eventGridFilters/Read | Získá filtr Event Grid. |
@@ -3631,6 +3653,21 @@ Služba Azure: [IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning Ser
 > | Akce | Microsoft. Devices/IotHubs/metricDefinitions/Read | Získá dostupné metriky pro službu IotHub. |
 > |  | **iotHubs/operationresults** |  |
 > | Akce | Microsoft. Devices/iotHubs/operationresults/Read | Výsledek operace Get (zastaralé rozhraní API) |
+> |  | **iotHubs/privateEndpointConnectionProxies** |  |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/Validate/Action | Ověří vstup proxy privátního připojení ke koncovému bodu během vytváření. |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/Read | Získá vlastnosti zadaného proxy připojení privátního koncového bodu. |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/Write | Vytvoří nebo aktualizuje proxy připojení privátního koncového bodu. |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/DELETE | Odstraní existující proxy připojení privátního koncového bodu. |
+> |  | **iotHubs/privateEndpointConnectionProxies/operationResults** |  |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/operationResults/Read | Získat výsledek asynchronní operace na proxy připojení privátního koncového bodu |
+> |  | **iotHubs/privateEndpointConnections** |  |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnections/Read | Získá vlastnosti zadaného připojení privátního koncového bodu. |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnections/DELETE | Odstraní existující připojení privátního koncového bodu. |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnections/Write | Vytvoří nebo aktualizuje připojení privátního koncového bodu. |
+> |  | **iotHubs/privateEndpointConnections/operationResults** |  |
+> | Akce | Microsoft. Devices/iotHubs/privateEndpointConnections/operationResults/Read | Získat výsledek asynchronní operace na připojení privátního koncového bodu |
+> |  | **iotHubs/privateLinkResources** |  |
+> | Akce | Microsoft. Devices/iotHubs/privateLinkResources/Read | Načte prostředky privátního propojení pro IotHub. |
 > |  | **iotHubs/quotaMetrics** |  |
 > | Akce | Microsoft. Devices/iotHubs/quotaMetrics/Read | Získat metriky kvóty |
 > |  | **iotHubs/Routing** |  |
@@ -4121,6 +4158,17 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > | Akce | Microsoft. EventGrid/domén/DELETE | Odstranění domény |
 > | Akce | Microsoft. EventGrid/domény/klíče listkey/Action | Seznam klíčů pro doménu |
 > | Akce | Microsoft.EventGrid/domains/regenerateKey/action | Znovu vygenerovat klíč pro doménu |
+> |  | **domény/privateEndpointConnectionProxies** |  |
+> | Akce | Microsoft. EventGrid/domény/privateEndpointConnectionProxies/ověřit/akce | Ověřit PrivateEndpointConnectionProxies pro domény |
+> | Akce | Microsoft. EventGrid/doméns/privateEndpointConnectionProxies/Read | Číst PrivateEndpointConnectionProxies pro domény |
+> | Akce | Microsoft. EventGrid/domény/privateEndpointConnectionProxies/Write | Zápis PrivateEndpointConnectionProxies pro domény |
+> | Akce | Microsoft. EventGrid/domény/privateEndpointConnectionProxies/DELETE | Odstranit PrivateEndpointConnectionProxies pro domény |
+> |  | **domény/privateEndpointConnections** |  |
+> | Akce | Microsoft. EventGrid/doméns/privateEndpointConnections/Read | Číst PrivateEndpointConnections pro domény |
+> | Akce | Microsoft. EventGrid/domény/privateEndpointConnections/Write | Zápis PrivateEndpointConnections pro domény |
+> | Akce | Microsoft. EventGrid/domény/privateEndpointConnections/DELETE | Odstranit PrivateEndpointConnections pro domény |
+> |  | **domény/privateLinkResources** |  |
+> | Akce | Microsoft. EventGrid/doméns/privateLinkResources/Read | Získá nebo zobrazí seznam PrivateLinkResources pro domény. |
 > |  | **domény/zprostředkovatelé/Microsoft. Insights/logDefinitions** |  |
 > | Akce | Microsoft. EventGrid/doméns/Providers/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
 > |  | **domény/zprostředkovatelé/Microsoft. Insights/metricDefinitions** |  |
@@ -4160,12 +4208,56 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > | Akce | Microsoft.EventGrid/operations/read | Vypíše EventGrid operace. |
 > |  | **operationsStatus** |  |
 > | Akce | Microsoft.EventGrid/operationsStatus/read | Přečtěte si stav operace. |
+> |  | **partnerNamespaces** |  |
+> | Akce | Microsoft. EventGrid/partnerNamespaces/Write | Vytvoří nebo aktualizuje obor názvů partnera. |
+> | Akce | Microsoft. EventGrid/partnerNamespaces/Read | Přečíst partnerský obor názvů |
+> | Akce | Microsoft. EventGrid/partnerNamespaces/DELETE | Odstranit obor názvů partnera |
+> | Akce | Microsoft. EventGrid/partnerNamespaces/klíče listkey/Action | Seznam klíčů pro partnerský obor názvů |
+> | Akce | Microsoft. EventGrid/partnerNamespaces/regenerateKey/Action | Znovu vygenerovat klíč pro obor názvů partnera |
+> |  | **partnerNamespaces/eventChannels** |  |
+> | Akce | Microsoft. EventGrid/partnerNamespaces/eventChannels/Read | Čtení kanálu událostí |
+> | Akce | Microsoft. EventGrid/partnerNamespaces/eventChannels/Write | Vytvoření nebo aktualizace kanálu událostí |
+> | Akce | Microsoft. EventGrid/partnerNamespaces/eventChannels/DELETE | Odstranění kanálu událostí |
+> |  | **partnerRegistrations** |  |
+> | Akce | Microsoft. EventGrid/partnerRegistrations/Write | Vytvořit nebo aktualizovat registraci partnera |
+> | Akce | Microsoft. EventGrid/partnerRegistrations/Read | Přečíst registraci partnera |
+> | Akce | Microsoft. EventGrid/partnerRegistrations/DELETE | Odstranit registraci partnera |
+> |  | **partnerTopics** |  |
+> | Akce | Microsoft. EventGrid/partnerTopics/Read | Přečtěte si téma partnera. |
+> | Akce | Microsoft. EventGrid/partnerTopics/Write | Vytvořit nebo aktualizovat téma partnera |
+> | Akce | Microsoft. EventGrid/partnerTopics/DELETE | Odstranění partnerského tématu |
+> | Akce | Microsoft. EventGrid/partnerTopics/Activate/Action | Aktivovat téma partnera |
+> | Akce | Microsoft. EventGrid/partnerTopics/deaktivovat/Action | Deaktivovat téma partnera |
+> |  | **skladové** |  |
+> | Akce | Microsoft. EventGrid/SKU/číst | Číst dostupné definice SKU pro prostředky služby Event Grid |
+> |  | **systemTopics** |  |
+> | Akce | Microsoft. EventGrid/systemTopics/Read | Přečíst systémové téma |
+> | Akce | Microsoft. EventGrid/systemTopics/Write | Vytvořit nebo aktualizovat systémové téma |
+> | Akce | Microsoft. EventGrid/systemTopics/DELETE | Odstranit systémové téma |
+> |  | **systemTopics/Providers/Microsoft. Insights/diagnosticSettings** |  |
+> | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro systémová témata. |
+> | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro systémová témata. |
+> |  | **systemTopics/Providers/Microsoft. Insights/logDefinitions** |  |
+> | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
+> |  | **systemTopics/Providers/Microsoft. Insights/metricDefinitions** |  |
+> | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro systémová témata. |
 > |  | **popisující** |  |
 > | Akce | Microsoft.EventGrid/topics/write | Vytvoří nebo aktualizuje téma. |
 > | Akce | Microsoft. EventGrid/témata/číst | Přečtěte si téma. |
 > | Akce | Microsoft. EventGrid/témata/DELETE | Odstranění tématu |
 > | Akce | Microsoft.EventGrid/topics/listKeys/action | Seznam klíčů pro téma |
 > | Akce | Microsoft.EventGrid/topics/regenerateKey/action | Znovu vygenerovat klíč pro téma |
+> |  | **témata/privateEndpointConnectionProxies** |  |
+> | Akce | Microsoft. EventGrid/témata/privateEndpointConnectionProxies/ověřit/akci | Ověřit PrivateEndpointConnectionProxies pro témata |
+> | Akce | Microsoft. EventGrid/témata/privateEndpointConnectionProxies/číst | Přečíst PrivateEndpointConnectionProxies pro témata |
+> | Akce | Microsoft. EventGrid/témata/privateEndpointConnectionProxies/Write | Zápis PrivateEndpointConnectionProxies pro témata |
+> | Akce | Microsoft. EventGrid/témata/privateEndpointConnectionProxies/DELETE | Odstranit PrivateEndpointConnectionProxies pro témata |
+> |  | **témata/privateEndpointConnections** |  |
+> | Akce | Microsoft. EventGrid/témata/privateEndpointConnections/číst | Přečíst PrivateEndpointConnections pro témata |
+> | Akce | Microsoft. EventGrid/témata/privateEndpointConnections/Write | Zápis PrivateEndpointConnections pro témata |
+> | Akce | Microsoft. EventGrid/témata/privateEndpointConnections/DELETE | Odstranit PrivateEndpointConnections pro témata |
+> |  | **témata/privateLinkResources** |  |
+> | Akce | Microsoft. EventGrid/témata/privateLinkResources/číst | Přečíst PrivateLinkResources pro témata |
 > |  | **témata/poskytovatelé/Microsoft. Insights/diagnosticSettings** |  |
 > | Akce | Microsoft. EventGrid/témata/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro témata. |
 > | Akce | Microsoft. EventGrid/témata/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro témata. |
@@ -4259,6 +4351,11 @@ Služba Azure: [Event Hubs](../event-hubs/index.yml)
 > | Akce | Microsoft. EventHub/obory názvů/networkrulesets/DELETE | Odstranit prostředek pravidla virtuální sítě |
 > |  | **obory názvů/operationresults** |  |
 > | Akce | Microsoft. EventHub/obory názvů/operationresults/Read | Získat stav operace oboru názvů |
+> |  | **obory názvů/privateEndpointConnectionProxies** |  |
+> | Akce | Microsoft. EventHub/obory názvů/privateEndpointConnectionProxies/ověřit/akce | Ověřit proxy server připojení privátního koncového bodu |
+> | Akce | Microsoft. EventHub/obory názvů/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
+> | Akce | Microsoft. EventHub/obory názvů/privateEndpointConnectionProxies/Write | Vytvořit proxy připojení privátního koncového bodu |
+> | Akce | Microsoft. EventHub/obory názvů/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu |
 > |  | **obory názvů/zprostředkovatelé/Microsoft. Insights/diagnosticSettings** |  |
 > | Akce | Microsoft. EventHub/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Akce | Microsoft. EventHub/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Write | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
@@ -4885,6 +4982,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft. Insights/myWorkbooks/Read | Čtení soukromého sešitu |
 > |  | **Provoz** |  |
 > | Akce | Microsoft. Insights/Operations/Read | Operace čtení |
+> |  | **PrivateLinkScopeOperationStatuses** |  |
+> | Akce | Microsoft. Insights/PrivateLinkScopeOperationStatuses/Read | Čtení stavu operace s rozsahem privátního propojení |
 > |  | **PrivateLinkScopes** |  |
 > | Akce | Microsoft. Insights/PrivateLinkScopes/Read | Čtení oboru privátního odkazu |
 > | Akce | Microsoft. Insights/PrivateLinkScopes/Write | Vytvoří nebo aktualizuje obor privátního odkazu. |
@@ -5630,6 +5729,7 @@ Služba Azure: jádro
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft. Marketplace/registrace/akce | Zaregistruje poskytovatele prostředků Microsoft. Marketplace v předplatném. |
+> | Akce | Microsoft. Marketplace/privateStores/Action | Aktualizuje PrivateStore. |
 > |  | **offerTypes/vydavatelé/nabídky/plány/smlouvy** |  |
 > | Akce | Microsoft. Marketplace/offerTypes/vydavatelé/nabídky/plány/smlouvy/číst | Vrátí smlouvu. |
 > | Akce | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/write | Přijímá podepsané smlouvy. |
@@ -5637,6 +5737,13 @@ Služba Azure: jádro
 > | Akce | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/read | Vrátí konfiguraci. |
 > | Akce | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/write | Uloží konfiguraci. |
 > | Akce | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/importImage/action | Importuje obrázek do ACR koncového uživatele. |
+> |  | **privateStores** |  |
+> | Akce | Microsoft. Marketplace/privateStores/Write | Vytvoří PrivateStore. |
+> | Akce | Microsoft. Marketplace/privateStores/DELETE | Odstraní PrivateStore. |
+> | Akce | Microsoft. Marketplace/privateStores/nabídky/Action | Nabízí aktualizace v PrivateStore. |
+> |  | **privateStores/nabídky** |  |
+> | Akce | Microsoft. Marketplace/privateStores/nabídky/zápis | Vytvoří nabídku v PrivateStore. |
+> | Akce | Microsoft. Marketplace/privateStores/nabídky/DELETE | Odstraní nabídku z PrivateStore. |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -5988,6 +6095,10 @@ Služba Azure: [Virtual Network](../virtual-network/index.yml), [Load Balancer](
 > | Akce | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/read | Načte zásady Application Gateway WAF. |
 > | Akce | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/write | Vytvoří Application Gateway zásady WAF nebo aktualizuje zásady Application Gateway WAF. |
 > | Akce | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/delete | Odstraní zásady Application Gateway WAF. |
+> |  | **applicationRuleCollections** |  |
+> | Akce | Microsoft. Network/applicationRuleCollections/Read | Získá Azure Firewall ApplicationRuleCollection |
+> | Akce | Microsoft. Network/applicationRuleCollections/Write | CreatesOrUpdates Azure Firewall ApplicationRuleCollection |
+> | Akce | Microsoft. Network/applicationRuleCollections/DELETE | Odstraní Azure Firewall ApplicationRuleCollection |
 > |  | **applicationSecurityGroups** |  |
 > | Akce | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | Připojí konfiguraci protokolu IP ke skupinám zabezpečení aplikace. Nelze upozorňovat. |
 > | Akce | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Spojí pravidlo zabezpečení se skupinami zabezpečení aplikací. Nelze upozorňovat. |
@@ -6259,6 +6370,22 @@ Služba Azure: [Virtual Network](../virtual-network/index.yml), [Load Balancer](
 > | Akce | Microsoft. Network/umístění/použití/čtení | Získá metriky využití prostředků. |
 > |  | **umístění/virtualNetworkAvailableEndpointServices** |  |
 > | Akce | Microsoft. Network/Locations/virtualNetworkAvailableEndpointServices/Read | Načte seznam dostupných Virtual Network služeb koncového bodu. |
+> |  | **natRuleCollections** |  |
+> | Akce | Microsoft. Network/natRuleCollections/Read | Získá Azure Firewall NatRuleCollection |
+> | Akce | Microsoft. Network/natRuleCollections/Write | CreatesOrUpdates Azure Firewall NatRuleCollection |
+> | Akce | Microsoft. Network/natRuleCollections/DELETE | Odstraní Azure Firewall NatRuleCollection |
+> |  | **networkExperimentProfiles** |  |
+> | Akce | Microsoft. Network/networkExperimentProfiles/Read | Získat profil pro Internet Analyzer |
+> | Akce | Microsoft. Network/networkExperimentProfiles/Write | Vytvořit nebo aktualizovat profil nástroje Internet Analyzer |
+> | Akce | Microsoft. Network/networkExperimentProfiles/DELETE | Odstranit profil nástroje Internet Analyzer |
+> |  | **networkExperimentProfiles/experimenty** |  |
+> | Akce | Microsoft. Network/networkExperimentProfiles/Experiments/Read | Získat test na Internet Analyzer |
+> | Akce | Microsoft. Network/networkExperimentProfiles/Experiments/Write | Vytvořit nebo aktualizovat test na Internet Analyzer |
+> | Akce | Microsoft. Network/networkExperimentProfiles/Experiments/DELETE | Odstranění testu pro Internet Analyzer |
+> | Akce | Microsoft. Network/networkExperimentProfiles/Experiments/časové řady/Action | Získání časové řady testů Internet Analyzer |
+> | Akce | Microsoft. Network/networkExperimentProfiles/Experiments/latencyScorecard/Action | Získání přehledu o latenci testu Internet Analyzer |
+> |  | **networkExperimentProfiles/preconfiguredEndpoints** |  |
+> | Akce | Microsoft. Network/networkExperimentProfiles/preconfiguredEndpoints/Read | Získat předem nakonfigurované koncové body profilu Internet Analyzer |
 > |  | **networkIntentPolicies** |  |
 > | Akce | Microsoft.Network/networkIntentPolicies/read | Získá popis zásady záměru sítě. |
 > | Akce | Microsoft.Network/networkIntentPolicies/write | Vytvoří zásadu záměru sítě nebo aktualizuje stávající zásady záměru sítě. |
@@ -6287,6 +6414,10 @@ Služba Azure: [Virtual Network](../virtual-network/index.yml), [Load Balancer](
 > | Akce | Microsoft. Network/networkProfiles/setContainers/Action | Nastaví kontejnery. |
 > | Akce | Microsoft.Network/networkProfiles/removeContainers/action | Odebere kontejnery. |
 > | Akce | Microsoft.Network/networkProfiles/setNetworkInterfaces/action | Nastaví síťová rozhraní kontejneru. |
+> |  | **networkRuleCollections** |  |
+> | Akce | Microsoft. Network/networkRuleCollections/Read | Získá Azure Firewall NetworkRuleCollection |
+> | Akce | Microsoft. Network/networkRuleCollections/Write | CreatesOrUpdates Azure Firewall NetworkRuleCollection |
+> | Akce | Microsoft. Network/networkRuleCollections/DELETE | Odstraní Azure Firewall NetworkRuleCollection |
 > |  | **networkSecurityGroups** |  |
 > | Akce | Microsoft.Network/networkSecurityGroups/read | Získá definici skupiny zabezpečení sítě. |
 > | Akce | Microsoft.Network/networkSecurityGroups/write | Vytvoří skupinu zabezpečení sítě nebo aktualizuje existující skupinu zabezpečení sítě. |
@@ -7030,6 +7161,18 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ADFActivityRun/read | Čtení dat z tabulky ADFActivityRun |
 > |  | **pracovní prostory/dotazy/ADFPipelineRun** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ADFPipelineRun/read | Čtení dat z tabulky ADFPipelineRun |
+> |  | **pracovní prostory/dotazy/ADFSSISIntegrationRuntimeLogs** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFSSISIntegrationRuntimeLogs/číst | Čtení dat z tabulky ADFSSISIntegrationRuntimeLogs |
+> |  | **pracovní prostory/dotazy/ADFSSISPackageEventMessageContext** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFSSISPackageEventMessageContext/číst | Čtení dat z tabulky ADFSSISPackageEventMessageContext |
+> |  | **pracovní prostory/dotazy/ADFSSISPackageEventMessages** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFSSISPackageEventMessages/číst | Čtení dat z tabulky ADFSSISPackageEventMessages |
+> |  | **pracovní prostory/dotazy/ADFSSISPackageExecutableStatistics** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFSSISPackageExecutableStatistics/číst | Čtení dat z tabulky ADFSSISPackageExecutableStatistics |
+> |  | **pracovní prostory/dotazy/ADFSSISPackageExecutionComponentPhases** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFSSISPackageExecutionComponentPhases/číst | Čtení dat z tabulky ADFSSISPackageExecutionComponentPhases |
+> |  | **pracovní prostory/dotazy/ADFSSISPackageExecutionDataStatistics** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFSSISPackageExecutionDataStatistics/číst | Čtení dat z tabulky ADFSSISPackageExecutionDataStatistics |
 > |  | **pracovní prostory/dotazy/ADFTriggerRun** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ADFTriggerRun/read | Čtení dat z tabulky ADFTriggerRun |
 > |  | **pracovní prostory/dotazy/ADReplicationResult** |  |
@@ -7052,14 +7195,30 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AmlComputeJobEvent/číst | Čtení dat z tabulky AmlComputeJobEvent |
 > |  | **pracovní prostory/dotazy/ApiManagementGatewayLogs** |  |
 > | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/ApiManagementGatewayLogs/číst | Čtení dat z tabulky ApiManagementGatewayLogs |
+> |  | **pracovní prostory/dotazy/AppAvailabilityResults** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppAvailabilityResults/číst | Čtení dat z tabulky AppAvailabilityResults |
+> |  | **pracovní prostory/dotazy/AppBrowserTimings** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppBrowserTimings/číst | Čtení dat z tabulky AppBrowserTimings |
 > |  | **pracovní prostory/dotazy/AppCenterError** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | Čtení dat z tabulky AppCenterError |
+> |  | **pracovní prostory/dotazy/AppDependencies** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppDependencies/číst | Čtení dat z tabulky AppDependencies |
+> |  | **pracovní prostory/dotazy/AppEvents** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppEvents/číst | Čtení dat z tabulky AppEvents |
 > |  | **pracovní prostory/dotazy/ApplicationInsights** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | Čtení dat z tabulky ApplicationInsights |
+> |  | **pracovní prostory/dotazy/AppMetrics** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppMetrics/číst | Čtení dat z tabulky AppMetrics |
+> |  | **pracovní prostory/dotazy/AppPageViews** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppPageViews/číst | Čtení dat z tabulky AppPageViews |
+> |  | **pracovní prostory/dotazy/AppPerformanceCounters** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppPerformanceCounters/číst | Čtení dat z tabulky AppPerformanceCounters |
 > |  | **pracovní prostory/dotazy/AppPlatformLogsforSpring** |  |
 > | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppPlatformLogsforSpring/číst | Čtení dat z tabulky AppPlatformLogsforSpring |
 > |  | **pracovní prostory/dotazy/AppPlatformSystemLogs** |  |
 > | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppPlatformSystemLogs/číst | Čtení dat z tabulky AppPlatformSystemLogs |
+> |  | **pracovní prostory/dotazy/AppRequests** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppRequests/číst | Čtení dat z tabulky AppRequests |
 > |  | **pracovní prostory/dotazy/AppServiceAppLogs** |  |
 > | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppServiceAppLogs/číst | Čtení dat z tabulky AppServiceAppLogs |
 > |  | **pracovní prostory/dotazy/AppServiceAuditLogs** |  |
@@ -7072,6 +7231,10 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppServiceFileAuditLogs/číst | Čtení dat z tabulky AppServiceFileAuditLogs |
 > |  | **pracovní prostory/dotazy/AppServiceHTTPLogs** |  |
 > | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppServiceHTTPLogs/číst | Čtení dat z tabulky AppServiceHTTPLogs |
+> |  | **pracovní prostory/dotazy/AppSystemEvents** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppSystemEvents/číst | Čtení dat z tabulky AppSystemEvents |
+> |  | **pracovní prostory/dotazy/AppTraces** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppTraces/číst | Čtení dat z tabulky AppTraces |
 > |  | **pracovní prostory/dotazy/AuditLogs** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | Čtení dat z tabulky AuditLogs |
 > |  | **pracovní prostory/dotazy/AutoscaleEvaluationsLog** |  |
@@ -7086,6 +7249,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | Čtení dat z tabulky AzureActivity |
 > |  | **pracovní prostory/dotazy/AzureAssessmentRecommendation** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/AzureAssessmentRecommendation/read | Čtení dat z tabulky AzureAssessmentRecommendation |
+> |  | **pracovní prostory/dotazy/AzureDiagnostics** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/AzureDiagnostics/číst | Čtení dat z tabulky AzureDiagnostics |
 > |  | **pracovní prostory/dotazy/AzureMetrics** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | Čtení dat z tabulky AzureMetrics |
 > |  | **pracovní prostory/dotazy/BaiClusterEvent** |  |
@@ -7424,6 +7589,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft.OperationalInsights/workspaces/query/SPAssessmentRecommendation/read | Čtení dat z tabulky SPAssessmentRecommendation |
 > |  | **pracovní prostory/dotazy/SQLAssessmentRecommendation** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/SQLAssessmentRecommendation/read | Čtení dat z tabulky SQLAssessmentRecommendation |
+> |  | **pracovní prostory/dotazy/SqlDataClassification** |  |
+> | Akce | Microsoft. OperationalInsights/pracovní prostory/dotazy/SqlDataClassification/číst | Čtení dat z tabulky SqlDataClassification |
 > |  | **pracovní prostory/dotazy/SQLQueryPerformance** |  |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | Čtení dat z tabulky SQLQueryPerformance |
 > |  | **pracovní prostory/dotazy/SqlThreatProtectionLoginAudits** |  |
@@ -7527,7 +7694,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft.OperationalInsights/workspaces/savedSearches/write | Vytvoří uložený vyhledávací dotaz. |
 > | Akce | Microsoft.OperationalInsights/workspaces/savedSearches/delete | Odstraní uložený vyhledávací dotaz. |
 > |  | **pracovní prostory/savedsearches/výsledky** |  |
-> | Akce | microsoft.operationalinsights/workspaces/savedsearches/results/read | Získání výsledků uložených hledání Zastaralé |
+> | Akce | microsoft.operationalinsights/workspaces/savedsearches/results/read | Získání výsledků uložených hledání Nepoužívané |
 > |  | **pracovní prostory/savedsearches/plány** |  |
 > | Akce | microsoft.operationalinsights/workspaces/savedsearches/schedules/read | Získat naplánovaná hledání. |
 > | Akce | microsoft.operationalinsights/workspaces/savedsearches/schedules/delete | Odstranění naplánovaných hledání. |
@@ -7784,6 +7951,21 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > |  | **Trezory/monitoringConfigurations** |  |
 > | Akce | Microsoft. RecoveryServices/trezory/monitoringConfigurations/Read | Získá konfiguraci oznámení trezoru služby Recovery Services. |
 > | Akce | Microsoft. RecoveryServices/trezory/monitoringConfigurations/Write | Nakonfiguruje e-mailová oznámení pro trezor služby Recovery Services. |
+> |  | **Trezory/privateEndpointConnectionProxies** |  |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/DELETE | Získat všechny chráněné kontejnery |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/Read | Získat všechny chráněné kontejnery |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/ověřit/akci | Získat všechny chráněné kontejnery |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/Write | Získat všechny chráněné kontejnery |
+> |  | **Trezory/privateEndpointConnectionProxies/operationResults** |  |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/operationResults/Read | Získat všechny chráněné kontejnery |
+> |  | **Trezory/privateEndpointConnectionProxies/operationsStatus** |  |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/operationsStatus/Read | Získat všechny chráněné kontejnery |
+> |  | **Trezory/privateEndpointConnections** |  |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnections/Write | Získat všechny chráněné kontejnery |
+> |  | **Trezory/privateEndpointConnections/operationResults** |  |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnections/operationResults/Read | Získat všechny chráněné kontejnery |
+> |  | **Trezory/privateEndpointConnections/operationsStatus** |  |
+> | Akce | Microsoft. recoveryservices/trezory/privateEndpointConnections/operationsStatus/Read | Získat všechny chráněné kontejnery |
 > |  | **Trezory/registeredIdentities** |  |
 > | Akce | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Operaci kontejneru registrovat službu lze použít k registraci kontejneru pomocí služby Recovery Services. |
 > | Akce | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
@@ -7843,7 +8025,7 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Akce | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/DELETE | Odstranit všechny chráněné položky |
 > | Akce | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/Remove/Action | Odebrat chráněnou položku |
 > | Akce | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/Action | Plánované převzetí služeb při selhání |
-> | Akce | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
+> | Akce | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Při selhání |
 > | Akce | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
 > | Akce | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
 > | Akce | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/Action | Potvrzení převzetí služeb při selhání |
@@ -8008,6 +8190,11 @@ Služba Azure: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 > | Akce | Microsoft. Relay/obory názvů/networkrulesets/DELETE | Odstranit prostředek pravidla virtuální sítě |
 > |  | **obory názvů/operationresults** |  |
 > | Akce | Microsoft. Relay/obory názvů/operationresults/Read | Získat stav operace oboru názvů |
+> |  | **obory názvů/privateEndpointConnectionProxies** |  |
+> | Akce | Microsoft. Relay/obory názvů/privateEndpointConnectionProxies/ověřit/akci | Ověřit proxy server připojení privátního koncového bodu |
+> | Akce | Microsoft. Relay/obory názvů/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
+> | Akce | Microsoft. Relay/obory názvů/privateEndpointConnectionProxies/Write | Vytvořit proxy připojení privátního koncového bodu |
+> | Akce | Microsoft. Relay/obory názvů/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu |
 > |  | **obory názvů/zprostředkovatelé/Microsoft. Insights/diagnosticSettings** |  |
 > | Akce | Microsoft. Relay/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Akce | Microsoft. Relay/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Write | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
@@ -8043,6 +8230,8 @@ Služba Azure: [Azure Service Health](../service-health/index.yml)
 > | Akce | Microsoft.ResourceHealth/AvailabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
 > |  | **AvailabilityStatuses/aktuální** |  |
 > | Akce | Microsoft.ResourceHealth/AvailabilityStatuses/current/read | Získá stav dostupnosti pro zadaný prostředek. |
+> |  | **emergingissues** |  |
+> | Akce | Microsoft. ResourceHealth/emergingissues/Read | Získejte nově vznikající problémy služeb Azure |
 > |  | **událost** |  |
 > | Akce | Microsoft. ResourceHealth/Events/Read | Získat Service Health události pro dané předplatné |
 > |  | **healthevent** |  |
@@ -8216,6 +8405,9 @@ Služba Azure: [Security Center](../security-center/index.yml)
 > |  | **posouzení** |  |
 > | Akce | Microsoft. Security/Assessments/Read | Získat vyhodnocení zabezpečení u předplatného |
 > | Akce | Microsoft. Security/Assessments/Write | Vytvořit nebo aktualizovat posouzení zabezpečení u předplatného |
+> |  | **autoProvisioningSettings** |  |
+> | Akce | Microsoft. Security/autoProvisioningSettings/Read | Získat nastavení automatického zřizování zabezpečení pro předplatné |
+> | Akce | Microsoft. Security/autoProvisioningSettings/Write | Vytvořit nebo aktualizovat nastavení automatického zřizování zabezpečení pro předplatné |
 > |  | **complianceResults** |  |
 > | Akce | Microsoft. Security/complianceResults/Read | Získá výsledky dodržování předpisů pro daný prostředek. |
 > |  | **informationProtectionPolicies** |  |
@@ -8406,6 +8598,11 @@ Služba Azure: [Service Bus](../service-bus/index.md)
 > | Akce | Microsoft. ServiceBus/obory názvů/networkrulesets/DELETE | Odstranit prostředek pravidla virtuální sítě |
 > |  | **obory názvů/operationresults** |  |
 > | Akce | Microsoft. ServiceBus/obory názvů/operationresults/Read | Získat stav operace oboru názvů |
+> |  | **obory názvů/privateEndpointConnectionProxies** |  |
+> | Akce | Microsoft. ServiceBus/obory názvů/privateEndpointConnectionProxies/ověřit/akci | Ověřit proxy server připojení privátního koncového bodu |
+> | Akce | Microsoft. ServiceBus/obory názvů/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
+> | Akce | Microsoft. ServiceBus/obory názvů/privateEndpointConnectionProxies/Write | Vytvořit proxy připojení privátního koncového bodu |
+> | Akce | Microsoft. ServiceBus/obory názvů/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu |
 > |  | **obory názvů/zprostředkovatelé/Microsoft. Insights/diagnosticSettings** |  |
 > | Akce | Microsoft. ServiceBus/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Akce | Microsoft. ServiceBus/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Write | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |

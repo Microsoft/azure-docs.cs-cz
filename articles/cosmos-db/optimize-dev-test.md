@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: d2ca7b7e4b637802df6a78c2493e3cc088f09881
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673342"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246679"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimalizujte náklady na vývoj a testování v Azure Cosmos DB
 

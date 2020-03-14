@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378097"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263878"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování cloudového nasazení Azure Multi-Factor Authentication
 
@@ -228,10 +228,10 @@ Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure
 1. V části **Uživatelé a skupiny**:
    * Na kartě **Zahrnout** klikněte na přepínač **Všichni uživatelé** .
    * Na kartě **vyloučit** zaškrtněte políčko pro **uživatele a skupiny** a vyberte účty pro nouzový přístup.
-   * Klikněte na **Done** (Hotovo).
+   * Klikněte na **Hotovo**.
 1. V části **cloudové aplikace**vyberte přepínač **všechny cloudové aplikace** .
    * Volitelně: na kartě **vyloučit** vyberte cloudové aplikace, pro které vaše organizace nevyžaduje MFA.
-   * Klikněte na **Done** (Hotovo).
+   * Klikněte na **Hotovo**.
 1. Oddíl **podmínky** :
    * Volitelně: Pokud jste povolili Azure Identity Protection, můžete v rámci této zásady vyhodnotit riziko přihlášení.
    * Volitelně: Pokud jste nakonfigurovali důvěryhodná umístění nebo pojmenovaná umístění, můžete určit, jestli se mají tato umístění zahrnout nebo vyloučit ze zásad.

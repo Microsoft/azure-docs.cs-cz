@@ -4,11 +4,11 @@ description: Naučte se, jak začlenit správu delegovaných prostředků do Azu
 ms.date: 10/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394018"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270638"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Nasazení zásady, která se dá opravit v rámci delegovaného předplatného
 

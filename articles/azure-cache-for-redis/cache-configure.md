@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356440"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278737"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -250,7 +250,7 @@ Okno **geografické replikace** poskytuje mechanismus pro propojení dvě mezipa
 >
 >
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Virtuální síť
 Část **Virtual Network** vám umožní nakonfigurovat nastavení virtuální sítě pro mezipaměť. Informace o vytvoření mezipaměti Premium s podporou virtuální sítě a aktualizaci nastavení najdete v článku [jak nakonfigurovat Virtual Network podporu pro službu Azure cache Premium pro Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -307,14 +307,14 @@ Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis do sou
 >
 >
 
-### <a name="reboot"></a>Restartování
+### <a name="reboot"></a>Restartovat
 Okno **restartování** vám umožní restartovat uzly mezipaměti. Tato schopnost restartování umožňuje testovat aplikaci, aby byla odolná proti chybám, pokud dojde k selhání uzlu mezipaměti.
 
-![Restartování](./media/cache-configure/redis-cache-reboot.png)
+![Restartovat](./media/cache-configure/redis-cache-reboot.png)
 
 Pokud máte mezipaměť Premium s povoleným clusteringem, můžete vybrat, které horizontálních oddílů mezipaměti se mají restartovat.
 
-![Restartování](./media/cache-configure/redis-cache-reboot-cluster.png)
+![Restartovat](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované uzly a klikněte na tlačítko **restartovat**. Pokud máte mezipaměť Premium s povoleným clusteringem, vyberte horizontálních oddílů pro restartování a pak klikněte na **restartovat**. Po několika minutách se vybraný uzel (y) restartuje a později se znovu dovede k online několika minutám.
 
@@ -359,7 +359,7 @@ Nastavení v části **Podpora a řešení potíží** poskytují možnosti pro 
 * [Stav prostředku](#resource-health)
 * [Nová žádost o podporu](#new-support-request)
 
-### <a name="resource-health"></a>Stav prostředků
+### <a name="resource-health"></a>Stav prostředku
 **Stav prostředku** sleduje váš prostředek a oznamuje, zda je spuštěný podle očekávání. Další informace o službě Azure Resource Health najdete v článku [Přehled Azure Resource Health](../resource-health/resource-health-overview.md).
 
 > [!NOTE]
@@ -392,7 +392,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |
 | `maxmemory-policy` |`volatile-lru` |Zásada Maxmemory je nastavení, jak Redis vybere, co se má odebrat, když se dosáhne `maxmemory` (velikost nabídky mezipaměti, kterou jste vybrali při vytváření mezipaměti). S Azure cache for Redis je výchozí nastavení `volatile-lru`, což odstraní klíče s nastavenou hodnotou vypršení platnosti pomocí LRU algoritmu. Toto nastavení lze nakonfigurovat v Azure Portal. Další informace najdete v tématu [zásady paměti](#memory-policies). |
 | `maxmemory-samples` |3 |Aby se ušetřila paměť, LRU a minimální algoritmy TTL jsou přibližné algoritmy místo přes přesné algoritmy. Ve výchozím nastavení Redis zkontroluje tři klíče a vybere ten, který byl naposledy použit méně. |
-| `lua-time-limit` |5 000 |Maximální doba provádění lua skriptu v milisekundách Pokud je dosaženo maximální doby spuštění, protokol Redis zaznamená, že skript je stále spuštěný po maximálním povoleném čase, a začne odpovídat na dotazy s chybou. |
+| `lua-time-limit` |5,000 |Maximální doba provádění lua skriptu v milisekundách Pokud je dosaženo maximální doby spuštění, protokol Redis zaznamená, že skript je stále spuštěný po maximálním povoleném čase, a začne odpovídat na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity výstupní vyrovnávací paměti klienta se dají použít k vynucení odpojení klientů, kteří nečtou data ze serveru z nějakého důvodu dostatečně rychle (běžným důvodem je to, že klient typu Pub/Sub nemůže spotřebovávat zprávy tak rychle, jak je může vydavatel vytvořit). Další informace najdete v tématu [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 

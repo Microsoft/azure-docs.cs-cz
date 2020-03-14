@@ -8,11 +8,11 @@ ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: c754f33ab5f4346413b6603ca2cd404acac5443f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78366940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248785"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Pokročilé funkce Azure Průzkumník metrik
 

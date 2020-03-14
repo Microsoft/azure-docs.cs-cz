@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 5462a03accb3420b3f0fcec4624734c8f6d68859
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b0452d51dc472e100ef52536d8e3814ff395292b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811597"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214178"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 
-Pomocí Azure Portal můžete najít doporučení k výkonu, která mohou optimalizovat výkon vašeho Azure SQL Database nebo opravit nějaký problém identifikovaný v rámci vašeho zatížení. Stránka s **doporučením pro výkon** v Azure Portal vám umožní najít nejdůležitější doporučení na základě jejich potenciálního dopadu. 
+Pomocí Azure Portal můžete najít doporučení k výkonu, která mohou optimalizovat výkon vašeho Azure SQL Database nebo opravit nějaký problém identifikovaný v rámci vašeho zatížení. Stránka s **doporučením pro výkon** v Azure Portal vám umožní najít nejdůležitější doporučení na základě jejich potenciálního dopadu.
 
 ## <a name="viewing-recommendations"></a>Zobrazení doporučení
 
@@ -41,13 +41,11 @@ Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do n�
 | Dopad | Popis |
 |:--- |:--- |
 | Vysoký |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
-| Střednědobé používání |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
+| Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
 | Nízká |Doporučení pro nízký dopad by měla poskytovat lepší výkon než bez, ale vylepšení nemusí být významná. |
-
 
 > [!NOTE]
 > Azure SQL Database musí sledovat aktivity alespoň za den, aby bylo možné určit některá doporučení. Azure SQL Database lze snadněji optimalizovat pro konzistentní vzory dotazů, než umožňuje náhodné rozspottych nárůstů aktivity. Pokud doporučení nejsou aktuálně k dispozici, zobrazí stránka s **doporučením pro výkon** zprávu s vysvětlením, proč.
-> 
 
 Můžete si také prohlédnout stav historických operací. Pokud chcete zobrazit další informace, vyberte doporučení nebo stav.
 
@@ -56,7 +54,8 @@ Tady je příklad doporučení "vytvořit index" v Azure Portal.
 ![Vytvořit index](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
 
 ## <a name="applying-recommendations"></a>Použití doporučení
-Azure SQL Database vám poskytuje plnou kontrolu nad tím, jak jsou doporučení povolená, a to pomocí kterékoli z následujících tří možností: 
+
+Azure SQL Database vám poskytuje plnou kontrolu nad tím, jak jsou doporučení povolená, a to pomocí kterékoli z následujících tří možností:
 
 * Jednotlivé doporučení použijte po jednom.
 * Povolení automatického ladění pro automatické použití doporučení.
@@ -67,12 +66,13 @@ Pokud chcete zobrazit podrobnosti, vyberte libovolné doporučení a pak klikně
 Databáze zůstane při použití doporučení online – pomocí doporučení výkonu nebo automatického ladění nikdy nepřevezme databázi offline.
 
 ### <a name="apply-an-individual-recommendation"></a>Použít individuální doporučení
+
 Doporučení si můžete prohlédnout a přijmout v jednom okamžiku.
 
 1. Na stránce **doporučení** vyberte doporučení.
 2. Na stránce **Podrobnosti** klikněte na tlačítko **použít** .
-   
-    ![Použít doporučení](./media/sql-database-advisor-portal/apply.png)
+
+   ![Použít doporučení](./media/sql-database-advisor-portal/apply.png)
 
 Vybrané doporučení se aplikuje na databázi.
 
@@ -92,21 +92,20 @@ V případě potřeby můžete zahozené položky přidat zpátky do seznamu **d
 > [!NOTE]
 > Upozorňujeme, že pokud je povolené SQL Database [Automatické ladění](sql-database-automatic-tuning.md) a pokud jste ze seznamu ručně zrušili doporučení, toto doporučení se nikdy nepoužije automaticky. Zrušení doporučení je praktický způsob, jak uživatelům povolit automatické ladění v případech, kdy se vyžaduje, aby konkrétní doporučení nebylo použito.
 > Toto chování můžete vrátit zpět tak, že do seznamu doporučení přidáte zrušená doporučení tak, že vyberete možnost zrušit zahození.
-> 
 
 ### <a name="enable-automatic-tuning"></a>Povolení automatického ladění
+
 Můžete nastavit Azure SQL Database pro automatické implementace doporučení. Jakmile budou doporučení k dispozici, automaticky se aplikují. Stejně jako u všech doporučení, která spravuje služba, platí, že pokud je dopad na výkon záporný, doporučení se vrátí.
 
 1. Na stránce **doporučení** klikněte na **automatizovat**:
-   
-    ![Nastavení Poradce](./media/sql-database-advisor-portal/settings.png)
+
+   ![Nastavení Poradce](./media/sql-database-advisor-portal/settings.png)
 2. Vyberte akce, které chcete automatizovat:
-   
-    ![Doporučené indexy](./media/sql-database-automatic-tuning-enable/server.png)
+
+   ![Doporučené indexy](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Upozorňujeme, že možnost **DROP_INDEX** aktuálně není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. 
->
+> Upozorňujeme, že možnost **DROP_INDEX** aktuálně není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu.
 
 Po výběru požadované konfigurace klikněte na použít.
 
@@ -114,7 +113,7 @@ Po výběru požadované konfigurace klikněte na použít.
 
 Vyberte libovolné doporučení a pak klikněte na **Zobrazit skript**. Spusťte tento skript pro vaši databázi, abyste mohli doporučení použít ručně.
 
-*Ručně prováděné indexy nejsou monitorovány a ověřovány pro dopad na výkon služby* , takže je navrženo, že tyto indexy po vytvoření sledujete a v případě potřeby je upravíte nebo odstraníte. Podrobnosti o vytváření indexů najdete v tématu [Create index (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx). Ručně použitá doporučení budou navíc aktivní a budou se zobrazovat v seznamu doporučení 24-48 hodin. předtím, než je systém automaticky stáhne. Pokud byste chtěli doporučení odebrat dřív, můžete ho ručně zahodit.
+*Ručně prováděné indexy nejsou monitorovány a ověřovány pro dopad na výkon služby* , takže je navrženo, že tyto indexy po vytvoření sledujete a v případě potřeby je upravíte nebo odstraníte. Podrobnosti o vytváření indexů najdete v tématu [Create index (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql). Ručně použitá doporučení budou navíc aktivní a budou se zobrazovat v seznamu doporučení 24-48 hodin. předtím, než je systém automaticky stáhne. Pokud byste chtěli doporučení odebrat dřív, můžete ho ručně zahodit.
 
 ### <a name="canceling-recommendations"></a>Rušení doporučení
 
@@ -123,13 +122,13 @@ Doporučení, která jsou ve stavu **čekání**, **ověřování**nebo **úspě
 1. Vyberte doporučení v oblasti **Historie ladění** a otevřete stránku s **podrobnostmi o doporučení** .
 2. Kliknutím na tlačítko **Storno** přerušte proces použití doporučení.
 
-## <a name="monitoring-operations"></a>Operace sledování
+## <a name="monitoring-operations"></a>Sledování operací
 
 Použití doporučení nemusí okamžitě probíhat. Portál poskytuje podrobné informace o stavu doporučení. Níže jsou možné stavy, ve kterých může být index:
 
-| Status | Popis |
+| Stav | Popis |
 |:--- |:--- |
-| Čekající na vyřízení |Příkaz Apply doporučení byl přijat a je naplánován ke spuštění. |
+| Čeká |Příkaz Apply doporučení byl přijat a je naplánován ke spuštění. |
 | Zpracovávan |Doporučení se používá. |
 | Opětovné |Doporučení se úspěšně nastavilo a služba měří výhody. |
 | Úspěch |Doporučení se úspěšně použilo a byly měřeny výhody. |
@@ -142,6 +141,7 @@ Kliknutím na místní doporučení ze seznamu zobrazíte další informace:
 ![Doporučené indexy](./media/sql-database-advisor-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Vrácení doporučení zpět
+
 Pokud jste použili doporučení k výkonu k použití doporučení (což znamená, že jste ručně nespouštěli skript T-SQL), automaticky vrátí změnu, pokud najde dopad na výkon, který je záporný. Pokud z nějakého důvodu jednoduše chcete jenom vrátit doporučení, můžete postupovat takto:
 
 1. V oblasti **Historie ladění** vyberte úspěšně použité doporučení.
@@ -150,22 +150,25 @@ Pokud jste použili doporučení k výkonu k použití doporučení (což znamen
 ![Doporučené indexy](./media/sql-database-advisor-portal/details.png)
 
 ## <a name="monitoring-performance-impact-of-index-recommendations"></a>Monitorování dopadu na výkon doporučení indexu
-Po úspěšné implementaci doporučení (v současné době platí pouze pro operace s indexem a parametrizovat dotazy), můžete kliknout na **dotaz na přehledy** na stránce s podrobnostmi o doporučeních a otevřít [dotaz – Přehled výkonu](sql-database-query-performance.md) a zobrazit dopad nejdůležitějších dotazů na výkon.
+
+Po úspěšném dokončení implementace doporučení (v současné době platí pouze pro operace s indexem a parametrizovat dotaz), můžete kliknout na **dotaz na přehledy** na stránce s podrobnostmi o doporučeních, otevřít [dotaz na výkon](sql-database-query-performance.md) a zobrazit dopad na výkon vašich dotazů na nejvyšší úrovni.
 
 ![Sledovat dopad na výkon](./media/sql-database-advisor-portal/query-insights.png)
 
 ## <a name="summary"></a>Souhrn
+
 Azure SQL Database poskytuje doporučení pro zlepšení výkonu SQL Database. Díky skriptům T-SQL získáte pomoc při optimalizaci databáze a nakonec se zlepší výkon dotazů.
 
 ## <a name="next-steps"></a>Další kroky
-Sledujte vaše doporučení a pokračujte v jejich použití pro zlepšení výkonu. Databázová zatížení jsou dynamická a neustále se mění. Azure SQL Database nadále sleduje a poskytuje doporučení, která mohou potenciálně zlepšit výkon vaší databáze. 
+
+Sledujte vaše doporučení a pokračujte v jejich použití pro zlepšení výkonu. Databázová zatížení jsou dynamická a neustále se mění. Azure SQL Database nadále sleduje a poskytuje doporučení, která mohou potenciálně zlepšit výkon vaší databáze.
 
 * Další informace o automatickém ladění v Azure SQL Database najdete v tématu věnovaném [automatickému ladění](sql-database-automatic-tuning.md) .
 * Přehled Azure SQL Databasech doporučení týkajících se výkonu najdete v tématu [doporučení pro výkon](sql-database-advisor.md) .
 * V tématu [Přehled výkonu dotazů](sql-database-query-performance.md) najdete informace o tom, jak zobrazit dopad vašich dotazů na výkon.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
+
 * [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
 * [VYTVOŘIT INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
 * [Řízení přístupu na základě rolí](../role-based-access-control/overview.md)
-

@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: cb1444261a2ba4810f4fddb3d7aa3bc172f09654
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372544"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278867"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker
 
@@ -30,7 +30,7 @@ Proces instalace Hybrid Runbook Worker závisí na operačním systému. Násled
 
 Chcete-li nainstalovat a nakonfigurovat Hybrid Runbook Worker systému Windows, můžete použít dvě metody. Doporučeným způsobem je použít sadu Automation Runbook k úplnému automatizaci procesu konfigurace počítače se systémem Windows. Druhá metoda je podle podrobných kroků, jak ručně nainstalovat a nakonfigurovat roli. Pro počítače se systémem Linux spustíte skript Pythonu, který nainstaluje agenta do počítače.
 
-|Operační systém  |Typy nasazení  |
+|OS  |Typy nasazení  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Zásah](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
@@ -114,15 +114,15 @@ Pokud máte účet Automation, který je definovaný pro konkrétní oblast, mů
 
 | **Oblast** | **Záznam DNS** |
 | --- | --- |
-| USA – středozápad | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| USA – středojih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| USA – východ 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| USA – západ 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
+| Střed USA – západ | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Střed USA – jih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
+| Západní USA 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
 | Kanada – střed |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Západní Evropa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Severní Evropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Jihovýchodní Asie |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Indie – střed |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
+| Střed Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Austrálie – střed |ac-jobruntimedata-prod-su1.azure-automation.net</br>ac-agentservice-prod-1.azure-automation.net |
 | Austrálie – východ |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
@@ -139,7 +139,7 @@ Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služ
 >
 > Každý týden je vhodné stáhnout nový soubor XML. Pak aktualizujte svůj web tak, aby správně identifikoval služby běžící v Azure. Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor používá k aktualizaci inzerce protokolu BGP (Border Gateway Protocol) v Azure Space v první týden v měsíci.
 
-### <a name="update-management"></a>Update Management
+### <a name="update-management"></a>Správa aktualizací
 
 Na standardních adresách a portech, které Hybrid Runbook Worker vyžaduje, jsou pro Update Management vyžadovány následující adresy. Komunikace s těmito adresami se provádí přes port 443.
 

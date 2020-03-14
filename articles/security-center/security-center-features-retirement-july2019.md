@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392496"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245405"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení funkcí Security Center (červenec 2019)
 
@@ -130,7 +130,7 @@ Vytvoření vlastních výstrah pomocí služby Azure Sentinel:
 
 Pokud vás nejímá používání služby Azure Sentinel, můžete výstrahy vytvořit pomocí Azure Monitor výstrahy protokolu. Pokyny najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) a [výstrah protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
-![Vlastní výstrahy][13]
+![Vlastní upozornění][13]
 
 Další informace o vlastním vyřazení výstrah najdete v tématu [vlastní pravidla výstrah v Azure Security Center (Preview)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
 ms.openlocfilehash: d4a426ea1432d0266b7ae9344afefe8ddac1d030
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359318"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264996"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí v Azure Event Grid
 

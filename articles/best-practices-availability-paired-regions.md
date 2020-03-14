@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jeconnoc
-ms.openlocfilehash: 0e47bde280e9483f3c265e0d3147eadcbb128612
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 778943dad9a04632797d5d9165b6f1f9a3eb9850
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344186"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248252"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -26,7 +26,7 @@ Regionální pár se skládá ze dvou oblastí ve stejné zeměpisné oblasti. A
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Některé služby Azure využívají spárované oblasti k zajištění kontinuity obchodních činností a k ochraně před ztrátou dat.  Azure poskytuje několik [řešení úložiště](/storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) , která využívají spárované oblasti k zajištění dostupnosti dat. Například [geograficky redundantní úložiště Azure](/storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) replikuje data do sekundární oblasti automaticky a zajišťuje tak, že data jsou odolná i v případě, že primární oblast nebude obnovitelné. 
+Některé služby Azure využívají spárované oblasti k zajištění kontinuity obchodních činností a k ochraně před ztrátou dat.  Azure poskytuje několik [řešení úložiště](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) , která využívají spárované oblasti k zajištění dostupnosti dat. Například [geograficky redundantní úložiště Azure](./storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) replikuje data do sekundární oblasti automaticky a zajišťuje tak, že data jsou odolná i v případě, že primární oblast nebude obnovitelné. 
 
 Všimněte si, že ne všechny služby Azure automaticky replikují data, ani nepřejdou všechny služby Azure zpátky z oblasti, která selhala, do její dvojice.  V takovém případě musí být obnovení a replikace konfigurovány zákazníkem.
 
@@ -52,13 +52,13 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
 | Austrálie |Austrálie – střed |Austrálie – střed 2 |
 | Brazílie |Brazílie – jih |Střed USA – jih |
-| Kanada |Kanada – střed |Východní Kanada |
+| Kanada |Kanada – střed |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
 | Čína |Čína – sever 2 |Čína – východ 2|
 | Evropa |Severní Evropa (Irsko) |Západní Evropa (Nizozemsko) |
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
-| Indie |Indie – střed |Indie – jih |
+| Indie |Střed Indie |Indie – jih |
 | Indie |Indie – západ |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Jižní Korea – střed |Jižní Korea – jih |

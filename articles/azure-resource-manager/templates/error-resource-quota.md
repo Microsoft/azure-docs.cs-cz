@@ -3,12 +3,12 @@ title: Chyby kvóty
 description: Popisuje, jak vyřešit chyby kvót prostředků při nasazování prostředků pomocí Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390271"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273784"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Řešení chyb pro kvóty prostředků
 
@@ -16,7 +16,7 @@ Tento článek popisuje problémy s kvótou, ke kterým může dojít při nasaz
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="symptom"></a>Příznak
+## <a name="symptom"></a>Symptom
 
 Pokud nasadíte šablonu, která vytvoří prostředky, které překračují vaše kvóty Azure, zobrazí se chyba nasazení, která vypadá nějak takto:
 
@@ -40,7 +40,7 @@ please delete some resources of this type before creating a new one.
 Kvóty se uplatňují u jednotlivých skupin prostředků, předplatných, účtů a dalších oborů. Například v rámci předplatného může být nakonfigurované omezení počtu jader v jedné oblasti. Pokud se pokusíte nasadit virtuální počítač s více jádry, než je povolené množství, zobrazí se chyba s informací, že došlo k překročení kvóty.
 Úplné informace o kvótě najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -76,7 +76,7 @@ Get-AzVMUsage -Location "South Central US"
 
 Který vrátí:
 
-```powershell
+```output
 Name                             Current Value Limit  Unit
 ----                             ------------- -----  ----
 Availability Sets                            0  2000 Count

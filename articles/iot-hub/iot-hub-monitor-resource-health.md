@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359563"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271080"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Sledujte stav služby Azure IoT Hub a rychle Diagnostikujte problémy
 

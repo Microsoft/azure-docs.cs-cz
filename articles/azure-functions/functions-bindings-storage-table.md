@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370827"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277177"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště tabulek Azure pro Azure Functions
 
@@ -560,10 +560,10 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction** | neuvedeno | Musí být nastavené na `in`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje tabulku nebo entitu v kódu funkce. | 
 |**Tabulky** | **Tabulky** | Název tabulky.| 
-|**partitionKey** | **PartitionKey** |Volitelné. Klíč oddílu entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
-|**rowKey** |**RowKey** | Volitelné. Klíč řádku entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
-|**nezbytná** |**Nezbytná** | Volitelné. Maximální počet entit, které mají být načteny v jazyce JavaScript. Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
-|**filtrovací** |**Filtrovací** | Volitelné. Výraz filtru OData pro vstup tabulky v JavaScriptu Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
+|**partitionKey** | **PartitionKey** |Volitelná. Klíč oddílu entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
+|**rowKey** |**RowKey** | Volitelná. Klíč řádku entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
+|**nezbytná** |**Nezbytná** | Volitelná. Maximální počet entit, které mají být načteny v jazyce JavaScript. Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
+|**filtrovací** |**Filtrovací** | Volitelná. Výraz filtru OData pro vstup tabulky v JavaScriptu Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
 |**vázán** |**Vázán** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "MyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -991,7 +991,7 @@ K dispozici jsou dvě možnosti pro výstup řádku úložiště tabulky z funkc
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Odkaz |
 |---|---|
 | Tabulka | [Kódy chyb tabulky](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Objekt blob, tabulka, fronta | [Kódy chyb úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

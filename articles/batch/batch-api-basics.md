@@ -15,11 +15,11 @@ ms.date: 08/29/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025941"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247680"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -77,7 +77,7 @@ Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch 
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-## <a name="azure-storage-account"></a>Účet služby Azure Storage
+## <a name="azure-storage-account"></a>Účet Azure Storage
 
 Většina řešení Batch pro ukládání souborů prostředků a výstupních souborů používá službu Azure Storage. Například úkoly služby Batch (včetně standardních úkolů, spouštěcích úkolů, úkolů přípravy úloh a úkolů uvolnění úloh) obvykle určují soubory prostředků, které jsou umístěné v účtu úložiště.
 
@@ -143,7 +143,7 @@ Když vytváříte fond Batch, můžete zadat konfiguraci virtuálního počíta
 
     * *Řada operačního systému* také určuje, jaké verze rozhraní .NET jsou s operačním systémem nainstalovány.
     * Podobně jako u rolí pracovního procesu v rámci služby Cloud Services můžete zadat *verzi operačního systému* (další informace o rolích pracovního procesu najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md)).
-    * Stejně jako u rolí pracovního procesu se doporučuje jako *Verze operačního systému* zadat `*`, aby se uzly automaticky upgradovaly a nebyla potřeba žádná práce k ošetření nově vydaných verzí. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření funkčnosti je možné aktualizovat *verzi operačního systému* pro fond a nainstalovat image nového operačního systému – jakékoli spuštěné úkoly se přeruší a zařadí do fronty.
+    * Stejně jako u rolí pracovního procesu se doporučuje jako `*`Verze operačního systému*zadat*, aby se uzly automaticky upgradovaly a nebyla potřeba žádná práce k ošetření nově vydaných verzí. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření funkčnosti je možné aktualizovat *verzi operačního systému* pro fond a nainstalovat image nového operačního systému – jakékoli spuštěné úkoly se přeruší a zařadí do fronty.
 
 Když vytvoříte fond, je nutné vybrat odpovídající **nodeAgentSkuId**, v závislosti na operačním systému základní image vašeho disku VHD. Můžete získat mapování dostupných ID SKU agenta uzlu na odkazy na image operačního systému voláním operace [seznam podporovaných SKU agenta uzlu](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) .
 
@@ -245,9 +245,9 @@ Plánování úloh mezi fondy je nezávislé. Mezi různými fondy není zaruče
 
 ### <a name="scheduled-jobs"></a>Naplánované úlohy
 
-[Plány úloh][rest_job_schedules] umožňují vytvořit opakované úlohy v rámci služby Batch. Plán úloh určuje, kdy spustit úlohy a obsahuje specifikace pro úlohy, které mají být spuštěny. Můžete určit dobu trvání plánu – na jak dlouho a kdy bude plán platný – a jak často se během tohoto naplánovaného období mají vytvářet úlohy.
+[Plány úloh][rest_job_schedules] umožňují vytvořit opakované úlohy v rámci služby Batch. Plán úlohy určuje, kdy spustit úlohy a obsahuje specifikace pro úlohy, které mají být spuštěny. Můžete určit dobu trvání plánu – na jak dlouho a kdy bude plán platný – a jak často se během tohoto naplánovaného období mají vytvářet úlohy.
 
-## <a name="task"></a>Úkol
+## <a name="task"></a>Úloha
 
 Úkol je jednotka výpočtu, která je přidružena k úloze. Běží na uzlu. Úkoly jsou přiřazeny k uzlu pro provádění nebo jsou zařazeny do fronty, dokud se uzel neuvolní. Jednoduše řečeno, úkol spustí na výpočetním uzlu jeden nebo více programů nebo skriptů k provedení potřebné práce.
 
@@ -279,7 +279,7 @@ Vedle úkolů, které definujete pro provádění výpočtů na uzlu, poskytuje 
 * Úkoly s více instancemi (MPI)
 * [Závislosti úkolů](#task-dependencies)
 
-### <a name="start-task"></a>Spouštěcí úkol
+### <a name="start-task"></a>Spustit úkol
 
 Přidružením **spouštěcího úkolu** k fondu můžete připravit provozní prostředí jeho uzlů. Můžete například provádět akce, jako je instalace aplikací, které vaše úkoly spouštějí, nebo spouštění procesů na pozadí. Spouštěcí úkol se spustí při každém spuštění uzlu, a běží tak dlouho, dokud zůstává ve fondu, včetně okamžiků prvního přidání uzlu do fondu a jeho restartování či obnovení z image.
 
@@ -335,9 +335,9 @@ Další informace ohledně úkolů přípravy a uvolnění úloh najdete v čás
 
 Podrobné informace o spouštění úloh MPI ve službě Batch pomocí knihovny Batch .NET najdete v článku [Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) v Azure Batch](batch-mpi.md).
 
-### <a name="task-dependencies"></a>Závislosti úloh
+### <a name="task-dependencies"></a>Závislosti úkolů
 
-[Závislosti úkolů](batch-task-dependencies.md), jak již název napovídá, umožňují určit, jestli úkol závisí před svým spuštěním na dokončení jiných úkolů. Tato funkce poskytuje podporu pro situace, ve kterých „podřízený“ úkol spotřebovává výstup „nadřazeného“ úkolu, nebo kde nadřazený úkol provádí inicializaci, která je požadovaná podřízeným úkolem. Pokud chcete tuto funkci používat, je nutné nejprve v úloze služby Batch povolit závislosti úkolů. Potom pro každý úkol, který závisí na jiném (nebo mnoha dalších), zadáte úkoly, na kterých úkol závisí.
+[Závislosti úkolů](batch-task-dependencies.md), jak již název napovídá, umožňují určit, jestli úkol závisí před svým spuštěním na dokončení jiných úkolů. Tato funkce poskytuje podporu pro situace, ve kterých „podřízený“ úkol spotřebovává výstup „nadřazeného“ úkolu, nebo kde nadřazený úkol provádí inicializaci, která je požadovaná podřízeným úkolem. Chcete-li tuto funkci používat, je nutné nejprve v úloze služby Batch povolit závislosti úkolů. Potom pro každý úkol, který závisí na jiném (nebo mnoha dalších), zadáte úkoly, na kterých úkol závisí.
 
 Pomocí závislosti úkolů lze nakonfigurovat například následující scénáře:
 
@@ -361,7 +361,7 @@ Vaše klientská aplikace nebo služba může získat proměnné prostředí úk
 
 Každý úkol má *pracovní adresář*, pod kterým vytváří žádný nebo více souborů a adresářů. Tento pracovní adresář lze použít pro ukládání programu, který je spuštěn úkolem, dat, která zpracovává, a výstupu zpracování, které provádí. Všechny soubory a adresáře úkolu jsou vlastněné uživatelem úkolu.
 
-Služba Batch zveřejňuje část systému souborů na uzlu jako *kořenový adresář*. Úkoly mohou získat přístup do kořenového adresáře odkazem na proměnnou prostředí `AZ_BATCH_NODE_ROOT_DIR`. Další informace o používání proměnných prostředí naleznete v tématu [Nastavení prostředí pro úkoly](#environment-settings-for-tasks).
+Služba Batch zveřejňuje část systému souborů na uzlu jako *kořenový adresář*. Úkoly mohou získat přístup do kořenového adresáře odkazem na proměnnou prostředí `AZ_BATCH_NODE_ROOT_DIR`. Další informace o používání proměnných prostředí najdete v tématu [Nastavení prostředí pro úkoly](#environment-settings-for-tasks).
 
 Kořenový adresář obsahuje následující adresářovou strukturu:
 

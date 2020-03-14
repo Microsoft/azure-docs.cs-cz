@@ -8,16 +8,16 @@ ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394944"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274213"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivace protokolů prostředků Azure do účtu úložiště
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje, jak shromažďovat protokoly platforem pro účet služby Azure Storage a uchovávat data pro archivaci.
 
-## <a name="prerequisites"></a>Požadovaný
+## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte [účet úložiště Azure](../../storage/common/storage-account-create.md) , musíte ho vytvořit. Účet úložiště nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
 
 
@@ -49,7 +49,7 @@ Například objekt BLOB pro skupinu zabezpečení sítě může mít název podo
 insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUP/TESTNSG/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 ```
 
-Každý objekt BLOB PT1H. JSON obsahuje objekt BLOB JSON událostí, ke kterým došlo během hodiny zadané v adrese URL objektu BLOB (například h = 12). Během této hodiny se události připojí k souboru PT1H. JSON, jak se vyskytují. Hodnota minut (m = 00) je vždy 00, protože události protokolu prostředku jsou v jednotlivých objektech blob za hodinu rozděleny.
+Každý objekt blob PT1H.json obsahuje objekt blob ve formátu JSON událostí, ke kterým došlo během hodiny zadané v adrese URL objektu blob (například h=12). Během aktuální hodiny se události připojují do souboru PT1H.json, když k nim dojde. Hodnota minut (m = 00) je vždy 00, protože události protokolu prostředku jsou v jednotlivých objektech blob za hodinu rozděleny.
 
 V souboru PT1H. JSON jsou jednotlivé události uložené v následujícím formátu. Bude se používat běžné schéma nejvyšší úrovně, ale jedinečné pro každou službu Azure, jak je popsáno v tématu schéma [prostředků protokoly](diagnostic-logs-schema.md) a [schéma protokolu aktivit](activity-log-schema.md).
 

@@ -9,11 +9,11 @@ ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 51b7b37466ae8a6988ee4bfa85a054fb42d23124
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362088"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268168"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.

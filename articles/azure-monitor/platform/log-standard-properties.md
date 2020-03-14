@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372244"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274473"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../log-query/logs-structure.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu vlastností. Mnoho datových typů bude mít standardní vlastnosti, které jsou společné napříč různými typy. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je můžete používat v dotazech.

@@ -4,11 +4,11 @@ description: Přečtěte si o podpoře migrace virtuálních počítačů VMware
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388971"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269507"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -50,15 +50,15 @@ Přečtěte si [Tento článek](server-migrate-overview.md) a zjistěte, kterou 
 **Velikost disku** | 2 TB disk s operačním systémem; 4 TB datových disků
 **Omezení disku** |  Až 60 disků na virtuální počítač.
 **Šifrované disky/svazky** | Virtuální počítače se zašifrovanými disky nebo svazky se nepodporují pro migraci.
-**Cluster sdíleného disku** | Nepodporuje se.
-**Nezávislé disky** | Nepodporuje se.
+**Cluster sdíleného disku** | Není podporováno.
+**Nezávislé disky** | Není podporováno.
 **RDM/průchozí disky** | Pokud virtuální počítače mají RDM nebo průchozí disky, tyto disky se nebudou replikovat do Azure.
 **NFS** | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat.
 **cíle iSCSI** | Virtuální počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
-**Multipath v/v** | Nepodporuje se.
-**VMotion úložiště** | Nepodporuje se. Pokud virtuální počítač používá úložiště vMotion, replikace nebude fungovat.
-**Seskupené síťové adaptéry** | Nepodporuje se.
-**Protokolů** | Nepodporuje se.
+**Multipath v/v** | Není podporováno.
+**VMotion úložiště** | Není podporováno. Pokud virtuální počítač používá úložiště vMotion, replikace nebude fungovat.
+**Seskupené síťové adaptéry** | Není podporováno.
+**Protokolů** | Není podporováno.
 **Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (Standard HDD, Premium SSD) v Azure.
 **Současná replikace** | 100 virtuálních počítačů na vCenter Server. Pokud máte víc, migrujte je v dávkách 100.
 
@@ -104,15 +104,15 @@ Tabulka shrnuje podporu virtuálních počítačů VMware pro virtuální počí
 **Velikost disku** | 2 TB disk s operačním systémem; 8 TB pro datové disky.
 **Omezení disku** |  Až 63 disků na virtuální počítač.
 **Šifrované disky/svazky** | Virtuální počítače se zašifrovanými disky nebo svazky se nepodporují pro migraci.
-**Cluster sdíleného disku** | Nepodporuje se.
+**Cluster sdíleného disku** | Není podporováno.
 **Nezávislé disky** | Podporuje se.
 **Průchozí disky** | Podporuje se.
 **NFS** | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat.
 **cíle iSCSI** | Virtuální počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
-**Multipath v/v** | Nepodporuje se.
+**Multipath v/v** | Není podporováno.
 **VMotion úložiště** | Podporuje se
-**Seskupené síťové adaptéry** | Nepodporuje se.
-**Protokolů** | Nepodporuje se.
+**Seskupené síťové adaptéry** | Není podporováno.
+**Protokolů** | Není podporováno.
 
 
 
@@ -146,9 +146,9 @@ Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, 
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
-Sdílené VHD | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán.
+Sdílené VHD | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Disk FC | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+BitLocker | Není podporováno. | Před povolením replikace pro počítač musí být BitLocker zakázán.
 název virtuálního počítače | Od 1 do 63 znaků.<br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
 Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md). |
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  

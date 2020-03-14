@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
 ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392553"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271067"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysoká dostupnost a zotavení po havárii
 
@@ -125,9 +125,9 @@ Tady je souhrn možností HA/DR prezentovaných v tomto článku, které se daj�
 
 | Možnost HA/DR | RTO | Cíl bodu obnovení | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
 | --- | --- | --- | --- | --- | --- |
-| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádná|Žádná|
-| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádná|
-| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|Ne|Vysoká|> 1x náklady 1 centra IoT|
+| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádné|Žádné|
+| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádné|
+| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|Ne|Vysoký|> 1x náklady 1 centra IoT|
 
 ## <a name="next-steps"></a>Další kroky
 

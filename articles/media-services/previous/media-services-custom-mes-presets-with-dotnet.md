@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394747"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251242"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení přednastavených Media Encoder Standard  
 
@@ -264,7 +264,7 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Postup při kódování s vlastní transformací pomocí rozhraní příkazového řádku](../latest/custom-preset-cli-howto.md)
 - [Kódování pomocí Media Services verze 3](../latest/encoding-concept.md)
@@ -272,5 +272,5 @@ namespace CustomizeMESPresests
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

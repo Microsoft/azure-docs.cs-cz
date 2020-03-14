@@ -1,24 +1,24 @@
 ---
-title: Průvodce optimalizací výkonu
-description: Přečtěte si o použití doporučení k ručnímu vyladění výkonu Azure SQL Database dotazů.
+title: Pokyny k ladění výkonu pro aplikace a databáze
+description: Přečtěte si, jak vyladit databázové aplikace a databáze pro výkon v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: carlrab; jrasnick
+ms.date: 03/10/2020
+ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382384"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255948"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ruční ladění výkonu dotazů v Azure SQL Database
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Ladění aplikací a databází pro výkon v Azure SQL Database
 
 Jakmile zjistíte problémy s výkonem, na které jste se SQL Database, Tento článek vám umožní:
 
@@ -232,6 +232,10 @@ Můžete zkontrolovat **Sys. resource_stats** , abyste zjistili, zda prostředek
 
 Pokud má úloha sadu opakujících se dotazů, často má smysl zachytit a ověřit optimální možnosti plánu, protože jednotkou je minimální jednotka velikosti prostředků, která je vyžadována pro hostování databáze. Po ověření si občas prověříte plány, které vám pomohou zajistit, že nebudou omezené. Další informace o [pokynech pro dotazy najdete v jazyce Transact-SQL](https://msdn.microsoft.com/library/ms181714.aspx).
 
+### <a name="very-large-database-architectures"></a>Velmi velké architektury databáze
+
+Před vydáním vrstvy služby s jednoduchým [škálováním](sql-database-service-tier-hyperscale.md) pro izolované databáze v Azure SQL Database zákazníci použili k dosažení limitů kapacity pro jednotlivé databáze. Tato omezení kapacity stále existují pro databáze ve fondu v elastických fondech a databázi instancí ve spravovaných instancích. Následující dvě části projednávají dvě možnosti řešení problémů s velmi rozsáhlými databázemi v Azure SQL Database, když nemůžete použít úroveň služby pro škálování na úrovni služeb.
+
 ### <a name="cross-database-sharding"></a>Horizontálního dělení mezi databázemi
 
 Vzhledem k tomu, že Azure SQL Database spouští na komoditním hardwaru, jsou limity kapacity pro jednotlivé databáze nižší než pro tradiční místní instalaci SQL Server. Někteří zákazníci využívají techniky horizontálního dělení k šíření databázových operací v několika databázích, když se operace nevejdou do limitů jednotlivých databází v Azure SQL Database. Většina zákazníků, kteří používají techniky horizontálního dělení v Azure SQL Database rozdělí svá data na jednu dimenzi napříč více databázemi. Pro účely tohoto přístupu potřebujete pochopit, že aplikace OLTP často provádějí transakce, které se vztahují pouze na jeden řádek nebo na malou skupinu řádků ve schématu.
@@ -243,7 +247,7 @@ Pokud má databáze například Podrobnosti o jménu zákazníka, objednávce a 
 
 I když databáze horizontálního dělení neomezuje agregovanou kapacitu prostředků pro řešení, je vysoce efektivní při podpoře velmi rozsáhlých řešení, která jsou rozdělená do více databází. Každá databáze může běžet na jiné výpočetní úrovni, aby podporovala velmi rozsáhlou a "efektivní" databáze s vysokými nároky na prostředky.
 
-### <a name="functional-partitioning"></a>Funkční dělení
+#### <a name="functional-partitioning"></a>Funkční dělení
 
 SQL Server uživatelé často kombinují mnoho funkcí v individuální databázi. Například pokud má aplikace logiku pro správu inventáře pro obchod, může mít tato databáze logiku přidruženou k inventarizaci, sledování nákupních objednávek, uložených procedur a indexovaných nebo materializovaná zobrazení, která spravují vytváření sestav od konce měsíce. Tato technika usnadňuje správu databáze pro operace, jako je zálohování, ale také vyžaduje, abyste změnili velikost hardwaru pro zpracování nejvyšší zátěže napříč všemi funkcemi aplikace.
 

@@ -12,11 +12,11 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359134"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269195"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která využívá horizontálně dělené víceklientské databáze SQL
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 > * Aktualizuje referenční data ve všech databázích tenanta.
 > * Vytvoří index tabulky ve všech databázích tenantů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aplikace víceklientské lístky Wingtip již musí být nasazené:
     - Pokyny najdete v prvním kurzu, který zavádí společnost Wingtip Tickets SaaS multi-tenant Database App:<br />[Nasazení a zkoumání horizontálně dělené aplikace s více klienty, která používá Azure SQL Database](saas-multitenantdb-get-started-deploy.md).
@@ -155,7 +155,7 @@ Ve skriptu *OnlineReindex. SQL* Sledujte následující položky:
 
 * Zbývající zobrazení ve spuštění úlohy monitoru skriptu. Pomocí těchto dotazů můžete zkontrolovat hodnotu stavu ve sloupci **životní cyklus** a zjistit, kdy byla úloha úspěšně dokončena u všech členů cílové skupiny.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

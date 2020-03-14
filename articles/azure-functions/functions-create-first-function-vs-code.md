@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 42888060f206c89a597a1a18783070d0a805dfb9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208944"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241301"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Rychlý Start: vytvoření projektu Azure Functions pomocí Visual Studio Code
 
@@ -32,7 +32,7 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 + LTS verze [Node. js](https://nodejs.org/), Active a Maintenance LTS (Doporučené 10.14.1). K ověření verze použijte příkaz `npm --version`.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
-+ [Python 3,7](https://www.python.org/downloads/release/python-375/) nebo [Python 3,6](https://www.python.org/downloads/release/python-368/), který podporuje Azure Functions. Python 3,8 není zatím podporován. 
++ Azure Functions podporuje [python 3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/)a [Python 3,6](https://www.python.org/downloads/release/python-368/) .
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [Jádro PowerShellu](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -41,7 +41,7 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 ::: zone-end  
 + [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
 ::: zone pivot="programming-language-csharp"  
-+ Rozšíření pro Visual Studio Code. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  
++ Rozšíření pro Visual Studio Code. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + [Přípona Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro Visual Studio Code.  

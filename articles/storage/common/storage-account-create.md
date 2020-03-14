@@ -1,5 +1,5 @@
 ---
-title: Vytvoření účtu úložiště
+title: Vytvořit účet úložiště
 titleSuffix: Azure Storage
 description: Naučte se vytvořit účet úložiště pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure. Účet úložiště Azure poskytuje jedinečný obor názvů v Microsoft Azure pro ukládání a přístup k datům.
 services: storage
@@ -10,11 +10,11 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397197"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255402"
 ---
 # <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
@@ -24,13 +24,13 @@ V tomto článku se dozvíte, jak vytvořit účet úložiště pomocí [Azure P
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Žádné.
+Žádné
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -67,7 +67,7 @@ Azure CLI můžete také nainstalovat a používat místně. Tento článek s n�
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Žádné.
+Žádné
 
 ---
 
@@ -97,11 +97,11 @@ az login
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-neuvedeno
+NEUŽÍVÁ SE.
 
 ---
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>Vytvořit účet úložiště
 
 Nyní jste připraveni vytvořit účet úložiště.
 

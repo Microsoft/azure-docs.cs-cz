@@ -14,11 +14,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383312"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253959"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
 
@@ -26,7 +26,7 @@ ms.locfileid: "78383312"
 
 Rozšíření PowerShell DSC pro Windows je publikované a podporované Microsoftem. Rozšíření nahrává a na virtuálním počítači Azure používá konfiguraci PowerShellu DSC. Rozšíření DSC volá do PowerShell DSC, aby přijalo přijatou konfiguraci DSC na virtuálním počítači. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače DSC pro Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -97,37 +97,37 @@ Následující JSON zobrazuje schéma pro část nastavení rozšíření DSC v 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Datový typ |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| publisher | Microsoft.Powershell.DSC | řetězec |
-| type | DSC | řetězec |
+| publisher | Microsoft.Powershell.DSC | string |
+| typ | DSC | string |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Hodnoty vlastností nastavení
 
-| Název | Typ dat | Popis
+| Název | Datový typ | Popis
 | ---- | ---- | ---- |
-| Settings. wmfVersion | řetězec | Určuje verzi rozhraní Windows Management Framework, která má být nainstalována na VIRTUÁLNÍm počítači. Když nastavíte tuto vlastnost na nejnovější, nainstaluje se aktualizovaná verze WMF. Pro tuto vlastnost jsou dostupné jenom aktuální hodnoty "4,0", "5,0" a "nejnovější". Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je ' nejnovější '. |
-| settings.configuration.url | řetězec | Určuje umístění adresy URL, ze kterého se má stáhnout soubor zip konfigurace DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, bude nutné nastavit vlastnost protectedSettings. configurationUrlSasToken na hodnotu vašeho tokenu SAS. Tato vlastnost je povinná, pokud jsou definovaná nastavení. Configuration. Script a/nebo Settings. Configuration. Function.
-| settings.configuration.script | řetězec | Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce souboru ZIP staženého z adresy URL určené vlastností Configuration. URL. Tato vlastnost je povinná, pokud jsou definovaná nastavení. Configuration. URL nebo Settings. Configuration. Script.
-| settings.configuration.function | řetězec | Určuje název konfigurace DSC. Konfigurace s názvem musí být obsažena ve skriptu definovaném Configuration. Script. Tato vlastnost je povinná, pokud jsou definována nastavení. Configuration. URL nebo Settings. Configuration. Function.
+| Settings. wmfVersion | string | Určuje verzi rozhraní Windows Management Framework, která má být nainstalována na VIRTUÁLNÍm počítači. Když nastavíte tuto vlastnost na nejnovější, nainstaluje se aktualizovaná verze WMF. Pro tuto vlastnost jsou dostupné jenom aktuální hodnoty "4,0", "5,0" a "nejnovější". Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je ' nejnovější '. |
+| settings.configuration.url | string | Určuje umístění adresy URL, ze kterého se má stáhnout soubor zip konfigurace DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, bude nutné nastavit vlastnost protectedSettings. configurationUrlSasToken na hodnotu vašeho tokenu SAS. Tato vlastnost je povinná, pokud jsou definovaná nastavení. Configuration. Script a/nebo Settings. Configuration. Function.
+| settings.configuration.script | string | Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce souboru ZIP staženého z adresy URL určené vlastností Configuration. URL. Tato vlastnost je povinná, pokud jsou definovaná nastavení. Configuration. URL nebo Settings. Configuration. Script.
+| settings.configuration.function | string | Určuje název konfigurace DSC. Konfigurace s názvem musí být obsažena ve skriptu definovaném Configuration. Script. Tato vlastnost je povinná, pokud jsou definována nastavení. Configuration. URL nebo Settings. Configuration. Function.
 | settings.configurationArguments | Kolekce | Definuje všechny parametry, které byste chtěli předat konfiguraci DSC. Tato vlastnost nebude zašifrována.
-| settings.configurationData.url | řetězec | Určuje adresu URL, ze které se má stáhnout soubor konfiguračních dat (. pds1), který se použije jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, bude nutné nastavit vlastnost protectedSettings. configurationDataUrlSasToken na hodnotu vašeho tokenu SAS.
-| settings.privacy.dataEnabled | řetězec | Povolí nebo zakáže shromažďování telemetrie. Jedinou možnou hodnotou této vlastnosti jsou Enable, Disable, nebo $null. Když tuto vlastnost necháte prázdnou, nebo hodnota null, povolí se telemetrie.
+| settings.configurationData.url | string | Určuje adresu URL, ze které se má stáhnout soubor konfiguračních dat (. pds1), který se použije jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, bude nutné nastavit vlastnost protectedSettings. configurationDataUrlSasToken na hodnotu vašeho tokenu SAS.
+| settings.privacy.dataEnabled | string | Povolí nebo zakáže shromažďování telemetrie. Jedinou možnou hodnotou této vlastnosti jsou Enable, Disable, nebo $null. Když tuto vlastnost necháte prázdnou, nebo hodnota null, povolí se telemetrie.
 | settings.advancedOptions.forcePullAndApply | Bool | Toto nastavení je navrženo pro zlepšení možností práce s rozšířením pro registraci uzlů pomocí Azure Automation DSC.  Pokud je hodnota `$true`, bude rozšíření čekat na první spuštění konfigurace načtené ze služby před vrácením úspěchu/neúspěchu.  Pokud je hodnota nastavena na $false, stav vrácený rozšířením bude odkazovat pouze na to, zda byl uzel registrován s konfigurací stavu Azure Automation úspěšně a že konfigurace uzlu nebude spuštěna během registrace.
 | settings.advancedOptions.downloadMappings | Kolekce | Definuje alternativní umístění pro stahování závislostí, jako jsou WMF a .NET.
 
 ### <a name="protected-settings-property-values"></a>Hodnoty vlastností chráněných nastavení
 
-| Název | Typ dat | Popis
+| Název | Datový typ | Popis
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | řetězec | Definuje všechny parametry, které byste chtěli předat konfiguraci DSC. Tato vlastnost bude zašifrována. |
-| protectedSettings.configurationUrlSasToken | řetězec | Určuje token SAS pro přístup k adrese URL definované pomocí Configuration. URL. Tato vlastnost bude zašifrována. |
-| protectedSettings.configurationDataUrlSasToken | řetězec | Určuje token SAS pro přístup k adrese URL definované pomocí configurationData. URL. Tato vlastnost bude zašifrována. |
+| protectedSettings.configurationArguments | string | Definuje všechny parametry, které byste chtěli předat konfiguraci DSC. Tato vlastnost bude zašifrována. |
+| protectedSettings.configurationUrlSasToken | string | Určuje token SAS pro přístup k adrese URL definované pomocí Configuration. URL. Tato vlastnost bude zašifrována. |
+| protectedSettings.configurationDataUrlSasToken | string | Určuje token SAS pro přístup k adrese URL definované pomocí configurationData. URL. Tato vlastnost bude zašifrována. |
 
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru.
 Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení.
@@ -135,7 +135,7 @@ Ukázková Správce prostředků Šablona obsahující rozšíření DSC pro Win
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 
@@ -163,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 | Kód chyby | Význam | Je to možné akce |
 | :---: | --- | --- |
-| 1000 | Obecná chyba | Zpráva o této chybě je poskytována specifickou výjimkou v protokolech rozšíření. |
+| 1 000 | Obecná chyba | Zpráva o této chybě je poskytována specifickou výjimkou v protokolech rozšíření. |
 | 52 | Chyba instalace rozšíření | Zpráva o této chybě je poskytnuta specifickou výjimkou. |
 | 1002 | Chyba instalace WMF | Při instalaci WMF došlo k chybě. |
 | 1004 | Neplatný balíček zip | Neplatný PSČ; Při dekomprimaci souboru ZIP došlo k chybě. |

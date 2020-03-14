@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381447"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280531"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integrace Azure Active Directory pro Azure Red Hat OpenShift
 
@@ -92,22 +92,27 @@ Podrobnosti o vytvoření nové aplikace Azure AD najdete v tématu [Registrace 
 
 ## <a name="add-api-permissions"></a>Přidat oprávnění rozhraní API
 
-1. V části **Spravovat** klikněte na **oprávnění rozhraní API**.
-2. Klikněte na **Přidat oprávnění** a vyberte **Azure Active Directory Graph** a pak **delegovaná oprávnění**. 
-3. V níže uvedeném seznamu rozbalte položku **uživatel** a povolte oprávnění **uživatel. číst** . Pokud je ve výchozím nastavení povolená možnost **User. Read** , ujistěte se, že se jedná o uživatele s oprávněním **Azure Active Directory Graph** **. číst**, *ne* oprávnění **Microsoft Graph** **uživatel. čtení**.
+[//]: # (Neměňte Microsoft Graph. Nefunguje s Microsoft Graph.)
+1. V části **Spravovat** klikněte na **oprávnění rozhraní API** .
+2. Klikněte na **Přidat oprávnění** a vyberte **Azure Active Directory Graph** a pak **delegovaná oprávnění**.
+> [!NOTE]
+> Ujistěte se, že jste vybrali "Azure Active Directory Graph", a ne dlaždici "Microsoft Graph".
+
+3. V níže uvedeném seznamu rozbalte položku **uživatel** a povolte oprávnění **uživatel. číst** . Pokud je ve výchozím nastavení povolená možnost **User. Read** , ujistěte se, že se jedná o oprávnění **Azure Active Directory Graph** **User. Read**.
 4. Přejděte nahoru a vyberte **oprávnění aplikace**.
-5. Rozbalte položku **adresář** v následujícím seznamu a povolte možnost **adresář. ReadAll**
+5. Rozbalte položku **adresář** v následujícím seznamu a povolte **adresář. ReadAll**.
 6. Kliknutím na tlačítko **Přidat oprávnění** přijměte změny.
 7. Panel oprávnění rozhraní API by teď měl zobrazovat *User. Read* a *Directory. ReadAll*. Všimněte si prosím upozornění ve sloupci **požadováno souhlasu správce** vedle *Directory. ReadAll*.
 8. Pokud jste *správcem předplatného Azure*, klikněte níže na **udělit souhlas správce pro *název předplatného***  . Pokud nejste *správcem předplatného Azure*, požádejte o souhlas správce.
-![snímek obrazovky panelu oprávnění rozhraní API. Přidaná oprávnění User. Read a Directory. ReadAll, pro Directory. ReadAll se vyžaduje souhlas správce.](./media/howto-aad-app-configuration/permissions-required.png)
+
+![Snímek obrazovky s panelem oprávnění rozhraní API Přidaná oprávnění User. Read a Directory. ReadAll, pro Directory. ReadAll se vyžaduje souhlas správce.](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
 > Synchronizace skupiny správců clusteru bude fungovat až po udělení souhlasu. V sloupci *požadováno souhlasu správce* se zobrazí zelený kroužek se značkami zaškrtnutí a zpráva "uděleno pro *název předplatného*".
 
 Podrobnosti o správě správců a dalších rolí najdete v tématu [Přidání nebo změna správců předplatného Azure](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Prostředky
 
 * [Aplikace a instanční objekty služby v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 * [Rychlý Start: registrace aplikace pomocí koncového bodu Azure Active Directory v 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)

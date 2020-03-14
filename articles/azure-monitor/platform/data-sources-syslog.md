@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394431"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274720"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Zdroje dat syslog v Azure Monitor
 Syslog je protokol protokolování událostí, které jsou společné pro Linux. Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.  
@@ -27,7 +27,7 @@ Kolekce syslog podporuje následující zařízení:
 
 * párů
 * uživatel
-* e-mailu
+* pošta
 * proces
 * auth
 * syslog
@@ -196,11 +196,11 @@ Záznamy syslog mají typ **SYSLOG** a mají vlastnosti v následující tabulce
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Počítač, který událost byla shromážděna z. |
+| Computer |Počítač, který událost byla shromážděna z. |
 | Zařízení |Definuje části systému, který vygeneroval zprávu. |
 | HostIP |IP adresa systému posílání zprávy. |
 | název hostitele |Název systému posílání zprávy. |
-| SeverityLevel |Úroveň závažnosti události. |
+| Úroveň závažnosti |Úroveň závažnosti události. |
 | SyslogMessage |Text zprávy. |
 | ProcessID |ID procesu, který se vygeneroval zprávu. |
 | čas události |Datum a čas, která byla vygenerována událost. |

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387650"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265906"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Přesunutí dat ze zdroje OData pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -60,12 +60,12 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu OData.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **OData** . |Ano |
-| url |Adresa URL služby OData. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **OData** . |Ano |
+| Adresa URL |Adresa URL služby OData. |Ano |
 | authenticationType |Typ ověřování, který se používá pro připojení ke zdroji OData <br/><br/> Pro Cloud OData jsou možné hodnoty anonymní, základní a OAuth (Poznámka Azure Data Factory aktuálně podporuje jenom Azure Active Directory OAuth). <br/><br/> Pro místní OData jsou možné hodnoty anonymní, základní a Windows. |Ano |
-| uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze pokud používáte základní ověřování) |
+| username jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze pokud používáte základní ověřování) |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze pokud používáte základní ověřování) |
 | authorizedCredential |Pokud používáte OAuth, klikněte na tlačítko **autorizovat** v průvodci kopírováním Data Factory nebo v editoru a zadejte své přihlašovací údaje. hodnota této vlastnosti se vygeneruje automaticky. |Ano (jenom v případě, že používáte ověřování OAuth) |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní službě OData. Zadejte pouze v případě, že kopírujete data z místního zdroje OData. |Ne |
@@ -145,7 +145,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **ODataResource** (která zahrnuje datovou sadu OData) má následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | path |Cesta k prostředku OData |Ne |
 
@@ -156,9 +156,9 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity, se liší
 
 Pokud je zdroj typu **RelationalSource** (který zahrnuje OData), jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Příklad | Požaduje se |
+| Vlastnost | Popis | Příklad | Požadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |"?$select=Name, Description&$top=5" |Ne |
+| dotaz |Pomocí vlastního dotazu můžete číst data. |"?$select=Name, Description&$top=5" |Ne |
 
 ## <a name="type-mapping-for-odata"></a>Mapování typů pro OData
 Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , aktivita kopírování provádí automatické převody typů ze zdrojových typů do typů jímky s následujícím dvěma kroky.
@@ -173,16 +173,16 @@ Při přesunu dat z OData se z typů OData do typu .NET používají následují
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |DateTime |
+| Edm.DateTime |Datum a čas |
 | Edm.Decimal |Decimal |
 | Edm.Double |Double |
-| Edm.Single |Jednoduchá |
+| Edm.Single |Jednoduché |
 | Edm.Guid |identifikátor GUID |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Datový typ Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |Řetězec |
+| Edm.String |String |
 | Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 

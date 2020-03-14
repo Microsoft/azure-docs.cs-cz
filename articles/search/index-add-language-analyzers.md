@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379698"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283144"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
@@ -64,7 +64,7 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 
 |Jazyk|Název programu Microsoft Analyzer|Název analyzátoru Lucene|  
 |--------------|-----------------------------|--------------------------|  
-|arabština|ar.microsoft|ar. Lucene|  
+|Arabština|ar.microsoft|ar. Lucene|  
 |Arménština||HY. Lucene|  
 |Bengálština|bn.microsoft||  
 |Baskičtina||EU. Lucene|  
@@ -75,8 +75,8 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Chorvatština|hr.microsoft||  
 |Čeština|cs.microsoft|cs. Lucene|  
 |dánština|da.microsoft|da. Lucene|  
-|Holandština|nl.microsoft|NL – Lucene|  
-|Angličtina|en.microsoft|EN. Lucene|  
+|Nizozemština|nl.microsoft|NL – Lucene|  
+|angličtina|en.microsoft|EN. Lucene|  
 |Estonština|et.microsoft||  
 |Finština|fi.microsoft|Fi. Lucene|  
 |Francouzština|fr.microsoft|fr. Lucene|  
@@ -108,7 +108,7 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Rumunština|ro.microsoft|ro. Lucene|  
 |Ruština|ru.microsoft|ru. Lucene|  
 |Srbština (cyrilice)|sr-cyrillic.microsoft||  
-|Srbština (latinka)|sr-latin.microsoft||  
+|Srbština (Latina)|sr-latin.microsoft||  
 |Slovenština|sk.microsoft||  
 |Slovinština|sl.microsoft||  
 |Španělština|es.microsoft|ES. Lucene|  

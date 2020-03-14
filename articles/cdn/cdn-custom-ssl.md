@@ -16,11 +16,11 @@ ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394854"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238717"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 > - Ověření domény
 > - Zakázat protokol HTTPS pro vlastní doménu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
@@ -286,7 +286,7 @@ Po zákazu funkce HTTPS vlastní domény může trvat 6 až 8 hodin, než se zm�
 
 Následující tabulka ukazuje průběh operace, která proběhne při zákazu HTTPS. Po zákazu HTTPS se v dialogovém okně vlastní domény zobrazí tři kroky operace. Když se jednotlivé kroky aktivují, zobrazí se pod nimi další podrobnosti. Po úspěšném dokončení kroku se vedle něj zobrazí zelená značka zaškrtnutí. 
 
-| Průběh operace | Podrobnosti o operaci | 
+| Průběh operace | Podrobnosti operace | 
 | --- | --- |
 | 1\. Odesílání žádosti | Odesílání vaší žádosti |
 | 2\. Zrušení zřízení certifikátu | Odstraňování certifikátu |

@@ -3,12 +3,12 @@ title: Instalace agenta Microsoft Azure Recovery Services (MARS)
 description: Naučte se, jak nainstalovat agenta Microsoft Azure Recovery Services (MARS) pro zálohování počítačů s Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: cf6b332c308bb0224dbfed546f8b3ba819abcb02
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673092"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247758"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalace agenta Azure Backup MARS
 
@@ -98,6 +98,10 @@ Další informace najdete v tématu [požadavky na směrování ExpressRoute](ht
 > Veřejné partnerské vztahy se pro nové okruhy zastaraly.
 
 Všechny předchozí adresy URL a IP adresy používají protokol HTTPS na portu 443.
+
+### <a name="private-endpoints"></a>Soukromé koncové body
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="download-the-mars-agent"></a>Stáhnout agenta MARS
 

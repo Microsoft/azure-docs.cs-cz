@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: f009b438cb0dc227289d65604d89c11fd382b675
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.date: 03/12/2020
+ms.openlocfilehash: dce1697ccb40c67f8628c220799018a673be8e09
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246302"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics (dříve Azure SQL Data Warehouse) pomocí Azure Data Factory 
 
@@ -58,9 +58,9 @@ Následující části obsahují podrobné informace o vlastnostech, které defi
 
 Pro propojenou službu Azure synapse Analytics jsou podporovány následující vlastnosti:
 
-| Vlastnost            | Popis                                                  | Požaduje se                                                     |
+| Vlastnost            | Popis                                                  | Požadováno                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| type                | Vlastnost Type musí být nastavená na **AzureSqlDW**.             | Ano                                                          |
+| typ                | Vlastnost Type musí být nastavená na **AzureSqlDW**.             | Ano                                                          |
 | connectionString    | Zadejte informace potřebné pro připojení ke službě Azure synapse Analytics instance pro vlastnost **ConnectionString** . <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit klíč k hlavnímu názvu hesla nebo služby a v případě, že ověřování SQL vyžádá `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v příkladech JSON pod tabulkou a [přihlašovacími údaji pro Store v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano                                                          |
 | servicePrincipalId  | Zadejte ID klienta vaší aplikace.                         | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
@@ -219,9 +219,9 @@ Pokud chcete použít spravované ověřování identity, postupujte podle těch
 
 Pro datovou sadu Azure synapse Analytics jsou podporovány následující vlastnosti:
 
-| Vlastnost  | Popis                                                  | Požaduje se                    |
+| Vlastnost  | Popis                                                  | Požadováno                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | Vlastnost **Type** datové sady musí být nastavená na **AzureSqlDWTable**. | Ano                         |
+| typ      | Vlastnost **Type** datové sady musí být nastavená na **AzureSqlDWTable**. | Ano                         |
 | schéma | Název schématu. |Ne pro zdroj, Ano pro jímku  |
 | tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table`. | Ne pro zdroj, Ano pro jímku |
@@ -255,12 +255,13 @@ Pro datovou sadu Azure synapse Analytics jsou podporovány následující vlastn
 
 Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ** ve zdroji aktivity kopírování na **SqlDWSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost                     | Popis                                                  | Požaduje se |
+| Vlastnost                     | Popis                                                  | Požadováno |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SqlDWSource**. | Ano      |
+| typ                         | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SqlDWSource**. | Ano      |
 | sqlReaderQuery               | Použijte vlastní dotaz SQL číst data. Příklad: `select * from MyTable`. | Ne       |
 | sqlReaderStoredProcedureName | Název uložené procedury, která čte data ze zdrojové tabulky. Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. | Ne       |
 | storedProcedureParameters    | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název nebo hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. | Ne       |
+| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted** (default), **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Další podrobnosti najdete v [tomto dokumentu](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) . | Ne |
 
 **Příklad: použití dotazu SQL**
 
@@ -363,9 +364,9 @@ Nejrychlejší a nejškálovatelný způsob, jak načíst data, je prostřednict
 
 Chcete-li kopírovat data do Azure SQL Data Warehouse, nastavte typ jímky v aktivitě kopírování na **SqlDWSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost          | Popis                                                  | Požaduje se                                      |
+| Vlastnost          | Popis                                                  | Požadováno                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| type              | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **SqlDWSink**. | Ano                                           |
+| typ              | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **SqlDWSink**. | Ano                                           |
 | allowPolyBase     | Označuje, zda se má k načtení dat do SQL Data Warehouse použít základ. `allowCopyCommand` a `allowPolyBase` nemohou být současně true. <br/><br/>Omezení a podrobnosti najdete v tématu [použití základu k načtení dat do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) části.<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne.<br/>Platí při použití základny.     |
 | polyBaseSettings  | Skupina vlastností, které lze zadat, je-li vlastnost `allowPolybase` nastavena na **hodnotu true**. | Ne.<br/>Platí při použití základny. |
 | allowCopyCommand | Označuje, zda se má při načítání dat do SQL Data Warehouse použít [příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (Preview). `allowCopyCommand` a `allowPolyBase` nemohou být současně true. <br/><br/>Omezení a podrobnosti najdete v tématu [použití příkazu copy k načtení dat do Azure SQL Data Warehouse](#use-copy-statement) části.<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne.<br>Použijte při použití kopírování. |
@@ -404,7 +405,7 @@ Použití [základny](https://docs.microsoft.com/sql/relational-databases/polyba
 
 V části `polyBaseSettings` v aktivitě kopírování jsou podporovány následující základní nastavení:
 
-| Vlastnost          | Popis                                                  | Požaduje se                                      |
+| Vlastnost          | Popis                                                  | Požadováno                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | Určuje číslo nebo procentuální podíl řádků, které mohou být odmítnuty předtím, než se dotaz nezdaří.<br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v oddílu argumenty v tématu [vytvoření externí tabulky (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Povolené hodnoty jsou 0 (výchozí), 1, 2, atd. | Ne                                            |
 | rejectType        | Určuje, zda je možnost **rejectValue** hodnotou literálu nebo procentem.<br/><br/>Povolené hodnoty jsou **hodnota** (výchozí) a **procento**. | Ne                                            |
@@ -627,7 +628,7 @@ Použití příkazu COPY podporuje následující konfiguraci:
 
 V části `allowCopyCommand` v aktivitě kopírování jsou podporovány následující nastavení příkazu COPY:
 
-| Vlastnost          | Popis                                                  | Požaduje se                                      |
+| Vlastnost          | Popis                                                  | Požadováno                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues – výchozí | Určuje výchozí hodnoty pro každý cílový sloupec v SQL DW.  Výchozí hodnoty ve vlastnosti přepíší výchozí sadu omezení v datovém skladu a sloupec identity nemůže mít výchozí hodnotu. | Ne |
 | additionalOptions | Další možnosti, které budou předány příkazu kopírování SQL DW přímo v klauzuli WITH v [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Zarovnejte hodnotu podle potřeby, aby odpovídala požadavkům příkazu COPY. | Ne |
@@ -747,9 +748,9 @@ Když kopírujete data z nebo do služby Azure synapse Analytics, používají s
 | binary                                | Byte[]                         |
 | bit                                   | Logická hodnota                        |
 | char                                  | String, Char[]                 |
-| date                                  | DateTime                       |
-| Datum a čas                              | DateTime                       |
-| datetime2                             | DateTime                       |
+| date                                  | Datum a čas                       |
+| Datum a čas                              | Datum a čas                       |
+| datetime2                             | Datum a čas                       |
 | Datetimeoffset                        | DateTimeOffset                 |
 | Decimal                               | Decimal                        |
 | Atribut FILESTREAM (varbinary(max)) | Byte[]                         |
@@ -762,7 +763,7 @@ Když kopírujete data z nebo do služby Azure synapse Analytics, používají s
 | nvarchar                              | String, Char[]                 |
 | real                                  | Jednoduché                         |
 | rowversion                            | Byte[]                         |
-| smalldatetime                         | DateTime                       |
+| smalldatetime                         | Datum a čas                       |
 | smallint                              | Int16                          |
 | smallmoney                            | Decimal                        |
 | time                                  | TimeSpan                       |

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374465"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265958"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API v Azure API Management
 
@@ -346,14 +346,14 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`apiId`|řetězec|ID aktuálního rozhraní API|  
-|`apiName`|řetězec|Název rozhraní API.|  
-|`apiDescription`|řetězec|Popis rozhraní API|  
+|`apiId`|string|ID aktuálního rozhraní API|  
+|`apiName`|string|Název rozhraní API.|  
+|`apiDescription`|string|Popis rozhraní API|  
 |`api`|[Souhrnná entita rozhraní API](api-management-template-data-model-reference.md#APISummary) .|Aktuální rozhraní API.|  
 |`operation`|[Operace](api-management-template-data-model-reference.md#Operation)|Aktuálně zobrazená operace.|  
-|`sampleUrl`|řetězec|Adresa URL aktuální operace|  
+|`sampleUrl`|string|Adresa URL aktuální operace|  
 |`operationMenu`|[Nabídka operace](api-management-template-data-model-reference.md#Menu)|Nabídka operací pro toto rozhraní API.|  
-|`consoleUrl`|Identifikátor URI|Identifikátor URI pro tlačítko **vyzkoušet**|  
+|`consoleUrl`|URI|Identifikátor URI pro tlačítko **vyzkoušet**|  
 |`samples`|Kolekce entit s [ukázkami kódu](api-management-template-data-model-reference.md#Sample) .|Ukázky kódu pro aktuální operaci..|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  

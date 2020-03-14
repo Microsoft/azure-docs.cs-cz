@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365601"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254531"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení StorSimple Virtual Array – Příprava Azure Portal
 

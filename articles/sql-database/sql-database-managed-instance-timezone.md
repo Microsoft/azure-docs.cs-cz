@@ -11,11 +11,11 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 09/03/2019
 ms.openlocfilehash: 0dbed3db8e106b9bfe1b48ff2b9bc52840fc4c3a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380109"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256091"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časová pásma ve Azure SQL Database Managed instance
 
@@ -240,7 +240,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 | Samoa (běžný čas) | (UTC + 13:00) Samoa |
 | Ostrovy line (běžný čas) | (UTC + 14:00) Kiritimati ostrov |
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Viz také: 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [V ČASOVÉm PÁSMu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

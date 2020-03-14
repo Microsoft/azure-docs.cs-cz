@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálo
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392054"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273472"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak:
 
 Ve výchozím nastavení Azure Backup Server komunikuje se servery VMware pomocí protokolu HTTPS. Pokud chcete nastavit připojení HTTPS, Stáhněte si certifikát certifikační autority (CA) VMware a naimportujte ho na Azure Backup Server.
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 - Pokud nechcete používat protokol HTTPS, můžete [zakázat ověřování certifikátu HTTPS pro všechny servery VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Obvykle se připojujete z prohlížeče na Azure Backup Server počítači k serveru vCenter/ESXi pomocí webového klienta vSphere. Když to uděláte poprvé, připojení není zabezpečené a zobrazí se následující.
@@ -146,7 +146,7 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 | Partner. Přiřadit virtuální počítač k fondu zdrojů            | Virtuální počítač. Konfigurace. dotazování nevlastněných souborů         | VirtualMachine. config. AdvancedConfig        |
 | Virtuální počítač. Konfigurace. Přidat nový disk                   | Virtuální počítač. Umístění Configuration. swapfile          | VirtualMachine.Config.SwapPlacement         |
 | Virtuální počítač. Konfigurace. rozšířené                       | Virtuální počítač. Interakce. vypnutí                     | Global.ManageCustomFields                   |
-| Virtuální počítač. Konfigurace. sledování změn disku           | Virtuální počítač. Inventáře. Vytvořit nový                     |                                             |
+| Virtuální počítač. Konfigurace. sledování změn disku           | Virtuální počítač. Inventáře. Vytvořit novou                     |                                             |
 | Virtuální počítač. Konfigurace. zapůjčení disku                     | Virtuální počítač. Zřizování. povolení přístupu k disku            |                                             |
 | Virtuální počítač. Konfigurace. rozšíří se virtuální disk            | Virtuální počítač. Zřizování. Povolení přístupu k disku jen pro čtení |                                             |
 | Virtuální počítač. Operace hosta. změny operací hosta | Virtuální počítač. Správa snímků. Vytvořit snímek       |                                             |

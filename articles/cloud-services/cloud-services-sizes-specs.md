@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660422"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247472"
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
 Toto téma popisuje dostupné velikosti a možnosti pro instance rolí cloudové služby (webové role a role pracovního procesu). Poskytuje taky požadavky na nasazení, které vám pomají vědět, kdy plánujete tyto prostředky používat. Každá velikost má ID, které jste umístili do [souboru definice služby](cloud-services-model-and-package.md#csdef). Ceny za jednotlivé velikosti jsou k dispozici na stránce [Cloud Services ceny](https://azure.microsoft.com/pricing/details/cloud-services/) .
@@ -55,14 +55,14 @@ Vytvořili jsme koncept výpočetní jednotky Azure (ACU), aby bylo možné poro
 | --- | --- |
 | [ExtraSmall](#a-series) |50 |
 | [Malé ExtraLarge](#a-series) |100 |
-| [A5-7](#a-series) |100 |
+| [A5 – 7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
-| [D](#d-series) |160 |
-| [D v2](#dv2-series) |160 - 190* |
-| [D v3](#dv3-series) |160 - 190* |
-| [E v3](#ev3-series) |160 - 190* |
-| [G](#g-series) |180 - 240* |
+| [Trojrozměrné](#d-series) |160 |
+| [D V2](#dv2-series) |160 - 190* |
+| [D V3](#dv3-series) |160 - 190* |
+| [E V3](#ev3-series) |160 - 190* |
+| [Věcn](#g-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
 Hodnoty ACU s hvězdičkou označují použití technologie Intel® Turbo, která může zvýšit frekvenci procesoru podle aktuální potřeby. Množství nárůst se může lišit v závislosti na velikosti virtuálního počítače, úlohy a dalších úlohách spuštěných na stejném hostiteli.
@@ -78,13 +78,13 @@ Následující tabulky pro jednotlivé velikosti virtuálních počítačů uvá
 ## <a name="a-series"></a>A-Series
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště: GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| ExtraSmall      | 1\. místo         | 0,768        | 20                   | 1 / malá |
-| Malé           | 1\. místo         | 1,75         | 225                  | 1 / střední |
+| ExtraSmall      | 1         | 0,768        | 20                   | 1 / malá |
+| Malé           | 1         | 1,75         | 225                  | 1 / střední |
 | Střední          | 2         | 3,5          | 490                  | 1 / střední |
-| Velké           | 4         | 7            | 1 000                 | 2 / vysoká |
+| Velké           | 4         | 7            | 1 000                 | 2 / vysoká |
 | ExtraLarge      | 8         | 14           | 2040                 | 4 / vysoká |
 | A5              | 2         | 14           | 490                  | 1 / střední |
-| A6              | 4         | 28           | 1 000                 | 2 / vysoká |
+| A6              | 4         | 28           | 1 000                 | 2 / vysoká |
 | A7              | 8         | 56           | 2040                 | 4 / vysoká |
 
 ## <a name="a-series---compute-intensive-instances"></a>A-series – Instance náročné na výpočetní výkon
@@ -103,7 +103,7 @@ Informace a informace o použití těchto velikostí najdete v tématu [vysoké 
 
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_A1_v2  | 1\. místo         | 2            | 10                   | 1 / střední                 |
+| Standard_A1_v2  | 1         | 2            | 10                   | 1 / střední                 |
 | Standard_A2_v2  | 2         | 4            | 20                   | 2 / střední                 |
 | Standard_A4_v2  | 4         | 8            | 40                   | 4 / vysoká                     |
 | Standard_A8_v2  | 8         | 16           | 80                   | 8 / vysoká                     |
@@ -115,7 +115,7 @@ Informace a informace o použití těchto velikostí najdete v tématu [vysoké 
 ## <a name="d-series"></a>D-series
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_D1     | 1\. místo         | 3,5          | 50                   | 1 / střední |
+| Standard_D1     | 1         | 3,5          | 50                   | 1 / střední |
 | Standard_D2     | 2         | 7            | 100                  | 2 / vysoká |
 | Standard_D3     | 4         | 14           | 200                  | 4 / vysoká |
 | Standard_D4     | 8         | 28           | 400                  | 8 / vysoká |
@@ -124,10 +124,10 @@ Informace a informace o použití těchto velikostí najdete v tématu [vysoké 
 | Standard_D13    | 8         | 56           | 400                  | 8 / vysoká |
 | Standard_D14    | 16        | 112          | 800                  | 8 / velmi vysoká |
 
-## <a name="dv2-series"></a>Řada Dv2
+## <a name="dv2-series"></a>Dv2-series
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_D1_v2  | 1\. místo         | 3,5          | 50                   | 1 / střední |
+| Standard_D1_v2  | 1         | 3,5          | 50                   | 1 / střední |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2 / vysoká |
 | Standard_D3_v2  | 4         | 14           | 200                  | 4 / vysoká |
 | Standard_D4_v2  | 8         | 28           | 400                  | 8 / vysoká |
@@ -138,7 +138,7 @@ Informace a informace o použití těchto velikostí najdete v tématu [vysoké 
 | Standard_D14_v2 | 16        | 112          | 800                  | 8 / velmi vysoká |
 | Standard_D15_v2 | 20        | 140          | 1 000                | 8 / velmi vysoká |
 
-## <a name="dv3-series"></a>Dv3-Series
+## <a name="dv3-series"></a>Dv3-series
 
 | Velikost            | Procesorová jádra | Paměť: GiB   | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
@@ -149,7 +149,7 @@ Informace a informace o použití těchto velikostí najdete v tématu [vysoké 
 | Standard_D32_v3 | 32        | 128           | 800                  | 8 / velmi vysoká |
 | Standard_D64_v3 | 64        | 256           | 1600                 | 8 / velmi vysoká |
 
-## <a name="ev3-series"></a>Ev3-Series
+## <a name="ev3-series"></a>Ev3-series
 
 | Velikost            | Procesorová jádra | Paměť: GiB   | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
@@ -177,9 +177,9 @@ Virtuální počítače Azure H-series jsou další generací počítačů s vys
 
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_H8     | 8         | 56           | 1 000                 | 8 / vysoká |
+| Standard_H8     | 8         | 56           | 1 000                 | 8 / vysoká |
 | Standard_H16    | 16        | 112          | 2000                 | 8 / velmi vysoká |
-| Standard_H8m    | 8         | 112          | 1 000                 | 8 / vysoká |
+| Standard_H8m    | 8         | 112          | 1 000                 | 8 / vysoká |
 | Standard_H16m   | 16        | 224          | 2000                 | 8 / velmi vysoká |
 | Standard_H16r*  | 16        | 112          | 2000                 | 8 / velmi vysoká |
 | Standard_H16mr* | 16        | 224          | 2000                 | 8 / velmi vysoká |

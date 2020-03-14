@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 446091263596a1fd5503f38c6a60316f9b0b6843
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395289"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245171"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -226,7 +226,7 @@ Další informace o limitech pro vyrovnávání zatížení najdete v části "p
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster služby WSFC jste už nakonfigurovali pro použití pro jednu instanci SAP ASCS/SCS pomocí **sdílené složky**, jak je znázorněno v tomto diagramu.
 
@@ -384,7 +384,7 @@ Po spuštění skriptu se výsledky zobrazí v Azure Portal, jak je znázorněno
 
 Pro každou další instanci SAP ASCS/SCS je nutné přidat nový disk pro sdílení clusteru. Pro Windows Server 2012 R2 se sdílený disk clusteru služby WSFC, který se právě používá, je softwarové řešení s.
 
-Udělejte toto:
+Postupujte takto:
 1. Přidejte další disk nebo disky stejné velikosti (které je třeba protáhnout) do každého uzlu clusteru a naformátujte je.
 2. Nakonfigurujte replikaci úložiště s využitím datakeep.
 

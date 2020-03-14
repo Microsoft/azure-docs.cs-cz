@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395037"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256858"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
 
@@ -51,7 +51,7 @@ Procesový Server vygeneruje množství upozornění na stav. Tyto výstrahy a d
 
 **Typ výstrahy** | **Chyba** | **Řešení problémů**
 --- | --- | --- 
-![V pořádku][green] | Žádná  | Procesový Server je připojený a v pořádku.
+![V pořádku][green] | Žádné  | Procesový Server je připojený a v pořádku.
 ![Upozornění][yellow] | Zadané služby nejsou spuštěny. | 1. Ověřte, zda jsou služby spuštěny.<br/> 2. Pokud služby běží podle očekávání, postupujte podle pokynů níže a odstraňte potíže s [připojením a replikací](#check-connectivity-and-replication).
 ![Upozornění][yellow]  | Využití CPU > 80% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
 ![Kritická][red] |  Využití CPU > 95% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.<br/> 4. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzického serveru.

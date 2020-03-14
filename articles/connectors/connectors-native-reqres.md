@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 tags: connectors
 ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386520"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247277"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Příjem příchozích volání HTTPS a jejich reakce pomocí Azure Logic Apps
 
@@ -36,7 +36,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované 
 > * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -58,7 +58,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    ![Aktivační událost žádosti](./media/connectors-native-reqres/request-trigger.png)
 
-   | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
+   | Název vlastnosti | Název vlastnosti JSON | Požadováno | Popis |
    |---------------|--------------------|----------|-------------|
    | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
    | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
@@ -157,7 +157,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
 1. Chcete-li zadat další vlastnosti, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.
 
-   | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
+   | Název vlastnosti | Název vlastnosti JSON | Požadováno | Popis |
    |---------------|--------------------|----------|-------------|
    | **Metoda** | `method` | Ne | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
    | **Relativní cesta** | `relativePath` | Ne | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
@@ -231,7 +231,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu 
 
    Zde jsou další informace o vlastnostech, které lze nastavit v akci reakce. 
 
-   | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
+   | Název vlastnosti | Název vlastnosti JSON | Požadováno | Popis |
    |---------------|--------------------|----------|-------------|
    | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
    | **Hlavičky** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |

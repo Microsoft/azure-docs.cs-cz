@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355347"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283521"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

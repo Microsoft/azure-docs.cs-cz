@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359468"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269884"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analýza videosouborů a zvukových souborů pomocí Azure Media Services
 
@@ -71,7 +71,7 @@ Výstup obsahuje soubor JSON (Insights. JSON) se všemi přehledy, které najdet
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
-|language|Jazyk přepisu. Má sloužit k podpoře přepisu, kde každý řádek může mít jiný jazyk.|
+|jazyk|Jazyk přepisu. Má sloužit k podpoře přepisu, kde každý řádek může mít jiný jazyk.|
 |instance|Seznam časových rozsahů, ve kterých se zobrazil tento řádek Pokud je instance přepisu, bude mít pouze jednu instanci.|
 
 Příklad:
@@ -110,7 +110,7 @@ Příklad:
 |id|ID řádku OCR|
 |text|Text OCR|
 |jistotou|Spolehlivost rozpoznávání.|
-|language|Jazyk OCR.|
+|jazyk|Jazyk OCR.|
 |instance|Seznam časových rozsahů, ve kterých se zobrazilo toto optické rozpoznávání znaků (stejné optické rozpoznávání znaků se může několikrát zobrazit).|
 
 ```json
@@ -151,7 +151,7 @@ Příklad:
 |Název|Popis|
 |---|---|
 |id|ID obličeje|
-|jméno|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
+|name|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
 |jistotou|Spolehlivost identifikace obličeje.|
 |description|Popis celebrit. |
 |thumbnailId|ID miniatury této plochy.|
@@ -301,8 +301,8 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 |Název|Popis|
 |---|---|
 |id|ID popisku|
-|jméno|Název popisku (například "Computer", "TV").|
-|language|Název jazyka popisku (při překladu). BCP-47|
+|name|Název popisku (například "Computer", "TV").|
+|jazyk|Název jazyka popisku (při překladu). BCP-47|
 |instance|Seznam časových rozsahů, ve kterých se tento popisek objevil (popisek se může zobrazit víckrát). Každá instance má pole s jistotou. |
 
 ```json
@@ -361,7 +361,7 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 |id|ID klíčového slova.|
 |text|Text klíčového slova|
 |jistotou|Spolehlivost rozpoznávání klíčového slova|
-|language|Jazyk klíčového slova (při překladu).|
+|jazyk|Jazyk klíčového slova (při překladu).|
 |instance|Seznam časových rozsahů, ve kterých se toto klíčové slovo objevilo (klíčové slovo se může zobrazit víckrát).|
 
 ```json

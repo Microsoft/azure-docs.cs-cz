@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
 ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362704"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258054"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -51,8 +51,8 @@ Hostovaný operační systém | Libovolný hostovaný operační systém [podpor
 
 **Akce** | **Podrobnosti**
 --- | ---
-Změna velikosti disku na replikovaném virtuálním počítači s technologií Hyper-V | Nepodporuje se. Zakažte replikaci, proveďte tuto změnu a pak znovu povolte replikaci pro virtuální počítač.
-Přidat disk na replikovaný virtuální počítač Hyper-V | Nepodporuje se. Zakažte replikaci, proveďte tuto změnu a pak znovu povolte replikaci pro virtuální počítač.
+Změna velikosti disku na replikovaném virtuálním počítači s technologií Hyper-V | Není podporováno. Zakažte replikaci, proveďte tuto změnu a pak znovu povolte replikaci pro virtuální počítač.
+Přidat disk na replikovaný virtuální počítač Hyper-V | Není podporováno. Zakažte replikaci, proveďte tuto změnu a pak znovu povolte replikaci pro virtuální počítač.
 
 ## <a name="hyper-v-network-configuration"></a>Konfigurace sítě Hyper-V
 
@@ -158,10 +158,10 @@ Počet disků operačního systému | 1 | Nepodporovaná Chyba kontroly požadov
 Počet datových disků | 16 nebo méně  | Nepodporovaná Chyba kontroly požadovaných součástí
 Velikost virtuálního pevného disku datového disku | Až 4 095 GB | Nepodporovaná Chyba kontroly požadovaných součástí
 Síťové adaptéry | Podporuje se více adaptérů |
-Sdílené VHD | Nepodporuje se | Nepodporovaná Chyba kontroly požadovaných součástí
-Disk FC | Nepodporuje se | Nepodporovaná Chyba kontroly požadovaných součástí
+Sdílené VHD | Nepodporováno | Nepodporovaná Chyba kontroly požadovaných součástí
+Disk FC | Nepodporováno | Nepodporovaná Chyba kontroly požadovaných součástí
 Formát pevného disku | VIRTUÁLNÍHO <br/><br/> VHDX | Při převzetí služeb při selhání do Azure Site Recovery automaticky převede VHDX na VHD. Po navrácení služeb po obnovení do místního nasazení budou virtuální počítače nadále používat formát VHDX.
-BitLocker | Nepodporuje se | Aby bylo možné povolit replikaci virtuálního počítače, musí být nástroj BitLocker zakázán.
+BitLocker | Nepodporováno | Aby bylo možné povolit replikaci virtuálního počítače, musí být nástroj BitLocker zakázán.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače v Site Recovery.
 Typ virtuálního počítače | Generace 1<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 

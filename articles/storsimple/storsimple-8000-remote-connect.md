@@ -8,11 +8,11 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277298"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254778"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Vzdálené připojení k zařízení řady StorSimple 8000
 
@@ -189,7 +189,7 @@ Všechny předchozí postupy jsou popsány níže.
 3. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
    
     ![Průvodce importem certifikátu 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. Klikněte na **Dokončit**. Zobrazí se zpráva oznamující, že import proběhl úspěšně.
+4. Klikněte na **Finish** (Dokončit). Zobrazí se zpráva oznamující, že import proběhl úspěšně.
    
     ![Průvodce importem certifikátu 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 

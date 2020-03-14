@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386895"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247524"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Správa Cloud Services v Azure Portal
 V **Cloud Services** oblasti Azure Portal můžete:

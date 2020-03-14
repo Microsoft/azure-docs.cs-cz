@@ -10,11 +10,11 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
 ms.openlocfilehash: e53fb46b7c13e1feb0cc24663fb0782b4de06f2b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380062"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255818"
 ---
 # <a name="vcore-model-overview"></a>Přehled modelů virtuálních jader
 
@@ -35,8 +35,8 @@ Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro d�
 |Úložiště|Používá vzdálené úložiště.<br/>Izolované **databáze a elastické fondy zřízené COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>Izolované **databáze a elastické fondy zřízené COMPUTE**:<br/>5 GB – 4 TB<br/>**Spravovaná instance**:<br/>32 GB - 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
 |IOPS a propustnost (přibližná)|Izolované **databáze a elastické fondy**: Přečtěte si o omezeních prostředků pro izolované [databáze](../sql-database/sql-database-vcore-resource-limits-single-databases.md) a [elastické fondy](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).<br/>**Spravovaná instance**: Přečtěte si téma [Přehled Azure SQL Database omezení prostředků spravované instance](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|Viz omezení prostředků pro izolované [databáze](../sql-database/sql-database-vcore-resource-limits-single-databases.md) a [elastické fondy](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS a propustnosti budou záviset na zatížení.|
 |Dostupnost|1 replika, žádné repliky na úrovni čtení|3 repliky, 1 [replika pro čtení a škálování](sql-database-read-scale-out.md)<br/>zóna – redundantní vysoká dostupnost (HA)|1 replika pro čtení i zápis a 0-4 replik v režimu [čtení a škálování](sql-database-read-scale-out.md)|
-|Zálohování|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
-|V paměti|Nepodporuje se|Podporuje se|Nepodporuje se|
+|Zálohy|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
+|V paměti|Nepodporováno|Podporuje se|Nepodporováno|
 |||
 
 
@@ -95,7 +95,7 @@ Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutn�
 ### <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
 
-|Generování hardwaru  |Compute  |Memory (Paměť)  |
+|Generování hardwaru  |Výpočty  |Paměť  |
 |:---------|:---------|:---------|
 |COMPUTE GEN4 –     |– Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
 |Gen5     |**Zřízené výpočetní prostředky**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake) * procesory<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Výpočetní prostředí bez serveru**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake) * procesory<br>– Automatické škálování až na 16 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Výpočetní prostředí bez serveru**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 48 GB max.|

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393842"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221026"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Entity a jejich účel v LUIS
 

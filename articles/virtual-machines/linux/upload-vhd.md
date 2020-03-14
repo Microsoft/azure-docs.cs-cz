@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385019"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267102"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -118,7 +118,7 @@ az disk create \
     --source $snapshotId
 ```
 
-## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+## <a name="create-the-vm"></a>Vytvořit virtuální počítač
 
 Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) a Attach (--Attach-OS-disk) spravovaného disku jako disku s operačním systémem. Následující příklad vytvoří virtuální počítač s názvem *myNewVM* pomocí spravovaného disku, který jste vytvořili z nahraného VHD:
 

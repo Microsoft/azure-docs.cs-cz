@@ -4,11 +4,11 @@ description: Language Understanding (LUIS) umožňuje neustále pracovat na apli
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: ba7e23a72cd308dd4393bf9a581571e2bc9f5fa0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361090"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219816"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 

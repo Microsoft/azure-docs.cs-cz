@@ -9,11 +9,11 @@ ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: a19eb19c3a25d3856d5cf333bd64be888f65a6e2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893023"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239935"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující úlohy:
 > * Spusťte aplikaci, dokud výstrahy nezačnou aktivovat. 
 > * Podívejte se na výsledky metrik a zkontrolujte protokoly diagnostiky. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -196,7 +196,7 @@ IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-mo
 
     ![Snímek obrazovky znázorňující obrazovku s klasickými výstrahami](./media/tutorial-use-metrics-and-diags/09-view-classic-alerts.png)
 
-    Vyplňte jednotlivá pole: 
+    Vyplňte pole: 
 
     **Předplatné**: nechte toto pole nastavené na vaše aktuální předplatné.
 
@@ -210,7 +210,7 @@ IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-mo
 
 3. Kliknutím na **Přidat upozornění metriky (Classic)** nastavte novou výstrahu.
 
-    Vyplňte jednotlivá pole:
+    Vyplňte pole:
 
     **Název**: zadejte název pravidla upozornění, například *zprávy telemetrie*.
 

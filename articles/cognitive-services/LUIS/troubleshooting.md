@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393706"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219706"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy Language Understanding
 
@@ -113,7 +113,7 @@ Mezi řešení patří:
 * Pokud vaše využití přesáhne nejvyšší cenovou úroveň, přidejte další Language Understanding prostředky s nástrojem pro vyrovnávání zatížení před nimi. K tomu může pomáhat [kontejner Language Understanding](luis-container-howto.md) s Kubernetes nebo Docker Compose.
 * Pomocí [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , kterou sami implementujete, můžete své požadavky na klientskou aplikaci vymezit tak, že se zobrazí tento stavový kód. 
 
-### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Můj dotaz koncový bod vrátil neočekávané výsledky. Co bych měl/a dělat?
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Můj dotaz koncový bod vrátil neočekávané výsledky. Co mám dělat?
 
 Neočekávaný dotaz predikované výsledky jsou založeny na stav publikovaného modelu. Pokud chcete model opravit, možná budete muset model, vlak a publikování znovu změnit. 
 
@@ -158,11 +158,11 @@ Viz [zabezpečení koncového bodu](luis-concept-keys.md#securing-the-endpoint).
 ### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Jaký je maximální počet záměry a entity, které může podporovat aplikace LUIS?
 Podívejte se na odkaz [hranice](luis-boundaries.md) .
 
-### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Chci, aby k sestavení aplikace LUIS s více než maximální počet záměry. Co bych měl/a dělat?
+### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Chci, aby k sestavení aplikace LUIS s více než maximální počet záměry. Co mám dělat?
 
 Podívejte se [na osvědčené postupy pro záměry](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
 
-### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Chci vytvořit aplikaci v LUIS s více než maximální počet entit. Co bych měl/a dělat?
+### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Chci vytvořit aplikaci v LUIS s více než maximální počet entit. Co mám dělat?
 
 Zobrazit [osvědčené postupy pro entity](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
 

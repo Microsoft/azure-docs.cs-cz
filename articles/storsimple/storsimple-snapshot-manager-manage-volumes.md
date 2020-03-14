@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365920"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254648"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Zobrazení a správa svazků pomocí Snapshot Manager StorSimple
 ## <a name="overview"></a>Přehled
@@ -130,8 +130,8 @@ K opětovnému prohledání svazků připojených k StorSimple Snapshot Manager 
 ## <a name="configure-and-back-up-a-basic-volume"></a>Konfigurace a zálohování základního svazku
 Pomocí následujícího postupu můžete nakonfigurovat zálohu základního svazku a potom buď spustit zálohování okamžitě, nebo vytvořit zásadu pro naplánované zálohování.
 
-### <a name="prerequisites"></a>Předpoklady
-Než začnete:
+### <a name="prerequisites"></a>Požadavky
+Před zahájením:
 
 * Ujistěte se, že zařízení StorSimple a hostitelský počítač jsou správně nakonfigurované. Další informace najdete [v poznámkách k nasazení místního zařízení StorSimple](storsimple-deployment-walkthrough-u2.md).
 * Nainstalujte a nakonfigurujte StorSimple Snapshot Manager. Další informace najdete v [nasazení StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
@@ -158,8 +158,8 @@ Provedením následujících kroků nakonfigurujte zálohování dynamického zr
 * Krok 1: pomocí nástroje Správa disků vytvořte dynamický zrcadlený svazek. 
 * Krok 2: ke konfiguraci zálohování použijte Snapshot Manager StorSimple.
 
-### <a name="prerequisites"></a>Předpoklady
-Než začnete:
+### <a name="prerequisites"></a>Požadavky
+Před zahájením:
 
 * Ujistěte se, že zařízení StorSimple a hostitelský počítač jsou správně nakonfigurované. Další informace najdete [v poznámkách k nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 * Nainstalujte a nakonfigurujte StorSimple Snapshot Manager. Další informace najdete v [nasazení StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
@@ -183,7 +183,7 @@ Správa disků je systémový nástroj pro správu pevných disků a svazků neb
 6. Na stránce **přiřadit písmeno jednotky nebo cestu** přijměte výchozí hodnoty a potom klikněte na tlačítko **Další**. 
 7. Na stránce **Formát svazku** v poli **velikost alokační jednotky** vyberte **64 KB**. Zaškrtněte políčko **provést rychlé formátování** a potom klikněte na tlačítko **Další**. 
 8. Na stránce **dokončení nového zrcadleného svazku** zkontrolujte nastavení a pak klikněte na **Dokončit**. 
-9. Zobrazí se zpráva oznamující, že základní disk bude převeden na dynamický disk. Klikněte na **Ano**.
+9. Zobrazí se zpráva oznamující, že základní disk bude převeden na dynamický disk. Klikněte na tlačítko**Ano**.
    
     ![Zpráva s dynamickým převodem disku](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. V nástroji Správa disků ověřte, že disk 1 a disk 2 jsou zobrazené jako dynamické zrcadlené svazky. (Funkce**Dynamic** by se měla zobrazit ve sloupci stav a barva pruhu kapacity by se měla změnit na červenou, což značí zrcadlený svazek.) 

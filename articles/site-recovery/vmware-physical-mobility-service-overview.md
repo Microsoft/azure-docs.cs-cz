@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362715"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256832"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
 
@@ -123,7 +123,7 @@ Instalační protokoly | Pod%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.
 /Role | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 /InstallLocation| Volitelný parametr. Určuje umístění instalace služby mobility (všechny složky).
 /Platform | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. **VMware** pro virtuální počítače VMware/fyzické servery; **Azure** pro virtuální počítače Azure.<br/><br/> Pokud pracujete s virtuálními počítači Azure jako s fyzickými počítači, zadejte **VMware**.
-/Silent| Volitelné. Určuje, jestli se má spustit instalační program v tichém režimu.
+/Silent| Volitelná. Určuje, jestli se má spustit instalační program v tichém režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace
 **Nastavení** | **Podrobnosti**
@@ -161,7 +161,7 @@ Využití | ./Install-d \<umístění instalace >-r \<MS/MT >-v VmWare-q
 -r | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 -d | Volitelný parametr. Určuje umístění instalace služby mobility:/usr/local/ASR.
 -v | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. **VMware** pro virtuální počítače VMware/fyzické servery; **Azure** pro virtuální počítače Azure.
--q | Volitelné. Určuje, jestli se má spustit instalační program v tichém režimu.
+-q | Volitelná. Určuje, jestli se má spustit instalační program v tichém režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace
 **Nastavení** | **Podrobnosti**

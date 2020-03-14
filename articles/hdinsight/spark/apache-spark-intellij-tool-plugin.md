@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381639"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239529"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Kurz: použití Azure Toolkit for IntelliJ k vytvoření Apache Sparkch aplikací pro cluster HDInsight
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Vývoj aplikací Apache Spark
 > * Odeslání aplikace do clusteru Azure HDInsight
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -205,7 +205,7 @@ Cluster HDInsight můžete propojit pomocí spravovaného uživatelského jména
         |Typ prostředku propojení|V rozevíracím seznamu vyberte **Služba Livy** .|
         |Koncový bod Livy| Zadejte koncový bod Livy.|
         |Název clusteru| Zadejte název clusteru.|
-        |Koncový bod příze|Volitelné.|
+        |Koncový bod příze|Volitelná.|
         |Typ ověřování| Ponechat jako **základní ověřování**|
         |Uživatelské jméno| Zadejte uživatelské jméno clusteru, výchozí nastavení je admin.|
         |Heslo| Zadejte heslo pro uživatelské jméno.|

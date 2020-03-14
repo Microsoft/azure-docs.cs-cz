@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383352"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250540"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Rozšíření ovladače NVIDIA GPU pro Windows
 
@@ -29,13 +29,13 @@ Toto rozšíření nainstaluje ovladače NVIDIA GPU na virtuální počítače �
 Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup).
 K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU pro [virtuální počítače řady Linux N-Series](hpccompute-gpu-linux.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
 Toto rozšíření podporuje následující OSs:
 
-| Distribuce | Verze |
+| Distribuce | Version |
 |---|---|
 | Windows 10 | Jádro |
 | Windows Server 2016 | Jádro |
@@ -71,11 +71,11 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Datový typ |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | řetězec |
-| type | NvidiaGpuDriverWindows | řetězec |
+| publisher | Microsoft.HpcCompute | string |
+| typ | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -139,7 +139,7 @@ az vm extension set `
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

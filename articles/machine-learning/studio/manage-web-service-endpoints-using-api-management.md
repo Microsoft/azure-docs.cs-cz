@@ -10,21 +10,24 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: d0e9fff56949125c5fa797e0e4ef7e1183448dd0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168574"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218026"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio (Classic) pomocí API Management
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>Přehled
 V této příručce se dozvíte, jak rychle začít používat API Management ke správě webových služeb Azure Machine Learning Studio (Classic).
 
 ## <a name="what-is-azure-api-management"></a>Co je Azure API Management?
 Azure API Management je služba Azure, která vám umožní spravovat definováním přístup uživatelů, omezení využití a řídicího panelu monitorování koncových bodů rozhraní REST API. Další podrobnosti najdete na [webu Azure API Management](https://azure.microsoft.com/services/api-management/) . Informace o tom, jak začít s Azure API Management, najdete v [příručce pro import a publikování](/azure/api-management/import-and-publish). Tato další příručku, která je na základě této příručce, popisuje další témata, včetně konfigurace oznámení, ceny, zpracování odpovědi, ověřování uživatelů, vytvoření produkty, předplatná pro vývojáře a mnoha využití.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení tohoto průvodce, budete potřebovat:
 
 * Účet Azure.
@@ -35,7 +38,7 @@ K dokončení tohoto průvodce, budete potřebovat:
 
 Webová služba Azure Machine Learning s instance služby API Management můžete spravovat.
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **+ Vytvořit prostředek**.
 3. Do vyhledávacího pole zadejte "API management" a pak vyberte prostředek "API management".
 4. Klikněte na možnost **Vytvořit**.
@@ -66,7 +69,7 @@ Vytvoření rozhraní API:
 4. Zadejte ** přípona adresy URL webového rozhraní API ". To se stane poslední část adresy URL, které zákazníci budou používat pro odesílání požadavků na instanci služby (v tomto příkladu "azureml-demo").
 5. V případě **schématu URL webového rozhraní API**vyberte **https**.
 6. V případě **produktů**vyberte **Starter**.
-7. Klikněte na možnost **Uložit**.
+7. Klikněte na **Uložit**.
 
 
 ## <a name="add-the-operations"></a>Přidání operací
@@ -103,7 +106,7 @@ Nejprve vytvořte operace pro službu Azure ml RRS:
 3. Pro **šablonu adresa URL**zadejte "`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`".
 4. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "BES Submit").
 5. Klikněte na tlačítko **odpovědi** > **přidejte** vlevo a vyberte **200 OK**.
-6. Klikněte na možnost **Uložit**.
+6. Klikněte na **Uložit**.
 
 ### <a name="start-a-batch-execution-job"></a>Spuštění úlohy provedení dávky služby
 
@@ -112,7 +115,7 @@ Nejprve vytvořte operace pro službu Azure ml RRS:
 3. Pro **příkaz HTTP**zadejte "`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`".
 4. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "BES Start").
 6. Klikněte na tlačítko **odpovědi** > **přidejte** vlevo a vyberte **200 OK**.
-7. Klikněte na možnost **Uložit**.
+7. Klikněte na **Uložit**.
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>Získat stav nebo výsledek úlohy provedení dávky služby
 
@@ -121,7 +124,7 @@ Nejprve vytvořte operace pro službu Azure ml RRS:
 3. Pro **šablonu adresa URL**zadejte "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`".
 4. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "BES status").
 6. Klikněte na tlačítko **odpovědi** > **přidejte** vlevo a vyberte **200 OK**.
-7. Klikněte na možnost **Uložit**.
+7. Klikněte na **Uložit**.
 
 ### <a name="delete-a-batch-execution-job"></a>Odstraňování úlohy provedení dávky služby
 
@@ -130,7 +133,7 @@ Nejprve vytvořte operace pro službu Azure ml RRS:
 3. Pro **šablonu adresa URL**zadejte "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`".
 4. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "BES Delete").
 5. Klikněte na tlačítko **odpovědi** > **přidejte** vlevo a vyberte **200 OK**.
-6. Klikněte na možnost **Uložit**.
+6. Klikněte na **Uložit**.
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>Volání operace z portálu pro vývojáře
 
@@ -245,9 +248,9 @@ Tento průvodce ukazuje funkční příklad v Pythonu. Budete ho muset upravit p
 
     import urllib2
     import json
-    workspace = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE WORKSPACE ID>"
-    service = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE SERVICE ID>"
-    api_key = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE API KEY>"
+    workspace = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE WORKSPACE ID>"
+    service = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE SERVICE ID>"
+    api_key = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE API KEY>"
     data = {
     "Inputs": {
         "input1": {

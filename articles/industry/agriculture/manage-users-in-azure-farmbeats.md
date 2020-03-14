@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392729"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271691"
 ---
 # <a name="manage-users"></a>Správa uživatelů
 
 Azure FarmBeats zahrnuje správu uživatelů pro uživatele, kteří jsou součástí vaší instance Azure Active Directory (Azure AD). Můžete přidat uživatele do instance Azure FarmBeats pro přístup k rozhraním API, zobrazit vygenerovaná mapování a získat přístup ke telemetrie senzorů z farmy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vyžaduje se instalace Azure FarmBeats. Další informace najdete v tématu [instalace Azure FarmBeats](install-azure-farmbeats.md).
 - ID e-mailu uživatelů, které chcete přidat nebo odebrat z instance služby Azure FarmBeats.

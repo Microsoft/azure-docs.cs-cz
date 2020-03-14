@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7d3b580a939d207bbcc410e13555cdaa28067f87
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
-ms.translationtype: MT
+ms.openlocfilehash: 03f383bd6e44a55388e0bef6a38c4a1880d6f044
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250983"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268259"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -370,7 +370,7 @@ Některé služby společnosti Microsoft pracují z sítí, které nelze zahrnou
 
 Pokud povolíte nastavení **Povolit důvěryhodné služby společnosti Microsoft...** , prostředky následujících služeb, které jsou zaregistrované ve stejném předplatném jako účet úložiště, budou mít přístup k omezené sadě operací, jak je popsáno níže:
 
-| Služba                  | Název poskytovatele prostředků     | Povolené operace                 |
+| Service                  | Název poskytovatele prostředků     | Povolené operace                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
 | Azure Backup             | Microsoft.RecoveryServices | Spuštění zálohování a obnovení nespravované disky ve virtuálních počítačích IAAS. (není vyžadované pro spravované disky). [Další informace](/azure/backup/backup-introduction-to-azure-backup). |
 | Azure Data Box           | Microsoft.DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Další informace](/azure/databox/data-box-overview). |
@@ -386,14 +386,14 @@ Pokud povolíte nastavení **Povolit důvěryhodné služby společnosti Microso
 
 Nastavení **Povolit důvěryhodné služby společnosti Microsoft...** umožňuje také konkrétní instanci níže uvedených služeb pro přístup k účtu úložiště, pokud explicitně [přiřadíte roli RBAC](storage-auth-aad.md#assign-rbac-roles-for-access-rights) k [spravované identitě přiřazené systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku. V takovém případě rozsah přístupu pro instanci odpovídá roli RBAC přiřazené spravované identitě.
 
-| Služba                        | Název poskytovatele prostředků                 | Účel            |
+| Service                        | Název poskytovatele prostředků                 | Účel            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure Cognitive Search         | Microsoft.Search/searchServices        | Umožňuje službám Kognitivní hledání získat přístup k účtům úložiště pro indexování, zpracování a dotazování. |
 | Úlohy Azure Container Registry | Microsoft.ContainerRegistry/registries | ACR úlohy mají přístup k účtům úložiště při vytváření imagí kontejneru. |
 | Azure Data Factory             | Microsoft. DataFactory/továrny        | Umožňuje přístup k účtům úložiště pomocí modulu runtime ADF. |
 | Azure Data Share               | Microsoft. datashare/Accounts           | Umožňuje přístup k účtům úložiště prostřednictvím sdílení dat. |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Další informace](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md). |
-| Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB experiment. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních instancí SQL Database pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. Tato funkce je aktuálně ve verzi Preview. [Další informace](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory          | Umožňuje přístup k datům v Azure Storage z synapse Analytics. |

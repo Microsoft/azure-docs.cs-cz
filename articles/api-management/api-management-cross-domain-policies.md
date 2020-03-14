@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126543"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265984"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -53,7 +53,7 @@ Pomocí zásad `cross-domain` zpřístupněte rozhraní API z klientů založen�
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Název|Popis|Požadováno|
 |----------|-----------------|--------------|
 |mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikaci souboru zásad pro Adobe více domén](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ano|
 
@@ -122,22 +122,22 @@ Tento příklad ukazuje, jak podporovat žádosti o předběžné lety, jako jso
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Název|Popis|Požadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|CORS|Kořenový element.|Ano|neuvedeno|
-|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins` může obsahovat jeden prvek `origin`, který určuje `*` pro povolení jakéhokoli původu, nebo jeden nebo více `origin` prvků, které obsahují identifikátor URI.|Ano|neuvedeno|
+|CORS|Kořenový element.|Ano|NEUŽÍVÁ SE.|
+|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins` může obsahovat jeden prvek `origin`, který určuje `*` pro povolení jakéhokoli původu, nebo jeden nebo více `origin` prvků, které obsahují identifikátor URI.|Ano|NEUŽÍVÁ SE.|
 |počátek|Hodnota může být buď `*`, aby povolovala všechny zdroje, nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Ano|Pokud je port v identifikátoru URI vynechán, použije se port 80 pro protokol HTTP a port 443 pro protokol HTTPS.|
 |povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje prvky `method`, které určují podporované příkazy HTTP. Hodnota `*` označuje všechny metody.|Ne|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
-|method|Určuje příkaz HTTP.|Pokud je k dispozici oddíl `allowed-methods`, je vyžadován alespoň jeden prvek `method`.|neuvedeno|
-|povoleno – hlavičky|Tento prvek obsahuje `header` prvky určující názvy hlaviček, které mohou být zahrnuty v žádosti.|Ne|neuvedeno|
-|vystavení – hlavičky|Tento prvek obsahuje `header` prvky určující názvy hlaviček, které budou přístupné pro klienta.|Ne|neuvedeno|
-|záhlaví|Určuje název záhlaví.|V `allowed-headers` nebo `expose-headers` je vyžadován alespoň jeden prvek `header`, pokud je oddíl přítomen.|neuvedeno|
+|metoda|Určuje příkaz HTTP.|Pokud je k dispozici oddíl `allowed-methods`, je vyžadován alespoň jeden prvek `method`.|NEUŽÍVÁ SE.|
+|povoleno – hlavičky|Tento prvek obsahuje `header` prvky určující názvy hlaviček, které mohou být zahrnuty v žádosti.|Ne|NEUŽÍVÁ SE.|
+|vystavení – hlavičky|Tento prvek obsahuje `header` prvky určující názvy hlaviček, které budou přístupné pro klienta.|Ne|NEUŽÍVÁ SE.|
+|záhlaví|Určuje název záhlaví.|V `allowed-headers` nebo `expose-headers` je vyžadován alespoň jeden prvek `header`, pokud je oddíl přítomen.|NEUŽÍVÁ SE.|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Název|Popis|Požadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|allow-credentials|Záhlaví `Access-Control-Allow-Credentials` v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|Ne|false (nepravda)|
+|allow-credentials|Záhlaví `Access-Control-Allow-Credentials` v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|Ne|false|
 |Kontrola před výstupem – výsledek – maximum – stáří|Záhlaví `Access-Control-Max-Age` v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost uživatelského agenta ukládat do mezipaměti před letem.|Ne|0|
 
 ### <a name="usage"></a>Využití
@@ -167,15 +167,15 @@ Pokud přidáte parametr zpětného volání `?cb=XXX` vrátí výsledek JSONP a
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Název|Popis|Požadováno|
 |----------|-----------------|--------------|
 |jsonp|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Název|Popis|Požadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Ano|neuvedeno|
+|zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Ano|NEUŽÍVÁ SE.|
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.

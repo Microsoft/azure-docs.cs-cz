@@ -8,11 +8,11 @@ ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272952"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240601"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -81,17 +81,17 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |---------|---------|:---------:|
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada – střed    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
-|USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|USA – východ 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA – východ 2     |     S8, S9, S8v2, S9v2   |    1    |
-|USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA – středojih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA – středozápad   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|USA – západ     |    S8, S9, S8v2, S9v2   |    2  |
-|USA – západ 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA – západ 2    |    S8, S9, S8v2, S9v2  |    1     |
+|Východní USA     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
+|Východní USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
+|Východní USA 2     |     S8, S9, S8v2, S9v2   |    1    |
+|Střed USA – sever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Střed USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Střed USA – jih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Střed USA – západ   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|Západní USA     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|Západní USA     |    S8, S9, S8v2, S9v2   |    2  |
+|Západní USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
+|Západní USA 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Evropa
 
