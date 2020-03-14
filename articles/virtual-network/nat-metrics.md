@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359087"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202174"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Metriky služby Azure Virtual Network NAT
 
@@ -31,23 +31,20 @@ Prostředky brány Azure Virtual Network NAT poskytují multidimenzionální met
 
 *Obrázek: Virtual Network NAT pro odchozí připojení do Internetu*
 
->[!NOTE] 
->Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](nat-overview.md#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
-
 ## <a name="metrics"></a>Metriky
 
 Prostředky brány NAT poskytují v Azure Monitor následující multidimenzionální metriky:
 
 | Metrika | Popis | Doporučená agregace | Dimenze |
 |---|---|---|---|
-| Bajty | Příchozí a odchozí bajty zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |
+| B | Příchozí a odchozí bajty zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |
 | Rámců | Příchozí a odchozí pakety zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |
 | Vyřazené pakety | Pakety vyřazené bránou NAT | Součet | / |
 | Počet připojení SNAT | Přechody stavu za interval | Součet | Stav připojení, protokol (6 TCP; 17 UDP) |
 | Celkový počet připojení SNAT | Aktuální aktivní připojení SNAT (počet používaných portů: ~ SNAT) | Součet | Protokol (6 TCP; 17 UDP) |
 
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 
 Výstrahy pro metriky je možné nakonfigurovat v Azure Monitor pro každou z výše uvedených [metrik](#metrics).
 

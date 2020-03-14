@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443413"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284301"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurace účtů testovacího prostředí v Azure Lab Services 
 V Azure Lab Services účet testovacího prostředí je kontejner pro spravované typy testovacích prostředí, jako je například učeben Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. 

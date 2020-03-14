@@ -13,11 +13,11 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377547"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266309"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
 Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům.

@@ -4,16 +4,16 @@ description: Přečtěte si, jak nahrát VHD na spravovaný disk Azure a zkopír
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 09/20/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f2eb0f59d460fbf8d6595db658bb3f5f9c4a6ad0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970343"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365845"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Nahrání virtuálního pevného disku do Azure pomocí Azure CLI
 
@@ -23,12 +23,12 @@ Pokud poskytujete řešení zálohování pro virtuální počítače s IaaS v A
 
 V současné době se podporuje přímé nahrávání pro disky Standard HDD, Standard SSD a Premium SSD. Pro ultra SSD se ještě nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Stáhněte si nejnovější [verzi nástroje AzCopy v10 za účelem](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 - Soubor VHD uložený místně
-- Pokud máte v úmyslu nahrát VHD z místního prostředí: virtuální pevný disk [připravený pro Azure](../windows/prepare-for-upload-vhd-image.md), uložený místně.
+- Pokud máte v úmyslu nahrát VHD z místního prostředí: virtuální pevný disk s pevnou velikostí, který [je připravený pro Azure](../windows/prepare-for-upload-vhd-image.md), je uložený místně.
 - Nebo spravovaný disk v Azure, pokud máte v úmyslu provést akci kopírování.
 
 ## <a name="create-an-empty-managed-disk"></a>Vytvoření prázdného spravovaného disku
@@ -79,8 +79,6 @@ Toto nahrávání má stejnou propustnost jako ekvivalentní [standardní pevný
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
-
-Pokud vaše SAS vyprší během nahrávání a zatím jste se nevolali `revoke-access`, můžete získat nové SAS, abyste mohli pokračovat v nahrávání pomocí `grant-access`.
 
 Po dokončení nahrávání a už nebudete muset na disk zapisovat další data, Odvolejte SAS. Odvoláním SAS dojde ke změně stavu spravovaného disku a budete moci připojit disk k virtuálnímu počítači.
 

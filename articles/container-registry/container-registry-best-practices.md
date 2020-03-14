@@ -4,11 +4,11 @@ description: Zjistěte, jak pomocí těchto osvědčených postupů efektivně p
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668475"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247069"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Osvědčené postupy pro službu Azure Container Registry
 
@@ -46,7 +46,7 @@ Vzhledem k tomu, že registry kontejnerů jsou prostředky, které se používaj
 
 I když můžete experimentovat s konkrétním typem hostitele, jako je služba Azure Container Instances, pravděpodobně budete chtít instanci kontejneru odstranit, jakmile budete hotovi. Můžete však také chtít zachovat kolekci imagí, které jste nasdíleli do služby Azure Container Registry. Umístěním registru do vlastní skupiny prostředků minimalizujete riziko nechtěného odstranění kolekce imagí v registru při odstraňování skupiny prostředků instance kontejneru.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Při ověřování ve službě Azure Container Registry existují dva primární scénáře: jednotlivé ověření a ověření služby (neboli bezobslužné ověření). Následující tabulka obsahuje stručný přehled těchto scénářů a doporučenou metodu ověřování pro každý z nich.
 

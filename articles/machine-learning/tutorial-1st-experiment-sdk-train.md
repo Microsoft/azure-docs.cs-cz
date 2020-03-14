@@ -11,11 +11,11 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354973"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238675"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
@@ -45,7 +45,7 @@ V této části kurzu spustíte kód v ukázce poznámkového bloku Jupyter */Cr
 
 
 > [!Warning]
-> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. Kurzy poznámkového bloku */Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* jsou včetně **veškerého kódu a dat potřebných** pro účely tohoto kurzu.
+> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. **not** Kurzy poznámkového bloku */Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* jsou včetně **veškerého kódu a dat potřebných** pro účely tohoto kurzu.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 00dbef7b4453ffcb54020340bde51f55827759a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360572"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284314"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Připojení nebo odpojení Galerie sdílených imagí v Azure Lab Services
 Učitelé/správce testovacího prostředí může uložit image virtuálního počítače šablony do [Galerie sdílených imagí](../../virtual-machines/windows/shared-image-galleries.md) Azure, aby ji mohli znovu použít jiní uživatelé. Jako první krok správce testovacího prostředí připojí existující galerii sdílených imagí k účtu testovacího prostředí. Jakmile je galerie sdílených imagí připojená, laboratoře vytvořené v účtu testovacího prostředí můžou ukládat image do galerie sdílených imagí. Ostatní učitelé můžou tuto image vybrat z Galerie sdílených imagí a vytvořit tak šablonu pro své třídy. 

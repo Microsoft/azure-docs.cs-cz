@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390527"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251034"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Práce s kanály, které přijímají živý datový proud s více přenosovými rychlostmi z místních kodérů
 
@@ -187,14 +187,14 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje? |
 | --- | --- | --- |
 | **Začátek** |**Začátek** |Ne (přechodný stav) |
-| **Instalovanou** |**Připraveno** (žádné spuštěné programy)<p><p>nebo<p>**Streamování** (aspoň jeden spuštěný program) |Ano |
+| **Instalovanou** |**Připraveno** (žádné spuštěné programy)<p><p>or<p>**Streamování** (aspoň jeden spuštěný program) |Ano |
 | **Zastaví** |**Zastaví** |Ne (přechodný stav) |
 | **Ukončen** |**Ukončen** |Ne |
 
 ## <a id="cc_and_ads"></a>Skryté titulky a vkládání reklam
 Následující tabulka ukazuje podporované standardy pro uzavřené titulky a vkládání reklam.
 
-| Standardní | Poznámky: |
+| Standard | Poznámky |
 | --- | --- |
 | CEA-708 a EIA-608 (708/608) |CEA-708 a EIA-608 jsou standardy titulků pro USA a Kanadu.<p><p>V současné době se titulky podporují jenom v případě, že se přenesou do kódovaného vstupního streamu. Potřebujete použít živý kodér médií, který může vkládat popisky 608 nebo 708 do kódovaného datového proudu, který je odeslán do Media Services. Media Services doručuje obsah pomocí vložených titulků vašim uživatelům. |
 | TTML uvnitř. ismt (textové stopy Smooth Streaming) |Media Services dynamické balení umožňuje klientům streamovat obsah v libovolném z následujících formátů: POMLČKy, HLS nebo Smooth Streaming. Pokud však ingestují fragmenty MP4 (Smooth Streaming) s titulky uvnitř. ismt (Smooth Streaming textové stopy), můžete datový proud doručovat pouze do Smooth Streaming klientů. |
@@ -225,10 +225,10 @@ Tady jsou další otázky týkající se práce s kanály a souvisejícími sou�
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>Názor
+## <a name="feedback"></a>Váš názor
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Příbuzná témata
+## <a name="related-topics"></a>Související témata
 [Doporučené na místních kodérech](media-services-recommended-encoders.md)
 
 [Azure Media Services fragmentované specifikace ingestování MP4](../media-services-fmp4-live-ingest-overview.md)

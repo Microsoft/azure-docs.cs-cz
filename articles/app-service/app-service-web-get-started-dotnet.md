@@ -6,16 +6,16 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382593"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241476"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Core v Azure
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v systému Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v .NET Core ve službě App Service v Linuxu](./containers/quickstart-dotnetcore.md).
+> Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v .NET Core ve službě App Service v Linuxu](./containers/quickstart-dotnetcore.md).
 >
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak nasadit první webovou aplikaci ASP.NET
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu nainstalujte <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> s úlohou **vývoje ASP.NET a web** .
 
@@ -87,7 +87,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci ASP.NET Core:
    |-|-|-|
    |Plán služby App Service| myAppServicePlan | Název plánu služby App Service. |
    | Umístění | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
-   | Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
+   | Velikost | Zdarma | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
 
    ![Vytvoření plánu služby App Service](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 

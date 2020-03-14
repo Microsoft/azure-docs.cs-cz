@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361388"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260303"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených v Azure Data Lake Storage Gen1
 Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Řízení přístupu na základě role (RBAC) a seznamy řízení přístupu (ACL) musí být nastavené tak, aby plně povolovaly přístup k datům pro uživatele a skupiny zabezpečení.
@@ -29,7 +29,7 @@ Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Ř
 
 Tento článek poskytuje pokyny, jak použít Azure Portal k provedení výše uvedených úloh. Podrobné informace o tom, jak Data Lake Storage Gen1 implementuje zabezpečení na úrovni účtu a dat, najdete v tématu [zabezpečení v Azure Data Lake Storage Gen1](data-lake-store-security-overview.md). Podrobné informace o tom, jak se v Data Lake Storage Gen1 implementují seznamy řízení přístupu (ACL), najdete v tématu [přehled Access Control v Data Lake Storage Gen1](data-lake-store-access-control.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -147,7 +147,7 @@ Když odeberete seznamy řízení přístupu (ACL) skupiny zabezpečení z Data 
    
     ![Přiřazení oprávnění ke skupině](./media/data-lake-store-secure-data/adl.remove.acl.png "Přiřazení oprávnění ke skupině")
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Kopírování dat z objektů blob Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

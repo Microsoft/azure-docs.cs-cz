@@ -12,11 +12,11 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2b8aef37e9e7a3022ffc799bba80e8944330b8f1
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128879"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241063"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: škálování COMPUTE pro synapse fond SQL s Azure PowerShell
 
@@ -24,7 +24,7 @@ Výpočetní prostředky pro synapse fond SQL (datový sklad) můžete škálova
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397363"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265035"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid schéma událostí pro úložiště objektů BLOB
 
@@ -294,12 +294,12 @@ Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| topic | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | subject | řetězec | Cesta definovaná vydavatelem k předmětu události |
 | eventType | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data události služby Blob Storage. |
+| data | object | Data události služby Blob Storage. |
 | dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
 | metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
@@ -307,20 +307,20 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| rozhraní api | řetězec | Operace, která aktivovala událost. |
+| api | řetězec | Operace, která aktivovala událost. |
 | clientRequestId | řetězec | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
 | Identifikátor | řetězec | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
 | eTag | řetězec | Hodnota, kterou můžete použít k podmíněnému provádění operací. |
 | contentType | řetězec | Typ obsahu zadaný pro objekt BLOB. |
-| contentLength | celé číslo | Velikost objektu BLOB v bajtech |
+| contentLength | integer | Velikost objektu BLOB v bajtech |
 | blobType | řetězec | Typ objektu BLOB Platné hodnoty jsou buď "BlockBlob" nebo "PageBlob". |
-| contentOffset | číslo | Posun v bajtech operace zápisu provedené v místě, kde aplikace aktivující události dokončila zápis do souboru. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů.|
+| contentOffset | number | Posun v bajtech operace zápisu provedené v místě, kde aplikace aktivující události dokončila zápis do souboru. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů.|
 | destinationUrl |řetězec | Adresa URL souboru, který bude existovat po dokončení operace. Například pokud je soubor přejmenován, vlastnost `destinationUrl` obsahuje adresu URL nového názvu souboru. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů.|
 | sourceUrl |řetězec | Adresa URL souboru, který existuje před operací. Například pokud je soubor přejmenován, `sourceUrl` obsahuje adresu URL původního názvu souboru před operací přejmenování. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů. |
-| url | řetězec | Cesta k objektu BLOB <br>Pokud klient používá REST API objektů blob, pak adresa URL má tuto strukturu: *\<úložiště-účet-název\>. blob.core.windows.net/\<kontejner-název\>/\<soubor-název\>* . <br>Pokud klient používá REST API Data Lake Storage, pak adresa URL má tuto strukturu: *\<úložiště-účet-název\>. dfs.core.windows.net/\<File-System-name\>/\<File-name\>* . |
-| rekurzivní | řetězec | `True` provést operaci na všech podřízených adresářích; jinak `False`. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů. |
+| Adresa URL | řetězec | Cesta k objektu BLOB <br>Pokud klient používá REST API objektů blob, pak adresa URL má tuto strukturu: *\<úložiště-účet-název\>. blob.core.windows.net/\<kontejner-název\>/\<soubor-název\>* . <br>Pokud klient používá REST API Data Lake Storage, pak adresa URL má tuto strukturu: *\<úložiště-účet-název\>. dfs.core.windows.net/\<File-System-name\>/\<File-name\>* . |
+| recursive | řetězec | `True` provést operaci na všech podřízených adresářích; jinak `False`. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů. |
 | sequencer | řetězec | Neprůhledná řetězcová hodnota představující logickou posloupnost událostí pro jakýkoliv konkrétní název objektu BLOB.  Uživatelé mohou použít standardní porovnání řetězců k pochopení relativní posloupnosti dvou událostí u stejného názvu objektu BLOB. |
-| storageDiagnostics | objekt | Diagnostická data jsou občas součástí služby Azure Storage. V případě, že je k dispozici, by se měly ignorovat příjemci událostí. |
+| storageDiagnostics | object | Diagnostická data jsou občas součástí služby Azure Storage. V případě, že je k dispozici, by se měly ignorovat příjemci událostí. |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379626"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282754"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Přehled importu dat – Azure Kognitivní hledání
 

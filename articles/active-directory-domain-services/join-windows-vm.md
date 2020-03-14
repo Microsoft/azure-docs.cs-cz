@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: iainfou
 ms.openlocfilehash: 05705d14db336b15a6ddf2317f9e69464c8e575b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378546"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239179"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Kurz: připojení virtuálního počítače s Windows serverem ke spravované doméně
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 

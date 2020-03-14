@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367654"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276124"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -45,11 +45,11 @@ Výslednou telemetrii můžete analyzovat spuštěním dotazu:
 
 Ve výsledcích si všimněte, že všechny položky telemetrie sdílejí kořen `operation_Id`. Když je ze stránky provedeno volání AJAX, je k telemetrie závislostí přiřazeno nové jedinečné ID (`qJSXU`) a ID pageView se používá jako `operation_ParentId`. Požadavek serveru pak použije ID AJAX jako `operation_ParentId`.
 
-| itemType   | name                      | ID           | operation_ParentId | operation_Id |
+| itemType   | jméno                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Skladová stránka                |              | STYz               | STYz         |
 | závislosti | ZÍSKAT/Home/Stock           | qJSXU        | STYz               | STYz         |
-| požadavek    | ZÍSKAT domácí/burzovní            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| request    | ZÍSKAT domácí/burzovní            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | závislosti | ZÍSKAT/API/Stock/Value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
 Když se `GET /api/stock/value` voláním do externí služby, musíte znát identitu tohoto serveru, abyste mohli `dependency.target` pole nastavit správně. Pokud externí služba nepodporuje monitorování, `target` je nastaveno na název hostitele služby (například `stock-prices-api.com`). Pokud však služba identifikuje sebe sama vrácením předdefinované hlavičky protokolu HTTP, `target` obsahuje identitu služby, která umožňuje Application Insights sestavení distribuovaného trasování pomocí dotazování telemetrie z této služby.

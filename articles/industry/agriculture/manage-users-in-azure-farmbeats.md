@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 47da8146d3984982a9024b3bd084a1ab384c944f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271691"
+ms.locfileid: "79298780"
 ---
 # <a name="manage-users"></a>Správa uživatelů
 
@@ -26,6 +26,8 @@ Azure FarmBeats zahrnuje správu uživatelů pro uživatele, kteří jsou souč�
 Azure FarmBeats používá pro ověřování, řízení přístupu a role Azure AD. Uživatele v tenantovi Azure AD můžete přidat jako uživatele v Azure FarmBeats.
 
 > [!NOTE]
+> Pokud uživatel není uživatelem tenanta Azure AD, dokončete instalaci podle pokynů v části **Přidání uživatelů Azure AD** .
+
 > Pokud se uživatel, kterého se pokoušíte přidat jako uživatel Azure FarmBeats, nenachází v tenantovi Azure AD, dokončete instalaci podle pokynů v části Přidání uživatelů Azure AD.
 
 Azure FarmBeats podporuje dva typy rolí uživatelů:
@@ -63,7 +65,7 @@ Odebrání uživatelů ze systému Azure FarmBeats:
 ## <a name="add-azure-ad-users"></a>Přidání uživatelů Azure AD
 
 > [!NOTE]
-> Uživatelé Azure FarmBeats musí existovat v tenantovi Azure AD, aby je bylo možné přiřadit k aplikacím a rolím. Pokud uživatel, který chcete přidat do služby Azure FarmBeats, ještě neexistuje v tenantovi Azure AD, postupujte podle pokynů v této části. Pokud uživatel existuje v tenantovi služby Azure AD, můžete tyto pokyny přeskočit.
+> Uživatelé Azure FarmBeats musí existovat v tenantovi Azure AD ještě předtím, než je přiřadíte k aplikacím a rolím. Pokud uživatel v tenantovi Azure AD neexistuje, postupujte podle pokynů v této části. Pokud uživatel už existuje v tenantovi Azure AD, přeskočte pokyny.
 
 Pokud chcete přidat uživatele do Azure AD, udělejte toto:
 

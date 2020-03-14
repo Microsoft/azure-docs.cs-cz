@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117159"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259471"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
@@ -261,7 +261,7 @@ Po odeslání tokenu SAS na odkaz odesílatele musí vydavatel přečíst odpov�
 
 Následující tabulka uvádí přístupová práva požadovaná pro různé operace týkající se Service Busch prostředků.
 
-| Operace | Požadovaná deklarace identity | Rozsah deklarací identity |
+| Funkce | Požadovaná deklarace identity | Rozsah deklarací identity |
 | --- | --- | --- |
 | **Hosting** | | |
 | Konfigurace autorizačního pravidla pro obor názvů |Správa |Libovolná adresa oboru názvů |

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 7265cd0e2d292a2d8cc7273d2746348629ec4a06
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082225"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219629"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -35,11 +35,11 @@ Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
-| Požaduje se | Účel |
+| Požadováno | Účel |
 |--|--|
 | Modul Docker | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
@@ -75,25 +75,25 @@ Následující tabulka popisuje minimální a doporučené přidělení prostře
 
 # <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimální | Doporučeno |
 |-----------|---------|-------------|
 | Převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimální | Doporučeno |
 |-----------|---------|-------------|
 | Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimální | Doporučeno |
 |-----------|---------|-------------|
 | Převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
 # <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimální | Doporučeno |
 |-----------|---------|-------------|
 | Vlastní převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 

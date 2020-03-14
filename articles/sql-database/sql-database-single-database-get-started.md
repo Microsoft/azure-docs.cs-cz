@@ -1,6 +1,6 @@
 ---
 title: Vytvoření izolované databáze
-description: Vytvořte a Dotazujte izolovanou databázi v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure.
+description: Vytvořte Azure SQL Database izolovanou databázi pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Dotaz na databázi pomocí Editoru dotazů v Azure Portal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,48 +10,43 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
-ms.date: 02/14/2020
-ms.openlocfilehash: 2dacdfaa5443707ab82ae53922ac439319375276
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359827"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240517"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Rychlý Start: vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure
+# <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rychlý Start: vytvoření samostatné databáze Azure SQL Database
 
-Vytvoření [jedné databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit a pak zadat dotaz na izolovanou databázi pomocí Azure Portal.
+V tomto rychlém startu pomocí Azure Portal, skriptu PowerShellu nebo skriptu Azure CLI vytvoříte Azure SQL Database jednu databázi. Pak Dotazujte databázi pomocí **Editoru dotazů** v Azure Portal. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/). 
+[Jediná databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení Azure SQL Database. V rámci [serveru SQL Database](sql-database-servers.md)můžete spravovat izolovanou databázi, která se nachází uvnitř [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v zadané oblasti Azure. V tomto rychlém startu vytvoříte novou skupinu prostředků a SQL Server pro novou databázi.
 
-Pro všechny kroky v tomto rychlém startu se přihlaste k [Azure Portal](https://portal.azure.com/).
+Izolovanou databázi můžete vytvořit na výpočetní úrovni *zřízené* nebo *neserverového serveru* . Zřízená databáze je předem přidělena pevná množství výpočetních prostředků, včetně procesoru a paměti, a používá jeden ze dvou [nákupních modelů](sql-database-purchase-models.md). Tento rychlý Start vytvoří zřízenou databázi pomocí nákupního modelu [založeného na Vcore](sql-database-service-tiers-vcore.md) , ale můžete také zvolit model [založený na DTU](sql-database-service-tiers-DTU.md) . 
+
+Výpočetní vrstva bez serveru je dostupná jenom v nákupním modelu založeném na vCore a má automaticky škálované výpočetní prostředky, včetně procesoru a paměti. Pokud chcete vytvořit izolovanou databázi na výpočetní úrovni bez serveru, přečtěte si téma [Vytvoření databáze bez serveru](sql-database-serverless.md#create-new-database-in-serverless-compute-tier).
+
+## <a name="prerequisite"></a>Požadavek
+
+- Aktivní předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/). 
 
 ## <a name="create-a-single-database"></a>Vytvoření izolované databáze
-
-Jedna databáze se dá vytvořit buď v zřízené, nebo na výpočetní úrovni bez serveru.
-
-- Jedna databáze v zřízené výpočetní úrovni je předem přidělena pevná množství výpočetních prostředků, včetně procesoru a paměti, pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md).
-- Jedna databáze na výpočetní úrovni bez serveru obsahuje řadu výpočetních prostředků, včetně procesoru a paměti, které se automaticky škálují a jsou dostupné jenom v [nákupních modelech založených na Vcore](sql-database-service-tiers-vcore.md).
-
-Když vytvoříte izolovanou databázi, nadefinujete taky [SQL Database Server](sql-database-servers.md) , který budete spravovat a umístit do [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v zadané oblasti.
-
-> [!NOTE]
-> V tomto rychlém startu se používá [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md), ale [nákupní model založený na DTU](sql-database-service-tiers-DTU.md) je také k dispozici.
-
-Vytvoření samostatné databáze obsahující ukázková data AdventureWorksLT:
 
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
 ## <a name="query-the-database"></a>Dotazování databáze
 
-Teď, když jste vytvořili databázi, použijte integrovaný nástroj pro dotazování v Azure Portal pro připojení k databázi a dotazování na data.
+Po vytvoření databáze můžete použít vestavěný **Editor dotazů** v Azure Portal pro připojení k databázi a dotazování na data.
 
+1. Na portálu vyhledejte a vyberte **databáze SQL**a pak ze seznamu vyberte svou databázi.
 1. Na stránce **SQL Database** pro vaši databázi v nabídce vlevo vyberte **Editor dotazů (Preview)** .
+1. Zadejte přihlašovací údaje správce serveru a vyberte **OK**.
+   
+   ![Přihlášení k editoru dotazů](./media/sql-database-single-database-get-started/query-editor-login.png)
 
-   ![Přihlášení k editoru dotazů](./media/sql-database-get-started-portal/query-editor-login.png)
-
-2. Zadejte přihlašovací údaje a vyberte **OK**.
-3. Do podokna **Editoru dotazů** zadejte následující dotaz.
+1. Do podokna **Editoru dotazů** zadejte následující dotaz.
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -60,28 +55,47 @@ Teď, když jste vytvořili databázi, použijte integrovaný nástroj pro dotaz
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-4. Vyberte **Spustit**a potom zkontrolujte výsledky dotazu v podokně **výsledků** .
+1. Vyberte **Spustit**a potom zkontrolujte výsledky dotazu v podokně **výsledků** .
 
-   ![Výsledky editoru dotazů](./media/sql-database-get-started-portal/query-editor-results.png)
+   ![Výsledky editoru dotazů](./media/sql-database-single-database-get-started/query-editor-results.png)
 
-5. Zavřete stránku **Editor dotazů** a po zobrazení výzvy k zahození neuložených úprav vyberte **OK** .
+1. Zavřete stránku **Editor dotazů** a po zobrazení výzvy k zahození neuložených úprav vyberte **OK** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete přejít k [dalším krokům](#next-steps), zachovejte tuto skupinu prostředků, databázový server a samostatnou databázi. Následující kroky ukazují, jak se připojit k databázi a dotazovat se na ni pomocí různých metod.
+Ponechte skupinu prostředků, server a izolovanou databázi, abyste přešli na další kroky, a Naučte se, jak se připojit a dotazovat se na databázi pomocí různých metod.
 
-Po dokončení používání těchto prostředků je můžete odstranit následujícím způsobem:
+Po dokončení používání těchto prostředků můžete odstranit vytvořenou skupinu prostředků, která také odstraní Server a samostatnou databázi.
 
-1. V nabídce vlevo v Azure Portal vyberte **skupiny prostředků**a pak vyberte **myResourceGroup**.
-2. Na stránce skupiny prostředků vyberte **Odstranit skupinu prostředků**.
-3. Do pole zadejte *myResourceGroup* a pak vyberte **Odstranit**.
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
+Chcete-li odstranit **myResourceGroup** a všechny jeho prostředky pomocí Azure Portal:
+
+1. Na portálu vyhledejte a vyberte **skupiny prostředků**a v seznamu vyberte **myResourceGroup** .
+1. Na stránce skupina prostředků vyberte **Odstranit skupinu prostředků**.
+1. V části **Zadejte název skupiny prostředků**zadejte *myResourceGroup*a pak vyberte **Odstranit**.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz rozhraní příkazového řádku Azure a použijte název vaší skupiny prostředků:
+
+```azurecli-interactive
+az group delete --name <your resource group>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující rutinu PowerShellu s použitím názvu vaší skupiny prostředků:
+
+ ```azurepowershell-interactive
+Remove-AzResourceGroup -Name <your resource group>
+```
+
+---
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k izolované databázi z místních nebo vzdálených nástrojů. Další informace najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
-- Po vytvoření pravidla brány firewall na úrovni serveru se [připojte a Dotazujte](sql-database-connect-query.md) databázi pomocí několika různých nástrojů a jazyků.
-  - [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)
-  - [Připojení a dotazování pomocí Azure Data Studia](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Informace o vytvoření izolované databáze v zřízené výpočetní úrovni pomocí Azure CLI najdete v [ukázkách Azure CLI](sql-database-cli-samples.md).
-- Pokud chcete vytvořit izolovanou databázi v zřízené výpočetní úrovni pomocí Azure PowerShell, přečtěte si téma [Azure PowerShell Samples](sql-database-powershell-samples.md).
-- Pokud chcete vytvořit izolovanou databázi na výpočetní úrovni bez serveru pomocí Azure PowerShellu, přečtěte si téma [Vytvoření databáze bez serveru](sql-database-serverless.md#create-new-database-in-serverless-compute-tier).
+[Připojení a dotazování](sql-database-connect-query.md) databáze pomocí různých nástrojů a jazyků:
+> [!div class="nextstepaction"]
+> [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)
+> 
+> [Připojení a dotazování pomocí Azure Data Studia](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)

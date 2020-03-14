@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7b1c7825beb769b610d661cb9644fc3f3919d548
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064559"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139058"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Vizualizace dat s využitím Azure Průzkumník dat 
 
@@ -42,6 +42,10 @@ Azure Průzkumník dat poskytuje možnost připojit se k [aplikaci Microsoft Exc
 ## <a name="grafana"></a>Grafana
 
 [Grafana](https://grafana.com) poskytuje modul plug-in Azure Průzkumník dat, který umožňuje vizualizovat data z Azure Průzkumník dat. Můžete [nastavit Azure Průzkumník dat jako zdroj dat pro Grafana a potom vizualizovat data](/azure/data-explorer/grafana). 
+
+## <a name="kibana"></a>Kibana
+
+Azure Průzkumník dat poskytuje možnost připojit se k [Kibana (stránka zjišťování)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) pomocí K2Bridge, open source konektoru. Můžete [nastavit Azure Průzkumník dat jako zdroj dat pro Kibana a potom vizualizovat data](/azure/data-explorer/k2bridge).
 
 ## <a name="odbc-connector"></a>Konektor ODBC
 

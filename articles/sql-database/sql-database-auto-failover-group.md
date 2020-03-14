@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
 ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355810"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269832"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -25,7 +25,7 @@ Skupiny s automatickým převzetím služeb při selhání je funkce SQL Databas
 > [!NOTE]
 > Když pracujete s jednou nebo ve fondu databází na serveru SQL Database a chcete více sekundárních umístění ve stejné nebo jiné oblasti, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md). 
 
-Pokud používáte skupiny s automatickým převzetím služeb při selhání se zásadami automatického převzetí služeb při selhání, jakékoli výpadky, které mají vliv na jednu nebo několik databází ve skupině, mají za následek automatické převzetí Typicky se jedná o incidenty, které se nedají samy zmírnit pomocí integrovaných automatických operací s vysokou dostupností. Mezi příklady triggerů převzetí služeb při selhání patří incident, který je způsobený vyzváněním nebo řídicím kanálem klienta SQL z důvodu nevracení paměti jádra operačního systému na několika výpočetních uzlech, nebo incidentu, který vychází z jednoho nebo více okruhů klientů, je mimo provoz, protože během ro byl vyjmut chybný síťový kabel utine vyřazení hardwaru z provozu.  Další informace najdete v tématu [SQL Database vysoké dostupnosti](sql-database-high-availability.md).
+Pokud používáte skupiny s automatickým převzetím služeb při selhání se zásadami automatického převzetí služeb při selhání, jakékoli výpadky, které mají vliv na jednu nebo několik databází ve skupině, mají za následek automatické převzetí Typicky se jedná o incidenty, které se nedají samy zmírnit pomocí integrovaných automatických operací s vysokou dostupností. Mezi příklady aktivačních událostí převzetí služeb při selhání patří incident způsobený výpadkem nebo řídicím cyklem klienta SQL z důvodu nevracení paměti jádra operačního systému na několika výpočetních uzlech nebo incidentu, který vychází z jednoho nebo více zazvonění klientů, protože během rutinní vyřazení hardwaru z provozu.  Další informace najdete v tématu [SQL Database vysoké dostupnosti](sql-database-high-availability.md).
 
 Skupiny s automatickým převzetím služeb při selhání poskytují koncové body naslouchacího procesu pro čtení i zápis a jen pro čtení, které během převzetí služeb při selhání zůstanou beze změny. Bez ohledu na to, jestli používáte ruční nebo automatickou aktivaci při selhání, převzetí služeb při selhání přepne všechny sekundární databáze ve skupině na primární. Po převzetí služeb při selhání databáze je záznam DNS automaticky aktualizován pro přesměrování koncových bodů do nové oblasti. Konkrétní data RPO a RTO najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
 
@@ -394,7 +394,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Správa převzetí služeb při selhání SQL Database s izolovanými databázemi a elastickými fondy
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -405,7 +405,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Správa skupin převzetí služeb při selhání SQL Database se spravovanými instancemi
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární instanci.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání.|

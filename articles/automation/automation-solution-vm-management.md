@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373228"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278542"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Řešení Start/Stop VMs during off-hours v Azure Automation
 
@@ -51,7 +51,7 @@ K dispozici jsou určitá oprávnění, která musí uživatel mít, aby mohli n
 
 Pokud chcete nasadit virtuální počítače spustit/zastavit v době mimo špičku do existujícího účtu Automation a pracovního prostoru Log Analytics, uživatel nasazení řešení vyžaduje pro **skupinu prostředků**následující oprávnění. Další informace o rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
 
-| Oprávnění | Obor|
+| Oprávnění | Scope|
 | --- | --- |
 | Microsoft. Automation/automationAccounts/Read | Skupina prostředků |
 | Microsoft. Automation/automationAccounts/Variables/Write | Skupina prostředků |
@@ -80,7 +80,7 @@ Pokud chcete nasadit virtuální počítače spustit/zastavit v době mimo špi�
 - Člen role **vývojář aplikace** [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Další informace o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
 - Přispěvatel v rámci předplatného nebo následujících oprávnění
 
-| Oprávnění |Obor|
+| Oprávnění |Scope|
 | --- | --- |
 | Microsoft. Authorization/Operations/Read | Předplatné|
 | Microsoft. Authorization/oprávnění/čtení |Předplatné|
@@ -105,7 +105,7 @@ Provedením následujících kroků přidejte řešení Start/Stop VMs during of
 
 2. Na stránce **Start/Stop VMS during off-hours** pro vybrané řešení zkontrolujte souhrnné informace a klikněte na **vytvořit**.
 
-   ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
+   ![portál Azure](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. Zobrazí se stránka **Přidat řešení** . Před importem do předplatného automatizace se zobrazí výzva ke konfiguraci řešení.
 
@@ -204,7 +204,7 @@ V prostředí, které obsahuje dvě nebo více součástí na více virtuálníc
 
 Toto řešení zahrnuje předem nakonfigurované Runbooky, plány a integraci s protokoly Azure Monitor, takže můžete přizpůsobit spouštění a vypínání virtuálních počítačů tak, aby vyhovovaly vašim obchodním potřebám.
 
-### <a name="runbooks"></a>Sady Runbook
+### <a name="runbooks"></a>Runbooky
 
 V následující tabulce jsou uvedeny Runbooky nasazené pro váš účet Automation pomocí tohoto řešení. Neprovádějte změny v kódu Runbooku. Místo toho napište vlastní Runbook pro nové funkce.
 
@@ -213,7 +213,7 @@ V následující tabulce jsou uvedeny Runbooky nasazené pro váš účet Automa
 
 Všechny nadřazené Runbooky obsahují parametr _whatIf_ . Při nastavení na **hodnotu true**podporuje _whatIf_ podrobné informace o přesném chování, které sada Runbook provede, když se spustí bez parametru _whatIf_ a ověří, jestli jsou cílené správné virtuální počítače. Pokud je parametr _whatIf_ nastaven na **hodnotu false**, sada Runbook provede pouze své definované akce.
 
-|Postup Runbook | Parametry | Popis|
+|Runbook | Parametry | Popis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> VMList: čárkami oddělený seznam virtuálních počítačů. Například _VM1, VM2, VM3_.<br> *WhatIf* ověří logiku sady Runbook bez provedení.|
@@ -278,11 +278,11 @@ Automatizace vytvoří dva typy záznamů v pracovním prostoru Log Analytics: p
 |ResourceGroup | Určuje název skupiny prostředků příslušné úlohy runbooku.|
 |ResourceProvider | Určuje službu Azure poskytující prostředky, které můžete nasadit a spravovat. Službě Automation odpovídá hodnota Azure Automation.|
 |ResourceType | Určuje typ prostředku v Azure. V případě služby Automation je hodnotou účet služby Automation přidružený k příslušnému runbooku.|
-|resultType | Stav úlohy runbooku. Možné hodnoty:<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>- Úspěch|
-|resultDescription | Popisuje výsledný stav úlohy runbooku. Možné hodnoty:<br>- Úloha se spustila<br>- Zpracování úlohy se nezdařilo<br>- Úloha je dokončená|
+|resultType | Stav úlohy runbooku. Možné hodnoty jsou:<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>- Úspěch|
+|resultDescription | Popisuje výsledný stav úlohy runbooku. Možné hodnoty jsou:<br>- Úloha se spustila<br>- Zpracování úlohy se nezdařilo<br>- Úloha je dokončená|
 |RunbookName | Určuje název runbooku.|
 |SourceSystem | Určuje zdrojový systém pro odeslaná data. Pro automatizaci je hodnota OpsManager|
-|StreamType | Určuje typ události. Možné hodnoty:<br>- Podrobné<br>- Výstup<br>- Chyba<br>- Varování|
+|StreamType | Určuje typ události. Možné hodnoty jsou:<br>- Podrobné<br>- Výstup<br>- Chyba<br>- Varování|
 |SubscriptionId | Určuje ID předplatného úlohy.
 |Čas | Datum a čas provedení úlohy runbooku.|
 
@@ -302,7 +302,7 @@ Automatizace vytvoří dva typy záznamů v pracovním prostoru Log Analytics: p
 |resultDescription | Zahrnuje výstupní datový proud z runbooku.|
 |RunbookName | Název sady Runbook.|
 |SourceSystem | Určuje zdrojový systém pro odeslaná data. Pro automatizaci je hodnota OpsManager.|
-|StreamType | Typ datového proudu úlohy. Možné hodnoty:<br>– Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné|
+|StreamType | Typ datového proudu úlohy. Možné hodnoty jsou:<br>– Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné|
 |Čas | Datum a čas provedení úlohy runbooku.|
 
 Když provedete jakékoli prohledávání protokolů, které vrátí záznamy kategorie **JobLogs** nebo **JobStreams**, můžete vybrat zobrazení **JobLogs** nebo **JobStreams** , které zobrazí sadu dlaždic shrnujících aktualizace vrácené hledáním.

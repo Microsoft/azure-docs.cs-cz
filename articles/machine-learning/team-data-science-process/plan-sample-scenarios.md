@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393415"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251619"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scénáře pro pokročilé analýzy ve službě Azure Machine Learning
 Tento článek popisuje řadu ukázkových zdrojů dat a cílových scénářů, které lze zpracovat v rámci [vědeckého zpracování týmových dat (TDSP)](overview.md). TDSP nabízí systematický přístup pro týmy spolupracovat na sestavování inteligentních aplikací. Scénáře uvedené tady ukazují možnosti dostupné v pracovním postupu zpracování dat, které se liší podle vlastností dat, zdrojová umístění a cíl úložiště v Azure.

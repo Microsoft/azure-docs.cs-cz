@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392567"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284600"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
@@ -60,7 +60,7 @@ Pak můžete použít všechny zásady sdíleného přístupu, které mají opr�
 
 Sady SDK, které můžete použít pro připojení k integrovanému koncovému bodu kompatibilnímu s centrem událostí, který IoT Hub zpřístupňuje zahrnutí:
 
-| Jazyk | Sada SDK | Příklad | Poznámky: |
+| Jazyk | Sada SDK | Příklad | Poznámky |
 | -------- | --- | ------ | ----- |
 | .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Rychlý start](quickstart-send-telemetry-dotnet.md) | Používá informace kompatibilní s Event Hubs. |
  Java | https://github.com/Azure/azure-event-hubs-java | [Rychlý start](quickstart-send-telemetry-java.md) | Používá informace kompatibilní s Event Hubs. |

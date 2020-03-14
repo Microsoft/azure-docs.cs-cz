@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389791"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265568"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytváření clusterů HDInsight pomocí Azure Data Lake Storage Gen1 pomocí Azure Portal
 
@@ -195,7 +195,7 @@ Cluster Spark můžete použít ke spouštění úloh Sparku na data, která jso
 
 Účet Data Lake Storage Gen1 můžete použít k zápisu dat z topologie s více podmnožinami. Pokyny k tomu, jak dosáhnout tohoto scénáře, najdete v tématu [použití Azure Data Lake Storage Gen1 s Apache Storm se službou HDInsight](../hdinsight/storm/apache-storm-write-data-lake-store.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [PowerShell: Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)

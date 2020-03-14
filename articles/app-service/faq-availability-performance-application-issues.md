@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355632"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259861"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se výkonu aplikací pro Web Apps v Azure
 
@@ -92,8 +92,9 @@ Informace o kvótách a omezeních najdete v tématu [omezení App Service](../a
 Ve výchozím nastavení jsou webové aplikace uvolněny, pokud nejsou po stanovenou dobu nečinné. Systém tak může šetřit prostředky. Nevýhodou je to, že odpověď na první požadavek po uvolnění webové aplikace je delší, aby mohla webová aplikace načíst a začít obsluhovat odpovědi. V plánech Basic a Standard můžete zapnout nastavení **Always On** , aby se aplikace pořád načetla. Tím se eliminuje delší doba načítání po nečinnosti aplikace. Chcete-li změnit nastavení **vždy zapnuto** :
 
 1. V Azure Portal přejdete do své webové aplikace.
-2. Vyberte **nastavení aplikace**.
-3. Pro možnost **vždy zapnuto**vyberte **zapnuto**.
+2. Vybrat **konfiguraci**
+3. Vyberte **Obecné nastavení**.
+4. Pro možnost **vždy zapnuto**vyberte **zapnuto**.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Návody zapnout trasování chybných požadavků?
 

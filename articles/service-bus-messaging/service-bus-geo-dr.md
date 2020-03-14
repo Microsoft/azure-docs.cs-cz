@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355977"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259575"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
 
@@ -113,7 +113,7 @@ Pokud se jedná o chybu; například spárované nesprávné oblasti při počá
 
 Pokud máte scénář, ve kterém nemůžete změnit připojení výrobců a uživatelů, můžete název oboru názvů použít jako název aliasu. Tady najdete [ukázkový kód na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>Ukázky kódu
 
 [Ukázky na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) ukazují, jak nastavit a iniciovat převzetí služeb při selhání. Tyto ukázky ukazují následující koncepty:
 

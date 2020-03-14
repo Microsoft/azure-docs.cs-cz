@@ -14,11 +14,11 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083998"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262812"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 

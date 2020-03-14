@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372194"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252607"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -151,7 +151,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
    * Nastavit **obsah intervalu** jako **prázdný**
    * Změnit **ověření certifikátu** na **zakázáno**
    * Změnit **režim komprese** na **žádný**
-   * Klikněte na **Další**.
+   * Klikněte na **Další**.
    * Na čtvrté stránce zadejte název kontejneru do pole **název** sady jako *storage_account_name*/*container_name*.
    * Volitelně můžete nastavit **typ šifrování** na **žádný**.  Azure Storage je ve výchozím nastavení šifrovaný.
    * Klikněte na **přidat souborového**.
@@ -176,7 +176,7 @@ V rozhraní ovládacího panelu avere postupujte podle těchto kroků:
 * Zadejte cestu k oboru názvů začínající znakem/(lomítko), například ``/vfxt/data``.
 * Vyberte si základní souborového.
 * Vyberte základní export souborového.
-* Klikněte na **Další**.
+* Klikněte na **Další**.
 
   ![Snímek obrazovky se stránkou přidat nový odkaz s poli dokončenými pro spojení, Core souborového a export](media/avere-vfxt-add-junction.png)
 

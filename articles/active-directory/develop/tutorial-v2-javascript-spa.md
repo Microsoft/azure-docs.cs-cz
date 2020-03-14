@@ -16,11 +16,11 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 51a456a05e1d41057e80b92e44f997e1b52cb132
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129112"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239123"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
 
@@ -68,7 +68,7 @@ Tato příručka používá následující knihovnu:
 >
 > Chcete-li před spuštěním nakonfigurovat ukázku kódu, přejděte k [kroku konfigurace](#register-your-application).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pro spuštění tohoto kurzu potřebujete místní webový server, jako je například [Node. js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)nebo IIS Express integrace se sadou [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 

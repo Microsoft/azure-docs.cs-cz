@@ -14,11 +14,11 @@ ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 24bcc7e698527cd39958c53b48a0b36404c36bb4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048828"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279660"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integrace virtuální sítě pro služby Azure
 

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 729fd776321a90257289dcf92f13079a8206d9d9
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 3c4634526e1f4f7d2ef03cfbacbfc472ddb4cdff
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927348"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365900"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rychlý Start: použití Node. js k připojení a dotazování dat z Azure Cosmos DB účtu rozhraní SQL API
 
@@ -27,7 +27,7 @@ ms.locfileid: "78927348"
 
 V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhraní SQL API z Azure Portal a pomocí aplikace Node. js naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčovým `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
 - [Node. js 6.0.0 +](https://nodejs.org/).
@@ -61,7 +61,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **ID databáze**   | Úlohy           | Jako název nové databáze zadejte _Tasks_. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`ani mezeru. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
    | **Propustnost**    | 400             | Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.                                                                                                                                                                                                                                                    |
-   | **ID kontejneru**  | Items           | Jako název nového kontejneru zadejte _položky_ . ID kontejnerů mají stejné požadavky na znaky jako názvy databází.                                                                                                                                                                                                                                                               |
+   | **ID kontejneru**  | Položky           | Jako název nového kontejneru zadejte _položky_ . ID kontejnerů mají stejné požadavky na znaky jako názvy databází.                                                                                                                                                                                                                                                               |
    | **Klíč oddílu** | /kategorie       | Ukázka popsaná v tomto článku používá jako klíč oddílu _/Category_ .                                                                                                                                                                                                                                                                                                           |
 
    Kromě předchozích nastavení můžete volitelně přidat **jedinečné klíče** pro kontejner. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením jedinečné zásady klíčů při vytváření kontejneru zajistíte jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).
@@ -121,7 +121,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru _app.js_.
 - Vyberte kontejner položky a kolekci.
 
   ```javascript
-  const container = await client.databases(containerId);
+  const container = await database.container(containerId);
   ```
 
 - Vyberte všechny položky v kontejneru Items (položky).
@@ -177,7 +177,7 @@ Teď se vraťte na Azure Portal a Získejte podrobnosti o připojovacím řetěz
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. Pak z portálu Zkopírujte hodnotu primárního klíče a nastavte ji jako hodnotu `config.key` v _souboru config. js_. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s databází Azure Cosmos.
+4. Pak z portálu Zkopírujte hodnotu primárního klíče a nastavte ji jako hodnotu `config.key` v _souboru config. js_. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB.
 
    `key: "<Your Azure Cosmos account key>"`
 

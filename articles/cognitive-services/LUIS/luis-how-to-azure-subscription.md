@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669330"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219970"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Použití klíčů prostředků pro vytváření obsahu a modulu runtime
 

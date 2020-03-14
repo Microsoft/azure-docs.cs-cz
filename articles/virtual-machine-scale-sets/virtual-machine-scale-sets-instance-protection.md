@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: avverma
 ms.openlocfilehash: 021faad28fb575c4ffeb4d895ad451d8cd82b1a5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919851"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254115"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Ochrana instancí pro instance sady škálování virtuálních počítačů Azure
 
@@ -43,7 +43,7 @@ Po vytvoření instancí lze použít ochranu instance pro instance sady škálo
 
 V následujících příkladech jsou k dispozici několik způsobů, jak v instancích sady škálování použít ochranu s možností horizontálního rozšíření kapacity, jak je popsáno níže.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Ochranu pomocí škálování můžete v Azure Portal použít na instanci v sadě škálování. V jednom okamžiku nelze upravovat více než jednu instanci. Opakujte postup pro všechny instance, které chcete chránit.
  
@@ -76,7 +76,7 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 > [!NOTE]
 >Ochrana instancí se podporuje jenom s rozhraním API verze 2019-03-01 a novějším.
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Pomocí rutiny [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) aplikujte ochranu škálováním na více instancí na instanci sady škálování.
 
@@ -111,7 +111,7 @@ Ochrana instance před akcemi sady škálování také chrání instance z autom
 
 Existuje několik způsobů, jak použít ochranu akcí sady škálování na instancích sady škálování, jak je popsáno níže v následujících příkladech.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Ochranu můžete použít z akcí sady škálování pomocí Azure Portal do instance v sadě škálování. V jednom okamžiku nelze upravovat více než jednu instanci. Opakujte postup pro všechny instance, které chcete chránit.
  
@@ -146,7 +146,7 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 >Ochrana instancí se podporuje jenom s rozhraním API verze 2019-03-01 a novějším.</br>
 Ochrana instance před akcemi sady škálování také chrání instance z automatického škálování iniciované. Nemůžete zadat "protectFromScaleIn": false při nastavování "protectFromScaleSetActions": true
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Pomocí rutiny [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) aplikujte ochranu ze všech akcí sady škálování na vaši instanci sady škálování.
 

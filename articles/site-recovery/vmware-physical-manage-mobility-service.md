@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953646"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256962"
 ---
 # <a name="manage-the-mobility-agent"></a>Správa agenta mobility 
 
@@ -37,11 +37,24 @@ Na serveru můžete nastavit agenta mobility, když používáte Azure Site Reco
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Aktualizace služby mobility prostřednictvím skriptu PowerShellu na Windows serveru
 
+Než začnete aktualizovat službu mobility na chráněných počítačích, ujistěte se, že se konfigurační server, procesové servery se škálováním na více instancí a všechny hlavní cílové servery, které jsou součástí vašeho nasazení, aktualizují.
+
 Pomocí následujícího skriptu upgradujte službu mobility na serveru pomocí rutiny Power Shell.
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>Aktualizovat službu mobility ručně na každém chráněném serveru
+
+1. Než začnete aktualizovat službu mobility na chráněných počítačích, ujistěte se, že se konfigurační server, procesové servery se škálováním na více instancí a všechny hlavní cílové servery, které jsou součástí vašeho nasazení, aktualizují.
+
+2. [Vyhledejte instalační program agenta](vmware-physical-mobility-service-overview.md#locate-installer-files) na základě operačního systému serveru.
+
+>[!IMPORTANT]
+> Pokud provádíte replikaci virtuálního počítače Azure IaaS z jedné oblasti Azure do jiné, nepoužívejte tuto metodu. Informace o všech dostupných možnostech najdete v [našich pokynech](azure-to-azure-autoupdate.md) .
+
+3. Zkopírujte instalační soubor do chráněného počítače a spusťte ho, aby se aktualizoval agent mobility.
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Aktualizace účtu používaného pro nabízenou instalaci služby mobility
 

@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 03f383bd6e44a55388e0bef6a38c4a1880d6f044
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 29fa294d2f384ae74c1184c6207648907cb99386
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268259"
+ms.locfileid: "79299103"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -60,7 +60,7 @@ Nespravované disky v účtech úložiště můžete použít s pravidly sítě 
 
 Můžete spravovat výchozí pravidla přístupu k síti pro účty úložiště na webu Azure portal, Powershellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte na účet úložiště, kterou chcete zabezpečit.
 
@@ -144,7 +144,7 @@ Použít pravidlo virtuální sítě pro účet úložiště, musí mít uživat
 
 Můžete spravovat pravidla virtuální sítě pro účty úložiště pomocí webu Azure portal, Powershellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte na účet úložiště, kterou chcete zabezpečit.
 
@@ -268,7 +268,7 @@ Pokud používáte [ExpressRoute](/azure/expressroute/expressroute-introduction)
 
 Můžete spravovat pravidla sítě protokolu IP pro účty úložiště pomocí webu Azure portal, Powershellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte na účet úložiště, kterou chcete zabezpečit.
 
@@ -370,7 +370,7 @@ Některé služby společnosti Microsoft pracují z sítí, které nelze zahrnou
 
 Pokud povolíte nastavení **Povolit důvěryhodné služby společnosti Microsoft...** , prostředky následujících služeb, které jsou zaregistrované ve stejném předplatném jako účet úložiště, budou mít přístup k omezené sadě operací, jak je popsáno níže:
 
-| Service                  | Název poskytovatele prostředků     | Povolené operace                 |
+| Služba                  | Název poskytovatele prostředků     | Povolené operace                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
 | Azure Backup             | Microsoft.RecoveryServices | Spuštění zálohování a obnovení nespravované disky ve virtuálních počítačích IAAS. (není vyžadované pro spravované disky). [Další informace](/azure/backup/backup-introduction-to-azure-backup). |
 | Azure Data Box           | Microsoft.DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Další informace](/azure/databox/data-box-overview). |
@@ -386,13 +386,13 @@ Pokud povolíte nastavení **Povolit důvěryhodné služby společnosti Microso
 
 Nastavení **Povolit důvěryhodné služby společnosti Microsoft...** umožňuje také konkrétní instanci níže uvedených služeb pro přístup k účtu úložiště, pokud explicitně [přiřadíte roli RBAC](storage-auth-aad.md#assign-rbac-roles-for-access-rights) k [spravované identitě přiřazené systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku. V takovém případě rozsah přístupu pro instanci odpovídá roli RBAC přiřazené spravované identitě.
 
-| Service                        | Název poskytovatele prostředků                 | Účel            |
+| Služba                        | Název poskytovatele prostředků                 | Účel            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure Cognitive Search         | Microsoft.Search/searchServices        | Umožňuje službám Kognitivní hledání získat přístup k účtům úložiště pro indexování, zpracování a dotazování. |
 | Úlohy Azure Container Registry | Microsoft.ContainerRegistry/registries | ACR úlohy mají přístup k účtům úložiště při vytváření imagí kontejneru. |
 | Azure Data Factory             | Microsoft. DataFactory/továrny        | Umožňuje přístup k účtům úložiště pomocí modulu runtime ADF. |
 | Azure Data Share               | Microsoft. datashare/Accounts           | Umožňuje přístup k účtům úložiště prostřednictvím sdílení dat. |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Další informace](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md). |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Další informace](/azure/logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
 | Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních instancí SQL Database pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. Tato funkce je aktuálně ve verzi Preview. [Další informace](/azure/stream-analytics/blob-output-managed-identity). |
@@ -407,7 +407,7 @@ V některých případech je zapotřebí ve směru z mimo hranice sítě příst
 
 Můžete spravovat pravidla výjimky sítě prostřednictvím webu Azure portal, Powershellu nebo Azure CLI verze 2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte na účet úložiště, kterou chcete zabezpečit.
 

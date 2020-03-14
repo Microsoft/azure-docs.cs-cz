@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc0da82447b5df0735b16f46298a2f473ee61ea0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187811"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371371"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -60,7 +60,7 @@ Níže najdete ukázkový Přehled životního cyklu CI/CD v objektu pro vytvá�
 
    ![Vytvoření vlastní šablony](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Vyberte **načíst soubor**a pak vyberte vygenerovanou šablonu správce prostředků.
+1. Vyberte **načíst soubor**a pak vyberte vygenerovanou šablonu správce prostředků. Toto je soubor **arm_template. JSON** umístěný v souboru zip, který je exportovaný v kroku 1.
 
    ![Upravit šablonu](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -171,7 +171,7 @@ Existují dva způsoby, jak pokládat s tajnými kódy:
 
     Soubor parametrů musí být také ve větvi publikování.
 
--  Přidejte [úlohu Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) před úlohu nasazení Azure Resource Manager popsané v předchozí části:
+1. Přidejte [úlohu Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) před úlohu nasazení Azure Resource Manager popsané v předchozí části:
 
     1.  Na kartě **úlohy** vytvořte novou úlohu. Vyhledejte **Azure Key Vault** a přidejte ji.
 
@@ -179,9 +179,9 @@ Existují dva způsoby, jak pokládat s tajnými kódy:
 
     ![Přidat úlohu Key Vault](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udělit oprávnění agentovi Azure Pipelines
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udělit oprávnění agentovi Azure Pipelines
 
-   Azure Key Vault úloha může selhat s chybou odepření přístupu, pokud nejsou nastavená správná oprávnění. Stáhněte si protokoly pro vydání a vyhledejte soubor. ps1, který obsahuje příkaz pro udělení oprávnění agentovi Azure Pipelines. Příkaz lze spustit přímo. Případně můžete ze souboru zkopírovat ID objektu zabezpečení a zásadu přístupu přidat ručně v Azure Portal. minimálními potřebnými oprávněními jsou `Get` a `List`.
+Azure Key Vault úloha může selhat s chybou odepření přístupu, pokud nejsou nastavená správná oprávnění. Stáhněte si protokoly pro vydání a vyhledejte soubor. ps1, který obsahuje příkaz pro udělení oprávnění agentovi Azure Pipelines. Příkaz lze spustit přímo. Případně můžete ze souboru zkopírovat ID objektu zabezpečení a zásadu přístupu přidat ručně v Azure Portal. minimálními potřebnými oprávněními jsou `Get` a `List`.
 
 ### <a name="update-active-triggers"></a>Aktualizovat aktivní aktivační události
 
@@ -471,7 +471,10 @@ Pokud jste v režimu GIT, můžete přepsat výchozí vlastnosti v šabloně Spr
 * Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení Správce prostředků, ale vlastnosti nejsou ve výchozím nastavení parametrizované.
 * Vaše továrna je tak velká, že výchozí šablona Správce prostředků je neplatná, protože má více než maximální povolený počet parametrů (256).
 
-Pokud za těchto podmínek chcete přepsat výchozí šablonu Parametrizace, vytvořte soubor s názvem ARM-Template-Parameters-definition. JSON ve složce zadané jako kořenová složka pro integraci Git služby Data Factory. Je nutné použít tento přesný název souboru. Data Factory přečte tento soubor z jakékoli větve, na které jste právě na portálu Azure Data Factory, a ne jenom z větve pro spolupráci. Můžete vytvořit nebo upravit soubor z privátní větve, kde můžete testovat své změny výběrem možnosti **Exportovat šablonu ARM** v uživatelském rozhraní. Pak můžete soubor sloučit do větve pro spolupráci. Pokud se nenajde žádný soubor, použije se výchozí šablona.
+Pokud za těchto podmínek chcete přepsat výchozí šablonu Parametrizace, vytvořte soubor s názvem **ARM-Template-Parameters-definition. JSON** ve složce zadané jako kořenová složka pro integraci Git služby Data Factory. Je nutné použít tento přesný název souboru. Data Factory přečte tento soubor z jakékoli větve, na které jste právě na portálu Azure Data Factory, a ne jenom z větve pro spolupráci. Můžete vytvořit nebo upravit soubor z privátní větve, kde můžete testovat své změny výběrem možnosti **Exportovat šablonu ARM** v uživatelském rozhraní. Pak můžete soubor sloučit do větve pro spolupráci. Pokud se nenajde žádný soubor, použije se výchozí šablona.
+
+> [!NOTE]
+> Vlastní šablona Parametrizace nemění limit parametru šablony ARM 256. Umožňuje zvolit a snížit počet parametrizovaných vlastností.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntaxe souboru vlastních parametrů
 
@@ -563,7 +566,7 @@ Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle t
 
 * Všechny vlastnosti v rámci cesty `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například existují dvě vlastnosti v rámci `IntegrationRuntimes` vlastnosti typu: `computeProperties` a `ssisProperties`. Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
 
-#### <a name="triggers"></a>Aktivační události
+#### <a name="triggers"></a>Triggery
 
 * V části `typeProperties`jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency`, která má mít výchozí hodnotu a je typu`string`. Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency`.
 * Vlastnost `recurrence` je také Parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimkou je vlastnost `interval`, která je parametrizovaná jako typ `number`. Název parametru má příponu `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobně vlastnost `freq` je řetězec a je parametrizovaná jako řetězec. Vlastnost `freq` je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. například `<entityName>_freq`.
@@ -657,7 +660,7 @@ Následuje aktuální výchozí šablona Parametrizace. Pokud potřebujete přid
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",

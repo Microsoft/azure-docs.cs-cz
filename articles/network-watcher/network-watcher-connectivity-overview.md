@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396962"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283274"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Úvod k řešení potíží s připojením v Azure Network Watcher
 
@@ -44,9 +44,9 @@ V následující tabulce jsou uvedeny vlastnosti vrácené při dokončení ře�
 |Směrování []. Prostředku | ResourceID prostředku směrování, pokud je segmentem směrování prostředek Azure. Pokud se jedná o internetový prostředek, ResourceID je **Internet**. |
 |Hops[].NextHopIds | Jedinečný identifikátor pořízeného dalšího segmentu směrování.|
 |Směrování []. Chyba | Kolekce problémů, které byly zjištěny během kontroly tohoto směrování. Pokud nebyly zjištěny žádné problémy, hodnota je prázdná.|
-|Směrování []. Problémy []. Zdroji | U aktuálního směrování, kde došlo k problému. Možné hodnoty:<br/> **Příchozí** – problém je na odkazu z předchozího směrování na aktuální segment směrování.<br/>**Odchozí** – problém je na propojení od aktuálního směrování k dalšímu segmentu směrování.<br/>**Místní** problém je na aktuálním směrování.|
+|Směrování []. Problémy []. Zdroji | U aktuálního směrování, kde došlo k problému. Možné hodnoty jsou:<br/> **Příchozí** – problém je na odkazu z předchozího směrování na aktuální segment směrování.<br/>**Odchozí** – problém je na propojení od aktuálního směrování k dalšímu segmentu směrování.<br/>**Místní** problém je na aktuálním směrování.|
 |Směrování []. Problémy []. Závažnost | Závažnost problému byla zjištěna. Možné hodnoty jsou **Error** a **Warning**. |
-|Směrování []. Problémy []. Textový |Typ problému byl nalezen. Možné hodnoty: <br/>**VČETNĚ**<br/>**Rezident**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Směrování []. Problémy []. Textový |Typ problému byl nalezen. Možné hodnoty jsou: <br/>**VČETNĚ**<br/>**Rezident**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Směrování []. Problémy []. Souvislost |Podrobnosti o zjištěném problému.|
 |Směrování []. Problémy []. Context []. klíč |Klíč vrácené dvojice klíč-hodnota|
 |Směrování []. Problémy []. Context []. hodnota |Hodnota dvojice klíč hodnota, která se vrátila|

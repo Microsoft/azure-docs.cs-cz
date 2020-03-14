@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362577"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256936"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware nebo fyzické servery
 
@@ -101,7 +101,7 @@ Co to znamená? Aby bylo možné spustit virtuální počítač Azure, Azure vy�
 **Počítač vyhovuje Azure?** | **Omezení virtuálních počítačů Azure (převzetí služeb při selhání spravovaného disku)**
 --- | --- 
 Ano | 2000
-Ne | 1 000
+Ne | 1000
 
 - Omezení předpokládají, že v cílové oblasti pro předplatné probíhá minimálně jiné úlohy.
 - Některé oblasti Azure jsou menší a můžou mít mírně nižší omezení.

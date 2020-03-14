@@ -7,11 +7,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360151"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274161"
 ---
 # <a name="view-designer-conversion-examples"></a>Příklady převodu návrháře zobrazení
 

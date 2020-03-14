@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
 ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250228"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Údržba virtuálních počítačů v Azure
 
@@ -91,7 +91,7 @@ Další informace o nastavení virtuálních počítačů pro zajištění vysok
 
 #### <a name="availability-zones"></a>Zóny dostupnosti
 
-Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. 
+Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. 
 
 Zóna dostupnosti je kombinací domény selhání a aktualizační domény. Pokud vytvoříte tři nebo víc virtuálních počítačů ve třech zónách v oblasti Azure, budou vaše virtuální počítače efektivně distribuované mezi třemi doménami selhání a třemi aktualizačními doménami. Platforma Azure tuto distribuci rozpoznává mezi aktualizačními doménami, aby se zajistilo, že se virtuální počítače v různých zónách neaktualizují současně.
 

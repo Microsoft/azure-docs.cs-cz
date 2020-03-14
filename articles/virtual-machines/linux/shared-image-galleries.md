@@ -16,11 +16,11 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: b79abeffffd7dc1bb54e828823aa909216508496
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390379"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267128"
 ---
 # <a name="shared-image-galleries-overview"></a>Přehled Galerie sdílených imagí
 

@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389176"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258236"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 
@@ -164,15 +164,15 @@ Různá prostředí mají různé úrovně podpory pro architektury a modely nas
 
 | Typ aplikace | Popisuje | Síť Azure Service Fabric | Clustery Azure Service Fabric (libovolný operační systém)| Místní cluster | Samostatný cluster |
 |---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | Podporuje se |Nepodporuje se | Windows – podporováno, Linux a Mac – nepodporováno | Windows – nepodporováno |
-|Service Fabric nativních aplikací | Nativní aplikační model (XML) | Nepodporuje se| Podporuje se|Podporuje se|Windows – podporováno|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | Podporováno |Nepodporováno | Windows – podporováno, Linux a Mac – nepodporováno | Windows – nepodporováno |
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | Nepodporuje se| Podporováno|Podporováno|Windows – podporováno|
 
 V následující tabulce jsou popsány různé modely aplikací a nástroje, které pro ně existují pro Service Fabric.
 
 | Typ aplikace | Popisuje | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | VS 2017 |Nepodporuje se |Nepodporuje se | Podporované – jenom pro prostředí sítě | Nepodporuje se|
-|Service Fabric nativních aplikací | Nativní aplikační model (XML) | VS 2017 a VS 2015| Podporuje se|Podporuje se|Podporuje se|Podporuje se|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | VS 2017 |Nepodporováno |Nepodporováno | Podporované – jenom pro prostředí sítě | Nepodporuje se|
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | VS 2017 a VS 2015| Podporováno|Podporováno|Podporováno|Podporováno|
 
 ## <a name="next-steps"></a>Další kroky
 

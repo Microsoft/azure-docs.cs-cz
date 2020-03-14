@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6b11242831e68787fe225d4d0b66638f1388de6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126560"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297981"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -157,6 +157,12 @@ Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z pr
 </cors>
 ```
 
+Použijte CORS u globálního oboru, abyste měli jistotu, že je povolená pro všechna rozhraní API.
+
+1. V Azure Portal přejděte ke **všem rozhraním API** v části **rozhraní API** služby API Management.
+2. V části **příchozí zpracování** klikněte na ikonu **</>** .
+3. Vložte zásadu do části **<inbound>** souboru XML. Ujistěte se, že hodnota **<origin>** se shoduje s doménou vašeho portálu pro vývojáře.
+
 > [!NOTE]
 > 
 > Pokud použijete zásadu CORS v oboru produktu místo rozhraní API (s) a vaše rozhraní API použije ověřování pomocí klíče předplatného v hlavičce, nebude vaše konzola fungovat.
@@ -207,7 +213,7 @@ Selhání volání může být způsobeno také certifikátem SSL, který je př
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>Jaká je podpora prohlížeče pro portál?
 
-| Prohlížeč                     | Podporuje se       |
+| Browser                     | Podporováno       |
 |-----------------------------|-----------------|
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |

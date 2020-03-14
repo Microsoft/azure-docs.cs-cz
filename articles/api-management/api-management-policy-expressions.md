@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374332"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244001"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
 Tento článek popisuje syntaxi výrazů zásad ve C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené [podmnožině](api-management-policy-expressions.md#CLRTypes) typů .NET Framework.
 
-Další informace najdete tady:
+Další informace:
 
 - Podívejte se, jak do back-endu poskytovat informace o kontextu. K poskytnutí těchto informací použijte [parametr nastavení řetězce dotazu](api-management-transformation-policies.md#SetQueryStringParameter) a [nastavte zásady hlaviček protokolu HTTP](api-management-transformation-policies.md#SetHTTPheader) .
 - Podívejte se, jak použít zásadu [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) k předběžné autorizaci přístupu k operacím na základě deklarací identity tokenu.

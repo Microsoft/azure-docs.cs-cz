@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393567"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279335"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro Point-to-site pomocí PowerShellu
 

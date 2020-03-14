@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384804"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279153"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -259,12 +259,12 @@ Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na ka
 |Hodnota  |Popis  |
 |---------|---------|
 |instanceId     |  Instance Application Gateway, pro kterou se generují údaje o výkonu. Pro aplikační bránu s více instancemi je k dispozici jeden řádek na instanci.        |
-|HealthyHostCount     | Počet v nefunkčních hostitelích ve fondu back-end.        |
+|healthyHostCount     | Počet v nefunkčních hostitelích ve fondu back-end.        |
 |unHealthyHostCount     | Počet nezdravých hostitelů ve fondu back-end.        |
 |requestCount     | Počet zpracovaných požadavků.        |
 |latence | Průměrná latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí|
-|propustnost| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
+|Propustnost| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
 
 ```json
 {
@@ -303,7 +303,7 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 |ruleSetVersion     | Použitá verze sady pravidel Dostupné hodnoty jsou 2.2.9 a 3,0.     |
 |RuleId     | ID pravidla události triggeru        |
 |zpráva     | Uživatelsky přívětivá zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
-|action     |  Akce prováděná na žádosti Dostupné hodnoty se shodují a zablokují.      |
+|Akce     |  Akce prováděná na žádosti Dostupné hodnoty se shodují a zablokují.      |
 |site     | Lokalita, pro kterou se protokol vygeneroval. V současné době se v seznamu zobrazí pouze globální, protože pravidla jsou globální.|
 |details     | Podrobnosti události aktivace.        |
 |Podrobnosti. zpráva     | Popis pravidla        |

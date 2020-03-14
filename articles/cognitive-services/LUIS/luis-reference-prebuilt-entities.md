@@ -12,29 +12,29 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396773"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219717"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entity na jazykovou verzi v modelu LUIS
 
 Language Understanding (LUIS) poskytuje předem připravených entit. Předem připravených entit je obsažen ve vaší aplikaci, LUIS obsahuje odpovídající entity predikce v odpovědi koncového bodu. Všechny projevy příkladu jsou označeny jako také s entitou. Chování předem sestavených entit **nelze** změnit. Pokud není uvedeno jinak, jsou předem připravených entit k dispozici ve všech oblastech aplikace LUIS (jazykové verze). V následující tabulce jsou uvedeny předem připravených entit, které jsou podporovány pro každou jazykovou verzi.
 
-|Kultura|Subkultury|Poznámky:|
+|Jazyková verze|Subkultury|Poznámky|
 |--|--|--|
 |Čínština|[zh-CN](#chinese-entity-support)||
-|Nizozemština|[nl – NL](#dutch-entity-support)||
+|Holandština|[nl – NL](#dutch-entity-support)||
 |Angličtina|[EN-US (USA)](#english-american-entity-support)||
 |Francouzština|[fr – CA (Kanada)](#french-canadian-entity-support), [fr-FR (Francie)](#french-france-entity-support), ||
 |Němčina|[de-DE](#german-entity-support)||
-|Italština|[IT oddělení IT](#italian-entity-support)||
+|italština|[IT oddělení IT](#italian-entity-support)||
 |Japonština|[ja-JP](#japanese-entity-support)||
 |Korejština|[ko – KR](#korean-entity-support)||
 |Portugalština|[pt-BR (Brazílie)](#portuguese-brazil-entity-support)||
 |Španělština|[ES-ES (Španělsko)](#spanish-spain-entity-support), [ES-MX (Mexiko)](#spanish-mexico-entity-support)||
-|Turečtina|[Turečtina](#turkish-entity-support)|V turečtině nejsou podporované předem připravené entity|
+|turečtina|[Turečtina](#turkish-entity-support)|V turečtině nejsou podporované předem připravené entity|
 
 ## <a name="prediction-endpoint-runtime"></a>Modul runtime koncového bodu předpovědi
 

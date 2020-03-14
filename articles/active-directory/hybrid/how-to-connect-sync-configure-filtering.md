@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376272"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261096"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete určit, které objekty se zobrazí v Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přebírá všechny objekty ve všech doménách v konfigurovaných doménových strukturách. Obecně platí, že se jedná o doporučenou konfiguraci. Uživatelé, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, můžou využít kompletní globální seznam adres, aby mohli posílat e-maily a volat všechny. S výchozí konfigurací by měly stejné prostředí jako při místní implementaci Exchange nebo Lyncu.
 
-V některých případech ale potřebujete udělat změny ve výchozí konfiguraci. Zde je několik příkladů:
+V některých případech ale potřebujete udělat změny ve výchozí konfiguraci. Následuje několik příkladů:
 
 * Plánujete používání [topologie adresářů služby Multi-Azure AD](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Pak je nutné použít filtr k řízení, které objekty jsou synchronizovány do konkrétního adresáře služby Azure AD.
 * Spustíte pilotní projekt pro Azure nebo Office 365 a budete chtít jenom podmnožinu uživatelů v Azure AD. V případě malého pilotního projektu není důležité mít úplný globální seznam adres k předvedení funkce.

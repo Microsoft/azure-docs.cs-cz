@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0fd016e02c579f4e7230bd18d363cfe9a64c88eb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244261"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366100"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Otázky zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure Proxy aplikací služby AD
 
@@ -81,13 +81,9 @@ Neopravný software je stále pro velký počet útoků. Azure Proxy aplikací s
 
 Abychom vylepšili zabezpečení aplikací publikovaných v Azure Proxy aplikací služby AD, zablokovali jsme roboty webového prohledávacího modulu z indexování a archivace vašich aplikací. Pokaždé, když se robot webového prohledávacího programu pokusí načíst nastavení robota pro publikovanou aplikaci, proxy aplikací aplikace odpoví souborem robots. txt, který obsahuje `User-agent: * Disallow: /`.
 
-### <a name="ddos-prevention"></a>Prevence DDOS
+#### <a name="azure-ddos-protection-service"></a>Služba Azure DDoS Protection
 
-Aplikace publikované prostřednictvím proxy aplikací jsou chráněné před distribuovanými útoky s cílem odepření služeb (DDOS).
-
-Služba proxy aplikací monitoruje objem provozu při pokusu o přístup k vašim aplikacím a síti. Pokud je počet zařízení požadujících špičku vzdáleného přístupu k vašim aplikacím, Microsoft omezí přístup k vaší síti. 
-
-Microsoft sleduje vzory přenosů dat pro jednotlivé aplikace a pro vaše předplatné jako celek. Pokud jedna aplikace obdrží vyšší než normální požadavky, pak budou žádosti o přístup k této aplikaci po krátkou dobu odepřeny. Pokud obdržíte více než normální požadavky v rámci celého předplatného, budou žádosti o přístup k některým aplikacím odepřeny. Tato preventivní míra zajišťuje, aby se aplikační servery přečetly požadavky vzdáleného přístupu, aby místní uživatelé mohli dál přistupovat ke svým aplikacím. 
+Aplikace publikované prostřednictvím proxy aplikací jsou chráněné před distribuovanými útoky s cílem odepření služeb (DDoS). **Azure DDoS Protection** je služba poskytovaná na platformě Azure, která chrání vaše prostředky Azure před útoky DoS (Denial of Service). Úroveň služeb **Basic** je automaticky povolená a zajišťuje nepřetržité monitorování provozu a zmírnění běžných útoků na úrovni sítě v reálném čase. K dispozici je také úroveň **Standard** , která nabízí další funkce pro zmírnění rizik, které jsou vyladěny konkrétně pro prostředky Azure Virtual Network. Podrobnosti najdete v tématu [Přehled služby Azure DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
 ## <a name="under-the-hood"></a>Pohled pod kapotu
 

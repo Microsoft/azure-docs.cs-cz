@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390367"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282975"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Omezení služby v Azure Kognitivní hledání
 
@@ -46,7 +46,7 @@ Maximální limity pro úložiště, úlohy a množství indexů a dalších obj
 
 ## <a name="index-limits"></a>Omezení indexu
 
-| Prostředek | Free | Základní&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| Prostředek | Zdarma | Základní&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |10 |10 |
 | Maximální počet jednoduchých polí na index |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -78,15 +78,15 @@ Pokud portál indikuje omezení dokumentu, služba byla buď vytvořena před 20
 
 + Austrálie – východ
 + Východní Asie
-+ Indie – střed
++ Střed Indie
 + Japonsko – západ
-+ USA – středozápad
++ Západní střed USA
 
 Pro služby podléhající omezením dokumentu platí následující maximální limity:
 
-|  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
+|  Zdarma | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10 000 |1&nbsp;milionů |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
+|  10,000 |1&nbsp;milionů |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
 
 Pokud vaše služba obsahuje omezení, která vás zablokují, vytvořte novou službu a pak znovu publikujte veškerý obsah do této služby. Neexistuje žádný mechanismus pro bezproblémové opětovné zřízení vaší služby na nový hardware na pozadí.
 
@@ -109,15 +109,15 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 | Prostředek | Bezplatná&nbsp;<sup>1</sup> | Základní&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |10 |10 |
-| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |10 |10 |
-| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |neuvedeno |10 |10 |
-| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |neuvedeno |Bez omezení |Bez omezení |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Není k dispozici |Bez omezení |Bez omezení |
 | Minimální plán | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |24 hodin |24 hodin |
-| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |neuvedeno  |2 hodiny |2 hodiny |
-| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |neuvedeno  |256 |256 |
-| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32,000 |64,000 |4&nbsp;milionů |8&nbsp;milionů |16&nbsp;milionů |neuvedeno |4&nbsp;milionů |4&nbsp;milionů |
+| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Není k dispozici  |24 hodin |24 hodin |
+| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Není k dispozici  |2 hodiny |2 hodiny |
+| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Není k dispozici  |256 |256 |
+| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32,000 |64,000 |4&nbsp;milionů |8&nbsp;milionů |16&nbsp;milionů |Není k dispozici |4&nbsp;milionů |4&nbsp;milionů |
 
 <sup>1</sup> bezplatné služby mají maximální dobu provádění indexeru 3 minuty pro zdroje objektů BLOB a 1 minutu pro všechny ostatní zdroje dat. V případě indexování AI, který volá Cognitive Services, jsou bezplatné služby omezené na 20 bezplatných transakcí za den, kde transakce je definovaná jako dokument, který úspěšně projde kanálem pro obohacení.
 
@@ -136,7 +136,7 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 Maximální povolený počet map synonym se liší podle cenové úrovně. Každé pravidlo může mít až 20 rozšíření, kde rozšíření je ekvivalentní termín. Například dané "Cat", asociace s "Kitty", "Feline" a "Felis" (rod pro kočky) by se znamenaly jako 3 rozšíření.
 
-| Prostředek | Free | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| Prostředek | Zdarma | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximální počet mapování synonym |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximální počet pravidel na mapování |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |

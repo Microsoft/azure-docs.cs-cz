@@ -5,11 +5,11 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395778"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274785"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -68,15 +68,15 @@ Dříve byly Azure Monitor metriky, Application Insights, Log Analytics a Servic
 
 | **Zdroj monitorování** | **Typ signálu**  | **Popis** |
 |-------------|----------------|-------------|
-| Stav služeb | Protokol aktivit  | Nepodporuje se. Viz téma [vytváření výstrah protokolu aktivit u oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Testy dostupnosti webu | Nepodporuje se. Podívejte se na téma [výstrahy webového testu](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které jsou instrumentované pro posílání dat Application Insights. Dostanou oznámení, pokud je dostupnost nebo odezva webu nižší než očekávání. |
+| Stav služeb | Protokol aktivit  | Není podporováno. Viz téma [vytváření výstrah protokolu aktivit u oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Testy dostupnosti webu | Není podporováno. Podívejte se na téma [výstrahy webového testu](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které jsou instrumentované pro posílání dat Application Insights. Dostanou oznámení, pokud je dostupnost nebo odezva webu nižší než očekávání. |
 
-## <a name="manage-alerts"></a>Správa upozornění
+## <a name="manage-alerts"></a>Správa výstrah
 Můžete nastavit stav výstrahy, chcete-li určit, kde se nachází v procesu řešení. Když jsou splněna kritéria zadaná v pravidle výstrahy, je vytvořena nebo aktivována výstraha a stav *nového*. Stav můžete změnit, když potvrdíte výstrahu a při jejím zavření. Všechny změny stavu jsou uloženy v historii výstrahy.
 
 Podporovány jsou následující stavy upozornění.
 
-| Stav | Popis |
+| State | Popis |
 |:---|:---|
 | Nová | Problém byl právě zjištěn a ještě nebyl revidován. |
 | Potvrzení | Správce zkontroloval výstrahu a začal na ní pracovat. |
@@ -167,7 +167,7 @@ Když vyberete výstrahu, Tato stránka poskytuje podrobnosti o výstraze a umo�
 
 Stránka Podrobnosti výstrahy obsahuje následující části:
 
-| Sekce | Popis |
+| Section | Popis |
 |:---|:---|
 | Souhrn | Zobrazí vlastnosti a další důležité informace o výstraze. |
 | Historie | Zobrazí všechny akce podniknuté výstrahou a všechny změny provedené v upozornění. V současné době omezené na změny stavu. |

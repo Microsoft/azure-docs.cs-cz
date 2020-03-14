@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: fc81226e754178ad0edfff96a494dd7522662261
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395446"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264892"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití služby Azure Event Hubs z aplikací Apache Kafka
 Služba Event Hubs poskytuje Kafka koncového bodu, který lze použít ve stávajících Kafka aplikací založených na jako alternativu ke spuštění clusteru Kafka. Event Hubs podporuje [Apache Kafka protokol 1,0 a novější](https://kafka.apache.org/documentation/)a funguje s vašimi stávajícími aplikacemi Kafka, včetně nástroje MirrorMaker.  
@@ -71,7 +71,7 @@ sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-#### <a name="samples"></a>Ukázky 
+#### <a name="samples"></a>Ukázky kódu 
 **Kurz** s podrobnými pokyny k vytvoření centra událostí s povoleným Kafka a přístup k němu pomocí SAS nebo OAuth najdete v tématu [rychlý Start: streamování dat pomocí Event Hubs pomocí protokolu Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
 Další **ukázky** , které ukazují, jak používat OAuth s Event Hubs pro Kafka, najdete v tématu [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).

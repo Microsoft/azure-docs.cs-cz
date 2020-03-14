@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 32912f0aef91bd4a7c831a82d1e83f00a1e0f131
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379557"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283105"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Postup indexování dokumentů v Azure Blob Storage s využitím Azure Kognitivní hledání
 
@@ -237,7 +237,7 @@ Pomocí parametru konfigurace `dataToExtract` můžete určit, které části ob
 
 * `storageMetadata` – určuje, že se indexují jenom [standardní vlastnosti objektů BLOB a metadata zadaná uživatelem](../storage/blobs/storage-properties-metadata.md) .
 * `allMetadata` – určuje, že se indexují metadata úložiště a [metadata specifická pro typ obsahu](#ContentSpecificMetadata) extrahovaná z obsahu objektu BLOB.
-* `contentAndMetadata` – určuje, že se indexuje všechna metadata a textový obsah extrahovaný z objektu BLOB. Toto je výchozí hodnota.
+* `contentAndMetadata` – určuje, že se indexuje všechna metadata a textový obsah extrahovaný z objektu BLOB. Jedná se o výchozí hodnotu.
 
 Chcete-li například indexovat pouze metadata úložiště, použijte:
 
@@ -289,16 +289,56 @@ Můžete také pokračovat v indexování, pokud dojde k chybám v jakémkoli ok
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Přírůstkové indexování a odstraňování duplicit
+
 Když nastavíte indexer objektů BLOB tak, aby se spouštěl podle plánu, přeindexuje jenom změněné objekty blob, jak určuje časové razítko `LastModified` objektu BLOB.
 
 > [!NOTE]
 > Nemusíte určovat zásady detekce změn – přírůstkové indexování je pro vás povolené automaticky.
 
-Pro podporu odstraňování dokumentů použijte přístup "obnovitelné odstranění". Pokud dojde k pravému odstranění objektů blob, odpovídající dokumenty nebudou odebrány z indexu vyhledávání. Místo toho použijte následující postup:  
+Pro podporu odstraňování dokumentů použijte přístup "obnovitelné odstranění". Pokud dojde k pravému odstranění objektů blob, odpovídající dokumenty nebudou odebrány z indexu vyhledávání.
 
-1. Přidejte do objektu BLOB vlastnost vlastní metadata, která bude ukazovat na Azure Kognitivní hledání, že je logicky odstraněný.
-2. Konfigurace zásad Detekce tichého odstranění ve zdroji dat
-3. Jakmile indexer zpracuje objekt BLOB (jak je znázorněno v rozhraní API stavu indexeru), můžete objekt BLOB fyzicky odstranit.
+Existují dva způsoby, jak implementovat postup obnovitelného odstranění. Obě jsou popsány níže.
+
+### <a name="native-blob-soft-delete-preview"></a>Obnovitelné odstranění nativního objektu BLOB (Preview)
+
+> [!IMPORTANT]
+> Podpora pro nativní odstranění objektu BLOB je ve verzi Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](https://docs.microsoft.com/azure/search/search-api-preview) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+
+V této metodě použijete nativní funkci [obnovitelného odstranění objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) nabízenou úložištěm Azure Blob Storage. Pokud má zdroj dat nativně sadu zásad pro tiché odstranění a indexer najde objekt blob, který byl převeden do nepodmíněného odstraněného stavu, indexer tento dokument z indexu odebere.
+
+Použijte k tomu následující postup:
+1. Povolí [nativní obnovitelné odstranění pro úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete). Doporučujeme nastavit zásady uchovávání informací na hodnotu, která je mnohem vyšší než plán intervalu indexeru. Tímto způsobem, pokud dojde k potížím s indexerem nebo pokud máte velký počet dokumentů k indexování, je dostatek času, aby indexer mohl nakonec zpracovat obnovitelné odstraněné objekty blob. Indexery Azure Kognitivní hledání odstraní jenom dokument z indexu, pokud je objekt BLOB zpracovává, když je ve stavu, kdy je odstraněný.
+1. Nakonfigurujte zásady detekce nativního odstranění objektů BLOB ve zdroji dat. Příklad je uveden níže. Vzhledem k tomu, že je tato funkce ve verzi Preview, musíte použít REST API verze Preview.
+1. Spusťte indexer nebo nastavte indexer tak, aby běžel podle plánu. Když indexer spustí a zpracuje objekt blob, dokument se odebere z indexu.
+
+    ```
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
+    Content-Type: application/json
+    api-key: [admin key]
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : null },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+        }
+    }
+    ```
+
+#### <a name="reindexing-undeleted-blobs"></a>Přeindexování neodstraněných objektů BLOB
+
+Pokud odstraníte objekt BLOB ze služby Azure Blob Storage s povoleným nativním tlumeným odstraněním v účtu úložiště, bude se objekt BLOB přecházet na měkký odstraněný stav, který vám nabídne možnost zrušit odstranění tohoto objektu BLOB v rámci doby uchování. Pokud má zdroj dat služby Azure Kognitivní hledání nativní zásady pro tiché odstranění objektů BLOB a indexer zpracovává měkký odstraněný objekt blob, odebere tento dokument z indexu. Pokud je tento objekt BLOB později neodstraněn, indexer **nebude vždy** přeindexován do tohoto objektu BLOB. Důvodem je skutečnost, že indexer určuje, které objekty BLOB se mají indexovat na základě časového razítka `LastModified` objektu BLOB. Když je neodstraníte neodstraněný objekt blob, `LastModified` časové razítko se neaktualizuje, takže pokud indexer již zpracoval objekty BLOB s `LastModified` časovými razítky novějšími než u neodstraněného objektu blob, nebude znovu indexován neodstraněný objekt BLOB. Chcete-li se ujistit, že je znovu indexován neodstraněný objekt blob, uložte metadata tohoto objektu BLOB znovu. Nemusíte měnit metadata, ale znovu uložíte metadata aktualizuje časové razítko `LastModified` objektu BLOB tak, aby indexer věděl, že musí tento objekt BLOB znovu indexovat.
+
+### <a name="soft-delete-using-custom-metadata"></a>Obnovitelné odstranění pomocí vlastních metadat
+
+V této metodě budete pomocí vlastnosti vlastní metadata indikovat, kdy by měl být dokument odebrán z indexu vyhledávání.
+
+Použijte k tomu následující postup:
+
+1. Přidejte do objektu BLOB vlastnost vlastní metadata, která bude označovat Azure Kognitivní hledání, že se logicky odstraní.
+1. Nakonfigurujte zásady detekce sloupce tichého odstranění ve zdroji dat. Příklad je uveden níže.
+1. Jakmile indexer zpracuje objekt BLOB a odstraní ho z indexu, můžete ho odstranit pro úložiště objektů BLOB v Azure.
 
 Například následující zásady považují objekt blob, který se má odstranit, pokud má vlastnost metadata `IsDeleted` s hodnotou `true`:
 
@@ -310,13 +350,17 @@ Například následující zásady považují objekt blob, který se má odstran
         "name" : "blob-datasource",
         "type" : "azureblob",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "container" : { "name" : "my-container", "query" : null },
         "dataDeletionDetectionPolicy" : {
             "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
             "softDeleteColumnName" : "IsDeleted",
             "softDeleteMarkerValue" : "true"
         }
-    }   
+    }
+
+#### <a name="reindexing-undeleted-blobs"></a>Přeindexování neodstraněných objektů BLOB
+
+Pokud jste v zdroji dat nastavili zásady detekce nepodmíněného odstranění sloupce, přidejte vlastnost vlastní metadata do objektu BLOB s hodnotou značky a potom spusťte indexer, indexer odebere tento dokument z indexu. Pokud chcete tento dokument znovu indexovat, jednoduše změňte hodnotu metadat obnovitelného odstranění pro daný objekt BLOB a znovu spusťte indexer.
 
 ## <a name="indexing-large-datasets"></a>Indexování velkých datových sad
 

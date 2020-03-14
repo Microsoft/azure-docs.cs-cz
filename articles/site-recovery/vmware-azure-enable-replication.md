@@ -7,11 +7,11 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362720"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257313"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolení replikace do Azure pro virtuální počítače VMware
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak povolit replikaci místních virtuálních počíta
 * Disk s operačním systémem by měl být základní disk, nikoli dynamický disk.
 * V případě generace 2/virtuálních počítačů s podporou rozhraní UEFI by měla být řada operačních systémů Windows a spouštěcí disk by měl být menší než 300 GB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že máte:
 

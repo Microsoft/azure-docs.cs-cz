@@ -15,11 +15,11 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.openlocfilehash: 8e428732fb49d27e3991071b87abee53b6e375b2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381787"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262955"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Postupy: použití Azure PowerShell k vytvoření instančního objektu s certifikátem
 
@@ -213,7 +213,7 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
   -StartDate $cert.NotBefore
 ```
 
-## <a name="debug"></a>Ladění
+## <a name="debug"></a>Ladit
 
 Při vytváření instančního objektu může dojít k následujícím chybám:
 

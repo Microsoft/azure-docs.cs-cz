@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666929"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260368"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu
 > [!div class="op_single_selector"]
@@ -159,7 +159,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Popis</th>
+    <th align="left">Stav</th><th align="left">SubStatus</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde o spuštění okna aktivity.</td>
@@ -187,13 +187,13 @@ Okna aktivit můžou být v jednom z následujících stavů:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>Opětovné</td><td>Probíhá ověřování.</td>
+<td rowspan="2">Probíhá zpracování</td><td>Opětovné</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Zpracovává se okno aktivity.</td>
 </tr>
 <tr>
-<td rowspan="4">Selhalo</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
+<td rowspan="4">Neúspěch</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Činnost okna byla zrušena uživatelem.</td>
@@ -204,7 +204,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
 <tr>
 <td>-</td><td>Nepodařilo se vygenerovat nebo ověřit okno aktivity.</td>
 </tr>
-<td>Připraveno</td><td>-</td><td>Okno aktivity je připravené na spotřebu.</td>
+<td>Připraven</td><td>-</td><td>Okno aktivity je připravené na spotřebu.</td>
 </tr>
 <tr>
 <td>Přeskočeno</td><td>-</td><td>Okno aktivity nebylo zpracováno.</td>
@@ -222,10 +222,10 @@ Když v seznamu kliknete na okno aktivity, zobrazí se vám podrobnosti v **Prů
 ### <a name="refresh-activity-windows"></a>Aktualizovat okna aktivity
 Podrobnosti se neaktualizují automaticky, proto pomocí tlačítka Aktualizovat (druhé tlačítko) na panelu příkazů ručně aktualizujte seznam oken aktivit.  
 
-### <a name="properties-window"></a>okno Vlastnosti
+### <a name="properties-window"></a>Vlastnosti – okno
 Okno Vlastnosti je v pravém krajním podokně aplikace pro monitorování a správu.
 
-![okno Vlastnosti](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![Vlastnosti – okno](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
 Zobrazuje vlastnosti položky, kterou jste vybrali v seznamu Průzkumník prostředků (stromové zobrazení), zobrazení diagramu nebo okna aktivit.
 
@@ -244,7 +244,7 @@ Kartu **skript** můžete použít k zobrazení definice JSON vybrané entity da
 ![Karta skript](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Použití systémových zobrazení
-Aplikace pro monitorování a správu zahrnuje předem sestavená systémová zobrazení (**Poslední okna aktivity**, **okna nezdařené aktivity**, probíhající **okna aktivity**), která umožňují zobrazit pro vaše data poslední/neúspěšné/probíhající aktivity v systému Windows. instalací.
+Aplikace pro monitorování a správu zahrnuje předem sestavená systémová zobrazení (**Poslední okna aktivity**, **okna se selháním aktivity**, probíhající **okna aktivity**), která umožňují zobrazit pro datovou továrnu okna poslední, neúspěšné/probíhající aktivity.
 
 Kliknutím na kartu **zobrazení monitorování** přejděte na levou stranu.
 
@@ -270,7 +270,7 @@ V **seznamu okna aktivit**klikněte na název sloupce (například: stav).
 
 ![Nabídka sloupce seznamu oken aktivity](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-Můžete provést následující akce:
+Můžete provádět následující akce:
 
 * Řazení ve vzestupném pořadí.
 * Seřadit v sestupném pořadí.

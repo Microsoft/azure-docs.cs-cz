@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387621"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281285"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Přesun dat z MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -67,13 +67,13 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| typ |Vlastnost Type musí být nastavená na: **OnPremisesMySql** . |Ano |
+| type |Vlastnost Type musí být nastavená na: **OnPremisesMySql** . |Ano |
 | server |Název serveru MySQL |Ano |
-| databáze |Název databáze MySQL |Ano |
-| schéma |Název schématu v databázi. |Ne |
+| database |Název databáze MySQL |Ano |
+| schema |Název schématu v databázi. |Ne |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
 | userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi MySQL. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -94,7 +94,7 @@ Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrn
 
 | Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| dotaz |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: select * from MyTable. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: select * from MyTable. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>Příklad JSON: kopírování dat z MySQL do Azure Blob
@@ -303,41 +303,41 @@ Při přesunu dat do MySQL se z typů MySQL do typů .NET používají následuj
 | bigint bez znaménka |Decimal |
 | bigint |Int64 |
 | bit |Decimal |
-| objekt blob |Byte[] |
+| blob |Byte[] |
 | logick |Logická hodnota |
-| char |String |
+| char |Řetězec |
 | date |Datum a čas |
 | datetime |Datum a čas |
 | decimal |Decimal |
 | Dvojitá přesnost |Double |
 | double |Double |
-| Výčet |String |
-| float |Jednoduché |
+| Výčet |Řetězec |
+| float |Jednoduchá |
 | celé číslo bez znaménka |Int64 |
 | int |Datový typ Int32 |
 | celé číslo bez znaménka |Int64 |
-| celé číslo |Datový typ Int32 |
+| integer |Datový typ Int32 |
 | Long varbinary |Byte[] |
-| Long varchar |String |
+| Long varchar |Řetězec |
 | longblob |Byte[] |
-| longtext |String |
+| longtext |Řetězec |
 | mediumblob |Byte[] |
 | mediumint bez znaménka |Int64 |
 | mediumint |Datový typ Int32 |
-| mediumtext |String |
+| mediumtext |Řetězec |
 | numeric |Decimal |
 | real |Double |
-| set |String |
+| set |Řetězec |
 | typ smallint bez znaménka |Datový typ Int32 |
 | smallint |Int16 |
-| text |String |
+| text |Řetězec |
 | time |TimeSpan |
 | časové razítko |Datum a čas |
 | tinyblob |Byte[] |
 | typ tinyint bez znaménka |Int16 |
 | tinyint |Int16 |
-| tinytext |String |
-| varchar |String |
+| tinytext |Řetězec |
+| varchar |Řetězec |
 | rok |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky

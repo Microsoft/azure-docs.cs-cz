@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391967"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220212"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
 
@@ -27,7 +27,7 @@ Při definování řezů webu použijte následující:
 
 | Název řezu | Popis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain (Doména)     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. například `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com`, Bing vrátí také výsledky z `support.microsoft.com` nebo `technet.microsoft.com`. |
+| Doména     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. například `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com`, Bing vrátí také výsledky z `support.microsoft.com` nebo `technet.microsoft.com`. |
 | Podstránku    | Řez podstránky obsahuje veškerý obsah nacházející se na podstránce a v cestách pod ním. V cestě můžete zadat maximálně dvě podstránky. Například `www.microsoft.com/en-us/windows/`.                                                                                                                       |
 | Stránku    | Řez webové stránky může obsahovat jenom tuto webovou stránku ve vlastním hledání. Volitelně můžete určit, zda chcete zahrnout podstránky.                                                                                                                                                                                  |
 
@@ -44,7 +44,7 @@ Pokud si nejste jistí, které řezy zahrnout, můžete odeslat vyhledávací do
 
 1. v rozevíracím seznamu v podokně náhledu vyberte Bing a zadejte vyhledávací dotaz.
 
-2. Klikněte na tlačítko **Přidat web** vedle výsledku, který chcete zahrnout. Pak klikněte na OK.
+2. Klikněte na tlačítko **Přidat web** vedle výsledku, který chcete zahrnout. Klikněte na tlačítko OK.
 
 >[!NOTE]
 > [!INCLUDE[publish or revert](./includes/publish-revert.md)]
@@ -133,7 +133,7 @@ Ve výchozím nastavení jsou webové stránky připnuté pouze na začátek vý
 |---------------|----------------------------------------------------------------------------------|
 | začíná | PIN je shoda, pokud řetězec dotazu uživatele začíná řetězcem dotazu PIN. |
 | končí   | PIN je shoda, pokud řetězec dotazu uživatele končí řetězcem dotazu PIN.  |
-| Contains    | PIN je shoda, pokud řetězec dotazu uživatele obsahuje řetězec dotazu PIN.   |
+| Obsahuje    | PIN je shoda, pokud řetězec dotazu uživatele obsahuje řetězec dotazu PIN.   |
 
 
 Pokud chcete změnit podmínku shody PIN kódu, klikněte na ikonu pro úpravy kódu PIN. Ve sloupci **Podmínka shody dotazů** klikněte na rozevírací seznam a vyberte novou podmínku, kterou chcete použít. Potom kliknutím na ikonu Uložit uložte změnu.

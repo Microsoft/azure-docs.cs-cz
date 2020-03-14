@@ -12,11 +12,11 @@ ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
 ms.openlocfilehash: 9f518df02b1923513fd014be53646a9a1be8465e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359879"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268623"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database Nejčastější dotazy k škálování
 
@@ -39,19 +39,19 @@ Databáze s technologií škálování je databáze SQL Azure v úrovni služby 
 
 Úrovně služeb založené na vCore se liší v závislosti na dostupnosti databáze a typu úložiště, výkonu a maximální velikosti, jak je popsáno v následující tabulce.
 
-| | Typ prostředku | Obecné účely |  Hyperškálování | Pro důležité obchodní informace |
+| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
 |:---:|:---:|:---:|:---:|:---:|
-| **Nejlepší pro** |Všechny|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|Většina obchodních úloh. Automatické škálování úložiště velikosti až 100 TB, rychlé vertikální a horizontální výpočetní škálování a rychlé obnovení databáze.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
+| **Nejlepší pro** |Vše|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|Většina obchodních úloh. Automatické škálování úložiště velikosti až 100 TB, rychlé vertikální a horizontální výpočetní škálování a rychlé obnovení databáze.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
 |  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
 | **Velikost výpočetního prostředí**|Jedna databáze/elastický fond * | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra * | 1 až 80 virtuální jádra |
-| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | NEUŽÍVÁ SE. | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
-| **Typ úložiště** | Všechny |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
+| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není k dispozici | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| **Typ úložiště** | Vše |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
 | **Velikost úložiště** | Jedna databáze/elastický fond *| 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | NEUŽÍVÁ SE. | 32 GB – 4 TB |
+| | Spravovaná instance  | 32 GB – 8 TB | Není k dispozici | 32 GB – 4 TB |
 | **IOPS** | Izolovaná databáze | 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací 7000 | Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení. | 5000 IOPS s 200 000m maximálním IOPS|
-| | Spravovaná instance | Závisí na velikosti souboru | NEUŽÍVÁ SE. | 1375 IOPS/vCore |
-|**Dostupnost**|Všechny|1 replika bez škálování na více instancí, žádná místní mezipaměť | Víc replik, až 4 horizontálního navýšení kapacity, částečná místní mezipaměť | 3 repliky, 1 škálování čtení na více instancí, redundantní HA v zóně, úplné místní úložiště |
-|**Vytvářet**|Všechny|RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní)| RA-GRS, 7 dní uchovávání, konstantní doba obnovení v čase (PITR) | RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní) |
+| | Spravovaná instance | Závisí na velikosti souboru | Není k dispozici | 1375 IOPS/vCore |
+|**Dostupnost**|Vše|1 replika bez škálování na více instancí, žádná místní mezipaměť | Víc replik, až 4 horizontálního navýšení kapacity, částečná místní mezipaměť | 3 repliky, 1 škálování čtení na více instancí, redundantní HA v zóně, úplné místní úložiště |
+|**Vytvářet**|Vše|RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní)| RA-GRS, 7 dní uchovávání, konstantní doba obnovení v čase (PITR) | RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní) |
 
 \* elastické fondy nejsou v úrovni služby s škálovatelným škálováním podporované.
 

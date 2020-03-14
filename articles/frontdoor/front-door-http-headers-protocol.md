@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720431"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280817"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Podpora protokolů hlaviček protokolu HTTP ve službě Azure front-dveří
 Tento článek popisuje protokol, který služba front-dveří podporuje s částmi cesty volání (viz obrázek). V následujících částech najdete další informace o hlavičkách HTTP, které podporuje služba front-dveří.

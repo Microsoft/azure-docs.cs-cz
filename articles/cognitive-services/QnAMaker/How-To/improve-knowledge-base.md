@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: diberry
 ms.openlocfilehash: dea2bf3b34ca336f3932dd85bf587184ab6881db
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389424"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220685"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Využití aktivního učení k vylepšení vaší znalostní báze
 
@@ -169,10 +169,10 @@ Tělo JSON má několik nastavení:
 
 |Vlastnost těla zprávy JSON|Typ|Účel|
 |--|--|--|--|
-|`feedbackRecords`|pole|Seznam zpětné vazby|
-|`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelné.|
-|`userQuestion`|řetězec|Přesný text dotazu uživatele. Povinná hodnota.|
-|`qnaID`|číslo|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
+|`feedbackRecords`|array|Seznam zpětné vazby|
+|`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelná.|
+|`userQuestion`|řetězec|Přesný text dotazu uživatele. Požadováno.|
+|`qnaID`|number|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
 
 Ukázkový text JSON vypadá takto:
 

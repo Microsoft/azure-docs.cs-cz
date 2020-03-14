@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: manayar
 ms.openlocfilehash: aa2b0013818f897f01945d394266a57016ecb0bb
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275854"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250761"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Pochopení ID instancí pro virtuální počítače Azure VM Scale set
 Tento článek popisuje ID instancí pro sady škálování a různé způsoby jejich povrchu.

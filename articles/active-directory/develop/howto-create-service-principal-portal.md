@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356807"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264112"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům
 
@@ -158,7 +158,7 @@ Ověření oprávnění k předplatnému:
 
 1. Vyhledejte a vyberte **předplatná**nebo vyberte **předplatná** na **domovské** stránce.
 
-   ![Hledání](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Hledat](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.
 

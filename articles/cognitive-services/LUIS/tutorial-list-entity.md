@@ -1,28 +1,20 @@
 ---
 title: 'Kurz: seznam entit – LUIS'
-titleSuffix: Azure Cognitive Services
 description: Získejte data, která odpovídají předem definovanému seznamu položek. Každá položka v seznamu může mít synonyma, která také přesně odpovídají.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447788"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297403"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Kurz: získání přesného textu se shodnými daty z entity utterance a list
 
 V tomto kurzu se seznámíte s tím, jak získat data, která se přesně shodují s předdefinovaným seznamem položek.
 
-**V tomto kurzu se naučíte:**
+**Co se v tomto kurzu naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -42,7 +34,7 @@ Entita seznamu je vhodná pro tento typ dat, když platí následující:
 
 * Hodnoty dat jsou známou sadou.
 * Tato sada nepřekračuje maximální [hranice](luis-boundaries.md) aplikace LUIS pro tento typ entity.
-* Text promluvy se přesně shoduje se synonymem nebo názvem v kanonickém tvaru. LUIS nepoužívá seznam nad rámec přesně vyhovujících textů. Odvozování, plural a další variace se nevyřešily pouze entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu.
+* Text v utterance se nerozlišuje bez rozlišení velkých a malých písmen s synonymem nebo kanonickým názvem. LUIS nepoužívá seznam za shodou. Odvozování, plural a další variace se nevyřešily pouze entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu.
 
 > [!CAUTION]
 > Pokud si nejste jistí, jestli chcete, aby entita seznamu nebo entita s odkazem na počítač se seznamem frází jako s popisovačem, nejlepším a nejpružnější praxí je použít entitu s frází, která je v seznamu frází jako popisovač. Tato metoda umožňuje LUIS zjistit a roztáhnout hodnoty dat k extrakci.
@@ -72,7 +64,7 @@ Příklady primárního názvu a synonym jsou:
 |Kanonický název|Synonyma|
 |--|--|
 |Hluboká miska|úrovní<br>crust hloubkové misky<br>tlustá<br>silné crust|
-|Posouvání|regulární<br>Původně<br>normální<br>běžný crust<br>původní crust<br>normální crust|
+|Posouvání|regulární<br>původně<br>běžnou<br>běžný crust<br>původní crust<br>normální crust|
 |Nejoblíbenější|crustd|
 |Dynamický|tenké crust<br>změny vzhledu<br>crust změny vzhledu|
 
@@ -80,7 +72,7 @@ Příklady primárního názvu a synonym jsou:
 
 1. Vyberte **+ vytvořit**.
 
-1. V automaticky otevíraném dialogovém okně entity zadejte `CrustList` jako název entity a **List** (Seznam) jako typ entity. Vyberte **Next** (Další).
+1. V automaticky otevíraném dialogovém okně entity zadejte `CrustList` jako název entity a **List** (Seznam) jako typ entity. Vyberte **Další**.
 
     > [!div class="mx-imgBorder"]
     > ![snímek obrazovky s dialogovým oknem vytvořit novou entitu](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)

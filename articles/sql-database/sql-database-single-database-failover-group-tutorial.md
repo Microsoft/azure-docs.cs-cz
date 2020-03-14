@@ -12,11 +12,11 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
 ms.openlocfilehash: b88557468c386bc07c2432e154a82fd1f4fcb438
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380030"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255792"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Kurz: Přidání samostatné databáze Azure SQL Database do skupiny převzetí služeb při selhání
 
@@ -27,7 +27,7 @@ Nakonfiguruje skupinu převzetí služeb při selhání pro Azure SQL Database i
 > - Vytvořte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) pro jednu databázi mezi dvěma logickými servery SQL.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 
@@ -157,7 +157,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
@@ -188,7 +188,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní samostatn
 
 Tato část kurzu používá následující příkaz AZ CLI rutin:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
 | [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Vytvoří pravidla brány firewall serveru. | 
@@ -277,7 +277,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
 | [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
@@ -313,7 +313,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
 Tato část kurzu používá následující příkaz AZ CLI rutin:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [AZ SQL Failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Vypíše skupiny převzetí služeb při selhání na serveru. |
 | [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Nastavte primární skupinu převzetí služeb při selhání pomocí převzetí služeb při selhání všemi databázemi z aktuálního primárního serveru. | 
@@ -346,7 +346,7 @@ Odstraňte skupinu prostředků pomocí PowerShellu.
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. | 
 
@@ -363,7 +363,7 @@ Odstraňte skupinu prostředků pomocí AZ CLI.
 
 Tato část kurzu používá následující příkaz AZ CLI rutin:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
@@ -382,7 +382,7 @@ Tato část kurzu používá následující příkaz AZ CLI rutin:
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
@@ -401,7 +401,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. | 
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |

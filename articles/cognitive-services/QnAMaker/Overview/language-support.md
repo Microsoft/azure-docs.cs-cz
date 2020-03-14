@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389220"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220553"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora pro QnA Maker prostředky a základy znalostní báze
 
@@ -57,7 +57,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Islandština|
 |Indonéština|
 |Irština|
-|Italština|
+|italština|
 |Japonština|
 |Kannada|
 |Korejština|
@@ -66,7 +66,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Malajálamština|
 |Malajština|
 |norština|
-|Polština|
+|polština|
 |Portugalština|
 |Paňdžábština|
 |Rumunština|
@@ -80,7 +80,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Tamilština|
 |Telugština|
 |Thajština|
-|Turečtina|
+|turečtina|
 |Ukrajinština|
 |Urdština|
 |Vietnamština|

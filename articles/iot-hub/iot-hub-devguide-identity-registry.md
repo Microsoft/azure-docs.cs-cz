@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.openlocfilehash: d43ad2ce88108a728b26e10eecc7082262a4b637
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945923"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271353"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
 
@@ -119,7 +119,7 @@ Zpráva oznámení pro zařízení:
 |operationTimestamp | ISO8601 časové razítko operace |
 |iothub-Message-Schema | deviceLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Například:
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Například
 
 ```json
 {
@@ -155,7 +155,7 @@ moduleId | ID modulu |
 operationTimestamp | ISO8601 časové razítko operace |
 iothub-Message-Schema | moduleLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Například:
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Například
 
 ```json
 {

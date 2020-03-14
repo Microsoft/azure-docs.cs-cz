@@ -4,11 +4,11 @@ description: Naučte se používat REST API k zálohování sdílených složek 
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444742"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248096"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Zálohování sdílené složky Azure pomocí Azure Backup přes REST API
 

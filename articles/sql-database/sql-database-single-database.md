@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7bca36bdb41c5800a8718f76d48afcfde6f9333e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820945"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208838"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je jediná databáze v Azure SQL Database
 
@@ -37,7 +37,7 @@ Pro sdílení prostředků lze přesunout jednu databázi do [elastického fondu
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
-V kombinaci s hodnocením výkonu použijete integrované nástroje pro [monitorování výkonu](sql-database-performance.md) a [upozorňování](sql-database-insights-alerts-portal.md). Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích. Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sql-database-metrics-diag-logging.md) pro snazší monitorování.
+V kombinaci s hodnocením výkonu použijete integrované nástroje pro [monitorování výkonu](sql-database-performance.md) a [upozorňování](sql-database-insights-alerts-portal.md). Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích. Kromě toho SQL Database možné [vygenerovat metriky a protokoly prostředků](sql-database-metrics-diag-logging.md) pro snazší monitorování.
 
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 

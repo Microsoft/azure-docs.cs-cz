@@ -9,18 +9,20 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: a980c7bd068a463956191eece43ec1be233e7890
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968127"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367614"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm
 
 Neměnné úložiště pro úložiště objektů BLOB v Azure umožňuje uživatelům ukládat datové objekty kritické pro podnikání do ČERVa (psát jednou, číst mnoho). Tento stav zpřístupňuje data, která nejsou Erasable a není upravitelná pro interval zadaný uživatelem. Po dobu trvání intervalu uchování dat je možné objekty blob vytvořit a číst, ale nelze je upravit ani odstranit. K dispozici je neměnné úložiště pro účty pro obecné účely V1, obecné pro v2, BlobStorage a BlockBlobStorage ve všech oblastech Azure.
 
 Informace o tom, jak pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure, nastavit a vymazat právní zásady uchovávání informací, najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](storage-blob-immutability-policies-manage.md).
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-immutable-blob-storage"></a>Neměnné úložiště objektů BLOB
 
@@ -106,7 +108,7 @@ V následující tabulce jsou uvedeny typy operací úložiště objektů blob, 
 |---------|---------|---------|---------|
 |Efektivní interval uchovávání informací pro objekt blob ještě nevypršel a/nebo je nastavené blokování z právních důvodů     |Neměnné: chráněné proti odstranění i zápisu         | Vložte objekt BLOB<sup>1</sup>, PUT blok<sup>1</sup>, PUT seznam blokování<sup>1</sup>, odstranit kontejner, odstranit objekt blob, nastavte metadata objektu blob, vložte stránku, nastavte vlastnosti objektů blob, objekt BLOB snímku, přírůstkový objekt BLOB kopírování, připojovací blok<sup>2</sup> .         |Odstranění kontejneru bylo odepřeno; Odstranění účtu úložiště se zamítlo.         |
 |Platnost platnosti intervalu uchování u objektu BLOB vypršela a není nastavené žádné právní blokování.    |Chráněné pouze proti zápisu (operace odstranění jsou povolené)         |Vložte objekt BLOB<sup>1</sup>, PUT blok<sup>1</sup>, PUT seznam blokování<sup>1</sup>, nastavte metadata objektu blob, PUT, nastavte vlastnosti objektů blob, objekt BLOB snímku, objekt BLOB přírůstkového kopírování, připojovat blok<sup>2</sup> .         |Odstranění kontejneru bylo odepřeno, pokud v chráněném kontejneru existuje alespoň 1 objekt BLOB; Odstranění účtu úložiště bylo odepřeno jenom pro *uzamčené* zásady založené na čase.         |
-|Neaplikují se žádné zásady ČERVů (žádné uchování založené na čase ani značka právního blokování).     |Měnitelné         |Žádná         |Žádná         |
+|Neaplikují se žádné zásady ČERVů (žádné uchování založené na čase ani značka právního blokování).     |Měnitelné         |Žádné         |Žádné         |
 
 <sup>1</sup> služba BLOB umožňuje těmto operacím vytvořit nový objekt BLOB jednou. Všechny následné operace přepsání na stávající cestě objektu BLOB v neměnitelném kontejneru nejsou povoleny.
 

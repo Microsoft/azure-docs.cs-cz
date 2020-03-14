@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
 ms.openlocfilehash: 11e6285ef70ffde5344add951801997f8541eaad
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355661"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244937"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -26,7 +26,7 @@ Naučte se vytvářet, měnit nastavení a odstraňovat síťové rozhraní. Sí
 
 Pokud potřebujete přidat, změnit nebo odebrat IP adresy pro síťové rozhraní, přečtěte si téma [Správa IP adres](virtual-network-network-interface-addresses.md). Pokud potřebujete přidat síťová rozhraní do nebo odebrat síťová rozhraní z virtuálních počítačů, přečtěte si téma [Přidání nebo odebrání síťových rozhraní](virtual-network-network-interface-vm.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ Při vytváření virtuálního počítače pomocí Azure Portal portál vytvoř
 2. V části **Síťová rozhraní**vyberte **+ Přidat** .
 3. Zadejte nebo vyberte hodnoty pro následující nastavení a pak vyberte **vytvořit**:
 
-    |Nastavení|Povinné?|Podrobnosti|
+    |Nastavení|Požadováno?|Podrobnosti|
     |---|---|---|
     |Název|Ano|Název musí být jedinečný v rámci vybrané skupiny prostředků. V průběhu času pravděpodobně máte ve svém předplatném Azure několik síťových rozhraní. Návrhy při vytváření zásad vytváření názvů, které usnadňují správu několika síťových rozhraní, najdete v tématu zásady [vytváření názvů](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Po vytvoření síťového rozhraní se název nedá změnit.|
     |Virtuální síť|Ano|Vyberte virtuální síť pro síťové rozhraní. Síťové rozhraní můžete přiřadit jenom k virtuální síti, která existuje ve stejném předplatném a umístění jako síťové rozhraní. Po vytvoření síťového rozhraní nemůžete změnit virtuální síť, ke které je přiřazená. Virtuální počítač, ke kterému přidáte síťové rozhraní, musí existovat také ve stejném umístění a předplatném jako síťové rozhraní.|
@@ -71,7 +71,7 @@ Portál nenabízí možnost přiřazení síťového rozhraní ke skupinám zabe
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[az network nic create](/cli/azure/network/nic)|
+|Rozhraní příkazového řádku|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Zobrazit nastavení síťového rozhraní
@@ -98,7 +98,7 @@ Pokud je adresa IPv6 přiřazena síťovému rozhraní, vrátí výstup PowerShe
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network nic list](/cli/azure/network/nic) , chcete-li zobrazit síťová rozhraní v předplatném; [AZ Network nic show zobrazí](/cli/azure/network/nic) nastavení pro síťové rozhraní.|
+|Rozhraní příkazového řádku|[AZ Network nic list](/cli/azure/network/nic) , chcete-li zobrazit síťová rozhraní v předplatném; [AZ Network nic show zobrazí](/cli/azure/network/nic) nastavení pro síťové rozhraní.|
 |PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) zobrazí síťová rozhraní v předplatném nebo nastavení zobrazení pro síťové rozhraní.|
 
 ## <a name="change-dns-servers"></a>Změna serverů DNS
@@ -119,7 +119,7 @@ Server DNS je přiřazený serverem DHCP Azure pro síťové rozhraní v operač
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network nic Update](/cli/azure/network/nic)|
+|Rozhraní příkazového řádku|[AZ Network nic Update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>Povolení nebo zakázání předávání IP
@@ -140,7 +140,7 @@ Nastavení musí být povoleno pro každé síťové rozhraní, které je připo
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network nic Update](/cli/azure/network/nic)|
+|Rozhraní příkazového řádku|[AZ Network nic Update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>Změna přiřazení podsítě
@@ -160,7 +160,7 @@ Můžete změnit podsíť, ale ne virtuální síť, ke které je přiřazeno s�
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
+|Rozhraní příkazového řádku|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Přidat nebo odebrat ze skupin zabezpečení aplikace
@@ -174,7 +174,7 @@ Síťové rozhraní můžete přidat do skupiny zabezpečení aplikace pomocí p
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network nic Update](/cli/azure/network/nic)|
+|Rozhraní příkazového řádku|[AZ Network nic Update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>Přidružit nebo oddělit skupinu zabezpečení sítě
@@ -206,7 +206,7 @@ Po odstranění síťového rozhraní se uvolní všechny adresy MAC nebo IP, kt
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network nic DELETE](/cli/azure/network/nic)|
+|Rozhraní příkazového řádku|[AZ Network nic DELETE](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>Řešení potíží s připojením

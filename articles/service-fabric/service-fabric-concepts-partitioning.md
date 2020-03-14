@@ -4,11 +4,11 @@ description: Popisuje, jak rozdělit Service Fabric stavové služby. Oddíly um
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390188"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258613"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Rozdělení Service Fabric spolehlivých služeb
 Tento článek poskytuje Úvod do základních konceptů vytváření oddílů služby Azure Service Fabric Reliable Services. Zdrojový kód používaný v článku je také k dispozici na [GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).

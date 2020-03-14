@@ -11,14 +11,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: a4ce383959b10836791ea065ffe8a9c243f6ad0d
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168992"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204541"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Zobrazení a odstranit data uživatelů v rámci produktu z Galerie Azure AI
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Můžete zobrazit a odstranit v rámci produktu uživatelská data z Galerie Azure AI pomocí rozhraní nebo rozhraní API katalogu AI galerie. Tento článek vysvětluje, jak.
 
@@ -30,9 +32,9 @@ Můžete zobrazit a odstranit v rámci produktu uživatelská data z Galerie Azu
 
 Můžete zobrazit položky, kterou jste publikovali prostřednictvím webu galerii Azure AI uživatelského rozhraní. Uživatelé mohou zobrazit veřejné i neuvedené řešení, projekty, experimenty a další publikované položky:
 
-1.  Přihlaste se k [Azure AI Gallery](https://gallery.azure.ai/).
-2.  Klikněte na tlačítko profilový obrázek v pravém horním rohu a pak název účtu se načíst stránku svého profilu.
-3.  Na stránce profilu se zobrazí všechny položky v galerii, včetně neuvedené v seznamu položek publikovaných.
+1.    Přihlaste se k [Azure AI Gallery](https://gallery.azure.ai/).
+2.    Klikněte na tlačítko profilový obrázek v pravém horním rohu a pak název účtu se načíst stránku svého profilu.
+3.    Na stránce profilu se zobrazí všechny položky v galerii, včetně neuvedené v seznamu položek publikovaných.
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Umožňuje zobrazit vaše data pomocí rozhraní API Galerie katalogu AI
 
@@ -43,9 +45,9 @@ Katalog odpovědi jsou vráceny ve formátu JSON.
 ### <a name="get-an-author-id"></a>Získání ID autora
 Autor ID je založeno na e-mailovou adresu používá při publikování na galerii Azure AI. Nelze změnit:
 
-1.  Přihlaste se k [Azure AI Gallery](https://gallery.azure.ai/).
-2.  Klikněte na tlačítko profilový obrázek v pravém horním rohu a pak název účtu se načíst stránku svého profilu.
-3.  Adresa URL na panelu Adresa zobrazuje alfanumerické ID následující `authorId=`. Například pro adresu URL: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.    Přihlaste se k [Azure AI Gallery](https://gallery.azure.ai/).
+2.    Klikněte na tlačítko profilový obrázek v pravém horním rohu a pak název účtu se načíst stránku svého profilu.
+3.    Adresa URL na panelu Adresa zobrazuje alfanumerické ID následující `authorId=`. Například pro adresu URL: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     ID autora: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -55,12 +57,12 @@ Budete potřebovat přístupový token k zobrazení neuvedené v seznamu entit p
 
 K získání přístupového tokenu je potřeba zkontrolovat hlavičku `DataLabAccessToken` požadavku HTTP, který prohlížeč vytvoří v katalogu rozhraní API, když se přihlásí:
 
-1.  Přihlaste se k [Azure AI Gallery](https://gallery.azure.ai/).
-2.  Klikněte na tlačítko profilový obrázek v pravém horním rohu a pak název účtu se načíst stránku svého profilu.
-3.  Stisknutím klávesy F12 otevřete v podokně Developer Tools prohlížeče, vyberte kartu síť a aktualizujte stránku. 
+1.    Přihlaste se k [Azure AI Gallery](https://gallery.azure.ai/).
+2.    Klikněte na tlačítko profilový obrázek v pravém horním rohu a pak název účtu se načíst stránku svého profilu.
+3.    Stisknutím klávesy F12 otevřete v podokně Developer Tools prohlížeče, vyberte kartu síť a aktualizujte stránku. 
 4. Vyfiltrujte požadavky na *katalog* řetězců zadáním do textového pole Filtr.
-5.  V části požadavky na adresu URL `https://catalog.cortanaanalytics.com/entities`Najděte požadavek GET a vyberte kartu *záhlaví* . Posuňte se dolů k části s *hlavičkou požadavků* .
-6.  V záhlaví `DataLabAccessToken` je alfanumerický token. Chcete-li pomoci zabezpečit data, Nesdílejte tento token.
+5.    V části požadavky na adresu URL `https://catalog.cortanaanalytics.com/entities`Najděte požadavek GET a vyberte kartu *záhlaví* . Posuňte se dolů k části s *hlavičkou požadavků* .
+6.    V záhlaví `DataLabAccessToken` je alfanumerický token. Chcete-li pomoci zabezpečit data, Nesdílejte tento token.
 
 ### <a name="view-user-information"></a>Zobrazit informace o uživatelích
 Pomocí ID autora, které jste získali v předchozích krocích, zobrazte informace v profilu uživatele nahrazením `[AuthorId]` v následující adrese URL:
@@ -92,9 +94,9 @@ Příklad:
 
 Tento dotaz zobrazí pouze veřejné entity. Chcete-li zobrazit všechny entity, včetně neuvedené v seznamu těch, poskytují přístup token získaný z předchozí části.
 
-1.  Pomocí nástroje, jako je například [post](https://www.getpostman.com), vytvořte požadavek HTTP GET na adresu URL katalogu, jak je popsáno v části [získání přístupového tokenu](#get-your-access-token).
-2.  Vytvořte hlavičku požadavku HTTP s názvem `DataLabAccessToken`s hodnotou nastavenou na přístupový token.
-3.  Odeslání požadavku HTTP.
+1.    Pomocí nástroje, jako je například [post](https://www.getpostman.com), vytvořte požadavek HTTP GET na adresu URL katalogu, jak je popsáno v části [získání přístupového tokenu](#get-your-access-token).
+2.    Vytvořte hlavičku požadavku HTTP s názvem `DataLabAccessToken`s hodnotou nastavenou na přístupový token.
+3.    Odeslání požadavku HTTP.
 
 > [!TIP]
 > Pokud neuvedené v seznamu entit se nezobrazují v odpovědi z rozhraní API katalogu, uživatel může být neplatný nebo vypršení platnosti přístupového tokenu. Odhlaste se ze Azure AI Gallery a pak opakujte postup v části [získání přístupového tokenu](#get-your-access-token) pro obnovení tokenu. 

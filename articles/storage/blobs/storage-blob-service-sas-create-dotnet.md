@@ -10,18 +10,18 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0d911d67eeaeae4b48198e95dc3df01e4740dc00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372070"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137207"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Vytvoření SAS služby pro kontejner nebo objekt BLOB s využitím .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-V tomto článku se dozvíte, jak pomocí klíče účtu úložiště vytvořit SAS služby pro kontejner nebo objekt BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client).
+V tomto článku se dozvíte, jak pomocí klíče účtu úložiště vytvořit SAS služby pro kontejner nebo objekt BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>Vytvoření SAS služby pro kontejner objektů BLOB
 

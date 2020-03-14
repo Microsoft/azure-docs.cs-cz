@@ -7,11 +7,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373988"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249370"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -28,7 +28,7 @@ Platforma .NET podporuje následující platformy:
 
 * Verze Xamarin Androidu pro rozhraní API 19 až 24 (KitKat až nougat)
 * Verze Xamarin iOS pro iOS verze 8,0 a novější
-* Univerzální platforma Windows
+* Univerzální platforma pro Windows
 * Windows Phone 8.1
 * Windows Phone 8,0 s výjimkou aplikací Silverlight
 

@@ -16,11 +16,11 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f9bd1afeebedf4cbf37d75d9c57f3d8be0f288
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522675"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264125"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 

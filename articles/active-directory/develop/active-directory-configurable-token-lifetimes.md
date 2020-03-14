@@ -14,11 +14,11 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
 ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377764"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263176"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů v Azure Active Directory (Preview)
 
@@ -208,7 +208,7 @@ V příkladech se můžete dozvědět, jak:
 * Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API
 * Správa pokročilých zásad
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro aplikace, instanční objekty a celou organizaci. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.  
 
 Začněte tím, že provedete následující kroky:

@@ -4,11 +4,11 @@ description: Začínáme s Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443143"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259627"
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
 
@@ -19,7 +19,7 @@ Naučte se, jak získat přístup ke službě Advisor prostřednictvím Azure Po
 
 ## <a name="get-recommendations"></a>Získat doporučení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně klikněte na možnost **Poradce**.  Pokud v levém podokně nevidíte poradce, klikněte na **všechny služby**.  V podokně nabídky služby v části **monitorování a Správa**klikněte na možnost **Poradce**. Zobrazí se řídicí panel Advisor.
 
@@ -82,7 +82,7 @@ Můžete mít skupiny prostředků nebo předplatná, pro které nechcete přij�
 
     ![Příklad konfigurace prostředků Advisoru](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. Klikněte na tlačítko **použít** .
+1. Klikněte na tlačítko **Použít**.
 
 ## <a name="configure-low-usage-vm-recommendation"></a>Konfigurace doporučení pro virtuální počítače s nízkou spotřebou
 

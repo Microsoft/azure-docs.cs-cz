@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370559"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244833"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid schéma událostí
 
@@ -85,14 +85,14 @@ Všechny události mají stejné následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Požadováno | Popis |
 | -------- | ---- | -------- | ----------- |
-| téma | string | Ne, ale v případě zahrnutí, se musí přesně shodovat s Event Gridým tématem Azure Resource Manager ID. Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| subject | string | Ano | Cesta definovaná vydavatelem k předmětu události |
-| eventType | string | Ano | Jeden z registrovaných typů událostí pro tento zdroj události. |
-| eventTime | string | Ano | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| id | string | Ano | Jedinečný identifikátor události |
-| data | objekt | Ne | Data události specifická pro poskytovatele prostředků. |
-| dataVersion | string | Ne, ale bude označena prázdnou hodnotou. | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
-| metadataVersion | string | Nepožaduje se, ale pokud je zahrnutý, musí odpovídat schématu Event Grid `metadataVersion` přesně (v současné době pouze `1`). Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
+| topic | řetězec | Ne, ale v případě zahrnutí, se musí přesně shodovat s Event Gridým tématem Azure Resource Manager ID. Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| subject | řetězec | Ano | Cesta definovaná vydavatelem k předmětu události |
+| eventType | řetězec | Ano | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| eventTime | řetězec | Ano | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| id | řetězec | Ano | Jedinečný identifikátor události |
+| data | object | Ne | Data události specifická pro poskytovatele prostředků. |
+| dataVersion | řetězec | Ne, ale bude označena prázdnou hodnotou. | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| metadataVersion | řetězec | Nepožaduje se, ale pokud je zahrnutý, musí odpovídat schématu Event Grid `metadataVersion` přesně (v současné době pouze `1`). Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
 Další informace o vlastnostech v datovém objektu najdete v tématu zdroj události:
 

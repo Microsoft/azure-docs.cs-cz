@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e17112cbe2a494a585cd5a09c36cfe449d3d433c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249205"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365811"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Běžné chyby a kroky při řešení potíží pro Azure Active Directory Domain Services
 
@@ -30,7 +30,7 @@ Pokud máte problémy s povolením služby Azure služba AD DS, přečtěte si n
 
 | **Ukázková chybová zpráva** | **Rozlišení** |
 | --- |:--- |
-| *Název addscontoso.com se již v této síti používá. Zadejte název, který se nepoužívá.* |[Konflikt názvů domén ve virtuální síti](troubleshoot.md#domain-name-conflict) |
+| *Název aaddscontoso.com se již v této síti používá. Zadejte název, který se nepoužívá.* |[Konflikt názvů domén ve virtuální síti](troubleshoot.md#domain-name-conflict) |
 | *V tomto tenantovi Azure AD nešlo povolit doménové služby. Služba nemá dostatečná oprávnění k aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikaci nazvanou Azure AD Domain Services Sync a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Služba Domain Services nemá dostatečná oprávnění k aplikaci Azure AD Domain Services Sync.](troubleshoot.md#inadequate-permissions) |
 | *V tomto tenantovi Azure AD nešlo povolit doménové služby. Aplikace Domain Services ve vašem tenantovi Azure AD nemá požadovaná oprávnění k povolení doménových služeb. Odstraňte aplikaci s identifikátorem aplikace d87dcbc6-a371-462e-88e3-28ad15ec4e64 a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Aplikace Domain Services není ve vašem tenantovi Azure AD správně nakonfigurovaná.](troubleshoot.md#invalid-configuration) |
 | *V tomto tenantovi Azure AD nešlo povolit doménové služby. Aplikace Microsoft Azure AD je v tenantovi Azure AD zakázaná. Povolte aplikaci s identifikátorem aplikace 00000002-0000-0000-C000-000000000000 a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Aplikace Microsoft Graph je v tenantovi Azure AD zakázaná.](troubleshoot.md#microsoft-graph-disabled) |

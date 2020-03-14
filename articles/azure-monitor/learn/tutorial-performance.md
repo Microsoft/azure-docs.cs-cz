@@ -8,11 +8,11 @@ ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
 ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367677"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239592"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -25,9 +25,9 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace a pomáhá
 > * Analýza podrobností o zobrazení stránek pomocí dotazovacího jazyka
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web

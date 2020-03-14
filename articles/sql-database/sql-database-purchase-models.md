@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 02/01/2020
-ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/09/2020
+ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379542"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255987"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
@@ -85,6 +85,11 @@ Chcete-li provést převod z nákupního modelu založeného na DTU na nákupní
 
 - Každé 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore v úrovni služby Pro obecné účely.
 - Každé 125 DTU na úrovni Premium vyžaduje alespoň 1 vCore v úrovni služby Pro důležité obchodní informace.
+
+> [!NOTE]
+> Pokyny ke změně velikosti DTU na vCore jsou přibližné a poskytují se při počátečním odhadu cíle cílové databázové služby. Optimální konfigurace cílové databáze je závislá na úlohách. 
+> 
+> Dosažení optimálního poměru cen a výkonu může vyžadovat využití flexibility modelu vCore k úpravě počtu virtuální jádra, [generování hardwaru](sql-database-service-tiers-vcore.md#hardware-generations), [služby](sql-database-service-tiers-vcore.md#service-tiers) a [výpočetních](sql-database-service-tiers-vcore.md#compute-tiers) vrstev a také k ladění dalších parametrů konfigurace databáze, jako je například [Maximální stupeň paralelismu](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing).
 
 ## <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 

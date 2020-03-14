@@ -4,11 +4,11 @@ description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité p
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384523"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274005"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Uzamknout prostředky, aby nedocházelo k neočekávaným změnám
 
@@ -65,7 +65,7 @@ Pokud zamknete skupinu prostředků vytvořenou službou Azure Backup, zálohov�
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>Šablona
+## <a name="template"></a>Šablony
 
 Při použití šablony Správce prostředků k nasazení zámku použijte v závislosti na rozsahu zámku jiné hodnoty pro název a typ.
 

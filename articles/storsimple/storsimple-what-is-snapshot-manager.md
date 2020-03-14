@@ -16,11 +16,11 @@ ms.date: 02/27/2017
 ms.author: twooley
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e58e2d929dd1e4db16ce495ad54045e9dc3a6fb1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365750"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267414"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>Úvod do StorSimple Snapshot Manager
 

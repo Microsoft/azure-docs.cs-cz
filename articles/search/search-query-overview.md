@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379666"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282819"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Typy dotazů a jejich složení v Azure Kognitivní hledání
 
@@ -157,7 +157,7 @@ Pokud chcete, aby služba Azure Kognitivní hledání vracela výsledky seřazen
 ### <a name="hit-highlighting"></a>Zvýrazňování položek
 Ve službě Azure Kognitivní hledání je zdůraznění přesné části výsledků hledání, které odpovídají hledanému dotazu, snadno pomocí parametrů **`highlight`** , **`highlightPreTag`** a **`highlightPostTag`** . Můžete určit, která *vyhledávací* pole by měla mít zvýrazněný text a zároveň zadat přesné řetězcové značky, které se připojí k začátku a konci odpovídajícího textu, který Azure kognitivní hledání vrátí.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 + [Jak funguje fulltextové vyhledávání v Azure Kognitivní hledání (architektura analýzy dotazů)](search-lucene-query-architecture.md)
 + [Průzkumník vyhledávání](search-explorer.md)

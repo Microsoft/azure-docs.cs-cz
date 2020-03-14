@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386345"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271899"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
 
 V tomto dokumentu se naučíte základy správy a monitorování [Apache Stormch](https://storm.apache.org/) topologií běžících na clusterech HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
@@ -172,7 +172,7 @@ Uživatelské rozhraní funkce pro zaplavení poskytuje webové rozhraní pro pr
 
 Hlavní stránka uživatelského rozhraní pro zaplavení poskytuje následující informace:
 
-| Sekce | Popis |
+| Section | Popis |
 | --- | --- |
 | Souhrn clusteru| Základní informace o clusteru zaplavení. |
 | Nimbus souhrn | Seznam základních informací Nimbus. |
@@ -188,7 +188,7 @@ Hlavní stránka uživatelského rozhraní se bude podobat této webové stránc
 
 Výběrem odkazu v části **Souhrn topologie** se zobrazí následující informace o topologii:
 
-| Sekce | Popis |
+| Section | Popis |
 | --- | --- |
 | Souhrn topologie | Základní informace o topologii. |
 | Akce topologie| Akce správy, které lze provést pro topologii. Dostupné akce jsou popsány dále v této části. |
@@ -211,7 +211,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 | Deaktivovat | Pozastaví běžící topologii. |
 | Obnovení rovnováhy | Upravuje paralelismus topologie. Po změně počtu uzlů v clusteru byste měli znovu vyrovnat běžící topologie. Tato operace umožňuje, aby topologie upravila paralelismus, aby vyrovnala dodatečné nebo omezené množství uzlů v clusteru.<br/><br/>Další informace najdete v tématu <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Princip paralelismu Apache Storm topologie</a>.
 | Kill | Ukončí topologii nečinnosti po zadaném časovém limitu. |
-| Ladění | Spustí ladicí relaci pro spuštěnou topologii. |
+| Ladit | Spustí ladicí relaci pro spuštěnou topologii. |
 | Zastavit ladění | Ukončí relaci ladění pro spuštěnou topologii. |
 | Změnit úroveň protokolu | Upraví úroveň protokolu ladění. |
 
@@ -219,7 +219,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 
 Výběr Spout z částí **spoutů** nebo **šrouby** zobrazí následující informace o vybrané položce:
 
-| Sekce | Popis |
+| Section | Popis |
 | --- | --- |
 | Souhrn komponenty | Základní informace o Spout nebo šroubu |
 | Akce komponenty | **Ladění** a **zastavování tlačítek ladění** . |
@@ -255,7 +255,7 @@ Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru můžete na
 | Ambari Web | Na webové stránce clusteru Ambari (`https://CLUSTERNAME.azurehdinsight.net` **) vyberte v**horní části stránky **služby** a pak vyberte možnost přestránkovat. Na kartě **Souhrn** vyberte možnost **Server uživatelského rozhraní**. V horní části stránky se zobrazí plně kvalifikovaný název domény uzlu, který je hostitelem uživatelského rozhraní a REST API. |
 | Ambari REST API | Pomocí příkazového `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` můžete načíst informace o uzlu, na kterém běží uživatelské rozhraní a REST API. Nahraďte dvě instance *název_clusteru* názvem clusteru. Až budete vyzváni, zadejte heslo pro účet uživatele (správce). V odpovědi obsahuje položka "host_name" výstupu JSON plně kvalifikovaný název domény uzlu. |
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Požadavky na REST API musí používat *základní ověřování*, proto musíte pro cluster HDInsight použít jméno správce a heslo.
 

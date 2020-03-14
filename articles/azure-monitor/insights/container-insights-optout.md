@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak můžete ukončit monitorování clust
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385455"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275253"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zastavit monitorování Azure Kubernetes Service (AKS) pomocí Azure monitoru pro kontejnery
 

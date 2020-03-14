@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: ff102ebe50dd4d2169090718ced9e550701b1b09
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374686"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259406"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service (AKS)
 
@@ -18,7 +18,7 @@ Pokud chcete omezit přístup k vašim aplikacím ve službě Azure Kubernetes S
 > [!NOTE]
 > Azure Load Balancer je k dispozici ve dvou SKU – *Basic* a *Standard*. Ve výchozím nastavení se standardní SKU používá při vytváření clusteru AKS.  Při vytváření služby s typem jako nástroj pro vyrovnávání zatížení se při zřizování clusteru zobrazí stejný typ. Další informace najdete v tématu [porovnání SKU nástroje pro vyrovnávání zatížení Azure][azure-lb-comparison].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 

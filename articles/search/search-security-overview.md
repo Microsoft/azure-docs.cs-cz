@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396316"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282832"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Zabezpečení a ochrana dat v Azure Kognitivní hledání
 
@@ -100,7 +100,7 @@ Pokud potřebujete detailní kontrolu obsahu pro jednotlivé uživatele, můžet
 
 V následující tabulce najdete souhrn operací povolených v Azure Kognitivní hledání a který klíč odemkne přístup k určité operaci.
 
-| Operace | Oprávnění |
+| Funkce | Oprávnění |
 |-----------|-------------------------|
 | Vytvoření služby | Vlastník předplatného Azure|
 | Škálování služby | Klíč správce, vlastník RBAC nebo přispěvatel v prostředku  |
@@ -118,7 +118,7 @@ Datová centra Microsoftu poskytují špičkové fyzické zabezpečení a jsou v
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 + [Začínáme s .NET (ukazuje použití klíče správce k vytvoření indexu)](search-create-index-dotnet.md)
 + [Začínáme REST (ukazuje použití klíče správce k vytvoření indexu)](search-create-index-rest-api.md)

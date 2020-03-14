@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
 ms.openlocfilehash: bd55f422451df935301245eef3e9dd10f7ab55b1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945583"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239326"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 

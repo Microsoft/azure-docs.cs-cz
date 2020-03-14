@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387946"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238689"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Kurz: použití nástroje pro migraci dat k migraci dat do Azure Cosmos DB
 
-Tento kurz obsahuje pokyny k použití nástroje pro migraci dat do služby Azure Cosmos DB, který dokáže importovat data z různých zdrojů do kontejnerů a tabulek Azure Cosmos. Můžete importovat ze souborů JSON, CSV, SQL, MongoDB, služby Azure Table Storage, Amazon DynamoDB a dokonce i z kolekcí rozhraní SQL API služby Azure Cosmos DB. Pro použití se službou Azure Cosmos DB tato data migrujete do kolekcí a tabulek. Nástroj pro migraci dat můžete použít také při migraci z kolekce s jedním oddílem do kolekce s více oddíly pro rozhraní SQL API.
+Tento kurz obsahuje pokyny k použití nástroje pro migraci dat do služby Azure Cosmos DB, který dokáže importovat data z různých zdrojů do kontejnerů a tabulek Azure Cosmos. Můžete importovat z JSON soubory, sdíleného svazku clusteru soubory, SQL, MongoDB, Azure Table storage, Amazon DynamoDB a dokonce kolekce rozhraní SQL API služby Azure Cosmos DB. Migrujete data do kolekce a tabulky pro použití se službou Azure Cosmos DB. Nástroj pro migraci dat můžete použít také při migraci z kolekce s jedním oddílem do kolekce s více oddíly pro rozhraní SQL API.
 
 Jaké rozhraní API budete se službou Azure Cosmos DB používat?
 
@@ -52,7 +52,7 @@ Nástroj pro migraci dat je open source řešení umožňující import dat do s
 * Azure Table Storage
 * Amazon DynamoDB
 * HBase
-* Kontejnery Azure Cosmos DB
+* Kontejnery služby Azure Cosmos
 
 Přestože nástroj pro import obsahuje grafické uživatelské rozhraní (dtui.exe), dá se ovládat i z příkazového řádku (dt.exe). Ve skutečnosti je možnost výstupu přidružený příkaz po nastavení importu přes uživatelské rozhraní. Můžete transformovat tabulkové zdroje dat, jako jsou SQL Server nebo souborů CSV, chcete-li vytvořit hierarchické vztahy (vnořené dokumenty) během importu. V dalších částech tohoto článku se dozvíte více o možnostech zdroje, ukázkových příkazech pro import z jednotlivých zdrojů, možnostech cíle a zobrazení výsledků importu.
 
@@ -380,7 +380,7 @@ Pokud chcete importovat do jedné kolekce, zadejte název kolekce, ze které se 
 
 1. Podporují se pouze vzory pojmenování s rozsahem celých čísel. Například zadáním collection[0-3] se vytvoří následující kolekce: collection0, collection1, collection2, collection3.
 2. Můžete použít zkrácenou syntaxi: collection[3] vytvoří stejnou sadu kolekcí uvedenou v kroku 1.
-3. Je možné zadat více než jedno nahrazení. Například collection[0-1] [0-9] vygeneruje 20 názvů kolekcí s počátečními nulami (collection01, collection02, collection03 atd.).
+3. Je možné zadat více než jedno nahrazení. Například kolekce [0-1] [0-9] generuje 20 názvů kolekcí úvodními nulami (collection01, ..02, ..03).
 
 Po zadání názvů kolekcí zvolte požadovanou propustnost kolekcí (400 až 10 000 RU/s). K zajištění nejlepšího výkonu zvolte vyšší propustnost. Další informace o úrovních výkonu najdete v tématu [Úrovně výkonu ve službě Azure Cosmos DB](performance-levels.md).
 
@@ -439,7 +439,7 @@ Import do jedné kolekce, zadejte název kolekce, kterou chcete importovat data 
 
 1. Podporují se pouze vzory pojmenování s rozsahem celých čísel. Například zadáním collection[0-3] se vytvoří následující kolekce: collection0, collection1, collection2, collection3.
 2. Můžete použít zkrácenou syntaxi: collection[3] vytvoří stejnou sadu kolekcí uvedenou v kroku 1.
-3. Je možné zadat více než jedno nahrazení. Například collection[0-1] [0-9] vytvoří 20 názvů kolekcí s počátečními nulami (collection01, collection02, collection03 atd.).
+3. Je možné zadat více než jedno nahrazení. Například kolekce [0-1] [0-9] vytvoří 20 názvů kolekcí úvodními nulami (collection01, ..02, ..03).
 
 Po zadání názvů kolekcí zvolte požadovanou propustnost kolekcí (400 až 250 000 RU/s). K zajištění nejlepšího výkonu zvolte vyšší propustnost. Další informace o úrovních výkonu najdete v tématu [Úrovně výkonu ve službě Azure Cosmos DB](performance-levels.md). Jakýkoli import do kolekce s propustností větší než 10 000 RU/s vyžaduje klíč oddílu. Pokud se rozhodnete, že potřebujete více než 250 000 RU/s, musíte na portálu podat žádost o navýšení limitu účtu.
 

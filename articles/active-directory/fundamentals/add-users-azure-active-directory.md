@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377534"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262110"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí služby Azure Active Directory
 
@@ -40,9 +40,9 @@ Chcete-li přidat nového uživatele, postupujte podle následujících kroků:
 
 1. Na stránce **uživatel** zadejte informace pro tohoto uživatele:
 
-   - **Název**. Povinná hodnota. První a poslední název nového uživatele. Například *Marie Parker*.
+   - **Název**. Požadováno. První a poslední název nového uživatele. Například *Marie Parker*.
 
-   - **Uživatelské jméno**. Povinná hodnota. Uživatelské jméno nového uživatele. například `mary@contoso.com`.
+   - **Uživatelské jméno**. Požadováno. Uživatelské jméno nového uživatele. například `mary@contoso.com`.
 
      Část domény uživatelského jména musí používat počáteční výchozí název domény, *\<názevvašídomény >. Microsoft. com*, nebo vlastní název domény, jako je například *contoso.com*. Další informace o tom, jak vytvořit vlastní název domény, najdete v tématu [Přidání vlastního názvu domény pomocí portálu Azure Active Directory](add-custom-domain.md).
 

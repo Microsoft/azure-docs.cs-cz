@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376346"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261044"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect synchronizace Service Manager
 
@@ -31,9 +31,9 @@ ms.locfileid: "78376346"
 Karta konektory slouží ke správě všech systémů, ke kterým je synchronizační modul připojen.
 
 ## <a name="connector-actions"></a>Akce konektoru
-| Akce | Poznámka |
+| Akce | Komentář |
 | --- | --- |
-| Vytvoření |Nepoužívat. Pro připojení k dalším doménovým strukturám služby AD použijte Průvodce instalací nástroje. |
+| Create |Nepoužívat. Pro připojení k dalším doménovým strukturám služby AD použijte Průvodce instalací nástroje. |
 | Vlastnosti |Používá se pro filtrování domén a organizačních jednotek. |
 | [Odstranění](#delete) |Slouží k odstranění dat v prostoru konektoru nebo k odstranění připojení k doménové struktuře. |
 | [Konfigurovat profily spuštění](#configure-run-profiles) |S výjimkou filtrování domén není tady nic konfigurovat. Tuto akci můžete použít k zobrazení již nakonfigurovaných profilů spuštění. |
@@ -45,7 +45,7 @@ Karta konektory slouží ke správě všech systémů, ke kterým je synchroniza
 | Aktualizovat schéma |Aktualizuje schéma v mezipaměti. Místo toho je vhodnější použít možnost v Průvodci instalací, protože tato aktualizace také aktualizuje pravidla synchronizace. |
 | [Hledat místo v konektoru](#search-connector-space) |Slouží k hledání objektů a ke sledování objektu a jeho dat prostřednictvím systému. |
 
-### <a name="delete"></a>Odstranit
+### <a name="delete"></a>Odstranění
 Akce Odstranit se používá pro dvě různé věci.  
 ![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 

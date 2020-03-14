@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
 ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362446"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219475"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Vytvoření prostředku Cognitive Services pomocí Azure Portal
 
@@ -23,7 +23,7 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 
@@ -39,7 +39,7 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
     
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Computer Vision  | Content Moderator                                    | Tvář               | Rozpoznávání jazyka (LUIS) | Analýza textu   |
+    | Počítačové zpracování obrazu  | Content Moderator                                    | Tvář               | Rozpoznávání jazyka (LUIS) | Analýza textu   |
     | Translator Text  | Vyhledávání Bingu v7 <br>(Web, obrázek, novinky, video, vizuál) | Vlastní vyhledávání Bingu | Vyhledávání entit Bingu            | Automatické návrhy Bingu |
     | Kontrola pravopisu Bingu |                                                      |                    |                               |                  |
     
@@ -47,7 +47,7 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
     K vytvoření prostředku pro dostupné Cognitive Services použijte odkazy níže:
 
-    | Obraz                      | Řeč                  | Jazyk                          | Rozhodnutí             | Hledání                 |
+    | Obraz                      | Řeč                  | Jazyk                          | Rozhodnutí             | Hledat                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Počítačové zpracování obrazu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Hlasové služby](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Moderní čtečka](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Detektor anomálií](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Vyhledávání Bingu rozhraní API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Služba Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [rozpoznávání mluvčího](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
@@ -109,7 +109,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 2. Vyhledejte skupinu prostředků obsahující prostředek, který chcete odstranit.
 3. Klikněte pravým tlačítkem na výpis skupiny prostředků. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Ověřování požadavků do Azure Cognitive Services](authentication.md)
 * [Co je Azure Cognitive Services?](Welcome.md)

@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396880"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256429"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database v Azure Portal a zahájení převzetí služeb při selhání
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak nakonfigurovat [aktivní geografickou replikac
 
 Informace o skupinách automatického převzetí služeb při selhání s databázemi s jednou a ve fondu najdete v tématu [osvědčené postupy použití skupin převzetí služeb při selhání s databázemi s jedním a fondem](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Informace o skupinách automatického převzetí služeb při selhání se spravovanými instancemi najdete v tématu [osvědčené postupy při používání skupin převzetí služeb při selhání se spravovanými instancemi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete nakonfigurovat aktivní geografickou replikaci pomocí Azure Portal, budete potřebovat následující prostředek:
 

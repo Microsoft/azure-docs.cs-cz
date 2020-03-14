@@ -4,11 +4,11 @@ description: Prohlášení o zásadách uchovávání a ochrany osobních údaj�
 ms.topic: conceptual
 ms.date: 09/29/2019
 ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368035"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275994"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -213,7 +213,7 @@ Nedoporučujeme explicitně nastavovat aplikaci tak, aby používala TLS 1,2, po
 | Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není ve výchozím nastavení povolená. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
 | Windows Server 2008 SP2 | Podpora protokolu TLS 1.2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
-|Windows Vista | Nepodporuje se. | neuvedeno
+|Windows Vista | Nepodporuje se. | Není k dispozici
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
 
@@ -247,7 +247,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 
 | Vaše akce | Shromážděné datové třídy (viz další tabulka) |
 | --- | --- |
-| [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Žádosti<br/>**Výjimky**<br/>Relace<br/>uživatelé |
+| [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelé |
 | [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
 | [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
 | [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Jazyka |
@@ -274,7 +274,7 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 | PageViews |Adresa URL a název stránky nebo název obrazovky |
 | Výkon klienta |Adresa URL/název stránky, čas načtení prohlížeče |
 | Jazyka |Volání HTTP z webové stránky na server |
-| Žádosti |Adresa URL, doba trvání, kód odpovědi |
+| Požadavky |Adresa URL, doba trvání, kód odpovědi |
 | Závislosti |Typ (SQL, HTTP,...), připojovací řetězec nebo identifikátor URI, Sync/Async, Duration, úspěch, příkaz SQL (s Monitorování stavu) |
 | **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojový soubor, číslo řádku, `thread id` |
 | Chybě |`Process id`, `parent process id``crash thread id`; Oprava aplikace, `id`, Build;  Typ výjimky, adresa, důvod; zakódováné symboly a registry, binární počáteční a koncové adresy, binární název a cesta, typ procesoru |
@@ -288,7 +288,7 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 > [!NOTE]
 > IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) .
 
-## <a name="credits"></a>Kredity
+## <a name="credits"></a>Závěrečné titulky
 Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která jsou dostupná z [https://www.maxmind.com](https://www.maxmind.com).
 
 

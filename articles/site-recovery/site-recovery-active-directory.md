@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 8c1f85217db12b60cdcd8ea0bdb65792b8d02648
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362574"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257807"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro služby Active Directory a DNS
 
@@ -22,7 +22,7 @@ Pomocí [Site Recovery](site-recovery-overview.md) můžete vytvořit plán zota
 
 Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro službu Active Directory. Zahrnuje požadavky a pokyny pro převzetí služeb při selhání. Než začnete, měli byste být obeznámeni se službou Active Directory a Site Recovery.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud provádíte replikaci do Azure, [připravíte prostředky Azure](tutorial-prepare-azure.md), včetně předplatného, Virtual Network Azure, účtu úložiště a trezoru Recovery Services.
 * Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-azure.md) pro všechny komponenty.

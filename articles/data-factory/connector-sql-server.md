@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/24/2019
-ms.openlocfilehash: 6b5c5d46003c995ae0e853809e2283e8502615bc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.openlocfilehash: 50575fdae75addb4bf2bcb4c7222d35b0e19d080
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388329"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281688"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopírování dat do a z SQL Server pomocí Azure Data Factory
 
@@ -65,10 +65,10 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na **SQLServer**. | Ano |
+| type | Vlastnost Type musí být nastavená na **SQLServer**. | Ano |
 | connectionString |Zadejte informace **připojovacího řetězce** potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. Přečtěte si následující ukázky.<br/>Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | userName |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příkladem je **domainname\\username**. |Ne |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
 | connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ne |
 
 >[!TIP]
@@ -149,9 +149,9 @@ Chcete-li kopírovat data z a do databáze SQL Server, jsou podporovány násled
 
 | Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na **SQLServer**. | Ano |
-| schéma | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| type | Vlastnost Type datové sady musí být nastavená na **SQLServer**. | Ano |
+| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
+| table | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table`. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad**
@@ -185,10 +185,11 @@ Chcete-li kopírovat data z SQL Server, nastavte typ zdroje v aktivitě kopírov
 
 | Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlSource**. | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlSource**. | Ano |
 | sqlReaderQuery |Použijte vlastní dotaz SQL číst data. Příklad: `select * from MyTable`. |Ne |
 | sqlReaderStoredProcedureName |Tato vlastnost je název uložené procedury, která čte data ze zdrojové tabulky. Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. |Ne |
 | storedProcedureParameters |Tyto parametry jsou pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název nebo hodnota. Názvy a velikost písmen parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
+| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted** (default), **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Další podrobnosti najdete v [tomto dokumentu](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) . | Ne |
 
 **Ukazuje na poznámku:**
 
@@ -291,7 +292,7 @@ Chcete-li kopírovat data do SQL Server, nastavte typ jímky v aktivitě kopíro
 
 | Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlSink**. | Ano |
+| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlSink**. | Ano |
 | writeBatchSize |Počet řádků, které mají být vloženy do tabulky SQL *na dávku*.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. Ve výchozím nastavení Azure Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. |Ne |
 | writeBatchTimeout |Tato vlastnost určuje dobu čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou pro časové rozpětí. Příkladem je "00:30:00" po dobu 30 minut. Pokud není zadaná žádná hodnota, použije se jako výchozí časový limit "02:00:00". |Ne |
 | preCopyScript |Tato vlastnost určuje dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do SQL Server. Vyvolá se jenom jednou pro každé spuštění kopírování. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |Ne |
@@ -398,7 +399,7 @@ Připojení dat je výchozím chováním tohoto konektoru SQL Server jímky. Azu
 
 Jako příklad můžete v Azure Data Factory vytvořit kanál s **aktivitou kopírování** zřetězenou s **aktivitou uložené procedury**. Předchozí kopie dat ze zdrojového úložiště do dočasné tabulky databáze, například **# #UpsertTempTable**, jako název tabulky v datové sadě. Potom druhá potom vyvolá uloženou proceduru ke sloučení zdrojových dat z dočasné tabulky do cílové tabulky a vyčištění dočasné tabulky.
 
-![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+![Upsertovat](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
 V databázi definujte uloženou proceduru pomocí logiky sloučení, podobně jako v následujícím příkladu, který ukazuje z předchozí aktivity uložené procedury. Předpokládejme, že cílem je **marketingová** tabulka se třemi sloupci: **ProfileID**, **State**a **Category**. Proveďte Upsert na základě sloupce **ProfileID** .
 
@@ -496,9 +497,9 @@ Při kopírování dat z a do SQL Server se z SQL Server datových typů použí
 | binary |Byte[] |
 | bit |Logická hodnota |
 | char |String, Char[] |
-| date |Datum a čas |
-| Datum a čas |Datum a čas |
-| datetime2 |Datum a čas |
+| date |DateTime |
+| Datum a čas |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte[] |
@@ -510,9 +511,9 @@ Při kopírování dat z a do SQL Server se z SQL Server datových typů použí
 | ntext |String, Char[] |
 | numeric |Decimal |
 | nvarchar |String, Char[] |
-| real |Jednoduché |
+| real |Jednoduchá |
 | rowversion |Byte[] |
-| smalldatetime |Datum a čas |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Objekt |
@@ -523,7 +524,7 @@ Při kopírování dat z a do SQL Server se z SQL Server datových typů použí
 | uniqueidentifier |identifikátor GUID |
 | Varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |XML |
+| xml |Xml |
 
 >[!NOTE]
 > Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně Azure Data Factory podporuje přesnost až 28. Pokud máte data, která vyžadují přesnost větší než 28, zvažte převod na řetězec v dotazu SQL.

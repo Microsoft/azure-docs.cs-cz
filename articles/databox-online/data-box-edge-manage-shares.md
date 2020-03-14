@@ -1,6 +1,6 @@
 ---
-title: Správu sdílené složky Azure Data Box Edge | Dokumentace Microsoftu
-description: Popisuje, jak pomocí webu Azure portal ke správě sdílených složek na hranici vaší Azure Data Box.
+title: Správa sdílení Azure Data Box Edge | Microsoft Docs
+description: Popisuje, jak použít Azure Portal ke správě sdílených složek v Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,23 +8,23 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 73bff460db8428332a92d8deb68bf062ca4134ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758998"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79212944"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Pomocí webu Azure portal ke správě sdílených složek na hranici vaší Azure Data Box
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Správa sdílených složek na Azure Data Box Edge pomocí Azure Portal
 
-Tento článek popisuje, jak spravovat sdílené složky na hranici vaší Azure Data Box. Můžete spravovat Azure Data Box Edge prostřednictvím webu Azure portal nebo přes místní webové uživatelské rozhraní. Pomocí webu Azure portal k přidání, odstranění, aktualizace sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště přidružený k sdíleným složkám.
+Tento článek popisuje, jak spravovat sdílené složky na vašich Azure Data Box Edge. Azure Data Box Edge můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete přidat, odstranit, aktualizovat sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště, který je přidružený ke sdíleným složkám.
 
 ## <a name="about-shares"></a>Informace o sdílených složkách
 
-Přenos dat do Azure, je potřeba vytvořit sdílené složky na hranici vaší Azure Data Box. Sdílené složky, které přidáte na zařízení Data Box Edge může být místní sdílené složky nebo sdílené složky, které zápis dat do cloudu.
+Pokud chcete přenést data do Azure, musíte na svém Azure Data Box Edge vytvořit sdílené složky. Sdílené složky, které přidáte do zařízení Data Box Edge, můžou být místní sdílené složky nebo sdílené složky, které zadávají data do cloudu.
 
- - **Místní sdílené složky**: Pokud chcete data, která mají být zpracovány místně na zařízení, použijte tyto sdílené složky.
- - **Sdílené složky**: Použijte tyto sdílené složky, pokud chcete data zařízení automaticky doručí do účtu úložiště v cloudu. Všechny cloudové funkce, jako například **aktualizovat** a **synchronizaci klíčů k úložišti** použít ke sdíleným složkám.
+ - **Místní sdílené složky**: tyto sdílené složky použijte, pokud chcete, aby se data zpracovala místně na zařízení.
+ - **Sdílené složky**: tyto sdílené složky použijte, pokud chcete, aby se data zařízení automaticky odeslala do vašeho účtu úložiště v cloudu. Všechny cloudové funkce, jako jsou například **aktualizace** a **synchronizace klíčů úložiště** , se vztahují ke sdíleným složkám.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -39,9 +39,9 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal následující kroky.
 
-1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **brána > sdílených složek**. Vyberte **+ přidat sdílenou složku** na panelu příkazů.
+1. V Azure Portal přejdete na prostředek Data Box Edge a pak přejdete na **brána > sdílené složky**. Na panelu příkazů vyberte **+ Přidat sdílenou složku** .
 
-    ![Výběr možnosti Přidat sdílené složky](media/data-box-edge-manage-shares/add-share-1.png)
+    ![Vyberte přidat sdílenou složku](media/data-box-edge-manage-shares/add-share-1.png)
 
 2. V části **Přidat sdílenou složku** zadejte nastavení sdílené složky. Zadejte jedinečný název sdílené složky.
     
@@ -51,7 +51,10 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 4. Je nutné zadat **účet úložiště**, ve kterém se bude sdílená složka nacházet. V účtu úložiště se vytvoří kontejner s názvem sdílené složky, pokud ještě neexistuje. Pokud už kontejner existuje, použije se existující kontejner.
 
-5. Z rozevíracího seznamu, zvolte **službu Storage** z objektů blob bloku, objekty blob stránky nebo soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. Například v tomto případě chceme, aby data uložená jako objekty BLOB bloku v Azure, takže vybereme **objektů Blob bloku**. Pokud zvolíte **objektů Blob stránky**, ujistěte se, že vaše data jsou 512 bajtů zarovnána. Použití **objektů blob stránky** pro několik disků VHD nebo VHDX, které jsou vždy 512 bajtů zarovnána.
+5. V rozevíracím seznamu vyberte **službu úložiště** z objektu blob bloku, objektu blob stránky nebo souborů. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. Například v této instanci chceme, aby se data nacházela jako objekty blob bloku v Azure, a proto vybereme možnost **objekt blob bloku**. Pokud zvolíte **objekt blob stránky**, musíte zajistit, aby vaše data byla 512 bajtů. Použijte **objekt blob stránky** pro VHD nebo VHDX, který je vždycky zarovnaný 512 bajtů.
+
+   > [!IMPORTANT]
+   > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte s Azure Stack Edge nebo Data Box Gateway zařízení. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. Postup v tomto kroku závisí na tom, jestli vytváříte sdílenou složku SMB nebo systému souborů NFS.
     - **Pokud vytváříte sdílenou složku SMB** – v poli **Místní uživatel se všemi oprávněními** zvolte **Vytvořit nový** nebo **Použít existující**. Pokud vytváříte nového místního uživatele, zadejte **uživatelské jméno**, **heslo** a pak potvrďte heslo. Tím se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
@@ -63,15 +66,15 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
         ![Přidání sdílené složky systému souborů NFS](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Pro snadný přístup ke sdíleným složkám z výpočetní moduly Edge, použijte místní přípojného bodu. Vyberte **použít sdílenou složku s výpočetními prostředky na Edge** tak, aby sdílená složka je automaticky připojena po jeho vytvoření. Pokud je vybraná tato možnost, modul Edge můžete také použít tak výpočetní prostředky s místní přípojného bodu.
+7. K usnadnění přístupu ke sdíleným složkám z hraničních výpočetních modulů použijte místní přípojný bod. Vyberte možnost **použít sdílenou položku s hraničním** výpočtem, aby se sdílená složka po vytvoření automaticky připojila. Je-li vybrána tato možnost, může modul Edge použít také výpočty s místním přípojným bodem.
 
 8. Kliknutím na **Vytvořit** vytvořte sdílenou složku. Zobrazí se oznámení o probíhajícím vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka.
 
-## <a name="add-a-local-share"></a>Přidat místní sdílené složky
+## <a name="add-a-local-share"></a>Přidat místní sdílenou složku
 
-1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **brána > sdílených složek**. Vyberte **+ přidat sdílenou složku** na panelu příkazů.
+1. V Azure Portal přejdete na prostředek Data Box Edge a pak přejdete na **brána > sdílené složky**. Na panelu příkazů vyberte **+ Přidat sdílenou složku** .
 
-    ![Výběr možnosti Přidat sdílené složky](media/data-box-edge-manage-shares/add-local-share-1.png)
+    ![Vyberte přidat sdílenou složku](media/data-box-edge-manage-shares/add-local-share-1.png)
 
 2. V části **Přidat sdílenou složku** zadejte nastavení sdílené složky. Zadejte jedinečný název sdílené složky.
     
@@ -79,68 +82,68 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 3. Vyberte **Typ** sdílené složky. Typ může být **SMB** nebo **NFS**, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu. V závislosti na tom, jestli vyberete sdílené složky SMB nebo systému souborů NFS, se budou mírně lišit zobrazené možnosti.
 
-4. Pro snadný přístup ke sdíleným složkám z výpočetní moduly Edge, použijte místní přípojného bodu. Vyberte **použít sdílenou složku s výpočetními prostředky na Edge** tak, aby modul Edge může používat výpočetní s místní přípojného bodu.
+4. K usnadnění přístupu ke sdíleným složkám z hraničních výpočetních modulů použijte místní přípojný bod. Vyberte možnost **použít sdílenou položku s** výpočtem hran, aby modul Edge mohl používat výpočty s místním přípojným bodem.
 
-5. Vyberte **konfigurovat jako místní sdílené složky Edge**. Data v místních sdílených položek místně zůstanou v zařízení. Můžete zpracovávat data místně.
+5. Vyberte **Konfigurovat jako hraniční místní sdílení**. Data v místních sdílených složkách zůstanou v zařízení místně. Tato data můžete zpracovat místně.
 
-6. V **všechny místní uživatel s oprávněním** zvolte z **vytvořit nový** nebo **použít existující**.
+6. V poli **místní uživatel všechna oprávnění** vyberte možnost **vytvořit novou** nebo **použít existující**.
 
 7. Vyberte **Vytvořit**. 
 
-    ![Vytvoření místní sdílené složky](media/data-box-edge-manage-shares/add-local-share-2.png)
+    ![Vytvořit místní sdílenou složku](media/data-box-edge-manage-shares/add-local-share-2.png)
 
-    Zobrazí se oznámení, že probíhá vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka.
+    Zobrazí se oznámení o tom, že probíhá vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka.
 
-    ![Zobrazit aktualizace sdílené složky okno](media/data-box-edge-manage-shares/add-local-share-3.png)
+    ![Okno zobrazit aktualizace pro sdílené složky](media/data-box-edge-manage-shares/add-local-share-3.png)
     
-    Vyberte sdílenou složku, chcete-li zobrazit místní přípojný bod pro výpočetní moduly Edge pro tuto sdílenou složku.
+    Vyberte sdílenou složku pro zobrazení místních přípojný bod pro výpočetní moduly hraničních zařízení pro tuto sdílenou složku.
 
-    ![Zobrazit podrobnosti o místní sdílené složky](media/data-box-edge-manage-shares/add-local-share-4.png)
+    ![Zobrazit podrobnosti o místní sdílené složce](media/data-box-edge-manage-shares/add-local-share-4.png)
 
-## <a name="mount-a-share"></a>Připojte sdílenou složku
+## <a name="mount-a-share"></a>Připojení sdílené složky
 
-Pokud jste vytvořili sdílenou složku před konfigurací výpočetní prostředky na vašem zařízení Data Box okraj, je potřeba připojit sdílenou složku. Proveďte následující kroky pro připojení sdílené složky.
+Pokud jste vytvořili sdílenou složku před tím, než jste nakonfigurovali výpočetní výkon na zařízení Data Box Edge, bude nutné sdílenou složku připojit. Pro připojení sdílené složky proveďte následující kroky.
 
 
-1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **brána > sdílených složek**. Ze seznamu sdílené složky vyberte sdílenou složku, kterou chcete připojit. **Použít pro službu compute** sloupce budou zobrazovat stav jako **zakázané** pro vybranou sdílenou složku.
+1. V Azure Portal přejdete na prostředek Data Box Edge a pak přejdete na **brána > sdílené složky**. V seznamu sdílených složek vyberte sdílenou složku, kterou chcete připojit. Ve sloupci **použito pro výpočty** se zobrazí stav **zakázáno** pro vybranou sdílenou složku.
 
     ![Vyberte sdílenou složku](media/data-box-edge-manage-shares/select-share-mount.png)
 
 2. Vyberte **připojit**.
 
-    ![Vyberte připojení](media/data-box-edge-manage-shares/select-mount.png)
+    ![Vybrat připojení](media/data-box-edge-manage-shares/select-mount.png)
 
-3. Po zobrazení výzvy k potvrzení, vyberte **Ano**. To bude připojení sdílené složky.
+3. Po zobrazení výzvy k potvrzení vyberte **Ano**. Tím se sdílená složka připojí.
 
-    ![Ověřte připojení](media/data-box-edge-manage-shares/confirm-mount.png)
+    ![Potvrdit připojení](media/data-box-edge-manage-shares/confirm-mount.png)
 
-4. Po připojení sdílené složky přejděte k seznamu sdílených složek. Uvidíte, že **použít pro službu compute** sloupci se zobrazuje stav sdílenou složku jako **povoleno**.
+4. Po připojení sdílené složky přejdete do seznamu sdílených složek. Uvidíte, že se ve sloupci **použito pro výpočetní** prostředky zobrazuje stav sdílení jako **povolený**.
 
-    ![Připojené sdílené složky](media/data-box-edge-manage-shares/share-mounted.png)
+    ![Sdílet připojené](media/data-box-edge-manage-shares/share-mounted.png)
 
-5. Vyberte sdílenou složku znovu, chcete-li zobrazit místní přípojný bod sdílené složky. Hraniční výpočetní modul používá tuto místní přípojný bod sdílené složky.
+5. Pokud chcete zobrazit místní přípojný bod pro sdílenou složku, vyberte ji znovu. Modul COMPUTE pro Edge používá pro sdílenou složku Tento místní přípojný bod.
 
-    ![Místní přípojný bod sdílené složky](media/data-box-edge-manage-shares/share-mountpoint.png)
+    ![Místní přípojný bod pro sdílenou složku](media/data-box-edge-manage-shares/share-mountpoint.png)
 
-## <a name="unmount-a-share"></a>Odpojte sdílenou složku
+## <a name="unmount-a-share"></a>Odpojení sdílené složky
 
-Proveďte následující kroky na webu Azure Portal odpojit sdílenou složku.
+Chcete-li odpojit sdílenou složku, proveďte následující kroky v Azure Portal.
 
-1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **brána > sdílených složek**.
+1. V Azure Portal přejdete na prostředek Data Box Edge a pak přejdete na **brána > sdílené složky**.
 
     ![Vyberte sdílenou složku](media/data-box-edge-manage-shares/select-share-unmount.png)
 
-2. Ze seznamu sdílené složky vyberte sdílenou složku, kterou chcete odpojit. Chcete, aby se zajistilo, že všechny moduly, které nepoužívají sdílenou složku, kterou můžete odpojit. Pokud sdílená složka používá modul, se zobrazí problémy s odpovídající modulu. Vyberte **odpojte**.
+2. V seznamu sdílených složek vyberte sdílenou složku, kterou chcete odpojit. Chcete se ujistit, že se sdílená složka nepoužívá v žádných modulech. Pokud je sdílená složka používána modulem, zobrazí se problémy s odpovídajícím modulem. Vyberte **Odpojit**.
 
-    ![Vyberte odpojení](media/data-box-edge-manage-shares/select-unmount.png)
+    ![Vybrat odpojit](media/data-box-edge-manage-shares/select-unmount.png)
 
-3. Po zobrazení výzvy k potvrzení, vyberte **Ano**. To se odpojte sdílenou složku.
+3. Po zobrazení výzvy k potvrzení vyberte **Ano**. Tím se sdílená složka odpojí.
 
     ![Potvrdit odpojení](media/data-box-edge-manage-shares/confirm-unmount.png)
 
-4. Poté, co je sdílená složka odpojeny, přejděte na seznam sdílených složek. Uvidíte, že **použít pro službu compute** sloupci se zobrazuje stav sdílenou složku jako **zakázané**.
+4. Až bude sdílená složka odpojená, otevřete seznam sdílených složek. Uvidíte, že se **používá pro výpočetní** sloupec zobrazuje stav sdílení jako **zakázaný**.
 
-    ![Odpojit sdílenou složku](media/data-box-edge-manage-shares/share-unmounted.png)
+    ![Sdílet nepřipojené](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Odstranění sdílené složky
 
@@ -150,7 +153,7 @@ Pokud chcete sdílenou složku odstranit, proveďte na webu Azure Portal násled
 
     ![Vyberte sdílenou složku](media/data-box-edge-manage-shares/delete-share-1.png)
 
-2. Klikněte na tlačítko **odstranit**.
+2. Klikněte na **Odstranit**.
 
     ![Kliknutím odstraňte](media/data-box-edge-manage-shares/delete-share-2.png)
 
@@ -158,34 +161,34 @@ Pokud chcete sdílenou složku odstranit, proveďte na webu Azure Portal násled
 
     ![Potvrzení odstranění](media/data-box-edge-manage-shares/delete-share-3.png)
 
-Seznam se aktualizuje tak, aby odrážely odstranění sdílené složky.
+Seznam sdílených složek aktualizuje, aby odrážel odstranění.
 
 
 ## <a name="refresh-shares"></a>Aktualizace sdílených složek
 
-Funkce aktualizace umožňuje aktualizovat obsah sdílené složky. Když aktualizujete sdílenou složku, spustí se vyhledávání, které najde všechny objekty Azure včetně objektů blob a souborů, které byly do cloudu přidány od poslední aktualizace. Tyto další soubory se potom stáhnou do aktualizovat obsah sdílené složky v zařízení.
+Funkce aktualizovat umožňuje aktualizovat obsah sdílené složky. Když aktualizujete sdílenou složku, spustí se vyhledávání, které najde všechny objekty Azure včetně objektů blob a souborů, které byly do cloudu přidány od poslední aktualizace. Po stažení těchto dalších souborů dojde k aktualizaci obsahu sdílené složky na zařízení.
 
 > [!IMPORTANT]
-> - Nelze aktualizovat místní sdílené složky.
-> - Mezi operace aktualizace není zachováno oprávnění a seznamy řízení přístupu (ACL). 
+> - Nemůžete aktualizovat místní sdílené složky.
+> - Oprávnění a seznamy řízení přístupu (ACL) nejsou zachovány v rámci operace aktualizace. 
 
 Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal následující kroky.
 
-1.  Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
+1.   Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
 
     ![Vyberte sdílenou složku](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.  Klikněte na **Aktualizovat**. 
+2.   Klikněte na **Aktualizovat**. 
 
     ![Kliknutím aktualizujte](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.  Po zobrazení výzvy k potvrzení klikněte na **Ano**. Spustí se úloha, která zaktualizuje obsah místní sdílené složky.
+3.   Po zobrazení výzvy k potvrzení klikněte na **Ano**. Spustí se úloha, která zaktualizuje obsah místní sdílené složky.
 
     ![Potvrďte aktualizaci](media/data-box-edge-manage-shares/refresh-share-3.png)
  
-4.  Když aktualizace probíhá, bude možnost aktualizace v místní nabídce neaktivní. Kliknutím na oznámení úlohy zobrazte stav úlohy aktualizace.
+4.   Když aktualizace probíhá, bude možnost aktualizace v místní nabídce neaktivní. Kliknutím na oznámení úlohy zobrazte stav úlohy aktualizace.
 
-5.  Doba aktualizace závisí na počtu souborů v kontejneru Azure a také na souborech v zařízení. Po úspěšném dokončení aktualizace se zaktualizuje časové razítko sdílené složky. Operace se považuje za úspěšnou i v případě částečně neúspěšné aktualizace a časové razítko zaktualizuje. Protokoly chyb aktualizace jsou také aktualizovány.
+5.   Doba aktualizace závisí na počtu souborů v kontejneru Azure a také na souborech v zařízení. Po úspěšném dokončení aktualizace se zaktualizuje časové razítko sdílené složky. Operace se považuje za úspěšnou i v případě částečně neúspěšné aktualizace a časové razítko zaktualizuje. Aktualizují se také protokoly chyb při aktualizaci.
 
     ![Aktualizované časové razítko](media/data-box-edge-manage-shares/refresh-share-4.png)
  
@@ -200,11 +203,11 @@ Pokud chcete synchronizovat přístupový klíč úložiště, proveďte na webu
 
 1. Ve svém prostředku přejděte na **Přehled**. V seznamu sdílených složek zvolte a klikněte na sdílenou složku, která je přidružená k účtu úložiště, které potřebujete synchronizovat.
 
-    ![Vyberte sdílenou složku s účtem příslušné úložiště](media/data-box-edge-manage-shares/sync-storage-key-1.png)
+    ![Vyberte sdílet s relevantním účtem úložiště.](media/data-box-edge-manage-shares/sync-storage-key-1.png)
 
 2. Klikněte na **Synchronizovat klíč úložiště**. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-     ![Vyberte klíč synchronizace úložiště](media/data-box-edge-manage-shares/sync-storage-key-2.png)
+     ![Vybrat synchronizační klíč úložiště](media/data-box-edge-manage-shares/sync-storage-key-2.png)
 
 3. Po dokončení synchronizace zavřete dialogové okno.
 
@@ -212,6 +215,6 @@ Pokud chcete synchronizovat přístupový klíč úložiště, proveďte na webu
 > U každého účtu úložiště to stačí provést jednou. Není nutné tento postup opakovat u každé sdílené složky, která je přidružená ke stejnému účtu úložiště.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak [spravovat uživatele pomocí webu Azure Portal](data-box-edge-manage-users.md).

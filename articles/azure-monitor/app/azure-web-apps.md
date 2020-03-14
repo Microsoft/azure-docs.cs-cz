@@ -4,11 +4,11 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367679"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276163"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu Azure App Service
 
@@ -347,7 +347,7 @@ Počínaje verzí 2.8.9 se používá předem nainstalovaná rozšíření webu.
 
 Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou knihovny DLL ApplicationInsigths odebrány ze složky bin aplikace, [v tématu Postup řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
 
@@ -375,7 +375,7 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 
 Následující tabulka obsahuje podrobnější vysvětlení toho, co tyto hodnoty znamenají, jejich základní příčiny a Doporučené opravy:
 
-|Hodnota problému|Vysvětlení|Oprava
+|Hodnota problému|Vysvětlení|Napravit
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Tato hodnota označuje, že rozšíření zjistilo, že některé aspekty sady SDK už v aplikaci existují a že se bude zálohovat. Důvodem může být odkaz na `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`nebo `Microsoft.ApplicationInsights`  | Odeberte odkazy. Některé z těchto odkazů jsou ve výchozím nastavení přidány z určitých šablon sady Visual Studio a starší verze sady Visual Studio mohou přidat odkazy na `Microsoft.ApplicationInsights`.
 |`AppAlreadyInstrumented:true` | Pokud je aplikace cílena na rozhraní .NET Core 2,1 nebo 2,2 a odkazuje na soubor [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-package, pak Application Insights a rozšíření bude zase vypnuto. | Pro zákazníky s .NET Core 2.1, 2.2 se místo toho [doporučuje](https://github.com/aspnet/Announcements/issues/287) použít meta-package Microsoft. AspNetCore. app.|

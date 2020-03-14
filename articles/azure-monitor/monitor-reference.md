@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
 ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360812"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249162"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -19,7 +19,7 @@ Tento článek popisuje různé aplikace a služby, které jsou monitorované po
 ## <a name="insights-and-core-solutions"></a>Přehledy a základní řešení
 Core Insights a řešení se považují za součást Azure Monitor a dodržují smlouvy o úrovni služeb a podpory pro Azure. Podporují se ve všech oblastech Azure, kde je Azure Monitor k dispozici.
 
-### <a name="insights"></a>Přehledy
+### <a name="insights"></a>Insights
 
 Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby. Shromažďují a analyzují protokoly a metriky.
 
@@ -52,16 +52,16 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 - Protokoly – služba podporuje nastavení diagnostiky, která mohou shromažďovat protokoly platforem a metriky pro Azure Monitor protokolů.
 - Přehled – pro službu je k dispozici přehled, který pro službu nabízí přizpůsobené prostředí pro monitorování.
 
-| Service | Metriky | Protokoly | Přehled | Poznámky: |
+| Služba | Metriky | Logs | Přehled | Poznámky |
 |:---|:---|:---|:---|:---|
-|Active Directory | Ne | Ano | [Ano](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
+|Služby Active Directory | Ne | Ano | [Ano](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Ne | Ne | Ne |  |
 |Služba Active Directory Domain Services | Ne | Ano | Ne |  |
 |Protokol aktivit | Ne | Ano | Ne | |
 |Rozšířená ochrana před internetovými útoky | Ne | Ne | Ne |  |
-|Poradce | Ne | Ne | Ne |  |
+|Advisor | Ne | Ne | Ne |  |
 |Tvůrce AI | Ne | Ne | Ne |  |
-|Služba Analysis Services | Ano | Ano | Ne |  |
+|Analysis Services | Ano | Ano | Ne |  |
 |Rozhraní API pro FHIR | Ne | Ne | Ne |  |
 |API Management | Ano | Ano | Ne |  |
 |App Service | Ano | Ano | Ne |  |
@@ -70,20 +70,20 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Služba ověření identity | Ne | Ne | Ne |  |
 |Automation | Ano | Ano | Ne |  |
 |Azure Service Manager (RDFE) | Ne | Ne | Ne |  |
-|Zálohovat | Ne | Ano | Ne |  |
+|Backup | Ne | Ano | Ne |  |
 |Bastion | Ne | Ne | Ne |  |
-|Dávka | Ano | Ano | Ne |  |
+|Batch | Ano | Ano | Ne |  |
 |Batch AI | Ne | Ne | Ne |  |
 |Služba Blockchain | Ne | Ano | Ne |  |
-|Podrobné plány | Ne | Ne | Ne |  |
+|Blueprint | Ne | Ne | Ne |  |
 |Bot Service | Ne | Ne | Ne |  |
 |Cloudové služby | Ano | Ano | Ne | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
 |Cloud Shell | Ne | Ne | Ne |  |
-|Kognitivní služby | Ano | Ano | Ne |  |
+|Cognitive Services | Ano | Ano | Ne |  |
 |Container Instances | Ano | Ne | Ne |  |
 |Container Registry | Ano | Ano | Ne |  |
 |Content Delivery Network (CDN) | Ne | Ano | Ne |  |
-|Cosmos DB | Ano | Ano | [Ano](insights/cosmosdb-insights-overview.md) |  |
+|Databáze Cosmos | Ano | Ano | [Ano](insights/cosmosdb-insights-overview.md) |  |
 |Cost Management | Ne | Ne | Ne |  |
 |Data Box | Ne | Ne | Ne |  |
 |Data Catalog Gen2 | Ne | Ne | Ne |  |
@@ -107,7 +107,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Event Hubs | Ano | Ano | Ne |  |
 |ExpressRoute | Ano | Ano | Ne |  |
 |Brána firewall | Ano | Ano | Ne |  |
-|Front Door | Ano | Ano | Ne |  |
+|Přední dveře | Ano | Ano | Ne |  |
 |Funkce | Ano | Ano | Ne |  |
 |HDInsight | Ne | Ano | Ne |  |
 |Mezipaměť HPC | Ne | Ne | Ne |  |
@@ -128,12 +128,12 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Microsoft PowerApps | Ne | Ne | Ne |  |
 |Sociální zapojení Microsoftu | Ne | Ne | Ne |  |
 |Microsoft Stream | Ano | Ano | Ne |  |
-|Migrovat | Ne | Ne | Ne |  |
-|Vícefaktorové ověřování | Ne | Ano | Ne |  |
+|Migrace | Ne | Ne | Ne |  |
+|Multi-Factor Authentication | Ne | Ano | Ne |  |
 |Network Watcher | Ano | Ano | Ne |  |
 |Notification Hubs | Ano | Ne | Ne |  |
 |Otevřené datové sady | Ne | Ne | Ne |  |
-|Zásady | Ne | Ne | Ne |  |
+|Zásada | Ne | Ne | Ne |  |
 |Power BI | Ano | Ano | Ne |  |
 |Power BI Embedded | Ne | Ne | Ne |  |
 |Privátní propojení | Ne | Ne | Ne |  |
@@ -141,7 +141,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Red Hat OpenShift | Ne | Ne | Ne |  |
 |Redis Cache | Ano | Ano | Ne |  |
 |Resource Graph | Ne | Ne | Ne |  |
-|Správce prostředků | Ne | Ne | Ne |  |
+|Resource Manager | Ne | Ne | Ne |  |
 |Maloobchodní vyhledávání – podle Bingu | Ne | Ne | Ne |  |
 |Hledat | Ano | Ano | Ne |  |
 |Service Bus | Ano | Ano | Ne |  |
@@ -150,10 +150,10 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Site Recovery | Ne | Ano | Ne |  |
 |Jarní cloudová služba | Ne | Ne | Ne |  |
 |SQL Data Warehouse | Ano | Ano | Ne |  |
-|Databáze SQL | Ano | Ano | Ne |  |
+|SQL Database | Ano | Ano | Ne |  |
 |SQL Server Stretch Database | Ano | Ano | Ne |  |
 |Zásobník | Ne | Ne | Ne |  |
-|Úložiště | Ano | Ne | [Ano](insights/storage-insights-overview.md) |  |
+|Storage | Ano | Ne | [Ano](insights/storage-insights-overview.md) |  |
 |Mezipaměť úložiště | Ne | Ne | Ne |  |
 |Služby synchronizace úložiště | Ne | Ne | Ne |  |
 |Stream Analytics | Ano | Ano | Ne |  |
@@ -163,7 +163,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Univerzální tisk | Ne | Ne | Ne |  |
 |Virtual Machine Scale Sets | Ne | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
 |Virtuální počítače | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
-|Virtuální síť | Ano | Ano | [Ano](insights/network-insights-overview.md) |  |
+|Virtuální sítě | Ano | Ano | [Ano](insights/network-insights-overview.md) |  |
 |Protokoly toku Virtual Network – NSG | Ne | Ano | Ne |  |
 |VPN Gateway | Ano | Ano | Ne |  |
 |Windows Virtual Desktop | Ne | Ne | Ne |  |

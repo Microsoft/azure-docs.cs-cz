@@ -13,11 +13,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387592"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265932"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopírování dat do a z místního systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -70,12 +70,12 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Místní systém souborů můžete propojit s objektem pro vytváření dat Azure pomocí místní propojené služby **souborového serveru** . Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu místního souborového serveru.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | type |Ujistěte se, že vlastnost Type je nastavená na **OnPremisesFileServer**. |Ano |
 | host |Určuje kořenová cesta ke složce, která chcete kopírovat. Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Příklady najdete v tématu [Ukázka propojené služby a definice datových sad](#sample-linked-service-and-dataset-definitions) . |Ano |
 | userid |Zadejte ID uživatele, který má přístup k serveru. |Ne (Pokud zvolíte encryptedCredential) |
-| heslo |Zadejte heslo pro uživatele (ID uživatele). |Ne (Pokud zvolíte encryptedCredential |
+| password |Zadejte heslo pro uživatele (ID uživatele). |Ne (Pokud zvolíte encryptedCredential |
 | encryptedCredential |Zadání šifrovaných přihlašovacích údajů, které můžete získat spuštěním rutiny New-AzDataFactoryEncryptValue. |Ne (Pokud se rozhodnete zadat ID uživatele a heslo jako prostý text) |
 | gatewayName |Určuje název brány, kterou Data Factory použít pro připojení k místnímu souborovému serveru. |Ano |
 
@@ -127,7 +127,7 @@ Místní systém souborů můžete propojit s objektem pro vytváření dat Azur
 
 Oddíl typeProperties se liší pro každý typ datové sady. Poskytuje informace, jako je umístění a formát dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **Shared** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | folderPath |Určuje podcestu ke složce. Pro speciální znaky v řetězci použijte řídicí znak '\'. Filtr zástupných znaků není podporován. Příklady najdete v tématu [Ukázka propojené služby a definice datových sad](#sample-linked-service-and-dataset-definitions) .<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Ano |
 | fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (příklad: data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Ne |
@@ -179,13 +179,13 @@ U aktivity kopírování se liší v závislosti na typech zdrojů a jímky. Pok
 
 **FileSystemSource** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | recursive |Určuje, jestli se data číst rekurzivně z podsložky nebo pouze z určené složky. |True, false (výchozí) |Ne |
 
 **FileSystemSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |**PreserveHierarchy:** Zachová hierarchii souborů v cílové složce. To znamená, že relativní cesta ke zdrojovému souboru ke zdrojové složce je stejná jako relativní cesta cílového souboru k cílové složce.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky se vytvoří v první úrovni cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles:** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo název objektu blob, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky generovaný název souboru. |Ne |
 
@@ -194,12 +194,12 @@ Tato část popisuje výsledné chování operace kopírování pro různé komb
 
 | rekurzivní hodnota | hodnota copyBehavior | Výsledné chování |
 | --- | --- | --- |
-| true (pravda) |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří se stejnou strukturou jako zdroj:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true (pravda) |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro File5 |
-| true (pravda) |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor1 + soubor2 + file3 + file4 + obsah souboru 5 se sloučí do jednoho souboru s automaticky generovaným názvem souboru. |
-| false (nepravda) |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
-| false (nepravda) |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
-| false (nepravda) |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;se obsah soubor1 + soubor2 sloučí do jednoho souboru s automaticky generovaným názvem souboru.<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| true |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří se stejnou strukturou jako zdroj:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro File5 |
+| true |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor1 + soubor2 + file3 + file4 + obsah souboru 5 se sloučí do jednoho souboru s automaticky generovaným názvem souboru. |
+| false |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| false |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| false |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;se obsah soubor1 + soubor2 sloučí do jednoho souboru s automaticky generovaným názvem souboru.<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
 Podrobnosti najdete v článku o [formátech souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) .

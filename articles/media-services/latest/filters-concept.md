@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388112"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251463"
 ---
 # <a name="filters"></a>Filtry
 
@@ -66,7 +66,7 @@ Tuto vlastnost použijte s **filtry assetů**. Nedoporučuje se nastavovat vlast
 |**startTimestamp**|Platí pro video na vyžádání (VoD) nebo živé streamování.<br/>Jedná se o dlouhou hodnotu, která představuje absolutní počáteční bod datového proudu. Hodnota se zaokrouhlí na nejbližší další skupinu GOP Start. Jednotka je časové měřítko, takže startTimestamp 150000000 bude po dobu 15 sekund.<br/>Pomocí startTimestamp a endTimestampp ořízněte fragmenty, které budou v seznamu testů (manifest).<br/>Například startTimestamp = 40000000 a endTimestamp = 100000000 pomocí výchozí časové osy vygeneruje seznam testů, který obsahuje fragmenty ze 4 sekund a 10 sekund z prezentace VoD. Pokud fragment přechází na hranici, bude v manifestu obsažen celý fragment.|
 |**měřítk**|Platí pro všechna časová razítka a trvání v časovém intervalu prezentace, která je zadána jako počet přírůstků za jednu sekundu.<br/>Výchozí hodnota je 10000000 – 10 000 000 přírůstcích za sekundu, přičemž každý přírůstek by byl 100 nanosekund dlouhé.<br/>Například pokud chcete nastavit startTimestamp na 30 sekund, použijete při použití výchozího časového měřítka hodnotu 300000000.|
 
-### <a name="tracks"></a>Určený
+### <a name="tracks"></a>určený
 
 V závislosti na tom, které stopy streamu (živé streamování nebo video na vyžádání) se mají zahrnout do dynamicky vytvořeného manifestu, zadejte seznam stavů filtru sledování (FilterTrackPropertyConditions). Filtry jsou kombinovány pomocí logických operací **and** a **or** .
 

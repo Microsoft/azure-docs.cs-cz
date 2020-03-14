@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375199"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259276"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Koupit vlastní název domény pro Azure App Service
 
@@ -18,9 +18,9 @@ App Service domény jsou domény nejvyšší úrovně, které se spravují pří
 
 Informace o virtuálním počítači nebo Azure Storage Azure najdete v tématu [přiřazení App Service domény k virtuálnímu počítači Azure nebo Azure Storage](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 * [Vytvořit plán služby App Service](/azure/app-service/) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 * [Odeberte limit útraty ve vašem předplatném](../cost-management-billing/manage/spending-limit.md#remove). Nemůžete nakupovat App Service domén s kredity bezplatného předplatného.

@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356874"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276501"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions triggery a koncepty vazeb
 
@@ -26,10 +26,10 @@ Triggery a vazby umožňují vyhnout se zakódujeme přístupu k jiným službá
 
 Vezměte v úvahu následující příklady, jak můžete implementovat různé funkce.
 
-| Příklad scénáře | Aktivační událost | Vstupní vazba | Výstupní vazba |
+| Příklad scénáře | Trigger | Vstupní vazba | Výstupní vazba |
 |-------------|---------|---------------|----------------|
 | Dojde k doručení nové zprávy fronty, která spustí funkci pro zápis do jiné fronty. | <sup>*</sup> fronty | *NTato* | <sup>*</sup> fronty |
-|Naplánovaná úloha načte Blob Storage obsah a vytvoří nový dokument Cosmos DB. | Časovač | Blob Storage | Cosmos DB |
+|Naplánovaná úloha načte Blob Storage obsah a vytvoří nový dokument Cosmos DB. | Časovač | Blob Storage | Databáze Cosmos |
 |Event Grid slouží ke čtení obrázku z Blob Storage a dokumentu z Cosmos DB k odeslání e-mailu. | Event Grid | Blob Storage a Cosmos DB | SendGrid |
 | Webhook, který používá Microsoft Graph k aktualizaci excelového listu. | HTTP | *NTato* | Microsoft Graph |
 

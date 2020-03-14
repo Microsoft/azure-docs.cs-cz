@@ -12,11 +12,11 @@ ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933016"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246029"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
@@ -118,7 +118,7 @@ Pomocí tohoto poskytovatele se potlačí obrazovka "zvolit zprostředkovatele i
 
 #### <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis|
+| Atribut | Požadováno | Popis|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 
@@ -148,7 +148,7 @@ Při použití poskytovatele pro uložení relace SAML B2C musí být `RegisterS
 ```
 #### <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis|
+| Atribut | Požadováno | Popis|
 | --- | --- | --- |
 | IncludeSessionIndex | Ne | Aktuálně se nepoužívá, může být ignorováno.|
 | RegisterServiceProviders | Ne | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí) nebo `false`.|

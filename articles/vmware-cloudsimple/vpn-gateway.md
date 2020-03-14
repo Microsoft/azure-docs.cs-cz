@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279491"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Nastavení bran sítě VPN v síti CloudSimple
 

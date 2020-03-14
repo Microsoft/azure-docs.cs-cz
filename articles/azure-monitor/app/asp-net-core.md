@@ -4,11 +4,11 @@ description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, 
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 5028d95ef784b0d309880d0d05371cd42f627d7d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269214"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276306"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -30,7 +30,7 @@ Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.co
 > [!NOTE]
 > Pokud používáte ASP.NET Core 3,0 společně s Application Insights, použijte prosím verzi [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo vyšší. Toto je jediná verze, která podporuje ASP.NET Core 3,0.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Funkční aplikace ASP.NET Core. Pokud potřebujete vytvořit aplikaci ASP.NET Core, postupujte podle tohoto [ASP.NET Core kurzu](https://docs.microsoft.com/aspnet/core/getting-started/).
 - Platný klíč instrumentace Application Insights. Tento klíč je nutný k odeslání jakékoli telemetrie do Application Insights. Pokud potřebujete vytvořit nový prostředek Application Insights, abyste získali klíč instrumentace, přečtěte si téma [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
@@ -201,10 +201,10 @@ public void ConfigureServices(IServiceCollection services)
 
 |Nastavení | Popis | Výchozí
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Povolit nebo zakázat funkci LiveMetrics | true (pravda)
-|EnableAdaptiveSampling | Povolit/zakázat adaptivní vzorkování | true (pravda)
-|EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartBeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true (pravda)
-|AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true (pravda)
+|EnableQuickPulseMetricStream | Povolit nebo zakázat funkci LiveMetrics | true
+|EnableAdaptiveSampling | Povolit/zakázat adaptivní vzorkování | true
+|EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartBeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true
+|AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true
 |RequestCollectionOptions.TrackExceptions | Povolí nebo zakáže vytváření sestav neošetřené sledování výjimek v modulu shromažďování požadavků. | false v NETSTANDARD 2.0 (protože výjimky jsou sledovány pomocí ApplicationInsightsLoggerProvider), v opačném případě true.
 
 Seznam [konfigurovatelných nastavení najdete v tématu `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .

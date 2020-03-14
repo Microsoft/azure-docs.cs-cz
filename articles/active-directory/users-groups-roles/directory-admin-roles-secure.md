@@ -15,11 +15,11 @@ ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063845"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266270"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -348,9 +348,9 @@ Zjistěte, jestli jsou aktuální předdefinované role správce Azure AD pořá
 
 Další informace najdete v tématu [jak nakonfigurovat zařízení připojená k hybridním Azure Active Directory](../device-management-hybrid-azuread-joined-devices-setup.md).
 
-#### <a name="review-members-of-built-in-office-365-admin-roleshttpssupportofficecomarticleabout-office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d"></a>Kontrola členů [předdefinovaných rolí správce sady Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
+#### <a name="review-members-of-built-in-office-365-admin-roles"></a>Kontrola členů [předdefinovaných rolí správce sady Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
 Pokud používáte Office 365.
-‎
+⏎
 #### <a name="validate-incident-response-plan"></a>Ověřit plán reakce na incidenty
 
 Pro zlepšení plánu vám Microsoft doporučuje pravidelně ověřovat, jestli váš plán funguje podle očekávání:
@@ -363,7 +363,7 @@ Pro zlepšení plánu vám Microsoft doporučuje pravidelně ověřovat, jestli 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Další kroky pro organizace, které spravují přístup k Azure 
 
 Určete, jestli potřebujete [přenášet vlastnictví předplatného Azure na jiný účet](../../cost-management-billing/manage/billing-subscription-transfer.md).
-‎
+⏎
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Break sklo": co dělat v nouzi
 

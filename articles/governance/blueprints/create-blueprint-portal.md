@@ -4,17 +4,17 @@ description: V tomto rychlém startu použijete Azure modrotisky k vytváření,
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356817"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240979"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
 Když se naučíte vytvářet a přiřazovat modrotisky, můžete definovat běžné vzory pro vývoj opakovaně použitelných a rychle nasazujíných konfigurací na základě Azure Resource Manager šablon, zásad, zabezpečení a dalších. V tomto kurzu se naučíte používat Azure modrotisky k provádění některých běžných úkolů souvisejících s vytvářením, publikováním a přiřazováním podrobného plánu v rámci vaší organizace. Mezi tyto úlohy patří:
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 

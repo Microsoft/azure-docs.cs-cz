@@ -1,19 +1,19 @@
 ---
-title: Privátní odkaz pro instalační metodu rozhraní příkazového řádku pro Azure Database for MariaDB (Preview)
+title: Privátní odkaz – Azure CLI – Azure Database for MariaDB
 description: Postup konfigurace privátního odkazu pro Azure Database for MariaDB z Azure CLI
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b2d9fb9d4dc8268c0be45f8a6f24759a7be58427
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561795"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371694"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB (ve verzi Preview) pomocí rozhraní příkazového řádku
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB pomocí rozhraní příkazového řádku
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. V tomto článku se dozvíte, jak pomocí Azure CLI vytvořit virtuální počítač v Virtual Network Azure a Azure Database for MariaDB Server s privátním koncovým bodem Azure.
 
@@ -30,7 +30,7 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
-## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Než budete moct vytvořit libovolný prostředek, musíte vytvořit skupinu prostředků, která bude hostovat Virtual Network. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Tento příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *westeurope* :
 

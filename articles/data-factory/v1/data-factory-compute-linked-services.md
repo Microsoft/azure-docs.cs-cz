@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361420"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281545"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaná nástrojem Azure Data Factory
 > [!NOTE]
@@ -119,7 +119,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 > 
 
 ### <a name="properties"></a>Vlastnosti
-| Vlastnost                     | Popis                              | Požaduje se |
+| Vlastnost                     | Popis                              | Požadováno |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Nastavte vlastnost Type na **HDInsightOnDemand**. | Ano      |
 | clusterSize                  | Počet pracovních procesů a datových uzlů v clusteru. Cluster HDInsight se vytvoří s 2 hlavními uzly kromě počtu pracovních uzlů, které pro tuto vlastnost zadáte. Uzly mají velikost Standard_D3, která má 4 jádra. Cluster se čtyřmi pracovními uzly má 24 jader (4\*4 = 16 jader pro pracovní uzly a 2\*4 = 8 jader pro hlavní uzly). Podrobnosti o Standard_D3 vrstvě najdete [v tématu vytváření clusterů Hadoop se systémem Linux ve službě HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ano      |
@@ -142,7 +142,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 ### <a name="advanced-properties"></a>Rozšířené vlastnosti
 K podrobné konfiguraci clusteru HDInsight na vyžádání můžete zadat následující vlastnosti:
 
-| Vlastnost               | Popis                              | Požaduje se |
+| Vlastnost               | Popis                              | Požadováno |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Určuje základní konfigurační parametry (Core-site. XML), které se mají vytvořit v clusteru HDInsight. | Ne       |
 | hBaseConfiguration     | Určuje konfigurační parametry HBA (HBase-site. XML) pro cluster HDInsight. | Ne       |
@@ -195,7 +195,7 @@ K podrobné konfiguraci clusteru HDInsight na vyžádání můžete zadat násle
 ### <a name="node-sizes"></a>Velikosti uzlů
 Chcete-li určit velikost hlav, dat a uzlů ZooKeeper, použijte následující vlastnosti: 
 
-| Vlastnost          | Popis                              | Požaduje se |
+| Vlastnost          | Popis                              | Požadováno |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | Nastaví velikost hlavního uzlu. Výchozí hodnota je **Standard_D3**. Podrobnosti najdete v tématu [Určení velikosti uzlů](#specify-node-sizes). | Ne       |
 | dataNodeSize      | Nastaví velikost datového uzlu. Výchozí hodnota je **Standard_D3**. | Ne       |
@@ -255,12 +255,12 @@ Můžete vytvořit propojenou službu HDInsight k registraci vlastního clusteru
 ```
 
 ### <a name="properties"></a>Vlastnosti
-| Vlastnost          | Popis                              | Požaduje se |
+| Vlastnost          | Popis                              | Požadováno |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Nastavte vlastnost Type na **HDInsight**. | Ano      |
 | clusterUri        | Identifikátor URI clusteru HDInsight.        | Ano      |
-| uživatelské jméno          | Název uživatelského účtu, který se má použít pro připojení k existujícímu clusteru HDInsight. | Ano      |
-| heslo          | Heslo pro uživatelský účet.   | Ano      |
+| username jméno          | Název uživatelského účtu, který se má použít pro připojení k existujícímu clusteru HDInsight. | Ano      |
+| password          | Heslo pro uživatelský účet.   | Ano      |
 | linkedServiceName | Název propojené služby úložiště, která odkazuje na úložiště objektů BLOB používané clusterem HDInsight. <p>V současné době nemůžete pro tuto vlastnost zadat propojenou službu Data Lake Store. Pokud má cluster HDInsight přístup k Data Lake Store, můžete získat přístup k datům v Data Lake Store z podregistru nebo skriptů pro vepřové rozhraní. </p> | Ano      |
 
 ## <a name="azure-batch-linked-service"></a>Propojená služba Azure Batch
@@ -303,7 +303,7 @@ Další možností je poskytnout koncový bod **batchUri** . Příklad:
 ```
 
 ### <a name="properties"></a>Vlastnosti
-| Vlastnost          | Popis                              | Požaduje se |
+| Vlastnost          | Popis                              | Požadováno |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Nastavte vlastnost Type na **AzureBatch**. | Ano      |
 | accountName       | Název účtu Batch.         | Ano      |
@@ -330,7 +330,7 @@ Můžete vytvořit propojenou službu Machine Learning k registraci koncového b
 ```
 
 ### <a name="properties"></a>Vlastnosti
-| Vlastnost   | Popis                              | Požaduje se |
+| Vlastnost   | Popis                              | Požadováno |
 | ---------- | ---------------------------------------- | -------- |
 | Typ       | Nastavte vlastnost Type na **AzureML**. | Ano      |
 | mlEndpoint | Adresa URL dávkového vyhodnocování                   | Ano      |
@@ -341,7 +341,7 @@ Můžete vytvořit propojenou službu Data Lake Analytics pro propojení Data La
 
 Následující tabulka popisuje obecné vlastnosti, které se používají v definici JSON:
 
-| Vlastnost                 | Popis                              | Požaduje se                                 |
+| Vlastnost                 | Popis                              | Požadováno                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | Nastavte vlastnost Type na **AzureDataLakeAnalytics**. | Ano                                      |
 | accountName          | Název Data Lake Analytics účtu  | Ano                                      |
@@ -360,7 +360,7 @@ Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu 
 
 Použijte ověřování instančního objektu zadáním následujících vlastností:
 
-| Vlastnost                | Popis                              | Požaduje se |
+| Vlastnost                | Popis                              | Požadováno |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | ID klienta aplikace.     | Ano      |
 | servicePrincipalKey | Klíč aplikace           | Ano      |
@@ -388,7 +388,7 @@ Použijte ověřování instančního objektu zadáním následujících vlastno
 #### <a name="user-credential-authentication"></a>Ověřování přihlašovacích údajů uživatele
 Pro ověření přihlašovacích údajů uživatele pro Data Lake Analytics zadejte následující vlastnosti:
 
-| Vlastnost          | Popis                              | Požaduje se |
+| Vlastnost          | Popis                              | Požadováno |
 | :---------------- | :--------------------------------------- | :------- |
 | authorization | V editoru Data Factory vyberte tlačítko **autorizovat** . Zadejte přihlašovací údaje, které přiřadí tuto vlastnost automaticky vygenerované autorizační adrese URL. | Ano      |
 | sessionId     | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Toto nastavení se generuje automaticky, když použijete Editor Data Factory. | Ano      |

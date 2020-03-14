@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 86e6eb82d8e59d2f323a68fbc650b7e0ba3685cb
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
-ms.translationtype: HT
+ms.openlocfilehash: 299af21c2c7404c5f75174a2814bd68b5f7d2513
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299446"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369676"
 ---
-# <a name="creating-an-incremental-snapshot-for-managed-disks"></a>Vytváření přírůstkového snímku pro spravované disky
+# <a name="create-an-incremental-snapshot-for-managed-disks---powershell"></a>Vytvoření přírůstkového snímku pro spravované disky – PowerShell
 [!INCLUDE [virtual-machines-disks-incremental-snapshot-powershell](../../../includes/virtual-machines-disks-incremental-snapshot-powershell.md)]

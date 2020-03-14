@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364549"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254284"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s výstupy Azure Stream Analytics
 
@@ -46,7 +46,7 @@ Tato stránka popisuje běžné problémy s výstupními připojeními a jejich 
 ## <a name="job-output-is-delayed"></a>Výstup úlohy je zpožděný.
 
 ### <a name="first-output-is-delayed"></a>První výstupní je zpožděno.
-Po spuštění úlohy Stream Analytics se načtou vstupní události, ale v některých případech může dojít ke zpoždění generování výstupu.
+Při spuštění úlohy Stream Analytics se číst události vstupu, ale ve výstupu vytvořených v některých případech může dojít ke zpoždění.
 
 Velké časové hodnoty prvků dočasných dotazů může přispět ke zpoždění výstup. Vytvořit správnou výstup přes velký časová okna, úlohu streamování spuštění podle čtení dat z nejnovějších možných doba (až sedmi dnů zpětně) tak, aby vyplnil časový interval. Během této doby není vytvořen žádný výstup, až do dokončení můžete projít čtení nevyřízené události vstupu. Tento problém může docházet, pokud systém upgraduje datových proudů úloh, proto restartování úlohy. Tyto upgrady obvykle dojde k jednou každých několik měsíců.
 

@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359002"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284028"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -73,7 +73,7 @@ Případně můžete zásady opakování zadat ručně v části `inputs` pro ak
 |-------|------|-------------|
 | <*Opakovat-typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default`, `none`, `fixed`nebo `exponential` |
 | *interval opakování <–* > | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí interval minimální hodnoty je `PT5S` a maximální interval je `PT1D`. Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. |
-| <opakované *pokusy*> | Integer | Počet pokusů o opakování, který musí být mezi 1 a 90. |
+| <opakované *pokusy*> | Celé číslo | Počet pokusů o opakování, který musí být mezi 1 a 90. |
 ||||
 
 *Volitelné*
@@ -112,7 +112,7 @@ I když v akci nebo triggeru není explicitně definované, tady je způsob, jak
 }
 ```
 
-### <a name="none"></a>Žádná
+### <a name="none"></a>Žádný
 
 Pokud chcete určit, že akce nebo Trigger neopakuje neúspěšné požadavky, nastavte <*Opakovat – typ zásad*> na `none`.
 

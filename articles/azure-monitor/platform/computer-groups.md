@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373306"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274772"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v Azure Monitor dotazy protokolu
 Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../log-query/log-query-overview.md) na konkrétní sadu počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Pokud je skupina zahrnutá v dotazu protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačům ve skupině.
@@ -25,9 +25,9 @@ Skupinu počítačů můžete v Azure Monitor vytvořit pomocí kterékoli z met
 |:--- |:--- |
 | Dotaz protokolu |Vytvořte dotaz protokolu, který vrátí seznam počítačů. |
 | Rozhraní API pro prohledávání protokolů |Pomocí rozhraní API pro prohledání protokolu můžete programově vytvořit skupinu počítačů na základě výsledků dotazu protokolu. |
-| Active Directory |Automaticky zkontroluje členství všech počítačů s agenty, které jsou členy domény služby Active Directory, a vytvořte skupinu v Azure Monitor pro každou skupinu zabezpečení. (Jenom počítače s Windows)|
-| Správce konfigurace | Importujte kolekce ze služby Microsoft Endpoint Configuration Manager a vytvořte skupinu v Azure Monitor pro každou z nich. |
-| Služba Windows Server Update Services |Automaticky prohledejte servery nebo klienty WSUS pro cílení skupin a vytvořte skupinu v Azure Monitor pro každou z nich. |
+| Služby Active Directory |Automaticky zkontroluje členství všech počítačů s agenty, které jsou členy domény služby Active Directory, a vytvořte skupinu v Azure Monitor pro každou skupinu zabezpečení. (Jenom počítače s Windows)|
+| Configuration Manager | Importujte kolekce ze služby Microsoft Endpoint Configuration Manager a vytvořte skupinu v Azure Monitor pro každou z nich. |
+| Windows Server Update Services |Automaticky prohledejte servery nebo klienty WSUS pro cílení skupin a vytvořte skupinu v Azure Monitor pro každou z nich. |
 
 ### <a name="log-query"></a>Dotaz protokolu
 Skupiny počítačů vytvořené z dotazu protokolu obsahují všechny počítače, které jsou vráceny vámi definovaným dotazem.  Tento dotaz je spustit pokaždé, když se skupina počítačů se používá tak, aby se projeví všechny změny, protože byla skupina vytvořena.  
@@ -53,7 +53,7 @@ Následující tabulka popisuje vlastnosti, které definují skupinu počítač�
 | Kategorie       | Kategorie pro uspořádání dotazů na portálu |
 
 
-### <a name="active-directory"></a>Active Directory
+### <a name="active-directory"></a>Služby Active Directory
 Když konfigurujete Azure Monitor pro import členství ve skupinách služby Active Directory, analyzuje členství ve skupině všech počítačů připojených k doméně Windows pomocí agenta Log Analytics.  Skupina počítačů se vytvoří v Azure Monitor pro každou skupinu zabezpečení ve službě Active Directory a každý počítač se systémem Windows se přidá do skupin počítačů, které odpovídají skupinám zabezpečení, které jsou členy.  Toto členství se průběžně aktualizuje každé 4 hodiny.  
 
 > [!NOTE]
@@ -74,7 +74,7 @@ Nakonfigurujete Azure Monitor pro import skupin WSUS z **rozšířeného nastave
 
 Importu skupin v nabídce uvádí počet počítačů s členstvím skupiny zjistila a číslem skupiny importovat.  Můžete kliknout na kterékoli z těchto odkazů a vrátit se záznamy ze skupina **počítačů** s těmito informacemi.
 
-### <a name="configuration-manager"></a>Správce konfigurace
+### <a name="configuration-manager"></a>Configuration Manager
 Když nakonfigurujete Azure Monitor pro import Configuration Manager členství v kolekcích, vytvoří se skupina počítačů pro každou kolekci.  Informace o členství v kolekci se načte každé tři hodiny zachovat aktuální skupiny počítačů. 
 
 Než budete moct importovat kolekce Configuration Manager, musíte [Configuration Manager připojit k Azure monitor](collect-sccm.md).  

@@ -4,11 +4,11 @@ description: Umožňuje najít, vytvořit, spravovat a odstranit projekty v Azur
 ms.topic: how-to
 ms.date: 02/17/2020
 ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392745"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269637"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
 
@@ -66,7 +66,7 @@ Odstraňte následujícím způsobem:
     - Pokud se skupina prostředků používá výhradně v projektu Azure Migrate, můžete odstranit celou skupinu prostředků.
 
 
-Poznámky:
+Všimněte si, že:
 
 - Při odstranění se odstraní projekt i metadata zjištěných počítačů.
 - Pokud používáte starší verzi Azure Migrate, otevřete skupinu prostředků Azure, ve které se projekt vytvořil. Vyberte projekt migrace, který chcete odstranit (typ prostředku je **projekt migrace**).

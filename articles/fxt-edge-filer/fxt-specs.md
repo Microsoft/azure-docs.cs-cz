@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391302"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264723"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specifikace souborového pro Azure FXT Edge
 
@@ -36,7 +36,7 @@ Systém má deset diskových pozic, které jsou přístupné z front. Každá na
 
 | Čísla jednotek    |  Použití   |  Specifikace |
 |------------------|--------|-----------------|
-| 0, 1             | OS     | 480 GB SATA SSD |
+| 0, 1             | Operační systém     | 480 GB SATA SSD |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Data   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
 
 
@@ -67,7 +67,7 @@ Souborového Edge pro Azure FXT je navržený tak, aby odpovídal standardu 19 "
 | Dimenze balíčku | Milimetrech | cm |
 |-------------------|-------------|--------|
 | Výška            | 311,2       | 12,25 " |
-| impulzu             | 642,8       | 25,31 " |
+| Šířka             | 642,8       | 25,31 " |
 | Délka            | 1 051,1     | 41,38 " |
 
 ## <a name="power-and-thermal-specifications"></a>Specifikace napájení a tepelného řízení

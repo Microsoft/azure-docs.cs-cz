@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535175"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260017"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy
 
@@ -25,10 +25,10 @@ Následující tabulka obsahuje souhrn kroků Data Box nebo Data Box Heavy objed
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Vytvořit objednávku               | [Nastavení řízení přístupu v pořadí přes RBAC](#set-up-access-control-on-the-order)                                                    |
 | Zpracování objednávky            | [Sledovat pořadí](#track-the-order) přes <ul><li> portál Azure </li><li> Web lodního dopravce </li><li>E-mailová oznámení</ul> |
-| Nainstalovat zařízení              | Přístup k přihlašovacím údajům zařízení přihlášení k [protokolům aktivit](#query-activity-logs-during-setup)                                              |
+| Nastavení zařízení              | Přístup k přihlašovacím údajům zařízení přihlášení k [protokolům aktivit](#query-activity-logs-during-setup)                                              |
 | Kopírování dat do zařízení        | [Zobrazení souboru *Error. XML* ](#view-error-log-during-data-copy) pro kopírování dat                                                             |
-| Připravit k odeslání            | [Zkontrolujte soubory kusovníku](#inspect-bom-during-prepare-to-ship) nebo soubory manifestu na zařízení.                                      |
-| Nahrávání dat do Azure       | [Kontrola](#review-copy-log-during-upload-to-azure) chyb v protokolech kopírování při nahrávání dat v datovém centru Azure                         |
+| Příprava k odeslání            | [Zkontrolujte soubory kusovníku](#inspect-bom-during-prepare-to-ship) nebo soubory manifestu na zařízení.                                      |
+| Nahrávání dat do Azure       | [Kontrola chyb v protokolech kopírování](#review-copy-log-during-upload-to-azure) při nahrávání dat v datovém centru Azure                         |
 | Data mazání ze zařízení   | [Zobrazit řetěz protokolů o úschově](#get-chain-of-custody-logs-after-data-erasure) včetně protokolů auditu a historie objednávek                |
 
 Tento článek podrobně popisuje různé mechanismy a nástroje, které jsou k dispozici pro sledování a audit Data Box nebo Data Box Heavy objednávky. Informace v tomto článku se vztahují na Data Box i Data Box Heavy. V následujících částech se všechny odkazy na Data Box vztahují také na Data Box Heavy.
@@ -64,7 +64,7 @@ Můžete sledovat svou objednávku prostřednictvím Azure Portal a prostřednic
 
 - Vaše Data Box dorazí na vaše místní prostředí v uzamčeném stavu. K dispozici jsou přihlašovací údaje pro zařízení, které jsou k dispozici v Azure Portal pro vaši objednávku.  
 
-    Když se nastaví Data Box, možná budete muset zjistit, kdo získal všechna oprávnění k těmto přihlašovacím údajům pro zařízení. Chcete-li zjistit, kdo získal do okna **pověření zařízení** , můžete zadat dotaz na protokoly aktivit.  Všechny akce, které zahrnují přístup k **podrobnostem o zařízení > přihlašovací údaje** , se zaprotokolují do protokolů aktivit jako `ListCredentials` akce.
+    Když se nastaví Data Box, možná budete muset zjistit, kdo získal všechna oprávnění k těmto přihlašovacím údajům pro zařízení. Chcete-li zjistit, kdo získal do okna **pověření zařízení** , můžete zadat dotaz na protokoly aktivit.  Všechny akce, které zahrnují přístup k **podrobnostem o zařízení > přihlašovací údaje** , se zaprotokolují do protokolů aktivit jako akce `ListCredentials`.
 
     ![Dotazy na protokoly aktivit](media/data-box-logs/query-activity-log-1.png)
 
@@ -203,7 +203,7 @@ Pro každé zpracovávané pořadí vytvoří služba Data Box v přidruženém 
 
 Při nahrávání do Azure se provádí výpočet s cyklicky redundantní kontrola (CRC). CRCs z kopie dat a po nahrání dat se porovnávají. Neshoda CRC znamená, že se nepovedlo nahrát odpovídající soubory.
 
-Ve výchozím nastavení se protokoly zapisují do kontejneru s `copylog`názvem. Protokoly se ukládají s následujícími zásadami vytváření názvů:
+Ve výchozím nastavení se protokoly zapisují do kontejneru s názvem `copylog`. Protokoly se ukládají s následujícími zásadami vytváření názvů:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -270,7 +270,7 @@ Nové jedinečné názvy kontejnerů jsou ve formátu `DataBox-GUID` a data pro 
 
 Tady je příklad protokolu kopírování, ve kterém se při nahrávání dat do Azure přejmenovaly objekty blob nebo soubory, které nesplňovaly zásady vytváření názvů Azure. Nové názvy objektů BLOB nebo souborů jsou převedeny na SHA256 výtah relativní cesty ke kontejneru a jsou nahrány do cesty na základě cílového typu. Cílem mohou být objekty blob bloku, objekty blob stránky nebo soubory Azure.
 
-`copylog` Určuje Starý a nový objekt BLOB nebo název souboru a cestu v Azure.
+`copylog` určuje Starý a nový objekt BLOB nebo název souboru a cestu v Azure.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -297,7 +297,7 @@ Po vymazání dat z Data Box disků podle pokynů pro NIST SP 800-88 verze 1 je 
 
 ### <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na Data Box nebo Data Box Heavy, pokud se nachází mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese:`storage-account/azuredatabox-chainofcustodylogs`
+Protokoly auditu obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na Data Box nebo Data Box Heavy, pokud se nachází mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese: `storage-account/azuredatabox-chainofcustodylogs`
 
 Tady je ukázka protokolu auditu z Data Box:
 
@@ -352,7 +352,7 @@ The authentication information fields provide detailed information about this sp
 ```
 
 
-## <a name="download-order-history"></a>Stáhnout historii objednávek
+## <a name="download-order-history"></a>Stažení historie objednávky
 
 Historie objednávek je k dispozici v Azure Portal. Pokud je objednávka dokončená a vyčištění zařízení (data mazání z disků) je dokončené, přejděte do pořadí zařízení a přejděte na **Podrobnosti o objednávce**. Máte k dispozici možnost **Stáhnout historii objednávky**. Další informace najdete v tématu [historie pořadí stahování](data-box-portal-admin.md#download-order-history).
 
@@ -411,6 +411,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se [řešit problémy s data box a data box Heavy](data-box-troubleshoot.md).

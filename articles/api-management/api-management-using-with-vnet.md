@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 0ff7eff2465f187c25c58b429db752decc38ffc4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967978"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298032"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -31,7 +31,7 @@ Službu Azure API Management lze nasadit v rámci virtuální sítě (VNET), aby
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -177,9 +177,11 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 ## <a name="subnet-size"></a> Požadavek na velikost podsítě
 Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se nedají použít. První a poslední IP adresa podsítí jsou vyhrazené pro shodu protokolu a tři další adresy, které se používají pro služby Azure. Další informace najdete v tématu [jakákoli omezení používání IP adres v těchto podsítích](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) .
 
-Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance služby API Management v podsíti používá dvě IP adresy na jednotku SKU úrovně Premium nebo jednu IP adresu pro SKU pro vývojáře. Každá instance si vyhrazuje další IP adresu pro externí nástroj pro vyrovnávání zatížení. Při nasazování do interní virtuální sítě musí pro interní nástroj pro vyrovnávání zatížení vyžadovat další IP adresu.
+Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance služby API Management v podsíti používá dvě IP adresy na jednotku SKU úrovně Premium nebo jednu IP adresu pro SKU pro vývojáře. Každá instance si vyhrazuje další IP adresu pro externí nástroj pro vyrovnávání zatížení. Při nasazování do interní virtuální sítě musí být pro interní nástroj pro vyrovnávání zatížení k další IP adresu.
 
 Vzhledem k výpočtu výše minimální velikosti podsítě, ve které API Management lze nasadit, je/29, které poskytuje tři použitelné IP adresy.
+
+Každá další jednotka API Management škálování vyžaduje dvě další IP adresy.
 
 ## <a name="routing"></a> Směrování
 + Veřejná IP adresa (VIP) s vyrovnáváním zatížení bude vyhrazena pro poskytování přístupu ke všem koncovým bodům služby.
@@ -201,36 +203,36 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 |-----------------|-------------------------|---------------|
 | Veřejné Azure| Střed USA – jih (globální)| 104.214.19.224|
 | Veřejné Azure| Střed USA – sever (globální)| 52.162.110.80|
-| Veřejné Azure| USA – středozápad| 52.253.135.58|
+| Veřejné Azure| Západní střed USA| 52.253.135.58|
 | Veřejné Azure| Jižní Korea – střed| 40.82.157.167|
 | Veřejné Azure| Spojené království – západ| 51.137.136.0|
 | Veřejné Azure| Japonsko – západ| 40.81.185.8|
-| Veřejné Azure| USA – středosever| 40.81.47.216|
+| Veřejné Azure| Střed USA – sever| 40.81.47.216|
 | Veřejné Azure| Velká Británie – jih| 51.145.56.125|
 | Veřejné Azure| Indie – západ| 40.81.89.24|
 | Veřejné Azure| USA – východ| 52.224.186.99|
 | Veřejné Azure| Západní Evropa| 51.145.179.78|
 | Veřejné Azure| Japonsko – východ| 52.140.238.179|
 | Veřejné Azure| Francie – střed| 40.66.60.111|
-| Veřejné Azure| Východní Kanada| 52.139.80.117|
+| Veřejné Azure| Kanada – východ| 52.139.80.117|
 | Veřejné Azure| Spojené arabské emiráty sever| 20.46.144.85|
 | Veřejné Azure| Brazílie – jih| 191.233.24.179|
 | Veřejné Azure| Jihovýchodní Asie| 40.90.185.46|
 | Veřejné Azure| Jižní Afrika – sever| 102.133.130.197|
 | Veřejné Azure| Kanada – střed| 52.139.20.34|
 | Veřejné Azure| Jižní Korea – jih| 40.80.232.185|
-| Veřejné Azure| Indie – střed| 13.71.49.1|
+| Veřejné Azure| Střed Indie| 13.71.49.1|
 | Veřejné Azure| USA – západ| 13.64.39.16|
 | Veřejné Azure| Austrálie – jihovýchod| 20.40.160.107|
 | Veřejné Azure| Austrálie – střed| 20.37.52.67|
 | Veřejné Azure| Indie – jih| 20.44.33.246|
-| Veřejné Azure| USA – střed| 13.86.102.66|
+| Veřejné Azure| Střed USA| 13.86.102.66|
 | Veřejné Azure| Austrálie – východ| 20.40.125.155|
 | Veřejné Azure| USA – západ 2| 51.143.127.203|
 | Veřejné Azure| Východní USA 2 EUAP| 52.253.229.253|
 | Veřejné Azure| Střed USA EUAP| 52.253.159.160|
-| Veřejné Azure| USA – středojih| 20.188.77.119|
-| Veřejné Azure| USA – východ 2| 20.44.72.3|
+| Veřejné Azure| Střed USA – jih| 20.188.77.119|
+| Veřejné Azure| Východní USA 2| 20.44.72.3|
 | Veřejné Azure| Severní Evropa| 52.142.95.35|
 | Veřejné Azure| Východní Asie| 52.139.152.27|
 | Veřejné Azure| Francie – jih| 20.39.80.2|

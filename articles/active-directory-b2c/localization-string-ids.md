@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3abf38a4b1ea798c39150454ac33f73ea588b782
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187487"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264372"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -115,7 +115,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo j
 | **error_requiredFieldMissing** | Chybí povinné pole. Vyplňte prosím všechna povinná pole a zkuste to znovu. |
 | **initial_intro** | Zadejte prosím následující údaje. |
 | **ver_but_resend** | Poslat nový kód |
-| **button_continue** | Vytvoření |
+| **button_continue** | Create |
 | **error_passwordEntryMismatch** | Pole pro zadání hesla se neshodují. Zadejte prosím do obou polí stejné heslo a zkuste to znovu. |
 | **ver_incorrect_format** | Nesprávný formát |
 | **ver_but_edit** | Změnit e-mail |
@@ -215,6 +215,23 @@ Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřová
 |verification_control_but_send_code |Odeslat kód |
 |verification_control_but_send_new_code |Poslat nový kód |
 |verification_control_but_verify_code |Ověřit kód |
+|verification_control_code_sent| Ověřovací kód byl odeslán. Zkopírujte ho prosím do následujícího pole pro zadání. |
+
+### <a name="example"></a>Příklad
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_send_code">Failed to send the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_verify_code">Failed to verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_new_code">Send New Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_code_sent">Verification code has been sent. Please copy it to the input box below.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="one-time-password-error-messages"></a>Jednorázové chybové zprávy hesla
 Níže jsou uvedené identifikátory, které slouží jako jednorázové chybové zprávy pro [technický profil s heslem](one-time-password-technical-profile.md) .
@@ -226,6 +243,18 @@ Níže jsou uvedené identifikátory, které slouží jako jednorázové chybov�
 |UserMessageIfSessionConflict |Jedna časová relace ověření hesla je v konfliktu. |
 |UserMessageIfInvalidCode |Jedno časové heslo zadané pro ověření není správné. |
 
+### <a name="example"></a>Příklad
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 
 

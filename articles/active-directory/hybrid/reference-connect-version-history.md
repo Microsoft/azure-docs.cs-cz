@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376286"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253582"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydání verze
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -498,16 +498,16 @@ Pomocí následujících změn oprávnění v místní službě AD Zablokujte p�
 
 Typ     | Název                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
-Povolit    | SOUBORŮ                        | Úplné řízení         | Tento objekt  |
-Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
-Povolit    | Správci domény                 | Úplné řízení         | Tento objekt  |
-Povolit    | Správci                | Úplné řízení         | Tento objekt  |
-Povolit    | Podnikové řadiče domény | Vypsat obsah        | Tento objekt  |
-Povolit    | Podnikové řadiče domény | Číst všechny vlastnosti  | Tento objekt  |
-Povolit    | Podnikové řadiče domény | Oprávnění ke čtení     | Tento objekt  |
-Povolit    | Ověření uživatelé           | Vypsat obsah        | Tento objekt  |
-Povolit    | Ověření uživatelé           | Číst všechny vlastnosti  | Tento objekt  |
-Povolit    | Ověření uživatelé           | Oprávnění ke čtení     | Tento objekt  |
+Allow    | SOUBORŮ                        | Úplné řízení         | Tento objekt  |
+Allow    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
+Allow    | Správci domény                 | Úplné řízení         | Tento objekt  |
+Allow    | Správci                | Úplné řízení         | Tento objekt  |
+Allow    | Podnikové řadiče domény | Vypsat obsah        | Tento objekt  |
+Allow    | Podnikové řadiče domény | Číst všechny vlastnosti  | Tento objekt  |
+Allow    | Podnikové řadiče domény | Oprávnění ke čtení     | Tento objekt  |
+Allow    | Ověření uživatelé           | Vypsat obsah        | Tento objekt  |
+Allow    | Ověření uživatelé           | Číst všechny vlastnosti  | Tento objekt  |
+Allow    | Ověření uživatelé           | Oprávnění ke čtení     | Tento objekt  |
 
 Chcete-li zvýšit nastavení pro účet služba AD DS, můžete spustit [Tento skript prostředí PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skript prostředí PowerShell přiřadí k účtu služba AD DS oprávnění uvedená výše.
 
@@ -1003,7 +1003,7 @@ Předávací ověřování
 * Opravili jsme problém, který způsobí, že Azure AD Connect Průvodce selže v případě, že je vybraná možnost předávací ověřování, ale registrace jeho konektoru selže.
 * Opravili jsme problém, který způsobí, že Průvodce Azure AD Connect obejít kontrolu ověřování u metody přihlašování vybrané, když je povolená funkce jednotného přihlašování k ploše.
 
-Resetování hesla
+Vytvoření nového hesla
 * Opravili jsme problém, který by mohl způsobit, že se server Azure AAD Connect nebude pokoušet znovu připojit, pokud bylo připojení ukončené bránou firewall nebo proxy serverem.
 
 **Nové funkce a vylepšení:**
@@ -1018,7 +1018,7 @@ Správa AD FS
 * Během AD FS instalace teď můžete zadat existující gMSA (skupinový účet spravované služby).
 * Nyní můžete nakonfigurovat SHA-256 jako algoritmus hash podpisu pro vztah důvěryhodnosti předávající strany Azure AD.
 
-Resetování hesla
+Vytvoření nového hesla
 * Představena vylepšení, která umožňují, aby produkt fungoval v prostředích s přísnějšími pravidly brány firewall.
 * Lepší spolehlivost připojení k Azure Service Bus.
 

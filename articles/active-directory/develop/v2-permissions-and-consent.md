@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 88b61b29b1386f461620ad602a88d2d1253aa905
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375613"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262344"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas koncového bodu Microsoft Identity Platform
 
@@ -82,7 +82,7 @@ Implementace Microsoft Identity Platform OpenID Connect obsahuje několik dobře
 
 Pokud aplikace provede přihlášení pomocí [OpenID Connect](active-directory-v2-protocols.md), musí požádat o obor `openid`. Obor `openid` se zobrazí na stránce s informacemi o pracovním účtu jako s oprávněním přihlásit se a na stránce osobní účet Microsoft pro vyjádření souhlasu jako "zobrazení vašeho profilu a připojení k aplikacím a službám pomocí účet Microsoft". S tímto oprávněním může aplikace získat jedinečný identifikátor pro uživatele ve formě deklarace `sub`. Také umožňuje aplikaci přístup ke koncovému bodu UserInfo. Obor `openid` lze použít na koncovém bodu tokenu platformy Microsoft identity a získat tokeny ID, které může aplikace použít k ověřování.
 
-### <a name="email"></a>e-mail
+### <a name="email"></a>email
 
 Obor `email` lze použít s oborem `openid` a všemi ostatními. Umožňuje aplikaci přístup k primární e-mailové adrese uživatele ve formě deklarace identity `email`. Deklarace `email` je obsažena v tokenu, pouze pokud je k uživatelskému účtu přidružena e-mailová adresa, která není vždy v případě případu. Pokud používá obor `email`, vaše aplikace by měla být připravená na zpracování případu, ve kterém deklarace identity `email` v tokenu neexistuje.
 
@@ -201,11 +201,11 @@ Až budete připraveni požádat o oprávnění od správce vaší organizace, m
 
 | Parametr     | Podmínka     | Popis                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Požaduje se | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazovaného v rámci organizací, jak je vidět v příkladu. Nepoužívejte "Common", protože osobní účty nemůžou poskytovat souhlas správce, s výjimkou kontextu tenanta. Aby se zajistila nejlepší kompatibilita s osobními účty, které spravují klienty, použijte ID tenanta, pokud je to možné. |
-| `client_id` | Požaduje se | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
-| `redirect_uri` | Požaduje se |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
-| `state` | Doporučené | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-|`scope`        | Požaduje se      | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statickou hodnotu (pomocí [`/.default`](#the-default-scope)) nebo dynamické obory.  To může zahrnovat OIDC obory (`openid`, `profile`, `email`). Pokud potřebujete oprávnění aplikace, musíte použít `/.default` k vyžádání staticky nakonfigurovaného seznamu oprávnění.  | 
+| `tenant` | Požadováno | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazovaného v rámci organizací, jak je vidět v příkladu. Nepoužívejte "Common", protože osobní účty nemůžou poskytovat souhlas správce, s výjimkou kontextu tenanta. Aby se zajistila nejlepší kompatibilita s osobními účty, které spravují klienty, použijte ID tenanta, pokud je to možné. |
+| `client_id` | Požadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `redirect_uri` | Požadováno |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
+| `state` | Doporučeno | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
+|`scope`        | Požadováno      | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statickou hodnotu (pomocí [`/.default`](#the-default-scope)) nebo dynamické obory.  To může zahrnovat OIDC obory (`openid`, `profile`, `email`). Pokud potřebujete oprávnění aplikace, musíte použít `/.default` k vyžádání staticky nakonfigurovaného seznamu oprávnění.  | 
 
 
 V tomto okamžiku Azure AD vyžaduje, aby se k dokončení žádosti přihlásil správce tenanta. Správce se vyzve ke schválení všech oprávnění, která jste si vyžádali v parametru `scope`.  Pokud jste použili statickou (`/.default`) hodnotu, bude fungovat jako koncový bod souhlasu správce v 1.0 a žádost o souhlas pro všechny obory nalezené v požadovaných oprávněních pro danou aplikaci.

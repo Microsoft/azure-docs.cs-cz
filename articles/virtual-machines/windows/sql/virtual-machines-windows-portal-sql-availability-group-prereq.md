@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388730"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249877"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On na SQL Server ve virtuálních počítačích Azure
 
@@ -370,7 +370,7 @@ Dále vytvořte tři virtuální počítače – dva SQL Server virtuální poč
 | **Základy** konfigurace virtuálních počítačů |**Název** = cluster – FSW<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |**Název** = SQLServer-0<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |**Název** = SQLServer-1<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |
 | **Velikost** konfigurace virtuálního počítače |**Size** = DS1\_v2 (1 vCPU, 3,5 GB) |**Size** = DS2\_v2 (2 vCPU, 7 GB)</br>Velikost musí podporovat úložiště SSD (podpora disků úrovně Premium. )) |**Size** = DS2\_v2 (2 vCPU, 7 GB) |
 | **Nastavení** konfigurace virtuálního počítače |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |
-| **Nastavení SQL Server** konfigurace virtuálního počítače |Neuvedeno |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |
+| **Nastavení SQL Server** konfigurace virtuálního počítače |Nelze použít |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |
 
 <br/>
 

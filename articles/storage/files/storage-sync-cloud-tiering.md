@@ -8,11 +8,11 @@ ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361891"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268090"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Při vrstvení souboru Azure File Sync filtr systému souborů (StorageSync. sys) místně nahradí soubor objektem ukazatele nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.

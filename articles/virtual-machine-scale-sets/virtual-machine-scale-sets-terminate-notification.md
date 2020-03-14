@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: avverma
 ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390474"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250748"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Ukončení oznámení pro instance sady škálování virtuálních počítačů Azure
 Instance sady škálování můžou vyjádřit výslovný souhlas s přijetím oznámení o ukončení instance a nastavením předem definovaného časového limitu prodlevy na operaci ukončení. Oznámení ukončení se odesílá prostřednictvím služby Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), která poskytuje oznámení a zpoždění ovlivněných operací, jako je třeba restartování a opětovné nasazení. Řešení přidá další událost – ukončit – do seznamu Scheduled Events a přidružená prodleva události ukončení bude záviset na limitu zpoždění zadaného uživateli ve svých konfiguracích modelu sady škálování.
@@ -22,7 +22,7 @@ Po zaregistrování do funkce nemusí instance sady škálování čekat na vypr
 ## <a name="enable-terminate-notifications"></a>Povolit ukončení oznámení
 Existuje několik způsobů, jak povolit koncová oznámení na instancích sady škálování, jak je popsáno v následujících příkladech.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Následující kroky umožňují ukončit oznámení při vytváření nové sady škálování. 
 
@@ -68,7 +68,7 @@ Po povolení *scheduledEventsProfile* v modelu sady škálování a nastavení *
 > [!NOTE]
 >Oznámení o ukončení u instancí sady škálování je možné povolit jenom pomocí rozhraní API verze 2019-03-01 a vyšší.
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 Při vytváření nové sady škálování můžete v sadě škálování povolit oznámení o ukončení pomocí rutiny [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) .
 
 Tento vzorový skript vás provede vytvořením sady škálování a přidružených prostředků pomocí konfiguračního souboru: [vytvořte úplnou sadu škálování virtuálního počítače](./scripts/powershell-sample-create-complete-scale-set.md). Můžete poskytnout oznámení o ukončení konfigurace přidáním parametrů *TerminateScheduledEvents* a *TerminateScheduledEventNotBeforeTimeoutInMinutes* do objektu konfigurace pro vytvoření sady škálování. Následující příklad povoluje funkci s časovým limitem zpoždění 10 minut.

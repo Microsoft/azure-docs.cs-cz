@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936975"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365164"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí rozhraní příkazového řádku Azure
 
@@ -173,7 +173,7 @@ Stejně jako u importu zóny se nejprve musíte přihlásit, zvolit předplatné
 
 Pokud chcete exportovat existující zónu Azure DNS **contoso.com** ve skupině prostředků **myresourcegroup** do souboru **contoso. com. txt** (v aktuální složce), spusťte `azure network dns zone export`. Tento příkaz volá službu Azure DNS pro zobrazení výčtu sad záznamů v zóně a export výsledků do souboru zóny kompatibilního s BIND.
 
-```
+```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 

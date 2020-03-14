@@ -13,19 +13,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1317ea6526a28c5d71dce1a3c25b2fd05f5e446b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9402960927f56092e226ab81bd3e6ede0cf6a52d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271310"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202191"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Rychlý Start: Vytvoření brány NAT pomocí Azure CLI
 
 V tomto rychlém startu se dozvíte, jak používat službu Azure Virtual Network NAT. Vytvoříte bránu NAT pro poskytování odchozího připojení pro virtuální počítač v Azure. 
-
->[!NOTE] 
->Azure Virtual Network NAT je v tuto chvíli k dispozici jako Public Preview a je k dispozici v omezené sadě [oblastí](https://azure.microsoft.com/global-infrastructure/regions/). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -236,6 +233,5 @@ Zkontrolujte metriky v Azure Monitor a podívejte se, jak vaše služba NAT fung
 - Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure CLI](./quickstart-create-nat-gateway-cli.md).
 - Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
 - Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure Portal](./quickstart-create-nat-gateway-portal.md).
-- [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).
 > [!div class="nextstepaction"]
 

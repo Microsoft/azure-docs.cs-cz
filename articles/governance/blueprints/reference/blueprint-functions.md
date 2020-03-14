@@ -4,11 +4,11 @@ description: Popisuje funkce, které jsou k dispozici pro použití s artefakty 
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386253"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280674"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití s plány Azure
 
@@ -36,7 +36,7 @@ Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobn
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| artefakt |Ano |string |Název artefaktu podrobného plánu |
+| artefakt |Ano |řetězec |Název artefaktu podrobného plánu |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -109,10 +109,10 @@ Některé příklady načítání dat z ukázky _myTemplateArtifact_ jsou:
 | Výraz | Typ | Hodnota |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \["First", "Second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | první |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "moje hodnota řetězce" |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Řetězec | první |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | Řetězec | "moje hodnota řetězce" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Objekt | {"MyProperty": "moje hodnota", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "moje hodnota" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Řetězec | "moje hodnota" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>spojuje
@@ -125,8 +125,8 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| string1 |Ano |string |První hodnota pro zřetězení |
-| Další argumenty |Ne |string |Další hodnoty v sekvenčním pořadí pro zřetězení |
+| string1 |Ano |řetězec |První hodnota pro zřetězení |
+| Další argumenty |Ne |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -140,7 +140,7 @@ Funkce Azure Blueprint se liší od Azure Resource Manager funkce šablony v tom
 
 `concat(parameters('organizationName'), '-vm')`
 
-## <a name="parameters"></a>parametry
+## <a name="parameters"></a>parameters
 
 `parameters(parameterName)`
 
@@ -150,7 +150,7 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |string |Název parametru, který se má vrátit. |
+| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -199,7 +199,7 @@ Pak použijte _principalIds_ jako argument pro `parameters()` v artefaktu podrob
 }
 ```
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Skupina prostředků
 
 `resourceGroup()`
 
@@ -271,7 +271,7 @@ Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na ro
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| zástupný znak |Ano |string |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
+| zástupný znak |Ano |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
 
 ### <a name="return-value"></a>Návratová hodnota
 

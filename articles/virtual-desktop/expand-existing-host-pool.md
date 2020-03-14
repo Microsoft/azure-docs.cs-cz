@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127895"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365215"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
 
@@ -71,7 +71,7 @@ Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšířen
 
 ## <a name="run-the-azure-marketplace-offering"></a>Spuštění nabídky Azure Marketplace
 
-Postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí Azure Marketplace,](./create-host-pools-azure-marketplace.md) dokud nedosáhnete [spuštění nabídky Azure Marketplace ke zřízení nového fondu hostitelů](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Až se dostanete k tomuto okamžiku, budete muset pro každé okno zadat následující informace:
+Postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí Azure Marketplace,](./create-host-pools-azure-marketplace.md) dokud nedosáhnete [spuštění nabídky Azure Marketplace ke zřízení nového fondu hostitelů](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Až se dostanete k tomuto okamžiku, budete muset pro každou kartu zadat následující informace:
 
 ### <a name="basics"></a>Základy
 

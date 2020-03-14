@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: e3668718e27a3dcb545428637b34de51ec621c60
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217785"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Použití ukázkových datových sad v Azure Machine Learning Studio (klasický)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 [top]: #machine-learning-sample-datasets
 
 Když vytvoříte nový pracovní prostor v Azure Machine Learning Studio (Classic), bude ve výchozím nastavení zahrnuto několik ukázkových datových sad a experimentů. Mnohé z těchto ukázkových datových sad jsou používány vzorovými modely v [Azure AI Gallery](https://gallery.azure.ai/). Další jsou zahrnuté jako příklady různých typů dat, které se obvykle používají ve strojovém učení.

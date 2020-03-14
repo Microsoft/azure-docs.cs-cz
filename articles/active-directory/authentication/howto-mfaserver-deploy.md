@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378016"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263696"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -77,7 +77,7 @@ Každý server MFA musí být schopný komunikovat na odchozím portu 443 s těm
 
 Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsahy IP adres:
 
-| Podsíť IP | Síťová maska | Rozsah IP adres |
+| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
@@ -85,7 +85,7 @@ Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsah
 
 Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužívají k ověřování ze zařízení v podnikové síti mobilní aplikace, potřebujete pouze následující rozsahy:
 
-| Podsíť IP | Síťová maska | Rozsah IP adres |
+| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79 |
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |

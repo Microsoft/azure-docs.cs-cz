@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376062"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253595"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením služby Azure AD
 Tento článek vysvětluje, jak funguje konektivita mezi Azure AD Connect a Azure AD a jak řešit problémy s připojením. Tyto problémy se pravděpodobně zobrazují v prostředí s proxy server.
@@ -43,7 +43,7 @@ Proxy server musí mít také otevřené požadované adresy URL. Oficiální se
 
 Z těchto adres URL je v následující tabulce absolutní minimum, které se může připojit ke službě Azure AD. Tento seznam neobsahuje žádné volitelné funkce, jako je třeba zpětný zápis hesla nebo Azure AD Connect Health. Najdete tady informace, které vám pomůžou při řešení potíží s počáteční konfigurací.
 
-| zprostředkovatele identity | Port | Popis |
+| Adresa URL | Port | Popis |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
 | \*. verisign.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
@@ -93,9 +93,9 @@ Pokud se vám **nedaří připojit ke vzdálenému serveru**, PowerShell se poku
 Pokud proxy server není správně nakonfigurovaný, zobrazí se chyba: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
 ![proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
-| Chyba | Text chyby | Poznámka |
+| Chyba | Text chyby | Komentář |
 | --- | --- | --- |
-| 403 |Forbidden |Proxy server nebyl otevřen pro požadovanou adresu URL. Znovu navštivte konfiguraci proxy serveru a ujistěte se, že jsou [adresy URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) otevřené. |
+| 403 |Zakázáno |Proxy server nebyl otevřen pro požadovanou adresu URL. Znovu navštivte konfiguraci proxy serveru a ujistěte se, že jsou [adresy URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) otevřené. |
 | 407 |Vyžaduje se ověřování proxy. |Proxy server vyžadoval přihlášení a žádné se nezadaly. Pokud vaše proxy server vyžaduje ověření, ujistěte se, že je toto nastavení nakonfigurované v souboru Machine. config. Také se ujistěte, že používáte doménové účty pro uživatele, který spouští Průvodce, a pro účet služby. |
 
 ### <a name="proxy-idle-timeout-setting"></a>Nastavení časového limitu nečinnosti proxy serveru
@@ -113,7 +113,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Připojení k Azure AD**
 
-| Čas | zprostředkovatele identity |
+| Čas | Adresa URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Konfigurace**
 
-| Čas | zprostředkovatele identity |
+| Čas | Adresa URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800 – kotva*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Počáteční synchronizace**
 
-| Čas | zprostředkovatele identity |
+| Čas | Adresa URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

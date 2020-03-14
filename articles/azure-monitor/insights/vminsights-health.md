@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 3cecb04a4f299051860c45425f0fc4e13c3722ea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395788"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275123"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
 

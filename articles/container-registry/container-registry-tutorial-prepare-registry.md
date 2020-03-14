@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384328"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238521"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -25,7 +25,7 @@ V tomto kurzu, který je první částí třídílné série, se naučíte:
 
 V dalších kurzech nasadíte kontejner ze svého privátního registru do webové aplikace spuštěné ve dvou oblastech Azure. Pak aktualizujete kód aplikace a pomocí jediného příkazu `docker push` pro váš registr aktualizujete obě instance webové aplikace.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento kurz vyžaduje místní instalaci Azure CLI (verze 2.0.31 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 

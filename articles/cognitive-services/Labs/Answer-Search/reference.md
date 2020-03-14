@@ -12,11 +12,11 @@ ms.date: 04/13/2018
 ms.author: rosh
 ROBOTS: NOINDEX
 ms.openlocfilehash: 28449435479aef0d6a1d8aee3e53de1a78f401b3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396797"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220817"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na hledání odpovědí projektu v7
 
@@ -84,7 +84,7 @@ Následují hlavičky, které může obsahovat požadavek a odpověď.
 Požadavek může obsahovat následující parametry dotazu. Požadované parametry najdete v požadovaném sloupci. Je nutné zadat adresu URL pro kódování parametrů dotazu.  
   
   
-|Název|Hodnota|Typ|Požaduje se|  
+|Název|Hodnota|Typ|Požadováno|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot trhu najdete v tématu kódy trhů.<br /><br /> **Poznámka:** Rozhraní API pro náhled adresy URL aktuálně podporuje jenom trh a jazyk EN-US.<br /><br />|Řetězec|Ano|  
 |<a name="query" />q|Adresa URL náhledu|Řetězec|Ano|  
@@ -133,7 +133,7 @@ Definuje licenci, za kterou se dá text nebo fotka použít.
 |Název|Hodnota|Typ|  
 |----------|-----------|----------|  
 |jméno|Název licence.|Řetězec|  
-|url|Adresa URL webu, kde může uživatel získat další informace o licenci.<br /><br /> K vytvoření hypertextového odkazu použijte název a adresu URL.|Řetězec|  
+|Adresa URL|Adresa URL webu, kde může uživatel získat další informace o licenci.<br /><br /> K vytvoření hypertextového odkazu použijte název a adresu URL.|Řetězec|  
   
 
 ### <a name="licenseattribution"></a>LicenseAttribution  
@@ -155,7 +155,7 @@ Definuje součásti hypertextového odkazu.
 |----------|-----------|----------|  
 |_type|Zadejte pomocný parametr.|Řetězec|  
 |text|Zobrazený text|Řetězec|  
-|url|ADRESA URL. Hypertextový odkaz vytvoříte pomocí adresy URL a zobrazovaného textu.|Řetězec|  
+|Adresa URL|ADRESA URL. Hypertextový odkaz vytvoříte pomocí adresy URL a zobrazovaného textu.|Řetězec|  
   
 
 ### <a name="linkattribution"></a>LinkAttribution  
@@ -167,7 +167,7 @@ Definuje smluvní pravidlo pro přidělení odkazu.
 |mustBeCloseToContent|Logická hodnota určující, zda obsah pravidla musí být umístěn v blízkosti pole, na které se pravidlo vztahuje. V případě **hodnoty true**musí být obsah umístěn v blízkosti. Pokud je **hodnota false**nebo toto pole neexistuje, může být obsah umístěn na základě rozhodnutí volajícího.|Logická hodnota|  
 |targetPropertyName|Název pole, na které se pravidlo vztahuje.<br /><br /> Pokud není zadán cíl, vztahuje se k entitě jako celek a měl by se zobrazovat hned za prezentací entity. Pokud je k dispozici více pravidel textu a propojení, která neurčují cíl, je třeba je zřetězit a zobrazit pomocí popisku "data z:". Například "data ze < Provider název1\> &#124; < provider název2\>".|Řetězec|  
 |text|Text přidělení.|Řetězec|  
-|url|Adresa URL webu poskytovatele. K vytvoření hypertextového odkazu použijte `text` a adresu URL.|Řetězec|  
+|Adresa URL|Adresa URL webu poskytovatele. K vytvoření hypertextového odkazu použijte `text` a adresu URL.|Řetězec|  
   
   
 ### <a name="mediaattribution"></a>MediaAttribution  
@@ -178,7 +178,7 @@ Definuje smluvní pravidlo pro přidělení médií.
 |_type|Pomocný parametr typu, který je nastaven na MediaAttribution.|Řetězec|  
 |mustBeCloseToContent|Logická hodnota určující, zda obsah pravidla musí být umístěn v blízkosti pole, na které se pravidlo vztahuje. V případě **hodnoty true**musí být obsah umístěn v blízkosti. Pokud je **hodnota false**nebo toto pole neexistuje, může být obsah umístěn na základě rozhodnutí volajícího.|Logická hodnota|  
 |targetPropertyName|Název pole, na které se pravidlo vztahuje.|Řetězec|  
-|url|Adresa URL, kterou použijete k vytvoření hypertextového odkazu na multimediální obsah. Pokud je cílem například obrázek, měli byste použít adresu URL, aby bylo možné obrázek kliknout.|Řetězec|  
+|Adresa URL|Adresa URL, kterou použijete k vytvoření hypertextového odkazu na multimediální obsah. Pokud je cílem například obrázek, měli byste použít adresu URL, aby bylo možné obrázek kliknout.|Řetězec|  
   
   
   
@@ -190,7 +190,7 @@ Všimněte si, že Vydavatel může poskytnout svůj název nebo web nebo obojí
 |Název|Hodnota|Typ|  
 |----------|-----------|----------|  
 |jméno|Název vydavatele|Řetězec|  
-|url|Adresa URL webu vydavatele<br /><br /> Všimněte si, že vydavatel nemusí poskytovat Web.|Řetězec|  
+|Adresa URL|Adresa URL webu vydavatele<br /><br /> Všimněte si, že vydavatel nemusí poskytovat Web.|Řetězec|  
   
   
 
@@ -200,9 +200,9 @@ Definuje informace o webové stránce ve verzi Preview.
 |Název|Hodnota|Typ|  
 |----------|-----------|----------|
 |jméno|Nadpis stránky, ne nutně název HTML|Řetězec|
-|url|Adresa URL, která byla ve skutečnosti procházena (žádost může mít přesměrování za následovat)|Řetězec|  
+|Adresa URL|Adresa URL, která byla ve skutečnosti procházena (žádost může mít přesměrování za následovat)|Řetězec|  
 |description|Stručný popis stránky a obsahu|Řetězec|  
-|isFamilyFriendly|Nejpřesnější pro položky ve webovém indexu; načítá se v reálném čase. Tato detekce je založená výhradně na adrese URL, nikoli na obsahu stránky.|Boolean|
+|isFamilyFriendly|Nejpřesnější pro položky ve webovém indexu; načítá se v reálném čase. Tato detekce je založená výhradně na adrese URL, nikoli na obsahu stránky.|Datový typ Boolean|
 |primaryImageOfPage/contentUrl|Adresa URL zástupce obrázku, který má být zahrnut do verze Preview|Řetězec| 
   
   
@@ -235,7 +235,7 @@ Definuje položku výsledku hledání, která se má zobrazit.
 
 |Název|Hodnota|Typ|  
 |-------------|-----------------|----------|
-|resultIndex|Index položky vycházející z nuly v odpovědi, která se má zobrazit Pokud tato položka neobsahuje toto pole, zobrazí všechny položky v odpovědi. Můžete například zobrazit všechny články v odpovědi na zprávy.|Integer|
+|resultIndex|Index položky vycházející z nuly v odpovědi, která se má zobrazit Pokud tato položka neobsahuje toto pole, zobrazí všechny položky v odpovědi. Můžete například zobrazit všechny články v odpovědi na zprávy.|Celé číslo|
 |answerType|Odpověď obsahující položku, která se má zobrazit Například zprávy.<br /><br />Pomocí typu vyhledejte odpověď v objektu SearchResponse. Typ je název pole SearchResponse.<br /><br /> Typ odpovědi však použijte pouze v případě, že tento objekt obsahuje pole hodnota. v opačném případě tuto chybu ignorujte.|Řetězec|
 |textualIndex|Index odpovědi v textualAnswers, který se má zobrazit| Celé číslo bez znaménka|
 |hodnota|ID, které identifikuje odpověď pro zobrazení nebo položku odpovědi, která se má zobrazit Pokud ID identifikuje odpověď, zobrazí všechny položky odpovědi.|Identifikovatelné údaje|

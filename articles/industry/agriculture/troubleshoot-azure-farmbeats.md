@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705611"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298797"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
 Tento článek popisuje řešení běžných problémů s FarmBeats Azure.
 
-Pokud chcete získat další nápovědu, kontaktujte nás na adrese farmbeatssupport@microsoft.com. Nezapomeňte do svého e-mailu zahrnout soubor **Deployer. log** .
+Pokud chcete získat další nápovědu, kontaktujte nás na adrese farmbeatssupport@microsoft.com. Zajistěte, aby do vašeho e-mailu zahrnovali soubor **Deployer. log** .
 
 Pokud chcete stáhnout soubor **Deployer. log** , udělejte toto:
 
@@ -65,11 +65,11 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -119,14 +119,14 @@ To **znamená**, že k zařízení jsou přidružená jiná zařízení.
 2. Odstraňte konkrétní zařízení.  
 
     > [!NOTE]
-    > Zařízení nemůžete odstranit, pokud jsou k němu přidružené senzory. Další informace o tom, jak odstranit přidružené senzory, najdete v části "odstranění senzoru" v tématu [získání dat ze senzorů od partnerů snímačů](get-sensor-data-from-sensor-partner.md).
+    > Zařízení nemůžete odstranit, pokud jsou k němu přidružené senzory. Další informace o tom, jak odstranit přidružené senzory, najdete v části **odstranění senzoru** v tématu [získání dat ze senzorů od partnerů snímačů](get-sensor-data-from-sensor-partner.md).
 
 
 ## <a name="issues-with-jobs"></a>Problémy s úlohami
 
 ### <a name="farmbeats-internal-error"></a>Vnitřní chyba FarmBeats
 
-**Zpráva**: "vnitřní chyba FarmBeats, další informace najdete v Průvodci odstraňováním potíží."
+**Zpráva**: "vnitřní chyba FarmBeats, další podrobnosti najdete v Průvodci odstraňováním potíží.
 
 **Nápravná opatření**: Tento problém může být způsoben dočasným selháním v datovém kanálu. Vytvořte úlohu znovu. Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru FarmBeats nebo kontaktujte FarmBeatsSupport@microsoft.com.
 
@@ -138,13 +138,13 @@ To **znamená**, že k zařízení jsou přidružená jiná zařízení.
 
 **Zpráva**: nebyla nalezena žádná vyhovující uživatelé.
 
-**Nápravná opatření**: Ověřte ID e-mailu, ke kterému se pokoušíte přidat přiřazení role. ID e-mailu musí mít přesnou shodu ID, která je zaregistrovaná pro daného uživatele ve službě Active Directory. Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru FarmBeats nebo kontaktujte FarmBeatsSupport@microsoft.com.
+**Nápravná opatření**: Ověřte ID e-mailu, ke kterému se pokoušíte přidat přiřazení role. ID e-mailu musí být přesná shoda ID, která je zaregistrovaná pro daného uživatele ve službě Active Directory. Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru FarmBeats nebo kontaktujte FarmBeatsSupport@microsoft.com.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Nepovedlo se přihlásit k akcelerátoru.
 
-**Zpráva**: "Chyba: nemáte oprávnění k volání služby. Kontaktujte správce k autorizaci. "
+**Zpráva**: "Chyba: nemáte oprávnění k volání služby. Požádejte správce o autorizaci. "
 
-**Nápravná opatření**: požádejte správce, aby vám schvaloval přístup k nasazení FarmBeats. To se dá udělat tak, že provedete příspěvek rozhraní RoleAssignment API nebo prostřednictvím Access Control v podokně **Nastavení** v akcelerátoru.  
+**Nápravná opatření**: požádejte správce, aby vám povolil přístup k nasazení FarmBeats. To se dá udělat tak, že provedete příspěvek rozhraní RoleAssignment API nebo prostřednictvím Access Control v podokně **Nastavení** v akcelerátoru.  
 
 Pokud jste už udělili přístup a tato chyba se týká této chyby, zkuste to znovu tak, že aktualizujete stránku. Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru FarmBeats nebo kontaktujte FarmBeatsSupport@microsoft.com.
 
@@ -162,7 +162,8 @@ Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru Fa
 
 **Problém**: akcelerátor FarmBeats nezobrazuje nejnovější verzi, i když jste provedli upgrade FarmBeatsDeployment.
 
-**Nápravná opatření**: k této chybě dochází z důvodu trvalosti pracovního procesu služby v prohlížeči. Udělejte toto:
+**Nápravná opatření**: k této chybě dochází z důvodu trvalosti pracovního procesu služby v prohlížeči. Postupujte takto:
+
 1. Zavřete všechny karty prohlížeče, které mají otevřený akcelerátor, a zavřete okno prohlížeče.
 2. Spusťte novou instanci prohlížeče a znovu načtěte identifikátor URI akcelerátoru. Tato akce načte novou verzi akcelerátoru.
 
@@ -175,6 +176,7 @@ Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru Fa
 **Nápravná opatření**:
 
 Proveďte jednu z těchto akcí:
+
 - Spusťte znovu instalační program pro upgrade DataHub se správným uživatelským jménem a heslem.
 - Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.
 
@@ -198,6 +200,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 1. Pokud dojde k chybě nějaké úlohy nebo kanálu, protože probíhá údržba, odešlete úlohu znovu po nějaké době. 
 
    Informace o všech plánovaných a neplánovaných aktivitách údržby ověřovacích zpráv najdete na webu [Copernicus otevřít centrum Access Hub](https://scihub.copernicus.eu/news/) .  
+
 2. Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: dosáhlo se maximálního počtu připojení.
@@ -207,6 +210,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 **Význam**: Pokud se úloha nezdařila, protože bylo dosaženo maximálního počtu připojení, je stejný účet Sentinel používán v jiném nasazení softwaru.
 
 **Nápravná opatření**: zkuste jednu z těchto možností:
+
 * Vytvořte nový účet Sentinel a pak znovu spusťte instalační program a upgradujte DataHub pomocí nového uživatelského jména a hesla Sentinel.  
 * Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro datum v rozsahu 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.
 
@@ -218,6 +222,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 1. Pokud dojde k chybě nějaké úlohy nebo kanálu, protože probíhá údržba, odešlete úlohu znovu po nějaké době. 
 
    Informace o všech plánovaných a neplánovaných aktivitách údržby ověřovacích zpráv najdete na webu [Copernicus otevřít centrum Access Hub](https://scihub.copernicus.eu/news/) .  
+
 2. Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.
 
 ## <a name="collect-logs-manually"></a>Shromažďovat protokoly ručně
@@ -225,7 +230,8 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 [Nainstalujte a nasaďte Průzkumník služby Azure Storage]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory v DataHub
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
 
     > [!NOTE]
@@ -243,7 +249,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory v akcelerátoru
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
 
     > [!NOTE]
@@ -260,7 +266,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-datahub-app-service-logs"></a>Shromažďovat protokoly služby App Service DataHub
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
 
     > [!NOTE]
@@ -276,7 +282,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-accelerator-app-service-logs"></a>Shromáždit protokoly služby akcelerátor App Service
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
 
     > [!NOTE]
@@ -300,7 +306,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="azure-active-directory-azure-ad-related-issues"></a>Problémy související s Azure Active Directory (Azure AD)
 
-**Chybová zpráva**: "nepovedlo se aktualizovat požadovaná nastavení na aplikace Azure AD d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: nedostatečná oprávnění k dokončení operace. Zajistěte, aby byla výše nakonfigurovaná nastavení pro Aplikace Azure AD správná. "
+**Chybová zpráva**: "nepovedlo se aktualizovat požadovaná nastavení na aplikace Azure AD d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: nedostatečná oprávnění k dokončení operace. Ujistěte se, že výše uvedená nastavení jsou správně nakonfigurovaná pro Aplikace Azure AD. "
 
 **Význam**: Konfigurace registrace aplikace Azure AD se nedokončila správně.  
 

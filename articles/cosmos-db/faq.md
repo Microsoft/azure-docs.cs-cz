@@ -8,13 +8,13 @@ ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 322d1c9ead1e7591c359c35c445fa32529db22ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387141"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246796"
 ---
-# <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
+# <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Co jsou typické případy použití pro službu Azure Cosmos DB?
 
@@ -312,7 +312,7 @@ Některá nastavení jsou zpracována na CreateCloudTableClient metody a další
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>Existují jakékoli změny pro zákazníky, kteří používají existující služby Azure Table storage SDK?
 
-Žádné. Neexistují žádné změny existujících nebo nových zákazníků, kteří používají existující služby Azure Table storage SDK.
+Žádné Neexistují žádné změny existujících nebo nových zákazníků, kteří používají existující služby Azure Table storage SDK.
 
 ### <a name="how-do-i-view-table-data-thats-stored-in-azure-cosmos-db-for-use-with-the-table-api"></a>Jak lze zobrazit data tabulky, která je uložená ve službě Azure Cosmos DB pro použití s rozhraním Table API?
 
@@ -473,7 +473,7 @@ Ano, pokud nepřepíšete TableThroughput pomocí souboru app.config a nepouží
 
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Je k dispozici žádné změnit cenový model pro stávající zákazníky služby Azure Table storage?
 
-Žádné. Není žádná změna ceny pro stávající zákazníky služby Azure Table storage.
+Žádné Není žádná změna ceny pro stávající zákazníky služby Azure Table storage.
 
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Jak se počítá cena pro rozhraní Table API?
 

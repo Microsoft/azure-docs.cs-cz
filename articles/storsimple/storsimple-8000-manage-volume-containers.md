@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
 ms.openlocfilehash: cbdad3c68848ce552811ee658bb29df74a6fad19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394588"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267674"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Správa kontejnerů svazků StorSimple pomocí služby StorSimple Device Manager
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: kumud
 ms.openlocfilehash: a55bf014a2da10069e4e6a5f6f4eb4b8cd9ff205
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383153"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279556"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Přidat síťová rozhraní nebo odebrat síťová rozhraní z virtuálních počítačů
 
@@ -28,7 +28,7 @@ Naučte se, jak přidat existující síťové rozhraní, když vytvoříte virt
 
 Pokud potřebujete přidat, změnit nebo odebrat IP adresy pro síťové rozhraní, přečtěte si téma [Správa IP adres síťového rozhraní](virtual-network-network-interface-addresses.md). Pokud potřebujete vytvořit, změnit nebo odstranit síťová rozhraní, přečtěte si téma [Správa síťových rozhraní](virtual-network-network-interface.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

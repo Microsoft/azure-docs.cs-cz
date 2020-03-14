@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 02/03/2020
 ms.openlocfilehash: cf239cbf69f3816e5ec03e07e2bd5fe370308f22
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386471"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272835"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Konfigurace Balíček zabezpečení podniku s využitím Azure Active Directory Domain Services ve službě HDInsight
 

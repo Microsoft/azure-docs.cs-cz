@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372055"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278035"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat clustering v mezipaměti Azure Premium pro instanci Redis.

@@ -13,11 +13,11 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377676"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266621"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Prostředí koncových uživatelů pro aplikace v Azure Active Directory
 

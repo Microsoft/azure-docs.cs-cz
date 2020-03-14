@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
 ms.openlocfilehash: fbfd3e2577655e8cfccd84fffe2971ff509bd2f4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356073"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240769"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlý Start: vytvoření datové továrny Azure a kanálu pomocí REST API
 
@@ -32,7 +32,7 @@ Tento rychlý start popisuje použití rozhraní REST API k vytvoření datové 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

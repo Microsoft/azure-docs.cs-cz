@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394765"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266985"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -83,7 +83,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - Tabulka směrování sítě
   - Otevřené porty a stav
 
-- Úložiště
+- Storage
   - Seznam blokovaných zařízení
   - Seznam oddílů
   - Seznam přípojných bodů
@@ -91,7 +91,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - Informace o svazku LVM
   - Profilace zachycení na všech discích v intervalu 5 sekund
 
-- Protokoly
+- Logs
   - /var/log/messages
   - /var/log/syslog
   - /var/log/kern.log
@@ -125,7 +125,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
 
 - V současné době jsou podporovány následující distribuce:
 
-    | Distribuce               | Verze                                         |
+    | Distribuce               | Version                                         |
     |----------------------------|-------------------------------------------------|
     | Server Oracle Linux        | 6,10 [`*`], 7,3, 7,6, 7,5 (obrázek Oracle-Database-EE 13,8 Marketplace)|
     | CentOS                     | 6,5 [`*`], 7,6                                    |

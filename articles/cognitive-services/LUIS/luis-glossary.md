@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361095"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220949"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
 Language Understanding (LUIS) Glosář vysvětluje podmínky, které můžete narazit při práci se službou LUIS rozhraní API.

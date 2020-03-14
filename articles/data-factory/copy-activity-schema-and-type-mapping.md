@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423619"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260810"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapování schématu v aktivitě kopírování
 
@@ -87,7 +87,7 @@ Můžete zadat sloupce pro mapování aktivity kopírování – > `translator` 
 
 V části `translator` -> objekt `mappings`-> s `source` a `sink`jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis                                                  | Požaduje se |
+| Vlastnost | Popis                                                  | Požadováno |
 | -------- | ------------------------------------------------------------ | -------- |
 | jméno     | Název zdroje nebo sloupce jímky.                           | Ano      |
 | ordinal  | Index sloupce. Začněte s 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | Ne       |
@@ -98,7 +98,7 @@ V části `translator` -> objekt `mappings`-> s `source` a `sink`jsou podporová
 
 Následující vlastnosti jsou podporovány v rámci `translator` -> `mappings` kromě objektu s `source` a `sink`:
 
-| Vlastnost            | Popis                                                  | Požaduje se |
+| Vlastnost            | Popis                                                  | Požadováno |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | Podporováno pouze v případě, že je zdrojem hierarchických dat například MongoDB/REST.<br>Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. | Ne       |
 
@@ -200,7 +200,7 @@ Pokud používáte syntaxi `"columnMappings": "UserId: MyUserId, Group: MyGroup,
 
 Můžete určit aktivitu kopírování – > `translator` -> `schemaMapping` pro mapování mezi hierarchickými daty ve tvaru a daty z tabulkového tvaru, např. kopírování z MongoDB/REST do textového souboru a kopírováním z Oracle do Azure Cosmos DB rozhraní API pro MongoDB. V části aktivita kopírování `translator` jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | type | Vlastnost Type pro překladatele aktivity kopírování musí být nastavená na: **TabularTranslator** . | Ano |
 | schemaMapping | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **klíč:** představuje zdroj. V poli **tabelární zdroj**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje**zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **hodnota:** reprezentuje jímku. Pro **tabulkovou jímku**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky**zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole v poli, které je zvoleno vlastností `collectionReference`, začíná cesta JSON od elementu pole.  | Ano |
@@ -237,7 +237,7 @@ Například pokud máte MongoDB dokument s následujícím obsahem:
 
 a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu, a to tak, že sloučíte data uvnitř pole *(order_pd a order_price)* a spojíte se společnými kořenovými informacemi *(číslo, datum a město)* :
 
-| orderNumber | OrderDate | order_pd | order_price | city |
+| orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
 | 01 | 20170122 | P1 | 23 | Seattle |
 | 01 | 20170122 | P2 | 13 | Seattle |
@@ -294,7 +294,7 @@ Data Factory podporuje následující dočasné datové typy: při konfiguraci i
 * Int16
 * Datový typ Int32
 * Int64
-* Jednoduché
+* Jednoduchá
 * Řetězec
 * Časový interval
 

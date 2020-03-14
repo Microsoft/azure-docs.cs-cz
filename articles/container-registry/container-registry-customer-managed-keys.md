@@ -4,12 +4,12 @@ description: Přečtěte si o šifrování v klidovém prostředí služby Azure
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: 8bce77c776fe088e5c317f02cd2757738a287069
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 7bfc4e9a73280ab330efbeeba51a5dcb0a80da10
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096504"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365337"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Šifrování pomocí klíčů spravovaných zákazníkem
 
@@ -27,9 +27,10 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 
 * Tuto funkci můžete v tuto chvíli povolit jenom v případě, že vytváříte registr.
 * Po povolení klíče spravovaného zákazníkem v registru ho nemůžete zakázat.
+* V registru zašifrovaném pomocí klíče spravovaného zákazníkem v současné době není [vztah důvěryhodnosti obsahu](container-registry-content-trust.md) podporován.
 * V registru zašifrovaném pomocí klíče spravovaného zákazníkem jsou v současné době uchovávány protokoly pro [úlohy ACR](container-registry-tasks-overview.md) jenom na 24 hodin. Pokud potřebujete uchovat protokoly po delší dobu, přečtěte si téma pokyny k [exportu a ukládání protokolů spuštění úloh](container-registry-tasks-logs.md#alternative-log-storage).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít kroky Azure CLI v tomto článku, potřebujete Azure CLI verze 2.2.0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 

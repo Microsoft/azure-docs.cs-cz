@@ -3,16 +3,22 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 67ff06e882ec61dff58922606469ac27a8bbf7fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273212"
+ms.locfileid: "79297353"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
 Tento článek popisuje, jak [služba Azure Backup](backup-introduction-to-azure-backup.md) zálohuje virtuální počítače Azure (VM).
+
+Azure Backup poskytuje nezávislé a izolované zálohy, které chrání před nezamýšleným zničením dat na vašich virtuálních počítačích. Zálohy jsou uloženy v Recovery Services trezoru s integrovanou správou bodů obnovení. Konfigurace a škálování jsou jednoduché, jsou optimalizované zálohy a můžete je snadno obnovit podle potřeby.
+
+V rámci procesu zálohování [se bere snímek](#snapshot-creation)a data se přenesou do trezoru Recovery Services bez dopadu na produkční úlohy. Snímek poskytuje různé úrovně konzistence, jak je popsáno [zde](#snapshot-consistency).
+
+Azure Backup také obsahuje specializované nabídky pro databázové úlohy, jako jsou [SQL Server](backup-azure-sql-database.md) a [SAP HANA](sap-hana-db-about.md) , které pracují s úlohou, nabízí 15 minut RPO (cíl bodu obnovení) a povoluje zálohování a obnovení jednotlivých databází.
 
 ## <a name="backup-process"></a>Proces zálohování
 
@@ -66,7 +72,7 @@ Azure Backup převezme snímky podle plánu zálohování.
   - Pokud se předzálohovací a pozálohovací skripty úspěšně spustí, Azure Backup označí bod obnovení jako konzistentní s aplikací. Pokud však používáte vlastní skripty, jste nakonec odpovědni za konzistenci aplikací.
   - [Přečtěte si další informace](backup-azure-linux-app-consistent.md) o tom, jak nakonfigurovat skripty.
 
-### <a name="snapshot-consistency"></a>Konzistence snímků
+## <a name="snapshot-consistency"></a>Konzistence snímků
 
 Následující tabulka vysvětluje různé typy konzistence snímků:
 

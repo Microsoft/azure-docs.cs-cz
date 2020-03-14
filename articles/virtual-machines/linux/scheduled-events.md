@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 37932a3669dc1ed7f8f3f103db93ee6757a06aad
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dbea68f5699f26b866d2e22c960c0359bcb3479b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390393"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267193"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače se systémem Linux
 
@@ -46,7 +46,7 @@ Pomocí Scheduled Events může aplikace zjistit, kdy se bude provádět údržb
 Scheduled Events poskytuje události v následujících případech použití:
 
 - [Údržba iniciovaná platformou](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (například restartování virtuálního počítače, migrace za provozu nebo zachovávání aktualizací v paměti pro hostitele)
-- Snížený hardware
+- Virtuální počítač běží na [degradované hostitelském hardwaru](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) , který brzy vypoví selhání.
 - Údržba iniciované uživatelem (například uživatel restartuje nebo znovu nasadí virtuální počítač)
 - Vyřazení instancí [sad](../../virtual-machine-scale-sets/use-spot.md) [virtuálních počítačů](spot-vms.md) a škálování na místě
 
@@ -54,7 +54,7 @@ Scheduled Events poskytuje události v následujících případech použití:
 
   Metadata Service zpřístupňuje informace o spuštěných virtuálních počítačích pomocí koncového bodu REST, který je přístupný z virtuálního počítače. Tyto informace jsou k dispozici prostřednictvím nonroutable IP adresy, aby se nezobrazovaly mimo virtuální počítač.
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Scope
 Naplánované události jsou doručovány do:
 
 - Samostatné Virtual Machines.
@@ -74,12 +74,12 @@ Pokud se virtuální počítač nevytvoří v rámci Virtual Network, výchozí 
 ### <a name="version-and-region-availability"></a>Dostupnost verze a oblasti
 Služba Scheduled Events má verzi. Verze jsou povinné. aktuální verze je `2019-01-01`.
 
-| Verze | Typ verze | Oblasti | Poznámky k verzi | 
+| Version | Typ verze | Regions | Poznámky k verzi | 
 | - | - | - | - | 
 | 2019-01-01 | Všeobecná dostupnost | Vše | <li> Přidaná podpora pro virtuální počítač Scale Sets EventType ' ukončit ' |
 | 2017-11-01 | Všeobecná dostupnost | Vše | <li> Přidání podpory pro vyřazení virtuálních počítačů s názvem EventType<br> | 
 | 2017-08-01 | Všeobecná dostupnost | Vše | <li> Z názvů prostředků pro virtuální počítače s IaaS se odebraly předpony s podtržítkem.<br><li>Požadavek na hlavičku metadat vynutil pro všechny požadavky | 
-| 2017-03-01 | Preview | Vše | <li>Původní vydaná verze |
+| 2017-03-01 | Náhled | Vše | <li>Původní vydaná verze |
 
 
 > [!NOTE] 
@@ -129,10 +129,10 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
 ### <a name="event-properties"></a>Vlastnosti události
 |Vlastnost  |  Popis |
 | - | - |
-| EventId | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Dopad této události způsobí. <br><br> Hodnoty: <br><ul><li> `Freeze`: u virtuálního počítače se naplánovalo pozastavení na několik sekund. Může být pozastaveno připojení k procesoru a k síti, ale neexistuje žádný vliv na paměť nebo otevřené soubory.<li>`Reboot`: pro virtuální počítač je naplánován restart (netrvalá paměť). <li>`Redeploy`: virtuální počítač má naplánovaný přesun na jiný uzel (dočasné disky se ztratí). <li>`Preempt`: odstraňuje se virtuální počítač se skvrnou (dojde ke ztrátě dočasných disků). <li> `Terminate`: je naplánováno odstranění virtuálního počítače. |
 | ResourceType | Typ prostředku, na který tato událost ovlivňuje. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
-| Zdroje| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Prostředky| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve vlastnosti `NotBefore`.<li>`Started`: Tato událost je spuštěná.</ul> Není k dispozici žádný `Completed` ani podobný stav. Událost již není vrácena po dokončení události.
 | NotBefore| Čas, po kterém může být tato událost spuštěna. <br><br> Příklad: <br><ul><li> Pondělí 19. září 2016 18:29:47 GMT  |
 
@@ -143,9 +143,12 @@ Každé události je naplánováno minimální množství času v budoucnu na z�
 | - | - |
 | Uvolnění| 15 minut |
 | Restartování | 15 minut |
-| Opětovné nasazení | 10 minut |
+| Znovu nasadit | 10 minut |
 | Přerušen | 30 sekund |
 | Ruší | [Uživatelsky konfigurovatelné](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 až 15 minut |
+
+> [!NOTE] 
+> V některých případech může Azure předpovědět selhání hostitele kvůli zhoršenému hardwaru a při plánování migrace se pokusí zmírnit přerušení služby. Ovlivněné virtuální počítače obdrží naplánovanou událost s `NotBefore`, která je obvykle několik dní v budoucnu. Skutečný čas se liší v závislosti na předpokládaném vyhodnocení rizik při selhání. Pokud je to možné, Azure se pokusí poskytnout oznámení v předstihu 7 dní, ale skutečná doba se změní a může být menší, pokud je předpověď taková, že dojde k bezprostřednímu výpadku hardwaru. Abyste minimalizovali riziko pro vaši službu pro případ, že se hardware před migrací iniciované systémem nezdařil, doporučujeme, abyste virtuální počítač co nejdříve znovu nasadili.
 
 ### <a name="start-an-event"></a>Spustit událost 
 

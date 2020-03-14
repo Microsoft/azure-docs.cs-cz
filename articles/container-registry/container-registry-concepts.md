@@ -3,18 +3,18 @@ title: O úložištích & imagí
 description: Seznámení se základními koncepty Azure Container Registry, úložišť a imagí kontejnerů.
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 9de0c344b226a0b13e76c7f02977ba3c91ba2d2a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455286"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247056"
 ---
 # <a name="about-registries-repositories-and-images"></a>O registrech, úložištích a obrázcích
 
 Tento článek představuje klíčové koncepty registrů kontejnerů, úložišť a imagí kontejnerů a souvisejících artefaktů. 
 
-## <a name="registry"></a>Registr
+## <a name="registry"></a>Registru
 
 *Registr* kontejnerů je služba, která ukládá a distribuuje image kontejneru. Docker Hub je veřejný registr kontejnerů, který podporuje open source komunitu a slouží jako obecný katalog imagí. Azure Container Registry poskytuje uživatelům přímou kontrolu nad svými obrázky s integrovaným ověřováním, [geografickou replikací](container-registry-geo-replication.md) podporující globální distribuci a spolehlivost pro nasazení v rámci sítě, [konfiguraci virtuálních sítí a brány firewall](container-registry-vnet.md), [uzamykání značek](container-registry-image-lock.md)a mnoho dalších vylepšených funkcí. 
 
@@ -24,9 +24,7 @@ Kromě imagí kontejneru Docker Azure Container Registry podporuje související
 
 Adresa artefaktu ve službě Azure Container Registry obsahuje následující prvky. 
 
-```
-[loginUrl]/[namespace]/[artifact:][tag]
-```
+`[loginUrl]/[namespace]/[artifact:][tag]`
 
 * **loginUrl** – plně kvalifikovaný název hostitele registru. Hostitel registru ve službě Azure Container Registry má formát *myregistry*. azurecr.IO (všechna malá písmena). Je nutné zadat loginUrl při použití Docker nebo jiných klientských nástrojů pro vyžádání nebo nabízení artefaktů do služby Azure Container Registry. 
 * logické seskupení souvisejících imagí nebo artefaktů s oddělovačem **názvů** – lomítko – například pro pracovní skupinu nebo aplikaci
@@ -36,9 +34,7 @@ Adresa artefaktu ve službě Azure Container Registry obsahuje následující pr
 
 Například úplný název obrázku ve službě Azure Container Registry může vypadat takto:
 
-```
-myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
-```
+*myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
 Podrobnosti o těchto prvcích najdete v následujících oddílech.
 
@@ -46,21 +42,18 @@ Podrobnosti o těchto prvcích najdete v následujících oddílech.
 
 Registry kontejnerů spravují *úložiště*, kolekce imagí kontejneru a jiné artefakty se stejným názvem, ale různé značky. Například následující tři obrázky jsou v úložišti "ACR-HelloWorld":
 
-```
-acr-helloworld:latest
-acr-helloworld:v1
-acr-helloworld:v2
-```
+
+- *ACR-HelloWorld: nejnovější*
+- *ACR-HelloWorld: V1*
+- *ACR-HelloWorld: v2*
 
 Názvy úložišť můžou zahrnovat taky [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují seskupovat Image pomocí názvů úložiště s oddělovači lomítka, například:
 
-```
-marketing/campaign10-18/web:v2
-marketing/campaign10-18/api:v3
-marketing/campaign10-18/email-sender:v2
-product-returns/web-submission:20180604
-product-returns/legacy-integrator:20180715
-```
+- *Marketing/campaign10-18/web: v2*
+- *Marketing/campaign10 – 18/API: V3*
+- *Marketing/campaign10-18/e-mail – odesilatel: v2*
+- *produkt – vrácení a odeslání na webu: 20180604*
+- *produkt – vrátí nebo starší integrátor: 20180715*
 
 ## <a name="image"></a>Image
 
@@ -92,8 +85,11 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName>
 
 Seznamte se například s manifesty pro úložiště "ACR-HelloWorld":
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -128,9 +124,7 @@ Můžete načíst obrázek z registru zadáním jeho výtahu do operace Pull. N�
 
 Můžete například načíst obrázek z úložiště ACR-HelloWorld pomocí výtahu manifestu:
 
-```console
-$ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
-```
+`docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
 > Pokud opakovaně nahrajete upravené image s identickými značkami, můžete vytvářet osamocené bitové kopie – obrázky, které jsou netagované, ale stále využívají místo v registru. Netagované obrázky se v rozhraní příkazového řádku Azure nebo v Azure Portal nezobrazí, když jsou obrázky podle značky. Nicméně jejich vrstvy stále existují a využívají místo v registru. Odstranění obrázku bez příznaku uvolní místo v registru, když je manifest pouze jeden, nebo poslední z nich odkazuje na konkrétní vrstvu. Informace o uvolnění místa využívaného netagovanými obrázky najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).

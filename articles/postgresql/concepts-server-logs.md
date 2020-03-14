@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359551"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280492"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokoly v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL umožňuje konfigurovat a přistupovat ke standardním protokolům Postgres. Protokoly je možné použít k identifikaci, odstraňování potíží a opravě chyb konfigurace a k zajištění optimálního výkonu. Protokolovací informace, které můžete konfigurovat, a přístup zahrnují chyby, informace o dotazech, autovaku záznamů, připojení a kontrolní body. (Přístup k protokolům transakcí není k dispozici).
@@ -110,7 +110,7 @@ V následující tabulce jsou popsána pole pro typ **PostgreSQLLogs** . V závi
 | OperationName | `LogEvent` |
 | errorLevel | Úroveň protokolování, příklad: protokol, chyba, upozornění |
 | Zpráva | Zpráva primárního protokolu | 
-| Domain (Doména) | Verze serveru, například: Postgres-10 |
+| Doména | Verze serveru, například: Postgres-10 |
 | Podrobnosti | Sekundární zpráva protokolu (Pokud je k dispozici) |
 | ColumnName | Název sloupce (Pokud je k dispozici) |
 | SchemaName | Název schématu (Pokud je k dispozici) |

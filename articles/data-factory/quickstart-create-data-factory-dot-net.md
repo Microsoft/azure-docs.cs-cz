@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
 ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356786"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241553"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí sady .NET SDK
 

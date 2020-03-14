@@ -13,11 +13,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387680"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281298"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Přesun dat z místní databáze Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -34,7 +34,7 @@ Data z místního úložiště dat Cassandra můžete kopírovat do libovolného
 ## <a name="supported-versions"></a>Podporované verze
 Konektor Cassandra podporuje následující verze Cassandra: 2. x a 3. x. V případě aktivity spuštěné v místním prostředí Integration Runtime se Cassandra 3. x podporuje od verze IR 3,7 a vyšší.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Aby se služba Azure Data Factory mohla připojit k místní databázi Cassandra, musíte nainstalovat Správa dat bránu do stejného počítače, který hostuje databázi, nebo na samostatném počítači, abyste se vyhnuli konkurenčním prostředkům s databází. Správa dat Gateway je komponenta, která připojuje místní zdroje dat ke cloudovým službám zabezpečeným a spravovaným způsobem. Podrobnosti o Správa dat bráně najdete v článku o [Správa dat brány](data-factory-data-management-gateway.md) . Podrobné pokyny týkající se nastavení brány a datového kanálu pro přesun dat najdete v článku [o přesunu dat z místního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
 
 Bránu musíte použít pro připojení k databázi Cassandra, i když je databáze hostovaná v cloudu, například na virtuálním počítači Azure s IaaS. Y můžete mít bránu na stejném virtuálním počítači, který hostuje databázi, nebo na samostatném virtuálním počítači, pokud se brána může připojit k databázi.
@@ -63,14 +63,14 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Cassandra.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | type |Vlastnost Type musí být nastavená na: **OnPremisesCassandra** . |Ano |
 | host |Jedna nebo víc IP adres nebo názvů hostitelů Cassandra serverů.<br/><br/>Zadejte čárkami oddělený seznam IP adres nebo názvů hostitelů pro připojení ke všem serverům současně. |Ano |
 | port |Port TCP, který server Cassandra používá k naslouchání klientským připojením. |Ne, výchozí hodnota: 9042 |
 | authenticationType |Basic nebo Anonymous |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
-| heslo |Zadejte heslo pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
+| username jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
+| password |Zadejte heslo pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
 | gatewayName |Název brány, který se používá pro připojení k místní databázi Cassandra. |Ano |
 | encryptedCredential |Přihlašovací údaje zašifrované bránou |Ne |
 
@@ -82,7 +82,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro sadu dat typu **CassandraTable** má následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | keySpace |Název prostoru klíčů nebo schématu v databázi Cassandra. |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
 | tableName |Název tabulky v databázi Cassandra |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
@@ -94,7 +94,7 @@ V takovém případě se vlastnosti dostupné v části typeProperties v aktivit
 
 Pokud je zdroj typu **CassandraSource**, jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | query |Pomocí vlastního dotazu můžete číst data. |Dotaz SQL-92 nebo dotaz CQL Viz [odkaz na CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití dotazu SQL zadejte **název prostoru klíčů. název tabulky** , který bude představovat tabulku, kterou chcete dotazovat. |Ne (Pokud je definováno pole tableName a prostor pro datovou sadu). |
 | consistencyLevel |Úroveň konzistence určuje, kolik replik musí odpovídat žádosti o čtení před vrácením dat do klientské aplikace. Cassandra zkontroluje zadaný počet replik dat, aby splňovaly požadavky na čtení. |JEDNA, DVĚ, TŘI, KVORA, VŠE, LOCAL_QUORUM, EACH_QUORUM LOCAL_ONE. Podrobnosti najdete v tématu [Konfigurace konzistence dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Ne. Výchozí hodnota je jedna. |

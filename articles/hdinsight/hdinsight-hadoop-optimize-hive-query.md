@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382154"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272328"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace Apache Hive dotazů ve službě Azure HDInsight
 

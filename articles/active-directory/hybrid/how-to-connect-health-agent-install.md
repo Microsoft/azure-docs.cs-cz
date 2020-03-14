@@ -17,11 +17,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e9468c0a0f6844c7522ff43761cf58f4beea27e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375983"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261577"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 
@@ -373,7 +373,7 @@ Pokud agent nemůže odesílat data do služby Azure AD Connect Health po dobu d
 Parametr „role“ v současnosti přijímá následující hodnoty:
 
 * ADFS
-* Synchronizovat
+* Sync
 * PŘIDÁ
 
 > [!NOTE]

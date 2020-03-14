@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623456"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298831"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 
@@ -30,7 +30,7 @@ I když chcete, aby zařízení komunikovala s aplikací IoT Central, může tak
 * Reaguje na aktualizace zapisovatelných vlastností provedené operátorem. Například operátor může změnit interval odesílání telemetrie.
 * Odpovězte na příkazy, jako je třeba restartování zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md).
 
@@ -105,8 +105,8 @@ Chcete-li přidat vlastnosti cloudu do šablony **zařízení služby inteligent
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádná          | Datum   |
-    | Název zákazníka     | Žádná          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádný          | Datum   |
+    | Název zákazníka     | Žádný          | Řetězec |
 
 2. Vyberte **Save** (Uložit).
 
@@ -203,6 +203,9 @@ V tomto kurzu jste se naučili:
 * Definujte vizualizaci pro telemetrii zařízení.
 * Přidejte relace.
 * Publikujte šablonu zařízení.
+
+> [!NOTE]
+> Generování kódu založeného na VS Code se v současnosti nepodporuje u zařízení brány, která jsou modelovaná v IoT Central.
 
 V dalším kroku můžete:
 
