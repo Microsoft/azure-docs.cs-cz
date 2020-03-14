@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376350"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261590"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení Active Directory Federation Services (AD FS) pomocí Azure AD Connect
 Tento článek popisuje, jak spravovat a přizpůsobovat Active Directory Federation Services (AD FS) (AD FS) pomocí Azure Active Directory (Azure AD) Connect. Zahrnuje taky další běžné AD FS úlohy, které může být potřeba udělat pro kompletní konfiguraci AD FS farmy.
@@ -176,7 +176,7 @@ Pomocí Azure AD Connect můžete snadno přidat doménu, která se bude federov
 
     Po výběru domény vám průvodce poskytne příslušné informace o dalších akcích, které průvodce provede, a o vlivu konfigurace. Pokud v některých případech vyberete doménu, která ve službě Azure AD ještě není ověřená, průvodce vám poskytne informace, které vám pomůžou ověřit doménu. Další podrobnosti najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md) .
 
-5. Klikněte na **Další**. Stránka **připraveno ke konfiguraci** zobrazuje seznam akcí, které Azure AD Connect provede. Kliknutím na **instalovat** dokončete konfiguraci.
+5. Klikněte na **Další**. Stránka **připraveno ke konfiguraci** zobrazuje seznam akcí, které Azure AD Connect provede. Kliknutím na **instalovat** dokončete konfiguraci.
 
    ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 

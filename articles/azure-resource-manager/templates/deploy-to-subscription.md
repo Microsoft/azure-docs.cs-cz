@@ -2,23 +2,17 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: 1a76e41b4b2264bc535752e8f765b3303080abbd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925266"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248408"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
-Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Prostředky však můžete vytvořit také v těchto případech:
-
-* úroveň předplatného (uvedená v tomto článku)
-* [úroveň skupiny pro správu](deploy-to-management-group.md)
-* [úroveň tenanta](deploy-to-tenant.md)
-
-Nasazení na úrovni předplatného můžete použít k provádění akcí, které na této úrovni mají smysl, jako je třeba vytváření skupin prostředků nebo přiřazování [řízení přístupu na základě rolí](../../role-based-access-control/overview.md).
+Pro zjednodušení správy prostředků ve vašem předplatném Azure můžete v rámci předplatného definovat a přiřazovat [zásady](../../governance/policy/overview.md) nebo [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) . Pomocí šablon na úrovni předplatného můžete deklarativně uplatňovat zásady a přiřazovat role v rámci předplatného. Můžete také vytvářet skupiny prostředků a nasazovat prostředky.
 
 Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API. Azure Portal nepodporuje nasazení na úrovni předplatného.
 
@@ -46,10 +40,10 @@ Pro šablony použijte:
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-Pro soubory parametrů použijte:
+Schéma pro soubor parametrů je pro všechny obory nasazení stejné. Pro soubory parametrů použijte:
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Příkazy nasazení
@@ -387,5 +381,4 @@ New-AzSubscriptionDeployment `
 * Další informace o přiřazování rolí najdete v tématu [Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
 * Příklad nasazení nastavení pracovního prostoru pro Azure Security Center najdete v tématu [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * Ukázkové šablony najdete na [GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
-* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md).
-* Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](template-functions.md).
+* Šablony můžete nasadit také na úrovni [skupiny pro správu](deploy-to-management-group.md) a na [úrovni tenanta](deploy-to-tenant.md).

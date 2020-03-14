@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
 ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391096"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255922"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database omezení prostředků a zásad správného řízení prostředků
 
@@ -118,7 +118,7 @@ Skutečné sazby za generování protokolů, které jsou uvedené v době běhu,
 
 Tvarování provozu správce míry přenosu dat se prochází prostřednictvím následujících typů čekání (zveřejněné v [Sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
 
-| Typ čekání | Poznámky: |
+| Typ čekání | Poznámky |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | Omezení databáze |
 | POOL_LOG_RATE_GOVERNOR | Omezení fondu |

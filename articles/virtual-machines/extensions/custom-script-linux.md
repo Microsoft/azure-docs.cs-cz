@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
 ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380974"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253998"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s virtuálními počítači se systémem Linux
 Rozšíření vlastních skriptů verze 2 stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakoukoli jinou úlohu konfigurace nebo správy. Můžete stáhnout skripty z Azure Storage nebo jiného přístupného internetového umístění, nebo je můžete poskytnout modulu runtime rozšíření. 
@@ -110,7 +110,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota / příklad | Typ dat | 
+| Název | Hodnota / příklad | Datový typ | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
 | publisher | Microsoft. Compute. Extensions | string |
@@ -119,7 +119,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | pole |
 | commandToExecute (např.) | MyPythonScript.py Pythonu \<moje-param1 > | string |
 | Skript | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
-| skipDos2Unix (např.) | false | Boolean |
+| skipDos2Unix (např.) | false | Datový typ Boolean |
 | timestamp (např.) | 123456789 | 32-bitové celé číslo |
 | storageAccountName (např.) | examplestorageacct | string |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5e4bbe1e6bd944787d47c5e3ed98de582c088a52
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361423"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265763"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Přesun dat z SQL Server místně nebo na IaaS (virtuální počítač Azure) pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -73,12 +73,12 @@ Vytvoříte propojenou službu typu **OnPremisesSqlServer** a propojíte místn�
 
 Následující tabulka uvádí popis pro prvky JSON specifické pro SQL Server propojenou službu.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| type |Vlastnost Type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
+| typ |Vlastnost Type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
 | connectionString |Zadejte informace připojovacího řetězce potřebné pro připojení k místní databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. |Ano |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi SQL Server. |Ano |
-| uživatelské jméno |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
+| username jméno |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 
 Přihlašovací údaje můžete šifrovat pomocí rutiny **New-AzDataFactoryEncryptValue** a použít je v připojovacím řetězci, jak je znázorněno v následujícím příkladu (vlastnost**EncryptedCredential** ):
@@ -130,7 +130,7 @@ V ukázkách jste použili datovou sadu typu **SQLServer** , která představuje
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **SQLServer** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky nebo zobrazení v instanci databáze SQL Server, na kterou odkazuje propojená služba |Ano |
 
@@ -147,7 +147,7 @@ V takovém případě se vlastnosti dostupné v části typeProperties v aktivit
 ### <a name="sqlsource"></a>SqlSource
 Pokud je zdroj v aktivitě kopírování typu **SqlSource**, jsou v části **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: select * from MyTable. Může odkazovat na více tabulek z databáze, na kterou odkazuje vstupní datová sada. Pokud není zadaný, provede se příkaz SQL: vyberte z MyTable. |Ne |
 | sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. |Ne |
@@ -165,7 +165,7 @@ Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, jsou slou
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |TimeSpan<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 | writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL. |Integer (počet řádků) |Ne (výchozí: 10000) |
@@ -656,9 +656,9 @@ Mapování je stejné jako SQL Server mapování datových typů pro ADO.NET.
 | binary |Byte[] |
 | bit |Logická hodnota |
 | char |String, Char[] |
-| date |DateTime |
-| Datum a čas |DateTime |
-| datetime2 |DateTime |
+| date |Datum a čas |
+| Datum a čas |Datum a čas |
+| datetime2 |Datum a čas |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte[] |
@@ -672,7 +672,7 @@ Mapování je stejné jako SQL Server mapování datových typů pro ADO.NET.
 | nvarchar |String, Char[] |
 | real |Jednoduché |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datum a čas |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |

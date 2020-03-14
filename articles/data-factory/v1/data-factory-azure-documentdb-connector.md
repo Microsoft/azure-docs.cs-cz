@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387521"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260511"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Přesun dat do a z Azure Cosmos DB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -58,7 +58,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Cosmos
 
 | **Vlastnost** | **Popis** | **Požadovanou** |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **DocumentDb** . |Ano |
+| typ |Vlastnost Type musí být nastavená na: **DocumentDb** . |Ano |
 | connectionString |Zadejte informace potřebné pro připojení k databázi Azure Cosmos DB. |Ano |
 
 Příklad:
@@ -123,7 +123,7 @@ V případě aktivity kopírování, pokud je zdrojem typu **DocumentDbCollectio
 
 | **Vlastnost** | **Popis** | **Povolené hodnoty** | **Požadovanou** |
 | --- | --- | --- | --- |
-| query |Zadejte dotaz pro čtení dat. |Řetězec dotazu podporovaný Azure Cosmos DB. <br/><br/>Příklad: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Ne <br/><br/>Pokud není zadaný, provede se příkaz SQL: `select <columns defined in structure> from mycollection` |
+| dotaz |Zadejte dotaz pro čtení dat. |Řetězec dotazu podporovaný Azure Cosmos DB. <br/><br/>Příklad: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Ne <br/><br/>Pokud není zadaný, provede se příkaz SQL: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Speciální znak označující, že je dokument vnořený |Libovolný znak. <br/><br/>Azure Cosmos DB je úložiště NoSQL pro dokumenty JSON, kde jsou povoleny vnořené struktury. Azure Data Factory umožňuje uživateli používat hierarchii prostřednictvím nestingSeparator, což je "." ve výše uvedených příkladech. U oddělovače aktivita kopírování vygeneruje objekt "Name" se třemi podřízenými elementy First, uprostřed a Last, podle typu "název. First", "Name. middle" a "Name. Last" v definici tabulky. |Ne |
 
 **DocumentDbCollectionSink** podporuje následující vlastnosti:
@@ -131,7 +131,7 @@ V případě aktivity kopírování, pokud je zdrojem typu **DocumentDbCollectio
 | **Vlastnost** | **Popis** | **Povolené hodnoty** | **Požadovanou** |
 | --- | --- | --- | --- |
 | nestingSeparator |Speciální znak v názvu zdrojového sloupce, který označuje, že je nutné vnořený dokument. <br/><br/>Příklad: `Name.First` ve výstupní tabulce vytvoří následující strukturu JSON v dokumentu Cosmos DB:<br/><br/>"Název": {<br/>    "First": "Jan"<br/>}, |Znak, který se používá k oddělení úrovní vnoření.<br/><br/>Výchozí hodnota je `.` (tečka). |Znak, který se používá k oddělení úrovní vnoření. <br/><br/>Výchozí hodnota je `.` (tečka). |
-| writeBatchSize |Počet paralelních požadavků na službu Azure Cosmos DB pro vytváření dokumentů.<br/><br/>Pomocí této vlastnosti můžete vyladit výkon při kopírování dat do nebo z Cosmos DB. Při zvýšení writeBatchSize můžete očekávat lepší výkon, protože se odesílají další paralelní požadavky na Cosmos DB. Je ale potřeba se vyhnout omezování, které může vyvolat chybovou zprávu: "frekvence požadavků je velká".<br/><br/>Omezování je určeno řadou faktorů, včetně velikosti dokumentů, počtu podmínek v dokumentech, indexováním zásad cílové kolekce atd. Pro operace kopírování můžete použít lepší kolekci (například S3), abyste měli k dispozici největší propustnost (2 500 jednotek žádostí za sekundu). |Integer |Ne (výchozí: 5) |
+| writeBatchSize |Počet paralelních požadavků na službu Azure Cosmos DB pro vytváření dokumentů.<br/><br/>Pomocí této vlastnosti můžete vyladit výkon při kopírování dat do nebo z Cosmos DB. Při zvýšení writeBatchSize můžete očekávat lepší výkon, protože se odesílají další paralelní požadavky na Cosmos DB. Je ale potřeba se vyhnout omezování, které může vyvolat chybovou zprávu: "frekvence požadavků je velká".<br/><br/>Omezování je určeno řadou faktorů, včetně velikosti dokumentů, počtu podmínek v dokumentech, indexováním zásad cílové kolekce atd. Pro operace kopírování můžete použít lepší kolekci (například S3), abyste měli k dispozici největší propustnost (2 500 jednotek žádostí za sekundu). |Celé číslo |Ne (výchozí: 5) |
 | writeBatchTimeout |Počkejte, než se operace dokončí, než vyprší časový limit. |TimeSpan<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
 ## <a name="importexport-json-documents"></a>Import/export dokumentů JSON

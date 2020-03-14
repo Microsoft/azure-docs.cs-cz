@@ -4,11 +4,11 @@ description: Přečtěte si o statických a dynamických parametrech a jejich po
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385258"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264710"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 

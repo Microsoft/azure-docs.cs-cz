@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360674"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274018"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager skupiny prostředků a odstraňování prostředků
 
@@ -54,7 +54,7 @@ Pokud operace GET vrátí chybu, Resource Manager opakuje GET pro následující
 
 Pro další kódy chyb nezdaří správce prostředků odstranění prostředku.
 
-## <a name="delete-resource-group"></a>Odstranění skupiny prostředků
+## <a name="delete-resource-group"></a>Odstranit skupinu prostředků
 
 Chcete-li odstranit skupinu prostředků, použijte jednu z následujících metod.
 
@@ -76,7 +76,7 @@ az group delete --name ExampleResourceGroup
 
 1. Vyberte **Odstranit skupinu prostředků**.
 
-   ![Odstranění skupiny prostředků](./media/delete-resource-group/delete-group.png)
+   ![Odstranit skupinu prostředků](./media/delete-resource-group/delete-group.png)
 
 1. Odstranění potvrďte tak, že zadáte název skupiny prostředků.
 

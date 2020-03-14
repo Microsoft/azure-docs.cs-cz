@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 34607b15dbffa8869cbb4e8d1dd0903aa0131304
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 89fc5196977f53e040e1a6553b46ca57f39b18b4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169134"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217883"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Vytvoření modelu analýzy mínění v Azure Machine Learning Studio (Classic)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 K sestavování a zprovoznění modelů textu Analytics můžete použít Azure Machine Learning Studio (Classic). Tyto modely vám může pomoct vyřešit, například problémy analýzy dokumentu klasifikace nebo mínění.
 
@@ -44,7 +46,7 @@ Začneme experiment vydělením skóre revize do kategorií nízký klíč a vys
 
 Pak text čistíme pomocí modulu [textu předzpracování](https://msdn.microsoft.com/library/azure/mt762915.aspx) . Čištění snižuje šumu v datové sadě, pomáhají nacházet nejdůležitější funkce a zvýšit přesnost finálního modelu. Odebereme stopword - běžná slova, jako je například "the" nebo "a" - a čísla, speciální znaky, duplicitní znaků, e-mailové adresy a adresy URL. Jsme také převést text na malá písmena, lemmatize slova a zjišťovat hranice věty, které pak jsou označeny "|||" symbol předběžného zpracování textu.
 
-![Předzpracování textu](./media/text-analytics-module-tutorial/preprocess-text.png)
+![Předběžné zpracování textu](./media/text-analytics-module-tutorial/preprocess-text.png)
 
 Co když chcete použít vlastní seznam stopword? Můžete ho předat jako volitelný vstup. Můžete použít také vlastní C# syntaxi regulárního výrazu nahrazení podřetězců a odebrat slova slovní: podstatná jména, operace nebo přídavných jmen.
 

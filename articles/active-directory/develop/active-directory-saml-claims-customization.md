@@ -15,11 +15,11 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375835"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263085"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -71,7 +71,7 @@ Vyberte požadovaný zdroj pro deklaraci `NameIdentifier` (nebo NameID). Můžet
 
 | Název | Popis |
 |------|-------------|
-| Email | E-mailová adresa uživatele |
+| E-mail | E-mailová adresa uživatele |
 | userprincipalName | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, který byl synchronizovaný z místní služby Azure AD |
 | objektu | ObjectID uživatele v Azure AD |

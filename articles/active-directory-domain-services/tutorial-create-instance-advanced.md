@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383680"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239144"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services s pokročilými možnostmi konfigurace
 
@@ -28,11 +28,11 @@ V tomto kurzu se naučíte:
 > * Konfigurace nastavení DNS a virtuální sítě pro spravovanou doménu
 > * Vytvoření instance Azure AD DS
 > * Přidání uživatelů s právy pro správu do správy domén
-> * Povolení synchronizace hodnoty hash hesel
+> * Povolit synchronizaci hodnot hash hesel
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -90,7 +90,7 @@ Dokončete pole v okně *základy* Azure Portal a vytvořte instanci Azure služ
 1. Zadejte **název domény DNS** pro spravovanou doménu a vezměte v úvahu předchozí body.
 1. Vyberte **umístění** Azure, ve kterém se má spravovaná doména vytvořit. Pokud zvolíte oblast, která podporuje Zóny dostupnosti, prostředky Azure služba AD DS se rozdělují mezi zóny, aby se mohla zvýšit redundance.
 
-    Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech.
+    Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech.
 
     Není tu nic, co byste mohli nakonfigurovat pro Azure služba AD DS k distribuci mezi zónami. Platforma Azure automaticky zpracovává distribuci prostředků v zóně. Další informace a informace o dostupnosti oblastí najdete v tématu [co jsou zóny dostupnosti v Azure?][availability-zones]
 

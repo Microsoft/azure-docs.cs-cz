@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
 ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383719"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254232"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Použít licenci Windows na virtuální počítače hostitele relace
 

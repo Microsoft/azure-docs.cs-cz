@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be403815838233350929c7d4ca0eed979d7dfa8c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 27fdf966f99ac2cba394515cb654ed74178d6673
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080321"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137641"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -43,7 +43,7 @@ Pokud máte konkrétní otázky, budeme v této části úvodní stránky ukazov
 - Jaké scénáře nasazení SAP jsou podporovány u virtuálních počítačů Azure a velkých instancí HANA. Informace o podporovaných scénářích najdete v dokumentu:
     - [Úlohy SAP na podporovaných scénářích virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
     - [Podporované scénáře pro velkou instanci HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
-- Jaké služby Azure, typy virtuálních počítačů Azure a úložiště Azure jsou dostupné v různých oblastech Azure, Projděte si web [dostupné v dostupných](https://azure.microsoft.com/global-infrastructure/services/) oblastech. 
+- Které služby Azure, typy virtuálních počítačů Azure a služby Azure Storage jsou k dispozici v různých oblastech Azure, Prohlédněte si [Dostupné produkty](https://azure.microsoft.com/global-infrastructure/services/) v lokalitě v oblasti 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA v Azure (velké instance)
@@ -110,6 +110,8 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 
 ## <a name="change-log"></a>Protokol změn
+- 03/11/2020: Změna v [úlohách SAP v podporovaných scénářích virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) pro vysvětlení podpory více databází na instanci systému DBMS
+- 03/11/2020: Změna v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) s vysvětlením virtuálních počítačů generace 1 a generace 2
 - 03/10/2020: Změna v [SAP HANA konfigurací úložiště virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) pro objasnění stávajících omezení PROPUSTNOSTi ANF
 - 03/09/2020: Změna [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server s Azure NETAPP Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [Vysoká dostupnost pro systém souborů NFS na](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)virtuálních počítačích Azure na SUSE Linux Enterprise Server, [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker), [Vysoká dostupnost systému IBM Db2 LUW na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm), [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) a [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v RHEL průvodce více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) pro aktualizaci prostředků clusteru pomocí agenta prostředků Azure-9,1 
 - 03/05/2020: změny struktury a změny obsahu pro oblasti Azure a virtuální počítače Azure v [azure Virtual Machines plánování a implementace pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)

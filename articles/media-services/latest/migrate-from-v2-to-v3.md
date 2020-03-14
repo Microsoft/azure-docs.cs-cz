@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: b432f381bae79d783663130d06dbf874f00a9994
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
-ms.translationtype: HT
+ms.openlocfilehash: 5083dc79b146598142ac27eb6ac7ef9ed436f37d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129400"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251554"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přesun z Media Services V2 na V3
 
@@ -30,7 +30,7 @@ Tento článek poskytuje pokyny k migraci z Media Services V2 na v3.
 
 Pokud máte k dispozici službu video Service na [starší verzi rozhraní api Media Services V2](../previous/media-services-overview.md), měli byste před migrací na rozhraní API V3 zkontrolovat následující pokyny a důležité informace. Rozhraní V3 API nabízí spoustu výhod a nových funkcí, které zlepšují vývojové prostředí a možnosti Media Services. Nicméně jak je uvedeno v části [známé problémy](#known-issues) v tomto článku, existují také určitá omezení v důsledku změn mezi verzemi rozhraní API. Tato stránka bude zachována, protože Media Services tým zajišťuje pokračování v vylepšeních rozhraní API v3 a řeší mezery mezi verzemi. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kontrola [Media Services V2 vs. v3](media-services-v2-vs-v3.md)
 * [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -67,7 +67,7 @@ Pokud máte k dispozici službu video Service na [starší verzi rozhraní api M
     * Zobrazit (Nespravovat) 3 [prostředky](assets-concept.md)V3 
     * [Získejte informace o přístupu k rozhraním API](access-api-portal.md). 
 
-Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+    Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 * Ve svém účtu musíte zřídit rezervované jednotky médií (MRUs), aby bylo možné řídit souběžnost a výkon vašich úloh, zejména ty, které zahrnují analýzu videa nebo zvuku. Další informace najdete v článku o [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). MRUs můžete spravovat pomocí [CLI 2,0 pro Media Services V3](media-reserved-units-cli-how-to.md), pomocí [Azure Portal](../previous/media-services-portal-scale-media-processing.md)nebo pomocí [rozhraní API v2](../previous/media-services-dotnet-encoding-units.md). Musíte zřídit MRUs, ať už používáte rozhraní API Media Services v2 nebo V3.
 * Entity Media Services vytvořené s rozhraním API V3 se nedají spravovat pomocí rozhraní API v2.  
 * Ne všechny entity v rozhraní v2 API se automaticky zobrazují v rozhraní V3 API.  Následují příklady entit v těchto dvou verzích, které jsou nekompatibilní:  

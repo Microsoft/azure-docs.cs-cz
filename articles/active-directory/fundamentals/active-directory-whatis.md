@@ -12,11 +12,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386036"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240783"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 
@@ -87,7 +87,7 @@ Po výběru licence Azure AD získáte přístup k některým nebo všem násled
 |Kategorie|Popis|
 |-------|-----------|
 |Správa aplikací|Správa cloudových a místních aplikací pomocí Proxy aplikací, jednotného přihlašování portálu Moje aplikace (označované také jako na přístupovém panelu) a Software jako služba (SaaS) aplikací. Další informace najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../manage-apps/application-proxy.md) a [dokumentaci správy aplikací](../manage-apps/index.yml).|
-|Authentication|Správa Azure Active Directory, samoobslužné resetování hesla, ověření službou Multi-Factor Authentication, seznam vlastních zakázaných hesel a inteligentním uzamčením. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
+|Ověřování|Správa Azure Active Directory, samoobslužné resetování hesla, ověření službou Multi-Factor Authentication, seznam vlastních zakázaných hesel a inteligentním uzamčením. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
 |Business-to-Business (B2B)|Spravujte uživatele typu Host a externími partnery zachováním potřebné kontroly nad firemní data. Další informace najdete v tématu [Azure Active Directory dokumentaci B2B](../b2b/index.yml).|
 |Firmy zákazníka (B2C)|Přizpůsobení a řízení způsobe registrace, přihlaste se a při používání vašich aplikací spravují své profily. Další informace najdete v [dokumentaci Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
 |Podmíněný přístup|Správa přístupu k vašim cloudovým aplikacím. Další informace najdete v [dokumentaci k podmíněnému přístupu v Azure AD](../conditional-access/index.yml).|

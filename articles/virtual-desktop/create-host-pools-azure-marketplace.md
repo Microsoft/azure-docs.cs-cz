@@ -9,11 +9,11 @@ ms.date: 03/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127979"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238619"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -30,7 +30,7 @@ Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních poč
 > * Připojte virtuální počítače k doméně služby Active Directory.
 > * Zaregistrujte virtuální počítače na virtuálním počítači s Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tenant na virtuálním počítači. Předchozí [kurz](tenant-setup-azure-active-directory.md) vytvoří tenanta.
 * [Modul PowerShell pro virtuální počítače s Windows](/powershell/windows-virtual-desktop/overview/)

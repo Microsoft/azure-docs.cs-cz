@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 36a4871339401629300eedd77b6441aed10aabf3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270950"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Zajištění Key Vault ověřování pomocí spravované identity
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro aplikaci Ap
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 K dokončení této příručky musíte mít následující prostředky. 
 

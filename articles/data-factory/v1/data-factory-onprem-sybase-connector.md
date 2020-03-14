@@ -13,11 +13,11 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387366"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281246"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Přesun dat z Sybase pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -70,7 +70,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | databáze |Název databáze Sybase |Ano |
 | schéma |Název schématu v databázi. |Ne |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi Sybase. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
-| uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
+| username jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi Sybase. |Ano |
 

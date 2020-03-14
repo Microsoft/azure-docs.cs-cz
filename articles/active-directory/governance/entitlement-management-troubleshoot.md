@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376655"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261681"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
 
@@ -33,7 +33,7 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Pokud se při vytváření nebo zobrazování balíčků pro přístup zobrazí zpráva o odepření přístupu a jste členem skupiny Creator Creator, musíte [vytvořit katalog](entitlement-management-catalog-create.md) před vytvořením prvního přístupového balíčku.
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Prostředky
 
 * Role pro aplikace definují samotné aplikace a spravují se v Azure AD. Pokud aplikace nemá žádné role prostředků, Správa nároků přiřadí uživatelům **výchozí roli přístupu** .
 
@@ -57,7 +57,7 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Pokud nový externí uživatel, který se ještě nepřihlásil k vašemu adresáři, obdrží přístupový balíček zahrnující web SharePointu Online, jeho přístupový balíček se nezobrazí jako zcela doručený, dokud se nezřídí jeho účet v SharePointu Online. Další informace o nastavení sdílení najdete v tématu [Kontrola nastavení externího sdílení na SharePointu Online](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings).
 
-## <a name="requests"></a>Žádosti
+## <a name="requests"></a>Požadavky
 
 * Když chce uživatel požádat o přístup k balíčku přístupu, ujistěte se, že používají **odkaz Můj portál přístupu** pro balíček přístupu. Další informace najdete v tématu [sdílení odkazu pro vyžádání balíčku přístupu](entitlement-management-access-package-settings.md).
 
@@ -129,7 +129,7 @@ Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, 
 
 * Když se uplatní víc zásad, vybere se automaticky vybraná zásada nebo zásady, které se zobrazí žadateli, na základě následující prioritní logiky:
 
-    | Priorita zásad | Rozsah |
+    | Priorita zásad | Obor |
     | --- | --- |
     | P1 | Konkrétní uživatelé a skupiny v adresáři nebo konkrétní připojené organizace |
     | P2 | Všichni členové adresáře (kromě hostů) |

@@ -5,17 +5,17 @@ services: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359588"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259380"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavního uzlu Kubernetes ve službě Azure Kubernetes (AKS)
 
 Pomocí služby Azure Kubernetes Service (AKS) jsou hlavní součásti, jako je například *Kube-apiserver* a *Kube-Controller-Manager* , poskytovány jako spravovaná služba. Můžete vytvářet a spravovat uzly, které spouštějí *kubelet* a modul runtime kontejnerů, a nasazovat aplikace prostřednictvím spravovaného serveru rozhraní Kubernetes API. Chcete-li pomoct s řešením vaší aplikace a služeb, bude pravděpodobně nutné zobrazit protokoly generované těmito hlavními komponentami. V tomto článku se dozvíte, jak používat protokoly Azure Monitor k povolení a dotazování protokolů z hlavních komponent Kubernetes.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek vyžaduje existující cluster AKS spuštěný ve vašem účtu Azure. Pokud ještě nemáte cluster AKS, vytvořte ho pomocí [Azure CLI][cli-quickstart] nebo [Azure Portal][portal-quickstart]. Protokoly Azure Monitor fungují s clustery AKS s povolenou RBAC i bez RBAC.
 

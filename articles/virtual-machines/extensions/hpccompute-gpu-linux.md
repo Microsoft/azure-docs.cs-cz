@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383401"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250566"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače NVIDIA GPU pro Linux
 
@@ -30,13 +30,13 @@ Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dis
 https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
 K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU na [virtuálních počítačích s Windows N-Series](hpccompute-gpu-windows.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
 Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verzi operačního systému.
 
-| Distribuce | Verze |
+| Distribuce | Version |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
 | Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
@@ -72,22 +72,22 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Datový typ |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | řetězec |
-| type | NvidiaGpuDriverLinux | řetězec |
+| publisher | Microsoft.HpcCompute | string |
+| typ | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Nastavení
 
 Všechna nastavení jsou volitelná. Výchozím chováním je neaktualizovat jádro, pokud není pro instalaci ovladače vyžadováno, nainstalujte nejnovější podporovaný ovladač a CUDA Toolkit (podle potřeby).
 
-| Název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
+| Název | Popis | Výchozí hodnota | Platné hodnoty | Datový typ |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false (nepravda) | Hodnota TRUE, false | Boolean |
-| driverVersion | NV: verze ovladače mřížky<br> NC/ND: verze sady CUDA Toolkit. Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | nejnovější | GRID: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130"; "9.2.88"; "9.1.85" | řetězec |
-| installCUDA | Nainstalujte sadu CUDA Toolkit. Platí jenom pro virtuální počítače řady NC/ND. | true (pravda) | Hodnota TRUE, false | Boolean |
+| updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false | Hodnota TRUE, false | Datový typ Boolean |
+| driverVersion | NV: verze ovladače mřížky<br> NC/ND: verze sady CUDA Toolkit. Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | nejnovější | GRID: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130"; "9.2.88"; "9.1.85" | string |
+| installCUDA | Nainstalujte sadu CUDA Toolkit. Platí jenom pro virtuální počítače řady NC/ND. | true | Hodnota TRUE, false | Datový typ Boolean |
 
 
 ## <a name="deployment"></a>Nasazení
@@ -155,7 +155,7 @@ az vm extension set `
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

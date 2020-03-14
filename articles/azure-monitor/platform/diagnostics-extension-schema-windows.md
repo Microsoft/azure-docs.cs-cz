@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128455"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274707"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky Windows
 Azure Diagnostics rozšíření je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a zatížení výpočetních prostředků Azure. Tento článek podrobně popisuje schéma používané pro konfiguraci diagnostického rozšíření na virtuálních počítačích s Windows a dalších výpočetních prostředcích.
@@ -45,8 +45,8 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**PublicConfig**|Povinná hodnota. Viz popis jinde na této stránce.|  
-|**PrivateConfig**|Volitelné. Viz popis jinde na této stránce.|  
+|**PublicConfig**|Požadováno. Viz popis jinde na této stránce.|  
+|**PrivateConfig**|Volitelná. Viz popis jinde na této stránce.|  
 |**IsEnabled**|Datového. Viz popis jinde na této stránce.|  
 
 ## <a name="publicconfig-element"></a>Element PublicConfig  
@@ -56,7 +56,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**WadCfg**|Povinná hodnota. Viz popis jinde na této stránce.|  
+|**WadCfg**|Požadováno. Viz popis jinde na této stránce.|  
 |**StorageAccount**|Název účtu Azure Storage, do kterého se mají ukládat data Může být také zadáno jako parametr při spuštění rutiny Set-AzureServiceDiagnosticsExtension.|  
 |**StorageType**|Může být *Table*, *BLOB*nebo *TableAndBlob*. Tabulka je výchozí. Je-li zvolena možnost TableAndBlob, jsou diagnostická data do každého typu zapisována dvakrát.|  
 |**LocalResourceDirectory**|Adresář na virtuálním počítači, kde agent monitorování ukládá data událostí. Pokud ne, nastavte, že se použije výchozí adresář:<br /><br /> Pro pracovní proces nebo webovou roli: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Požadované atributy jsou:<br /><br /> - **cesta** – adresář v systému, který má Azure Diagnostics používat.<br /><br /> - **expandEnvironment** – určuje, jestli se v názvu cesty rozbalí proměnné prostředí.|  
@@ -70,13 +70,13 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 ## <a name="diagnosticmonitorconfiguration-element"></a>Element DiagnosticMonitorConfiguration
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Požaduje se
+ Požadováno
 
 |Atributy|Popis|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Maximální místo na místním disku, které mohou být spotřebovány různými typy diagnostických dat shromažďovaných Azure Diagnostics. Výchozí nastavení je 4096 MB.<br />
 |**useProxyServer** | Nakonfigurujte Azure Diagnostics, aby používala nastavení proxy server nastavená v nastavení IE.|
-|**jímky** | Přidáno v 1,5. Volitelné. Odkazuje na umístění jímky, aby také odesílal diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
+|**jímky** | Přidáno v 1,5. Volitelná. Odkazuje na umístění jímky, aby také odesílal diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
 
 
 <br /> <br />
@@ -101,13 +101,13 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Atributy|Popis|  
 |----------------|-----------------|  
-|**containerName**|Volitelné. Název kontejneru objektů BLOB v účtu Azure Storage, který se má použít k ukládání výpisů stavu systému.|  
-|**crashDumpType**|Volitelné.  Nakonfiguruje Azure Diagnostics ke shromažďování minimálních nebo úplných výpisů stavu systému.|  
-|**directoryQuotaPercentage**|Volitelné.  Nastaví procentuální hodnotu **overallQuotaInMB** , která se má rezervovat pro výpisy stavu systému na virtuálním počítači.|  
+|**containerName**|Volitelná. Název kontejneru objektů BLOB v účtu Azure Storage, který se má použít k ukládání výpisů stavu systému.|  
+|**crashDumpType**|Volitelná.  Nakonfiguruje Azure Diagnostics ke shromažďování minimálních nebo úplných výpisů stavu systému.|  
+|**directoryQuotaPercentage**|Volitelná.  Nastaví procentuální hodnotu **overallQuotaInMB** , která se má rezervovat pro výpisy stavu systému na virtuálním počítači.|  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**CrashDumpConfiguration**|Povinná hodnota. Definuje hodnoty konfigurace pro každý proces.<br /><br /> Vyžaduje se taky následující atribut:<br /><br /> název **procesu** – název procesu, pro který chcete Azure Diagnostics shromažďovat výpis stavu systému.|  
+|**CrashDumpConfiguration**|Požadováno. Definuje hodnoty konfigurace pro každý proces.<br /><br /> Vyžaduje se taky následující atribut:<br /><br /> název **procesu** – název procesu, pro který chcete Azure Diagnostics shromažďovat výpis stavu systému.|  
 
 ## <a name="directories-element"></a>Adresář – element
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-adresáře*
@@ -132,7 +132,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**DirectoryConfiguration**|Povinná hodnota. Požadovaný atribut:<br /><br /> **ContainerName** – název kontejneru objektů BLOB ve vašem účtu Azure Storage, který se má použít k ukládání souborů protokolu.|  
+|**DirectoryConfiguration**|Požadováno. Požadovaný atribut:<br /><br /> **ContainerName** – název kontejneru objektů BLOB ve vašem účtu Azure Storage, který se má použít k ukládání souborů protokolu.|  
 
 
 
@@ -209,7 +209,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 |Podřízený element|Popis|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Jsou vyžadovány následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. například `\Processor(_Total)\% Processor Time`. Chcete-li získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf`.<br /><br /> - **sampleRate** – jak často se má čítač vzorkovat.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** – Měrná jednotka čítače. Hodnoty jsou k dispozici na [jednotkách UnitType třídě](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) |
-|**jímky** | Přidáno v 1,5. Volitelné. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Azure Monitor nebo Event Hubs.|    
+|**jímky** | Přidáno v 1,5. Volitelná. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Azure Monitor nebo Event Hubs.|    
 
 
 
@@ -237,10 +237,10 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|Volitelné. Určuje maximální velikost úložiště systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilter**|**řetezce**|Volitelné. Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
-|**scheduledTransferPeriod**|**úkolu**|Volitelné. Určuje interval mezi plánovanými přenosy dat, zaokrouhlený na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
-|**jímky** |**řetezce**| Přidáno v 1,5. Volitelné. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Application Insights nebo Event Hubs.|  
+|**bufferQuotaInMB**|**unsignedInt**|Volitelná. Určuje maximální velikost úložiště systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
+|**scheduledTransferLogLevelFilter**|**řetezce**|Volitelná. Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
+|**scheduledTransferPeriod**|**úkolu**|Volitelná. Určuje interval mezi plánovanými přenosy dat, zaokrouhlený na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**jímky** |**řetezce**| Přidáno v 1,5. Volitelná. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Application Insights nebo Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
@@ -269,12 +269,12 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|řetězec|Řetězec identifikující jímku.|  
+|**Jméno**|string|Řetězec identifikující jímku.|  
 
 |Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|řetězec|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
-|**Barev**|řetězec|Jedno pro každé další filtrování, které je datového proudu|  
+|**Application Insights**|string|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
+|**Barev**|string|Jedno pro každé další filtrování, které je datového proudu|  
 
 ## <a name="channels-element"></a>Element Channels  
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka – kanály*
@@ -285,7 +285,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Kanál**|řetězec|Viz popis jinde na této stránce.|  
+|**Kanál**|string|Viz popis jinde na této stránce.|  
 
 ## <a name="channel-element"></a>Element kanálu
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka-kanály-kanál*
@@ -305,7 +305,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Přidáno ve verzi 1,3.  
 
- Nepovinné  
+ Volitelné  
 
  Ukládá soukromé údaje o účtu úložiště (název, klíč a koncový bod). Tyto informace se odesílají do virtuálního počítače, ale nedají se z něho načíst.  
 

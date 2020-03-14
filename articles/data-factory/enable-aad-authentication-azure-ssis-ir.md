@@ -12,11 +12,11 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
 ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927446"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260706"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro Azure-SSIS Integration Runtime
 
@@ -42,7 +42,7 @@ Azure SQL Database Server podporuje vytváření databází pomocí uživatele A
 
 Můžete použít existující skupinu Azure AD nebo vytvořit novou pomocí Azure AD PowerShellu.
 
-1.  Nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu.
+1.  Nainstalujte modul [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) .
 
 2.  Přihlaste se pomocí `Connect-AzureAD`, spuštěním následující rutiny vytvořte skupinu a uložte ji do proměnné:
 
@@ -198,7 +198,7 @@ Pokud chcete zřídit Azure-SSIS IR pomocí PowerShellu, udělejte tyto věci:
 
 1.  Nainstalujte modul [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) .
 
-2.  Ve vašem skriptu nenastavujte `CatalogAdminCredential` parametr. Například:
+2.  Ve vašem skriptu nenastavujte `CatalogAdminCredential` parametr. Příklad:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

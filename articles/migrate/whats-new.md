@@ -8,11 +8,11 @@ ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 63b6783a2f36d5bc9e84ce8291e7025b27359b6c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361856"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241091"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 

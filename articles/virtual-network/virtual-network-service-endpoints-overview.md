@@ -14,11 +14,11 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380127"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244781"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
@@ -66,7 +66,7 @@ Koncové body služby poskytují následující výhody:
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>Zabezpečení služeb Azure pro virtuální sítě
 
-- Koncový bod služby pro virtuální síť poskytuje službě Azure identitu vaší virtuální sítě. Po povolení koncových bodů služby ve virtuální síti můžete přidat pravidlo virtuální sítě pro zabezpečení prostředků služby Azure do vaší virtuální sítě.
+- Koncový bod služby virtuální sítě poskytuje službě Azure identitu vaší virtuální sítě. Po povolení koncových bodů služby ve virtuální síti můžete přidat pravidlo virtuální sítě pro zabezpečení prostředků služby Azure do vaší virtuální sítě.
 - Provoz služby Azure z virtuální sítě v současné době používá jako zdrojové IP adresy veřejné IP adresy. S koncovými body služby přepne provoz služby při přístupu ke službě Azure z vaší virtuální sítě na používání privátních adres virtuální sítě jako zdrojových IP adres. Toto přepnutí umožňuje přistupovat ke službám bez potřeby vyhrazených veřejných IP adres, které se používají v branách firewall protokolu IP.
 
    >[!NOTE]

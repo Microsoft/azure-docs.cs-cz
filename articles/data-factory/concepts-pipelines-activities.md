@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386669"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246159"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 
@@ -150,7 +150,7 @@ typeProperties | Vlastnosti v části typeProperties závisí na příslušném 
 zásady | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost zahrnuje chování při vypršení časového limitu a opakovaných pokusech. Pokud není zadaná, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | Ne
 dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | Ne
 
-### <a name="activity-policy"></a>Zásada aktivity
+### <a name="activity-policy"></a>Zásady aktivity
 Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigurace. Zásady aktivit jsou dostupné jenom pro aktivity spuštění.
 
 ### <a name="activity-policy-json-definition"></a>Definice zásady aktivity ve formátu JSON

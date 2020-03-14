@@ -15,11 +15,11 @@ ms.date: 06/01/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 977504f41e93e37ae2c5ce9bdb1182a1cfe0a3fd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394885"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252282"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -47,8 +47,8 @@ Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnos
 | --- | --- |
 | Vydavatel |Canonical |
 | Nabídka |UbuntuServer |
-| Skladová jednotka (SKU) |18,04 – LTS |
-| Verze |nejnovější |
+| Skladová položka |18,04 – LTS |
+| Version |nejnovější |
 
 > [!TIP]
 > Další informace o těchto vlastnostech a způsobu vypsání imagí na Marketplace najdete v tématu [navigace a výběr imagí virtuálních počítačů se systémem Linux v Azure pomocí rozhraní příkazového řádku nebo PowerShellu](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).

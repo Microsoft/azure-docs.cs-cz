@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365796"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254752"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8600
 
@@ -164,7 +164,7 @@ Dalším krokem je připojení zařízení k napájení, síti a sériovému př
 ## <a name="cable-your-storsimple-8600-device"></a>Zapojte zařízení StorSimple 8600
 Následující postupy vysvětlují, jak můžete zařízení StorSimple 8600 připojit k napájení, síťovému a sériovému připojení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Než začnete kabelovat zařízení, budete potřebovat:
 
 * Vaše primární skříň a skříň EBOD kompletně rozbalené
@@ -216,7 +216,7 @@ Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba 
 | C |PCM 0 |
 | D |Kontroler 1 |
 | E |PCM 1 |
-| F |EBOD Controller 0 |
+| Ž |EBOD Controller 0 |
 | Věcn |EBOD řadič 1 |
 | H,I |Hostitelé (například souborové servery) |
 | 0-5 |Síťová rozhraní |

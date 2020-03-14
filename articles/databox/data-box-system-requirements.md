@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380586"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259952"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box požadavky na systém
 
@@ -37,7 +37,7 @@ Požadavky na software zahrnují informace o podporovaných operačních systém
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
-### <a name="supported-storage-accounts"></a>Podporované účty úložiště
+### <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 

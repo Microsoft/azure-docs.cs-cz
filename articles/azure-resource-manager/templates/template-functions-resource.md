@@ -4,11 +4,11 @@ description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355095"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248668"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -120,7 +120,7 @@ Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementa
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |string |Jedinečný identifikátor prostředku. |
 | apiVersion |Ano |string |Verze rozhraní API prostředku běhový stav. Obvykle ve formátu **yyyy-MM-DD**. |
-| functionValues |Ne |objekt | Objekt, který obsahuje hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
+| functionValues |Ne |object | Objekt, který obsahuje hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
 
 ### <a name="valid-uses"></a>Platná použití
 
@@ -666,7 +666,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 }
 ```
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Skupina prostředků
 
 ```json
 resourceGroup()

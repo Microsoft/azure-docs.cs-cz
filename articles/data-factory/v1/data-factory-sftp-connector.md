@@ -12,11 +12,11 @@ ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387341"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265802"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Přesunutí dat ze serveru SFTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -65,7 +65,7 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| uživatelské jméno | Uživatel, který má přístup k serveru SFTP. |Ano |
+| username jméno | Uživatel, který má přístup k serveru SFTP. |Ano |
 | heslo | Heslo pro uživatele (uživatelské jméno). | Ano |
 
 #### <a name="example-basic-authentication"></a>Příklad: základní ověřování
@@ -115,7 +115,7 @@ Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte `auth
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| uživatelské jméno |Uživatel, který má přístup k serveru SFTP |Ano |
+| username jméno |Uživatel, který má přístup k serveru SFTP |Ano |
 | privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče, ke kterému má brána přístup. | Zadejte buď `privateKeyPath`, nebo `privateKeyContent`. <br><br> Platí jenom při kopírování dat z místního serveru SFTP. |
 | privateKeyContent | Serializovaný řetězec obsahu privátního klíče. Průvodce kopírováním může přečíst soubor privátního klíče a automaticky extrahovat obsah privátního klíče. Pokud používáte jiný nástroj nebo sadu SDK, použijte místo toho vlastnost privateKeyPath. | Zadejte buď `privateKeyPath`, nebo `privateKeyContent`. |
 | passPhrase | Zadejte heslo a heslo pro dešifrování privátního klíče, je-li soubor klíče chráněn pomocí hesla. | Ano, pokud je soubor privátního klíče chráněn pomocí fráze Pass. |

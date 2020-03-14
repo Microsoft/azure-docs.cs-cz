@@ -7,11 +7,11 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: c6cad29b6cc392746a2e56323302521302835b2f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394952"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274551"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů/služeb ke službě IT Service Management Connector
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -31,7 +31,7 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 Následující části obsahují podrobné informace o tom, jak připojit System Center Service Manager produkt k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -176,7 +176,7 @@ Následující vzorový obrázek ukazuje podrobné informace o úspěšném při
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou splněné následující předpoklady:
 - ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - Podporované verze ServiceNow: New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
@@ -282,7 +282,7 @@ Po úspěšném vytvoření uživatele se stav **kontrolního seznamu kontroly i
 Následující části obsahují podrobné informace o tom, jak připojit produkt pro prokázání do ITSMC v Azure.
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -335,7 +335,7 @@ Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](../.
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt Cherwell k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 

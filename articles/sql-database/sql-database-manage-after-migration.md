@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818970"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256182"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nový DBA v cloudu – Správa databází s jedním a fondem v Azure SQL Database
 
@@ -41,8 +41,8 @@ Tento článek popisuje některé základní charakteristiky Azure SQL Database 
 
 V [Azure Portal](https://portal.azure.com/)můžete sledovat využití jednotlivých databází tak, že vyberete databázi a kliknete na graf **monitorování** . Zobrazí se okno **Metrika**, které můžete upravit kliknutím na **Upravit graf**. Přidejte následující metriky:
 
-- Procento CPU
-- Procento DTU
+- Procento procesoru
+- Procento využití DTU
 - Procento datových V/V
 - Procento velikosti databáze
 
@@ -67,7 +67,7 @@ Nevytváříte zálohy v Azure SQL DB, což znamená, že nemusíte být. SQL Da
 |Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
 |Basic|7|
-|Standard|35|
+|Standardní|35|
 |Premium|35|
 |||
 
@@ -91,7 +91,7 @@ Další informace o zotavení po havárii najdete v tématu: [Azure SQL DB – z
 
 SQL Database zabezpečení a ochrany osobních údajů velmi vážně. Zabezpečení v rámci SQL Database je k dispozici na úrovni databáze a na úrovni platformy a je nejlépe porozumět při kategorizaci do několika vrstev. V každé vrstvě se dostanete k řízení a získáte optimální zabezpečení pro vaši aplikaci. Vrstvy jsou:
 
-- Ověřování identity & (ověřování[Windows/SQL a ověřování Azure Active Directory [AAD]](sql-database-control-access.md))
+- Ověřování identity & (ověřování[SQL a ověřování Azure Active Directory [AAD]](sql-database-manage-logins.md))
 - Sledování aktivity ([auditování](sql-database-auditing.md) a [detekce hrozeb](sql-database-threat-detection.md)).
 - Ochrana skutečných dat ([transparentní šifrování dat [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) a [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - Řízení přístupu k citlivým a privilegovaným datům ([zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security) a [dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking)).
@@ -100,10 +100,10 @@ SQL Database zabezpečení a ochrany osobních údajů velmi vážně. Zabezpeč
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>Jaké metody ověřování uživatelů jsou nabízeny v SQL Database
 
-V SQL Database jsou k dispozici [dvě metody ověřování](sql-database-control-access.md#authentication) :
+V SQL Database jsou k dispozici dvě metody ověřování:
 
 - [Ověřování Azure Active Directory](sql-database-aad-authentication.md)
-- Ověřování pomocí SQL
+- [Ověřování SQL](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 Tradiční ověřování systému Windows není podporováno. Azure Active Directory (AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. AAD podporuje [MFA (Multi-Factor Authentication)](sql-database-ssms-mfa-authentication.md) a [několik kliknutí na](../active-directory/hybrid/how-to-connect-install-express.md) AAD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadáte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru SQL Database. To také umožňuje SQL Database a SQL Data Warehouse nabízet služby Multi-Factor Authentication a uživatelské účty hosta v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
 
@@ -132,7 +132,7 @@ Brána firewall zabraňuje přístup k vašemu serveru z externí entity tím, �
 
 Pravidla brány firewall můžete vytvořit na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall protokolu IP na úrovni serveru se dají vytvořit pomocí Azure Portal nebo pomocí SSMS. Další informace o tom, jak nastavit pravidlo brány firewall na úrovni serveru a databáze, najdete v tématu: [Vytvoření pravidel brány firewall protokolu IP v SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
 
-#### <a name="service-endpoints"></a>Koncové body služby
+#### <a name="service-endpoints"></a>Koncové body služeb
 
 Ve výchozím nastavení je vaše databáze SQL nakonfigurovaná na "umožňuje službám Azure přístup k serveru" – to znamená, že se každý virtuální počítač v Azure může pokusit připojit k vaší databázi. Tyto pokusy se stále musí ověřit. Pokud ale nechcete, aby vaše databáze byla dostupná pro jakékoli IP adresy Azure, můžete zakázat možnost Povolit službám Azure přístup k serveru. Kromě toho můžete nakonfigurovat [koncové body služby virtuální](sql-database-vnet-service-endpoint-rule-overview.md)sítě.
 
@@ -173,7 +173,7 @@ V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Da
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
 |**Databázový server má přístup k citlivým datům.**|Ne|Ano, protože šifrování je pro neaktivní neaktivní data|
 |**Povolené operace T-SQL**|Porovnání rovnosti|Dostupná je celá oblast T-SQL Surface.|
-|**Změny aplikací, které jsou nutné k použití této funkce**|Poskytuje|Velmi minimální|
+|**Změny aplikací, které jsou nutné k použití této funkce**|Minimální|Velmi minimální|
 |**Členitost šifrování**|Úroveň sloupce|Úroveň databáze|
 ||||
 
@@ -226,7 +226,7 @@ Express Route také umožňuje zvýšit až dvojnásobek limitu šířky pásma,
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Je SQL Database kompatibilní se všemi zákonnými požadavky a jak to může pomáhat s dodržováním předpisů moje vlastní organizace.
 
-SQL Database je kompatibilní s řadou dodržování předpisů. Pokud chcete zobrazit nejnovější sadu dodržování předpisů, které jsou splněné SQL Database, navštivte [Centrum zabezpečení Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a Projděte si přehled o dodržování předpisů, které jsou pro vaši organizaci důležité, aby se zjistilo, jestli je SQL Database zahrnutá v odpovídajících službách Azure. Je důležité si uvědomit, že i když SQL Database může být certifikovaný jako vyhovující služba, pomáhá s dodržováním služeb vaší organizace, ale nezaručuje to automaticky.
+SQL Database je kompatibilní s řadou regulativního compliancies. Pokud chcete zobrazit nejnovější sadu compliancies, která byla splněna SQL Database, navštivte [Centrum zabezpečení Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a přejděte k podrobnostem o compliancies, které jsou pro vaši organizaci důležité, aby se zjistilo, jestli je SQL Database zahrnutá v odpovídajících službách Azure. Je důležité si uvědomit, že i když SQL Database může být certifikovaný jako vyhovující služba, pomáhá s dodržováním služeb vaší organizace, ale nezaručuje to automaticky.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Inteligentní monitorování a údržba databáze po migraci
 
@@ -260,7 +260,7 @@ Tuto analýzu můžete zobrazit také v části poradce.
 
 V SQL Database můžete využít inteligentní přehledy platformy, abyste mohli monitorovat výkon a odpovídajícím způsobem ho optimalizovat. Využití výkonu a prostředků v SQL Database můžete monitorovat pomocí následujících metod:
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Azure Portal zobrazuje využití databáze tak, že se vybere databáze a klikne na graf v podokně Přehled. Graf můžete upravit tak, aby zobrazoval více metrik, včetně procenta využití procesoru, procenta DTU, procentuální hodnoty v/v, procentu relací a procenta velikosti databáze.
 
@@ -288,7 +288,7 @@ Můžete zadat dotaz na zobrazení dynamické správy [Sys. dm_db_resource_stats
 
 Hlavní část technik řešení potíží, kterou byste použili pro diagnostiku problémů s výkonem dotazů a databází, zůstávají stejné. Po všech stejných SQL Server modul cloudu. Platforma – Azure SQL DB je však sestavena v "Intelligence". Může vám pomoct vyřešit a diagnostikovat problémy s výkonem ještě snadněji. Může také provádět některé z těchto opravných akcí vaším jménem a v některých případech aktivně opravovat – automaticky.
 
-Váš přístup k problémům s výkonem se může významně využít při použití inteligentních funkcí, jako jsou [Query Performance Insight (QPI)](sql-database-query-performance.md) a [Database Advisor](sql-database-advisor.md) ve spojení, takže rozdíl v metodologii se liší. To se týká – už nemusíte provádět ruční práci na sestavování základních podrobností, které vám můžou pomoct vyřešit problém. Platforma za vás funguje. Jeden příklad, který je QPI. Pomocí QPI můžete procházet vše až na úroveň dotazu a podívat se na historické trendy a zjistit, kdy se dotaz přesně vrátí. Database Advisor poskytuje doporučení pro věci, které vám mohou pomoci zlepšit celkový výkon v obecných případech – chybějící indexy, vyřazování indexů, parametrizace dotazů atd.
+Váš přístup k problémům s výkonem se může významně využít při použití inteligentních funkcí, jako jsou [Query Performance Insight (QPI)](sql-database-query-performance.md) a [Database Advisor](sql-database-advisor.md) ve spojení, takže rozdíl v metodologii se v tomto ohledu liší – už nemusíte provádět ruční práci na základě základních podrobností, které vám můžou pomoct vyřešit problém. Platforma za vás funguje. Jeden příklad, který je QPI. Pomocí QPI můžete procházet vše až na úroveň dotazu a podívat se na historické trendy a zjistit, kdy se dotaz přesně vrátí. Database Advisor poskytuje doporučení pro věci, které vám mohou pomoci zlepšit celkový výkon v obecných případech – chybějící indexy, vyřazování indexů, parametrizace dotazů atd.
 
 Při řešení potíží s výkonem je důležité určit, zda je to pouze aplikace nebo databáze, která má vliv na výkon aplikace. Problém s výkonem se často nachází v aplikační vrstvě. Může se jednat o architekturu nebo vzor přístupu k datům. Zvažte například, že máte aplikaci Chat, která je citlivá na latenci sítě. V takovém případě vaše aplikace utrpí, protože by došlo k velkému počtu krátkých požadavků ("konverzace") mezi aplikací a serverem a v zahlcené síti, takže se tyto přenosy rychle přidávají. Pro zlepšení výkonu v tomto případě můžete použít [dávkové dotazy](sql-database-performance-guidance.md#batch-queries). Použití dávek vám pomůže se obrovským vzhledem k tomu, že teď se vaše požadavky zpracovávají v dávce. Proto vám pomůže vyjímat latenci zpětného odezvy a zvýšit výkon vaší aplikace.
 

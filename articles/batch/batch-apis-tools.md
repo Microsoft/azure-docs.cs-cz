@@ -10,11 +10,11 @@ ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 00d2a74946957f690979eec1d3a03a9b766299d8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394898"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252321"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Přehled rozhraní API a nástrojů služby Batch
 
@@ -37,9 +37,9 @@ Při vývoji řešení ve službě Batch používáte následující účty pře
 
 Vaše aplikace a služby mohou provádět přímá volání rozhraní REST API nebo používat jednu nebo více následujících klientských knihoven ke spuštění a správě úloh služby Azure Batch.
 
-| Rozhraní API | API – referenční informace | Ke stažení | Kurz | Ukázky kódů | Další informace |
+| API | API – referenční informace | Stáhnout | Kurz | Ukázky kódů | Další informace |
 | --- | --- | --- | --- | --- | --- |
-| **Batch REST** |[docs.microsoft.com][batch_rest] |neuvedeno |- |- | [Podporované verze](/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **Batch REST** |[docs.microsoft.com][batch_rest] |NEUŽÍVÁ SE. |- |- | [Podporované verze](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Kurz](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Poznámky k verzi](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Kurz](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Soubor Readme](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[NPM][api_nodejs_npm] |[Kurz](batch-nodejs-get-started.md) |- | [Soubor Readme](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
@@ -49,9 +49,9 @@ Vaše aplikace a služby mohou provádět přímá volání rozhraní REST API n
 
 Rozhraní API Azure Resource Manageru pro službu Batch poskytují programový přístup k účtům Batch. Pomocí těchto rozhraní API můžete prostřednictvím kódu programu spravovat účty Batch, kvóty, balíčky aplikací a další prostředky přes zprostředkovatele Microsoft.Batch.  
 
-| Rozhraní API | API – referenční informace | Ke stažení | Kurz | Ukázky kódů |
+| API | API – referenční informace | Stáhnout | Kurz | Ukázky kódů |
 | --- | --- | --- | --- | --- |
-| **Správa služby Batch pomocí REST** |[docs.microsoft.com][api_rest_mgmt] |neuvedeno |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
+| **Správa služby Batch pomocí REST** |[docs.microsoft.com][api_rest_mgmt] |NEUŽÍVÁ SE. |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Knihovna Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Kurz](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Správa služby Batch pomocí Pythonu** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
 | **Správa služby Batch pomocí Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[NPM][api_nodejs_mgmt_npm] |- |- | 
@@ -72,7 +72,7 @@ Tady je několik dalších nástrojů, které můžou být užitečné při sest
 * [Azure Batch loděnice](https://github.com/Azure/batch-shipyard): dávková loděnice je nástroj, který umožňuje zřídit, spouštět a monitorovat dávkové zpracování a úlohy prostředí HPC založené na kontejnerech na Azure Batch.
 * [Průzkumník služby Azure Storage][storage_explorer]: i když není výhradně Azure Batch nástroj, Průzkumník služby Storage je dalším užitečným nástrojem při vývoji a ladění řešení Batch.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - Informace o protokolování událostí z aplikace Batch najdete v tématu [Protokolování událostí pro diagnostické hodnocení a monitorování řešení Batch](batch-diagnostics.md). Referenční informace k událostem vyvolaným službou Batch najdete v tématu [Analýza služby Batch](batch-analytics.md).
 - Informace o proměnných prostředí pro výpočetní uzly najdete v tématu [Proměnné prostředí výpočetních uzlů služby Azure Batch](batch-compute-node-environment-variables.md).

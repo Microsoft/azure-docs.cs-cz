@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387377"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281233"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -32,7 +32,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat PostgreSQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako jímky aktivitou kopírování najdete v části [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory v současné době podporuje přesun dat z databáze PostgreSQL do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do databáze PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Služba Data Factory podporuje připojení k místním zdrojům PostgreSQL pomocí brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
@@ -50,7 +50,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z m�
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 - K vytvoření kanálu můžete také použít následující nástroje:
   - Visual Studio
-  - Azure Powershell
+  - Azure PowerShell
   - Šablona Azure Resource Manageru
   - .NET API
   - REST API
@@ -70,14 +70,14 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu PostgreSQL.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **OnPremisesPostgreSql** . |Ano |
+| typ |Vlastnost Type musí být nastavená na: **OnPremisesPostgreSql** . |Ano |
 | server |Název serveru PostgreSQL. |Ano |
-| database |Název databáze PostgreSQL |Ano |
+| databáze |Název databáze PostgreSQL |Ano |
 | schéma |Název schématu v databázi. V názvu schématu se rozlišují velká a malá písmena. |Ne |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi PostgreSQL. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
-| uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
+| username jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
 
@@ -86,7 +86,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačních** objektů typu (což zahrnuje PostgreSQL DataSet) má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze PostgreSQL, na kterou odkazuje propojená služba Vlastnost tableName rozlišuje velká a malá písmena. |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
 
@@ -97,9 +97,9 @@ V takovém případě se vlastnosti dostupné v části typeProperties v aktivit
 
 Pokud je zdroj typu **RelationalSource** (který zahrnuje PostgreSQL), jsou v části typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `"query": "select * from \"MySchema\".\"MyTable\""`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| dotaz |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `"query": "select * from \"MySchema\".\"MyTable\""`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 > [!NOTE]
 > V názvech schémat a tabulek se rozlišují velká a malá písmena. Uzavřete je do `""` (dvojitá uvozovky) v dotazu.
@@ -309,31 +309,31 @@ Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí násl
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], řetězec |
 | bitové proměnlivost [(n)] |varbit |Byte [], řetězec |
-| Boolean |logick |Logická hodnota |
+| Datový typ Boolean |logick |Logická hodnota |
 | Seznam | |Byte [], řetězec |
 | Byte | |Byte [], řetězec |
-| znak [(n)] |Char [(n)] |Řetězec |
-| proměnlivé znaky [(n)] |varchar [(n)] |Řetězec |
-| identifikátor | |Řetězec |
-| cidr | |Řetězec |
+| znak [(n)] |Char [(n)] |String |
+| proměnlivé znaky [(n)] |varchar [(n)] |String |
+| identifikátor | |String |
+| cidr | |String |
 | Žluté | |Byte [], řetězec |
 | date | |Datum a čas |
-| DateRange | |Řetězec |
+| DateRange | |String |
 | Dvojitá přesnost |float8 |Double |
 | inet | |Byte [], řetězec |
-| intarry | |Řetězec |
-| int4range | |Řetězec |
-| int8range | |Řetězec |
-| celé číslo |int, int4 |Datový typ Int32 |
-| interval [pole] [(p)] | |Časový interval |
-| json | |Řetězec |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
+| integer |int, int4 |Datový typ Int32 |
+| interval [pole] [(p)] | |Časový rozsah |
+| json | |String |
 | jsonb | |Byte[] |
 | čára | |Byte [], řetězec |
 | lseg | |Byte [], řetězec |
 | macaddr | |Byte [], řetězec |
 | money | |Decimal |
 | číslice [(p, s)] |Decimal [(p, s)] |Decimal |
-| numrange | |Řetězec |
+| numrange | |String |
 | oid | |Datový typ Int32 |
 | path | |Byte [], řetězec |
 | pg_lsn | |Int64 |
@@ -343,7 +343,7 @@ Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí násl
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | sér |serial4 |Datový typ Int32 |
-| text | |Řetězec |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
 Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).

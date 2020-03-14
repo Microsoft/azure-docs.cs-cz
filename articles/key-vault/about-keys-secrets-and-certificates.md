@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd8be482009e067bf9016cc8e351fc42a2db39c7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356139"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271730"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>O klíčích, tajných klíčích a certifikátech
 
@@ -120,6 +120,7 @@ Kryptografické moduly, které Key Vault používá, je-li modul HARDWAROVÉho z
 -   **ES384** -ECDSA pro výtahy SHA-384 a klíče vytvořené pomocí křivky P-384. Tento algoritmus je popsaný na adrese [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **ES512** -ECDSA pro výtahy SHA-512 a klíče vytvořené pomocí křivky P-521. Tento algoritmus je popsaný na adrese [RFC7518](https://tools.ietf.org/html/rfc7518).
 
+
 ###  <a name="rsa-algorithms"></a>Algoritmy RSA  
  Následující identifikátory algoritmu jsou podporovány u klíčů RSA a RSA-HSM v Key Vault.  
 
@@ -130,6 +131,9 @@ Kryptografické moduly, které Key Vault používá, je-li modul HARDWAROVÉho z
 
 #### <a name="signverify"></a>PODEPSAT/OVĚŘIT
 
+-   **PS256** -RSASSA-PSS pomocí algoritmu sha-256 a MGF1 s algoritmem sha-256, jak je popsáno v [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **PS384** -RSASSA-PSS pomocí algoritmu sha-384 a MGF1 s algoritmem sha-384, jak je popsáno v [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **PS512** -RSASSA-PSS pomocí algoritmu sha-512 a MGF1 s algoritmem sha-512, jak je popsáno v [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **RS256** -RSASSA-PKCS-V1_5 pomocí SHA-256. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-256 a musí být 32 bajtů.  
 -   **RS384** -RSASSA-PKCS-V1_5 pomocí SHA-384. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-384 a musí být 48 bajtů.  
 -   **RS512** -RSASSA-PKCS-V1_5 pomocí SHA-512. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-512 a musí být 64 bajtů.  
@@ -364,14 +368,14 @@ Následující tabulka představuje mapování zásad použití klíče x509 na 
 
 |**Příznaky použití klíče x509**|**Operace klíče Key Vault Key**|**Výchozí chování**|
 |----------|--------|--------|
-|DataEncipherment|šifrování, dešifrování| neuvedeno |
-|DecipherOnly|mohli| neuvedeno  |
+|DataEncipherment|šifrování, dešifrování| NEUŽÍVÁ SE. |
+|DecipherOnly|mohli| NEUŽÍVÁ SE.  |
 |DigitalSignature|podepsat, ověřit| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|EncipherOnly|encrypt| neuvedeno |
-|KeyCertSign|podepsat, ověřit|neuvedeno|
+|EncipherOnly|encrypt| NEUŽÍVÁ SE. |
+|KeyCertSign|podepsat, ověřit|NEUŽÍVÁ SE.|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|Nepopiratelnosti odpovědnosti|podepsat, ověřit| neuvedeno |
-|bit crlsign|podepsat, ověřit| neuvedeno |
+|Nepopiratelnosti odpovědnosti|podepsat, ověřit| NEUŽÍVÁ SE. |
+|bit crlsign|podepsat, ověřit| NEUŽÍVÁ SE. |
 
 ### <a name="certificate-issuer"></a>Vystavitel certifikátu
 

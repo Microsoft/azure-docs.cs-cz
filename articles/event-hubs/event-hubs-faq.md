@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
 ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393652"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264957"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy k Event Hubs
 
@@ -71,7 +71,7 @@ K posílání a přijímání zpráv můžete použít následující protokoly 
 
 V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
 
-| Protocol (Protokol) | Porty | Podrobnosti | 
+| Protokol | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) . | 
 | HTTP, HTTPS | 80, 443 |  |
@@ -227,13 +227,13 @@ Zachycení je povolena, když má libovolné Centrum událostí v oboru názvů 
 
 Capture využívá účet úložiště, které poskytnete při povolené v Centru událostí. Protože je váš účet úložiště, všechny změny pro tuto konfiguraci se účtují ke svému předplatnému Azure.
 
-## <a name="quotas"></a>Kvóty
+## <a name="quotas"></a>kvóty,
 
 ### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Existují nějaké kvóty spojené s Event Hubs?
 
 Seznam všech kvót Event Hubs najdete v tématu [kvóty](event-hubs-quotas.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
 Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva: `Namespace already exists`. 

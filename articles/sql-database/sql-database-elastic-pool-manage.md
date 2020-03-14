@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 4ae2e84ab5f6108de4e8236c39371cf9658809d8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359918"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256325"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Správa elastických fondů v Azure SQL Database
 
@@ -48,7 +48,7 @@ Pokud chcete vytvořit a spravovat SQL Database elastické fondy a databáze ve 
 > Ukázkové skripty PowerShellu najdete v tématech [vytváření elastických fondů a přesun databází mezi fondy a ven z fondu pomocí prostředí PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) a [použití PowerShellu k monitorování a škálování elastického fondu SQL v Azure SQL Database](scripts/sql-database-monitor-and-scale-pool-powershell.md).
 >
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 |[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|Vytvoří elastický fond.|
 |[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|Získá elastické fondy a jejich hodnoty vlastností.|
@@ -71,7 +71,7 @@ Pokud chcete vytvořit a spravovat SQL Database elastické fondy pomocí [Azure 
 > Ukázkové skripty Azure CLI najdete v tématu [použití CLI k přesunutí databáze SQL Azure v elastickém fondu SQL](scripts/sql-database-move-database-between-pools-cli.md) a použití rozhraní příkazového [řádku Azure pro škálování elastického fondu SQL v Azure SQL Database](scripts/sql-database-scale-pool-cli.md).
 >
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 |[AZ SQL elastický fond Create](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Vytvoří elastický fond.|
 |[AZ SQL elastický seznam fondů](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Vrátí seznam elastických fondů na serveru.|

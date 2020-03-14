@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3468dd72ff47c895ee4df6ed4308aabab92c33f1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250809"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216954"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal a testování služby NAT
 
 V tomto kurzu vytvoříte bránu NAT, která poskytuje odchozí připojení k virtuálním počítačům v Azure. Pokud chcete otestovat bránu NAT, nasadíte zdrojový a cílový virtuální počítač. Bránu NAT otestujete tak, že odchozí připojení k veřejné IP adrese ze zdroje do cílového virtuálního počítače.  Tento kurz nasadí zdroj a cíl ve dvou různých virtuálních sítích ve stejné skupině prostředků jenom pro zjednodušení.
-
->[!NOTE] 
->Azure Virtual Network NAT je v tuto chvíli k dispozici jako Public Preview a je k dispozici v omezené sadě [oblastí](./nat-overview.md#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -46,7 +43,7 @@ V této části budete muset v krocích níže nahradit následující parametry
 |-----------------------------|----------------------|
 | **\<Resource-Group-Name >**  | myResourceGroupNAT |
 | **\<název virtuální sítě >** | myVNetsource          |
-| **\<název oblasti >**          | USA – východ 2      |
+| **\<název oblasti >**          | Východní USA 2      |
 | **\<IPv4-Address-Space >**   | 192.168.0.0 \ 16          |
 | **\<název podsítě >**          | mySubnetsource        |
 | **\<> rozsahu adres** | 192.168.0.0 \ 24          |
@@ -104,7 +101,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Verze IP | Vyberte **IPv4**.
-    | Skladová jednotka (SKU) | Vyberte **Standard**.
+    | Skladová položka | Vyberte **Standard**.
     | Název | Zadejte **myPublicIPsource**. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **myResourceGroupNAT**. |
@@ -169,7 +166,7 @@ V této části budete muset v krocích níže nahradit následující parametry
 |-----------------------------|----------------------|
 | **\<Resource-Group-Name >**  | myResourceGroupNAT |
 | **\<název virtuální sítě >** | myVNetdestination          |
-| **\<název oblasti >**          | USA – východ 2      |
+| **\<název oblasti >**          | Východní USA 2      |
 | **\<IPv4-Address-Space >**   | 192.168.0.0 \ 16          |
 | **\<název podsítě >**          | mySubnetdestination        |
 | **\<> rozsahu adres** | 192.168.0.0 \ 24          |
@@ -315,7 +312,6 @@ Zkontrolujte metriky v Azure Monitor a podívejte se, jak vaše služba NAT fung
 - Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure CLI](./quickstart-create-nat-gateway-cli.md).
 - Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
 - Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure Portal](./quickstart-create-nat-gateway-portal.md).
-- [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).
 
 > [!div class="nextstepaction"]
 

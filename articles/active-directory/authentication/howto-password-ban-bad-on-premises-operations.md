@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d00a8b84477226b68913f95c5121bbbdfc2eb09d
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082354"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263813"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Povolení ochrany heslem v místní Azure Active Directory
 
@@ -26,7 +26,7 @@ K ochraně místního prostředí Active Directory Domain Services (služba AD D
 
 Další informace o tom, jak funguje ochrana heslem Azure AD v místním prostředí, najdete v tématu věnovaném [vymáhání ochrany heslem Azure AD pro Windows Server Active Directory](concept-password-ban-bad-on-premises.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto článku se dozvíte, jak povolit ochranu heslem Azure AD pro místní prostředí. Před dokončením tohoto článku [nainstalujte a zaregistrujte službu proxy ochrany heslem Azure AD a agenty řadiče domény](howto-password-ban-bad-on-premises-deploy.md) v místním služba AD DSovém prostředí.
 

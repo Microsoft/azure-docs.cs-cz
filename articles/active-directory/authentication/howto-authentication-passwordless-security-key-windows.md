@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378227"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263904"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
 
@@ -31,17 +31,17 @@ Tento dokument se zaměřuje na povolení ověřování bez hesla založeného n
 
 | Typ zařízení | Připojené k Azure AD | Připojené k hybridní službě Azure AD |
 | --- | --- | --- |
-| [Multi-Factor Authentication Azure](howto-mfa-getstarted.md) | × | × |
-| [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | × | × |
-| Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | × | × |
-| Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší. | × | × |
-| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1903 nebo vyšší. | × |   |
-| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 Insider Build 18945 nebo vyšší. |   | × |
-| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | × |
-| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | × |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (volitelné) | × | × |
-| Zřizovací balíček (volitelné) | × | × |
-| Zásady skupiny (volitelné) |   | × |
+| [Multi-Factor Authentication Azure](howto-mfa-getstarted.md) | X | X |
+| [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | X | X |
+| Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
+| Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší. | X | X |
+| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1903 nebo vyšší. | X |   |
+| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 Insider Build 18945 nebo vyšší. |   | X |
+| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | X |
+| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | X |
+| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (volitelné) | X | X |
+| Zřizovací balíček (volitelné) | X | X |
+| Zásady skupiny (volitelné) |   | X |
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře
 

@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376738"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261824"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
@@ -125,7 +125,7 @@ Můžete vybrat, co se stane, když externí uživatel, který byl pozván do va
 
 1. V levé nabídce v části **Správa nároků** klikněte na **Nastavení**.
 
-1. Klikněte na **Upravit**.
+1. Klikněte na tlačítko**Upravit**.
 
     ![Nastavení pro správu životního cyklu externích uživatelů](./media/entitlement-management-external-users/settings-external-users.png)
 

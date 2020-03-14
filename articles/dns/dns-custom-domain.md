@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357676"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266231"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Použití Azure DNS k poskytnutí vlastní nastavení domény pro službu Azure
 
 Azure DNS poskytuje DNS pro vlastní doménu pro všechny prostředky Azure, které podporují vlastní domény nebo mají plně kvalifikovaný název domény (FQDN). Příkladem je webová aplikace Azure a chcete, aby k nim měli uživatelé přístup pomocí contoso.com nebo www\.contoso.com jako plně kvalifikovaný název domény. Tento článek vás provede konfigurací služby Azure pomocí Azure DNS pro použití vlastních domén.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné použít Azure DNS pro vlastní doménu, musíte nejprve delegovat doménu na Azure DNS. Pokyny ke konfiguraci názvových serverů pro delegování najdete v tématu [delegování domény a Azure DNS](./dns-delegate-domain-azure-dns.md) . Jakmile je vaše doména delegovaná do vaší zóny Azure DNS, budete moct nakonfigurovat potřebné záznamy DNS.
 

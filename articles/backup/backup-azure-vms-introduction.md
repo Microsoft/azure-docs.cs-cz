@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje vi
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363711"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273212"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 

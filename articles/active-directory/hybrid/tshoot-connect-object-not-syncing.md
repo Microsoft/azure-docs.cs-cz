@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376204"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253530"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Řešení potíží s objektem, který se nesynchronizuje s Azure Active Directory
 
@@ -54,7 +54,7 @@ Proces synchronizace zahrnuje následující kroky:
 
 5. **Exportovat do služby Azure AD:** Po synchronizaci se objekty exportují z Azure AD CS do Azure AD.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Chcete-li zjistit chyby, podívejte se na několik různých míst v následujícím pořadí:
 
@@ -73,7 +73,7 @@ Horní polovina karty **operace** zobrazuje všechna spuštění v chronologick�
 
 Sloupec **Status (stav** ) obsahuje nejdůležitější informace a zobrazuje nejzávažnější problém pro běh. Tady je stručný přehled nejběžnějších stavů v pořadí podle priority šetření (kde * označuje několik možných řetězců chyb.)
 
-| Status | Poznámka |
+| Stav | Komentář |
 | --- | --- |
 | zastaveno – * |Spuštění se nepovedlo dokončit. K tomu může dojít například v případě, že vzdálený systém nefunguje a nelze ho kontaktovat. |
 | zastaveno – limit chyby |Došlo k více než 5 000 chybám. Běh se automaticky zastavil kvůli velkému počtu chyb. |

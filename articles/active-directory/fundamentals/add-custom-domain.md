@@ -14,25 +14,25 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073536"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262149"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Přidání vlastního názvu domény pomocí portálu Azure Active Directory
 
 Každý nový tenant služby Azure AD obsahuje počáteční název domény, *\<domainname >. The Microsoft. com*. Nemůžete změnit nebo odstranit počáteční název domény, ale můžete přidat názvy vaší organizace. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, která se uživatelům znají, například *alain\@contoso.com*.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Než budete moct přidat vlastní název domény, vytvořte název domény s doménovým registrátorem. Akreditované doménový registrátor, naleznete v tématu [ICANN-Accredited registrátorů](https://www.icann.org/registrar-reports/accredited-list.html).
+Než budete moct přidat vlastní název domény, vytvořte název domény s doménovým registrátorem. V případě schváleného registrátora domény si přečtěte téma [ICANN registrátori](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ## <a name="create-your-directory-in-azure-ad"></a>Vytvoření adresáře ve službě Azure AD
 
 Po získání názvu domény, můžete vytvořit první adresář Azure AD. Přihlaste se k Azure Portal pro svůj adresář pomocí účtu s rolí **vlastníka** pro předplatné.
 
-Vytvořit nový adresář pomocí následujících kroků v [vytvořit nového tenanta pro vaši organizaci](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
+Vytvořte nový adresář podle kroků uvedených v části [Vytvoření nového tenanta pro vaši organizaci](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
 
 >[!IMPORTANT]
 >Osoba, která vytvoří klienta je automaticky globálního správce pro tohoto tenanta. Globální správce můžete přidat další správce pro tenanta.
@@ -98,15 +98,15 @@ Po ověření vlastního názvu domény můžete odstranit ověřovací soubor T
 
 Pokud Azure AD nemůže ověřit vlastní název domény, vyzkoušejte následující návrhy:
 
-- **Počkejte aspoň hodinu a zkuste to znovu**. Záznamy DNS se musí nejprve rozšířit a teprve potom může služba Azure AD doménu ověřit. Tento proces může trvat hodinu i déle.
+- **Počkejte alespoň hodinu a zkuste to znovu**. Záznamy DNS se musí nejprve rozšířit a teprve potom může služba Azure AD doménu ověřit. Tento proces může trvat hodinu i déle.
 
-- **Ujistěte se, že záznam DNS je správná.** Vraťte se do lokality registrátora názvu domény. Ujistěte se, že položka je tam a že odpovídá informacím DNS, které poskytuje Azure AD.
+- **Ujistěte se, že je záznam DNS správný.** Vraťte se do lokality registrátora názvu domény. Ujistěte se, že položka je tam a že odpovídá informacím DNS, které poskytuje Azure AD.
 
   Pokud nemůžete aktualizovat záznam v lokalitě registrátora, sdílejte tuto položku s někým, kdo má oprávnění k přidání položky a ověření správnosti.
 
-- **Ujistěte se, že název domény se už používá v jiném adresáři.** Název domény se dá ověřit jenom v jednom adresáři. Pokud je název vaší domény aktuálně ověřený v jiném adresáři, nelze ho také ověřit v novém adresáři. Chcete-li vyřešit tento problém duplikace, je nutné odstranit název domény z původního adresáře. Další informace o odstraňování názvů domén najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
+- **Ujistěte se, že se název domény už nepoužívá v jiném adresáři.** Název domény se dá ověřit jenom v jednom adresáři. Pokud je název vaší domény aktuálně ověřený v jiném adresáři, nelze ho také ověřit v novém adresáři. Chcete-li vyřešit tento problém duplikace, je nutné odstranit název domény z původního adresáře. Další informace o odstraňování názvů domén najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
 
-- **Ujistěte se, že nemáte žádné nespravované tenantů Power BI.** Pokud vaši uživatelé si aktivovali Powerbi prostřednictvím samoobslužné registrace a vytvořili nespravovaného tenanta pro vaši organizaci, je nutné provést nad správou jako interní nebo externí správu, pomocí Powershellu. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
+- **Ujistěte se, že nemáte žádné nespravované klienty Power BI.** Pokud vaši uživatelé si aktivovali Powerbi prostřednictvím samoobslužné registrace a vytvořili nespravovaného tenanta pro vaši organizaci, je nutné provést nad správou jako interní nebo externí správu, pomocí Powershellu. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -116,4 +116,4 @@ Pokud Azure AD nemůže ověřit vlastní název domény, vyzkoušejte následuj
 
 - Spravujte vaše informace o názvu domény ve službě Azure AD. Další informace najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
 
-- Pokud máte místní verze systému Windows Server, který chcete použít společně s Azure Active Directory, naleznete v tématu [integrace místních adresářů se službou Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Pokud máte místní verze Windows serveru, které chcete používat společně s Azure Active Directory, přečtěte si téma [Integrace místních adresářů s Azure Active Directory](../connect/active-directory-aadconnect.md).

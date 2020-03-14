@@ -8,11 +8,11 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380224"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268142"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -23,7 +23,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 | Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Možnost připojit v místním prostředí |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Ano | Ano |
+| Windows Server. 2019 | SMB 3.0 | Ano | Ano |
 | Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
 | Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Ano | Ano |
 | Windows Server 2016 | SMB 3.0 | Ano | Ano |
@@ -40,7 +40,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 * **Název účtu úložiště:** K připojení sdílené složky Azure budete potřebovat název účtu úložiště.
 
 * **Klíč účtu úložiště:** K připojení sdílené složky Azure budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
@@ -231,16 +231,16 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 
 | Verze systému Windows                           | Výchozí stav protokolu SMB 1 | Metoda zakázání/odebrání       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019                       | Zakázáno             | Odebrání pomocí funkce Windows |
+| Windows Server. 2019                       | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows Server verze 1709 nebo novější            | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows 10 verze 1709 nebo novější                | Zakázáno             | Odebrání pomocí funkce Windows |
-| Windows Server 2016                       | Povoleno              | Odebrání pomocí funkce Windows |
-| Windows 10 verze 1507, 1607 a 1703 | Povoleno              | Odebrání pomocí funkce Windows |
-| Windows Server 2012 R2                    | Povoleno              | Odebrání pomocí funkce Windows | 
-| Windows 8.1                               | Povoleno              | Odebrání pomocí funkce Windows | 
-| Windows Server 2012                       | Povoleno              | Zakázání pomocí registru       | 
-| Windows Server 2008 R2                    | Povoleno              | Zakázání pomocí registru       |
-| Windows 7                                 | Povoleno              | Zakázání pomocí registru       | 
+| Windows Server 2016                       | Povolit              | Odebrání pomocí funkce Windows |
+| Windows 10 verze 1507, 1607 a 1703 | Povolit              | Odebrání pomocí funkce Windows |
+| Windows Server 2012 R2                    | Povolit              | Odebrání pomocí funkce Windows | 
+| Windows 8.1                               | Povolit              | Odebrání pomocí funkce Windows | 
+| Windows Server 2012                       | Povolit              | Zakázání pomocí registru       | 
+| Windows Server 2008 R2                    | Povolit              | Zakázání pomocí registru       |
+| Windows 7                                 | Povolit              | Zakázání pomocí registru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Auditování využití protokolu SMB 1
 > Platí pro Windows Server 2019, půlroční kanál Windows serveru (verze 1709 a 1803), Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1

@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773327"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262292"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
 
@@ -111,12 +111,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Můžete použít hodnotu `{tenant}` v cestě požadavku k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátory klientů. Další informace najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | Požaduje se | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
-| `response_type` | Požaduje se | Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může také zahrnovat další `response_type` hodnoty, jako je například `code`. |
+| `tenant` | Požadováno | Můžete použít hodnotu `{tenant}` v cestě požadavku k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátory klientů. Další informace najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
+| `client_id` | Požadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `response_type` | Požadováno | Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může také zahrnovat další `response_type` hodnoty, jako je například `code`. |
 | `redirect_uri` | Doporučené | Identifikátor URI pro přesměrování vaší aplikace, ve kterém může vaše aplikace odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s tím rozdílem, že musí být kódovaný v adrese URL. Pokud tato akce není k dispozici, koncový bod vybere jednu registrovanou redirect_uri náhodně, aby bylo možné uživatele odeslat zpět do. |
-| `scope` | Požaduje se | Mezerou oddělený seznam oborů. Pro OpenID Connect musí zahrnovat obor `openid`, který v uživatelském rozhraní souhlasu překládá oprávnění přihlásit se. V této žádosti můžete také zahrnout další obory pro žádost o souhlas. |
-| `nonce` | Požaduje se | Hodnota obsažená v požadavku, která se vygenerovala aplikací, která se zahrne do výsledné id_token hodnoty jako deklarace. Aplikace může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu žádosti. |
+| `scope` | Požadováno | Mezerou oddělený seznam oborů. Pro OpenID Connect musí zahrnovat obor `openid`, který v uživatelském rozhraní souhlasu překládá oprávnění přihlásit se. V této žádosti můžete také zahrnout další obory pro žádost o souhlas. |
+| `nonce` | Požadováno | Hodnota obsažená v požadavku, která se vygenerovala aplikací, která se zahrne do výsledné id_token hodnoty jako deklarace. Aplikace může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu žádosti. |
 | `response_mode` | Doporučené | Určuje metodu, která se má použít k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může být `form_post` nebo `fragment`. U webových aplikací doporučujeme použít `response_mode=form_post`, abyste zajistili nejbezpečnější přenos tokenů do aplikace. |
 | `state` | Doporučené | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně generovaná jedinečná hodnota se obvykle používá k [zabránění útokům proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informací o stavu uživatele v aplikaci před tím, než k žádosti o ověření dojde, například na stránce nebo zobrazení, na které uživatel byl. |
 | `prompt` | Volitelné | Určuje typ interakce uživatele, která je povinná. V tuto chvíli jsou k dispozici pouze platné hodnoty `login`, `none`a `consent`. Deklarace identity `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k této žádosti, což má za sebou jednotné přihlašování. `prompt=none` deklarace identity je opak. Tato deklarace identity zajišťuje, že uživatel nebude mít žádné interaktivní výzvy na adrese. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncová platforma Microsoft Identity Platform chybu. Deklarace `prompt=consent` aktivuje dialog souhlasu OAuth poté, co se uživatel přihlásí. Dialogové okno požádá uživatele o udělení oprávnění k aplikaci. |

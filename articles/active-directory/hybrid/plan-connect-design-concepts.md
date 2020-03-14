@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Koncepty návrhu | Microsoft Docs'
+title: 'Azure AD Connect: koncepty návrhu | Microsoft Docs'
 description: Toto téma podrobně popisuje určité oblasti návrhu implementace.
 services: active-directory
 documentationcenter: ''
@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135743"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253881"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Koncepty návrhu
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: koncepty návrhu
 Účelem tohoto dokumentu je popsat oblasti, které je potřeba promyslet během návrhu implementace Azure AD Connect. Tento dokument je hluboko podrobně v určitých oblastech a tyto pojmy se stručně popisují i v dalších dokumentech.
 
 ## <a name="sourceanchor"></a>sourceAnchor
-Atribut sourceAnchor je definován jako neproměnlivý *atribut během životnosti objektu*. Jednoznačně identifikuje objekt jako stejný objekt v místním prostředí i ve službě Azure AD. Atribut se také označuje jako **immutableId** a dva názvy jsou používány jako zaměnitelné.
+Atribut sourceAnchor je definován jako *neproměnlivý atribut během životnosti objektu*. Jednoznačně identifikuje objekt jako stejný objekt v místním prostředí i ve službě Azure AD. Atribut se také označuje jako **immutableId** a dva názvy jsou používány jako zaměnitelné.
 
 Slovo není proměnlivé, to znamená "nemůže být změněno", je důležité pro tento dokument. Vzhledem k tomu, že hodnota tohoto atributu po nastavení nemůže být změněna, je důležité vybrat návrh, který podporuje váš scénář.
 
@@ -45,7 +45,7 @@ Hodnota atributu musí odpovídat následujícím pravidlům:
 
 * Délka je kratší než 60 znaků.
   * Znaky, které nejsou a-z, A-Z nebo 0-9, jsou zakódovány a počítány jako 3 znaky.
-* Neobsahuje speciální znak: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " \@ _
+* Neobsahuje speciální znak: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > () '; :, [] "\@ _
 * Musí být globálně jedinečný.
 * Musí to být řetězec, celé číslo nebo binární hodnota.
 * By neměl být založen na názvu uživatele, protože se může změnit
@@ -71,7 +71,7 @@ Z tohoto důvodu platí následující omezení pro Azure AD Connect:
 
 * Atribut sourceAnchor lze nastavit pouze při počáteční instalaci. Pokud znovu spustíte Průvodce instalací nástroje, tato možnost je jen pro čtení. Pokud potřebujete toto nastavení změnit, musíte odinstalovat a znovu nainstalovat.
 * Pokud instalujete jiný server Azure AD Connect, je nutné vybrat stejný atribut sourceAnchor, který byl dříve použit. Pokud jste dříve používali DirSync a přesunuli se na Azure AD Connect, je nutné použít **objectGUID** , protože to je atribut používaný DirSync.
-* Pokud se hodnota pro sourceAnchor změní poté, co byl objekt exportován do služby Azure AD, Azure AD Connect synchronizace vyvolá chybu a nepovolí žádné další změny tohoto objektu před tím, než byl problém vyřešen, a sourceAnchor se změní zpátky ve zdrojovém řediteli. požadované.
+* Pokud se hodnota pro sourceAnchor změní poté, co byl objekt exportován do služby Azure AD, Azure AD Connect synchronizace vyvolá chybu a nepovolí žádné další změny tohoto objektu před tím, než byl problém vyřešen, a sourceAnchor se změní zpátky ve zdroji. službě.
 
 ## <a name="using-ms-ds-consistencyguid-as-sourceanchor"></a>Použití MS-DS-ConsistencyGuid jako sourceAnchor
 Ve výchozím nastavení používá Azure AD Connect (verze 1.1.486.0 a starší) identifikátor objectGUID jako atribut sourceAnchor. Identifikátor ObjectGUID je generovaný systémem. Při vytváření místních objektů služby AD nejde zadat jeho hodnotu. Jak je vysvětleno v části [sourceAnchor](#sourceanchor), existují scénáře, ve kterých je třeba zadat hodnotu sourceAnchor. Pokud se pro vás použijí tyto scénáře, musíte jako atribut sourceAnchor použít konfigurovatelný atribut AD (například MS-DS-ConsistencyGuid).
@@ -96,7 +96,7 @@ Během nové instalace můžete povolit použití ConsistencyGuid jako sourceAnc
 
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>Jak povolit funkci ConsistencyGuid
 
-#### <a name="express-installation"></a>Expresní instalace
+#### <a name="express-installation"></a>Rychlá instalace
 Při instalaci Azure AD Connect se expresním režimem Průvodce Azure AD Connect automaticky určí nejvhodnější atribut AD, který se použije jako atribut sourceAnchor, a to pomocí následující logiky:
 
 * Nejdřív Průvodce Azure AD Connect dotazuje tenanta Azure AD, aby načetl atribut AD použitý jako atribut sourceAnchor v předchozí instalaci Azure AD Connect (pokud existuje). Pokud je tato informace k dispozici, Azure AD Connect používá stejný atribut AD.
@@ -140,7 +140,7 @@ Chcete-li přepnout z objectGUID na ConsistencyGuid jako atribut zdrojového uko
 
 3. Zadejte svoje přihlašovací údaje správce Azure AD a klikněte na **Další**.
 
-4. Průvodce Azure AD Connect analyzuje stav atributu ms-DS-ConsistencyGuid v místní službě Active Directory. Pokud atribut není nakonfigurován pro žádný objekt v adresáři, Azure AD Connect uzavírá, že žádná jiná aplikace aktuálně nepoužívá atribut a je bezpečné jej použít jako atribut zdrojového ukotvení. Pokračujte kliknutím na tlačítko **Další** .
+4. Průvodce Azure AD Connect analyzuje stav atributu ms-DS-ConsistencyGuid v místní službě Active Directory. Pokud atribut není nakonfigurován pro žádný objekt v adresáři, Azure AD Connect uzavírá, že žádná jiná aplikace aktuálně nepoužívá atribut a je bezpečné jej použít jako atribut zdrojového ukotvení. Pokračujte kliknutím na **Další**.
 
    ![Povolit ConsistencyGuid pro existující nasazení – krok 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -165,12 +165,12 @@ Při analýze (krok 4) platí, že pokud je atribut nakonfigurován na jednom ne
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Dopad na AD FS nebo na konfiguraci federace třetích stran
 Pokud používáte Azure AD Connect ke správě místního nasazení AD FS, Azure AD Connect automaticky aktualizuje pravidla deklarace identity tak, aby používala stejný atribut AD jako sourceAnchor. Tím se zajistí, že deklarace identity ImmutableID generované službou AD FS je konzistentní s hodnotami sourceAnchor exportovanými do Azure AD.
 
-Pokud spravujete AD FS mimo Azure AD Connect nebo používáte pro ověřování federační servery třetích stran, musíte ručně aktualizovat pravidla deklarací identity pro ImmutableID deklarací identity, aby byla konzistentní s hodnotami sourceAnchor exportovanými do Azure AD, jak je popsáno v tématu. oddíl článku [úprava AD FS pravidel deklarací identity](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Průvodce po dokončení instalace vrátí následující upozornění:
+Pokud spravujete AD FS mimo Azure AD Connect nebo používáte pro ověřování federační servery třetích stran, musíte ručně aktualizovat pravidla deklarací identity pro ImmutableID deklarací identity, aby byla konzistentní s hodnotami sourceAnchor exportovanými do Azure AD, jak je popsáno v části [úprava AD FS pravidla deklarace identity](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Průvodce po dokončení instalace vrátí následující upozornění:
 
 ![Konfigurace federace třetích stran](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Přidávání nových adresářů do stávajícího nasazení
-Předpokládejme, že jste nasadili Azure AD Connect s povolenou funkcí ConsistencyGuid a teď chcete do nasazení přidat další adresář. Při pokusu o přidání adresáře Azure AD Connect Průvodce kontroluje stav atributu ms-DS-ConsistencyGuid v adresáři. Pokud je atribut nakonfigurován na jednom nebo více objektech v adresáři, průvodce uzavře atribut je používán jinými aplikacemi a vrátí chybu, jak je znázorněno v následujícím diagramu. Pokud jste si jisti, že atribut nepoužívá existující aplikace, můžete chybu potlačit tak, že restartujete Průvodce Azure AD Connect se zadaným přepínačem **/SkipLdapSearch** , jak je popsáno výše, nebo pokud potřebujete další informace, obraťte se na podporu. .
+Předpokládejme, že jste nasadili Azure AD Connect s povolenou funkcí ConsistencyGuid a teď chcete do nasazení přidat další adresář. Při pokusu o přidání adresáře Azure AD Connect Průvodce kontroluje stav atributu ms-DS-ConsistencyGuid v adresáři. Pokud je atribut nakonfigurován na jednom nebo více objektech v adresáři, průvodce uzavře atribut je používán jinými aplikacemi a vrátí chybu, jak je znázorněno v následujícím diagramu. Pokud jste si jisti, že atribut nepoužívá existující aplikace, můžete chybu potlačit tak, že restartujete Průvodce Azure AD Connect s přepínačem **/SkipLdapSearch** zadaným výše, nebo pokud potřebujete další informace, obraťte se na podporu.
 
 ![Přidávání nových adresářů do stávajícího nasazení](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
@@ -180,7 +180,7 @@ Při integraci místního adresáře se službou Azure AD je důležité pochopi
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Výběr atributu pro userPrincipalName
 Když vybíráte atribut pro poskytování hodnoty hlavního názvu uživatele (UPN), která se má použít v Azure One, měla by to zajistit.
 
-* Hodnoty atributů odpovídají syntaxi hlavního názvu uživatele (RFC 822), to znamená, že by měla být ve formátu doména\@uživatelského jména.
+* Hodnoty atributů odpovídají syntaxi hlavního názvu uživatele (RFC 822), to znamená, že by měl mít formát uživatelské jméno\@doméně.
 * Přípona v hodnotách odpovídá jedné z ověřených vlastních domén ve službě Azure AD.
 
 V expresním nastavení má předpokládaná volba pro atribut hodnotu userPrincipalName. Pokud atribut userPrincipalName neobsahuje hodnotu, kterou chcete uživatelům přihlašovat do Azure, musíte zvolit **vlastní instalaci**.
@@ -188,7 +188,7 @@ V expresním nastavení má předpokládaná volba pro atribut hodnotu userPrinc
 ### <a name="custom-domain-state-and-upn"></a>Vlastní stav domény a hlavní název uživatele
 Je důležité zajistit, aby byla k dispozici ověřená doména pro příponu hlavního názvu uživatele (UPN).
 
-Jan je uživatel v contoso.com. Požadujete, aby Jan používal místní hlavní název uživatele (\@UPN) John contoso.com pro přihlášení k Azure po synchronizovaných uživatelích s adresářem Azure AD contoso.onmicrosoft.com. Aby to bylo možné, musíte před zahájením synchronizace uživatelů přidat a ověřit contoso.com jako vlastní doménu ve službě Azure AD. Pokud přípona hlavního názvu uživatele (UPN) Jan, například contoso.com, neodpovídá ověřené doméně ve službě Azure AD, pak Azure AD nahradí příponu UPN pomocí contoso.onmicrosoft.com.
+Jan je uživatel v contoso.com. Požadujete, aby Jan používal místní hlavní název uživatele (UPN)\@contoso.com, aby se přihlásil k Azure po synchronizaci uživatelů s adresářem Azure AD contoso.onmicrosoft.com. Aby to bylo možné, musíte před zahájením synchronizace uživatelů přidat a ověřit contoso.com jako vlastní doménu ve službě Azure AD. Pokud přípona hlavního názvu uživatele (UPN) Jan, například contoso.com, neodpovídá ověřené doméně ve službě Azure AD, pak Azure AD nahradí příponu UPN pomocí contoso.onmicrosoft.com.
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Místní domény a hlavní název uživatele (UPN) pro Azure AD, které Nesměrovatelné
 Některé organizace mají Nesměrovatelné domény, jako je contoso. Local nebo jednoduché domény s jedním popiskem, jako je contoso. Nemůžete ověřit doménu bez směrování v Azure AD. Azure AD Connect se může synchronizovat jenom s ověřenou doménou v Azure AD. Když vytvoříte adresář služby Azure AD, vytvoří se směrovatelný doména, která se jako výchozí doména pro Azure AD bude například contoso.onmicrosoft.com. Proto je nutné ověřit jakoukoli jinou směrovatelný doménu v takovém scénáři pro případ, že se nechcete synchronizovat s výchozí doménou onmicrosoft.com.

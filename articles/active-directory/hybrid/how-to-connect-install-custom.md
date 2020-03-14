@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376077"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261447"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
@@ -283,11 +283,11 @@ Zadejte servery, které chcete použít jako proxy servery webových aplikací. 
 > <li> Ujistěte se, že jsou dostupné možnosti připojení HTTP/HTTPS mezi serverem webových aplikací a serverem služby AD FS, které umožní protékání požadavků na ověření.</li>
 >
 
-![Webová aplikace](./media/how-to-connect-install-custom/adfs3.png)
+![Web App](./media/how-to-connect-install-custom/adfs3.png)
 
 Zobrazí se výzva k zadání přihlašovacích údajů, aby server webových aplikací mohl navázat zabezpečené připojení k serveru služby AD FS. Tyto přihlašovací údaje musí být místním správcem na serveru služby AD FS.
 
-![Proxy server](./media/how-to-connect-install-custom/adfs4.png)
+![Proxy](./media/how-to-connect-install-custom/adfs4.png)
 
 ### <a name="specify-the-service-account-for-the-ad-fs-service"></a>Zadání účtu služby AD FS
 Služba AD FS vyžaduje účet doménové služby, aby mohla ověřovat uživatele a hledat informace o uživatelích ve službě Active Directory. Podporuje dva typy účtů služeb:
@@ -336,7 +336,7 @@ Služba PingFederate musí být nakonfigurovaná jako federační server pro ka�
 
 Případné problémy s ověřením řešte se správcem PingFederate.  Následuje příklad serveru PingFederate, který nemá platný vztah důvěryhodnosti s Azure:
 
-![Důvěryhodnost](./media/how-to-connect-install-custom/ping5.png)
+![Důvěra](./media/how-to-connect-install-custom/ping5.png)
 
 
 
@@ -382,7 +382,7 @@ Když kliknete na tlačítko Ověřit, služba Azure AD Connect ověří nastave
 
 * Překlad plně kvalifikovaného názvu domény federace: Azure AD Connect zkontroluje, jestli DNS dokáže přeložit plně kvalifikovaný název domény federace pro zajištění možnosti připojení.
 
-![Complete](./media/how-to-connect-install-custom/completed.png)
+![Dokončit](./media/how-to-connect-install-custom/completed.png)
 
 ![Ověřit](./media/how-to-connect-install-custom/adfs7.png)
 
@@ -393,7 +393,7 @@ Pokud chcete ověřit, že je kompletní ověřování úspěšné, měli byste 
 * Ověřte, že se můžete přihlásit ze zařízení z extranetu. Na domácím počítači nebo na mobilním zařízení se připojte k https://myapps.microsoft.com a zadejte přihlašovací údaje.
 * Ověřte přihlášení plně funkčního klienta. Připojte se k https://testconnectivity.microsoft.com, vyberte kartu **Office 365** a vyberte možnost **Test jednotného přihlašování Office 365**.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 Následující část popisuje řešení potíží a obsahuje informace, které můžete využít, pokud narazíte na problém s instalací Azure AD Connect.
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Databáze ADSync již obsahuje data a není možné ji přepsat.“

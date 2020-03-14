@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bcd00972c2da0d3d5dafe76a8619e0f0ccaedc19
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082236"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239109"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro spravované domény
 
@@ -40,9 +40,9 @@ V tomto kurzu se naučíte:
 > * Konfigurace hybridního připojení k Azure AD
 > * Povolení zařízení s Windows nižší úrovně
 > * Ověření připojených zařízení
-> * Řešení potíží
+> * Řešení problémů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 nebo novější)
 - Přihlašovací údaje globálního správce pro vašeho tenanta Azure AD
@@ -87,7 +87,7 @@ Konfigurace hybridního připojení ke službě Azure AD pomocí Azure AD Connec
 
 1. Spusťte Azure AD Connect a pak vyberte **Konfigurovat**.
 
-   ![Uvítání](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
+   ![Vítejte](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
 
 1. V **další úlohy**vyberte **Konfigurovat možnosti zařízení**a pak vyberte **Další**.
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Popisuje požadavky na síť pro provozování Azure Dev Spaces ve službě Azure Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, CNI, kubenet, SDN, Network
 ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389688"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265347"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých topologiích sítě
 
@@ -28,7 +28,7 @@ Azure Dev Spaces má určité požadavky na příchozí *a odchozí* síťový p
 
 Azure Dev Spaces potřebuje příchozí a odchozí provoz pro tyto plně kvalifikované názvy domény:
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                       | Port       | Použití      |
+| Plně kvalifikovaný název domény                       | Port       | Použití      |
 |----------------------------|------------|----------|
 | cloudflare.docker.com      | HTTPS: 443 | Načtení imagí Docker pro Azure Dev Spaces |
 | gcr.io                     | HTTPS: 443 | Vyžádání imagí Helm pro Azure Dev Spaces |

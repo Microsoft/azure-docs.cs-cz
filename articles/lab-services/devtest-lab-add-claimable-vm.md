@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390966"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270794"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytváření a správa virtuálních počítačů s deklarací identity v Azure DevTest Labs
 Do testovacího prostředí můžete přidat vynucené virtuální počítače podobným způsobem jako při [přidávání standardního virtuálního počítače](devtest-lab-add-vm.md) – od *základu* , který je buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md)nebo Image na [webu Marketplace](devtest-lab-configure-marketplace-images.md). Tento kurz vás provede použitím Azure Portal k přidání s nárokem na virtuální počítač do testovacího prostředí v DevTest Labs a ukazuje procesy, které uživatel sleduje, aby mohl uplatnit deklaraci virtuálního počítače a uvolnit ho.

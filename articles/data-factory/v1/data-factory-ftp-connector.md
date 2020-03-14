@@ -13,11 +13,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387369"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281402"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Přesunutí dat ze serveru FTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -62,18 +62,18 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka popisuje elementy JSON specifické pro propojenou službu FTP.
 
-| Vlastnost | Popis | Požaduje se | Výchozí |
+| Vlastnost | Popis | Požadováno | Výchozí |
 | --- | --- | --- | --- |
-| type |Nastavte tuto hodnotu na FtpServer. |Ano |&nbsp; |
+| typ |Nastavte tuto hodnotu na FtpServer. |Ano |&nbsp; |
 | host |Zadejte název nebo IP adresu serveru FTP. |Ano |&nbsp; |
 | authenticationType |Zadejte typ ověřování. |Ano |Základní, anonymní |
-| uživatelské jméno |Zadejte uživatele, který má přístup k serveru FTP. |Ne |&nbsp; |
+| username jméno |Zadejte uživatele, který má přístup k serveru FTP. |Ne |&nbsp; |
 | heslo |Zadejte heslo pro uživatele (uživatelské jméno). |Ne |&nbsp; |
 | encryptedCredential |Zadejte šifrované přihlašovací údaje pro přístup k serveru FTP. |Ne |&nbsp; |
 | gatewayName |Zadejte název brány v bráně Správa dat Gateway pro připojení k místnímu serveru FTP. |Ne |&nbsp; |
-| port |Zadejte port, na kterém server FTP naslouchá. |Ne |21 |
-| enableSsl |Určete, jestli se má používat FTP přes kanál SSL/TLS. |Ne |true (pravda) |
-| enableServerCertificateValidation |Určete, jestli se má povolit ověřování certifikátu SSL serveru při použití kanálu FTP přes SSL/TLS. |Ne |true (pravda) |
+| Port |Zadejte port, na kterém server FTP naslouchá. |Ne |21 |
+| enableSsl |Určete, jestli se má používat FTP přes kanál SSL/TLS. |Ne |true |
+| enableServerCertificateValidation |Určete, jestli se má povolit ověřování certifikátu SSL serveru při použití kanálu FTP přes SSL/TLS. |Ne |true |
 
 >[!NOTE]
 >Konektor FTP podporuje přístup k serveru FTP bez šifrování nebo explicitního šifrování pomocí protokolu SSL/TLS; nepodporuje implicitní šifrování SSL/TLS.
@@ -152,14 +152,14 @@ Následující tabulka popisuje elementy JSON specifické pro propojenou službu
 
 Oddíl **typeProperties** se liší pro každý typ datové sady. Poskytuje informace, které jsou specifické pro typ datové sady. Oddíl **typeProperties** pro datovou sadu typu **Shared** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | folderPath |Dílčí cesta ke složce Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Příklady najdete v tématu Ukázka propojené služby a definice datových sad.<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě počátečního a koncového data v řezu. |Ano |
 | fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu, je název vygenerovaného souboru v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (příklad: data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Ne |
 | fileFilter |Určete filtr, který se použije k výběru podmnožiny souborů v **FolderPath**, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> pro sadu vstupních dat Shared je použitelný **Filtr** . Tato vlastnost není podporována se systémem Hadoop systém souborů DFS (Distributed File System) (HDFS). |Ne |
 | partitionedBy |Slouží k zadání dynamického **FolderPath** a **názvu souboru** pro data časové řady. Můžete například zadat **FolderPath** , který je parametrizovaný za každou hodinu dat. |Ne |
 | format | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v oddílech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), formát [ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formát [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete kopírovat soubory, protože jsou mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |Ne |
-| compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **gzip**, **Deflate**, **bzip2**a **ZipDeflate**a podporované úrovně jsou **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **gzip**, **Deflate**, **bzip2**a **ZipDeflate**a podporované úrovně jsou **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 | useBinaryTransfer |Určete, zda se má použít režim binárního přenosu. Hodnoty jsou pravdivé pro binární režim (Jedná se o výchozí hodnotu) a false pro ASCII. Tato vlastnost se dá použít, jenom když je přidružený typ propojené služby typ: FtpServer. |Ne |
 
 > [!NOTE]
@@ -203,9 +203,9 @@ Vlastnosti, které jsou k dispozici v části **typeProperties** aktivity, se li
 
 Pokud je zdroj v aktivitě kopírování typu **FileSystemSource**, je v části **typeProperties** k dispozici následující vlastnost:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| recursive |Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. |True, false (výchozí) |Ne |
+| rekurzivní |Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. |True, false (výchozí) |Ne |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Příklad JSON: kopírování dat ze serveru FTP do Azure Blob
 V této ukázce se dozvíte, jak kopírovat data ze serveru FTP do úložiště objektů BLOB v Azure. Data je ale možné zkopírovat přímo do kterékoli z jímky uvedených v [podporovaných úložištích a formátech dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats)pomocí aktivity kopírování v Data Factory.

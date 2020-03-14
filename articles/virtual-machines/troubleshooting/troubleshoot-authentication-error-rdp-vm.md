@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381667"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266972"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Řešení chyb ověřování při připojování k virtuálnímu počítači Azure pomocí protokolu RDP
 
 Tento článek vám může pomoct při odstraňování chyb ověřování, ke kterým dochází při použití připojení protokol RDP (Remote Desktop Protocol) (RDP) pro připojení k virtuálnímu počítači Azure (VM).
 
-## <a name="symptoms"></a>Příznaky
+## <a name="symptoms"></a>Symptomy
 
 Zachytíte snímek obrazovky virtuálního počítače Azure, který zobrazuje úvodní obrazovku, a indikuje, že operační systém je spuštěný. Když se ale pokusíte připojit k virtuálnímu počítači pomocí Připojení ke vzdálené ploše, zobrazí se některá z následujících chybových zpráv.
 
@@ -83,7 +83,7 @@ Pokud se chcete vzdáleně připojit k virtuálnímu počítači, použijte jedn
 
 ### <a name="group-policy-client-service"></a>Klientská služba zásad skupiny
 
-Pokud se jedná o virtuální počítač připojený k doméně, nejdřív zastavte službu klienta Zásady skupiny, aby nedošlo k přepsání změn zásad služby Active Directory. Provedete to spuštěním následujícího příkazu:
+Pokud se jedná o virtuální počítač připojený k doméně, nejdřív zastavte službu klienta Zásady skupiny, aby nedošlo k přepsání změn zásad služby Active Directory. Chcete-li to provést, spusťte následující příkaz:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
@@ -101,7 +101,7 @@ gpupdate /force
 
 Pokud se změna vrátí, znamená to, že problém způsobuje zásada služby Active Directory. 
 
-### <a name="workaround"></a>Alternativní řešení
+### <a name="workaround"></a>Alternativní řešení:
 
 Pokud chcete tento problém obejít, zakažte NLA spuštěním následujících příkazů v příkazovém okně:
 
@@ -124,7 +124,7 @@ REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="for-domain-joined-vms"></a>Pro virtuální počítače připojené k doméně
 

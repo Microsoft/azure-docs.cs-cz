@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
 ms.openlocfilehash: 4fa7f7d1419a8cd1006a632ba67587ab3434bf5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383203"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254024"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
@@ -26,7 +26,7 @@ ms.locfileid: "78383203"
 
 Azure Disk Encryption využívá podsystém dm-crypt v systému Linux, který poskytuje úplné šifrování disků na [vybraných distribucích systému Azure Linux](https://aka.ms/adelinux).  Toto řešení je integrované s Azure Key Vault pro správu klíčů a tajných kódů disku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Úplný seznam požadovaných součástí najdete v tématu [Azure Disk Encryption pro virtuální počítače se systémem Linux](../linux/disk-encryption-overview.md), konkrétně v následujících oddílech:
 
@@ -132,25 +132,25 @@ Používání produktu `AADClientCertificate`:
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Datový typ |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | řetězec |
-| type | AzureDiskEncryptionForLinux | řetězec |
+| publisher | Microsoft.Azure.Security | string |
+| typ | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0.1, 1.1 | int |
 | (schéma 0.1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (schéma 0,1) AADClientSecret | heslo | řetězec |
-| (schéma 0,1) AADClientCertificate | thumbprint | řetězec |
+| (schéma 0,1) AADClientSecret | heslo | string |
+| (schéma 0,1) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Slovník JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
-| KeyEncryptionAlgorithm | ' RSA-VÝPLNĚ OAEP ', ' RSA-VÝPLNĚ OAEP-256 ', ' RSA1_5 ' | řetězec |
-| KeyEncryptionKeyURL | url | řetězec |
-| volitelné KeyVaultURL | url | řetězec |
-| Passphrase | heslo | řetězec | 
-| SequenceVersion | uniqueidentifier | řetězec |
-| VolumeType | Operační systém, data, vše | řetězec |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | ' RSA-VÝPLNĚ OAEP ', ' RSA-VÝPLNĚ OAEP-256 ', ' RSA1_5 ' | string |
+| KeyEncryptionKeyURL | Adresa URL | string |
+| volitelné KeyVaultURL | Adresa URL | string |
+| Passphrase | heslo | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | Operační systém, data, vše | string |
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 
 Příklad nasazení šablony najdete v tématu [povolení šifrování na běžícím virtuálním počítači se systémem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
 
@@ -160,7 +160,7 @@ Pokyny najdete v nejnovější [dokumentaci k Azure CLI](/cli/azure/vm/encryptio
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Informace o řešení potíží najdete v [Průvodci odstraňováním potíží s Azure Disk Encryption](../../security/azure-security-disk-encryption-tsg.md).
 

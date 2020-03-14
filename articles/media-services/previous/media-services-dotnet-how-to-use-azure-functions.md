@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397225"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251164"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Vývoj Azure Functions s využitím Media Services
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak začít s vytvářením Azure Functions, kter�
 
 Pokud chcete prozkoumat a nasadit existující Azure Functions, které používají Azure Media Services, podívejte se na [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Toto úložiště obsahuje příklady, které používají Media Services k zobrazení pracovních postupů souvisejících s ingestování obsahu přímo z úložiště objektů blob, kódování a zápisu obsahu zpátky do úložiště objektů BLOB. Obsahuje taky příklady monitorování oznámení úloh prostřednictvím webhooků a front Azure. Můžete také vyvíjet své funkce na základě příkladů v úložišti [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) . Pokud chcete tyto funkce nasadit, klikněte na tlačítko **nasadit do Azure** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Je nutné, abyste před vytvořením první funkce měli aktivní účet Azure. Pokud ještě nemáte účet Azure, [můžete použít bezplatné účty](https://azure.microsoft.com/free/).
 - Pokud budete vytvářet Azure Functions, které provádějí akce v účtu Azure Media Services (AMS) nebo naslouchat událostem odesílaným Media Services, měli byste vytvořit účet AMS, jak je popsáno [zde](media-services-portal-create-account.md).
@@ -348,6 +348,6 @@ Další podrobnosti a kompletní ukázky/řešení použití Azure Functions a L
 
 Další informace najdete také v tématu [použití webhooků Azure k monitorování oznámení úloh Media Services pomocí .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

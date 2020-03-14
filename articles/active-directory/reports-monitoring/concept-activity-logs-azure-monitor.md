@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375358"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266543"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit Azure AD v Azure Monitor
 
@@ -78,8 +78,8 @@ Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecn
 
 | Kategorie protokolu | Počet uživatelů | Počet událostí za den | Objem dat za měsíc (odhad) | Náklady za měsíc (odhad) | Náklady za rok (odhad) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Auditování | 100,000 | 1,5&nbsp;milionu | 90 GB | 1,93 USD | 23,12 USD |
-| Auditování | 1 000 | 15 000 | 900 MB | 0,02 USD | 0,24 USD |
+| Auditování | 100,000 | 1,5&nbsp;milionu | 90 GB | 1,93 USD | 23,12 USD |
+| Auditování | 1 000 | 15,000 | 900 MB | 0,02 USD | 0,24 USD |
 | Přihlášení | 1 000 | 34 800 | 4 GB | 0,13 USD | 1,56 USD |
 | Přihlášení | 100,000 | 15&nbsp;milionů | 1,7 TB | 35,41 USD | 424,92 USD |
  

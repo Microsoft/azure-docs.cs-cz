@@ -17,11 +17,11 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375700"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244222"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 
@@ -89,7 +89,7 @@ Tento seznam obsahuje chyby, které vaši koncoví uživatelé setkat při pokus
 
 Pokud narazíte na chybu nebo problém s Proxy aplikací Azure AD, která není uvedená v této příručce pro řešení potíží, chtěli bychom slyšet o něm. Pošlete nám e-mail do našeho [týmu Feedback](mailto:aadapfeedback@microsoft.com) s podrobnostmi o zjištěné chybě.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Povolit proxy aplikací pro Azure Active Directory](application-proxy-add-on-premises-application.md)
 * [Publikování aplikací pomocí proxy aplikací](application-proxy-add-on-premises-application.md)
 * [Povolit jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md)

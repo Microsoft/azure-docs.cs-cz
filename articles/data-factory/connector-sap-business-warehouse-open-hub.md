@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 84098901d58e2087c7ece77049e445bb5c76f2a9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358492"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266023"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
 
@@ -73,7 +73,7 @@ V pracovním úložišti dat (jako je Azure Blob ve výše uvedeném diagramu) o
 
 Pro správné zpracování rozdílů není povoleno mít ID žádosti z různých DTPs ve stejné otevřené tabulce hub. Proto nesmíte pro každé místo v otevřeném centru (OHD) vytvořit více než jednu DTP. Pokud budete potřebovat úplnou a rozdílovou extrakci ze stejného InfoProvider, měli byste vytvořit dvě OHDs pro stejné InfoProvider. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít tento konektor pro SAP Business Warehouse, musíte:
 
@@ -104,13 +104,13 @@ V následujících částech najdete podrobné informace o vlastnostech, které 
 
 Pro propojenou službu SAP Business Warehouse se podporují následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Ano |
 | server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
 | systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
 | clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
-| language | Jazyk používaný systémem SAP. | Ne (výchozí hodnota je **EN**)|
+| jazyk | Jazyk používaný systémem SAP. | Ne (výchozí hodnota je **EN**)|
 | userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
 | heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
@@ -146,9 +146,9 @@ Pro propojenou službu SAP Business Warehouse se podporují následující vlast
 
 Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Type objektu DataSet na **SapOpenHubTable**. Jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Ano |
+| typ | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Ano |
 | openHubDestinationName | Název otevřeného cíle centra, ze kterého se mají kopírovat data | Ano |
 
 Pokud jste nacházeli `excludeLastRequest` a `baseRequestId` v datové sadě, je tato možnost stále podporovaná tak, jak je, ale při návrhu používání nového modelu ve zdroji aktivity.
@@ -180,9 +180,9 @@ Pokud jste nacházeli `excludeLastRequest` a `baseRequestId` v datové sadě, je
 
 Pokud chcete kopírovat data z SAP BW otevřete centrum, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
 | excludeLastRequest | Určuje, zda mají být vyloučeny záznamy poslední žádosti. | Ne (výchozí hodnota je **true**) |
 | baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | Ne |
 
@@ -230,14 +230,14 @@ Při kopírování dat z SAP BW otevřeném centru, se z SAP BW datových typů 
 
 | Typ SAP ABAP | Data factory dočasné datový typ |
 |:--- |:--- |
-| C (řetězec) | Řetězec |
+| C (řetězec) | String |
 | I (integer) | Datový typ Int32 |
 | F (float) | Double |
-| D (datum) | Řetězec |
-| T (Time) | Řetězec |
+| D (datum) | String |
+| T (Time) | String |
 | P (BCD Packed, Currency, Decimal, Qty) | Decimal |
-| N (NUMC) | Řetězec |
-| X (Binary and Raw) | Řetězec |
+| N (NUMC) | String |
+| X (Binary and Raw) | String |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

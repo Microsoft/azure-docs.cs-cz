@@ -8,11 +8,11 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374985"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243871"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Podrobnosti o konfiguraci sítě pro App Service Environment pro PowerApps s Azure ExpressRoute
 
@@ -85,7 +85,7 @@ Informace o tom, jak vytvořit a nakonfigurovat uživatelsky definované trasy, 
 
 Tato část ukazuje příklad konfigurace UDR pro App Service Environment.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte Azure PowerShell na [stránce soubory ke stažení pro Azure][AzureDownloads]. Vyberte soubor ke stažení s datem od června 2015 nebo novějším. V části **nástroje příkazového řádku** > **prostředí Windows PowerShell**vyberte **instalovat** a nainstalujte nejnovější rutiny PowerShellu.
 

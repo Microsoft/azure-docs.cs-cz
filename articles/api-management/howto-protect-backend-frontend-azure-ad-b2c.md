@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ae776fc3fb1f9eb4b7fa9747f2769dcccb25e042
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967637"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136342"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
 
@@ -31,7 +31,7 @@ Zjistíme, jak se dá API Management použít ve zjednodušeném scénáři s Az
 
 Pro důkladnou obranu pak používáme EasyAuth k ověření tokenu v back-endu rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 * Účet úložiště Azure (StorageV2) Pro obecné účely v2 pro hostování jednostránkové aplikace front-end JS
 * Instance Azure API Management 
@@ -250,7 +250,7 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
 
    > [!NOTE]
    > Následující část je volitelná a nevztahuje se na úroveň **spotřeby** , která nepodporuje portál pro vývojáře.
-   > Pokud nemáte v úmyslu používat portál pro vývojáře, nebo ho nemůžete použít, protože používáte úroveň spotřeby, přeskočte tento krok a přejděte rovnou na ["sestavení JavaScriptu pro použití rozhraní API"](##build-the-javascript-spa-to-consume-the-api).
+   > Pokud nemáte v úmyslu používat portál pro vývojáře, nebo ho nemůžete použít, protože používáte úroveň spotřeby, přeskočte tento krok a přejděte rovnou na ["sestavení JavaScriptu pro použití rozhraní API"](#build-the-javascript-spa-to-consume-the-api).
 
 ## <a name="optional-configure-the-developer-portal"></a>Volitelné Konfigurace portálu pro vývojáře
 

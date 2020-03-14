@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: carlrab, sstein
 ms.date: 03/03/2020
 ms.openlocfilehash: a6186753c845070ff2a5b3a3f8c6ff0de51e52f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380067"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255701"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
 
@@ -46,8 +46,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|7|14|21|28|35|42|
 |Maximální počet databází pro každý fond|100|200|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Maximální velikost dat (GB)|512|756|1536|1536|1536|2 048|
+|Úložiště OLTP v paměti (GB)|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
+|Maximální velikost dat (GB)|512|756|1536|1536|1536|2048|
 |Maximální velikost protokolu|154|227|461|461|461|614|
 |Maximální velikost dat databáze TempDB (GB)|32|64|96|128|160|192|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
@@ -59,8 +59,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Škálování čtení|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Více AZ|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
+|Škálování čtení|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximální hodnotu velikosti v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](sql-database-resource-limits-database-server.md#resource-governance).
@@ -76,21 +76,21 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|49|56|63|70|112|159,5|
 |Maximální počet databází pro každý fond|500|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Maximální velikost dat (GB)|2 048|2 048|2 048|2 048|3584|4 096|
+|Úložiště OLTP v paměti (GB)|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
+|Maximální velikost dat (GB)|2048|2048|2048|2048|3584|4 096|
 |Maximální velikost protokolu (GB)|614|614|614|614|1075|1229|
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|512|768|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS na fond *|2800|3200|3600|4000|6400|9600|
+|Maximální počet datových IOPS na fond *|2800|3 200|3600|4 000|6 400|9600|
 |Maximální počet protokolů na fond (MB/s)|32,8|37,5|37,5|37,5|37,5|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1470|1680|1890|2100|3360|5040|
 |Maximální počet souběžných přihlášení ve fondu (požadavky) *|1470|1680|1890|2100|3360|5040|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Škálování čtení|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Více AZ|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
+|Škálování čtení|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi najdete v části [omezení prostředků databáze na jednu databázi](sql-database-vcore-resource-limits-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
@@ -106,21 +106,21 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Maximální počet databází pro každý fond|100|200|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Maximální velikost dat (GB)|512|756|1536|1536|1536|2 048|2 048|
+|Úložiště OLTP v paměti (GB)|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
+|Maximální velikost dat (GB)|512|756|1536|1536|1536|2048|2048|
 |Maximální velikost protokolu (GB)|154|227|461|461|461|614|614|
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|320|384|448|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS na fond *|800|1600|2400|3200|4000|4800|5600|
+|Maximální počet datových IOPS na fond *|800|1600|2400|3 200|4 000|4800|5600|
 |Maximální počet protokolů na fond (MB/s)|9,4|18,8|28,1|37,5|37,5|37,5|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * *|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných přihlášení na fond (požadavky) * *|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Škálování čtení|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Více AZ|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
+|Škálování čtení|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximální hodnotu velikosti v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](sql-database-resource-limits-database-server.md#resource-governance).
@@ -136,21 +136,21 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Maximální počet databází pro každý fond|500|500|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Maximální velikost dat (GB)|2 048|3072|3072|3072|4 096|4 096|4 096|
+|Úložiště OLTP v paměti (GB)|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
+|Maximální velikost dat (GB)|2048|3072|3072|3072|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|614|922|922|922|1229|1229|1229|
 |Maximální velikost dat databáze TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS na fond * |6,400|7 200|8 000|9 600|12,800|16,000|32,000|
+|Maximální počet datových IOPS na fond * |6,400|7 200|8 000|9 600|12,800|16,000|32,000|
 |Maximální počet protokolů na fond (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maximální počet souběžných přihlášení na fond (požadavky) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Škálování čtení|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Více AZ|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
+|Škálování čtení|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximální hodnotu velikosti v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](sql-database-resource-limits-database-server.md#resource-governance).
@@ -168,7 +168,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|136,2|
 |Maximální počet databází pro každý fond|500|
 |Podpora columnstore|Ano|
-|Úložiště OLTP v paměti (GB)|neuvedeno|
+|Úložiště OLTP v paměti (GB)|NEUŽÍVÁ SE.|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|1024|
 |Maximální velikost dat databáze TempDB (GB)|333|
@@ -181,8 +181,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální počet souběžných relací|30,000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-72|
 |Počet replik|1|
-|Více AZ|neuvedeno|
-|Škálování čtení|neuvedeno|
+|Více AZ|NEUŽÍVÁ SE.|
+|Škálování čtení|NEUŽÍVÁ SE.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|
 
 \* maximální hodnotu velikosti v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](sql-database-resource-limits-database-server.md#resource-governance).
@@ -232,7 +232,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|159,5|
 |Maximální počet databází pro každý fond|100|100|100|100|100|100|
-|Podpora columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Podpora columnstore|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|
 |Úložiště OLTP v paměti (GB)|7|8|9.5|11|20|36|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
@@ -329,7 +329,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Podpora columnstore|Ano|
 |Úložiště OLTP v paměti (GB)|1768|
 |Maximální velikost dat (GB)|4 096|
-|Maximální velikost protokolu (GB)|2 048|
+|Maximální velikost protokolu (GB)|2048|
 |Maximální velikost dat databáze TempDB (GB)|4 096|
 |Typ úložiště|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|

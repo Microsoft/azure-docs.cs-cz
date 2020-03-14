@@ -13,11 +13,11 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356312"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281883"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -102,7 +102,7 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 | &nbsp; | Střed USA – západ | Střed USA – západ |
 | &nbsp; | Západní USA | Západní USA |
 | &nbsp; | Západní USA 2 | Západní USA 2 |
-| Kanada | Východní Kanada | Kanada – střed |
+| Kanada | Kanada – východ | Kanada – střed |
 | &nbsp; | Kanada – střed | Kanada – střed |
 | Brazílie | Brazílie – jih | Brazílie – jih |
 | Evropa | Severní Evropa | Severní Evropa |
@@ -113,9 +113,9 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 | &nbsp; | Východní Asie | Jihovýchodní Asie |
 | Austrálie | Austrálie – východ | Austrálie – východ |
 | &nbsp; | Austrálie – jihovýchod | Austrálie – jihovýchod |
-| Indie | Indie – střed | Indie – střed |
-| &nbsp; | Indie – západ | Indie – střed |
-| &nbsp; | Indie – jih | Indie – střed |
+| Indie | Střed Indie | Střed Indie |
+| &nbsp; | Indie – západ | Střed Indie |
+| &nbsp; | Indie – jih | Střed Indie |
 | Japonsko | Japonsko – východ | Japonsko – východ |
 | &nbsp; | Japonsko – západ | Japonsko – východ |
 | Jižní Korea | Jižní Korea – střed | Jižní Korea – střed |

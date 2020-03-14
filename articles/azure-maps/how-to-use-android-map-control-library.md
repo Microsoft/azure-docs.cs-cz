@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ca4051e56f7d51ac7ac5fbe534cb8fc536d64a68
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b43169b59425e97b0aa614eb64a5c86c20179a8d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368681"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136812"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
 Azure Maps Android SDK je knihovna vektorových map pro Android. Tento článek vás provede procesy instalace Azure Maps Android SDK a načtení mapy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
@@ -107,7 +107,7 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
     
     * Přidání importů pro sadu Azure Maps SDK
     * Nastavení ověřovacích informací Azure Maps
-    * Získání instance mapového ovládacího prvku v metodě **Create**
+    * získání instance mapového ovládacího prvku v metodě **Create**
 
     Nastavení ověřovacích informací pro třídu `AzureMaps` globálně pomocí metod `setSubscriptionKey` nebo `setAadProperties` ji vytvoří, takže nebudete muset přidávat informace o ověřování do každého zobrazení. 
 
@@ -273,7 +273,7 @@ Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a místní
 Přečtěte si, jak přidat překryvná data na mapu:
 
 > [!div class="nextstepaction"]
-> [Přidání vrstvy symbolů na mapu pro Android](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
+> [Přidání vrstvy symbolů na mapu pro Android](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Přidání obrazců na mapu pro Android](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)

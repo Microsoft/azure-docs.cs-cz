@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387021"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246783"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databázemi, kontejnery a položkami v Azure Cosmos DB
 
@@ -22,13 +22,13 @@ Následující obrázek znázorňuje hierarchii různých entit v účtu Azure C
 
 ![Entity účtu Azure Cosmos](./media/databases-containers-items/cosmos-entities.png)
 
-## <a name="azure-cosmos-databases"></a>Databáze Azure Cosmos DB
+## <a name="azure-cosmos-databases"></a>Databáze Azure Cosmos
 
 V rámci svého účtu můžete vytvořit jednu nebo víc databází Azure Cosmos. Databáze je obdobná jako obor názvů. Databáze je jednotka správy pro sadu Cosmos kontejnerů Azure. Následující tabulka ukazuje, jak databáze Azure Cosmos je namapována na různé entity specifické pro rozhraní API:
 
 | Entita Azure Cosmos | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Databáze Azure Cosmos | databáze | Prostor klíčů | databáze | databáze | Není k dispozici |
+|Databáze Azure Cosmos | Databáze | Prostor klíčů | Databáze | Databáze | Není k dispozici |
 
 > [!NOTE]
 > Při vytváření první tabulky pomocí rozhraní API pro tabulky účty se ve vašem účtu Azure Cosmos automaticky vytvoří výchozí databáze.
@@ -45,7 +45,7 @@ S Azure Cosmos Database můžete pracovat s Azure Cosmos API, jak je popsáno v 
 |Aktualizace databáze| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | Není k dispozici | Není k dispozici |
 
 
-## <a name="azure-cosmos-containers"></a>Kontejnery Azure Cosmos DB
+## <a name="azure-cosmos-containers"></a>Kontejnery služby Azure Cosmos
 
 Kontejner Azure Cosmos je jednotka škálovatelnosti pro zřízenou propustnost a úložiště. Kontejner je horizontálně dělené do oddílů a pak replikuje napříč několika oblastmi. Položky, které přidáte do kontejneru a propustnost, kterou zřídíte, se automaticky distribuují napříč sadou logických oddílů na základě klíče oddílu. Další informace o dělení a klíčích oddílů naleznete v tématu [data oddílů](partition-data.md). 
 
@@ -74,7 +74,7 @@ Kontejner Azure Cosmos je specializovaný na entity specifické pro rozhraní AP
 
 | Entita Azure Cosmos | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Kontejner Azure Cosmos | Kontejner | Tabulka | Kolekce | Graph | Tabulka |
+|Kontejner Azure Cosmos | Kontejner | Tabulka | Kolekce | Graf | Tabulka |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Vlastnosti kontejneru Azure Cosmos
 
@@ -88,7 +88,7 @@ Kontejner Azure Cosmos obsahuje sadu vlastností definovaných systémem. V záv
 |\_samy sebe | Generované systémem | Adresovatelný URI kontejneru | Ano | Ne | Ne | Ne | Ne |
 |id | Uživatelsky konfigurovatelné | Uživatelem definované jedinečný název kontejneru | Ano | Ano | Ano | Ano | Ano |
 |indexingPolicy | Uživatelsky konfigurovatelné | Poskytuje možnost změnit cestu indexu, typ indexu a režim indexu. | Ano | Ne | Ne | Ne | Ano |
-|TimeToLive | Uživatelsky konfigurovatelné | Poskytuje možnost automaticky odstraňovat položky z kontejneru po nastaveném časovém období. Podrobnosti najdete v tématu [Time to Live](time-to-live.md). | Ano | Ne | Ne | Ne | Ano |
+|timeToLive | Uživatelsky konfigurovatelné | Poskytuje možnost automaticky odstraňovat položky z kontejneru po nastaveném časovém období. Podrobnosti najdete v tématu [Time to Live](time-to-live.md). | Ano | Ne | Ne | Ne | Ano |
 |changeFeedPolicy | Uživatelsky konfigurovatelné | Umožňuje číst změny provedené u položek v kontejneru. Podrobnosti najdete v tématu [Změna kanálu](change-feed.md). | Ano | Ne | Ne | Ne | Ano |
 |uniqueKeyPolicy | Uživatelsky konfigurovatelné | Slouží k zajištění jedinečnosti jedné nebo více hodnot v logickém oddílu. Další informace najdete v tématu [omezení jedinečnosti klíčů](unique-keys.md). | Ano | Ne | Ne | Ne | Ano |
 

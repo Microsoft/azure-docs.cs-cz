@@ -17,11 +17,11 @@ ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363708"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244755"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou privátní IP adresou pomocí PowerShellu
 
@@ -29,7 +29,7 @@ ms.locfileid: "78363708"
 
 Virtuální počítač (VM) můžete vytvořit se statickou privátní IP adresou. Pokud chcete vybrat, která adresa z podsítě je přiřazená k virtuálnímu počítači, přiřaďte statickou privátní IP adresu, nikoli dynamickou adresu. Přečtěte si další informace o [statických privátních IP adresách](virtual-network-ip-addresses-overview-arm.md#allocation-method). Chcete-li změnit soukromou IP adresu přiřazenou existujícímu virtuálnímu počítači z dynamického na statickou nebo pro práci s veřejnými IP adresami, přečtěte si téma [Přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md).
 
-## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 Následující kroky můžete provést z místního počítače nebo pomocí Azure Cloud Shell. Pokud chcete použít místní počítač, ujistěte se, že máte [nainstalovanou Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu libovolného příkazového řádku, který následuje. Cloud Shell vás přihlásí k Azure.
 

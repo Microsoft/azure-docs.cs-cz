@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394225"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260329"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -45,7 +45,7 @@ Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
 
 Pro objekt systému souborů jsou definována oprávnění **Číst**, **Zapisovat** a **Provést** a pro soubory a složky je lze používat podle následující tabulky:
 
-|            |    File     |   Složka |
+|            |    Soubor     |   Složka |
 |------------|-------------|----------|
 | **Číst (R)** | Může číst obsah souboru | Pro vypsání obsahu složky jsou vyžadována oprávnění **Číst** a **Provést**.|
 | **Zapisovat (W)** | Může zapisovat do souboru nebo k němu připojovat data | Pro vytváření podřízených položek ve složce jsou vyžadována oprávnění **Zapisovat** a **Provést**. |
@@ -59,7 +59,7 @@ Zápis **RWX** se používá k označení **Číst + Zapisovat + Provést**. Pou
 |--------------|------------|------------------------|
 | 7            | `RWX`        | Číst + Zapisovat + Provést |
 | 5            | `R-X`        | Číst + Provést         |
-| 4            | `R--`        | Čtení                   |
+| 4            | `R--`        | Číst                   |
 | 0            | `---`        | Žádná oprávnění         |
 
 
@@ -73,10 +73,10 @@ Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit,
 
 | Operace | Objekt              |    /      | Seattle /   | Portland /   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| Čtení      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Číst      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Připojení k | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
 | Odstranit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Vytvoření    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Vytvořit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Seznam      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Seznam      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Seznam      | /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -297,6 +297,6 @@ Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro 
 * [POSIX ACL na Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)

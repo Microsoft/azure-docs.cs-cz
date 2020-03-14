@@ -8,11 +8,11 @@ ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0f13f297facedceb50920c0f6afca63fe1df0b48
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375165"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266179"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -267,7 +267,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 -ResourceName awsales -ResourceType "Microsoft.AnalysisServices/servers"
 ```
 
-### <a name="enable-logging"></a>Povolte protokolování
+### <a name="enable-logging"></a>Povolit protokolování
 
 Pokud chcete povolit protokolování, použijte rutinu Set-AzDiagnosticSetting spolu s proměnnými pro nový účet úložiště, účet serveru a kategorii. Spusťte následující příkaz, nastavením příznaku **-Enabled** na **$true**:
 

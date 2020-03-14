@@ -12,11 +12,11 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668330"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264307"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -75,7 +75,7 @@ Element **TechnicalProfiles** obsahuje sadu technických profilů, které podpor
 
 Element **TechnicalProfile** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 |---------|---------|---------|
 | ID | Ano | Jedinečný identifikátor technického profilu. Na technický profil se dá odkazovat pomocí tohoto identifikátoru z dalších prvků v souboru zásad. Například **OrchestrationSteps** a **ValidationTechnicalProfile**. |
 
@@ -83,10 +83,10 @@ Element **TechnicalProfile** obsahuje následující atribut:
 
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Domain (Doména) | 0:1 | Název domény pro technický profil. Pokud například váš technický profil určuje poskytovatele identity Facebooku, název domény je Facebook.com. |
+| Doména | 0:1 | Název domény pro technický profil. Pokud například váš technický profil určuje poskytovatele identity Facebooku, název domény je Facebook.com. |
 | DisplayName | 1:1 | Název technického profilu, který se může zobrazit uživatelům |
 | Popis | 0:1 | Popis technického profilu, který se může zobrazit uživatelům |
-| Protocol (Protokol) | 0:1 | Protokol používaný pro komunikaci s druhou stranou. |
+| Protokol | 0:1 | Protokol používaný pro komunikaci s druhou stranou. |
 | Metadata | 0:1 | Kolekce párů klíč/hodnota, které jsou využívány protokolem pro komunikaci s koncovým bodem v průběhu transakce. |
 | InputTokenFormat | 0:1 | Formát vstupního tokenu. Možné hodnoty: `JSON`, `JWT`, `SAML11`nebo `SAML2`. Hodnota `JWT` představuje JSON Web Token na specifikaci IETF. Hodnota `SAML11` představuje token zabezpečení SAML 1,1 dle specifikace OASIS.  Hodnota `SAML2` představuje token zabezpečení SAML 2,0 dle specifikace OASIS. |
 | OutputTokenFormat | 0:1 | Formát výstupního tokenu. Možné hodnoty: `JSON`, `JWT`, `SAML11`nebo `SAML2`. |
@@ -105,11 +105,11 @@ Element **TechnicalProfile** obsahuje následující atribut:
 | UseTechnicalProfileForSessionManagement | 0:1 | Jiný technický profil, který se má použít pro správu relací. |
 |EnabledForUserJourneys| 0:1 |Řídí, jestli se technický profil spustí na cestě uživatele.  |
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
 Element **Protocol** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Název | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`nebo `None`. |
 | Popisovač | Ne | Pokud je název protokolu nastaven na `Proprietary`, zadejte plně kvalifikovaný název sestavení, které Azure AD B2C používá k určení obslužné rutiny protokolu. |
@@ -126,7 +126,7 @@ Element **metadata** obsahuje následující prvky:
 
 Element **Item** elementu **metadata** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Klíč | Ano | Klíč metadat. Seznam položek metadat najdete u každého typu technického profilu. |
 
@@ -142,7 +142,7 @@ Element **CryptographicKeys** obsahuje následující element:
 
 **Klíčový** element obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ne | Jedinečný identifikátor konkrétního páru klíčů, na který se odkazuje z dalších prvků v souboru zásad. |
 | StorageReferenceId | Ano | Identifikátorem kontejneru klíčů úložiště, na který odkazuje jiný element v souboru zásad. |
@@ -159,7 +159,7 @@ Element **InputClaimsTransformations** obsahuje následující element:
 
 Element **InputClaimsTransformation** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor transformace deklarací identity už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
@@ -175,7 +175,7 @@ Element **InputClaims** obsahuje následující element:
 
 Element **InputClaim** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
 | Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
@@ -195,11 +195,11 @@ Funkce DislayClaims je aktuálně ve **verzi Preview**.
 
 Element **DisplayClaim** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ne | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
 | DisplayControlReferenceId | Ne | Identifikátor [ovládacího prvku zobrazení](display-controls.md) , který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
-| Požaduje se | Ne | Určuje, zda je požadována deklarace identity zobrazení. |
+| Požadováno | Ne | Určuje, zda je požadována deklarace identity zobrazení. |
 
 **DisplayClaim** vyžaduje, abyste zadali buď `ClaimTypeReferenceId`, nebo `DisplayControlReferenceId`.
 
@@ -215,7 +215,7 @@ Element **PersistedClaims** obsahuje následující prvky:
 
 Element **PersistedClaim** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
 | Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
@@ -233,7 +233,7 @@ Element **OutputClaims** obsahuje následující element:
 
 Element **OutputClaim** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
 | Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
@@ -252,7 +252,7 @@ Element **OutputClaimsTransformations** obsahuje následující element:
 
 Element **OutputClaimsTransformation** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor transformace deklarací identity už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
@@ -268,7 +268,7 @@ Element **ValidationTechnicalProfiles** obsahuje následující element:
 
 Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor technického profilu, který už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
@@ -276,7 +276,7 @@ Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
 **SubjectNamingInfo** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimType | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad. |
 
@@ -284,7 +284,7 @@ Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
 Element **IncludeTechnicalProfile** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor technického profilu, který už je definovaný v souboru zásad, nebo v nadřazeném souboru zásad. |
 
@@ -292,7 +292,7 @@ Element **IncludeTechnicalProfile** obsahuje následující atribut:
 
 Element **UseTechnicalProfileForSessionManagement** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor technického profilu, který už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 

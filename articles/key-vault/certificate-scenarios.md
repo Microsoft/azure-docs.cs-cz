@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386070"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271002"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s Key Vault certifikáty
 Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
@@ -48,7 +48,7 @@ Certifikáty se skládají ze tří vzájemně propojených prostředků společ
 
 - Zahajte operaci přidání přihlašovacích údajů do trezoru klíčů [nastavením prostředku vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) . Vystavitel certifikátu je entita reprezentovaná v Azure Key Vault (KV) jako prostředek CertificateIssuer. Slouží k poskytnutí informací o zdroji certifikátu KV; název vystavitele, poskytovatel, přihlašovací údaje a další podrobnosti o správě.
   - Například MyDigiCertIssuer  
-    -   Poskytovatel  
+    -   Zprostředkovatel  
     -   Přihlašovací údaje – přihlašovací údaje účtu certifikační autority Každá certifikační autorita má vlastní konkrétní data.  
 
     Další informace o vytváření účtů s poskytovateli certifikačních autorit najdete v souvisejícím příspěvku na [blogu Key Vault](https://aka.ms/kvcertsblog).  

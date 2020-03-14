@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395073"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251255"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Koncové body streamování (počátek) v Azure Media Services
 
@@ -50,7 +50,7 @@ Popis těchto typů najdete v následující tabulce:
 |Typ|Jednotky škálování|Popis|
 |--------|--------|--------|  
 |**Standard**|0|Výchozí koncový bod streamování je **standardní** typ – dá se změnit na typ Premium úpravou `scaleUnits`.|
-|**Premium**|> 0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
+|**Premium**|>0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
 
 > [!NOTE]
 > Pro zákazníky, kteří chtějí doručovat obsah do rozsáhlých internetových cílových skupin, doporučujeme povolit CDN pro koncový bod streamování.
@@ -59,11 +59,11 @@ Informace o smlouvě SLA najdete v článku [ceny a smlouvy SLA](https://azure.m
 
 ## <a name="comparing-streaming-types"></a>Porovnávání typů streamování
 
-Funkce|Standard|Premium
+Funkce|Standardní|Premium
 ---|---|---
 Propustnost |Až 600 MB/s a při použití CDN může poskytovat mnohem vyšší efektivní propustnost.|200 MB/s na jednotku streamování (SU). Může poskytovat mnohem vyšší efektivní propustnost při použití CDN.
 CDN|Azure CDN, CDN třetí strany nebo bez CDN.|Azure CDN, CDN třetí strany nebo bez CDN.
-Fakturuje se poměrná hodnota| denně|denně
+Fakturuje se poměrná hodnota| Denně|Denně
 Dynamické šifrování|Ano|Ano
 Dynamické balení|Ano|Ano
 Měřítko|Automatické škálování až na cílovou propustnost.|Další služba SUs

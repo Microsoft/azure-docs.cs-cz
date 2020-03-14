@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149877"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283131"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxe dotazů Lucene v Azure Kognitivní hledání
 
@@ -172,7 +172,7 @@ Následující příklad pomáhá ilustrovat rozdíly. Předpokládejme, že exi
 >  Nemůžete použít * ani? symbol jako první znak hledání.  
 >  U vyhledávacích dotazů se zástupnými znaky se neprovede žádná analýza textu. V době dotazu jsou výrazy se zástupnými znaky porovnány s analyzovanými podmínkami v indexu vyhledávání a rozbaleny.
 
-## <a name="see-also"></a>Viz také  
+## <a name="see-also"></a>Viz také:  
 
 + [Hledat dokumenty](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [Syntaxe výrazů OData pro filtry a řazení](query-odata-filter-orderby-syntax.md)   

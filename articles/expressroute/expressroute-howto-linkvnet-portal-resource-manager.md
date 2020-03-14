@@ -9,11 +9,11 @@ ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384285"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272913"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "78384285"
 
 Tento článek vám pomůže vytvořit připojení k propojení virtuální sítě k okruhu Azure ExpressRoute pomocí webu Azure portal. Virtuální sítě, které se připojují k váš okruh Azure ExpressRoute může být ve stejném předplatném nebo můžou být součástí jiné předplatné.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
 
@@ -124,7 +124,7 @@ ID prostředku a autorizační klíč z vlastníka okruhu, musí uživatel okruh
 5. Na stránce **Nastavení** vyberte **bránu virtuální sítě** a zaškrtněte políčko **uplatnit autorizaci** .
 6. Zadejte **autorizační klíč** a **identifikátor URI rovnocenného okruhu** a zadejte název připojení. Klikněte na tlačítko **OK**. **Identifikátor URI partnerského okruhu** je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
 
-   ![Stránka Nastavení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+   ![Stránka nastavení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Zkontrolujte informace na stránce **Souhrn** a klikněte na tlačítko **OK**.
 
 **Uvolnění autorizace připojení**

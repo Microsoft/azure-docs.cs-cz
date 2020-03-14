@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387033"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273160"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurace Blockchain Data Manageru s využitím webu Azure Portal
 
@@ -20,7 +20,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 * Vytvoření instance blockchain Data Manager pro uzel transakce služby Azure blockchain
 * Přidání aplikací blockchain
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -98,7 +98,7 @@ Následující příklad ukazuje soubory *ABI. JSON* a *bytového souboru. JSON*
 
 Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese URL přístupné soubory ABI a bytového kódu. Pomocí účtu Azure Storage můžete poskytnout soukromě přístupnou adresu URL.
 
-#### <a name="create-storage-account"></a>Vytvoření účtu úložiště
+#### <a name="create-storage-account"></a>Vytvořit účet úložiště
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 

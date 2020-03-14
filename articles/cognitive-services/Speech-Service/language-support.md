@@ -12,11 +12,11 @@ ms.date: 03/09/2020
 ms.author: dapine
 ms.custom: seodec18
 ms.openlocfilehash: 11149019c609079bb22e043c3aaad7df9ec8393d
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943361"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219805"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Podpora jazyků a oblastí pro službu Speech
 
@@ -34,7 +34,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Národní prostředí  | Jazyk                          | Podporuje se | Přizpůsobení                                    |
+| Národní prostředí  | Jazyk                          | Podporuje se | Vlastní nastavení                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | Arabština (Spojené arabské emiráty)                      | Ano       | Ne                                                |
 | `ar-BH` | Arabština (Bahrajn), moderní Standard | Ano       | Jazykový model                                    |
@@ -159,7 +159,7 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 | `hr-HR` | Chorvatština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (hr-HR, Matej)" | "HR-HR-Matej" |
 | `hu-HU` | Maďarština | Muž | "Microsoft serveru řeči Text na řeč hlas (hu-HU, Szabolcs)" | "hu-HU-Szabolcs" |
 | `id-ID` | Indonéština | Muž | "Microsoft serveru řeči Text na řeč hlas (id-ID, Andika)" | ID-ID-Andika |
-| `it-IT` | Italština | Muž | "Microsoft serveru řeči Text hlas řeči (it-IT, Cosimo, Apollo)" | "IT-IT-Cosimo-Apollo" |
+| `it-IT` | italština | Muž | "Microsoft serveru řeči Text hlas řeči (it-IT, Cosimo, Apollo)" | "IT-IT-Cosimo-Apollo" |
 |  |  | Žena | "Microsoft serveru řeči Text na řeč hlas (it-IT, LuciaRUS)" | "IT-IT-LuciaRUS" |
 | `ja-JP` | Japonština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo" |
 |  |  | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo" |
@@ -168,7 +168,7 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 | `ms-MY` | Malajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ms Moje, Rizwan)" | "MS-MY-Rizwan" |
 | `nb-NO` | norština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nb-NO HuldaRUS)" | "NB-NO-HuldaRUS" |
 | `nl-NL` | Nizozemština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nl-NL, HannaRUS)" | nl-NL-HannaRUS " |
-| `pl-PL` | Polština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pl-PL, PaulinaRUS)" | pl-PL-PaulinaRUS " |
+| `pl-PL` | polština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pl-PL, PaulinaRUS)" | pl-PL-PaulinaRUS " |
 | `pt-BR` | Portugalština (Brazílie) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, HeloisaRUS)" | pt-BR-HeloisaRUS |
 |  |  | Muž | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, ADAM, Apollo)" | pt-BR-Daniel-Apollo |
 | `pt-PT` | Portugalština (Portugalsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)" | pt-PT-HeliaRUS |
@@ -242,7 +242,7 @@ Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlas
 | Maďarština               | `hu`          |
 | Indonéština              | `id`          |
 | Irština                   | `ga`          |
-| Italština                 | `it`          |
+| italština                 | `it`          |
 | Japonština                | `ja`          |
 | Kannada                 | `kn`          |
 | Svahilština               | `sw`          |
@@ -257,7 +257,7 @@ Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlas
 | Maltština                 | `mt`          |
 | norština               | `nb`          |
 | Perština                 | `fa`          |
-| Polština                  | `pl`          |
+| polština                  | `pl`          |
 | Portugalština (Brazílie)     | `pt-br`       |
 | Portugalština (Portugalsko)   | `pt-pt`       |
 | Paňdžábština                 | `pa`          |
@@ -276,7 +276,7 @@ Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlas
 | Telugština                  | `te`          |
 | Thajština                    | `th`          |
 | Tonžská                  | `to`          |
-| Turečtina                 | `tr`          |
+| turečtina                 | `tr`          |
 | Ukrajinština               | `uk`          |
 | Urdština                    | `ur`          |
 | Vietnamština              | `vi`          |

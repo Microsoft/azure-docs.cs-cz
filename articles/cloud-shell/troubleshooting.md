@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394294"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272991"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s omezeními & Azure Cloud Shell
 
@@ -168,7 +168,7 @@ Azure Cloud Shell převezme vaše osobní údaje, budou se data zachycená a ulo
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Export
+### <a name="export"></a>Exportovat
 Chcete-li **exportovat** nastavení uživatele Cloud Shell Uložit pro vás, jako je preferované prostředí, velikost písma a typ písma, spusťte následující příkazy.
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)

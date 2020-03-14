@@ -10,11 +10,11 @@ ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355921"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269117"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -78,7 +78,7 @@ Ve většině případů byste měli používat účty pro obecné účely v2. �
 
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
-- Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom čísla a malá písmena.
+- Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
 - Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
 
 ## <a name="performance-tiers"></a>Úrovně výkonu

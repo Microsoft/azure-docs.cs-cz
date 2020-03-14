@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: MT
+ms.openlocfilehash: 80d8f176d3a4af82a6b93e1af430d914c47bfff6
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131897"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137352"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -18,7 +18,7 @@ Tento článek popisuje, jak ingestovat historická data ze senzorů do Azure Fa
 
 Běžným scénářem v FarmBeats je příjem historických dat z prostředků Internet věcí (IoT), jako jsou zařízení a senzory. Můžete vytvářet metadata pro zařízení a senzory a následně ingestovat historická data do FarmBeats v kanonickém formátu.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali FarmBeats a shromáždili historická data ze svých zařízení IoT.
 Musíte taky povolit partnerský přístup, jak je uvedeno v následujících krocích.
@@ -33,7 +33,7 @@ Musíte povolit integraci partnera s instancí Azure FarmBeats. Tento krok vytvo
 - Tajný klíč klienta
 - Připojovací řetězec EventHub
 
-Postupujte následovně.
+Postupujte takto:
 
 >[!NOTE]
 > Chcete-li provést následující postup, musíte být správcem.
@@ -284,6 +284,22 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
+Níže je uveden vzorový kód v Pythonu. Upozorňujeme, že přístupový token použitý v této ukázce je stejný jako ten, který jsme dostali během ověřování.
+
+```python
+import requests
+import json
+
+# Got access token - Calling the Device Model API
+headers = {
+    "Authorization": "Bearer " + access_token,
+    "Content-Type" : "application/json"
+    }
+payload = '{"type" : "Node", "productCode" : "TestCode", "ports": [{"name": "port1","type": "Analog"}], "name" : "DummyDevice"}'
+response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=headers)
+```
+
+
 > [!NOTE]
 > Rozhraní API vrací jedinečná ID pro každou vytvořenou instanci. Aby bylo možné odesílat odpovídající zprávy telemetrie, je nutné zachovat ID.
 
@@ -384,7 +400,7 @@ Tady je příklad zprávy telemetrie:
 }
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Po ingestování historických/streamových dat ze senzorů nejde zobrazit data telemetrie.
 
@@ -422,4 +438,4 @@ Tady je příklad zprávy telemetrie:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o REST API podrobností integrace na základě REST API najdete v tématu [](rest-api-in-azure-farmbeats.md).
+Další informace o REST API podrobností integrace na základě REST API najdete v tématu [REST API](rest-api-in-azure-farmbeats.md).

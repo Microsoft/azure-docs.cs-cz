@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376660"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262006"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -83,7 +83,7 @@ Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke
 
     Balíček přístupu, který vytváříte, a všechny prostředky, které jsou v něm obsažené, se přidají do nového katalogu. Později můžete také přidat další vlastníky katalogu.
 
-1. Klikněte na **Další**.
+1. Klikněte na **Další**.
 
 ## <a name="resource-roles"></a>Role prostředků
 
@@ -105,9 +105,9 @@ Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do
 
     ![Přístup k balíčku – výběr role prostředků](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. Klikněte na **Další**.
+1. Klikněte na **Další**.
 
-## <a name="requests"></a>Žádosti
+## <a name="requests"></a>Požadavky
 
 Na kartě **žádosti** vytvoříte první zásadu, která určí, kdo může žádat o přístup k balíčku a také nastavení schválení. Později můžete vytvořit další zásady vyžádání, které umožní více skupinám uživatelů žádat o přístup k balíčku s vlastním nastavením schválení.
 

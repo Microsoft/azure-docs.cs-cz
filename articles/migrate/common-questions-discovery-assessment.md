@@ -1,123 +1,147 @@
 ---
-title: Běžné otázky – zjišťování, hodnocení a analýza závislostí v Azure Migrate
+title: Nejčastější dotazy k zjišťování, posouzení a analýze závislostí
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 6db521791e5ebb846585d4e0e823ba20d178d54a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e46d1e6ee1dd404e6e040eb394e89dd86a3d4d8e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918542"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269871"
 ---
-# <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí
+# <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate. Pokud máte další otázky, přečtěte si tyto články:
+Tento článek obsahuje odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate. Pokud máte další otázky, ověřte tyto prostředky:
 
 - [Obecné otázky](resources-faq.md) týkající se Azure Migrate
-- [Otázky](common-questions-appliance.md) týkající se zařízení Azure Migrate.
-- [Dotazy](common-questions-server-migration.md) týkající se migrace serveru
-- Vystavení otázek na [Azure Migrate Fórum](https://aka.ms/AzureMigrateForum)
-
-
+- Dotazy týkající se [zařízení Azure Migrate](common-questions-appliance.md)
+- Dotazy týkající se [migrace serveru](common-questions-server-migration.md)
+- Získání otázek zodpovězených ve [fóru Azure Migrate](https://aka.ms/AzureMigrateForum)
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů je možné zjistit pomocí zařízení?
 
-Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V a až 250 serverů s jedním zařízením. Pokud máte ve svém místním prostředí více počítačů, přečtěte si informace o škálování [technologie Hyper-V](scale-hyper-v-assessment.md), [VMware](scale-vmware-assessment.md) a [fyzické](scale-physical-assessment.md) posouzení.
+Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V a až 250 fyzických serverů pomocí jediného zařízení. Pokud máte více počítačů, přečtěte si o [škálování posouzení technologie Hyper-V](scale-hyper-v-assessment.md), [škálování vyhodnocení VMware](scale-vmware-assessment.md)nebo [škálování posouzení fyzického serveru](scale-physical-assessment.md).
 
+## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Změnila se velikost virtuálního počítače. Můžu znovu spustit posouzení?
 
+Zařízení Azure Migrate průběžně shromažďuje informace o místním prostředí.  Posouzení je snímkem v čase místních virtuálních počítačů. Pokud změníte nastavení na virtuálním počítači, který chcete vyhodnotit, použijte k aktualizaci posouzení nejnovější změny pomocí možnosti Přepočítat.
 
-## <a name="vm-size-changed-can-i-run-an-assessment-again"></a>Velikost virtuálního počítače se změnila. Můžu znovu spustit posouzení?
+## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Návody zjistit virtuální počítače ve víceklientském prostředí?
 
-Zařízení Azure Migrate průběžně shromažďuje informace o místním prostředí. Posouzení je ale snímkem v čase místních virtuálních počítačů. Pokud změníte nastavení na virtuálním počítači, který chcete vyhodnotit, použijte k aktualizaci posouzení nejnovější změny pomocí možnosti Přepočítat.
+- **VMware**: Pokud je prostředí sdílené mezi klienty a nechcete zjistit virtuální počítače tenanta v rámci předplatného jiného tenanta, vytvořte vCenter Server přihlašovací údaje VMware, které budou mít přístup jenom k virtuálním počítačům, které chcete zjišťovat. Pak tyto přihlašovací údaje použijte při zahájení zjišťování v zařízení Azure Migrate.
+- **Hyper-v**: zjišťování používá přihlašovací údaje hostitele Hyper-v. Pokud virtuální počítače sdílejí stejného hostitele Hyper-V, není v současnosti žádný způsob, jak zjišťování oddělit.  
 
-### <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Návody zjistit virtuální počítače ve víceklientském prostředí?
+## <a name="do-i-need-vcenter-server"></a>Potřebuji vCenter Server?
 
-- Pokud se v případě VMware sdílí vaše prostředí mezi klienty a nechcete zjišťovat virtuální počítače jednoho tenanta v rámci předplatného jiného tenanta, vytvořte vCenter Server přihlašovacích údajů, které budou mít přístup jenom k virtuálním počítačům, které chcete zjistit. Pak tyto přihlašovací údaje použijte při zahájení zjišťování v zařízení Azure Migrate.
-- U technologie Hyper-V používá zjišťování přihlašovací údaje hostitele Hyper-V. Pokud virtuální počítače sdílejí stejného hostitele Hyper-V, není v současnosti žádný způsob, jak zjišťování oddělit.  
+Ano, Azure Migrate vyžaduje vCenter Server v prostředí VMware, aby bylo možné provést zjišťování. Azure Migrate nepodporuje zjišťování hostitelů ESXi, které nejsou spravované pomocí vCenter Server.
 
+## <a name="what-are-the-sizing-options"></a>Jaké jsou možnosti změny velikosti?
 
-### <a name="do-i-need-vcenter-server-for-vmware-vm-discovery"></a>Potřebuji vCenter Server pro zjišťování virtuálních počítačů VMWare?
+Při změně velikosti v místním prostředí Azure Migrate nepovažují údaje o výkonu virtuálních počítačů za účelem posouzení. Azure Migrate vyhodnocuje velikosti virtuálních počítačů na základě místních konfigurací. Při změně velikosti na základě výkonu je velikost založena na datech využití.
 
-Ano, Azure Migrate potřebuje vCenter Server k provedení zjišťování v prostředí VMware. Nepodporuje zjišťování hostitelů ESXi, které nejsou spravované pomocí vCenter Server.
+Například pokud má místní virtuální počítač čtyři jádra a 8 GB paměti v 50% využití CPU a 50% využití paměti:
+- Při změně velikosti v místním prostředí se doporučuje použít SKU virtuálního počítače Azure se čtyřmi jádry a 8 GB paměti.
+- Velikost na základě výkonu doporučí SKU virtuálních počítačů, které mají dvě jádra a 4 GB paměti, protože je zváženo procento využití.
 
+Podobně platí, že velikost disků závisí na kritériích velikosti a typu úložiště:
+- Pokud jsou kritéria změny velikosti založená na výkonu a typ úložiště je automatický, Azure Migrate při určení typu cílového disku (Standard nebo Premium) převezme hodnoty IOPS a propustnosti disku do účtu.
+- Pokud jsou kritéria změny velikosti v závislosti na výkonu a typ úložiště je Premium, Azure Migrate doporučuje SKU na disku úrovně Premium na základě velikosti místního disku. Stejná logika se aplikuje na velikost disku, pokud je velikost v místním prostředí a typ úložiště je Standard nebo Premium.
 
-## <a name="whats-the-difference-sizing-options"></a>Jaké jsou možnosti velikosti rozdílů?
+## <a name="does-performance-history-and-utilization-affect-sizing"></a>Ovlivňují historii a využití výkonu změny velikosti?
 
-Při změně velikosti v místním prostředí Azure Migrate nepovažují údaje o výkonu virtuálních počítačů za účelem posouzení. Vyhodnocuje velikosti virtuálních počítačů na základě místních konfigurací. Při změně velikosti na základě výkonu je velikost založena na datech využití.
+Ano, historie výkonu a využití ovlivňují změnu velikosti v Azure Migrate.
 
-- Pokud má například místní virtuální počítač 4 jádra a 8 GB paměti při 50% využití CPU a 50% využití paměti, dojde k následujícímu:
-    - Při změně velikosti v místním prostředí se doporučuje skladová položka virtuálního počítače Azure, která má 4 jádra a 8 GB paměti.
-    - Velikost na základě výkonu doporučí SKU virtuálních počítačů, které mají 2 jádra a 4 GB paměti, protože je zváženo procento využití.
+### <a name="performance-history"></a>Historie výkonu
 
-- Podobně závisí velikost disku na dvou vlastnostech posouzení: kritéria změny velikosti a typ úložiště.
-    - Pokud jsou kritéria změny velikosti založená na výkonu a typ úložiště je automatický, Azure Migrate při určení typu cílového disku (Standard nebo Premium) převezme hodnoty IOPS a propustnosti disku do účtu.
-    - Pokud jsou kritéria změny velikosti založená na výkonu a typ úložiště je Premium, Azure Migrate doporučuje SKU diskových jednotek úrovně Premium, a to na základě velikosti místního disku. Stejná logika se aplikuje na velikost disku, pokud je velikost v místním prostředí a typ úložiště je Standard nebo Premium.
+V případě změny velikosti založené na výkonu Azure Migrate shromažďuje historii výkonu místních počítačů a pak ji používá k doporučení velikosti virtuálního počítače a typu disku v Azure:
 
-## <a name="does-performance-historyutilization-impact-sizing"></a>Má dopad na historii výkonu/využití vliv na změnu?
+1. Zařízení nepřetržitě profiluje místní prostředí za účelem shromažďování dat o využití v reálném čase každých 20 sekund.
+1. Zařízení shrnuje shromážděné 20 vzorků a používá je k vytvoření jednoho datového bodu každých 15 minut.
+1. Pokud chcete vytvořit datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek s 20 sekundami.
+1. Zařízení odešle datový bod do Azure.
 
-Tyto vlastnosti se zohledňují pouze při určování velikosti na základě výkonu.
+### <a name="utilization"></a>Vytížen
 
-- Azure Migrate shromažďuje historii výkonu místních počítačů a používá je k tomu, aby v Azure doporučila velikost virtuálního počítače a typ disku.
-- Zařízení nepřetržitě profiluje místní prostředí, které umožňuje shromažďovat data o využití v reálném čase každých 20 sekund.
-- Zařízení shrnuje ukázky 20 sekund a vytvoří jeden datový bod každých 15 minut.
-- Pokud chcete vytvořit datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek s 20 sekundami.
-- Zařízení odešle tento datový bod do Azure.
+Když v Azure vytvoříte posouzení v závislosti na době trvání a hodnotě percentilu historie výkonu, která je nastavená, Azure Migrate vypočítá efektivní hodnotu využití a pak ji použije ke změně velikosti.
 
-Když vytvoříte posouzení v Azure na základě hodnoty doby trvání a percentilu historie výkonu, Azure Migrate vypočítá efektivní hodnotu využití a použije ji k určení velikosti.
+Například pokud nastavíte dobu trvání na jeden den a percentil hodnoty na 95. percentil, Azure Migrate seřadí vzorové body na 15 minut odesílané kolektorem za poslední den ve vzestupném pořadí. Jako efektivní využití se vybere hodnota 95. percentilu.
 
-- Pokud například nastavíte dobu trvání na jeden den a hodnotu percentilu na 95. percentil, Azure Migrate seřadí ukázkové body za 15 minut odeslané kolektorem za poslední den ve vzestupném pořadí a jako efektivní se vybere hodnota 95. percentilu. vytížen.
-- Použití hodnoty 95. percentilu zajišťuje, že se podhodnoty ignorují. Pokud použijete 99 percentil, je možné zahrnout mimo jiné odlehlé hodnoty. Pokud chcete vybrat špičku v období, bez chybějících hodnot, vyberte 99 percentil.
+Použití hodnoty 95. percentil zajistí, že se podhodnoty ignorují. Pokud Azure Migrate používá percentil 99, mohou být mimo jiné zahrnuté odlehlé hodnoty. Pokud chcete vybrat špičku v období bez chybějících hodnot, nastavte Azure Migrate, aby se 99 percentil používal.
+
+## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>Jak jsou vyhodnocování na základě importu odlišná od posouzení se zdrojem zjišťování jako zařízením?
+
+Vyhodnocení založená na importech jsou vyhodnocení vytvořená pomocí počítačů, které jsou importovány do Azure Migrate pomocí souboru CSV. Pro import jsou povinná jenom čtyři pole: název serveru, jádra, paměť a operační systém. Všimněte si následujících věcí: 
+ - Kritéria připravenosti jsou méně přísná v hodnoceních na základě importu u parametru typu spuštění. Pokud typ spuštění není zadaný, předpokládá se, že počítač má typ spouštění BIOS a počítač není označený jako **podmíněně připravený**. V části posouzení se zdrojem zjišťování jako zařízením je připravenost označena jako **podmíněně připravena** , pokud chybí typ spuštění. Tento rozdíl ve výpočtu připravenosti je, protože uživatelé nemusí mít po dokončení vyhodnocení na základě importu k dispozici všechny informace o počítačích v počátečních fázích plánování migrace. 
+ - Posouzení importu na základě výkonu používá hodnotu využití poskytovanou uživatelem pro výpočty podle správné velikosti. Vzhledem k tomu, že je hodnota využití poskytovaná uživatelem, jsou možnosti využití **Historie výkonu** a **percentilu** ve vlastnostech posouzení zakázané. Ve vyhodnocování se zdrojem zjišťování jako zařízením je zvolená hodnota percentilu převzata z údajů o výkonu shromážděných zařízením.
 
 ## <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
 
-Pomocí Vizualizace závislostí můžete posuzovat skupiny virtuálních počítačů pro migraci s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo, a proto pomáhá vyhnout se neočekávanému výpadkům při migraci do Azure. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Další informace](concepts-dependency-visualization.md)
+Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Další informace](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Vizualizace závislostí není v Azure Government k dispozici.
 
+## <a name="whats-the-difference-between-agent-based-and-agentless"></a>Jaký je rozdíl mezi agenty a bez agenta?
+
+Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou shrnuty v tabulce.
+
+**Požadavek** | **Bez agenta** | **Založené na agentovi**
+--- | --- | ---
+Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#agentless-dependency-visualization) podporované operační systémy. | Obecně dostupná (GA).
+Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)a [Agent závislostí](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+Požadavky | [Projděte si](concepts-dependency-visualization.md#agentless-visualization) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-visualization) požadavky a požadavky na nasazení.
+Log Analytics | Není nutné. | Azure Migrate používá řešení [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-visualization).
+Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
+Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
+Vizualizace | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.
+Export dat | Momentálně se nedá stáhnout v tabulkovém formátu. | Data se dají dotazovat pomocí Log Analytics.
+
 ## <a name="do-i-pay-for-dependency-visualization"></a>Platíte za vizualizaci závislostí?
-Ne. [Další informace](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenách služby Azure Migrate.
 
-## <a name="what-do-i-install-for-dependency-visualization"></a>Co mám nainstalovat pro vizualizaci závislostí?
+Ne. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
-Pokud chcete používat vizualizaci závislostí, je potřeba stáhnout a nainstalovat agenty na každý místní počítač, který chcete vyhodnotit.
+## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>Co mám nainstalovat pro vizualizaci závislostí založenou na agentech?
 
-Na každý počítač je potřeba nainstalovat následující agenty:
-- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).
-- [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent).
-- Pokud máte počítače bez připojení k Internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.
+Chcete-li použít vizualizaci závislostí založenou na agentech, Stáhněte a nainstalujte agenty na každý místní počítač, který chcete vyhodnotit:
 
-Pokud nepoužíváte vizualizaci závislostí, nepotřebujete tyto agenty.
+- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent)
+- Pokud máte počítače, které nemají připojení k Internetu, Stáhněte a nainstalujte na ně bránu Log Analytics.
+
+Tyto agenty potřebujete jenom v případě, že používáte vizualizaci závislostí založenou na agentech.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Můžu použít stávající pracovní prostor?
 
-Ano, existující pracovní prostor můžete připojit k projektu migrace a použít ho pro vizualizaci závislostí. 
+Ano, pro vizualizaci závislostí založenou na agentech můžete existující pracovní prostor připojit k projektu migrace a použít ho pro vizualizaci závislostí. 
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>Můžu sestavu Vizualizace závislostí exportovat?
 
-Ne, vizualizace závislosti se nedá exportovat. Azure Migrate však používá Service Map a můžete použít [REST API Service map](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) k načtení závislostí ve formátu JSON.
+Ne, sestavu vizualizace závislosti v rámci vizualizace založenou na agentech nelze exportovat. Azure Migrate však používá Service Map a můžete použít [REST API Service map](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) k načtení závislostí ve formátu JSON.
 
-## <a name="can-i-automate--mmadependency-agent-installation"></a>Můžu automatizovat instalaci agenta MMA/Dependency?
+## <a name="can-i-automate-agent-installation"></a>Můžu automatizovat instalaci agenta?
 
-Pomocí tohoto [skriptu nainstalujte agenta závislostí](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postupujte podle těchto [pokynů a nainstalujte MMA](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) pomocí příkazového řádku nebo automatizace. Pro MMA použijte [Tento skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Pro vizualizaci závislostí založenou na agentech:
 
-Kromě skriptů můžete k nasazení agentů použít taky nástroje pro nasazení, jako je Microsoft Endpoint Configuration Manager a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) .
-
+- Pomocí [skriptu nainstalujte agenta závislostí](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples).
+- Pro MMA [použijte příkazový řádek nebo automatizaci](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)nebo použijte [skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+- Kromě skriptů můžete k nasazení agentů použít nástroje pro nasazení, jako je Microsoft Endpoint Configuration Manager a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) .
 
 ## <a name="what-operating-systems-does-mma-support"></a>Jaké operační systémy MMA podporuje?
 
-- Prohlédněte si seznam [operačních systémů Windows podporovaných nástrojem MMA](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
-- Prohlédněte si seznam [operačních systémů Linux podporovaných nástrojem MMA](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+- Prohlédněte si seznam [operačních systémů Windows, které podporuje MMA](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
+- Prohlédněte si seznam [operačních systémů Linux, které podporuje MMA](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
 
-## <a name="can-i-visualize-dependencies-for-more-than-an-hour"></a>Je možné vizualizovat závislosti po dobu delší než hodinu?
-Ne. Závislosti můžete vizualizovat až o hodinu. Můžete se vrátit k určitému datu v historii, pokud je to v měsíci zpátky, ale maximální doba trvání vizualizace je hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete zobrazit pouze závislosti pouze do jednoho hodiny okna. Můžete ale použít protokoly Azure Monitor k [dotazování na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
+## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Je možné vizualizovat závislosti po dobu více než jedné hodiny?
 
-## <a name="can-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Může vizualizovat závislosti pro skupiny více než 10 virtuálních počítačů?
-Můžete [vizualizovat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) pro skupiny, které obsahují až 10 virtuálních počítačů. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
+Pro vizualizaci založenou na agentech můžete vizualizovat závislosti po dobu až jedné hodiny. Můžete se vrátit do konkrétního data v historii, a to až do jednoho měsíce, ale maximální doba trvání vizualizace je jedna hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete zobrazit závislosti pouze pro jedno hodinové okno. Můžete ale použít protokoly Azure Monitor k [dotazování na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) po delší dobu trvání.
 
+U vizualizace bez agentů můžete zobrazit mapu závislostí jednoho serveru po dobu od 1 hodiny do 30 dnů.
 
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Můžu vizualizovat závislosti pro skupiny více než 10 virtuálních počítačů?
 
+Můžete [vizualizovat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) pro skupiny, které mají až 10 virtuálních počítačů. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
 
 ## <a name="next-steps"></a>Další kroky
+
 Přečtěte si [přehled Azure Migrate](migrate-services-overview.md).

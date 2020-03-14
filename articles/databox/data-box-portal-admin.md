@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987472"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259991"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
 
@@ -65,7 +65,7 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
     ![Odstranění první objednávky Data Boxu](media/data-box-portal-admin/delete-order1.png)
 
-3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na tlačítko **odstranit**.
+3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na **Odstranit**.
 
 ## <a name="download-shipping-label"></a>Stáhnout expediční štítek
 
@@ -77,11 +77,11 @@ Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 
     ![Stáhnout expediční štítek](media/data-box-portal-admin/download-shipping-label.png)
 
-2.  Tato akce stáhne následující zpětný expediční štítek. Štítek uložte a vytiskněte ho. Štítek přeložte a vložte do průhledného obalu na zařízení. Ujistěte se, že je štítek vidět. Odstraňte všechny nálepky, které jsou na zařízení z předchozí expedice.
+2.  Tato akce stáhne následující zpětný expediční štítek. Uložte popisek a vytiskněte ho. Skládání a vložení popisku do prostého rukávu na zařízení. Ujistěte se, že je štítek vidět. Odstraňte všechny nálepky, které jsou na zařízení z předchozí expedice.
 
     ![Ukázkový expediční štítek](media/data-box-portal-admin/example-shipping-label.png)
 
-## <a name="edit-shipping-address"></a>Úprava dodací adresy
+## <a name="edit-shipping-address"></a>Upravit dodací adresu
 
 Po zadání objednávky může být potřeba upravit dodací adresu. Tato možnost je dostupná jenom do odeslání zařízení. Po odeslání zařízení už tato možnost dostupná není.
 
@@ -118,7 +118,7 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
 1. Ve vaší objednávce Data Boxu přejděte do části **Přehled**. Ujistěte se, že je objednávka dokončená. Pokud je objednávka dokončená a zařízení vyčištěné, přejděte do části **Podrobnosti objednávky**. Máte k dispozici možnost **Stáhnout historii objednávky**.
 
-    ![Stažení historie objednávky](media/data-box-portal-admin/download-order-history-1.png)
+    ![Stáhnout historii objednávek](media/data-box-portal-admin/download-order-history-1.png)
 
 2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. Budou existovat dvě sady protokolů odpovídající dvěma uzlům na Data Box Heavy. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
     

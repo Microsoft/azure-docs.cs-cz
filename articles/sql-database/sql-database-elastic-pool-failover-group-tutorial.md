@@ -12,11 +12,11 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380024"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268974"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
 
@@ -28,7 +28,7 @@ Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azur
 > - Vytvořte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) pro dva elastické fondy mezi dvěma logickými servery SQL.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 
 
@@ -118,7 +118,7 @@ Vytvořte své elastické fondy a sekundární server pomocí PowerShellu.
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří fond elastické databáze pro Azure SQL Database.| 
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Nastaví vlastnosti pro databázi nebo přesune existující databázi do elastického fondu. | 
@@ -236,7 +236,7 @@ Vytvořte skupinu převzetí služeb při selhání pomocí PowerShellu.
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
@@ -344,7 +344,7 @@ Převzetí služeb při selhání pro skupinu převezmete do sekundárního serv
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
 | [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
@@ -381,7 +381,7 @@ Vyčistěte prostředky pomocí PowerShellu.
 
 Tato část kurzu používá následující rutinu PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. | 
 
@@ -398,7 +398,7 @@ Tato část kurzu používá následující rutinu PowerShellu:
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |

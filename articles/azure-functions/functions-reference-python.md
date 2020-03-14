@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356888"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276683"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -394,7 +394,18 @@ Pro místní vývoj se nastavení aplikace [uchovávají v souboru Local. Settin
 
 ## <a name="python-version"></a>Verze Pythonu 
 
-V současné době Azure Functions podporuje Python 3.6. x a 3.7. x (oficiální distribuce CPython). Při místním spuštění používá modul runtime dostupnou verzi Pythonu. Pokud chcete požádat o konkrétní verzi Pythonu při vytváření aplikace Function App v Azure, použijte možnost `--runtime-version` příkazu [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) . Změna verze je povolena pouze při vytváření Function App.  
+Azure Functions podporuje následující verze Pythonu:
+
+| Verze funkcí | Verze<sup>*</sup> Pythonu |
+| ----- | ----- |
+| 3.x | 3.8<br/>3.7<br/>3.6 |
+| 2.x | 3.7<br/>3.6 |
+
+<sup>*</sup> Oficiální CPython distribuce
+
+Pokud chcete požádat o konkrétní verzi Pythonu při vytváření aplikace Function App v Azure, použijte možnost `--runtime-version` příkazu [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) . Verze modulu runtime Functions je nastavená možností `--functions-version`. Verze Pythonu se nastaví, když se aplikace Function App vytvoří a nedá se změnit.  
+
+Při místním spuštění používá modul runtime dostupnou verzi Pythonu. 
 
 ## <a name="package-management"></a>Správa balíčků
 
@@ -657,7 +668,7 @@ Tuto metodu HTTP používají webové prohlížeče k vyjednání seznamu povole
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace naleznete v následujících zdrojích:
 
 * [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)

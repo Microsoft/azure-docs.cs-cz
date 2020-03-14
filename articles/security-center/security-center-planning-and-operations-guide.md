@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372868"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282689"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Průvodce plánováním a provozem služby Azure Security Center
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -61,8 +61,8 @@ Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Příkl
 
 **Judy (pracovnice oddělení zabezpečení)**
 
-* Nepřetržitě sleduje výstrahy zabezpečení a reaguje na ně
-* Problémy předává vlastníkovi úloh v cloudu nebo analytikovi zabezpečení IT
+* Nepřetržitě monitoruje výstrahy zabezpečení a reaguje na ně.
+* Eskaluje je vlastníkovi cloudového pracovního postupu nebo analytikovi zabezpečení IT.
 
 **Sam (analytik zabezpečení)**
 

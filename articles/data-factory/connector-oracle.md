@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355670"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244508"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -49,7 +49,7 @@ Konkrétně tento konektor Oracle podporuje:
 > [!Note]
 > Proxy server Oracle se nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
 
@@ -65,9 +65,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Propojená služba Oracle podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavena na hodnotu **Oracle**. | Ano |
+| typ | Vlastnost Type musí být nastavena na hodnotu **Oracle**. | Ano |
 | connectionString | Určuje informace potřebné pro připojení k instanci Oracle Database. <br/>Můžete také vložit heslo do Azure Key Vault a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md) . <br><br>**Podporovaný typ připojení**: k identifikaci databáze můžete použít název **Oracle SID** nebo **Oracle** :<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>V případě pokročilých možností nativního připojení Oracle se můžete rozhodnout přidat položku v [souboru Tnsnames. ORA](http://www.orafaq.com/wiki/Tnsnames.ora) soubor na serveru Oracle a v propojené službě ADF Oracle vyberte použít typ připojení název služby Oracle a nakonfigurujte odpovídající název služby. | Ano |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -170,11 +170,11 @@ V této části najdete seznam vlastností podporovaných datovou sadou Oracle. 
 
 Chcete-li kopírovat data z a do Oracle, nastavte vlastnost typ datové sady na `OracleTable`. Jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na `OracleTable`. | Ano |
-| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| table | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| typ | Vlastnost Type datové sady musí být nastavená na `OracleTable`. | Ano |
+| schéma | Název schématu. |Ne pro zdroj, Ano pro jímku  |
+| tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table`. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad:**
@@ -209,9 +209,9 @@ V této části najdete seznam vlastností podporovaných zdrojem a jímkou Orac
 
 Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírování na `OracleSource`. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na `OracleSource`. | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na `OracleSource`. | Ano |
 | oracleReaderQuery | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
 | partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Oracle. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Když je povolená možnost oddílu (to znamená, že ne `None`), je stupeň paralelismu na souběžně načtené data z databáze Oracle ovládán nastavením [`parallelCopies`](copy-activity-performance.md#parallel-copy) v aktivitě kopírování. | Ne |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není možnost oddílu `None`. | Ne |
@@ -256,9 +256,9 @@ Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírován�
 
 Chcete-li kopírovat data do Oracle, nastavte typ jímky v aktivitě kopírování na `OracleSink`. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na `OracleSink`. | Ano |
+| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na `OracleSink`. | Ano |
 | writeBatchSize | Když velikost vyrovnávací paměti dosáhne `writeBatchSize`, vloží data do tabulky SQL.<br/>Povolené hodnoty jsou celé číslo (počet řádků). |Ne (výchozí hodnota je 10 000) |
 | writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Oracle při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
@@ -350,25 +350,25 @@ Při kopírování dat z a do Oracle platí následující mapování. Další i
 |:--- |:--- |
 | BFILE |Byte[] |
 | PŘÍZNAKY |Byte[]<br/>(podporuje se jenom v Oracle 10g a vyšších verzích) |
-| CHAR |Řetězec |
-| CLOB |Řetězec |
-| DATE (Datum) |DateTime |
+| CHAR |String |
+| CLOB |String |
+| DATUM |Datum a čas |
 | FLOAT |Decimal, String (Pokud přesnost > 28) |
 | INTEGER |Decimal, String (Pokud přesnost > 28) |
-| DLOUHOU |Řetězec |
+| DLOUHOU |String |
 | LONG RAW |Byte[] |
-| NCHAR |Řetězec |
-| NCLOB |Řetězec |
+| NCHAR |String |
+| NCLOB |String |
 | NUMBER |Decimal, String (Pokud přesnost > 28) |
-| NVARCHAR2 |Řetězec |
+| NVARCHAR2 |String |
 | ZÍSKÁNÍ |Byte[] |
-| ROWID |Řetězec |
-| TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Řetězec |
-| TIMESTAMP WITH TIME ZONE |Řetězec |
-| UNSIGNED INTEGER |Číslo |
-| VARCHAR2 |Řetězec |
-| XML |Řetězec |
+| ROWID |String |
+| TIMESTAMP |Datum a čas |
+| TIMESTAMP WITH LOCAL TIME ZONE |String |
+| TIMESTAMP WITH TIME ZONE |String |
+| UNSIGNED INTEGER |Počet |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Datový typ INTERVAL v roce do měsíce a druhý den v sekundách se nepodporuje.

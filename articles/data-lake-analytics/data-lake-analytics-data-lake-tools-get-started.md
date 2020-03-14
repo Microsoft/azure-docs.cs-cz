@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315777"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260342"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio
 
@@ -37,7 +37,7 @@ Tento článek popisuje, jak pomocí sady Visual Studio vytvořit účty Azure D
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Visual Studio**: Podporují se všechny edice s výjimkou expresního.
+* **Visual Studio:** Podporovány jsou všechny edice kromě Express.
 
   * Visual Studio 2019
   * Visual Studio 2017
@@ -82,7 +82,7 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Odeslání úlohy Data Lake Analytics
 
-1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
+1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**.
 
 1. Vyberte typ **projektu U-SQL** a pak vyberte **Další**. V **konfiguraci nového projektu**vyberte **vytvořit**.
 

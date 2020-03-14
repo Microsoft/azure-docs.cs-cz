@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382703"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266868"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Řešení konkrétních chybových zpráv protokolu RDP pro virtuální počítač s Windows v Azure
 Při použití připojení vzdálené plochy k virtuálnímu počítači s Windows (VM) v Azure se může zobrazit konkrétní chybová zpráva. Tento článek podrobně popisuje některé běžné chybové zprávy, ke kterým došlo, a postup řešení potíží. Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači pomocí protokolu RDP, ale nedošlo k určité chybové zprávě, přečtěte si článek [Průvodce odstraňováním potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md).

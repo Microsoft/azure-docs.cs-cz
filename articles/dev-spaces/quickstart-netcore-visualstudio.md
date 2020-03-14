@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d3eaa3869c79852d1e598cae76e1dac81c08cdc2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245039"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137967"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio & .NET Core – Azure Dev Spaces
 
@@ -28,7 +28,7 @@ Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
 - [Node. js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio Code](quickstart-netcore.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - Visual Studio 2019 ve Windows s nainstalovanou úlohou vývoj pro Azure Můžete také použít Visual Studio 2017 ve Windows s úlohou vývoje webu a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) nainstalovanou. Pokud nemáte nainstalované Visual Studio, Stáhněte si ho [tady](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -54,7 +54,7 @@ V Azure Portal přejděte na svůj cluster AKS a klikněte na *vývojové prosto
 
 ## <a name="create-a-new-aspnet-web-app"></a>Vytvoření nové webové aplikace v ASP.NET
 
-1. Otevřete sadu Visual Studio.
+1. Otevřít Visual Studio.
 1. Vytvoření nového projektu
 1. Vyberte možnost *ASP.NET Core webová aplikace* a klikněte na tlačítko *Další*.
 1. Pojmenujte svůj projekt *webendu* a klikněte na *vytvořit*.
@@ -94,7 +94,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-Ve výše uvedeném příkladu je veřejná adresa URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Přejděte na veřejnou adresu URL vaší služby a pracujte se službou spuštěnou ve vývojovém prostoru.
+Ve výše uvedeném příkladu je veřejná adresa URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. 
+
+Vyberte **ladit** a potom **Spusťte ladění**. Po několika sekundách se vaše služba spustí a Visual Studio otevře prohlížeč s veřejnou adresou URL služby. Pokud se prohlížeč automaticky neotevře, přejděte v prohlížeči do veřejné adresy URL vaší služby a nahlaste se se službou spuštěnou ve vývojovém prostoru.
 
 Tento proces mohl mít zakázaný veřejný přístup k vaší službě. Pokud chcete povolit veřejný přístup, můžete aktualizovat [vstupní hodnotu v *Values. yaml*][ingress-update].
 
@@ -106,7 +108,7 @@ Pokud je Visual Studio stále připojené k vašemu vývojovému prostoru, klikn
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Uložte změny a spusťte službu pomocí **Azure dev Spaces** v rozevíracím seznamu nastavení spuštění. V prohlížeči otevřete veřejnou adresu URL vaší služby a klikněte na *o*aplikaci. Všimněte si, že se zobrazila aktualizovaná zpráva.
+Uložte změny a vyberte **ladit** a potom **Spusťte ladění**. Po několika sekundách se vaše služba spustí a Visual Studio otevře prohlížeč s veřejnou adresou URL služby. Pokud se prohlížeč neotevře automaticky, přejděte v prohlížeči na veřejnou adresu URL vaší služby a klikněte na *o*. Všimněte si, že se zobrazila aktualizovaná zpráva.
 
 Místo opětovného sestavování a opětovného nasazení nové image kontejneru pokaždé, když jsou provedeny úpravy kódu, Azure Dev Spaces přírůstkově znovu zkompiluje kód v rámci existujícího kontejneru, aby byla zajištěna rychlejší smyčka úprav/ladění.
 

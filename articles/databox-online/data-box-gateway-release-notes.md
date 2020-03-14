@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi Azure Data Box brány obecné dostupnosti | Dokumentace Microsoftu
-description: Popisuje důležité otevřených problémů a jejich řešení Azure Data Box brány se systémem verzi všeobecné dostupnosti.
+title: Poznámky k verzi Azure Data Box Gateway obecné dostupnosti | Microsoft Docs
+description: Popisuje kritické otevřené problémy a řešení pro Azure Data Box Gateway, ve kterých je spuštěná verze s obecnou dostupností.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,45 +9,45 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754195"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265399"
 ---
-# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Poznámky k verzi Azure dat pole Edge nebo Azure Data Box brány obecné dostupnosti
+# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Poznámky k verzi pro obecné dostupnosti Azure Data Box Edge/Azure Data Box Gateway
 
 ## <a name="overview"></a>Přehled
 
-Následující zpráva k vydání verze Identifikujte kritické otevřené problémy a vyřešené problémy pro obecné dostupnosti (GA) verzi nástroje Azure Data Box Edge a Azure Data Box brány.
+Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání obecné dostupnosti (GA) pro Azure Data Box Edge a Azure Data Box Gateway.
 
-Zpráva k vydání verze se průběžně aktualizuje, a při zjištění zásadních problémů vyžadujících alternativní řešení, se přidají. Před nasazením brány Data pole Edge/dat pole, pečlivě si prostudujte informace obsažené v poznámkách k verzi.
+Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením Data Box Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Verze GA odpovídá verzí softwaru:
+Verze GA odpovídá verzím softwaru:
 
-- **Brána pole dat 1903 (1.5.814.447)**
+- **Data Box Gateway 1903 (1.5.814.447)**
 - **Data Box Edge 1903 (1.5.814.447)**
 
 
 ## <a name="whats-new"></a>Co je nového
 
-- **Nové Image virtuálního disku** – nové soubory VHDX a VMDK jsou teď dostupné na webu Azure Portal. Stáhněte si tyto Image, jak zřizovat, konfigurovat a nasazování nových zařízení Data Box brány všeobecné dostupnosti. Brána pole dat zařízení, vytvořené ve starší verzi preview verze nelze aktualizovat na tuto verzi. Další informace najdete v části [Příprava na nasazení Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
-- **Podpora systému souborů NFS** -podporu systému souborů NFS je aktuálně ve verzi preview a dostupné pro verze 3.0 a v4.1 klienty, kteří přístup k zařízení Data Box Edge a brána dat pole.
-- **Odolnost proti chybám úložiště** – vaše Data Box hraniční zařízení dokázal selhání jedním datovým diskem s funkcí úložiště odolnost proti chybám. Tato funkce je aktuálně ve verzi Preview. Můžete povolit úložiště odolnost proti chybám tak, že vyberete **odolné** možnost **nastavení úložiště** místní webové uživatelské rozhraní.
+- **Nové image virtuálních disků** – nové soubory VHDX a VMDK jsou teď dostupné v Azure Portal. Stáhněte si tyto image, abyste zřídili, nakonfigurovali a nasadili nová Data Box Gateway zařízení GA. Zařízení Data Box Gateway vytvořená v dřívějších verzích Preview nelze aktualizovat na tuto verzi. Další informace najdete na webu [Příprava na nasazení Azure Data box Gateway](data-box-gateway-deploy-prep.md).
+- **Podpora NFS** – podpora NFS je momentálně ve verzi Preview a dostupná pro klienty v 3.0 a v 4.1, kteří přistupují k Data Box Edge a data box Gatewaym zařízením.
+- **Odolnost úložiště** – zařízení data box Edge může naodolat selhání jednoho datového disku pomocí funkce odolnosti úložiště. Tato funkce je aktuálně ve verzi Preview. Odolnost úložiště můžete povolit výběrem možnosti **odolnosti** v **Nastavení úložiště** v místním webovém uživatelském rozhraní.
 
 
-## <a name="known-issues-in-ga-release"></a>Známých problémech ve verzi GA
+## <a name="known-issues-in-ga-release"></a>Známé problémy ve verzi GA
 
-Následující tabulka obsahuje souhrn známé problémy pro bránu dat pole verze.
+Následující tabulka poskytuje souhrn známých problémů Data Box Gateway vydaných verzí.
 
-| Ne. | Funkce | Problém | Alternativní řešení a poznámky |
+| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
-| **1.** |Typy souborů | Nejsou podporovány následující typy souborů: znak soubory, soubory bloku, sokety, kanály, symbolické odkazy.  |Kopírování tyto souborů sdílet výsledky v 0-length souborech vytvářených v systému souborů NFS. Tyto soubory zůstávají v chybovém stavu a jsou rovněž uvedeny v *error.xml*. <br> Symbolické odkazy k adresářům za následek adresáře nikdy načtení označený v režimu offline. V důsledku toho nemusí zobrazit šedé napříč na adresáře, které označuje, že adresáře jsou offline a související obsah byl zcela nahráli do Azure. |
-| **2.** |Odstranění | Z důvodu chyby v této verzi Pokud se odstraní sdílenou složku systému souborů NFS, pak sdílenou složku se možná neodstranily. Stav sdílené složky se zobrazí *odstranění*.  |K tomu dojde pouze v případě, že sdílená složka používá představuje název souboru. |
-| **3.** |Kopírovat | Kopírování dat se nezdaří s chybou:  Požadovanou operaci nelze dokončit z důvodu omezení systému souborů.  |Alternativní datový Stream (reklamy) přidružené k souboru větší než 128 KB se nepodporuje.   |
+| **1.** |Typy souborů | Následující typy souborů nejsou podporovány: soubory znaků, blokovat soubory, sokety, kanály, symbolické odkazy.  |Kopírování těchto souborů způsobí, že se ve sdílené složce NFS vytvoří soubory s délkou 0. Tyto soubory zůstávají v chybovém stavu a jsou také hlášeny v *souboru Error. XML*. <br> Symbolické odkazy na adresáře mají za následek, že se v adresářích nikdy nezobrazuje označení offline. V důsledku toho se nezobrazuje šedý průřez v adresářích, které ukazují, že adresáře jsou offline a veškerý přidružený obsah byl zcela nahrán do Azure. |
+| **2.** |Odstranění | Kvůli chybě v této verzi, pokud je odstraněna sdílená složka NFS, sdílená složka nemusí být smazána. V části stav sdílení se zobrazí *odstranění*.  |K tomu dojde pouze v případě, že sdílená složka používá nepodporovaný název souboru. |
+| **3.** |Kopírování | Kopírování dat se nepovedlo s chybou: požadovanou operaci nešlo dokončit kvůli omezení systému souborů.  |Alternativní datový proud (ADS) přidružený k velikosti souboru větší než 128 KB není podporován.   |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Příprava na nasazení Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
-- [Příprava na nasazení Azure Data Box Edge](data-box-edge-deploy-prep.md).
+- [Příprava na nasazení Azure Data box Gateway](data-box-gateway-deploy-prep.md).
+- [Příprava na nasazení Azure Data box Edge](data-box-edge-deploy-prep.md).

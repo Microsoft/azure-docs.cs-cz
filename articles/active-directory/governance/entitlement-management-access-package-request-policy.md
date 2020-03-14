@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376553"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261928"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení žádosti o změnu a schválení pro balíček přístupu v Azure AD – Správa nároků
 
@@ -39,9 +39,9 @@ Způsob, jakým určíte, kdo může žádat o přístup k balíčku, je zásado
 | --- | --- |
 | Chci, aby všichni uživatelé v adresáři měli stejné nastavení požadavků a schvalování pro balíček pro přístup | Hodinu |
 | Chci, aby všichni uživatelé v některých připojených organizacích mohli žádat o přístup k balíčku | Hodinu |
-| Chci uživatelům v adresáři a také uživatelům, kteří jsou mimo můj adresář, dovolit přístup k balíčku pro přístup | Několik |
-| Chci pro některé uživatele zadat jiná nastavení schvalování | Několik |
-| Chci, aby někteří uživatelé měli přístup k vypršení platnosti přiřazení balíčků, zatímco ostatní uživatelé můžou svůj přístup rozšíří. | Několik |
+| Chci uživatelům v adresáři a také uživatelům, kteří jsou mimo můj adresář, dovolit přístup k balíčku pro přístup | Více |
+| Chci pro některé uživatele zadat jiná nastavení schvalování | Více |
+| Chci, aby někteří uživatelé měli přístup k vypršení platnosti přiřazení balíčků, zatímco ostatní uživatelé můžou svůj přístup rozšíří. | Více |
 
 Informace o Logic prioritě, která se používá při použití více zásad, najdete v tématu [více zásad](entitlement-management-troubleshoot.md#multiple-policies
 ).

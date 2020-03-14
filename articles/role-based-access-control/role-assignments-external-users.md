@@ -17,17 +17,17 @@ ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
 ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138385"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245639"
 ---
 # <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí pro externí uživatele typu Host pomocí Azure RBAC a Azure Portal
 
 [Řízení přístupu na základě role (RBAC) v Azure](overview.md) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně k celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít RBAC a udělit pouze oprávnění, která uživatelé v prostředí potřebují.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -165,13 +165,13 @@ Před odebráním uživatele typu host z adresáře byste nejdřív měli odebra
 
 1. Klikněte na uživatele typu Host, kterého chcete odebrat.
 
-1. Klikněte na tlačítko **Odstranit**.
+1. Klikněte na **Odstranit**.
 
    ![Odstranit uživatele typu Host](./media/role-assignments-external-users/delete-guest-user.png)
 
 1. Ve zprávě odstranit, která se zobrazí, klikněte na tlačítko **Ano**.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Řešení problémů
 
 ### <a name="guest-user-cannot-browse-the-directory"></a>Uživatel typu Host nemůže procházet adresář
 

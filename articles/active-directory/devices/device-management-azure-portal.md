@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654660"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262240"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení pomocí Azure Portal
 
@@ -31,7 +31,7 @@ Tento článek:
 
 Portál Azure AD poskytuje centrální místo pro správu identit zařízení. K tomuto umístění se můžete dostat buď pomocí [přímého odkazu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) , nebo:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Azure Active Directory** > **zařízení**.
 
 Stránka **zařízení** vám umožní:

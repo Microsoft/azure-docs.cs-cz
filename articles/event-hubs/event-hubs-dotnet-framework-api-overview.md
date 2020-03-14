@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312613"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137607"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Přehled rozhraní API pro Event Hubs .NET Framework
 
-Tento článek shrnuje některá klíčová [rozhraní API](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)pro Azure Event Hubs .NET Framework. Existují dvě kategorie: rozhraní API pro správu a dobu běhu. Běhové rozhraní API sestávají ze všech operací potřebných k odeslání a přijetí zprávy. Operace správy umožňují spravovat Event Hubs stav entity vytvořením, aktualizací a odstraněním entit.
+Tento článek shrnuje některá klíčová [rozhraní API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)pro Azure Event Hubs .NET Framework. Existují dvě kategorie: rozhraní API pro správu a dobu běhu. Běhové rozhraní API sestávají ze všech operací potřebných k odeslání a přijetí zprávy. Operace správy umožňují spravovat Event Hubs stav entity vytvořením, aktualizací a odstraněním entit.
 
 [Scénáře monitorování](event-hubs-metrics-azure-monitor.md) zahrnují správu i dobu běhu. Podrobné referenční dokumentaci k rozhraním API .NET najdete v odkazech na [rozhraní api](/dotnet/api/microsoft.azure.eventhubs.processor) [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)a EventProcessorHost.
 
@@ -26,7 +26,7 @@ Tento článek shrnuje některá klíčová [rozhraní API](https://www.nuget.or
 
 Chcete-li provést následující operace správy, musíte mít oprávnění ke **správě** Event Hubs oboru názvů:
 
-### <a name="create"></a>Vytváření
+### <a name="create"></a>Vytvořit
 
 ```csharp
 // Create the event hub
@@ -178,10 +178,10 @@ public class SimpleEventProcessor : IEventProcessor
 
 Další informace o scénářích služby Event Hubs naleznete pod těmito odkazy:
 
-* [Co je Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
+* [Co je služba Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 
 Reference k rozhraní .NET API najdete tady:
 
 * [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-* [Microsoft.Azure.EventHubs.EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)
+* [Microsoft. Azure. EventHubs. EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)

@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395141"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272757"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problémy se servery oblastí ve službě Azure HDInsight
 
@@ -34,7 +34,7 @@ V uživatelském rozhraní Apache HBase Master uvidíte počet oblastí, které 
 
 Otvory můžou být výsledkem offline oblastí.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Opravte přiřazení. Podle následujících kroků přeneste nepřiřazené oblasti zpět do normálního stavu:
 
@@ -66,7 +66,7 @@ Několik rozdělených adresářů WAL
 
 1. Zkontrolujte soubor `wals.out`. Pokud je k dispozici příliš mnoho rozdělených adresářů (počínaje oddělovači), server oblasti se pravděpodobně nedaří kvůli těmto adresářům.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 1. Z portálu Ambari zastavte HBA.
 

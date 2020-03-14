@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965733"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267986"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
 
@@ -50,9 +50,9 @@ Tento kurz se vztahuje na všechna řešení StorSimple Cloud Appliance s aktual
 | **Typ úložiště** |Pro místní disky používá službu Azure Standard Storage<br></br> Zjistěte, jak [vytvořit účet služby Standard Storage](../storage/common/storage-create-storage-account.md) |Pro místní disky používá Azure Premium Storage.<sup>2</sup> <br></br> |
 | **Pokyny týkající se úloh** |Načítání souborů ze zálohy na úrovni položek |Scénáře vývoje a testování v cloudu <br></br>Úlohy s vyšším výkonem a nízkou latencí<br></br>Sekundární zařízení pro zotavení po havárii |
 
-<sup>1</sup>*Dříve označované jako 1100*.
+<sup>1</sup> *dřív označovaná jako 1100*.
 
-<sup>2</sup>*Pro cloudovou vrstvu používají zařízení 8010 i 8020 službu Azure Standard Storage. Rozdíl je pouze u místní vrstvy v rámci zařízení*.
+<sup>2</sup> *8010 a 8020 používají pro cloudovou vrstvu úložiště Azure Standard. Rozdíl existuje pouze v místní vrstvě v rámci zařízení*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Rozdíly mezi cloudovým zařízením a fyzickým zařízením
 
@@ -64,7 +64,7 @@ V následující tabulce je uvedeno několik klíčových rozdílů mezi řešen
 
 |  | Fyzické zařízení | Cloudové zařízení |
 | --- | --- | --- |
-| **Location** |Nachází se v datovém centru. |Běží v Azure. |
+| **Umístění** |Nachází se v datovém centru. |Běží v Azure. |
 | **Síťová rozhraní** |Má šest síťových rozhraní: DATA 0 až DATA 5. |Má pouze jedno síťové rozhraní: DATA 0. |
 | **Registrace** |Registruje se v rámci kroku počáteční konfigurace. |Registrace je samostatná úloha. |
 | **Šifrovací klíč dat služby** |Znovu se vygeneruje na fyzickém zařízení a cloudové zařízení se pak aktualizuje s použitím nového klíče. |Nelze znovu vygenerovat z cloudového zařízení. |
@@ -126,7 +126,7 @@ Provedením následujících kroků nakonfigurujte a zaregistrujte řešení Sto
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3: Volitelné Úprava nastavení konfigurace zařízení
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3 (nepovinný): Úprava konfiguračních nastavení zařízení
 
 Následující část popisuje nastavení konfigurace zařízení potřebná pro řešení StorSimple Cloud Appliance, pokud chcete použít protokol CHAP nebo StorSimple Snapshot Manager nebo změnit heslo správce zařízení.
 
@@ -168,7 +168,7 @@ Provedením následujících kroků nakonfigurujte vzdálenou správu řešení 
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>Krok 2: Vzdálený přístup ke cloudovým zařízením
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>Krok 2: Vzdálený přístup ke cloudovému zařízení
 
 Po povolení vzdálené správy na cloudovém zařízení se pomocí vzdálené komunikace Windows PowerShellu připojte k zařízení z jiného virtuálního počítače ve stejné virtuální síti. Můžete se připojit například z hostitelského virtuálního počítače, který jste nakonfigurovali a použili pro připojení k iSCSI. Ve většině nasazení otevřete veřejný koncový bod pro přístup k hostitelskému virtuálnímu počítači, který můžete použít pro přístup ke cloudovému zařízení.
 
@@ -276,6 +276,6 @@ Pokud během vytváření cloudového zařízení není k dispozici připojení 
 5. Pokud se příkaz `nslookup` nezdaří, pak problém s připojením k internetu brání cloudovému zařízení v registraci ve službě Správce zařízení StorSimple.
 6. Proveďte požadované změny virtuální sítě a ujistěte se, že cloudové zařízení může přistupovat k webům Azure, jako je například _windows.net_.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Zjistěte, jak [použít službu Správce zařízení StorSimple pro správu cloudového zařízení](storsimple-8000-manager-service-administration.md).
 * Naučte se [obnovit svazek StorSimple ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).

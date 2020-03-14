@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387407"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265815"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesun dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -57,14 +57,14 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro SAP HANA propojenou službu.
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Požadováno
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port`. | řetězec | Ano
+server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port`. | string | Ano
 authenticationType | Typ ověřování. | řetezce. "Basic" nebo "Windows" | Ano 
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | řetězec | Ano
-encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | Ne
+username jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
+heslo | Heslo pro tohoto uživatele. | string | Ano
+gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | string | Ano
+encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | string | Ne
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
@@ -79,9 +79,9 @@ V takovém případě se vlastnosti dostupné v části **typeProperties** v akt
 
 Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrnuje SAP HANA), jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| query | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Dotaz SQL. | Ano |
+| dotaz | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Dotaz SQL. | Ano |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>Příklad JSON: kopírování dat z SAP HANA do objektu blob Azure
 Následující ukázka poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). V této ukázce se dozvíte, jak kopírovat data z místního SAP HANA do Azure Blob Storage. Data je ale možné zkopírovat **přímo** do kterékoli z těchto [umyvadel pomocí aktivity](data-factory-data-movement-activities.md#supported-data-stores-and-formats) kopírování v Azure Data Factory.  
@@ -291,15 +291,15 @@ NEMOVITOSTÍ | Jednoduché
 KLEPAT | Jednoduché
 NOTACI | Decimal
 BOOLEAN | Bajt
-VARCHAR | Řetězec
-NVARCHAR | Řetězec
+VARCHAR | String
+NVARCHAR | String
 CLOB | Byte[]
-ALPHANUM | Řetězec
+ALPHANUM | String
 PŘÍZNAKY | Byte[]
-DATE (Datum) | DateTime
+DATUM | Datum a čas
 ČAS | TimeSpan
-TIMESTAMP | DateTime
-SECONDDATE | DateTime
+TIMESTAMP | Datum a čas
+SECONDDATE | Datum a čas
 
 ## <a name="known-limitations"></a>Známá omezení
 Při kopírování dat z SAP HANA existuje několik známých omezení:

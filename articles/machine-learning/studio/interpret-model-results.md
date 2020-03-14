@@ -10,21 +10,23 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 2d13385b63802bc0037c3fbe32cd38ed5caaf1c6
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218073"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretace výsledků modelu v Azure Machine Learning Studio (Classic)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Toto téma vysvětluje, jak vizualizovat a interpretovat výsledky předpovědi v Azure Machine Learning Studio (Classic). Po vyškolení modelu a provedení předpovědi nad ním ("skóre modelu") potřebujete pochopit a interpretovat výsledek předpovědi.
 
 
 
 Existují čtyři hlavní druhy modelů strojového učení v Azure Machine Learning Studio (Classic):
 
-* Classification
+* Klasifikace
 * Clustering
 * Regrese
 * Doporučené systémy
@@ -41,7 +43,7 @@ Toto téma řeší výklad předpovědi, ale ne vyhodnocení modelu. Další inf
 
 Pokud Azure Machine Learning Studio (Classic) a potřebujete pomoc s vytvořením jednoduchého experimentu, přečtěte si téma [Vytvoření jednoduchého experimentu v Azure Machine Learning Studio (Classic)](create-experiment.md).
 
-## <a name="classification"></a>Classification
+## <a name="classification"></a>Klasifikace
 Existují dvě podkategorie problémů s klasifikací:
 
 * Problémy s pouze dvěma třídami (klasifikace se dvěma třídami nebo binární)

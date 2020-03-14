@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373371"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278880"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření v Azure Automation
 
@@ -39,10 +39,10 @@ Ovládací prvek plátna umožňuje návrh sady Runbook. Do sady Runbook můžet
 
 Ovládací prvek knihovna umožňuje vybrat [aktivity](#activities) , které se mají přidat do Runbooku. Můžete je přidat na plátno, kde je můžete propojit s dalšími aktivitami. Ovládací prvek knihovna obsahuje oddíly, které jsou definovány v následující tabulce.
 
-| Sekce | Popis |
+| Část | Popis |
 |:--- |:--- |
-| Rutiny |Všechny rutiny, které lze použít v sadě Runbook. Rutiny jsou uspořádány podle modulu. Všechny moduly, které jste nainstalovali v účtu Automation, jsou k dispozici. |
-| Runbooky |Runbooky v účtu Automation. Tyto Runbooky můžete přidat na plátno, které se použijí jako podřízené Runbooky. Zobrazují se jenom Runbooky stejného základního typu jako upravované sady Runbook. Pro grafické Runbooky se zobrazí pouze Runbooky založené na PowerShellu. Pro grafické Runbooky pracovních postupů PowerShellu se zobrazí jenom Runbooky založené na pracovním postupu PowerShellu. |
+| Rutina |Všechny rutiny, které lze použít v sadě Runbook. Rutiny jsou uspořádány podle modulu. Všechny moduly, které jste nainstalovali v účtu Automation, jsou k dispozici. |
+| Sady Runbook |Runbooky v účtu Automation. Tyto Runbooky můžete přidat na plátno, které se použijí jako podřízené Runbooky. Zobrazují se jenom Runbooky stejného základního typu jako upravované sady Runbook. Pro grafické Runbooky se zobrazí pouze Runbooky založené na PowerShellu. Pro grafické Runbooky pracovních postupů PowerShellu se zobrazí jenom Runbooky založené na pracovním postupu PowerShellu. |
 | Prostředky |[Prostředky služby Automation](/previous-versions/azure/dn939988(v=azure.100)) v účtu Automation, které můžete použít v Runbooku. Přidání assetu do Runbooku přidá aktivitu pracovního postupu, která získá vybraný Asset. V případě variabilních prostředků můžete vybrat, zda chcete přidat aktivitu, chcete-li získat proměnnou nebo nastavit proměnnou. |
 | Řízení Runbooku |Kontrolní aktivity, které lze použít v aktuální sadě Runbook. Aktivita spojení přebírá několik vstupů a čeká na dokončení všech kroků před pokračováním pracovního postupu. Aktivita kódu v závislosti na typu grafického Runbooku spouští jeden nebo několik řádků kódu pracovního postupu PowerShellu nebo PowerShellu. Tuto aktivitu můžete použít pro vlastní kód nebo pro funkce, které je obtížné dosáhnout s ostatními aktivitami. |
 
@@ -84,7 +84,7 @@ Když zadáte hodnotu parametru, vyberete zdroj dat, abyste určili, jak je hodn
 | Prostředek certifikátu |Jako vstup vyberte certifikát Automation. |
 | Prostředek připojení |Jako vstup vyberte připojení Automation. |
 | Powershellový výraz |Zadejte jednoduchý [powershellový výraz](#powershell-expressions). Výraz je vyhodnocen před aktivitou a výsledek je použit pro hodnotu parametru. Proměnné můžete použít k odkazování na výstup aktivity nebo vstupní parametr Runbooku. |
-| Nenakonfigurováno |Vymažte všechny dříve nakonfigurované hodnoty. |
+| Nenakonfigurované |Vymažte všechny dříve nakonfigurované hodnoty. |
 
 #### <a name="optional-additional-parameters"></a>Nepovinné další parametry
 
@@ -216,7 +216,7 @@ Níže uvedený příklad je součástí sady Runbook, která spouští sadu vir
 
 Cyklus se vytvoří, když cílová aktivita odkazuje zpátky na svou zdrojovou aktivitu nebo na jinou aktivitu, která nakonec odkazuje zpět na svůj zdroj. Vytváření grafického obsahu v současné době nepodporuje cykly. Pokud má vaše sada Runbook cyklus, uloží se správně, ale při spuštění obdrží chybu.
 
-![Cyklické](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Cyklus](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="data-sharing-between-activities"></a>Sdílení dat mezi aktivitami
 
@@ -263,11 +263,11 @@ Jednotlivé vstupní parametry jsou definovány vlastnostmi v následující tab
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Název | Povinná hodnota. Název parametru Název musí být v rámci sady Runbook jedinečný. Musí začínat písmenem a může obsahovat jenom písmena, číslice a podtržítka. Název nesmí obsahovat mezery. |
-| Popis |Volitelné. Popis účelu pro vstupní parametr |
-| Typ | Volitelné. Pro hodnotu parametru se očekával datový typ. Azure Portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy pro vstup. Podporované typy parametrů jsou String, Int32, Int64, Decimal, Boolean, DateTime a Object. Pokud není vybraný datový typ, použije se výchozí hodnota String (řetězec).|
-| Povinné | Volitelné. Nastavení, které určuje, zda musí být pro parametr zadána hodnota. Pokud zvolíte **Ano**, musí být při spuštění sady Runbook zadána hodnota. Pokud zvolíte **ne**, hodnota se při spuštění Runbooku nepožaduje a je možné použít výchozí hodnotu. Sadu Runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá definovánu výchozí hodnotu. |
-| Výchozí hodnota | Volitelné. Hodnota použitá pro parametr, pokud není předána při spuštění Runbooku. Chcete-li nastavit výchozí hodnotu, vyberte možnost **vlastní**. Pokud nechcete zadat žádnou výchozí hodnotu, vyberte možnost **žádná** . |
+| Název | Požadováno. Název parametru Název musí být v rámci sady Runbook jedinečný. Musí začínat písmenem a může obsahovat jenom písmena, číslice a podtržítka. Název nesmí obsahovat mezery. |
+| Popis |Volitelná. Popis účelu pro vstupní parametr |
+| Typ | Volitelná. Pro hodnotu parametru se očekával datový typ. Azure Portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy pro vstup. Podporované typy parametrů jsou String, Int32, Int64, Decimal, Boolean, DateTime a Object. Pokud není vybraný datový typ, použije se výchozí hodnota String (řetězec).|
+| Mandatory | Volitelná. Nastavení, které určuje, zda musí být pro parametr zadána hodnota. Pokud zvolíte **Ano**, musí být při spuštění sady Runbook zadána hodnota. Pokud zvolíte **ne**, hodnota se při spuštění Runbooku nepožaduje a je možné použít výchozí hodnotu. Sadu Runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá definovánu výchozí hodnotu. |
+| Výchozí hodnota | Volitelná. Hodnota použitá pro parametr, pokud není předána při spuštění Runbooku. Chcete-li nastavit výchozí hodnotu, vyberte možnost **vlastní**. Pokud nechcete zadat žádnou výchozí hodnotu, vyberte možnost **žádná** . |
 
 ### <a name="runbook-output"></a>Výstup runbooku
 

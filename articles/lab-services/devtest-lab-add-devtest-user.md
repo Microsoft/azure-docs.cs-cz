@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380909"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284275"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele v Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -127,7 +127,7 @@ K přidání vlastníka do předplatného Azure použijte tento postup:
     ![Přístup k uživatelům](./media/devtest-lab-add-devtest-user/access-users.png)
 5. V okně **Uživatelé** vyberte **Přidat**.
    
-    ![Přidání uživatele](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
+    ![Přidat uživatele](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
 6. V okně **Vybrat roli** vyberte **Owner (vlastník**).
 7. V okně **Přidat uživatele** zadejte e-mailovou adresu nebo jméno uživatele, kterého chcete přidat jako vlastníka. Pokud se uživatel nenajde, zobrazí se chybová zpráva s vysvětlením problému. Pokud je uživatel nalezen, je tento uživatel uveden v textovém poli **uživatel** .
 8. Vyberte nalezené uživatelské jméno.

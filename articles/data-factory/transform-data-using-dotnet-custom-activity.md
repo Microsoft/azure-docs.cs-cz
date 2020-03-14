@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388379"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260576"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
@@ -99,17 +99,17 @@ V této ukázce je soubor HelloWorld. exe vlastní aplikací uloženou ve složc
 
 V následující tabulce jsou popsány názvy a popisy vlastností, které jsou specifické pro tuto aktivitu.
 
-| Vlastnost              | Popis                              | Požaduje se |
+| Vlastnost              | Popis                              | Požadováno |
 | :-------------------- | :--------------------------------------- | :------- |
-| jméno                  | Název aktivity v kanálu     | Ano      |
+| name                  | Název aktivity v kanálu     | Ano      |
 | description           | Text popisující, co aktivita dělá.  | Ne       |
-| type                  | U vlastní aktivity je typ aktivity **vlastní**. | Ano      |
+| typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Ano      |
 | linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Ano      |
-| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz, který bude `cmd /c dir`, který je nativně podporován uzlem fondu služby Windows Batch. | Ano      |
+| příkaz               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz, který bude `cmd /c dir`, který je nativně podporován uzlem fondu služby Windows Batch. | Ano      |
 | resourceLinkedService | Azure Storage propojených služeb k účtu úložiště, ve kterém je vlastní aplikace uložená. | Ne&#42;       |
 | folderPath            | Cesta ke složce vlastní aplikace a všech jejích závislostí<br/><br/>Pokud máte závislosti uložené v podsložkách – to znamená, že v hierarchické struktuře složek pod *FolderPath* – struktura složek se v současnosti při kopírování souborů do Azure Batch nesloučí. To znamená, že všechny soubory se zkopírují do jediné složky bez podsložek. Chcete-li toto chování obejít, zvažte komprimaci souborů, kopírování komprimovaného souboru a jeho rozzipovává pomocí vlastního kódu v požadovaném umístění. | Ne&#42;       |
 | referenceObjects      | Pole existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON, aby váš vlastní kód mohl odkazovat na prostředky Data Factory | Ne       |
-| ExtendedProperties    | Uživatelsky definované vlastnosti, které se dají předat vlastní aplikaci ve formátu JSON, aby váš vlastní kód mohl odkazovat na další vlastnosti | Ne       |
+| extendedProperties    | Uživatelsky definované vlastnosti, které se dají předat vlastní aplikaci ve formátu JSON, aby váš vlastní kód mohl odkazovat na další vlastnosti | Ne       |
 | retentionTimeInDays | Doba uchování souborů odeslaných pro vlastní aktivitu. Výchozí hodnota je 30 dní. | Ne |
 
 &#42;Vlastnosti `resourceLinkedService` a `folderPath` musí být buď zadány, nebo vynechány obě.
@@ -341,7 +341,7 @@ Následující tabulka popisuje rozdíly mezi vlastní aktivitou Data Factory v2
 |Jak je definována vlastní logika      |Poskytnutím spustitelného souboru      |Implementací knihovny DLL .NET      |
 |Spouštěcí prostředí vlastní logiky      |Windows nebo Linux      |Windows (.NET Framework 4.5.2)      |
 |Spouštění skriptů      |Podporuje spouštěné skripty přímo (například "cmd/c echo Hello World" na virtuálním počítači s Windows).      |Vyžaduje implementaci v knihovně DLL .NET.      |
-|Požadovaná datová sada      |Nepovinné      |Požadováno pro řetězení aktivit a předávání informací      |
+|Požadovaná datová sada      |Volitelné      |Požadováno pro řetězení aktivit a předávání informací      |
 |Předání informací z aktivity do vlastní logiky      |Prostřednictvím ReferenceObjects (LinkedServices a datových sad) a ExtendedProperties (vlastní vlastnosti)      |Prostřednictvím ExtendedProperties (vlastní vlastnosti), vstupních a výstupních datových sad      |
 |Načtení informací v vlastní logice      |Analyzuje soubor Activity. JSON, linkedServices. JSON a DataSets. JSON uložený ve stejné složce spustitelného souboru.      |Přes .NET SDK (.NET Frame 4.5.2)      |
 |Protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v knihovně DLL .NET      |

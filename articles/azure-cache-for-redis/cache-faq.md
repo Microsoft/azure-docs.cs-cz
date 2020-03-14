@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355882"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278711"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
@@ -128,10 +128,10 @@ Z této tabulky můžeme vykreslit následující závěry:
 | Cenová úroveň | Velikost | Procesorová jádra | Dostupná šířka pásma | velikost hodnoty 1 – KB | velikost hodnoty 1 – KB |
 | --- | --- | --- | --- | --- | --- |
 | **Standardní velikosti mezipaměti** | | |**Megabitů za sekundu (MB/s)/megabajtů za sekundu (MB/s)** |**Počet požadavků za sekundu (RPS) bez SSL** |**SSL požadavků za sekundu (RPS)** |
-| C0 | 250 MB | Sdílené | 100 / 12.5  |  15 000 |   7 500 |
+| C0 | 250 MB | Shared | 100 / 12.5  |  15,000 |   7,500 |
 | C1 |   1 GB | 1      | 500 / 62.5  |  38 000 |  20 720 |
 | C2 | 2,5 GB | 2      | 500 / 62.5  |  41 000 |  37 000 |
-| C3 |   6 GB | 4      | 1000/125  | 100 000 |  90,000 |
+| C3 |   6 GB | 4      | 1000/125  | 100,000 |  90,000 |
 | C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55 000 |
 | C5 |  26 GB | 4      | 1,000 / 125 | 102 000 |  93 000 |
 | C6 |  53 GB | 8      | 2,000 / 250 | 126 000 | 120,000 |
@@ -157,7 +157,7 @@ Ceny za Azure cache for Redis [najdete tady](https://azure.microsoft.com/pricing
 ### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Můžu použít Azure cache pro Redis s Azure Governmentm cloudem, cloudem Azure Čína nebo Microsoft Azure (Německo)?
 Ano, mezipaměť Azure pro Redis je dostupná v cloudu Azure Government, Azure Čína 21Vianet a Microsoft Azure (Německo). Adresy URL pro přístup a správu Azure cache pro Redis se v porovnání s veřejným cloudem Azure liší.
 
-| Cloudová   | Přípona DNS pro Redis            |
+| Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
 | Public  | *.redis.cache.windows.net       |
 | US Gov  | *.redis.cache.usgovcloudapi.net |

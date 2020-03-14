@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: rohogue
 ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388246"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271847"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -115,13 +115,13 @@ Další informace najdete v tématu [řešení problémů s cílovým úložišt
 
   * Kromě portů vrácených příkazem `rpcinfo` se ujistěte, že tyto běžně používané porty umožňují příchozí a odchozí provoz:
 
-    | Protocol (Protokol) | Port  | Služba  |
+    | Protokol | Port  | Service  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | připojeno   |
-    | TCP/UDP  | 4047  | status   |
+    | TCP/UDP  | 4047  | stav   |
 
   * Zkontrolujte nastavení brány firewall a ujistěte se, že jsou povolené přenosy na všech těchto požadovaných portech. Nezapomeňte zkontrolovat brány firewall používané v Azure a také místní brány firewall ve vašem datovém centru.
 

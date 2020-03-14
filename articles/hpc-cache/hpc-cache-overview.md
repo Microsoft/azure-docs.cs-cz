@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388226"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241189"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
 
@@ -49,13 +49,13 @@ Nasazení mezipaměti HPC Azure vám může pomoci zrychlit kvantitativní výpo
 
 Mezipaměť prostředí Azure HPC je dostupná v těchto oblastech Azure:
 
-* USA – východ
-* USA – východ 2
+* Východní USA
+* Východní USA 2
 * Severní Evropa
 * Západní Evropa
 * Jihovýchodní Asie
 * Sydney
-* USA – západ 2
+* Západní USA 2
 * Jižní Korea – střed
 
 Nejnovější informace o dostupnosti najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .

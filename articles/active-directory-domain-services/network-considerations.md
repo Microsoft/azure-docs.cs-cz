@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376951"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264190"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure AD Domain Services
 

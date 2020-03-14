@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc8a62bd75a01cb6b7184cb52585c4f8b08cadb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378202"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136530"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
 
@@ -130,7 +130,7 @@ Skupiny je možné synchronizovat z místního adresáře nebo z Azure AD. Jakmi
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Plánování ověřování bez hesla pomocí aplikace Microsoft Authenticator
 
-Aplikace Microsoft Authenticator je zdarma ke stažení z Google Play nebo z Apple App Storu. [Přečtěte si další informace o stahování aplikace Microsoft Authenticator](https://www.microsoft.com/account/authenticator?cmp=h66ftb_42hbak). Uživatelé si stáhnou aplikaci Microsoft Authenticator. a postupujte podle pokynů pro povolení přihlášení telefonem. 
+Aplikace Microsoft Authenticator je zdarma ke stažení z Google Play nebo z Apple App Storu. [Přečtěte si další informace o stahování aplikace Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Uživatelé si stáhnou aplikaci Microsoft Authenticator. a postupujte podle pokynů pro povolení přihlášení telefonem. 
 
 Přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů bez hesla. Uživatelé se přihlásí k libovolné platformě nebo prohlížeči tím, že získají oznámení na telefonu, odpovídají číslu zobrazenému na obrazovce na telefonu a pak se k potvrzení použije biometrika nebo PIN. [Podívejte se na podrobnosti o tom, jak aplikace Microsoft Authenticator funguje](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in). 
 

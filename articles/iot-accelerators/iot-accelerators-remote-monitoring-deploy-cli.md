@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383058"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271652"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování pomocí rozhraní příkazového řádku
 
 V této příručce se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování. Řešení nasadíte pomocí rozhraní příkazového řádku. Řešení můžete nasadit také pomocí webového uživatelského rozhraní na adrese azureiotsolutions.com. Další informace o této možnosti najdete v tématu [nasazení akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nasazení akcelerátoru řešení vzdáleného monitorování potřebujete aktivní předplatné Azure.
 
@@ -51,8 +51,8 @@ Při nasazení akcelerátoru řešení je k dispozici několik možností konfig
 
 | Možnost | Hodnoty | Popis |
 | ------ | ------ | ----------- |
-| Skladová jednotka (SKU)    | `basic`, `standard`, `local` | _Základní_ nasazení je určené pro testování a ukázky, nasadí všechny mikroslužby na jeden virtuální počítač. _Standardní_ nasazení je určené pro produkční prostředí, nasadí mikroslužby na několik virtuálních počítačů. _Místní_ nasazení nakonfiguruje kontejner Docker tak, aby spouštěl mikroslužby na místním počítači a používal Azure Cloud Services, jako je například storage a Cosmos DB. |
-| Modul runtime | `dotnet`, `java` | Vybere jazykovou implementaci mikroslužeb. |
+| Skladová položka    | `basic`, `standard`, `local` | _Základní_ nasazení je určené pro testování a ukázky, nasadí všechny mikroslužby na jeden virtuální počítač. _Standardní_ nasazení je určené pro produkční prostředí, nasadí mikroslužby na několik virtuálních počítačů. _Místní_ nasazení nakonfiguruje kontejner Docker tak, aby spouštěl mikroslužby na místním počítači a používal Azure Cloud Services, jako je například storage a Cosmos DB. |
+| Runtime | `dotnet`, `java` | Vybere jazykovou implementaci mikroslužeb. |
 
 Informace o tom, jak používat místní možnost nasazení, najdete v části [spuštění řešení vzdáleného monitorování místně](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -72,16 +72,16 @@ Základní nasazení ve vašem předplatném Azure vytvoří následující slu�
 |-------|--------------------------------|--------------|----------|
 | 1     | [Virtuální počítač se systémem Linux](https://azure.microsoft.com/services/virtual-machines/) | D1 v2 úrovně Standard  | Hostování mikroslužeb |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – úroveň Standard | Správa zařízení a komunikace |
-| 1     | [Databáze Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Ukládání konfiguračních dat, pravidel, upozornění a dalších chladírenských úložišť |  
-| 1     | [Účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Úložiště pro kontrolní body virtuálního počítače a streamování |
+| 1     | [Databáze Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/)              | Standardní        | Ukládání konfiguračních dat, pravidel, upozornění a dalších chladírenských úložišť |  
+| 1     | [Účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standardní        | Úložiště pro kontrolní body virtuálního počítače a streamování |
 | 1     | [Webová aplikace](https://azure.microsoft.com/services/app-service/web/)        |                 | Hostování front-endové webové aplikace |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit a zabezpečení uživatelů |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Zobrazení umístění prostředků |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standardní                | Zobrazení umístění prostředků |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 jednotky              | Povolení analýz v reálném čase |
 | 1     | [Služba Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Zřizování zařízení ve velkém měřítku |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožnění hloubkové analýzy telemetrie podrobně |
 
-### <a name="standard"></a>Standard
+### <a name="standard"></a>Standardní
 
 Standardní nasazení můžete provést pouze pomocí rozhraní příkazového řádku.
 
@@ -93,11 +93,11 @@ Standardní nasazení vytvoří v předplatném Azure následující služby:
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Použití plně spravované služby orchestrace kontejnerů Kubernetes, výchozí nastavení je 3 agenti|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – úroveň Standard | Správa zařízení, příkaz a řízení |
-| 1     | [Databáze Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Ukládání konfiguračních dat a telemetrie zařízení, jako jsou pravidla, výstrahy a zprávy |
-| 5     | [Účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 pro úložiště virtuálních počítačů a 1 pro kontrolní body streamování |
+| 1     | [Databáze Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/)                 | Standardní        | Ukládání konfiguračních dat a telemetrie zařízení, jako jsou pravidla, výstrahy a zprávy |
+| 5     | [Účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standardní        | 4 pro úložiště virtuálních počítačů a 1 pro kontrolní body streamování |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Application Gateway přes SSL |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit a zabezpečení uživatelů |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Zobrazení umístění prostředků |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standardní                | Zobrazení umístění prostředků |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 jednotky              | Povolení analýz v reálném čase |
 | 1     | [Služba Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Zřizování zařízení ve velkém měřítku |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožnění hloubkové analýzy telemetrie podrobně |

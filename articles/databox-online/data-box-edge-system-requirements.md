@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384760"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260225"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge požadavky na systém
 
@@ -32,7 +32,7 @@ Požadavky na systém pro Data Box Edge zahrnují:
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/data-box-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>Podporované účty úložiště
+## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 

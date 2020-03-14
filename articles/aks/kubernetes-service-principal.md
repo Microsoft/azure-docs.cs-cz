@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374613"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259419"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -108,7 +108,7 @@ Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsí�
   - *Microsoft. Network/publicIPAddresses/Write*
 - Nebo přiřaďte integrovanou roli [Přispěvatel sítě][rbac-network-contributor] k podsíti v rámci virtuální sítě.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Možná budete potřebovat přístup k existujícím diskovým prostředkům v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
 
@@ -121,7 +121,7 @@ Možná budete potřebovat přístup k existujícím diskovým prostředkům v j
 
 Pokud k integraci s AKS používáte Virtual Kubelet a v případě, že se rozhodnete spustit Azure Container Instances (ACI) ve skupině prostředků oddělené ke clusteru AKS, musí být ve skupině prostředků AKS udělená oprávnění *přispěvatele* .
 
-## <a name="additional-considerations"></a>Další aspekty
+## <a name="additional-considerations"></a>Další rozhodnutí
 
 Při použití instančních objektů služeb Azure AD a AKS mějte na paměti následující informace.
 
@@ -140,7 +140,7 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Řešení problémů
 
 Přihlašovací údaje instančního objektu pro cluster AKS se ukládají do mezipaměti rozhraní příkazového řádku Azure CLI. Pokud vypršela platnost těchto přihlašovacích údajů, narazíte na chyby při nasazování AKS clusterů. Při spuštění [AZ AKS Create][az-aks-create] může znamenat problém s přihlašovacími údaji instančního objektu uloženého v mezipaměti následující chybová zpráva:
 

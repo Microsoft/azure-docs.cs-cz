@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378455"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264229"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Koncepce správy uživatelských účtů, hesel a správy v Azure Active Directory Domain Services
 
@@ -78,11 +78,11 @@ Další informace o typech doménové struktury v Azure služba AD DS najdete v 
 
 V Azure služba AD DS jsou dostupné výkony a funkce založené na SKU. SKU vyberete při vytváření spravované domény a po nasazení spravované domény můžete přepínat SKU podle vašich obchodních požadavků. Následující tabulka popisuje dostupné SKU a rozdíly mezi nimi:
 
-| Název SKU   | Maximální počet objektů | Frekvence zálohování | Maximální počet odchozích vztahů důvěryhodnosti doménové struktury |
+| Název SKU   | Maximální počet objektů | Četnost zálohování | Maximální počet odchozích vztahů důvěryhodnosti doménové struktury |
 |------------|----------------------|------------------|----|
-| Standard   | Unlimited            | Každých 7 dní     | 0  |
-| Enterprise | Unlimited            | Každé 3 dny     | 5  |
-| Premium    | Unlimited            | Denně            | 10 |
+| Standardní   | Neomezený počet            | Každých 7 dní     | 0  |
+| Enterprise | Neomezený počet            | Každé 3 dny     | 5  |
+| Premium    | Neomezený počet            | Denně            | 10 |
 
 Před těmito SKU služby Azure služba AD DS byly použity fakturační modely založené na počtu objektů (uživatelských a počítačových účtů) ve spravované doméně Azure služba AD DS. V závislosti na počtu objektů ve spravované doméně už neexistují variabilní ceny.
 
@@ -94,7 +94,7 @@ Výkon domény se liší v závislosti na tom, jak je ověřování pro aplikaci
 
 Pokud se vaše firma nebo aplikace změní a potřebujete pro vaši službu Azure služba AD DS spravované domény Další výpočetní výkon, můžete přejít na jinou SKU.
 
-### <a name="backup-frequency"></a>Frekvence zálohování
+### <a name="backup-frequency"></a>Četnost zálohování
 
 Frekvence zálohování určuje, jak často se snímek spravované domény bere. Zálohy jsou automatizovaný proces spravovaný platformou Azure. V případě potíží se spravovanou doménou vám podpora Azure pomůže při obnovení ze zálohy. Protože synchronizace probíhá pouze jednou *ze* služby Azure AD, jakékoli problémy v spravované doméně Azure služba AD DS nebudou mít vliv na Azure AD nebo místní služba AD DS prostředí a funkce.
 

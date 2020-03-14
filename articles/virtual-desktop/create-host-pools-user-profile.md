@@ -9,11 +9,11 @@ ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127377"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250917"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky
 
@@ -68,7 +68,7 @@ Pokud chcete nakonfigurovat virtuální počítače s FSLogix softwarem, udělej
 
 | Název                | Typ               | Data/hodnota                        |
 |---------------------|--------------------|-----------------------------------|
-| Povoleno             | HODNOTY              | 1                                 |
+| Povolit             | HODNOTY              | 1                                 |
 | VHDLocations        | Hodnota s více řetězci | "Síťová cesta pro sdílenou složku"     |
 
 >[!IMPORTANT]

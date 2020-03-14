@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395292"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279855"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
 
@@ -164,7 +164,7 @@ ms.locfileid: "78395292"
 
 Tento článek popisuje kroky, které můžete provést při přípravě infrastruktury Azure pro instalaci a konfiguraci systému SAP s vysokou dostupností na clusteru s podporou převzetí služeb při selhání s Windows pomocí *sdíleného disku clusteru* jako možnosti CLUSTERINGU instance SAP ASCS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s instalací, přečtěte si tento článek:
 
@@ -372,7 +372,7 @@ V našem příkladu je adresní prostor instance služby Azure Virtual Network 1
 Chcete-li nastavit požadované IP adresy DNS, proveďte následující kroky:
 
 1. V Azure Portal v podokně **servery DNS** se ujistěte, že je možnost **servery DNS** virtuální sítě nastavená na **vlastní DNS**.
-2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících zdrojích:
+2. Vyberte nastavení podle typu sítě, kterou máte. Další informace naleznete v následujících zdrojích:
    * Přidejte IP adresy místních serverů DNS.  
    Místní servery DNS můžete rozmístit do virtuálních počítačů, které běží v Azure. V takovém scénáři můžete přidat IP adresy virtuálních počítačů Azure, na kterých spouštíte službu DNS.
    * Pro nasazení virtuálních počítačů, které jsou izolované v Azure: nasaďte další virtuální počítač ve stejné instanci Virtual Network, která slouží jako server DNS. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
@@ -430,7 +430,7 @@ V našem příkladu máme tyto virtuální počítače a statické IP adresy:
 | --- | --- | --- | --- |
 | První instance aplikačního serveru SAP |pr1-di-0 |pr1-nic-di-0 |10.0.0.50 |
 | Druhá instance aplikačního serveru SAP |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
-| Tlačítka ... |Tlačítka ... |Tlačítka ... |Tlačítka ... |
+| ... |... |... |... |
 | Poslední instance aplikačního serveru SAP |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
 | První uzel clusteru pro instanci ASCS/SCS |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
 | Druhý uzel clusteru pro instanci ASCS/SCS |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
@@ -479,7 +479,7 @@ Chcete-li vytvořit požadované koncové body interního vyrovnávání zatíž
 
 | Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (ASCS instance s číslem instance 00) (OLAJÍCÍCH s 10) |
 | --- | --- | --- |
-| Server/ *lbrule3200* fronty |32\<číslo instance\> |3200 |
+| Server/ *lbrule3200* fronty |32\<číslo instance\> |3 200 |
 | Server zpráv ABAP/ *lbrule3600* |36\<číslo instance\> |3600 |
 | Interní zpráva ABAP/ *lbrule3900* |39\<číslo instance\> |3900 |
 | HTTP/ *Lbrule8100* serveru zpráv |81\<číslo instance\> |8100 |

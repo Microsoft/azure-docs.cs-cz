@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697536"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263046"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
 
@@ -42,7 +42,7 @@ Jedinečný identifikátor, který Azure AD vystavuje při registraci aplikace, 
 
 Funkce poskytovaná [Azure Portal][AZURE-portal], která vytvoří reprezentaci JSON konfigurace identity aplikace, která se používá jako mechanismus aktualizace přidružené [aplikace][Graph-App-Resource] a [ServicePrincipal][Graph-Sp-Resource] entit. Další podrobnosti najdete v tématu věnovaném [porozumění manifestu aplikace Azure Active Directory][AAD-App-Manifest] .
 
-## <a name="application-object"></a>objekt aplikace
+## <a name="application-object"></a>Objekt aplikace
 
 Když zaregistrujete nebo aktualizujete aplikaci v [Azure Portal][AZURE-portal], portál vytvoří nebo aktualizuje aplikační objekt a odpovídající [instanční objekt služby](#service-principal-object) pro daného tenanta. Objekt aplikace *definuje* konfiguraci identit aplikace globálně (ve všech klientech, kde má přístup), a poskytuje šablonu, ze které jsou příslušné objekty instančních objektů *odvozeny* pro místní použití v době běhu (v konkrétním tenantovi).
 
@@ -113,9 +113,9 @@ Další informace najdete v tématu o [souhlasu](consent-framework.md) .
 
 Další podrobnosti najdete v referenčních informacích k [tokenům platformy Microsoft Identity Platform][AAD-Tokens-Claims] .
 
-## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
+## <a name="microsoft-identity-platform"></a>Platforma Microsoft identity
 
-Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Další podrobnosti najdete v tématu [o platformě Microsoft Identity](about-microsoft-identity-platform.md) .
+Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Další podrobnosti najdete v tématu [o platformě Microsoft Identity](about-microsoft-identity-platform.md) .
 
 ## <a name="multi-tenant-application"></a>víceklientské aplikace
 
@@ -170,13 +170,13 @@ Osvědčenými postupy pro vytváření názvů je použití formátu "prostřed
 
 Podepsaný dokument obsahující deklarace identity, jako je například token OAuth2 nebo kontrolní výraz SAML 2,0. Pro [udělení autorizace](#authorization-grant)OAuth2 jsou [tokeny přístupu](#access-token) (OAuth2) a [token ID](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) typy tokenů zabezpečení, které jsou implementovány jako [JSON web token (Jwt)][JWT].
 
-## <a name="service-principal-object"></a>instanční objekt služby
+## <a name="service-principal-object"></a>Instanční objekt služby
 
 Když zaregistrujete nebo aktualizujete aplikaci v [Azure Portal][AZURE-portal], portál vytvoří nebo aktualizuje aplikační [objekt](#application-object) a odpovídající instanční objekt služby pro daného tenanta. Objekt aplikace *definuje* konfiguraci identit aplikace globálně (ve všech klientech, kde má přidružená aplikace udělen přístup) a je šablona, ze které jsou příslušné objekty instančních objektů *odvozeny* pro místní použití v době běhu (v konkrétním tenantovi).
 
 Další informace naleznete v tématu [Application and Service instanční objekty][AAD-App-SP-Objects].
 
-## <a name="sign-in"></a>sign-in
+## <a name="sign-in"></a>přihlášení
 
 Proces [klientské aplikace](#client-application) , která zahajuje ověřování koncového uživatele a zachytí související stav, pro účely získání [tokenu zabezpečení](#security-token) a určení rozsahu relace aplikace do daného stavu. Stav může zahrnovat artefakty, jako jsou informace o profilu uživatele, a informace odvozené z deklarací identity tokenu.
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396067"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285146"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
 
@@ -177,7 +177,7 @@ Následující referenční témata obsahují další informace o řízení př�
 
 Následující tabulka uvádí oprávnění, která můžete použít k řízení přístupu ke službě IoT Device Provisioning.
 
-| Oprávnění | Poznámky: |
+| Oprávnění | Poznámky |
 | --- | --- |
 | **ServiceConfig** |Udělí přístup ke změně konfigurací služby. <br/>Toto oprávnění používá cloudové služby back-end. |
 | **EnrollmentRead** |Uděluje oprávnění ke čtení pro registrace zařízení a skupiny registrací. <br/>Toto oprávnění používá cloudové služby back-end. |

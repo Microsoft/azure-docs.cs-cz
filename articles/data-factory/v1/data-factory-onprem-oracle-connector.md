@@ -13,11 +13,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387421"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265854"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do a z Oracle místně pomocí Azure Data Factory
 
@@ -101,7 +101,7 @@ Následující tabulka popisuje elementy JSON, které jsou specifické pro propo
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| type |Vlastnost **Type** musí být nastavená na **OnPremisesOracle**. |Ano |
+| typ |Vlastnost **Type** musí být nastavená na **OnPremisesOracle**. |Ano |
 | driverType | Určete, který ovladač má být použit ke zkopírování dat z databáze Oracle nebo do ní. Povolené hodnoty jsou **Microsoft** a **ODP** (výchozí). Podrobnosti o ovladači najdete v části [podporovaná verze a instalace](#supported-versions-and-installation) . | Ne |
 | connectionString | Zadejte informace potřebné pro připojení k instanci databáze Oracle pro vlastnost **ConnectionString** . | Ano |
 | gatewayName | Název brány, který se používá pro připojení k místnímu serveru Oracle. |Ano |
@@ -598,27 +598,27 @@ Když přesunete data z Oracle, použijí se z datového typu Oracle na typ .NET
 | --- | --- |
 | BFILE |Byte[] |
 | PŘÍZNAKY |Byte[]<br/>(podporované jenom v Oracle 10g a novějších verzích při použití ovladače Microsoftu) |
-| CHAR |Řetězec |
-| CLOB |Řetězec |
-| DATE (Datum) |DateTime |
+| CHAR |String |
+| CLOB |String |
+| DATUM |Datum a čas |
 | FLOAT |Decimal, String (Pokud přesnost > 28) |
 | INTEGER |Decimal, String (Pokud přesnost > 28) |
 | INTERVAL OD ROKU DO MĚSÍCE |Datový typ Int32 |
 | DRUHÝ DEN INTERVALU |TimeSpan |
-| DLOUHOU |Řetězec |
+| DLOUHOU |String |
 | LONG RAW |Byte[] |
-| NCHAR |Řetězec |
-| NCLOB |Řetězec |
+| NCHAR |String |
+| NCLOB |String |
 | NUMBER |Decimal, String (Pokud přesnost > 28) |
-| NVARCHAR2 |Řetězec |
+| NVARCHAR2 |String |
 | ZÍSKÁNÍ |Byte[] |
-| ROWID |Řetězec |
-| TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
-| TIMESTAMP WITH TIME ZONE |DateTime |
-| UNSIGNED INTEGER |Číslo |
-| VARCHAR2 |Řetězec |
-| XML |Řetězec |
+| ROWID |String |
+| TIMESTAMP |Datum a čas |
+| TIMESTAMP WITH LOCAL TIME ZONE |Datum a čas |
+| TIMESTAMP WITH TIME ZONE |Datum a čas |
+| UNSIGNED INTEGER |Počet |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Datové typy **intervalu roku do měsíce** a **druhý den v sekundách** nejsou podporovány při použití ovladače společnosti Microsoft.

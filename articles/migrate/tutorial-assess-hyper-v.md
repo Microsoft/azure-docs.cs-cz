@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.custom: mvc
 ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388949"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238423"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů Hyper-V pomocí Azure Migrate posouzení serveru
 
@@ -321,7 +321,7 @@ Hodnocení spolehlivosti pro posouzení je následující.
 0 až 20 % | 1 hvězdička
 21 až 40 % | 2 hvězdičky
 41 až 60 % | 3 hvězdičky
-61 až 80 % | 4 hvězdičky
+61 až 80 % | 4 Star
 81 až 100 % | 5 hvězdiček
 
 [Přečtěte si další](best-practices-assessment.md#best-practices-for-confidence-ratings) informace o osvědčených postupech pro hodnocení spolehlivosti.

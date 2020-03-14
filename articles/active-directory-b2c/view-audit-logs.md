@@ -13,11 +13,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378834"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264216"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -106,7 +106,7 @@ Pokud chcete stáhnout Azure AD B2C události protokolu auditu přes rozhraní A
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
-### <a name="powershell-script"></a>Skript PowerShellu
+### <a name="powershell-script"></a>Skript prostředí PowerShell
 
 Následující skript prostředí PowerShell ukazuje příklad postupu dotazování rozhraní API pro vytváření sestav Azure AD. Po dotazování rozhraní API se události zaznamenávají do standardního výstupu a pak se zapíší výstup JSON do souboru.
 

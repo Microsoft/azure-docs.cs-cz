@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: eb91dfd5d774e591d3c3c3964668dcc626086181
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c49892f97d9c15efcaecccb6133c67133e81c87
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512571"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137556"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co je geografické filtrování v doméně pro služby Azure front-end?
 
@@ -21,7 +21,7 @@ Azure Front Door Service ve výchozím nastavení reaguje na požadavky uživate
 
 Zásada WAF obvykle zahrnuje sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  V případě pravidla geografického filtrování je proměnná shody REMOTE_ADDR, operátor je GeoMatch a hodnota je dvoupísmenný kód požadované země. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
 
-Zásady geografického filtrování pro vaše přední dveře můžete nakonfigurovat buď pomocí [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) , nebo pomocí naší [šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+Zásady geografického filtrování pro vaše přední dveře můžete nakonfigurovat pomocí Azure Portal, [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) nebo naší [šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
 ## <a name="country-code-reference"></a>Odkaz na kód země
 
@@ -49,7 +49,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | BI | Burundi|
 | BJ | Benin|
 | BL | Svatý Bartoloměj|
-| BN | Brunej Darussalam|
+| BN | Sultanát Brunej|
 | BO | Bolívie|
 | BR | Brazílie|
 | BS | Bahamy|
@@ -57,11 +57,11 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | BW | Botswana|
 | BY | Bělorusko|
 | BZ | Belize|
-| CA | Kanada|
-| CD | Demokratická republika Kongo|
+| CERTIFIKAČNÍ ÚŘAD | Kanada|
+| CD | Konžská demokratická republika|
 | CF | Středoafrická republika|
 | CH | Švýcarsko|
-| CI | Pobřeží slonoviny|
+| Položka konfigurace | Pobřeží slonoviny|
 | CL | Chile|
 | CM | Kamerun|
 | CN | Čína|
@@ -71,7 +71,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | CV | Cabo Verde|
 | CY | Kypr|
 | CZ | Česká republika|
-| Německo | Německo|
+| DE | Německo|
 | DK | Dánsko|
 | DO | Dominikánská republika|
 | DZ | Alžírsko|
@@ -119,7 +119,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | KW | Kuvajt|
 | KY | Kajmanské ostrovy|
 | KZ | Kazachstán|
-| LATINSKÁ AMERIKA | Laoská lidově demokratická republika|
+| LA | Laoská lidově demokratická republika|
 | LB | Libanon|
 | LI | Lichtenštejnsko|
 | LK | Srí Lanka|
@@ -145,7 +145,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| není k dispozici | Namibie|
+| Není k dispozici | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|
@@ -193,7 +193,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | TZ | Sjednocená tanzanská republika|
 | UA | Ukrajina|
 | UG | Uganda|
-| Spojené státy | Spojené státy|
+| US | Spojené státy|
 | UY | Uruguay|
 | UZ | Uzbekistán|
 | VC | Svatý Vincenc a Grenadiny|
@@ -208,4 +208,4 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [zabezpečení aplikační vrstvy pomocí služby Front Door](../../frontdoor/front-door-application-security.md).
-- Přečtěte si, jak [vytvořit Front Door](../../frontdoor/quickstart-create-front-door.md).
+- Přečtěte si, jak [vytvořit službu Front Door](../../frontdoor/quickstart-create-front-door.md).

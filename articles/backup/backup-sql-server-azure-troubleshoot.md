@@ -4,11 +4,11 @@ description: Informace o řešení potíží při zálohování SQL Server datab
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392853"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247823"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 

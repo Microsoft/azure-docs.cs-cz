@@ -4,11 +4,11 @@ description: Tento článek vás provede programově vytvářením a správou z�
 ms.date: 01/31/2019
 ms.topic: how-to
 ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386799"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264541"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 

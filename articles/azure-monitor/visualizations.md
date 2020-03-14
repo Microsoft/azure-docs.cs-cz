@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
 ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372221"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274109"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitor
 Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
@@ -47,7 +47,7 @@ Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorován�
 ## <a name="azure-monitor-views"></a>Zobrazení Azure Monitor
 [Zobrazení v Azure monitor](platform/view-designer.md) umožňují vytvářet vlastní vizualizace s daty protokolu. Používají se pro [monitorování řešení](insights/solutions.md) k prezentaci shromažďovaných dat.
 
-![Zobrazení](media/visualizations/view.png)
+![Zobrazit](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Výhody
 - Bohatá vizualizace pro data protokolu.
@@ -65,7 +65,7 @@ Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorován�
 - Dotazy jsou omezené na velikost odpovědi na 8MB a čas provedení dotazu 110 sekund.
 
 
-## <a name="workbooks"></a>Workbooks
+## <a name="workbooks"></a>Sešity
 [Sešity](../azure-monitor/app/usage-workbooks.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich datech, vyšetřování a spolupráci v rámci týmu. Konkrétní příklady, kde jsou sešity užitečné, jsou průvodci odstraňováním potíží a Postmortem incidentů.
 
 ![Pracovní](media/visualizations/workbook.png)

@@ -12,11 +12,11 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357176"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270079"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Omezení kapacity Azure synapse Analytics (dříve SQL DW)
 
@@ -44,7 +44,7 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 | Tabulka |Sloupce na tabulku |sloupce 1024 |
 | Tabulka |Počet bajtů na sloupec |Závisí na [datovém typu](sql-data-warehouse-tables-data-types.md)sloupce. U znakových datových typů může maximální limit ukládat až 2 GB na vypnutou velikost stránky (přetečení řádku).  Znaky jiné než Unicode, jako je například char nebo varchar, jsou 8000 na datové stránce. na stránce dat je 4000 znaků Unicode, jako je například nchar nebo omezení nvarchar.  Zvyšte výkon pomocí velikosti úložiště datových stránek. |
 | Tabulka |Počet bajtů na řádek, definovaná velikost |8060 bajtů<br/><br/>Počet bajtů na řádek se počítá stejným způsobem jako SQL Server s kompresí stránky. Podobně jako SQL Server podporuje úložiště přetečení řádku, které umožňuje vložit **sloupce proměnné délky** mimo řádek. Pokud jsou řádky proměnlivé délky vloženy mimo řádek, v hlavním záznamu je uložen pouze kořenový adresář 24 bajtů. Další informace najdete v tématu [data přetečení řádků přesahují 8 – KB](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tabulka |Počet oddílů na tabulku |15 000<br/><br/>Pro vysoký výkon doporučujeme minimalizovat počet oddílů, které potřebujete, a přitom pořád podporovat vaše podnikové požadavky. Vzhledem k tomu, že počet oddílů roste, režie pro operace DDL (Data Definition Language) a jazyk manipulace s daty (DML) roste a způsobuje pomalejší výkon. |
+| Tabulka |Počet oddílů na tabulku |15,000<br/><br/>Pro vysoký výkon doporučujeme minimalizovat počet oddílů, které potřebujete, a přitom pořád podporovat vaše podnikové požadavky. Vzhledem k tomu, že počet oddílů roste, režie pro operace DDL (Data Definition Language) a jazyk manipulace s daty (DML) roste a způsobuje pomalejší výkon. |
 | Tabulka |Hodnota ohraničení znaků na oddíl. |4 000 |
 | Index |Neclusterované indexy na tabulku |50<br/><br/>Platí jenom pro tabulky rowstore. |
 | Index |Clusterované indexy na tabulku |1<br><br/>Platí pro rowstore i tabulky columnstore. |
@@ -86,14 +86,14 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 
 | Systémové zobrazení | Maximální počet řádků |
 |:--- |:--- |
-| sys.dm_pdw_component_health_alerts |10 000 |
+| sys.dm_pdw_component_health_alerts |10,000 |
 | sys.dm_pdw_dms_cores |100 |
 | sys.dm_pdw_dms_workers |Celkový počet pracovních procesů DMS pro nejnovější požadavky 1000 SQL. |
-| sys.dm_pdw_errors |10 000 |
-| sys.dm_pdw_exec_requests |10 000 |
-| sys.dm_pdw_exec_sessions |10 000 |
+| sys.dm_pdw_errors |10,000 |
+| sys.dm_pdw_exec_requests |10,000 |
+| sys.dm_pdw_exec_sessions |10,000 |
 | sys.dm_pdw_request_steps |Celkový počet kroků pro nejnovější požadavky 1000 SQL, které jsou uloženy v sys. dm_pdw_exec_requests. |
-| sys.dm_pdw_os_event_logs |10 000 |
+| sys.dm_pdw_os_event_logs |10,000 |
 | sys.dm_pdw_sql_requests |Nejnovější požadavky 1000 SQL, které jsou uloženy v sys. dm_pdw_exec_requests. |
 |||
 

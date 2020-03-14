@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382649"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260524"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -34,7 +34,7 @@ Data Factory aktuálně podporuje pouze přesun dat z Amazon RedShift do [podpor
 > [!TIP]
 > Pokud chcete dosáhnout nejlepšího výkonu při kopírování velkých objemů dat z Amazon RedShift, zvažte použití integrovaného příkazu RedShift **Unload** prostřednictvím služby Amazon Simple Storage Service (Amazon S3). Podrobnosti najdete v tématu [použití uvolnění ke kopírování dat z Amazon RedShift](#use-unload-to-copy-data-from-amazon-redshift).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Pokud přesouváte data do místního úložiště dat, nainstalujte [Správa dat bránu](data-factory-data-management-gateway.md) na místní počítač. Udělte bráně přístup ke clusteru Amazon RedShift pomocí IP adresy místního počítače. Pokyny najdete v tématu [autorizace přístupu ke clusteru](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Pokud chcete přesunout data do úložiště dat Azure, přečtěte si část [výpočetní IP adresa a rozsahy SQL používané datacentry Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -59,7 +59,7 @@ Následující části popisují vlastnosti JSON, které se používají k defin
 
 Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Amazon RedShift.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **type** |Tato vlastnost musí být nastavená na **AmazonRedshift**. |Ano |
 | **WebServer** |IP adresa nebo název hostitele serveru Amazon RedShift. |Ano |
@@ -74,7 +74,7 @@ Seznam oddílů a vlastností, které jsou k dispozici pro definování datovýc
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat ve Storu. Oddíl **typeProperties** pro datovou sadu **relačních**typů, která zahrnuje datovou sadu Amazon RedShift, má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **Tabulky** |Název tabulky v databázi Amazon RedShift, na kterou odkazuje propojená služba |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
 
@@ -84,7 +84,7 @@ Seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit,
 
 V případě aktivity kopírování je-li zdrojem typu **AmazonRedshiftSource**, jsou v části **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **zadávání** | K načtení dat použijte vlastní dotaz. |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 | **redshiftUnloadSettings** | Obsahuje skupinu vlastností při použití příkazu RedShift **Unload** . | Ne |
@@ -93,7 +93,7 @@ V případě aktivity kopírování je-li zdrojem typu **AmazonRedshiftSource**,
 
 Alternativně můžete použít typ **RelationalSource** , který zahrnuje Amazon RedShift, s následující vlastností v oddílu **typeProperties** . Poznámka: Tento typ zdroje nepodporuje příkaz RedShift **Unload** .
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **zadávání** |K načtení dat použijte vlastní dotaz. | Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 
@@ -333,14 +333,14 @@ Následující mapování se používají, když aktivita kopírování převede
 | INTEGER |Datový typ Int32 |
 | BIGINT |Int64 |
 | NOTACI |Decimal |
-| NEMOVITOSTÍ |Jednoduchá |
+| NEMOVITOSTÍ |Jednoduché |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |Řetězec |
-| CHAR |Řetězec |
-| VARCHAR |Řetězec |
-| DATE (Datum) |DateTime |
-| TIMESTAMP |DateTime |
-| TEXT |Řetězec |
+| BOOLEAN |String |
+| CHAR |String |
+| VARCHAR |String |
+| DATUM |Datum a čas |
+| TIMESTAMP |Datum a čas |
+| TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
 Informace o tom, jak namapovat sloupce ve zdrojové datové sadě ke sloupcům v datové sadě jímky, najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).

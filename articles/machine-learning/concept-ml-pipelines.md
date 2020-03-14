@@ -10,18 +10,18 @@ ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
 ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354980"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270313"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
 Azure Machine Learning kanály umožňují vytvářet pracovní postupy v projektech machine learningu. Tyto pracovní postupy mají několik výhod: 
 
 + Administrativ
-+ Rychlost
++ rychlost
 + Opakovatelnost
 + Flexibilita
 + Správa verzí a sledování

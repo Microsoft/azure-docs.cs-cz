@@ -12,11 +12,11 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
 ms.openlocfilehash: 9999d74bf6bef3e8351460add7efc8bdbfcd1045
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127104"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270027"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Příklad koncového na konci najdete v [kurzu Vytvoření modelu klasifikace po
 
 V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azure Machine Learning SDK [nakonfigurovat experimenty automatizovaného strojového učení](how-to-configure-auto-train.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -144,8 +144,8 @@ Funkce| Název sloupce, který je sumarizován.
 Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
-Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
-Maximum| Maximální hodnota sloupce 
+Min.| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
+Max.| Maximální hodnota sloupce 
 Počet| Celkový počet chybějících a nechybějících položek ve sloupci
 Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
@@ -182,7 +182,7 @@ Data guardrails se automaticky aplikují, aby vám pomohly identifikovat možné
 
 V následující tabulce jsou popsány aktuálně podporované datové guardrails a související stavy, které mohou uživatelé pocházet při odesílání jejich experimentů.
 
-Guardrail|Status|Podmínka&nbsp;pro aktivační událost&nbsp;
+Guardrail|Stav|Podmínka&nbsp;pro aktivační událost&nbsp;
 ---|---|---
 Chybějící hodnoty&nbsp;&nbsp;imputace |**Předaný** <br> <br> **Určí**|    Žádná chybějící hodnota v žádném ze vstupních&nbsp;sloupců <br> <br> U některých sloupců chybí hodnoty.
 Křížové ověření|**Hotovo**|Pokud není zadaná žádná explicitní ověřovací sada

@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak připravit prostředí pro ochran
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392082"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273407"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -53,7 +53,7 @@ Pokud nechcete spustit základní server v Azure, můžete server spustit na vir
 
 | Operační systém | Platforma | Skladová položka |
 |:--- | --- |:--- |
-| Windows Server 2019 |64bitové |Standard, Datacenter, Essentials |
+| Windows Server. 2019 |64bitové |Standard, Datacenter, Essentials |
 | Windows Server 2016 a nejnovější aktualizace service packu |64bitové |Standard, Datacenter, Essentials  |
 
 Pomocí odstranění duplicitních dat systému Windows Server můžete odstranit duplicitu úložiště aplikace DPM. Přečtěte si další informace o tom [, jak aplikace DPM a odstraňování duplicitních dat](https://docs.microsoft.com/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) při nasazení na virtuálních počítačích Hyper-V spolupracují.
@@ -289,10 +289,10 @@ Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pom
 | Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
-| Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Připojeno |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Připojeno |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
 | Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
-| Ztracené připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Ztracené připojení > 15 dní |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Ztracené připojení > 15 dní |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovování ze ztráty připojení

@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378073"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263748"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
 
 Azure Multi-Factor Authentication poskytuje několik sestav, které můžete používat vy a vaše organizace přístupné prostřednictvím Azure Portal. V následující tabulce jsou uvedeny dostupné sestavy:
 
-| Sestava | Umístění | Popis |
+| Zpráva | Umístění | Popis |
 |:--- |:--- |:--- |
 | Historie blokování uživatelů | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
 | Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze n
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393144"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273329"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak:
 >**Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a obnovitelné odstranění pro SAP HANA v úlohách virtuálních počítačů Azure** je teď dostupné ve verzi Preview.<br>
 >Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zálohováním SQL Server databáze ověřte následující kritéria:
 
@@ -97,6 +97,10 @@ Povoluje rozsahy IP adres. | Žádné další náklady | Složitá Správa, prot
 Použití značek služby NSG | Jednodušší Správa jako změny rozsahu se sloučí automaticky. <br/><br/> Žádné další náklady <br/><br/> | Dá se použít jenom s skupin zabezpečení sítě <br/><br/> Poskytuje přístup k celé službě.
 Použití Azure Firewall značek plně kvalifikovaného názvu domény | Jednodušší Správa, protože jsou automaticky spravovány požadované plně kvalifikované názvy domén | Dá se použít jenom s Azure Firewall.
 Použití proxy serveru HTTP | Přístup k virtuálním počítačům jediným bodem z Internetu <br/> | Další náklady na spuštění virtuálního počítače s využitím softwaru proxy <br/> Žádné publikované adresy plně kvalifikovaného názvu domény – pravidla povolení budou platit pro změny IP adresy Azure
+
+#### <a name="private-endpoints"></a>Soukromé koncové body
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Pokyny pro pojmenovávání databází pro Azure Backup
 

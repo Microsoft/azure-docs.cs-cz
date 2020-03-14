@@ -10,11 +10,11 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368919"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276410"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -83,16 +83,16 @@ Datové výrazy poskytují přístup k datům vlastností ve funkci.
 
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['at', number, array]` | objekt | Načte položku z pole. |
+| `['at', number, array]` | object | Načte položku z pole. |
 | `['geometry-type']` | string | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
 | `['get', string]` | value | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['get', string, object]` | value | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
-| `['has', string]` | Boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
-| `['has', string, object]` | Boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
+| `['has', string]` | Datový typ Boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
+| `['has', string, object]` | Datový typ Boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
 | `['id']` | value | Získá ID funkce, pokud má jednu. |
 | `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
-| `['in', boolean | string | number, array]` | Boolean | Určuje, jestli položka existuje v poli. |
-| `['in', substring, string]` | Boolean | Určuje, zda podřetězec existuje v řetězci. |
+| `['in', boolean | string | number, array]` | Datový typ Boolean | Určuje, jestli položka existuje v poli. |
+| `['in', substring, string]` | Datový typ Boolean | Určuje, zda podřetězec existuje v řetězci. |
 
 **Příklady**
 
@@ -198,15 +198,15 @@ Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých
 
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['! ', boolean]` | Boolean | Logická negace. Vrátí `true`, pokud je vstup `false`a `false`, pokud je vstup `true`. |
-| `['!= ', value, value]` | Boolean | Vrátí `true`, pokud vstupní hodnoty nejsou stejné, `false` jinak. |
-| `['<', value, value]` | Boolean | Vrátí `true`, pokud je první vstup striktně menší než druhý, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
-| `['<=', value, value]` | Boolean | Vrátí `true`, pokud je první vstup menší nebo roven druhé, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
-| `['==', value, value]` | Boolean | Vrátí `true`, pokud jsou vstupní hodnoty stejné, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
-| `['>', value, value]` | Boolean | Vrátí `true`, pokud je první vstup striktně větší než druhý, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
-| `['>=' value, value]` | Boolean | Vrátí `true`, pokud je první vstup větší než nebo roven druhé, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
-| `['all', boolean, boolean, …]` | Boolean | Vrátí `true`, pokud jsou všechny vstupy `true`, `false` jinak. |
-| `['any', boolean, boolean, …]` | Boolean | Vrátí `true`, pokud je některý ze vstupů `true``false` jinak. |
+| `['! ', boolean]` | Datový typ Boolean | Logická negace. Vrátí `true`, pokud je vstup `false`a `false`, pokud je vstup `true`. |
+| `['!= ', value, value]` | Datový typ Boolean | Vrátí `true`, pokud vstupní hodnoty nejsou stejné, `false` jinak. |
+| `['<', value, value]` | Datový typ Boolean | Vrátí `true`, pokud je první vstup striktně menší než druhý, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
+| `['<=', value, value]` | Datový typ Boolean | Vrátí `true`, pokud je první vstup menší nebo roven druhé, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
+| `['==', value, value]` | Datový typ Boolean | Vrátí `true`, pokud jsou vstupní hodnoty stejné, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
+| `['>', value, value]` | Datový typ Boolean | Vrátí `true`, pokud je první vstup striktně větší než druhý, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
+| `['>=' value, value]` | Datový typ Boolean | Vrátí `true`, pokud je první vstup větší než nebo roven druhé, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
+| `['all', boolean, boolean, …]` | Datový typ Boolean | Vrátí `true`, pokud jsou všechny vstupy `true`, `false` jinak. |
+| `['any', boolean, boolean, …]` | Datový typ Boolean | Vrátí `true`, pokud je některý ze vstupů `true``false` jinak. |
 
 ## <a name="conditional-expressions"></a>Podmíněné výrazy
 
@@ -403,7 +403,7 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | Array \| objekt | Vrátí literálovou hodnotu pole nebo objektu. Tento výraz použijte k zabránění vyhodnocení pole nebo objektu jako výrazu. To je nezbytné, pokud musí být pole nebo objekt vráceny výrazem. |
 | `['image', string]` | string | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
-| `['to-boolean', value]` | Boolean | Převede vstupní hodnotu na logickou hodnotu. Výsledek je `false`, když je vstup prázdný řetězec, `0`, `false`, `null`nebo `NaN`; v opačném případě `true`. |
+| `['to-boolean', value]` | Datový typ Boolean | Převede vstupní hodnotu na logickou hodnotu. Výsledek je `false`, když je vstup prázdný řetězec, `0`, `false`, `null`nebo `NaN`; v opačném případě `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | barva | Převede vstupní hodnotu na barvu. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | číslo | Pokud je to možné, převede vstupní hodnotu na číslo. Pokud je vstup `null` nebo `false`, výsledek je 0. Pokud je vstup `true`, výsledkem je 1. Pokud je vstup řetězcem, je převeden na číslo pomocí funkce řetězce [tonumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) ve specifikaci jazyka ECMAScript. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
 | `['to-string', value]` | string | Převede vstupní hodnotu na řetězec. Pokud je vstup `null`, výsledek je `""`. Pokud je vstup logická hodnota, výsledek je `"true"` nebo `"false"`. Pokud je vstup číslo, je převedeno na řetězec pomocí funkce [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specifikace jazyka ECMAScript. Je-li vstup barva, je převedena na RGBA řetězce barev CSS `"rgba(r,g,b,a)"`. V opačném případě je vstup převeden na řetězec pomocí funkce [JSON. Stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specifikace jazyka ECMAScript. |

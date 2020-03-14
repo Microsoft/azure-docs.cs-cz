@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 6812393b01172cda5d2fa4dcbe9de2bf4264a99f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9cec91ccc80b9072b1a3da756f26f47eb88b951c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359887"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268610"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze SQL Server do Azure SQL Database
 
@@ -62,7 +62,7 @@ Následující seznam obsahuje doporučení pro zajištění nejlepšího výkon
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Optimalizace výkonu po dokončení migrace
 
-[Aktualizujte statistiky](https://msdn.microsoft.com/library/ms187348.aspx) pomocí úplného prohledávání, jakmile se migrace dokončí.
+[Aktualizujte statistiky](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql) pomocí úplného prohledávání, jakmile se migrace dokončí.
 
 ## <a name="method-2-use-transactional-replication"></a>Způsob 2: Použití transakční replikace
 
@@ -89,7 +89,7 @@ U transakční replikace se všechny změny dat nebo schématu objeví i ve slu�
 2. Vytvoření publikace
    - [Pomocí aplikace SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
    - [Pomocí jazyka Transact-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
-3. Vytvoření předplatného
+3. Vytvořit odběr
    - [Pomocí aplikace SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
    - [Pomocí jazyka Transact-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 

@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365516"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262357"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0
 
@@ -67,7 +67,7 @@ Místo používání seznamů ACL můžete použít rozhraní API k vystavení s
 * Čtení pošty ve všech poštovních schránkách
 * Čtení a zápis pošty ve všech poštovních schránkách
 * Poslat e-mail jako libovolný uživatel
-* Čtení dat z adresáře
+* Číst data z adresáře
 
 Další informace o oprávněních aplikací najdete v [Microsoft Graph](https://developer.microsoft.com/graph).
 
@@ -117,9 +117,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenant adresáře, ze kterého chcete požádat o oprávnění. Může se jednat o formát GUID nebo popisný název. Pokud nevíte, ke kterému tenantovi uživatel patří, a chcete jim umožnit, aby se přihlásili pomocí klienta, použijte `common`. |
-| `client_id` | Požaduje se | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
-| `redirect_uri` | Požaduje se | Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s výjimkou toho, že musí být zakódovaný URL a může mít další segmenty cesty. |
+| `tenant` | Požadováno | Tenant adresáře, ze kterého chcete požádat o oprávnění. Může se jednat o formát GUID nebo popisný název. Pokud nevíte, ke kterému tenantovi uživatel patří, a chcete jim umožnit, aby se přihlásili pomocí klienta, použijte `common`. |
+| `client_id` | Požadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `redirect_uri` | Požadováno | Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s výjimkou toho, že musí být zakódovaný URL a může mít další segmenty cesty. |
 | `state` | Doporučené | Hodnota, která je obsažena v požadavku, který je také vrácen v odpovědi na token. Může to být řetězec libovolného obsahu, který chcete. Stav se používá ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
 
 V tomto okamžiku Azure AD vynutilo, že k dokončení žádosti se může přihlásit jenom správce klienta. Správce bude požádán o schválení všech přímých oprávnění aplikace, která jste si vyžádali pro vaši aplikaci na portálu pro registraci aplikací.
@@ -180,11 +180,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenant adresáře, na který aplikace plánuje pracovat, v identifikátoru GUID nebo ve formátu názvu domény. |
-| `client_id` | Požaduje se | ID aplikace přiřazené vaší aplikaci. Tyto informace najdete na portálu, kde jste zaregistrovali vaši aplikaci. |
-| `scope` | Požaduje se | Hodnota předaná pro parametr `scope` v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, s příponou `.default`. Pro Microsoft Graph například je hodnota `https://graph.microsoft.com/.default`. <br/>Tato hodnota oznamuje koncovému bodu Microsoft Identity Platform, který má všechna přímá oprávnění aplikace nakonfigurovaná pro vaši aplikaci, koncový bod by měl vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o rozsahu `/.default` najdete v [dokumentaci k souhlasu](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Požaduje se | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na portálu pro registraci aplikací. Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. |
-| `grant_type` | Požaduje se | Musí být nastavené na `client_credentials`. |
+| `tenant` | Požadováno | Tenant adresáře, na který aplikace plánuje pracovat, v identifikátoru GUID nebo ve formátu názvu domény. |
+| `client_id` | Požadováno | ID aplikace přiřazené vaší aplikaci. Tyto informace najdete na portálu, kde jste zaregistrovali vaši aplikaci. |
+| `scope` | Požadováno | Hodnota předaná pro parametr `scope` v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, s příponou `.default`. Pro Microsoft Graph například je hodnota `https://graph.microsoft.com/.default`. <br/>Tato hodnota oznamuje koncovému bodu Microsoft Identity Platform, který má všechna přímá oprávnění aplikace nakonfigurovaná pro vaši aplikaci, koncový bod by měl vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o rozsahu `/.default` najdete v [dokumentaci k souhlasu](v2-permissions-and-consent.md#the-default-scope). |
+| `client_secret` | Požadováno | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na portálu pro registraci aplikací. Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. |
+| `grant_type` | Požadováno | Musí být nastavené na `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
 
@@ -202,12 +202,12 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenant adresáře, na který aplikace plánuje pracovat, v identifikátoru GUID nebo ve formátu názvu domény. |
-| `client_id` | Požaduje se |ID aplikace (klienta), které je přiřazeno vaší aplikaci. |
-| `scope` | Požaduje se | Hodnota předaná pro parametr `scope` v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, s příponou `.default`. Pro Microsoft Graph například je hodnota `https://graph.microsoft.com/.default`. <br/>Tato hodnota informuje koncový bod platformy Microsoft Identity Platform, který obsahuje všechna přímá oprávnění aplikace, která jste pro svou aplikaci nakonfigurovali, a měla by vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o rozsahu `/.default` najdete v [dokumentaci k souhlasu](v2-permissions-and-consent.md#the-default-scope). |
-| `client_assertion_type` | Požaduje se | Hodnota musí být nastavená na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Požaduje se | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [přihlašovacích údajích k certifikátu](active-directory-certificate-credentials.md) , kde se dozvíte, jak zaregistrovat certifikát a formát kontrolního výrazu.|
-| `grant_type` | Požaduje se | Musí být nastavené na `client_credentials`. |
+| `tenant` | Požadováno | Tenant adresáře, na který aplikace plánuje pracovat, v identifikátoru GUID nebo ve formátu názvu domény. |
+| `client_id` | Požadováno |ID aplikace (klienta), které je přiřazeno vaší aplikaci. |
+| `scope` | Požadováno | Hodnota předaná pro parametr `scope` v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, s příponou `.default`. Pro Microsoft Graph například je hodnota `https://graph.microsoft.com/.default`. <br/>Tato hodnota informuje koncový bod platformy Microsoft Identity Platform, který obsahuje všechna přímá oprávnění aplikace, která jste pro svou aplikaci nakonfigurovali, a měla by vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o rozsahu `/.default` najdete v [dokumentaci k souhlasu](v2-permissions-and-consent.md#the-default-scope). |
+| `client_assertion_type` | Požadováno | Hodnota musí být nastavená na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Požadováno | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [přihlašovacích údajích k certifikátu](active-directory-certificate-credentials.md) , kde se dozvíte, jak zaregistrovat certifikát a formát kontrolního výrazu.|
+| `grant_type` | Požadováno | Musí být nastavené na `client_credentials`. |
 
 Všimněte si, že parametry jsou skoro stejné jako v případě požadavku pomocí sdíleného tajného klíče s tím rozdílem, že parametr client_secret je nahrazen dvěma parametry: client_assertion_type a client_assertion.
 
@@ -280,4 +280,4 @@ Přečtěte si [dokumentaci přehled přihlašovacích údajů klienta](https://
 | Ukázka | Platforma |Popis |
 |--------|----------|------------|
 |[Active-Directory-dotnetcore-démon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | Konzola .NET Core 2,1 | Jednoduchá aplikace .NET Core, která zobrazuje uživatele tenanta, který dotazuje Microsoft Graph pomocí identity aplikace, a ne jménem uživatele. Ukázka také znázorňuje variaci pomocí certifikátů pro ověřování. |
-|[Active-Directory-dotnet-démon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Webová aplikace, která synchronizuje data z Microsoft Graph pomocí identity aplikace, nikoli jménem uživatele. |
+|[Active-Directory-dotnet-démon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|Rozhraní ASP.NET MVC | Webová aplikace, která synchronizuje data z Microsoft Graph pomocí identity aplikace, nikoli jménem uživatele. |

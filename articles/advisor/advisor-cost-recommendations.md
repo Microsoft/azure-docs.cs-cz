@@ -3,12 +3,12 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443129"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259692"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -47,9 +47,12 @@ Azure Advisor detekuje Azure Data Factory kanály, které opakovaně selžou, a 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Pro Managed Disks použít standardní snímky
 Pokud chcete ušetřit 60 % nákladů, doporučujeme uložit snímky ve službě Storage úrovně Standard bez ohledu na typ úložiště nadřazeného disku. Tato možnost je výchozí možností pro Managed Disks snímky. Azure Advisor identifikuje snímky uložené Premium Storage a doporučuje migraci snímku z úrovně Premium na úložiště Standard. [Další informace o cenách spravovaného disku](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
+## <a name="utilize-lifecycle-management"></a>Využití správy životního cyklu
+Azure Advisor bude využívat inteligentní informace týkající se počtu objektů úložiště objektů BLOB v Azure, celkové velikosti a transakcí, které zjistí, jestli je jeden nebo více účtů úložiště nejvhodnější pro zajištění správy životního cyklu na úrovni dat. Zobrazí se výzva k vytvoření pravidel pro správu životního cyklu, která budou automaticky vrstvit vaše data na studená nebo Archivovaná pro optimalizaci nákladů na úložiště a zachování vašich dat v úložišti objektů BLOB v Azure kvůli kompatibilitě aplikací.
+
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte a vyberte [**Advisor**](https://aka.ms/azureadvisordashboard) na libovolné stránce.
 

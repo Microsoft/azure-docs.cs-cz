@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387507"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260446"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z tabulky Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -60,7 +60,7 @@ Existují dva typy propojených služeb, které můžete použít k propojení �
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **Azure** má následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze Azure Table, na kterou odkazuje propojená služba |Ano. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
 
@@ -79,7 +79,7 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity, se liší
 
 **AzureTableSource** podporuje následující vlastnosti v části typeProperties:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu tabulky Azure Podívejte se na příklady v následující části. |Ne. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
 | azureTableSourceIgnoreTableNotFound |Určuje, zda požití neexistuje výjimka tabulky. |PRAVDA<br/>CHYBNÉ |Ne |
@@ -99,7 +99,7 @@ Pokud je sloupec tabulky Azure typu DateTime:
 
 **AzureTableSink** podporuje následující vlastnosti v části typeProperties:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |Řetězcová hodnota. |Ne |
 | azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu AzureTableDefaultPartitionKeyValue. |Název sloupce |Ne |
@@ -478,12 +478,12 @@ Když přesunete data do & z tabulky Azure, z typů Azure Table OData do typu .N
 | --- | --- | --- |
 | Edm.Binary |Byte |Pole bajtů až do 64 KB. |
 | Edm.Boolean |logick |Logická hodnota. |
-| Edm.DateTime |DateTime |64 hodnota vyjádřená jako koordinovaný světový čas (UTC). Podporovaný rozsah DateTime začíná od 12:00 půlnoci 1. ledna 1601 N.L. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
+| Edm.DateTime |Datum a čas |64 hodnota vyjádřená jako koordinovaný světový čas (UTC). Podporovaný rozsah DateTime začíná od 12:00 půlnoci 1. ledna 1601 N.L. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
 | Edm.Double |double |Hodnota 64-bit s plovoucí desetinnou čárkou. |
 | Edm.Guid |identifikátor GUID |Globálně jedinečný identifikátor 128. |
 | Edm.Int32 |Datový typ Int32 |32 celé číslo. |
 | Edm.Int64 |Int64 |64 celé číslo. |
-| Edm.String |Řetězec |Hodnota kódovaná v kódování UTF-16. Hodnoty řetězce můžou být až 64 KB. |
+| Edm.String |String |Hodnota kódovaná v kódování UTF-16. Hodnoty řetězce můžou být až 64 KB. |
 
 ### <a name="type-conversion-sample"></a>Ukázka převodu typu
 Následující ukázka slouží ke kopírování dat z objektu blob Azure do tabulky Azure s převody typů.
@@ -537,7 +537,7 @@ Vzhledem k mapování typu z tabulky Azure typu OData na typ .NET byste definova
 | Název sloupce | Typ |
 | --- | --- |
 | userid |Edm.Int64 |
-| jméno |Edm.String |
+| name |Edm.String |
 | lastlogindate |Edm.DateTime |
 
 Dále definujte datovou sadu Azure Table následujícím způsobem. Nemusíte určovat oddíl Structure s informacemi o typu, protože informace o typu jsou již zadány v podkladovém úložišti dat.

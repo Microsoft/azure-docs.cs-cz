@@ -9,11 +9,11 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275336"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254609"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Aktualizace 3 poznámky k verzi pro zařízení řady StorSimple 8000
 
@@ -43,11 +43,11 @@ Následující tabulky obsahují souhrn problémů, které byly opraveny ve verz
 
 | Ne | Funkce | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- |
-| 1\. místo |Migrace dat na straně hostitele |V dřívější verzi StorSimple Cloud Appliance přechodem do režimu offline při migraci dat na straně hostitele. Tento problém je opravený v této verzi. |Ne |Ano |
+| 1 |Migrace dat na straně hostitele |V dřívější verzi StorSimple Cloud Appliance přechodem do režimu offline při migraci dat na straně hostitele. Tento problém je opravený v této verzi. |Ne |Ano |
 | 2 |Místně připojené svazky |V předchozí verzi byly problémy související se selháním vstupu a výstupu, selháním převodu svazků a selháním DataPath pro místně připnuté svazky. Tyto problémy byly způsobeny rootem a opraveny v této verzi. |Ano |Ne |
-| 3 |Sledování |Existuje několik problémů souvisejících s jednotkami a monitorováním sestav a s grafy řídicích panelů zařízení, ve kterých byly pro místně připojené svazky zobrazeny nesprávné informace. Tyto problémy jsou opravené v této verzi. |Ano |Ne |
+| 3 |Monitorování |Existuje několik problémů souvisejících s jednotkami a monitorováním sestav a s grafy řídicích panelů zařízení, ve kterých byly pro místně připojené svazky zobrazeny nesprávné informace. Tyto problémy jsou opravené v této verzi. |Ano |Ne |
 | 4 |I/O silné zápisy |Při použití StorSimple pro úlohy obsahující těžké zápisy by se uživatel spouštěl v nečasté chybě, při které byla pracovní sada vrstvená do cloudu. Tato chyba je opravena v této verzi. |Ano |Ano |
-| 5 |Backup |V některých vzácných instancích v předchozích verzích softwaru, když uživatel trval zálohu vzdáleného klonu, mohl spustit chyby v cloudu a tato operace by se stala chybou. V této verzi se problém vyřešil a operace se úspěšně dokončila. |Ano |Ano |
+| 5 |Zálohovat |V některých vzácných instancích v předchozích verzích softwaru, když uživatel trval zálohu vzdáleného klonu, mohl spustit chyby v cloudu a tato operace by se stala chybou. V této verzi se problém vyřešil a operace se úspěšně dokončila. |Ano |Ano |
 | 6 |Zásady zálohování |V některých vzácných instancích v dřívějších verzích softwaru došlo k chybě související s odstraňováním zásad zálohování. Tento problém je opravený v této verzi. |Ano |Ano |
 
 ## <a name="known-issues-in-update-3"></a>Známé problémy v aktualizaci Update 3
@@ -55,8 +55,8 @@ Následující tabulka poskytuje souhrn známých problémů v této verzi.
 
 | Ne. | Funkce | Problém | Komentáře a alternativní řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
-| 1\. místo |Kvorum disku |Ve výjimečných případech dojde k odpojení většiny disků v EBOD skříni zařízení 8600, což způsobí nedostatečné diskové kvorum, ale fond úložiště přejde do režimu offline. Zůstane v režimu offline i v případě, že jsou disky znovu připojeny. |Budete muset zařízení restartovat. Pokud se problém opakuje, kontaktujte prosím podpora Microsoftu pro další kroky. |Ano |Ne |
-| 2 |Nesprávné ID kontroleru |Když se provede nahrazení řadiče, může se řadič 0 zobrazit jako kontroler 1. Když se při nahrazení řadiče načte z uzlu rovnocenného uzlu, ID kontroleru se může zpočátku zobrazit jako ID partnerského řadiče. Ve výjimečných případech se toto chování může zobrazit i po restartování systému. |Není zapotřebí žádná akce. Tato situace se vyřeší sám po dokončení nahrazení kontroleru. |Ano |Ne |
+| 1 |Kvorum disku |Ve výjimečných případech dojde k odpojení většiny disků v EBOD skříni zařízení 8600, což způsobí nedostatečné diskové kvorum, ale fond úložiště přejde do režimu offline. Zůstane v režimu offline i v případě, že jsou disky znovu připojeny. |Budete muset zařízení restartovat. Pokud se problém opakuje, kontaktujte prosím podpora Microsoftu pro další kroky. |Ano |Ne |
+| 2 |Nesprávné ID kontroleru |Když se provede nahrazení řadiče, může se řadič 0 zobrazit jako kontroler 1. Když se při nahrazení řadiče načte z uzlu rovnocenného uzlu, ID kontroleru se může zpočátku zobrazit jako ID partnerského řadiče. Ve výjimečných případech se toto chování může zobrazit i po restartování systému. |Není nutná žádná akce uživatele. Tato situace se vyřeší sám po dokončení nahrazení kontroleru. |Ano |Ne |
 | 3 |Účty úložiště |Použití služby úložiště k odstranění účtu úložiště je nepodporovaný scénář. To vede k situaci, kdy nelze načíst uživatelská data. | |Ano |Ano |
 | 4 |Převzetí služeb při selhání zařízení |Víc převzetí služeb při selhání kontejneru svazků ze stejného zdrojového zařízení do různých cílových zařízení se nepodporuje. Při převzetí služeb při selhání z jednoho nedoručeného zařízení na několik zařízení dojde ke ztrátě vlastnictví dat v kontejnerech svazků u prvního zařízení při selhání. Po takovém převzetí služeb při selhání se tyto kontejnery svazků zobrazí nebo se budou chovat jinak, než je zobrazíte na portálu Azure Classic. | |Ano |Ne |
 | 5 |Instalace |Během instalace služby StorSimple Adapter pro SharePoint je potřeba zadat IP adresu zařízení, aby se instalace úspěšně dokončila. | |Ano |Ne |

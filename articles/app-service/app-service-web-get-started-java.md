@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1929e78b1787e4e5d50908fd3cfc0292de8ea92b
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: ed477e3c1431048d60e4a696f59aa0593e1b3f1f
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226362"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136325"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Rychlý Start: Vytvoření aplikace Java v Azure App Service ve Windows
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v systému Windows. Pokud chcete nasadit nástroj na App Service v systému _Linux_, přečtěte si téma [Vytvoření webové aplikace Java v systému Linux](./containers/quickstart-java.md).
+> Tento článek nasadí aplikaci do služby App Service ve Windows. Pokud chcete nasadit nástroj na App Service v systému _Linux_, přečtěte si téma [Vytvoření webové aplikace Java v systému Linux](./containers/quickstart-java.md).
 >
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) s [modulem plug-in webové aplikace Azure pro Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) nasadit soubor webového archivu Java (War).
@@ -59,7 +59,7 @@ Pak do elementu `<build>` souboru `pom.xml` přidejte následující definici mo
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.8.0</version>
+        <version>1.9.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>

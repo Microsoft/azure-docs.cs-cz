@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 18a5e11d2341fb020fc442d2f9ce7c1d44de9d0a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384784"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260433"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -281,7 +281,7 @@ Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kte
 | Název zásady | Popis | Použito pro | Požadováno | Výchozí |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Ověří, jestli data v **úložišti objektů BLOB v Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob Storage |Ne |Není k dispozici |
-| minimumRows |Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Databáze Azure SQL</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
+| minimumRows |Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Databáze SQL Azure</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**

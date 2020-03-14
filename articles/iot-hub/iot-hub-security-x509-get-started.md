@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382031"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271171"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X. 509 ve službě Azure IoT Hub
 
 V tomto kurzu se dozvíte o krocích, které potřebujete k zabezpečení služby Azure IoT Hub pomocí *ověřování certifikátu X. 509*. Pro účely ilustrace používáme open source nástroj OpenSSL k vytváření certifikátů místně na vašem počítači s Windows. Doporučujeme použít tento kurz pouze pro účely testování. V produkčním prostředí byste měli koupit certifikáty od kořenové certifikační *autority (CA)* .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz vyžaduje, abyste měli připraveny tyto prostředky:
 

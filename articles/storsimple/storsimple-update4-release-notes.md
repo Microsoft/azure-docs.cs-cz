@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394621"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254583"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 4
 
@@ -68,12 +68,12 @@ Následující tabulka poskytuje souhrn problémů, které byly opraveny v Updat
 
 | Ne | Funkce | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- |
-| 1 |Převzetí služeb při selhání |V dřívější verzi se po převzetí služeb při selhání objevil problém týkající se vyčištění na webu zákazníka. Tento problém je opravený v této verzi. |Ano |Ano |
+| 1 |Při selhání |V dřívější verzi se po převzetí služeb při selhání objevil problém týkající se vyčištění na webu zákazníka. Tento problém je opravený v této verzi. |Ano |Ano |
 | 2 |Místně připojené svazky |V předchozí verzi došlo k potížím se souvisejícím vytvářením svazků pro místně připnuté svazky, které by způsobily selhání vytvoření svazku. Tento problém byl způsobený kořenem a opravil v této verzi. |Ano |Ne |
 | 3 |Balíček pro podporu |V předchozí verzi byly problémy související s balíčkem podpory, které by způsobily výjimku System. OutOfMemory nebo jiné chyby, což vedlo k chybě při vytváření balíčku pro podporu. Tyto chyby jsou v této verzi opravené. |Ano |Ano |
 | 4 |Monitorování |V předchozí verzi došlo k potížím souvisejícím s monitorováním grafů pro místně připnuté svazky, ve kterých se spotřeba zobrazila v EB. Tato chyba je vyřešena v této verzi. |Ano |Ano |
 | 5 |Migrace |V předchozí verzi bylo k dispozici několik problémů souvisejících s spolehlivostí migrace z 5000-7000 řad na zařízení 8000 series. Tyto problémy byly řešeny v této verzi. |Ano |Ano |
-| 6 |Aktualizace |Pokud v předchozích verzích došlo k chybě aktualizace, řadiče přešly do režimu obnovení, takže uživatel nemůže v aktualizaci pokračovat a bude potřebovat kontaktovat podpora Microsoftu. <br> Toto chování se v této verzi změnilo. Pokud má uživatel chybu aktualizace, když oba řadiče používají stejnou verzi (Update 4), řadiče nepřejde do režimu obnovení. Pokud se tato chyba vyskytne uživateli, doporučujeme, abyste počkali na bitovou kopii, a pak zkuste aktualizaci zopakovat. Opakování může být úspěšné. Pokud se opakování nepovede, měli byste se obrátit na podpora Microsoftu. |Ano |Ano |
+| 6 |Aktualizovat |Pokud v předchozích verzích došlo k chybě aktualizace, řadiče přešly do režimu obnovení, takže uživatel nemůže v aktualizaci pokračovat a bude potřebovat kontaktovat podpora Microsoftu. <br> Toto chování se v této verzi změnilo. Pokud má uživatel chybu aktualizace, když oba řadiče používají stejnou verzi (Update 4), řadiče nepřejde do režimu obnovení. Pokud se tato chyba vyskytne uživateli, doporučujeme, abyste počkali na bitovou kopii, a pak zkuste aktualizaci zopakovat. Opakování může být úspěšné. Pokud se opakování nepovede, měli byste se obrátit na podpora Microsoftu. |Ano |Ano |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Známé problémy v Update 4 z předchozích verzí

@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384215"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244729"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Přístup k řešení VMware pomocí portálu CloudSimple z Azure Portal
 
 Pro přístup k portálu CloudSimple je podporováno jednotné přihlašování. Po přihlášení k Azure Portal máte přístup k portálu CloudSimple bez opětovného přihlášení. Při prvním přístupu k portálu CloudSimple se zobrazí výzva k autorizaci [autorizační aplikace služby CloudSimple](#consent-to-cloudsimple-service-authorization-application) .  Autorizace je jednorázová akce.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Uživatelé s rolemi Builtin **Owner** a **Přispěvatel** mají přístup k portálu CloudSimple.  Role musí být nakonfigurované ve skupině prostředků, ve které je nasazená služba CloudSimple.  Role je také možné nakonfigurovat v objektu služby CloudSimple.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) . Přístup k portálu CloudSimple mají jenom uživatelé s předdefinovaným **vlastníkem** a rolemi **přispěvatele** .  Role musí být nakonfigurované v předplatném.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
 

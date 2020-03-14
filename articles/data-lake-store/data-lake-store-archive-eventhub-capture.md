@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397208"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265659"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Použití Azure Data Lake Storage Gen1 k zaznamenání dat z Event Hubs
 
 Naučte se používat Azure Data Lake Storage Gen1 k zachycení dat přijatých službou Azure Event Hubs.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -88,11 +88,11 @@ V této části vytvoříte centrum událostí v oboru názvů Event Hubs. Také
 
 1. V podokně **přehledu** oboru názvů Event Hubs klikněte na **+ centrum událostí**.
 
-    ![Vytvořit centrum událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Vytvoření centra událostí")
+    ![Vytvořit centrum událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Vytvořit centrum událostí")
 
 1. Zadejte následující hodnoty pro konfiguraci Event Hubs k zaznamenání dat do Data Lake Storage Gen1.
 
-    ![Vytvořit centrum událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Vytvoření centra událostí")
+    ![Vytvořit centrum událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Vytvořit centrum událostí")
 
     a. Zadejte název centra událostí.
     
@@ -122,6 +122,6 @@ V této části vytvoříte centrum událostí v oboru názvů Event Hubs. Také
 Jakmile jsou data v Data Lake Storage Gen1, můžete spouštět analytické úlohy pro zpracování a zpracovávejteí dat. Postup k tomu, jak to udělat pomocí Azure Data Lake Analytics, najdete v tématu [USQL Avro](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) .
   
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Kopírování dat z objektů blob Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

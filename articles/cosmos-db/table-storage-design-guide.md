@@ -9,11 +9,11 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
 ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771522"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246471"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Table Storage: škálovatelné a výkonné tabulky
 
@@ -39,7 +39,7 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -49,9 +49,9 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -69,9 +69,9 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -89,7 +89,7 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <td>
 <table>
 <tr>
-<th>DepartmentName</th>
+<th>Název oddělení</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -100,15 +100,15 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 </td>
 </tr>
 <tr>
-<td>Sales</td>
+<td>Prodej</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -159,26 +159,26 @@ Následující tabulka obsahuje některé klíčové hodnoty, které je třeba z
 Další informace najdete v tématu [Principy datového modelu Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ### <a name="cost-considerations"></a>Důležité informace o nákladech
-Úložiště tabulek je poměrně levné, ale měli byste zahrnout odhadované náklady na využití kapacity a množství transakcí v rámci vyhodnocení jakéhokoli řešení, které využívá úložiště tabulek. V mnoha scénářích ale ukládání denormalizovaných nebo duplicitních dat, aby se zlepšil výkon nebo škálovatelnost vašeho řešení, je platný přístup, který je možné provést. Další informace o cenách najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Úložiště tabulek je poměrně levné, ale měli byste zahrnout odhadované náklady na využití kapacity a množství transakcí v rámci vyhodnocení jakéhokoli řešení, které využívá úložiště tabulek. V mnoha scénářích ale ukládání denormalizovaných nebo duplicitních dat, aby se zlepšil výkon nebo škálovatelnost vašeho řešení, je platný přístup, který je možné provést. Další informace o cenách najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="guidelines-for-table-design"></a>Pokyny pro návrh tabulek
 Tyto seznamy shrnují některé klíčové pokyny, které byste měli mít na paměti při navrhování tabulek. Tato příručka je podrobněji popsána dále v. Tyto pokyny se liší od pokynů, které byste obvykle dodržovali pro návrh relačních databází.  
 
 Návrh tabulkového úložiště, aby bylo možné efektivně *číst* :
 
-* **Návrh pro dotazování aplikace náročné na čtení.** Pokud navrhujete své tabulky, zamyslete se nad dotazy (zejména s těmi, které jsou u nich závislé), a teprve potom si myslíte, jak budete entity aktualizovat. Obvykle v důsledku efektivní a výkonné řešení.  
+* **Návrh pro dotazování v aplikacích s vysokým oprávněním** Pokud navrhujete své tabulky, zamyslete se nad dotazy (zejména s těmi, které jsou u nich závislé), a teprve potom si myslíte, jak budete entity aktualizovat. Obvykle v důsledku efektivní a výkonné řešení.  
 * **V dotazech zadejte jak `PartitionKey`, tak `RowKey`.** *Dotazy na body* , jako jsou ty, nejúčinnější dotazy na úložiště tabulek.  
-* **Zvažte uložení duplicitní kopie entity.** Úložiště tabulek je levné, proto zvažte uložení stejné entity vícekrát (s různými klíči), čímž umožníte efektivnější dotazy.  
-* **Vezměte v úvahu denormalizing vaše data.** Úložiště tabulek je levné, proto zvažte denormalizaci vašich dat. Například ukládat souhrn entit, aby se dotazy pro agregovaná data, která stačí pro přístup k jedné entity.  
-* **Použijte složené klíčové hodnoty.** K dispozici jsou tyto jediné klíče `PartitionKey` a `RowKey`. Například použijte složené klíčové hodnoty a povolit alternativní s klíči přístup cesty k entitám.  
-* **Použijte dotaz projekce.** Můžete snížit množství dat, která přenos přes síť pomocí dotazů, které vybírají pouze pole, které potřebujete.  
+* **Zvažte uložení duplicitních kopií entit.** Úložiště tabulek je levné, proto zvažte uložení stejné entity vícekrát (s různými klíči), čímž umožníte efektivnější dotazy.  
+* **Zvažte denormalizaci vašich dat.** Úložiště tabulek je levné, proto zvažte denormalizaci vašich dat. Například ukládat souhrn entit, aby se dotazy pro agregovaná data, která stačí pro přístup k jedné entity.  
+* **Použijte hodnoty složených klíčů.** K dispozici jsou tyto jediné klíče `PartitionKey` a `RowKey`. Například použijte složené klíčové hodnoty a povolit alternativní s klíči přístup cesty k entitám.  
+* **Použití projekce dotazu.** Můžete snížit množství dat, která přenos přes síť pomocí dotazů, které vybírají pouze pole, které potřebujete.  
 
 Návrh tabulkového úložiště pro efektivní *zápis* :  
 
 * **Nevytvářejte aktivní oddíly.** Zvolte klíče, které vám umožní rozdělit mezi několik oddílů v některém okamžiku vašich požadavků.  
-* **Vyhněte se špičkám provozu.** Distribuujte provoz v rozumné době a zabraňte špičkám v provozu.
-* **Není nutně vytvořit samostatnou tabulku pro každý typ entity.** Pokud požadujete atomické transakce mezi typy entit, můžete uložit tyto několik typů entit ve stejném oddílu ve stejné tabulce.
-* **Vezměte v úvahu maximální propustnost, kterou musí dosáhnout.** Musíte znát cíle škálovatelnosti pro úložiště tabulek a zajistit, aby vám návrh nezpůsobí jejich překročení.  
+* **Nepoužívejte špičky v provozu.** Distribuujte provoz v rozumné době a zabraňte špičkám v provozu.
+* **Nevytvářejte nutně samostatnou tabulku pro každý typ entity.** Pokud požadujete atomické transakce mezi typy entit, můžete uložit tyto několik typů entit ve stejném oddílu ve stejné tabulce.
+* **Vezměte v úvahu maximální propustnost, kterou je třeba dosáhnout.** Musíte znát cíle škálovatelnosti pro úložiště tabulek a zajistit, aby vám návrh nezpůsobí jejich překročení.  
 
 Později v tomto průvodci uvidíte příklady, které obsahují všechny tyto zásady v praxi.  
 
@@ -193,14 +193,14 @@ Dobrým výchozím bodem, který vám umožní efektivně číst data, je požá
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-affects-query-performance"></a>Způsob, jakým volba `PartitionKey` a `RowKey` ovlivní výkon dotazů
 Následující příklady předpokládají, že Table Storage ukládá entity zaměstnanců s následující strukturou (většina příkladů vynechává vlastnost `Timestamp` pro přehlednost):  
 
-| název sloupce | Data type |
+| Název sloupce | Typ dat |
 | --- | --- |
-| `PartitionKey` (název oddělení) |Řetězec |
-| `RowKey` (ID zaměstnance) |Řetězec |
-| `FirstName` |Řetězec |
-| `LastName` |Řetězec |
-| `Age` |Integer |
-| `EmailAddress` |Řetězec |
+| `PartitionKey` (název oddělení) |String |
+| `RowKey` (ID zaměstnance) |String |
+| `FirstName` |String |
+| `LastName` |String |
+| `Age` |Celé číslo |
+| `EmailAddress` |String |
 
 Tady jsou některé obecné pokyny pro navrhování dotazů na úložiště tabulek. Syntaxe filtru použitá v následujících příkladech je z tabulkového úložiště REST API. Další informace najdete v tématu věnovaném [dotazování entit](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
@@ -322,7 +322,7 @@ Alternativním řešením je denormalizovat data a ukládat pouze entity zaměst
 
 ![Obrázek entity zaměstnance][2]
 
-Další informace najdete v tématu [Denormalizace vzor](#denormalization-pattern) dále v tomto průvodci.  
+Další informace naleznete v části [vzory denormalizace](#denormalization-pattern) dále v této příručce.  
 
 Následující tabulka shrnuje odborníky a nevýhody jednotlivých přístupů k ukládání entit zaměstnanců a oddělení, které mají vztah 1: n. Měli byste taky zvážit, jak často očekáváte provádění různých operací. Může být přijatelné, aby měl návrh, který zahrnuje náročnou operaci, pokud tato operace proběhne jenom zřídka.  
 
@@ -382,7 +382,7 @@ Následující tabulka shrnuje odborníky a nevýhody jednotlivých přístupů 
 Jak si zvolíte mezi těmito možnostmi, které jsou nejdůležitější pro odborníky a nevýhody, závisí na konkrétních scénářích aplikací. Například jak často měníte entity oddělení? Budou všechny dotazy zaměstnanců potřebovat další informace oddělení? Jak blízko máte omezení škálovatelnosti pro vaše oddíly nebo účet úložiště?  
 
 ### <a name="one-to-one-relationships"></a>Relace 1: 1
-Doménové modely můžou mezi entitami zahrnovat relace 1:1. Pokud potřebujete v úložišti tabulek implementovat relaci 1:1, musíte také zvolit, jak propojit tyto dvě související entity, když je potřebujete načítat. Tento odkaz může být buď implicitní, na základě konvence v hodnotách klíče, nebo explicitní, uložením odkazu ve formě `PartitionKey` a `RowKey` hodnot v každé entitě na související entitu. Informace o tom, jestli byste měli uložit související entity do stejného oddílu, naleznete v části [jeden mnoho relací](#one-to-many-relationships).  
+Doménové modely můžou mezi entitami zahrnovat relace 1:1. Pokud potřebujete v úložišti tabulek implementovat relaci 1:1, musíte také zvolit, jak propojit tyto dvě související entity, když je potřebujete načítat. Tento odkaz může být buď implicitní, na základě konvence v hodnotách klíče, nebo explicitní, uložením odkazu ve formě `PartitionKey` a `RowKey` hodnot v každé entitě na související entitu. Diskuzi o tom, jestli byste měli související entity ukládat do stejného oddílu, najdete v části [relace 1: n](#one-to-many-relationships).  
 
 K dispozici jsou také pokyny k implementaci, které by vám mohly vést k implementaci relací 1:1 v tabulce úložiště:  
 
@@ -430,7 +430,7 @@ Chcete-li obejít nedostatek sekundárních indexů, můžete uložit více kopi
 Následující dvě kritéria filtru (jedno vyhledávání podle ID zaměstnance a jedna z nich hledají e-mailovou adresu) určují obě dotazy na bod:  
 
 * $filter = (PartitionKey eq "Prodeje") a (RowKey eq "empid_000223")  
-* $filter = (PartitionKey eq "Prodeje") a (RowKey eq 'email_jonesj@contoso.com")  
+* $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ 'email_jonesj@contoso.com')  
 
 Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese. Dotaz na entity s příslušnou předponou v `RowKey`.  
 
@@ -465,8 +465,8 @@ Ujistěte se však, že při provádění vyhledávání entit nepřekračujete 
 #### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Model mezi oddílu sekundárních indexů](#inter-partition-secondary-index-pattern)
-* [Složené sekvence klíče](#compound-key-pattern)
+* [Vzor sekundárního indexu mezi oddíly](#inter-partition-secondary-index-pattern)
+* [Vzor složeného klíče](#compound-key-pattern)
 * [Transakce skupiny entit](#entity-group-transactions)
 * [Práce s heterogenními typy entit](#work-with-heterogeneous-entity-types)
 
@@ -490,7 +490,7 @@ Pokud chcete obejít nedostatku sekundárních indexů, můžete ukládat víc k
 Následující dvě kritéria filtru (jedno vyhledávání podle ID zaměstnance a jedna z nich hledají e-mailovou adresu) určují obě dotazy na bod:  
 
 * $filter = (PartitionKey eq ' empid_Sales") a (RowKey eq"000223")
-* $filter = (PartitionKey eq ' email_Sales") a (RowKey eq 'jonesj@contoso.com")  
+* $filter = (PartitionKey EQ ' email_Sales ') a (RowKey EQ 'jonesj@contoso.com')  
 
 Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese. Dotaz na entity s příslušnou předponou v `RowKey`.  
 
@@ -502,7 +502,7 @@ Všimněte si, že syntaxe filtru použitá v předchozích příkladech je z ta
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
-* Můžete ponechat duplicitní položky konzistentní mezi sebou pomocí [konečnou konzistenci transakcí vzor](#eventually-consistent-transactions-pattern) udržovat entity primárních a sekundárních indexů.  
+* V případě, že jsou vaše duplicitní entity trvale konzistentní, pomocí [vzoru nakonec konzistentní transakce](#eventually-consistent-transactions-pattern) Udržujte entity primárního a sekundárního indexu.  
 * Úložiště tabulek je poměrně levné na použití, takže náklady spojené s ukládáním duplicitních dat by neměly být zásadním problémem. Na základě předpokládaných požadavků na úložiště ale vždy vyhodnoťte náklady na váš návrh a přidejte duplicitní entity, které budou podporovat dotazy, které klientská aplikace spustí.  
 * Hodnota použitá pro `RowKey` musí být jedinečná pro každou entitu. Zvažte použití složené klíčové hodnoty.  
 * Vyplňování číselných hodnot v `RowKey` (například zaměstnanci s ID 000223) umožňuje správné řazení a filtrování na základě horních a dolních mezí.  
@@ -523,9 +523,9 @@ Tento model použijte, pokud chcete vyhnout překročení omezení škálovateln
 #### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Vzor konečnou konzistenci transakcí](#eventually-consistent-transactions-pattern)  
-* [Model sekundárních indexů uvnitř oddílu](#intra-partition-secondary-index-pattern)  
-* [Složené sekvence klíče](#compound-key-pattern)  
+* [Vzor nakonec konzistentních transakcí](#eventually-consistent-transactions-pattern)  
+* [Vzor sekundárního indexu v rámci oddílu](#intra-partition-secondary-index-pattern)  
+* [Vzor složeného klíče](#compound-key-pattern)  
 * [Transakce skupiny entit](#entity-group-transactions)  
 * [Práce s heterogenními typy entit](#work-with-heterogeneous-entity-types)  
 
@@ -549,7 +549,7 @@ K provádění těchto dvou operací ale nemůžete použít EGT. Aby nevznikalo
 
 ![Diagram řešení pro konečné konzistence][12]
 
-Klient inicializuje operaci archivu tím, že umístí zprávu do fronty Azure (v tomto příkladu pro archivaci #456 zaměstnanců). Role pracovního procesu dotazuje fronty na nové zprávy. Po nalezení znaku jednu, přečte zprávu a ponechá skrytá kopie ve frontě. Role pracovního procesu načítá další kopie entity z **aktuální** tabulky, vloží kopii **archivu** tabulku a pak odstraní původní z **aktuální** tabulky. Nakonec pokud nebyly zjištěny žádné chyby v předchozích krocích, role pracovního procesu odstraní skrytou zprávu z fronty.  
+Klient inicializuje operaci archivu tím, že umístí zprávu do fronty Azure (v tomto příkladu pro archivaci #456 zaměstnanců). Role pracovního procesu dotazuje fronty na nové zprávy. Po nalezení znaku jednu, přečte zprávu a ponechá skrytá kopie ve frontě. Role pracovního procesu Next načte kopii entity z **aktuální** tabulky, vloží kopii do **archivní** tabulky a odstraní původní z **aktuální** tabulky. Nakonec pokud nebyly zjištěny žádné chyby v předchozích krocích, role pracovního procesu odstraní skrytou zprávu z fronty.  
 
 V tomto příkladu krok 4 v diagramu vloží zaměstnance do **archivní** tabulky. Může přidat zaměstnance do objektu BLOB v úložišti objektů BLOB nebo v souboru v systému souborů.  
 
@@ -574,7 +574,7 @@ Tento model použijte, pokud chcete zajistit konečnou konzistenci mezi entitami
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Transakce skupiny entit](#entity-group-transactions)  
-* [Sloučení nebo nahradit](#merge-or-replace)  
+* [Sloučit nebo nahradit](#merge-or-replace)  
 
 > [!NOTE]
 > Pokud je pro vaše řešení důležité oddělení transakcí, zvažte možnost změnit návrh tabulek, abyste mohli používat EGTs.  
@@ -649,8 +649,8 @@ Tento model použijte v případě, že chcete vyhledat sadu entit, které budou
 #### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Složené sekvence klíče](#compound-key-pattern)  
-* [Vzor konečnou konzistenci transakcí](#eventually-consistent-transactions-pattern)  
+* [Vzor složeného klíče](#compound-key-pattern)  
+* [Vzor nakonec konzistentních transakcí](#eventually-consistent-transactions-pattern)  
 * [Transakce skupiny entit](#entity-group-transactions)  
 * [Práce s heterogenními typy entit](#work-with-heterogeneous-entity-types)  
 
@@ -681,7 +681,7 @@ Tento model použijte, když je často potřeba vyhledat související informace
 #### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Složené sekvence klíče](#compound-key-pattern)  
+* [Vzor složeného klíče](#compound-key-pattern)  
 * [Transakce skupiny entit](#entity-group-transactions)  
 * [Práce s heterogenními typy entit](#work-with-heterogeneous-entity-types)
 
@@ -727,7 +727,7 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 
 * [Transakce skupiny entit](#entity-group-transactions)  
 * [Práce s heterogenními typy entit](#work-with-heterogeneous-entity-types)  
-* [Vzor konečnou konzistenci transakcí](#eventually-consistent-transactions-pattern)  
+* [Vzor nakonec konzistentních transakcí](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>Vzor log tail
 Načtěte entity *n* naposledy přidané do oddílu pomocí `RowKey` hodnoty, která se seřadí v pořadí podle data a času.  
@@ -765,7 +765,7 @@ Tento model použijte v případě, že potřebujete získat přístup k entitá
 #### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Předřaďte / připojovat proti vzor](#prepend-append-anti-pattern)  
+* [Předřadit/připojit anti-Pattern](#prepend-append-anti-pattern)  
 * [Načtení entit](#retrieve-entities)  
 
 ### <a name="high-volume-delete-pattern"></a>Vzor vysoké objemy delete
@@ -830,7 +830,7 @@ Tento model použijte, když potřebujete aktualizovat a načíst datové řady 
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Vzor velkých entit](#large-entities-pattern)  
-* [Sloučení nebo nahradit](#merge-or-replace)  
+* [Sloučit nebo nahradit](#merge-or-replace)  
 * [Vzorec pro nakonec konzistentní transakce](#eventually-consistent-transactions-pattern) (Pokud ukládáte datovou řadu do objektu BLOB)  
 
 ### <a name="wide-entities-pattern"></a>Vzor široké entity
@@ -858,7 +858,7 @@ Tento model použijte v případě, že potřebujete uložit entity, jejichž ve
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Transakce skupiny entit](#entity-group-transactions)
-* [Sloučení nebo nahradit](#merge-or-replace)
+* [Sloučit nebo nahradit](#merge-or-replace)
 
 ### <a name="large-entities-pattern"></a>Vzor velkých entit
 Úložiště objektů blob můžete použít k ukládání velkých hodnot vlastností.  
@@ -883,8 +883,8 @@ Tento model použijte v případě, že potřebujete ukládat entity, jejichž v
 #### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Vzor konečnou konzistenci transakcí](#eventually-consistent-transactions-pattern)  
-* [Vzor široké entity](#wide-entities-pattern)
+* [Vzor nakonec konzistentních transakcí](#eventually-consistent-transactions-pattern)  
+* [Model pro nejrůznější entity](#wide-entities-pattern)
 
 <a name="prepend-append-anti-pattern"></a>
 
@@ -915,8 +915,8 @@ Nepoužívejte antipattern předplatného/připojovat, pokud je pravděpodobný 
 #### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Složené sekvence klíče](#compound-key-pattern)  
-* [Vzor log tail](#log-tail-pattern)  
+* [Vzor složeného klíče](#compound-key-pattern)  
+* [Vzor koncového protokolu](#log-tail-pattern)  
 * [Úprava entit](#modify-entities)  
 
 ### <a name="log-data-anti-pattern"></a>Ochrana proti vzorek dat protokolu
@@ -959,7 +959,7 @@ Při rozhodování o tom, jak ukládat data protokolu, zvažte následující bo
 Tato část popisuje některé důležité informace k berte v úvahu při implementaci vzorce popsané v předchozích částech. Většinu této části se používají příklady napsané v jazyce C#, které použijte klientskou knihovnu pro úložiště (verze 4.3.0 v době psaní).  
 
 ### <a name="retrieve-entities"></a>Načtení entit
-Jak je popsáno v části [návrhu pro dotazování](#design-for-querying), efektivní dotaz je dotaz bodu. V některých scénářích ale možná budete potřebovat načíst více entit. Tato část popisuje některé běžné přístupy k načítání entit pomocí klientské knihovny pro úložiště.  
+Jak je popsáno v [návrhu oddílu pro dotazování](#design-for-querying), nejúčinnější dotaz je dotaz typu Point. V některých scénářích ale možná budete potřebovat načíst více entit. Tato část popisuje některé běžné přístupy k načítání entit pomocí klientské knihovny pro úložiště.  
 
 #### <a name="run-a-point-query-by-using-the-storage-client-library"></a>Spustit dotaz typu Point pomocí klientské knihovny pro úložiště
 Nejjednodušší způsob, jak spustit dotaz na bod, je použít operaci **načíst** tabulku. Jak je znázorněno v C# následujícím fragmentu kódu, tato operace načte entitu s `PartitionKey` hodnotou Sales a `RowKey` hodnotou "212":  
@@ -1126,7 +1126,7 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1136,9 +1136,9 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -1156,9 +1156,9 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -1176,7 +1176,7 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <td>
 <table>
 <tr>
-<th>DepartmentName</th>
+<th>Název oddělení</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -1193,9 +1193,9 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <td>
 <table>
 <tr>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -1218,7 +1218,7 @@ Každá entita musí mít stále hodnoty `PartitionKey`, `RowKey`a `Timestamp`, 
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1229,9 +1229,9 @@ Každá entita musí mít stále hodnoty `PartitionKey`, `RowKey`a `Timestamp`, 
 <table>
 <tr>
 <th>Typ entity</th>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -1251,9 +1251,9 @@ Každá entita musí mít stále hodnoty `PartitionKey`, `RowKey`a `Timestamp`, 
 <table>
 <tr>
 <th>Typ entity</th>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -1273,7 +1273,7 @@ Každá entita musí mít stále hodnoty `PartitionKey`, `RowKey`a `Timestamp`, 
 <table>
 <tr>
 <th>Typ entity</th>
-<th>DepartmentName</th>
+<th>Název oddělení</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -1292,9 +1292,9 @@ Každá entita musí mít stále hodnoty `PartitionKey`, `RowKey`a `Timestamp`, 
 <table>
 <tr>
 <th>Typ entity</th>
-<th>Jméno</th>
-<th>Příjmení</th>
-<th>Věk</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>

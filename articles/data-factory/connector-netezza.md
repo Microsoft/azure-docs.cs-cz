@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
 ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358427"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244534"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí služby Azure Data Factory
 
@@ -39,7 +39,7 @@ Konektor Netezza podporuje paralelní kopírování ze zdroje. Podrobnosti najde
 
 Azure Data Factory poskytuje integrovaný ovladač umožňující připojení. Není nutné ručně nainstalovat všechny ovladače, které chcete použít tento konektor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -53,15 +53,15 @@ Následující části obsahují podrobnosti o vlastnostech, které lze použít
 
 Netezza propojené služby jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** musí být nastavená na **Netezza**. | Ano |
+| typ | Vlastnost **Type** musí být nastavená na **Netezza**. | Ano |
 | connectionString | ODBC připojovací řetězec služby pro připojení k Netezza. <br/>Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Následující tabulka popisuje další vlastnosti, které můžete nastavit:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | SecurityLevel | Úroveň zabezpečení (SSL/TLS), který používá ovladač pro připojení k úložišti. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **pouze nezabezpečené** (**onlyUnSecured**): ovladač nepoužívá protokol SSL.<br/>- **upřednostňovaný nezabezpečený (preferredUnSecured) (výchozí)** : Pokud server nabízí možnost výběru, ovladač nepoužívá protokol SSL. <br/>- **preferované zabezpečení (preferredSecured)** : Pokud server nabízí možnost výběru, použije ovladač protokol SSL. <br/>**pouze - zabezpečeno (onlySecured)** : ovladač se nepřipojí, pokud není k dispozici připojení SSL. | Ne |
 | CaCertFile | Úplná cesta k certifikátu SSL, který se používá serverem. Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolen protokol SSL |
@@ -118,11 +118,11 @@ Tato část obsahuje seznam vlastností, které podporuje Netezza datové sady.
 
 Chcete-li kopírovat data z Netezza, nastavte vlastnost **Type** datové sady na **NetezzaTable**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **NetezzaTable** . | Ano |
-| schema | Název schématu. |Ne (když je zadán zdroj aktivity "query")  |
-| table | Název tabulky. |Ne (když je zadán zdroj aktivity "query")  |
+| typ | Vlastnost Type datové sady musí být nastavená na: **NetezzaTable** . | Ano |
+| schéma | Název schématu. |Ne (když je zadán zdroj aktivity "query")  |
+| tabulka | Název tabulky. |Ne (když je zadán zdroj aktivity "query")  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové zatížení použijte `schema` a `table`. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
@@ -154,10 +154,10 @@ Tato část obsahuje seznam vlastností, které podporuje Netezza zdroje.
 
 Chcete-li kopírovat data z Netezza, nastavte typ **zdroje** v aktivitě kopírování na **NetezzaSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **NetezzaSource**. | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"` | Ne (když je "tableName" v datové sadě zadán) |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **NetezzaSource**. | Ano |
+| dotaz | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"` | Ne (když je "tableName" v datové sadě zadán) |
 | partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Netezza. <br>Povolené hodnoty jsou: **none** (výchozí), **dataslice**a **DynamicRange**.<br>Když je povolená možnost oddílu (to znamená, že není `None`), stupeň paralelismu na souběžně načtená data z databáze Netezza se řídí nastavením [`parallelCopies`](copy-activity-performance.md#parallel-copy) v aktivitě kopírování. | Ne |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není možnost oddílu `None`. | Ne |
 | partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer** , který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadaný, primární klíč tabulky se automaticky detekuje a použije se jako sloupec partition. <br>Použijte, pokud je možnost oddílu `DynamicRange`. Pokud použijete dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionColumnName` v klauzuli WHERE. Viz příklad v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) . | Ne |

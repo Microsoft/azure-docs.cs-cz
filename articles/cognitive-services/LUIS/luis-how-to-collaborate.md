@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 96aa7517a3418ab30b0b6a1736eea950ecf4a731
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390110"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219882"
 ---
 # <a name="add-contributors-to-your-app"></a>Přidání přispěvatelů do aplikace
 

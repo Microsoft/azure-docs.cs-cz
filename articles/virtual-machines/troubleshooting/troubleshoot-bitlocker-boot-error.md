@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749666"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250007"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na virtuálním počítači Azure
 
@@ -25,7 +25,7 @@ ms.locfileid: "73749666"
 
  
 
-## <a name="symptom"></a>Příznak
+## <a name="symptom"></a>Symptom
 
  Virtuální počítač s Windows se nespustí. Po kontrole snímků obrazovky v okně [diagnostiky spouštění](../windows/boot-diagnostics.md) se zobrazí jedna z následujících chybových zpráv:
 
@@ -137,7 +137,7 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
 
                     manage-bde -protectors -disable F: -rc 0
            
-    - Jednotku úplně dešifrujte. Provedete to spuštěním následujícího příkazu:
+    - Jednotku úplně dešifrujte. Chcete-li to provést, spusťte následující příkaz:
 
                     manage-bde -off F:
 
@@ -266,7 +266,7 @@ V případě scénáře použití klíčového šifrovacího klíče postupujte 
 
              manage-bde -protectors -disable F: -rc 0
            
-    - Jednotku úplně dešifrujte. Provedete to spuštěním následujícího příkazu:
+    - Jednotku úplně dešifrujte. Chcete-li to provést, spusťte následující příkaz:
 
                     manage-bde -off F:
 ## <a name="script-troubleshooting"></a>Odstraňování potíží se skripty

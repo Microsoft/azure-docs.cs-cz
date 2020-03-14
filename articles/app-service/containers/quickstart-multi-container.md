@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 19544d9ea9a86b6c0ad98debc7361f4579cbc998
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 5acd1a417222b4810393e8fe912b5243caaeb4cd
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247021"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139636"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Vytvoření aplikace s více kontejnery (Preview) pomocí konfigurace Docker Compose
 
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/multicontainerwordpress
 cd multicontainerwordpress
 ```
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
@@ -96,6 +96,9 @@ Po vytvoření plánu služby App Service se v rozhraní příkazového řádku 
 ```
 
 ## <a name="create-a-docker-compose-app"></a>Vytvoření aplikace Docker Compose
+
+> [!NOTE]
+> V tuto chvíli má Docker Compose v Azure App Services aktuálně povolený limit 4 000 znaků.
 
 V terminálu Cloud Shell pomocí příkazu [az webapp create](app-service-linux-intro.md) vytvořte vícekontejnerovou `myAppServicePlan`webovou aplikaci[ v plánu služby App Service ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nezapomeňte nahradit _\<app_name >_ jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9`a `-`).
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365792"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254687"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Připojení a Správa zařízení StorSimple pomocí Snapshot Manager StorSimple
 ## <a name="overview"></a>Přehled
@@ -35,8 +35,8 @@ V závislosti na výběru **zobrazení** zobrazuje podokno **výsledků** násle
 |:--- |:--- |
 | Název |Název zařízení, jak je nakonfigurované na portálu Azure Classic |
 | Model |Číslo modelu zařízení |
-| Verze |Verze softwaru nainstalovaného v zařízení |
-| Status |Zda je zařízení k dispozici |
+| Version |Verze softwaru nainstalovaného v zařízení |
+| Stav |Zda je zařízení k dispozici |
 | Poslední synchronizace |Datum a čas poslední synchronizace zařízení |
 | Sériové číslo. |Sériové číslo zařízení |
 

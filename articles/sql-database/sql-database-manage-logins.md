@@ -1,6 +1,6 @@
 ---
 title: Přihlášení a uživatelé
-description: Přečtěte si o SQL Database a správě zabezpečení synapse v Azure, konkrétně o správě přístupu k databázi a zabezpečení přihlášení prostřednictvím hlavního účtu na úrovni serveru.
+description: Přečtěte si, jak Azure SQL Database a Azure synapse Analytics ověřují uživatele pro přístup pomocí přihlašovacích jmen a uživatelských účtů a používají role a explicitní oprávnění k autorizaci přihlašovacích údajů a uživatelů k provádění akcí v rámci databází i na úrovni serveru.
 keywords: zabezpečení databáze SQL,správa zabezpečení databáze,zabezpečení přihlášení,zabezpečení databáze,přístup k databázi
 services: sql-database
 ms.service: sql-database
@@ -11,219 +11,152 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/06/2020
-tags: azure-synapse
-ms.openlocfilehash: 79a31e5b8e3433af7879fcde8597173f25bf96b7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.openlocfilehash: 7c70d5dd19ec0495fe09152b5653363ad369347c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360027"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268909"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>Řízení a udělení přístupu k databázi SQL Database a Azure synapse Analytics
+# <a name="granting-database-access-and-authorization-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>Udělení přístupu k databázi a její autorizace pro SQL Database a Azure synapse Analytics pomocí přihlašovacích údajů a uživatelských účtů
 
-Po konfiguraci pravidel brány firewall se můžete připojit k Azure [SQL Database](sql-database-technical-overview.md) a [Azure synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) jako jeden z účtů správce, jako je vlastník databáze nebo jako uživatel databáze v databázi.  
+Ověřený přístup k databázím v Azure SQL Database a Azure synapse Analytics (dříve Azure SQL Data Warehouse) se spravují pomocí přihlašovacích údajů a uživatelských účtů. [**Ověřování**](sql-database-security-overview.md#authentication) je proces, který označuje, že uživatel vyžádá.
 
-> [!NOTE]  
-> Toto téma se vztahuje na Azure SQL Server a SQL Database a Azure synapse vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse.
-> [!TIP]
-> Kurz najdete v tématu [zabezpečení Azure SQL Database](sql-database-security-tutorial.md). Tento kurz se nevztahuje na **Azure SQL Database spravovanou instanci**.
+- Přihlášení je individuální účet v hlavní databázi.
+- Uživatelský účet je individuální účet v jakékoli databázi a nemusí být přidružený k přihlašovacímu účtu.
 
-## <a name="unrestricted-administrative-accounts"></a>Neomezené účty pro správu
+> [!IMPORTANT]
+> Databáze v Azure SQL Database a Azure synapse Analytics (dříve Azure SQL Data Warehouse) se společně ve zbývající části tohoto článku jako Azure SQL Database (pro zjednodušení).
 
-Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce Active Directory**). Pro identifikaci těchto účtů správců pro SQL Server otevřete Azure Portal a přejděte na kartu vlastnosti vašeho SQL serveru nebo SQL Database.
+Uživatel databáze se připojuje k databázi SQL Azure pomocí uživatelského účtu a je ověřený pomocí jedné z následujících dvou metod:
+
+- [Ověřování SQL](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication), které se skládá z přihlašovacího jména nebo názvu uživatelského účtu a přidruženého hesla uloženého v Azure SQL Database.
+- [Ověřování Azure Active Directory](sql-database-aad-authentication.md), které používá přihlašovací údaje uložené v Azure Active Directory
+
+Oprávnění pro přístup k datům a provádění různých akcí v rámci služby Azure SQL Database se spravují pomocí databázových rolí a explicitních oprávnění. [**Autorizace**](sql-database-security-overview.md#authorization) odkazuje na oprávnění přiřazená uživateli v rámci Azure SQL Database a určuje, co může uživatel dělat. Autorizaci řídí členství v databázové [roli](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) vašeho uživatelského účtu a oprávnění na [úrovni objektů](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine). Doporučený postup je udělit uživatelům co nejmenší možná oprávnění.
+
+V tomto článku se dozvíte:
+
+- Konfigurace přístupu a autorizace po počátečním vytvoření nového Azure SQL Database
+- Přidání přihlašovacích údajů a uživatelských účtů do hlavní databáze a uživatelských účtů a udělení těchto účtů oprávnění správce
+- Postup přidání uživatelských účtů v uživatelských databázích, a to buď přidružených k přihlašovacím jménům, nebo jako obsažené uživatelské účty
+- Konfigurace uživatelských účtů s oprávněními v uživatelských databázích pomocí databázových rolí a explicitních oprávnění
+
+## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>Existující přihlašovací údaje a uživatelské účty po vytvoření nové databáze
+
+Když vytvoříte první nasazení Azure SQL Database, zadáváte přihlašovací jméno správce a přidružené heslo pro toto přihlášení. Tento účet správce se nazývá **Správce serveru**. Během nasazení dojde k následující konfiguraci přihlašovacích údajů a uživatelů v hlavní databázi a uživatelských databázích:
+
+- Přihlašovací jméno SQL s oprávněními správce se vytvoří pomocí zadaného přihlašovacího jména. [Přihlášení](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) je individuální uživatelské účty pro přihlášení k SQL Database.
+- Tomuto přihlášení je uděleno úplné oprávnění správce pro všechny databáze jako [objekt zabezpečení na úrovni serveru](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine). Toto přihlášení má všechna dostupná oprávnění v rámci SQL Database a nelze je omezit. Ve spravované instanci se toto přihlášení přidá do [pevné role serveru sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) (Tato role pro databáze s jednou nebo ve fondu neexistuje).
+- Pro toto přihlášení se vytvoří [uživatelský účet](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) s názvem `dbo` v každé uživatelské databázi. Uživatel [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) má všechna oprávnění databáze v databázi a je namapován na `db_owner` fixní databázovou roli. Další pevné databázové role jsou popsány dále v tomto článku.
+
+Chcete-li identifikovat účty správců pro váš SQL Server, otevřete Azure Portal a přejděte na kartu **vlastnosti** vašeho SQL serveru nebo SQL Database.
 
 ![Správci SQL serveru](media/sql-database-manage-logins/sql-admins.png)
 
-- **Správce serveru**
+> [!IMPORTANT]
+> Přihlašovací jméno správce nelze po vytvoření změnit. Pokud chcete resetovat heslo pro správce logického serveru, přejděte na [Azure Portal](https://portal.azure.com), klikněte na **SQL servery**, vyberte server ze seznamu a potom klikněte na **resetovat heslo**. Pokud chcete resetovat heslo pro server spravované instance, přejděte na Azure Portal, klikněte na instanci a pak klikněte na **resetovat heslo**. Můžete také použít PowerShell nebo rozhraní příkazového řádku Azure CLI.
 
-  Když vytvoříte Azure SQL server, musíte určit **Přihlášení správce serveru**. SQL server vytvoří tento účet v hlavní databázi jako přihlašovací. Tento účet používá pro připojení ověřování SQL Serveru (uživatelské jméno a heslo). Existovat může jenom jeden z těchto účtů.
+## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>Vytvoření dalších přihlášení a uživatelů s oprávněním správce
+
+V tuto chvíli je váš SQL Database nakonfigurovaný jenom pro přístup pomocí jednoho přihlašovacího a uživatelského účtu SQL. Chcete-li vytvořit další přihlášení s úplnými nebo částečnými oprávněními pro správu, máte následující možnosti (v závislosti na vašem režimu nasazení):
+
+- **Vytvoření účtu správce Azure Active Directory s úplnými oprávněními správce**
+
+  Povolte Azure Active Directory ověřování a vytvořte přihlašovací jméno správce Azure AD. Jeden Azure Active Directory účet lze nakonfigurovat jako správce nasazení SQL Database s úplnými oprávněními správce. Tento účet může být buď jednotlivý účet, nebo účet skupiny zabezpečení. Pokud chcete pro připojení k SQL Database používat účty Azure AD, **musí** být nakonfigurovaný správce Azure AD. Podrobné informace o povolení ověřování Azure AD pro všechny SQL Database typy nasazení najdete v následujících článcích:
+
+  - [Pro ověřování pomocí SQL použít Azure Active Directory ověřování](sql-database-aad-authentication.md)
+  - [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](sql-database-aad-authentication-configure.md)
+
+- **V nasazení spravované instance Vytvořte přihlašovací údaje SQL s úplnými oprávněními pro správu.**
+
+  - Vytvoření dalšího SQL Serverho přihlášení ve spravované instanci
+  - Pomocí příkazu [ALTER Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) přidejte přihlašovací údaje k [pevné roli serveru sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) . Toto přihlášení bude mít úplná oprávnění správce.
+  - Případně můžete vytvořit [přihlašovací údaje služby Azure AD](sql-database-aad-authentication-configure.md?tabs=azure-powershell#new-azure-ad-admin-functionality-for-mi) pomocí syntaxe <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlašovacího jména</a> .
+
+- **V jednom nebo sdruženém nasazení Vytvořte přihlašovací údaje SQL s omezenými oprávněními správce.**
+
+  - Vytvoření dalšího přihlášení SQL v hlavní databázi pro jedno nebo sdružené nasazení databáze nebo nasazení spravované instance
+  - Vytvoření uživatelského účtu v hlavní databázi přidružené k tomuto novému přihlášení
+  - Přidejte uživatelský účet do `dbmanager`, do `loginmanager` role nebo do obou v databázi `master` pomocí příkazu [ALTER Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (pro Azure synapse Analytics použijte příkaz [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
-  > Pokud chcete resetovat heslo pro správce serveru, přejděte na [Azure Portal](https://portal.azure.com), klikněte na **SQL servery**, vyberte server ze seznamu a potom klikněte na **resetovat heslo**.
+  > role `dbmanager` a `loginmanager` **se** nevztahují k nasazením spravovaných instancí.
 
-- **Správce Azure Active Directory**
+  Členové těchto [speciálních rolí hlavní databáze](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) pro databáze s jednou nebo ve fondu můžou uživatelům mít oprávnění k vytváření a správě databází nebo k vytváření a správě přihlašovacích údajů. V databázích vytvořených uživatelem, který je členem role `dbmanager`, je člen namapován na roli `db_owner` pevná databáze a může se přihlásit k databázi a spravovat ji pomocí uživatelského účtu `dbo`. Tyto role nemají žádná explicitní oprávnění mimo hlavní databázi.
 
-  Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a to buď individuální účet, nebo účet skupiny zabezpečení. Je volitelné nakonfigurovat správce Azure AD, ale pokud chcete použít účty Azure AD pro připojení k SQL Database, **musí** být nakonfigurovaný správce Azure AD. Další informace o konfiguraci přístupu Azure Active Directory najdete v tématu [připojení k SQL Database nebo Azure synapse pomocí Azure Active Directoryho ověřování](sql-database-aad-authentication.md) a [SSMS podpory pro Azure AD MFA s SQL Database a Azure synapse](sql-database-ssms-mfa-authentication.md).
+  > [!IMPORTANT]
+  > V jedné nebo sdružené databázi nelze vytvořit další přihlašovací údaje SQL s úplnými oprávněními pro správu.
 
-Účty správců **serveru** a správce **Azure AD** mají následující vlastnosti:
+## <a name="create-accounts-for-non-administrator-users"></a>Vytváření účtů pro uživatele bez oprávnění správce
 
-- Jsou jedinými účty, které se můžou automaticky připojit k jakémukoli SQL Database na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
-- Tyto účty přistupují k uživatelským databázím jako uživatel `dbo` a mají pro ně veškerá oprávnění. (Vlastník databáze také k databázi přistupuje jako uživatel `dbo`.) 
-- Nezadávejte `master` databázi jako `dbo`ho uživatele a mít v hlavní databázi omezená oprávnění. 
-- Nejsou **členy standardní** role serveru SQL Server `sysadmin` pevné, což není k dispozici ve službě SQL Database.  
-- Může vytvářet, měnit a odstraňovat databáze, přihlášení, uživatele v hlavní databázi a pravidla brány firewall na úrovni serveru.
-- Může přidat nebo odebrat členy do rolí `dbmanager` a `loginmanager`.
-- Může zobrazit `sys.sql_logins` systémovou tabulku.
-- Nelze přejmenovat.
-- Pokud chcete změnit účet správce Azure AD, použijte portál nebo Azure CLI.
-- Účet správce serveru nelze později změnit.
+Účty uživatelů bez oprávnění správce můžete vytvořit pomocí jedné ze dvou metod:
 
-### <a name="configuring-the-firewall"></a>Konfigurace brány firewall
+- **Vytvoření přihlašovacích údajů**
 
-Pokud je nakonfigurovaná brána firewall na úrovni serveru pro určitou IP adresu nebo rozsah IP adres, může se **správce SQL serveru** a **správce Azure Active Directory** připojit k hlavní databázi a všem uživatelským databázím. Počáteční bránu firewall na úrovni serveru je možné nakonfigurovat na webu [Azure Portal](sql-database-single-database-get-started.md), pomocí prostředí [PowerShell](sql-database-powershell-samples.md) nebo pomocí rozhraní [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Po vytvoření připojení můžete nakonfigurovat další pravidla brány firewall IP na úrovni serveru pomocí [jazyka Transact-SQL](sql-database-configure-firewall-settings.md).
+  V hlavní databázi vytvořte přihlašovací údaje SQL. Pak vytvořte uživatelský účet v každé databázi, ke které uživatel potřebuje přístup, a přiřaďte k tomuto přihlašovacímu účtu uživatelský účet. Tento přístup je preferovaný, když uživatel musí mít přístup k několika databázím a chcete uchovat hesla synchronizované. Tento přístup ale má při použití s geografickou replikací složité, protože přihlašovací jméno musí být vytvořené na primárním i sekundárním serveru. Další informace najdete v tématu [Konfigurace a Správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání](sql-database-geo-replication-security-config.md).
+- **Vytvoření uživatelského účtu**
 
-### <a name="administrator-access-path"></a>Cesta pro přístup správce
+  Vytvořte uživatelský účet v databázi, ke kterému uživatel potřebuje přístup (označovaný také jako [zahrnutý uživatel](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
 
-Pokud je brána firewall na úrovni serveru správně nakonfigurovaná, může se **správce SQL serveru** a **správce Azure Active Directory** připojit pomocí klientských nástrojů, jako jsou SQL Server Management Studio nebo SQL Server Data Tools. Jenom nejnovější nástroje poskytují všechny funkce a možnosti. Následující diagram znázorňuje typickou konfiguraci pro dva účty správce.
+  - U jedné nebo sdružené databáze můžete tento typ uživatelského účtu vždy vytvořit.
+  - S databází spravované instance, která nepodporuje [objekty zabezpečení serveru Azure AD](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities), můžete tento typ uživatelského účtu vytvořit pouze v [databázi s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Pomocí spravované instance, která podporuje [objekty zabezpečení serveru Azure AD](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities), můžete vytvořit uživatelské účty, které se budou ověřovat do spravované instance, aniž by bylo nutné vytvořit uživatele databáze jako uživatel databáze s omezením.
 
-![Konfigurace dvou účtů pro správu](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
-
-Při použití otevřeného portu brány firewall na úrovni serveru se můžou správci připojit k jakékoli databázi služby SQL Database.
-
-### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Připojení k databázi pomocí aplikace SQL Server Management Studio
-
-Návod, jak vytvořit server, databázi, pravidla brány firewall na úrovni serveru a použít SQL Server Management Studio k dotazování databáze, najdete v tématu [Začínáme s Azure SQL Database servery, databázemi a pravidly brány firewall pomocí Azure Portal a SQL Server Management Studio](sql-database-single-database-get-started.md).
+  V případě tohoto přístupu jsou informace o ověřování uživatele uloženy v každé databázi a automaticky replikovány do geograficky replikovaných databází. Pokud však stejný účet existuje ve více databázích a používáte ověřování SQL, je nutné uchovat hesla ručně. Navíc platí, že pokud má uživatel účet v různých databázích s různými hesly, může se stát, že tato hesla budou mít potíže.
 
 > [!IMPORTANT]
-> Doporučujeme vám vždy používat nejnovější verzi aplikace Management Studio, aby se zajistila synchronizovanost s aktualizacemi Microsoft Azure a SQL Database. [Aktualizovat aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+> Pokud chcete vytvořit obsažené uživatele namapované na identity Azure AD, musíte se přihlásit pomocí účtu Azure AD, který je správcem v SQL Database. V rámci spravované instance můžou přihlášení k SQL pomocí `sysadmin` také vytvořit přihlašovací jméno nebo uživatele služby Azure AD.
 
-## <a name="additional-server-level-administrative-roles"></a>Další správní role na úrovni serveru
+Příklady, jak vytvořit přihlašovací jména a uživatele, najdete v tématech:
 
->[!IMPORTANT]
->Tato část se nevztahuje na **Azure SQL Database spravovanou instanci** , protože tyto role jsou specifické pro **Azure SQL Database**.
+- [Vytvoření přihlašovacích údajů pro databáze s jednou nebo ve fondu](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
+- [Vytvořit přihlašovací údaje pro databázi spravované instance](https://docs.microsoft.com/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
+- [Vytvoření přihlašovacích údajů pro databázi Azure synapse Analytics](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Vytvořit uživatele](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
+- [Vytváření uživatelů s omezením pro Azure AD](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)
 
-Kromě správních rolí na úrovni serveru popsaných v předchozích částech poskytuje služba SQL Database v hlavní databázi dvě správní role s omezením přístupu, do kterých můžete přidávat uživatelské účty, a které udělují oprávnění k vytváření databází nebo správě přihlašování.
+> [!TIP]
+> Kurz zabezpečení, který zahrnuje vytváření SQL Server obsažených uživatelů v jedné nebo ve fondu databází, najdete v tématu [kurz: zabezpečení jedné nebo sdružené databáze](sql-database-security-tutorial.md).
 
-### <a name="database-creators"></a>Autoři databází
+## <a name="using-fixed-and-custom-database-roles"></a>Používání pevné a vlastní databázové role
 
-Jednou z těchto správních rolí je role **dbmanager**. Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. Aby bylo možné vytvořit databázi, musí být uživatel uživatelem založený na SQL Server přihlášení v databázi `master` nebo uživatel databáze s omezením na základě Azure Active Directory uživatele.
+Po vytvoření uživatelského účtu v databázi, a to buď na základě přihlašovacích údajů, nebo jako obsaženého uživatele, můžete tomuto uživateli povolit provádění různých akcí a přístup k datům v konkrétní databázi. K autorizaci přístupu můžete použít následující metody:
 
-1. Pomocí účtu správce se připojte k databázi `master`.
-2. Pomocí příkazu [Create Login](https://msdn.microsoft.com/library/ms189751.aspx) Vytvořte přihlašovací údaje pro ověření SQL Server. Ukázka příkazu:
+- **Pevné databázové role**
 
-   ```sql
-   CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
-   ```
+  Přidejte uživatelský účet do [pevné databázové role](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles). K dispozici jsou 9 pevné databázové role, z nichž každá má definovanou sadu oprávnění. Nejběžnějšími pevnými databázovými role jsou: **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter**a **db_denydatareader**. Role **db_owner** se obvykle používá k udělení úplných oprávnění pouze několika uživatelům. Ostatní pevné databázové role jsou užitečné pro rychlé vytvoření jednoduché databáze ve vývojovém prostředí, ale nedoporučují se pro většinu databází v produkčním prostředí. Například **db_datareader** pevná databázová role uděluje přístup pro čtení ke všem tabulkám v databázi, což je více, než je nezbytně nutné.
 
-   > [!NOTE]
-   > Při vytváření přihlášení nebo uživatele databáze s omezením použijte silné heslo. Další informace najdete v tématu [Silná hesla](https://msdn.microsoft.com/library/ms161962.aspx).
+  - Postup přidání uživatele do pevné databázové role:
 
-   Za účelem zvýšení výkonu se přihlášení (u hlavních účtů na úrovni serveru) dočasně ukládají do mezipaměti na úrovni databáze. Pokud chcete aktualizovat mezipaměť pro ověřování, podívejte se na informace v tématu [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
+    - V Azure SQL Database použijte příkaz [ALTER role](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) . Příklady najdete v tématu [ALTER role – příklady](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql#examples) .
+    - Azure synapse Analytics použijte příkaz [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) . Příklady najdete v tématu [sp_addrolemember příklady](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql).
 
-3. V databázi `master` vytvořte uživatele pomocí příkazu [Create User](https://msdn.microsoft.com/library/ms173463.aspx) . Uživatel může být Azure Active Directory ověřování, které obsahuje uživatele databáze (Pokud jste nakonfigurovali prostředí pro ověřování Azure AD), nebo pokud uživatel s omezením ověřování SQL Server obsahuje uživatele databáze nebo ověřování SQL Server na základě SQL Server přihlášení ověřování (vytvořené v předchozím kroku) Ukázkové příkazy:
+- **Vlastní databázová role**
 
-   ```sql
-   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
-   CREATE USER Ann WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
-   CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
-   ```
+  Pomocí příkazu [Create role](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql) vytvořte vlastní databázovou roli. Vlastní role vám umožní vytvořit vlastní databázové role definované uživatelem a pečlivě udělit každé roli minimální oprávnění potřebná pro potřeby podniku. Pak můžete přidat uživatele do vlastní role. Pokud je uživatel členem více rolí, všechna jejich oprávnění se agregují.
+- **Udělit přímo oprávnění**
 
-4. Přidejte nového uživatele do role databáze **dbmanager** v `master` pomocí příkazu [ALTER role](https://msdn.microsoft.com/library/ms189775.aspx) . Ukázky příkazů:
+  Udělte uživatelskému účtu [oprávnění](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) přímo. Ve službě SQL Database je dostupných více než 100 oprávnění, která můžete jednotlivě přidělit nebo zamítnout. Mnohá z těchto oprávnění jsou vnořená. Oprávnění `UPDATE` pro schéma například zahrnuje oprávnění `UPDATE` pro každou tabulku v tomto schématu. Podobně jako ve většině systémů oprávnění má zamítnutí oprávnění přednost před udělením oprávnění a přepíše ho. Kvůli velkému počtu oprávnění a používání vnořených oprávnění může návrh vhodného systému oprávnění vyžadovat pečlivou studii, aby byla vaše databáze dobře chráněna. Začněte seznamem oprávnění podle tématu [Oprávnění (databázový stroj)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) a prohlédněte si [plakát](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) s přehledem oprávnění.
 
-   ```sql
-   ALTER ROLE dbmanager ADD MEMBER Mary; 
-   ALTER ROLE dbmanager ADD MEMBER [mike@contoso.com];
-   ```
+## <a name="using-groups"></a>Používání skupin
 
-   > [!NOTE]
-   > Dbmanager je databázová role v hlavní databázi, takže do role dbmanager můžete přidat pouze uživatele databáze. Do role na úrovni databáze není možné přidat přihlášení na úrovni serveru.
+Efektivní správa přístupu používá oprávnění přiřazená skupinám zabezpečení služby Active Directory a pevné nebo vlastní role místo pro jednotlivé uživatele.
 
-5. V případě potřeby nakonfigurujte pravidlo brány firewall, aby se nový uživatel mohl připojit. (Na nového uživatele se může vztahovat už existující pravidlo brány firewall.)
+- Při použití ověřování Azure Active Directory vložte Azure Active Directory uživatele do skupiny zabezpečení Azure Active Directory. Pro tuto skupinu vytvořte uživatele databáze s omezením. Jeden nebo více uživatelů databáze umístěte do vlastní databázové role s konkrétními oprávněními, která jsou vhodná pro danou skupinu uživatelů.
 
-Nyní se uživatel může připojit k databázi `master` a může vytvářet nové databáze. Účet použitý k vytvoření databáze se stává vlastníkem databáze.
+- Při použití ověřování SQL vytvořte v databázi uživatele databáze s omezením. Jeden nebo více uživatelů databáze umístěte do vlastní databázové role s konkrétními oprávněními, která jsou vhodná pro danou skupinu uživatelů.
 
-### <a name="login-managers"></a>Správci přihlášení
+  > [!NOTE]
+  > Skupiny můžete také použít pro uživatele databáze bez omezení.
 
-Druhou správní rolí je role správce přihlášení. Členové této role mohou v hlavní databázi vytvářet nová přihlášení. Pokud chcete, můžete použít stejný postup (vytvořit přihlášení a uživatele a přidat uživatele do role **loginmanager**) a povolit tak uživateli vytvářet nová přihlášení v hlavní databázi. Tato přihlášení obvykle nejsou nutná, protože Microsoft doporučuje místo uživatelů s ověřováním na základě přihlášení používat uživatele databáze s omezením, kteří jsou ověřovaní na úrovni databáze. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx).
+Měli byste se seznámit s následujícími funkcemi, které jde použít k omezení nebo zvýšení oprávnění:
 
-## <a name="non-administrator-users"></a>Uživatelé bez oprávnění správce
-
-Obecně platí, že účty bez oprávnění správce nepotřebují přístup k hlavní databázi. Uživatele databáze s omezením můžete vytvářet pomocí příkazu [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Uživatel může být Azure Active Directory ověřování, které obsahuje uživatele databáze (Pokud jste nakonfigurovali prostředí pro ověřování Azure AD), nebo pokud uživatel s omezením ověřování SQL Server obsahuje uživatele databáze nebo ověřování SQL Server na základě přihlášení SQL Server (vytvořené v předchozím kroku). Další informace najdete v části [Uživatelé databáze s omezením – vytvoření přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx). 
-
-Pokud chcete vytvářet uživatele, připojte se k databázi a spusťte podobné příkazy jako v následujících příkladech:
-
-```sql
-CREATE USER Mary FROM LOGIN Mary; 
-CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
-```
-
-Na začátku může uživatele vytvořit jenom jeden ze správců nebo vlastník databáze. Jestliže chcete autorizovat další uživatele, aby mohli vytvářet nové uživatele, udělte vybraným uživatelům oprávnění `ALTER ANY USER` pomocí příkazu, jako je například tento:
-
-```sql
-GRANT ALTER ANY USER TO Mary;
-```
-
-Chcete-li poskytnout dalším uživatelům úplnou kontrolu nad databází, zajistěte, aby byly členy **db_owner** pevné databázové role.
-
-V Azure SQL Database použijte příkaz `ALTER ROLE`.
-
-```sql
-ALTER ROLE db_owner ADD MEMBER Mary;
-```
-
-Ve službě Azure synapse použijte [Sp_addrolemember exec](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
-```sql
-EXEC sp_addrolemember 'db_owner', 'Mary';
-```
-
-
-> [!NOTE]
-> Jedním z běžných důvodů, proč vytvořit uživatele databáze na základě přihlášení k serveru SQL Database, je pro uživatele, kteří potřebují přístup k více databázím. Vzhledem k tomu, že uživatelé databáze s omezením jsou jednotlivé entity, udržuje každá databáze vlastní uživatele a vlastní heslo. To může způsobit režii, protože uživatel si pak musí pamatovat každé heslo pro každou databázi a může se stát untenableou změnou více hesel pro mnoho databází. Pokud ale používáte SQL Server přihlašovacích údajů a vysokou dostupnost (aktivní geografickou replikaci a skupiny převzetí služeb při selhání), SQL Server přihlášení musí být nastavená na každém serveru ručně. V opačném případě již nebude uživatel databáze po převzetí služeb při selhání mapován na přihlašovací jméno serveru a nebude moci získat přístup k databázi po převzetí služeb při selhání. Další informace o konfiguraci přihlášení pro geografickou replikaci najdete v tématu [Konfigurace a Správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání](sql-database-geo-replication-security-config.md).
-
-### <a name="configuring-the-database-level-firewall"></a>Konfigurace brány firewall na úrovni databáze
-
-Uživatelé bez oprávnění správce by v rámci osvědčených postupů měli mít do databází, které používají, přístup pouze přes bránu firewall. Místo toho, abyste autorizovali jejich IP adresy pomocí brány firewall na úrovni serveru a umožnili jim tak přístup do všech databází, nakonfigurujte bránu firewall na úrovni databáze pomocí příkazu [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx). Bránu firewall na úrovni databáze nemůžete nakonfigurovat pomocí portálu.
-
-### <a name="non-administrator-access-path"></a>Cesta pro přístup uživatelů bez oprávnění správce
-
-Pokud je brána firewall na úrovni databáze správně nakonfigurovaná, můžou se uživatelé připojit pomocí klientských nástrojů, jako jsou SQL Server Management Studio nebo SQL Server Data Tools. Jenom nejnovější nástroje poskytují všechny funkce a možnosti. Následující diagram znázorňuje typickou cestu pro přístup uživatelů bez oprávnění správce.
-
-![Cesta pro přístup uživatelů bez oprávnění správce](./media/sql-database-manage-logins/2sql-db-nonadmin-access.png)
-
-## <a name="groups-and-roles"></a>Skupiny a role
-
-Efektivní správa přístupů využívá oprávnění přiřazená skupinám a rolím, nikoliv jednotlivým uživatelům. 
-
-- Pokud používáte ověřování pomocí Azure Active Directory, přidejte uživatele služby Azure Active Directory do skupiny Azure Active Directory. Pro tuto skupinu vytvořte uživatele databáze s omezením. Přidejte jednoho nebo více uživatelů databáze do [databázové role](https://msdn.microsoft.com/library/ms189121) a potom této databázové roli přiřaďte [oprávnění](https://msdn.microsoft.com/library/ms191291.aspx).
-
-- Pokud používáte ověřování SQL Serveru, vytvořte v databázi uživatele databáze s omezením. Přidejte jednoho nebo více uživatelů databáze do [databázové role](https://msdn.microsoft.com/library/ms189121) a potom této databázové roli přiřaďte [oprávnění](https://msdn.microsoft.com/library/ms191291.aspx).
-
-Mezi databázové role patří například předdefinované role **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** a **db_denydatareader**. Role **db_owner** se obvykle používá k udělení úplných oprávnění pouze několika uživatelům. Ostatní pevné databázové role jsou užitečné pro rychlé vytvoření jednoduché databáze ve vývojovém prostředí, ale nedoporučují se pro většinu databází v produkčním prostředí. Pevná databázová role **db_datareader** například uděluje přístup pro čtení pro všechny tabulky v databázi, což je obvykle více, než je skutečně nezbytné. Je mnohem lepší vytvořit vlastní databázové role definované uživatelem pomocí příkazu [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) a každé roli pečlivě udělit nejnižší oprávnění, které jsou nezbytná pro práci. Pokud je uživatel členem více rolí, všechna jejich oprávnění se agregují.
-
-## <a name="permissions"></a>Oprávnění
-
-Ve službě SQL Database je dostupných více než 100 oprávnění, která můžete jednotlivě přidělit nebo zamítnout. Mnohá z těchto oprávnění jsou vnořená. Oprávnění `UPDATE` pro schéma například zahrnuje oprávnění `UPDATE` pro každou tabulku v tomto schématu. Podobně jako ve většině systémů oprávnění má zamítnutí oprávnění přednost před udělením oprávnění a přepíše ho. Kvůli velkému počtu oprávnění a používání vnořených oprávnění může návrh vhodného systému oprávnění vyžadovat pečlivou studii, aby byla vaše databáze dobře chráněna. Začněte seznamem oprávnění podle tématu [Oprávnění (databázový stroj)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) a prohlédněte si [plakát](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) s přehledem oprávnění.
-
-
-### <a name="considerations-and-restrictions"></a>Důležité informace a omezení
-
-Při správě přihlášení a uživatelů ve službě SQL Database mějte na paměti následující:
-
-- Když chcete provádět příkazy **, musíte být připojeni k** hlavní`CREATE/ALTER/DROP DATABASE` databázi.   
-- Databázového uživatele, který odpovídá **správci serveru**, není možné změnit ani vyřadit. 
-- Výchozím jazykem přihlášení **správce serveru** je americká angličtina.
-- Příkazy **a** mohou provádět jen správci (přihlášení **správce serveru** nebo správce Azure AD) a členové databázové role **dbmanager** v `CREATE DATABASE`hlavní`DROP DATABASE` databázi.
-- Při provádění příkazů `CREATE/ALTER/DROP LOGIN` musíte být připojení k hlavní databázi. Nedoporučuje se používat přihlášení. Použijte raději databázové uživatele s omezením.
-- Pokud se chcete připojit k uživatelské databázi, musíte v připojovacím řetězci uvést název databáze.
-- Příkazy **,**  a **mohou provádět jen hlavní přihlášení na úrovni serveru a členové databázové role**loginmanager`CREATE LOGIN` v `ALTER LOGIN`hlavní`DROP LOGIN` databázi.
-- Při provádění příkazů `CREATE/ALTER/DROP LOGIN` a `CREATE/ALTER/DROP DATABASE` v aplikaci ADO.NET není dovolené používat příkazy s parametry. Další informace viz [Příkazy a parametry](https://msdn.microsoft.com/library/ms254953.aspx).
-- Při provádění příkazů `CREATE/ALTER/DROP DATABASE` a `CREATE/ALTER/DROP LOGIN` musí být každý příkaz jediným příkazem v dávce Transact-SQL. V opačném případě dojde k chybě. Následující příkaz Transact-SQL například zkontroluje, jestli databáze existuje. Pokud existuje, volá příkaz `DROP DATABASE`, který ji odebere. Příkaz `DROP DATABASE` ale není jediným příkazem v dávce, a proto provedení následujícího příkazu Transact-SQL způsobí chybu.
-
-  ```sql
-  IF EXISTS (SELECT [name]
-           FROM   [sys].[databases]
-           WHERE  [name] = N'database_name')
-  DROP DATABASE [database_name];
-  GO
-  ```
-  
-  Místo toho použijte následující příkaz Transact-SQL:
-  
-  ```sql
-  DROP DATABASE IF EXISTS [database_name]
-  ```
-
-- Při provádění příkazu `CREATE USER` s možností `FOR/FROM LOGIN` musí jít o jediný příkaz v dávce Transact-SQL.
-- Při provádění příkazu `ALTER USER` s možností `WITH LOGIN` musí jít o jediný příkaz v dávce Transact-SQL.
-- Pokud chcete použít příkaz `CREATE/ALTER/DROP` pro vytvoření, změnu nebo odstranění uživatele, musíte mít v databázi oprávnění `ALTER ANY USER`.
-- Pokud se vlastník databázové role pokusí přidat do této role jiného uživatele databáze (nebo ho z ní odebrat), může dojít k následující chybě: **Uživatel nebo role „Jméno“ v této databázi neexistuje.** Chyba je způsobená tím, že vlastník role daného uživatele nevidí. Problém vyřešíte tak, že vlastníkovi role udělíte oprávnění `VIEW DEFINITION` pro daného uživatele. 
-
+- K dočasnému bezpečnému zvýšení oprávnění můžete použít [zosobnění](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server) a [přihlašování k modulům](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server).
+- K omezení řádků, ke kterým má uživatel přístup, můžete použít [zabezpečení na úrovni řádku](https://docs.microsoft.com/sql/relational-databases/security/row-level-security).
+- K omezení rizika ohrožení citlivých dat můžete použít [maskování dat](sql-database-dynamic-data-masking-get-started.md).
+- K omezení akcí, které je možné s databází provádět, můžete použít [uložené procedury](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o pravidlech brány firewall najdete v tématu [Brána firewall služby Azure SQL Database](sql-database-firewall-configure.md).
-- Přehled všech funkcí zabezpečení služby SQL Database najdete v [přehledu zabezpečení SQL](sql-database-security-overview.md).
-- Kurz najdete v tématu [zabezpečení Azure SQL Database](sql-database-security-tutorial.md).
-- Informace o zobrazeních a uložených procedurách najdete v tématu [Vytváření zobrazení a uložených procedur](https://msdn.microsoft.com/library/ms365311.aspx).
-- Informace o udělování přístupu k databázovému objektu najdete v tématu [Udělování přístupu k databázovému objektu](https://msdn.microsoft.com/library/ms365327.aspx).
+Přehled všech funkcí zabezpečení služby SQL Database najdete v [přehledu zabezpečení SQL](sql-database-security-overview.md).

@@ -11,11 +11,11 @@ author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
 ms.openlocfilehash: 39e6e9d500a398fd34b8b61727dee8bf11da7430
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78892989"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270482"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -228,7 +228,7 @@ Další informace najdete v tématu [Vytvoření a registrace Azure Machine Lear
 
 **Úložiště dat** je abstrakce úložiště v rámci účtu úložiště Azure. Úložiště dat může jako back-end úložiště použít buď kontejner Azure Blob, nebo sdílenou složku Azure. Každý pracovní prostor má výchozí úložiště dat a můžete zaregistrovat další úložiště dat. K ukládání a načítání souborů z úložiště dat použijte rozhraní Python SDK API nebo Azure Machine Learning CLI.
 
-### <a name="compute-targets"></a>Cílové výpočetní objekty
+### <a name="compute-targets"></a>Cílových výpočetních prostředí
 
 [Cílový výpočetní](concept-compute-target.md) výkon vám umožní určit výpočetní prostředek, ve kterém spustíte školicí skript, nebo hostovat nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek.
 

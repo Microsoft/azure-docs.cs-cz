@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387556"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281558"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Vložení dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -55,19 +55,19 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 
 Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Azure Kognitivní hledání.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | -------- | ----------- | -------- |
-| type | Vlastnost Type musí být nastavená na: **AzureSearch**. | Ano |
-| url | Adresa URL služby vyhledávání | Ano |
+| typ | Vlastnost Type musí být nastavená na: **AzureSearch**. | Ano |
+| Adresa URL | Adresa URL služby vyhledávání | Ano |
 | key | Klíč správce pro vyhledávací službu. | Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako jsou struktura, dostupnost a zásady pro datovou sadu JSON, jsou podobné pro všechny typy datových sad. Oddíl **typeProperties** se liší pro každý typ datové sady. Oddíl typeProperties pro datovou sadu typu **AzureSearchIndex** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | -------- | ----------- | -------- |
-| type | Vlastnost Type musí být nastavená na **AzureSearchIndex**.| Ano |
+| typ | Vlastnost Type musí být nastavená na **AzureSearchIndex**.| Ano |
 | indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Ano |
 
 
@@ -76,9 +76,9 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 V případě aktivity kopírování, pokud je jímka typu **AzureSearchIndexSink**, jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).| Sloučení (výchozí)<br/>Odeslat| Ne |
+| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).| Sloučení (výchozí)<br/>Nahrát| Ne |
 | WriteBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) . | 1 až 1 000. Výchozí hodnota je 1000. | Ne |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
@@ -99,14 +99,14 @@ Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledán�
 
 | Datový typ Azure Kognitivní hledání | Podporováno v jímky Azure Kognitivní hledání |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
+| String | Ano |
 | Datový typ Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |
 | Logická hodnota | Ano |
 | DataTimeOffset | Ano |
-| String Array | Ne |
-| GeographyPoint | Ne |
+| String Array | N |
+| GeographyPoint | N |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>Příklad JSON: kopírování dat z místních SQL Server do Azure Kognitivní hledání index
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262856"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278061"
 ---
 # <a name="http-features"></a>Funkce protokolu HTTP
 
@@ -41,17 +41,17 @@ Podporují se následující integrovaná rozhraní API HTTP.
 
 [Vazba klienta Orchestration](durable-functions-bindings.md#orchestration-client) zpřístupňuje rozhraní API, která mohou generovat praktické datové části odpovědi HTTP. Například může vytvořit odpověď obsahující odkazy na rozhraní API pro správu pro určitou instanci orchestrace. Následující příklady ukazují funkci triggeru HTTP, která ukazuje, jak používat toto rozhraní API pro novou instanci orchestrace:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**index.js**
+**index. js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**function.json**
+**Function. JSON**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
@@ -114,7 +114,7 @@ Počínaje Durable Functions 2,0 mohou orchestrace nativně spotřebovávat rozh
 
 Následující příklad kódu ukazuje funkci Orchestrator, která provádí odchozí požadavek HTTP:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -172,7 +172,7 @@ Durable Functions nativně podporuje volání rozhraní API, která přijímají
 
 Následující kód je příkladem funkce rozhraní .NET Orchestrator. Funkce provádí ověřená volání k restartování virtuálního počítače pomocí [REST API virtuálních počítačů](https://docs.microsoft.com/rest/api/compute/virtualmachines)s Azure Resource Manager.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

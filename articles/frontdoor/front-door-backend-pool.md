@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: b764799d3f40cef24a0412ac950026af650d4ec7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382098"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272848"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Back-endy a back-endové fondy ve službě Azure front-endy Service
 Tento článek popisuje, jak namapovat nasazení aplikace pomocí služby front-dveří Azure. Vysvětluje taky různé výrazy v konfiguraci front-endu v případě back-endu aplikací.

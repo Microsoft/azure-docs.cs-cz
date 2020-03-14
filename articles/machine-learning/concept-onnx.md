@@ -12,11 +12,11 @@ author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396224"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270170"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX a Azure Machine Learning: vytváření a zrychlení modelů ML
 

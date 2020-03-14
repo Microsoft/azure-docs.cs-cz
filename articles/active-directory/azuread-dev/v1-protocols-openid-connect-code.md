@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: fc108b9f49bc88c722ac2462ee82e27b6c6de5c9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377835"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263488"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím pomocí OpenID Connect a Azure Active Directory
 
@@ -116,7 +116,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | tenant |požadováno |Hodnotu `{tenant}` v cestě k žádosti lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou identifikátory klientů, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na tenantovi. |
 | client_id |požadováno |ID aplikace přiřazené vaší aplikaci, když ji zaregistrujete ve službě Azure AD. Najdete ho v Azure Portal. Klikněte na **Azure Active Directory**, klikněte na **Registrace aplikací**, vyberte aplikaci a na stránce aplikace vyhledejte ID aplikace. |
 | response_type |požadováno |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může také zahrnovat jiné response_types, například `code` nebo `token`. |
-| scope | doporučil | Specifikace OpenID Connect vyžaduje obor `openid`, který v uživatelském rozhraní souhlasu překládá oprávnění přihlásit se. Tento a další obory OIDC se na koncovém bodu verze 1.0 ignorují, ale pro klienty kompatibilní se standardem je stále doporučený postup. |
+| obor | doporučil | Specifikace OpenID Connect vyžaduje obor `openid`, který v uživatelském rozhraní souhlasu překládá oprávnění přihlásit se. Tento a další obory OIDC se na koncovém bodu verze 1.0 ignorují, ale pro klienty kompatibilní se standardem je stále doporučený postup. |
 | nonce |požadováno |Hodnota obsažená v požadavku vygenerovaná aplikací, která je součástí výsledného `id_token` jako deklarace identity. Aplikace pak může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný, jedinečný řetězec nebo identifikátor GUID, který lze použít k identifikaci původu žádosti. |
 | redirect_uri | doporučil |Redirect_uri vaší aplikace, ve které vaše aplikace může odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z redirect_uris, který jste zaregistrovali na portálu, s výjimkou musí být zakódovaný URL. Pokud chybí, uživatelský agent se pošle zpátky k jednomu z identifikátorů URI pro přesměrování zaregistrovaných pro aplikaci náhodně. Maximální délka je 255 bajtů. |
 | response_mode |volitelné |Určuje metodu, která se má použít k odeslání výsledného authorization_code zpět do vaší aplikace. Podporované hodnoty jsou `form_post` pro *post formuláře http* a `fragment` *fragmentu adresy URL*. U webových aplikací doporučujeme použít `response_mode=form_post` k zajištění nejbezpečnějšího přenosu tokenů do aplikace. Výchozí hodnota pro jakýkoliv tok včetně id_token je `fragment`.|
@@ -157,7 +157,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Chybové kódy pro chyby koncového bodu autorizace
@@ -267,7 +267,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 
 Popis možných kódů chyb a jejich doporučené akce klienta najdete v tématu [kódy chyb pro chyby koncového bodu autorizace](#error-codes-for-authorization-endpoint-errors).

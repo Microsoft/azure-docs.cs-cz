@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
 ms.openlocfilehash: c4f5650e333c209d3b5f342c1f1c61ec1ca5cf47
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383317"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250371"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Rozšíření snímku virtuálního počítače pro Windows pro Azure Backup
 
@@ -57,7 +57,7 @@ Následující JSON zobrazuje schéma pro rozšíření snímku virtuálního po
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Datový typ |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | string |

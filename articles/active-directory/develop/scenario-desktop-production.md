@@ -17,11 +17,11 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c8a9cf0c05d8af14d52bb1efb536dc8bbe7db84d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702126"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262565"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: přesunout do produkčního prostředí
 

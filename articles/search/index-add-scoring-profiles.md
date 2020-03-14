@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379675"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245457"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Kognitivní hledání
 
@@ -234,10 +234,10 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
 |Atribut|Popis|  
 |---------------|-----------------|  
-|`name`|Povinná hodnota. Toto je název profilu vyhodnocování. Řídí se stejnými zásadami pro pojmenování pole. Musí začínat písmenem, nesmí obsahovat tečky, dvojtečky nebo @ symboly a nemůže začínat slovem ' azureSearch ' (rozlišuje velká a malá písmena).|  
+|`name`|Požadováno. Toto je název profilu vyhodnocování. Řídí se stejnými zásadami pro pojmenování pole. Musí začínat písmenem, nesmí obsahovat tečky, dvojtečky nebo @ symboly a nemůže začínat slovem ' azureSearch ' (rozlišuje velká a malá písmena).|  
 |`text`|Obsahuje vlastnost váhy.|  
-|`weights`|Volitelné. Obsahuje páry název-hodnota, které určují název pole a relativní váhu. Relativní váha musí být kladné celé číslo nebo číslo s plovoucí desetinnou čárkou.<br /><br /> Váhy se používají k označení důležitosti jednoho vyhledávacího pole relativně k druhému.|  
-|`functions`|Volitelné. Funkci bodování lze použít pouze pro pole, která lze filtrovat.|  
+|`weights`|Volitelná. Obsahuje páry název-hodnota, které určují název pole a relativní váhu. Relativní váha musí být kladné celé číslo nebo číslo s plovoucí desetinnou čárkou.<br /><br /> Váhy se používají k označení důležitosti jednoho vyhledávacího pole relativně k druhému.|  
+|`functions`|Volitelná. Funkci bodování lze použít pouze pro pole, která lze filtrovat.|  
 |`type`|Vyžaduje se pro funkce bodování. Určuje typ funkce, která se má použít. Platné hodnoty zahrnují velikost, aktuálnost, vzdálenost a značku. Do každého profilu vyhodnocování můžete zahrnout více než jednu funkci. Název funkce musí být malými písmeny.|  
 |`boost`|Vyžaduje se pro funkce bodování. Kladné číslo, které se používá jako násobitel pro nezpracované skóre. Nemůže být rovna 1.|  
 |`fieldname`|Vyžaduje se pro funkce bodování. Funkci bodování lze použít pouze pro pole, která jsou součástí kolekce polí indexu a která jsou filtrovatelné. Kromě toho každý typ funkce zavádí další omezení (aktuálnost se používá s poli DateTime, rozsah s celočíselnými nebo dvojitými poli a vzdáleností s poli umístění). Pro každou definici funkce můžete zadat jenom jedno pole. Chcete-li například použít velikost dvakrát ve stejném profilu, je třeba zahrnout velikost dvou definic, jednu pro každé pole.|  
@@ -253,7 +253,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 |`distance` &#124; `boostingDistance`|Číslo, které označuje vzdálenost v kilometrech od místa odkazu, kde končí rozsah zvyšování úrovně.|  
 |`tag`|Funkce bodování značek se používá k ovlivnění skóre dokumentů na základě značek v dokumentech a vyhledávacích dotazech. Dokumenty, které mají Tagy společné s vyhledávacím dotazem, se budou zvyšovat. Značky pro vyhledávací dotaz jsou k dispozici jako parametr bodování v každé žádosti o vyhledávání (pomocí možnosti `scoringParameterquery` řetězec).|  
 |`tag` &#124; `tagsParameter`|Parametr, který se má předat v dotazech k určení značek pro konkrétní požadavek. `scoringParameter` je parametr dotazu. Popisy parametrů dotazů najdete v tématu [hledání dokumentů &#40;Azure kognitivní hledání REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
-|`functionAggregation`|Volitelné. Platí pouze v případě, že jsou zadány funkce. Platné hodnoty jsou: Sum (výchozí), Average, minim, maximum a firstMatching. Skóre hledání je jediná hodnota, která je vypočítána z více proměnných, včetně více funkcí. Tento atribut určuje, jakým způsobem jsou kombinování všech funkcí zkombinovány do jediného souhrnného zvýšení, které je následně použito pro základní skóre dokumentu. Základní skóre vychází z hodnoty [TF-IDF](http://www.tfidf.com/) vypočítané z dokumentu a vyhledávacího dotazu.|  
+|`functionAggregation`|Volitelná. Platí pouze v případě, že jsou zadány funkce. Platné hodnoty jsou: Sum (výchozí), Average, minim, maximum a firstMatching. Skóre hledání je jediná hodnota, která je vypočítána z více proměnných, včetně více funkcí. Tento atribut určuje, jakým způsobem jsou kombinování všech funkcí zkombinovány do jediného souhrnného zvýšení, které je následně použito pro základní skóre dokumentu. Základní skóre vychází z hodnoty [TF-IDF](http://www.tfidf.com/) vypočítané z dokumentu a vyhledávacího dotazu.|  
 |`defaultScoringProfile`|Pokud není zadán žádný profil vyhodnocování, je při spuštění žádosti o vyhledávání použit výchozí bodování (pouze[TF-IDF](http://www.tfidf.com/) ).<br /><br /> Tady můžete nastavit výchozí název profilu vyhodnocování, což způsobí, že Azure Kognitivní hledání používat tento profil, když v žádosti o vyhledávání není zadaný žádný konkrétní profil.|  
 
 ##  <a name="bkmk_interpolation"></a>Nastavit interpoly  
@@ -275,7 +275,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
  Následující tabulka uvádí několik příkladů.  
 
-|Doba trvání|boostingDuration|  
+|Doba platnosti|boostingDuration|  
 |--------------|----------------------|  
 |1 den|"P1D"|  
 |2 dny a 12 hodin|"P2DT12H"|  
@@ -284,7 +284,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
  Další příklady naleznete v tématu [schéma XML: DataTypes (w3.org Web)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
 
-## <a name="see-also"></a>Viz také  
+## <a name="see-also"></a>Viz také:  
  [Azure kognitivní hledání REST](https://docs.microsoft.com/rest/api/searchservice/)   
  [Vytvoření indexu &#40;služby Azure kognitivní hledání&#41; REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
  [Sada Azure Kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

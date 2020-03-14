@@ -8,11 +8,11 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385330"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274369"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Vlastní metriky v Azure Monitor
 
@@ -189,7 +189,7 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 | **Poskytl** | |
 |Jižní Afrika – sever | https:\//southafricanorth.monitoring.azure.com
 | **Asie** | |
-|Indie – střed | https:\//centralindia.monitoring.azure.com
+|Střed Indie | https:\//centralindia.monitoring.azure.com
 |Austrálie – východ | https:\//australiaeast.monitoring.azure.com
 |Japonsko – východ | https:\//japaneast.monitoring.azure.com
 |Jihovýchodní Asie  | https:\//southeastasia.monitoring.azure.com |

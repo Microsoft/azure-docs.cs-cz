@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9e6d2d6cf602bca74c8899586eef0a8108fde3c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893251"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263332"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -40,7 +40,7 @@ Podmíněný přístup Azure AD podporuje tyto platformy zařízení:
 
 - Android
 - iOS
-- telefon se systémem Windows
+- Windows Phone
 - Windows
 - macOS
 
@@ -88,15 +88,15 @@ Tyto podmínky se běžně používají při vyžadování spravovaného zaříz
 
 Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zásadu zařízení, třeba požadavky na vyhovující zařízení, podporují se tyto operační systémy a prohlížeče:
 
-| Operační systém | Prohlížeče |
+| OS | Prohlížeče |
 | :-- | :-- |
 | Windows 10 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |
 | Windows 7 | Internet Explorer, Chrome |
 | iOS | Microsoft Edge, Intune Managed Browser, Safari |
 | Android | Microsoft Edge, Intune Managed Browser, Chrome |
-| telefon se systémem Windows | Microsoft Edge, Internet Explorer |
-| Windows Server 2019 | Microsoft Edge, Internet Explorer, Chrome |
+| Windows Phone | Microsoft Edge, Internet Explorer |
+| Windows Server. 2019 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows Server 2016 | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer |
 | Windows Server 2008 R2 | Internet Explorer |

@@ -7,11 +7,11 @@ ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 0f6ec158cf6ab855191e6796be3abec7d37439a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359192"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270560"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps
 
@@ -126,21 +126,21 @@ Bez ohledu na to, jak daleko v minulosti zadáte čas zahájení, například 20
 
 Tady jsou různé příklady opakování, které můžete nastavit pro aktivační události, které podporují tyto možnosti:
 
-| Trigger | Opakování | Interval | Frequency | Čas spuštění | V těchto dnech | V těchto hodinách | V těchto minutách | Poznámka |
+| Aktivační událost | Opakování | Interval | Četnost | Čas spuštění | V těchto dnech | V těchto hodinách | V těchto minutách | Poznámka |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
-| Vzorec <br>Posuvné okno | Spustit každých 15 minut (žádné počáteční datum a čas) | 15 | Minuta | nTato | znemožnit | nTato | nTato | Tento plán se spustí okamžitě a pak vypočítá budoucí opakování na základě posledního času spuštění. |
-| Vzorec <br>Posuvné okno | Spustit každých 15 minut (s počátečním datem a časem) | 15 | Minuta | *StartDate* T*čas_spuštění*Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, a pak vypočítá budoucí opakování na základě posledního času spuštění. |
+| Vzorec <br>Posuvné okno | Spustit každých 15 minut (žádné počáteční datum a čas) | 15 | min | nTato | znemožnit | nTato | nTato | Tento plán se spustí okamžitě a pak vypočítá budoucí opakování na základě posledního času spuštění. |
+| Vzorec <br>Posuvné okno | Spustit každých 15 minut (s počátečním datem a časem) | 15 | min | *StartDate* T*čas_spuštění*Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, a pak vypočítá budoucí opakování na základě posledního času spuštění. |
 | Vzorec <br>Posuvné okno | Spustit každou hodinu, ve hodinu (s počátečním datem a časem) | 1 | Hodina | *StartDate* THH: 00:00Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas. Budoucí opakování se spouští každou hodinu při označení "00" min. počítá se od počátečního času. <p>Pokud je frekvence "Week" (týden) nebo "Month", tento plán se spustí jenom na jeden den v týdnu nebo jeden den za měsíc. |
 | Vzorec <br>Posuvné okno | Spustit každou hodinu, každý den (žádné počáteční datum a čas) | 1 | Hodina | nTato | znemožnit | nTato | nTato | Tento plán se spustí okamžitě a vypočítá budoucí opakování na základě posledního času spuštění. <p>Pokud je frekvence "Week" (týden) nebo "Month", tento plán se spustí jenom na jeden den v týdnu nebo jeden den za měsíc. |
 | Vzorec <br>Posuvné okno | Spustit každou hodinu, každý den (s počátečním datem a časem) | 1 | Hodina | *StartDate* T*čas_spuštění*Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, a pak vypočítá budoucí opakování na základě posledního času spuštění. <p>Pokud je frekvence "Week" (týden) nebo "Month", tento plán se spustí jenom na jeden den v týdnu nebo jeden den za měsíc. |
 | Vzorec <br>Posuvné okno | Spouští se každých 15 minut po celé hodině (s počátečním datem a časem). | 1 | Hodina | *StartDate* T00:15:00Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas. Budoucí opakování se spouštějí při "15" minutové značce, která se počítá od počátečního času, takže v 00:15 dop. 1:15 AM, 2:15 a tak dále. |
-| Opakování | Spustit každých 15 minut po celé hodině (bez počátečního data a času) | 1 | Day | nTato | znemožnit | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Tento plán běží v 00:15 dop. 1:15 AM, 2:15 a tak dále. Tento plán je také stejný jako frekvence "hodina" a čas spuštění s "15" minutami. |
-| Opakování | Spustí se každých 15 minut v zadaném počtu minut (žádné počáteční datum a čas). | 1 | Day | nTato | znemožnit | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Tento plán se nespustí až do další zadané 15 minutové značky. |
-| Opakování | Spustit každý den v 8 dop. *plus* po uložení aplikace logiky se zobrazí minutová značka | 1 | Day | nTato | znemožnit | 8 | nTato | Bez počátečního data a času se tento plán spustí na základě času uložení aplikace logiky (operace PUT). |
-| Opakování | Spustit každý den v 8:00. (s počátečním datem a časem) | 1 | Day | *StartDate* T08:00:00Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas. Budoucí výskyty běží denně v 8:00. | 
-| Opakování | Spustit každý den v 8:30. (žádné počáteční datum a čas) | 1 | Day | nTato | znemožnit | 8 | 30 | Tento plán se spustí každý den v 8:30. |
-| Opakování | Spustit každý den v 8:30 a 4:30 ODP. | 1 | Day | nTato | znemožnit | 8, 16 | 30 | |
-| Opakování | Každodenní spuštění v 8:30 AM, 8:45 dop., 4:30 ODP. a 4:45 odp. | 1 | Day | nTato | znemožnit | 8, 16 | 30, 45 | |
+| Opakování | Spustit každých 15 minut po celé hodině (bez počátečního data a času) | 1 | Den | nTato | znemožnit | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Tento plán běží v 00:15 dop. 1:15 AM, 2:15 a tak dále. Tento plán je také stejný jako frekvence "hodina" a čas spuštění s "15" minutami. |
+| Opakování | Spustí se každých 15 minut v zadaném počtu minut (žádné počáteční datum a čas). | 1 | Den | nTato | znemožnit | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Tento plán se nespustí až do další zadané 15 minutové značky. |
+| Opakování | Spustit každý den v 8 dop. *plus* po uložení aplikace logiky se zobrazí minutová značka | 1 | Den | nTato | znemožnit | 8 | nTato | Bez počátečního data a času se tento plán spustí na základě času uložení aplikace logiky (operace PUT). |
+| Opakování | Spustit každý den v 8:00. (s počátečním datem a časem) | 1 | Den | *StartDate* T08:00:00Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas. Budoucí výskyty běží denně v 8:00. | 
+| Opakování | Spustit každý den v 8:30. (žádné počáteční datum a čas) | 1 | Den | nTato | znemožnit | 8 | 30 | Tento plán se spustí každý den v 8:30. |
+| Opakování | Spustit každý den v 8:30 a 4:30 ODP. | 1 | Den | nTato | znemožnit | 8, 16 | 30 | |
+| Opakování | Každodenní spuštění v 8:30 AM, 8:45 dop., 4:30 ODP. a 4:45 odp. | 1 | Den | nTato | znemožnit | 8, 16 | 30, 45 | |
 | Opakování | Spustit každou sobotu v hodnotě 5 odp. (žádné počáteční datum a čas) | 1 | Týden | nTato | Sobota | 17 | 00 | Tento plán se spustí každou sobotu v 5:00./odp. |
 | Opakování | Spustit každou sobotu v hodnotě 5 odp. (s počátečním datem a časem) | 1 | Týden | *StartDate* T17:00:00Z | Sobota | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, v tomto případě 9. září 2017 na 5:00 odp. Budoucí opakování se spouštějí každou sobotu v 5:00./odp. |
 | Opakování | Spustit každé úterý, čtvrtek na 5 odp. *plus* minuty od při uložení aplikace logiky| 1 | Týden | nTato | "Úterý", "čtvrtek" | 17 | nTato | |

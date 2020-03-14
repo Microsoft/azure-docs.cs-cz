@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373296"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274343"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
@@ -40,7 +40,7 @@ Než začnete, přečtěte si následující požadavky.
 * Azure Monitor podporuje jenom System Center Operations Manager 2016 nebo novější, Operations Manager 2012 SP1 UR6 nebo novější a Operations Manager 2012 R2 UR2 nebo novější. V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
 * Integrace System Center Operations Manager 2016 s cloudem pro státní správu USA vyžaduje aktualizovaný poradce Management Pack, který je součástí kumulativní aktualizace 2 nebo novější. System Center Operations Manager 2012 R2 vyžaduje aktualizovaný poradce Management Pack, který je součástí kumulativní aktualizace 3 nebo novější.
 * Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Ujistěte se, že agenti mají minimální aktualizaci, jinak komunikace s agentem Windows se nemusí zdařit a generovat chyby v protokolu událostí Operations Manager.
-* Pracovní prostor služby Log Analytics. Další informace najdete v článku [přehled Log Analytics pracovního prostoru](design-logs-deployment.md). 
+* Pracovní prostor Log Analytics. Další informace najdete v článku [přehled Log Analytics pracovního prostoru](design-logs-deployment.md). 
 * Pomocí účtu, který je členem [role přispěvatel Log Analytics](manage-access.md#manage-access-using-azure-permissions), se ověříte na Azure.
 
 * Podporované oblasti: System Center Operations Manager pro připojení k pracovnímu prostoru Log Analytics podporuje jenom následující oblasti Azure:
@@ -51,7 +51,7 @@ Než začnete, přečtěte si následující požadavky.
     - Jihovýchodní Asie
     - Japonsko – východ
     - Velká Británie – jih
-    - Indie – střed
+    - Střed Indie
     - Kanada – střed
     - Západní USA 2
 

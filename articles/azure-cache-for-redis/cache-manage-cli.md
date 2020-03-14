@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78371988"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277983"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak vytvořit a spravovat službu Azure cache pro Redis s využitím rozhraní příkazového řádku Azure Classic
 > [!div class="op_single_selector"]
@@ -38,16 +38,16 @@ Při vytváření a aktualizaci mezipaměti Azure pro instance Redis se použív
 
 | Vlastnost | Přepínač | Popis |
 | --- | --- | --- |
-| jméno |-n, --name |Název mezipaměti Azure pro Redis. |
+| name |-n, --name |Název mezipaměti Azure pro Redis. |
 | skupina prostředků |-g,--Resource-Group |Název skupiny prostředků. |
-| location |-l,--Location |Umístění pro vytvoření mezipaměti |
+| umístění |-l,--Location |Umístění pro vytvoření mezipaměti |
 | size |-z, --size |Velikost mezipaměti Azure pro Redis. Platné hodnoty: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | skj |-x, --sku |SKU Redis. Musí mít jednu z těchto: [Basic, Standard, Premium] |
 | EnableNonSslPort |-e,--Enable-bez SSL-port |Vlastnost EnableNonSslPort mezipaměti Azure pro Redis. Přidejte tento příznak, pokud chcete povolit port bez SSL pro vaši mezipaměť. |
 | Konfigurace Redis |-c, --redis-configuration |Konfigurace Redis. Sem zadejte řetězec konfiguračních klíčů a hodnot formátu JSON. Formát: "{" ":" "," ":" "}" |
 | Konfigurace Redis |-f, --redis-configuration-file |Konfigurace Redis. Sem zadejte cestu k souboru obsahujícímu konfigurační klíče a hodnoty. Formát pro položku souboru: {"": "", "" ":" "} |
 | Počet horizontálních oddílů |-r,--horizontálních oddílů-Count |Počet horizontálních oddílů, které se mají vytvořit v mezipaměti clusteru Premium s clusteringem |
-| Virtuální sítě |-v,--Virtual-Network |Při hostování mezipaměti ve virtuální síti určuje přesné ID prostředku ARM virtuální sítě, ve kterém se nasadí mezipaměť Azure pro Redis. Příklad formátu:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Virtuální síť |-v,--Virtual-Network |Při hostování mezipaměti ve virtuální síti určuje přesné ID prostředku ARM virtuální sítě, ve kterém se nasadí mezipaměť Azure pro Redis. Příklad formátu:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | typ klíče |-t,--typ klíče |Typ klíče, který se má obnovit Platné hodnoty: [primární, sekundární] |
 | StaticIP |-p,--Static-IP \<Static-IP\> |Při hostování mezipaměti ve virtuální síti určuje jedinečná IP adresa v podsíti pro mezipaměť. Pokud tato možnost není k dispozici, je pro vás z podsítě zvolena jedna. |
 | Podsíť |t,--podsíť \<podsíti\> |Při hostování mezipaměti ve virtuální síti Určuje název podsítě, do které se má mezipaměť nasadit. |

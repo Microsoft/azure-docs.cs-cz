@@ -9,11 +9,11 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368721"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255506"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: horká, studená a archivní úroveň přístupu
 
@@ -140,8 +140,8 @@ V této části se při použití Azure Portal a PowerShellu ukázaly následuj�
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Změna výchozí úrovně přístupu u účtu GPv2 nebo Blob Storage
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 
@@ -155,7 +155,7 @@ V této části se při použití Azure Portal a PowerShellu ukázaly následuj�
 
 ![Změna úrovně účtu úložiště](media/storage-tiers/account-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 Ke změně úrovně účtu se dá použít následující skript PowerShellu. Proměnná `$rgName` musí být inicializována názvem vaší skupiny prostředků. Proměnná `$accountName` musí být inicializována s názvem vašeho účtu úložiště. 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -168,8 +168,8 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Změna úrovně objektu BLOB v účtu GPv2 nebo BLOB Storage
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 
@@ -185,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![Změna úrovně účtu úložiště](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 Ke změně úrovně objektu BLOB se dá použít následující skript PowerShellu. Proměnná `$rgName` musí být inicializována názvem vaší skupiny prostředků. Proměnná `$accountName` musí být inicializována s názvem vašeho účtu úložiště. Proměnná `$containerName` musí být inicializována s názvem kontejneru. Proměnná `$blobName` musí být inicializována s vaším názvem objektu BLOB. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names

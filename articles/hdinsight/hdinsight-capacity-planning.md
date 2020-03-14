@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932708"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272640"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -90,7 +90,7 @@ Můžete škálovat cluster tak, aby splňoval požadavky na nejvyšší zatíž
 
 K chybám může dojít v důsledku paralelního spouštění více map a snížení počtu komponent v clusteru s více uzly. Chcete-li tento problém izolovat, zkuste distribuované testování spuštěním souběžných úloh v jednom clusteru pracovních uzlů a pak tento přístup rozbalte, pokud chcete spustit více úloh současně na clusterech, které obsahují více než jeden uzel. Pokud chcete v Azure vytvořit cluster HDInsight s jedním uzlem, použijte možnost *vlastní (velikost, nastavení, aplikace)* a při zřizování nového clusteru na portálu použijte hodnotu 1 pro *počet uzlů pracovního procesu* v části **Velikost clusteru** .
 
-## <a name="quotas"></a>Kvóty
+## <a name="quotas"></a>kvóty,
 
 Po určení velikosti virtuálního počítače clusteru, škálování a typu ověřte aktuální limity kapacity vašeho předplatného. Pokud dosáhnete limitu kvóty, možná nebudete moct nasadit nové clustery nebo škálovat existující clustery přidáním dalších pracovních uzlů. Jedinou omezenou kvótou je kvóta PROCESORových jader, která existuje na úrovni oblasti pro každé předplatné. Například vaše předplatné může mít v Východní USA oblasti 30 jader omezení. 
 

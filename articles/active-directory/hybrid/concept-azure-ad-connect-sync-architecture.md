@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376240"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261616"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect synchronizace: Principy architektury
 Toto téma popisuje základní architekturu pro Azure AD Connect synchronizaci. V mnoha aspektech se podobá jejím předchůdcům MIIS 2003, ILM 2007 a FIM 2010. Azure AD Connect synchronizace je vývoj těchto technologií. Pokud jste obeznámeni s některou z těchto dřívějších technologií, bude vám také docházet k obsahu tohoto tématu. Pokud s synchronizací začínáte, toto téma je za vás. Není však nutné znát podrobnosti tohoto tématu, aby bylo možné provést přizpůsobení Azure AD Connect synchronizaci (tzv. synchronizační modul v tomto tématu).

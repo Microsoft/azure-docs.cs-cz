@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358981"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270573"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvořte cykly, které opakují akce pracovního postupu nebo zpracuje pole v Azure Logic Apps
 
@@ -22,7 +22,7 @@ Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můž
 > [!TIP]
 > Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -176,7 +176,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
    | Vlastnost | Hodnota |
    | -------- | ----- |
    | **Interval** | 1 | 
-   | **Frekvence** | Day |
+   | **Frekvence** | Den |
    | **V těchto hodinách** | 8 |
    ||| 
 
@@ -192,7 +192,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
    | Vlastnost | Hodnota | Popis |
    | -------- | ----- | ----------- |
    | **Název** | Omezení | Název vaší proměnné | 
-   | **Typ** | Integer | Datový typ proměnné | 
+   | **Typ** | Celé číslo | Datový typ proměnné | 
    | **Hodnota** | 0 | Počáteční hodnota vaší proměnné | 
    |||| 
 

@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
 ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392376"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267284"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 
@@ -30,7 +30,7 @@ Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, kte
 
 |**Název vlastnosti**  |**Popis**  |
 |---------|---------|
-|Alias pro vstup   | Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.   |
+|Vstupní alias   | Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.   |
 |Účet úložiště   | Název účtu úložiště, ve kterém jsou umístěné objekty blob Pokud je ve stejném předplatném jako vaše Stream Analytics úlohy, můžete ho vybrat z rozevírací nabídky.   |
 |Klíč účtu úložiště   | Tajný klíč přidružený k účtu úložiště. Tato funkce se automaticky naplní, pokud je účet úložiště ve stejném předplatném jako vaše úloha Stream Analytics.   |
 |Kontejner úložiště   | Kontejnery poskytují možnost logického seskupování u objektů BLOB uložených ve službě Microsoft Azure Blob. Při nahrání objektu blob do služby Blob service, je nutné zadat kontejner pro tohoto objektu blob.   |
@@ -89,9 +89,9 @@ Chcete-li nakonfigurovat referenční data SQL Database, musíte nejprve vytvoř
 
 |**Název vlastnosti**|**Popis**  |
 |---------|---------|
-|Alias vstupu|Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.|
+|Alias pro vstup|Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.|
 |Předplatné|Vaše předplatné|
-|databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro Azure SQL Database Managed instance je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
+|Databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro Azure SQL Database Managed instance je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
 |Uživatelské jméno|Uživatelské jméno přidružené k vašemu Azure SQL Database.|
 |Heslo|Heslo přidružené k vašemu Azure SQL Database.|
 |Pravidelně aktualizovat|Tato možnost umožňuje zvolit obnovovací frekvenci. Když zvolíte Zapnuto, budete moct zadat obnovovací frekvenci v DD: HH: MM.|

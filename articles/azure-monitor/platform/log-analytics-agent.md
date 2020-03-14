@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: 99083cd08db98a6d6ac56d4cf55aaf9d0e64e2b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362083"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274603"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)a [Azure Automation](../../automation/automation-intro.md).
@@ -87,7 +87,7 @@ Existuje několik metod, jak nainstalovat agenta Log Analytics a připojit poč�
 
 Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
 
-* Windows Server 2019
+* Windows Server. 2019
 * Windows Server 2008 SP2 (x64), 2008 R2, 2012, 2012 R2, 2016, verze 1709 a 1803
 * Windows 7 SP1, Windows 8 Enterprise a pro a Windows 10 Enterprise a pro
 
@@ -142,7 +142,7 @@ V následující tabulce jsou vysvětlené balíčky požadované pro podporovan
 Abychom zajistili zabezpečení dat při přenosu do Azure Monitor protokolů, důrazně doporučujeme nakonfigurovat agenta tak, aby používal minimálně protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se.  Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](data-security.md#sending-data-securely-using-tls-12). 
 
 
-## <a name="network-requirements"></a>Síťové požadavky
+## <a name="network-requirements"></a>Požadavky sítě
 Agent pro Linux a Windows komunikuje odchozí komunikaci s Azure Monitorovou službou přes port TCP 443 a pokud se počítač připojí přes Internet přes bránu firewall nebo proxy server a komunikuje přes Internet, prostudujte si níže uvedené požadavky, abyste pochopili konfiguraci sítě. požadovanou. Pokud vaše zásady zabezpečení IT neumožňují, aby se počítače v síti připojovaly k Internetu, můžete nastavit [bránu Log Analytics](gateway.md) a potom nakonfigurovat agenta tak, aby se připojil přes bránu k Azure monitor protokolů. Agent pak může získat informace o konfiguraci a odesílat shromážděná data v závislosti na tom, jaká pravidla shromažďování dat a řešení pro monitorování jste povolili v pracovním prostoru.
 
 ![Log Analytics agenta komunikace diagramu](./media/log-analytics-agent/log-analytics-agent-01.png)
@@ -172,11 +172,11 @@ V případě agenta pro Linux je proxy server zadáno během instalace nebo [po 
 
 |Vlastnost| Popis |
 |--------|-------------|
-|Protocol (Protokol) | HTTPS |
+|Protokol | https |
 |uživatel | Volitelné uživatelské jméno pro ověřování proxy serveru |
 |heslo | Volitelné heslo pro ověření proxy serverem |
 |proxyhost | Adresa nebo plně kvalifikovaný název domény proxy serveru/Log Analytics gateway |
-|port | Volitelné nastavení portu brány proxy serveru/Log Analytics |
+|Port | Volitelné nastavení portu brány proxy serveru/Log Analytics |
 
 Příklad: `https://user01:password@proxy01.contoso.com:30443`
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376220"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261018"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: přípravný Server a zotavení po havárii
 U serveru v pracovním režimu můžete změnit konfiguraci a zobrazit náhled změn před tím, než provedete server aktivní. Umožňuje taky spustit úplnou synchronizaci a úplnou synchronizaci a ověřit, jestli jsou všechny změny očekávané, než provedete tyto změny v produkčním prostředí.

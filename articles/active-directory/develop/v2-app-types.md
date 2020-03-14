@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 94cddf097f2a9e51f061909f6bdd3dcd82f18bfe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226953"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262526"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
@@ -43,7 +43,7 @@ Další podrobnosti najdete v článku o [registraci aplikace](quickstart-regist
 
 Po registraci aplikace komunikuje s platformou Microsoft identity pomocí odeslání požadavků do koncového bodu. Poskytujeme Open Source architektury a knihovny, které zpracovávají podrobnosti o těchto žádostech. Také máte možnost implementovat logiku ověřování sami, a to vytvořením požadavků na tyto koncové body:
 
-```
+```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
@@ -62,7 +62,7 @@ Pokud se chcete podívat na tento scénář v akci, zkuste v části [Začínám
 
 Pro webové aplikace (.NET, PHP, Java, Ruby, Python, Node), ke kterým uživatel přistupuje přes prohlížeč, můžete k přihlášení uživatele použít [OpenID Connect](active-directory-v2-protocols.md) . V OpenID Connect webová aplikace obdrží token ID. Token ID je token zabezpečení, který ověřuje identitu uživatele a poskytuje informace o uživateli v podobě deklarací identity:
 
-```
+```JSON
 // Partial raw ID token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -91,7 +91,7 @@ Kromě jednoduchého přihlašování může aplikace webového serveru vyžadov
 
 Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, například webové rozhraní API RESTful vaší aplikace. Webová rozhraní API je možné implementovat na různých platformách a jazycích. Můžete je taky implementovat pomocí triggerů HTTP v Azure Functions. Místo tokenů ID a souborů cookie relací používá webové rozhraní API přístupový token OAuth 2,0 k zabezpečení svých dat a ověřování příchozích požadavků. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP, třeba takto:
 
-```
+```HTTP
 GET /api/items HTTP/1.1
 Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
@@ -121,7 +121,7 @@ V tomto toku aplikace získá autorizační kód z koncového bodu Microsoft Ide
 
 ## <a name="daemons-and-server-side-apps"></a>Démoni a aplikace na straně serveru
 
-Aplikace, které mají dlouhotrvající procesy nebo které fungují bez interakce s uživatelem, potřebují také způsob, jak přistupovat k zabezpečeným prostředkům, například k webovým rozhraním API. Tyto aplikace můžou ověřovat a získávat tokeny pomocí identity aplikace namísto delegované identity uživatele, a to pomocí toku přihlašovacích údajů klienta OAuth 2,0. Identitu aplikace můžete prokázat pomocí tajného klíče klienta nebo certifikátu. Další informace najdete v tématu [ověřování na platformě Microsoft identity v aplikacích démona s certifikáty](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/).
+Aplikace, které mají dlouhotrvající procesy nebo které fungují bez interakce s uživatelem, potřebují také způsob, jak přistupovat k zabezpečeným prostředkům, například k webovým rozhraním API. Tyto aplikace můžou ověřovat a získávat tokeny pomocí identity aplikace namísto delegované identity uživatele, a to pomocí toku přihlašovacích údajů klienta OAuth 2,0. Identitu aplikace můžete prokázat pomocí tajného klíče klienta nebo certifikátu. Další informace najdete v tématu [aplikace konzoly .NET Core daemon pomocí platformy Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2).
 
 V tomto toku aplikace komunikuje přímo s koncovým bodem `/token` pro získání přístupu:
 

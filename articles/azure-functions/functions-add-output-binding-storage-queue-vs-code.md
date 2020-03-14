@@ -5,11 +5,11 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358007"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241329"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Připojení Azure Functions k Azure Storage pomocí Visual Studio Code
 

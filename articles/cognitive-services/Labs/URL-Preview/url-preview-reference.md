@@ -12,11 +12,11 @@ ms.date: 03/29/2018
 ms.author: rosh
 ROBOTS: NOINDEX
 ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393943"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220784"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odkaz na adresu URL náhledu v7y projektu
 
@@ -60,7 +60,7 @@ Informace o povoleném použití a zobrazení výsledků najdete v tématu [pou�
 > 
 > Některé parametry nejsou v současné době smysluplné pro rozhraní API pro náhled verze Preview, ale můžou se použít i v budoucnu pro lepší globalizaci.
 
-## <a name="headers"></a>Hlavičky
+## <a name="headers"></a>Záhlaví
 Následují hlavičky, které může obsahovat požadavek a odpověď.
 
 |Hlavička|Popis|
@@ -74,12 +74,12 @@ Následují hlavičky, které může obsahovat požadavek a odpověď.
 ## <a name="query-parameters"></a>Parametry dotazu
 Požadavek může obsahovat následující parametry dotazu. Požadované parametry najdete v požadovaném sloupci. Je nutné zadat adresu URL pro kódování parametrů dotazu. Dotaz musí být absolutní adresa URL se schématem http nebo HTTPS. Nepodporujeme relativní adresy URL ani jiná schémata, jako je ftp://.
 
-|Název|Hodnota|Typ|Požaduje se|
+|Název|Hodnota|Typ|Požadováno|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot trhu najdete v tématu kódy trhů.<br /><br /> **Poznámka:** Rozhraní API pro náhled adres URL v současné době podporuje pouze zeměpisnou angličtinu a jazyk angličtina.<br /><br />|Řetězec|Ano|
-|<a name="query" />q|Adresa URL náhledu|Řetězec|Ano|
-|<a name="responseformat" />responseFormat|Typ média, který se má použít pro odpověď Níže jsou uvedené možné hodnoty nerozlišující malá a velká písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o objektech JSON, které odpověď obsahuje, naleznete v tématu [objekty Response](#response-objects).<br /><br />Pokud zadáte JsonLd, tělo odpovědi zahrnuje objekty JSON-LD, které obsahují výsledky hledání. Informace o formátu JSON-LD najdete v tématu [JSON-ld](https://json-ld.org/).|Řetězec|Ne|
-|<a name="safesearch"/>safeSearch|Neplatný obsah pro dospělé nebo kradený obsah je zablokován s kódem chyby 400 a příznak *isFamilyFriendly* se nevrátí. <p>Pro zákonný obsah pro dospělé níže je toto chování. Stavový kód vrátí 200 a příznak *isFamilyFriendly* je nastaven na hodnotu false.<ul><li>Bezpečné hledání = Strict: title, Description, URL a image nebudou vráceny.</li><li>Bezpečné hledání = střední; Získejte název, adresu URL a popis, ale ne popisný obrázek.</li><li>Bezpečné hledání = off; Získá všechny objekty a elementy odpovědi – název, adresu URL, popis a obrázek.</li></ul> |Řetězec|Není nutné. </br> Výchozí hodnota je bezpečné hledání = Strict.|
+|<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot trhu najdete v tématu kódy trhů.<br /><br /> **Poznámka:** Rozhraní API pro náhled adres URL v současné době podporuje pouze zeměpisnou angličtinu a jazyk angličtina.<br /><br />|String|Ano|
+|<a name="query" />q|Adresa URL náhledu|String|Ano|
+|<a name="responseformat" />responseFormat|Typ média, který se má použít pro odpověď Níže jsou uvedené možné hodnoty nerozlišující malá a velká písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o objektech JSON, které odpověď obsahuje, naleznete v tématu [objekty Response](#response-objects).<br /><br />Pokud zadáte JsonLd, tělo odpovědi zahrnuje objekty JSON-LD, které obsahují výsledky hledání. Informace o formátu JSON-LD najdete v tématu [JSON-ld](https://json-ld.org/).|String|Ne|
+|<a name="safesearch"/>safeSearch|Neplatný obsah pro dospělé nebo kradený obsah je zablokován s kódem chyby 400 a příznak *isFamilyFriendly* se nevrátí. <p>Pro zákonný obsah pro dospělé níže je toto chování. Stavový kód vrátí 200 a příznak *isFamilyFriendly* je nastaven na hodnotu false.<ul><li>Bezpečné hledání = Strict: title, Description, URL a image nebudou vráceny.</li><li>Bezpečné hledání = střední; Získejte název, adresu URL a popis, ale ne popisný obrázek.</li><li>Bezpečné hledání = off; Získá všechny objekty a elementy odpovědi – název, adresu URL, popis a obrázek.</li></ul> |String|Není nutné. </br> Výchozí hodnota je bezpečné hledání = Strict.|
 
 ## <a name="response-objects"></a>Objekty Response
 Schéma odpovědi je buď [webová stránka], nebo ErrorResponse, jako v rozhraní Vyhledávání na webu API. Pokud se požadavek nezdařil, objekt nejvyšší úrovně je objekt [ErrorResponse](#errorresponse) .
@@ -93,19 +93,19 @@ Definuje chybu, ke které došlo.
 
 |Prvek|Popis|Typ|
 |-------------|-----------------|----------|
-|kód <a name="error-code" />|Kód chyby, který identifikuje kategorii chyby. Seznam možných kódů naleznete v tématu [kódy chyb](#error-codes).|Řetězec|
-|<a name="error-message" />zpráva|Popis chyby|Řetězec|
-|<a name="error-moredetails" />moreDetails|Popis, který poskytuje další informace o chybě.|Řetězec|
-|<a name="error-parameter" />parametr|Parametr dotazu v žádosti, která způsobila chybu.|Řetězec|
-|<a name="error-subcode" />Subcode|Kód chyby, který identifikuje chybu. Například pokud je `code` InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |Řetězec|
-|hodnota <a name="error-value" />|Hodnota parametru dotazu, která není platná.|Řetězec|
+|kód <a name="error-code" />|Kód chyby, který identifikuje kategorii chyby. Seznam možných kódů naleznete v tématu [kódy chyb](#error-codes).|String|
+|<a name="error-message" />zpráva|Popis chyby|String|
+|<a name="error-moredetails" />moreDetails|Popis, který poskytuje další informace o chybě.|String|
+|<a name="error-parameter" />parametr|Parametr dotazu v žádosti, která způsobila chybu.|String|
+|<a name="error-subcode" />Subcode|Kód chyby, který identifikuje chybu. Například pokud je `code` InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |String|
+|hodnota <a name="error-value" />|Hodnota parametru dotazu, která není platná.|String|
 
 ### <a name="errorresponse"></a>ErrorResponse
 Objekt nejvyšší úrovně, který odpověď zahrnuje v případě, že se požadavek nezdařil.
 
 |Název|Hodnota|Typ|
 |----------|-----------|----------|
-|_type|Zadejte pomocný parametr.|Řetězec|
+|_type|Zadejte pomocný parametr.|String|
 |chyby <a name="errors" />|Seznam chyb popisujících důvody, proč se žádost nezdařila.|[Chyba](#error)[]|
 
 ### <a name="webpage"></a>Stránku
@@ -113,16 +113,16 @@ Definuje informace o webové stránce ve verzi Preview.
 
 |Název|Hodnota|Typ|
 |----------|-----------|----------|
-|jméno|Nadpis stránky, ne nutně název HTML|Řetězec|
-|url|Adresa URL, která byla ve skutečnosti procházena (žádost může mít přesměrování za následovat)|Řetězec|
-|description|Stručný popis stránky a obsahu|Řetězec|
-|isFamilyFriendly|Nejpřesnější pro položky ve webovém indexu; načítá se v reálném čase. Tato detekce je založená výhradně na adrese URL, nikoli na obsahu stránky.|Boolean|
-|primaryImageOfPage/contentUrl|Adresa URL zástupce obrázku, který má být zahrnut do verze Preview|Řetězec|
+|name|Nadpis stránky, ne nutně název HTML|String|
+|Adresa URL|Adresa URL, která byla ve skutečnosti procházena (žádost může mít přesměrování za následovat)|String|
+|description|Stručný popis stránky a obsahu|String|
+|isFamilyFriendly|Nejpřesnější pro položky ve webovém indexu; načítá se v reálném čase. Tato detekce je založená výhradně na adrese URL, nikoli na obsahu stránky.|Datový typ Boolean|
+|primaryImageOfPage/contentUrl|Adresa URL zástupce obrázku, který má být zahrnut do verze Preview|String|
 
 ### <a name="identifiable"></a>Identifikovatelné údaje
 |Název|Hodnota|Typ|
 |-------------|-----------------|----------|
-|id|Identifikátor prostředku|Řetězec|
+|id|Identifikátor prostředku|String|
 
 ## <a name="error-codes"></a>Kódy chyb
 

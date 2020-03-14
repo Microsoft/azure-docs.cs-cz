@@ -6,11 +6,11 @@ ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: a674047722d4deca02d8f4d38a0826e479065037
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496356"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259198"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Nastavení vývojového prostředí ve Windows pro sestavování aplikací Service Fabric Mesh
 
@@ -35,7 +35,7 @@ Následující pokyny vám pomůžou zajistit, aby se všechno nainstalovalo na 
 
 K nasazení Service Fabricch aplikací pro mřížku se vyžaduje Visual Studio 2017 nebo novější. [Nainstalujte verzi 15.6.0][download-visual-studio] nebo vyšší a povolte následující úlohy:
 
-* Vývoj pro ASP.NET a web
+* Vývoj v ASP.NET a pro web
 * Vývoj pro Azure
 
 ## <a name="install-docker"></a>Instalace Dockeru

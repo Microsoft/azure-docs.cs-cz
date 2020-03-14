@@ -1,6 +1,6 @@
 ---
-title: (NEPOUŽÍVANÉ) Správa clusteru Swarm v Azure pomocí rozhraní API Dockeru
-description: Nasazení kontejnerů do clusteru Docker Swarm ve službě Azure Container Service
+title: ZASTARALÉ Správa clusteru Azure Swarm pomocí rozhraní Docker API
+description: Nasazení kontejnerů do clusteru Docker Swarm v Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61456546"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136223"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>(NEPOUŽÍVANÉ) Správa kontejnerů pomocí nástroje Docker Swarm
+# <a name="deprecated-container-management-with-docker-swarm"></a>ZASTARALÉ Správa kontejnerů pomocí Docker Swarm
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -69,9 +69,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Nasazení kontejnerů pomocí Docker Compose
 Pomocí Docker Compose je možné automatizovat nasazení a konfiguraci několika kontejnerů. Abyste toho mohli využít, ujistěte se, že je vytvořen tunel Secure Shell (SSH) a že je nastavena proměnná DOCKER_HOST (viz předpoklady výše).
 
-Vytvořte v lokálním systému soubor docker-compose.yml. Použijte k tomu tuto [ukázku](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml).
+Vytvořte v lokálním systému soubor docker-compose.yml. K tomu použijte tuto ukázku:
 
-```bash
+```dockerfile
 web:
   image: adtd/web:0.1
   ports:
@@ -112,6 +112,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 Přirozeně, můžete použít `docker-compose ps` k prozkoumání samotných kontejnerů definovaných ve vašem souboru `compose.yml`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Další informace o Docker Swarmu](https://docs.docker.com/swarm/)
 

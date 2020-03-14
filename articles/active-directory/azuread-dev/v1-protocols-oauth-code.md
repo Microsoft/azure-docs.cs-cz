@@ -17,11 +17,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: bc303dc62892f8fac67bb6869e72db0e40f19779
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377818"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263540"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím Azure Active Directory s využitím toku poskytování kódů OAuth 2.0
 
@@ -89,7 +89,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_mode |volitelné |Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Může být `query`, `fragment`nebo `form_post`. `query` poskytuje kód jako parametr řetězce dotazu v identifikátoru URI přesměrování. Pokud požadujete token ID pomocí implicitního toku, nemůžete použít `query`, jak je uvedeno ve [specifikaci OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete pouze kód, můžete použít `query`, `fragment`nebo `form_post`. `form_post` spustí příspěvek obsahující kód pro identifikátor URI přesměrování. Výchozí hodnota je `query` pro tok kódu.  |
 | state |doporučil |Hodnota obsažená v požadavku, která je také vrácena v odpovědi tokenu. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
 | prostředek | doporučil |Identifikátor URI ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) Identifikátor URI ID aplikace najdete tak, že na webu Azure Portal kliknete **Azure Active Directory**, kliknete na **Registrace aplikací**, otevřete stránku **Nastavení** aplikace a pak kliknete na **vlastnosti**. Může to být také externí prostředek, například `https://graph.microsoft.com`. Tato možnost je vyžadována v jednom z požadavků na autorizaci nebo token. Aby se zajistilo méně výzev k ověřování, umístěte ho do autorizační žádosti, aby se zajistilo, že uživatel obdrží souhlas. |
-| scope | **přeskočen** | V případě aplikací v1 Azure AD musí být obory staticky nakonfigurované na webu Azure Portal v **Nastavení**aplikace, **požadovaná oprávnění**. |
+| obor | **přeskočen** | V případě aplikací v1 Azure AD musí být obory staticky nakonfigurované na webu Azure Portal v **Nastavení**aplikace, **požadovaná oprávnění**. |
 | výzv |volitelné |Určete typ interakce uživatele, která je povinná.<p> Platné hodnoty: <p> *přihlášení*: uživatel by měl být vyzván k opětovnému ověření. <p> *select_account*: uživateli se zobrazí výzva k výběru účtu a přerušení jednotného přihlašování. Uživatel může vybrat existující přihlášený účet, zadat jejich přihlašovací údaje k zadanému účtu nebo zvolit možnost použít jiný účet zcela. <p> *souhlas*: bylo uděleno souhlasu uživatele, ale je nutné ho aktualizovat. Uživatel by měl být vyzván k vyjádření souhlasu. <p> *admin_consent*: Správce by měl být vyzváni k vyjádření souhlasu jménem všech uživatelů v jejich organizaci. |
 | login_hint |volitelné |Dá se použít k předvyplnění pole uživatelské jméno a e-mailová adresa přihlašovací stránky pro uživatele, pokud znáte své uživatelské jméno předem. Aplikace často používají tento parametr během opakovaného ověřování, kteří již extrahovali uživatelské jméno z předchozího přihlášení pomocí `preferred_username` deklarace identity. |
 | domain_hint |volitelné |Poskytuje nápovědu týkající se tenanta nebo domény, které by měl uživatel použít k přihlášení. Hodnota domain_hint je registrovanou doménou pro tenanta. Pokud je tenant federované do místního adresáře, AAD přesměruje na zadaný federační server tenanta. |
@@ -129,7 +129,7 @@ error=access_denied
 
 | Parametr | Popis |
 | --- | --- |
-| error |Hodnota kódu chyby definovaná v sekci 5,2 [autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). Následující tabulka popisuje kódy chyb, které Azure AD vrátí. |
+| chyba |Hodnota kódu chyby definovaná v sekci 5,2 [autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). Následující tabulka popisuje kódy chyb, které Azure AD vrátí. |
 | error_description |Podrobnější popis chyby. Tato zpráva není zamýšlená jako uživatelsky přívětivý koncový uživatel. |
 | state |Hodnota stavu je náhodně generovaná neznovu použitá hodnota, která se pošle v žádosti a vrátí se v reakci na ochranu proti útokům přes CSRF (mezi lokalitami). |
 
@@ -206,7 +206,7 @@ Pokud prostředek webového rozhraní API vrátí kód chyby `invalid_token`, m�
 | expires_in |Jak dlouho je přístupový token platný (v sekundách). |
 | expires_on |Čas vypršení platnosti přístupového tokenu. Datum se reprezentuje jako počet sekund od roku 1970-01-01T0:0: 0Z UTC až do doby vypršení platnosti. Tato hodnota se používá k určení doby života tokenů uložených v mezipaměti. |
 | prostředek |Identifikátor URI ID aplikace webového rozhraní API (zabezpečeného prostředku) |
-| scope |Oprávnění k zosobnění udělená klientské aplikaci. Výchozí oprávnění je `user_impersonation`. Vlastník zabezpečeného prostředku může registrovat další hodnoty ve službě Azure AD. |
+| obor |Oprávnění k zosobnění udělená klientské aplikaci. Výchozí oprávnění je `user_impersonation`. Vlastník zabezpečeného prostředku může registrovat další hodnoty ve službě Azure AD. |
 | refresh_token |Obnovovací token OAuth 2,0. Aplikace může tento token použít k získání dalších přístupových tokenů po vypršení platnosti aktuálního přístupového tokenu. Aktualizační tokeny jsou dlouhodobé a dají se použít k uchování přístupu k prostředkům po delší dobu. |
 | id_token |Nepodepsaný JSON Web Token (JWT) představující [token ID](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). Aplikace může base64Url dekódovat segmentů tohoto tokenu, aby vyžádala informace o uživateli, který se přihlásil. Aplikace může hodnoty ukládat do mezipaměti a zobrazovat je, ale nemělo by je spoléhat na jakékoli autorizace nebo hranice zabezpečení. |
 
@@ -232,7 +232,7 @@ Ukázková chybová odpověď by mohla vypadat takto:
 ```
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 | error_codes |Seznam chybových kódů specifických pro službu STS, které mohou být užitečné při diagnostice. |
 | časové razítko |Čas, kdy došlo k chybě. |
@@ -285,7 +285,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | Parametr | Popis |
 | --- | --- |
 | authorization_uri |Identifikátor URI (fyzický koncový bod) autorizačního serveru. Tato hodnota se používá také jako vyhledávací klíč k získání dalších informací o serveru z koncového bodu zjišťování. <p><p> Klient musí ověřit, zda je autorizační Server důvěryhodný. Když je prostředek chráněný službou Azure AD, stačí ověřit, jestli adresa URL začíná https://login.microsoftonline.com nebo jiným názvem hostitele, který Azure AD podporuje. Prostředek specifický pro klienta by měl vždycky vracet identifikátor URI autorizace specifický pro klienta. |
-| error |Hodnota kódu chyby definovaná v sekci 5,2 [autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). |
+| chyba |Hodnota kódu chyby definovaná v sekci 5,2 [autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). |
 | error_description |Podrobnější popis chyby. Tato zpráva není zamýšlená jako uživatelsky přívětivý koncový uživatel. |
 | resource_id |Vrátí jedinečný identifikátor prostředku. Klientská aplikace může tento identifikátor používat jako hodnotu parametru `resource` při žádosti o token pro prostředek. <p><p> Je důležité, aby klientská aplikace ověřila tuto hodnotu, jinak by škodlivá služba mohla být schopna přimět útok **zvýšení oprávnění** . <p><p> Doporučenou strategií pro předcházení útokům je ověření, že `resource_id` odpovídá základu adresy URL webového rozhraní API, ke které přistupujete. Například, pokud je k dispozici https://service.contoso.com/data, `resource_id` může být https://service.contoso.com/. Klientská aplikace musí odmítnout `resource_id`, která nezačíná základní adresou URL, pokud neexistuje spolehlivý alternativní způsob, jak ID ověřit. |
 
@@ -342,7 +342,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | expires_in |Zbývající doba životnosti tokenu v sekundách. Typická hodnota je 3600 (jedna hodina). |
 | expires_on |Datum a čas, kdy vyprší platnost tokenu. Datum se reprezentuje jako počet sekund od roku 1970-01-01T0:0: 0Z UTC až do doby vypršení platnosti. |
 | prostředek |Identifikuje zabezpečený prostředek, ke kterému se přístupový token dá použít pro přístup. |
-| scope |Oprávnění k zosobnění udělená nativní klientské aplikaci. Výchozí oprávnění je **user_impersonation**. Vlastník cílového prostředku může registrovat alternativní hodnoty ve službě Azure AD. |
+| obor |Oprávnění k zosobnění udělená nativní klientské aplikaci. Výchozí oprávnění je **user_impersonation**. Vlastník cílového prostředku může registrovat alternativní hodnoty ve službě Azure AD. |
 | access_token |Nový přístupový token, který byl vyžádán. |
 | refresh_token |Nový refresh_token OAuth 2,0, který se dá použít k vyžádání nových přístupových tokenů, když vyprší platnost této odpovědi. |
 
@@ -364,7 +364,7 @@ Ukázková chybová odpověď by mohla vypadat takto:
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
+| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. |
 | error_codes |Seznam chybových kódů specifických pro službu STS, které mohou být užitečné při diagnostice. |
 | časové razítko |Čas, kdy došlo k chybě. |

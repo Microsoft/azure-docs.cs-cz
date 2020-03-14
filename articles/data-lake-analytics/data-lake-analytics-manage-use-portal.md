@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839465"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265698"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí Azure Portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -37,7 +37,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
    3. **Skupina prostředků**: Skupina prostředků Azure, ve které se má účet vytvořit. 
    4. **Umístění**: datové centrum Azure pro účet Data Lake Analytics. 
    5. **Data Lake Store**: výchozí úložiště, které se má použít pro účet Data Lake Analytics. Účet Azure Data Lake Store a účet Data Lake Analytics musí být ve stejném umístění.
-4. Klikněte na **Vytvořit**. 
+4. Klikněte na možnost **Vytvořit**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Odstranit účet Data Lake Analytics
 
@@ -60,7 +60,7 @@ Data Lake Analytics podporuje následující zdroje dat:
 
 Průzkumník dat můžete použít k procházení zdrojů dat a provádění základních operací správy souborů. 
 
-### <a name="add-a-data-source"></a>Přidat zdroj dat
+### <a name="add-a-data-source"></a>Přidání zdroje dat
 
 1. V Azure Portal přejít na účet Data Lake Analytics.
 2. Klikněte na **zdroje dat**.
@@ -80,7 +80,7 @@ Pokud se k účtu Data Lake Analytics připojí jiné služby Azure, například
 1. V Azure Portal přejít na účet Data Lake Analytics.
 2. V nabídce na levé straně klikněte na **firewall**.
 
-## <a name="add-a-new-user"></a>Přidat nového uživatele
+## <a name="add-a-new-user"></a>Přidání nového uživatele
 
 **Průvodce přidáním uživatele** můžete použít ke snadnému zřízení nových uživatelů Data Lake.
 

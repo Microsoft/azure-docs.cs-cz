@@ -12,11 +12,11 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/18/2019
 ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358509"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261213"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace prostředí Integration runtime v místním prostředí
 
@@ -34,7 +34,7 @@ Chcete-li vytvořit a nastavit prostředí Integration runtime v místním prost
 
 ### <a name="create-a-self-hosted-ir-via-azure-powershell"></a>Vytvoření prostředí IR s místním hostováním pomocí Azure PowerShell
 
-1. Pro tuto úlohu můžete použít Azure PowerShell. Zde naleznete příklad:
+1. Pro tuto úlohu můžete použít Azure PowerShell. Tady je příklad:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -102,7 +102,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 Zde jsou uvedeny podrobnosti o parametrech a vlastnostech aplikace: 
 
-| Vlastnost                                                    | Popis                                                  | Požaduje se |
+| Vlastnost                                                    | Popis                                                  | Požadováno |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode** "`<AuthenticationKey>`"                     | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem. | Ne       |
 | **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem a názvem uzlu. | Ne       |
@@ -148,7 +148,7 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
 - Využijte místní prostředí Integration runtime i v případě, že je úložiště dat v cloudu na virtuálním počítači infrastruktury Azure jako služba (IaaS).
 - Úlohy můžou selhat v místním prostředí Integration runtime, které jste nainstalovali na Windows Server, pro který je povolené šifrování kompatibilní se standardem FIPS. Pokud chcete tento problém obejít, zakažte na serveru šifrování standardu FIPS. Chcete-li zakázat šifrování kompatibilní se standardem FIPS, změňte hodnotu v následujícím podklíči registru z 1 (povoleno) na 0 (zakázáno): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Podporované verze Windows jsou:
   + Windows 7 Service Pack 1
@@ -158,7 +158,7 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
   + Windows Server 2012
   + Windows Server 2012 R2
   + Windows Server 2016
-  + Windows Server 2019
+  + Windows Server. 2019
    
    Instalace místního prostředí Integration runtime na řadič domény se nepodporuje.
 - Vyžaduje se .NET Framework 4.6.1 nebo novější. Pokud instalujete místní prostředí Integration runtime na počítač se systémem Windows 7, nainstalujte .NET Framework 4.6.1 nebo novější. Podrobnosti najdete v tématu [.NET Framework systémových požadavků](/dotnet/framework/get-started/system-requirements) .
@@ -219,7 +219,7 @@ Můžete přidružit více uzlů instalací softwaru místního prostředí Inte
 
 ### <a name="scale-considerations"></a>Požadavky na škálování
 
-#### <a name="scale-out"></a>Škálování na více instancí
+#### <a name="scale-out"></a>Horizontálně navýšit kapacitu
 
 Když je využití procesoru vysoké a v místním prostředí IR je k dispozici málo dostupné paměti, přidejte nový uzel, abyste mohli lépe škálovat zatížení napříč počítači. Pokud dojde k selhání aktivit, protože časový limit vypršel nebo je v místním prostředí IR hostitelský uzel v režimu offline, pomůže vám to, když do brány přidáte uzel.
 

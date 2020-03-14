@@ -4,11 +4,11 @@ description: Přečtěte si o mechanismu Aktualizace existujícího přiřazení
 ms.date: 11/21/2019
 ms.topic: how-to
 ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364010"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264658"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 

@@ -9,16 +9,16 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457485"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137054"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Získání typu účtu úložiště a názvu SKU pomocí .NET
 
-Tento článek ukazuje, jak získat Azure Storage typ účtu a název SKU pro objekt BLOB pomocí [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage/client).
+Tento článek ukazuje, jak získat Azure Storage typ účtu a název SKU pro objekt BLOB pomocí [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 Informace o účtu jsou k dispozici pro verze služby od verze 2018-03-28.
 

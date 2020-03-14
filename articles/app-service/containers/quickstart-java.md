@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: faea0759f86e9d12530df6c647d903eacdade5c4
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 2192260c3106a6b8d3d3ffd0e063ee945734f308
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228050"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136308"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service v systému Linux
 
@@ -52,19 +52,19 @@ az login
 
 Potom můžete nakonfigurovat nasazení, spustit na příkazovém řádku příkaz Maven a pomocí výchozích konfigurací stisknout klávesu **ENTER** , dokud nezískáte výzvu k **potvrzení (Y/N)** , stiskněte klávesu **Y** a konfigurace se provede. 
 ```cmd
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.0:config
 ```
 Vzorový proces vypadá takto:
 
 ```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
+~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.0:config
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ----------------------< example.demo:helloworld >-----------------------
 [INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
 [INFO] --------------------------------[ war ]---------------------------------
 [INFO]
-[INFO] --- azure-webapp-maven-plugin:1.8.0:config (default-cli) @ helloworld ---
+[INFO] --- azure-webapp-maven-plugin:1.9.0:config (default-cli) @ helloworld ---
 [WARNING] The plugin may not work if you change the os of an existing webapp.
 Define value for OS(Default: Linux):
 1. linux [*]
@@ -95,15 +95,15 @@ Confirm (Y/N)? : Y
 
 Přejděte na `pom.xml` znovu, abyste viděli konfiguraci modulu plug-in. v případě potřeby můžete upravit jiné konfigurace pro App Service přímo v souboru pom:
 
- Vlastnost | Požaduje se | Popis | Verze
+ Vlastnost | Požadováno | Popis | Version
 ---|---|---|---
-`<schemaVersion>` | false (nepravda) | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 1.5.2
-`<resourceGroup>` | true (pravda) | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
-`<appName>` | true (pravda) | Název vaší webové aplikace | 0.1.0 +
-`<region>` | true (pravda) | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +
-`<pricingTier>` | false (nepravda) | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2**.| 0.1.0 +
-`<runtime>` | true (pravda) | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0 +
-`<deployment>` | true (pravda) | Konfigurace nasazení vám může [Zobrazit podrobnosti.](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) | 0.1.0 +
+`<schemaVersion>` | false | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 1.5.2
+`<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
+`<appName>` | true | Název vaší webové aplikace | 0.1.0 +
+`<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +
+`<pricingTier>` | false | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2**.| 0.1.0 +
+`<runtime>` | true | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0 +
+`<deployment>` | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) | 0.1.0 +
 
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)

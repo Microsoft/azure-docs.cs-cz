@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362601"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257378"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -142,7 +142,7 @@ Chcete-li upgradovat konfigurační server na nejnovější verzi, přečtěte s
 
 Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po registraci konfiguračního serveru do trezoru se IP adresa konfiguračního serveru nemění. Další informace o běžných úlohách správy konfiguračního serveru najdete v tématu [Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware](vmware-azure-manage-configuration-server.md).
 
-## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
+## <a name="troubleshoot-deployment-issues"></a>Řešení problémů s nasazením
 
 Řešení problémů s připojením & najdete v našem [článku o řešení potíží](vmware-azure-troubleshoot-configuration-server.md) .
 

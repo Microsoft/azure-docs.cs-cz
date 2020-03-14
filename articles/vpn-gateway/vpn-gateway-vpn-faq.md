@@ -5,16 +5,16 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016744"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279881"
 ---
-# <a name="vpn-gateway-faq"></a>VPN Gateway – nejčastější dotazy
+# <a name="vpn-gateway-faq"></a>Brána sítě VPN – nejčastější dotazy
 
 ## <a name="connecting"></a>Připojování k virtuálním sítím
 
@@ -34,7 +34,7 @@ K více serverům se lze připojovat prostřednictvím prostředí Windows Power
 
 Ne. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Jaké jsou možnosti připojení mezi různými místy?
+### <a name="what-are-my-cross-premises-connection-options"></a>Jaké jsou možnosti připojení na víc místech?
 
 Podporovány jsou následující možnosti připojení mezi různými místy:
 
@@ -66,7 +66,7 @@ Brány založené na zásadách implementují sítě VPN založené na zásadác
 
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>Co je to brána založená na směrování (s dynamickým směrováním)?
 
-Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na směrování používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom zašifruje nebo dešifruje pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
+Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na trasách používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom zašifruje nebo dešifruje pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat moji bránu VPN založenou na zásadách na základě směrování?
 
@@ -168,6 +168,10 @@ Toto je očekávané chování u bran VPN pracujících na základě zásad (ozn
 Konfigurace připojení Site-to-Site pro více míst je podporována u serverů RRAS (Routing and Remote Access) Windows Server 2012.
 
 Jiná softwarová řešení sítě VPN by měla s naší bránou spolupracovat, pokud odpovídají implementacím protokolu IPsec podle průmyslových standardů. Ohledně pokynů ke konfiguraci a podporu se obraťte na výrobce příslušného softwaru.
+
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Návody změnit typ ověřování pro připojení typu Point-to-site?
+
+Metodu ověřování pro připojení Point-to-site můžete změnit tak, že přejdete na **konfigurační oddíl Point-to-site** pod VPN Gateway a zkontrolujete požadovaný přepínač. Aktuální možnosti jsou **certifikát Azure, ověřování pomocí protokolu RADIUS a Azure Active Directory**. Mějte na paměti, že aktuální klienti se po změně **nemusí moct připojit** , dokud se nový profil nestáhne a nenakonfiguroval na klientovi.
 
 ## <a name="P2S"></a>Point-to-Site s využitím nativního ověřování certifikátů Azure
 

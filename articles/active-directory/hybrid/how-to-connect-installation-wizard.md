@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290931"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261330"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronizace: Druhé spuštění průvodce instalací
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronizace: podruhé spuštění Průvodce instalací
 Při prvním spuštění Průvodce instalací Azure AD Connect vás provede konfigurací instalace. Pokud znovu spustíte Průvodce instalací, nabízí možnosti údržby.
 
 >[!IMPORTANT]
@@ -54,7 +54,7 @@ Tato možnost nabízí rychlé zobrazení aktuálně nakonfigurovaných možnost
 
 Vraťte se kliknutím na tlačítko **Předchozí** . Pokud vyberete možnost **ukončit**, Průvodce instalací zavřete.
 
-## <a name="customize-synchronization-options"></a>Přizpůsobit možnosti synchronizace
+## <a name="customize-synchronization-options"></a>Přizpůsobení možností synchronizace
 Tato možnost slouží k provádění změn konfigurace synchronizace. Zobrazí se podmnožina možností z cesty k instalaci vlastní konfigurace. Tato možnost se zobrazí, i když jste nejdřív použili expresní instalaci.
 
 * [Přidejte další adresáře](how-to-connect-install-custom.md#connect-your-directories). Informace o odebrání adresáře najdete v tématu [odstranění konektoru](how-to-connect-sync-service-manager-ui-connectors.md#delete).
@@ -94,5 +94,5 @@ Další informace o této možnosti najdete v tématu věnovaném [přihlášen�
 
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronizace: pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

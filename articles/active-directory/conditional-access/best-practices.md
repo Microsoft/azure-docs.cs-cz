@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963932"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263293"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -35,7 +35,7 @@ Když vytvoříte novou zásadu, neexistují žádní uživatelé, skupiny, apli
 
 Pokud chcete, aby vaše zásady fungovaly, musíte nakonfigurovat:
 
-| Co           | Postup                                  | Proč |
+| Co           | Jak                                  | Proč |
 | :--            | :--                                  | :-- |
 | **Cloudové aplikace** |Vyberte jednu nebo více aplikací.  | Cílem zásad podmíněného přístupu je umožnit vám řídit, jak můžou autorizovaní uživatelé přistupovat ke cloudovým aplikacím.|
 | **Uživatelé a skupiny** | Vyberte aspoň jednoho uživatele nebo skupinu, kteří mají oprávnění pro přístup k vybraným cloudovým aplikacím. | Neaktivují se zásady podmíněného přístupu, které nemají přiřazené žádné uživatele a skupiny. |
@@ -141,7 +141,7 @@ Zvažte možnost Migrace zásad, které jste nevytvořili v Azure Portal z těch
 - Všechny zásady podmíněného přístupu můžete spravovat v jednom centrálním umístění.
 - Portál Azure Classic byl vyřazený.   
 
-Další informace najdete v článku [Migrace zásad z portálu Classic na portálu Azure Portal](policy-migration.md).
+Další informace najdete v tématu [migrace klasických zásad v Azure Portal](policy-migration.md).
 
 ## <a name="next-steps"></a>Další kroky
 

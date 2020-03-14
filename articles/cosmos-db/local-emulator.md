@@ -7,11 +7,11 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
 ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364446"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238507"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -41,7 +41,7 @@ Vzhledem k tomu, že emulátor Azure Cosmos poskytuje emulované prostředí bě
 * Protože vaše kopie emulátoru Azure Cosmos nemusí být vždycky aktuální s nejnovějšími změnami ve službě Azure Cosmos DB, měli byste se podívat na [Azure Cosmos DB Capacity Planneru](https://www.documentdb.com/capacityplanner) a přesně odhadnout, jaké jsou požadavky vaší aplikace v produkční propustnosti (ru).
 * Při použití emulátoru Azure Cosmos ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikostí (podporované jenom pomocí sad SDK pro Azure Cosmos DB) nebo 5 neomezených kontejnerů pomocí emulátoru Azure Cosmos. Další informace o změně této hodnoty najdete v části [Nastavení hodnoty PartitionCount](#set-partitioncount).
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 Emulátor Azure Cosmos má následující požadavky na hardware a software:
 

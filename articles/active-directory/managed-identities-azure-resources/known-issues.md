@@ -17,11 +17,11 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183890"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266530"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
 
@@ -84,8 +84,8 @@ Ne. Spravované identity v současné době nepodporují scénáře pro více ad
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jaká oprávnění Azure RBAC jsou vyžadována pro spravovanou identitu prostředku? 
 
-- Spravovaná identita přiřazená systémem: ke zdroji potřebujete oprávnění k zápisu. Například pro virtuální počítače potřebujete Microsoft. COMPUTE/virtualMachines/Write. Tato akce je zahrnutá v předdefinovaných rolích specifických pro prostředky, jako je [Přispěvatel virtuálních počítačů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- Spravovaná identita přiřazená uživatelem: k prostředku potřebujete oprávnění k zápisu. Například pro virtuální počítače potřebujete Microsoft. COMPUTE/virtualMachines/Write. Kromě spravované identity se přiřazení role [operátora identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) .
+- Spravovaná identita přiřazená systémem: ke zdroji potřebujete oprávnění k zápisu. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Tato akce je zahrnutá v předdefinovaných rolích specifických pro prostředky, jako je [Přispěvatel virtuálních počítačů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Spravovaná identita přiřazená uživatelem: k prostředku potřebujete oprávnění k zápisu. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Kromě spravované identity se přiřazení role [operátora identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) .
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak restartujete spravované identity pro rozšíření prostředků Azure?
 Pokud se rozšíření zastaví na Windows a určitých verzích Linux, dá se k ručnímu restartování použít následující rutina:

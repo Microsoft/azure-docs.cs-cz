@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381471"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243689"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Vytvoření tenanta Azure AD pro Azure Red Hat OpenShift
 
@@ -37,7 +37,7 @@ Vytvoření tenanta:
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Prostředky
 
 Další informace o [klientech Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)najdete v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) .
 

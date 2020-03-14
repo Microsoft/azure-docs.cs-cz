@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386912"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254362"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -43,7 +43,7 @@ Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-man
 
 Další šetření by proto mělo být zaměřeno na aplikaci.
 
-Hlavička hostitele HTTP, která je odeslána z prohlížeče klienta, je nejběžnější zdrojem problémů. Ujistěte se, že aplikace je nakonfigurovaná tak, aby přijímala správnou hlavičku hostitele pro název domény, který používáte. Koncových bodů pomocí Azure App Service najdete v tématu [Konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service pomocí Traffic Manager](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Hlavička hostitele HTTP, která je odeslána z prohlížeče klienta, je nejběžnější zdrojem problémů. Ujistěte se, že aplikace je nakonfigurovaná tak, aby přijímala správnou hlavičku hostitele pro název domény, který používáte. Koncových bodů pomocí Azure App Service najdete v tématu [Konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service pomocí Traffic Manager](../app-service/configure-domain-traffic-manager.md).
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Jaký je dopad na výkon při používání Traffic Manager?
 
@@ -145,9 +145,9 @@ Zařízení koncových uživatelů obvykle používají Překladač DNS k prová
 
 IP adresy, které se mají přidružit ke koncovému bodu, je možné zadat dvěma způsoby. Nejprve můžete použít Desítkový zápis desítkových teček s počátečními a koncovými adresami k určení rozsahu (například 1.2.3.4-5.6.7.8 nebo 3.4.5.6-3.4.5.6). Za druhé můžete použít zápis CIDR k určení rozsahu (například 1.2.3.0/24). Můžete zadat více rozsahů a použít oba typy zápisu v sadě rozsahu. Platí několik omezení.
 
--   Nemůžete mít překrývající se rozsahy adres, protože jednotlivé IP adresy musí být namapované jenom na jeden koncový bod.
--   Počáteční adresa nemůže být větší než koncová adresa.
--   V případě zápisu CIDR by měla být IP adresa před znakem "/" počáteční adresou tohoto rozsahu (například 1.2.3.0/24 je platná, ale 1.2.3.4.4/24 není platná).
+-    Nemůžete mít překrývající se rozsahy adres, protože jednotlivé IP adresy musí být namapované jenom na jeden koncový bod.
+-    Počáteční adresa nemůže být větší než koncová adresa.
+-    V případě zápisu CIDR by měla být IP adresa před znakem "/" počáteční adresou tohoto rozsahu (například 1.2.3.0/24 je platná, ale 1.2.3.4.4/24 není platná).
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Jak můžu při používání směrování podsítí zadat záložní koncový bod?
 
@@ -382,25 +382,25 @@ Když se na profil přijme dotaz, Traffic Manager nejdřív najde koncový bod, 
 
 Pro profily s jinou metodou směrování než s více hodnotami:
 
-|Příchozí žádost o dotaz|    Typ koncového bodu|  Poskytnutá odpověď|
+|Příchozí žádost o dotaz|     Typ koncového bodu|     Poskytnutá odpověď|
 |--|--|--|
-|JAKÝMIKOLI |  A / AAAA / CNAME |  Cílový koncový bod| 
-|A |    A/CNAME | Cílový koncový bod|
-|A |    AAAA |  DATA |
-|AAAA | AAAA / CNAME |  Cílový koncový bod|
-|AAAA | A | DATA |
-|CNAME |    CNAME | Cílový koncový bod|
-|CNAME  |A / AAAA | DATA |
+|JAKÝMIKOLI |    A / AAAA / CNAME |    Cílový koncový bod| 
+|A |    A/CNAME |    Cílový koncový bod|
+|A |    AAAA |    DATA |
+|AAAA |    AAAA / CNAME |    Cílový koncový bod|
+|AAAA |    A |    DATA |
+|CNAME |    CNAME |    Cílový koncový bod|
+|CNAME     |A / AAAA |    DATA |
 |
 
 Pro profily s metodou směrování nastavenou na hodnotu vícehodnotové:
 
-|Příchozí žádost o dotaz|    Typ koncového bodu | Poskytnutá odpověď|
+|Příchozí žádost o dotaz|     Typ koncového bodu |    Poskytnutá odpověď|
 |--|--|--|
-|JAKÝMIKOLI |  Kombinace a a AAAA | Cílové koncové body|
-|A |    Kombinace a a AAAA | Pouze cílové koncové body typu A|
-|AAAA   |Kombinace a a AAAA|     Pouze cílové koncové body typu AAAA|
-|CNAME |    Kombinace a a AAAA | DATA |
+|JAKÝMIKOLI |    Kombinace a a AAAA |    Cílové koncové body|
+|A |    Kombinace a a AAAA |    Pouze cílové koncové body typu A|
+|AAAA    |Kombinace a a AAAA|     Pouze cílové koncové body typu AAAA|
+|CNAME |    Kombinace a a AAAA |    DATA |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Můžu použít profil s adresovánými koncovými body IPv4/IPv6 ve vnořeném profilu?
 
@@ -497,7 +497,7 @@ Nadřazený profil neprovádí kontroly stavu přímo u podřízeného objektu. 
 
 Následující tabulka popisuje chování Traffic Managerch kontrol stavu pro vnořený koncový bod.
 
-| Stav monitoru pro podřízený profil | Stav monitorování nadřazeného koncového bodu | Poznámky: |
+| Stav monitoru pro podřízený profil | Stav monitorování nadřazeného koncového bodu | Poznámky |
 | --- | --- | --- |
 | Disabled. Podřízený profil byl zakázán. |Zastaveno |Stav nadřazeného koncového bodu je zastaven, není zakázán. Zakázaný stav je rezervovaný pro indikaci, že jste v nadřazeném profilu zakázali koncový bod. |
 | Degradovaný. Nejméně jeden koncový bod podřízeného profilu je v neomezeném stavu. |Online: počet online koncových bodů v podřízeném profilu je aspoň hodnota MinChildEndpoints.<BR>CheckingEndpoint: počet koncových bodů online plus CheckingEndpoint v podřízeném profilu je alespoň hodnota MinChildEndpoints.<BR>Snížený výkon: jinak. |Provoz se směruje na koncový bod stavového CheckingEndpoint. Pokud je nastavení MinChildEndpoints příliš vysoké, koncový bod je vždy snížený. |

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394410"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274759"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v častých intervalech pro analýzu téměř v reálném čase (NRT) Kromě agregace dat výkonu pro dlouhodobé analýzy a generování sestav.

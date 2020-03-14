@@ -8,11 +8,11 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598251"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255116"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -55,9 +55,9 @@ Pokud chcete povolit funkci synchronizace na Windows serveru, musíte nainstalov
 ### <a name="operating-system-requirements"></a>Požadavky na operační systém
 Azure File Sync se podporuje s následujícími verzemi Windows serveru:
 
-| Verze | Podporované SKU | Podporované možnosti nasazení |
+| Version | Podporované SKU | Podporované možnosti nasazení |
 |---------|----------------|------------------------------|
-| Windows Server 2019 | Datacenter, Standard a IoT | Úplné a základní |
+| Windows Server. 2019 | Datacenter, Standard a IoT | Úplné a základní |
 | Windows Server 2016 | Datacenter, Standard a Storage Server | Úplné a základní |
 | Windows Server 2012 R2 | Datacenter, Standard a Storage Server | Úplné a základní |
 
@@ -136,7 +136,7 @@ Podporovány jsou pouze svazky NTFS. ReFS, FAT, FAT32 a jiné systémy souborů 
 
 V následující tabulce je uveden stav spolupráce funkcí systému souborů NTFS: 
 
-| Funkce | Stav podpory | Poznámky: |
+| Funkce | Stav podpory | Poznámky |
 |---------|----------------|-------|
 | Seznamy řízení přístupu (ACL) | Plně podporováno | Windows – volitelné seznamy řízení přístupu se uchovávají Azure File Sync a vynutily Windows Server na koncových bodech serveru. Seznamy ACL je taky možné vyhovět při přímém připojení sdílené složky Azure, ale to vyžaduje další konfiguraci. Další informace najdete v [části Identita](#identity) . |
 | Pevné odkazy | Přeskočeno | |
@@ -296,34 +296,34 @@ Azure File Sync je k dispozici v následujících oblastech:
 | Public | Austrálie | Austrálie – jihovýchod | `australiasoutheast` |
 | Public | Brazílie | Brazílie – jih | `brazilsouth` |
 | Public | Kanada | Kanada – střed | `canadacentral` |
-| Public | Kanada | Východní Kanada | `canadaeast` |
+| Public | Kanada | Kanada – východ | `canadaeast` |
 | Public | Evropa | Severní Evropa | `northeurope` |
 | Public | Evropa | Západní Evropa | `westeurope` |
 | Public | Francie | Francie – střed | `francecentral` |
 | Public | Francie | Francie – jih * | `francesouth` |
-| Public | Indie | Indie – střed | `centralindia` |
+| Public | Indie | Střed Indie | `centralindia` |
 | Public | Indie | Indie – jih | `southindia` |
 | Public | Japonsko | Japonsko – východ | `japaneast` |
 | Public | Japonsko | Japonsko – západ | `japanwest` |
 | Public | Jižní Korea | Jižní Korea – střed | `koreacentral` |
 | Public | Jižní Korea | Jižní Korea – jih | `koreasouth` |
-| Public | Jižní Afrika | Jižní Afrika – sever | `southafricanorth` |
-| Public | Jižní Afrika | Jižní Afrika – západ * | `southafricawest` |
+| Public | Jihoafrická republika | Jižní Afrika – sever | `southafricanorth` |
+| Public | Jihoafrická republika | Jižní Afrika – západ * | `southafricawest` |
 | Public | Spojené arabské emiráty | Spojené arabské emiráty střed * | `uaecentral` |
 | Public | Spojené arabské emiráty | Spojené arabské emiráty sever | `uaenorth` |
 | Public | Spojené království | Velká Británie – jih | `uksouth` |
 | Public | Spojené království | Spojené království – západ | `ukwest` |
-| Public | USA | USA – střed | `centralus` |
-| Public | USA | USA – východ | `eastus` |
-| Public | USA | USA – východ 2 | `eastus2` |
-| Public | USA | USA – středosever | `northcentralus` |
-| Public | USA | USA – středojih | `southcentralus` |
-| Public | USA | USA – středozápad | `westcentralus` |
-| Public | USA | USA – západ | `westus` |
-| Public | USA | USA – západ 2 | `westus2` |
-| US Gov | USA | USA (Gov) – Arizona | `usgovarizona` |
-| US Gov | USA | USA (Gov) – Texas | `usgovtexas` |
-| US Gov | USA | USA (Gov) – Virginia | `usgovvirginia` |
+| Public | US | Střed USA | `centralus` |
+| Public | US | Východní USA | `eastus` |
+| Public | US | Východní USA 2 | `eastus2` |
+| Public | US | Střed USA – sever | `northcentralus` |
+| Public | US | Střed USA – jih | `southcentralus` |
+| Public | US | Střed USA – západ | `westcentralus` |
+| Public | US | Západní USA | `westus` |
+| Public | US | Západní USA 2 | `westus2` |
+| US Gov | US | USA (Gov) – Arizona | `usgovarizona` |
+| US Gov | US | USA (Gov) – Texas | `usgovtexas` |
+| US Gov | US | USA (Gov) – Virginia | `usgovvirginia` |
 
 Azure File Sync podporuje synchronizaci jenom se sdílenou složkou Azure, která je ve stejné oblasti jako služba synchronizace úložiště.
 
@@ -354,7 +354,7 @@ Interní antivirová řešení Microsoftu, Windows Defender a System Center Endp
 > [!Note]  
 > Dodavatelé antivirové ochrany můžou zkontrolovat kompatibilitu mezi jejich produktem a Azure File Sync pomocí [Azure File Sync sady testů kompatibility antivirové ochrany](https://www.microsoft.com/download/details.aspx?id=58322), která je k dispozici ke stažení na webu Microsoft Download Center.
 
-## <a name="backup"></a>Backup 
+## <a name="backup"></a>Zálohovat 
 Podobně jako u antivirových řešení můžou řešení zálohování způsobit odvolání vrstvených souborů. K zálohování sdílené složky Azure místo místního záložního produktu doporučujeme použít řešení zálohování v cloudu.
 
 Pokud používáte místní řešení zálohování, měli byste zálohy provádět na serveru ve skupině synchronizace, která má zakázanou vrstvu v cloudu. Při provádění obnovení použijte možnosti obnovení na úrovni svazku nebo souboru. Soubory obnovené pomocí možnosti obnovení na úrovni souborů budou synchronizovány do všech koncových bodů ve skupině synchronizace a stávající soubory budou nahrazeny verzí obnovenou ze zálohy.  Obnovení na úrovni svazku nebude nahrazovat novější verze souborů ve sdílené složce Azure nebo v jiných koncových bodech serveru.

@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
 ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194446"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268740"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Obnovení databáze SQL Azure pomocí automatických záloh databáze
 
@@ -200,7 +200,7 @@ Pro obnovení můžete použít také Azure PowerShell nebo REST API. V následu
 
 Informace o obnovení samostatné databáze nebo databáze ve fondu najdete v tématu [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
-  | Rutina | Popis |
+  | Rutiny | Popis |
   | --- | --- |
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Získá jednu nebo více databází. |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Získá odstraněnou databázi, kterou můžete obnovit. |
@@ -214,7 +214,7 @@ Informace o obnovení samostatné databáze nebo databáze ve fondu najdete v t�
 
 Chcete-li obnovit databázi spravované instance, přečtěte si téma [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
-  | Rutina | Popis |
+  | Rutiny | Popis |
   | --- | --- |
   | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Získá jednu nebo víc spravovaných instancí. |
   | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Načte databázi instance. |
@@ -224,7 +224,7 @@ Chcete-li obnovit databázi spravované instance, přečtěte si téma [Restore-
 
 Postup obnovení jedné nebo sdružené databáze pomocí REST API:
 
-| Rozhraní API | Popis |
+| API | Popis |
 | --- | --- |
 | [REST (createMode = obnovení)](https://docs.microsoft.com/rest/api/sql/databases) |Obnoví databázi. |
 | [Získat stav databáze pro vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/sql/operations) |Vrátí stav během operace obnovení. |

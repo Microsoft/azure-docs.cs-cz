@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598183"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268181"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy týkající se souborů Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -81,6 +81,9 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
   **ve skutečnosti chci zobrazit konkrétní funkci přidanou do služby soubory Azure. Můžete ho přidat?**  
     Tým souborů Azure vás zajímá o jakékoli názory a zpětnou vazbu týkající se naší služby. Hlasujte prosím na žádostech o funkce ve [službě Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Těšíme se, že vám bude dodána spousta nových funkcí.
 
+  **Podporují soubory Azure uzamykání souborů?**  
+    Ano, soubory Azure plně podporují uzamykání souborů ve stylu SMB/Windows. [Podrobnosti najdete v podrobnostech](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
+    
 ## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 * <a id="afs-region-availability"></a>
@@ -179,12 +182,12 @@ služba **soubory azure Azure Active Directory Domain Services (azure služba AD
 * <a id="ad-support-rest-apis"></a>
 **jsou k dispozici rozhraní REST API pro podporu seznamů přístupových práv získat/nastavit/kopírovat adresář/soubor NTFS?**
 
-    Ano, podporujeme rozhraní REST API, která při použití REST API [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (nebo novější) k získání, nastavení nebo kopírování seznamů ACL systému souborů NTFS pro adresáře nebo soubory.
+    Ano, podporujeme rozhraní REST API, která při použití REST API [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (nebo novější) k získání, nastavení nebo kopírování seznamů ACL systému souborů NTFS pro adresáře nebo soubory.
 
 * <a id="ad-vm-subscription"></a>
 můžu **získat přístup k souborům Azure pomocí přihlašovacích údajů Azure AD z virtuálního počítače v jiném předplatném?**
 
-    Pokud je předplatné, pod kterým je nainstalovaná sdílená složka, přidruženo ke stejnému tenantovi služby Azure AD jako Azure AD Domain Services nasazení, ke kterému je připojený virtuální počítač, pak můžete přistupovat k souborům Azure pomocí stejných přihlašovacích údajů Azure AD. Omezení je uloženo v předplatném, ale na přidruženém tenantovi služby Azure AD.    
+    Pokud je předplatné, pod kterým je nainstalovaná sdílená složka, přidruženo ke stejnému tenantovi služby Azure AD jako Azure AD Domain Services nasazení, ke kterému je připojený virtuální počítač, pak můžete přistupovat k souborům Azure pomocí stejných přihlašovacích údajů Azure AD. Omezení je uloženo v předplatném, ale na přidruženém tenantovi služby Azure AD.
     
 * <a id="ad-support-subscription"></a>
 můžu **Povolit Azure Files azure služba AD DS nebo ověřování AD pomocí klienta služby Azure AD, který se liší od primárního tenanta, ke kterému je sdílená složka přidružená?**
@@ -211,6 +214,11 @@ můžu **využívat Azure Files azure služba AD DS ověřování nebo ověřov�
 
     Ano, můžete povolit službu Azure služba AD DS nebo ověřování AD pro sdílenou složku spravovanou službou Azure File Sync. Změny seznamů ACL adresáře nebo souborů NTFS na místních souborových serverech budou vrstveny do souborů Azure a naopak.
 
+* <a id="ad-aad-smb-files"></a>
+**Jak můžu ověřit, jestli je povolené ověřování AD na účtu úložiště a informace o doméně služby AD?**
+
+    Podle [zde](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) uvedených pokynů můžete ověřit, jestli je v účtu úložiště povolené ověřování Azure Files AD, a načíst informace o doméně AD.
+    
 * <a id="encryption-at-rest"></a>
  **, jak se dá zajistit, aby byla sdílená složka Azure v klidovém stavu šifrovaná?**  
 
@@ -253,7 +261,7 @@ musím **použít Azure ExpressRoute k připojení k souborům Azure nebo k pou�
 
     Sdílenou složku můžete připojit pomocí protokolu SMB, pokud je otevřený port 445 (odchozí TCP) a váš klient podporuje protokol SMB 3,0 (například pokud používáte Windows 10 nebo Windows Server 2016). Pokud je port 445 zablokovaný zásadami vaší organizace nebo vaším poskytovatelem internetových služeb, můžete k přístupu ke sdílené složce Azure použít Azure File Sync.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Zálohovat
 * <a id="backup-share"></a>
 **návody zálohovat sdílenou složku Azure?**  
     Pro ochranu před náhodným odstraněním můžete použít periodické [snímky sdílené složky](storage-snapshots-files.md) . Můžete také použít nástroj pro zálohování AzCopy, Robocopy nebo třetí strany, který může zálohovat připojenou sdílenou složku. Azure Backup nabízí zálohu souborů Azure. Přečtěte si další informace o [Zálohování sdílených složek Azure pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -385,7 +393,7 @@ můžu **připojit sdílenou složku Azure na instanci kontejneru Azure?**
 **návody používat soubory Azure s IBM MQ?**  
     Společnost IBM vydala dokument, který pomáhá zákazníkům IBM MQ nakonfigurovat soubory Azure pomocí služby IBM. Další informace najdete v tématu [jak nastavit správce front více instancí IBM MQ pomocí služby Microsoft Azure Files](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
 * [Řešení potíží se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

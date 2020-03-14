@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980993"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245522"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Řešení potíží s RBAC pro prostředky Azure
 
@@ -56,7 +56,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se řízení p�
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Přiřazení rolí s neznámým objektem zabezpečení
 
-Pokud přiřadíte roli objektu zabezpečení (uživatele, skupiny, instančnímu objektu nebo spravované identitě) a později odstraníte tento objekt zabezpečení bez odebrání přiřazení role, bude typ objektu zabezpečení pro přiřazení role uveden jako **Neznámý**. Následující snímek obrazovky ukazuje příklad na webu Azure Portal. Hlavní název zabezpečení je uvedený jako **identita se odstranila** a **Identita už neexistuje**. 
+Pokud přiřadíte roli objektu zabezpečení (uživatele, skupiny, instančnímu objektu nebo spravované identitě) a později odstraníte tento objekt zabezpečení bez odebrání přiřazení role, bude typ objektu zabezpečení pro přiřazení role uveden jako **Neznámý**. Následující snímek obrazovky ukazuje příklad v Azure Portal. Hlavní název zabezpečení je uvedený jako **identita se odstranila** a **Identita už neexistuje**. 
 
 ![Skupina prostředků webové aplikace](./media/troubleshooting/unknown-security-principal.png)
 
@@ -149,8 +149,8 @@ Tyto položky vyžadují přístup pro **zápis** do **plánu App Service** , kt
 Tyto položky vyžadují přístup pro **zápis** do celé **skupiny prostředků** , která obsahuje váš web:  
 
 * Certifikáty a vazby SSL (certifikáty SSL se dají sdílet mezi lokalitami ve stejné skupině prostředků a geografickým umístěním)  
-* Pravidla upozornění  
-* nastavení automatického škálování  
+* Pravidla výstrah  
+* Nastavení automatického škálování  
 * Součásti Application Insights  
 * Webové testy  
 
@@ -171,7 +171,7 @@ Tyto požadavky vyžadují přístup pro **zápis** k **virtuálnímu počítač
 
 * Skupina dostupnosti  
 * Sada s vyrovnáváním zatížení  
-* Pravidla upozornění  
+* Pravidla výstrah  
 
 Pokud nemůžete získat přístup k žádné z těchto dlaždic, požádejte správce, aby přístup přispěvatele k této skupině prostředků.
 

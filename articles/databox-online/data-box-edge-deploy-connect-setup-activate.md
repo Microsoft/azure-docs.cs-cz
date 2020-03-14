@@ -10,11 +10,11 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129524"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239053"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Kurz: připojení, nastavení a aktivace Azure Data Box Edge 
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Připojení k fyzickému zařízení
 > * Nastavení a aktivace fyzického zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením Data Box Edge zařízení se ujistěte, že:
 

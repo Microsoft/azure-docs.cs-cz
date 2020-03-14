@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.openlocfilehash: 043350db2c5372fc81fbb2b68155a4ac75457208
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373430"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278399"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění Azure Automation Runbooku pomocí Webhooku
 
@@ -31,9 +31,9 @@ Následující tabulka popisuje vlastnosti, které musíte nakonfigurovat pro We
 | Vlastnost | Popis |
 |:--- |:--- |
 | Název |Název Webhooku Můžete zadat jakýkoli název, který chcete, protože není k dispozici klientovi. Používá se pouze k identifikaci Runbooku v Azure Automation. Jako osvědčený postup byste měli Webhook dát název týkající se klienta, který ho používá. |
-| zprostředkovatele identity |Adresa URL Webhooku Jedná se o jedinečnou adresu, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje systému třetí strany vyvolat sadu Runbook bez dalšího ověřování. Z tohoto důvodu byste měli zacházet s adresou URL, jako je heslo. Z bezpečnostních důvodů můžete při vytváření Webhooku zobrazit jenom adresu URL v Azure Portal. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
+| URL |Adresa URL Webhooku Jedná se o jedinečnou adresu, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje systému třetí strany vyvolat sadu Runbook bez dalšího ověřování. Z tohoto důvodu byste měli zacházet s adresou URL, jako je heslo. Z bezpečnostních důvodů můžete při vytváření Webhooku zobrazit jenom adresu URL v Azure Portal. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
 | Datum vypršení platnosti | Datum vypršení platnosti Webhooku, po kterém ho už nebude možné používat. Po vytvoření Webhooku můžete upravit datum vypršení platnosti, dokud nevypršela platnost Webhooku. |
-| Povoleno | Nastavení určující, zda je Webhook ve výchozím nastavení povolený, když je vytvořený. Pokud tuto vlastnost nastavíte na zakázáno, nebude moct Webhook používat žádný klient. Tuto vlastnost můžete nastavit při vytváření Webhooku nebo jakékoli jiné doby po jejím vytvoření. |
+| Povolit | Nastavení určující, zda je Webhook ve výchozím nastavení povolený, když je vytvořený. Pokud tuto vlastnost nastavíte na zakázáno, nebude moct Webhook používat žádný klient. Tuto vlastnost můžete nastavit při vytváření Webhooku nebo jakékoli jiné doby po jejím vytvoření. |
 
 ## <a name="parameters-used-when-the-webhook-starts-a-runbook"></a>Parametry používané při spuštění Runbooku pomocí Webhooku
 
@@ -108,7 +108,7 @@ Pomocí následujícího postupu můžete vytvořit nový Webhook propojený s r
 
 ## <a name="using-a-webhook"></a>Použití Webhooku
 
-Pro použití Webhooku po jeho vytvoření musí klient vydat požadavek HTTP POST s adresou URL Webhooku. Syntaxe je:
+Pro použití Webhooku po jeho vytvoření musí klient vydat požadavek HTTP POST s adresou URL Webhooku. Syntaxe je následující:
 
 ```http
 http://<Webhook Server>/token?=<Token Value>
@@ -119,7 +119,7 @@ Klient obdrží z požadavku POST jeden z následujících návratových kódů.
 | Kód | Text | Popis |
 |:--- |:--- |:--- |
 | 202 |Přijato |Požadavek byl přijat a sada Runbook byla úspěšně zařazena do fronty. |
-| 400 |Nesprávná žádost |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
+| 400 |Chybný požadavek |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
 | 404 |Nenalezeno |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Webhook se nenašel.</li> <li>Runbook se nenašel.</li> <li>Účet nebyl nalezen.</li>  </ul> |
 | 500 |Vnitřní chyba serveru |Adresa URL byla platná, ale došlo k chybě. Odešlete prosím žádost znovu. |
 

@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eab332f102b9e39981e2d8ed6e84f73fada87a1a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358571"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282130"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Blob Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -81,13 +81,13 @@ Data Factory podporuje následující hodnoty typů založené na specifikaci .N
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění, formátu atd. dat v úložišti dat. Oddíl typeProperties pro sadu dat **azureblobu** typu DataSet má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | folderPath |Cesta k kontejner a složku v úložišti objektů blob. Příklad: myblobcontainer\myblobfolder\ |Ano |
 | fileName |Název objektu BLOB Název souboru je nepovinný a rozlišuje velká a malá písmena.<br/><br/>Pokud zadáte název souboru, bude aktivita (včetně kopírování) fungovat na konkrétním objektu BLOB.<br/><br/>Pokud není zadán název souboru, příkaz Kopírovat zahrnuje všechny objekty BLOB v folderPath pro vstupní datovou sadu.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a v jímky aktivity není zadán parametr **preserveHierarchy** , název generovaného souboru by byl v následujícím formátu: `Data.<Guid>.txt` (například: data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Ne |
 | partitionedBy |partitionedBy je volitelná vlastnost. Můžete ji použít k určení dynamického folderPath a názvu souboru pro data časových řad. Například folderPath může být Parametrizovaná za každou hodinu dat. Podrobnosti a příklady najdete v [části použití vlastnosti partitionedBy](#using-partitionedby-property) . |Ne |
 | format | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |Ne |
-| compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 ### <a name="using-partitionedby-property"></a>Použití vlastnosti partitionedBy
 Jak je uvedeno v předchozí části, můžete zadat dynamický folderPath a filename pro data časových řad pomocí vlastnosti **partitionedBy** , [Data Factory funkcí a systémových proměnných](data-factory-functions-variables.md).
@@ -127,13 +127,13 @@ V tomto příkladu jsou extrahovány roky, měsíc, den a čas vlastnosti slices
 
 **BlobSource** podporuje následující vlastnosti v části **typeProperties** :
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| recursive |Určuje, jestli se data ze složek sub nebo pouze z určené složky Číst rekurzivně. |True (výchozí hodnota), false |Ne |
+| rekurzivní |Určuje, jestli se data ze složek sub nebo pouze z určené složky Číst rekurzivně. |True (výchozí hodnota), false |Ne |
 
 **BlobSink** podporuje následující vlastnosti oddílu **typeProperties** :
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |<b>PreserveHierarchy</b>: zachová hierarchii souborů v cílové složce. Relativní cesta zdrojového souboru do zdrojové složky je stejný jako relativní cesta cílový soubor do cílové složky.<br/><br/><b>FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají název automaticky generovány. <br/><br/><b>MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo objekt Blob, název sloučený soubor by měl být zadaný název; v opačném případě bude název automaticky generovaného souboru. |Ne |
 
@@ -161,19 +161,19 @@ Podrobné informace o těchto vlastnostech najdete v tématu [určení oddílu T
 ### <a name="recursive-and-copybehavior-examples"></a>rekurzivní a copyBehavior příklady
 Tato část popisuje výsledné chování pro různé kombinace hodnot rekurzivní a copyBehavior operace kopírování.
 
-| recursive | copyBehavior | Výsledné chování |
+| rekurzivní | copyBehavior | Výsledné chování |
 | --- | --- | --- |
-| true (pravda) |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří se stejnou strukturou jako zdroj.<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true (pravda) |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro File5 |
-| true (pravda) |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor1 + soubor2 + file3 + file4 + obsah souboru 5 se sloučí do jednoho souboru s automaticky generovaným názvem souboru. |
-| false (nepravda) |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou.<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/><br/><br/>Subfolder1 s soubor3 File4 a File5 se nenačítají. |
-| false (nepravda) |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou.<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/><br/><br/>Subfolder1 s soubor3 File4 a File5 se nenačítají. |
-| false (nepravda) |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou.<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;se obsah soubor1 + soubor2 sloučí do jednoho souboru s automaticky generovaným názvem souboru. Automaticky generovaný název File1<br/><br/>Subfolder1 s soubor3 File4 a File5 se nenačítají. |
+| true |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří se stejnou strukturou jako zdroj.<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro File5 |
+| true |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor1 + soubor2 + file3 + file4 + obsah souboru 5 se sloučí do jednoho souboru s automaticky generovaným názvem souboru. |
+| false |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou.<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/><br/><br/>Subfolder1 s soubor3 File4 a File5 se nenačítají. |
+| false |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou.<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/><br/><br/>Subfolder1 s soubor3 File4 a File5 se nenačítají. |
+| false |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou.<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;se obsah soubor1 + soubor2 sloučí do jednoho souboru s automaticky generovaným názvem souboru. Automaticky generovaný název File1<br/><br/>Subfolder1 s soubor3 File4 a File5 se nenačítají. |
 
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Návod: použití Průvodce kopírováním ke zkopírování dat do/z Blob Storage
 Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů BLOB v Azure. V tomto návodu jsou zdrojová i cílová úložiště dat typu: Azure Blob Storage. Kanál v tomto návodu kopíruje data ze složky do jiné složky ve stejném kontejneru objektů BLOB. Tento názorný postup je záměrně jednoduchý k zobrazení nastavení nebo vlastností při použití Blob Storage jako zdroje nebo jímky.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 1. Pokud ho ještě nemáte, vytvořte účet pro obecné účely **Azure Storage** . V tomto návodu použijete úložiště objektů BLOB jako **zdrojové** i **cílové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
 2. V účtu úložiště vytvořte kontejner objektů BLOB s názvem **adfblobconnector** .
 4. V kontejneru **adfblobconnector** vytvořte složku s názvem **input** .
@@ -207,7 +207,7 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     4. Ponechte nastavení pro **Periodický vzor**. Tato úloha se spouští každý den mezi časem zahájení a ukončení, který zadáte v dalším kroku.
     5. Změňte **počáteční datum a čas** na **04/21/2017**.
     6. Změňte **koncové datum a čas** na **04/25/2017**. Možná budete chtít zadat datum místo procházení kalendářem.
-    8. Klikněte na **Další**.
+    8. Klikněte na **Další**.
         Nástroj pro kopírování ![– stránka vlastností](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png)
 3. Na stránce **Source data store** (Zdrojové úložiště dat) klikněte na dlaždici **Azure Blob Storage**. Tato stránka slouží k zadání zdrojového úložiště dat pro úlohu kopírování. Můžete použít existující propojenou službu úložiště dat nebo zadat nové úložiště dat. Pokud chcete použít existující propojenou službu, vyberte **z existujících propojených služeb** a vyberte správnou propojenou službu.
     Nástroj pro kopírování ![– stránka zdrojového úložiště dat](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
@@ -216,7 +216,7 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     2. Ujistěte se, že je pro položku **Metoda výběru účtu** vybrána možnost **Z předplatných Azure**.
     3. Vyberte své předplatné Azure nebo nechte **možnost Vybrat vše** pro **předplatné Azure**.
     4. V seznamu účtů úložiště Azure dostupných ve zvoleném předplatném vyberte požadovaný **účet úložiště Azure**. Můžete také zadat nastavení účtu úložiště ručně tak, že pro **metodu výběru účtu**vyberete možnost **zadat ručně** .
-    5. Klikněte na **Další**.  
+    5. Klikněte na **Další**.  
         Nástroj pro kopírování ![– zadejte účet služby Azure Blob Storage](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. Na stránce **Choose the input file or folder** (Zvolte vstupní soubor nebo složku):
     1. Dvakrát klikněte na **adfblobcontainer**.
@@ -227,7 +227,7 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     2. Nenastavuje **rekurzivní kopírování souboru**. Tuto možnost vyberte, pokud chcete rekurzivně Procházet složky, aby se soubory zkopírovaly do cílového umístění.
     3. Nejedná se o možnost **binární kopírování** . Tuto možnost vyberte, pokud chcete v cíli provést binární kopii zdrojového souboru. Nevybírejte pro tento návod, abyste viděli další možnosti na dalších stránkách.
     4. Potvrďte, že **typ komprese** je nastavený na **none**. Vyberte hodnotu pro tuto možnost, pokud jsou zdrojové soubory komprimovány v jednom z podporovaných formátů.
-    5. Klikněte na **Další**.
+    5. Klikněte na **Další**.
     Nástroj pro kopírování ![– vyberte vstupní soubor nebo složku](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. Na stránce **Nastavení formátu souboru** jsou uvedeny oddělovače a schéma, které je automaticky zjištěno průvodcem při analýze souboru.
     1. Potvrďte následující možnosti:  
@@ -249,7 +249,7 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     2. Ujistěte se, že je pro položku **Metoda výběru účtu** vybrána možnost **Z předplatných Azure**.
     3. Vyberte své **předplatné** Azure.
     4. Vyberte svůj účet úložiště Azure.
-    5. Klikněte na **Další**.
+    5. Klikněte na **Další**.
 10. Na stránce **zvolit výstupní soubor nebo složku** :  
     1. Zadejte **cestu ke složce** jako **adfblobconnector/Output/{Year}/{Month}/{Day**}. Zadejte **kartu**.
     1. V **roce**vyberte **RRRR**.
@@ -257,7 +257,7 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     1. Pro daný **den**potvrďte, že je nastavené na **DD**.
     1. Potvrďte, že **typ komprese** je nastavený na **none**.
     1. Ověřte, že je **chování při kopírování** nastaveno na **Sloučit soubory**. Pokud výstupní soubor se stejným názvem již existuje, nový obsah se přidá do stejného souboru na konci.
-    1. Klikněte na **Další**.
+    1. Klikněte na **Další**.
        Nástroj pro kopírování ![– volba výstupního souboru nebo složky](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. Na stránce **Nastavení formátu souboru** zkontrolujte nastavení a klikněte na **Další**. Jednou z dalších možností je přidat hlavičku do výstupního souboru. Pokud vyberete tuto možnost, přidá se řádek záhlaví s názvy sloupců ze schématu zdroje. Výchozí názvy sloupců můžete přejmenovat při zobrazení schématu pro zdroj. Například můžete změnit první sloupec na jméno a druhý sloupec na jméno a příjmení. Výstupní soubor se pak vygeneruje pomocí záhlaví s těmito názvy jako názvy sloupců.
     ![kopírování nástroje – nastavení formátu souboru pro cíl](media/data-factory-azure-blob-connector/file-format-destination.png)

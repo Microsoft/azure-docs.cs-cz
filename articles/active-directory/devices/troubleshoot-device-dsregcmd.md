@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707940"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136479"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Řešení potíží se zařízeními pomocí příkazu dsregcmd
 
@@ -28,10 +28,10 @@ V této části jsou uvedené parametry stavu připojení zařízení. V násled
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Stav zařízení |
 | ---   | ---   | ---   | ---   |
-| ANO | NO | NO | Připojeno k Azure AD |
-| NO | NO | ANO | Připojeno k doméně |
-| ANO | NO | ANO | Připojeno k hybridní službě AD |
-| NO | ANO | ANO | Připojené k místnímu DRS |
+| Ano | NO | NO | Připojeno k Azure AD |
+| NO | NO | Ano | Připojeno k doméně |
+| Ano | NO | Ano | Připojeno k hybridní službě AD |
+| NO | Ano | Ano | Připojené k místnímu DRS |
 
 > [!NOTE]
 > V části "stav uživatele" se zobrazí stav Workplace Join (registrovaný Azure AD).
@@ -211,8 +211,16 @@ Tato část provádí různé testy, které vám pomůžou diagnostikovat selhá
 - **Test konfigurace služby AD:** -test načte a ověří, jestli je objekt SCP správně nakonfigurovaný v místní doménové struktuře AD. Chyby v tomto testu by mohly vést k chybám spojení ve fázi zjišťování s kódem chyby 0x801c001d.
 - **Test zjišťování DRS:** -test Získá koncové body DRS z koncového bodu metadat zjišťování a provede požadavek na sféru uživatele. Chyby v tomto testu by mohly vést k chybám spojení ve fázi zjišťování.
 - **Test připojení DRS:** -test provede základní test připojení ke koncovému bodu DRS.
-- **Test získání tokenu:** -test se pokusí získat ověřovací token Azure AD, pokud je tenant uživatele federované. Chyby v tomto testu by mohly vést k chybám spojení ve fázi ověřování. Pokud se nezdaří pokus o přihlášení k synchronizaci synchronizace, bude proveden pokus o použití zálohy, pokud se nezablokuje explicitně pomocí klíče registru.
-- Přechod **na synchronizaci – připojení:** -Pokud se klíč registru zabrání tomu, aby se záloha nesynchronizoval s chybami ověřování, není k dispozici možnost – nastaveno na povoleno. Tato možnost je k dispozici v systému Windows 10 1803 a novějším.
+- **Test získání tokenu:** -test se pokusí získat ověřovací token Azure AD, pokud je tenant uživatele federované. Chyby v tomto testu by mohly vést k chybám spojení ve fázi ověřování. Pokud se v případě, že není výslovně zakázaná záloha pomocí níže uvedených nastavení klíče registru, pokusí se pokusit se připojit k synchronizaci synchronizace se nezdaří.
+```
+    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+    Value: FallbackToSyncJoin
+    Type:  REG_DWORD
+    Value: 0x0 -> Disabled
+    Value: 0x1 -> Enabled
+    Default (No Key): Enabled
+ ```
+- **Záloha na synchronizaci – připojení:** -nastavit na povoleno, pokud se výše uvedený klíč registru nestane, aby se záloha synchronizoval s chybami ověřování, není k dispozici. Tato možnost je k dispozici v systému Windows 10 1803 a novějším.
 - **Předchozí registrace:** čas, kdy došlo k předchozímu pokusu o spojení. Protokolují se jenom neúspěšné pokusy o připojení.
 - **Chybová fáze:** – fáze spojení, ve které byla přerušena. Možné hodnoty jsou předběžné kontroly, zjišťování, ověřování, spojení.
 - **Klient ErrorCode:** -vrácený kód chyby klienta (HRESULT).

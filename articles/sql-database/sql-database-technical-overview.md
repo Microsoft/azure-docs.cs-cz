@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd9e41418eac670bd1cb52be40dbd25c17af6fac
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360090"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255688"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
@@ -68,7 +68,7 @@ SQL Database nabízí následující modely nákupu:
 Azure SQL Database nabízí tři úrovně služeb, které jsou navrženy pro různé typy aplikací:
 - [Pro obecné účely/standardní](sql-database-service-tier-general-purpose.md) úroveň služeb navržená pro běžné úlohy. Nabízí možnosti vyrovnaných výpočetních a úložných operací orientovaných na rozpočet.
 - Úroveň služby [pro důležité obchodní informace/Premium](sql-database-service-tier-business-critical.md) navržená pro aplikace OLTP s vysokou přenosovou rychlostí a v/v operace s nejnižší latencí. Nabízí nejvyšší odolnost proti chybám pomocí několika izolovaných replik.
-- Úroveň služby s velkým [měřítkem](sql-database-service-tier-hyperscale.md) navržená pro velmi rozsáhlou databázi OLTP a možnost automatického škálování úložiště a škálování výpočetních prostředků. 
+- Úroveň služby s velkým [měřítkem](sql-database-service-tier-hyperscale.md) navržená pro velmi rozsáhlou databázi OLTP a možnost automatického škálování úložiště a škálování výpočetních prostředků.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 
@@ -76,7 +76,7 @@ Azure SQL Database nabízí tři úrovně služeb, které jsou navrženy pro rů
 
    ![Obrázek zobrazující elastické fondy v edicích Basic, Standard a Premium](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-S elastickými fondy se nemusíte starat o zvyšování a snižování výkonu databáze s kolísajícími požadavky na prostředky. Databáze ve fondu spotřebovávají prostředky výkonu elastického fondu podle potřeby. Databáze ve fondu spotřebovávají výkon, ale nepřekračují omezení fondu, takže vaše náklady budou předvídatelné, i když využívání jednotlivých databází odhadnutelné nebude.
+U elastických fondů se nemusíte soustředit na výkon databáze v provozu nahoru a dolů jako poptávka po kolísání prostředků. Databáze ve fondu spotřebovávají prostředky výkonu elastického fondu podle potřeby. Databáze ve fondu spotřebovávají, ale nepřekračují omezení fondu, takže vaše náklady budou předvídatelné i v případě, že využití v jednotlivých databázích nikoliv.
 
 [Do fondu můžete přidávat a odebírat databáze a](sql-database-elastic-pool-manage-portal.md)škálovat aplikace z několik databází na tisíce, a to vše v rámci rozpočtu, který ovládáte. Můžete také řídit minimální a maximální prostředky, které jsou k dispozici pro databáze ve fondu, aby se zajistilo, že žádná databáze ve fondu nebude využívat všechny prostředky fondu a že každá databáze ve fondu má zaručené minimální množství prostředků. Další informace o návrhových vzorech pro aplikace typu software jako služba (SaaS), které používají elastické fondy, najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS s SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
@@ -95,7 +95,7 @@ Azure SQL Database poskytuje pokročilé funkce monitorování a řešení potí
  - Integrované možnosti monitorování poskytované nejnovější verzí nástroje SQL Server Database Engine. Umožňují vám najít přehledy výkonu v reálném čase. 
  - PaaS možnosti monitorování poskytované Azure, které umožňují monitorovat a řešit potíže s velkým počtem instancí databáze.
 
-[Úložiště dotazů](sql-database-operate-query-store.md), integrovaná funkce monitorování SQL Server, zaznamenává výkon dotazů v reálném čase a umožňuje identifikovat potenciální problémy s výkonem a nejčastější uživatele prostředků. Automatické ladění a doporučení poskytují rady ohledně dotazů s navráceným výkonem a chybějícími nebo duplikovanými indexy. Automatické ladění v SQL Database umožňuje buď ručně použít skripty, které můžou problémy vyřešit, nebo nechat tuto opravu SQL Database použít. SQL Database může také otestovat a ověřit, zda oprava poskytuje určitou výhodu, a zachovat nebo vrátit změny v závislosti na výsledku. Kromě možností úložiště dotazů a automatického ladění můžete ke sledování výkonu úloh používat standardní [zobrazení dynamické správy a XEvent](sql-database-monitoring-with-dmvs.md) .
+[Úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store), integrovaná funkce monitorování SQL Server, zaznamenává výkon dotazů v reálném čase a umožňuje identifikovat potenciální problémy s výkonem a nejčastější uživatele prostředků. Automatické ladění a doporučení poskytují rady ohledně dotazů s navráceným výkonem a chybějícími nebo duplikovanými indexy. Automatické ladění v SQL Database umožňuje buď ručně použít skripty, které můžou problémy vyřešit, nebo nechat tuto opravu SQL Database použít. SQL Database může také otestovat a ověřit, zda oprava poskytuje určitou výhodu, a zachovat nebo vrátit změny v závislosti na výsledku. Kromě možností úložiště dotazů a automatického ladění můžete ke sledování výkonu úloh používat standardní [zobrazení dynamické správy a XEvent](sql-database-monitoring-with-dmvs.md) .
 
 Azure poskytuje [integrované nástroje pro monitorování výkonu](sql-database-performance.md) a [upozorňování](sql-database-insights-alerts-portal.md) v kombinaci s hodnocením výkonu, které vám umožní monitorovat stav tisíců databází. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity na základě aktuálních nebo plánovaných potřeb výkonu. Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sql-database-metrics-diag-logging.md) pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
@@ -157,7 +157,7 @@ Mnohé z našich partnerů, kteří spouštějí [SaaS aplikace SQL Database pro
 
 ### <a name="adaptive-query-processing"></a>Adaptivní zpracování dotazů
 
-Můžete použít [adaptivní zpracování dotazů](/sql/relational-databases/performance/intelligent-query-processing), včetně prokládaného spouštění funkcí s více příkazy vracející tabulky, zpětné vazby přidělení paměti v režimu dávky a adaptivních spojení v režimu Batch. Každá z těchto funkcí pro adaptivní zpracování dotazů používá podobné techniky učení a adaptace a pomáhá tak dále řešit problémy s výkonem související s historicky nezvladatelnými problémy s optimalizací dotazů.
+Můžete použít [adaptivní zpracování dotazů](/sql/relational-databases/performance/intelligent-query-processing), včetně prokládaného spouštění funkcí s více příkazy vracející tabulky, zpětné vazby přidělení paměti v režimu dávky a adaptivních spojení v režimu Batch. Každá z těchto funkcí adaptivního zpracování dotazů používá podobné techniky učení a přizpůsobení, což pomáhá lépe řešit problémy s výkonem související s historickými problémy s optimalizací dotazů.
 
 ## <a name="advanced-security-and-compliance"></a>Pokročilé zabezpečení a dodržování předpisů
 

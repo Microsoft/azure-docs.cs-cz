@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aschhab
 ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392370"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260940"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
@@ -37,7 +37,7 @@ Při odesílání zprávy do dělené fronty nebo tématu se neúčtují žádn�
 
 Pokud chcete použít dělené fronty a témata s Azure Service Bus, použijte Azure SDK verze 2,2 nebo novější, nebo zadejte `api-version=2013-10` nebo novější v požadavcích HTTP.
 
-### <a name="standard"></a>Standard
+### <a name="standard"></a>Standardní
 
 Na úrovni Standard pro zasílání zpráv můžete vytvořit Service Bus fronty a témata ve velikosti 1, 2, 3, 4 nebo 5 GB (výchozí hodnota je 1 GB). Když je zapnuté dělení, Service Bus vytvoří 16 kopií (16 oddílů) entity, každé zadané velikosti. Pokud tedy vytvoříte frontu o velikosti 5 GB s 16 oddíly, maximální velikost fronty se změní na (5 \* 16) = 80 GB. Maximální velikost vaší dělené fronty nebo tématu můžete zobrazit tak, že v okně **Přehled** pro danou entitu prohlížíte její položku v [Azure Portal][Azure portal].
 

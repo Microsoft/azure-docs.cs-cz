@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
 ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125989"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265880"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -47,7 +47,7 @@ Konkrétně tento konektor SAP HANA podporuje:
 > [!TIP]
 > Chcete-li kopírovat data **do** SAP HANA úložiště dat, použijte obecný konektor ODBC. Viz část [SAP HANA jímka](connector-odbc.md#sap-hana-sink) s podrobnostmi. Všimněte si, že propojené služby konektoru SAP HANA Connector a konektor ODBC mají jiný typ, takže se nedá znovu použít.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít tento konektor SAP HANA, musíte:
 
@@ -64,9 +64,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro SAP HANA propojenou službu jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **SapHana** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapHana** . | Ano |
 | connectionString | Zadejte informace potřebné pro připojení k SAP HANA pomocí **základního ověřování** nebo **ověřování systému Windows**. Přečtěte si následující ukázky.<br>V připojovacím řetězci je server/port povinný (výchozí port je 30015) a uživatelské jméno a heslo je při použití základního ověřování povinné. Další upřesňující nastavení najdete v tématu [SAP HANA vlastnosti připojení ODBC](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>) .<br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci hesla z připojovacího řetězce. Další podrobnosti najdete [v článku uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | userName | Při použití ověřování systému Windows zadejte uživatelské jméno. Příklad: `user@domain.com` | Ne |
 | heslo | Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
@@ -145,9 +145,9 @@ Pokud jste používali SAP HANA propojenou službu s následující datovou čá
 
 Chcete-li kopírovat data z SAP HANA, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **SapHanaTable** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **SapHanaTable** . | Ano |
 | schéma | Název schématu v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "query") |
 | tabulka | Název tabulky v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "query") |
 
@@ -184,12 +184,12 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Chcete-li kopírovat data z SAP HANA, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapHanaSource** . | Ano |
-| query | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Ano |
-| partitionOptions | Určuje možnosti dělení dat používané k ingestování dat z SAP HANA. Další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) .<br>Povolené hodnoty jsou: **None** (výchozí), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) . `PhysicalPartitionsOfTable` lze použít pouze při kopírování dat z tabulky, ale nikoli dotazů. <br>Pokud je povolena možnost oddílu (tj. není `None`), stupeň paralelismu na souběžně načtená data z SAP HANA je řízen nastavením [`parallelCopies`](copy-activity-performance.md#parallel-copy) aktivity kopírování. | False |
-| partitionSettings | Určete skupinu nastavení pro dělení dat.<br>Použijte, pokud je možnost oddílu `SapHanaDynamicRange`. | False |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapHanaSource** . | Ano |
+| dotaz | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Ano |
+| partitionOptions | Určuje možnosti dělení dat používané k ingestování dat z SAP HANA. Další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) .<br>Povolené hodnoty jsou: **None** (výchozí), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) . `PhysicalPartitionsOfTable` lze použít pouze při kopírování dat z tabulky, ale nikoli dotazů. <br>Pokud je povolena možnost oddílu (tj. není `None`), stupeň paralelismu na souběžně načtená data z SAP HANA je řízen nastavením [`parallelCopies`](copy-activity-performance.md#parallel-copy) aktivity kopírování. | Nepravda |
+| partitionSettings | Určete skupinu nastavení pro dělení dat.<br>Použijte, pokud je možnost oddílu `SapHanaDynamicRange`. | Nepravda |
 | partitionColumnName | Zadejte název zdrojového sloupce, který bude oddíl používat pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je možnost oddílu `SapHanaDynamicRange`. Pokud použijete dotaz k načtení zdrojových dat, zapojte `?AdfHanaDynamicRangePartitionCondition` v klauzuli WHERE. Viz příklad v sekci [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) . | Ano Při použití oddílu `SapHanaDynamicRange` |
 | packetSize | Určuje velikost síťového paketu (v kilobajtech) pro rozdělení dat na více bloků. Pokud máte velké množství dat ke kopírování, zvýšení velikosti paketu může zvýšit rychlost čtení z SAP HANA ve většině případů. Při úpravě velikosti paketu se doporučuje testování výkonu. | Ne.<br>Výchozí hodnota je 2048 (2 MB). |
 
@@ -270,32 +270,32 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 
 | SAP HANA datový typ | Data factory dočasné datový typ |
 | ------------------ | ------------------------------ |
-| ALPHANUM           | Řetězec                         |
+| ALPHANUM           | String                         |
 | BIGINT             | Int64                          |
 | TVARU             | Byte[]                         |
-| BINTEXT            | Řetězec                         |
+| BINTEXT            | String                         |
 | PŘÍZNAKY               | Byte[]                         |
 | LOGICK               | Bajt                           |
-| CLOB               | Řetězec                         |
-| DATE (Datum)               | DateTime                       |
+| CLOB               | String                         |
+| DATUM               | Datum a čas                       |
 | NOTACI            | Decimal                        |
 | KLEPAT             | Double                         |
 | FLOAT              | Double                         |
 | INTEGER            | Datový typ Int32                          |
-| NCLOB              | Řetězec                         |
-| NVARCHAR           | Řetězec                         |
+| NCLOB              | String                         |
+| NVARCHAR           | String                         |
 | NEMOVITOSTÍ               | Jednoduché                         |
-| SECONDDATE         | DateTime                       |
-| SHORTTEXT          | Řetězec                         |
+| SECONDDATE         | Datum a čas                       |
+| SHORTTEXT          | String                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
-| TEXT               | Řetězec                         |
+| TEXT               | String                         |
 | ČAS               | TimeSpan                       |
 | TINYINT            | Bajt                           |
-| VARCHAR            | Řetězec                         |
-| TIMESTAMP          | DateTime                       |
+| VARCHAR            | String                         |
+| TIMESTAMP          | Datum a čas                       |
 | VARBINARY          | Byte[]                         |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání

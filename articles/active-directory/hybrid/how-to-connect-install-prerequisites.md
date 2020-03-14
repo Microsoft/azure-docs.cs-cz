@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc76f8edc8520ca50cd4c9527b037d99d24ce63c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376005"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261460"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Předpoklady pro Azure AD Connect
 Toto téma popisuje předpoklady a požadavky na hardware pro Azure AD Connect.
@@ -67,7 +67,7 @@ Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
 
 * Nasaďte Azure AD Connect na serveru připojeném k doméně a omezte přístup pro správu na správce domény nebo na jiné pevně kontrolované skupiny zabezpečení.
 
-Další informace naleznete v tématu: 
+Další informace naleznete v tématu: 
 
 * [Zabezpečení skupin správců](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
@@ -129,7 +129,7 @@ Další informace naleznete v tématu:
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Další
 * Volitelné: testovací uživatelský účet pro ověření synchronizace.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti

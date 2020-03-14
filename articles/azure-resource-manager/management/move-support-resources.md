@@ -4,11 +4,11 @@ description: Zobrazuje seznam typů prostředků Azure, které se dají přesuno
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: 8ab194ad240e4f3e0994314ef9ade3bc7159cf81
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387701"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273927"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout podporu operací pro prostředky
 Tento článek uvádí, jestli typ prostředku Azure podporuje operaci přesunu. Poskytuje taky informace o zvláštních podmínkách, které je potřeba vzít v úvahu při přesunu prostředku.
@@ -212,7 +212,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | služba | Ano | Ano |
+> | service | Ano | Ano |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -426,7 +426,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -441,7 +441,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Galerie/image/verze | Ne | Ne |
 > | hostgroups | Ne | Ne |
 > | hostgroups/hostitelé | Ne | Ne |
-> | images | Ano | Ano |
+> | obrázky | Ano | Ano |
 > | proximityplacementgroups | Ne | Ne |
 > | restorepointcollections | Ne | Ne |
 > | sharedvmimages | Ne | Ne |
@@ -465,7 +465,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | poplatky za | Ne | Ne |
 > | costtags | Ne | Ne |
 > | dobropis | Ne | Ne |
-> | stránka events | Ne | Ne |
+> | události | Ne | Ne |
 > | prognózy | Ne | Ne |
 > | ŠARŽ | Ne | Ne |
 > | Tržišť | Ne | Ne |
@@ -530,7 +530,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -544,9 +544,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | exporty | Ne | Ne |
 > | externalsubscriptions | Ne | Ne |
 > | Prognózy | Ne | Ne |
-> | query | Ne | Ne |
+> | dotaz | Ne | Ne |
 > | Reportconfigs | Ne | Ne |
-> | reports | Ne | Ne |
+> | sestavy | Ne | Ne |
 > | showbackrules | Ne | Ne |
 > | views | Ne | Ne |
 
@@ -629,14 +629,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
@@ -659,7 +659,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
@@ -694,7 +694,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servicetopologies | Ano | Ano |
 > | servicetopologies/služby | Ano | Ano |
 > | servicetopologies/služby/serviceunits | Ano | Ano |
-> | kroky | Ano | Ano |
+> | Kroky | Ano | Ano |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -784,7 +784,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -862,12 +862,12 @@ Přejít na obor názvů poskytovatele prostředků:
 > | EventType | Ne | Ne |
 > | extendeddiagnosticsettings | Ne | Ne |
 > | logdefinitions | Ne | Ne |
-> | Protokoly | Ne | Ne |
+> | protokoly | Ne | Ne |
 > | metricalerts | Ne | Ne |
 > | metricbaselines | Ne | Ne |
 > | metricdefinitions | Ne | Ne |
 > | metricnamespaces | Ne | Ne |
-> | Průzkumníku metrik | Ne | Ne |
+> | metrics | Ne | Ne |
 > | myworkbooks | Ne | Ne |
 > | privatelinkscopes | Ano | Ano |
 > | scheduledqueryrules | Ano | Ano |
@@ -932,14 +932,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -974,7 +974,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 > | účty/pracovní prostory | Ne | Ne |
 > | účty/pracovní prostory/projekty | Ne | Ne |
 > | teamaccounts | Ne | Ne |
@@ -986,7 +986,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 
@@ -1024,7 +1024,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1161,7 +1161,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | managementassociations | Ne | Ne |
 > | managementconfigurations | Ano | Ano |
-> | Řešení | Ano | Ano |
+> | řešení | Ano | Ano |
 > | views | Ano | Ano |
 
 ## <a name="microsoftpeering"></a>Microsoft.Peering
@@ -1215,14 +1215,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftproviderhub"></a>Microsoft. ProviderHub
 
@@ -1265,7 +1265,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | availabilitystatuses | Ne | Ne |
 > | childavailabilitystatuses | Ne | Ne |
 > | childresources | Ne | Ne |
-> | stránka events | Ne | Ne |
+> | události | Ne | Ne |
 > | oznámení | Ne | Ne |
 
 ## <a name="microsoftresources"></a>Microsoft. Resources
@@ -1328,7 +1328,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | entityqueries | Ne | Ne |
 > | incidenty | Ne | Ne |
 > | officeconsents | Ne | Ne |
-> | settings | Ne | Ne |
+> | nastavení | Ne | Ne |
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 
@@ -1534,7 +1534,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | account | Ne | Ne |
+> | účet | Ne | Ne |
 > | účet/rozšíření | Ano | Ano |
 > | účet/projekt | Ano | Ano |
 
@@ -1555,7 +1555,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 > | Plánují | Ano | Ano |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

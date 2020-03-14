@@ -4,11 +4,11 @@ description: Tento článek obsahuje informace o řešení potíží, ke kterým
 ms.date: 08/20/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382527"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252386"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Řešení problémů se zálohováním sdílených složek Azure
 
@@ -31,7 +31,7 @@ Zálohování sdílených složek Azure v účtech úložiště s replikací [z�
 
 Následující tabulka se týká konfigurace zálohování:
 
-| Chybové zprávy | Alternativní řešení nebo tipy k řešení |
+| Chybovými zprávami | Alternativní řešení nebo tipy k řešení |
 | ------------------ | ----------------------------- |
 | Nemůžu najít svůj účet úložiště pro konfiguraci zálohování sdílené složky Azure. | <ul><li>Počkejte na dokončení zjišťování. <li>Zkontrolujte, jestli nějaká sdílená složka z daného účtu úložiště již není chráněná pomocí jiného trezoru služby Recovery Services. **Poznámka:** Všechny sdílené složky v účtu úložiště je možné chránit pouze v jednom trezoru služby Recovery Services. <li>Ujistěte se, že se sdílená složka nenachází v žádném z nepodporovaných účtů úložiště.<li> Ujistěte se, že účet úložiště má zaškrtnuté políčko **umožnit důvěryhodné služby Microsoftu přístup k tomuto účtu úložiště** . [Další informace](../storage/common/storage-network-security.md)|
 | Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo. | Pokud máte partnerské předplatné (s podporou poskytovatele CSP), chybu ignorujte. Pokud vaše předplatné nepodporuje poskytovatele CSP a vaše účty úložiště nejde zjistit, kontaktujte podporu.|
@@ -42,7 +42,7 @@ Následující tabulka se týká konfigurace zálohování:
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>Chybové zprávy pro selhání úloh zálohování nebo obnovení
 
-| Chybové zprávy | Alternativní řešení nebo tipy k řešení |
+| Chybovými zprávami | Alternativní řešení nebo tipy k řešení |
 | -------------- | ----------------------------- |
 | Operace selhala, protože se sdílená složka nenašla. | Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná.|
 | Účet úložiště se nenašel nebo se nepodporuje. | <ul><li>Ujistěte se, že účet úložiště existuje ve skupině prostředků a nebyl z ní odstraněn nebo odebrán po posledním ověření. <li> Ujistěte se, že účet úložiště podporuje zálohování sdílených složek.|
@@ -60,7 +60,7 @@ Následující tabulka se týká konfigurace zálohování:
 
 ## <a name="modify-policy"></a>Upravit zásadu
 
-| Chybové zprávy | Alternativní řešení nebo tipy k řešení |
+| Chybovými zprávami | Alternativní řešení nebo tipy k řešení |
 | ------------------ | ----------------------------- |
 | Pro tuto položku probíhá jiná operace konfigurace ochrany. | Počkejte prosím, než se předchozí operace Upravit zásadu dokončí, a zkuste to za chvíli znovu.|
 | U vybrané položky právě probíhá jiná operace. | Počkejte prosím na dokončení jiné probíhající operace a zkuste to znovu po nějaké době. |

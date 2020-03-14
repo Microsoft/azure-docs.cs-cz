@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356641"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244963"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
 
@@ -28,7 +28,7 @@ Naučte se přidávat, měnit a odebírat veřejné a privátní IP adresy pro s
 
 Pokud potřebujete vytvořit, změnit nebo odstranit síťové rozhraní, přečtěte si článek [Správa síťového rozhraní](virtual-network-network-interface.md) . Pokud potřebujete přidat síťová rozhraní nebo odebrat síťová rozhraní z virtuálního počítače, přečtěte si článek [Přidání nebo odebrání síťových rozhraní](virtual-network-network-interface-vm.md) .
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -51,7 +51,7 @@ K síťovému rozhraní můžete podle potřeby přidat tolik [privátních](#pr
 4. V části **Konfigurace protokolu IP**vyberte **+ Přidat**.
 5. Zadejte následující příkaz a pak vyberte **OK**:
 
-   |Nastavení|Povinné?|Podrobnosti|
+   |Nastavení|Požadováno?|Podrobnosti|
    |---|---|---|
    |Název|Ano|Musí být pro síťové rozhraní jedinečné.|
    |Typ|Ano|Vzhledem k tomu, že přidáváte konfiguraci IP adres do stávajícího síťového rozhraní a každé síťové rozhraní musí mít konfiguraci [primárního](#primary) protokolu IP, je vaše jediná možnost **sekundární**.|
@@ -63,7 +63,7 @@ K síťovému rozhraní můžete podle potřeby přidat tolik [privátních](#pr
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
+|CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Změnit nastavení IP adresy
@@ -84,7 +84,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
+|CLI|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Odebrat IP adresy
@@ -100,7 +100,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ Network nic IP-config DELETE](/cli/azure/network/nic/ip-config)|
+|CLI|[AZ Network nic IP-config DELETE](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>Konfigurace IP
@@ -129,7 +129,7 @@ Kromě konfigurace primárního protokolu IP může být k síťovému rozhraní
 
 [Konfiguraci protokolu IP](#ip-configurations)můžete přiřadit následující typy IP adres:
 
-### <a name="private"></a>Private
+### <a name="private"></a>Privátní
 
 Privátní adresy [IPv4](#ipv4) nebo IPv6 umožňují virtuálnímu počítači komunikovat s ostatními prostředky ve virtuální síti nebo v jiných propojených sítích. 
 
@@ -163,14 +163,14 @@ Existují omezení pro počet privátních a veřejných IP adres, které může
 
 Veřejné a privátní IP adresy se přiřazují pomocí jedné z následujících metod přiřazení:
 
-### <a name="dynamic"></a>Dynamická
+### <a name="dynamic"></a>Dynamické
 
 Ve výchozím nastavení jsou přiřazovány dynamické privátní adresy IPv4 a IPv6 (volitelně).
 
 - **Pouze veřejný**: Azure přiřadí adresu z rozsahu, který je jedinečný pro každou oblast Azure. Informace o tom, které rozsahy jsou přiřazeny ke každé oblasti, najdete v tématu [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653). Adresa se může změnit, když je virtuální počítač zastavený (přidělení zrušeno), a pak se znovu spustí. Veřejné adrese IPv6 nelze přiřadit ke konfiguraci protokolu IP pomocí metody přiřazení.
 - **Pouze soukromý**: Azure si vyhrazuje první čtyři adresy v každém rozsahu adres podsítě a adresy nepřiřazují. Azure přiřadí prostředku další dostupnou adresu z rozsahu adres podsítě. Pokud je například rozsah adres podsítě 10.0.0.0/16 a adresy 10.0.0.0.4–10.0.0.14 už jsou přiřazené (.0–.3 jsou vyhrazené), Azure prostředku přiřadí adresu 10.0.0.15. Dynamická metoda přidělování je výchozí metoda. Jakmile jsou dynamické IP adresy přiřazené, uvolní se pouze v případě odstranění síťového rozhraní, jeho přiřazení k jiné podsíti ve stejné virtuální síti nebo změně metody přidělování na statickou a zadání jiné IP adresy. Když změníte metodu přidělování z dynamické na statickou, Azure ve výchozím nastavení jako statickou IP adresu přiřadí dříve dynamicky přiřazenou adresu. 
 
-### <a name="static"></a>Statická
+### <a name="static"></a>Statické
 
 K konfiguraci protokolu IP můžete (volitelně) přiřadit veřejnou nebo soukromou statickou adresu IPv4 nebo IPv6. Další informace o tom, jak Azure přiřazuje statické veřejné adresy IPv4, najdete v tématu [veřejné IP adresy](virtual-network-public-ip-address.md).
 
@@ -204,7 +204,7 @@ Veřejná IP adresa se vytvoří se základní nebo standardní SKU. Další inf
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete vytvořit virtuální počítač s různými konfiguracemi IP adres, přečtěte si následující články:
 
-|Úkol|Nástroj|
+|Úloha|Nástroj|
 |---|---|
 |Vytvoření virtuálního počítače s několika síťovými rozhraními|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Vytvoření virtuálního počítače s jedním síťovým ADAPTÉRem s více adresami IPv4|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

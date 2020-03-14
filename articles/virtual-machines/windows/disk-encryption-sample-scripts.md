@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 50addbec1717c7bb76a248053dd889b09441f6f6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391485"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266725"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption ukázkové skripty 
 
@@ -46,9 +46,9 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
 |$keyVaultName|Název trezoru klíčů, ve které šifrovací klíče jsou umístit. Nový trezor s tímto názvem bude vytvořen, pokud neexistuje.| True|
 |$location|Umístění trezoru klíčů. Ujistěte se, že trezor klíčů a virtuální počítače k šifrování jsou ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzLocation`.|True|
 |$subscriptionId|Identifikátor předplatného Azure, který se má použít.  Své ID předplatného můžete získat pomocí rutiny `Get-AzSubscription`.|True|
-|$aadAppName|Název aplikace Azure AD, která se použije k zápisu tajných klíčů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace už existuje, předejte parametr aadClientSecret skriptu.|False|
-|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který jste vytvořili dříve.|False|
-|$keyEncryptionKeyName|Název volitelné šifrovací klíč klíče v trezoru klíčů. Nový klíč s tímto názvem bude vytvořen, pokud neexistuje.|False|
+|$aadAppName|Název aplikace Azure AD, která se použije k zápisu tajných klíčů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace už existuje, předejte parametr aadClientSecret skriptu.|Nepravda|
+|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který jste vytvořili dříve.|Nepravda|
+|$keyEncryptionKeyName|Název volitelné šifrovací klíč klíče v trezoru klíčů. Nový klíč s tímto názvem bude vytvořen, pokud neexistuje.|Nepravda|
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 

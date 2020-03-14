@@ -9,21 +9,23 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: ee4ef451888638c0ba33d7938c88b836b28f3fe5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f7146db33368877b8eb029e106559477376c5953
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894631"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217910"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Získání podpory a školení pro Azure Machine Learning Studio (Classic)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Tento článek poskytuje informace o tom, jak získat další informace o Azure Machine Learning Studio (Classic) a získat podporu pro vaše otázky a otázky.
 
 ## <a name="learn-more-about-studio-classic"></a>Další informace o studiu (klasické)
 
 Podívejte se na naše studijní materiály:
-+ [Kurzy a články s návody](../studio/index.yml) 
++ [Kurzy a články s postupy](../studio/index.yml) 
 + [Videa pro začátečníky pro datové vědy](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
 + [Taháky algoritmu](../studio/algorithm-cheat-sheet.md) 
 
@@ -39,6 +41,6 @@ Podívejte se na tyto prostředky podpory:
 
 + **Fórum uživatele**: Položte otázky, odpovězte na otázky a připojte se k ostatním uživatelům ve [fóru podpory Azure Machine Learning Studio (Classic) na webu MSDN](https://aka.ms/aml-forum-studio).
 
-+ **Stack Overflow**: navštívit komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) označené "Azure Machine Learning".
++ **Stack Overflow**: Navštivte komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) , která je označená jako Azure-Machine-Learning.
 
 + **Sdílejte návrhy produktů** a žádosti o funkce v našem [kanálu Azure Machine Learning Feedback](https://feedback.azure.com/forums/257792-machine-learning). Pokud chcete svůj názor sdílet, vyberte na konci každého článku tlačítko **Zpětná vazba produktu** .

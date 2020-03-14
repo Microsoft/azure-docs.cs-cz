@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355807"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281870"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -320,7 +320,7 @@ Domovská stránka vám umožní provést následující akce:
 * **Naplánujte aktualizace** v určitou dobu dnů.
 * Zobrazit datum **Poslední aktualizace**brány
 
-### <a name="settings-page"></a>Stránka Nastavení
+### <a name="settings-page"></a>Stránka nastavení
 Stránka nastavení vám umožňuje provést následující akce:
 
 * Zobrazení, změna a export **certifikátu** používaného bránou. Tento certifikát se používá k šifrování přihlašovacích údajů ke zdroji dat.

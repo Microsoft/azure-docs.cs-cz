@@ -9,18 +9,22 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 11/12/2019
-ms.openlocfilehash: 34aba3c00ac0026abebbdfc93143aa5e7f788e8b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/12/2020
+ms.openlocfilehash: 464ec1fcf0986dc04bd92bbe9e31b5675e5822d4
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268483"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136189"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nasazené do koncových bodů webové služby ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI) povolením Azure Application Insights. Kromě shromažďování vstupních dat a odpovědí koncového bodu můžete sledovat:
+V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nasazené do koncových bodů webové služby ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI) povolením Azure Application Insights přes 
+* [Sada Azure Machine Learning Python SDK](#python)
+* [Azure Machine Learning Studio](#studio) na https://ml.azure.com
+
+Kromě shromažďování výstupních dat a odpovědí koncového bodu můžete sledovat:
 
 * Sazby požadavků, doba odezvy a frekvence selhání
 * Sazby závislosti, doba odezvy a frekvence selhání
@@ -29,11 +33,12 @@ V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nas
 [Přečtěte si další informace o Azure Application Insights](../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovnímu prostoru Azure Machine Learning, místní adresář, který obsahuje skripty a sady SDK Azure Machine Learning pro Python nainstalován. Informace o tom, jak tyto požadavky získat, najdete v tématu [Jak konfigurovat vývojové prostředí](how-to-configure-environment.md) .
+
 * Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS) nebo Azure Container Instance (ACI). Pokud ho nemáte, přečtěte si kurz pro [model klasifikace imagí v výukovém](tutorial-train-models-with-aml.md) programu.
 
 ## <a name="web-service-metadata-and-response-data"></a>Metadata a data odpovědi webové služby
@@ -42,6 +47,8 @@ V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nas
 > Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, budou protokolovány pouze nejaktuálnější výstupy modelu. 
 
 Metadata a odpověď na službu – odpovídající metadatům webové služby a předpovědi modelu – se zaznamenávají do trasování Azure Application Insights v `"model_data_collection"`zpráv. Můžete se dotázat na Azure Application Insights přímo pro přístup k těmto datům nebo nastavit [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do účtu úložiště pro delší dobu uchovávání nebo dalšího zpracování. Data modelu se pak dají použít v Azure Machine Learning k nastavení označování, rekurze, vyjasnění, analýze dat nebo jiné použití. 
+
+<a name="python"></a>
 
 ## <a name="use-python-sdk-to-configure"></a>Použití sady Python SDK ke konfiguraci 
 
@@ -86,11 +93,27 @@ Pokud chcete zakázat službu Azure Application Insights, použijte následujíc
 <service_name>.update(enable_app_insights=False)
 ```
 
+<a name="studio"></a>
+
+## <a name="use-azure-machine-learning-studio-to-configure"></a>Použití Azure Machine Learning studia ke konfiguraci
+
+Pokud jste připraveni nasadit model pomocí těchto kroků, můžete Azure Application Insights taky povolit z Azure Machine Learning studia.
+
+1. Přihlaste se ke svému pracovnímu prostoru na adrese https://ml.azure.com/
+1. Přejít na **modely** a vybrat model, který chcete nasadit
+1. Vybrat **+ nasadit**
+1. Naplnění formuláře **nasazení modelu**
+1. Rozbalte nabídku **Upřesnit** .
+
+    ![Formulář nasazení](./media/how-to-enable-app-insights/deploy-form.png)
+1. Vyberte **Povolit diagnostiku Application Insights a shromažďování dat** .
+
+    ![Povolit App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
 ## <a name="evaluate-data"></a>Vyhodnocení dat
 Data vaší služby se ukládají do účtu Azure Application Insights v rámci stejné skupiny prostředků jako Azure Machine Learning.
 Chcete-li zobrazit ho:
 
-1. Přejděte do pracovního prostoru Azure Machine Learning v aplikaci [Azure Machine Learning Studio](https://ml.azure.com) a klikněte na odkaz Application Insights.
+1. V [Azure Portal](https://ms.portal.azure.com/) přejděte do svého pracovního prostoru Azure Machine Learning a klikněte na odkaz Application Insights.
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 

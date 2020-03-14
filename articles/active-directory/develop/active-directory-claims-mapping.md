@@ -14,11 +14,11 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375809"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263189"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -88,7 +88,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | cloud_instance_name |
 | cnf |
 | code |
-| ovládací prvky |
+| controls |
 | credential_keys |
 | csr |
 | csr_type |
@@ -177,7 +177,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | unique_name |
 | názvu |
 | user_setting_sync_url |
-| uživatelské jméno |
+| username jméno |
 | uti |
 | ver |
 | verified_primary_email |
@@ -328,7 +328,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | aplikace, prostředek, cílová skupina | DisplayName | Zobrazované jméno |
 | aplikace, prostředek, cílová skupina | s objekty | Objektu |
 | aplikace, prostředek, cílová skupina | značek | Značka objektu služby |
-| Společnost | tenantcountry | Země tenanta |
+| Společnosti | tenantcountry | Země tenanta |
 
 **TransformationID:** Element TransformationID se musí poskytnout jenom v případě, že je zdrojový element nastavený na transformaci.
 
@@ -524,6 +524,6 @@ V tomto příkladu vytvoříte zásadu, která emituje vlastní deklaraci identi
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 Informace o tom, jak přizpůsobit deklarace identity vydané v tokenu SAML prostřednictvím Azure Portal, najdete v tématu [How to: Customize Claims vydaných v tokenu SAML pro podnikové aplikace.](active-directory-saml-claims-customization.md)

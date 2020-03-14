@@ -15,11 +15,11 @@ ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378327"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264086"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -111,7 +111,7 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 
 - Salesforce
 - ServiceNow
-- Workday
+- Pracovní den
 - Azure Active Directory (podporuje se[Referenční dokumentace Microsoft Graph REST API v 1.0](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) a vlastní rozšíření adresáře)
 - Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643), ve kterých je potřeba přidat atributy definované ve [schématu Core](https://tools.ietf.org/html/rfc7643)
 

@@ -16,11 +16,11 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d6624b9d5d77a8552584049463b63738bbf17627
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394317"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238598"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem pomocí Azure CLI
 
@@ -65,7 +65,7 @@ Před vytvořením virtuální sítě vytvořte skupinu prostředků pomocí př
 az group create --name myRGNetwork --location eastus
 ```
 
-### <a name="create-virtual-network"></a>Vytvoření virtuální sítě
+### <a name="create-virtual-network"></a>Vytvořit virtuální síť
 
 Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť. V tomto příkladu se síť jmenuje *myVNet* a má předponu adresy *10.0.0.0/16*. Vytvoří se také podsíť s názvem *myFrontendSubnet* a předponou *10.0.1.0/24*. Později v tomto kurzu se k této síti připojí front-endový virtuální počítač. 
 

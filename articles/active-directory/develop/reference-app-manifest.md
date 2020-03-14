@@ -12,12 +12,12 @@ ms.date: 03/03/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: d605bc50d40cd1e221dc2cf3a247662a1e166fec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: a12715ba9aac77461d4968bd9b8f3de30af243c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377400"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262747"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory manifest aplikace
 
@@ -39,47 +39,209 @@ Konfigurace manifestu aplikace:
 
 ## <a name="manifest-reference"></a>Odkaz na manifest
 
-> [!NOTE]
-> Pokud se po **popisu**nezobrazí sloupec **Příklad hodnoty** , maximalizujte okno prohlížeče a posuňte se nebo potáhněte prstem, dokud se nezobrazí sloupec **Příklad hodnoty** .
 
-| Klíč, typ hodnoty | Popis  | Příklad hodnoty |
-|---------|---------|---------|
-| `accessTokenAcceptedVersion`, hodnota Nullable Int32 | Určuje verzi přístupového tokenu, kterou prostředek očekával. Tento parametr změní verzi a formát tokenu JWT vyprodukovaného nezávisle na koncovém bodu nebo klientovi, který se použil k vyžádání přístupového tokenu.<br/><br/>Koncový bod použitý v 1.0 nebo v 2.0 je vybraný klientem a má vliv jenom na verzi id_tokens. Prostředky musí explicitně konfigurovat `accesstokenAcceptedVersion`, aby označovaly formát podporovaného přístupového tokenu.<br/><br/>Možné hodnoty pro `accesstokenAcceptedVersion` jsou 1, 2 nebo null. Pokud je hodnota null, tento parametr se nastaví na hodnotu 1, která odpovídá koncovému bodu v 1.0. <br/><br/>Pokud je `AzureADandPersonalMicrosoftAccount``signInAudience`, musí být hodnota `2`  | `2` |
-| `addIns`, kolekce | Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy, mohou nastavovat vlastnost addIns pro její funkci "Nástroj pro vyřizování souborů". Tento parametr umožní službám, jako je Office 365, volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje. | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
-| `allowPublicClient`, logická hodnota | Určuje typ záložní aplikace. Služba Azure AD ve výchozím nastavení odvodí typ aplikace z replyUrlsWithType. Existují některé scénáře, kdy služba Azure AD nemůže určit typ klientské aplikace. Například jedním z takových scénářů je [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) tok, ve kterém se požadavek HTTP stane bez přesměrování adresy URL). V těchto případech služba Azure AD bude interpretovat typ aplikace na základě hodnoty této vlastnosti. Pokud je tato hodnota nastavená na true, typ záložní aplikace se nastaví jako veřejný klient, jako je například nainstalovaná aplikace spuštěná v mobilním zařízení. Výchozí hodnota je false, což znamená, že typ záložní aplikace je důvěrný klient, jako je například webová aplikace. | `false` |
-| `availableToOtherTenants`, logická hodnota | true, pokud je aplikace sdílená s ostatními klienty; v opačném případě false. <br><br> _Poznámka: Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `signInAudience`._ | |
-| `appId`řetězec | Určuje jedinečný identifikátor pro aplikaci, která je přiřazená aplikaci pomocí Azure AD. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
-| `appRoles`, kolekce | Určuje kolekci rolí, které může aplikace deklarovat. Tyto role se dají přiřadit uživatelům, skupinám nebo objektům služby. Další příklady a informace najdete v tématu [Přidání rolí aplikace v aplikaci a jejich přijetí v tokenu](howto-add-app-roles-in-azure-ad-apps.md) . | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
-| `displayName`řetězec | Zobrazovaný název aplikace <br><br> _Poznámka: Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `name`._ | `"MyRegisteredApp"` |
-| `errorUrl`řetězec | Nepodporováno. | |
-| `groupMembershipClaims`řetězec | Nakonfiguruje deklaraci identity `groups` vydanou v uživatelském nebo přístupovém tokenu OAuth 2,0, kterou očekává aplikace. Chcete-li nastavit tento atribut, použijte jednu z následujících platných řetězcových hodnot:<br/><br/>- `"None"`<br/>- `"SecurityGroup"` (pro skupiny zabezpečení a role Azure AD)<br/>- `"All"` (zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře služby Azure AD, kterých je přihlášený uživatel členem. | `"SecurityGroup"` |
-| `homepage`řetězec | Adresa URL domovské stránky aplikace <br><br> _Poznámka: Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `signInUrl`._ | `"https://MyRegisteredApp"` |
-| `objectId`řetězec | Jedinečný identifikátor aplikace v adresáři <br><br> _Poznámka: Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `id`._ | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
-| `optionalClaims`řetězec | Volitelné deklarace identity vrácené v tokenu službou tokenu zabezpečení pro tuto konkrétní aplikaci.<br>V tuto chvíli aplikace, které podporují osobní účty i službu Azure AD (zaregistrované prostřednictvím portálu pro registraci aplikací), nemůžou používat volitelné deklarace identity. Aplikace zaregistrované pro jenom Azure AD pomocí koncového bodu v 2.0 ale můžou získat volitelné deklarace identity, které požadoval v manifestu. Další informace najdete v tématu [volitelné deklarace identity](active-directory-optional-claims.md). | `null` |
-| `id`řetězec | Jedinečný identifikátor aplikace v adresáři Toto ID není identifikátor používaný k identifikaci aplikace v jakékoli transakci protokolu. Používá se pro odkazování na objekt v dotazech adresářů. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
-| `identifierUris`, pole řetězců | Uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího tenanta Azure AD, nebo v ověřené vlastní doméně, pokud je aplikace více tenantů. | <code>[<br>&nbsp;&nbsp;"https://MyRegisteredApp"<br>]</code> |
-| `informationalUrls`řetězec | Určuje odkazy na podmínku služby a prohlášení o zásadách ochrany osobních údajů aplikace. Podmínky služby a prohlášení o zásadách ochrany osobních údajů jsou v souladu s uživatelským prostředím týkajícím se souhlasu uživatele. Další informace najdete v tématu [Postup: Přidání podmínek služby a prohlášení o zásadách ochrany osobních údajů pro registrované aplikace služby Azure AD](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
-| `keyCredentials`, kolekce | Obsahuje odkazy na přihlašovací údaje přiřazené aplikacím, sdílené tajné klíče založené na řetězci a certifikáty X. 509. ). | <code>[<br>&nbsp;{<br>&nbsp;&These credentials are used when requesting access tokens (when the app is acting as a client rather that as resourcenbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> |
-| `knownClientApplications`, pole řetězců | Používá se ke sdružování souhlasu, pokud máte řešení, které obsahuje dvě části: klientská aplikace a vlastní aplikace webového rozhraní API. Pokud zadáte appID klientské aplikace do této hodnoty, bude uživatel muset pro klientskou aplikaci pouze odsouhlasit. Služba Azure AD bude mít za to, že se souhlasem s klientem znamená, že implicitně souhlasí s webovým rozhraním API. Budou automaticky zřizovat instanční objekty pro klientské i webové rozhraní API současně. Klient i aplikace webového rozhraní API musí být zaregistrované ve stejném tenantovi. | `["f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"]` |
-| `logoUrl`řetězec | Hodnota jen pro čtení, která odkazuje na adresu URL CDN na logo, které se nahrálo na portálu. | `"https://MyRegisteredAppLogo"` |
-| `logoutUrl`řetězec | Adresa URL pro odhlášení z aplikace | `"https://MyRegisteredAppLogout"` |
-| `name`řetězec | Zobrazovaný název aplikace | `"MyRegisteredApp"` |
-| `oauth2AllowImplicitFlow`, logická hodnota | Určuje, jestli tato webová aplikace může vyžádat tokeny přístupu implicitního toku OAuth 2.0. Výchozí hodnota je false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou například jednostránkové aplikace JavaScriptu. Pokud se chcete dozvědět víc, zadejte `OAuth 2.0 implicit grant flow` v obsahu a podívejte se na témata o implicitním toku. | `false` |
-| `oauth2AllowIdTokenImplicitFlow`, logická hodnota | Určuje, jestli tato webová aplikace může vyžádat tokeny pro implicitní ID toku OAuth 2.0. Výchozí hodnota je false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou například jednostránkové aplikace JavaScriptu. | `false` |
-| `oauth2Permissions`, kolekce | Určuje kolekci oborů oprávnění OAuth 2,0, které aplikace webového rozhraní API (Resource) zpřístupňuje klientským aplikacím. Tyto obory oprávnění se můžou klientským aplikacím udělit během souhlasu. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"adminConsentDescription":"Allow the app to access resources on behalf of the signed-in user.",<br>&nbsp;&nbsp;&nbsp;"adminConsentDisplayName":"Access resource1",<br>&nbsp;&nbsp;&nbsp;"id":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"type":"User",<br>&nbsp;&nbsp;&nbsp;"userConsentDescription":"Allow the app to access resource1 on your behalf.",<br>&nbsp;&nbsp;&nbsp;"userConsentDisplayName":"Access resources",<br>&nbsp;&nbsp;&nbsp;"value":"user_impersonation"<br>&nbsp;&nbsp;}<br>] </code>|
-| `oauth2RequiredPostResponse`, logická hodnota | Určuje, jestli v rámci požadavků na token OAuth 2,0 Azure AD umožní žádosti POST, a to na rozdíl od získání požadavků. Výchozí hodnota je false (NEPRAVDA), která určuje, že budou povoleny pouze požadavky GET. | `false` |
-| `parentalControlSettings`řetězec | `countriesBlockedForMinors` určuje země, ve kterých je aplikace blokovaná pro nezletilé.<br>`legalAgeGroupRule` Určuje pravidlo věkové skupiny platné pro uživatele aplikace. Dá se nastavit na `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors`, `RequireConsentForKids`nebo `BlockMinors`.  | <code>{<br>&nbsp;&nbsp;&nbsp;"countriesBlockedForMinors":[],<br>&nbsp;&nbsp;&nbsp;"legalAgeGroupRule":"Allow"<br>} </code> |
-| `passwordCredentials`, kolekce | Přečtěte si popis vlastnosti `keyCredentials`. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2016-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;&nbsp;}<br>] </code> |
-| `preAuthorizedApplications`, kolekce | Vypíše aplikace a požadovaná oprávnění pro implicitní souhlas. Vyžaduje, aby správce poskytl souhlas s aplikací. preAuthorizedApplications nevyžaduje, aby uživatel mohl udělit souhlas s požadovanými oprávněními. Oprávnění uvedená v preAuthorizedApplications nevyžadují souhlas uživatele. Nicméně jakákoli další požadovaná oprávnění, která nejsou uvedená v preAuthorizedApplications, vyžadují souhlas uživatele. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"appId": "abcdefg2-000a-1111-a0e5-812ed8dd72e8",<br>&nbsp;&nbsp;&nbsp;&nbsp;"permissionIds": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"8748f7db-21fe-4c83-8ab5-53033933c8f1"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>]</code> |
-| `publicClient`, logická hodnota | Určuje, jestli je tato aplikace veřejným klientem (například nainstalovaná aplikace spuštěná v mobilním zařízení). <br><br> _Poznámka: Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `allowPublicClient`._ | |
-| `publisherDomain`řetězec | Ověřená doména vydavatele pro aplikaci. Jen pro čtení. | https://www.contoso.com |
-| `replyUrls`, pole řetězců | Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů. <br><br> _Poznámka: Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `replyUrlsWithType`._ | |
-| `replyUrlsWithType`, kolekce | Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů. Každá hodnota identifikátoru URI by měla obsahovat přidruženou hodnotu typu aplikace. Podporované hodnoty typu jsou: <ul><li>`Web`</li><li>`InstalledClient`</li></ul><br> Přečtěte si další informace o [omezeních a](https://docs.microsoft.com/azure/active-directory/develop/reply-url)omezeních replyUrl. | <code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> |
-| `requiredResourceAccess`, kolekce | S dynamickým souhlasem `requiredResourceAccess` zařídí prostředí pro vyjádření souhlasu správce a možnosti souhlasu uživatele pro uživatele, kteří používají statický souhlas. Tento parametr ale neřídí uživatelské prostředí pro vyjádření souhlasu uživatele pro obecný případ.<br>`resourceAppId` je jedinečný identifikátor pro prostředek, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být stejná jako appId deklarované v cílové aplikaci prostředků.<br>`resourceAccess` je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace od zadaného prostředku vyžaduje. Obsahuje hodnoty `id` a `type` zadaných prostředků. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> |
-| `samlMetadataUrl`řetězec | Adresa URL metadat SAML pro aplikaci | `https://MyRegisteredAppSAMLMetadata` |
-| `signInUrl`řetězec | Určuje adresu URL domovské stránky aplikace. | `https://MyRegisteredApp` |
-| `signInAudience`řetězec | Určuje, jaké účty Microsoft se pro aktuální aplikaci podporují. Podporované hodnoty jsou:<ul><li>**AzureADMyOrg** – uživatelé s pracovním nebo školním účtem Microsoft v TENANTOVI Azure AD ve vaší organizaci (například jeden tenant)</li><li>**AzureADMultipleOrgs** – uživatelé s pracovním nebo školním účtem Microsoft v TENANTOVI Azure AD ve vaší organizaci (například víceklientské víceklientské úrovni)</li> <li>**AzureADandPersonalMicrosoftAccount** – uživatelé s osobní účet Microsoft nebo pracovní nebo školní účet v TENANTOVI Azure AD organizace</li></ul> | `AzureADandPersonalMicrosoftAccount` |
-| `tags`, pole řetězců | Vlastní řetězce, které lze použít ke kategorizaci a identifikaci aplikace. | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
+### <a name="key-value-type-accesstokenacceptedversion-nullable-int32"></a>Klíč, typ hodnoty: `accessTokenAcceptedVersion`, Nullable Int32 
+Určuje verzi přístupového tokenu, kterou prostředek očekával. Tento parametr změní verzi a formát tokenu JWT vyprodukovaného nezávisle na koncovém bodu nebo klientovi, který se použil k vyžádání přístupového tokenu.
+
+Koncový bod použitý v 1.0 nebo v 2.0 je vybraný klientem a má vliv jenom na verzi id_tokens. Prostředky musí explicitně konfigurovat `accesstokenAcceptedVersion`, aby označovaly formát podporovaného přístupového tokenu.
+
+Možné hodnoty pro `accesstokenAcceptedVersion` jsou 1, 2 nebo null. Pokud je hodnota null, tento parametr se nastaví na hodnotu 1, která odpovídá koncovému bodu v 1.0. 
+
+Pokud je `AzureADandPersonalMicrosoftAccount``signInAudience`, musí být hodnota `2`  
+
+Příklad hodnoty: `2` 
+
+### <a name="key-value-type-addins-collection"></a>Klíč, typ hodnoty: `addIns`, kolekce 
+Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy, mohou nastavovat vlastnost addIns pro její funkci "Nástroj pro vyřizování souborů". Tento parametr umožní službám, jako je Office 365, volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje. 
+
+Ukázková hodnota: 
+<code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>
+
+### <a name="key-value-type-allowpublicclient-boolean"></a>Klíč, typ hodnoty: `allowPublicClient`, logická hodnota 
+Určuje typ záložní aplikace. Služba Azure AD ve výchozím nastavení odvodí typ aplikace z replyUrlsWithType. Existují některé scénáře, kdy služba Azure AD nemůže určit typ klientské aplikace. Například jedním z takových scénářů je [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) tok, ve kterém se požadavek HTTP stane bez přesměrování adresy URL). V těchto případech služba Azure AD bude interpretovat typ aplikace na základě hodnoty této vlastnosti. Pokud je tato hodnota nastavená na true, typ záložní aplikace se nastaví jako veřejný klient, jako je například nainstalovaná aplikace spuštěná v mobilním zařízení. Výchozí hodnota je false, což znamená, že typ záložní aplikace je důvěrný klient, jako je například webová aplikace. 
+
+Příklad hodnoty: `false` 
+
+### <a name="key-value-type-availabletoothertenants-boolean"></a>Klíč, typ hodnoty: `availableToOtherTenants`, logická hodnota 
+true, pokud je aplikace sdílená s ostatními klienty; v opačném případě false. <br><br> Poznámka: Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `signInAudience`. 
+
+### <a name="key-value-type-appid-string"></a>Klíč, typ hodnoty: `appId`, řetězec 
+Určuje jedinečný identifikátor pro aplikaci, která je přiřazená aplikaci pomocí Azure AD. 
+
+Příklad hodnoty: `"601790de-b632-4f57-9523-ee7cb6ceba95"` 
+
+### <a name="key-value-type-approles-collection"></a>Klíč, typ hodnoty: `appRoles`, kolekce 
+Určuje kolekci rolí, které může aplikace deklarovat. Tyto role se dají přiřadit uživatelům, skupinám nebo objektům služby. Další příklady a informace najdete v tématu [Přidání rolí aplikace v aplikaci a jejich přijetí v tokenu](howto-add-app-roles-in-azure-ad-apps.md) . 
+
+Ukázková hodnota: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  
+
+### <a name="key-value-type-displayname-string"></a>Klíč, typ hodnoty: `displayName`, řetězec 
+Zobrazovaný název aplikace <br><br> Poznámka: Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `name`. 
+
+Příklad hodnoty: `"MyRegisteredApp"` 
+
+### <a name="key-value-type-errorurl-string"></a>Klíč, typ hodnoty: `errorUrl`, řetězec 
+Nepodporováno. 
+
+### <a name="key-value-type-groupmembershipclaims-string"></a>Klíč, typ hodnoty: `groupMembershipClaims`, řetězec 
+Nakonfiguruje deklaraci identity `groups` vydanou v uživatelském nebo přístupovém tokenu OAuth 2,0, kterou očekává aplikace. Chcete-li nastavit tento atribut, použijte jednu z následujících platných řetězcových hodnot:
+- `"None"`
+- `"SecurityGroup"` (pro skupiny zabezpečení a role Azure AD)
+- `"All"` (zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem. 
+
+Příklad hodnoty: `"SecurityGroup"` 
+
+### <a name="key-value-type-homepage-string"></a>Klíč, typ hodnoty: `homepage`, řetězec 
+Adresa URL domovské stránky aplikace <br><br> Poznámka: Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `signInUrl`. 
+
+Příklad hodnoty: `"https://MyRegisteredApp"` 
+
+### <a name="key-value-type-objectid-string"></a>Klíč, typ hodnoty: `objectId`, řetězec 
+Jedinečný identifikátor aplikace v adresáři <br><br> Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `id`. 
+
+Příklad hodnoty: `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` 
+
+### <a name="key-value-type-optionalclaims-string"></a>Klíč, typ hodnoty: `optionalClaims`, řetězec 
+Volitelné deklarace identity vrácené v tokenu službou tokenu zabezpečení pro tuto konkrétní aplikaci.<br>V tuto chvíli aplikace, které podporují osobní účty i službu Azure AD (zaregistrované prostřednictvím portálu pro registraci aplikací), nemůžou používat volitelné deklarace identity. Aplikace zaregistrované pro jenom Azure AD pomocí koncového bodu v 2.0 ale můžou získat volitelné deklarace identity, které požadoval v manifestu. Další informace najdete v tématu [volitelné deklarace identity](active-directory-optional-claims.md). 
+
+Ukázková hodnota:  
+`null` 
+
+### <a name="key-value-type-id-string"></a>Klíč, typ hodnoty: `id`, řetězec 
+Jedinečný identifikátor aplikace v adresáři Toto ID není identifikátor používaný k identifikaci aplikace v jakékoli transakci protokolu. Používá se pro odkazování na objekt v dotazech adresářů. 
+
+Příklad hodnoty: `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` 
+
+### <a name="key-value-type-identifieruris-string-array"></a>Klíč, typ hodnoty: `identifierUris`, pole řetězců 
+Uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího tenanta Azure AD, nebo v ověřené vlastní doméně, pokud je aplikace více tenantů. 
+
+Ukázková hodnota: 
+<code>[<br>&nbsp;&nbsp;"https://MyRegisteredApp"<br>]</code> 
+
+### <a name="key-value-type-informationalurls-string"></a>Klíč, typ hodnoty: `informationalUrls`, řetězec 
+Určuje odkazy na podmínku služby a prohlášení o zásadách ochrany osobních údajů aplikace. Podmínky služby a prohlášení o zásadách ochrany osobních údajů jsou v souladu s uživatelským prostředím týkajícím se souhlasu uživatele. Další informace najdete v tématu [Postup: Přidání podmínek služby a prohlášení o zásadách ochrany osobních údajů pro registrované aplikace služby Azure AD](howto-add-terms-of-service-privacy-statement.md). 
+
+Ukázková hodnota: 
+<code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> 
+
+### <a name="key-value-type-keycredentials-collection"></a>Klíč, typ hodnoty: `keyCredentials`, kolekce 
+Obsahuje odkazy na přihlašovací údaje přiřazené aplikacím, sdílené tajné klíče založené na řetězci a certifikáty X. 509. ). 
+
+Ukázková hodnota: 
+<code>[<br>&nbsp;{<br>&nbsp;&These credentials are used when requesting access tokens (when the app is acting as a client rather that as resourcenbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> 
+
+### <a name="key-value-type-knownclientapplications-string-array"></a>Klíč, typ hodnoty: `knownClientApplications`, pole řetězců 
+Používá se ke sdružování souhlasu, pokud máte řešení, které obsahuje dvě části: klientská aplikace a vlastní aplikace webového rozhraní API. Pokud zadáte appID klientské aplikace do této hodnoty, bude uživatel muset pro klientskou aplikaci pouze odsouhlasit. Služba Azure AD bude mít za to, že se souhlasem s klientem znamená, že implicitně souhlasí s webovým rozhraním API. Budou automaticky zřizovat instanční objekty pro klientské i webové rozhraní API současně. Klient i aplikace webového rozhraní API musí být zaregistrované ve stejném tenantovi. 
+
+Příklad hodnoty: `["f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"]` 
+
+### <a name="key-value-type-logourl-string"></a>Klíč, typ hodnoty: `logoUrl`, řetězec 
+Hodnota jen pro čtení, která odkazuje na adresu URL CDN na logo, které se nahrálo na portálu. 
+
+Příklad hodnoty: `"https://MyRegisteredAppLogo"` 
+
+### <a name="key-value-type-logouturl-string"></a>Klíč, typ hodnoty: `logoutUrl`, řetězec 
+Adresa URL pro odhlášení z aplikace 
+
+Ukázková hodnota:  
+`"https://MyRegisteredAppLogout"` 
+
+### <a name="key-value-type-name-string"></a>Klíč, typ hodnoty: `name`, řetězec 
+Zobrazovaný název aplikace 
+
+Příklad hodnoty: `"MyRegisteredApp"` 
+
+### <a name="key-value-type-oauth2allowimplicitflow-boolean"></a>Klíč, typ hodnoty: `oauth2AllowImplicitFlow`, logická hodnota 
+Určuje, jestli tato webová aplikace může vyžádat tokeny přístupu implicitního toku OAuth 2.0. Výchozí hodnota je false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou například jednostránkové aplikace JavaScriptu. Pokud se chcete dozvědět víc, zadejte `OAuth 2.0 implicit grant flow` v obsahu a podívejte se na témata o implicitním toku. 
+
+Příklad hodnoty: `false` 
+
+### <a name="key-value-type-oauth2allowidtokenimplicitflow-boolean"></a>Klíč, typ hodnoty: `oauth2AllowIdTokenImplicitFlow`, logická hodnota 
+Určuje, jestli tato webová aplikace může vyžádat tokeny pro implicitní ID toku OAuth 2.0. Výchozí hodnota je false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou například jednostránkové aplikace JavaScriptu. 
+
+Příklad hodnoty: `false` 
+
+### <a name="key-value-type-oauth2permissions-collection"></a>Klíč, typ hodnoty: `oauth2Permissions`, kolekce 
+Určuje kolekci oborů oprávnění OAuth 2,0, které aplikace webového rozhraní API (Resource) zpřístupňuje klientským aplikacím. Tyto obory oprávnění se můžou klientským aplikacím udělit během souhlasu. 
+
+Ukázková hodnota: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"adminConsentDescription":"Allow the app to access resources on behalf of the signed-in user.",<br>&nbsp;&nbsp;&nbsp;"adminConsentDisplayName":"Access resource1",<br>&nbsp;&nbsp;&nbsp;"id":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"type":"User",<br>&nbsp;&nbsp;&nbsp;"userConsentDescription":"Allow the app to access resource1 on your behalf.",<br>&nbsp;&nbsp;&nbsp;"userConsentDisplayName":"Access resources",<br>&nbsp;&nbsp;&nbsp;"value":"user_impersonation"<br>&nbsp;&nbsp;}<br>] </code>
+
+### <a name="key-value-type-oauth2requiredpostresponse-boolean"></a>Klíč, typ hodnoty: `oauth2RequiredPostResponse`, logická hodnota 
+Určuje, jestli v rámci požadavků na token OAuth 2,0 Azure AD umožní žádosti POST, a to na rozdíl od získání požadavků. Výchozí hodnota je false (NEPRAVDA), která určuje, že budou povoleny pouze požadavky GET. 
+
+Příklad hodnoty: `false` 
+
+### <a name="key-value-type-parentalcontrolsettings-string"></a>Klíč, typ hodnoty: `parentalControlSettings`, řetězec 
+
+`countriesBlockedForMinors` určuje země, ve kterých je aplikace blokovaná pro nezletilé.<br>`legalAgeGroupRule` Určuje pravidlo věkové skupiny platné pro uživatele aplikace. Dá se nastavit na `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors`, `RequireConsentForKids`nebo `BlockMinors`.  
+
+Ukázková hodnota: 
+<code>{<br>&nbsp;&nbsp;&nbsp;"countriesBlockedForMinors":[],<br>&nbsp;&nbsp;&nbsp;"legalAgeGroupRule":"Allow"<br>} </code> 
+
+### <a name="key-value-type-passwordcredentials-collection"></a>Klíč, typ hodnoty: `passwordCredentials`, kolekce 
+Přečtěte si popis vlastnosti `keyCredentials`. 
+
+Ukázková hodnota: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2016-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;&nbsp;}<br>] </code> 
+
+### <a name="key-value-type-preauthorizedapplications-collection"></a>Klíč, typ hodnoty: `preAuthorizedApplications`, kolekce 
+Vypíše aplikace a požadovaná oprávnění pro implicitní souhlas. Vyžaduje, aby správce poskytl souhlas s aplikací. preAuthorizedApplications nevyžaduje, aby uživatel mohl udělit souhlas s požadovanými oprávněními. Oprávnění uvedená v preAuthorizedApplications nevyžadují souhlas uživatele. Nicméně jakákoli další požadovaná oprávnění, která nejsou uvedená v preAuthorizedApplications, vyžadují souhlas uživatele. 
+
+Ukázková hodnota: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"appId": "abcdefg2-000a-1111-a0e5-812ed8dd72e8",<br>&nbsp;&nbsp;&nbsp;&nbsp;"permissionIds": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"8748f7db-21fe-4c83-8ab5-53033933c8f1"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>]</code> 
+
+### <a name="key-value-type-publicclient-boolean"></a>Klíč, typ hodnoty: `publicClient`, logická hodnota 
+Určuje, jestli je tato aplikace veřejným klientem (například nainstalovaná aplikace spuštěná v mobilním zařízení). 
+
+Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `allowPublicClient`. 
+
+### <a name="key-value-type-publisherdomain-string"></a>Klíč, typ hodnoty: `publisherDomain`, řetězec 
+Ověřená doména vydavatele pro aplikaci. Jen pro čtení. 
+
+Příklad hodnoty: `https://www.contoso.com`
+
+### <a name="key-value-type-replyurls-string-array"></a>Klíč, typ hodnoty: `replyUrls`, pole řetězců 
+Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů. <br><br> Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . V prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nahrazeno `replyUrlsWithType`. 
+
+### <a name="key-value-type-replyurlswithtype-collection"></a>Klíč, typ hodnoty: `replyUrlsWithType`, kolekce 
+Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů. Každá hodnota identifikátoru URI by měla obsahovat přidruženou hodnotu typu aplikace. Podporované hodnoty typu jsou: <ul><li>`Web`</li><li>`InstalledClient`</li></ul><br> Přečtěte si další informace o [omezeních a](https://docs.microsoft.com/azure/active-directory/develop/reply-url)omezeních replyUrl. 
+
+Ukázková hodnota: 
+<code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> 
+
+### <a name="key-value-type-requiredresourceaccess-collection"></a>Klíč, typ hodnoty: `requiredResourceAccess`, kolekce 
+S dynamickým souhlasem `requiredResourceAccess` zařídí prostředí pro vyjádření souhlasu správce a možnosti souhlasu uživatele pro uživatele, kteří používají statický souhlas. Tento parametr ale neřídí uživatelské prostředí pro vyjádření souhlasu uživatele pro obecný případ.<br>`resourceAppId` je jedinečný identifikátor pro prostředek, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být stejná jako appId deklarované v cílové aplikaci prostředků.<br>`resourceAccess` je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace od zadaného prostředku vyžaduje. Obsahuje hodnoty `id` a `type` zadaných prostředků. 
+
+Ukázková hodnota: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> 
+
+### <a name="key-value-type-samlmetadataurl-string"></a>Klíč, typ hodnoty: `samlMetadataUrl`, řetězec 
+Adresa URL metadat SAML pro aplikaci 
+
+Příklad hodnoty: `https://MyRegisteredAppSAMLMetadata` 
+
+### <a name="key-value-type-signinurl-string"></a>Klíč, typ hodnoty: `signInUrl`, řetězec 
+
+Určuje adresu URL domovské stránky aplikace. 
+
+Příklad hodnoty: `https://MyRegisteredApp` 
+
+### <a name="key-value-type-signinaudience-string"></a>Klíč, typ hodnoty: `signInAudience`, řetězec 
+Určuje, jaké účty Microsoft se pro aktuální aplikaci podporují. Podporované hodnoty jsou:
+- **AzureADMyOrg** – uživatelé s pracovním nebo školním účtem Microsoft v TENANTOVI Azure AD ve vaší organizaci (například jeden tenant)
+- **AzureADMultipleOrgs** – uživatelé s pracovním nebo školním účtem Microsoft v TENANTOVI Azure AD ve vaší organizaci (například víceklientské víceklientské úrovni)
+- **AzureADandPersonalMicrosoftAccount** – uživatelé s osobní účet Microsoft nebo pracovní nebo školní účet v TENANTOVI Azure AD organizace 
+
+Ukázková hodnota:  
+`AzureADandPersonalMicrosoftAccount` 
+
+### <a name="key-value-type-tags-string-array"></a>Klíč, typ hodnoty: `tags`, pole řetězců 
+Vlastní řetězce, které lze použít ke kategorizaci a identifikaci aplikace. 
+
+Ukázková hodnota: 
+<code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code>
 
 ## <a name="common-issues"></a>Běžné problémy
 

@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126926"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270456"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -76,7 +76,7 @@ Konektory Azure Logic Apps vám pomůžou aplikace logiky přistupovat k aplikac
 
 <a name="triggers"></a>
 
-## <a name="triggers"></a>Triggery
+## <a name="triggers"></a>Aktivační události
 
 Triggery jsou speciální akce, které vytvoří instanci aplikace logiky, když dojde ke konkrétní události. Triggery fungují různými způsoby, které mají vliv na měření aplikace logiky. Tady jsou různé druhy aktivačních událostí, které existují v Azure Logic Apps:
 

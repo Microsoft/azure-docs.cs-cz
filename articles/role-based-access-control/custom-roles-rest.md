@@ -16,11 +16,11 @@ ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 145bc45e1b7faeddc23cf5f0662337e15ab51c29
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392475"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245691"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí REST API
 
@@ -54,7 +54,7 @@ K vypsání vlastních rolí v oboru použijte REST API [Definice rolí – sezn
 
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
 
-    | Rozsah | Typ |
+    | Obor | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -78,7 +78,7 @@ Pokud chcete získat informace o vlastní roli pomocí jejího zobrazovaného n�
 
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
 
-    | Rozsah | Typ |
+    | Obor | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -104,7 +104,7 @@ Pokud chcete získat informace o vlastní roli pomocí jejího jedinečného ide
 
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
 
-    | Rozsah | Typ |
+    | Obor | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -152,7 +152,7 @@ Pokud chcete vytvořit vlastní roli, použijte [Definice rolí – vytvořit ne
 
 1. V rámci identifikátoru URI nahraďte *{Scope}* první `assignableScopes` vlastní role.
 
-    | Rozsah | Typ |
+    | Obor | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -217,7 +217,7 @@ Pokud chcete aktualizovat vlastní roli, použijte [Definice rolí – vytvořit
 
 1. V rámci identifikátoru URI nahraďte *{Scope}* první `assignableScopes` vlastní role.
 
-    | Rozsah | Typ |
+    | Obor | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -301,7 +301,7 @@ Pokud chcete odstranit vlastní roli, použijte [Definice rolí – odstranit](/
 
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, ve kterém chcete odstranit vlastní roli.
 
-    | Rozsah | Typ |
+    | Obor | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |

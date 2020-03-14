@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375941"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261564"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o monitorování Azure AD Connect (synchronizace) s Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health ke synchronizaci](how-to-connect-health-sync.md). Další informace o sledování Active Directory Domain Services pomocí Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health s služba AD DS](how-to-connect-health-adds.md).
