@@ -1,17 +1,17 @@
 ---
-title: Šifrování dat pro Azure Database for MySQL pomocí Azure Portal
+title: Šifrování dat – Azure Portal Azure Database for MySQL
 description: Naučte se, jak nastavit a spravovat šifrování dat pro Azure Database for MySQL pomocí Azure Portal.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 55c155dc4396672c02322c6c5727dac57d0ac8ef
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 78a290b1e2984719645fb4d4ff253ab021a0826e
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898735"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299035"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for MySQL pomocí Azure Portal
 

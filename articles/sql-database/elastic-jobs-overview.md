@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133651"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214481"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Vytváření, konfigurace a Správa elastických úloh
 
@@ -35,7 +35,7 @@ Pokud jste elastické úlohy nepoužívali, [Přečtěte si další informace o 
 
 1. Vytvořte přihlašovací údaje pro spuštění úlohy v *databázi úloh* pomocí [PowerShellu](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
 2. Definujte cílovou skupinu (databáze, u kterých chcete úlohu spustit) pomocí [PowerShellu](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
-3. V každé databázi, ve které se bude úloha spouštět, vytvořte přihlašovací údaje agenta úloh [(do každé databáze ve skupině přidejte příslušného uživatele nebo roli)](sql-database-control-access.md). Příklad najdete v [kurzu pro PowerShell](elastic-jobs-powershell.md).
+3. V každé databázi, ve které se bude úloha spouštět, vytvořte přihlašovací údaje agenta úloh [(do každé databáze ve skupině přidejte příslušného uživatele nebo roli)](sql-database-manage-logins.md). Příklad najdete v [kurzu pro PowerShell](elastic-jobs-powershell.md).
 4. Vytvořte úlohu pomocí [PowerShellu](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
 5. Pomocí [PowerShellu](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) přidejte kroky úlohy.
 6. Spusťte úlohu pomocí [PowerShellu](elastic-jobs-powershell.md#run-the-job) nebo [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).

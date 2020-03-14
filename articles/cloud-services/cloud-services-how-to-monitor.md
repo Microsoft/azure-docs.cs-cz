@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972947"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273095"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Seznámení s monitorováním cloudové služby
 
@@ -32,7 +32,7 @@ Základní monitorování nevyžaduje účet úložiště.
 
 ![dlaždice monitorování základní cloudové služby](media/cloud-services-how-to-monitor/basic-tiles.png)
 
-## <a name="advanced-monitoring"></a>Pokročilé sledování
+## <a name="advanced-monitoring"></a>Rozšířené monitorování
 
 Rozšířené monitorování zahrnuje použití rozšíření **Azure Diagnostics** (a volitelně sady Application Insights SDK) na roli, kterou chcete monitorovat. Diagnostické rozšíření pomocí konfiguračního souboru (na roli) s názvem **Diagnostics. wadcfgx** konfiguruje monitorované metriky diagnostiky. Diagnostické rozšíření Azure shromažďuje a ukládá data v Azure Storagem účtu. Tato nastavení jsou konfigurována v souborech **. wadcfgx**, [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)a [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) . To znamená, že se k pokročilému monitorování účtují dodatečné náklady.
 

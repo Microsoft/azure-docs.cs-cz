@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafd209073b36265d24dbad4a66b3870d8f593db
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73148644"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365862"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Postupy: Konfigurace šifrování tokenů SAML v Azure AD (Preview)
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Postupy: Konfigurace šifrování tokenů SAML v Azure AD
 
 > [!NOTE]
 > Šifrování tokenu je funkce Premium služby Azure Active Directory (Azure AD). Další informace o edicích, funkcích a cenách Azure AD najdete v tématu [ceny služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -71,7 +71,7 @@ Veřejný certifikát můžete přidat do konfigurace aplikace v rámci Azure Po
 
     ![Importujte soubor. CER, který obsahuje certifikát X. 509.](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. Po importu certifikátu a zadání privátního klíče pro použití na straně aplikace aktivujte šifrování tak, že vyberete **...** vedle stavu kryptografických otisků, a pak vyberte **aktivovat šifrování tokenů** z možností v rozevírací nabídka
+1. Po importu certifikátu a zadání privátního klíče pro použití na straně aplikace aktivujte šifrování tak, že vyberete **...** vedle stavu kryptografických otisků, a pak vyberte **aktivovat šifrování tokenů** z možností v rozevírací nabídce.
 
 1. Výběrem **Ano** potvrďte aktivaci certifikátu pro šifrování tokenu.
 
@@ -123,26 +123,21 @@ Když konfigurujete přihlašovací údaje pomocí grafu, PowerShellu nebo v man
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>Konfigurace šifrování tokenů pomocí PowerShellu
 
-Tato funkce se už brzo blíží. 
+1. K připojení k vašemu tenantovi použijte nejnovější modul Azure AD PowerShell.
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. Nastavení šifrování tokenu nastavte pomocí příkazu **[set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** .
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. Přečtěte si nastavení šifrování tokenu pomocí následujících příkazů.
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
     $app.KeyCredentials
     $app.TokenEncryptionKeyId
     ```
-
--->
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Konfigurace šifrování tokenů pomocí manifestu aplikace
 

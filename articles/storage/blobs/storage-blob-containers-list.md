@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4ac8fe2e5bf1c338fa67619a675225eb80256c3f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690997"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135900"
 ---
 # <a name="list-blob-containers-with-net"></a>Výpis kontejnerů objektů BLOB pomocí .NET
 
-Když vytvoříte seznam kontejnerů v účtu Azure Storage z kódu, můžete zadat několik možností pro správu, jak se výsledky vrátí z Azure Storage. Tento článek ukazuje, jak zobrazit seznam kontejnerů pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client).  
+Když vytvoříte seznam kontejnerů v účtu Azure Storage z kódu, můžete zadat několik možností pro správu, jak se výsledky vrátí z Azure Storage. Tento článek ukazuje, jak zobrazit seznam kontejnerů pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
 
 ## <a name="understand-container-listing-options"></a>Principy možností výpisu kontejneru
 
@@ -98,7 +98,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Vypsat kontejnery](/rest/api/storageservices/list-containers2)
 [vytváření výčtu prostředků objektů BLOB](/rest/api/storageservices/enumerating-blob-resources)

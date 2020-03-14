@@ -6,12 +6,12 @@ ms.date: 10/22/2019
 ms.custom: cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 567e87b43c3fc3d7d2fb0c894ced53c89a133978
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 607cc0e5cd8236badfc1e5e591efda20d4fb669b
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524059"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368260"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -90,7 +90,7 @@ Azure CLI poskytuje mnoho pohodlných příkazů, které můžete použít z mí
 
 Pokud chcete spustit příkazy Azure v rozhraní příkazového řádku Azure CLI, musíte se nejdřív přihlásit pomocí příkazu `az login`. Tento příkaz otevře prohlížeč pro shromáždění vašich přihlašovacích údajů.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -101,11 +101,11 @@ Příkaz [`az webapp up`](/cli/azure/webapp#az-webapp-up) vytvoří webovou apli
 Ve složce *Python-docs-Hello-World* obsahující vzorový kód spusťte následující příkaz `az webapp up`. Nahraďte `<app-name>` globálně jedinečným názvem aplikace (*platné znaky jsou `a-z`, `0-9`a `-`* ). Nahraďte `<location-name>` také oblastí Azure, například **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**a tak dále. (Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním příkazu [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) .)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
-Tento příkaz může trvat několik minut, než se běh dokončí. Při spuštění příkaz zobrazí podobné informace jako v následujícím příkladu:
+Úplné spuštění tohoto příkazu může trvat několik minut. Při spuštění příkaz zobrazí podobné informace jako v následujícím příkladu:
 
 ```output
 The behavior of this command has been altered by the following extension: webapp
@@ -157,7 +157,7 @@ Uložte změny a ukončete Editor.
 
 Znovu nasaďte aplikaci pomocí následujícího příkazu `az webapp up` pomocí stejného příkazu, který jste použili k nasazení aplikace poprvé, a nahraďte `<app-name>` a `<location-name>` se stejnými názvy, které jste použili dříve. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -174,13 +174,13 @@ Můžete přistupovat k protokolům konzoly generovaným zevnitř aplikace a kon
 
 Nejdřív zapněte protokolování kontejneru spuštěním následujícího příkazu v terminálu a nahraďte `<app-name>` názvem vaší aplikace a `<resource-group-name>` názvem skupiny prostředků, kterou jste použili ve výstupu `az webapp up` příkazu (například "appsvc_rg_Linux_centralus"):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Jakmile je protokolování kontejneru zapnuté, spusťte následující příkaz, který zobrazí datový proud protokolu:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -217,7 +217,7 @@ V předchozích krocích jste vytvořili prostředky Azure ve skupině prostřed
 
 Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků spuštěním následujícího příkazu, který nahradí `<resource-group-name>` skupinou prostředků, která se zobrazuje ve výstupu příkazu `az webapp up`, například "appsvc_rg_Linux_centralus". Dokončení příkazu může trvat několik minut.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

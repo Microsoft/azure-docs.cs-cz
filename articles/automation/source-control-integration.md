@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: eef67ca8111983adb4d9994894ba215240daee6f
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b0eed8fe9d548ee54698d187e192960bb3b44e44
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253732"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368804"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -29,11 +29,11 @@ Azure Automation podporuje tři typy správy zdrojového kódu:
 * Azure Repos (Git)
 * Azure Repos (TFVC)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Úložiště správy zdrojového kódu (GitHub nebo Azure Repos)
 * [Účet Spustit jako](manage-runas-account.md)
-* [Nejnovější moduly Azure](automation-update-azure-modules.md) v účtu Automation, včetně modulu **AZ. Accounts** (AZ Module ekvivalent of AzureRM. Profile)
+* [Nejnovější moduly Azure](automation-update-azure-modules.md) v účtu Automation, včetně modulu `Az.Accounts` (AZ Module ekvivalent of `AzureRM.Profile`)
 
 > [!NOTE]
 > Úlohy synchronizace správy zdrojového kódu se spouštějí v účtu Automation uživatele a účtují se stejnou sazbou jako ostatní úlohy automatizace.
@@ -54,15 +54,15 @@ Pomocí tohoto postupu můžete nakonfigurovat správu zdrojového kódu pomocí
 
 3. Otevře se okno prohlížeče s výzvou, abyste se přihlásili. Dokončete ověření podle zobrazených výzev.
 
-4. Na stránce **Souhrn správy zdrojových kódů** použijte pole k vyplnění vlastností správy zdrojového kódu, které jsou definovány níže. Po dokončení klikněte na **Uložit** . 
+4. Na stránce Souhrn správy zdrojových kódů použijte pole k vyplnění vlastností správy zdrojového kódu, které jsou definovány níže. Po dokončení klikněte na **Uložit** . 
 
     |Vlastnost  |Popis  |
     |---------|---------|
     |Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu. Tento název musí obsahovat jenom písmena a číslice.        |
-    |Typ správy zdrojového kódu     | Typ mechanismu správy zdrojového kódu. Dostupné možnosti jsou:</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
+    |Typ správy zdrojového kódu     | Typ mechanismu správy zdrojového kódu. Dostupné možnosti jsou:</br> * GitHub</br>* Azure Repos (Git)</br> * Azure Repos (TFVC)        |
     |Úložiště     | Název úložiště nebo projektu. Načtou se první 200 úložišť. Pokud chcete vyhledat úložiště, zadejte název do pole a klikněte na **Hledat na GitHubu**.|
     |Součástí     | Větev, ze které se mají načíst zdrojové soubory Cílení na větev není k dispozici pro typ správy zdrojového kódu TFVC.          |
-    |Cesta ke složce     | Složka, která obsahuje Runbooky, které se mají synchronizovat, například/runbooks. Synchronizovány jsou pouze Runbooky v zadané složce. Rekurze není podporována.        |
+    |Cesta ke složce     | Složka, která obsahuje Runbooky, které se mají synchronizovat, například **/runbooks**. Synchronizovány jsou pouze Runbooky v zadané složce. Rekurze není podporována.        |
     |Automatická synchronizace<sup>1</sup>     | Nastavení, které zapne nebo vypne automatickou synchronizaci při provedení potvrzení v úložišti správy zdrojů.        |
     |Publikování Runbooku     | Nastavení zapnuto, pokud jsou Runbooky automaticky publikovány po synchronizaci ze správy zdrojového kódu a mimo jiné.           |
     |Popis     | Text určující další podrobnosti o správě zdrojového kódu.        |
@@ -72,7 +72,7 @@ Pomocí tohoto postupu můžete nakonfigurovat správu zdrojového kódu pomocí
    ![Souhrn správy zdrojového kódu](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Vaše přihlášení k úložišti správy zdrojových kódů se může lišit od přihlášení k Azure Portal. Při konfiguraci správy zdrojového kódu se ujistěte, že jste přihlášeni pomocí správného účtu pro úložiště správy zdrojového kódu. Pokud dojde k pochybnostem, otevřete v prohlížeči novou kartu, odhlaste se z visualstudio.com nebo github.com a zkuste se znovu připojit ke správě zdrojového kódu.
+> Přihlašovací údaje pro úložiště správy zdrojového kódu se můžou lišit od přihlášení k Azure Portal. Při konfiguraci správy zdrojového kódu se ujistěte, že jste přihlášeni pomocí správného účtu pro úložiště správy zdrojového kódu. Pokud dojde k pochybnostem, otevřete v prohlížeči novou kartu, odhlaste se z **VisualStudio.com** nebo **GitHub.com**a zkuste se znovu připojit ke správě zdrojového kódu.
 
 ### <a name="configure-source-control----powershell"></a>Konfigurace správy zdrojového kódu – PowerShell
 
@@ -107,36 +107,36 @@ Správa zdrojového kódu vyžaduje minimální oprávnění pro PATs. Následuj
 
 Následující tabulka definuje minimální oprávnění PAT potřebná pro GitHub. Další informace o vytvoření PAT v GitHubu najdete v tématu [Vytvoření osobního přístupového tokenu pro příkazový řádek](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Rozsah  |Popis  |
+|Scope  |Popis  |
 |---------|---------|
-|**úložiště**     |         |
-|repo:status     | Stav potvrzení přístupu         |
-|repo_deployment      | Stav nasazení přístupu         |
-|public_repo     | Přístup k veřejným úložištím         |
-|**Správce: repo_hook**     |         |
-|write:repo_hook     | Zapsat háky úložiště         |
-|read:repo_hook|Číst háky úložiště|
+|**`repo`**     |         |
+|`repo:status`     | Stav potvrzení přístupu         |
+|`repo_deployment`      | Stav nasazení přístupu         |
+|`public_repo`     | Přístup k veřejným úložištím         |
+|**`admin:repo_hook`**     |         |
+|`write:repo_hook`     | Zapsat háky úložiště         |
+|`read:repo_hook`|Číst háky úložiště|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Minimální oprávnění PAT pro Azure Repos
 
 Následující seznam definuje minimální oprávnění PAT potřebná pro Azure Repos. Další informace o vytvoření PAT v Azure Repos najdete v tématu [ověření přístupu pomocí tokenů osobního přístupu](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-| Rozsah  |  Typ přístupu  |
+| Scope  |  Typ přístupu  |
 |---------| ----------|
-| Kód      | Čtení  |
-| Projekt a tým | Čtení |
-| Identita | Čtení     |
-| Profil uživatele | Čtení     |
-| Pracovní položky | Čtení    |
+| Kód      | Pro čtení  |
+| Projekt a tým | Pro čtení |
+| Identita | Pro čtení     |
+| Profil uživatele | Pro čtení     |
+| Pracovní položky | Pro čtení    |
 | Připojení služby | Číst, dotazovat, spravovat<sup>1</sup>    |
 
 <sup>1</sup> oprávnění připojení služby se vyžaduje jenom v případě, že jste povolili automatickou synchronizaci.
 
 ## <a name="synchronizing"></a>Synchroniz
 
-Proveďte následující postup pro synchronizaci se správou zdrojových kódů. 
+Pomocí těchto kroků proveďte synchronizaci se správou zdrojových kódů. 
 
-1. Vyberte zdroj z tabulky na stránce **Správa zdrojového kódu** . 
+1. Vyberte zdroj z tabulky na stránce Správa zdrojového kódu. 
 
 2. Kliknutím na **Spustit synchronizaci** spusťte proces synchronizace. 
 
@@ -178,7 +178,7 @@ Proveďte následující postup pro synchronizaci se správou zdrojových kódů
 
     ```
 
-6. Další protokolování je k dispozici výběrem možnosti **všechny protokoly** na stránce **Souhrn úlohy synchronizace správy zdrojového kódu** . Tyto další položky protokolu vám mohou pomoci při řešení problémů, které mohou nastat při použití správy zdrojového kódu.
+6. Další protokolování je k dispozici výběrem možnosti **všechny protokoly** na stránce Souhrn úlohy synchronizace správy zdrojového kódu. Tyto další položky protokolu vám mohou pomoci při řešení problémů, které mohou nastat při použití správy zdrojového kódu.
 
 ## <a name="disconnecting-source-control"></a>Odpojuje se Správa zdrojového kódu.
 
@@ -188,11 +188,11 @@ Odpojení od úložiště správy zdrojového kódu:
 
 2. Vyberte mechanismus správy zdrojového kódu, který se má odebrat. 
 
-3. Na stránce **Souhrn správy zdrojového kódu** klikněte na **Odstranit**.
+3. Na stránce Souhrn správy zdrojového kódu klikněte na **Odstranit**.
 
 ## <a name="handling-encoding-issues"></a>Zpracování potíží s kódováním
 
-Pokud více lidí upravuje Runbooky v úložišti správy zdrojového kódu pomocí různých editorů, může dojít k problémům s kódováním. Další informace o této situaci najdete v tématu [běžné příčiny potíží s kódováním](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues) .
+Pokud více lidí upravuje Runbooky v úložišti správy zdrojového kódu pomocí různých editorů, může dojít k problémům s kódováním. Další informace o této situaci najdete v tématu [běžné příčiny potíží s kódováním](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
 ## <a name="updating-the-pat"></a>Aktualizace PAT
 

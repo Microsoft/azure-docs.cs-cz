@@ -1,21 +1,21 @@
 ---
-title: Privátní odkaz pro Azure Database for MariaDB (Preview)
+title: Privátní odkaz – Azure Database for MariaDB
 description: Přečtěte si, jak soukromý odkaz funguje pro Azure Database for MariaDB.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/10/2020
+ms.openlocfilehash: b05a202537492fe54a76cf40a3b15987e099a7e3
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982384"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367716"
 ---
-# <a name="private-link-for-azure-database-for-mariadb-preview"></a>Privátní odkaz pro Azure Database for MariaDB (Preview)
+# <a name="private-link-for-azure-database-for-mariadb"></a>Privátní odkaz pro Azure Database for MariaDB
 
-Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). K prostředkům PaaS se dá dostat pomocí privátní IP adresy stejně jako u jakéhokoli jiného prostředku ve virtuální síti.
+Privátní odkaz vám umožní vytvořit soukromé koncové body pro Azure Database for MariaDB, takže služby Azure budou ve vaší privátní Virtual Network (VNet). Privátní koncový bod zpřístupňuje soukromou IP adresu, kterou můžete použít pro připojení k vašemu Azure Database for MariaDB databázovému serveru stejně jako jakýkoli jiný prostředek ve virtuální síti.
 
 Seznam pro PaaS služby, které podporují funkce privátního propojení, najdete v [dokumentaci](https://docs.microsoft.com/azure/private-link/index)k privátním odkazům. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) síti a podsíti.
 
@@ -58,10 +58,7 @@ Aby bylo možné povolit privátní propojení, jsou vyžadovány privátní kon
 
 ### <a name="approval-process"></a>Proces schválení
 
-Po vytvoření privátního koncového bodu (PE) správcem sítě může správce spravovat připojení privátního koncového bodu (PEC) k Azure Database for MariaDB.
-
-> [!NOTE]
-> V současné době Azure Database for MariaDB podporuje pouze automatické schválení privátního koncového bodu.
+Po vytvoření privátního koncového bodu (PE) správcem sítě může správce spravovat připojení privátního koncového bodu (PEC) k Azure Database for MariaDB. Tato oddělení povinností mezi správcem sítě a DBA je užitečné pro správu Azure Database for MariaDBho připojení. 
 
 * V Azure Portal přejděte na prostředek serveru Azure Database for MariaDB. 
     * Vyberte připojení privátního koncového bodu v levém podokně.
@@ -110,6 +107,19 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 * Pokud nakonfigurujete veřejný provoz nebo koncový bod služby a vytvoříte privátní koncové body, budou se podle odpovídajícího typu pravidla brány firewall autorizovat různé typy příchozích přenosů.
 
 * Pokud neprovedete konfiguraci žádného veřejného provozu nebo koncového bodu služby a vytvoříte privátní koncové body, je Azure Database for MariaDB přístupný pouze prostřednictvím privátních koncových bodů. Pokud neprovedete konfiguraci veřejného provozu nebo koncového bodu služby, po odmítnutí nebo odstranění všech schválených privátních koncových bodů nebude mít žádný provoz přístup k Azure Database for MariaDB.
+
+## <a name="deny-public-access-for-azure-database-for-mariadb"></a>Odepřít veřejný přístup pro Azure Database for MariaDB
+
+Pokud chcete pro přístup k jejich Azure Database for MariaDB spoléhat jenom na soukromé koncové body, můžete zakázat nastavení všech veřejných koncových bodů ([pravidla brány firewall](concepts-firewall-rules.md) a [koncových bodů služby virtuální](concepts-data-access-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
+
+Pokud je toto nastavení nastaveno na *Ano*, budou mít Azure Database for MariaDB pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne*, klienti se mohou připojit k vašemu Azure Database for MariaDB v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Pokud je navíc nastavená hodnota přístup k privátní síti, nebudete moct přidat ani aktualizovat existující pravidla brány firewall a koncových bodů služby virtuální sítě.
+
+> [!Note]
+> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL – jeden server podporuje Pro obecné účely a cenová úroveň optimalizované pro paměť.
+>
+> Toto nastavení nemá žádný vliv na konfigurace protokolu SSL a TLS pro vaše Azure Database for MariaDB.
+
+Informace o tom, jak nastavit **přístup k veřejné síti odepřít** pro váš Azure Database for MariaDB z Azure Portal, najdete v tématu [jak nakonfigurovat přístup k veřejné síti odepřít](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

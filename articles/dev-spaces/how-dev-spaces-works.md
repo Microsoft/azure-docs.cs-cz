@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Popisuje procesy, které Azure Dev Spaces a způsob jejich konfigurace v konfiguračním souboru azds. yaml.
 keywords: azds. yaml, Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
 ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375228"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259913"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev Spaces fungují a jsou nakonfigurované
 

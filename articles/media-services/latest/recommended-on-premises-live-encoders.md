@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 3b7a75ac1c0876d562dc49e9253fe734475a551a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268191"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298950"
 ---
-# <a name="recommended-on-premises-live-streaming-encoders"></a>Doporučené místní kodéry pro živé streamování
+# <a name="tested-on-premises-live-streaming-encoders"></a>Testování místních kodérů živého streamování
 
 V Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) (kanál) představuje kanál pro zpracování obsahu živého streamování. Živá událost přijímá živé vstupní proudy jedním ze dvou způsobů.
 
@@ -24,10 +24,12 @@ V Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/med
 
     Pokud pro průchozí živou událost používáte datové proudy s více přenosovými rychlostmi, musí být velikost videa skupinu GOP a fragmenty videa na různých přenosech se musí synchronizovat, aby nedocházelo k neočekávanému chování na straně přehrávání.
 
-  > [!NOTE]
+  > [!TIP]
   > Použití předávací metody je nejúčinnější způsob, jak provádět živé streamování.
  
 * On-premises Live Encoder pošle datový proud s jednou přenosovou rychlostí do živé události, která má povoleno provádět kódování v reálném čase pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Živá událost pak provede živé kódování příchozího datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi (adaptivní).
+
+Tento článek popisuje testování místních kodérů živého streamování. Pokyny, jak ověřit váš místní kodér v reálném čase, najdete v tématu [ověření místního kodéru](become-on-premises-encoder-partner.md) .
 
 Podrobné informace o živém kódování pomocí Media Services najdete v tématu [živé streamování s Media Services V3](live-streaming-overview.md).
 
@@ -97,10 +99,10 @@ Aby bylo možné přehrávat obsah, musí být k dispozici zvukový a obrazový 
 - Změna konfigurace kodéru po zahájení práce má na událost negativní vliv. Změny konfigurace můžou způsobit, že dojde k nestabilitě události. 
 - Ujistěte se, že máte k nastavení události dostatek času. Pro vysoce škálovatelné události doporučujeme spustit nastavení hodinu před událostí.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
-[Stát se místním partnerem kodéru](become-on-premises-encoder-partner.md)
+[Živé streamování s Media Services V3](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Živé streamování s Media Services V3](live-streaming-overview.md)
+[Jak ověřit kodér](become-on-premises-encoder-partner.md)

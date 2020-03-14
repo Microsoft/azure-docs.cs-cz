@@ -10,11 +10,11 @@ ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 137623e4c52d24061aec8ec11fca0fc02ca54c7f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372455"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252685"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
 
@@ -46,7 +46,7 @@ Níže jsou uvedeny možné příčiny:
 
 * Počítač nakonfigurovaný pro spuštění funkce Hybrid Runbook Worker nesplňuje minimální požadavky na hardware.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Ověřte, zda má počítač odchozí přístup k *. azure-automation.net na portu 443.
 
@@ -74,7 +74,7 @@ At line:3 char:1
 
 K této chybě dochází, pokud se pokusíte použít [účet Spustit jako](../manage-runas-account.md) v sadě Runbook, která běží na Hybrid Runbook Worker, kde není přítomen certifikát účtu Spustit jako. Hybridní pracovní procesy Runbooku nemají ve výchozím nastavení prostředek certifikátu, který je vyžadován pro správné fungování účtu Spustit jako.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Pokud je vaším Hybrid Runbook Worker VIRTUÁLNÍm počítačem Azure, můžete místo toho použít [spravované identity pro prostředky Azure](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) . Tento scénář zjednodušuje ověřování tím, že umožňuje ověřování prostředků Azure pomocí spravované identity virtuálního počítače Azure namísto účtu Spustit jako. Když Hybrid Runbook Worker je místní počítač, musíte na tento počítač nainstalovat certifikát účtu Spustit jako. Informace o tom, jak nainstalovat certifikát, najdete v tématu spuštění PowerShellu export-RunAsCertificateToHybridWorker ve [spouštění Runbooků na Hybrid Runbook Worker](../automation-hrw-run-runbooks.md).
 
@@ -94,7 +94,7 @@ Níže jsou uvedeny možné příčiny:
 * V nastavení agenta je ID pracovního prostoru nebo klíč pracovního prostoru (primární). 
 * Hybrid Runbook Worker nemůže stáhnout konfiguraci, což způsobilo chybu propojení účtu. Když Azure povolí řešení, podporuje jenom určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Je také možné, že je v počítači nastaveno nesprávné datum nebo čas. Pokud je čas +/-15 minut od aktuálního času, připojování se nepovede.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 ##### <a name="mistyped-workspace-idkey"></a>ID nebo klíč netypového pracovního prostoru
 Pokud chcete ověřit, jestli se ID nebo klíč pracovního prostoru agenta nevytvořilo nesprávného typu, přečtěte si téma [Přidání nebo odebrání pracovního prostoru – agent](../../azure-monitor/platform/agent-manage.md#windows-agent) pro Windows pro agenta pro Windows nebo [Přidání nebo odebrání pracovního prostoru – agenta Linux](../../azure-monitor/platform/agent-manage.md#linux-agent) pro agenta pro Linux.  Ujistěte se, že jste z Azure Portal vybrali úplný řetězec a pak ho pečlivě zkopírujte a vložte.
@@ -119,7 +119,7 @@ Agent Log Analytics pro Linux není spuštěný.
 
 Pokud agent neběží, zabrání Hybrid Runbook Worker pro Linux komunikovat s Azure Automation. Je možné, že agent neběží z různých důvodů.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
  Ověřte, jestli je agent spuštěný, a to zadáním následujícího příkazu: `ps -ef | grep python`. Měl by se zobrazit výstup podobný následujícímu: aplikace Python zpracuje s uživatelským účtem **nxautomation** . Pokud nejsou povolena řešení Update Management nebo Azure Automation, není spuštěn žádný z následujících procesů.
 
@@ -161,7 +161,7 @@ Služba `healthservice` na Hybrid Runbook Workerm počítači neběží.
 
 Pokud Microsoft Monitoring Agent služba společnosti Microsoft neběží, brání tento stav Hybrid Runbook Worker komunikaci s Azure Automation.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Ověřte, že je agent spuštěný, a to zadáním následujícího příkazu v PowerShellu: `Get-Service healthservice`. Pokud je služba zastavená, zadejte do PowerShellu následující příkaz pro spuštění služby: `Start-Service healthservice`.
 
@@ -175,7 +175,7 @@ V protokolu událostí **Application and Services Logs\Operations Manager** uvid
 
 Důvodem může být to, že proxy server nebo brána firewall sítě blokuje komunikaci s Microsoft Azure. Ověřte, že počítač má odchozí přístup k *. azure-automation.net na portech 443. 
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Protokoly se ukládají místně na každý hybridní pracovní proces na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Můžete ověřit, zda se v protokolu událostí Logs\Microsoft-SMA\Operations a Application and Services pro aplikace a **služby Logs\Operations** ( **Application** and Services) vyskytnou nějaké události s varováním nebo chybou, které označují připojení nebo jiný problém, který má vliv na registraci role Azure Automation nebo vydání při běžném provozu. Další pomoc při řešení potíží s agentem Log Analytics najdete v tématu [řešení potíží s agentem Log Analytics Windows](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
@@ -199,7 +199,7 @@ Heartbeat
 
 Tento problém může být způsoben poškozenou mezipamětí na Hybrid Runbook Worker.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Pokud chcete tento problém vyřešit, přihlaste se k Hybrid Runbook Worker a spusťte následující skript. Tento skript zastaví Microsoft Monitoring Agent, odebere jeho mezipaměť a restartuje službu. Tato akce vynutí, aby se Hybrid Runbook Worker znovu stáhla konfigurace z Azure Automation.
 
@@ -225,7 +225,7 @@ Machine is already registered
 
 K tomuto problému může dojít, pokud je počítač již zaregistrován s jiným účtem služby Automation nebo pokud se pokusíte přečíst Hybrid Runbook Worker po jeho odebrání z počítače.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Pokud chcete tento problém vyřešit, odeberte následující klíč registru a restartujte `HealthService` a zkuste rutinu `Add-HybridRunbookWorker` znovu spustit:
 

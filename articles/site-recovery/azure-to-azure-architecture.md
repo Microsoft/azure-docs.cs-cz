@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 224b69ab571f934f0bd3b05bbdeb9dc4013f96bf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759802"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371609"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -95,15 +95,15 @@ Site Recovery pořizuje snímky následujícím způsobem:
 
 Následující tabulka vysvětluje různé typy konzistence.
 
-### <a name="crash-consistent"></a>Konzistentní vzhledem k selháním
+### <a name="crash-consistent"></a>Crash-consistent
 
-**Popis** | **Podrobnosti** | **Doporučení**
+**Popis** | **Podrobnosti** | **Základě**
 --- | --- | ---
 Snímek konzistentní se selháním zachycuje data, která byla na disku při pořízení snímku. Neobsahuje žádné množství paměti.<br/><br/> Obsahuje ekvivalent dat na disku, která by byla k dispozici v případě, že došlo k chybě virtuálního počítače nebo napájecí kabel byl získán ze serveru v okamžiku, kdy se snímek povedl.<br/><br/> Konzistentní se selháním nezaručuje konzistenci dat pro operační systém nebo pro aplikace na virtuálním počítači. | Ve výchozím nastavení vytvoří Site Recovery body obnovení konzistentní vzhledem k chybě každých pět minut. Toto nastavení nelze změnit.<br/><br/>  | V současné době se většina aplikací může obnovovat i z bodů konzistentních vzhledem k selháním.<br/><br/> Body obnovení konzistentní vzhledem k havárii jsou obvykle dostačující pro replikaci operačních systémů a aplikace, jako jsou servery DHCP a tiskové servery.
 
-### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
+### <a name="app-consistent"></a>App-consistent
 
-**Popis** | **Podrobnosti** | **Doporučení**
+**Popis** | **Podrobnosti** | **Základě**
 --- | --- | ---
 Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím.<br/><br/> Snímek konzistentní vzhledem k aplikacím obsahuje všechny informace v snímku konzistentním s chybou a také všechna data v paměti a probíhajících transakcích. | Snímky konzistentní vzhledem k aplikacím používají služba Stínová kopie svazku (VSS):<br/><br/>   1) když se spustí snímek, služba VSS provede na svazku operaci kopírování na zápis (KRÁVy).<br/><br/>   2) před provedením KRÁVy vytvoří služba Stínová kopie svazku každou aplikaci v počítači, kterou potřebuje k vyprázdnit data rezidentní paměti na disk.<br/><br/>   3) služba VSS pak umožní aplikaci pro zálohování nebo zotavení po havárii (v tomto případě Site Recovery) ke čtení dat snímku a pokračování. | Snímky konzistentní vzhledem k aplikacím jsou pořízeny podle četnosti, kterou zadáte. Tato frekvence by měla být vždy menší než nastavení pro zachování bodů obnovení. Pokud například zachováte body obnovení s použitím výchozího nastavení 24 hodin, měli byste nastavit četnost na méně než 24 hodin.<br/><br/>Jsou složitější a jejich dokončení trvá déle než snímky konzistentní se selháním.<br/><br/> Mají vliv na výkon aplikací spuštěných na virtuálním počítači, který je povolen pro replikaci. 
 
@@ -135,6 +135,8 @@ Pokud se odchozí přístup pro virtuální počítače ovládá pomocí adres U
 | login.microsoftonline.com | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
 | *.hypervrecoverymanager.windowsazure.com | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
 | *.servicebus.windows.net | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
+| *.vault.azure.net | Umožňuje přístup k povolení replikace pro virtuální počítače s podporou ADE přes portál.
+| *. automation.ext.azure.com | Umožňuje povolit automatický upgrade agenta mobility pro replikovanou položku prostřednictvím portálu.
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
@@ -149,6 +151,8 @@ Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpov
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Active Directory (Azure AD).  | AzureActiveDirectory
 Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí v cílové oblasti. | EventsHub.\<název oblasti >
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Site Recovery  | AzureSiteRecovery
+Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azure Key Vault (to se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál) | AzureKeyVault
+Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azure Automation kontroler (to se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>Pravidla cílové oblasti
 
@@ -158,6 +162,8 @@ Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpov
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.  | AzureActiveDirectory
 Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí ve zdrojové oblasti. | EventsHub.\<název oblasti >
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Site Recovery  | AzureSiteRecovery
+Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azure Key Vault (to se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál) | AzureKeyVault
+Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azure Automation kontroler (to se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu) | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>Řízení přístupu pomocí pravidel NSG

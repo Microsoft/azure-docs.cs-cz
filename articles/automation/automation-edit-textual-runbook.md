@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246410"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367274"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Úpravy textových runbooků v Azure Automation
 
@@ -59,7 +59,7 @@ Pomocí následujícího postupu otevřete Runbook pro úpravy v textovém edito
 
 ### <a name="insert-an-asset-into-a-runbook"></a>Vložení assetu do Runbooku
 
-1. Na plátně textového editoru umístěte kurzor na místo, kam chcete umístit kód pro podřízený Runbook.
+1. V ovládacím prvku plátno textového editoru umístěte kurzor na místo, kam chcete umístit kód pro podřízený Runbook.
 2. Rozbalte uzel **assets (prostředky** ) v ovládacím prvku knihovna.
 3. Rozbalte uzel pro požadovaný typ prostředku.
 4. Klikněte pravým tlačítkem na název assetu, který chcete vložit, a vyberte **Přidat na plátno**. V případě [variabilních prostředků](automation-variables.md)vyberte **Přidat "získat proměnnou" na plátno** nebo **Přidat "nastavit proměnnou" na plátno**v závislosti na tom, zda chcete získat nebo nastavit proměnnou.
@@ -67,7 +67,7 @@ Pomocí následujícího postupu otevřete Runbook pro úpravy v textovém edito
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>Úprava Azure Automation sady Runbook pomocí prostředí Windows PowerShell
 
-Chcete-li upravit sadu Runbook pomocí prostředí Windows PowerShell, použijte Editor dle vlastního výběru a uložte sadu Runbook do souboru ". ps1". K načtení obsahu Runbooku můžete použít rutinu [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) . Pomocí rutiny [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) můžete stávající koncept sady Runbook nahradit upravenou sadou.
+Chcete-li upravit sadu Runbook pomocí prostředí Windows PowerShell, použijte Editor dle vlastního výběru a uložte sadu Runbook do souboru **. ps1** . K načtení obsahu Runbooku můžete použít rutinu [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) . Pomocí rutiny [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) můžete stávající koncept sady Runbook nahradit upravenou sadou.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Načtení obsahu Runbooku pomocí Windows PowerShellu
 

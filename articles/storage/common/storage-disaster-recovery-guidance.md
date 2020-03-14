@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894528"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365355"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Zotavení po havárii a převzetí služeb při selhání v účtu (Preview)
 
 Microsoft usiluje o to, aby byly služby Azure vždycky dostupné. Může ale dojít k neplánovaným výpadkům služby. Pokud vaše aplikace vyžaduje odolnost, společnost Microsoft doporučuje používat geograficky redundantní úložiště, aby se vaše data zkopírovala do druhé oblasti. Kromě toho by zákazníci měli mít k dispozici plán zotavení po havárii pro zpracování oblasti výpadku regionální služby. Důležitou součástí plánu zotavení po havárii je příprava na převzetí služeb při selhání sekundárním koncovým bodem v případě, že primární koncový bod nebude k dispozici.
 
 Azure Storage podporuje převzetí služeb při selhání účtu (Preview) u geograficky redundantních účtů úložiště. S převzetím služeb při selhání můžete zahájit proces převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude k dispozici. Převzetí služeb při selhání aktualizuje sekundární koncový bod tak, aby se stal primárním koncovým bodem pro váš účet úložiště. Až se převzetí služeb při selhání dokončí, můžou klienti začít zapisovat do nového primárního koncového bodu.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Tento článek popisuje koncepty a procesy spojené s převzetím služeb při selhání a popisuje, jak připravit účet úložiště k obnovení s minimálním dopadem na zákazníky. Informace o tom, jak iniciovat převzetí služeb při selhání účtu v Azure Portal nebo PowerShellu, najdete v tématu o [inicializaci převzetí služeb při selhání (Preview)](storage-initiate-account-failover.md).
 
@@ -118,13 +120,13 @@ Převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všec
 
 Verze Preview je určena pouze pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
 
-### <a name="additional-considerations"></a>Další rozhodnutí
+### <a name="additional-considerations"></a>Další aspekty
 
 Další informace popsané v této části vám pomohou pochopit, jak můžou být vaše aplikace a služby ovlivněné při vynucení převzetí služeb při selhání během období Preview.
 
 #### <a name="storage-account-containing-archived-blobs"></a>Účet úložiště obsahující archivované objekty blob
 
-Účty úložiště obsahující archivované objekty blob podporují převzetí služeb při selhání účtu. Až se převzetí služeb při selhání dokončí, převeďte účet zpátky na GRS nebo RA-GRS všechny objekty blob archieved je potřeba nejdřív znovu vypravit do online úrovně.
+Účty úložiště obsahující archivované objekty blob podporují převzetí služeb při selhání účtu. Po dokončení převzetí služeb při selhání převeďte účet zpátky na GRS nebo RA-GRS všechny archivní objekty BLOB je potřeba nejdřív znovu vypravit do online úrovně.
 
 #### <a name="storage-resource-provider"></a>Poskytovatel prostředků úložiště
 
@@ -175,7 +177,7 @@ Pokud je váš účet úložiště nakonfigurovaný pro RA-GRS, máte k datům p
 
 V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné havárie, může společnost Microsoft zahájit místní převzetí služeb při selhání. V takovém případě není nutná žádná akce s vaší částí. Dokud neproběhne převzetí služeb při selhání spravované Microsoftem, nebudete mít k účtu úložiště přístup pro zápis. Vaše aplikace se můžou číst ze sekundární oblasti, pokud je váš účet úložiště nakonfigurovaný pro RA-GRS. 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Iniciovat převzetí služeb při selhání účtu (Preview)](storage-initiate-account-failover.md)
 - [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)

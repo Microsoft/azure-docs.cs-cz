@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168549"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204320"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 **[Azure AI Gallery](https://gallery.azure.ai)** je web založený na komunitě pro zjišťování a sdílení řešení vytvořených pomocí Azure AI.
 Galerie má řadu prostředků, které můžete použít k vývoji vlastních analytických řešení.
@@ -86,7 +88,7 @@ A můžete se přihlásit pomocí nástroje pro diskuzi, jako je Disqus, a dost�
 
 1. V seznamu akcí pod plátnem experimentu vyberte **publikovat do galerie**.
 
-1. V galerii zadejte **název** a **značky** , které jsou popisné. Zvýrazněte techniky, které jste použili, nebo problém reálného světa. Příklad experimentu popisný název je "binární klasifikace: Analýza mínění na Twitteru."
+1. V galerii zadejte **název** a **značky** , které jsou popisné. Zvýrazněte techniky, které jste použili, nebo problém reálného světa. Příkladem popisného experimentálního názvu je "binární klasifikace: Twitter Analýza mínění."
 
 1. Do pole **Souhrn** zadejte souhrn experimentu. Krátce popište problém, který byl odstraněn experiment a jak dosaženy.
 
@@ -128,7 +130,7 @@ Můžete také odstranit experiment z galerie.
 
 Můžete tyto změny nebo odstranění experiment, ze stránky podrobností experiment nebo na stránce svého profilu v galerii.
 
-* Na stránce s podrobnostmi experimentu můžete změnit podrobnosti o experimentu a vybrat možnost **Upravit**. Stránce s podrobnostmi o přejde do režimu úprav. Chcete-li provést změny, vyberte možnost **Upravit** vedle názvu experimentu, souhrnu nebo značek. Až skončíte s změnami, vyberte **Hotovo**. Chcete-li změnit nastavení viditelnosti experimentu (veřejné **nebo**neuvedené), nebo chcete-li experiment odstranit z Galerie, vyberte ikonu **Nastavení** .
+* Na stránce s podrobnostmi experimentu můžete změnit podrobnosti o experimentu a vybrat možnost **Upravit**. Stránce s podrobnostmi o přejde do režimu úprav. Chcete-li provést změny, vyberte možnost **Upravit** vedle názvu experimentu, souhrnu nebo značek. Až skončíte s změnami, vyberte **Hotovo**. Chcete-li změnit nastavení viditelnosti experimentu**Public** (veřejné **nebo**neuvedené), nebo chcete-li experiment odstranit z Galerie, vyberte ikonu **Nastavení** .
 
 * Na stránce profil vyberte šipku dolů pro experiment a pak vyberte **Upravit**. Tím přejdete na stránku podrobností pro experiment, v režimu úprav. Až změny dokončíte, vyberte **Hotovo**. Chcete-li experiment odstranit z Galerie, vyberte možnost **Odstranit**.
 
@@ -158,7 +160,7 @@ Psaním **kurzu** v galerii, který vysvětluje koncepty strojového učení neb
    > [!TIP]
    > Pokud chcete zajistit, aby vaše dokumentace vypadala správně ještě před tím, než veřejně vydáte, můžete experimentu publikovat jako **neuvedený**. Později můžete nastavení viditelnosti na stránce s podrobnostmi experimentu změnit na **veřejné** . Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 Váš příspěvek je teď v Azure AI Gallery. Vaše příspěvky jsou uvedené na stránce vašeho účtu na kartě **položky** .
 

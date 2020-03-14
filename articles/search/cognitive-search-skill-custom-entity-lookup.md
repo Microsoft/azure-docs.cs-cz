@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651334"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369773"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Dovednosti při rozpoznávání vlastního vyhledávání entit (Preview)
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Dovednosti při rozpoznávání vlastního vyhledávání entit (Preview)
 
 > [!IMPORTANT] 
 > Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
@@ -38,9 +38,9 @@ V parametrech jsou rozlišována malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| entitiesDefinitionUri | Cesta k souboru JSON nebo CSV obsahujícímu veškerý cílový text, ke kterému se má shoda. Tato definice entity je čtena na začátku spuštění indexeru; žádné aktualizace tohoto souboru v polovině spuštění nebudou až do následného spuštění. Tato konfigurace musí být přístupná přes protokol HTTPS. Očekávané schéma CSV nebo JSON najdete níže v části formát [definice vlastní entity](#custom-entity-definition-format) .|
+| entitiesDefinitionUri    | Cesta k souboru JSON nebo CSV obsahujícímu veškerý cílový text, ke kterému se má shoda. Tato definice entity je čtena na začátku spuštění indexeru; žádné aktualizace tohoto souboru v polovině spuštění nebudou až do následného spuštění. Tato konfigurace musí být přístupná přes protokol HTTPS. Očekávané schéma CSV nebo JSON najdete níže v části formát [definice vlastní entity](#custom-entity-definition-format) .|
 |inlineEntitiesDefinition | Vložené definice entit JSON Tento parametr nahrazuje parametr entitiesDefinitionUri, pokud je k dispozici. Vloženému programu nelze poskytnout více než 10 KB konfigurace. Očekávané schéma JSON najdete v části [definice vlastní entity](#custom-entity-definition-format) níže. |
-|defaultLanguageCode |  Volitelné Kód jazyka vstupního textu, který slouží k tokenizovat a vymezení vstupního textu. Podporovány jsou následující jazyky: `da, de, en, es, fi, fr, it, ko, pt`. Výchozí hodnota je English (`en`). Pokud předáte formát LanguageCode-CountryCode, použije se pouze část formátu LanguageCode.  |
+|defaultLanguageCode |    Volitelné Kód jazyka vstupního textu, který slouží k tokenizovat a vymezení vstupního textu. Podporovány jsou následující jazyky: `da, de, en, es, fi, fr, it, ko, pt`. Výchozí hodnota je English (`en`). Pokud předáte formát LanguageCode-CountryCode, použije se pouze část formátu LanguageCode.  |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
@@ -48,13 +48,13 @@ V parametrech jsou rozlišována malá a velká písmena.
 | Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | text          | Text, který se má analyzovat          |
-| languageCode  | Volitelné. Výchozí hodnota je `"en"`.  |
+| languageCode    | Volitelná. Výchozí hodnota je `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 
-| Název výstupu     | Popis                   |
+| Název výstupu      | Popis                   |
 |---------------|-------------------------------|
 | entity | Pole objektů, které obsahují informace o nalezených shodách a související metadata. Každá z identifikovaných entit může obsahovat následující pole:  <ul> <li> *Name*: identifikovaná entita nejvyšší úrovně. Entita představuje "normalizovaný" tvar. </li> <li> *ID*: jedinečný identifikátor entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *Popis*: Popis entity definovaný uživatelem ve formátu definice vlastní entity. </li> <li> *zadejte:* Typ entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *podtyp:* Podtyp entity definovaný uživatelem ve formátu definice vlastní entity</li>  <li> *shody*: kolekce, která popisuje všechny shody pro danou entitu ve zdrojovém textu. Každá shoda bude mít následující členy: </li> <ul> <li> *text*: nezpracovaný text se shoduje se zdrojovým dokumentem. </li> <li> *offset*: umístění, kde se shoda našla v textu. </li> <li> *Length*: délka spárovaného textu. </li> <li> *matchDistance*: počet znaků, které jsou v této shodě odlišné, byly z názvu původní entity nebo aliasu.  </li> </ul> </ul>
   |
@@ -168,7 +168,7 @@ Následující tabulky popisují další podrobnosti o různých parametrech kon
 V některých případech může být pohodlnější poskytnout seznam vlastních entit, které odpovídají vloženému přímo do definice dovedností. V takovém případě můžete použít podobný formát JSON na výše popsaný, ale je v definici dovedností vložen.
 Vloženy mohou být pouze konfigurace, které mají velikost menší než 10 KB (serializovaná velikost). 
 
-##  <a name="sample-definition"></a>Definice vzorku
+##    <a name="sample-definition"></a>Definice vzorku
 
 Ukázková definice dovedností pomocí vloženého formátu je uvedená níže:
 
@@ -231,7 +231,7 @@ Případně, pokud se rozhodnete poskytnout ukazatel na definiční soubor entit
 
 ```
 
-##  <a name="sample-input"></a>Vzorový vstup
+##    <a name="sample-input"></a>Vzorový vstup
 
 ```json
 {
@@ -248,7 +248,7 @@ Případně, pokud se rozhodnete poskytnout ukazatel na definiční soubor entit
 }
 ```
 
-##  <a name="sample-output"></a>Ukázkový výstup
+##    <a name="sample-output"></a>Ukázkový výstup
 
 ```json
   { 
@@ -296,7 +296,13 @@ Případně, pokud se rozhodnete poskytnout ukazatel na definiční soubor entit
   } 
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="errors-and-warnings"></a>Chyby a upozornění
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>Upozornění: dosáhlo se maximální kapacity pro shody, přeskočily se všechny další duplicitní shody.
+
+Toto upozornění bude vygenerováno, pokud je zjištěn počet shod větší než povolené maximum. V takovém případě budeme přerušit zahrnutí duplicitních shod. Pokud to nemůžete přijmout, napište [lístek podpory](https://ms.portal.azure.com/#create/Microsoft.Support) , abychom vám mohli pomoct s vaším individuálním případem použití.
+
+## <a name="see-also"></a>Viz také:
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

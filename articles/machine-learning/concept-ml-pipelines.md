@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3f1d0e13d9b76c7ef06edb953b59ebfa73c302de
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270313"
+ms.locfileid: "79296842"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
@@ -204,6 +204,12 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 |**Sledování a správa verzí**|Namísto ručního sledování dat a cest výsledků při iteraci můžete použít sadu SDK pro kanály k explicitnímu pojmenování a používání datových zdrojů, vstupů a výstupů. Skripty a data můžete spravovat i samostatně pro zvýšení produktivity.|
 | **Modularitu** | Oddělení otázek a izolace změn umožňuje softwaru vyvíjet se rychleji s vyšší kvalitou. | 
 |**Prostřednictvím**|Kanály umožňují odborníkům přes data spolupracovat ve všech oblastech procesu návrhu strojového učení, přičemž můžou souběžně fungovat na postupech kanálu.|
+
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>Výběr správné podtřídy PipelineStep
+
+`PythonScriptStep` je nejpružnější podtřídou abstraktního `PipelineStep`. Další podtřídy, například `EstimatorStep` podtříd a `DataTransferStep`, mohou provádět konkrétní úkoly s menším kódem. `EstimatorStep` lze například vytvořit pouhým předáním názvu pro krok, `Estimator`a cíle výpočetní služby. Nebo můžete přepsat vstupy a výstupy, parametry kanálu a argumenty. Další informace najdete v tématu [výuka modelů pomocí Azure Machine Learning s využitím Estimator](how-to-train-ml-models.md). 
+
+`DataTransferStep` usnadňuje přesouvání dat mezi zdroji dat a umyvadly. Kód, který se má provést ručně, je jednoduchý, ale opakující se. Místo toho můžete pouze vytvořit `DataTransferStep` s názvem, odkazy na zdroj dat a datovou jímku a cíl výpočtů. Tato flexibilita znázorňuje DataTransferStep poznámkového [Azure Machine Learning bloku s](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) .
 
 ## <a name="modules"></a>Moduly
 

@@ -1,18 +1,18 @@
 ---
-title: Přírůstkové snímky (Preview) pro spravované disky
-description: Přečtěte si o přírůstkových snímcích (Preview) pro spravované disky, včetně toho, jak je vytvořit pomocí PowerShellu a Azure Resource Manager.
+title: Přírůstkové snímky pro spravované disky
+description: Přečtěte si o přírůstkových snímcích pro spravované disky, včetně toho, jak je vytvořit pomocí PowerShellu a Azure Resource Manager.
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 03/13/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f172d9438af72a756dd4ddf4c9ba95bfdd19b691
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: 86e6eb82d8e59d2f323a68fbc650b7e0ba3685cb
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021871"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299446"
 ---
-# <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Vytváření přírůstkového snímku (ve verzi Preview) pro spravované disky
-[!INCLUDE [virtual-machines-disks-incremental-snapshot](../../../includes/virtual-machines-disks-incremental-snapshot.md)]
+# <a name="creating-an-incremental-snapshot-for-managed-disks"></a>Vytváření přírůstkového snímku pro spravované disky
+[!INCLUDE [virtual-machines-disks-incremental-snapshot-powershell](../../../includes/virtual-machines-disks-incremental-snapshot-powershell.md)]

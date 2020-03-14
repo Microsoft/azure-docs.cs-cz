@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 5c5e1a8cee8cdad0659ae00829d170bf3fa7bf87
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.date: 03/10/2020
+ms.openlocfilehash: c235562834ae78a12b690fcd1b96d6a3640e0c66
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941411"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371660"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení SSL v Azure Database for PostgreSQL – jeden server
 
@@ -29,12 +29,9 @@ Připojovací řetězce, které jsou předem definované v nastavení "připojov
 
 Volitelně můžete zakázat vynucování připojení SSL. Microsoft Azure doporučuje vždycky povolit nastavení **připojení SSL vynutilo** pro zvýšené zabezpečení.
 
-> [!NOTE]
-> V současné době je verze TLS podporovaná pro Azure Database for PostgreSQL TLS 1,0, TLS 1,1, TLS 1,2.
-
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Přejděte na server Azure Database for PostgreSQL a klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolíte nebo zakážete nastavení **Vynutilí připojení SSL** . Potom klikněte na **Uložit**.
+Přejděte na server Azure Database for PostgreSQL a klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolíte nebo zakážete nastavení **Vynutilí připojení SSL** . Pak klikněte na **Uložit**.
 
 ![Zabezpečení připojení – zakázat vymáhání SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
@@ -68,6 +65,31 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 
 > [!TIP]
 > Potvrďte, že hodnota předaná `sslrootcert` odpovídá cestě k souboru pro certifikát, který jste uložili.
+
+## <a name="tls-connectivity-in-azure-database-for-postgresql-single-server"></a>Připojení TLS na Azure Database for PostgreSQL jednom serveru
+
+Azure Database for PostgreSQL – jeden server podporuje šifrování pro klienty připojující se k databázovému serveru pomocí protokolu TLS (Transport Layer Security). TLS je průmyslový standardní protokol, který zajišťuje Zabezpečená síťová připojení mezi databázovým serverem a klientskými aplikacemi, což vám umožní dodržovat požadavky na dodržování předpisů.
+
+### <a name="tls-settings"></a>Nastavení TLS
+
+Zákazníci teď mají možnost vyhovět verzi TLS pro klienta připojující se k jejich Azure Database for PostgreSQLmu jedinému serveru. Chcete-li použít možnost TLS, použijte nastavení možnosti **Minimální verze protokolu TLS** . Pro toto nastavení možností jsou povoleny následující hodnoty:
+
+|  Minimální nastavení TLS             | Podporovaná verze TLS                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (výchozí) | Není vyžadován protokol TLS                      |
+| TLS1_0                           | TLS 1,0, TLS 1,1, TLS 1,2 a vyšší |
+| TLS1_1                           | TLS 1,1, TLS 1,2 a vyšší          |
+| TLS1_2                           | TLS verze 1,2 a vyšší           |
+
+
+Například nastavení minimální verze nastavení TLS na TLS 1,0 znamená, že váš server umožní připojení z klientů pomocí protokolu TLS 1,0, 1,1 a 1,2 +. Případně můžete tuto hodnotu nastavit na 1,2 znamená, že povolíte připojení pouze z klientů pomocí protokolu TLS 1,2 a všechna připojení pomocí protokolu TLS 1,0 a TLS 1,1 budou odmítnuty.
+
+> [!Note] 
+> Pro všechny nové servery je standardně zakázaný protokol TLS pro všechny nové servery Azure Database for PostgreSQL pro jeden server.
+>
+> V současné době jsou verze TLS podporované byAzure databází pro PostgreSQL jsou TLS 1,0, 1,1 a 1,2.
+
+Informace o tom, jak nastavit nastavení TLS pro váš Azure Database for PostgreSQL samostatný server, najdete v článku [jak nakonfigurovat nastavení TLS](howto-tls-configurations.md).
 
 ## <a name="next-steps"></a>Další kroky
 

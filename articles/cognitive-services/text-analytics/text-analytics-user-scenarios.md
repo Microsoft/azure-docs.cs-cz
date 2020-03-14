@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
-ms.topic: overview
-ms.date: 11/29/2019
+ms.topic: conceptual
+ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 19df2cfc58f0653b09600b43e5859753781d7151
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219244"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Příklady scénářů uživatelů pro rozhraní API pro analýzu textu
 
@@ -44,6 +44,12 @@ Pomocí Extrakce klíčových frází a rozpoznávání entit můžete zpracovat
 Sledujte svůj názor na produkt uživatele na Twitteru nebo na Facebook stránkách. Pomocí dat můžete analyzovat zákaznická mínění k novým produktům, extrahovat klíčové fráze týkající se funkcí a požadavků na funkce nebo řešit reklamace zákazníků při jejich vzniku. Podívejte se na příklad [šablony Microsoft Flow](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
 
 ![Obrázek popisující, jak monitorovat váš produkt a zpětnou vazbu na sociálních médiích pomocí extrakce klíčových frází](media/use-cases/social-feed.svg)
+
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>Klasifikace a redigování dokumentů, které obsahují citlivé informace
+
+Použijte rozpoznávání pojmenovaných entit k identifikaci osobních a citlivých informací v dokumentech. Použijte data ke klasifikaci dokumentů nebo redigování, aby je bylo možné bezpečně sdílet.
+
+![Obrázek popisující, jak používat NER k detekci osobních údajů a klasifikaci a redigování dokumentů](media/use-cases/sensitive-docs.jpg)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Spuštění Azure Functions z balíčku
 description: Modul runtime Azure Functions spouští vaše funkce připojením souboru balíčku pro nasazení, který obsahuje soubory projektu Function App.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087029"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365267"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Spuštění Azure Functions ze souboru balíčku
 
@@ -58,32 +58,6 @@ V následujícím příkladu je aplikace Function App nakonfigurovaná tak, aby 
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-### <a name="use-key-vault-references"></a>Použití Key Vaultch odkazů
-
-Pro zvýšení zabezpečení můžete použít Key Vault odkazy ve spojení s vaší externí adresou URL. Tím se zachovává zašifrovaná adresa URL v klidovém stavu a umožňuje využít Key Vault pro správu a rotaci tajných kódů. Doporučuje se používat úložiště objektů BLOB v Azure, abyste mohli snadno otočit související klíč SAS. Úložiště objektů BLOB v Azure je v klidovém stavu zašifrované, což zajistí zabezpečení dat aplikace, když není nasazená na App Service.
-
-1. Vytvořte Azure Key Vault.
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
-    ```
-
-1. Přidejte svoji externí adresu URL jako tajný kód do Key Vault.
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. Vytvořte nastavení aplikace `WEBSITE_RUN_FROM_PACKAGE` a nastavte hodnotu jako Key Vault odkaz na externí adresu URL.
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
-    ```
-
-Další informace najdete v následujících článcích.
-
-- [Key Vault odkazy na App Service](../app-service/app-service-key-vault-references.md)
-- [Azure Storage šifrování dat v klidovém umístění](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

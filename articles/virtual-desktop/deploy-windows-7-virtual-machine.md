@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a367e4d98135b5d29c4a0e38363739ca2689dcab
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 158dd9d6a38cc1aaf7667c0b16518e23b3f7cecf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127997"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366679"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
 
 Proces nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows se trochu liší od virtuálních počítačů, na kterých běží novější verze Windows. V této příručce se dozvíte, jak nasadit Windows 7.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, vytvořte fond hostitelů podle pokynů v tématu [Vytvoření fondu hostitelů s prostředím PowerShell](create-host-pools-powershell.md) . Potom postupujte podle pokynů v tématu [vytvoření fondů hostitelů v nástroji Azure Marketplace](create-host-pools-azure-marketplace.md#optional-assign-additional-users-to-the-desktop-application-group) k přiřazení jednoho nebo více uživatelů do skupiny desktopových aplikací.
 
@@ -35,7 +35,7 @@ Postup nastavení virtuálního počítače se systémem Windows 7 na virtuáln�
 4. Přidejte účet, který jste použili při připojování k hostiteli pomocí protokolu RDP, do skupiny Remote Desktop User. Pokud to neuděláte, možná se nebudete moct připojit k virtuálnímu počítači po jeho připojení k doméně služby Active Directory.
 5. Na svém VIRTUÁLNÍm počítači přejdete na web Windows Update.
 6. Nainstalujte všechny aktualizace Windows v důležité kategorii.
-7. Nainstalovat všechny aktualizace systému Windows v nepovinné kategorii (kromě jazykových sad). Tím se nainstaluje aktualizace protokol RDP (Remote Desktop Protocol) 8,0 ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)), kterou potřebujete k dokončení těchto pokynů.
+7. Nainstalovat všechny aktualizace systému Windows v nepovinné kategorii (kromě jazykových sad). Tím se nainstaluje aktualizace protokol RDP (Remote Desktop Protocol) 8,0 ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)), kterou potřebujete k dokončení těchto pokynů.
 8. Otevřete Editor místních zásad skupiny a přejděte na **Konfigurace počítače** > **šablony pro správu** > **součásti systému Windows** > **Vzdálená plocha** > **hostitel relace vzdálené plochy** > **prostředí vzdálené relace**.
 9. Povolte zásadu protokol RDP (Remote Desktop Protocol) 8,0.
 10. Připojte tento virtuální počítač k doméně služby Active Directory.

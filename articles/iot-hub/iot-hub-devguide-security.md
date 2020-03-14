@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272055"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -40,7 +40,7 @@ Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům 
   | Zásady sdíleného přístupu | Oprávnění |
   | -------------------- | ----------- |
   | iothubowner | Všechna oprávnění |
-  | služba | **ServiceConnect** oprávnění |
+  | service | **ServiceConnect** oprávnění |
   | zařízení | **DeviceConnect** oprávnění |
   | registryRead | **RegistryRead** oprávnění |
   | registryReadWrite | **RegistryRead** a **RegistryWrite** oprávnění |
@@ -57,7 +57,7 @@ Například v typickém řešení IoT:
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Azure IoT Hub uděluje přístup k koncovým bodům tím, že ověřuje token proti zásadám sdíleného přístupu a bezpečnostním přihlašovacím údajům registru identity.
 
@@ -441,7 +441,7 @@ Následující referenční témata vám poskytnou další informace o řízení
 
 Následující tabulka uvádí oprávnění, která můžete použít k řízení přístupu ke službě IoT Hub.
 
-| Oprávnění | Poznámky: |
+| Oprávnění | Poznámky |
 | --- | --- |
 | **RegistryRead** |Udělí přístup pro čtení k registru identit. Další informace najdete v části [registr identit](iot-hub-devguide-identity-registry.md). <br/>Toto oprávnění využívají back-endové cloudové služby. |
 | **RegistryReadWrite** |Udělí registru identity přístup pro čtení a zápis. Další informace najdete v části [registr identit](iot-hub-devguide-identity-registry.md). <br/>Toto oprávnění využívají back-endové cloudové služby. |

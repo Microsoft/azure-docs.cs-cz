@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 80d8f176d3a4af82a6b93e1af430d914c47bfff6
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
-ms.translationtype: HT
+ms.openlocfilehash: d47fdb9461786d80d65ee2448cc983a7a8348ff2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79137352"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298763"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -20,30 +20,29 @@ Běžným scénářem v FarmBeats je příjem historických dat z prostředků I
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali FarmBeats a shromáždili historická data ze svých zařízení IoT.
-Musíte taky povolit partnerský přístup, jak je uvedeno v následujících krocích.
+Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali FarmBeats a shromáždili historická data ze svých zařízení IoT. Musíte taky povolit partnerský přístup, jak je uvedeno v následujících krocích.
 
 ## <a name="enable-partner-access"></a>Povolit přístup k partnerovi
 
 Musíte povolit integraci partnera s instancí Azure FarmBeats. Tento krok vytvoří klienta, který má přístup k vaší instanci Azure FarmBeats jako partnerovi zařízení a poskytne následující hodnoty, které jsou potřeba v následujících krocích:
 
-- Koncový bod rozhraní API: Jedná se o adresu URL DataHub, například https://\<DataHub >. azurewebsites. NET.
+- Koncový bod rozhraní API: Jedná se o adresu URL DataHub, například https://\<DataHub >. azurewebsites. NET
 - ID tenanta
 - ID klienta
 - Tajný klíč klienta
 - Připojovací řetězec EventHub
 
-Postupujte takto:
+Postupujte následovně:
 
 >[!NOTE]
 > Chcete-li provést následující postup, musíte být správcem.
 
 1. Stáhněte [soubor zip](https://aka.ms/farmbeatspartnerscriptv2)a extrahujte ho na místní disk. V souboru zip bude k dispozici jeden soubor.
-2. Přihlaste se k https://portal.azure.com/ a přejít na registrace aplikací Azure Active Directory >.
+2. Přihlaste se k https://portal.azure.com/ a přejít na **Azure Active Directory** > **Registrace aplikací**.
 
-3. Klikněte na registrace aplikace, která se vytvořila jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats DataHub.
+3. Vyberte **registraci aplikace** vytvořenou jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats DataHub.
 
-4. Klikněte na "vystavení rozhraní API" – > klikněte na Přidat klientskou aplikaci a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zaškrtněte možnost autorizovat rozsah. Tím se zajistí přístup k rozhraní příkazového řádku Azure CLI (Cloud Shell), aby se prováděly níže uvedené kroky.
+4. Vyberte **zveřejnit rozhraní API** > vyberte **Přidat klientskou aplikaci** a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a ověřte **obor autorizace**. Tím zajistíte přístup k rozhraní příkazového řádku Azure CLI (Cloud Shell), abyste mohli provést následující kroky:
 
 5. Otevřete Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu Azure Portal.
 
@@ -59,9 +58,9 @@ Postupujte takto:
 
 8. Přejít do adresáře, kam se soubor nahrál. Ve výchozím nastavení se soubory odešlou do domovského adresáře pod uživatelským jménem.
 
-9. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze stránky s přehledem Azure Active Directory >.
+9. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat z **Azure Active Directory** > **stránce s přehledem**.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1   
 
@@ -70,9 +69,12 @@ Postupujte takto:
 10. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
 ## <a name="create-device-or-sensor-metadata"></a>Vytvořit zařízení nebo metadata senzorů
 
- Teď, když máte požadované přihlašovací údaje, můžete definovat zařízení a senzory. Chcete-li to provést, vytvořte metadata voláním rozhraní FarmBeats API. Všimněte si prosím, že budete muset volat rozhraní API jako klientskou aplikaci, kterou jste vytvořili v předchozí části.
+ Teď, když máte požadované přihlašovací údaje, můžete definovat zařízení a senzory. Chcete-li to provést, vytvořte metadata voláním rozhraní FarmBeats API. Nezapomeňte volat rozhraní API jako klientskou aplikaci, kterou jste vytvořili v předchozí části.
 
- FarmBeats DataHub má následující rozhraní API, které umožňuje vytvářet a spravovat metadata zařízení nebo senzorů. Uvědomte si, že jako partner máte přístup jenom pro čtení, vytváření a aktualizaci metadat; **Odstranění není povoleno partnerem.**
+ FarmBeats DataHub má následující rozhraní API, které umožňuje vytvářet a spravovat metadata zařízení nebo senzorů.
+
+ > [!NOTE]
+ > Jako partner, ke kterému máte přístup, stačí jen číst, vytvářet a aktualizovat metadata; **možnost odstranit je omezena na partnera.**
 
 - /**DeviceModel**: DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, což je brána nebo uzel.
 - /**zařízení**: zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné.
@@ -126,7 +128,7 @@ Další informace o objektech naleznete v [Swagger](https://aka.ms/FarmBeatsData
 
 Chcete-li vytvořit požadavek rozhraní API, můžete zkombinovat metodu HTTP (POST), adresu URL služby API a identifikátor URI k prostředku, který se má dotazovat, odeslat data do, vytvořit nebo odstranit žádost. Pak přidáte jednu nebo více hlaviček požadavku HTTP. Adresa URL služby API je koncový bod rozhraní API, to znamená DataHub adresa URL (https://\<yourdatahub >. azurewebsites. NET).  
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 FarmBeats DataHub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje vygenerované v předchozí části:
 
@@ -284,7 +286,7 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
-Níže je uveden vzorový kód v Pythonu. Upozorňujeme, že přístupový token použitý v této ukázce je stejný jako ten, který jsme dostali během ověřování.
+Níže je uveden vzorový kód v Pythonu. Přístupový token použitý v této ukázce je stejný jako přijatý během ověřování.
 
 ```python
 import requests
@@ -347,11 +349,11 @@ Převeďte historický formát dat ze senzorů na Kanonický formát, který Azu
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
         }
       ]
     }
@@ -400,7 +402,7 @@ Tady je příklad zprávy telemetrie:
 }
 ```
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Po ingestování historických/streamových dat ze senzorů nejde zobrazit data telemetrie.
 
@@ -408,8 +410,10 @@ Tady je příklad zprávy telemetrie:
 
 **Nápravná opatření**:
 
-1. Ujistěte se, že jste správně dokončili registraci partnera – můžete to zkontrolovat tak, že přejdete na DataHub Swagger, přejdete na rozhraní/partner API, načtěte a zkontrolujete, jestli je partner zaregistrovaný. Pokud ne, přidejte partnera pomocí následujících [kroků](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) .
+1. Ujistěte se, že jste provedli příslušnou registraci partnera – můžete to zkontrolovat tak, že přejdete do DataHub Swagger, přejdete do rozhraní/partner API, provedete získání a zkontrolujete, jestli je partner zaregistrovaný. Pokud ne, přidejte partnera pomocí následujících [kroků](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) .
+
 2. Ujistěte se, že jste vytvořili metadata (DeviceModel, Device, SensorModel, snímač) pomocí přihlašovacích údajů partnerského klienta.
+
 3. Ujistěte se, že jste používali správný formát zprávy telemetrie (jak je uvedeno níže):
 
 ```json
@@ -423,11 +427,11 @@ Tady je příklad zprávy telemetrie:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }

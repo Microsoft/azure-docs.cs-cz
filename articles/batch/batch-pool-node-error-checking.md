@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 95f7d4d03fbac6ec7c27630f1210ef999ddc776c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484124"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369263"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 
@@ -56,7 +56,7 @@ Informace o posledním automatickém vyhodnocení měřítka můžete získat po
 
 [Událost dokončení změny velikosti fondu](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) zachycuje informace o všech hodnoceních.
 
-### <a name="delete"></a>Odstranit
+### <a name="delete"></a>Odstranění
 
 Když odstraníte fond, který obsahuje uzly, první Batch tyto uzly odstraní. Pak odstraní samotný objekt fondu. Odstranění uzlů fondu může trvat několik minut.
 
@@ -137,8 +137,21 @@ Velikost dočasné jednotky závisí na velikosti virtuálního počítače. Jed
 
 Pro soubory vytvářené jednotlivými úlohami je možné určit dobu uchovávání dat pro každou úlohu, která určuje, jak dlouho jsou soubory úlohy zachované, než se automaticky vyčistí. Dobu uchovávání můžete snížit, abyste snížili požadavky na úložiště.
 
-Pokud vyplní dočasné místo na disku, v současné době uzel přestane spouštět úlohy. V budoucnu bude hlášena [Chyba uzlu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) .
+Pokud dojde volné místo na dočasném disku (nebo se velmi blízko z místa), uzel se přesune do [nepoužitelného](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) stavu a chyba uzlu (použijte odkaz, který už existuje) se dohlásí, že je disk plný.
 
+### <a name="what-to-do-when-a-disk-is-full"></a>Co dělat, když je disk plný
+
+Určete, proč je disk plný: Pokud si nejste jistí, co zabírá místo v uzlu, doporučujeme vzdálené řízení s uzlem a prozkoumat ručně, kde se místo dokončí. Můžete také využít [rozhraní API soubory služby Batch](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) k prohlédnutí souborů ve spravovaných složkách služby Batch (například výstupy úloh). Všimněte si, že toto rozhraní API obsahuje jenom soubory ve spravovaných adresářích Batch, a pokud vaše úkoly vytvořily soubory jinde, neuvidíte je.
+
+Ujistěte se, že všechna data, která potřebujete, byla načtena z uzlu nebo odeslána do trvalého úložiště. Veškerá zmírnění problému s plným diskem zahrnuje odstranění dat, aby se uvolnilo místo.
+
+### <a name="recovering-the-node"></a>Obnovování uzlu
+
+1. Pokud je váš fond fondem [C. loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) , můžete uzel znovu vytvořit pomocí [rozhraní API služby Batch pro opětovné](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)vytvoření bitové kopie. Tím se vyčistí celý disk. Pro [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) fondy se v současné době nepodporuje znovu image.
+
+2. Pokud je váš fond [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration), můžete odebrat uzel z fondu pomocí [rozhraní API odebrat uzly](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes). Pak můžete znovu zvětšit fond a nahradit špatný uzel jeho novou.
+
+3.  Odstraňte staré dokončené úlohy nebo staré dokončené úlohy, jejichž data úkolů jsou stále na uzlech. V případě, že jsou data úloh a úkolů na uzlech, která jsou na uzlech, můžete hledat v [kolekci RecentTasks](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) v uzlu nebo v [souborech na uzlu](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode). Odstraněním úlohy dojde k odstranění všech úkolů v úloze a odstranění úloh v úloze aktivuje data v adresářích úloh na uzlu, aby se odstranila. tím se uvolní místo. Až uvolníte dostatek místa, restartujte uzel a měl by přesunout nečinný stav a nečinné znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

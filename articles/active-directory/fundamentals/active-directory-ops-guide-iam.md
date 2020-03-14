@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 36b3857f8827f8a33e5fc0981b22a49128f7c193
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535324"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298610"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Referenční příručka operací správy identit a přístupu Azure Active Directory
 
@@ -97,7 +97,7 @@ Pokud vaše organizace nemá strategii zotavení po havárii a převzetí služe
 
 ![Snímek obrazovky s konfigurací pracovního režimu Azure AD Connect](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
-#### <a name="stay-current"></a>Udržování aktuálního stavu
+#### <a name="stay-current"></a>Zajištění aktuálnosti
 
 Aktualizace společnosti Microsoft Azure AD Connect pravidelně. Současným využitím vylepšení výkonu, oprav chyb a nových funkcí, které poskytuje každá nová verze.
 
@@ -170,7 +170,7 @@ Pokud aktuálně používáte nástroj, například [Microsoft Identity Manager]
 Vlastníci prostředků se můžou domnívat, že skupina **Všichni uživatelé** obsahuje jenom **zaměstnance v podniku** , když můžou ve skutečnosti obsahovat **podnikové zaměstnance** i **hosty**. V důsledku toho byste měli věnovat zvláštní pozornost při použití skupiny **Všichni uživatelé** pro přiřazení aplikace a udělení přístupu k prostředkům, jako je například sharepointový obsah nebo aplikace.
 
 > [!IMPORTANT]
-> Pokud je skupina **Všichni uživatelé** povolená a použitá pro zásady podmíněného přístupu, aplikaci nebo přiřazení prostředků, ujistěte se, že [skupinu zabezpečíte](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups#hardening-the-all-users-dynamic-group) , pokud nechcete, aby zahrnovala uživatele typu Host. Kromě toho byste měli opravit přiřazení licencí tím, že vytvoříte a přiřadíte skupiny, které obsahují pouze **zaměstnance v podniku** . Pokud zjistíte, že je povolená skupina **Všichni uživatelé** , ale nepoužívá se k udělení přístupu k prostředkům, ujistěte se, že provozní pokyny vaší organizace tuto skupinu záměrně používají (což zahrnuje i **zaměstnance v podniku** i **hosty**).
+> Pokud je skupina **Všichni uživatelé** povolená a použitá pro zásady podmíněného přístupu, aplikaci nebo přiřazení prostředků, ujistěte se, že [skupinu zabezpečíte](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) , pokud nechcete, aby zahrnovala uživatele typu Host. Kromě toho byste měli opravit přiřazení licencí tím, že vytvoříte a přiřadíte skupiny, které obsahují pouze **zaměstnance v podniku** . Pokud zjistíte, že je povolená skupina **Všichni uživatelé** , ale nepoužívá se k udělení přístupu k prostředkům, ujistěte se, že provozní pokyny vaší organizace tuto skupinu záměrně používají (což zahrnuje i **zaměstnance v podniku** i **hosty**).
 
 ### <a name="automated-user-provisioning-to-apps"></a>Automatizované zřizování uživatelů pro aplikace
 

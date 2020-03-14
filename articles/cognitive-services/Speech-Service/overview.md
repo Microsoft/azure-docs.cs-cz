@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 02/10/2020
+ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a9dbd0d7a3b8dde45e317b624303082465f93bc9
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119924"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369484"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
 Služba rozpoznávání řeči je sjednocení převodu řeči na text, převod textu na řeč a rozpoznávání řeči do jednoho předplatného Azure. Rozpoznávání řeči umožňuje používat aplikace, nástroje a zařízení pomocí [sady Speech SDK](speech-sdk-reference.md), [zařízení Speech SDK](https://aka.ms/sdsdk-quickstart)nebo [rozhraní REST API](rest-apis.md).
 
 > [!IMPORTANT]
-> Služba rozpoznávání řeči nahradila rozhraní API pro zpracování řeči Bingu, Translator Speech a Custom Speech. Pokyny k migraci najdete v tématu _Průvodce postupy > migrace_ .
+> Služba rozpoznávání řeči nahradila rozhraní API pro zpracování řeči Bingu a Translator Speech. Pokyny k migraci najdete v tématu _Průvodce postupy > migrace_ .
 
 Tyto funkce tvoří službu pro rozpoznávání řeči. Pomocí odkazů v této tabulce se dozvíte víc o běžných případech použití pro jednotlivé funkce nebo o Projděte si referenční informace k rozhraní API.
 
-| Service | Funkce | Popis | Sada SDK | REST |
-| ------- | ------- | ----------- | --- | ---- |
+| Služba | Funkce | Popis | Sada SDK | REST |
+|---------|---------|-------------|-----|------|
 | [Převod řeči na text](speech-to-text.md) | Převod řeči na text | Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Přepis Batch](batch-transcription.md) | Batch přepis umožňuje provádět přepis velkých objemů dat z převodu řeči na text. Jedná se o službu založenou na REST, která používá stejný koncový bod jako přizpůsobení a Správa modelů. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
 | | [Konverzace s více zařízeními](multi-device-conversation.md) | Připojení více zařízení nebo klientů v rámci konverzace pro odesílání hlasových a textových zpráv s jednoduchou podporou pro přepis a překlady| Ano | Ne |
@@ -43,7 +43,7 @@ Tyto funkce tvoří službu pro rozpoznávání řeči. Pomocí odkazů v této 
 Nabízíme rychlé zprovoznění v nejoblíbenějších programovacích jazycích, z nichž každá je navržena tak, aby používala kód za méně než 10 minut. Tato tabulka obsahuje nejoblíbenější rychlé starty pro jednotlivé funkce. Pomocí levé navigační navigace můžete prozkoumat další jazyky a platformy.
 
 | Převod řeči na text (SDK) | Převod textu na řeč (SDK) | Překlad (SDK) |
-| -------------------- | -------------------- | ----------------- |
+|----------------------|----------------------|-------------------|
 | [Rozpoznávání řeči ze zvukového souboru](quickstarts/speech-to-text-from-file.md) | [Vysyntetizovat řeč do zvukového souboru](quickstarts/text-to-speech-audio-file.md) | [Přeložit řeč na text](quickstarts/translate-speech-to-text.md) |
 | [Rozpoznávání řeči pomocí mikrofonu](quickstarts/speech-to-text-from-microphone.md) | [Vysyntetizátorování řeči na mluvčím](quickstarts/text-to-speech.md) | [Převod řeči na více cílových jazyků](quickstarts/translate-speech-to-text-multiple-languages.md) |
 | [Rozpoznávání řeči uložených v úložišti objektů BLOB](quickstarts/from-blob.md) | [Asynchronní syntéza pro dlouhý formát zvuku](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Převod řeči na řeč](quickstarts/translate-speech-to-speech.md) |

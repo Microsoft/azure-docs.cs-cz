@@ -8,28 +8,22 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264946"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370371"
 ---
 # <a name="public-preview-service-limits"></a>Omezení služby ve verzi Public Preview
 
-V rámci verze Public Preview má digitální vlákna Azure následující dočasné předplatné, instanci a omezení přenosové rychlosti.
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-Tato omezení existují, pokud chcete zjednodušit učení o nové službě a jejich mnoha funkcích.
-
-> [!NOTE]
-> Tato omezení se zvýší nebo odeberou obecnou dostupností (GA).
+V rámci verze Public Preview má stávající zákazníci následující dočasné předplatné, instanci a omezení přenosové rychlosti. Tato omezení existují, pokud chcete zjednodušit učení o nové službě a jejich mnoha funkcích a budou se zvyšovat a odebírat obecnou dostupností (GA).
 
 ## <a name="per-subscription-limits"></a>Omezení pro předplatné
 
-V rámci verze Public Preview může každé předplatné Azure vytvořit nebo spustit pouze jednu instanci digitálního vlákna Azure v jednom okamžiku.
-
-> [!TIP]
-> Odstraníte-li instanci, můžete vytvořit novou.
+V rámci verze Public Preview může každé předplatné Azure vytvořit nebo spustit pouze jednu instanci digitálního vlákna Azure v jednom okamžiku. Odstraníte-li instanci, můžete vytvořit novou.
 
 ## <a name="per-instance-limits"></a>Omezení podle instancí
 
@@ -71,7 +65,7 @@ Následující omezení nastaví celkový počet všech volání uživatelsky de
 Tato omezení omezují celkový počet všech zpráv, které vaše zařízení můžou odeslat do instance digitálních vláken Azure:
 
 - 100 zpráv za sekundu napříč všemi zařízeními
--   25 zpráv za sekundu na zařízení
+-    25 zpráv za sekundu na zařízení
 
 ## <a name="next-steps"></a>Další kroky
 

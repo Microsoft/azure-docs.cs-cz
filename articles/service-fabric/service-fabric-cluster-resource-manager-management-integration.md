@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386262"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258743"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integrace správce prostředků clusteru s Service Fabric správu clusterů
 Cluster Service Fabric Správce prostředků nereaguje na inovace v Service Fabric, ale je součástí této služby. První způsob, jakým cluster Správce prostředků pomáhá se správou, je sledovat požadovaný stav clusteru a služby uvnitř něj. Cluster Správce prostředků odesílá zprávy o stavu, když nedokáže cluster vložit do požadované konfigurace. Pokud například není dostatečná kapacita, cluster Správce prostředků odesílá upozornění na stav a chyby, které signalizují problém. Další integrací se musí udělat s tím, jak upgrade funguje. Cluster Správce prostředků během upgradu mírně mění jeho chování.  
@@ -105,7 +105,7 @@ Blocklisting není trvalá podmínka. Po několika minutách se uzel odebere z s
 
 U všech těchto omezení jste si možná mysleli, že v systému jsou omezení domén selhání nejdůležitější. Aby bylo zajištěno, že nedošlo k porušení omezení domény selhání, je ochotno porušovat jiná omezení. "
 
-Omezení lze konfigurovat s různými úrovněmi priority. Jsou to:
+Omezení lze konfigurovat s různými úrovněmi priority. Toto jsou:
 
    - "pevná" (0)
    - "měkké" (1)

@@ -1,19 +1,19 @@
 ---
-title: Privátní odkaz pro Azure Database for MySQL (Preview)
+title: Privátní odkaz – Azure Database for MySQL
 description: Přečtěte si, jak soukromý odkaz funguje pro Azure Database for MySQL.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: d9738a1dca39e1b43f690bd65ff05d20b6a94fa1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897504"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371286"
 ---
-# <a name="private-link-for-azure-database-for-mysql-preview"></a>Privátní odkaz pro Azure Database for MySQL (Preview)
+# <a name="private-link-for-azure-database-for-mysql"></a>Privátní odkaz pro Azure Database for MySQL
 
 Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). K prostředkům PaaS se dá dostat pomocí privátní IP adresy stejně jako u jakéhokoli jiného prostředku ve virtuální síti.
 
@@ -57,10 +57,7 @@ Aby bylo možné povolit privátní propojení, jsou vyžadovány privátní kon
 * [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Proces schválení
-Po vytvoření privátního koncového bodu (PE) správcem sítě může správce MySQL spravovat připojení privátního koncového bodu (PEC) k Azure Database for MySQL.
-
-> [!NOTE]
-> V současné době Azure Database for MySQL podporuje pouze automatické schválení privátního koncového bodu.
+Po vytvoření privátního koncového bodu (PE) správcem sítě může správce MySQL spravovat připojení privátního koncového bodu (PEC) k Azure Database for MySQL. Tato oddělení povinností mezi správcem sítě a DBA je užitečné pro správu Azure Database for MySQLho připojení. 
 
 * V Azure Portal přejděte na prostředek serveru Azure Database for MySQL. 
     * Vyberte připojení privátního koncového bodu v levém podokně.
@@ -109,6 +106,19 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 * Pokud nakonfigurujete veřejný provoz nebo koncový bod služby a vytvoříte privátní koncové body, budou se podle odpovídajícího typu pravidla brány firewall autorizovat různé typy příchozích přenosů.
 
 * Pokud neprovedete konfiguraci žádného veřejného provozu nebo koncového bodu služby a vytvoříte privátní koncové body, je Azure Database for MySQL přístupný pouze prostřednictvím privátních koncových bodů. Pokud neprovedete konfiguraci veřejného provozu nebo koncového bodu služby, po odmítnutí nebo odstranění všech schválených privátních koncových bodů nebude mít žádný provoz přístup k Azure Database for MySQL.
+
+## <a name="deny-public-access-for-azure-database-for-mysql"></a>Odepřít veřejný přístup pro Azure Database for MySQL
+
+Pokud se chcete spoléhat jenom na soukromé koncové body pro přístup ke svým Azure Database for MySQL, můžete zakázat nastavení všech veřejných koncových bodů (tj. [pravidla brány firewall](concepts-firewall-rules.md) a [koncové body služby virtuální](concepts-data-access-and-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
+
+Pokud je toto nastavení nastaveno na *Ano*, budou mít Azure Database for MySQL pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne*, klienti se mohou připojit k vašemu Azure Database for MySQL v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Pokud je navíc nastavená hodnota přístup k privátní síti, nebudete moct přidat ani aktualizovat existující pravidla brány firewall a koncových bodů služby virtuální sítě.
+
+> [!Note]
+> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL – jeden server podporuje Pro obecné účely a cenová úroveň optimalizované pro paměť.
+>
+> Toto nastavení nemá žádný vliv na konfigurace protokolu SSL a TLS pro vaše Azure Database for MySQL.
+
+Informace o tom, jak nastavit **přístup k veřejné síti odepřít** pro váš Azure Database for MySQL z Azure Portal, najdete v tématu [jak nakonfigurovat přístup k veřejné síti odepřít](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

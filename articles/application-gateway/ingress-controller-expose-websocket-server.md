@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795970"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297828"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>Vystavení serveru WebSocket pro Application Gateway
 
-Jak je uvedeno v dokumentaci k Application Gateway v2 – [poskytuje nativní podporu protokolů WebSocket a HTTP/2](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic). Pamatujte na to, že u Application Gateway i Kubernetes příchozího přenosu dat neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket.
+Jak je uvedeno v dokumentaci k Application Gateway v2 – [poskytuje nativní podporu protokolů WebSocket a HTTP/2](features.md#websocket-and-http2-traffic). Pamatujte na to, že u Application Gateway i Kubernetes příchozího přenosu dat neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket.
 
 V níže uvedeném YAML nasazení Kubernetes se zobrazuje minimální konfigurace, která se používá k nasazení serveru WebSocket, který je stejný jako při nasazení běžného webového serveru:
 ```yaml
@@ -75,7 +75,7 @@ spec:
               servicePort: 80
 ```
 
-Vzhledem k tomu, že jsou splněné všechny požadavky a máte Application Gateway řízený Kubernetes příchozím voláním v AKS, by výše uvedené nasazení vedlo k vystavení serveru WebSockets na portu 80 veřejné IP adresy vašeho Application Gateway a `ws.contoso.com` Domain.
+Vzhledem k tomu, že jsou splněné všechny požadavky a máte Application Gateway řízený Kubernetes příchozím voláním v AKS, by výše uvedené nasazení vedlo k vystavení serveru WebSockets na portu 80 veřejné IP adresy vašeho Application Gateway a `ws.contoso.com` doméně.
 
 Následující příkaz složeného testu vyzkouší nasazení serveru WebSocket:
 ```sh

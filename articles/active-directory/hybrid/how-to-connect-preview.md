@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376038"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261278"
 ---
 # <a name="more-details-about-features-in-preview"></a>Další podrobnosti o funkcích ve verzi Preview
 Toto téma popisuje, jak používat funkce, které jsou aktuálně ve verzi Preview.

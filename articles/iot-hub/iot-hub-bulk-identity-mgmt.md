@@ -8,24 +8,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79218421"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371575"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Hromadné import a export identit zařízení IoT Hub
 
 Každé centrum IoT má registr identit, který můžete použít k vytvoření prostředků pro jednotlivé zařízení ve službě. Registr identit také umožňuje řídit přístup k koncovým bodům orientovaným na zařízení. Tento článek popisuje, jak hromadně importovat a exportovat identity zařízení do registru identit a z něj. Pokud chcete zobrazit pracovní ukázku v C# nástroji a zjistit, jak můžete tuto schopnost využít při klonování rozbočovače do jiné oblasti, přečtěte si téma [postup klonování IoT Hub](iot-hub-how-to-clone.md).
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT Hub se nedávno přidala podpora virtuální sítě v omezeném počtu oblastí. Tato funkce zabezpečuje operace importu a exportu a eliminuje nutnost předávání klíčů pro ověřování.  Zpočátku je podpora virtuální sítě dostupná jenom v těchto oblastech: *WestUS2*, *EastUS*a *SouthCentralUS*. Další informace o podpoře virtuálních sítí a voláních rozhraní API k implementaci najdete v tématu [Podpora pro virtuální sítě IoT Hub](virtual-network-support.md).
 
 Operace importu a exportu se provádějí v kontextu *úloh* , které umožňují provádět operace hromadné služby ve službě IoT Hub.
 
 Třída **RegistryManager** zahrnuje metody **ExportDevicesAsync** a **ImportDevicesAsync** , které používají architekturu **úloh** . Tyto metody umožňují exportovat, importovat a synchronizovat celý registr identit služby IoT Hub.
 
 Toto téma popisuje použití třídy **RegistryManager** a systému **úloh** k provádění hromadných importů a exportů zařízení do registru identit služby IoT Hub a z něj. Azure IoT Hub Device Provisioning Service můžete použít také k povolení nulového dotykového zřizování pro jedno nebo více rozbočovačů IoT bez nutnosti zásahu člověka. Další informace najdete v dokumentaci ke [službě zřizování](/azure/iot-dps).
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>Co jsou úlohy?
 
@@ -83,6 +86,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+> [!NOTE]
+> Pokud má váš účet úložiště konfigurace brány firewall, které omezují připojení IoT Hub, zvažte použití [výjimky Microsoft Trusted First stran](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) (k dispozici ve vybraných oblastech pro centra IoT s identitou spravované služby).
+
 
 ## <a name="device-importexport-job-limits"></a>Omezení úloh importu/exportu zařízení
 

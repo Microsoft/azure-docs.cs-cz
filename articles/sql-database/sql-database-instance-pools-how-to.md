@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754052"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299358"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Průvodce postupy pro Azure SQL Database fondy instancí (Preview)
 
@@ -26,7 +26,7 @@ Tento článek poskytuje podrobné informace o tom, jak vytvářet a spravovat [
 
 V následující tabulce jsou uvedeny dostupné operace týkající se fondů instancí a jejich dostupnosti v Azure Portal a prostředí PowerShell.
 
-|Příkaz|Portál Azure|PowerShell|
+|Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
 |Vytvoření fondu instancí|Ne|Ano|
 |Aktualizovat fond instancí (omezený počet vlastností)|Ne |Ano |
@@ -41,7 +41,7 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Rutina |Popis |
+|Rutiny |Popis |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Vytvoří fond instancí Azure SQL Database. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Vrátí informace o fondu instancí Azure SQL. |
@@ -50,7 +50,7 @@ Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershe
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Vrátí informace o využití fondu instancí Azure SQL. |
 
 
-Pokud chcete použít PowerShell, [nainstalujte nejnovější verzi prostředí PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core)a postupujte podle pokynů pro [instalaci modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud chcete použít PowerShell, [nainstalujte nejnovější verzi prostředí PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)a postupujte podle pokynů pro [instalaci modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 V případě operací souvisejících s instancemi v rámci fondů i s jednou instancí použijte [příkazy standardní spravované instance](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances), ale při použití těchto příkazů pro instanci ve fondu musí být naplněna vlastnost *název fondu instancí* .
 

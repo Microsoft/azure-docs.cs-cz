@@ -4,14 +4,14 @@ description: Naučte se, jak pomocí Azure Portal nebo CLI vytvářet, zobrazova
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/16/2020
+ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5452f67a9da9a71a72c9387bc3e62d6735929984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363405"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369382"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah metrik pomocí Azure Monitor
 
@@ -53,7 +53,7 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v
 
 10. Volitelně můžete upřesnit podmínku úpravou **členitosti agregace** a **četnosti vyhodnocení**. 
 
-11. Klikněte na **Hotovo**.
+11. Klikněte na **Done** (Hotovo).
 
 12. Případně můžete přidat další kritéria, pokud chcete monitorovat složité pravidlo výstrahy. Aktuálně uživatelé mohou mít pravidla upozornění s dynamickými kritérii prahové hodnoty jako jedno kritérium.
 
@@ -136,7 +136,7 @@ Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla u
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvářejte výstrahy metriky pomocí šablon Azure Resource Manager](../../azure-monitor/platform/alerts-enable-template.md).
+- [Vytvářejte výstrahy metriky pomocí šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md).
 - [Pochopte, jak fungují výstrahy metrik](alerts-metric-overview.md).
 - [Seznamte se s tím, jak výstrahy metrik s podmínkou dynamického prahu fungují](alerts-dynamic-thresholds.md)
 - [Princip schématu webového zavěšení pro výstrahy metrik](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

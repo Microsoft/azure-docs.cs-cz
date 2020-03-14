@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246279"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367070"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Zpracování chyb v grafických runboocích Azure Automation
 
@@ -48,7 +48,7 @@ Doporučeným postupem je vytvoření vyhrazené sady Runbook pro zpracování c
 1. Pošle oznámení o tomto problému.
 2. Spustí další sadu Runbook, která místo toho automaticky zřídí nový virtuální počítač.
 
-Jedním z řešení je, aby v Runbooku bylo chybné propojení odkazující na aktivitu, která zpracovává krok 1. Sada Runbook může například připojit rutinu **Write-Warning** k aktivitě pro krok 2, například rutinu [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) .
+Jedním z řešení je, aby v Runbooku bylo chybné propojení odkazující na aktivitu, která zpracovává krok 1. Sada Runbook může například připojit rutinu `Write-Warning` k aktivitě pro krok 2, například rutinu [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) .
 
 Toto chování můžete také zobecnit pro použití v mnoha sadách Runbook tím, že tyto dvě aktivity vložíte do samostatného Runbooku pro zpracování chyb. Předtím, než původní sada Runbook zavolá tuto sadu Runbook pro zpracování chyb, může vytvořit vlastní zprávu z jejich dat a pak ji předat jako parametr do sady Runbook pro zpracování chyb.
 
@@ -60,9 +60,9 @@ Po povolení nastavení konfigurace budou mít vaše sada Runbook vytvořenou ak
 
 V následujícím příkladu sada Runbook načte proměnnou obsahující název virtuálního počítače. Pak se pokusí spustit virtuální počítač s další aktivitou.<br><br> ![Příklad zpracování chyb v Runbooku Automation](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-Aktivita **Get-AutomationVariable** a rutina [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) jsou nakonfigurovány na převod výjimek na chyby. Pokud dojde k potížím s získáním proměnné nebo spuštěním virtuálního počítače, kód generuje chyby.<br><br> ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)nastavení aktivity pro zpracování chyb v Runbooku Automation ![.
+Aktivita `Get-AutomationVariable` a rutina [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) jsou nakonfigurovány na převod výjimek na chyby. Pokud dojde k potížím s získáním proměnné nebo spuštěním virtuálního počítače, kód generuje chyby.<br><br> ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)nastavení aktivity pro zpracování chyb v Runbooku Automation ![.
 
-Chyby odkazují z těchto aktivit na jednu aktivitu kódu **správy chyb** . Tato aktivita je nakonfigurována pomocí jednoduchého výrazu prostředí PowerShell, který pomocí klíčového slova **throw** zastaví zpracování, spolu s `$Error.Exception.Message` pro získání zprávy s popisem aktuální výjimky.<br><br> příklad kódu pro zpracování chyb v Runbooku služby Automation ![](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Chyby odkazují z těchto aktivit na aktivitu s jednou `error management` kódem. Tato aktivita je nakonfigurována pomocí jednoduchého výrazu prostředí PowerShell, který pomocí klíčového slova `throw` zastaví zpracování, spolu s `$Error.Exception.Message` získat zprávu s popisem aktuální výjimky.<br><br> příklad kódu pro zpracování chyb v Runbooku služby Automation ![](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Další kroky
 

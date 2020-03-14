@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/29/2019
+ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 72b1311227f5c9f9efc35b2940d3c843a21dc261
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954014"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368719"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery zotavení po havárii technologie Hyper-V do Azure
 
@@ -84,7 +84,7 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 
 | Požadavek na server | Popis |
 |---|---|
-|Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny servery Hyper-V, které mají být profilování, musí být přidány do seznamu TrustedHosts virtuálního počítače klienta, ze kterého se nástroj spouští. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
+|Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure (*. blob.core.windows.net) z tohoto serveru, port 443<br>[Toto je volitelné. K dispozici je možnost zadat dostupnou šířku pásma během generování sestavy ručně.]</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny servery Hyper-V, které mají být profilování, musí být přidány do seznamu TrustedHosts virtuálního počítače klienta, ze kterého se nástroj spouští. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
 | Generování sestav | Počítač s Windows nebo Windows Server s aplikací Microsoft Excel 2013 nebo novější |
 | Uživatelská oprávnění | Účet správce pro přístup ke clusteru Hyper-V / hostiteli Hyper-V během operací získání seznamu virtuálních počítačů a profilace<br>Všichni hostitelé, pro které je potřeba provést profilaci, by měli mít účet správce domény se stejnými přihlašovacími údaji, tj. uživatelským jménem a heslem.
  |

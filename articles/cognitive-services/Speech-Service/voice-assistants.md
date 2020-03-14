@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394826"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369892"
 ---
-# <a name="about-voice-assistants"></a>O hlasových asistentcích
+# <a name="what-is-a-voice-assistant"></a>Co je hlasový asistent?
 
 Hlasový asistent využívající službu Speech umožňuje vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku.
 
@@ -56,7 +56,7 @@ Bez ohledu na to, jestli pro vytvoření interakce asistenta zvolíte možnost [
 
 Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka.
 
-| Rychlé zprovoznění | Platforma | API – referenční informace |
+| Rychlý start | Platforma | API – referenční informace |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Hlíží](https://aka.ms/csspeech/javaref) |

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2020
+ms.date: 03/12/2020
 ms.author: allensu
-ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3cc459b7f4b81b14f57bbb702f0b0d988654189f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79217014"
+ms.locfileid: "79298650"
 ---
-# <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT (Public Preview)
+# <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
 Prostředky brány NAT jsou součástí [Virtual Network NAT](nat-overview.md) a poskytují odchozí připojení k Internetu pro jednu nebo více podsítí virtuální sítě. Podsíť stavu virtuální sítě, která se použije pro bránu NAT. Překlad adres (NAT) pro podsíť poskytuje překlad adres (SNAT).  Prostředky brány NAT určují, které statické IP adresy virtuální počítače používají při vytváření odchozích toků. Statické IP adresy pocházejí z prostředků veřejné IP adresy, prostředků předpony veřejných IP adres nebo obojího. Prostředek brány NAT může používat až 16 statických IP adres z obou.
 
@@ -50,7 +50,7 @@ Trasy definované uživatelem nejsou nutné.
 
 Prostředek je navržený tak, aby byl jednoduchý, jak můžete vidět v následujícím příkladu Azure Resource Manager ve formátu podobném šabloně.  Tento formát podobný tomuto: slouží k znázornění konceptů a struktury.  Upravte příklad podle svých potřeb.  Tento dokument není určený jako kurz.
 
-Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revidovat 
+Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revize 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network objektového modelu NAT">
@@ -336,7 +336,7 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 - Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
 
-## <a name="feedback"></a>Názor
+## <a name="feedback"></a>Váš názor
 
 Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
@@ -353,6 +353,7 @@ Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se 
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Azure Portal](./quickstart-create-nat-gateway-portal.md)
+  - [Šablona](./quickstart-create-nat-gateway-template.md)
 * Další informace o rozhraní API prostředků brány NAT
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)

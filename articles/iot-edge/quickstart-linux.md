@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: e2dd17a324c8920f44e972987508352a69383bb9
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893090"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241147"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rychlý Start: nasazení prvního modulu IoT Edge do virtuálního zařízení se systémem Linux
 
@@ -23,7 +23,7 @@ Vyzkoušejte si Azure IoT Edge v tomto rychlém startu nasazením kontejneru kó
 V tomto rychlém startu se naučíte:
 
 1. Vytvořit IoT Hub.
-2. Zaregistrovat zařízení IoT Edge do IoT Hubu.
+2. Zaregistrovat zařízení IoT Edge do centra IoT Hub.
 3. Nainstalujte a spusťte modul runtime IoT Edge na virtuálním zařízení.
 4. Vzdáleně nasadit modul na zařízení IoT Edge.
 
@@ -171,9 +171,9 @@ Ověřte, že modul runtime byl úspěšně nainstalován a nakonfigurován na v
 
 Vaše zařízení IoT Edge je teď nakonfigurované. Je připravené na spouštění modulů nasazených v cloudu.
 
-## <a name="deploy-a-module"></a>Nasadit modul
+## <a name="deploy-a-module"></a>Nasazení modulu
 
-Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit modul, který bude posílat telemetrická data do IoT Hubu.
+Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit modul, který bude odesílat telemetrická data do služby IoT Hub.
 ![diagram – nasazení modulu z cloudu do zařízení](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]

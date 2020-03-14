@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 7cd989d944a35af8b1fd932643826e1aedd03962
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128168"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370198"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
 
@@ -33,7 +33,7 @@ Pokyny v této příručce jsou určené konkrétně pro uživatele s virtuáln�
 >[!NOTE]
 >Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct vytvořit kontejner profilu FSLogix pro fond hostitelů, musíte:
 
@@ -73,7 +73,7 @@ Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 7. Ve výsledcích hledání vyberte **Azure NetApp Files** a pak vyberte **vytvořit**.
 
 8. Vyberte tlačítko **Přidat** .
-9. Jakmile se otevře okno **nový účet NetApp** , zadejte následující hodnoty:
+9. Po otevření karty **nového účtu NetApp** zadejte následující hodnoty:
 
     - Jako **název**zadejte název účtu NetApp.
     - V poli **předplatné**vyberte předplatné pro účet úložiště, které jste nastavili v kroku 4 z rozevírací nabídky.
@@ -92,7 +92,7 @@ Pak vytvořte nový fond kapacity:
 1. Přejděte do nabídky Azure NetApp Files a vyberte svůj nový účet.
 2. V nabídce účtu v části služba úložiště vyberte **fondy kapacit** .
 3. Vyberte **Přidat fond**.
-4. Až se otevře okno **Nový fond kapacit** , zadejte následující hodnoty:
+4. Po otevření karty **Nový fond kapacit** zadejte následující hodnoty:
 
     - Do pole **název**zadejte název nového fondu kapacity.
     - V rozevírací nabídce vyberte požadovanou hodnotu pro **úroveň služby**. Pro většinu prostředí doporučujeme **Premium** .
@@ -127,7 +127,7 @@ V dalším kroku budete muset vytvořit nový svazek.
 
 1. Vyberte **svazky**a pak vyberte **Přidat svazek**.
 
-2. Když se otevře okno **vytvořit svazek** , zadejte následující hodnoty:
+2. Po otevření karty **vytvořit svazek** zadejte následující hodnoty:
 
     - Jako **název svazku**zadejte název nového svazku.
     - V poli **fond kapacit**vyberte fond kapacit, který jste právě vytvořili, z rozevírací nabídky.

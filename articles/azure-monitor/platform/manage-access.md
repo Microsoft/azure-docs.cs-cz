@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
 ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373285"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274421"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům a pracovním prostorům protokolu v Azure Monitor
 
@@ -27,9 +27,9 @@ Tento článek vysvětluje, jak spravovat přístup k protokolům a spravovat pr
 
 Režim řízení přístupu nakonfigurovaný v pracovním prostoru můžete zobrazit z Azure Portal nebo pomocí Azure PowerShell.  Toto nastavení můžete změnit pomocí jedné z následujících podporovaných metod:
 
-* Azure Portal
+* portál Azure
 
-* Azure Powershell
+* Azure PowerShell
 
 * Šablona Azure Resource Manageru
 
@@ -104,7 +104,7 @@ Každý pracovní prostor může mít přiřazených více účtů a každý ú�
 
 Následující aktivity také vyžadují oprávnění Azure:
 
-|Akce |Potřebná oprávnění Azure |Poznámky: |
+|Akce |Potřebná oprávnění Azure |Poznámky |
 |-------|-------------------------|------|
 | Přidávání a odebírání řešení monitorování | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Tato oprávnění je potřeba udělit na úrovni skupiny prostředků nebo předplatného. |
 | Změna cenové úrovně | `Microsoft.OperationalInsights/workspaces/*/write` | |

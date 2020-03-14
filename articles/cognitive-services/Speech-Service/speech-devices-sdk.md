@@ -1,5 +1,5 @@
 ---
-title: O sadě Speech SDK – služba pro rozpoznávání řeči
+title: Sada Speech zařízení SDK – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Začínáme se sadou SDK pro řeč zařízení. Služba Speech funguje se širokou škálou zařízení a zdrojů zvuku. Sada SDK zařízení řeči je předem připravené knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 40179c7d421a26fd9a77b435668f75ec6fde8ab1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136969"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370640"
 ---
-# <a name="about-the-speech-devices-sdk"></a>Sada Speech Devices SDK
+# <a name="what-is-the-speech-devices-sdk"></a>Co je sada Speech Devices SDK?
 
-[Služba Speech](overview.md) funguje se širokou škálou zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. Sada SDK zařízení řeči je pretuned knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
+[Služba Speech](overview.md) funguje se širokou škálou zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. Sada SDK zařízení řeči je předem připravené knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
 
 Vám můžou pomoct sadou SDK pro řeč zařízení:
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58a7689263f9bc761eb0b904a9376c1ca0112c13
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128101"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365385"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služby
 
@@ -76,7 +76,7 @@ Aktualizace služby nastávají měsíčně. Pokud dojde k zásadním problémů
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste vytvořili fond hostitelů pro ověření, si můžete přečíst, jak nasadit a připojit se k nástroji pro správu pro správu prostředků virtuálních ploch Microsoftu.
+Teď, když jste vytvořili fond hostitelů pro ověření, můžete zjistit, jak použít Azure Service Health k monitorování nasazení virtuálních klientů Windows. 
 
 > [!div class="nextstepaction"]
-> [Kurz nasazení nástroje pro správu](./manage-resources-using-ui.md)
+> [Nastavení upozornění služby](./set-up-service-alerts.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271071"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371150"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>ZASTARALÉ Monitorování clusteru Azure Container Service s využitím Log Analytics
 
@@ -28,8 +28,8 @@ Také předpokládá, že máte nainstalované `az` Azure CLI a `kubectl` Tools.
 
 Můžete otestovat, jestli máte nainstalovaný nástroj `az`, a to spuštěním:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azure-cli#installation)najdete pokyny.
@@ -38,21 +38,24 @@ Alternativně můžete použít [Azure Cloud Shell](https://docs.microsoft.com/a
 Můžete otestovat, jestli máte nainstalovaný nástroj `kubectl`, a to spuštěním:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Pokud nemáte nainstalované `kubectl`, můžete spustit:
-```console
-$ az acs kubernetes install-cli
+
+```azurecli
+az acs kubernetes install-cli
 ```
 
 Pokud chcete otestovat, jestli máte v nástroji kubectl nainstalované klíče Kubernetes, můžete spustit:
+
 ```console
-$ kubectl get nodes
+kubectl get nodes
 ```
 
 Pokud výše uvedené příkazy vyprší, musíte do nástroje kubectl nainstalovat klíče clusteru Kubernetes. Můžete to udělat pomocí následujícího příkazu:
-```console
+
+```azurecli
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -83,7 +86,7 @@ Zde je [soubor DAEMONSET YAML](https://github.com/Microsoft/OMS-docker/tree/mast
 Po přidání ID a klíče pracovního prostoru do konfigurace DaemonSet můžete agenta Log Analytics do clusteru nainstalovat pomocí nástroje příkazového řádku `kubectl`:
 
 ```console
-$ kubectl create -f oms-daemonset.yaml
+kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Instalace agenta Log Analytics pomocí tajného klíče Kubernetes
@@ -94,16 +97,24 @@ Pokud chcete chránit své ID a klíč pracovního prostoru Log Analytics může
   - Šablona tajné – template.yaml tajný klíč
     - DaemonSet YAML File-omsagent-DS-tajná. yaml
 - Spusťte skript. Skript zobrazí výzvu k zadání ID a primárního klíče Log Analytics pracovního prostoru. Vložením skriptu a skriptu se vytvoří tajný soubor YAML, abyste ho mohli spustit.
-  ```
-  #> sudo bash ./secret-gen.sh
+
+  ```console
+  sudo bash ./secret-gen.sh
   ```
 
-  - Tajné klíče vytvoříte spuštěním následujícího: ```kubectl create -f omsagentsecret.yaml```
+  - Vytvořte pod tajných kódů spuštěním následujícího:
+
+     ```console
+     kubectl create -f omsagentsecret.yaml
+     ```
 
   - Pokud chcete zkontrolovat, spusťte následující příkaz:
 
+  ```console
+  kubectl get secrets
   ```
-  root@ubuntu16-13db:~# kubectl get secrets
+
+  ```output
   NAME                  TYPE                                  DATA      AGE
   default-token-gvl91   kubernetes.io/service-account-token   3         50d
   omsagent-secret       Opaque                                2         1d
@@ -121,7 +132,11 @@ Pokud chcete chránit své ID a klíč pracovního prostoru Log Analytics může
   KEY:    88 bytes
   ```
 
-  - Vytvoření vašeho omsagent démon sady spuštěním ```kubectl create -f omsagent-ds-secrets.yaml```
+  - Vytvořte svůj omsagent démon-set spuštěním následujícího:
+  
+  ```console
+  kubectl create -f omsagent-ds-secrets.yaml
+  ```
 
 ### <a name="conclusion"></a>Závěr
 A to je vše! Po několika minutách byste si měli být schopni zobrazit tok dat na řídicím panelu Log Analytics.

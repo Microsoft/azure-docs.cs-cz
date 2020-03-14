@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b144a70ee88138966d9cc38a56e1cff1e63fca1b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 66efa0f2922e70908616c7c447d782efee8f6b1b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424143"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137173"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Kurz: vytvoření a Správa služby VPN Gateway pomocí PowerShellu
 
 Brány VPN Azure poskytují propojení různých míst mezi zákazníkem a Azure. Tento kurz se zabývá základními položkami nasazení brány VPN Azure, jako je vytvoření a správa brány VPN. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořit bránu VPN
+> * Vytvoření brány VPN
 > * Zobrazení veřejné IP adresy
 > * Změna velikosti brány VPN
 > * Resetování brány VPN
@@ -28,9 +28,7 @@ Následující diagram ukazuje virtuální síť a bránu VPN vytvořené v rám
 
 ![Virtuální síť a brána VPN](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell a Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Práce s Azure Cloud Shell a Azure PowerShell
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
@@ -114,7 +112,7 @@ $gwipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 `
               -Subnet $subnet -PublicIpAddress $gwpip
 ```
 
-## <a name="create-a-vpn-gateway"></a>Vytvořit bránu VPN
+## <a name="create-a-vpn-gateway"></a>Vytvoření brány VPN
 
 Vytvoření brány VPN může trvat 45 minut nebo déle. Po dokončení vytváření brány můžete vytvořit propojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo můžete vytvořit propojení mezi vaší virtuální sítí a místním umístěním. Pomocí rutiny [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) vytvořte bránu VPN.
 
@@ -181,7 +179,7 @@ Remove-AzResourceGroup -Name $RG1
 V tomto kurzu jste se dozvěděli o základních úkolech při vytváření a správě brány VPN, jako jsou:
 
 > [!div class="checklist"]
-> * Vytvořit bránu VPN
+> * Vytvoření brány VPN
 > * Zobrazení veřejné IP adresy
 > * Změna velikosti brány VPN
 > * Resetování brány VPN

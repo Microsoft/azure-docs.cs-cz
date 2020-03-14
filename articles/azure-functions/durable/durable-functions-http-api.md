@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357825"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278165"
 ---
 # <a name="http-api-reference"></a>Reference k rozhraní HTTP API
 
@@ -56,9 +56,9 @@ Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou vý
 
 | Pole              | Typ parametru  | Popis |
 |--------------------|-----------------|-------------|
-| **`functionName`** | URL             | Název funkce Orchestrator, která se má spustit. |
-| **`instanceId`**   | URL             | Volitelný parametr. ID instance orchestrace. Pokud není zadán, funkce Orchestrator spustí s náhodným ID instance. |
-| **`{content}`**    | Požadavek na obsah | Volitelné. Vstup funkce Orchestrator ve formátu JSON. |
+| **`functionName`** | Adresa URL             | Název funkce Orchestrator, která se má spustit. |
+| **`instanceId`**   | Adresa URL             | Volitelný parametr. ID instance orchestrace. Pokud není zadán, funkce Orchestrator spustí s náhodným ID instance. |
+| **`{content}`**    | Požadavek na obsah | Volitelná. Vstup funkce Orchestrator ve formátu JSON. |
 
 ### <a name="response"></a>Odpověď
 
@@ -146,7 +146,7 @@ Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou vý
 
 | Pole                   | Typ parametru  | Popis |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | URL             | ID instance orchestrace. |
+| **`instanceId`**        | Adresa URL             | ID instance orchestrace. |
 | **`showInput`**         | Řetězec dotazu    | Volitelný parametr. Pokud je nastavená na `false`, vstup funkce nebude zahrnutý v datové části odpovědi.|
 | **`showHistory`**       | Řetězec dotazu    | Volitelný parametr. Pokud je nastavena na `true`, bude historie spouštění orchestrace obsažena v datové části odpovědi.|
 | **`showHistoryOutput`** | Řetězec dotazu    | Volitelný parametr. Pokud je nastaveno na `true`, budou výstupy funkce zahrnuty do historie spouštění orchestrace.|
@@ -168,12 +168,12 @@ Datová část odpovědi pro případy **http 200** a **HTTP 202** je objekt JSO
 
 | Pole                 | Typ dat | Popis |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | string    | Běhový stav instance Mezi hodnoty patří *spuštění*, *čeká*, *Chyba*, *zrušeno*, *ukončeno*, *dokončeno*. |
+| **`runtimeStatus`**   | řetězec    | Běhový stav instance Mezi hodnoty patří *spuštění*, *čeká*, *Chyba*, *zrušeno*, *ukončeno*, *dokončeno*. |
 | **`input`**           | JSON      | Data JSON používaná k inicializaci instance. Toto pole je `null`, pokud je parametr řetězce dotazu `showInput` nastaven na `false`.|
 | **`customStatus`**    | JSON      | Data JSON používaná pro vlastní stav orchestrace. Toto pole je `null`, pokud není nastaveno. |
 | **`output`**          | JSON      | Výstup JSON instance Toto pole je `null`, pokud instance není v dokončeném stavu. |
-| **`createdTime`**     | string    | Čas, kdy byla vytvořena instance. Používá rozšířený zápis ISO 8601. |
-| **`lastUpdatedTime`** | string    | Čas posledního trvalého uložení instance. Používá rozšířený zápis ISO 8601. |
+| **`createdTime`**     | řetězec    | Čas, kdy byla vytvořena instance. Používá rozšířený zápis ISO 8601. |
+| **`lastUpdatedTime`** | řetězec    | Čas posledního trvalého uložení instance. Používá rozšířený zápis ISO 8601. |
 | **`historyEvents`**   | JSON      | Pole JSON obsahující historii spuštění orchestrace. Toto pole je `null`, pokud není parametr řetězce dotazu `showHistory` nastaven na `true`. |
 
 Tady je příklad datové části odpovědi, včetně historie spouštění Orchestrace a výstupů aktivit (s formátováním pro čitelnost):
@@ -274,7 +274,7 @@ Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou vý
 
 | Pole                   | Typ parametru  | Popis |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | URL             | ID instance orchestrace. |
+| **`instanceId`**        | Adresa URL             | ID instance orchestrace. |
 | **`showInput`**         | Řetězec dotazu    | Volitelný parametr. Pokud je nastavená na `false`, vstup funkce nebude zahrnutý v datové části odpovědi.|
 | **`showHistory`**       | Řetězec dotazu    | Volitelný parametr. Pokud je nastavena na `true`, bude historie spouštění orchestrace obsažena v datové části odpovědi.|
 | **`showHistoryOutput`** | Řetězec dotazu    | Volitelný parametr. Pokud je nastaveno na `true`, budou výstupy funkce zahrnuty do historie spouštění orchestrace.|
@@ -372,7 +372,7 @@ Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou vý
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL             | ID instance orchestrace. |
+| **`instanceId`**  | Adresa URL             | ID instance orchestrace. |
 
 ### <a name="response"></a>Odpověď
 
@@ -385,7 +385,7 @@ Datová část odpovědi pro případ **HTTP 200** je objekt JSON s následujíc
 
 | Pole                  | Typ dat | Popis |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | celé číslo   | Počet odstraněných instancí. Pro případ jedné instance by tato hodnota měla být vždy `1`. |
+| **`instancesDeleted`** | integer   | Počet odstraněných instancí. Pro případ jedné instance by tato hodnota měla být vždy `1`. |
 
 Tady je příklad datové části odezvy (naformátovaná pro čitelnost):
 
@@ -447,7 +447,7 @@ Datová část odpovědi pro případ **HTTP 200** je objekt JSON s následujíc
 
 | Pole                   | Typ dat | Popis |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | celé číslo   | Počet odstraněných instancí. |
+| **`instancesDeleted`**  | integer   | Počet odstraněných instancí. |
 
 Tady je příklad datové části odezvy (naformátovaná pro čitelnost):
 
@@ -485,8 +485,8 @@ Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou vý
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL             | ID instance orchestrace. |
-| **`eventName`**   | URL             | Název události, na které instance cílové orchestrace čeká. |
+| **`instanceId`**  | Adresa URL             | ID instance orchestrace. |
+| **`eventName`**   | Adresa URL             | Název události, na které instance cílové orchestrace čeká. |
 | **`{content}`**   | Požadavek na obsah | Datová část události ve formátu JSON. |
 
 ### <a name="response"></a>Odpověď
@@ -540,8 +540,8 @@ Parametry žádosti pro toto rozhraní API obsahují výchozí sadu uvedenou dř
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL             | ID instance orchestrace. |
-| **`reason`**      | Řetězec dotazu    | Volitelné. Důvod ukončení instance Orchestration. |
+| **`instanceId`**  | Adresa URL             | ID instance orchestrace. |
+| **`reason`**      | Řetězec dotazu    | Volitelná. Důvod ukončení instance Orchestration. |
 
 ### <a name="response"></a>Odpověď
 
@@ -589,8 +589,8 @@ Parametry žádosti pro toto rozhraní API obsahují výchozí sadu uvedenou dř
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL             | ID instance orchestrace. |
-| **`reason`**      | Řetězec dotazu    | Volitelné. Důvod pro převinutí instance Orchestration. |
+| **`instanceId`**  | Adresa URL             | ID instance orchestrace. |
+| **`reason`**      | Řetězec dotazu    | Volitelná. Důvod pro převinutí instance Orchestration. |
 
 ### <a name="response"></a>Odpověď
 
@@ -631,9 +631,9 @@ Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou vý
 
 | Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
-| **`entityName`**  | URL             | Název (typ) entity. |
-| **`entityKey`**   | URL             | Klíč (jedinečné ID) entity |
-| **`op`**          | Řetězec dotazu    | Volitelné. Název uživatelsky definované operace, která má být vyvolána. |
+| **`entityName`**  | Adresa URL             | Název (typ) entity. |
+| **`entityKey`**   | Adresa URL             | Klíč (jedinečné ID) entity |
+| **`op`**          | Řetězec dotazu    | Volitelná. Název uživatelsky definované operace, která má být vyvolána. |
 | **`{content}`**   | Požadavek na obsah | Datová část události ve formátu JSON. |
 
 Tady je příklad požadavku, který pošle uživatelem definovanou zprávu "Add" do `Counter` entitě s názvem `steps`. Obsahem zprávy je hodnota `5`. Pokud entita ještě neexistuje, vytvoří se tímto požadavkem:
@@ -720,7 +720,7 @@ Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou vý
 
 | Pole                       | Typ parametru  | Popis |
 |-----------------------------|-----------------|-------------|
-| **`entityName`**            | URL             | Volitelné. Když se tato pole zadáte, vyfiltruje seznam vrácených entit podle jejich názvu (bez rozlišení velkých a malých písmen). |
+| **`entityName`**            | Adresa URL             | Volitelná. Když se tato pole zadáte, vyfiltruje seznam vrácených entit podle jejich názvu (bez rozlišení velkých a malých písmen). |
 | **`fetchState`**            | Řetězec dotazu    | Volitelný parametr. Pokud je nastavená na `true`, bude stav entity obsažený v datové části odpovědi. |
 | **`lastOperationTimeFrom`** | Řetězec dotazu    | Volitelný parametr. Když se tato operace zadá, vyfiltruje seznam vrácených entit, které zpracovaly operace po zadaném časovém razítku ISO8601. |
 | **`lastOperationTimeTo`**   | Řetězec dotazu    | Volitelný parametr. Když se tato operace zadá, vyfiltruje seznam vrácených entit, které zpracovaly operace před zadaným časovým razítkem ISO8601. |

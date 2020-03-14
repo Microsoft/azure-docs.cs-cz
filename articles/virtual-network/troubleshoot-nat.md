@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s připojením služby Azure Virtual Network NAT
-titleSuffix: Azure Virtual Network NAT troubleshooting
+titleSuffix: Azure Virtual Network
 description: Řešení potíží se službou Virtual Network NAT
 services: virtual-network
 documentationcenter: na
@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: c629b3425cd095a6ac9d305b5cd6de58ed9d572a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 43e6853fd5e7583883f79e70c8dbcd558f137834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674331"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202157"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Řešení potíží s připojením služby Azure Virtual Network NAT
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Řešení potíží s připojením služby Azure Virtual Network NAT
 
 Tento článek pomáhá správcům diagnostikovat a řešit problémy s připojením při použití Virtual Network NAT.
-
->[!NOTE] 
->Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](nat-overview.md#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="problems"></a>Problémy
 
@@ -54,7 +51,7 @@ Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se vytv
 
 #### <a name="design-patterns"></a>Způsoby návrhu
 
-Kdykoli je to možné, využijte výhod opětovného použití připojení a sdružování připojení.  Tyto vzory se vyhnete problémům s vyčerpáním prostředků v nesprávném důsledku a jsou výsledkem předvídatelné, spolehlivé a škálovatelné chování. Primitivní prvky pro tyto vzory se dají najít v řadě vývojových knihoven a architektur.
+Kdykoli je to možné, využijte výhod opětovného použití připojení a sdružování připojení.  Tyto vzory se vyhne problémům s vyčerpáním prostředků a mají za následek předvídatelné chování. Primitivní prvky pro tyto vzory se dají najít v řadě vývojových knihoven a architektur.
 
 _**Řešení:**_ Použití vhodných vzorů
 
@@ -90,14 +87,14 @@ Následující tabulka slouží jako výchozí bod, ve kterém se nástroje pou�
 
 ### <a name="connectivity-failures"></a>Selhání připojení
 
-Problémy s připojením ke službě [Virtual Network NAT](nat-overview.md) můžou být způsobeny několika různými problémy:
+Problémy s připojením ke službě [Virtual Network NAT](nat-overview.md) můžou být způsobené několika různými problémy:
 
 * přechodná nebo trvalá [vyčerpání SNAT](#snat-exhaustion) brány NAT
 * Přechodné chyby v infrastruktuře Azure, 
 * Přechodné chyby v cestě mezi Azure a veřejným internetovým cílem 
 * přechodná nebo trvalá selhání ve veřejném internetovém cílovém umístění.
 
-K ověření připojení použijte nástroje, jako jsou následující. [Příkazy protokolu ICMP pro protokol ICMP nejsou podporovány](#icmp-ping-is-failing).
+K ověření připojení použijte nástroje, jako jsou následující. Protokol [ICMP pro příkazy není podporován](#icmp-ping-is-failing).
 
 | Operační systém | Test obecného připojení TCP | Test aplikační vrstvy TCP | UDP |
 |---|---|---|---|
@@ -110,7 +107,7 @@ Přečtěte si část o [vyčerpání SNAT](#snat-exhaustion) v tomto článku.
 
 #### <a name="azure-infrastructure"></a>Infrastruktura Azure
 
-I když Azure monitoruje a provozuje svoji infrastrukturu se špičkovou péčí, může dojít k přechodným chybám, protože není nijak zaručeno, že jsou přenosy bezeztrátové.  Použití vzorů návrhu umožňujících opětovné přenosy SYN pro aplikace TCP. Používejte dostatečně velký časový limit připojení, aby bylo možné povolit opakovaný přenos TCP SYN, aby se snížily přechodné dopady způsobené ztrátou paketu SYN.
+Azure monitoruje a provozuje svoji infrastrukturu se špičkovou péčí. K přechodným chybám může dojít, není nijak zaručeno, že jsou přenosy bezeztrátové.  Použití vzorů návrhu umožňujících opětovné přenosy SYN pro aplikace TCP. Používejte dostatečně velký časový limit připojení, aby bylo možné povolit opakovaný přenos TCP SYN, aby se snížily přechodné dopady způsobené ztrátou paketu SYN.
 
 _**Řešení**_
 
@@ -122,20 +119,20 @@ Nedoporučujeme uměle snižovat časový limit připojení TCP nebo vyladit par
 
 #### <a name="public-internet-transit"></a>veřejný internetový přenos
 
-Pravděpodobnost přechodného selhání se zvyšuje s delší cestou k cílovému a více zprostředkujícím systémům. Očekává se, že přechodné chyby můžou zvýšit četnost v rámci [infrastruktury Azure](#azure-infrastructure). 
+Šance na přechodná selhání se zvýší s delší cestou k cílovému a více zprostředkujícím systémům. Očekávalo se, že přechodné chyby můžou zvýšit četnost v rámci [infrastruktury Azure](#azure-infrastructure). 
 
 Řiďte se stejnými pokyny jako v části předchozí [infrastruktura Azure](#azure-infrastructure) .
 
 #### <a name="internet-endpoint"></a>Internetový koncový bod
 
-Předchozí části se vztahují i na požadavky týkající se internetového koncového bodu, ve kterém je vaše komunikace vytvořená. Další faktory, které mohou mít dopad na úspěšnost připojení:
+Předchozí části se vztahují spolu s koncovým bodem Internetu, se kterým se naváže komunikace. Další faktory, které mohou mít dopad na úspěšnost připojení:
 
 * řízení provozu na straně cíle, včetně
 - Omezení rychlosti rozhraní API, které ukládá cílová strana
 - Snižování rizik DDoS a vytváření přenosů transportní vrstvy
 * Brána firewall nebo jiné součásti v cílovém umístění 
 
-K určení toho, co se provádí, se obvykle vyžaduje zachycení paketů ve zdroji i cíl (Pokud je k dispozici).
+K určení toho, co se provádí, se obvykle vyžaduje zachycení paketů na zdrojovém a cílovém umístění (Pokud je k dispozici).
 
 _**Řešení**_
 
@@ -147,9 +144,11 @@ _**Řešení**_
 
 #### <a name="tcp-resets-received"></a>Přijatá obnovení TCP
 
-Pokud zjistíte, že se na zdrojovém virtuálním počítači přijmou obnovená nastavení TCP (TCP RST), můžou se vygenerovat bránou NAT na soukromé straně pro toky, které se nerozpoznají jako probíhající.  Jedním z možných důvodů je, že připojení TCP má nečinné časový limit.  Časový limit nečinnosti můžete upravit ze 4 minut na až 120 minut.
+Brána NAT vygeneruje na zdrojovém virtuálním počítači resety TCP pro provoz, který se nerozpoznal jako probíhající.
 
-Resety TCP se negenerují na veřejné straně prostředků brány NAT. Pokud v cílové straně obdržíte resety TCP, vygenerují se v zásobníku zdrojového virtuálního počítače, a ne v prostředku brány NAT.
+Jedním z možných důvodů je, že připojení TCP má nečinné časový limit.  Časový limit nečinnosti můžete upravit ze 4 minut na až 120 minut.
+
+Resety TCP se negenerují na veřejné straně prostředků brány NAT. Resetování TCP na straně cíle je vygenerováno zdrojovým virtuálním počítačem, nikoli prostředkem brány NAT.
 
 _**Řešení**_
 
@@ -158,7 +157,7 @@ _**Řešení**_
 
 ### <a name="ipv6-coexistence"></a>Koexistence protokolu IPv6
 
-[Virtual Network NAT](nat-overview.md) podporuje protokoly IPv4 UDP a TCP a nasazení v [podsíti s předponou IPv6 se](nat-overview.md#limitations)nepodporuje.
+[Virtual Network NAT](nat-overview.md) podporuje protokoly IPv4 UDP a TCP a nasazení v [podsíti s předponou IPv6 se nepodporuje](nat-overview.md#limitations).
 
 _**Řešení:**_ Nasaďte bránu NAT v podsíti bez předpony IPv6.
 

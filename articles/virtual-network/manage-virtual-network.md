@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355894"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280232"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -25,7 +25,7 @@ ms.locfileid: "78355894"
 
 Přečtěte si, jak vytvořit a odstranit virtuální síť a změnit nastavení, jako jsou servery DNS a adresní prostory IP adres pro existující virtuální síť. Pokud s virtuálními sítěmi začínáte, můžete o nich získat další informace v [přehledu virtuální sítě](virtual-networks-overview.md) nebo v tématu dokončení [kurzu](quick-create-portal.md). Virtuální síť obsahuje podsítě. Informace o tom, jak vytvářet, měnit a odstraňovat podsítě, najdete v tématu [Správa podsítí](virtual-network-manage-subnet.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 

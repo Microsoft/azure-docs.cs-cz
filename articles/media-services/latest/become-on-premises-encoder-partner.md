@@ -1,6 +1,6 @@
 ---
 title: Staňte se místním partnerem kodéru – Azure Media Services
-description: Stane se místním partnerem kodéru s Azure Media Services.
+description: Tento článek popisuje, jak ověřit vaše místní kodéry živého streamování.
 services: media-services
 author: johndeu
 manager: johndeu
@@ -8,18 +8,20 @@ ms.author: johndeu
 ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b00e430f960195e1badd2a73f9291997b94c833
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252971"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298627"
 ---
-# <a name="become-an-on-premises-encoder-partner"></a>Stát se místním partnerem kodéru
+# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Jak ověřit místní kodér živého streamování
 
 Jako Azure Media Services on-premises Encoder partner Media Services propaguje váš produkt tím, že doporučí kodér zákazníkům pro podniky. Pokud se chcete stát místním partnerem kodéru, musíte ověřit kompatibilitu místního kodéru s Media Services. Provedete to tak, že provedete následující ověření.
 
-### <a name="pass-through-live-event-verification"></a>Předávací ověření události za provozu
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="pass-through-live-event-verification"></a>Předávací ověření události za provozu
 
 1. Ujistěte se, že je v účtu Media Services spuštěný **koncový bod streamování** . 
 2. Vytvořte a spusťte **předávací** živou událost. <br/> Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
@@ -38,7 +40,7 @@ Jako Azure Media Services on-premises Encoder partner Media Services propaguje v
 15. Po vytvoření každého vzorku resetujte stav živé události.
 16. Opakujte kroky 5 až 15 pro všechny konfigurace, které kodér podporuje (s signalizací a bez něj, popisky nebo jiné rychlosti kódování).
 
-### <a name="live-encoding-live-event-verification"></a>Live Encoding – ověření události Live
+## <a name="live-encoding-live-event-verification"></a>Live Encoding – ověření události Live
 
 1. Ujistěte se, že je v účtu Media Services spuštěný **koncový bod streamování** . 
 2. Vytvořte a spusťte živou událost **živého kódování** . <br/> Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
@@ -57,17 +59,17 @@ Jako Azure Media Services on-premises Encoder partner Media Services propaguje v
 15. Po vytvoření každého vzorku resetujte stav živé události.
 16. Opakujte kroky 5 až 15 pro všechny konfigurace, které kodér podporuje (s signalizací a bez něj, popisky nebo jiné rychlosti kódování).
 
-### <a name="longevity-verification"></a>Longevity ověřování
+## <a name="longevity-verification"></a>Longevity ověřování
 
 Použijte stejný postup jako v rámci [předávacího ověřování pro živé události](#pass-through-live-event-verification) s výjimkou kroku 11. <br/>Místo 10 minut spusťte živý kodér po dobu jednoho týdne nebo déle. Pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte živé streamování v čase (nebo archivovaný Asset), abyste zajistili, že přehrávání nemá žádné viditelné histogramu.
 
-### <a name="email-your-recorded-settings"></a>Poslat zaznamenaná nastavení e-mailem
+## <a name="email-your-recorded-settings"></a>Poslat zaznamenaná nastavení e-mailem
 
 Nakonec odešlete e-mailem zaznamenaná nastavení a parametry živého archivu do Azure Media Services v amshelp@microsoft.com jako oznámení, že prošly všechny kontroly pro vlastní ověření. Také zahrňte kontaktní informace pro jakékoliv následné zprávy. Můžete se obrátit na tým Azure Media Services s případnými dotazy týkajícími se tohoto procesu.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
-[Doporučené místní kodéry v reálném čase](recommended-on-premises-live-encoders.md)
+[Testované místní kodéry](recommended-on-premises-live-encoders.md)
 
 ## <a name="next-steps"></a>Další kroky
 

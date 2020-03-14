@@ -3,12 +3,12 @@ title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: ea2dcc3da2f59aa00b12aedd181dc27df00e9d58
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 76a8137bbe42d8f693ac807f640a78fc4ec87c2e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252711"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370419"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -37,7 +37,7 @@ V následující tabulce jsou uvedeny verze Service Fabric a jejich koncová dat
 | 6,3. * | 6.1.480.* |Menší nebo rovno verzi 3,2 |31. března 2019  |
 | 6,4. * | 6.2.301.* |Menší nebo rovno verzi 3,3 |15. září 2019 |
 | 6,5. * | 6.4.617.* |Menší nebo rovno verzi 3,4 |1\. května 2020 |
-| 7,0. * | 6.4.664. # |Menší nebo rovno verzi 4,0 |Aktuální verze, takže bez koncového data |
+| 7,0. * | 7.0.466.* |Menší nebo rovno verzi 4,0 |Aktuální verze, takže bez koncového data |
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 Následující tabulka uvádí podporované operační systémy pro podporované verze Service Fabric.
@@ -49,7 +49,7 @@ Následující tabulka uvádí podporované operační systémy pro podporované
 | Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
+| Windows Server. 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
 
 ## <a name="supported-version-names"></a>Podporované názvy verzí

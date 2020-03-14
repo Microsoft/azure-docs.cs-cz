@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748052"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370453"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů
 
@@ -45,7 +45,7 @@ Pomocí standardní [Event Hubs integrace a sad SDK](iot-hub-devguide-messages-r
 
 K dispozici jsou dvě služby úložiště, IoT Hub můžou směrovat zprávy na účty služeb [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (adls Gen2). Účty Azure Data Lake Storage jsou hierarchické účty úložiště s povoleným [oborem názvů](../storage/blobs/data-lake-storage-namespace.md)postavené nad úložištěm objektů BLOB. Oba používají objekty blob pro své úložiště.
 
-IoT Hub podporuje zápis dat do Azure Storage ve formátu [Apache Avro](https://avro.apache.org/) a také ve formátu JSON. Výchozí hodnota je AVRO. Formát kódování lze nastavit pouze v případě, že je nakonfigurován koncový bod úložiště objektů BLOB. Formát nelze upravit pro existující koncový bod. Při použití kódování JSON musíte nastavit contentType na **Application/JSON** a ContentEncoding na **UTF-8** ve [vlastnostech systému](iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. U obou z těchto hodnot se nerozlišují malá a velká písmena. Pokud není kódování obsahu nastaveno, IoT Hub zapíše zprávy ve formátu kódování Base 64. Formát kódování můžete vybrat pomocí IoT Hub vytvořit nebo aktualizovat REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)nebo [Azure PowerShellu](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Následující diagram ukazuje, jak vybrat formát kódování v Azure Portal.
+IoT Hub podporuje zápis dat do Azure Storage ve formátu [Apache Avro](https://avro.apache.org/) a také ve formátu JSON. Výchozí hodnota je AVRO. Formát kódování lze nastavit pouze v případě, že je nakonfigurován koncový bod úložiště objektů BLOB. Formát nelze upravit pro existující koncový bod. Při použití kódování JSON musíte nastavit contentType na **Application/JSON** a ContentEncoding na **UTF-8** ve [vlastnostech systému](iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. U obou z těchto hodnot se nerozlišují malá a velká písmena. Pokud není kódování obsahu nastaveno, IoT Hub zapíše zprávy ve formátu kódování Base 64. Formát kódování můžete vybrat pomocí IoT Hub vytvořit nebo aktualizovat REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)nebo [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Následující diagram ukazuje, jak vybrat formát kódování v Azure Portal.
 
 ![Kódování koncového bodu služby Blob Storage](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -75,6 +75,9 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
+> [!NOTE]
+> Pokud má váš účet úložiště konfigurace brány firewall, které omezují připojení IoT Hub, zvažte použití [výjimky Microsoft Trusted First stran](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) (k dispozici ve vybraných oblastech pro centra IoT s identitou spravované služby).
+
 Pokud chcete vytvořit účet úložiště kompatibilního s Azure Data Lake Gen2, vytvořte nový účet úložiště v2 a v poli *hierarchický obor názvů* na kartě **Upřesnit** vyberte *povoleno* , jak je znázorněno na následujícím obrázku:
 
 ![Vybrat Azure datum Lake Gen2 Storage](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -84,9 +87,17 @@ Pokud chcete vytvořit účet úložiště kompatibilního s Azure Data Lake Gen
 
 Service Bus front a témat používaných jako IoT Hub koncových bodů nesmí mít povoleny **relace** nebo je povolena **Detekce duplicitních** dat. Pokud je některá z těchto možností povolená, koncový bod se v Azure Portal jeví jako **nedosažitelný** .
 
+> [!NOTE]
+> Pokud má váš prostředek služby Service Bus konfigurace brány firewall, které omezují připojení IoT Hub, zvažte použití [výjimky Microsoft Trusted First stran](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing) (k dispozici ve vybraných oblastech pro centra IoT se službou identity spravované služby).
+
+
 ### <a name="event-hubs"></a>Event Hubs
 
 Kromě předdefinovaného koncového bodu, který je kompatibilní s Event Hubs, můžete také směrovat data na vlastní koncové body typu Event Hubs. 
+
+> [!NOTE]
+> Pokud má váš prostředek centra událostí konfigurace brány firewall, které omezují připojení IoT Hub, zvažte použití [výjimky Microsoft Trusted First stran](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) (k dispozici ve vybraných oblastech pro centra IoT se službou identity spravované služby).
+
 
 ## <a name="reading-data-that-has-been-routed"></a>Čtení dat, která byla směrována
 
@@ -104,6 +115,7 @@ Pomocí následujících kurzů se naučíte číst zprávy z koncového bodu.
 
 * Čtení z [Service Bus témata](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
 
+
 ## <a name="fallback-route"></a>Záložní trasa
 
 Záložní trasa pošle všechny zprávy, které nesplňují podmínky pro dotazování na všechny existující trasy, na integrované Event Hubs (**zprávy/události**), které jsou kompatibilní s [Event Hubs](/azure/event-hubs/). Pokud je zapnuté směrování zpráv, můžete povolit funkci záložních tras. Po vytvoření trasy se data přestanou předávat do integrovaného koncového bodu, pokud se do tohoto koncového bodu nevytvoří trasa. Pokud neexistují žádné trasy k integrovanému koncovému bodu a je povolena záložní trasa, budou do integrovaného koncového bodu odesílány pouze zprávy, které neodpovídají podmínkám dotazu na trasách. I když se odstraní všechny existující trasy, musí být povolená záložní trasa pro příjem všech dat na integrovaném koncovém bodu.
@@ -112,7 +124,7 @@ Záložní cestu můžete povolit nebo zakázat v okně Azure Portal-> směrová
 
 ## <a name="non-telemetry-events"></a>Události bez telemetrie
 
-Kromě telemetrie zařízení umožňuje směrování zpráv také odesílat události s náhodnými změnami zařízení, události životního cyklu zařízení a digitální události změny (ve verzi Public Preview). Pokud je například vytvořená trasa se zdrojem dat nastaveným na **události změny zařízení s dvojitou změnou**, IoT Hub odesílá zprávy na koncový bod, který obsahuje změnu v zařízení. Podobně platí, že pokud se vytvoří trasa se zdrojem dat nastaveným na **události životního cyklu zařízení**, IoT Hub odešle zprávu s oznámením, jestli se zařízení odstranilo nebo vytvořilo. V rámci technologie Plug and Play IoT ve verzi [Public Preview](../iot-pnp/overview-iot-plug-and-play.md)může vývojář vytvořit trasy se zdrojem dat nastaveným na **digitální události změny** , a IoT Hub posílá zprávy vždy, když je nastavená nebo změněná [vlastnost](../iot-pnp/iot-plug-and-play-glossary.md) digitálního vlákna. [digitální dvojitá událost ](../iot-pnp/iot-plug-and-play-glossary.md)se nahradí nebo dojde k události změny pro podkladové vlákna zařízení.
+Kromě telemetrie zařízení umožňuje směrování zpráv také odesílat události s náhodnými změnami zařízení, události životního cyklu zařízení a digitální události změny (ve verzi Public Preview). Pokud je například vytvořená trasa se zdrojem dat nastaveným na **události změny zařízení s dvojitou změnou**, IoT Hub odesílá zprávy na koncový bod, který obsahuje změnu v zařízení. Podobně platí, že pokud se vytvoří trasa se zdrojem dat nastaveným na **události životního cyklu zařízení**, IoT Hub odešle zprávu s oznámením, jestli se zařízení odstranilo nebo vytvořilo. V rámci služby [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md)může vývojář vytvořit trasy se zdrojem dat nastaveným na **digitální události změny** , a IoT Hub posílá zprávy vždy, když se nastaví nebo změní [vlastnost](../iot-pnp/iot-plug-and-play-glossary.md) s digitálním nastavením, [digitální](../iot-pnp/iot-plug-and-play-glossary.md) nečinnost je nahrazena nebo když dojde k události změny pro podkladové vlákna zařízení.
 
 [IoT Hub se taky integruje s Azure Event Grid](iot-hub-event-grid.md) k publikování událostí zařízení, aby podporovaly integrace v reálném čase a automatizaci pracovních postupů založených na těchto událostech. Podívejte se na klíčové [rozdíly mezi směrováním a Event Gridm zpráv a](iot-hub-event-grid-routing-comparison.md) Naučte se, co nejlépe vyhovuje vašemu scénáři.
 

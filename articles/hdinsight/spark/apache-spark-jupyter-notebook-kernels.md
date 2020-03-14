@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389702"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272081"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro Poznámkový blok Jupyter na clusterech s Apache Spark ve službě Azure HDInsight
 
@@ -26,7 +26,7 @@ Clustery HDInsight Spark poskytují jádra, která můžete použít s poznámko
 
 V tomto článku se naučíte používat tyto jádra a výhody jejich používání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -76,7 +76,7 @@ Tady je několik výhod používání nových jader s poznámkovým blokem Jupyt
    | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry pro vytvoření relace. Příznak Force (-f) je povinný, pokud už je relace vytvořená, což zajistí, že se relace vynechá a znovu vytvoří. Seznam platných parametrů najdete v [textu žádosti post/Sessions pro Livy](https://github.com/cloudera/livy#request-body) . Parametry musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce. |
    | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz Hive proti kontext sqlContext. Pokud je předán parametr `-o`, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
    | místní |`%%local`<br>`a=1` |Veškerý kód v následných řádcích se spustí místně. Kód musí být platný Python2 kód, a to i bez ohledu na používané jádro. Takže i když jste při vytváření poznámkového bloku vybrali **PySpark3** nebo **Spark** , v případě, že v buňce použijete `%%local` Magic, musí mít tato buňka platný Python2 kód. |
-   | Protokoly |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
+   | logs |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
    | delete |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nemůžete odstranit relaci, která je inicializovaná pro jádro samotné. |
    | Vyčištění |`%%cleanup -f` |Odstraní všechny relace pro aktuální koncový bod Livy, včetně relace tohoto poznámkového bloku. Příznak Force-f je povinný. |
 

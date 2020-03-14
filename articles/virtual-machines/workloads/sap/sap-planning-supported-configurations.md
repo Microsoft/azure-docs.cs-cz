@@ -13,17 +13,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28a9de63bb04a95fc2e655b05727963feaa3ec40
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599181"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137624"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Úlohy SAP na podporovaných scénářích virtuálních počítačů Azure
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
 Návrh architektury SAP NetWeaver, Business One, `Hybris` nebo S/4HANA Systems v Azure otevírá spoustu různých příležitostí pro různé architektury a nástroje, které slouží k získání škálovatelného, efektivního a vysoce dostupného nasazení. I když závisí na operačním systému nebo používaném systému DBMS, existují omezení. Ne všechny podporované scénáře jsou také podporovány stejným způsobem v Azure. Tento dokument vás provede podporovanými konfiguracemi bez vysoké dostupnosti a konfigurací a architekturou s vysokou dostupností a s využitím výhradně virtuálních počítačů Azure. Scénáře podporované [velkými instancemi Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)najdete v článku [podporované scénáře pro velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario). 
 
 
@@ -66,7 +66,8 @@ Tento typ nasazení DBMS je podporovaný pro:
 - SQL Server ve Windows
 - IBM Db2. Hledání podrobností v článku [více instancí (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)
 - Pro Oracle. Podrobnosti najdete v [poznámkách k podpoře sap #1778431](https://launchpad.support.sap.com/#/notes/1778431) a souvisejících poznámkách SAP.
-- V případě SAP HANA je podporována více instancí na jednom virtuálním počítači, SAP volá tuto metodu nasazení MCOS. Podrobnosti najdete v článku SAP [více SAP HANA systémy na jednom hostiteli (MCOS)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/en-US/b2751fd43bec41a9a14e01913f1edf18.html) .
+- V případě SAP HANA je podporována více instancí na jednom virtuálním počítači, SAP volá tuto metodu nasazení MCOS. Podrobnosti najdete v článku SAP [více SAP HANA systémů na jednom hostiteli (MCOS)] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.html)
 
 Spuštění více instancí databáze na jednom hostiteli je nutné zajistit, aby různé instance nekonkurují prostředkům a aby překročily omezení fyzického prostředku virtuálního počítače. To platí zejména pro paměť, kde je třeba uvolnit paměť všech instancí, které může virtuální počítač sdílet, aby mohl být přidělen. To může být také pravdivé pro prostředky procesoru, které mohou využívat různé instance databáze. Všechny zmíněné systémy DBMS mají konfigurace, které umožňují omezit přidělování paměti a prostředky procesoru na úrovni instance.
 Aby bylo možné podporovat takovou konfiguraci pro virtuální počítače Azure, je třeba, aby byly disky nebo svazky používané pro soubory protokolů dat a log/znovu souborů databáze spravované různými instancemi oddělené. Nebo jinými slovy soubory protokolu nebo protokolů databáze, které spravuje jiná instance systému DBMS, nemusí sdílet stejné disky nebo svazky. 
@@ -121,6 +122,8 @@ Pro virtuální počítače Azure se na úrovni DBMS podporují tyto konfigurace
 
 > [!IMPORTANT]
 > Pro žádný z výše popsaných scénářů podporujeme konfigurace více instancí systému DBMS v jednom virtuálním počítači. V každém z těchto případů se dá nasadit jenom jedna instance databáze na virtuální počítač a chránit se popsanými metodami vysoké dostupnosti. Ochrana více instancí systému DBMS v rámci jednoho clusteru s podporou převzetí služeb při selhání s Windows nebo **Pacemaker není v tomto okamžiku podporována.** Také podpora Oracle data Guard je podporována pouze pro jednotlivé instance v případě nasazení virtuálních počítačů. 
+
+Různé databázové systémy umožňují hostovat více databází v rámci jedné instance systému DBMS. Stejně jako v případě SAP HANA lze hostovat více databází v několika databázových kontejnerech (MDC). V případě, že tyto konfigurace s více databázemi fungují v rámci jednoho prostředku clusteru s podporou převzetí služeb při selhání, jsou tyto konfigurace podporovány. Nepodporované konfigurace jsou případy, kdy by se vyžadovalo více prostředků clusteru. Jako u konfigurací, kde byste definovali více SQL Server skupin dostupnosti v rámci jedné instance SQL Server.
 
 
 ![Konfigurace HA systému DBMS](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)

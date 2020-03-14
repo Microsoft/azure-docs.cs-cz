@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132832"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298729"
 ---
 # <a name="sensor-partner-integration"></a>Integrace partnerských řešení pro senzory
 
 Tento článek poskytuje informace o komponentě **překladače** Azure FarmBeats, která umožňuje integraci partnera snímače.
 
-Pomocí této součásti můžou partneři integrovat s FarmBeats pomocí rozhraní API centra dat FarmBeats a posílat data a telemetrie zákaznických zařízení do FarmBeats dat. Jakmile jsou data v FarmBeats k dispozici, je možné ji vizuálně vymezit pomocí akcelerátoru FarmBeats a lze ji použít pro datové fúze a vytváření strojového učení nebo umělých analytických modelů.
+Pomocí této součásti můžou partneři integrovat s FarmBeats pomocí rozhraní API FarmBeats DataHub a posílat data a telemetrie zákaznických zařízení do FarmBeats DataHub. Jakmile jsou data v FarmBeats k dispozici, je možné ji vizuálně vymezit pomocí akcelerátoru FarmBeats a lze ji použít pro datové fúze a vytváření strojového učení nebo umělých analytických modelů.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -50,7 +50,7 @@ FarmBeats používá ověřování Microsoft Azure Active Directory. Azure App
 
 Další informace najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
 
-FarmBeats data hub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje:
+FarmBeats DataHub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje:
    - ID klienta
    - Tajný klíč klienta
    - ID tenanta
@@ -85,14 +85,14 @@ access_token = token_response.get('accessToken') 
 
 **Hlavičky požadavku HTTP**
 
-Tady jsou nejčastější hlavičky požadavků, které je potřeba zadat při volání rozhraní API FarmBeats data hub.
+Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API FarmBeats DataHub.
 
 
 **Hlavička** | **Popis a příklad**
 --- | ---
-Content-Type | Formát požadavku (Content-Type: Application/<format>). Pro rozhraní API centra dat FarmBeats je formát JSON. Content-Type: Application/JSON
+Content-Type | Formát požadavku (Content-Type: Application/<format>). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
 Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný < přístup-token >
-Přijmout | Formát odpovědi Pro rozhraní API centra dat FarmBeats je formát JSON. Přijmout: Application/JSON
+Přijmout | Formát odpovědi Pro rozhraní FarmBeats DataHub API je formát JSON. Přijmout: Application/JSON
 
 **Požadavky rozhraní API**
 
@@ -119,7 +119,7 @@ JSON je běžný jazyk nezávislý na jazyce, který poskytuje jednoduchou texto
 
 ## <a name="metadata-specifications"></a>Specifikace metadat
 
-FarmBeats data hub má následující rozhraní API, která partnerům zařízení umožňují vytvářet a spravovat metadata zařízení nebo senzorů.
+FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům zařízení vytvářet a spravovat metadata zařízení nebo senzorů.
 
 - /**DeviceModel**: DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, který je buď bránou, nebo uzlem.
 - /**zařízení**: zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné.
@@ -230,11 +230,11 @@ Formát kanonické zprávy je následující:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -304,7 +304,7 @@ Jakmile si zákazníci zakoupili a nasadili zařízení nebo senzory, můžou z�
 
 ## <a name="unlink-farmbeats"></a>Zrušit propojení FarmBeats
 
-Partneři zařízení můžou zákazníkům povolit odpojení stávající integrace FarmBeats. Zrušení propojení FarmBeats by nemělo odstraňovat všechna zařízení nebo metadata senzorů vytvořená v FarmBeats datových rozbočovačích. Zrušení propojení provede následující akce:
+Partneři zařízení můžou zákazníkům povolit odpojení stávající integrace FarmBeats. Zrušení propojení FarmBeats by nemělo odstraňovat všechna zařízení nebo metadata senzorů vytvořená v FarmBeats DataHub. Zrušení propojení provede následující akce:
 
    - Zastaví tok telemetrie.
    - Odstraní a smaže přihlašovací údaje pro integraci na partnerovi zařízení.

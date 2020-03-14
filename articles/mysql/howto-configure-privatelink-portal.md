@@ -1,19 +1,19 @@
 ---
-title: Privátní odkaz pro metodu instalace portálu Azure Database for MySQL (Preview)
+title: Privátní Link-Azure Portal-Azure Database for MySQL
 description: Postup konfigurace privátního odkazu pro Azure Database for MySQL z Azure Portal
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 193227ff98accb31c15e388c810aea7460a2cb5d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561659"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371915"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL (ve verzi Preview) pomocí portálu
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL pomocí portálu
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. V tomto článku se naučíte, jak pomocí Azure Portal vytvořit virtuální počítač v Azure Virtual Network a Azure Database for MySQL server s privátním koncovým bodem Azure.
 
@@ -23,7 +23,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for MySQL podporuje cenové úrovně optimalizované pro Pro obecné účely a paměť.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-vm"></a>Vytvoření virtuálního počítače Azure
 
@@ -113,7 +113,7 @@ V této části vytvoříte Azure Database for MySQL server v Azure.
     | Uživatelské jméno správce| Zadejte jméno správce, které chcete zvolit. |
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
     | Umístění | Vyberte oblast Azure, ve které chcete, aby se server MySQL nacházel. |
-    |Verze  | Vyberte verzi databáze serveru MySQL, která je povinná.|
+    |Version  | Vyberte verzi databáze serveru MySQL, která je povinná.|
     | Výpočty a úložiště| Vyberte cenovou úroveň, která je potřebná pro server na základě zatížení. |
     |||
  
@@ -126,13 +126,13 @@ V této části vytvoříte Azure Database for MySQL server v Azure.
 
 V této části vytvoříte Server MySQL a přidáte do něj privátní koncový bod. 
 
-1. V levém horním rohu obrazovky v Azure Portal vyberte **vytvořit prostředek** > **sítě** > **privátní Link Center (Preview)** .
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **síť** > **privátní odkaz**.
 
 2. V části **centrum privátních odkazů – přehled**na možnost **vytvořit privátní připojení ke službě**vyberte možnost **Spustit**.
 
     ![Přehled privátních odkazů](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. V **Vytvoření privátního koncového bodu (Preview) – základy**zadejte nebo vyberte tyto informace:
+1. V **rámci vytvoření privátního koncového bodu základy**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -156,7 +156,7 @@ V této části vytvoříte Server MySQL a přidáte do něj privátní koncový
     |Cílový dílčí prostředek |Vybrat *mysqlServer*|
     |||
 7. Vyberte **Další: Konfigurace**.
-8. V **Vytvoření privátního koncového bodu (Preview) – konfigurace**zadejte nebo vyberte tyto informace:
+8. V **Vytvoření privátního koncového bodu – konfigurace**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |

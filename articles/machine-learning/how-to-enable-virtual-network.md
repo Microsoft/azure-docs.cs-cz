@@ -11,11 +11,11 @@ ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
 ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355671"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270196"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -504,7 +504,7 @@ Další informace o konfiguraci pravidla sítě najdete v tématu [nasazení a k
 
 ## <a name="use-azure-container-registry"></a>Použití služby Azure Container Registry
 
-Při použití virtuální sítě s Azure Machine Learning __neumísťujte__ Azure Container registry pro pracovní prostor ve virtuální síti. Tato konfigurace není podporovaná.
+Při použití virtuální sítě s Azure Machine Learning __neumísťujte__ Azure Container registry pro pracovní prostor ve virtuální síti. Tato konfigurace není podporována.
 
 ## <a name="next-steps"></a>Další kroky
 

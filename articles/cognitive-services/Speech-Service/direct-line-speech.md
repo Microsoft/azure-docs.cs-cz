@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 714cdefa7100160a510d1922a2547ae53692d76c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562526"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367801"
 ---
-# <a name="about-direct-line-speech"></a>O funkci Direct line Speech
+# <a name="what-is-direct-line-speech"></a>Co je Direct Line Speech?
 
 **Přímý line Speech** je robustní ucelené řešení pro vytváření flexibilního a rozšiřitelného hlasového asistenta. Používá se pro robot Framework a jeho přímý spojnicový hlasový kanál, který je optimalizovaný pro hlasové interakce hlasu s roboty.
 
@@ -35,7 +35,7 @@ Podrobný průvodce vytvořením jednoduchého hlasového pomocníka pomocí fun
 
 Nabízíme také rychlé starty, které jsou navržené tak, aby vám poskytovaly kód a rychle přeučení rozhraní API. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka a platformy.
 
-| Rychlé zprovoznění | Platforma | API – referenční informace |
+| Rychlý start | Platforma | API – referenční informace |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Hlíží](https://aka.ms/csspeech/javaref) |

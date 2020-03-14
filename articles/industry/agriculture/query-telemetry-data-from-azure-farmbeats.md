@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: 2786519bfc54b39c986ba57c78d9d6409a596351
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b871ccb5cb110cfc6154a415059541c4b94f4106
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129783"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137301"
 ---
 # <a name="query-ingested-telemetry-data"></a>Dotazovaná data telemetrie
 
@@ -18,7 +18,7 @@ Tento článek popisuje, jak dotazovat data z přijatých senzorů z Azure FarmB
 
 Běžné scénáře v FarmBeats jsou ingestování dat z prostředků Internet věcí (IoT), jako jsou zařízení a senzory. Můžete vytvářet metadata pro zařízení a senzory a následně ingestovat historická data do FarmBeats v kanonickém formátu. Jakmile jsou data snímače k dispozici v datovém centru FarmBeats, můžeme se dotazovat stejně, aby vygenerovala užitečné poznatky nebo modely sestavení.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali data telemetrie FarmBeats a ingestovaná senzory ze zařízení IoT do FarmBeats.
 Pokud chcete přijímat data telemetrie senzorů, přejděte na data ingestování [historických dat telemetrie](ingest-historical-telemetry-data-in-azure-farmbeats.md) .
@@ -35,7 +35,7 @@ Pomocí následujících kroků můžete zadat dotaz na data telemetrie ingesta 
 
 1. Identifikujte senzor, který vás zajímá. To můžete provést tak, že vytvoříte požadavek GET na rozhraní/Sensor API. Poznamenejte si **ID** a **sensorModelId** objektu pro daný senzor.
 
-2. Pro **sensorModelId** , jak je uvedeno v kroku 1, vytvořte/SENSORMODEL API Get/{ID}. "Model senzoru" obsahuje všechna metadata a podrobnosti o ingestované telemetrie ze senzorů. Například "měření snímače" v rámci objektu "model senzoru" obsahuje podrobné informace o tom, jaká opatření se senzor posílá a v jakých typech a jednotkách. Například:
+2. Pro **sensorModelId** , jak je uvedeno v kroku 1, vytvořte/SENSORMODEL API Get/{ID}. "Model senzoru" obsahuje všechna metadata a podrobnosti o ingestované telemetrie ze senzorů. Například "měření snímače" v rámci objektu "model senzoru" obsahuje podrobné informace o tom, jaká opatření se senzor posílá a v jakých typech a jednotkách. Například
 
 ```json
 {
@@ -108,8 +108,8 @@ Data telemetrie se přijímají na EventHub a pak se zpracovávají a odešlou d
 
 Pomocí následujících kroků Vizualizujte data na TSI.
 
-1. Přejděte na portál Azure Portal – > FarmBeats DataHub skupina prostředků – > klikněte na Time Series Insights prostředí (TSI – xxxx) – > zásady přístupu k datům. Přidejte uživatele s přístupem Čtenář nebo Přispěvatel.
-2. Přejděte na stránku Přehled prostředí Time Series Insights (TSI-xxxx) a klikněte na adresu URL aplikace Time Series Insights Explorer. Nyní budete moci vizualizovat ingestnou telemetrii.
+1. Přejděte na portál Azure Portal – > FarmBeats DataHub skupina prostředků – > vyberte Time Series Insights prostředí (TSI-xxxx) – > zásady přístupu k datům. Přidejte uživatele s přístupem Čtenář nebo Přispěvatel.
+2. Přejít na stránku Přehled prostředí Time Series Insights (TSI-xxxx) a vybrat adresu URL pro Time Series Insights Explorer. Nyní budete moci vizualizovat ingestnou telemetrii.
 
 Kromě ukládání, dotazování a vizualizace telemetrie, TSI taky umožňuje integraci do řídicího panelu Power BI. Další podrobnosti [here]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
 

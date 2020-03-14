@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374136"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248915"
 ---
 # <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
 Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -109,7 +109,7 @@ K dispozici je také opakovaný profil nastavený pro pondělí. Nastavuje se pr
 
 Podobně když se automatické škálování přepne zpátky na výchozí profil, nejprve zkontroluje, jestli jsou splněné minimální a maximální podmínky. Pokud je počet instancí v čase 12, zmenší se na 10, což je maximum povolené pro výchozí profil.
 
-![nastavení automatického škálování](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
+![Nastavení automatického škálování](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Předpoklady pro škálování při konfiguraci více pravidel v profilu
 

@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379732"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282936"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Jak funguje úplné hledání textu v Azure Kognitivní hledání
 
@@ -251,7 +251,7 @@ To je běžné, ale nevyžadují se pro použití stejných analyzátorů pro op
 
 Návrat do našeho příkladu pro pole **title** má obrácený index vypadat takto:
 
-| Období | Seznam dokumentů |
+| Termín | Seznam dokumentů |
 |------|---------------|
 | atman | 1 |
 | míčů | 2 |
@@ -265,7 +265,7 @@ V poli title se pouze *Hotel* zobrazuje ve dvou dokumentech: 1, 3.
 
 Pro pole **Popis** je index následující:
 
-| Období | Seznam dokumentů |
+| Termín | Seznam dokumentů |
 |------|---------------|
 | letové | 3
 | a | 4
@@ -279,7 +279,7 @@ Pro pole **Popis** je index následující:
 | severu | 2
 | spadající | 1, 2, 3
 | of | 2
-| na |2
+| zapnuté |2
 | quiet | 4
 | pokoje  | 1, 3
 | secluded | 4
@@ -289,7 +289,7 @@ Pro pole **Popis** je index následující:
 | na | 1
 | zobrazení | 1, 2, 3
 | procházení | 1
-| následující adresou: | 3
+| with | 3
 
 
 **Vyhovující výrazy dotazu proti indexovaným podmínkám**
@@ -391,7 +391,7 @@ Tento článek prozkoumal fulltextové vyhledávání v kontextu Azure Kognitivn
 
 + [Nakonfigurujte vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo specializované zpracování konkrétních polí.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Rozhraní API pro vyhledávání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

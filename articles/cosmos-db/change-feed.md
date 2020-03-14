@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: bf36c0697b5e30c77610d30475be20adc18810cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 898dfe7a619981b93af98effa942fdecbeb42dde
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445594"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368124"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Změnit informační kanál v Azure Cosmos DB – přehled
 
-Změna podpory kanálu v Azure Cosmos DB funguje tak, že se v kontejneru Azure Cosmos poslouchat jakýmkoli změnám. Výstupem je pak seznam změněných dokumentů v pořadí podle času úprav. Změny jsou trvalé, dají se zpracovat asynchronně a přírůstkově a výstup se dá distribuovat jednomu nebo více příjemcům k paralelnímu zpracování. 
+Podpora kanálu změn ve službě Azure Cosmos DB funguje díky naslouchání změnám kontejneru Azure Cosmos. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Změny jsou trvalé, dají se zpracovat asynchronně a přírůstkově a výstup se dá distribuovat jednomu nebo více příjemcům k paralelnímu zpracování. 
 
 Azure Cosmos DB je velmi vhodná pro Internet věcí, hraní her, maloobchod a provozní protokolování aplikací. Běžný vzor návrhu v těchto aplikacích je použít změny v datech k aktivaci dalších akcí. Příklady dalších akcí:
 
@@ -33,20 +33,24 @@ Změna informačního kanálu ve službě Azure Cosmos DB umožňuje vytvářet 
 
 Tato funkce je aktuálně podporuje následující klientské sady SDK a rozhraní API služby Azure Cosmos DB.
 
-| **Ovladače klienta** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API pro MongoDB Azure Cosmos DB** | **Gremlin API**|**Rozhraní Table API** |
+| **Klientské ovladače** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API pro MongoDB Azure Cosmos DB** | **Rozhraní API pro Gremlin**|**Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | není k dispozici | Ano | Ano | Ano | Ano | Ne |
-|Java|není k dispozici|Ano|Ano|Ano|Ano|Ne|
-|Python|není k dispozici|Ano|Ano|Ano|Ano|Ne|
-|Uzel/JS|není k dispozici|Ano|Ano|Ano|Ano|Ne|
+| .NET | Není k dispozici | Ano | Ano | Ano | Ano | Ne |
+|Java|Není k dispozici|Ano|Ano|Ano|Ano|Ne|
+|Python|Není k dispozici|Ano|Ano|Ano|Ano|Ne|
+|Uzel/JS|Není k dispozici|Ano|Ano|Ano|Ano|Ne|
 
 ## <a name="change-feed-and-different-operations"></a>Kanál změn a různé operace
 
-V současné době se zobrazí všechny operace v kanálu změn. Funkce, kde můžete řídit změny informační kanál pro určité operace, například jenom aktualizace a vkládání není ještě není k dispozici. "Měkké značky" můžete přidat v položce pro aktualizace a filtr na základě při zpracování položek v kanálu změn. Kanál změn není aktuálně protokolu odstraní. Podobně jako v předchozím příkladu můžete přidat softwarové značky u položek, které jsou mazány, například můžete přidat atribut v položce nazývá "odstraněné" a nastavte na hodnotu "true" a nastavte hodnotu TTL na položce, takže se dají automaticky odstranit. Můžete si přečíst kanál změn pro historické položky (Poslední změna odpovídající položce, nezahrnuje mezilehlé změny), například položky přidané před pěti lety. Pokud není položka smazána si můžete přečíst tato změna kanálu až na hodnotu původ vašeho kontejneru.
+V současné době se zobrazí všechny operace v kanálu změn. Funkce, kde můžete řídit změny informační kanál pro určité operace, například jenom aktualizace a vkládání není ještě není k dispozici. Můžete přidat "měkký Marker" na položku pro aktualizace a filtr na základě toho, že při zpracování položek v kanálu změn. V současné době se změna kanálu neodstraní. Podobně jako v předchozím příkladu můžete přidat softwarové značky u položek, které jsou mazány, například můžete přidat atribut v položce nazývá "odstraněné" a nastavte na hodnotu "true" a nastavte hodnotu TTL na položce, takže se dají automaticky odstranit. Můžete si přečíst kanál změn pro historické položky (Poslední změna odpovídající položce, nezahrnuje mezilehlé změny), například položky přidané před pěti lety. Pokud není položka smazána si můžete přečíst tato změna kanálu až na hodnotu původ vašeho kontejneru.
 
 ### <a name="sort-order-of-items-in-change-feed"></a>Pořadí položek v kanálu změn řazení
 
-Změna položky informačního kanálu dodávají v pořadí jejich čas změny. Toto pořadí řazení je zaručeno, že každý klíč logického oddílu.
+Změna položky informačního kanálu dodávají v pořadí jejich čas změny. Toto pořadí řazení je zaručeno na jeden klíč logického oddílu.
+
+### <a name="consistency-level"></a>Úroveň konzistence
+
+Při využívání kanálu změn v konečné úrovni konzistence může dojít k duplicitním událostem v-mezi následnými operacemi čtení změn kanálu (poslední událost operace čtení se zobrazí jako první z následujících).
 
 ### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>Kanál v Azure Cosmos účty ve více oblastech změn
 
@@ -70,13 +74,13 @@ Například díky kanálu změn můžete provádět následující úlohy efekti
 
 * Aktualizovat mezipaměť, aktualizovat index vyhledávání nebo aktualizovat datový sklad s daty uloženými ve službě Azure Cosmos DB.
 
-* Úrovni aplikace využití dat vrstvení a archivace, například "horkých dat." ukládat ve službě Azure Cosmos DB a stáří "studených"data do jiných systémů úložiště, například [Azure Blob Storage](../storage/common/storage-introduction.md).
+* Implementujte datovou škálu a archivaci dat na úrovni aplikace, například uložte "Hot data" v Azure Cosmos DB a stáří vychladit do jiných systémů úložiště, například [Azure Blob Storage](../storage/common/storage-introduction.md).
 
 * Provádění nula dolů čas migrace do jiného účtu Azure Cosmos nebo jiný kontejner Azure Cosmos pomocí klíče jiný logický oddíl.
 
-* Implementace [architektury lambda](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) pomocí služby Azure Cosmos DB, kam Azure Cosmos DB podporuje v reálném čase, batch i query sloužící vrstvy, což umožní architektury lambda s nízkou celkových nákladů na vlastnictví.
+* Implementujte [architekturu lambda](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) pomocí Azure Cosmos DB, kde Azure Cosmos DB podporuje jak v reálném čase, tak i v dávkovém dotazování, což umožňuje architekturu lambda s nízkou úrovní nákladů na vlastnictví.
 
-* Zobrazí data události ze zařízení, senzorů, infrastruktury a aplikací a ukládat zpracování těchto událostí v reálném čase, například pomocí [Spark](../hdinsight/spark/apache-spark-overview.md).  Následující obrázek ukazuje, jak můžete implementovat architektury lambda pomocí služby Azure Cosmos DB prostřednictvím kanálu změn:
+* Můžete přijímat a ukládat data událostí ze zařízení, senzorů, infrastruktury a aplikací a zpracovávat tyto události v reálném čase, například pomocí [Sparku](../hdinsight/spark/apache-spark-overview.md).  Následující obrázek ukazuje, jak můžete implementovat architektury lambda pomocí služby Azure Cosmos DB prostřednictvím kanálu změn:
 
 ![Azure Cosmos DB na základě lambda kanál pro příjem dat a dotazu](./media/change-feed/lambda.png)
 
@@ -84,7 +88,7 @@ Například díky kanálu změn můžete provádět následující úlohy efekti
 
 Tady jsou některé scénáře, které je možné snadno implementovat pomocí kanálu změn:
 
-* V rámci vaší [bez serveru](https://azure.microsoft.com/solutions/serverless/) webových nebo mobilních aplikací, můžete sledovat události, například všechny změny do profilu vašich zákazníků, předvolby nebo jejich umístění a aktivovat určité akce, například odesílání nabízených oznámení do zařízení pomocí [Azure Functions](change-feed-functions.md).
+* V rámci webových nebo mobilních aplikací bez [serveru](https://azure.microsoft.com/solutions/serverless/) můžete sledovat události, jako jsou všechny změny v profilu vašeho zákazníka, předvolby nebo jejich umístění a aktivovat určité akce, například odesílání nabízených oznámení do jejich zařízení pomocí [Azure Functions](change-feed-functions.md).
 
 * Pokud používáte službu Azure Cosmos DB k vytvoření hry, je možné, například použití změnit informační kanál k implementaci v reálném čase žebříčky podle skóre, které se od dokončených hry.
 
@@ -93,7 +97,7 @@ Tady jsou některé scénáře, které je možné snadno implementovat pomocí k
 
 Můžete pracovat pomocí kanálu změn pomocí následujících možností:
 
-* [Změna kanálu s využitím Azure Functions](change-feed-functions.md)
+* [Použití Change feed s Azure Functions](change-feed-functions.md)
 * [Použití Change feed s procesorem Change feed](change-feed-processor.md) 
 
 Kanál změn je k dispozici pro každý logický oddíl klíč v kontejneru a jeho mohou být distribuovány na jeden nebo více příjemců pro paralelní zpracování, jak je znázorněno na následujícím obrázku.
@@ -104,9 +108,9 @@ Kanál změn je k dispozici pro každý logický oddíl klíč v kontejneru a je
 
 * Kanál změn je povoleno standardně pro všechny účty služby Azure Cosmos.
 
-* Můžete použít vaše [zřízená propustnost](request-units.md) čtení z kanálu změn, stejně jako jakékoli jiné služby Azure Cosmos DB operace v libovolné oblasti přidružené k vaší databázi Azure Cosmos.
+* Pomocí [zřízené propustnosti](request-units.md) můžete číst z kanálu změn stejně jako u jakékoli jiné operace Azure Cosmos DB, a to v jakékoli oblasti přidružené k vaší databázi Azure Cosmos.
 
-* Kanál změn zahrnuje vložení a operace aktualizace provedené u položek v rámci kontejneru. Můžete zaznamenat odstraní nastavením příznaku "obnovitelného odstranění" v rámci vašich položek (například dokumenty) místo odstraní. Alternativně můžete nastavit určité omezené vypršení platnosti pro vaše položky s [interval TTL, ZÍSKÁ možnost](time-to-live.md). Například 24 hodin a použití odstraní hodnota dané vlastnosti pro zachycení. Pomocí tohoto řešení je nutné zpracovat změny v časovém intervalu kratší než interval TTL, ZÍSKÁ dobu vypršení platnosti. 
+* Kanál změn zahrnuje vložení a operace aktualizace provedené u položek v rámci kontejneru. Můžete zaznamenat odstraní nastavením příznaku "obnovitelného odstranění" v rámci vašich položek (například dokumenty) místo odstraní. Případně můžete nastavit omezenou dobu vypršení platnosti vašich položek pomocí [funkce TTL](time-to-live.md). Například 24 hodin a použití odstraní hodnota dané vlastnosti pro zachycení. Pomocí tohoto řešení je nutné zpracovat změny v časovém intervalu kratší než interval TTL, ZÍSKÁ dobu vypršení platnosti. 
 
 * Každé změně položky se zobrazí přesně jednou v kanálu změn a klienti musí spravovat logiky vytváření kontrolních bodů. Pokud se chcete vyhnout složitosti správy kontrolních bodů, poskytuje procesor Change feed automatické vytváření kontrolních bodů a alespoň jednou sémantiku. Viz [použití kanálu změn s procesorem Change feed](change-feed-processor.md).
 
@@ -130,6 +134,6 @@ Nativní Apache Cassandra poskytuje Change Data Capture (CDC), mechanismus pro o
 
 Teď můžete přejít k další informace o změně v následujících článcích:
 
-* [Možnosti ke čtení kanálu změn](read-change-feed.md)
-* [Změna kanálu s využitím Azure Functions](change-feed-functions.md)
+* [Možnosti čtení kanálu změn](read-change-feed.md)
+* [Použití Change feed s Azure Functions](change-feed-functions.md)
 * [Použití procesoru Change feed](change-feed-processor.md)

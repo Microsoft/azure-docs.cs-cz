@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9fc60549d895129af56f289c6247dcb377b973b
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612772"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298669"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -68,7 +68,7 @@ Certifikát, který požadujete nebo vytvoříte, musí splňovat následující
 * **Použití klíče** – certifikát musí být nakonfigurovaný pro *digitální podpisy* a *šifrování klíče*.
 * **Účel certifikátu** – certifikát musí být platný pro ověřování serveru SSL.
 
-V tomto kurzu vytvoříme certifikát podepsaný svým držitelem pro zabezpečení LDAP pomocí rutiny [New-SelfSignedCertificate][New-SelfSignedCertificate] . Otevřete okno PowerShellu jako **správce** a spusťte následující příkazy. Nahraďte *$DnsName* PROMĚNNOU názvem DNS použitým vaší vlastní spravovanou doménou, například *aaddscontoso.com*:
+K dispozici je několik nástrojů pro vytvoření certifikátu podepsaného svým držitelem, jako je OpenSSL, nástroj pro vytváření, MakeCert, rutina [New-SelfSignedCertificate][New-SelfSignedCertificate] atd. V tomto kurzu vytvoříme certifikát podepsaný svým držitelem pro zabezpečení LDAP pomocí rutiny [New-SelfSignedCertificate][New-SelfSignedCertificate] . Otevřete okno PowerShellu jako **správce** a spusťte následující příkazy. Nahraďte *$DnsName* PROMĚNNOU názvem DNS použitým vaší vlastní spravovanou doménou, například *aaddscontoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Než budete moct použít digitální certifikát vytvořený v předchozím kro
 1. Vzhledem k tomu, že tento certifikát slouží k dešifrování dat, byste měli pečlivě řídit přístup. K ochraně použití certifikátu lze použít heslo. Bez správného hesla se certifikát nedá použít na službu.
 
     Na stránce **zabezpečení** vyberte možnost **heslo** pro ochranu *.* Soubor certifikátu PFX. Zadejte a potvrďte heslo a pak vyberte **Další**. Toto heslo se používá v další části k povolení zabezpečeného protokolu LDAP pro spravovanou doménu Azure služba AD DS.
-1. Na stránce **soubor k exportu** zadejte název souboru a umístění, kam chcete certifikát exportovat, například *C:\Users\accountname\azure-AD-DS.pfx*.
+1. Na stránce **soubor k exportu** zadejte název souboru a umístění, kam chcete certifikát exportovat, například *C:\Users\accountname\azure-AD-DS.pfx*. Poznamenejte si heslo a umístění *. Soubor PFX* jako tyto informace by byl nutný v následujících krocích.
 1. Na stránce Kontrola vyberte **Dokončit** a exportujte certifikát do *.* Soubor certifikátu PFX. Po úspěšném exportu certifikátu se zobrazí potvrzovací dialogové okno.
 1. Konzolu MMC nechte otevřenou pro použití v následující části.
 
@@ -215,11 +215,11 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
     |-----------------------------------|--------------|
     | Zdroj                            | IP adresy |
     | Zdrojové IP adresy/rozsahy CIDR | Platná IP adresa nebo rozsah pro vaše prostředí |
-    | Rozsahy zdrojových portů                | *            |
-    | Cíl                       | Všechny          |
+    | Source port ranges                | *            |
+    | Cíl                       | Jakýkoli          |
     | Rozsahy cílových portů           | 636          |
     | Protocol (Protokol)                          | TCP          |
-    | Akce                            | Povolit        |
+    | Akce                            | Allow        |
     | Priorita                          | 401          |
     | Název                              | AllowLDAPS   |
 

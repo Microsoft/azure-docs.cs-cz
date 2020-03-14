@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 34d33a4509df6b19488833cd0273756a17e73630
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bdd46f06357a806a707882a623520235e3903581
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494943"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79382144"
 ---
 ## <a name="app-configuration"></a>App Configuration
 
@@ -22,7 +22,11 @@ ms.locfileid: "77494943"
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
 
-## <a name="batch"></a>Dávka
+## <a name="backup"></a>Backup
+
+[!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
+
+## <a name="batch"></a>Batch
 
 [!INCLUDE [azure-policy-samples-policies-batch](azure-policy-samples-policies-batch.md)]
 
@@ -30,7 +34,7 @@ ms.locfileid: "77494943"
 
 [!INCLUDE [azure-policy-samples-policies-cache](azure-policy-samples-policies-cache.md)]
 
-## <a name="compute"></a>Výpočty
+## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-samples-policies-compute](azure-policy-samples-policies-compute.md)]
 
@@ -38,7 +42,7 @@ ms.locfileid: "77494943"
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](azure-policy-samples-policies-container-registry.md)]
 
-## <a name="cosmos-db"></a>Cosmos DB
+## <a name="cosmos-db"></a>Databáze Cosmos
 
 [!INCLUDE [azure-policy-samples-policies-cosmos-db](azure-policy-samples-policies-cosmos-db.md)]
 
@@ -98,7 +102,7 @@ ms.locfileid: "77494943"
 
 [!INCLUDE [azure-policy-samples-policies-network](azure-policy-samples-policies-network.md)]
 
-## <a name="search"></a>Hledat
+## <a name="search"></a>Hledání
 
 [!INCLUDE [azure-policy-samples-policies-search](azure-policy-samples-policies-search.md)]
 

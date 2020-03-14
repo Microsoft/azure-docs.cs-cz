@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: b9808ddc3b61b0055642c5a0f2a82b0dc7553b33
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e0c48137f5eecc96b6e7b1cbce5f0c683b2a976a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384860"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367308"
 ---
 # <a name="my-first-powershell-runbook"></a>Můj první powershellový runbook
 
@@ -26,7 +26,7 @@ V tomto kurzu se seznámíte s vytvořením [powershellového runbooku](automati
 >[!NOTE]
 >Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -39,15 +39,18 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Runbooky PowerShellu mají stejný životní cyklus, možnosti a správu jako Runbooky pracovních postupů PowerShellu. Existují však určité rozdíly a omezení.
 
-* PowerShellové Runbooky se rychle spouštějí v porovnání se sadami Runbook pracovního postupu, protože nepoužívají krok kompilace.
-* Sešity PowerShellu nepodporují kontrolní body, které se používají v sadách PowerShell Workflow Runbook. Pomocí kontrolních bodů mohou Runbooky PowerShellu pracovních postupů obnovit provoz z libovolného bodu. Runbook PowerShellu může obnovit pouze operaci od začátku.
-* Runbooky PowerShellu můžou příkazy spouštět jenom v sériovém tvaru. Runbooky pracovních postupů PowerShellu podporují sériové i paralelní spouštění.
-* V případě Runbooku PowerShellu se všechno ve skriptu spouští v jediném prostředí runspace. V Runbooku pracovního postupu PowerShellu může mít aktivita, příkaz nebo blok skriptu vlastní prostředí runspace. 
-* Runbooky PowerShellu obsahují některé [syntaktické rozdíly](https://technet.microsoft.com/magazine/dn151046.aspx) z runbooků Powershellového pracovního postupu.
+| Charakteristika  | PowerShellové Runbooky | Runbooky pracovních postupů PowerShellu |
+| ------ | ----- | ----- |
+| rychlost | Spusťte rychle, protože nepoužívají krok kompilace. | Pozvolna běžet. |
+| Kontrolní body | Nepodporují kontrolní body. PowerShellový Runbook může obnovit pouze operaci od začátku. | Používejte kontrolní body, které umožní sešitu obnovení operace z libovolného bodu. |
+| Spuštění příkazu | Podporuje pouze sériová spuštění. | Podpora sériového i paralelního spuštění.|
+| Prostředí | Jediné prostředí runspace spouští vše ve skriptu. | Samostatné prostředí runspace lze použít pro aktivitu, příkaz nebo blok skriptu. |
+
+Kromě těchto rozdílů mají Runbooky PowerShellu několik [syntaktických rozdílů](https://technet.microsoft.com/magazine/dn151046.aspx) od runbooků pracovního postupu PowerShellu.
 
 ## <a name="step-1---create-runbook"></a>Krok 1 – vytvoření runbooku
 
-Začnete vytvořením jednoduchého runbooku, který zobrazí text **Hello World**.
+Začněte vytvořením jednoduchého Runbooku, který vypíše text `Hello World`.
 
 1. Na webu Azure Portal otevřete účet Automation.
 2. V části **Automatizace procesu** vyberte **Runbooky** a otevřete seznam runbooků.
@@ -74,9 +77,9 @@ Před publikováním Runbooku, aby byl dostupný v produkčním prostředí, bys
 2. Kliknutím na **Spustit** spustíte test. Měla by to být jediná povolená možnost.
 3. Všimněte si, že se vytvoří [úloha Runbooku](automation-runbook-execution.md) a její stav se zobrazí v podokně.
 
-   Stav úlohy se spustí jako **zařazený do fronty**, což značí, že úloha čeká na zpřístupnění pracovního procesu Runbooku v cloudu. Stav se změní na **zahájeno** , když pracovní proces tuto úlohu vystaví. Nakonec se stav spustí, **když se** Runbook skutečně začne spouštět.
+   Stav úlohy se spustí jako `Queued`, což znamená, že úloha čeká na zpřístupnění pracovního procesu Runbooku v cloudu. Stav se změní na `Starting`, když pracovní proces tuto úlohu vystaví. Nakonec se stav `Running`, když se Runbook skutečně začne spouštět.
 
-4. Po dokončení úlohy Runbooku zobrazí podokno test svůj výstup. V tomto případě se zobrazí **Hello World**.
+4. Po dokončení úlohy Runbooku zobrazí podokno test svůj výstup. V takovém případě se zobrazí `Hello World`.
 
    ![Výstup testovacího podokna](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)
 
@@ -96,12 +99,12 @@ Sada Runbook, kterou jste vytvořili, je stále v režimu konceptu. Abyste ho mo
 
    ![Souhrn úlohy](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. Jakmile **se zobrazí stav**Runbooku, kliknutím na **výstup** otevřete stránku výstup, kde vidíte **Hello World** zobrazené.
+1. Jakmile se stav Runbooku zobrazí `Completed`, kliknutím na **výstup** otevřete stránku výstup, kde vidíte `Hello World` zobrazené.
 
    ![Výstup úlohy](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
 1. Zavřete výstupní stránku.
-1. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. Ve výstupním datovém proudu byste měli vidět jenom **Hello World** .
+1. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. Ve výstupním datovém proudu byste měli vidět jenom `Hello World`.
 
     Všimněte si, že podokno streamy může zobrazit další datové proudy pro úlohu Runbooku, jako jsou například podrobné a chybové streamy, pokud je do nich zapisuje sada Runbook.
 
@@ -118,10 +121,10 @@ Sada Runbook, kterou jste vytvořili, je stále v režimu konceptu. Abyste ho mo
 
 Runbook jste otestovali a publikovali, ale zatím nedělá nic užitečného. Chcete po něm, aby spravoval prostředky Azure. Aby to bylo možné, musí být sada Runbook ověřena pomocí účtu Spustit jako, který byl automaticky vytvořen při vytváření účtu Automation.
 
-Jak je znázorněno v následujícím příkladu, připojení spustit jako je vytvořeno pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) . Pokud spravujete prostředky v rámci více předplatných, musíte použít parametr *AzContext* spolu s příkazem [Get-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0).
+Jak je znázorněno v následujícím příkladu, připojení spustit jako je vytvořeno pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) . Pokud spravujete prostředky v rámci více předplatných, musíte použít parametr `AzContext` s příkazem [Get-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0).
 
 > [!NOTE]
-> Pro Runbooky PowerShellu jsou rutiny **Add-AzAccount** a **Add-AzureRMAccount** aliasy pro **Connect-AzAccount**. Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
+> Pro Runbooky PowerShell jsou `Add-AzAccount` a `Add-AzureRMAccount` aliasy pro `Connect-AzAccount`. Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -149,7 +152,7 @@ Jak je znázorněno v následujícím příkladu, připojení spustit jako je vy
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $AzureContext
    ```
 1. Kliknutím na **Upravit** na stránce **MyFirstRunbook-PowerShell** otevřete textový editor.
-1. Řádek **Write-Output** už nebudete potřebovat. Stačí přejít a odstranit.
+1. Už nepotřebujete `Write-Output` řádek. Stačí přejít a odstranit.
 1. Zadejte nebo zkopírujte a vložte následující kód, který zpracovává ověřování pomocí účtu Automation spustit jako.
 
    ```powershell
@@ -181,7 +184,7 @@ Jak je znázorněno v následujícím příkladu, připojení spustit jako je vy
 
 Teď, když se váš Runbook ověřuje pro vaše předplatné Azure, můžete spravovat prostředky. Pojďme přidat příkaz ke spuštění virtuálního počítače. Můžete si vybrat libovolný virtuální počítač v rámci vašeho předplatného Azure a teď ho jenom nekódujte pevně v Runbooku.
 
-1. Do skriptu Runbooku přidejte rutinu [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) , která spustí virtuální počítač. Jak vidíte níže, rutina spustí virtuální počítač s názvem **VMName** a skupinou prostředků s názvem **ResourceGroupName**.
+1. Do skriptu Runbooku přidejte rutinu [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) , která spustí virtuální počítač. Jak vidíte níže, rutina spustí virtuální počítač s názvem `VMName` a skupinou prostředků s názvem `ResourceGroupName`.
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -211,7 +214,7 @@ Teď, když se váš Runbook ověřuje pro vaše předplatné Azure, můžete sp
 
 Runbook aktuálně spouští virtuální počítač, který jste pevně zakódované v Runbooku. Sada Runbook bude užitečnější, pokud při spuštění sady Runbook zadáte virtuální počítač. Pojďme do Runbooku přidat vstupní parametry, které tuto funkci poskytují.
 
-1. V textovém editoru upravte rutinu **Start-AzVM** pro použití proměnných pro parametry *VMName* a *ResourceGroupName*. 
+1. V textovém editoru upravte rutinu `Start-AzVM` na používání proměnných pro parametry `VMName` a `ResourceGroupName`. 
 
    ```powershell
    Param(

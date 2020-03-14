@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 2313c347e3836b6fa9d6055f99c258624e44c51f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386189"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239501"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení IoT v aplikaci Azure IoT Central
 
@@ -125,7 +125,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 | Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
 | Jednotka | Jednotka pro hodnotu telemetrie, například **mph**, **%** nebo **&deg;C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
-| Poznámka | Jakékoli komentáře k schopnosti telemetrie. |
+| Komentář | Jakékoli komentáře k schopnosti telemetrie. |
 | Popis | Popis schopnosti telemetrie. |
 
 ### <a name="properties"></a>Vlastnosti
@@ -146,7 +146,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 | Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
 | Jednotka | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo **&deg;C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
-| Poznámka | Jakékoli komentáře k funkci vlastnosti. |
+| Komentář | Jakékoli komentáře k funkci vlastnosti. |
 | Popis | Popis schopnosti vlastnosti. |
 
 ### <a name="commands"></a>Příkazy
@@ -161,7 +161,7 @@ Následující tabulka ukazuje nastavení konfigurace pro funkci příkazu:
 | Název | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
 | Typ schopnosti | Systému. |
 | Příkaz | `SynchronousExecutionType`. |
-| Poznámka | Jakékoli komentáře k funkci příkazu. |
+| Komentář | Jakékoli komentáře k funkci příkazu. |
 | Popis | Popis funkce příkazu |
 | Žádost | Pokud je povoleno, definice parametru Request, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky. |
 | Odpověď | Pokud je povoleno, definice odpovědi příkazu, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky, je-li povolena. |

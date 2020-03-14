@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 420775fee36df900ce95718e58fee145de3a9f53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278451"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366985"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -71,14 +71,14 @@ Stáhněte si skript **New-OnPremiseHybridWorker. ps1** z [Galerie prostředí P
 
 | Parametr | Stav | Popis |
 | --------- | ------ | ----------- |
-| *AAResourceGroupName* | Mandatory | Název skupiny prostředků, která je přidružená k vašemu účtu Automation. |
-| *AutomationAccountName* | Mandatory | Název vašeho účtu Automation.
-| *Pověřovací* | Volitelné | Přihlašovací údaje, které se mají použít při přihlašování do prostředí Azure. |
-| *HybridGroupName* | Mandatory | Název skupiny Hybrid Runbook Worker, kterou zadáte jako cíl pro Runbooky, které podporují tento scénář. |
-| *OMSResourceGroupName* | Volitelné | Název skupiny prostředků pro pracovní prostor Log Analytics. Pokud není tato skupina prostředků zadaná, použije se hodnota *AAResourceGroupName* . |
-| *SubscriptionID* | Mandatory | Identifikátor předplatného Azure přidruženého k vašemu účtu Automation. |
-| *TenantID* | Volitelné | Identifikátor organizace tenanta přidružené k vašemu účtu Automation. |
-| *WorkspaceName* | Volitelné | Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje. |
+| `AAResourceGroupName` | Mandatory | Název skupiny prostředků, která je přidružená k vašemu účtu Automation. |
+| `AutomationAccountName` | Mandatory | Název vašeho účtu Automation.
+| `Credential` | volitelná, | Přihlašovací údaje, které se mají použít při přihlašování do prostředí Azure. |
+| `HybridGroupName` | Mandatory | Název skupiny Hybrid Runbook Worker, kterou zadáte jako cíl pro Runbooky, které podporují tento scénář. |
+| `OMSResourceGroupName` | volitelná, | Název skupiny prostředků pro pracovní prostor Log Analytics. Pokud není tato skupina prostředků zadaná, použije se hodnota `AAResourceGroupName`. |
+| `SubscriptionID` | Mandatory | Identifikátor předplatného Azure přidruženého k vašemu účtu Automation. |
+| `TenantID` | volitelná, | Identifikátor organizace tenanta přidružené k vašemu účtu Automation. |
+| `WorkspaceName` | volitelná, | Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje. |
 
 > [!NOTE]
 > Při povolování řešení Azure Automation podporuje jenom určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
@@ -89,7 +89,7 @@ Spusťte **prostředí Windows PowerShell** z obrazovky **Start** v režimu spr�
 
 ### <a name="step-3---run-the-powershell-script"></a>Krok 3 – spuštění skriptu PowerShellu
 
-V prostředí příkazového řádku PowerShellu přejděte do složky, která obsahuje skript, který jste stáhli. Změňte hodnoty parametrů *AutomationAccountName*, *AAResourceGroupName*, *OMSResourceGroupName*, *HybridGroupName*, *SubscriptionId*a *pracovní prostor*. Potom spusťte skript.
+V prostředí příkazového řádku PowerShellu přejděte do složky, která obsahuje skript, který jste stáhli. Změňte hodnoty parametrů `AutomationAccountName`, `AAResourceGroupName`, `OMSResourceGroupName`, `HybridGroupName`, `SubscriptionID`a `WorkspaceName`. Potom spusťte skript.
 
 Po spuštění skriptu budete vyzváni k ověření pomocí Azure. Musíte se přihlásit pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
 
@@ -149,7 +149,7 @@ Pomocí následujících kroků dokončete instalaci a instalaci agenta.
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Krok 4 – instalace prostředí Runbooku a připojení k Azure Automation
 
-Když nakonfigurujete agenta tak, aby nahlásil do Log Analytics pracovního prostoru, řešení automatizace vloží modul PowerShellu **HybridRegistration** , který obsahuje rutinu **Add-HybridRunbookWorker** . Pomocí této rutiny nainstalujete do počítače prostředí Runbooku a zaregistrujete ho do Azure Automation.
+Když nakonfigurujete agenta tak, aby se nahlásil do Log Analytics pracovního prostoru, řešení automatizace vloží modul `HybridRegistration` PowerShellu, který obsahuje rutinu `Add-HybridRunbookWorker`. Pomocí této rutiny nainstalujete do počítače prostředí Runbooku a zaregistrujete ho do Azure Automation.
 
 Otevřete relaci PowerShellu v režimu správce a spuštěním následujících příkazů Importujte modul.
 
@@ -158,7 +158,7 @@ cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\
 Import-Module .\HybridRegistration.psd1
 ```
 
-Nyní spusťte rutinu **Add-HybridRunbookWorker** pomocí následující syntaxe.
+Nyní spusťte rutinu `Add-HybridRunbookWorker` pomocí následující syntaxe.
 
 ```powershell-interactive
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
@@ -168,18 +168,18 @@ Informace požadované pro tuto rutinu můžete získat ze stránky Správa klí
 
 ![Stránka Správa klíčů](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* Pro parametr *název_skupiny* použijte název skupiny Hybrid Runbook Worker. Pokud tato skupina už v účtu Automation existuje, do ní se přidá aktuální počítač. Pokud tato skupina neexistuje, přidá se.
-* Pro parametr *koncového bodu* použijte položku **Adresa URL** na stránce Správa klíčů.
-* Jako parametr *tokenu* použijte položku **primárního přístupového klíče** na stránce Správa klíčů.
-* V případě potřeby nastavte parametr *verbose* pro příjem podrobností o instalaci.
+* Pro parametr `GroupName` použijte název skupiny Hybrid Runbook Worker. Pokud tato skupina už v účtu Automation existuje, do ní se přidá aktuální počítač. Pokud tato skupina neexistuje, přidá se.
+* Pro parametr `EndPoint` použijte položku **Adresa URL** na stránce Správa klíčů.
+* Pro parametr `Token` použijte položku **primárního přístupového klíče** na stránce Správa klíčů.
+* V případě potřeby nastavte parametr `Verbose` pro příjem podrobností o instalaci.
 
 ### <a name="step-5----install-powershell-modules"></a>Krok 5 – Instalace modulů PowerShellu
 
 Runbooky můžou používat jakékoli aktivity a rutiny definované v modulech nainstalovaných ve vašem Azure Automationovém prostředí. Protože tyto moduly nejsou automaticky nasazeny do místních počítačů, je nutné je nainstalovat ručně. Výjimkou je modul Azure. Tento modul se instaluje ve výchozím nastavení a poskytuje přístup k rutinám pro všechny služby a aktivity Azure pro Azure Automation.
 
-Vzhledem k tomu, že primárním účelem funkce Hybrid Runbook Worker je Správa místních prostředků, pravděpodobně budete muset nainstalovat moduly, které tyto prostředky podporují, zejména modul **PowerShellGet** . Informace o instalaci modulů prostředí Windows PowerShell najdete v tématu [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
+Vzhledem k tomu, že primárním účelem funkce Hybrid Runbook Worker je Správa místních prostředků, pravděpodobně budete muset nainstalovat moduly, které tyto prostředky podporují, zejména modul `PowerShellGet`. Informace o instalaci modulů prostředí Windows PowerShell najdete v tématu [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
-Moduly, které jsou nainstalovány, musí být v umístění, na které odkazuje proměnná prostředí *PSModulePath* , aby je hybridní pracovní proces mohl automaticky importovat. Další informace najdete v tématu [Instalace modulů v PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+Moduly, které jsou nainstalovány, musí být v umístění, na které odkazuje proměnná prostředí `PSModulePath`, aby je hybridní pracovní proces mohl automaticky importovat. Další informace najdete v tématu [Instalace modulů v PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
 
 ## <a name="next-steps"></a>Další kroky
 

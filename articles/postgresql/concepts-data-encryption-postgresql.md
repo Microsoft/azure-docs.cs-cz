@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
+title: Šifrování dat s klíčem spravovaným zákazníkem-Azure Database for PostgreSQL-Single server
 description: Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem vám umožní Bring Your Own Key (BYOK) pro ochranu dat v klidovém umístění. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198696"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297018"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
@@ -32,9 +32,9 @@ Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupn�
 Šifrování dat pro Azure Database for PostgreSQL jeden server přináší následující výhody:
 
 * Přístup k datům je plně řízen možností odebrání klíče a zpřístupnění databáze. 
-*   Úplná kontrola nad životním cyklem klíčů, včetně rotace klíče, který se má zarovnat k podnikovým zásadám
-*   Centrální správa a organizace klíčů v Azure Key Vault
-*   Možnost implementovat oddělení povinností mezi bezpečnostními důstojníky a správci systému
+*    Úplná kontrola nad životním cyklem klíčů, včetně rotace klíče, který se má zarovnat k podnikovým zásadám
+*    Centrální správa a organizace klíčů v Azure Key Vault
+*    Možnost implementovat oddělení povinností mezi bezpečnostními důstojníky a správci systému
 
 ## <a name="terminology-and-description"></a>Terminologie a popis
 

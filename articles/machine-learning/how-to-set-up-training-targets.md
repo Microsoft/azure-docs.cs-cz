@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 209ed755a7ef83b67170ef75911f93cdda742caa
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283521"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368192"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -154,15 +154,30 @@ Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako vir
 
 1. **Připojit**: Chcete-li připojit existující virtuální počítač jako cíl služby COMPUTE, je nutné zadat plně kvalifikovaný název domény (FQDN), uživatelské jméno a heslo pro virtuální počítač. V tomto příkladu nahraďte \<plně kvalifikovaný název domény > veřejným plně kvalifikovaným názvem domény virtuálního počítače nebo veřejnou IP adresou. Pro tento virtuální počítač nahraďte \<username > a \<heslo > a uživatelské jméno a heslo SSH.
 
+    > [!IMPORTANT]
+    > Následující oblasti Azure nepodporují připojení virtuálního počítače pomocí veřejné IP adresy virtuálního počítače. Místo toho použijte Azure Resource Manager ID virtuálního počítače s parametrem `resource_id`:
+    >
+    > * USA – východ
+    > * USA – západ 2
+    > * USA (střed) – jih
+    >
+    > ID prostředku virtuálního počítače se dá vytvořit pomocí ID předplatného, názvu skupiny prostředků a názvu virtuálního počítače pomocí následujícího formátu řetězce: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
+
+
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
+   # If in US East, US West 2, or US South Central, use the following instead:
+   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+   #                                                 ssh_port=22,
+   #                                                 username='<username>',
+   #                                                 password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -198,6 +213,15 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
 
 1. **Připojit**: Pokud chcete připojit cluster HDInsight jako cíl výpočetní služby, musíte zadat název hostitele, uživatelské jméno a heslo pro cluster HDInsight. Následující příklad používá sadu SDK připojit cluster do pracovního prostoru. V příkladu nahraďte \<název_clusteru > názvem vašeho clusteru. Pro tento cluster nahraďte \<username > a \<heslo > a uživatelské jméno a heslo SSH.
 
+    > [!IMPORTANT]
+    > Následující oblasti Azure nepodporují připojení clusteru HDInsight pomocí veřejné IP adresy clusteru. Místo toho použijte Azure Resource Manager ID clusteru s parametrem `resource_id`:
+    >
+    > * USA – východ
+    > * USA – západ 2
+    > * USA (střed) – jih
+    >
+    > ID prostředku clusteru se dá vytvořit pomocí ID předplatného, názvu skupiny prostředků a názvu clusteru pomocí následujícího formátu řetězce: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
+
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
    from azureml.exceptions import ComputeTargetException
@@ -208,6 +232,11 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
+    # If you are in US East, US West 2, or US South Central, use the following instead:
+    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
+    #                                                      ssh_port=22, 
+    #                                                      username='<ssh-username>', 
+    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
@@ -234,9 +263,9 @@ Azure Batch se používá ke efektivnímu spouštění rozsáhlých paralelních
 
 Chcete-li připojit Azure Batch jako cíl výpočtů, je nutné použít sadu Azure Machine Learning SDK a zadat následující informace:
 
--   **Azure Batch výpočetní název**: popisný název, který se má použít pro výpočetní prostředky v pracovním prostoru.
--   **Azure Batch název účtu**: název účtu Azure Batch
--   **Skupina prostředků**: Skupina prostředků, která obsahuje účet Azure Batch.
+-    **Azure Batch výpočetní název**: popisný název, který se má použít pro výpočetní prostředky v pracovním prostoru.
+-    **Azure Batch název účtu**: název účtu Azure Batch
+-    **Skupina prostředků**: Skupina prostředků, která obsahuje účet Azure Batch.
 
 Následující kód ukazuje, jak připojit Azure Batch jako cíl výpočtů:
 

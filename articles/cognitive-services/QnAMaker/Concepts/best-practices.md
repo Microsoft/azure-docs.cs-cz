@@ -4,11 +4,11 @@ description: Použijte tyto osvědčené postupy pro zlepšení znalostní báze
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370097"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220773"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Doporučené postupy nástroje QnA Maker znalostní báze
 
@@ -73,7 +73,7 @@ Doporučujeme následující maximálně chit chat konkrétnější:
 * Co můžete dělat?
 * Kolik je vám let?
 * Kdo vytvořil jste?
-* Dobrý den!
+* Dobrý den,
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Přidání vlastního funkce CHITEST – chat se značkou metadat
 
@@ -102,7 +102,7 @@ Ve výchozím nastavení QnA Maker vyhledává dotazy a odpovědi. Chcete-li vyh
 ### <a name="add-alternate-questions"></a>Přidat alternativní otázky
 [Alternativní otázky](../How-To/edit-knowledge-base.md) zlepšují pravděpodobnost shody s uživatelským dotazem. Alternativní dotazy jsou užitečné, pokud existuje více způsobů, ve kterém se dotaz na stejnou otázku. To může zahrnovat změny ve struktuře věty a stylu aplikace word.
 
-|Původní dotaz|Alternativních dotazů|Změna|
+|Původní dotaz|Alternativních dotazů|Změnit|
 |--|--|--|
 |Je parkovací k dispozici?|Máte car park?|Struktura větu|
  |Ahoj|Jo<br>Dobrý den existuje!|Word – vizuální styl nebo slang|

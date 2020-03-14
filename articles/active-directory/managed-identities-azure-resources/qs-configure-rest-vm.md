@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375592"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244157"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
 
@@ -83,8 +83,8 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
    
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
    
    **Text žádosti**
 
@@ -172,8 +172,8 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
    
    **Text žádosti**
     
@@ -204,8 +204,8 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -239,8 +239,8 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -282,8 +282,8 @@ Aby se na virtuálním počítači zakázala spravovaná identita přiřazená s
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -341,8 +341,8 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -422,8 +422,8 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -513,7 +513,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.
 
     Pokud máte ke svému virtuálnímu počítači přiřazenou nějaké spravované identity přiřazené uživateli nebo systémem, jak je identifikované v odpovědi na hodnotu `identity`, přeskočte na krok 5, který vám ukáže, jak zachovat spravovanou identitu přiřazenou systémem při přidávání uživatelsky přiřazené spravované identity na VIRTUÁLNÍm počítači.
 
@@ -534,8 +534,8 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        |
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        |
  
    **Text žádosti**
 
@@ -566,8 +566,8 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -602,8 +602,8 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -641,8 +641,8 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -682,8 +682,8 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.
  
    Pokud máte přiřazené spravované identity k virtuálnímu počítači, zobrazí se v odpovědi v hodnotě `identity`.
 
@@ -705,8 +705,8 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -737,8 +737,8 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
 
    **Text žádosti**
 
@@ -767,8 +767,8 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
-|*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`. | 
+|*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+|*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`. | 
 
 **Text žádosti**
 
@@ -794,8 +794,8 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
-|*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.| 
+|*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
+|*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.| 
 
 **Text žádosti**
 

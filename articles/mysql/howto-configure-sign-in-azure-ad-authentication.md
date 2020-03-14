@@ -1,17 +1,17 @@
 ---
-title: Použití Azure Active Directory-Azure Database for MySQL-Single server
-description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro ověřování pomocí Azure Database for MySQL-Single server.
+title: Použití Azure Active Directory-Azure Database for MySQL
+description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro ověřování pomocí Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110605"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299001"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -46,7 +46,7 @@ Po nakonfigurování správce se teď můžete přihlásit:
 
 Následující diagram vysoké úrovně shrnuje pracovní postup použití ověřování Azure AD s Azure Database for MySQL:
 
-![tok ověřování][1]
+![Tok ověřování][1]
 
 Navrhli jsme integraci Azure AD pro práci s běžnými nástroji MySQL, jako je MySQL CLI, které nepodporují Azure AD, a podporují zadání uživatelského jména a hesla jenom při připojování k MySQL. Token Azure AD předáte jako heslo, jak je znázorněno na obrázku výše.
 
@@ -200,12 +200,12 @@ Většina ovladačů je podporovaná, ale nezapomeňte použít nastavení pro o
 * Perl
   * DBD:: MySQL: podporováno
   * NET:: MySQL: nepodporováno
-* Přejít
+* Go
   * ovladač jazyka SQL: podporováno, přidání `?tls=true&allowCleartextPasswords=true` do připojovacího řetězce
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o celkových konceptech [Azure Active Directory ověřování pomocí Azure Database for MySQL-Single server](concepts-azure-ad-authentication.md)
+* Projděte si obecné koncepty [ověřování Azure Active Directory s](concepts-azure-ad-authentication.md) využitím Azure Database for MySQL
 
 <!--Image references-->
 

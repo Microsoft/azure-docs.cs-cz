@@ -4,11 +4,11 @@ description: Ručně nastavte Application Insights monitorování pro novou živ
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 090c983dcca101557f8dec479d1267275d24908b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374879"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276046"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -28,7 +28,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
    | ------------- |:-------------|:-----|
    | **Název**      | Jedinečná hodnota | Název, který identifikuje monitorovanou aplikaci. |
    | **Skupina prostředků**     | myResourceGroup      | Název nové nebo existující skupiny prostředků pro hostování dat App Insights |
-   | **Umístění** | Východní USA | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
+   | **Umístění** | USA – východ | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
 
 > [!NOTE]
 > I když můžete použít stejný název prostředku v různých skupinách prostředků, může být výhodné použít globálně jedinečný název. To může být užitečné v případě, že plánujete [provádění dotazů mezi prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) , protože je zjednodušená požadovaná syntaxe.

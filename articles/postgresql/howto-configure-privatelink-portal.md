@@ -1,19 +1,19 @@
 ---
-title: Privátní odkaz pro metodu instalace portálu Azure Database for PostgreSQL-Single server (Preview)
+title: Privátní Link-Azure Portal-Azure Database for PostgreSQL-Single server
 description: Přečtěte si, jak nakonfigurovat privátní odkaz pro Azure Database for PostgreSQL jeden server z Azure Portal
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 187fa7cf52193d94b932d9021749917fa4f9b1dc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562594"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370912"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL – jeden server (Preview) pomocí portálu
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL pro jeden server pomocí portálu
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení.  V tomto článku se naučíte, jak použít Azure Portal k vytvoření virtuálního počítače v Azure Virtual Network a Azure Database for PostgreSQL jednom serveru s privátním koncovým bodem Azure.
 
@@ -23,7 +23,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL jeden server podporuje Pro obecné účely a paměťově optimalizované cenové úrovně.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-vm"></a>Vytvoření virtuálního počítače Azure
 
@@ -113,7 +113,7 @@ V této části vytvoříte Azure Database for PostgreSQL Server v Azure.
     | Uživatelské jméno správce| Zadejte jméno správce, které chcete zvolit. |
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
     | Umístění | Vyberte oblast Azure, ve které chcete, aby se server PostgreSQL nacházel. |
-    |Verze  | Vyberte verzi databáze serveru PostgreSQL, která je povinná.|
+    |Version  | Vyberte verzi databáze serveru PostgreSQL, která je povinná.|
     | Výpočty a úložiště| Vyberte cenovou úroveň, která je potřebná pro server na základě zatížení. |
     |||
  
@@ -126,12 +126,12 @@ V této části vytvoříte Azure Database for PostgreSQL Server v Azure.
 
 V této části vytvoříte server PostgreSQL a přidáte do něj privátní koncový bod. 
 
-1. V levém horním rohu obrazovky v Azure Portal vyberte **vytvořit prostředek** > **sítě** > **privátní Link Center (Preview)** .
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **síť** > **privátní odkaz**.
 2. V části **centrum privátních odkazů – přehled**na možnost **vytvořit privátní připojení ke službě**vyberte možnost **Spustit**.
 
     ![Přehled privátních odkazů](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. V **Vytvoření privátního koncového bodu (Preview) – základy**zadejte nebo vyberte tyto informace:
+1. V **rámci vytvoření privátního koncového bodu základy**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -154,7 +154,7 @@ V této části vytvoříte server PostgreSQL a přidáte do něj privátní kon
     |Cílový dílčí prostředek |Vybrat *postgresqlServer*|
     |||
 7. Vyberte **Další: Konfigurace**.
-8. V **Vytvoření privátního koncového bodu (Preview) – konfigurace**zadejte nebo vyberte tyto informace:
+8. V **Vytvoření privátního koncového bodu – konfigurace**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |

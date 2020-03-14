@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381698"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266998"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
@@ -147,7 +147,7 @@ Přístup ke konzole sériového portu je omezený na uživatele, kteří mají 
 ### <a name="channel-security"></a>Zabezpečení kanálu
 Přenosu se šifrují všechna data, která se odešle vpřed a zpět.
 
-### <a name="audit-logs"></a>Protokoly auditování
+### <a name="audit-logs"></a>Protokoly auditu
 Veškerý přístup ke konzole sériového portu je aktuálně přihlášený k protokolům [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) virtuálního počítače. Přístup k tyto protokoly jsou vlastněné a řídí správce virtuálních počítačů Azure.
 
 > [!CAUTION]
@@ -159,7 +159,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 > [!CAUTION]
 > To znamená, že odpojený uživatel nebude odhlášen. Možnost vymáhat odhlášení po odpojení (pomocí SIGHUP nebo podobného mechanismu) je stále v plánu. Pro Windows je automatické vypršení časového limitu povolené v SAC; pro Linux můžete nakonfigurovat nastavení terminálu vypršení časového limitu.
 
-## <a name="accessibility"></a>Přístupnost
+## <a name="accessibility"></a>Usnadnění
 Klíče se pro Azure konzoly sériového portu se usnadnění přístupu. Za tímto účelem jsme zajistili, že je přístupný pro vizuál a vaše zasažená, jakož i uživatelů, kteří nebudou moct používat myš konzole sériového portu.
 
 ### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice

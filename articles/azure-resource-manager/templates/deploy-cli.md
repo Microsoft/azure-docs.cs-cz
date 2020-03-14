@@ -4,11 +4,11 @@ description: K nasazení prostředků do Azure použijte Azure Resource Manager 
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: 17307b1657afc133a7e1b1d7714363329573e48c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78946056"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273901"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 

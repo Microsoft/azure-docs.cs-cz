@@ -7,16 +7,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772153"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367563"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresy
 
-Předpony IP adres IoT Hub veřejných koncových bodů se pravidelně publikují v rámci [značky služby](../virtual-network/service-tags-overview.md) _AzureIoTHub_ . Tyto předpony IP adres můžete použít k řízení připojení mezi IoT Hub a zařízeními nebo síťovými prostředky za účelem implementace nejrůznějších cílů izolace sítě:
+Předpony IP adres IoT Hub veřejných koncových bodů se pravidelně publikují v rámci [značky služby](../virtual-network/service-tags-overview.md) _AzureIoTHub_ .
+
+> [!NOTE]
+> Pro zařízení nasazená v místních sítích Azure IoT Hub podporuje integraci připojení virtuální sítě s privátními koncovými body. Další informace najdete v tématu věnovaném [podpoře sítě VNET IoT Hub](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) .
+
+
+Tyto předpony IP adres můžete použít k řízení připojení mezi IoT Hub a zařízeními nebo síťovými prostředky za účelem implementace nejrůznějších cílů izolace sítě:
 
 | Cíl | Příslušné scénáře | Přístup |
 |------|-----------|----------|
@@ -45,6 +51,6 @@ Předpony IP adres IoT Hub veřejných koncových bodů se pravidelně publikuj�
 
 * Při směrování na účet úložiště je možné povolit provoz z prefixů IP adres IoT Hub jenom v případě, že je účet úložiště v jiné oblasti jako váš IoT Hub.
 
-## <a name="support-for-ipv6"></a>Podpora protokolu IPv6 
+## <a name="support-for-ipv6"></a>Podpora adres IPv6 
 
 Protokol IPv6 se v této IoT Hub v tuto chvíli nepodporuje.

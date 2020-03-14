@@ -1,17 +1,17 @@
 ---
-title: Ověřování služby Active Directory – Azure Database for MySQL – jeden server
-description: Přečtěte si o konceptech Azure Active Directory pro ověřování pomocí Azure Database for MySQL-Single server
+title: Ověřování služby Active Directory – Azure Database for MySQL
+description: Přečtěte si o konceptech Azure Active Directory pro ověřování pomocí Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: eb26bc09ce273280b55a023c563427b5b323ace9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706099"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299018"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -47,7 +47,7 @@ Pro konfiguraci a použití ověřování Azure Active Directory použijte násl
 
 Následující diagram vysoké úrovně shrnuje, jak ověřování funguje pomocí ověřování Azure AD s Azure Database for MySQL. Šipky označují cesty komunikace.
 
-![tok ověřování][1]
+![Tok ověřování][1]
 
 ## <a name="administrator-structure"></a>Struktura správce
 
@@ -90,7 +90,7 @@ Po ověření vůči službě Active Directory načtěte token. Tento token je v
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak vytvořit a naplnit Azure AD a jak nakonfigurovat Azure AD pomocí Azure Database for MySQL, najdete v tématu [Konfigurace a přihlášení pomocí Azure AD pro Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md).
-- Přehled přihlášení a uživatele databáze pro Azure Database for MySQL najdete [v tématu Vytvoření uživatelů v Azure Database for MySQL na jednom serveru](howto-create-users.md).
+- Přehled přihlášení a uživatele databáze pro Azure Database for MySQL najdete v tématu věnovaném [Vytvoření uživatelů v Azure Database for MySQL](howto-create-users.md).
 
 <!--Image references-->
 

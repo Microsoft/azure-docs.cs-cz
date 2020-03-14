@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 3ba5d74aa245fbcd9d43f2b4398387d7f59e202c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206292"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299488"
 ---
 ### <a name="portal"></a>Portál
 
@@ -49,9 +49,14 @@ Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat, 
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Nastavení sady pro šifrování disku
 
-Chcete-li vytvořit a nakonfigurovat sady pro šifrování disků, je nutné použít následující odkaz: https://aka.ms/diskencryptionsets. Vytvoření sady šifrování disku ještě není v globálním Azure Portal k dispozici.
+Chcete-li vytvořit a nakonfigurovat sady pro šifrování disků, je nutné použít následující odkaz: https://aka.ms/diskencryptionsets. Pokud jste v oblasti Microsoft Azure Government, musíte místo toho použít tento odkaz: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff). Vytvoření sady šifrování disku ještě není v globálním Azure Portal k dispozici.
 
-1. Otevřete [odkaz sady Disk Encryption](https://aka.ms/diskencryptionsets).
+1. Otevřete odkaz sady Disk Encryption Sets odpovídající vaší oblasti:
+
+    Veřejné oblasti: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government oblasti: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
 1. Vyberte **+ Přidat**.
 
     ![Snímek obrazovky s hlavní obrazovkou portálu pro šifrování disků Zvýraznění tlačítka Přidat](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
@@ -77,7 +82,12 @@ Měla by se zobrazit a úspěšně zobrazit dvě oznámení. Díky tomu budete m
 Teď, když jste vytvořili a nastavili Trezor klíčů a sadu šifrování disků, můžete nasadit virtuální počítač pomocí šifrování.
 Proces nasazení virtuálního počítače se podobá standardnímu procesu nasazení. jediným rozdílem je, že je potřeba nasadit virtuální počítač ve stejné oblasti, ve které se nacházejí vaše další prostředky, a Vy se rozhodnete použít spravovaný klíč zákazníka.
 
-1. Otevřete [odkaz sady Disk Encryption](https://aka.ms/diskencryptionsets).
+1. Otevřete odkaz sady Disk Encryption Sets odpovídající vaší oblasti:
+
+    Veřejné oblasti: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government oblasti: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+
 1. Vyhledejte **Virtual Machines** a vyberte **+ Přidat** a vytvořte virtuální počítač.
 1. Na kartě **základní** vyberte stejnou oblast jako sadu šifrování disku a Azure Key Vault.
 1. Zadejte další hodnoty na kartě **Basic** , jak chcete.
@@ -97,8 +107,13 @@ Chcete-li spravovat a konfigurovat šifrování disku na stávajících discích
 > [!CAUTION]
 > Povolení šifrování disku na všech discích připojených k VIRTUÁLNÍm počítačům bude vyžadovat, abyste virtuální počítač zastavili.
 
-1. Otevřete [odkaz sady Disk Encryption](https://aka.ms/diskencryptionsets).
-1. Přejděte k virtuálnímu počítači, který je ve stejné oblasti jako jedna ze sad pro šifrování disků.
+1. Otevřete odkaz sady Disk Encryption Sets odpovídající vaší oblasti:
+
+    Veřejné oblasti: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government oblasti: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
+1. Přejděte do virtuálního počítače, který je ve stejné oblasti jako jedna ze sad pro šifrování disků.
 1. Otevřete virtuální počítač a vyberte **zastavit**.
 
     ![Snímek obrazovky s hlavním překryvem pro ukázkový virtuální počítač Se zvýrazněným tlačítkem STOP](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)

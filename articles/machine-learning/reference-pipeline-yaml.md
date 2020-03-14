@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a677aaa891e21f4c9eeda02eebcb94e9d79a55ad
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771628"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368821"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definování kanálů strojového učení v YAML
 
@@ -32,7 +32,7 @@ Následující tabulka uvádí, co je a není aktuálně podporováno při defin
 | DataTransferStep | Ano |
 | AutoMLStep | Ne |
 | HyperDriveStep | Ne |
-| ModuleStep | Ne |
+| ModuleStep | Ano |
 | MPIStep | Ne |
 | EstimatorStep | Ne |
 
@@ -76,7 +76,7 @@ pipeline:
             default: 4
 ```
 
-## <a name="data-reference"></a>Odkaz na data
+## <a name="data-reference"></a>Reference pro data
 
 Oddíl `data_references` používá následující klíče, které odpovídají [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py):
 
@@ -378,7 +378,7 @@ Při definování plánu pro kanál může to být buď úložiště dat, aktivo
 | `polling_interval` | Doba mezi dotazem na změněné nebo přidané objekty BLOB v minutách Výchozí hodnota: 5 minut. Podporováno pouze pro plány úložiště dat. |
 | `data_path_parameter_name` | Název parametru kanálu pro cestu k datům, který se má nastavit se změněnou cestou k objektu BLOB. Podporováno pouze pro plány úložiště dat. |
 | `continue_on_step_failure` | Určuje, zda pokračovat v provádění dalších kroků v odeslaných PipelineRun, pokud nějaký krok selhává. Pokud se tato možnost zadá, přepíše nastavení `continue_on_step_failure` kanálu.
-| `path_on_datastore` | Nepovinný parametr. Cesta v úložišti dat, která se má monitorovat pro upravené nebo přidané objekty blob Cesta je pod kontejnerem úložiště dat, takže skutečná cesta, kterou plán monitoruje, je kontejner/`path_on_datastore`. Pokud žádný není, je monitorovaný kontejner úložiště dat. Přidání/úpravy provedené v podsložce `path_on_datastore` nejsou monitorovány. Podporováno pouze pro plány úložiště dat. |
+| `path_on_datastore` | Volitelná. Cesta v úložišti dat, která se má monitorovat pro upravené nebo přidané objekty blob Cesta je pod kontejnerem úložiště dat, takže skutečná cesta, kterou plán monitoruje, je kontejner/`path_on_datastore`. Pokud žádný není, je monitorovaný kontejner úložiště dat. Přidání/úpravy provedené v podsložce `path_on_datastore` nejsou monitorovány. Podporováno pouze pro plány úložiště dat. |
 
 Následující příklad obsahuje definici pro plán aktivovaný úložištěm dat:
 

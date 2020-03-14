@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361572"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264918"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -50,7 +50,15 @@ Ano. Okruh ExpressRoute, jakmile je nastavená, umožňuje přístup k služby v
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Jak se virtuální sítě inzeruje na soukromý partnerský vztah ExpressRoute?
 
-Brána ExpressRoute bude inzerovat *adresní prostor* virtuální sítě Azure, nemůžete ho zahrnout ani vyloučit na úrovni podsítě. Vždy je adresní prostor virtuální sítě, který je inzerován. Pokud se používá partnerský vztah virtuálních sítí a virtuální síť s partnerským vztahem má povolenou možnost použít vzdálenou bránu, bude se taky inzerovat adresní prostor partnerské virtuální sítě.
+Brána ExpressRoute bude inzerovat *adresní prostory* virtuální sítě Azure a nebude možné ji zahrnout ani vyloučit na úrovni podsítě. Vždy je adresní prostor virtuální sítě, který je inzerován. Pokud se používá partnerský vztah virtuálních sítí a virtuální síť s partnerským vztahem má povolenou možnost použít vzdálenou bránu, bude se taky inzerovat adresní prostor partnerské virtuální sítě.
+
+### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Kolik předpon lze inzerovat z virtuální sítě do místní sítě v ExpressRoute privátního partnerského vztahu?
+
+K jednomu ExpressRoute připojení nebo prostřednictvím partnerského vztahu virtuálních sítí s využitím přenosu brány se může inzerovat maximálně 200 předpon. Pokud máte třeba 199 adresních prostorů v jedné virtuální síti připojené k okruhu ExpressRoute, všechny 199 těchto předpon se budou inzerovat místně. Případně, pokud máte povolenou virtuální síť, která povoluje přenos brány s jedním adresním prostorem a 150-virtuální sítě paprsků povolených pomocí možnosti Povolit vzdálenou bránu, bude virtuální síť nasazená s bránou inzerovat 151 předpony místně.
+
+### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Co se stane, když překročím limit předpony u připojení ExpressRoute?
+
+Připojení mezi okruhem ExpressRoute a bránou (a partnerským virtuální sítě pomocí přenosu brány, pokud je k dispozici), bude mimo provoz. Znovu se vytvoří, když se limit předpony už nepřekračuje.  
 
 ### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Můžu filtrovat trasy přicházející z místní sítě?
 

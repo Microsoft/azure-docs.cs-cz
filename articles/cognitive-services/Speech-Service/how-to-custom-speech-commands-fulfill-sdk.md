@@ -1,23 +1,23 @@
 ---
-title: Postup plnění vlastních příkazů na klientovi pomocí sady Speech SDK
+title: Jak vyplnit příkazy z klienta pomocí sady Speech SDK
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vysvětlujeme, jak zpracovávat vlastní příkazy v klientu pomocí sady Speech SDK.
+description: V tomto článku vysvětlujeme, jak zpracovávat vlastní příkazy v klientovi pomocí sady Speech SDK.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156501"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367734"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Postupy: plnění příkazů v klientovi pomocí sady Speech SDK (Preview)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Doplňování příkazů z klienta pomocí sady Speech SDK (Preview)
 
 Chcete-li dokončit úlohy pomocí vlastní aplikace příkazů, můžete odesílat vlastní datové části do připojeného klientského zařízení.
 

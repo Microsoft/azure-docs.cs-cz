@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330970"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297080"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
@@ -20,7 +20,7 @@ Ingestování streamování použijte, pokud požadujete nízkou latenci a dobu 
 
 Použijte hromadnou příjem dat namísto příjmu streamování, když se objem dat zvětšuje na více než 1 MB za sekundu na tabulku. Přečtěte si [Přehled příjmu dat](/azure/data-explorer/ingest-data-overview) , kde se dozvíte víc o různých metodách přijímání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlaste se k [webovému uživatelskému rozhraní](https://dataexplorer.azure.com/).
@@ -72,7 +72,7 @@ Existují dva podporované typy přijímání streamování:
 
 ## <a name="limitations"></a>Omezení
 
-* Přijímání streamování nepodporuje [kurzory databáze](/azure/kusto/management/databasecursor) ani [mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/tables#create-ingestion-mapping) mapování dat. 
+* Přijímání streamování nepodporuje [kurzory databáze](/azure/kusto/management/databasecursor) ani [mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/create-ingestion-mapping-command) mapování dat. 
 * Zvýšení výkonu a kapacity příjmu streamování díky větší velikosti virtuálních počítačů a clusterů. Souběžné přijímání je omezené na šest ingest na jádro. Například u 16 základních SKU, jako je například D14 a L16, je maximální podporované zatížení 96 souběžných ingestování. U dvou základních SKU, jako je D11, je maximální podporované zatížení 12 souběžných ingest.
 * Omezení velikosti dat na žádost o přijetí dat je 4 MB.
 * Aktualizace schématu, jako je vytváření a úprava tabulek a mapování přijímání, můžou trvat až pět minut, než se služba pro příjem dat streamuje.

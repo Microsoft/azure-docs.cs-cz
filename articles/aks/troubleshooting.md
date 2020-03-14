@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: f0ad8d503b5280b8cba89d940b99dcd81da71ffc
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 7bdabf2ec109fe96c28185bd1a2a680ce19c2650
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893204"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368328"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -192,7 +192,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | neuvedeno |
+| 1,12 a novější | Není k dispozici |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
 
@@ -266,7 +266,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.5 nebo novější |
 | 1,12 | 1.12.3 nebo novější |
 | 1,13 | 1.13.0 nebo novější |
-| 1,14 a novější | neuvedeno |
+| 1,14 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, můžete problém zmírnit tím, že počkáte několik minut a zkusíte to znovu.
 
@@ -287,7 +287,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.6 nebo novější |
 | 1,12 | 1.12.4 nebo novější |
 | 1,13 | 1.13.0 nebo novější |
-| 1,14 a novější | neuvedeno |
+| 1,14 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete problém zmírnit tím, že vyzkoušíte následující:
 
@@ -298,7 +298,7 @@ Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můž
 V některých případech platí, že pokud se při prvním pokusu operace odpojení disku Azure nepovede, nebude se opakovat operace odpojení a zůstane připojená k virtuálnímu počítači s původním uzlem. K této chybě může dojít při přesunu disku z jednoho uzlu do druhého. Příklad:
 
 ```console
-[Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
+[Warning] AttachVolume.Attach failed for volume "pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" : Attach volume "kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance "/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0" failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code="ConflictingUserInput" Message="Disk '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9' cannot be attached as the disk is already owned by VM '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1'."
 ```
 
 Tento problém byl opraven v následujících verzích Kubernetes:
@@ -308,7 +308,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.9 nebo novější |
 | 1,12 | 1.12.7 nebo novější |
 | 1,13 | 1.13.4 nebo novější |
-| 1,14 a novější | neuvedeno |
+| 1,14 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete tento problém zmírnit ručním odpojením disku.
 
@@ -323,7 +323,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,12 | 1.12.9 nebo novější |
 | 1,13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | neuvedeno |
+| 1,15 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a váš virtuální počítač uzlu má zastaralý seznam disků, můžete problém zmírnit tím, že z virtuálního počítače odpojíte všechny neexistující disky jako jedinou hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -343,17 +343,17 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,12 | 1.12.10 nebo novější |
 | 1,13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | neuvedeno |
+| 1,15 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a virtuální počítač uzlu je ve stavu selhání, můžete problém zmírnit tím, že ručně aktualizujete stav virtuálního počítače pomocí jedné z níže uvedených akcí:
 
 * Pro cluster založený na sadě dostupnosti:
-    ```console
+    ```azurecli
     az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
     ```
 
 * Pro cluster založený na VMSS:
-    ```console
+    ```azurecli
     az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
     ```
 
@@ -460,7 +460,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | -- | :--: |
 | 1,12 | 1.12.6 nebo novější |
 | 1,13 | 1.13.4 nebo novější |
-| 1,14 a novější | neuvedeno |
+| 1,14 a novější | Není k dispozici |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 

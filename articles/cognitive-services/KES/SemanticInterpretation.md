@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385661"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220058"
 ---
 # <a name="semantic-interpretation"></a>Sémantická interpretace
 
@@ -35,7 +35,7 @@ Níže je uveden seznam aktuálně podporovaných datových typů:
 
 |Typ|Popis|Příklady|
 |----|----|----|
-|String|Sekvence 0 nebo více znaků|"Hello World!"<br/>""|
+|Řetězec|Sekvence 0 nebo více znaků|"Hello World!"<br/>""|
 |Bool|Hodnota typu Boolean|true<br/>false|
 |Datový typ Int32|32 – celé číslo se znaménkem.  -2.1 E9 na 2.1 E9|123<br/>-321|
 |Int64|64 – celé číslo se znaménkem. -9.2 E18 a 9.2 E18|9876543210|

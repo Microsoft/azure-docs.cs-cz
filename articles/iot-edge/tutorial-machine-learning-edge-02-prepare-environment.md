@@ -4,16 +4,16 @@ description: 'Kurz: Příprava prostředí pro vývoj a nasazení modulů pro st
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 1/23/2020
+ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9809a9b4d644a1fa11fe9cce1cbd35b037206b29
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944297"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296794"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
 
@@ -189,12 +189,13 @@ V rámci vytváření služby IoT Hub vytvořil skript, který jsme spustili v p
 
 1. Rozbalte část **úložiště** :
 
-   ![Ověřte, že turbofandevicestorage je v seznamu vlastních koncových bodů.](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![Ověřte, že turbofanDeviceStorage je v seznamu vlastních koncových bodů.](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   V seznamu vlastní koncové body se zobrazí **turbofandevicestorage** . Všimněte si následujících vlastností tohoto koncového bodu:
+   V seznamu vlastní koncové body se zobrazí **turbofanDeviceStorage** . Všimněte si následujících vlastností tohoto koncového bodu:
 
    * Odkazuje na kontejner úložiště objektů blob, který jste vytvořili s názvem `devicedata`, jak je uvedeno v **názvu kontejneru**.
    * **Formát názvu souboru** má jako poslední prvek v názvu oddíl. Pro operace se soubory, které provedeme v Azure Notebooks později v tomto kurzu, zjistíme, že tento formát je pohodlnější.
+   * Jeho **stav** by měl být v pořádku.
 
 1. Vyberte kartu **trasy** .
 

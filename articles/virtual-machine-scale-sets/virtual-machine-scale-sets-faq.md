@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
 ms.openlocfilehash: 222f26febb7b14c627307295a8cdd68a17694d03
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394652"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254154"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -223,9 +223,9 @@ Veřejné klíče SSH ve formátu prostého textu můžete zadat při vytvářen
 
 Název elementu linuxConfiguration | Požadováno | Typ | Popis
 --- | --- | --- | ---
-SSH | Ne | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux
-path | Ano | String | Určuje soubor Linuxová cesta kde klíče SSH nebo certifikát má být umístěn
-data klíče | Ano | String | Určuje kódování base64 veřejný klíč SSH
+SSH | Ne | Collection | Určuje konfiguraci klíče SSH pro operační systém Linux
+path | Ano | Řetězec | Určuje soubor Linuxová cesta kde klíče SSH nebo certifikát má být umístěn
+data klíče | Ano | Řetězec | Určuje kódování base64 veřejný klíč SSH
 
 Příklad najdete v tématu [Šablona pro rychlý Start pro 101-VM-sshkey GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
@@ -649,7 +649,7 @@ Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>Jak můžu zapnout diagnostiku?
 

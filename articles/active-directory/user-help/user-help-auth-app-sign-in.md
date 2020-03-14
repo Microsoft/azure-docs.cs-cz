@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297836"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138939"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se ke svým účtům pomocí aplikace Microsoft Authenticator.
 
@@ -31,7 +31,7 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
   >[!Important]
   >Tato metoda přihlašování k telefonu funguje jenom u vašich pracovních nebo školních a osobních účtů Microsoft. Vaše účty jiných společností než Microsoft vyžadují, abyste používali standardní proces ověřování dvou faktorů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít aplikaci Microsoft Authenticator, musíte:
 
@@ -112,7 +112,7 @@ Na zařízení s iOS:
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Přihlaste se Pomocí dvojúrovňového ověřování pro váš účet.
 
-Standardní metoda dvojúrovňové ověřování vyžaduje zadání uživatelského jména a hesla do zařízení, ke kterému se přihlašujete, a pak zvolte, jestli aplikace Microsoft Authenticator obdrží Microsoft Authenticator aplikaci. Na zařízení s Androidem se tyto ověřovací kódy dají najít na obrazovce účty. Na zařízení se systémem iOS se tyto ověřovací kódy dají najít na obrazovce **účty** nebo zobrazení celé obrazovky účtu v závislosti na typu účtu. V rámci procesu přidávání účtu do aplikace Microsoft Authenticator zapnete dvojúrovňové ověřování pro váš účet.
+Standardní metoda ověřování dvou faktorů vyžaduje zadání uživatelského jména a hesla do zařízení, ke kterému se přihlašujete. Pak otevřete aplikaci Microsoft Authenticator a do pole **zadat kód** zadejte náhodně vygenerovaný kód pro svůj účet. Na zařízení s Androidem se tyto ověřovací kódy dají najít na obrazovce **účty** . Na zařízení se systémem iOS se tyto ověřovací kódy dají najít na obrazovce **účty** nebo zobrazení celé obrazovky účtu v závislosti na typu účtu. V rámci procesu přidávání účtu do aplikace Microsoft Authenticator zapnete dvojúrovňové ověřování pro váš účet.
 
 >[!Note]
 >Pokud nevidíte svůj pracovní nebo školní účet nebo osobní účet na obrazovce **účty** aplikace Microsoft Authenticator, znamená to, že jste účet nepřidali do aplikace Microsoft Authenticator. Pokud chcete přidat svůj účet, přečtěte si téma [Přidání pracovního nebo školního účtu](user-help-auth-app-add-work-school-account.md) nebo [Přidání osobních účtů](user-help-auth-app-add-personal-ms-account.md).

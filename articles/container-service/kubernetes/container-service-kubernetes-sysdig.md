@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb9c628993201553b8da1d1bd37b4705e0f23dc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 68136d5b9ec16c822cb62e4fee85b8ace9b1899a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271643"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371095"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>ZASTARALÉ Monitorování clusteru Azure Container Service Kubernetes pomocí služby Sysdig
 
@@ -25,8 +25,8 @@ Také předpokládá, že máte nainstalované nástroje Azure CLI a kubectl Too
 
 Můžete otestovat, jestli máte nainstalovaný nástroj `az`, a to spuštěním:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azure-cli#installation)najdete pokyny.
@@ -34,13 +34,13 @@ Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azur
 Můžete otestovat, jestli máte nainstalovaný nástroj `kubectl`, a to spuštěním:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Pokud nemáte nainstalované `kubectl`, můžete spustit:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="sysdig"></a>Sysdig
@@ -61,13 +61,13 @@ Pokud chcete nainstalovat služby Sysdig daemonset, měli byste nejdřív stáhn
 V systémech Linux a OS X můžete spustit:
 
 ```console
-$ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
+curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
 ```
 
 V PowerShellu:
 
-```console
-$ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
+```powershell
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
 Dalším úpravou tohoto souboru vložte přístupový klíč, který jste získali z účtu služby Sysdig.
@@ -75,7 +75,7 @@ Dalším úpravou tohoto souboru vložte přístupový klíč, který jste získ
 Nakonec vytvořte DaemonSet:
 
 ```console
-$ kubectl create -f sysdig-daemonset.yaml
+kubectl create -f sysdig-daemonset.yaml
 ```
 
 ## <a name="view-your-monitoring"></a>Zobrazení monitorování

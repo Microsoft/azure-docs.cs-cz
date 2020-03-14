@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 02c4d7ba545282e3654f3889dd8000af33c728c7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359793"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268545"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Vytváření a Správa SQL Databasech serverů a izolovaných databází v Azure SQL Database
 
@@ -65,7 +65,7 @@ Pokud chcete vytvářet a spravovat Azure SQL Database servery, databáze s jedn
 > [!TIP]
 > Ukázkové skripty PowerShellu najdete v tématu [použití PowerShellu k vytvoření jednoduché databáze SQL Azure a konfiguraci pravidla brány firewall serveru SQL Database](scripts/sql-database-create-and-configure-database-powershell.md) a [monitorování a škálování databáze SQL s použitím PowerShellu](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Vytvoří databázi. |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Získá jednu nebo více databází.|
@@ -90,7 +90,7 @@ Pokud chcete vytvořit a spravovat Azure SQL Server, databáze a brány firewall
 > Rychlý Start Azure CLI najdete v tématu [Vytvoření izolované databáze SQL Azure pomocí Azure CLI](sql-database-cli-samples.md). Ukázkové skripty Azure CLI najdete v tématu [použití rozhraní příkazového řádku k vytvoření databáze SQL Azure a konfiguraci SQL Databaseho pravidla brány firewall](scripts/sql-database-create-and-configure-database-cli.md) a použití rozhraní příkazového [řádku pro monitorování a škálování databáze SQL Azure](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Vytvoří databázi.|
 |[AZ SQL DB list](/cli/azure/sql/db#az-sql-db-list)|Zobrazí všechny databáze a datové sklady na serveru nebo všechny databáze v elastickém fondu.|

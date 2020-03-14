@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245223"
+ms.locfileid: "79299341"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Osvědčené postupy pro Azure pro zabezpečení sítě
 Tento článek popisuje shromažďování osvědčených postupů Azure pro vylepšení zabezpečení sítě. Tyto osvědčené postupy se odvozují z našich zkušeností s používáním sítí Azure a zkušeností zákazníků, jako je sami.
@@ -122,7 +122,7 @@ I když se jedná o základní návrh hraniční sítě, existuje mnoho různýc
 
 Na základě výše zmíněného konceptu s nulovým vztahem důvěryhodnosti doporučujeme zvážit použití hraniční sítě pro všechna nasazení s vysokým zabezpečením a zvýšit úroveň zabezpečení sítě a řízení přístupu pro vaše prostředky Azure. K zajištění další úrovně zabezpečení mezi prostředky a internetem můžete použít Azure nebo řešení třetí strany:
 
-- Nativní ovládací prvky Azure [Azure firewall](/azure/firewall/overview) a [Firewall webových aplikací v Application Gateway](/azure/application-gateway/overview#web-application-firewall) nabízejí základní zabezpečení s plně stavovou bránou firewall jako službu, integrovanou vysokou dostupnost, neomezenou škálovatelnost cloudu, filtrování plně kvalifikovaného názvu domény, podporu pro základní sady pravidel OWASP a jednoduché nastavení a konfiguraci.
+- Nativní ovládací prvky Azure [Azure firewall](/azure/firewall/overview) a [Firewall webových aplikací v Application Gateway](../../application-gateway/features.md#web-application-firewall) nabízejí základní zabezpečení s plně stavovou bránou firewall jako službu, integrovanou vysokou dostupnost, neomezenou škálovatelnost cloudu, filtrování plně kvalifikovaného názvu domény, podporu pro základní sady pravidel OWASP a jednoduché nastavení a konfiguraci.
 - Nabídky třetích stran. Vyhledejte [Azure Marketplace](https://azuremarketplace.microsoft.com/) firewallu nové generace (NGFW) a další nabídky třetích stran, které poskytují známé nástroje zabezpečení a výrazně vylepšené úrovně zabezpečení sítě. Konfigurace může být složitější, ale nabídka třetí strany vám může umožnit používání stávajících možností a dovednosti.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Vyhněte se expozici Internetu pomocí vyhrazených propojení WAN

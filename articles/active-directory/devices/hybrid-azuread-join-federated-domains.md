@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672254"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239095"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -52,7 +52,7 @@ Získáte informace o těchto tématech:
 > * Ověření registrace
 > * Řešení potíží
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že máte zkušenosti s těmito články:
 
@@ -106,7 +106,7 @@ Ke konfiguraci hybridního připojení k Azure AD pomocí Azure AD Connect budet
 
 1. Spusťte Azure AD Connect a pak vyberte **Konfigurovat**.
 
-   ![Uvítání](./media/hybrid-azuread-join-federated-domains/11.png)
+   ![Vítej](./media/hybrid-azuread-join-federated-domains/11.png)
 
 1. Na stránce **další úlohy** vyberte **Konfigurovat možnosti zařízení**a pak vyberte **Další**.
 

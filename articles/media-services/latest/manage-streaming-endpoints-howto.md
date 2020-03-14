@@ -1,0 +1,105 @@
+---
+title: Správa koncových bodů streamování pomocí Azure Media Services V3
+description: Tento článek ukazuje, jak spravovat koncové body streamování pomocí Azure Media Services V3.
+services: media-services
+documentationcenter: ''
+author: Juliako
+writer: juliako
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/11/2020
+ms.author: juliako
+ms.openlocfilehash: 5dd3cc1efd25f7ec09f897c67bebebedb84d9570
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370541"
+---
+# <a name="manage-streaming-endpoints-with--media-services-v3"></a>Správa koncových bodů streamování pomocí Media Services V3
+
+Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod [dynamického balení](dynamic-packaging-overview.md) a [dynamického šifrování](content-protection-overview.md), musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **spuštěno** .
+
+V tomto článku se dozvíte, jak spustit koncový bod streamování.
+ 
+> [!NOTE]
+> Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
+    
+## <a name="prerequisites"></a>Požadavky
+
+Zrevidujte 
+
+* [Media Services koncepty](concepts-overview.md)
+* [Koncept koncového bodu streamování](streaming-endpoint-concept.md)
+* [Dynamické balení](dynamic-packaging-overview.md)
+
+## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přejděte na účet Azure Media Services.
+1. Na levé straně vyberte **koncové body streamování**.
+1. Vyberte koncový bod streamování, který chcete spustit, a klikněte na **Spustit**.
+
+## <a name="use-the-java-sdk"></a>Použití sady Java SDK
+
+```java
+if (streamingEndpoint != null) {
+// Start The Streaming Endpoint if it is not running.
+if (streamingEndpoint.resourceState() != StreamingEndpointResourceState.RUNNING) {
+    manager.streamingEndpoints().startAsync(config.getResourceGroup(), config.getAccountName(), STREAMING_ENDPOINT_NAME).await();
+}
+```
+
+Podívejte se na kompletní [ukázku kódu Java](https://github.com/Azure-Samples/media-services-v3-java/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/src/main/java/sample/StreamHLSAndDASH.java#L128).
+
+## <a name="use-the-net-sdk"></a>Použití sady .NET SDK
+
+```csharp
+StreamingEndpoint streamingEndpoint = await client.StreamingEndpoints.GetAsync(config.ResourceGroup, config.AccountName, DefaultStreamingEndpointName);
+
+if (streamingEndpoint != null)
+{
+    if (streamingEndpoint.ResourceState != StreamingEndpointResourceState.Running)
+    {
+        await client.StreamingEndpoints.StartAsync(config.ResourceGroup, config.AccountName, DefaultStreamingEndpointName);
+    }
+```
+
+Podívejte se na kompletní [ukázku kódu .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/Program.cs#L112).
+
+## <a name="use-cli"></a>Použití CLI
+
+```cli
+az ams streaming-endpoint start [--account-name]
+                                [--ids]
+                                [--name]
+                                [--no-wait]
+                                [--resource-group]
+                                [--subscription]
+```
+
+Další informace najdete v tématu [AZ AMS streaming-Endpoint Start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
+
+## <a name="use-rest"></a>Použití REST
+
+```rest
+POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
+```
+
+Další informace naleznete v tématu: 
+
+* Referenční dokumentaci ke [spuštění StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) .
+* Spuštění koncového bodu streamování je asynchronní operace. 
+
+    Podrobnosti o tom, jak monitorovat dlouhotrvající operace, najdete v části [dlouhotrvající operace](media-services-apis-overview.md) .
+* Tato [kolekce pro publikování](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) obsahuje příklady více operací REST, včetně toho, jak spustit koncový bod streamování.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Media Services V3 OpenAPI Specification (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
+* [Streamování operací koncového bodu](https://docs.microsoft.com/rest/api/media/streamingendpoints)

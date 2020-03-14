@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544262"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138531"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -103,7 +103,8 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 
 >[!IMPORTANT] 
-> Filtr $ MemberOf není aktuálně podporován.
+> - Filtr $ MemberOf není aktuálně podporován.
+> - EQUALs a NOT EQUALs nejsou podporovány pro vícehodnotové atributy.
 
 9. Volitelně můžete opakováním kroků 7-8 přidat další klauzule rozsahu.
 

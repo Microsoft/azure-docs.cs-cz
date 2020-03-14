@@ -14,11 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388720"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243195"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače s SQL Server
 
@@ -28,7 +28,7 @@ V tomto tématu se dozvíte, jak Azure nakonfiguruje úložiště pro vaše SQL 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít nastavení konfigurace automatizovaného úložiště, váš virtuální počítač musí mít následující vlastnosti:
 
@@ -40,7 +40,7 @@ Pokud chcete použít nastavení konfigurace automatizovaného úložiště, vá
 
 Následující části popisují, jak nakonfigurovat úložiště pro nové virtuální počítače SQL Server.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Při zřizování virtuálního počítače Azure pomocí Image Galerie SQL Server vyberte **změnit konfiguraci** na kartě **nastavení SQL Server** a otevřete stránku konfigurace optimalizovaného úložiště pro výkon. Můžete buď ponechat hodnoty ve výchozím nastavení, nebo upravit typ konfigurace disku, který nejlépe vyhovuje vašim potřebám na základě vašich úloh. 
 
@@ -99,7 +99,7 @@ U stávajících SQL Server virtuálních počítačů můžete upravit někter�
 * Data SQL
 * Protokol SQL
 * Jiné (jiné úložiště než SQL)
-* K dispozici.
+* K dispozici
 
 Pokud chcete upravit nastavení úložiště, vyberte **Konfigurovat** v části **Nastavení**. 
 
@@ -127,7 +127,7 @@ Azure na SQL Server virtuálních počítačích vytvoří fond úložiště pom
 | --- | --- |
 | Velikost pruhu |256 KB (datové sklady); 64 KB (transakční) |
 | Velikosti disků |1 TB |
-| Mezipaměť |Čtení |
+| Mezipaměť |Pro čtení |
 | Velikost přidělení |velikost alokační jednotky systému souborů NTFS v 64 KB |
 | Obnovení | Jednoduché obnovení (bez odolnosti) |
 | Počet sloupců |Počet datových disků až do 8<sup>1</sup> |
@@ -142,7 +142,7 @@ Následující tabulka popisuje tři dostupné možnosti typu úlohy a jejich od
 
 | Typ úlohy | Popis | Optimalizace |
 | --- | --- | --- |
-| **Obecné** |Výchozí nastavení, které podporuje většinu úloh |Žádná |
+| **Obecné** |Výchozí nastavení, které podporuje většinu úloh |Žádný |
 | **Zpracování transakcí** |Optimalizuje úložiště pro tradiční databázové OLTP úlohy. |Příznak trasování 1117<br/>Příznak trasování 1118 |
 | **Datové sklady** |Optimalizuje úložiště pro analytické a generování sestav úloh. |Příznak trasování 610<br/>Příznak trasování 1117 |
 

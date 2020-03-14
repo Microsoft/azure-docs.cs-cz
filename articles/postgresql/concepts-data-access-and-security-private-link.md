@@ -1,21 +1,21 @@
 ---
-title: Privátní odkaz pro Azure Database for PostgreSQL – jeden server (Preview)
+title: Privátní Link-Azure Database for PostgreSQL – jeden server
 description: Přečtěte si, jak privátní odkaz funguje pro Azure Database for PostgreSQL jeden server.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: e3667a60a326838b490f9082fd55bdc92d038cf9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898362"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371677"
 ---
-# <a name="private-link-for-azure-database-for-postgresql-single-server-preview"></a>Privátní odkaz pro Azure Database for PostgreSQL – jeden server (Preview)
+# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privátní odkaz na Azure Database for PostgreSQL – jeden server
 
-Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). K prostředkům PaaS se dá dostat pomocí privátní IP adresy stejně jako u jakéhokoli jiného prostředku ve virtuální síti.
+Privátní odkaz vám umožní vytvořit soukromé koncové body pro Azure Database for PostgreSQL jeden server, takže se služby Azure do privátních Virtual Network (VNet) přinese. Privátní koncový bod zveřejňuje soukromou IP adresu, kterou můžete použít pro připojení k databázovému serveru stejně jako jakýkoli jiný prostředek ve virtuální síti.
 
 Seznam pro PaaS služby, které podporují funkce privátního propojení, najdete v [dokumentaci](https://docs.microsoft.com/azure/private-link/index)k privátním odkazům. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) síti a podsíti.
 
@@ -57,10 +57,7 @@ Aby bylo možné povolit privátní propojení, jsou vyžadovány privátní kon
 * [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Proces schválení
-Po vytvoření privátního koncového bodu (PE) správcem sítě může správce PostgreSQL spravovat připojení privátního koncového bodu (PEC) k Azure Database for PostgreSQL.
-
-> [!NOTE]
-> V současné době Azure Database for PostgreSQL jeden server podporuje pouze automatické schválení privátního koncového bodu.
+Po vytvoření privátního koncového bodu (PE) správcem sítě může správce PostgreSQL spravovat připojení privátního koncového bodu (PEC) k Azure Database for PostgreSQL. Tato oddělení povinností mezi správcem sítě a DBA je užitečné pro správu Azure Database for PostgreSQLho připojení. 
 
 * V Azure Portal přejděte na prostředek serveru Azure Database for PostgreSQL. 
     * Vyberte připojení privátního koncového bodu v levém podokně.
@@ -109,6 +106,19 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 * Pokud nakonfigurujete veřejný provoz nebo koncový bod služby a vytvoříte privátní koncové body, budou se podle odpovídajícího typu pravidla brány firewall autorizovat různé typy příchozích přenosů.
 
 * Pokud neprovedete konfiguraci žádného veřejného provozu nebo koncového bodu služby a vytvoříte privátní koncové body, je Azure Database for PostgreSQL jediný server přístupný jenom prostřednictvím privátních koncových bodů. Pokud nenastavíte veřejný provoz nebo koncový bod služby, po odmítnutí nebo odstranění všech schválených privátních koncových bodů nebude mít žádný provoz přístup k Azure Database for PostgreSQLmu jednomu serveru.
+
+## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>Odepřít veřejný přístup pro Azure Database for PostgreSQL jeden server
+
+Pokud chcete pro přístup k jejich Azure Database for PostgreSQL jednomu serveru spoléhat jenom na soukromé koncové body, můžete zakázat nastavení všech veřejných koncových bodů ([pravidla brány firewall](concepts-firewall-rules.md) a [koncových bodů služby virtuální](concepts-data-access-and-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
+
+Pokud je toto nastavení nastavené na *Ano* , můžou vaše Azure Database for PostgreSQL jenom připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *žádné* klienty, se nemohou připojit k vašemu Azure Database for PostgreSQL v závislosti na nastavení koncového bodu brány firewall nebo služby virtuální sítě. Navíc platí, že jakmile je hodnota přístup k privátní síti nastavená na zákazníky, nemůžou přidat nebo aktualizovat existující pravidla brány firewall a pravidlo koncového bodu služby virtuální sítě.
+
+> [!Note]
+> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL – jeden server podporuje Pro obecné účely a cenová úroveň optimalizované pro paměť.
+>
+> Toto nastavení nemá žádný vliv na konfigurace protokolu SSL a TLS pro váš Azure Database for PostgreSQL jeden server.
+
+Informace o tom, jak nastavit **přístup k veřejné síti odepřít** pro váš Azure Database for PostgreSQL samostatný server z Azure Portal, najdete v tématu [jak nakonfigurovat přístup k veřejné síti odepřít](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

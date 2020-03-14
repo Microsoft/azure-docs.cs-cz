@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5192816ca7be47ecb5e602e46dff16951f7475ee
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384728"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370266"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Kurz: Příprava na nasazení Azure Data Box Edge  
 
@@ -25,6 +25,7 @@ K dokončení této instalace a procesu konfigurace potřebujete oprávnění sp
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+>
 > * Vytvoření nového prostředku
 > * Získání aktivačního klíče
 
@@ -44,7 +45,7 @@ Pokud chcete nasadit Data Box Edge, přečtěte si následující kurzy v přede
 
 Teď můžete začít nastavovat Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky na konfiguraci pro váš prostředek Data Box Edge, Data Box Edge zařízení a síť datacenter.
 
@@ -52,14 +53,14 @@ Níže jsou uvedené požadavky na konfiguraci pro váš prostředek Data Box Ed
 
 Než začnete, ujistěte se, že:
 
-- Vaše předplatné Microsoft Azure je povolené pro prostředek Data Box Edge. Předplatná s průběžnými platbami se nepodporují.
-- Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro prostředky Data Box Edge/Data Box Gateway, IoT Hub a Azure Storage.
+* Vaše předplatné Microsoft Azure je povolené pro prostředek Azure Stack Edge. Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro prostředky Data Box Edge/Data Box Gateway, IoT Hub a Azure Storage.
 
-    - Chcete-li vytvořit libovolný prostředek Data Box Edge/Data Box Gateway, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) v oboru na úrovni skupiny prostředků. Také je nutné zajistit, aby byl zprostředkovatel `Microsoft.DataBoxEdge` zaregistrován. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Pokud chcete vytvořit libovolný prostředek IoT Hub, ujistěte se, že je poskytovatel Microsoft. Devices zaregistrovaný. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Pokud chcete vytvořit prostředek účtu úložiště, musíte pro něj znovu použít rozsah přístupu přispěvatele nebo vyšší úrovně. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
-- K Graph API Azure Active Directory máte oprávnění správce nebo uživatel. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
-- Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
+  * Chcete-li vytvořit libovolný prostředek Data Box Edge/Data Box Gateway, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) v oboru na úrovni skupiny prostředků. Také je nutné zajistit, aby byl zprostředkovatel `Microsoft.DataBoxEdge` zaregistrován. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * Pokud chcete vytvořit libovolný prostředek IoT Hub, ujistěte se, že je poskytovatel Microsoft. Devices zaregistrovaný. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * Pokud chcete vytvořit prostředek účtu úložiště, musíte pro něj znovu použít rozsah přístupu přispěvatele nebo vyšší úrovně. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
+* K Graph API Azure Active Directory máte oprávnění správce nebo uživatel. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+* Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 
 ### <a name="for-the-data-box-edge-device"></a>Zařízení Data Box Edge
 

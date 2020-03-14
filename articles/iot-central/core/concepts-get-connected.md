@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 85403442119f73b363fee98a9c225b9c0ec18119
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e67a8f6b9cc175932b09e6f576148656dd9da9ba
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026858"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298814"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojte se k Azure IoT Central
 
@@ -193,6 +193,9 @@ Když se reálné zařízení připojí k vaší aplikaci IoT Central, změní s
     - Sada zařízení se přidá na stránce **zařízení** pomocí **importu** bez zadání šablony zařízení.
     - Zařízení, která nejsou zaregistrovaná ručně na stránce **zařízení** připojená s platnými přihlašovacími údaji, ale bez zadání ID šablony během registrace.  
 Operátor může přidružit zařízení k šabloně ze stránky **zařízení** pomocí tlačítka **migrovat** .
+
+## <a name="best-practices"></a>Osvědčené postupy 
+1.  Pokud k připojení zařízení k IoT Central používáte DPS, ujistěte se, že připojovací řetězec zařízení (IoT Hub) není trvale uložený ani v mezipaměti. Pokud chcete zařízení znovu připojit, přečtěte si běžný tok registrace zařízení DPS a získejte správný připojovací řetězec zařízení. Pokud je připojovací řetězec uložen v mezipaměti, software zařízení bude mít riziko, že se zastaralým připojovacím řetězcem v případech, kdy IoT Central aktualizoval základní IoT Hub Azure. 
 
 ## <a name="sdk-support"></a>Podpora sady SDK
 

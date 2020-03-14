@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8fa8ca50a8d8cae7543c6aacb84fa57bc2f9c3a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a4fb3ad2ce6225528910bbda9d98a38001242710
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945220"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298984"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -27,6 +27,10 @@ Rozšíření virtuálních počítačů Key Vault podporuje tyto distribuce sys
 - Ubuntu-1804
 - Debian – 9
 - SUSE-15 
+
+### <a name="supported-certificate-content-types"></a>Podporované typy obsahu certifikátu
+
+- #12 PKCS
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -67,7 +71,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Datový typ |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | řetězec |
@@ -75,9 +79,9 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | MY | řetězec |
-| linkOnRenewal | false (nepravda) | Boolean |
+| linkOnRenewal | false | Datový typ Boolean |
 | certificateStoreLocation  | LocalMachine | řetězec |
-| requiredInitialSync | true (pravda) | Boolean |
+| requiredInitialSync | true | Datový typ Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Pole řetězců
 
 
@@ -198,7 +202,7 @@ Mějte na paměti následující omezení/požadavky:
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 
-## <a name="azure-powershell"></a>Azure Powershell
+## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```

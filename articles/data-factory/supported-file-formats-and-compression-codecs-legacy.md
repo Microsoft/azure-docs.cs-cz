@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358471"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260680"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Podporované formáty souborů a kompresní kodeky v Azure Data Factory (starší verze)
 
@@ -30,7 +30,7 @@ ms.locfileid: "78358471"
 
 Pokud chcete číst z textového souboru nebo zapisovat do textového souboru, nastavte vlastnost `type` v části `format` datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete zvážit použití výjimečných málo častého netisknutelného znaku, který nemusí existovat ve vašich datech. Zadejte například "\u0001", který představuje Start začátek hlavičky (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)** . <br/><br/>Chcete-li použít znak Unicode, přečtěte si text [znaků Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) a získejte pro něj odpovídající kód. |Ne |
 | rowDelimiter |Znak, který slouží k oddělení řádků v souboru. |Je povolený jenom jeden znak. **Výchozí** hodnotou pro čtení může být libovolná z těchto hodnot: **[\r\n, \r, \n]** a pro zápis hodnota **\r\n**. |Ne |
@@ -39,7 +39,7 @@ Pokud chcete číst z textového souboru nebo zapisovat do textového souboru, n
 | nullValue |Jeden nebo několik znaků, které se používají jako reprezentace hodnoty Null. |Jeden nebo několik znaků. **Výchozí** hodnoty jsou **\N a NULL** pro čtení a **\N** pro zápis. |Ne |
 | encodingName |Zadejte název kódování. |Platný název kódování. Další informace najdete v tématu [Vlastnost Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |Ne |
 | firstRowAsHeader |Určuje, jestli se má první řádek považovat za záhlaví. U vstupní datové sady Data Factory načítá první řádek jako záhlaví. U výstupní datové sady Data Factory zapisuje první řádek jako záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (výchozí)</b> |Ne |
-| skipLineCount |Označuje počet **neprázdných** řádků, které se mají přeskočit při čtení dat ze vstupních souborů. Pokud je zadaný parametr skipLineCount i firstRowAsHeader, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Integer |Ne |
+| skipLineCount |Označuje počet **neprázdných** řádků, které se mají přeskočit při čtení dat ze vstupních souborů. Pokud je zadaný parametr skipLineCount i firstRowAsHeader, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Celé číslo |Ne |
 | treatEmptyAsNull |Určuje, jestli se při čtení dat ze vstupního souboru má prázdný řetězec nebo řetězec s hodnotou null považovat za hodnotu null. |**True (výchozí)**<br/>False |Ne |
 
 ### <a name="textformat-example"></a>Příklad typu TextFormat
@@ -86,7 +86,7 @@ Pokud chcete **Importovat/exportovat soubor JSON tak, jak je do nebo z Azure Cos
 
 Chcete-li analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nastavte vlastnost `type` v části `format` na **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou **setOfObjects** a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |Ne |
 | jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost je podporována pouze při kopírování dat **ze** souborů JSON. | Ne |
@@ -443,7 +443,7 @@ Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. P�
 
 | Data factory dočasné datový typ | Primitivní typ parquet | Parquet původního typu (deserializovat) | Parquet původního typu (serializuje) |
 |:--- |:--- |:--- |:--- |
-| Logická hodnota | Logická hodnota | neuvedeno | neuvedeno |
+| Logická hodnota | Logická hodnota | Není k dispozici | Není k dispozici |
 | SByte – | Datový typ Int32 | Int8 | Int8 |
 | Bajt | Datový typ Int32 | UInt8 | Int16 |
 | Int16 | Datový typ Int32 | Int16 | Int16 |
@@ -452,17 +452,17 @@ Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. P�
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/binární soubor | UInt64 | Decimal |
-| Jednoduchá | Float | neuvedeno | neuvedeno |
-| Double | Double | neuvedeno | neuvedeno |
+| Jednoduchá | Float | Není k dispozici | Není k dispozici |
+| Double | Double | Není k dispozici | Není k dispozici |
 | Decimal | Binární hodnota | Decimal | Decimal |
 | Řetězec | Binární hodnota | Utf8 | Utf8 |
-| DateTime | Int96 | neuvedeno | neuvedeno |
-| TimeSpan | Int96 | neuvedeno | neuvedeno |
-| DateTimeOffset | Int96 | neuvedeno | neuvedeno |
-| ByteArray | Binární hodnota | neuvedeno | neuvedeno |
+| DateTime | Int96 | Není k dispozici | Není k dispozici |
+| TimeSpan | Int96 | Není k dispozici | Není k dispozici |
+| DateTimeOffset | Int96 | Není k dispozici | Není k dispozici |
+| ByteArray | Binární hodnota | Není k dispozici | Není k dispozici |
 | identifikátor GUID | Binární hodnota | Utf8 | Utf8 |
 | Char | Binární hodnota | Utf8 | Utf8 |
-| CharArray | Nepodporuje se | neuvedeno | neuvedeno |
+| CharArray | Nepodporováno | Není k dispozici | Není k dispozici |
 
 ## <a name="orc-format"></a>Formát ORC (starší verze)
 
@@ -509,9 +509,9 @@ Pro kopírování běžící v místním prostředí IR s ORC serializací/deser
 | Double | Double |
 | Decimal | Decimal |
 | Řetězec | Řetězec |
-| DateTime | Časové razítko |
-| DateTimeOffset | Časové razítko |
-| TimeSpan | Časové razítko |
+| DateTime | Timestamp |
+| DateTimeOffset | Timestamp |
+| TimeSpan | Timestamp |
 | ByteArray | Binární hodnota |
 | identifikátor GUID | Řetězec |
 | Char | Char(1) |

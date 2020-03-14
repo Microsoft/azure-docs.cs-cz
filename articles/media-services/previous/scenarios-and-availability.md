@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78366906"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250982"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -37,7 +37,7 @@ V tomto tématu najdete běžné scénáře pro doručování obsahu v [reálné
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 
-* Účet Azure. Jestli účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
+* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
 * Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
 
@@ -179,8 +179,8 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 |Název|Stav|Datová centra
 |---|---|---|
-|Standardní|GA|Všechny|
-|Premium|GA|Všechny|
+|Standard|GA|Vše|
+|Premium|GA|Vše|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
 
@@ -196,7 +196,7 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 |Název procesoru médií|Stav|Datová centra
 |---|---|---|
-|Media Encoder Standard|GA|Všechny|
+|Media Encoder Standard|GA|Vše|
 |Pracovní postup kodéru Media Encoder Premium|GA|Všechny s výjimkou Číny|
 
 ### <a name="analytics-media-processors"></a>Analytické procesory médií
@@ -210,12 +210,12 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 
 |Název procesoru médií|Stav|Datová centra
 |---|---|---|
-|Azure Media Face Detector|Preview|Všechny|
-|Azure Media Indexer|GA|Všechny|
-|Azure Media Motion Detector|Preview|Všechny|
-|Azure Media OCR|Preview|Všechny|
-|Azure Media Redactor|GA|Všechny|
-|Azure Media Video Thumbnails|Preview|Všechny|
+|Azure Media Face Detector|Náhled|Vše|
+|Azure Media Indexer|GA|Vše|
+|Azure Media Motion Detector|Náhled|Vše|
+|Azure Media OCR|Náhled|Vše|
+|Azure Media Redactor|GA|Vše|
+|Azure Media Video Thumbnails|Náhled|Vše|
 
 ### <a name="protection"></a>Ochrana
 
@@ -225,10 +225,10 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 |Šifrování|Stav|Datová centra|
 |---|---|---| 
-|Úložiště|GA|Všechny|
-|Klíče AES-128|GA|Všechny|
-|FairPlay|GA|Všechny|
-|PlayReady|GA|Všechny|
+|Storage|GA|Vše|
+|Klíče AES-128|GA|Vše|
+|FairPlay|GA|Vše|
+|PlayReady|GA|Vše|
 |Widevine|GA|Všechna kromě oblastí Německo, Federální vláda a Čína.
 
 ### <a name="reserved-units-rus"></a>Rezervované jednotky (RU)
@@ -251,7 +251,7 @@ Další informace najdete v části popisující [škálování](#scaling).
 
 |Název typu RU|Stav|Datová centra
 |---|---|---|
-|S1|GA|Všechny|
+|S1|GA|Vše|
 |S2|GA|Všechna kromě oblastí Brazílie – jih a Indie – západ|
 |S3|GA|Všechna kromě oblasti Indie – západ|
 
@@ -265,6 +265,6 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
 ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129252"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251996"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexování zásad v Azure Cosmos DB
 

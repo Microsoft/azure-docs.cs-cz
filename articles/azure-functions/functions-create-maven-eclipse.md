@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227127"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136829"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Vytvoření první funkce pomocí Java a zatmění 
 
@@ -42,9 +42,9 @@ Doporučujeme také nainstalovat [Azure Functions Core Tools, verzi 2](functions
 1. Vyberte **Přidat Archetype** a přidejte položky pro [Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
     - ID skupiny archetype: com. Microsoft. Azure
     - ID artefaktu archetype: Azure-Functions-Archetype
-    - Verze: použijte nejnovější verzi **1,22** z [centrálního úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - Verze: vyhledejte a použijte nejnovější verzi z [centrálního úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![zatmění Maven vytvořit](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Klikněte na **OK** a potom na **Další**.  Nezapomeňte vyplnit hodnoty pro všechna pole, včetně `resourceGroup`, `appName`a `appRegion` (použijte prosím jinou název_aplikace kromě **Fabrikam-Function-20170920120101928**) a nakonec **dokončete**.
+1. Klikněte na **OK** a pak na **Další**.  Nezapomeňte vyplnit hodnoty pro všechna pole, včetně `resourceGroup`, `appName`a `appRegion` (použijte prosím jinou název_aplikace kromě **Fabrikam-Function-20170920120101928**) a nakonec **dokončete**.
     ](media/functions-create-first-java-eclipse/functions-create-eclipse2.png) ![Maven zatmění create2  
 
 Maven přesune soubory projektu do nové složky s názvem _artifactId_. Generovaný kód v projektu je jednoduchá funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) , která vypisuje tělo triggeru požadavku HTTP.

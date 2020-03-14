@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376388"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266478"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory detekce rizik
 
@@ -129,7 +129,7 @@ Vlastnost úroveň rizika detekce rizik je indikátorem (**Vysoká**, **středn�
 
 Závažnost detekce rizik představuje sílu signálu jako prediktivního ohrožení zabezpečení identity. Jistota je indikátorem pro možnost falešně pozitivních hodnot. 
 
-Například: 
+Například 
 
 * **Vysoká**: vysoká důvěra a Vysoká závažnost rizika. Tyto události jsou silné indikátory, že došlo k ohrožení identity uživatele, a všechny ovlivněné uživatelské účty by měly být opraveny okamžitě.
 

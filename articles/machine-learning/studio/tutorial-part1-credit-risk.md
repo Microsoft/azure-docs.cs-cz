@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432245"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204252"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -63,7 +65,7 @@ Po vytvoření pracovního prostoru otevřete Machine Learning Studio (Classic) 
 > [!TIP]
 > Pokud jste vlastníkem pracovního prostoru, můžete nasdílet experimenty, na kterých právě pracujete, a to tak, že v pracovním prostoru vyzvete ostatní. To můžete provést v Machine Learning Studio (Classic) na stránce **Nastavení** . Stačí účet Microsoft nebo účtu organizace pro každého uživatele.
 > 
-> Na **nastavení** klikněte na **uživatelé**, pak klikněte na tlačítko **POZVAT další uživatele** v dolní části okna.
+> Na stránce **Nastavení** klikněte na **Uživatelé**a potom v dolní části okna klikněte na **pozvat další uživatele** .
 > 
 
 ## <a name="upload"></a>Nahrát existující data
@@ -173,7 +175,7 @@ Dalším krokem v tomto kurzu je vytvořit experiment v Machine Learning Studio 
 
 Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: klikněte na výstupní port datové sady (malý kroužek v dolní části) a vyberte **vizualizovat**.  
 
-Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, Studio (Classic) poskytuje obecné nadpisy (Sloupec1, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
+Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, Studio (Classic) poskytuje obecné nadpisy (Sloupe, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
 
 Záhlaví sloupců můžete přidat pomocí modulu [Upravit metadata][edit-metadata] .
 
@@ -191,7 +193,7 @@ Chcete-li použít [úpravu metadat][edit-metadata], určete nejprve, které slo
 
     ![Přidávání metadat pro úpravy](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
 
-    Červený vykřičník označuje, že ještě nemáte nastavené vlastnosti pro tento modul. Uděláte to za chvíli.
+    Červený vykřičník označuje, že ještě nemáte nastavené vlastnosti pro tento modul. Provedete to dál.
 
     > [!TIP]
     > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V takovém případě poklikejte na modul [Upravit metadata][edit-metadata] a zadejte komentář "Přidání záhlaví sloupců". Textové pole zavřete kliknutím kamkoli jinde na plátně. Chcete-li zobrazit komentář, klikněte na šipku dolů v modulu.

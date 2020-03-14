@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 55e5b0be7ebefaa26a5981afe3b7c9d3f8a5bf37
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d8ecabab596612b443f1eb0a50fd550fdc474c43
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79216973"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370810"
 ---
 # <a name="what-is-virtual-network-nat"></a>Co je Virtual Network NAT?
 
@@ -110,7 +110,7 @@ Překlad adres (NAT) je ve výchozím nastavení regionální. Při vytváření
 ## <a name="multi-dimensional-metrics-for-observability"></a>Multidimenzionální metriky pro pozorování
 
 Provoz vašeho překladu adres (NAT) můžete monitorovat prostřednictvím multidimenzionální metriky, která je dostupná v Azure Monitor. Tyto metriky je možné využít ke sledování využití a k řešení problémů.  Prostředky brány NAT zpřístupňují následující metriky:
-- Bajty
+- B
 - Rámců
 - Vyřazené pakety
 - Celkový počet připojení SNAT
@@ -135,20 +135,22 @@ Brána NAT se účtuje se dvěma samostatnými měřiči:
 Účty hodin prostředků po dobu, po kterou existuje prostředek brány NAT.
 Účty zpracované daty pro veškerý provoz zpracovaných prostředkem brány NAT
 
-Ve verzi Public Preview se ceny uvažují 50%.
+## <a name="availability"></a>Dostupnost
+
+Virtual Network překlad adres (NAT) a prostředek brány NAT jsou k dispozici ve všech [oblastech](https://azure.microsoft.com/global-infrastructure/regions/)veřejného cloudu Azure.
 
 ## <a name="support"></a>Podpora
 
 Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
 
-## <a name="feedback"></a>Názor
+## <a name="feedback"></a>Váš názor
 
 Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
 
 ## <a name="limitations"></a>Omezení
 
-* Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
+* Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení. Základní prostředky, jako je základní nástroj pro vyrovnávání zatížení, a všechny produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
 * Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.  Překlad adres (NAT) nejde nasadit v podsíti s předponou IPv6.
 * Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
 * Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.

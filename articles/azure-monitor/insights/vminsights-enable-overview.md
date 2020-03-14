@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361951"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249201"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -35,11 +35,11 @@ Než začnete, ujistěte se, že rozumíte informace v následujících částec
 
 Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v následujících oblastech:
 
-- Střed USA – západ
-- Západní USA
-- Západní USA 2
+- Západní střed USA
+- USA – západ
+- USA – západ 2
 - Střed USA – jih
-- Východní USA
+- USA – východ
 - USA – východ 2
 - Střed USA
 - Střed USA – sever
@@ -49,7 +49,7 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 - Západní Evropa
 - Východní Asie
 - Jihovýchodní Asie
-- Indie – střed
+- Střed Indie
 - Japonsko – východ
 - Austrálie – východ
 - Austrálie – jihovýchod
@@ -82,7 +82,7 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 
 |Verze operačního systému |Výkon |Maps |
 |-----------|------------|-----|
-|Windows Server 2019 | X | X |
+|Windows Server. 2019 | X | X |
 |Windows Server 2016 1803 | X | X |
 |Windows Server 2016 | X | X |
 |Windows Server 2012 R2 | X | X |
@@ -114,7 +114,7 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 |:--|:--|
 | 7,6 | 3.10.0-957 |
 | 7.5 | 3.10.0-862 |
-| 7,4 | 3.10.0-693 |
+| 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -165,7 +165,7 @@ V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat r
 
 Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy v hybridním prostředí.
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
 | Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
@@ -173,7 +173,7 @@ Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
-| Soubor | OS | Version | SHA-256 |
+| Soubor | Operační systém | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
@@ -202,42 +202,42 @@ Azure Monitor pro virtuální počítače nakonfiguruje pracovní prostor Log An
 >[!NOTE]
 >Následující seznam čítačů výkonu povolených v Azure Monitor pro virtuální počítače neomezuje možnost povolit další čítače, které potřebujete pro shromažďování sestav z virtuálních počítačů, které jsou součástí pracovního prostoru. Pokud tyto čítače zakážete, zabrání sada grafů výkonu, které jsou součástí funkce Performance, ze zobrazení využití prostředků z vašich virtuálních počítačů.
 
-### <a name="windows-performance-counters"></a>čítače výkonu systému Windows
+### <a name="windows-performance-counters"></a>Čítače výkonu Windows
 
 |Název objektu |Název čítače |
 |------------|-------------|
-|LogicalDisk |% Volné místo |
-|LogicalDisk |Střední doba disku/čtení |
-|LogicalDisk |Střední doba disku/přenos |
-|LogicalDisk |Střední doba disku/zápis |
-|LogicalDisk |Disk bajtů/s |
-|LogicalDisk |Čtení disku bajtů/s |
-|LogicalDisk |Čtení disku/s |
-|LogicalDisk |Přenosy disku/s |
-|LogicalDisk |Zápis disku bajtů/s |
-|LogicalDisk |Zápis disku/s |
-|LogicalDisk |Volné megabajty |
-|Paměť |Počet MB k dispozici |
+|Logický disk |% Volného místa |
+|Logický disk |Střední doba disku/čtení |
+|Logický disk |Střední doba disku/přenos |
+|Logický disk |Střední doba disku/zápis |
+|Logický disk |Bajty disku/s |
+|Logický disk |Bajty čtení z disku/s |
+|Logický disk |Čtení disku/s |
+|Logický disk |Přenosy disku/s |
+|Logický disk |Bajty zapisování na disk/s |
+|Logický disk |Zápis disku/s |
+|Logický disk |Volné megabajty |
+|Memory (Paměť) |Počet MB k dispozici |
 |Síťový adaptér |Přijaté bajty/s |
 |Síťový adaptér |Odeslané bajty/s |
-|Procesor |% času procesoru |
+|Procesor |% Času procesoru |
 
 ### <a name="linux-performance-counters"></a>Čítače výkonu Linuxu
 
 |Název objektu |Název čítače |
 |------------|-------------|
-|Logický disk |% Využitého místa |
-|Logický disk |Čtení disku bajtů/s |
-|Logický disk |Čtení disku/s |
-|Logický disk |Přenosy disku/s |
-|Logický disk |Zápis disku bajtů/s |
-|Logický disk |Zápis disku/s |
-|Logický disk |Volné megabajty |
-|Logický disk |Bajtů logického disku/s |
-|Paměť |Dostupná paměť v MB |
+|Logický Disk |% Využitého místa |
+|Logický Disk |Bajty čtení z disku/s |
+|Logický Disk |Čtení disku/s |
+|Logický Disk |Přenosy disku/s |
+|Logický Disk |Bajty zapisování na disk/s |
+|Logický Disk |Zápis disku/s |
+|Logický Disk |Volné megabajty |
+|Logický Disk |Bajtů logického disku/s |
+|Memory (Paměť) |Dostupná paměť v MB |
 |Síť |Celkový počet přijatých bajtů |
 |Síť |Celkový počet bajtů přenesených |
-|Procesor |% času procesoru |
+|Procesor |% Času procesoru |
 
 ## <a name="management-packs"></a>Sady Management Pack
 

@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370823"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277281"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazba pro Azure Functions
 
@@ -243,7 +243,7 @@ V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [
 
 Parametry a vlastnosti konstruktoru atributu jsou popsány v oddílu [Konfigurace](#configuration) .
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `NotificationHub`:
 
@@ -296,7 +296,7 @@ Název tohoto nastavení aplikace je to, co se nachází v nastavení připojen�
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Odkaz |
 |---|---|
 | Centrum oznámení | [Provozní příručka](https://docs.microsoft.com/rest/api/notificationhubs/) |
 

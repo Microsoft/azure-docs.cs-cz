@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980998"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283222"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Pochopení definic rolí pro prostředky Azure
 
@@ -28,7 +28,7 @@ Pokud se snažíte pochopit, jak role funguje, nebo pokud vytváříte vlastní 
 
 ## <a name="role-definition-structure"></a>Struktura definice role
 
-*Definice role* je kolekce oprávnění. Někdy jí jednoduše říká *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Může také obsahovat seznam operací, které není možné provádět, nebo operací souvisejících s podkladovými daty. Definice role má následující strukturu:
+*Definice role* je kolekce oprávnění. Někdy jí jednoduše říká *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Může také obsahovat seznam operací, které nelze provést, nebo operace související s podkladovým datům. Definice role má následující strukturu:
 
 ```
 Name
@@ -56,7 +56,7 @@ Operace jsou zadány s řetězci, které mají následující formát:
 | `action` | Povolí vlastní operace, jako je restartování virtuálních počítačů (POST). |
 | `delete` | Povolí operace delete (odstranit). |
 
-Tady je definice role [Přispěvatel](built-in-roles.md#contributor) ve formátu JSON. Zástupný znak operace (`*`) ve sloupci `Actions` označuje, že objekt zabezpečení přiřazený k této roli může provádět všechny akce – neboli (jinými slovy) může spravovat vše. Zahrnuje to i akce definované v budoucnosti v souvislosti s tím, jak Azure přidává nové typy prostředků. Operace ve sloupci `NotActions` se odčítají od operací ve sloupci `Actions`. V případě role [Contributor](built-in-roles.md#contributor) (Přispěvatel) se prostřednictvím `NotActions` odebere schopnost role spravovat přístup k prostředkům a také přiřazovat přístup k prostředkům.
+Tady je definice role [Přispěvatel](built-in-roles.md#contributor) ve formátu JSON. Operace se zástupnými znaky (`*`) pod `Actions` označuje, že objekt přiřazený k této roli může provádět všechny akce, nebo jinými slovy, může spravovat vše. Zahrnuje to i akce definované v budoucnu, protože Azure přidává nové typy prostředků. Operace v rámci `NotActions` jsou odečteny od `Actions`. V případě role [přispěvatele](built-in-roles.md#contributor) `NotActions` odebere tuto roli schopnost spravovat přístup k prostředkům a také přiřadit přístup k prostředkům.
 
 ```json
 {
@@ -92,10 +92,10 @@ Přístup pro správu se nedědí do vašich dat, pokud je metoda ověřování 
 
 Dřív se pro operace s daty nepoužilo řízení přístupu na základě role. Autorizace u datových operací mezi poskytovateli prostředků je různá. Stejný autorizační model řízení přístupu založený na rolích, který se používá pro operace správy, se rozšířil na operace s daty.
 
-V rámci podpory datových operací byly do struktury definice role přidány nové vlastnosti dat. Operace s daty se definují pomocí vlastností `DataActions` a `NotDataActions`. Přidáním těchto vlastností dat se zachová oddělení správy a dat. Zabrání se tak tomu, aby aktuální přiřazení role pomocí zástupných znaků (`*`) nepředvídaně umožnilo přístup k datům. Tady jsou některé datové operace, které je možné zadat pomocí vlastností `DataActions` a `NotDataActions`:
+V rámci podpory datových operací byly do struktury definice role přidány nové vlastnosti dat. Datové operace jsou zadány ve vlastnostech `DataActions` a `NotDataActions`. Přidáním těchto vlastností dat se zachová oddělení správy a dat. Tím zabráníte tomu, aby přiřazení aktuálních rolí se zástupnými znaky (`*`) byla náhle přístup k datům. Zde jsou některé operace s daty, které lze zadat v `DataActions` a `NotDataActions`:
 
-- Čtení seznamu objektů blob v kontejneru
-- Zápis objektu blob úložiště v kontejneru
+- Přečtěte si seznam objektů BLOB v kontejneru.
+- Zápis objektu BLOB úložiště do kontejneru
 - Odstranění zprávy ve frontě
 
 Tady je definice role [čtečky dat objektů BLOB úložiště](built-in-roles.md#storage-blob-data-reader) , která zahrnuje operace ve vlastnostech `Actions` i `DataActions`. Tato role umožňuje číst kontejner objektů BLOB a také podkladová data objektů BLOB.
@@ -120,7 +120,7 @@ Tady je definice role [čtečky dat objektů BLOB úložiště](built-in-roles.m
 }
 ```
 
-Do vlastností `DataActions` a `NotDataActions` je možné přidat jenom datové operace. Poskytovatelé prostředků identifikují operace operací s daty nastavením vlastnosti `isDataAction` na hodnotu `true`. Pokud chcete zobrazit seznam operací, které `isDataAction` `true`, přečtěte si téma [operace poskytovatele prostředků](resource-provider-operations.md). Role, které nemají operace s daty, nemusí mít `DataActions` a `NotDataActions` vlastnosti v rámci definice role.
+Do `DataActions` a `NotDataActions` vlastností lze přidat pouze datové operace. Poskytovatelé prostředků identifikují operace operací s daty nastavením vlastnosti `isDataAction` na hodnotu `true`. Pokud chcete zobrazit seznam operací, které `isDataAction` `true`, přečtěte si téma [operace poskytovatele prostředků](resource-provider-operations.md). Role, které nemají operace s daty, nemusí mít `DataActions` a `NotDataActions` vlastnosti v rámci definice role.
 
 Ověřování pro všechna volání rozhraní API operací správy se zpracovává pomocí Azure Resource Manager. Autorizace volání rozhraní API operací s daty se zpracovává buď poskytovatelem prostředků, nebo Azure Resource Manager.
 
@@ -158,7 +158,7 @@ Další informace o zabezpečení správy a roviny dat pro úložiště najdete 
 
 Chcete-li zobrazit a pracovat s datovými operacemi, je nutné mít správné verze nástrojů nebo sad SDK:
 
-| Nástroj  | Verze  |
+| Nástroj  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 nebo novější |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 nebo novější |
@@ -217,7 +217,7 @@ Vlastnost `AssignableScopes` určuje obory (skupiny pro správu, předplatná, s
 
 Předdefinované role mají `AssignableScopes` nastavené na kořenový obor (`"/"`). Kořenový obor určuje, že role je k dispozici pro přiřazení ve všech oborech. Mezi platné obory přiřazení patří:
 
-| Role je k dispozici pro přiřazení. | Příklad: |
+| Role je k dispozici pro přiřazení. | Příklad |
 |----------|---------|
 | Jedno předplatné | `"/subscriptions/{subscriptionId1}"` |
 | Dvě předplatná | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |

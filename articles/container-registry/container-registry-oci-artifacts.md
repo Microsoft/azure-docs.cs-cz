@@ -4,14 +4,14 @@ description: Nabízení a stahování artefaktů Open container Initiative (OCI)
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 03/11/2020
 ms.author: stevelas
-ms.openlocfilehash: cb58a7ed51ae15d33ffdbb616c9b32ef03bcbfb7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456254"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371048"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Vložení a vyžádání artefaktu OCI pomocí služby Azure Container Registry
 
@@ -66,10 +66,20 @@ echo "Here is an artifact!" > artifact.txt
 
 Pomocí příkazu `oras push` můžete tento textový soubor odeslat do registru. Následující příklad vloží vzorový textový soubor do úložiště `samples/artifact`. Registr se identifikuje s plně kvalifikovaným názvem registru *myregistry.azurecr.IO* (malými písmeny). Artefakt je označený `1.0`. Artefakt má Nedefinovaný typ ve výchozím nastavení identifikovaný řetězcem *typu média* za názvem souboru `artifact.txt`. Další typy najdete v tématu [artefakty OCI](https://github.com/opencontainers/artifacts) . 
 
+**Linux**
+
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.io/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 Výstup úspěšných nabízených oznámení je podobný následujícímu:

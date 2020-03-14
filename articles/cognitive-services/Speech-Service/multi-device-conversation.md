@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560809"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371354"
 ---
-# <a name="about-multi-device-conversation-preview"></a>Konverzace s více zařízeními (Preview)
+# <a name="what-is-multi-device-conversation-preview"></a>Co je konverzace s více zařízeními (Preview)?
 
 **Konverzace s více zařízeními** usnadňují vytváření hlasových nebo textových konverzací mezi více klienty a koordinaci zpráv odesílaných mezi nimi.
 
@@ -75,8 +75,8 @@ Každý klient může posílat zvukové nebo rychlé zprávy. Služba bude použ
 **Konverzace** je relace, kterou jeden uživatel spustí, aby se připojili k ostatním zúčastněným uživatelům. Všichni klienti se připojují k konverzacím pomocí **kódu konverzace**s pěti písmeny.
 
 Každá konverzace vytvoří metadata, která zahrnují:
--   Časová razítka při zahájení a ukončení konverzace
--   Seznam všech účastníků v konverzaci, včetně přezdívky jednotlivých uživatelů a jejich primárního jazyka pro hlasový vstup nebo textové zadání.
+-    Časová razítka při zahájení a ukončení konverzace
+-    Seznam všech účastníků v konverzaci, včetně přezdívky jednotlivých uživatelů a jejich primárního jazyka pro hlasový vstup nebo textové zadání.
 
 
 V konverzaci existují dva typy uživatelů: **hostitel** a **účastník**.

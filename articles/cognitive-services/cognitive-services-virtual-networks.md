@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647355"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371218"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí Azure Cognitive Services
 
@@ -27,19 +27,19 @@ Aplikace, která přistupuje k prostředku Cognitive Services, když jsou platn�
 > * Požadavek by měl pocházet ze služby provozované v rámci Azure Virtual Network (VNet) na seznamu povolených podsítí cílového Cognitive Services účtu. Koncový bod v žádostech pocházejících z virtuální sítě je potřeba nastavit jako [vlastní subdoménu](cognitive-services-custom-subdomains.md) účtu Cognitive Services.
 > * Nebo požadavek by měl pocházet z povoleného seznamu IP adres.
 >
-> Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd.
+> Požadavky, které jsou blokovány mezi patří zařízení se od ostatních služeb Azure z webu Azure portal, protokolování a metrik služby a tak dále.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Scénáře
 
-Chcete-li zabezpečit prostředek Cognitive Services, je třeba nejprve nakonfigurovat pravidlo pro odepření přístupu k provozu ze všech sítí (včetně internetového provozu) ve výchozím nastavení. Pak byste měli nakonfigurovat pravidla, která udělí přístup k provozu z konkrétních virtuální sítě. Tato konfigurace umožňuje vytvořit zabezpečenou hranici sítě pro vaše aplikace. Můžete taky nakonfigurovat pravidla pro udělení přístupu k provozu z výběru rozsahů veřejných IP adres, které umožňují připojení z určitých internetových nebo místních klientů.
+Chcete-li zabezpečit prostředek Cognitive Services, je třeba nejprve nakonfigurovat pravidlo pro odepření přístupu k provozu ze všech sítí (včetně internetového provozu) ve výchozím nastavení. Pak byste měli nakonfigurovat pravidla, která udělí přístup k provozu z konkrétních virtuální sítě. Tato konfigurace umožňuje vytvořit zabezpečené ohraničení sítě pro vaše aplikace. Můžete taky nakonfigurovat pravidla pro udělení přístupu k provozu z výběru rozsahů veřejných IP adres, které umožňují připojení z určitých internetových nebo místních klientů.
 
-Síťová pravidla se vynutila na všech síťových protokolech do Azure Cognitive Services, včetně REST a WebSocket. Chcete-li získat přístup k datům pomocí nástrojů, jako jsou například konzole Azure test, je nutné nakonfigurovat explicitní Síťová pravidla. Můžete použít Síťová pravidla pro existující prostředky Cognitive Services, nebo při vytváření nových prostředků Cognitive Services. Po použití pravidel sítě se vynutily pro všechny požadavky.
+Síťová pravidla se vynutila na všech síťových protokolech do Azure Cognitive Services, včetně REST a WebSocket. Chcete-li získat přístup k datům pomocí nástrojů, jako jsou například konzole Azure test, je nutné nakonfigurovat explicitní Síťová pravidla. Můžete použít Síťová pravidla pro existující prostředky Cognitive Services, nebo při vytváření nových prostředků Cognitive Services. Po použití pravidla sítě jsou, se vynutí pro všechny požadavky.
 
 ## <a name="supported-regions-and-service-offerings"></a>Podporované oblasti a nabídky služeb
 
-Podpora virtuální sítě pro Cognitive Services je omezená na oblasti *střed USA EUAP*, *západní Evropa*a *západní USA 2* Azure. Kromě toho ne všechny nabídky služby rozpoznávání služeb podporují virtuální sítě. Následující nabídky služeb umožňují používat virtuální sítě. Pokud zde není uvedena nabídka služeb, nepodporuje virtuální sítě.
+Podpora virtuální sítě pro Cognitive Services uvedená níže je omezená na *střed USA EUAP*, *střed USA – jih*, *východní USA*, *západní USA 2*, *Severní Evropa*, *Jižní afrika sever*, *západní Evropa*, *střed Indie*, *Austrálie – východ*, *západní USA*a *US gov – Virginie* oblasti Azure. Pokud zde není uvedena nabídka služeb, nepodporuje virtuální sítě.
 
 > [!div class="checklist"]
 > * [Detektor anomálií](./anomaly-detector/index.yml)
@@ -51,19 +51,40 @@ Podpora virtuální sítě pro Cognitive Services je omezená na oblasti *střed
 > * [LUIS](./luis/index.yml)
 > * [Přizpůsobení](./personalizer/index.yml)
 > * [Analýza textu](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
 
-## <a name="change-the-default-network-access-rule"></a>Změna výchozího pravidla přístupu k síti
+Podpora virtuální sítě pro Cognitive Services uvedená níže je omezená na oblasti Azure *střed USA EUAP*, *střed USA – jih*, *východní USA*, *západní USA 2*, *globální*a *US gov – Virginie* .
+> [!div class="checklist"]
+> * [Translator Text](./translator/index.yml)
 
-Ve výchozím nastavení Cognitive Services prostředky přijímají připojení z klientů v jakékoli síti. Chcete-li omezit přístup k vybraným sítím, musíte nejprve změnit výchozí akci.
+## <a name="service-tags"></a>Značky služeb
+Kromě podpory koncových bodů služby virtuální sítě pro výše uvedené služby Cognitive Services také podporuje označení služby pro konfiguraci odchozích síťových pravidel. Ve značce služby CognitiveServicesManagement jsou zahrnuté následující služby.
+> [!div class="checklist"]
+> * [Detektor anomálií](./anomaly-detector/index.yml)
+> * [Počítačové zpracování obrazu](./computer-vision/index.yml)
+> * [Content Moderator](./content-moderator/index.yml)
+> * [Custom Vision](./custom-vision-service/index.yml)
+> * [Plochy](./face/index.yml)
+> * [Nástroj pro rozpoznávání formulářů](./form-recognizer/index.yml)
+> * [LUIS](./luis/index.yml)
+> * [Přizpůsobení](./personalizer/index.yml)
+> * [Analýza textu](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+> * [Translator Text](./translator/index.yml)
+> * [Služba Speech](./speech-service/index.yml)
+
+## <a name="change-the-default-network-access-rule"></a>Změnit výchozí pravidlo přístupu sítě
+
+Ve výchozím nastavení Cognitive Services prostředky přijímají připojení z klientů v jakékoli síti. Chcete-li omezit přístup k vybrané sítě, musíte nejdřív změnit výchozí akci.
 
 > [!WARNING]
-> Změny síťových pravidel můžou mít vliv na schopnost vaší aplikace připojit se k Azure Cognitive Services. Nastavením výchozího síťového pravidla na **Odepřít** znemožníte přístup k datům, pokud nejsou použita specifická Síťová pravidla, která **udělují** přístup. Před změnou výchozího pravidla na odepření přístupu nezapomeňte udělit přístup ke všem povoleným sítím pomocí síťových pravidel. Pokud povolujete výpis IP adres pro místní síť, nezapomeňte přidat všechny možné odchozí veřejné IP adresy z místní sítě.
+> Změny síťových pravidel můžou mít vliv na schopnost vaší aplikace připojit se k Azure Cognitive Services. Nastavením výchozího síťového pravidla na **Odepřít** znemožníte přístup k datům, pokud nejsou použita specifická Síťová pravidla, která **udělují** přístup. Je potřeba udělit přístup k žádné povolené sítě pomocí pravidel pro sítě, než změníte výchozí pravidlo pro odepření přístupu. Pokud povolujete výpis IP adres pro místní síť, nezapomeňte přidat všechny možné odchozí veřejné IP adresy z místní sítě.
 
-### <a name="managing-default-network-access-rules"></a>Správa výchozích pravidel přístupu k síti
+### <a name="managing-default-network-access-rules"></a>Správa výchozího pravidla přístupu k síti
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete spravovat výchozí pravidla přístupu k síti pro Cognitive Services prostředky.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -78,7 +99,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 
 1. Pokud chcete změny použít, vyberte **Uložit** .
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) a [přihlaste](/powershell/azure/authenticate-azureps)se, nebo vyberte **vyzkoušet**.
 
@@ -92,7 +113,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).DefaultAction
     ```
 
-1. Nastavte výchozí pravidlo na odepřít přístup k síti ve výchozím nastavení.
+1. Nastavte výchozí pravidlo pro odepření přístupu k síti ve výchozím nastavení.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -103,7 +124,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-1. Nastavte výchozí pravidlo tak, aby povolovalo přístup k síti ve výchozím nastavení.
+1. Nastavte výchozí pravidlo, kterým povolíte přístup k síti ve výchozím nastavení.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -114,7 +135,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [přihlaste](/cli/azure/authenticate-azure-cli)se nebo vyberte **vyzkoušet**.
 
@@ -126,7 +147,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
         --query networkRuleSet.defaultAction
     ```
 
-1. Nastavte výchozí pravidlo na odepřít přístup k síti ve výchozím nastavení.
+1. Nastavte výchozí pravidlo pro odepření přístupu k síti ve výchozím nastavení.
 
     ```azurecli-interactive
     az cognitiveservices account update \
@@ -134,7 +155,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
         --default-action Deny
     ```
 
-1. Nastavte výchozí pravidlo tak, aby povolovalo přístup k síti ve výchozím nastavení.
+1. Nastavte výchozí pravidlo, kterým povolíte přístup k síti ve výchozím nastavení.
 
     ```azurecli-interactive
     az cognitiveservices account update \
@@ -165,7 +186,7 @@ Cognitive Services prostředku a povolený přístup k virtuálním sítím mů�
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete spravovat pravidla virtuální sítě pro prostředky Cognitive Services.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -200,11 +221,11 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 
 1. Pokud chcete změny použít, vyberte **Uložit** .
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) a [přihlaste](/powershell/azure/authenticate-azureps)se, nebo vyberte **vyzkoušet**.
 
-1. Vypíše pravidla virtuální sítě.
+1. Seznam pravidel virtuální sítě.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -223,7 +244,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
         -ServiceEndpoint "Microsoft.CognitiveServices" | Set-AzVirtualNetwork
     ```
 
-1. Přidejte síťové pravidlo pro virtuální síť a podsíť.
+1. Přidáte pravidlo pro sítě pro virtuální síť a podsíť.
 
     ```azurepowershell-interactive
     $subParameters = @{
@@ -243,7 +264,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
     > [!TIP]
     > Pokud chcete přidat síťové pravidlo pro podsíť ve virtuální síti, která patří do jiného tenanta Azure AD, použijte plně kvalifikovaný parametr **VirtualNetworkResourceId** ve formátu "/Subscriptions/Subscription-ID/resourceGroups/resourceGroup-Name/Providers/Microsoft.Network/virtualNetworks/vNet-Name/subnets/Subnet-Name".
 
-1. Odeberte pravidlo sítě pro virtuální síť a podsíť.
+1. Odeberte pravidlo pro sítě pro virtuální síť a podsíť.
 
     ```azurepowershell-interactive
     $subParameters = @{
@@ -260,11 +281,11 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [přihlaste](/cli/azure/authenticate-azure-cli)se nebo vyberte **vyzkoušet**.
 
-1. Vypíše pravidla virtuální sítě.
+1. Seznam pravidel virtuální sítě.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule list \
@@ -279,7 +300,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
     --vnet-name "myvnet" --service-endpoints "Microsoft.CognitiveServices"
     ```
 
-1. Přidejte síťové pravidlo pro virtuální síť a podsíť.
+1. Přidáte pravidlo pro sítě pro virtuální síť a podsíť.
 
     ```azurecli-interactive
     $subnetid=(az network vnet subnet show \
@@ -297,7 +318,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
     > 
     > Pomocí parametru **Subscription** můžete načíst ID podsítě pro virtuální síť patřící jinému Tenantovi služby Azure AD.
 
-1. Odeberte pravidlo sítě pro virtuální síť a podsíť.
+1. Odeberte pravidlo pro sítě pro virtuální síť a podsíť.
 
     ```azurecli-interactive
     $subnetid=(az network vnet subnet show \
@@ -314,25 +335,25 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 > [!IMPORTANT]
 > Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
 
-## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z internetového rozsahu IP adres
+## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z Internetu rozsah IP adres
 
 Cognitive Services prostředků můžete nakonfigurovat tak, aby povolovaly přístup z určitých rozsahů veřejných internetových IP adres. Tato konfigurace uděluje přístup ke konkrétním službám a místním sítím a efektivně tak blokuje obecný internetový provoz.
 
 Zadejte povolené rozsahy internetových adres pomocí [zápisu CIDR](https://tools.ietf.org/html/rfc4632) ve formuláři `16.17.18.0/24` nebo jako jednotlivé IP adresy jako `16.17.18.19`.
 
    > [!Tip]
-   > Malé rozsahy adres používající velikosti předpony "/31" nebo "/32" se nepodporují. Tyto rozsahy by měly být nakonfigurované pomocí jednotlivých pravidel IP adres.
+   > Rozsahy malé adres pomocí "/ 31" nebo "/ 32" předpony velikosti se nepodporují. Tyto rozsahy musí být nakonfigurovaný pomocí jednotlivých pravidel IP adres.
 
 Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povolené v pravidlech protokolu IP. Mezi soukromé sítě patří adresy, které začínají na `10.*`, `172.16.*` - `172.31.*`a `192.168.*`.
 
    > [!NOTE]
    > Pravidla sítě IP neovlivňují požadavky pocházející ze stejné oblasti Azure jako prostředek Cognitive Services. Použijte [pravidla virtuální sítě](#grant-access-from-a-virtual-network) a povolte tak požadavky stejné oblasti.
 
-V tuto chvíli se podporují jenom IPV4 adresy. Každý prostředek Cognitive Services podporuje až 100 pravidel sítě IP, která se můžou kombinovat s [pravidly virtuální sítě](#grant-access-from-a-virtual-network).
+V současnosti jsou podporované jenom adresy IPV4. Každý prostředek Cognitive Services podporuje až 100 pravidel sítě IP, která se můžou kombinovat s [pravidly virtuální sítě](#grant-access-from-a-virtual-network).
 
-### <a name="configuring-access-from-on-premises-networks"></a>Konfigurace přístupu z místních sítí
+### <a name="configuring-access-from-on-premises-networks"></a>Konfigurace přístupu z místní sítě
 
-Pokud chcete udělit přístup z vašich místních sítí k vašemu Cognitive Services prostředkům pomocí pravidla sítě IP, musíte identifikovat internetové IP adresy, které používá vaše síť. Požádejte o nápovědu správce sítě.
+Pokud chcete udělit přístup z vašich místních sítí k vašemu Cognitive Services prostředkům pomocí pravidla sítě IP, musíte identifikovat internetové IP adresy, které používá vaše síť. Požádejte o pomoc svého správce sítě.
 
 Pokud používáte místní [ExpressRoute](../expressroute/expressroute-introduction.md) pro veřejné partnerské vztahy nebo partnerské vztahy Microsoftu, budete muset identifikovat IP adresy překladu adres (NAT). U veřejných partnerských vztahů každý okruh ExpressRoute ve výchozím nastavení používá dvě IP adresy NAT. Každá z nich se použije na provoz služeb Azure, když přenos vstoupí do sítě Microsoft Azure páteřní síť. V případě partnerského vztahu Microsoftu se používají IP adresy NAT buď poskytnuté zákazníkem, nebo poskytovatel služeb. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)
 
@@ -340,7 +361,7 @@ Pokud používáte místní [ExpressRoute](../expressroute/expressroute-introduc
 
 Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -358,11 +379,11 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
 
 1. Pokud chcete změny použít, vyberte **Uložit** .
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) a [přihlaste](/powershell/azure/authenticate-azureps)se, nebo vyberte **vyzkoušet**.
 
-1. Vypíše pravidla sítě protokolu IP.
+1. Seznam pravidel sítě protokolu IP.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -372,7 +393,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).IPRules
     ```
 
-1. Přidejte síťové pravidlo pro jednotlivé IP adresy.
+1. Přidáte pravidlo pro sítě pro jednotlivé IP adresy.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -383,7 +404,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
     Add-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Přidejte síťové pravidlo pro rozsah IP adres.
+1. Přidáte pravidlo pro rozsah IP adres pro sítě.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -394,7 +415,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
     Add-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Odeberte pravidlo sítě pro jednotlivé IP adresy.
+1. Odeberte pravidlo pro sítě pro jednotlivé IP adresy.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -405,7 +426,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Odebere síťové pravidlo pro rozsah IP adres.
+1. Odeberte pravidlo pro rozsah IP adres pro sítě.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -416,18 +437,18 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [přihlaste](/cli/azure/authenticate-azure-cli)se nebo vyberte **vyzkoušet**.
 
-1. Vypíše pravidla sítě protokolu IP.
+1. Seznam pravidel sítě protokolu IP.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule list \
         -g "myresourcegroup" -n "myaccount" --query ipRules
     ```
 
-1. Přidejte síťové pravidlo pro jednotlivé IP adresy.
+1. Přidáte pravidlo pro sítě pro jednotlivé IP adresy.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule add \
@@ -435,7 +456,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
         --ip-address "16.17.18.19"
     ```
 
-1. Přidejte síťové pravidlo pro rozsah IP adres.
+1. Přidáte pravidlo pro rozsah IP adres pro sítě.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule add \
@@ -443,7 +464,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
         --ip-address "16.17.18.0/24"
     ```
 
-1. Odeberte pravidlo sítě pro jednotlivé IP adresy.
+1. Odeberte pravidlo pro sítě pro jednotlivé IP adresy.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule remove \
@@ -451,7 +472,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
         --ip-address "16.17.18.19"
     ```
 
-1. Odebere síťové pravidlo pro rozsah IP adres.
+1. Odeberte pravidlo pro rozsah IP adres pro sítě.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule remove \

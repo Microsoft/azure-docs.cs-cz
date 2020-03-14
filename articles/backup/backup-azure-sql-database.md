@@ -3,16 +3,23 @@ title: Zálohování SQL Server databází do Azure
 description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392794"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297471"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
-SQL Server databáze jsou kritické úlohy, které vyžadují nízký cíl bodu obnovení (RPO) a dlouhodobé uchovávání. Můžete zálohovat SQL Server databáze běžící na virtuálních počítačích Azure pomocí [Azure Backup](backup-overview.md).
+[Azure Backup](backup-overview.md) nabízí specializované řešení založené na datových proudech k zálohování SQL Server spuštěných ve virtuálních počítačích Azure. Toto řešení se zarovnává s výhodami Azure Backup pro zálohování s nulovou infrastrukturou, dlouhodobou uchovávání a centrální správu. Kromě toho nabízí následující výhody, které jsou specifické pro SQL Server:
+
+1. Zálohy s podporou úloh, které podporují všechny typy zálohování – úplný, rozdíl a protokol
+2. 15 – min. RPO (cíl bodu obnovení) s častými zálohami protokolů
+3. Obnovení k určitému bodu v čase až do druhé
+4. Zálohování a obnovení úrovně individuální databáze
+
+Pokud chcete zobrazit scénáře zálohování a obnovení, které podporujeme dnes, přečtěte si v tabulce [podpory](backup-azure-sql-database.md#scenario-support).
 
 ## <a name="backup-process"></a>Proces zálohování
 

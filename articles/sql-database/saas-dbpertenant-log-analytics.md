@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: eca2dbe7589fdc7d59a84d21ecf59749d986ade9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7429a9d5e9a803f0e9a6f900c5d81e77e7477a48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826412"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214492"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Nastavení a použití protokolů Azure Monitor s víceklientské aplikací SQL Database SaaS
 
@@ -24,7 +24,7 @@ V tomto kurzu nastavíte a použijete [protokoly Azure monitor](/azure/log-analy
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nainstalujte a nakonfigurujte protokoly Azure Monitor.
@@ -33,7 +33,7 @@ Co se v tomto kurzu naučíte:
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
 * Nasadí se aplikace Wingtip Tickets SaaS Database-na tenanta. Pokud ho chcete nasadit za méně než pět minut, přečtěte si téma [nasazení a prozkoumání aplikace Wingtip Tickets SaaS Database-per-tenant](saas-dbpertenant-get-started-deploy.md).
-* Je nainstalované prostředí Azure PowerShell. Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Prostředí Azure PowerShell je nainstalované. Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 Diskuzi o scénářích a vzorcích SaaS a o tom, jak ovlivňují požadavky na řešení monitorování, najdete v [kurzu monitorování a Správa výkonu](saas-dbpertenant-performance-monitoring.md) .
 
@@ -41,7 +41,7 @@ Diskuzi o scénářích a vzorcích SaaS a o tom, jak ovlivňují požadavky na 
 
 Pro Azure SQL Database jsou pro databáze a fondy v Azure Portal k dispozici monitorování a upozorňování. Toto integrované monitorování a upozorňování je pohodlné, ale je také specifické pro prostředky. To znamená, že je méně vhodné pro monitorování velkých instalací nebo pro zajištění sjednoceného zobrazení napříč prostředky a předplatnými.
 
-U scénářů s vysokým objemem můžete použít protokoly Azure Monitor pro monitorování a upozorňování. Azure Monitor je samostatná služba Azure, která umožňuje analýzám prostřednictvím diagnostických protokolů a telemetrie shromážděných v pracovním prostoru z potenciálně mnoha služeb. Protokoly Azure Monitor poskytují integrovaný dotazovací jazyk a nástroje pro vizualizaci dat, které umožňují analýzu provozních dat. Řešení SQL Analytics nabízí několik předdefinovaných zobrazení a dotazů pro elastický fond a monitorování databáze a jejich upozorňování. Protokoly Azure Monitor také poskytují vlastní Návrhář zobrazení.
+U scénářů s vysokým objemem můžete použít protokoly Azure Monitor pro monitorování a upozorňování. Azure Monitor je samostatná služba Azure, která umožňuje analýzám protokolů shromážděných v pracovním prostoru z potenciálně mnoha služeb. Protokoly Azure Monitor poskytují integrovaný dotazovací jazyk a nástroje pro vizualizaci dat, které umožňují analýzu provozních dat. Řešení SQL Analytics nabízí několik předdefinovaných zobrazení a dotazů pro elastický fond a monitorování databáze a jejich upozorňování. Protokoly Azure Monitor také poskytují vlastní Návrhář zobrazení.
 
 Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics. Log Analytics pracovní prostory a analytická řešení se otevřou v Azure Portal. Azure Portal je novější přístupový bod, ale může to být to, co se nachází na portálu Operations Management Suite v některých oblastech.
 
@@ -128,7 +128,7 @@ V tomto cvičení otevřete Log Analytics pracovní prostor v Azure Portal a pod
 
 1. Zpátky v pracovním prostoru Log Analytics vyberte **portál OMS** . tím otevřete pracovní prostor.
 
-    ![Pracovní prostor Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Pracovní prostor služby Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
 V pracovním prostoru Log Analytics můžete ještě víc prozkoumat data protokolu a metriky. 
 
@@ -149,7 +149,7 @@ V tomto kurzu jste se naučili:
 
 Vyzkoušejte [kurz analýzy tenanta](saas-dbpertenant-log-analytics.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Další kurzy, které se sestavují na počátečních Lístkech Wingtip Tickets SaaS Database – nasazení pro klientské aplikace](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Protokoly Azure Monitoru](../azure-monitor/insights/azure-sql.md)

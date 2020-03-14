@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276986"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371133"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>ZASTARALÉ Použití webového uživatelského rozhraní Kubernetes s Azure Container Service
 
@@ -29,8 +29,8 @@ Také předpokládá, že máte nainstalované nástroje Azure CLI a `kubectl`.
 
 Můžete otestovat, jestli máte nainstalovaný nástroj `az`, a to spuštěním:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azure-cli#installation)najdete pokyny.
@@ -38,13 +38,13 @@ Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azur
 Můžete otestovat, jestli máte nainstalovaný nástroj `kubectl`, a to spuštěním:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Pokud nemáte nainstalované `kubectl`, můžete spustit:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="overview"></a>Přehled
@@ -52,8 +52,8 @@ $ az acs kubernetes install-cli
 ### <a name="connect-to-the-web-ui"></a>Připojení k webovému uživatelskému rozhraní
 Webové uživatelské rozhraní Kubernetes můžete spustit spuštěním:
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 Mělo by se otevřít webový prohlížeč nakonfigurovaný tak, aby komunikoval s zabezpečeným proxy serverem, který připojuje váš místní počítač k webovému uživatelskému rozhraní Kubernetes.

@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/04/2020
-ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.date: 03/12/2020
+ms.openlocfilehash: 3a857c145959c1bcde169e95369ef0bea327dfaf
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238661"
+ms.locfileid: "79296978"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -168,6 +168,12 @@ V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované zt
 
 1. Vyberte modul **Vyčištění chybějících dat** .
 
+1. V podokně podrobností modulu napravo od plátna vyberte **Upravit sloupec**.
+
+1. V okně sloupce, které se **mají vyčistit** , rozbalte rozevírací nabídku vedle položky **Zahrnout**. Vybrat, **všechny sloupce**
+
+1. Vyberte **Uložit**.
+
 1. V podokně podrobností modulu napravo od plátna vyberte **Odebrat celý řádek** v **režimu čištění**.
 
 1. V podokně podrobností modulu napravo od plátna vyberte pole **Komentář** a zadejte *odebrat řádky chybějících hodnot*. 
@@ -213,9 +219,11 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 
 1. Vyberte **regresi** > **lineární regresi**a přetáhněte ji na plátno kanálu.
 
-1. Najděte modul **vlakového modelu** a přetáhněte ho na plátno kanálu. 
-
 1. Připojte výstup modulu **lineární regrese** k levému vstupu modulu **vlak model** .
+
+1. V paletě modulu rozbalte možnost **školení modulu**oddíl a přetáhněte modul **vlak model** na plátno.
+
+1. Vyberte modul **vlakového modelu** a přetáhněte ho na plátno kanálu.
 
 1. Připojte výstup školicích dat (levý port) modulu **rozdělení dat** ke správnému vstupu modulu **vlak model** .
     
@@ -224,8 +232,6 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 
     ![Snímek obrazovky znázorňující správnou konfiguraci modulu vlakového modelu. Modul lineární regrese se připojí k levému portu modulu vlakového modelu a modul rozdělit data se připojí k pravému portu modelu vlaku.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. V paletě modulu rozbalte možnost **školení modulu**oddíl a přetáhněte modul **vlak model** na plátno.
-
 1. Vyberte modul **vlakového modelu** .
 
 1. V podokně podrobností modulu napravo od plátna vyberte Upravit selektor **sloupců** .
@@ -233,6 +239,9 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 1. V dialogovém okně **popisek sloupce** rozbalte rozevírací nabídku a vyberte možnost **názvy sloupců**. 
 
 1. Do textového pole zadejte *Price (cena* ) a zadejte hodnotu, kterou model bude předpovídat.
+
+    >[!IMPORTANT]
+    > Ujistěte se, že jste zadali název sloupce přesně. Nezadávejte **cenu**na velká písmena. 
 
     Váš kanál by měl vypadat takto:
 
@@ -260,7 +269,7 @@ Pomocí modulu **vyhodnocení modelu** můžete vyhodnotit, jak dobře model vyh
 
 ## <a name="run-the-pipeline"></a>Spuštění kanálu
 
-Teď, když je váš kanál všechna nastavení, můžete odeslat spuštění kanálu, abyste mohli naučit svůj model strojového učení. Běh kanálu můžete odeslat kdykoli při vytváření kanálů v návrháři. To můžete provést, chcete-li zkontrolovat práci podle svých požadavků a ověřit své funkce kanálu podle očekávání.
+Teď, když je váš kanál všechna nastavení, můžete odeslat spuštění kanálu, abyste mohli naučit svůj model strojového učení. Běh kanálu můžete odeslat kdykoli při vytváření kanálů v návrháři. To můžete provést, chcete-li zkontrolovat svou práci, abyste ověřili, že váš kanál funguje podle očekávání.
 
 1. V horní části plátna vyberte **Odeslat**.
 

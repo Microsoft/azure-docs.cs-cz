@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
 ms.openlocfilehash: 585e2773ea5d6af184f85e65b63d39b60d632146
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483593"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273628"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Vytvoření šablon Azure Resource Manager pomocí Visual Studio Code
 
@@ -39,7 +39,7 @@ Parametry, proměnné, funkce, názvy a výrazy jsou barevně kódované, jak je
 
 Zobrazení osnovy šablon usnadňuje procházení velkých šablon.
 
-### <a name="intellisense"></a>Intellisense
+### <a name="intellisense"></a>IntelliSense
 
 Rozšíření šablony Správce prostředků ví možné dokončování názvů funkcí, parametrů, proměnných a odkazů. Při psaní se automaticky otevře návrh IntelliSense. Pokud budete pokračovat v zadávání znaků, seznam členů (proměnné, metody atd.) je filtrován tak, aby zahrnoval pouze členy, které obsahují zadané znaky. Stisknutím klávesy **TAB** nebo **ENTER** vložíte vybraného člena.
 

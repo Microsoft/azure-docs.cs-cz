@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e8266e5750a14542e7f115e021daa40b2b0bf8f6
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 245bcac81189ac8aa63f81fbe4ed30655a457bc8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130044"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371842"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrace Azure Data Lake Storage z Gen1 na Gen2
 
@@ -97,7 +97,7 @@ Tato tabulka porovnává možnosti Gen1 s Gen2.
 |---|---|---|
 |Data organizace|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora souborů a složek|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora kontejnerů, souborů a složek |
 |Geografická redundance| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Ověřování|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Authentication|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |Autorizace|Správa – [RBAC](../../role-based-access-control/overview.md)<br>Data – [seznamy ACL](data-lake-storage-access-control.md)|Správa – [RBAC](../../role-based-access-control/overview.md)<br>Data- [seznamy řízení přístupu](data-lake-storage-access-control.md)( [RBAC](../../role-based-access-control/overview.md) ) |
 |Šifrování – neaktivní neaktivní data|Strana serveru – s využitím [spravovaných služeb](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#microsoft-managed-keys) nebo [zákaznických](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault) klíčů spravovaných službou|Strana serveru – s využitím [spravovaných služeb](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#microsoft-managed-keys) nebo [zákaznických](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault) klíčů spravovaných službou|
 |Podpora virtuální sítě|[Integrace virtuální sítě](../../data-lake-store/data-lake-store-network-security.md)|[Koncové body služby](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [privátní koncové body (Public Preview)](../common/storage-private-endpoints.md)|
@@ -132,7 +132,8 @@ Toto je nejjednodušší vzor.
 
 4. Vyřaďte z provozu Gen1.
 
-![Vzorek zvednutí a posunutí](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
+> [!div class="mx-imgBorder"]
+> ](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png) vzor ![a posunutí
 
 #### <a name="considerations-for-using-the-lift-and-shift-pattern"></a>Pokyny pro použití vzorku výtahu a posunutí
 
@@ -152,7 +153,8 @@ Toto je nejjednodušší vzor.
 
 4. Vyřaďte z provozu Gen1.
 
-![Vzor přírůstkového kopírování](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
+> [!div class="mx-imgBorder"]
+> ](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png) vzor ![přírůstkového kopírování
 
 #### <a name="considerations-for-using-the-incremental-copy-pattern"></a>Pokyny pro použití vzoru přírůstkového kopírování:
 
@@ -172,7 +174,8 @@ Toto je nejjednodušší vzor.
 
 4. Zastavte všechny zápisy do Gen1 a potom vyřaďte z provozu Gen1.
 
-![Vzor duálního kanálu](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
+> [!div class="mx-imgBorder"]
+> ](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png) vzor ![Dual kanálu
 
 #### <a name="considerations-for-using-the-dual-pipeline-pattern"></a>Předpoklady pro používání vzoru Dual Pipeline:
 
@@ -190,7 +193,8 @@ Toto je nejjednodušší vzor.
 
 4. Vyřaďte z provozu Gen1.
 
-![Obousměrný vzor](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
+> [!div class="mx-imgBorder"]
+> ![obousměrný vzor](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
 
 #### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>Pokyny pro použití schématu obousměrné synchronizace:
 

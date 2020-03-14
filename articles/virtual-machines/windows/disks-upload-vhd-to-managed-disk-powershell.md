@@ -3,17 +3,17 @@ title: Nahrání virtuálního pevného disku do Azure pomocí Azure PowerShell
 description: Přečtěte si, jak nahrát VHD na spravovaný disk Azure a zkopírovat spravovaný disk do různých oblastí pomocí Azure PowerShell přes přímé nahrávání.
 author: roygara
 ms.author: rogarana
-ms.date: 05/06/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 883fea1e25ded26c35e96d11edd8f417e96db30e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459985"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369552"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Nahrání virtuálního pevného disku do Azure pomocí Azure PowerShell
 
@@ -27,7 +27,7 @@ V současné době se podporuje přímé nahrávání pro disky Standard HDD, St
 
 - Stáhněte si nejnovější [verzi nástroje AzCopy v10 za účelem](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Nainstalujte modul Azure PowerShell](/powershell/azure/install-Az-ps).
-- Pokud máte v úmyslu nahrát VHD z místního prostředí: virtuální pevný disk [připravený pro Azure](prepare-for-upload-vhd-image.md), uložený místně.
+- Pokud máte v úmyslu nahrát VHD z místního prostředí: virtuální pevný disk s pevnou velikostí, který [je připravený pro Azure](prepare-for-upload-vhd-image.md), je uložený místně.
 - Nebo spravovaný disk v Azure, pokud máte v úmyslu provést akci kopírování.
 
 ## <a name="create-an-empty-managed-disk"></a>Vytvoření prázdného spravovaného disku
@@ -76,8 +76,6 @@ Toto nahrávání má stejnou propustnost jako ekvivalentní [standardní pevný
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
-
-Pokud vaše SAS vyprší během nahrávání a Vy jste to ještě nevolali `revoke-access`, můžete získat nové SAS, abyste mohli pokračovat v nahrávání pomocí `grant-access`.
 
 Po dokončení nahrávání a už nebudete muset na disk zapisovat další data, Odvolejte SAS. Odvoláním SAS dojde ke změně stavu spravovaného disku a budete moci připojit disk k virtuálnímu počítači.
 

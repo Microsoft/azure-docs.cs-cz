@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 20ac4fabdc5f0e70191d6886d43a5376bcf4cad5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586287"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366236"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce & nástroje pro Azure Cloud Shell
 
@@ -74,7 +74,7 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 |Nástroje pro Linux            |bash<br> zsh<br> SH<br> tmux<br> dig<br>               |
 |Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [Azure Classic CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Editory textu           |kód (Editor Cloud Shell)<br> Vim<br> Nano<br> (Emacs)    |
-|Správa zdrojového kódu         |git                    |
+|Správy zdrojového kódu         |git                    |
 |Nástroje sestavení            |Značka<br> Maven<br> npm<br> pip         |
 |Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU DC/OS](https://github.com/dcos/dcos-cli)         |
 |Databáze              |Klient MySQL<br> Klient PostgreSql<br> [Nástroj Sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [skript MSSQL](https://github.com/Microsoft/sql-xplat-cli) |
@@ -82,13 +82,13 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 
 ## <a name="language-support"></a>Podpora jazyků
 
-|Jazyk   |Verze   |
+|Jazyk   |Version   |
 |---|---|
 |.NET Core  |2.2.402       |
-|Přejít         |1.9        |
+|Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[7.0.0-RC. 2](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2,7 a 3,5 (výchozí)|
 
 ## <a name="next-steps"></a>Další kroky

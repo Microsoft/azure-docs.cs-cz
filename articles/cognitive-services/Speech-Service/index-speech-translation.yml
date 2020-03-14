@@ -10,16 +10,16 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562919"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79367971"
 landingContent:
-- title: Začínáme
+- title: O překladu řeči
   linkLists:
   - linkListType: overview
     links:
@@ -29,11 +29,11 @@ landingContent:
     links:
     - text: Překlad řeči na text
       url: quickstarts/translate-speech-to-text.md
-    - text: Převod řeči do více cílových jazyků
+    - text: Překlad řeči do několika cílových jazyků
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: Překlad řeči na řeč
       url: quickstarts/translate-speech-to-speech.md
-- title: Podrobní průvodci
+- title: Vývoj s překladem řeči
   linkLists:
   - linkListType: learn
     links:
@@ -43,13 +43,13 @@ landingContent:
     links:
     - text: Překlad a syntetizování textu pomocí rozhraní REST API
       url: ../translator/tutorial-build-flask-app-translation-synthesis.md
-- title: Referenční informace
+- title: Odkaz
   linkLists:
   - linkListType: reference
     links:
     - text: Podpora jazyků
       url: language-support.md#speech-translation
-    - text: Ceny
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
     - text: Nejčastější dotazy k překladu řeči
       url: https://www.microsoft.com/translator/business/faq/
+    - text: Ceny za překlady řeči
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

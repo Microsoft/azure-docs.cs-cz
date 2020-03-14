@@ -3,12 +3,12 @@ title: Kurz – testování modulů Terraformu v Azure pomocí Terratest
 description: Zjistěte, jak pomocí Terratestu testovat moduly Terraformu.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 687a793af2b9b75efe463b042d121c32f18974d6
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158958"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370793"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Kurz: testování modulů Terraformu v Azure pomocí Terratest
 
@@ -248,14 +248,17 @@ func TestUT_StorageAccountName(t *testing.T) {
 
 Chcete-li spustit testy jednotek, proveďte následující kroky na příkazovém řádku:
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestUT_StorageAccountName
 ```
 
 Výsledek testu tradičního přechodu se vrátí přibližně minutu.
@@ -369,21 +372,24 @@ func TestIT_HelloWorldExample(t *testing.T) {
 
 Chcete-li spustit testy integrace, proveďte následující kroky na příkazovém řádku:
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestIT_HelloWorldExample
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestIT_HelloWorldExample
 ```
 
 Výsledek testu tradičního přechodu se vrátí přibližně po dobu dvou minut. Můžete také spustit testy jednotek i integrační testy spuštěním těchto příkazů:
 
 ```shell
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ go test
+go fmt
+go test
 ```
 
 Testy integrace mají mnohem déle než testy jednotek (dvě minuty pro jeden případ integrace v porovnání s jednou minutou pro pět jednotek). Ale jedná se o vaše rozhodnutí, jestli chcete ve scénáři použít testy jednotek nebo testy integrace. Obvykle doporučujeme používat testy jednotek pro komplexní logiku pomocí funkcí Terraformu HCL. Pro koncovou perspektivu uživatele obvykle používáme testy Integration.
@@ -496,13 +502,16 @@ func Clean() error {
 
 K provedení úplné sady testů můžete použít následující příkazy. Kód je podobný spuštěným postupům, které jsme použili v předchozí části. 
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
-GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage$ mage
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in magefile or test cases
+go fmt      # Only required when you change the magefile
+mage
 ```
 
 Poslední příkazový řádek můžete nahradit dalšími kroky Mage. Můžete například použít `mage unit` nebo `mage clean`. Je vhodné vkládat `dep` příkazy a `az login` v magefile. Kód zde nezobrazujeme. 

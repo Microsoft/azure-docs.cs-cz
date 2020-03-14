@@ -1,31 +1,34 @@
 ---
-title: Používání privátních koncových bodů s Azure Storage | Microsoft Docs
+title: Použití privátních koncových bodů
+titleSuffix: Azure Storage
 description: Přehled privátních koncových bodů pro zabezpečený přístup k účtům úložiště z virtuálních sítí.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252648"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299052"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Použití privátních koncových bodů pro Azure Storage (Preview)
+# <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
 
 Pro účty Azure Storage můžete použít [soukromé koncové body](../../private-link/private-endpoint-overview.md) , které umožní klientům ve virtuální síti (VNET) zabezpečený přístup k datům prostřednictvím [privátního propojení](../../private-link/private-link-overview.md). Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro službu účtu úložiště. Síťový provoz mezi klienty ve virtuální síti a účtem úložiště prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
 Použití privátních koncových bodů pro váš účet úložiště vám umožní:
+
 - Zabezpečte svůj účet úložiště tak, že nakonfigurujete bránu firewall úložiště tak, aby blokovala všechna připojení na veřejném koncovém bodu služby úložiště.
 - Zvyšte zabezpečení virtuální sítě tak, že povolíte blokování exfiltrace dat z virtuální sítě.
 - Připojte se bezpečně k účtům úložiště z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
 
 ## <a name="conceptual-overview"></a>Koncepční přehled
+
 ![Přehled privátních koncových bodů pro Azure Storage](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
 Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší [Virtual Network](../../virtual-network/virtual-networks-overview.md) (virtuální síť). Když vytvoříte privátní koncový bod pro svůj účet úložiště, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším úložištěm. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou úložiště používá zabezpečený privátní odkaz.
@@ -43,7 +46,7 @@ Vlastníci účtu úložiště můžou spravovat žádosti o souhlas a soukromé
 
 Svůj účet úložiště můžete zabezpečit tak, aby přijímal jenom připojení z vaší virtuální sítě. [nakonfigurujete bránu firewall úložiště](storage-network-security.md#change-the-default-network-access-rule) tak, aby odepřela přístup prostřednictvím veřejného koncového bodu ve výchozím nastavení. Nepotřebujete pravidlo brány firewall, abyste mohli povolit provoz z virtuální sítě s privátním koncovým bodem, protože brána firewall úložiště řídí přístup jenom prostřednictvím veřejného koncového bodu. Místo toho privátní koncové body spoléhají na tok souhlasu pro udělení přístupu ke službě úložiště pro podsítě.
 
-### <a name="private-endpoints-for-storage-service"></a>Privátní koncové body služby úložiště
+### <a name="private-endpoints-for-azure-storage"></a>Soukromé koncové body pro Azure Storage
 
 Při vytváření privátního koncového bodu musíte zadat účet úložiště a službu úložiště, ke které se připojí. Potřebujete samostatný soukromý koncový bod pro každou službu úložiště v účtu úložiště, ke kterému potřebujete získat přístup, konkrétně [objekty blob](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [soubory](../files/storage-files-introduction.md), [fronty](../queues/storage-queues-introduction.md), [tabulky](../tables/table-storage-overview.md)nebo [statické weby](../blobs/storage-blob-static-website.md).
 
@@ -51,8 +54,6 @@ Při vytváření privátního koncového bodu musíte zadat účet úložiště
 > Vytvořte samostatný privátní koncový bod pro sekundární instanci služby úložiště pro lepší výkon při čtení účtů RA-GRS.
 
 Pro přístup pro čtení do sekundární oblasti s účtem úložiště nakonfigurovaným pro geograficky redundantní úložiště musíte oddělit soukromé koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání**. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci. Další informace o možnostech redundance úložiště najdete v tématu [Azure Storage redundance](storage-redundancy.md).
-
-#### <a name="resources"></a>Zdroje
 
 Podrobnější informace o vytvoření privátního koncového bodu pro účet úložiště najdete v následujících článcích:
 
@@ -111,8 +112,6 @@ Doporučené názvy zón DNS pro privátní koncové body služby Storage jsou:
 | Table Service          | `privatelink.table.core.windows.net` |
 | Statické weby        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>Zdroje
-
 Další informace o konfiguraci vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
 
 - [Překlad názvů pro prostředky ve virtuálních sítích Azure](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
@@ -124,16 +123,23 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](ht
 
 ## <a name="known-issues"></a>Známé problémy
 
+Pamatujte na následující známé problémy týkající se privátních koncových bodů pro Azure Storage.
+
 ### <a name="copy-blob-support"></a>Podpora kopírování objektů BLOB
 
-Ve verzi Preview nepodporujeme [kopírování příkazů objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) vydaných na účty úložiště, ke kterým jste získali prostřednictvím privátních koncových bodů, když je zdrojový účet úložiště chráněný bránou firewall.
+Pokud je účet úložiště chráněný bránou firewall a k účtu se přihlíží prostřednictvím soukromých koncových bodů, pak tento účet nemůže sloužit jako zdroj operace [kopírování objektu BLOB](/rest/api/storageservices/copy-blob) .
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Omezení přístupu k úložišti pro klienty v virtuální sítě s privátními koncovými body
 
-Klienti v virtuální sítě se stávajícími omezeními tváře privátních koncových bodů při přístupu k jiným účtům úložiště s privátními koncovými body. Předpokládejme například, že virtuální síť N1 má privátní koncový bod pro účet úložiště a1 pro službu blob, řekněme, že. Pokud má účet úložiště a2 privátní koncový bod ve virtuálním N2 pro službu BLOB Service, pak klienti ve virtuální síti N1 taky musí přistupovat ke službě BLOB účtu a2 pomocí privátního koncového bodu. Pokud účet úložiště a2 nemá žádné privátní koncové body pro službu BLOB Service, klienti v síti VNet N1 mají přístup ke službě BLOB bez privátního koncového bodu.
+Klienti v virtuální sítě se stávajícími omezeními tváře privátních koncových bodů při přístupu k jiným účtům úložiště s privátními koncovými body. Předpokládejme například, že virtuální síť N1 má privátní koncový bod pro účet úložiště a1 pro úložiště objektů BLOB. Pokud má účet úložiště a2 privátní koncový bod ve virtuálním osobním formátu N2 pro úložiště objektů blob, pak klienti ve virtuální síti N1 mají také přístup k úložišti objektů BLOB v účtu a2 pomocí privátního koncového bodu. Pokud účet úložiště a2 nemá žádné privátní koncové body pro úložiště objektů blob, klienti v síti VNet N1 mají přístup k úložišti objektů BLOB v tomto účtu bez privátního koncového bodu.
 
 Toto omezení je výsledkem změn DNS provedených při vytváření privátního koncového bodu z účtu a2.
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Pravidla skupiny zabezpečení sítě pro podsítě s privátními koncovými body
 
 V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) a trasy definované uživatelem pro privátní koncové body. Pravidla NSG použitá pro podsíť hostující soukromý koncový bod se aplikují na soukromý koncový bod. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.
+
+## <a name="next-steps"></a>Další kroky
+
+- [Konfigurace virtuálních sítí a bran firewall Azure Storage](storage-network-security.md)
+- [Doporučení zabezpečení pro úložiště objektů BLOB](../blobs/security-recommendations.md)

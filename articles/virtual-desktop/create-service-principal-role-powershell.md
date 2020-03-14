@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5bdc51f47a170922d4fc33e8538695af29e5159c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128115"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365419"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu
 
@@ -22,14 +22,14 @@ Instanční objekty jsou identity, které můžete vytvořit v Azure Active Dire
 - Automatizujte určité úlohy správy virtuálních počítačů s Windows.
 - Použijte jako přihlašovací údaje místo uživatelů MFA – povinné při spuštění libovolné šablony Azure Resource Manager pro virtuální počítač s Windows.
 
-V tomto kurzu získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Vytvořte instanční objekt v Azure Active Directory.
 > * Vytvořte přiřazení role na virtuálním počítači s Windows.
 > * Přihlaste se k virtuálnímu počítači s Windows pomocí instančního objektu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct vytvořit instanční objekty a přiřazení rolí, musíte udělat tři věci:
 
@@ -113,4 +113,4 @@ Až se přihlásíte, ujistěte se, že vše funguje tak, že otestuje několik 
 Jakmile vytvoříte instanční objekt a přiřadíte mu roli v tenantovi virtuálních klientů s Windows, můžete ho použít k vytvoření fondu hostitelů. Další informace o fondech hostitelů najdete v kurzu vytváření fondu hostitelů na virtuálním počítači s Windows.
 
  > [!div class="nextstepaction"]
- > [Kurz fondu hostitelů virtuálních počítačů s Windows](./create-host-pools-azure-marketplace.md)
+ > [Vytvoření fondu hostitelů pomocí Azure Marketplace](./create-host-pools-azure-marketplace.md)

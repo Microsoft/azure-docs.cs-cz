@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 2d5bd8ea1cd8ce643e0bef8ae319d53a574ad2b4
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cee49124a7547399889e425008a8580b9b25945a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168531"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217983"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Pokud chcete používat vlastní data v Machine Learning Studio (Classic) k vývoji a výukovém řešení prediktivní analýzy, můžete použít data z: 
 
@@ -64,8 +66,8 @@ Můžete explicitně zadat nebo změnit záhlaví a datové typy pro sloupce pom
 
 Studio (Classic) rozpozná následující typy dat:
 
-* String
-* Integer
+* Řetězec
+* Celé číslo
 * Double
 * Logická hodnota
 * DateTime
@@ -132,12 +134,12 @@ Pomocí modulu [Import dat][import-data] můžete získat přístup k datům z j
 
 * Adresu URL webu pomocí protokolu HTTP
 * Hadoop pomocí HiveQL
-* Azure Blob Storage
+* Úložiště blobů v Azure
 * Tabulka Azure
 * Azure SQL database nebo SQL Server na virtuálním počítači Azure
 * Místní databáze SQL serveru
 * Datový kanál zprostředkovatele, aktuálně OData
-* Databáze Azure Cosmos
+* Azure Cosmos DB
 
 Vzhledem k tomu, že tato školicí data jsou k dispozici v době, kdy experiment běží, je k dispozici pouze v tomto experimentu. Porovnáním jsou data uložená v modulu DataSet dostupná pro libovolný experiment v pracovním prostoru.
 

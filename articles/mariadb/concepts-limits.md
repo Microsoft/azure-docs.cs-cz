@@ -5,35 +5,38 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: df44cbefaec943a2df483f4804650b939c796cb5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 3/9/2020
+ms.openlocfilehash: c982181dee34a7eb0715d5e1271ef5ed794f3809
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191154"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296740"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení Azure Database for MariaDB
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby.
 
-## <a name="maximum-connections"></a>Maximální počet připojení
-Maximální počet připojení na cenová úroveň a virtuálními jádry jsou následující:
+## <a name="server-parameters"></a>Parametry serveru
 
-|**Cenová úroveň**|**vCore (celkem)**| **Maximální počet připojení**|
-|---|---|---|
-|Basic| 1| 50|
-|Basic| 2| 100|
-|Pro obecné účely| 2| 600|
-|Pro obecné účely| 4| 1250|
-|Pro obecné účely| 8| 2500|
-|Pro obecné účely| 16| 5000|
-|Pro obecné účely| 32| 10000|
-|Pro obecné účely| 64| 20000|
-|Paměťově optimalizované| 2| 800|
-|Paměťově optimalizované| 4| 2500|
-|Paměťově optimalizované| 8| 5000|
-|Paměťově optimalizované| 16| 10000|
-|Paměťově optimalizované| 32| 20000|
+Minimální a maximální hodnoty několika oblíbených parametrů serveru se určují v cenové úrovni a v virtuální jádra. Omezení najdete v následujících tabulkách.
+
+### <a name="max_connections"></a>max_connections
+
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
+|---|---|---|---|---|
+|Basic|1|50|10|50|
+|Basic|2|100|10|100|
+|Obecné použití|2|300|10|600|
+|Obecné použití|4|625|10|1250|
+|Obecné použití|8|1250|10|2500|
+|Obecné použití|16|2500|10|5000|
+|Obecné použití|32|5000|10|10000|
+|Obecné použití|64|10000|10|20000|
+|Paměťově optimalizované|2|600|10|800|
+|Paměťově optimalizované|4|1250|10|2500|
+|Paměťově optimalizované|8|2500|10|5000|
+|Paměťově optimalizované|16|5000|10|10000|
+|Paměťově optimalizované|32|10000|10|20000|
 
 Při připojení překročí limit, může se zobrazit následující chyba:
 > Chyba 1040 (08004): Příliš mnoho připojení
@@ -43,30 +46,132 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 
 Při vytváření nových připojení klientů k MariaDB se přebírají čas a jakmile se naváže, tato připojení zabírají databázové prostředky, i když nepracuje. Většina aplikací vyžaduje mnoho krátkodobých připojení, což je v této situaci celé. Výsledkem je méně prostředků dostupných pro vaše skutečné zatížení, což vede ke snížení výkonu. Připojení Pooler, které zkracuje nečinné připojení a znovu používá existující připojení, jim pomůže vyhnout se. Další informace o nastavení ProxySQL najdete v našem [blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
 
+## <a name="query_cache_size"></a>query_cache_size
+
+Mezipaměť dotazů je ve výchozím nastavení vypnutá. Pokud chcete povolit mezipaměť dotazů, nakonfigurujte parametr `query_cache_type`. 
+
+Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) .
+
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
+|---|---|---|---|---|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Obecné použití|2|0|0|16777216|
+|Obecné použití|4|0|0|33554432|
+|Obecné použití|8|0|0|67108864|
+|Obecné použití|16|0|0|134217728|
+|Obecné použití|32|0|0|134217728|
+|Obecné použití|64|0|0|134217728|
+|Paměťově optimalizované|2|0|0|33554432|
+|Paměťově optimalizované|4|0|0|67108864|
+|Paměťově optimalizované|8|0|0|134217728|
+|Paměťově optimalizované|16|0|0|134217728|
+|Paměťově optimalizované|32|0|0|134217728|
+
+## <a name="sort_buffer_size"></a>sort_buffer_size
+
+Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) .
+
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
+|---|---|---|---|---|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Obecné použití|2|524288|32768|4194304|
+|Obecné použití|4|524288|32768|8388608|
+|Obecné použití|8|524288|32768|16777216|
+|Obecné použití|16|524288|32768|33554432|
+|Obecné použití|32|524288|32768|33554432|
+|Obecné použití|64|524288|32768|33554432|
+|Paměťově optimalizované|2|524288|32768|8388608|
+|Paměťově optimalizované|4|524288|32768|16777216|
+|Paměťově optimalizované|8|524288|32768|33554432|
+|Paměťově optimalizované|16|524288|32768|33554432|
+|Paměťově optimalizované|32|524288|32768|33554432|
+
+## <a name="join_buffer_size"></a>join_buffer_size
+
+Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) .
+
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
+|---|---|---|---|---|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Obecné použití|2|262144|128|268435455|
+|Obecné použití|4|262144|128|536870912|
+|Obecné použití|8|262144|128|1073741824|
+|Obecné použití|16|262144|128|2147483648|
+|Obecné použití|32|262144|128|4294967295|
+|Obecné použití|64|262144|128|4294967295|
+|Paměťově optimalizované|2|262144|128|536870912|
+|Paměťově optimalizované|4|262144|128|1073741824|
+|Paměťově optimalizované|8|262144|128|2147483648|
+|Paměťově optimalizované|16|262144|128|4294967295|
+|Paměťově optimalizované|32|262144|128|4294967295|
+
+## <a name="max_heap_table_size"></a>max_heap_table_size
+
+Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) .
+
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
+|---|---|---|---|---|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Obecné použití|2|16777216|16384|268435455|
+|Obecné použití|4|16777216|16384|536870912|
+|Obecné použití|8|16777216|16384|1073741824|
+|Obecné použití|16|16777216|16384|2147483648|
+|Obecné použití|32|16777216|16384|4294967295|
+|Obecné použití|64|16777216|16384|4294967295|
+|Paměťově optimalizované|2|16777216|16384|536870912|
+|Paměťově optimalizované|4|16777216|16384|1073741824|
+|Paměťově optimalizované|8|16777216|16384|2147483648|
+|Paměťově optimalizované|16|16777216|16384|4294967295|
+|Paměťově optimalizované|32|16777216|16384|4294967295|
+
+## <a name="tmp_table_size"></a>tmp_table_size
+
+Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) .
+
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
+|---|---|---|---|---|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Obecné použití|2|16777216|1024|67108864|
+|Obecné použití|4|16777216|1024|134217728|
+|Obecné použití|8|16777216|1024|268435456|
+|Obecné použití|16|16777216|1024|536870912|
+|Obecné použití|32|16777216|1024|1073741824|
+|Obecné použití|64|16777216|1024|1073741824|
+|Paměťově optimalizované|2|16777216|1024|134217728|
+|Paměťově optimalizované|4|16777216|1024|268435456|
+|Paměťově optimalizované|8|16777216|1024|536870912|
+|Paměťově optimalizované|16|16777216|1024|1073741824|
+|Paměťově optimalizované|32|16777216|1024|1073741824|
+
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
-### <a name="supported"></a>Podporuje se
+### <a name="supported"></a>Podporováno
 - [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
 - [REZIDENT](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
-### <a name="unsupported"></a>Nepodporované
+### <a name="unsupported"></a>Nepodporovaný
 - [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
 - [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
 - [ZÁLOHOVAT](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>Podpora oprávnění
 
-### <a name="unsupported"></a>Nepodporované
+### <a name="unsupported"></a>Nepodporovaný
 - DBA role: mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze.
 - Superuživatele (SUPER Privileged Privilege) je taky omezené [oprávnění Super](https://mariadb.com/kb/en/library/grant/#global-privileges) .
 - DEFINe: vyžaduje pro vytvoření a omezení superuživatele oprávnění. Pokud importujete data pomocí zálohy, odeberte příkazy `CREATE DEFINER` ručně nebo pomocí příkazu `--skip-definer` při provádění mysqldump.
 
 ## <a name="data-manipulation-statement-support"></a>Podpora příkaz manipulace dat
 
-### <a name="supported"></a>Podporuje se
+### <a name="supported"></a>Podporováno
 - `LOAD DATA INFILE` se podporuje, ale je potřeba zadat parametr `[LOCAL]` a směrovat ho na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
 
-### <a name="unsupported"></a>Nepodporované
+### <a name="unsupported"></a>Nepodporovaný
 - `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>Funkční omezení

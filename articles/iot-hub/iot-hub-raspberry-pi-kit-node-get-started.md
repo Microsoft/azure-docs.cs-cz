@@ -2,20 +2,20 @@
 title: Připojení malinu pi k Azure IoT Hub v cloudu (Node. js)
 description: Naučte se, jak nastavit a připojit maliny v/v Azure IoT Hub pro malinu pi k odesílání dat na cloudovou platformu Azure v tomto kurzu.
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: Azure IoT malin PI, malin PI IoT Hub, Malina Pi poslat data do cloudu, malin. PI do cloudu
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457095"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371493"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Připojit malinu pi k Azure IoT Hub (Node. js)
 
@@ -78,7 +78,7 @@ Následující položky jsou volitelné:
 > [!NOTE]
 > Pokud nemáte volitelné položky, můžete použít Simulovaná data senzorů.
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -202,13 +202,13 @@ Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Etherne
 3. Naklonujte ukázkovou aplikaci.
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. Nainstalujte všechny balíčky pro ukázku. Instalace zahrnuje sadu SDK pro zařízení Azure IoT, knihovnu senzorů BME280 a knihovnu pro kabeláž PI.
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 
@@ -244,9 +244,9 @@ Spusťte ukázkovou aplikaci spuštěním následujícího příkazu:
    > [!NOTE]
    > Nezapomeňte zkopírovat a vložit připojovací řetězec zařízení do jednoduchých uvozovek.
 
-Měl by se zobrazit následující výstup s daty snímače a zprávami posílanými do vašeho centra IoT Hub.
+Měl by se zobrazit následující výstup, který zobrazuje data senzoru a zprávy, které se odesílají do služby IoT Hub.
 
-![Výstup – data snímače odesílaná z Raspberry Pi do centra IoT Hub](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
+![Data výstupního senzoru odesílaná z maliny PI do služby IoT Hub](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Přečtěte si zprávy přijaté vaším rozbočovačem.
 

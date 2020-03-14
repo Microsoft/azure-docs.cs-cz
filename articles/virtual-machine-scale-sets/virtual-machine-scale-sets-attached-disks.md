@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.date: 4/25/2017
 ms.author: manayar
 ms.openlocfilehash: c7fd4d89fcc66fb4110029be45ad94e21faea0e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386641"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254167"
 ---
-# <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure Virtual Machine Scale Sets a připojené datové disky
-Aby bylo možné rozšířit dostupné úložiště, služba Azure [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) podporuje instance virtuálních počítačů s připojenými datovými disky. Datové disky můžete připojit při vytvoření sady škálování nebo v existující sadě škálování.
+# <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Škálovací sady virtuálních počítačů Azure a připojené datové disky
+[Škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure podporují instance virtuálních počítačů s připojenými datovými disky a umožňují tak rozšíření úložiště, které máte k dispozici. Datové disky můžete připojit při vytváření škálovací sady nebo k existující škálovací sadě.
 
 > [!NOTE]
-> Když vytvoříte sadu škálování s připojenými datovými disky, musíte disky připojit a naformátovat na virtuálním počítači, abyste je mohli použít (stejně jako u samostatných virtuálních počítačů Azure). Pohodlný způsob, jak tento proces dokončit, je použít rozšíření vlastních skriptů, které volá skript a naformátuje všechny datové disky na virtuálním počítači a naformátuje je. Příklady najdete v tématu [Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
+> Když vytvoříte škálovací sadu s připojenými datovými disky, před jejich použitím musíte disky připojit a naformátovat na virtuálním počítači (stejně jako u samostatných virtuálních počítačů Azure). Praktický způsob, jak to provést, je použít rozšíření vlastních skriptů, které volá skript, který všechny datové disky virtuálního počítače rozdělí do oddílů a naformátuje je. Příklady najdete v tématu [Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
 
 
-## <a name="create-and-manage-disks-in-a-scale-set"></a>Vytváření a Správa disků v sadě škálování
-Podrobné informace o tom, jak vytvořit sadu škálování s připojenými datovými disky, připravit a formátovat nebo přidávat a odebírat datové disky, najdete v jednom z následujících kurzů:
+## <a name="create-and-manage-disks-in-a-scale-set"></a>Vytváření a správa disků ve škálovací sadě
+Podrobné informace o vytvoření škálovací sady s připojenými datovými disky a o přípravě, formátování, přidávání a odebírání datových disků najdete v následujících kurzech:
 
-- [Rozhraní příkazového řádku Azure](tutorial-use-disks-cli.md)
+- [Azure CLI](tutorial-use-disks-cli.md)
 - [Azure PowerShell](tutorial-use-disks-powershell.md)
 
-Zbývající část tohoto článku popisuje konkrétní případy použití, například Service Fabric clustery, které vyžadují datové disky, nebo připojení existujících datových disků k obsahu do sady škálování.
+Zbývající část tohoto článku popisuje konkrétní případy použití, jako jsou například clustery Service Fabric vyžadující datové disky nebo připojení existujících datových disků s obsahem ke škálovací sadě.
 
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>Vytvoření clusteru Service Fabric s připojenými datovými disky
-Každý [typ uzlu](../service-fabric/service-fabric-cluster-nodetypes.md) v clusteru [Service Fabric](/azure/service-fabric) spuštěném v Azure je zálohovaný pomocí sady škálování virtuálních počítačů. Pomocí šablony Azure Resource Manager můžete připojit datové disky ke množinám škálování, které tvoří Cluster Service Fabric. Jako výchozí bod můžete použít [existující šablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates) . V šabloně zahrňte do _storageProfilei_ prostředků _Microsoft. COMPUTE/VirtualMachineScaleSets_ část _datadisks_ a nasaďte šablonu. Následující příklad připojí datový disk 128 GB:
+Každý [typ uzlu](../service-fabric/service-fabric-cluster-nodetypes.md) v clusteru [Service Fabric](/azure/service-fabric) spuštěném v Azure využívá škálovací sadu virtuálních počítačů. Pomocí šablony Azure Resource Manageru můžete připojit datové disky ke škálovacím sadám, ze kterých se skládá cluster Service Fabric. Jako výchozí bod můžete použít [existující šablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates). V šabloně do části _storageProfile_ prostředků _Microsoft.Compute/virtualMachineScaleSets_ vložte část _dataDisks_ a pak šablonu nasaďte. Následující příklad připojí 128GB datový disk:
 
 ```json
 "dataDisks": [
@@ -44,9 +44,9 @@ Každý [typ uzlu](../service-fabric/service-fabric-cluster-nodetypes.md) v clus
 ]
 ```
 
-Datové disky můžete automaticky rozdělit, formátovat a připojovat, když je cluster nasazený. Přidejte rozšíření vlastních skriptů do _extensionProfileu_ _virtualMachineProfile_ sady škálování.
+Při nasazování clusteru můžete datové disky automaticky dělit, formátovat a připojovat. Do části _extensionProfile_ profilu _virtualMachineProfile_ škálovacích sad přidejte rozšíření vlastních skriptů.
 
-Pokud chcete automaticky připravovat datové disky v clusteru Windows, přidejte následující:
+Pokud chcete automaticky připravovat datové disky v clusteru s Windows, přidejte následující:
 
 ```json
 {
@@ -65,7 +65,7 @@ Pokud chcete automaticky připravovat datové disky v clusteru Windows, přidejt
     }
 }
 ```
-Pokud chcete automaticky připravovat datové disky v clusteru se systémem Linux, přidejte následující:
+Pokud chcete automaticky připravovat datové disky v clusteru s Linuxem, přidejte následující:
 ```json
 {
     "name": "lapextension",
@@ -85,13 +85,13 @@ Pokud chcete automaticky připravovat datové disky v clusteru se systémem Linu
 ```
 
 
-## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Přidávání předem naplněných datových disků do existující sady škálování
-Datové disky zadané v modelu sady škálování jsou vždycky prázdné. Existující datový disk ale můžete připojit ke konkrétnímu virtuálnímu počítači v sadě škálování. Tato funkce je ve verzi Preview, s příklady na [GitHubu](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk). Pokud chcete rozšířit data napříč všemi virtuálními počítači v sadě škálování, můžete datový disk duplikovat a připojit ho ke každému virtuálnímu počítači v sadě škálování. můžete vytvořit vlastní image obsahující data a zřídit sadu škálování z této vlastní image. nebo můžete použít soubory Azure nebo podobnou nabídku úložiště dat.
+## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Přidání disků předem naplněných daty do existující škálovací sady
+Datové disky zadané v modelu škálovací sady jsou vždy prázdné. Můžete ale přiřadit existující datové disky ke konkrétnímu virtuálnímu počítači ve škálovací sadě. Tato funkce je ve verzi Preview, s příklady na [GitHubu](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk). Pokud chcete data rozšířit na všechny virtuální počítače ve škálovací sadě, můžete datový disk duplikovat a připojit ho ke každému virtuálnímu počítači ve škálovací sadě, můžete vytvořit vlastní image, která obsahuje data, a zřídit škálovací sadu z této vlastní image nebo můžete použít službu Soubory Azure nebo podobné úložiště dat.
 
 
 ## <a name="additional-notes"></a>Další poznámky
-Podpora služby Azure Managed disks a připojených datových disků Sady škálování je dostupná v rozhraní API verze [_2016-04-30-Preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) nebo NOVĚJŠÍCH rozhraní API Microsoft. Compute.
+Podpora Spravovaných disků Azure a připojených datových disků škálovacích sad je dostupná v rozhraní Microsoft.Compute API verze [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) nebo novější.
 
-U připojených datových disků v sadách pro škálování se zpočátku omezí Azure Portal podpora. V závislosti na vašich požadavcích můžete ke správě připojených disků použít šablony Azure, rozhraní příkazového řádku, PowerShell, sady SDK a REST API.
+Podpora připojených datových disků ve škálovacích sadách je na webu Azure Portal zpočátku omezená. V závislosti na požadavcích můžete ke správě připojených disků použít šablony Azure, rozhraní příkazového řádku, PowerShell, sady SDK nebo rozhraní REST API.
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b76edb2d0db806d8ff4935d2b093fee3c2bb34d7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0713f59889962960b4f3ad5eba58ddb7b32e95ff
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248538"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369739"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -60,7 +60,7 @@ Všechny Azure NetApp Files svazky se šifrují pomocí standardu FIPS 140-2. V�
 
 Správa klíčů pro Azure NetApp Files je zpracovávána službou. Pro každý svazek se vygeneruje jedinečný datový šifrovací klíč XTS-AES-256. K šifrování a ochraně všech klíčů svazků se používá hierarchie šifrovacího klíče. Tyto šifrovací klíče se nikdy nezobrazují ani nehlásí v nešifrovaném formátu. Šifrovací klíče se odstraní hned po odstranění svazku.
 
-V současné době nejsou podporované uživatelsky spravované klíče (Přineste si vlastní klíče).
+Podpora uživatelem spravovaných klíčů (Přineste si vlastní klíče) pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure je k dispozici na řízeném základě v oblastech USA – východ, US West2 a USA (střed) – jih.  Zákazník může požádat o přístup na anffeedback@microsoft.coma jakmile bude dostupná kapacita, žádosti budou schváleny.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Můžu nakonfigurovat pravidla zásad exportu pro systém souborů NFS pro řízení přístupu k cíli připojení služby Azure NetApp Files?
 
