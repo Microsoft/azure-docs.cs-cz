@@ -4,11 +4,11 @@ description: Tento článek shrnuje Azure Backup podporu při zálohování poč
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932702"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247862"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -162,13 +162,13 @@ Windows 7| 1 700 GB
 Komprimované | Podporuje se.
 Řídké | Podporuje se.
 Komprimované a zhuštěné |Podporuje se.
-Pevné odkazy| Nepodporuje se. Přeskočeno.
-Bod rozboru| Nepodporuje se. Přeskočeno.
-Šifrované a zhuštěné |Nepodporuje se. Přeskočeno.
-Komprimovaný datový proud| Nepodporuje se. Přeskočeno.
-Zhuštěný datový proud| Nepodporuje se. Přeskočeno.
-OneDrive (synchronizované soubory jsou zhuštěné streamy)| Nepodporuje se.
-Složky s povoleným Replikace DFS | Nepodporuje se.
+Pevné odkazy| Není podporováno. Přeskočeno.
+Bod rozboru| Není podporováno. Přeskočeno.
+Šifrované a zhuštěné |Není podporováno. Přeskočeno.
+Komprimovaný datový proud| Není podporováno. Přeskočeno.
+Zhuštěný datový proud| Není podporováno. Přeskočeno.
+OneDrive (synchronizované soubory jsou zhuštěné streamy)| Není podporováno.
+Složky s povoleným Replikace DFS | Není podporováno.
 
 \* zajistěte, aby měl agent MARS přístup k požadovaným certifikátům pro přístup k šifrovaným souborům. Nedostupné soubory se přeskočí.
 
@@ -176,12 +176,12 @@ Složky s povoleným Replikace DFS | Nepodporuje se.
 
 **Jednotka/svazek** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Svazky jen pro čtení| Nepodporuje se | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
-Offline svazky| Nepodporuje se |Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.
-Sdílená síťová složka| Nepodporuje se |Svazek musí být na serveru místní.
-Svazky zamčené nástrojem BitLocker| Nepodporuje se |Svazek musí být před zahájením zálohování odemčen.
-Identifikace systému souborů| Nepodporuje se |Podporován je pouze systém souborů NTFS.
-Vyměnitelná média| Nepodporuje se |Všechny zdroje záložních položek musí mít *pevný* stav.
+Svazky jen pro čtení| Nepodporováno | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
+Offline svazky| Nepodporováno |Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.
+Sdílená síťová složka| Nepodporováno |Svazek musí být na serveru místní.
+Svazky zamčené nástrojem BitLocker| Nepodporováno |Svazek musí být před zahájením zálohování odemčen.
+Identifikace systému souborů| Nepodporováno |Podporován je pouze systém souborů NTFS.
+Vyměnitelná média| Nepodporováno |Všechny zdroje záložních položek musí mít *pevný* stav.
 Jednotky s odstraněnými duplicitními daty | Podporuje se | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.
 
 ## <a name="support-for-initial-offline-backup"></a>Podpora počátečního zálohování offline

@@ -1,28 +1,20 @@
 ---
 title: Konfigurace softwarového pole RAID na virtuálním počítači se systémem Linux
 description: Naučte se používat mdadm ke konfiguraci RAID v systému Linux v Azure.
-services: virtual-machines-linux
-documentationcenter: na
 author: rickstercdn
-manager: gwallace
-editor: tysonn
-tag: azure-service-management,azure-resource-manager
-ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534186"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250254"
 ---
-# <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v Linuxu
+# <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v systému Linux
 Běžným scénářem je použití softwarového pole RAID u virtuálních počítačů se systémem Linux v Azure, které slouží k zobrazení několika připojených datových disků jako jednoho zařízení RAID. To se obvykle dá využít ke zlepšení výkonu a k zajištění vyšší propustnosti v porovnání s použitím pouze jednoho disku.
 
 ## <a name="attaching-data-disks"></a>Připojování datových disků

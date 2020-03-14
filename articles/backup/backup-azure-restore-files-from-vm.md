@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363718"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273303"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -155,7 +155,7 @@ mount [RAID Disk Path] [/mountpath]
 
 Pokud je v disku RAID nakonfigurovaný jiný LVM, použijte předchozí postup pro oddíly LVM, ale místo názvu disku RAID použijte název svazku.
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 ### <a name="for-windows-os"></a>OPERAČNÍ systém Windows
 
@@ -163,7 +163,7 @@ V následující tabulce je uvedena kompatibilita mezi operačním systémem ser
 
 |Serverový operační systém | Kompatibilní klientský operační systém  |
 | --------------- | ---- |
-| Windows Server 2019    | Windows 10 |
+| Windows Server. 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |

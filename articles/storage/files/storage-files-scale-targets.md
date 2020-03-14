@@ -8,11 +8,11 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361892"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255129"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
 
@@ -78,7 +78,7 @@ Při plánování nasazení pro každou z fází, níže jsou výsledky pozorov�
 | Konfigurace systému |  |
 |-|-|
 | Procesor | 64 virtuálních jader s 64 MiB L3 |
-| Memory (Paměť) | 128 GiB |
+| Paměť | 128 GiB |
 | Disk | Disky SAS pomocí diskového pole RAID 10 s baterie podporou mezipaměti |
 | Síť | 1 GB/s síť |
 | Úloha | Souborový Server pro obecné účely|
@@ -111,7 +111,7 @@ Jako obecné vodítko pro vaše nasazení byste měli mít na paměti několik v
 - Objekt propustnost přibližně škáluje poměru k počtu skupin synchronizace na serveru. Rozdělení dat do více skupin synchronizace na serveru poskytuje vyšší propustnost, což je také omezena serveru a sítě.
 - Objekt propustnost je nepřímo úměrná MiB za druhé propustnost. Pro menší soubory se budou mít vyšší výkon z hlediska počtu objektů zpracovaných za druhé, ale nižší MiB za druhé propustnost. Naopak pro větší soubory, zobrazí se méně objektů zpracovaných za druhé, ale vyšší MiB za druhé propustnost. MiB za druhé propustnost je omezená cíle škálování Azure Files.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)

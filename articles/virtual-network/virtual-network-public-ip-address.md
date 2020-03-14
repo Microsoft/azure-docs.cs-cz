@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: 38ff40b537730418fe9f0f8295884dae98a2fe0d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355787"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244911"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Vytvoření, změna nebo odstranění veřejné IP adresy
 
@@ -28,7 +28,7 @@ Přečtěte si o veřejné IP adrese a o tom, jak ji vytvořit, změnit a odstra
 - Příchozí komunikace z Internetu k prostředku, jako je například Azure Virtual Machines (VM), služby Azure Application Gateway, služby Azure Load Balancer, brány Azure VPN a další. I nadále můžete komunikovat s některými prostředky, jako jsou virtuální počítače, z Internetu, pokud k virtuálnímu počítači není přiřazená veřejná IP adresa, pokud je tento virtuální počítač součástí fondu back-end nástroje pro vyrovnávání zatížení a nástroj pro vyrovnávání zatížení má přiřazenou veřejnou IP adresu. Pokud chcete zjistit, jestli se prostředku pro konkrétní službu Azure má přiřadit veřejná IP adresa nebo jestli se dá prostřednictvím veřejné IP adresy jiného prostředku Azure komunikovat přes veřejnou IP adresu, přečtěte si dokumentaci ke službě.
 - Odchozí připojení k Internetu pomocí předvídatelné IP adresy. Virtuální počítač může například komunikovat odchozí na Internet bez přiřazené veřejné IP adresy, ale jeho adresa je síťová adresa přeložená službou Azure na nepředvídatelné veřejné adresy, ve výchozím nastavení. Přiřazení veřejné IP adresy prostředku vám umožní zjistit, která IP adresa se používá pro odchozí připojení. I když je předvídatelné, adresa se může změnit v závislosti na zvolené metodě přiřazení. Další informace najdete v tématu [Vytvoření veřejné IP adresy](#create-a-public-ip-address). Další informace o odchozích připojeních z prostředků Azure najdete v tématu [Principy odchozích připojení](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -50,10 +50,10 @@ Veřejné IP adresy mají nominální poplatek. Pokud si chcete zobrazit ceny, p
 3. V části **Veřejná IP adresa**vyberte **vytvořit**.
 4. Zadejte nebo vyberte hodnoty pro následující nastavení v části **vytvořit veřejnou IP adresu**a pak vyberte **vytvořit**:
 
-   |Nastavení|Povinné?|Podrobnosti|
+   |Nastavení|Požadováno?|Podrobnosti|
    |---|---|---|
    |Verze IP|Ano| Vyberte IPv4 nebo IPv6 nebo obojí. Výběr obou možností znamená, že budou vytvořeny 2 veřejné IP adresy – 1 IPv4 adresa a jedna IPv6 adresa. Přečtěte si další informace o [protokolu IPv6 v Azure virtuální sítě](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-   |Skladová jednotka (SKU)|Ano|Všechny veřejné IP adresy vytvořené před zavedením SKU jsou veřejné IP adresy SKU **Basic** . Po vytvoření veřejné IP adresy už SKU nemůžete změnit. Samostatné virtuální počítače, virtuální počítače v rámci skupiny dostupnosti nebo sady škálování virtuálních počítačů můžou používat základní nebo standardní SKU. Nepovoluje se kombinování SKU mezi virtuálními počítači v rámci skupin dostupnosti nebo sad škálování nebo samostatných virtuálních počítačů. **Základní** SKU: Pokud vytváříte veřejnou IP adresu v oblasti, která podporuje zóny dostupnosti, nastavení **zóny dostupnosti** je ve výchozím nastavení nastaveno na *hodnotu žádné* . Základní veřejné IP adresy nepodporují zóny dostupnosti. **Standardní** SKU: veřejná IP adresa Standard SKU může být přidružená k virtuálnímu počítači nebo front-endu nástroje pro vyrovnávání zatížení. Pokud vytváříte veřejnou IP adresu v oblasti, která podporuje zóny dostupnosti, nastavení **zóny dostupnosti** je ve výchozím nastavení nastaveno na možnost *zóna – redundantní* . Další informace o zónách dostupnosti najdete v tématu nastavení **zóny dostupnosti** . Pokud přiřadíte adresu ke standardnímu nástroji pro vyrovnávání zatížení, vyžaduje se standardní SKU. Další informace o standardních nástrojích pro vyrovnávání zatížení najdete v tématu [standardní SKU nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při přiřazování veřejné IP adresy standardní SKU k síťovému rozhraní virtuálního počítače je potřeba explicitně povolit plánovaný provoz pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups). Komunikace s prostředkem nebude možná, dokud nevytvoříte a nepřiřadíte skupinu zabezpečení sítě a explicitně nepovolíte požadovaný provoz.|
+   |Skladová položka|Ano|Všechny veřejné IP adresy vytvořené před zavedením SKU jsou veřejné IP adresy SKU **Basic** . Po vytvoření veřejné IP adresy už SKU nemůžete změnit. Samostatné virtuální počítače, virtuální počítače v rámci skupiny dostupnosti nebo sady škálování virtuálních počítačů můžou používat základní nebo standardní SKU. Nepovoluje se kombinování SKU mezi virtuálními počítači v rámci skupin dostupnosti nebo sad škálování nebo samostatných virtuálních počítačů. **Základní** SKU: Pokud vytváříte veřejnou IP adresu v oblasti, která podporuje zóny dostupnosti, nastavení **zóny dostupnosti** je ve výchozím nastavení nastaveno na *hodnotu žádné* . Základní veřejné IP adresy nepodporují zóny dostupnosti. **Standardní** SKU: veřejná IP adresa Standard SKU může být přidružená k virtuálnímu počítači nebo front-endu nástroje pro vyrovnávání zatížení. Pokud vytváříte veřejnou IP adresu v oblasti, která podporuje zóny dostupnosti, nastavení **zóny dostupnosti** je ve výchozím nastavení nastaveno na možnost *zóna – redundantní* . Další informace o zónách dostupnosti najdete v tématu nastavení **zóny dostupnosti** . Pokud přiřadíte adresu ke standardnímu nástroji pro vyrovnávání zatížení, vyžaduje se standardní SKU. Další informace o standardních nástrojích pro vyrovnávání zatížení najdete v tématu [standardní SKU nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při přiřazování veřejné IP adresy standardní SKU k síťovému rozhraní virtuálního počítače je potřeba explicitně povolit plánovaný provoz pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups). Komunikace s prostředkem nebude možná, dokud nevytvoříte a nepřiřadíte skupinu zabezpečení sítě a explicitně nepovolíte požadovaný provoz.|
    |Název|Ano|Název musí být jedinečný v rámci vybrané skupiny prostředků.|
    |Přiřazení IP adresy|Ano|**Dynamické:** Dynamické adresy se přiřazují až po přidružení veřejné IP adresy k prostředku Azure a prostředek se spustí poprvé. Dynamické adresy se mohou změnit, pokud jsou přiřazeny k prostředku, jako je například virtuální počítač, a virtuální počítač je zastaven (přidělení zrušeno) a pak restartován. Adresa zůstává stejná, i když se virtuální počítač restartuje nebo zastaví (ale neprovádí se jeho přidělení). Dynamické adresy jsou uvolněny, pokud je prostředek veřejné IP adresy zrušení přidružení z prostředku, ke kterému je přidružen. **Statická:** Při vytvoření veřejné IP adresy se přiřazují statické adresy. Statické adresy se neuvolňují, dokud se neodstraní prostředek veřejné IP adresy. Pokud adresa není přidružena k prostředku, můžete po vytvoření adresy změnit metodu přiřazení. Pokud je adresa přidružená k prostředku, možná nebudete moct změnit metodu přiřazení. Pokud pro **verzi protokolu IP**vyberete *protokol IPv6* , musí být metoda přiřazení pro základní skladovou položku *Dynamická* .  Standardní adresy SKU jsou *statické* pro IPv4 i IPv6. |
    |Časový limit nečinnosti (minuty)|Ne|Kolik minut má být otevřené připojení TCP nebo HTTP, aniž by se museli spoléhat na to, že klienti odesílají zprávy Keep-Alive. Pokud pro **verzi protokolu IP**vyberete protokol IPv6, tato hodnota se nedá změnit. |
@@ -71,7 +71,7 @@ I když portál nabízí možnost vytvořit dva prostředky veřejné IP adresy 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
+|CLI|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)|
 
 ## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>Zobrazení, změna nastavení nebo odstranění veřejné IP adresy
@@ -90,7 +90,7 @@ I když portál nabízí možnost vytvořit dva prostředky veřejné IP adresy 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ Network Public-IP list](/cli/azure/network/public-ip#az-network-public-ip-list) pro výpis veřejných IP adres, [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show) pro zobrazení nastavení; [AZ Network Public-IP Update](/cli/azure/network/public-ip#az-network-public-ip-update) to Update; [AZ Network Public-IP Delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to Delete|
+|CLI|[AZ Network Public-IP list](/cli/azure/network/public-ip#az-network-public-ip-list) pro výpis veřejných IP adres, [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show) pro zobrazení nastavení; [AZ Network Public-IP Update](/cli/azure/network/public-ip#az-network-public-ip-update) to Update; [AZ Network Public-IP Delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to Delete|
 |PowerShell|[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) pro načtení objektu veřejné IP adresy a zobrazení jeho nastavení [nastavte-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) na aktualizovat nastavení; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) k odstranění|
 
 ## <a name="assign-a-public-ip-address"></a>Přiřazení veřejné IP adresy

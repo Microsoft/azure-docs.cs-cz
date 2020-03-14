@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
 ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258678"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric scénáře zabezpečení clusteru
 
@@ -69,7 +69,7 @@ Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím spr�
 
 Pro clustery běžící v Azure můžete také zabezpečit přístup k koncovým bodům správy pomocí Azure Active Directory (Azure AD). Informace o tom, jak vytvořit požadované artefakty Azure AD a jak je naplnit při vytváření clusteru, najdete v tématu [Nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
 
-## <a name="security-recommendations"></a>Doporučení zabezpečení
+## <a name="security-recommendations"></a>Bezpečnostní doporučení
 
 U clusterů Service Fabric nasazených ve veřejné síti hostované v Azure je doporučení pro vzájemné ověřování mezi klientem a uzlem:
 

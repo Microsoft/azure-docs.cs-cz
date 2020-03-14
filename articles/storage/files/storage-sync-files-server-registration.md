@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379282"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255090"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -185,7 +185,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>Použití technologie QoS pro úložiště Windows serveru 
 Pokud je Azure File Sync hostovaný na virtuálním počítači, který běží na hostiteli virtualizace Windows serveru, můžete použít QoS úložiště (kvalitu služby úložiště) a regulovat spotřebu v/v úložiště. Zásadu QoS úložiště je možné nastavit buď jako maximální (nebo jako limit, jako je StorageSyncNetwork limit), nebo jako minimum (nebo rezervace). Nastavení minimální hodnoty, než je maximum, umožňuje Azure File Sync nárůstu využití dostupné šířky pásma úložiště, pokud jiné úlohy je nepoužívají. Další informace najdete v tématu [kvalita služby úložiště](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
 - [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
 - [Monitorování Synchronizace souborů Azure](storage-sync-files-monitoring.md)

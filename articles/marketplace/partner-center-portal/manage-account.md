@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 7b7a3a0a87996358436df9f7ee4a266574c0b7db
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385523"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283339"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat účet komerčního tržiště v partnerském centru
 
@@ -59,7 +59,7 @@ V části Podrobnosti o účtu uvidíte základní informace, jako je **typ úč
 
 V části ID vydavatelů uvidíte **ID společnosti Symantec**, **ID prodejce**, **ID uživatele**, **ID MPN**a **klienty Azure AD**. Tyto hodnoty přiřazuje Microsoft, aby jednoznačně identifikovaly váš vývojářský účet a nedají se upravovat.
 
-### <a name="contact-info"></a>Kontaktní údaje
+### <a name="contact-info"></a>Kontaktní informace
 
 V části kontaktní údaje uvidíte **zobrazované jméno vydavatele**, **kontaktní údaje prodejce** (jméno kontaktu, e-mail, telefonní číslo a adresu prodejce společnosti) a **schvalovatel společnosti** (jméno, e-mail a telefonní číslo osoby s oprávněním ke schválení rozhodnutí společnosti).
 

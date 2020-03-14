@@ -4,11 +4,11 @@ description: Popisuje způsob, jakým se používají definice zásad k navázá
 ms.date: 02/26/2020
 ms.topic: conceptual
 ms.openlocfilehash: 95625894d0eb603ae9a37c96c91d01f3720346b1
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932599"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280726"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -22,7 +22,7 @@ Schéma definice zásad najdete tady: [https://schema.management.azure.com/schem
 Vytvoření definice zásady pomocí JSON. Definice zásady obsahuje elementy pro:
 
 - režim
-- parameters
+- parametry
 - Zobrazovaný název
 - description
 - pravidlo zásad
@@ -548,7 +548,7 @@ Příklad 7: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem 
 }
 ```
 
-### <a name="effect"></a>Účinek
+### <a name="effect"></a>Efekt
 
 Azure Policy podporuje následující typy účinku:
 
@@ -646,7 +646,7 @@ Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou ak
   Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
   ```
 
-- Azure Powershell
+- Azure PowerShell
 
   ```azurepowershell-interactive
   # Login first with Connect-AzAccount if not using Cloud Shell

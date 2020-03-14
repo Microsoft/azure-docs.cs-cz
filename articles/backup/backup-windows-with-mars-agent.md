@@ -4,11 +4,11 @@ description: K zálohování počítačů s Windows použijte agenta Microsoft A
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 0e1f7044c62bbaa9969b97690bf16b9ed446c27c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673019"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247771"
 ---
 # <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Zálohování počítačů s Windows pomocí agenta Azure Backup MARS
 
@@ -150,7 +150,7 @@ Po dokončení prvotní zálohy se v konzole zálohování zobrazí stav **Dokon
 
 | Možnost zálohování – plán | Doba uchovávání dat
 | -- | --
-| Day | **Výchozí uchování**: odpovídá "uchování ve dnech pro denní zálohy". <br/><br/> **Výjimka**: Pokud dojde k selhání denního zálohování naplánovaného pro dlouhodobé uchování (týdny, měsíce nebo roky), zálohování na vyžádání, které se aktivuje hned po selhání, se považuje za dlouhodobé uchovávání. V opačném případě se další naplánované zálohování považuje za dlouhodobou dobu uchovávání.<br/><br/> **Ukázkový scénář**: naplánované zálohování ve čtvrtek v 8:00 se nezdařilo. Tato záloha se bude považovat za týdenní, měsíční nebo roční uchování. Takže první zálohování na vyžádání aktivované před dalším plánovaným zálohováním v pátek ve 8:00 se automaticky označilo pro týdenní, měsíční nebo roční uchování. Tato záloha nahrazuje zálohu 8:00.
+| Den | **Výchozí uchování**: odpovídá "uchování ve dnech pro denní zálohy". <br/><br/> **Výjimka**: Pokud dojde k selhání denního zálohování naplánovaného pro dlouhodobé uchování (týdny, měsíce nebo roky), zálohování na vyžádání, které se aktivuje hned po selhání, se považuje za dlouhodobé uchovávání. V opačném případě se další naplánované zálohování považuje za dlouhodobou dobu uchovávání.<br/><br/> **Ukázkový scénář**: naplánované zálohování ve čtvrtek v 8:00 se nezdařilo. Tato záloha se bude považovat za týdenní, měsíční nebo roční uchování. Takže první zálohování na vyžádání aktivované před dalším plánovaným zálohováním v pátek ve 8:00 se automaticky označilo pro týdenní, měsíční nebo roční uchování. Tato záloha nahrazuje zálohu 8:00.
 | Týden | **Výchozí doba uchování**: jeden den. Zálohy na vyžádání, které jsou pořízeny pro zdroj dat s týdenními zásadami zálohování, se odstraní v příštím dni. Odstraní se i v případě, že se jedná o nejaktuálnější zálohy pro zdroj dat. <br/><br/> **Výjimka**: Pokud se týdenní plánované zálohování nastavilo pro dlouhodobé uchovávání dat (týdny, měsíce nebo roky), zálohování na vyžádání, které se aktivuje hned po selhání, se považuje za dlouhodobé uchovávání. V opačném případě se další naplánované zálohování považuje za dlouhodobou dobu uchovávání. <br/><br/> **Ukázkový scénář**: naplánované zálohování ve čtvrtek v 8:00 se nezdařilo. Tato záloha se bude považovat za měsíční nebo roční uchování. Takže první záloha na vyžádání, která se aktivovala před dalším plánovaným zálohováním ve čtvrtek v 8:00, je automaticky označená pro měsíční nebo roční uchování. Tato záloha nahrazuje zálohu 8:00.
 
 Další informace najdete v tématu [Vytvoření zásady zálohování](#create-a-backup-policy).

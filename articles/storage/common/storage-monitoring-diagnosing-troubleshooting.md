@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356756"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255961"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -569,7 +569,7 @@ Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru z
 | Stav žádosti     | SASAuthorizationError        |
 | Stavový kód HTTP   | 404                          |
 | Typ ověřování| Sas                          |
-| Typ služby       | Objekt blob                         |
+| Typ služby       | Blob                         |
 | Adresa URL požadavku        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
 | &nbsp;                 |   ? sv = 2014-02-14 & SR = c & si = mypolicy & SIG = XXXXX&;API-Version = 2014-02-14 |
 | Hlavička ID žádosti  | a1f348d5-8032-4912-93ef-b393e5252a3b |
@@ -627,7 +627,7 @@ Pokud k těmto potížím dochází často, měli byste prozkoumat, proč se kli
 ### <a name="the-client-is-receiving-409-messages"></a>Klient přijímá zprávy HTTP 409 (konflikt).
 Následující tabulka ukazuje extrakci z protokolu na straně serveru pro dvě operace klienta: **DeleteIfExists** , za kterým následuje **CreateIfNotExists** , pomocí stejného názvu kontejneru objektů BLOB. Každá operace klienta má za následek odeslání dvou požadavků na server, nejprve **GetContainerProperties** požadavek na kontrolu existence kontejneru a za ním požadavek **DeleteContainer** nebo **CreateContainer** .
 
-| Časové razítko | Operace | Výsledek | Název kontejneru | ID požadavku klienta |
+| Timestamp | Operace | Výsledek | Název kontejneru | ID požadavku klienta |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |

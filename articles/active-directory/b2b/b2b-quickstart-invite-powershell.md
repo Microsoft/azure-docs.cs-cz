@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273356"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240923"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Rychlý Start: Přidání uživatele typu host pomocí PowerShellu
 
@@ -69,7 +69,7 @@ Spuštěním následujícího příkazu se připojte k doméně klienta:
 ```powershell
 Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 ```
-Například, `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
+například `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
 
 Po zobrazení výzvy zadejte své přihlašovací údaje.
 
@@ -78,7 +78,7 @@ Po zobrazení výzvy zadejte své přihlašovací údaje.
 1. Pokud chcete poslat pozvánku na testovací e-mailový účet, spusťte následující příkaz PowerShellu (nahraďte **"píseka"** a **písku\@Fabrikam.com** s vaším názvem a e-mailovou adresou vašeho testovacího e-mailového účtu: 
 
    ```powershell
-   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
+   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
    ```
 2. Příkaz pozvánku odešle na zadanou e-mailovou adresu. Zkontrolujte výstup, který by měl vypadat nějak takto:
 

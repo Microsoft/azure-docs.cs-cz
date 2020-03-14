@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 28d37ba6796799ea27bbd5338247a504ea82388f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970456"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250423"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače se systémem Linux 
 
@@ -54,7 +54,7 @@ Azure Disk Encryption je podporovaná u podmnožiny [distribucí systému Linux 
 
 Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Azure Disk Encryption; z těch, které jsou schváleny, podporuje pouze následující distribuce a verze Azure Disk Encryption:
 
-| Linuxové distribuce | Verze | Typ svazku podporovaný pro šifrování|
+| Linuxové distribuce | Version | Typ svazku podporovaný pro šifrování|
 | --- | --- |--- |
 | Ubuntu | 18,04| Disk operačního systému a dat |
 | Ubuntu | 16.04| Disk operačního systému a dat |
@@ -62,7 +62,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | RHEL | 7,7 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7,6 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.5 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7.4 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7,4 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.3 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.2 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 6.8 | Datový disk (viz poznámka níže) |
@@ -70,7 +70,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | CentOS | 7,7 | Disk operačního systému a dat |
 | CentOS | 7,6 | Disk operačního systému a dat |
 | CentOS | 7.5 | Disk operačního systému a dat |
-| CentOS | 7.4 | Disk operačního systému a dat |
+| CentOS | 7,4 | Disk operačního systému a dat |
 | CentOS | 7.3 | Disk operačního systému a dat |
 | CentOS | 7.2N | Disk operačního systému a dat |
 | CentOS | 6.8 | Datový disk |
@@ -81,7 +81,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 > [!NOTE]
 > Nová implementace Azure Disk Encryption je podporovaná pro RHEL operační systém a datový disk pro Image RHEL7 s průběžnými platbami.  
 >
-> ADE se podporuje taky pro zlaté RHELy s využitím vlastního předplatného, ale až **po** registraci předplatného. Další informace najdete v tématu [Red Hat Enterprise Linux na základě vlastních předplatných Gold v Azure](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) .
+> ADE se podporuje taky pro zlaté RHELy s využitím vlastního předplatného, ale až **po** registraci předplatného. Další informace najdete v tématu [Red Hat Enterprise Linux na základě vlastních předplatných Gold v Azure](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) .
 
 ## <a name="additional-vm-requirements"></a>Další požadavky na virtuální počítače
 

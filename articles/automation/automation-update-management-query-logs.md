@@ -3,14 +3,14 @@ title: Dotazování protokolů služby Azure Update Management
 description: Tento článek popisuje, jak zadat dotaz na protokoly pro Update Management v pracovním prostoru Log Analytics.
 services: automation
 ms.subservice: update-management
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867071"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216849"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Dotaz na aktualizace záznamů pro Update Management v protokolech Azure Monitor
 
@@ -28,7 +28,7 @@ Vytvoří se záznam s typem `RequiredUpdate`, který představuje aktualizace v
 
 | Vlastnost | Popis | 
 |----------|-------------|
-| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| Computer | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | KBID | ID článku znalostní báze pro Windows Update |
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. | 
 | Produkt | Produkty, pro které je aktualizace platná. | 
@@ -39,8 +39,8 @@ Vytvoří se záznam s typem `RequiredUpdate`, který představuje aktualizace v
 | TenantId | Jedinečný identifikátor, který představuje instanci vaší organizace Azure Active Directory. | 
 | TimeGenerated | Datum a čas vytvoření záznamu | 
 | Typ | *Aktualizace* | 
-| UpdateClassification | Určuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definicí*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Kritické aktualizace a aktualizace zabezpečení*<br> *Ostatní* |
-| UpdateSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Střední*<br> *Nízká* |
+| UpdateClassification | Určuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Kritické aktualizace a aktualizace zabezpečení*<br> *Ostatní* |
+| UpdateSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Mírná*<br> *Slab* |
 | UpdateTitle | Název aktualizace|
 
 ### <a name="update"></a>Aktualizovat
@@ -50,12 +50,12 @@ Vytvoří se záznam s typem `Update`, který představuje dostupné aktualizace
 | Vlastnost | Popis | 
 |----------|-------------|
 | ApprovalSource | Platí jenom pro operační systém Windows. Hodnota je *Microsoft Update*. |
-| Schválené | *True* nebo *false* |
-| Classification | *Aktualizace* |
-| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| Schváleno | *True* nebo *false* |
+| Klasifikace | *Aktualizace* |
+| Computer | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | ComputerEnvironment | *Azure* nebo *mimo Azure*. |
 | MSRCBulletinID | Číslo ID bulletinu zabezpečení | 
-| MSRCSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Střední*<br> *Nízká* |  
+| MSRCSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Mírná*<br> *Slab* |  
 | KBID | ID článku znalostní báze pro Windows Update |
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
 | UpdateID | Jedinečný identifikátor aktualizace softwaru. |
@@ -70,7 +70,7 @@ Vytvoří se záznam s typem `Update`, který představuje dostupné aktualizace
 | SourceSystem | *OperationsManager* | 
 | TimeGenerated | Datum a čas vytvoření záznamu | 
 | SourceComputerId | Jedinečný identifikátor představující zdrojový počítač. | 
-| Nadpis | Název aktualizace |
+| Název | Název aktualizace |
 | PublishedDate (UTC) | Datum, kdy je aktualizace připravena ke stažení a instalaci z web Windows Update.  |
 | UpdateState | Aktuální stav aktualizace. | 
 | Produkt | Produkty, pro které je aktualizace platná. |
@@ -88,7 +88,7 @@ Vytvoří se záznam s typem `UpdateAgent`, který poskytuje podrobnosti o agent
 |----------|-------------|
 | AgeofOldestMissingRequiredUpdate | | 
 | AutomaticUpdateEnabled | | 
-| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| Computer | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | DaySinceLastUpdateBucket | | 
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
 | OSVersion | Verze operačního systému. |
@@ -107,7 +107,7 @@ Vytvoří se záznam s typem `UpdateRunProgress`, který poskytuje stav nasazen�
 
 | Vlastnost | Popis | 
 |----------|-------------|
-| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| Computer | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | ComputerEnvironment | *Azure* nebo *mimo Azure*. | 
 | CorrelationId | Jedinečný identifikátor spuštění úlohy Runbooku pro aktualizaci. |
 | EndTime | Čas ukončení procesu synchronizace. | 
@@ -127,7 +127,7 @@ Vytvoří se záznam s typem `UpdateRunProgress`, který poskytuje stav nasazen�
 | SubscriptionId | Jedinečný identifikátor předplatného Azure. | 
 | SucceededOnRetry | Ukazuje, že při prvním pokusu došlo k chybě při spuštění aktualizace a aktuální operace je pokus o opakování. |
 | TimeGenerated | Datum a čas vytvoření záznamu |
-| Nadpis | Název aktualizace |
+| Název | Název aktualizace |
 | Typ | *UpdateRunProgress* |
 | UpdateID naformátovat | Jedinečný identifikátor aktualizace softwaru. |
 | VMUUID | Jedinečný identifikátor pro virtuální počítač. |
@@ -139,13 +139,13 @@ Vytvoří se záznam s typem `UpdateSummary`, který poskytuje souhrn aktualizac
 
 | Vlastnost | Popis | 
 |----------|-------------|
-| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| Computer | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | ComputerEnvironment | *Azure* nebo *mimo Azure*. | 
 | CriticalUpdatesMissing | Počet neplatných důležitých aktualizací. | 
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
 | NETRuntimeVersion | Verze .NET Framework nainstalovaná na počítači s Windows. |
-| OldestMissingSecurityUpdateBucket | | 
-| OldestMissingSecurityUpdateInDays | |
+| OldestMissingSecurityUpdateBucket | Hodnoty jsou:<br> *Poslední*<br> *před 30 dny*<br> *před 60 dny*<br> *Verze* | 
+| OldestMissingSecurityUpdateInDays | Celkový počet dní pro nejstarší aktualizaci, která se zjistila jako platná, která není nainstalovaná. |
 | OsVersion | Verze operačního systému. |
 | OtherUpdatesMissing | Počet chybějících zjištěných aktualizací |
 | Prostředek |  Název prostředku. | 
@@ -163,7 +163,7 @@ Vytvoří se záznam s typem `UpdateSummary`, který poskytuje souhrn aktualizac
 | Typ | *UpdateSummary* |
 | VMUUID | Jedinečný identifikátor pro virtuální počítač. |
 | WindowsUpdateAgentVersion | Verze agenta web Windows Update. |
-| WindowsUpdateSetting | Zobrazuje stav agenta web Windows Update. Možné hodnoty:<br> *Naplánovaná instalace*<br> *Upozorňovat před instalací*<br> Z chybného agenta WUA byla vrácena chyba. | 
+| WindowsUpdateSetting | Zobrazuje stav agenta web Windows Update. Možné hodnoty jsou:<br> *Naplánovaná instalace*<br> *Upozorňovat před instalací*<br> Z chybného agenta WUA byla vrácena chyba. | 
 | WSUSServer | Zobrazuje chyby, pokud má agent web Windows Update problém při řešení potíží. |
 | _ResourceId | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
 
@@ -192,7 +192,7 @@ Heartbeat
 Na počítači s Windows můžete zkontrolovat následující informace a ověřit připojení agenta s protokoly Azure Monitor:
 
 1. V Ovládacích panelech otevřete **Microsoft Monitoring Agent**. Na kartě **Azure Log Analytics** se v agentovi zobrazí následující zpráva: **Microsoft Monitoring Agent se úspěšně připojil k Log Analytics**.
-2. Otevřete protokol událostí systému Windows. V části **Application and Services Logs\Operations Manager** vyhledejte události ID 3000 a id události 5002 ze zdrojového **konektoru služby**. Tyto události znamenají, že se počítač zaregistroval do pracovního prostoru služby Log Analytics a přijímá konfiguraci.
+2. Otevřete protokol událostí systému Windows. V části **Application and Services Logs\Operations Manager** vyhledejte události ID 3000 a id události 5002 ze zdrojového **konektoru služby**. Tyto události signalizují, že je počítač zaregistrován v pracovním prostoru Log Analytics a přijímá konfiguraci.
 
 Pokud Agent nemůže komunikovat s protokoly Azure Monitor a Agent je nakonfigurován pro komunikaci s internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Informace o tom, jak ověřit, jestli je brána firewall nebo proxy server správně nakonfigurovaná, najdete v tématu [Konfigurace sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfiguraci sítě pro agenta Linux](../log-analytics/log-analytics-agent-linux.md).
 

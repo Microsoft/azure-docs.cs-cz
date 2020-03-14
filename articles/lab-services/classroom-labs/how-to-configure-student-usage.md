@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358636"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270937"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 Tento článek popisuje, jak přidat uživatele do testovacího prostředí, získat je zaregistrované v testovacím prostředí a určit počet hodin, po které může virtuální počítač používat, a další. 
@@ -144,7 +144,7 @@ Chcete-li to provést, postupujte takto:
 ## <a name="student-accounts"></a>Účty studenta
 Pokud chcete přidat studenty do testovacího prostředí učebny, použijte jejich e-mailové účty. Můžou se používat tyto typy e-mailových účtů:
 
-- E-mailový účet studenta, který poskytuje Office 365 Azure Active Directory vaší univerzity (AAD). 
+- E-mailový účet studenta poskytnutý Office 365 Azure Active Directory vaší univerzity. 
 - E-mailový účet Microsoftu, například `@outlook.com`, `@hotmail.com`, `@msn.com`nebo `@live.com`.
 - E-mailový účet, který není od Microsoftu, který poskytuje společnost Yahoo nebo Google. Tyto typy účtů však musí být propojeny s účet Microsoft.
 - Účet GitHub. Tento účet musí být propojený s účet Microsoft.
@@ -173,6 +173,14 @@ Na stránce **Možnosti přihlášení** vyberte možnost **Přihlásit se pomoc
 ![Přihlaste se pomocí odkazu na GitHub](../media/how-to-configure-student-usage/signin-github.png)
 
 Nakonec se zobrazí výzva k vytvoření účet Microsoft, která je propojená s jejich účtem GitHubu. K tomu dochází automaticky, když student vybere **Next (další**).  Student se pak hned přihlásí a připojí k vývojovému prostředí učebny.
+
+## <a name="export-list-of-users-to-a-csv-file"></a>Exportovat seznam uživatelů do souboru CSV
+
+1. Přepněte na kartu **Uživatelé** .
+2. Na panelu nástrojů vyberte **...** (tři tečky) a pak vyberte **exportovat sdílený svazek clusteru**. 
+
+    ![Exportovat seznam uživatelů](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:

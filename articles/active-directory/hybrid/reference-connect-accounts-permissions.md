@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376044"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253764"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: účty a oprávnění
 
@@ -38,7 +38,7 @@ Azure AD Connect používá pro Azure Active Directory k synchronizaci informac�
 
 - **Účet konektoru Azure AD**: používá se k zápisu informací do Azure AD.
 
-Kromě těchto tří účtů, které se používají ke spouštění Azure AD Connect, budete k instalaci Azure AD Connect potřebovat taky tyto další účty.  Jsou to:
+Kromě těchto tří účtů, které se používají ke spouštění Azure AD Connect, budete k instalaci Azure AD Connect potřebovat taky tyto další účty.  Toto jsou:
 
 - **Účet místního správce**: správce, který instaluje Azure AD Connect a který má oprávnění místního správce k tomuto počítači.
 
@@ -202,7 +202,7 @@ Legenda:
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Vlastní | Remote SQL</br>Vlastní |
 | --- | --- | --- | --- |
-| **počítač pro samostatnou/pracovní skupinu** | Nepodporuje se | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet |  Nepodporuje se |
+| **počítač pro samostatnou/pracovní skupinu** | Nepodporováno | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet |  Nepodporováno |
 | **počítač připojený k doméně** | **ATRIBUT**</br>Místní účet (2008) | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA, gMSA | **gMSA**</br>Účet domény |
 | **Řadič domény** | **Doménový účet** | *gMSA*</br>**Doménový účet**</br>sMSA| *gMSA*</br>**Doménový účet**|
 

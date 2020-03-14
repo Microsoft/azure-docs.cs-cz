@@ -11,13 +11,13 @@ ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393846"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219728"
 ---
-# <a name="pattern-syntax"></a>Syntaxe vzoru
+# <a name="pattern-syntax"></a>Vzor syntaxe
 
 Vzor syntaxe je šablona pro utterance. Šablona by měl obsahovat slova a entity, které chcete porovnat a také slova a interpunkční znaménka, které má být ignorována. Nejedná **se o regulární** výraz.
 

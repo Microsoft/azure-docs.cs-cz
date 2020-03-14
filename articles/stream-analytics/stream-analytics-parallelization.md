@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.openlocfilehash: d1afb6037b5fc290de93faba405982ebd1fb68ea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364550"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254336"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využití paralelizace dotazů ve službě Azure Stream Analytics
 Tento článek ukazuje, jak využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak škálovat úlohy Stream Analytics pomocí konfigurace vstupního oddíly a ladění definice dotazu analytics.
@@ -77,7 +77,7 @@ Následující části popisují některé ukázkové scénáře, které jsou je
 * Vstup: Centrum událostí s 8 oddíly
 * Výstup: centrum událostí s 8 oddíly ("sloupec klíče oddílu" musí být nastaven na použití "PartitionId")
 
-Dotaz:
+Dotaz
 
 ```SQL
     SELECT TollBoothId
@@ -92,7 +92,7 @@ Tento dotaz je jednoduchý filtr. Proto jsme nemusíte se starat o dělení vstu
 * Vstup: Centrum událostí s 8 oddíly
 * Výstup: Úložiště objektů Blob
 
-Dotaz:
+Dotaz
 
 ```SQL
     SELECT COUNT(*) AS Count, TollBoothId
@@ -122,7 +122,7 @@ Výstup Power BI v současné době nepodporuje dělení. Proto tento scénář 
 * Vstup: Centrum událostí s 8 oddíly
 * Výstup: Centrum událostí s 8 oddíly
 
-Dotaz:
+Dotaz
 
 ```SQL
     WITH Step1 AS (
@@ -144,7 +144,7 @@ Předchozí příklady ukazují některé úlohy Stream Analytics, které odpov�
 * Vstup: Centrum událostí s 8 oddíly
 * Výstup: centrum událostí s 8 oddíly ("sloupec klíče oddílu" musí být nastaven na použití "TollBoothId")
 
-Dotaz:
+Dotaz
 
 ```SQL
     WITH Step1 AS (
@@ -166,7 +166,7 @@ Celkový počet jednotek streamování, které je možné úlohu Stream Analytic
 ### <a name="steps-in-a-query"></a>Kroky v dotazu
 Dotaz může mít jeden nebo více kroků. Každý krok je poddotaz definovaný pomocí klíčového slova **with** . Dotaz, který je mimo klíčové slovo **with** (pouze jeden dotaz), se také počítá jako krok, například příkaz **Select** v následujícím dotazu:
 
-Dotaz:
+Dotaz
 
 ```SQL
     WITH Step1 AS (
@@ -271,7 +271,7 @@ Následující poznámky používají úlohu Stream Analytics s dotazem bez stav
 
 [Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) podporuje zapisování paralelně, označované jako dědění oddílů, ale není ve výchozím nastavení povolené. Povolení dědění rozdělení na oddíly, společně s plně paralelním dotazem, ale nemusí být dostačující pro dosažení vyšší propustnosti. Propustnost zápisu SQL závisí významně na konfiguraci SQL Azure databáze a schématu tabulek. Článek o [výkonu SQL Output](./stream-analytics-sql-output-perf.md) obsahuje další podrobnosti o parametrech, které můžou maximalizovat propustnost zápisu. Jak je uvedeno ve [výstupu Azure Stream Analytics Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) článku, toto řešení se neškáluje lineárně jako plně paralelní kanál nad rámec 8 oddílů a může vyžadovat přerozdělení do výstupu SQL (viz [do](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Skladové jednotky úrovně Premium se potřebují pro udržení vysokého vstupně-výstupních operací spolu se režiemi ze záloh protokolů při každém několika minutách.
 
-#### <a name="cosmos-db"></a>Databáze Cosmos
+#### <a name="cosmos-db"></a>Cosmos DB
 |Rychlost přijímání zpráv (události za sekundu) | Jednotky streamování | Výstupní prostředky  |
 |-------|-------|---------|
 |  1 tis.   |  3    | 20 TISÍC RU  |

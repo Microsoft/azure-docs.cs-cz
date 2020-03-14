@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364997"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247212"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
 
@@ -82,7 +82,7 @@ Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů
 
 Tyto svazky můžete namapovat na konkrétní cesty v rámci jednotlivých kontejnerů ve skupině. 
 
-## <a name="common-scenarios"></a>Obvyklé scénáře
+## <a name="common-scenarios"></a>Typické scénáře
 
 Skupiny více kontejnerů jsou užitečné v případech, kdy chcete rozdělit jednu funkční úlohu na malý počet imagí kontejneru. Tyto Image je pak možné doručovat různými týmy a mít samostatné požadavky na prostředky.
 

@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388773"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249851"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Kurz: Konfigurace skupiny dostupnosti na Azure SQL Server VM ručně
 
@@ -32,7 +32,7 @@ Diagram znázorňuje, co sestavíte v tomto kurzu.
 
 ![Skupina dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá základní znalost skupin dostupnosti Always On SQL Server. Pokud potřebujete další informace, přečtěte si téma [Přehled skupin dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
@@ -114,7 +114,7 @@ Přidejte ostatní SQL Server do clusteru.
     >[!WARNING]
    >Pokud používáte prostory úložiště a nechcete zrušit kontrolu **Přidat do clusteru všechny opravňující úložiště**, systém Windows virtuální disky během procesu clusteringu odpojí. V důsledku toho se neobjeví ve Správci disků nebo v Průzkumníkovi, dokud se prostory úložiště z clusteru neodstraní a znovu nepřipojí přes PowerShell. Prostory úložiště seskupují více disků do fondů úložiště. Další informace najdete v tématu [prostory úložiště](https://technet.microsoft.com/library/hh831739).
 
-1. Klikněte na **Další**.
+1. Klikněte na **Další**.
 
 1. Klikněte na **Finish** (Dokončit).
 
@@ -138,9 +138,9 @@ V tomto příkladu používá cluster Windows ke sdílení souborů sdílenou sl
 
    Pomocí **Průvodce vytvořením sdílené složky** vytvořte sdílenou složku.
 
-1. V části **cesta ke složce**klikněte na **Procházet** a vyhledejte nebo vytvořte cestu pro sdílenou složku. Klikněte na **Další**.
+1. V části **cesta ke složce**klikněte na **Procházet** a vyhledejte nebo vytvořte cestu pro sdílenou složku. Klikněte na **Další**.
 
-1. V části **název, popis a nastavení** ověřte název a cestu ke sdílené složce. Klikněte na **Další**.
+1. V části **název, popis a nastavení** ověřte název a cestu ke sdílené složce. Klikněte na **Další**.
 
 1. V nastavení **oprávnění ke sdílené složce** nastavte **oprávnění přizpůsobit**. Klikněte na **vlastní...** .
 
@@ -175,9 +175,9 @@ V dalším kroku nastavte kvorum clusteru.
    >[!TIP]
    >Windows Server 2016 podporuje cloudový disk s kopií clusteru. Pokud zvolíte tento typ určujícího umístění, nepotřebujete určující sdílenou složku. Další informace najdete v tématu [nasazení určujícího cloudu pro cluster s podporou převzetí služeb při selhání](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). V tomto kurzu se používá určující sdílená složka, která je podporovaná v předchozích operačních systémech.
 
-1. V části **Konfigurovat určující sdílenou složku**zadejte cestu pro sdílenou složku, kterou jste vytvořili. Klikněte na **Další**.
+1. V části **Konfigurovat určující sdílenou složku**zadejte cestu pro sdílenou složku, kterou jste vytvořili. Klikněte na **Další**.
 
-1. Ověřte nastavení při **potvrzení**. Klikněte na **Další**.
+1. Ověřte nastavení při **potvrzení**. Klikněte na **Další**.
 
 1. Klikněte na **Finish** (Dokončit).
 
@@ -240,9 +240,9 @@ Repeat these steps on the second SQL Server.
 
    Pomocí **Průvodce vytvořením sdílené složky** vytvořte sdílenou složku.
 
-1. V části **cesta ke složce**klikněte na **Procházet** a vyhledejte nebo vytvořte cestu pro sdílenou složku zálohy databáze. Klikněte na **Další**.
+1. V části **cesta ke složce**klikněte na **Procházet** a vyhledejte nebo vytvořte cestu pro sdílenou složku zálohy databáze. Klikněte na **Další**.
 
-1. V části **název, popis a nastavení** ověřte název a cestu ke sdílené složce. Klikněte na **Další**.
+1. V části **název, popis a nastavení** ověřte název a cestu ke sdílené složce. Klikněte na **Další**.
 
 1. V nastavení **oprávnění ke sdílené složce** nastavte **oprávnění přizpůsobit**. Klikněte na **vlastní...** .
 
@@ -278,7 +278,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti pomocí následující
 
     ![Spustit Průvodce novou skupinou dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
-2. Na stránce **Úvod** klikněte na **Další**. Na stránce **zadat název skupiny dostupnosti** zadejte název skupiny dostupnosti, například **AG1**, do pole **název skupiny dostupnosti**. Klikněte na **Další**.
+2. Na stránce **Úvod** klikněte na **Další**. Na stránce **zadat název skupiny dostupnosti** zadejte název skupiny dostupnosti, například **AG1**, do pole **název skupiny dostupnosti**. Klikněte na **Další**.
 
     ![Průvodce novým AG, zadání názvu AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
@@ -301,7 +301,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti pomocí následující
 
     ![Průvodce novým AG, výběr synchronizace počátečních dat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Na stránce **Vyberte počáteční synchronizaci dat** vyberte možnost **úplné** a zadejte sdílené síťové umístění. Pro toto umístění použijte [sdílenou složku zálohy, kterou jste vytvořili](#backupshare). V tomto příkladu **\\\\\<první SQL Server\>** \\. Klikněte na **Další**.
+8. Na stránce **Vyberte počáteční synchronizaci dat** vyberte možnost **úplné** a zadejte sdílené síťové umístění. Pro toto umístění použijte [sdílenou složku zálohy, kterou jste vytvořili](#backupshare). V tomto příkladu **\\\\\<první SQL Server\>** \\. Klikněte na **Další**.
 
    >[!NOTE]
    >Úplná synchronizace provede úplnou zálohu databáze na první instanci SQL Server a obnoví ji do druhé instance. U rozsáhlých databází se Úplná synchronizace nedoporučuje, protože může trvat dlouhou dobu. Tuto dobu můžete zkrátit ručním zálohováním databáze a jejím obnovením pomocí `NO RECOVERY`. Pokud je databáze již obnovena pomocí `NO RECOVERY` druhé SQL Server před konfigurací skupiny dostupnosti, vyberte možnost **pouze připojit**. Pokud chcete zálohování provést po konfiguraci skupiny dostupnosti, vyberte možnost **Přeskočit počáteční synchronizaci dat**.
@@ -364,7 +364,7 @@ Azure Load Balancer může být buď Standard Load Balancer, nebo základní Loa
    | **Typ** |Interní |
    | **Virtuální síť** |Použijte název virtuální sítě Azure. |
    | **Podsíť** |Použijte název podsítě, ve které se nachází virtuální počítač.  |
-   | **Přiřazení IP adresy** |Statická |
+   | **Přiřazení IP adresy** |Statické |
    | **IP adresa** |Použijte dostupnou adresu z podsítě. Tuto adresu použijte pro naslouchací proces skupiny dostupnosti. Všimněte si, že se liší od IP adresy vašeho clusteru.  |
    | **Předplatné** |Použijte stejné předplatné jako virtuální počítač. |
    | **Umístění** |Použijte stejné umístění jako virtuální počítač. |
@@ -428,7 +428,7 @@ Pokud chcete nakonfigurovat nástroj pro vyrovnávání zatížení, musíte vyt
    | **Testu** |Název, který jste zadali pro test paměti | SQLAlwaysOnEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **NTato** |
    | **Časový limit nečinnosti** | Počet minut, po který se má připojení TCP nechat otevřené | 4 |
-   | **Plovoucí IP adresa (přímá návrat ze serveru)** | |Povoleno |
+   | **Plovoucí IP adresa (přímá návrat ze serveru)** | |Povolit |
 
    > [!WARNING]
    > Při vytváření se nastaví přímá návrat serveru. Název není možné změnit.
@@ -469,7 +469,7 @@ IP adresa služby WSFC také musí být v nástroji pro vyrovnávání zatížen
    | **Testu** |Název, který jste zadali pro test paměti | WSFCEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **NTato** |
    | **Časový limit nečinnosti** | Počet minut, po který se má připojení TCP nechat otevřené | 4 |
-   | **Plovoucí IP adresa (přímá návrat ze serveru)** | |Povoleno |
+   | **Plovoucí IP adresa (přímá návrat ze serveru)** | |Povolit |
 
    > [!WARNING]
    > Při vytváření se nastaví přímá návrat serveru. Název není možné změnit.

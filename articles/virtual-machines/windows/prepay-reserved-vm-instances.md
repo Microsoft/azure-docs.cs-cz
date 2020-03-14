@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: fa0a95e693719c80723ef10f61f2872473b0873c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012296"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249903"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>Úspora nákladů pomocí Azure Reserved VM Instances
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]

@@ -12,11 +12,11 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
 ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587392"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256208"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co jsou fondy SQL Database instancí (Preview)?
 
