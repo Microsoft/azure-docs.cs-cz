@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274372"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371116"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>ZASTARALÉ Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
@@ -82,7 +82,7 @@ Následující příklad ukazuje jeden ze způsobů předání parametrů pomoc�
 
     ![Předání parametrů instančního objektu](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
-3. Spusťte následující příkaz a možnost `--parameters` použijte k nastavení cesty k souboru azuredeploy.parameters.json. Tento příkaz nasadí cluster ve vámi vytvořené skupině prostředků s názvem `myResourceGroup` v oblasti Západní USA.
+3. Spusťte následující příkaz a možnost `--parameters` použijte k nastavení cesty k souboru azuredeploy.parameters.json. Tento příkaz nasadí cluster ve vámi vytvořené skupině prostředků s názvem `myResourceGroup` v oblasti USA – západ.
 
     ```azurecli
     az login
@@ -103,7 +103,7 @@ Stejně jako u ostatních možností vytvoření clusteru Kubernetes můžete p�
 
 Následující příkaz vytvoří cluster Kubernetes a vygeneruje klíče SSH a pověření instančního objektu:
 
-```console
+```azurecli
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 

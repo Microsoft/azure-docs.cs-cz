@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: a6896eaad86c5e361c50cd81257131ee75a8d6a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467037"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370317"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Rychlý Start: dotazování Apache HBA ve službě Azure HDInsight pomocí Apache Phoenix
 
@@ -21,15 +21,15 @@ V tomto rychlém startu se dozvíte, jak používat Apache Phoenix ke spouštěn
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Cluster Apache HBA. V tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) vytvořte cluster HDInsight.  Ujistěte se, že jste vybrali typ clusteru **HBA** .
+* Cluster Apache HBA. V tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md) vytvořte cluster HDInsight.  Ujistěte se, že jste vybrali typ clusteru **HBA** .
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="identify-a-zookeeper-node"></a>Identifikujte uzel ZooKeeper
 
-Když se připojíte ke clusteru HBA, budete se muset připojit k jednomu z Apache ZooKeeper uzlů. Každý cluster HDInsight má tři ZooKeeper uzly. K rychlé identifikaci uzlu ZooKeeper lze použít kudrlinkou. Upravte níže uvedený příkaz s kudrlinkou nahrazením `PASSWORD` a `CLUSTERNAME` příslušnými hodnotami a zadáním příkazu do příkazového řádku:
+Když se připojíte ke clusteru HBA, budete se muset připojit k jednomu z Apache ZooKeeper uzlů. Každý cluster HDInsight má tři ZooKeeper uzly. K rychlé identifikaci uzlu ZooKeeper lze použít kudrlinkou. Níže uvedený příkaz s kudrlinkou upravte tak, že nahradíte `PASSWORD` a `CLUSTERNAME` příslušné hodnoty a potom do příkazového řádku zadáte příkaz:
 
 ```cmd
 curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER
@@ -65,7 +65,7 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí Apache Phoenix 
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-3. Spusťte [SQLLine](http://sqlline.sourceforge.net/). Níže uvedený příkaz upravte tak, že nahradíte `ZOOKEEPER` pomocí uzlu ZooKeeper, který jste identifikovali dříve, a pak zadáte příkaz:
+3. Spusťte [SQLLine](http://sqlline.sourceforge.net/). Níže uvedený příkaz upravte tak, že nahradíte `ZOOKEEPER` dříve identifikovaným uzlem ZooKeeper a pak zadáte příkaz:
 
     ```bash
     ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
@@ -108,7 +108,7 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí Apache Phoenix 
     DROP TABLE Company;
     ```
 
-10. Pomocí příkazu SQLLine `!quit` ukončete SQLLine. Zadejte následující příkaz:
+10. K ukončení SQLLine použijte příkaz SQLLine `!quit`. Zadejte následující příkaz:
 
     ```sqlline
     !quit

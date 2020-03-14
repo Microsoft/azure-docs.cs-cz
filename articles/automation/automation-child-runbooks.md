@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246550"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367359"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky v Azure Automation
 
@@ -29,19 +29,19 @@ Při publikování Runbooku musí být všechny podřízené Runbooky, které vo
 
 Parametry podřízeného Runbooku s názvem inline můžou být libovolného datového typu, včetně složitých objektů. Není k dispozici [serializace JSON](start-runbooks.md#runbook-parameters), protože při spuštění sady runbook pomocí Azure Portal nebo pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) je k dispozici.
 
-### <a name="runbook-types"></a>Typy runbooků
+### <a name="runbook-types"></a>Typy Runbooků
 
 Které typy runbooků se můžou vzájemně volat?
 
 * [Powershellový Runbook](automation-runbook-types.md#powershell-runbooks) a [Grafická sada Runbook](automation-runbook-types.md#graphical-runbooks) můžou zavolat každý další vložený, protože obě jsou založené na PowerShellu.
 * [Runbook pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks) a powershellový Runbook pracovního postupu PowerShellu můžou zavolat každé další vložené, protože obě jsou založené na pracovním postupu PowerShellu.
-* Typy PowerShellu a typy pracovních postupů PowerShellu nemůžou volat každý druhý vložený a musí používat rutinu **Start-AzAutomationRunbook**.
+* Typy PowerShellu a typy pracovních postupů PowerShellu nemůžou volat každý druhý vložený a musí používat `Start-AzAutomationRunbook`.
 
 Kdy se týká pořadí publikování?
 
 Pořadí publikování runbooků pouze pro PowerShellový pracovní postup a runbooky PowerShellu pro grafické pracovní postupy.
 
-Když vaše sada Runbook zavolá podřízenou sadu Runbook pracovního postupu PowerShellu pomocí vloženého spuštění, použije název Runbooku. Název musí začínat na **.\\** pro určení, že se skript nachází v místním adresáři.
+Když vaše sada Runbook zavolá podřízenou sadu Runbook pracovního postupu PowerShellu pomocí vloženého spuštění, použije název Runbooku. Název musí začínat na `.\\`, aby se určilo, že se skript nachází v místním adresáři.
 
 ### <a name="example"></a>Příklad
 
@@ -62,15 +62,15 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 ## <a name="starting-a-child-runbook-using-a-cmdlet"></a>Spuštění podřízeného Runbooku pomocí rutiny
 
 > [!IMPORTANT]
-> Vyvolá-li vaše sada Runbook podřízenou sadu Runbook s rutinou **Start-AzAutomationRunbook** s parametrem *Wait* a podřízená sada Runbook vytvoří výsledek objektu, může při operaci dojít k chybě. Chcete-li obejít tuto chybu, přečtěte si téma [podřízené Runbooky s výstupem objektu](troubleshoot/runbooks.md#child-runbook-object) , kde se dozvíte, jak implementovat logiku pro dotazování na výsledky pomocí rutiny [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
+> Pokud vaše sada Runbook vyvolá podřízenou sadu Runbook s rutinou `Start-AzAutomationRunbook` s parametrem `Wait` a podřízená sada Runbook vytvoří výsledek objektu, může při operaci dojít k chybě. Chcete-li obejít tuto chybu, přečtěte si téma [podřízené Runbooky s výstupem objektu](troubleshoot/runbooks.md#child-runbook-object) , kde se dozvíte, jak implementovat logiku pro dotazování na výsledky pomocí rutiny [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
 
-Pomocí rutiny **Start-AzAutomationRunbook** můžete spustit sadu Runbook, jak je popsáno v tématu [spuštění sady Runbook pomocí prostředí Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell). Existují dva režimy použití této rutiny. V jednom režimu rutina vrátí ID úlohy při vytvoření úlohy pro podřízený Runbook. V jiném režimu, který váš skript umožňuje zadáním parametru *Wait* , rutina počká, až se dokončí podřízená úloha, a vrátí výstup z podřízeného Runbooku.
+Pomocí `Start-AzAutomationRunbook` můžete spustit sadu Runbook, jak je popsáno v tématu [spuštění sady Runbook pomocí prostředí Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell). Existují dva režimy použití této rutiny. V jednom režimu rutina vrátí ID úlohy při vytvoření úlohy pro podřízený Runbook. V jiném režimu, který váš skript umožňuje zadáním parametru *Wait* , rutina počká, až se dokončí podřízená úloha, a vrátí výstup z podřízeného Runbooku.
 
 Úloha z podřízeného Runbooku se spustila rutinou, která se spouští odděleně od nadřazené úlohy Runbooku. Výsledkem tohoto chování je více úloh než spuštění sady Runbook inline a díky tomu se úlohy budou obtížnější sledovat. Nadřazená sada Runbook může spustit více než jednu podřízenou sadu Runbook, aniž by bylo nutné čekat na jejich dokončení. Pro toto paralelní spuštění volání podřízených runbooků musí nadřazená sada Runbook používat [klíčové slovo Parallel](automation-powershell-workflow.md#parallel-processing).
 
-Výstup podřízené sady Runbook se nevrátí do nadřazeného Runbooku spolehlivě z důvodu časování. Kromě toho proměnné, jako *$VerbosePreference*, *$WarningPreference*a jiné, nemusí být šířeny do podřízených runbooků. Chcete-li se těmto problémům vyhnout, můžete spustit podřízené Runbooky jako samostatné úlohy automatizace pomocí parametru **Start-AzAutomationRunbook** s parametrem *Wait* . Tento postup zablokuje nadřazenou sadu Runbook, dokud nebude dokončena podřízená sada Runbook.
+Výstup podřízené sady Runbook se nevrátí do nadřazeného Runbooku spolehlivě z důvodu časování. Kromě toho proměnné, jako `$VerbosePreference`, `$WarningPreference`a jiné, nemusí být šířeny do podřízených runbooků. Chcete-li se těmto problémům vyhnout, můžete spustit podřízené Runbooky jako samostatné úlohy automatizace pomocí `Start-AzAutomationRunbook` s parametrem `Wait`. Tento postup zablokuje nadřazenou sadu Runbook, dokud nebude dokončena podřízená sada Runbook.
 
-Pokud nechcete, aby se nadřazená sada Runbook zablokovala při čekání, můžete spustit podřízenou sadu Runbook pomocí parametru **Start-AzAutomationRunbook** bez parametru *Wait* . V takovém případě musí sada Runbook čekat na dokončení úlohy pomocí [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) . K načtení výsledků musí také použít příkaz [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
+Pokud nechcete, aby byl nadřazený Runbook zablokovaný při čekání na vyřízení, můžete podřízený Runbook spustit pomocí `Start-AzAutomationRunbook` bez parametru `Wait`. V takovém případě musí sada Runbook čekat na dokončení úlohy pomocí [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) . K načtení výsledků musí také použít příkaz [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
 
 Parametry pro podřízený Runbook spuštěný pomocí rutiny jsou k dispozici jako zatřiďovací tabulka, jak je popsáno v tématu [parametry Runbooku](start-runbooks.md#runbook-parameters). Lze použít pouze jednoduché datové typy. Pokud má runbook parametr komplexního datového typu, pak ho musí být volaný jako přiřazený.
 
@@ -80,7 +80,7 @@ Pokud úlohy v rámci stejného účtu Automation pracují s více než jedním 
 
 ### <a name="example"></a>Příklad
 
-Následující příklad spustí podřízený Runbook s parametry a potom počká, než se dokončí pomocí rutiny **Start-AzAutomationRunbook** s parametrem *Wait* . Po dokončení příklad shromáždí výstup rutiny z podřízeného Runbooku. Aby bylo možné použít **příkaz Start-AzAutomationRunbook**, musí se skript ověřit u vašeho předplatného Azure.
+Následující příklad spustí podřízený Runbook s parametry a potom počká, než se dokončí pomocí rutiny `Start-AzAutomationRunbook` s parametrem `Wait`. Po dokončení příklad shromáždí výstup rutiny z podřízeného Runbooku. Aby bylo možné použít `Start-AzAutomationRunbook`, musí se skript ověřit u vašeho předplatného Azure.
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext
@@ -111,10 +111,10 @@ Start-AzAutomationRunbook `
 
 Následující tabulka shrnuje rozdíly mezi dvěma způsoby volání Runbooku z jiné sady Runbook.
 
-|  | vložené | Rutina |
+|  | vložené | Rutiny |
 |:--- |:--- |:--- |
 | Úloha |Podřízené runbooky spuštěné ve stejné úloze jako nadřazený. |Pro podřízený runbook se vytvoří samostatná úloha. |
-| Spouštěcí |Nadřízený runbook čeká na dokončení podřízeného runbooku před pokračováním. |Nadřazená sada Runbook pokračuje ihned po spuštění podřízeného Runbooku *nebo* se nadřazený Runbook počká, až se podřízená úloha dokončí. |
+| Spuštění |Nadřízený runbook čeká na dokončení podřízeného runbooku před pokračováním. |Nadřazená sada Runbook pokračuje ihned po spuštění podřízeného Runbooku *nebo* se nadřazený Runbook počká, až se podřízená úloha dokončí. |
 | Výstup |Nadřazená sada runbook může získat výstup přímo z podřízeného runbooku. |Nadřazená sada Runbook musí načíst výstup z podřízené úlohy Runbooku *nebo* může z nadřazeného Runbooku získat výstup přímo z podřízeného Runbooku. |
 | Parametry |Hodnoty pro parametry podřízeného runbooku se zadávají samostatně a můžete použít libovolného datového typu. |Hodnoty pro parametry podřízeného Runbooku musí být sloučeny do jedné zatřiďovací tabulky. Tato zatřiďovací tabulka může zahrnovat pouze jednoduché datové typy Array a Object, které používají serializaci JSON. |
 | Účet Automation |Nadřazená sada Runbook může použít pouze podřízený Runbook ve stejném účtu Automation. |Nadřazené Runbooky můžou použít podřízený Runbook z libovolného účtu Automation, ze stejného předplatného Azure a dokonce z jiného předplatného, ke kterému máte připojení. |

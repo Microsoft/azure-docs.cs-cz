@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278373"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366832"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -33,7 +33,7 @@ Novou sadu Runbook můžete vytvořit v Azure Automation pomocí některého z p
 
 ### <a name="create-a-runbook-with-powershell"></a>Vytvoření Runbooku pomocí PowerShellu
 
-Pomocí rutiny [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) můžete vytvořit prázdnou [sadu Runbook pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks). Použijte parametr *typu* k určení jednoho z typů runbooků definovaných pro **New-AzAutomationRunbook**.
+Pomocí rutiny [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) můžete vytvořit prázdnou [sadu Runbook pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks). Pomocí parametru `Type` můžete zadat jeden z typů runbooků definovaných pro `New-AzAutomationRunbook`.
 
 Následující příklad ukazuje, jak vytvořit novou prázdnou sadu Runbook.
 
@@ -75,7 +75,7 @@ Pomocí následujícího postupu můžete do Azure Automation importovat soubor 
 
 ### <a name="import-a-runbook-from-a-script-file-with-windows-powershell"></a>Import runbooku ze souboru skriptu pomocí prostředí Windows PowerShell
 
-Pomocí rutiny [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) importujte soubor skriptu jako koncept Runbooku pracovního postupu PowerShellu. Pokud sada Runbook již existuje, import se nepovede, pokud nepoužijete parametr *Force* s rutinou.
+Pomocí rutiny [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) importujte soubor skriptu jako koncept Runbooku pracovního postupu PowerShellu. Pokud sada Runbook již existuje, import se nepovede, pokud nepoužijete parametr `Force` s rutinou.
 
 Následující příklad ukazuje, jak importovat soubor skriptu do sady Runbook.
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Testování runbooku
 
-Při testování Runbooku se spustí [koncept verze](#publish-a-runbook) a všechny akce, které provádí, se dokončí. Nevytvoří se žádná historie úlohy, ale Stream [výstupů](automation-runbook-output-and-messages.md#output-stream) a [Upozornění a chyb](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup testu. Zprávy na [podrobný datový proud](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup pouze v případě, že proměnná *VerbosePreference* ] (Automation-Runbook-Output-and-Messages. MD # preference-Variables) je nastavená na **pokračovat**.
+Při testování Runbooku se spustí [koncept verze](#publish-a-runbook) a všechny akce, které provádí, se dokončí. Nevytvoří se žádná historie úlohy, ale Stream [výstupů](automation-runbook-output-and-messages.md#output-stream) a [Upozornění a chyb](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup testu. Zprávy do [podrobného datového proudu](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup pouze v případě, že `VerbosePreference` proměnná] (Automation-Runbook-Output-and-Messages. MD # preference-Variables) je nastavená na pokračovat.
 
 I když je verze konceptu spuštěna, sada Runbook se stále provádí normálně a provede všechny akce s prostředky v prostředí. Z tohoto důvodu byste měli testovat pouze Runbooky na neprodukčních prostředcích.
 

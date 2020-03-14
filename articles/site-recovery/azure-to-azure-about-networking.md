@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5dcae83714ee3693288abf54afe8df7bb55dd578
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79258158"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371439"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -52,6 +52,8 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery.
 *.hypervrecoverymanager.windowsazure.com | Vyžaduje se, aby na virtuálním počítači mohla probíhat komunikace služby Site Recovery.
 *.servicebus.windows.net | Požadováno, aby se z virtuálního počítače mohla zapisovat data monitorování Site Recovery a diagnostická data.
+*.vault.azure.net | Umožňuje přístup k povolení replikace pro virtuální počítače s podporou ADE přes portál.
+*. automation.ext.azure.com | Umožňuje povolit automatický upgrade agenta mobility pro replikovanou položku prostřednictvím portálu.
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
@@ -63,6 +65,8 @@ Pokud k řízení odchozího připojení používáte NSG, musí být tyto znač
 - Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
 - Vytvořte pravidlo NSG na základě značky služby EventsHub pro cílovou oblast a umožněte přístup Site Recovery monitorování.
 - Vytvořte pravidlo NSG na základě značky služby AzureSiteRecovery, které umožní přístup k Site Recovery službě v libovolné oblasti.
+- Vytvořte pravidlo NSG na základě značky služby AzureKeyVault. To se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál.
+- Vytvořte pravidlo NSG na základě značky služby GuestAndHybridManagement. To se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu.
 - Doporučujeme, abyste vytvořili požadovaná pravidla NSG na NSG testu a ověřili, že neexistují žádné problémy předtím, než vytvoříte pravidla na produkčním NSG.
 
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG

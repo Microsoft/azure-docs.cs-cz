@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906541"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370470"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Mapování vlastní domény na koncový bod Azure Blob Storage
 
 Můžete namapovat vlastní doménu na koncový bod služby BLOB Service nebo na koncový bod [statického webu](storage-blob-static-website.md) . 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Toto mapování funguje pouze pro subdomény (například: `www.contoso.com`). Pokud chcete, aby byl váš webový koncový bod dostupný v kořenové doméně (například: `contoso.com`), budete muset použít Azure CDN. Pokyny najdete v části [Mapování vlastní domény s povoleným protokolem HTTPS](#enable-https) v tomto článku. Vzhledem k tomu, že v této části tohoto článku je umožněna kořenová doména vlastní domény, je krok v této části pro povolení protokolu HTTPS volitelný. 
@@ -231,7 +233,7 @@ Pokud například chcete získat přístup k webovému formuláři v kontejneru 
 
 Chcete-li odebrat vlastní mapování domény, zrušte registraci vlastní domény. Použijte jeden z následujících postupů.
 
-#### <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Pokud chcete odebrat vlastní nastavení domény, udělejte toto:
 
@@ -246,7 +248,7 @@ Pokud chcete odebrat vlastní nastavení domény, udělejte toto:
 
 Po úspěšném odebrání vlastní domény se zobrazí oznámení na portálu, že váš účet úložiště se úspěšně aktualizoval.
 
-#### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI a pak pro hodnotu argumentu `--custom-domain` zadejte prázdný řetězec (`""`).
 
@@ -268,7 +270,7 @@ Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
