@@ -1,24 +1,64 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace k Avere vFXT for Azure
+### YamlMime:Landing
+title: Dokumentace ke službě Avere vFXT for Azure
+summary: Avere vFXT for Azure poskytuje cloudovou mezipaměťovou vrstvu pro úlohy vysokovýkonného výpočetního prostředí (HPC) s velkými nároky na data.
 metadata:
-  title: Dokumentace k Avere vFXT for Azure
-  description: Využijte Avere vFXT jako mezipaměťovou vrstvu pro úlohy vysokovýkonného výpočetního prostředí (HPC) náročné na čtení
-  services: avere-vfxt
-  author: ekpgh
+  title: Dokumentace ke službě Avere vFXT for Azure
+  description: Využijte Avere vFXT jako mezipaměťovou vrstvu pro úlohy vysokovýkonného výpočetního prostředí (HPC) náročné na čtení.
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 12/19/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: "Avere vFXT for Azure poskytuje cloudovou mezipaměťovou vrstvu pro úlohy vysokovýkonného výpočetního prostředí (HPC) s velkými nároky na data. Ukládáním souborů do mezipaměti blízko vašich výpočetních uzlů Avere vFXT zrychluje čtení a umožňuje plynulejší práci i v zátěžové špičce. Avere vFXT nejlépe funguje pro systémy, které mají 1\_000 až 40\_000 klientských jader. <p>Avere vFXT spolupracuje s existujícím úložištěm dat a přináší soubory blízko k výpočetním prostředkům založeným na Azure. Aktivní soubory jsou pořád po dlouhou dobu uložené v datovém centru."
-sections:
-  - title: Začínáme s Avere vFXT for Azure
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="avere-vfxt-deploy-plan">Plánování systému Avere vFXT for Azure</a>
-          - html: <a href="avere-vfxt-deploy-overview">Další informace o nasazení Avere vFXT</a>
-          - html: <a href="avere-vfxt-prereqs">Splnění požadavků</a>
-          - html: <a href="avere-vfxt-deploy">Nasazení clusteru Avere vFXT</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 9b80c5dae1b9b08a5fc71c321813a28b576e0de4
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79297777"
+landingContent:
+- title: Informace o Avere vFXT for Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Avere vFXT for Azure?
+      url: avere-vfxt-overview.md
+  - linkListType: concept
+    links:
+    - text: Nejčastější dotazy
+      url: avere-vfxt-faq.md
+- title: Plánování a příprava
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Plánování systému Avere vFXT
+      url: avere-vfxt-deploy-plan.md
+  - linkListType: how-to-guide
+    links:
+    - text: Příprava k vytvoření Avere vFXT
+      url: avere-vfxt-prereqs.md
+- title: Vytváření a nasazování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Přehled nasazení
+      url: avere-vfxt-deploy-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení clusteru vFXT
+      url: avere-vfxt-deploy.md
+- title: Připojení a správa
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přístup ke clusteru vFXT
+      url: avere-vfxt-cluster-gui.md
+    - text: Povolení nahrávání podpory
+      url: avere-vfxt-enable-support.md
+    - text: Konfigurace úložiště
+      url: avere-vfxt-add-storage.md
+    - text: Připojení clusteru Avere vFXT
+      url: avere-vfxt-mount-clients.md
+    - text: Přesun dat do clusteru vFXT
+      url: avere-vfxt-data-ingest.md
+    - text: Správa clusteru Avere vFXT
+      url: avere-vfxt-manage-cluster.md

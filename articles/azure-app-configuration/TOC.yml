@@ -64,8 +64,6 @@
   items:
     - name: Ukládání hodnot klíče
       href: concept-key-value.md
-    - name: Šifrování s využitím klíčů spravovaných zákazníkem
-      href: concept-customer-managed-keys.md
     - name: Snímek k určitému časovému okamžiku
       href: concept-point-time-snapshot.md
     - name: Správa funkcí
@@ -74,8 +72,12 @@
       href: concept-github-action.md
     - name: Zpracování událostí
       href: concept-app-configuration-event.md
-    - name: Authentication
+    - name: Zabezpečení
       items:
+        - name: Šifrování s využitím klíčů spravovaných zákazníkem
+          href: concept-customer-managed-keys.md
+        - name: Zabezpečení úložiště konfigurace pomocí privátních koncových bodů
+          href: concept-private-endpoint.md
         - name: Integrace se spravovanou identitou Azure
           href: howto-integrate-azure-managed-service-identity.md
         - name: Povolení přístupu s využitím Azure Active Directory

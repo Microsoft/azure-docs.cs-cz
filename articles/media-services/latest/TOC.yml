@@ -8,12 +8,12 @@
       displayName: release notes
       href: release-notes.md
 - name: Rychlé starty
+  expanded: true
   items:
     - name: Živá událost s portálem a Wirecastem
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
 - name: Kurzy
-  expanded: true
   items:
     - name: Kódování vzdáleného souboru a streamování videa
       items:
@@ -42,7 +42,7 @@
       href: protect-with-drm.md
 - name: ukázky
   items:
-    - name: Ukázky Media Services
+    - name: Ukázky Media Services v3
       displayName: '.NET, Java'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
     - name: Ukázky REST pro Media Services v3
@@ -71,8 +71,6 @@
         - name: Transformace a úlohy
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
-        - name: Kódy chyb
-          href: job-error-codes.md
     - name: Kódování obsahu
       items:
         - name: Přehled
@@ -92,8 +90,6 @@
           displayName: 'analyzing, presets, jobs'
         - name: Transformace a úlohy
           href: transforms-jobs-concept.md
-        - name: Kódy chyb úlohy
-          href: job-error-codes.md
     - name: Živé streamování
       items:
         - name: Přehled
@@ -101,7 +97,7 @@
         - name: Živé události a výstupy
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
-        - name: Doporučené kodéry pro kódování v reálném čase
+        - name: Testované místní kodéry pro kódování v reálném čase
           href: recommended-on-premises-live-encoders.md
         - name: Posun času a funkce Live-to-VOD
           displayName: 'archive, dvr'
@@ -114,10 +110,6 @@
           href: live-event-states-billing.md
         - name: Latence
           href: live-event-latency.md
-        - name: Jak se stát partnerem pro místní kodéry
-          href: become-on-premises-encoder-partner.md
-        - name: Kódy chyb živých událostí
-          href: live-event-error-codes.md
     - name: Balení a doručování
       items:
         - name: Dynamické balení
@@ -138,8 +130,6 @@
           href: streaming-locators-concept.md
         - name: Zásady streamování
           href: streaming-policy-concept.md
-        - name: Kódy chyb koncových bodů streamování
-          href: streaming-endpoint-error-codes.md
     - name: Ochrana obsahu
       items:
         - name: Dynamické šifrování a doručování klíčů
@@ -211,20 +201,24 @@
   items:
     - name: Začínáme
       items:
-        - name: Vytvoření účtu – portál
-          href: create-account-portal.md
-        - name: Vytvoření účtu – rozhraní příkazového řádku
-          href: create-account-cli-how-to.md
-          displayName: storage
-        - name: Resetování přihlašovacích údajů k účtu – CLI
+        - name: Vytvoření účtu
+          items:
+            - name: S využitím portálu
+              href: create-account-portal.md
+            - name: S využitím rozhraní příkazového řádku
+              href: create-account-cli-how-to.md
+              displayName: storage
+        - name: Resetování přihlašovacích údajů k účtu
           href: cli-reset-account-credentials.md
-        - name: Přístup k rozhraním API – portál
-          href: access-api-portal.md
-        - name: Přístup k rozhraním API – rozhraní příkazového řádku
-          href: access-api-cli-how-to.md
-        - name: Škálování rezervovaných jednotek médií – CLI
+        - name: Přístup k rozhraním API
+          items:
+            - name: S využitím portálu
+              href: access-api-portal.md
+            - name: S využitím rozhraní příkazového řádku
+              href: access-api-cli-how-to.md
+        - name: Škálování rezervovaných jednotek médií
           href: media-reserved-units-cli-how-to.md
-        - name: Vytvoření prostředku – CLI
+        - name: Vytvoření prostředku
           href: cli-create-asset.md
     - name: Příručky pro vývojáře
       items:
@@ -244,31 +238,33 @@
               href: configure-connect-python-howto.md
     - name: Nahrání obsahu
       items:
-        - name: Z HTTPS – .NET
+        - name: Z HTTPS
           displayName: upload
           href: job-input-from-http-how-to.md
-        - name: Z místního souboru – .NET
-          displayName: upload
-          href: job-input-from-local-file-how-to.md
-        - name: Z místního souboru – REST
-          displayName: upload
-          href: upload-files-rest-how-to.md
-        - name: Z místního souboru – CLI
-          href: cli-upload-file-asset.md
+        - name: Z místního souboru
+          items:
+            - name: S využitím .NET
+              displayName: upload
+              href: job-input-from-local-file-how-to.md
+            - name: S využitím REST
+              displayName: upload
+              href: upload-files-rest-how-to.md
+            - name: S využitím rozhraní příkazového řádku
+              href: cli-upload-file-asset.md
     - name: Vytváření transformací a úloh
       items:
-        - name: Vytváření transformací – CLI
+        - name: Vytváření transformací
           href: cli-create-transform.md
-        - name: Vytváření úloh – CLI
+        - name: Vytváření úloh
           href: cli-create-jobs.md
         - name: Úlohy s několika transformačními výstupy
           href: job-multiple-transform-outputs.md
     - name: Kódování obsahu
       items:
-        - name: HTTPS jako vstup úlohy – .NET
+        - name: HTTPS jako vstup úlohy
           displayName: 'encode, encoding'
           href: job-input-from-http-how-to.md
-        - name: Místní soubor jako vstup úlohy – .NET
+        - name: Místní soubor jako vstup úlohy
           displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
         - name: Kódování s využitím vlastní transformace
@@ -290,6 +286,16 @@
             - name: S využitím REST
               href: subclip-video-rest-howto.md
               displayName: 'subclipping, clip, edit, trim, clipping'
+        - name: Kódy chyb úlohy
+          href: job-error-codes.md
+    - name: Živé streamování
+      items:
+        - name: Živá událost s portálem a Wirecastem
+          href: live-events-wirecast-quickstart.md
+        - name: Ověření místního kodéru
+          href: become-on-premises-encoder-partner.md
+        - name: Kódy chyb živých událostí
+          href: live-event-error-codes.md
     - name: Použití služby Event Grid
       items:
         - name: Monitorování událostí – portál
@@ -304,7 +310,7 @@
           href: media-services-diagnostic-logs-howto.md
     - name: Ochrana obsahu
       items:
-        - name: Získání zásad symetrických klíčů – .NET
+        - name: Získání zásad symetrických klíčů
           href: get-content-key-policy-dotnet-howto.md
         - name: FairPlay pro iOS v offline režimu
           href: offline-fairplay-for-ios.md
@@ -325,7 +331,9 @@
           displayName: filters
     - name: Doručování obsahu
       items:
-        - name: Publikování prostředku – CLI
+        - name: Správa koncových bodů streamování
+          href: manage-streaming-endpoints-howto.md
+        - name: Publikování prostředku
           href: cli-publish-asset.md
         - name: Vytvoření lokátoru streamování a adres URL
           href: create-streaming-locator-build-url.md

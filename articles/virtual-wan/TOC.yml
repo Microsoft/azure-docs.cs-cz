@@ -28,6 +28,8 @@
           href: virtual-wan-configure-automation-providers.md
     - name: Zásady protokolu IPsec
       href: virtual-wan-ipsec.md
+    - name: Přehled sítí VPN typu point-to-site
+      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Návody
   items:
     - name: Připojení brány virtuální sítě k Virtual WAN
@@ -56,6 +58,10 @@
           href: certificates-point-to-site.md
         - name: Konfigurace tenanta Azure AD pro VPN uživatele
           href: openvpn-azure-ad-tenant.md
+        - name: Konfigurace tunelu uživatele VPN AlwaysOn
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+        - name: Konfigurace tunelu zařízení VPN AlwaysOn
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
         - name: Povolení služby Multi-Factor Authentication (MFA) pro VPN uživatele
           href: openvpn-azure-ad-mfa.md
         - name: Konfigurace ověřování Azure AD pro VPN uživatele
@@ -91,7 +97,7 @@
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Omezení služeb a předplatných
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Cenová kalkulačka

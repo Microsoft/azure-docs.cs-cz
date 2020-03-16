@@ -1,42 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k Azure FXT Edge Fileru
+summary: Hybridní mezipaměť úložiště Azure FXT Edge Filer je hardwarový/softwarový hybridní systém, který zrychluje přístup k datům pro úlohy vysokovýkonného výpočetního prostředí (HPC) náročné na čtení, které jsou založené na souborech.
 metadata:
   title: Dokumentace k Azure FXT Edge Fileru
   description: Azure FXT Edge Filer můžete využít jako vrstvu mezipaměti pro úlohy vysokovýkonného výpočetního prostředí (HPC) náročné na čtení.
-  author: ekpgh
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 07/10/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Hybridní mezipaměť úložiště Azure FXT Edge Filer je hardwarový/softwarový hybridní systém, který zrychluje přístup k datům pro úlohy vysokovýkonného výpočetního prostředí (HPC) náročné na čtení, které jsou založené na souborech. Cluster tří nebo víc zařízení Azure FXT Edge Filer může zrychlit výkon úložiště pro místní systémy NAS (NetApp nebo Dell EMC Isilon), cloudové úložiště nebo kombinaci řešení.'
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-install">Instalace hardwaru Azure FXT Edge Fileru</a>
-          - html: <a href="fxt-network-power">Síťová připojení pro Azure FXT Edge Filer</a>
-          - html: <a href="fxt-node-password">Nastavení kořenových hesel na hardwarových uzlech</a>
-          - html: <a href="fxt-cluster-create">Vytvoření clusteru mezipaměti hybridního úložiště</a>
-          - html: <a href="fxt-add-nodes">Přidání uzlů clusteru</a>
-          - html: <a href="fxt-add-storage">Přidání back-endového úložiště a konfigurace virtuálního oboru názvů</a>
-          - html: <a href="fxt-configure-network">Konfigurace síťových nastavení clusteru</a>
-  - title: Návody
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-mount-clients">Připojení klientů ke clusteru Azure FXT Edge Fileru</a>
-          - html: <a href="fxt-monitor">Monitorování Azure FXT Edge Fileru</a>
-          - html: <a href="fxt-power-off">Bezpečné vypnutí hardwarového uzlu</a>
-  - title: Zdroje a prostředky
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-specs">Specifikace hardwaru</a>
-          - html: <a href="fxt-additional-doc">Další dokumentace</a>
-          - html: <a href="fxt-support-ticket">Otevření lístku podpory</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79298848"
+landingContent:
+- title: Informace o Azure FXT Edge Fileru
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure FXT Edge Filer?
+      url: fxt-overview.md
+- title: Začínáme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. Instalace hardwaru
+      url: fxt-install.md
+    - text: 2. Připojení kabelů
+      url: fxt-network-power.md
+    - text: 3. Nastavení hesel hardwaru
+      url: fxt-node-password.md
+    - text: 4. Vytvoření clusteru
+      url: fxt-cluster-create.md
+    - text: 5. Přidání uzlů clusteru
+      url: fxt-add-nodes.md
+    - text: 6. Přidání back-endového úložiště a konfigurace virtuálního oboru názvů
+      url: fxt-add-storage.md
+    - text: 7. Konfigurace síťových nastavení clusteru
+      url: fxt-configure-network.md
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Připojení klientů v clusteru
+      url: fxt-mount-clients.md
+    - text: Monitorování stavu hardwaru
+      url: fxt-monitor.md
+    - text: Bezpečné vypnutí hardwaru
+      url: fxt-power-off.md
+- title: Zdroje a prostředky
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Specifikace hardwaru
+      url: fxt-specs.md
+    - text: Další dokumentace
+      url: fxt-additional-doc.md

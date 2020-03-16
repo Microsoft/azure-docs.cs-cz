@@ -648,8 +648,10 @@
           href: snapshot-copy-managed-disk.md
         - name: Rezervace služby Disk Storage
           href: disks-reserved-capacity.md
-        - name: Vytvoření přírůstkového snímku
+        - name: Vytvoření přírůstkového snímku – CLI
           href: disks-incremental-snapshots.md
+        - name: Vytvoření přírůstkového snímku – portál
+          href: disks-incremental-snapshots-portal.md
         - name: Zálohování nespravovaných disků
           href: incremental-snapshots.md
         - name: Migrace a převod
