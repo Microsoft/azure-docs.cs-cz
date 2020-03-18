@@ -1,64 +1,64 @@
 ---
-title: 'Rychlý Start: Klientská knihovna C# analýza textu pro | Microsoft Docs'
-description: Začínáme s klientskou knihovnou Analýza textu proC#
+title: 'Rychlý start: Klientská knihovna Analýzy textu pro jazyk C# | Microsoft Docs'
+description: Začínáme s klientskou knihovnou Analýzy textu pro jazyk C#
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: b7c4bac7523cdec36beac64e2cd204588b0935fb
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.openlocfilehash: 6adce0ed6b5b5768bd9a489fced25ce439a33e0a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155474"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203394"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-[Referenční dokumentace v3](https://aka.ms/azsdk-net-textanalytics-ref-docs) | [zdrojový kód knihovny v3](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics) | [v3 Package (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [V3 Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[Referenční dokumentace k v3](https://aka.ms/azsdk-net-textanalytics-ref-docs) | [Zdrojový kód knihovny v3](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics) | [Balíček v3 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [Ukázky v3](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-[Referenční dokumentace v2](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet-preview) | [zdrojový kód knihovny v2](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2 Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2 Samples](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[Referenční dokumentace k v2](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet-preview) | [Zdrojový kód knihovny v2](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [Balíček v2 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [Ukázky v2](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure: Můžete si ho [vytvořit zdarma](https://azure.microsoft.com/free/).
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/)
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="vytvořit prostředek Analýza textu"  target="_blank">vytvořit Analýza textu</a> prostředků <span class="docon docon-navigate-external x-hidden-focus"></span> v Azure Portal a získat tak klíč a koncový bod. 
-    * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
-    * Pomocí cenové úrovně Free můžete službu vyzkoušet a později upgradovat na placenou úroveň pro produkční prostředí.
+* Jakmile máte předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Vytvoření prostředku Analýzy textu"  target="_blank">vytvořte si prostředek Analýza textu<span class="docon docon-navigate-external x-hidden-focus"></span></a> na webu Azure Portal. Získáte klíč a koncový bod. 
+    * Tento klíč a koncový bod z vytvářeného prostředku budete potřebovat pro připojení vaší aplikace k rozhraní API pro analýzu textu. Uděláte to v další fázi tohoto rychlého zprovoznění.
+    * Můžete si službu vyzkoušet s bezplatnou cenovou úrovní a pro produkční prostředí později upgradovat na placenou úroveň.
 
 ## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-new-net-core-application"></a>Vytvoření nové aplikace .NET Core
 
-Pomocí integrovaného vývojového prostředí (IDE) sady Visual Studio vytvořte novou konzolovou aplikaci .NET Core. Tím se vytvoří projekt "Hello World" s jedním C# zdrojovým souborem: *program.cs*.
+Pomocí integrovaného vývojového prostředí (IDE) sady Visual Studio vytvořte novou aplikaci konzoly .NET Core. Vytvoří se projekt Hello World s jedním zdrojovým souborem jazyka C#: *program.cs*.
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní**a vyhledejte `Azure.AI.TextAnalytics`. Vyberte `1.0.0-preview.2`verze a pak **nainstalujte**. Můžete také použít [konzolu Správce balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
-
-> [!TIP]
-> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít [na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), který obsahuje příklady kódu v tomto rychlém startu. 
-
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
-
-Nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. V okně Správce balíčků, které se otevře, vyberte **Procházet** a vyhledejte `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`. Klikněte na něj a pak na **nainstalovat**. Můžete také použít [konzolu Správce balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
+Klikněte pravým tlačítkem na řešení v **Průzkumníku řešení**, vyberte **Spravovat balíčky NuGet** a nainstalujte klientskou knihovnu. Ve správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předběžné verze** a vyhledejte `Azure.AI.TextAnalytics`. Vyberte verzi `1.0.0-preview.2` a pak vyberte **Nainstalovat**. Můžete použít také [konzolu správce balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
 
 > [!TIP]
-> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít [na GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs), který obsahuje příklady kódu v tomto rychlém startu. 
+> Chcete zobrazit celý soubor s kódem rychlého startu najednou? Soubor s příklady kódu v tomto rychlém startu najdete [na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs). 
+
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
+
+Klikněte pravým tlačítkem na řešení v **Průzkumníku řešení**, vyberte **Spravovat balíčky NuGet** a nainstalujte klientskou knihovnu. Ve správci balíčků, který se otevře, vyberte **Procházet** a vyhledejte `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`. Klikněte na tuto položku a pak na **Nainstalovat**. Můžete použít také [konzolu správce balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
+
+> [!TIP]
+> Chcete zobrazit celý soubor s kódem rychlého startu najednou? Soubor s příklady kódu v tomto rychlém startu najdete [na GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs). 
 
 ---
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
 Otevřete soubor *program.cs* a přidejte následující direktivy `using`:
 
@@ -68,7 +68,7 @@ using System.Globalization;
 using Azure.AI.TextAnalytics;
 ```
 
-V `Program` třídě aplikace vytvořte proměnné pro klíč a koncový bod prostředku.
+V třídě `Program` aplikace vytvořte proměnné pro klíč a koncový bod vašeho prostředku.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -77,7 +77,7 @@ private static readonly TextAnalyticsApiKeyCredential credentials = new TextAnal
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
-Nahraďte metodu `Main` aplikace. Zde budete definovat metody, které jsou zde volány později.
+Nahraďte metodu `Main` aplikace. Metody, které se tady volají, nadefinujete později.
 
 ```csharp
 static void Main(string[] args)
@@ -96,13 +96,13 @@ static void Main(string[] args)
 }
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
 Otevřete soubor *program.cs* a přidejte následující direktivy `using`:
 
 [!code-csharp[Import directives](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=imports)]
 
-V `Program` třídě aplikace vytvořte proměnné pro klíč a koncový bod prostředku. 
+V třídě `Program` aplikace vytvořte proměnné pro klíč a koncový bod vašeho prostředku. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -111,7 +111,7 @@ private static readonly string key = "<replace-with-your-text-analytics-key-here
 private static readonly string endpoint = "<replace-with-your-text-analytics-endpoint-here>";
 ```
 
-Nahraďte metodu `Main` aplikace. Zde budete definovat metody, které jsou zde volány později.
+Nahraďte metodu `Main` aplikace. Metody, které se tady volají, nadefinujete později.
 
 [!code-csharp[main method](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=main)]
 
@@ -119,36 +119,36 @@ Nahraďte metodu `Main` aplikace. Zde budete definovat metody, které jsou zde v
 
 ## <a name="object-model"></a>Objektový model
 
-Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azure pomocí vašeho klíče a poskytuje funkce pro příjem textu jako jednoho řetězce nebo jako dávky. Text do rozhraní API můžete synchronně nebo asynchronně posílat. Objekt odpovědi bude obsahovat informace o analýze pro každý dokument, který odešlete. 
+Klient Analýzy textu je objekt `TextAnalyticsClient`, který se ověřuje pro Azure pomocí vašeho klíče a nabízí funkce umožňující příjem textu jako jednotlivých řetězců nebo dávky. Text můžete do rozhraní API odesílat synchronně nebo asynchronně. Objekt odpovědi bude obsahovat analytické informace o jednotlivých odeslaných dokumentech. 
 
-Pokud používáte verzi `3.0-preview`, můžete použít volitelnou `TextAnalyticsClientOptions` instanci k inicializaci klienta s různými výchozími nastaveními (například výchozí jazyk nebo doporučení země). Můžete se také ověřit pomocí Azure Active Directoryho tokenu. 
+Pokud používáte verzi `3.0-preview`, můžete pomocí volitelné instance `TextAnalyticsClientOptions` inicializovat klienta s různými výchozími nastaveními (například výchozí jazyk nebo nápověda k zemi). K ověřování můžete použít také token Azure Active Directory. 
 
 ## <a name="code-examples"></a>Příklady kódu
 
 * [Analýza mínění](#sentiment-analysis)
 * [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
-* [Zjišťování osobních údajů](#detect-personal-information)
-* [Propojení entit](#entity-linking)
+* [Rozpoznávání osobních údajů](#detect-personal-information)
+* [Spojování entit](#entity-linking)
 * [Extrakce klíčových frází](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Zajistěte, aby metoda Main z dřívějších verzí vytvořila nový objekt klienta s vaším koncovým bodem a přihlašovacími údaji.
+Ujistěte se, že vaše metoda main z dřívější části vytváří nový objekt klienta s vaším koncovým bodem a vašimi přihlašovacími údaji.
 
 ```csharp
 var client = new TextAnalyticsClient(endpoint, credentials);
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Vytvořte novou třídu `ApiKeyServiceClientCredentials` pro uložení přihlašovacích údajů a přidejte je do požadavků klienta. V rámci něj Vytvořte přepsání pro `ProcessHttpRequestAsync()`, které přidá klíč do hlavičky `Ocp-Apim-Subscription-Key`.
+Vytvořte novou třídu `ApiKeyServiceClientCredentials`, která uloží přihlašovací údaje a přidá je do požadavků klienta. V této třídě vytvořte přepsání funkce `ProcessHttpRequestAsync()`, která přidá váš klíč do hlavičky `Ocp-Apim-Subscription-Key`.
 
 [!code-csharp[Client class](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=clientClass)]
 
-Vytvořte metodu pro vytvoření instance objektu [TextAnalyticsClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-dotnet) s vaším koncovým bodem a objektem `ApiKeyServiceClientCredentials`, který obsahuje váš klíč.
+Vytvořte metodu, který vytvoří instanci objektu [TextAnalyticsClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-dotnet) s vaším koncovým bodem a objektem `ApiKeyServiceClientCredentials` obsahujícím váš klíč.
 
 [!code-csharp[Client authentication](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=authentication)]
 
@@ -156,9 +156,9 @@ Vytvořte metodu pro vytvoření instance objektu [TextAnalyticsClient](https://
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Vytvořte novou funkci nazvanou `SentimentAnalysisExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `AnalyzeSentiment()`. Vrácený objekt `Response<DocumentSentiment>` bude obsahovat popisek mínění a skóre celého vstupního dokumentu a také analýzu mínění pro každou větu, pokud je úspěšná. Pokud došlo k chybě, vyvolá `RequestFailedException`.
+Vytvořte novou funkci `SentimentAnalysisExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `AnalyzeSentiment()`. Pokud vše proběhne úspěšně, vrácený objekt `Response<DocumentSentiment>` bude obsahovat popisek mínění a skóre celého vstupního dokumentu a také analýzu mínění pro jednotlivé věty. Pokud dojde k chybě, vyvolá se výjimka `RequestFailedException`.
 
 ```csharp
 static void SentimentAnalysisExample(TextAnalyticsClient client)
@@ -170,12 +170,12 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
     var si = new StringInfo(inputText);
     foreach (var sentence in documentSentiment.Sentences)
     {
-        Console.WriteLine($"\tSentence [offset {sentence.Offset}, length {sentence.Length}]");
-        Console.WriteLine($"\tText: \"{si.SubstringByTextElements(sentence.Offset, sentence.Length)}\"");
+        Console.WriteLine($"\tSentence [length {sentence.GraphemeLength}]");
+        Console.WriteLine($"\tText: \"{si.SubstringByTextElements(sentence.GraphemeOffset, sentence.GraphemeLength)}\"");
         Console.WriteLine($"\tSentence sentiment: {sentence.Sentiment}");
-        Console.WriteLine($"\tPositive score: {sentence.SentimentScores.Positive:0.00}");
-        Console.WriteLine($"\tNegative score: {sentence.SentimentScores.Negative:0.00}");
-        Console.WriteLine($"\tNeutral score: {sentence.SentimentScores.Neutral:0.00}\n");
+        Console.WriteLine($"\tPositive score: {sentence.ConfidenceScores.Positive:0.00}");
+        Console.WriteLine($"\tNegative score: {sentence.ConfidenceScores.Negative:0.00}");
+        Console.WriteLine($"\tNeutral score: {sentence.ConfidenceScores.Neutral:0.00}\n");
     }
 }
 ```
@@ -185,14 +185,14 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 ```console
 Document sentiment: Positive
 
-        Sentence [offset 0, length 30]
+        Sentence [length 30]
         Text: "I had the best day of my life."
         Sentence sentiment: Positive
         Positive score: 1.00
         Negative score: 0.00
         Neutral score: 0.00
 
-        Sentence [offset 31, length 30]
+        Sentence [length 30]
         Text: "I wish you were there with me."
         Sentence sentiment: Neutral
         Positive score: 0.21
@@ -200,11 +200,11 @@ Document sentiment: Positive
         Neutral score: 0.77
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Vytvořte novou funkci nazvanou `SentimentAnalysisExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci [mínění ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment?view=azure-dotnet) . Vrácený objekt [SentimentResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult?view=azure-dotnet) bude obsahovat mínění `Score` v případě úspěchu a `errorMessage`, pokud ne. 
+Vytvořte novou funkci `SentimentAnalysisExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci [Sentiment()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment?view=azure-dotnet). Pokud vše proběhne úspěšně, vrácený objekt [SentimentResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult?view=azure-dotnet) bude obsahovat skóre mínění v objektu `Score`, jinak bude obsahovat objekt `errorMessage`. 
 
-Skóre, které je blízko 0, označuje negativní mínění, zatímco skóre, které je blíže 1, značí kladné mínění.
+Skóre blížící se 0 značí negativní mínění, zatímco skóre blížící se 1 značí pozitivní mínění.
 
 [!code-csharp[Sentiment analysis](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=sentiment)]
 
@@ -216,13 +216,13 @@ Sentiment Score: 0.87
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
 
-Vytvořte novou funkci nazvanou `LanguageDetectionExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `DetectLanguage()`. Vrácený objekt `Response<DetectedLanguage>` bude obsahovat zjištěný jazyk spolu s jeho názvem a kódem ISO-6391. Pokud došlo k chybě, vyvolá `RequestFailedException`.
+Vytvořte novou funkci `LanguageDetectionExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `DetectLanguage()`. Vrácený objekt `Response<DetectedLanguage>` bude obsahovat zjištěný jazyk, jeho název a kód ISO-6391. Pokud dojde k chybě, vyvolá se výjimka `RequestFailedException`.
 
 > [!Tip]
-> V některých případech může být obtížné nejednoznačnost jazyků na základě vstupu. Pomocí parametru `countryHint` můžete zadat kód země se dvěma písmeny. Ve výchozím nastavení používá rozhraní API "US" jako výchozí countryHint. Chcete-li toto chování odebrat, můžete tento parametr obnovit nastavením této hodnoty na prázdný řetězec `countryHint = ""`. Chcete-li nastavit jinou výchozí hodnotu, nastavte vlastnost `TextAnalyticsClientOptions.DefaultCountryHint` a předejte ji během inicializace klienta.
+> V některých případech může být obtížné jednoznačně rozpoznat jazyk na základě vstupu. Pomocí parametru `countryHint` můžete zadat dvoupísmenný kód země. Rozhraní API ve výchozím nastavení jako hodnotu countryHint používá US. Pokud chcete toto chování zrušit, můžete tento parametr resetovat nastavením této hodnoty na prázdný řetězec – `countryHint = ""`. Pokud chcete nastavit jinou výchozí hodnotu, nastavte vlastnost `TextAnalyticsClientOptions.DefaultCountryHint` a předejte ji během inicializace klienta.
 
 ```csharp
 static void LanguageDetectionExample(TextAnalyticsClient client)
@@ -240,12 +240,12 @@ Language:
         French, ISO-6391: fr
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Vytvořte novou funkci nazvanou `languageDetectionExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci [operaci DetectLanguage ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) . Vrácený objekt [LanguageResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult?view=azure-dotnet) bude obsahovat seznam zjištěných jazyků v `DetectedLanguages` v případě úspěchu a `errorMessage`, pokud ne. Tisk prvního vráceného jazyka.
+Vytvořte novou funkci `languageDetectionExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci [DetectLanguage()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_). Pokud vše proběhne úspěšně, vrácený objekt [LanguageResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult?view=azure-dotnet) bude obsahovat seznam zjištěných jazyků v objektu `DetectedLanguages`, jinak bude obsahovat objekt `errorMessage`. Vytiskněte první vrácený jazyk.
 
 > [!Tip]
-> V některých případech může být obtížné nejednoznačnost jazyků na základě vstupu. Pomocí parametru `countryHint` můžete zadat kód země se dvěma písmeny. Ve výchozím nastavení používá rozhraní API "US" jako výchozí countryHint. Chcete-li toto chování odebrat, můžete tento parametr obnovit nastavením této hodnoty na prázdný řetězec `countryHint = ""`.
+> V některých případech může být obtížné jednoznačně rozpoznat jazyk na základě vstupu. Pomocí parametru `countryHint` můžete zadat dvoupísmenný kód země. Rozhraní API ve výchozím nastavení jako hodnotu countryHint používá US. Pokud chcete toto chování zrušit, můžete tento parametr resetovat nastavením této hodnoty na prázdný řetězec – `countryHint = ""`.
 
 [!code-csharp[Language Detection example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=languageDetection)]
 
@@ -257,28 +257,28 @@ Language: English
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
+## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER, Named Entity Recognition)
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
 
 > [!NOTE]
-> Novinka ve verzi `3.0-preview`:
-> * Rozpoznávání entit teď nabízí možnost zjišťovat osobní údaje v textu.
-> * Propojení entit je teď oddělené od rozpoznávání entit.
+> Novinky ve verzi `3.0-preview`:
+> * Rozpoznávání entit teď zahrnuje možnost rozpoznávat v textu osobní údaje.
+> * Spojování entit je teď oddělené od rozpoznávání entit.
 
 
-Vytvořte novou funkci nazvanou `EntityRecognitionExample()`, která převezme klienta, který jste vytvořili dříve, zavolejte jeho funkci `RecognizeEntities()` a Iterujte výsledky. Vrácený objekt `Response<IReadOnlyCollection<CategorizedEntity>>` bude obsahovat seznam zjištěných entit. Pokud došlo k chybě, vyvolá `RequestFailedException`.
+Vytvořte novou funkci `EntityRecognitionExample()`, která přebírá objekt klienta, který jste vytvořili dříve, volá jeho funkci `RecognizeEntities()` a iteruje přes seznam výsledků. Vrácený objekt `Response<IReadOnlyCollection<CategorizedEntity>>` bude obsahovat seznam zjištěných entit. Pokud dojde k chybě, vyvolá se výjimka `RequestFailedException`.
 
 ```csharp
 static void EntityRecognitionExample(TextAnalyticsClient client)
 {
     var response = client.RecognizeEntities("I had a wonderful trip to Seattle last week.");
     Console.WriteLine("Named Entities:");
-    foreach(var entity in response.Value)
+    foreach (var entity in response.Value)
     {
         Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tOffset: {entity.Offset},\tLength: {entity.Length},\tScore: {entity.Score:F3}\n");
+        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
     }
 }
 ```
@@ -288,15 +288,15 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 ```console
 Named Entities:
         Text: Seattle,  Category: Location,     Sub-Category: GPE
-                Offset: 26,     Length: 7,      Score: 0.920
+                Length: 7,      Score: 0.92
 
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
-                Offset: 34,     Length: 9,      Score: 0.800
+                Length: 9,      Score: 0.80
 ```
 
-## <a name="detect-personal-information"></a>Zjišťování osobních údajů
+## <a name="detect-personal-information"></a>Rozpoznávání osobních údajů
 
-Vytvořte novou funkci nazvanou `EntityPIIExample()`, která převezme klienta, který jste vytvořili dříve, zavolejte jeho funkci `RecognizePiiEntities()` a Iterujte výsledky. Podobně jako u předchozí funkce bude vrácený objekt `Response<IReadOnlyCollection<CategorizedEntity>>` obsahovat seznam zjištěných entit. Pokud došlo k chybě, vyvolá `RequestFailedException`.
+Vytvořte novou funkci `EntityPIIExample()`, která přebírá objekt klienta, který jste vytvořili dříve, volá jeho funkci `RecognizePiiEntities()` a iteruje přes seznam výsledků. Podobně jako u předchozí funkce bude vrácený objekt `Response<IReadOnlyCollection<CategorizedEntity>>` obsahovat seznam zjištěných entit. Pokud dojde k chybě, vyvolá se výjimka `RequestFailedException`.
 
 ```csharp
 static void EntityPIIExample(TextAnalyticsClient client)
@@ -304,10 +304,10 @@ static void EntityPIIExample(TextAnalyticsClient client)
     string inputText = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
     var response = client.RecognizePiiEntities(inputText);
     Console.WriteLine("Personally Identifiable Information Entities:");
-    foreach(var entity in response.Value)
+    foreach (var entity in response.Value)
     {
         Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tOffset: {entity.Offset},\tLength: {entity.Length},\tScore: {entity.Score:F3}\n");
+        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
     }
 }
 ```
@@ -316,14 +316,14 @@ static void EntityPIIExample(TextAnalyticsClient client)
 
 ```console
 Personally Identifiable Information Entities:
-        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category: None
-                Offset: 33,     Length: 11,     Score: 0.850
+        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category:
+                Length: 11,     Score: 0.85
 ```
 
 
-## <a name="entity-linking"></a>Propojení entit
+## <a name="entity-linking"></a>Spojování entit
 
-Vytvořte novou funkci nazvanou `EntityLinkingExample()`, která převezme klienta, který jste vytvořili dříve, zavolejte jeho funkci `RecognizeLinkedEntities()` a Iterujte výsledky. Vrácená `Response<IReadOnlyCollection<LinkedEntity>>` představuje seznam zjištěných entit. Pokud došlo k chybě, vyvolá `RequestFailedException`. Vzhledem k tomu, že propojené entity jsou jednoznačně identifikovány, jsou výskyty stejné entity seskupeny pod objektem `LinkedEntity` jako seznam objektů `LinkedEntityMatch`.
+Vytvořte novou funkci `EntityLinkingExample()`, která přebírá objekt klienta, který jste vytvořili dříve, volá jeho funkci `RecognizeLinkedEntities()` a iteruje přes seznam výsledků. Vrácený objekt `Response<IReadOnlyCollection<LinkedEntity>>` představuje seznam zjištěných entit. Pokud dojde k chybě, vyvolá se výjimka `RequestFailedException`. Vzhledem k tomu, že jsou propojené entity jednoznačně identifikované, výskyty stejné entity se seskupují v rámci objektu `LinkedEntity` jako seznam objektů `LinkedEntityMatch`.
 
 ```csharp
 static void EntityLinkingExample(TextAnalyticsClient client)
@@ -337,12 +337,12 @@ static void EntityLinkingExample(TextAnalyticsClient client)
     Console.WriteLine("Linked Entities:");
     foreach (var entity in response.Value)
     {
-        Console.WriteLine($"\tName: {entity.Name},\tID: {entity.Id},\tURL: {entity.Url}\tData Source: {entity.DataSource}");
+        Console.WriteLine($"\tName: {entity.Name},\tID: {entity.DataSourceEntityId},\tURL: {entity.Url}\tData Source: {entity.DataSource}");
         Console.WriteLine("\tMatches:");
         foreach (var match in entity.Matches)
         {
             Console.WriteLine($"\t\tText: {match.Text}");
-            Console.WriteLine($"\t\tOffset: {match.Offset},\tLength: {match.Length},\tScore: {match.Score:F3}\n");
+            Console.WriteLine($"\t\tLength: {match.GraphemeLength},\tScore: {match.ConfidenceScore:F2}\n");
         }
     }
 }
@@ -355,46 +355,46 @@ Linked Entities:
         Name: Altair 8800,      ID: Altair 8800,        URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
                 Text: Altair 8800
-                Offset: 116,    Length: 11,     Score: 0.777
+                Length: 11,     Score: 0.78
 
         Name: Bill Gates,       ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
                 Text: Bill Gates
-                Offset: 25,     Length: 10,     Score: 0.555
+                Length: 10,     Score: 0.55
 
                 Text: Gates
-                Offset: 161,    Length: 5,      Score: 0.555
+                Length: 5,      Score: 0.55
 
         Name: Paul Allen,       ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
                 Text: Paul Allen
-                Offset: 40,     Length: 10,     Score: 0.533
+                Length: 10,     Score: 0.53
 
         Name: Microsoft,        ID: Microsoft,  URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
                 Text: Microsoft
-                Offset: 0,      Length: 9,      Score: 0.469
+                Length: 9,      Score: 0.47
 
                 Text: Microsoft
-                Offset: 150,    Length: 9,      Score: 0.469
+                Length: 9,      Score: 0.47
 
         Name: April 4,  ID: April 4,    URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
                 Text: April 4
-                Offset: 54,     Length: 7,      Score: 0.248
+                Length: 7,      Score: 0.25
 
         Name: BASIC,    ID: BASIC,      URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
                 Text: BASIC
-                Offset: 89,     Length: 5,      Score: 0.281
+                Length: 5,      Score: 0.28
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
 > [!NOTE]
-> Ve verzi 2,1 je odkaz na entitu součástí odpovědi NER.
+> Ve verzi 2.1 je spojování entit součástí odpovědi NER.
 
-Vytvořte novou funkci nazvanou `RecognizeEntitiesExample()`, která převezme klienta, který jste vytvořili dříve, a zavolejte jeho funkce [Entities ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) . Iterujte výsledky. Vrácený objekt [EntitiesResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult?view=azure-dotnet) bude obsahovat seznam zjištěných entit v `Entities` v případě úspěchu a `errorMessage`, pokud ne. Pro každou zjištěnou entitu vytiskněte svůj typ, dílčí typ, Wikipedii název (pokud existují) a také umístění v původním textu.
+Vytvořte novou funkci `RecognizeEntitiesExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci [Entities()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_). Iterujte přes seznam výsledků. Pokud vše proběhne úspěšně, vrácený objekt [EntitiesResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult?view=azure-dotnet) bude obsahovat seznam zjištěných entit v objektu `Entities`, jinak bude obsahovat objekt `errorMessage`. Vytiskněte typ, podtyp a název na Wikipedii (pokud existují) jednotlivých zjištěných entit a také jejich umístění v původním textu.
 
 [!code-csharp[Entity Recognition example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=entityRecognition)]
 
@@ -403,9 +403,9 @@ Vytvořte novou funkci nazvanou `RecognizeEntitiesExample()`, která převezme k
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3.0 – Preview](#tab/version-3)
 
-Vytvořte novou funkci nazvanou `KeyPhraseExtractionExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `ExtractKeyPhrases()`. Vrácený objekt `<Response<IReadOnlyCollection<string>>` bude obsahovat seznam zjištěných klíčových frází. Pokud došlo k chybě, vyvolá `RequestFailedException`.
+Vytvořte novou funkci `KeyPhraseExtractionExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `ExtractKeyPhrases()`. Vrácený objekt `<Response<IReadOnlyCollection<string>>` bude obsahovat seznam zjištěných klíčových frází. Pokud dojde k chybě, vyvolá se výjimka `RequestFailedException`.
 
 ```csharp
 static void KeyPhraseExtractionExample(TextAnalyticsClient client)
@@ -430,9 +430,9 @@ Key phrases:
     veterinarian
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
 
-Vytvořte novou funkci nazvanou `KeyPhraseExtractionExample()`, která převezme klienta, kterého jste vytvořili dříve a zavolejte [jeho funkci.](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) Výsledek bude obsahovat seznam zjištěných klíčových frází v `KeyPhrases` v případě úspěchu a `errorMessage`, pokud ne. Vytiskněte všechny zjištěné klíčové fráze.
+Vytvořte novou funkci `KeyPhraseExtractionExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci [KeyPhrases()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_). Pokud vše proběhne úspěšně, výsledek bude obsahovat seznam zjištěných klíčových frází v objektu `KeyPhrases`, jinak bude obsahovat objekt `errorMessage`. Vytiskněte všechny zjištěné klíčové fráze.
 
 [!code-csharp[Key phrase extraction example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=keyPhraseExtraction)]
 

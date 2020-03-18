@@ -1,52 +1,53 @@
 ---
-title: 'Rychlý Start: Klientská knihovna Analýza textu v3 pro Java | Microsoft Docs'
-description: Začněte s knihovnou klienta V3 Analýza textu pro Java.
+title: 'Rychlý start: Klientská knihovna Analýzy textu v3 pro Javu | Microsoft Docs'
+description: Začínáme s klientskou knihovnou Analýzy textu v3 pro Javu
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/12/2020
 ms.author: aahi
-ms.reviewer: tasharm, assafi
-ms.openlocfilehash: 79b4063d6b65d6861dd7864c4225e91f4ea5bc6d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.reviewer: tasharm, assafi, sumeh
+ms.openlocfilehash: 11092b74c0256d298dece0f909d8d7dd241e7b13
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155424"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371311"
 ---
 <a name="HOLTop"></a>
 
-[Referenční dokumentace](https://aka.ms/azsdk-java-textanalytics-ref-docs) |  | [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) [(Maven)](https://oss.sonatype.org/#nexus-search;quick~com.azure)
+[Referenční dokumentace](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) s verzí 8 nebo vyšší
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="vytvořit prostředek Analýza textu"  target="_blank">vytvořit Analýza textu</a> prostředků <span class="docon docon-navigate-external x-hidden-focus"></span> v Azure Portal a získat tak klíč a koncový bod. 
-    * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
-    * Pomocí cenové úrovně Free můžete službu vyzkoušet a později upgradovat na placenou úroveň pro produkční prostředí.
+* Předplatné Azure: Můžete si ho [vytvořit zdarma](https://azure.microsoft.com/free/).
+* [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) verze 8 nebo novější
+* Jakmile máte předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Vytvoření prostředku Analýzy textu"  target="_blank">vytvořte si prostředek Analýza textu<span class="docon docon-navigate-external x-hidden-focus"></span></a> na webu Azure Portal. Získáte klíč a koncový bod. 
+    * Tento klíč a koncový bod z vytvářeného prostředku budete potřebovat pro připojení vaší aplikace k rozhraní API pro analýzu textu. Uděláte to v další fázi tohoto rychlého zprovoznění.
+    * Můžete si službu vyzkoušet s bezplatnou cenovou úrovní a pro produkční prostředí později upgradovat na placenou úroveň.
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-a-new-maven-project"></a>Vytvoření nového projektu Maven
+### <a name="add-the-client-library"></a>Přidání klientské knihovny
 
-Přidejte do projektu následující závislost analýzy textu. Tato verze závislosti používá `3.0-preview` verze rozhraní API pro analýzu textu. 
+V oblíbeném vývojovém prostředí nebo integrovaném vývojovém prostředí (IDE) vytvořte projekt Maven. Pak do souboru *pom.xml* projektu přidejte následující závislost. Syntaxi pro implementaci [pro další nástroje pro sestavování](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) najdete online.
 
 ```xml
 <dependencies>
-    <dependency>
+     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.2</version>
+        <version>1.0.0-beta.3</version>
     </dependency>
 </dependencies>
 ```
 
-Vytvořte nový soubor Java v následujícím adresáři: `\src\main\java`.
+> [!TIP]
+> Chcete zobrazit celý soubor s kódem rychlého startu najednou? Soubor s příklady kódu v tomto rychlém startu najdete [na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java). 
 
-Otevřete soubor Java a přidejte následující příkazy `import`:
+Vytvořte soubor Java s názvem `TextAnalyticsSamples.java`. Otevřete tento soubor a přidejte do něj následující příkazy `import`:
 
 ```java
 import com.azure.ai.textanalytics.models.*;
@@ -54,7 +55,7 @@ import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
 ```
 
-V souboru Java přidejte novou třídu a přidejte klíč a koncový bod prostředku Azure, jak je znázorněno níže.
+V souboru Java přidejte novou třídu a klíč a koncový bod vašeho prostředku Azure, jak je znázorněno níže.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -65,11 +66,11 @@ public class TextAnalyticsSamples {
 }
 ```
 
-Do třídy přidejte následující metodu Main. Zde budete definovat metody, které jsou zde volány později.
+Přidejte do třídy následující metodu main. Metody, které se tady volají, nadefinujete později.
 
 ```java
 public static void main(String[] args) {
-
+    //You will create these methods later in the quickstart.
     TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
 
     sentimentAnalysisExample(client);
@@ -83,7 +84,7 @@ public static void main(String[] args) {
 
 ## <a name="object-model"></a>Objektový model
 
-Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azure pomocí vašeho klíče a poskytuje funkce pro příjem textu jako jednoho řetězce nebo jako dávky. Text do rozhraní API můžete synchronně nebo asynchronně posílat. Objekt odpovědi bude obsahovat informace o analýze pro každý dokument, který odešlete. 
+Klient Analýzy textu je objekt `TextAnalyticsClient`, který se ověřuje pro Azure pomocí vašeho klíče a nabízí funkce umožňující příjem textu jako jednotlivých řetězců nebo dávky. Text můžete do rozhraní API odesílat synchronně nebo asynchronně. Objekt odpovědi bude obsahovat analytické informace o jednotlivých odeslaných dokumentech. 
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -91,12 +92,12 @@ Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azu
 * [Analýza mínění](#sentiment-analysis) 
 * [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner) 
-* [Propojení entit](#entity-linking)
+* [Spojování entit](#entity-linking)
 * [Extrakce klíčových frází](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte metodu pro vytvoření instance objektu `TextAnalyticsClient` pomocí `KEY` a `ENDPOINT` vytvořili výše.
+Vytvořte metodu, která vytvoří instanci objektu `TextAnalyticsClient` s klíčem a koncovým bodem vašeho prostředku Analýzy textu.
 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
@@ -107,11 +108,11 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 }
 ```
 
-V metodě `main()` programu zavolejte metodu ověřování pro vytvoření instance klienta.
+V metodě `main()` programu zavolejte metodu ověřování a vytvořte instanci klienta.
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-Vytvořte novou funkci nazvanou `sentimentAnalysisExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `analyzeSentiment()`. Vrácený objekt `AnalyzeSentimentResult` bude obsahovat `documentSentiment` a `sentenceSentiments` v případě úspěchu nebo `errorMessage`, pokud ne. 
+Vytvořte novou funkci `sentimentAnalysisExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `analyzeSentiment()`. Pokud vše proběhne úspěšně, vrácený objekt `AnalyzeSentimentResult` bude obsahovat objekty `documentSentiment` a `sentenceSentiments`, jinak bude obsahovat objekt `errorMessage`. 
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -120,37 +121,38 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
     String text = "I had the best day of my life. I wish you were there with me.";
 
     DocumentSentiment documentSentiment = client.analyzeSentiment(text);
-        System.out.printf(
-            "Recognized document sentiment: %s, positive score: %.2f, neutral score: %.2f, negative score: %.2f.%n",
-            documentSentiment.getSentiment(),
-            documentSentiment.getSentimentScores().getPositive(),
-            documentSentiment.getSentimentScores().getNeutral(),
-            documentSentiment.getSentimentScores().getNegative());
+    System.out.printf(
+        "Recognized document sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
+        documentSentiment.getSentiment(),
+        documentSentiment.getConfidenceScores().getPositive(),
+        documentSentiment.getConfidenceScores().getNeutral(),
+        documentSentiment.getConfidenceScores().getNegative());
 
-        for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
-            System.out.printf(
-                "Recognized sentence sentiment: %s, positive score: %.2f, neutral score: %.2f, negative score: %.2f.%n",
-                sentenceSentiment.getSentiment(),
-                sentenceSentiment.getSentimentScores().getPositive(),
-                sentenceSentiment.getSentimentScores().getNeutral(),
-                sentenceSentiment.getSentimentScores().getNegative());
-        }
+    for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
+        System.out.printf(
+            "Recognized sentence sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
+            sentenceSentiment.getSentiment(),
+            sentenceSentiment.getConfidenceScores().getPositive(),
+            sentenceSentiment.getConfidenceScores().getNeutral(),
+            sentenceSentiment.getConfidenceScores().getNegative());
+    }
 }
 ```
 
 ### <a name="output"></a>Výstup
 
 ```console
-Recognized document sentiment: positive, Positive Score: 1.00, Neutral Score: 0.00, Negative Score: 0.00.
-Recognized sentence sentiment: positive, positive score: 1.00, neutral score: 0.00, negative score: 0.00.
+Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
+Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
+
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Vytvořte novou funkci nazvanou `detectLanguageExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `detectLanguage()`. Vrácený objekt `DetectLanguageResult` bude obsahovat nalezený primární jazyk, seznam dalších jazyků zjištěných v případě úspěchu nebo `errorMessage`, pokud ne.
+Vytvořte novou funkci `detectLanguageExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `detectLanguage()`. Pokud vše proběhne úspěšně, vrácený objekt `DetectLanguageResult` bude obsahovat zjištěný primární jazyk a seznam dalších zjištěných jazyků, jinak bude obsahovat objekt `errorMessage`.
 
 > [!Tip]
-> V některých případech může být obtížné nejednoznačnost jazyků na základě vstupu. Pomocí parametru `countryHint` můžete zadat kód země se dvěma písmeny. Ve výchozím nastavení používá rozhraní API "US" jako výchozí countryHint. Chcete-li toto chování odebrat, můžete tento parametr obnovit nastavením této hodnoty na prázdný řetězec `countryHint = ""`. Chcete-li nastavit jinou výchozí hodnotu, nastavte vlastnost `TextAnalyticsClientOptions.DefaultCountryHint` a předejte ji během inicializace klienta.
+> V některých případech může být obtížné jednoznačně rozpoznat jazyk na základě vstupu. Pomocí parametru `countryHint` můžete zadat dvoupísmenný kód země. Rozhraní API ve výchozím nastavení jako hodnotu countryHint používá US. Pokud chcete toto chování zrušit, můžete tento parametr resetovat nastavením této hodnoty na prázdný řetězec – `countryHint = ""`. Pokud chcete nastavit jinou výchozí hodnotu, nastavte vlastnost `TextAnalyticsClientOptions.DefaultCountryHint` a předejte ji během inicializace klienta.
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -171,14 +173,14 @@ static void detectLanguageExample(TextAnalyticsClient client)
 ```console
 Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 ```
-## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
+## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER, Named Entity Recognition)
 
 > [!NOTE]
 > Ve verzi `3.0-preview`:
-> * NER obsahuje samostatné metody zjišťování osobních údajů. 
-> * Odkaz na entitu je samostatný požadavek než NER.
+> * Rozpoznávání pojmenovaných entit zahrnuje samostatné metody pro detekci osobních údajů. 
+> * Spojování entit je samostatný požadavek.
 
-Vytvořte novou funkci nazvanou `recognizeEntitiesExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `recognizeEntities()`. Vrácený objekt `RecognizeEntitiesResult` bude obsahovat seznam `NamedEntity`, pokud je to úspěšné, nebo `errorMessage`, pokud ne.
+Vytvořte novou funkci `recognizeEntitiesExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `recognizeEntities()`. Pokud vše proběhne úspěšně, vrácený objekt `RecognizeEntitiesResult` bude obsahovat seznam objektů `NamedEntity`, jinak bude obsahovat objekt `errorMessage`.
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -188,13 +190,11 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 
     for (CategorizedEntity entity : client.recognizeEntities(text)) {
         System.out.printf(
-            "Recognized entity: %s, entity category: %s, entity sub-category: %s, offset: %s, length: %s, score: %.2f.%n",
+            "Recognized entity: %s, entity category: %s, entity sub-category: %s, score: %s.%n",
             entity.getText(),
             entity.getCategory(),
-            entity.getSubCategory() == null || entity.getSubCategory().isEmpty() ? "N/A" : entity.getSubCategory(),
-            entity.getOffset(),
-            entity.getLength(),
-            entity.getScore());
+            entity.getSubCategory(),
+            entity.getConfidenceScore());
     }
 }
 ```
@@ -202,13 +202,13 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Výstup
 
 ```console
-Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, offset: 26, length: 7, score: 0.92.
-Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, offset: 34, length: 9, score: 0.80.
+Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.92.
+Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
-## <a name="using-ner-to-recognize-personal-information"></a>Rozpoznávání osobních údajů pomocí NER
+## <a name="using-ner-to-recognize-personal-information"></a>Použití rozpoznávání pojmenovaných entit k rozpoznávání osobních údajů
 
-Vytvořte novou funkci nazvanou `recognizePIIEntitiesExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `recognizePiiEntities()`. Vrácený objekt `RecognizePiiEntitiesResult` bude obsahovat seznam `NamedEntity`, pokud je to úspěšné, nebo `errorMessage`, pokud ne. 
+Vytvořte novou funkci `recognizePIIEntitiesExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `recognizePiiEntities()`. Pokud vše proběhne úspěšně, vrácený objekt `RecognizePiiEntitiesResult` bude obsahovat seznam objektů `NamedEntity`, jinak bude obsahovat objekt `errorMessage`. 
 
 ```java
 static void recognizePIIEntitiesExample(TextAnalyticsClient client)
@@ -218,13 +218,11 @@ static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 
     for (PiiEntity entity : client.recognizePiiEntities(text)) {
         System.out.printf(
-            "Recognized personal identifiable information entity: %s, entity category: %s, entity sub-category: %s, offset: %s, length: %s, score: %.2f.%n",
+            "Recognized personal identifiable information entity: %s, entity category: %s, %nentity sub-category: %s, score: %s.%n",
             entity.getText(),
             entity.getCategory(),
-            entity.getSubCategory() == null || entity.getSubCategory().isEmpty() ? "N/A" : entity.getSubCategory(),
-            entity.getOffset(),
-            entity.getLength(),
-            entity.getScore());
+            entity.getSubCategory(),
+            entity.getConfidenceScore());
     }
 }
 ```
@@ -232,12 +230,13 @@ static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Výstup
 
 ```console
-Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), entity sub-category: N/A, offset: 33, length: 11, score: 0.85.
+Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), 
+entity sub-category: null, score: 0.85.
 ```
 
-## <a name="entity-linking"></a>Propojení entit
+## <a name="entity-linking"></a>Spojování entit
 
-Vytvořte novou funkci nazvanou `recognizeLinkedEntitiesExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `recognizeLinkedEntities()`. Vrácený objekt `RecognizeLinkedEntitiesResult` bude obsahovat seznam `LinkedEntity`, pokud je to úspěšné, nebo `errorMessage`, pokud ne. Vzhledem k tomu, že propojené entity jsou jednoznačně identifikovány, jsou výskyty stejné entity seskupeny pod objektem `LinkedEntity` jako seznam objektů `LinkedEntityMatch`.
+Vytvořte novou funkci `recognizeLinkedEntitiesExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `recognizeLinkedEntities()`. Pokud vše proběhne úspěšně, vrácený objekt `RecognizeLinkedEntitiesResult` bude obsahovat seznam objektů `LinkedEntity`, jinak bude obsahovat objekt `errorMessage`. Vzhledem k tomu, že jsou propojené entity jednoznačně identifikované, výskyty stejné entity se seskupují v rámci objektu `LinkedEntity` jako seznam objektů `LinkedEntityMatch`.
 
 ```java
 static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
@@ -253,16 +252,14 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
     for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
         System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
                 linkedEntity.getName(),
-                linkedEntity.getId(),
+                linkedEntity.getDataSourceEntityId(),
                 linkedEntity.getUrl(),
                 linkedEntity.getDataSource());
         System.out.printf("Matches:%n");
         for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getLinkedEntityMatches()) {
-            System.out.printf("Text: %s, Offset: %s, Length: %s, Score: %.2f.%n",
+            System.out.printf("Text: %s, Score: %.2f%n",
                     linkedEntityMatch.getText(),
-                    linkedEntityMatch.getOffset(),
-                    linkedEntityMatch.getLength(),
-                    linkedEntityMatch.getScore());
+                    linkedEntityMatch.getConfidenceScore());
         }
     }
 }
@@ -274,28 +271,28 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 Linked Entities:
 Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
 Matches:
-Text: Altair 8800, Offset: 11, Length: 116, Score: 0.78.
+Text: Altair 8800, Score: 0.78
 Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
 Matches:
-Text: Bill Gates, Offset: 10, Length: 25, Score: 0.55.
-Text: Gates, Offset: 5, Length: 161, Score: 0.55.
+Text: Bill Gates, Score: 0.55
+Text: Gates, Score: 0.55
 Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
 Matches:
-Text: Paul Allen, Offset: 10, Length: 40, Score: 0.53.
+Text: Paul Allen, Score: 0.53
 Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
 Matches:
-Text: Microsoft, Offset: 9, Length: 0, Score: 0.47.
-Text: Microsoft, Offset: 9, Length: 150, Score: 0.47.
+Text: Microsoft, Score: 0.47
+Text: Microsoft, Score: 0.47
 Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
 Matches:
-Text: April 4, Offset: 7, Length: 54, Score: 0.25.
+Text: April 4, Score: 0.25
 Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
 Matches:
-Text: BASIC, Offset: 5, Length: 89, Score: 0.28.
+Text: BASIC, Score: 0.28
 ```
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-Vytvořte novou funkci nazvanou `extractKeyPhrasesExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `extractKeyPhrases()`. Vrácený objekt `ExtractKeyPhraseResult` bude obsahovat seznam klíčových frází, pokud je to úspěšné, nebo `errorMessage`, pokud ne.
+Vytvořte novou funkci `extractKeyPhrasesExample()`, která přebírá objekt klienta, který jste vytvořili dříve, a volá jeho funkci `extractKeyPhrases()`. Pokud vše proběhne úspěšně, vrácený objekt `ExtractKeyPhraseResult` bude obsahovat seznam klíčových frází, jinak bude obsahovat objekt `errorMessage`.
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)

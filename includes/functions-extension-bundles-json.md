@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
-ms.openlocfilehash: 4ce048cafa4c20e3bbdbd8ecf1669748531ee122
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.openlocfilehash: f47a543143c949715fe2a49adccf074759a346fa
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129065"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79381833"
 ---
 ```json
 {
@@ -21,13 +21,13 @@ ms.locfileid: "74129065"
 }
 ```
 
-V `extensionBundle`jsou k dispozici následující vlastnosti:
+V objektu `extensionBundle` jsou k dispozici následující vlastnosti:
 
 | Vlastnost | Popis |
 | -------- | ----------- |
-| id | Obor názvů pro sady rozšíření funkcí Microsoft Azure Functions. |
-| version | Verze sady, která se má nainstalovat Modul runtime Functions vždy vybere maximální přípustnou verzi definovanou rozsahem verze nebo intervalem. Výše uvedená hodnota verze umožňuje všechny verze balíčku od 1.0.0 do až, ale ne včetně 2.0.0. Další informace najdete v části [interval zápisu pro určení rozsahů verzí](/nuget/reference/package-versioning#version-ranges-and-wildcards). |
+| id | Obor názvů pro sady rozšíření Microsoft Azure Functions |
+| version | Verze sady, která se má nainstalovat. Modul runtime služby Functions vždy vybere maximální přípustnou verzi definovanou rozsahem nebo intervalem verzí. Výše uvedená hodnota verze povoluje všechny verze sady od 1.0.0 až po, ale ne včetně 2.0.0. Další informace najdete v části věnované [zápisu intervalů pro zadávání rozsahů verzí](/nuget/reference/package-versioning#version-ranges). |
 
-Verze sady prostředků se zvýší jako balíčky v rámci změny sady prostředků. K velkým změnám verze dojde, když se balíčky v sadě zvýší o hlavní verzi. Změny hlavní verze v sadě se obvykle shodují se změnou hlavní verze běhového modulu Functions.  
+Verze sady se zvyšují s ohledem na změny balíčků v sadě. Ke změnám hlavní verze dochází, když se zvýší hlavní verze balíčků v sadě. Změny hlavní verze sady se obvykle časově shodují se změnami hlavní verze modulu runtime služby Functions.  
 
-Aktuální sada rozšíření nainstalovaná ve výchozím svazku je v tomto [souboru Extensions. JSON](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).
+Aktuální seznam rozšíření, která instaluje výchozí sada, najdete v tomto [souboru extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).
