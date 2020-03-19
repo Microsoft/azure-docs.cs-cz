@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: be858e9200191de7e0bda0ae227519666d80fb7a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
-ms.translationtype: MT
+ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500591"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117147"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN je možné mít v konfiguraci připojení Point-to-Site?
 
-Závisí na SKU brány. Další informace o počtu podporovaných připojení najdete v tématu [SKU brány](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+To závisí na skladové položce brány. Další informace o podporovaném počtu připojení najdete v části [Skladové položky brány](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
 ### <a name="supportedclientos"></a>Které klientské operační systémy je možné používat s připojeními typu Point-to-Site?
 
@@ -30,7 +30,7 @@ Podporovány jsou následující operační systémy:
 * Windows Server 2012 R2 (pouze 64bitové verze)
 * Windows Server 2016 (pouze 64bitové verze)
 * Windows 10
-* Mac OS X verze 10,11 nebo vyšší
+* Mac OS X verze 10.11 nebo novější
 * Linux (StrongSwan)
 * iOS
 
@@ -38,13 +38,13 @@ Podporovány jsou následující operační systémy:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Je možné procházet proxy servery a brány firewall s využitím schopnosti Point-to-Site?
 
-Azure podporuje tři typy možností sítě VPN typu Point-to-site:
+Azure podporuje tři typy možností VPN typu point-to-site:
 
-* SSTP (Secure Socket Tunneling Protocol). SSTP je proprietární řešení založené na SSL společnosti Microsoft, které může proniknout branami firewall, protože většina bran firewall otevírá odchozí port TCP, který používá protokol 443 SSL.
+* SSTP (Secure Socket Tunneling Protocol). SSTP je proprietární řešení Microsoftu založené na SSL, které umožňuje pronikat branami firewall, protože většina bran firewall otevírá odchozí port TCP 443, který SSL používá.
 
-* OpenVPN. OpenVPN je řešení založené na protokolu SSL, které může proniknout branami firewall, protože většina bran firewall otevírá odchozí port TCP, který používá protokol SSL 443.
+* OpenVPN. OpenVPN je řešení založené na SSL, které umožňuje pronikat branami firewall, protože většina bran firewall otevírá odchozí port TCP 443, který SSL používá.
 
-* IKEv2 VPN. IKEv2 VPN je řešení IPsec VPN založené na standardech, které používá Odchozí porty UDP 500 a 4500 a číslo protokolu IP. 50. Brány firewall tyto porty neotvírají vždycky, takže je možné, že IKEv2 VPN nebude moct procházet servery proxy a branami firewall.
+* IKEv2 VPN. IKEv2 VPN řešení IPsec VPN založené na standardech, které využívá odchozí porty UDP 500 a 4500 a protokol IP č. 50. Brány firewall tyto porty neotvírají vždycky, takže je možné, že IKEv2 VPN nebude moct procházet servery proxy a branami firewall.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Pokud restartuji klientský počítač nakonfigurovaný pro připojení Point-to-Site, připojí se síť VPN automaticky znovu?
 
@@ -58,9 +58,13 @@ Automatické opětné připojení a DDNS se u sítí VPN s připojením Point-to
 
 Ano. Pro model nasazení Resource Manageru musíte mít bránu typu VPN RouteBased. Pro model nasazení Classic je potřebná dynamická brána. Připojení Point-to-Site se pro brány VPN se statickým směrováním ani pro brány VPN PolicyBased nepodporuje.
 
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Je možné nakonfigurovat klienta Point-to-Site tak, aby se připojoval k několika branám virtuálních sítí současně?
+
+V závislosti na použitém softwaru klienta VPN se můžete připojit k několika branám virtuálních sítí za předpokladu, že nedochází ke konfliktům adresních prostorů mezi virtuálními sítěmi, ke kterým se připojujete, nebo se sítí, ze které se klient připojuje.  Přestože Klient Azure VPN podporuje velké množství připojení VPN, v jednu chvíli může být aktivní pouze jedno připojení.
+
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Je možné nakonfigurovat klienta Point-to-Site tak, aby se připojoval k několik virtuálním sítím současně?
 
-Ne. Klient typu Point-to-Site se může připojit jenom k prostředkům ve virtuální síti, ve které je umístěná brána virtuální sítě.
+Ano, připojení typu point-to-site k bráně virtuální sítě nasazené ve virtuální síti, která je v partnerském vztahu s dalšími virtuálními sítěmi, může mít přístup k ostatním partnerským virtuálním sítím.  Klient Point-to-Site se může připojit k partnerským virtuálním sítím, které využívají funkce UseRemoteGateway nebo AllowGatewayTransit.  Další informace najdete v [tomto](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) článku.
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Jakou propustnost je možné očekávat u připojení typu Site-to-Site nebo Point-to-Site?
 
@@ -68,11 +72,11 @@ Určit přesnou propustnost tunelových propojení sítí VPN je obtížné. IPs
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Je možné pro připojení Point-to-Site použít libovolného softwarového klienta sítě VPN, pokud podporuje protokol SSTP a/nebo IKEv2?
 
-Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. K připojení přes protokol OpenVPN ale můžete použít klienta OpenVPN na všech platformách. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
+Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. Na všech platformách však můžete použít klienta OpenVPN a připojit se přes protokol OpenVPN. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Podporuje Azure IKEv2 VPN s Windows?
 
-IKEv2 se podporuje v systémech Windows 10 a Server 2016. Pokud ale chcete používat IKEv2, musíte nainstalovat aktualizace a nastavit hodnotu klíče registru v místním prostředí. Verze operačního systému starší než Windows 10 nejsou podporované a můžou používat jenom protokol SSTP nebo **OpenVPN®**.
+IKEv2 se podporuje v systémech Windows 10 a Server 2016. Pokud ale chcete používat IKEv2, musíte nainstalovat aktualizace a nastavit hodnotu klíče registru v místním prostředí. Verze operačního systému starší než Windows 10 se nepodporují a můžou používat jenom SSTP nebo **protokol OpenVPN®**.
 
 Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
 
@@ -99,9 +103,9 @@ Pro P2S VPN Azure podporuje Windows, Mac a Linux.
 
 Ano, tyto funkce můžete na už nasazených bránách povolit pomocí PowerShellu nebo webu Azure Portal za předpokladu, že použitá jednotka SKU brány podporuje RADIUS a/nebo IKEv2. Například SKU VPN Gateway Basic nepodporuje RADIUS ani IKEv2.
 
-### <a name="removeconfig"></a>Návody odebrat konfiguraci připojení P2S?
+### <a name="removeconfig"></a>Jak odeberu konfiguraci připojení P2S?
 
-Konfiguraci P2S můžete odebrat pomocí Azure CLI a PowerShellu pomocí následujících příkazů:
+Konfiguraci P2S je možné odebrat s využitím Azure CLI a PowerShellu pomocí následujících příkazů:
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
