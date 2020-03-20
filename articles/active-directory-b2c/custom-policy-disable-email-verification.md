@@ -11,25 +11,28 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8ec60f694000985f51db25db621e5814df62cdb3
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126815"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136138"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Zakázat ověřování e-mailů při registraci zákazníka pomocí vlastní zásady v Azure Active Directory B2C
 
 [!INCLUDE [disable email verification intro](../../includes/active-directory-b2c-disable-email-verification.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlášení pomocí sociálních a místních účtů.
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Přidejte metadata do technického profilu s vlastním uplatněním.
 
-Technický profil **LocalAccountSignUpWithLogonEmail** je [samostatně](self-asserted-technical-profile.md)vyvolaný, který se vyvolá během procesu registrace. Pokud chcete ověřování e-mailů zakázat, nastavte `EnforceEmailVerification` metadata na false. Potlačí technické profily LocalAccountSignUpWithLogonEmail v souboru rozšíření. Vyhledejte prvek `ClaimsProviders`. Do prvku `ClaimsProviders` přidejte následující zprostředkovatele deklarací:
+Technický profil **LocalAccountSignUpWithLogonEmail** je [samostatně](self-asserted-technical-profile.md)vyvolaný, který se vyvolá během procesu registrace. Pokud chcete ověřování e-mailů zakázat, nastavte `EnforceEmailVerification` metadata na false. Potlačí technické profily LocalAccountSignUpWithLogonEmail v souboru rozšíření. 
 
+1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+1. Vyhledejte prvek `ClaimsProviders`. Pokud element neexistuje, přidejte jej.
+1. Do prvku `ClaimsProviders` přidejte následující zprostředkovatele deklarací:
 
 ```XML
 <ClaimsProvider>
@@ -46,7 +49,7 @@ Technický profil **LocalAccountSignUpWithLogonEmail** je [samostatně](self-ass
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 4. Vyberte **architekturu prostředí identity**.
@@ -55,6 +58,6 @@ Technický profil **LocalAccountSignUpWithLogonEmail** je [samostatně](self-ass
 3. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy bez ověření.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [technickém profilu s vlastním uplatněním](self-asserted-technical-profile.md) najdete v referenčních informacích k IEF.

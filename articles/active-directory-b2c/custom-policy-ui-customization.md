@@ -12,11 +12,11 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374833"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245990"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -30,16 +30,16 @@ Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. Upravte soubor rozšíření.
+## <a name="4-modify-the-extensions-file"></a>4. Úprava souboru rozšíření
 
 Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Vyhledejte a zkopírujte celý obsah elementu **ContentDefinitions** .
 1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions. XML*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.
 1. Vyhledejte element **ContentDefinition** , který obsahuje `Id="api.signuporsignin"` ve formátu XML, který jste zkopírovali.
-1. Změňte hodnotu **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. například `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+1. Změňte hodnotu **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. Například, `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
     Vaše vlastní zásada by měla vypadat jako následující fragment kódu:
 
@@ -60,7 +60,7 @@ Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte 
 
 1. Uložte soubor rozšíření.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. nahrávání a testování aktualizovaných vlastních zásad
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Nahrávání a testování aktualizovaných vlastních zásad
 
 ### <a name="51-upload-the-custom-policy"></a>5,1 nahrajte vlastní zásadu.
 
@@ -131,6 +131,6 @@ Azure AD B2C pošle 2 – kód ISO pro jazyk, `fr` pro francouzštinu:
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o prvcích uživatelského rozhraní, které je možné přizpůsobit, najdete v [Referenční příručce pro přizpůsobení uživatelského rozhraní pro toky uživatelů](customize-ui-overview.md).
