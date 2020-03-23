@@ -33,7 +33,7 @@ Aplikace Power BI Azure Cost Management aktuálně podporuje pouze zákazníky s
 Postup instalace aplikace:
 
 1. Otevřete [aplikaci Power BI Azure Cost Management](https://aka.ms/costmgmt/ACMApp).
-2. Na stránce Power BI AppSource vyberte **Získat hned**.
+2. Na stránce Power BI AppSource vyberte **Načíst hned**.
 3. Výběrem **Pokračovat** odsouhlasíte podmínky použití a zásady ochrany osobních údajů.
 4. V poli **Instalovat tuto aplikaci Power BI** vyberte **Instalovat**.
 5. V případě potřeby vytvořte pracovní prostor a vyberte **Pokračovat**.
