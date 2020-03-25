@@ -10,11 +10,11 @@ ms.date: 02/10/2020
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: dacae693020fea2f77a80b5b8bad44a07e471367
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200193"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237917"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Zobrazení a stažení daňových dokladů pro vaši fakturu za Azure
 
@@ -22,8 +22,8 @@ Daňové doklady pro vaši fakturu za Azure si můžete stáhnout, pokud máte p
 
 ## <a name="view-and-download-tax-documents"></a>Zobrazení a stažení daňových dokumentů
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte *Cost Management a fakturace*.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Vyhledejte položku *Správa nákladů a fakturace*.
 1. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet nebo fakturační profil.
 1. V nabídce vlevo v části **Fakturace** vyberte **Faktury**.
 1. V tabulce faktur najděte řádek s fakturou odpovídající daňovému dokumentu, který chcete stáhnout.

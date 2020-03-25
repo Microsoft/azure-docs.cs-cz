@@ -8,7 +8,7 @@
       href: introduction.md
     - name: Porovnávání aktuální verze s verzí 1
       href: compare-versions.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření datové továrny – uživatelské rozhraní
@@ -45,7 +45,7 @@
               href: tutorial-hybrid-copy-data-tool.md
             - name: Uživatelské rozhraní
               href: tutorial-hybrid-copy-portal.md
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: tutorial-hybrid-copy-powershell.md
         - name: Z Amazon Web Services S3 do Azure Data Lake Storage
           items:
@@ -65,7 +65,7 @@
           items:
             - name: Uživatelské rozhraní
               href: tutorial-bulk-copy-portal.md
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: tutorial-bulk-copy.md
         - name: Přírůstkové načtení dat
           href: tutorial-incremental-copy-overview.md
@@ -74,19 +74,19 @@
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-incremental-copy-portal.md
-                - name: Azure PowerShell
+                - name: Azure Powershell
                   href: tutorial-incremental-copy-powershell.md
             - name: Z několika místních tabulek SQL Serveru
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-incremental-copy-multiple-tables-portal.md
-                - name: Azure PowerShell
+                - name: Azure Powershell
                   href: tutorial-incremental-copy-multiple-tables-powershell.md
             - name: S využitím informací o sledování změn v SQL Serveru
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
-                - name: Azure PowerShell
+                - name: Azure Powershell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
             - name: Nové soubory podle data poslední úpravy
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
@@ -108,7 +108,7 @@
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-transform-data-spark-portal.md
-                - name: Azure PowerShell
+                - name: Azure Powershell
                   href: tutorial-transform-data-spark-powershell.md
             - name: Poznámkový blok Databricks
               items:
@@ -118,7 +118,7 @@
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-transform-data-hive-virtual-network-portal.md
-                - name: Azure PowerShell
+                - name: Azure Powershell
                   href: tutorial-transform-data-hive-virtual-network.md
     - name: Tok řízení
       items:
@@ -130,7 +130,7 @@
       items:
         - name: Uživatelské rozhraní
           href: tutorial-deploy-ssis-packages-azure.md
-        - name: Azure PowerShell
+        - name: Azure Powershell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: Připojení k virtuální síti
           href: tutorial-deploy-ssis-virtual-network.md
@@ -138,11 +138,11 @@
       items:
         - name: Integrace dat s využitím služeb Data Factory a Data Share
           href: lab-data-flow-data-share.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: samples-powershell.md
 - name: Koncepty
   items:

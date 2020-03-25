@@ -4,10 +4,10 @@ description: Přehled ukázky podrobného plánu NIST SP 800-53 R4 Tento ukázko
 ms.date: 11/18/2019
 ms.topic: sample
 ms.openlocfilehash: e7a0acf2b43136aedd8c2281f0e87bb1499a81ae
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74546582"
 ---
 # <a name="overview-of-the-nist-sp-800-53-r4-blueprint-sample"></a>Přehled ukázky podrobného plánu NIST SP 800-53 R4

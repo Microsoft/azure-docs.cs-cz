@@ -2,7 +2,7 @@
   items:
     - name: Linuxové virtuální počítače s SQL Serverem
       href: sql-server-linux-virtual-machines-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Vytvoření virtuálního počítače SQL – portál
       href: provision-sql-server-linux-virtual-machine.md

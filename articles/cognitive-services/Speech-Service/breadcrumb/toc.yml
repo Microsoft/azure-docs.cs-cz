@@ -2,7 +2,7 @@
   tocHref: /azure/
   topicHref: /azure/index
   items:
-    - name: Cognitive Services
+    - name: Kognitivní služby
       tocHref: /azure/cognitive-services/
       topicHref: /azure/cognitive-services/index
       items:

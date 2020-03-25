@@ -4,10 +4,10 @@ description: 'Přehled a architektura ukázky podrobného plánu ISO 27001: Sdí
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "75922539"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby

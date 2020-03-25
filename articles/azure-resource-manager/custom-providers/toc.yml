@@ -2,9 +2,9 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co jsou vlastní poskytovatelé Azure?
+    - name: Co je služba Azure Custom Providers?
       href: overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření vlastního poskytovatele prostředků

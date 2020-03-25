@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Database Migration Service?
       href: dms-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Vytvoření služby – portál
       href: quickstart-create-data-migration-service-portal.md

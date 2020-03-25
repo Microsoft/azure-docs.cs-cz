@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: cbfd5f7bf47cdaf43df00c710bd6680373d67b09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200601"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Řešení zůstatku po splatnosti u předplatného Azure
@@ -28,7 +28,7 @@ Pokud vaše platba nedorazí nebo ji nemůžeme zpracovat, přijde vám e-mail a
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Řešení zůstatku po splatnosti na webu Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 1. Na stránce **Přehled** vyberte předplatné po splatnosti.
 1. Na stránce **Přehled předplatného** klikněte na červený banner s informací o zůstatku po splatnosti a vyrovnejte zůstatek.
     > [!NOTE]
@@ -55,7 +55,7 @@ Pokud jste správce účtu, [zkontrolujte, která e-mailová adresa je nastaven�
 
 ## <a name="if-i-forget-to-pay-what-happens"></a>Co se stane, když zapomenu zaplatit?
 
-Služba se zruší a vaše prostředky už nebudou k dispozici. Vaše data v Azure se odstraní 90 dnů po ukončení služby. Další informace najdete v tématu [Centrum zabezpečení Microsoftu – Jak spravujeme vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+Služba se zruší a vaše prostředky už nebudou k dispozici. Vaše data v Azure se odstraní 90 dnů po ukončení služby. Další informace najdete v článku [Centrum zabezpečení Microsoftu – jak spravujeme vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 Pokud jste si jisti, že se vaše platba zpracovala, ale vaše předplatné je stále deaktivované, kontaktujte [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

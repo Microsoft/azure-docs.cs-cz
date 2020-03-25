@@ -1,5 +1,5 @@
 ---
-title: Limit útraty Azure | Microsoft Docs
+title: Limit útraty Azure
 description: Tento článek popisuje, jak funguje limit útraty Azure a jak ho odebrat.
 author: bandersmsft
 ms.reviewer: judupont
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6feac116c92f8dac7bd1dde2084f9b25f5e559f8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361014"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238053"
 ---
 # <a name="azure-spending-limit"></a>Limit útraty Azure
 
@@ -40,7 +40,7 @@ Pokud máte bezplatný účet Azure, přečtěte si o odebrání limitu útraty 
 <a id="remove"></a>
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/spending-limit/search-bar.png)
 
@@ -67,7 +67,7 @@ Pokud máte bezplatný účet Azure, přečtěte si o odebrání limitu útraty 
 
 1. Klikněte na **Vyberte způsob platby** a zvolte způsob platby pro vaše předplatné. Tento způsob platby se nastaví jako aktivní způsob platby pro vaše předplatné.
 
-1. Klikněte na **Dokončit**.
+1. Klikněte na **Finish** (Dokončit).
 
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Proč byste mohli chtít odebrat limit útraty
@@ -84,7 +84,7 @@ Tato funkce je k dispozici pouze v případě trvalého odebrání limitu útrat
 
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/spending-limit/search-bar.png)
 

@@ -6,7 +6,7 @@
       href: v2-overview.md
     - name: Rozvoj platformy Microsoft Identity Platform
       href: about-microsoft-identity-platform.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Nastavení tenanta
@@ -92,7 +92,7 @@
       items:
         - name: Webová aplikace démona ASP.NET
           href: tutorial-v2-aspnet-daemon-web-app.md
-- name: ukázky
+- name: Ukázky
   href: sample-v2-code.md
 - name: Koncepty
   expanded: true
@@ -433,7 +433,7 @@
       items:
         - name: Přehled
           href: authentication-national-cloud.md
-        - name: Authentication
+        - name: Ověřování
           href: msal-national-cloud.md
     - name: Automatické zřizování uživatelů (SCIM)
       items:
@@ -443,7 +443,7 @@
           href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
 - name: Návody
   items:
-    - name: Authentication
+    - name: Ověřování
       items:
         - name: Konfigurace deklarace identity role
           href: active-directory-enterprise-app-role-management.md

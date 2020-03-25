@@ -8,7 +8,7 @@
       href: agent-linux.md
     - name: Agent virtuálního počítače s Windows
       href: agent-windows.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Použití rozšíření vlastních skriptů

@@ -3,7 +3,7 @@
   items:
     - name: Informace o službách App Service Environment
       href: intro.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření externí služby ASE
@@ -16,11 +16,11 @@
       href: app-service-app-service-environment-web-application-firewall.md
     - name: Konfigurace TLS
       href: app-service-app-service-environment-custom-settings.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Azure CLI
       href: ../samples-cli.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
 - name: Koncepty
   items:
@@ -88,7 +88,7 @@
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Osvědčené postupy
       href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
-    - name: ukázky
+    - name: Ukázky
       href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
     - name: Videa
       items:

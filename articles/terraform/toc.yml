@@ -4,7 +4,7 @@
   items:
     - name: Informace o Terraformu v Azure
       href: terraform-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Instalace a konfigurace Terraformu
@@ -59,7 +59,7 @@
               href: terraform-hub-spoke-spoke-network.md
             - name: 6. Ověření možností připojení síťové topologie
               href: terraform-hub-spoke-validation.md
-    - name: nástroje
+    - name: Nástroje
       items:
         - name: Instalace rozšíření Terraform editoru Visual Studio Code
           href: terraform-vscode-extension.md
@@ -67,7 +67,7 @@
           href: terraform-vscode-module-generator.md
         - name: Testování modulů Terraform pomocí Terratestu
           href: terratest-in-terraform-modules.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Šablony konfigurace
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'

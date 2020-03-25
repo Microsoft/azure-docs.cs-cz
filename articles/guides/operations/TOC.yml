@@ -2,11 +2,11 @@
   items:
     - name: Začínáme s Azure
       href: azure-operations-guide.md
-    - name: Rychlé starty
+    - name: Šablony Rychlý start
       items:
         - name: Virtuální počítače
           items:
-            - name: Windows Virtual Machines
+            - name: Virtuální počítače s Windows
               href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Linux Virtual Machines
               href: ../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
