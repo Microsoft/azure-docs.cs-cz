@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200995"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Úlohy správce účtu na webu Azure Portal
@@ -28,7 +28,7 @@ Abyste mohli provádět tyto úlohy, musíte být správcem účtu.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
 
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/account-admin-tasks/search-bar.png)
 
@@ -117,7 +117,7 @@ Limit útraty v Azure zabraňuje překročení částky kreditu. Limit útraty m
 Limit útraty není dostupný u předplatných s plány závazků nebo s průběžnými platbami. Prohlédněte si [úplný seznam typů předplatného Azure a dostupnost limitu útraty](https://azure.microsoft.com/support/legal/offer-details/).
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/account-admin-tasks/search-bar.png)
 
@@ -138,14 +138,14 @@ Limit útraty není dostupný u předplatných s plány závazků nebo s průbě
 
 1. Klikněte na **Vyberte způsob platby** a zvolte způsob platby pro vaše předplatné. Tento způsob platby se nastaví jako aktivní způsob platby pro vaše předplatné.
 
-1. Klikněte na **Dokončit**.
+1. Klikněte na **Finish** (Dokončit).
 
 ## <a name="add-credits-to-azure-in-open-subscription"></a>Přidání kreditů k předplatnému Azure v rámci licenčního programu Open License
 
 Pokud máte předplatné Azure v rámci licenčního programu Open License, můžete k předplatnému přidat kredity na webu Azure Portal uplatněním kódu Product Key nebo nákupem kreditů pomocí platební karty.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/account-admin-tasks/search-bar.png)
 

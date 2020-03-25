@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 45dbf43966b71d7db7ada8be7704f6b3b37aab25
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199173"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Začínáme s fakturačním účtem pro smlouvu s partnerem Microsoftu
 
-Když se zaregistrujete do Azure, vytvoří se vám fakturační účet. Slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Může to být třeba v situaci, kdy se zaregistrujete do Azure, abyste mohli pracovat na svých osobních projektech, ale současně máte k Azure přístup i prostřednictvím smlouvy Enterprise vaší organizace, smlouvy se zákazníkem Microsoftu nebo smlouvy s partnerem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
+Když se zaregistrujete do Azure, vytvoří se vám fakturační účet. Slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Je to například tehdy, když se zaregistrujete v Azure pro práci na svých osobních projektech, ale současně máte k Azure přístup i prostřednictvím smlouvy Enterprise vaší organizace, smlouvy se zákazníkem Microsoftu nebo smlouvy s partnerem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
 
 Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsoftu. Tyto účty se vytváří pro poskytovatele CSP (Cloud Solution Provider), aby mohli spravovat fakturaci za své zákazníky v novém komerčním prostředí. Nové prostředí je k dispozici pouze pro partnery s alespoň jedním zákazníkem, který přijal smlouvu se zákazníkem Microsoftu a má plán Azure. [Ověřte si, jestli máte přístup ke smlouvě s partnerem Microsoftu](#check-access-to-a-microsoft-partner-agreement). [Plán Azure](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) v rámci smlouvy se zákazníkem Microsoftu poskytuje zákazníkům přístup ke službám Azure za tarify průběžných plateb.
 

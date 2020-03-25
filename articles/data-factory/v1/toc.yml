@@ -4,7 +4,7 @@
   href: ../introduction.md
 - name: Přehled
   items:
-    - name: Úvod do služby Azure Data Factory
+    - name: Úvod do Azure Data Factory
       href: data-factory-introduction.md
     - name: Koncepty
       items:
@@ -24,7 +24,7 @@
           href: data-factory-copy-data-wizard-tutorial.md
         - name: Visual Studio
           href: data-factory-copy-activity-tutorial-using-visual-studio.md
-        - name: Azure PowerShell
+        - name: Azure Powershell
           href: data-factory-copy-activity-tutorial-using-powershell.md
         - name: REST API
           href: data-factory-copy-activity-tutorial-using-rest-api.md
@@ -33,11 +33,11 @@
     - name: Vytvoření kanálu pro transformaci dat
       href: data-factory-build-your-first-pipeline.md
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: data-factory-build-your-first-pipeline-using-editor.md
         - name: Visual Studio
           href: data-factory-build-your-first-pipeline-using-vs.md
-        - name: Azure PowerShell
+        - name: Azure Powershell
           href: data-factory-build-your-first-pipeline-using-powershell.md
         - name: Šablona Azure Resource Manageru
           href: data-factory-build-your-first-pipeline-using-arm.md
@@ -72,7 +72,7 @@
               href: data-factory-amazon-simple-storage-service-connector.md
             - name: Azure Blob Storage
               href: data-factory-azure-blob-connector.md
-            - name: Azure Cosmos DB
+            - name: Databáze Azure Cosmos
               href: data-factory-azure-documentdb-connector.md
             - name: Azure Data Lake Storage Gen1
               href: data-factory-azure-datalake-connector.md
@@ -185,7 +185,7 @@
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.datafactory
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactories.models

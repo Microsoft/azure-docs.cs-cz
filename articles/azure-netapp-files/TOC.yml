@@ -6,7 +6,7 @@
       href: azure-netapp-files-introduction.md
     - name: Vysvětlení hierarchie úložiště
       href: azure-netapp-files-understand-storage-hierarchy.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Nastavení služby Azure NetApp Files a vytvoření svazku NFS

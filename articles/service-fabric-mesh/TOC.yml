@@ -5,7 +5,7 @@
   items:
     - name: Informace o službě Service Fabric Mesh
       href: service-fabric-mesh-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Nasazení aplikace Hello World
       href: service-fabric-mesh-quickstart-deploy-container.md

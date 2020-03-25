@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Azure Cache for Redis
       href: cache-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Aplikace v ASP.NET
@@ -23,16 +23,20 @@
   items:
     - name: Použití ukládání do mezipaměti s tabulkami výsledků
       href: cache-web-app-cache-aside-leaderboard.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázky služby Azure Cache for Redis
       href: cache-redis-samples.md
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
 - name: Koncepty
   items:
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Převzetí služeb při selhání a opravy
       href: cache-failover.md
     - name: Osvědčené postupy
@@ -44,7 +48,7 @@
     - name: Plánování
       items:
         - name: Volba úrovně mezipaměti
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
         - name: Distribuovaná mezipaměť pomocí clusterování
           href: cache-how-to-premium-clustering.md
         - name: Zachování mezipaměti pomocí trvalosti dat Redis
@@ -113,13 +117,13 @@
       items:
         - name: "Aktualizace na jinou velikost a\_úroveň"
           href: cache-how-to-scale.md
-        - name: Použití clusteru Redis pro horizontální snížení nebo zvýšení kapacity
+        - name: Použití clusteru Redis pro škálování na méně nebo více instancí
           href: cache-how-to-premium-clustering.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.rediscache
     - name: Azure CLI
       href: /cli/azure/redis

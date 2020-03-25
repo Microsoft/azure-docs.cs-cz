@@ -1,20 +1,20 @@
 ---
-title: Přidání rozšířených metrik pro virtuální počítače Azure | Microsoft Docs
+title: Přidání rozšířených metrik pro virtuální počítače Azure
 description: Tento článek vám pomůže povolit a nakonfigurovat metriky rozšířené diagnostiky pro vaše virtuální počítače Azure.
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082910"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481615"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířených metrik pro virtuální počítače Azure
 
@@ -30,7 +30,9 @@ Když povolíte shromažďování metrik, získáte tyto možnosti:
 Budete například chtít monitorovat procento využití procesoru a paměti ve vašich virtuálních počítačích Azure. Tomu odpovídají metriky virtuálních počítačů Azure _Procento procesoru_ a _\Paměť\% využití potvrzených bajtů paměti_.
 
 > [!NOTE]
-> Rozšířené shromažďování dat metrik je podporováno jenom s monitorováním na úrovni hosta Azure. Cloudyn není kompatibilní s [agentem Log Analytics](../../azure-monitor/platform/agents-overview.md). 
+> Rozšířené shromažďování dat metrik je podporováno jenom s monitorováním na úrovni hosta Azure. Cloudyn není kompatibilní s [agentem Log Analytics](../../azure-monitor/platform/agents-overview.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Zjištění, zda jsou povoleny rozšířené metriky
 

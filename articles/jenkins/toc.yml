@@ -4,7 +4,7 @@
   items:
     - name: Jenkins v Azure
       href: overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření serveru Jenkins
@@ -61,7 +61,7 @@
   items:
     - name: Použití modulu plug-in služby App Service
       href: deploy-jenkins-app-service-plugin.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázkové úlohy a skripty
       href: 'https://github.com/azure/jenkins'

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 12ad1f09c988171b0d6212d79ca61d93acf92d80
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199598"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Úhrada předplatných Azure pomocí faktury
@@ -101,7 +101,7 @@ Pokud chcete přepnout fakturační profil na platby šekem nebo převodem, post
 
     ![Položka nabídky Fakturační profily, Správa nákladů a fakturace, portál Microsoft Azure](./media/pay-by-invoice/billing-profile.png)
 
-1. Vyberte fakturační profil.
+1. Zvolte fakturační profil.
 1. V nabídce **Fakturační profil** vyberte **Způsoby platby**.
 
    ![Položka nabídky Způsoby platby, Fakturační profily, Správa nákladů, portál Microsoft Azure](./media/pay-by-invoice/billing-profile-payment-methods.png)
@@ -110,7 +110,7 @@ Pokud chcete přepnout fakturační profil na platby šekem nebo převodem, post
 
     ![Banner pro přepnutí na platby šekem nebo převodem, Způsoby platby, portál Microsoft Azure](./media/pay-by-invoice/customer-led-switch-to-invoice.png)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.

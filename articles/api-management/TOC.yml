@@ -8,7 +8,7 @@
       href: api-management-features.md
     - name: Správa mikroslužeb nasazených v AKS
       href: api-management-kubernetes.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření instance – portál
@@ -35,11 +35,11 @@
       href: api-management-get-started-publish-versions.md
     - name: 9. Přizpůsobení vývojářského portálu
       href: api-management-howto-developer-portal-customize.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Zásady
       href: policy-samples.md
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: powershell-samples.md
 - name: Koncepty
   items:
@@ -237,7 +237,7 @@
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: Referenční informace
   items:
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.apimanagement/?view=azps-2.6.0
     - name: REST
       href: /rest/api/apimanagement/

@@ -156,13 +156,13 @@
           items:
             - name: PowerShell
               href: troubleshoot-recovery-disks-windows.md
-            - name: portál Azure
+            - name: Azure Portal
               href: troubleshoot-recovery-disks-portal-windows.md
         - name: Linux
           items:
             - name: Rozhraní příkazového řádku
               href: troubleshoot-recovery-disks-linux.md
-            - name: portál Azure
+            - name: Azure Portal
               href: troubleshoot-recovery-disks-portal-linux.md
         - name: Změna názvů zařízení
           href: troubleshoot-device-names-problems.md

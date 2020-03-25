@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 3480f60b354de94f604dab1ea1f16d3b0ad59379
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199343"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Softwarové náklady nezahrnuté ve službě Azure Reserved VM Instances
@@ -21,7 +21,7 @@ Slevy na rezervované instance virtuálního počítače a rezervované kapacity
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Softwarové měřiče Windows nezahrnuté v nákladech na rezervaci
 
-| ID měřiče | Název měřiče v souboru využití | Použito virtuálním počítačem |
+| MeterId | Název měřiče v souboru využití | Použito virtuálním počítačem |
 | ------- | ------------------------| --- |
 | e7e152ac-f29c-4cce-ad6e-026192c01ef2 | Rezervované počítače s Windows Serverem – datové sekvence (1jádrové) | Řada B |
 | cac255a2-9f0f-4c62-8bd6-f0fa449c5f76 | Rezervované počítače s Windows Serverem – datové sekvence (2jádrové) | Řada B |

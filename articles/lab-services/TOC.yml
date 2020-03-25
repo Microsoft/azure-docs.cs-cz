@@ -14,11 +14,11 @@
       href: tutorial-create-custom-lab.md
     - name: 2. Přístup k testovacímu prostředí
       href: tutorial-use-custom-lab.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Šablony Resource Manageru
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: samples-powershell.md
     - name: Azure PowerShell – modul Az.DevTestLabs2
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'

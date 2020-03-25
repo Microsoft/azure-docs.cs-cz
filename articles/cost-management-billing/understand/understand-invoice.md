@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: a3bf55bef0f6fc25f98b362b4a22e22471a031f1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199054"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Vysvětlení výrazů na faktuře za Microsoft Azure
@@ -38,7 +38,7 @@ Oddíl Informace o účtu najdete v horní části první stránky faktury. Obsa
 
 ![Oddíl faktury Informace o účtu](./media/understand-invoice/account-information-section.png)
 
-| Označení | Popis |
+| Období | Popis |
 | --- | --- |
 | Č. objednávky zákazníka |Volitelné číslo nákupní objednávky, které máte přiřazené pro účely sledování |
 | Faktura č. |Jedinečné číslo faktury vygenerované Microsoftem, které se používá pro účely sledování |
@@ -59,7 +59,7 @@ Název předplatného („Produkční úložiště“) je název předplatného 
 #### <a name="understand-the-previous-charges"></a>Vysvětlení předchozích poplatků
 Oddíl faktury s předchozím zůstatkem, platbami a nevyrovnaným zůstatkem obsahuje souhrn transakcí od posledního fakturačního období.
 
-| Označení | Popis |
+| Období | Popis |
 | --- | --- |
 | Předchozí zůstatek |Celková dlužná částka od posledního fakturačního období |
 | Platby |Celkové platby a kredity uplatněné na poslední fakturační období |
@@ -68,7 +68,7 @@ Oddíl faktury s předchozím zůstatkem, platbami a nevyrovnaným zůstatkem ob
 #### <a name="understand-the-current-charges"></a>Vysvětlení aktuálních poplatků
 Oddíl faktury s aktuálními poplatky obsahuje podrobnosti o měsíčních poplatcích za aktuální fakturační období.
 
-| Označení | Popis |
+| Období | Popis |
 | --- | --- |
 | Poplatky za používání |Poplatky za využívání jsou celkové měsíční poplatky za využívání předplatného pro aktuální fakturační období|
 | Slevy |Slevy za služby uplatněné na aktuální fakturační období|
@@ -78,7 +78,7 @@ Oddíl faktury s aktuálními poplatky obsahuje podrobnosti o měsíčních popl
 
 Následující tabulka obsahuje popis polí Kupující a Pokyny pro platbu na druhé stránce faktury.
 
-| Označení |Popis |
+| Období |Popis |
 | --- | --- |
 | Kupující |Adresa profilu na účtu <br/><br/>Pokud potřebujete adresu změnit, přečtěte si téma věnované tomu, [jak změnit informace v profilu účtu Azure, jako je kontaktní e-mail, adresa a telefonní číslo](../manage/change-azure-account-profile.md).|
 | Pokyny pro platbu |Pokyny pro platbu v závislosti na způsobu platby (například pomocí platební karty nebo na fakturu) |
@@ -91,7 +91,7 @@ Oddíl faktury Poplatky za používání obsahuje informace o poplatcích na úr
 
 Následující tabulka popisuje záhlaví sloupců s poplatky za používání uvedená na faktuře.
 
-| Označení |Popis |
+| Období |Popis |
 | --- | --- |
 | Název |Udává službu nejvyšší úrovně, které se toto využití týká |
 | Typ |Definuje typ služby Azure, který může mít vliv na sazbu |

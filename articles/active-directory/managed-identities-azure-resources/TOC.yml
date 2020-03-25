@@ -4,7 +4,7 @@
   items:
     - name: Informace o spravovaných identitách pro prostředky Azure
       href: overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Použití spravované identity na virtuálním počítači pro přístup k Azure Resource Manageru
       items:

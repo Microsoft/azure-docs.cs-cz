@@ -11,10 +11,10 @@ metadata:
   ms.author: allensu
   ms.date: 09/16/2019
   ms.openlocfilehash: a22284524891c71ec206ef100de9a736cb1a5714
-  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/25/2020
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "77587647"
 landingContent:
 - title: Informace o privátním propojení Azure
@@ -49,7 +49,7 @@ landingContent:
     links:
     - text: Azure CLI
       url: /cli/azure/network
-    - text: Azure PowerShell
+    - text: Azure Powershell
       url: /powershell/module/az.network
     - text: REST
       url: /rest/api/virtualnetwork/privatelinkservices

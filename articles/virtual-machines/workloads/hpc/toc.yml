@@ -14,7 +14,7 @@
       href: setup-mpi.md
     - name: Škálování aplikací
       href: compiling-scaling-applications.md
-    - name: Virtuální počítače
+    - name: Virtual Machines
       items:
         - name: Řada HB
           items:

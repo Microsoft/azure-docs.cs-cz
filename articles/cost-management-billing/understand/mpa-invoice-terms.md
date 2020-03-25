@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 2aca67b5e73bf7f02ac6bca27569265339b0eae6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200159"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Výrazy na faktuře za smlouvu s partnerem Microsoftu
@@ -33,7 +33,7 @@ Fakturace probíhá každý měsíc. Poplatky, které se naúčtují mezi koncem
 
 <!-- add screenshot -->
 
-| Označení | Popis |
+| Období | Popis |
 | --- | --- |
 | Kupující |Adresa vaší právnické osoby zadaná ve vlastnostech fakturačního účtu|
 | Příjemce faktury |Fakturační adresa fakturačního profilu, který dostane fakturu, zadaná ve vlastnostech fakturačního profilu|
@@ -49,7 +49,7 @@ Fakturace probíhá každý měsíc. Poplatky, které se naúčtují mezi koncem
 
 <!-- add screenshot -->
 
-| Označení | Popis |
+| Období | Popis |
 | --- | --- |
 | Poplatky|Celková výše poplatků Microsoftu pro tento fakturační profil od posledního fakturačního období |
 | Kredity |Kredity, které jste dostali za vratky |

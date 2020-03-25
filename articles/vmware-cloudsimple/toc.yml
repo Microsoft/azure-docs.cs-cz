@@ -1,9 +1,9 @@
-- name: Řešení VMware (AVS)
+- name: VMware Solution by CloudSimple
   href: /azure/vmware-cloudsimple
   items:
     - name: Přehled
       items:
-        - name: Co jsou řešení VMware (AVS)
+        - name: Co je VMware Solution by CloudSimple
           href: cloudsimple-vmware-solutions-overview.md
         - name: Klíčové koncepty pro správu
           href: key-concepts.md
@@ -14,9 +14,9 @@
           href: cloudsimple-network-checklist.md
         - name: Inicializace a zřizování kapacity
           href: quickstart-create-cloudsimple-service.md
-        - name: Konfigurace prostředí privátního cloudu AVS
+        - name: Konfigurace prostředí privátního cloudu
           href: quickstart-create-private-cloud.md
-        - name: Vytvoření virtuálního počítače VMware v privátním cloudu AVS
+        - name: Vytvoření virtuálního počítače VMware v privátním cloudu
           href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: Využívání virtuálních počítačů VMware v Azure
           href: quickstart-create-vmware-virtual-machine.md
@@ -26,9 +26,9 @@
           href: cloudsimple-service.md
         - name: Uzly
           href: cloudsimple-node.md
-        - name: Privátní cloud AVS
+        - name: Privátní cloud
           href: cloudsimple-private-cloud.md
-        - name: Virtuální počítače
+        - name: Virtual Machines
           href: cloudsimple-virtual-machines.md
         - name: Sítě VLAN a podsítě
           href: cloudsimple-vlans-subnets.md
@@ -44,7 +44,7 @@
           href: cloudsimple-account.md
         - name: Správa aktivit
           href: cloudsimple-activity.md
-        - name: VMware v privátním cloudu AVS
+        - name: VMware v privátním cloudu
           href: vmware-components.md
         - name: Přehled zabezpečení
           href: cloudsimple-security.md
@@ -56,9 +56,9 @@
           href: cloudsimple-faq.md
     - name: Kurzy
       items:
-        - name: Vytvoření služby AVS
+        - name: Vytvoření služby CloudSimple
           href: create-cloudsimple-service.md
-        - name: Přístup k portálu AVS
+        - name: Přístup k portálu CloudSimple
           href: access-cloudsimple-portal.md
         - name: Místní konfigurace brány firewall
           href: on-premises-firewall-configuration.md
@@ -70,25 +70,25 @@
               href: create-nodes.md
             - name: Odstranění uzlů
               href: delete-nodes.md
-        - name: Správa prostředků privátního cloudu AVS
+        - name: Správa prostředků privátního cloudu
           items:
-            - name: Vytvoření privátního cloudu AVS
+            - name: Vytvoření privátního cloudu
               href: create-private-cloud.md
-            - name: Správa privátních cloudů A
+            - name: Správa privátních cloudů
               href: manage-private-cloud.md
-            - name: Rozšíření privátního cloudu AVS
+            - name: Rozšíření privátního cloudu
               href: expand-private-cloud.md
-            - name: Zmenšení privátního cloudu AVS
+            - name: Zmenšení privátního cloudu
               href: shrink-private-cloud.md
             - name: Mapování předplatného Azure
               href: azure-subscription-mapping.md
             - name: Zvýšení úrovně oprávnění
               href: escalate-private-cloud-privileges.md
-            - name: Odstranění privátního cloudu AVS
+            - name: Odstranění privátního cloudu
               href: delete-private-cloud.md
-        - name: Monitorování aktivit AVS
+        - name: Monitorování aktivity CloudSimple
           href: monitor-activity.md
-        - name: Nastavení sítí privátního cloudu AVS
+        - name: Nastavení sítí privátního cloudu
           items:
             - name: Vytváření a správa sítí VLAN a podsítí
               href: create-vlan-subnet.md
@@ -98,35 +98,35 @@
               href: public-ips.md
             - name: Nastavení připojení sítě VPN
               href: vpn-gateway.md
-            - name: Připojení virtuální sítě k AVS
+            - name: Připojení virtuální sítě ke CloudSimple
               href: virtual-network-connection.md
-        - name: Správa účtů portálu AVS
+        - name: Správa účtů na portálu CloudSimple
           items:
             - name: Zobrazení přehledu účtů
               href: account.md
             - name: Zobrazení seznamu uživatelů
               href: users.md
-        - name: Nastavení virtuálních počítačů AVS
+        - name: Vytvoření virtuálních počítačů CloudSimple
           items:
-            - name: Vytvoření virtuálního počítače AVS v Azure
+            - name: Vytvoření virtuálního počítače CloudSimple v Azure
               href: azure-create-vm.md
-            - name: Správa virtuálních počítačů AVS v Azure
+            - name: Správa virtuálních počítačů CloudSimple v Azure
               href: azure-manage-vm.md
     - name: Návody
       items:
         - name: Zabezpečení vašeho prostředí
           href: private-cloud-secure.md
-        - name: Správa privátního cloudu AVS
+        - name: Správa privátního cloudu
           items:
-            - name: Zvýšení úrovně oprávnění pro privátní cloud AVS
+            - name: Zvýšení úrovně oprávnění pro privátní cloud
               href: escalate-privileges.md
             - name: Nastavení úloh DNS a DHCP
               href: dns-dhcp-setup.md
             - name: Migrace úloh pomocí roztažené sítě vrstvy 2
               href: migration-layer-2-vpn.md
-        - name: Sítě privátního cloudu AVS
+        - name: Sítě privátního cloudu
           items:
-            - name: Připojení VPN k privátnímu cloudu AVS
+            - name: Připojení VPN k privátnímu cloudu
               href: set-up-vpn.md
             - name: Místní síťové připojení s využitím ExpressRoute
               href: on-premises-connection.md
@@ -140,15 +140,15 @@
               href: private-cloud-dns-forwarding.md
         - name: Platforma VMware
           items:
-            - name: Seznámení s modelem oprávnění privátního cloudu AVS
+            - name: Seznámení s modelem oprávnění privátního cloudu
               href: learn-private-cloud-permissions.md
             - name: Zdroje identit VCenter
               href: set-vcenter-identity.md
             - name: Azure Application Gateway s virtuálními počítači VMware
               href: azure-application-gateway.md
-            - name: Konfigurace serveru vCenter privátního cloudu AVS jako koncového bodu automatizace vRealize
+            - name: Konfigurace serveru vCenter privátního cloudu jako koncového bodu automatizace vRealize
               href: configure-server-vrealize-automation-endpoint.md
-            - name: Migrace virtuálních počítačů úloh do privátního cloudu AVS
+            - name: Migrace virtuálních počítačů úloh do privátního cloudu
               href: migrate-workloads.md
             - name: Migrace s využitím Azure Data Boxu
               href: migration-using-azure-data-box.md
@@ -160,19 +160,19 @@
           items:
             - name: Zálohování virtuálních počítačů úloh
               href: backup-workloads-veeam.md
-            - name: Konfigurace privátního cloudu AVS jako lokality pro zotavení po havárii s využitím Zerto
+            - name: Konfigurace privátního cloudu jako lokality pro zotavení po havárii s využitím Zerto
               href: disaster-recovery-zerto.md
-            - name: Konfigurace privátního cloudu AVS jako lokality pro zotavení po havárii s využitím VMware SRM
+            - name: Konfigurace privátního cloudu jako lokality pro zotavení po havárii s využitím VMware SRM
               href: disaster-recovery-site-recovery-manager.md
             - name: Průvodce řešením VMware Horizon
               href: horizon-guide.md
-            - name: Konfigurace šifrování vSAN pro váš privátní cloud AVS
+            - name: Konfigurace šifrování vSAN pro váš privátní cloud
               href: vsan-encryption.md
-            - name: Optimalizace privátního cloudu AVS pro Oracle RAC
+            - name: Optimalizace privátního cloudu pro Oracle RAC
               href: oracle-real-application-clusters.md
         - name: Integrace základních služeb Azure
           items:
-            - name: Zdroj identit Azure AD v serveru vCenter privátního cloudu AVS
+            - name: Zdroj identity Azure AD v serveru vCenter privátního cloudu
               href: azure-ad.md
             - name: Místní síťové připojení s využitím ExpressRoute
               href: on-premises-connection.md

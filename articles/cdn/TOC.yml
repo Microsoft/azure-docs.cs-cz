@@ -6,7 +6,7 @@
       href: cdn-overview.md
     - name: Porovnání funkcí produktů
       href: cdn-features.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Vytvoření koncového bodu a profilu
       href: cdn-create-new-endpoint.md
@@ -28,7 +28,7 @@
       href: cdn-caching-rules-tutorial.md
     - name: Vynucení HTTPS s využitím stroje pravidel Standard
       href: cdn-standard-rules-engine.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
@@ -163,7 +163,7 @@
           href: cdn-http-debug-headers.md
     - name: Hlavičky HTTP specifické pro Microsoft
       href: cdn-msft-http-debug-headers.md
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.cdn
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.cdn

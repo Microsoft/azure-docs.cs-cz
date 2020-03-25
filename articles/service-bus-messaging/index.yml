@@ -13,10 +13,10 @@ metadata:
   ms.author: spelluru
   ms.date: 10/22/2019
   ms.openlocfilehash: 36b82d96f4bfbc3eac6d5ca7f961386224171268
-  ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/01/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "74666286"
 landingContent:
 - title: Další informace o zasílání zpráv služby Service Bus
@@ -41,11 +41,11 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: portál Azure
+    - text: Azure Portal
       url: service-bus-quickstart-portal.md
     - text: Azure CLI
       url: service-bus-quickstart-cli.md
-    - text: Azure PowerShell
+    - text: Azure Powershell
       url: service-bus-quickstart-powershell.md
     - text: Šablona Azure Resource Manageru
       url: service-bus-resource-manager-namespace-queue.md
@@ -53,7 +53,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: portál Azure
+    - text: Azure Portal
       url: service-bus-quickstart-topics-subscriptions-portal.md
     - text: Šablona Azure Resource Manageru
       url: service-bus-resource-manager-namespace-topic.md

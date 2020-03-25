@@ -28,11 +28,11 @@
       href: tutorial-traffic-manager-subnet-routing.md
     - name: Záznamy aliasů pro Traffic Manager
       href: ../dns/tutorial-alias-tm.md?toc=%2fazure%2ftraffic-manager%2ftoc.json
-- name: ukázky
+- name: Ukázky
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: powershell-samples.md
 - name: Koncepty
   items:
@@ -103,7 +103,7 @@
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=traffic-manager'
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.trafficmanager
     - name: Azure CLI
       href: /cli/azure/network/traffic-manager
@@ -119,14 +119,6 @@
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: Související
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

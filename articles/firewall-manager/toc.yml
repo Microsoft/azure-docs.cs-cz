@@ -35,7 +35,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET
       href: /dotnet/api

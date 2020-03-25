@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199241"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazení rezervací Azure na webu Azure Portal
@@ -44,7 +44,7 @@ Pokud potřebujete změnit rozsah rezervace, rozdělit rezervaci nebo změnit, k
 Pokud chcete zobrazit transakce rezervací na webu Azure Portal, postupujte následovně:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/view-reservations/portal-cm-billing-search.png)
 
@@ -63,13 +63,13 @@ Další informace o rezervacích Azure najdete v následujících článcích:
 - [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
 - [Správa rezervací v Azure](manage-reserved-vm-instance.md)
 
-Nákup plánu služby:
+Zakoupení plánu služby:
 
 - [Předplacení rezervované kapacity služby Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 
-Nákup plánu softwaru:
+Zakoupení plánu softwaru:
 
 - [Předplacení plánů softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [Předplacení plánů softwaru SUSE z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)

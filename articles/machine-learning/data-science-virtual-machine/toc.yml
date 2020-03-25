@@ -10,7 +10,7 @@
       href: geo-ai-dsvm-overview.md
     - name: 'Nástroje, které jsou součástí prostředí Data Science Virtual Machine'
       href: tools-included.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření prostředí Data Science Virtual Machine s Windows
@@ -39,7 +39,7 @@
       href: dsvm-tools-productivity.md
     - name: Podnikové zabezpečení a pokyny
       href: dsvm-enterprise-overview.md
-- name: ukázky
+- name: Ukázky
   href: dsvm-samples-and-walkthroughs.md
 - name: Návody
   items:

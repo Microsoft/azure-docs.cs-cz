@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Azure Digital Twins
       href: about-digital-twins.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Zjištění dostupných místností

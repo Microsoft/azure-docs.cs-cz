@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 173967356c17150d5694b48e6ed2acd78155ca4b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199224"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Vysvětlení způsobu uplatňování slevy za plán rezervace softwaru Red Hat Linux Enterprise v Azure
@@ -151,7 +151,7 @@ Názvy z Marketplace na webu Azure Portal:
 
 Další informace o rezervacích najdete v následujících článcích:
 
-- [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
+- [Co jsou rezervace v Azure](save-compute-costs-reservations.md)
 - [Předplacení plánů softwaru Red Hat pomocí rezervací Azure](../../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Správa rezervací v Azure](manage-reserved-vm-instance.md)

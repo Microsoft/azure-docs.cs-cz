@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77587753"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Vysvětlení poplatků za externí služby v Azure
@@ -60,7 +60,7 @@ Poplatky za Azure Marketplace jsou uvedené ve vaší místní měně.
 Faktury za Azure Marketplace si můžete na webu Azure Portal zobrazit a stáhnout pomocí následujícího postupu:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 1. V nabídce vlevo vyberte **Faktury**.
 1. V rozevíracím seznamu předplatného vyberte předplatné přidružené k vašim službám Marketplace.
 1. V tabulce faktur zkontrolujte sloupec **Typ**. V případě faktury za službu Marketplace bude jako typ nastaveno **Azure Marketplace a rezervace**. 
@@ -125,7 +125,7 @@ Pokud chcete objednávku externí služby zrušit, na webu [Azure Portal](https:
     ![Snímek obrazovky s tlačítkem Odstranit](./media/understand-azure-marketplace-charges/delete-button.png)
 1. V potvrzovacím okně zadejte *Ano*.
     ![Odstranění prostředku](./media/understand-azure-marketplace-charges/delete-resource.PNG)
-1. Klikněte na **Odstranit**.
+1. Klikněte na tlačítko **Odstranit**.
 
 ## <a name="check-billing-account-type"></a>Kontrola typu fakturačního účtu
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-mca.md)]

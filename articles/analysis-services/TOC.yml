@@ -82,7 +82,7 @@
           href: analysis-services-database-users.md
         - name: Správa správců serveru
           href: analysis-services-server-admins.md
-    - name: Připojení
+    - name: Připojit
       items:
         - name: Propojení s Excelem
           href: analysis-services-connect-excel.md

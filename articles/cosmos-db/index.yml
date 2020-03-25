@@ -2,7 +2,7 @@
 title: Dokumentace k Azure Cosmos DB
 summary: Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely pro provozní a analytické úlohy. Nabízí funkci multi-master pomocí automatického škálování propustnosti, výpočtů a úložiště.
 metadata:
-  title: Azure Cosmos DB
+  title: Databáze Azure Cosmos
   description: Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely pro provozní a analytické úlohy. Nabízí funkci multi-master pomocí automatického škálování propustnosti, výpočtů a úložiště.
   services: service
   ms.service: cosmos-db
@@ -12,10 +12,10 @@ metadata:
   ms.author: sngun
   ms.date: 09/10/2019
   ms.openlocfilehash: ebe88aea9b84e640ccc4cecb495d2beedae2893e
-  ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/14/2020
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "75934110"
 landingContent:
 - title: Informace o databázi Azure Cosmos

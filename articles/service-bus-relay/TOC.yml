@@ -24,7 +24,7 @@
           href: service-bus-relay-tutorial.md
         - name: Zveřejnění místní služby WCF REST pro klienta mimo vaši síť
           href: service-bus-relay-rest-tutorial.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Hybridní připojení
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
@@ -87,7 +87,7 @@
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: ukázky
+    - name: Ukázky
       href: 'https://github.com/azure/azure-relay/tree/master/samples'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

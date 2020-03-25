@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: banders
 ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199683"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
@@ -21,7 +21,7 @@ Zůstatek kreditů Azure u fakturačního účtu pro smlouvu se zákazníkem Mic
 
 V rámci fakturačního účtu pro smlouvu se zákazníkem Microsoftu se kredity přiřazují k fakturačnímu profilu. Každý fakturační profil má své vlastní kredity, které se automaticky uplatní u poplatků na příslušné faktuře. K zobrazení zůstatku kreditu Azure u fakturačního profilu musíte mít roli vlastníka, přispěvatele, čtenáře nebo správce faktur daného fakturačního profilu nebo roli vlastníka, přispěvatele nebo čtenáře u fakturačního účtu. Další informace o rolích najdete v tématu [Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure](understand-mca-roles.md).
 
-Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>Kontrola zůstatku kreditu
 
@@ -29,7 +29,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
@@ -53,7 +53,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
    ![Snímek obrazovky se zůstatkem kreditů pro fakturační profil](./media/mca-check-azure-credits-balance/mca-credit-balance.png)
 
-   | Označení               | Definice                           |
+   | Období               | Definice                           |
    |--------------------|--------------------------------------------------------|
    | Odhadovaný zůstatek  | Odhadované množství vašich kreditů po zvážení všech fakturovaných a nevyřízených transakcí |
    | Aktuální zůstatek    | Množství kreditů podle vaší poslední faktury. Nezahrnuje žádné nevyřízené transakce |
@@ -66,7 +66,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
    ![Snímek obrazovky se seznamy kreditů pro určitý fakturační profil](./media/mca-check-azure-credits-balance/mca-credits-list.png)
 
-   | Označení | Definice |
+   | Období | Definice |
    |---|---|
    | Zdroj | Zdroj pořízení kreditu |
    | Počáteční datum | Datum získání kreditu |
@@ -81,7 +81,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
    ![Snímek obrazovky s kreditními transakcemi pro fakturační profil](./media/mca-check-azure-credits-balance/mca-credits-transactions.png)
 
-   | Označení | Definice |
+   | Období | Definice |
    |---|---|
    | Datum transakce | Datum uskutečnění transakce |
    | Popis | Popis transakce |
@@ -98,7 +98,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
 ### <a name="rest-api"></a>[REST API](#tab/rest)
 
-K programovému získání zůstatku kreditu u fakturačního účtu můžete použít rozhraní API pro [spotřebu](https://docs.microsoft.com/rest/api/consumption/) nebo [fakturaci Azure](https://docs.microsoft.com/rest/api/billing/).
+K programovému získání zůstatku kreditu u fakturačního účtu můžete použít rozhraní API pro [spotřebu](https://docs.microsoft.com/rest/api/billing/) nebo [fakturaci Azure](https://docs.microsoft.com/rest/api/consumption/).
 
 V následujících příkladech se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
 

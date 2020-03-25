@@ -8,7 +8,7 @@
       href: ./chef-habitat-overview.md
     - name: Informace o InSpec v Azure
       href: ./chef-inspec-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Chef
@@ -40,7 +40,7 @@
       items:
         - name: Blog o softwaru Chef
           href: 'https://blog.chef.io/'
-- name: nástroje
+- name: Nástroje
   items:
     - name: Rozšíření Chef pro Azure DevOps Services
       href: 'https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks'

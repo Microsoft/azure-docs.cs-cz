@@ -18,9 +18,9 @@
   items:
     - name: Registrace služby Peering Service
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: azure-portal.md
-        - name: Azure PowerShell
+        - name: Azure Powershell
           href: powershell.md
         - name: Azure CLI
           href: cli.md
@@ -28,7 +28,7 @@
       href: measure-connection-telemetry.md
 - name: Odkazy
   items:
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.peering
     - name: Azure CLI
       href: /cli/azure/ext/peering/peering

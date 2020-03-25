@@ -6,7 +6,7 @@
       href: dns-overview.md
     - name: Co je Privátní DNS v Azure?
       href: private-dns-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Veřejná služba DNS
@@ -79,17 +79,17 @@
           href: dns-alias-appservice.md
         - name: Správa zón DNS
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: dns-operations-dnszones-portal.md
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: dns-operations-dnszones.md
             - name: Azure CLI
               href: dns-operations-dnszones-cli.md
         - name: Správa záznamů DNS
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: dns-operations-recordsets-portal.md
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: dns-operations-recordsets.md
             - name: Azure CLI
               href: dns-operations-recordsets-cli.md
@@ -129,7 +129,7 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=dns'
         - name: Ukázky rozhraní příkazového řádku
           href: cli-samples.md
-        - name: Azure PowerShell
+        - name: Azure Powershell
           href: /powershell/module/az.dns
         - name: Azure CLI
           href: /cli/azure/network/dns
@@ -151,28 +151,12 @@
       items:
         - name: Azure CLI
           href: /cli/azure/network/private-dns
-        - name: Azure PowerShell
+        - name: Azure Powershell
           href: /powershell/module/az.PrivateDns
         - name: .NET
           href: /dotnet/api/overview/azure/privatedns/management
         - name: REST
           href: /rest/api/dns/privatedns/privatezones
-- name: Související
-  items:
-    - name: Privátní propojení
-      href: ../private-link/private-link-overview.md
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: Virtuální počítač
-      href: /azure/virtual-machines/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: Webové aplikace
-      href: /azure/app-service/
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

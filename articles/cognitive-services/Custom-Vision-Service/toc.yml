@@ -7,7 +7,7 @@
       href: home.md
     - name: Co je nového
       href: whats-new.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Použití webového portálu
       items:
@@ -99,7 +99,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: Zdroje a prostředky
   items:
-    - name: ukázky
+    - name: Ukázky
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
     - name: Omezení a kvóty
       href: limits-and-quotas.md

@@ -40,7 +40,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/azure
 - name: Zdroje a prostředky
   items:

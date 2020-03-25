@@ -32,7 +32,7 @@
   items:
     - name: Sestavení jednostránkové webové aplikace
       href: tutorial-bing-entities-search-single-page-app.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'

@@ -6,7 +6,7 @@
       href: oracle-vm-solutions.md
     - name: Řešení s využitím OCI – Preview
       href: oracle-oci-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Vytvoření Oracle DB
       href: oracle-database-quick-create.md

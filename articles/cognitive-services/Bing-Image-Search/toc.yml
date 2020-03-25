@@ -8,7 +8,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: REST API
       items:
@@ -34,7 +34,7 @@
       href: tutorial-bing-image-search-single-page-app.md
     - name: Extrakce podrobností image
       href: tutorial-image-post.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'

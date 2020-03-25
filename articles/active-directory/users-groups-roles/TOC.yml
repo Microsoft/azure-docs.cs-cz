@@ -4,7 +4,7 @@
   items:
     - name: 'Uživatelé, skupiny, licencování a role Azure AD'
       href: directory-overview-user-model.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Přidání uživatelů do Azure AD
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -142,7 +142,7 @@
           href: licensing-ps-examples.md
         - name: ID plánů služeb pro licencování
           href: licensing-service-plan-reference.md
-    - name: Role správce Azure AD
+    - name: role správce Azure AD
       items:
         - name: Role a oprávnění
           href: directory-assign-admin-roles.md

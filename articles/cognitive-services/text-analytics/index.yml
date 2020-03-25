@@ -8,18 +8,17 @@ metadata:
   description: 'Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje čtyři hlavní funkce: analýzu mínění, extrakci klíčových frází, rozpoznávání pojmenovaných entit a rozpoznávání jazyka. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.'
   author: aahill
   manager: nitinme
-  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: text-analytics
   ms.topic: landing-page
   ms.date: 01/29/2019
   ms.author: aahi
-  ms.openlocfilehash: c98f6b9994dfa80f51a78d9be22e283cca700ce9
-  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+  ms.openlocfilehash: 468315f79f7d0f9d10013c4068b5bb29436b3166
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/21/2020
-  ms.locfileid: "77524593"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "79415134"
 landingContent:
 - title: Informace o rozhraní API pro analýzu textu
   linkLists:
@@ -131,7 +130,7 @@ landingContent:
       url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
     - text: Klientská knihovna v Go
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics
-    - text: Azure PowerShell
+    - text: Azure Powershell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest

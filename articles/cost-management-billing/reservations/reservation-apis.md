@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: c2e590f011c92df6aa942e8e1fc799023f15750f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200346"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237577"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro automatizaci rezervací Azure
 
@@ -58,7 +58,7 @@ Text požadavku:
 }
 ```
 
-Rezervaci můžete zakoupit také na webu Azure Portal. Další informace najdete v těchto článcích:
+Rezervaci můžete zakoupit také na webu Azure Portal. Další informace najdete v následujících článcích:
 
 Plány služby:
 - [Virtuální počítač](../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)

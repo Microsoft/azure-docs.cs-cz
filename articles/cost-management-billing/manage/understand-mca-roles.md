@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199496"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238036"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure
 
 Při správě fakturačního účtu smlouvy se zákazníkem Microsoftu používejte role popsané v následujících částech. Tyto role existují vedle předdefinovaných rolí, které v Azure slouží k řízení přístupu k prostředkům. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
-Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu.
+Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Microsoftu. Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu.
 
 ## <a name="billing-role-definitions"></a>Definice fakturačních rolí
 
@@ -178,7 +178,7 @@ Následující tabulka ukazuje, jakou roli potřebujete k různým úkonům v ko
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Vyhledejte položku **Správa nákladů a fakturace**.
 
    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
@@ -196,7 +196,7 @@ Následující tabulka ukazuje, jakou roli potřebujete k různým úkonům v ko
 
    ![Snímek obrazovky, který znázorňuje odebrání správce z fakturačního účtu](./media/understand-mca-roles/billing-remove-admin.png)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory

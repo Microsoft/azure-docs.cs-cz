@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: e7c04f587f900342031f25210f6640b46fbc358b
-  ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+  ms.openlocfilehash: 428ff52a94c41a564e023d859f70af6eb56df7fa
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/01/2020
-  ms.locfileid: "78207077"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80131683"
 landingContent:
 - title: Informace o počítačovém zpracování obrazu
   linkLists:
@@ -41,15 +41,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím .NET SDK
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: Používání sady Python SDK
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: Používání sady Java SDK
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: Používání sady Node SDK
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Použití sady Go SDK
-      url: quickstarts-sdk/go-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Detekce objektů v obrázcích
   linkLists:
   - linkListType: concept
@@ -59,15 +59,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím .NET SDK
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: Používání sady Python SDK
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: Používání sady Java SDK
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: Používání sady Node SDK
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Použití sady Go SDK
-      url: quickstarts-sdk/go-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Používání značek obsahu pro obrázky
   linkLists:
   - linkListType: concept
@@ -77,15 +77,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím .NET SDK
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: Používání sady Python SDK
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: Používání sady Java SDK
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: Používání sady Node SDK
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Použití sady Go SDK
-      url: quickstarts-sdk/go-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Použití kontejnerů
   linkLists:
   - linkListType: get-started
@@ -111,15 +111,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím .NET SDK
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: Používání sady Python SDK
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: Používání sady Java SDK
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: Používání sady Node SDK
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Použití sady Go SDK
-      url: quickstarts-sdk/go-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Referenční informace
   linkLists:
   - linkListType: reference
@@ -140,7 +140,7 @@ landingContent:
       url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision
-    - text: Azure PowerShell
+    - text: Azure Powershell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Rozhraní příkazového řádku Azure (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list

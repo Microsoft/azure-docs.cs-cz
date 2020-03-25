@@ -7,7 +7,7 @@
           href: what-is-b2b.md
         - name: Porovnání B2B a B2C
           href: compare-with-b2c.md
-    - name: Rychlé starty
+    - name: Šablony Rychlý start
       items:
         - name: Přidání uživatelů typu host na portálu
           href: b2b-quickstart-add-guest-users-portal.md
@@ -21,7 +21,7 @@
           href: tutorial-bulk-invite.md
         - name: Vynucení vícefaktorového ověřování
           href: b2b-tutorial-require-mfa.md
-    - name: ukázky
+    - name: Ukázky
       items:
         - name: Ukázky kódu a Azure PowerShellu
           href: code-samples.md

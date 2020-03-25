@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Time Series Insights
       href: time-series-insights-update-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Azure Time Series Insights verze GA

@@ -15,9 +15,9 @@
       href: tutorial-firewall-dnat.md
     - name: Monitorování diagnostických protokolů
       href: tutorial-diagnostics.md
-- name: ukázky
+- name: Ukázky
   items:
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: sample-powershell.md
     - name: Protokoly služby Azure Monitor
       href: log-analytics-samples.md
@@ -69,7 +69,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET
       href: /dotnet/api

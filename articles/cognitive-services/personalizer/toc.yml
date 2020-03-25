@@ -9,7 +9,7 @@
     - name: Co je nového
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: S využitím sady SDK
       href: sdk-learning-loop.md
@@ -71,7 +71,7 @@
       href: how-to-offline-evaluation.md
 - name: Referenční informace
   items:
-    - name: ukázky
+    - name: Ukázky
       href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
     - name: Reference k rozhraní REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
@@ -107,6 +107,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Šifrování
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Plány Azure do budoucna
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: Ceny
