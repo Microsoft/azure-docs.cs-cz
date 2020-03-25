@@ -1,20 +1,18 @@
 ---
 title: Nastavení integrace AWS se službou Azure Cost Management
 description: Tento článek vás provede nastavením a konfigurací integrace sestavy nákladů a využití AWS se službou Azure Cost Management.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199989"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203079"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace integrace sestavy nákladů a využití AWS
 
@@ -39,11 +37,11 @@ Pomocí stránky **Cost & Usage Reports** (Sestavy nákladů a využití) v konz
 9. V dialogovém okně Configure S3 Bucket (Konfigurace kbelíku S3) proveďte jednu z následujících úloh:
     1. V rozevíracím seznamu vyberte existující kbelík a zvolte **Next** (Další).
     2. Zadejte název kbelíku a oblast, kde chcete vytvořit nový kbelík, a vyberte **Next** (Další).
-10. Zaškrtněte políčko **I have confirmed that this policy is correct** (Potvrzuji, že jsou tyto zásady správné) a pak klikněte na **Save** (Uložit).
-11. (Volitelné) V poli Report path prefix (Předpona cesty k sestavě) zadejte předponu cesty k sestavě, kterou chcete přidat k názvu sestavy.
+10.    Zaškrtněte políčko **I have confirmed that this policy is correct** (Potvrzuji, že jsou tyto zásady správné) a pak klikněte na **Save** (Uložit).
+11.    (Volitelné) V poli Report path prefix (Předpona cesty k sestavě) zadejte předponu cesty k sestavě, kterou chcete přidat k názvu sestavy.
 Pokud nezadáte předponu, bude výchozí předponou název, který jste zadali pro sestavu. Rozsah kalendářních dat má formát `/report-name/date-range/`.
 12. Jako **Time unit** (Časová jednotka) vyberte **Hourly** (Po hodině).
-13. V části **Report versioning** (Správa verzí sestav) vyberte, zda chcete, aby každá verze sestavy přepsala předchozí verzi, nebo zda chcete další nové sestavy.
+13.    V části **Report versioning** (Správa verzí sestav) vyberte, zda chcete, aby každá verze sestavy přepsala předchozí verzi, nebo zda chcete další nové sestavy.
 14. Možnost **Enable data integration for** (Povolit integraci dat pro) nevyžaduje žádný výběr.
 15. Jako **Compression** (Komprese) vyberte **GZIP**.
 16. Vyberte **Další**.
@@ -124,8 +122,8 @@ JSON obsahující zásadu by měl vypadat přibližně jako v následujícím p�
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },

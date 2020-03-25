@@ -1,19 +1,18 @@
 ---
 title: Analýza nákladů na Azure s využitím aplikace Power BI
 description: Tento článek vysvětluje, jak nainstalovat a používat aplikaci Power BI Azure Cost Management.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: bc676910a05dbec97ae05578399029f85f71e1ef
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: cd82c5880762e670a42066416042be57ef018a99
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399626"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203147"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise (EA)
 
@@ -33,7 +32,7 @@ Aplikace Power BI Azure Cost Management aktuálně podporuje pouze zákazníky s
 Postup instalace aplikace:
 
 1. Otevřete [aplikaci Power BI Azure Cost Management](https://aka.ms/costmgmt/ACMApp).
-2. Na stránce Power BI AppSource vyberte **Načíst hned**.
+2. Na stránce Power BI AppSource vyberte **Získat hned**.
 3. Výběrem **Pokračovat** odsouhlasíte podmínky použití a zásady ochrany osobních údajů.
 4. V poli **Instalovat tuto aplikaci Power BI** vyberte **Instalovat**.
 5. V případě potřeby vytvořte pracovní prostor a vyberte **Pokračovat**.

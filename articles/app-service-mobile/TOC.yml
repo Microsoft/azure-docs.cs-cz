@@ -6,7 +6,7 @@
       href: app-service-mobile-value-prop.md
     - name: Plány služby App Service
       href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Android
       href: app-service-mobile-android-get-started.md
@@ -22,7 +22,7 @@
       href: app-service-mobile-xamarin-forms-get-started.md
     - name: Xamarin.iOS
       href: app-service-mobile-xamarin-ios-get-started.md
-- name: Postup
+- name: Návody
   items:
     - name: Plánování a návrh
       items:
@@ -172,7 +172,7 @@
         - name: Azure Virtual Network
           href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
         - name: Skupiny prostředků
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations'
+          href: ../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
           items:
             - name: Spouštění úloh na pozadí pomocí WebJobs
               href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
@@ -261,12 +261,10 @@
       href: 'https://azure.github.io/azure-mobile-apps-js-client/'
     - name: Klientská sada SDK pro Windows/Xamarin
       href: 'https://msdn.microsoft.com/library/azure/mt419521.aspx'
-- name: Související
+- name: Zdroje a prostředky
   items:
     - name: Úložiště GitHub
       href: 'https://github.com/Azure/azure-mobile-apps'
-- name: Zdroje a prostředky
-  items:
     - name: Osvědčené postupy pro App Service
       href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
     - name: Plány Azure do budoucna
@@ -283,7 +281,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-mobile-services'
     - name: Videa
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=mobile-services'
-    - name: ukázky
+    - name: Ukázky
       items:
         - name: Field Engineer
           href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/'

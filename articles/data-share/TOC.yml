@@ -21,7 +21,7 @@
       href: concepts-roles-permissions.md
     - name: Zotavení po havárii
       href: disaster-recovery.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázky kódů
       href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
