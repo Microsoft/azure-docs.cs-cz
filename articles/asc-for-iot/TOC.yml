@@ -18,7 +18,7 @@
           href: iot-hub-integration.md
         - name: Agenti zabezpečení
           href: security-agents.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Onboarding služby Azure Security Center pro IoT v IoT Hubu

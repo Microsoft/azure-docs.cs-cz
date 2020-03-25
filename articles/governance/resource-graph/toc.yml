@@ -5,7 +5,7 @@
     - name: Co je Azure Resource Graph?
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Spusťte svůj první dotaz – Azure Portal
@@ -22,7 +22,7 @@
     - name: Vytvoření a sdílení dotazu na webu Azure Portal
       displayName: 'query, portal'
       href: ./tutorials/create-share-query.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Dotazy pro začátečníky
       displayName: 'query language, data explorer, count, list, show'
@@ -56,7 +56,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/resource-graph/graph
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.resourcegraph/
     - name: Sada Azure SDK pro .NET
       href: /dotnet/api/Microsoft.Azure.Management.ResourceGraph

@@ -8,7 +8,7 @@
       href: front-end-development-platform.md
     - name: Plánování a návrh mobilní aplikace pomocí back-endových služeb
       items:
-        - name: Authentication
+        - name: Ověřování
           href: authentication.md
         - name: Úložiště dat
           href: data-storage.md

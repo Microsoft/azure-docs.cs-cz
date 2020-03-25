@@ -4,7 +4,7 @@
   items:
     - name: Co je Asistivní čtečka?
       href: Overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: 'Pomocí C#'
