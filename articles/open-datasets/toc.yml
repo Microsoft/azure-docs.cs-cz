@@ -16,7 +16,7 @@
   items:
     - name: Datové sady ve službě Azure Machine Learning
       href: ../machine-learning/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
-- name: ukázky
+- name: Ukázky
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md
 - name: Referenční informace

@@ -143,8 +143,6 @@
           href: consuming-from-excel.md
         - name: Použití doplňků Excelu
           href: excel-add-in-for-web-services.md
-        - name: Použití fondu Batch
-          href: dedicated-capacity-for-bes-jobs.md
     - name: Případy použití
       items:
         - name: Výpovědi zákazníků

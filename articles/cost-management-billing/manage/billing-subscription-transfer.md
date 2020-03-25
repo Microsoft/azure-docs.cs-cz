@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245392"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238155"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -124,7 +124,7 @@ Převod předplatného na webu Azure Portal je k dispozici pro níže uvedené t
 
 Tyto nejčastější dotazy se týkají uživatelů, kteří převádějí vlastnictví fakturace předplatného Azure na jiný účet.
 
-### <a name="whoisaa"></a> Kdo je správce fakturace účtu?
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> Kdo je správce fakturace účtu?
 
 Správce fakturace je osoba, která má oprávnění pro správu fakturace účtu. Má oprávnění přistupovat k fakturaci na webu [Azure Portal](https://portal.azure.com) a provádět různé fakturační úkoly, jako je vytváření předplatných, zobrazení a platby faktur nebo aktualizace způsobů platby.
 
@@ -206,15 +206,15 @@ Podnikový správce může aktualizovat vlastnictví jakéhokoli účtu i po odc
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a id="no-button"></a> Proč se mi nezobrazuje tlačítko pro převod předplatného?
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> Proč se mi nezobrazuje tlačítko pro převod předplatného?
 
 Pro váš fakturační účet není k dispozici samoobslužný převod předplatného. V současné době nepodporujeme převod vlastnictví fakturace předplatných v účtech smlouvy Enterprise (EA) na webu Azure Portal. Účty smluv se zákazníkem Microsoftu vytvořené během práce se zástupcem společnosti Microsoft také nepodporují převod vlastnictví fakturace.
 
-### <a id="no-button"></a> Proč můj typ předplatného nepodporuje převod?
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> Proč můj typ předplatného nepodporuje převod?
 
 Převod vlastnictví fakturace nepodporují všechny typy předplatného. Seznam typů předplatného, které podporují převody, najdete v tématu [Podporované typy předplatného](#supported-subscription-types).
 
-### <a id="no-button"></a> Proč se mi při pokusu o převod vlastnictví předplatného zobrazuje chyba odepření přístupu?
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> Proč se mi při pokusu o převod vlastnictví předplatného zobrazuje chyba odepření přístupu?
 
 Tato chyba se zobrazí, pokud se pokoušíte převést předplatné plánu Microsoft Azure a nemáte potřebná oprávnění. Pokud chcete převést předplatné plánu Microsoft Azure, musíte být vlastníkem nebo přispěvatelem v části faktury, ke které se předplatné účtuje. Další informace najdete v tématu [Správa předplatných pro části faktury](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 

@@ -1,26 +1,28 @@
 ---
-title: Aktivace účtů a předplatných Azure | Microsoft Docs
+title: Aktivace účtů a předplatných Azure
 description: Povolení přístupu pomocí rozhraní API Azure Resource Manageru pro nové a stávající účty a řešení běžných problémů s účty.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 2467ee65b3f7090e5854bdd7848abab667ccfe55
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301365"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474658"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivace účtů a předplatných Azure pomocí služby Cloudyn
 
 Přidání nebo aktualizace přihlašovacích údajů Azure Resource Manageru umožňuje službě Cloudyn zjistit všechny účty a všechna předplatná ve vašem tenantovi Azure. Pokud navíc máte na virtuálních počítačích povolené rozšíření Azure Diagnostics, může služba Cloudyn shromažďovat rozšířené metriky – například o procesoru a paměti. Tento článek popisuje, jak povolit přístup pomocí rozhraní API Azure Resource Manageru pro nové a stávající účty. Také popisuje, jak řešit běžné problémy s účty.
 
 Cloudyn nemá přístup k většině dat vašeho předplatného Azure, pokud je toto předplatné _neaktivované_. Je potřeba upravit _neaktivované_ účty, aby k nim měl Cloudyn přístup.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="required-azure-permissions"></a>Vyžadovaná oprávnění Azure
 
