@@ -13,6 +13,7 @@
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Kurzy
+  expanded: true
   items:
     - name: Studio a Designer
       items:
@@ -87,10 +88,10 @@
       href: concept-workspace.md
     - name: Prostředí
       href: concept-environments.md
-    - name: Přístup k datům
-      href: concept-data.md
     - name: Přijímání dat
       href: concept-data-ingestion.md
+    - name: Přístup k datům
+      href: concept-data.md
     - name: Trénování modelu
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

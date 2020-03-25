@@ -5,7 +5,7 @@
   items:
     - name: Co je Azure Spring Cloud?
       href: spring-cloud-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Spuštění aplikace Spring Cloudu s využitím portálu

@@ -103,7 +103,7 @@
           href: plan-your-environment.md
     - name: Získání dat a jejich pochopení
       items:
-        - name: Ingestace dat
+        - name: Příjem dat
           displayName: 'move data, manage data logistics'
           items:
             - name: Přehled
@@ -194,7 +194,7 @@
   items:
     - name: Azure Machine Learning
       href: ../
-    - name: Cognitive Services
+    - name: Kognitivní služby
       href: 'https://docs.microsoft.com/azure/cognitive-services/'
     - name: Detekce anomálií
       href: apps-anomaly-detection-api.md

@@ -1,20 +1,19 @@
 ---
-title: Registrace Office 365 s využitím účtu Azure | Microsoft Docs
+title: Registrace Office 365 pomocí účtu Azure
 description: Zjistěte, jak vytvořit předplatné Office 365 s využitím účtu Azure.
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 736009a88f309e0a38402222668a9609f844552f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199921"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204813"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registrace předplatného Office 365 s využitím účtu Azure
 Pokud jste předplatitelem Azure, můžete k registraci předplatného Office 365 použít svůj účet Azure. Pokud jste součástí organizace, která má předplatné Azure, můžete pro uživatele ve vašem stávajícím tenantovi Azure Active Directory (Azure AD) vytvořit předplatná Office 365. Zaregistrujte si Office 365 pomocí účtu, který má ve vašem tenantovi Azure Active Directory oprávnění globálního správce nebo správce fakturace. Další informace najdete v tématech [Kontrola oprávnění účtu v Azure AD](#RoleInAzureAD) a [Přiřazování rolí správců v Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -47,7 +46,7 @@ Pokud jste vytvořili předplatné Office 365 pro vaši organizaci, pomocí nás
 
 Po registraci se předplatné Office 365 přidá do stejné instance Azure Active Directory, do které patří vaše předplatné Azure. Další informace najdete v tématech [Další informace o předplatných Azure a Office 365](office-365-account-for-azure-subscription.md#more-about-subs) a [Přidružování předplatných Azure se službou Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a id="RoleInAzureAD"></a>Kontrola oprávnění účtu v Azure AD
+## <a name="check-my-account-permissions-in-azure-ad"></a><a id="RoleInAzureAD"></a>Kontrola oprávnění účtu v Azure AD
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **Všechny služby** a pak vyhledejte **Active Directory**.
 

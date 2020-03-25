@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   href: overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Onboarding Azure Sentinelu

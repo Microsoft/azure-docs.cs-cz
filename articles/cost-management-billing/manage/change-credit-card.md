@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199853"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Přidání, aktualizace nebo odebrání platební karty v Azure
@@ -93,7 +93,7 @@ Pokud dojde k obnovení vaší platební karty a její číslo zůstane stejné,
     ![Snímek obrazovky znázorňující vybranou platební kartu](./media/change-credit-card/edit-card-x.png)
 
 1. Aktualizujte údaje platební karty.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ### <a name="delete-a-credit-card-from-the-account"></a>Odstranění platební karty z účtu
 
@@ -107,7 +107,7 @@ Pokud dojde k obnovení vaší platební karty a její číslo zůstane stejné,
     ![Snímek obrazovky s vybranou možností Správa způsobů platby.](./media/change-credit-card/payment-methods-blade-x.png)
 
 1. Zaškrtněte políčko vedle karty, kterou chcete odebrat.
-1. Klikněte na **Odstranit**.
+1. Klikněte na tlačítko **Odstranit**.
 
 Pokud vaše platební karta představuje aktivní způsob platby pro některé z vašich předplatných Microsoftu, nemůžete ji z účtu Azure odebrat. Změňte aktivní způsob platby u všech předplatných spojených s touto platební kartou a zkuste to znovu.
 
@@ -125,7 +125,7 @@ Pokud chcete změnit platební kartu, postupujte podle následujících kroků:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
 1. V nabídce na levé straně klikněte na **Fakturační profily**.
-1. Vyberte fakturační profil.
+1. Zvolte fakturační profil.
 1. V nabídce na levé straně vyberte **Způsoby platby**.
 
    ![Snímek obrazovky s možností Způsoby platby v nabídce](./media/change-credit-card/payment-methods-tab-mca.png)
@@ -145,7 +145,7 @@ Pokud chcete upravit nebo odstranit platební kartu, postupujte podle následuj�
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
 1. V nabídce na levé straně klikněte na **Fakturační profily**.
-1. Vyberte fakturační profil.
+1. Zvolte fakturační profil.
 1. V nabídce na levé straně vyberte **Způsoby platby**.
 
    ![Snímek obrazovky s možností Způsoby platby v nabídce](./media/change-credit-card/payment-methods-tab-mca.png)

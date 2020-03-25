@@ -5,7 +5,7 @@
     - name: Co je Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření podrobného plánu – portál
@@ -25,7 +25,7 @@
     - name: Ochrana nových prostředků pomocí zamykání prostředků podrobného plánu
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Index
       displayName: 'list, examples'
@@ -249,7 +249,7 @@
   href: ./troubleshoot/general.md
 - name: Referenční informace
   items:
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: '/powershell/module/az.blueprint/#blueprint'
     - name: Sada Azure SDK pro .NET
       href: /dotnet/api/overview/azure/blueprints/management

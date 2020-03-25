@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Network Watcher
       href: network-watcher-monitoring-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Monitorování připojení (Preview)
@@ -57,15 +57,15 @@
               href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
         - name: Diagnostika potíží se směrováním
           items:
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: diagnose-vm-network-routing-problem-powershell.md
             - name: Azure CLI
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Diagnostika potíží s odchozím připojením
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: network-watcher-connectivity-portal.md
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: network-watcher-connectivity-powershell.md
             - name: Azure CLI
               href: network-watcher-connectivity-cli.md
@@ -75,9 +75,9 @@
           items:
             - name: Správa zachytávání paketů
               items:
-                - name: portál Azure
+                - name: Azure Portal
                   href: network-watcher-packet-capture-manage-portal.md
-                - name: Azure PowerShell
+                - name: Azure Powershell
                   href: network-watcher-packet-capture-manage-powershell.md
                 - name: Azure CLI
                   href: network-watcher-packet-capture-manage-cli.md
@@ -97,7 +97,7 @@
       items:
         - name: Konfigurace protokolů toku NSG
           items:
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: network-watcher-nsg-flow-logging-powershell.md
             - name: Azure CLI
               href: network-watcher-nsg-flow-logging-cli.md
@@ -130,7 +130,7 @@
               href: network-watcher-analyze-nsg-flow-logs-graylog.md
         - name: Zobrazení skupin zabezpečení sítě
           items:
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: network-watcher-security-group-view-powershell.md
             - name: Azure CLI
               href: network-watcher-security-group-view-cli.md
@@ -142,7 +142,7 @@
       items:
         - name: Řešení potíží
           items:
-            - name: Azure PowerShell
+            - name: Azure Powershell
               href: network-watcher-troubleshoot-manage-powershell.md
             - name: Azure CLI
               href: network-watcher-troubleshoot-manage-cli.md
@@ -162,7 +162,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/network/watcher
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: '/powershell/module/az.network/#network_watcher'
     - name: Java
       href: /java/api/com.microsoft.azure.management.network

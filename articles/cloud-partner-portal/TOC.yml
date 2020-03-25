@@ -15,7 +15,7 @@
         - name: Vytvoření nabídky virtuálních počítačů
           href: ./cloud-partner-portal-publish-virtual-machine.md
           items:
-            - name: Požadavky
+            - name: Předpoklady
               href: './cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm'
             - name: Registrace účtu Microsoft Developer
               href: ./cloud-partner-portal-dev-center-accounts-registration.md

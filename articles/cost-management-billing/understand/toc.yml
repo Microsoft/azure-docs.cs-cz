@@ -9,6 +9,8 @@
           href: review-customer-agreement-bill.md
         - name: Kontrola vyúčtování Smlouvy s partnerem Microsoftu
           href: review-partner-agreement-bill.md
+        - name: Kontrola vyúčtování smlouvy Enterprise
+          href: review-enterprise-agreement-bill.md
     - name: Koncepty
       items:
         - name: Podmínky využití jednotlivých předplatných

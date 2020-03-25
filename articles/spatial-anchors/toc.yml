@@ -4,7 +4,7 @@
   items:
     - name: Informace o Spatial Anchors
       href: overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření aplikace Unity
@@ -72,13 +72,13 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: V C++/WinRT
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázky Azure Spatial Anchors (GitHub)
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Koncepty
   items:
-    - name: Authentication
+    - name: Ověřování
       href: concepts/authentication.md
     - name: Relace mezi kotvami
       href: concepts/anchor-relationships-way-finding.md

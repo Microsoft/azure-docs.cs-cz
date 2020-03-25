@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   href: v1-overview.md
-- name: ukázky
+- name: Ukázky
   href: sample-v1-code.md
 - name: Koncepty
   items:
@@ -22,7 +22,7 @@
           href: native-app.md
         - name: Proces démon nebo serverová aplikace
           href: service-to-service.md
-    - name: Authentication
+    - name: Ověřování
       items:
         - name: Základy ověřování
           href: v1-authentication-scenarios.md
@@ -83,7 +83,7 @@
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
 - name: Návody
   items:
-    - name: Authentication
+    - name: Ověřování
       items:
         - name: Konfigurace jednotného přihlašování
           displayName: SSO

@@ -23,7 +23,7 @@
       href: iot-accelerators-device-simulation-overview.md
     - name: Prediktivní údržba
       href: iot-accelerators-predictive-walkthrough.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vyzkoušení řešení pro vzdálené monitorování
@@ -151,7 +151,7 @@
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
     - name: Průmyslové IoT
       items:
-        - name: Propojená továrna
+        - name: Připojená továrna
           items:
             - name: Použití řídicího panelu
               href: iot-accelerators-connected-factory-dashboard.md
@@ -195,34 +195,34 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Nasazení vlastní image Dockeru
           href: iot-accelerators-device-simulation-deploy-image.md
-- name: Související
-  items:
-    - name: IoT Central
-      href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Služby platformy
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
-        - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Sady SDK pro služby IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: IoT Edge
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Služby Azure IoT
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Akcelerátory řešení IoT
+          href: /azure/iot-accelerators
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Sady Azure IoT SDK
+      items:
+        - name: Sady SDK pro služby IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Vzdálené monitorování
       items:
         - name: Referenční příručka pro vývojáře (.NET)
@@ -254,7 +254,7 @@
     - name: Referenční architektura
       href: iot-accelerators-architecture-overview.md
       items:
-        - name: Stáhnout
+        - name: Ke stažení
           href: 'https://aka.ms/iotrefarchitecture'
         - name: Implementace partnerů
           items:

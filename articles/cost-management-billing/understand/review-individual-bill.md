@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199122"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Kurz: Kontrola jednotlivého vyúčtování Azure
@@ -120,7 +120,7 @@ Náklady v analýze nákladů musí přesně odpovídat *poplatkům za využití
 
 ![Poplatky za využití na faktuře](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>Externí služby fakturované samostatně
+## <a name="external-services-billed-separately"></a><a name="external"></a>Externí služby fakturované samostatně
 
 Poplatky za externí služby nebo Marketplace se účtují za prostředky, které byly vytvořeny dodavateli softwaru třetích stran. Tyto prostředky jsou dostupné z Azure Marketplace. Například Barracuda Firewall je prostředek z Azure Marketplace nabízený třetí stranou. Všechny poplatky za tuto bránu firewall a její odpovídající měřiče se zobrazují jako poplatky za externí služby.
 
@@ -149,7 +149,7 @@ Po vytvoření virtuálního počítače začne každý měřič generovat zázn
 
 Na měřiče, které byly použity k výpočtu faktury, se můžete podívat v souboru CSV s využitím.
 
-## <a name="payment"></a>Úhrada faktury
+## <a name="pay-your-bill"></a><a name="payment"></a>Úhrada faktury
 
 Pokud jako způsob platby nastavíte platební kartu, strhne se platba automaticky do 10 dnů od skončení fakturačního období. Ve výpisu platební karty by na řádkové položce bylo uvedeno **MSFT Azure**.
 

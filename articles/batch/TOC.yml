@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Batch?
       href: batch-technical-overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Spuštění dávkové úlohy – CLI
@@ -31,7 +31,7 @@
       href: tutorial-batch-functions.md
     - name: Skripty Pythonu s Data Factory
       href: tutorial-run-python-batch-azure-data-factory.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Ukázky kódů
       items:
@@ -192,7 +192,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/batch
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/az.batch
     - name: .NET
       href: /dotnet/api/overview/azure/batch

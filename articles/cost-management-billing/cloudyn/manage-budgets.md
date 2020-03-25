@@ -1,20 +1,20 @@
 ---
 title: Správa rozpočtů Cloudynu v Azure
 description: Tento článek vám pomůže rychle vytvořit rozpočty a začít je spravovat v Cloudynu.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 1436c9b3b612a231760b6cdb04b5166fb45d7962
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2f8fdbf2b470e9f1eb0d82c4c6de230c2a9e78f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201131"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464151"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>Správa rozpočtů Azure pomocí Cloudynu
 
@@ -27,6 +27,8 @@ Na základě přiřazených rozpočtů můžete nastavit upozornění na prahovo
 Sestavy rozpočtu zobrazují přiřazený rozpočet. Uživatelé můžou zobrazit, kdy je jejich útrata pod nebo na úrovni nominální hodnoty jejich spotřeby v průběhu času nebo ji překročí. Když vyberete možnost **Show/Hide Fields** (Zobrazit/skrýt pole) v horní části sestavy rozpočtu, můžete zobrazit náklady, rozpočet, kumulované náklady nebo celkový rozpočet.
 
 Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace o rozpočtech v Cost Managementu najdete v tématu [Vytváření a správa rozpočtů](../costs/tutorial-acm-create-budgets.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="create-budgets"></a>Tvorba rozpočtů
 

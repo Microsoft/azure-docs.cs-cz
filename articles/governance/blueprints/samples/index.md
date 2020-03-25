@@ -4,10 +4,10 @@ description: Index ukázek dodržování předpisů a standardních ukázek pro 
 ms.date: 02/26/2020
 ms.topic: sample
 ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "78196820"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints

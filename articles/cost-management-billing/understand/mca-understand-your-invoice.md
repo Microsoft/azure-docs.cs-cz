@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200210"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237900"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Výrazy na faktuře za smlouvu se zákazníkem Microsoftu
 
@@ -35,7 +35,7 @@ V následujících částech najdete důležité výrazy, které uvidíte na sv�
 
 ![Oddíl Souhrn faktury](./media/mca-understand-your-invoice/invoicesummary.png)
 
-| Označení | Popis |
+| Období | Popis |
 | --- | --- |
 | Kupující |Adresa vaší právnické osoby zadaná ve vlastnostech fakturačního účtu|
 | Příjemce faktury |Fakturační adresa fakturačního profilu, který dostane fakturu, zadaná ve vlastnostech fakturačního profilu|
@@ -51,7 +51,7 @@ V následujících částech najdete důležité výrazy, které uvidíte na sv�
 
 ![Oddíl Souhrn fakturace](./media/mca-understand-your-invoice/billingsummary.png)
 
-| Označení | Popis |
+| Období | Popis |
 | --- | --- |
 | Poplatky|Celková výše poplatků Microsoftu pro tento fakturační profil od posledního fakturačního období |
 | Kredity |Kredity, které jste dostali za vratky |
@@ -75,7 +75,7 @@ Celková dlužná částka za každou řadu služeb se vypočítá odečtením *
 
 ![Oddíl Podrobnosti podle faktury](./media/mca-understand-your-invoice/invoicesectiondetails.png)
 
-| Označení |Popis |
+| Období |Popis |
 | --- | --- |
 | Jednotková cena | Platná jednotková cena služby (v ceníkové měně), která se používá k nacenění využívání. Liší se v závislosti na produktu, řadě služeb, měřiči a nabídce |
 | Množství | Množství zakoupené nebo spotřebované během fakturačního období |
@@ -93,7 +93,7 @@ Ve spodní části faktury najdete pokyny pro úhradu. Můžete platit šekem, b
 
 Pokud máte na faktuře služby třetích stran, zobrazí se ve spodní části faktury název a adresa každého vydavatele.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.

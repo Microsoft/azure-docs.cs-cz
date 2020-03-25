@@ -10,7 +10,7 @@
       href: hpc-cache-namespace.md
 - name: Návody
   items:
-    - name: Požadavky
+    - name: Předpoklady
       href: hpc-cache-prereqs.md
     - name: Vytvoření mezipaměti
       href: hpc-cache-create.md

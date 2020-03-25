@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Azure Blockchain
       href: overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   expanded: true
   items:
     - name: Vytvoření člena – portál

@@ -6,7 +6,7 @@
       href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json&bc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2fbreadcrumb%2ftoc.json
     - name: Změny dokumentů
       href: virtual-machines-windows-sql-server-iaas-release-notes.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: Vytvoření virtuálního počítače SQL – portál
       href: quickstart-sql-vm-create-portal.md
@@ -74,7 +74,7 @@
         - name: Model licencování
           displayName: 'ahb, ahub, payg, change, modify, update'
           href: virtual-machines-windows-sql-ahb.md
-        - name: Edice
+        - name: Edition (Edice)
           displayName: 'change, modify, update'
           href: virtual-machines-windows-sql-change-edition.md
         - name: Azure Storage pro zálohování a obnovení
@@ -101,7 +101,7 @@
               href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: Ruční konfigurace
               items:
-                - name: Požadavky
+                - name: Předpoklady
                   href: virtual-machines-windows-portal-sql-availability-group-prereq.md
                 - name: Kurz
                   href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
@@ -117,7 +117,7 @@
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md
 - name: Referenční informace
   items:
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/azure/overview
     - name: Azure CLI
       href: /cli/azure/

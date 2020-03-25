@@ -44,7 +44,7 @@
           displayName: 'graphical, python, powershell, powershell workflow'
         - name: Informace o pracovním postupu PowerShellu
           href: automation-powershell-workflow.md
-    - name: Rychlé starty
+    - name: Šablony Rychlý start
       items:
         - name: Vytvoření runbooku
           href: automation-quickstart-create-runbook.md
@@ -243,9 +243,9 @@
       items:
         - name: PowerShell DSC
           href: /powershell/scripting/dsc/overview/overview
-    - name: Rychlé starty
+    - name: Šablony Rychlý start
       items:
-        - name: začínáme
+        - name: Začínáme
           href: automation-dsc-getting-started.md
           displayName: DSC
         - name: Správa konfigurace počítače
@@ -305,11 +305,11 @@
 - name: Správa sdílených prostředků
   items:
     - name: Certifikáty
-      href: automation-certificates.md
+      href: shared-resources/certificates.md
     - name: Připojení
       href: automation-connections.md
     - name: Přihlašovací údaje
-      href: automation-credentials.md
+      href: shared-resources/credentials.md
     - name: Moduly PowerShellu
       items:
         - name: Moduly
@@ -319,9 +319,9 @@
         - name: Aktualizace modulů Azure PowerShellu
           href: automation-update-azure-modules.md
     - name: Plány
-      href: automation-schedules.md
+      href: shared-resources/schedules.md
     - name: Proměnné
-      href: automation-variables.md
+      href: shared-resources/variables.md
     - name: Správa balíčků Python 2
       href: python-packages.md
     - name: Řešení potíží se sdílenými prostředky
@@ -358,7 +358,7 @@
       displayName: 'SCORCH, runbooks'
 - name: Referenční informace
   items:
-    - name: Azure PowerShell
+    - name: Azure Powershell
       href: /powershell/module/azurerm.automation
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation

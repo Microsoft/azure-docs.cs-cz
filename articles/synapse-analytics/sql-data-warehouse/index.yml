@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics (dříve Azure SQL Data Warehouse)
+summary: Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku.
+metadata:
+  title: Azure Synapse Analytics
+  description: Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku.
+  services: sql-data-warehouse
+  ms.service: sql-data-warehouse
+  ms.subservice: design
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 10/03/2019
+  ms.openlocfilehash: 36943d330d0bd97fe6139f5cfa19da571fc70835
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80135670"
+landingContent:
+- title: Informace o službě Azure Synapse Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Synapse?
+      url: sql-data-warehouse-overview-what-is.md
+  - linkListType: architecture
+    links:
+    - text: Architektura služby Azure Synapse
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: Tipy a osvědčené postupy
+      url: cheat-sheet.md
+    - text: Referenční architektura
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/data/enterprise-bi-synapse
+- title: Začínáme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Vytvoření fondu SQL (datový sklad)
+      url: create-data-warehouse-portal.md
+- title: Načtení dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Návrh strategie načítání dat
+      url: design-elt-data-loading.md
+    - text: Osvědčené postupy
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Načtení dat z Azure Data Lake Storage
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: Načtení dat z Azure Blob Storage
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: Ladění výkonu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Osvědčené postupy
+      url: sql-data-warehouse-best-practices.md
+    - text: Optimalizace uspořádaného clusterovaného indexu columnstore
+      url: performance-tuning-ordered-cci.md
+    - text: Použití materializovaných zobrazení pro optimalizaci úloh
+      url: performance-tuning-materialized-views.md
+  - linkListType: how-to-guide
+    links:
+    - text: Analýza úloh
+      url: analyze-your-workload.md
+- title: Správa a monitorování
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Další informace o správě a monitorování vašeho datového skladu
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Monitorování vaší úlohy pomocí DMV
+      url: sql-data-warehouse-manage-monitor.md
+    - text: Správa a monitorování důležitosti úloh
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: Zabezpečení datového skladu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Základní informace o zabezpečení datového skladu
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace ověřování Azure Active Directory
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+- title: Zdroje a prostředky
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Sledovat nejnovější videa k datovým skladům
+      url: sql-data-warehouse-videos.md

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 69f83fc1d390fcbea77468045b89ee6024e7fe9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200312"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Způsob uplatňování slevy za předběžný nákup služby Azure Databricks
@@ -48,7 +48,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak spravovat rezervace, najdete v tématu [Správa rezervací Azure](manage-reserved-vm-instance.md).
+- Informace o tom, jak spravovat rezervaci, najdete v tématu [Správa rezervací Azure](manage-reserved-vm-instance.md).
 - Další informace o úspoře peněz předběžným nákupem služby Azure Databricks najdete v tématu [Optimalizace nákladů na Azure Databricks díky předběžnému nákupu](prepay-databricks-reserved-capacity.md).
 - Další informace o rezervacích Azure najdete v následujících článcích:
   - [Co jsou rezervace Azure?](save-compute-costs-reservations.md)

@@ -4,10 +4,10 @@ description: Přehled ukázky podrobného plánu pro média Tento ukázkový pod
 ms.date: 02/26/2020
 ms.topic: sample
 ms.openlocfilehash: ee4f15d52eea668ebffb8d5f639dd9c86ae04610
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "78201502"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>Přehled ukázky podrobného plánu pro média

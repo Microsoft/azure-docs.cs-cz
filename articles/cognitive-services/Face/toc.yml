@@ -5,7 +5,7 @@
   items:
     - name: Co je služba Rozpoznávání tváře?
       href: Overview.md
-- name: Rychlé starty
+- name: Šablony Rychlý start
   items:
     - name: S využitím klientské sady SDK
       items:
@@ -99,7 +99,7 @@
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: Zdroje a prostředky
   items:
-    - name: ukázky
+    - name: Ukázky
       items:
         - name: Ukázky služby Rozpoznávání tváře
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
@@ -115,5 +115,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Šifrování
+      href: face-encryption-of-data-at-rest.md
     - name: "Poznámky k\_verzi"
       href: ReleaseNotes.md

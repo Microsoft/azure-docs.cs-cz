@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201029"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrace z rozhraní API podle smlouvy Enterprise (EA) na rozhraní API podle smlouvy se zákazníkem Microsoftu (MCA)
@@ -167,10 +167,10 @@ Nové tělo odpovědi:
 
 Název vlastnosti obsahující pole záznamů o využití se změnilo z hodnoty „data“ na _value_. Každý záznam dříve zahrnoval plochý seznam podrobných vlastností. Teď jsou u každého záznamu všechny podrobnosti, s výjimkou značek, ve vnořené vlastnosti s názvem _properties_. Nová struktura je konzistentní s jinými rozhraními API v Azure. Změnily se názvy některých vlastností. V následující tabulce jsou uvedeny odpovídající vlastnosti.
 
-| Původní vlastnost | Nová vlastnost | Poznámky |
+| Původní vlastnost | Nová vlastnost | Poznámky: |
 | --- | --- | --- |
-| AccountId | – | Tvůrce předplatného se nesleduje. Použijte invoiceSectionId (totéž jako departmentId). |
-| AccountNameAccountOwnerId a AccountOwnerEmail | – | Tvůrce předplatného se nesleduje. Použijte invoiceSectionName (totéž jako departmentName). |
+| AccountId | Není k dispozici | Tvůrce předplatného se nesleduje. Použijte invoiceSectionId (totéž jako departmentId). |
+| AccountNameAccountOwnerId a AccountOwnerEmail | Není k dispozici | Tvůrce předplatného se nesleduje. Použijte invoiceSectionName (totéž jako departmentName). |
 | AdditionalInfo | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | Všimněte si, že tyto vlastnosti představují opak. Pokud má isAzureCreditEnabled hodnotu true, bude mít ChargesBilledSeparately hodnotu false. |
 | ConsumedQuantity | quantity | &nbsp; |
@@ -178,7 +178,7 @@ Název vlastnosti obsahující pole záznamů o využití se změnilo z hodnoty 
 | ConsumedServiceId | Žádná | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
 | Date a usageStartDate | date | &nbsp;  |
-| Den | Žádná | Parsuje den z data. |
+| Day | Žádná | Parsuje den z data. |
 | DepartmentId | invoiceSectionId | Přesné hodnoty se liší. |
 | DepartmentName | invoiceSectionName | Přesné řetězcové hodnoty se můžou lišit. Oddíly faktur můžete v případě potřeby nakonfigurovat podle oddělení. |
 | ExtendedCost a Cost | costInBillingCurrency | &nbsp;  |
@@ -190,7 +190,7 @@ Název vlastnosti obsahující pole záznamů o využití se změnilo z hodnoty 
 | MeterName | meterName | Přesné řetězcové hodnoty se můžou lišit. |
 | MeterRegion | meterRegion | Přesné řetězcové hodnoty se můžou lišit. |
 | MeterSubCategory | meterSubCategory | Přesné řetězcové hodnoty se můžou lišit. |
-| Month | Žádná | Parsuje měsíc z data. |
+| Měsíc | Žádná | Parsuje měsíc z data. |
 | Název nabídky | Žádná | Použijte publisherName a productOrderName. |
 | OfferID | Žádná | &nbsp;  |
 | Číslo objednávky | Žádná | &nbsp;  |
@@ -204,16 +204,16 @@ Název vlastnosti obsahující pole záznamů o využití se změnilo z hodnoty 
 | ResourceLocation | resourceLocation | &nbsp;  |
 | ResourceLocationId | Žádná | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
-| ServiceAdministratorId | – | &nbsp;  |
+| ServiceAdministratorId | Není k dispozici | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
 | ServiceInfo2 | serviceInfo2 | &nbsp;  |
 | ServiceName | meterCategory | Přesné řetězcové hodnoty se můžou lišit. |
 | ServiceTier | meterSubCategory | Přesné řetězcové hodnoty se můžou lišit. |
-| StoreServiceIdentifier | – | &nbsp;  |
+| StoreServiceIdentifier | Není k dispozici | &nbsp;  |
 | SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | SubscriptionName | subscriptionName | &nbsp;  |
-| Značky | tags | Vlastnost tags se vztahuje na kořenový objekt, ne na vnořenou vlastnost properties. |
+| Značky | značek | Vlastnost tags se vztahuje na kořenový objekt, ne na vnořenou vlastnost properties. |
 | UnitOfMeasure | unitOfMeasure | Přesné hodnoty se liší. |
 | usageEndDate | date | &nbsp;  |
 | Rok | Žádná | Parsuje rok z data. |
@@ -364,7 +364,7 @@ Klient může také provést volání GET pro `Azure-AsyncOperation`. Koncový b
 
 Následující tabulka uvádí pole ve starším rozhraní API pro získání ceníku podle smlouvy Enterprise. Zahrnuje odpovídající pole v novém rozhraní pro ceníky podle smlouvy se zákazníkem Microsoftu:
 
-| Původní vlastnost | Nová vlastnost | Poznámky |
+| Původní vlastnost | Nová vlastnost | Poznámky: |
 | --- | --- | --- |
 | billingPeriodId  | _Neužívá se._ | Neužívá se. U smlouvy se zákazníkem Microsoftu je koncept billingPeriodId nahrazen fakturou a přidruženým ceníkem. |
 | meterId  | meterId | &nbsp;  |
