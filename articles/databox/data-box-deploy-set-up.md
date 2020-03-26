@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: e892a8bfa3b4b0bb53d7a943e475d4e2a8228add
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76514132"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení kabeláže a připojení Azure Data Boxu
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení kabeláže a připojení k Azure Data Boxu
 
 ::: zone-end
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Zapojení kabeláže Data Boxu
 > * Připojení k Data Boxu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že:
 
@@ -55,7 +55,7 @@ Než začnete, ujistěte se, že:
 7. Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
     - Alespoň jeden měděný kabel 10 GbE SFP+ Twinax nebo optický kabel SFP+ (pro síťová rozhraní DATA 1, DATA 2). Data Box obsahuje síťové rozhraní Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0, takže kabely kompatibilní s tímto rozhraním by měly fungovat. Například při interním testování jsme použili kabel CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M. Další informace najdete v [seznamu podporovaných kabelů a přepínačů od společnosti Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
-    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
+    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 GB/s a 1 GB/s v tomto pořadí)
 
 ## <a name="cable-your-device"></a>Zapojení kabeláže zařízení
 
@@ -91,7 +91,7 @@ Jakmile zařízení obdržíte, je potřeba zapojit jeho kabeláž a připojit s
     - Uzemněný napájecí kabel 10 A nebo více s konektorem IEC60320 C-13 na jednom konci pro připojení k zařízení.
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
     - Dva měděné kabely 10 GbE SFP+ Twinax (pro síťová rozhraní DATA 1, DATA 2 10 Gb/s)
-    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
+    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 GB/s a 1 GB/s v tomto pořadí)
 
 3. Zařízení vyjměte a položte na rovnou plochu. 
     
@@ -120,7 +120,7 @@ Pomocí následujícího postupu nastavte své zařízení s využitím místní
    ![Připojení k místnímu webovému uživatelskému rozhraní](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
 
 4. Zobrazí se **přihlašovací** stránka místního webového uživatelského rozhraní. Ujistěte se, že je sériové číslo zařízení stejné v uživatelském rozhraní portálu i v místním webovém uživatelském rozhraní. V tuto chvíli je zařízení uzamčené.
-5. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+5. Přihlaste se k [Azure Portal](https://portal.azure.com).
 6. Stáhněte si z portálu přihlašovací údaje zařízení. Přejděte na **Obecné > Podrobnosti zařízení**. Zkopírujte si **Heslo zařízení**. Heslo zařízení se na portálu váže ke konkrétní objednávce. 
 
     ![Získání přihlašovacích údajů zařízení](media/data-box-deploy-set-up/data-box-device-credentials.png)
@@ -143,7 +143,7 @@ Po dokončení nastavení zařízení se můžete připojit ke sdíleným složk
 
 ## <a name="connect-your-device"></a>Připojení zařízení
 
-1. Pokud chcete získat heslo zařízení, přejděte na webu [Azure Portal](https://portal.azure.com) na **Obecné > Podrobnosti o zařízení**.
+1. Pokud chcete získat heslo zařízení, přejděte na webu **Azure Portal** na [Obecné > Podrobnosti o zařízení](https://portal.azure.com).
 2. Na adaptéru sítě Ethernet na počítači, pomocí kterého se připojujete k Data Boxu, nakonfigurujte statickou IP adresu 192.168.100.5 a podsíť 255.255.255.0. Přejděte do místního webového uživatelského rozhraní zařízení na adrese `https://192.168.100.10`. Připojení zařízení po zapnutí může trvat až 5 minut. 
 3. Přihlaste se pomocí hesla z webu Azure Portal. Zobrazí se vám chyba s informacemi k potížím s certifikátem zabezpečení webu. Postupujte podle pokynů pro konkrétní prohlížeč a přejděte tak na webovou stránku.
 4. Standardně je pro nastavení sítě pro datové rozhraní 10 Gb/s (nebo 1 Gb/s) nakonfigurovaný protokol DHCP. V případě potřeby můžete toto rozhraní nakonfigurovat jako statické a zadat IP adresu. 

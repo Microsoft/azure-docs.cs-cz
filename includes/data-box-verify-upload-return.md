@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.openlocfilehash: a23b0b2c71207bf84a4938d54a78a62efb6cbcbd
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71172630"
 ---
 Jakmile Microsoft přijme a naskenuje zařízení, stav objednávky se změní na **Přijato**. Zařízení pak projde fyzickým ověřením poškození nebo známek manipulace.
@@ -50,7 +50,7 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
