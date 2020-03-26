@@ -10,15 +10,15 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380380"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214203"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Kurz: kopírování dat do Azure Data Box Heavy přes protokol SMB
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Kurz: Kopírování dat do Azure Data Boxu Heavy přes protokol SMB
 
 ::: zone-end
 
@@ -50,11 +50,11 @@ V každém případě se ujistěte, že názvy sdílených složek a složek a v
 
 ::: zone target = "docs"
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: nastavte Azure Data box Heavy](data-box-deploy-set-up.md).
+1. Dokončili jste [Kurz: Nastavení Azure Data Boxu Heavy](data-box-deploy-set-up.md).
 2. Obdrželi jste Data Box Heavy a stav objednávky na portálu je **Doručeno**.
 3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu Heavy. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
@@ -99,7 +99,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
-2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Klikněte na tlačítko **OK**.
+2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Klikněte na **OK**.
     
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
@@ -296,7 +296,7 @@ V dalším kurzu se dozvíte, jak Data Box Heavy odeslat zpět do Microsoftu.
 
 3. Ke kopírování dat do sdílených složek použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy.
 
-Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box přes protokol SMB](data-box-heavy-deploy-copy-data.md).
+Podrobné pokyny najdete v článku [Kurz: Kopírování dat do Azure Data Boxu přes protokol SMB](data-box-heavy-deploy-copy-data.md).
 
 ### <a name="copy-data-via-nfs"></a>Kopírování dat přes systém souborů NFS
 
@@ -308,7 +308,7 @@ Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box p�
 3. Ke zkopírování dat použijte příkaz `cp` nebo `rsync`. 
 4. Opakováním těchto kroků se připojte k druhému uzlu Data Boxu Heavy a zkopírujte na něj data.
 
-Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box přes systém souborů NFS](data-box-heavy-deploy-copy-data-via-nfs.md).
+Podrobné pokyny najdete v článku [Kurz: Kopírování dat do Azure Data Boxu přes systém souborů NFS](data-box-heavy-deploy-copy-data-via-nfs.md).
 
 ### <a name="copy-data-via-rest"></a>Kopírování dat přes rozhraní REST
 
@@ -316,7 +316,7 @@ Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box p�
 2. Ke kopírování dat do úložiště objektů blob Data Boxu můžete použít AzCopy.
 3. Opakováním těchto kroků se připojte k druhému uzlu Data Boxu Heavy a zkopírujte na něj data.
 
-Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box BLOB Storage přes rozhraní REST API](data-box-heavy-deploy-copy-data-via-rest.md).
+Podrobné pokyny najdete v článku [Kurz: Kopírování dat do úložiště objektů blob Azure Data Boxu přes rozhraní REST API](data-box-heavy-deploy-copy-data-via-rest.md).
 
 ### <a name="copy-data-via-data-copy-service"></a>Kopírování dat prostřednictvím služby kopírování dat
 
@@ -324,7 +324,7 @@ Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box BL
 2. Vyplňte parametry a vytvořte úlohu.
 3. Opakováním těchto kroků se připojte k druhému uzlu Data Boxu Heavy a zkopírujte na něj data.
 
-Podrobné pokyny najdete v tématu [kurz: použití služby kopírování dat ke kopírování dat do Azure Data box Heavy](data-box-heavy-deploy-copy-data-via-copy-service.md).
+Podrobné pokyny najdete v článku [Kurz: Kopírování dat do Azure Data Boxu Heavy pomocí služby kopírování dat](data-box-heavy-deploy-copy-data-via-copy-service.md).
 
 ### <a name="copy-data-to-managed-disks"></a>Kopírování dat na spravované disky
 
@@ -333,7 +333,7 @@ Podrobné pokyny najdete v tématu [kurz: použití služby kopírování dat ke
 3. Data pak můžete kopírovat pomocí nástrojů pro práci s protokolem SMB nebo systémem souborů NFS.
 4. Opakováním těchto kroků se připojte k druhému uzlu Data Boxu Heavy a zkopírujte na něj data.
 
-Podrobné pokyny najdete [v tématu Kurz: použití data box Heavy k importu dat jako spravovaných disků v Azure](data-box-heavy-deploy-copy-data-from-vhds.md).
+Podrobné pokyny najdete v článku [Kurz: Použití Data Boxu Heavy k importu dat v podobě spravovaných disků v Azure](data-box-heavy-deploy-copy-data-from-vhds.md).
 
 ::: zone-end
 

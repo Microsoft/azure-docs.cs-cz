@@ -10,17 +10,17 @@ ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380558"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214288"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Kurz: ověření nahrávání dat z Azure Data Box Disk
+# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Kurz: Ověření nahrání dat z Azure Data Box Disku
 
-Toto je poslední kurz ze série Nasazení Azure Data Box Disku. V tomto kurzu získáte informace o těchto tématech:
+Toto je poslední kurz série: Nasazení Azure Data Box Disku. V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Ověření nahrání dat do Azure
@@ -28,7 +28,7 @@ Toto je poslední kurz ze série Nasazení Azure Data Box Disku. V tomto kurzu z
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že jste dokončili [kurz: návrat Azure Data box disk](data-box-disk-deploy-picked-up.md).
+Než začnete, ujistěte se, že jste dokončili [Kurz: Vrácení Azure Data Box Disku](data-box-disk-deploy-picked-up.md).
 
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
@@ -106,7 +106,7 @@ Po dokončení nahrávání do Azure se data z disků Data Box Disku vymažou v 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například:
+V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 
 > [!div class="checklist"]
 > * Ověření nahrání dat do Azure

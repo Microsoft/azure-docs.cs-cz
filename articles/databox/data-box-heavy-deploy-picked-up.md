@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: cfb9f54f5ba219a4db87144ab1e7ebff2b72b69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380228"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214186"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Kurz: vrácení Azure Data Box Heavy a ověření nahrávání dat do Azure
+# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Kurz: Vrácení Azure Data Boxu Heavy a ověření nahrání dat do Azure
 
 ::: zone-end
 
@@ -35,17 +35,17 @@ Tento kurz popisuje, jak vrátit Azure Data Box Heavy a ověřit nahrání dat d
 V tomto kurzu se seznámíte například s následujícími tématy:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Příprava k odeslání
 > * Odeslání Data Boxu Heavy do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu Heavy
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-- Dokončili jste [kurz: kopírování dat pro Azure Data box a ověření](data-box-heavy-deploy-copy-data.md).
+- Dokončili jste [Kurz: Kopírování dat do Azure Data Boxu a jejich ověření](data-box-heavy-deploy-copy-data.md).
 - Dokončily se úlohy kopírování. Pokud probíhají úlohy kopírování, nemůže proběhnout příprava k odeslání.
 
 
@@ -134,7 +134,7 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Příprava k odeslání
 > * Odeslání Data Boxu Heavy do Microsoftu
 > * Ověření nahrání dat do Azure
