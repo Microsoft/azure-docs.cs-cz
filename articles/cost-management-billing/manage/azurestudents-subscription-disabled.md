@@ -1,5 +1,5 @@
 ---
-title: Opětovná aktivace deaktivovaného předplatného Azure for Students | Microsoft Docs
+title: Opětovná aktivace deaktivovaného předplatného Azure for Students
 description: Vysvětluje, proč je vaše předplatné Azure for Students deaktivované, a jak ho znovu aktivovat.
 author: amberbhargava
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 66e87b36644f5ed018603c14b311c31d851a1785
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: fb091efd9888930f7e834d840d3cab047949dbf1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200927"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202994"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč je moje předplatné Azure for Students deaktivované a jak ho můžu znovu aktivovat?
 

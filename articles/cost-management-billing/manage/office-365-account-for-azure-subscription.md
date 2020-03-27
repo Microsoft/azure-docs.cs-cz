@@ -1,5 +1,5 @@
 ---
-title: Registrace Azure s využitím účtu Office 365 | Microsoft Docs
+title: Registrace Azure s využitím účtu Office 365
 description: Zjistěte, jak vytvořit předplatné Azure s využitím účtu Office 365.
 author: JiangChen79
 ms.reviewer: adwise
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 265d9bcafa7caf9af0f8c4c7f33de044fa02349c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199581"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238104"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Registrace předplatného Azure s využitím účtu Office 365
 Pokud máte předplatné Office 365, můžete k vytvoření předplatného Azure použít svůj účet Office 365. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého uživatelského jména a hesla Office 365. Pokud chcete nastavit virtuální počítače nebo využívat další služby Azure, musíte si zaregistrovat předplatné Azure. Své předplatné Azure můžete sdílet s ostatními a [pomocí řízení přístupu na základě role můžete spravovat přístup k vašemu předplatnému a prostředkům Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
@@ -35,7 +35,7 @@ Ušetřete čas a zabraňte nárůstu počtu účtů tím, že si zaregistrujete
 
 - Pokud k předplatnému Azure potřebujete přidat další lidi ve vaší organizaci, přečtěte si téma [Začínáme se správou přístupu na webu Azure Portal](../../role-based-access-control/overview.md).
 
-## <a id="more-about-subs">Další informace o předplatných Azure a Office 365</a>
+## <a name=""></a><a id="more-about-subs">Další informace o předplatných Azure a Office 365</a>
 Office 365 i Azure ke správě uživatelů a předplatných využívají službu Azure AD. Adresář Azure je jako kontejner, ve kterém můžete seskupovat uživatele a předplatná. Pokud pro předplatná Azure a Office 365 chcete použít stejné uživatelské účty, musíte zajistit, aby se předplatná Azure vytvořila ve stejném adresáři jako předplatná Office 365. Mějte na paměti následující skutečnosti:
 
 * Předplatné se vytvoří v rámci adresáře.

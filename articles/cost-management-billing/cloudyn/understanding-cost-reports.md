@@ -1,24 +1,26 @@
 ---
-title: Principy sestav Cloudyn Cost Management v Azure | Microsoft Docs
+title: Principy sestav Cloudyn Cost Management v Azure
 description: Tento článek vám pomůže pochopit základní strukturu a funkce sestav Cloudyn Cost Management.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773990"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474539"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Principy sestav Cloudyn Cost Management
 
 Tento článek vám pomůže pochopit základní strukturu a funkce sestav Cloudyn Cost Management. Většina sestav Cloudyn je intuitivní a má jednotný vzhled a chování. Po přečtení tohoto článku budete připraveni použít všechny sestavy pro řízení nákladů. Sestavy jsou různorodé, ale ve všech je k dispozici mnoho standardních funkcí, které vám usnadní orientaci. Sestavy jsou přizpůsobitelné a můžete vybírat z několika možností pro výpočet a zobrazení výsledků.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-fields-and-options"></a>Pole a možnosti sestav
 

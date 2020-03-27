@@ -1,20 +1,20 @@
 ---
-title: Kurz – Přiřazení přístupu pomocí Cloudyn v Azure | Microsoft Docs
+title: 'Kurz: Přiřazení přístupu pomocí Cloudynu v Azure'
 description: V tomto kurzu zjistíte, jak přiřadit přístup k datům Cloudyn pomocí uživatelských účtů, které definují úroveň přístupu k entitám.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774011"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463607"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Kurz: Přiřazení přístupu k datům Cloudyn
 
@@ -33,6 +33,8 @@ Při registraci vaší smlouvy nebo účtu Azure se ve službě Cloudyn vytvoři
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -68,9 +70,9 @@ Jako uživatel nemůžete odebrat sami sebe.
 > [!WARNING]
 > Odstraněný uživatel se nedá obnovit.
 
-1.  Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte možnost **User Management** (Správa uživatelů).
-2.  V seznamu uživatelů vyberte uživatele, kterého chcete odstranit, a klikněte na tlačítko pro **odstranění uživatele** (symbol odpadkového koše).
-3.  V rámečku Delete User (Odstranit uživatele) klikněte na **Yes** (Ano) a potom na **OK**.
+1.    Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte možnost **User Management** (Správa uživatelů).
+2.    V seznamu uživatelů vyberte uživatele, kterého chcete odstranit, a klikněte na tlačítko pro **odstranění uživatele** (symbol odpadkového koše).
+3.    V rámečku Delete User (Odstranit uživatele) klikněte na **Yes** (Ano) a potom na **OK**.
 
 
 ## <a name="delete-or-export-personal-data"></a>Odstranění nebo export osobních údajů

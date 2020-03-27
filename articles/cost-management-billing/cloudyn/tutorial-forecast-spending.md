@@ -1,20 +1,20 @@
 ---
-title: Kurz – Odhad útraty pomocí Cloudyn v Azure | Microsoft Docs
+title: 'Kurz: Odhad útraty pomocí Cloudynu v Azure'
 description: V tomto kurzu zjistíte, jak odhadnout útratu na základě historických dat o využití a výdajích.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: 43b48cf96baaa01408d068de509e5be9fdf950ca
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 455f611b57cf11e29d35e617df4fd9c09aff2906
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769916"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463777"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Kurz: Odhad budoucí útraty
 
@@ -24,6 +24,8 @@ Cloudyn pomáhá odhadovat budoucí útratu na základě historických údajů o
 > * Odhad budoucí útraty
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

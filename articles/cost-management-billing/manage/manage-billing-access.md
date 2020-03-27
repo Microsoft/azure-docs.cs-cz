@@ -1,5 +1,5 @@
 ---
-title: Správa přístupu k fakturaci Azure | Microsoft Docs
+title: Správa přístupu k fakturaci Azure
 description: Zjistěte, jak poskytnout přístup k informacím o fakturaci Azure i dalším členům týmu.
 author: vikramdesai01
 ms.reviewer: amberb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344612"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237662"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačním údajům v Azure
 
@@ -44,7 +44,7 @@ Informace o přiřazování rolí najdete v tématu [Správa přístupu pomocí 
 ** Pokud jste zákazníkem se smlouvou Enterprise, vlastník účtu může přiřadit výše uvedenou roli ostatním uživatelům ze svého týmu. Pokud si ale tito uživatelé chtějí zobrazovat fakturační údaje, musí podnikový správce na webu Enterprise Portal povolit nastavení AO view charges (Vlastník účtu může zobrazit náklady).
 
 
-### <a name="opt-in"></a> Povolení stahování faktur uživateli
+### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> Povolení stahování faktur uživateli
 
 Jakmile správce účtu přiřadí jiným uživatelům příslušné role, musí zapnout přístup ke stahování faktur na webu Azure Portal. Faktury vytvořené dříve než v prosinci 2016 jsou dostupné jenom správci účtu.
 

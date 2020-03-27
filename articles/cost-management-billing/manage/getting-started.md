@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199700"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238138"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Jak zabránit neočekávaným poplatkům pomocí fakturace a řízení nákladů v Azure
 
@@ -25,6 +25,8 @@ Při registraci Azure máte k dispozici několik možností, které vám pomohou
 - Integrujte fakturační údaje a data o využití s vlastním systémem generování sestav s využitím rozhraní API pro [fakturaci](https://docs.microsoft.com/rest/api/billing/) a [spotřebu](https://docs.microsoft.com/rest/api/consumption/).
 - Využijte další prostředky a nástroje pro zákazníky se smlouvou Enterprise (EA), zákazníky CSP (Cloud Solution Provider) a zákazníky s nabídkou Azure Sponsorship.
 - Využijte [některé z nejoblíbenějších služeb Azure zdarma po dobu 12 měsíců](create-free-services.md), které jsou k dispozici v rámci [bezplatného účtu Azure](https://azure.microsoft.com/free/). Spolu s níže uvedenými doporučeními si přečtěte, jak se [vyhnout platbám za bezplatný účet](avoid-charges-free-account.md).
+
+Pokud potřebujete zrušit vaše předplatné Azure, přečtěte si téma [Zrušení předplatného Azure](cancel-azure-subscription.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Zjištění odhadovaných nákladů před přidáním služeb Azure
 
@@ -67,7 +69,7 @@ Náklady můžete monitorovat pomocí následujících nástrojů:
 
 Pro účely řízení nákladů vytvořte [rozpočty](../costs/tutorial-acm-create-budgets.md) a nastavte [upozornění](../costs/cost-mgt-alerts-monitor-usage-spending.md), která vás a účastníky automaticky upozorní na anomálie ve výdajích a nadměrné výdaje.
 
-### <a name="costs"></a>Zkoumání a analýza nákladů s využitím analýzy nákladů
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a>Zkoumání a analýza nákladů s využitím analýzy nákladů
 
 Po spuštění služeb Azure sledujte svou útratu v Azure tím, že budete pravidelně kontrolovat poplatky. Pomocí analýzy nákladů můžete zjistit původ nákladů na využití Azure.
 
@@ -120,7 +122,7 @@ Pokud používáte Azure prostřednictvím smlouvy se zákazníkem Microsoftu (M
 
 Pomocí rozhraní API pro [fakturaci](https://docs.microsoft.com/rest/api/billing/) a [spotřebu](https://docs.microsoft.com/rest/api/consumption/) Azure můžete fakturační údaje a data o nákladech získat programově. Využití, které je vám účtováno, získáte zkombinováním rozhraní RateCard API a Usage API. Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](usage-rate-card-overview.md).
 
-## <a name="other-offers"></a> Další prostředky a speciální případy
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Další prostředky a speciální případy
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>Zákazníci využívající EA, CSP a Sponsorship
 Začněte tím, že kontaktujete svého account manažera nebo partnera Azure.
@@ -133,7 +135,7 @@ Začněte tím, že kontaktujete svého account manažera nebo partnera Azure.
 
 Pokud se staráte o IT ve velké organizaci, doporučujeme, abyste si přečetli článek o [používání Azure v podnicích](/azure/architecture/cloud-adoption-guide/subscription-governance) a [dokument white paper o podnikovém IT](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (soubor .pdf ke stažení, jen v angličtině).
 
-### <a name="EA"></a> Zobrazení nákladů u smlouvy Enterprise na webu Azure Portal
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a> Zobrazení nákladů u smlouvy Enterprise na webu Azure Portal
 
 Zobrazení nákladů u smluv Enterprise je v současnosti ve veřejné verzi Preview. Měli byste vědět:
 
@@ -159,7 +161,7 @@ Pokud máte přístup k Azure prostřednictvím fakturačního účtu pro smlouv
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Vyžádání kreditu smlouvy o úrovni služeb za servisní incident
 
-Smlouva o úrovni služeb (SLA) popisuje závazky Microsoftu týkající se dostupnosti a konektivity. Servisní incident je nahlášen, když se služby Azure potýkají s problémem, který má dopad na dostupnost nebo konektivitu, a často se označuje jako *výpadek*. Pokud nedosáhneme a neudržíme úrovně jednotlivých služeb, jak je popsáno ve smlouvě SLA, můžete mít nárok na kredit části vašich měsíčních poplatků za služby.
+Smlouva o úrovni služeb (SLA) popisuje závazky Microsoftu týkající se dostupnosti a možností připojení. Servisní incident je nahlášen, když se služby Azure potýkají s problémem, který má dopad na dostupnost nebo konektivitu, a často se označuje jako *výpadek*. Pokud nedosáhneme a neudržíme úrovně jednotlivých služeb, jak je popsáno ve smlouvě SLA, můžete mít nárok na kredit části vašich měsíčních poplatků za služby.
 
 Kredit si vyžádáte takto:
 

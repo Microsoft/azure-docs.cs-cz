@@ -1,19 +1,19 @@
 ---
-title: Rychlý start – Prozkoumání nákladů na Azure pomocí analýzy nákladů | Microsoft Docs
+title: 'Rychlý start: Prozkoumání nákladů na Azure s využitím analýzy nákladů'
 description: Tento rychlý start vám pomůže prozkoumat a analyzovat náklady organizace na Azure pomocí analýzy nákladů.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649292"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155949"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -27,12 +27,13 @@ V tomto rychlém startu se naučíte:
 - Přizpůsobit zobrazení nákladů
 - Stažení dat analýzy nákladů
 
-
 ## <a name="prerequisites"></a>Požadavky
 
 Analýza nákladů podporuje různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md). Pokud chcete zobrazit data o nákladech, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
 
 Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../../cost-management/assign-access-acm-data.md).
+
+Pokud máte nové předplatné, nemůžete rovnou využívat funkce služby Cost Management. Může trvat až 48 hodin, než budete moct využívat všechny funkce služby Cost Management.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -43,6 +44,10 @@ Informace o přiřazování přístupu k datům služby Azure Cost Management na
 Pokud si chcete zkontrolovat náklady v analýze nákladů, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Analýza nákladů**. Přejděte například na **Předplatná**, vyberte předplatné ze seznamu a pak v nabídce vyberte **Analýza nákladů**. Pomocí možnosti **Obor** můžete v analýze nákladů přepnout na jiný obor. Další informace o oborech najdete v článku o [principech oborů a práci s nimi](understand-work-scopes.md).
 
 Vybraný obor se použije v celé službě Cost Management v zájmu konsolidace dat a k řízení přístupu k informacím o nákladech. Při použití oborů nevybíráte více oborů. Místo toho vyberete rozsáhlejší obor, který zahrnuje ostatní obory, a potom vyfiltrujete potřebné vnořené obory. Tomuto přístupu je důležité rozumět, protože někteří lidé nemusí mít přístup k jednomu nadřazenému oboru, který pokrývá více vnořených oborů.
+
+Podívejte se na video [Jak používat Cost Management na webu Azure Portal](https://www.youtube.com/watch?v=mfxysF-kTFA), kde najdete další informace o použití analýzy nákladů.
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
 Počáteční zobrazení analýzy nákladů zahrnuje následující oblasti.
 
@@ -65,7 +70,6 @@ Počáteční zobrazení analýzy nákladů zahrnuje následující oblasti.
 Prognóza nákladů ukazuje projekci odhadovaných nákladů za vybrané časové období. Tento model je založený na modelu regrese časových řad. K přesné předpovědi nákladů vyžaduje aktuální data o využití a nákladech nejméně za 10 dnů. Pro konkrétní časové období model prognózy vyžaduje stejný objem školicích dat. To znamená, že například projekce na tři měsíce vyžaduje data o využití a nákladech nejméně za tři měsíce.
 
 K zajištění projekce nákladů na jeden rok tento model využívá maximálně šest měsíců školicích dat. Ke změně predikce potřebuje školicí data nejméně za sedm dnů. Předpověď je založená na výrazných změnách, jako jsou prudké nárůsty a poklesy, ve vzorech nákladů a využití. Negeneruje individuální projekce pro jednotlivé položky ve vlastnostech umožňujících **seskupování**. Poskytuje jenom prognózu celkových kumulovaných nákladů. Pokud používáte více měn, model poskytuje prognózu nákladů jenom v USD.
-
 
 ## <a name="customize-cost-views"></a>Přizpůsobení zobrazení nákladů
 
@@ -174,11 +178,17 @@ Další informace o použitých termínech najdete v článku s [vysvětlením t
 
 Přizpůsobená zobrazení si můžete uložit a nasdílet je ostatním tak, že připnete analýzu nákladů na řídicí panel na webu Azure Portal nebo zkopírujete odkaz na analýzu nákladů.
 
+Podívejte se na video věnované [sdílení a ukládání zobrazení v Azure Cost Managementu](https://www.youtube.com/watch?v=kQkXXj-SmvQ), kde se dozvíte víc o tom, jak tento portál využívat ke sdílení znalostí o nákladech v rámci vaší organizace.
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 Pokud chcete analýzu nákladů připnout, vyberte ikonu připínáčku v pravém horním rohu. Při připnutí analýzy nákladů se uloží jenom hlavní zobrazení grafu nebo tabulky. Nasdílením řídicího panelu můžete udělit přístup k dlaždici ostatním uživatelům. Upozorňujeme, že tímto se nasdílí jenom konfigurace řídicího panelu a ostatním uživatelům se neudělí přístup k podkladovým datům. Pokud nemáte přístup k nákladům, ale máte přístup ke sdílenému řídicímu panelu, zobrazí se vám zpráva o odepření přístupu.
 
 Pokud chcete nasdílet odkaz na analýzu nákladů, vyberte **Sdílet** v horní části okna. Zobrazí se vlastní adresa URL, která otevře toto konkrétní zobrazení pro tento konkrétní obor. Pokud nemáte přístup k nákladům a použijete tuto adresu URL, zobrazí se vám zpráva o odepření přístupu.
 
 Další informace o tom, jak udělit přístup k nákladům na jednotlivé podporované obory, najdete v článku o [principech oborů a práci s nimi](understand-work-scopes.md).
+
+
 
 ## <a name="automation-and-offline-analysis"></a>Automatizace a offline analýza
 

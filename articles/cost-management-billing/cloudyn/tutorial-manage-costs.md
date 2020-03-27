@@ -1,20 +1,20 @@
 ---
-title: Kurz – Správa nákladů pomocí Cloudyn v Azure | Microsoft Docs
+title: 'Kurz: Správa nákladů pomocí Cloudynu v Azure'
 description: V tomto kurzu zjistíte, jak spravovat náklady s využitím přidělování nákladů a sestav metod showback a chargeback.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: a492f611ed5a785ae148894baf3f24c2df773df2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769909"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474573"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Kurz: Správa nákladů pomocí Cloudynu
 
@@ -32,6 +32,8 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít účet Azure.
@@ -46,7 +48,7 @@ Cloudyn získává data značek skupin prostředků z Azure a automaticky před�
 
 Při použití tohoto modelu přidělování nákladů definujete kategorie (značky), které se interně aplikují na nekategorizované (neoznačené) prostředky a umožňují seskupit náklady a definovat pravidla pro nakládání s neoznačenými náklady. Pravidla přidělování nákladů jsou vámi uložené pokyny, jak se mají náklady na službu rozúčtovat na nějakou jinou službu. Při výběru vytvořeného modelu se následně u těchto prostředků zobrazí značky/kategorie v sestavách *přidělení nákladů*.
 
-Mějte na paměti, že informace o značkách se u těchto prostředků nezobrazují v sestavách *analýzy nákladů*. Značky použité v Cloudyn pomocí přidělování nákladů se navíc neodesílají do Azure, takže je neuvidíte na webu Azure Portal.
+Mějte na paměti, že informace o značkách se u těchto prostředků nezobrazují v sestavách *analýzy nákladů*. Značky použité v Cloudynu pomocí přidělování nákladů se navíc neodesílají do Azure, takže je neuvidíte na webu Azure Portal.
 
 Když začnete s přidělováním nákladů, první věc, kterou je potřeba udělat, je definovat rozsah s použitím modelu nákladů. Model nákladů náklady nemění, ale distribuuje je. Při vytváření modelu nákladů rozdělíte svá data podle entity nákladů, účtu nebo předplatného a několika značek. Mezi běžné příklady značek může patřit kód pro fakturaci, nákladové středisko nebo název skupiny. Značky pomáhají také provádět showback a chargeback do jiných částí organizace.
 

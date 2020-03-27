@@ -1,20 +1,20 @@
 ---
-title: Připojení účtu Amazon Web Services ke službě Cloudyn v Azure | Microsoft Docs
+title: Připojení účtu Amazon Web Services ke službě Cloudyn v Azure
 description: Připojte účet Amazon Web Services, abyste mohli v sestavách Cloudyn prohlížet data o nákladech a využití.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ROBOTS: NOINDEX
+ms.openlocfilehash: 38e5e253c32a2f85e18c80bdefa7d3b640da2e50
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086839"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464438"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Připojení účtu Amazon Web Services
 
@@ -24,7 +24,7 @@ Další informace o identitách IAM v AWS najdete v článku o [identitách (už
 
 Povolíte také podrobné fakturační sestavy AWS a uložíte tyto informace v kbelíku Simple Storage Service (S3) služeb AWS. Podrobné fakturační sestavy obsahují fakturované poplatky se značkami a informacemi o prostředcích po hodinách. Ukládání sestav umožňuje Cloudynu načítat sestavy z kbelíku a zobrazovat tyto informace v sestavách.
 
-
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 ## <a name="aws-role-based-access"></a>Přístup založený na rolích AWS
 
 Následující oddíly vás povedou při vytvoření role IAM jen pro čtení, která poskytuje přístup ke Cloudynu.
@@ -131,43 +131,43 @@ Vytvořte kbelík S3, do kterého se budou ukládat podrobné informace o faktur
 
    ```json
    {
-    "Version": "2012-10-17",
-    "Id": "Policy1426774604000",
-    "Statement": [
-        {
-            "Sid": "Stmt1426774604000",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::386209384616:root"
-            },
-            "Action": [
-                "s3:GetBucketAcl",
-                "s3:GetBucketPolicy"
-            ],
-            "Resource": "arn:aws:s3:::<BillingBucketName>"
-        },
-        {
-            "Sid": "Stmt1426774604001",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::386209384616:root"
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::<BillingBucketName>/*"
-        },
-        {
-            "Sid": "Stmt1426774604002",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "<ReadOnlyUserOrRole>"
-            },
-            "Action": [
-                "s3:List*",
-                "s3:Get*"
-            ],
-            "Resource": "arn:aws:s3:::<BillingBucketName>/*"
-        }
-    ]
+      "Version": "2012-10-17",
+      "Id": "Policy1426774604000",
+      "Statement": [
+          {
+              "Sid": "Stmt1426774604000",
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "arn:aws:iam::386209384616:root"
+              },
+              "Action": [
+                  "s3:GetBucketAcl",
+                  "s3:GetBucketPolicy"
+              ],
+              "Resource": "arn:aws:s3:::<BillingBucketName>"
+          },
+          {
+              "Sid": "Stmt1426774604001",
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "arn:aws:iam::386209384616:root"
+              },
+              "Action": "s3:PutObject",
+              "Resource": "arn:aws:s3:::<BillingBucketName>/*"
+          },
+          {
+              "Sid": "Stmt1426774604002",
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "<ReadOnlyUserOrRole>"
+              },
+              "Action": [
+                  "s3:List*",
+                  "s3:Get*"
+              ],
+              "Resource": "arn:aws:s3:::<BillingBucketName>/*"
+          }
+      ]
    }
    ```
 

@@ -1,20 +1,18 @@
 ---
-title: Vysvětlení dat služby Azure Cost Management | Microsoft Docs
+title: Vysvětlení dat služby Azure Cost Management
 description: Tento článek vám pomůže lépe porozumět datům, která obsahuje služba Azure Cost Management, a tomu, jak často se zpracovávají, shromažďují, zobrazují a uzavírají.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.custom: ''
-ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245376"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203011"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -165,9 +163,9 @@ Ať už data načítáte pomocí [rozhraní API služby Cost Management](../inde
 Náklady uvedené ve službě Cost Management jsou zaokrouhlené. Náklady vracené rozhraním API pro dotazy se nezaokrouhlují. Příklad:
 
 - Analýza nákladů na webu Azure Portal: Poplatky se zaokrouhlují s využitím standardních zaokrouhlovacích pravidel: hodnoty větší než 0,5 se zaokrouhlují nahoru, jinak se náklady zaokrouhlují dolů. K zaokrouhlování dochází jenom při zobrazování hodnot. Během zpracování a agregace dat se zaokrouhlování nepoužívá. Při analýze se náklady agregují následujícím způsobem:
-  - Poplatek 1: 0,004 USD
+  -    Poplatek 1: 0,004 USD
   - Poplatek 2: 0,004 USD
-  - Vyčíslený agregovaný poplatek: 0,004 + 0,004 = 0,008. Poplatek se zobrazí jako 0,01 USD.
+  -    Vyčíslený agregovaný poplatek: 0,004 + 0,004 = 0,008. Poplatek se zobrazí jako 0,01 USD.
 - Rozhraní API pro dotazy: Poplatky se zobrazují na osm desetinných míst a nezaokrouhlují se.
 
 

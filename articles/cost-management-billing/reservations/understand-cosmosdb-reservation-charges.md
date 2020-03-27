@@ -1,18 +1,18 @@
 ---
-title: Vysvětlení uplatňování slevy za rezervaci ve službě Azure Cosmos DB | Microsoft Docs
+title: Vysvětlení slevy za rezervaci v Azure Cosmos DB
 description: Přečtěte si, jak se na zřízenou propustnost (RU/s) ve službě Azure Cosmos DB uplatňuje sleva za rezervaci.
 author: bandersmsft
+ms.author: banders
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.author: banders
-ms.openlocfilehash: 2477e1074ab90d36f92b647dd74513e3fa9ae70f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 81818cc5ba2af1f9f0f70f7aa27fe62ed2c90c77
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200295"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065668"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Vysvětlení uplatňování slevy za rezervaci ve službě Azure Cosmos DB
 

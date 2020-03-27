@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199156"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065686"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Výrazy v souboru s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu
 
@@ -88,6 +88,8 @@ meterCategory | Název klasifikační kategorie měřiče. Například *Cloud Se
 meterSubCategory | Název klasifikační podkategorie měřiče
 meterRegion | Název oblasti, ve které je daný měřič služby dostupný. Určuje polohu datového centra u služeb, jejichž ceny vycházejí z umístění datového centra
 offer | Název zakoupené nabídky
+PayGPrice | Maloobchodní cena za prostředek.
+PricingModel | Identifikátor, který určuje, jak se měřič účtuje (hodnoty: On Demand, Reservation, Spot)
 productId | Jedinečný identifikátor produktu, za který se účtují poplatky
 product | Název produktu, za který se účtují poplatky
 subscription ID | Jedinečný identifikátor předplatného, kterému se účtují poplatky

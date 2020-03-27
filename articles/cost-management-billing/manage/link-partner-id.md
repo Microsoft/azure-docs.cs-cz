@@ -1,5 +1,5 @@
 ---
-title: Propojení účtu Azure s ID partnera | Microsoft Docs
+title: Propojení účtu Azure s ID partnera
 description: Sledujte komunikaci se zákazníky Azure tak, že propojíte ID partnera s uživatelským účtem, který používáte ke správě prostředků zákazníka.
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651351"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204796"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
 
-Partneři Microsoftu poskytují služby, které zákazníkům pomáhají dosahovat podnikatelských a organizačních cílů pomocí produktů Microsoftu. Když při správě, konfiguraci a podpoře služeb Azure jednají uživatelé z partnerských společností jménem zákazníka, potřebují přístup k prostředí daného zákazníka. Při použití odkazu na správce partnera můžou partneři přidružit svoje ID partnerské sítě k přihlašovacím údajům, které se používají k doručování služeb.
+Partneři Microsoftu poskytují služby, které zákazníkům pomáhají dosahovat podnikatelských a organizačních cílů pomocí produktů Microsoftu. Když při správě, konfiguraci a podpoře služeb Azure jednají uživatelé z partnerských společností jménem zákazníka, potřebují přístup k prostředí daného zákazníka. Při použití odkazu na správce partnera (Partner Admin Link, PAL) mohou partneři přidružit svoje ID partnerské sítě k přihlašovacím údajům, které se používají k doručování služeb.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+PAL umožňuje Microsoftu identifikovat a rozpoznávat partnery, kteří posilují úspěchy zákazníků Azure. Microsoft může vaší organizaci zajistit vliv a příjmy související s využitím Azure, a to na základě oprávnění účtu (role RBAC) a rozsahu (předplatné, skupina prostředků, prostředek).
 
 ## <a name="get-access-from-your-customer"></a>Získání přístupu od zákazníka
 

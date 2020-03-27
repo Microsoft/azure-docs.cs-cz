@@ -1,26 +1,28 @@
 ---
-title: Konfigurace účtů úložiště pro Cloudyn v Azure | Microsoft Docs
+title: Konfigurace účtů úložiště pro Cloudyn v Azure
 description: Tento článek popisuje, jak nakonfigurovat účty úložiště Azure a kontejnery úložiště AWS pro Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ROBOTS: NOINDEX
+ms.openlocfilehash: c741f303958630415d54cabc62c04430f0b8b89d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117624"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474590"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurace účtů úložiště pro Cloudyn
 
 <!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
 Sestavy Cloudynu můžete ukládat na portálu Cloudyn, v úložišti Azure nebo v kontejnerech úložiště AWS. Ukládání sestav na portál Cloudyn je bezplatné. Ukládání sestav do úložiště vašeho poskytovatele cloudových služeb je ale volitelné a může vést k dodatečným nákladům. Tento článek vám pomůže nakonfigurovat účty úložiště Azure a kontejnery úložiště Amazon Web Services (AWS) pro ukládání sestav.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

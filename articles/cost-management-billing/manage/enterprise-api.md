@@ -1,5 +1,5 @@
 ---
-title: Rozhraní API Azure pro fakturaci pro podnikové zákazníky | Microsoft Docs
+title: Rozhraní API pro fakturaci Azure podle smlouvy Enterprise
 description: Přečtěte si o rozhraních API pro generování sestav, která umožňuje zákazníkům se smlouvou Azure Enterprise programově získávat data týkající se spotřeby.
 author: mumami
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560537"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202909"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
 Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azure programově předávat data o spotřebě a fakturaci do upřednostňovaných nástrojů pro analýzu dat. Podnikoví zákazníci uzavřeli s Azure [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), ve které si vyjednali určité peněžní závazky a která jim poskytuje přístup k vlastním cenám prostředků Azure.

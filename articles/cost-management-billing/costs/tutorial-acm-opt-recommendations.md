@@ -3,21 +3,25 @@ title: Kurz – Snížení nákladů na Azure pomocí doporučení
 description: Tento kurz vám pomůže snížit náklady na Azure, pokud se budete řídit doporučeními ohledně optimalizace.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245411"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155915"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů na základě doporučení
 
 Služba Azure Cost Management spolupracuje s Azure Advisorem a nabízí doporučení, která se týkají optimalizace nákladů. Azure Advisor provádí optimalizaci a zvyšuje efektivitu tím, že identifikuje nečinné a nevyužité prostředky. Tento kurz vás provede příkladem, ve kterém určíte nevyužité prostředky Azure a potom provedete akci ke snížení nákladů.
+
+Podívejte se na video věnované [optimalizaci cloudových investic v Azure Cost Managementu](https://www.youtube.com/watch?v=cSNPoAb-TNc), kde se dozvíte víc o využití Advisoru k optimalizaci vašich nákladů.
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 V tomto kurzu se naučíte:
 
