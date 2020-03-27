@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Data Lake Storage Gen1
+summary: Naučte se nastavovat a spravovat úložiště Data Lake ve velkém měřítku, které je kompatibilní s Hadoopem, a přistupovat k němu pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu. Platforma Azure Data Lake Storage Gen2 je obecně dostupná. Doporučujeme začít ji používat ještě dnes.
+metadata:
+  title: Dokumentace ke službě Azure Data Lake Storage Gen1
+  description: Naučte se nastavovat a spravovat úložiště Data Lake ve velkém měřítku, které je kompatibilní s Hadoopem, a přistupovat k němu pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu.
+  ms.service: data-lake-store
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf688b1230c8fd4eecba08ce361e92b9030a241f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79410087"
+landingContent:
+- title: Informace o službě Azure Data Lake Storage Gen1
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Data Lake Storage Gen1?
+      url: data-lake-store-overview.md
+    - text: Porovnání se službou Azure Storage
+      url: data-lake-store-comparison-with-blob-storage.md
+    - text: Dokumentace k přechodu na Data Lake Storage Gen2
+      url: ../storage/data-lake-storage/introduction.md
+- title: Začínáme
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: portál Azure
+      url: data-lake-store-get-started-portal.md
+    - text: Azure PowerShell
+      url: data-lake-store-get-started-powershell.md
+    - text: Azure CLI
+      url: data-lake-store-get-started-cli-2.0.md
+- title: Načtení a přesun dat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Pomocí služby Azure Data Factory
+      url: ../data-factory/load-azure-data-lake-store.md
+    - text: Pomocí Průzkumníka služby Azure Storage
+      url: data-lake-store-in-storage-explorer.md
+    - text: Pomocí AdlCopy
+      url: data-lake-store-copy-data-azure-storage-blob.md
+    - text: Pomocí DistCp
+      url: data-lake-store-copy-data-wasb-distcp.md
+    - text: Pomocí Sqoop
+      url: data-lake-store-data-transfer-sql-sqoop.md
+- title: Zabezpečení dat
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled zabezpečení
+      url: data-lake-store-security-overview.md
+    - text: Řízení přístupu
+      url: data-lake-store-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zabezpečení uložených dat
+      url: data-lake-store-secure-data.md
+    - text: Šifrování
+      url: data-lake-store-encryption.md
+    - text: Integrace virtuální sítě
+      url: data-lake-store-network-security.md
+- title: Authentication
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Možnosti ověřování
+      url: data-lakes-store-authentication-using-azure-active-directory.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ověřování koncových uživatelů
+      url: data-lake-store-end-user-authenticate-using-active-directory.md
+    - text: Ověřování služba-služba
+      url: data-lake-store-service-to-service-authenticate-using-active-directory.md
+- title: Operace systému souborů
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-data-operations-net-sdk.md
+    - text: Java SDK
+      url: data-lake-store-get-started-java-sdk.md
+    - text: REST API
+      url: data-lake-store-data-operations-rest-api.md
+    - text: Python
+      url: data-lake-store-data-operations-python.md
+- title: Operace správy účtů
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-get-started-net-sdk.md
+    - text: REST API
+      url: data-lake-store-get-started-rest-api.md
+    - text: Python
+      url: data-lake-store-get-started-python.md

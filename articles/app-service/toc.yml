@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: Application Gateway s koncovými body služby
           href: networking/app-gateway-with-service-endpoints.md
+        - name: Privátní koncový bod
+          href: networking/private-endpoint.md
     - name: Příchozí a odchozí IP adresy
       href: overview-inbound-outbound-ips.md
     - name: Integrace virtuální sítě
@@ -175,6 +177,8 @@
           href: configure-ssl-certificate-in-code.md
         - name: Konfigurace vzájemného ověřování TLS
           href: app-service-web-configure-tls-mutual-auth.md
+        - name: Šifrování data webu
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: Škálování aplikace
       items:
         - name: Vertikální navýšení kapacity serveru
@@ -210,7 +214,7 @@
         - name: Přesun mezi oblastmi
           href: manage-move-across-regions.md
         - name: Přesun předplatných
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources'
     - name: Spouštění úloh na pozadí
       items:
         - name: Vytvoření webových úloh

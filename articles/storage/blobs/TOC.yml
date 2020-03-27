@@ -113,8 +113,13 @@
           items:
             - name: Doporučení zabezpečení
               href: security-recommendations.md
-            - name: Šifrování služby Azure Storage
+            - name: Šifrování neaktivních uložených dat ve službě Azure Storage
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
+                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Klíče poskytované zákazníkem na vyžádání
+                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Autorizace operací s daty
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
@@ -198,6 +203,8 @@
                   href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Postupy
                   items:
+                    - name: Použití klíče spravovaného zákazníkem
+                      href: ../common/storage-import-export-encryption-key-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Zobrazení stavu jednotky
                       href: ../common/storage-import-export-view-drive-status.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Kontrola stavu úlohy
@@ -658,8 +665,13 @@
               href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Řízení přístupu (adresáře a soubory)
               href: data-lake-storage-access-control.md
-            - name: Šifrování služby Azure Storage
+            - name: Šifrování neaktivních uložených dat ve službě Azure Storage
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
+                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Klíče poskytované zákazníkem na vyžádání
+                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Rozšířená ochrana před internetovými útoky
               href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Použití privátních koncových bodů Azure

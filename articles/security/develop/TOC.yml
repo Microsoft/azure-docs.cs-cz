@@ -68,6 +68,8 @@
               href: threat-modeling-tool-releases-71610151.md
             - name: 'Threat Modeling Tool, vydání aktualizace 7.3.00206.1 – 11. února 2020'
               href: threat-modeling-tool-releases-73002061.md
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.3.00316.1 – 22. března 2020'
+              href: threat-modeling-tool-releases-73003161.md
         - name: Omezení rizik
           href: threat-modeling-tool-mitigations.md
           items:

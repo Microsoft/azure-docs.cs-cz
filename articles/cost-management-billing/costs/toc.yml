@@ -22,6 +22,8 @@
       items:
         - name: Osvědčené postupy ve službě Azure Cost Management
           href: cost-mgt-best-practices.md
+        - name: Volba mezi Cost Managementem a Cloudynem
+          href: choose-between-azure-cost-management-cloudyn.md
         - name: Vysvětlení dat služby Cost Management
           href: understand-cost-mgt-data.md
         - name: Vysvětlení a práce s rozsahy

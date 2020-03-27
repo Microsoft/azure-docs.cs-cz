@@ -23,13 +23,11 @@
       href: stream-analytics-manage-job.md
     - name: 2. Spuštění Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3. Spuštění UDF JavaScriptu
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: 4. Nasazení s využitím průběžné integrace a doručování v Azure Pipelines
+    - name: 3. Nasazení s využitím průběžné integrace a doručování v Azure Pipelines
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5. Spuštění UDF v C#'
+    - name: '4. Spuštění funkce definované uživatelem v C#'
       href: stream-analytics-edge-csharp-udf.md
-    - name: 6. Vytvoření vlastního deserializátoru .NET
+    - name: 5. Vytvoření vlastního deserializátoru .NET
       href: custom-deserializer.md
 - name: ukázky
   items:
@@ -61,6 +59,14 @@
           href: stream-analytics-sql-output-perf.md
         - name: Vzory vlastních cest objektů blob
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Uživatelsky definované funkce
+      items:
+        - name: Uživatelsky definovaná funkce v pro strojové učení
+          href: machine-learning-udf.md
+        - name: 'Uživatelsky definovaná funkce v C#'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Uživatelsky definovaná funkce v Javascriptu
+          href: stream-analytics-javascript-user-defined-functions.md
     - name: Optimalizace úlohy Stream Analytics
       items:
         - name: Principy a úpravy jednotek streamování
@@ -187,8 +193,6 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Nastavení kanálu CI/CD
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: Psaní UDF v .NET
-          href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
         - name: Místní testování s využitím ukázkových dat

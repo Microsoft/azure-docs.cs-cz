@@ -68,7 +68,7 @@
               href: manage-certificates-for-federated-single-sign-on.md
             - name: Omezení tenanta
               href: tenant-restrictions.md
-            - name: Konfigurace šifrování tokenu SAML (Preview)
+            - name: Konfigurace šifrování tokenu SAML
               href: howto-saml-token-encryption.md
             - name: Portály pro koncové uživatele
               href: end-user-experiences.md
@@ -139,9 +139,7 @@
               href: grant-admin-consent.md
             - name: Konfigurace pracovního postupu souhlasu správce (Preview)
               href: configure-admin-consent-workflow.md
-            - name: Metody pro přiřazení uživatelů a skupin k aplikaci
-              href: methods-for-assigning-users-and-groups.md
-            - name: Přiřazení uživatele k aplikaci
+            - name: Přiřazení uživatele nebo skupiny k aplikaci
               href: assign-user-or-group-access-portal.md
             - name: Vytváření kolekcí na portálu Moje aplikace
               href: access-panel-collections.md

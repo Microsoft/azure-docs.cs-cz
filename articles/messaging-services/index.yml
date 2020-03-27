@@ -1,0 +1,171 @@
+### YamlMime:Hub
+title: Dokumentace ke službám Azure pro zasílání zpráv
+summary: Naučte se využívat Azure Event Grid, Azure Event Hubs, Azure Service Bus a Azure Relay k doručování zpráv událostí.
+brand: azure
+metadata:
+  title: Dokumentace ke službám Azure pro zasílání zpráv
+  description: Naučte se využívat Azure Event Grid, Azure Event Hubs, Azure Service Bus a Azure Relay k doručování zpráv událostí.
+  services: multiple
+  ms.service: multiple
+  ms.topic: hub-page
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 03/15/2020
+  ms.openlocfilehash: 65a4312d01d6f3652ebc37ee0276c912178d4ccd
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "79472250"
+highlightedContent:
+  items:
+  - title: Volba mezi službami Azure pro zasílání zpráv
+    itemType: overview
+    url: ../event-grid/compare-messaging-services.md
+  - title: Co je Event Grid?
+    itemType: overview
+    url: ../event-grid/overview.md
+  - title: Co je služba Event Hubs?
+    itemType: overview
+    url: ../event-hubs/event-hubs-about.md
+  - title: Co je Service Bus?
+    itemType: overview
+    url: ../service-bus-messaging/service-bus-messaging-overview.md
+  - title: Co je Relay?
+    itemType: overview
+    url: ../service-bus-relay/relay-what-is-it.md
+conceptualContent:
+  items:
+  - title: Směrování událostí
+    links:
+    - url: ../event-grid/blob-event-quickstart-portal.md
+      itemType: quickstart
+      text: Směrování událostí služby Blob Storage do webového koncového bodu s využitím webu Azure Portal
+    - url: ../event-grid/custom-event-to-function.md
+      itemType: quickstart
+      text: Směrování vlastních událostí do Azure Functions s využitím Event Gridu
+    - url: ../event-grid/custom-event-quickstart-portal.md
+      itemType: quickstart
+      text: Směrování vlastních událostí do webového koncového bodu s využitím webu Azure Portal a Event Gridu
+    footerLink:
+      url: ../event-grid/index.yml
+      text: Další informace
+  - title: Vytvoření centra událostí
+    links:
+    - url: ../event-hubs/event-hubs-create.md
+      itemType: quickstart
+      text: Vytvoření centra událostí s využitím webu Azure Portal
+    - url: ../event-hubs/event-hubs-quickstart-cli.md
+      itemType: quickstart
+      text: Vytvoření centra událostí s využitím Azure CLI
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Další informace
+  - title: Integrace s Apache Kafka
+    links:
+    - url: ../event-hubs/event-hubs-for-kafka-ecosystem-overview.md
+      itemType: overview
+      text: Co je Event Hubs pro Apache Kafka
+    - url: ../event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs.md
+      itemType: quickstart
+      text: Streamování do služby Event Hubs pro Apache Kafka
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Další informace
+  - title: Odesílání a příjem událostí
+    links:
+    - url: ../event-hubs/get-started-dotnet-standard-send-v2.md
+      itemType: quickstart
+      text: Odesílání a příjem událostí z Azure Event Hubs s využitím .NET Core
+    - url: ../event-hubs/event-hubs-java-get-started-send.md
+      itemType: quickstart
+      text: Použití Javy k odesílání nebo příjmu událostí z Azure Event Hubs
+    - url: ../event-hubs/get-started-python-send-v2.md
+      itemType: quickstart
+      text: Odesílání nebo příjem událostí z Event Hubs s využitím Pythonu
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Další informace
+  - title: Zachycení událostí
+    links:
+    - url: ../event-hubs/event-hubs-dedicated-overview.md
+      itemType: overview
+      text: Zachycení událostí ve službě Azure Blob Storage nebo Azure Data Lake Storage
+    - url: ../event-hubs/event-hubs-capture-enable-through-portal.md
+      itemType: quickstart
+      text: Povolení zachytávání událostí streamování prostřednictvím Azure Event Hubs
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Další informace
+  - title: Zpracování událostí
+    links:
+    - url: ../event-hubs/event-hubs-tutorial-visualize-anomalies.md
+      itemType: tutorial
+      text: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
+    - url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+      itemType: tutorial
+      text: Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Další informace
+  - title: Vytvoření fronty
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-portal.md
+      itemType: quickstart
+      text: Použití webu Azure Portal k vytvoření fronty služby Service Bus
+    - url: ../service-bus-messaging/service-bus-quickstart-cli.md
+      itemType: quickstart
+      text: Použití Azure CLI k vytvoření fronty služby Service Bus
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Další informace
+  - title: Vytvoření témat a odběrů
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md
+      itemType: quickstart
+      text: Použití webu Azure Portal k vytvoření témamu služby Service Bus a odběrů k tomuto tématu
+    - url: ../service-bus-messaging/service-bus-resource-manager-namespace-topic.md
+      itemType: quickstart
+      text: Vytvoření oboru názvů služby Service Bus s tématem a předplatným pomocí šablony
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Další informace
+  - title: Odesílání a příjem zpráv – fronty
+    links:
+    - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+      itemType: concept
+      text: Porovnání front služeb Azure Storage a Service Bus
+    - url: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+      itemType: quickstart
+      text: Začínáme s frontami služby Service Bus
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
+      itemType: quickstart
+      text: Použití front služby Azure Service Bus s využitím Javy k odesílání a příjmu zpráv
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Další informace
+  - title: Publikování a přihlášení k odběru zpráv
+    links:
+    - url: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Začínáme s tématy služby Service Bus
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Použití předplatných a témat služby Service Bus s využitím Javy
+    - url: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Použití předplatných a témat služby Service Bus s využitím Pythonu
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Další informace
+  - title: Hybridní připojení
+    links:
+    - url: ../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md
+      itemType: tutorial
+      text: Začínáme s objekty WebSocket Relay Hybrid Connections v .NET
+    - url: ../service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started.md
+      itemType: tutorial
+      text: Začínáme s požadavky HTTP Relay Hybrid Connections v .NET
+    footerLink:
+      url: ../service-bus-relay/index.yml
+      text: Další informace

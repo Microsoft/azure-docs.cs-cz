@@ -315,6 +315,10 @@
               href: disk-encryption-sample-scripts.md
             - name: Šifrování disků v izolované síti
               href: disk-encryption-isolated-network.md
+            - name: Jak ověřit stav šifrování
+              href: how-to-verify-encryption-status.md
+            - name: Jak nakonfigurovat LVM RAID pro šifrování
+              href: how-to-configure-lvm-raid-on-crypt.md
             - name: Řešení potíží s šifrováním disků
               href: disk-encryption-troubleshooting.md
             - name: Šifrování disků – nejčastější dotazy
@@ -498,8 +502,6 @@
           href: capture-image.md
         - name: Sestavení image pomocí Packeru
           href: build-image-with-packer.md
-        - name: Image RHEL v Azure
-          href: rhel-images.md
         - name: Stažení existujícího disku
           href: download-vhd.md
     - name: Dostupnost a škálování
@@ -520,6 +522,8 @@
           href: create-cli-availability-zone.md
     - name: Použití nástrojů automatizace
       items:
+        - name: Vlastní data
+          href: ../custom-data.md
         - name: Ansible
           items:
             - name: Instalace a konfigurace

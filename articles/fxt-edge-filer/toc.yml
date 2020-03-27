@@ -20,10 +20,10 @@
       href: fxt-add-storage.md
     - name: 7. Konfigurace síťových nastavení clusteru
       href: fxt-configure-network.md
+    - name: 8. Připojení klientů
+      href: fxt-mount-clients.md
 - name: Návody
   items:
-    - name: Připojení klientů
-      href: fxt-mount-clients.md
     - name: Monitorování hardwaru Azure FXT Edge Fileru
       href: fxt-monitor.md
     - name: Bezpečné vypnutí hardwarového uzlu

@@ -91,6 +91,8 @@
           href: password-policy.md
         - name: Povolení událostí auditu zabezpečení
           href: security-audit-events.md
+        - name: Analýza událostí auditu s využitím sešitů Azure Monitoru
+          href: use-azure-monitor-workbooks.md
     - name: Virtuální počítače připojené k doméně
       items:
         - name: Virtuální počítač s Windows Serverem ze šablony

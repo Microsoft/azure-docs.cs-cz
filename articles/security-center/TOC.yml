@@ -37,9 +37,7 @@
       href: security-center-compliance-dashboard.md
 - name: Koncepty
   items:
-    - name: Bezpečnostní skóre ve službě Security Center
-      href: security-center-secure-score.md
-    - name: Vylepšená služba Secure Score
+    - name: Bezpečnostní skóre
       href: secure-score-security-controls.md
     - name: Oprávnění
       href: security-center-permissions.md
@@ -59,16 +57,18 @@
           href: azure-kubernetes-service-integration.md
     - name: Ochrana před hrozbami a výstrahy zabezpečení
       items:
+        - name: Ochrana před hrozbami v Azure Security Center
+          href: threat-protection.md
         - name: Přehled výstrah zabezpečení
           href: security-center-alerts-overview.md
         - name: Referenční seznam výstrah
           href: alerts-reference.md
+        - name: Schémata výstrah
+          href: alerts-schemas.md
         - name: Správa výstrah zabezpečení
           href: security-center-managing-and-responding-alerts.md
         - name: Správa incidentů zabezpečení
           href: security-center-incident.md
-        - name: Ochrana před hrozbami v Azure Security Center
-          href: threat-protection.md
         - name: Korelace inteligentních výstrah v cloudu (incidenty)
           href: security-center-alerts-cloud-smart.md
         - name: Analýza hrozeb a mapa výstrah zabezpečení
@@ -201,6 +201,8 @@
       href: security-center-features-retirement-july2019.md
     - name: Vyhodnocení ochrany koncových bodů a doporučení
       href: security-center-endpoint-protection.md
+    - name: Bezpečnostní skóre (starší verze)
+      href: security-center-secure-score.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

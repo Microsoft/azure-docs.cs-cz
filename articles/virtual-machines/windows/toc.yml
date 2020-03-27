@@ -585,6 +585,8 @@
               href: create-portal-availability-zone.md
     - name: Použití nástrojů automatizace
       items:
+        - name: Vlastní data
+          href: ../custom-data.md
         - name: Chef
           href: chef-automation.md
         - name: Publikování webové aplikace ze sady Visual Studio

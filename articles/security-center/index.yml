@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604774"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159298"
 landingContent:
 - title: Informace o službě Security Center
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: Ochrana vašich kontejnerů
       url: container-security.md
-    - text: Přidání dynamických balíčků pro dodržování předpisů
-      url: update-regulatory-compliance-packages.md
-    - text: Integrace s řešením Windows Admin Center
-      url: windows-admin-center-integration.md
+    - text: Integrované hodnocení ohrožení zabezpečení virtuálních počítačů
+      url: built-in-vulnerability-assessment.md
+    - text: Kontrola schémat pro výstrahy zabezpečení
+      url: alerts-schemas.md
     - text: Automatizace odpovědí na upozornění a doporučení
       url: workflow-automation.md
     - text: Export doporučení a výstrah zabezpečení
       url: continuous-export.md
-    - text: Nastavení služby Advanced Threat Protection pro Azure Key Vault
+    - text: Nastavení služby ochrany před hrozbami pro Azure Key Vault
       url: advanced-threat-protection-key-vault.md
 - title: Začínáme
   linkLists:
@@ -56,8 +56,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Co je bezpečnostní skóre?
-      url: security-center-secure-score.md
+    - text: Principy bezpečnostního skóre
+      url: secure-score-security-controls.md
     - text: Doporučení pro nápravu zabezpečení
       url: security-center-remediate-recommendations.md
     - text: Přizpůsobení doporučení pro zabezpečení

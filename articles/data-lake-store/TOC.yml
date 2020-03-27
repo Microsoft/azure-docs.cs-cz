@@ -1,5 +1,5 @@
 - name: Dokumentace ke službě Data Lake Storage Gen1
-  href: index.md
+  href: index.yml
 - name: Dokumentace k přechodu na Data Lake Storage Gen2
   href: 'https://docs.microsoft.com/azure/storage/data-lake-storage/introduction'
 - name: Přehled

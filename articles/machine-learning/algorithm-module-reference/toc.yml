@@ -136,6 +136,8 @@
       href: feature-hashing.md
     - name: Předzpracování textu
       href: preprocess-text.md
+    - name: Model LDA (Latent Dirichlet Allocation)
+      href: latent-dirichlet-allocation.md
 - name: Doporučení
   items:
     - name: Vyhodnocení doporučovacího systému
@@ -144,5 +146,11 @@
       href: score-svd-recommender.md
     - name: Trénování doporučovacího systému SVD
       href: train-svd-recommender.md
+- name: Detekce anomálií
+  items:
+    - name: Detekce anomálií na základě PCA
+      href: pca-based-anomaly-detection.md
+    - name: Trénování modelu detekce anomálií
+      href: train-anomaly-detection-model.md
 - name: Chyby modulů a řešení potíží
   href: designer-error-codes.md

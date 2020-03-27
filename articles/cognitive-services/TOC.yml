@@ -7,12 +7,28 @@
       href: Welcome.md
     - name: Cognitive Services a strojové učení
       href: cognitive-services-and-machine-learning.md
-    - name: Virtuální sítě pro Cognitive Services
-      href: cognitive-services-virtual-networks.md
     - name: Vlastní podřízené domény pro Cognitive Services
       href: cognitive-services-custom-subdomains.md
     - name: Podpora jazyků
       href: language-support.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření nového prostředku pomocí webu Azure Portal
+      href: cognitive-services-apis-create-account.md
+    - name: Vytvoření nového prostředku pomocí Azure CLI
+      href: cognitive-services-apis-create-account-cli.md
+    - name: Protokolování diagnostiky
+      href: diagnostic-logging.md
+- name: Zabezpečení
+  items:
+    - name: Zabezpečení Cognitive Services
+      href: cognitive-services-security.md
+    - name: Virtuální sítě pro Cognitive Services
+      href: cognitive-services-virtual-networks.md
+    - name: Konfigurace klíčů spravovaných zákazníkem
+      href: ./encryption/cognitive-services-encryption-keys-portal.md
+    - name: Ověřování žádostí v Cognitive Services
+      href: authentication.md
 - name: Podpora kontejnerů
   items:
     - name: Podpora kontejnerů
@@ -39,16 +55,6 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
-- name: Šablony Rychlý start
-  items:
-    - name: Vytvoření nového prostředku pomocí webu Azure Portal
-      href: cognitive-services-apis-create-account.md
-    - name: Vytvoření nového prostředku pomocí Azure CLI
-      href: cognitive-services-apis-create-account-cli.md
-    - name: Authentication
-      href: authentication.md
-    - name: Protokolování diagnostiky
-      href: diagnostic-logging.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna
@@ -61,7 +67,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Možnosti pomoci a podpory
       href: cognitive-services-support-options.md
-    - name: Smlouva o úrovni služeb (SLA)
+    - name: Smlouvy o úrovni služeb (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'

@@ -1,5 +1,5 @@
 - name: Dokumentace ke službě StorSimple
-  href: index.md
+  href: index.yml
 - name: StorSimple Virtual Array
   items:
     - name: Přehled

@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
-            - name: Šablona Azure Resource Manageru
+            - name: Šablona ARM
               href: service-bus-resource-manager-namespace-queue.md
         - name: Odesílání a příjem zpráv
           items:
@@ -41,7 +41,7 @@
           items:
             - name: portál Azure
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Šablona Azure Resource Manageru
+            - name: Šablona ARM
               href: service-bus-resource-manager-namespace-topic.md
         - name: Publikování a přihlášení k odběru zpráv
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: Aktualizace inventáře – CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: Reakce na události prostřednictvím Event Gridu
+      href: service-bus-to-event-grid-integration-example.md
 - name: ukázky
   items:
     - name: Ukázky služby Service Bus
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: Integrované ovládací prvky zabezpečení
           href: service-bus-messaging-security-controls.md
+        - name: Zabezpečení sítě
+          href: network-security.md
 - name: Návody
   items:
     - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: Zpracování zpráv pomocí Azure Event Gridu
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Příklady Azure Event Gridu
-              href: service-bus-to-event-grid-integration-example.md
         - name: Akce a filtry témat
           href: topic-filters.md
         - name: Migrace z oborů názvů Standard na obory názvů Premium
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Pokročilé funkce
           items:
-            - name: Použití bran firewall
-              href: service-bus-ip-filtering.md
-            - name: Koncové body služby pro virtuální síť
-              href: service-bus-service-endpoints.md
             - name: Fronty nedoručených zpráv
               href: service-bus-dead-letter-queues.md
             - name: Předběžné načtení zpráv
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: Pozastavení a opětovná aktivace entit zasílání zpráv
           href: entity-suspend.md
-        - name: Použití šablon Azure Resource Manageru
+        - name: Použití šablon ARM
           href: service-bus-resource-manager-overview.md
           items:
             - name: Vytvoření oboru názvů
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Zabezpečení
       items:
-        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat
+        - name: Konfigurace bran firewall
+          href: service-bus-ip-filtering.md
+        - name: Konfigurace koncových bodů služby pro virtuální síť
+          href: service-bus-service-endpoints.md
+        - name: Konfigurace privátních koncových bodů (Preview)
+          href: private-link-service.md
+        - name: Konfigurace klíčů spravovaných zákazníkem
           href: configure-customer-managed-key.md
     - name: Řešení potíží
       items:

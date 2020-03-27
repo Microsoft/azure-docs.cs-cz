@@ -84,7 +84,7 @@
           href: hana-large-instance-virtual-machine-migration.md
 - name: SAP HANA ve službě Azure Virtual Machines
   items:
-    - name: Instalace jedné instance SAP HANA
+    - name: Instalace SAP HANA na virtuálních počítačích Azure
       href: hana-get-started.md
     - name: Průvodce nasazením S/4 HANA nebo BW/4 HANA SAP CAL
       href: cal-s4h.md

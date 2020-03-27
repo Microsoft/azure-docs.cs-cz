@@ -70,10 +70,12 @@
           href: How-To/business-continuity-plan.md
         - name: Spolupráce
           href: How-To/collaborate-knowledge-base.md
+        - name: Aktivace aktivního učení
+          href: How-To/use-active-learning.md
     - name: Správa znalostní báze
       items:
         - name: Vytvoření znalostní báze
-          href: Quickstarts/create-publish-knowledge-base.md
+          href: How-To/manage-knowledge-bases.md
         - name: Výběr jazyka
           href: How-To/language-knowledge-base.md
         - name: Přidání konverzace
@@ -85,7 +87,7 @@
           href: How-To/test-knowledge-base.md
     - name: Správa sad QnA
       items:
-        - name: Úprava znalostní báze
+        - name: Úprava sady QnA
           href: How-To/edit-knowledge-base.md
         - name: Přidání následných dotazů
           href: How-To/multiturn-conversation.md

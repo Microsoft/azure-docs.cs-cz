@@ -86,6 +86,8 @@
       href: publish-apps.md
     - name: Nastavení připojení aplikace MSIX
       href: app-attach.md
+    - name: Použití Microsoft Teams
+      href: teams-on-wvd.md
 - name: Koncepty
   items:
     - name: Prostředí Windows Virtual Desktop

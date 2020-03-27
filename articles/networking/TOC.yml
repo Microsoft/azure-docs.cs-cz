@@ -22,6 +22,8 @@
           href: disaster-recovery-dns-traffic-manager.md
     - name: Plánování a návrh
       items:
+        - name: Podpora pro práci na dálku
+          href: working-remotely-support.md
         - name: Virtuální sítě
           href: ../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Připojení mezi místními sítěmi – síť VPN

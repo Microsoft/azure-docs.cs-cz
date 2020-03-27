@@ -4,6 +4,7 @@ title: Dokumentace ke službě Azure Container Service s protokolem Kubernetes
 metadata:
   title: 'Dokumentace ke službě Azure Container Service s protokolem Kubernetes – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes cluster. Learn how to use Azure Container Service in concert with Kubernetes with these quickstarts, tutorials, and samples.'
+  description: 'Azure Container Service umožňuje nasadit cluster Kubernetes připravený pro produkční prostředí. Tato rychlá zprovoznění, kurzy a ukázky vám ukážou, jak postupovat.'
   services: container-service
   author: georgewallace
   manager: gwallace

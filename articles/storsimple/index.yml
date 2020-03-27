@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Dokumentace ke službě StorSimple
+summary: Naučte se používat Azure StorSimple, integrované řešení úložiště, které spravuje úlohy úložiště mezi místními zařízeními a úložištěm cloudu Azure.
+metadata:
+  title: Dokumentace ke službě StorSimple
+  description: Naučte se používat Azure StorSimple, integrované řešení úložiště, které spravuje úlohy úložiště mezi místními zařízeními a úložištěm cloudu Azure.
+  ms.service: storsimple
+  services: storsimple
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 7744e0fecadbdbcc7af82645b58bb86a9e0bbe18
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79540302"
+landingContent:
+- title: Informace o službě StorSimple
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Porovnání StorSimple se synchronizací souborů Azure a Data Box Edge
+      url: storsimple-8000-choose-storage-solution.md
+- title: StorSimple Virtual Array
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je StorSimple Virtual Array?
+      url: storsimple-ova-overview.md
+  - linkListType: get-started
+    links:
+    - text: Kontrola požadavků
+      url: storsimple-ova-system-requirements.md
+- title: StorSimple 8000 Series
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je StorSimple řady 8000?
+      url: storsimple-overview.md
+  - linkListType: get-started
+    links:
+    - text: Kontrola požadavků
+      url: storsimple-8000-system-requirements.md
+- title: Správce dat StorSimple
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je StorSimple Data Manager?
+      url: storsimple-data-manager-overview.md
+  - linkListType: get-started
+    links:
+    - text: Správa na webu Azure Portal
+      url: storsimple-data-manager-ui.md
+- title: Program StorSimple for Cloud Solutions Providers
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je program StorSimple for Cloud Solutions Providers?
+      url: storsimple-partner-csp-overview.md
+  - linkListType: get-started
+    links:
+    - text: Nasazení
+      url: storsimple-partner-csp-deploy.md

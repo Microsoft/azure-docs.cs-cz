@@ -28,14 +28,8 @@
           href: go.md
     - name: Sada SDK
       items:
-        - name: 'Pomocí C#'
-          href: news-search-sdk-quickstart.md
-        - name: Pomocí Node.js
-          href: news-search-sdk-node-quickstart.md
-        - name: Pomocí Pythonu
-          href: news-sdk-python-quickstart.md
-        - name: Pomocí Javy
-          href: news-sdk-java-quickstart.md
+        - name: Klientské knihovny Vyhledávání zpráv Bingu
+          href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Vytvoření jednostránkové webové aplikace

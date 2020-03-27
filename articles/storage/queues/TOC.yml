@@ -45,8 +45,11 @@
       items:
         - name: Doporučení zabezpečení
           href: security-recommendations.md
-        - name: Šifrování služby Azure Storage
+        - name: Šifrování neaktivních uložených dat ve službě Azure Storage
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          items:
+            - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Autorizace operací s daty
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:

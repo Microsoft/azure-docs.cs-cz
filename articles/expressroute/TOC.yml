@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: Koncepty
   items:
+    - name: Práce na dálku
+      href: work-remotely-support.md
     - name: Modely připojení
       href: expressroute-connectivity-models.md
     - name: Okruhy a peering

@@ -66,9 +66,13 @@
               href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
     - name: Značky
       items:
-        - name: Označení prostředků
+        - name: Průvodce rozhodováním
+          href: /azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json
+        - name: Použití značek
           href: tag-resources.md
-        - name: Podpora značek
+        - name: Zásady – dodržování předpisů
+          href: tag-policies.md
+        - name: Podporované typy prostředků
           href: tag-support.md
     - name: Správa skupin prostředků
       items:

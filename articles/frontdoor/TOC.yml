@@ -1,8 +1,8 @@
-- name: Dokumentace ke službě Front Door Service
+- name: Dokumentace ke službě Front Door
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Azure Front Door Service?
+    - name: Co je Azure Front Door?
       href: front-door-overview.md
 - name: Rychlé starty
   expanded: true
@@ -27,6 +27,8 @@
       href: front-door-backend-pool.md
     - name: Ukládání do mezipaměti s využitím služby Front Door
       href: front-door-caching.md
+    - name: Nejčastější dotazy ke službě Front Door
+      href: front-door-faq.md
     - name: Geografické filtrování
       href: front-door-geo-filtering.md
     - name: Sondy stavu
@@ -49,6 +51,8 @@
       href: front-door-url-rewrite.md
     - name: Přesměrování adresy URL
       href: front-door-url-redirect.md
+    - name: Zástupná doména
+      href: front-door-wildcard-domain.md
 - name: Návody
   items:
     - name: Přesměrování provozu
@@ -65,10 +69,6 @@
           href: front-door-troubleshoot-routing.md
         - name: Povolené certifikační autority
           href: front-door-troubleshoot-allowed-ca.md
-- name: Nejčastější dotazy
-  items:
-    - name: Nejčastější dotazy ke službě Front Door
-      href: front-door-faq.md
 - name: Referenční informace
   items:
     - name: Azure CLI

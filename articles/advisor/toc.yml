@@ -26,6 +26,10 @@
       href: permissions.md
     - name: Konfigurace výstrah pro doporučení
       href: advisor-alerts.md
+    - name: Hromadná náprava pro doporučení
+      href: advisor-quick-fix.md
+    - name: Data Advisoru v Azure Resource Graphu
+      href: advisor-azure-resource-graph.md
 - name: Referenční informace
   items:
     - name: Security Center

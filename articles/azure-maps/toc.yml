@@ -89,8 +89,10 @@
       items:
         - name: Hledání adresy
           href: how-to-search-for-address.md
-        - name: Osvědčené postupy pro hledání
+        - name: Osvědčené postupy při používání služby Search
           href: how-to-use-best-practices-for-search.md
+        - name: Osvědčené postupy při používání služby Route
+          href: how-to-use-best-practices-for-routing.md
         - name: Vykreslování vlastních dat na statické mapě
           href: how-to-render-custom-data.md
         - name: Vyžádání tras veřejné dopravy
@@ -101,7 +103,7 @@
       items:
         - name: Mapový ovládací prvek
           items:
-            - name: Začínáme s webovým mapovým ovládacím prvkem
+            - name: Použití mapového ovládacího prvku Azure Maps
               href: how-to-use-map-control.md
             - name: Vytvoření mapy
               href: map-create.md
@@ -247,12 +249,38 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Modul služeb
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+        - name: Prostorový modul V/V
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.maps/accounts
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Služby Azure IoT
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Akcelerátory řešení IoT
+          href: /azure/iot-accelerators
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Sady Azure IoT SDK
+      items:
+        - name: Sady SDK pro služby IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Podmínky použití služby Azure Maps
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Ceny služby Azure Maps
@@ -281,31 +309,3 @@
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Služba Azure Maps v IoT School
       href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
-- name: Související
-  items:
-    - name: Řešení
-      items:
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: /azure/iot-central/iot-support-help
-    - name: Služby platformy
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
-        - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Sady SDK pro služby
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Řešení Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

@@ -16,6 +16,12 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
+    - name: Podpora práce na dálku
+      items:
+        - name: Práce na dálku
+          href: work-remotely-support.md
+        - name: Konfigurace NVA a práce na dálku
+          href: nva-work-remotely-support.md
     - name: Informace o nastavení služby VPN Gateway
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: Informace o zařízeních VPN
@@ -150,6 +156,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Konfigurace klientů OpenVPN
               href: vpn-gateway-howto-openvpn-clients.md
+        - name: Přechod na protokol OpenVPN nebo IKEv2 od SSTP
+          href: ikev2-openvpn-from-sstp.md
         - name: Přechod na certifikát veřejné brány CA pro P2S
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Konfigurace tunelu zařízení VPN AlwaysOn
@@ -217,7 +225,7 @@
           items:
             - name: Problémy s připojením typu Point-to-Site
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
-            - name: Problémy s připojením typu Point-to-Site – klient Mac OS X VPN
+            - name: Problémy s připojením typu Point-to-Site – klient macOS x VPN
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
             - name: Připojení typu Point-to-Site – ověřování Azure AD
               href: troubleshoot-ad-vpn-client.md

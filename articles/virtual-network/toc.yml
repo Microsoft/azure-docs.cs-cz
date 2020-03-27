@@ -23,23 +23,10 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Připojení virtuálních sítí
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT
-      items:
-        - name: Vytvoření brány NAT – portál
-          href: quickstart-create-nat-gateway-portal.md
-        - name: Vytvoření brány NAT – PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: Vytvoření brány NAT – CLI
-          href: quickstart-create-nat-gateway-cli.md
-        - name: Vytvoření brány NAT – šablona Resource Manageru
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
-        - name: Vytvoření a ověření služby NAT Gateway – portál
-          href: tutorial-create-validate-nat-gateway-portal.md
-        - name: Vytvoření a ověření služby NAT Gateway – PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: Vytvoření a ověření služby NAT Gateway – CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
+    - name: Vytvoření brány NAT
+      href: quickstart-create-nat-gateway-portal.md
+    - name: Vytvoření a ověření brány NAT
+      href: tutorial-create-validate-nat-gateway-portal.md
 - name: ukázky
   items:
     - name: Azure CLI
@@ -359,6 +346,19 @@
           href: move-across-regions-publicip-portal.md
         - name: Veřejné IP adresy – PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: NAT
+      items:
+        - name: Vytvoření brány NAT – PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: Vytvoření brány NAT – CLI
+          href: quickstart-create-nat-gateway-cli.md
+        - name: Vytvoření brány NAT – šablona Resource Manageru
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
+        - name: Vytvoření a ověření služby NAT Gateway – PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: Vytvoření a ověření služby NAT Gateway – CLI
+          href: tutorial-create-validate-nat-gateway-cli.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s partnerskými vztahy virtuálních sítí

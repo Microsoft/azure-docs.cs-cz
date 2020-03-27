@@ -1,51 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Azure IoT Hub Device Provisioning
+### YamlMime:Landing
+title: Dokumentace ke službě Azure IoT Hub Device Provisioning (DPS)
+summary: Služba IoT Hub Device Provisioning (DPS) je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném IoT Hubu, které nevyžaduje zásah člověka. Zákazníci tak mohou bezpečným a škálovatelným způsobem zřizovat miliony zařízení. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte zřizovat zařízení v IoT Hubu.
 metadata:
-  title: Dokumentace ke službě Azure IoT Hub Device Provisioning
-  description: 'Azure IoT Hub Device Provisioning Service – kurzy, rychlá zprovoznění, postupy a reference k rozhraní API'
-  author: nberdy
+  title: Dokumentace ke službě Azure IoT Hub Device Provisioning (DPS)
+  description: Azure IoT Hub Device Provisioning Service (DPS) – kurzy, rychlá zprovoznění, postupy a reference k rozhraní API
+  author: wesmc7777
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: nberdy
-abstract:
-  description: 'Služba IoT Hub Device Provisioning (DPS) je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném IoT Hubu, které nevyžaduje zásah člověka. Zákazníci tak mohou bezpečným a škálovatelným způsobem zřizovat miliony zařízení. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte zřizovat zařízení v IoT Hubu.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak nastavit první instanci služby Device Provisioning a zřídit v IoT Hubu simulované zařízení.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: Nastavení automatického zřizování
-            href: /azure/iot-dps/quick-setup-auto-provision
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: Vytvoření simulovaného zařízení
-            href: /azure/iot-dps/quick-create-simulated-device
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Naučte se používat IoT Hub Device Provisioning k automatickému zřízení zabezpečených zařízení v jednom nebo několika IoT Hubech.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">Konfigurace cloudových prostředků</a>
-          - html: <a href="/azure/iot-dps/tutorial-set-up-device">Nastavení zařízení pro připojení k Azure</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">Zřízení zařízení v jednom IoT Hubu</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-multiple-hubs">Zřízení zařízení v několika IoT Hubech s vyrovnáváním zatížení</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: <p><a href="/rest/api/iot-dps">REST</a></p>
-          - title: Sady Azure IoT SDK
-            html: '<p><a href="https://github.com/Azure/azure-iot-sdk-c">C</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-python">Python</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-node">Node</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-java">Java</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-csharp">C#</a></p>'
+  ms.date: 03/03/2020
+  ms.author: wesmc
+  ms.openlocfilehash: 2d89b99005a4e430aca85c109f3d000c3b21674c
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80133261"
+landingContent:
+- title: Informace o službě Azure IoT Hub Device Provisioning Service (DPS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je DPS?
+      url: about-iot-dps.md
+  - linkListType: concept
+    links:
+    - text: Koncepce automatického zřizování pro Azure IoT
+      url: concepts-auto-provisioning.md
+  - linkListType: video
+    links:
+    - text: IoT Hub – ukázka DPS
+      url: https://azure.microsoft.com/resources/videos/iot-hub-dps-demo/
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nastavení DPS s využitím webu Azure Portal
+      url: quick-setup-auto-provision.md
+  - linkListType: sample
+    links:
+    - text: Zřízení simulovaného zařízení se symetrickým klíčem s využitím jazyka C
+      url: quick-create-simulated-device-symm-key.md
+    - text: Zřízení simulovaného zařízení se symetrickým klíčem s využitím Javy
+      url: quick-create-simulated-device-symmetric-key-java.md
+  - linkListType: how-to-guide
+    links:
+    - text: Postupy zřizování pro architekturu s více tenanty
+      url: how-to-provision-multitenant.md
+    - text: Postupy používání vlastních zásad přidělování
+      url: how-to-use-custom-allocation-policies.md
+- title: Správa přístupu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Postupy správy registrací zařízení
+      url: how-to-manage-enrollments.md
+    - text: Řízení přístupu ke službě Azure IoT Hub Device Provisioning Service
+      url: how-to-control-access.md
+- title: Vývoj řešení IoT s využitím DPS
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure IoT SDK pro C
+      url: https://github.com/Azure/azure-iot-sdk-c
+    - text: Azure IoT SDK pro Python
+      url: https://github.com/Azure/azure-iot-sdk-python
+    - text: Azure IoT SDK pro Node.js
+      url: https://github.com/Azure/azure-iot-sdk-node
+    - text: Azure IoT SDK pro Javu
+      url: https://github.com/Azure/azure-iot-sdk-java
+    - text: Azure IoT SDK pro .NET
+      url: https://github.com/Azure/azure-iot-sdk-csharp
+    - text: REST API
+      url: /rest/api/iot-dps

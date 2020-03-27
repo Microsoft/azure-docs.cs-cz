@@ -58,7 +58,21 @@
     - name: Koncepty
       items:
         - name: Jak funguje služba Dev Spaces
-          href: how-dev-spaces-works.md
+          items:
+            - name: Přehled
+              href: how-dev-spaces-works.md
+            - name: Nastavení clusteru
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: Příprava projektu
+              href: how-dev-spaces-works-prep.md
+            - name: Spuštění kódu
+              href: how-dev-spaces-works-up.md
+            - name: Směrování mezi Dev Spaces
+              href: how-dev-spaces-works-routing.md
+            - name: Vzdálené ladění
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: Připojení počítače pro vývoj k AKS
+              href: how-dev-spaces-works-connect.md
         - name: Jak funguje VS Code s Dev Spaces
           href: how-vs-code-works-with-dev-spaces.md
         - name: Konfigurace sítě v různých síťových topologiích

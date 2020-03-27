@@ -263,6 +263,8 @@
           href: search-pagination-page-layout.md
         - name: Vyladění relevance (profily vyhodnocování)
           href: index-add-scoring-profiles.md
+        - name: Vyladění relevance (algoritmus podobnosti)
+          href: index-ranking-similarity.md
     - name: Plánování
       items:
         - name: Volba úrovně

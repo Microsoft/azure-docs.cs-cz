@@ -59,6 +59,8 @@
           href: container-instances-vnet.md
         - name: Nasazení ze služby Azure Container Registry
           href: container-instances-using-azure-container-registry.md
+        - name: Nasazení s využitím GitHub Actions (Preview)
+          href: container-instances-github-action.md
         - name: Šifrování dat nasazení
           href: container-instances-encrypt-data.md
         - name: Nasazování na vyhrazené hostitele
@@ -83,6 +85,8 @@
           href: container-instances-gpu.md
         - name: Povolení koncového bodu protokolu pro sajdkáru
           href: container-instances-container-group-ssl.md
+        - name: Zveřejnění statické IP adresy
+          href: container-instances-application-gateway.md
     - name: Připojení datových svazků
       items:
         - name: Sdílená složka Azure

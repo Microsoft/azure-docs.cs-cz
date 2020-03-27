@@ -92,6 +92,8 @@
   items:
     - name: Povolení funkce pro podmnožinu uživatelů
       href: howto-feature-filters-aspnet-core.md
+    - name: Použití popisků pro konfiguraci pro jednotlivá prostředí
+      href: howto-labels-aspnet-core.md
     - name: Import nebo export konfiguračních dat
       href: howto-import-export-data.md
     - name: Směrování událostí na vlastní koncový bod

@@ -29,7 +29,7 @@
           href: create-sql-api-xamarin-dotnet.md
 - name: Kurzy
   items:
-    - name: 1. Vytvoření a správa dat
+    - name: 1. Vytváření a správa dat
       items:
         - name: Sestavení konzolové aplikace
           items:
@@ -549,8 +549,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Rozšířená ochrana před internetovými útoky
-        - name: Integrované ovládací prvky zabezpečení
-          href: cosmos-db-security-controls.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Připravenost pro podnikové zpracování
       items:
         - name: Online zálohování a obnovení na vyžádání
@@ -582,7 +582,7 @@
               href: create-cassandra-python.md
         - name: Kurzy
           items:
-            - name: 1. Vytvoření a správa dat
+            - name: 1. Vytváření a správa dat
               href: create-cassandra-api-account-java.md
             - name: 2. Načtení dat
               href: cassandra-api-load-data.md
@@ -600,7 +600,7 @@
             - name: Změna kanálu
               href: cassandra-change-feed.md
             - name: Ukládání a správa služby Spring Data
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra a Spark
               items:
                 - name: Úvod
@@ -656,7 +656,7 @@
               href: create-mongodb-golang.md
         - name: Kurzy
           items:
-            - name: 1. Vytvoření a správa dat
+            - name: 1. Vytváření a správa dat
               items:
                 - name: Aplikace konzoly Node.js
                   href: mongodb-samples.md
@@ -709,7 +709,7 @@
             - name: Správa indexování dat
               href: mongodb-indexing.md
             - name: Ukládání a správa služby Spring Data
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Příkazy rozšíření MongoDB
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -776,7 +776,7 @@
             - name: Vizualizace dat grafu
               href: graph-visualization.md
             - name: Ukládání a správa služby Spring Data
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Správa s využitím šablon Resource Manageru
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -802,7 +802,7 @@
               href: create-table-python.md
         - name: Kurzy
           items:
-            - name: 1. Vytvoření a správa dat
+            - name: 1. Vytváření a správa dat
               href: tutorial-develop-table-dotnet.md
             - name: 2. Migrace dat
               displayName: import
@@ -989,11 +989,11 @@
           href: use-notebook-features-and-commands.md
     - name: Programování na straně serveru
       items:
-        - name: 'Psaní uložených procedur, triggerů a funkcí UDF'
+        - name: 'Zápis uložených procedur, triggerů a uživatelsky definovaných funkcí'
           href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: Psaní uložených procedur a triggerů s rozhraním API pro dotazy JavaScript
+        - name: Psaní uložených procedur a triggerů s rozhraním API pro dotazy v JavaScriptu
           href: how-to-write-javascript-query-api.md
-        - name: 'Použití uložených procedur, triggerů a funkcí UDF'
+        - name: 'Použití uložených procedur, triggerů a uživatelsky definovaných funkcí'
           href: how-to-use-stored-procedures-triggers-udfs.md
     - name: Zabezpečení
       items:
@@ -1073,9 +1073,9 @@
         - name: Azure Event Hubs a Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Použití aplikace Spring Boot Starter
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
         - name: Příručka pro vývojáře – Spring Data
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: Ovladač ODBC
           href: odbc-driver.md
     - name: Migrace dat do Cosmos DB
