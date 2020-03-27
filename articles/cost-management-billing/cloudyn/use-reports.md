@@ -1,26 +1,28 @@
 ---
-title: Použití sestav Cloudynu v Azure | Microsoft Docs
+title: Použití sestav Cloudynu v Azure
 description: Tento článek popisuje účel sestav Cloudynu, které jsou součástí portálu Cloudyn, a pomůže vám je efektivně používat.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b3563e08963b0b32542dcbece2529c350981f557
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 633bf8126c1745cfd8db117966975bbf4ea2c9c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200006"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463539"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Sestavy dostupné na portálu Cloudyn
 
 Tento článek popisuje účel sestav Cloudynu, které jsou součástí portálu Cloudyn. Popisuje rovněž způsob, jak tyto sestavy efektivně používat. Většina sestav je intuitivní a má jednotný vzhled a chování. Většinu akcí, které můžete dělat v jedné sestavě, můžete dělat také v jiných sestavách. Přehled o používání sestav Cloudynu včetně postupu jejich přizpůsobení, uložení a plánování, najdete v článku [Vysvětlení sestav nákladů](understanding-cost-reports.md).
 
 Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace najdete v tématu [Azure Cost Management](../cost-management-billing-overview.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-types"></a>Typy sestav
 

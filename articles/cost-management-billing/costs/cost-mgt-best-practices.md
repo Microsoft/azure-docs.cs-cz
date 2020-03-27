@@ -1,24 +1,23 @@
 ---
-title: Optimalizace investic do cloudu se službou Azure Cost Management | Microsoft Docs
+title: Optimalizace investic do cloudu se službou Azure Cost Management
 description: Tento článek vám pomůže maximalizovat hodnotu svých investic do cloudu, snížit náklady a vyhodnotit způsob utrácení peněz.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383533"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80157207"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat investice do cloudu se službou Azure Cost Management
 
-Azure Cost Management nabízí nástroje na plánování, analýzu a snižování výdajů, abyste mohli maximalizovat hodnotu svých investic do cloudu. Tento dokument nabízí metodický přístup ke správě nákladů a vysvětluje dostupné nástroje, které můžete použít k řešení problémů organizace souvisejících s náklady. Azure usnadňuje vytváření a nasazení cloudových řešení. Tato řešení je ale potřeba optimalizovat, abyste minimalizovali náklady organizace. Pokud se budete řídit principy uvedenými v tomto dokumentu a budete používat naše nástroje, vytvoříte tím předpoklady pro zajištění úspěchu organizace.
+Azure Cost Management nabízí nástroje na plánování, analýzu a snižování výdajů, abyste mohli maximalizovat hodnotu svých investic do cloudu. Tento dokument nabízí metodický přístup ke správě nákladů a vysvětluje dostupné nástroje, které můžete použít k řešení problémů vaší organizace souvisejících s náklady. Azure usnadňuje vytváření a nasazení cloudových řešení. Tato řešení je ale potřeba optimalizovat, abyste minimalizovali náklady organizace. Pokud se budete řídit principy uvedenými v tomto dokumentu a budete používat naše nástroje, vytvoříte tím předpoklady pro zajištění úspěchu organizace.
 
 ## <a name="methodology"></a>Metodologie
 
@@ -116,7 +115,7 @@ Další informace najdete v tématu [Cenová kalkulačka Azure](https://azure.mi
 
 Azure Migrate je služba, která vyhodnotí aktuální úlohy vaší organizace v místních datacentrech. Pomůže vám získat přehled o prostředcích potřebných pro náhradní řešení v Azure. Služba Migrate nejprve analyzuje místní počítače, aby zjistila, jestli je migrace proveditelná. Pak doporučí velikost virtuálních počítačů v Azure, aby maximalizovala výkon. Nakonec také odhadne náklady na řešení založené na Azure.
 
-Další informace najdete v tématu o službě [Azure Migrate](../../site-recovery/migrate-overview.md).
+Další informace najdete v tématu o službě [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
 
 ## <a name="analyze-and-manage-your-costs"></a>Analýza a správa nákladů
 
@@ -125,6 +124,11 @@ Nechte se informovat o vývoji nákladů organizace v čase. Následující tech
 ### <a name="organize-and-tag-your-resources"></a>Organizace prostředků a jejich označení
 
 Při organizaci svých prostředků myslete na náklady. Když vytváříte předplatná a skupiny prostředků, myslete na týmy, které odpovídají za související náklady. Dbejte na to, aby výkazy zohledňovaly vaši organizaci. Vhodnými kontejnery pro uspořádání a přiřazování nákladů v celé organizaci jsou předplatná a skupiny prostředků. K přiřazování nákladů se hodí i značky. Můžete je používat jako filtry. A můžete je použít i k seskupení, když chcete analyzovat data a zkoumat náklady. Zákazníci se smlouvou Enterprise také můžou vytvářet oddělení a přiřazovat k nim předplatná. Když Azure uspořádáte podle nákladů, pomůže vám to, aby příslušní lidé ve vaší organizaci odpovídali u svých týmů za snižování výdajů.
+
+Podívejte se na video o [kontrole zásad značek s využitím služby Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) a seznamte se s nástroji, které máte k dispozici pro vynucení škálovatelného označování prostředků ve vaší organizaci.
+
+>[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
+
 
 ### <a name="use-cost-analysis"></a>Použití nákladové analýzy
 

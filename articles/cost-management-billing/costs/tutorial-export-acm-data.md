@@ -3,23 +3,25 @@ title: Kurz – Vytvoření a správa exportovaných dat ze služby Azure Cost M
 description: Tento článek popisuje, jak vytvořit a spravovat exportovaná data služby Azure Cost Management tak, aby se dala používat v externích systémech.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 04228a5f3f7e0b10e3cd881043af7861bb9fb347
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b950235eccbd41b1dfa46c23985e804212d9e8f2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251144"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155898"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
 Pokud jste si prošli kurz Analýza nákladů, pak jste obeznámeni s ručním stahováním dat ze služby Cost Management. Můžete však vytvořit opakující se úlohu, která denně, týdně nebo měsíčně automaticky exportuje data služby Cost Management do úložiště Azure. Exportovaná data jsou ve formátu CSV a obsahují všechny informace, které služba Cost Management shromažďuje. Exportovaná data v úložišti Azure pak můžete používat s externími systémy a kombinovat je se svými vlastními daty. Exportovaná data můžete používat v externím systému, jako je třeba řídicí panel nebo jiný finanční systém.
 
 Podívejte se na video [How to schedule exports to storage with Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) (Jak naplánovat exporty do úložiště pomocí služby Azure Cost Management), které se věnuje vytváření naplánovaného exportu dat nákladů na Azure do Azure Storage.
+
+>[!VIDEO https://www.youtube.com/embed/rWa_xI1aRzo]
 
 Příklady v tomto kurzu vás provedou exportem dat služby Cost Management a následným ověřením, že se daná data úspěšně exportovala.
 
@@ -50,8 +52,8 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Analýza nákladů**. Přejděte například na **Předplatná**, vyberte předplatné ze seznamu a pak v nabídce vyberte **Analýza nákladů**. Nahoře na stránce Analýza nákladů vyberte **Exportovat** a zvolte možnost exportu. Vyberte například **Naplánovat export**.  
 
 > [!NOTE]
-> - Kromě předplatných můžete vytvářet exporty u skupin prostředků, účtů, oddělení a registrací. Další informace o oborech najdete v tématu [Principy oborů a práce s nimi](understand-work-scopes.md).
->- Pokud jste přihlášeni jako partner v oboru fakturačního účtu nebo k tenantovi zákazníka, můžete exportovat data do účtu Azure Storage, který je propojen s partnerským účtem úložiště. Musíte mít ale aktivní předplatné ve svém tenantovi CSP.
+> - Kromě předplatných můžete vytvářet exporty u skupin prostředků, účtů, oddělení a registrací. Další informace o rozsazích najdete v tématu [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
+>- Pokud jste přihlášeni jako partner v oboru fakturačního účtu nebo k tenantovi zákazníka, můžete exportovat data do účtu Azure Storage, který je propojený s partnerským účtem úložiště. Musíte mít ale aktivní předplatné ve svém tenantovi CSP.
 >
 
 

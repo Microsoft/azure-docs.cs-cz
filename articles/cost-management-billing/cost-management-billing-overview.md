@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970122"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474522"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Co je správa nákladů a fakturace v Azure?
 
@@ -89,13 +89,13 @@ Doporučení znázorňují, jak můžete optimalizovat a zvýšit efektivitu pom
 
 Pokud pro přístup k datům správy nákladů nebo jejich kontrole používáte externí systémy, můžete z Azure data snadno exportovat. Můžete také naplánovat denní export ve formátu CSV a soubory dat ukládat v úložišti Azure. Potom budete mít přístup k datům v externím systému.
 
-### <a name="consider-cloudyn"></a>Zvážení využití služby Cloudyn
+### <a name="cloudyn-deprecation"></a>Vyřazení služby Cloudyn z provozu
 
-[Cloudyn](./cloudyn/overview.md) je služba Azure, která souvisí se službou Cost Management. Pomocí služby Cloudyn můžete sledovat využití cloudu a výdaje na prostředky Azure. Podporuje také další poskytovatele cloudu, včetně AWS a Googlu. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. V současné době služba Cost Management nepodporuje metody showback a chargeback ani jiné poskytovatele cloudových služeb. Cloudyn je však možnost, která je _podporuje_. Služba Cost Management v současné době nepodporuje účty poskytovatele cloudových služeb Microsoft (CSP), ale Cloudyn je podporuje. Pokud máte účty CSP nebo pokud chcete používat showback/chargeback, můžete k usnadnění správy nákladů využívat službu Cloudyn.
-
-Podívejte se na [video o službách Azure Cost Management a Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8), ve kterém najdete doporučení, kdy byste v závislosti na potřebách vaší firmy měli používat Azure Cost Management nebo Cloudyn.
-
->[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
+[Cloudyn](./cloudyn/overview.md) je služba Azure související s Cost Managementem, do konce roku 2020 vyřazuje z provozu. Stávající funkce Cloudynu se tam, kde je to možné, integrují přímo do webu Azure Portal. V tuto chvíli se neonboardují žádní noví zákazníci, ale podpora pro tento produkt zůstane zachovaná, dokud se úplně nevyřadí z provozu.
+ 
+Podívejte se na [video o službách Azure Cost Management a Cloudyn](https://www.youtube.com/watch?v=15DzKPMBRxM), ve kterém se dozvíte, kdy byste v závislosti na potřebách vaší firmy měli používat Azure Cost Management nebo Cloudyn.
+ 
+>[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ### <a name="additional-azure-tools"></a>Další nástroje Azure
 

@@ -1,17 +1,17 @@
 ---
-title: Kontrola fakturačních dat předplatného Azure pomocí rozhraní REST API | Microsoft Docs
+title: Kontrola fakturačních dat předplatného Azure s využitím rozhraní REST API
 description: Naučte se používat rozhraní Azure REST API ke kontrole podrobných údajů fakturace předplatného.
 author: lleonard-msft
 ms.service: cost-management-billing
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 4746c5a541118b6018f3b6601b7eb0662503fd3a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 7b80bd57906515ffeb0ff9e8ac52cf7178f5ccd8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199547"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202803"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Kontrola fakturace předplatného pomocí rozhraní REST API
 

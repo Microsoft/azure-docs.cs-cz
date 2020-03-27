@@ -1,5 +1,5 @@
 ---
-title: Stažení faktury za Azure a dat o denním využití | Microsoft Docs
+title: Stažení faktury za Azure a dat o denním využití
 description: Vysvětluje, jak stáhnout nebo zobrazit fakturu za Azure a data o denním využití.
 keywords: billing invoice,invoice download,azure invoice,azure usage
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125628"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237679"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení faktury za Azure a dat o denním využití
 
@@ -62,7 +62,7 @@ Faktury se generují pro každý [fakturační profil](../understand/mca-overvie
 6. V místní nabídce pro stažení vyberte možnost **Faktura**.
 
 Pokud nevidíte fakturu za poslední fakturační období, přečtěte si **Další informace**. <!-- Fix this -->
-### <a name="noinvoice"></a> Proč se mi nezobrazuje faktura za poslední fakturační období?
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> Proč se mi nezobrazuje faktura za poslední fakturační období?
 
 Faktura se nemusí zobrazovat z několika důvodů:
 

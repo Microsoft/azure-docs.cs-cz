@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199020"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065644"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení termínů v souboru s využitím a poplatky Azure
 
@@ -74,10 +74,12 @@ MeterName | Vše | Název měřiče.
 MeterRegion | Vše | Název umístění datacentra pro služby s cenami založenými na umístění. Viz Location.
 MeterSubCategory | Vše | Název kategorie dílčí klasifikace měřiče.
 OfferId<sup>1</sup> | Vše | Název zakoupené nabídky.
+PayGPrice | Vše | Maloobchodní cena za prostředek.
 PartNumber<sup>1</sup> | EA, PAYG | Identifikátor používaný k získání cen konkrétního měřiče.
 PlanName | EA, PAYG | Název plánu Marketplace.
 PreviousInvoiceId | MCA | Odkaz na původní fakturu, pokud tato řádková položka představuje refundaci.
 PricingCurrency | MCA | Měna použitá při hodnocení na základě sjednaných cen.
+PricingModel | Vše | Identifikátor, který určuje, jak se měřič účtuje. (hodnoty: On Demand, Reservation, Spot)
 Produkt | Vše | Název produktu
 ProductId<sup>1</sup> | MCA | Jedinečný identifikátor pro produkt.
 ProductOrderId | Vše | Jedinečný identifikátor objednávky produktu.
