@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 804b46cd5238c189063608d067c0b40fcd3e306d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 8d72ee529966fe0db8bf496533453c81064a81a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379270"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79501792"
 ---
 ::: zone target="docs" 
 
-# <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: kopírování dat do Azure Data Box přes protokol SMB
+# <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: Kopírování dat do Azure Data Boxu přes protokol SMB
 
 ::: zone-end
 
@@ -35,16 +35,16 @@ Tento kurz popisuje, jak se pomocí místního webového uživatelského rozhran
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Připojení k Data Boxu
 > * Kopírování dat do Data Boxu
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: nastavte Azure Data box](data-box-deploy-set-up.md).
+1. Dokončili jste [Kurz: Nastavení Azure Data Boxu](data-box-deploy-set-up.md).
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
 3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
@@ -73,7 +73,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Klikněte na tlačítko **OK**.
+2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Klikněte na **OK**.
     
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
@@ -107,22 +107,21 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 Pokud používáte klienta Linuxu, připojte sdílenou složku SMB pomocí následujícího příkazu. Níže uvedený parametr vers představuje verzi protokolu SMB, kterou podporuje váš hostitel s Linuxem. Do následujícího příkazu vložte odpovídající verzi. Verze protokolu SMB, které Data Box podporuje, najdete v tématu věnovaném [podporovaným systémům souborů pro klienty Linuxu](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients). 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
-    
-
 
 ## <a name="copy-data-to-data-box"></a>Kopírování dat do Data Boxu
 
 Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
 
-- Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Virtuální pevné disky je potřeba zkopírovat do objektu blob stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
--  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení úložiště Azure a Data Boxu](data-box-limits.md).
-- Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
-- Naše doporučení:
-    - Nepoužívejte protokol SMB a systém souborů NFS současně.
-    - Stejná data kopírujte do stejného cíle v Azure. 
-     
+* Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Virtuální pevné disky je potřeba zkopírovat do objektu blob stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
+*  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení úložiště Azure a Data Boxu](data-box-limits.md).
+* Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
+* Naše doporučení:
+  * Nepoužívejte protokol SMB a systém souborů NFS současně.
+  * Stejná data kopírujte do stejného cíle v Azure.
+
   V těchto případech není možné určit konečný výsledek.
-- Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory nemůžete kopírovat přímo do složky *root* v účtu úložiště.
+* Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory nemůžete kopírovat přímo do složky *root* v účtu úložiště.
+* Než budete moct potvrdit, že zařízení Data Box převedlo data do Azure Storage, ujistěte se, že si uchováváte kopii zdrojových dat.
 
 Po připojení ke sdílené složce SMB zahajte kopírování dat. Ke kopírování dat můžete použít jakýkoli nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy. Pomocí nástroje Robocopy je možné zahájit několik úloh kopírování najednou. Použijte následující příkaz:
     
@@ -238,7 +237,7 @@ V každém případě se ujistěte, že názvy sdílených složek a složek a v
 2. Pokud chcete získat přihlašovací údaje ke sdílené složce, přejděte na stránku **Connect & copy** (Připojit a kopírovat) v místním webovém uživatelském rozhraní Data Boxu.
 3. Ke kopírování dat do sdílených složek použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy. 
 
-Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box přes protokol SMB](data-box-deploy-copy-data.md).
+Podrobné pokyny najdete v článku [Kurz: Kopírování dat do Azure Data Boxu přes protokol SMB](data-box-deploy-copy-data.md).
 
 ## <a name="copy-data-via-nfs"></a>Kopírování dat přes systém souborů NFS
 
@@ -249,21 +248,21 @@ Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box p�
 2. Pokud chcete získat přihlašovací údaje ke sdílené složce, přejděte na stránku **Connect & copy** (Připojit a kopírovat) v místním webovém uživatelském rozhraní Data Boxu.
 3. Ke zkopírování dat použijte příkaz `cp` nebo `rsync`.
 
-Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box přes systém souborů NFS](data-box-deploy-copy-data-via-nfs.md).
+Podrobné pokyny najdete v článku [Kurz: Kopírování dat do Azure Data Boxu přes systém souborů NFS](data-box-deploy-copy-data-via-nfs.md).
 
 ## <a name="copy-data-via-rest"></a>Kopírování dat přes rozhraní REST
 
 1. Pokud chcete kopírovat data s využitím úložiště objektů blob Data Boxu přes rozhraní REST API, můžete se připojit přes *http* nebo *https*.
 2. Ke kopírování dat do úložiště objektů blob Data Boxu můžete použít AzCopy.
 
-Podrobné pokyny najdete v tématu [kurz: kopírování dat do Azure Data box BLOB Storage přes rozhraní REST API](data-box-deploy-copy-data-via-nfs.md).
+Podrobné pokyny najdete v článku [Kurz: Kopírování dat do úložiště objektů blob Azure Data Boxu přes rozhraní REST API](data-box-deploy-copy-data-via-nfs.md).
 
 ## <a name="copy-data-via-data-copy-service"></a>Kopírování dat prostřednictvím služby kopírování dat
 
 1. Pokud chcete kopírovat data pomocí služby kopírování dat, musíte vytvořit úlohu. V místním webovém uživatelském rozhraní vašeho Data Boxu přejděte do části **Správa > Kopírování dat > Vytvořit**. 
 2. Vyplňte parametry a vytvořte úlohu.
 
-Podrobné pokyny najdete v tématu [kurz: použití služby kopírování dat ke kopírování dat do Azure Data box](data-box-deploy-copy-data-via-copy-service.md).
+Podrobné pokyny najdete v článku [Kurz: Kopírování dat do Azure Data Boxu pomocí služby kopírování dat](data-box-deploy-copy-data-via-copy-service.md).
 
 ## <a name="copy-data-to-managed-disks"></a>Kopírování dat na spravované disky
 
@@ -271,7 +270,7 @@ Podrobné pokyny najdete v tématu [kurz: použití služby kopírování dat ke
 2. K Data Boxu se můžete připojit přes sdílené složky SMB nebo NFS.
 3. Data pak můžete kopírovat pomocí nástrojů pro práci s protokolem SMB nebo systémem souborů NFS.
 
-Podrobné pokyny najdete [v tématu Kurz: použití data box k importu dat jako spravovaných disků v Azure](data-box-deploy-copy-data-from-vhds.md).
+Podrobné pokyny najdete v článku [Kurz: Použití Data Boxu k importu dat v podobě spravovaných disků v Azure](data-box-deploy-copy-data-from-vhds.md).
 
 ::: zone-end
 
@@ -283,7 +282,7 @@ Podrobné pokyny najdete [v tématu Kurz: použití data box k importu dat jako 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Připojení k Data Boxu
 > * Kopírování dat do Data Boxu
 
