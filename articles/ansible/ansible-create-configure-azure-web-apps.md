@@ -1,17 +1,17 @@
 ---
-title: Kurz – konfigurace aplikací v Azure App Service pomocí Ansible
-description: Naučte se, jak vytvořit aplikaci v Azure App Service pomocí Java 8 a modulu runtime kontejneru Tomcat
+title: Kurz – Konfigurace aplikací ve službě Azure App Service pomocí Ansible
+description: Přečtěte si, jak vytvořit aplikaci ve službě Azure App Service s Javou 8 a runtime kontejneru Tomcat
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156571"
 ---
-# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Kurz: Konfigurace aplikací v Azure App Service pomocí Ansible
+# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Kurz: Konfigurace aplikací ve službě Azure App Service pomocí Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -21,21 +21,21 @@ ms.locfileid: "74156571"
 
 > [!div class="checklist"]
 >
-> * Vytvoření aplikace v Azure App Service pomocí Java 8 a modulu runtime kontejneru Tomcat
-> * Vytvoření profilu Azure Traffic Manager
-> * Definování koncového bodu Traffic Manager pomocí vytvořené aplikace
+> * Vytvoření aplikace ve službě Azure App Service s Javou 8 a runtime kontejneru Tomcat
+> * Vytvoření profilu Azure Traffic Manageru
+> * Definování koncového bodu Traffic Manageru pomocí vytvořené aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-basic-app-service"></a>Vytvoření základní aplikační služby
+## <a name="create-a-basic-app-service"></a>Vytvoření základní služby aplikace
 
-PlayBook kód v této části definuje následující zdroje:
+Kód playbooku v této části definuje následující zdroje:
 
-* Skupina prostředků Azure, ve které se nasazují plán App Service a aplikace
-* App Service v systému Linux s jazykem Java 8 a modulem runtime kontejneru Tomcat
+* Skupina prostředků Azure, ve které se nasazují plán služby App Service a aplikace
+* Služba aplikací na Linuxu s Java 8 a runtime kontejneru Tomcat
 
 Uložte následující ukázkový playbook jako `firstwebapp.yml`:
 
@@ -71,13 +71,13 @@ Uložte následující ukázkový playbook jako `firstwebapp.yml`:
               java_container_version: 8.5
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook firstwebapp.yml
 ```
 
-Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
+Po spuštění playbooku se zobrazí výstup podobný následujícím výsledkům:
 
 ```Output
 PLAY [localhost] 
@@ -97,20 +97,20 @@ PLAY RECAP
 localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ```
 
-## <a name="create-an-app-and-use-azure-traffic-manager"></a>Vytvoření aplikace a použití Azure Traffic Manager
+## <a name="create-an-app-and-use-azure-traffic-manager"></a>Vytvoření aplikace a použití Azure Traffic Manageru
 
-[Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) umožňuje řídit, jak se budou požadavky z webových klientů distribuovat do aplikací v Azure App Service. Pokud do profilu služby Azure Traffic Manager přidáte koncové body služby App Service, Traffic Manager bude sledovat stav vašich aplikací App Service. Mezi stavy patří Spuštěno, Zastaveno nebo Odstraněno. Traffic Manager slouží k rozhodnutí, které koncové body by měly přijímat přenosy.
+[Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) umožňuje řídit, jak se požadavky od webových klientů distribuují do aplikací ve službě Azure App Service. Pokud do profilu služby Azure Traffic Manager přidáte koncové body služby App Service, Traffic Manager bude sledovat stav vašich aplikací App Service. Mezi stavy patří Spuštěno, Zastaveno nebo Odstraněno. Traffic Manager se používá k rozhodnutí, které koncové body by měly přijímat přenosy.
 
-Ve službě App Service se aplikace spouští v rámci [plánu služby App Service](/azure/app-service/overview-hosting-plans). Plán App Service definuje sadu výpočetních prostředků, které má aplikace běžet. Plán služby App Service a webovou aplikaci můžete spravovat v různých skupinách.
+Ve službě App Service se aplikace spouští v rámci [plánu služby App Service](/azure/app-service/overview-hosting-plans). Plán služby App Service definuje sadu výpočetních prostředků pro spuštění aplikace. Plán služby App Service a webovou aplikaci můžete spravovat v různých skupinách.
 
-PlayBook kód v této části definuje následující zdroje:
+Kód playbooku v této části definuje následující zdroje:
 
-* Skupina prostředků Azure, ve které je nasazený plán App Service
+* Skupina prostředků Azure, ve které se nasadí plán služby App Service
 * Plán služby App Service
-* Skupina prostředků Azure, do které se aplikace nasazuje
-* App Service v systému Linux s jazykem Java 8 a modulem runtime kontejneru Tomcat
+* Skupina prostředků Azure, ve které se aplikace nasazuje
+* Služba aplikací na Linuxu s Java 8 a runtime kontejneru Tomcat
 * Profil služby Traffic Manager
-* Traffic Manager koncový bod využívající vytvořenou aplikaci
+* Koncový bod Traffic Manageru pomocí vytvořené aplikace
 
 Uložte následující ukázkový playbook jako `webapp.yml`:
 
@@ -195,13 +195,13 @@ Uložte následující ukázkový playbook jako `webapp.yml`:
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook webapp.yml
 ```
 
-Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
+Po spuštění playbooku se zobrazí výstup podobný následujícím výsledkům:
 
 ```Output
 PLAY [localhost] 
@@ -244,4 +244,4 @@ localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Kurz: škálování aplikací v Azure App Service pomocí Ansible](/azure/ansible/ansible-scale-azure-web-apps)
+> [Kurz: Škálování aplikací ve službě Azure App Service pomocí Ansible](/azure/ansible/ansible-scale-azure-web-apps)

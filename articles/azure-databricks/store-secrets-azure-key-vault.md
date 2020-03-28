@@ -1,6 +1,6 @@
 ---
-title: Kurz – přístup k úložišti objektů BLOB pomocí trezoru klíčů pomocí Azure Databricks
-description: V tomto kurzu se dozvíte, jak získat přístup k Azure Blob Storage z Azure Databricks pomocí tajných kódů uložených v trezoru klíčů.
+title: Výuka – přístup k úložišti objektů blob pomocí trezoru klíčů pomocí Azure Databricks
+description: Tento kurz popisuje, jak získat přístup k azure blob storage z Azure Databricks pomocí tajných kódů uložených v trezoru klíčů.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,155 +8,155 @@ ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889055"
 ---
-# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Kurz: přístup k Azure Blob Storage z Azure Databricks pomocí Azure Key Vault
+# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Kurz: Přístup k úložišti objektů Blob Azure z Datových cihel Azure pomocí Azure Key Vault
 
-V tomto kurzu se dozvíte, jak získat přístup k Azure Blob Storage z Azure Databricks pomocí tajných kódů uložených v trezoru klíčů.
+Tento kurz popisuje, jak získat přístup k azure blob storage z Azure Databricks pomocí tajných kódů uložených v trezoru klíčů.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření účtu úložiště a kontejneru objektů BLOB
-> * Vytvoření Azure Key Vault a přidání tajného klíče
-> * Vytvoření pracovního prostoru Azure Databricks a přidání oboru tajného klíče
-> * Přístup k kontejneru objektů BLOB z Azure Databricks
+> * Vytvoření účtu úložiště a kontejneru objektů blob
+> * Vytvoření trezoru klíčů Azure a přidání tajného klíče
+> * Vytvoření pracovního prostoru Azure Databricks a přidání tajného oboru
+> * Přístup k kontejneru objektů blob z Azure Databricks
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 > [!Note]
-> Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
-> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
+> Tento kurz nelze provést pomocí **bezplatného zkušebního předplatného Azure**.
+> Pokud máte bezplatný účet, přejděte na svůj profil a změňte předplatné na **průběžně placené**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Potom [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) pro virtuální procesory ve vaší oblasti. Když vytvoříte pracovní prostor Azure Databricks, můžete vybrat **zkušební (premium - 14denní jednotku DBU)** a poskytnout tak pracovnímu prostoru přístup k bezplatným dbům Azure Databricks Azure na 14 dní.
 
-## <a name="create-a-storage-account-and-blob-container"></a>Vytvoření účtu úložiště a kontejneru objektů BLOB
+## <a name="create-a-storage-account-and-blob-container"></a>Vytvoření účtu úložiště a kontejneru objektů blob
 
-1. V Azure Portal vyberte **vytvořit prostředek** > **úložiště**. Pak vyberte **účet úložiště**.
+1. Na webu Azure Portal vyberte Vytvořit**úložiště** **prostředků** > . Pak vyberte **účet úložiště**.
 
-   ![Najít prostředek účtu úložiště Azure](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
+   ![Vyhledání prostředku účtu úložiště Azure](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
 2. Vyberte předplatné a skupinu prostředků nebo vytvořte novou skupinu prostředků. Pak zadejte název účtu úložiště a zvolte umístění. Vyberte **zkontrolovat + vytvořit**.
 
    ![Nastavení vlastností účtu úložiště](./media/store-secrets-azure-key-vault/create-storage-account.png)
 
-3. Pokud není ověření úspěšné, vyřešte problém a zkuste to znovu. Pokud je ověření úspěšné, vyberte **vytvořit** a počkejte, než se účet úložiště vytvoří.
+3. Pokud je ověření neúspěšné, vyřazte problémy a akci opakujte. Pokud je ověření úspěšné, vyberte **Vytvořit** a počkejte na vytvoření účtu úložiště.
 
-4. Přejděte k nově vytvořenému účtu úložiště a v části **služby** na stránce **Přehled** vyberte **objekty blob** . Pak vyberte **+ Container** a zadejte název kontejneru. Vyberte **OK**.
+4. Přejděte na nově vytvořený účet úložiště a v části Služby na stránce **Přehled** vyberte **Objekty blob** v části **Služby.** Pak vyberte **+ Kontejner** a zadejte název kontejneru. Vyberte **OK**.
 
    ![Vytvořit nový kontejner](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
 
-5. Vyhledejte soubor, který chcete nahrát do kontejneru úložiště objektů BLOB. Pokud soubor nemáte, pomocí textového editoru vytvořte nový textový soubor s některými informacemi. V tomto příkladu soubor s názvem " **HW. txt** " obsahuje text "Hello World". Uložte textový soubor místně a nahrajte ho do kontejneru úložiště objektů BLOB.
+5. Vyhledejte soubor, který chcete nahrát do kontejneru úložiště objektů blob. Pokud soubor nemáte, vytvořte pomocí textového editoru nový textový soubor s určitými informacemi. V tomto příkladu soubor s názvem **hw.txt** obsahuje text "hello world" Uložte textový soubor místně a nahrajte ho do kontejneru úložiště objektů blob.
 
-   ![Odeslat soubor do kontejneru](./media/store-secrets-azure-key-vault/upload-txt-file.png)
+   ![Nahrání souboru do kontejneru](./media/store-secrets-azure-key-vault/upload-txt-file.png)
 
-6. Vraťte se do účtu úložiště a v části **Nastavení**vyberte **přístupové klíče** . Zkopírujte **název účtu úložiště** a **klíč 1** do textového editoru pro pozdější použití v tomto kurzu.
+6. Vraťte se ke svému účtu úložiště a v části **Nastavení**vyberte **Přístupové klávesy** . Zkopírujte **název účtu úložiště** a klíč **1** do textového editoru pro pozdější použití v tomto kurzu.
 
    ![Najít přístupové klíče účtu úložiště](./media/store-secrets-azure-key-vault/storage-access-keys.png)
 
-## <a name="create-an-azure-key-vault-and-add-a-secret"></a>Vytvoření Azure Key Vault a přidání tajného klíče
+## <a name="create-an-azure-key-vault-and-add-a-secret"></a>Vytvoření trezoru klíčů Azure a přidání tajného klíče
 
-1. V Azure Portal vyberte **vytvořit prostředek** a do vyhledávacího pole zadejte **Key Vault** .
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** a do vyhledávacího pole zadejte **Trezor klíčů.**
 
-   ![Vytvoření vyhledávacího pole prostředku Azure](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
+   ![Vytvoření vyhledávacího pole o prostředcích Azure](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
 
-2. Prostředek Key Vault je automaticky vybrán. Vyberte **Vytvořit**.
+2. Zdroj trezoru klíčů je automaticky vybrán. Vyberte **Vytvořit**.
 
-   ![Vytvoření prostředku Key Vault](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
+   ![Vytvoření prostředku trezoru klíčů](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
 
-3. Na stránce **Vytvoření trezoru klíčů** zadejte následující informace a u zbývajících polí nechte výchozí hodnoty:
+3. Na stránce **Vytvořit úschovnu klíčů** zadejte následující informace a zachovejte výchozí hodnoty pro zbývající pole:
 
    |Vlastnost|Popis|
    |--------|-----------|
-   |Name (Název)|Jedinečný název vašeho trezoru klíčů.|
+   |Name (Název)|Jedinečný název trezoru klíčů.|
    |Předplatné|Zvolte předplatné.|
-   |Skupina prostředků|Vyberte skupinu prostředků nebo vytvořte novou.|
+   |Skupina prostředků|Zvolte skupinu prostředků nebo vytvořte novou.|
    |Umístění|Zvolte umístění.|
 
    ![Vlastnosti trezoru klíčů Azure](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
 3. Po zadání výše uvedených informací vyberte **Vytvořit**. 
 
-4. V Azure Portal přejděte k nově vytvořenému trezoru klíčů a vyberte **tajné klíče**. Pak vyberte **+ Generovat/importovat**. 
+4. Přejděte do nově vytvořeného trezoru klíčů na webu Azure portal a vyberte **Tajné kódy**. Potom vyberte **+ Generovat/Importovat**. 
 
-   ![Vygenerovat nový tajný klíč trezoru klíčů](./media/store-secrets-azure-key-vault/generate-import-secrets.png)
+   ![Generovat nový tajný klíč trezoru klíčů](./media/store-secrets-azure-key-vault/generate-import-secrets.png)
 
-5. Na stránce **vytvořit tajný kód** zadejte následující informace a u zbývajících polí nechte výchozí hodnoty:
+5. Na stránce **Vytvořit tajný klíč** zadejte následující informace a zachovejte výchozí hodnoty pro zbývající pole:
 
    |Vlastnost|Hodnota|
    |--------|-----------|
-   |Možnosti nahrání|Manual|
-   |Name (Název)|Popisný název klíče účtu úložiště|
-   |Hodnota|klíč1 z vašeho účtu úložiště.|
+   |Možnosti nahrávání|Ruční|
+   |Name (Název)|Popisný název klíče účtu úložiště.|
+   |Hodnota|key1 z vašeho účtu úložiště.|
 
    ![Vlastnosti nového tajného klíče trezoru klíčů](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
-6. Uložte název klíče v textovém editoru pro pozdější použití v tomto kurzu a vyberte **vytvořit**. Pak přejděte do nabídky **vlastnosti** . Zkopírujte **název DNS** a **ID prostředku** do textového editoru pro pozdější použití v tomto kurzu.
+6. Uložte název klíče do textového editoru pro použití později v tomto kurzu a vyberte **vytvořit**. Potom přejděte do nabídky **Vlastnosti.** Zkopírujte **název DNS** a **ID prostředku** do textového editoru pro pozdější použití v kurzu.
 
-   ![Kopírovat Azure Key Vault název DNS a ID prostředku](./media/store-secrets-azure-key-vault/copy-dns-resource.png)
+   ![Kopírování názvu DNS a ID prostředku trezoru klíčů Azure](./media/store-secrets-azure-key-vault/copy-dns-resource.png)
 
-## <a name="create-an-azure-databricks-workspace-and-add-a-secret-scope"></a>Vytvoření pracovního prostoru Azure Databricks a přidání oboru tajného klíče
+## <a name="create-an-azure-databricks-workspace-and-add-a-secret-scope"></a>Vytvoření pracovního prostoru Azure Databricks a přidání tajného oboru
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
+1. Na webu Azure Portal vyberte **Vytvořit zdroj** > **Analytics** > **Azure Databricks**.
 
-    ![Datacihly na Azure Portal](./media/store-secrets-azure-key-vault/azure-databricks-on-portal.png)
+    ![Datové cihly na webu Azure Portal](./media/store-secrets-azure-key-vault/azure-databricks-on-portal.png)
 
-2. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření pracovního prostoru datacihly.
+2. V části **Azure Databricks Service**zadejte následující hodnoty pro vytvoření pracovního prostoru Databricks.
 
    |Vlastnost  |Popis  |
    |---------|---------|
    |Název pracovního prostoru     | Zadejte název pracovního prostoru Databricks.        |
    |Předplatné     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-   |Skupina prostředků     | Vyberte stejnou skupinu prostředků, která obsahuje váš Trezor klíčů. |
-   |Umístění     | Vyberte stejné umístění jako vaše Azure Key Vault. Všechny dostupné oblasti najdete v tématu [služby Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).        |
+   |Skupina prostředků     | Vyberte stejnou skupinu prostředků, která obsahuje trezor klíčů. |
+   |Umístění     | Vyberte stejné umístění jako trezor klíčů Azure. Pro všechny dostupné oblasti najdete v [tématu služby Azure dostupné podle oblasti](https://azure.microsoft.com/regions/services/).        |
    |Cenová úroveň     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-   ![Vlastnosti pracovního prostoru datacihly](./media/store-secrets-azure-key-vault/create-databricks-service.png)
+   ![Vlastnosti pracovního prostoru Databricks](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
    Vyberte **Vytvořit**.
 
-3. Přejděte k nově vytvořenému prostředku Azure Databricks v Azure Portal a vyberte **Spustit pracovní prostor**.
+3. Přejděte na nově vytvořený prostředek Azure Databricks na webu Azure Portal a vyberte **Spustit pracovní prostor**.
 
-   ![Spustit Azure Databricks pracovní prostor](./media/store-secrets-azure-key-vault/launch-databricks-workspace.png)
+   ![Spuštění pracovního prostoru Azure Databricks](./media/store-secrets-azure-key-vault/launch-databricks-workspace.png)
 
-4. Po otevření pracovního prostoru Azure Databricks v samostatném okně přidejte k adrese URL **#secrets/CreateScope** . Adresa URL by měla mít následující formát: 
+4. Jakmile se váš pracovní prostor Azure Databricks otevře v samostatném okně, přidejte k adrese URL **#secrets/createScope.** Adresa URL by měla mít následující formát: 
 
-   **https://< \location >. azuredatabricks. NET/? o = < \orgID > #secrets/CreateScope**.
+   **https://<\location>.azuredatabricks.net/?o=<\orgID>#secrets/createScope**.
    
 
-5. Zadejte název oboru a zadejte Azure Key Vault název DNS a ID prostředku, které jste předtím uložili. Uložte název oboru v textovém editoru pro pozdější použití v tomto kurzu. Potom vyberte **Create** (Vytvořit).
+5. Zadejte název oboru a zadejte název DNS azure trezoru klíčů a ID prostředků, které jste uložili dříve. Uložte název oboru v textovém editoru pro použití později v tomto kurzu. Potom vyberte **Create** (Vytvořit).
 
-   ![Vytvoření oboru tajného kódu v pracovním prostoru Azure Databricks](./media/store-secrets-azure-key-vault/create-secret-scope.png)
+   ![Vytvoření tajného oboru v pracovním prostoru Azure Databricks](./media/store-secrets-azure-key-vault/create-secret-scope.png)
 
-## <a name="access-your-blob-container-from-azure-databricks"></a>Přístup k kontejneru objektů BLOB z Azure Databricks
+## <a name="access-your-blob-container-from-azure-databricks"></a>Přístup k kontejneru objektů blob z Azure Databricks
 
-1. Na domovské stránce pracovního prostoru Azure Databricks v části **běžné úlohy**vyberte **nový cluster** .
+1. Na domovské stránce pracovního prostoru Azure Databricks vyberte **Nový cluster** v části **Běžné úkoly**.
 
    ![Vytvoření nového poznámkového bloku Azure Databricks](./media/store-secrets-azure-key-vault/create-new-cluster.png)
 
-2. Zadejte název clusteru a vyberte **vytvořit cluster**. Dokončení vytváření clusteru trvá několik minut.
+2. Zadejte název clusteru a vyberte **Vytvořit cluster**. Vytvoření clusteru trvá několik minut.
 
-3. Po vytvoření clusteru přejděte na domovskou stránku pracovního prostoru Azure Databricks a v části **běžné úkoly**vyberte **Nový Poznámkový blok** .
+3. Po vytvoření clusteru přejděte na domovskou stránku pracovního prostoru Azure Databricks a v části **Běžné úkoly**vyberte **Nový poznámkový blok** .
 
    ![Vytvoření nového poznámkového bloku Azure Databricks](./media/store-secrets-azure-key-vault/create-new-notebook.png)
 
 4. Zadejte název poznámkového bloku a nastavte jazyk na Python. Nastavte cluster na název clusteru, který jste vytvořili v předchozím kroku.
 
-5. Spusťte následující příkaz pro připojení kontejneru úložiště objektů BLOB. Nezapomeňte změnit hodnoty pro následující vlastnosti:
+5. Spusťte následující příkaz pro připojení kontejneru úložiště objektů blob. Nezapomeňte změnit hodnoty pro následující vlastnosti:
 
-   * název vašeho kontejneru
-   * název účtu úložiště
+   * název kontejneru
+   * název vašeho účtu úložiště
    * název připojení
-   * konfigurační klíč
-   * obor – název
+   * config-key
+   * název oboru
    * název klíče
 
    ```python
@@ -166,20 +166,20 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
    extra_configs = {"<conf-key>":dbutils.secrets.get(scope = "<scope-name>", key = "<key-name>")})
    ```
 
-   * **Mount-Name** je DBFS cesta, která představuje, kde bude připojen kontejner BLOB Storage nebo složka uvnitř kontejneru (určený ve zdroji).
-   * **klíč conf-Key** může být buď `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net`, nebo `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
-   * **Scope-Name** je název oboru tajného klíče, který jste vytvořili v předchozí části. 
-   * **klíč-name** je název tajného klíče, který jste vytvořili pro klíč účtu úložiště ve vašem trezoru klíčů.
+   * **mount-name** je cesta DBFS představující, kde bude připojen kontejner úložiště objektů blob nebo složka uvnitř kontejneru (zadaná ve zdroji).
+   * **conf-key** může `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` být buď nebo`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * **název oboru** je název tajného oboru, který jste vytvořili v předchozí části. 
+   * **název klíče** je název jejich tajného klíče, který jste vytvořili pro klíč účtu úložiště v trezoru klíčů.
 
-   ![Vytvořit připojení úložiště objektů BLOB v poznámkovém bloku](./media/store-secrets-azure-key-vault/command1.png)
+   ![Vytvoření připojení úložiště objektů blob v poznámkovém bloku](./media/store-secrets-azure-key-vault/command1.png)
 
-6. Spusťte následující příkaz, který přečte textový soubor v kontejneru úložiště objektů blob do datového rámce. Změňte hodnoty v příkazu tak, aby odpovídaly názvu svého připojení a názvu souboru.
+6. Spuštěním následujícího příkazu přečtěte textový soubor v kontejneru úložiště objektů blob do datového rámce. Změňte hodnoty v příkazu tak, aby odpovídaly názvu a názvu souboru připojení.
 
    ```python
    df = spark.read.text("mnt/<mount-name>/<file-name>")
    ```
 
-   ![Přečíst soubor pro datový rámec](./media/store-secrets-azure-key-vault/command2.png)
+   ![Čtení souboru do datového rámce](./media/store-secrets-azure-key-vault/command2.png)
 
 7. K zobrazení obsahu souboru použijte následující příkaz.
 
@@ -196,20 +196,20 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
    ![Odpojit účet úložiště](./media/store-secrets-azure-key-vault/command4.png)
 
-9. Všimněte si, že po odpojení připojení už nebudete moct číst z účtu úložiště BLOB.
+9. Všimněte si, že po připojení bylo odpojeno, můžete už číst z účtu úložiště objektů blob.
 
-   ![Chyba odpojení účtu úložiště](./media/store-secrets-azure-key-vault/command5.png)
+   ![Odpojit chybu účtu úložiště](./media/store-secrets-azure-key-vault/command5.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci nadále používat, odstraňte celou skupinu prostředků pomocí následujících kroků:
+Pokud nebudete nadále používat tuto aplikaci, odstraňte celou skupinu prostředků pomocí následujících kroků:
 
-1. V nabídce na levé straně v Azure Portal vyberte **skupiny prostředků** a přejděte do skupiny prostředků.
+1. Z nabídky na levé straně na webu Azure Portal vyberte **skupiny prostředků** a přejděte do skupiny prostředků.
 
 2. Vyberte **Odstranit skupinu prostředků** a zadejte název skupiny prostředků. Vyberte **Odstranit**. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším článku se dozvíte, jak implementovat virtuální síť s vloženým prostředím datacihly s koncovým bodem služby, který je povolený pro Cosmos DB.
+Přejděte k dalšímu článku, kde se dozvíte, jak implementovat prostředí VNet injektované databricks s koncovým bodem služby povoleným pro Cosmos DB.
 > [!div class="nextstepaction"]
-> [Kurz: implementace Azure Databricks s koncovým bodem Cosmos DB](service-endpoint-cosmosdb.md)
+> [Kurz: Implementace Datových cihel Azure s koncovým bodem Cosmos DB](service-endpoint-cosmosdb.md)

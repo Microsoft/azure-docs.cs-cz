@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238367"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Zobrazení protokolů aktivit
-> * Zobrazení diagnostických protokolů
+> * Zobrazit diagnostické protokoly
 > * Zobrazit metriky rozhraní API 
 > * Nastavit pravidlo upozornění při neoprávněných voláních vašeho rozhraní API
 
@@ -39,7 +39,7 @@ Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat slu�
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
@@ -48,7 +48,7 @@ Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat slu�
 
 API Management každou minutu vysílá metriky, takže vám skoro v reálném čase poskytuje přehled o stavu vašich rozhraní API. Toto je souhrn některých dostupných metrik:
 
-* Kapacita: pomáhá při rozhodování o upgradu/downgrade služeb APIM Services. Metrika se generuje každou minutu a odráží kapacitu brány v čase vytvoření sestavy. Její hodnoty se pohybují v rozsahu od 0 do 100 a počítají se na základě prostředků brány, jako je využití procesoru nebo paměti.
+* Kapacita: Pomáhá při rozhodování o upgradu/downgradu služeb APIM. Metrika se generuje každou minutu a odráží kapacitu brány v čase vytvoření sestavy. Její hodnoty se pohybují v rozsahu od 0 do 100 a počítají se na základě prostředků brány, jako je využití procesoru nebo paměti.
 * Celkový počet požadavků brány: počet požadavků rozhraní API za dané období. 
 * Úspěšné požadavky brány: počet požadavků rozhraní API, které obdržely kódy úspěšné odpovědi HTTP včetně kódů 304, 307 a veškerých kódů menších než 301 (například 200).
 * Neúspěšné požadavky brány: počet požadavků rozhraní API, které obdržely kódy chybné odpovědi HTTP včetně kódů 400 a veškerých kódů větších než 500.
@@ -61,11 +61,11 @@ Přístup k metrikám:
 
 1. V nabídce ve spodní části stránky vyberte **Metriky**.
 
-    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    ![metriky](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. V rozevíracím seznamu vyberte metriky, které vás zajímají. Například **požadavky**. 
+1. V rozevíracím seznamu vyberte metriky, které vás zajímají. Například **Požadavky**. 
 1. Graf zobrazí celkový počet volání rozhraní API.
-1. Graf lze filtrovat pomocí dimenzí metriky **požadavků** . Klikněte například na **Přidat filtr**, vyberte **kód odpovědi back-endu**a jako hodnotu zadejte 500. Graf teď zobrazuje počet požadavků, které se v back-endu rozhraní API nezdařily.   
+1. Graf lze filtrovat pomocí rozměrů **metriky Požadavky.** Klikněte například na **Přidat filtr**, zvolte **Back-end Response Code**, zadejte hodnotu 500. Nyní graf zobrazuje počet požadavků, které se nezdařily v back-endu rozhraní API.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Nastavení pravidla upozornění při neoprávněných požadavcích
 
@@ -77,28 +77,28 @@ Můžete nakonfigurovat odesílání upozornění na základě metrik a protokol
 
 Konfigurace upozornění:
 
-1. V řádku nabídek poblíž dolního okraje stránky vyberte **výstrahy** .
+1. Z řádku nabídek v dolní části stránky vyberte **Výstrahy.**
 
     ![výstrahy](./media/api-management-azure-monitor/alert-menu-item.png)
 
 2. Klikněte na **nové pravidlo výstrahy** pro tuto výstrahu.
 3. Klikněte na **Přidat podmínku**.
-4. V rozevíracím seznamu typ signálu vyberte **metriky** .
-5. Jako signál, který chcete monitorovat, vyberte **neautorizovaný požadavek brány** .
+4. V rozevíracím souboru Typ signálu vyberte **Metriky.**
+5. Jako signál ke sledování vyberte možnost **Neautorizovaný požadavek na bránu.**
 
     ![výstrahy](./media/api-management-azure-monitor/signal-type.png)
 
-6. V zobrazení **Konfigurovat logiku signálu** zadejte prahovou hodnotu, po které se má výstraha aktivovat, a klikněte na **Hotovo**.
+6. V zobrazení **logiky signálu konfigurace** zadejte prahovou hodnotu, po jejímž uplynutí má být výstraha spuštěna, a klepněte na tlačítko **Hotovo**.
 
     ![výstrahy](./media/api-management-azure-monitor/threshold.png)
 
-7. Vyberte existující skupinu akcí nebo vytvořte novou. V následujícím příkladu se pošle e-mailem správci. 
+7. Vyberte existující skupinu akcí nebo vytvořte novou. V níže uvedeném příkladu bude správcům odeslán e-mail. 
 
     ![výstrahy](./media/api-management-azure-monitor/action-details.png)
 
-8. Zadejte název, popis pravidla výstrahy a vyberte úroveň závažnosti. 
-9. Stiskněte **vytvořit pravidlo upozornění**.
-10. Nyní se pokuste zavolat rozhraní API pro konferenci bez klíče rozhraní API. Tato výstraha se aktivuje a správci se pošle e-mail. 
+8. Zadejte název, popis pravidla výstrahy a zvolte úroveň závažnosti. 
+9. Stiskněte **klávesu Vytvořit pravidlo výstrahy**.
+10. Nyní zkuste volat rozhraní API konference bez klíče rozhraní API. Výstraha se spustí a správci budou odeslány e-maily. 
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 
@@ -131,7 +131,7 @@ Konfigurace diagnostických protokolů:
 
     ![Diagnostické protokoly](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. Klikněte na **Zapnout diagnostiku**. Diagnostické protokoly můžete archivovat spolu s metrikami v účtu úložiště, streamovat je do centra událostí nebo je odeslat do protokolů Azure Monitor. 
+3. Klikněte na **Zapnout diagnostiku**. Diagnostické protokoly můžete archivovat spolu s metrikami do účtu úložiště, streamovat je do centra událostí nebo je odeslat do protokolů Azure Monitoru. 
 
 API Management v současné době poskytuje diagnostické protokoly (dávkované po hodinách) o jednotlivých požadavcích rozhraní API, kde má každá položka následující schéma:
 
@@ -182,44 +182,44 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 
 | Vlastnost  | Typ | Popis |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | Datový typ Boolean | Má hodnotu true, pokud se požadavek HTTP dokončil se stavovým kódem odpovědi v rozsahu 2xx nebo 3xx. |
-| time | date-time | Časové razítko, kdy brána spouští zpracování žádosti |
-| operationName | string | Konstantní hodnota Microsoft.ApiManagement/GatewayLogs. |
-| category | string | Konstantní hodnota GatewayLogs. |
-| durationMs | integer | Počet milisekund od chvíle, kdy brána přijala požadavek, do úplného odeslání odpovědi. Zahrnuje clienTime, cacheTime a webčas_ukončení. |
-| callerIpAddress | string | IP adresa bezprostředního volajícího brány (může být prostředníkem). |
-| correlationId | string | Jedinečný identifikátor požadavku HTTP přiřazený službou API Management. |
-| umístění | string | Název oblasti Azure, ve které se nachází brána, která požadavek zpracovala. |
-| httpStatusCodeCategory | string | Kategorie stavového kódu odpovědi HTTP: Úspěch (301 nebo nižší, 304 nebo 307), Neautorizováno (401, 403, 429), Chyba (400, 500 až 600), Jiné. |
-| resourceId | string | ID\<předplatného API Management Resource/SUBSCRIPTIONS/>/RESOURCEGROUPS/\<Resource-Group >/PROVIDERS/MICROSOFT. Název APIMANAGEMENT/SERVICE/\<> |
-| vlastnosti | object | Vlastnosti aktuálního požadavku. |
-| metoda | string | Metoda HTTP příchozího požadavku. |
-| Adresa URL | string | Adresa URL příchozího požadavku. |
-| clientProtocol | string | Verze protokolu HTTP příchozího požadavku. |
-| responseCode | integer | Stavový kód odpovědi HTTP odeslané do klienta. |
-| backendMethod | string | Metoda HTTP požadavku odeslaného do back-endu. |
-| backendUrl | string | Adresa URL požadavku odeslaného do back-endu. |
-| backendResponseCode | integer | Kód odpovědi HTTP přijaté z back-endu. |
-| backendProtocol | string | Verze protokolu HTTP požadavku odeslaného do back-endu. | 
-| requestSize | integer | Počet bajtů přijatých z klienta během zpracování požadavku. | 
-| responseSize | integer | Počet bajtů odeslaných do klienta během zpracování požadavku. | 
-| cache | string | Stav zapojení mezipaměti služby API Management ve zpracování požadavku (tj. úspěšný přístup, neúspěšný přístup, žádné). | 
-| cacheTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích mezipaměti služby API Management (připojování, odesílání a příjem bajtů). | 
-| backendTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích back-endu (připojování, odesílání a příjem bajtů). | 
-| clientTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích klienta (připojování, odesílání a příjem bajtů). | 
-| apiId | string | Identifikátor entity rozhraní API pro aktuální požadavek. | 
-| operationId | string | Identifikátor entity operace pro aktuální požadavek. | 
-| productId | string | Identifikátor entity produktu pro aktuální požadavek. | 
-| userId | string | Identifikátor entity uživatele pro aktuální požadavek. | 
-| apimSubscriptionId | string | Identifikátor entity předplatného pro aktuální požadavek. | 
-| backendId | string | Identifikátor entity back-endu pro aktuální požadavek. | 
-| LastError | object | Poslední chyba zpracování požadavku. | 
-| elapsed | integer | Počet milisekund uplynulých mezi okamžikem, kdy brána přijala požadavek, a okamžik, kdy došlo k chybě | 
-| source | string | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
-| obor | string | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
-| section | string | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
-| reason | string | Důvod chyby | 
-| zpráva | string | Chybová zpráva | 
+| isRequestSuccess | Boolean | Má hodnotu true, pokud se požadavek HTTP dokončil se stavovým kódem odpovědi v rozsahu 2xx nebo 3xx. |
+| time | date-time | Časové razítko spuštění brány zpracuje požadavek |
+| operationName | řetězec | Konstantní hodnota Microsoft.ApiManagement/GatewayLogs. |
+| category | řetězec | Konstantní hodnota GatewayLogs. |
+| durationMs | celé číslo | Počet milisekund od okamžiku, kdy brána obdržela požadavek až do okamžiku, kdy byla odeslána odpověď v plném rozsahu. Obsahuje clienTime, cacheTime a backendTime. |
+| callerIpAddress | řetězec | IP adresa bezprostředního volajícího brány (může být prostředníkem). |
+| correlationId | řetězec | Jedinečný identifikátor požadavku HTTP přiřazený službou API Management. |
+| location | řetězec | Název oblasti Azure, ve které se nachází brána, která požadavek zpracovala. |
+| httpStatusCodeCategory | řetězec | Kategorie stavového kódu odpovědi HTTP: Úspěch (301 nebo nižší, 304 nebo 307), Neautorizováno (401, 403, 429), Chyba (400, 500 až 600), Jiné. |
+| resourceId | řetězec | ID prostředku správy rozhraní API\</SUBSCRIPTIONS/ subscription\<>/RESOURCEGROUPS/>/PROVIDERS/MICROSOFT. APIMANAGEMENT/SERVICE/\<název> |
+| properties | objekt | Vlastnosti aktuálního požadavku. |
+| method | řetězec | Metoda HTTP příchozího požadavku. |
+| url | řetězec | Adresa URL příchozího požadavku. |
+| clientProtocol | řetězec | Verze protokolu HTTP příchozího požadavku. |
+| responseCode | celé číslo | Stavový kód odpovědi HTTP odeslané do klienta. |
+| backendMethod | řetězec | Metoda HTTP požadavku odeslaného do back-endu. |
+| backendUrl | řetězec | Adresa URL požadavku odeslaného do back-endu. |
+| backendResponseCode | celé číslo | Kód odpovědi HTTP přijaté z back-endu. |
+| backendProtocol | řetězec | Verze protokolu HTTP požadavku odeslaného do back-endu. | 
+| requestSize | celé číslo | Počet bajtů přijatých z klienta během zpracování požadavku. | 
+| responseSize | celé číslo | Počet bajtů odeslaných do klienta během zpracování požadavku. | 
+| cache | řetězec | Stav zapojení mezipaměti služby API Management ve zpracování požadavku (tj. úspěšný přístup, neúspěšný přístup, žádné). | 
+| cacheTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích mezipaměti služby API Management (připojování, odesílání a příjem bajtů). | 
+| backendTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích back-endu (připojování, odesílání a příjem bajtů). | 
+| clientTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích klienta (připojování, odesílání a příjem bajtů). | 
+| apiId | řetězec | Identifikátor entity rozhraní API pro aktuální požadavek. | 
+| operationId | řetězec | Identifikátor entity operace pro aktuální požadavek. | 
+| productId | řetězec | Identifikátor entity produktu pro aktuální požadavek. | 
+| userId | řetězec | Identifikátor entity uživatele pro aktuální požadavek. | 
+| apimSubscriptionId | řetězec | Identifikátor entity předplatného pro aktuální požadavek. | 
+| backendId | řetězec | Identifikátor entity back-endu pro aktuální požadavek. | 
+| LastError | objekt | Poslední chyba zpracování požadavku. | 
+| elapsed | celé číslo | Mezi okamžikem přijetí požadavku bránou a okamžikem, kdy došlo k chybě, uplynul počet milisekund. | 
+| source | řetězec | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
+| scope | řetězec | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
+| section | řetězec | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
+| reason | řetězec | Důvod chyby | 
+| zpráva | řetězec | Chybová zpráva | 
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -227,7 +227,7 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Zobrazení protokolů aktivit
-> * Zobrazení diagnostických protokolů
+> * Zobrazit diagnostické protokoly
 > * Zobrazit metriky rozhraní API
 > * Nastavit pravidlo upozornění při neoprávněných voláních vašeho rozhraní API
 

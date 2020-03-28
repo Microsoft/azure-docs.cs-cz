@@ -1,51 +1,51 @@
 ---
-title: Kurz – vytvoření virtuálního počítače nebo sady škálování virtuálních počítačů z Galerie sdílených imagí Azure pomocí Ansible
-description: Naučte se používat Ansible k vytvoření virtuálního počítače nebo sady škálování virtuálních počítačů na základě generalizované image v galerii sdílených imagí.
-keywords: Ansible, Azure, DevOps, bash, PlayBook, virtuální počítač, sada škálování virtuálních počítačů, Galerie sdílených imagí
+title: Kurz – vytvoření škálovací sady virtuálního počítače nebo virtuálního počítače z Galerie sdílených bitových obrázků Azure pomocí ansible
+description: Naučte se používat Ansible k vytvoření škálovací sady virtuálních počítačů nebo virtuálních počítačů na základě zobecněné image v Galerii sdílených obrázků.
+keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, shared image gallery
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155840"
 ---
-# <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Kurz: Vytvoření virtuálního počítače nebo sady škálování virtuálních počítačů z Galerie sdílených imagí Azure pomocí Ansible
+# <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Kurz: Vytvoření škálovací sady virtuálního počítače nebo virtuálního počítače z Galerie sdílených bitových obrázků Azure pomocí Ansible
 
 [!INCLUDE [ansible-29-note.md](../../includes/ansible-29-note.md)]
 
-[Galerie sdílených imagí](/azure/virtual-machines/windows/shared-image-galleries) je služba, která umožňuje snadnou správu, sdílení a organizování vlastních imagí spravovaných uživatelem. Tato funkce je výhodná pro scénáře, ve kterých se udržuje a sdílí mnoho imagí. Vlastní image je možné sdílet mezi předplatnými a mezi Azure Active Directorymi klienty. Obrázky je také možné replikovat do více oblastí pro rychlejší škálování nasazení.
+[Galerie sdílených obrázků](/azure/virtual-machines/windows/shared-image-galleries) je služba, která umožňuje snadnospravovat, sdílet a organizovat vlastní spravované obrázky. Tato funkce je výhodná pro scénáře, kde je udržováno a sdíleno mnoho bitových kopií. Vlastní image lze sdílet mezi předplatnými a mezi klienty Služby Azure Active Directory. Bitové kopie lze také replikovat do více oblastí pro rychlejší škálování nasazení.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Vytvoření zobecněného virtuálního počítače a vlastní image
-> * Vytvoření galerie sdílených imagí
-> * Vytvořit sdílenou image a verzi image
-> * Vytvoření virtuálního počítače pomocí generalizované image
-> * Vytvoření sady škálování virtuálních počítačů pomocí generalizované image
-> * Získat informace o galerii sdílených imagí, image a verzi
+> * Vytvoření generalizovaného virtuálního virtuálního montovaa a vlastní image
+> * Vytvoření galerie sdílených obrázků
+> * Vytvoření sdílené ho obrázku a verze obrázku
+> * Vytvoření virtuálního virtuálního virtuálního ms pomocí generalizované bitové kopie
+> * Vytvoření škálovací sady virtuálních strojů pomocí generalizované bitové kopie
+> * Získejte informace o galerii sdílených obrázků, obrázek a verzi.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="get-the-sample-playbooks"></a>Získat ukázkovou playbooky
+## <a name="get-the-sample-playbooks"></a>Získejte ukázkové playbooky
 
-Existují dva způsoby, jak získat úplnou sadu vzorových playbooky:
+Existují dva způsoby, jak získat kompletní sadu ukázkových playbooků:
 
-- [Stáhněte si SLOŽKU SIG](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) a uložte ji do místního počítače.
-- Vytvořte nový soubor pro každý oddíl a zkopírujte do něj ukázkovou PlayBook.
+- [Stáhněte si složku SIG](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) a uložte ji do místního počítače.
+- Vytvořte nový soubor pro každý oddíl a zkopírujte v něm ukázkový playbook.
 
-`vars.yml` soubor obsahuje proměnné používané všemi vzorovými playbooky pro tento kurz. Soubor můžete upravit tak, aby poskytoval jedinečné názvy a hodnoty.
+Soubor `vars.yml` obsahuje proměnné používané všemi ukázkovými playbooky pro tento kurz. Soubor můžete upravit a poskytnout tak jedinečné názvy a hodnoty.
 
-První ukázka PlayBook `00-prerequisites.yml` vytvoří, co je potřeba k dokončení tohoto kurzu:
-- Skupina prostředků, což je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
-- Virtuální síť; podsíť Veřejná IP adresa a síťová karta pro virtuální počítač.
-- Zdrojový virtuální počítač, který se používá k vytvoření generalizované image.
+První ukázkový `00-prerequisites.yml` playbook vytvoří to, co je nezbytné k dokončení tohoto kurzu:
+- Skupina prostředků, což je logický kontejner, ve kterém jsou nasazené a spravované prostředky Azure.
+- Virtuální síť; podsíť; veřejná IP adresa a karta síťového rozhraní pro virtuální ho.
+- Zdrojový virtuální počítač, který se používá k vytvoření generalizovaného obrazu.
 
 ```yml
 - hosts: localhost
@@ -100,17 +100,17 @@ První ukázka PlayBook `00-prerequisites.yml` vytvoří, co je potřeba k dokon
           version: latest
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook 00-prerequisites.yml
 ```
 
-V [Azure Portal](https://portal.azure.com)zkontrolujte skupinu prostředků, kterou jste zadali v části `vars.yml`, abyste viděli nový virtuální počítač a různé prostředky, které jste vytvořili.
+Na [webu Azure Portal](https://portal.azure.com)zkontrolujte skupinu prostředků, ve které jste `vars.yml` zadali, abyste viděli nový virtuální počítač a různé prostředky, které jste vytvořili.
 
-## <a name="generalize-the-vm-and-create-a-custom-image"></a>Generalizace virtuálního počítače a vytvoření vlastní image
+## <a name="generalize-the-vm-and-create-a-custom-image"></a>Generalize virtuálního virtuálního mísy a vytvoření vlastní image
 
-Následující PlayBook `01a-create-generalized-image.yml`generalizuje zdrojový virtuální počítač vytvořený v předchozím kroku a pak na něm vytvoří vlastní image.
+Další playbook `01a-create-generalized-image.yml`, zobecnizuje zdrojový virtuální počítač vytvořený v předchozím kroku a pak na něm vytvoří vlastní image.
 
 ```yml
 - hosts: localhost
@@ -132,17 +132,17 @@ Následující PlayBook `01a-create-generalized-image.yml`generalizuje zdrojový
         source: "{{ source_vm_name }}"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook 01a-create-generalized-image.yml
 ```
 
-Zkontrolujte skupinu prostředků a ujistěte se, že se `testimagea` zobrazí.
+Zkontrolujte skupinu prostředků `testimagea` a ujistěte se, že se zobrazí.
 
-## <a name="create-the-shared-image-gallery"></a>Vytvoření galerie sdílených imagí
+## <a name="create-the-shared-image-gallery"></a>Vytvoření galerie sdílených obrázků
 
-Galerie imagí je úložiště pro sdílení a správu imagí. Vzorový PlayBook kód v `02-create-shared-image-gallery.yml` vytvoří galerii sdílených imagí ve vaší skupině prostředků.
+Galerie obrázků je úložištěpro sdílení a správu obrázků. Ukázkový kód playbooku v aplikaci `02-create-shared-image-gallery.yml` vytvoří galerii sdílených obrázků ve skupině prostředků.
 
 ```yml
 - hosts: localhost
@@ -159,19 +159,19 @@ Galerie imagí je úložiště pro sdílení a správu imagí. Vzorový PlayBook
         description: This is the gallery description.
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook 02-create-shared-image-gallery.yml
 ```
 
-Ve vaší skupině prostředků teď uvidíte novou galerii, `myGallery`.
+Nyní se zobrazí nová `myGallery`galerie , ve skupině prostředků.
 
-## <a name="create-a-shared-image-and-image-version"></a>Vytvořit sdílenou image a verzi image
+## <a name="create-a-shared-image-and-image-version"></a>Vytvoření sdílené ho obrázku a verze obrázku
 
-Další PlayBook `03a-create-shared-image-generalized.yml` vytvoří definici obrázku a verzi image.
+Další playbook `03a-create-shared-image-generalized.yml` vytvoří definici obrazu a verzi obrázku.
 
-Definice obrázků zahrnují typ obrázku (Windows nebo Linux), poznámky k verzi a minimální a maximální požadavky na paměť. Verze Image je verze image. Galerie, definice obrázků a verze image usnadňují uspořádání imagí v logických skupinách. 
+Definice bitových obrázků zahrnují typ bitové kopie (Windows nebo Linux), poznámky k verzi a minimální a maximální požadavky na paměť. Verze obrázku je verze obrázku. Galerie, definice obrázků a verze obrázku vám pomohou uspořádat obrázky v logických skupinách. 
 
 ```yml
 - hosts: localhost
@@ -221,17 +221,17 @@ Definice obrázků zahrnují typ obrázku (Windows nebo Linux), poznámky k verz
         var: output
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook 03a-create-shared-image-generalized.yml
 ```
 
-Vaše skupina prostředků teď má definici image a verzi image pro vaši galerii.
+Vaše skupina prostředků má nyní definici obrázku a verzi obrázku pro galerii.
 
-## <a name="create-a-vm-based-on-the-generalized-image"></a>Vytvoření virtuálního počítače založeného na generalizované imagi
+## <a name="create-a-vm-based-on-the-generalized-image"></a>Vytvoření virtuálního počítače na základě zobecněné bitové kopie
 
-Nakonec spuštěním `04a-create-vm-using-generalized-image.yml` vytvořte virtuální počítač založený na generalizované imagi, kterou jste vytvořili v předchozím kroku.
+Nakonec spusťte `04a-create-vm-using-generalized-image.yml` a vytvořte virtuální počítač na základě zobecněné image, kterou jste vytvořili v předchozím kroku.
 
 ```yml
 - hosts: localhost
@@ -252,15 +252,15 @@ Nakonec spuštěním `04a-create-vm-using-generalized-image.yml` vytvořte virtu
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook 04a-create-vm-using-generalized-image.yml
 ```
 
-## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Vytvoření sady škálování virtuálních počítačů na základě generalizované image
+## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Vytvoření škálovacích sad virtuálních strojů založených na zobecněné bitové kopii
 
-Můžete také vytvořit sadu škálování virtuálního počítače založenou na generalizované imagi. Pokud to chcete udělat, spusťte `05a-create-vmss-using-generalized-image.yml`.
+Můžete také vytvořit škálovací sadu virtuálního počítače na základě generalizované bitové kopie. Utíkejte, `05a-create-vmss-using-generalized-image.yml` abyste tak učinili.
 
 ```yml
 - hosts: localhost
@@ -285,7 +285,7 @@ Můžete také vytvořit sadu škálování virtuálního počítače založenou
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook 05a-create-vmss-using-generalized-image.yml
@@ -293,7 +293,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
 
 ## <a name="get-information-about-the-gallery"></a>Získání informací o galerii
 
-Spuštěním `06-get-info.yml`můžete získat informace o galerii, definici bitové kopie a verzi.
+Informace o galerii, definici obrázku a `06-get-info.yml`verzi můžete získat spuštěním .
 
 ```yml
 - hosts: localhost
@@ -319,15 +319,15 @@ Spuštěním `06-get-info.yml`můžete získat informace o galerii, definici bit
       name: "{{ shared_image_version }}"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook 06-get-info.yml
 ```
 
-## <a name="delete-the-shared-image"></a>Odstranit sdílenou bitovou kopii
+## <a name="delete-the-shared-image"></a>Odstranění sdíleného obrázku
 
-Informace o odstranění prostředků Galerie najdete v ukázce PlayBook `07-delete-gallery.yml`. Odstraní prostředky v opačném pořadí. Začněte tím, že odstraníte verzi image. Po odstranění všech verzí imagí můžete definici image odstranit. Po odstranění všech definicí imagí můžete galerii odstranit.
+Chcete-li odstranit prostředky galerie, `07-delete-gallery.yml`podívejte se na ukázkový playbook . Odstranit prostředky v opačném pořadí. Začněte odstraněním verze bitové kopie. Po odstranění všech verzí obrázku můžete odstranit definici obrázku. Po odstranění všech definic obrázků můžete galerii odstranit.
 
 ```yml
 - hosts: localhost
@@ -358,7 +358,7 @@ Informace o odstranění prostředků Galerie najdete v ukázce PlayBook `07-del
       state: absent
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook 07-delete-gallery.yml
@@ -366,11 +366,11 @@ ansible-playbook 07-delete-gallery.yml
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku. 
 
-Vzorový kód PlayBook v této části se používá pro:
+Ukázkový kód playbooku v této části slouží k:
 
-- Odstranit dvě skupiny prostředků vytvořené dříve
+- Odstranění dvou skupin prostředků vytvořených dříve
 
 Uložte následující ukázkový playbook jako `cleanup.yml`:
 
@@ -386,12 +386,12 @@ Uložte následující ukázkový playbook jako `cleanup.yml`:
         state: absent
 ```
 
-Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
+Zde jsou některé klíčové poznámky, které je třeba zvážit při práci s ukázkovým playbookem:
 
-- Zástupný symbol `{{ resource_group_name }}` nahraďte názvem vaší skupiny prostředků.
-- Všechny prostředky v rámci dvou zadaných skupin prostředků se odstraní.
+- Nahraďte `{{ resource_group_name }}` zástupný symbol názvem skupiny prostředků.
+- Všechny prostředky v rámci dvou určených skupin prostředků budou odstraněny.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook cleanup.yml

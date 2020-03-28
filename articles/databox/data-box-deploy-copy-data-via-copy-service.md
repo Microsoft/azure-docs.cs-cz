@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: použití služby kopírování dat ke zkopírování do zařízení'
+title: 'Kurz: Kopírování do zařízení pomocí služby kopírování dat'
 titleSuffix: Azure Data Box
-description: V tomto kurzu se dozvíte, jak kopírovat data do zařízení Azure Data Box prostřednictvím služby kopírování dat.
+description: V tomto kurzu se dozvíte, jak zkopírovat data do zařízení Azure Data Box prostřednictvím služby kopírování dat
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,140 +9,145 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 579c1984ee1906519980bbed154921a20ed40b79
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466973"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501874"
 ---
-# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Kurz: použití služby kopírování dat ke kopírování dat do Azure Data Box (Preview)
+# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Kurz: Kopírování dat do Datové schránky Azure pomocí služby kopírování dat (preview)
 
-V tomto kurzu se dozvíte, jak ingestovat data pomocí služby kopírování dat bez zprostředkujícího hostitele. Služba kopírování dat běží místně na Microsoft Azure Data Box, připojuje k zařízení úložiště připojenému k síti (NAS) prostřednictvím protokolu SMB a kopíruje data do Data Box.
+Tento kurz popisuje, jak ingestovat data pomocí služby kopírování dat bez zprostředkujícího hostitele. Služba kopírování dat běží místně v datové schránce Microsoft Azure, připojuje se k zařízení úložiště připojenému k síti (NAS) přes SMB a kopíruje data do datové schránky.
 
 Použijte službu kopírování dat:
 
 - V prostředích NAS, kde nemusí být k dispozici zprostředkující hostitelé.
-- S malými soubory, které berou v úvahu týdny pro příjem a nahrávání dat. Služba kopírování dat významně vylepšuje přijímání a dobu nahrávání malých souborů.
+- S malými soubory, které trvá týdny pro požití a nahrávání dat. Služba kopírování dat výrazně zlepšuje dobu při přijím a nahrávání malých souborů.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+>
 > * Kopírování dat do Data Boxu
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste tento kurz: [nastavte Azure Data box](data-box-deploy-set-up.md).
-2. Dostali jste zařízení Data Box a na portálu se **doručí**stav objednávky.
+1. Dokončili jste tento kurz: [Nastavení Datové schránky Azure](data-box-deploy-set-up.md).
+2. Obdrželi jste zařízení Data Box a stav objednávky na portálu je **Doručeno**.
 3. Máte přihlašovací údaje zdrojového zařízení NAS, ke kterému se připojíte pro kopírování dat.
-4. Jste připojení k síti s vysokou rychlostí. Důrazně doporučujeme, abyste měli aspoň 1 10 připojení Ethernet (GbE). Pokud není připojení k dispozici, můžete použít datovou vazbu 1 – GbE, ale bude to mít vliv na rychlost kopírování.
+4. Jste připojeni k vysokorychlostní síti. Důrazně doporučujeme, abyste měli alespoň jedno připojení 10 Gigabit Ethernet (GbE). Pokud připojení 10 GbE není k dispozici, můžete použít datové spojení 1 GbE, ale rychlost kopírování bude ovlivněna.
 
 ## <a name="copy-data-to-data-box"></a>Kopírování dat do Data Boxu
 
-Až budete připojeni k zařízení se serverem NAS, je dalším krokem kopírování vašich dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
+Po připojení k zařízení NAS je dalším krokem kopírování dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
 
-- Při kopírování dat se ujistěte, že velikost dat odpovídá limitům velikosti popsaným v článku [úložiště Azure a omezení data box](data-box-limits.md).
-- Pokud jsou data nahraná pomocí Data Box souběžně nahraná jinými aplikacemi mimo Data Box, může to vést k selhání úloh a poškození dat.
-- Pokud se data mění, protože ji služba kopírování dat čte, můžou se zobrazit chyby nebo poškození dat.
+* Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Azure storage and Data Box limits](data-box-limits.md).
 
-Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit úlohu:
+* Pokud data nahraná datovou schránkou jsou současně nahrána jinými aplikacemi mimo Data Box, může dojít k selhání úloh y nahrávání a poškození dat.
 
-1. V místním webovém uživatelském rozhraní zařízení Data Box můžete přejít na **správa** > **kopírování dat**.
-2. Na stránce **Kopírovat data** vyberte **vytvořit**.
+* Pokud jsou data upravována při čtení služby kopírování dat, může se zobrazit selhání nebo poškození dat.
 
-    ![Na stránce kopírovat data vyberte vytvořit.](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
+* Ujistěte se, že udržujete kopii zdrojových dat, dokud nepotvrdíte, že datová schránka přenesla vaše data do Služby Azure Storage.
 
-3. V dialogovém okně **Konfigurovat úlohu a spustit** vyplňte následující pole:
+Chcete-li kopírovat data pomocí služby kopírování dat, musíte vytvořit úlohu:
+
+1. V místním webovém uživatelském rozhraní zařízení Data Box přejděte na **Spravovat** > **data kopírování**.
+2. Na stránce **Kopírovat data** vyberte **Vytvořit**.
+
+    ![Na stránce Kopírovat data vyberte Vytvořit.](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
+
+3. V dialogovém okně **Konfigurovat úlohu a start** vyplňte následující pole:
     
     |Pole                          |Hodnota    |
     |-------------------------------|---------|
-    |**Název úlohy**                       |Jedinečný název pro úlohu je kratší než 230 znaků. Tyto znaky nejsou povolené v názvu úlohy: \<, \>, \|, \?, \*, \\, \:, \/a \\\.         |
-    |**Umístění zdroje**                |Zadejte cestu SMB ke zdroji dat ve formátu: `\\<ServerIPAddress>\<ShareName>` nebo `\\<ServerName>\<ShareName>`.        |
-    |**Uživatelské jméno**                       |Uživatelské jméno ve formátu `\\<DomainName><UserName>` pro přístup ke zdroji dat. Pokud se připojujete k místnímu správci, budou potřebovat explicitní oprávnění zabezpečení. Klikněte pravým tlačítkem na složku, vyberte **vlastnosti** a pak vyberte **zabezpečení**. Měli byste přidat místního správce na kartě **zabezpečení** .       |
+    |**Název úlohy**                       |Jedinečný název méně než 230 znaků pro úlohu. Tyto znaky nejsou v názvu úlohy \> \|povoleny: \\ \< \:, \/, , \? \*, , , , a\\\.         |
+    |**Umístění zdroje**                |Zadejte cestu SMB ke zdroji dat `\\<ServerIPAddress>\<ShareName>` `\\<ServerName>\<ShareName>`ve formátu: nebo .        |
+    |**Username**                       |Uživatelské jméno `\\<DomainName><UserName>` ve formátu pro přístup ke zdroji dat. Pokud se připojuje místní správce, bude potřebovat explicitní oprávnění zabezpečení. Klepněte pravým tlačítkem myši na složku, vyberte **vlastnosti** a potom vyberte **možnost Zabezpečení**. To by mělo přidat místního správce na kartě **Zabezpečení.**       |
     |**Heslo**                       |Heslo pro přístup ke zdroji dat.           |
-    |**Cílový účet úložiště**    |Vyberte cílový účet úložiště, do kterého se mají nahrát data ze seznamu.         |
-    |**Cílový typ**       |V seznamu vyberte typ cílového úložiště: **objekt blob bloku**, **objekt blob stránky**nebo **soubory Azure**.        |
-    |**Cílový kontejner/sdílená složka**    |Do cílového účtu úložiště zadejte název kontejneru nebo sdílené složky, do které chcete data nahrát. Název může být název sdílené složky nebo název kontejneru. Můžete například použít `myshare` nebo `mycontainer`. Můžete také zadat název ve formátu `sharename\directory_name` nebo `containername\virtual_directory_name`.        |
-    |**Kopírovat soubory, které odpovídají vzoru**    | Následující dva způsoby můžete zadat podle názvu souboru a odpovídajícího vzoru:<ul><li>**Použít výrazy se zástupnými znaky:** Ve výrazech se zástupnými znaky jsou podporovány pouze `*` a `?`. Výraz `*.vhd` například odpovídá všem souborům, které mají rozšíření `.vhd`. Podobně `*.dl?` odpovídá všem souborům buď pomocí `.dl` rozšíření, nebo na začátku `.dl`, jako je například `.dll`. Podobně `*foo` odpovídá všem souborům, jejichž názvy končí `foo`.<br>Zástupný výraz můžete přímo zadat do pole. Ve výchozím nastavení je hodnota, kterou zadáte do pole, považována za zástupný výraz.</li><li>**Použít regulární výrazy:** Jsou podporovány regulární výrazy založené na standardu POSIX. Například regulární výraz `.*\.vhd` bude odpovídat všem souborům, které mají rozšíření `.vhd`. Pro regulární výrazy zadejte `<pattern>` přímo jako `regex(<pattern>)`. Další informace o regulárních výrazech naleznete v [jazyce regulárních výrazů – stručná referenční](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)dokumentace.</li><ul>|
-    |**Optimalizace souborů**              |Když je tato funkce povolená, během příjmu se zabalí soubory menší než 1 MB. Toto balení zrychluje kopírování dat pro malé soubory. Šetří také významné množství času, kdy počet souborů mnohem překračuje počet adresářů.        |
+    |**Cílový účet úložiště**    |Vyberte cílový účet úložiště, do který chcete ze seznamu nahrát data.         |
+    |**Typ cíle**       |Vyberte cílový typ úložiště ze seznamu: **Blok objektů blob**, **Objekt blob stránky**nebo Soubory **Azure**.        |
+    |**Cílový kontejner/sdílená**    |Zadejte název kontejneru nebo sdílené složky, do které chcete nahrát data, do cílového účtu úložiště. Název může být název sdílené položky nebo název kontejneru. Můžete například použít `myshare` nebo `mycontainer`. Název můžete také zadat ve `sharename\directory_name` `containername\virtual_directory_name`formátu nebo .        |
+    |**Kopírování odpovídajících souborů**    | Vzor pro porovnávání názvů souborů můžete zadat dvěma způsoby:<ul><li>**Používejte zástupné výrazy:** Pouze `*` `?` a jsou podporovány ve zástupných výrazech. Například výraz `*.vhd` odpovídá všem souborům, `.vhd` které mají příponu. Podobně `*.dl?` odpovídá všechny soubory s příponou `.dl` nebo `.dl`které `.dll`začínají , například . Podobně odpovídá `*foo` všechny soubory, jejichž `foo`názvy končí .<br>Do pole můžete přímo zadat zástupný výraz. Ve výchozím nastavení je hodnota, kterou zadáte do pole, považována za zástupný výraz.</li><li>**Používejte regulární výrazy:** Regulární výrazy založené na posix jsou podporovány. Regulární výraz `.*\.vhd` bude například odpovídat `.vhd` všem souborům, které mají příponu. Pro regulární výrazy zadejte `<pattern>` přímo jako `regex(<pattern>)`. Další informace o regulárních výrazech naleznete v části [Jazyk regulárních výrazů – stručný přehled](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Optimalizace souborů**              |Pokud je tato funkce povolena, soubory menší než 1 MB jsou zabaleny během požití. Toto balení urychluje kopírování dat pro malé soubory. Také šetří značné množství času, když počet souborů daleko přesahuje počet adresářů.        |
  
-4. Vyberte **Spustit**. Vstupy jsou ověřeny a v případě úspěšného ověření se spustí úloha. Spuštění úlohy může trvat několik minut.
+4. Vyberte **Spustit**. Vstupy jsou ověřeny a pokud je ověření úspěšné, pak se spustí úloha. Může trvat několik minut, než začne úloha.
 
-    ![Spuštění úlohy z dialogového okna Konfigurovat úlohu a spustit](media/data-box-deploy-copy-data-via-copy-service/configure-and-start.png)
+    ![Spuštění úlohy z dialogového okna Konfigurovat úlohu a spuštění](media/data-box-deploy-copy-data-via-copy-service/configure-and-start.png)
 
-5. Vytvoří se úloha se zadaným nastavením. Úlohu můžete pozastavit, obnovit, zrušit nebo restartovat. Zaškrtněte políčko vedle názvu úlohy a pak vyberte příslušné tlačítko.
+5. Vytvoří se úloha se zadaným nastavením. Úlohu můžete pozastavit, obnovit, zrušit nebo restartovat. Zaškrtněte políčko vedle názvu úlohy a pak zaškrtněte příslušné tlačítko.
 
-    ![Správa úlohy na stránce kopírovat data](media/data-box-deploy-copy-data-via-copy-service/select-job.png)
+    ![Správa úlohy na stránce "Kopírovat data"](media/data-box-deploy-copy-data-via-copy-service/select-job.png)
     
-    - Úlohu můžete pozastavit, pokud má vliv na prostředky zařízení NAS v době špičky:
+    - Úlohu můžete pozastavit, pokud ovlivňuje prostředky zařízení NAS ve špičce:
 
-        ![Pozastavení úlohy na stránce kopírovat data](media/data-box-deploy-copy-data-via-copy-service/pause-job.png)
+        ![Pozastavení úlohy na stránce "Kopírovat data"](media/data-box-deploy-copy-data-via-copy-service/pause-job.png)
 
-        Úlohu můžete obnovit později v době mimo špičku:
+        V práci můžete pokračovat později mimo špičku:
 
-        ![Pokračování úlohy na stránce kopírovat data](media/data-box-deploy-copy-data-via-copy-service/resume-job.png)
+        ![Pokračovat v práci na stránce "Kopírovat data"](media/data-box-deploy-copy-data-via-copy-service/resume-job.png)
 
     - Úlohu můžete kdykoli zrušit:
 
-        ![Zrušení úlohy na stránce kopírovat data](media/data-box-deploy-copy-data-via-copy-service/cancel-job.png)
+        ![Zrušení úlohy na stránce Kopírovat data](media/data-box-deploy-copy-data-via-copy-service/cancel-job.png)
         
-        Při zrušení úlohy se vyžaduje potvrzení:
+        Při zrušení úlohy je vyžadováno potvrzení:
 
         ![Potvrdit zrušení úlohy](media/data-box-deploy-copy-data-via-copy-service/confirm-cancel-job.png)
 
-        Pokud se rozhodnete úlohu zrušit, již kopírovaná data nebudou odstraněna. Pokud chcete všechna data, která jste zkopírovali do zařízení Data Box, odstranit, resetujte zařízení.
+        Pokud se rozhodnete úlohu zrušit, data, která jsou již zkopírována, nebudou odstraněna. Chcete-li odstranit všechna data, která jste zkopírovali do zařízení Data Box, resetujte zařízení.
 
         ![Resetování zařízení](media/data-box-deploy-copy-data-via-copy-service/reset-device.png)
 
         >[!NOTE]
-        > Pokud úlohu zrušíte nebo pozastavíte, mohou být velké soubory pouze částečně zkopírovány. Tyto částečně zkopírované soubory se nahrají do Azure do stejného stavu. Když úlohu zrušíte nebo pozastavíte, ujistěte se, že byly soubory správně zkopírované. Chcete-li ověřit soubory, podívejte se na sdílené složky SMB nebo si stáhněte soubor BOM.
+        > Pokud úlohu zrušíte nebo pozastavíte, mohou být velké soubory zkopírovány pouze částečně. Tyto částečně zkopírované soubory se nahrají ve stejném stavu do Azure. Při zrušení nebo pozastavení úlohy zkontrolujte, zda byly soubory správně zkopírovány. Chcete-li soubory ověřit, podívejte se na sdílené složky SMB nebo stáhněte soubor kusovníku.
 
-    - Úlohu můžete restartovat, pokud se nezdařila z důvodu přechodné chyby, jako je například porucha sítě. Nemůžete ale úlohu znovu spustit, pokud se dostal stav terminálu, například **úspěch** nebo **dokončeno s chybami**. Selhání úlohy může být způsobeno problémy s pojmenovávání souborů nebo velikostí souborů. Tyto chyby jsou protokolovány, ale úlohu po dokončení nelze restartovat.
+    - Úlohu můžete restartovat, pokud se nezdařila z důvodu přechodné chyby, například závady v síti. Úlohu však nelze restartovat, pokud dosáhla stavu terminálu, například **Proběhlo úspěšně** nebo **Dokončeno s chybami**. Selhání úloh může být způsobeno problémy s pojmenováním souboru nebo velikostí souboru. Tyto chyby jsou zaznamenány, ale úloha nelze restartovat po dokončení.
 
-        ![Restartuje neúspěšnou úlohu.](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
+        ![Restartování neúspěšné úlohy](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
 
-        Pokud dojde k chybě a nemůžete úlohu restartovat, Stáhněte protokoly chyb a vyhledejte chybu v souborech protokolu. Po opravě problému vytvořte novou úlohu pro zkopírování souborů. Soubory můžete také [Kopírovat přes protokol SMB](data-box-deploy-copy-data.md).
+        Pokud dojde k selhání a nelze restartovat úlohu, stáhněte protokoly chyb a vyhledejte selhání v souborech protokolu. Po opravě problému vytvořte novou úlohu pro kopírování souborů. Můžete také [zkopírovat soubory přes SMB](data-box-deploy-copy-data.md).
     
-    - V této verzi nemůžete úlohu odstranit.
+    - V této verzi nelze odstranit úlohu.
     
-    - Můžete vytvářet neomezený počet úloh, ale souběžně můžete spustit maximálně 10 úloh najednou.
-    - Pokud je zapnutá **Optimalizace souborů** , malé soubory se zabalí do ingestování, aby se zlepšil výkon při kopírování. V těchto případech se zobrazí sbalený soubor (bude mít jako název souboru identifikátor GUID). Tento soubor neodstraňujte. Během nahrávání se nebalí.
+    - Můžete vytvořit neomezené úlohy, ale můžete spustit pouze maximálně 10 úloh paralelně najednou.
+    - Pokud je **optimalizace souborů zapnutá,** malé soubory jsou zabaleny při ingestování, aby se zlepšil výkon kopírování. V těchto případech se zobrazí zabalený soubor (bude mít jako název souboru identifikátor GUID). Neodstraňujte tento soubor. Během nahrávání bude rozbalen.
 
-6. Zatímco probíhá úloha, na stránce **Kopírovat data** :
+6. Během probíhající úlohy na stránce **Kopírovat data:**
 
-    - Ve sloupci **stav** můžete zobrazit stav úlohy kopírování. Stav může být následující:
-        - **Instalovanou**
-        - **Nepovedlo se**
-        - **Úspěchu**
-        - **Pozastavení**
-        - **Čeká**
-        - **Ruší**
-        - **Zrušil**
+    - Ve sloupci **Stav** můžete zobrazit stav úlohy kopírování. Stav může být:
+        - **Spuštěno**
+        - **Failed**
+        - **Úspěch**
+        - **Pozastaveno**
+        - **Pozastaveno**
+        - **Probíhá zrušení**
+        - **Zrušeno**
         - **Dokončeno s chybami**
-    - Ve sloupci **soubory** můžete zobrazit počet a celkovou velikost kopírovaných souborů.
-    - Ve sloupci **zpracované** můžete zobrazit počet a celkovou velikost zpracovávaných souborů.
-    - Ve sloupci **Podrobnosti úlohy** vyberte **Zobrazit** a zobrazte podrobnosti o úloze.
-    - Pokud během kopírování dojde k nějakým chybám, jak je znázorněno ve sloupci **# Errors** , přejít do sloupce **protokolu chyb** a Stáhněte si protokoly chyb pro řešení potíží.
+    - Ve sloupci **Soubory** uvidíte číslo a celkovou velikost kopírovaných souborů.
+    - Ve **sloupci Zpracované** můžete zobrazit číslo a celkovou velikost zpracovávaných souborů.
+    - Ve sloupci **Podrobnosti úlohy** vyberte **Zobrazit,** chcete-li zobrazit podrobnosti o úloze.
+    - Pokud během procesu kopírování dojde k chybám, jak je znázorněno ve sloupci **# Chyby,** přejděte do sloupce **Protokol chyb** a stáhněte protokoly chyb pro řešení potíží.
 
-Počkejte, než se úloha kopírování dokončí. Vzhledem k tomu, že se některé chyby protokolují jenom na stránce **připojit a kopírovat** , ujistěte se, že se úloha kopírování nedokončila bez chyb, než přejdete k dalšímu kroku.
+Počkejte na dokončení úlohy kopírování. Vzhledem k tomu, že některé chyby jsou zaznamenány pouze na stránce **Připojit a kopírovat,** ujistěte se, že úloha kopírování byla dokončena bez chyb, než přejdete k dalšímu kroku.
 
-![Na stránce připojit a kopírovat nejsou žádné chyby.](media/data-box-deploy-copy-data-via-copy-service/verify-no-errors-on-connect-and-copy.png)
+![Žádné chyby na stránce "Připojit a kopírovat"](media/data-box-deploy-copy-data-via-copy-service/verify-no-errors-on-connect-and-copy.png)
 
-Aby se zajistila integrita dat, kontrolní součet se vypočítává jako vložený při kopírování dat. Po dokončení kopírování vyberte **zobrazit řídicí panel** , abyste ověřili využité místo a volné místo na vašem zařízení.
+Aby byla zajištěna integrita dat, kontrolní součet se vypočítá v aktivní při kopírování dat. Po dokončení kopírování vyberte **Zobrazit řídicí panel** a ověřte využité místo a volné místo v zařízení.
     
 ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data-via-copy-service/verify-used-space-dashboard.png)
 
-Po dokončení úlohy kopírování můžete vybrat **Příprava k odeslání**.
+Po dokončení úlohy kopírování můžete vybrat **možnost Připravit k odeslání**.
 
 >[!NOTE]
-> **Příprava k odeslání** nemůže běžet během probíhajících úloh kopírování.
+> **Příprava k odeslání** nelze spustit, zatímco probíhá kopírování úloh.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte k dalšímu kurzu, kde se dozvíte, jak odeslat Data Box zařízení zpátky do Microsoftu.
+Přejdete k dalšímu kurzu, kde se dozvíte, jak zařízení Data Box poslat zpět do Microsoftu.
 
 > [!div class="nextstepaction"]
-> [Odeslání zařízení Azure Data Box Microsoftu](./data-box-deploy-picked-up.md)
+> [Odeslání zařízení Azure Data Box společnosti Microsoft](./data-box-deploy-picked-up.md)
 

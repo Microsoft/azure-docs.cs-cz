@@ -1,24 +1,24 @@
 ---
-title: Použít podmínku v šablonách
-description: Zjistěte, jak nasazovat prostředky Azure na základě podmínek. Ukazuje, jak nasadit nový prostředek nebo použít existující prostředek.
+title: Použití podmínky v šablonách
+description: Zjistěte, jak nasazovat prostředky Azure na základě podmínek. Ukazuje, jak buď nasadit nový prostředek nebo použít existující prostředek.
 author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 189d54454a1259d08400e3762b3fbf1c633474bd
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250054"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239192"
 ---
-# <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Kurz: Používání podmínek v šablonách Azure Resource Manageru
+# <a name="tutorial-use-condition-in-arm-templates"></a>Kurz: Použití podmínky v šablonách ARM
 
-Zjistěte, jak nasazovat prostředky Azure na základě podmínek.
+Zjistěte, jak nasadit prostředky Azure na základě podmínek v šabloně Azure Resource Manager (ARM).
 
-V kurzu [Nastavení pořadí nasazování prostředků](./template-tutorial-create-templates-with-dependent-resources.md) vytvoříte virtuální počítač, virtuální síť a několik dalších závislých prostředků včetně účtu úložiště. Místo nutnosti pokaždé vytvářet nový účet úložiště umožníte uživatelům vybrat si mezi vytvořením nového účtu úložiště a použitím existujícího účtu úložiště. Docílíte toho definováním dalšího parametru. Pokud hodnota tohoto parametru bude „new“, vytvoří se nový účet úložiště. V opačném případě se použije existující účet úložiště se zadaným názvem.
+V kurzu [Nastavení pořadí nasazování prostředků](./template-tutorial-create-templates-with-dependent-resources.md) vytvoříte virtuální počítač, virtuální síť a několik dalších závislých prostředků včetně účtu úložiště. Místo nutnosti pokaždé vytvářet nový účet úložiště umožníte uživatelům vybrat si mezi vytvořením nového účtu úložiště a použitím existujícího účtu úložiště. Docílíte toho definováním dalšího parametru. Pokud hodnota tohoto parametru bude „new“, vytvoří se nový účet úložiště. V opačném případě se použije existující účet úložiště s poskytnutým názvem.
 
-![Diagram podmínky použití šablony Správce prostředků](./media/template-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
+![Diagram podmínek použití šablony Správce prostředků](./media/template-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -28,33 +28,33 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení šablony
 > * Vyčištění prostředků
 
-Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace naleznete v tématu:
+Tento kurz se vztahuje pouze na základní scénář použití podmínek. Další informace naleznete v tématu:
 
-* [Struktura souboru šablony: podmínka](conditional-resource-deployment.md)
-* [Podmíněně nasaďte prostředek do šablony Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
-* [Funkce šablony: if](./template-functions-logical.md#if).
-* [Funkce porovnání pro šablony Azure Resource Manager](./template-functions-comparison.md)
+* [Struktura souboru šablony: Podmínka](conditional-resource-deployment.md).
+* [Podmíněně nasadit prostředek v šabloně ARM](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
+* [Funkce šablony: Pokud](./template-functions-logical.md#if).
+* [Funkce porovnání pro šablony ARM](./template-functions-comparison.md)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Pokud [chcete vytvořit Azure Resource Manager šablony](use-vs-code-to-create-template.md), přečtěte si téma použití Visual Studio Code.
+* Visual Studio Kód s rozšířením Nástroje Správce prostředků. Viz [Použití kódu Visual Studia k vytvoření šablon ARM](use-vs-code-to-create-template.md).
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./template-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
+    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace naleznete [v tématu: Integrace trezoru klíčů Azure v nasazení šablony ARM](./template-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
-Šablony pro rychlý start Azure slouží jako úložiště šablon Resource Manageru. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
+Azure QuickStart Templates je úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
-1. V nástroji Visual Studio Code vyberte **File** (Soubor) >**Open File** (Otevřít soubor).
+1. V kódu sady Visual Studio vyberte **Soubor**>**otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -71,22 +71,22 @@ K dokončení tohoto článku potřebujete:
    * `Microsoft.Compute/virtualMachines`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
      Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
-5. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte na místní počítač pod názvem **azuredeploy.json**.
+5. Vyberte **Soubor**>**Uložit jako,** chcete-li uložit kopii souboru do místního počítače s názvem **azuredeploy.json**.
 
 ## <a name="modify-the-template"></a>Úprava šablony
 
 Ve stávající šabloně proveďte dvě změny:
 
 * Přidejte parametr názvu účtu úložiště. Uživatelé můžou zadat buď název nového účtu úložiště, nebo název existujícího účtu úložiště.
-* Přidejte nový parametr **newOrExisting**. Nasazení používá tento parametr k určení toho, jestli se má vytvořit nový účet úložiště, nebo použít existující účet úložiště.
+* Přidejte nový parametr **newOrExisting**. Nasazení používá tento parametr k určení, zda chcete vytvořit nový účet úložiště nebo použít existující účet úložiště.
 
 Tady je postup, jak tyto změny provést:
 
 1. Ve Visual Studio Code otevřete soubor **azuredeploy.json**.
-2. Nahraďte tři **proměnné (' storageAccountName ')** **parametry (' storageAccountName ')** v celé šabloně.
+2. Nahraďte tři **proměnné ('storageAccountName')** **parametry ('storageAccountName')** v celé šabloně.
 3. Odeberte definici následující proměnné:
 
-    ![Diagram podmínky použití šablony Správce prostředků](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Diagram podmínek použití šablony Správce prostředků](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 4. Přidejte do šablony následující dva parametry:
 
@@ -118,7 +118,7 @@ Tady je postup, jak tyto změny provést:
     Aktualizovaná definice účtu úložiště vypadá takto:
 
     ![Resource Manager – použití podmínky](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Aktualizujte vlastnost **storageUri** definice prostředku virtuálního počítače na následující hodnotu:
+6. Aktualizujte vlastnost **storageUri** definice prostředku virtuálního počítače s následující hodnotou:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -130,7 +130,7 @@ Tady je postup, jak tyto změny provést:
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Podle pokynů v části [nasazení šablony](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) otevřete Cloud Shell a nahrajte revidovanou šablonu a spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
+Podle pokynů v [části Nasazení šablony](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) otevřete prostředí Cloud a nahrajte revidovanou šablonu a pak spusťte následující skript Prostředí PowerShell, který šablonu nasadí.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -155,11 +155,11 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > Pokud má parametr **newOrExisting** hodnotu **new**, ale účet úložiště se zadaným názvem již existuje, nasazení selže.
 
-Zkuste provést jiné nasazení s **newOrExisting** nastavenou na "existující" a zadat existující účet úložiště. Pokud chcete vytvořit účet úložiště předem, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md).
+Zkuste vytvořit jiné nasazení s **newOrExisting** nastavena na "existující" a zadejte existující účet úložiště. Pokud chcete vytvořit účet úložiště předem, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Pokud chcete odstranit skupinu prostředků, vyberte **vyzkoušet** a otevřete Cloud Shell. Skript PowerShellu vložíte tak, že kliknete pravým tlačítkem na podokno prostředí a pak vyberete **Vložit**.
+Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Pokud chcete skupinu prostředků odstranit, vyberte **Vyzkoušet,** chcete-li otevřít prostředí Cloud. Pokud chcete vložit skript Prostředí PowerShell, klikněte pravým tlačítkem myši na podokno prostředí a pak vyberte **Vložit**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"

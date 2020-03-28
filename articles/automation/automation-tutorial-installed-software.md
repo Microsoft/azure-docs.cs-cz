@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
 ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239662"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Zjišťování, jaký software je nainstalovaný na počítačích Azure a jiných počítačích než Azure
 
 V tomto kurzu se naučíte zjistit, jaký software je nainstalovaný ve vašem prostředí. Můžete shromažďovat a zobrazovat inventář softwaru, souborů, linuxových procesů démon, služeb systému Windows a klíčů registru Windows na vašich počítačích. Sledování konfigurací vašich počítačů vám může pomoci přesně identifikovat provozní problémy napříč prostředím a lépe porozumět stavu vašich počítačů.
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Povolení řešení
@@ -32,10 +32,10 @@ V tomto kurzu se naučíte:
 Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](automation-offering-get-started.md), který bude obsahovat sledovací proces, runbooky akcí a úlohu sledovacího procesu.
+* [Účet automatizace](automation-offering-get-started.md) pro uložení sledovacích a akčních runbooků a úlohy sledovacího procesu.
 * [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) pro připojení.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -45,11 +45,11 @@ Pro účely tohoto kurzu je nejprve potřeba povolit řešení Change Tracking a
 
 Přejděte do svého účtu Automation a v části **SPRÁVA KONFIGURACE** vyberte **Inventory**.
 
-Zvolte pracovní prostor služby Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+Zvolte pracovní prostor Log Analytics a účet automatizace a kliknutím na **Povolit** povolíte řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Banner konfigurace připojení k řešení Inventory](./media/automation-tutorial-installed-software/enableinventory.png)
 
-Pokud chcete řešení povolit, nakonfigurujte umístění, pracovní prostor služby Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+Chcete-li povolit řešení, nakonfigurujte umístění, pracovní prostor Analýzy protokolů a účet automatizace, abyste mohli použít, a klepněte na tlačítko **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Inventory.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
@@ -57,7 +57,7 @@ Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika z
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
-Po povolení řešení budou informace o nainstalovaném softwaru a změnách na virtuálním počítači toky Azure Monitor protokoly.
+Po povolení řešení se informace o nainstalovaném softwaru a změnách na virtuálním počítači točtou do protokolů Azure Monitoru.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ## <a name="onboard-a-vm"></a>Připojení virtuálního počítače
@@ -99,7 +99,7 @@ Pokud například vyhledáte Contoso, vrátí se veškerý software, jehož náz
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Vyhledávání nainstalovaného softwaru v protokolech inventáře
 
-Inventář generuje data protokolu, která se odesílají do protokolů Azure Monitor. Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Inventory** vyberte **Log Analytics**.
+Inventář generuje data protokolu, která se odesílá do protokolů Azure Monitor. Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Inventory** vyberte **Log Analytics**.
 
 Data řešení Inventory se ukládají jako typ **ConfigurationData** (Konfigurační data).
 Následující ukázkový dotaz Log Analytics vrátí výsledky inventáře, kde se Publisher (Vydavatel) rovná Microsoft Corporation.
@@ -111,11 +111,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Další informace o spouštění a hledání souborů protokolu v protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+Další informace o spouštění a prohledávání souborů protokolu v protokolech Azure Monitoru najdete v [tématu protokoly Azure Monitor .](../azure-monitor/log-query/log-query-overview.md)
 
 ### <a name="single-machine-inventory"></a>Inventarizace jediného počítače
 
-Pokud chcete zobrazit inventář softwaru pro jeden počítač, můžete získat přístup k inventáři na stránce prostředku virtuálního počítače Azure nebo použít protokoly Azure Monitor k filtrování dolů na odpovídající počítač.
+Pokud chcete zobrazit inventář softwaru pro jeden počítač, můžete přistupovat k inventáři ze stránky prostředků virtuálního počítače Azure nebo pomocí protokolů Azure Monitor filtrovat dolů na odpovídající počítač.
 Následující příklad dotazu Log Analytics vrátí seznam softwaru pro počítač ContosoVM.
 
 ```loganalytics

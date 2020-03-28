@@ -1,47 +1,47 @@
 ---
-title: Vytvoření Azure Functions na platformě Linux s použitím vlastní image
+title: Vytváření funkcí Azure na Linuxu pomocí vlastní image
 description: Naučte se vytvářet funkce služby Azure Functions běžící na vlastní imagi Linuxu.
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239627"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce na platformě Linux pomocí vlastního kontejneru
+# <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu pomocí vlastního kontejneru
 
-V tomto kurzu vytvoříte a nasadíte kód Pythonu, který se Azure Functions jako vlastní kontejner Docker pomocí základní image Linux. Vlastní image se obvykle používá, když vaše funkce vyžadují specifickou jazykovou verzi nebo mají konkrétní závislost nebo konfiguraci, která není poskytovaná integrovanou imagí.
+V tomto kurzu vytvoříte a nasadíte kód Pythonu do Azure Functions jako vlastní kontejner Dockeru pomocí základní image Linuxu. Vlastní bitovou kopii se obvykle používá v případě, že funkce vyžadují určitou jazykovou verzi nebo mají určitou závislost nebo konfiguraci, která není poskytována vestavěnou bitovou kopií.
 
-Můžete také použít výchozí kontejner Azure App Service, jak je popsáno v tématu [Vytvoření první funkce hostované v systému Linux](functions-create-first-azure-function-azure-cli-linux.md). Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base).
+Můžete také použít výchozí kontejner služby Azure App Service, jak je popsáno v [na vytvořit první funkci hostované na Linuxu](functions-create-first-azure-function-azure-cli-linux.md). Podporované základní image pro funkce Azure se nacházejí v [repo základní image Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořte aplikaci funkcí a souboru Dockerfile pomocí Azure Functions Core Tools.
+> * Vytvořte aplikaci funkcí a Dockerfile pomocí nástrojů Azure Functions Core Tools.
 > * Sestavit vlastní image pomocí Dockeru
 > * Publikovat vlastní image do registru kontejneru
-> * Vytvoření pomocných prostředků v Azure pro aplikaci Function App
+> * Vytvoření podpůrných prostředků v Azure pro aplikaci funkcí
 > * Nasadit aplikaci Function App z Docker Hubu
 > * Přidat do aplikace Function App nastavení aplikace
-> * Povolte průběžné nasazování.
+> * Povolte průběžné nasazení.
 > * Povolte připojení SSH ke kontejneru.
 > * Přidejte výstupní vazbu úložiště fronty. 
 
-Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Windows, Mac OS nebo Linux. Dokončení kurzu vám bude účtovat v účtu Azure náklady na několik amerických dolarů.
+Tento návod můžete sledovat na libovolném počítači se systémem Windows, Mac OS nebo Linux. Dokončení kurzu bude mít za následek náklady na několik amerických dolarů ve vašem účtu Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Verze [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 nebo novější
-- [Azure CLI](/cli/azure/install-azure-cli) verze 2.0.77 nebo novější
-- [Modul runtime Azure Functions 2. x](functions-versions.md)
-- Následující součásti jazykového modulu runtime:
+- [Základní nástroje Azure functions](./functions-run-local.md#v2) verze 2.7.1846 nebo novější
+- Azure [CLI](/cli/azure/install-azure-cli) verze 2.0.77 nebo novější
+- [Za běhu Azure Functions 2.x](functions-versions.md)
+- Následující součásti běhu jazyka:
     ::: zone pivot="programming-language-csharp"
-    - [.NET Core 2.2. x nebo novější](https://dotnet.microsoft.com/download)
+    - [.NET Core 2.2.x nebo novější](https://dotnet.microsoft.com/download)
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
     - [Node.js](https://nodejs.org/en/download/)
@@ -50,29 +50,29 @@ Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Wi
     - [PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    - [Python 3,6 – 64 bit](https://www.python.org/downloads/release/python-3610/) nebo [python 3,7 – 64 bit](https://www.python.org/downloads/release/python-376/)
+    - [Python 3.6 - 64 bit](https://www.python.org/downloads/release/python-3610/) nebo [Python 3.7 - 64 bit](https://www.python.org/downloads/release/python-376/)
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
     - [Node.js](https://nodejs.org/en/download/)
-    - [Psací](http://www.typescriptlang.org/#download-links)
+    - [TypeScript](http://www.typescriptlang.org/#download-links)
     ::: zone-end
 - [Docker](https://docs.docker.com/install/)
-- [ID Docker](https://hub.docker.com/signup)
+- [ID dockeru](https://hub.docker.com/signup)
 
-### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
+### <a name="prerequisite-check"></a>Kontrola předpokladů
 
-1. V terminálu nebo příkazovém okně spusťte `func --version` a ověřte, že Azure Functions Core Tools jsou verze 2.7.1846 nebo novější.
-1. Spusťte `az --version` a ověřte, že verze Azure CLI je 2.0.76 nebo novější.
-1. Spusťte `az login`, abyste se přihlásili do Azure a ověřili aktivní předplatné.
-1. Spusťte `docker login` pro přihlášení k Docker. Tento příkaz se nepovede, pokud Docker není spuštěný, v takovém případě spusťte Docker a zkuste příkaz zopakovat.
+1. V terminálu nebo příkazovém okně spusťte `func --version` a zkontrolujte, zda jsou základní nástroje Azure Functions core tools verze 2.7.1846 nebo novější.
+1. Spuštěním `az --version` zkontrolujte, zda je verze příkazového příkazového příkazu Azure 2.0.76 nebo novější.
+1. Spusťte `az login` přihlášení k Azure a ověřte aktivní předplatné.
+1. Spusťte `docker login` přihlášení do Dockeru. Tento příkaz se nezdaří, pokud Docker není spuštěn, v takovém případě spustit docker a opakujte příkaz.
 
-## <a name="create-and-test-the-local-functions-project"></a>Vytvoření a otestování projektu místní funkce
+## <a name="create-and-test-the-local-functions-project"></a>Vytvoření a testování projektu místních funkcí
 
-1. V terminálu nebo příkazovém řádku vytvořte složku pro tento kurz v příslušném umístění a pak přejděte do této složky.
+1. V terminálu nebo příkazovém řádku vytvořte složku pro tento kurz na příslušném místě a přejděte do této složky.
 
-1. Podle pokynů v tématu [Vytvoření a aktivace virtuálního prostředí](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) vytvořte virtuální prostředí pro použití v tomto kurzu.
+1. Postupujte podle pokynů na [vytvoření a aktivaci virtuálního prostředí](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) k vytvoření virtuálního prostředí pro použití v tomto kurzu.
 
-1. Spusťte následující příkaz pro zvolený jazyk pro vytvoření projektu Function App ve složce s názvem `LocalFunctionsProject`. Možnost `--docker` generuje `Dockerfile` pro projekt, který definuje vhodný vlastní kontejner pro použití s Azure Functions a vybraným modulem runtime.
+1. Spusťte následující příkaz pro zvolený jazyk a vytvořte `LocalFunctionsProject`projekt aplikace funkcí ve složce s názvem . Možnost `--docker` generuje `Dockerfile` pro projekt, který definuje vhodný vlastní kontejner pro použití s Funkcemi Azure a vybraného běhu.
 
     ::: zone pivot="programming-language-csharp"
     ```
@@ -110,13 +110,13 @@ Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Wi
     cd LocalFunctionsProject
     ```
     
-1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a argument `--template` určuje Trigger funkce. `func new` vytvořit podsložku, která odpovídá názvu funkce, který obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfiguračního souboru s názvem *Function. JSON*.
+1. Přidejte funkci do projektu pomocí následujícího `--name` příkazu, kde argument je `--template` jedinečný název funkce a argument určuje aktivační událost funkce. `func new`Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu odpovídající zvolenému jazyku projektu a konfigurační soubor s názvem *function.json*.
 
     ```
     func new --name HttpExample --template "HTTP trigger"
     ```
 
-1. Pokud chcete funkci místně otestovat, spusťte místního hostitele modulu runtime Azure Functions ve složce *LocalFunctionsProject* :
+1. Chcete-li otestovat funkci místně, spusťte místního hostitele runtime Azure Functions ve složce *LocalFunctionsProject:*
    
     ::: zone pivot="programming-language-csharp"
     ```
@@ -152,13 +152,13 @@ Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Wi
     ```
     ::: zone-end
 
-1. Jakmile se ve výstupu zobrazí koncový bod `HttpExample`, přejděte na `http://localhost:7071/api/HttpExample?name=Functions`. V prohlížeči by se měla zobrazit zpráva, například Hello, Functions (v závislosti na zvoleném programovacím jazyce je mírně proměnlivá).
+1. Jakmile se `HttpExample` koncový bod zobrazí ve výstupu, přejděte na `http://localhost:7071/api/HttpExample?name=Functions`. Prohlížeč by měl zobrazit zprávu jako "Hello, Functions" (mírně se liší v závislosti na zvoleném programovacím jazyce).
 
-1. K zastavení hostitele použijte **kombinaci kláves Ctrl**-**C** .
+1. K zastavení hostitele použijte **kombinaci kláves**-**C.**
 
-## <a name="build-the-container-image-and-test-locally"></a>Sestavení image kontejneru a místní test
+## <a name="build-the-container-image-and-test-locally"></a>Sestavení image kontejneru a testování místně
 
-1. Volitelné Prověřte * souboru Dockerfile ve složce *LocalFunctionsProj* . Souboru Dockerfile popisuje požadované prostředí pro spuštění aplikace Function App v systému Linux: 
+1. (Nepovinné) Zkontrolujte *Dockerfile" ve složce *LocalFunctionsProj.* Dockerfile popisuje požadované prostředí pro spuštění aplikace funkce na Linuxu: 
 
     ::: zone pivot="programming-language-csharp"
     ```Dockerfile
@@ -240,157 +240,157 @@ Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Wi
     ::: zone-end
 
     > [!NOTE]
-    > Úplný seznam podporovaných základních imagí pro Azure Functions najdete na [stránce Azure Functions Base image](https://hub.docker.com/_/microsoft-azure-functions-base).
+    > Úplný seznam podporovaných základních bitových kopií pro funkce Azure najdete na [stránce základní bitové kopie Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
     
-1. Ve složce *LocalFunctionsProject* spusťte příkaz [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) a zadejte název, `azurefunctionsimage`a značku `v1.0.0`. Položku `<docker_id>` nahraďte ID vašeho účtu Docker Hubu. Tento příkaz sestaví image Dockeru pro kontejner.
+1. Ve složce *LocalFunctionsProject* spusťte příkaz [sestavení dockeru](https://docs.docker.com/engine/reference/commandline/build/) a zadejte název `azurefunctionsimage`a značku . `v1.0.0` Položku `<docker_id>` nahraďte ID vašeho účtu Docker Hubu. Tento příkaz sestaví image Dockeru pro kontejner.
 
     ```
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
     ```
     
-    Po dokončení příkazu můžete nový kontejner spustit místně.
+    Po dokončení příkazu můžete spustit nový kontejner místně.
     
-1. K otestování sestavení spusťte image v místním kontejneru pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , který se znovu nahradí `<docker_id>` s ID Docker a přidáním argumentu portů `-p 8080:80`:
+1. Chcete-li otestovat sestavení, spusťte bitovou kopii v `<docker_id>` místním kontejneru pomocí příkazu `-p 8080:80` [docker run,](https://docs.docker.com/engine/reference/commandline/run/) znovu nahraďte ID Dockeru a přidejte argument portů:
 
     ```
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Po spuštění image v místním kontejneru otevřete v prohlížeči `http://localhost:8080`, ve kterém se má zobrazit zástupný obrázek uvedený níže. V tomto okamžiku se zobrazí obrázek, protože funkce je spuštěná v místním kontejneru, stejně jako v Azure, což znamená, že je chráněná přístupovým klíčem definovaným v *Function. JSON* s vlastností `"authLevel": "function"`. Kontejner ještě není v Azure publikovaný do aplikace Function App, takže tento klíč ještě není dostupný. Pokud chcete místně testovat test, zastavte Docker, změňte vlastnost Authorization na `"authLevel": "anonymous"`, znovu sestavte image a restartujte Docker. Pak resetujte `"authLevel": "function"` v *Function. JSON*. Další informace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
+1. Jakmile je obrázek spuštěn v místním kontejneru, otevřete prohlížeč , který `http://localhost:8080`by měl zobrazit zástupný obrázek zobrazený níže. Bitová kopie se zobrazí v tomto okamžiku, protože vaše funkce běží v místním kontejneru, stejně jako v Azure, což `"authLevel": "function"` znamená, že je chráněn přístupový klíč, jak je definováno v *function.json* s vlastností. Kontejner ještě nebyl publikován do aplikace funkce v Azure, takže klíč ještě není k dispozici. Pokud chcete testovat místně, zastavit docker, změnit `"authLevel": "anonymous"`vlastnost autorizace na , znovu sestavit image a restartovat docker. Poté `"authLevel": "function"` resetujte v *souboru function.json*. Další informace naleznete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    ![Zástupný obrázek označující, že je kontejner spuštěn místně](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
+    ![Zástupný obrázek označující, že kontejner běží místně](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-1. Po ověření aplikace Function App v kontejneru zastavte Docker pomocí **Ctrl**+**C**.
+1. Po ověření aplikace funkce v kontejneru zastavte docker pomocí **klávesCtrl**+**C**.
 
-## <a name="push-the-image-to-docker-hub"></a>Odeslat image do Docker Hub
+## <a name="push-the-image-to-docker-hub"></a>Posunutí image do Centra Dockeru
 
-Docker Hub je kontejner kontejneru, který je hostitelem imagí a poskytuje image a služby kontejneru. Pokud chcete sdílet image, která zahrnuje nasazení do Azure, je potřeba ji vložit do registru.
+Docker Hub je registr kontejnerů, který hostuje bitové kopie a poskytuje služby image a kontejner. Chcete-li sdílet bitovou kopii, která zahrnuje nasazení do Azure, musíte ji přesunout do registru.
 
-1. Pokud jste se ještě přihlásili k Docker, udělejte to pomocí příkazu [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) , který nahradí `<docker_id>` vaším ID Docker. Tento příkaz vás vyzve k zadání uživatelského jména a hesla. Zpráva o úspěšném přihlášení potvrzuje, že jste přihlášení.
+1. Pokud jste se ještě nepřihlásili do Dockeru, uvažte to pomocí příkazu [přihlášení dockeru](https://docs.docker.com/engine/reference/commandline/login/) a nahraďte je `<docker_id>` ID Dockeru. Tento příkaz zobrazí výzvu k zadání uživatelského jména a hesla. Zpráva "Přihlášení proběhlo úspěšně" potvrzuje, že jste přihlášeni.
 
     ```
     docker login
     ```
     
-1. Až se přihlásíte, nahrajte image do Docker Hub pomocí příkazu [Docker push](https://docs.docker.com/engine/reference/commandline/push/) a znovu nahraďte `<docker_id>` číslem ID Docker.
+1. Po přihlášení převeletimage do Docker Hubu pomocí příkazu push `<docker_id>` [dockeru,](https://docs.docker.com/engine/reference/commandline/push/) který znovu nahradí vaše ID Dockeru.
 
     ```
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
 
-1. V závislosti na rychlosti sítě se může při prvním vložení image trvat několik minut (vkládání dalších změn je mnohem rychlejší). Až budete čekat, můžete přejít k další části a vytvořit prostředky Azure v jiném terminálu.
+1. V závislosti na rychlosti sítě může první stisknutí obrázku trvat několik minut (posun následných změn je mnohem rychlejší). Zatímco čekáte, můžete přejít k další části a vytvořit prostředky Azure v jiném terminálu.
 
-## <a name="create-supporting-azure-resources-for-your-function"></a>Vytvoření podpory prostředků Azure pro vaši funkci
+## <a name="create-supporting-azure-resources-for-your-function"></a>Vytvoření podpůrných prostředků Azure pro vaši funkci
 
-Pokud chcete kód funkce nasadit do Azure, musíte vytvořit tři prostředky:
+Chcete-li nasadit kód funkce do Azure, musíte vytvořit tři prostředky:
 
-- Skupina prostředků, což je logický kontejner pro související prostředky.
-- Účet Azure Storage, který uchovává stav a další informace o vašich projektech.
-- Aplikace Azure Functions, která poskytuje prostředí pro provádění kódu funkce. Aplikace Function App se mapuje na váš místní projekt funkce a umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
+- Skupina prostředků, která je logickým kontejnerem pro související prostředky.
+- Účet Azure Storage, který udržuje stav a další informace o vašich projektech.
+- Aplikace Azure funkce, která poskytuje prostředí pro provádění kódu funkce. Aplikace funkcí se mapuje na projekt místních funkcí a umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazení a sdílení prostředků.
 
-K vytvoření těchto položek použijete příkazy rozhraní příkazového řádku Azure. Každý příkaz poskytuje výstup JSON po dokončení.
+K vytvoření těchto položek se používají příkazy Příkazy příkazového příkazu Azure. Každý příkaz poskytuje výstup JSON po dokončení.
 
-1. Přihlaste se k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) :
+1. Přihlaste se k Azure pomocí příkazu [az login:](/cli/azure/reference-index#az-login)
 
     ```azurecli
     az login
     ```
     
-1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem `AzureFunctionsContainers-rg` v oblasti `westeurope`. (Obecně vytvoříte skupinu prostředků a prostředky v oblasti, která je blízko vás, pomocí dostupné oblasti z příkazu `az account list-locations`.)
+1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu `AzureFunctionsContainers-rg` prostředků `westeurope` s názvem v oblasti. (Skupinu prostředků a prostředky obvykle vytváříte v oblasti ve `az account list-locations` vašem okolí pomocí dostupné oblasti z příkazu.)
 
     ```azurecli
     az group create --name AzureFunctionsContainers-rg --location westeurope
     ```
     
     > [!NOTE]
-    > Nemůžete hostovat aplikace pro Linux a Windows ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `AzureFunctionsContainers-rg` s aplikací Function App nebo webovou aplikací Windows, musíte použít jinou skupinu prostředků.
+    > Linux a Windows nelze hostovat ve stejné skupině prostředků. Pokud máte existující skupinu `AzureFunctionsContainers-rg` prostředků pojmenovanou pomocí aplikace pro funkce Windows nebo webové aplikace, musíte použít jinou skupinu prostředků.
     
-1. Pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create) vytvořte účet úložiště pro obecné účely ve vaší skupině prostředků a oblasti. V následujícím příkladu nahraďte `<storage_name>` globálně jedinečným názvem vhodným pro vás. Názvy musí obsahovat tři až 24 znaků a jenom malá písmena. `Standard_LRS` určuje typický účet pro obecné účely.
+1. Vytvořte účet úložiště pro obecné účely ve skupině prostředků a oblasti pomocí příkazu [vytvořit účet úložiště az.](/cli/azure/storage/account#az-storage-account-create) V následujícím příkladu `<storage_name>` nahraďte globálně jedinečný název, který je vám vhodný. Názvy musí obsahovat pouze tři až 24 písmen a malá písmena. `Standard_LRS`určuje typický účet pro obecné účely.
 
     ```azurecli
     az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
     ```
     
-    Účet úložiště pro tento kurz vyhledá jenom několik centů za USD.
+    Účet úložiště vznikne pouze několik USD centů pro tento kurz.
     
-1. Pomocí příkazu vytvořte plán Premium pro Azure Functions s názvem `myPremiumPlan` v cenové úrovni **elastické Premium 1** (`--sku EP1`), v západní Evropa oblasti (`-location westeurope`nebo použijte vhodnou oblast poblíž) a v kontejneru Linux (`--is-linux`).
+1. Pomocí příkazu vytvořte plán Premium `myPremiumPlan` pro funkce Azure pojmenovaný`--sku EP1`v cenové úrovni Elastic`-location westeurope` **Premium 1** ( ), v oblasti Západní`--is-linux`Evropa ( , nebo použijte vhodnou oblast ve vašem okolí) a v kontejneru Linuxu ( ).
 
     ```azurecli
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    Hostování Linux pro kontejnery vlastních funkcí se podporuje na [vyhrazených plánech (App Service)](functions-scale.md#app-service-plan) a [plánech Premium](functions-premium-plan.md#features). Plán Premium používáme tady, který se může škálovat podle potřeby. Další informace o hostování najdete v [porovnání plánů hostování služby Azure Functions](functions-scale.md). Pokud chcete vypočítat náklady, přečtěte si [stránku s cenami funkcí](https://azure.microsoft.com/pricing/details/functions/).
+    Linux hosting pro vlastní funkce kontejnery jsou podporovány na [vyhrazené (App Service) plány](functions-scale.md#app-service-plan) a [Premium plány](functions-premium-plan.md#features). Zde používáme plán Premium, který lze podle potřeby škálovat. Další informace o hostování najdete v [porovnání plánů hostování služby Azure Functions](functions-scale.md). Chcete-li vypočítat náklady, přečtěte si [stránku S cenami funkce](https://azure.microsoft.com/pricing/details/functions/).
 
-    Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
+    Příkaz také zřídí přidruženou instanci Azure Application Insights ve stejné skupině prostředků, pomocí které můžete sledovat aplikaci funkcí a zobrazit protokoly. Další informace naleznete v [tématu Sledování funkcí Azure](functions-monitoring.md). Instance nevznikne žádné náklady, dokud ji neaktivujete.
 
-## <a name="create-and-configure-a-function-app-on-azure-with-the-image"></a>Vytvoření a konfigurace aplikace Function App v Azure s imagí
+## <a name="create-and-configure-a-function-app-on-azure-with-the-image"></a>Vytvoření a konfigurace aplikace funkcí v Azure pomocí bitové kopie
 
-Aplikace Function App v Azure spravuje spouštění vašich funkcí v plánu hostování. V této části použijete prostředky Azure z předchozí části k vytvoření aplikace Function App z image v Docker Hub a nakonfigurujete ji pomocí připojovacího řetězce, který Azure Storage.
+Aplikace funkcí v Azure spravuje provádění vašich funkcí ve vašem hostingovém plánu. V této části použijete prostředky Azure z předchozí části k vytvoření aplikace funkcí z image v Docker Hubu a nakonfigurujete ji pomocí připojovacího řetězce k Azure Storage.
 
-1. Pomocí příkazu [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) vytvořte aplikaci Functions. V následujícím příkladu nahraďte `<storage_name>` názvem, který jste použili v předchozí části pro účet úložiště. Také nahraďte `<app_name>` globálně jedinečným názvem, který je pro vás vhodný, a `<docker_id>` s ID Docker.
+1. Vytvořte aplikaci Funkce pomocí příkazu [az functionapp create.](/cli/azure/functionapp#az-functionapp-create) V následujícím příkladu `<storage_name>` nahraďte názvem, který jste použili v předchozí části pro účet úložiště. Také `<app_name>` nahraďte globálně jedinečný název, `<docker_id>` který je vám vhodný, a vaše ID Dockeru.
 
     ```azurecli
     az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-    Parametr *Deployment-Container-image-Name* určuje obrázek, který má být použit pro aplikaci Function App. K zobrazení informací o imagi používané pro nasazení můžete použít příkaz [AZ functionapp config Container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) . K nasazení z jiné image můžete použít taky příkaz [AZ functionapp config Container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) .
+    Parametr *název deployment-container-image* určuje bitovou kopii, která se má použít pro aplikaci funkce. Pomocí příkazu [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) můžete zobrazit informace o bitové kopii použité pro nasazení. Můžete také použít [az functionapp config kontejner nastavit](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) příkaz k nasazení z jiné bitové kopie.
 
-1. Pomocí příkazu [AZ Storage Account show-Connection-String](/cli/azure/storage/account) načtěte připojovací řetězec pro účet úložiště, který jste vytvořili, a přiřaďte ho k proměnné prostředí `storageConnectionString`:
+1. Načtěte připojovací řetězec pro účet úložiště, který jste vytvořili, pomocí příkazu `storageConnectionString` [az storage account show-connection-string](/cli/azure/storage/account) a přiřaďte jej proměnné prostředí :
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
     ```
     
-1. Pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) přidejte toto nastavení do aplikace Function App. V následujícím příkazu nahraďte `<app_name>` názvem vaší aplikace Function App a nahraďte `<connection_string>` připojovacím řetězcem z předchozího kroku (řetězec s dlouhým zakódovaným řetězcem začínající "DefaultEndpointProtocol ="):
+1. Přidejte toto nastavení do aplikace funkce pomocí příkazu [az functionapp config appsettings set.](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) V následujícím příkazu `<app_name>` nahraďte názvem aplikace funkce `<connection_string>` a nahraďte připojovacím řetězcem z předchozího kroku (dlouhý kódovaný řetězec začínající řetězcem "DefaultEndpointProtocol="):
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
     ```
 
-1. Tato funkce teď může k účtu úložiště přistupovat pomocí tohoto připojovacího řetězce.
+1. Funkce nyní můžete použít tento připojovací řetězec pro přístup k účtu úložiště.
 
 > [!TIP]
-> V bash můžete použít proměnnou prostředí pro zachycení připojovacího řetězce místo použití schránky. Nejprve pomocí následujícího příkazu vytvořte proměnnou s připojovacím řetězcem:
+> V bash, můžete použít proměnnou prostředí zachytit připojovací řetězec namísto použití schránky. Nejprve pomocí následujícího příkazu vytvořte proměnnou s připojovacím řetězcem:
 > 
 > ```bash
 > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
 > ```
 > 
-> Potom v druhém příkazu použijte proměnnou:
+> Potom naleznete proměnnou v druhém příkazu:
 > 
 > ```azurecli
 > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
 > ```
 
 > [!NOTE]    
-> Pokud publikujete vlastní image na účet privátního kontejneru, měli byste místo toho použít proměnné prostředí v souboru Dockerfile pro připojovací řetězec. Další informace najdete v [pokynech ENV](https://docs.docker.com/engine/reference/builder/#env). Měli byste také nastavit proměnné `DOCKER_REGISTRY_SERVER_USERNAME` a `DOCKER_REGISTRY_SERVER_PASSWORD`. Pokud chcete použít hodnoty, musíte znovu sestavit image, nasdílet image do registru a pak aplikaci Function App znovu spustit v Azure.
+> Pokud publikujete vlastní bitovou kopii do účtu soukromého kontejneru, měli byste místo toho použít proměnné prostředí v souboru Dockerfile pro připojovací řetězec. Další informace naleznete v [pokynech env](https://docs.docker.com/engine/reference/builder/#env). Měli byste také nastavit `DOCKER_REGISTRY_SERVER_USERNAME` `DOCKER_REGISTRY_SERVER_PASSWORD`proměnné a . Chcete-li použít hodnoty, potom je nutné znovu sestavit bitovou kopii, push image do registru a potom restartovat aplikaci funkce v Azure.
 
 ## <a name="verify-your-functions-on-azure"></a>Ověření funkcí v Azure
 
-S imagí nasazenými do aplikace Function App v Azure teď můžete funkci vyvolat pomocí požadavků HTTP. Vzhledem k tomu, že definice *Function. JSON* zahrnuje `"authLevel": "function"`vlastností, musíte nejdřív získat přístupový klíč (označovaný také jako "klíč funkce") a zahrnout ho jako parametr URL do všech požadavků na koncový bod.
+S image nasazené do aplikace funkce v Azure, teď můžete vyvolat funkci prostřednictvím požadavků HTTP. Vzhledem k tomu, že definice `"authLevel": "function"` *function.json* obsahuje vlastnost , musíte nejprve získat přístupový klíč (také nazývaný "funkční klíč") a zahrnout jej jako parametr URL do všech požadavků na koncový bod.
 
-1. Pomocí Azure Portal nebo pomocí Azure CLI pomocí příkazu `az rest` načtěte adresu URL funkce s klíčem Access (Function).)
+1. Načíst adresu URL funkce pomocí přístupového (funkčního) klíče pomocí portálu `az rest` Azure nebo pomocí příkazu Azure CLI.)
 
-    # <a name="portal"></a>[Azure Portal](#tab/portal)
+    # <a name="portal"></a>[Portál](#tab/portal)
 
-    1. Přihlaste se k Azure Portal a pak vyhledejte svou aplikaci Function App zadáním názvu vaší aplikace Functions do **vyhledávacího** pole v horní části stránky. Ve výsledcích vyberte prostředek **App Service** .
+    1. Přihlaste se k portálu Azure portal a vyhledejte aplikaci funkcí zadáním názvu aplikace funkce do **vyhledávacího** pole v horní části stránky. Ve výsledcích vyberte prostředek **služby App Service.**
 
-    1. V levém navigačním panelu v části **funkce (jen pro čtení)** vyberte název funkce.
+    1. Na levém navigačním panelu vyberte v části **Funkce (jen pro čtení)** název funkce.
 
-    1. Na panelu podrobností vyberte **</> získat adresu URL funkce**:
+    1. V panelu podrobnosti vyberte **adresu URL funkce</> Získat**:
     
-        ![Příkaz Get URL funkce na Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
+        ![Příkaz Získat adresu URL funkce na webu Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
 
-    1. V místní nabídce vyberte **výchozí (klíč funkce)** a potom **zkopírujte**. Klíč je řetězec znaků, který následuje po `?code=`.
+    1. Ve vyskakovacím okno vyberte **výchozí (funkční klávesa)** a potom **zkopírujte**. Klíčem je řetězec následujících `?code=`znaků .
 
-        ![Kopírování adresy URL funkce z Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
+        ![Kopírování adresy URL funkce z webu Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
 
     > [!NOTE]  
-    > Vzhledem k tomu, že je vaše aplikace Function App nasazena jako kontejner, nemůžete na portálu provádět změny kódu funkce. Místo toho je nutné projekt aktualizovat v místní imagi, znovu nahrajte image do registru a pak znovu nasadit do Azure. Průběžné nasazování můžete nastavit v pozdější části.
+    > Vzhledem k tomu, že vaše aplikace funkce se nasadí jako kontejner, nemůžete provádět změny kódu funkce na portálu. Místo toho je nutné aktualizovat projekt v místní bitové kopii, znovu přesunout bitovou kopii do registru a znovu nasadit do Azure. Průběžné nasazení můžete nastavit v pozdější části.
     
     # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-    1. Vytvořte řetězec adresy URL v následujícím formátu, nahraďte `<subscription_id>`, `<resource_group>`a `<app_name>` s ID předplatného Azure, skupinou prostředků vaší aplikace Function App a názvem vaší aplikace Function App (v uvedeném pořadí):
+    1. Vytvořte řetězec ADRESY URL v `<subscription_id>`následujícím `<resource_group>`formátu, který nahradí , a `<app_name>` s ID předplatného Azure, skupiny prostředků vaší aplikace funkce a název aplikace funkce, v uvedeném pořadí:
 
         ```
         "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Web/sites/<app_name>/host/default/listKeys?api-version=2018-11-01"
@@ -403,53 +403,53 @@ S imagí nasazenými do aplikace Function App v Azure teď můžete funkci vyvol
         ```
 
         > [!TIP]
-        > Pro pohodlí můžete místo toho přiřadit adresu URL proměnné prostředí a použít ji v příkazu `az rest`.
+        > Pro větší pohodlí můžete místo toho přiřadit adresu URL `az rest` proměnné prostředí a použít ji v příkazu.
     
-    1. Spusťte následující příkaz `az rest` (k dispozici v Azure CLI verze 2.0.77 a novější) nahraďte `<uri>` řetězcem URI z posledního kroku včetně uvozovek:
+    1. Spusťte `az rest` následující příkaz (k dispozici ve verzi Azure CLI verze `<uri>` 2.0.77 a novější), který nahradí řetězec URI z posledního kroku, včetně uvozovek:
 
         ```azurecli
         az rest --method post --uri <uri> --query functionKeys.default --output tsv
         ```
 
-    1. Výstupem příkazu je klíč funkce. Úplná adresa URL funkce se pak `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`, nahradí `<app_name>`, `<function_name>`a `<key>` s konkrétními hodnotami.
+    1. Výstuppříkazu je funkční klávesa. Adresa URL plné `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`funkce je `<app_name>` `<function_name>`pak `<key>` , nahrazení , a vaše konkrétní hodnoty.
     
         > [!NOTE]
-        > Klíč, který se načte tady, je *hostitelský* klíč, který funguje pro všechny funkce aplikace Functions. Metoda zobrazená na portálu načítá klíč pouze pro jednu funkci.
+        > Klíč načtený zde je *hostitelský* klíč, který funguje pro všechny funkce v aplikaci funkce; metoda zobrazená pro portál načte klíč pouze pro jednu funkci.
 
     ---
 
-1. Vložte adresu URL funkce do adresního řádku prohlížeče a přidejte parametr `&name=Azure` na konec této adresy URL. V prohlížeči by se měl objevit text jako Hello Azure.
+1. Vložte adresu URL funkce do adresního `&name=Azure` řádku prohlížeče a přidejte parametr na konec této adresy URL. Text jako "Hello Azure" by se měl zobrazit v prohlížeči.
 
     ![Odezva funkce v prohlížeči.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
 
-1. Chcete-li otestovat autorizaci, odeberte z adresy URL parametr Code = a ověřte, že funkce nezíská žádnou odpověď.
+1. Chcete-li otestovat autorizaci, odeberte parametr code= z adresy URL a ověřte, že z funkce nedostanete žádnou odpověď.
 
 
-## <a name="enable-continuous-deployment-to-azure"></a>Povolení průběžného nasazování do Azure
+## <a name="enable-continuous-deployment-to-azure"></a>Povolení průběžného nasazení do Azure
 
-Můžete povolit, aby Azure Functions automaticky aktualizovala nasazení image vždy, když aktualizujete image v registru.
+Funkce Azure můžete povolit automatické aktualizace nasazení bitové kopie při každé aktualizaci bitové kopie v registru.
 
-1. Pomocí příkazu [AZ functionapp Deployment Container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) povolte průběžné nasazování a nahraďte `<app_name>` názvem vaší aplikace Function App:
+1. Povolte průběžné nasazení pomocí [příkazu konfigurace kontejneru nasazení az functionapp,](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) který nahradí `<app_name>` název aplikace funkce:
 
     ```azurecli
     az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
     ```
     
-    Tento příkaz umožňuje průběžné nasazování a vrací adresu URL Webhooku nasazení. (Tuto adresu URL můžete v pozdější době načíst pomocí příkazu [AZ functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) .)
+    Tento příkaz umožňuje průběžné nasazení a vrátí adresu URL webhooku nasazení. (Tuto adresu URL můžete načíst kdykoli později pomocí příkazu [az functionapp deployment container show-cd-url.)](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url)
 
-1. Zkopírujte adresu URL Webhooku nasazení do schránky.
+1. Zkopírujte adresu URL webhooku nasazení do schránky.
 
-1. Otevřete okno [Docker Hub](https://hub.docker.com/), přihlaste se a v navigačním panelu vyberte **úložiště** . Najděte a vyberte obrázek, vyberte kartu **Webhooky** , zadejte **název Webhooku**, vložte adresu URL do pole **Webhook URL**a pak vyberte **vytvořit**:
+1. Otevřete [Centrum Dockeru](https://hub.docker.com/), přihlaste se a na panelu na vyvolených vyberte **Úložiště.** Vyhledejte a vyberte obrázek, vyberte kartu **Webhooks,** zadejte **název Webhooku**, vložte adresu URL do **adresy URL webhooku**a pak vyberte **Vytvořit**:
 
-    ![Přidání Webhooku do úložiště Dockerhubu](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+    ![Přidání webového háčku do úložiště DockerHubu](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
-1. Při nastavení Webhooku Azure Functions znovu nasazovat image, kdykoli ji aktualizujete v Docker Hub.
+1. Se sadou webhooku Azure Functions znovu nasadí vaši image při každé aktualizaci v Docker Hubu.
 
-## <a name="enable-ssh-connections"></a>Povolit připojení SSH
+## <a name="enable-ssh-connections"></a>Povolení připojení SSH
 
-SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Když je povolený SSH, můžete se k kontejneru připojit pomocí nástrojů App Service Advanced Tools (Kudu). Aby se usnadnilo připojení ke kontejneru pomocí SSH, Azure Functions poskytuje základní image, která má již povolený SSH. Potřebujete jenom upravit souboru Dockerfile, pak image znovu sestavit a znovu nasadit. Pak se můžete připojit k kontejneru pomocí pokročilých nástrojů (Kudu).
+SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. S povolenou funkcí SSH se můžete připojit ke svému kontejneru pomocí pokročilých nástrojů služby App Service (Kudu). Chcete-li usnadnit připojení ke kontejneru pomocí SSH, Funkce Azure poskytuje základní image, která má SSH již povolena. Stačí upravit soubor Dockerfile a potom znovu sestavit a znovu nasadit bitovou kopii. Poté se můžete připojit ke kontejneru prostřednictvím rozšířeného nástroje (Kudu)
 
-1. V souboru Dockerfile přidejte řetězec `-appservice` k základní imagi ve vaší `FROM` instrukci:
+1. Ve vašem Dockerfile, připojit `-appservice` řetězec k základní `FROM` image v instrukci:
 
     ::: zone pivot="programming-language-csharp"
     ```Dockerfile
@@ -481,78 +481,78 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Když je po
     ```
     ::: zone-end
 
-    Rozdíly mezi základními bitovými kopiemi jsou popsány v [kurzu App Services-vlastní image Docker](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections).
+    Rozdíly mezi základní image jsou popsány v [aplikační služby – vlastní docker image kurzu](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections).
 
-1. Znovu sestavte bitovou kopii pomocí příkazu `docker build` a nahraďte `<docker_id>` číslem ID Docker:
+1. Znovu sestavte `docker build` obraz pomocí příkazu znovu a nahraďte `<docker_id>` se svým ID Dockeru:
 
     ```
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
     ```
     
-1. Nahrajte aktualizovanou bitovou kopii do dokovacího centra, které by mělo trvat mnohem méně času než první nabízená oznámení. je potřeba nahrát jenom aktualizované segmenty image.
+1. Posuňte aktualizovanou bitovou kopii do centra Docker Hub, což by mělo trvat podstatně méně času než první nabízená zpráva, že je potřeba nahrát pouze aktualizované segmenty bitové kopie.
 
     ```
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Azure Functions automaticky znovu nasadí image do vaší aplikace Functions. proces probíhá za méně než minutu.
+1. Funkce Azure automaticky znovu nasadí image do aplikace funkce; proces probíhá za méně než minutu.
 
-1. V prohlížeči otevřete `https://<app_name>.scm.azurewebsites.net/`a nahraďte `<app_name>` jedinečným názvem. Tato adresa URL je koncový bod pokročilých nástrojů (Kudu) pro váš kontejner aplikace Function App.
+1. V prohlížeči `https://<app_name>.scm.azurewebsites.net/`otevřete `<app_name>` a nahraďte jedinečným jménem. Tato adresa URL je koncový bod Rozšířené nástroje (Kudu) pro kontejner aplikace funkce.
 
-1. Přihlaste se ke svému účtu Azure a pak vyberte **SSH** , aby se navázalo připojení ke kontejneru. V případě, že Azure stále probíhá proces aktualizace image kontejneru, může chvíli trvat připojení.
+1. Přihlaste se ke svému účtu Azure a pak vyberte **SSH** pro navázání připojení s kontejnerem. Připojení může trvat několik okamžiků, pokud Azure je stále v procesu aktualizace image kontejneru.
 
-1. Po navázání připojení s vaším kontejnerem spusťte příkaz `top` pro zobrazení aktuálně spuštěných procesů. 
+1. Po navázání připojení s kontejnerem `top` spusťte příkaz a zobrazte aktuálně spuštěné procesy. 
 
-    ![Horní příkaz pro Linux běžící v relaci SSH](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
+    ![Linux top příkaz běží v relaci SSH](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
-## <a name="write-to-an-azure-storage-queue"></a>Zapsat do fronty Azure Storage
+## <a name="write-to-an-azure-storage-queue"></a>Zápis do fronty Azure Storage
 
-Azure Functions vám umožní připojit vaše funkce k dalším službám a prostředkům Azure, které musí napsat vlastní kód pro integraci. Tyto *vazby*, které představují vstupní i výstupní, jsou deklarovány v rámci definice funkce. Data z vazeb jsou k dispozici funkci jako parametry. *Trigger* je speciální typ vstupní vazby. I když má funkce pouze jednu Trigger, může mít více vstupních a výstupních vazeb. Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
+Funkce Azure vám umožní připojit vaše funkce k dalším službám Azure a prostředkům, které musí psát vlastní integrační kód. Tyto *vazby*, které představují vstup i výstup, jsou deklarovány v rámci definice funkce. Data z vazeb jsou k dispozici funkci jako parametry. *Aktivační událost* je zvláštní typ vstupní vazby. Přestože funkce má pouze jednu aktivační událost, může mít více vstupních a výstupních vazeb. Další informace najdete v [tématu Azure Functions aktivační události a vazby koncepty](functions-triggers-bindings.md).
 
-V této části se dozvíte, jak integrovat funkci do fronty Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
+V této části se zobrazí, jak integrovat funkci s frontou azure storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>Načtení připojovacího řetězce Azure Storage
+## <a name="retrieve-the-azure-storage-connection-string"></a>Načtení připojovacího řetězce úložiště Azure
 
-Dříve jste vytvořili účet Azure Storage, který bude používat aplikace Function App. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. Stažením nastavení do souboru *Local. Settings. JSON* můžete toto připojení použít pro zápis do fronty úložiště ve stejném účtu, pokud je funkce spuštěná místně. 
+Dříve jste vytvořili účet Úložiště Azure pro použití aplikací funkce. Připojovací řetězec pro tento účet se bezpečně uchovává v nastavení aplikace v Azure. Stažením nastavení do souboru *local.settings.json* můžete toto připojení použít do fronty úložiště ve stejném účtu při místním spuštění funkce. 
 
-1. Z kořenového adresáře projektu spusťte následující příkaz, ve kterém nahradíte `<app_name>` názvem vaší aplikace Function App z předchozího rychlého startu. Tento příkaz přepíše všechny existující hodnoty v souboru.
+1. V kořenovém adresáři projektu spusťte `<app_name>` následující příkaz, který nahradí název aplikace funkce z předchozího rychlého startu. Tento příkaz přepíše všechny existující hodnoty v souboru.
 
     ```
     func azure functionapp fetch-app-settings <app_name>
     ```
     
-1. Otevřete *Local. Settings. JSON* a vyhledejte hodnotu s názvem `AzureWebJobsStorage`, což je připojovací řetězec účtu úložiště. Použijete název `AzureWebJobsStorage` a připojovací řetězec v dalších částech tohoto článku.
+1. Otevřete *soubor local.settings.json* `AzureWebJobsStorage`a vyhledejte hodnotu s názvem , což je připojovací řetězec účtu úložiště. Název `AzureWebJobsStorage` a připojovací řetězec v jiných částech tohoto článku.
 
 > [!IMPORTANT]
-> Protože *Local. Settings. JSON* obsahuje tajné kódy stažené z Azure, tento soubor vždycky vylučte ze správy zdrojového kódu. Soubor *. gitignore* vytvořený pomocí projektu místní funkce vyloučí soubor ve výchozím nastavení.
+> Vzhledem k tomu, *že local.settings.json* obsahuje tajné klíče stažené z Azure, vždy vyloučit tento soubor ze správy zdrojového kódu. Soubor *.gitignore* vytvořený s projektem místních funkcí ve výchozím nastavení vyloučí soubor.
 
-### <a name="add-an-output-binding-to-functionjson"></a>Přidání výstupní vazby do Function. JSON
+### <a name="add-an-output-binding-to-functionjson"></a>Přidání výstupní vazby do souboru function.json
 
-V Azure Functions každý typ vazby vyžaduje, aby bylo v souboru *Function. JSON* definováno `direction`, `type`a jedinečné `name`. Vaše *funkce. JSON* už obsahuje vstupní vazbu pro typ "httpTrigger" a výstupní vazbu pro odpověď HTTP. Chcete-li přidat vazbu do fronty úložiště, upravte soubor následujícím způsobem, který přidá výstupní vazbu pro typ "fronta", kde se fronta zobrazí v kódu jako vstupní argument s názvem `msg`. Vazba fronty také vyžaduje název fronty, která se má použít, v tomto případě `outqueue`a název nastavení, které obsahuje připojovací řetězec, v tomto případě `AzureWebJobStorage`.
+V Azure Functions každý typ `direction`vazby `type`vyžaduje `name` , a jedinečný, které mají být definovány v souboru *function.json.* Vaše *function.json* již obsahuje vstupní vazbu pro typ "httpTrigger" a výstupní vazbu pro odpověď HTTP. Chcete-li přidat vazbu do fronty úložiště, upravte soubor následujícím způsobem, který přidá výstupní vazbu pro typ "queue", kde se fronta zobrazí v kódu jako vstupní argument s názvem `msg`. Vazba fronty také vyžaduje název fronty, který `outqueue`má být v tomto případě používán , a `AzureWebJobStorage`název nastavení, které obsahuje připojovací řetězec, v tomto případě .
 
 ::: zone pivot="programming-language-csharp"
 
-V projektu C# knihovny tříd jsou vazby definovány jako atributy vazby v metodě Function. Soubor *Function. JSON* se pak automaticky generuje na základě těchto atributů.
+V projektu knihovny tříd jazyka C# jsou vazby definovány jako atributy vazby na metodě funkce. Soubor *function.json* je pak automaticky generován na základě těchto atributů.
 
-1. Pro vazbu fronty spusťte následující příkaz [dotnet přidat balíček](/dotnet/core/tools/dotnet-add-package) a přidejte do projektu balíček rozšíření úložiště.
+1. Pro vazbu fronty spusťte následující příkaz [dotnet add package](/dotnet/core/tools/dotnet-add-package) a přidejte balíček rozšíření úložiště do projektu.
 
     ```
     dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
     ```
 
-1. Otevřete soubor *HttpTrigger.cs* a přidejte následující příkaz `using`:
+1. Otevřete *soubor HttpTrigger.cs* a `using` přidejte následující příkaz:
 
     ```cs
     using Microsoft.Azure.WebJobs.Extensions.Storage;
     ```
     
-1. Do definice metody `Run` přidejte následující parametr:
+1. Do definice `Run` metody přidejte následující parametr:
     
     ```csharp
     [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
     ```
     
-    Definice metody `Run` by nyní měla odpovídat následujícímu kódu:
+    Definice `Run` metody by nyní měla odpovídat následujícímu kódu:
     
     ```csharp
     [FunctionName("HttpTrigger")]
@@ -561,13 +561,13 @@ V projektu C# knihovny tříd jsou vazby definovány jako atributy vazby v metod
         [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
     ```
 
-Parametr `msg` je `ICollector<T>` typ, který představuje kolekci zpráv zapsaných do výstupní vazby po dokončení funkce. V tomto případě je výstupem fronta úložiště s názvem `outqueue`. Připojovací řetězec pro účet úložiště je nastaven `StorageAccountAttribute`. Tento atribut označuje nastavení, které obsahuje připojovací řetězec účtu úložiště a dá se použít na úrovni třídy, metody nebo parametru. V takovém případě můžete `StorageAccountAttribute` vynechat, protože už používáte výchozí účet úložiště.
+Parametr `msg` je `ICollector<T>` typ, který představuje kolekci zpráv, které jsou zapsány do výstupní vazby po dokončení funkce. V tomto případě je výstupem `outqueue`fronta úložiště s názvem . Připojovací řetězec pro účet `StorageAccountAttribute`úložiště je nastaven . Tento atribut označuje nastavení, které obsahuje připojovací řetězec účtu úložiště a lze jej použít na úrovni třídy, metody nebo parametru. V takovém případě můžete vynechat, `StorageAccountAttribute` protože už používáte výchozí účet úložiště.
 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
 
-Aktualizujte *funkci Function. JSON* tak, aby odpovídala následujícímu po přidání vazby fronty za vazby http:
+Aktualizujte *soubor function.json* tak, aby odpovídal následujícímu, přidáním vazby fronty za vazbu HTTP:
 
 ```json
 {
@@ -601,7 +601,7 @@ Aktualizujte *funkci Function. JSON* tak, aby odpovídala následujícímu po p�
 
 ::: zone pivot="programming-language-powershell"
 
-Aktualizujte *funkci Function. JSON* tak, aby odpovídala následujícímu po přidání vazby fronty za vazby http:
+Aktualizujte *soubor function.json* tak, aby odpovídal následujícímu, přidáním vazby fronty za vazbu HTTP:
 
 ```json
 {
@@ -635,7 +635,7 @@ Aktualizujte *funkci Function. JSON* tak, aby odpovídala následujícímu po p�
 
 ::: zone pivot="programming-language-python"
 
-Aktualizujte *funkci Function. JSON* tak, aby odpovídala následujícímu po přidání vazby fronty za vazby http:
+Aktualizujte *soubor function.json* tak, aby odpovídal následujícímu, přidáním vazby fronty za vazbu HTTP:
 
 ```json
 {
@@ -670,7 +670,7 @@ Aktualizujte *funkci Function. JSON* tak, aby odpovídala následujícímu po p�
 
 ::: zone pivot="programming-language-typescript"
 
-Aktualizujte *funkci Function. JSON* tak, aby odpovídala následujícímu po přidání vazby fronty za vazby http:
+Aktualizujte *soubor function.json* tak, aby odpovídal následujícímu, přidáním vazby fronty za vazbu HTTP:
 
 ```json
 {
@@ -702,9 +702,9 @@ Aktualizujte *funkci Function. JSON* tak, aby odpovídala následujícímu po p�
 ```
 ::: zone-end
 
-## <a name="add-code-to-use-the-output-binding"></a>Přidat kód pro použití výstupní vazby
+## <a name="add-code-to-use-the-output-binding"></a>Přidání kódu pro použití výstupní vazby
 
-Po definování vazby se název vazby v tomto případě `msg`zobrazí v kódu funkce jako argument (nebo v objektu `context` v jazyce JavaScript a TypeScript). Tuto proměnnou pak můžete použít k zápisu zpráv do fronty. Musíte napsat jakýkoliv kód pro ověřování, získat odkaz na frontu nebo zapisovat data. Všechny tyto úkoly integrace jsou pohodlně zpracovávány v Azure Functions modul runtime a výstupní vazba fronty.
+Po definování vazby se název vazby v `msg`tomto případě zobrazí v kódu funkce `context` jako argument (nebo v objektu v jazyce JavaScript a TypeScript). Tuto proměnnou pak můžete použít k zápisu zpráv do fronty. Je třeba napsat libovolný kód pro ověřování, získání odkazu na frontu nebo zápis dat. Všechny tyto úlohy integrace jsou pohodlně zpracovány v Azure Functions runtime a fronty výstupní vazby.
 
 ::: zone pivot="programming-language-csharp"
 ```csharp
@@ -854,31 +854,31 @@ export default httpTrigger;
 ```
 ::: zone-end
 
-### <a name="update-the-image-in-the-registry"></a>Aktualizace image v registru
+### <a name="update-the-image-in-the-registry"></a>Aktualizace bitové kopie v registru
 
-1. V kořenové složce znovu spusťte `docker build` a tentokrát aktualizujte verzi ve značce na `v1.0.1`. Stejně jako dřív nahraďte `<docker_id>` číslem účtu Docker Hub:
+1. V kořenové složce spusťte `docker build` znovu a tentokrát `v1.0.1`aktualizujte verzi značky na . Stejně jako `<docker_id>` dříve nahraďte ID účtu Centra Docker:
 
     ```
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.1
     ```
     
-1. Nahrajte aktualizovaný obrázek zpátky do úložiště pomocí `docker push`:
+1. Zatlačte aktualizovaný obrázek zpět `docker push`do úložiště pomocí :
 
     ```
     docker push <docker_id>/azurefunctionsimage:v1.0.1
     ```
 
-1. Vzhledem k tomu, že jste nakonfigurovali průběžné doručování, aktualizace image v registru znovu automaticky aktualizuje aplikaci Function App v Azure.
+1. Vzhledem k tomu, že jste nakonfigurovali průběžné doručování, aktualizace bitové kopie v registru znovu automaticky aktualizuje vaši aplikaci funkce v Azure.
 
 ## <a name="view-the-message-in-the-azure-storage-queue"></a>Zobrazení zprávy ve frontě Azure Storage
 
-V prohlížeči použijte stejnou adresu URL jako před voláním funkce. V prohlížeči by se měla zobrazit stejná odpověď jako předtím, protože jste tuto část kódu funkce nezměnili. Přidaný kód však zapsal zprávu pomocí parametru `name` URL do fronty úložiště `outqueue`.
+V prohlížeči použijte stejnou adresu URL jako dříve k vyvolání funkce. Prohlížeč by měl zobrazit stejnou odpověď jako dříve, protože jste tuto část kódu funkce neupravili. Přidaný kód však napsal zprávu `name` pomocí parametru URL do fronty `outqueue` úložiště.
 
-Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickstart-queues-portal.md) nebo v [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/). Tuto frontu můžete také zobrazit v rozhraní příkazového řádku Azure CLI, jak je popsáno v následujících krocích:
+Frontu můžete zobrazit na [webu Azure Portal](../storage/queues/storage-quickstart-queues-portal.md) nebo v [Průzkumníkovi úložiště Microsoft Azure](https://storageexplorer.com/). Frontu můžete také zobrazit v příkazovém příkazu k dispozici pro Azure, jak je popsáno v následujících krocích:
 
-1. Otevřete soubor *Local. Setting. JSON* projektu funkce a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo příkazovém okně spusťte následující příkaz, který vytvoří proměnnou prostředí s názvem `AZURE_STORAGE_CONNECTION_STRING`a místo `<connection_string>`bude vkládat konkrétní připojovací řetězec. (Tato proměnná prostředí znamená, že připojovací řetězec nemusíte zadávat do každého následného příkazu pomocí argumentu `--connection-string`.)
+1. Otevřete soubor *local.setting.json* projektu funkce a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo příkazovém okně spusťte `AZURE_STORAGE_CONNECTION_STRING`následující příkaz a vytvořte proměnnou prostředí s názvem a místo ní vložte konkrétní připojovací řetězec `<connection_string>`. (Tato proměnná prostředí znamená, že není nutné zadávat připojovací řetězec ke každému následnému příkazu pomocí argumentu.) `--connection-string`
 
-    # <a name="bash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -890,7 +890,7 @@ Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickst
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -898,9 +898,9 @@ Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickst
     
     ---
     
-1. Volitelné Pomocí příkazu [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) můžete zobrazit fronty úložiště ve vašem účtu. Výstup z tohoto příkazu by měl zahrnovat frontu s názvem `outqueue`, která byla vytvořena při zapsání první zprávy do této fronty.
+1. (Nepovinné) Pomocí [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) příkazu můžete zobrazit fronty úložiště ve vašem účtu. Výstup z tohoto příkazu by `outqueue`měl obsahovat frontu s názvem , která byla vytvořena, když funkce napsala svou první zprávu do této fronty.
     
-    # <a name="bash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```azurecli
     az storage queue list --output tsv
@@ -912,7 +912,7 @@ Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickst
     az storage queue list --output tsv
     ```
     
-    # <a name="cmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```azurecli
     az storage queue list --output tsv
@@ -920,9 +920,9 @@ Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickst
     
     ---
 
-1. Pomocí příkazu [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) můžete zobrazit zprávy v této frontě, které by měly být křestní jméno, které jste použili při předchozím testování funkce. Příkaz načte první zprávu ve frontě v [kódování Base64](functions-bindings-storage-queue-trigger.md#encoding), takže musíte také dekódovat zprávu, aby se zobrazila jako text.
+1. Pomocí [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) příkazu můžete zobrazit zprávy v této frontě, což by mělo být první jméno, které jste použili při testování funkce dříve. Příkaz načte první zprávu ve frontě v [kódování base64](functions-bindings-storage-queue-trigger.md#encoding), takže je nutné také dekódovat zprávu, která má být zobrazována jako text.
 
-    # <a name="bash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
@@ -934,17 +934,17 @@ Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickst
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
-    Vzhledem k tomu, že je potřeba odkázat na shromažďování zpráv a dekódovat z formátu base64, spusťte PowerShell a použijte příkaz prostředí PowerShell.
+    Protože potřebujete odkazovat na kolekci zpráv a dekódovat z base64, spusťte PowerShell a použijte příkaz PowerShell.
 
     ---
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat v práci s funkcí Azure pomocí prostředků, které jste vytvořili v tomto kurzu, můžete ponechat všechny tyto prostředky na místě. Vzhledem k tomu, že jste pro Azure Functions vytvořili plán Premium, za průběžné náklady se vám bude účtovat jedna nebo dvě USD za den.
+Pokud chcete pokračovat v práci s Azure Function pomocí prostředků, které jste vytvořili v tomto kurzu, můžete ponechat všechny tyto prostředky na místě. Protože jste vytvořili prémiový plán pro funkce Azure, bude vám účtovánjeden nebo dva USD za den v průběžných nákladech.
 
-Chcete-li se vyhnout průběžným nákladům, odstraňte skupinu prostředků `AzureFunctionsContainer-rg` pro vyčištění všech prostředků v této skupině: 
+Chcete-li se vyhnout `AzureFunctionsContainer-rg` průběžných nákladů, odstraňte skupinu prostředků a vyčistěte všechny prostředky v této skupině: 
 
 ```azurecli
 az group delete --name AzureFunctionsContainer-rg
@@ -952,6 +952,6 @@ az group delete --name AzureFunctionsContainer-rg
 
 ## <a name="next-steps"></a>Další kroky
 
-+ [Funkce monitorování](functions-monitoring.md)
++ [Monitorovací funkce](functions-monitoring.md)
 + [Možnosti škálování a hostování](functions-scale.md)
-+ [Hostování bez serveru založené na Kubernetes](functions-kubernetes-keda.md)
++ [Hosting bez serveru založený na Kubernetes](functions-kubernetes-keda.md)

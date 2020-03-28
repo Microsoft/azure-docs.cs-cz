@@ -1,20 +1,20 @@
 ---
-title: Skript PowerShellu pro získání propustnosti (RU/s) pro Azure Cosmos DB rozhraní API pro tabulky
-description: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro tabulky
+title: Skript Prostředí PowerShell pro získání propustnosti (RU/s) pro rozhraní API tabulky DB Azure Cosmos
+description: Skript Azure PowerShell – propustnost Azure Cosmos DB get (RU/s) pro rozhraní TABLE API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 76645dee5927b321b0a974911ce6514d4277c6c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0129b03e578d00689f085281d0499830e6ba37c2
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441292"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365570"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Získat propustnost (RU/s) pro tabulku Azure Cosmos DB-rozhraní API pro tabulky
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Získání propustnost (RU/s) pro tabulku pro Azure Cosmos DB – rozhraní TABLE API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBTablePrůchodput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Získá hodnotu propustnost zadané tabulky rozhraní API tabulka. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

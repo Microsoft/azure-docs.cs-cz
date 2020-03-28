@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – konfigurace virtuálních počítačů se systémem Linux v Azure pomocí Ansible
-description: V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač se systémem Linux v Azure pomocí Ansible.
+title: Úvodní příručka – Konfigurace virtuálních počítačů Linuxu v Azure pomocí Ansible
+description: V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač Linuxu v Azure pomocí Ansible
 keywords: ansible, azure, devops, virtual machine
 ms.topic: tutorial
 ms.service: ansible
@@ -8,23 +8,23 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 7ee17fa1ddb0c70921f8a9625944053e71ec016f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 111003718fc82683f1756276132def0aea7b7375
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202379"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239558"
 ---
-# <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>Rychlý Start: Konfigurace virtuálních počítačů se systémem Linux v Azure pomocí Ansible
+# <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>Úvodní příručka: Konfigurace virtuálních počítačů Linuxu v Azure pomocí Ansible
 
-Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, konfiguraci a nasazování prostředků Azure prostřednictvím *playbooků* Ansible. Tento článek představuje ukázkovou Ansible PlayBook pro konfiguraci virtuálních počítačů se systémem Linux. [Kompletní playbook Ansible](#complete-sample-ansible-playbook) je uvedený na konci tohoto článku.
+Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, konfiguraci a nasazování prostředků Azure prostřednictvím *playbooků* Ansible. Tento článek představuje ukázkový playbook Ansible pro konfiguraci virtuálních počítačů Linuxu. [Kompletní playbook Ansible](#complete-sample-ansible-playbook) je uvedený na konci tohoto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)]
 
-## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Ansible potřebuje skupinu prostředků, ve které jsou nasazené vaše prostředky. Následující část ukázkového playbooku Ansible vytvoří skupinu prostředků `myResourceGroup` v umístění `eastus`:
 
@@ -66,7 +66,7 @@ Následující část ukázkového playbooku Ansible vytvoří podsíť `mySubne
 
 
 
-[Veřejné IP adresy](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) umožňují internetovým prostředkům příchozí komunikaci s prostředky Azure. Veřejné IP adresy taky umožňují prostředkům Azure komunikovat odchozím službám Azure, které jsou veřejně přístupné. V obou případech IP adresa přiřazená k prostředku, ke kterému se přistupoval. Adresa je vyhrazená pro prostředek, dokud ho neodstraníte. Pokud není k prostředku přiřazená veřejná IP adresa, může prostředek dál komunikovat odchozí připojení k Internetu. Připojení provede Azure dynamicky přiřazující dostupnou IP adresu. Dynamicky přiřazená adresa není pro prostředek vyhrazená.
+[Veřejné IP adresy](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) umožňují internetovým prostředkům komunikovat příchozí do prostředků Azure. Veřejné IP adresy také umožňují prostředkům Azure komunikovat odchozí do veřejných služeb Azure. V obou případech ip adresa přiřazená k prostředku, ke zdroji, ke zdroji, ke zdroji, ke zdroji. Adresa je vyhrazena pro prostředek, dokud jej neodřadíte. Pokud není prostředek přiřazen k veřejné IP adrese, může prostředek stále komunikovat odchozí do Internetu. Připojení se provádí dynamickým přiřazením dostupné IP adresy Azure. Dynamicky přiřazená adresa není vyhrazena pro prostředek.
 
 Následující část ukázkového playbooku Ansible vytvoří veřejnou IP adresu `myPublicIP`:
 
@@ -80,9 +80,9 @@ Následující část ukázkového playbooku Ansible vytvoří veřejnou IP adre
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-[Skupiny zabezpečení sítě](/azure/virtual-network/security-overview) filtrují síťový provoz mezi prostředky Azure ve virtuální síti. Jsou definovaná pravidla zabezpečení, která řídí příchozí a odchozí provoz do a z prostředků Azure. Další informace o prostředcích Azure a skupinách zabezpečení sítě najdete v tématu [Integrace virtuální sítě pro služby Azure](/azure/virtual-network/virtual-network-for-azure-services) .
+[Skupiny zabezpečení sítě](/azure/virtual-network/security-overview) filtrují síťový provoz mezi prostředky Azure ve virtuální síti. Pravidla zabezpečení jsou definovány, které řídí příchozí a odchozí provoz do a z prostředků Azure. Další informace o prostředcích Azure a skupinách zabezpečení sítě najdete v tématu [Integrace virtuálních sítí pro služby Azure.](/azure/virtual-network/virtual-network-for-azure-services)
 
-Následující PlayBook vytvoří skupinu zabezpečení sítě s názvem `myNetworkSecurityGroup`. Skupina zabezpečení sítě obsahuje pravidlo, které povoluje provoz SSH na portu TCP 22.
+Následující playbook vytvoří skupinu `myNetworkSecurityGroup`zabezpečení sítě s názvem . Skupina zabezpečení sítě obsahuje pravidlo, které umožňuje přenosssh na portu TCP 22.
 
 ```yaml
 - name: Create Network Security Group that allows SSH
@@ -102,7 +102,7 @@ Následující PlayBook vytvoří skupinu zabezpečení sítě s názvem `myNetw
 
 Virtuální síťová karta propojí váš virtuální počítač s danou virtuální sítí, veřejnou IP adresou a skupinou zabezpečení sítě. 
 
-V následující části ukázkového oddílu Ansible PlayBook se vytvoří virtuální síťová karta s názvem `myNIC` připojená k prostředkům virtuální sítě, kterou jste vytvořili:
+Následující část v ukázkové části Ansible Playbook vytvoří `myNIC` kartu rozhraní virtuální sítě s názvem připojenou k prostředkům virtuální sítě, které jste vytvořili:
 
 ```yaml
 - name: Create virtual network interface card
@@ -115,7 +115,7 @@ V následující části ukázkového oddílu Ansible PlayBook se vytvoří virt
     security_group: myNetworkSecurityGroup
 ```
 
-## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 Posledním krokem je vytvoření virtuálního počítače, který používá všechny prostředky, které jste vytvořili v předchozích částech tohoto článku. 
 
@@ -214,21 +214,21 @@ Tato část obsahuje úplný ukázkový playbook Ansible, který jste vytvořili
 
 Tato část vás provede spuštěním ukázkového playbooku Ansible z tohoto článku.
 
-1. Přihlaste se k webu [Portál Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Otevřete [Cloud Shell](/azure/cloud-shell/overview).
+1. Otevřete [prostředí Cloud Shell](/azure/cloud-shell/overview).
 
 1. Následujícím způsobem vytvořte soubor `azure_create_complete_vm.yml`, který bude obsahovat váš playbook, a otevřete ho v editoru VI:
 
-   ```azurecli-interactive
+   ```bash
    vi azure_create_complete_vm.yml
    ```
 
-1. Stisknutím klávesy **I** přejděte do režimu vkládání.
+1. Vstupte do režimu vložení výběrem klávesy **I.**
 
 1. Vložte do editoru [kompletní ukázkový playbook Ansible](#complete-sample-ansible-playbook).
 
-1. Stisknutím klávesy **Esc** ukončete režim vkládání.
+1. Ukončit režim vložení výběrem klávesy **Esc.**
 
 1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
 
@@ -289,4 +289,4 @@ Tato část vás provede spuštěním ukázkového playbooku Ansible z tohoto č
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Rychlý Start: Správa virtuálního počítače se systémem Linux v Azure pomocí Ansible](./ansible-manage-linux-vm.md)
+> [Úvodní příručka: Správa virtuálního počítače s Linuxem v Azure pomocí Ansible](./ansible-manage-linux-vm.md)

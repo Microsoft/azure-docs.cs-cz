@@ -1,20 +1,20 @@
 ---
-title: Skript PowerShellu pro vytvoření Azure Cosmos DB databáze a kontejneru rozhraní API SQL (jádro)
-description: Azure PowerShell skriptu – Azure Cosmos DB vytvoření databáze a kontejneru rozhraní API SQL (jádro)
+title: Skript PowerShellu pro vytvoření databáze a kontejneru rozhraní SQL API Azure Cosmos DB
+description: Skript Azure PowerShell – Azure Cosmos DB vytvoří databázi a kontejner rozhraní SQL API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5a57b8cb3e4e7076d3be73a9010d9a29a8b004a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 719e2cd831a982c62ab965cd7dc8a37c4cb41265
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441363"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365630"
 ---
-# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Vytvoření databáze a kontejneru pro rozhraní API Azure Cosmos DB-SQL (jádro)
+# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-api"></a>Vytvoření databáze a kontejneru pro Azure Cosmos DB – rozhraní SQL API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,9 +22,9 @@ ms.locfileid: "75441363"
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří účet Cosmos pro rozhraní API SQL (Core) ve dvou oblastech s konzistencí úrovně relace, databází se sdílenou propustností a kontejnerem s klíčem oddílu, vlastními zásadami indexování, jedinečnou zásadou klíčů, hodnotou TTL, vyhrazenou propustností a posledními zásadami pro řešení konfliktů WINS, které se použijí při `multipleWriteLocations=true`.
+Tento skript vytvoří účet Cosmos pro rozhraní API SQL (Core) ve dvou oblastech s konzistencí úrovně relace, databází a kontejnerem s klíčem oddílu, vlastní minovou zásadou indexování, zásadou jedinečného klíče, ttl, vyhrazenou propustností a posledním zapisovatelem vyhrává zásady řešení konfliktů s vlastní cestou řešení konfliktů, která bude použita při `multipleWriteLocations=true`.
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL API")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -40,8 +40,16 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Nový účet AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Vytvoří nový účet Cosmos DB. |
+| [Set-AzCosmosDBSqlDatabáze](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Vytvoří novou nebo aktualizuje existující databázi COSMOS DB SQL Database. |
+| [Nový AzCosmosDBSqlJedinečnýklíč](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey) | Vytvoří nový objekt Cosmos DB SQL UniqueKey. |
+| [New-AzCosmosDBSqlUniqueKeyPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy) | Vytvoří nový objekt Cosmos DB SQL UniqueKeyPolicy. |
+| [Nový AzCosmosDBSqlIncludedPathIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpathindex) | Vytvoří nový objekt typu PSIndexes, který se používá jako parametr pro Set-AzCosmosDBSqlIncludedPath. |
+| [Nová-AzCosmosDBSqlIncludedPath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpath) | Vytvoří nový objekt typu PSIncludedPath, který se používá jako parametr pro New-AzCosmosDBSqlIndexingPolicy. |
+| [New-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | Vytvoří nový objekt typu PSSqlIndexingPolicy používaný jako parametr pro Set-AzCosmosDBSqlContainer. |
+| [New-AzCosmosDBSqlKonfliktResolutionPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy) | Vytvoří nový objekt typu PSSqlConflictResolutionPolicy používaný jako parametr pro Set-AzCosmosDBSqlContainer. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Vytvoří nový nebo aktualizuje existující kontejner SQL Cosmos DB. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

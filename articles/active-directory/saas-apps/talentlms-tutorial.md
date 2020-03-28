@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s TalentLMS | Microsoft Docs'
+title: 'Kurz: Integrace služby Azure Active Directory s TalentLMS | Dokumenty společnosti Microsoft'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TalentLMS.
 services: active-directory
 documentationCenter: na
@@ -17,242 +17,242 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233369"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Azure Active Directory integrace s TalentLMS
+# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Integrace Azure Active Directory s TalentLMS
 
 V tomto kurzu se dozvíte, jak integrovat TalentLMS s Azure Active Directory (Azure AD).
-Integrace TalentLMS s Azure AD poskytuje následující výhody:
+Integrace TalentLMS s Azure AD vám poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k TalentLMS.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k TalentLMS (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k TalentLMS.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k TalentLMS (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s TalentLMS potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s TalentLMS, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
-* Předplatné s povoleným TalentLMSm jednotným přihlašováním
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Předplatné s povoleným jedním přihlášením TalentLMS
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* TalentLMS podporuje jednotné přihlašování iniciované v **SP**
+* TalentLMS podporuje **sp** inicioval sso
 
-## <a name="adding-talentlms-from-the-gallery"></a>Přidání TalentLMS z Galerie
+## <a name="adding-talentlms-from-the-gallery"></a>Přidání TalentLMS z galerie
 
-Pokud chcete nakonfigurovat integraci TalentLMS do služby Azure AD, musíte přidat TalentLMS z Galerie do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci TalentLMS do Azure AD, musíte přidat TalentLMS z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat TalentLMS z Galerie, proveďte následující kroky:**
+**Chcete-li přidat talentLMS z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **TalentLMS**, vyberte **TalentLMS** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **TalentLMS**, z panelu výsledků vyberte **TalentLMS** a klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![TalentLMS v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí TalentLMS na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v TalentLMS.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v TalentLMS.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí TalentLMS, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí TalentLMS, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování TalentLMS](#configure-talentlms-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření TalentLMS Test User](#create-talentlms-test-user)** – pro Britta Simon v TalentLMS, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování TalentLMS](#configure-talentlms-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte uživatele testu TalentLMS](#create-talentlms-test-user)** – chcete-li mít protějšek Britta Simon v TalentLMS, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TalentLMS, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí talentlms, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **TalentLMS** vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **TalentLMS** vyberte **Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně TalentLMS a adresách URL](common/sp-identifier.png)
+    ![Informace o jednotlivých přihlašovacích údajích o doméně a adresách URL talentlms](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.TalentLMSapp.com`
+    a. Do textového pole **Adresa URL přihlášení** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.TalentLMSapp.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `http://<tenant-name>.talentlms.com`
+    b. Do textového pole **Identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`http://<tenant-name>.talentlms.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta TalentLMS](https://www.talentlms.com/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL a identifikátorem. Obraťte se na [tým podpory klienta TalentLMS,](https://www.talentlms.com/contact) abyste získali tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. V části **podpisový certifikát SAML** kliknutím na tlačítko **Upravit** otevřete dialogové okno **podpisový certifikát SAML** .
+5. V části **Podpisový certifikát SAML** kliknutím na **tlačítko Upravit** otevřete dialogové okno **Podpisový certifikát SAML.**
 
     ![Upravit podpisový certifikát SAML](common/edit-certificate.png)
 
-6. V části **podpisový certifikát SAML** zkopírujte **kryptografický otisk** a uložte ho do svého počítače.
+6. V části **Podpisový certifikát SAML** zkopírujte **thumbprint** a uložte jej do počítače.
 
-    ![Kopírovat hodnotu kryptografického otisku](common/copy-thumbprint.png)
+    ![Kopírovat kryptografický otisk, hodnota](common/copy-thumbprint.png)
 
-7. V části **Nastavení TalentLMS** zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit TalentLMS** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-talentlms-single-sign-on"></a>Konfigurace jednotného přihlašování TalentLMS
+### <a name="configure-talentlms-single-sign-on"></a>Konfigurace jednotného přihlášení talentlms
 
-1. V jiném okně webového prohlížeče se přihlaste k webu TalentLMS společnosti jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k webu společnosti TalentLMS jako správce.
 
-1. V části **nastavení & účtu** klikněte na kartu **Uživatelé** .
+1. V části **Nastavení & účtu** klikněte na kartu **Uživatelé.**
 
     ![Nastavení & účtu](./media/talentlms-tutorial/IC777296.png "Nastavení & účtu")
 
-1. Klikněte na **jednotné přihlašování (SSO)** ,
+1. Klikněte **na jednotné přihlašování (SSO)**,
 
-1. V části jednotné přihlašování proveďte následující kroky:
+1. V části Jednotné přihlašování proveďte následující kroky:
 
     ![Jednotné přihlašování](./media/talentlms-tutorial/IC777297.png "Jednotné přihlašování")
 
-    a. V seznamu **typ integrace jednotného přihlašování** vyberte **SAML 2,0**.
+    a. Ze seznamu **typů integrace s přisychávacím sítě** vyberte možnost **SAML 2.0**.
 
-    b. Do textového pole **poskytovatel identity (IDP)** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
+    b. V textovém poli **zprostředkovatele identity (IDP)** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z webu Azure Portal.
 
-    c. Vložte hodnotu **kryptografického otisku** z Azure Portal do textového pole **otisku certifikátu** .
+    c. Vložte hodnotu **Kryptografický otisk** z portálu Azure do textového pole **otisků prstů certifikátu.**
 
-    d.  Do textového pole **Adresa URL vzdáleného přihlášení** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+    d.  V textovém poli Adresa **URL vzdáleného přihlášení** vložte hodnotu **přihlašovací adresy URL**, kterou jste zkopírovali z webu Azure Portal.
 
-    e. Do textového pole **Adresa URL vzdáleného přihlášení** vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
+    e. V textovém poli Adresa **URL vzdáleného odhlášení** vložte hodnotu **adresy URL odhlášení**, kterou jste zkopírovali z webu Azure Portal.
 
-    f. Zadejte následující:
+    f. Zadejte tyto informace:
 
-    * Do textového pole **TargetedID** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
+    * Do textového pole **Cílené ID** zadejte`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
 
-    * Do textového pole **název** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    * Do textového pole **Křestní jméno** zadejte`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    * Do textového pole **příjmení** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    * Do textového pole **Příjmení** zadejte`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    * Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * Do textového pole **E-mail** zadejte`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. V poli **Uživatelské** `brittasimon@yourcompanydomain.extension`jméno typ pole . Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k TalentLMS.
+V této části povolíte Britta Simon používat Azure jednotné přihlášení udělením přístupu k TalentLMS.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **TalentLMS**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **TalentLMS**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **TalentLMS**.
+2. V seznamu aplikací vyberte **TalentLMS**.
 
-    ![Odkaz TalentLMS v seznamu aplikací](common/all-applications.png)
+    ![Odkaz TalentLMS v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
 ### <a name="create-talentlms-test-user"></a>Vytvořit testovacího uživatele TalentLMS
 
-Aby se uživatelé Azure AD mohli přihlašovat k TalentLMS, musí se zřídit v TalentLMS. V případě TalentLMS je zřizování ručním úkolem.
+Aby se uživatelé Azure AD mohli přihlásit k TalentLMS, musí být zřízeni do TalentLMS. V případě TalentLMS zřizování je ruční úlohy.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se ke svému tenantovi **TalentLMS** .
+1. Přihlaste se ke svému tenantovi **TalentLMS.**
 
-1. Klikněte na **Uživatelé**a potom klikněte na **Přidat uživatele**.
+1. Klepněte na tlačítko **Uživatelé**a potom klepněte na tlačítko **Přidat uživatele**.
 
-1. Na stránce **Přidat uživatelský** dialog proveďte následující kroky:
+1. Na stránce Dialogové okno **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidat uživatele](./media/talentlms-tutorial/IC777299.png "Přidání uživatele")  
+    ![Přidání uživatele](./media/talentlms-tutorial/IC777299.png "Přidání uživatele")  
 
-    a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
+    a. Do textového pole **Jméno** zadejte křestní jméno uživatele, jako **je Britta**.
 
-    b. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon**.
+    b. Do textového pole **Příjmení** zadejte příjmení uživatele, jako je **Simon**.
  
-    c. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je `brittasimon\@contoso.com`.
+    c. Do textového pole **E-mailová** adresa `brittasimon\@contoso.com`zadejte e-mail uživatele jako .
 
-    d. Klikněte na **Přidat uživatele**.
+    d. Klikněte na **Add User** (Přidat uživatele).
 
 > [!NOTE]
-> K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů TalentLMS nebo rozhraní API poskytovaná TalentLMS.
+> Můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů TalentLMS nebo rozhraní API poskytované TalentLMS zřídit uživatelské účty Azure AD.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici TalentLMS, měli byste se automaticky přihlásit k TalentLMS, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici TalentLMS na přístupovém panelu, můžete by měl být automaticky přihlášeni k TalentLMS, pro které nastavíte přivytváření připojovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

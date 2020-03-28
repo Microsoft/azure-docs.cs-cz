@@ -1,20 +1,20 @@
 ---
-title: Skript PowerShellu pro získání zřízené propustnosti (RU/s) pro rozhraní API Azure Cosmos DB SQL (jádro)
-description: Azure PowerShell skript-Azure Cosmos DB získat zřízenou propustnost (RU/s) pro rozhraní API SQL (jádro)
+title: Skript Prostředí PowerShell pro získání propustnosti (RU/s) pro databázi nebo kontejner sql api Azure Cosmos DB
+description: Skript Azure PowerShell pro získání propustnosti (RU/s) pro databázi nebo kontejner SQL API Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9b4450e18aa2666806faf2c0baed8af2285e69dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f471b1d41314728a6c6f0c5d2ab981891e2caa87
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441335"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365627"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Získání zřízené propustnosti (RU/s) pro databázi nebo kontejner pro rozhraní API Azure Cosmos DB-SQL (jádro)
+# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Získání propustnost (RU/s) pro databázi nebo kontejner rozhraní SQL API Azure Cosmos DB
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441335"
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput for a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput (RU/s) for Azure Cosmos DB SQL API database or container")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -38,8 +38,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBSqlProukum databáze](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Získejte propustnost zbydnoucí v databázi SQL API Azure Cosmos DB. |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Získejte propustnost zbydnoucí na kontejneru SQL API Azure Cosmos DB. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

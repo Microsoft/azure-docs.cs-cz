@@ -1,6 +1,6 @@
 ---
-title: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure – Linux Virtual Machines | Microsoft Docs
-description: Přečtěte si o nastavení naslouchacího procesu skupiny dostupnosti v SQL Server na virtuálních počítačích s RHEL v Azure.
+title: Konfigurace naslouchací proces skupiny dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure – virtuální počítače SIP | Dokumenty společnosti Microsoft
+description: Informace o nastavení naslouchací proces skupiny dostupnosti na SQL Serveru na virtuálních počítačích RHEL v Azure
 ms.service: virtual-machines-linux
 ms.subservice: ''
 ms.topic: tutorial
@@ -9,161 +9,161 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 80557eb3776ba17a4922d1fc384b87419ffbd67e
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79096590"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure
+# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace naslouchací proces skupiny dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure
 
 > [!NOTE]
-> Uvedený kurz je ve **verzi Public Preview**. 
+> Prezentovaný kurz je ve **verzi Public Preview**. 
 >
-> V tomto kurzu používáme SQL Server 2017 s RHEL 7,6, je ale možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8 ke konfiguraci HA. Příkazy pro konfiguraci prostředků skupiny dostupnosti se v RHEL 8 změnily. Chcete-li získat další informace o správných příkazech, přečtěte si článek o tom, jak [vytvořit prostředek skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a prostředky RHEL 8.
+> V tomto kurzu používáme SQL Server 2017 s RHEL 7.6, ale je možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8 ke konfiguraci HA. Příkazy ke konfiguraci prostředků skupiny dostupnosti se změnily v RHEL 8 a budete chtít podívat na článek, [Vytvořit zdroj skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a zdroje RHEL 8 pro další informace o správné příkazy.
 
-V tomto kurzu se dozvíte, jak vytvořit naslouchací proces skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure. V tomto kurzu se naučíte:
+V tomto kurzu naleznete kroky, jak vytvořit naslouchací proces skupiny dostupnosti pro vaše servery SQL na virtuálních počítačích RHEL v Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> - Vytvoření nástroje pro vyrovnávání zatížení v Azure Portal
-> - Konfigurace fondu back-end pro nástroj pro vyrovnávání zatížení
-> - Vytvoření sondy pro nástroj pro vyrovnávání zatížení
+> - Vytvoření správce zatížení na webu Azure Portal
+> - Konfigurace back-endového fondu pro balancer na zatížení
+> - Vytvoření sondy pro balancer
 > - Nastavení pravidel vyrovnávání zatížení
-> - Vytvoření prostředku nástroje pro vyrovnávání zatížení v clusteru
-> - Vytvoření naslouchacího procesu skupiny dostupnosti
-> - Test připojení k naslouchacímu procesu
+> - Vytvoření prostředku správce zatížení v clusteru
+> - Vytvoření naslouchací proces skupiny dostupnosti
+> - Testování připojení k naslouchacímu procesu
 > - Testování převzetí služeb při selhání
 
 ## <a name="prerequisite"></a>Požadavek
 
-Dokončený [ **kurz: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure**](sql-server-linux-rhel-ha-stonith-tutorial.md)
+[ **Dokončený kurz: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure**](sql-server-linux-rhel-ha-stonith-tutorial.md)
 
-## <a name="create-the-load-balancer-in-the-azure-portal"></a>Vytvoření nástroje pro vyrovnávání zatížení v Azure Portal
+## <a name="create-the-load-balancer-in-the-azure-portal"></a>Vytvoření správce zatížení na webu Azure Portal
 
-V následujících pokynech vás provedete kroky 1 až 4 z tématu [Vytvoření a konfigurace nástroje pro vyrovnávání zatížení v části Azure Portal v](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal) článku [Azure Portal vyrovnávání zatížení](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md) .
+Následující pokyny vás provedou kroky 1 až 4 z [vytvoření a konfigurace vyrovnávání zatížení v](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal) části Portál Azure v článku [Vyrovnávání zatížení – portál Azure.](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)
 
 ### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-1. V Azure Portal otevřete skupinu prostředků, která obsahuje SQL Server virtuálních počítačů. 
+1. Na webu Azure Portal otevřete skupinu prostředků, která obsahuje virtuální počítače SQL Serveru. 
 
-2. Ve skupině prostředků klikněte na **Přidat**.
+2. Ve skupině prostředků klepněte na tlačítko **Přidat**.
 
-3. Vyhledejte **Nástroj pro vyrovnávání zatížení** a potom ve výsledcích hledání vyberte položku **Load Balancer**, která je publikována společností **Microsoft**.
+3. Vyhledejte **systém vyrovnávání zatížení** a ve výsledcích hledání vyberte **položku Balancer**, kterou vydává společnost **Microsoft**.
 
-4. V okně **Load Balancer** klikněte na **vytvořit**.
+4. V okně **Balancer zatížení** klepněte na **tlačítko Vytvořit**.
 
-5. V dialogovém okně **vytvořit nástroj pro vyrovnávání zatížení** nakonfigurujte nástroj pro vyrovnávání zatížení následujícím způsobem:
+5. V dialogovém okně **Vytvořit balancer** nakonfigurujte vyvažovač zatížení následujícím způsobem:
 
    | Nastavení | Hodnota |
    | --- | --- |
-   | **Název** |Textový název představující Nástroj pro vyrovnávání zatížení. Například **sqlLB**. |
-   | **Typ** |**Interní** |
-   | **Virtuální síť** |Výchozí virtuální síť, která byla vytvořena, by měla mít název **VM1VNET**. |
-   | **Podsíť** |Vyberte podsíť, ve které jsou instance SQL Server. Výchozí hodnota by měla být **VM1Subnet**.|
-   | **Přiřazení IP adresy** |**Tras** |
-   | **Privátní IP adresa** |Použijte `virtualip` IP adresu, která byla vytvořena v clusteru. |
-   | **Předplatné** |Použijte předplatné, které se použilo pro vaši skupinu prostředků. |
-   | **Skupina prostředků** |Vyberte skupinu prostředků, ve které jsou instance SQL Server. |
-   | **Umístění** |Vyberte umístění Azure, ve kterém jsou instance SQL Server. |
+   | **Název** |Textový název představující provynační stav zatížení. Například **sqlLB**. |
+   | **Typ** |**Vnitřní** |
+   | **Virtuální síť** |Výchozí virtuální síť, která byla vytvořena by měl mít název **VM1VNET**. |
+   | **Podsíť** |Vyberte podsíť, ve které se nacházejí instance serveru SQL Server. Výchozí hodnota by měla být **VM1Subnet**.|
+   | **Přiřazení IP adresy** |**Statické** |
+   | **Privátní IP adresa** |Použijte `virtualip` adresu IP, která byla vytvořena v clusteru. |
+   | **Předplatné** |Použijte předplatné, které bylo použito pro vaši skupinu prostředků. |
+   | **Skupina prostředků** |Vyberte skupinu prostředků, ve které se nacházejí instance serveru SQL Server. |
+   | **Umístění** |Vyberte umístění Azure, ve kterých se nacházejí instance SQL Serveru. |
 
-### <a name="configure-the-back-end-pool"></a>Konfigurace fondu back-end
-Azure volá *fond back*-end fondu adres back-endu. V tomto případě je fond back-end adresami tří SQL Server instancí ve skupině dostupnosti. 
+### <a name="configure-the-back-end-pool"></a>Konfigurace back-endového fondu
+Azure volá back-endový *fond back-endového fondu adres*. V tomto případě back-end fond je adresy tří instancí serveru SQL Server ve skupině dostupnosti. 
 
-1. Ve vaší skupině prostředků klikněte na nástroj pro vyrovnávání zatížení, který jste vytvořili. 
+1. Ve skupině prostředků klikněte na prostředek pro vyrovnávání zatížení, které jste vytvořili. 
 
-2. V **Nastavení**klikněte na **back-endové fondy**.
+2. V **části Nastavení**klepněte na **položku Fondy back-end .**
 
-3. V případě **back-endu fondů**klikněte na tlačítko **Přidat** a vytvořte fond adres back-endu. 
+3. V **back-endových fondech**klikněte na **Přidat** a vytvořte fond adres back-end. 
 
-4. V části **název**do pole název zadejte **název back-** end fondu.
+4. V **části Přidat back-endový fond**zadejte název back-endového fondu. **Name**
 
-5. V části **přidruženo k**vyberte **virtuální počítač**. 
+5. V části **Přidružená k**vyberte **Virtuální počítač**. 
 
-6. Vyberte každý virtuální počítač v prostředí a přidružte k jednotlivým výběrům příslušnou IP adresu.
+6. Vyberte každý virtuální počítač v prostředí a přidružte ke každému výběru příslušnou adresu IP.
 
-    :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-backend-pool.png" alt-text="Přidat back-end fond":::
+    :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-backend-pool.png" alt-text="Přidat back-endový fond":::
 
 7. Klikněte na **Přidat**. 
 
-### <a name="create-a-probe"></a>Vytvoření testu paměti
+### <a name="create-a-probe"></a>Vytvoření sondy
 
-Sonda definuje, jak Azure ověřuje, které instance SQL Server aktuálně vlastní naslouchací proces skupiny dostupnosti. Azure sonduje službu na základě IP adresy na portu, který definujete při vytváření testu.
+Sonda definuje, jak Azure ověří, které instance serveru SQL Server aktuálně vlastní naslouchací proces skupiny dostupnosti. Azure sonduje službu na základě IP adresy na portu, který definujete při vytváření sondy.
 
-1. V okně **Nastavení** nástroje pro vyrovnávání zatížení klikněte na **sondy stavu**. 
+1. V okně **Nastavení** pro vyrovnávání zatížení klepněte na **položku Sondy stavu**. 
 
-2. V okně **sondy stavu** klikněte na **Přidat**.
+2. V okně **Sondy stavu** klepněte na tlačítko **Přidat**.
 
-3. Nakonfigurujte sondu v okně **Přidat test paměti** . Ke konfiguraci testu použijte následující hodnoty:
+3. Nakonfigurujte sondu v okně **Přidat sondu.** Ke konfiguraci sondy použijte následující hodnoty:
 
    | Nastavení | Hodnota |
    | --- | --- |
-   | **Název** |Textový název, který představuje test. Například **SQLAlwaysOnEndPointProbe**. |
+   | **Název** |Textový název představující sondu. Například **SQLAlwaysOnEndPointProbe**. |
    | **Protokol** |**TCP** |
    | **Port** |Můžete použít libovolný dostupný port. Například *59999*. |
    | **Interval** |*5* |
-   | **Prahová hodnota špatného stavu** |*2* |
+   | **Prahová hodnota pro poškozený stav** |*2* |
 
 4.  Klikněte na tlačítko **OK**. 
 
-5. Přihlaste se ke všem virtuálním počítačům a otevřete zkušební port pomocí následujících příkazů:
+5. Přihlaste se ke všem virtuálním počítačům a otevřete port sondy pomocí následujících příkazů:
 
     ```bash
     sudo firewall-cmd --zone=public --add-port=59999/tcp --permanent
     sudo firewall-cmd --reload
     ```
 
-Azure vytvoří test a pak ho použije k otestování, která instance SQL Server má naslouchací proces pro skupinu dostupnosti.
+Azure vytvoří sondu a pak ji použije k testování, která instance serveru SQL Server má naslouchací proces pro skupinu dostupnosti.
 
 ### <a name="set-the-load-balancing-rules"></a>Nastavení pravidel vyrovnávání zatížení
 
-Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vyrovnávání zatížení směruje provoz do instancí SQL Server. Pro tento nástroj pro vyrovnávání zatížení povolte přímé vrácení serveru, protože prostředek naslouchacího procesu skupiny dostupnosti má vlastní jenom jedna ze tří instancí SQL Server.
+Pravidla vyrovnávání zatížení nakonfigurují způsob, jakým nástroje pro vyrovnávání zatížení směruje provoz do instancí serveru SQL Server. Pro tento nástroj pro vyrovnávání zatížení povolíte přímé vrácení serveru, protože pouze jedna ze tří instancí serveru SQL Server vlastní prostředek posluchače skupiny dostupnosti najednou.
 
-1. V okně **Nastavení** nástroje pro vyrovnávání zatížení klikněte na **pravidla vyrovnávání zatížení**. 
+1. V okně **Nastavení** pro vyrovnávání zatížení klepněte na **položku Pravidla vyrovnávání zatížení**. 
 
-2. V okně **pravidla vyrovnávání zatížení** klikněte na **Přidat**.
+2. V okně **Pravidla vyrovnávání zatížení** klepněte na tlačítko **Přidat**.
 
 3. V okně **Přidat pravidla vyrovnávání zatížení** nakonfigurujte pravidlo vyrovnávání zatížení. Použijte následující nastavení: 
 
    | Nastavení | Hodnota |
    | --- | --- |
-   | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
+   | **Název** |Textový název představující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
    | **Protokol** |**TCP** |
    | **Port** |*1433* |
-   | **Port back-endu** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)** . |
-   | **Testu** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
-   | **Trvalost relace** |**NTato** |
+   | **Back-endový port** |*1433*. Tato hodnota je ignorována, protože toto pravidlo používá **plovoucí IP (přímé vrácení serveru)**. |
+   | **Sonda** |Použijte název sondy, kterou jste vytvořili pro tento výtažek zatížení. |
+   | **Trvalost relace** |**Žádné** |
    | **Časový limit nečinnosti (minuty)** |*4* |
-   | **Plovoucí IP adresa (přímá návrat ze serveru)** |**Enabled** (Povoleno) |
+   | **Plovoucí IP (přímý návrat serveru)** |**Enabled** (Povoleno) |
 
-   :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-load-balancing-rule.png" alt-text="Přidat pravidlo vyrovnávání zatížení":::
+   :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-load-balancing-rule.png" alt-text="Přidání pravidla vyrovnávání zatížení":::
 
 4. Klikněte na tlačítko **OK**. 
-5. Azure nakonfiguruje pravidlo vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení teď má nakonfigurované směrování provozu do SQL Server instance, která hostuje naslouchací proces pro skupinu dostupnosti. 
+5. Azure konfiguruje pravidlo vyrovnávání zatížení. Nyní je nástroje pro vyrovnávání zatížení nakonfigurován tak, aby směroval provoz na instanci serveru SQL Server, která hostuje naslouchací proces pro skupinu dostupnosti. 
 
-V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížení, který se připojuje ke všem počítačům s SQL Server. Nástroj pro vyrovnávání zatížení obsahuje také IP adresu pro naslouchací proces skupiny dostupnosti Always On SQL Server, aby každý počítač mohl reagovat na žádosti pro skupiny dostupnosti.
+V tomto okamžiku skupina prostředků má nástroje pro vyrovnávání zatížení, který se připojuje ke všem počítačům SQL Server. Nástroje pro vyrovnávání zatížení také obsahuje IP adresu pro sql server vždy na naslouchací proces skupiny dostupnosti, takže každý počítač může reagovat na požadavky pro skupiny dostupnosti.
 
-## <a name="create-the-load-balancer-resource-in-the-cluster"></a>Vytvoření prostředku nástroje pro vyrovnávání zatížení v clusteru
+## <a name="create-the-load-balancer-resource-in-the-cluster"></a>Vytvoření prostředku správce zatížení v clusteru
 
-1. Přihlaste se k primárnímu virtuálnímu počítači. Musíme vytvořit prostředek, který povolí port testu služby Azure Load Balancer (59999 se v našem příkladu používá). Spusťte následující příkaz:
+1. Přihlaste se k primárnímu virtuálnímu počítači. Potřebujeme vytvořit prostředek povolit azure vyrovnávání zatížení sonda port (59999 se používá v našem příkladu). Spusťte následující příkaz:
 
     ```bash
     sudo pcs resource create azure_load_balancer azure-lb port=59999
     ```
 
-1. Vytvořte skupinu, která obsahuje `virtualip` a prostředek `azure_load_balancer`:
+1. Vytvořte skupinu, `virtualip` `azure_load_balancer` která obsahuje a zdroj:
 
     ```bash
     sudo pcs resource group add virtualip_group azure_load_balancer virtualip
     ```
 
-### <a name="add-constraints"></a>Přidat omezení
+### <a name="add-constraints"></a>Přidání omezení
 
-1. Aby bylo zajištěno, že IP adresa služby Vyrovnávání zatížení Azure a prostředek AG běží na stejném uzlu, musí být nakonfigurováno omezení kolokace. Spusťte následující příkaz:
+1. Omezení společného umístění musí být nakonfigurováno, aby bylo zajištěno, že IP adresa správce zatížení Azure a prostředek AG běží na stejném uzlu. Spusťte následující příkaz:
 
     ```bash
     sudo pcs constraint colocation add azure_load_balancer ag_cluster-master INFINITY with-rsc-role=Master
     ```
-1. Vytvořte omezení řazení, abyste měli jistotu, že je prostředek AG v provozu, a teprve potom IP adresu služby Azure Load Balancer. I když omezení pro společné umístění implikuje omezení řazení, vynutilo ho.
+1. Vytvořte omezení řazení, abyste zajistili, že prostředek AG je v provozu před IP adresou Azure pro vyrovnávání zatížení. Zatímco omezení společného umístění znamená omezení řazení, to to vynucuje.
 
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start azure_load_balancer
@@ -188,11 +188,11 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
     Ticket Constraints:
     ```
 
-## <a name="create-the-availability-group-listener"></a>Vytvoření naslouchacího procesu skupiny dostupnosti
+## <a name="create-the-availability-group-listener"></a>Vytvoření naslouchací proces skupiny dostupnosti
 
-1. Na primárním uzlu spusťte v SQLCMD nebo SSMS následující příkaz:
+1. Na primárním uzlu spusťte následující příkaz v SQLCMD nebo SSMS:
 
-    - Nahraďte níže uvedenou IP adresu `virtualip` IP adresou.
+    - Nahraďte níže použitou `virtualip` IP adresu adresou IP.
 
     ```sql
     ALTER AVAILABILITY
@@ -203,65 +203,65 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
     GO
     ```
 
-1. Přihlaste se ke každému uzlu virtuálního počítače. Pomocí následujícího příkazu otevřete soubor Hosts a nastavte překlad názvu hostitele pro `ag1-listener` na každém počítači.
+1. Přihlaste se ke každému uzlu virtuálního virtuálního provozu. Pomocí následujícího příkazu otevřete soubor hosts a `ag1-listener` nastavte překlad názvů hostitelů pro každý počítač.
 
     ```
     sudo vi /etc/hosts
     ```
 
-    V editoru **VI** zadejte `i` pro vložení textu a na prázdném řádku přidejte IP adresu `ag1-listener`. Pak přidejte `ag1-listener` za mezerou vedle IP adresy.
+    V editoru **vi** zadejte `i` vložení textu a na prázdný řádek `ag1-listener`přidejte IP adresu . Pak `ag1-listener` přidejte za mezeru vedle IP.
 
     ```output
     <IP of ag1-listener> ag1-listener
     ```
 
-    Chcete-li ukončit Editor **VI** , nejprve stiskněte klávesu **ESC** a potom zadejte příkaz `:wq` pro zápis souboru a ukončení. Udělejte to na každém uzlu.
+    Chcete-li ukončit editor **vi,** nejprve stiskněte klávesu **Esc** a potom zadejte příkaz `:wq` pro zápis souboru a ukončete. Proveďte to na každém uzlu.
 
-## <a name="test-the-listener-and-a-failover"></a>Testování naslouchacího procesu a převzetí služeb při selhání
+## <a name="test-the-listener-and-a-failover"></a>Testování naslouchací proces a převzetí služeb při selhání
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Testování přihlášení do SQL Server pomocí naslouchacího procesu skupiny dostupnosti
+### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Testování přihlášení k serveru SQL Server pomocí naslouchací proces skupiny dostupnosti
 
-1. Pomocí nástroje SQLCMD se přihlaste k primárnímu uzlu SQL Server pomocí názvu naslouchacího procesu skupiny dostupnosti:
+1. Pomocí sqlcmd se přihlaste k primárnímu uzlu serveru SQL Server pomocí názvu posluchače skupiny dostupnosti:
 
-    - Použijte přihlášení, které bylo dříve vytvořeno a nahraďte `<YourPassword>` správným heslem. Následující příklad používá `sa` přihlašovací jméno, které bylo vytvořeno pomocí SQL Server.
+    - Použijte přihlašovací jméno, které `<YourPassword>` bylo dříve vytvořeno, a nahraďte je správným heslem. Následující příklad používá `sa` přihlášení, které bylo vytvořeno pomocí serveru SQL Server.
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
     ```
 
-1. Ověřte název serveru, ke kterému jste se připojili. V SQLCMD spusťte následující příkaz:
+1. Zkontrolujte název serveru, ke kterému jste připojeni. Spusťte následující příkaz v SQLCMD:
 
     ```sql
     SELECT @@SERVERNAME
     ```
 
-    Výstup by měl zobrazovat aktuální primární uzel. To by mělo být `VM1`, pokud jste nikdy neotestovali převzetí služeb při selhání.
+    Výstup by měl zobrazovat aktuální primární uzel. Mělo by `VM1` to být, pokud jste nikdy netestovali převzetí služeb při selhání.
 
-    Ukončete relaci SQL zadáním příkazu `exit`.
+    Ukončete relaci SQL `exit` zadáním příkazu.
 
 ### <a name="test-a-failover"></a>Testování převzetí služeb při selhání
 
-1. Spusťte následující příkaz k ručnímu převzetí služeb při selhání primární repliky `<VM2>` nebo jiné replice. Nahraďte `<VM2>` hodnotou názvu vašeho serveru.
+1. Spusťte následující příkaz a ručně přepojujte službu převzetí služeb při selhání primární repliky do jiné repliky nebo jinou `<VM2>` repliku. Nahraďte `<VM2>` hodnotou názvu serveru.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Pokud zkontrolujete vaše omezení, uvidíte, že se do ručního převzetí služeb při selhání přidalo jiné omezení:
+1. Pokud zkontrolujete omezení, uvidíte, že z důvodu ručního převzetí služeb při selhání bylo přidáno další omezení:
 
     ```bash
     sudo pcs constraint list --full
     ```
 
-    Uvidíte, že bylo přidáno omezení s ID `cli-prefer-ag_cluster-master`.
+    Uvidíte, že bylo přidáno omezení s ID. `cli-prefer-ag_cluster-master`
 
-1. Omezení s ID `cli-prefer-ag_cluster-master` odeberte pomocí následujícího příkazu:
+1. Odstraňte omezení s `cli-prefer-ag_cluster-master` ID pomocí následujícího příkazu:
 
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
     ```
 
-1. Zkontrolujte prostředky clusteru pomocí příkazu `sudo pcs resource`a měli byste vidět, že je primární instance teď `<VM2>`.
+1. Zkontrolujte prostředky clusteru `sudo pcs resource`pomocí příkazu a měli byste `<VM2>`vidět, že primární instance je nyní .
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource
@@ -273,25 +273,25 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
         virtualip  (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-1. Pomocí nástroje SQLCMD se do primární repliky přihlaste pomocí názvu naslouchacího procesu:
+1. Pomocí SQLCMD se přihlaste k primární replice pomocí názvu naslouchací procesu:
 
-    - Použijte přihlášení, které bylo dříve vytvořeno a nahraďte `<YourPassword>` správným heslem. Následující příklad používá `sa` přihlašovací jméno, které bylo vytvořeno pomocí SQL Server.
+    - Použijte přihlašovací jméno, které `<YourPassword>` bylo dříve vytvořeno, a nahraďte je správným heslem. Následující příklad používá `sa` přihlášení, které bylo vytvořeno pomocí serveru SQL Server.
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
     ```
 
-1. Ověřte server, ke kterému jste připojeni. V SQLCMD spusťte následující příkaz:
+1. Zkontrolujte server, ke kterému jste připojeni. Spusťte následující příkaz v SQLCMD:
 
     ```sql
     SELECT @@SERVERNAME
     ```
 
-    Měli byste vidět, že jste nyní připojeni k virtuálnímu počítači, na který jste převzali převzetí služeb při selhání.
+    Měli byste vidět, že jste teď připojeni k virtuálnímu virtuálnímu virtuálnímu zařízení, který jste převzali.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o nástrojích pro vyrovnávání zatížení v Azure najdete v těchto tématech:
+Další informace o vyvyčovávačích zatížení v Azure najdete v tématu:
 
 > [!div class="nextstepaction"]
 > [Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti na virtuálních počítačích Azure SQL Server](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)

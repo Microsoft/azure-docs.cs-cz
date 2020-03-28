@@ -5,17 +5,17 @@ keywords: jenkins, azure, devops, virtual machine, agents
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158534"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Škálování nasazení Jenkinse podle potřeby pomocí agentů virtuálních počítačů Azure
 
 V tomto kurzu se dozvíte, jak pomocí [modulu plug-in Jenkins Azure VM Agents](https://plugins.jenkins.io/azure-vm-agents) přidat kapacitu na vyžádání s použitím virtuálních počítačů s Linuxem spuštěných v Azure.
 
-V tomto kurzu se naučíte:
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Instalace modulu plug-in Azure VM Agents
@@ -85,7 +85,7 @@ V tomto kurzu se naučíte:
             }
      ```
 
-    Dokončený instanční objekt by měl jako `id`Subscription ID **(ID předplatného) používat pole**, jako `appId`Client ID **(ID klienta) hodnotu**, jako `password`Client Secret **(Tajný klíč klienta) hodnotu** a jako `tenant`Tenant ID **(ID tenanta) hodnotu**. Výběrem možnosti **Add** (Přidat) přidejte instanční objekt a pak nakonfigurujte modul plug-in tak, aby používal nově vytvořené přihlašovací údaje.
+    Dokončený instanční objekt by měl jako **Subscription ID** (ID předplatného) používat pole `id`, jako **Client ID** (ID klienta) hodnotu `appId`, jako **Client Secret** (Tajný klíč klienta) hodnotu `password` a jako **Tenant ID** (ID tenanta) hodnotu `tenant`. Výběrem možnosti **Add** (Přidat) přidejte instanční objekt a pak nakonfigurujte modul plug-in tak, aby používal nově vytvořené přihlašovací údaje.
 
     ![Konfigurace instančního objektu Azure](./media/jenkins-azure-vm-agents/new-service-principal.png)
 
@@ -100,10 +100,10 @@ V tomto kurzu se naučíte:
 Nakonfigurujte šablonu, která se použije k definování agenta virtuálního počítače Azure. Tato šablona definuje výpočetní prostředky, které budou mít po vytvoření všichni agenti.
 
 1. Vyberte **Add** (Přidat) vedle položky **Add Azure Virtual Machine Template** (Přidat šablonu virtuálního počítače Azure).
-1. Jako `defaulttemplate`Name **(Název) zadejte**.
-1. Jako `ubuntu`Label **(Popisek) zadejte**.
+1. Jako **Name** (Název) zadejte `defaulttemplate`.
+1. Jako **Label** (Popisek) zadejte `ubuntu`.
 1. V poli se seznamem vyberte požadovanou [oblast Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-1. V rozevíracím seznamu v části [Virtual Machine Size](/azure/virtual-machines/linux/sizes) (Velikost virtuálního počítače) vyberte **velikost virtuálního počítače**. Pro tento kurz je dostačující velikost `Standard_DS1_v2` pro obecné účely.   
+1. V rozevíracím seznamu v části **Virtual Machine Size** (Velikost virtuálního počítače) vyberte [velikost virtuálního počítače](/azure/virtual-machines/linux/sizes). Pro tento kurz je dostačující velikost `Standard_DS1_v2` pro obecné účely.   
 1. Položku **Retention time** (Doba uchovávání) nechte na hodnotě `60`. Toto nastavení definuje počet minut, po které může Jenkins čekat před uvolněním nečinných agentů. Pokud nechcete, aby se nečinní agenti automaticky odebírali, zadejte 0.
 
    ![Obecná konfigurace virtuálního počítače Azure](./media/jenkins-azure-vm-agents/general-config.png)
@@ -122,10 +122,10 @@ Výběrem možnosti **Verify Template** (Ověřit šablonu) ověřte konfiguraci
 
 1. Na řídicím panelu Jenkinse klikněte na **New Item** (Nová položka). 
 1. Jako název zadejte `demoproject1`, vyberte **Freestyle project** (Volný projekt) a pak vyberte **OK**.
-1. Na kartě **General** (Obecné) zvolte možnost **Restrict where project can be run** (Omezit, kde je možné projekt spustit) a do pole `ubuntu`Label Expression **(Výraz popisku) zadejte**. Zobrazí se zpráva potvrzující, že tento popisek obsluhuje konfigurace cloudu vytvořená v předchozím kroku. 
+1. Na kartě **General** (Obecné) zvolte možnost **Restrict where project can be run** (Omezit, kde je možné projekt spustit) a do pole **Label Expression** (Výraz popisku) zadejte `ubuntu`. Zobrazí se zpráva potvrzující, že tento popisek obsluhuje konfigurace cloudu vytvořená v předchozím kroku. 
    ![Nastavení úlohy](./media/jenkins-azure-vm-agents/job-config.png)
 1. Na kartě **Source Code Management** (Správa zdrojového kódu), vyberte **Git** a do pole **Repository URL** (Adresa URL úložiště) zadejte následující adresu URL: `https://github.com/spring-projects/spring-petclinic.git`.
-1. Na kartě **Build** (Sestavení) vyberte **Add build step** (Přidat krok sestavení) a pak **Invoke top-level Maven targets** (Vyvolat cíle Maven nejvyšší úrovně). Do pole `package`Goals **(Cíle) zadejte**.
+1. Na kartě **Build** (Sestavení) vyberte **Add build step** (Přidat krok sestavení) a pak **Invoke top-level Maven targets** (Vyvolat cíle Maven nejvyšší úrovně). Do pole **Goals** (Cíle) zadejte `package`.
 1. Vyberte **Save** (Uložit) a uložte definici úlohy.
 
 ## <a name="build-the-new-job-on-an-azure-vm-agent"></a>Sestavení nové úlohy v agentovi virtuálního počítače Azure

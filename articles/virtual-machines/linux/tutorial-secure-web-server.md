@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: zabezpečení webového serveru Linux s certifikáty SSL v Azure'
+title: 'Kurz: Zabezpečení webového serveru Linux u certifikátů TLS/SSL v Azure'
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI zabezpečit virtuální počítač s Linuxem, na kterém běží webový server NGINX, pomocí certifikátů SSL uložených ve službě Azure Key Vault.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,23 +15,23 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aaa3f32cc48c6d051a2ff2a959372886435e5dcb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b51d0747a4ffa08bc230b33cd416986dda1e1908
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976158"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154300"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači s Linuxem v Azure pomocí certifikátů SSL uložených v Key Vaultu
-K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečené nasazování certifikátů do virtuálních počítačů s Linuxem v Azure. Co se v tomto kurzu naučíte:
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači SIP v Azure pomocí certifikátů TLS/SSL uložených v trezoru klíčů
+K zabezpečení webových serverů lze k šifrování webového provozu použít zabezpečení transportní vrstvy (TLS), dříve označované jako SSL (Secure Sockets Layer), certifikát. Tyto certifikáty TLS/SSL lze uložit do azure key vaultu a umožňují bezpečné nasazení certifikátů do virtuálních počítačů linuxu (VM) v Azure. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření služby Azure Key Vault
 > * Generování nebo nahrání certifikátu do služby Key Vault
 > * Vytvoření virtuálního počítače a instalace webového serveru NGINX
-> * Vložení certifikátu do virtuálního počítače a konfigurace vazby SSL na serveru NGINX
+> * Vložte certifikát do virtuálního počítače a nakonfigurujte NGINX pomocí vazby TLS
 
-V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
+Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -49,7 +49,7 @@ Než vytvoříte službu Key Vault a certifikáty, vytvořte skupinu prostředk�
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. V následujícím příkladu nahraďte *\<mykeyvault >* vlastním jedinečným názvem Key Vault:
+Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte * \<mykeyvault>* v následujícím příkladu svým jedinečným názvem trezoru klíčů:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -83,7 +83,7 @@ vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Vytvoření konfigurace cloud-init pro zabezpečení serveru NGINX
 [Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Vzhledem k tomu, že se cloud-init spustí během procesu prvotního spuštění, nevyžaduje použití vaší konfigurace žádné další kroky ani agenty.
 
-Při vytváření virtuálního počítače se certifikáty a klíče uloží do chráněného adresáře */var/lib/waagent/* . Pokud chcete automatizovat přidávání certifikátů do virtuálního počítače a konfiguraci webového serveru, použijte cloud-init. V tomto příkladu nainstalujete a nakonfigurujete webový server NGINX. Pomocí stejného postupu můžete nainstalovat a nakonfigurovat i Apache. 
+Při vytváření virtuálního počítače se certifikáty a klíče uloží do chráněného adresáře */var/lib/waagent/*. Pokud chcete automatizovat přidávání certifikátů do virtuálního počítače a konfiguraci webového serveru, použijte cloud-init. V tomto příkladu nainstalujete a nakonfigurujete webový server NGINX. Pomocí stejného postupu můžete nainstalovat a nakonfigurovat i Apache. 
 
 Vytvořte soubor *cloud-init-web-server.txt* a vložte do něj následující konfiguraci:
 
@@ -110,7 +110,7 @@ runcmd:
 ```
 
 ### <a name="create-a-secure-vm"></a>Vytvoření zabezpečeného virtuálního počítače
-Nyní vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Data certifikátu ze služby Key Vault se vloží pomocí parametru `--secrets`. Konfiguraci cloud-init předáte pomocí parametru `--custom-data`:
+Teď pomocí příkazu [az vm create](/cli/azure/vm) vytvořte virtuální počítač. Data certifikátu ze služby Key Vault se vloží pomocí parametru `--secrets`. Konfiguraci cloud-init předáte pomocí parametru `--custom-data`:
 
 ```azurecli-interactive 
 az vm create \
@@ -136,7 +136,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Testování zabezpečené webové aplikace
-Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat *https:\/\/\<publicIpAddress >* . Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+Nyní můžete otevřít webový prohlížeč a zadat *https:\/\/\<publicIpAddress>* v adresním řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -147,13 +147,13 @@ Následně se zobrazí váš zabezpečený web NGINX, jak je znázorněno v nás
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zabezpečili webový server NGINX pomocí certifikátu SSL uloženého ve službě Azure Key Vault. Naučili jste se tyto postupy:
+V tomto kurzu jste zabezpečili webový server NGINX s certifikátem TLS/SSL uloženým v úložišti klíčů Azure. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření služby Azure Key Vault
 > * Generování nebo nahrání certifikátu do služby Key Vault
 > * Vytvoření virtuálního počítače a instalace webového serveru NGINX
-> * Vložení certifikátu do virtuálního počítače a konfigurace vazby SSL na serveru NGINX
+> * Vložte certifikát do virtuálního počítače a nakonfigurujte NGINX pomocí vazby TLS
 
 Na tomto odkazu najdete předem připravené ukázky skriptů pro virtuální počítače.
 

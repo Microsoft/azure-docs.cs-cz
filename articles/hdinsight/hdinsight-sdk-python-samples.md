@@ -1,6 +1,6 @@
 ---
-title: 'Azure HDInsight: ukázky Pythonu'
-description: Příklady v Pythonu najdete na GitHubu pro běžné úlohy pomocí sady SDK HDInsight pro Python.
+title: 'Azure HDInsight: Ukázky Pythonu'
+description: Najděte příklady Pythonu na GitHubu pro běžné úkoly pomocí HDInsight SDK pro Python.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
 ms.openlocfilehash: 64e1f172a947cb08795272fe2a022e9d7beac7a6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74215729"
 ---
-# <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: ukázky Pythonu
+# <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Ukázky Pythonu
 
 > [!div class="op_single_selector"]
 > * [Příklady v Pythonu](hdinsight-sdk-python-samples.md)
@@ -23,11 +23,11 @@ ms.locfileid: "74215729"
 <!-- * [Go Examples](hdinsight-sdk-go-samples.md)-->
 
 > [!Important]
-> Python 2,7 bude zastaralá od 1. ledna 2020. Pokud stále používáte Python 2,7, upgradujte na 3,7, aby bylo možné použít sadu SDK HDInsight Python.  
+> Python 2.7 bude zastaralá na 1st 2020. Pokud stále používáte Python 2.7, upgradujte na 3.7, abyste mohli používat HDInsight Python SDK.  
 
 Tento článek obsahuje:
 
-* Obsahuje odkazy na ukázky pro úlohy vytváření clusterů.
+* Odkazy na ukázky pro úlohy vytváření clusteru.
 * Odkazy na referenční obsah pro jiné úlohy správy.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -36,15 +36,15 @@ Tento článek obsahuje:
 
 [Azure HDInsight SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Správa clusteru – vytvoření
+## <a name="cluster-management---creation"></a>Správa clusteru – tvorba
 
 * [Vytvoření clusteru Apache Kafka](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_kafka_cluster_sample.py)
 * [Vytvoření clusteru Apache Spark](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_spark_cluster_sample.py)
 * [Vytvoření clusteru Apache Spark s Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_hadoop_cluster_with_adls_gen2_sample.py)
-* [Vytvoření clusteru Apache Spark s využitím Balíček zabezpečení podniku (ESP)](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
+* [Vytvoření clusteru Apache Spark s balíčkem enterprise security (ESP)](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
 
-Tyto ukázky pro Python můžete získat klonováním úložiště GitHub pro [HDInsight-Python-SDK-Samples](https://github.com/Azure-Samples/hdinsight-python-sdk-samples) .
+Tyto ukázky pro Python můžete získat klonováním úložiště [GitHub hdinsight-python-sdk-samples.](https://github.com/Azure-Samples/hdinsight-python-sdk-samples)
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python).
+Fragmenty kódu pro tuto další funkci sady SDK naleznete v [referenční dokumentaci sady HDInsight SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python).

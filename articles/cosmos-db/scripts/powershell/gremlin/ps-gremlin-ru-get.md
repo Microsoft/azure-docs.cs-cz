@@ -1,20 +1,20 @@
 ---
-title: Skript PowerShellu pro získání propustnosti (RU/s) pro rozhraní Azure Cosmos DB API Gremlin
-description: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro Gremlin
+title: Skript prostředí PowerShell pro získání propustnosti (RU/s) pro rozhraní API Azure Cosmos DB Gremlin
+description: Skript Azure PowerShell – propustnost Azure Cosmos DB get (RU/s) pro rozhraní Gremlin API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: de02a524e163c1843e5117e8a4471e686a2f5764
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa376aff9c127d5792da9e0489079ca3a1c67cf2
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441457"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366039"
 ---
-# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Získání propustnosti (RU/s) pro databázi nebo graf pro rozhraní Azure Cosmos DB Gremlin API
+# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Získání propustnost (RU/s) pro databázi nebo graf pro Azure Cosmos DB – rozhraní GREMLIN API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-|**Prostředky Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří prostředek. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBGremlinDatabázePropustnost](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabasethroughput) | Získá hodnotu propustnost zadané databáze rozhraní GREMLIN ROZHRANÍ API. |
+| [Get-AzCosmosDBGremlinGraphProput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput) | Získá hodnotu propustnost zadaného gremlin rozhraní API graph. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

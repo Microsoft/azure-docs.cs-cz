@@ -1,23 +1,23 @@
 ---
-title: 'Vzor: definice zásad skupiny s iniciativami'
-description: Tento model Azure Policy poskytuje příklad definice zásad skupiny v iniciativě.
+title: 'Vzor: Definice zásad skupiny s iniciativami'
+description: Tento vzor zásad Azure poskytuje příklad, jak seskupit definice zásad do iniciativy
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 41c2b0cf3b8f677cdc408e85088c3ca6c2049d6b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77172853"
 ---
-# <a name="azure-policy-pattern-group-policy-definitions"></a>Vzor Azure Policy: definice zásad skupiny
+# <a name="azure-policy-pattern-group-policy-definitions"></a>Vzor zásad Azure: definice zásad skupiny
 
-Iniciativa je skupina definic zásad. Seskupením souvisejících definic zásad do jednoho objektu můžete vytvořit jedno přiřazení, které by bylo více přiřazení.
+Iniciativa je skupina definic politik. Seskupením souvisejících definic zásad do jednoho objektu můžete vytvořit jedno přiřazení, které by bylo více přiřazení.
 
-## <a name="sample-initiative-definition"></a>Definice ukázkové iniciativy
+## <a name="sample-initiative-definition"></a>Vzorová definice iniciativy
 
-V této iniciativě se nasadí dvě definice zásad, z nichž každý vezme parametry **TagName** a **tagValue** . Vlastní iniciativa má dva parametry: **costCenterValue** a **productNameValue**.
-Každý z těchto parametrů iniciativy je uvedený u každé ze seskupených definic zásad. Tento návrh maximalizuje opětovné použití stávajících definic zásad a přitom omezuje počet přiřazení, která jsou podle potřeby implementovaná.
+Tato iniciativa nasadí dvě definice zásad, z nichž každá přebírá parametry **tagName** a **tagValue.** Samotná iniciativa má dva parametry: **costCenterValue** a **productNameValue**.
+Tyto parametry iniciativy jsou k dispozici pro každou z definic seskupených zásad. Tento návrh maximalizuje opakované použití existujících definic zásad a zároveň omezuje počet přiřazení vytvořených k jejich implementaci podle potřeby.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json":::
 
@@ -25,14 +25,14 @@ Každý z těchto parametrů iniciativy je uvedený u každé ze seskupených de
 
 #### <a name="initiative-parameters"></a>Parametry iniciativ
 
-Iniciativa může definovat vlastní parametry, které jsou pak předány do seskupených definic zásad.
-V tomto příkladu jsou **costCenterValue** i **productNameValue** definovány jako parametry iniciativy. Hodnoty jsou k dispozici v případě, že je iniciativa přiřazena.
+Iniciativa může definovat vlastní parametry, které jsou pak předány definice seskupených zásad.
+V tomto příkladu jsou jako parametry iniciativy definovány jak **hodnota costCenterValue,** tak **productNameValue.** Hodnoty jsou k dispozici při přiřazení iniciativy.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json" range="5-18":::
 
-#### <a name="includes-policy-definitions"></a>Zahrnuje definice zásad
+#### <a name="includes-policy-definitions"></a>Zahrnuje definice zásad.
 
-Každá zahrnutá definice zásad musí poskytovat **policyDefinitionId** a pole **parametrů** , pokud definice zásady akceptuje parametry. V následujícím fragmentu kódu zahrnutá definice zásad má dva parametry: **TagName** a **tagValue**. parametr **TagName** je definován s literálem, ale **TagValue** používá parametr **costCenterValue** definovaný iniciativou. Tento průchozí hodnoty zlepšuje opakované použití.
+Každá zahrnutá definice zásad musí poskytnout **policyDefinitionId** a **pole parametrů,** pokud definice zásady přijímá parametry. V níže uvedeném fragmentu úryvek má zahrnutá definice zásad dva parametry: **tagName** a **tagValue**. **tagName** je definován literálem, ale **hodnota tagValue** používá parametr **costCenterValue** definovaný iniciativou. Tento průchod hodnot zlepšuje opakované použití.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json" range="30-40":::
 

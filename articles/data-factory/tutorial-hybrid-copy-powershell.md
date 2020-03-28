@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z SQL Server do úložiště objektů BLOB pomocí PowerShellu
+title: Kopírování dat z SQL Serveru do úložiště objektů Blob pomocí Prostředí PowerShell
 description: Zjistěte, jak kopírovat data z místního úložiště dat do cloudu Azure s využitím místního prostředí Integration Runtime ve službě Azure Data Factory.
 services: data-factory
 author: nabhishek
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 61ee9e46b1c1d4c1e1ec4815c7a88de921650230
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982597"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
@@ -41,7 +41,7 @@ V tomto kurzu budete provádět následující kroky:
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ### <a name="azure-roles"></a>Role Azure
-Abyste mohli vytvořit instance datové továrny, musí mít uživatelský účet, který použijete pro přihlášení k Azure, přiřazenou roli *Přispěvatel* nebo *Vlastník* předplatného Azure nebo musí být jeho *správcem*.
+Chcete-li vytvořit instance datové továrny, musí být uživatelský účet, který používáte k přihlášení k Azure, přiřazen roli *přispěvatele* nebo *vlastníka* nebo musí být *správcem* předplatného Azure.
 
 Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal, v pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázkové pokyny pro přidání uživatele k roli najdete v článku o [správě přístupu pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
@@ -92,7 +92,7 @@ V tomto kurzu použijete název a klíč svého účtu úložiště Azure. Získ
 1. Zkopírujte hodnoty polí **Název účtu úložiště** a **klíč1** a vložte je do Poznámkového bloku nebo jiného editoru pro pozdější použití v rámci kurzu.
 
 #### <a name="create-the-adftutorial-container"></a>Vytvoření kontejneru adftutorial
-V této části vytvoříte ve svém úložišti objektů blob v Azure kontejner objektů blob s názvem **adftutorial**.
+V této části vytvoříte kontejner objektů blob s názvem **adftutorial** ve vašem úložišti objektů blob Azure.
 
 1. V okně **Účet úložiště** přepněte na **Přehled** a pak vyberte **Objekty blob**.
 
@@ -106,12 +106,12 @@ V této části vytvoříte ve svém úložišti objektů blob v Azure kontejner
 
 1. V seznamu kontejnerů vyberte **adftutorial**.  
 
-1. Okno **Kontejner** pro **adftutorial** nechte otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
+1. Udržujte okno **kontejneru** pro **adftutorial** otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
 
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
-#### <a name="install-azure-powershell"></a>Instalace Azure PowerShellu
+#### <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -127,7 +127,7 @@ Pokud jej ve svém počítači ještě nemáte, nainstalujte nejnovější verzi
     Connect-AzAccount
     ```        
 
-1. Pokud máte několik předplatných Azure, spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **SubscriptionId** použijte ID vašeho předplatného Azure:
+1. Pokud máte několik předplatných Azure, spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte **Id předplatného** ID vašeho předplatného Azure:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -177,7 +177,7 @@ Pokud jej ve svém počítači ještě nemáte, nainstalujte nejnovější verzi
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Pro vytvoření instancí datové továrny musí mít uživatelský účet, který použijete pro přihlášení k Azure, přiřazenou roli *přispěvatel* nebo *vlastník* předplatného Azure nebo musí být jeho *správcem*.
-> * Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou můžou být v jiných oblastech.
+> * Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou můžou být v jiných oblastech.
 >
 >
 
@@ -197,7 +197,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     Name              : ADFTutorialIR
@@ -214,7 +214,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     State                     : NeedRegistration
@@ -243,7 +243,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
     Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     {
@@ -269,7 +269,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     ![Registrace modulu runtime integrace](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. V okně **nový Integration runtime (v místním prostředí) uzel** vyberte **Dokončit**.
+1. V okně **Nový integrační runtime (samoobslužný) uzel** vyberte **Dokončit**.
 
     ![Okno Nový uzel prostředí Integration Runtime](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
@@ -285,7 +285,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
 1. Pomocí následujícího postupu otestujte připojení k databázi SQL Serveru:
 
-    a. V okně **Správce konfigurace** přepněte na kartu **Diagnostika**.
+    a. V okně **Správce konfigurace** přepněte na kartu **Diagnostika.**
 
     b. V poli **Typ zdroje dat** vyberte **SqlServer**.
 
@@ -300,7 +300,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
     g. Zadejte heslo přidružené k tomuto uživatelskému jménu.
 
     h. Pokud chcete potvrdit, že se prostředí Integration Runtime může připojit k SQL Serveru, klikněte na **Test**.  
-    Připojení ![bylo úspěšné](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+    ![Připojení bylo úspěšné.](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
 
     Pokud je připojení úspěšné, zobrazí se zelená ikona zaškrtnutí. V opačném případě se zobrazí chybová zpráva přidružená k tomuto selhání. Opravte všechny problémy a ověřte, že se prostředí Integration Runtime může připojit k vaší instanci SQL Serveru.
 
@@ -411,9 +411,9 @@ V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
 
     > [!IMPORTANT]
     > - Vyberte odpovídající část na základě ověřování, které používáte pro připojení k vaší instanci SQL Serveru.
-    > - Položku **\<integration runtime name>** nahraďte názvem vašeho prostředí Integration Runtime.
-    > - Než soubor uložíte, položky **\<servername>** , **\<databasename>** , **\<username>** , a **\<password>** nahraďte odpovídajícími hodnotami pro vaši instanci SQL Serveru.
-    > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Použijte například *mydomain\\\\myuser*.
+    > - Nahraďte ** \<název prostředí runtime integrace>** názvem integračního běhu.
+    > - Před uložením souboru ** \< **nahraďte název serveru>, ** \<název databáze>**, ** \<uživatelské jméno>** a ** \<heslo>** hodnotami instance serveru SQL Server.
+    > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Například použijte *\\\\mydomain myuser*.
 
 1. Pokud chcete šifrovat citlivá data (uživatelské jméno, heslo atd.), spusťte rutinu `New-AzDataFactoryV2LinkedServiceEncryptedCredential`.  
     Toto šifrování zajišťuje šifrování přihlašovacích údajů pomocí rozhraní Data Protection API. Zašifrované přihlašovací údaje jsou uložené místně v uzlu místního prostředí Integration Runtime (místní počítač). Výstupní datovou část je možné přesměrovat do jiného souboru JSON (v tomto případě *encryptedLinkedService.json*), který obsahuje zašifrované přihlašovací údaje.
@@ -465,7 +465,7 @@ V tomto kroku definujete datovou sadu, která představuje data v instanci datab
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     DatasetName       : SqlServerDataset
@@ -518,7 +518,7 @@ Propojená služba má informace o připojení, které datová továrna použív
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     DatasetName       : AzureBlobDataset
@@ -598,7 +598,7 @@ V tomto kurzu pomocí aktivity kopírování vytvoříte kanál. Aktivita kopí
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     PipelineName      : SQLServerToBlobPipeline
@@ -726,7 +726,7 @@ Kanál v této ukázce kopíruje data z jednoho umístění do jiného v úloži
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
-Seznam úložišť dat podporovaných službou Data Factory najdete v tématu popisujícím [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných programem Data Factory naleznete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Pokud se chcete dozvědět víc o hromadném kopírování dat ze zdroje do cíle, přejděte k následujícímu kurzu:
 

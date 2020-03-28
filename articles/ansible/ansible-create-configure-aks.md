@@ -1,23 +1,23 @@
 ---
-title: Kurz – konfigurace clusterů Azure Kubernetes Service (AKS) v Azure s využitím Ansible
+title: Kurz – konfigurace clusterů služby Azure Kubernetes Service (AKS) v Azure pomocí ansible
 description: Zjistěte, jak pomocí Ansible vytvořit a spravovat cluster Azure Kubernetes Service v Azure.
-keywords: Ansible, Azure, DevOps, bash, cloudshellu, PlayBook, AKS, Container, AKS, Kubernetes
+keywords: ansible, azurové, devops, bash, cloudshell, playbook, aks, kontejner, aks, kubernetes
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.openlocfilehash: 6672c3fac1c5d546a61622e3fd6df6c5397f87a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156682"
 ---
-# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Kurz: konfigurace clusterů Azure Kubernetes Service (AKS) v Azure pomocí Ansible
+# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Kurz: Konfigurace clusterů služby Azure Kubernetes Service (AKS) v Azure pomocí ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-AKS je možné nakonfigurovat tak, aby pro ověřování uživatelů používala [Azure Active Directory (AD)](/azure/active-directory/) . Po nakonfigurování se pomocí ověřovacího tokenu Azure AD přihlásíte ke clusteru AKS. RBAC může být založen na identitě nebo členství uživatele ve skupině adresáře.
+AKS lze nakonfigurovat tak, aby používal [azure active directory (AD)](/azure/active-directory/) pro ověřování uživatelů. Po konfiguraci použijete ověřovací token Azure AD k přihlášení do clusteru AKS. RBAC může být založen na identitě uživatele nebo členství ve skupině adresářů.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -34,7 +34,7 @@ AKS je možné nakonfigurovat tak, aby pro ověřování uživatelů používala
 
 ## <a name="create-a-managed-aks-cluster"></a>Vytvoření spravovaného clusteru AKS
 
-Vzorový PlayBook vytvoří v rámci skupiny prostředků skupinu prostředků a cluster AKS.
+Ukázkový playbook vytvoří skupinu prostředků a cluster AKS v rámci skupiny prostředků.
 
 Uložte následující ukázkový playbook jako `azure_create_aks.yml`:
 
@@ -77,20 +77,20 @@ tasks:
         Environment: Production
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
+Před spuštěním playbooku se podívejte na následující poznámky:
 
-- První oddíl v rámci `tasks` definuje skupinu prostředků s názvem `myResourceGroup` v umístění `eastus`.
-- Druhá část v rámci `tasks` definuje cluster AKS s názvem `myAKSCluster` v rámci skupiny prostředků `myResourceGroup`.
-- Pro zástupný symbol `your_ssh_key` zadejte svůj veřejný klíč RSA v jednořádkovém formátu – začněte řetězcem SSH-RSA (bez uvozovek).
-- Pro zástupný text `aks_version` použijte příkaz [AZ AKS get-versions](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) .
+- První část `tasks` v rámci definuje `myResourceGroup` skupinu `eastus` prostředků pojmenovanou v umístění.
+- Druhá část `tasks` v rámci definuje cluster `myAKSCluster` AKS pojmenovaný v rámci skupiny `myResourceGroup` prostředků.
+- Pro `your_ssh_key` zástupný symbol zadejte svůj veřejný klíč RSA v jednořádkovém formátu – počínaje "ssh-rsa" (bez uvozovek).
+- Pro `aks_version` zástupný symbol použijte příkaz [az aks get-versions.](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions)
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook azure_create_aks.yml
 ```
 
-Spuštění PlayBook zobrazí výsledky podobné následujícímu výstupu:
+Spuštění playbooku zobrazuje výsledky podobné následujícímu výstupu:
 
 ```Output
 PLAY [Create AKS] 
@@ -110,7 +110,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="scale-aks-nodes"></a>Škálování uzlů AKS
 
-Ukázkový playbook v předchozí části definuje dva uzly. Počet uzlů upravíte úpravou hodnoty `count` v bloku `agent_pool_profiles`.
+Ukázkový playbook v předchozí části definuje dva uzly. Počet uzlů upravíte úpravou `count` hodnoty v `agent_pool_profiles` bloku.
 
 Uložte následující ukázkový playbook jako `azure_configure_aks.yml`:
 
@@ -145,17 +145,17 @@ Uložte následující ukázkový playbook jako `azure_configure_aks.yml`:
             vm_size: Standard_D2_v2
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
+Před spuštěním playbooku se podívejte na následující poznámky:
 
-- Pro zástupný symbol `your_ssh_key` zadejte svůj veřejný klíč RSA v jednořádkovém formátu – začněte řetězcem SSH-RSA (bez uvozovek).
+- Pro `your_ssh_key` zástupný symbol zadejte svůj veřejný klíč RSA v jednořádkovém formátu – počínaje "ssh-rsa" (bez uvozovek).
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook azure_configure_aks.yml
 ```
 
-Spuštění PlayBook zobrazí výsledky podobné následujícímu výstupu:
+Spuštění playbooku zobrazuje výsledky podobné následujícímu výstupu:
 
 ```Output
 PLAY [Scale AKS cluster] 
@@ -172,7 +172,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 
 ## <a name="delete-a-managed-aks-cluster"></a>Odstranění spravovaného clusteru AKS
 
-Vzorový PlayBook odstraní cluster AKS.
+Ukázkový playbook odstraní cluster AKS.
 
 Uložte následující ukázkový playbook jako `azure_delete_aks.yml`:
 
@@ -192,13 +192,13 @@ Uložte následující ukázkový playbook jako `azure_delete_aks.yml`:
       state: absent
   ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook azure_delete_aks.yml
 ```
 
-Spuštění PlayBook zobrazí výsledky podobné následujícímu výstupu:
+Spuštění playbooku zobrazuje výsledky podobné následujícímu výstupu:
 
 ```Output
 PLAY [Delete a managed Azure Container Services (AKS) cluster] 

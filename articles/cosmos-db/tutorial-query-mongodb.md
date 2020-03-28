@@ -1,6 +1,6 @@
 ---
-title: Dotazování dat pomocí rozhraní API Azure Cosmos DB pro MongoDB
-description: Naučte se, jak zadávat dotazy na data z rozhraní API Azure Cosmos DB MongoDB pomocí příkazů prostředí MongoDB.
+title: Dotazujte se na data pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
+description: Zjistěte, jak dotazovat data z rozhraní API Azure Cosmos DB pro MongoDB pomocí příkazů prostředí MongoDB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74870135"
 ---
-# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování dat pomocí rozhraní API Azure Cosmos DB pro MongoDB
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování na data pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
-[Rozhraní API Azure Cosmos DB pro MongoDB](mongodb-introduction.md) podporuje [dotazy MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+Rozhraní [API Azure Cosmos DB pro MongoDB](mongodb-introduction.md) podporuje [dotazy MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Dotazování na data uložená ve vaší databázi Cosmos pomocí prostředí MongoDB
+> * Dotazování dat uložených v databázi Cosmos pomocí prostředí MongoDB
 
 Můžete začít s použitím příkladů v tomto dokumentu a podívat se na video o [dotazování služby Azure Cosmos DB pomocí prostředí MongoDB Shell](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/).
 
@@ -58,11 +58,11 @@ Dotazy v tomto článku využívají následující ukázkový dokument.
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a>Příklad dotazu 1 
+## <a name="example-query-1"></a><a id="examplequery1"></a>Příklad dotazu 1 
 
 S použitím výše uvedeného dokumentu family (rodina) vrátí následující dotaz dokumenty, jejichž pole ID odpovídá `WakefieldFamily`.
 
-**Dotaz**
+**Dotazu**
     
     db.families.find({ id: "WakefieldFamily"})
 
@@ -108,11 +108,11 @@ S použitím výše uvedeného dokumentu family (rodina) vrátí následující 
     "isRegistered": false
     }
 
-## <a id="examplequery2"></a>Příklad dotazu 2 
+## <a name="example-query-2"></a><a id="examplequery2"></a>Příklad dotazu 2 
 
 Další dotaz vrátí všechny děti v rodině. 
 
-**Dotaz**
+**Dotazu**
     
     db.families.find( { id: "WakefieldFamily" }, { children: true } )
 
@@ -141,20 +141,20 @@ Další dotaz vrátí všechny děti v rodině.
     }
 
 
-## <a id="examplequery3"></a>Příklad dotazu 3 
+## <a name="example-query-3"></a><a id="examplequery3"></a>Příklad dotazu 3 
 
 Další dotaz vrátí všechny zaregistrované rodiny. 
 
-**Dotaz**
+**Dotazu**
     
     db.families.find( { "isRegistered" : true })
 **Výsledky** Nevrátí se žádný dokument. 
 
-## <a id="examplequery4"></a>Příklad dotazu 4
+## <a name="example-query-4"></a><a id="examplequery4"></a>Příklad dotazu 4
 
 Další dotaz vrátí všechny nezaregistrované rodiny. 
 
-**Dotaz**
+**Dotazu**
     
     db.families.find( { "isRegistered" : false })
 **Results**
@@ -194,11 +194,11 @@ Další dotaz vrátí všechny nezaregistrované rodiny.
     "isRegistered": false
 }
 
-## <a id="examplequery5"></a>Příklad dotazu 5
+## <a name="example-query-5"></a><a id="examplequery5"></a>Příklad dotazu 5
 
 Další dotaz vrátí všechny nezaregistrované rodiny ve státě NY. 
 
-**Dotaz**
+**Dotazu**
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
@@ -240,11 +240,11 @@ Další dotaz vrátí všechny nezaregistrované rodiny ve státě NY.
 }
 
 
-## <a id="examplequery6"></a>Příklad dotazu 6
+## <a name="example-query-6"></a><a id="examplequery6"></a>Příklad dotazu 6
 
 Další dotaz vrátí všechny rodiny s dětmi v 8. ročníku.
 
-**Dotaz**
+**Dotazu**
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
@@ -285,11 +285,11 @@ Další dotaz vrátí všechny rodiny s dětmi v 8. ročníku.
     "isRegistered": false
 }
 
-## <a id="examplequery7"></a>Příklad dotazu 7
+## <a name="example-query-7"></a><a id="examplequery7"></a>Příklad dotazu 7
 
 Další dotaz vrátí všechny rodiny s polem children (děti) velikosti 3.
 
-**Dotaz**
+**Dotazu**
   
       db.Family.find( {children: { $size:3} } )
 
@@ -302,7 +302,7 @@ Nevrátí se žádné výsledky, protože v žádné rodině není více než dv
 V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Seznámili jste se s dotazování pomocí rozhraní Cosmos DB API pro MongoDB.
+> * Naučili se dotazovat pomocí rozhraní API Cosmos DB pro MongoDB
 
 Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně distribuovat data.
 

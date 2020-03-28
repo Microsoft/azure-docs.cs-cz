@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytvoření balíčku pro přístup – Správa nároků Azure AD
-description: Podrobný návod, jak vytvořit první balíček přístupu v Azure Active Directory správě nároků.
+title: Kurz – vytvoření balíčku přístupu – správa oprávnění Azure AD
+description: Podrobný kurz, jak vytvořit první balíček přístupu ve správě nároků Služby Azure Active Directory.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,247 +17,247 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75422660"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: Vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
-Správa přístupu ke všem zdrojům prostředků, jako jsou skupiny, aplikace a weby, je důležitou funkcí pro organizace. Chcete zaměstnancům udělit správnou úroveň přístupu, které potřebují k zajištění produktivity, a odebrat svůj přístup, když už ho nepotřebujete.
+Správa přístupu ke všem prostředkům, které zaměstnanci potřebují, jako jsou skupiny, aplikace a weby, je důležitou funkcí organizací. Chcete zaměstnancům poskytnout správnou úroveň přístupu, kterou potřebují k tomu, aby byli produktivní, a odebrat jim přístup, když již není potřeba.
 
-V tomto kurzu pracujete s Woodgrove bankou jako s správcem IT. Byli jste požádáni o vytvoření balíčku prostředků pro marketingovou kampaň, na které interní uživatelé můžou samoobslužné požadavky. Žádosti nevyžadují schválení a přístup uživatele vyprší po 30 dnech. Pro účely tohoto kurzu jsou prostředky marketingové kampaně pouze členstvím v jedné skupině, ale může se jednat o kolekci skupin, aplikací nebo webů SharePointu Online.
+V tomto kurzu pracujete pro Woodgrove Bank jako správce IT. Byli jste požádáni o vytvoření balíčku zdrojů pro marketingovou kampaň, kterou mohou interní uživatelé samoobslužné a požadovat. Požadavky nevyžadují schválení a přístup uživatele vyprší po 30 dnech. V tomto kurzu jsou prostředky marketingové kampaně pouze členstvím v jedné skupině, ale může se jedná o kolekci skupin, aplikací nebo webů SharePointu Online.
 
 ![Přehled scénáře](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření balíčku pro přístup se skupinou jako prostředku
-> * Umožňuje uživateli ve vašem adresáři požádat o přístup.
-> * Ukázka, jak může interní uživatel požádat o přístup k balíčku
+> * Vytvoření přístupového balíčku se skupinou jako zdrojem
+> * Povolení přístupu uživateli ve vašem adresáři
+> * Předveďte, jak může interní uživatel požádat o přístupový balíček
 
-Podrobný příklad procesu nasazení správy opravňujících Azure Active Directory, včetně vytvoření prvního balíčku pro přístup, najdete v následujícím videu:
+Podrobné ukázky procesu nasazování správy nároků služby Azure Active Directory, včetně vytvoření prvního balíčku přístupu, naznejte následující video:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
+Chcete-li používat správu oprávnění Azure AD, musíte mít jednu z následujících licencí:
 
 - Azure AD Premium P2
-- Licence pro Enterprise Mobility + Security (EMS) E5
+- Licence Enterprise Mobility + Security (EMS) E5
 
-Další informace najdete v tématu [licenční požadavky](entitlement-management-overview.md#license-requirements).
+Další informace naleznete v tématu [Licenční požadavky](entitlement-management-overview.md#license-requirements).
 
-## <a name="step-1-set-up-users-and-group"></a>Krok 1: nastavení uživatelů a skupin
+## <a name="step-1-set-up-users-and-group"></a>Krok 1: Nastavení uživatelů a skupin
 
-Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto kroku vytvoříte skupinu s názvem **marketingové prostředky** v adresáři Woodgrove Bank, která je cílovým prostředkem pro správu nároků. Nastavili jste také interního žadatele.
+Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto kroku vytvoříte skupinu s názvem **Marketingové zdroje** v adresáři Woodgrove Bank, která je cílovým zdrojem pro správu nároků. Můžete také nastavit interní žadatel.
 
-**Požadovaná role:** Globální správce nebo Správce uživatelů
+**Předpokladová role:** Globální správce nebo správce uživatelů
 
 ![Vytváření uživatelů a skupin](./media/entitlement-management-access-package-first/elm-users-groups.png)
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce nebo Správce uživatelů.  
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) jako globální správce nebo správce uživatelů.  
 
 1. V levém navigačním panelu klikněte na **Azure Active Directory**.
 
-1. Vytvořte nebo nakonfigurujte následující dva uživatele. Můžete použít tyto názvy nebo jiné názvy. **Admin1** může být uživatel, ke kterému jste aktuálně přihlášení.
+1. Vytvořte nebo nakonfigurujte následující dva uživatele. Tyto názvy nebo různé názvy můžete použít. **Admin1** může být uživatel, ke které jste aktuálně přihlášeni.
 
     | Name (Název) | Role adresáře |
     | --- | --- |
-    | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatele |
-    | **Requestor1** | Uživatel |
+    | **Správce1** | Globální správce<br/>-nebo-<br/>Správce uživatele |
+    | **Žadatel** | Uživatel |
 
-1. Vytvořte skupinu zabezpečení Azure AD s názvem **marketingové zdroje** s **přiřazeným**typem členství.
+1. Vytvořte skupinu zabezpečení Azure AD s názvem **Marketingové prostředky** s typem **členství Přiřazeno**.
 
-    Tato skupina bude cílovým prostředkem pro správu nároků. Skupina by měla být prázdná pro členy, kteří mají být spuštěni.
+    Tato skupina bude cílovým zdrojem pro správu nároků. Skupina by měla být prázdná členů pro spuštění.
 
-## <a name="step-2-create-an-access-package"></a>Krok 2: vytvoření balíčku pro přístup
+## <a name="step-2-create-an-access-package"></a>Krok 2: Vytvoření přístupového balíčku
 
-*Balíček pro přístup* je sada prostředků, které tým nebo projekt potřebuje a které se řídí zásadami. Balíčky přístupu jsou definované v kontejnerech nazývaných *katalogy*. V tomto kroku vytvoříte balíček pro přístup k **marketingové kampani** v katalogu **Obecné** .
+Přístupový *balíček* je sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupové balíčky jsou definovány v kontejnerech *nazývaných katalogy*. V tomto kroku vytvoříte balíček přístupu k **marketingové kampani** v **obecném** katalogu.
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
 
-![Vytvoření balíčku pro přístup](./media/entitlement-management-access-package-first/elm-access-package.png)
+![Vytvoření přístupového balíčku](./media/entitlement-management-access-package-first/elm-access-package.png)
 
-1. V Azure Portal klikněte v levém navigačním panelu na možnost **Azure Active Directory**.
+1. Na webu Azure Portal klikněte v levém navigačním panelu na **Položku Azure Active Directory**.
 
-1. V nabídce vlevo klikněte na zásady **správného řízení identity** .
+1. V levé nabídce klikněte na **Zásady správného řízení identity.**
 
-1. V nabídce vlevo klikněte na možnost **přístup k balíčkům**.  Pokud se zobrazí **přístup odepřen**, ujistěte se, že je ve vašem adresáři přítomen Azure AD Premium licence P2.
+1. V levé nabídce klepněte na **položku Přístup k balíčkům**.  Pokud se vám **přístup odepřen**, ujistěte se, že licence Azure AD Premium P2 je k dispozici ve vašem adresáři.
 
-1. Klikněte na **nový balíček pro přístup**.
+1. Klepněte na **položku Nový přístupový balíček**.
 
-    ![Správa nároků v Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
+    ![Správa nároků na webu Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-1. Na kartě **základy** zadejte název přístupového balíčku **marketingové kampaně** a popis **přístup k prostředkům kampaně**.
+1. Na kartě **Základy** zadejte název Balíček přístupu k **marketingové kampani** a popis **Přístup k prostředkům kampaně**.
 
-1. Ponechejte rozevírací seznam **katalog** nastavený na **Obecné**.
+1. Rozevírací seznam **Katalog** ponechejte nastavený na **obecné**.
 
-    ![Karta základy na novém přístupovém balíčku](./media/entitlement-management-access-package-first/basics.png)
+    ![Nový přístupový balíček – karta Základy](./media/entitlement-management-access-package-first/basics.png)
 
-1. Kliknutím na **Další** otevřete kartu **role prostředků** .
+1. Kliknutím na **Další** otevřete kartu **Role prostředků.**
 
-    Na této kartě můžete vybrat prostředky a roli prostředků, které chcete zahrnout do balíčku pro přístup.
+    Na této kartě vyberete prostředky a roli prostředku, které chcete zahrnout do balíčku přístupu.
 
-1. Klikněte na **skupiny a týmy**.
+1. Klikněte na **Skupiny a týmy**.
 
-1. V podokně vybrat skupiny vyhledejte a vyberte skupinu **marketingových zdrojů** , kterou jste vytvořili dříve.
+1. V podokně Vybrat skupiny vyhledejte a vyberte skupinu **marketingových zdrojů,** kterou jste vytvořili dříve.
 
-    Ve výchozím nastavení se zobrazují skupiny uvnitř i vně katalogu **Obecné** . Když vyberete skupinu mimo katalog **Obecné** , přidá se do katalogu pro **Obecné** .
+    Ve výchozím nastavení se zobrazí skupiny uvnitř a vně **obecného** katalogu. Vyberete-li skupinu mimo **obecný** katalog, bude přidána do **obecného** katalogu.
 
-    ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Nový přístupový balíček – karta Role prostředků](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. Kliknutím na **Vybrat** přidejte skupinu do seznamu.
+1. Kliknutím na **Vybrat** přidáte skupinu do seznamu.
 
-1. V rozevíracím seznamu **role** vyberte **člen**.
+1. V rozevíracím seznamu **Role** vyberte **Člen**.
 
-    ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles.png)
+    ![Nový přístupový balíček – karta Role prostředků](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. Kliknutím na **Další** otevřete kartu **žádosti** .
+1. Kliknutím na **Další** otevřete kartu **Požadavky.**
 
-    Na této kartě vytvoříte zásadu žádosti. *Zásady* definují pravidla nebo guardrails pro přístup k balíčku přístupu. Vytvoříte zásadu, která umožňuje určitému uživateli v adresáři prostředků požádat o tento balíček přístupu.
+    Na této kartě vytvoříte zásadu požadavku. *Zásada* definuje pravidla nebo svodidla pro přístup k balíčku přístupu. Vytvoření zásady, která umožňuje určitému uživateli v adresáři prostředků požadovat tento přístupový balíček.
 
-1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na **uživatele v adresáři** a pak klikněte na **konkrétní uživatelé a skupiny**.
+1. V části **Uživatelé, kteří mohou požádat o přístup,** klikněte **v adresáři** na možnost Pro uživatele a potom klikněte na **položku Konkrétní uživatelé a skupiny**.
 
-    ![Nový balíček přístupu – karta požadavky](./media/entitlement-management-access-package-first/requests.png)
+    ![Nový přístupový balíček – karta Požadavky](./media/entitlement-management-access-package-first/requests.png)
 
 1. Klikněte na **Přidat uživatele a skupiny**.
 
-1. V podokně vybrat uživatele a skupiny vyberte uživatele **Requestor1** , kterého jste vytvořili dříve.
+1. V podokně Vybrat uživatele a skupiny vyberte dříve vytvořeného uživatele **Requestor1.**
 
-    ![Nový přístupový balíček – karta požadavky – vybrat uživatele a skupiny](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
+    ![Nový přístupový balíček – karta Požadavky – výběr uživatelů a skupin](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. Klikněte na **Vybrat**.
+1. Klepněte na **tlačítko Vybrat**.
 
-1. Přejděte dolů na oddíly **schválení** a **Povolit žádosti** .
+1. Posuňte se dolů do oddílů **Schválení** a **Povolit požadavky.**
 
-1. Nechte položku **vyžadovat schválení** nastavenou na **ne**.
+1. Ponechat **ponechat Po schválení ponechat** nastaveno na **ne**.
 
-1. Pro **Povolit žádosti**klikněte na **Ano** , aby se tento balíček pro přístup vyžádal, jakmile se vytvoří.
+1. V **případě povolení požadavků**povolte klepnutím na tlačítko **Ano,** chcete-li povolit požadavek na tento přístupový balíček ihned po jeho vytvoření.
 
-    ![Nový přístupový balíček – vyžádá schválení a povolí žádosti na kartě.](./media/entitlement-management-access-package-first/requests-approval-enable.png)
+    ![Nový přístupový balíček – karta Požadavky – schválení a povolení požadavků](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. Kliknutím na **Další** otevřete kartu **životní cyklus** .
+1. Kliknutím na **Další** otevřete kartu **Životní cyklus.**
 
-1. V části **vypršení platnosti** nastavte u **Přiřazení přístupových balíčků** **počet dní**.
+1. V části **Vypršení platnosti** nastavte **počet přiřazení balíčků aplikace Access** na Počet **dní**.
 
-1. Nastavte **platnost přiřazení po dobu** **30** dnů.
+1. Nastavit **Přiřazení vyprší po** **30** dnech.
 
-    ![Nový balíček přístupu – karta životního cyklu](./media/entitlement-management-access-package-first/lifecycle.png)
+    ![Nový přístupový balíček – karta Životní cyklus](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. Kliknutím na **Další** otevřete kartu **Revize + vytvořit** .
+1. Kliknutím na **Další** otevřete kartu **Revize + Vytvořit.**
 
-    ![Nový balíček přístupu – revize + vytvořit kartu](./media/entitlement-management-access-package-first/review-create.png)
+    ![Nový přístupový balíček – karta Revize + Vytvoření](./media/entitlement-management-access-package-first/review-create.png)
 
-    Po chvíli byste měli vidět oznámení, že byl balíček pro přístup úspěšně vytvořen.
+    Po několika okamžicích byste měli vidět oznámení, že balíček přístupu byl úspěšně vytvořen.
 
-1. V nabídce vlevo v balíčku pro přístup k marketingové kampani klikněte na **Přehled**.
+1. V levé nabídce balíčku Přístup k marketingové kampani klepněte na tlačítko **Přehled**.
 
-1. Zkopírujte **odkaz Můj portál přístupu**.
+1. Zkopírujte **odkaz Na portál u aplikace Můj Přístup**.
 
-    Tento odkaz použijete pro další krok.
+    Tento odkaz použijete k dalšímu kroku.
 
-    ![Přehled přístupu k balíčku – odkaz na portál pro přístup](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Přehled přístupových balíčků – odkaz na portál Můj Přístup](./media/entitlement-management-shared/my-access-portal-link.png)
 
-## <a name="step-3-request-access"></a>Krok 3: vyžádání přístupu
+## <a name="step-3-request-access"></a>Krok 3: Žádost o přístup
 
-V tomto kroku provedete kroky jako **interní žadatel** a vyžádáte přístup k balíčku přístupu. Žadatelé odesílají své žádosti pomocí webu s názvem portál přístupu. Portál pro přístup umožňuje žadatelům odesílat požadavky na balíčky přístupu, přečtěte si balíčky přístupu, ke kterým už mají přístup, a zobrazit jejich historii žádostí.
+V tomto kroku provedete kroky jako **interní žadatel** a požádat o přístup k balíčku přístupu. Žadatelé odešlou své požadavky pomocí webu nazvaného Portál přístupu. Portál Můj přístup umožňuje žadatelům odesílat žádosti o přístupové balíčky, zobrazit přístupové balíčky, ke kterým již mají přístup, a zobrazit jejich historii požadavků.
 
-**Požadovaná role:** Interní žadatel
+**Předpokladová role:** Interní žadatel
 
-1. Odhlaste se z Azure Portal.
+1. Odhlaste se z webu Azure Portal.
 
-1. V novém okně prohlížeče přejděte na odkaz Můj portál pro přístup, který jste zkopírovali v předchozím kroku.
+1. V novém okně prohlížeče přejděte na odkaz Můj přístup ový portál, který jste zkopírovali v předchozím kroku.
 
-1. Přihlaste se k portálu pro přístup jako **Requestor1**.
+1. Přihlaste se k portálu Můj přístup jako **Requestor1**.
 
-    Měl by se zobrazit balíček pro přístup k **marketingové kampani** .
+    Měli byste vidět balíček přístupu **k marketingové kampani.**
 
-1. V případě potřeby klikněte ve sloupci **Popis** na šipku a zobrazte podrobnosti o balíčku pro přístup.
+1. V případě potřeby klikněte ve sloupci **Popis** na šipku a zobrazte podrobnosti o přístupovém balíčku.
 
-    ![Portál přístupu – přístupové balíčky](./media/entitlement-management-shared/my-access-access-packages.png)
+    ![Můj přístupový portál – přístupové balíčky](./media/entitlement-management-shared/my-access-access-packages.png)
 
-1. Klikněte na značku zaškrtnutí a vyberte balíček.
+1. Kliknutím na zaškrtnutí vyberte balíček.
 
-1. Kliknutím na **požádat o přístup** otevřete podokno žádosti o přístup.
+1. Kliknutím na **Požádat o přístup** otevřete podokno Požádat o přístup.
 
-    ![Můj portál pro přístup – požádat o přístup k tlačítku](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
+    ![Můj přístupový portál – tlačítko Požádat o přístup](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
 
-1. Do pole **obchodní odůvodnění** zadejte odůvodnění při **práci na nové marketingové kampani**.
+1. Do pole **Obchodní odůvodnění** zadejte odůvodnění, na kterém pracuji na nové **marketingové kampani**.
 
-    ![Můj portál přístupu – požádat o přístup](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Portál Můj přístup – žádost o přístup](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Klikněte na **Submit** (Odeslat).
+1. Klepněte na **tlačítko Odeslat**.
 
-1. V nabídce vlevo klikněte na **historie požadavků** a ověřte, zda byla žádost odeslána.
+1. V levé nabídce klikněte na **Možnost vyžádat historii** a ověřte, že váš požadavek byl odeslán.
 
-## <a name="step-4-validate-that-access-has-been-assigned"></a>Krok 4: ověření, zda byl přiřazen přístup
+## <a name="step-4-validate-that-access-has-been-assigned"></a>Krok 4: Ověření, zda byl přiřazen přístup
 
-V tomto kroku ověříte, že **interní žadatel** byl přiřazen k balíčku přístupu a že je teď členem skupiny **marketingových zdrojů** .
+V tomto kroku potvrdíte, že **internímu žadateli** byl přiřazen přístupový balíček a že je nyní členem skupiny **Marketingové prostředky.**
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
 
-1. Odhlaste se z portálu pro přístup k webu.
+1. Odhlaste se z portálu Můj přístup.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako **admin1**.
+1. Přihlaste se na [portál Azure](https://portal.azure.com) jako **Správce1**.
 
-1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
+1. Klikněte na **Azure Active Directory** a potom klikněte na **Zásadsprávné řízení identit .**
 
-1. V nabídce vlevo klikněte na možnost **přístup k balíčkům**.
+1. V levé nabídce klepněte na **položku Přístup k balíčkům**.
 
-1. Vyhledejte a klikněte na balíček pro přístup k **marketingové kampani** .
+1. Najděte a klikněte na balíček přístupu k **marketingové kampani.**
 
-1. V nabídce vlevo klikněte na **požadavky**.
+1. V levé nabídce klikněte na **Požadavky**.
 
-    Měli byste vidět Requestor1 a počáteční zásady se stavem **dodáno**.
+    Měli byste vidět Requestor1 a počáteční zásady se stavem **Delivered**.
 
-1. Kliknutím na žádost zobrazíte podrobnosti o žádosti.
+1. Kliknutím na požadavek zobrazíte podrobnosti žádosti.
 
-    ![Přístup k balíčku – Podrobnosti žádosti](./media/entitlement-management-access-package-first/request-details.png)
+    ![Přístupový balíček – podrobnosti požadavku](./media/entitlement-management-access-package-first/request-details.png)
 
 1. V levém navigačním panelu klikněte na **Azure Active Directory**.
 
-1. Klikněte na **skupiny** a otevřete skupinu **marketingových zdrojů** .
+1. Klikněte na **Skupiny** a otevřete skupinu **Marketingové zdroje.**
 
-1. Klikněte na tlačítko **Členové**.
+1. Klepněte na **položku Členové**.
 
-    Měla by se zobrazit **Requestor1** uvedená jako člen.
+    Měli byste vidět **Requestor1** uvedeny jako člen.
 
     ![Členové marketingových zdrojů](./media/entitlement-management-access-package-first/group-members.png)
 
-## <a name="step-5-clean-up-resources"></a>Krok 5: vyčištění prostředků
+## <a name="step-5-clean-up-resources"></a>Krok 5: Vyčištění prostředků
 
-V tomto kroku odeberete změny, které jste provedli, a odstraníte balíček přístupu k **marketingové kampani** .
+V tomto kroku odeberete provedené změny a odstraníte balíček přístupu k **marketingové kampani.**
 
-**Požadovaná role:**  Globální správce nebo Správce uživatelů
+**Předpokladová role:**  Globální správce nebo správce uživatelů
 
-1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+1. Na webu Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Identity Governance**.
 
-1. Otevřete balíček pro přístup k **marketingové kampani** .
+1. Otevřete balíček přístupu k **marketingové kampani.**
 
-1. Klikněte na **přiřazení**.
+1. Klepněte na **položku Přiřazení**.
 
-1. V případě **Requestor1**klikněte na tlačítko se třemi tečkami ( **...** ) a pak klikněte na **Odebrat přístup**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. V **části Requestor1**klepněte na tři tečky (**...**) a potom klepněte na tlačítko **Odebrat přístup**. Ve zprávě, která se zobrazí, klepněte na tlačítko **Ano**.
 
-    Po chvíli se stav změní ze doručeno na vypršela jeho platnost.
+    Po několika okamžicích se stav změní z Delivered na Delivered na Expired.
 
-1. Klikněte na **role prostředků**.
+1. Klepněte na **položku Role prostředků**.
 
-1. U **marketingových zdrojů**klikněte na tři tečky ( **...** ) a pak klikněte na **Odebrat roli prostředku**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. V **části Marketingové zdroje**klepněte na tři tečky (**...**) a potom klepněte na tlačítko **Odebrat roli zdroje**. Ve zprávě, která se zobrazí, klepněte na tlačítko **Ano**.
 
-1. Otevřete seznam balíčků přístupu.
+1. Otevřete seznam přístupových balíčků.
 
-1. V případě **marketingové kampaně**klikněte na tlačítko se třemi tečkami ( **...** ) a pak klikněte na **Odstranit**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. V **části Marketingová kampaň**klepněte na tři tečky (**...**) a potom klepněte na tlačítko **Odstranit**. Ve zprávě, která se zobrazí, klepněte na tlačítko **Ano**.
 
-1. V Azure Active Directory odstraňte všechny uživatele, které jste vytvořili, jako je **Requestor1** a **admin1**.
+1. Ve službě Azure Active Directory odstraňte všechny uživatele, které jste vytvořili, například **Requestor1** a **Admin1**.
 
-1. Odstraňte skupinu **marketingových zdrojů** .
+1. Odstraňte skupinu **Marketingové zdroje.**
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším článku se dozvíte víc o běžných krocích scénářů v tématu Správa nároků.
+Přejdete k dalšímu článku a dozvíte se o běžných krocích scénáře při správě nároků.
 > [!div class="nextstepaction"]
 > [Obvyklé scénáře](entitlement-management-scenarios.md)

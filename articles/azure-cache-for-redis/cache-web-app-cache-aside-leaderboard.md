@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření webové aplikace (kromě mezipaměti) – mezipaměť Azure pro Redis'
-description: Naučte se, jak vytvořit webovou aplikaci s mezipamětí Azure pro Redis, která používá model doplňování mezipaměti.
+title: 'Kurz: Vytvoření webové aplikace (cache-aside) – Azure Cache for Redis'
+description: Zjistěte, jak vytvořit webovou aplikaci s Azure Cache pro Redis, která používá vzor stranou mezipaměti.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411938"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření tabulky výsledků s principem s doplňováním mezipaměti aplikací v ASP.NET
 
-V tomto kurzu provedete aktualizaci webové aplikace *ContosoTeamStats* ASP.NET vytvořené v [rychlém startu ASP.NET pro Azure cache pro Redis](cache-web-app-howto.md), abyste zahrnuli tabulek výsledků, který používá [model](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) doplňování mezipaměti s Azure cache pro Redis. Ukázková aplikace zobrazuje seznam týmových statistik z databáze a ukazuje různé způsoby použití mezipaměti Azure pro Redis k ukládání a načítání dat z mezipaměti za účelem zvýšení výkonu. Po dokončení tohoto kurzu máte spuštěnou webovou aplikaci, která čte a zapisuje do databáze, je optimalizována pomocí Azure cache pro Redis a je hostovaná v Azure.
+V tomto kurzu budete aktualizovat *ContosoTeamStats* ASP.NET webovou aplikaci, vytvořenou v [ASP.NET rychlém startu pro Azure Cache for Redis](cache-web-app-howto.md), aby zahrnovala žebříček, který používá vzor [odložených od mezipaměti](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) s Azure Cache for Redis. Ukázková aplikace zobrazí seznam statistik týmu z databáze a ukazuje různé způsoby použití azure cache pro Redis k ukládání a načítání dat z mezipaměti ke zlepšení výkonu. Po dokončení kurzu máte spuštěnou webovou aplikaci, která čte a zapisuje do databáze, optimalizuje se pomocí Azure Cache pro Redis a hostuje v Azure.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Díky ukládání a načítání dat pomocí Azure cache pro Redis můžete zvýšit propustnost dat a snížit zatížení databáze.
+> * Zlepšete propustnost dat a snižte zatížení databáze ukládáním a načítáním dat pomocí azure cache pro Redis.
 > * Použít seřazenou sadu Redis k načtení pěti nejlepších týmů
 > * Zřídit prostředky Azure pro aplikaci pomocí šablony Resource Manageru
 > * Publikovat aplikaci do Azure pomocí sady Visual Studio
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* Tento kurz pokračuje tam, kde jste skončili v [rychlém startu ASP.NET pro Azure cache pro Redis](cache-web-app-howto.md). Pokud jste to ještě neudělali, absolvujte nejprve tento rychlý start.
+* Tento kurz pokračuje tam, kde jste skončili v [ASP.NET úvodním startu pro Azure Cache for Redis](cache-web-app-howto.md). Pokud jste to ještě neudělali, absolvujte nejprve tento rychlý start.
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     * Vývoj pro ASP.NET a web
     * Vývoj pro Azure
@@ -44,7 +44,7 @@ V této části kurzu nakonfigurujete projekt *ContosoTeamStats* s tabulkou výs
 
 ### <a name="add-the-entity-framework-to-the-project"></a>Přidání sady technologií Entity Framework do projektu
 
-1. V aplikaci Visual Studio otevřete řešení *ContosoTeamStats* , které jste vytvořili v [rychlém startu ASP.NET pro Azure cache pro Redis](cache-web-app-howto.md).
+1. V Sadě Visual Studio otevřete řešení *ContosoTeamStats,* které jste vytvořili v [ASP.NET úvodním startu pro Azure Cache for Redis](cache-web-app-howto.md).
 2. Klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**.
 3. Z okna **konzoly Správce balíčků** spusťte následující příkaz a nainstalujte sadu technologií Entity Framework:
 
@@ -148,7 +148,7 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
 
 1. Přidejte následující sekci `connectionStrings` do sekce `configuration`. Název připojovacího řetězce se musí shodovat s názvem třídy kontextu databáze v sadě Entity Framework, což je `TeamContext`.
 
-    Tento připojovací řetězec předpokládá, že jste splnili [požadavky](#prerequisites) a nainstalovali SQL Server Express LocalDB, která je součástí úlohy *vývoj desktopových aplikací .NET* nainstalované společně se sadou Visual Studio 2019.
+    Tento připojovací řetězec předpokládá, že jste splnili [požadavky](#prerequisites) a nainstalovali SQL Server Express LocalDB, který je součástí *úlohy vývoje plochy .NET* nainstalované v sadě Visual Studio 2019.
 
     ```xml
     <connectionStrings>
@@ -226,7 +226,7 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. V části `body` přidejte následující nový příkaz `Html.ActionLink` pro *statistiky týmu contoso* hned pod odkazem pro *Azure cache for Redis test*.
+1. V `body` části přidejte následující `Html.ActionLink` nový příkaz pro *statistiky týmu Contoso* těsně pod odkaz pro *Azure Cache for Redis Test*.
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -234,13 +234,13 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
 
     ![Změny kódu](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Stisknutím kombinace kláves **Ctrl+F5** sestavíte a spustíte aplikaci. Tato verze aplikace načítá výsledky přímo z databáze. Všimněte si akcí **Vytvořit nový**, **Upravit**, **Podrobnosti** a **Odstranit**, které do aplikace automaticky přidalo vygenerované uživatelské rozhraní **Kontroler MVC 5 se zobrazeními, s použitím Entity Frameworku**. V další části tohoto kurzu přidáte Azure cache pro Redis k optimalizaci přístupu k datům a poskytování dalších funkcí do aplikace.
+1. Stisknutím kombinace kláves **Ctrl+F5** sestavíte a spustíte aplikaci. Tato verze aplikace načítá výsledky přímo z databáze. Všimněte si akcí **Vytvořit nový**, **Upravit**, **Podrobnosti** a **Odstranit**, které do aplikace automaticky přidalo vygenerované uživatelské rozhraní **Kontroler MVC 5 se zobrazeními, s použitím Entity Frameworku**. V další části kurzu přidáte Azure Cache pro Redis optimalizovat přístup k datům a poskytnout další funkce pro aplikaci.
 
     ![Startovní aplikace](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
-## <a name="configure-the-app-for-azure-cache-for-redis"></a>Konfigurace aplikace pro mezipaměť Azure pro Redis
+## <a name="configure-the-app-for-azure-cache-for-redis"></a>Konfigurace aplikace pro Azure Cache pro Redis
 
-V této části kurzu nakonfigurujete ukázkovou aplikaci pro ukládání a načítání týmových statistik contoso z mezipaměti Azure pro instanci Redis pomocí klienta mezipaměti [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) .
+V této části kurzu nakonfigurujete ukázkovou aplikaci pro ukládání a načítání statistik týmu Contoso z instance Azure Cache for Redis pomocí klienta mezipaměti [StackExchange.Redis.](https://github.com/StackExchange/StackExchange.Redis)
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>Přidání připojení mezipaměti ke kontroleru Teams
 
@@ -250,7 +250,7 @@ V rychlém startu jste už nainstalovali balíček klientské knihovny *StackExc
 
     ![Kontroler Teams](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Přidejte následující dva příkazy `using` do souboru **TeamsController.cs**:
+1. Do TeamsController.cs `using` přidejte **TeamsController.cs**následující dva příkazy :
 
     ```csharp
     using System.Configuration;
@@ -280,7 +280,7 @@ V rychlém startu jste už nainstalovali balíček klientské knihovny *StackExc
 
 V této ukázce lze týmové statistiky získat z databáze nebo z mezipaměti. Týmové statistiky jsou v mezipaměti uložené pomocí datových typů Redis jako serializovaný seznam `List<Team>`, a také jako seřazená sada. Při načítání položek ze seřazené sady můžete načíst část položek, všechny položky nebo provézt dotaz na určité položky. V této ukázce spustíte dotaz na seřazenou sadu, abyste získali seznam 5 nejlepších týmů seřazených podle počtu výher.
 
-Pro použití mezipaměti Azure pro Redis není nutné ukládat statistiky týmu do více formátů v mezipaměti. V tomto kurzu používáme více formátů, abychom předvedli různé způsoby a datové typy, které můžete použít pro ukládání dat do mezipaměti.
+Není nutné ukládat statistiky týmu ve více formátech v mezipaměti, aby bylo možné používat Azure Cache pro Redis. V tomto kurzu používáme více formátů, abychom předvedli různé způsoby a datové typy, které můžete použít pro ukládání dat do mezipaměti.
 
 1. Přidejte následující příkazy `using` do horní části souboru `TeamsController.cs` k ostatním příkazům `using`:
 
@@ -408,7 +408,7 @@ Pro použití mezipaměti Azure pro Redis není nutné ukládat statistiky týmu
     }
     ```
 
-    Metoda `GetFromList` načítá týmové statistiky z mezipaměti jako serializovaný seznam `List<Team>`. Pokud se statistika v mezipaměti nenachází, dojde k neúspěšnému přístupu do mezipaměti. V takovém případě se týmové statistiky načtou z databáze a uloží se do mezipaměti pro použití v další žádosti. V této ukázce je pro serializaci objektů .NET do a z mezipaměti použita serializace JSON.NET. Další informace najdete v tématu [jak pracovat s objekty .NET v mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
+    Metoda `GetFromList` načítá týmové statistiky z mezipaměti jako serializovaný seznam `List<Team>`. Pokud se statistika v mezipaměti nenachází, dojde k neúspěšnému přístupu do mezipaměti. V takovém případě se týmové statistiky načtou z databáze a uloží se do mezipaměti pro použití v další žádosti. V této ukázce je pro serializaci objektů .NET do a z mezipaměti použita serializace JSON.NET. Další informace najdete v tématu [Jak pracovat s objekty .NET v Azure Cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
     ```csharp
     List<Team> GetFromList()
@@ -615,7 +615,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
     </table>
     ```
 
-1. Přejděte do dolní části souboru **Index.cshtml** a přidejte následující element `tr` tak, aby byl posledním řádkem poslední tabulky v souboru:
+1. Přejděte na konec souboru **Index.cshtml** `tr` a přidejte následující prvek tak, aby se jedná o poslední řádek v poslední tabulce v souboru:
 
     ```html
     <tr><td colspan="5">@ViewBag.Msg</td></tr>
@@ -630,11 +630,11 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
 
 Spusťte aplikaci místně na počítači a ověřte funkci přidanou pro podporu týmů.
 
-V tomto testu jsou aplikace i databáze spuštěny místně. Mezipaměť Azure pro Redis se ale hostuje vzdáleně v Azure. Z tohoto důvodu bude mezipaměť pravděpodobně méně výkonná než databáze. Pro dosažení nejlepšího výkonu by klientská aplikace a instance Azure cache pro Redis měly být ve stejném umístění. V další části nasadíte všechny prostředky do Azure, abyste viděli, jak se zlepší výkon při použití mezipaměti.
+V tomto testu jsou aplikace i databáze spuštěny místně. Azure Cache for Redis je však hostované vzdáleně v Azure. Z tohoto důvodu bude mezipaměť pravděpodobně méně výkonná než databáze. Pro dosažení nejlepšího výkonu by měla být klientská aplikace a instance Azure Cache for Redis ve stejném umístění. V další části nasadíte všechny prostředky do Azure, abyste viděli, jak se zlepší výkon při použití mezipaměti.
 
 Spuštění aplikace místně:
 
-1. Aplikaci spustíte stisknutím kombinace kláves **Ctrl+F5**.
+1. Stisknutím **kláves Ctrl+F5** spusťte aplikaci.
 
     ![Aplikace spuštěná místně](./media/cache-web-app-cache-aside-leaderboard/cache-local-application.png)
 
@@ -657,14 +657,14 @@ V této části zřídíte novou databázi SQL Azure pro aplikaci, která se bud
    | **Název databáze** | *ContosoTeamsDatabase* | Platné názvy databází najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Předplatné** | *Vaše předplatné*  | Vyberte stejné předplatné, které jste použili k vytvoření mezipaměti a hostování služby App Service. |
    | **Skupina prostředků**  | *TestResourceGroup* | Klikněte na **Použít existující** a použijte stejnou skupinu prostředků, do které jste umístili mezipaměť a App Service. |
-   | **Výběr zdroje** | **Prázdná databáze** | Začněte s prázdnou databází. |
+   | **Vybrat zdroj** | **Prázdná databáze** | Začněte s prázdnou databází. |
 
 1. V části **Server** klikněte na **Konfigurovat požadované nastavení** > **Vytvořit nový server** a zadejte následující informace. Potom klikněte na tlačítko **Vybrat**:
 
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
+   | **Přihlášení správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň 8 znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
    | **Umístění** | *USA – východ* | Vyberte stejnou oblast, ve které jste vytvořili mezipaměť a App Service. |
 
@@ -724,10 +724,10 @@ Po dokončení ukázkové aplikace můžete odstranit použité prostředky Azur
 >
 
 1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
-2. Zadejte název vaší skupiny prostředků do textového pole **Filtrování položek...** .
+2. Zadejte název vaší skupiny prostředků do textového pole **Filtrování položek...**.
 3. Klikněte na **...** napravo od skupiny prostředků a klikněte na **Odstranit skupinu prostředků**.
 
-    ![Odstranit](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![Odstranění](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
 
@@ -736,4 +736,4 @@ Po dokončení ukázkové aplikace můžete odstranit použité prostředky Azur
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Jak škálovat Azure cache pro Redis](./cache-how-to-scale.md)
+> [Jak škálovat Azure Cache pro Redis](./cache-how-to-scale.md)

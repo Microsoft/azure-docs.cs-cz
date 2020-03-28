@@ -1,6 +1,6 @@
 ---
-title: 'Ukázka CLI: vytvoření dvou virtuálních počítačů s interním a externím NSG'
-description: Vytvoření dvou virtuálních počítačů s interními a externími NSG pro zabezpečení síťového provozu pomocí Azure CLI.
+title: 'Ukázka cli: Vytvoření dvou virtuálních discích s interním a externím souborem nSG'
+description: Vytvořte dva virtuální počítače s interním a externím souborem zabezpečení sítě pro zabezpečení síťového provozu pomocí příkazového příkazového příkazu Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -17,13 +17,13 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458387"
 ---
-# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Zabezpečený síťový provoz mezi virtuálními počítači pomocí NSG
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Zabezpečený síťový provoz mezi virtuálními počítači pomocí sítě zabezpečení sítě
 
 Tento skript vytvoří dva virtuální počítače a zabezpečí příchozí provoz do obou z nich. Jeden virtuální počítač je přístupný na internetu a má nakonfigurovanou skupinu zabezpečení sítě (NSG), která povoluje provoz na portu 22 a 80. Druhý virtuální počítač není přístupný na internetu a má nakonfigurovanou skupinu NSG, která povoluje pouze provoz z prvního virtuálního počítače.
 
