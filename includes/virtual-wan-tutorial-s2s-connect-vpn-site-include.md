@@ -9,37 +9,37 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75450843"
 ---
-1. Výběrem **připojit weby sítě VPN** otevřete stránku **připojit weby** .
+1. Výběrem **možnosti Připojit weby VPN** otevřete stránku **Připojit weby.**
 
-    ![síti](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "připojit")
+    ![Připojit](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "připojit")
 
    Vyplňte následující pole:
 
-   * Zadejte předsdílený klíč. Pokud nezadáte klíč, Azure ho pro vás automaticky vygeneruje.
-   * Vyberte nastavení protokolu a protokolu IPsec. Podívejte se na [výchozí/vlastní podrobnosti protokolu IPSec] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
-   * Vyberte vhodnou možnost pro **rozšířit výchozí trasu**. Možnost **Povolit** umožňuje virtuálnímu rozbočovači rozšířit naučenou výchozí trasu k tomuto připojení. Tento příznak umožňuje rozšíření výchozí trasy na připojení pouze v případě, že je výchozí trasa již vyučena virtuálním centrem sítě WAN v důsledku nasazení brány firewall v centru nebo v případě, že je povoleno vynucené tunelování na jiném připojeném serveru. Výchozí trasa nepochází do virtuálního centra WAN.
+   * Zadejte předsdílený klíč. Pokud nezadáte klíč, Azure automaticky vygeneruje jeden pro vás.
+   * Vyberte nastavení protokolu a protokolu IPsec. Viz [podrobnosti o výchozí/vlastní ipsec] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
+   * Vyberte příslušnou možnost pro **šíření výchozí trasy**. Možnost **Povolit** umožňuje virtuálnímu rozbočovači šířit naučenou výchozí trasu k tomuto připojení. Tento příznak umožňuje šíření výchozí trasy k připojení pouze v případě, že výchozí trasa je již zjistit virtuální wan rozbočovač v důsledku nasazení brány firewall v rozbočovači, nebo pokud jiná připojená lokalita má vynucené tunelové propojení povoleno. Výchozí trasa nepochází z rozbočovače Virtuální WAN.
 
 2. Vyberte **Connect** (Připojit).
-3. Během několika minut se v lokalitě zobrazí stav připojení a připojení.
+3. Během několika minut se na webu zobrazí stav připojení a připojení.
 
    ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
-   **Stav připojení:** Toto je stav prostředku Azure pro připojení, které spojuje lokalitu VPN s bránou sítě VPN v centru Azure. Po úspěšné operaci této roviny ovládacího prvku budou brány Azure VPN a místní zařízení VPN pokračovat v navázání připojení.
+   **Stav připojení:** Toto je stav prostředku Azure pro připojení, které spojuje web VPN s bránou VPN centra Azure Hub. Jakmile bude tato operace roviny ovládacího prvku úspěšná, brána Azure VPN a místní zařízení VPN přistoupí k navázání připojení.
 
-   **Stav připojení:** Toto je skutečný stav připojení (cesta k datům) mezi bránou VPN Azure v centru a lokalitě VPN. Může zobrazit některý z následujících stavů:
+   **Stav připojení:** Toto je stav skutečného připojení (datové cesty) mezi bránou VPN Azure v rozbočovači a na webu VPN. Může zobrazit některý z následujících stavů:
 
-    * **Neznámé**: Tento stav je obvykle zobrazený v případě, že back-end systémy pracují na přechod na jiný stav.
-    * **Připojování**: Brána Azure VPN Gateway se snaží o přístup k aktuálnímu místnímu webu VPN.
-    * **Připojeno**: připojení mezi službou Azure VPN Gateway a místní sítí VPN je navázáno.
-    * **Odpojeno**: Tento stav se zobrazuje, pokud z jakéhokoli důvodu (v místním prostředí nebo v Azure) se připojení odpojilo.
-4. V rámci lokality sítě VPN Hub můžete také provést následující akce: 
+    * **Neznámý**: Tento stav se obvykle zobrazí, pokud back-endové systémy pracují na přechodu na jiný stav.
+    * **Připojení**: Brána Azure VPN se pokouší oslovit skutečný místní web VPN.
+    * **Připojení**: Připojení se nastoupí mezi bránou Azure VPN a místním webem VPN.
+    * **Odpojeno**: Tento stav se zhlédne, pokud z nějakého důvodu (místní nebo v Azure) bylo připojení odpojeno.
+4. V rámci webu sítě VPN centra můžete provést další akce: 
 
    * Upravte nebo odstraňte připojení VPN.
-   * Odstraní lokalitu v Azure Portal.
-   * Stáhněte si konfiguraci specifickou pro každou větev, kde najdete podrobnosti o straně Azure pomocí kontextové nabídky (...) vedle webu. Pokud chcete stáhnout konfiguraci pro všechny připojené weby v centru, vyberte v horní nabídce **Stáhnout konfiguraci sítě VPN** .
+   * Odstraňte web na webu Azure Portal.
+   * Stáhněte si konfiguraci specifickou pro pobočku, kde nazíte podrobnosti o straně Azure pomocí kontextové nabídky (...) vedle webu. Pokud chcete stáhnout konfiguraci pro všechny připojené weby ve vašem centru, vhorní nabídce vyberte **Stáhnout konfiguraci VPN.**

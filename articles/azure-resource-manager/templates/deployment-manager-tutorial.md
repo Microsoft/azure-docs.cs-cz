@@ -1,28 +1,28 @@
 ---
-title: Použití Azure Deployment Manager k nasazení šablon
-description: Naučte se používat Správce prostředků šablony s Azure Deployment Manager k nasazení prostředků Azure.
+title: Nasazení šablon pomocí Správce nasazení Azure
+description: Zjistěte, jak pomocí Azure Deployment Manageru používat šablony Správce prostředků k nasazení prostředků Azure.
 author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: ad79721b88f886426d658ed6ee89c4969e1f1baa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75471985"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Public Preview)
 
-Zjistěte, jak pomocí [Azure Deployment Manageru](./deployment-manager-overview.md) nasazovat aplikace napříč několika oblastmi. Pokud dáváte přednost rychlejšímu přístupu, [Azure Deployment Manager rychlý Start](https://github.com/Azure-Samples/adm-quickstart) vytvoří požadované konfigurace v předplatném a přizpůsobí artefakty k nasazení aplikace napříč několika oblastmi. Rychlý Start provádí stejné úlohy jako v tomto kurzu.
+Zjistěte, jak pomocí [Azure Deployment Manageru](./deployment-manager-overview.md) nasazovat aplikace napříč několika oblastmi. Pokud dáváte přednost rychlejšímu přístupu, [rychlý start Správce nasazení Azure](https://github.com/Azure-Samples/adm-quickstart) vytvoří požadované konfigurace ve vašem předplatném a přizpůsobí artefakty pro nasazení aplikace ve více oblastech. Rychlý start provádí stejné úkoly jako v tomto kurzu.
 
-Chcete-li použít Deployment Manager, je nutné vytvořit dvě šablony:
+Chcete-li použít Správce nasazení, musíte vytvořit dvě šablony:
 
 * **Šablona topologie:** popisuje prostředky Azure, ze kterých se skládá vaše aplikace, a kam se mají nasadit.
 * **Šablona uvedení:** popisuje kroky, které se mají provést při nasazování aplikací.
 
 > [!IMPORTANT]
-> Pokud je vaše předplatné označené k testování nových funkcí Azure na Kanárských, můžete k nasazení do oblastí pro Kanárské použití použít jenom Azure Deployment Manager. 
+> Pokud je vaše předplatné označeno pro Canary, aby otestovalo nové funkce Azure, můžete použít Azure Deployment Manager jenom k nasazení do kanárských oblastí. 
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -38,12 +38,12 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení nejnovější verze
 > * Vyčištění prostředků
 
-Další materiály:
+Další prostředky:
 
-* [Reference k Azure Deployment Manager REST API](https://docs.microsoft.com/rest/api/deploymentmanager/).
-* [Kurz: použití kontroly stavu v Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+* [Odkaz na rozhraní REST správce nasazení Azure](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Kurz: Použití kontroly stavu ve Správci nasazení Azure](./deployment-manager-tutorial-health-check.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -53,7 +53,7 @@ K dokončení tohoto článku potřebujete:
 
 * Určité zkušenosti s vývojem [šablon Azure Resource Manageru](overview.md).
 * Azure Powershell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/scripting/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete nové okno prostředí PowerShell se zvýšenými oprávněními a použijte tento příkaz:
+* Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/scripting/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete nové okno PowerShellu se zvýšenými oprávněními a použijte následující příkaz:
 
     ```powershell
     Install-Module -Name Az.DeploymentManager
@@ -105,7 +105,7 @@ Tyto dvě verze (1.0.0.0 a 1.0.0.1) jsou určené k [nasazení revize](#deploy-t
 
     ![Kurz Azure Deployment Manageru – šablona pro vytvoření webové aplikace](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
-    Tato šablona volá balíček pro nasazení, který obsahuje soubory webové aplikace. V tomto kurzu komprimovaný balíček obsahuje pouze soubor index. html.
+    Tato šablona volá balíček pro nasazení, který obsahuje soubory webové aplikace. V tomto kurzu komprimovaný balíček obsahuje pouze soubor index.html.
 3. Otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![Kurz Azure Deployment Manageru – šablona pro vytvoření webové aplikace – parametr containerRoot](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
@@ -130,11 +130,11 @@ Tyto dvě verze (1.0.0.0 a 1.0.0.1) jsou určené k [nasazení revize](#deploy-t
 
 Artefakty šablony se používají v šabloně topologie služby a binární artefakty se používají v šabloně uvedení. Šablona topologie i šablona uvedení definují jako zdroj artefaktů prostředek Azure. Tento prostředek odkazuje Resource Manager na artefakty šablony a binární artefakty použité v nasazení. Pro zjednodušení tohoto kurzu se k uložení artefaktů šablony i binárních artefaktů používá jeden účet úložiště. Oba zdroje artefaktů odkazují na stejný účet úložiště.
 
-Spuštěním následujícího skriptu PowerShellu vytvořte skupinu prostředků, vytvořte kontejner úložiště, vytvořte kontejner objektů blob, nahrajte stažené soubory a pak vytvořte token SAS.
+Spusťte následující skript Prostředí PowerShell a vytvořte skupinu prostředků, vytvořte kontejner úložiště, vytvořte kontejner objektů blob, nahrajte stažené soubory a pak vytvořte token SAS.
 
 > [!IMPORTANT]
-> **ProjectName** ve skriptu PowerShellu se používá ke generování názvů služeb Azure, které jsou nasazené v tomto kurzu. Různé služby Azure mají různé požadavky na názvy. Chcete-li zajistit, aby bylo nasazení úspěšné, vyberte název, který má méně než 12 znaků a použijte pouze malá písmena a číslice.
-> Uložte kopii názvu projektu. V tomto kurzu použijete stejný projectName.
+> **název_projektu** ve skriptu PowerShell udává názvy služeb Azure, které jsou nasazené v tomto kurzu. Různé služby Azure mají různé požadavky na názvy. Chcete-li zajistit úspěšné nasazení, zvolte název s méně než 12 znaky pouze malá písmena a čísla.
+> Uložte kopii názvu projektu. Stejným názvem projektu se používá v rámci kurzu.
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -176,9 +176,9 @@ $url = $storageAccount.PrimaryEndpoints.Blob + $containerName + $token
 Write-Host $url
 ```
 
-Vytvořte kopii adresy URL s tokenem SAS. Tato adresa URL je nutná k naplnění pole v obou souborech parametrů, souboru parametrů topologie a souboru parametrů zavedení.
+Vytvořte kopii adresy URL pomocí tokenu SAS. Tuto hodnotu je potřeba vyplnit do příslušného pole v obou souborech parametrů (soubor parametrů topologie a soubor parametrů uvedení).
 
-Otevřete kontejner z Azure Portal a ověřte, zda jsou odesílány **binární soubory** i složky **šablon** i soubory.
+Otevřete kontejner z portálu Azure a ověřte, že se nahrají **binární soubory** i složky **šablon** a soubory.
 
 ## <a name="create-the-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
@@ -186,10 +186,10 @@ V pozdější části kurzu nasadíte uvedení. K provedení akcí nasazení (na
 
 Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigurovat řízení přístupu pro vaše předplatné.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. V levé nabídce portálu vyberte **Předplatná** a pak vyberte své předplatné.
-4. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
+4. Vyberte **Ovládací prvek přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
 5. Zadejte nebo vyberte tyto hodnoty:
 
     ![Kurz Azure Deployment Manageru – řízení přístupu spravované identity přiřazené uživatelem](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)
@@ -207,7 +207,7 @@ Otevřete soubor **\ADMTemplates\CreateADMServiceTopology.json**.
 
 Šablona obsahuje následující parametry:
 
-* **ProjectName**: Tento název slouží k vytvoření názvů pro prostředky Deployment Manager. Například při použití "pnovak" je název topologie služby **pnovak**ServiceTopology.  Názvy prostředků se definují v sekci proměnných této šablony.
+* **název_projektu**: Tento název slouží k vytvoření názvů prostředků Správce nasazení. Například pomocí "jdoe", název topologie služby je **jdoe**Service Topology.  Názvy prostředků se definují v sekci proměnných této šablony.
 * **azureResourcelocation:** Pro zjednodušení tohoto kurzu všechny prostředky sdílí toto umístění, pokud není uvedeno jinak.
 * **artifactSourceSASLocation:** Identifikátor URI SAS kontejneru objektů blob, ve kterém jsou uložené soubory šablon a parametrů jednotek služeb pro účely nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
 * **templateArtifactRoot:** Posunutí cesty z kontejneru objektů blob, ve kterém jsou uložené šablony a parametry. Výchozí hodnota je **templates/1.0.0.0**. Tuto hodnotu neměňte, pokud nechcete změnit strukturu složek, jak je popsáno v části [Příprava artefaktů](#prepare-the-artifacts). V tomto kurzu se používají relativní cesty.  Úplná cesta se vytvoří zřetězením hodnot **artifactSourceSASLocation**, **templateArtifactRoot** a **templateArtifactSourceRelativePath** (nebo **parametersArtifactSourceRelativePath**).
@@ -244,13 +244,13 @@ Vytvoříte soubor parametrů, který se použije pro šablonu topologie.
 1. Ve Visual Studio Code nebo libovolném textovém editoru otevřete soubor **\ADMTemplates\CreateADMServiceTopology.Parameters**.
 2. Vyplňte hodnoty parametrů:
 
-    * **ProjectName**: zadejte řetězec s 4-5 znaky. Tento název se používá k vytváření jedinečných názvů prostředků Azure.
+    * **název projektu**: Zadejte řetězec se 4-5 znaky. Tento název se používá k vytvoření jedinečných názvů prostředků Azure.
     * **azureResourceLocation:** Pokud jsou pro vás umístění Azure novinkou, použijte pro účely tohoto kurzu **centralus**.
     * **artifactSourceSASLocation:** Zadejte identifikátor URI SAS kořenového adresáře (kontejner objektů blob), ve kterém jsou uložené soubory šablon a parametrů jednotek služeb pro účely nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
     * **templateArtifactRoot:** Pokud nezměníte strukturu složek artefaktů, použijte pro účely tohoto kurzu **templates/1.0.0.0**.
 
 > [!IMPORTANT]
-> Šablona topologie a šablona uvedení sdílí několik společných parametrů. Tyto parametry musí mít stejné hodnoty. Tyto parametry jsou: **ProjectName**, **azureResourceLocation**a **artifactSourceSASLocation** (oba zdroje artefaktů sdílejí stejný účet úložiště v tomto kurzu).
+> Šablona topologie a šablona uvedení sdílí několik společných parametrů. Tyto parametry musí mít stejné hodnoty. Tyto parametry jsou: **projectName**, **azureResourceLocation**a **artifactSourceSASLocation** (oba zdroje artefaktů sdílejí stejný účet úložiště v tomto kurzu).
 
 ## <a name="create-the-rollout-template"></a>Vytvoření šablony uvedení
 
@@ -262,7 +262,7 @@ Otevřete soubor **\ADMTemplates\CreateADMRollout.json**.
 
 ![Kurz Azure Deployment Manageru – parametry šablony uvedení](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-* **ProjectName**: Tento název slouží k vytvoření názvů pro prostředky Deployment Manager. Například použití "pnovak", název zavedení je **pnovak**zavedení.  Názvy se definují v sekci proměnných této šablony.
+* **název_projektu**: Tento název slouží k vytvoření názvů prostředků Správce nasazení. Například pomocí "jdoe", název zavedení je **jdoe**Rollout.  Názvy se definují v sekci proměnných této šablony.
 * **azureResourcelocation:** Pro zjednodušení tohoto kurzu všechny prostředky Deployment Manageru sdílí toto umístění, pokud není uvedeno jinak.
 * **artifactSourceSASLocation:** Identifikátor URI SAS kořenového adresáře (kontejner objektů blob), ve kterém jsou uložené soubory šablon a parametrů jednotek služeb pro účely nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
 * **binaryArtifactRoot:** Výchozí hodnota je **binaries/1.0.0.0**. Tuto hodnotu neměňte, pokud nechcete změnit strukturu složek, jak je popsáno v části [Příprava artefaktů](#prepare-the-artifacts). V tomto kurzu se používají relativní cesty.  Úplná cesta se vytvoří zřetězením hodnot **artifactSourceSASLocation**, **binaryArtifactRoot** a **deployPackageUri** zadaných v souboru CreateWebApplicationParameters.json.  Viz [Příprava artefaktů](#prepare-the-artifacts).
@@ -304,8 +304,8 @@ Vytvoříte soubor parametrů, který se použije pro šablonu uvedení.
 1. Ve Visual Studio Code nebo libovolném textovém editoru otevřete soubor **\ADMTemplates\CreateADMRollout.Parameters**.
 2. Vyplňte hodnoty parametrů:
 
-    * **ProjectName**: zadejte řetězec s 4-5 znaky. Tento název se používá k vytváření jedinečných názvů prostředků Azure.
-    * **azureResourceLocation**: zadejte umístění Azure.
+    * **název projektu**: Zadejte řetězec se 4-5 znaky. Tento název se používá k vytvoření jedinečných názvů prostředků Azure.
+    * **azureResourceLocation**: Zadejte umístění Azure.
     * **artifactSourceSASLocation:** Zadejte identifikátor URI SAS kořenového adresáře (kontejner objektů blob), ve kterém jsou uložené soubory šablon a parametrů jednotek služeb pro účely nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
     * **binaryArtifactRoot:** Pokud nezměníte strukturu složek artefaktů, použijte pro účely tohoto kurzu **binaries/1.0.0.0**.
     * **managedIdentityID:** Zadejte ID spravované identity přiřazené uživatelem. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je:
@@ -315,7 +315,7 @@ Vytvoříte soubor parametrů, který se použije pro šablonu uvedení.
         ```
 
 > [!IMPORTANT]
-> Šablona topologie a šablona uvedení sdílí několik společných parametrů. Tyto parametry musí mít stejné hodnoty. Tyto parametry jsou: **ProjectName**, **azureResourceLocation**a **artifactSourceSASLocation** (oba zdroje artefaktů sdílejí stejný účet úložiště v tomto kurzu).
+> Šablona topologie a šablona uvedení sdílí několik společných parametrů. Tyto parametry musí mít stejné hodnoty. Tyto parametry jsou: **projectName**, **azureResourceLocation**a **artifactSourceSASLocation** (oba zdroje artefaktů sdílejí stejný účet úložiště v tomto kurzu).
 
 ## <a name="deploy-the-templates"></a>Nasazení šablon
 
@@ -331,10 +331,10 @@ K nasazení šablon je možné použít Azure PowerShell.
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
     ```
 
-    Spouštíte-li tento skript z jiné relace prostředí PowerShell než z toho, který jste spustili skript [Příprava artefaktů](#prepare-the-artifacts) , je třeba nejprve přeplnit proměnné, které zahrnují **$resourceGroupName** a **$FilePath**.
+    Pokud spustíte tento skript z jiné relace prostředí PowerShell, než je ta, kterou jste spustili skript [Připravit artefakty,](#prepare-the-artifacts) musíte nejprve znovu naplnit proměnné, které zahrnují **$resourceGroupName** a **$filePath**.
 
     > [!NOTE]
-    > `New-AzResourceGroupDeployment` je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. Chcete-li ověřit nasazení, viz krok 2 a krok 4 tohoto postupu.
+    > `New-AzResourceGroupDeployment`je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. Postup ověřte, viz krok 2 a krok 4 tohoto postupu.
 
 2. Pomocí webu Azure Portal ověřte úspěšné vytvoření topologie služby a prostředků:
 
@@ -342,7 +342,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
     Políčko **Zobrazit skryté typy** musí být zaškrtnuté, aby se prostředky zobrazily.
 
-3. <a id="deploy-the-rollout-template"></a>Nasadit šablonu zavedení:
+3. <a id="deploy-the-rollout-template"></a>Nasaďte šablonu uvedení:
 
     ```azurepowershell
     # Create the rollout
@@ -363,7 +363,7 @@ K nasazení šablon je možné použít Azure PowerShell.
         -Verbose
     ```
 
-    Před spuštěním této rutiny je potřeba nainstalovat rutiny PowerShellu pro Deployment Manager. Viz předpoklady. Přepínač-verbose se dá použít k zobrazení celého výstupu.
+    Před spuštěním této rutiny je potřeba nainstalovat rutiny PowerShellu pro Deployment Manager. Viz Požadavky. Přepínač -Verbose lze použít k zobrazení celého výstupu.
 
     V následující ukázce se zobrazuje stav Running (Spuštěno):
 
@@ -444,17 +444,17 @@ Jakmile budete mít novou verzi (1.0.0.1) webové aplikace, můžete ji nasadit 
 
 Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků.
 
-1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
+1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
 2. Pomocí pole **Filtrovat podle názvu** můžete vyfiltrovat skupiny prostředků vytvořené v tomto kurzu. Měly by být 3 až 4:
 
-    * **&lt;projectName > RG**: obsahuje prostředky Deployment Manager.
-    * **&lt;projectName > ServiceWUSrg**: obsahuje prostředky definované pomocí ServiceWUS.
-    * **&lt;projectName > ServiceEUSrg**: obsahuje prostředky definované pomocí ServiceEUS.
+    * název_projektu>rg : obsahuje prostředky Správce nasazení. ** &lt;**
+    * název_projektu>ServiceWUSrg : obsahuje zdroje definované službou ServiceWUS. ** &lt;**
+    * název projektu>ServiceEUSrg : obsahuje zdroje definované serviceEUS. ** &lt;**
     * Skupina prostředků pro spravovanou identitu přiřazenou uživatelem.
 3. Vyberte název skupiny prostředků.
-4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
+4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
 5. Zopakujte poslední dva kroky a odstraňte ostatní skupiny prostředků vytvořené v rámci tohoto kurzu.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili používat Azure Deployment Manager. Informace o integraci monitorování stavu v Azure Deployment Manager najdete v tématu [kurz: použití kontroly stavu ve službě azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+V tomto kurzu jste se naučili používat Azure Deployment Manager. Pokud chcete integrovat monitorování stavu ve Správci nasazení Azure, [přečtěte si článek Kurz: Použití kontroly stavu ve Správci nasazení Azure](./deployment-manager-tutorial-health-check.md).

@@ -10,17 +10,17 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61448518"
 ---
-# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Kurz: Vytvořit a spustit simulaci zařízení IoT
+# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Kurz: Vytvoření a spuštění simulace zařízení IoT
 
 V tomto kurzu s využitím Simulace zařízení vytvoříte a spustíte novou simulaci IoT s jedním nebo několika simulovanými zařízeními.
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 >[!div class="checklist"]
 > * Zobrazení všech aktivních a historických simulací
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Zobrazení metrik simulace
 > * Zastavení simulace
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -72,7 +72,7 @@ Pokud chcete simulaci zastavit, na panelu akcí v pravém horním rohu klikněte
 
 ![Zastavení simulace](media/iot-accelerators-device-simulation-create-simulation/simulationdetails.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak vytvořit, spustit a zastavit simulaci. Také jste zjistili, jak zobrazit podrobnosti o simulaci. Další informace o spouštění simulací najdete v dalším kurzu:
 

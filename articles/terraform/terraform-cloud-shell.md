@@ -1,32 +1,32 @@
 ---
-title: Kurz – konfigurace Azure Cloud Shell pro Terraformu
-description: V tomto kurzu pomocí Terraformu s Azure Cloud Shell zjednodušete ověřování a konfiguraci šablon.
-keywords: Cloud Shell Azure DevOps terraformu
+title: Kurz – konfigurace prostředí Azure Cloud Shell pro Terraform
+description: V tomto kurzu pomocí Terraform s Azure Cloud Shell zjednodušit ověřování a konfiguraci šablony.
+keywords: azure devops terraform cloud shell
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 3a9db1143ba07b549a271d53d610e0a4853467c6
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945339"
 ---
-# <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>Kurz: konfigurace Azure Cloud Shell pro Terraformu
+# <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>Kurz: Konfigurace prostředí Azure Cloud Shell pro Terraform
 
-Terraformu funguje dobře z příkazového řádku bash v macOS, Windows nebo Linux. Spouštění konfigurací Terraformu v prostředí bash pro [Azure Cloud Shell](/azure/cloud-shell/overview) má jedinečné výhody. V tomto kurzu se dozvíte, jak psát skripty Terraformu, které se nasazují do Azure pomocí Cloud Shell.
+Terraform funguje dobře z příkazového řádku Bash v systému macOS, Windows nebo Linuxu. Spuštění konfigurace Terraform v bash prostředí [Azure Cloud Shell](/azure/cloud-shell/overview) má některé jedinečné výhody. Tento kurz ukazuje, jak psát terraformskripty, které se nasazují do Azure pomocí Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="automatic-credential-configuration"></a>Automatická konfigurace přihlašovacích údajů
 
-Terraform je v Cloud Shellu nainstalovaný a okamžitě dostupný. Terraformu skripty se ověřují v Azure po přihlášení k Cloud Shell ke správě infrastruktury bez jakékoli další konfigurace. Automatické ověřování obchází dva ruční procesy:
-- Vytvoření instančního objektu služby Active Directory
-- Konfigurace proměnných poskytovatele služby Azure Terraformu
+Terraform je v Cloud Shellu nainstalovaný a okamžitě dostupný. Terraform skripty ověřit s Azure při přihlášení do Cloud Shell pro správu infrastruktury bez jakékoli další konfigurace. Automatické ověřování obchází dva ruční procesy:
+- Vytvoření objektu zabezpečení služby Active Directory
+- Konfigurace proměnných zprostředkovatele Azure Terraform
 
 
-## <a name="use-modules-and-providers"></a>Použití modulů a zprostředkovatelů
+## <a name="use-modules-and-providers"></a>Použití modulů a poskytovatelů
 
-Moduly Azure Terraformu vyžadují přihlašovací údaje pro přístup k prostředkům Azure a jejich úpravy. Chcete-li v Cloud Shell použít moduly Terraformu, přidejte následující kód:
+Moduly Azure Terraform vyžadují přihlašovací údaje pro přístup a úpravy prostředků Azure. Chcete-li v prostředí Cloud Shell používat moduly Terraform, přidejte následující kód:
 
 
 ```hcl
@@ -39,16 +39,16 @@ provider "azurerm" {
 }
 ```
 
-Když použijete kterýkoli z příkazů rozhraní příkazového řádku `terraform`, Cloud Shell předá pomocí proměnných prostředí požadované hodnoty pro poskytovatele `azurerm`.
+Cloud Shell předává `azurerm` požadované hodnoty pro zprostředkovatele prostřednictvím `terraform` proměnných prostředí při použití některého z příkazů příkazového příkazu.
 
 ## <a name="other-cloud-shell-developer-tools"></a>Ostatní vývojářské nástroje Cloud Shellu
 
-Soubory a stavy prostředí mezi relacemi služby Azure Storage a Cloud Shellu přetrvávají. Pomocí [Průzkumník služby Azure Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer) můžete kopírovat a nahrávat soubory pro Cloud Shell z místního počítače.
+Soubory a stavy prostředí mezi relacemi služby Azure Storage a Cloud Shellu přetrvávají. Pomocí [Průzkumníka úložiště Azure](/azure/vs-azure-tools-storage-manage-with-storage-explorer) zkopírujte a nahrajte soubory do Cloud Shellu z místního počítače.
 
-Rozhraní příkazového řádku Azure je dostupné v Cloud Shell a je skvělým nástrojem pro testování konfigurací a kontrole práce po dokončení `terraform apply` nebo `terraform destroy`.
+Rozhraní příkazového odpočitatelů Azure je k dispozici v prostředí `terraform apply` `terraform destroy` Cloud Shell a je skvělý nástroj pro testování konfigurací a kontrolu vaší práce po dokončení nebo dokončení.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření malého clusteru virtuálních počítačů pomocí registru modulu](terraform-create-vm-cluster-module.md)
+> [Vytvoření malého clusteru virtuálních montovny pomocí registru modulu](terraform-create-vm-cluster-module.md)

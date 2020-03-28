@@ -1,23 +1,23 @@
 ---
-title: Kurz – zřizování infrastruktury s sloty nasazení Azure pomocí Terraformu
-description: V tomto kurzu použijete Terraformu s sloty nasazení poskytovatele Azure.
-keywords: sloty nasazení Azure DevOps terraformu
+title: Kurz – Zřízení infrastruktury s sloty pro nasazení Azure pomocí Terraform
+description: V tomto kurzu používáte Terraform s sloty pro nasazení zprostředkovatele Azure
+keywords: sloty pro nasazení azure devops terraform
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: ddd4d84ee8bf4ab1e90dd68da185cdd9075fe1e0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78943491"
 ---
-# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Kurz: zřízení infrastruktury pomocí slotů nasazení Azure pomocí Terraformu
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Kurz: Zřízení infrastruktury s sloty pro nasazení Azure pomocí Terraform
 
 [Sloty nasazení Azure](/azure/app-service/deploy-staging-slots) můžete použít k přepínání mezi různými verzemi aplikace. Tato možnost vám pomůže minimalizovat dopad přerušených nasazení. 
 
-Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "produkční" a "fázování" jsou libovolné. Můžou to být libovolná vhodná pro váš scénář.) Až nakonfigurujete sloty nasazení, použijete Terraformu k proměně mezi oběma sloty podle potřeby.
+Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "výroba" a "staging" jsou libovolné. Mohou být, co je vhodné pro váš scénář.) Po konfiguraci slotů nasazení použijete Terraform k přepnutí mezi dvěma sloty podle potřeby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
@@ -25,7 +25,7 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Vytvoření a použití plánu Terraformu
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 
@@ -59,7 +59,7 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
     cd deploy
     ```
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `deploy.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `deploy.tf`.
 
     ```bash
     code deploy.tf
@@ -107,7 +107,7 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 1. Když máte soubor vytvořený, ověřte jeho obsah.
 
@@ -199,7 +199,7 @@ Po vytvoření forku úložiště projektu testů nakonfigurujte sloty nasazení
 
 1. Na kartě **Možnosti nasazení** vyberte **OK**.
 
-V tomto okamžiku jste nasadili produkční slot. K nasazení přípravného slotu proveďte předchozí kroky s následujícími úpravami:
+V tomto okamžiku jste nasadili produkční slot. Chcete-li nasadit pracovní slot, proveďte předchozí kroky s následujícími úpravami:
 
 - V kroku 3 vyberte prostředek **slotAppServiceSlotOne**.
 
@@ -222,14 +222,14 @@ V předchozích částech jste nastavili dva sloty – **slotAppService** a **sl
     ![Výběr URL na kartě přehledu pro vykreslení aplikace](./media/terraform-slot-walkthru/resource-url.png)
 
 1. V závislosti na vybrané aplikaci se zobrazí následující výsledky:
-    - Webová aplikace **slotAppService** – modrá Stránka s názvem stránky pro **ukázkovou aplikaci slotu 1** 
-    - Webová aplikace **slotAppServiceSlotOne** – zelená Stránka s názvem stránky **demonstrační aplikace slotu 2**
+    - **slotAppService** webapp - modrá stránka s názvem stránky **Slot Demo App 1**. 
+    - **slotAppServiceSlotOne** webová aplikace - Zelená stránka s názvem stránky **Slot Demo App 2**.
 
     ![Náhled aplikací pro otestování správného nasazení](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>Prohození dvou slotů nasazení
 
-Chcete-li otestovat záměnu těchto dvou slotů nasazení, proveďte následující kroky:
+Chcete-li otestovat výměnu dvou slotů nasazení, postupujte takto:
  
 1. Přepněte se na kartu prohlížeče, na které běží **slotAppService** (aplikace s modrou stránkou). 
 
@@ -243,7 +243,7 @@ Chcete-li otestovat záměnu těchto dvou slotů nasazení, proveďte následuj�
     cd clouddrive/swap
     ```
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `swap.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `swap.tf`.
 
     ```bash
     code swap.tf
@@ -268,7 +268,7 @@ Chcete-li otestovat záměnu těchto dvou slotů nasazení, proveďte následuj�
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 1. Inicializujte Terraform.
 
@@ -288,7 +288,7 @@ Chcete-li otestovat záměnu těchto dvou slotů nasazení, proveďte následuj�
     terraform apply
     ```
 
-1. Jakmile Terraformu zamění sloty, vraťte se do prohlížeče. Aktualizujte stránku. 
+1. Poté, co Terraform vyměnil sloty, vraťte se do prohlížeče. Aktualizujte stránku. 
 
 Webová aplikace v přípravném slotu **slotAppServiceSlotOne** se nyní prohodila s aplikací v produkčním slotu a je nyní vykreslená zeleně. 
 
@@ -305,4 +305,4 @@ Po prohození aplikace uvidíte původní konfiguraci.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Další informace o používání Terraformu v Azure](/azure/terraform)
+> [Další informace o používání Terraform v Azure](/azure/terraform)

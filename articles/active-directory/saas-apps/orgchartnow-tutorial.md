@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s organizačního diagramu teď | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a nyní organizačního diagramu.
+title: 'Kurz: Integrace služby Azure Active Directory s organizačním diagramem nyní | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a organizačním diagramem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,226 +16,226 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095437"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Kurz: Integrace Azure Active Directory se nyní organizačního diagramu
+# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Kurz: Integrace Služby Azure Active Directory s organizačním diagramem
 
-V tomto kurzu se dozvíte, jak integrovat organizačního diagramu teď s Azure Active Directory (Azure AD).
-Integrace organizačního diagramu teď s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat organizační diagram nyní s Azure Active Directory (Azure AD).
+Integrace organizačního diagramu nyní s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup do tohoto okamžiku organizačního diagramu.
-* Uživatelům se automaticky přihlášeni do tohoto okamžiku organizační diagram (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k organizačního diagramu nyní.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k orgchartnow now (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s organizačního diagramu teď, budete potřebovat následující položky:
+Chcete-li nakonfigurovat integraci Azure AD pomocí organizačního diagramu, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Organizační diagram nyní jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné s povoleným jedním přihlášením OrgChart Now
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Organizační diagram nyní podporuje **SP** a **IDP** jednotné přihlašování zahájené pomocí
+* OrgChart nyní podporuje **SP** a **IDP** iniciované přihlašovat
 
-## <a name="adding-orgchart-now-from-the-gallery"></a>Přidání organizačního diagramu teď z Galerie
+## <a name="adding-orgchart-now-from-the-gallery"></a>Přidání organizačního diagramu nyní z galerie
 
-Konfigurace integrace organizačního diagramu teď do služby Azure AD, budete muset přidat organizačního diagramu teď z Galerie na váš seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci organizačního diagramu nyní do Azure AD, musíte přidat OrgChart Now z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat organizačního diagramu teď z galerie, postupujte následovně:**
+**Chcete-li přidat organizační diagram nyní z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **organizačního diagramu teď**vyberte **organizačního diagramu teď** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Organizační diagram Nyní**, z **panelu** výsledků vyberte Organizační diagram nyní a pak klepnutím na **tlačítko Přidat** aplikaci přidejte.
 
      ![Organizační diagram nyní v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a testovací služby Azure AD jednotné přihlašování pomocí organizačního diagramu teď podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské istrovat hned organizačního diagramu.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí organizačního diagramu nyní na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v organizačním diagramu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s nyní organizačního diagramu, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí organizačního diagramu, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace organizačního diagramu teď Single Sign-On](#configure-orgchart-now-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele organizačního diagramu teď](#create-orgchart-now-test-user)**  – Pokud chcete mít protějšek Britta Simon organizačního diagramu teď propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace organizačního diagramu nyní jednotné přihlášení](#configure-orgchart-now-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte orgchart nyní testovací uživatele](#create-orgchart-now-test-user)** – mít protějšek Britta Simon v orgchart nyní, který je propojen s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování pomocí organizačního diagramu teď, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí organizačního diagramu, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **organizačního diagramu teď** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **OrgChart Now** vyberte **Jedno přihlášení**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, postupujte následovně:
+4. V části **Základní konfigurace SAML,** Pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující krok:
 
-    ![Organizační diagram nyní domény a adresy URL jednotného přihlašování – informace](common/idp-identifier.png)
+    ![OrgChart Nyní Informace o doméně a adresURL jednotného přihlášení](common/idp-identifier.png)
 
-    V **identifikátor** textové pole, zadejte adresu URL:  `https://sso2.orgchartnow.com`
+    Do textového pole **Identifikátor** zadejte adresu URL:`https://sso2.orgchartnow.com`
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
 
     ![image](common/both-preintegrated-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>` je **Azure AD identifikátor** zkopírovanými z **nastavit organizačního diagramu teď** části je popsáno dále v kurzu.
+    > `<YourEntityID>`je **identifikátor Azure AD** zkopírovaný z části **Nastavit organizační diagram,** popsanou dále v kurzu.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-7. Na **nastavit organizačního diagramu teď** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit organizační diagram nyní** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-orgchart-now-single-sign-on"></a>Konfigurace organizačního diagramu teď jednotného přihlašování
+### <a name="configure-orgchart-now-single-sign-on"></a>Konfigurace organizačního diagramu nyní jednotné ho přihlašování
 
-Ke konfiguraci jednotného přihlašování na **organizačního diagramu teď** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory nyní organizačního diagramu ](mailto:ocnsupport@officeworksoftware.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **OrgChart Now,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory [Organizačního diagramu Nyní](mailto:ocnsupport@officeworksoftware.com). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup do tohoto okamžiku organizačního diagramu.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k OrgChart Now.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **organizačního diagramu teď**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte Organizační **diagram teď**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **organizačního diagramu teď**.
+2. V seznamu aplikací vyberte **organizační diagram nyní**.
 
-    ![Odkaz organizačního diagramu teď v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Organizační diagram nyní v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-orgchart-now-test-user"></a>Vytvořit testovacího uživatele nyní organizačního diagramu
+### <a name="create-orgchart-now-test-user"></a>Vytvořit organizační diagram nyní testovací ho uživatele
 
-Pokud chcete povolit Azure AD uživatelům se přihlásit do tohoto okamžiku organizačního diagramu, musí být poskytnuty do organizačního diagramu teď. 
+Chcete-li povolit uživatelům Azure AD k přihlášení k organizačnímu diagramu nyní, musí být zřízeny do organizačního diagramu nyní. 
 
-1. Organizačního diagramu teď podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Nový uživatel se vytvoří během pokusu o přístup k nyní organizačního diagramu, pokud ještě neexistuje. Zřizování funkce uživatelů v čase vytvoří pouze **jen pro čtení** uživatele, pokud požadavek jednotného přihlašování pochází z rozpoznaný zprostředkovatele identity a e-mailu v kontrolní výraz SAML nebyl nalezen v seznamu uživatelů. Pro tento automatické zřizování funkci je potřeba vytvořit skupinu přístupu s názvem **Obecné** istrovat hned organizačního diagramu. Postupujte prosím podle níže uvedený postup k vytvoření přístupové skupiny:
+1. OrgChart Nyní podporuje zřizování just-in-time, což je ve výchozím nastavení povoleno. Nový uživatel je vytvořen během pokusu o přístup k organizačnímu diagramu nyní, pokud ještě neexistuje. Funkce zřizování uživatele just-in-time vytvoří uživatele **jen pro čtení pouze** v případě, že požadavek na služby SSO pochází z rozpoznaného idp a e-mail v kontrolním výrazu SAML nebyl nalezen v seznamu uživatelů. Pro tuto funkci automatického zřizování je třeba vytvořit přístupovou skupinu s názvem **Obecné** v organizačním diagramu nyní. Chcete-li vytvořit přístupovou skupinu, postupujte podle následujících kroků:
 
-    a. Přejděte **spravovat skupiny** možnosti po kliknutí na tlačítko **ozubeného kolečka** v pravém horním rohu uživatelského rozhraní.
+    a. Po kliknutí na **ozubené kolo** v pravém horním rohu uhlavního uživatele přejděte na možnost **Spravovat skupiny.**
 
-    ![Nyní organizačního diagramu skupiny](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
+    ![Skupiny Organizační diagram](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
-    b. Vyberte **přidat** ikonu a název skupiny **Obecné** klikněte **OK**. 
+    b. Vyberte ikonu **Přidat** a pojmenujte skupinu **Obecné** a klepněte na tlačítko **OK**. 
 
-    ![Přidejte teď organizačního diagramu](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
+    ![Organizační diagram nyní přidat](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
 
-    c. Vyberte složky, které chcete mít přístup k uživatelům obecné nebo jen pro čtení:
+    c. Vyberte složky, ke kterým mají mít přístup, ale k obecným uživatelům nebo uživatelům jen pro čtení:
 
-    ![Organizační diagram nyní složky](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
+    ![Složky Organizační diagram](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. **Zámek** složky tak, aby pouze správci je můžou upravit. Stiskněte klávesu **OK**.
+    d. **Uzamkněte** složky tak, aby je mohli upravovat pouze uživatelé správce. Poté stiskněte **tlačítko OK**.
 
-    ![Nyní organizačního diagramu](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
+    ![Organizační diagram nyní zámek](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
-2. Chcete-li vytvořit **správce** uživatelů a **r/w** uživatelů, musíte ručně vytvořit uživatel získal přístup k jejich úrovně oprávnění prostřednictvím jednotného přihlašování. K poskytnutí uživatelského účtu, postupujte následovně:
+2. Chcete-li vytvořit uživatele **správce** a **číst a zapisovat** uživatele, musíte ručně vytvořit uživatele, abyste získali přístup k jejich úrovni oprávnění prostřednictvím služby SSO. Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
-    a. Přihlaste se k organizační diagram nyní jako správce zabezpečení.
+    a. Přihlaste se k organizačnímu diagramu nyní jako správce zabezpečení.
 
-    b.  Klikněte na **nastavení** v pravém horním rohu a pak přejděte do **spravovat uživatele**.
+    b.  Klikněte na **Nastavení** v pravém horním rohu a přejděte na **Spravovat uživatele**.
 
-    ![Organizační diagram nyní nastavení](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
+    ![Nastavení organizačního diagramu](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
 
-    c. Klikněte na **přidat** a proveďte následující kroky:
+    c. Klikněte na **Přidat** a proveďte následující kroky:
 
-    ![Správa nyní organizačního diagramu](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
+    ![Organizační diagram nyní spravovat](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * V **ID uživatele** textového pole zadejte ID uživatele jako **brittasimon\@contoso.com**.
+    * Do textového pole **ID uživatele** zadejte ID uživatele jako **\@brittasimon contoso.com**.
 
-    * V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
+    * Do textového pole **E-mailová adresa** zadejte e-mail uživatele, jako **je\@brittasimon contoso.com**.
 
-    * Klikněte na tlačítko **Add** (Přidat).
+    * Klikněte na **Přidat**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici organizačního diagramu teď na přístupovém panelu, vám by měl být automaticky přihlášeni do tohoto okamžiku organizačního diagramu, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Organizační diagram nyní na přístupovém panelu, můžete by měl být automaticky přihlášeni k organizačního diagramu nyní, pro které nastavíte přihlašující. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

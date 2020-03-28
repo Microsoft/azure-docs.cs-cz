@@ -1,6 +1,6 @@
 ---
-title: E-mail při Key Vault stavu změny v tajnosti
-description: Průvodce pro použití Logic Apps k reakci na Key Vault změny tajných klíčů
+title: E-mail, když se změní stav tajného klíče v trezoru klíčů
+description: Průvodce pro použití logic apps reagovat na změny tajných kódů trezoru klíčů
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,83 +11,83 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 8d43a254ad79a13320fa2c5a19cf4bc8d6e2c968
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78199746"
 ---
-# <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Pomocí Logic Apps dostávat e-maily o změnách stavu tajných kódů trezoru klíčů
+# <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Použití aplikací Logiky k přijímání e-mailů o změnách stavu tajných kódů trezoru klíčů
 
-V této příručce se dozvíte, jak reagovat na události Azure Key Vault přijaté přes [Azure Event Grid](../event-grid/index.yml) pomocí [Azure Logic Apps](../logic-apps/index.yml). Až skončíte, budete mít aplikaci Azure Logic App nastavenou k odeslání e-mailového oznámení pokaždé, když se v Azure Key Vault vytvoří tajný kód.
+V této příručce se dozvíte, jak reagovat na události služby Azure Key Vault, které jsou přijímány prostřednictvím [služby Azure Event Grid](../event-grid/index.yml) pomocí [Azure Logic Apps](../logic-apps/index.yml). Na konci budete mít aplikaci logiky Azure nastavenou pro odesílání e-mailu s oznámením při každém vytvoření tajného klíče v úložišti Azure Key Vault.
 
-Přehled Integrace Azure Key Vault/Azure Event Grid najdete v tématu [monitorování Key Vault s Azure Event Grid (Preview)](event-grid-overview.md).
+Přehled integrace Azure Key Vault / Azure Event Grid najdete v [tématu Monitorování trezoru klíčů pomocí Azure Event Grid (preview).](event-grid-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps (například Office 365 Outlook). Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v článku [Přehled konektorů](/connectors).
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-- Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](quick-create-cli.md).
+- E-mailový účet od libovolného poskytovatele e-mailu, který je podporovaný Azure Logic Apps (například Office 365 Outlook). Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v článku [Přehled konektorů](/connectors).
+- Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+- Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v [nastavení a načíst tajný klíč z azure key vault pomocí Azure CLI](quick-create-cli.md).
 
-## <a name="create-a-logic-app-via-event-grid"></a>Vytvoření aplikace logiky prostřednictvím Event Grid
+## <a name="create-a-logic-app-via-event-grid"></a>Vytvoření aplikace logiky prostřednictvím mřížky událostí
 
-Nejdřív vytvořte aplikaci logiky pomocí obslužné rutiny Event gridu a přihlaste se k odběru Azure Key Vault události "SecretNewVersionCreated".
+Nejprve vytvořte aplikaci logiky s obslužnou rutinou mřížky událostí a přihlaste se k odběru událostí Azure Key Vault "SecretNewVersionCreated".
 
-K vytvoření předplatného Azure Event Grid použijte následující postup:
+Pokud chcete vytvořit předplatné Azure Event Grid, postupujte takto:
 
-1. V Azure Portal přejděte do trezoru klíčů, vyberte **události > Začínáme** a klikněte na **Logic Apps**
+1. Na webu Azure Portal přejděte do trezoru klíčů, vyberte **Události > Začínáme** a klikněte na **Logic Apps.**
 
     
-    ![Stránka Key Vault – události](./media/eventgrid-logicapps-kvsubs.png)
+    ![Trezor klíčů - stránka událostí](./media/eventgrid-logicapps-kvsubs.png)
 
-1. V **návrháři Logic Apps** ověřte připojení a klikněte na **pokračovat** . 
+1. V **Návrháři aplikací logiky** ověřte připojení a klikněte na **Pokračovat** 
  
-    ![Návrhář aplikace logiky – připojení](./media/eventgrid-logicappdesigner1.png)
+    ![Návrhář aplikace logiky - připojení](./media/eventgrid-logicappdesigner1.png)
 
-1. Na obrazovce **když dojde k události prostředku** , udělejte toto:
-    - Ponechte **předplatné** a **název prostředku** jako výchozí.
-    - Jako **typ prostředku**vyberte **Microsoft. webtrezor. trezory** .
-    - Pro **položku Typ události-1**vyberte **Microsoft. klíčů trezor. SecretNewVersionCreated** .
+1. Na obrazovce **Při výskytu události prostředku** postupujte takto:
+    - Ponechat **odběr** a **název prostředku** jako výchozí.
+    - Vyberte **soubor Microsoft.KeyVault.vaults** pro **typ prostředku**.
+    - Vyberte **microsoft.KeyVault.SecretNewVersionCreated** pro **položku typu události - 1**.
 
     ![Návrhář aplikace logiky – obslužná rutina události](./media/eventgrid-logicappdesigner2.png)
 
-1. Vyberte **+ Nový krok** . otevře se okno pro výběr akce.
-1. Vyhledejte **E-mail**. Vyhledejte a vyberte konektor odpovídající vašemu poskytovateli e-mailu. Tento kurz používá **Outlook z Office 365**. Kroky pro jiné poskytovatele e-mailu jsou podobné.
-1. Vyberte akci **Odeslat e-mail (v2)** .
+1. Vybrat **+ Nový krok** Tím se otevře okno pro volbu akce.
+1. Vyhledejte **E-mail**. Vyhledejte a vyberte konektor odpovídající vašemu poskytovateli e-mailu. Tento kurz používá **Office 365 Outlook**. Kroky pro jiné poskytovatele e-mailu jsou podobné.
+1. Vyberte akci **Odeslat e-mail (V2).**
 
-   ![Návrhář aplikace logiky – Přidání e-mailu](./media/eventgrid-logicappdesigner3.png)
+   ![Návrhář aplikace logiky – přidání e-mailu](./media/eventgrid-logicappdesigner3.png)
 
-1. Vytvoření e-mailové šablony:
-    - **Na:** Zadejte e-mailovou adresu pro příjem e-mailů s oznámením. V tomto kurzu použijte e-mailový účet, který máte dostupný pro testování.
-    - **Předmět** a **Text**: Napište text e-mailu. Vyberte vlastnosti JSON z nástroje pro výběr, aby se zahrnul dynamický obsah na základě dat událostí. Data události můžete načíst pomocí `@{triggerBody()?['Data']}`.
+1. Vytvořte si šablonu e-mailu:
+    - **Chcete-li:** Zadejte e-mailovou adresu pro příjem e-mailů s oznámením. V tomto kurzu použijte e-mailový účet, který máte dostupný pro testování.
+    - **Předmět** a **Text**: Napište text e-mailu. Vyberte vlastnosti JSON z nástroje pro výběr, aby se zahrnul dynamický obsah na základě dat událostí. Data události můžete načíst `@{triggerBody()?['Data']}`pomocí aplikace .
 
-    Vaše e-mailová šablona může vypadat jako v tomto příkladu.
+    Šablona e-mailu může vypadat takto.
 
-    ![Návrhář aplikace logiky – Přidání e-mailu](./media/eventgrid-logicappdesigner4.png)
+    ![Návrhář aplikace logiky – přidání e-mailu](./media/eventgrid-logicappdesigner4.png)
 
-8. Klikněte na **Uložit jako**.
-9. Zadejte **název** nové aplikace logiky a klikněte na **vytvořit**.
+8. Klepněte na **tlačítko Uložit jako**.
+9. Zadejte **název** nové aplikace logiky a klepněte na **tlačítko Vytvořit**.
     
-    ![Návrhář aplikace logiky – Přidání e-mailu](./media/eventgrid-logicappdesigner5.png)
+    ![Návrhář aplikace logiky – přidání e-mailu](./media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>Testování a ověření
 
-1.  V Azure Portal klikněte na svůj Trezor klíčů a vyberte **události > odběry událostí**.  Ověření vytvoření nového předplatného
+1.  Přejděte do trezoru klíčů na webu Azure Portal a vyberte **Události > předplatným událostí**.  Ověření, zda bylo vytvořeno nové předplatné
     
-    ![Návrhář aplikace logiky – Přidání e-mailu](./media/eventgrid-logicapps-kvnewsubs.png)
+    ![Návrhář aplikace logiky – přidání e-mailu](./media/eventgrid-logicapps-kvnewsubs.png)
 
-1.  Přejít do trezoru klíčů, vybrat **tajné**kódy a vybrat **+ Generovat/importovat**. Vytvořte nový tajný klíč pro účely testování a zachovejte zbývající parametry ve výchozím nastavení.
+1.  Přejděte do trezoru klíčů, vyberte **Tajné položky**a vyberte **+ Generovat/Importovat**. Vytvořte nový tajný klíč pro účely testování pojmenujte klíč a zachovat zbývající parametry v jejich výchozí nastavení.
 
-    ![Key Vault – vytvoření tajného kódu](./media/eventgrid-logicapps-kv-create-secret.png)
+    ![Trezor klíčů – vytvoření tajného klíče](./media/eventgrid-logicapps-kv-create-secret.png)
 
-1. Na obrazovce **vytvořit tajný klíč** zadejte libovolný název, libovolnou hodnotu a vyberte **vytvořit**.
+1. Na obrazovce **Vytvořit tajný klíč** uveďte libovolný název, libovolnou hodnotu a vyberte **Vytvořit**.
 
-Po vytvoření tajného klíče se na nakonfigurované adresy dostane e-mail.
+Po vytvoření tajného klíče bude na konfigurovaných adresách přijat e-mail.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled: [Key Vault monitorování pomocí Azure Event Grid (Preview)](event-grid-overview.md)
-- Postupy: [Směrování oznámení trezoru klíčů na Azure Automation](event-grid-tutorial.md).
-- [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../event-grid/event-schema-key-vault.md)
+- Přehled: [Monitorování trezoru klíčů pomocí Azure Event Grid (preview)](event-grid-overview.md)
+- Postup: [Směrování oznámení trezoru klíčů do Azure Automation](event-grid-tutorial.md).
+- [Schéma událostí Azure Event Grid pro Azure Key Vault (preview)](../event-grid/event-schema-key-vault.md)
 - Další informace o službě [Azure Event Grid](../event-grid/index.yml).
 - Další informace o [funkci Logic Apps služby Azure App Service](../logic-apps/index.yml).

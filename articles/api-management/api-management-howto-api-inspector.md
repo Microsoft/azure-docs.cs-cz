@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768519"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>Ladění rozhraní API s využitím trasování požadavků
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 ## <a name="trace-a-call"></a>Trasování volání
@@ -49,10 +49,10 @@ V tomto kurzu se naučíte:
 
    > [!NOTE]
    > * Pokud nedojde k automatickému doplnění hodnoty Ocp-Apim-Subscription-Key, můžete ji získat tak, že přejdete na portál pro vývojáře a zveřejníte klíče na stránce profilu.
-   > * Chcete-li získat trasování při použití hlavičky OCP-APIM-Trace protokolu HTTP, musí být povoleno nastavení **Povolit trasování** pro klíč předplatného. Chcete-li nakonfigurovat nastavení **Povolení trasování** , v části **API Management** v nabídce vlevo vyberte možnost **předplatná**.
-   >   ![povolí trasování v podokně API Management odběry](media/api-management-howto-api-inspector/allowtracing.png)
+   > * Chcete-li získat trasování při použití hlavičky HTTP Ocp-Apim-Trace, musí být povoleno nastavení **Povolit trasování** pro klíč odběru. Chcete-li nakonfigurovat nastavení **Povolit trasování,** vyberte v části **Správa rozhraní API** v levé nabídce **položku Předplatná**.
+   >   ![Povolit trasování v podokně Předplatná pro správu rozhraní API](media/api-management-howto-api-inspector/allowtracing.png)
 
-6. Kliknutím na **Odeslat** vytvořte volání rozhraní API. 
+6. Chcete-li volat rozhraní API, klepněte na **tlačítko Odeslat.** 
 7. Počkejte na dokončení volání. 
 8. V **konzole rozhraní API** přejděte na kartu **Trasování**. Kliknutím na některý z následujících odkazů můžete přejít k podrobným informacím o trasování: **příchozí**, **back-end**, **odchozí**.
 

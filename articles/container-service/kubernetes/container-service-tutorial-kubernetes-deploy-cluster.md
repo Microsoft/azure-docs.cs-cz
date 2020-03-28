@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Kurz Azure Container Service – nasazení clusteru
+title: (ZASTARALÉ) Kurz služby Kontejnerová služba Azure – nasazení clusteru
 description: Kurz Azure Container Service – Nasazení clusteru
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274005"
 ---
-# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>ZASTARALÉ Nasazení clusteru Kubernetes v Azure Container Service
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(ZASTARALÉ) Nasazení clusteru Kubernetes ve službě Azure Container Service
 
 > [!TIP]
-> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: nasazení clusteru Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Aktualizovaná verze tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Nasazení clusteru služby Azure Kubernetes Service (AKS).](../../aks/tutorial-kubernetes-deploy-cluster.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -38,7 +38,7 @@ V předchozích kurzech se vytvořila image kontejneru a nahrála se do instance
 
 Vytvořte cluster Kubernetes ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#az-acs-create). 
 
-Následující příklad vytvoří cluster s názvem `myK8sCluster` ve skupině prostředků s názvem `myResourceGroup`. Tato skupina prostředků se vytvořila v [předchozím kurzu](./container-service-tutorial-kubernetes-prepare-acr.md).
+Následující příklad vytvoří cluster s názvem `myK8sCluster` ve skupině prostředků s názvem `myResourceGroup`. Tato skupina prostředků byla vytvořena v [předchozím kurzu](./container-service-tutorial-kubernetes-prepare-acr.md).
 
 ```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
@@ -70,7 +70,7 @@ Abyste nakonfigurovali kubectl pro připojení ke svému clusteru Kubernetes, sp
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
-Pro ověření připojení k vašemu clusteru spusťte příkaz [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get).
+Chcete-li ověřit připojení ke clusteru, spusťte příkaz [kubectl get nodes.](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get)
 
 ```console
 kubectl get nodes

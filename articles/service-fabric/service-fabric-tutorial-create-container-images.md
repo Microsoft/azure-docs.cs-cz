@@ -1,5 +1,5 @@
 ---
-title: Vytváření imagí kontejneru v Service Fabric v Azure
+title: Vytváření ibikopií kontejnerů na Service Fabric v Azure
 description: V tomto kurzu se naučíte vytvářet image kontejneru pro vícekontejnerovou aplikaci Service Fabric.
 author: suhuruli
 ms.topic: tutorial
@@ -7,15 +7,15 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252790"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric s Linuxem
 
-Tento kurz je součástí série kurzů, která demonstruje používání kontejnerů v clusteru Service Fabric s Linuxem. V tomto kurzu je pro použití s prostředkem Service Fabric připravena vícekontejnerová aplikace. V následujících kurzech jsou tyto image použity jako součást aplikace Service Fabric. V tomto kurzu se naučíte:
+Tento kurz je součástí série kurzů, která demonstruje používání kontejnerů v clusteru Service Fabric s Linuxem. V tomto kurzu je pro použití s prostředkem Service Fabric připravena vícekontejnerová aplikace. V následujících kurzech jsou tyto image použity jako součást aplikace Service Fabric. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Klonovat zdroj aplikace z GitHubu
@@ -27,14 +27,14 @@ Tento kurz je součástí série kurzů, která demonstruje používání kontej
 V této sérii kurzů se naučíte:
 
 > [!div class="checklist"]
-> * Vytváření imagí kontejneru pro Service Fabric
+> * Vytvářet image kontejneru pro Service Fabric
 > * [Sestavit a spustit aplikaci Service Fabric s kontejnery](service-fabric-tutorial-package-containers.md)
 > * [Jak se zpracovává převzetí služeb při selhání a škálování v prostředku Service Fabric](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vývojové prostředí Linux nastavené pro Service Fabric. Při nastavování prostředí Linux postupujte podle pokynů [zde](service-fabric-get-started-linux.md).
-* Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+* Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 * Navíc se vyžaduje, abyste měli k dispozici předplatné Azure. Další informace o bezplatné zkušební verzi najdete [zde](https://azure.microsoft.com/free/).
 
 ## <a name="get-application-code"></a>Získání kódu aplikace
@@ -78,7 +78,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Nasazení služby Azure Container Registry
 
-Nejprve spuštěním příkazu **AZ Login** Přihlaste se ke svému účtu Azure.
+Nejprve spusťte příkaz **az přihlášení** pro přihlášení ke svému účtu Azure.
 
 ```azurecli
 az login
@@ -98,7 +98,7 @@ Vytvořte skupinu prostředků pomocí příkazu **az group create**. V tomto p�
 az group create --name <myResourceGroup> --location westus
 ```
 
-Pomocí příkazu **az acr create** vytvořte registr kontejneru Azure. Nahraďte parametr \<acrName> názvem registru kontejneru, který chcete v rámci svého předplatného vytvořit. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný.
+Vytvořte registr kontejneru Azure pomocí příkazu **az acr create.** Nahraďte parametr \<acrName> názvem registru kontejneru, který chcete v rámci svého předplatného vytvořit. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný.
 
 ```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
@@ -106,9 +106,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 V celé zbývající části tohoto kurzu používáme položku „acrName“ jako zástupný symbol pro název registru kontejneru, který jste zvolili. Poznamenejte si tuto hodnotu.
 
-## <a name="sign-in-to-your-container-registry"></a>Přihlaste se ke svému registru kontejneru.
+## <a name="sign-in-to-your-container-registry"></a>Přihlášení do registru kontejnerů
 
-Před nahráním imagí do instance ACR se přihlaste. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
+Před odesláním obrázků do ní se přihlaste ke své instanci ACR. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
 ```azurecli
 az acr login --name <acrName>
@@ -120,7 +120,7 @@ Příkaz po dokončení vrátí zprávu Login Succeeded (Přihlášení proběhl
 
 Každá image kontejneru musí být označena názvem loginServer registru. Tato značka se používá pro směrování při nahrávání imagí kontejneru do registru imagí.
 
-Pokud chcete zobrazit seznam aktuálních imagí, použijte příkaz [docker images](https://docs.docker.com/engine/reference/commandline/images/).
+Seznam aktuálních imagí můžete zobrazit pomocí příkazu [docker images](https://docs.docker.com/engine/reference/commandline/images/).
 
 ```bash
 docker images
@@ -178,7 +178,7 @@ docker push <acrName>.azurecr.io/azure-vote-front:v1
 
 Dokončení příkazů docker push trvá několik minut.
 
-## <a name="list-images-in-registry"></a>Vypsání imagí v registru
+## <a name="list-images-in-registry"></a>Výpis imagí v registru
 
 Pokud chcete vrátit seznam imagí, které byly nahrány do vašeho registru kontejneru Azure, použijte příkaz [az acr repository list](/cli/azure/acr/repository). Aktualizujte příkaz s použitím názvu instance služby ACR.
 
@@ -198,7 +198,7 @@ Na konci kurzu byla image kontejneru uložena v privátní instanci služby Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu byla aplikace získána z GitHubu a image kontejneru se vytvořily a vložily do registru. Dokončili jste následující kroky:
+V tomto kurzu byla aplikace vytažena z GitHubu a byly vytvořeny a zatlačeny do registru. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
 > * Klonovat zdroj aplikace z GitHubu

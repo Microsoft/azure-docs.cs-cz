@@ -1,6 +1,6 @@
 ---
-title: Kurz – konfigurace rolí Azure Analysis Services | Microsoft Docs
-description: Naučte se konfigurovat Azure Analysis Services správce a role uživatelů pomocí Azure Portal nebo SQL Server Management Studio.
+title: Kurz – konfigurace rolí služby Azure Analysis Services | Dokumenty společnosti Microsoft
+description: Zjistěte, jak nakonfigurovat správce azure analysis services a uživatelské role pomocí portálu Azure nebo SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273684"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
@@ -27,7 +27,7 @@ ms.locfileid: "78273684"
 
 Další informace o zabezpečení uživatelů ve službě Azure Analysis Services najdete v článku o [ověřování a oprávněních uživatelů](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ve vašem předplatném je služba Azure Active Directory.
 - Ve vašem předplatném je vytvořený [server Azure Analysis Services](../analysis-services-create-server.md).
@@ -52,7 +52,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 1. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
 
-    ![Připojit](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Připojení](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. Do pole **Název serveru** v dialogovém okně **Připojit k serveru** vložte název serveru zkopírovaný z portálu. V poli **Ověřování** zvolte **Active Directory Universal s podporou vícefaktorového ověřování**, zadejte svůj uživatelský účet a klikněte na **Připojit**.
    
@@ -130,13 +130,13 @@ V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/a
 ## <a name="verify-your-changes"></a>Ověření změn
 
 1. V **Průzkumníku objektů** klikněte na název serveru a pak na **Aktualizovat**, nebo stiskněte klávesu **F5**.
-2. Rozbalte **Databáze** > **adventureworks** > **Role**. Ověřte, že se zobrazují změny uživatelského účtu a nové role, které jste provedli v předchozích úkolech.   
+2. Rozbalte **databáze** > **adventureworks** > **role**. Ověřte, že se zobrazují změny uživatelského účtu a nové role, které jste provedli v předchozích úkolech.   
 
     ![Ověření v Průzkumníku objektů](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Pomocí možností **Vlastnosti role** > **Členství** odeberte uživatelské účty, nebo klikněte pravým tlačítkem na roli a pak klikněte na **Odstranit**.
+Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Chcete-li tak učinit, odeberte uživatelské účty pomocí**členství ve** **vlastnostech** > role nebo klepněte pravým tlačítkem myši na roli a potom klepněte na příkaz **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další kroky

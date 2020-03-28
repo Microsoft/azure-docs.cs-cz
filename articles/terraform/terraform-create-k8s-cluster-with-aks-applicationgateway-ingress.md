@@ -1,48 +1,48 @@
 ---
-title: Kurz – vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
-description: V tomto kurzu vytvoříte cluster Kubernetes pomocí služby Azure Kubernetes Service s Application Gateway jako adaptér příchozího přenosu dat.
-keywords: Azure DevOps terraformu Application Gateway pro příchozí AKS Kubernetes
+title: Kurz – vytvoření řadiče příchozího přenosu dat aplikační brány ve službě Azure Kubernetes
+description: V tomto kurzu vytvoříte cluster Kubernetes se službou Azure Kubernetes se službou Application Gateway jako řadičem příchozího přenosu dat
+keywords: azure devops terraform aplikační brána ingress aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 6b48d0acb654f0b0643c0754e53f6bc6ea76bb45
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945325"
 ---
-# <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Kurz: vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
+# <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Kurz: Vytvoření řadiče příchozího přenosu dat aplikační brány ve službě Azure Kubernetes
 
-[Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes. AKS umožňuje rychle a snadno nasazovat a spravovat aplikace s využitím kontejnerů bez odbornosti pro orchestraci kontejnerů. AKS také eliminuje zatížení při práci s aplikacemi offline pro úlohy provozu a údržby. Pomocí AKS můžete provádět tyto úlohy – včetně zřizování, upgradování a škálování prostředků – dá se provést na vyžádání.
+[Služba Azure Kubernetes Service (AKS)](/azure/aks/) spravuje vaše hostované prostředí Kubernetes. AKS umožňuje rychlé a snadné nasazení a správu kontejnerizovaných aplikací bez odborných znalostí orchestrace kontejnerů. AKS také eliminuje zátěž spojenou s přepnutím aplikací do režimu offline pro provozní a údržbové úkoly. Pomocí AKS, tyto úkoly – včetně zřizování, upgradování a škálování prostředků – lze provést na vyžádání.
 
-Kontroler příchozího přenosu dat poskytuje různé funkce pro služby Kubernetes Services. Mezi tyto funkce patří reverzní proxy, konfigurovatelné směrování provozu a ukončení protokolu TLS. Kubernetes příchozí prostředky se používají ke konfiguraci pravidel příchozího přenosu pro jednotlivé služby Kubernetes. Pomocí řadiče příchozího přenosu dat a pravidel příchozího přenosu dat může jedna IP adresa směrovat provoz do několika služeb v clusteru Kubernetes. Tuto funkci poskytuje Azure [Application Gateway](/azure/Application-Gateway/)a díky tomu je ideálním řadičem příchozího přenosu dat pro Kubernetes v Azure. 
+Řadič příchozího přenosu dat poskytuje různé funkce pro služby Kubernetes. Mezi tyto funkce patří reverzní proxy server, konfigurovatelné směrování provozu a ukončení TLS. Kubernetes ingress prostředky se používají ke konfiguraci pravidel příchozího přenosu dat pro jednotlivé služby Kubernetes. Pomocí řadiče příchozího přenosu dat a pravidel příchozího přenosu dat může jedna adresa IP směrovat provoz do více služeb v clusteru Kubernetes. Všechny tyto funkce poskytuje Azure [Application Gateway](/azure/Application-Gateway/), takže je ideální ingress řadič pro Kubernetes v Azure. 
 
-V tomto kurzu se naučíte, jak provádět následující úlohy:
+V tomto kurzu se dozvíte, jak provést následující úkoly:
 
 > [!div class="checklist"]
-> * Vytvořte cluster [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) pomocí AKS s Application Gateway jako adaptér příchozího přenosu dat.
-> * Pomocí HCL (HashiCorp Language) definujte cluster Kubernetes.
-> * Pomocí Terraformu vytvořit prostředek Application Gateway.
-> * K vytvoření clusteru Kubernetes použijte Terraformu a AKS.
-> * K otestování dostupnosti clusteru Kubernetes použijte nástroj kubectl.
+> * Vytvořte cluster [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) pomocí AKS s aplikační bránou jako řadičem příchozího přenosu dat.
+> * Pomocí hcl (HashiCorp jazyk) definovat clusterU Kubernetes.
+> * Pomocí terraformu vytvořte prostředek aplikační brány.
+> * Terraform a AKS slouží k vytvoření clusteru Kubernetes.
+> * Pomocí nástroje kubectl otestujte dostupnost clusteru Kubernetes.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
 - **Nakonfigurovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](terraform-install-configure.md).
 
-- **Skupina prostředků Azure**: Pokud ještě nemáte skupinu prostředků Azure, která se má použít pro ukázku, [vytvořte skupinu prostředků Azure](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Poznamenejte si název a umístění skupiny prostředků, protože tyto hodnoty jsou použity v ukázce.
+- **Skupina prostředků Azure**: Pokud nemáte skupinu prostředků Azure, kterou byste měli použít pro ukázku, [vytvořte skupinu prostředků Azure](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Vezměte na vědomí název skupiny prostředků a umístění, protože tyto hodnoty se používají v ukázce.
 
-- **Instanční objekt Azure:** Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty pro parametr appId, DisplayName a Password.
+- **Instanční objekt Azure:** Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty pro appId, displayName a heslo.
 
-- **Získání ID instančního objektu služby**: spusťte následující příkaz v Cloud Shell: `az ad sp list --display-name <displayName>`
+- **Získání ID objektu instančního objektu**: Spusťte následující příkaz v prostředí Cloud:`az ad sp list --display-name <displayName>`
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
 Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu pro toto cvičení.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview).
 
@@ -68,7 +68,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `main.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -89,13 +89,13 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="define-input-variables"></a>Definování vstupních proměnných
 
-Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech proměnných potřebných pro toto nasazení.
+Vytvořte konfigurační soubor Terraform, který obsahuje seznam všech proměnných požadovaných pro toto nasazení.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -232,18 +232,18 @@ Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech promě
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
-## <a name="define-the-resources"></a>Definování prostředků 
-Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředky. 
+## <a name="define-the-resources"></a>Definování zdrojů 
+Vytvořte konfigurační soubor Terraform, který vytvoří všechny prostředky. 
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `resources.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `resources.tf`.
 
     ```bash
     code resources.tf
     ```
 
-1. Vložte následující blok kódu pro vytvoření bloku lokálních hodnot pro vypočítané proměnné pro opakované použití:
+1. Vložte následující blok kódu a vytvořte místní blok pro vypočítané proměnné pro opakované použití:
 
     ```hcl
     # # Locals block for hardcoded names. 
@@ -258,7 +258,7 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
     }
     ```
 
-1. Vložte následující blok kódu pro vytvoření zdroje dat pro skupinu prostředků, novou identitu uživatele:
+1. Vložením následujícího bloku kódu vytvořte zdroj dat pro skupinu prostředků, novou identitu uživatele:
 
     ```hcl
     data "azurerm_resource_group" "rg" {
@@ -276,7 +276,7 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
     }
     ```
 
-1. Vložte následující blok kódu k vytvoření základních síťových prostředků:
+1. Chcete-li vytvořit základní síťové prostředky, vložte následující blok kódu:
 
     ```hcl
     resource "azurerm_virtual_network" "test" {
@@ -322,7 +322,7 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
     }
     ```
 
-1. Pro vytvoření prostředku Application Gateway vložte následující blok kódu:
+1. Chcete-li vytvořit prostředek aplikační brány, vložte následující blok kódu:
 
     ```hcl
     resource "azurerm_application_gateway" "network" {
@@ -389,7 +389,7 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
     }
     ```
 
-1. Vložte následující blok kódu pro vytvoření přiřazení rolí:
+1. Chcete-li vytvořit přiřazení rolí, vložte následující blok kódu:
 
     ```hcl
     resource "azurerm_role_assignment" "ra1" {
@@ -422,7 +422,7 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
     }
     ```
 
-1. Vložte následující blok kódu pro vytvoření clusteru Kubernetes:
+1. Chcete-li vytvořit cluster Kubernetes, vložte následující blok kódu:
 
     ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
@@ -472,19 +472,19 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
 
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
-Kód uvedený v této části nastaví název clusteru, umístění a resource_group_name. Hodnota `dns_prefix` – ta tvoří část plně kvalifikovaného názvu domény (FQDN), která se používá pro přístup ke clusteru – je nastavena.
+Kód uvedený v této části nastaví název clusteru, umístění a resource_group_name. Hodnota `dns_prefix` , která je součástí plně kvalifikovaného názvu domény (FQDN) používaného pro přístup ke clusteru, je nastavena.
 
-Záznam `linux_profile` umožňuje nakonfigurovat nastavení, která umožňují přihlašovat se k pracovním uzlům pomocí SSH.
+Záznam `linux_profile` umožňuje konfigurovat nastavení, která umožňují přihlášení do pracovních uzlů pomocí SSH.
 
-Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` nakonfiguruje podrobnosti pro tyto pracovní uzly. `agent_pool_profile record` obsahuje počet pracovních uzlů, které se mají vytvořit, a typ pracovních uzlů. Pokud potřebujete v budoucnu horizontální navýšení nebo snížení kapacity clusteru, upravte hodnotu `count` v tomto záznamu.
+Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` konfiguruje podrobnosti pro tyto pracovní uzly. Obsahuje `agent_pool_profile record` počet pracovních uzlů, které mají být vytesány, a typ pracovních uzlů. Pokud potřebujete vertikálně navýšit kapacitu nebo vertikálně navýšit kapacitu clusteru v budoucnu, můžete upravit hodnotu `count` v tomto záznamu.
 
 ## <a name="create-a-terraform-output-file"></a>Vytvoření výstupního souboru Terraformu
 
-[Terraformuové výstupy](https://www.terraform.io/docs/configuration/outputs.html) umožňují definovat hodnoty, které jsou zvýrazněné uživateli, když terraformu použije plán, a dá se dotázat pomocí příkazu `terraform output`. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
+[Výstupy Terraform](https://www.terraform.io/docs/configuration/outputs.html) umožňují definovat hodnoty, které jsou zvýrazněny pro uživatele, když Terraform použije `terraform output` plán a může být dotazován pomocí příkazu. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `output.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `output.tf`.
 
     ```bash
     code output.tf
@@ -530,27 +530,27 @@ Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` n
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
-## <a name="configure-azure-storage-to-store-terraform-state"></a>Konfigurace úložiště Azure pro ukládání stavu Terraformu
+## <a name="configure-azure-storage-to-store-terraform-state"></a>Konfigurace úložiště Azure pro ukládání stavu Terraform
 
-Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. Tento model funguje dobře v prostředí s jednou osobou. Ve více praktických prostředích pro více uživatelů je ale potřeba sledovat stav na serveru pomocí služby [Azure Storage](/azure/storage/). V této části se dozvíte, jak načíst potřebné informace o účtu úložiště a vytvořit kontejner úložiště. Informace o stavu Terraformu jsou následně uloženy v tomto kontejneru.
+Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. Tento model funguje dobře v prostředí s jednou osobou. V praktičtějším prostředí pro více osob však musíte sledovat stav na serveru pomocí [úložiště Azure](/azure/storage/). V této části se naučíte načíst potřebné informace o účtu úložiště a vytvořit kontejner úložiště. Informace o stavu Terraform jsou pak uloženy v tomto kontejneru.
 
-1. V Azure Portal v části **služby Azure**vyberte **účty úložiště**. (Pokud se možnost **účty úložiště** na hlavní stránce nezobrazuje, vyberte **Další služby** a pak ji vyhledejte a vyberte.)
+1. Na webu Azure Portal v části **Služby Azure**vyberte **Účty úložiště**. (Pokud možnost **Účty úložiště** není na hlavní stránce viditelná, vyberte **Další služby** a pak je vyhledejte a vyberte.)
 
-1. Na stránce **účty úložiště** vyberte název účtu úložiště, do kterého má terraformu ukládat stav. Můžete například použít účet úložiště, který se vytvoří při prvním otevření služby Cloud Shell.  Název účtu úložiště vytvořeného službou Cloud Shell obvykle začíná na `cs` a následuje ho řetězec náhodných čísel a písmen. 
+1. Na stránce **Účty úložiště** vyberte název účtu úložiště, do kterého má Terraform ukládat stav. Můžete například použít účet úložiště, který se vytvoří při prvním otevření služby Cloud Shell.  Název účtu úložiště vytvořeného službou Cloud Shell obvykle začíná na `cs` a následuje ho řetězec náhodných čísel a písmen. 
 
-    Poznamenejte si vybraný účet úložiště, jak ho budete potřebovat později.
+    Poznamenejte si účet úložiště, který vyberete, jak budete později potřebovat.
 
 1. Na stránce účtu úložiště vyberte **Přístupové klíče**.
 
     ![Nabídka účtu úložiště](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
-1. Poznamenejte si hodnotu **klíče** klíč1. (Výběr ikony napravo od klíče zkopíruje příslušnou hodnotu do schránky.)
+1. Poznamenejte si hodnotu **klíče** **key1.** (Výběr ikony napravo od klíče zkopíruje příslušnou hodnotu do schránky.)
 
     ![Přístupové klíče účtu úložiště](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 
-1. V Cloud Shell vytvořte kontejner v účtu úložiště Azure. Zástupné symboly nahraďte odpovídajícími hodnotami pro svůj účet úložiště Azure.
+1. V Cloud Shellu vytvořte kontejner ve svém účtu úložiště Azure. Nahraďte zástupné symboly příslušnými hodnotami pro váš účet úložiště Azure.
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
@@ -559,23 +559,23 @@ Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. T
 ## <a name="create-the-kubernetes-cluster"></a>Vytvoření clusteru Kubernetes
 V této části zjistíte, jak použít příkaz `terraform init` k vytvoření prostředků definovaných konfiguračními soubory, které jste vytvořili v předchozích částech.
 
-1. V Cloud Shell inicializujte Terraformu. Zástupné symboly nahraďte odpovídajícími hodnotami pro svůj účet úložiště Azure.
+1. V prostředí Cloud Shell inicializujte Terraform. Nahraďte zástupné symboly příslušnými hodnotami pro váš účet úložiště Azure.
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
   
-    Příkaz `terraform init` zobrazuje úspěšnost inicializace modulu plug-in back-end a poskytovatele:
+    Příkaz `terraform init` zobrazuje úspěch inicializace modulu plug-in-in-in-
 
     ![Příklad výsledků příkazu „terraform init“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
-1. V Cloud Shell vytvořte soubor s názvem `terraform.tfvars`:
+1. V prostředí Cloud Shell `terraform.tfvars`vytvořte soubor s názvem :
 
     ```bash
     code terraform.tfvars
     ```
 
-1. Do editoru vložte následující proměnné, které jste vytvořili dříve. Pro získání hodnoty umístění pro vaše prostředí použijte `az account list-locations`.
+1. Vložte do editoru následující proměnné vytvořené dříve. Chcete-li získat hodnotu umístění `az account list-locations`pro vaše prostředí, použijte .
 
     ```hcl
     resource_group_name = "<Name of the Resource Group already created>"
@@ -590,7 +590,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
         
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 1. Spuštěním příkazu `terraform plan` vytvořte plán Terraformu, který definuje prvky infrastruktury. 
 
@@ -598,11 +598,11 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
     terraform plan -out out.plan
     ```
 
-    Příkaz `terraform plan` zobrazuje prostředky, které jsou vytvořeny při spuštění příkazu `terraform apply`:
+    Příkaz `terraform plan` zobrazí prostředky, které jsou vytvořeny `terraform apply` při spuštění příkazu:
 
     ![Příklad výsledků příkazu „terraform plan“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. Spuštěním příkazu `terraform apply` použijte plán a vytvořte cluster Kubernetes. Proces vytvoření clusteru Kubernetes může trvat několik minut, což vede k vypršení časového limitu relace Cloud Shell. Pokud Cloud Shell časový limit relace, můžete postupovat podle kroků v části obnovení z Cloud Shell časového limitu, který vám umožní dokončit tento kurz.
+1. Spuštěním příkazu `terraform apply` použijte plán a vytvořte cluster Kubernetes. Proces vytvoření clusteru Kubernetes může trvat několik minut, což má za následek vypršení časového limitu prostředí cloudu. Pokud časový čas relace prostředí Cloud, můžete postupovat podle kroků v části "Obnovení z časového úseku cloudového prostředí", abyste mohli dokončit kurz.
 
     ```bash
     terraform apply out.plan
@@ -612,13 +612,13 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform apply“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-apply-complete.png)
 
-1. V Azure Portal v nabídce vlevo vyberte **skupiny prostředků** , aby se zobrazily prostředky vytvořené pro nový cluster Kubernetes ve vybrané skupině prostředků.
+1. Na webu Azure Portal vyberte **skupiny prostředků** v levé nabídce, abyste viděli prostředky vytvořené pro váš nový cluster Kubernetes ve vybrané skupině prostředků.
 
     ![Příkazový řádek Cloud Shellu](./media/terraform-k8s-cluster-appgw-with-tf-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Zotavení z vypršení relace služby Cloud Shell
 
-Pokud Cloud Shell časový limit relace, můžete k obnovení použít následující postup:
+Pokud časový čas relace prostředí Cloud Shell, můžete použít následující kroky k obnovení:
 
 1. Spusťte relaci služby Cloud Shell.
 
@@ -659,33 +659,33 @@ Nově vytvořený cluster můžete pomocí nástrojů Kubernetes ověřit.
 
     ![Nástroj kubectl vám umožňuje ověřit stav clusteru Kubernetes.](./media/terraform-k8s-cluster-appgw-with-tf-aks/kubectl-get-nodes.png)
 
-## <a name="install-azure-ad-pod-identity"></a>Nainstalovat službu Azure AD pod identitou
+## <a name="install-azure-ad-pod-identity"></a>Instalace identity služby Azure AD Pod
 
-Azure Active Directory pod identitou poskytuje přístup založený na tokenech k [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview).
+Azure Active Directory Pod Identity poskytuje přístup ke [Správci prostředků Azure](/azure/azure-resource-manager/resource-group-overview)na základě tokenů .
 
-[Služba Azure AD pod identitou](https://github.com/Azure/aad-pod-identity) přidá do clusteru Kubernetes následující součásti:
+[Azure AD Pod Identity](https://github.com/Azure/aad-pod-identity) přidá do clusteru Kubernetes následující součásti:
 
-  - Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity``AzureIdentityBinding`
-  - Komponenta [spravovaného řadiče identity (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
-  - Komponenta [spravované identity (NMI) uzlů](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
+  - [Krsované kubernetes](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/) `AzureIdentity` `AzureAssignedIdentity`: , ,`AzureIdentityBinding`
+  - Součást [Spravovaného řadiče identity (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
+  - Součást [Identity spravované uzlu (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
 
-Pokud je **povolená**funkce RBAC, spusťte následující příkaz, který do svého clusteru nainstaluje IDENTITU Azure AD pod:
+Pokud je **rbac povolen**, spusťte následující příkaz pro instalaci identity služby Azure AD Pod do clusteru:
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
 ```
 
-Pokud je funkce RBAC **zakázaná**, spusťte následující příkaz, který do vašeho clusteru nainstaluje IDENTITU Azure AD pod:
+Pokud je RBAC **zakázán**, spusťte následující příkaz pro instalaci identity služby Azure AD Pod do clusteru:
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
 ```
 
-## <a name="install-helm"></a>Nainstalovat Helm
+## <a name="install-helm"></a>Instalace helmu
 
-Kód v této části používá správce balíčků [Helm](/azure/aks/kubernetes-helm) -Kubernetes – k instalaci balíčku `application-gateway-kubernetes-ingress`:
+Kód v této části používá [Helm](/azure/aks/kubernetes-helm) - Kubernetes `application-gateway-kubernetes-ingress` správce balíčků - k instalaci balíčku:
 
-1. Pokud je **povolena**akce RBAC, spusťte následující sadu příkazů pro instalaci a konfiguraci Helm:
+1. Pokud je **povolen**rbac , spusťte následující sadu příkazů pro instalaci a konfiguraci helmu:
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -693,7 +693,7 @@ Kód v této části používá správce balíčků [Helm](/azure/aks/kubernetes
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-1. Pokud je nastavení RBAC **zakázané**, spusťte následující příkaz, který nainstaluje a nakonfiguruje Helm:
+1. Pokud je rbac **zakázán**, spusťte následující příkaz k instalaci a konfiguraci helmu:
 
     ```bash
     helm init
@@ -706,41 +706,41 @@ Kód v této části používá správce balíčků [Helm](/azure/aks/kubernetes
     helm repo update
     ```
 
-## <a name="install-ingress-controller-helm-chart"></a>Helm graf instalace adaptéru příchozího přenosu dat
+## <a name="install-ingress-controller-helm-chart"></a>Instalace helmového grafu řadiče příchozího přenosu dat
 
-1. Ke konfiguraci AGIC Stáhněte `helm-config.yaml`:
+1. Ke `helm-config.yaml` stažení nakonfigurujete AGIC:
 
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```
 
-1. Upravte `helm-config.yaml` a zadejte příslušné hodnoty pro oddíly `appgw` a `armAuth`.
+1. Upravte `helm-config.yaml` a zadejte `appgw` `armAuth` příslušné hodnoty pro oddíly a.
 
     ```bash
     code helm-config.yaml
     ```
 
-    Hodnoty jsou popsány takto:
+    Hodnoty jsou popsány následovně:
 
-    - `verbosityLevel`: nastaví úroveň podrobností infrastruktury protokolování AGIC. Možné hodnoty najdete v tématu [úrovně protokolování](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) .
-    - `appgw.subscriptionId`: ID předplatného Azure pro službu App Gateway. Příklad: `a123b234-a3b4-557d-b2df-a0bc12de1234`
-    - `appgw.resourceGroup`: název skupiny prostředků Azure, ve které se aplikace App Gateway vytvořila. 
-    - `appgw.name`: název Application Gateway. Příklad: `applicationgateway1`.
-    - `appgw.shared`: Tento logický příznak by měl být nastaven na výchozí hodnotu `false`. Pokud potřebujete [sdílenou bránu aplikace](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway), nastavte na `true`.
-    - `kubernetes.watchNamespace`: zadejte obor názvů, který má AGIC sledovat. Obor názvů může být jediná řetězcová hodnota nebo seznam oborů názvů oddělených čárkami. Tato proměnná se odvolá nebo ji nastaví na prázdnou nebo prázdný řetězec. Výsledkem je, že kontroler příchozího přístupu se všemi dostupnými obory názvů ponechává.
-    - `armAuth.type`: hodnota buď `aadPodIdentity` nebo `servicePrincipal`.
+    - `verbosityLevel`: Nastaví úroveň podrobností infrastruktury protokolování AGIC. Možné hodnoty naleznete [v tématu Úrovně protokolování.](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)
+    - `appgw.subscriptionId`: ID předplatného Azure pro bránu aplikací. Příklad: `a123b234-a3b4-557d-b2df-a0bc12de1234`
+    - `appgw.resourceGroup`: Název skupiny prostředků Azure, ve kterém byla vytvořena služba App Gateway. 
+    - `appgw.name`: Název aplikační brány. Příklad: `applicationgateway1`.
+    - `appgw.shared`: Tento logický příznak by `false`měl být výchozí pro . Nastavte `true` na pokud potřebujete [sdílenou bránu aplikací](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway).
+    - `kubernetes.watchNamespace`: Zadejte obor názvů, který by měl AGIC sledovat. Obor názvů může být hodnota jednoho řetězce nebo seznam oborů názvů oddělených čárkami. Ponechání této proměnné komentované nebo nastavení na prázdný nebo prázdný řetězec má za následek ingress controller pozorování všech přístupných oborů názvů.
+    - `armAuth.type`: Hodnota buď `aadPodIdentity` `servicePrincipal`nebo .
     - `armAuth.identityResourceID`: ID prostředku spravované identity.
     - `armAuth.identityClientId`: ID klienta identity.
-    - `armAuth.secretJSON`: je potřeba jenom v případě, že je zvolený tajný typ objektu služby (Pokud `armAuth.type` nastavená na `servicePrincipal`).
+    - `armAuth.secretJSON`: Je potřeba pouze v případě, `armAuth.type` že je `servicePrincipal`vybrán typ tajného objektu hlavního nastavení služby (pokud byla nastavena na).
 
     Klíčové poznámky:
-    - Hodnota `identityResourceID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_resource_id)"`.
-    - Hodnota `identityClientID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_client_id)"`.
-    - Hodnota `<resource-group>` je skupina prostředků vaší aplikační brány.
+    - Hodnota `identityResourceID` je vytvořena ve skriptu terraform a `echo "$(terraform output identity_resource_id)"`lze ji nalézt spuštěním: .
+    - Hodnota `identityClientID` je vytvořena ve skriptu terraform a `echo "$(terraform output identity_client_id)"`lze ji nalézt spuštěním: .
+    - Hodnota `<resource-group>` je skupina prostředků vaší brány aplikací.
     - Hodnota `<identity-name>` je název vytvořené identity.
-    - Všechny identity pro dané předplatné můžou být uvedené pomocí: `az identity list`.
+    - Všechny identity pro dané předplatné mohou `az identity list`být uvedeny pomocí: .
 
-1. Nainstalujte balíček Application Gateway příchozího řadiče pro příchozí přenosy:
+1. Nainstalujte balíček řadiče příchozího přenosu dat aplikační brány:
 
     ```bash
     helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure
@@ -748,15 +748,15 @@ Kód v této části používá správce balíčků [Helm](/azure/aks/kubernetes
 
 ### <a name="install-a-sample-app"></a>Instalace ukázkové aplikace
 
-Jakmile máte nainstalovanou bránu App Gateway, AKS a AGIC, můžete pomocí [Azure Cloud Shell](https://shell.azure.com/)nainstalovat ukázkovou aplikaci:
+Jakmile máte nainstalovanou bránu aplikací, AKS a AGIC, můžete nainstalovat ukázkovou aplikaci přes [Azure Cloud Shell](https://shell.azure.com/):
 
-1. K stažení souboru YAML použijte příkaz kudrlinkou:
+1. Ke stažení souboru YAML použijte příkaz curl:
 
     ```bash
     curl https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/aspnetapp.yaml -o aspnetapp.yaml
     ```
 
-2. Použít soubor YAML:
+2. Použijte soubor YAML:
 
     ```bash
     kubectl apply -f aspnetapp.yaml
@@ -764,9 +764,9 @@ Jakmile máte nainstalovanou bránu App Gateway, AKS a AGIC, můžete pomocí [A
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku.  
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku.  
 
-Zástupný text nahraďte příslušnou hodnotou. Odstraní se všechny prostředky v zadané skupině prostředků.
+Nahraďte zástupný symbol příslušnou hodnotou. Všechny prostředky v rámci zadané skupiny prostředků budou odstraněny.
 
 ```azurecli
 az group delete -n <resource-group>
@@ -775,4 +775,4 @@ az group delete -n <resource-group>
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Application Gateway adaptér příchozího přenosu dat](https://azure.github.io/application-gateway-kubernetes-ingress/)
+> [Kontroler příchozího přenosu dat služby Application Gateway](https://azure.github.io/application-gateway-kubernetes-ingress/)

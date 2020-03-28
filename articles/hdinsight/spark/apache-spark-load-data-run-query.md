@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: načtení dat & spouštění dotazů s využitím Apache Spark-Azure HDInsight'
-description: Kurz – Naučte se načítat data a spouštět interaktivní dotazy na clusterech Spark v Azure HDInsight.
+title: 'Kurz: Načítání dat & spouštění dotazů pomocí Apache Spark – Azure HDInsight'
+description: Kurz – Naučte se načítat data a spouštět interaktivní dotazy v clusterech Spark v Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
 ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77198884"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight
 
-V tomto kurzu se naučíte, jak vytvořit datový rámec ze souboru CSV a jak spouštět interaktivní dotazy Spark SQL s [Apache Sparkm](https://spark.apache.org/) clusterem v Azure HDInsight. Ve Sparku je datový rámec distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Datový rámec je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
+V tomto kurzu se dozvíte, jak vytvořit datový rámec ze souboru CSV a jak spustit interaktivní dotazy Spark SQL proti clusteru [Apache Spark](https://spark.apache.org/) v Azure HDInsight. Ve Sparku je datový rámec distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Datový rámec je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -32,24 +32,24 @@ Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spa
 
 Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podporuje různé programovací jazyky. Poznámkový blok umožňuje pracovat s daty, kombinovat kód s textem markdownu a provádět jednoduché vizualizace.
 
-1. Upravte `https://SPARKCLUSTER.azurehdinsight.net/jupyter` URL tak, že nahradíte `SPARKCLUSTER` názvem vašeho clusteru Spark. Pak zadejte upravenou adresu URL do webového prohlížeče. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
+1. Upravte `https://SPARKCLUSTER.azurehdinsight.net/jupyter` adresu URL `SPARKCLUSTER` nahrazením názvem clusteru Spark. Poté zadejte upravenou adresu URL ve webovém prohlížeči. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
 
-2. Na webové stránce Jupyter vyberte **nový** > **PySpark** a vytvořte Poznámkový blok.
+2. Na webové stránce Jupyter, Vyberte **nový** > **PySpark** vytvořit poznámkový blok.
 
-   ![Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
+   ![Vytvoření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL")
 
-   Vytvoří se nový Poznámkový blok, který se otevře s názvem bez názvu (`Untitled.ipynb`).
+   Vytvoří se a otevře se nový poznámkový blok s názvem Untitled(`Untitled.ipynb`).
 
     > [!NOTE]  
     > Díky použití jádra PySpark k vytvoření poznámkového bloku se relace `spark` vytvoří automaticky za vás při spuštění první buňky kódu. Není potřeba relaci vytvářet explicitně.
 
 ## <a name="create-a-dataframe-from-a-csv-file"></a>Vytvoření datového rámce ze souboru CSV
 
-Aplikace mohou vytvářet datový rámec přímo ze souborů nebo složek na vzdáleném úložišti, jako je například Azure Storage nebo Azure Data Lake Storage; z tabulky podregistru; nebo z jiných zdrojů dat, které podporuje Spark, například Cosmos DB, Azure SQL DB, DW a tak dále. Následující snímek obrazovky ukazuje snímek souboru HVAC.csv použitého v tomto kurzu. Tento soubor CSV je součástí všech clusterů HDInsight Spark. Data zaznamenávají změny teploty několika budov.
+Aplikace můžete vytvářet datové rámce přímo ze souborů nebo složek ve vzdáleném úložišti, jako je Azure Storage nebo Azure Data Lake Storage; ze stolu Úlu; nebo z jiných zdrojů dat podporovaných Sparkem, jako je Cosmos DB, Azure SQL DB, DW a tak dále. Následující snímek obrazovky ukazuje snímek souboru HVAC.csv použitého v tomto kurzu. Tento soubor CSV je součástí všech clusterů HDInsight Spark. Data zaznamenávají změny teploty několika budov.
 
 ![Snímek dat pro interaktivní dotaz Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Snímek dat pro interaktivní dotaz Spark SQL")
 
-1. Vložte následující kód do prázdné buňky Jupyter poznámkového bloku a stisknutím klávesy **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
+1. Vložte následující kód do prázdné buňky poznámkového bloku Jupyter a stisknutím kláves **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
 
     ```python
     from pyspark.sql import *
@@ -60,7 +60,7 @@ Aplikace mohou vytvářet datový rámec přímo ze souborů nebo složek na vzd
 
     ![Stav interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Stav interaktivního dotazu Spark SQL")
 
-1. Všimněte si vráceného ID relace. Z obrázku výše je ID relace 0. V případě potřeby můžete získat podrobnosti relace tak, že přejdete na `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements`, kde název_clusteru je název vašeho clusteru Spark a ID je číslo ID vaší relace.
+1. Všimněte si, že id relace vrácena. Z obrázku výše, id relace je 0. V případě potřeby můžete načíst podrobnosti `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` relace přechodem na místo, kde CLUSTERNAME je název clusteru Spark a ID je vaše id relace.
 
 1. Spuštěním následujícího kódu vytvořte datový rámec a dočasnou tabulku (**hvac**).
 
@@ -83,29 +83,29 @@ Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
 
    Zobrazí se následující tabulkový výstup.
 
-     ![Výstup tabulky pro interaktivní výsledek dotazu Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Výstup tabulky pro interaktivní výsledek dotazu Spark")
+     ![Výstup tabulky interaktivního výsledku dotazu Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Výstup tabulky interaktivního výsledku dotazu Spark")
 
 2. Výsledky můžete také zobrazit v dalších vizualizacích. Pokud chcete výstup zobrazit v podobě plošného grafu, vyberte **Oblast** a pak nastavte další hodnoty následujícím způsobem.
 
-    ![Plošný graf interaktivního dotazu Spark – výsledek](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Plošný graf interaktivního dotazu Spark – výsledek")
+    ![Plošný graf interaktivního výsledku dotazu Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Plošný graf interaktivního výsledku dotazu Spark")
 
-3. V panelu nabídek poznámkového bloku přejděte na **soubor** > **Uložit a kontrolní bod**.
+3. Na řádku nabídek poznámkového bloku přejděte na **Soubor** > **uložit a kontrolní bod**.
 
-4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypněte Poznámkový blok a uvolněte prostředky clusteru: z řádku nabídek Poznámkový blok přejděte na **soubor** >  **Zavřít a zastavit**.
+4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypněte poznámkový blok a uvolněte prostředky clusteru: z řádku nabídek poznámkového bloku přejděte na **Zavřít** >  **a zastavit soubor**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Se službou HDInsight jsou vaše data a Jupyter poznámkové bloky uložené v Azure Storage nebo Azure Data Lake Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají. Pokud se chystáte hned začít pracovat na dalším kurzu, měli byste cluster zachovat.
+S HDInsight, vaše data a Jupyter poznámkové bloky jsou uloženy v Azure Storage nebo Azure Data Lake Storage, takže můžete bezpečně odstranit cluster, když není v provozu. Účtuje se vám také cluster HDInsight, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster jsou mnohonásobně vyšší než poplatky za úložiště, má ekonomické smysl odstranit clustery, když nejsou používány. Pokud se chystáte hned začít pracovat na dalším kurzu, měli byste cluster zachovat.
 
 Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 
-![Odstranit cluster HDInsight](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
+![Odstranění clusteru HDInsight](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Odstranění clusteru HDInsight")
 
 Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight Spark i výchozí účet úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit datový rámec ze souboru CSV a jak spouštět interaktivní dotazy Spark SQL s Apache Sparkm clusterem v Azure HDInsight. V dalším článku zjistíte, jak se data, která jste zaregistrovali v Apache Spark můžete načíst do nástroje BI Analytics, jako je například Power BI.
+V tomto kurzu jste se naučili, jak vytvořit datový rámec ze souboru CSV a jak spustit interaktivní dotazy Spark SQL proti clusteru Apache Spark v Azure HDInsight. Přejdete k dalšímu článku a zjistěte, jak lze data zaregistrovaná v Apache Spark vtáhnout do analytického nástroje BI, jako je Power BI.
 
 > [!div class="nextstepaction"]
 > [Analýza dat pomocí nástrojů BI](apache-spark-use-bi-tools.md)

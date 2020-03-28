@@ -1,248 +1,248 @@
 ---
-title: Ukázkové ovládací prvky pro Media details
-description: Mapování ovládacího prvku ukázek pro Media details Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
+title: Ovládací prvky ukázkového plánu médií
+description: Mapování ovládacího prvku ukázky podrobného plánu média. Každý ovládací prvek je mapován na jednu nebo více zásad Azure, které pomáhají s hodnocením.
 ms.date: 02/24/2020
 ms.topic: sample
 ms.openlocfilehash: bdc4ef65c6d61a9d4217d7873bb29bd787842e71
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78201903"
 ---
-# <a name="control-mapping-of-the-media-blueprint-sample"></a>Mapování ovládacího prvku ukázka pro Media details
+# <a name="control-mapping-of-the-media-blueprint-sample"></a>Mapování ovládacího prvku ukázky podrobného plánu média
 
-Následující článek podrobně popisuje, jak se vzorová ukázka Azure modrotisky Media Details mapuje na ovládací prvky multimédií. Další informace o ovládacích prvcích naleznete v tématu [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+V následujícím článku je podrobně popisuje, jak se ukázka podrobného plánu Azure Blueprint mapuje na ovládací prvky Media. Další informace o ovládacích prvcích naleznete v tématu [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
-Následující mapování jsou k ovládacím prvkům **média** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\]\[Preview: Auditovat** integrovanou iniciativu zásad.
+Následující mapování jsou na ovládací prvky **Media.** Pomocí navigace vpravo přejděte přímo na konkrétní mapování ovládacího prvku. Mnoho mapovaných ovládacích prvků se implementuje pomocí iniciativy [Zásad azure.](../../../policy/overview.md) Pokud chcete zkontrolovat celou iniciativu, otevřete **zásady** na webu Azure portal a vyberte stránku **Definice.** Potom vyhledejte a vyberte ** \[náhled\]: Auditovat média řídí** integrovanou iniciativu zásad.
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definic [zásad Azure.](../../../policy/overview.md) Tyto zásady vám mohou pomoci [posoudit dodržování](../../../policy/how-to/get-compliance-data.md) ovládacího prvku; však často není 1:1 nebo úplnou shodu mezi ovládacím prvkem a jednu nebo více zásad. Jako **takový, kompatibilní** v zásadách Azure odkazuje pouze na zásady samotné; Tím nezajistíte, že jste plně kompatibilní se všemi požadavky ovládacího prvku. Kromě toho standard dodržování předpisů zahrnuje ovládací prvky, které nejsou v tuto chvíli adresovány žádnými definicemi zásad Azure. Dodržování předpisů v zásadách Azure je tedy pouze částečným zobrazením celkového stavu dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi zásad Azure pro tento ukázkový plán dodržování předpisů se může v průběhu času měnit. Chcete-li zobrazit historii změn, podívejte se na [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md).
 
 ## <a name="access-control"></a>Řízení přístupu
 
-### <a name="ac-11--ensure-no-root-access-key-exists"></a>AC-1,1 – Zajistěte, aby neexistuje žádný kořenový přístupový klíč.
+### <a name="ac-11--ensure-no-root-access-key-exists"></a>AC-1.1- Ujistěte se, že neexistuje žádný klíč pro přístup ke kořenu
 
-- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neobsahují zadané certifikáty v důvěryhodném kořenovém adresáři.
+- \[Náhled\]: Nasazení požadavků pro auditování virtuálních aplikací Windows, které neobsahují zadané certifikáty v důvěryhodném kořenovém adresáři
 
-### <a name="ac-12---passwords-pins-and-tokens-must-be-protected"></a>AC-1,2 – hesla, PIN kódy a tokeny musí být chráněné.
+### <a name="ac-12---passwords-pins-and-tokens-must-be-protected"></a>AC-1.2 – Hesla, PIN kódy a tokeny musí být chráněny.
 
-- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
+- \[Náhled\]: Nasazení předpokladů pro auditování virtuálních aplikací windows, které neomezují minimální délku hesla na 14 znaků
 
-### <a name="ac-18---shared-account-access-is-prohibited"></a>AC-1,8 – přístup ke sdílenému účtu je zakázaný
+### <a name="ac-18---shared-account-access-is-prohibited"></a>AC-1.8 - Přístup ke sdílenému účtu je zakázán.
 
-- Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů Service Bus
+- Všechna autorizační pravidla s výjimkou rootmanagesharedaccesskey by měla být odebrána z oboru názvů Service Bus
 
-### <a name="ac-19--system-must-restrict-access-to-authorized-users"></a>AC-1,9 – systém musí omezit přístup autorizovaných uživatelů.
+### <a name="ac-19--system-must-restrict-access-to-authorized-users"></a>AC-1.9 -Systém musí omezit přístup oprávněným uživatelům.
 
-- Auditování neomezeného síťového přístupu k účtům úložiště
+- Auditovat neomezený přístup k účtům úložiště v síti
 
-### <a name="ac--114--system-must-enforce-access-rights"></a>AC-1,14 – systém musí vyhovět přístupovým právům.
+### <a name="ac--114--system-must-enforce-access-rights"></a>AC- 1.14 -Systém musí vynutit přístupová práva.
 
-- \[Preview\]: nasaďte požadavky na audit konfigurací virtuálních počítačů s Windows v přiřazení uživatelských práv.
+- \[Náhled\]: Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Přiřazení uživatelských práv
 
-### <a name="ac--115--prevent-unauthorized-access-to-security-relevant-information-or-functions"></a>AC-1,15 – zabrání neoprávněnému přístupu k příslušným informacím nebo funkcím zabezpečení.
+### <a name="ac--115--prevent-unauthorized-access-to-security-relevant-information-or-functions"></a>AC- 1.15 -Zabránit neoprávněnému přístupu k bezpečnostním informacím nebo funkcím.
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – systémové nastavení
+- \[Náhled\]: Zobrazení výsledků auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – nastavení systému
 
-### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 – oddělení cel se musí vyhovět odpovídajícím přiřazením role.
+### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 - Oddělení povinností musí být vymáháno vhodným postoupením role.
 
-- [Preview\]: na služby Kubernetes by měla být použita Access Control na základě rolí (RBAC).
+- [Preview\]: Řízení přístupu na základě rolí (RBAC) by mělo být použito ve službách Kubernetes
 
-### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40 – zajistěte, aby systémy nepřipojovaly důvěryhodnou síť a nedůvěryhodné sítě ve stejnou dobu.
+### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1.40 - Ujistěte se, že systémy nejsou připojení důvěryhodné sítě a nedůvěryhodné sítě ve stejnou dobu.
 
-- \[Preview\]: nasaďte předpoklady pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup.
+- \[Náhled\]: Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – přístup k síti
 
-### <a name="ac-142--ac--143---remote-access-for-non-employees-must-be-restricted-to-allow-access-only-to-specifically-approved-information-systems"></a>AC-1,42 & AC-1,43-vzdálený přístup pro zaměstnance, kteří nejsou zaměstnanci, se musí omezit tak, aby povoloval přístup jenom k výslovně schváleným informačním systémům.
+### <a name="ac-142--ac--143---remote-access-for-non-employees-must-be-restricted-to-allow-access-only-to-specifically-approved-information-systems"></a>AC-1.42 & AC-1.43 - Vzdálený přístup pro nezaměstnance musí být omezen tak, aby umožňoval přístup pouze k speciálně schváleným informačním systémům
 
-- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
+- \[Náhled\]: Zobrazení výsledků auditu z virtuálních počítačů s Linuxem, které umožňují vzdálená připojení z účtů bez hesel
 
-### <a name="ac-150--log-security-related-events-for-all-information-system-components"></a>AC-1,50 – protokoluje události související se zabezpečením pro všechny součásti informačního systému.
+### <a name="ac-150--log-security-related-events-for-all-information-system-components"></a>AC-1.50- Protokolovat události související se zabezpečením pro všechny součásti informačního systému.
 
-- Měly by být povolené diagnostické protokoly v Logic Apps.
+- Diagnostické protokoly v logic apps by měly být povoleny
 
-### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1,54 – Ujistěte se, že je povoleno vícefaktorové ověřování (MFA) pro všechny uživatele konzoly cloudu.
+### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1.54 - Ujistěte se, že vícefaktorové ověřování (MFA) je povoleno pro všechny uživatele cloudové konzoly.
 
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
-- Multi-Factor Authentication (MFA) by mělo být povolené pro všechny účty předplatného s oprávněním k zápisu, aby se zabránilo narušení účtů nebo prostředků.
+- MFA by měly mít povolené účty s oprávněními k zápisu ve vašem předplatném.
+- Vícefaktorové ověřování (MFA) by měla být povolena pro všechny účty předplatného s oprávněními k zápisu, aby se zabránilo porušení účtů nebo prostředků.
 
-## <a name="auditing--logging"></a>Auditování & protokolování
+## <a name="auditing--logging"></a>Auditování protokolování &
 
-### <a name="al-21--successful-and-unsuccessful-events-must-be-logged"></a>AL-2,1 – úspěšné a neúspěšné události musí být protokolovány.
+### <a name="al-21--successful-and-unsuccessful-events-must-be-logged"></a>AL-2.1- Úspěšné a neúspěšné události musí být zaznamenány.
 
-- Měly by být povolené diagnostické protokoly ve vyhledávacích službách.
+- Diagnostické protokoly ve vyhledávacích službách by měly být povoleny.
 
-### <a name="al--216---network-devicesinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-network-deviceinstance-elbs-web-application-firewalls-etc"></a>AL-2,16 – síťová zařízení/instance musí protokolovat jakoukoli událost klasifikovanou jako kritickou událost zabezpečení prostřednictvím tohoto síťového zařízení/instance (ELBs, Firewall webových aplikací atd.).
+### <a name="al--216---network-devicesinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-network-deviceinstance-elbs-web-application-firewalls-etc"></a>AL -2.16 - Síťová zařízení/instance musí zaznamenávat každou událost klasifikovanou jako kritická událost zabezpečení tímto síťovým zařízením/instancí (ELB, brány firewall webových aplikací atd.)
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
+- \[Náhled\]: Zobrazení výsledků auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – účty
 
-### <a name="al-217--serversinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-serverinstance"></a>AL-2,17 – servery/instance musí protokolovat všechny události klasifikované jako kritická událost zabezpečení daného serveru/instance.
+### <a name="al-217--serversinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-serverinstance"></a>AL-2.17- Servery/instance musí protokolovat každou událost klasifikovanou jako kritická událost zabezpečení tímto serverem/instancí
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
+- \[Náhled\]: Zobrazení výsledků auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – účty
 
-### <a name="al-219---domain-events-must-log-any-event-classified-as-a-critical-or-high-security-event-by-the-domain-management-software"></a>AL-2,19 – události domény musí protokolovat jakoukoli událost klasifikovanou jako kritickou nebo vysokou událost zabezpečení, kterou používá software pro správu domény.
+### <a name="al-219---domain-events-must-log-any-event-classified-as-a-critical-or-high-security-event-by-the-domain-management-software"></a>AL-2.19 - Události domény musí zaznamenávat všechny události klasifikované jako kritická nebo vysoká událost zabezpečení softwarem pro správu domény
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
-- \[Preview\]: nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – Klient sítě Microsoft
+- \[Náhled\]: Zobrazení výsledků auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – účty
+- \[Náhled\]: Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – síťový klient společnosti Microsoft
 
-### <a name="al-220--domain-events-must-log-any-event-classified-as-a-critical-security-event-by-domain-security-controls"></a>AL-2,20 – události domény musí protokolovat jakoukoli událost klasifikovanou jako kritická událost zabezpečení pomocí ovládacích prvků zabezpečení domény.
+### <a name="al-220--domain-events-must-log-any-event-classified-as-a-critical-security-event-by-domain-security-controls"></a>AL-2.20 - Události domény musí zaznamenávat všechny události klasifikované jako kritická událost zabezpečení pomocí ovládacích prvků zabezpečení domény
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
+- \[Náhled\]: Zobrazení výsledků auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – účty
 
-### <a name="al-221--domain-events-must-log-any-access-or-changes-to-the-domain-log"></a>AL-2,21 – události domény musí protokolovat jakýkoli přístup nebo změny do protokolu domény.
+### <a name="al-221--domain-events-must-log-any-access-or-changes-to-the-domain-log"></a>AL-2.21- Události domény musí zaznamenávat jakýkoli přístup nebo změny protokolu domény
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – konzola pro zotavení
+- \[Náhled\]: Zobrazení výsledků auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – konzola pro zotavení
 
-## <a name="cryptographic-controls"></a>Ovládací prvky kryptografie
+## <a name="cryptographic-controls"></a>Kryptografické ovládací prvky
 
-### <a name="cc-42--applications-and-systems-must-use-current-cryptographic-solutions-for-protecting-data"></a>CC-4,2 – aplikace a systémy musí používat aktuální kryptografická řešení pro ochranu dat.
+### <a name="cc-42--applications-and-systems-must-use-current-cryptographic-solutions-for-protecting-data"></a>CC-4.2 - Aplikace a systémy musí používat aktuální kryptografická řešení pro ochranu dat.
 
-- Je třeba povolit transparentní šifrování dat databází SQL.
-- Transparentní šifrování dat by mělo být povoleno pro ochranu neaktivních dat a splnění požadavků na dodržování předpisů.
+- Transparentní šifrování dat v databázích SQL by mělo být povoleno
+- Transparentní šifrování dat by mělo být povoleno pro ochranu dat v klidovém stavu a splnění požadavků na dodržování předpisů
 
-### <a name="cc-45--digital-certificates-must-be-signed-by-an-approved-certificate-authority"></a>CC-4,5-digitální certifikáty musí být podepsány schválenou certifikační autoritou.
+### <a name="cc-45--digital-certificates-must-be-signed-by-an-approved-certificate-authority"></a>CC-4.5- Digitální certifikáty musí být podepsány schválenou certifikační autoritou.
 
-- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů s Windows, které v zadaném počtu dní obsahují certifikáty, jejichž platnost vyprší
+- \[Náhled\]: Zobrazit výsledky auditu z virtuálních aplikací windows, které obsahují certifikáty končící v rámci zadaného počtu dní
 
-### <a name="cc-46--digital-certificates-must-be-uniquely-assigned-to-a-user-or-device"></a>CC-4,6-digitální certifikáty musí být jednoznačně přiřazeny uživateli nebo zařízení.
+### <a name="cc-46--digital-certificates-must-be-uniquely-assigned-to-a-user-or-device"></a>CC-4.6- Digitální certifikáty musí být jednoznačně přiřazeny uživateli nebo zařízení.
 
-- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, které v zadaném počtu dnů vyprší platnost.
+- \[Náhled\]: Nasazení požadavků pro auditování virtuálních aplikací windows, které obsahují certifikáty, jejichž platnost vyprší v rámci zadaného počtu dní
 
-### <a name="cc-47--cryptographic-material-must-be-stored-to-enable-decryption-of-the-records-for-the-length-of-time-the-records-are-retained"></a>CC-4,7 – šifrovací materiál musí být uložen, aby umožňoval dešifrování záznamů po dobu uchování záznamů.
+### <a name="cc-47--cryptographic-material-must-be-stored-to-enable-decryption-of-the-records-for-the-length-of-time-the-records-are-retained"></a>CC-4.7- Kryptografický materiál musí být uložen, aby bylo možné dešifrovat záznamy po dobu, po kterou jsou záznamy uchovávány.
 
-- Na virtuálních počítačích by se mělo použít šifrování disku
-- Virtuální počítače bez povoleného šifrování disku se budou monitorovat Azure Security Center jako doporučení.
+- Šifrování disku by mělo být použito na virtuálních počítačích.
+- Virtuální počítače bez povoleného šifrování disku bude monitorovat Azure Security Center jako doporučení
 
-### <a name="cc-48--secret-and-private-keys-must-be-stored-securely"></a>CC-4,8 – tajný klíč a privátní klíče musí být bezpečně uložené.
+### <a name="cc-48--secret-and-private-keys-must-be-stored-securely"></a>CC-4.8 - Tajné a soukromé klíče musí být bezpečně uloženy.
 
-- Je třeba povolit transparentní šifrování dat databází SQL.
-- Transparentní šifrování dat by mělo být povoleno pro ochranu neaktivních dat a splnění požadavků na dodržování předpisů.
+- Transparentní šifrování dat v databázích SQL by mělo být povoleno
+- Transparentní šifrování dat by mělo být povoleno pro ochranu dat v klidovém stavu a splnění požadavků na dodržování předpisů
 
-## <a name="change--config-management"></a>Změna správy konfigurace &
+## <a name="change--config-management"></a>Změnit správu konfigurace &
 
-### <a name="cm-52--only-authorized-users-may-implement-approved-changes-on-the-system"></a>CM-5,2 – schválené změny systému můžou implementovat jenom autorizovaní uživatelé.
+### <a name="cm-52--only-authorized-users-may-implement-approved-changes-on-the-system"></a>CM-5.2- Schválené změny v systému mohou provádět pouze oprávnění uživatelé.
 
-- Do vašich počítačů by se měly nainstalovat aktualizace systému
-- Chybějící aktualizace systému zabezpečení na vašich serverech se monitorují Azure Security Center jako doporučení.
+- Na počítače by se měly nainstalovat aktualizace systému
+- Chybějící aktualizace systému zabezpečení na vašich serverech budou monitorovány službou Azure Security Center podle doporučení.
 
-### <a name="cm-512--maintain-an-up-to-date-complete-accurate-and-readily-available-baseline-configuration-of-the-information-system"></a>CM-5,12 – udržování aktuálnosti, kompletního, přesného a snadno dostupného základního nastavení informačního systému.
+### <a name="cm-512--maintain-an-up-to-date-complete-accurate-and-readily-available-baseline-configuration-of-the-information-system"></a>CM-5.12 - Udržovat aktuální, kompletní, přesné a snadno dostupné základní konfigurace informačního systému.
 
-- Do vašich počítačů by se měly nainstalovat aktualizace systému
-- Chybějící aktualizace systému zabezpečení na vašich serverech se monitorují Azure Security Center jako doporučení.
+- Na počítače by se měly nainstalovat aktualizace systému
+- Chybějící aktualizace systému zabezpečení na vašich serverech budou monitorovány službou Azure Security Center podle doporučení.
 
-### <a name="cm-513--employ-automated-tools-to-maintain-a-baseline-configuration-of-the-information-system"></a>CM-5,13 – použití automatizovaných nástrojů pro udržování základní konfigurace informačního systému.
+### <a name="cm-513--employ-automated-tools-to-maintain-a-baseline-configuration-of-the-information-system"></a>CM-5.13 - Používejte automatizované nástroje pro udržení základní konfigurace informačního systému.
 
-- Do vašich počítačů by se měly nainstalovat aktualizace systému
-- Chybějící aktualizace systému zabezpečení na vašich serverech se monitorují Azure Security Center jako doporučení.
+- Na počítače by se měly nainstalovat aktualizace systému
+- Chybějící aktualizace systému zabezpečení na vašich serverech budou monitorovány službou Azure Security Center podle doporučení.
 
-### <a name="cm-514--identify-and-disable-unnecessary-andor-non-secure-functions-ports-protocols-and-services"></a>CM-5,14 – identifikujte a zakažte nepotřebné nebo nezabezpečené funkce, porty, protokoly a služby.
+### <a name="cm-514--identify-and-disable-unnecessary-andor-non-secure-functions-ports-protocols-and-services"></a>CM-5.14 - Identifikujte a zakažte nepotřebné a/nebo nezabezpečené funkce, porty, protokoly a služby.
 
-- Síťová rozhraní by měla zakázat předávání IP
-- \[Preview\]: je potřeba zakázat předávání IP na virtuálním počítači.
+- Síťová rozhraní by měla zakázat předávání IP adres
+- \[Náhled\]: Předávání IP adres na vašem virtuálním počítači by mělo být zakázáno
 
-### <a name="cm-519--monitor-changes-to-the-security-configuration-settings"></a>CM-5,19 – Sledujte změny nastavení konfigurace zabezpečení.
+### <a name="cm-519--monitor-changes-to-the-security-configuration-settings"></a>CM-5.19 - Sledování změn nastavení konfigurace zabezpečení.
 
-- Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě
+- Nasazení nastavení diagnostiky pro skupiny zabezpečení sítě
 
-### <a name="cm-522--ensure-that-only-authorized-software-and-updates-are-installed-on-company-systems"></a>CM-5,22 – zajistěte, aby byly v systémech společnosti nainstalovány pouze autorizované software a aktualizace.
+### <a name="cm-522--ensure-that-only-authorized-software-and-updates-are-installed-on-company-systems"></a>CM-5.22 - Ujistěte se, že v systémech společnosti je nainstalován pouze autorizovaný software a aktualizace.
 
-- Do vašich počítačů by se měly nainstalovat aktualizace systému
-- Chybějící aktualizace systému zabezpečení na vašich serverech se monitorují Azure Security Center jako doporučení.
+- Na počítače by se měly nainstalovat aktualizace systému
+- Chybějící aktualizace systému zabezpečení na vašich serverech budou monitorovány službou Azure Security Center podle doporučení.
 
 ## <a name="identity--authentication"></a>Ověřování identity &
 
-### <a name="ia-71--user-accounts-must-be-uniquely-assigned-to-individuals-for-access-to-information-that-is-not-classified-as-public-account-ids-must-be-constructed-using-a-standardized-logical-format"></a>IA-7,1 – uživatelské účty musí být jedinečné přiřazení jednotlivcům pro přístup k informacím, které nejsou klasifikovány jako veřejné. ID účtu musí být vytvořené pomocí standardizovaného logického formátu.
+### <a name="ia-71--user-accounts-must-be-uniquely-assigned-to-individuals-for-access-to-information-that-is-not-classified-as-public-account-ids-must-be-constructed-using-a-standardized-logical-format"></a>IA-7.1 - Uživatelské účty musí být jednoznačně přiřazeny jednotlivcům pro přístup k informacím, které nejsou klasifikovány jako veřejné. ID účtu musí být vytvořena pomocí standardizovaného logického formátu.
 
-- Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
-- Aby nedocházelo k nemonitorovanému přístupu, měly by se z předplatného odebrat externí účty s oprávněním vlastníka.
+- Z předplatného by měly být odebrány externí účty s oprávněními vlastníka.
+- Externí účty s oprávněními vlastníka by měly být odebrány z vašeho předplatného, aby se zabránilo nemonitorovaný přístup.
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-### <a name="ns-92--access-to-network-device-management-functionality-is-restricted-to-authorized-users"></a>NS-9,2 – přístup k funkcím správy síťových zařízení je omezený na autorizované uživatele.
+### <a name="ns-92--access-to-network-device-management-functionality-is-restricted-to-authorized-users"></a>NS-9.2 - Přístup k funkcím správy síťových zařízení je omezen na oprávněné uživatele.
 
-- \[Preview\]: nasaďte předpoklady pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup.
+- \[Náhled\]: Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – přístup k síti
 
-### <a name="ns-93--all-network-devices-must-be-configured-using-their-most-secure-configurations"></a>NS-9,3 – všechna síťová zařízení musí být nakonfigurovaná pomocí jejich nejbezpečnější konfigurace.
+### <a name="ns-93--all-network-devices-must-be-configured-using-their-most-secure-configurations"></a>NS-9.3 - Všechna síťová zařízení musí být konfigurována pomocí jejich nejbezpečnějšíkonfigurace.
 
-- \[Preview\]: nasaďte předpoklady pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup.
+- \[Náhled\]: Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – přístup k síti
 
-### <a name="ns-95--all-network-connections-to-a-system-through-a-firewall-must-be-approved-and-audited-on-a-regular-basis"></a>NS-9,5 – všechna síťová připojení k systému prostřednictvím brány firewall musí být schválena a pravidelně auditována.
+### <a name="ns-95--all-network-connections-to-a-system-through-a-firewall-must-be-approved-and-audited-on-a-regular-basis"></a>NS-9.5 - Všechna síťová připojení k systému přes bránu firewall musí být pravidelně schvalována a auditována.
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows ve vlastnostech brány Windows Firewall
+- \[Náhled\]: Zobrazení výsledků auditu z konfigurací virtuálních počítačů se systémem Windows v části Vlastnosti brány Windows Firewall
 
-### <a name="ns-97--appropriate-controls-must-be-present-at-any-boundary-between-a-trusted-network-and-any-untrusted-or-public-network"></a>NS-9,7: příslušné ovládací prvky musí být k dispozici na hranici mezi důvěryhodnou sítí a jakoukoli nedůvěryhodnou nebo veřejnou sítí.
+### <a name="ns-97--appropriate-controls-must-be-present-at-any-boundary-between-a-trusted-network-and-any-untrusted-or-public-network"></a>NS-9.7- Příslušné ovládací prvky musí být přítomny na jakékoli hranici mezi důvěryhodnou sítí a jakoukoli nedůvěryhodnou nebo veřejnou sítí.
 
-- \[Preview\]: nasaďte požadavky pro audit konfigurací virtuálních počítačů s Windows ve vlastnostech brány Windows Firewall.
+- \[Náhled\]: Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Vlastnosti brány Windows Firewall
 
 ## <a name="security-planning"></a>Plánování zabezpečení
 
-### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11,3 – hrozby musí být identifikovány, které by mohly negativně ovlivnit důvěrnost, integritu a dostupnost informací společnosti a obsahu a také pravděpodobnost jejich výskytu.
+### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11.3 - Musí být identifikovány hrozby, které by mohly negativně ovlivnit důvěrnost, integritu nebo dostupnost informací a obsahu společnosti spolu s pravděpodobností jejich výskytu.
 
-- V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.
+- Rozšířené typy ochrany před internetovými hrozbami by měly být nastaveny na hodnotu "Vše" v nastavení rozšířeného zabezpečení dat spravované ho SQL.
 
 ### <a name="security-continuity"></a>Kontinuita zabezpečení
 
-## <a name="sc-125--data-in-long-term-storage-must-be-accessible-throughout-the-retention-period-and-protected-against-media-degradation-and-technology-changes"></a>SC-12,5 – data v dlouhodobém úložišti musí být přístupná po dobu uchování a chráněná proti změnám v oblasti médií a technologií.
+## <a name="sc-125--data-in-long-term-storage-must-be-accessible-throughout-the-retention-period-and-protected-against-media-degradation-and-technology-changes"></a>SC-12.5 - Data v dlouhodobém úložišti musí být přístupná po celou dobu uchovávání a chráněna před degradací médií a technologickými změnami.
 
-- SQL servery by měly být nakonfigurované s uchováním dat po dobu delší než 90 dní.
-- Auditovat SQL servery nakonfigurované s dobou uchování auditování kratší než 90 dní.
+- Sql servery by měly být konfigurovány s auditování retenční dny větší než 90 dnů.
+- Auditování serverů SQL nakonfigurovaných s dobou uchovávání auditování kratší než 90 dní.
 
 ## <a name="system-integrity"></a>Integrita systému
 
-### <a name="si-143--only-authorized-personnel-may-monitor-network-and-user-activities"></a>Od-14,3 mohou sledovat aktivity sítě a uživatele jenom autorizovaní zaměstnanci.
+### <a name="si-143--only-authorized-personnel-may-monitor-network-and-user-activities"></a>SI-14.3 - Pouze autorizovaní pracovníci mohou sledovat síťové a uživatelské aktivity.
 
-- Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
-- Sledujte výsledky kontroly ohrožení zabezpečení a doporučení pro napravení ohrožení zabezpečení databáze.
+- Chyby zabezpečení v databázích SQL by měly být opraveny
+- Monitorujte výsledky hodnocení ohrožení zabezpečení a doporučení, jak napravit chyby zabezpečení databáze.
 
-### <a name="si-144--internet-facing-systems-must-have-intrusion-detection"></a>V-14,4-internetové systémy musí mít detekci vniknutí.
+### <a name="si-144--internet-facing-systems-must-have-intrusion-detection"></a>SI-14.4 - Systémy směřující k internetu musí být vystižení vniknutí.
 
-- Nasazení detekce hrozeb na SQL serverech
+- Nasazení zjišťování hrozeb na serverech SQL
 
-### <a name="si-1413--standardized-centrally-managed-anti-malware-software-should-be-implemented-across-the-company"></a>A-14,13 – standardní centrálně spravovaný antimalwarový software by se měl implementovat napříč společností.
+### <a name="si-1413--standardized-centrally-managed-anti-malware-software-should-be-implemented-across-the-company"></a>SI-14.13 - Standardizovaný centrálně řízený antimalwarový software by měl být implementován v celé společnosti.
 
-- Nasadit výchozí rozšíření Microsoft IaaSAntimalware pro Windows Server
+- Nasazení výchozího rozšíření Microsoft IaaSAntimalware pro Windows Server
 
-### <a name="si-1414--anti-malware-software-must-scan-computers-and-media-weekly-at-a-minimum"></a>-14,14 – antimalwarový software musí naskenovat počítače a média na minimum.
+### <a name="si-1414--anti-malware-software-must-scan-computers-and-media-weekly-at-a-minimum"></a>SI-14.14 - Anti-malware software musí skenovat počítače a média týdně minimálně.
 
-- Nasadit výchozí rozšíření Microsoft IaaSAntimalware pro Windows Server
+- Nasazení výchozího rozšíření Microsoft IaaSAntimalware pro Windows Server
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-### <a name="vm-154--ensure-that-applications-are-scanned-for-vulnerabilities-on-a-monthly-basis"></a>VM-15,4 – zajistěte, aby aplikace kontrolovaly ohrožení zabezpečení měsíčně.
+### <a name="vm-154--ensure-that-applications-are-scanned-for-vulnerabilities-on-a-monthly-basis"></a>VM-15.4 - Ujistěte se, že aplikace jsou kontrolovány na základě chyb zabezpečení na měsíční bázi.
 
-- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
-- Auditujte ohrožení zabezpečení operačního systému ve službě Virtual Machine Scale Sets, abyste je chránili před útoky.
+- Chyby zabezpečení v konfiguraci zabezpečení ve škálovacích sadách virtuálních počítačů by měly být opraveny.
+- Auditujte chyby zabezpečení operačního systému na škálovacích sadách virtuálních strojů, abyste je ochránili před útoky.
 
-### <a name="vm-155--ensure-that-vulnerabilities-are-identified-paired-to-threats-and-evaluated-for-risk"></a>VM-15,5 – zajistěte, aby se chyby zabezpečení identifikovaly, spárovány s hrozbami a vyhodnotily riziko.
+### <a name="vm-155--ensure-that-vulnerabilities-are-identified-paired-to-threats-and-evaluated-for-risk"></a>VM-15.5 - Ujistěte se, že chyby zabezpečení jsou identifikovány, spárovány s hrozbami a vyhodnoceny z hlediska rizika.
 
-- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
-- Auditujte ohrožení zabezpečení operačního systému ve službě Virtual Machine Scale Sets, abyste je chránili před útoky.
+- Chyby zabezpečení v konfiguraci zabezpečení ve škálovacích sadách virtuálních počítačů by měly být opraveny.
+- Auditujte chyby zabezpečení operačního systému na škálovacích sadách virtuálních strojů, abyste je ochránili před útoky.
 
-### <a name="vm-156--ensure-that-identified-vulnerabilities-have-been-remediated-within-a-mutually-agreed-upon-timeline"></a>VM-15,6 – zajistěte, aby zjištěná ohrožení zabezpečení byla opravena v rámci vzájemného schválení na časové ose.
+### <a name="vm-156--ensure-that-identified-vulnerabilities-have-been-remediated-within-a-mutually-agreed-upon-timeline"></a>VM-15.6- Ujistěte se, že identifikované chyby zabezpečení byly opraveny v rámci vzájemně dohodnutéčasové lhůty.
 
-- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
-- Auditujte ohrožení zabezpečení operačního systému ve službě Virtual Machine Scale Sets, abyste je chránili před útoky.
+- Chyby zabezpečení v konfiguraci zabezpečení ve škálovacích sadách virtuálních počítačů by měly být opraveny.
+- Auditujte chyby zabezpečení operačního systému na škálovacích sadách virtuálních strojů, abyste je ochránili před útoky.
 
-### <a name="vm-157--access-to-and-use-of-vulnerability-management-systems-must-be-restricted-to-authorized-personnel"></a>VM-15,7 – přístup k systémům pro správu ohrožení zabezpečení a jeho použití musí být omezen na autorizované zaměstnance.
+### <a name="vm-157--access-to-and-use-of-vulnerability-management-systems-must-be-restricted-to-authorized-personnel"></a>VM-15.7 - Přístup k systémům pro správu zranitelnosti a jejich používání musí být omezen na oprávněné pracovníky.
 
-- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
-- Auditujte ohrožení zabezpečení operačního systému ve službě Virtual Machine Scale Sets, abyste je chránili před útoky.
+- Chyby zabezpečení v konfiguraci zabezpečení ve škálovacích sadách virtuálních počítačů by měly být opraveny.
+- Auditujte chyby zabezpečení operačního systému na škálovacích sadách virtuálních strojů, abyste je ochránili před útoky.
 
 > [!NOTE]
-> Dostupnost konkrétních definic Azure Policy se může v Azure Government a dalších národních cloudech lišit. 
+> Dostupnost konkrétních definic zásad Azure se může lišit v Azure Government a dalších národních cloudech. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkontrolovali jste mapování ovládacího prvku ukázka pro Media details. Další informace o přehledu a způsobu nasazení této ukázky najdete v následujících článcích:
+Zkontrolovali jste mapování ovládacího prvku ukázky podrobného plánu média. Dále navštivte následující články, kde se dozvíte o přehledu a o tom, jak tuto ukázku nasadit:
 
 > [!div class="next step action"]
-> [Media Details – přehled](./control-mapping.md)
-> [Media Details – postup nasazení](./deploy.md)
+> [Podrobný plán médií – podrobný plán pro přehled](./control-mapping.md)
+> [médií – nasazení kroků](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
-- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)
+- Přečtěte si o [životním cyklu podrobného plánu](../../concepts/lifecycle.md).
+- Pochopit, jak používat [statické a dynamické parametry](../../concepts/parameters.md).
+- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](../../concepts/sequencing-order.md).
+- Zjistěte, jak využít [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md).
+- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).

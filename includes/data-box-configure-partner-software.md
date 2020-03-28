@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
 ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67175673"
 ---
-Nakonfigurujte partnerský software pro připojení ke klientovi. Pro připojení k partnerský software, obvykle potřebujete následující informace (mohou lišit) jste shromáždili ze **připojit a Kopírovat** stránky z místního webového uživatelského rozhraní v předchozím kroku:
+Nakonfigurujte partnerský software pro připojení ke klientovi. Chcete-li se připojit k partnerskému softwaru, obvykle potřebujete následující informace (mohou se lišit), které jste shromáždili ze stránky **Připojit a kopírovat** místní webové uživatelské uživatelské prostředí v předchozím kroku:
 
 - Název účtu úložiště
 - Přístupový klíč
 - Koncový bod služby Blob service
  
-Pokud chcete ověřit, že se připojení úspěšně vytvořeno, slouží k připojení k externímu účtu úložiště Průzkumníka služby Storage. Pokud nemáte Průzkumníka služby Storage, stáhněte si Průzkumníka služby Storage.
+Chcete-li ověřit, zda je připojení úspěšně navázáno, připojte se pomocí Průzkumníka úložiště k externímu účtu úložiště. Pokud nemáte Průzkumníka úložiště, stáhněte si Průzkumníka úložiště.
 
-Pokud to je poprvé použijete Průzkumníka služby Storage, budete muset provést následující kroky.
+Pokud používáte Průzkumníka úložiště poprvé, je třeba provést následující kroky.
 
-1. Na horním příkazovém řádku přejděte do **Upravit > Target Azure Stack**.
+1. Na horním panelu příkazů přejděte na **Upravit > cílový zásobník Azure**.
 
-    ![Data dodaný řídicí panel](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
+    ![Řídicí panel datové schránky](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
 
-2. Restartujte Storage Explorer, aby se změny projevily.
+2. Změny se projeví až po restartování Průzkumníka úložiště.
 
-    ![Data dodaný řídicí panel](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)
+    ![Řídicí panel datové schránky](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)

@@ -1,5 +1,5 @@
 ---
-title: Aktualizace inventáře pomocí Azure Portal a témat/předplatných
+title: Aktualizace inventáře pomocí portálu Azure portal a témat/předplatných
 description: V tomto kurzu se naučíte, jak odesílat a přijímat zprávy z tématu a odběru a jak přidávat a používat pravidla filtrů pomocí rozhraní .NET
 services: service-bus-messaging
 author: spelluru
@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76310114"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí portálu Azure Portal a témat/odběrů
@@ -57,7 +57,7 @@ Pokud zřídíte obor názvů a téma s odběry a máte potřebná pověření, 
 
 ### <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
 
-Kód spustíte následovně:
+Při spuštění kódu postupujte takto:
 
 1. V příkazovém řádku nebo v příkazovém řádku PowerShellu naklonujte pomocí následujícího příkazu [úložiště Service Bus na GitHubu](https://github.com/Azure/azure-service-bus/):
 
@@ -67,7 +67,7 @@ Kód spustíte následovně:
 
 2. Přejděte do složky s ukázkou `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`.
 
-3. Získejte připojovací řetězec, který jste zkopírovali do poznámkového bloku v tomto kurzu v části získání přihlašovacích údajů pro správu. Budete potřebovat také název tématu, které jste vytvořili v předchozí části.
+3. Vyhledejte připojovací řetězec, který jste si zkopírovali do poznámkového bloku dříve v kurzu, v části Získání přihlašovacích údajů pro správu. Budete potřebovat také název tématu, které jste vytvořili v předchozí části.
 
 4. Do příkazového řádku zadejte následující příkaz:
 
@@ -395,7 +395,7 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
+> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 

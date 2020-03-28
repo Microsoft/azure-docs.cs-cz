@@ -1,6 +1,6 @@
 ---
-title: Kurz – zřizování zařízení napříč rozbočovači s vyrovnáváním zatížení pomocí Azure IoT Hub Device Provisioning Service
-description: V tomto kurzu se dozvíte, jak služba Device Provisioning Service (DPS) umožňuje automatické zřizování zařízení napříč rozbočovači IoT na webu Azure Portal.
+title: Kurz – zřízení zařízení napříč centry s vyrovnáváním zatížení pomocí služby Azure IoT Hub Device Provisioning Service
+description: Tento kurz ukazuje, jak služba Zřizování zařízení (DPS) umožňuje automatické zřizování zařízení napříč centry IoT s vyrovnáváním zatížení na Webu Azure Portal.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,25 +9,25 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976736"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Kurz: zřízení zařízení napříč centrem IoT s vyrovnáváním zatížení
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Kurz: Zřízení zařízení napříč centry IoT s vyrovnáváním zatížení
 
 Tento kurz ukazuje, jak zřídit zařízení pro několik center IoT s vyrovnáváním zatížení pomocí služby Device Provisioning. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Použití webu Azure Portal ke zřízení druhého zařízení ve druhém centru IoT 
-> * Přidání položky seznamu registrací do druhého zařízení
+> * Přidat položku seznamu registrací do druhého zařízení
 > * Nastavit zásady přidělování služby Device Provisioning na **rovnoměrnou distribuci**
-> * Propojení nového centra IoT se službou Device Provisioning
+> * Propojit nové centrum IoT se službou Device Provisioning
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz je založený na předchozím kurzu týkajícím se [zřízení zařízení v centru](tutorial-provision-device-to-hub.md).
 
@@ -35,7 +35,7 @@ Tento kurz je založený na předchozím kurzu týkajícím se [zřízení zař�
 
 Postupujte podle kroků v kurzu týkajícím se [zřízení zařízení v centru](tutorial-provision-device-to-hub.md) a zřiďte druhé zařízení v jiném centru IoT.
 
-## <a name="add-an-enrollment-list-entry-to-the-second-device"></a>Přidání položky seznamu registrací do druhého zařízení
+## <a name="add-an-enrollment-list-entry-to-the-second-device"></a>Přidat položku seznamu registrací do druhého zařízení
 
 Seznam registrací informuje službu Device Provisioning o tom, jaká metoda ověření identity (metoda potvrzení identity zařízení) se u zařízení používá. Dalším krokem je přidání položky seznamu registrací pro druhé zařízení. 
 
@@ -57,13 +57,13 @@ Postupujte podle těchto kroků k nastavení zásad přidělování:
 2. Nastavte zásady přidělování na **Rovnoměrně vážená distribuce**.
 3. Klikněte na **Uložit**.
 
-## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Propojení nového centra IoT se službou Device Provisioning
+## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Propojit nové centrum IoT se službou Device Provisioning
 
 Propojte službu Device Provisioning a centrum IoT, aby služba Device Provisioning mohla do daného centra registrovat zařízení.
 
 1. Na stránce **Všechny prostředky** klikněte na službu Device Provisioning, kterou jste vytvořili dříve.
 2. Na stránce služby Device Provisioning klikněte na **Propojená centra IoT**.
-3. Klikněte na tlačítko **Přidat**.
+3. Klikněte na **Přidat**.
 4. Na stránce **Přidat propojení s centrem IoT** pomocí přepínačů určete, jestli je propojené centrum IoT umístěné v aktuálním předplatném nebo v jiném předplatném. Pak v poli **Centrum IoT** zvolte název centra IoT.
 5. Klikněte na **Uložit**.
 
@@ -73,9 +73,9 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Použití webu Azure Portal ke zřízení druhého zařízení ve druhém centru IoT 
-> * Přidání položky seznamu registrací do druhého zařízení
+> * Přidat položku seznamu registrací do druhého zařízení
 > * Nastavit zásady přidělování služby Device Provisioning na **rovnoměrnou distribuci**
-> * Propojení nového centra IoT se službou Device Provisioning
+> * Propojit nové centrum IoT se službou Device Provisioning
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

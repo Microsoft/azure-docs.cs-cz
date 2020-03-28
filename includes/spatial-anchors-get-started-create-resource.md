@@ -5,43 +5,43 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
 ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67135037"
 ---
-## <a name="create-a-spatial-anchors-resource"></a>Vytvořit prostředek prostorových kotvy
+## <a name="create-a-spatial-anchors-resource"></a>Vytvoření prostředku prostorových kotev
 
-Přejděte na <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Přejděte na <a href="https://portal.azure.com" target="_blank">portál Azure</a>.
 
-V levém navigačním podokně na webu Azure Portal, vyberte **vytvořit prostředek**.
+V levém navigačním podokně na webu Azure Portal vyberte **Vytvořit prostředek**.
 
-Použijte vyhledávací pole pro hledání **prostorových kotvy**.
+Vyhledávací pole slouží k **vyhledání prostorových kotev**.
 
-   ![Vyhledat prostorové kotvy](./media/spatial-anchors-get-started-create-resource/portal-search.png)
+   ![Hledání prostorových kotev](./media/spatial-anchors-get-started-create-resource/portal-search.png)
 
-Vyberte **prostorových kotvy**. V dialogovém okně vyberte **vytvořit**.
+Vyberte **možnost Prostorové kotvy**. V dialogovém okně vyberte **Vytvořit**.
 
-V **prostorových účet kotvy** dialogové okno:
+V dialogovém okně **Účet prostorových kotev:**
 
-- Zadejte název jedinečné prostředků, pomocí regulárních alfanumerické znaky.
-- Vyberte předplatné, které chcete připojit prostředek, který chcete.
-- Vytvořte skupinu prostředků tak, že vyberete **vytvořit nový**. Pojmenujte ji **myResourceGroup** a vyberte **OK**.
+- Zadejte jedinečný název zdroje pomocí běžných alfanumerických znaků.
+- Vyberte předplatné, ke kterému chcete prostředek připojit.
+- Vytvořte skupinu prostředků výběrem **možnosti Vytvořit nový**. Pojmenujte ji **myResourceGroup** a vyberte **OK**.
       [!INCLUDE [resource group intro text](resource-group.md)]
-- Vyberte umístění (oblast), ve kterém k umístění zdroje.
-- Vyberte **nový** a vytvořte prostředek.
+- Vyberte umístění (oblast), do kterého chcete zdroj umístit.
+- Chcete-li začít vytvářet zdroj, vyberte **možnost Nový.**
 
    ![Vytvoření prostředku](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-Po vytvoření prostředku, webu Azure Portal se zobrazí, že vaše nasazení je kompletní. Klikněte na **Přejít k prostředku**.
+Po vytvoření prostředku Azure Portal zobrazí, že vaše nasazení je kompletní. Klikněte na **Přejít k prostředku**.
 
-![Nasazení dokončeno](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
+![Dokončené nasazení](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
 
-Pak můžete zobrazit vlastnosti prostředku. Zkopírujte resource **ID účtu** hodnoty do textového editoru, protože ho budete potřebovat později.
+Potom můžete zobrazit vlastnosti prostředku. Zkopírujte hodnotu **ID účtu** prostředku do textového editoru, protože ji budete později potřebovat.
 
-   ![Vlastnosti prostředku](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
+   ![Vlastnosti prostředků](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 
-V části **nastavení**vyberte **klíč**. Kopírovat **primární klíč** hodnoty do textového editoru. Tato hodnota je `Account Key`. Budete ho potřebovat později.
+V části **Nastavení**vyberte **Klávesa**. Zkopírujte hodnotu **primárního klíče** do textového editoru. Tato hodnota `Account Key`je . Budete ho potřebovat později.
 
    ![Klíč účtu](./media/spatial-anchors-get-started-create-resource/view-account-key.png)

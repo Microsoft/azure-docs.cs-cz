@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření a použití disků pro škálované sady s Azure PowerShell
+title: Kurz – vytváření a používání disků pro škálovací sady pomocí Azure PowerShellu
 description: Zjistěte, jak pomocí Azure PowerShellu vytvořit a používat spravované disky se škálovacími sadami virtuálních počítačů, včetně přidání, přípravy, výpisu a odpojení disků.
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278261"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure PowerShellu
@@ -26,7 +26,7 @@ ms.locfileid: "76278261"
 > * Výkon disků
 > * Připojení a příprava datových disků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -44,9 +44,9 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 | Typ | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
 |----|----|----|
 | [Obecné účely](../virtual-machines/windows/sizes-general.md) | Řady A, B a D | 1600 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md) | F Series | 576 |
+| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md) | Řada F | 576 |
 | [Optimalizované z hlediska paměti](../virtual-machines/windows/sizes-memory.md) | Řady D, E, G a M | 6144 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/windows/sizes-storage.md) | L Series | 5630 |
+| [Optimalizované z hlediska úložiště](../virtual-machines/windows/sizes-storage.md) | Řada L | 5630 |
 | [GPU](../virtual-machines/windows/sizes-gpu.md) | Řada N | 1440 |
 | [Vysoký výkon](../virtual-machines/windows/sizes-hpc.md) | Řady A a H | 2000 |
 
@@ -58,9 +58,9 @@ Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další
 | Typ | Běžné velikosti | Maximum datových disků na virtuální počítač |
 |----|----|----|
 | [Obecné účely](../virtual-machines/windows/sizes-general.md) | Řady A, B a D | 64 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md) | F Series | 64 |
+| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md) | Řada F | 64 |
 | [Optimalizované z hlediska paměti](../virtual-machines/windows/sizes-memory.md) | Řady D, E, G a M | 64 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/windows/sizes-storage.md) | L Series | 64 |
+| [Optimalizované z hlediska úložiště](../virtual-machines/windows/sizes-storage.md) | Řada L | 64 |
 | [GPU](../virtual-machines/windows/sizes-gpu.md) | Řada N | 64 |
 | [Vysoký výkon](../virtual-machines/windows/sizes-hpc.md) | Řady A a H | 64 |
 
@@ -77,7 +77,7 @@ Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou laten
 ### <a name="premium-disk-performance"></a>Výkon disků Premium
 |Typ disku pro Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
+| Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
 | Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 120 | 240 | 500 | 2 300 | 5 000 | 7 500 | 7 500 |
 Propustnost / disk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
@@ -88,9 +88,9 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
-Vytvořte sadu škálování virtuálního počítače pomocí [New-AzVmss](/powershell/module/az.compute/new-azvmss). Po zobrazení výzvy zadejte uživatelské jméno a heslo pro instance virtuálních počítačů. Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985.
+Vytvořte škálovací sadu virtuálních strojů s [novou AzVmss](/powershell/module/az.compute/new-azvmss). Po zobrazení výzvy zadejte uživatelské jméno a heslo pro instance virtuálních počítačů. Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985.
 
-Pomocí parametru `-DataDiskSizeGb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
+Pomocí parametru `-DataDiskSizeGb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *je 128* GB. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -108,7 +108,7 @@ New-AzVmss `
 Vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Připojení disku k existující škálovací sadě
-Disky můžete připojit také k existující škálovací sadě. Pomocí sady škálování vytvořené v předchozím kroku přidejte další disk pomocí [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk). Následující příklad připojí k existující škálovací sadě další *128*GB disk:
+Disky můžete připojit také k existující škálovací sadě. Pomocí škálovací sady vytvořené v předchozím kroku můžete přidat další disk pomocí [aplikace Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk). Následující příklad připojí k existující škálovací sadě další *128*GB disk:
 
 ```azurepowershell-interactive
 # Get scale set object
@@ -137,7 +137,7 @@ Disky, které se vytvoří a připojí k instancím virtuálních počítačů v
 K automatizaci tohoto procesu napříč několika instancemi virtuálních počítačů ve škálovací sadě můžete použít rozšíření vlastních skriptů Azure. Toto rozšíření může na jednotlivých instancích virtuálních počítačů místně spouštět skripty, například pro přípravu připojených datových disků. Další informace najdete v tématu [Přehled rozšíření vlastních skriptů](../virtual-machines/windows/extensions-customscript.md).
 
 
-Následující příklad spustí skript z ukázkového úložiště GitHubu na každé instanci virtuálního počítače s [doplňkem Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) , který připraví všechny nezpracované připojené datové disky:
+Následující příklad spustí skript z ukázkového úložiště GitHubu na každé instanci virtuálního počítače s [add-AzVmssExtension,](/powershell/module/az.compute/Add-AzVmssExtension) který připraví všechny nezpracované připojené datové disky:
 
 
 ```azurepowershell-interactive
@@ -169,7 +169,7 @@ Update-AzVmss `
 
 Pokud chcete potvrdit, že se disky správně připravily, připojte se přes RDP k některé z instancí virtuálních počítačů. 
 
-Nejprve získejte objekt nástroje pro vyrovnávání zatížení pomocí [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Pak zobrazte pravidla příchozího překladu adres (NAT) pomocí [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig). V seznamu pravidel překladu adres bude u jednotlivých instancí virtuálních počítačů uvedený port *FrontendPort*, na kterém naslouchá protokol RDP. Nakonec Získejte veřejnou IP adresu nástroje pro vyrovnávání zatížení pomocí příkazu [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
+Nejprve získejte objekt vykladače zatížení pomocí [get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Potom zobrazte příchozí pravidla NAT pomocí [get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig). V seznamu pravidel překladu adres bude u jednotlivých instancí virtuálních počítačů uvedený port *FrontendPort*, na kterém naslouchá protokol RDP. Nakonec získejte veřejnou IP adresu vykladače zatížení s [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
 
 
 ```azurepowershell-interactive
@@ -241,7 +241,7 @@ Ukončete relaci připojení ke vzdálené ploše instance virtuálního počít
 
 
 ## <a name="list-attached-disks"></a>Výpis připojených disků
-Chcete-li zobrazit informace o discích připojených k sadě škálování, použijte [příkaz Get-AzVmss](/powershell/module/az.compute/get-azvmss) následujícím způsobem:
+Chcete-li zobrazit informace o discích připojených k škálovací sadě, použijte [get-azvmss](/powershell/module/az.compute/get-azvmss) následujícím způsobem:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
@@ -275,7 +275,7 @@ DataDisks[2]                            :
 
 
 ## <a name="detach-a-disk"></a>Odpojení disku
-Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. Pokud chcete odpojit disk od sady škálování, použijte [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) a zadejte logickou jednotku disku. Logické jednotky (LUN) se zobrazí ve výstupu z [Get-AzVmss](/powershell/module/az.compute/get-azvmss) v předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *3*:
+Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. Chcete-li odpojit disk od škálovací sady, použijte [nástroj Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) a zadejte logickou jednotku disku. Luny jsou zobrazeny ve výstupu z [Get-AzVmss](/powershell/module/az.compute/get-azvmss) v předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *3*:
 
 ```azurepowershell-interactive
 # Get scale set object
@@ -297,7 +297,7 @@ Update-AzVmss `
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete odebrat sadu škálování a disky, odstraňte skupinu prostředků a všechny její prostředky pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
+Chcete-li odebrat škálovací sadu a disky, odstraňte skupinu prostředků a všechny její prostředky pomocí [skupiny Remove-AzResourcesGroup](/powershell/module/az.resources/remove-azresourcegroup). Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

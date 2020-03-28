@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure CLI – připojení a použití datových disků
-description: Tento skript vytvoří sadu škálování virtuálního počítače Azure a připojí a připraví datové disky pomocí Azure CLI.
+title: Ukázky příkazového příkazového příkazu Azure – připojení a použití datových disků
+description: Tento skript vytvoří škálovací sadu virtuálních počítačů Azure a připojí a připraví datové disky pomocí azure CLI.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6243899183bfbdf07aa9417d654e62b4b6cb548a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277668"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>Připojení a použití datových disků se škálovací sadou virtuálních počítačů pomocí Azure CLI

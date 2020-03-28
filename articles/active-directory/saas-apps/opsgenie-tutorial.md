@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s použitím OpsGenie | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a použitím OpsGenie.
+title: 'Kurz: Integrace služby Azure Active Directory s OpsGenie | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a OpsGenie.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,224 +16,224 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 446ac54d84f7b2b3bf3aaf6eaf5536f0dfb804fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095752"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Kurz: Integrace Azure Active Directory s použitím OpsGenie
+# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Kurz: Integrace služby Azure Active Directory s OpsGenie
 
-V tomto kurzu se dozvíte, jak integrovat použitím OpsGenie s Azure Active Directory (Azure AD).
-Použitím OpsGenie integraci se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat OpsGenie s Azure Active Directory (Azure AD).
+Integrace OpsGenie s Azure AD vám poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k použitím OpsGenie.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k použitím OpsGenie (Single Sign-On) pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k OpsGenie.
+* Můžete povolit uživatelům, aby se automaticky přihlásili k OpsGenie (jednotné přihlášení) s jejich účty Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s použitím OpsGenie, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s OpsGenie, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Použitím OpsGenie jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné opsGenie s povoleným jedním přihlášením
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje použitím OpsGenie **SP** jednotné přihlašování zahájené pomocí
+* OpsGenie podporuje **SP** iniciované SSO
 
-## <a name="adding-opsgenie-from-the-gallery"></a>Přidání použitím OpsGenie z Galerie
+## <a name="adding-opsgenie-from-the-gallery"></a>Přidání OpsGenie z galerie
 
-Konfigurace integrace použitím OpsGenie do služby Azure AD, budete muset přidat použitím OpsGenie z Galerie na váš seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci OpsGenie do Azure AD, musíte přidat OpsGenie z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat použitím OpsGenie z galerie, postupujte následovně:**
+**Chcete-li přidat OpsGenie z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **použitím OpsGenie**vyberte **použitím OpsGenie** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **OpsGenie**, z panelu výsledků vyberte **OpsGenie** a pak klepněte na tlačítko **Přidat** a přidejte aplikaci.
 
-     ![Použitím OpsGenie v seznamu výsledků](common/search-new-app.png)
+     ![OpsGenie v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části, nakonfigurovat a otestovat Azure AD jednotné přihlašování s použitím OpsGenie podle testu uživateli **B. Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v použitím OpsGenie.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí OpsGenie na základě testovacího uživatele s názvem **B. Simon**.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v OpsGenie.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s použitím OpsGenie, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí OpsGenie, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace použitím OpsGenie Single Sign-On](#configure-opsgenie-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s B. Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit B. Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele použitím OpsGenie](#create-opsgenie-test-user)**  – Pokud chcete mít protějšek B. Simon v použitím OpsGenie, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování OpsGenie](#configure-opsgenie-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s B. Simon.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li b. Simonovi povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte uživatele testu OpsGenie](#create-opsgenie-test-user)** – chcete-li mít protějšek B. Simon v OpsGenie, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s použitím OpsGenie, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí OpsGenie, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **použitím OpsGenie** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [webu Azure Portal](https://portal.azure.com/)vyberte na stránce integrace aplikací **OpsGenie** **možnost Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Použitím OpsGenie domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
+    ![OpsGenie Domény a adresy URL jednotné přihlašovací informace](common/sp-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://app.opsgenie.com/auth/login`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL:`https://app.opsgenie.com/auth/login`
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na tlačítko Kopírovat, chcete-li zkopírovat **adresu URL metadat federace aplikací** a uložit ji do počítače.
 
     ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
-6. Na **nastavení použitím OpsGenie** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit OpsGenie** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-opsgenie-single-sign-on"></a>Konfigurace přihlašování jedním použitím OpsGenie
+### <a name="configure-opsgenie-single-sign-on"></a>Konfigurace jednotného přihlašování OpsGenie
 
-1. Otevřete jiná instance prohlížeče a potom přihlásit k použitím OpsGenie jako správce.
+1. Otevřete jinou instanci prohlížeče a přihlaste se k OpsGenie jako správce.
 
-2. Klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **Single Sign On** kartu.
+2. Klikněte na **Nastavení**a potom klikněte na kartu **Jednotné přihlášení.**
    
-    ![OpsGenie Single Sign-On](./media/opsgenie-tutorial/tutorial_opsgenie_06.png)
+    ![Jednotné přihlašování OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_06.png)
 
-3. Pokud chcete povolit jednotné přihlašování, vyberte **povoleno**.
+3. Chcete-li povolit službu SSO, vyberte **Možnost Povoleno**.
    
-    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
+    ![Operační nastavení](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
 
-4. V **poskytovatele** klikněte na tlačítko **Azure Active Directory** kartu.
+4. V části **Zprostředkovatel** klikněte na kartu **Azure Active Directory.**
    
-    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
+    ![Operační nastavení](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
 
-5. Na stránce dialogové okno Azure Active Directory proveďte následující kroky:
+5. Na stránce dialogového okna Služby Azure Active Directory proveďte následující kroky:
    
-    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
+    ![Operační nastavení](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a. V **koncový bod SAML 2.0** vložit do textového pole **přihlašovací adresa URL**hodnotu, která jste zkopírovali z portálu Azure portal.
+    a. V textovém poli **koncový bod SAML 2.0** vložte hodnotu **přihlašovací adresy URL,** kterou jste zkopírovali z portálu Azure.
     
-    b. V **adresa Url metadat:** vložit do textového pole **adresa Url federačních metadat aplikace** hodnotu, která jste zkopírovali z portálu Azure portal.
+    b. V textovém poli **Url metadat:** vložte hodnotu **url metadat federace aplikace,** kterou jste zkopírovali z portálu Azure.
     
-    c. Klikněte na tlačítko **uložit změny**.
+    c. Klikněte na **Save Changes** (Uložit změny).
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá B. Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem B. Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **B. Simon**.
+    a. Do pole **Název** zadejte **B. Simon**.
   
-    b. V **uživatelské jméno** typ pole **bsimon@yourcompanydomain.extension**  
+    b. V poli **Uživatelské jméno** typ pole**bsimon@yourcompanydomain.extension**  
     Například BSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon používat jednotné přihlašování Azure díky udělení přístupu použitím OpsGenie.
+V této části povolíte B. Simon používat Azure jednotné přihlašování udělením přístupu k OpsGenie.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **použitím OpsGenie**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **OpsGenie**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **použitím OpsGenie**.
+2. V seznamu aplikací vyberte **OpsGenie**.
 
-    ![Použitím OpsGenie odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz OpsGenie v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **B. Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **b. Simon** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-opsgenie-test-user"></a>Vytvořit testovacího uživatele použitím OpsGenie
+### <a name="create-opsgenie-test-user"></a>Vytvořit uživatele opsGenie testu
 
-Cílem této části je vytvořte uživatele B. Simon v použitím OpsGenie. 
+Cílem této části je vytvořit uživatele s názvem B. Simon v OpsGenie. 
 
-1. V okně webového prohlížeče Přihlaste se jako správce tenanta použitím OpsGenie.
+1. V okně webového prohlížeče se přihlaste ke svému tenantovi OpsGenie jako správce.
 
-2. Přejděte do seznamu uživatelů kliknutím **uživatelé** v levém panelu.
+2. Kliknutím na **Položku Uživatelé** v levém panelu přejděte do seznamu Uživatelé.
    
-    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
+    ![Operační nastavení](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
 
-3. Klikněte na tlačítko **přidat uživatele**.
+3. Klikněte na **Add User** (Přidat uživatele).
 
-4. Na **přidat uživatele** dialogového okna, proveďte následující kroky:
+4. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
    
-    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
+    ![Operační nastavení](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-    a. V **e-mailu** textového pole zadejte e-mailovou adresu B. Simon zákazníky a vyřešené v Azure Active Directory.
+    a. Do textového pole **E-mail** zadejte e-mailovou adresu B. Simona adresovo v Azure Active Directory.
    
-    b. V **jméno a příjmení** textové pole, typ **B. Simon**.
+    b. Do textového pole **Celé jméno** zadejte **B. Simon**.
    
     c. Klikněte na **Uložit**. 
 
 >[!NOTE]
->B. Simon dostane e-mail s pokyny pro nastavení svůj profil.
+>B. Simon dostane e-mail s pokyny pro nastavení jejich profilu.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici použitím OpsGenie na přístupovém panelu, vám by měl být automaticky přihlášeni ke použitím OpsGenie, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici OpsGenie na přístupovém panelu, by měl být automaticky přihlášeni k OpsGenie, pro které nastavíte přihlašující. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

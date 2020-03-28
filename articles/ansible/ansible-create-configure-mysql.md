@@ -5,17 +5,17 @@ keywords: ansible, azure, devops, bash, playbook, mysql, database
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78247875"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Kurz: Konfigurace databází v Azure Database for MySQL pomocí Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-[Azure Database for MySQL](/azure/mysql/overview) je relační databázová služba založená na edici MySQL Community Edition. Azure Database for MySQL vám umožní spravovat databáze MySQL ve vašich webových aplikacích.
+[Azure Database for MySQL](/azure/mysql/overview) je relační databázová služba založená na mysql community edition. Azure Database for MySQL umožňuje spravovat databáze MySQL ve vašich webových aplikacích.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -23,19 +23,19 @@ ms.locfileid: "78247875"
 >
 > * Vytvoření serveru MySql
 > * Vytvoření databáze MySql
-> * Nakonfigurujte pravidlo brány firewall tak, aby se externí aplikace mohla připojit k vašemu serveru.
-> * Připojte se k serveru MySql z Azure Cloud Shell
+> * Konfigurace pravidla brány firewall tak, aby se externí aplikace mohla připojit k vašemu serveru
+> * Připojení k serveru MySql z prostředí Azure Cloud Shell
 > * Dotaz na dostupné servery MySQL
-> * Vypíše všechny databáze na připojených serverech.
+> * Seznam všech databází na připojených serverech
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Kód PlayBook v této části vytvoří skupinu prostředků Azure. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.  
+Kód playbooku v této části vytvoří skupinu prostředků Azure. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.  
 
 Uložte následující ukázkový playbook jako `rg.yml`:
 
@@ -51,12 +51,12 @@ Uložte následující ukázkový playbook jako `rg.yml`:
         location: "{{ location }}"
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
+Před spuštěním playbooku se podívejte na následující poznámky:
 
-* Vytvoří se skupina prostředků s názvem `myResourceGroup`.
-* Skupina prostředků se vytvoří v umístění `eastus`:
+* Je vytvořena `myResourceGroup` skupina prostředků s názvem.
+* Skupina prostředků je vytvořena `eastus` v umístění:
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook rg.yml
@@ -64,9 +64,9 @@ ansible-playbook rg.yml
 
 ## <a name="create-a-mysql-server-and-database"></a>Vytvoření serveru a databáze MySQL
 
-Kód PlayBook v této části vytvoří server MySQL a instanci Azure Database for MySQL. Nový server MySQL je server pro základní účely s jednou vCore a má název `mysqlserveransible`. Instance databáze má název `mysqldbansible`.
+Playbook kód v této části vytvoří server MySQL a Azure Database for MySQL instance. Nový MySQL server je Gen 5 Základní účel server `mysqlserveransible`s jedním vCore a je pojmenován . Instance databáze je `mysqldbansible`pojmenována .
 
-Další informace o cenových úrovních najdete v tématu [Azure Database for MySQL cenové úrovně](/azure/mysql/concepts-pricing-tiers). 
+Další informace o cenových úrovních najdete v [tématu Azure Database for MySQL pricing tiers](/azure/mysql/concepts-pricing-tiers). 
 
 Uložte následující ukázkový playbook jako `mysql_create.yml`:
 
@@ -100,12 +100,12 @@ Uložte následující ukázkový playbook jako `mysql_create.yml`:
         name: "{{ mysqldb_name }}"
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
+Před spuštěním playbooku se podívejte na následující poznámky:
 
-* V části `vars` musí být hodnota `mysqlserver_name` jedinečná.
-* V části `vars` nahraďte `<server_admin_password>` heslem.
+* V `vars` části `mysqlserver_name` musí být hodnota jedinečné.
+* V `vars` části nahraďte `<server_admin_password>` heslem.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook mysql_create.yml
@@ -113,9 +113,9 @@ ansible-playbook mysql_create.yml
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurace pravidla brány firewall
 
-Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci připojit se k vašemu serveru prostřednictvím brány firewall služby Azure MySQL. Příklady externích aplikací jsou `mysql` nástroje příkazového řádku a MySQL Workbench.
+Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci připojit se k serveru prostřednictvím brány firewall služby Azure MySQL. Příklady externích aplikací `mysql` jsou nástroj příkazového řádku a MySQL Workbench.
 
-Kód PlayBook v této části vytvoří pravidlo brány firewall s názvem `extenalaccess`, které umožňuje připojení z jakékoli externí IP adresy. 
+Kód playbooku v této části `extenalaccess` vytvoří pravidlo brány firewall s názvem, které umožňuje připojení z libovolné externí adresy IP. 
 
 Uložte následující ukázkový playbook jako `mysql_firewall.yml`:
 
@@ -141,13 +141,13 @@ Uložte následující ukázkový playbook jako `mysql_firewall.yml`:
           endIpAddress: "255.255.255.255"
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
+Před spuštěním playbooku se podívejte na následující poznámky:
 
-* V části proměnných nahraďte `startIpAddress` a `endIpAddress`. Použijte rozsah IP adres, které odpovídají rozsahu, ze kterého se budete připojovat.
+* V části vars `startIpAddress` vyměňte a `endIpAddress`. Použijte rozsah IP adres, které odpovídají rozsahu, ze kterého se budete připojovat.
 * Připojení ke službě Azure Database for MySQL komunikují přes port 3306. Pokud se pokoušíte připojit z podnikové sítě, odchozí provoz přes port 3306 nemusí být povolený. V takovém případě se k serveru nemůžete připojit, dokud vaše IT oddělení neotevře port 3306.
-* PlayBook používá modul `azure_rm_resource`, který umožňuje přímé použití REST API.
+* Playbook používá `azure_rm_resource` modul, který umožňuje přímé použití ROZHRANÍ REST API.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook mysql_firewall.yml
@@ -155,11 +155,11 @@ ansible-playbook mysql_firewall.yml
 
 ## <a name="connect-to-the-server"></a>Připojení k serveru
 
-V této části použijete Azure Cloud Shell k připojení k serveru, který jste vytvořili dříve.
+V této části použijete Azure Cloud Shell pro připojení k serveru, který jste vytvořili dříve.
 
 1. Otevřete shell.azure.com výběrem níže.
 
-   [![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
+   [![Spuštění vložení](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
 1. Zadejte následující kód:
 
@@ -167,13 +167,13 @@ V této části použijete Azure Cloud Shell k připojení k serveru, který jst
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
-1. Na příkazovém řádku zadejte následující příkaz pro dotaz na stav serveru:
+1. Na řádku zadejte následující příkaz pro dotazování na stav serveru:
 
     ```sql
     mysql> status
     ```
     
-    Pokud bude vše v dobrém, zobrazí se výstup podobný následujícímu výsledku:
+    Pokud vše půjde dobře, zobrazí se výstup podobný následujícím výsledkům:
     
     ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
@@ -215,9 +215,9 @@ V této části použijete Azure Cloud Shell k připojení k serveru, který jst
     --------------
     ```
     
-## <a name="query-mysql-servers"></a>Dotazování serverů MySQL
+## <a name="query-mysql-servers"></a>Dotaz na servery MySQL
 
-Kód PlayBook v této části se dotazuje na servery MySQL v `myResourceGroup` a vypíše databáze na nalezených serverech.
+Playbook kód v této části dotazy `myResourceGroup` MySQL servery a seznam databází na nalezených serverech.
 
 Uložte následující ukázkový playbook jako `mysql_query.yml`:
 
@@ -247,13 +247,13 @@ Uložte následující ukázkový playbook jako `mysql_query.yml`:
         var: mysqldatabasefacts
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook mysql_query.yml
 ```
 
-Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
+Po spuštění playbooku se zobrazí výstup podobný následujícím výsledkům:
 
 ```json
 "servers": [
@@ -278,7 +278,7 @@ Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
 ]
 ```
 
-Také se zobrazí následující výstup databáze MySQL:
+Zobrazí se také následující výstup pro databázi MySQL:
 
 ```json
 "databases": [
@@ -315,7 +315,7 @@ Také se zobrazí následující výstup databáze MySQL:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku. 
 
 Uložte následující ukázkový playbook jako `cleanup.yml`:
 
@@ -330,7 +330,7 @@ Uložte následující ukázkový playbook jako `cleanup.yml`:
         state: absent
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook cleanup.yml

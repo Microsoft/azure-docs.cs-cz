@@ -1,5 +1,5 @@
 ---
-title: Použití revizí k bezpečnému provedení nevýznamných změn v API Management
+title: Bezpečné provádění nenarušujících změn ve správě rozhraní API pomocí revizí
 titleSuffix: Azure API Management
 description: Postupujte podle kroků v tomto kurzu a zjistěte, jak provádět nevýznamné změny s využitím revizí ve službě API Management.
 services: api-management
@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75442754"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Použití revizí k bezpečnému provedení nevýznamných změn
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Přidání nové revize
@@ -50,10 +50,10 @@ V tomto kurzu se naučíte:
 4. Vyberte **+ Přidat revizi**.
 
     > [!TIP]
-    > Můžete také zvolit **Přidat revizi** v místní nabídce ( **...** ) rozhraní API.
+    > Můžete také zvolit **Přidat revizi** v místní nabídce (**...**) rozhraní API.
 
 5. Zadejte popis nové revize, který vám pomůže zapamatovat si, k čemu se bude používat.
-6. Vyberte **Vytvořit**.
+6. Vybrat **vytvořit**
 7. Teď se vytvoří vaše nová revize.
 
     > [!NOTE]
@@ -82,18 +82,18 @@ V tomto kurzu se naučíte:
 
     ![Nabídka Revize na obrazovce Revize](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
 
-2. Otevřete místní nabídku ( **...** ) pro **Revizi 2**.
+2. Otevřete místní nabídku (**...**) pro **Revizi 2**.
 3. Vyberte **Nastavit jako aktuální**.
-4. Zaškrtněte políčko **Odeslat do veřejného protokolu změn pro toto rozhraní API**, pokud chcete odesílat poznámky o této změně. Zadejte popis změny, kterou vývojáři uvidí, například: **testování revizí. Byla přidána nová operace "test".**
+4. Zaškrtněte políčko **Odeslat do veřejného protokolu změn pro toto rozhraní API**, pokud chcete odesílat poznámky o této změně. Zadejte popis změny, které se vývojářům zobrazují, například: **Testování revizí. Přidána nová operace "test".**
 5. **Revize 2** je teď nastavená jako aktuální.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Procházení portálu pro vývojáře a zobrazení změn a protokolu změn
 
-1. Na webu Azure Portal vyberte **Rozhraní API**.
+1. Na webu Azure Portal vyberte **API**.
 2. V horní nabídce vyberte **Portál pro vývojáře**.
 3. Vyberte **Rozhraní API** a pak rozhraní **Demo Conference API**.
 4. Všimněte si, že je teď k dispozici vaše nová operace **test**.
-5. V blízkosti názvu rozhraní API klikněte na protokol **změn** .
+5. Klikněte na **Changelog** poblíž názvu rozhraní API.
 6. Všimněte si, že se v tomto seznamu zobrazí vaše položka protokolu změn.
 
 ## <a name="next-steps"></a>Další kroky

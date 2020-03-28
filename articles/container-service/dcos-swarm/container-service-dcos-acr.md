@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Použití ACR s clusterem DC/OS Azure
+title: (ZASTARALÉ) Použití acr s clusterem Azure DC/OS
 description: Použití služby Azure Container Registry s clusterem DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 9e69b66c7cee5a6e012ad7ed2477556fa840bfb5
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402067"
 ---
-# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>ZASTARALÉ Nasazení aplikace pomocí ACR s clusterem DC/OS
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(ZASTARALÉ) Nasazení aplikace pomocí acr s clusterem řadiče domény/operačního systému
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -30,7 +30,7 @@ V tomto článku se podíváme na to, jak používat službu Azure Container Reg
 
 K provedení kroků v tomto kurzu potřebujete cluster DC/OS ACS. V případě potřeby si ho můžete nechat vytvořit pomocí [tohoto ukázkového skriptu](./../kubernetes/scripts/container-service-cli-deploy-dcos.md).
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -127,7 +127,7 @@ Vytvořte kontejner z image Ubuntu.
 docker run ubuntu --name base-image
 ```
 
-Potom kontejner zachyťte do nové image. Název bitové kopie musí zahrnovat `loginServer` název registru kontejneru s formátem `loginServer/imageName`.
+Potom kontejner zachyťte do nové image. Název bitové kopie `loginServer` musí obsahovat název registru `loginServer/imageName`kontejnerů ve formátu .
 
 ```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo

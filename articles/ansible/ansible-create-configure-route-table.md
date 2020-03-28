@@ -1,27 +1,27 @@
 ---
-title: Kurz – konfigurace směrovacích tabulek Azure pomocí Ansible
-description: Naučte se vytvářet, spravovat a odstraňovat směrovací tabulky Azure pomocí Ansible. Také se dozvíte, jak vytvořit a odstranit trasy.
-keywords: Ansible, Azure, DevOps, bash, PlayBook, sítě, směrování, směrovací tabulka
+title: Kurz – konfigurace směrovacích tabulek Azure pomocí ansible
+description: Naučte se vytvářet, spravovat a odstraňovat tabulky směrování Azure pomocí Ansible. Také se dozvíte, jak vytvářet a odstraňovat trasy.
+keywords: ansible, azurové, devops, bash, playbook, networking, trasa, směrovací stůl
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 1f08aebe7e9dcc1c5687f50ac91c7cb8cc8a62eb
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75659793"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Kurz: Konfigurace směrovacích tabulek Azure pomocí Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
-Azure automaticky směruje provoz mezi podsítěmi Azure, virtuálními sítěmi a místními sítěmi. Pokud potřebujete větší kontrolu nad směrováním vašeho prostředí, můžete vytvořit [směrovací tabulku](/azure/virtual-network/virtual-networks-udr-overview). 
+Azure automaticky směruje provoz mezi podsítěmi Azure, virtuálními sítěmi a místními sítěmi. Pokud potřebujete větší kontrolu nad směrováním prostředí, můžete vytvořit [směrovací tabulku](/azure/virtual-network/virtual-networks-udr-overview). 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> Vytvoření směrovací tabulky vytvoření virtuální sítě a podsítě přidružení směrovací tabulky k podsíti zrušení přidružení směrovací tabulky z podsítě vytvoření a odstranění tras dotazování směrovací tabulky odstranění směrovací tabulky
+> Vytvoření tabulky postupu Vytvoření virtuální sítě a podsítě Přidružení směrovací tabulky k podsíti Zrušení postupu z podsítě Vytvořit a odstranit trasy Dotaz na tabulku postupu Odstranění směrovací tabulky
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,7 +30,7 @@ Azure automaticky směruje provoz mezi podsítěmi Azure, virtuálními sítěmi
 
 ## <a name="create-a-route-table"></a>Vytvoření směrovací tabulky
 
-Kód PlayBook v této části vytvoří směrovací tabulku. Informace o omezeních tabulky trasy najdete v tématu [omezení Azure](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
+Kód playbooku v této části vytvoří směrovací tabulku. Informace o omezeních tabulky tras najdete v tématu [Limity Azure](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
 
 Uložte následující ukázkový playbook jako `route_table_create.yml`:
 
@@ -46,7 +46,7 @@ Uložte následující ukázkový playbook jako `route_table_create.yml`:
         resource_group: "{{ resource_group }}"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook route_table_create.yml
@@ -54,25 +54,25 @@ ansible-playbook route_table_create.yml
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení směrovací tabulky k podsíti
 
-PlayBook kód v této části:
+Playbook kód v této části:
 
-* Vytvoří virtuální síť.
-* Vytvoří podsíť v rámci virtuální sítě.
-* Přidruží směrovací tabulku k podsíti.
+* Vytvoří virtuální síť
+* Vytvoří podsíť ve virtuální síti.
+* Přidružení tabulky postupu k podsíti
 
-Směrovací tabulky nejsou přidružené k virtuálním sítím. Místo toho jsou směrovací tabulky přidruženy k podsíti virtuální sítě.
+Tabulky směrování nejsou přidruženy k virtuálním sítím. Spíše jsou tabulky tras přidruženy k podsíti virtuální sítě.
 
-Tato virtuální síť a tabulka směrování musí existovat ve stejném umístění a předplatném Azure.
+Virtuální síť a směrovací tabulka musí existovat vedle sebe ve stejném umístění Azure a předplatném.
 
-Podsítě a směrovací tabulky mají relaci 1: n. Podsíť může být definovaná bez přidružené směrovací tabulky ani jedné směrovací tabulky. Směrovací tabulky mohou být přidruženy k žádné, jedné nebo mnoha podsítím. 
+Podsítě a směrovací tabulky mají relaci 1:N. Podsíť lze definovat bez přidružené tabulky tras nebo s jednou směrovací tabulkou. Tabulky tras lze přidružit k žádné, jedné nebo mnoha podsítím. 
 
-Provoz z podsítě se směruje na základě těchto požadavků:
+Provoz z podsítě je směrován na základě:
 
-- trasy definované v rámci směrovacích tabulek
+- trasy definované v tabulkách tras
 - [výchozí trasy](/azure/virtual-network/virtual-networks-udr-overview#default)
 - trasy šířené z místní sítě
 
-Virtuální síť musí být připojená k bráně virtuální sítě Azure. Brána může být ExpressRoute nebo VPN, pokud používáte protokol BGP s bránou VPN.
+Virtuální síť musí být připojena k bráně virtuální sítě Azure. Brána může být ExpressRoute, nebo VPN, pokud používáte Protokol BGP s bránou VPN.
 
 Uložte následující ukázkový playbook jako `route_table_associate.yml`:
 
@@ -103,17 +103,17 @@ Uložte následující ukázkový playbook jako `route_table_associate.yml`:
         route_table: "{ route_table_name }"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook route_table_associate.yml
 ```
 
-## <a name="dissociate-a-route-table-from-a-subnet"></a>Zrušení přidružení směrovací tabulky z podsítě
+## <a name="dissociate-a-route-table-from-a-subnet"></a>Odložky směrovací tabulky od podsítě
 
-PlayBook kód v této části dissociates směrovací tabulku z podsítě.
+Kód playbooku v této části odpojí směrovací tabulku od podsítě.
 
-Při ruší směrovací tabulky z podsítě nastavte `route_table` pro `None`podsítě. 
+Při disociaci tabulky tras od podsítě `route_table` nastavte podsíť `None`na . 
 
 Uložte následující ukázkový playbook jako `route_table_dissociate.yml`:
 
@@ -132,7 +132,7 @@ Uložte následující ukázkový playbook jako `route_table_dissociate.yml`:
         address_prefix_cidr: "10.1.0.0/24"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook route_table_dissociate.yml
@@ -140,7 +140,7 @@ ansible-playbook route_table_dissociate.yml
 
 ## <a name="create-a-route"></a>Vytvoření trasy
 
-PlayBook kód v této části trasy v směrovací tabulce. 
+Kód playbooku v této části je postup v rámci směrovací tabulky. 
 
 Uložte následující ukázkový playbook jako `route_create.yml`:
 
@@ -160,12 +160,12 @@ Uložte následující ukázkový playbook jako `route_create.yml`:
         route_table_name: "{{ route_table_name }}"
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
+Před spuštěním playbooku se podívejte na následující poznámky:
 
-* `virtual_network_gateway` je definován jako `next_hop_type`. Další informace o tom, jak Azure vybírá trasy, najdete v tématu [Přehled směrování](/azure/virtual-network/virtual-networks-udr-overview).
-* `address_prefix` je definován jako `10.1.0.0/16`. Předpona nemůže být duplikována v tabulce směrování.
+* `virtual_network_gateway`je definována jako `next_hop_type`. Další informace o tom, jak Azure vybírá trasy, najdete v [tématu Přehled směrování](/azure/virtual-network/virtual-networks-udr-overview).
+* `address_prefix`je definována jako `10.1.0.0/16`. Předponu nelze v tabulce postupu duplikovat.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook route_create.yml
@@ -173,7 +173,7 @@ ansible-playbook route_create.yml
 
 ## <a name="delete-a-route"></a>Odstranění trasy
 
-Kód PlayBook v tomto oddílu Odstraní trasu z směrovací tabulky.
+Kód playbooku v této části odstraní trasu ze směrovací tabulky.
 
 Uložte následující ukázkový playbook jako `route_delete.yml`:
 
@@ -192,15 +192,15 @@ Uložte následující ukázkový playbook jako `route_delete.yml`:
         state: absent
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook route_delete.yml
 ```
 
-## <a name="get-route-table-information"></a>Získat informace o směrovací tabulce
+## <a name="get-route-table-information"></a>Získání informací o tabulce tras
 
-Kód PlayBook v této části používá modul Ansible `azure_rm_routetable_facts` k načtení informací o tabulce směrování.
+Kód playbooku v této části používá `azure_rm_routetable_facts` modul Ansible k načtení informací o směrovací tabulce.
 
 Uložte následující ukázkový playbook jako `route_table_facts.yml`:
 
@@ -220,7 +220,7 @@ Uložte následující ukázkový playbook jako `route_table_facts.yml`:
          var: query.route_tables[0]
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook route_table_facts.yml
@@ -228,11 +228,11 @@ ansible-playbook route_table_facts.yml
 
 ## <a name="delete-a-route-table"></a>Odstranění směrovací tabulky
 
-PlayBook kód v této části a směrovací tabulku.
+Kód playbooku v této části směrovací tabulka.
 
-Při odstranění směrovací tabulky se odstraní také všechny její trasy.
+Při odstranění směrovací tabulky jsou odstraněny také všechny její trasy.
 
-Směrovací tabulku nelze odstranit, pokud je přidružena k podsíti. Před pokusem o odstranění směrovací tabulky zrušte [přidružení směrovací tabulky ze všech podsítí](#dissociate-a-route-table-from-a-subnet) . 
+Směrovací tabulku nelze odstranit, pokud je přidružena k podsíti. [Před pokusem o odstranění směrovací tabulky odkreslujte směrovací tabulku od všech podsítí.](#dissociate-a-route-table-from-a-subnet) 
 
 Uložte následující ukázkový playbook jako `route_table_delete.yml`:
 
@@ -249,7 +249,7 @@ Uložte následující ukázkový playbook jako `route_table_delete.yml`:
         state: absent
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook route_table_delete.yml

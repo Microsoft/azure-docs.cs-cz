@@ -1,28 +1,28 @@
 ---
-title: Kurz – vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service (AKS) pomocí Terraformu
-description: V tomto kurzu vytvoříte cluster Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
-keywords: Azure DevOps terraformu AKS Kubernetes
+title: Kurz – vytvoření clusteru Kubernetes se službou Azure Kubernetes Service (AKS) pomocí Terraform
+description: V tomto kurzu vytvoříte cluster Kubernetes se službou Azure Kubernetes service a Terraform
+keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945296"
 ---
-# <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Kurz: Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Terraformu
+# <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Kurz: Vytvoření clusteru Kubernetes se službou Azure Kubernetes pomocí Terraform
 
-[Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes. AKS umožňuje nasazovat a spravovat aplikace s využitím kontejnerů bez odbornosti pro orchestraci kontejnerů. AKS také umožňuje provádět mnoho běžných operací údržby bez nutnosti převádět aplikaci do offline režimu. Mezi tyto operace patří zřizování, upgradování a škálování prostředků na vyžádání.
+[Služba Azure Kubernetes Service (AKS)](/azure/aks/) spravuje vaše hostované prostředí Kubernetes. AKS umožňuje nasadit a spravovat kontejnerizované aplikace bez odborných znalostí orchestrace kontejnerů. AKS také umožňuje provést mnoho běžných operací údržby bez přepnete aplikaci do režimu offline. Tyto operace zahrnují zřizování, inovace a škálování prostředků na vyžádání.
 
-V tomto kurzu se naučíte, jak provádět následující úlohy:
+V tomto kurzu se dozvíte, jak provést následující úkoly:
 
 > [!div class="checklist"]
 > * Použití HCL (Jazyk společnosti HashiCorp) k definování clusteru Kubernetes
 > * Použití Terraformu a AKS k vytvoření clusteru Kubernetes
 > * Použití nástroje kubectl k otestování dostupnosti clusteru Kubernetes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu pro toto cvičení.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 
@@ -62,7 +62,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `main.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -83,13 +83,13 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="define-a-kubernetes-cluster"></a>Definování clusteru Kubernetes
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro cluster Kubernetes.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `k8s.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `k8s.tf`.
 
     ```bash
     code k8s.tf
@@ -166,17 +166,17 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
     }
     ```
 
-    Předchozí kód nastaví název clusteru, umístění a název skupiny prostředků. Je také nastavená předpona pro plně kvalifikovaný název domény (FQDN). Plně kvalifikovaný název domény se používá pro přístup ke clusteru.
+    Předchozí kód nastaví název clusteru, umístění a název skupiny prostředků. Je také nastavena předpona plně kvalifikovaného názvu domény (FQDN). K přístupu ke clusteru se používá vícenežvizovaný název.
 
-    Záznam `linux_profile` umožňuje nakonfigurovat nastavení, která umožňují přihlašovat se k pracovním uzlům pomocí SSH.
+    Záznam `linux_profile` umožňuje konfigurovat nastavení, která umožňují přihlášení do pracovních uzlů pomocí SSH.
 
-    Se službou AKS platíte jenom za pracovní uzly. Záznam `default_node_pool` nakonfiguruje podrobnosti pro tyto pracovní uzly. `default_node_pool record` obsahuje počet pracovních uzlů, které se mají vytvořit, a typ pracovních uzlů. Pokud potřebujete v budoucnu horizontální navýšení nebo snížení kapacity clusteru, upravte hodnotu `count` v tomto záznamu.
+    Se službou AKS platíte jenom za pracovní uzly. Záznam `default_node_pool` konfiguruje podrobnosti pro tyto pracovní uzly. Obsahuje `default_node_pool record` počet pracovních uzlů, které mají být vytesány, a typ pracovních uzlů. Pokud potřebujete vertikálně navýšit kapacitu nebo vertikálně navýšit kapacitu clusteru v budoucnu, můžete upravit hodnotu `count` v tomto záznamu.
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="declare-the-variables"></a>Deklarování proměnných
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -227,13 +227,13 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
    }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="create-a-terraform-output-file"></a>Vytvoření výstupního souboru Terraformu
 
 [Výstupy Terraformu](https://www.terraform.io/docs/configuration/outputs.html) vám umožňují definovat hodnoty, které se uživateli zvýrazní, když Terraform použije plán a bude možné se na něj dotázat příkazem `terraform output`. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `output.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `output.tf`.
 
     ```bash
     code output.tf
@@ -271,31 +271,31 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Nastavení služby Azure Storage k uložení stavu Terraformu
 
-Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. Tento model funguje dobře v prostředí s jednou osobou. V prostředí s více osobami se ke sledování stavu používá [Azure Storage](/azure/storage/) .
+Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. Tento model funguje dobře v prostředí s jednou osobou. V prostředí pro více osob se [úložiště Azure](/azure/storage/) používá ke sledování stavu.
 
-V této části vidíte, jak provádět následující úlohy:
-- Načíst informace o účtu úložiště (název účtu a klíč účtu)
-- Vytvořte kontejner úložiště, do kterého se budou ukládat informace o stavu Terraformu.
+V této části se zobrazí následující úkoly:
+- Načtení informací o účtu úložiště (název účtu a klíč účtu)
+- Vytvořte kontejner úložiště, do kterého budou uloženy informace o stavu Terraform.
 
 1. Na webu Azure Portal vyberte v levé nabídce **Všechny služby**.
 
 1. Vyberte **Účty úložiště**.
 
-1. Na kartě **Účty úložiště** vyberte název účtu úložiště, do kterého má Terraform ukládat stav. Můžete například použít účet úložiště, který se vytvoří při prvním otevření služby Cloud Shell.  Název účtu úložiště vytvořeného službou Cloud Shell obvykle začíná na `cs` a následuje ho řetězec náhodných čísel a písmen. Poznamenejte si vybraný účet úložiště. Tato hodnota je potřeba později.
+1. Na kartě **Účty úložiště** vyberte název účtu úložiště, do kterého má Terraform ukládat stav. Můžete například použít účet úložiště, který se vytvoří při prvním otevření služby Cloud Shell.  Název účtu úložiště vytvořeného službou Cloud Shell obvykle začíná na `cs` a následuje ho řetězec náhodných čísel a písmen. Poznamenejte si účet úložiště, který vyberete. Tato hodnota je potřeba později.
 
 1. Na kartě účtu úložiště vyberte **Přístupové klíče**.
 
     ![Nabídka účtu úložiště](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. Poznamenejte si hodnotu **klíče** klíč1. (Výběr ikony napravo od klíče zkopíruje příslušnou hodnotu do schránky.)
+1. Poznamenejte si hodnotu **klíče** **key1.** (Výběr ikony napravo od klíče zkopíruje příslušnou hodnotu do schránky.)
 
     ![Přístupové klíče účtu úložiště](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
-1. V Cloud Shell vytvořte kontejner v účtu úložiště Azure. Zástupné symboly nahraďte odpovídajícími hodnotami pro vaše prostředí.
+1. V Cloud Shellu vytvořte kontejner ve svém účtu úložiště Azure. Nahraďte zástupné symboly odpovídajícími hodnotami pro vaše prostředí.
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
@@ -305,17 +305,17 @@ V této části vidíte, jak provádět následující úlohy:
 
 V této části zjistíte, jak použít příkaz `terraform init` k vytvoření prostředků definovaných konfiguračními soubory, které jste vytvořili v předchozích částech.
 
-1. V Cloud Shell inicializujte Terraformu. Zástupné symboly nahraďte odpovídajícími hodnotami pro vaše prostředí.
+1. V prostředí Cloud Shell inicializujte Terraform. Nahraďte zástupné symboly odpovídajícími hodnotami pro vaše prostředí.
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
     
-    Příkaz `terraform init` zobrazuje úspěšnost inicializace modulu plug-in back-end a poskytovatele:
+    Příkaz `terraform init` zobrazuje úspěch inicializace modulu plug-in-in-in-
 
     ![Příklad výsledků příkazu „terraform init“](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. Exportujte své přihlašovací údaje instančního objektu. Zástupné symboly nahraďte odpovídajícími hodnotami z objektu služby.
+1. Exportujte své přihlašovací údaje instančního objektu. Nahraďte zástupné symboly příslušnými hodnotami z instančního objektu.
 
     ```bash
     export TF_VAR_client_id=<service-principal-appid>
@@ -332,7 +332,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform plan“](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Spuštěním příkazu `terraform apply` použijte plán a vytvořte cluster Kubernetes. Proces vytvoření clusteru Kubernetes může trvat několik minut, což vede k vypršení časového limitu relace Cloud Shell. Pokud Cloud Shell časový limit relace, můžete postupovat podle kroků v části obnovení z Cloud Shell časového limitu, který vám umožní dokončit tento kurz.
+1. Spuštěním příkazu `terraform apply` použijte plán a vytvořte cluster Kubernetes. Proces vytvoření clusteru Kubernetes může trvat několik minut, což má za následek vypršení časového limitu prostředí cloudu. Pokud časový čas relace prostředí Cloud, můžete postupovat podle kroků v části "Obnovení z časového úseku cloudového prostředí", abyste mohli dokončit kurz.
 
     ```bash
     terraform apply out.plan
@@ -342,13 +342,13 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform apply“](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. V Azure Portal v nabídce vlevo vyberte **všechny prostředky** , aby se zobrazily prostředky vytvořené pro nový cluster Kubernetes.
+1. Na webu Azure Portal vyberte **Všechny prostředky** v levé nabídce, abyste viděli prostředky vytvořené pro váš nový cluster Kubernetes.
 
-    ![Všechny prostředky v Azure Portal](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
+    ![Všechny prostředky na webu Azure Portal](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Zotavení z vypršení relace služby Cloud Shell
 
-Pokud Cloud Shell vyprší časový limit relace, můžete provést následující kroky k obnovení:
+Pokud časový nebo časový čas relace prostředí Cloud, můžete provést následující kroky k obnovení:
 
 1. Spusťte relaci služby Cloud Shell.
 
@@ -392,9 +392,9 @@ Nově vytvořený cluster můžete pomocí nástrojů Kubernetes ověřit.
 
 ## <a name="monitor-health-and-logs"></a>Monitorování stavu a protokolů
 
-Při vytvoření clusteru AKS se povolilo monitorování za účelem zachycování metrik stavu podů i uzlů clusteru. Tyto metriky stavu jsou k dispozici na webu Azure Portal. Další informace o monitorování stavu kontejnerů najdete v tématu [monitorování stavu služby Azure Kubernetes](/azure/azure-monitor/insights/container-insights-overview).
+Při vytvoření clusteru AKS se povolilo monitorování za účelem zachycování metrik stavu podů i uzlů clusteru. Tyto metriky stavu jsou k dispozici na webu Azure Portal. Další informace o monitorování stavu clusteru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service](/azure/azure-monitor/insights/container-insights-overview).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Další informace o používání Terraformu v Azure](/azure/terraform)
+> [Další informace o používání Terraform v Azure](/azure/terraform)

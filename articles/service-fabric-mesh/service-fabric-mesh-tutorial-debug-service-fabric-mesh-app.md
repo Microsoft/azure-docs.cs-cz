@@ -1,5 +1,5 @@
 ---
-title: Ladění webové aplikace sítě v Azure Service Fabric spuštěné místně
+title: Ladění webové aplikace Azure Service Fabric Mesh spuštěné místně
 description: V tomto kurzu se dozvíte, jak ladit aplikaci Azure Service Fabric Mesh, která je spuštěná v místním clusteru.
 author: dkkapur
 ms.topic: tutorial
@@ -7,17 +7,17 @@ ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75494960"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Kurz: Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj
 
 V tomto kurzu, který je druhou částí série, se dozvíte, jak sestavit a ladit aplikaci Azure Service Fabric Mesh v místním vývojovém clusteru.
 
-V tomto kurzu se naučíte:
+V tomto tutoriálu se naučíte:
 
 > [!div class="checklist"]
 > * Co se stane, když sestavíte aplikaci Azure Service Fabric Mesh
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Vytvořit aplikaci Service Fabric Mesh v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Vytvoření aplikace Service Fabric Mesh v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
 > * Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj
 > * [Nasadit aplikaci Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
@@ -37,13 +37,13 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud ještě nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Pokud nemáte předplatné Azure, můžete [si vytvořit bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 * Ujistěte se, že jste [nastavili vývojové prostředí](service-fabric-mesh-howto-setup-developer-environment-sdk.md), což zahrnuje instalaci modulu runtime Service Fabric, sady SDK, Dockeru a sady Visual Studio 2017.
 
 ## <a name="download-the-to-do-sample-application"></a>Stažení ukázkové aplikace pro seznam úkolů
 
-Pokud jste v [první části této série kurzů](service-fabric-mesh-tutorial-create-dotnetcore.md)nevytvořili ukázkovou aplikaci k tomu, můžete si ji stáhnout. V příkazovém okně naklonujte spuštěním následujícího příkazu úložiště ukázkové aplikace do místního počítače.
+Pokud jste nevytvořili ukázkovou aplikaci pro provedení práce v [první části této série kurzů](service-fabric-mesh-tutorial-create-dotnetcore.md), můžete si ji stáhnout. V příkazovém okně naklonujte spuštěním následujícího příkazu úložiště ukázkové aplikace do místního počítače.
 
 ```
 git clone https://github.com/azure-samples/service-fabric-mesh
@@ -67,11 +67,11 @@ Až se místní nasazení dokončí a Visual Studio spustí vaši aplikaci, otev
 
 ## <a name="debugging-tips"></a>Tipy pro ladění
 
-Udělejte první běh ladění (F5) mnohem rychleji pomocí pokynů v tématu [optimalizace výkonu sady Visual Studio](service-fabric-mesh-howto-optimize-vs.md).
+Proveďte svůj první ladění spustit (F5) mnohem rychleji podle pokynů v [optimalizaci výkonu sady Visual Studio](service-fabric-mesh-howto-optimize-vs.md).
 
-V současné době je problém, který způsobí, že se volání `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` nezdaří připojit ke službě. Může k tomu dojít, kdykoli se změní IP adresa hostitele. Řešení je následující:
+V současné době je problém, který `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` způsobí, že volání nezdaří připojení ke službě. Může k tomu dojít, kdykoli se změní IP adresa hostitele. Řešení je následující:
 
-1. Odeberte aplikaci z místního clusteru (v sadě Visual Studio vyberte **Sestavení** > **Vyčistit řešení**).
+1. Odeberte aplikaci z místního clusteru (v sadě Visual Studio, **sestavení** > **čistého řešení).**
 2. V nástroji Service Fabric Local Cluster Manager vyberte **Stop Local CLuster** (Zastavit místní cluster) a pak **Start Local Cluster** (Spustit místní cluster).
 3. Znovu nasaďte aplikaci (v sadě Visual Studio stiskněte **F5**).
 
@@ -83,16 +83,16 @@ Pokud se zobrazí chyby sestavení v **service.yaml**, zkontrolujte, že se k od
 
 ### <a name="debug-in-visual-studio"></a>Ladění v sadě Visual Studio
 
-Při ladění aplikace Service Fabric sítě v aplikaci Visual Studio používáte místní cluster pro vývoj Service Fabric. Pokud chcete zobrazit, jak se položky úkolů načítají z back-endové služby, zaměřte se při ladění na metodu OnGet().
-1. V projektu **webendu** otevřete **stránky** > **index. cshtml** > **index.cshtml.cs** a nastavte zarážku v metodě **OnGet** (řádek 17).
+Při ladění aplikace service fabric sítě v sadě Visual Studio, používáte místní service fabric vývoj clusteru. Pokud chcete zobrazit, jak se položky úkolů načítají z back-endové služby, zaměřte se při ladění na metodu OnGet().
+1. V projektu **WebFrontEnd** otevřete **stránky** > **Index.cshtml** > **Index.cshtml.cs** a nastavte zarážku v **OnGet** metoda (řádek 17).
 2. V projektu **ToDoService** otevřete **TodoController.cs** a nastavte zarážku v metodě **Get** (řádek 15).
 3. Vraťte se do prohlížeče a aktualizujte stránku. Dostanete se k zarážce v metodě `OnGet()` front-endu. Můžete se podívat na proměnnou `backendUrl`, abyste zjistili, jak se proměnné prostředí definované v souboru **service.yaml** zkombinují do adresy URL, která se používá ke kontaktování back-endové služby.
 4. Vynechejte (F10) volání `client.GetAsync(backendUrl).GetAwaiter().GetResult())` a dostanete se k zarážce `Get()` kontroleru. V této metodě můžete vidět, jak se seznam položek úkolů načítá ze seznamu v paměti.
-5. Až budete hotovi, ukončete ladění projektu v aplikaci Visual Studio stisknutím **SHIFT + F5**.
+5. Až budete hotovi, přestaňte ladit projekt v sadě Visual Studio stisknutím **Shift+F5**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V této části kurzu jste se naučili:
+V této části kurzu jste se dozvěděli:
 
 > [!div class="checklist"]
 > * Co se stane, když sestavíte aplikaci Azure Service Fabric Mesh

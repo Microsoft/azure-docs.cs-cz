@@ -1,29 +1,29 @@
 ---
-title: Kurz – vytvoření clusteru virtuálních počítačů Azure s Terraformu pomocí registru modulu
-description: V tomto kurzu použijete moduly Terraformu k vytvoření clusteru virtuálních počítačů s Windows v Azure.
-keywords: registr modulu clusteru virtuálních počítačů Azure DevOps terraformu
+title: Kurz – vytvoření clusteru virtuálních počítačích Azure s Terraform pomocí registru modulu
+description: V tomto kurzu použijete moduly Terraform k vytvoření clusteru virtuálních strojů Windows v Azure
+keywords: Azure Devops terraform vm registry modulu clusteru virtuálního počítače
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 9faeee9bb2f0fb6dc148a3868f6fc0dae3833a2a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945291"
 ---
-# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraformu pomocí registru modulu
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraform pomocí registru modulu
 
-Tento článek vás provede vytvořením malého clusteru virtuálních počítačů pomocí [výpočetního modulu Terraform Azure](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). V tomto kurzu se naučíte: 
+Tento článek vás provede vytvořením malého clusteru virtuálních počítačů pomocí [výpočetního modulu Terraform Azure](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Co se v tomto kurzu naučíte: 
 
 > [!div class="checklist"]
-> * Nastavení ověřování pomocí Azure
+> * Nastavit ověřování pomocí Azure
 > * Vytvořit šablonu Terraformu
-> * Vizualizace změn pomocí plánu
+> * Vizualizovat změny pomocí plánu
 > * Použít konfiguraci k vytvoření clusteru virtuálních počítačů
 
 Další informace o Terraformu najdete v [dokumentaci Terraformu](https://www.terraform.io/docs/index.html).
 
-## <a name="set-up-authentication-with-azure"></a>Nastavení ověřování pomocí Azure
+## <a name="set-up-authentication-with-azure"></a>Nastavit ověřování pomocí Azure
 
 > [!TIP]
 > Pokud [používáte proměnné prostředí nástroje Terraform](terraform-install-configure.md) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](/azure/cloud-shell/overview), tento krok přeskočte.
@@ -87,7 +87,7 @@ V adresáři konfigurace spusťte `terraform init`. Pokud používáte Terraform
 
 ![Příkaz terraform init](media/terraformInitWithModules.png)
 
-## <a name="visualize-the-changes-with-plan"></a>Vizualizace změn pomocí plánu
+## <a name="visualize-the-changes-with-plan"></a>Vizualizovat změny pomocí plánu
 
 Spusťte `terraform plan`, abyste si zobrazili náhled infrastruktury virtuálního počítače, kterou vytvořila šablona.
 
@@ -103,4 +103,4 @@ Virtuální počítače v Azure zřídíte spuštěním příkazu `terraform app
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Procházet seznam modulů Azure Terraformu](https://registry.terraform.io/modules/Azure)
+> [Procházení seznamu modulů Azure Terraform](https://registry.terraform.io/modules/Azure)

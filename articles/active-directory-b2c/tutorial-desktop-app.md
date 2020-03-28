@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: ověřování uživatelů v nativní klientské aplikaci'
+title: 'Kurz: Ověření uživatelů v nativní klientské aplikaci'
 titleSuffix: Azure AD B2C
-description: Kurz týkající se použití Azure Active Directory B2C k poskytnutí přihlášení uživatele pro desktopovou aplikaci .NET.
+description: Návod, jak pomocí služby Azure Active Directory B2C poskytnout přihlášení uživatele pro desktopovou aplikaci .NET.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,15 +12,15 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78186195"
 ---
-# <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Kurz: ověřování uživatelů v nativním klientském počítači pomocí Azure Active Directory B2C
+# <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Kurz: Ověřování uživatelů v nativním desktopovém klientovi pomocí služby Azure Active Directory B2C
 
-V tomto kurzu se dozvíte, jak používat Azure Active Directory B2C (Azure AD B2C) k přihlašování a registraci uživatelů v desktopové aplikaci Windows Presentation Foundation (WPF). Azure AD B2C umožňuje vašim aplikacím ověřovat účty v sociálních sítích, podnikové účty a účty Azure Active Directory pomocí protokolů Open Standard.
+Tento kurz ukazuje, jak používat Azure Active Directory B2C (Azure AD B2C) k přihlášení a registraci uživatelů v desktopové aplikaci Windows Presentation Foundation (WPF). Azure AD B2C umožňuje vašim aplikacím ověřování na účty na sociálních sítích, podnikových účtech a účtech Azure Active Directory pomocí otevřených standardních protokolů.
 
 V tomto kurzu se naučíte:
 
@@ -31,29 +31,29 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
-- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s pracovními procesy pro vývoj **desktopových** aplikací pro .NET a **ASP.NET a web** .
+- [Vytvořte toky uživatelů,](tutorial-create-user-flows.md) které umožní uživatelské prostředí ve vaší aplikaci.
+- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s **vývojem desktopů .NET** a **úlohami ASP.NET a vývoje webu.**
 
 ## <a name="add-the-native-client-application"></a>Přidání nativní klientské aplikace
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
+Zaznamenejte **ID aplikace (klienta)** pro pozdější krok.
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
-V tomto kurzu nakonfigurujete ukázku, kterou si můžete stáhnout z GitHubu. Ukázková desktopová aplikace WPF ukazuje registraci, přihlášení a může volat chráněné webové rozhraní API v Azure AD B2C. [Stáhněte si soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip), [projděte si úložiště](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) nebo naklonujte ukázku z GitHubu.
+V tomto kurzu nakonfigurujete ukázku, kterou můžete stáhnout z GitHubu. Ukázková desktopová aplikace WPF demonstruje registraci, přihlášení a může volat chráněné webové rozhraní API v Azure AD B2C. [Stáhněte si soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip), [projděte si úložiště](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) nebo naklonujte ukázku z GitHubu.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git
 ```
 
-Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyvolat jeho toky uživatelů místo těch, kteří jsou ve výchozím ukázkovém tenantovi:
+Aktualizace aplikace pro práci s klientem Azure AD B2C a vyvolání jejích uživatelských toků namísto toků ve výchozím ukázkovém tenantovi:
 
-1. Otevřete řešení **Active-Directory-B2C-WPF** (`active-directory-b2c-wpf.sln`) v aplikaci Visual Studio.
-2. V projektu **Active-Directory-B2C-WPF** otevřete soubor *App.XAML.cs* a vyhledejte následující definice proměnných. Nahraďte `{your-tenant-name}` názvem tenanta Azure AD B2C a `{application-ID}` s ID aplikace, které jste si poznamenali dříve.
+1. Otevřete řešení **active-directory-b2c-wpf** (`active-directory-b2c-wpf.sln`) v sadě Visual Studio.
+2. V projektu **active-directory-b2c-wpf** otevřete soubor *App.xaml.cs* a vyhledejte následující definice proměnných. Nahraďte `{your-tenant-name}` název klienta Azure AD B2C a `{application-ID}` ID aplikace, které jste zaznamenali dříve.
 
     ```csharp
     private static readonly string Tenant = "{your-tenant-name}.onmicrosoft.com";
@@ -61,7 +61,7 @@ Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyv
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Příklad:
+3. Aktualizujte proměnné názvu zásady názvy uživatelských toků, které jste vytvořili jako součást požadavků. Například:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";
@@ -71,27 +71,27 @@ Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyv
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Stisknutím klávesy **F5** Sestavte a spusťte ukázku.
+Stisknutím **klávesy F5** vytvořte a spusťte ukázku.
 
 ### <a name="sign-up-using-an-email-address"></a>Registrace pomocí e-mailové adresy
 
-1. Vyberte **Přihlásit** se a zaregistrujte se jako uživatel. Používá tok uživatele **B2C_1_signupsignin1** .
-2. Azure AD B2C zobrazí přihlašovací stránku s odkazem na **registraci** . Vzhledem k tomu, že ještě nemáte účet, vyberte odkaz **Registrovat nyní** .
+1. Chcete-li se zaregistrovat jako uživatel, **vyberte Přihlásit** se. To používá **B2C_1_signupsignin1** tok uživatele.
+2. Azure AD B2C představuje přihlašovací stránku s odkazem **Zaregistrovat se teď.** Vzhledem k tomu, že ještě nemáte účet, vyberte odkaz **Zaregistrovat nyní.**
 3. Pracovní postup registrace zobrazí stránku pro shromáždění a ověření identity uživatele pomocí e-mailové adresy. Pracovní postup registrace také shromažďuje heslo uživatele a požadované atributy definované v toku uživatele.
 
     Použijte platnou e-mailovou adresu a proveďte ověření pomocí ověřovacího kódu. Nastavte heslo. Zadejte hodnoty požadovaných atributů.
 
-    ![Přihlašovací stránka zobrazená jako součást pracovního postupu přihlášení/přihlášení](./media/tutorial-desktop-app/azure-ad-b2c-sign-up-workflow.png)
+    ![Stránka registrace zobrazená jako součást pracovního postupu přihlášení/registrace](./media/tutorial-desktop-app/azure-ad-b2c-sign-up-workflow.png)
 
-4. Vyberte **vytvořit** k vytvoření místního účtu v Azure AD B2C tenantovi.
+4. Vyberte **Vytvořit,** chcete-li vytvořit místní účet v tenantovi Azure AD B2C.
 
-Uživatel teď může pomocí své e-mailové adresy přihlásit se a použít desktopovou aplikaci. Po úspěšné registraci nebo přihlášení se podrobnosti o tokenu zobrazí v dolním podokně aplikace WPF.
+Uživatel může nyní použít svou e-mailovou adresu k přihlášení a používání desktopové aplikace. Po úspěšné registraci nebo přihlášení se zobrazí podrobnosti tokenu v dolním podokně aplikace WPF.
 
 ![Podrobnosti tokenu zobrazené v dolním podokně desktopové aplikace WPF](./media/tutorial-desktop-app/desktop-app-01-post-signin.png)
 
-Pokud vyberete tlačítko **rozhraní API pro volání** , zobrazí se **chybová zpráva** . Narazíte na chybu, protože v jejím aktuálním stavu se aplikace pokouší získat přístup k rozhraní API chráněnému demonstračním klientem `fabrikamb2c.onmicrosoft.com`. Vzhledem k tomu, že váš přístupový token je platný jenom pro vašeho tenanta Azure AD B2C, volání rozhraní API je proto neautorizované.
+Pokud vyberete tlačítko **Rozhraní API volání,** zobrazí se **chybová zpráva.** K chybě dojde, protože v aktuálním stavu se aplikace pokouší o přístup `fabrikamb2c.onmicrosoft.com`k rozhraní API chráněnému ukázkovým tenantem . Vzhledem k tomu, že váš přístupový token je platný jenom pro vašeho klienta Azure AD B2C, volání rozhraní API je proto neoprávněné.
 
-Přejděte k dalšímu kurzu, který zaregistruje chráněné webové rozhraní API ve vašem tenantovi a povolí funkci **rozhraní API pro volání** .
+Pokračujte k dalšímu kurzu k registraci chráněného webového rozhraní API ve vlastním tenantovi a povolte funkci **rozhraní API pro volání.**
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -102,7 +102,7 @@ V tomto kurzu jste se naučili:
 > * Konfigurace ukázky pro použití aplikace
 > * Registrace pomocí toku uživatele
 
-Pokud chcete povolit funkci tlačítka **rozhraní API volání** , udělte desktopové aplikaci WPF přístup k webovému rozhraní API zaregistrovanému ve vašem tenantovi Azure AD B2C:
+Dále, chcete-li povolit funkci tlačítka **rozhraní API volání,** udělte desktopové aplikaci WPF přístup k webovému rozhraní API registrovanému ve vašem vlastním tenantovi Azure AD B2C:
 
 > [!div class="nextstepaction"]
-> [Kurz: poskytnutí přístupu k webovému rozhraní API Node. js z desktopové aplikace >](tutorial-desktop-app-webapi.md)
+> [Kurz: Udělení přístupu k webovému rozhraní API Node.js z aplikace klasické pracovní plochy >](tutorial-desktop-app-webapi.md)

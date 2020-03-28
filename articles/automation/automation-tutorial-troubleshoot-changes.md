@@ -8,10 +8,10 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75420635"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
@@ -47,9 +47,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 Pro účely tohoto kurzu je nejprve potřeba povolit pro váš virtuální počítač řešení Change Tracking a Inventory. Pokud jste už dříve pro virtuální počítač povolili jiné řešení automatizace, tento krok není nezbytný.
 
 1. V nabídce vlevo vyberte **Virtuální počítače** a ze seznamu vyberte virtuální počítač.
-1. V nabídce vlevo v části **OPERACE** klikněte na **Inventory**. Otevře se stránka řešení **Change Tracking**.
+1. V levé nabídce klikněte v části **OPERACE** na **položku Zásoby**. Otevře se stránka řešení **Change Tracking**.
 
-![Povolení změny](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) Otevře se obrazovka řešení **Change Tracking**. Nakonfigurujte umístění, pracovní prostor služby Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+![Povolení změny](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) Otevře se obrazovka řešení **Change Tracking**. Nakonfigurujte umístění, pracovní prostor analýzy protokolů a účet Automatizace, který chcete použít, a klepněte na tlačítko **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Inventory.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
@@ -58,14 +58,14 @@ Během připojování se virtuální počítač zřídí s agentem Microsoft Mon
 Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
-Po povolení řešení budou informace o nainstalovaném softwaru a změnách na virtuálním počítači toky Azure Monitor protokoly.
+Po povolení řešení se informace o nainstalovaném softwaru a změnách na virtuálním počítači točtou do protokolů Azure Monitoru.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="using-change-tracking-in-azure-monitor-logs"></a>Použití sledování změn v Azure Monitorch protokolech
+## <a name="using-change-tracking-in-azure-monitor-logs"></a>Použití sledování změn v protokolech Azure Monitoru
 
-Sledování změn generuje data protokolu, která se odesílají do protokolů Azure Monitor.
+Sledování změn generuje data protokolu, která se odesílá do protokolů Azure Monitor.
 Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Change Tracking** vyberte **Log Analytics**.
 Data řešení Change Tracking se ukládají jako typ **ConfigurationChange** (Změna konfigurace).
 Následující ukázka dotazu Log Analytics vrátí všechny zastavené služby systému Windows.
@@ -75,7 +75,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Další informace o spouštění a hledání souborů protokolu v protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+Další informace o spouštění a prohledávání souborů protokolu v protokolech Azure Monitoru najdete v [tématu protokoly Azure Monitor .](../azure-monitor/log-query/log-query-overview.md)
 
 ## <a name="configure-change-tracking"></a>Konfigurace řešení Change Tracking
 
@@ -175,11 +175,11 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 Pokud chcete přidat upozornění na zastavení služby, přejděte na webu Azure Portal do části **Monitorování**. Pak v části **Sdílené služby** vyberte **Upozornění** a klikněte na **+ Nové pravidlo upozornění**.
 
-Pro výběr prostředku klikněte na **Vybrat** . Na stránce **Vybrat prostředek** vyberte v rozevíracím seznamu **filtrovat podle typu prostředku** **Log Analytics** . Vyberte váš pracovní prostor služby Log Analytics a pak vyberte **Hotovo**.
+Chcete-li vybrat zdroj, klepněte na **tlačítko Vybrat.** Na stránce **Vybrat prostředek** vyberte **log analytics** z rozevíracího přehledu **Filtr podle typu prostředku.** Vyberte váš pracovní prostor služby Log Analytics a pak vyberte **Hotovo**.
 
 ![Výběr prostředku](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-Klikněte na **Přidat podmínku**, na stránce **Konfigurovat logiku signálu** v tabulce vyberte **vlastní prohledávání protokolu**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
+Klepněte na tlačítko **Přidat podmínku**, na stránce **Konfigurovat logiku signálu** v tabulce vyberte **vlastní hledání protokolu**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -191,9 +191,9 @@ V části **Logika upozornění** jako **Prahová hodnota** zadejte **0**. Jakmi
 
 ![Konfigurace logiky signálů](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-V části **skupiny akcí**vyberte **vytvořit novou**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
+V části **Skupiny akcí**vyberte **Vytvořit nový**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v [tématu Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
 
-V části **Podrobnosti výstrahy**zadejte název a popis výstrahy. Nastavte **Závažnost** na **Informativní (záv. 2)** , **Upozornění (záv. 1)** nebo **Kritické (záv. 0)** .
+V části **Podrobnosti výstrahy**zadejte název a popis výstrahy. Nastavte **Závažnost** na **Informativní (záv. 2)**, **Upozornění (záv. 1)** nebo **Kritické (záv. 0)**.
 
 Do pole **Název skupiny akcí** zadejte název a krátký název upozornění. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 

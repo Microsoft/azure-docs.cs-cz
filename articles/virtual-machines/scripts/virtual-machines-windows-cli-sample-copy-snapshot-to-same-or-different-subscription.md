@@ -1,5 +1,5 @@
 ---
-title: Kopírování snímku spravovaného disku do předplatného – ukázka CLI
+title: Kopírování snímku spravovaného disku do předplatného – ukázka funkce PŘÍKAZ
 description: Ukázkový skript Azure CLI – Kopírování (přesun) snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 services: virtual-machines-windows
 documentationcenter: storage
@@ -17,19 +17,19 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: ddcf585af86a265410f9c2d424c85acf5abbc8fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75375912"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Kopírování snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 
 Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného předplatného. Tento skript použijte pro následující scénáře:
 
-1. Migrujte snímek ve službě Premium Storage (Premium_LRS) do úložiště úrovně Standard (Standard_LRS nebo Standard_ZRS), abyste snížili náklady.
-1. Migrujte snímek z místně redundantního úložiště (Premium_LRS, Standard_LRS) do zóny redundantního úložiště (Standard_ZRS), abyste využili vyšší spolehlivosti úložiště ZRS.
-1. Přesunutí snímku do jiného předplatného ve stejné oblasti pro delší dobu uchování.
+1. Migrujte snímek v úložišti Premium (Premium_LRS) do standardního úložiště (Standard_LRS nebo Standard_ZRS) a snižte náklady.
+1. Migrujte snímek z místně redundantního úložiště (Premium_LRS, Standard_LRS) do zónově redundantního úložiště (Standard_ZRS) a využijte vyšší spolehlivost úložiště ZRS.
+1. Přesuňte snímek do jiného předplatného ve stejné oblasti pro delší uchovávání informací.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -52,4 +52,4 @@ Tento skript k vytvoření snímku v cílovém předplatném pomocí ID zdrojov�
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače a služby Managed disks najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázky skriptu příkazového příkazu virtuálního počítače a spravovaných disků najdete v [dokumentaci k virtuálnímu počítači Azure Windows](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

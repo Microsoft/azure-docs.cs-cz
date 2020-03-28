@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Kurz Azure Container Service – Příprava ACR
+title: (ZASTARALÉ) Kurz služby Azure Container Service – příprava acr
 description: Kurz Azure Container Service – Příprava ACR
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78399782"
 ---
-# <a name="deprecated-deploy-and-use-azure-container-registry"></a>ZASTARALÉ Nasazení a použití Azure Container Registry
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(ZASTARALÉ) Nasazení a použití registru kontejnerů Azure
 
 > [!TIP]
-> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: nasazení a použití Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Aktualizovaná verze tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Nasazení a použití registru kontejnerů Azure](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -34,7 +34,7 @@ V následujících kurzech bude tato instance služby ACR integrována do cluste
 
 V [předchozím kurzu](./container-service-tutorial-kubernetes-prepare-app.md) byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure ještě nevytvořili, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru](./container-service-tutorial-kubernetes-prepare-app.md).
 
-Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="deploy-azure-container-registry"></a>Nasazení služby Azure Container Registry
 
@@ -46,7 +46,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 az group create --name myResourceGroup --location westeurope
 ```
 
-Pomocí příkazu [az acr create](/cli/azure/acr#az-acr-create) vytvořte registr kontejneru Azure. Název registru kontejneru **musí být jedinečný**.
+Vytvořte registr kontejneru Azure pomocí příkazu [az acr create.](/cli/azure/acr#az-acr-create) Název registru kontejneru **musí být jedinečný**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -66,7 +66,7 @@ Příkaz po dokončení vrátí zprávu Login Succeeded (Přihlášení proběhl
 
 ## <a name="tag-container-images"></a>Označování imagí kontejneru
 
-Pokud chcete zobrazit seznam aktuálních imagí, použijte příkaz [docker images](https://docs.docker.com/engine/reference/commandline/images/).
+Seznam aktuálních imagí můžete zobrazit pomocí příkazu [docker images](https://docs.docker.com/engine/reference/commandline/images/).
 
 ```bash
 docker images
@@ -123,7 +123,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 Tato akce trvá několik minut.
 
-## <a name="list-images-in-registry"></a>Vypsání imagí v registru
+## <a name="list-images-in-registry"></a>Výpis imagí v registru
 
 Pokud chcete vrátit seznam imagí, které byly nahrány do vašeho registru kontejneru Azure, použijte příkaz [az acr repository list](/cli/azure/acr/repository#az-acr-repository-list). Aktualizujte příkaz s použitím názvu instance služby ACR.
 

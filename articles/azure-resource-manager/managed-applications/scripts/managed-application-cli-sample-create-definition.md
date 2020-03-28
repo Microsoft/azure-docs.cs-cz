@@ -1,16 +1,16 @@
 ---
-title: Vytvoření definice spravované aplikace – Azure CLI
-description: Poskytuje ukázkový skript Azure CLI, který v předplatném vytvoří definici spravované aplikace.
+title: Vytvořit definici spravované aplikace – azure cli
+description: Poskytuje ukázku skriptu Azure CLI, která vytvoří definici spravované aplikace v předplatném.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: f4d5a0036ba44f7e0054db7ce820b91b0de629b8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650188"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Vytvoření definice spravované aplikace pomocí Azure CLI

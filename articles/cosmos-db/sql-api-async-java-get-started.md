@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření aplikace Java pomocí Azure Cosmos DB Async Java SDK pro správu dat v účtu SQL API'
-description: V tomto kurzu se dozvíte, jak ukládat a přístup k datům v rámci účtu rozhraní SQL API ve službě Azure Cosmos DB s použitím aplikace Async Javu.
+title: 'Kurz: Vytvoření aplikace Java s Azure Cosmos DB Async Java SDK pro správu dat v účtu SQL API'
+description: Tento kurz ukazuje, jak ukládat a přistupovat k datům v rámci účtu SQL API v Azure Cosmos DB pomocí aplikace Async Java.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,13 +10,13 @@ ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444889"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Kurz: Sestavení aplikace v Javě pomocí sady Java SDK asynchronní ke správě dat uložených v účtu rozhraní SQL API
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Kurz: Vytvoření java aplikace s asynchronní sadou Java SDK pro správu dat uložených v účtu SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -25,12 +25,12 @@ ms.locfileid: "75444889"
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
-Jako vývojář můžete mít aplikace, které používají dat dokumentů typu NoSQL. Účet rozhraní SQL API ve službě Azure Cosmos DB můžete použít k ukládání a přístup k těmto datům dokumentu. V tomto kurzu se dozvíte, jak vytvářet aplikace v Javě pomocí sady Java SDK asynchronní k ukládání a správě dat dokumentu. 
+Jako vývojář můžete mít aplikace, které používají data dokumentu NoSQL. Účet ROZHRANÍ SQL API v Azure Cosmos DB můžete použít k ukládání a přístupu k těmto datům dokumentu. V tomto kurzu se můžete sestavovat java aplikaci pomocí sady Async Java SDK pro ukládání a správu dat dokumentu. 
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Vytvoření a připojení k účtu Azure Cosmos
+> * Vytváření a připojování k účtu Azure Cosmos
 > * Konfigurace řešení
 > * Vytvoření kolekce
 > * Vytvoření dokumentů JSON
@@ -42,7 +42,7 @@ Ujistěte se, že máte následující prostředky:
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/). 
 
-* [Git](https://git-scm.com/downloads)
+* [Git](https://git-scm.com/downloads).
 
 * [Java Development Kit (JDK) 8+](https://aka.ms/azure-jdks).
 
@@ -50,13 +50,13 @@ Ujistěte se, že máte následující prostředky:
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Vytvoření účtu Azure Cosmos pomocí následujících kroků:
+Vytvořte účet Azure Cosmos pomocí následujících kroků:
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>Naklonujte úložiště GitHub
+## <a name="clone-the-github-repository"></a><a id="GitClone"></a>Klonování úložiště GitHub
 
-Naklonujte úložiště GitHub pro projekt [Začínáme s Azure Cosmos DB a Javou](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started). Z místního adresáře, spusťte následující příkaz pro načtení ukázkový projekt místně.
+Klonovat úložiště GitHub pro [začínáme s Azure Cosmos DB a Java](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started). Například z místního adresáře, spusťte následující načíst ukázkový projekt místně.
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started.git
@@ -65,7 +65,7 @@ cd azure-cosmos-db-sql-api-async-java-getting-started
 cd azure-cosmosdb-get-started
 ```
 
-Adresář obsahuje `pom.xml` souboru a `src/main/java/com/microsoft/azure/cosmosdb/sample` složce obsahující zdrojový kód v Javě, včetně `Main.java`. Projekt obsahuje kód potřebný k provedení operací s Azure Cosmos DB, jako je vytváření dokumentů a dotazování dat v rámci kolekce. `pom.xml` Soubor obsahuje závislost na [Azure Cosmos DB Java SDK v nástroji Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
+Adresář obsahuje `pom.xml` soubor a `src/main/java/com/microsoft/azure/cosmosdb/sample` složku obsahující zdrojový kód `Main.java`Javy, včetně . Projekt obsahuje kód potřebný k provádění operací s Azure Cosmos DB, jako je vytváření dokumentů a dotazování dat v rámci kolekce. Soubor `pom.xml` obsahuje závislost na [Azure Cosmos DB Java SDK na Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
 
 ```xml
 <dependency>
@@ -75,11 +75,11 @@ Adresář obsahuje `pom.xml` souboru a `src/main/java/com/microsoft/azure/cosmos
 </dependency>
 ```
 
-## <a id="Connect"></a>Připojení k účtu Azure Cosmos
+## <a name="connect-to-an-azure-cosmos-account"></a><a id="Connect"></a>Připojení k účtu Azure Cosmos
 
 Dále přejděte zpět na [Azure Portal](https://portal.azure.com) a získejte koncový bod a primární hlavní klíč. Koncový bod a primární klíč služby Azure Cosmos DB jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace. Soubor `AccountSettings.java` uchovává hodnoty primárního klíče a identifikátoru URI. 
 
-Na webu Azure Portal, přejděte k vašemu účtu Azure Cosmos a potom klikněte na tlačítko **klíče**. Zkopírujte hodnoty identifikátoru URI a PRIMÁRNÍHO KLÍČE z webu Azure Portal a vložte je do souboru `AccountSettings.java`. 
+Na webu Azure Portal přejděte na svůj účet Azure Cosmos a klikněte na **Keys**. Zkopírujte hodnoty identifikátoru URI a PRIMÁRNÍHO KLÍČE z webu Azure Portal a vložte je do souboru `AccountSettings.java`. 
 
 ```java
 public class AccountSettings 
@@ -99,9 +99,9 @@ public class AccountSettings
 
 ![Snímek obrazovky se získáním klíčů z portálu][keys]
 
-## <a name="initialize-the-client-object"></a>Inicializace objektu klienta
+## <a name="initialize-the-client-object"></a>Inicializovat objekt klienta
 
-Inicializace objektu klienta pomocí hostitele identifikátoru URI a primární hodnoty klíče, které jsou definovány v souboru "AccountSettings.java".
+Inicializovat objekt klienta pomocí identifikátoru URI hostitele a hodnot primárního klíče definovaných v souboru AccountSettings.java.
 
 ```java
 client = new AsyncDocumentClient.Builder()
@@ -112,9 +112,9 @@ client = new AsyncDocumentClient.Builder()
          .build();
 ```
 
-## <a id="CreateDatabase"></a>Vytvoření databáze
+## <a name="create-a-database"></a><a id="CreateDatabase"></a>Vytvoření databáze
 
-Vytvořte databázi Azure Cosmos pomocí metody `createDatabaseIfNotExists()` třídy DocumentClient. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
+Vytvořte databázi Azure Cosmos pomocí `createDatabaseIfNotExists()` metody DocumentClient třídy. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 
@@ -156,9 +156,9 @@ private void createDatabaseIfNotExists() throws Exception
 }
 ```
 
-## <a id="CreateColl"></a>Vytvoření kolekce
+## <a name="create-a-collection"></a><a id="CreateColl"></a>Vytvoření kolekce
 
-Můžete vytvořit kolekci pomocí `createDocumentCollectionIfNotExists()` metoda třídy DocumentClient. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
+Kolekci můžete vytvořit pomocí `createDocumentCollectionIfNotExists()` metody DocumentClient třídy. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
 
 > [!WARNING]
 > **createCollection** vytvoří novou kolekci s vyhrazenou propustností, za kterou se hradí poplatky. Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
@@ -200,9 +200,9 @@ private void createDocumentCollectionIfNotExists() throws Exception
     }
 ```
 
-## <a id="CreateDoc"></a>Vytvoření dokumentů JSON
+## <a name="create-json-documents"></a><a id="CreateDoc"></a>Vytvoření dokumentů JSON
 
-Vytvoření dokumentu pomocí metody createDocument třídy DocumentClient. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Soubor "src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" definuje řady dokumentů JSON. 
+Vytvořte dokument pomocí metody createDocument třídy DocumentClient. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Soubor "src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" definuje rodinné dokumenty JSON. 
 
 ```java
 public static Family getJohnsonFamilyDocument() {
@@ -220,9 +220,9 @@ public static Family getJohnsonFamilyDocument() {
     }
 ```
 
-## <a id="Query"></a>Dotazování prostředků Azure Cosmos DB
+## <a name="query-azure-cosmos-db-resources"></a><a id="Query"></a>Dotaz na prostředky Azure Cosmos DB
 
-Azure Cosmos DB podporuje bohaté dotazy na dokumenty JSON uložené v každé z kolekcí. Následující ukázkový kód ukazuje dotazování na dokumenty ve službě Azure Cosmos DB pomocí syntaxe SQL `queryDocuments` metody.
+Azure Cosmos DB podporuje bohaté dotazy na dokumenty JSON uložené v každé z kolekcí. Následující ukázkový kód ukazuje, jak se dotazovat na `queryDocuments` dokumenty v Azure Cosmos DB pomocí syntaxe SQL s metodou.
 
 ```java
 private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch completionLatch) 
@@ -254,9 +254,9 @@ private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch 
 }
 ```
 
-## <a id="Run"></a>Spuštění aplikace konzoly v jazyce Java
+## <a name="run-your-java-console-application"></a><a id="Run"></a>Spuštění aplikace konzoly Java
 
-Ke spuštění aplikace z konzoly, přejděte do složky projektu a zkompilujte pomocí nástroje Maven:
+Chcete-li spustit aplikaci z konzoly, přejděte do složky projektu a zkompilujte pomocí maven:
 
 ```bash
 mvn package
@@ -268,16 +268,16 @@ Spuštěním příkazu `mvn package` se z nástroje Maven stáhne nejnovější 
 mvn exec:java -DACCOUNT_HOST=<YOUR_COSMOS_DB_HOSTNAME> -DACCOUNT_KEY= <YOUR_COSMOS_DB_MASTER_KEY>
 ```
 
-Právě jste dokončili tento kurz NoSQL a máte funkční konzolovou aplikaci Java.
+Nyní jste dokončili tento kurz NoSQL a máte funkční konzolovou aplikaci Java.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud jste už nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Uděláte to tak, vyberte skupinu prostředků pro virtuální počítač, vyberte **odstranit**a potom ověřte název skupiny prostředků pro odstranění.
+Když už nejsou potřeba, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Chcete-li tak učinit, vyberte skupinu prostředků pro virtuální počítač, vyberte **Odstranit**a potvrďte název skupiny prostředků, kterou chcete odstranit.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvářet aplikace v Javě pomocí sady Java SDK asynchronní ke správě dat rozhraní SQL API ve službě Azure Cosmos DB. Teď můžete přejít k dalšímu článku:
+V tomto kurzu jste se naučili, jak vytvořit java aplikaci s asynchronní sadou Java SDK pro správu dat rozhraní SQL API v Azure Cosmos DB. Teď můžete přejít k dalšímu článku:
 
 > [!div class="nextstepaction"]
 > [Vytvoření konzolové aplikace Node.js s využitím sady JavaScript SDK a služby Azure Cosmos DB](sql-api-nodejs-get-started.md)

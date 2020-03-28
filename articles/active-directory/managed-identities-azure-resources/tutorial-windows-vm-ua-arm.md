@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Resource Manager-Windows-Azure AD
+title: Kurz`:` Použití spravované identity pro přístup ke Správci prostředků Azure – Windows – Azure AD
 description: Tento kurz vás provede procesem použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
@@ -16,13 +16,13 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977836"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: Použití spravované identity přiřazené uživateli na virtuálním počítači s Windows pro přístup ke Správci prostředků Azure
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -43,7 +43,7 @@ Získáte informace o těchto tématech:
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-- [Přihlášení k webu Azure Portal](https://portal.azure.com)
+- [Přihlášení na Portál Azure](https://portal.azure.com)
 
 - [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
 
@@ -57,15 +57,15 @@ Získáte informace o těchto tématech:
 
 ## <a name="enable"></a>Povolení
 
-V případě scénáře, který je založen na identitě přiřazené uživatelem, je třeba provést následující kroky:
+Pro scénář, který je založen na identitě přiřazené uživateli, je třeba provést následující kroky:
 
 - Vytvoření identity
  
-- Přiřaďte nově vytvořenou identitu.
+- Přiřazení nově vytvořené identity
 
 ### <a name="create-identity"></a>Vytvořit identitu
 
-V této části se dozvíte, jak vytvořit uživatelem přiřazenou identitu. Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Pomocí [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)vytvoří Azure v TENANTOVI Azure AD identitu, kterou je možné přiřadit k jedné nebo více instancím služby Azure.
+Tato část ukazuje, jak vytvořit identitu přiřazenou uživateli. Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Pomocí [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity), Azure vytvoří identitu ve vašem tenantovi Azure AD, který lze přiřadit k jedné nebo více instancí služby Azure.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -89,9 +89,9 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-### <a name="assign-identity"></a>Přiřadit identitu
+### <a name="assign-identity"></a>Přiřazení identity
 
-V této části se dozvíte, jak přiřadit uživatelem přiřazenou identitu k virtuálnímu počítači s Windows. Klienti můžou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `-IdentityID` použijte vlastnost `Id` vrácenou v předchozím kroku.
+Tato část ukazuje, jak přiřadit uživatelem přiřazenou identitu k virtuálnímu virtuálnímu ms systému Windows. Klienti můžou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `-IdentityID` použijte vlastnost `Id` vrácenou v předchozím kroku.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -100,7 +100,7 @@ Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -Iden
 
 ## <a name="grant-access"></a>Udělení přístupu 
 
-V této části se dozvíte, jak udělit uživatelem přiřazenou identitu přístupu ke skupině prostředků v Azure Resource Manager. Spravované identity pro prostředky Azure poskytují identity, které můžete v kódu použít k odesílání požadavků na přístupové tokeny pro ověření v rozhraních API prostředků, která podporují ověřování Azure AD. V tomto kurzu budete v kódu přistupovat k rozhraní API Azure Resource Manageru. 
+Tato část ukazuje, jak udělit uživateli přiřazený přístup k identitě skupině prostředků ve Správci prostředků Azure. Spravované identity pro prostředky Azure poskytují identity, které můžete v kódu použít k odesílání požadavků na přístupové tokeny pro ověření v rozhraních API prostředků, která podporují ověřování Azure AD. V tomto kurzu budete v kódu přistupovat k rozhraní API Azure Resource Manageru. 
 
 Než bude mít kód přístup k rozhraní API, je potřeba udělit identitě přístup k prostředku v Azure Resource Manageru. V tomto případě ke skupině prostředků, která obsahuje virtuální počítač. Aktualizujte hodnotu `<SUBSCRIPTION ID>` odpovídajícím způsobem pro vaše prostředí.
 
@@ -129,15 +129,15 @@ CanDelegate: False
 
 Ve zbývající části kurzu použijete k práci dříve vytvořený virtuální počítač.
 
-1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+1. Přihlaste se na webu Azure portal na adrese[https://portal.azure.com](https://portal.azure.com)
 
 2. Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**.
 
 3. Zadejte **Uživatelské jméno** a **Heslo**, které jste použili při vytváření virtuálního počítače s Windows.
 
-4. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**.
+4. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **powershell** ve vzdálené relaci.
 
-5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.  Hodnota `client_id` je hodnota vrácená při vytváření spravované identity přiřazené uživatelem.
+5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.  Hodnota `client_id` je hodnota vrácená při vytvoření spravované identity přiřazené uživateli.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -145,7 +145,7 @@ Ve zbývající části kurzu použijete k práci dříve vytvořený virtuáln�
     $ArmToken = $content.access_token
     ```
 
-### <a name="read-properties"></a>Číst vlastnosti
+### <a name="read-properties"></a>Vlastnosti čtení
 
 Použijte přístupový token načtený v předchozím kroku k přístupu k Azure Resource Manageru a čtení vlastností skupiny prostředků, ke které jste identitě spravované uživatelem udělili přístup. Místo `<SUBSCRIPTION ID>` použijte ID předplatného pro vaše prostředí.
 
@@ -160,7 +160,7 @@ Odpověď bude obsahovat informace o konkrétní skupině prostředků podobně 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit uživatelem přiřazenou identitu a připojit ji k virtuálnímu počítači Azure pro přístup k rozhraní Azure Resource Manager API.  Další informace o Azure Resource Manageru:
+V tomto kurzu jste se naučili, jak vytvořit identitu přiřazenou uživateli a připojit ji k virtuálnímu počítači Azure pro přístup k rozhraní API Azure Resource Manager.  Další informace o Azure Resource Manageru:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

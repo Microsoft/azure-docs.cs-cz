@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768958"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
@@ -43,11 +43,11 @@ Pokud jste tento krok zatím neprovedli, vraťte se k němu a vytvořte aplikaci
 
 Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatné prostředky. K rozpoznávání mínění v monitorovaných tweetech použijte rozhraní API pro analýzu textu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
-3. Klikněte na **AI a Machine Learning** > **Analýza textu**. Potom vytvořte prostředek s použitím nastavení uvedených v tabulce.
+3. Klikněte na **AI + Machine Learning** > **Text Analytics**. Potom vytvořte prostředek s použitím nastavení uvedených v tabulce.
 
     ![Vytvoření stránky prostředku Cognitive](media/functions-twitter-email/01-create-text-analytics.png)
 
@@ -76,7 +76,7 @@ Funkce poskytují skvělý způsob snižování zátěže úloh zpracování v p
 
 ## <a name="create-an-http-triggered-function"></a>Vytvoření funkce aktivované protokolem HTTP  
 
-1. Rozbalte aplikaci Function App a klikněte na tlačítko **+** vedle položky **Funkce**. Pokud jde o první funkci ve vaší aplikaci funkcí, vyberte **Na portálu**.
+1. Rozbalte aplikaci funkcí **+** a klikněte na tlačítko vedle **položky Funkce**. Pokud jde o první funkci ve vaší aplikaci funkcí, vyberte **Na portálu**.
 
     ![Stručný úvod do služby Functions na webu Azure Portal](media/functions-twitter-email/05-function-app-create-portal.png)
 
@@ -121,7 +121,7 @@ Funkce poskytují skvělý způsob snižování zátěže úloh zpracování v p
     ```
     Tento kód funkce vrátí barevnou kategorii na základě skóre mínění přijatého v požadavku. 
 
-4. Pokud chcete funkci otestovat, kliknutím na **test** úplně vpravo rozbalte kartu test. pro **tělo žádosti**zadejte hodnotu `0.2` a pak klikněte na **Spustit**. V textu odpovědi se vrátí hodnota **RED** (Červená). 
+4. Chcete-li funkci otestovat, klepněte na tlačítko **Testovat** zcela `0.2` vpravo rozbalte kartu Test. Zadejte hodnotu pro **tělo požadavku**a potom klepněte na tlačítko **Spustit**. V textu odpovědi se vrátí hodnota **RED** (Červená). 
 
     ![Test funkce na webu Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -129,9 +129,9 @@ Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplik
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky   
 
-1. V Azure Portal klikněte na tlačítko **vytvořit prostředek** , které najdete v levém horním rohu Azure Portal.
+1. Na webu Azure Portal klikněte na tlačítko **Vytvořit prostředek,** které se nachází v levém horním rohu portálu Azure.
 
-2. Klikněte na **Web** > **Aplikace logiky**.
+2. Klepněte na **položku WebOvá** > **logická aplikace**.
  
 3. Potom zadejte hodnotu **Název**, například `TweetSentiment`, a použijte nastavení uvedená v tabulce.
 
@@ -165,7 +165,7 @@ Nejprve vytvořte připojení ke svému účtu na Twitteru. Aplikace logiky se d
     | ----------------- | ------------ | ------------- |
     | **Hledaný text** | #Azure | Použijte hashtag, který je dostatečně oblíbený, aby ve zvoleném intervalu generoval nové tweety. Pokud použijete úroveň Free a zvolený hashtag je příliš oblíbený, můžete ve svém rozhraní API služeb Cognitive Services rychle vyčerpat kvótu transakcí. |
     | **Interval** | 15 | Uplynulý čas mezi požadavky na Twitter v jednotkách frekvence. |
-    | **Frekvence** | Minuta | Jednotka frekvence použitá pro dotazování Twitteru.  |
+    | **Frequency** | Minuta | Jednotka frekvence použitá pro dotazování Twitteru.  |
 
 3.  Kliknutím na **Uložit** se připojte ke svému účtu na Twitteru. 
 
@@ -191,7 +191,7 @@ Když je teď nakonfigurované rozpoznávání mínění, můžete do své funkc
 
 ## <a name="connect-sentiment-output-to-your-function"></a>Připojení výstupu mínění k funkci
 
-1. V Návrháři pro Logic Apps klikněte na **Nový krok** > **Přidat akci**, vyfiltrujte **Azure Functions** a klikněte na **Zvolit funkci Azure**.
+1. V Návrháři aplikací logiky klikněte na **Nový krok** > **Přidat akci**, filtrujte v Azure **Functions** a klikněte na Vybrat **funkci Azure**.
 
     ![Rozpoznávání mínění](media/functions-twitter-email/14-azure-functions.png)
   
@@ -205,7 +205,7 @@ Když je teď nakonfigurované rozpoznávání mínění, můžete do své funkc
 
 4. V části **Text požadavku** klikněte na **Skóre** a pak na **Uložit**.
 
-    ![Hodnocení](media/functions-twitter-email/17-function-input-score.png)
+    ![Skóre](media/functions-twitter-email/17-function-input-score.png)
 
 Vaše funkce se teď aktivuje při odeslání skóre mínění z aplikace logiky. Funkce do aplikace logiky vrátí barevně rozlišenou kategorii. Dále přidáte e-mailové oznámení, které se odešle, když funkce vrátí hodnotu mínění **RED** (Červená). 
 
@@ -213,7 +213,7 @@ Vaše funkce se teď aktivuje při odeslání skóre mínění z aplikace logiky
 
 Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mínění hodnotu _RED_ (Červená). V tomto tématu se používá konektor Outlook.com. Podobný postup však můžete použít i pro konektor Gmail nebo Office 365 Outlook.   
 
-1. V Návrháři pro Logic Apps klikněte na **Nový krok** > **Přidat podmínku**. 
+1. V Návrháři aplikací logiky klikněte na **Nový krok** > **Přidat podmínku**. 
 
     ![Přidání podmínky do aplikace logiky](media/functions-twitter-email/18-add-condition.png)
 
@@ -234,11 +234,11 @@ Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mí
     
 | Nastavení      |  Navrhovaná hodnota   | Popis  |
 | ----------------- | ------------ | ------------- |
-| **Komu** | Zadejte svou e-mailovou adresu. | E-mailová adresa, která přijímá oznámení. |
-| **Předmět** | Rozpoznáno špatné mínění v tweetu  | Řádek předmětu e-mailového oznámení.  |
+| **Akce** | Zadejte svou e-mailovou adresu. | E-mailová adresa, která přijímá oznámení. |
+| **Subjekt** | Rozpoznáno špatné mínění v tweetu  | Řádek předmětu e-mailového oznámení.  |
 | **Text** | Text tweetu, Umístění | Klikněte na parametry **Text tweetu** a **Umístění**. |
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 Když je teď pracovní postup dokončený, můžete aplikaci logiky povolit a podívat se na funkci v akci.
 

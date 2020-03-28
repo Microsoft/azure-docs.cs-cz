@@ -1,5 +1,5 @@
 ---
-title: Kurz – nasazení Azure Machine Learning do zařízení pomocí Azure IoT Edge
+title: Kurz – nasazení Azure Machine Learning u zařízení pomocí Azure IoT Edge
 description: V tomto kurzu vytvoříte model Azure Machine Learning a pak ho nasadíte jako modul do hraničního zařízení.
 author: kgremban
 manager: philmea
@@ -10,16 +10,16 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 5bfbf4a432f720b683ded4c85530135d86b24eba
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76773007"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
-Pomocí Azure Notebooks můžete vyvinout modul Machine Learning a nasadit ho do zařízení se systémem Linux se spuštěným Azure IoT Edge.
-Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o Azure Machine Learning v IoT Edge najdete v [dokumentaci Azure Machine Learning](../machine-learning/how-to-deploy-and-where.md).
+Pomocí poznámkových bloků Azure můžete vyvinout modul strojového učení a nasadit ho na linuxové zařízení se systémem Azure IoT Edge.
+Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o Azure Machine Learning na IoT Edge najdete v [tématu dokumentace k Azure Machine Learning](../machine-learning/how-to-deploy-and-where.md).
 
 >[!NOTE]
 >Moduly Azure Machine Learning na Azure IoT Edge jsou ve verzi Public Preview.
@@ -41,70 +41,70 @@ V tomto kurzu se naučíte:
 
 Zařízení Azure IoT Edge:
 
-* Pomocí postupu v rychlém startu pro [Linux](quickstart-linux.md)můžete použít virtuální počítač Azure jako zařízení IoT Edge.
+* Virtuální počítač Azure můžete použít jako zařízení IoT Edge podle kroků v rychlém startu pro [Linux](quickstart-linux.md).
 * Modul Azure Machine Learning nepodporuje kontejnery Windows.
 * Modul Azure Machine Learning nepodporuje procesory ARM.
 
 Cloudové prostředky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* Pracovní prostor služby Azure Machine Learning. Postupujte podle pokynů v [části použití Azure Portal k tomu, abyste mohli začít pracovat s Azure Machine Learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md) a Naučte se, jak ho používat.
-  * Poznamenejte si název pracovního prostoru, skupinu prostředků a ID předplatného. Tyto hodnoty jsou všechny dostupné v přehledu pracovního prostoru v Azure Portal. Tyto hodnoty použijete později v tomto kurzu, abyste k prostředkům pracovního prostoru připojili notebook Azure.
+* Pracovní prostor služby Azure Machine Learning. Postupujte podle pokynů v [části Azure Portal, abyste mohli začít s Azure Machine Learning,](../machine-learning/tutorial-1st-experiment-sdk-setup.md) abyste ho vytvořili a zjistili, jak ho používat.
+  * Poznamenejte si název pracovního prostoru, skupinu prostředků a ID předplatného. Všechny tyto hodnoty jsou dostupné v přehledu pracovního prostoru na webu Azure Portal. Tyto hodnoty použijete později v kurzu k připojení poznámkového bloku Azure k prostředkům pracovního prostoru.
 
-## <a name="create-and-deploy-azure-machine-learning-module"></a>Vytvořit a nasadit modul Azure Machine Learning
+## <a name="create-and-deploy-azure-machine-learning-module"></a>Vytvoření a nasazení modulu Azure Machine Learning
 
-V této části převedete školicí soubory modelu Machine Learning a do kontejneru Azure Machine Learning. Veškeré komponenty potřebné pro image Dockeru najdete v [úložišti Git AI Toolkit pro Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Pomocí těchto kroků nahrajte toto úložiště do Microsoft Azure Notebooks a vytvořte kontejner a vložte ho do Azure Container Registry.
+V této části převedete soubory modelů trénovaného strojového učení do kontejneru Azure Machine Learning. Veškeré komponenty potřebné pro image Dockeru najdete v [úložišti Git AI Toolkit pro Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Podle těchto kroků nahrajte toto úložiště do poznámkových bloků Microsoft Azure a vytvořte kontejner a převezte ho do registru kontejnerů Azure.
 
-1. Přejděte do projektu Azure Notebooks. Z pracovního prostoru Azure Machine Learning můžete získat přístup v [Azure Portal](https://portal.azure.com) nebo přihlášením k [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) s účtem Azure.
+1. Přejděte k projektům poznámkových bloků Azure. K dispozici můžete z pracovního prostoru Azure Machine Learning na [webu Azure Portal](https://portal.azure.com) nebo přihlášením k [poznámkovým blokům Microsoft Azure](https://notebooks.azure.com/home/projects) pomocí svého účtu Azure.
 
-2. Vyberte **nahrát úložiště GitHub**.
+2. Vyberte **Nahrát úložiště GitHub**.
 
-3. Zadejte následující název úložiště GitHub: `Azure/ai-toolkit-iot-edge`. Zrušte políčko **veřejné** pole, pokud chcete zachovat projekt soukromý. Vyberte **importovat**.
+3. Zadejte následující název úložiště `Azure/ai-toolkit-iot-edge`GitHub: . Chcete-li zachovat soukromý projekt, zaškrtněte políčko **Veřejné.** Vyberte **Importovat**.
 
-4. Po dokončení importu přejděte do nového projektu **AI-Toolkit-IoT-Edge** a otevřete složku **kurz detekce anomálií IoT Edge** .
+4. Po dokončení importu přejděte do nového projektu **ai-toolkit-iot-edge** a otevřete **složky výukového programu pro detekci anomálií IoT Edge.**
 
-5. Ověřte, že je váš projekt spuštěný. Pokud ne, vyberte **Spustit při bezplatném COMPUTE**.
+5. Ověřte, zda je projekt spuštěn. Pokud ne, vyberte **Spustit na volné výpočetní prostředky**.
 
-   ![Spustit na bezplatné výpočetní prostředky](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
+   ![Spouštějte na bezplatných výpočetních výkonech](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
-6. Otevřete soubor **aml_config/config.JSON** .
+6. Otevřete soubor **aml_config/config.json.**
 
-7. Upravte konfigurační soubor tak, aby zahrnoval hodnoty pro ID předplatného Azure, skupinu prostředků ve vašem předplatném a název pracovního prostoru Azure Machine Learning. Všechny tyto hodnoty můžete získat z části **Přehled** pracovního prostoru v Azure.
+7. Upravte konfigurační soubor tak, aby zahrnoval hodnoty pro Vaše ID předplatného Azure, skupinu prostředků ve vašem předplatném a název pracovního prostoru Azure Machine Learning. Všechny tyto hodnoty můžete získat z části **Přehled** vašeho pracovního prostoru v Azure.
 
 8. Uložte konfigurační soubor.
 
-9. Otevřete soubor. **ipynb 00-anomálie-Detection-tutorial** .
+9. Otevřete soubor **00-anomaly-detection-tutorial.ipynb.**
 
-10. Po zobrazení výzvy vyberte jádro **Python 3,6** a potom vyberte **nastavit jádro**.
+10. Po zobrazení výzvy vyberte jádro **Pythonu 3.6** a pak vyberte **Nastavit jádro**.
 
 11. Upravte první buňku v poznámkovém bloku podle pokynů v komentářích. Použijte stejnou skupinu prostředků, ID předplatného a název pracovního prostoru, který jste přidali do konfiguračního souboru.
 
-12. Buňky v poznámkovém bloku spustíte tak, že je vyberete a vyberete **Spustit** nebo stisknout `Shift + Enter`.
+12. Spusťte buňky v poznámkovém bloku tak, že je vyberete a vyberete **Spustit** nebo stisknete `Shift + Enter`.
 
     >[!TIP]
-    >Některé buňky v poznámkovém bloku s kurzem detekce anomálií jsou volitelné, protože vytvářejí prostředky, které někteří uživatelé mohou nebo nemusí zatím mít, například IoT Hub. Pokud do první buňky vložíte své informace o zdroji, zobrazí se chyby, pokud spustíte buňky, které vytvoří nové prostředky, protože Azure nevytváří duplicitní prostředky. To je přesné a můžete ignorovat chyby nebo tyto volitelné oddíly přeskočit zcela.
+    >Některé buňky v poznámkovém bloku kurz pro detekci anomálií jsou volitelné, protože vytvářejí prostředky, které někteří uživatelé mohou nebo ještě nemusí mít, jako je ioT hub. Pokud vložíte existující informace o prostředcích do první buňky, zobrazí se chyby, pokud spustíte buňky, které vytvářejí nové prostředky, protože Azure nevytvoří duplicitní prostředky. To je v pořádku a můžete ignorovat chyby nebo přeskočit tyto volitelné oddíly úplně.
 
-Po dokončení všech kroků v poznámkovém bloku jste si prosadili model detekce anomálií, vytvořili ho jako image kontejneru Docker a tuto image jste Azure Container Registry. Potom model otestujete a nakonec ho nasadíte do zařízení IoT Edge.
+Dokončením všech kroků v poznámkovém bloku jste vycvičili model detekce anomálií, vytvořili ho jako image kontejneru Dockeru a tuto bitovou kopii jste přeřadili do registru kontejnerů Azure. Potom jste model otestovali a nakonec ho nasadili do zařízení IoT Edge.
 
-## <a name="view-container-repository"></a>Zobrazit úložiště kontejneru
+## <a name="view-container-repository"></a>Zobrazit úložiště kontejnerů
 
-Ověřte, že se image kontejneru úspěšně vytvořila a uložila do služby Azure Container Registry přidružené k vašemu prostředí Machine Learning. Poznámkový blok, který jste použili v předchozí části, automaticky poskytl image kontejneru a přihlašovací údaje registru k vašemu IoT Edge zařízení, ale měli byste znát, kde jsou uložené, abyste je mohli později najít.
+Zkontrolujte, zda byla image kontejneru úspěšně vytvořena a uložena v registru kontejnerů Azure přidruženém k vašemu prostředí strojového učení. Poznámkový blok, který jste použili v předchozí části, automaticky poskytl image kontejneru a přihlašovací údaje registru zařízení IoT Edge, ale měli byste vědět, kde jsou uloženy, abyste později mohli najít informace sami.
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do pracovního prostoru služby Machine Learning.
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte do pracovního prostoru služby Machine Learning.
 
-2. V části **Přehled** jsou uvedeny podrobnosti o pracovním prostoru spolu s přidruženými prostředky. Vyberte hodnotu **registru** , kterou by měl být název vašeho pracovního prostoru následovaný náhodnými čísly.
+2. V části **Přehled** jsou uvedeny podrobnosti pracovního prostoru a také jeho přidružené zdroje. Vyberte hodnotu **registru,** která by měla být názvem pracovního prostoru následovanou náhodnými čísly.
 
-3. V registru kontejneru vyberte **úložiště**. Mělo by se zobrazit úložiště s názvem **tempanomalydetection** , které bylo vytvořeno pomocí poznámkového bloku, který jste spustili v předchozí části.
+3. V registru kontejnerů vyberte **Úložiště**. Měli byste vidět úložiště s názvem **tempanomalydetection,** který byl vytvořen poznámkový blok, který jste spustili v předchozí části.
 
-4. Vyberte **tempanomalydetection**. Měli byste vidět, že úložiště má jednu značku: **1**.
+4. Vyberte **detekci tempanomaly**. Měli byste vidět, že úložiště má jednu značku: **1**.
 
-   Teď, když znáte název registru, název úložiště a značku, znáte úplnou cestu k bitové kopii kontejneru. Cesty obrázků vypadají jako **\<registry_name\>. azurecr.IO/tempanomalydetection:1**. K nasazení tohoto kontejneru do IoT Edge zařízení můžete použít cestu k bitové kopii.
+   Nyní, když znáte název registru, název úložiště a značku, znáte úplnou cestu k bitové kopii kontejneru. Cesty k obrázkům vypadají jako ** \<\>registry_name .azurecr.io/tempanomalydetection:1**. Cestu k imagi můžete použít k nasazení tohoto kontejneru na zařízení IoT Edge.
 
-5. V registru kontejnerů vyberte **přístupové klíče**. Měl by se zobrazit počet přihlašovacích údajů, včetně **přihlašovacího serveru** a **uživatelského jména**a **hesla** pro uživatele s oprávněním správce.
+5. V registru kontejnerů vyberte **přístupové klíče**. Měli byste vidět řadu přístupových pověření, včetně **přihlašovacího serveru** a **uživatelského jména**a **hesla** pro uživatele správce.
 
-   Tyto přihlašovací údaje mohou být zahrnuty v manifestu nasazení, aby mohl vaše zařízení IoT Edge mít přístup k vyžádané image kontejneru z registru.
+   Tyto přihlašovací údaje mohou být součástí manifestu nasazení a vaše zařízení IoT Edge by tak mohlo mít přístup k vyžádání imagí kontejneru z registru.
 
-Nyní víte, kde je uložená bitová kopie kontejneru Machine Learning. V další části se provedou kroky pro zobrazení kontejneru, který je spuštěný jako modul na zařízení IoT Edge.
+Nyní víte, kde je uložena image kontejneru Machine Learning. V další části se provede kroky k zobrazení kontejneru běží jako modul na zařízení IoT Edge.
 
 ## <a name="view-the-generated-data"></a>Zobrazení vygenerovaných dat
 
@@ -114,7 +114,7 @@ Můžete zobrazit zprávy generované každým modulem IoT Edge a také zprávy,
 
 Na zařízení IoT Edge můžete zobrazit zprávy odesílané z každého jednotlivého modulu.
 
-Pro zvýšení oprávnění ke spouštění příkazů `iotedge` možná budete muset použít `sudo`. Odhlášení a opětovné přihlášení do zařízení automaticky aktualizuje vaše oprávnění.
+Ke spouštění `sudo` `iotedge` příkazů může být nutné použít oprávnění se zvýšenými oprávněními. Odhlášení a návrat k zařízení automaticky aktualizuje vaše oprávnění.
 
 1. Takto zobrazíte všechny moduly na zařízení IoT Edge.
 
@@ -130,7 +130,7 @@ Pro zvýšení oprávnění ke spouštění příkazů `iotedge` možná budete 
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>Zobrazení dat odesílaných do IoT Hubu
 
-Můžete zobrazit zprávy ze zařízení do cloudu, které služba IoT Hub přijme, pomocí [rozšíření Azure IoT Hub pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+Můžete zobrazit zprávy zařízení cloud, které vaše služba IoT hub přijímá pomocí [rozšíření Azure IoT Hub pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování zpráv zařízení-cloud, které přicházejí do vašeho IoT Hubu.
 
@@ -138,15 +138,15 @@ Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování 
 
 2. Vyberte **...** a potom v nabídce vyberte **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu).
 
-   ![Nastavit připojovací řetězec služby IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![Nastavení připojovacího řetězce centra IoT](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. Do textového pole, které se otevře nahoře na stránce, zadejte připojovací řetězec iothubowner svého IoT Hubu. Vaše zařízení IoT Edge by se mělo zobrazit v seznamu zařízení IoT Hubu.
 
-4. Vyberte **...** a pak vyberte **Spustit monitorování předdefinovaného koncového bodu události**.
+4. Vyberte **...** znovu a pak vyberte **Spustit sledování vestavěného koncového bodu událostí**.
 
-5. Sledujte zprávy, které přicházejí každých pět sekund ze senzoru tempSenzor. Tělo zprávy obsahuje vlastnost s názvem **anomálii**, která machinelearningmodule poskytuje hodnotu true nebo false. Pokud bylo spuštění modelu úspěšné, obsahuje vlastnost **AzureMLResponse** hodnotu „OK“.
+5. Sledujte zprávy, které přicházejí každých pět sekund ze senzoru tempSenzor. Text zprávy obsahuje vlastnost s názvem **anomálie**, které machinelearningmodul poskytuje true nebo false hodnotu. Pokud bylo spuštění modelu úspěšné, obsahuje vlastnost **AzureMLResponse** hodnotu „OK“.
 
-   ![Odpověď Azure Machine Learning v těle zprávy](./media/tutorial-deploy-machine-learning/ml-output.png)
+   ![Odpověď Azure Machine Learning v textu zprávy](./media/tutorial-deploy-machine-learning/ml-output.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

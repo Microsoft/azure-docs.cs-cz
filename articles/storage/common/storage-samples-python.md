@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure Storage pomocí Pythonu | Microsoft Docs
-description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Pomocí knihoven klienta pro úložiště Python můžete zjistit úvodní ukázky pro objekty blob, fronty, tabulky a soubory.
+title: Ukázky azure storage pomocí Pythonu | Dokumenty společnosti Microsoft
+description: Zobrazení, stažení a spuštění ukázkového kódu a aplikací pro Azure Storage. Zjistěte, jak začít ukázky pro objekty BLOB, fronty, tabulky a soubory pomocí klientských knihoven úložiště Pythonu.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/13/2020
@@ -8,26 +8,26 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: fc3079d316a252bc5a658017cb6b04fe6ef20c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77485824"
 ---
-# <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Ukázky Azure Storage pomocí klientských knihoven V12 Python
+# <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Ukázky úložiště Azure pomocí klientských knihoven v12 Pythonu
 
-Následující tabulky obsahují přehled našich ukázkových úložišť a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
+Následující tabulky poskytují přehled úložiště našich ukázek a scénáře uvedené v každé ukázce. Kliknutím na odkazy zobrazíte odpovídající ukázkový kód na GitHubu.
 
 > [!NOTE]
-> Tyto ukázky používají nejnovější knihovnu Azure Storage .NET V12. Pro kód starší verze v 2.1 si přečtěte téma [Azure Storage: Začínáme s Azure Storage v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started) v úložišti GitHubu.
+> Tyto ukázky používají nejnovější knihovnu Azure Storage .NET v12. Starší verze kódu v2.1 najdete v [tématu Azure Storage: Začínáme s Azure Storage v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started) v úložišti GitHub.
 
-## <a name="blob-samples"></a>Ukázky objektů BLOB
+## <a name="blob-samples"></a>Vzorky objektů blob
 
 ### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
-      [Vytvoření klienta služby BLOB pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L45)
+      [Vytvoření klienta služby blob pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L45)
    :::column-end:::
    :::column span="":::
       [Vytvoření klienta kontejneru pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L50)
@@ -35,23 +35,23 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vytvoření klienta BLOB pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L56)
+      [Vytvoření klienta objektů blob pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L56)
    :::column-end:::
    :::column span="":::
-      [Vytvoření klienta služby BLOB pomocí sdíleného přístupového klíče](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L66)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Vytvořit klienta objektů BLOB z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L75)
-   :::column-end:::
-   :::column span="":::
-      [Vytvořit adresu URL SAS klienta objektů BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L80)
+      [Vytvoření klienta služby blob pomocí sdíleného přístupového klíče](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L66)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vytvoření klienta služby BLOB pomocí ClientSecretCredential](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L88)
+      [Vytvoření klienta objektu blob z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L75)
+   :::column-end:::
+   :::column span="":::
+      [Vytvoření adresy URL sobjektem BLOB klienta SAS](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L80)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Vytvoření klienta služby blob pomocí clientSecretCredential](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L88)
    :::column-end:::
    :::column span="":::
       [Vytvořit token SAS](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L110)
@@ -59,29 +59,29 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vytvoření klienta služby BLOB pomocí identity Azure](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L125)
+      [Vytvoření klienta služby blob pomocí Azure Identity](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L125)
    :::column-end:::
    :::column span="":::
-      [Vytvořit snímek objektu BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L56)
+      [Vytvoření snímku objektu blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L56)
    :::column-end:::
 :::row-end:::
 
-### <a name="blob-service"></a>Blob Service
+### <a name="blob-service"></a>Blob service
 
 :::row:::
    :::column span="":::
-      [Získat informace o účtu služby BLOB Service](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L30)
+      [Získání informací o účtu služby blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L30)
    :::column-end:::
    :::column span="":::
-      [Nastavit vlastnosti služby BLOB Service](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L41)
+      [Nastavení vlastností služby objektu blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Získat vlastnosti služby BLOB Service](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L61)
+      [Získání vlastností služby objektu blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L61)
    :::column-end:::
    :::column span="":::
-      [Získat statistiky služby BLOB Service](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L71)
+      [Získání statistik služby blob service](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L71)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -89,12 +89,12 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Vytvoření kontejneru pomocí klienta služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L82)
    :::column-end:::
    :::column span="":::
-      [Seznam kontejnerů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L90)
+      [Výpis kontejnerů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L90)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odstranění kontejneru pomocí klienta služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L103)
+      [Odstranit kontejner pomocí klienta služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L103)
    :::column-end:::
    :::column span="":::
       [Získat klienta kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L117)
@@ -102,7 +102,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Získat klienta objektů BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L130)
+      [Získat klienta objektů blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L130)
    :::column-end:::
 :::row-end:::
 
@@ -113,7 +113,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Vytvořit klienta kontejneru ze služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L35)
    :::column-end:::
    :::column span="":::
-      [Vytvořit klienta kontejneru pomocí adresy URL SAS](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L44)
+      [Vytvoření klienta kontejneru pomocí adresy URL SAS](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L44)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -121,7 +121,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Vytvoření kontejneru pomocí klienta kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L52)
    :::column-end:::
    :::column span="":::
-      [Získat vlastnosti kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L56)
+      [Získání vlastností kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -129,7 +129,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Odstranění kontejneru pomocí klienta kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L61)
    :::column-end:::
    :::column span="":::
-      [Získat zapůjčení na kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L80)
+      [Získat zapůjčení kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L80)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -137,12 +137,12 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Nastavení metadat kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L101)
    :::column-end:::
    :::column span="":::
-      [Nastavení zásad přístupu k kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L128)
+      [Nastavení zásad přístupu ke kontejnerům](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L128)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Získat zásady přístupu kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L141)
+      [Získat zásady přístupu ke kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L141)
    :::column-end:::
    :::column span="":::
       [Generovat token SAS](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L145)
@@ -158,34 +158,34 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Výpis objektů BLOB v kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L189)
+      [Seznam objektů BLOB v kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L189)
    :::column-end:::
    :::column span="":::
-      [Získat klienta objektů BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L213)
+      [Získat klienta objektů blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L213)
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Blob
+### <a name="blob"></a>Objekt blob
 
 :::row:::
    :::column span="":::
-      [Nahrát objekt BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L68)
+      [Nahrání objektu blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L68)
    :::column-end:::
    :::column span="":::
-      [Stažení objektu BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L74)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Odstranit objekt BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L80)
-   :::column-end:::
-   :::column span="":::
-      [Obnovit objekt BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L100)
+      [Stažení objektu blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Získat vlastnosti objektu BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L105)
+      [Odstranit objekt blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L80)
+   :::column-end:::
+   :::column span="":::
+      [Zrušit odstraněný objekt blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L100)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Získání vlastností objektu blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L105)
    :::column-end:::
    :::column span="":::
       [Odstranění více objektů BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L133)
@@ -193,21 +193,21 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Kopírovat objekt BLOB z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L193)
+      [Kopírování objektu blob z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L193)
    :::column-end:::
    :::column span="":::
-      [Přerušit kopii objektu BLOB z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L205)
+      [Přerušit kopírování objektu blob z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L205)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Získat zapůjčení pro objekt BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L167)
+      [Získat zapůjčení objektu blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L167)
    :::column-end:::
 :::row-end:::
 
-## <a name="data-lake-storage-gen2-samples"></a>Ukázky Data Lake Storage Gen2
+## <a name="data-lake-storage-gen2-samples"></a>Vzorky Data Lake Storage Gen2
 
-### <a name="data-lake-service"></a>Služba Data Lake
+### <a name="data-lake-service"></a>Služba Datového jezera
 
 :::row:::
    :::column span="2":::
@@ -230,15 +230,15 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 
 :::row:::
    :::column span="":::
-      [Vytvořit adresář klienta](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L14)
+      [Vytvořit klienta adresáře](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L14)
    :::column-end:::
    :::column span="":::
-      [Získat oprávnění adresáře](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L19)
+      [Získání oprávnění adresáře](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L19)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Nastavení oprávnění k adresáři](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L23)
+      [Nastavení oprávnění adresáře](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L23)
    :::column-end:::
    :::column span="":::
       [Přejmenovat adresář](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L19)
@@ -253,7 +253,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>Soubor
+### <a name="file"></a>File
 
 :::row:::
    :::column span="":::
@@ -265,18 +265,18 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Získat oprávnění k souboru](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L35)
+      [Získání oprávnění k souborům](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L35)
    :::column-end:::
    :::column span="":::
-      [Nastavit oprávnění pro soubory](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L38)
+      [Nastavení oprávnění k souborům](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L38)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Připojit data k souboru](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L18)
+      [Připojení dat do souboru](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L18)
    :::column-end:::
    :::column span="":::
-      [Číst data ze souboru](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L29)
+      [Čtení dat ze souboru](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L29)
    :::column-end:::
 :::row-end:::
 
@@ -286,10 +286,10 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 
 :::row:::
    :::column span="":::
-      [Vytvořit klienta služby sdílení z připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L42)
+      [Vytvořit klienta služby share služby z připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L42)
    :::column-end:::
    :::column span="":::
-      [Vytvoření klienta služby sdílení z účtu a přístupového klíče](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L49)
+      [Vytvoření klienta služby sdílení ze služby a přístupového klíče](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -302,23 +302,23 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 
 :::row:::
    :::column span="":::
-      [Nastavit vlastnosti služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L39)
+      [Nastavení vlastností služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L39)
    :::column-end:::
    :::column span="":::
-      [Získat vlastnosti služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L68)
+      [Získání vlastností služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L68)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vytvoření sdílených složek pomocí klienta souborové služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L77)
+      [Vytváření sdílených složek pomocí klienta služby souborů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L77)
    :::column-end:::
    :::column span="":::
-      [Vypsat sdílené složky pomocí klienta souborové služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L81)
+      [Seznam sdílených složek pomocí klienta služby souborů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L81)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Odstranit sdílené složky pomocí klienta souborové služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L91)
+      [Odstranění sdílených složek pomocí klienta služby souborů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L91)
    :::column-end:::
 :::row-end:::
 
@@ -326,15 +326,15 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 
 :::row:::
    :::column span="":::
-      [Vytvořit sdílení klienta z připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L52)
+      [Vytvořit klienta sdílené složky z připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L52)
    :::column-end:::
    :::column span="":::
-      [Získat klienta sdílení](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L96)
+      [Získat sdíleného klienta](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L96)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vytvoření sdílené složky pomocí klienta sdílení souborů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L39)
+      [Vytvoření sdílené položky pomocí klienta sdílené složky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L39)
    :::column-end:::
    :::column span="":::
       [Vytvořit snímek sdílené složky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L43)
@@ -342,18 +342,18 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odstranit sdílenou složku pomocí klienta sdílení souborů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L47)
+      [Odstranění sdílené položky pomocí klienta sdílené složky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L47)
    :::column-end:::
    :::column span="":::
-      [Nastavit kvótu sdílení](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L61)
+      [Nastavení kvóty sdílení](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L61)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Nastavit metadata sdílení](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L66)
+      [Nastavení metadat sdílení](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L66)
    :::column-end:::
    :::column span="":::
-      [Získat vlastnosti sdílené složky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L47)
+      [Získání vlastností sdílené položky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L47)
    :::column-end:::
 :::row-end:::
 
@@ -361,10 +361,10 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 
 :::row:::
    :::column span="":::
-      [Vytvořit adresář](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L45)
+      [Vytvoření adresáře](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L45)
    :::column-end:::
    :::column span="":::
-      [Odeslat soubor do adresáře](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L49)
+      [Nahrát soubor do adresáře](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -380,7 +380,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Vytvořit podadresář](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L80)
    :::column-end:::
    :::column span="":::
-      [Výpis adresářů a souborů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L96)
+      [Seznam adresářů a souborů](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L96)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -393,11 +393,11 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Zobrazit seznam souborů v adresáři](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L87)
+      [Seznam souborů v adresáři](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L87)
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>Soubor
+### <a name="file"></a>File
 
 :::row:::
    :::column span="":::
@@ -409,31 +409,31 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Nahrát soubor](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L54)
+      [Nahrání souboru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L54)
    :::column-end:::
    :::column span="":::
-      [Stáhnout soubor](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L60)
+      [Stažení souboru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L60)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odstranit soubor](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L67)
+      [Odstranit dlaždici](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L67)
    :::column-end:::
    :::column span="":::
-      [Kopírovat soubor z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L101)
+      [Kopírování souboru z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L101)
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Ukázky front
+## <a name="queue-samples"></a>Ukázky fronty
 
 ### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
-      [Ověřit pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L50)
+      [Ověření pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L50)
    :::column-end:::
    :::column span="":::
-      [Vytvořit token klienta služby Queue](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L69)
+      [Vytvořit token klienta služby fronty](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L69)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -445,19 +445,19 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>Služba front
+### <a name="queue-service"></a>Služba fronty
 
 :::row:::
    :::column span="":::
-      [Vytvořit klienta služby Queue](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L60)
+      [Vytvořit klienta služby fronty](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L60)
    :::column-end:::
    :::column span="":::
-      [Nastavit vlastnosti služby Queue](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L35)
+      [Nastavení vlastností služby fronty](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L35)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Získat vlastnosti služby Queue](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L67)
+      [Získat vlastnosti služby fronty](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L67)
    :::column-end:::
    :::column span="":::
       [Vytvoření fronty pomocí klienta služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L76)
@@ -465,7 +465,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Odstranění fronty pomocí klienta služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L94)
+      [Odstranit frontu pomocí klienta služby](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L94)
    :::column-end:::
 :::row-end:::
 
@@ -484,15 +484,15 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Získat vlastnosti fronty](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L100)
    :::column-end:::
    :::column span="":::
-      [Vytvoření fronty pomocí klienta Queue](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L45)
+      [Vytvoření fronty pomocí klienta fronty](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L45)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odstranit frontu pomocí klienta Queue](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L62)
+      [Odstranit frontu pomocí klienta fronty](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L62)
    :::column-end:::
    :::column span="":::
-      [Výpis front](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L81)
+      [Seznam front](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L81)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -505,18 +505,18 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 
 :::row:::
    :::column span="":::
-      [Odeslat zprávy](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L117)
+      [Odesílání zpráv](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L117)
    :::column-end:::
    :::column span="":::
-      [Přijímat zprávy](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L125)
+      [Příjem zpráv](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L125)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Prohlížet zprávu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L197)
+      [Náhled zprávy](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L197)
    :::column-end:::
    :::column span="":::
-      [Aktualizovat zprávu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L222)
+      [Zpráva aktualizace](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L222)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -524,21 +524,21 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Odstranit zprávu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L165)
    :::column-end:::
    :::column span="":::
-      [Vymazat zprávy](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L173)
+      [Vymazání zpráv](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L173)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Nastavení zásad přístupu ke zprávám](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L47)
+      [Nastavení zásad přístupu ke zprávě](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L47)
    :::column-end:::
 :::row-end:::
 
 
-## <a name="table-samples-sdk-v21"></a>Ukázky tabulek (SDK v 2.1)
+## <a name="table-samples-sdk-v21"></a>Ukázky tabulky (SDK v2.1)
 
 :::row:::
    :::column span="":::
-      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46)
+      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46)
    :::column-end:::
    :::column span="":::
       [Odstranit entitu/tabulku](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L79)
@@ -546,7 +546,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Vložit/sloučit/nahradit entitu](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57)
+      [Entita Vložení/sloučení/nahrazení](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57)
    :::column-end:::
    :::column span="":::
       [Entity dotazu](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L62)
@@ -554,7 +554,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Tabulky dotazů](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py)
+      [Dotazy na tabulky](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py)
    :::column-end:::
    :::column span="":::
       [Seznam ACL/vlastnosti tabulky](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_advanced_samples.py#L138)
@@ -566,31 +566,31 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Knihovny ukázek kódu Azure
+## <a name="azure-code-sample-libraries"></a>Ukázkové knihovny kódu Azure
 
-Pokud chcete zobrazit kompletní ukázkové knihovny Pythonu, podívejte se na:
+Chcete-li zobrazit kompletní ukázkové knihovny Pythonu, přejděte na:
 
-* [Ukázky kódu Azure Blob](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
-* [Ukázky kódu Azure Data Lake](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+* [Ukázky kódu objektu blob Azure](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+* [Ukázky kódu datového jezera Azure](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 * [Ukázky kódu souborů Azure](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
 * [Ukázky kódu fronty Azure](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
 
-Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
+Můžete procházet a klonovat úložiště GitHub pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Úvodní příručky
+## <a name="getting-started-guides"></a>Příručky Začínáme
 
-Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
+Pokud hledáte pokyny k instalaci a zahájení instalace s klientskými knihovnami Azure Storage, podívejte se na následující příručky.
 
 * [Začínáme se službou Azure Blob Service v Pythonu](../blobs/storage-quickstart-blobs-python.md)
-* [Začínáme se službou Azure Queue v Pythonu](../queues/storage-quickstart-queues-python.md)
+* [Začínáme se službou Azure Queue Service v Pythonu](../queues/storage-quickstart-queues-python.md)
 * [Začínáme se službou Azure Table Service v Pythonu](../../cosmos-db/table-storage-how-to-use-python.md)
 * [Začínáme se službou Azure File Service v Pythonu](../files/storage-python-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o ukázkách pro jiné jazyky:
+Informace o vzorcích pro jiné jazyky:
 
-* .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
-* Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
-* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
-* Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)
+* .NET: [Ukázky úložiště Azure pomocí rozhraní .NET](storage-samples-dotnet.md)
+* Java: [Ukázky azure úložiště pomocí Javy](storage-samples-java.md)
+* JavaScript/Node.js: [Ukázky úložiště Azure pomocí JavaScriptu](storage-samples-javascript.md)
+* Všechny ostatní jazyky: [Ukázky azure storage](storage-samples.md)

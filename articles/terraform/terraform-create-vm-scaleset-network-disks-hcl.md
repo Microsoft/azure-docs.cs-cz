@@ -1,20 +1,20 @@
 ---
-title: Kurz – vytvoření sady škálování virtuálních počítačů Azure pomocí Terraformu
-description: Naučte se používat Terraformu ke konfiguraci a verzi sady škálování virtuálních počítačů Azure.
+title: Kurz – vytvoření škálovací sady virtuálních strojů Azure pomocí Terraform
+description: Naučte se používat Terraform ke konfiguraci a verzi škálovací sady virtuálních strojů Azure.
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472226"
 ---
-# <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Kurz: vytvoření sady škálování virtuálních počítačů Azure pomocí Terraformu
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Kurz: Vytvoření škálovací sady virtuálních strojů Azure pomocí Terraform
 
-[Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets) vám umožní nakonfigurovat identické virtuální počítače. Počet instancí virtuálních počítačů se může upravovat na základě poptávky nebo plánu. Další informace najdete v tématu [Automatické škálování sady škálování virtuálních počítačů v Azure Portal](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal).
+[Škálovací sady virtuálních strojů Azure](/azure/virtual-machine-scale-sets) umožňují konfigurovat identické virtuální počítače. Počet instancí virtuálních počítačů můžete upravit na základě poptávky nebo plánu. Další informace najdete [v tématu Automatické škálování škálovací sady virtuálních strojů na webu Azure Portal](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal).
 
-V tomto kurzu se naučíte, jak pomocí [Azure Cloud Shell](/azure/cloud-shell/overview) provádět následující úlohy:
+V tomto kurzu se dozvíte, jak pomocí [Služby Azure Cloud Shell](/azure/cloud-shell/overview) provést následující úkoly:
 
 > [!div class="checklist"]
 > * Nastavit nasazení Terraformu
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte, jak pomocí [Azure Cloud Shell](/azure/cloud-shell/o
 > * Vytvořit a nasadit jumpbox pro připojení k virtuálním počítačům prostřednictvím protokolu SSH
 
 > [!NOTE]
-> Nejnovější verze konfiguračních souborů Terraformu používaných v tomto článku se nachází v [úložišti Super terraformu na GitHubu](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
+> Nejnovější verze konfiguračních souborů Terraform použitých v tomto článku jsou v [úložišti Awesome Terraform na GitHubu](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,11 +32,11 @@ V tomto kurzu se naučíte, jak pomocí [Azure Cloud Shell](/azure/cloud-shell/o
 
 - **Nainstalovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](terraform-install-configure.md).
 
-- **Vytvoření páru klíčů ssh**: Další informace najdete v tématu [jak vytvořit a použít dvojici veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **Vytvoření páru klíčů SSH**: Další informace najdete v tématu [Jak vytvořit a použít dvojici s veřejným a soukromým klíčem SSH pro virtuální počítače s Linuxem v Azure](/azure/virtual-machines/linux/mac-create-ssh-keys).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 
@@ -63,7 +63,7 @@ V tomto kurzu se naučíte, jak pomocí [Azure Cloud Shell](/azure/cloud-shell/o
 ## <a name="create-the-variables-definitions-file"></a>Vytvoření souboru definic proměnných
 V této části definujete proměnné, které přizpůsobí prostředky vytvořené nástrojem Terraform.
 
-V Azure Cloud Shell proveďte následující kroky:
+V rámci Prostředí Cloud Shell Azure proveďte následující kroky:
 
 1. Vytvořte soubor s názvem `variables.tf`.
 
@@ -93,12 +93,12 @@ V Azure Cloud Shell proveďte následující kroky:
    }
    ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="create-the-output-definitions-file"></a>Vytvoření výstupního souboru definic
 V této části vytvoříte soubor, který po nasazení popisuje výstup.
 
-V Azure Cloud Shell proveďte následující kroky:
+V rámci Prostředí Cloud Shell Azure proveďte následující kroky:
 
 1. Vytvořte soubor s názvem `output.tf`.
 
@@ -115,7 +115,7 @@ V Azure Cloud Shell proveďte následující kroky:
     }
    ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>Definování infrastruktury sítě v šabloně
 V této části vytvoříte v nové skupině prostředků Azure následující síťovou infrastrukturu:
@@ -124,7 +124,7 @@ V této části vytvoříte v nové skupině prostředků Azure následující s
   - Jednu podsíť s adresním prostorem 10.0.2.0/24
   - Dvě veřejné IP adresy – jednu pro nástroj pro vyrovnávání zatížení škálovací sady virtuálních počítačů a druhou pro připojení k jumpboxu SSH
 
-V Azure Cloud Shell proveďte následující kroky:
+V rámci Prostředí Cloud Shell Azure proveďte následující kroky:
 
 1. Vytvořte soubor s názvem `vmss.tf`, který bude popisovat infrastrukturu škálovací sady virtuálních počítačů.
 
@@ -173,10 +173,10 @@ V Azure Cloud Shell proveďte následující kroky:
    }
    ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="provision-the-network-infrastructure"></a>Zřízení síťové infrastruktury
-Pomocí Azure Cloud Shell z adresáře, ve kterém jste vytvořili konfigurační soubory (. TF), proveďte následující kroky:
+Pomocí prostředí Azure Cloud Shell z adresáře, ve kterém jste vytvořili konfigurační soubory (.tf), proveďte následující kroky:
 
 1. Inicializujte Terraform.
 
@@ -190,11 +190,11 @@ Pomocí Azure Cloud Shell z adresáře, ve kterém jste vytvořili konfiguračn�
    terraform apply
    ```
 
-   Terraformu vás vyzve k zadání hodnoty `location`, protože `location` proměnná je definována v `variables.tf`, ale není nikdy nastavena. Můžete zadat libovolné platné umístění – například „Západní USA“ – a potom stisknout Enter. (U každé hodnoty s mezerami používejte závorky.)
+   Terraform vás vyzve `location` k zadání `location` hodnoty, `variables.tf`protože proměnná je definována v , ale nikdy není nastavena. Můžete zadat libovolné platné umístění – například „Západní USA“ – a potom stisknout Enter. (U každé hodnoty s mezerami používejte závorky.)
 
-1. Terraform zobrazí výstup definovaný v souboru `output.tf`. Jak je znázorněno na následujícím snímku obrazovky, plně kvalifikovaný název domény má následující formát: `<ID>.<location>.cloudapp.azure.com`. ID je vypočítaná hodnota a umístění je hodnota, která je k dispozici při spuštění Terraformu.
+1. Terraform zobrazí výstup definovaný v souboru `output.tf`. Jak je znázorněno na následujícím snímku obrazovky, hlavní `<ID>.<location>.cloudapp.azure.com`obrazový soubor musí mít následující podobu: . ID je vypočítaná hodnota a umístění je hodnota poskytnout při spuštění Terraform.
 
-   ![Plně kvalifikovaný název domény sady škálování virtuálního počítače pro veřejnou IP adresu](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
+   ![Škálovací sada virtuálních počítačů plně kvalifikovaný název domény pro veřejnou IP adresu](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
 1. Na webu Azure Portal vyberte z hlavní nabídky **Skupiny prostředků**.
 
@@ -211,7 +211,7 @@ V této části se dozvíte, jak do šablony přidat následující prostředky:
 - Škálovací sada virtuálních počítačů, která se nachází za nástrojem pro vyrovnávání zatížení a běží na virtuální síti nasazené dříve v tomto článku.
 - Server [Nginx](https://nginx.org/) na uzlech škálovací sady virtuálních počítačů používající [cloud-init](https://cloudinit.readthedocs.io/en/latest/).
 
-V Cloud Shell proveďte následující kroky:
+V prostředí Cloud Shell postupujte takto:
 
 1. Otevřete konfigurační soubor `vmss.tf`.
 
@@ -374,7 +374,7 @@ V Cloud Shell proveďte následující kroky:
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 1. Vytvořte plán Terraformu k vizualizaci nasazení škálovací sady virtuálních počítačů. (Budete muset zadat vlastní heslo a umístění pro vaše prostředky.)
 
@@ -401,7 +401,7 @@ V Cloud Shell proveďte následující kroky:
     ![Výsledky přejití na plně kvalifikovaný název domény](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
 ## <a name="add-an-ssh-jumpbox"></a>Přidání jumpboxu SSH
-*JUMPBOX* SSH je jeden server, který můžete "Přeskočit" a získat tak přístup k jiným serverům v síti. V tomto kroku nakonfigurujete následující prostředky:
+SSH *jumpbox* je jeden server, který "skok" přes přístup k jiným serverům v síti. V tomto kroku nakonfigurujete následující prostředky:
 
 - Síťové rozhraní (neboli jumpbox) připojené ke stejné podsíti jako škálovací sada virtuálních počítačů
 
@@ -493,7 +493,7 @@ V Cloud Shell proveďte následující kroky:
    }
    ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 1. Nasaďte jumpbox.
 
@@ -521,4 +521,4 @@ Odstranění můžete trvat i několik minut.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Další informace o používání Terraformu v Azure](/azure/terraform)
+> [Další informace o používání Terraform v Azure](/azure/terraform)

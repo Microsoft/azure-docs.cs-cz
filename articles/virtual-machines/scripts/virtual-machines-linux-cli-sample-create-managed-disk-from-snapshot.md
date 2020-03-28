@@ -1,5 +1,5 @@
 ---
-title: Vytvoření spravovaného disku z ukázky Snapshot-CLI
+title: Vytvoření spravovaného disku ze snímku – ukázka objektu CLI
 description: Ukázkový skript Azure CLI – Vytvoření spravovaného disku ze snímku
 services: virtual-machines-linux
 documentationcenter: storage
@@ -17,10 +17,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: cd50d14ef004007b2c13d295dcb9911b318dd448
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458476"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Vytvoření spravovaného disku ze snímku pomocí rozhraní příkazového řádku

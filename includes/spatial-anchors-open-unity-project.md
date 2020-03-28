@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 05/23/2019
 ms.author: rgarcia
 ms.openlocfilehash: e0038fd5632d512f18d50c4d11577b7f5756baa3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67235292"
 ---
-V Unity, otevřete projekt v `Unity` složky. Unity může zobrazit výzva o jinou verzi Unity mezi projektu a ten, který jste nainstalovali na svém počítači. Toto upozornění je v pořádku, jako je novější než ta, kterou projekt byl vytvořen s vaší verzí z Unity editoru. V takovém případě stačí kliknout na **pokračovat**. Pokud máte verzi Unity Editor starší než jeden projekt potřebuje, klikněte na tlačítko **konec**a upgradujte Unity Editor.
+V Unity otevřete projekt `Unity` ve složce. Unity vás může vyzvat k jiné verzi Unity mezi projektem a verzí, kterou jste nainstalovali do počítače. Toto upozornění je v pořádku, tak dlouho, dokud vaše verze Unity Editor je novější než ten, který byl vytvořen s projektem. V takovém případě klepněte na tlačítko **Pokračovat**. Pokud je vaše verze Editoru unity starší než ta, kterou projekt potřebuje, klikněte na **Ukončit**a inovujte editor Unity.
 
-![Okno Unity](./media/spatial-anchors-unity/unity-window.png)
+![Okno Jednota](./media/spatial-anchors-unity/unity-window.png)
